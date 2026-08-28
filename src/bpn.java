@@ -1,10 +1,8 @@
-public record bpn<T>(String a) {
-   @Override
-   public String toString() {
-      return "<" + this.a + ">";
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public static <T> bpn<T> a(String $$0) {
-      return new bpn<>($$0);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface bpn {
 }

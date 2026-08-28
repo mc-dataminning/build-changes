@@ -1,3 +1,3 @@
-public class hcv extends hcn {
-   public feq a = feq.c;
+public class hcv extends hda {
+   public boolean a;
 }

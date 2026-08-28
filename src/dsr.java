@@ -1,84 +1,37 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dsr extends dsq {
-   public static final MapCodec<dsr> f = b(dsr::new);
-   public static final ebf<ja> g = dqg.e;
-   public static final eay h = dsq.b;
+public class dsr extends dmm {
+   public static final MapCodec<dsr> a = b(dsr::new);
 
    @Override
    public MapCodec<dsr> a() {
-      return f;
+      return a;
    }
 
-   protected dsr(eag.d $$0) {
+   protected dsr(ean.d $$0) {
       super($$0);
-      this.l(this.C.b().b(g, ja.c).b(h, Boolean.valueOf(true)));
    }
 
    @Override
-   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
-      return dvy.o($$0);
-   }
-
-   @Override
-   protected boolean a(eah $$0, djd $$1, iu $$2) {
-      return dvy.b($$1, $$2, $$0.c(g));
-   }
-
-   @Override
-   protected eah a(eah $$0, djd $$1, djp $$2, iu $$3, ja $$4, iu $$5, eah $$6, azv $$7) {
-      return $$4.g() == $$0.c(g) && !$$0.a($$1, $$3) ? dmh.a.m() : $$0;
-   }
-
-   @Nullable
-   @Override
-   public eah a(dcw $$0) {
-      eah $$1 = dmh.cA.a($$0);
-      return $$1 == null ? null : this.m().b(g, $$1.c(g));
-   }
-
-   @Override
-   public void a(eah $$0, dja $$1, iu $$2, azv $$3) {
-      if ($$0.c(h)) {
-         ja $$4 = $$0.c(g).g();
-         double $$5 = 0.27;
-         double $$6 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.j();
-         double $$7 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2 + 0.22;
-         double $$8 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.l();
-         $$1.a(ls.b, $$6, $$7, $$8, 0.0, 0.0, 0.0);
+   protected bug a(czk $$0, eao $$1, djh $$2, iv $$3, crj $$4, buf $$5, fet $$6) {
+      if (!$$0.a(czo.td)) {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      } else if ($$2.C) {
+         return bug.a;
+      } else {
+         jb $$7 = $$6.c();
+         jb $$8 = $$7.o() == jb.a.b ? $$4.cN().g() : $$7;
+         $$2.a(null, $$3, awn.vK, awo.e, 1.0F, 1.0F);
+         $$2.a($$3, dmo.ev.m().b(dni.b, $$8), 11);
+         cno $$9 = new cno(
+            $$2, (double)$$3.u() + 0.5 + (double)$$8.j() * 0.65, (double)$$3.v() + 0.1, (double)$$3.w() + 0.5 + (double)$$8.l() * 0.65, new czk(czo.tg, 4)
+         );
+         $$9.n(0.05 * (double)$$8.j() + $$2.A.j() * 0.02, 0.05, 0.05 * (double)$$8.l() + $$2.A.j() * 0.02);
+         $$2.b($$9);
+         $$0.a(1, $$4, bxj.d($$5));
+         $$2.a($$4, efo.M, $$3);
+         $$4.b(awx.c.b(czo.td));
+         return bug.a;
       }
-   }
-
-   @Override
-   protected boolean a(dja $$0, iu $$1, eah $$2) {
-      ja $$3 = $$2.c(g).g();
-      return $$0.b($$1.a($$3), $$3);
-   }
-
-   @Override
-   protected int a(eah $$0, dig $$1, iu $$2, ja $$3) {
-      return $$0.c(h) && $$0.c(g) != $$3 ? 15 : 0;
-   }
-
-   @Override
-   protected eah a(eah $$0, dsz $$1) {
-      return $$0.b(g, $$1.a($$0.c(g)));
-   }
-
-   @Override
-   protected eah a(eah $$0, dri $$1) {
-      return $$0.a($$1.a($$0.c(g)));
-   }
-
-   @Override
-   protected void a(eai.a<dmf, eah> $$0) {
-      $$0.a(g, h);
-   }
-
-   @Nullable
-   @Override
-   protected exw a(dja $$0, eah $$1) {
-      return exs.a($$0, $$1.c(g).g(), ja.b);
    }
 }

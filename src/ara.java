@@ -1,14 +1,14 @@
-public record ara(String b, int c, cqz d, boolean e, int f, bwx g, boolean h, boolean i, ari j) {
+public record ara(String b, int c, crg d, boolean e, int f, bxa g, boolean h, boolean i, ari j) {
    public static final int a = 16;
 
    public ara(vu $$0) {
       this(
          $$0.d(16),
          $$0.readByte(),
-         $$0.b(cqz.class),
+         $$0.b(crg.class),
          $$0.readBoolean(),
          $$0.readUnsignedByte(),
-         $$0.b(bwx.class),
+         $$0.b(bxa.class),
          $$0.readBoolean(),
          $$0.readBoolean(),
          $$0.b(ari.class)
@@ -28,6 +28,6 @@ public record ara(String b, int c, cqz d, boolean e, int f, bwx g, boolean h, bo
    }
 
    public static ara a() {
-      return new ara("en_us", 2, cqz.a, true, 0, crc.bu, false, false, ari.a);
+      return new ara("en_us", 2, crg.a, true, 0, crj.bu, false, false, ari.a);
    }
 }

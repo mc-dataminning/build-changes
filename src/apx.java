@@ -19,45 +19,45 @@ public class apx {
    private static final SimpleCommandExceptionType h = new SimpleCommandExceptionType(wy.c("commands.worldborder.damage.buffer.failed"));
    private static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(wy.c("commands.worldborder.damage.amount.failed"));
 
-   public static void a(CommandDispatcher<ei> $$0) {
+   public static void a(CommandDispatcher<ej> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a(
                                  "worldborder"
                               )
                               .requires($$0x -> $$0x.c(2)))
                            .then(
-                              ej.a("add")
+                              ek.a("add")
                                  .then(
-                                    ((RequiredArgumentBuilder)ej.a("distance", DoubleArgumentType.doubleArg(-5.999997E7F, 5.999997E7F))
+                                    ((RequiredArgumentBuilder)ek.a("distance", DoubleArgumentType.doubleArg(-5.999997E7F, 5.999997E7F))
                                           .executes(
                                              $$0x -> a(
-                                                   (ei)$$0x.getSource(),
-                                                   ((ei)$$0x.getSource()).e().A_().i() + DoubleArgumentType.getDouble($$0x, "distance"),
+                                                   (ej)$$0x.getSource(),
+                                                   ((ej)$$0x.getSource()).e().A_().i() + DoubleArgumentType.getDouble($$0x, "distance"),
                                                    0L
                                                 )
                                           ))
                                        .then(
-                                          ej.a("time", IntegerArgumentType.integer(0))
+                                          ek.a("time", IntegerArgumentType.integer(0))
                                              .executes(
                                                 $$0x -> a(
-                                                      (ei)$$0x.getSource(),
-                                                      ((ei)$$0x.getSource()).e().A_().i() + DoubleArgumentType.getDouble($$0x, "distance"),
-                                                      ((ei)$$0x.getSource()).e().A_().j() + (long)IntegerArgumentType.getInteger($$0x, "time") * 1000L
+                                                      (ej)$$0x.getSource(),
+                                                      ((ej)$$0x.getSource()).e().A_().i() + DoubleArgumentType.getDouble($$0x, "distance"),
+                                                      ((ej)$$0x.getSource()).e().A_().j() + (long)IntegerArgumentType.getInteger($$0x, "time") * 1000L
                                                    )
                                              )
                                        )
                                  )
                            ))
                         .then(
-                           ej.a("set")
+                           ek.a("set")
                               .then(
-                                 ((RequiredArgumentBuilder)ej.a("distance", DoubleArgumentType.doubleArg(-5.999997E7F, 5.999997E7F))
-                                       .executes($$0x -> a((ei)$$0x.getSource(), DoubleArgumentType.getDouble($$0x, "distance"), 0L)))
+                                 ((RequiredArgumentBuilder)ek.a("distance", DoubleArgumentType.doubleArg(-5.999997E7F, 5.999997E7F))
+                                       .executes($$0x -> a((ej)$$0x.getSource(), DoubleArgumentType.getDouble($$0x, "distance"), 0L)))
                                     .then(
-                                       ej.a("time", IntegerArgumentType.integer(0))
+                                       ek.a("time", IntegerArgumentType.integer(0))
                                           .executes(
                                              $$0x -> a(
-                                                   (ei)$$0x.getSource(),
+                                                   (ej)$$0x.getSource(),
                                                    DoubleArgumentType.getDouble($$0x, "distance"),
                                                    (long)IntegerArgumentType.getInteger($$0x, "time") * 1000L
                                                 )
@@ -65,46 +65,46 @@ public class apx {
                                     )
                               )
                         ))
-                     .then(ej.a("center").then(ej.a("pos", gl.a()).executes($$0x -> a((ei)$$0x.getSource(), gl.a($$0x, "pos"))))))
+                     .then(ek.a("center").then(ek.a("pos", gm.a()).executes($$0x -> a((ej)$$0x.getSource(), gm.a($$0x, "pos"))))))
                   .then(
-                     ((LiteralArgumentBuilder)ej.a("damage")
+                     ((LiteralArgumentBuilder)ek.a("damage")
                            .then(
-                              ej.a("amount")
+                              ek.a("amount")
                                  .then(
-                                    ej.a("damagePerBlock", FloatArgumentType.floatArg(0.0F))
-                                       .executes($$0x -> b((ei)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "damagePerBlock")))
+                                    ek.a("damagePerBlock", FloatArgumentType.floatArg(0.0F))
+                                       .executes($$0x -> b((ej)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "damagePerBlock")))
                                  )
                            ))
                         .then(
-                           ej.a("buffer")
+                           ek.a("buffer")
                               .then(
-                                 ej.a("distance", FloatArgumentType.floatArg(0.0F))
-                                    .executes($$0x -> a((ei)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "distance")))
+                                 ek.a("distance", FloatArgumentType.floatArg(0.0F))
+                                    .executes($$0x -> a((ej)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "distance")))
                               )
                         )
                   ))
-               .then(ej.a("get").executes($$0x -> a((ei)$$0x.getSource()))))
+               .then(ek.a("get").executes($$0x -> a((ej)$$0x.getSource()))))
             .then(
-               ((LiteralArgumentBuilder)ej.a("warning")
+               ((LiteralArgumentBuilder)ek.a("warning")
                      .then(
-                        ej.a("distance")
+                        ek.a("distance")
                            .then(
-                              ej.a("distance", IntegerArgumentType.integer(0))
-                                 .executes($$0x -> b((ei)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "distance")))
+                              ek.a("distance", IntegerArgumentType.integer(0))
+                                 .executes($$0x -> b((ej)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "distance")))
                            )
                      ))
                   .then(
-                     ej.a("time")
+                     ek.a("time")
                         .then(
-                           ej.a("time", IntegerArgumentType.integer(0)).executes($$0x -> a((ei)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
+                           ek.a("time", IntegerArgumentType.integer(0)).executes($$0x -> a((ej)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
                         )
                   )
             )
       );
    }
 
-   private static int a(ei $$0, float $$1) throws CommandSyntaxException {
-      ebz $$2 = $$0.l().J().A_();
+   private static int a(ej $$0, float $$1) throws CommandSyntaxException {
+      ecg $$2 = $$0.l().J().A_();
       if ($$2.n() == (double)$$1) {
          throw h.create();
       } else {
@@ -114,8 +114,8 @@ public class apx {
       }
    }
 
-   private static int b(ei $$0, float $$1) throws CommandSyntaxException {
-      ebz $$2 = $$0.l().J().A_();
+   private static int b(ej $$0, float $$1) throws CommandSyntaxException {
+      ecg $$2 = $$0.l().J().A_();
       if ($$2.o() == (double)$$1) {
          throw i.create();
       } else {
@@ -125,8 +125,8 @@ public class apx {
       }
    }
 
-   private static int a(ei $$0, int $$1) throws CommandSyntaxException {
-      ebz $$2 = $$0.l().J().A_();
+   private static int a(ej $$0, int $$1) throws CommandSyntaxException {
+      ecg $$2 = $$0.l().J().A_();
       if ($$2.q() == $$1) {
          throw f.create();
       } else {
@@ -136,8 +136,8 @@ public class apx {
       }
    }
 
-   private static int b(ei $$0, int $$1) throws CommandSyntaxException {
-      ebz $$2 = $$0.l().J().A_();
+   private static int b(ej $$0, int $$1) throws CommandSyntaxException {
+      ecg $$2 = $$0.l().J().A_();
       if ($$2.r() == $$1) {
          throw g.create();
       } else {
@@ -147,27 +147,27 @@ public class apx {
       }
    }
 
-   private static int a(ei $$0) {
+   private static int a(ej $$0) {
       double $$1 = $$0.l().J().A_().i();
       $$0.a(() -> wy.a("commands.worldborder.get", String.format(Locale.ROOT, "%.0f", $$1)), false);
       return azm.a($$1 + 0.5);
    }
 
-   private static int a(ei $$0, fep $$1) throws CommandSyntaxException {
-      ebz $$2 = $$0.l().J().A_();
-      if ($$2.a() == (double)$$1.i && $$2.b() == (double)$$1.j) {
+   private static int a(ej $$0, few $$1) throws CommandSyntaxException {
+      ecg $$2 = $$0.l().J().A_();
+      if ($$2.a() == (double)$$1.j && $$2.b() == (double)$$1.k) {
          throw a.create();
-      } else if (!((double)Math.abs($$1.i) > 2.9999984E7) && !((double)Math.abs($$1.j) > 2.9999984E7)) {
-         $$2.d((double)$$1.i, (double)$$1.j);
-         $$0.a(() -> wy.a("commands.worldborder.center.success", String.format(Locale.ROOT, "%.2f", $$1.i), String.format(Locale.ROOT, "%.2f", $$1.j)), true);
+      } else if (!((double)Math.abs($$1.j) > 2.9999984E7) && !((double)Math.abs($$1.k) > 2.9999984E7)) {
+         $$2.d((double)$$1.j, (double)$$1.k);
+         $$0.a(() -> wy.a("commands.worldborder.center.success", String.format(Locale.ROOT, "%.2f", $$1.j), String.format(Locale.ROOT, "%.2f", $$1.k)), true);
          return 0;
       } else {
          throw e.create();
       }
    }
 
-   private static int a(ei $$0, double $$1, long $$2) throws CommandSyntaxException {
-      ebz $$3 = $$0.l().J().A_();
+   private static int a(ej $$0, double $$1, long $$2) throws CommandSyntaxException {
+      ecg $$3 = $$0.l().J().A_();
       double $$4 = $$3.i();
       if ($$4 == $$1) {
          throw b.create();

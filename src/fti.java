@@ -1,35 +1,66 @@
-public class fti {
-   public static final int a = 8;
-   public static final int b = 8;
-   public static final int c = 8;
-   public static final int d = 8;
-   public static final int e = 40;
-   public static final int f = 8;
-   public static final int g = 8;
-   public static final int h = 8;
-   public static final int i = 64;
-   public static final int j = 64;
+import javax.annotation.Nullable;
 
-   public static void a(frv $$0, hjy $$1, int $$2, int $$3, int $$4) {
-      a($$0, $$1, $$2, $$3, $$4, -1);
+public abstract class fti extends fst {
+   fti(int $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3, wx.a);
    }
 
-   public static void a(frv $$0, hjy $$1, int $$2, int $$3, int $$4, int $$5) {
-      a($$0, $$1.a(), $$2, $$3, $$4, true, false, $$5);
+   public static fti a(int $$0, int $$1, alg $$2, int $$3, int $$4) {
+      return new fti.b(0, 0, $$0, $$1, $$2, $$3, $$4);
    }
 
-   public static void a(frv $$0, alg $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6, int $$7) {
-      int $$8 = 8 + ($$6 ? 8 : 0);
-      int $$9 = 8 * ($$6 ? -1 : 1);
-      $$0.a(gqk::H, $$1, $$2, $$3, 8.0F, (float)$$8, $$4, $$4, 8, $$9, 64, 64, $$7);
-      if ($$5) {
-         a($$0, $$1, $$2, $$3, $$4, $$6, $$7);
+   public static fti a(int $$0, int $$1, alg $$2) {
+      return new fti.a(0, 0, $$0, $$1, $$2);
+   }
+
+   @Override
+   protected void a(fws $$0) {
+   }
+
+   @Override
+   public void a(hon $$0) {
+   }
+
+   @Override
+   public boolean E() {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public fse a(fwy $$0) {
+      return null;
+   }
+
+   static class a extends fti {
+      private final alg a;
+
+      public a(int $$0, int $$1, int $$2, int $$3, alg $$4) {
+         super($$0, $$1, $$2, $$3);
+         this.a = $$4;
+      }
+
+      @Override
+      public void b(fsh $$0, int $$1, int $$2, float $$3) {
+         $$0.a(gqx::H, this.a, this.F(), this.G(), this.A(), this.y());
       }
    }
 
-   private static void a(frv $$0, alg $$1, int $$2, int $$3, int $$4, boolean $$5, int $$6) {
-      int $$7 = 8 + ($$5 ? 8 : 0);
-      int $$8 = 8 * ($$5 ? -1 : 1);
-      $$0.a(gqk::H, $$1, $$2, $$3, 40.0F, (float)$$7, $$4, $$4, 8, $$8, 64, 64, $$6);
+   static class b extends fti {
+      private final alg a;
+      private final int b;
+      private final int c;
+
+      public b(int $$0, int $$1, int $$2, int $$3, alg $$4, int $$5, int $$6) {
+         super($$0, $$1, $$2, $$3);
+         this.a = $$4;
+         this.b = $$5;
+         this.c = $$6;
+      }
+
+      @Override
+      protected void b(fsh $$0, int $$1, int $$2, float $$3) {
+         $$0.a(gqx::H, this.a, this.F(), this.G(), 0.0F, 0.0F, this.A(), this.y(), this.b, this.c);
+      }
    }
 }

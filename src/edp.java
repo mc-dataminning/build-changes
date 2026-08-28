@@ -1,122 +1,127 @@
 import com.google.common.collect.ImmutableList;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.io.IOException;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.Arrays;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class edp implements eep<bwf> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "Entities";
-   private static final String c = "Position";
-   private final arq d;
-   private final eea e;
-   private final LongSet f = new LongOpenHashSet();
-   private final bst g;
+public record edp(edm a, edk b, edk c, int d, edn e) {
 
-   public edp(eea $$0, arq $$1, Executor $$2) {
-      this.e = $$0;
-      this.d = $$1;
-      this.g = new bst($$2, "entity-deserializer");
+   public int a(edm $$0) {
+      return $$0 == this.a ? 0 : this.c.a($$0);
    }
 
-   @Override
-   public CompletableFuture<eek<bwf>> a(dih $$0) {
-      if (this.f.contains($$0.a())) {
-         return CompletableFuture.completedFuture(b($$0));
+   public CompletableFuture<ecl> a(edr $$0, bai<arg> $$1, ecl $$2) {
+      if ($$2.n().d(this.a)) {
+         brb $$3 = bqy.f.a($$2.f(), $$0.a().aj(), this.a.f());
+         return this.e.doWork($$0, this, $$1, $$2).thenApply($$1x -> this.a($$1x, $$3));
       } else {
-         CompletableFuture<Optional<tz>> $$1 = this.e.a($$0);
-         this.b($$1, $$0);
-         return $$1.thenApplyAsync($$1x -> {
-            if ($$1x.isEmpty()) {
-               this.f.add($$0.a());
-               return b($$0);
-            } else {
-               try {
-                  dih $$2 = a((tz)$$1x.get());
-                  if (!Objects.equals($$0, $$2)) {
-                     a.error("Chunk file at {} is in the wrong location. (Expected {}, got {})", new Object[]{$$0, $$0, $$2});
-                     this.d.p().a($$2, $$0, this.e.a());
-                  }
-               } catch (Exception var6) {
-                  a.warn("Failed to parse chunk {} position info", $$0, var6);
-                  this.d.p().a(var6, this.e.a(), $$0);
-               }
-
-               tz $$4 = this.e.a((tz)$$1x.get(), -1);
-               uf $$5 = $$4.c("Entities", 10);
-               List<bwf> $$6 = bwo.a($$5, this.d, bwn.r).collect(ImmutableList.toImmutableList());
-               return new eek<>($$0, $$6);
-            }
-         }, this.g::a_);
+         return this.e.doWork($$0, this, $$1, $$2);
       }
    }
 
-   private static dih a(tz $$0) {
-      int[] $$1 = $$0.n("Position");
-      return new dih($$1[0], $$1[1]);
+   private ecl a(ecl $$0, @Nullable brb $$1) {
+      if ($$0 instanceof edf $$2 && $$2.n().d(this.a)) {
+         $$2.a(this.a);
+      }
+
+      if ($$1 != null) {
+         $$1.finish(true);
+      }
+
+      return $$0;
    }
 
-   private static void a(tz $$0, dih $$1) {
-      $$0.a("Position", new ud(new int[]{$$1.h, $$1.i}));
-   }
+   public static class a {
+      private final edm a;
+      @Nullable
+      private final edp b;
+      private edm[] c;
+      private int d = -1;
+      private edn e = edo::a;
 
-   private static eek<bwf> b(dih $$0) {
-      return new eek<>($$0, ImmutableList.of());
-   }
-
-   @Override
-   public void a(eek<bwf> $$0) {
-      dih $$1 = $$0.a();
-      if ($$0.c()) {
-         if (this.f.add($$1.a())) {
-            this.a(this.e.a($$1, null), $$1);
+      protected a(edm $$0) {
+         if ($$0.c() != $$0) {
+            throw new IllegalArgumentException("Not starting with the first status: " + $$0);
+         } else {
+            this.a = $$0;
+            this.b = null;
+            this.c = new edm[0];
          }
-      } else {
-         uf $$2 = new uf();
-         $$0.b().forEach($$1x -> {
-            tz $$2x = new tz();
-            if ($$1x.e($$2x)) {
-               $$2.add($$2x);
-            }
-         });
-         tz $$3 = uo.e(new tz());
-         $$3.a("Entities", $$2);
-         a($$3, $$1);
-         this.a(this.e.a($$1, $$3), $$1);
-         this.f.remove($$1.a());
       }
-   }
 
-   private void a(CompletableFuture<?> $$0, dih $$1) {
-      $$0.exceptionally($$1x -> {
-         a.error("Failed to store entity chunk {}", $$1, $$1x);
-         this.d.p().b($$1x, this.e.a(), $$1);
-         return null;
-      });
-   }
+      protected a(edm $$0, edp $$1) {
+         if ($$1.a.b() != $$0.b() - 1) {
+            throw new IllegalArgumentException("Out of order status: " + $$0);
+         } else {
+            this.a = $$0;
+            this.b = $$1;
+            this.c = new edm[]{$$1.a};
+         }
+      }
 
-   private void b(CompletableFuture<?> $$0, dih $$1) {
-      $$0.exceptionally($$1x -> {
-         a.error("Failed to load entity chunk {}", $$1, $$1x);
-         this.d.p().a($$1x, this.e.a(), $$1);
-         return null;
-      });
-   }
+      public edp.a a(edm $$0, int $$1) {
+         if ($$0.a(this.a)) {
+            throw new IllegalArgumentException("Status " + $$0 + " can not be required by " + this.a);
+         } else {
+            edm[] $$2 = this.c;
+            int $$3 = $$1 + 1;
+            if ($$3 > $$2.length) {
+               this.c = new edm[$$3];
+               Arrays.fill(this.c, $$0);
+            }
 
-   @Override
-   public void a(boolean $$0) {
-      this.e.a($$0).join();
-      this.g.a();
-   }
+            for (int $$4 = 0; $$4 < Math.min($$3, $$2.length); $$4++) {
+               this.c[$$4] = edm.a($$2[$$4], $$0);
+            }
 
-   @Override
-   public void close() throws IOException {
-      this.e.close();
+            return this;
+         }
+      }
+
+      public edp.a a(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public edp.a a(edn $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public edp a() {
+         return new edp(this.a, new edk(ImmutableList.copyOf(this.c)), new edk(ImmutableList.copyOf(this.b())), this.d, this.e);
+      }
+
+      private edm[] b() {
+         if (this.b == null) {
+            return this.c;
+         } else {
+            int $$0 = this.a(this.b.a);
+            edk $$1 = this.b.c;
+            edm[] $$2 = new edm[Math.max($$0 + $$1.b(), this.c.length)];
+
+            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+               int $$4 = $$3 - $$0;
+               if ($$4 < 0 || $$4 >= $$1.b()) {
+                  $$2[$$3] = this.c[$$3];
+               } else if ($$3 >= this.c.length) {
+                  $$2[$$3] = $$1.a($$4);
+               } else {
+                  $$2[$$3] = edm.a(this.c[$$3], $$1.a($$4));
+               }
+            }
+
+            return $$2;
+         }
+      }
+
+      private int a(edm $$0) {
+         for (int $$1 = this.c.length - 1; $$1 >= 0; $$1--) {
+            if (this.c[$$1].a($$0)) {
+               return $$1;
+            }
+         }
+
+         return 0;
+      }
    }
 }

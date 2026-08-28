@@ -1,45 +1,17 @@
-public abstract class goi extends gnv {
-   protected hix E;
-
-   protected goi(gjz $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
+public class goi extends gml {
+   protected goi(gkl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gop $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
    }
 
-   protected goi(gjz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
+   public static class a implements gnx<mc> {
+      private final gop a;
 
-   protected void a(hix $$0) {
-      this.E = $$0;
-   }
+      public a(gop $$0) {
+         this.a = $$0;
+      }
 
-   @Override
-   protected float c() {
-      return this.E.c();
-   }
-
-   @Override
-   protected float d() {
-      return this.E.d();
-   }
-
-   @Override
-   protected float e() {
-      return this.E.g();
-   }
-
-   @Override
-   protected float f() {
-      return this.E.h();
-   }
-
-   public void a(god $$0) {
-      this.a($$0.a(this.r));
-   }
-
-   public void b(god $$0) {
-      if (!this.o) {
-         this.a($$0.a(this.s, this.t));
+      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new goi($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
       }
    }
 }

@@ -9,15 +9,15 @@ public interface aqz {
       }
 
       @Override
-      public void a(Consumer<dih> $$0) {
+      public void a(Consumer<dio> $$0) {
       }
    };
 
-   static aqz a(dih $$0, int $$1) {
+   static aqz a(dio $$0, int $$1) {
       return new aqz.a($$0, $$1);
    }
 
-   static void a(aqz $$0, aqz $$1, Consumer<dih> $$2, Consumer<dih> $$3) {
+   static void a(aqz $$0, aqz $$1, Consumer<dio> $$2, Consumer<dio> $$3) {
       if (!$$0.equals($$1)) {
          if ($$0 instanceof aqz.a $$4 && $$1 instanceof aqz.a $$5 && $$4.a($$5)) {
             int $$6 = Math.min($$4.c(), $$5.c());
@@ -31,9 +31,9 @@ public interface aqz {
                   boolean $$13 = $$5.a($$10, $$11);
                   if ($$12 != $$13) {
                      if ($$13) {
-                        $$2.accept(new dih($$10, $$11));
+                        $$2.accept(new dio($$10, $$11));
                      } else {
-                        $$3.accept(new dih($$10, $$11));
+                        $$3.accept(new dio($$10, $$11));
                      }
                   }
                }
@@ -47,7 +47,7 @@ public interface aqz {
       }
    }
 
-   default boolean a(dih $$0) {
+   default boolean a(dio $$0) {
       return this.a($$0.h, $$0.i);
    }
 
@@ -57,7 +57,7 @@ public interface aqz {
 
    boolean a(int var1, int var2, boolean var3);
 
-   void a(Consumer<dih> var1);
+   void a(Consumer<dio> var1);
 
    default boolean b(int $$0, int $$1) {
       return this.a($$0, $$1, false);
@@ -76,7 +76,7 @@ public interface aqz {
       return $$9 < (long)$$10;
    }
 
-   public static record a(dih b, int c) implements aqz {
+   public static record a(dio b, int c) implements aqz {
       int c() {
          return this.b.h - this.c - 1;
       }
@@ -104,17 +104,17 @@ public interface aqz {
       }
 
       @Override
-      public void a(Consumer<dih> $$0) {
+      public void a(Consumer<dio> $$0) {
          for (int $$1 = this.c(); $$1 <= this.e(); $$1++) {
             for (int $$2 = this.d(); $$2 <= this.f(); $$2++) {
                if (this.a($$1, $$2)) {
-                  $$0.accept(new dih($$1, $$2));
+                  $$0.accept(new dio($$1, $$2));
                }
             }
          }
       }
 
-      public dih a() {
+      public dio a() {
          return this.b;
       }
 

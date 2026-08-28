@@ -14,8 +14,8 @@ public class akz {
       return new akz($$0, ".json");
    }
 
-   public static akz a(alf<? extends jr<?>> $$0) {
-      return a(mg.c($$0));
+   public static akz a(alf<? extends js<?>> $$0) {
+      return a(mh.c($$0));
    }
 
    public alg a(alg $$0) {

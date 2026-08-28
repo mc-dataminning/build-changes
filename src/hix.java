@@ -1,121 +1,68 @@
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class hix {
-   private final alg a;
-   private final hir b;
-   final int c;
-   final int d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final float h;
+public class hix extends hiv implements hiw {
+   private static final Logger c = LogUtils.getLogger();
+   @Nullable
+   private fiu d;
 
-   protected hix(alg $$0, hir $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$4;
-      this.d = $$5;
-      this.e = (float)$$4 / (float)$$2;
-      this.f = (float)($$4 + $$1.a()) / (float)$$2;
-      this.g = (float)$$5 / (float)$$3;
-      this.h = (float)($$5 + $$1.b()) / (float)$$3;
+   public hix(Supplier<String> $$0, fiu $$1) {
+      this.d = $$1;
+      this.a = new fjr($$0, fjs.a, this.d.a(), this.d.b(), 1);
+      this.e();
    }
 
-   public int a() {
-      return this.c;
+   public hix(String $$0, int $$1, int $$2, boolean $$3) {
+      this.d = new fiu($$1, $$2, $$3);
+      this.a = new fjr($$0, fjs.a, this.d.a(), this.d.b(), 1);
    }
 
-   public int b() {
-      return this.d;
+   public hix(Supplier<String> $$0, int $$1, int $$2, boolean $$3) {
+      this.d = new fiu($$1, $$2, $$3);
+      this.a = new fjr($$0, fjs.a, this.d.a(), this.d.b(), 1);
    }
 
-   public float c() {
-      return this.e;
-   }
-
-   public float d() {
-      return this.f;
-   }
-
-   public hir e() {
-      return this.b;
+   public void e() {
+      if (this.d != null && this.a != null) {
+         this.a.a(this.d);
+      } else {
+         c.warn("Trying to upload disposed texture {}", this.d().e());
+      }
    }
 
    @Nullable
-   public hix.a f() {
-      final hit $$0 = this.b.e();
-      return $$0 != null ? new hix.a() {
-         @Override
-         public void a() {
-            $$0.a(hix.this.c, hix.this.d);
-         }
-
-         @Override
-         public void close() {
-            $$0.close();
-         }
-      } : null;
+   public fiu f() {
+      return this.d;
    }
 
-   public float a(float $$0) {
-      float $$1 = this.f - this.e;
-      return this.e + $$1 * $$0;
-   }
+   public void a(fiu $$0) {
+      if (this.d != null) {
+         this.d.close();
+      }
 
-   public float b(float $$0) {
-      float $$1 = this.f - this.e;
-      return ($$0 - this.e) / $$1;
-   }
-
-   public float g() {
-      return this.g;
-   }
-
-   public float h() {
-      return this.h;
-   }
-
-   public float c(float $$0) {
-      float $$1 = this.h - this.g;
-      return this.g + $$1 * $$0;
-   }
-
-   public float d(float $$0) {
-      float $$1 = this.h - this.g;
-      return ($$0 - this.g) / $$1;
-   }
-
-   public alg i() {
-      return this.a;
+      this.d = $$0;
    }
 
    @Override
-   public String toString() {
-      return "TextureAtlasSprite{contents='" + this.b + "', u0=" + this.e + ", u1=" + this.f + ", v0=" + this.g + ", v1=" + this.h + "}";
+   public void close() {
+      if (this.d != null) {
+         this.d.close();
+         this.d = null;
+      }
+
+      super.close();
    }
 
-   public void j() {
-      this.b.a(this.c, this.d);
-   }
-
-   private float l() {
-      float $$0 = (float)this.b.a() / (this.f - this.e);
-      float $$1 = (float)this.b.b() / (this.h - this.g);
-      return Math.max($$1, $$0);
-   }
-
-   public float k() {
-      return 4.0F / this.l();
-   }
-
-   public fjn a(fjn $$0) {
-      return new gqy($$0, this);
-   }
-
-   public interface a extends AutoCloseable {
-      void a();
-
-      @Override
-      void close();
+   @Override
+   public void a(alg $$0, Path $$1) throws IOException {
+      if (this.d != null) {
+         String $$2 = $$0.c() + ".png";
+         Path $$3 = $$1.resolve($$2);
+         this.d.a($$3);
+      }
    }
 }

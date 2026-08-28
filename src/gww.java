@@ -1,20 +1,27 @@
-public class gww extends guw<cpl> {
-   private static final alg a = alg.b("textures/entity/hoglin/hoglin.png");
+public class gww<T extends cov> extends gxm<T, hdc> {
+   private static final alg a = alg.b("textures/entity/illager/evoker.png");
 
-   public gww(gwh.a $$0) {
-      super($$0, gjb.bk, gjb.bl, 0.7F);
+   public gww(gwt.a $$0) {
+      super($$0, new ggz<>($$0.a(gjn.aV)), 0.5F);
+      this.a(new haz<hdc, ggz<hdc>>(this) {
+         public void a(fjy $$0, gqm $$1, int $$2, hdc $$3, float $$4, float $$5) {
+            if ($$3.a) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5);
+            }
+         }
+      });
    }
 
-   public alg a(hdb $$0) {
+   public alg a(hdc $$0) {
       return a;
    }
 
-   public void a(cpl $$0, hdb $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.b = $$0.gr();
+   public hdc b() {
+      return new hdc();
    }
 
-   protected boolean b(hdb $$0) {
-      return super.a($$0) || $$0.b;
+   public void a(T $$0, hdc $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gA();
    }
 }

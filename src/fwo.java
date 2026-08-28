@@ -1,45 +1,61 @@
-import it.unimi.dsi.fastutil.ints.IntComparator;
+import java.util.function.Consumer;
 
-public enum fwo {
-   a,
-   b,
-   c,
-   d;
+public class fwo implements fwl {
+   private int a;
+   private int b;
+   private final int c;
+   private final int d;
 
-   private final IntComparator e = ($$0, $$1) -> $$0 == $$1 ? 0 : (this.b($$0, $$1) ? -1 : 1);
-
-   public fwn a() {
-      return switch (this) {
-         case a, b -> fwn.b;
-         case c, d -> fwn.a;
-      };
+   public fwo(int $$0, int $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   public fwo b() {
-      return switch (this) {
-         case a -> b;
-         case b -> a;
-         case c -> d;
-         case d -> c;
-      };
+   public fwo(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public boolean c() {
-      return switch (this) {
-         case a, c -> false;
-         case b, d -> true;
-      };
+   public static fwo a(int $$0) {
+      return new fwo($$0, 0);
    }
 
-   public boolean a(int $$0, int $$1) {
-      return this.c() ? $$0 > $$1 : $$1 > $$0;
+   public static fwo b(int $$0) {
+      return new fwo(0, $$0);
    }
 
-   public boolean b(int $$0, int $$1) {
-      return this.c() ? $$0 < $$1 : $$1 < $$0;
+   @Override
+   public void j(int $$0) {
+      this.a = $$0;
    }
 
-   public IntComparator d() {
-      return this.e;
+   @Override
+   public void k(int $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public int F() {
+      return this.a;
+   }
+
+   @Override
+   public int G() {
+      return this.b;
+   }
+
+   @Override
+   public int A() {
+      return this.c;
+   }
+
+   @Override
+   public int y() {
+      return this.d;
+   }
+
+   @Override
+   public void a(Consumer<fst> $$0) {
    }
 }

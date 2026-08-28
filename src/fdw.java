@@ -1,16 +1,48 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 
-public class fdw {
-   private static final Codec<fdv> d = mf.I.q().dispatch(fdv::a, fdu::a);
-   public static final Codec<fdv> a = Codec.lazyInitialized(
-      () -> Codec.either(fds.b, d).xmap(Either::unwrap, $$0 -> $$0 instanceof fds $$1 ? Either.left($$1) : Either.right($$0))
+public record fdw(alg b, fb.g c) implements fdt {
+   public static final MapCodec<fdw> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(alg.a.fieldOf("storage").forGetter(fdw::c), fb.g.a.fieldOf("path").forGetter(fdw::d)).apply($$0, fdw::new)
    );
-   public static final fdu b = a("fixed", fdt.a);
-   public static final fdu c = a("context", fds.a);
 
-   private static fdu a(String $$0, MapCodec<? extends fdv> $$1) {
-      return jr.a(mf.I, alg.b($$0), new fdu($$1));
+   @Override
+   public fds b() {
+      return fdu.f;
+   }
+
+   private Optional<up> c(ezo $$0) {
+      tz $$1 = $$0.d().p().aK().a(this.b);
+
+      try {
+         List<uw> $$2 = this.c.a($$1);
+         if ($$2.size() == 1 && $$2.get(0) instanceof up $$3) {
+            return Optional.of($$3);
+         }
+      } catch (CommandSyntaxException var6) {
+      }
+
+      return Optional.empty();
+   }
+
+   @Override
+   public float b(ezo $$0) {
+      return this.c($$0).map(up::k).orElse(0.0F);
+   }
+
+   @Override
+   public int a(ezo $$0) {
+      return this.c($$0).map(up::g).orElse(0);
+   }
+
+   public alg c() {
+      return this.b;
+   }
+
+   public fb.g d() {
+      return this.c;
    }
 }

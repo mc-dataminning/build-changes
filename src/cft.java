@@ -1,68 +1,99 @@
 import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class cft<T extends bxe> extends cga {
-   private static final int i = 10;
-   protected final Class<T> a;
-   protected final int b;
-   @Nullable
-   protected bxe c;
-   protected cht d;
+public class cft extends cef {
+   private final cef a;
+   private final int b;
+   private boolean c;
 
-   public cft(bxg $$0, Class<T> $$1, boolean $$2) {
-      this($$0, $$1, 10, $$2, false, null);
-   }
-
-   public cft(bxg $$0, Class<T> $$1, boolean $$2, cht.a $$3) {
-      this($$0, $$1, 10, $$2, false, $$3);
-   }
-
-   public cft(bxg $$0, Class<T> $$1, boolean $$2, boolean $$3) {
-      this($$0, $$1, 10, $$2, $$3, null);
-   }
-
-   public cft(bxg $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable cht.a $$5) {
-      super($$0, $$3, $$4);
+   public cft(int $$0, cef $$1) {
+      this.b = $$0;
       this.a = $$1;
-      this.b = b($$2);
-      this.a(EnumSet.of(cea.a.d));
-      this.d = cht.a().a(this.l()).a($$5);
+   }
+
+   public boolean a(cft $$0) {
+      return this.Q_() && $$0.i() < this.i();
    }
 
    @Override
    public boolean b() {
-      if (this.b > 0 && this.e.dY().a(this.b) != 0) {
-         return false;
-      } else {
-         this.h();
-         return this.c != null;
-      }
+      return this.a.b();
    }
 
-   protected fel a(double $$0) {
-      return this.e.cR().c($$0, $$0, $$0);
+   @Override
+   public boolean c() {
+      return this.a.c();
    }
 
-   protected void h() {
-      arq $$0 = a(this.e);
-      if (this.a != crc.class && this.a != arr.class) {
-         this.c = $$0.a(this.e.dV().a(this.a, this.a(this.l()), $$0x -> true), this.i(), this.e, this.e.dA(), this.e.dE(), this.e.dG());
-      } else {
-         this.c = $$0.a(this.i(), this.e, this.e.dA(), this.e.dE(), this.e.dG());
-      }
+   @Override
+   public boolean Q_() {
+      return this.a.Q_();
    }
 
    @Override
    public void d() {
-      this.e.g(this.c);
-      super.d();
+      if (!this.c) {
+         this.c = true;
+         this.a.d();
+      }
    }
 
-   public void a(@Nullable bxe $$0) {
-      this.c = $$0;
+   @Override
+   public void e() {
+      if (this.c) {
+         this.c = false;
+         this.a.e();
+      }
    }
 
-   private cht i() {
-      return this.d.a(this.l());
+   @Override
+   public boolean R_() {
+      return this.a.R_();
+   }
+
+   @Override
+   protected int a(int $$0) {
+      return this.a.a($$0);
+   }
+
+   @Override
+   public void a() {
+      this.a.a();
+   }
+
+   @Override
+   public void a(EnumSet<cef.a> $$0) {
+      this.a.a($$0);
+   }
+
+   @Override
+   public EnumSet<cef.a> j() {
+      return this.a.j();
+   }
+
+   public boolean h() {
+      return this.c;
+   }
+
+   public int i() {
+      return this.b;
+   }
+
+   public cef k() {
+      return this.a;
+   }
+
+   @Override
+   public boolean equals(@Nullable Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? this.a.equals(((cft)$$0).a) : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
    }
 }

@@ -1,358 +1,40 @@
-import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.Applicative;
-import com.mojang.datafixers.kinds.IdF;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.OptionalBox;
-import com.mojang.datafixers.kinds.OptionalBox.Mu;
-import com.mojang.datafixers.util.Function3;
-import com.mojang.datafixers.util.Function4;
-import com.mojang.datafixers.util.Unit;
-import java.util.Optional;
-import java.util.function.BiFunction;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
 
-public class cci<E extends bxe, M> implements App<cci.c<E>, M> {
-   private final cci.e<E, M> a;
-
-   public static <E extends bxe, M> cci<E, M> a(App<cci.c<E>, M> $$0) {
-      return (cci<E, M>)$$0;
+public class cci extends bza<cqv> {
+   public cci() {
+      super(ImmutableMap.of());
    }
 
-   public static <E extends bxe> cci.b<E> a() {
-      return new cci.b<>();
+   protected boolean a(arq $$0, cqv $$1, long $$2) {
+      return c($$1) || b($$1);
    }
 
-   public static <E extends bxe> cag<E> a(Function<cci.b<E>, ? extends App<cci.c<E>, ccl<E>>> $$0) {
-      final cci.e<E, ccl<E>> $$1 = b((App<cci.c<E>, ccl<E>>)$$0.apply(a()));
-      return new cag<E>() {
-         @Override
-         public boolean trigger(arq $$0, E $$1x, long $$2) {
-            ccl<E> $$3 = $$1.a($$0, $$1, $$2);
-            return $$3 == null ? false : $$3.trigger($$0, $$1, $$2);
+   protected void b(arq $$0, cqv $$1, long $$2) {
+      if (c($$1) || b($$1)) {
+         byj<?> $$3 = $$1.eb();
+         if (!$$3.c(ctd.g)) {
+            $$3.b(cgl.u);
+            $$3.b(cgl.n);
+            $$3.b(cgl.o);
+            $$3.b(cgl.s);
+            $$3.b(cgl.r);
          }
 
-         @Override
-         public String b() {
-            return "OneShot[" + $$1.a() + "]";
-         }
-
-         @Override
-         public String toString() {
-            return this.b();
-         }
-      };
-   }
-
-   public static <E extends bxe> cag<E> a(ccl<? super E> $$0, ccl<? super E> $$1) {
-      return a((Function<cci.b<E>, ? extends App<cci.c<E>, ccl<E>>>)($$2 -> $$2.group($$2.a($$0)).apply($$2, $$1xx -> $$1::trigger)));
-   }
-
-   public static <E extends bxe> cag<E> a(Predicate<E> $$0, cag<? super E> $$1) {
-      return a(a($$0), $$1);
-   }
-
-   public static <E extends bxe> cag<E> a(Predicate<E> $$0) {
-      return a((Function<cci.b<E>, ? extends App<cci.c<E>, ccl<E>>>)($$1 -> $$1.a((ccl<E>)(($$1x, $$2, $$3) -> $$0.test($$2)))));
-   }
-
-   public static <E extends bxe> cag<E> a(BiPredicate<arq, E> $$0) {
-      return a((Function<cci.b<E>, ? extends App<cci.c<E>, ccl<E>>>)($$1 -> $$1.a((ccl<E>)(($$1x, $$2, $$3) -> $$0.test($$1x, $$2)))));
-   }
-
-   static <E extends bxe, M> cci.e<E, M> b(App<cci.c<E>, M> $$0) {
-      return a($$0).a;
-   }
-
-   cci(cci.e<E, M> $$0) {
-      this.a = $$0;
-   }
-
-   static <E extends bxe, M> cci<E, M> a(cci.e<E, M> $$0) {
-      return new cci<>($$0);
-   }
-
-   static final class a<E extends bxe, A> extends cci<E, A> {
-      a(A $$0) {
-         this($$0, () -> "C[" + $$0 + "]");
-      }
-
-      a(final A $$0, final Supplier<String> $$1) {
-         super(new cci.e<E, A>() {
-            @Override
-            public A a(arq $$0x, E $$1x, long $$2) {
-               return $$0;
-            }
-
-            @Override
-            public String a() {
-               return $$1.get();
-            }
-
-            @Override
-            public String toString() {
-               return this.a();
-            }
-         });
+         $$3.a(ctd.g);
       }
    }
 
-   public static final class b<E extends bxe> implements Applicative<cci.c<E>, cci.b.a<E>> {
-      public <Value> Optional<Value> a(ccj<Mu, Value> $$0) {
-         return OptionalBox.unbox($$0.a());
-      }
-
-      public <Value> Value b(ccj<com.mojang.datafixers.kinds.IdF.Mu, Value> $$0) {
-         return (Value)IdF.get($$0.a());
-      }
-
-      public <Value> cci<E, ccj<Mu, Value>> a(cgg<Value> $$0) {
-         return new cci.d<>(new cck.c<>($$0));
-      }
-
-      public <Value> cci<E, ccj<com.mojang.datafixers.kinds.IdF.Mu, Value>> b(cgg<Value> $$0) {
-         return new cci.d<>(new cck.b<>($$0));
-      }
-
-      public <Value> cci<E, ccj<com.mojang.datafixers.kinds.Const.Mu<Unit>, Value>> c(cgg<Value> $$0) {
-         return new cci.d<>(new cck.a<>($$0));
-      }
-
-      public cci<E, Unit> a(ccl<? super E> $$0) {
-         return new cci.f<>($$0);
-      }
-
-      public <A> cci<E, A> a(A $$0) {
-         return new cci.a<>($$0);
-      }
-
-      public <A> cci<E, A> a(Supplier<String> $$0, A $$1) {
-         return new cci.a<>($$1, $$0);
-      }
-
-      public <A, R> Function<App<cci.c<E>, A>, App<cci.c<E>, R>> lift1(App<cci.c<E>, Function<A, R>> $$0) {
-         return $$1 -> {
-            final cci.e<E, A> $$2 = (cci.e<E, A>)cci.b((App<cci.c<E>, M>)$$1);
-            final cci.e<E, Function<A, R>> $$3 = cci.b($$0);
-            return cci.a(new cci.e<E, R>() {
-               @Override
-               public R a(arq $$0, E $$1, long $$2x) {
-                  A $$3 = (A)$$2.a($$0, $$1, $$2);
-                  if ($$3 == null) {
-                     return null;
-                  } else {
-                     Function<A, R> $$4 = (Function<A, R>)$$3.a($$0, $$1, $$2);
-                     return (R)($$4 == null ? null : $$4.apply($$3));
-                  }
-               }
-
-               @Override
-               public String a() {
-                  return $$3.a() + " * " + $$2.a();
-               }
-
-               @Override
-               public String toString() {
-                  return this.a();
-               }
-            });
-         };
-      }
-
-      public <T, R> cci<E, R> a(final Function<? super T, ? extends R> $$0, App<cci.c<E>, T> $$1) {
-         final cci.e<E, T> $$2 = (cci.e<E, T>)cci.b((App<cci.c<E>, M>)$$1);
-         return cci.a(new cci.e<E, R>() {
-            @Override
-            public R a(arq $$0x, E $$1, long $$2x) {
-               T $$3 = $$2.a($$0, $$1, $$2);
-               return (R)($$3 == null ? null : $$0.apply($$3));
-            }
-
-            @Override
-            public String a() {
-               return $$2.a() + ".map[" + $$0 + "]";
-            }
-
-            @Override
-            public String toString() {
-               return this.a();
-            }
-         });
-      }
-
-      public <A, B, R> cci<E, R> a(App<cci.c<E>, BiFunction<A, B, R>> $$0, App<cci.c<E>, A> $$1, App<cci.c<E>, B> $$2) {
-         final cci.e<E, A> $$3 = (cci.e<E, A>)cci.b((App<cci.c<E>, M>)$$1);
-         final cci.e<E, B> $$4 = (cci.e<E, B>)cci.b((App<cci.c<E>, M>)$$2);
-         final cci.e<E, BiFunction<A, B, R>> $$5 = cci.b($$0);
-         return cci.a(new cci.e<E, R>() {
-            @Override
-            public R a(arq $$0, E $$1, long $$2) {
-               A $$3 = $$3.a($$0, $$1, $$2);
-               if ($$3 == null) {
-                  return null;
-               } else {
-                  B $$4 = $$4.a($$0, $$1, $$2);
-                  if ($$4 == null) {
-                     return null;
-                  } else {
-                     BiFunction<A, B, R> $$5 = $$5.a($$0, $$1, $$2);
-                     return $$5 == null ? null : $$5.apply($$3, $$4);
-                  }
-               }
-            }
-
-            @Override
-            public String a() {
-               return $$5.a() + " * " + $$3.a() + " * " + $$4.a();
-            }
-
-            @Override
-            public String toString() {
-               return this.a();
-            }
-         });
-      }
-
-      public <T1, T2, T3, R> cci<E, R> a(App<cci.c<E>, Function3<T1, T2, T3, R>> $$0, App<cci.c<E>, T1> $$1, App<cci.c<E>, T2> $$2, App<cci.c<E>, T3> $$3) {
-         final cci.e<E, T1> $$4 = (cci.e<E, T1>)cci.b((App<cci.c<E>, M>)$$1);
-         final cci.e<E, T2> $$5 = (cci.e<E, T2>)cci.b((App<cci.c<E>, M>)$$2);
-         final cci.e<E, T3> $$6 = (cci.e<E, T3>)cci.b((App<cci.c<E>, M>)$$3);
-         final cci.e<E, Function3<T1, T2, T3, R>> $$7 = cci.b($$0);
-         return cci.a(new cci.e<E, R>() {
-            @Override
-            public R a(arq $$0, E $$1, long $$2) {
-               T1 $$3 = $$4.a($$0, $$1, $$2);
-               if ($$3 == null) {
-                  return null;
-               } else {
-                  T2 $$4 = $$5.a($$0, $$1, $$2);
-                  if ($$4 == null) {
-                     return null;
-                  } else {
-                     T3 $$5 = $$6.a($$0, $$1, $$2);
-                     if ($$5 == null) {
-                        return null;
-                     } else {
-                        Function3<T1, T2, T3, R> $$6 = $$7.a($$0, $$1, $$2);
-                        return (R)($$6 == null ? null : $$6.apply($$3, $$4, $$5));
-                     }
-                  }
-               }
-            }
-
-            @Override
-            public String a() {
-               return $$7.a() + " * " + $$4.a() + " * " + $$5.a() + " * " + $$6.a();
-            }
-
-            @Override
-            public String toString() {
-               return this.a();
-            }
-         });
-      }
-
-      public <T1, T2, T3, T4, R> cci<E, R> a(
-         App<cci.c<E>, Function4<T1, T2, T3, T4, R>> $$0, App<cci.c<E>, T1> $$1, App<cci.c<E>, T2> $$2, App<cci.c<E>, T3> $$3, App<cci.c<E>, T4> $$4
-      ) {
-         final cci.e<E, T1> $$5 = (cci.e<E, T1>)cci.b((App<cci.c<E>, M>)$$1);
-         final cci.e<E, T2> $$6 = (cci.e<E, T2>)cci.b((App<cci.c<E>, M>)$$2);
-         final cci.e<E, T3> $$7 = (cci.e<E, T3>)cci.b((App<cci.c<E>, M>)$$3);
-         final cci.e<E, T4> $$8 = (cci.e<E, T4>)cci.b((App<cci.c<E>, M>)$$4);
-         final cci.e<E, Function4<T1, T2, T3, T4, R>> $$9 = cci.b($$0);
-         return cci.a(new cci.e<E, R>() {
-            @Override
-            public R a(arq $$0, E $$1, long $$2) {
-               T1 $$3 = $$5.a($$0, $$1, $$2);
-               if ($$3 == null) {
-                  return null;
-               } else {
-                  T2 $$4 = $$6.a($$0, $$1, $$2);
-                  if ($$4 == null) {
-                     return null;
-                  } else {
-                     T3 $$5 = $$7.a($$0, $$1, $$2);
-                     if ($$5 == null) {
-                        return null;
-                     } else {
-                        T4 $$6 = $$8.a($$0, $$1, $$2);
-                        if ($$6 == null) {
-                           return null;
-                        } else {
-                           Function4<T1, T2, T3, T4, R> $$7 = $$9.a($$0, $$1, $$2);
-                           return (R)($$7 == null ? null : $$7.apply($$3, $$4, $$5, $$6));
-                        }
-                     }
-                  }
-               }
-            }
-
-            @Override
-            public String a() {
-               return $$9.a() + " * " + $$5.a() + " * " + $$6.a() + " * " + $$7.a() + " * " + $$8.a();
-            }
-
-            @Override
-            public String toString() {
-               return this.a();
-            }
-         });
-      }
-
-      static final class a<E extends bxe> implements com.mojang.datafixers.kinds.Applicative.Mu {
-         private a() {
-         }
+   protected void c(arq $$0, cqv $$1, long $$2) {
+      if ($$2 % 100L == 0L) {
+         $$1.a($$0, $$2, 3);
       }
    }
 
-   public static final class c<E extends bxe> implements K1 {
+   public static boolean b(bxj $$0) {
+      return $$0.eb().a(cgl.B);
    }
 
-   static final class d<E extends bxe, F extends K1, Value> extends cci<E, ccj<F, Value>> {
-      d(final cck<F, Value> $$0) {
-         super(new cci.e<E, ccj<F, Value>>() {
-            public ccj<F, Value> b(arq $$0x, E $$1, long $$2) {
-               bye<?> $$3 = $$1.ec();
-               Optional<Value> $$4 = $$3.d($$0.a());
-               return $$4 == null ? null : $$0.a($$3, $$4);
-            }
-
-            @Override
-            public String a() {
-               return "M[" + $$0 + "]";
-            }
-
-            @Override
-            public String toString() {
-               return this.a();
-            }
-         });
-      }
-   }
-
-   interface e<E extends bxe, R> {
-      @Nullable
-      R a(arq var1, E var2, long var3);
-
-      String a();
-   }
-
-   static final class f<E extends bxe> extends cci<E, Unit> {
-      f(final ccl<? super E> $$0) {
-         super(new cci.e<E, Unit>() {
-            @Nullable
-            public Unit b(arq $$0x, E $$1, long $$2) {
-               return $$0.trigger($$0, $$1, $$2) ? Unit.INSTANCE : null;
-            }
-
-            @Override
-            public String a() {
-               return "T[" + $$0 + "]";
-            }
-         });
-      }
+   public static boolean c(bxj $$0) {
+      return $$0.eb().a(cgl.y);
    }
 }

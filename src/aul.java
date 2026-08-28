@@ -7,7 +7,7 @@ public enum aul {
    private final wy e;
 
    private aul(final String $$0) {
-      this.d = wy.c("pack.incompatible." + $$0).a(n.h);
+      this.d = wy.c("pack.incompatible." + $$0).a(o.h);
       this.e = wy.c("pack.incompatible.confirm." + $$0);
    }
 

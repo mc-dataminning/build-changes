@@ -1,41 +1,18 @@
-public class bzf implements byw<bxe> {
-   private final int a;
-   private final int b;
-   private byv.a c = byv.a.a;
-   private long d;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-   public bzf(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   @Override
-   public byv.a a() {
-      return this.c;
-   }
-
-   @Override
-   public final boolean e(arq $$0, bxe $$1, long $$2) {
-      this.c = byv.a.b;
-      int $$3 = this.a + $$0.C_().a(this.b + 1 - this.a);
-      this.d = $$2 + (long)$$3;
-      return true;
-   }
-
-   @Override
-   public final void f(arq $$0, bxe $$1, long $$2) {
-      if ($$2 > this.d) {
-         this.g($$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   public final void g(arq $$0, bxe $$1, long $$2) {
-      this.c = byv.a.a;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+public class bzf {
+   public static <E extends bxj, T> bzb<E> a(Predicate<E> $$0, cgl<? extends T> $$1, cgl<T> $$2, btr $$3) {
+      return ccn.a(
+         (Function<ccn.b<E>, ? extends App<ccn.c<E>, ccq<E>>>)($$4 -> $$4.group($$4.b($$1), $$4.c($$2)).apply($$4, ($$3xx, $$4x) -> ($$5, $$6, $$7) -> {
+                  if (!$$0.test((E)$$6)) {
+                     return false;
+                  } else {
+                     $$4x.a($$4.b($$3xx), (long)$$3.a($$5.A));
+                     return true;
+                  }
+               }))
+      );
    }
 }

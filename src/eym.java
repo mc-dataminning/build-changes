@@ -1,97 +1,52 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-
 public class eym {
-   private static final String a = "command_storage_";
-   private final Map<String, eym.a> b = new HashMap<>();
-   private final eyp c;
+   private static final int J = 12741452;
+   public static final jf<eyl> a = a("player", "player", false, true);
+   public static final jf<eyl> b = a("frame", "frame", true, true);
+   public static final jf<eyl> c = a("red_marker", "red_marker", false, true);
+   public static final jf<eyl> d = a("blue_marker", "blue_marker", false, true);
+   public static final jf<eyl> e = a("target_x", "target_x", true, false);
+   public static final jf<eyl> f = a("target_point", "target_point", true, false);
+   public static final jf<eyl> g = a("player_off_map", "player_off_map", false, true);
+   public static final jf<eyl> h = a("player_off_limits", "player_off_limits", false, true);
+   public static final jf<eyl> i = a("mansion", "woodland_mansion", true, 5393476, false, true);
+   public static final jf<eyl> j = a("monument", "ocean_monument", true, 3830373, false, true);
+   public static final jf<eyl> k = a("banner_white", "white_banner", true, true);
+   public static final jf<eyl> l = a("banner_orange", "orange_banner", true, true);
+   public static final jf<eyl> m = a("banner_magenta", "magenta_banner", true, true);
+   public static final jf<eyl> n = a("banner_light_blue", "light_blue_banner", true, true);
+   public static final jf<eyl> o = a("banner_yellow", "yellow_banner", true, true);
+   public static final jf<eyl> p = a("banner_lime", "lime_banner", true, true);
+   public static final jf<eyl> q = a("banner_pink", "pink_banner", true, true);
+   public static final jf<eyl> r = a("banner_gray", "gray_banner", true, true);
+   public static final jf<eyl> s = a("banner_light_gray", "light_gray_banner", true, true);
+   public static final jf<eyl> t = a("banner_cyan", "cyan_banner", true, true);
+   public static final jf<eyl> u = a("banner_purple", "purple_banner", true, true);
+   public static final jf<eyl> v = a("banner_blue", "blue_banner", true, true);
+   public static final jf<eyl> w = a("banner_brown", "brown_banner", true, true);
+   public static final jf<eyl> x = a("banner_green", "green_banner", true, true);
+   public static final jf<eyl> y = a("banner_red", "red_banner", true, true);
+   public static final jf<eyl> z = a("banner_black", "black_banner", true, true);
+   public static final jf<eyl> A = a("red_x", "red_x", true, false);
+   public static final jf<eyl> B = a("village_desert", "desert_village", true, ewz.w.ak, false, true);
+   public static final jf<eyl> C = a("village_plains", "plains_village", true, ewz.w.ak, false, true);
+   public static final jf<eyl> D = a("village_savanna", "savanna_village", true, ewz.w.ak, false, true);
+   public static final jf<eyl> E = a("village_snowy", "snowy_village", true, ewz.w.ak, false, true);
+   public static final jf<eyl> F = a("village_taiga", "taiga_village", true, ewz.w.ak, false, true);
+   public static final jf<eyl> G = a("jungle_temple", "jungle_temple", true, ewz.w.ak, false, true);
+   public static final jf<eyl> H = a("swamp_hut", "swamp_hut", true, ewz.w.ak, false, true);
+   public static final jf<eyl> I = a("trial_chambers", "trial_chambers", true, 12741452, false, true);
 
-   public eym(eyp $$0) {
-      this.c = $$0;
+   public static jf<eyl> a(js<eyl> $$0) {
+      return a;
    }
 
-   public tz a(alg $$0) {
-      eym.a $$1 = this.a($$0.b());
-      return $$1 != null ? $$1.b($$0.a()) : new tz();
+   private static jf<eyl> a(String $$0, String $$1, boolean $$2, boolean $$3) {
+      return a($$0, $$1, $$2, -1, $$3, false);
    }
 
-   @Nullable
-   private eym.a a(String $$0) {
-      eym.a $$1 = this.b.get($$0);
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         eym.a $$2 = this.c.b(eym.a.a($$0));
-         if ($$2 != null) {
-            this.b.put($$0, $$2);
-         }
-
-         return $$2;
-      }
-   }
-
-   private eym.a b(String $$0) {
-      eym.a $$1 = this.b.get($$0);
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         eym.a $$2 = this.c.a(eym.a.a($$0));
-         this.b.put($$0, $$2);
-         return $$2;
-      }
-   }
-
-   public void a(alg $$0, tz $$1) {
-      this.b($$0.b()).a($$0.a(), $$1);
-   }
-
-   public Stream<alg> a() {
-      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().c($$0.getKey()));
-   }
-
-   static String c(String $$0) {
-      return "command_storage_" + $$0;
-   }
-
-   static class a extends eya {
-      public static final Codec<eym.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.unboundedMap(ayu.C, tz.a).fieldOf("contents").forGetter($$0x -> $$0x.b)).apply($$0, eym.a::new)
-      );
-      private final Map<String, tz> b;
-
-      private a(Map<String, tz> $$0) {
-         this.b = new HashMap<>($$0);
-      }
-
-      private a() {
-         this(new HashMap<>());
-      }
-
-      public static eyb<eym.a> a(String $$0) {
-         return new eyb<>(eym.c($$0), eym.a::new, a, bbb.h);
-      }
-
-      public tz b(String $$0) {
-         tz $$1 = this.b.get($$0);
-         return $$1 != null ? $$1 : new tz();
-      }
-
-      public void a(String $$0, tz $$1) {
-         if ($$1.g()) {
-            this.b.remove($$0);
-         } else {
-            this.b.put($$0, $$1);
-         }
-
-         this.f();
-      }
-
-      public Stream<alg> c(String $$0) {
-         return this.b.keySet().stream().map($$1 -> alg.a($$0, $$1));
-      }
+   private static jf<eyl> a(String $$0, String $$1, boolean $$2, int $$3, boolean $$4, boolean $$5) {
+      alf<eyl> $$6 = alf.a(mh.R, alg.b($$0));
+      eyl $$7 = new eyl(alg.b($$1), $$2, $$3, $$5, $$4);
+      return js.b(mg.ap, $$6, $$7);
    }
 }

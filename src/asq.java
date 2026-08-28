@@ -24,14 +24,14 @@ public abstract class asq implements zy {
    public asq(MinecraftServer $$0, vr $$1, asg $$2) {
       this.d = $$0;
       this.e = $$1;
-      this.j = af.c();
+      this.j = ag.c();
       this.o = $$2.b();
       this.i = $$2.d();
    }
 
    private void l() {
       if (!this.n) {
-         this.m = af.c();
+         this.m = ag.c();
          this.n = true;
       }
    }
@@ -45,7 +45,7 @@ public abstract class asq implements zy {
    }
 
    @Override
-   public void a(zf $$0, Exception $$1) throws z {
+   public void a(zf $$0, Exception $$1) throws aa {
       zy.super.a($$0, $$1);
       this.d.a($$1, $$0.a());
    }
@@ -53,7 +53,7 @@ public abstract class asq implements zy {
    @Override
    public void a(aab $$0) {
       if (this.k && $$0.b() == this.l) {
-         int $$1 = (int)(af.c() - this.j);
+         int $$1 = (int)(ag.c() - this.j);
          this.o = (this.o * 3 + $$1) / 4;
          this.k = false;
       } else if (!this.h()) {
@@ -84,8 +84,8 @@ public abstract class asq implements zy {
    }
 
    protected void e() {
-      bqn.a().a("keepAlive");
-      long $$0 = af.c();
+      bqp.a().a("keepAlive");
+      long $$0 = ag.c();
       if (!this.h() && $$0 - this.j >= 15000L) {
          if (this.k) {
             this.a(h);
@@ -97,7 +97,7 @@ public abstract class asq implements zy {
          }
       }
 
-      bqn.a().c();
+      bqp.a().c();
    }
 
    private boolean a(long $$0) {
@@ -135,10 +135,10 @@ public abstract class asq implements zy {
       try {
          this.e.a($$0, $$1, $$2);
       } catch (Throwable var7) {
-         o $$4 = o.a(var7, "Sending packet");
-         p $$5 = $$4.a("Packet being sent");
+         p $$4 = p.a(var7, "Sending packet");
+         q $$5 = $$4.a("Packet being sent");
          $$5.a("Packet class", () -> $$0.getClass().getCanonicalName());
-         throw new z($$4);
+         throw new aa($$4);
       }
    }
 

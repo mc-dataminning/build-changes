@@ -1,103 +1,69 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import javax.annotation.Nullable;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWMonitorCallback;
-import org.slf4j.Logger;
-
 public class fil {
-   private static final Logger a = LogUtils.getLogger();
-   private final Long2ObjectMap<fii> b = new Long2ObjectOpenHashMap();
-   private final fij c;
+   private static final int a = 60;
+   private static final int b = 10;
+   private static final int c = 30;
+   private static final int d = 10;
+   private static final long e = 60000L;
+   private static final long f = 600000L;
+   private final fps g;
+   private final fpo h;
+   private int i;
+   private long j;
 
-   public fil(fij $$0) {
-      this.c = $$0;
-      GLFW.glfwSetMonitorCallback(this::a);
-      PointerBuffer $$1 = GLFW.glfwGetMonitors();
-      if ($$1 != null) {
-         for (int $$2 = 0; $$2 < $$1.limit(); $$2++) {
-            long $$3 = $$1.get($$2);
-            this.b.put($$3, $$0.createMonitor($$3));
-         }
-      }
+   public fil(fps $$0, fpo $$1) {
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$0.h().c();
    }
 
-   private void a(long $$0, int $$1) {
-      RenderSystem.assertOnRenderThread();
-      if ($$1 == 262145) {
-         this.b.put($$0, this.c.createMonitor($$0));
-         a.debug("Monitor {} connected. Current monitors: {}", $$0, this.b);
-      } else if ($$1 == 262146) {
-         this.b.remove($$0);
-         a.debug("Monitor {} disconnected. Current monitors: {}", $$0, this.b);
-      }
+   public int a() {
+      return switch (this.b()) {
+         case a -> this.i;
+         case b -> 10;
+         case c -> 10;
+         case d -> Math.min(this.i, 30);
+         case e -> 60;
+      };
    }
 
-   @Nullable
-   public fii a(long $$0) {
-      return (fii)this.b.get($$0);
-   }
-
-   @Nullable
-   public fii a(fin $$0) {
-      long $$1 = GLFW.glfwGetWindowMonitor($$0.h());
-      if ($$1 != 0L) {
-         return this.a($$1);
+   public fil.a b() {
+      fpk $$0 = this.g.i().c();
+      if (this.h.aO().j()) {
+         return fil.a.b;
       } else {
-         int $$2 = $$0.q();
-         int $$3 = $$2 + $$0.m();
-         int $$4 = $$0.r();
-         int $$5 = $$4 + $$0.n();
-         int $$6 = -1;
-         fii $$7 = null;
-         long $$8 = GLFW.glfwGetPrimaryMonitor();
-         a.debug("Selecting monitor - primary: {}, current monitors: {}", $$8, this.b);
-         ObjectIterator var12 = this.b.values().iterator();
+         if ($$0 == fpk.b) {
+            long $$1 = ag.c() - this.j;
+            if ($$1 > 600000L) {
+               return fil.a.c;
+            }
 
-         while (var12.hasNext()) {
-            fii $$9 = (fii)var12.next();
-            int $$10 = $$9.c();
-            int $$11 = $$10 + $$9.b().a();
-            int $$12 = $$9.d();
-            int $$13 = $$12 + $$9.b().b();
-            int $$14 = a($$2, $$10, $$11);
-            int $$15 = a($$3, $$10, $$11);
-            int $$16 = a($$4, $$12, $$13);
-            int $$17 = a($$5, $$12, $$13);
-            int $$18 = Math.max(0, $$15 - $$14);
-            int $$19 = Math.max(0, $$17 - $$16);
-            int $$20 = $$18 * $$19;
-            if ($$20 > $$6) {
-               $$7 = $$9;
-               $$6 = $$20;
-            } else if ($$20 == $$6 && $$8 == $$9.f()) {
-               a.debug("Primary monitor {} is preferred to monitor {}", $$9, $$7);
-               $$7 = $$9;
+            if ($$1 > 60000L) {
+               return fil.a.d;
             }
          }
 
-         a.debug("Selected monitor: {}", $$7);
-         return $$7;
+         return this.h.s != null || this.h.z == null && this.h.aM() == null ? fil.a.a : fil.a.e;
       }
    }
 
-   public static int a(int $$0, int $$1, int $$2) {
-      if ($$0 < $$1) {
-         return $$1;
-      } else {
-         return $$0 > $$2 ? $$2 : $$0;
-      }
+   public boolean c() {
+      fil.a $$0 = this.b();
+      return $$0 == fil.a.b || $$0 == fil.a.c;
    }
 
-   public void a() {
-      RenderSystem.assertOnRenderThread();
-      GLFWMonitorCallback $$0 = GLFW.glfwSetMonitorCallback(null);
-      if ($$0 != null) {
-         $$0.free();
-      }
+   public void a(int $$0) {
+      this.i = $$0;
+   }
+
+   public void d() {
+      this.j = ag.c();
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

@@ -1,113 +1,92 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import java.util.function.Function;
 
-public class dpm extends dmf {
-   public static final MapCodec<dpm> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(mf.e.q().fieldOf("potted").forGetter($$0x -> $$0x.d), t()).apply($$0, dpm::new)
-   );
-   private static final Map<dmf, dmf> b = Maps.newHashMap();
-   private static final ffk c = dmf.b(6.0, 0.0, 6.0);
-   private final dmf d;
+public class dpm extends dok {
+   public static final MapCodec<dpm> g = b(dpm::new);
+   private final Function<eao, ffr> h;
 
    @Override
    public MapCodec<dpm> a() {
-      return a;
+      return g;
    }
 
-   public dpm(dmf $$0, eag.d $$1) {
-      super($$1);
-      this.d = $$0;
-      b.put($$0, this);
-   }
-
-   @Override
-   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
-      return c;
-   }
-
-   @Override
-   protected bud a(czd $$0, eah $$1, dja $$2, iu $$3, crc $$4, buc $$5, fem $$6) {
-      eah $$8 = ($$0.h() instanceof cxl $$7 ? b.getOrDefault($$7.c(), dmh.a) : dmh.a).m();
-      if ($$8.l()) {
-         return bud.f;
-      } else if (!this.q()) {
-         return bud.c;
-      } else {
-         $$2.a($$3, $$8, 3);
-         $$2.a($$4, efh.c, $$3);
-         $$4.a(awx.ah);
-         $$0.a(1, $$4);
-         return bud.a;
-      }
+   public dpm(ean.d $$0) {
+      super(4.0F, 16.0F, 4.0F, 16.0F, 24.0F, $$0);
+      this.l(
+         this.C
+            .b()
+            .b(a, Boolean.valueOf(false))
+            .b(b, Boolean.valueOf(false))
+            .b(c, Boolean.valueOf(false))
+            .b(d, Boolean.valueOf(false))
+            .b(e, Boolean.valueOf(false))
+      );
+      this.h = this.a(4.0F, 16.0F, 2.0F, 6.0F, 15.0F);
    }
 
    @Override
-   protected bud a(eah $$0, dja $$1, iu $$2, crc $$3, fem $$4) {
-      if (this.q()) {
-         return bud.c;
-      } else {
-         czd $$5 = new czd(this.d);
-         if (!$$3.h($$5)) {
-            $$3.a($$5, false);
-         }
-
-         $$1.a($$2, dmh.gq.m(), 3);
-         $$1.a($$3, efh.c, $$2);
-         return bud.a;
-      }
+   protected ffr d_(eao $$0) {
+      return this.h.apply($$0);
    }
 
    @Override
-   protected czd a(djd $$0, iu $$1, eah $$2, boolean $$3) {
-      return this.q() ? super.a($$0, $$1, $$2, $$3) : new czd(this.d);
-   }
-
-   private boolean q() {
-      return this.d == dmh.a;
+   protected ffr c(eao $$0, din $$1, iv $$2, ffc $$3) {
+      return this.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected eah a(eah $$0, djd $$1, djp $$2, iu $$3, ja $$4, iu $$5, eah $$6, azv $$7) {
-      return $$4 == ja.a && !$$0.a($$1, $$3) ? dmh.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   public dmf b() {
-      return this.d;
-   }
-
-   @Override
-   protected boolean a(eah $$0, exd $$1) {
+   protected boolean a(eao $$0, exk $$1) {
       return false;
    }
 
-   @Override
-   protected boolean f(eah $$0) {
-      return $$0.a(dmh.uj) || $$0.a(dmh.uk);
+   public boolean a(eao $$0, boolean $$1, jb $$2) {
+      dmm $$3 = $$0.b();
+      boolean $$4 = this.o($$0);
+      boolean $$5 = $$3 instanceof dpn && dpn.a($$0, $$2);
+      return !k($$0) && $$1 || $$4 || $$5;
+   }
+
+   private boolean o(eao $$0) {
+      return $$0.a(axc.U) && $$0.a(axc.l) == this.m().a(axc.l);
    }
 
    @Override
-   protected void b(eah $$0, arq $$1, iu $$2, azv $$3) {
-      if (this.f($$0) && $$1.B_().j()) {
-         boolean $$4 = this.d == dmh.uh;
-         boolean $$5 = dob.a($$1);
-         if ($$4 != $$5) {
-            $$1.a($$2, this.o($$0), 3);
-            dpa.a $$6 = dpa.a.a($$4).c();
-            $$6.a($$1, $$2, $$3);
-            $$1.a(null, $$2, $$6.e(), awo.e, 1.0F, 1.0F);
-         }
-      }
-
-      super.b($$0, $$1, $$2, $$3);
+   protected bug a(eao $$0, djh $$1, iv $$2, crj $$3, fet $$4) {
+      return (bug)(!$$1.w_() ? czu.a($$3, $$1, $$2) : bug.e);
    }
 
-   public eah o(eah $$0) {
-      if ($$0.a(dmh.uj)) {
-         return dmh.uk.m();
-      } else {
-         return $$0.a(dmh.uk) ? dmh.uj.m() : $$0;
+   @Override
+   public eao a(ddd $$0) {
+      din $$1 = $$0.q();
+      iv $$2 = $$0.a();
+      ewv $$3 = $$0.q().b_($$0.a());
+      iv $$4 = $$2.f();
+      iv $$5 = $$2.i();
+      iv $$6 = $$2.g();
+      iv $$7 = $$2.h();
+      eao $$8 = $$1.a_($$4);
+      eao $$9 = $$1.a_($$5);
+      eao $$10 = $$1.a_($$6);
+      eao $$11 = $$1.a_($$7);
+      return super.a($$0)
+         .b(a, Boolean.valueOf(this.a($$8, $$8.c($$1, $$4, jb.d), jb.d)))
+         .b(b, Boolean.valueOf(this.a($$9, $$9.c($$1, $$5, jb.e), jb.e)))
+         .b(c, Boolean.valueOf(this.a($$10, $$10.c($$1, $$6, jb.c), jb.c)))
+         .b(d, Boolean.valueOf(this.a($$11, $$11.c($$1, $$7, jb.f), jb.f)))
+         .b(e, Boolean.valueOf($$3.a() == eww.c));
+   }
+
+   @Override
+   protected eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
+      if ($$0.c(e)) {
+         $$2.a($$3, eww.c, eww.c.a($$1));
       }
+
+      return $$4.o().d() ? $$0.b(f.get($$4), Boolean.valueOf(this.a($$6, $$6.c($$1, $$5, $$4.g()), $$4.g()))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected void a(eap.a<dmm, eao> $$0) {
+      $$0.a(a, b, d, c, e);
    }
 }

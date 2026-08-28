@@ -31,7 +31,7 @@ public interface bak {
    static <T extends bak> Codec<T> b(Supplier<T[]> $$0) {
       T[] $$1 = (T[])$$0.get();
       Function<String, T> $$2 = a($$1, $$0x -> $$0x);
-      ToIntFunction<T> $$3 = af.g(Arrays.asList($$1));
+      ToIntFunction<T> $$3 = ag.g(Arrays.asList($$1));
       return new bak.b<>($$1, $$2, $$3);
    }
 

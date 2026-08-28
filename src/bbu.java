@@ -17,10 +17,10 @@ public class bbu extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bix.s);
-      TaggedChoiceType<?> $$1 = this.getInputSchema().findChoiceType(bix.s);
+      Type<?> $$0 = this.getInputSchema().getType(biz.s);
+      TaggedChoiceType<?> $$1 = this.getInputSchema().findChoiceType(biz.s);
       OpticFinder<?> $$2 = $$0.findField("CustomName");
-      OpticFinder<Pair<String, String>> $$3 = DSL.typeFinder(this.getInputSchema().getType(bix.z));
+      OpticFinder<Pair<String, String>> $$3 = DSL.typeFinder(this.getInputSchema().getType(biz.z));
       return this.fixTypeEverywhereTyped("Banner entity custom_name to item_name component fix", $$0, $$3x -> {
          Object $$4 = ((Pair)$$3x.get($$1.finder())).getFirst();
          return $$4.equals("minecraft:banner") ? this.a($$3x, $$3, $$2) : $$3x;
@@ -31,7 +31,7 @@ public class bbu extends DataFix {
       Optional<String> $$3 = $$0.getOptionalTyped($$2).flatMap($$1x -> $$1x.getOptional($$1).map(Pair::getSecond));
       boolean $$4 = $$3.flatMap(bbe::d).filter($$0x -> $$0x.equals("block.minecraft.ominous_banner")).isPresent();
       return $$4
-         ? af.a(
+         ? ag.a(
             $$0,
             $$0.getType(),
             $$1x -> {

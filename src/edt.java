@@ -1,37 +1,16 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.ints.IntArraySet;
-import it.unimi.dsi.fastutil.ints.IntCollection;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.BitSet;
+public interface edt {
+   void a(Throwable var1, eee var2, dio var3);
 
-public class edt {
-   private final BitSet a = new BitSet();
+   void b(Throwable var1, eee var2, dio var3);
 
-   public void a(int $$0, int $$1) {
-      this.a.set($$0, $$0 + $$1);
+   static aa a(dio $$0, dio $$1) {
+      p $$2 = p.a(new IllegalStateException("Retrieved chunk position " + $$0 + " does not match requested " + $$1), "Chunk found in invalid location");
+      q $$3 = $$2.a("Misplaced Chunk");
+      $$3.a("Stored Position", $$0::toString);
+      return new aa($$2);
    }
 
-   public void b(int $$0, int $$1) {
-      this.a.clear($$0, $$0 + $$1);
-   }
-
-   public int a(int $$0) {
-      int $$1 = 0;
-
-      while (true) {
-         int $$2 = this.a.nextClearBit($$1);
-         int $$3 = this.a.nextSetBit($$2);
-         if ($$3 == -1 || $$3 - $$2 >= $$0) {
-            this.a($$2, $$0);
-            return $$2;
-         }
-
-         $$1 = $$3;
-      }
-   }
-
-   @VisibleForTesting
-   public IntSet a() {
-      return this.a.stream().collect(IntArraySet::new, IntCollection::add, IntCollection::addAll);
+   default void a(dio $$0, dio $$1, eee $$2) {
+      this.a(a($$0, $$1), $$2, $$1);
    }
 }

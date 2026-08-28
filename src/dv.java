@@ -2,48 +2,52 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class dv extends dj<dv.a> {
+public class dv extends dk<dv.a> {
    @Override
    public Codec<dv.a> a() {
       return dv.a.a;
    }
 
-   public void a(arr $$0, cqj $$1, czd $$2) {
-      ezh $$3 = bx.b($$0, $$1);
-      this.a($$0, $$2x -> $$2x.a($$3, $$2));
+   public void a(arr $$0, bwi $$1, fex $$2, int $$3) {
+      ezo $$4 = by.b($$0, $$1);
+      this.a($$0, $$3x -> $$3x.a($$4, $$2, $$3));
    }
 
-   public static record a(Optional<bi> b, Optional<bi> c, Optional<cl> d) implements dj.a {
+   public static record a(Optional<bj> b, cw.d c, Optional<bj> d) implements dk.a {
       public static final Codec<dv.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  bx.b.optionalFieldOf("player").forGetter(dv.a::a),
-                  bx.b.optionalFieldOf("villager").forGetter(dv.a::c),
-                  cl.a.optionalFieldOf("item").forGetter(dv.a::d)
+                  by.b.optionalFieldOf("player").forGetter(dv.a::a),
+                  cw.d.d.optionalFieldOf("signal_strength", cw.d.c).forGetter(dv.a::b),
+                  by.b.optionalFieldOf("projectile").forGetter(dv.a::c)
                )
                .apply($$0, dv.a::new)
       );
 
-      public static aq<dv.a> b() {
-         return ap.t.a(new dv.a(Optional.empty(), Optional.empty(), Optional.empty()));
+      public static ar<dv.a> a(cw.d $$0, Optional<bj> $$1) {
+         return aq.M.a(new dv.a(Optional.empty(), $$0, $$1));
       }
 
-      public static aq<dv.a> a(bx.a $$0) {
-         return ap.t.a(new dv.a(Optional.of(bx.a($$0)), Optional.empty(), Optional.empty()));
-      }
-
-      public boolean a(ezh $$0, czd $$1) {
-         return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
+      public boolean a(ezo $$0, fex $$1, int $$2) {
+         return !this.c.d($$2) ? false : !this.d.isPresent() || this.d.get().a($$0);
       }
 
       @Override
-      public void a(bj $$0) {
-         dj.a.super.a($$0);
-         $$0.a(this.c, ".villager");
+      public void a(bk $$0) {
+         dk.a.super.a($$0);
+         $$0.a(this.d, ".projectile");
       }
 
       @Override
-      public Optional<bi> a() {
+      public Optional<bj> a() {
          return this.b;
+      }
+
+      public cw.d b() {
+         return this.c;
+      }
+
+      public Optional<bj> c() {
+         return this.d;
       }
    }
 }

@@ -1,94 +1,39 @@
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
+import com.google.common.collect.Maps;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
-public interface ctf<Context, Condition extends ctf.b<Context>> {
-   List<ctf.a<Context, Condition>> a();
+public class ctf {
+   public static final int a = 2000;
+   public static final int b = 7000;
+   public static final ctf c = a("empty").a(0, ctd.b).a();
+   public static final ctf d = a("simple").a(5000, ctd.c).a(11000, ctd.e).a();
+   public static final ctf e = a("villager_baby").a(10, ctd.b).a(3000, ctd.d).a(6000, ctd.b).a(10000, ctd.d).a(12000, ctd.e).a();
+   public static final ctf f = a("villager_default").a(10, ctd.b).a(2000, ctd.c).a(9000, ctd.f).a(11000, ctd.b).a(12000, ctd.e).a();
+   private final Map<ctd, cth> g = Maps.newHashMap();
 
-   static <C, T> Stream<T> a(Stream<T> $$0, Function<T, ctf<C, ?>> $$1, C $$2) {
-      List<ctf.c<C, T>> $$3 = new ArrayList<>();
-      $$0.forEach($$2x -> {
-         ctf<C, ?> $$3x = $$1.apply((T)$$2x);
-
-         for (ctf.a<C, ?> $$4x : $$3x.a()) {
-            $$3.add(new ctf.c<>((T)$$2x, $$4x.b(), (ctf.b<C>)DataFixUtils.orElseGet($$4x.a(), ctf.b::alwaysTrue)));
-         }
-      });
-      $$3.sort(ctf.c.a);
-      Iterator<ctf.c<C, T>> $$4 = $$3.iterator();
-      int $$5 = Integer.MIN_VALUE;
-
-      while ($$4.hasNext()) {
-         ctf.c<C, T> $$6 = $$4.next();
-         if ($$6.c < $$5) {
-            $$4.remove();
-         } else if ($$6.d.test($$2)) {
-            $$5 = $$6.c;
-         } else {
-            $$4.remove();
-         }
-      }
-
-      return $$3.stream().map(ctf.c::a);
+   protected static ctg a(String $$0) {
+      ctf $$1 = js.a(mg.B, $$0, new ctf());
+      return new ctg($$1);
    }
 
-   static <C, T> Optional<T> a(Stream<T> $$0, Function<T, ctf<C, ?>> $$1, azv $$2, C $$3) {
-      List<T> $$4 = a($$0, $$1, $$3).toList();
-      return af.b($$4, $$2);
-   }
-
-   static <Context, Condition extends ctf.b<Context>> List<ctf.a<Context, Condition>> a(Condition $$0, int $$1) {
-      return List.of(new ctf.a<>($$0, $$1));
-   }
-
-   static <Context, Condition extends ctf.b<Context>> List<ctf.a<Context, Condition>> a(int $$0) {
-      return List.of(new ctf.a<>(Optional.empty(), $$0));
-   }
-
-   public static record a<Context, Condition extends ctf.b<Context>>(Optional<Condition> a, int b) {
-      public a(Condition $$0, int $$1) {
-         this(Optional.of($$0), $$1);
-      }
-
-      public a(int $$0) {
-         this(Optional.empty(), $$0);
-      }
-
-      public static <Context, Condition extends ctf.b<Context>> Codec<ctf.a<Context, Condition>> a(Codec<Condition> $$0) {
-         return RecordCodecBuilder.create(
-            $$1 -> $$1.group($$0.optionalFieldOf("condition").forGetter(ctf.a::a), Codec.INT.fieldOf("priority").forGetter(ctf.a::b)).apply($$1, ctf.a::new)
-         );
+   protected void a(ctd $$0) {
+      if (!this.g.containsKey($$0)) {
+         this.g.put($$0, new cth());
       }
    }
 
-   @FunctionalInterface
-   public interface b<C> extends Predicate<C> {
-      static <C> ctf.b<C> alwaysTrue() {
-         return $$0 -> true;
-      }
+   protected cth b(ctd $$0) {
+      return this.g.get($$0);
    }
 
-   public static record c<C, T>(T b, int c, ctf.b<C> d) {
-      public static final Comparator<ctf.c<?, ?>> a = Comparator.comparingInt(ctf.c::b).reversed();
+   protected List<cth> c(ctd $$0) {
+      return this.g.entrySet().stream().filter($$1 -> $$1.getKey() != $$0).map(Entry::getValue).collect(Collectors.toList());
+   }
 
-      public T a() {
-         return this.b;
-      }
-
-      public int b() {
-         return this.c;
-      }
-
-      public ctf.b<C> c() {
-         return this.d;
-      }
+   public ctd a(int $$0) {
+      return this.g.entrySet().stream().max(Comparator.comparingDouble($$1 -> (double)$$1.getValue().a($$0))).map(Entry::getKey).orElse(ctd.b);
    }
 }

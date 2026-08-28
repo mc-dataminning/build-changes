@@ -29,8 +29,8 @@ public class ats extends atg {
    @Nullable
    @Override
    public auu<InputStream> a(String... $$0) {
-      v.a($$0);
-      Path $$1 = v.a(this.e, List.of($$0));
+      w.a($$0);
+      Path $$1 = w.a(this.e, List.of($$0));
       return Files.exists($$1) ? auu.create($$1) : null;
    }
 
@@ -47,8 +47,8 @@ public class ats extends atg {
 
    @Nullable
    public static auu<InputStream> a(alg $$0, Path $$1) {
-      return (auu<InputStream>)v.d($$0.a()).mapOrElse($$1x -> {
-         Path $$2 = v.a($$1, $$1x);
+      return (auu<InputStream>)w.d($$0.a()).mapOrElse($$1x -> {
+         Path $$2 = w.a($$1, $$1x);
          return b($$2);
       }, $$1x -> {
          c.error("Invalid path {}: {}", $$0, $$1x.message());
@@ -63,21 +63,21 @@ public class ats extends atg {
 
    @Override
    public void a(atr $$0, String $$1, String $$2, atp.a $$3) {
-      v.d($$2).ifSuccess($$3x -> {
+      w.d($$2).ifSuccess($$3x -> {
          Path $$4 = this.e.resolve($$0.a()).resolve($$1);
          a($$1, $$4, $$3x, $$3);
       }).ifError($$1x -> c.error("Invalid path {}: {}", $$2, $$1x.message()));
    }
 
    public static void a(String $$0, Path $$1, List<String> $$2, atp.a $$3) {
-      Path $$4 = v.a($$1, $$2);
+      Path $$4 = w.a($$1, $$2);
 
       try (Stream<Path> $$5 = Files.find($$4, Integer.MAX_VALUE, ($$0x, $$1x) -> $$1x.isRegularFile())) {
          $$5.forEach($$3x -> {
             String $$4x = d.join($$1.relativize($$3x));
             alg $$5x = alg.b($$0, $$4x);
             if ($$5x == null) {
-               af.b(String.format(Locale.ROOT, "Invalid path in pack: %s:%s, ignoring", $$0, $$4x));
+               ag.b(String.format(Locale.ROOT, "Invalid path in pack: %s:%s, ignoring", $$0, $$4x));
             } else {
                $$3.accept($$5x, auu.create($$3x));
             }

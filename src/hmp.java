@@ -1,58 +1,107 @@
-public class hmp extends hmc {
-   public hmp(awm $$0, awo $$1, float $$2, float $$3, azv $$4, iu $$5) {
-      this($$0, $$1, $$2, $$3, $$4, (double)$$5.u() + 0.5, (double)$$5.v() + 0.5, (double)$$5.w() + 0.5);
+public abstract class hmp implements hnh {
+   protected hne a;
+   protected final awo b;
+   protected final alg c;
+   protected float d = 1.0F;
+   protected float e = 1.0F;
+   protected double f;
+   protected double g;
+   protected double h;
+   protected boolean i;
+   protected int j;
+   protected hnh.a k = hnh.a.b;
+   protected boolean l;
+   protected azv m;
+
+   protected hmp(awm $$0, awo $$1, azv $$2) {
+      this($$0.a(), $$1, $$2);
    }
 
-   public static hmp a(awm $$0, float $$1) {
-      return a($$0, $$1, 0.25F);
+   protected hmp(alg $$0, awo $$1, azv $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.m = $$2;
    }
 
-   public static hmp a(je<awm> $$0, float $$1) {
-      return a($$0.a(), $$1);
+   @Override
+   public alg a() {
+      return this.c;
    }
 
-   public static hmp a(awm $$0, float $$1, float $$2) {
-      return new hmp($$0.a(), awo.a, $$2, $$1, hmu.t(), false, 0, hmu.a.a, 0.0, 0.0, 0.0, true);
+   @Override
+   public hoo a(hon $$0) {
+      if (this.c.equals(hon.c)) {
+         this.a = hon.e;
+         return hon.d;
+      } else {
+         hoo $$1 = $$0.a(this.c);
+         if ($$1 == null) {
+            this.a = hon.b;
+         } else {
+            this.a = $$1.a(this.m);
+         }
+
+         return $$1;
+      }
    }
 
-   public static hmp a(awm $$0) {
-      return new hmp($$0.a(), awo.b, 1.0F, 1.0F, hmu.t(), false, 0, hmu.a.a, 0.0, 0.0, 0.0, true);
+   @Override
+   public hne b() {
+      return this.a;
    }
 
-   public static hmp a(awm $$0, feq $$1) {
-      return new hmp($$0, awo.c, 4.0F, 1.0F, hmu.t(), false, 0, hmu.a.b, $$1.d, $$1.e, $$1.f);
+   @Override
+   public awo c() {
+      return this.b;
    }
 
-   public static hmp b(awm $$0, float $$1, float $$2) {
-      return new hmp($$0.a(), awo.i, $$2, $$1, hmu.t(), false, 0, hmu.a.a, 0.0, 0.0, 0.0, true);
+   @Override
+   public boolean d() {
+      return this.i;
    }
 
-   public static hmp b(awm $$0) {
-      return b($$0, 1.0F, 1.0F);
+   @Override
+   public int e() {
+      return this.j;
    }
 
-   public static hmp a(awm $$0, azv $$1, double $$2, double $$3, double $$4) {
-      return new hmp($$0, awo.i, 1.0F, 1.0F, $$1, false, 0, hmu.a.b, $$2, $$3, $$4);
+   @Override
+   public float f() {
+      return this.d * this.a.c().a(this.m);
    }
 
-   public hmp(awm $$0, awo $$1, float $$2, float $$3, azv $$4, double $$5, double $$6, double $$7) {
-      this($$0, $$1, $$2, $$3, $$4, false, 0, hmu.a.b, $$5, $$6, $$7);
+   @Override
+   public float g() {
+      return this.e * this.a.d().a(this.m);
    }
 
-   private hmp(awm $$0, awo $$1, float $$2, float $$3, azv $$4, boolean $$5, int $$6, hmu.a $$7, double $$8, double $$9, double $$10) {
-      this($$0.a(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, false);
+   @Override
+   public double h() {
+      return this.f;
    }
 
-   public hmp(alg $$0, awo $$1, float $$2, float $$3, azv $$4, boolean $$5, int $$6, hmu.a $$7, double $$8, double $$9, double $$10, boolean $$11) {
-      super($$0, $$1, $$4);
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$8;
-      this.g = $$9;
-      this.h = $$10;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
-      this.l = $$11;
+   @Override
+   public double i() {
+      return this.g;
+   }
+
+   @Override
+   public double j() {
+      return this.h;
+   }
+
+   @Override
+   public hnh.a k() {
+      return this.k;
+   }
+
+   @Override
+   public boolean l() {
+      return this.l;
+   }
+
+   @Override
+   public String toString() {
+      return "SoundInstance[" + this.c + "]";
    }
 }

@@ -1,32 +1,31 @@
-public class hmw implements hme {
-   public static final float a = 0.01F;
-   public static final float b = 0.001F;
-   public static final float c = 1.0E-4F;
-   private static final int d = 0;
-   private final gox e;
-   private final hoa f;
-   private int g = 0;
+public class hmw implements hmr {
+   private final gpj a;
+   private boolean b;
+   private boolean c = true;
 
-   public hmw(gox $$0, hoa $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public hmw(gpj $$0) {
+      this.a = $$0;
    }
 
    @Override
    public void a() {
-      this.g--;
-      if (this.g <= 0 && this.e.bn()) {
-         float $$0 = this.e.dV().A.i();
-         if ($$0 < 1.0E-4F) {
-            this.g = 0;
-            this.f.a((hmu)(new hmx.a(this.e, awn.C)));
-         } else if ($$0 < 0.001F) {
-            this.g = 0;
-            this.f.a((hmu)(new hmx.a(this.e, awn.B)));
-         } else if ($$0 < 0.01F) {
-            this.g = 0;
-            this.f.a((hmu)(new hmx.a(this.e, awn.A)));
+      djh $$0 = this.a.dU();
+      eao $$1 = $$0.c(this.a.cQ().c(0.0, -0.4F, 0.0).h(1.0E-6)).filter($$0x -> $$0x.a(dmo.nJ)).findFirst().orElse(null);
+      if ($$1 != null) {
+         if (!this.b && !this.c && $$1.a(dmo.nJ) && !this.a.V_()) {
+            boolean $$2 = $$1.c(dmt.b);
+            if ($$2) {
+               this.a.a(awn.db, 1.0F, 1.0F);
+            } else {
+               this.a.a(awn.cZ, 1.0F, 1.0F);
+            }
          }
+
+         this.b = true;
+      } else {
+         this.b = false;
       }
+
+      this.c = false;
    }
 }

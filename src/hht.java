@@ -1,49 +1,23 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class hht implements hhx {
-   public static final alg a = alg.b("christmas");
-   public static final alg b = alg.b("normal");
-   public static final alg c = alg.b("trapped");
-   public static final alg d = alg.b("ender");
-   private final gfi e;
-   private final hle f;
-   private final float g;
+public record hht() implements hia<alf<bwr<?>>> {
+   public static final Codec<alf<bwr<?>>> a = alf.a(mh.B);
+   public static final hia.a<hht, alf<bwr<?>>> b = hia.a.a(MapCodec.unit(new hht()), a);
 
-   public hht(gfi $$0, hle $$1, float $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   @Nullable
+   public alf<bwr<?>> a(czk $$0, @Nullable gkl $$1, @Nullable bxj $$2, int $$3, czi $$4) {
+      return $$2 == null ? null : $$2.an().r().h();
    }
 
    @Override
-   public void a(czb $$0, fjj $$1, gqa $$2, int $$3, int $$4, boolean $$5) {
-      fjn $$6 = this.f.a($$2, gqk::d);
-      this.e.a(this.g);
-      this.e.a($$1, $$6, $$3, $$4);
+   public hia.a<hht, alf<bwr<?>>> a() {
+      return b;
    }
 
-   public static record a(alg b, float c) implements hib.a {
-      public static final MapCodec<hht.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(alg.a.fieldOf("texture").forGetter(hht.a::b), Codec.FLOAT.optionalFieldOf("openness", 0.0F).forGetter(hht.a::c))
-               .apply($$0, hht.a::new)
-      );
-
-      public a(alg $$0) {
-         this($$0, 0.0F);
-      }
-
-      @Override
-      public MapCodec<hht.a> a() {
-         return a;
-      }
-
-      @Override
-      public hib<?> a(giy $$0) {
-         gfi $$1 = new gfi($$0.a(gjb.X));
-         hle $$2 = gqv.m.a(this.b);
-         return new hht($$1, $$2, this.c);
-      }
+   @Override
+   public Codec<alf<bwr<?>>> b() {
+      return a;
    }
 }

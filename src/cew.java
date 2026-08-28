@@ -1,47 +1,49 @@
-public class cew extends cea {
-   private final clh a;
-   private int b;
+import java.util.EnumSet;
 
-   public cew(clh $$0) {
-      this.a = $$0;
-      this.a($$0);
+public class cew extends cef {
+   private static final chy b = chy.b().a(6.0);
+   public static final int a = 400;
+   private final cjp c;
+   private cqv d;
+   private int e;
+
+   public cew(cjp $$0) {
+      this.c = $$0;
+      this.a(EnumSet.of(cef.a.a, cef.a.b));
    }
 
    @Override
-   public void d() {
-      this.a.gW();
-      this.h();
-   }
-
-   private void h() {
-      awm $$0 = this.a.gV();
-      if ($$0 != null) {
-         this.a.a($$0);
+   public boolean b() {
+      if (!this.c.dU().V()) {
+         return false;
+      } else if (this.c.dX().a(8000) != 0) {
+         return false;
+      } else {
+         this.d = a(this.c).a(cqv.class, b, this.c, this.c.dz(), this.c.dB(), this.c.dF(), this.c.cQ().c(6.0, 2.0, 6.0));
+         return this.d != null;
       }
    }
 
    @Override
    public boolean c() {
-      return false;
+      return this.e > 0;
    }
 
    @Override
-   public boolean b() {
-      this.b++;
-      if (this.b > 0 && this.a.dY().a(1000) < this.b) {
-         this.a(this.a);
-         return !this.a.fg() && this.a.dY().a(10) == 0;
-      } else {
-         return false;
-      }
-   }
-
-   private void a(clh $$0) {
-      this.b = -$$0.ha();
+   public void d() {
+      this.e = this.a(400);
+      this.c.w(true);
    }
 
    @Override
-   public boolean R_() {
-      return true;
+   public void e() {
+      this.c.w(false);
+      this.d = null;
+   }
+
+   @Override
+   public void a() {
+      this.c.J().a(this.d, 30.0F, 30.0F);
+      this.e--;
    }
 }

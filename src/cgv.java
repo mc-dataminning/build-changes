@@ -1,24 +1,44 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+public class cgv extends cgt {
+   private boolean p;
 
-public class cgv extends chf<cpa> {
-   @Override
-   public Set<cgg<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cgg.C)));
+   public cgv(bxl $$0, djh $$1) {
+      super($$0, $$1);
    }
 
-   protected void a(arq $$0, cpa $$1) {
-      super.a($$0, $$1);
-      $$1.ec()
-         .c(cgg.g)
-         .stream()
-         .flatMap(Collection::stream)
-         .filter(bwm.e)
-         .filter($$2 -> chm.c($$0, $$1, $$2))
-         .findFirst()
-         .ifPresentOrElse($$1x -> $$1.ec().a(cgg.C, $$1x), () -> $$1.ec().b(cgg.C));
+   @Override
+   protected exl a(int $$0) {
+      this.p = this.a.an() == bwr.H;
+      this.o = new exp(this.p);
+      this.o.a(false);
+      return new exl(this.o, $$0);
+   }
+
+   @Override
+   protected boolean a() {
+      return this.p || this.a.bk();
+   }
+
+   @Override
+   protected fex b() {
+      return new fex(this.a.dz(), this.a.e(0.5), this.a.dF());
+   }
+
+   @Override
+   protected double a(fex $$0) {
+      return $$0.e;
+   }
+
+   @Override
+   protected boolean a(fex $$0, fex $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(iv $$0) {
+      return !this.b.a_($$0).s();
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

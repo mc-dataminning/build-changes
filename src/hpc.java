@@ -1,98 +1,74 @@
-import javax.annotation.Nullable;
+import com.google.common.base.Stopwatch;
+import com.google.common.base.Ticker;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.OptionalLong;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
 public class hpc {
-   private final foz a;
-   @Nullable
-   private hpd b;
+   public static final hpc a = new hpc(Ticker.systemTicker());
+   private static final Logger b = LogUtils.getLogger();
+   private final Ticker c;
+   private final Map<hoy<hpc.a>, Stopwatch> d = new HashMap<>();
+   private OptionalLong e = OptionalLong.empty();
 
-   public hpc(foz $$0, fpd $$1) {
-      this.a = $$0;
+   protected hpc(Ticker $$0) {
+      this.c = $$0;
    }
 
-   public void a(gov $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
+   public synchronized void a(hoy<hpc.a> $$0) {
+      this.a($$0, (Function<hoy<hpc.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
    }
 
-   public void a(double $$0, double $$1) {
-      if (this.b != null) {
-         this.b.a($$0, $$1);
-      }
+   public synchronized void a(hoy<hpc.a> $$0, Stopwatch $$1) {
+      this.a($$0, (Function<hoy<hpc.a>, Stopwatch>)($$1x -> $$1));
    }
 
-   public void a(@Nullable gjz $$0, @Nullable feo $$1) {
-      if (this.b != null && $$1 != null && $$0 != null) {
-         this.b.a($$0, $$1);
-      }
+   private synchronized void a(hoy<hpc.a> $$0, Function<hoy<hpc.a>, Stopwatch> $$1) {
+      this.d.computeIfAbsent($$0, $$1);
    }
 
-   public void a(gjz $$0, iu $$1, eah $$2, float $$3) {
-      if (this.b != null) {
-         this.b.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   public void a() {
-      if (this.b != null) {
-         this.b.c();
-      }
-   }
-
-   public void a(czd $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-   }
-
-   public void b() {
-      if (this.b != null) {
-         this.b.b();
-         this.b = null;
-      }
-   }
-
-   public void c() {
-      if (this.b != null) {
-         this.b();
-      }
-
-      this.b = this.a.n.r.a(this);
-   }
-
-   public void d() {
-      if (this.b != null) {
-         if (this.a.s != null) {
-            this.b.a();
-         } else {
-            this.b();
+   public synchronized void b(hoy<hpc.a> $$0) {
+      Stopwatch $$1 = this.d.get($$0);
+      if ($$1 == null) {
+         b.warn("Attempted to end step for {} before starting it", $$0.b());
+      } else {
+         if ($$1.isRunning()) {
+            $$1.stop();
          }
-      } else if (this.a.s != null) {
-         this.c();
       }
    }
 
-   public void a(hpe $$0) {
-      this.a.n.r = $$0;
-      this.a.n.az();
-      if (this.b != null) {
-         this.b.b();
-         this.b = $$0.a(this);
+   public void a(hov $$0) {
+      $$0.send(how.g, $$0x -> {
+         synchronized (this) {
+            this.d.forEach(($$1, $$2) -> {
+               if (!$$2.isRunning()) {
+                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
+                  $$0x.a((hoy<hpc.a>)$$1, new hpc.a((int)$$3));
+               } else {
+                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), how.g.a());
+               }
+            });
+            this.e.ifPresent($$1 -> $$0x.a(hoy.B, new hpc.a((int)$$1)));
+            this.d.clear();
+         }
+      });
+   }
+
+   public synchronized void a(long $$0) {
+      this.e = OptionalLong.of($$0);
+   }
+
+   public static record a(int b) {
+      public static final Codec<hpc.a> a = Codec.INT.xmap(hpc.a::new, $$0 -> $$0.b);
+
+      public int a() {
+         return this.b;
       }
-   }
-
-   public foz e() {
-      return this.a;
-   }
-
-   public boolean f() {
-      return this.a.r == null ? false : this.a.r.i() == dix.a;
-   }
-
-   public static wy a(String $$0) {
-      return wy.d("key." + $$0).a(n.r);
-   }
-
-   public void a(czd $$0, czd $$1, cvf $$2) {
    }
 }

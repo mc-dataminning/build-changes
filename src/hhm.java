@@ -1,19 +1,19 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class hhm {
-   private static final ayu.b<alg, hhn.a<?, ?>> b = new ayu.b<>();
-   public static final Codec<hhn.a<?, ?>> a = b.a(alg.a);
+public record hhm(float b) implements hhk {
+   public static final MapCodec<hhm> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ayu.o.optionalFieldOf("period", 1.0F).forGetter(hhm::b)).apply($$0, hhm::new)
+   );
 
-   public static void a() {
-      b.a(alg.b("custom_model_data"), hhh.b);
-      b.a(alg.b("main_hand"), hhl.b);
-      b.a(alg.b("charge_type"), hhd.b);
-      b.a(alg.b("trim_material"), hho.b);
-      b.a(alg.b("block_state"), hhj.b);
-      b.a(alg.b("display_context"), hhi.b);
-      b.a(alg.b("local_time"), hhk.c);
-      b.a(alg.b("context_entity_type"), hhg.b);
-      b.a(alg.b("context_dimension"), hhf.b);
-      b.a(alg.b("component"), hhe.c());
+   @Override
+   public float a(czk $$0, @Nullable gkl $$1, @Nullable bxj $$2, int $$3) {
+      return $$2 != null && $$2.fA() == $$0 ? (float)$$2.fB() % this.b : 0.0F;
+   }
+
+   @Override
+   public MapCodec<hhm> a() {
+      return a;
    }
 }

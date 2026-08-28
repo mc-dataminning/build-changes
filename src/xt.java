@@ -7,12 +7,12 @@ import javax.annotation.Nullable;
 
 public record xt(int b, UUID c, UUID d) {
    public static final Codec<xt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ayu.l.fieldOf("index").forGetter(xt::b), jy.a.fieldOf("sender").forGetter(xt::c), jy.a.fieldOf("session_id").forGetter(xt::d))
+      $$0 -> $$0.group(ayu.l.fieldOf("index").forGetter(xt::b), jz.a.fieldOf("sender").forGetter(xt::c), jz.a.fieldOf("session_id").forGetter(xt::d))
             .apply($$0, xt::new)
    );
 
    public static xt a(UUID $$0) {
-      return a($$0, af.e);
+      return a($$0, ag.e);
    }
 
    public static xt a(UUID $$0, UUID $$1) {
@@ -20,8 +20,8 @@ public record xt(int b, UUID c, UUID d) {
    }
 
    public void a(baa.a $$0) throws SignatureException {
-      $$0.update(jy.b(this.c));
-      $$0.update(jy.b(this.d));
+      $$0.update(jz.b(this.c));
+      $$0.update(jz.b(this.d));
       $$0.update(Ints.toByteArray(this.b));
    }
 

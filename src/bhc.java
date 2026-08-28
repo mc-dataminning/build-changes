@@ -1,28 +1,21 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
 
-public class bhc extends DataFix {
+public class bhc extends bht {
    public bhc(Schema $$0) {
-      super($$0, false);
+      super($$0, false, "JukeboxTicksSinceSongStartedFix", biz.s, "minecraft:jukebox");
    }
 
-   private static <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.update("ExitPortalLocation", bbd::a);
+   public Dynamic<?> a(Dynamic<?> $$0) {
+      long $$1 = $$0.get("TickCount").asLong(0L) - $$0.get("RecordStartTick").asLong(0L);
+      Dynamic<?> $$2 = $$0.remove("IsPlaying").remove("TickCount").remove("RecordStartTick");
+      return $$1 > 0L ? $$2.set("ticks_since_song_started", $$0.createLong($$1)) : $$2;
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("LegacyDragonFightFix", this.getInputSchema().getType(bix.a), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
-            OptionalDynamic<?> $$1 = $$0x.get("DragonFight");
-            if ($$1.result().isPresent()) {
-               return $$0x;
-            } else {
-               Dynamic<?> $$2 = $$0x.get("DimensionData").get("1").get("DragonFight").orElseEmptyMap();
-               return $$0x.set("DragonFight", a($$2));
-            }
-         }));
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 }

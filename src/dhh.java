@@ -1,17 +1,28 @@
-import java.util.Map;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dhh(int a, Map<dhj, Integer> b, int c, je<awm> d, float e, float f, axr<cyz> g, alf<dhk> h) {
-   public dbu a(dhj $$0) {
-      int $$1 = this.b.getOrDefault($$0, 0);
-      dbu.a $$2 = dbu.a();
-      bwq $$3 = bwq.a($$0.a());
-      alg $$4 = alg.b("armor." + $$0.b());
-      $$2.a(byk.a, new byi($$4, (double)$$1, byi.a.a), $$3);
-      $$2.a(byk.b, new byi($$4, (double)this.e, byi.a.a), $$3);
-      if (this.f > 0.0F) {
-         $$2.a(byk.p, new byi($$4, (double)this.f, byi.a.a), $$3);
+public record dhh(jj<dfx> c, btl d) implements dhf {
+   public static final MapCodec<dhh> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ju.a(mh.aR).fieldOf("enchantments").forGetter(dhh::b), btl.c.fieldOf("cost").forGetter(dhh::c)).apply($$0, dhh::new)
+   );
+
+   @Override
+   public void a(czk $$0, dgd.a $$1, azv $$2, bue $$3) {
+      for (dga $$5 : dfz.b($$2, $$0, this.d.a($$2), this.c.a())) {
+         $$1.b($$5.b(), $$5.c());
       }
+   }
 
-      return $$2.a();
+   @Override
+   public MapCodec<dhh> a() {
+      return b;
+   }
+
+   public jj<dfx> b() {
+      return this.c;
+   }
+
+   public btl c() {
+      return this.d;
    }
 }

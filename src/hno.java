@@ -1,87 +1,35 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.AbstractIterator;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.PeekingIterator;
+import java.util.Comparator;
 import java.util.Iterator;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Consumer;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
 
-public class hno {
-   private final Set<hno.a> a = Sets.newIdentityHashSet();
-   final fgx b;
-   final Executor c;
+public class hno<T> extends AbstractIterator<T> {
+   private final PeekingIterator<T> a;
+   private final PeekingIterator<T> b;
+   private final Comparator<T> c;
 
-   public hno(fgx $$0, Executor $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public hno(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
+      this.a = Iterators.peekingIterator($$0);
+      this.b = Iterators.peekingIterator($$1);
+      this.c = $$2;
    }
 
-   public CompletableFuture<hno.a> a(fgx.c $$0) {
-      CompletableFuture<hno.a> $$1 = new CompletableFuture<>();
-      this.c.execute(() -> {
-         fgw $$2 = this.b.a($$0);
-         if ($$2 != null) {
-            hno.a $$3 = new hno.a($$2);
-            this.a.add($$3);
-            $$1.complete($$3);
+   protected T computeNext() {
+      while (this.a.hasNext() && this.b.hasNext()) {
+         int $$0 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
+         if ($$0 == 0) {
+            this.b.next();
+            return (T)this.a.next();
+         }
+
+         if ($$0 < 0) {
+            this.a.next();
          } else {
-            $$1.complete(null);
+            this.b.next();
          }
-      });
-      return $$1;
-   }
-
-   public void a(Consumer<Stream<fgw>> $$0) {
-      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
-   }
-
-   public void a() {
-      this.c.execute(() -> {
-         Iterator<hno.a> $$0 = this.a.iterator();
-
-         while ($$0.hasNext()) {
-            hno.a $$1 = $$0.next();
-            $$1.b.j();
-            if ($$1.b.h()) {
-               $$1.b();
-               $$0.remove();
-            }
-         }
-      });
-   }
-
-   public void b() {
-      this.a.forEach(hno.a::b);
-      this.a.clear();
-   }
-
-   public class a {
-      @Nullable
-      fgw b;
-      private boolean c;
-
-      public boolean a() {
-         return this.c;
       }
 
-      public a(final fgw $$1) {
-         this.b = $$1;
-      }
-
-      public void a(Consumer<fgw> $$0) {
-         hno.this.c.execute(() -> {
-            if (this.b != null) {
-               $$0.accept(this.b);
-            }
-         });
-      }
-
-      public void b() {
-         this.c = true;
-         hno.this.b.a(this.b);
-         this.b = null;
-      }
+      return (T)this.endOfData();
    }
 }

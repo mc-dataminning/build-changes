@@ -1,39 +1,24 @@
 import com.mojang.serialization.MapCodec;
 
-public class dvi extends dnj {
-   public static final MapCodec<dvi> g = b(dvi::new);
+public class dvi extends dvn {
+   public static final MapCodec<dvi> a = b(dvi::new);
 
    @Override
    public MapCodec<dvi> a() {
-      return g;
+      return a;
    }
 
-   public dvi(eag.d $$0) {
-      super(() -> dxh.c, $$0);
-   }
-
-   @Override
-   public dxf a(iu $$0, eah $$1) {
-      return new dze($$0, $$1);
+   public dvi(ean.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected awu<alg> c() {
-      return awx.i.b(awx.ai);
+   protected boolean e_(eao $$0) {
+      return false;
    }
 
    @Override
-   protected boolean f_(eah $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(eah $$0, dig $$1, iu $$2, ja $$3) {
-      return azm.a(dxn.a($$1, $$2), 0, 15);
-   }
-
-   @Override
-   protected int b(eah $$0, dig $$1, iu $$2, ja $$3) {
-      return $$3 == ja.b ? $$0.a($$1, $$2, $$3) : 0;
+   protected int i_(eao $$0) {
+      return 15;
    }
 }

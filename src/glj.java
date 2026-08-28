@@ -1,76 +1,119 @@
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
+import com.mojang.authlib.GameProfile;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.time.Instant;
-import java.util.Objects;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.UUID;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 
-public class glj extends gle {
-   final Supplier<hjy> g;
-
-   glj(UUID $$0, Instant $$1, UUID $$2, Supplier<hjy> $$3) {
-      super($$0, $$1, $$2);
-      this.g = $$3;
+public interface glj extends gli {
+   static glj.a a(GameProfile $$0, xo $$1, glh $$2) {
+      return new glj.a($$0, $$1, $$2);
    }
 
-   public Supplier<hjy> a() {
-      return this.g;
+   static glj.b a(wy $$0, Instant $$1) {
+      return new glj.b($$0, $$1);
    }
 
-   public glj c() {
-      glj $$0 = new glj(this.a, this.b, this.c, this.g);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      return $$0;
+   wy b();
+
+   default wy c() {
+      return this.b();
    }
 
-   @Override
-   public fyb a(fyb $$0, gli $$1) {
-      return new gcq($$0, $$1, this);
-   }
+   boolean a(UUID var1);
 
-   public static class a extends gle.a<glj> {
-      public a(glj $$0, AbuseReportLimits $$1) {
-         super($$0, $$1);
-      }
-
-      public a(UUID $$0, Supplier<hjy> $$1, AbuseReportLimits $$2) {
-         super(new glj(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
-      }
+   public static record a(GameProfile c, xo d, glh e) implements glj {
+      public static final MapCodec<glj.a> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  ayu.z.fieldOf("profile").forGetter(glj.a::f), xo.a.forGetter(glj.a::g), glh.d.optionalFieldOf("trust_level", glh.a).forGetter(glj.a::h)
+               )
+               .apply($$0, glj.a::new)
+      );
+      private static final DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
 
       @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || this.i() != null;
-      }
-
-      @Nullable
-      @Override
-      public gle.b c() {
-         if (this.a.e == null) {
-            return gle.b.a;
+      public wy b() {
+         if (!this.d.o().a()) {
+            wy $$0 = this.d.o().b(this.d.c());
+            return (wy)($$0 != null ? $$0 : wy.i());
          } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? gle.b.d : super.c();
+            return this.d.d();
          }
       }
 
       @Override
-      public Either<gle.c, gle.b> a(gli $$0) {
-         gle.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportedEntity $$3 = new ReportedEntity(this.a.c);
-            hjy $$4 = this.a.g.get();
-            String $$5 = $$4.b();
-            AbuseReport $$6 = AbuseReport.skin(this.a.d, $$2, $$5, $$3, this.a.b);
-            return Either.left(new gle.c(this.a.a, glh.b, $$6));
-         }
+      public wy c() {
+         wy $$0 = this.b();
+         wy $$1 = this.i();
+         return wy.a("gui.chatSelection.message.narrate", this.c.getName(), $$0, $$1);
+      }
+
+      public wy d() {
+         wy $$0 = this.i();
+         return wy.a("gui.chatSelection.heading", this.c.getName(), $$0);
+      }
+
+      private wy i() {
+         LocalDateTime $$0 = LocalDateTime.ofInstant(this.d.e(), ZoneOffset.systemDefault());
+         return wy.b($$0.format(f)).a(o.u, o.h);
+      }
+
+      @Override
+      public boolean a(UUID $$0) {
+         return this.d.a($$0);
+      }
+
+      public UUID e() {
+         return this.c.getId();
+      }
+
+      @Override
+      public gli.a a() {
+         return gli.a.a;
+      }
+
+      public GameProfile f() {
+         return this.c;
+      }
+
+      public xo g() {
+         return this.d;
+      }
+
+      public glh h() {
+         return this.e;
+      }
+   }
+
+   public static record b(wy c, Instant d) implements glj {
+      public static final MapCodec<glj.b> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(xa.a.fieldOf("message").forGetter(glj.b::d), ayu.q.fieldOf("time_stamp").forGetter(glj.b::e)).apply($$0, glj.b::new)
+      );
+
+      @Override
+      public wy b() {
+         return this.c;
+      }
+
+      @Override
+      public boolean a(UUID $$0) {
+         return false;
+      }
+
+      @Override
+      public gli.a a() {
+         return gli.a.b;
+      }
+
+      public wy d() {
+         return this.c;
+      }
+
+      public Instant e() {
+         return this.d;
       }
    }
 }

@@ -5,7 +5,7 @@ public interface sm {
    alf<tl> b = a("default");
 
    private static alf<tl> a(String $$0) {
-      return alf.a(mg.bg, alg.b($$0));
+      return alf.a(mh.bg, alg.b($$0));
    }
 
    static void a(qh<tl> $$0) {

@@ -1,75 +1,50 @@
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Map;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Collection;
 import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class hjo extends auh {
-   private static final aud e = new aud(wy.c("resourcePack.vanilla.description"), ab.b().a(atr.a), Optional.empty());
-   private static final ath f = ath.a(aud.b, e);
-   public static final String d = "high_contrast";
-   private static final Map<String, wy> g = Map.of(
-      "programmer_art", wy.c("resourcePack.programmer_art.name"), "high_contrast", wy.c("resourcePack.high_contrast.name")
-   );
-   private static final ato h = new ato("vanilla", wy.c("resourcePack.vanilla.name"), auo.c, Optional.of(c));
-   private static final atq i = new atq(true, auk.b.b, false);
-   private static final atq j = new atq(false, auk.b.a, false);
-   private static final alg k = alg.b("resourcepacks");
-   @Nullable
-   private final Path l;
+@FunctionalInterface
+public interface hjo {
+   Logger a = LogUtils.getLogger();
 
-   public hjo(Path $$0, feg $$1) {
-      super(atr.a, b($$0), k, $$1);
-      this.l = this.a($$0);
-   }
-
-   private static ato a(String $$0, wy $$1) {
-      return new ato($$0, $$1, auo.c, Optional.of(auj.a($$0)));
-   }
-
-   @Nullable
-   private Path a(Path $$0) {
-      if (ab.aU && $$0.getFileSystem() == FileSystems.getDefault()) {
-         Path $$1 = $$0.getParent().resolve("resourcepacks");
-         if (Files.isDirectory($$1)) {
-            return $$1;
+   static hjo create(Collection<auc<?>> $$0) {
+      return ($$1, $$2) -> {
+         avf $$3;
+         try {
+            $$3 = $$2.f().a($$0);
+         } catch (Exception var9) {
+            a.error("Unable to parse metadata from {}", $$1, var9);
+            return null;
          }
-      }
 
-      return null;
-   }
+         fiu $$7;
+         try (InputStream $$6 = $$2.d()) {
+            $$7 = fiu.a($$6);
+         } catch (IOException var11) {
+            a.error("Using missing texture, unable to load {}", $$1, var11);
+            return null;
+         }
 
-   private static att b(Path $$0) {
-      atu $$1 = new atu().a(f).a("minecraft", "realms");
-      return $$1.b().a().a(atr.a, $$0).a(h);
-   }
+         Optional<hkw> $$11 = $$3.a(hkw.b);
+         hkx $$12;
+         if ($$11.isPresent()) {
+            $$12 = $$11.get().a($$7.a(), $$7.b());
+            if (!azm.c($$7.a(), $$12.a()) || !azm.c($$7.b(), $$12.b())) {
+               a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
+               $$7.close();
+               return null;
+            }
+         } else {
+            $$12 = new hkx($$7.a(), $$7.b());
+         }
 
-   @Override
-   protected wy a(String $$0) {
-      wy $$1 = g.get($$0);
-      return (wy)($$1 != null ? $$1 : wy.b($$0));
+         return new hje($$1, $$12, $$7, $$3);
+      };
    }
 
    @Nullable
-   @Override
-   protected auk a(atp $$0) {
-      return auk.a(h, b($$0), atr.a, i);
-   }
-
-   @Nullable
-   @Override
-   protected auk a(String $$0, auk.c $$1, wy $$2) {
-      return auk.a(a($$0, $$2), $$1, atr.a, j);
-   }
-
-   @Override
-   protected void a(BiConsumer<String, Function<String, auk>> $$0) {
-      super.a($$0);
-      if (this.l != null) {
-         this.a(this.l, $$0);
-      }
-   }
+   hje loadSprite(alg var1, avb var2);
 }

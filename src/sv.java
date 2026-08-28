@@ -22,7 +22,7 @@ public class sv {
    private final sv.b i;
    private boolean j = true;
    @Nullable
-   private je<tl> k;
+   private jf<tl> k;
    private final sv.c l;
    private final sv.c m;
    final boolean n;
@@ -35,7 +35,7 @@ public class sv {
       this.m = $$5;
       this.f = ImmutableList.copyOf($$1);
       this.n = $$6;
-      this.e = this.f.stream().flatMap($$0x -> $$0x.b().stream()).collect(af.b());
+      this.e = this.f.stream().flatMap($$0x -> $$0x.b().stream()).collect(ag.b());
       $$3.a(this);
       this.e.forEach($$0x -> $$0x.a(new tf()));
    }
@@ -90,7 +90,7 @@ public class sv {
                if ($$3.i()) {
                   sv.this.g.forEach($$1xx -> $$1xx.b($$1));
                   LongSet $$0 = new LongArraySet(sv.this.c.y());
-                  $$0.forEach($$0xxx -> sv.this.c.a(dih.a($$0xxx), dih.b($$0xxx), false));
+                  $$0.forEach($$0xxx -> sv.this.c.a(dio.a($$0xxx), dio.b($$0xxx), false));
                   sv.this.a($$0 + 1);
                }
             }
@@ -109,7 +109,7 @@ public class sv {
                if (sv.this.n) {
                   sv.this.d();
                   LongSet $$2 = new LongArraySet(sv.this.c.y());
-                  $$2.forEach($$0xxx -> sv.this.c.a(dih.a($$0xxx), dih.b($$0xxx), false));
+                  $$2.forEach($$0xxx -> sv.this.c.a(dio.a($$0xxx), dio.b($$0xxx), false));
                   sy.a.a();
                } else {
                   this.a();

@@ -1,76 +1,72 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.UnmodifiableIterator;
 import java.util.List;
-import java.util.Objects;
 
-public class gbw extends gca<cuw> {
-   private static final ftw h = new ftw(
-      alg.b("recipe_book/filter_enabled"),
-      alg.b("recipe_book/filter_disabled"),
-      alg.b("recipe_book/filter_enabled_highlighted"),
-      alg.b("recipe_book/filter_disabled_highlighted")
-   );
-   private static final wy i = wy.c("gui.recipebook.toggleRecipes.craftable");
-   private static final List<gca.a> j = List.of(
-      new gca.a(gcg.a), new gca.a(czh.pS, czh.pK, ddw.c), new gca.a(czh.eS, ddw.a), new gca.a(czh.rq, czh.pi, ddw.d), new gca.a(czh.ml, ddw.b)
-   );
+public class gbw extends fyn {
+   private static final int a = 20;
+   private static final int b = 5;
+   private static final int c = 20;
+   private final wy d;
+   private final List<wy> s;
+   private final ImmutableList<gbw.a> u;
+   private fto v = fto.a;
+   private int w;
+   private int x;
 
-   public gbw(cuw $$0) {
-      super($$0, j);
+   protected gbw(wy $$0, List<wy> $$1, ImmutableList<gbw.a> $$2) {
+      super($$0);
+      this.s = $$1;
+      this.d = wx.a($$0, xb.a($$1, wx.a));
+      this.u = $$2;
    }
 
    @Override
-   protected boolean a(cws $$0) {
-      return this.f.m() == $$0 || this.f.n().contains($$0);
-   }
-
-   private boolean b(dfa $$0) {
-      int $$1 = this.f.o();
-      int $$2 = this.f.p();
-      Objects.requireNonNull($$0);
-
-      return switch ($$0) {
-         case dfe $$3 -> $$1 >= $$3.b() && $$2 >= $$3.c();
-         case dff $$4 -> $$1 * $$2 >= $$4.b().size();
-         default -> false;
-      };
+   public wy i() {
+      return this.d;
    }
 
    @Override
-   protected void a(gby $$0, dfa $$1, baz $$2) {
-      $$0.b(this.f.m(), $$2, $$1.d());
-      Objects.requireNonNull($$1);
-      switch ($$1) {
-         case dfe $$3:
-            List<cws> $$4 = this.f.n();
-            akr.a(this.f.o(), this.f.p(), $$3.b(), $$3.c(), $$3.f(), ($$3x, $$4x, $$5x, $$6x) -> {
-               cws $$7x = $$4.get($$4x);
-               $$0.a($$7x, $$2, $$3x);
-            });
-            break;
-         case dff $$5:
-            label15: {
-               List<cws> $$6 = this.f.n();
-               int $$7 = Math.min($$5.b().size(), $$6.size());
+   public void aO_() {
+      UnmodifiableIterator $$1 = this.u.iterator();
 
-               for (int $$8 = 0; $$8 < $$7; $$8++) {
-                  $$0.a($$6.get($$8), $$2, $$5.b().get($$8));
-               }
-               break label15;
-            }
+      while ($$1.hasNext()) {
+         gbw.a $$0 = (gbw.a)$$1.next();
+         this.x = Math.max(this.x, 20 + this.p.a($$0.a) + 20);
+      }
+
+      int $$1x = 5 + this.x + 5;
+      int $$2 = $$1x * this.u.size();
+      this.v = fto.a(this.p, $$2, this.s.toArray(new wy[0]));
+      int $$3 = this.v.a() * 9;
+      this.w = (int)((double)this.o / 2.0 - (double)$$3 / 2.0);
+      int $$4 = this.w + $$3 + 9 * 2;
+      int $$5 = (int)((double)this.n / 2.0 - (double)$$2 / 2.0);
+
+      for (UnmodifiableIterator var6 = this.u.iterator(); var6.hasNext(); $$5 += $$1x) {
+         gbw.a $$6 = (gbw.a)var6.next();
+         this.c(fsv.a($$6.a, $$6.b).a($$5, $$4, this.x, 20).a());
       }
    }
 
    @Override
-   protected void a() {
-      this.e.a(h);
+   public void a(fsh $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, this.w - 9 * 2, -1);
+      this.v.a($$0, this.n / 2, this.w);
    }
 
    @Override
-   protected wy b() {
-      return i;
+   public boolean aD_() {
+      return false;
    }
 
-   @Override
-   protected void a(gce $$0, cri $$1) {
-      $$0.a($$1, this::b);
+   public static final class a {
+      final wy a;
+      final fsv.c b;
+
+      public a(wy $$0, fsv.c $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 }

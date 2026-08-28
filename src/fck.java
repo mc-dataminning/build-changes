@@ -1,34 +1,42 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
 
-public record fck(boolean b) implements fcq {
-   public static final MapCodec<fck> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.BOOL.fieldOf("active").forGetter(fck::e)).apply($$0, fck::new));
+public class fck extends fcn {
+   public static final MapCodec<fck> a = a(fck::new);
+   public static final Codec<fck> b = b(fck::new);
 
-   public boolean a(ezh $$0) {
-      return $$0.b(fcb.l) == this.b;
+   fck(List<fcx> $$0) {
+      super($$0, ag.a($$0));
+   }
+
+   public static fck a(List<fcx> $$0) {
+      return new fck(List.copyOf($$0));
    }
 
    @Override
-   public fcr b() {
-      return fcs.s;
+   public fcy b() {
+      return fcz.c;
    }
 
-   @Override
-   public Set<bax<?>> a() {
-      return Set.of(fcb.l);
+   public static fck.a a(fcx.a... $$0) {
+      return new fck.a($$0);
    }
 
-   public static fcq.a c() {
-      return () -> new fck(true);
-   }
+   public static class a extends fcn.a {
+      public a(fcx.a... $$0) {
+         super($$0);
+      }
 
-   public static fcq.a d() {
-      return () -> new fck(false);
-   }
+      @Override
+      public fck.a and(fcx.a $$0) {
+         this.a($$0);
+         return this;
+      }
 
-   public boolean e() {
-      return this.b;
+      @Override
+      protected fcx a(List<fcx> $$0) {
+         return new fck($$0);
+      }
    }
 }

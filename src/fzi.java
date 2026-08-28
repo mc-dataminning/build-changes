@@ -1,26 +1,13 @@
-public class fzi extends fyq<cvq> {
-   private static final alg G = alg.b("textures/gui/container/dispenser.png");
+import java.util.List;
 
-   public fzi(cvq $$0, crb $$1, wy $$2) {
-      super($$0, $$1, $$2);
-   }
+public class fzi extends fzd<cvi> {
+   private static final alg G = alg.b("container/blast_furnace/lit_progress");
+   private static final alg H = alg.b("container/blast_furnace/burn_progress");
+   private static final alg I = alg.b("textures/gui/container/blast_furnace.png");
+   private static final wy J = wy.c("gui.recipebook.toggleRecipes.blastable");
+   private static final List<gcm.a> K = List.of(new gcm.a(gcs.c), new gcm.a(czo.au, ded.h), new gcm.a(czo.pQ, czo.qE, ded.i));
 
-   @Override
-   protected void aO_() {
-      super.aO_();
-      this.v = (this.s - this.p.a(this.l)) / 2;
-   }
-
-   @Override
-   public void a(frv $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(frv $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.s) / 2;
-      int $$5 = (this.o - this.u) / 2;
-      $$0.a(gqk::H, G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+   public fzi(cvi $$0, cri $$1, wy $$2) {
+      super($$0, $$1, $$2, J, I, G, H, K);
    }
 }

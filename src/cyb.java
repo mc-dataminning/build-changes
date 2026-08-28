@@ -1,115 +1,274 @@
-import io.netty.buffer.ByteBuf;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.Arrays;
-import java.util.List;
-import java.util.function.IntFunction;
-import java.util.stream.Collectors;
+import java.util.Collection;
+import java.util.Set;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.jetbrains.annotations.Contract;
 
-public enum cyb implements bak {
-   a(0, "white", 16383998, ews.i, 15790320, 16777215),
-   b(1, "orange", 16351261, ews.p, 15435844, 16738335),
-   c(2, "magenta", 13061821, ews.q, 12801229, 16711935),
-   d(3, "light_blue", 3847130, ews.r, 6719955, 10141901),
-   e(4, "yellow", 16701501, ews.s, 14602026, 16776960),
-   f(5, "lime", 8439583, ews.t, 4312372, 12582656),
-   g(6, "pink", 15961002, ews.u, 14188952, 16738740),
-   h(7, "gray", 4673362, ews.v, 4408131, 8421504),
-   i(8, "light_gray", 10329495, ews.w, 11250603, 13882323),
-   j(9, "cyan", 1481884, ews.x, 2651799, 65535),
-   k(10, "purple", 8991416, ews.y, 8073150, 10494192),
-   l(11, "blue", 3949738, ews.z, 2437522, 255),
-   m(12, "brown", 8606770, ews.A, 5320730, 9127187),
-   n(13, "green", 6192150, ews.B, 3887386, 65280),
-   o(14, "red", 11546150, ews.C, 11743532, 16711680),
-   p(15, "black", 1908001, ews.D, 1973019, 0);
+public class cyb {
+   static final alg a = a("items");
+   private final wy b;
+   alg c = a;
+   boolean d = true;
+   boolean e = true;
+   boolean f = false;
+   private final cyb.f g;
+   private final int h;
+   private final cyb.h i;
+   @Nullable
+   private czk j;
+   private Collection<czk> k = czl.a();
+   private Set<czk> l = czl.a();
+   private final Supplier<czk> m;
+   private final cyb.b n;
 
-   private static final IntFunction<cyb> s = ayc.a(cyb::a, values(), ayc.a.a);
-   private static final Int2ObjectOpenHashMap<cyb> t = new Int2ObjectOpenHashMap(
-      Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.y, $$0 -> (cyb)$$0))
-   );
-   public static final bak.a<cyb> q = bak.a(cyb::values);
-   public static final yw<ByteBuf, cyb> r = yu.a(s, cyb::a);
-   private final int u;
-   private final String v;
-   private final ews w;
-   private final int x;
-   private final int y;
-   private final int z;
-
-   private cyb(final int $$0, final String $$1, final int $$2, final ews $$3, final int $$4, final int $$5) {
-      this.u = $$0;
-      this.v = $$1;
-      this.w = $$3;
-      this.z = $$5;
-      this.x = axw.f($$2);
-      this.y = $$4;
+   cyb(cyb.f $$0, int $$1, cyb.h $$2, wy $$3, Supplier<czk> $$4, cyb.b $$5) {
+      this.g = $$0;
+      this.h = $$1;
+      this.b = $$3;
+      this.m = $$4;
+      this.n = $$5;
+      this.i = $$2;
    }
 
-   public int a() {
-      return this.u;
+   public static alg a(String $$0) {
+      return alg.b("textures/gui/container/creative_inventory/tab_" + $$0 + ".png");
    }
 
-   public String b() {
-      return this.v;
+   public static cyb.a a(cyb.f $$0, int $$1) {
+      return new cyb.a($$0, $$1);
    }
 
-   public int d() {
-      return this.x;
+   public wy a() {
+      return this.b;
    }
 
-   public ews e() {
-      return this.w;
+   public czk b() {
+      if (this.j == null) {
+         this.j = this.m.get();
+      }
+
+      return this.j;
+   }
+
+   public alg c() {
+      return this.c;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public boolean e() {
+      return this.d;
    }
 
    public int f() {
-      return this.y;
+      return this.h;
    }
 
-   public int g() {
-      return this.z;
+   public cyb.f g() {
+      return this.g;
    }
 
-   public static cyb a(int $$0) {
-      return s.apply($$0);
+   public boolean h() {
+      return !this.k.isEmpty();
    }
 
-   @Nullable
-   @Contract("_,!null->!null;_,null->_")
-   public static cyb a(String $$0, @Nullable cyb $$1) {
-      cyb $$2 = q.a($$0);
-      return $$2 != null ? $$2 : $$1;
+   public boolean i() {
+      return this.i != cyb.h.a || this.h();
    }
 
-   @Nullable
-   public static cyb b(int $$0) {
-      return (cyb)t.get($$0);
+   public boolean j() {
+      return this.f;
    }
 
-   @Override
-   public String toString() {
-      return this.v;
+   public cyb.h k() {
+      return this.i;
    }
 
-   @Override
-   public String c() {
-      return this.v;
+   public void a(cyb.d $$0) {
+      cyb.c $$1 = new cyb.c(this, $$0.a);
+      alf<cyb> $$2 = mg.aj.d(this).orElseThrow(() -> new IllegalStateException("Unregistered creative tab: " + this));
+      this.n.accept($$0, $$1);
+      this.k = $$1.a;
+      this.l = $$1.b;
    }
 
-   public static cyb a(arq $$0, cyb $$1, cyb $$2) {
-      ddi $$3 = a($$1, $$2);
-      return $$0.t()
-         .a(def.a, $$3, $$0)
-         .map($$2x -> ((ddj)$$2x.b()).a($$3, $$0.F_()))
-         .map(czd::h)
-         .filter(cyc.class::isInstance)
-         .map(cyc.class::cast)
-         .map(cyc::a)
-         .orElseGet(() -> $$0.A.h() ? $$1 : $$2);
+   public Collection<czk> l() {
+      return this.k;
    }
 
-   private static ddi a(cyb $$0, cyb $$1) {
-      return ddi.a(2, 1, List.of(new czd(cyc.a($$0)), new czd(cyc.a($$1))));
+   public Collection<czk> m() {
+      return this.l;
+   }
+
+   public boolean a(czk $$0) {
+      return this.l.contains($$0);
+   }
+
+   public static class a {
+      private static final cyb.b a = ($$0, $$1) -> {
+      };
+      private final cyb.f b;
+      private final int c;
+      private wy d = wy.i();
+      private Supplier<czk> e = () -> czk.k;
+      private cyb.b f = a;
+      private boolean g = true;
+      private boolean h = true;
+      private boolean i = false;
+      private cyb.h j = cyb.h.a;
+      private alg k = cyb.a;
+
+      public a(cyb.f $$0, int $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
+
+      public cyb.a a(wy $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public cyb.a a(Supplier<czk> $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public cyb.a a(cyb.b $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public cyb.a a() {
+         this.i = true;
+         return this;
+      }
+
+      public cyb.a b() {
+         this.h = false;
+         return this;
+      }
+
+      public cyb.a c() {
+         this.g = false;
+         return this;
+      }
+
+      protected cyb.a a(cyb.h $$0) {
+         this.j = $$0;
+         return this;
+      }
+
+      public cyb.a a(alg $$0) {
+         this.k = $$0;
+         return this;
+      }
+
+      public cyb d() {
+         if ((this.j == cyb.h.c || this.j == cyb.h.b) && this.f != a) {
+            throw new IllegalStateException("Special tabs can't have display items");
+         } else {
+            cyb $$0 = new cyb(this.b, this.c, this.j, this.d, this.e, this.f);
+            $$0.f = this.i;
+            $$0.e = this.h;
+            $$0.d = this.g;
+            $$0.c = this.k;
+            return $$0;
+         }
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      void accept(cyb.d var1, cyb.e var2);
+   }
+
+   static class c implements cyb.e {
+      public final Collection<czk> a = czl.a();
+      public final Set<czk> b = czl.a();
+      private final cyb c;
+      private final cut d;
+
+      public c(cyb $$0, cut $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
+
+      @Override
+      public void a(czk $$0, cyb.g $$1) {
+         if ($$0.M() != 1) {
+            throw new IllegalArgumentException("Stack size must be exactly 1");
+         } else {
+            boolean $$2 = this.a.contains($$0) && $$1 != cyb.g.c;
+            if ($$2) {
+               throw new IllegalStateException(
+                  "Accidentally adding the same item stack twice " + $$0.K().getString() + " to a Creative Mode Tab: " + this.c.a().getString()
+               );
+            } else {
+               if ($$0.h().a(this.d)) {
+                  switch ($$1) {
+                     case a:
+                        this.a.add($$0);
+                        this.b.add($$0);
+                        break;
+                     case b:
+                        this.a.add($$0);
+                        break;
+                     case c:
+                        this.b.add($$0);
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   public static record d(cut a, boolean b, jh.a c) {
+
+      public boolean a(cut $$0, boolean $$1, jh.a $$2) {
+         return !this.a.equals($$0) || this.b != $$1 || this.c != $$2;
+      }
+   }
+
+   public interface e {
+      void a(czk var1, cyb.g var2);
+
+      default void a(czk $$0) {
+         this.a($$0, cyb.g.a);
+      }
+
+      default void a(djg $$0, cyb.g $$1) {
+         this.a(new czk($$0), $$1);
+      }
+
+      default void a(djg $$0) {
+         this.a(new czk($$0), cyb.g.a);
+      }
+
+      default void a(Collection<czk> $$0, cyb.g $$1) {
+         $$0.forEach($$1x -> this.a($$1x, $$1));
+      }
+
+      default void a(Collection<czk> $$0) {
+         this.a($$0, cyb.g.a);
+      }
+   }
+
+   public static enum f {
+      a,
+      b;
+   }
+
+   protected static enum g {
+      a,
+      b,
+      c;
+   }
+
+   public static enum h {
+      a,
+      b,
+      c,
+      d;
    }
 }

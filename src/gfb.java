@@ -1,65 +1,37 @@
-public class gfb extends geg {
-   private static final int a = 28;
-   private static final int b = 32;
-   private static final int c = 6;
-   private static final int d = 20;
-   private static final int e = 4;
-   private static final String f = "water_patch";
-   private static final String g = "back";
-   private static final String i = "front";
-   private static final String j = "right";
-   private static final String k = "left";
-
-   public gfb(gjc $$0) {
+public class gfb extends ggy<hce> {
+   public gfb(gjo $$0) {
       super($$0);
    }
 
-   private static void a(gjm $$0) {
-      int $$1 = 16;
-      int $$2 = 14;
-      int $$3 = 10;
-      $$0.a("bottom", gjh.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), gje.a(0.0F, 3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      $$0.a("back", gjh.c().a(0, 19).a(-13.0F, -7.0F, -1.0F, 18.0F, 6.0F, 2.0F), gje.a(-15.0F, 4.0F, 4.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
-      $$0.a("front", gjh.c().a(0, 27).a(-8.0F, -7.0F, -1.0F, 16.0F, 6.0F, 2.0F), gje.a(15.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      $$0.a("right", gjh.c().a(0, 35).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), gje.a(0.0F, 4.0F, -9.0F, 0.0F, (float) Math.PI, 0.0F));
-      $$0.a("left", gjh.c().a(0, 43).a(-14.0F, -7.0F, -1.0F, 28.0F, 6.0F, 2.0F), gje.a(0.0F, 4.0F, 9.0F));
-      int $$4 = 20;
-      int $$5 = 7;
-      int $$6 = 6;
-      float $$7 = -5.0F;
-      $$0.a(
-         "left_paddle",
-         gjh.c().a(62, 0).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         gje.a(3.0F, -5.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
-      );
-      $$0.a(
-         "right_paddle",
-         gjh.c().a(62, 20).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         gje.a(3.0F, -5.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
-      );
+   public static gju a(gjs $$0) {
+      gjw $$1 = ggy.a($$0, 0.0F);
+      gjy $$2 = $$1.a();
+      gjy $$3 = $$2.a("head", gjt.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), gjq.a(0.0F, 1.0F, 0.0F));
+      $$3.a("hat", gjt.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0.a(0.5F)), gjq.a);
+      $$2.a("right_leg", gjt.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), gjq.a(-1.9F, 11.0F, 0.0F));
+      $$2.a("left_leg", gjt.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), gjq.a(1.9F, 11.0F, 0.0F));
+      return gju.a($$1, 64, 32);
    }
 
-   public static gji a() {
-      gjk $$0 = new gjk();
-      gjm $$1 = $$0.a();
-      a($$1);
-      return gji.a($$0, 128, 64);
-   }
-
-   public static gji b() {
-      gjk $$0 = new gjk();
-      gjm $$1 = $$0.a();
-      a($$1);
-      $$1.a("chest_bottom", gjh.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), gje.a(-2.0F, -5.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("chest_lid", gjh.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), gje.a(-2.0F, -9.0F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("chest_lock", gjh.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), gje.a(-1.0F, -6.0F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      return gji.a($$0, 128, 128);
-   }
-
-   public static gji c() {
-      gjk $$0 = new gjk();
-      gjm $$1 = $$0.a();
-      $$1.a("water_patch", gjh.c().a(0, 0).a(-14.0F, -9.0F, -3.0F, 28.0F, 16.0F, 3.0F), gje.a(0.0F, -3.0F, 1.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      return gji.a($$0, 0, 0);
+   public void a(hce $$0) {
+      super.a($$0);
+      this.o.e = (float) (Math.PI / 180.0) * $$0.l.a();
+      this.o.f = (float) (Math.PI / 180.0) * $$0.l.b();
+      this.o.g = (float) (Math.PI / 180.0) * $$0.l.c();
+      this.q.e = (float) (Math.PI / 180.0) * $$0.m.a();
+      this.q.f = (float) (Math.PI / 180.0) * $$0.m.b();
+      this.q.g = (float) (Math.PI / 180.0) * $$0.m.c();
+      this.s.e = (float) (Math.PI / 180.0) * $$0.n.a();
+      this.s.f = (float) (Math.PI / 180.0) * $$0.n.b();
+      this.s.g = (float) (Math.PI / 180.0) * $$0.n.c();
+      this.r.e = (float) (Math.PI / 180.0) * $$0.o.a();
+      this.r.f = (float) (Math.PI / 180.0) * $$0.o.b();
+      this.r.g = (float) (Math.PI / 180.0) * $$0.o.c();
+      this.u.e = (float) (Math.PI / 180.0) * $$0.p.a();
+      this.u.f = (float) (Math.PI / 180.0) * $$0.p.b();
+      this.u.g = (float) (Math.PI / 180.0) * $$0.p.c();
+      this.t.e = (float) (Math.PI / 180.0) * $$0.q.a();
+      this.t.f = (float) (Math.PI / 180.0) * $$0.q.b();
+      this.t.g = (float) (Math.PI / 180.0) * $$0.q.c();
    }
 }

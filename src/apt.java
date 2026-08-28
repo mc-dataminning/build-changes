@@ -14,34 +14,34 @@ public class apt {
    private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("commands.trigger.failed.unprimed"));
    private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wy.c("commands.trigger.failed.invalid"));
 
-   public static void a(CommandDispatcher<ei> $$0) {
+   public static void a(CommandDispatcher<ej> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)ej.a("trigger")
+         (LiteralArgumentBuilder)ek.a("trigger")
             .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ej.a("objective", fc.a())
-                        .suggests(($$0x, $$1) -> a((ei)$$0x.getSource(), $$1))
-                        .executes($$0x -> a((ei)$$0x.getSource(), ((ei)$$0x.getSource()).h(), fc.a($$0x, "objective"))))
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ek.a("objective", fd.a())
+                        .suggests(($$0x, $$1) -> a((ej)$$0x.getSource(), $$1))
+                        .executes($$0x -> a((ej)$$0x.getSource(), ((ej)$$0x.getSource()).h(), fd.a($$0x, "objective"))))
                      .then(
-                        ej.a("add")
+                        ek.a("add")
                            .then(
-                              ej.a("value", IntegerArgumentType.integer())
+                              ek.a("value", IntegerArgumentType.integer())
                                  .executes(
                                     $$0x -> a(
-                                          (ei)$$0x.getSource(),
-                                          ((ei)$$0x.getSource()).h(),
-                                          fc.a($$0x, "objective"),
+                                          (ej)$$0x.getSource(),
+                                          ((ej)$$0x.getSource()).h(),
+                                          fd.a($$0x, "objective"),
                                           IntegerArgumentType.getInteger($$0x, "value")
                                        )
                                  )
                            )
                      ))
                   .then(
-                     ej.a("set")
+                     ek.a("set")
                         .then(
-                           ej.a("value", IntegerArgumentType.integer())
+                           ek.a("value", IntegerArgumentType.integer())
                               .executes(
                                  $$0x -> b(
-                                       (ei)$$0x.getSource(), ((ei)$$0x.getSource()).h(), fc.a($$0x, "objective"), IntegerArgumentType.getInteger($$0x, "value")
+                                       (ej)$$0x.getSource(), ((ej)$$0x.getSource()).h(), fd.a($$0x, "objective"), IntegerArgumentType.getInteger($$0x, "value")
                                     )
                               )
                         )
@@ -50,15 +50,15 @@ public class apt {
       );
    }
 
-   public static CompletableFuture<Suggestions> a(ei $$0, SuggestionsBuilder $$1) {
-      ffu $$2 = $$0.f();
+   public static CompletableFuture<Suggestions> a(ej $$0, SuggestionsBuilder $$1) {
+      fgb $$2 = $$0.f();
       List<String> $$3 = Lists.newArrayList();
       if ($$2 != null) {
-         ffv $$4 = $$0.l().aJ();
+         fgc $$4 = $$0.l().aJ();
 
-         for (ffn $$5 : $$4.b()) {
-            if ($$5.d() == ffy.d) {
-               ffr $$6 = $$4.d($$2, $$5);
+         for (ffu $$5 : $$4.b()) {
+            if ($$5.d() == fgf.d) {
+               ffy $$6 = $$4.d($$2, $$5);
                if ($$6 != null && !$$6.b()) {
                   $$3.add($$5.c());
                }
@@ -66,37 +66,37 @@ public class apt {
          }
       }
 
-      return en.b($$3, $$1);
+      return eo.b($$3, $$1);
    }
 
-   private static int a(ei $$0, arr $$1, ffn $$2, int $$3) throws CommandSyntaxException {
-      fft $$4 = a($$0.l().aJ(), $$1, $$2);
+   private static int a(ej $$0, arr $$1, ffu $$2, int $$3) throws CommandSyntaxException {
+      fga $$4 = a($$0.l().aJ(), $$1, $$2);
       int $$5 = $$4.b($$3);
       $$0.a(() -> wy.a("commands.trigger.add.success", $$2.h(), $$3), true);
       return $$5;
    }
 
-   private static int b(ei $$0, arr $$1, ffn $$2, int $$3) throws CommandSyntaxException {
-      fft $$4 = a($$0.l().aJ(), $$1, $$2);
+   private static int b(ej $$0, arr $$1, ffu $$2, int $$3) throws CommandSyntaxException {
+      fga $$4 = a($$0.l().aJ(), $$1, $$2);
       $$4.a($$3);
       $$0.a(() -> wy.a("commands.trigger.set.success", $$2.h(), $$3), true);
       return $$3;
    }
 
-   private static int a(ei $$0, arr $$1, ffn $$2) throws CommandSyntaxException {
-      fft $$3 = a($$0.l().aJ(), $$1, $$2);
+   private static int a(ej $$0, arr $$1, ffu $$2) throws CommandSyntaxException {
+      fga $$3 = a($$0.l().aJ(), $$1, $$2);
       int $$4 = $$3.b(1);
       $$0.a(() -> wy.a("commands.trigger.simple.success", $$2.h()), true);
       return $$4;
    }
 
-   private static fft a(ffv $$0, ffu $$1, ffn $$2) throws CommandSyntaxException {
-      if ($$2.d() != ffy.d) {
+   private static fga a(fgc $$0, fgb $$1, ffu $$2) throws CommandSyntaxException {
+      if ($$2.d() != fgf.d) {
          throw b.create();
       } else {
-         ffr $$3 = $$0.d($$1, $$2);
+         ffy $$3 = $$0.d($$1, $$2);
          if ($$3 != null && !$$3.b()) {
-            fft $$4 = $$0.c($$1, $$2);
+            fga $$4 = $$0.c($$1, $$2);
             $$4.f();
             return $$4;
          } else {

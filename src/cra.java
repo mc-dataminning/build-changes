@@ -1,63 +1,68 @@
-public record cra(boolean c, boolean d, boolean e, boolean f, boolean g, boolean h, boolean i) {
-   private static final byte j = 1;
-   private static final byte k = 2;
-   private static final byte l = 4;
-   private static final byte m = 8;
-   private static final byte n = 16;
-   private static final byte o = 32;
-   private static final byte p = 64;
-   public static final yw<vu, cra> a = new yw<vu, cra>() {
-      public void a(vu $$0, cra $$1) {
-         byte $$2 = 0;
-         $$2 = (byte)($$2 | ($$1.a() ? 1 : 0));
-         $$2 = (byte)($$2 | ($$1.b() ? 2 : 0));
-         $$2 = (byte)($$2 | ($$1.c() ? 4 : 0));
-         $$2 = (byte)($$2 | ($$1.d() ? 8 : 0));
-         $$2 = (byte)($$2 | ($$1.e() ? 16 : 0));
-         $$2 = (byte)($$2 | ($$1.f() ? 32 : 0));
-         $$2 = (byte)($$2 | ($$1.g() ? 64 : 0));
-         $$0.l($$2);
-      }
+import com.google.common.collect.Maps;
+import com.mojang.serialization.Codec;
+import java.util.Map;
 
-      public cra a(vu $$0) {
-         byte $$1 = $$0.readByte();
-         boolean $$2 = ($$1 & 1) != 0;
-         boolean $$3 = ($$1 & 2) != 0;
-         boolean $$4 = ($$1 & 4) != 0;
-         boolean $$5 = ($$1 & 8) != 0;
-         boolean $$6 = ($$1 & 16) != 0;
-         boolean $$7 = ($$1 & 32) != 0;
-         boolean $$8 = ($$1 & 64) != 0;
-         return new cra($$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      }
-   };
-   public static cra b = new cra(false, false, false, false, false, false, false);
+public final class cra {
+   public static final alf<cra> a = a("desert");
+   public static final alf<cra> b = a("jungle");
+   public static final alf<cra> c = a("plains");
+   public static final alf<cra> d = a("savanna");
+   public static final alf<cra> e = a("snow");
+   public static final alf<cra> f = a("swamp");
+   public static final alf<cra> g = a("taiga");
+   public static final Codec<jf<cra>> h = ald.a(mh.aE);
+   public static final yw<wj, jf<cra>> i = yu.b(mh.aE);
+   private static final Map<alf<dkk>, alf<cra>> j = ag.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(dkr.B, a);
+      $$0.put(dkr.f, a);
+      $$0.put(dkr.C, a);
+      $$0.put(dkr.D, a);
+      $$0.put(dkr.A, b);
+      $$0.put(dkr.y, b);
+      $$0.put(dkr.z, b);
+      $$0.put(dkr.t, d);
+      $$0.put(dkr.s, d);
+      $$0.put(dkr.x, d);
+      $$0.put(dkr.Y, e);
+      $$0.put(dkr.X, e);
+      $$0.put(dkr.M, e);
+      $$0.put(dkr.e, e);
+      $$0.put(dkr.O, e);
+      $$0.put(dkr.r, e);
+      $$0.put(dkr.d, e);
+      $$0.put(dkr.G, e);
+      $$0.put(dkr.H, e);
+      $$0.put(dkr.I, e);
+      $$0.put(dkr.J, e);
+      $$0.put(dkr.g, f);
+      $$0.put(dkr.h, f);
+      $$0.put(dkr.p, g);
+      $$0.put(dkr.o, g);
+      $$0.put(dkr.v, g);
+      $$0.put(dkr.u, g);
+      $$0.put(dkr.q, g);
+      $$0.put(dkr.w, g);
+   });
 
-   public boolean a() {
-      return this.c;
+   private static alf<cra> a(String $$0) {
+      return alf.a(mh.aE, alg.b($$0));
    }
 
-   public boolean b() {
-      return this.d;
+   private static cra a(js<cra> $$0, alf<cra> $$1) {
+      return js.a($$0, $$1, new cra());
    }
 
-   public boolean c() {
-      return this.e;
+   public static cra a(js<cra> $$0) {
+      a($$0, a);
+      a($$0, b);
+      a($$0, c);
+      a($$0, d);
+      a($$0, e);
+      a($$0, f);
+      return a($$0, g);
    }
 
-   public boolean d() {
-      return this.f;
-   }
-
-   public boolean e() {
-      return this.g;
-   }
-
-   public boolean f() {
-      return this.h;
-   }
-
-   public boolean g() {
-      return this.i;
+   public static alf<cra> a(jf<dkk> $$0) {
+      return $$0.e().map(j::get).orElse(c);
    }
 }

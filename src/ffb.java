@@ -1,32 +1,20 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+public interface ffb {
+   ffb a = ($$0, $$1) -> false;
+   ffb b = ($$0, $$1) -> !$$0 && !$$1;
+   ffb c = ($$0, $$1) -> $$1 && !$$0;
+   ffb d = ($$0, $$1) -> !$$0;
+   ffb e = ($$0, $$1) -> $$0 && !$$1;
+   ffb f = ($$0, $$1) -> !$$1;
+   ffb g = ($$0, $$1) -> $$0 != $$1;
+   ffb h = ($$0, $$1) -> !$$0 || !$$1;
+   ffb i = ($$0, $$1) -> $$0 && $$1;
+   ffb j = ($$0, $$1) -> $$0 == $$1;
+   ffb k = ($$0, $$1) -> $$1;
+   ffb l = ($$0, $$1) -> !$$0 || $$1;
+   ffb m = ($$0, $$1) -> $$0;
+   ffb n = ($$0, $$1) -> $$0 || !$$1;
+   ffb o = ($$0, $$1) -> $$0 || $$1;
+   ffb p = ($$0, $$1) -> true;
 
-public class ffb implements ffc {
-   private final DoubleList a;
-
-   public ffb(DoubleList $$0) {
-      this.a = $$0;
-   }
-
-   @Override
-   public boolean a(ffc.a $$0) {
-      int $$1 = this.a.size() - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2, $$2, $$2)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public int size() {
-      return this.a.size();
-   }
-
-   @Override
-   public DoubleList a() {
-      return this.a;
-   }
+   boolean apply(boolean var1, boolean var2);
 }

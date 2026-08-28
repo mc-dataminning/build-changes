@@ -1,7 +1,7 @@
 import io.netty.buffer.ByteBuf;
 
-public record ahr(iu b, boolean c) implements zf<agp> {
-   public static final yw<ByteBuf, ahr> a = yw.a(iu.b, ahr::b, yu.b, ahr::e, ahr::new);
+public record ahr(iv b, boolean c) implements zf<agp> {
+   public static final yw<ByteBuf, ahr> a = yw.a(iv.b, ahr::b, yu.b, ahr::e, ahr::new);
 
    @Override
    public zh<ahr> a() {

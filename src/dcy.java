@@ -1,71 +1,31 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class dcy {
-   @Nullable
-   private final crc a;
-   private final buc b;
-   private final fem c;
-   private final dja d;
-   private final czd e;
+public interface dcy {
+   Codec<dcy> d = mg.aw.q().dispatch(dcy::a, dcy.a::a);
+   yw<wj, dcy> e = yu.a(mh.n).b(dcy::a, dcy.a::b);
 
-   public dcy(crc $$0, buc $$1, fem $$2) {
-      this($$0.dV(), $$0, $$1, $$0.b($$1), $$2);
-   }
+   dcy.a<? extends dcy> a();
 
-   protected dcy(dja $$0, @Nullable crc $$1, buc $$2, czd $$3, fem $$4) {
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$4;
-      this.e = $$3;
-      this.d = $$0;
-   }
+   boolean a(djh var1, czk var2, bxj var3);
 
-   protected final fem j() {
-      return this.c;
-   }
+   public static record a<T extends dcy>(MapCodec<T> f, yw<wj, T> g) {
+      public static final dcy.a<dcw> a = a("apply_effects", dcw.a, dcw.b);
+      public static final dcy.a<dda> b = a("remove_effects", dda.a, dda.b);
+      public static final dcy.a<dcx> c = a("clear_all_effects", dcx.b, dcx.c);
+      public static final dcy.a<ddb> d = a("teleport_randomly", ddb.a, ddb.b);
+      public static final dcy.a<dcz> e = a("play_sound", dcz.a, dcz.b);
 
-   public iu a() {
-      return this.c.b();
-   }
+      private static <T extends dcy> dcy.a<T> a(String $$0, MapCodec<T> $$1, yw<wj, T> $$2) {
+         return js.a(mg.aw, $$0, new dcy.a<>($$1, $$2));
+      }
 
-   public ja k() {
-      return this.c.c();
-   }
+      public MapCodec<T> a() {
+         return this.f;
+      }
 
-   public feq l() {
-      return this.c.g();
-   }
-
-   public boolean m() {
-      return this.c.e();
-   }
-
-   public czd n() {
-      return this.e;
-   }
-
-   @Nullable
-   public crc o() {
-      return this.a;
-   }
-
-   public buc p() {
-      return this.b;
-   }
-
-   public dja q() {
-      return this.d;
-   }
-
-   public ja g() {
-      return this.a == null ? ja.c : this.a.cO();
-   }
-
-   public boolean h() {
-      return this.a != null && this.a.fY();
-   }
-
-   public float i() {
-      return this.a == null ? 0.0F : this.a.dL();
+      public yw<wj, T> b() {
+         return this.g;
+      }
    }
 }

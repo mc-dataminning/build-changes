@@ -1,5 +1,21 @@
-public interface ecb {
-   eah a(int var1);
+public enum ecb implements bak {
+   a("none"),
+   b("low"),
+   c("tall");
 
-   void a(int var1, eah var2);
+   private final String d;
+
+   private ecb(final String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c();
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
 }

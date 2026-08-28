@@ -24,16 +24,16 @@ public class ana {
    static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wy.c("commands.debug.function.noRecursion"));
    static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wy.c("commands.debug.function.noReturnRun"));
 
-   public static void a(CommandDispatcher<ei> $$0) {
+   public static void a(CommandDispatcher<ej> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("debug").requires($$0x -> $$0x.c(3)))
-                  .then(ej.a("start").executes($$0x -> a((ei)$$0x.getSource()))))
-               .then(ej.a("stop").executes($$0x -> b((ei)$$0x.getSource()))))
-            .then(((LiteralArgumentBuilder)ej.a("function").requires($$0x -> $$0x.c(3))).then(ej.a("name", gr.a()).suggests(ano.b).executes(new ana.a())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("debug").requires($$0x -> $$0x.c(3)))
+                  .then(ek.a("start").executes($$0x -> a((ej)$$0x.getSource()))))
+               .then(ek.a("stop").executes($$0x -> b((ej)$$0x.getSource()))))
+            .then(((LiteralArgumentBuilder)ek.a("function").requires($$0x -> $$0x.c(3))).then(ek.a("name", gs.a()).suggests(ano.b).executes(new ana.a())))
       );
    }
 
-   private static int a(ei $$0) throws CommandSyntaxException {
+   private static int a(ej $$0) throws CommandSyntaxException {
       MinecraftServer $$1 = $$0.l();
       if ($$1.bg()) {
          throw c.create();
@@ -44,12 +44,12 @@ public class ana {
       }
    }
 
-   private static int b(ei $$0) throws CommandSyntaxException {
+   private static int b(ej $$0) throws CommandSyntaxException {
       MinecraftServer $$1 = $$0.l();
       if (!$$1.bg()) {
          throw b.create();
       } else {
-         bqm $$2 = $$1.bi();
+         bqo $$2 = $$1.bi();
          double $$3 = (double)$$2.g() / (double)baq.a;
          double $$4 = (double)$$2.f() / $$3;
          $$0.a(() -> wy.a("commands.debug.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2.f(), String.format(Locale.ROOT, "%.2f", $$4)), true);
@@ -57,18 +57,18 @@ public class ana {
       }
    }
 
-   static class a extends hg.b<ei> implements hg.a<ei> {
-      public void a(ei $$0, ContextChain<ei> $$1, he $$2, hk<ei> $$3) throws CommandSyntaxException {
+   static class a extends hh.b<ej> implements hh.a<ej> {
+      public void a(ej $$0, ContextChain<ej> $$1, hf $$2, hl<ej> $$3) throws CommandSyntaxException {
          if ($$2.c()) {
             throw ana.e.create();
          } else if ($$3.a() != null) {
             throw ana.d.create();
          } else {
-            CommandContext<ei> $$4 = $$1.getTopContext();
-            Collection<hw<ei>> $$5 = gr.a($$4, "name");
+            CommandContext<ej> $$4 = $$1.getTopContext();
+            Collection<hx<ej>> $$5 = gs.a($$4, "name");
             MinecraftServer $$6 = $$0.l();
-            String $$7 = "debug-trace-" + af.f() + ".txt";
-            CommandDispatcher<ei> $$8 = $$0.l().aE().a();
+            String $$7 = "debug-trace-" + ag.f() + ".txt";
+            CommandDispatcher<ej> $$8 = $$0.l().aE().a();
             int $$9 = 0;
 
             try {
@@ -78,18 +78,18 @@ public class ana {
                ana.b $$12 = new ana.b($$11);
                $$3.a($$12);
 
-               for (final hw<ei> $$13 : $$5) {
+               for (final hx<ej> $$13 : $$5) {
                   try {
-                     ei $$14 = $$0.a($$12).b(2);
-                     hy<ei> $$15 = $$13.a(null, $$8);
-                     $$3.a((new hq<ei>($$15, ef.a, false) {
-                        public void a(ei $$0, hj<ei> $$1, hl $$2) {
+                     ej $$14 = $$0.a($$12).b(2);
+                     hz<ej> $$15 = $$13.a(null, $$8);
+                     $$3.a((new hr<ej>($$15, eg.a, false) {
+                        public void a(ej $$0, hk<ej> $$1, hm $$2) {
                            $$11.println($$13.a());
                            super.a($$0, $$1, $$2);
                         }
                      }).bind($$14));
                      $$9 += $$15.b().size();
-                  } catch (el var18) {
+                  } catch (em var18) {
                      $$0.b(var18.a());
                   }
                }
@@ -110,7 +110,7 @@ public class ana {
       }
    }
 
-   static class b implements eh, hm {
+   static class b implements ei, hn {
       public static final int b = 1;
       private final PrintWriter c;
       private int d;

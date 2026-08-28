@@ -1,24 +1,21 @@
-import org.joml.Matrix4f;
+public class gam extends fzc<cww> {
+   private static final alg G = alg.b("textures/gui/container/shulker_box.png");
 
-public class gam implements gan {
-   private final ayy a;
-
-   public gam(ayy $$0) {
-      this.a = $$0;
+   public gam(cww $$0, cri $$1, wy $$2) {
+      super($$0, $$1, $$2);
+      this.u++;
    }
 
    @Override
-   public int b(frt $$0) {
-      return $$0.a(this.a);
+   public void a(fsh $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   public int a(frt $$0) {
-      return 10;
-   }
-
-   @Override
-   public void a(frt $$0, int $$1, int $$2, Matrix4f $$3, gqa.a $$4) {
-      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, frt.a.a, 0, 15728880);
+   protected void a(fsh $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(gqx::H, G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
    }
 }

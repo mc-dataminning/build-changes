@@ -1,69 +1,110 @@
-public class gem {
-   public static void a(gjc $$0, gjc $$1, gjc $$2, boolean $$3) {
-      gjc $$4 = $$3 ? $$0 : $$1;
-      gjc $$5 = $$3 ? $$1 : $$0;
-      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
-      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
-      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
-      $$5.e = -1.5F + $$2.e;
+import com.mojang.authlib.GameProfile;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Supplier;
+
+public class gem implements geh, gei {
+   private static final alg a = alg.b("spectator/teleport_to_team");
+   private static final wy b = wy.c("spectatorMenu.team_teleport");
+   private static final wy c = wy.c("spectatorMenu.team_teleport.prompt");
+   private final List<gei> d;
+
+   public gem() {
+      fpo $$0 = fpo.Q();
+      this.d = a($$0, $$0.s.R());
    }
 
-   public static void a(gjc $$0, gjc $$1, float $$2, int $$3, boolean $$4) {
-      gjc $$5 = $$4 ? $$0 : $$1;
-      gjc $$6 = $$4 ? $$1 : $$0;
-      $$5.f = $$4 ? -0.8F : 0.8F;
-      $$5.e = -0.97079635F;
-      $$6.e = $$5.e;
-      float $$7 = azm.a((float)$$3, 0.0F, $$2);
-      float $$8 = $$7 / $$2;
-      $$6.f = azm.h($$8, 0.4F, 0.85F) * (float)($$4 ? 1 : -1);
-      $$6.e = azm.h($$8, $$6.e, (float) (-Math.PI / 2));
+   private static List<gei> a(fpo $$0, fgc $$1) {
+      return $$1.f().stream().flatMap($$1x -> gem.a.a($$0, $$1x).stream()).toList();
    }
 
-   public static void a(gjc $$0, gjc $$1, bwx $$2, float $$3, float $$4) {
-      float $$5 = azm.a($$3 * (float) Math.PI);
-      float $$6 = azm.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$0.g = 0.0F;
-      $$1.g = 0.0F;
-      $$0.f = (float) (Math.PI / 20);
-      $$1.f = (float) (-Math.PI / 20);
-      if ($$2 == bwx.b) {
-         $$0.e = -1.8849558F + azm.b($$4 * 0.09F) * 0.15F;
-         $$1.e = -0.0F + azm.b($$4 * 0.19F) * 0.5F;
-         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
-      } else {
-         $$0.e = -0.0F + azm.b($$4 * 0.19F) * 0.5F;
-         $$1.e = -1.8849558F + azm.b($$4 * 0.09F) * 0.15F;
-         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
+   @Override
+   public List<gei> a() {
+      return this.d;
+   }
+
+   @Override
+   public wy b() {
+      return c;
+   }
+
+   @Override
+   public void a(geg $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public wy aP_() {
+      return b;
+   }
+
+   @Override
+   public void a(fsh $$0, float $$1, float $$2) {
+      $$0.a(gqx::H, a, 0, 0, 16, 16, axw.a($$2, $$1, $$1, $$1));
+   }
+
+   @Override
+   public boolean aQ_() {
+      return !this.d.isEmpty();
+   }
+
+   static class a implements gei {
+      private final ffx a;
+      private final Supplier<hkl> b;
+      private final List<gkx> c;
+
+      private a(ffx $$0, List<gkx> $$1, Supplier<hkl> $$2) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$2;
       }
 
-      a($$0, $$1, $$4);
-   }
+      public static Optional<gei> a(fpo $$0, ffx $$1) {
+         List<gkx> $$2 = new ArrayList<>();
 
-   public static void a(gjc $$0, float $$1, float $$2) {
-      $$0.g = $$0.g + $$2 * (azm.b($$1 * 0.09F) * 0.05F + 0.05F);
-      $$0.e = $$0.e + $$2 * azm.a($$1 * 0.067F) * 0.05F;
-   }
+         for (String $$3 : $$1.h()) {
+            gkx $$4 = $$0.L().a($$3);
+            if ($$4 != null && $$4.e() != dje.d) {
+               $$2.add($$4);
+            }
+         }
 
-   public static void a(gjc $$0, gjc $$1, float $$2) {
-      a($$0, $$2, 1.0F);
-      a($$1, $$2, -1.0F);
-   }
+         if ($$2.isEmpty()) {
+            return Optional.empty();
+         } else {
+            GameProfile $$5 = $$2.get(azv.a().a($$2.size())).a();
+            Supplier<hkl> $$6 = $$0.an().a($$5);
+            return Optional.of(new gem.a($$1, $$2, $$6));
+         }
+      }
 
-   public static void a(gjc $$0, gjc $$1, boolean $$2, float $$3, float $$4) {
-      float $$5 = azm.a($$3 * (float) Math.PI);
-      float $$6 = azm.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$1.g = 0.0F;
-      $$0.g = 0.0F;
-      $$1.f = -(0.1F - $$5 * 0.6F);
-      $$0.f = 0.1F - $$5 * 0.6F;
-      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
-      $$1.e = $$7;
-      $$0.e = $$7;
-      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
-      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-      a($$1, $$0, $$4);
+      @Override
+      public void a(geg $$0) {
+         $$0.a(new gel(this.c));
+      }
+
+      @Override
+      public wy aP_() {
+         return this.a.d();
+      }
+
+      @Override
+      public void a(fsh $$0, float $$1, float $$2) {
+         Integer $$3 = this.a.o().f();
+         if ($$3 != null) {
+            float $$4 = (float)($$3 >> 16 & 0xFF) / 255.0F;
+            float $$5 = (float)($$3 >> 8 & 0xFF) / 255.0F;
+            float $$6 = (float)($$3 & 0xFF) / 255.0F;
+            $$0.a(1, 1, 15, 15, axw.a($$2, $$4 * $$1, $$5 * $$1, $$6 * $$1));
+         }
+
+         ftu.a($$0, this.b.get(), 2, 2, 12, axw.a($$2, $$1, $$1, $$1));
+      }
+
+      @Override
+      public boolean aQ_() {
+         return true;
+      }
    }
 }

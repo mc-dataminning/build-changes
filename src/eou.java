@@ -1,44 +1,45 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.BiConsumer;
 
-public class eou extends eox {
-   public static final MapCodec<eou> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eou::new));
+public class eou extends eos {
+   public static final MapCodec<eou> a = MapCodec.unit(() -> eou.b);
+   public static final eou b = new eou();
 
-   public eou(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   @Override
+   protected eot<?> a() {
+      return eot.a;
    }
 
    @Override
-   protected eoy<?> a() {
-      return eoy.c;
-   }
-
-   @Override
-   public List<enc.a> a(djg $$0, BiConsumer<iu, eah> $$1, azv $$2, int $$3, iu $$4, emm $$5) {
-      iu $$6 = $$4.e();
-      a($$0, $$1, $$2, $$6, $$5);
-      a($$0, $$1, $$2, $$6.i(), $$5);
-      a($$0, $$1, $$2, $$6.g(), $$5);
-      a($$0, $$1, $$2, $$6.g().i(), $$5);
-      iu.a $$7 = new iu.a();
-
-      for (int $$8 = 0; $$8 < $$3; $$8++) {
-         this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 0);
-         if ($$8 < $$3 - 1) {
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 0);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 1);
-            this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 1);
+   public void a(eos.a $$0) {
+      azv $$1 = $$0.b();
+      $$0.c().forEach($$2 -> {
+         if ($$1.a(3) > 0) {
+            iv $$3 = $$2.h();
+            if ($$0.a($$3)) {
+               $$0.a($$3, dvz.d);
+            }
          }
-      }
 
-      return ImmutableList.of(new enc.a($$4.b($$3), 0, true));
-   }
+         if ($$1.a(3) > 0) {
+            iv $$4 = $$2.i();
+            if ($$0.a($$4)) {
+               $$0.a($$4, dvz.f);
+            }
+         }
 
-   private void a(djg $$0, BiConsumer<iu, eah> $$1, azv $$2, iu.a $$3, emm $$4, iu $$5, int $$6, int $$7, int $$8) {
-      $$3.a($$5, $$6, $$7, $$8);
-      this.a($$0, $$1, $$2, $$3, $$4);
+         if ($$1.a(3) > 0) {
+            iv $$5 = $$2.f();
+            if ($$0.a($$5)) {
+               $$0.a($$5, dvz.e);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            iv $$6 = $$2.g();
+            if ($$0.a($$6)) {
+               $$0.a($$6, dvz.c);
+            }
+         }
+      });
    }
 }

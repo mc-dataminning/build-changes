@@ -13,13 +13,13 @@ public class bcn extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bix.E);
-      Type<?> $$1 = this.getOutputSchema().getType(bix.E);
-      Type<Pair<String, Either<Integer, String>>> $$2 = DSL.named(bix.E.typeName(), DSL.or(DSL.intType(), bks.a()));
-      Type<Pair<String, String>> $$3 = DSL.named(bix.E.typeName(), bks.a());
+      Type<?> $$0 = this.getInputSchema().getType(biz.E);
+      Type<?> $$1 = this.getOutputSchema().getType(biz.E);
+      Type<Pair<String, Either<Integer, String>>> $$2 = DSL.named(biz.E.typeName(), DSL.or(DSL.intType(), bku.a()));
+      Type<Pair<String, String>> $$3 = DSL.named(biz.E.typeName(), bku.a());
       if (Objects.equals($$0, $$2) && Objects.equals($$1, $$3)) {
          return this.fixTypeEverywhere(
-            "BlockNameFlatteningFix", $$2, $$3, $$0x -> $$0xx -> $$0xx.mapSecond($$0xxx -> (String)$$0xxx.map(bcr::a, $$0xxxx -> bcr.a(bks.a($$0xxxx))))
+            "BlockNameFlatteningFix", $$2, $$3, $$0x -> $$0xx -> $$0xx.mapSecond($$0xxx -> (String)$$0xxx.map(bcr::a, $$0xxxx -> bcr.a(bku.a($$0xxxx))))
          );
       } else {
          throw new IllegalStateException("Expected and actual types don't match.");

@@ -1,29 +1,56 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-
-public record ciy(iv e, ctj f) implements ctf<cti, ctg> {
-   public static final Codec<ciy> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(iv.b.forGetter(ciy::b), ctj.b.fieldOf("spawn_conditions").forGetter(ciy::c)).apply($$0, ciy::new)
-   );
-   public static final Codec<ciy> b = RecordCodecBuilder.create($$0 -> $$0.group(iv.b.forGetter(ciy::b)).apply($$0, ciy::new));
-   public static final Codec<je<ciy>> c = ald.a(mg.aH);
-   public static final yw<wj, je<ciy>> d = yu.b(mg.aH);
-
-   private ciy(iv $$0) {
-      this($$0, ctj.a);
+public abstract class ciy extends bvy {
+   protected ciy(bwr<? extends ciy> $$0, djh $$1) {
+      super($$0, $$1);
+      this.a(exm.j, 0.0F);
    }
 
    @Override
-   public List<ctf.a<cti, ctg>> a() {
-      return this.f.a();
+   public boolean a(djk $$0) {
+      return $$0.f(this);
    }
 
-   public iv b() {
-      return this.e;
+   @Override
+   public int S() {
+      return 120;
    }
 
-   public ctj c() {
-      return this.f;
+   @Override
+   public int e(arq $$0) {
+      return 1 + this.ae.a(3);
+   }
+
+   protected void r(int $$0) {
+      if (this.bI() && !this.bh()) {
+         this.j($$0 - 1);
+         if (this.cr() == -20) {
+            this.j(0);
+            this.a(this.dV().i(), 2.0F);
+         }
+      } else {
+         this.j(300);
+      }
+   }
+
+   @Override
+   public void aw() {
+      int $$0 = this.cr();
+      super.aw();
+      this.r($$0);
+   }
+
+   @Override
+   public boolean cI() {
+      return false;
+   }
+
+   @Override
+   public boolean w() {
+      return false;
+   }
+
+   public static boolean b(bwr<? extends ciy> $$0, dji $$1, bwq $$2, iv $$3, azv $$4) {
+      int $$5 = $$1.P();
+      int $$6 = $$5 - 13;
+      return $$3.v() >= $$6 && $$3.v() <= $$5 && $$1.b_($$3.e()).a(axh.a) && $$1.a_($$3.d()).a(dmo.J);
    }
 }

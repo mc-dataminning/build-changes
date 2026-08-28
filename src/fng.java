@@ -1,167 +1,167 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.logging.LogUtils;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
+import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fng {
-   static final Logger a = LogUtils.getLogger();
-   final Executor b;
-   final TimeUnit c;
-   final bap d;
+public class fng extends hpw {
+   private static final alg a = alg.b("icon/unseen_notification");
+   private static final alg b = alg.b("icon/news");
+   private static final alg c = alg.b("icon/invite");
+   private static final alg C = alg.b("icon/trial_available");
+   private final CompletableFuture<Boolean> D = fki.a().thenApply($$0 -> $$0.a() == fki.b.a);
+   @Nullable
+   private fnv.c E;
+   @Nullable
+   private fng.a F;
+   private volatile int G;
+   private static boolean H;
+   private static boolean I;
+   private static boolean J;
+   private final fng.a K = new fng.a() {
+      @Override
+      public fnv.c a(fmn $$0) {
+         fnv.c $$1 = $$0.a.a();
+         fng.this.a($$0, $$1);
+         fng.this.b($$0, $$1);
+         return $$1;
+      }
 
-   public fng(Executor $$0, TimeUnit $$1, bap $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+      @Override
+      public boolean a() {
+         return true;
+      }
+   };
+   private final fng.a L = new fng.a() {
+      @Override
+      public fnv.c a(fmn $$0) {
+         fnv.c $$1 = $$0.a.a();
+         fng.this.b($$0, $$1);
+         return $$1;
+      }
+
+      @Override
+      public boolean a() {
+         return false;
+      }
+   };
+
+   public fng() {
+      super(fpf.a);
    }
 
-   public <T> fng.e<T> a(String $$0, Callable<T> $$1, Duration $$2, fnh $$3) {
-      long $$4 = this.c.convert($$2);
-      if ($$4 == 0L) {
-         throw new IllegalArgumentException("Period of " + $$2 + " too short for selected resolution of " + this.c);
+   @Override
+   public void aO_() {
+      if (this.E != null) {
+         this.E.a();
+      }
+   }
+
+   @Override
+   public void aG_() {
+      super.aG_();
+      this.m.bb().b.a();
+   }
+
+   @Nullable
+   private fng.a E() {
+      boolean $$0 = this.G() && this.D.getNow(false);
+      if (!$$0) {
+         return null;
       } else {
-         return new fng.e<>($$0, $$1, $$4, $$3);
+         return this.F() ? this.K : this.L;
       }
    }
 
-   public fng.c a() {
-      return new fng.c();
-   }
-
-   static record a<T>(Either<T, Exception> a, long b) {
-   }
-
-   class b<T> {
-      private final fng.e<T> a;
-      private final Consumer<T> b;
-      private long c = -1L;
-
-      b(final fng.e<T> $$0, final Consumer<T> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      void a(long $$0) {
-         this.a.a($$0);
-         this.a();
-      }
-
-      void a() {
-         fng.d<T> $$0 = this.a.g;
-         if ($$0 != null && this.c < $$0.b) {
-            this.b.accept($$0.a);
-            this.c = $$0.b;
+   @Override
+   public void e() {
+      fng.a $$0 = this.E();
+      if (!Objects.equals(this.F, $$0)) {
+         this.F = $$0;
+         if (this.F != null) {
+            this.E = this.F.a(this.m.bb());
+         } else {
+            this.E = null;
          }
       }
 
-      void b() {
-         fng.d<T> $$0 = this.a.g;
-         if ($$0 != null) {
-            this.b.accept($$0.a);
-            this.c = $$0.b;
-         }
-      }
-
-      void c() {
-         this.a.a();
-         this.c = -1L;
+      if (this.E != null) {
+         this.E.b();
       }
    }
 
-   public class c {
-      private final List<fng.b<?>> b = new ArrayList<>();
+   private boolean F() {
+      return this.m.n.W().c();
+   }
 
-      public <T> void a(fng.e<T> $$0, Consumer<T> $$1) {
-         fng.b<T> $$2 = fng.this.new b<>($$0, $$1);
-         this.b.add($$2);
-         $$2.a();
+   private boolean G() {
+      return this.m.z instanceof fyp;
+   }
+
+   @Override
+   public void a(fsh $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.D.getNow(false)) {
+         this.c($$0);
+      }
+   }
+
+   @Override
+   public void b(fsh $$0, int $$1, int $$2, float $$3) {
+   }
+
+   private void c(fsh $$0) {
+      int $$1 = this.G;
+      int $$2 = 24;
+      int $$3 = this.o / 4 + 48;
+      int $$4 = this.n / 2 + 100;
+      int $$5 = $$3 + 48 + 2;
+      int $$6 = $$4 - 3;
+      if (J) {
+         $$0.a(gqx::H, a, $$6 - 12, $$5 + 3, 10, 10);
+         $$6 -= 16;
       }
 
-      public void a() {
-         for (fng.b<?> $$0 : this.b) {
-            $$0.b();
+      if (this.F != null && this.F.a()) {
+         if (I) {
+            $$0.a(gqx::H, b, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
          }
-      }
 
-      public void b() {
-         for (fng.b<?> $$0 : this.b) {
-            $$0.a(fng.this.d.get(fng.this.c));
+         if ($$1 != 0) {
+            $$0.a(gqx::H, c, $$6 - 14, $$5 + 1, 14, 14);
+            $$6 -= 16;
          }
-      }
 
-      public void c() {
-         for (fng.b<?> $$0 : this.b) {
-            $$0.c();
+         if (H) {
+            $$0.a(gqx::H, C, $$6 - 10, $$5 + 4, 8, 8);
          }
       }
    }
 
-   static record d<T>(T a, long b) {
+   void a(fmn $$0, fnv.c $$1) {
+      $$1.a($$0.d, $$0x -> this.G = $$0x);
+      $$1.a($$0.e, $$0x -> H = $$0x);
+      $$1.a($$0.f, $$1x -> {
+         $$0.h.a($$1x);
+         I = $$0.h.a();
+      });
    }
 
-   public class e<T> {
-      private final String b;
-      private final Callable<T> c;
-      private final long d;
-      private final fnh e;
-      @Nullable
-      private CompletableFuture<fng.a<T>> f;
-      @Nullable
-      fng.d<T> g;
-      private long h = -1L;
+   void b(fmn $$0, fnv.c $$1) {
+      $$1.a($$0.b, $$0x -> {
+         J = false;
 
-      e(final String $$1, final Callable<T> $$2, final long $$3, final fnh $$4) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-      }
-
-      void a(long $$0) {
-         if (this.f != null) {
-            fng.a<T> $$1 = this.f.getNow(null);
-            if ($$1 == null) {
-               return;
+         for (flo $$1x : $$0x) {
+            if (!$$1x.a()) {
+               J = true;
+               break;
             }
-
-            this.f = null;
-            long $$2 = $$1.b;
-            $$1.a().ifLeft($$1x -> {
-               this.g = new fng.d<>((T)$$1x, $$2);
-               this.h = $$2 + this.d * this.e.a();
-            }).ifRight($$1x -> {
-               long $$2x = this.e.b();
-               fng.a.warn("Failed to process task {}, will repeat after {} cycles", new Object[]{this.b, $$2x, $$1x});
-               this.h = $$2 + this.d * $$2x;
-            });
          }
+      });
+   }
 
-         if (this.h <= $$0) {
-            this.f = CompletableFuture.supplyAsync(() -> {
-               try {
-                  T $$0x = this.c.call();
-                  long $$1x = fng.this.d.get(fng.this.c);
-                  return new fng.a<>(Either.left($$0x), $$1x);
-               } catch (Exception var4x) {
-                  long $$3 = fng.this.d.get(fng.this.c);
-                  return new fng.a<>(Either.right(var4x), $$3);
-               }
-            }, fng.this.b);
-         }
-      }
+   interface a {
+      fnv.c a(fmn var1);
 
-      public void a() {
-         this.f = null;
-         this.g = null;
-         this.h = -1L;
-      }
+      boolean a();
    }
 }

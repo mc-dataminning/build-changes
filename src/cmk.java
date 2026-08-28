@@ -1,26 +1,20 @@
-import javax.annotation.Nullable;
+public abstract class cmk extends cmj {
+   public cmk(cmh $$0) {
+      super($$0);
+   }
 
-public interface cmk {
-   boolean a();
+   @Override
+   public boolean a() {
+      return true;
+   }
 
-   void b();
-
-   void a(arq var1);
-
-   void a(clz var1, iu var2, buu var3, @Nullable crc var4);
-
-   void c();
-
-   void d();
-
-   float e();
-
-   float g();
-
-   cmq<? extends cmk> h();
-
-   @Nullable
-   feq f();
-
-   float a(buu var1, float var2);
+   @Override
+   public float a(bux $$0, float $$1) {
+      if (!($$0.c() instanceof crr) && !($$0.c() instanceof csx)) {
+         return super.a($$0, $$1);
+      } else {
+         $$0.c().e(1.0F);
+         return 0.0F;
+      }
+   }
 }

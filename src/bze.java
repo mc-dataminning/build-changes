@@ -1,28 +1,48 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class bze {
-   public static <E extends bxe> byw<E> a(int $$0, BiPredicate<E, bwf> $$1) {
-      return cci.a((Function<cci.b<E>, ? extends App<cci.c<E>, ccl<E>>>)($$2 -> $$2.group($$2.a(cgg.t)).apply($$2, $$3 -> ($$4, $$5, $$6) -> {
-               bwf $$7 = $$5.dk();
-               bwf $$8 = $$2.<bwf>a($$3).orElse(null);
-               if ($$7 == null && $$8 == null) {
-                  return false;
-               } else {
-                  bwf $$9 = $$7 == null ? $$8 : $$7;
-                  if (a($$5, $$9, $$0) && !$$1.test((E)$$5, $$9)) {
-                     return false;
-                  } else {
-                     $$5.bP();
-                     $$3.b();
-                     return true;
-                  }
-               }
-            })));
+public class bze extends bza<cqv> {
+   @Nullable
+   private csz c;
+
+   public bze(int $$0, int $$1) {
+      super(ImmutableMap.of(), $$0, $$1);
    }
 
-   private static boolean a(bxe $$0, bwf $$1, int $$2) {
-      return $$1.bK() && $$1.a($$0, (double)$$2) && $$1.dV() == $$0.dV();
+   protected boolean a(arq $$0, cqv $$1) {
+      iv $$2 = $$1.du();
+      this.c = $$0.d($$2);
+      return this.c != null && this.c.e() && caj.a($$0, $$1, $$2);
+   }
+
+   protected boolean a(arq $$0, cqv $$1, long $$2) {
+      return this.c != null && !this.c.d();
+   }
+
+   protected void b(arq $$0, cqv $$1, long $$2) {
+      this.c = null;
+      $$1.eb().a($$0.af(), $$0.ae());
+   }
+
+   protected void c(arq $$0, cqv $$1, long $$2) {
+      azv $$3 = $$1.dX();
+      if ($$3.a(100) == 0) {
+         $$1.gx();
+      }
+
+      if ($$3.a(200) == 0 && caj.a($$0, $$1, $$1.du())) {
+         cyi $$4 = ag.a(cyi.values(), $$3);
+         int $$5 = $$3.a(3);
+         czk $$6 = this.a($$4, $$5);
+         cse.a(new crz($$1.dU(), $$1, $$1.dz(), $$1.dD(), $$1.dF(), $$6), $$0, $$6);
+      }
+   }
+
+   private czk a(cyi $$0, int $$1) {
+      czk $$2 = new czk(czo.vE);
+      $$2.b(kk.aj, new dbz((byte)$$1, List.of(new dby(dby.a.e, IntList.of($$0.f()), IntList.of(), false, false))));
+      return $$2;
    }
 }

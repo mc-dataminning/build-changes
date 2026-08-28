@@ -1,101 +1,80 @@
-import javax.annotation.Nullable;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class goh extends goi {
-   private final iu a;
-   private final float b;
-   private final float F;
+public abstract class goh extends gnu {
+   protected float D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
 
-   public goh(gjz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, eah $$7) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, iu.a($$1, $$2, $$3));
+   protected goh(gkl $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   public goh(gjz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, eah $$7, iu $$8) {
+   protected goh(gkl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.a = $$8;
-      this.a(foz.Q().ap().a().a($$7));
-      this.u = 1.0F;
-      this.v = 0.6F;
-      this.w = 0.6F;
-      this.x = 0.6F;
-      if (!$$7.a(dmh.i)) {
-         int $$9 = foz.Q().aw().a($$7, $$0, $$8, 0);
-         this.v *= (float)($$9 >> 16 & 0xFF) / 255.0F;
-         this.w *= (float)($$9 >> 8 & 0xFF) / 255.0F;
-         this.x *= (float)($$9 & 0xFF) / 255.0F;
+   }
+
+   public goh.a p() {
+      return goh.a.a;
+   }
+
+   @Override
+   public void a(fkc $$0, fow $$1, float $$2) {
+      Quaternionf $$3 = new Quaternionf();
+      this.p().setRotation($$3, $$1, $$2);
+      if (this.z != 0.0F) {
+         $$3.rotateZ(azm.h($$2, this.A, this.z));
       }
 
-      this.D /= 2.0F;
-      this.b = this.r.i() * 3.0F;
-      this.F = this.r.i() * 3.0F;
+      this.a($$0, $$1, $$3, $$2);
+   }
+
+   protected void a(fkc $$0, fow $$1, Quaternionf $$2, float $$3) {
+      fex $$4 = $$1.b();
+      float $$5 = (float)(azm.d((double)$$3, this.d, this.g) - $$4.a());
+      float $$6 = (float)(azm.d((double)$$3, this.e, this.h) - $$4.b());
+      float $$7 = (float)(azm.d((double)$$3, this.f, this.i) - $$4.c());
+      this.a($$0, $$2, $$5, $$6, $$7, $$3);
+   }
+
+   protected void a(fkc $$0, Quaternionf $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = this.b($$5);
+      float $$7 = this.c();
+      float $$8 = this.d();
+      float $$9 = this.e();
+      float $$10 = this.f();
+      int $$11 = this.a($$5);
+      this.a($$0, $$1, $$2, $$3, $$4, 1.0F, -1.0F, $$6, $$8, $$10, $$11);
+      this.a($$0, $$1, $$2, $$3, $$4, 1.0F, 1.0F, $$6, $$8, $$9, $$11);
+      this.a($$0, $$1, $$2, $$3, $$4, -1.0F, 1.0F, $$6, $$7, $$9, $$11);
+      this.a($$0, $$1, $$2, $$3, $$4, -1.0F, -1.0F, $$6, $$7, $$10, $$11);
+   }
+
+   private void a(fkc $$0, Quaternionf $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, int $$10) {
+      Vector3f $$11 = new Vector3f($$5, $$6, 0.0F).rotate($$1).mul($$7).add($$2, $$3, $$4);
+      $$0.a($$11.x(), $$11.y(), $$11.z()).a($$8, $$9).a(this.v, this.w, this.x, this.y).c($$10);
+   }
+
+   public float b(float $$0) {
+      return this.D;
    }
 
    @Override
-   public gnm b() {
-      return gnm.a;
+   public gnu d(float $$0) {
+      this.D *= $$0;
+      return super.d($$0);
    }
 
-   @Override
-   protected float c() {
-      return this.E.a((this.b + 1.0F) / 4.0F);
-   }
+   protected abstract float c();
 
-   @Override
-   protected float d() {
-      return this.E.a(this.b / 4.0F);
-   }
+   protected abstract float d();
 
-   @Override
-   protected float e() {
-      return this.E.c(this.F / 4.0F);
-   }
+   protected abstract float e();
 
-   @Override
-   protected float f() {
-      return this.E.c((this.F + 1.0F) / 4.0F);
-   }
+   protected abstract float f();
 
-   @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      return $$1 == 0 && this.c.C(this.a) ? gpv.a(this.c, this.a) : $$1;
-   }
+   public interface a {
+      goh.a a = ($$0, $$1, $$2) -> $$0.set($$1.f());
+      goh.a b = ($$0, $$1, $$2) -> $$0.set(0.0F, $$1.f().y, 0.0F, $$1.f().w);
 
-   @Nullable
-   static goh a(lp $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      eah $$8 = $$0.b();
-      return !$$8.l() && !$$8.a(dmh.ca) && $$8.D() ? new goh($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) : null;
-   }
-
-   public static class a implements gnl<lp> {
-      @Nullable
-      public gni a(lp $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gni $$8 = goh.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         if ($$8 != null) {
-            $$8.b(0.0, 0.0, 0.0);
-            $$8.a($$1.A.a(10) + 1);
-         }
-
-         return $$8;
-      }
-   }
-
-   public static class b implements gnl<lp> {
-      @Nullable
-      public gni a(lp $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gni $$8 = goh.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         if ($$8 != null) {
-            $$8.b($$1.A.k() / 30.0, $$6 + $$1.A.k() / 2.0, $$1.A.k() / 30.0);
-            $$8.a($$1.A.a(20) + 20);
-         }
-
-         return $$8;
-      }
-   }
-
-   public static class c implements gnl<lp> {
-      @Nullable
-      public gni a(lp $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return goh.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-      }
+      void setRotation(Quaternionf var1, fow var2, float var3);
    }
 }

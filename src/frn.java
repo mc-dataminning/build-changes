@@ -1,89 +1,97 @@
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Stream;
 
-public class frn {
-   public static final frn.a a = a(frl::a, frk.c);
-   public static final frn.a b = a(frl::a, frk.d);
-   public static final frn.a c = a(frl::a, frk.e);
-   public static final frn.a d = a(frl::n, frk.j);
-   public static final frn.a e = a(frl::n, frk.k);
-   public static final frn.a f = a(frl::t, frk.n);
-   public static final frn.a g = a(frl::o, frk.m);
-   public static final frn.a h = a(frl::E, frk.p);
-   public static final frn.a i = a(frl::D, frk.q);
-   public static final frn.a j = a(frl::i, frk.ay);
-   public static final frn.a k = a(frl::d, frk.az);
-   public static final frn.a l = a(frl::j, frk.aA);
-   public static final frn.a m = a(frl::j, frk.aB);
-   public static final frn.a n = a(frl::j, frk.aC);
-   public static final frn.a o = a(frl::j, frk.aD);
-   public static final frn.a p = a(frl::b, frk.aE);
-   public static final frn.a q = a(frl::b, frk.aF);
-   public static final frn.a r = a(frl::b, frk.aG);
-   public static final frn.a s = a(frl::b, frk.aH);
-   public static final frn.a t = a(frl::l, frk.aK);
-   public static final frn.a u = a(frl::m, frk.aI);
-   public static final frn.a v = a(frl::G, frk.aZ);
-   public static final frn.a w = a(frl::a, frk.ad);
-   public static final frn.a x = a(frl::A, frk.bk);
-   public static final frn.a y = a(frl::A, frk.bl);
-   public static final frn.a z = a(frl::b, frk.bv);
-   public static final frn.a A = a(frl::q, frk.j);
-   public static final frn.a B = a(frl::q, frk.k);
-   public static final frn.a C = a(frl::u, frk.n);
-   public static final frn.a D = a(frl::v, frk.j);
-   private final frl E;
-   private final frj F;
+public class frn implements frk {
+   private final dmm a;
+   private final List<frn.b> b;
+   private final Set<ebr<?>> c;
 
-   private frn(frl $$0, frj $$1) {
-      this.E = $$0;
-      this.F = $$1;
+   frn(dmm $$0, List<frn.b> $$1, Set<ebr<?>> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public frj a() {
-      return this.F;
+   static Set<ebr<?>> a(Set<ebr<?>> $$0, dmm $$1, fro<?> $$2) {
+      List<ebr<?>> $$3 = $$2.b();
+      $$3.forEach($$2x -> {
+         if ($$1.l().a($$2x.f()) != $$2x) {
+            throw new IllegalStateException("Property " + $$2x + " is not defined for block " + $$1);
+         } else if ($$0.contains($$2x)) {
+            throw new IllegalStateException("Values of property " + $$2x + " already defined for block " + $$1);
+         }
+      });
+      Set<ebr<?>> $$4 = new HashSet<>($$0);
+      $$4.addAll($$3);
+      return $$4;
    }
 
-   public frl b() {
-      return this.E;
+   public frn a(fro<gsi> $$0) {
+      Set<ebr<?>> $$1 = a(this.c, this.a, $$0);
+      List<frn.b> $$2 = this.b.stream().flatMap($$1x -> $$1x.a($$0)).toList();
+      return new frn(this.a, $$2, $$1);
    }
 
-   public frn a(Consumer<frl> $$0) {
-      $$0.accept(this.E);
-      return this;
+   public frn a(gsi $$0) {
+      List<frn.b> $$1 = this.b.stream().flatMap($$1x -> $$1x.a($$0)).toList();
+      return new frn(this.a, $$1, this.c);
    }
 
-   public alg a(dmf $$0, BiConsumer<alg, frh> $$1) {
-      return this.F.a($$0, this.E, $$1);
-   }
+   @Override
+   public grx b() {
+      Map<String, gsd> $$0 = new HashMap<>();
 
-   public alg a(dmf $$0, String $$1, BiConsumer<alg, frh> $$2) {
-      return this.F.a($$0, $$1, this.E, $$2);
-   }
-
-   private static frn.a a(Function<dmf, frl> $$0, frj $$1) {
-      return $$2 -> new frn($$0.apply($$2), $$1);
-   }
-
-   public static frn a(alg $$0) {
-      return new frn(frl.b($$0), frk.c);
-   }
-
-   @FunctionalInterface
-   public interface a {
-      frn get(dmf var1);
-
-      default alg create(dmf $$0, BiConsumer<alg, frh> $$1) {
-         return this.get($$0).a($$0, $$1);
+      for (frn.b $$1 : this.b) {
+         $$0.put($$1.a.a(), $$1.b);
       }
 
-      default alg createWithSuffix(dmf $$0, String $$1, BiConsumer<alg, frh> $$2) {
-         return this.get($$0).a($$0, $$1, $$2);
+      return new grx($$0, Optional.empty());
+   }
+
+   @Override
+   public dmm a() {
+      return this.a;
+   }
+
+   public static frn.a a(dmm $$0) {
+      return new frn.a($$0);
+   }
+
+   public static frn a(dmm $$0, gsd $$1) {
+      return new frn($$0, List.of(new frn.b(frp.a, $$1)), Set.of());
+   }
+
+   public static class a {
+      private final dmm a;
+
+      public a(dmm $$0) {
+         this.a = $$0;
       }
 
-      default frn.a updateTexture(Consumer<frl> $$0) {
-         return $$1 -> this.get($$1).a($$0);
+      public frn a(fro<gsd> $$0) {
+         Set<ebr<?>> $$1 = frn.a(Set.of(), this.a, $$0);
+         List<frn.b> $$2 = $$0.a().entrySet().stream().map($$0x -> new frn.b((frp)$$0x.getKey(), (gsd)$$0x.getValue())).toList();
+         return new frn(this.a, $$2, $$1);
+      }
+   }
+
+   static record b(frp a, gsd b) {
+
+      public Stream<frn.b> a(fro<gsi> $$0) {
+         return $$0.a().entrySet().stream().map($$0x -> {
+            frp $$1 = this.a.a((frp)$$0x.getKey());
+            gsd $$2 = this.b.a((gsi)$$0x.getValue());
+            return new frn.b($$1, $$2);
+         });
+      }
+
+      public Stream<frn.b> a(gsi $$0) {
+         return Stream.of(new frn.b(this.a, this.b.a($$0)));
       }
    }
 }

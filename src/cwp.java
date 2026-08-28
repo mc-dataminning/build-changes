@@ -1,61 +1,65 @@
-public class cwp extends cuv {
-   private static final int m = 27;
-   private final btw n;
+import java.util.Optional;
 
-   public cwp(int $$0, crb $$1) {
-      this($$0, $$1, new buk(27));
-   }
-
-   public cwp(int $$0, crb $$1, btw $$2) {
-      super(cwe.u, $$0);
-      a($$2, 27);
-      this.n = $$2;
-      $$2.c_($$1.h);
-      int $$3 = 3;
-      int $$4 = 9;
-
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         for (int $$6 = 0; $$6 < 9; $$6++) {
-            this.a(new cwq($$2, $$6 + $$5 * 9, 8 + $$6 * 18, 18 + $$5 * 18));
-         }
-      }
-
-      this.c($$1, 8, 84);
+public class cwp extends cwz {
+   public cwp(btz $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public boolean b(crc $$0) {
-      return this.n.a($$0);
+   public void b(czk $$0, czk $$1) {
    }
 
    @Override
-   public czd b(crc $$0, int $$1) {
-      czd $$2 = czd.k;
-      cws $$3 = this.k.get($$1);
-      if ($$3 != null && $$3.h()) {
-         czd $$4 = $$3.g();
-         $$2 = $$4.v();
-         if ($$1 < this.n.b()) {
-            if (!this.a($$4, this.n.b(), this.k.size(), true)) {
-               return czd.k;
-            }
-         } else if (!this.a($$4, 0, this.n.b(), false)) {
-            return czd.k;
-         }
-
-         if ($$4.f()) {
-            $$3.e(czd.k);
-         } else {
-            $$3.d();
-         }
-      }
-
-      return $$2;
+   public boolean a(crj $$0) {
+      return false;
    }
 
    @Override
-   public void a(crc $$0) {
-      super.a($$0);
-      this.n.c($$0);
+   public Optional<czk> a(int $$0, int $$1, crj $$2) {
+      return Optional.empty();
+   }
+
+   @Override
+   public czk b(int $$0, int $$1, crj $$2) {
+      return czk.k;
+   }
+
+   @Override
+   public czk d(czk $$0) {
+      return $$0;
+   }
+
+   @Override
+   public czk b(czk $$0, int $$1) {
+      return this.d($$0);
+   }
+
+   @Override
+   public boolean b(crj $$0) {
+      return false;
+   }
+
+   @Override
+   public boolean a(czk $$0) {
+      return false;
+   }
+
+   @Override
+   public czk a(int $$0) {
+      return czk.k;
+   }
+
+   @Override
+   public void a(crj $$0, czk $$1) {
+   }
+
+   @Override
+   public boolean e() {
+      return false;
+   }
+
+   @Override
+   public boolean f() {
+      return true;
    }
 }

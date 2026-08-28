@@ -1,232 +1,118 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.datafixers.util.Pair;
-import it.unimi.dsi.fastutil.longs.Long2ByteMap;
-import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import java.nio.file.Path;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.BiPredicate;
-import java.util.function.BooleanSupplier;
+import com.google.common.annotations.VisibleForTesting;
 import java.util.function.Predicate;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+import java.util.function.Supplier;
+import java.util.function.ToDoubleFunction;
+import javax.annotation.Nullable;
 
-public class cig extends edy<cii, cii.a> {
-   public static final int a = 6;
-   public static final int b = 1;
-   private final cig.a d;
-   private final LongSet e = new LongOpenHashSet();
+public class cig {
+   private static final int a = 10;
 
-   public cig(edx $$0, Path $$1, DataFixer $$2, boolean $$3, js $$4, edm $$5, djc $$6) {
-      super(new eea($$0, $$1, $$2, $$3, bbb.q), cii.a.a, cii::a, cii.a::a, cii::new, $$4, $$5, $$6);
-      this.d = new cig.a();
+   public static iv a(azv $$0, int $$1, int $$2) {
+      int $$3 = $$0.a(2 * $$1 + 1) - $$1;
+      int $$4 = $$0.a(2 * $$2 + 1) - $$2;
+      int $$5 = $$0.a(2 * $$1 + 1) - $$1;
+      return new iv($$3, $$4, $$5);
    }
 
-   public void a(iu $$0, je<cij> $$1) {
-      this.f(jx.c($$0)).a($$0, $$1);
+   @Nullable
+   public static iv a(azv $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      double $$7 = azm.d($$5, $$4) - (float) (Math.PI / 2);
+      double $$8 = $$7 + (double)(2.0F * $$0.i() - 1.0F) * $$6;
+      double $$9 = Math.sqrt($$0.j()) * (double)azm.g * (double)$$1;
+      double $$10 = -$$9 * Math.sin($$8);
+      double $$11 = $$9 * Math.cos($$8);
+      if (!(Math.abs($$10) > (double)$$1) && !(Math.abs($$11) > (double)$$1)) {
+         int $$12 = $$0.a(2 * $$2 + 1) - $$2 + $$3;
+         return iv.a($$10, (double)$$12, $$11);
+      } else {
+         return null;
+      }
    }
 
-   public void a(iu $$0) {
-      this.d(jx.c($$0)).ifPresent($$1 -> $$1.a($$0));
+   @VisibleForTesting
+   public static iv a(iv $$0, int $$1, Predicate<iv> $$2) {
+      if (!$$2.test($$0)) {
+         return $$0;
+      } else {
+         iv.a $$3 = $$0.k().c(jb.b);
+
+         while ($$3.v() <= $$1 && $$2.test($$3)) {
+            $$3.c(jb.b);
+         }
+
+         return $$3.j();
+      }
    }
 
-   public long a(Predicate<je<cij>> $$0, iu $$1, int $$2, cig.b $$3) {
-      return this.c($$0, $$1, $$2, $$3).count();
-   }
+   @VisibleForTesting
+   public static iv a(iv $$0, int $$1, int $$2, Predicate<iv> $$3) {
+      if ($$1 < 0) {
+         throw new IllegalArgumentException("aboveSolidAmount was " + $$1 + ", expected >= 0");
+      } else if (!$$3.test($$0)) {
+         return $$0;
+      } else {
+         iv.a $$4 = $$0.k().c(jb.b);
 
-   public boolean a(alf<cij> $$0, iu $$1) {
-      return this.a($$1, (Predicate<je<cij>>)($$1x -> $$1x.a($$0)));
-   }
+         while ($$4.v() <= $$2 && $$3.test($$4)) {
+            $$4.c(jb.b);
+         }
 
-   public Stream<cih> b(Predicate<je<cij>> $$0, iu $$1, int $$2, cig.b $$3) {
-      int $$4 = Math.floorDiv($$2, 16) + 1;
-      return dih.a(new dih($$1), $$4).flatMap($$2x -> this.a($$0, $$2x, $$3)).filter($$2x -> {
-         iu $$3x = $$2x.g();
-         return Math.abs($$3x.u() - $$1.u()) <= $$2 && Math.abs($$3x.w() - $$1.w()) <= $$2;
-      });
-   }
+         int $$5 = $$4.v();
 
-   public Stream<cih> c(Predicate<je<cij>> $$0, iu $$1, int $$2, cig.b $$3) {
-      int $$4 = $$2 * $$2;
-      return this.b($$0, $$1, $$2, $$3).filter($$2x -> $$2x.g().j($$1) <= (double)$$4);
-   }
-
-   @bav
-   public Stream<cih> a(Predicate<je<cij>> $$0, dih $$1, cig.b $$2) {
-      return IntStream.rangeClosed(this.c.aq(), this.c.ar())
-         .boxed()
-         .map($$1x -> this.d(jx.a($$1, $$1x).s()))
-         .filter(Optional::isPresent)
-         .flatMap($$2x -> ((cii)$$2x.get()).a($$0, $$2));
-   }
-
-   public Stream<iu> a(Predicate<je<cij>> $$0, Predicate<iu> $$1, iu $$2, int $$3, cig.b $$4) {
-      return this.c($$0, $$2, $$3, $$4).map(cih::g).filter($$1);
-   }
-
-   public Stream<Pair<je<cij>, iu>> b(Predicate<je<cij>> $$0, Predicate<iu> $$1, iu $$2, int $$3, cig.b $$4) {
-      return this.c($$0, $$2, $$3, $$4).filter($$1x -> $$1.test($$1x.g())).map($$0x -> Pair.of($$0x.h(), $$0x.g()));
-   }
-
-   public Stream<Pair<je<cij>, iu>> c(Predicate<je<cij>> $$0, Predicate<iu> $$1, iu $$2, int $$3, cig.b $$4) {
-      return this.b($$0, $$1, $$2, $$3, $$4).sorted(Comparator.comparingDouble($$1x -> ((iu)$$1x.getSecond()).j($$2)));
-   }
-
-   public Optional<iu> d(Predicate<je<cij>> $$0, Predicate<iu> $$1, iu $$2, int $$3, cig.b $$4) {
-      return this.a($$0, $$1, $$2, $$3, $$4).findFirst();
-   }
-
-   public Optional<iu> d(Predicate<je<cij>> $$0, iu $$1, int $$2, cig.b $$3) {
-      return this.c($$0, $$1, $$2, $$3).map(cih::g).min(Comparator.comparingDouble($$1x -> $$1x.j($$1)));
-   }
-
-   public Optional<Pair<je<cij>, iu>> e(Predicate<je<cij>> $$0, iu $$1, int $$2, cig.b $$3) {
-      return this.c($$0, $$1, $$2, $$3).min(Comparator.comparingDouble($$1x -> $$1x.g().j($$1))).map($$0x -> Pair.of($$0x.h(), $$0x.g()));
-   }
-
-   public Optional<iu> e(Predicate<je<cij>> $$0, Predicate<iu> $$1, iu $$2, int $$3, cig.b $$4) {
-      return this.c($$0, $$2, $$3, $$4).map(cih::g).filter($$1).min(Comparator.comparingDouble($$1x -> $$1x.j($$2)));
-   }
-
-   public Optional<iu> a(Predicate<je<cij>> $$0, BiPredicate<je<cij>, iu> $$1, iu $$2, int $$3) {
-      return this.c($$0, $$2, $$3, cig.b.a).filter($$1x -> $$1.test($$1x.h(), $$1x.g())).findFirst().map($$0x -> {
-         $$0x.c();
-         return $$0x.g();
-      });
-   }
-
-   public Optional<iu> a(Predicate<je<cij>> $$0, Predicate<iu> $$1, cig.b $$2, iu $$3, int $$4, azv $$5) {
-      List<cih> $$6 = af.a(this.c($$0, $$3, $$4, $$2), $$5);
-      return $$6.stream().filter($$1x -> $$1.test($$1x.g())).findFirst().map(cih::g);
-   }
-
-   public boolean b(iu $$0) {
-      return this.d(jx.c($$0)).map($$1 -> $$1.c($$0)).orElseThrow(() -> af.b(new IllegalStateException("POI never registered at " + $$0)));
-   }
-
-   public boolean a(iu $$0, Predicate<je<cij>> $$1) {
-      return this.d(jx.c($$0)).map($$2 -> $$2.a($$0, $$1)).orElse(false);
-   }
-
-   public Optional<je<cij>> c(iu $$0) {
-      return this.d(jx.c($$0)).flatMap($$1 -> $$1.d($$0));
-   }
-
-   @Deprecated
-   @bav
-   public int d(iu $$0) {
-      return this.d(jx.c($$0)).map($$1 -> $$1.b($$0)).orElse(0);
-   }
-
-   public int a(jx $$0) {
-      this.d.a();
-      return this.d.c($$0.s());
-   }
-
-   boolean g(long $$0) {
-      Optional<cii> $$1 = this.c($$0);
-      return $$1 == null ? false : $$1.<Boolean>map($$0x -> $$0x.a($$0xx -> $$0xx.a(axm.b), cig.b.b).findAny().isPresent()).orElse(false);
-   }
-
-   @Override
-   public void a(BooleanSupplier $$0) {
-      super.a($$0);
-      this.d.a();
-   }
-
-   @Override
-   protected void a(long $$0) {
-      super.a($$0);
-      this.d.b($$0, this.d.b($$0), false);
-   }
-
-   @Override
-   protected void b(long $$0) {
-      this.d.b($$0, this.d.b($$0), false);
-   }
-
-   public void a(jx $$0, ecp $$1) {
-      af.a(this.d($$0.s()), $$2 -> $$2.a($$2x -> {
-            if (a($$1)) {
-               this.a($$1, $$0, $$2x);
+         while ($$4.v() <= $$2 && $$4.v() - $$5 < $$1) {
+            $$4.c(jb.b);
+            if ($$3.test($$4)) {
+               $$4.c(jb.a);
+               break;
             }
-         }), () -> {
-         if (a($$1)) {
-            cii $$2 = this.f($$0.s());
-            this.a($$1, $$0, $$2::a);
          }
-      });
+
+         return $$4.j();
+      }
    }
 
-   private static boolean a(ecp $$0) {
-      return $$0.a(cik::b);
+   @Nullable
+   public static fex a(bxr $$0, Supplier<iv> $$1) {
+      return a($$1, $$0::c);
    }
 
-   private void a(ecp $$0, jx $$1, BiConsumer<iu, je<cij>> $$2) {
-      $$1.t().forEach($$2x -> {
-         eah $$3 = $$0.a(jx.b($$2x.u()), jx.b($$2x.v()), jx.b($$2x.w()));
-         cik.a($$3).ifPresent($$2xx -> $$2.accept($$2x, $$2xx));
-      });
-   }
+   @Nullable
+   public static fex a(Supplier<iv> $$0, ToDoubleFunction<iv> $$1) {
+      double $$2 = Double.NEGATIVE_INFINITY;
+      iv $$3 = null;
 
-   public void a(djd $$0, iu $$1, int $$2) {
-      jx.a(new dih($$1), Math.floorDiv($$2, 16), this.c.aq(), this.c.ar())
-         .map($$0x -> Pair.of($$0x, this.d($$0x.s())))
-         .filter($$0x -> !((Optional)$$0x.getSecond()).<Boolean>map(cii::b).orElse(false))
-         .map($$0x -> ((jx)$$0x.getFirst()).r())
-         .filter($$0x -> this.e.add($$0x.a()))
-         .forEach($$1x -> $$0.a($$1x.h, $$1x.i, edf.c));
-   }
-
-   final class a extends arl {
-      private final Long2ByteMap b = new Long2ByteOpenHashMap();
-
-      protected a() {
-         super(7, 16, 256);
-         this.b.defaultReturnValue((byte)7);
+      for (int $$4 = 0; $$4 < 10; $$4++) {
+         iv $$5 = $$0.get();
+         if ($$5 != null) {
+            double $$6 = $$1.applyAsDouble($$5);
+            if ($$6 > $$2) {
+               $$2 = $$6;
+               $$3 = $$5;
+            }
+         }
       }
 
-      @Override
-      protected int b(long $$0) {
-         return cig.this.g($$0) ? 0 : 7;
-      }
+      return $$3 != null ? fex.c($$3) : null;
+   }
 
-      @Override
-      protected int c(long $$0) {
-         return this.b.get($$0);
-      }
-
-      @Override
-      protected void a(long $$0, int $$1) {
-         if ($$1 > 6) {
-            this.b.remove($$0);
+   public static iv a(bxr $$0, int $$1, azv $$2, iv $$3) {
+      int $$4 = $$3.u();
+      int $$5 = $$3.w();
+      if ($$0.gh() && $$1 > 1) {
+         iv $$6 = $$0.ge();
+         if ($$0.dz() > (double)$$6.u()) {
+            $$4 -= $$2.a($$1 / 2);
          } else {
-            this.b.put($$0, (byte)$$1);
+            $$4 += $$2.a($$1 / 2);
+         }
+
+         if ($$0.dF() > (double)$$6.w()) {
+            $$5 -= $$2.a($$1 / 2);
+         } else {
+            $$5 += $$2.a($$1 / 2);
          }
       }
 
-      public void a() {
-         super.b(Integer.MAX_VALUE);
-      }
-   }
-
-   public static enum b {
-      a(cih::e),
-      b(cih::f),
-      c($$0 -> true);
-
-      private final Predicate<? super cih> d;
-
-      private b(final Predicate<? super cih> $$0) {
-         this.d = $$0;
-      }
-
-      public Predicate<? super cih> a() {
-         return this.d;
-      }
+      return iv.a((double)$$4 + $$0.dz(), (double)$$3.v() + $$0.dB(), (double)$$5 + $$0.dF());
    }
 }

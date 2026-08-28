@@ -1,23 +1,22 @@
-import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
 
-public enum fov implements azp, bak {
-   a(0, "minimized", "options.inactivityFpsLimit.minimized"),
-   b(1, "afk", "options.inactivityFpsLimit.afk");
+public enum fov implements azp {
+   a(0, "options.off"),
+   b(1, "options.attack.crosshair"),
+   c(2, "options.attack.hotbar");
 
-   public static final Codec<fov> c = bak.a(fov::values);
-   private final int d;
-   private final String e;
+   private static final IntFunction<fov> d = ayc.a(fov::b, values(), ayc.a.b);
+   private final int e;
    private final String f;
 
-   private fov(final int $$0, final String $$1, final String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   private fov(final int $$0, final String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
    @Override
    public int b() {
-      return this.d;
+      return this.e;
    }
 
    @Override
@@ -25,8 +24,7 @@ public enum fov implements azp, bak {
       return this.f;
    }
 
-   @Override
-   public String c() {
-      return this.e;
+   public static fov a(int $$0) {
+      return d.apply($$0);
    }
 }

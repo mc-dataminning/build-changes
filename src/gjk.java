@@ -1,26 +1,24 @@
-import com.google.common.collect.ImmutableList;
-import java.util.function.UnaryOperator;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
 public class gjk {
-   private final gjm a;
+   public static final gjk a = new gjk(Map.of());
+   private final Map<gjm, gju> b;
 
-   public gjk() {
-      this(new gjm(ImmutableList.of(), gje.a));
+   public gjk(Map<gjm, gju> $$0) {
+      this.b = $$0;
    }
 
-   private gjk(gjm $$0) {
-      this.a = $$0;
+   public gjo a(gjm $$0) {
+      gju $$1 = this.b.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("No model for layer " + $$0);
+      } else {
+         return $$1.a();
+      }
    }
 
-   public gjm a() {
-      return this.a;
-   }
-
-   public gjk a(UnaryOperator<gje> $$0) {
-      return new gjk(this.a.a($$0));
-   }
-
-   public gjk a(gjl $$0) {
-      return $$0.apply(this);
+   public static gjk a() {
+      return new gjk(ImmutableMap.copyOf(gjl.a()));
    }
 }

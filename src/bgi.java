@@ -11,15 +11,15 @@ public class bgi extends DataFix {
       super($$0, false);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bix.t);
-      Type<Pair<String, String>> $$1 = this.getInputSchema().getType(bix.z);
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(biz.t);
+      Type<Pair<String, String>> $$1 = this.getInputSchema().getType(biz.z);
       OpticFinder<?> $$2 = $$0.findField("tag");
       OpticFinder<?> $$3 = $$2.type().findField("display");
-      OpticFinder<?> $$4 = $$3.type().findField("Lore");
+      OpticFinder<?> $$4 = $$3.type().findField("Name");
       OpticFinder<Pair<String, String>> $$5 = DSL.typeFinder($$1);
       return this.fixTypeEverywhereTyped(
-         "Item Lore componentize",
+         "ItemCustomNameToComponentFix",
          $$0,
          $$4x -> $$4x.updateTyped(
                $$2, $$3xx -> $$3xx.updateTyped($$3, $$2xxx -> $$2xxx.updateTyped($$4, $$1xxxx -> $$1xxxx.update($$5, $$0xxxxx -> $$0xxxxx.mapSecond(bbe::a))))

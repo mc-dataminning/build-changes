@@ -1,10 +1,10 @@
 public class ads implements zf<abu> {
-   public static final yw<wj, ads> a = yw.a(yu.w, ads::b, yu.a(mg.V), ads::e, xa.d, ads::f, ads::new);
+   public static final yw<wj, ads> a = yw.a(yu.x, ads::b, yu.a(mh.V), ads::e, xa.d, ads::f, ads::new);
    private final int b;
-   private final cwe<?> c;
+   private final cwl<?> c;
    private final wy d;
 
-   public ads(int $$0, cwe<?> $$1, wy $$2) {
+   public ads(int $$0, cwl<?> $$1, wy $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -23,7 +23,7 @@ public class ads implements zf<abu> {
       return this.b;
    }
 
-   public cwe<?> e() {
+   public cwl<?> e() {
       return this.c;
    }
 

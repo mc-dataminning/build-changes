@@ -1,34 +1,54 @@
-public record ddz<T extends ddu<?>>(alf<ddu<?>> b, T c) {
-   public static final yw<wj, ddz<?>> a = yw.a(alf.b(mg.bu), ddz::a, ddu.b, ddz::b, ddz::new);
+import java.util.Map;
+
+public class ddz extends dep {
+   public ddz(ddo $$0) {
+      super("", $$0, deq.a(Map.of('#', ddx.a(czo.rE), 'x', ddx.a(czo.tc)), "###", "#x#", "###"), new czk(czo.vt));
+   }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof ddz<?> $$1 && this.b == $$1.b) {
-            return true;
-         }
-
+   public boolean a(ddp $$0, djh $$1) {
+      if (!super.a($$0, $$1)) {
          return false;
+      } else {
+         czk $$2 = c($$0);
+         if ($$2.f()) {
+            return false;
+         } else {
+            eyq $$3 = czx.b($$2, $$1);
+            if ($$3 == null) {
+               return false;
+            } else {
+               return $$3.d() ? false : $$3.g < 4;
+            }
+         }
       }
    }
 
    @Override
-   public int hashCode() {
-      return this.b.hashCode();
+   public czk a(ddp $$0, jh.a $$1) {
+      czk $$2 = c($$0).c(1);
+      $$2.b(kk.O, dch.b);
+      return $$2;
+   }
+
+   private static czk c(ddp $$0) {
+      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
+         czk $$2 = $$0.a($$1);
+         if ($$2.c(kk.M)) {
+            return $$2;
+         }
+      }
+
+      return czk.k;
    }
 
    @Override
-   public String toString() {
-      return this.b.toString();
+   public boolean am_() {
+      return true;
    }
 
-   public alf<ddu<?>> a() {
-      return this.b;
-   }
-
-   public T b() {
-      return this.c;
+   @Override
+   public del<ddz> a() {
+      return del.f;
    }
 }

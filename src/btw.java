@@ -1,115 +1,140 @@
-import java.util.Iterator;
-import java.util.NoSuchElementException;
-import java.util.Set;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import java.util.UUID;
 
-public interface btw extends btu, Iterable<czd> {
-   float r_ = 4.0F;
+public abstract class btw {
+   private final UUID h;
+   protected wy a;
+   protected float b;
+   protected btw.a c;
+   protected btw.b d;
+   protected boolean e;
+   protected boolean f;
+   protected boolean g;
 
-   int b();
-
-   boolean c();
-
-   czd a(int var1);
-
-   czd a(int var1, int var2);
-
-   czd b(int var1);
-
-   void a(int var1, czd var2);
-
-   default int ak_() {
-      return 99;
+   public btw(UUID $$0, wy $$1, btw.a $$2, btw.b $$3) {
+      this.h = $$0;
+      this.a = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.b = 1.0F;
    }
 
-   default int f_(czd $$0) {
-      return Math.min(this.ak_(), $$0.k());
+   public UUID i() {
+      return this.h;
    }
 
-   void e();
-
-   boolean a(crc var1);
-
-   default void c_(crc $$0) {
+   public wy j() {
+      return this.a;
    }
 
-   default void c(crc $$0) {
+   public void a(wy $$0) {
+      this.a = $$0;
    }
 
-   default boolean b(int $$0, czd $$1) {
-      return true;
+   public float k() {
+      return this.b;
    }
 
-   default boolean a(btw $$0, int $$1, czd $$2) {
-      return true;
+   public void a(float $$0) {
+      this.b = $$0;
    }
 
-   default int a_(cyz $$0) {
-      int $$1 = 0;
+   public btw.a l() {
+      return this.c;
+   }
 
-      for (czd $$2 : this) {
-         if ($$2.h().equals($$0)) {
-            $$1 += $$2.M();
-         }
+   public void a(btw.a $$0) {
+      this.c = $$0;
+   }
+
+   public btw.b m() {
+      return this.d;
+   }
+
+   public void a(btw.b $$0) {
+      this.d = $$0;
+   }
+
+   public boolean n() {
+      return this.e;
+   }
+
+   public btw a(boolean $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   public boolean o() {
+      return this.f;
+   }
+
+   public btw b(boolean $$0) {
+      this.f = $$0;
+      return this;
+   }
+
+   public btw c(boolean $$0) {
+      this.g = $$0;
+      return this;
+   }
+
+   public boolean p() {
+      return this.g;
+   }
+
+   public static enum a implements bak {
+      a("pink", o.m),
+      b("blue", o.j),
+      c("red", o.e),
+      d("green", o.k),
+      e("yellow", o.o),
+      f("purple", o.b),
+      g("white", o.p);
+
+      public static final Codec<btw.a> h = bak.a(btw.a::values);
+      private final String i;
+      private final o j;
+
+      private a(final String $$0, final o $$1) {
+         this.i = $$0;
+         this.j = $$1;
       }
 
-      return $$1;
-   }
-
-   default boolean a(Set<cyz> $$0) {
-      return this.a_($$1 -> !$$1.f() && $$0.contains($$1.h()));
-   }
-
-   default boolean a_(Predicate<czd> $$0) {
-      for (czd $$1 : this) {
-         if ($$0.test($$1)) {
-            return true;
-         }
+      public o a() {
+         return this.j;
       }
 
-      return false;
-   }
-
-   static boolean a(dxf $$0, crc $$1) {
-      return a($$0, $$1, 4.0F);
-   }
-
-   static boolean a(dxf $$0, crc $$1, float $$2) {
-      dja $$3 = $$0.i();
-      iu $$4 = $$0.ax_();
-      if ($$3 == null) {
-         return false;
-      } else {
-         return $$3.c_($$4) != $$0 ? false : $$1.a($$4, (double)$$2);
-      }
-   }
-
-   @Override
-   default Iterator<czd> iterator() {
-      return new btw.a(this);
-   }
-
-   public static class a implements Iterator<czd> {
-      private final btw a;
-      private int b;
-      private final int c;
-
-      public a(btw $$0) {
-         this.a = $$0;
-         this.c = $$0.b();
+      public String b() {
+         return this.i;
       }
 
       @Override
-      public boolean hasNext() {
-         return this.b < this.c;
+      public String c() {
+         return this.i;
+      }
+   }
+
+   public static enum b implements bak {
+      a("progress"),
+      b("notched_6"),
+      c("notched_10"),
+      d("notched_12"),
+      e("notched_20");
+
+      public static final Codec<btw.b> f = bak.a(btw.b::values);
+      private final String g;
+
+      private b(final String $$0) {
+         this.g = $$0;
       }
 
-      public czd a() {
-         if (!this.hasNext()) {
-            throw new NoSuchElementException();
-         } else {
-            return this.a.a(this.b++);
-         }
+      public String a() {
+         return this.g;
+      }
+
+      @Override
+      public String c() {
+         return this.g;
       }
    }
 }

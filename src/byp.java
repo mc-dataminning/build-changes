@@ -1,84 +1,42 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+public class byp {
+   public static final jf<byk> a = a("armor", new byr("attribute.name.armor", 0.0, 0.0, 30.0).a(true));
+   public static final jf<byk> b = a("armor_toughness", new byr("attribute.name.armor_toughness", 0.0, 0.0, 20.0).a(true));
+   public static final jf<byk> c = a("attack_damage", new byr("attribute.name.attack_damage", 2.0, 0.0, 2048.0));
+   public static final jf<byk> d = a("attack_knockback", new byr("attribute.name.attack_knockback", 0.0, 0.0, 5.0));
+   public static final jf<byk> e = a("attack_speed", new byr("attribute.name.attack_speed", 4.0, 0.0, 1024.0).a(true));
+   public static final jf<byk> f = a("block_break_speed", new byr("attribute.name.block_break_speed", 1.0, 0.0, 1024.0).a(true));
+   public static final jf<byk> g = a("block_interaction_range", new byr("attribute.name.block_interaction_range", 4.5, 0.0, 64.0).a(true));
+   public static final jf<byk> h = a("burning_time", new byr("attribute.name.burning_time", 1.0, 0.0, 1024.0).a(true).a(byk.a.c));
+   public static final jf<byk> i = a("explosion_knockback_resistance", new byr("attribute.name.explosion_knockback_resistance", 0.0, 0.0, 1.0).a(true));
+   public static final jf<byk> j = a("entity_interaction_range", new byr("attribute.name.entity_interaction_range", 3.0, 0.0, 64.0).a(true));
+   public static final jf<byk> k = a("fall_damage_multiplier", new byr("attribute.name.fall_damage_multiplier", 1.0, 0.0, 100.0).a(true).a(byk.a.c));
+   public static final jf<byk> l = a("flying_speed", new byr("attribute.name.flying_speed", 0.4, 0.0, 1024.0).a(true));
+   public static final jf<byk> m = a("follow_range", new byr("attribute.name.follow_range", 32.0, 0.0, 2048.0));
+   public static final jf<byk> n = a("gravity", new byr("attribute.name.gravity", 0.08, -1.0, 1.0).a(true).a(byk.a.b));
+   public static final jf<byk> o = a("jump_strength", new byr("attribute.name.jump_strength", 0.42F, 0.0, 32.0).a(true));
+   public static final jf<byk> p = a("knockback_resistance", new byr("attribute.name.knockback_resistance", 0.0, 0.0, 1.0));
+   public static final jf<byk> q = a("luck", new byr("attribute.name.luck", 0.0, -1024.0, 1024.0).a(true));
+   public static final jf<byk> r = a("max_absorption", new byr("attribute.name.max_absorption", 0.0, 0.0, 2048.0).a(true));
+   public static final jf<byk> s = a("max_health", new byr("attribute.name.max_health", 20.0, 1.0, 1024.0).a(true));
+   public static final jf<byk> t = a("mining_efficiency", new byr("attribute.name.mining_efficiency", 0.0, 0.0, 1024.0).a(true));
+   public static final jf<byk> u = a("movement_efficiency", new byr("attribute.name.movement_efficiency", 0.0, 0.0, 1.0).a(true));
+   public static final jf<byk> v = a("movement_speed", new byr("attribute.name.movement_speed", 0.7, 0.0, 1024.0).a(true));
+   public static final jf<byk> w = a("oxygen_bonus", new byr("attribute.name.oxygen_bonus", 0.0, 0.0, 1024.0).a(true));
+   public static final jf<byk> x = a("safe_fall_distance", new byr("attribute.name.safe_fall_distance", 3.0, -1024.0, 1024.0).a(true));
+   public static final jf<byk> y = a("scale", new byr("attribute.name.scale", 1.0, 0.0625, 16.0).a(true).a(byk.a.b));
+   public static final jf<byk> z = a("sneaking_speed", new byr("attribute.name.sneaking_speed", 0.3, 0.0, 1.0).a(true));
+   public static final jf<byk> A = a("spawn_reinforcements", new byr("attribute.name.spawn_reinforcements", 0.0, 0.0, 1.0));
+   public static final jf<byk> B = a("step_height", new byr("attribute.name.step_height", 0.6, 0.0, 10.0).a(true));
+   public static final jf<byk> C = a("submerged_mining_speed", new byr("attribute.name.submerged_mining_speed", 0.2, 0.0, 20.0).a(true));
+   public static final jf<byk> D = a("sweeping_damage_ratio", new byr("attribute.name.sweeping_damage_ratio", 0.0, 0.0, 1.0).a(true));
+   public static final jf<byk> E = a("tempt_range", new byr("attribute.name.tempt_range", 10.0, 0.0, 2048.0));
+   public static final jf<byk> F = a("water_movement_efficiency", new byr("attribute.name.water_movement_efficiency", 0.0, 0.0, 1.0).a(true));
 
-public class byp extends byv<ciu> {
-   private static final int c = 3;
-   private static final int d = 60;
-   private static final int e = 110;
-   private final bwo<? extends ciu> f;
-   private final float g;
-   private final int h;
-   private static final int i = 2;
-   private long j;
-
-   public byp(bwo<? extends ciu> $$0) {
-      this($$0, 1.0F, 2);
+   private static jf<byk> a(String $$0, byk $$1) {
+      return js.b(mg.s, alg.b($$0), $$1);
    }
 
-   public byp(bwo<? extends ciu> $$0, float $$1, int $$2) {
-      super(ImmutableMap.of(cgg.h, cgh.a, cgg.s, cgh.b, cgg.n, cgh.c, cgg.o, cgh.c, cgg.aa, cgh.b), 110);
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-   }
-
-   protected boolean a(arq $$0, ciu $$1) {
-      return $$1.gB() && this.c($$1).isPresent();
-   }
-
-   protected void a(arq $$0, ciu $$1, long $$2) {
-      ciu $$3 = this.c($$1).get();
-      $$1.ec().a(cgg.s, $$3);
-      $$3.ec().a(cgg.s, $$1);
-      byx.a($$1, (bxe)$$3, this.g, this.h);
-      int $$4 = 60 + $$1.dY().a(50);
-      this.j = $$2 + (long)$$4;
-   }
-
-   protected boolean b(arq $$0, ciu $$1, long $$2) {
-      if (!this.b($$1)) {
-         return false;
-      } else {
-         ciu $$3 = this.a($$1);
-         return $$3.bK() && $$1.a($$3) && byx.a($$1.ec(), $$3) && $$2 <= this.j && !$$1.go() && !$$3.go();
-      }
-   }
-
-   protected void c(arq $$0, ciu $$1, long $$2) {
-      ciu $$3 = this.a($$1);
-      byx.a($$1, (bxe)$$3, this.g, this.h);
-      if ($$1.a($$3, 3.0)) {
-         if ($$2 >= this.j) {
-            $$1.a($$0, $$3);
-            $$1.ec().b(cgg.s);
-            $$3.ec().b(cgg.s);
-         }
-      }
-   }
-
-   protected void d(arq $$0, ciu $$1, long $$2) {
-      $$1.ec().b(cgg.s);
-      $$1.ec().b(cgg.n);
-      $$1.ec().b(cgg.o);
-      this.j = 0L;
-   }
-
-   private ciu a(ciu $$0) {
-      return (ciu)$$0.ec().c(cgg.s).get();
-   }
-
-   private boolean b(ciu $$0) {
-      bye<?> $$1 = $$0.ec();
-      return $$1.a(cgg.s) && $$1.c(cgg.s).get().aq() == this.f;
-   }
-
-   private Optional<? extends ciu> c(ciu $$0) {
-      return $$0.ec().c(cgg.h).get().a($$1 -> {
-         if ($$1.aq() == this.f && $$1 instanceof ciu $$2 && $$0.a($$2) && !$$2.go()) {
-            return true;
-         }
-
-         return false;
-      }).map(ciu.class::cast);
+   public static jf<byk> a(js<byk> $$0) {
+      return s;
    }
 }

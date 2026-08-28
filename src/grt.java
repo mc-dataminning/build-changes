@@ -1,175 +1,153 @@
-import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMaps;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.lang.reflect.Type;
+import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Map.Entry;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.joml.Vector3f;
+import org.joml.Vector3fc;
 
-public class grt {
-   public static final grt a = new grt(Map.of());
-   private static final char b = '#';
-   private final Map<String, hle> c;
+public record grt(Vector3fc a, Vector3fc b, Map<jb, gru> c, @Nullable grv d, boolean e, int f) {
+   private static final boolean g = false;
+   private static final float h = -16.0F;
+   private static final float i = 32.0F;
 
-   grt(Map<String, hle> $$0) {
-      this.c = $$0;
+   public grt(Vector3fc $$0, Vector3fc $$1, Map<jb, gru> $$2) {
+      this($$0, $$1, $$2, null, true, 0);
    }
 
-   @Nullable
-   public hle a(String $$0) {
-      if (b($$0)) {
-         $$0 = $$0.substring(1);
-      }
+   protected static class a implements JsonDeserializer<grt> {
+      private static final boolean a = true;
+      private static final int b = 0;
 
-      return this.c.get($$0);
-   }
-
-   private static boolean b(String $$0) {
-      return $$0.charAt(0) == '#';
-   }
-
-   public static grt.a a(JsonObject $$0, alg $$1) {
-      grt.a.a $$2 = new grt.a.a();
-
-      for (Entry<String, JsonElement> $$3 : $$0.entrySet()) {
-         a($$1, $$3.getKey(), $$3.getValue().getAsString(), $$2);
-      }
-
-      return $$2.a();
-   }
-
-   private static void a(alg $$0, String $$1, String $$2, grt.a.a $$3) {
-      if (b($$2)) {
-         $$3.a($$1, $$2.substring(1));
-      } else {
-         alg $$4 = alg.c($$2);
-         if ($$4 == null) {
-            throw new JsonParseException($$2 + " is not valid resource location");
-         }
-
-         $$3.a($$1, new hle($$0, $$4));
-      }
-   }
-
-   public static record a(Map<String, grt.d> b) {
-      public static final grt.a a = new grt.a(Map.of());
-
-      public Map<String, grt.d> a() {
-         return this.b;
-      }
-
-      public static class a {
-         private final Map<String, grt.d> a = new HashMap<>();
-
-         public grt.a.a a(String $$0, String $$1) {
-            this.a.put($$0, new grt.b($$1));
-            return this;
-         }
-
-         public grt.a.a a(String $$0, hle $$1) {
-            this.a.put($$0, new grt.e($$1));
-            return this;
-         }
-
-         public grt.a a() {
-            return this.a.isEmpty() ? grt.a.a : new grt.a(Map.copyOf(this.a));
-         }
-      }
-   }
-
-   static record b(String a) implements grt.d {
-   }
-
-   public static class c {
-      private static final Logger a = LogUtils.getLogger();
-      private final List<grt.a> b = new ArrayList<>();
-
-      public grt.c a(grt.a $$0) {
-         this.b.addLast($$0);
-         return this;
-      }
-
-      public grt.c b(grt.a $$0) {
-         this.b.addFirst($$0);
-         return this;
-      }
-
-      public grt a(hli $$0) {
-         if (this.b.isEmpty()) {
-            return grt.a;
+      public grt a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         Vector3f $$4 = this.e($$3);
+         Vector3f $$5 = this.d($$3);
+         grv $$6 = this.a($$3);
+         Map<jb, gru> $$7 = this.a($$2, $$3);
+         if ($$3.has("shade") && !azc.c($$3, "shade")) {
+            throw new JsonParseException("Expected shade to be a Boolean");
          } else {
-            Object2ObjectMap<String, hle> $$1 = new Object2ObjectArrayMap();
-            Object2ObjectMap<String, grt.b> $$2 = new Object2ObjectArrayMap();
-
-            for (grt.a $$3 : Lists.reverse(this.b)) {
-               $$3.b.forEach(($$2x, $$3x) -> {
-                  Objects.requireNonNull($$3x);
-                  switch ($$3x) {
-                     case grt.e $$6x:
-                        $$2.remove($$2x);
-                        $$1.put($$2x, $$6x.a());
-                        break;
-                     case grt.b $$7x:
-                        $$1.remove($$2x);
-                        $$2.put($$2x, $$7x);
-                        break;
-                     default:
-                        throw new MatchException(null, null);
-                  }
-               });
-            }
-
-            if ($$2.isEmpty()) {
-               return new grt($$1);
-            } else {
-               boolean $$4 = true;
-
-               while ($$4) {
-                  $$4 = false;
-                  ObjectIterator<it.unimi.dsi.fastutil.objects.Object2ObjectMap.Entry<String, grt.b>> $$5 = Object2ObjectMaps.fastIterator($$2);
-
-                  while ($$5.hasNext()) {
-                     it.unimi.dsi.fastutil.objects.Object2ObjectMap.Entry<String, grt.b> $$6 = (it.unimi.dsi.fastutil.objects.Object2ObjectMap.Entry<String, grt.b>)$$5.next();
-                     hle $$7 = (hle)$$1.get(((grt.b)$$6.getValue()).a);
-                     if ($$7 != null) {
-                        $$1.put((String)$$6.getKey(), $$7);
-                        $$5.remove();
-                        $$4 = true;
-                     }
-                  }
+            boolean $$8 = azc.a($$3, "shade", true);
+            int $$9 = 0;
+            if ($$3.has("light_emission")) {
+               boolean $$10 = azc.b($$3, "light_emission");
+               if ($$10) {
+                  $$9 = azc.o($$3, "light_emission");
                }
 
-               if (!$$2.isEmpty()) {
-                  a.warn(
-                     "Unresolved texture references in {}:\n{}",
-                     $$0.get(),
-                     $$2.entrySet()
-                        .stream()
-                        .map($$0x -> "\t#" + (String)$$0x.getKey() + "-> #" + ((grt.b)$$0x.getValue()).a + "\n")
-                        .collect(Collectors.joining())
-                  );
+               if (!$$10 || $$9 < 0 || $$9 > 15) {
+                  throw new JsonParseException("Expected light_emission to be an Integer between (inclusive) 0 and 15");
                }
-
-               return new grt($$1);
             }
+
+            return new grt($$4, $$5, $$7, $$6, $$8, $$9);
          }
       }
-   }
 
-   public sealed interface d permits grt.e, grt.b {
-   }
+      @Nullable
+      private grv a(JsonObject $$0) {
+         grv $$1 = null;
+         if ($$0.has("rotation")) {
+            JsonObject $$2 = azc.u($$0, "rotation");
+            Vector3f $$3 = this.a($$2, "origin");
+            $$3.mul(0.0625F);
+            jb.a $$4 = this.c($$2);
+            float $$5 = this.b($$2);
+            boolean $$6 = azc.a($$2, "rescale", false);
+            $$1 = new grv($$3, $$4, $$5, $$6);
+         }
 
-   static record e(hle a) implements grt.d {
+         return $$1;
+      }
+
+      private float b(JsonObject $$0) {
+         float $$1 = azc.m($$0, "angle");
+         if ($$1 != 0.0F && azm.e($$1) != 22.5F && azm.e($$1) != 45.0F) {
+            throw new JsonParseException("Invalid rotation " + $$1 + " found, only -45/-22.5/0/22.5/45 allowed");
+         } else {
+            return $$1;
+         }
+      }
+
+      private jb.a c(JsonObject $$0) {
+         String $$1 = azc.i($$0, "axis");
+         jb.a $$2 = jb.a.a($$1.toLowerCase(Locale.ROOT));
+         if ($$2 == null) {
+            throw new JsonParseException("Invalid rotation axis: " + $$1);
+         } else {
+            return $$2;
+         }
+      }
+
+      private Map<jb, gru> a(JsonDeserializationContext $$0, JsonObject $$1) {
+         Map<jb, gru> $$2 = this.b($$0, $$1);
+         if ($$2.isEmpty()) {
+            throw new JsonParseException("Expected between 1 and 6 unique faces, got 0");
+         } else {
+            return $$2;
+         }
+      }
+
+      private Map<jb, gru> b(JsonDeserializationContext $$0, JsonObject $$1) {
+         Map<jb, gru> $$2 = Maps.newEnumMap(jb.class);
+         JsonObject $$3 = azc.u($$1, "faces");
+
+         for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
+            jb $$5 = this.a($$4.getKey());
+            $$2.put($$5, (gru)$$0.deserialize($$4.getValue(), gru.class));
+         }
+
+         return $$2;
+      }
+
+      private jb a(String $$0) {
+         jb $$1 = jb.a($$0);
+         if ($$1 == null) {
+            throw new JsonParseException("Unknown facing: " + $$0);
+         } else {
+            return $$1;
+         }
+      }
+
+      private Vector3f d(JsonObject $$0) {
+         Vector3f $$1 = this.a($$0, "to");
+         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
+            return $$1;
+         } else {
+            throw new JsonParseException("'to' specifier exceeds the allowed boundaries: " + $$1);
+         }
+      }
+
+      private Vector3f e(JsonObject $$0) {
+         Vector3f $$1 = this.a($$0, "from");
+         if (!($$1.x() < -16.0F) && !($$1.y() < -16.0F) && !($$1.z() < -16.0F) && !($$1.x() > 32.0F) && !($$1.y() > 32.0F) && !($$1.z() > 32.0F)) {
+            return $$1;
+         } else {
+            throw new JsonParseException("'from' specifier exceeds the allowed boundaries: " + $$1);
+         }
+      }
+
+      private Vector3f a(JsonObject $$0, String $$1) {
+         JsonArray $$2 = azc.v($$0, $$1);
+         if ($$2.size() != 3) {
+            throw new JsonParseException("Expected 3 " + $$1 + " values, found: " + $$2.size());
+         } else {
+            float[] $$3 = new float[3];
+
+            for (int $$4 = 0; $$4 < $$3.length; $$4++) {
+               $$3[$$4] = azc.e($$2.get($$4), $$1 + "[" + $$4 + "]");
+            }
+
+            return new Vector3f($$3[0], $$3[1], $$3[2]);
+         }
+      }
    }
 }

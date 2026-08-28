@@ -1,22 +1,26 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
 
 public class cbl {
-   public static byw<bxe> a() {
-      return cci.a(
-         (Function<cci.b<bxe>, ? extends App<cci.c<bxe>, ccl<bxe>>>)($$0 -> $$0.group($$0.b(cgg.ac))
-               .apply(
-                  $$0,
-                  $$1 -> ($$2, $$3, $$4) -> {
-                        Optional.ofNullable($$2.b($$0.b($$1)))
-                           .map($$0xxx -> $$0xxx instanceof bxe $$1xx ? $$1xx : null)
-                           .filter(bxe::eH)
-                           .filter($$1xx -> $$1xx.aq() != bwo.bS || $$2.O().c(diw.P))
-                           .ifPresent($$1xx -> $$1.b());
+   private static final float a = 0.3F;
+
+   public static cal<bxj> a() {
+      return ccn.a(
+         (Function<ccn.b<bxj>, ? extends App<ccn.c<bxj>, ccq<bxj>>>)($$0 -> $$0.group($$0.a(cgl.n), $$0.a(cgl.o), $$0.b(cgl.e), $$0.b(cgl.h), $$0.c(cgl.r))
+               .apply($$0, ($$1, $$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     je $$9 = $$0.b($$3);
+                     cgn $$10 = $$0.b($$4);
+                     if ($$6.C_().a(100) == 0 && $$6.aj() == $$9.a() && $$9.b().a($$7.ds(), 4.0) && $$10.d($$0xxx -> bwr.bD.equals($$0xxx.an()))) {
+                        $$10.a($$1xx -> bwr.bD.equals($$1xx.an()) && $$1xx.g($$7) <= 32.0).ifPresent($$3xx -> {
+                           $$5.a($$3xx);
+                           $$2.a(new bzl($$3xx, true));
+                           $$1.a(new cgo(new bzl($$3xx, false), 0.3F, 1));
+                        });
                         return true;
+                     } else {
+                        return false;
                      }
-               ))
+                  }))
       );
    }
 }

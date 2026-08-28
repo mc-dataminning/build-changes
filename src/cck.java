@@ -1,53 +1,80 @@
-import com.mojang.datafixers.kinds.Const;
-import com.mojang.datafixers.kinds.IdF;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.OptionalBox;
-import com.mojang.datafixers.kinds.Const.Mu;
-import com.mojang.datafixers.util.Unit;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public interface cck<F extends K1, Value> {
-   cgg<Value> a();
+public class cck extends ccl {
+   private static final List<czg> c = ImmutableList.of(czo.qj, czo.ww);
 
-   cgh b();
-
-   @Nullable
-   ccj<F, Value> a(bye<?> var1, Optional<Value> var2);
-
-   public static record a<Value>(cgg<Value> a) implements cck<Mu<Unit>, Value> {
-      @Override
-      public cgh b() {
-         return cgh.b;
-      }
-
-      @Override
-      public ccj<Mu<Unit>, Value> a(bye<?> $$0, Optional<Value> $$1) {
-         return $$1.isPresent() ? null : new ccj<>($$0, this.a, Const.create(Unit.INSTANCE));
+   @Override
+   protected void a(arq $$0, cqv $$1) {
+      Optional<je> $$2 = $$1.eb().c(cgl.c);
+      if (!$$2.isEmpty()) {
+         je $$3 = $$2.get();
+         eao $$4 = $$0.a_($$3.b());
+         if ($$4.a(dmo.pK)) {
+            this.c($$0, $$1);
+            this.a($$0, $$1, $$3, $$4);
+         }
       }
    }
 
-   public static record b<Value>(cgg<Value> a) implements cck<com.mojang.datafixers.kinds.IdF.Mu, Value> {
-      @Override
-      public cgh b() {
-         return cgh.a;
+   private void a(arq $$0, cqv $$1, je $$2, eao $$3) {
+      iv $$4 = $$2.b();
+      if ($$3.c(dny.e) == 8) {
+         $$3 = dny.a($$1, $$3, (djh)$$0, $$4);
       }
 
-      @Override
-      public ccj<com.mojang.datafixers.kinds.IdF.Mu, Value> a(bye<?> $$0, Optional<Value> $$1) {
-         return $$1.isEmpty() ? null : new ccj<>($$0, this.a, IdF.create($$1.get()));
+      int $$5 = 20;
+      int $$6 = 10;
+      int[] $$7 = new int[c.size()];
+      bun $$8 = $$1.n();
+      int $$9 = $$8.b();
+      eao $$10 = $$3;
+
+      for (int $$11 = $$9 - 1; $$11 >= 0 && $$5 > 0; $$11--) {
+         czk $$12 = $$8.a($$11);
+         int $$13 = c.indexOf($$12.h());
+         if ($$13 != -1) {
+            int $$14 = $$12.M();
+            int $$15 = $$7[$$13] + $$14;
+            $$7[$$13] = $$15;
+            int $$16 = Math.min(Math.min($$15 - 10, $$5), $$14);
+            if ($$16 > 0) {
+               $$5 -= $$16;
+
+               for (int $$17 = 0; $$17 < $$16; $$17++) {
+                  $$10 = dny.a($$1, $$10, $$0, $$12, $$4);
+                  if ($$10.c(dny.e) == 7) {
+                     this.a($$0, $$3, $$4, $$10);
+                     return;
+                  }
+               }
+            }
+         }
       }
+
+      this.a($$0, $$3, $$4, $$10);
    }
 
-   public static record c<Value>(cgg<Value> a) implements cck<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
-      @Override
-      public cgh b() {
-         return cgh.c;
-      }
+   private void a(arq $$0, eao $$1, iv $$2, eao $$3) {
+      $$0.c(1500, $$2, $$3 != $$1 ? 1 : 0);
+   }
 
-      @Override
-      public ccj<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> a(bye<?> $$0, Optional<Value> $$1) {
-         return new ccj<>($$0, this.a, OptionalBox.create($$1));
+   private void c(arq $$0, cqv $$1) {
+      bun $$2 = $$1.n();
+      if ($$2.a_(czo.ql) <= 36) {
+         int $$3 = $$2.a_(czo.qk);
+         int $$4 = 3;
+         int $$5 = 3;
+         int $$6 = Math.min(3, $$3 / 3);
+         if ($$6 != 0) {
+            int $$7 = $$6 * 3;
+            $$2.a(czo.qk, $$7);
+            czk $$8 = $$2.b(new czk(czo.ql, $$6));
+            if (!$$8.f()) {
+               $$1.a($$0, $$8, 0.5F);
+            }
+         }
       }
    }
 }

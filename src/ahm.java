@@ -1,10 +1,10 @@
 public class ahm implements zf<agp> {
    public static final yw<vu, ahm> a = zf.a(ahm::a, ahm::new);
-   private final iu b;
+   private final iv b;
    private final int c;
    private final boolean d;
 
-   public ahm(iu $$0, int $$1, boolean $$2) {
+   public ahm(iv $$0, int $$1, boolean $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -31,7 +31,7 @@ public class ahm implements zf<agp> {
       $$0.a(this);
    }
 
-   public iu b() {
+   public iv b() {
       return this.b;
    }
 

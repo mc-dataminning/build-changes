@@ -1,72 +1,111 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
 
-public class dne extends dpy implements dnd {
-   public static final MapCodec<dne> c = b(dne::new);
-   private static final float g = 0.11F;
+public class dne extends dle {
+   public static final MapCodec<dne> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(mg.e.q().fieldOf("candle").forGetter($$0x -> $$0x.h), t()).apply($$0, dne::new)
+   );
+   public static final ebf d = dle.b;
+   private static final ffr e = ffo.a(dmm.b(2.0, 8.0, 14.0), dmm.b(14.0, 0.0, 8.0));
+   private static final Map<dnd, dne> f = Maps.newHashMap();
+   private static final Iterable<fex> g = List.of(new fex(8.0, 16.0, 8.0).c(0.0625));
+   private final dnd h;
 
    @Override
    public MapCodec<dne> a() {
       return c;
    }
 
-   public dne(eag.d $$0) {
-      super($$0, ja.a, s_, false, 0.1);
-      this.l(this.C.b().b(e, Integer.valueOf(0)).b(t_, Boolean.valueOf(false)));
+   protected dne(dmm $$0, ean.d $$1) {
+      super($$1);
+      this.l(this.C.b().b(d, Boolean.valueOf(false)));
+      if ($$0 instanceof dnd $$2) {
+         f.put($$2, this);
+         this.h = $$2;
+      } else {
+         throw new IllegalArgumentException("Expected block to be of " + dnd.class + " was " + $$0.getClass());
+      }
    }
 
    @Override
-   protected int a(azv $$0) {
-      return 1;
+   protected Iterable<fex> b(eao $$0) {
+      return g;
    }
 
    @Override
-   protected boolean h(eah $$0) {
-      return $$0.l();
+   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
+      return e;
    }
 
    @Override
-   protected dmf b() {
-      return dmh.te;
+   protected bug a(czk $$0, eao $$1, djh $$2, iv $$3, crj $$4, buf $$5, fet $$6) {
+      if ($$0.a(czo.pg) || $$0.a(czo.vg)) {
+         return bug.e;
+      } else if (a($$6) && $$0.f() && $$1.c(d)) {
+         a($$4, $$1, $$2, $$3);
+         return bug.a;
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
    }
 
    @Override
-   protected eah a(eah $$0, eah $$1) {
-      return $$1.b(t_, $$0.c(t_));
+   protected bug a(eao $$0, djh $$1, iv $$2, crj $$3, fet $$4) {
+      bug $$5 = dna.a($$1, $$2, dmo.ex.m(), $$3);
+      if ($$5.a()) {
+         c($$0, $$1, $$2);
+      }
+
+      return $$5;
+   }
+
+   private static boolean a(fet $$0) {
+      return $$0.g().e - (double)$$0.b().v() > 0.5;
    }
 
    @Override
-   protected eah a(eah $$0, azv $$1) {
-      return super.a($$0, $$1).b(t_, Boolean.valueOf($$1.i() < 0.11F));
+   protected void a(eap.a<dmm, eao> $$0) {
+      $$0.a(d);
    }
 
    @Override
-   protected czd a(djd $$0, iu $$1, eah $$2, boolean $$3) {
-      return new czd(czh.xH);
+   protected czk a(djk $$0, iv $$1, eao $$2, boolean $$3) {
+      return new czk(dmo.ex);
    }
 
    @Override
-   protected bud a(eah $$0, dja $$1, iu $$2, crc $$3, fem $$4) {
-      return dnd.a($$3, $$0, $$1, $$2);
+   protected eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
+      return $$4 == jb.a && !$$0.a($$1, $$3) ? dmo.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected void a(eai.a<dmf, eah> $$0) {
-      super.a($$0);
-      $$0.a(t_);
+   protected boolean a(eao $$0, djk $$1, iv $$2) {
+      return $$1.a_($$2.e()).e();
    }
 
    @Override
-   public boolean a(djd $$0, iu $$1, eah $$2) {
-      return !$$2.c(t_);
+   protected int a(eao $$0, djh $$1, iv $$2) {
+      return dna.d;
    }
 
    @Override
-   public boolean a(dja $$0, azv $$1, iu $$2, eah $$3) {
+   protected boolean c_(eao $$0) {
       return true;
    }
 
    @Override
-   public void a(arq $$0, azv $$1, iu $$2, eah $$3) {
-      $$0.a($$2, $$3.b(t_, Boolean.valueOf(true)), 2);
+   protected boolean a(eao $$0, exk $$1) {
+      return false;
+   }
+
+   public static eao a(dnd $$0) {
+      return f.get($$0).m();
+   }
+
+   public static boolean h(eao $$0) {
+      return $$0.a(axc.bn, $$1 -> $$1.b(d) && !$$0.c(d));
    }
 }

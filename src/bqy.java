@@ -1,58 +1,99 @@
 import com.mojang.logging.LogUtils;
-import java.nio.file.Files;
+import java.net.SocketAddress;
 import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.function.Supplier;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 
-public class bqy {
-   private static final Logger a = LogUtils.getLogger();
-   private final Runnable b;
+public interface bqy {
+   bqy f = (bqy)(Runtime.class.getModule().getLayer().findModule("jdk.jfr").isPresent() ? bqx.a() : new bqy.a());
 
-   protected bqy(Runnable $$0) {
-      this.b = $$0;
-   }
+   boolean a(bqw var1);
 
-   public void a(@Nullable Path $$0) {
-      if ($$0 != null) {
-         this.b.run();
-         a(() -> "Dumped flight recorder profiling to " + $$0);
+   Path b();
 
-         brg $$1;
-         try {
-            $$1 = brf.a($$0);
-         } catch (Throwable var5) {
-            a(() -> "Failed to parse JFR recording", var5);
-            return;
-         }
+   boolean c();
 
-         try {
-            a($$1::b);
-            Path $$4 = $$0.resolveSibling("jfr-report-" + StringUtils.substringBefore($$0.getFileName().toString(), ".jfr") + ".json");
-            Files.writeString($$4, $$1.b(), StandardOpenOption.CREATE);
-            a(() -> "Dumped recording summary to " + $$4);
-         } catch (Throwable var4) {
-            a(() -> "Failed to output JFR report", var4);
-         }
+   boolean d();
+
+   void a(float var1);
+
+   void a(vs var1, zh<?> var2, SocketAddress var3, int var4);
+
+   void b(vs var1, zh<?> var2, SocketAddress var3, int var4);
+
+   void a(eee var1, dio var2, eed var3, int var4);
+
+   void b(eee var1, dio var2, eed var3, int var4);
+
+   @Nullable
+   brb e();
+
+   @Nullable
+   brb a(dio var1, alf<djh> var2, String var3);
+
+   @Nullable
+   brb a(dio var1, alf<djh> var2, jf<eri> var3);
+
+   public static class a implements bqy {
+      private static final Logger b = LogUtils.getLogger();
+      static final brb a = $$0 -> {
+      };
+
+      @Override
+      public boolean a(bqw $$0) {
+         b.warn("Attempted to start Flight Recorder, but it's not supported on this JVM");
+         return false;
       }
-   }
 
-   private static void a(Supplier<String> $$0) {
-      if (LogUtils.isLoggerActive()) {
-         a.info($$0.get());
-      } else {
-         ali.a($$0.get());
+      @Override
+      public Path b() {
+         throw new IllegalStateException("Attempted to stop Flight Recorder, but it's not supported on this JVM");
       }
-   }
 
-   private static void a(Supplier<String> $$0, Throwable $$1) {
-      if (LogUtils.isLoggerActive()) {
-         a.warn($$0.get(), $$1);
-      } else {
-         ali.a($$0.get());
-         $$1.printStackTrace(ali.a);
+      @Override
+      public boolean c() {
+         return false;
+      }
+
+      @Override
+      public boolean d() {
+         return false;
+      }
+
+      @Override
+      public void a(vs $$0, zh<?> $$1, SocketAddress $$2, int $$3) {
+      }
+
+      @Override
+      public void b(vs $$0, zh<?> $$1, SocketAddress $$2, int $$3) {
+      }
+
+      @Override
+      public void a(eee $$0, dio $$1, eed $$2, int $$3) {
+      }
+
+      @Override
+      public void b(eee $$0, dio $$1, eed $$2, int $$3) {
+      }
+
+      @Override
+      public void a(float $$0) {
+      }
+
+      @Override
+      public brb e() {
+         return a;
+      }
+
+      @Nullable
+      @Override
+      public brb a(dio $$0, alf<djh> $$1, String $$2) {
+         return null;
+      }
+
+      @Override
+      public brb a(dio $$0, alf<djh> $$1, jf<eri> $$2) {
+         return a;
       }
    }
 }

@@ -1,8 +1,20 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cgb {
+public class cgb<T extends bxj> extends cfy<T> {
+   private final byf i;
+
+   public cgb(byf $$0, Class<T> $$1, boolean $$2, @Nullable chy.a $$3) {
+      super($$0, $$1, 10, $$2, false, $$3);
+      this.i = $$0;
+   }
+
+   @Override
+   public boolean b() {
+      return !this.i.q() && super.b();
+   }
+
+   @Override
+   public boolean c() {
+      return this.d != null ? this.d.a(a(this.e), this.e, this.c) : super.c();
+   }
 }

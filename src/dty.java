@@ -1,105 +1,82 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
 
-public class dty extends dmf {
-   public static final MapCodec<dty> a = b(dty::new);
-   public static final int b = 8;
-   public static final ebh c = eax.aI;
-   private static final ffk[] e = dmf.a(8, $$0 -> dmf.b(16.0, 0.0, (double)($$0 * 2)));
-   public static final int d = 5;
-
-   @Override
-   public MapCodec<dty> a() {
-      return a;
-   }
-
-   protected dty(eag.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(c, Integer.valueOf(1)));
-   }
+public class dty extends dli {
+   public static final MapCodec<dty> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dty.a.b.fieldOf("kind").forGetter(dli::b), t()).apply($$0, dty::new));
+   public static final int d = ebu.a();
+   private static final int b = d + 1;
+   public static final ebo e = ebe.bd;
+   private static final ffr f = dmm.b(8.0, 0.0, 8.0);
+   private static final ffr g = dmm.b(10.0, 0.0, 8.0);
 
    @Override
-   protected boolean a(eah $$0, exd $$1) {
-      return $$1 == exd.a ? $$0.c(c) < 5 : false;
+   public MapCodec<? extends dty> a() {
+      return c;
    }
 
-   @Override
-   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
-      return e[$$0.c(c)];
+   protected dty(dty.a $$0, ean.d $$1) {
+      super($$0, $$1);
+      this.l(this.m().b(e, Integer.valueOf(0)));
    }
 
    @Override
-   protected ffk b(eah $$0, dig $$1, iu $$2, fev $$3) {
-      return e[$$0.c(c) - 1];
+   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
+      return this.b() == dty.b.h ? g : f;
    }
 
    @Override
-   protected ffk b_(eah $$0, dig $$1, iu $$2) {
-      return e[$$0.c(c)];
+   protected ffr d_(eao $$0) {
+      return ffo.a();
    }
 
    @Override
-   protected ffk c(eah $$0, dig $$1, iu $$2, fev $$3) {
-      return e[$$0.c(c)];
+   public eao a(ddd $$0) {
+      return super.a($$0).b(e, Integer.valueOf(ebu.a($$0.i())));
    }
 
    @Override
-   protected boolean g_(eah $$0) {
-      return true;
+   protected eao a(eao $$0, dtg $$1) {
+      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
    }
 
    @Override
-   protected float c(eah $$0, dig $$1, iu $$2) {
-      return $$0.c(c) == 8 ? 0.2F : 1.0F;
+   protected eao a(eao $$0, drp $$1) {
+      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
    }
 
    @Override
-   protected boolean a(eah $$0, djd $$1, iu $$2) {
-      eah $$3 = $$1.a_($$2.e());
-      if ($$3.a(axc.cu)) {
-         return false;
-      } else {
-         return $$3.a(axc.cv) ? true : dmf.a($$3.g($$1, $$2.e()), ja.b) || $$3.a(this) && $$3.c(c) == 8;
+   protected void a(eap.a<dmm, eao> $$0) {
+      super.a($$0);
+      $$0.a(e);
+   }
+
+   public interface a extends bak {
+      Map<String, dty.a> a = new Object2ObjectArrayMap();
+      Codec<dty.a> b = Codec.stringResolver(bak::c, a::get);
+   }
+
+   public static enum b implements dty.a {
+      c("skeleton"),
+      d("wither_skeleton"),
+      e("player"),
+      f("zombie"),
+      g("creeper"),
+      h("piglin"),
+      i("dragon");
+
+      private final String j;
+
+      private b(final String $$0) {
+         this.j = $$0;
+         a.put($$0, this);
       }
-   }
 
-   @Override
-   protected eah a(eah $$0, djd $$1, djp $$2, iu $$3, ja $$4, iu $$5, eah $$6, azv $$7) {
-      return !$$0.a($$1, $$3) ? dmh.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected void b(eah $$0, arq $$1, iu $$2, azv $$3) {
-      if ($$1.a(djj.b, $$2) > 11) {
-         c($$0, $$1, $$2);
-         $$1.a($$2, false);
+      @Override
+      public String c() {
+         return this.j;
       }
-   }
-
-   @Override
-   protected boolean a(eah $$0, dcw $$1) {
-      int $$2 = $$0.c(c);
-      if (!$$1.n().a(this.h()) || $$2 >= 8) {
-         return $$2 == 1;
-      } else {
-         return $$1.c() ? $$1.k() == ja.b : true;
-      }
-   }
-
-   @Nullable
-   @Override
-   public eah a(dcw $$0) {
-      eah $$1 = $$0.q().a_($$0.a());
-      if ($$1.a(this)) {
-         int $$2 = $$1.c(c);
-         return $$1.b(c, Integer.valueOf(Math.min(8, $$2 + 1)));
-      } else {
-         return super.a($$0);
-      }
-   }
-
-   @Override
-   protected void a(eai.a<dmf, eah> $$0) {
-      $$0.a(c);
    }
 }

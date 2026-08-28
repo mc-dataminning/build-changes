@@ -1,54 +1,97 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
-import java.util.Optional;
-import java.util.function.Consumer;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.List;
+import java.util.Set;
 
-public class fca {
-   private static final BiMap<alg, bay> y = HashBiMap.create();
-   public static final Codec<bay> a = alg.a
-      .comapFlatMap(
-         $$0 -> Optional.ofNullable((bay)y.get($$0))
-               .<DataResult>map(DataResult::success)
-               .orElseGet(() -> DataResult.error(() -> "No parameter set exists with id: '" + $$0 + "'")),
-         y.inverse()::get
-      );
-   public static final bay b = a("empty", $$0 -> {
+public class fca extends fbb {
+   private static final Codec<List<fca.b>> b = fca.b.a.listOf().validate($$0 -> {
+      Set<jf<bvk>> $$1 = new ObjectOpenHashSet();
+
+      for (fca.b $$2 : $$0) {
+         if (!$$1.add($$2.a())) {
+            return DataResult.error(() -> "Encountered duplicate mob effect: '" + $$2.a() + "'");
+         }
+      }
+
+      return DataResult.success($$0);
    });
-   public static final bay c = a("chest", $$0 -> $$0.a(fcb.f).b(fcb.a));
-   public static final bay d = a("command", $$0 -> $$0.a(fcb.f).b(fcb.a));
-   public static final bay e = a("selector", $$0 -> $$0.a(fcb.f).a(fcb.a));
-   public static final bay f = a("fishing", $$0 -> $$0.a(fcb.f).a(fcb.i).b(fcb.a));
-   public static final bay g = a("entity", $$0 -> $$0.a(fcb.a).a(fcb.f).a(fcb.c).b(fcb.d).b(fcb.e).b(fcb.b));
-   public static final bay h = a("equipment", $$0 -> $$0.a(fcb.f).a(fcb.a));
-   public static final bay i = a("archaeology", $$0 -> $$0.a(fcb.f).a(fcb.a).a(fcb.i));
-   public static final bay j = a("gift", $$0 -> $$0.a(fcb.f).a(fcb.a));
-   public static final bay k = a("barter", $$0 -> $$0.a(fcb.a));
-   public static final bay l = a("vault", $$0 -> $$0.a(fcb.f).b(fcb.a).b(fcb.i));
-   public static final bay m = a("advancement_reward", $$0 -> $$0.a(fcb.a).a(fcb.f));
-   public static final bay n = a("advancement_entity", $$0 -> $$0.a(fcb.a).a(fcb.f));
-   public static final bay o = a("advancement_location", $$0 -> $$0.a(fcb.a).a(fcb.f).a(fcb.i).a(fcb.g));
-   public static final bay p = a("block_use", $$0 -> $$0.a(fcb.a).a(fcb.f).a(fcb.g));
-   public static final bay q = a("generic", $$0 -> $$0.a(fcb.a).a(fcb.b).a(fcb.c).a(fcb.d).a(fcb.e).a(fcb.f).a(fcb.g).a(fcb.h).a(fcb.i).a(fcb.j));
-   public static final bay r = a("block", $$0 -> $$0.a(fcb.g).a(fcb.f).a(fcb.i).b(fcb.a).b(fcb.h).b(fcb.j));
-   public static final bay s = a("shearing", $$0 -> $$0.a(fcb.f).a(fcb.a).a(fcb.i));
-   public static final bay t = a("enchanted_damage", $$0 -> $$0.a(fcb.a).a(fcb.k).a(fcb.f).a(fcb.c).b(fcb.e).b(fcb.d));
-   public static final bay u = a("enchanted_item", $$0 -> $$0.a(fcb.i).a(fcb.k));
-   public static final bay v = a("enchanted_location", $$0 -> $$0.a(fcb.a).a(fcb.k).a(fcb.f).a(fcb.l));
-   public static final bay w = a("enchanted_entity", $$0 -> $$0.a(fcb.a).a(fcb.k).a(fcb.f));
-   public static final bay x = a("hit_block", $$0 -> $$0.a(fcb.a).a(fcb.k).a(fcb.f).a(fcb.g));
+   public static final MapCodec<fca> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(b.optionalFieldOf("effects", List.of()).forGetter($$0x -> $$0x.c)).apply($$0, fca::new)
+   );
+   private final List<fca.b> c;
 
-   private static bay a(String $$0, Consumer<bay.a> $$1) {
-      bay.a $$2 = new bay.a();
-      $$1.accept($$2);
-      bay $$3 = $$2.a();
-      alg $$4 = alg.b($$0);
-      bay $$5 = (bay)y.put($$4, $$3);
-      if ($$5 != null) {
-         throw new IllegalStateException("Loot table parameter set " + $$4 + " is already registered");
+   fca(List<fcx> $$0, List<fca.b> $$1) {
+      super($$0);
+      this.c = $$1;
+   }
+
+   @Override
+   public fbd<fca> b() {
+      return fbe.r;
+   }
+
+   @Override
+   public Set<bax<?>> a() {
+      return this.c.stream().flatMap($$0 -> $$0.b().a().stream()).collect(ImmutableSet.toImmutableSet());
+   }
+
+   @Override
+   public czk a(czk $$0, ezo $$1) {
+      if ($$0.a(czo.xh) && !this.c.isEmpty()) {
+         fca.b $$2 = ag.a(this.c, $$1.b());
+         jf<bvk> $$3 = $$2.a();
+         int $$4 = $$2.b().a($$1);
+         if (!$$3.a().a()) {
+            $$4 *= 20;
+         }
+
+         dcm.a $$5 = new dcm.a($$3, $$4);
+         $$0.a(kk.T, dcm.a, $$5, dcm::a);
+         return $$0;
       } else {
-         return $$3;
+         return $$0;
+      }
+   }
+
+   public static fca.a c() {
+      return new fca.a();
+   }
+
+   public static class a extends fbb.a<fca.a> {
+      private final Builder<fca.b> a = ImmutableList.builder();
+
+      protected fca.a a() {
+         return this;
+      }
+
+      public fca.a a(jf<bvk> $$0, fdt $$1) {
+         this.a.add(new fca.b($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public fbc b() {
+         return new fca(this.g(), this.a.build());
+      }
+   }
+
+   static record b(jf<bvk> b, fdt c) {
+      public static final Codec<fca.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bvk.a.fieldOf("type").forGetter(fca.b::a), fdu.a.fieldOf("duration").forGetter(fca.b::b)).apply($$0, fca.b::new)
+      );
+
+      public jf<bvk> a() {
+         return this.b;
+      }
+
+      public fdt b() {
+         return this.c;
       }
    }
 }

@@ -1,19 +1,17 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public class cte {
+   private final int a;
+   private final float b;
 
-public record cte(cv.c c) implements ctg {
-   public static final MapCodec<cte> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cv.c.d.fieldOf("range").forGetter(cte::b)).apply($$0, cte::new));
-
-   public boolean a(cti $$0) {
-      return this.c.d((double)$$0.b().a().as());
+   public cte(int $$0, float $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public MapCodec<cte> a() {
-      return a;
+   public int a() {
+      return this.a;
    }
 
-   public cv.c b() {
-      return this.c;
+   public float b() {
+      return this.b;
    }
 }

@@ -1,50 +1,44 @@
-public class gaw extends fyb {
-   private static final int a = 600;
-   private final vr b;
-   private fsj c;
-   private int d;
-   private final fwb s = fwb.d();
+import com.mojang.authlib.yggdrasil.ProfileResult;
+import java.util.List;
 
-   public gaw(wy $$0, vr $$1) {
-      super($$0);
-      this.b = $$1;
+public class gaw implements gaz {
+   private static final int a = 10;
+   private static final int b = 2;
+   private final List<ProfileResult> c;
+
+   public gaw(gaw.a $$0) {
+      this.c = $$0.a();
    }
 
    @Override
-   public boolean aD_() {
-      return false;
+   public int a(fsf $$0) {
+      return this.c.size() * 12 + 2;
    }
 
    @Override
-   protected void aO_() {
-      this.s.c().b().a(10);
-      this.s.a(new ftq(this.l, this.p));
-      this.c = this.s.a(fsj.a(wx.p, $$0 -> this.b.a(fxa.a)).a());
-      this.c.j = false;
-      this.s.a();
-      this.s.a($$1 -> {
-         fsh var10000 = this.c($$1);
-      });
-      this.c();
-   }
+   public int b(fsf $$0) {
+      int $$1 = 0;
 
-   @Override
-   protected void c() {
-      fvv.a(this.s, this.J());
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.d++;
-      if (this.d == 600) {
-         this.c.j = true;
+      for (ProfileResult $$2 : this.c) {
+         int $$3 = $$0.b($$2.profile().getName());
+         if ($$3 > $$1) {
+            $$1 = $$3;
+         }
       }
 
-      if (this.b.i()) {
-         this.b.b();
-      } else {
-         this.b.n();
+      return $$1 + 10 + 6;
+   }
+
+   @Override
+   public void a(fsf $$0, int $$1, int $$2, int $$3, int $$4, fsh $$5) {
+      for (int $$6 = 0; $$6 < this.c.size(); $$6++) {
+         ProfileResult $$7 = this.c.get($$6);
+         int $$8 = $$2 + 2 + $$6 * 12;
+         ftu.a($$5, fpo.Q().an().b($$7.profile()), $$1 + 2, $$8, 10);
+         $$5.b($$0, $$7.profile().getName(), $$1 + 10 + 4, $$8 + 2, -1);
       }
+   }
+
+   public static record a(List<ProfileResult> a) implements cxj {
    }
 }

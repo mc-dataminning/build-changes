@@ -1,49 +1,37 @@
-import java.util.Set;
+public class gfo extends gig<hcl> {
+   private final gjo a;
 
-public class gfo extends ghj<hdn> {
-   public static final gjl a = new get(false, 10.0F, 4.0F, Set.of("head"));
-   private static final int i = 12;
-
-   public gfo(gjc $$0) {
+   public gfo(gjo $$0) {
       super($$0);
+      this.a = $$0.b("head").b("mushrooms");
    }
 
-   public static gji b() {
-      gjk $$0 = c();
-      return gji.a($$0, 64, 64);
-   }
-
-   static gjk c() {
-      gjk $$0 = new gjk();
-      gjm $$1 = $$0.a();
-      $$1.a(
-         "head",
-         gjh.c()
-            .a(0, 0)
-            .a(-4.0F, -4.0F, -6.0F, 8.0F, 8.0F, 6.0F)
-            .a(0, 32)
-            .a(-3.0F, 0.99F, -7.0F, 6.0F, 3.0F, 2.0F)
-            .a(22, 0)
-            .a("right_horn", -5.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F)
-            .a(22, 0)
-            .a("left_horn", 4.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F),
-         gje.a(0.0F, 4.0F, -8.0F)
+   public static gju a() {
+      gjw $$0 = ggy.a(gjs.a, 0.0F);
+      gjy $$1 = $$0.a();
+      gig.a($$1);
+      gjy $$2 = $$1.b("head").a("mushrooms", gjt.c(), gjq.a);
+      $$2.a("red_mushroom_1", gjt.c().a(50, 16).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), gjq.a(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$2.a("red_mushroom_2", gjt.c().a(50, 16).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), gjq.a(3.0F, -8.0F, 3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F));
+      $$2.a("brown_mushroom_1", gjt.c().a(50, 22).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), gjq.a(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$2.a(
+         "brown_mushroom_2", gjt.c().a(50, 22).a(-3.0F, -3.0F, 0.0F, 6.0F, 4.0F, 0.0F), gjq.a(-3.0F, -8.0F, -3.0F, 0.0F, (float) (Math.PI * 3.0 / 4.0), 0.0F)
       );
-      $$1.a(
-         "body",
-         gjh.c().a(18, 4).a(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F).a(52, 0).a(-2.0F, 2.0F, -8.0F, 4.0F, 6.0F, 1.0F),
-         gje.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+      $$2.a(
+         "brown_mushroom_3",
+         gjt.c().a(50, 28).a(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
+         gjq.a(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI / 4))
       );
-      gjh $$2 = gjh.c().a().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F);
-      gjh $$3 = gjh.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F);
-      $$1.a("right_hind_leg", $$3, gje.a(-4.0F, 12.0F, 7.0F));
-      $$1.a("left_hind_leg", $$2, gje.a(4.0F, 12.0F, 7.0F));
-      $$1.a("right_front_leg", $$3, gje.a(-4.0F, 12.0F, -6.0F));
-      $$1.a("left_front_leg", $$2, gje.a(4.0F, 12.0F, -6.0F));
-      return $$0;
+      $$2.a(
+         "brown_mushroom_4",
+         gjt.c().a(50, 28).a(-3.0F, -4.0F, 0.0F, 6.0F, 4.0F, 0.0F),
+         gjq.a(-2.0F, -1.0F, 4.0F, (float) (-Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 4.0))
+      );
+      return gju.a($$0, 64, 32);
    }
 
-   public gjc d() {
-      return this.b;
+   public void a(hcl $$0) {
+      super.a($$0);
+      this.a.k = !$$0.a;
    }
 }

@@ -1,47 +1,35 @@
-public class hbe extends hav<het, gfy<het>> {
-   private static final alg a = alg.b("textures/entity/fish/tropical_a_pattern_1.png");
-   private static final alg b = alg.b("textures/entity/fish/tropical_a_pattern_2.png");
-   private static final alg c = alg.b("textures/entity/fish/tropical_a_pattern_3.png");
-   private static final alg d = alg.b("textures/entity/fish/tropical_a_pattern_4.png");
-   private static final alg e = alg.b("textures/entity/fish/tropical_a_pattern_5.png");
-   private static final alg f = alg.b("textures/entity/fish/tropical_a_pattern_6.png");
-   private static final alg g = alg.b("textures/entity/fish/tropical_b_pattern_1.png");
-   private static final alg h = alg.b("textures/entity/fish/tropical_b_pattern_2.png");
-   private static final alg i = alg.b("textures/entity/fish/tropical_b_pattern_3.png");
-   private static final alg j = alg.b("textures/entity/fish/tropical_b_pattern_4.png");
-   private static final alg k = alg.b("textures/entity/fish/tropical_b_pattern_5.png");
-   private static final alg l = alg.b("textures/entity/fish/tropical_b_pattern_6.png");
-   private final gig m;
-   private final gih n;
+public class hbe extends hbh<hel, ghq> {
+   private final ghj a;
+   private final heh b = new heh();
 
-   public hbe(gye<het, gfy<het>> $$0, giy $$1) {
+   public hbe(gyq<hel, ghq> $$0, gjk $$1) {
       super($$0);
-      this.m = new gig($$1.a(gjb.dF));
-      this.n = new gih($$1.a(gjb.dD));
+      this.a = new ghj($$1.a(gjn.cb));
+      this.b.c = ghj.a.e;
    }
 
-   public void a(fjj $$0, gqa $$1, int $$2, het $$3, float $$4, float $$5) {
-      ckb.b $$6 = $$3.a;
+   public void a(fjy $$0, gqm $$1, int $$2, hel $$3, float $$4, float $$5) {
+      cjt.b $$6 = $$3.aE;
+      if ($$6 != null) {
+         this.a($$0, $$1, $$2, $$3, $$6, $$4, $$5, true);
+      }
 
-      gfy<het> $$7 = (gfy<het>)(switch ($$6.a()) {
-         case a -> this.m;
-         case b -> this.n;
-      });
+      cjt.b $$7 = $$3.aF;
+      if ($$7 != null) {
+         this.a($$0, $$1, $$2, $$3, $$7, $$4, $$5, false);
+      }
+   }
 
-      alg $$8 = switch ($$6) {
-         case a -> a;
-         case b -> b;
-         case c -> c;
-         case d -> d;
-         case e -> e;
-         case f -> f;
-         case g -> g;
-         case h -> h;
-         case i -> i;
-         case j -> j;
-         case k -> k;
-         case l -> l;
-      };
-      a($$7, $$8, $$0, $$1, $$2, $$3, $$3.c);
+   private void a(fjy $$0, gqm $$1, int $$2, hel $$3, cjt.b $$4, float $$5, float $$6, boolean $$7) {
+      $$0.a();
+      $$0.a($$7 ? 0.4F : -0.4F, $$3.N ? -1.3F : -1.5F, 0.0F);
+      this.b.u = $$3.u;
+      this.b.ad = $$3.ad;
+      this.b.ae = $$3.ae;
+      this.b.aa = $$5;
+      this.b.ab = $$6;
+      this.a.a(this.b);
+      this.a.a($$0, $$1.getBuffer(this.a.a(gyg.a($$4))), $$2, hja.d);
+      $$0.b();
    }
 }

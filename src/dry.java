@@ -1,21 +1,25 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
 
-public class dry extends dvx {
-   public static final MapCodec<dry> b = b(dry::new);
-   private static final Map<ja, ffk> e = ffh.c(dmf.b(10.0, 8.0, 8.0, 16.0));
+public class dry extends dvy {
+   public static final MapCodec<dry> a = b(dry::new);
+   private static final ffr b = dmm.b(12.0, 0.0, 3.0);
 
    @Override
    public MapCodec<dry> a() {
-      return b;
+      return a;
    }
 
-   public dry(eag.d $$0) {
-      super(dtr.b.h, $$0);
+   public dry(ean.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
-      return e.get($$0.c(d));
+   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
+      return b;
+   }
+
+   @Override
+   protected boolean b(eao $$0, din $$1, iv $$2) {
+      return $$0.a(axc.aO) || $$0.a(dmo.eo) || super.b($$0, $$1, $$2);
    }
 }

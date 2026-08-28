@@ -1,23 +1,34 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class dkc {
-   public static final Codec<dkc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(lx.bk.fieldOf("options").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.c)).apply($$0, dkc::new)
-   );
-   private final lv b;
-   private final float c;
+public interface dkc {
+   void a(bwr<?> var1, azv var2);
 
-   public dkc(lv $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   static void a(dbs $$0, Consumer<wy> $$1, String $$2) {
+      wy $$3 = a($$0, $$2);
+      if ($$3 != null) {
+         $$1.accept($$3);
+      } else {
+         $$1.accept(wx.a);
+         $$1.accept(wy.c("block.minecraft.spawner.desc1").a(o.h));
+         $$1.accept(wx.a().b(wy.c("block.minecraft.spawner.desc2").a(o.j)));
+      }
    }
 
-   public lv a() {
-      return this.b;
+   @Nullable
+   static wy a(dbs $$0, String $$1) {
+      tz $$2 = $$0.e();
+      alg $$3 = a($$2, $$1);
+      return $$3 != null ? mg.f.b($$3).map($$0x -> wy.c($$0x.g()).a(o.h)).orElse(null) : null;
    }
 
-   public boolean a(azv $$0) {
-      return $$0.i() <= this.c;
+   @Nullable
+   private static alg a(tz $$0, String $$1) {
+      if ($$0.b($$1, 10)) {
+         String $$2 = $$0.n($$1).n("entity").j("id");
+         return alg.c($$2);
+      } else {
+         return null;
+      }
    }
 }

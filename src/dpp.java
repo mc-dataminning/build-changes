@@ -1,55 +1,48 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class dpp extends dvr implements dmi {
-   public static final MapCodec<dpp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alf.a(mg.aL).fieldOf("feature").forGetter($$0x -> $$0x.e), mf.e.q().fieldOf("grows_on").forGetter($$0x -> $$0x.d), t())
-            .apply($$0, dpp::new)
-   );
-   private static final double b = 0.4;
-   private static final ffk c = dmf.b(8.0, 0.0, 9.0);
-   private final dmf d;
-   private final alf<eiy<?, ?>> e;
+public class dpp extends dvy implements dmp {
+   private static final double b = 0.7;
+   private static final double c = 10.0;
+   private static final double d = 5.0;
+   private static final int e = 13;
+   private static final int f = 30;
+   public static final MapCodec<dpp> a = b(dpp::new);
+
+   public dpp(ean.d $$0) {
+      super($$0);
+   }
 
    @Override
-   public MapCodec<dpp> a() {
+   protected MapCodec<? extends dpp> a() {
       return a;
    }
 
-   protected dpp(alf<eiy<?, ?>> $$0, dmf $$1, eag.d $$2) {
-      super($$2);
-      this.e = $$0;
-      this.d = $$1;
+   @Override
+   public void a(eao $$0, djh $$1, iv $$2, azv $$3) {
+      if ($$3.a(30) == 0 && $$1.X() && $$1.b(egn.a.f, $$2) <= $$2.v()) {
+         $$1.a($$2, awn.jo, awo.e, 1.0F, 1.0F, false);
+      }
+
+      if ($$1.B($$2) <= 13 && $$3.j() <= 0.7) {
+         double $$4 = (double)$$2.u() + $$3.j() * 10.0 - 5.0;
+         double $$5 = (double)$$2.v() + $$3.j() * 5.0;
+         double $$6 = (double)$$2.w() + $$3.j() * 10.0 - 5.0;
+         $$1.a(ly.bj, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+      }
    }
 
    @Override
-   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
-      return c;
+   public boolean a(djk $$0, iv $$1, eao $$2) {
+      return dmp.a_($$0, $$1, $$2);
    }
 
    @Override
-   protected boolean b(eah $$0, dig $$1, iu $$2) {
-      return $$0.a(axc.aO) || $$0.a(dmh.fE) || $$0.a(dmh.eo) || super.b($$0, $$1, $$2);
-   }
-
-   private Optional<? extends je<eiy<?, ?>>> a(djd $$0) {
-      return $$0.F_().f(mg.aL).a(this.e);
+   public boolean a(djh $$0, azv $$1, iv $$2, eao $$3) {
+      return true;
    }
 
    @Override
-   public boolean a(djd $$0, iu $$1, eah $$2) {
-      eah $$3 = $$0.a_($$1.e());
-      return $$3.a(this.d);
-   }
-
-   @Override
-   public boolean a(dja $$0, azv $$1, iu $$2, eah $$3) {
-      return (double)$$1.i() < 0.4;
-   }
-
-   @Override
-   public void a(arq $$0, azv $$1, iu $$2, eah $$3) {
-      this.a($$0).ifPresent($$3x -> ((eiy)$$3x.a()).a($$0, $$0.m().g(), $$1, $$2));
+   public void a(arq $$0, azv $$1, iv $$2, eao $$3) {
+      dmp.a((djh)$$0, $$2, $$3).ifPresent($$1x -> $$0.b($$1x, this.m()));
    }
 }

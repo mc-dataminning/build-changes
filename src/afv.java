@@ -1,7 +1,7 @@
 public class afv implements zf<abu> {
    public static final yw<wj, afv> a = zf.a(afv::a, afv::new);
    public static final float b = 8.0F;
-   private final je<awm> c;
+   private final jf<awm> c;
    private final awo d;
    private final int e;
    private final int f;
@@ -10,7 +10,7 @@ public class afv implements zf<abu> {
    private final float i;
    private final long j;
 
-   public afv(je<awm> $$0, awo $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
+   public afv(jf<awm> $$0, awo $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
       this.c = $$0;
       this.d = $$1;
       this.e = (int)($$2 * 8.0);
@@ -52,7 +52,7 @@ public class afv implements zf<abu> {
       $$0.a(this);
    }
 
-   public je<awm> b() {
+   public jf<awm> b() {
       return this.c;
    }
 

@@ -1,10 +1,7 @@
-public class hcw extends hdc {
-   public float a;
-   public float b;
-   public boolean c;
-   public boolean d;
-   public boolean e;
-   public boolean f;
-   public boolean g;
-   public cjj.v h = cjj.v.a;
+import javax.annotation.Nullable;
+
+public class hcw extends hcz {
+   public boolean a = true;
+   @Nullable
+   public fex b;
 }

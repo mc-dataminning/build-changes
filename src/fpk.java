@@ -1,26 +1,32 @@
-import java.util.function.BooleanSupplier;
+import com.mojang.serialization.Codec;
 
-public class fpk extends fox {
-   private final BooleanSupplier h;
+public enum fpk implements azp, bak {
+   a(0, "minimized", "options.inactivityFpsLimit.minimized"),
+   b(1, "afk", "options.inactivityFpsLimit.afk");
 
-   public fpk(String $$0, int $$1, String $$2, BooleanSupplier $$3) {
-      super($$0, fif.b.a, $$1, $$2);
-      this.h = $$3;
+   public static final Codec<fpk> c = bak.a(fpk::values);
+   private final int d;
+   private final String e;
+   private final String f;
+
+   private fpk(final int $$0, final String $$1, final String $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
-   public void a(boolean $$0) {
-      if (this.h.getAsBoolean()) {
-         if ($$0) {
-            super.a(!this.e());
-         }
-      } else {
-         super.a($$0);
-      }
+   public int b() {
+      return this.d;
    }
 
    @Override
-   protected void n() {
-      super.a(false);
+   public String a() {
+      return this.f;
+   }
+
+   @Override
+   public String c() {
+      return this.e;
    }
 }

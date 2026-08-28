@@ -1,9 +1,8 @@
-public class gjj {
-   final int a;
-   final int b;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public gjj(int $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface gjj {
 }

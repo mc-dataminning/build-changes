@@ -1,17 +1,17 @@
 public class air implements zf<agp> {
    public static final yw<vu, air> a = zf.a(air::a, air::new);
-   private final fem b;
-   private final buc c;
+   private final fet b;
+   private final buf c;
    private final int d;
 
-   public air(buc $$0, fem $$1, int $$2) {
+   public air(buf $$0, fet $$1, int $$2) {
       this.c = $$0;
       this.b = $$1;
       this.d = $$2;
    }
 
    private air(vu $$0) {
-      this.c = $$0.b(buc.class);
+      this.c = $$0.b(buf.class);
       this.b = $$0.v();
       this.d = $$0.l();
    }
@@ -31,11 +31,11 @@ public class air implements zf<agp> {
       $$0.a(this);
    }
 
-   public buc b() {
+   public buf b() {
       return this.c;
    }
 
-   public fem e() {
+   public fet e() {
       return this.b;
    }
 

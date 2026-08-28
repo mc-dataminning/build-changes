@@ -1,9 +1,9 @@
 public class adt implements zf<abu> {
    public static final yw<vu, adt> a = zf.a(adt::a, adt::new);
-   private final iu b;
+   private final iv b;
    private final boolean c;
 
-   public adt(iu $$0, boolean $$1) {
+   public adt(iv $$0, boolean $$1) {
       this.b = $$0;
       this.c = $$1;
    }
@@ -27,7 +27,7 @@ public class adt implements zf<abu> {
       $$0.a(this);
    }
 
-   public iu b() {
+   public iv b() {
       return this.b;
    }
 

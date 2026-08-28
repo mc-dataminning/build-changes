@@ -1,121 +1,125 @@
-public class fyu extends fzs<cuy> {
-   private static final alg G = alg.b("container/anvil/text_field");
-   private static final alg H = alg.b("container/anvil/text_field_disabled");
-   private static final alg I = alg.b("container/anvil/error");
-   private static final alg J = alg.b("textures/gui/container/anvil.png");
-   private static final wy K = wy.c("container.repair.expensive");
-   private fss L;
-   private final crc M;
+enum fyu {
+   a(
+      new fyu.a(alg.b("advancements/tab_above_left_selected"), alg.b("advancements/tab_above_middle_selected"), alg.b("advancements/tab_above_right_selected")),
+      new fyu.a(alg.b("advancements/tab_above_left"), alg.b("advancements/tab_above_middle"), alg.b("advancements/tab_above_right")),
+      28,
+      32,
+      8
+   ),
+   b(
+      new fyu.a(alg.b("advancements/tab_below_left_selected"), alg.b("advancements/tab_below_middle_selected"), alg.b("advancements/tab_below_right_selected")),
+      new fyu.a(alg.b("advancements/tab_below_left"), alg.b("advancements/tab_below_middle"), alg.b("advancements/tab_below_right")),
+      28,
+      32,
+      8
+   ),
+   c(
+      new fyu.a(alg.b("advancements/tab_left_top_selected"), alg.b("advancements/tab_left_middle_selected"), alg.b("advancements/tab_left_bottom_selected")),
+      new fyu.a(alg.b("advancements/tab_left_top"), alg.b("advancements/tab_left_middle"), alg.b("advancements/tab_left_bottom")),
+      32,
+      28,
+      5
+   ),
+   d(
+      new fyu.a(alg.b("advancements/tab_right_top_selected"), alg.b("advancements/tab_right_middle_selected"), alg.b("advancements/tab_right_bottom_selected")),
+      new fyu.a(alg.b("advancements/tab_right_top"), alg.b("advancements/tab_right_middle"), alg.b("advancements/tab_right_bottom")),
+      32,
+      28,
+      5
+   );
 
-   public fyu(cuy $$0, crb $$1, wy $$2) {
-      super($$0, $$1, $$2, J);
-      this.M = $$1.h;
-      this.v = 60;
+   private final fyu.a e;
+   private final fyu.a f;
+   private final int g;
+   private final int h;
+   private final int i;
+
+   private fyu(final fyu.a $$0, final fyu.a $$1, final int $$2, final int $$3, final int $$4) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
+      this.i = $$4;
    }
 
-   @Override
-   protected void G() {
-      int $$0 = (this.n - this.s) / 2;
-      int $$1 = (this.o - this.u) / 2;
-      this.L = new fss(this.p, $$0 + 62, $$1 + 24, 103, 12, wy.c("container.repair"));
-      this.L.f(false);
-      this.L.m(-1);
-      this.L.n(-1);
-      this.L.d(false);
-      this.L.f(50);
-      this.L.b(this::a);
-      this.L.a("");
-      this.d(this.L);
-      this.L.e(this.z.b(0).h());
+   public int a() {
+      return this.i;
    }
 
-   @Override
-   protected void aC_() {
-      this.b(this.L);
-   }
-
-   @Override
-   public void a(foz $$0, int $$1, int $$2) {
-      String $$3 = this.L.a();
-      this.b($$0, $$1, $$2);
-      this.L.a($$3);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.m.t.p();
+   public void a(fsh $$0, int $$1, int $$2, boolean $$3, int $$4) {
+      fyu.a $$5 = $$3 ? this.e : this.f;
+      alg $$6;
+      if ($$4 == 0) {
+         $$6 = $$5.a();
+      } else if ($$4 == this.i - 1) {
+         $$6 = $$5.c();
+      } else {
+         $$6 = $$5.b();
       }
 
-      return !this.L.a($$0, $$1, $$2) && !this.L.c() ? super.a($$0, $$1, $$2) : true;
+      $$0.a(gqx::H, $$6, $$1 + this.a($$4), $$2 + this.b($$4), this.g, this.h);
    }
 
-   private void a(String $$0) {
-      cws $$1 = this.z.b(0);
-      if ($$1.h()) {
-         String $$2 = $$0;
-         if (!$$1.g().c(kj.g) && $$0.equals($$1.g().y().getString())) {
-            $$2 = "";
-         }
-
-         if (this.z.a($$2)) {
-            this.m.t.j.b(new aib($$2));
-         }
+   public void a(fsh $$0, int $$1, int $$2, int $$3, czk $$4) {
+      int $$5 = $$1 + this.a($$3);
+      int $$6 = $$2 + this.b($$3);
+      switch (this) {
+         case a:
+            $$5 += 6;
+            $$6 += 9;
+            break;
+         case b:
+            $$5 += 6;
+            $$6 += 6;
+            break;
+         case c:
+            $$5 += 10;
+            $$6 += 5;
+            break;
+         case d:
+            $$5 += 6;
+            $$6 += 5;
       }
+
+      $$0.b($$4, $$5, $$6);
    }
 
-   @Override
-   protected void b(frv $$0, int $$1, int $$2) {
-      super.b($$0, $$1, $$2);
-      int $$3 = this.z.m();
-      if ($$3 > 0) {
-         int $$4 = 8453920;
-         wy $$5;
-         if ($$3 >= 40 && !this.m.t.fV()) {
-            $$5 = K;
-            $$4 = 16736352;
-         } else if (!this.z.b(2).h()) {
-            $$5 = null;
-         } else {
-            $$5 = wy.a("container.repair.cost", $$3);
-            if (!this.z.b(2).a(this.M)) {
-               $$4 = 16736352;
-            }
-         }
-
-         if ($$5 != null) {
-            int $$8 = this.s - 8 - this.p.a($$5) - 2;
-            int $$9 = 69;
-            $$0.a($$8 - 2, 67, this.s - 8, 79, 1325400064);
-            $$0.b(this.p, $$5, $$8, 69, $$4);
-         }
-      }
-   }
-
-   @Override
-   protected void a(frv $$0, float $$1, int $$2, int $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(gqk::H, this.z.b(0).h() ? G : H, this.C + 59, this.D + 20, 110, 16);
-   }
-
-   @Override
-   public void d(frv $$0, int $$1, int $$2, float $$3) {
-      this.L.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected void c(frv $$0, int $$1, int $$2) {
-      if ((this.z.b(0).h() || this.z.b(1).h()) && !this.z.b(this.z.n()).h()) {
-         $$0.a(gqk::H, I, $$1 + 99, $$2 + 45, 28, 21);
+   public int a(int $$0) {
+      switch (this) {
+         case a:
+            return (this.g + 4) * $$0;
+         case b:
+            return (this.g + 4) * $$0;
+         case c:
+            return -this.g + 4;
+         case d:
+            return 248;
+         default:
+            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
       }
    }
 
-   @Override
-   public void a(cuv $$0, int $$1, czd $$2) {
-      if ($$1 == 0) {
-         this.L.a($$2.f() ? "" : $$2.y().getString());
-         this.L.e(!$$2.f());
-         this.a(this.L);
+   public int b(int $$0) {
+      switch (this) {
+         case a:
+            return -this.h + 4;
+         case b:
+            return 136;
+         case c:
+            return this.h * $$0;
+         case d:
+            return this.h * $$0;
+         default:
+            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
       }
+   }
+
+   public boolean a(int $$0, int $$1, int $$2, double $$3, double $$4) {
+      int $$5 = $$0 + this.a($$2);
+      int $$6 = $$1 + this.b($$2);
+      return $$3 > (double)$$5 && $$3 < (double)($$5 + this.g) && $$4 > (double)$$6 && $$4 < (double)($$6 + this.h);
+   }
+
+   static record a(alg a, alg b, alg c) {
    }
 }

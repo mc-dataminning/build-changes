@@ -1,64 +1,30 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class fab extends ezq {
-   public static final MapCodec<fab> a = a(fab::new);
+public class fab extends fag {
+   public static final MapCodec<fab> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(czg.e.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, fab::new)
+   );
+   private final jf<czg> j;
 
-   fab(List<ezx> $$0, List<fcq> $$1) {
-      super($$0, $$1);
+   private fab(jf<czg> $$0, int $$1, int $$2, List<fcx> $$3, List<fbc> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public ezy a() {
-      return ezv.h;
+   public faf a() {
+      return fac.c;
    }
 
    @Override
-   protected ezp a(List<? extends ezp> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (ezp)$$0.get(0);
-         case 2 -> $$0.get(0).and($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (ezp $$3 : $$0) {
-            if (!$$3.expand($$1, $$2)) {
-               return false;
-            }
-         }
-
-         return true;
-      };
-      };
+   public void a(Consumer<czk> $$0, ezo $$1) {
+      $$0.accept(new czk(this.j));
    }
 
-   public static fab.a a(ezx.a<?>... $$0) {
-      return new fab.a($$0);
-   }
-
-   public static class a extends ezx.a<fab.a> {
-      private final Builder<ezx> a = ImmutableList.builder();
-
-      public a(ezx.a<?>... $$0) {
-         for (ezx.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
-
-      protected fab.a a() {
-         return this;
-      }
-
-      @Override
-      public fab.a c(ezx.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public ezx b() {
-         return new fab(this.a.build(), this.f());
-      }
+   public static fag.a<?> a(djg $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new fab($$0.h().e(), $$1, $$2, $$3, $$4));
    }
 }

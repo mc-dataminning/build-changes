@@ -1,73 +1,123 @@
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public enum fvh implements fhi {
-   a(() -> a(5, 8, ($$0, $$1) -> -1)),
-   b(() -> {
-      int $$0 = 5;
-      int $$1 = 8;
-      return a(5, 8, ($$0x, $$1x) -> {
-         boolean $$2 = $$0x == 0 || $$0x + 1 == 5 || $$1x == 0 || $$1x + 1 == 8;
-         return $$2 ? -1 : 0;
-      });
-   });
+public class fvh implements fvf {
+   private static final alg h = alg.b("toast/tutorial");
+   public static final int a = 154;
+   public static final int e = 1;
+   public static final int f = 3;
+   public static final int g = 4;
+   private static final int i = 7;
+   private static final int j = 3;
+   private static final int k = 11;
+   private static final int l = 30;
+   private static final int m = 126;
+   private final fvh.a n;
+   private final List<ayy> o;
+   private fvf.a p = fvf.a.a;
+   private long q;
+   private float r;
+   private float s;
+   private final boolean t;
+   private final int u;
 
-   final fik c;
-
-   private static fik a(int $$0, int $$1, fvh.a $$2) {
-      fik $$3 = new fik(fik.a.a, $$0, $$1, false);
-
-      for (int $$4 = 0; $$4 < $$1; $$4++) {
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            $$3.a($$5, $$4, $$2.getColor($$5, $$4));
-         }
+   public fvh(fsf $$0, fvh.a $$1, wy $$2, @Nullable wy $$3, boolean $$4, int $$5) {
+      this.n = $$1;
+      this.o = new ArrayList<>(2);
+      this.o.addAll($$0.c($$2.f().b(-11534256), 126));
+      if ($$3 != null) {
+         this.o.addAll($$0.c($$3, 126));
       }
 
-      $$3.i();
-      return $$3;
+      this.t = $$4;
+      this.u = $$5;
    }
 
-   private fvh(final Supplier<fik> $$0) {
-      this.c = $$0.get();
-   }
-
-   @Override
-   public float getAdvance() {
-      return (float)(this.c.a() + 1);
+   public fvh(fsf $$0, fvh.a $$1, wy $$2, @Nullable wy $$3, boolean $$4) {
+      this($$0, $$1, $$2, $$3, $$4, 0);
    }
 
    @Override
-   public fvf bake(Function<fhk, fvf> $$0) {
-      return $$0.apply(new fhk() {
-         @Override
-         public int a() {
-            return fvh.this.c.a();
-         }
-
-         @Override
-         public int b() {
-            return fvh.this.c.b();
-         }
-
-         @Override
-         public float d() {
-            return 1.0F;
-         }
-
-         @Override
-         public void a(int $$0, int $$1) {
-            fvh.this.c.a(0, $$0, $$1, false);
-         }
-
-         @Override
-         public boolean c() {
-            return true;
-         }
-      });
+   public fvf.a a() {
+      return this.p;
    }
 
-   @FunctionalInterface
-   interface a {
-      int getColor(int var1, int var2);
+   @Override
+   public void a(fvg $$0, long $$1) {
+      if (this.u > 0) {
+         this.s = Math.min((float)$$1 / (float)this.u, 1.0F);
+         this.r = this.s;
+         this.q = $$1;
+         if ($$1 > (long)this.u) {
+            this.e();
+         }
+      } else if (this.t) {
+         this.r = azm.b(this.r, this.s, (float)($$1 - this.q) / 100.0F);
+         this.q = $$1;
+      }
+   }
+
+   @Override
+   public int d() {
+      return 7 + this.f() + 3;
+   }
+
+   private int f() {
+      return Math.max(this.o.size(), 2) * 11;
+   }
+
+   @Override
+   public void a(fsh $$0, fsf $$1, long $$2) {
+      int $$3 = this.d();
+      $$0.a(gqx::H, h, 0, 0, this.c(), $$3);
+      this.n.a($$0, 6, 6);
+      int $$4 = this.o.size() * 11;
+      int $$5 = 7 + (this.f() - $$4) / 2;
+
+      for (int $$6 = 0; $$6 < this.o.size(); $$6++) {
+         $$0.a($$1, this.o.get($$6), 30, $$5 + $$6 * 11, -16777216, false);
+      }
+
+      if (this.t) {
+         int $$7 = $$3 - 4;
+         $$0.a(3, $$7, 157, $$7 + 1, -1);
+         int $$8;
+         if (this.s >= this.r) {
+            $$8 = -16755456;
+         } else {
+            $$8 = -11206656;
+         }
+
+         $$0.a(3, $$7, (int)(3.0F + 154.0F * this.r), $$7 + 1, $$8);
+      }
+   }
+
+   public void e() {
+      this.p = fvf.a.b;
+   }
+
+   public void a(float $$0) {
+      this.s = $$0;
+   }
+
+   public static enum a {
+      a(alg.b("toast/movement_keys")),
+      b(alg.b("toast/mouse")),
+      c(alg.b("toast/tree")),
+      d(alg.b("toast/recipe_book")),
+      e(alg.b("toast/wooden_planks")),
+      f(alg.b("toast/social_interactions")),
+      g(alg.b("toast/right_click"));
+
+      private final alg h;
+
+      private a(final alg $$0) {
+         this.h = $$0;
+      }
+
+      public void a(fsh $$0, int $$1, int $$2) {
+         $$0.a(gqx::H, this.h, $$1, $$2, 20, 20);
+      }
    }
 }

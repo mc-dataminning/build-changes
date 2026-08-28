@@ -1,53 +1,56 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public record elh(List<elh.a> b, ja c, ehn d, boolean e) implements elq {
-   public static final Codec<elh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               elh.a.a.listOf().fieldOf("layers").forGetter(elh::a),
-               ja.g.fieldOf("direction").forGetter(elh::b),
-               ehn.b.fieldOf("allowed_placement").forGetter(elh::c),
-               Codec.BOOL.fieldOf("prioritize_tip").forGetter(elh::d)
-            )
-            .apply($$0, elh::new)
-   );
-
-   public static elh.a a(bti $$0, enr $$1) {
-      return new elh.a($$0, $$1);
+public class elh extends ejt<emv> {
+   public elh(Codec<emv> $$0) {
+      super($$0);
    }
 
-   public static elh b(bti $$0, enr $$1) {
-      return new elh(List.of(a($$0, $$1)), ja.b, ehn.c, false);
-   }
-
-   public List<elh.a> a() {
-      return this.b;
-   }
-
-   public ja b() {
-      return this.c;
-   }
-
-   public ehn c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public static record a(bti b, enr c) {
-      public static final Codec<elh.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bti.d.fieldOf("height").forGetter(elh.a::a), enr.a.fieldOf("provider").forGetter(elh.a::b)).apply($$0, elh.a::new)
-      );
-
-      public bti a() {
-         return this.b;
+   @Override
+   public boolean a(ejv<emv> $$0) {
+      dkg $$1 = $$0.b();
+      iv $$2 = $$0.e();
+      emv $$3 = $$0.f();
+      azv $$4 = $$0.d();
+      OptionalInt $$5 = a($$1, $$2, $$3);
+      if ($$5.isEmpty()) {
+         return false;
+      } else {
+         iv $$6 = $$2.h($$5.getAsInt());
+         ka $$7 = new ka($$3.c, $$3.c, $$3.c);
+         era $$8 = era.a($$6.b($$7), $$6.a($$7));
+         return iv.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
+            $$1.a($$1x, dmo.lp.m(), 2);
+            return 1;
+         }).sum() > 0;
       }
+   }
 
-      public enr b() {
-         return this.c;
+   private static OptionalInt a(dkg $$0, iv $$1, emv $$2) {
+      Predicate<eao> $$3 = $$0x -> $$0x.a(dmo.J);
+      Predicate<eao> $$4 = $$0x -> !$$0x.a(dmo.J);
+      Optional<egd> $$5 = egd.a($$0, $$1, $$2.b, $$3, $$4);
+      return $$5.<OptionalInt>map(egd::c).orElseGet(OptionalInt::empty);
+   }
+
+   private boolean b(dkg $$0, iv $$1) {
+      if (!this.a($$0, $$1) && !this.a($$0, $$1.e())) {
+         for (jb $$2 : jb.c.a) {
+            if (this.a($$0, $$1.a($$2))) {
+               return false;
+            }
+         }
+
+         return true;
+      } else {
+         return false;
       }
+   }
+
+   private boolean a(dji $$0, iv $$1) {
+      eao $$2 = $$0.a_($$1);
+      return $$2.a(dmo.J) || $$2.l();
    }
 }

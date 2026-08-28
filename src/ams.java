@@ -10,17 +10,17 @@ import javax.annotation.Nullable;
 public class ams {
    private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("commands.ban.failed"));
 
-   public static void a(CommandDispatcher<ei> $$0) {
+   public static void a(CommandDispatcher<ej> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("ban").requires($$0x -> $$0x.c(3)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("ban").requires($$0x -> $$0x.c(3)))
             .then(
-               ((RequiredArgumentBuilder)ej.a("targets", ex.a()).executes($$0x -> a((ei)$$0x.getSource(), ex.a($$0x, "targets"), null)))
-                  .then(ej.a("reason", ez.a()).executes($$0x -> a((ei)$$0x.getSource(), ex.a($$0x, "targets"), ez.a($$0x, "reason"))))
+               ((RequiredArgumentBuilder)ek.a("targets", ey.a()).executes($$0x -> a((ej)$$0x.getSource(), ey.a($$0x, "targets"), null)))
+                  .then(ek.a("reason", fa.a()).executes($$0x -> a((ej)$$0x.getSource(), ey.a($$0x, "targets"), fa.a($$0x, "reason"))))
             )
       );
    }
 
-   private static int a(ei $$0, Collection<GameProfile> $$1, @Nullable wy $$2) throws CommandSyntaxException {
+   private static int a(ej $$0, Collection<GameProfile> $$1, @Nullable wy $$2) throws CommandSyntaxException {
       avw $$3 = $$0.l().ag().f();
       int $$4 = 0;
 

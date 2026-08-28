@@ -1,124 +1,105 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
+import java.util.Optional;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
 public class dzr {
-   static final String a = "server_data";
-   static Codec<dzr> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               jy.c.lenientOptionalFieldOf("rewarded_players", Set.of()).forGetter($$0x -> $$0x.e),
-               Codec.LONG.lenientOptionalFieldOf("state_updating_resumes_at", 0L).forGetter($$0x -> $$0x.f),
-               czd.b.listOf().lenientOptionalFieldOf("items_to_eject", List.of()).forGetter($$0x -> $$0x.g),
-               Codec.INT.lenientOptionalFieldOf("total_ejections_needed", 0).forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, dzr::new)
-   );
-   private static final int d = 128;
-   private final Set<UUID> e = new ObjectLinkedOpenHashSet();
-   private long f;
-   private final List<czd> g = new ObjectArrayList();
-   private long h;
-   private int i;
-   boolean c;
+   private static final dzr.a a = dzr.a.a("trial_chamber/breeze");
+   private static final dzr.a b = dzr.a.a("trial_chamber/melee/husk");
+   private static final dzr.a c = dzr.a.a("trial_chamber/melee/spider");
+   private static final dzr.a d = dzr.a.a("trial_chamber/melee/zombie");
+   private static final dzr.a e = dzr.a.a("trial_chamber/ranged/poison_skeleton");
+   private static final dzr.a f = dzr.a.a("trial_chamber/ranged/skeleton");
+   private static final dzr.a g = dzr.a.a("trial_chamber/ranged/stray");
+   private static final dzr.a h = dzr.a.a("trial_chamber/slow_ranged/poison_skeleton");
+   private static final dzr.a i = dzr.a.a("trial_chamber/slow_ranged/skeleton");
+   private static final dzr.a j = dzr.a.a("trial_chamber/slow_ranged/stray");
+   private static final dzr.a k = dzr.a.a("trial_chamber/small_melee/baby_zombie");
+   private static final dzr.a l = dzr.a.a("trial_chamber/small_melee/cave_spider");
+   private static final dzr.a m = dzr.a.a("trial_chamber/small_melee/silverfish");
+   private static final dzr.a n = dzr.a.a("trial_chamber/small_melee/slime");
 
-   dzr(Set<UUID> $$0, long $$1, List<czd> $$2, int $$3) {
-      this.e.addAll($$0);
-      this.f = $$1;
-      this.g.addAll($$2);
-      this.i = $$3;
+   public static void a(qh<dzq> $$0) {
+      a(
+         $$0,
+         a,
+         dzq.b().b(1.0F).d(0.5F).b(20).a(2.0F).c(1.0F).a(bsq.a(a(bwr.r))).a(),
+         dzq.b().d(0.5F).b(20).a(4.0F).c(1.0F).a(bsq.a(a(bwr.r))).b(bsq.<alf<ezt>>b().a(ezk.aN, 3).a(ezk.aO, 7).a()).a()
+      );
+      a($$0, b, c().a(bsq.a(a(bwr.am))).a(), c().a(bsq.a(a(bwr.am, ezk.ak))).b(bsq.<alf<ezt>>b().a(ezk.aN, 3).a(ezk.aO, 7).a()).a());
+      a($$0, c, c().a(bsq.a(a(bwr.bo))).a(), a().a(bsq.a(a(bwr.bo))).b(bsq.<alf<ezt>>b().a(ezk.aN, 3).a(ezk.aO, 7).a()).a());
+      a($$0, d, c().a(bsq.a(a(bwr.bO))).a(), c().b(bsq.<alf<ezt>>b().a(ezk.aN, 3).a(ezk.aO, 7).a()).a(bsq.a(a(bwr.bO, ezk.ak))).a());
+      a($$0, e, c().a(bsq.a(a(bwr.q))).a(), c().b(bsq.<alf<ezt>>b().a(ezk.aN, 3).a(ezk.aO, 7).a()).a(bsq.a(a(bwr.q, ezk.aj))).a());
+      a($$0, f, c().a(bsq.a(a(bwr.bf))).a(), c().b(bsq.<alf<ezt>>b().a(ezk.aN, 3).a(ezk.aO, 7).a()).a(bsq.a(a(bwr.bf, ezk.aj))).a());
+      a($$0, g, c().a(bsq.a(a(bwr.bs))).a(), c().b(bsq.<alf<ezt>>b().a(ezk.aN, 3).a(ezk.aO, 7).a()).a(bsq.a(a(bwr.bs, ezk.aj))).a());
+      a($$0, h, b().a(bsq.a(a(bwr.q))).a(), b().b(bsq.<alf<ezt>>b().a(ezk.aN, 3).a(ezk.aO, 7).a()).a(bsq.a(a(bwr.q, ezk.aj))).a());
+      a($$0, i, b().a(bsq.a(a(bwr.bf))).a(), b().b(bsq.<alf<ezt>>b().a(ezk.aN, 3).a(ezk.aO, 7).a()).a(bsq.a(a(bwr.bf, ezk.aj))).a());
+      a($$0, j, b().a(bsq.a(a(bwr.bs))).a(), b().b(bsq.<alf<ezt>>b().a(ezk.aN, 3).a(ezk.aO, 7).a()).a(bsq.a(a(bwr.bs, ezk.aj))).a());
+      a(
+         $$0,
+         k,
+         dzq.b().d(0.5F).b(20).a(bsq.a(a(bwr.bO, $$0x -> $$0x.a("IsBaby", true), null))).a(),
+         dzq.b().d(0.5F).b(20).b(bsq.<alf<ezt>>b().a(ezk.aN, 3).a(ezk.aO, 7).a()).a(bsq.a(a(bwr.bO, $$0x -> $$0x.a("IsBaby", true), ezk.ak))).a()
+      );
+      a($$0, l, c().a(bsq.a(a(bwr.v))).a(), a().b(bsq.<alf<ezt>>b().a(ezk.aN, 3).a(ezk.aO, 7).a()).a(bsq.a(a(bwr.v))).a());
+      a($$0, m, c().a(bsq.a(a(bwr.be))).a(), a().b(bsq.<alf<ezt>>b().a(ezk.aN, 3).a(ezk.aO, 7).a()).a(bsq.a(a(bwr.be))).a());
+      a(
+         $$0,
+         n,
+         c().a(bsq.<dkb>b().a(a(bwr.bh, $$0x -> $$0x.a("Size", (byte)1)), 3).a(a(bwr.bh, $$0x -> $$0x.a("Size", (byte)2)), 1).a()).a(),
+         a()
+            .b(bsq.<alf<ezt>>b().a(ezk.aN, 3).a(ezk.aO, 7).a())
+            .a(bsq.<dkb>b().a(a(bwr.bh, $$0x -> $$0x.a("Size", (byte)1)), 3).a(a(bwr.bh, $$0x -> $$0x.a("Size", (byte)2)), 1).a())
+            .a()
+      );
    }
 
-   dzr() {
+   private static <T extends bwi> dkb a(bwr<T> $$0) {
+      return a($$0, $$0x -> {
+      }, null);
    }
 
-   void a(long $$0) {
-      this.h = $$0;
+   private static <T extends bwi> dkb a(bwr<T> $$0, Consumer<tz> $$1) {
+      return a($$0, $$1, null);
    }
 
-   long a() {
-      return this.h;
+   private static <T extends bwi> dkb a(bwr<T> $$0, alf<ezt> $$1) {
+      return a($$0, $$0x -> {
+      }, $$1);
    }
 
-   Set<UUID> b() {
-      return this.e;
+   private static <T extends bwi> dkb a(bwr<T> $$0, Consumer<tz> $$1, @Nullable alf<ezt> $$2) {
+      tz $$3 = new tz();
+      $$3.a("id", mg.f.b($$0).toString());
+      $$1.accept($$3);
+      Optional<bwu> $$4 = Optional.ofNullable($$2).map($$0x -> new bwu($$0x, 0.0F));
+      return new dkb($$3, Optional.empty(), $$4);
    }
 
-   boolean a(crc $$0) {
-      return this.e.contains($$0.cG());
+   private static void a(qh<dzq> $$0, dzr.a $$1, dzq $$2, dzq $$3) {
+      $$0.a($$1.a, $$2);
+      $$0.a($$1.b, $$3);
    }
 
-   @VisibleForTesting
-   public void b(crc $$0) {
-      this.e.add($$0.cG());
-      if (this.e.size() > 128) {
-         Iterator<UUID> $$1 = this.e.iterator();
-         if ($$1.hasNext()) {
-            $$1.next();
-            $$1.remove();
-         }
+   static alf<dzq> a(String $$0) {
+      return alf.a(mh.bi, alg.b($$0));
+   }
+
+   private static dzq.a a() {
+      return dzq.b().b(4.0F).d(0.5F).b(20).a(12.0F);
+   }
+
+   private static dzq.a b() {
+      return dzq.b().b(4.0F).d(2.0F).b(160);
+   }
+
+   private static dzq.a c() {
+      return dzq.b().b(3.0F).d(0.5F).b(20);
+   }
+
+   static record a(alf<dzq> a, alf<dzq> b) {
+
+      public static dzr.a a(String $$0) {
+         return new dzr.a(dzr.a($$0 + "/normal"), dzr.a($$0 + "/ominous"));
       }
-
-      this.i();
-   }
-
-   long c() {
-      return this.f;
-   }
-
-   void b(long $$0) {
-      this.f = $$0;
-      this.i();
-   }
-
-   List<czd> d() {
-      return this.g;
-   }
-
-   void e() {
-      this.i = 0;
-      this.i();
-   }
-
-   void a(List<czd> $$0) {
-      this.g.clear();
-      this.g.addAll($$0);
-      this.i = this.g.size();
-      this.i();
-   }
-
-   czd f() {
-      return this.g.isEmpty() ? czd.k : Objects.requireNonNullElse(this.g.get(this.g.size() - 1), czd.k);
-   }
-
-   czd g() {
-      if (this.g.isEmpty()) {
-         return czd.k;
-      } else {
-         this.i();
-         return Objects.requireNonNullElse(this.g.remove(this.g.size() - 1), czd.k);
-      }
-   }
-
-   void a(dzr $$0) {
-      this.f = $$0.c();
-      this.g.clear();
-      this.g.addAll($$0.g);
-      this.e.clear();
-      this.e.addAll($$0.e);
-   }
-
-   private void i() {
-      this.c = true;
-   }
-
-   public float h() {
-      return this.i == 1 ? 1.0F : 1.0F - azm.f((float)this.d().size(), 1.0F, (float)this.i);
    }
 }

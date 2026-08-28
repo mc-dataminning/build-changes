@@ -1,116 +1,22 @@
-import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class cie implements din {
-   private static final Logger a = LogUtils.getLogger();
-   private boolean b;
-   private cie.a c;
-   private int d;
-   private int e;
-   private int f;
-   private int g;
-   private int h;
-
-   public cie() {
-      this.c = cie.a.c;
-   }
-
-   @Override
-   public void a(arq $$0, boolean $$1, boolean $$2) {
-      if (!$$0.V() && $$1) {
-         float $$3 = $$0.f(0.0F);
-         if ((double)$$3 == 0.5) {
-            this.c = $$0.A.a(10) == 0 ? cie.a.b : cie.a.c;
-         }
-
-         if (this.c != cie.a.c) {
-            if (!this.b) {
-               if (!this.a($$0)) {
-                  return;
-               }
-
-               this.b = true;
-            }
-
-            if (this.e > 0) {
-               this.e--;
-            } else {
-               this.e = 2;
-               if (this.d > 0) {
-                  this.b($$0);
-                  this.d--;
-               } else {
-                  this.c = cie.a.c;
-               }
-            }
-         }
-      } else {
-         this.c = cie.a.c;
-         this.b = false;
-      }
-   }
-
-   private boolean a(arq $$0) {
-      for (crc $$1 : $$0.z()) {
-         if (!$$1.V_()) {
-            iu $$2 = $$1.dv();
-            if ($$0.c($$2) && !$$0.u($$2).a(axb.af)) {
-               for (int $$3 = 0; $$3 < 10; $$3++) {
-                  float $$4 = $$0.A.i() * (float) (Math.PI * 2);
-                  this.f = $$2.u() + azm.d(azm.b($$4) * 32.0F);
-                  this.g = $$2.v();
-                  this.h = $$2.w() + azm.d(azm.a($$4) * 32.0F);
-                  if (this.a($$0, new iu(this.f, this.g, this.h)) != null) {
-                     this.e = 0;
-                     this.d = 20;
-                     break;
-                  }
-               }
-
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   private void b(arq $$0) {
-      feq $$1 = this.a($$0, new iu(this.f, this.g, this.h));
-      if ($$1 != null) {
-         cox $$2;
-         try {
-            $$2 = new cox($$0);
-            $$2.a($$0, $$0.d_($$2.dv()), bwn.h, null);
-         } catch (Exception var5) {
-            a.warn("Failed to create zombie for village siege at {}", $$1, var5);
-            return;
-         }
-
-         $$2.b($$1.d, $$1.e, $$1.f, $$0.A.i() * 360.0F, 0.0F);
-         $$0.a_($$2);
-      }
-   }
-
+public class cie {
    @Nullable
-   private feq a(arq $$0, iu $$1) {
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         int $$3 = $$1.u() + $$0.A.a(16) - 8;
-         int $$4 = $$1.w() + $$0.A.a(16) - 8;
-         int $$5 = $$0.a(egg.a.b, $$3, $$4);
-         iu $$6 = new iu($$3, $$5, $$4);
-         if ($$0.c($$6) && cod.b(bwo.bO, $$0, bwn.h, $$6, $$0.A)) {
-            return feq.c($$6);
+   public static fex a(bxr $$0, int $$1, int $$2, double $$3, double $$4, float $$5, int $$6, int $$7) {
+      boolean $$8 = cid.a($$0, $$1);
+      return cig.a($$0, () -> {
+         iv $$9 = cig.a($$0.dX(), $$1, $$2, 0, $$3, $$4, (double)$$5);
+         if ($$9 == null) {
+            return null;
+         } else {
+            iv $$10 = cif.a($$0, $$1, $$8, $$9);
+            if ($$10 == null) {
+               return null;
+            } else {
+               $$10 = cig.a($$10, $$0.dX().a($$6 - $$7 + 1) + $$7, $$0.dU().ao(), $$1xx -> cid.c($$0, $$1xx));
+               return !cid.a($$0, $$10) && !cid.b($$0, $$10) ? $$10 : null;
+            }
          }
-      }
-
-      return null;
-   }
-
-   static enum a {
-      a,
-      b,
-      c;
+      });
    }
 }

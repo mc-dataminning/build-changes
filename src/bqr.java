@@ -1,47 +1,11 @@
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.util.function.LongSupplier;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.objects.Object2LongMap;
 
-public class bqr {
-   private static final Logger a = LogUtils.getLogger();
-   private final LongSupplier b;
-   private final long c;
-   private int d;
-   private final File e;
-   private bql f = bqk.a;
+public interface bqr {
+   long a();
 
-   public bqr(LongSupplier $$0, String $$1, long $$2) {
-      this.b = $$0;
-      this.e = new File("debug", $$1);
-      this.c = $$2;
-   }
+   long b();
 
-   public bqo a() {
-      this.f = new bqg(this.b, () -> this.d, () -> true);
-      this.d++;
-      return this.f;
-   }
+   long c();
 
-   public void b() {
-      if (this.f != bqk.a) {
-         bqm $$0 = this.f.d();
-         this.f = bqk.a;
-         if ($$0.g() >= this.c) {
-            File $$1 = new File(this.e, "tick-results-" + af.f() + ".txt");
-            $$0.a($$1.toPath());
-            a.info("Recorded long tick -- wrote info to: {}", $$1.getAbsolutePath());
-         }
-      }
-   }
-
-   @Nullable
-   public static bqr a(String $$0) {
-      return null;
-   }
-
-   public static bqo a(bqo $$0, @Nullable bqr $$1) {
-      return $$1 != null ? bqo.a($$1.a(), $$0) : $$0;
-   }
+   Object2LongMap<String> d();
 }

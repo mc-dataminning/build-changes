@@ -1,199 +1,114 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public class cok extends cod {
-   @Nullable
-   private cok.b a;
-
-   public cok(bwo<? extends cok> $$0, dja $$1) {
+public abstract class cok extends bxr implements coc {
+   protected cok(bwr<? extends cok> $$0, djh $$1) {
       super($$0, $$1);
+      this.by = 5;
    }
 
    @Override
-   protected void D() {
-      this.a = new cok.b(this);
-      this.bD.a(1, new cdu(this));
-      this.bD.a(1, new cdp(this, this.dV()));
-      this.bD.a(3, this.a);
-      this.bD.a(4, new cek(this, 1.0, false));
-      this.bD.a(5, new cok.a(this));
-      this.bE.a(1, new cfs(this).a());
-      this.bE.a(2, new cft<>(this, crc.class, true));
-   }
-
-   public static byj.a j() {
-      return cod.gu().a(byk.s, 8.0).a(byk.v, 0.25).a(byk.c, 1.0);
+   public awo dl() {
+      return awo.f;
    }
 
    @Override
-   protected bwf.d bg() {
-      return bwf.d.c;
+   public void k_() {
+      this.eY();
+      this.gv();
+      super.k_();
+   }
+
+   protected void gv() {
+      float $$0 = this.bv();
+      if ($$0 > 0.5F) {
+         this.bd += 2;
+      }
    }
 
    @Override
-   protected awm u() {
-      return awn.xN;
+   protected boolean aa() {
+      return true;
    }
 
    @Override
-   protected awm e(buu $$0) {
-      return awn.xP;
+   protected awm aT() {
+      return awn.nA;
+   }
+
+   @Override
+   protected awm aU() {
+      return awn.nz;
+   }
+
+   @Override
+   protected awm e(bux $$0) {
+      return awn.nx;
    }
 
    @Override
    protected awm l_() {
-      return awn.xO;
+      return awn.nw;
    }
 
    @Override
-   protected void b(iu $$0, eah $$1) {
-      this.a(awn.xQ, 0.15F, 1.0F);
+   public bxj.a eN() {
+      return new bxj.a(awn.ny, awn.nv);
    }
 
    @Override
-   public boolean a(arq $$0, buu $$1, float $$2) {
-      if (this.a($$0, $$1)) {
+   public float a(iv $$0, djk $$1) {
+      return -$$1.x($$0);
+   }
+
+   public static boolean a(djy $$0, iv $$1, azv $$2) {
+      if ($$0.a(djq.a, $$1) > $$2.a(32)) {
          return false;
       } else {
-         if (($$1.d() != null || $$1.a(axd.x)) && this.a != null) {
-            this.a.h();
+         eel $$3 = $$0.B_();
+         int $$4 = $$3.e();
+         if ($$4 < 15 && $$0.a(djq.b, $$1) > $$4) {
+            return false;
+         } else {
+            int $$5 = $$0.a().ag() ? $$0.c($$1, 10) : $$0.B($$1);
+            return $$5 <= $$3.d().a($$2);
          }
-
-         return super.a($$0, $$1, $$2);
       }
    }
 
-   @Override
-   public void h() {
-      this.aV = this.dL();
-      super.h();
+   public static boolean b(bwr<? extends cok> $$0, djy $$1, bwq $$2, iv $$3, azv $$4) {
+      return $$1.an() != bud.a && (bwq.b($$2) || a($$1, $$3, $$4)) && a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static boolean c(bwr<? extends cok> $$0, dji $$1, bwq $$2, iv $$3, azv $$4) {
+      return $$1.an() != bud.a && a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static byo.a gw() {
+      return bxl.E().a(byp.c);
    }
 
    @Override
-   public void s(float $$0) {
-      this.w($$0);
-      super.s($$0);
+   public boolean en() {
+      return true;
    }
 
    @Override
-   public float a(iu $$0, djd $$1) {
-      return dqj.o($$1.a_($$0.e())) ? 10.0F : super.a($$0, $$1);
+   protected boolean eo() {
+      return true;
    }
 
-   public static boolean b(bwo<cok> $$0, djb $$1, bwn $$2, iu $$3, azv $$4) {
-      if (!c($$0, $$1, $$2, $$3, $$4)) {
-         return false;
-      } else if (bwn.a($$2)) {
-         return true;
+   public boolean a(arq $$0, crj $$1) {
+      return true;
+   }
+
+   @Override
+   public czk d(czk $$0) {
+      if ($$0.h() instanceof daf) {
+         Predicate<czk> $$1 = ((daf)$$0.h()).c();
+         czk $$2 = daf.a(this, $$1);
+         return $$2.f() ? new czk(czo.pk) : $$2;
       } else {
-         crc $$5 = $$1.a((double)$$3.u() + 0.5, (double)$$3.v() + 0.5, (double)$$3.w() + 0.5, 5.0, true);
-         return $$5 == null;
-      }
-   }
-
-   static class a extends cex {
-      @Nullable
-      private ja i;
-      private boolean j;
-
-      public a(cok $$0) {
-         super($$0, 1.0, 10);
-         this.a(EnumSet.of(cea.a.a));
-      }
-
-      @Override
-      public boolean b() {
-         if (this.b.f() != null) {
-            return false;
-         } else if (!this.b.O().k()) {
-            return false;
-         } else {
-            azv $$0 = this.b.dY();
-            if (a(this.b).O().c(diw.d) && $$0.a(b(10)) == 0) {
-               this.i = ja.b($$0);
-               iu $$1 = iu.a(this.b.dA(), this.b.dC() + 0.5, this.b.dG()).a(this.i);
-               eah $$2 = this.b.dV().a_($$1);
-               if (dqj.o($$2)) {
-                  this.j = true;
-                  return true;
-               }
-            }
-
-            this.j = false;
-            return super.b();
-         }
-      }
-
-      @Override
-      public boolean c() {
-         return this.j ? false : super.c();
-      }
-
-      @Override
-      public void d() {
-         if (!this.j) {
-            super.d();
-         } else {
-            djb $$0 = this.b.dV();
-            iu $$1 = iu.a(this.b.dA(), this.b.dC() + 0.5, this.b.dG()).a(this.i);
-            eah $$2 = $$0.a_($$1);
-            if (dqj.o($$2)) {
-               $$0.a($$1, dqj.p($$2), 3);
-               this.b.U();
-               this.b.at();
-            }
-         }
-      }
-   }
-
-   static class b extends cea {
-      private final cok a;
-      private int b;
-
-      public b(cok $$0) {
-         this.a = $$0;
-      }
-
-      public void h() {
-         if (this.b == 0) {
-            this.b = this.a(20);
-         }
-      }
-
-      @Override
-      public boolean b() {
-         return this.b > 0;
-      }
-
-      @Override
-      public void a() {
-         this.b--;
-         if (this.b <= 0) {
-            dja $$0 = this.a.dV();
-            azv $$1 = this.a.dY();
-            iu $$2 = this.a.dv();
-
-            for (int $$3 = 0; $$3 <= 5 && $$3 >= -5; $$3 = ($$3 <= 0 ? 1 : 0) - $$3) {
-               for (int $$4 = 0; $$4 <= 10 && $$4 >= -10; $$4 = ($$4 <= 0 ? 1 : 0) - $$4) {
-                  for (int $$5 = 0; $$5 <= 10 && $$5 >= -10; $$5 = ($$5 <= 0 ? 1 : 0) - $$5) {
-                     iu $$6 = $$2.b($$4, $$3, $$5);
-                     eah $$7 = $$0.a_($$6);
-                     dmf $$8 = $$7.b();
-                     if ($$8 instanceof dqj) {
-                        if (a($$0).O().c(diw.d)) {
-                           $$0.a($$6, true, this.a);
-                        } else {
-                           $$0.a($$6, ((dqj)$$8).q($$0.a_($$6)), 3);
-                        }
-
-                        if ($$1.h()) {
-                           return;
-                        }
-                     }
-                  }
-               }
-            }
-         }
+         return czk.k;
       }
    }
 }

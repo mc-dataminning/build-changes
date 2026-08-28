@@ -1,8 +1,11 @@
-public class hct extends hdn {
-   public boolean d;
-   public boolean e;
-   public boolean f;
-   public float g;
-   public float h;
-   public float i;
+import javax.annotation.Nullable;
+
+public abstract class hct extends hcz {
+   @Nullable
+   public bwf.j b;
+   public float c;
+   public float d;
+   public float e;
+
+   public abstract boolean a();
 }

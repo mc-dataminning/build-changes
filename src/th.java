@@ -7,17 +7,17 @@ public class th implements sv.c {
    private static final int d = 6;
    private final int e;
    private int f;
-   private fel g;
-   private final iu.a h;
-   private final iu i;
+   private fes g;
+   private final iv.a h;
+   private final iv i;
    private final boolean j;
    private float k = -1.0F;
    private final Collection<sq> l = new ArrayList<>();
 
-   public th(iu $$0, int $$1, boolean $$2) {
+   public th(iv $$0, int $$1, boolean $$2) {
       this.e = $$1;
       this.h = $$0.k();
-      this.g = new fel(this.h);
+      this.g = new fes(this.h);
       this.i = $$0;
       this.j = $$2;
    }
@@ -26,21 +26,21 @@ public class th implements sv.c {
    public void a(arq $$0) {
       if (this.j) {
          this.l.forEach($$1 -> {
-            eqt $$2 = $$1.f().d();
+            era $$2 = $$1.f().d();
             ti.a($$2, $$0);
          });
          this.l.clear();
-         this.g = new fel(this.i);
+         this.g = new fes(this.i);
          this.h.g(this.i);
       }
    }
 
    @Override
    public Optional<sq> spawnStructure(sq $$0) {
-      iu $$1 = new iu(this.h);
+      iv $$1 = new iv(this.h);
       $$0.a($$1);
       $$0.o().a(1);
-      fel $$2 = $$0.f().f();
+      fes $$2 = $$0.f().f();
       this.g = this.g.b($$2);
       this.h.e((int)$$2.b() + 5, 0, 0);
       if ((float)this.h.u() > this.k) {
@@ -51,7 +51,7 @@ public class th implements sv.c {
          this.f = 0;
          this.h.e(0, 0, (int)this.g.d() + 6);
          this.h.p(this.i.u());
-         this.g = new fel(this.h);
+         this.g = new fes(this.h);
       }
 
       this.l.add($$0);

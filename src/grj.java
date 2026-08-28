@@ -1,55 +1,44 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import javax.annotation.Nullable;
+public class grj implements fkc {
+   private final fkc a;
+   private final hjk b;
 
-public record grj(@Nullable ja b, int c, String d, grl e) {
-   public static final int a = -1;
-
-   @Nullable
-   public ja a() {
-      return this.b;
+   public grj(fkc $$0, hjk $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public int b() {
-      return this.c;
+   @Override
+   public fkc a(float $$0, float $$1, float $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   public String c() {
-      return this.d;
+   @Override
+   public fkc a(int $$0, int $$1, int $$2, int $$3) {
+      return this.a.a($$0, $$1, $$2, $$3);
    }
 
-   public grl d() {
-      return this.e;
+   @Override
+   public fkc a(float $$0, float $$1) {
+      return this.a.a(this.b.a($$0), this.b.c($$1));
    }
 
-   protected static class a implements JsonDeserializer<grj> {
-      private static final int a = -1;
+   @Override
+   public fkc a(int $$0, int $$1) {
+      return this.a.a($$0, $$1);
+   }
 
-      public grj a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         ja $$4 = this.c($$3);
-         int $$5 = this.a($$3);
-         String $$6 = this.b($$3);
-         grl $$7 = (grl)$$2.deserialize($$3, grl.class);
-         return new grj($$4, $$5, $$6, $$7);
-      }
+   @Override
+   public fkc b(int $$0, int $$1) {
+      return this.a.b($$0, $$1);
+   }
 
-      protected int a(JsonObject $$0) {
-         return azc.a($$0, "tintindex", -1);
-      }
+   @Override
+   public fkc b(float $$0, float $$1, float $$2) {
+      return this.a.b($$0, $$1, $$2);
+   }
 
-      private String b(JsonObject $$0) {
-         return azc.i($$0, "texture");
-      }
-
-      @Nullable
-      private ja c(JsonObject $$0) {
-         String $$1 = azc.a($$0, "cullface", "");
-         return ja.a($$1);
-      }
+   @Override
+   public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+      this.a.a($$0, $$1, $$2, $$3, this.b.a($$4), this.b.c($$5), $$6, $$7, $$8, $$9, $$10);
    }
 }

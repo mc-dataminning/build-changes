@@ -1,29 +1,20 @@
-public class hml extends hmd {
-   private final bwf n;
+import java.util.UUID;
 
-   public hml(awm $$0, awo $$1, float $$2, float $$3, bwf $$4, long $$5) {
-      super($$0, $$1, azv.a($$5));
-      this.d = $$2;
-      this.e = $$3;
-      this.n = $$4;
-      this.f = (double)((float)this.n.dA());
-      this.g = (double)((float)this.n.dC());
-      this.h = (double)((float)this.n.dG());
+public interface hml {
+   void a(UUID var1, hml.b var2);
+
+   void a(UUID var1, hml.a var2);
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 
-   @Override
-   public boolean s() {
-      return !this.n.bb();
-   }
-
-   @Override
-   public void q() {
-      if (this.n.dQ()) {
-         this.n();
-      } else {
-         this.f = (double)((float)this.n.dA());
-         this.g = (double)((float)this.n.dC());
-         this.h = (double)((float)this.n.dG());
-      }
+   public static enum b {
+      a,
+      b;
    }
 }

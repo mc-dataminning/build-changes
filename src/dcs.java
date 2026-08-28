@@ -1,22 +1,26 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dcs(je<awm> c) implements dcr {
-   public static final MapCodec<dcs> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(awm.b.fieldOf("sound").forGetter(dcs::b)).apply($$0, dcs::new));
-   public static final yw<wj, dcs> b = yw.a(awm.d, dcs::b, dcs::new);
+public record dcs(int d, float e) {
+   public static final float a = 5.0F;
+   public static final Codec<dcs> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayu.l.optionalFieldOf("item_damage_per_attack", 1).forGetter(dcs::a),
+               ayu.n.optionalFieldOf("disable_blocking_for_seconds", 0.0F).forGetter(dcs::b)
+            )
+            .apply($$0, dcs::new)
+   );
+   public static final yw<wj, dcs> c = yw.a(yu.h, dcs::a, yu.l, dcs::b, dcs::new);
 
-   @Override
-   public dcr.a<dcs> a() {
-      return dcr.a.e;
+   public dcs(int $$0) {
+      this($$0, 0.0F);
    }
 
-   @Override
-   public boolean a(dja $$0, czd $$1, bxe $$2) {
-      $$0.a(null, $$2.dv(), this.c.a(), $$2.dm(), 1.0F, 1.0F);
-      return true;
+   public int a() {
+      return this.d;
    }
 
-   public je<awm> b() {
-      return this.c;
+   public float b() {
+      return this.e;
    }
 }

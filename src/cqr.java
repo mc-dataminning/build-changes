@@ -1,87 +1,64 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public record cqr(wy q, Predicate<je<cij>> r, Predicate<je<cij>> s, ImmutableSet<cyz> t, ImmutableSet<dmf> u, @Nullable awm v) {
-   public static final Predicate<je<cij>> a = $$0 -> $$0.a(axm.a);
-   public static final alf<cqr> b = a("none");
-   public static final alf<cqr> c = a("armorer");
-   public static final alf<cqr> d = a("butcher");
-   public static final alf<cqr> e = a("cartographer");
-   public static final alf<cqr> f = a("cleric");
-   public static final alf<cqr> g = a("farmer");
-   public static final alf<cqr> h = a("fisherman");
-   public static final alf<cqr> i = a("fletcher");
-   public static final alf<cqr> j = a("leatherworker");
-   public static final alf<cqr> k = a("librarian");
-   public static final alf<cqr> l = a("mason");
-   public static final alf<cqr> m = a("nitwit");
-   public static final alf<cqr> n = a("shepherd");
-   public static final alf<cqr> o = a("toolsmith");
-   public static final alf<cqr> p = a("weaponsmith");
+public class cqr implements diu {
+   private static final int a = 1200;
+   private int b;
 
-   private static alf<cqr> a(String $$0) {
-      return alf.a(mg.aD, alg.b($$0));
+   @Override
+   public void a(arq $$0, boolean $$1, boolean $$2) {
+      if ($$2 && $$0.O().c(djd.f)) {
+         this.b--;
+         if (this.b <= 0) {
+            this.b = 1200;
+            crj $$3 = $$0.k();
+            if ($$3 != null) {
+               azv $$4 = $$0.A;
+               int $$5 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
+               int $$6 = (8 + $$4.a(24)) * ($$4.h() ? -1 : 1);
+               iv $$7 = $$3.du().b($$5, 0, $$6);
+               int $$8 = 10;
+               if ($$0.b($$7.u() - 10, $$7.w() - 10, $$7.u() + 10, $$7.w() + 10)) {
+                  if (bye.a(bwr.u, $$0, $$7)) {
+                     if ($$0.a($$7, 2)) {
+                        this.a($$0, $$7);
+                     } else if ($$0.b().a($$7, axn.n).b()) {
+                        this.b($$0, $$7);
+                     }
+                  }
+               }
+            }
+         }
+      }
    }
 
-   private static cqr a(jr<cqr> $$0, alf<cqr> $$1, alf<cij> $$2, @Nullable awm $$3) {
-      return a($$0, $$1, $$1x -> $$1x.a($$2), $$1x -> $$1x.a($$2), $$3);
+   private void a(arq $$0, iv $$1) {
+      int $$2 = 48;
+      if ($$0.A().a($$0x -> $$0x.a(cip.n), $$1, 48, cil.b.b) > 4L) {
+         List<cjc> $$3 = $$0.a(cjc.class, new fes($$1).c(48.0, 8.0, 48.0));
+         if ($$3.size() < 5) {
+            this.a($$1, $$0, false);
+         }
+      }
    }
 
-   private static cqr a(jr<cqr> $$0, alf<cqr> $$1, Predicate<je<cij>> $$2, Predicate<je<cij>> $$3, @Nullable awm $$4) {
-      return a($$0, $$1, $$2, $$3, ImmutableSet.of(), ImmutableSet.of(), $$4);
+   private void b(arq $$0, iv $$1) {
+      int $$2 = 16;
+      List<cjc> $$3 = $$0.a(cjc.class, new fes($$1).c(16.0, 8.0, 16.0));
+      if ($$3.isEmpty()) {
+         this.a($$1, $$0, true);
+      }
    }
 
-   private static cqr a(jr<cqr> $$0, alf<cqr> $$1, alf<cij> $$2, ImmutableSet<cyz> $$3, ImmutableSet<dmf> $$4, @Nullable awm $$5) {
-      return a($$0, $$1, $$1x -> $$1x.a($$2), $$1x -> $$1x.a($$2), $$3, $$4, $$5);
-   }
+   private void a(iv $$0, arq $$1, boolean $$2) {
+      cjc $$3 = bwr.u.a($$1, bwq.a);
+      if ($$3 != null) {
+         $$3.a($$1, $$1.d_($$0), bwq.a, null);
+         if ($$2) {
+            $$3.gb();
+         }
 
-   private static cqr a(
-      jr<cqr> $$0, alf<cqr> $$1, Predicate<je<cij>> $$2, Predicate<je<cij>> $$3, ImmutableSet<cyz> $$4, ImmutableSet<dmf> $$5, @Nullable awm $$6
-   ) {
-      return jr.a($$0, $$1, new cqr(wy.c("entity." + $$1.a().b() + ".villager." + $$1.a().a()), $$2, $$3, $$4, $$5, $$6));
-   }
-
-   public static cqr a(jr<cqr> $$0) {
-      a($$0, b, cij.a, a, null);
-      a($$0, c, cik.a, awn.Cd);
-      a($$0, d, cik.b, awn.Ce);
-      a($$0, e, cik.c, awn.Cf);
-      a($$0, f, cik.d, awn.Cg);
-      a($$0, g, cik.e, ImmutableSet.of(czh.qk, czh.qj, czh.ww, czh.sG), ImmutableSet.of(dmh.cN), awn.Ch);
-      a($$0, h, cik.f, awn.Ci);
-      a($$0, i, cik.g, awn.Cj);
-      a($$0, j, cik.h, awn.Ck);
-      a($$0, k, cik.i, awn.Cl);
-      a($$0, l, cik.j, awn.Cm);
-      a($$0, m, cij.a, cij.a, null);
-      a($$0, n, cik.k, awn.Cn);
-      a($$0, o, cik.l, awn.Co);
-      return a($$0, p, cik.m, awn.Cp);
-   }
-
-   public wy a() {
-      return this.q;
-   }
-
-   public Predicate<je<cij>> b() {
-      return this.r;
-   }
-
-   public Predicate<je<cij>> c() {
-      return this.s;
-   }
-
-   public ImmutableSet<cyz> d() {
-      return this.t;
-   }
-
-   public ImmutableSet<dmf> e() {
-      return this.u;
-   }
-
-   @Nullable
-   public awm f() {
-      return this.v;
+         $$3.a($$0, 0.0F, 0.0F);
+         $$1.a_($$3);
+      }
    }
 }

@@ -10,11 +10,11 @@ import net.minecraft.obfuscate.DontObfuscate;
 
 public class Main {
    @DontObfuscate
-   @ac(
+   @ad(
       a = "System.out needed before bootstrap"
    )
    public static void main(String[] $$0) throws IOException {
-      ab.a();
+      ac.a();
       OptionParser $$1 = new OptionParser();
       OptionSpec<Void> $$2 = $$1.accepts("help", "Show the help menu").forHelp();
       OptionSpec<Void> $$3 = $$1.accepts("client", "Include client generators");
@@ -26,8 +26,8 @@ public class Main {
          boolean $$8 = $$6.has($$4);
          boolean $$9 = $$8 || $$6.has($$3);
          ali.a();
-         foi.a();
-         ml $$10 = new ml($$7, ab.b(), true);
+         foy.a();
+         mm $$10 = new mm($$7, ac.b(), true);
          a($$10, $$9);
          $$10.a();
       } else {
@@ -35,10 +35,10 @@ public class Main {
       }
    }
 
-   public static void a(ml $$0, boolean $$1) {
-      ml.a $$2 = $$0.a($$1);
-      $$2.a(fqu::new);
-      $$2.a(fqr::new);
-      $$2.a(fqp::new);
+   public static void a(mm $$0, boolean $$1) {
+      mm.a $$2 = $$0.a($$1);
+      $$2.a(frj::new);
+      $$2.a(frg::new);
+      $$2.a(fre::new);
    }
 }

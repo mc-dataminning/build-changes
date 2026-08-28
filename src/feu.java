@@ -1,20 +1,21 @@
-public interface feu {
-   feu a = ($$0, $$1) -> false;
-   feu b = ($$0, $$1) -> !$$0 && !$$1;
-   feu c = ($$0, $$1) -> $$1 && !$$0;
-   feu d = ($$0, $$1) -> !$$0;
-   feu e = ($$0, $$1) -> $$0 && !$$1;
-   feu f = ($$0, $$1) -> !$$1;
-   feu g = ($$0, $$1) -> $$0 != $$1;
-   feu h = ($$0, $$1) -> !$$0 || !$$1;
-   feu i = ($$0, $$1) -> $$0 && $$1;
-   feu j = ($$0, $$1) -> $$0 == $$1;
-   feu k = ($$0, $$1) -> $$1;
-   feu l = ($$0, $$1) -> !$$0 || $$1;
-   feu m = ($$0, $$1) -> $$0;
-   feu n = ($$0, $$1) -> $$0 || !$$1;
-   feu o = ($$0, $$1) -> $$0 || $$1;
-   feu p = ($$0, $$1) -> true;
+public class feu extends fev {
+   private final bwi b;
 
-   boolean apply(boolean var1, boolean var2);
+   public feu(bwi $$0) {
+      this($$0, $$0.ds());
+   }
+
+   public feu(bwi $$0, fex $$1) {
+      super($$1);
+      this.b = $$0;
+   }
+
+   public bwi a() {
+      return this.b;
+   }
+
+   @Override
+   public fev.a d() {
+      return fev.a.c;
+   }
 }

@@ -1,65 +1,86 @@
-import java.util.EnumSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public abstract class cea {
-   private final EnumSet<cea.a> a = EnumSet.noneOf(cea.a.class);
+public class cea extends cef {
+   private int a;
+   private final bxr b;
+   @Nullable
+   private crj c;
+   private cdo d;
 
-   public abstract boolean b();
-
-   public boolean c() {
-      return this.b();
+   public cea(bxr $$0) {
+      this.b = $$0;
    }
 
+   @Override
+   public boolean b() {
+      List<ctu> $$0 = this.b.dU().a(ctu.class, this.b.cQ().g(5.0));
+      boolean $$1 = false;
+
+      for (ctu $$2 : $$0) {
+         bwi $$3 = $$2.cV();
+         if ($$3 instanceof crj $$4 && (azm.e($$4.bg) > 0.0F || azm.e($$4.bi) > 0.0F)) {
+            $$1 = true;
+            break;
+         }
+      }
+
+      return this.c != null && (azm.e(this.c.bg) > 0.0F || azm.e(this.c.bi) > 0.0F) || $$1;
+   }
+
+   @Override
    public boolean Q_() {
       return true;
    }
 
-   public void d() {
-   }
-
-   public void e() {
-   }
-
-   public boolean R_() {
-      return false;
-   }
-
-   public void a() {
-   }
-
-   public void a(EnumSet<cea.a> $$0) {
-      this.a.clear();
-      this.a.addAll($$0);
+   @Override
+   public boolean c() {
+      return this.c != null && this.c.bX() && (azm.e(this.c.bg) > 0.0F || azm.e(this.c.bi) > 0.0F);
    }
 
    @Override
-   public String toString() {
-      return this.getClass().getSimpleName();
+   public void d() {
+      for (ctu $$1 : this.b.dU().a(ctu.class, this.b.cQ().g(5.0))) {
+         if ($$1.cV() instanceof crj $$2) {
+            this.c = $$2;
+            break;
+         }
+      }
+
+      this.a = 0;
+      this.d = cdo.a;
    }
 
-   public EnumSet<cea.a> j() {
-      return this.a;
+   @Override
+   public void e() {
+      this.c = null;
    }
 
-   protected int a(int $$0) {
-      return this.R_() ? $$0 : b($$0);
-   }
-
-   protected static int b(int $$0) {
-      return azm.e($$0, 2);
-   }
-
-   protected static arq a(bwf $$0) {
-      return (arq)$$0.dV();
-   }
-
-   protected static arq a(dja $$0) {
-      return (arq)$$0;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   @Override
+   public void a() {
+      boolean $$0 = azm.e(this.c.bg) > 0.0F || azm.e(this.c.bi) > 0.0F;
+      float $$1 = this.d == cdo.b ? ($$0 ? 0.01F : 0.0F) : 0.015F;
+      this.b.a($$1, new fex((double)this.b.bg, (double)this.b.bh, (double)this.b.bi));
+      this.b.a(bxn.a, this.b.dx());
+      if (--this.a <= 0) {
+         this.a = this.a(10);
+         if (this.d == cdo.a) {
+            iv $$2 = this.c.du().a(this.c.cN().g());
+            $$2 = $$2.b(0, -1, 0);
+            this.b.O().a((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 1.0);
+            if (this.b.f(this.c) < 4.0F) {
+               this.a = 0;
+               this.d = cdo.b;
+            }
+         } else if (this.d == cdo.b) {
+            jb $$3 = this.c.cO();
+            iv $$4 = this.c.du().a($$3, 10);
+            this.b.O().a((double)$$4.u(), (double)($$4.v() - 1), (double)$$4.w(), 1.0);
+            if (this.b.f(this.c) > 12.0F) {
+               this.a = 0;
+               this.d = cdo.a;
+            }
+         }
+      }
    }
 }

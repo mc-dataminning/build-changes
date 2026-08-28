@@ -26,7 +26,7 @@ public class aqj implements Runnable {
    public void run() {
       while (this.d.x()) {
          long $$0 = this.d.aB();
-         long $$1 = af.d();
+         long $$1 = ag.d();
          long $$2 = $$1 - $$0;
          if ($$2 > this.e) {
             a.error(
@@ -36,14 +36,14 @@ public class aqj implements Runnable {
                String.format(Locale.ROOT, "%.2f", this.d.aP().g() / (float)baq.c)
             );
             a.error(LogUtils.FATAL_MARKER, "Considering it to be crashed, server will forcibly shutdown.");
-            o $$3 = a("Watching Server", this.d.ay().threadId());
+            p $$3 = a("Watching Server", this.d.ay().threadId());
             this.d.b($$3.f());
-            p $$4 = $$3.a("Performance stats");
-            $$4.a("Random tick rate", () -> this.d.aZ().o().b(diw.p).toString());
+            q $$4 = $$3.a("Performance stats");
+            $$4.a("Random tick rate", () -> this.d.aZ().o().b(djd.p).toString());
             $$4.a("Level stats", () -> Streams.stream(this.d.L()).map($$0x -> $$0x.aj().a() + ": " + $$0x.G()).collect(Collectors.joining(",\n")));
-            ali.a("Crash report:\n" + $$3.a(y.a));
-            Path $$5 = this.d.D().resolve("crash-reports").resolve("crash-" + af.f() + "-server.txt");
-            if ($$3.a($$5, y.a)) {
+            ali.a("Crash report:\n" + $$3.a(z.a));
+            Path $$5 = this.d.D().resolve("crash-reports").resolve("crash-" + ag.f() + "-server.txt");
+            if ($$3.a($$5, z.a)) {
                a.error("This crash report has been saved to: {}", $$5.toAbsolutePath());
             } else {
                a.error("We were unable to save this crash report to disk.");
@@ -59,7 +59,7 @@ public class aqj implements Runnable {
       }
    }
 
-   public static o a(String $$0, long $$1) {
+   public static p a(String $$0, long $$1) {
       ThreadMXBean $$2 = ManagementFactory.getThreadMXBean();
       ThreadInfo[] $$3 = $$2.dumpAllThreads(true, true);
       StringBuilder $$4 = new StringBuilder();
@@ -74,8 +74,8 @@ public class aqj implements Runnable {
          $$4.append("\n");
       }
 
-      o $$7 = new o($$0, $$5);
-      p $$8 = $$7.a("Thread Dump");
+      p $$7 = new p($$0, $$5);
+      q $$8 = $$7.a("Thread Dump");
       $$8.a("Threads", $$4);
       return $$7;
    }

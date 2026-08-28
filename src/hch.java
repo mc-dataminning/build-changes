@@ -1,11 +1,5 @@
-import javax.annotation.Nullable;
-
-public abstract class hch extends hcn {
-   @Nullable
-   public bwc.j b;
-   public float c;
-   public float d;
-   public float e;
-
-   public abstract boolean a();
+public class hch extends hdz {
+   public boolean a;
+   public final bvz b = new bvz();
+   public final bvz c = new bvz();
 }

@@ -1,10 +1,10 @@
 import javax.annotation.Nullable;
 
 public class si extends sh {
-   private final iu c;
-   private final iu d;
+   private final iv c;
+   private final iv d;
 
-   public si(wy $$0, iu $$1, iu $$2, int $$3) {
+   public si(wy $$0, iv $$1, iv $$2, int $$3) {
       super($$0, $$3);
       this.c = $$1;
       this.d = $$2;
@@ -21,12 +21,12 @@ public class si extends sh {
    }
 
    @Nullable
-   public iu c() {
+   public iv c() {
       return this.d;
    }
 
    @Nullable
-   public iu d() {
+   public iv d() {
       return this.c;
    }
 }

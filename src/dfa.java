@@ -1,20 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-
-public interface dfa {
-   Codec<dfa> d = mf.ax.q().dispatch(dfa::a, dfa.a::a);
-   yw<wj, dfa> e = yu.a(mg.ag).b(dfa::a, dfa.a::b);
-
-   dfg d();
-
-   dfg e();
-
-   dfa.a<? extends dfa> a();
-
-   default boolean a(cum $$0) {
-      return this.d().a($$0) && this.e().a($$0);
+public class dfa extends ddh {
+   public dfa(String $$0, ddn $$1, ddx $$2, czk $$3, float $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public static record a<T extends dfa>(MapCodec<T> a, yw<wj, T> b) {
+   @Override
+   protected czg f() {
+      return czo.xw;
+   }
+
+   @Override
+   public dem<dfa> b() {
+      return dem.d;
+   }
+
+   @Override
+   public del<dfa> a() {
+      return del.q;
+   }
+
+   @Override
+   public dee h() {
+      return ded.j;
    }
 }

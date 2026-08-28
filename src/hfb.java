@@ -1,5 +1,3 @@
-public class hfb extends hcn {
-   public boolean a;
-   public float b;
-   public float c;
+public class hfb extends hcz {
+   public final hgc a = new hgc();
 }

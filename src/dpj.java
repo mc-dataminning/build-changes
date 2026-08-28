@@ -1,19 +1,11 @@
-import com.mojang.serialization.MapCodec;
-
-public class dpj extends doa {
-   public static final MapCodec<dpj> b = b(dpj::new);
-
-   @Override
-   public MapCodec<dpj> a() {
-      return b;
+public interface dpj {
+   default void a(djh $$0, iv $$1, eao $$2, eao $$3, cnn $$4) {
    }
 
-   protected dpj(eag.d $$0) {
-      super($$0);
+   default void a(djh $$0, iv $$1, cnn $$2) {
    }
 
-   @Override
-   protected bud a(eah $$0, dja $$1, iu $$2, crc $$3, fem $$4) {
-      return bud.e;
+   default bux a(bwi $$0) {
+      return $$0.dV().a($$0);
    }
 }

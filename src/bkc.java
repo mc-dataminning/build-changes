@@ -1,43 +1,42 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JsonOps;
-import org.slf4j.Logger;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
-public class bkc extends DataFix {
-   private static final Logger a = LogUtils.getLogger();
-
+public class bkc extends bhu {
    public bkc(Schema $$0) {
-      super($$0, true);
+      super($$0, true, "Trial Spawner config tag fixer", biz.s, "minecraft:trial_spawner");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, String>> $$0 = this.getInputSchema().getType(bix.z);
-      Type<?> $$1 = this.getOutputSchema().getType(bix.z);
-      return this.a($$0, $$1);
-   }
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      List<String> $$1 = List.of(
+         "spawn_range",
+         "total_mobs",
+         "simultaneous_mobs",
+         "total_mobs_added_per_player",
+         "simultaneous_mobs_added_per_player",
+         "ticks_between_spawn",
+         "spawn_potentials",
+         "loot_tables_to_eject",
+         "items_to_drop_when_ominous"
+      );
+      Map<Dynamic<T>, Dynamic<T>> $$2 = new HashMap<>($$1.size());
 
-   private <T> TypeRewriteRule a(Type<Pair<String, String>> $$0, Type<T> $$1) {
-      return this.fixTypeEverywhere("UnflattenTextComponentFix", $$0, $$1, $$1x -> $$2 -> af.a($$1, a($$1x, (String)$$2.getSecond()), true).getValue());
-   }
-
-   private static <T> Dynamic<T> a(DynamicOps<T> $$0, String $$1) {
-      try {
-         JsonElement $$2 = JsonParser.parseString($$1);
-         if (!$$2.isJsonNull()) {
-            return new Dynamic($$0, JsonOps.INSTANCE.convertTo($$0, $$2));
+      for (String $$3 : $$1) {
+         Optional<Dynamic<T>> $$4 = $$0.get($$3).get().result();
+         if ($$4.isPresent()) {
+            $$2.put($$0.createString($$3), $$4.get());
+            $$0 = $$0.remove($$3);
          }
-      } catch (Exception var3) {
-         a.error("Failed to unflatten text component json: {}", $$1, var3);
       }
 
-      return new Dynamic($$0, $$0.createString($$1));
+      return $$2.isEmpty() ? $$0 : $$0.set("normal_config", $$0.createMap($$2));
+   }
+
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return b($$0);
    }
 }

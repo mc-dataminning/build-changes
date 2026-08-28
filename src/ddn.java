@@ -1,70 +1,25 @@
-import java.util.ArrayList;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public class ddn extends ddk {
-   private static final ddq c = ddq.a(czh.rE);
-   private static final ddq d = ddq.a(czh.qi);
-   private static final ddq e = ddq.a(czh.vF);
+public enum ddn implements bak {
+   a(0, "food"),
+   b(1, "blocks"),
+   c(2, "misc");
 
-   public ddn(ddh $$0) {
-      super($$0);
-   }
+   private static final IntFunction<ddn> f = ayc.a($$0 -> $$0.g, values(), ayc.a.a);
+   public static final Codec<ddn> d = bak.a(ddn::values);
+   public static final yw<ByteBuf, ddn> e = yu.a(f, $$0 -> $$0.g);
+   private final int g;
+   private final String h;
 
-   public boolean a(ddi $$0, dja $$1) {
-      if ($$0.e() < 2) {
-         return false;
-      } else {
-         boolean $$2 = false;
-         int $$3 = 0;
-
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            czd $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if (c.a($$5)) {
-                  if ($$2) {
-                     return false;
-                  }
-
-                  $$2 = true;
-               } else if (d.a($$5)) {
-                  if (++$$3 > 3) {
-                     return false;
-                  }
-               } else if (!e.a($$5)) {
-                  return false;
-               }
-            }
-         }
-
-         return $$2 && $$3 >= 1;
-      }
-   }
-
-   public czd a(ddi $$0, jg.a $$1) {
-      List<dbr> $$2 = new ArrayList<>();
-      int $$3 = 0;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         czd $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if (d.a($$5)) {
-               $$3++;
-            } else if (e.a($$5)) {
-               dbr $$6 = $$5.a(kj.ai);
-               if ($$6 != null) {
-                  $$2.add($$6);
-               }
-            }
-         }
-      }
-
-      czd $$7 = new czd(czh.vE, 3);
-      $$7.b(kj.aj, new dbs($$3, $$2));
-      return $$7;
+   private ddn(final int $$0, final String $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
    @Override
-   public dee<ddn> a() {
-      return dee.g;
+   public String c() {
+      return this.h;
    }
 }

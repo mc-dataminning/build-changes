@@ -1,232 +1,88 @@
-import com.google.common.base.MoreObjects;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.mojang.authlib.GameProfile;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.Lifecycle;
+import com.mojang.util.UndashedUuid;
 import io.netty.buffer.ByteBuf;
-import java.util.stream.IntStream;
-import javax.annotation.concurrent.Immutable;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+import java.util.Set;
+import java.util.UUID;
 
-@Immutable
-public class jz implements Comparable<jz> {
-   public static final Codec<jz> g = Codec.INT_STREAM
-      .comapFlatMap($$0 -> af.a($$0, 3).map($$0x -> new jz($$0x[0], $$0x[1], $$0x[2])), $$0 -> IntStream.of($$0.u(), $$0.v(), $$0.w()));
-   public static final yw<ByteBuf, jz> h = yw.a(yu.h, jz::u, yu.h, jz::v, yu.h, jz::w, jz::new);
-   public static final jz i = new jz(0, 0, 0);
-   private int a;
-   private int b;
-   private int c;
+public final class jz {
+   public static final Codec<UUID> a = Codec.INT_STREAM.comapFlatMap($$0 -> ag.a($$0, 4).map(jz::a), $$0 -> Arrays.stream(a($$0)));
+   public static final Codec<Set<UUID>> b = Codec.list(a).xmap(Sets::newHashSet, Lists::newArrayList);
+   public static final Codec<Set<UUID>> c = Codec.list(a).xmap(Sets::newLinkedHashSet, Lists::newArrayList);
+   public static final Codec<UUID> d = Codec.STRING.comapFlatMap($$0 -> {
+      try {
+         return DataResult.success(UUID.fromString($$0), Lifecycle.stable());
+      } catch (IllegalArgumentException var2) {
+         return DataResult.error(() -> "Invalid UUID " + $$0 + ": " + var2.getMessage());
+      }
+   }, UUID::toString);
+   public static final Codec<UUID> e = Codec.withAlternative(Codec.STRING.comapFlatMap($$0 -> {
+      try {
+         return DataResult.success(UndashedUuid.fromStringLenient($$0), Lifecycle.stable());
+      } catch (IllegalArgumentException var2) {
+         return DataResult.error(() -> "Invalid UUID " + $$0 + ": " + var2.getMessage());
+      }
+   }, UndashedUuid::toString), a);
+   public static final Codec<UUID> f = Codec.withAlternative(a, d);
+   public static final yw<ByteBuf, UUID> g = new yw<ByteBuf, UUID>() {
+      public UUID a(ByteBuf $$0) {
+         return vu.h($$0);
+      }
 
-   public static Codec<jz> v(int $$0) {
-      return g.validate(
-         $$1 -> Math.abs($$1.u()) < $$0 && Math.abs($$1.v()) < $$0 && Math.abs($$1.w()) < $$0
-               ? DataResult.success($$1)
-               : DataResult.error(() -> "Position out of range, expected at most " + $$0 + ": " + $$1)
-      );
+      public void a(ByteBuf $$0, UUID $$1) {
+         vu.a($$0, $$1);
+      }
+   };
+   public static final int h = 16;
+   private static final String i = "OfflinePlayer:";
+
+   private jz() {
    }
 
-   public jz(int $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public static UUID a(int[] $$0) {
+      return new UUID((long)$$0[0] << 32 | (long)$$0[1] & 4294967295L, (long)$$0[2] << 32 | (long)$$0[3] & 4294967295L);
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if (!($$0 instanceof jz $$1)) {
-         return false;
-      } else if (this.u() != $$1.u()) {
-         return false;
+   public static int[] a(UUID $$0) {
+      long $$1 = $$0.getMostSignificantBits();
+      long $$2 = $$0.getLeastSignificantBits();
+      return a($$1, $$2);
+   }
+
+   private static int[] a(long $$0, long $$1) {
+      return new int[]{(int)($$0 >> 32), (int)$$0, (int)($$1 >> 32), (int)$$1};
+   }
+
+   public static byte[] b(UUID $$0) {
+      byte[] $$1 = new byte[16];
+      ByteBuffer.wrap($$1).order(ByteOrder.BIG_ENDIAN).putLong($$0.getMostSignificantBits()).putLong($$0.getLeastSignificantBits());
+      return $$1;
+   }
+
+   public static UUID a(Dynamic<?> $$0) {
+      int[] $$1 = $$0.asIntStream().toArray();
+      if ($$1.length != 4) {
+         throw new IllegalArgumentException("Could not read UUID. Expected int-array of length 4, got " + $$1.length + ".");
       } else {
-         return this.v() != $$1.v() ? false : this.w() == $$1.w();
+         return a($$1);
       }
    }
 
-   @Override
-   public int hashCode() {
-      return (this.v() + this.w() * 31) * 31 + this.u();
+   public static UUID a(String $$0) {
+      return UUID.nameUUIDFromBytes(("OfflinePlayer:" + $$0).getBytes(StandardCharsets.UTF_8));
    }
 
-   public int i(jz $$0) {
-      if (this.v() == $$0.v()) {
-         return this.w() == $$0.w() ? this.u() - $$0.u() : this.w() - $$0.w();
-      } else {
-         return this.v() - $$0.v();
-      }
-   }
-
-   public int u() {
-      return this.a;
-   }
-
-   public int v() {
-      return this.b;
-   }
-
-   public int w() {
-      return this.c;
-   }
-
-   protected jz u(int $$0) {
-      this.a = $$0;
-      return this;
-   }
-
-   protected jz t(int $$0) {
-      this.b = $$0;
-      return this;
-   }
-
-   protected jz s(int $$0) {
-      this.c = $$0;
-      return this;
-   }
-
-   public jz c(int $$0, int $$1, int $$2) {
-      return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new jz(this.u() + $$0, this.v() + $$1, this.w() + $$2);
-   }
-
-   public jz f(jz $$0) {
-      return this.c($$0.u(), $$0.v(), $$0.w());
-   }
-
-   public jz e(jz $$0) {
-      return this.c(-$$0.u(), -$$0.v(), -$$0.w());
-   }
-
-   public jz o(int $$0) {
-      if ($$0 == 1) {
-         return this;
-      } else {
-         return $$0 == 0 ? i : new jz(this.u() * $$0, this.v() * $$0, this.w() * $$0);
-      }
-   }
-
-   public jz q() {
-      return this.n(1);
-   }
-
-   public jz n(int $$0) {
-      return this.b(ja.b, $$0);
-   }
-
-   public jz p() {
-      return this.m(1);
-   }
-
-   public jz m(int $$0) {
-      return this.b(ja.a, $$0);
-   }
-
-   public jz o() {
-      return this.l(1);
-   }
-
-   public jz l(int $$0) {
-      return this.b(ja.c, $$0);
-   }
-
-   public jz n() {
-      return this.k(1);
-   }
-
-   public jz k(int $$0) {
-      return this.b(ja.d, $$0);
-   }
-
-   public jz m() {
-      return this.j(1);
-   }
-
-   public jz j(int $$0) {
-      return this.b(ja.e, $$0);
-   }
-
-   public jz l() {
-      return this.i(1);
-   }
-
-   public jz i(int $$0) {
-      return this.b(ja.f, $$0);
-   }
-
-   public jz b(ja $$0) {
-      return this.b($$0, 1);
-   }
-
-   public jz b(ja $$0, int $$1) {
-      return $$1 == 0 ? this : new jz(this.u() + $$0.j() * $$1, this.v() + $$0.k() * $$1, this.w() + $$0.l() * $$1);
-   }
-
-   public jz b(ja.a $$0, int $$1) {
-      if ($$1 == 0) {
-         return this;
-      } else {
-         int $$2 = $$0 == ja.a.a ? $$1 : 0;
-         int $$3 = $$0 == ja.a.b ? $$1 : 0;
-         int $$4 = $$0 == ja.a.c ? $$1 : 0;
-         return new jz(this.u() + $$2, this.v() + $$3, this.w() + $$4);
-      }
-   }
-
-   public jz d(jz $$0) {
-      return new jz(this.v() * $$0.w() - this.w() * $$0.v(), this.w() * $$0.u() - this.u() * $$0.w(), this.u() * $$0.v() - this.v() * $$0.u());
-   }
-
-   public boolean a(jz $$0, double $$1) {
-      return this.j($$0) < azm.k($$1);
-   }
-
-   public boolean a(jo $$0, double $$1) {
-      return this.b($$0) < azm.k($$1);
-   }
-
-   public double j(jz $$0) {
-      return this.d((double)$$0.u(), (double)$$0.v(), (double)$$0.w());
-   }
-
-   public double b(jo $$0) {
-      return this.c($$0.a(), $$0.b(), $$0.c());
-   }
-
-   public double c(double $$0, double $$1, double $$2) {
-      double $$3 = (double)this.u() + 0.5 - $$0;
-      double $$4 = (double)this.v() + 0.5 - $$1;
-      double $$5 = (double)this.w() + 0.5 - $$2;
-      return $$3 * $$3 + $$4 * $$4 + $$5 * $$5;
-   }
-
-   public double d(double $$0, double $$1, double $$2) {
-      double $$3 = (double)this.u() - $$0;
-      double $$4 = (double)this.v() - $$1;
-      double $$5 = (double)this.w() - $$2;
-      return $$3 * $$3 + $$4 * $$4 + $$5 * $$5;
-   }
-
-   public int k(jz $$0) {
-      float $$1 = (float)Math.abs($$0.u() - this.u());
-      float $$2 = (float)Math.abs($$0.v() - this.v());
-      float $$3 = (float)Math.abs($$0.w() - this.w());
-      return (int)($$1 + $$2 + $$3);
-   }
-
-   public int l(jz $$0) {
-      int $$1 = Math.abs(this.u() - $$0.u());
-      int $$2 = Math.abs(this.v() - $$0.v());
-      int $$3 = Math.abs(this.w() - $$0.w());
-      return Math.max(Math.max($$1, $$2), $$3);
-   }
-
-   public int a(ja.a $$0) {
-      return $$0.a(this.a, this.b, this.c);
-   }
-
-   @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this).add("x", this.u()).add("y", this.v()).add("z", this.w()).toString();
-   }
-
-   public String x() {
-      return this.u() + ", " + this.v() + ", " + this.w();
+   public static GameProfile b(String $$0) {
+      UUID $$1 = a($$0);
+      return new GameProfile($$1, $$0);
    }
 }

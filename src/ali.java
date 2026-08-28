@@ -9,7 +9,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import org.slf4j.Logger;
 
-@ac(
+@ad(
    a = "System.out setup"
 )
 public class ali {
@@ -22,19 +22,19 @@ public class ali {
       if (!c) {
          c = true;
          Instant $$0 = Instant.now();
-         if (mf.aF.i().isEmpty()) {
+         if (mg.aF.i().isEmpty()) {
             throw new IllegalStateException("Unable to load registries");
          } else {
-            dph.b();
-            dnr.b();
-            if (bwo.a(bwo.bS) == null) {
+            dpo.b();
+            dny.b();
+            if (bwr.a(bwr.bS) == null) {
                throw new IllegalStateException("Failed loading EntityTypes");
             } else {
-               hb.a();
-               lg.a();
-               kb.a();
-               mf.a();
-               cxv.a();
+               hc.a();
+               lh.a();
+               kc.a();
+               mg.a();
+               cyc.a();
                d();
                b.set(Duration.between($$0, Instant.now()).toMillis());
             }
@@ -54,10 +54,10 @@ public class ali {
 
    private static void a(final Set<String> $$0) {
       final tu $$1 = tu.a();
-      diw $$2 = new diw(cuo.e.a());
-      $$2.a(new diw.c() {
+      djd $$2 = new djd(cuv.e.a());
+      $$2.a(new djd.c() {
          @Override
-         public <T extends diw.g<T>> void a(diw.e<T> $$0x, diw.f<T> $$1x) {
+         public <T extends djd.g<T>> void a(djd.e<T> $$0x, djd.f<T> $$1x) {
             if (!$$1.b($$0.b())) {
                $$0.add($$0.a());
             }
@@ -67,12 +67,12 @@ public class ali {
 
    public static Set<String> b() {
       Set<String> $$0 = new TreeSet<>();
-      a(mf.s, byf::c, $$0);
-      a(mf.f, bwo::g, $$0);
-      a(mf.d, bvh::f, $$0);
-      a(mf.g, cyz::j, $$0);
-      a(mf.e, eag::v, $$0);
-      a(mf.k, $$0x -> "stat." + $$0x.toString().replace(':', '.'), $$0);
+      a(mg.s, byk::c, $$0);
+      a(mg.f, bwr::g, $$0);
+      a(mg.d, bvk::f, $$0);
+      a(mg.g, czg::j, $$0);
+      a(mg.e, ean::v, $$0);
+      a(mg.k, $$0x -> "stat." + $$0x.toString().replace(':', '.'), $$0);
       a($$0);
       return $$0;
    }
@@ -96,12 +96,12 @@ public class ali {
 
    public static void c() {
       a(() -> "validate");
-      if (ab.aU) {
+      if (ac.aV) {
          b().forEach($$0 -> d.error("Missing translations: {}", $$0));
-         ej.b();
+         ek.b();
       }
 
-      byl.a();
+      byq.a();
    }
 
    private static void d() {

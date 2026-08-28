@@ -1,54 +1,33 @@
-import com.google.gson.JsonArray;
+import com.google.common.collect.Lists;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.Iterator;
+import java.util.List;
+import org.slf4j.Logger;
 
-public class flf {
-   private static final String a = "translationKey";
-   private static final String b = "args";
-   private final String c;
-   @Nullable
-   private final String[] d;
+public class flf extends fmd {
+   private static final Logger b = LogUtils.getLogger();
+   public List<fle> a;
 
-   private flf(String $$0, @Nullable String[] $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
+   public static flf a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      flf $$2 = new flf();
+      $$2.a = Lists.newArrayList();
 
-   public wy a(wy $$0) {
-      return Objects.requireNonNullElse(this.a(), $$0);
-   }
+      try {
+         JsonElement $$3 = $$1.parse($$0).getAsJsonObject().get("backups");
+         if ($$3.isJsonArray()) {
+            Iterator<JsonElement> $$4 = $$3.getAsJsonArray().iterator();
 
-   @Nullable
-   public wy a() {
-      if (!hke.a(this.c)) {
-         return null;
-      } else {
-         return this.d == null ? wy.c(this.c) : wy.a(this.c, this.d);
-      }
-   }
-
-   public static flf a(JsonObject $$0) {
-      String $$1 = fnk.a("translationKey", $$0);
-      JsonElement $$2 = $$0.get("args");
-      String[] $$5;
-      if ($$2 != null && !$$2.isJsonNull()) {
-         JsonArray $$4 = $$2.getAsJsonArray();
-         $$5 = new String[$$4.size()];
-
-         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
-            $$5[$$6] = $$4.get($$6).getAsString();
+            while ($$4.hasNext()) {
+               $$2.a.add(fle.a($$4.next()));
+            }
          }
-      } else {
-         $$5 = null;
+      } catch (Exception var5) {
+         b.error("Could not parse BackupList: {}", var5.getMessage());
       }
 
-      return new flf($$1, $$5);
-   }
-
-   @Override
-   public String toString() {
-      return this.c;
+      return $$2;
    }
 }

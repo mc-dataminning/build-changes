@@ -6,7 +6,7 @@ public class abv implements zf<abu> {
    private static final double c = 3.9;
    private final int d;
    private final UUID e;
-   private final bwo<?> f;
+   private final bwr<?> f;
    private final double g;
    private final double h;
    private final double i;
@@ -18,19 +18,19 @@ public class abv implements zf<abu> {
    private final byte o;
    private final int p;
 
-   public abv(bwf $$0, aro $$1) {
+   public abv(bwi $$0, aro $$1) {
       this($$0, $$1, 0);
    }
 
-   public abv(bwf $$0, aro $$1, int $$2) {
-      this($$0.ar(), $$0.cG(), $$1.b().a(), $$1.b().b(), $$1.b().c(), $$1.d(), $$1.e(), $$0.aq(), $$2, $$1.c(), (double)$$1.f());
+   public abv(bwi $$0, aro $$1, int $$2) {
+      this($$0.ao(), $$0.cF(), $$1.b().a(), $$1.b().b(), $$1.b().c(), $$1.d(), $$1.e(), $$0.an(), $$2, $$1.c(), (double)$$1.f());
    }
 
-   public abv(bwf $$0, int $$1, iu $$2) {
-      this($$0.ar(), $$0.cG(), (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$0.dN(), $$0.dL(), $$0.aq(), $$1, $$0.dy(), (double)$$0.cA());
+   public abv(bwi $$0, int $$1, iv $$2) {
+      this($$0.ao(), $$0.cF(), (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$0.dM(), $$0.dK(), $$0.an(), $$1, $$0.dx(), (double)$$0.cz());
    }
 
-   public abv(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, bwo<?> $$7, int $$8, feq $$9, double $$10) {
+   public abv(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, bwr<?> $$7, int $$8, fex $$9, double $$10) {
       this.d = $$0;
       this.e = $$1;
       this.g = $$2;
@@ -49,7 +49,7 @@ public class abv implements zf<abu> {
    private abv(wj $$0) {
       this.d = $$0.l();
       this.e = $$0.n();
-      this.f = yu.a(mg.B).decode($$0);
+      this.f = yu.a(mh.B).decode($$0);
       this.g = $$0.readDouble();
       this.h = $$0.readDouble();
       this.i = $$0.readDouble();
@@ -65,7 +65,7 @@ public class abv implements zf<abu> {
    private void a(wj $$0) {
       $$0.c(this.d);
       $$0.a(this.e);
-      yu.a(mg.B).encode($$0, this.f);
+      yu.a(mh.B).encode($$0, this.f);
       $$0.a(this.g);
       $$0.a(this.h);
       $$0.a(this.i);
@@ -95,7 +95,7 @@ public class abv implements zf<abu> {
       return this.e;
    }
 
-   public bwo<?> f() {
+   public bwr<?> f() {
       return this.f;
    }
 

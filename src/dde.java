@@ -1,96 +1,62 @@
-public class dde extends ddk {
-   public dde(ddh $$0) {
-      super($$0);
+public class dde extends ddd {
+   private final jb b;
+
+   public dde(djh $$0, iv $$1, jb $$2, czk $$3, jb $$4) {
+      super($$0, null, buf.a, $$3, new fet(fex.c($$1), $$4, $$1, false));
+      this.b = $$2;
    }
 
-   public boolean a(ddi $$0, dja $$1) {
-      if ($$0.e() < 2) {
-         return false;
-      } else {
-         boolean $$2 = false;
-         boolean $$3 = false;
-
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            czd $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if ($$5.c(kj.V)) {
-                  if ($$3) {
-                     return false;
-                  }
-
-                  $$3 = true;
-               } else {
-                  if (!$$5.a(axk.bS)) {
-                     return false;
-                  }
-
-                  $$2 = true;
-               }
-            }
-         }
-
-         return $$3 && $$2;
-      }
+   @Override
+   public iv a() {
+      return this.j().b();
    }
 
-   public czd a(ddi $$0, jg.a $$1) {
-      int $$2 = 0;
-      czd $$3 = czd.k;
+   @Override
+   public boolean b() {
+      return this.q().a_(this.j().b()).a(this);
+   }
 
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         czd $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.c(kj.V)) {
-               if (!$$3.f()) {
-                  return czd.k;
-               }
+   @Override
+   public boolean c() {
+      return this.b();
+   }
 
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(axk.bS)) {
-                  return czd.k;
-               }
+   @Override
+   public jb d() {
+      return jb.a;
+   }
 
-               $$2++;
-            }
-         }
-      }
-
-      dcn $$6 = $$3.a(kj.V);
-      if (!$$3.f() && $$2 >= 1 && $$6 != null) {
-         dcn $$7 = $$6.b();
-         if ($$7 == null) {
-            return czd.k;
-         } else {
-            czd $$8 = $$3.c($$2);
-            $$8.b(kj.V, $$7);
-            return $$8;
-         }
-      } else {
-         return czd.k;
+   @Override
+   public jb[] f() {
+      switch (this.b) {
+         case a:
+         default:
+            return new jb[]{jb.a, jb.c, jb.f, jb.d, jb.e, jb.b};
+         case b:
+            return new jb[]{jb.a, jb.b, jb.c, jb.f, jb.d, jb.e};
+         case c:
+            return new jb[]{jb.a, jb.c, jb.f, jb.e, jb.b, jb.d};
+         case d:
+            return new jb[]{jb.a, jb.d, jb.f, jb.e, jb.b, jb.c};
+         case e:
+            return new jb[]{jb.a, jb.e, jb.d, jb.b, jb.c, jb.f};
+         case f:
+            return new jb[]{jb.a, jb.f, jb.d, jb.b, jb.c, jb.e};
       }
    }
 
    @Override
-   public jn<czd> a(ddi $$0) {
-      jn<czd> $$1 = jn.a($$0.a(), czd.k);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         czd $$3 = $$0.a($$2);
-         czd $$4 = $$3.h().i();
-         if (!$$4.f()) {
-            $$1.set($$2, $$4);
-         } else if ($$3.c(kj.V)) {
-            $$1.set($$2, $$3.c(1));
-            break;
-         }
-      }
-
-      return $$1;
+   public jb g() {
+      return this.b.o() == jb.a.b ? jb.c : this.b;
    }
 
    @Override
-   public dee<dde> a() {
-      return dee.d;
+   public boolean h() {
+      return false;
+   }
+
+   @Override
+   public float i() {
+      return (float)(this.b.e() * 90);
    }
 }

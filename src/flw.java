@@ -1,13 +1,23 @@
-public class flw extends flv {
-   public static final int b = 5;
-   public final int c;
+import com.google.gson.annotations.SerializedName;
+import java.util.Set;
 
-   public flw(int $$0, int $$1) {
-      super(fkb.b.a($$1));
-      if ($$0 >= 0 && $$0 <= 120) {
-         this.c = $$0;
-      } else {
-         this.c = 5;
-      }
+public class flw extends fmd implements flx {
+   @SerializedName("seed")
+   private final String a;
+   @SerializedName("worldTemplateId")
+   private final long b;
+   @SerializedName("levelType")
+   private final int c;
+   @SerializedName("generateStructures")
+   private final boolean d;
+   @SerializedName("experiments")
+   private final Set<String> e;
+
+   public flw(String $$0, long $$1, int $$2, boolean $$3, Set<String> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 }

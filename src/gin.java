@@ -1,32 +1,38 @@
-public class gin extends gfo {
-   public gin(gjc $$0) {
+public class gin extends ggk<hel> {
+   private static final int a = 2;
+   private final gjo[] b = new gjo[2];
+
+   public gin(gjo $$0) {
       super($$0);
+
+      for (int $$1 = 0; $$1 < 2; $$1++) {
+         this.b[$$1] = $$0.b(a($$1));
+      }
    }
 
-   public static gji a() {
-      gjk $$0 = c();
-      $$0.a()
-         .a(
-            "head",
-            gjh.c()
-               .a(0, 0)
-               .a(-4.0F, -4.0F, -6.0F, 8.0F, 8.0F, 6.0F)
-               .a(0, 32)
-               .a(-3.0F, 0.99F, -7.0F, 6.0F, 3.0F, 2.0F)
-               .a(27, 0)
-               .a(-8.0F, -3.0F, -5.0F, 4.0F, 2.0F, 2.0F)
-               .a(39, 0)
-               .a(-8.0F, -5.0F, -5.0F, 2.0F, 2.0F, 2.0F)
-               .a(27, 0)
-               .a()
-               .a(4.0F, -3.0F, -5.0F, 4.0F, 2.0F, 2.0F)
-               .a(false)
-               .a(39, 0)
-               .a()
-               .a(6.0F, -5.0F, -5.0F, 2.0F, 2.0F, 2.0F)
-               .a(false),
-            gje.a(0.0F, 4.0F, -8.0F)
-         );
-      return gji.a($$0, 64, 64);
+   private static String a(int $$0) {
+      return "box" + $$0;
+   }
+
+   public static gju a() {
+      gjw $$0 = new gjw();
+      gjy $$1 = $$0.a();
+
+      for (int $$2 = 0; $$2 < 2; $$2++) {
+         float $$3 = -3.2F + 9.6F * (float)($$2 + 1);
+         float $$4 = 0.75F * (float)($$2 + 1);
+         $$1.a(a($$2), gjt.c().a(0, 0).a(-8.0F, -16.0F + $$3, -8.0F, 16.0F, 32.0F, 16.0F), gjq.a.a($$4));
+      }
+
+      return gju.a($$0, 64, 64);
+   }
+
+   public void a(hel $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
+         float $$2 = $$0.u * (float)(-(45 + ($$1 + 1) * 5));
+         this.b[$$1].f = azm.h($$2) * (float) (Math.PI / 180.0);
+      }
    }
 }

@@ -1,16 +1,26 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 
-public interface btj<P extends bti> {
-   btj<btf> a = a("constant", btf.b);
-   btj<bto> b = a("uniform", bto.a);
-   btj<bta> c = a("biased_to_bottom", bta.a);
-   btj<btb> d = a("clamped", btb.a);
-   btj<btp> e = a("weighted_list", btp.a);
-   btj<btd> f = a("clamped_normal", btd.a);
+public abstract class btj implements bto {
+   private static final Codec<Either<Float, btj>> a = Codec.either(Codec.FLOAT, mg.J.q().dispatch(btj::c, btk::codec));
+   public static final Codec<btj> c = a.xmap(
+      $$0 -> (btj)$$0.map(bth::a, $$0x -> $$0x), $$0 -> $$0.c() == btk.a ? Either.left(((bth)$$0).d()) : Either.right($$0)
+   );
 
-   MapCodec<P> codec();
-
-   static <P extends bti> btj<P> a(String $$0, MapCodec<P> $$1) {
-      return jr.a(mf.K, $$0, () -> $$1);
+   public static Codec<btj> a(float $$0, float $$1) {
+      return c.validate($$2 -> {
+         if ($$2.a() < $$0) {
+            return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
+         } else {
+            return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
+         }
+      });
    }
+
+   public abstract float a();
+
+   public abstract float b();
+
+   public abstract btk<?> c();
 }

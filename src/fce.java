@@ -1,36 +1,36 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class fce extends fcg {
-   public static final MapCodec<fce> a = a(fce::new);
+public class fce extends fbb {
+   public static final MapCodec<fce> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(Codec.unboundedMap(kj.a, Codec.BOOL).fieldOf("toggles").forGetter($$0x -> $$0x.b)).apply($$0, fce::new)
+   );
+   private final Map<kj<?>, Boolean> b;
 
-   fce(List<fcq> $$0) {
-      super($$0, af.b($$0));
+   private fce(List<fcx> $$0, Map<kj<?>, Boolean> $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public fcr b() {
-      return fcs.b;
+   protected czk a(czk $$0, ezo $$1) {
+      $$0.a(kk.q, dco.c, $$0x -> {
+         for (Entry<kj<?>, Boolean> $$1x : this.b.entrySet()) {
+            boolean $$2 = $$1x.getValue();
+            $$0x = $$0x.a($$1x.getKey(), !$$2);
+         }
+
+         return $$0x;
+      });
+      return $$0;
    }
 
-   public static fce.a a(fcq.a... $$0) {
-      return new fce.a($$0);
-   }
-
-   public static class a extends fcg.a {
-      public a(fcq.a... $$0) {
-         super($$0);
-      }
-
-      @Override
-      public fce.a or(fcq.a $$0) {
-         this.a($$0);
-         return this;
-      }
-
-      @Override
-      protected fcq a(List<fcq> $$0) {
-         return new fce($$0);
-      }
+   @Override
+   public fbd<fce> b() {
+      return fbe.P;
    }
 }

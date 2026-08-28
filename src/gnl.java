@@ -1,11 +1,53 @@
-import javax.annotation.Nullable;
+public class gnl extends gou {
+   gnl(gkl $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.C = true;
+      this.B = 0.86F;
+      this.j *= 0.01F;
+      this.k *= 0.01F;
+      this.l *= 0.01F;
+      this.k += 0.1;
+      this.D *= 1.5F;
+      this.t = 16;
+      this.n = false;
+   }
 
-public interface gnl<T extends lv> {
-   @Nullable
-   gni createParticle(T var1, gjz var2, double var3, double var5, double var7, double var9, double var11, double var13);
+   @Override
+   public gny b() {
+      return gny.b;
+   }
 
-   public interface a<T extends lv> {
-      @Nullable
-      goi createParticle(T var1, gjz var2, double var3, double var5, double var7, double var9, double var11, double var13);
+   @Override
+   public float b(float $$0) {
+      return this.D * azm.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
+
+   public static class a implements gnx<mc> {
+      private final gop a;
+
+      public a(gop $$0) {
+         this.a = $$0;
+      }
+
+      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gnl $$8 = new gnl($$1, $$2, $$3 + 0.5, $$4);
+         $$8.a(this.a);
+         $$8.a(1.0F, 1.0F, 1.0F);
+         return $$8;
+      }
+   }
+
+   public static class b implements gnx<mc> {
+      private final gop a;
+
+      public b(gop $$0) {
+         this.a = $$0;
+      }
+
+      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gnl $$8 = new gnl($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

@@ -1,37 +1,40 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class hhr implements hib<dwv> {
-   private final gsh a;
-   private final cyb b;
+public record hhr<T>(kj<T> a) implements hia<T> {
+   private static final hia.a<? extends hhr<?>, ?> b = e();
 
-   public hhr(cyb $$0, gsh $$1) {
-      this.a = $$1;
-      this.b = $$0;
+   private static <T> hia.a<hhr<T>, T> e() {
+      Codec<? extends kj<?>> $$0 = mg.am.q().validate($$0x -> $$0x.d() ? DataResult.error(() -> "Component can't be serialized") : DataResult.success($$0x));
+      MapCodec<hgg.d<hhr<T>, T>> $$2 = $$0.dispatchMap(
+         "component", $$0x -> ((hhr)$$0x.a()).a, $$0x -> hia.a.a($$0x.c()).xmap($$1 -> new hgg.d<>(new hhr($$0x), $$1), hgg.d::b)
+      );
+      return new hia.a<>($$2);
+   }
+
+   public static <T> hia.a<hhr<T>, T> c() {
+      return (hia.a<hhr<T>, T>)b;
    }
 
    @Nullable
-   public dwv a(czd $$0) {
-      return $$0.a(kj.am);
+   @Override
+   public T b(czk $$0, @Nullable gkl $$1, @Nullable bxj $$2, int $$3, czi $$4) {
+      return $$0.a(this.a);
    }
 
-   public void a(@Nullable dwv $$0, czb $$1, fjj $$2, gqa $$3, int $$4, int $$5, boolean $$6) {
-      this.a.a($$2, $$3, $$4, $$5, this.b, Objects.requireNonNullElse($$0, dwv.a));
+   @Override
+   public hia.a<hhr<T>, T> a() {
+      return c();
    }
 
-   public static record a(cyb b) implements hib.a {
-      public static final MapCodec<hhr.a> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cyb.q.fieldOf("color").forGetter(hhr.a::b)).apply($$0, hhr.a::new));
+   @Override
+   public Codec<T> b() {
+      return this.a.c();
+   }
 
-      @Override
-      public MapCodec<hhr.a> a() {
-         return a;
-      }
-
-      @Override
-      public hib<?> a(giy $$0) {
-         return new hhr(this.b, new gsh($$0));
-      }
+   public kj<T> d() {
+      return this.a;
    }
 }

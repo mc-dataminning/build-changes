@@ -7,48 +7,48 @@ import java.util.Collection;
 import java.util.function.Function;
 
 public class apr {
-   public static void a(CommandDispatcher<ei> $$0, ee $$1) {
+   public static void a(CommandDispatcher<ej> $$0, ef $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("title").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("title").requires($$0x -> $$0x.c(2)))
             .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ej.a(
-                                    "targets", ev.d()
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ek.a(
+                                    "targets", ew.d()
                                  )
-                                 .then(ej.a("clear").executes($$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets")))))
-                              .then(ej.a("reset").executes($$0x -> b((ei)$$0x.getSource(), ev.f($$0x, "targets")))))
+                                 .then(ek.a("clear").executes($$0x -> a((ej)$$0x.getSource(), ew.f($$0x, "targets")))))
+                              .then(ek.a("reset").executes($$0x -> b((ej)$$0x.getSource(), ew.f($$0x, "targets")))))
                            .then(
-                              ej.a("title")
+                              ek.a("title")
                                  .then(
-                                    ej.a("title", er.a($$1))
-                                       .executes($$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), er.a($$0x, "title"), "title", afs::new))
+                                    ek.a("title", es.a($$1))
+                                       .executes($$0x -> a((ej)$$0x.getSource(), ew.f($$0x, "targets"), es.a($$0x, "title"), "title", afs::new))
                                  )
                            ))
                         .then(
-                           ej.a("subtitle")
+                           ek.a("subtitle")
                               .then(
-                                 ej.a("title", er.a($$1))
-                                    .executes($$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), er.a($$0x, "title"), "subtitle", afq::new))
+                                 ek.a("title", es.a($$1))
+                                    .executes($$0x -> a((ej)$$0x.getSource(), ew.f($$0x, "targets"), es.a($$0x, "title"), "subtitle", afq::new))
                               )
                         ))
                      .then(
-                        ej.a("actionbar")
+                        ek.a("actionbar")
                            .then(
-                              ej.a("title", er.a($$1))
-                                 .executes($$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), er.a($$0x, "title"), "actionbar", aer::new))
+                              ek.a("title", es.a($$1))
+                                 .executes($$0x -> a((ej)$$0x.getSource(), ew.f($$0x, "targets"), es.a($$0x, "title"), "actionbar", aer::new))
                            )
                      ))
                   .then(
-                     ej.a("times")
+                     ek.a("times")
                         .then(
-                           ej.a("fadeIn", fy.a())
+                           ek.a("fadeIn", fz.a())
                               .then(
-                                 ej.a("stay", fy.a())
+                                 ek.a("stay", fz.a())
                                     .then(
-                                       ej.a("fadeOut", fy.a())
+                                       ek.a("fadeOut", fz.a())
                                           .executes(
                                              $$0x -> a(
-                                                   (ei)$$0x.getSource(),
-                                                   ev.f($$0x, "targets"),
+                                                   (ej)$$0x.getSource(),
+                                                   ew.f($$0x, "targets"),
                                                    IntegerArgumentType.getInteger($$0x, "fadeIn"),
                                                    IntegerArgumentType.getInteger($$0x, "stay"),
                                                    IntegerArgumentType.getInteger($$0x, "fadeOut")
@@ -62,7 +62,7 @@ public class apr {
       );
    }
 
-   private static int a(ei $$0, Collection<arr> $$1) {
+   private static int a(ej $$0, Collection<arr> $$1) {
       ack $$2 = new ack(false);
 
       for (arr $$3 : $$1) {
@@ -78,7 +78,7 @@ public class apr {
       return $$1.size();
    }
 
-   private static int b(ei $$0, Collection<arr> $$1) {
+   private static int b(ej $$0, Collection<arr> $$1) {
       ack $$2 = new ack(true);
 
       for (arr $$3 : $$1) {
@@ -94,7 +94,7 @@ public class apr {
       return $$1.size();
    }
 
-   private static int a(ei $$0, Collection<arr> $$1, wy $$2, String $$3, Function<wy, zf<?>> $$4) throws CommandSyntaxException {
+   private static int a(ej $$0, Collection<arr> $$1, wy $$2, String $$3, Function<wy, zf<?>> $$4) throws CommandSyntaxException {
       for (arr $$5 : $$1) {
          $$5.f.b($$4.apply(xb.a($$0, $$2, $$5, 0)));
       }
@@ -108,7 +108,7 @@ public class apr {
       return $$1.size();
    }
 
-   private static int a(ei $$0, Collection<arr> $$1, int $$2, int $$3, int $$4) {
+   private static int a(ej $$0, Collection<arr> $$1, int $$2, int $$3, int $$4) {
       aft $$5 = new aft($$2, $$3, $$4);
 
       for (arr $$6 : $$1) {

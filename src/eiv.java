@@ -1,51 +1,48 @@
 import com.mojang.serialization.Codec;
 
-public class eiv extends ejm<elx> {
-   public eiv(Codec<elx> $$0) {
+public abstract class eiv extends ejt<elz> {
+   public eiv(Codec<elz> $$0) {
       super($$0);
    }
 
-   @Override
-   public boolean a(ejo<elx> $$0) {
-      iu $$1 = $$0.e();
-      djz $$2 = $$0.b();
-      azv $$3 = $$0.d();
-      if ($$1.v() > $$2.P() - 1) {
-         return false;
-      } else if (!$$2.a_($$1).a(dmh.J) && !$$2.a_($$1.e()).a(dmh.J)) {
-         return false;
-      } else {
-         boolean $$4 = false;
+   protected void a(dji $$0, azv $$1, iv $$2, elz $$3, int $$4, iv.a $$5) {
+      for (int $$6 = 0; $$6 < $$4; $$6++) {
+         $$5.g($$2).c(jb.b, $$6);
+         this.a($$0, $$5, $$3.c.a($$1, $$2));
+      }
+   }
 
-         for (ja $$5 : ja.values()) {
-            if ($$5 != ja.a && $$2.a_($$1.a($$5)).a(dmh.je)) {
-               $$4 = true;
-               break;
-            }
-         }
+   protected void a(dji $$0, iv.a $$1, eao $$2) {
+      eao $$3 = $$0.a_($$1);
+      if ($$3.l() || $$3.a(axc.cu)) {
+         this.a($$0, $$1, $$2);
+      }
+   }
 
-         if (!$$4) {
+   protected int a(azv $$0) {
+      int $$1 = $$0.a(3) + 4;
+      if ($$0.a(12) == 0) {
+         $$1 *= 2;
+      }
+
+      return $$1;
+   }
+
+   protected boolean a(dji $$0, iv $$1, int $$2, iv.a $$3, elz $$4) {
+      int $$5 = $$1.v();
+      if ($$5 >= $$0.G_() + 1 && $$5 + $$2 + 1 <= $$0.ao()) {
+         eao $$6 = $$0.a_($$1.e());
+         if (!b($$6) && !$$6.a(axc.bc)) {
             return false;
          } else {
-            $$2.a($$1, dmh.nC.m(), 2);
+            for (int $$7 = 0; $$7 <= $$2; $$7++) {
+               int $$8 = this.a(-1, -1, $$4.d, $$7);
 
-            for (int $$6 = 0; $$6 < 200; $$6++) {
-               int $$7 = $$3.a(5) - $$3.a(6);
-               int $$8 = 3;
-               if ($$7 < 2) {
-                  $$8 += $$7 / 2;
-               }
-
-               if ($$8 >= 1) {
-                  iu $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
-                  eah $$10 = $$2.a_($$9);
-                  if ($$10.l() || $$10.a(dmh.J) || $$10.a(dmh.je) || $$10.a(dmh.ee)) {
-                     for (ja $$11 : ja.values()) {
-                        eah $$12 = $$2.a_($$9.a($$11));
-                        if ($$12.a(dmh.nC)) {
-                           $$2.a($$9, dmh.nC.m(), 2);
-                           break;
-                        }
+               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+                     eao $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
+                     if (!$$11.l() && !$$11.a(axc.Q)) {
+                        return false;
                      }
                   }
                }
@@ -53,6 +50,29 @@ public class eiv extends ejm<elx> {
 
             return true;
          }
+      } else {
+         return false;
       }
    }
+
+   @Override
+   public boolean a(ejv<elz> $$0) {
+      dkg $$1 = $$0.b();
+      iv $$2 = $$0.e();
+      azv $$3 = $$0.d();
+      elz $$4 = $$0.f();
+      int $$5 = this.a($$3);
+      iv.a $$6 = new iv.a();
+      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
+         return false;
+      } else {
+         this.a($$1, $$3, $$2, $$5, $$6, $$4);
+         this.a($$1, $$3, $$2, $$4, $$5, $$6);
+         return true;
+      }
+   }
+
+   protected abstract int a(int var1, int var2, int var3, int var4);
+
+   protected abstract void a(dji var1, azv var2, iv var3, int var4, iv.a var5, elz var6);
 }

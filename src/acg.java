@@ -1,15 +1,15 @@
 public class acg implements zf<abu> {
    public static final yw<vu, acg> a = zf.a(acg::a, acg::new);
-   private final bua b;
+   private final bud b;
    private final boolean c;
 
-   public acg(bua $$0, boolean $$1) {
+   public acg(bud $$0, boolean $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
    private acg(vu $$0) {
-      this.b = bua.a($$0.readUnsignedByte());
+      this.b = bud.a($$0.readUnsignedByte());
       this.c = $$0.readBoolean();
    }
 
@@ -31,7 +31,7 @@ public class acg implements zf<abu> {
       return this.c;
    }
 
-   public bua e() {
+   public bud e() {
       return this.b;
    }
 }

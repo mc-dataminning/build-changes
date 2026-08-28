@@ -1,94 +1,62 @@
 import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.arguments.ArgumentType;
+import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.concurrent.CompletableFuture;
 
-public class gn {
-   private static final char c = '~';
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("argument.pos.missing.double"));
-   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wy.c("argument.pos.missing.int"));
+public class gn implements ArgumentType<gi> {
+   private static final Collection<String> c = Arrays.asList("0 0 0", "~ ~ ~", "^ ^ ^", "^1 ^ ^-5", "0.1 -0.5 .9", "~0.5 ~1 ~-5");
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("argument.pos3d.incomplete"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wy.c("argument.pos.mixed"));
    private final boolean d;
-   private final double e;
 
-   public gn(boolean $$0, double $$1) {
+   public gn(boolean $$0) {
       this.d = $$0;
-      this.e = $$1;
    }
 
-   public double a(double $$0) {
-      return this.d ? this.e + $$0 : this.e;
+   public static gn a() {
+      return new gn(true);
    }
 
-   public static gn a(StringReader $$0, boolean $$1) throws CommandSyntaxException {
-      if ($$0.canRead() && $$0.peek() == '^') {
-         throw gm.b.createWithContext($$0);
-      } else if (!$$0.canRead()) {
-         throw a.createWithContext($$0);
+   public static gn a(boolean $$0) {
+      return new gn($$0);
+   }
+
+   public static fex a(CommandContext<ej> $$0, String $$1) {
+      return ((gi)$$0.getArgument($$1, gi.class)).a((ej)$$0.getSource());
+   }
+
+   public static gi b(CommandContext<ej> $$0, String $$1) {
+      return (gi)$$0.getArgument($$1, gi.class);
+   }
+
+   public gi a(StringReader $$0) throws CommandSyntaxException {
+      return (gi)($$0.canRead() && $$0.peek() == '^' ? gj.a($$0) : gp.a($$0, this.d));
+   }
+
+   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
+      if (!($$0.getSource() instanceof eo)) {
+         return Suggestions.empty();
       } else {
-         boolean $$2 = b($$0);
-         int $$3 = $$0.getCursor();
-         double $$4 = $$0.canRead() && $$0.peek() != ' ' ? $$0.readDouble() : 0.0;
-         String $$5 = $$0.getString().substring($$3, $$0.getCursor());
-         if ($$2 && $$5.isEmpty()) {
-            return new gn(true, 0.0);
+         String $$2 = $$1.getRemaining();
+         Collection<eo.b> $$3;
+         if (!$$2.isEmpty() && $$2.charAt(0) == '^') {
+            $$3 = Collections.singleton(eo.b.a);
          } else {
-            if (!$$5.contains(".") && !$$2 && $$1) {
-               $$4 += 0.5;
-            }
-
-            return new gn($$2, $$4);
-         }
-      }
-   }
-
-   public static gn a(StringReader $$0) throws CommandSyntaxException {
-      if ($$0.canRead() && $$0.peek() == '^') {
-         throw gm.b.createWithContext($$0);
-      } else if (!$$0.canRead()) {
-         throw b.createWithContext($$0);
-      } else {
-         boolean $$1 = b($$0);
-         double $$2;
-         if ($$0.canRead() && $$0.peek() != ' ') {
-            $$2 = $$1 ? $$0.readDouble() : (double)$$0.readInt();
-         } else {
-            $$2 = 0.0;
+            $$3 = ((eo)$$0.getSource()).B();
          }
 
-         return new gn($$1, $$2);
+         return eo.a($$2, $$3, $$1, ek.a(this::a));
       }
    }
 
-   public static boolean b(StringReader $$0) {
-      boolean $$1;
-      if ($$0.peek() == '~') {
-         $$1 = true;
-         $$0.skip();
-      } else {
-         $$1 = false;
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if (!($$0 instanceof gn $$1)) {
-         return false;
-      } else {
-         return this.d != $$1.d ? false : Double.compare($$1.e, this.e) == 0;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      int $$0 = this.d ? 1 : 0;
-      long $$1 = Double.doubleToLongBits(this.e);
-      return 31 * $$0 + (int)($$1 ^ $$1 >>> 32);
-   }
-
-   public boolean a() {
-      return this.d;
+   public Collection<String> getExamples() {
+      return c;
    }
 }

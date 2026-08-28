@@ -1,28 +1,45 @@
-public abstract class gvf<T extends crk, S extends hbt> extends gwg<T, S> {
-   private final ger a;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-   public gvf(gwh.a $$0) {
-      super($$0);
-      this.a = new ger($$0.a(gjb.l));
+public class gvf implements guo.a {
+   private final List<iv> a = Lists.newArrayList();
+   private final List<Float> b = Lists.newArrayList();
+   private final List<Float> c = Lists.newArrayList();
+   private final List<Float> d = Lists.newArrayList();
+   private final List<Float> e = Lists.newArrayList();
+   private final List<Float> f = Lists.newArrayList();
+
+   public void a(iv $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.a.add($$0);
+      this.b.add($$1);
+      this.c.add($$5);
+      this.d.add($$2);
+      this.e.add($$3);
+      this.f.add($$4);
    }
 
-   public void a(S $$0, fjj $$1, gqa $$2, int $$3) {
-      $$1.a();
-      $$1.a(a.d.rotationDegrees($$0.b - 90.0F));
-      $$1.a(a.f.rotationDegrees($$0.a));
-      fjn $$4 = $$2.getBuffer(gqk.f(this.a($$0)));
-      this.a.a($$0);
-      this.a.a($$1, $$4, $$3, hin.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
-   }
+   @Override
+   public void a(fjy $$0, gqm $$1, double $$2, double $$3, double $$4) {
+      fkc $$5 = $$1.getBuffer(gqx.B());
 
-   protected abstract alg a(S var1);
-
-   public void a(T $$0, S $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.k($$2);
-      $$1.b = $$0.l($$2);
-      $$1.c = (float)$$0.c - $$2;
+      for (int $$6 = 0; $$6 < this.a.size(); $$6++) {
+         iv $$7 = this.a.get($$6);
+         Float $$8 = this.b.get($$6);
+         float $$9 = $$8 / 2.0F;
+         grf.b(
+            $$0,
+            $$5,
+            (double)((float)$$7.u() + 0.5F - $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F - $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F - $$9) - $$4,
+            (double)((float)$$7.u() + 0.5F + $$9) - $$2,
+            (double)((float)$$7.v() + 0.5F + $$9) - $$3,
+            (double)((float)$$7.w() + 0.5F + $$9) - $$4,
+            this.d.get($$6),
+            this.e.get($$6),
+            this.f.get($$6),
+            this.c.get($$6)
+         );
+      }
    }
 }

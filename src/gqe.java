@@ -1,296 +1,392 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Sets;
-import com.google.common.collect.ImmutableList.Builder;
-import java.util.HashMap;
-import java.util.List;
+import com.google.common.collect.Maps;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.joml.Matrix4f;
 
 public class gqe {
-   public static final alg a = alg.b("main");
-   private final List<gqg> b;
-   private final Map<alg, gqf.d> c;
-   private final Set<alg> d;
+   private static final Map<dmm, gqx> a = ag.a(Maps.newHashMap(), $$0 -> {
+      gqx $$1 = gqx.s();
+      $$0.put(dmo.gh, $$1);
+      gqx $$2 = gqx.d();
+      $$0.put(dmo.i, $$2);
+      $$0.put(dmo.fo, $$2);
+      $$0.put(dmo.fq, $$2);
+      $$0.put(dmo.gg, $$2);
+      $$0.put(dmo.hD, $$2);
+      $$0.put(dmo.fp, $$2);
+      $$0.put(dmo.aN, $$2);
+      $$0.put(dmo.aK, $$2);
+      $$0.put(dmo.aL, $$2);
+      $$0.put(dmo.aO, $$2);
+      $$0.put(dmo.aP, $$2);
+      $$0.put(dmo.aM, $$2);
+      $$0.put(dmo.aQ, $$2);
+      $$0.put(dmo.aR, $$2);
+      $$0.put(dmo.aT, $$2);
+      $$0.put(dmo.aU, $$2);
+      $$0.put(dmo.ag, $$2);
+      $$0.put(dmo.aS, $$2);
+      gqx $$3 = gqx.e();
+      $$0.put(dmo.z, $$3);
+      $$0.put(dmo.A, $$3);
+      $$0.put(dmo.B, $$3);
+      $$0.put(dmo.C, $$3);
+      $$0.put(dmo.D, $$3);
+      $$0.put(dmo.E, $$3);
+      $$0.put(dmo.F, $$3);
+      $$0.put(dmo.G, $$3);
+      $$0.put(dmo.aX, $$3);
+      $$0.put(dmo.bg, $$3);
+      $$0.put(dmo.bh, $$3);
+      $$0.put(dmo.bi, $$3);
+      $$0.put(dmo.bj, $$3);
+      $$0.put(dmo.bk, $$3);
+      $$0.put(dmo.bl, $$3);
+      $$0.put(dmo.bm, $$3);
+      $$0.put(dmo.bn, $$3);
+      $$0.put(dmo.bo, $$3);
+      $$0.put(dmo.bp, $$3);
+      $$0.put(dmo.bq, $$3);
+      $$0.put(dmo.br, $$3);
+      $$0.put(dmo.bs, $$3);
+      $$0.put(dmo.bt, $$3);
+      $$0.put(dmo.bu, $$3);
+      $$0.put(dmo.bv, $$3);
+      $$0.put(dmo.bw, $$3);
+      $$0.put(dmo.bx, $$3);
+      $$0.put(dmo.bz, $$3);
+      $$0.put(dmo.bA, $$3);
+      $$0.put(dmo.bB, $$3);
+      $$0.put(dmo.bD, $$3);
+      $$0.put(dmo.bC, $$3);
+      $$0.put(dmo.bE, $$3);
+      $$0.put(dmo.bF, $$3);
+      $$0.put(dmo.bG, $$3);
+      $$0.put(dmo.bH, $$3);
+      $$0.put(dmo.cb, $$3);
+      $$0.put(dmo.uh, $$3);
+      $$0.put(dmo.ui, $$3);
+      $$0.put(dmo.cd, $$3);
+      $$0.put(dmo.ce, $$3);
+      $$0.put(dmo.cf, $$3);
+      $$0.put(dmo.cg, $$3);
+      $$0.put(dmo.ch, $$3);
+      $$0.put(dmo.ci, $$3);
+      $$0.put(dmo.cj, $$3);
+      $$0.put(dmo.ck, $$3);
+      $$0.put(dmo.cl, $$3);
+      $$0.put(dmo.cm, $$3);
+      $$0.put(dmo.cn, $$3);
+      $$0.put(dmo.co, $$3);
+      $$0.put(dmo.cp, $$3);
+      $$0.put(dmo.cq, $$3);
+      $$0.put(dmo.cz, $$3);
+      $$0.put(dmo.cA, $$3);
+      $$0.put(dmo.er, $$3);
+      $$0.put(dmo.es, $$3);
+      $$0.put(dmo.cB, $$3);
+      $$0.put(dmo.cC, $$3);
+      $$0.put(dmo.cD, $$3);
+      $$0.put(dmo.ub, $$3);
+      $$0.put(dmo.uc, $$3);
+      $$0.put(dmo.cH, $$3);
+      $$0.put(dmo.cM, $$3);
+      $$0.put(dmo.cZ, $$3);
+      $$0.put(dmo.da, $$3);
+      $$0.put(dmo.db, $$3);
+      $$0.put(dmo.dN, $$3);
+      $$0.put(dmo.ea, $$3);
+      $$0.put(dmo.eb, $$3);
+      $$0.put(dmo.eg, $$3);
+      $$0.put(dmo.ej, $$3);
+      $$0.put(dmo.ey, $$3);
+      $$0.put(dmo.eP, $$3);
+      $$0.put(dmo.eQ, $$3);
+      $$0.put(dmo.eR, $$3);
+      $$0.put(dmo.eS, $$3);
+      $$0.put(dmo.eT, $$3);
+      $$0.put(dmo.eU, $$3);
+      $$0.put(dmo.eV, $$3);
+      $$0.put(dmo.eW, $$3);
+      $$0.put(dmo.ps, $$3);
+      $$0.put(dmo.pt, $$3);
+      $$0.put(dmo.eX, $$3);
+      $$0.put(dmo.eY, $$3);
+      $$0.put(dmo.sC, $$3);
+      $$0.put(dmo.sD, $$3);
+      $$0.put(dmo.sF, $$3);
+      $$0.put(dmo.sE, $$3);
+      $$0.put(dmo.sG, $$3);
+      $$0.put(dmo.sH, $$3);
+      $$0.put(dmo.sJ, $$3);
+      $$0.put(dmo.sI, $$3);
+      $$0.put(dmo.ft, $$3);
+      $$0.put(dmo.fu, $$3);
+      $$0.put(dmo.fv, $$3);
+      $$0.put(dmo.fw, $$3);
+      $$0.put(dmo.fx, $$3);
+      $$0.put(dmo.uf, $$3);
+      $$0.put(dmo.ug, $$3);
+      $$0.put(dmo.fy, $$3);
+      $$0.put(dmo.fz, $$3);
+      $$0.put(dmo.fF, $$3);
+      $$0.put(dmo.fP, $$3);
+      $$0.put(dmo.fR, $$3);
+      $$0.put(dmo.gb, $$3);
+      $$0.put(dmo.gn, $$3);
+      $$0.put(dmo.gq, $$3);
+      $$0.put(dmo.gs, $$3);
+      $$0.put(dmo.gt, $$3);
+      $$0.put(dmo.gu, $$3);
+      $$0.put(dmo.gv, $$3);
+      $$0.put(dmo.gw, $$3);
+      $$0.put(dmo.gx, $$3);
+      $$0.put(dmo.gy, $$3);
+      $$0.put(dmo.gz, $$3);
+      $$0.put(dmo.gA, $$3);
+      $$0.put(dmo.gB, $$3);
+      $$0.put(dmo.gC, $$3);
+      $$0.put(dmo.gD, $$3);
+      $$0.put(dmo.uj, $$3);
+      $$0.put(dmo.uk, $$3);
+      $$0.put(dmo.gE, $$3);
+      $$0.put(dmo.gF, $$3);
+      $$0.put(dmo.gG, $$3);
+      $$0.put(dmo.gH, $$3);
+      $$0.put(dmo.gI, $$3);
+      $$0.put(dmo.gJ, $$3);
+      $$0.put(dmo.gK, $$3);
+      $$0.put(dmo.gL, $$3);
+      $$0.put(dmo.gM, $$3);
+      $$0.put(dmo.gN, $$3);
+      $$0.put(dmo.gO, $$3);
+      $$0.put(dmo.gP, $$3);
+      $$0.put(dmo.gQ, $$3);
+      $$0.put(dmo.gR, $$3);
+      $$0.put(dmo.gS, $$3);
+      $$0.put(dmo.tS, $$3);
+      $$0.put(dmo.tT, $$3);
+      $$0.put(dmo.gr, $$3);
+      $$0.put(dmo.gT, $$3);
+      $$0.put(dmo.gU, $$3);
+      $$0.put(dmo.hz, $$3);
+      $$0.put(dmo.hI, $$3);
+      $$0.put(dmo.iA, $$3);
+      $$0.put(dmo.jf, $$3);
+      $$0.put(dmo.jg, $$3);
+      $$0.put(dmo.jh, $$3);
+      $$0.put(dmo.ji, $$3);
+      $$0.put(dmo.jj, $$3);
+      $$0.put(dmo.jk, $$3);
+      $$0.put(dmo.kQ, $$3);
+      $$0.put(dmo.kR, $$3);
+      $$0.put(dmo.kS, $$3);
+      $$0.put(dmo.kT, $$3);
+      $$0.put(dmo.kU, $$3);
+      $$0.put(dmo.kV, $$3);
+      $$0.put(dmo.kW, $$3);
+      $$0.put(dmo.kX, $$3);
+      $$0.put(dmo.kY, $$3);
+      $$0.put(dmo.su, $$3);
+      $$0.put(dmo.sv, $$3);
+      $$0.put(dmo.sx, $$3);
+      $$0.put(dmo.sw, $$3);
+      $$0.put(dmo.sy, $$3);
+      $$0.put(dmo.sz, $$3);
+      $$0.put(dmo.sB, $$3);
+      $$0.put(dmo.sA, $$3);
+      $$0.put(dmo.kZ, $$3);
+      $$0.put(dmo.la, $$3);
+      $$0.put(dmo.lb, $$3);
+      $$0.put(dmo.cc, $$3);
+      $$0.put(dmo.lg, $$3);
+      $$0.put(dmo.li, $$3);
+      $$0.put(dmo.lh, $$3);
+      $$0.put(dmo.lj, $$3);
+      $$0.put(dmo.mI, $$3);
+      $$0.put(dmo.mJ, $$3);
+      $$0.put(dmo.mL, $$3);
+      $$0.put(dmo.mX, $$3);
+      $$0.put(dmo.mY, $$3);
+      $$0.put(dmo.mZ, $$3);
+      $$0.put(dmo.na, $$3);
+      $$0.put(dmo.nb, $$3);
+      $$0.put(dmo.nc, $$3);
+      $$0.put(dmo.nd, $$3);
+      $$0.put(dmo.ne, $$3);
+      $$0.put(dmo.nf, $$3);
+      $$0.put(dmo.ng, $$3);
+      $$0.put(dmo.nh, $$3);
+      $$0.put(dmo.ni, $$3);
+      $$0.put(dmo.nj, $$3);
+      $$0.put(dmo.nk, $$3);
+      $$0.put(dmo.nl, $$3);
+      $$0.put(dmo.nm, $$3);
+      $$0.put(dmo.nn, $$3);
+      $$0.put(dmo.no, $$3);
+      $$0.put(dmo.np, $$3);
+      $$0.put(dmo.nq, $$3);
+      $$0.put(dmo.nr, $$3);
+      $$0.put(dmo.ns, $$3);
+      $$0.put(dmo.nt, $$3);
+      $$0.put(dmo.nu, $$3);
+      $$0.put(dmo.nv, $$3);
+      $$0.put(dmo.nw, $$3);
+      $$0.put(dmo.nx, $$3);
+      $$0.put(dmo.ny, $$3);
+      $$0.put(dmo.nz, $$3);
+      $$0.put(dmo.nA, $$3);
+      $$0.put(dmo.nB, $$3);
+      $$0.put(dmo.nD, $$3);
+      $$0.put(dmo.nE, $$3);
+      $$0.put(dmo.nF, $$3);
+      $$0.put(dmo.nG, $$3);
+      $$0.put(dmo.oy, $$3);
+      $$0.put(dmo.oI, $$3);
+      $$0.put(dmo.oK, $$3);
+      $$0.put(dmo.oL, $$3);
+      $$0.put(dmo.oM, $$3);
+      $$0.put(dmo.oN, $$3);
+      $$0.put(dmo.oO, $$3);
+      $$0.put(dmo.pf, $$3);
+      $$0.put(dmo.pg, $$3);
+      $$0.put(dmo.ph, $$3);
+      $$0.put(dmo.pi, $$3);
+      $$0.put(dmo.oX, $$3);
+      $$0.put(dmo.pd, $$3);
+      $$0.put(dmo.oU, $$3);
+      $$0.put(dmo.pj, $$3);
+      $$0.put(dmo.oW, $$3);
+      $$0.put(dmo.pU, $$3);
+      $$0.put(dmo.pV, $$3);
+      $$0.put(dmo.pW, $$3);
+      $$0.put(dmo.pX, $$3);
+      $$0.put(dmo.pA, $$3);
+      $$0.put(dmo.pB, $$3);
+      $$0.put(dmo.tb, $$3);
+      $$0.put(dmo.rg, $$3);
+      $$0.put(dmo.rf, $$3);
+      $$0.put(dmo.re, $$3);
+      $$0.put(dmo.rd, $$3);
+      $$0.put(dmo.ta, $$3);
+      $$0.put(dmo.td, $$3);
+      $$0.put(dmo.te, $$3);
+      $$0.put(dmo.tf, $$3);
+      $$0.put(dmo.th, $$3);
+      $$0.put(dmo.tg, $$3);
+      $$0.put(dmo.tj, $$3);
+      $$0.put(dmo.tk, $$3);
+      $$0.put(dmo.tl, $$3);
+      $$0.put(dmo.tn, $$3);
+      $$0.put(dmo.to, $$3);
+      $$0.put(dmo.tp, $$3);
+      $$0.put(dmo.tq, $$3);
+      $$0.put(dmo.ry, $$3);
+      $$0.put(dmo.rz, $$3);
+      $$0.put(dmo.rB, $$3);
+      $$0.put(dmo.rD, $$3);
+      $$0.put(dmo.H, $$3);
+      $$0.put(dmo.tX, $$3);
+      $$0.put(dmo.sK, $$3);
+      $$0.put(dmo.sL, $$3);
+      $$0.put(dmo.sM, $$3);
+      $$0.put(dmo.sN, $$3);
+      $$0.put(dmo.sO, $$3);
+      $$0.put(dmo.sP, $$3);
+      $$0.put(dmo.sQ, $$3);
+      $$0.put(dmo.sR, $$3);
+      $$0.put(dmo.ul, $$3);
+      $$0.put(dmo.eh, $$3);
+      gqx $$4 = gqx.f();
+      $$0.put(dmo.ee, $$4);
+      $$0.put(dmo.eu, $$4);
+      $$0.put(dmo.ez, $$4);
+      $$0.put(dmo.eA, $$4);
+      $$0.put(dmo.eB, $$4);
+      $$0.put(dmo.eC, $$4);
+      $$0.put(dmo.eD, $$4);
+      $$0.put(dmo.eE, $$4);
+      $$0.put(dmo.eF, $$4);
+      $$0.put(dmo.eG, $$4);
+      $$0.put(dmo.eH, $$4);
+      $$0.put(dmo.eI, $$4);
+      $$0.put(dmo.eJ, $$4);
+      $$0.put(dmo.eK, $$4);
+      $$0.put(dmo.eL, $$4);
+      $$0.put(dmo.eM, $$4);
+      $$0.put(dmo.eN, $$4);
+      $$0.put(dmo.eO, $$4);
+      $$0.put(dmo.ia, $$4);
+      $$0.put(dmo.ib, $$4);
+      $$0.put(dmo.ic, $$4);
+      $$0.put(dmo.id, $$4);
+      $$0.put(dmo.ie, $$4);
+      $$0.put(dmo.if, $$4);
+      $$0.put(dmo.ig, $$4);
+      $$0.put(dmo.ih, $$4);
+      $$0.put(dmo.ii, $$4);
+      $$0.put(dmo.ij, $$4);
+      $$0.put(dmo.ik, $$4);
+      $$0.put(dmo.il, $$4);
+      $$0.put(dmo.im, $$4);
+      $$0.put(dmo.in, $$4);
+      $$0.put(dmo.io, $$4);
+      $$0.put(dmo.ip, $$4);
+      $$0.put(dmo.ix, $$4);
+      $$0.put(dmo.pO, $$4);
+      $$0.put(dmo.lo, $$4);
+      $$0.put(dmo.nJ, $$4);
+      $$0.put(dmo.rw, $$4);
+   });
+   private static final Map<ewu, gqx> b = ag.a(Maps.newHashMap(), $$0 -> {
+      gqx $$1 = gqx.f();
+      $$0.put(eww.b, $$1);
+      $$0.put(eww.c, $$1);
+   });
+   private static boolean c;
 
-   private gqe(List<gqg> $$0, Map<alg, gqf.d> $$1, Set<alg> $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-   }
-
-   public static gqe a(gqf $$0, hiz $$1, gqr $$2, Set<alg> $$3) throws gqr.b {
-      Stream<alg> $$4 = $$0.b().stream().flatMap(gqf.e::b);
-      Set<alg> $$5 = $$4.filter($$1x -> !$$0.a().containsKey($$1x)).collect(Collectors.toSet());
-      Set<alg> $$6 = Sets.difference($$5, $$3);
-      if (!$$6.isEmpty()) {
-         throw new gqr.b("Referenced external targets are not available in this context: " + $$6);
+   public static gqx a(eao $$0) {
+      dmm $$1 = $$0.b();
+      if ($$1 instanceof drc) {
+         return c ? gqx.d() : gqx.c();
       } else {
-         Builder<gqg> $$7 = ImmutableList.builder();
-
-         for (gqf.e $$8 : $$0.b()) {
-            $$7.add(a($$1, $$2, $$8));
-         }
-
-         return new gqe($$7.build(), $$0.a(), $$5);
+         gqx $$2 = a.get($$1);
+         return $$2 != null ? $$2 : gqx.c();
       }
    }
 
-   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
-   private static gqg a(hiz $$0, gqr $$1, gqf.e $$2) throws gqr.b {
-      gpj $$3 = $$1.b($$2.a());
-
-      for (gqf.h $$4 : $$2.f()) {
-         String $$5 = $$4.a();
-         if ($$3.a($$5) == null) {
-            throw new gqr.b("Uniform '" + $$5 + "' does not exist for " + $$2.c());
-         }
-      }
-
-      String $$6 = $$2.c().toString();
-      gqg $$7 = new gqg($$6, $$3, $$2.e(), $$2.f());
-
-      for (gqf.c $$8 : $$2.d()) {
-         Objects.requireNonNull($$8);
-         Throwable var44;
-         switch ($$8) {
-            case gqf.g var10:
-               gqf.g var52 = var10;
-
-               try {
-                  var53 = var52.a();
-               } catch (Throwable var30) {
-                  var44 = var30;
-                  boolean var65 = false;
-                  break;
-               }
-
-               String var35 = var53;
-               gqf.g var54 = var10;
-
-               try {
-                  var55 = var54.c();
-               } catch (Throwable var29) {
-                  var44 = var29;
-                  boolean var66 = false;
-                  break;
-               }
-
-               alg var36 = var55;
-               gqf.g var56 = var10;
-
-               try {
-                  var57 = var56.d();
-               } catch (Throwable var28) {
-                  var44 = var28;
-                  boolean var67 = false;
-                  break;
-               }
-
-               int var37 = var57;
-               gqf.g var58 = var10;
-
-               try {
-                  var59 = var58.e();
-               } catch (Throwable var27) {
-                  var44 = var27;
-                  boolean var68 = false;
-                  break;
-               }
-
-               int var38 = var59;
-               gqf.g var60 = var10;
-
-               try {
-                  var61 = var60.f();
-               } catch (Throwable var26) {
-                  var44 = var26;
-                  boolean var69 = false;
-                  break;
-               }
-
-               boolean var39 = var61;
-               hii $$14x = $$0.b(var36.a((UnaryOperator<String>)($$0x -> "textures/effect/" + $$0x + ".png")));
-               $$14x.a(var39, false);
-               $$7.a(new gqg.c(var35, $$14x, var37, var38));
-               continue;
-            case gqf.f $$14:
-               gqf.f var10000 = $$14;
-
-               try {
-                  var45 = var10000.a();
-               } catch (Throwable var25) {
-                  var44 = var25;
-                  boolean var10001 = false;
-                  break;
-               }
-
-               String var21 = var45;
-               gqf.f var46 = $$14;
-
-               try {
-                  var47 = var46.c();
-               } catch (Throwable var24) {
-                  var44 = var24;
-                  boolean var62 = false;
-                  break;
-               }
-
-               alg var41 = var47;
-               gqf.f var48 = $$14;
-
-               try {
-                  var49 = var48.d();
-               } catch (Throwable var23) {
-                  var44 = var23;
-                  boolean var63 = false;
-                  break;
-               }
-
-               boolean var42 = var49;
-               gqf.f var50 = $$14;
-
-               try {
-                  var51 = var50.e();
-               } catch (Throwable var22) {
-                  var44 = var22;
-                  boolean var64 = false;
-                  break;
-               }
-
-               boolean var43 = var51;
-               $$7.a(new gqg.b(var21, var41, var42, var43));
-               continue;
-            default:
-               throw new MatchException(null, null);
-         }
-
-         Throwable var34 = var44;
-         throw new MatchException(var34.toString(), var34);
-      }
-
-      return $$7;
-   }
-
-   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
-   public void a(fho $$0, int $$1, int $$2, gqe.a $$3) {
-      Matrix4f $$4 = new Matrix4f().setOrtho(0.0F, (float)$$1, 0.0F, (float)$$2, 0.1F, 1000.0F);
-      Map<alg, fiw<fhu>> $$5 = new HashMap<>(this.c.size() + this.d.size());
-
-      for (alg $$6 : this.d) {
-         $$5.put($$6, $$3.b($$6));
-      }
-
-      for (Entry<alg, gqf.d> $$7 : this.c.entrySet()) {
-         alg $$8 = $$7.getKey();
-         gqf.d var35;
-         Objects.requireNonNull(var35);
-         Object var11 = var35;
-
-         var35 = $$7.getValue();
-         fiu $$11 = switch (var11) {
-            case gqf.a var13 -> {
-               gqf.a var29 = var13;
-
-               int var26;
-               label56: {
-                  label76: {
-                     try {
-                        var31 = var29.a();
-                     } catch (Throwable var18) {
-                        var30 = var18;
-                        boolean var10001 = false;
-                        break label76;
-                     }
-
-                     var26 = var31;
-                     gqf.a var32 = var13;
-
-                     try {
-                        var33 = var32.b();
-                        break label56;
-                     } catch (Throwable var17) {
-                        var30 = var17;
-                        boolean var34 = false;
-                     }
-                  }
-
-                  Throwable var20 = var30;
-                  throw new MatchException(var20.toString(), var20);
-               }
-
-               int var27 = var33;
-               yield new fiu(var26, var27, true, 0);
-            }
-            case gqf.b var16 -> new fiu($$1, $$2, true, 0);
-            default -> throw new MatchException(null, null);
-         };
-         $$5.put($$8, $$0.a($$8.toString(), $$11));
-      }
-
-      for (gqg $$12 : this.b) {
-         $$12.a($$0, $$5, $$4);
-      }
-
-      for (alg $$13 : this.d) {
-         $$3.a($$13, $$5.get($$13));
-      }
-   }
-
-   @Deprecated
-   public void a(fhu $$0, fit $$1) {
-      fho $$2 = new fho();
-      gqe.a $$3 = gqe.a.b(a, $$2.a("main", $$0));
-      this.a($$2, $$0.c, $$0.d, $$3);
-      $$2.a($$1);
-   }
-
-   public void a(String $$0, float $$1) {
-      for (gqg $$2 : this.b) {
-         $$2.a().c($$0).a($$1);
-      }
-   }
-
-   public interface a {
-      static gqe.a b(final alg $$0, final fiw<fhu> $$1) {
-         return new gqe.a() {
-            private fiw<fhu> c = $$1;
-
-            @Override
-            public void a(alg $$0x, fiw<fhu> $$1x) {
-               if ($$0.equals($$0)) {
-                  this.c = $$1;
-               } else {
-                  throw new IllegalArgumentException("No target with id " + $$0);
-               }
-            }
-
-            @Nullable
-            @Override
-            public fiw<fhu> a(alg $$0x) {
-               return $$0.equals($$0) ? this.c : null;
-            }
-         };
-      }
-
-      void a(alg var1, fiw<fhu> var2);
-
-      @Nullable
-      fiw<fhu> a(alg var1);
-
-      default fiw<fhu> b(alg $$0) {
-         fiw<fhu> $$1 = this.a($$0);
-         if ($$1 == null) {
-            throw new IllegalArgumentException("Missing target with id " + $$0);
+   public static gqx b(eao $$0) {
+      dmm $$1 = $$0.b();
+      if ($$1 instanceof drc) {
+         return c ? gqx.d() : gqx.c();
+      } else {
+         gqx $$2 = a.get($$1);
+         if ($$2 != null) {
+            return $$2 == gqx.f() ? gqx.g() : $$2;
          } else {
-            return $$1;
+            return gqx.c();
          }
       }
+   }
+
+   public static gqx c(eao $$0) {
+      gqx $$1 = a($$0);
+      return $$1 == gqx.f() ? grg.j() : grg.i();
+   }
+
+   public static gqx a(czk $$0) {
+      if ($$0.h() instanceof cxs $$2) {
+         dmm $$3 = $$2.c();
+         return c($$3.m());
+      } else {
+         return grg.j();
+      }
+   }
+
+   public static gqx a(ewv $$0) {
+      gqx $$1 = b.get($$0.a());
+      return $$1 != null ? $$1 : gqx.c();
+   }
+
+   public static void a(boolean $$0) {
+      c = $$0;
    }
 }

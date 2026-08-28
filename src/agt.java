@@ -1,13 +1,13 @@
 public class agt implements zf<agp> {
    public static final yw<vu, agt> a = zf.a(agt::a, agt::new);
-   private final bua b;
+   private final bud b;
 
-   public agt(bua $$0) {
+   public agt(bud $$0) {
       this.b = $$0;
    }
 
    private agt(vu $$0) {
-      this.b = bua.a($$0.readUnsignedByte());
+      this.b = bud.a($$0.readUnsignedByte());
    }
 
    private void a(vu $$0) {
@@ -23,7 +23,7 @@ public class agt implements zf<agp> {
       $$0.a(this);
    }
 
-   public bua b() {
+   public bud b() {
       return this.b;
    }
 }

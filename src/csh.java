@@ -1,208 +1,314 @@
+import com.google.common.base.MoreObjects;
+import com.google.common.collect.Lists;
+import java.util.List;
 import java.util.UUID;
 import javax.annotation.Nullable;
 
 public class csh extends cse {
-   private long a = 0L;
+   private static final double a = 0.15;
+   @Nullable
+   private bwi b;
+   @Nullable
+   private jb c;
+   private int d;
+   private double e;
+   private double f;
+   private double g;
+   @Nullable
+   private UUID h;
 
-   public csh(bwo<? extends csh> $$0, dja $$1) {
+   public csh(bwr<? extends csh> $$0, djh $$1) {
       super($$0, $$1);
+      this.ad = true;
    }
 
-   public csh(dja $$0, bxe $$1, czd $$2) {
-      super(bwo.Q, $$1, $$0, $$2);
-   }
-
-   @Override
-   protected cyz g() {
-      return czh.tn;
-   }
-
-   @Override
-   protected void c(UUID $$0) {
-      this.j();
-      super.c($$0);
-      this.m();
+   public csh(djh $$0, bxj $$1, bwi $$2, jb.a $$3) {
+      this(bwr.bd, $$0);
+      this.c($$1);
+      fex $$4 = $$1.cQ().f();
+      this.b($$4.d, $$4.e, $$4.f, this.dK(), this.dM());
+      this.b = $$2;
+      this.c = jb.b;
+      this.a($$3);
    }
 
    @Override
-   public void c(@Nullable bwf $$0) {
-      this.j();
-      super.c($$0);
-      this.m();
+   public awo dl() {
+      return awo.f;
    }
 
-   private void j() {
-      if (this.q() instanceof arr $$0) {
-         $$0.b(this);
+   @Override
+   protected void b(tz $$0) {
+      super.b($$0);
+      if (this.b != null) {
+         $$0.a("Target", jz.a, this.b.cF());
       }
+
+      $$0.b("Dir", jb.k, this.c);
+      $$0.a("Steps", this.d);
+      $$0.a("TXD", this.e);
+      $$0.a("TYD", this.f);
+      $$0.a("TZD", this.g);
    }
 
-   private void m() {
-      if (this.q() instanceof arr $$0) {
-         $$0.a(this);
-      }
+   @Override
+   protected void a(tz $$0) {
+      super.a($$0);
+      this.d = $$0.f("Steps");
+      this.e = $$0.i("TXD");
+      this.f = $$0.i("TYD");
+      this.g = $$0.i("TZD");
+      this.c = $$0.<jb>a("Dir", jb.k).orElse(null);
+      this.h = $$0.<UUID>a("Target", jz.a).orElse(null);
+   }
+
+   @Override
+   protected void a(akn.a $$0) {
    }
 
    @Nullable
-   @Override
-   protected bwf b(UUID $$0) {
-      if (this.dV() instanceof arq $$1) {
-         bwf $$3 = super.b($$0);
-         if ($$3 != null) {
-            return $$3;
+   private jb f() {
+      return this.c;
+   }
+
+   private void a(@Nullable jb $$0) {
+      this.c = $$0;
+   }
+
+   private void a(@Nullable jb.a $$0) {
+      double $$1 = 0.5;
+      iv $$2;
+      if (this.b == null) {
+         $$2 = this.du().e();
+      } else {
+         $$1 = (double)this.b.dq() * 0.5;
+         $$2 = iv.a(this.b.dz(), this.b.dB() + $$1, this.b.dF());
+      }
+
+      double $$4 = (double)$$2.u() + 0.5;
+      double $$5 = (double)$$2.v() + $$1;
+      double $$6 = (double)$$2.w() + 0.5;
+      jb $$7 = null;
+      if (!$$2.a(this.ds(), 2.0)) {
+         iv $$8 = this.du();
+         List<jb> $$9 = Lists.newArrayList();
+         if ($$0 != jb.a.a) {
+            if ($$8.u() < $$2.u() && this.dU().v($$8.i())) {
+               $$9.add(jb.f);
+            } else if ($$8.u() > $$2.u() && this.dU().v($$8.h())) {
+               $$9.add(jb.e);
+            }
+         }
+
+         if ($$0 != jb.a.b) {
+            if ($$8.v() < $$2.v() && this.dU().v($$8.d())) {
+               $$9.add(jb.b);
+            } else if ($$8.v() > $$2.v() && this.dU().v($$8.e())) {
+               $$9.add(jb.a);
+            }
+         }
+
+         if ($$0 != jb.a.c) {
+            if ($$8.w() < $$2.w() && this.dU().v($$8.g())) {
+               $$9.add(jb.d);
+            } else if ($$8.w() > $$2.w() && this.dU().v($$8.f())) {
+               $$9.add(jb.c);
+            }
+         }
+
+         $$7 = jb.b(this.ae);
+         if ($$9.isEmpty()) {
+            for (int $$10 = 5; !this.dU().v($$8.a($$7)) && $$10 > 0; $$10--) {
+               $$7 = jb.b(this.ae);
+            }
          } else {
-            for (arq $$4 : $$1.p().L()) {
-               if ($$4 != $$1) {
-                  $$3 = $$4.b($$0);
-                  if ($$3 != null) {
-                     return $$3;
-                  }
-               }
-            }
-
-            return null;
+            $$7 = $$9.get(this.ae.a($$9.size()));
          }
+
+         $$4 = this.dz() + (double)$$7.j();
+         $$5 = this.dB() + (double)$$7.k();
+         $$6 = this.dF() + (double)$$7.l();
+      }
+
+      this.a($$7);
+      double $$11 = $$4 - this.dz();
+      double $$12 = $$5 - this.dB();
+      double $$13 = $$6 - this.dF();
+      double $$14 = Math.sqrt($$11 * $$11 + $$12 * $$12 + $$13 * $$13);
+      if ($$14 == 0.0) {
+         this.e = 0.0;
+         this.f = 0.0;
+         this.g = 0.0;
       } else {
-         return null;
+         this.e = $$11 / $$14 * 0.15;
+         this.f = $$12 / $$14 * 0.15;
+         this.g = $$13 / $$14 * 0.15;
+      }
+
+      this.ar = true;
+      this.d = 10 + this.ae.a(5) * 10;
+   }
+
+   @Override
+   public void dG() {
+      if (this.dU().an() == bud.a) {
+         this.aq();
       }
    }
 
    @Override
-   protected void a(fen $$0) {
-      super.a($$0);
-      $$0.a().a(this.dW().b(this, this.q()), 0.0F);
-   }
-
-   @Override
-   protected void a(feo $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < 32; $$1++) {
-         this.dV().a(lx.af, this.dA(), this.dC() + this.ae.j() * 2.0, this.dG(), this.ae.k(), 0.0, this.ae.k());
-      }
-
-      if (this.dV() instanceof arq $$2 && !this.dQ()) {
-         bwf $$4 = this.q();
-         if ($$4 != null && a($$4, $$2)) {
-            feq $$5 = this.bB();
-            if ($$4 instanceof arr $$6) {
-               if ($$6.f.c()) {
-                  if (this.ae.i() < 0.05F && $$2.O().c(diw.f)) {
-                     cnu $$7 = bwo.O.a($$2, bwn.k);
-                     if ($$7 != null) {
-                        $$7.b($$4.dA(), $$4.dC(), $$4.dG(), $$4.dL(), $$4.dN());
-                        $$2.b($$7);
-                     }
-                  }
-
-                  if (this.aD()) {
-                     $$4.aB();
-                  }
-
-                  arr $$8 = $$6.a(new exo($$2, $$5, feq.c, 0.0F, 0.0F, bxs.a(bxs.k, bxs.l), exo.a));
-                  if ($$8 != null) {
-                     $$8.k();
-                     $$8.gP();
-                     $$8.a($$6.y(), this.dW().m(), 5.0F);
-                  }
-
-                  this.a($$2, $$5);
-               }
-            } else {
-               bwf $$9 = $$4.b(new exo($$2, $$5, $$4.dy(), $$4.dL(), $$4.dN(), exo.a));
-               if ($$9 != null) {
-                  $$9.k();
-               }
-
-               this.a($$2, $$5);
-            }
-
-            this.at();
-            return;
-         }
-
-         this.at();
-         return;
-      }
-   }
-
-   private static boolean a(bwf $$0, dja $$1) {
-      if ($$0.dV().aj() == $$1.aj()) {
-         return !($$0 instanceof bxe $$2) ? $$0.bK() : $$2.bK() && !$$2.fR();
-      } else {
-         return $$0.n(true);
-      }
+   protected double bb() {
+      return 0.04;
    }
 
    @Override
    public void h() {
-      int $$0;
-      int $$1;
-      bwf $$2;
-      label30: {
-         $$0 = jx.b(this.dt().a());
-         $$1 = jx.b(this.dt().c());
-         $$2 = this.q();
-         if ($$2 instanceof arr $$3 && !$$2.bK() && $$3.y().O().c(diw.aa)) {
-            this.at();
-            break label30;
+      super.h();
+      fev $$0 = null;
+      if (!this.dU().C) {
+         if (this.b == null && this.h != null) {
+            this.b = ((arq)this.dU()).b(this.h);
+            if (this.b == null) {
+               this.h = null;
+            }
          }
 
-         super.h();
+         if (this.b == null || !this.b.bI() || this.b instanceof crj && this.b.V_()) {
+            this.bd();
+         } else {
+            this.e = azm.a(this.e * 1.025, -1.0, 1.0);
+            this.f = azm.a(this.f * 1.025, -1.0, 1.0);
+            this.g = azm.a(this.g * 1.025, -1.0, 1.0);
+            fex $$1 = this.dx();
+            this.i($$1.b((this.e - $$1.d) * 0.2, (this.f - $$1.e) * 0.2, (this.g - $$1.f) * 0.2));
+         }
+
+         $$0 = csg.a(this, this::b);
       }
 
-      if (this.bK()) {
-         iu $$4 = iu.a((jo)this.dt());
-         if ((--this.a <= 0L || $$0 != jx.a($$4.u()) || $$1 != jx.a($$4.w())) && $$2 instanceof arr $$5) {
-            this.a = $$5.c(this);
+      fex $$2 = this.dx();
+      this.b(this.ds().e($$2));
+      this.aI();
+      if (this.as != null && this.as.e()) {
+         this.bU();
+      }
+
+      if ($$0 != null && this.bI() && $$0.d() != fev.a.a) {
+         this.b($$0);
+      }
+
+      csg.a(this, 0.5F);
+      if (this.dU().C) {
+         this.dU().a(ly.t, this.dz() - $$2.d, this.dB() - $$2.e + 0.15, this.dF() - $$2.f, 0.0, 0.0, 0.0);
+      } else if (this.b != null && !this.b.dP()) {
+         if (this.d > 0) {
+            this.d--;
+            if (this.d == 0) {
+               this.a(this.c == null ? null : this.c.o());
+            }
+         }
+
+         if (this.c != null) {
+            iv $$3 = this.du();
+            jb.a $$4 = this.c.o();
+            if (this.dU().a($$3.a(this.c), this)) {
+               this.a($$4);
+            } else {
+               iv $$5 = this.b.du();
+               if ($$4 == jb.a.a && $$3.u() == $$5.u() || $$4 == jb.a.c && $$3.w() == $$5.w() || $$4 == jb.a.b && $$3.v() == $$5.v()) {
+                  this.a($$4);
+               }
+            }
          }
       }
    }
 
-   private void a(dja $$0, feq $$1) {
-      $$0.a(null, $$1.d, $$1.e, $$1.f, awn.vj, awo.h);
-   }
-
-   @Nullable
    @Override
-   public bwf b(exo $$0) {
-      bwf $$1 = super.b($$0);
-      if ($$1 != null) {
-         $$1.f(iu.a((jo)$$1.dt()));
-      }
-
-      return $$1;
+   protected boolean aJ() {
+      return !this.dP();
    }
 
    @Override
-   public boolean a(dja $$0, dja $$1) {
-      return $$0.aj() == dja.k && $$1.aj() == dja.i && this.q() instanceof arr $$2 ? super.a($$0, $$1) && $$2.i : super.a($$0, $$1);
+   protected boolean b(bwi $$0) {
+      return super.b($$0) && !$$0.ad;
    }
 
    @Override
-   protected void a(eah $$0) {
+   public boolean bW() {
+      return false;
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      return $$0 < 16384.0;
+   }
+
+   @Override
+   public float bv() {
+      return 1.0F;
+   }
+
+   @Override
+   protected void a(feu $$0) {
       super.a($$0);
-      if ($$0.a(dmh.ll) && this.q() instanceof arr $$1) {
-         $$1.a($$0);
+      bwi $$1 = $$0.a();
+      bwi $$2 = this.q();
+      bxj $$3 = $$2 instanceof bxj ? (bxj)$$2 : null;
+      bux $$4 = this.dV().a(this, $$3);
+      boolean $$5 = $$1.b($$4, 4.0F);
+      if ($$5) {
+         if (this.dU() instanceof arq $$6) {
+            dfz.a($$6, $$1, $$4);
+         }
+
+         if ($$1 instanceof bxj $$7) {
+            $$7.b(new bvm(bvo.y, 200), (bwi)MoreObjects.firstNonNull($$2, this));
+         }
       }
    }
 
    @Override
-   public void b(bwf.e $$0) {
-      if ($$0 != bwf.e.d) {
-         this.j();
-      }
+   protected void a(fet $$0) {
+      super.a($$0);
+      ((arq)this.dU()).a(ly.w, this.dz(), this.dB(), this.dF(), 2, 0.2, 0.2, 0.2, 0.0);
+      this.a(awn.xE, 1.0F, 1.0F);
+   }
 
-      super.b($$0);
+   private void g() {
+      this.aq();
+      this.dU().a(efo.o, this.ds(), efo.a.a(this));
    }
 
    @Override
-   public void a(boolean $$0, iu $$1) {
-      bwf.a(this, $$0, $$1);
+   protected void a(fev $$0) {
+      super.a($$0);
+      this.g();
    }
 
    @Override
-   public void l(boolean $$0) {
-      bwf.b(this, $$0);
+   public boolean bE() {
+      return true;
+   }
+
+   @Override
+   public boolean b(bux $$0) {
+      return true;
+   }
+
+   @Override
+   public boolean a(arq $$0, bux $$1, float $$2) {
+      this.a(awn.xF, 1.0F, 1.0F);
+      $$0.a(ly.f, this.dz(), this.dB(), this.dF(), 15, 0.2, 0.2, 0.2, 0.0);
+      this.g();
+      return true;
+   }
+
+   @Override
+   public void a(abv $$0) {
+      super.a($$0);
+      double $$1 = $$0.j();
+      double $$2 = $$0.k();
+      double $$3 = $$0.l();
+      this.n($$1, $$2, $$3);
    }
 }

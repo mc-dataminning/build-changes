@@ -1,56 +1,41 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dme extends dla {
-   public static final MapCodec<dme> c = b(dme::new);
+public class dme extends dly implements dmd {
+   public static final MapCodec<dme> a = b(dme::new);
 
    @Override
    public MapCodec<dme> a() {
-      return c;
+      return a;
    }
 
-   protected dme(eag.d $$0) {
+   public dme(ean.d $$0) {
       super($$0);
    }
 
    @Override
-   public dxf a(iu $$0, eah $$1) {
-      return new dxe($$0, $$1);
+   public cyi b() {
+      return cyi.a;
+   }
+
+   @Override
+   public dxm a(iv $$0, eao $$1) {
+      return new dxh($$0, $$1);
    }
 
    @Nullable
    @Override
-   public <T extends dxf> dxg<T> a(dja $$0, eah $$1, dxh<T> $$2) {
-      return a($$0, $$2, dxh.D);
+   public <T extends dxm> dxn<T> a(djh $$0, eao $$1, dxo<T> $$2) {
+      return a($$2, dxo.p, dxh::a);
    }
 
    @Override
-   protected void a(dja $$0, iu $$1, crc $$2) {
-      dxf $$3 = $$0.c_($$1);
-      if ($$3 instanceof dxe) {
-         $$2.a((buf)$$3);
-         $$2.a(awx.as);
+   protected bug a(eao $$0, djh $$1, iv $$2, crj $$3, fet $$4) {
+      if (!$$1.C && $$1.c_($$2) instanceof dxh $$5) {
+         $$3.a($$5);
+         $$3.a(awx.ab);
       }
-   }
 
-   @Override
-   public void a(eah $$0, dja $$1, iu $$2, azv $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, awn.cA, awo.e, 1.0F, 1.0F, false);
-         }
-
-         ja $$7 = $$0.c(a);
-         ja.a $$8 = $$7.o();
-         double $$9 = 0.52;
-         double $$10 = $$3.j() * 0.6 - 0.3;
-         double $$11 = $$8 == ja.a.a ? (double)$$7.j() * 0.52 : $$10;
-         double $$12 = $$3.j() * 9.0 / 16.0;
-         double $$13 = $$8 == ja.a.c ? (double)$$7.l() * 0.52 : $$10;
-         $$1.a(lx.ah, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
-      }
+      return bug.a;
    }
 }

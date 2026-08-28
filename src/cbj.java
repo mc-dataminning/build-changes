@@ -1,28 +1,98 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class cbj {
-   public static byw<bxe> a(Function<bxe, Optional<caj>> $$0, Predicate<bxe> $$1, int $$2, int $$3, float $$4) {
-      return cci.a(
-         (Function<cci.b<bxe>, ? extends App<cci.c<bxe>, ccl<bxe>>>)($$5 -> $$5.group($$5.a(cgg.o), $$5.a(cgg.n))
-               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                     Optional<caj> $$10 = $$0.apply($$8);
-                     if (!$$10.isEmpty() && $$1.test($$8)) {
-                        caj $$11 = $$10.get();
-                        if ($$8.dt().a((jo)$$11.a(), (double)$$3)) {
-                           return false;
-                        } else {
-                           caj $$12 = $$10.get();
-                           $$5x.a($$12);
-                           $$6.a(new cgj($$12, $$4, $$2));
-                           return true;
-                        }
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+public class cbj<U> implements Iterable<U> {
+   protected final List<cbj.a<U>> a;
+   private final azv b = azv.a();
+
+   public cbj() {
+      this.a = Lists.newArrayList();
+   }
+
+   private cbj(List<cbj.a<U>> $$0) {
+      this.a = Lists.newArrayList($$0);
+   }
+
+   public static <U> Codec<cbj<U>> a(Codec<U> $$0) {
+      return cbj.a.a($$0).listOf().xmap(cbj::new, $$0x -> $$0x.a);
+   }
+
+   public cbj<U> a(U $$0, int $$1) {
+      this.a.add(new cbj.a<>($$0, $$1));
+      return this;
+   }
+
+   public cbj<U> a() {
+      this.a.forEach($$0 -> $$0.a(this.b.i()));
+      this.a.sort(Comparator.comparingDouble(cbj.a::c));
+      return this;
+   }
+
+   public Stream<U> b() {
+      return this.a.stream().map(cbj.a::a);
+   }
+
+   @Override
+   public Iterator<U> iterator() {
+      return Iterators.transform(this.a.iterator(), cbj.a::a);
+   }
+
+   @Override
+   public String toString() {
+      return "ShufflingList[" + this.a + "]";
+   }
+
+   public static class a<T> {
+      final T a;
+      final int b;
+      private double c;
+
+      a(T $$0, int $$1) {
+         this.b = $$1;
+         this.a = $$0;
+      }
+
+      private double c() {
+         return this.c;
+      }
+
+      void a(float $$0) {
+         this.c = -Math.pow((double)$$0, (double)(1.0F / (float)this.b));
+      }
+
+      public T a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + ":" + this.a;
+      }
+
+      public static <E> Codec<cbj.a<E>> a(final Codec<E> $$0) {
+         return new Codec<cbj.a<E>>() {
+            public <T> DataResult<Pair<cbj.a<E>, T>> decode(DynamicOps<T> $$0x, T $$1) {
+               Dynamic<T> $$2 = new Dynamic($$0, $$1);
+               return $$2.get("data").flatMap($$0::parse).map($$1x -> new cbj.a<>($$1x, $$2.get("weight").asInt(1))).map($$1x -> Pair.of($$1x, $$0.empty()));
+            }
+
+            public <T> DataResult<T> a(cbj.a<E> $$0x, DynamicOps<T> $$1, T $$2) {
+               return $$1.mapBuilder().add("weight", $$1.createInt($$0.b)).add("data", $$0.encodeStart($$1, $$0.a)).build($$2);
+            }
+         };
+      }
    }
 }

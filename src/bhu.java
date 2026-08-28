@@ -1,80 +1,44 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.types.templates.CompoundList.CompoundListType;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
-public class bhu extends DataFix {
-   public bhu(Schema $$0, boolean $$1) {
+public abstract class bhu extends DataFix {
+   private final String a;
+   private final String b;
+   private final TypeReference c;
+
+   public bhu(Schema $$0, boolean $$1, String $$2, TypeReference $$3, String $$4) {
       super($$0, $$1);
+      this.a = $$2;
+      this.c = $$3;
+      this.b = $$4;
    }
 
-   protected TypeRewriteRule makeRule() {
-      CompoundListType<String, ?> $$0 = DSL.compoundList(DSL.string(), this.getInputSchema().getType(bix.I));
-      OpticFinder<? extends List<? extends Pair<String, ?>>> $$1 = $$0.finder();
-      return this.a($$0);
+   public TypeRewriteRule makeRule() {
+      Type<?> $$0 = this.getInputSchema().getType(this.c);
+      Type<?> $$1 = this.getInputSchema().getChoiceType(this.c, this.b);
+      Type<?> $$2 = this.getOutputSchema().getType(this.c);
+      OpticFinder<?> $$3 = DSL.namedChoice(this.b, $$1);
+      Type<?> $$4 = bbd.a($$0, $$0, $$2);
+      return this.a($$0, $$2, $$4, $$3);
    }
 
-   private <SF> TypeRewriteRule a(CompoundListType<String, SF> $$0) {
-      Type<?> $$1 = this.getInputSchema().getType(bix.c);
-      Type<?> $$2 = this.getInputSchema().getType(bix.I);
-      OpticFinder<?> $$3 = $$1.findField("Level");
-      OpticFinder<?> $$4 = $$3.type().findField("Structures");
-      OpticFinder<?> $$5 = $$4.type().findField("Starts");
-      OpticFinder<List<Pair<String, SF>>> $$6 = $$0.finder();
-      return TypeRewriteRule.seq(
-         this.fixTypeEverywhereTyped(
-            "NewVillageFix",
-            $$1,
-            $$4x -> $$4x.updateTyped(
-                  $$3,
-                  $$3xx -> $$3xx.updateTyped(
-                        $$4,
-                        $$2xxx -> $$2xxx.updateTyped(
-                                 $$5,
-                                 $$1xxxx -> $$1xxxx.update(
-                                       $$6,
-                                       $$0xxxxx -> $$0xxxxx.stream()
-                                             .filter($$0xxxxxx -> !Objects.equals($$0xxxxxx.getFirst(), "Village"))
-                                             .map($$0xxxxxx -> $$0xxxxxx.mapFirst($$0xxxxxxx -> $$0xxxxxxx.equals("New_Village") ? "Village" : $$0xxxxxxx))
-                                             .collect(Collectors.toList())
-                                    )
-                              )
-                              .update(
-                                 DSL.remainderFinder(),
-                                 $$0xxxx -> $$0xxxx.update(
-                                       "References",
-                                       $$0xxxxx -> {
-                                          Optional<? extends Dynamic<?>> $$1xxxx = $$0xxxxx.get("New_Village").result();
-                                          return ((Dynamic)DataFixUtils.orElse(
-                                                $$1xxxx.map($$1xxxxx -> $$0xxxxx.remove("New_Village").set("Village", $$1xxxxx)), $$0xxxxx
-                                             ))
-                                             .remove("Village");
-                                       }
-                                    )
-                              )
-                     )
-               )
-         ),
-         this.fixTypeEverywhereTyped(
-            "NewVillageStartFix",
-            $$2,
-            $$0x -> $$0x.update(
-                  DSL.remainderFinder(),
-                  $$0xx -> $$0xx.update(
-                        "id", $$0xxx -> Objects.equals(bks.a($$0xxx.asString("")), "minecraft:new_village") ? $$0xxx.createString("minecraft:village") : $$0xxx
-                     )
-               )
-         )
-      );
+   private <S, T, A> TypeRewriteRule a(Type<S> $$0, Type<T> $$1, Type<?> $$2, OpticFinder<A> $$3) {
+      return this.fixTypeEverywhereTyped(this.a, $$0, $$1, $$3x -> {
+         if ($$3x.getOptional($$3).isEmpty()) {
+            return bbd.a($$1, $$3x);
+         } else {
+            Typed<?> $$4 = bbd.a($$2, $$3x);
+            return ag.a((Typed<A>)$$4, $$1, this::a);
+         }
+      });
    }
+
+   protected abstract <T> Dynamic<T> a(Dynamic<T> var1);
 }

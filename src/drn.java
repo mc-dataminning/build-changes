@@ -1,160 +1,116 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class drn {
-   public static final drn.e[] a = new drn.e[]{drn.e.a, drn.e.b, drn.e.c};
-   private final drn.b b;
+public class drn extends dti implements dtx {
+   public static final MapCodec<drn> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(eac.a.fieldOf("tree").forGetter($$0x -> $$0x.g), t()).apply($$0, drn::new)
+   );
+   public static final ebo b = ebe.aw;
+   public static final int c = 4;
+   private static final int[] h = new int[]{13, 10, 7, 3, 0};
+   private static final ffr[] i = dmm.a(4, $$0 -> dmm.b(2.0, (double)h[$$0], 16.0));
+   private static final ebf D = ebe.I;
+   public static final ebf d = ebe.m;
 
-   public drn(drl $$0) {
-      this(new drn.a($$0));
+   @Override
+   public MapCodec<drn> a() {
+      return a;
    }
 
-   public drn(drn.b $$0) {
-      this.b = $$0;
+   public drn(eac $$0, ean.d $$1) {
+      super($$0, $$1);
+      this.l(this.C.b().b(f, Integer.valueOf(0)).b(b, Integer.valueOf(0)).b(D, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
    }
 
-   public boolean a(eah $$0, dig $$1, iu $$2, ja $$3) {
-      return ja.a().anyMatch($$4 -> this.a($$0, $$1, $$2, $$3, $$4, this.b::a).isPresent());
+   @Override
+   protected void a(eap.a<dmm, eao> $$0) {
+      $$0.a(f).a(b).a(D).a(d);
    }
 
-   public Optional<drn.c> a(eah $$0, djb $$1, iu $$2, azv $$3) {
-      return ja.a($$3)
-         .stream()
-         .filter($$1x -> this.b.b($$0, $$1x))
-         .map($$4 -> this.a($$0, $$1, $$2, $$4, $$3, false))
-         .filter(Optional::isPresent)
-         .findFirst()
-         .orElse(Optional.empty());
+   @Override
+   protected boolean b(eao $$0, din $$1, iv $$2) {
+      return super.b($$0, $$1, $$2) || $$0.a(dmo.ei);
    }
 
-   public long a(eah $$0, djb $$1, iu $$2, boolean $$3) {
-      return ja.a().filter($$1x -> this.b.b($$0, $$1x)).map($$4 -> this.a($$0, $$1, $$2, $$4, $$3)).reduce(0L, Long::sum);
+   @Nullable
+   @Override
+   public eao a(ddd $$0) {
+      ewv $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == eww.c;
+      return super.a($$0).b(D, Boolean.valueOf($$2)).b(b, Integer.valueOf(4));
    }
 
-   public Optional<drn.c> a(eah $$0, djb $$1, iu $$2, ja $$3, azv $$4, boolean $$5) {
-      return ja.a($$4).stream().map($$5x -> this.a($$0, $$1, $$2, $$3, $$5x, $$5)).filter(Optional::isPresent).findFirst().orElse(Optional.empty());
+   @Override
+   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
+      int $$4 = $$0.c(d) ? $$0.c(b) : 4;
+      return i[$$4].a($$0.a($$2));
    }
 
-   private long a(eah $$0, djb $$1, iu $$2, ja $$3, boolean $$4) {
-      return ja.a().map($$5 -> this.a($$0, $$1, $$2, $$3, $$5, $$4)).filter(Optional::isPresent).count();
+   @Override
+   protected boolean a(eao $$0, djk $$1, iv $$2) {
+      return o($$0) ? $$1.a_($$2.d()).a(dmo.aS) : super.a($$0, $$1, $$2);
    }
 
-   @VisibleForTesting
-   public Optional<drn.c> a(eah $$0, djb $$1, iu $$2, ja $$3, ja $$4, boolean $$5) {
-      return this.a($$0, $$1, $$2, $$3, $$4, this.b::a).flatMap($$2x -> this.a($$1, $$2x, $$5));
+   @Override
+   protected eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
+      if ($$0.c(D)) {
+         $$2.a($$3, eww.c, eww.c.a($$1));
+      }
+
+      return $$4 == jb.b && !$$0.a($$1, $$3) ? dmo.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   public Optional<drn.c> a(eah $$0, dig $$1, iu $$2, ja $$3, ja $$4, drn.d $$5) {
-      if ($$4.o() == $$3.o()) {
-         return Optional.empty();
-      } else if (this.b.a($$0) || this.b.a($$0, $$3) && !this.b.a($$0, $$4)) {
-         for (drn.e $$6 : this.b.a()) {
-            drn.c $$7 = $$6.a($$2, $$4, $$3);
-            if ($$5.test($$1, $$2, $$7)) {
-               return Optional.of($$7);
-            }
+   @Override
+   protected ewv b_(eao $$0) {
+      return $$0.c(D) ? eww.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected void b(eao $$0, arq $$1, iv $$2, azv $$3) {
+      if (!o($$0)) {
+         if ($$3.a(7) == 0) {
+            this.a($$1, $$2, $$0, $$3);
          }
-
-         return Optional.empty();
       } else {
-         return Optional.empty();
-      }
-   }
-
-   public Optional<drn.c> a(djb $$0, drn.c $$1, boolean $$2) {
-      eah $$3 = $$0.a_($$1.a());
-      return this.b.a($$0, $$1, $$3, $$2) ? Optional.of($$1) : Optional.empty();
-   }
-
-   public static class a implements drn.b {
-      protected drl a;
-
-      public a(drl $$0) {
-         this.a = $$0;
-      }
-
-      @Nullable
-      @Override
-      public eah a(eah $$0, dig $$1, iu $$2, ja $$3) {
-         return this.a.c($$0, $$1, $$2, $$3);
-      }
-
-      protected boolean a(dig $$0, iu $$1, iu $$2, ja $$3, eah $$4) {
-         return $$4.l() || $$4.a(this.a) || $$4.a(dmh.J) && $$4.y().b();
-      }
-
-      @Override
-      public boolean a(dig $$0, iu $$1, drn.c $$2) {
-         eah $$3 = $$0.a_($$2.a());
-         return this.a($$0, $$1, $$2.a(), $$2.b(), $$3) && this.a.a($$0, $$3, $$2.a(), $$2.b());
-      }
-   }
-
-   public interface b {
-      @Nullable
-      eah a(eah var1, dig var2, iu var3, ja var4);
-
-      boolean a(dig var1, iu var2, drn.c var3);
-
-      default drn.e[] a() {
-         return drn.a;
-      }
-
-      default boolean a(eah $$0, ja $$1) {
-         return drl.a($$0, $$1);
-      }
-
-      default boolean a(eah $$0) {
-         return false;
-      }
-
-      default boolean b(eah $$0, ja $$1) {
-         return this.a($$0) || this.a($$0, $$1);
-      }
-
-      default boolean a(djb $$0, drn.c $$1, eah $$2, boolean $$3) {
-         eah $$4 = this.a($$2, $$0, $$1.a(), $$1.b());
-         if ($$4 != null) {
-            if ($$3) {
-               $$0.z($$1.a()).e($$1.a());
-            }
-
-            return $$0.a($$1.a(), $$4, 2);
-         } else {
-            return false;
+         if (!q($$0)) {
+            $$1.a($$2, $$0.a(b), 2);
          }
       }
    }
 
-   public static record c(iu a, ja b) {
+   @Override
+   public boolean a(djk $$0, iv $$1, eao $$2) {
+      return !o($$2) || !q($$2);
    }
 
-   @FunctionalInterface
-   public interface d {
-      boolean test(dig var1, iu var2, drn.c var3);
+   @Override
+   public boolean a(djh $$0, azv $$1, iv $$2, eao $$3) {
+      return o($$3) ? !q($$3) : super.a($$0, $$1, $$2, $$3);
    }
 
-   public static enum e {
-      a {
-         @Override
-         public drn.c a(iu $$0, ja $$1, ja $$2) {
-            return new drn.c($$0, $$1);
-         }
-      },
-      b {
-         @Override
-         public drn.c a(iu $$0, ja $$1, ja $$2) {
-            return new drn.c($$0.a($$1), $$2);
-         }
-      },
-      c {
-         @Override
-         public drn.c a(iu $$0, ja $$1, ja $$2) {
-            return new drn.c($$0.a($$1).a($$2), $$1.g());
-         }
-      };
+   @Override
+   public void a(arq $$0, azv $$1, iv $$2, eao $$3) {
+      if (o($$3) && !q($$3)) {
+         $$0.a($$2, $$3.a(b), 2);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+      }
+   }
 
-      public abstract drn.c a(iu var1, ja var2, ja var3);
+   private static boolean o(eao $$0) {
+      return $$0.c(d);
+   }
+
+   private static boolean q(eao $$0) {
+      return $$0.c(b) == 4;
+   }
+
+   public static eao c() {
+      return b(0);
+   }
+
+   public static eao b(int $$0) {
+      return dmo.H.m().b(d, Boolean.valueOf(true)).b(b, Integer.valueOf($$0));
    }
 }

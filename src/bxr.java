@@ -1,54 +1,64 @@
-import java.util.Set;
+public abstract class bxr extends bxl {
+   protected static final float bF = 0.0F;
 
-public record bxr(feq b, feq c, float d, float e) {
-   public static final yw<vu, bxr> a = yw.a(feq.b, bxr::a, feq.b, bxr::b, yu.l, bxr::c, yu.l, bxr::d, bxr::new);
-
-   public static bxr a(bwf $$0) {
-      return $$0.bR() ? new bxr($$0.N_().a(), $$0.ah(), $$0.N_().b(), $$0.N_().c()) : new bxr($$0.dt(), $$0.ah(), $$0.dL(), $$0.dN());
+   protected bxr(bwr<? extends bxr> $$0, djh $$1) {
+      super($$0, $$1);
    }
 
-   public static bxr a(exo $$0) {
-      return new bxr($$0.c(), $$0.d(), $$0.e(), $$0.f());
+   public float c(iv $$0) {
+      return this.a($$0, this.dU());
    }
 
-   public static bxr a(bxr $$0, bxr $$1, Set<bxs> $$2) {
-      double $$3 = $$2.contains(bxs.a) ? $$0.b.d : 0.0;
-      double $$4 = $$2.contains(bxs.b) ? $$0.b.e : 0.0;
-      double $$5 = $$2.contains(bxs.c) ? $$0.b.f : 0.0;
-      float $$6 = $$2.contains(bxs.d) ? $$0.d : 0.0F;
-      float $$7 = $$2.contains(bxs.e) ? $$0.e : 0.0F;
-      feq $$8 = new feq($$3 + $$1.b.d, $$4 + $$1.b.e, $$5 + $$1.b.f);
-      float $$9 = $$6 + $$1.d;
-      float $$10 = azm.a($$7 + $$1.e, -90.0F, 90.0F);
-      feq $$11 = $$0.c;
-      if ($$2.contains(bxs.i)) {
-         float $$12 = $$0.d - $$9;
-         float $$13 = $$0.e - $$10;
-         $$11 = $$11.a((float)Math.toRadians((double)$$13));
-         $$11 = $$11.b((float)Math.toRadians((double)$$12));
+   public float a(iv $$0, djk $$1) {
+      return 0.0F;
+   }
+
+   @Override
+   public boolean a(dji $$0, bwq $$1) {
+      return this.a(this.du(), $$0) >= 0.0F;
+   }
+
+   public boolean gp() {
+      return !this.O().k();
+   }
+
+   public boolean gq() {
+      if (this.bs.a(cgl.aa)) {
+         return this.bs.c(cgl.aa).isPresent();
+      } else {
+         for (cft $$0 : this.bD.b()) {
+            if ($$0.h() && $$0.k() instanceof cey) {
+               return true;
+            }
+         }
+
+         return false;
       }
-
-      feq $$14 = new feq(a($$11.d, $$1.c.d, $$2, bxs.f), a($$11.e, $$1.c.e, $$2, bxs.g), a($$11.f, $$1.c.f, $$2, bxs.h));
-      return new bxr($$8, $$14, $$9, $$10);
    }
 
-   private static double a(double $$0, double $$1, Set<bxs> $$2, bxs $$3) {
-      return $$2.contains($$3) ? $$0 + $$1 : $$1;
+   protected boolean gr() {
+      return true;
    }
 
-   public feq a() {
-      return this.b;
+   @Override
+   public void a(bwi $$0) {
+      super.a($$0);
+      if (this.gr() && !this.gq()) {
+         this.bD.b(cef.a.a);
+         float $$1 = 2.0F;
+         float $$2 = this.f($$0);
+         fex $$3 = new fex($$0.dz() - this.dz(), $$0.dB() - this.dB(), $$0.dF() - this.dF()).d().c((double)Math.max($$2 - 2.0F, 0.0F));
+         this.O().a(this.dz() + $$3.d, this.dB() + $$3.e, this.dF() + $$3.f, this.gs());
+      }
    }
 
-   public feq b() {
-      return this.c;
+   @Override
+   public boolean a(bwi $$0, float $$1) {
+      this.a($$0.du(), 5);
+      return true;
    }
 
-   public float c() {
-      return this.d;
-   }
-
-   public float d() {
-      return this.e;
+   protected double gs() {
+      return 1.0;
    }
 }

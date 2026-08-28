@@ -1,15 +1,28 @@
-public class cyv extends cyz implements daf {
-   public cyv(cyz.a $$0) {
-      super($$0);
+public class cyv<T extends bwi & bxg> extends czg {
+   private final bwr<T> a;
+   private final int b;
+
+   public cyv(bwr<T> $$0, int $$1, czg.a $$2) {
+      super($$2);
+      this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public boolean a(dja $$0, dyt $$1, boolean $$2, crc $$3) {
-      if ($$1.a($$0x -> $$0x.a(false), $$2)) {
-         $$0.a(null, $$1.ax_(), awn.nN, awo.e, 1.0F, 1.0F);
-         return true;
+   public bug a(djh $$0, crj $$1, buf $$2) {
+      czk $$3 = $$1.b($$2);
+      if ($$0.C) {
+         return bug.e;
       } else {
-         return false;
+         bwi $$4 = $$1.dk();
+         if ($$1.bX() && $$4 instanceof bxg $$5 && $$4.an() == this.a && $$5.a()) {
+            bws $$6 = bxj.d($$2);
+            czk $$7 = $$3.a(this.b, czo.sd, $$1, $$6);
+            return bug.b.a($$7);
+         }
+
+         $$1.b(awx.c.b(this));
+         return bug.e;
       }
    }
 }

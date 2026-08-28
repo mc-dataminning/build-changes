@@ -1,117 +1,106 @@
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public abstract class ewu extends ewm {
-   @Override
-   public ewn d() {
-      return ewp.b;
+public abstract class ewu {
+   public static final jl<ewv> c = new jl<>();
+   protected final eap<ewu, ewv> d;
+   private ewv a;
+   private final jf.c<ewu> b = mg.c.f(this);
+
+   protected ewu() {
+      eap.a<ewu, ewv> $$0 = new eap.a<>(this);
+      this.a($$0);
+      this.d = $$0.a(ewu::g, ewv::new);
+      this.f(this.d.b());
    }
 
-   @Override
-   public ewn e() {
-      return ewp.c;
+   protected void a(eap.a<ewu, ewv> $$0) {
    }
 
-   @Override
-   public cyz a() {
-      return czh.rp;
+   public eap<ewu, ewv> f() {
+      return this.d;
    }
 
-   @Override
-   public void a(dja $$0, iu $$1, ewo $$2, azv $$3) {
-      if (!$$2.b() && !$$2.c(a)) {
-         if ($$3.a(64) == 0) {
-            $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, awn.Dg, awo.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
-         }
-      } else if ($$3.a(10) == 0) {
-         $$0.a(lx.ao, (double)$$1.u() + $$3.j(), (double)$$1.v() + $$3.j(), (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
-      }
+   protected final void f(ewv $$0) {
+      this.a = $$0;
+   }
+
+   public final ewv g() {
+      return this.a;
+   }
+
+   public abstract czg a();
+
+   protected void a(djh $$0, iv $$1, ewv $$2, azv $$3) {
+   }
+
+   protected void b(arq $$0, iv $$1, eao $$2, ewv $$3) {
+   }
+
+   protected void a(arq $$0, iv $$1, ewv $$2, azv $$3) {
+   }
+
+   protected void a(djh $$0, iv $$1, bwi $$2, bxb $$3) {
    }
 
    @Nullable
-   @Override
-   public lv h() {
-      return lx.l;
+   protected lw h() {
+      return null;
    }
 
-   @Override
-   protected boolean a(arq $$0) {
-      return $$0.O().c(diw.W);
+   protected abstract boolean a(ewv var1, din var2, iv var3, ewu var4, jb var5);
+
+   protected abstract fex a(din var1, iv var2, ewv var3);
+
+   public abstract int a(djk var1);
+
+   protected boolean i() {
+      return false;
    }
 
-   @Override
-   protected void a(djb $$0, iu $$1, eah $$2) {
-      dxf $$3 = $$2.x() ? $$0.c_($$1) : null;
-      dmf.a($$2, $$0, $$1, $$3);
+   protected boolean b() {
+      return false;
    }
 
-   @Override
-   public int b(djd $$0) {
-      return 4;
+   protected abstract float c();
+
+   public abstract float a(ewv var1, din var2, iv var3);
+
+   public abstract float a(ewv var1);
+
+   protected abstract eao b(ewv var1);
+
+   public abstract boolean c(ewv var1);
+
+   public abstract int d(ewv var1);
+
+   public boolean a(ewu $$0) {
+      return $$0 == this;
    }
 
-   @Override
-   public eah b(ewo $$0) {
-      return dmh.J.m().b(drb.b, Integer.valueOf(e($$0)));
+   @Deprecated
+   public boolean a(axr<ewu> $$0) {
+      return this.b.a($$0);
    }
 
-   @Override
-   public boolean a(ewn $$0) {
-      return $$0 == ewp.c || $$0 == ewp.b;
+   public abstract ffr b(ewv var1, din var2, iv var3);
+
+   @Nullable
+   public fes c(ewv $$0, din $$1, iv $$2) {
+      if (this.b()) {
+         return null;
+      } else {
+         float $$3 = $$0.a($$1, $$2);
+         return new fes((double)$$2.u(), (double)$$2.v(), (double)$$2.w(), (double)$$2.u() + 1.0, (double)((float)$$2.v() + $$3), (double)$$2.w() + 1.0);
+      }
    }
 
-   @Override
-   public int c(djd $$0) {
-      return 1;
-   }
-
-   @Override
-   public int a(djd $$0) {
-      return 5;
-   }
-
-   @Override
-   public boolean a(ewo $$0, dig $$1, iu $$2, ewn $$3, ja $$4) {
-      return $$4 == ja.a && !$$3.a(axh.a);
-   }
-
-   @Override
-   protected float c() {
-      return 100.0F;
-   }
-
-   @Override
    public Optional<awm> j() {
-      return Optional.of(awn.dj);
+      return Optional.empty();
    }
 
-   public static class a extends ewu {
-      @Override
-      protected void a(eai.a<ewn, ewo> $$0) {
-         super.a($$0);
-         $$0.a(b);
-      }
-
-      @Override
-      public int d(ewo $$0) {
-         return $$0.c(b);
-      }
-
-      @Override
-      public boolean c(ewo $$0) {
-         return false;
-      }
-   }
-
-   public static class b extends ewu {
-      @Override
-      public int d(ewo $$0) {
-         return 8;
-      }
-
-      @Override
-      public boolean c(ewo $$0) {
-         return true;
-      }
+   @Deprecated
+   public jf.c<ewu> k() {
+      return this.b;
    }
 }

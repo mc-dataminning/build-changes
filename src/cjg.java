@@ -1,32 +1,46 @@
-import java.util.Optional;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class cjg {
-   public static final alf<cjf> a = a(cka.a);
-   public static final alf<cjf> b = a(cka.b);
-   public static final alf<cjf> c = a(cka.c);
-   public static final alf<cjf> d = a;
+public record cjg(ctk<cjg.a> e, ctq f) implements ctm<ctp, ctn> {
+   public static final Codec<cjg> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ctk.a(cjg.a.c, cjg.a.a).forGetter(cjg::b), ctq.b.fieldOf("spawn_conditions").forGetter(cjg::c)).apply($$0, cjg::new)
+   );
+   public static final Codec<cjg> b = RecordCodecBuilder.create($$0 -> $$0.group(ctk.a(cjg.a.c, cjg.a.a).forGetter(cjg::b)).apply($$0, cjg::new));
+   public static final Codec<jf<cjg>> c = ald.a(mh.aJ);
+   public static final yw<wj, jf<cjg>> d = yu.b(mh.aJ);
 
-   private static alf<cjf> a(alg $$0) {
-      return alf.a(mg.aM, $$0);
+   private cjg(ctk<cjg.a> $$0) {
+      this($$0, ctq.a);
    }
 
-   public static void a(qh<cjf> $$0) {
-      a($$0, a, cjf.a.a, "temperate_cow", ctj.a(0));
-      a($$0, b, cjf.a.c, "warm_cow", axb.al);
-      a($$0, c, cjf.a.b, "cold_cow", axb.ak);
+   @Override
+   public List<ctm.a<ctp, ctn>> a() {
+      return this.f.a();
    }
 
-   private static void a(qh<cjf> $$0, alf<cjf> $$1, cjf.a $$2, String $$3, axr<dkd> $$4) {
-      ji<dkd> $$5 = $$0.a(mg.aG).b($$4);
-      a($$0, $$1, $$2, $$3, ctj.a(new ctc($$5), 1));
+   public ctk<cjg.a> b() {
+      return this.e;
    }
 
-   private static void a(qh<cjf> $$0, alf<cjf> $$1, cjf.a $$2, String $$3, ctj $$4) {
-      alg $$5 = alg.b("entity/cow/" + $$3);
-      $$0.a($$1, new cjf(new ctd<>($$2, $$5), $$4));
+   public ctq c() {
+      return this.f;
    }
 
-   public static Optional<je.c<cjf>> a(azv $$0, js $$1, cti $$2) {
-      return ctf.a($$1.f(mg.aM).c(), je::a, $$0, $$2);
+   public static enum a implements bak {
+      a("normal"),
+      b("cold");
+
+      public static final Codec<cjg.a> c = bak.a(cjg.a::values);
+      private final String d;
+
+      private a(final String $$0) {
+         this.d = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.d;
+      }
    }
 }

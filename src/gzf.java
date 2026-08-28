@@ -1,23 +1,16 @@
-public class gzf extends gxn<cqu, hex, gil> {
-   private static final alg a = alg.b("textures/entity/wandering_trader.png");
+public class gzf extends gxz<cle, hdz, giq> {
+   private static final alg a = alg.b("textures/entity/tadpole/tadpole.png");
 
-   public gzf(gwh.a $$0) {
-      super($$0, new gil($$0.a(gjb.dM)), 0.5F);
-      this.a(new haa<>(this, $$0.f()));
-      this.a(new gzz<>(this));
+   public gzf(gwt.a $$0) {
+      super($$0, new giq($$0.a(gjn.dx)), 0.14F);
    }
 
-   public alg a(hex $$0) {
+   @Override
+   public alg b(hdz $$0) {
       return a;
    }
 
-   public hex b() {
-      return new hex();
-   }
-
-   public void a(cqu $$0, hex $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      hdc.a($$0, $$1, this.h);
-      $$1.a = $$0.q() > 0;
+   public hdz b() {
+      return new hdz();
    }
 }

@@ -1,26 +1,37 @@
 import com.mojang.serialization.Codec;
 
-public class ejp extends ejm<elu> {
-   public ejp(Codec<elu> $$0) {
+public class ejp extends ejt<elw> {
+   public ejp(Codec<elw> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejo<elu> $$0) {
-      iu $$1 = $$0.e();
-      elu $$2 = $$0.f();
-      djz $$3 = $$0.b();
-      iu.a $$4 = new iu.a();
+   public boolean a(ejv<elw> $$0) {
+      iv $$1 = $$0.e();
+      dkg $$2 = $$0.b();
+      elw $$3 = $$0.f();
 
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$1.u() + $$5;
-            int $$8 = $$1.w() + $$6;
-            int $$9 = $$3.G_() + $$2.b;
-            $$4.d($$7, $$9, $$8);
-            if ($$3.a_($$4).l()) {
-               $$3.a($$4, $$2.c, 2);
-            }
+      for (iv $$4 : iv.c($$1.b(-1, -2, -1), $$1.b(1, 2, 1))) {
+         boolean $$5 = $$4.u() == $$1.u();
+         boolean $$6 = $$4.v() == $$1.v();
+         boolean $$7 = $$4.w() == $$1.w();
+         boolean $$8 = Math.abs($$4.v() - $$1.v()) == 2;
+         if ($$5 && $$6 && $$7) {
+            iv $$9 = $$4.j();
+            this.a($$2, $$9, dmo.ll.m());
+            $$3.b().ifPresent($$3x -> {
+               if ($$2.c_($$9) instanceof dzi $$5x) {
+                  $$5x.a($$3x, $$3.c());
+               }
+            });
+         } else if ($$6) {
+            this.a($$2, $$4, dmo.a.m());
+         } else if ($$8 && $$5 && $$7) {
+            this.a($$2, $$4, dmo.I.m());
+         } else if (($$5 || $$7) && !$$8) {
+            this.a($$2, $$4, dmo.I.m());
+         } else {
+            this.a($$2, $$4, dmo.a.m());
          }
       }
 

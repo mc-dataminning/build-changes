@@ -1,14 +1,52 @@
-public class cys extends dag {
-   public cys(dmf $$0, dmf $$1, cyz.a $$2) {
-      super($$2, $$0, $$1, ja.b);
+public class cys extends czg implements dae {
+   public static final byte[] a = new byte[]{1, 2, 3};
+   public static final double b = 0.15;
+
+   public cys(czg.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(djd $$0, eah $$1, iu $$2) {
-      if ($$1.b() instanceof dvv $$3 && !$$3.b($$1, $$0, $$2)) {
-         return false;
+   public bug a(ddf $$0) {
+      djh $$1 = $$0.q();
+      if ($$1 instanceof arq $$2) {
+         czk $$3 = $$0.n();
+         fex $$4 = $$0.l();
+         jb $$5 = $$0.k();
+         cse.a(new crz($$1, $$0.o(), $$4.d + (double)$$5.j() * 0.15, $$4.e + (double)$$5.k() * 0.15, $$4.f + (double)$$5.l() * 0.15, $$3), $$2, $$3);
+         $$3.h(1);
       }
 
-      return super.a($$0, $$1, $$2);
+      return bug.a;
+   }
+
+   @Override
+   public bug a(djh $$0, crj $$1, buf $$2) {
+      if ($$1.fI()) {
+         czk $$3 = $$1.b($$2);
+         if ($$0 instanceof arq $$4) {
+            cse.a(new crz($$0, $$3, $$1), $$4, $$3);
+            $$3.a(1, $$1);
+            $$1.b(awx.c.b(this));
+         }
+
+         return bug.a;
+      } else {
+         return bug.e;
+      }
+   }
+
+   @Override
+   public cse a(djh $$0, jp $$1, czk $$2, jb $$3) {
+      return new crz($$0, $$2.c(1), $$1.a(), $$1.b(), $$1.c(), true);
+   }
+
+   @Override
+   public dae.a a() {
+      return dae.a.a().a(cys::a).a(1.0F).b(0.5F).a(1004).a();
+   }
+
+   private static fex a(le $$0, jb $$1) {
+      return $$0.a().b((double)$$1.j() * 0.5000099999997474, (double)$$1.k() * 0.5000099999997474, (double)$$1.l() * 0.5000099999997474);
    }
 }

@@ -1,60 +1,73 @@
-public class bum {
-   public static final float a = 1.0F;
-   protected float b = 20.0F;
-   protected long c = baq.a / 20L;
-   protected int d = 0;
-   protected boolean e = true;
-   protected boolean f = false;
+import javax.annotation.Nullable;
 
-   public void a(float $$0) {
-      this.b = Math.max($$0, 1.0F);
-      this.c = (long)((double)baq.a / (double)this.b);
+public interface bum extends btz {
+   String b = "LootTable";
+   String c = "LootTableSeed";
+
+   @Nullable
+   alf<ezt> at_();
+
+   void a(@Nullable alf<ezt> var1);
+
+   default void a(alf<ezt> $$0, long $$1) {
+      this.a($$0);
+      this.a($$1);
    }
 
-   public float f() {
-      return this.b;
-   }
+   long aw_();
 
-   public float g() {
-      return (float)this.c / (float)baq.b;
-   }
+   void a(long var1);
 
-   public long h() {
-      return this.c;
-   }
+   iv ax_();
 
-   public boolean i() {
-      return this.e;
-   }
+   @Nullable
+   djh i();
 
-   public boolean j() {
-      return this.d > 0;
-   }
-
-   public void c(int $$0) {
-      this.d = $$0;
-   }
-
-   public int k() {
-      return this.d;
-   }
-
-   public void a(boolean $$0) {
-      this.f = $$0;
-   }
-
-   public boolean l() {
-      return this.f;
-   }
-
-   public void m() {
-      this.e = !this.f || this.d > 0;
-      if (this.d > 0) {
-         this.d--;
+   static void a(din $$0, azv $$1, iv $$2, alf<ezt> $$3) {
+      if ($$0.c_($$2) instanceof bum $$5) {
+         $$5.a($$3, $$1.g());
       }
    }
 
-   public boolean a(bwf $$0) {
-      return !this.i() && !($$0 instanceof crc) && $$0.dd() <= 0;
+   default boolean b_(tz $$0) {
+      alf<ezt> $$1 = $$0.<alf<ezt>>a("LootTable", ezt.a).orElse(null);
+      this.a($$1);
+      this.a($$0.b("LootTableSeed", 0L));
+      return $$1 != null;
+   }
+
+   default boolean c_(tz $$0) {
+      alf<ezt> $$1 = this.at_();
+      if ($$1 == null) {
+         return false;
+      } else {
+         $$0.a("LootTable", ezt.a, $$1);
+         long $$2 = this.aw_();
+         if ($$2 != 0L) {
+            $$0.a("LootTableSeed", $$2);
+         }
+
+         return true;
+      }
+   }
+
+   default void d_(@Nullable crj $$0) {
+      djh $$1 = this.i();
+      iv $$2 = this.ax_();
+      alf<ezt> $$3 = this.at_();
+      if ($$3 != null && $$1 != null && $$1.p() != null) {
+         ezt $$4 = $$1.p().bc().b($$3);
+         if ($$0 instanceof arr) {
+            aq.Q.a((arr)$$0, $$3);
+         }
+
+         this.a(null);
+         ezr.a $$5 = new ezr.a((arq)$$1).a(fci.f, fex.b($$2));
+         if ($$0 != null) {
+            $$5.a($$0.eg()).a(fci.a, $$0);
+         }
+
+         $$4.a(this, $$5.a(fch.c), this.aw_());
+      }
    }
 }

@@ -8,20 +8,20 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class axt {
-   public static Map<alf<? extends jr<?>>, axt.a> a(jl<alp> $$0) {
-      return jv.b($$0)
+   public static Map<alf<? extends js<?>>, axt.a> a(jm<alp> $$0) {
+      return jw.b($$0)
          .map($$0x -> Pair.of($$0x.a(), a($$0x.b())))
          .filter($$0x -> !((axt.a)$$0x.getSecond()).a())
          .collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
    }
 
-   private static <T> axt.a a(jr<T> $$0) {
+   private static <T> axt.a a(js<T> $$0) {
       Map<alg, IntList> $$1 = new HashMap<>();
       $$0.l().forEach($$2 -> {
          IntList $$3 = new IntArrayList($$2.b());
 
-         for (je<T> $$4 : $$2) {
-            if ($$4.f() != je.b.a) {
+         for (jf<T> $$4 : $$2) {
+            if ($$4.f() != jf.b.a) {
                throw new IllegalStateException("Can't serialize unregistered value " + $$4);
             }
 
@@ -33,12 +33,12 @@ public class axt {
       return new axt.a($$1);
    }
 
-   static <T> axs.c<T> a(jr<T> $$0, axt.a $$1) {
-      alf<? extends jr<T>> $$2 = $$0.g();
-      Map<axr<T>, List<je<T>>> $$3 = new HashMap<>();
+   static <T> axs.c<T> a(js<T> $$0, axt.a $$1) {
+      alf<? extends js<T>> $$2 = $$0.g();
+      Map<axr<T>, List<jf<T>>> $$3 = new HashMap<>();
       $$1.b.forEach(($$3x, $$4) -> {
          axr<T> $$5 = axr.a($$2, $$3x);
-         List<je<T>> $$6 = $$4.intStream().mapToObj($$0::c).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
+         List<jf<T>> $$6 = $$4.intStream().mapToObj($$0::c).flatMap(Optional::stream).collect(Collectors.toUnmodifiableList());
          $$3.put($$5, $$6);
       });
       return new axs.c<>($$2, $$3);
@@ -68,7 +68,7 @@ public class axt {
          return this.b.size();
       }
 
-      public <T> axs.c<T> a(jr<T> $$0) {
+      public <T> axs.c<T> a(js<T> $$0) {
          return axt.a($$0, this);
       }
    }

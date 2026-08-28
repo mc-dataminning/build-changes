@@ -22,7 +22,7 @@ public abstract class awf implements Runnable {
       } else {
          this.a = true;
          this.c = new Thread(this, this.b + " #" + e.incrementAndGet());
-         this.c.setUncaughtExceptionHandler(new s(d));
+         this.c.setUncaughtExceptionHandler(new t(d));
          this.c.start();
          d.info("Thread {} started", this.b);
          return true;

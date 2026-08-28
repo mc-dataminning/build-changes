@@ -10,7 +10,7 @@ public record arx(long j, boolean k, arx.a l) {
    public static final arx i = a("unknown", 1L, false, arx.a.a);
 
    private static arx a(String $$0, long $$1, boolean $$2, arx.a $$3) {
-      return jr.a(mf.aA, $$0, new arx($$1, $$2, $$3));
+      return js.a(mg.aA, $$0, new arx($$1, $$2, $$3));
    }
 
    public boolean a() {

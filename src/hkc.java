@@ -1,69 +1,45 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import org.slf4j.Logger;
+import com.mojang.authlib.GameProfile;
+import java.util.UUID;
 
-public class hkc extends tu {
-   private static final Logger b = LogUtils.getLogger();
-   private final Map<String, String> c;
-   private final boolean d;
+public class hkc {
+   private static final hkl[] a = new hkl[]{
+      a("textures/entity/player/slim/alex.png", hkl.a.a),
+      a("textures/entity/player/slim/ari.png", hkl.a.a),
+      a("textures/entity/player/slim/efe.png", hkl.a.a),
+      a("textures/entity/player/slim/kai.png", hkl.a.a),
+      a("textures/entity/player/slim/makena.png", hkl.a.a),
+      a("textures/entity/player/slim/noor.png", hkl.a.a),
+      a("textures/entity/player/slim/steve.png", hkl.a.a),
+      a("textures/entity/player/slim/sunny.png", hkl.a.a),
+      a("textures/entity/player/slim/zuri.png", hkl.a.a),
+      a("textures/entity/player/wide/alex.png", hkl.a.b),
+      a("textures/entity/player/wide/ari.png", hkl.a.b),
+      a("textures/entity/player/wide/efe.png", hkl.a.b),
+      a("textures/entity/player/wide/kai.png", hkl.a.b),
+      a("textures/entity/player/wide/makena.png", hkl.a.b),
+      a("textures/entity/player/wide/noor.png", hkl.a.b),
+      a("textures/entity/player/wide/steve.png", hkl.a.b),
+      a("textures/entity/player/wide/sunny.png", hkl.a.b),
+      a("textures/entity/player/wide/zuri.png", hkl.a.b)
+   };
 
-   private hkc(Map<String, String> $$0, boolean $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public static alg a() {
+      return b().a();
    }
 
-   public static hkc a(avd $$0, List<String> $$1, boolean $$2) {
-      Map<String, String> $$3 = new HashMap<>();
-
-      for (String $$4 : $$1) {
-         String $$5 = String.format(Locale.ROOT, "lang/%s.json", $$4);
-
-         for (String $$6 : $$0.a()) {
-            try {
-               alg $$7 = alg.a($$6, $$5);
-               a($$4, $$0.a($$7), $$3);
-            } catch (Exception var10) {
-               b.warn("Skipped language file: {}:{} ({})", new Object[]{$$6, $$5, var10.toString()});
-            }
-         }
-      }
-
-      tt.a().a($$3);
-      return new hkc(Map.copyOf($$3), $$2);
+   public static hkl b() {
+      return a[6];
    }
 
-   private static void a(String $$0, List<avb> $$1, Map<String, String> $$2) {
-      for (avb $$3 : $$1) {
-         try (InputStream $$4 = $$3.d()) {
-            tu.a($$4, $$2::put);
-         } catch (IOException var10) {
-            b.warn("Failed to load translations for {} from pack {}", new Object[]{$$0, $$3.b(), var10});
-         }
-      }
+   public static hkl a(UUID $$0) {
+      return a[Math.floorMod($$0.hashCode(), a.length)];
    }
 
-   @Override
-   public String a(String $$0, String $$1) {
-      return this.c.getOrDefault($$0, $$1);
+   public static hkl a(GameProfile $$0) {
+      return a($$0.getId());
    }
 
-   @Override
-   public boolean b(String $$0) {
-      return this.c.containsKey($$0);
-   }
-
-   @Override
-   public boolean b() {
-      return this.d;
-   }
-
-   @Override
-   public ayy a(xd $$0) {
-      return hkd.a($$0, this.d);
+   private static hkl a(String $$0, hkl.a $$1) {
+      return new hkl(alg.b($$0), null, null, null, $$1, true);
    }
 }

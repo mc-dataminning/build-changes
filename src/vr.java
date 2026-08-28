@@ -49,9 +49,9 @@ public class vr extends SimpleChannelInboundHandler<zf<?>> {
    private static final float h = 0.75F;
    private static final Logger i = LogUtils.getLogger();
    public static final Marker a = MarkerFactory.getMarker("NETWORK");
-   public static final Marker b = af.a(MarkerFactory.getMarker("NETWORK_PACKETS"), $$0 -> $$0.add(a));
-   public static final Marker c = af.a(MarkerFactory.getMarker("PACKET_RECEIVED"), $$0 -> $$0.add(b));
-   public static final Marker d = af.a(MarkerFactory.getMarker("PACKET_SENT"), $$0 -> $$0.add(b));
+   public static final Marker b = ag.a(MarkerFactory.getMarker("NETWORK_PACKETS"), $$0 -> $$0.add(a));
+   public static final Marker c = ag.a(MarkerFactory.getMarker("PACKET_RECEIVED"), $$0 -> $$0.add(b));
+   public static final Marker d = ag.a(MarkerFactory.getMarker("PACKET_SENT"), $$0 -> $$0.add(b));
    public static final Supplier<NioEventLoopGroup> e = Suppliers.memoize(
       () -> new NioEventLoopGroup(0, new ThreadFactoryBuilder().setNameFormat("Netty Client IO #%d").setDaemon(true).build())
    );
@@ -257,7 +257,7 @@ public class vr extends SimpleChannelInboundHandler<zf<?>> {
          this.p = $$4;
          this.a((Consumer<vr>)($$6 -> {
             this.a($$3, $$4);
-            $$6.b(new aiw(ab.b().e(), $$0, $$1, $$5), null, true);
+            $$6.b(new aiw(ac.b().e(), $$0, $$1, $$5), null, true);
             this.a($$2);
          }));
       }
@@ -413,7 +413,7 @@ public class vr extends SimpleChannelInboundHandler<zf<?>> {
       return this.k.a();
    }
 
-   public static vr a(InetSocketAddress $$0, boolean $$1, @Nullable boy $$2) {
+   public static vr a(InetSocketAddress $$0, boolean $$1, @Nullable bpa $$2) {
       vr $$3 = new vr(zg.b);
       if ($$2 != null) {
          $$3.a($$2);
@@ -586,7 +586,7 @@ public class vr extends SimpleChannelInboundHandler<zf<?>> {
       return this.x;
    }
 
-   public void a(boy $$0) {
+   public void a(bpa $$0) {
       this.B = new vk($$0);
    }
 }

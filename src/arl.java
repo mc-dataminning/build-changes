@@ -1,4 +1,4 @@
-public abstract class arl extends ewa {
+public abstract class arl extends ewh {
    protected arl(int $$0, int $$1, int $$2) {
       super($$0, $$1, $$2);
    }
@@ -9,7 +9,7 @@ public abstract class arl extends ewa {
          for (int $$3 = -1; $$3 <= 1; $$3++) {
             for (int $$4 = -1; $$4 <= 1; $$4++) {
                for (int $$5 = -1; $$5 <= 1; $$5++) {
-                  long $$6 = jx.a($$0, $$3, $$4, $$5);
+                  long $$6 = jy.a($$0, $$3, $$4, $$5);
                   if ($$6 != $$0) {
                      this.b($$0, $$6, $$1, $$2);
                   }
@@ -26,7 +26,7 @@ public abstract class arl extends ewa {
       for (int $$4 = -1; $$4 <= 1; $$4++) {
          for (int $$5 = -1; $$5 <= 1; $$5++) {
             for (int $$6 = -1; $$6 <= 1; $$6++) {
-               long $$7 = jx.a($$0, $$4, $$5, $$6);
+               long $$7 = jy.a($$0, $$4, $$5, $$6);
                if ($$7 == $$0) {
                   $$7 = Long.MAX_VALUE;
                }

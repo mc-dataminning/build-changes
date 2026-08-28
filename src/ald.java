@@ -5,20 +5,20 @@ import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.Lifecycle;
 import java.util.Optional;
 
-public final class ald<E> implements Codec<je<E>> {
-   private final alf<? extends jr<E>> a;
+public final class ald<E> implements Codec<jf<E>> {
+   private final alf<? extends js<E>> a;
 
-   public static <E> ald<E> a(alf<? extends jr<E>> $$0) {
+   public static <E> ald<E> a(alf<? extends js<E>> $$0) {
       return new ald<>($$0);
    }
 
-   private ald(alf<? extends jr<E>> $$0) {
+   private ald(alf<? extends js<E>> $$0) {
       this.a = $$0;
    }
 
-   public <T> DataResult<T> a(je<E> $$0, DynamicOps<T> $$1, T $$2) {
+   public <T> DataResult<T> a(jf<E> $$0, DynamicOps<T> $$1, T $$2) {
       if ($$1 instanceof ale<?> $$3) {
-         Optional<jh<E>> $$4 = $$3.a(this.a);
+         Optional<ji<E>> $$4 = $$3.a(this.a);
          if ($$4.isPresent()) {
             if (!$$0.a($$4.get())) {
                return DataResult.error(() -> "Element " + $$0 + " is not valid in current registry set");
@@ -35,9 +35,9 @@ public final class ald<E> implements Codec<je<E>> {
       return DataResult.error(() -> "Can't access registry " + this.a);
    }
 
-   public <T> DataResult<Pair<je<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
+   public <T> DataResult<Pair<jf<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
       if ($$0 instanceof ale<?> $$2) {
-         Optional<jf<E>> $$3 = $$2.b(this.a);
+         Optional<jg<E>> $$3 = $$2.b(this.a);
          if ($$3.isPresent()) {
             return alg.a
                .decode($$0, $$1)

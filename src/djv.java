@@ -1,34 +1,41 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.List;
 
-public interface djv {
-   void a(bwo<?> var1, azv var2);
+public class djv {
+   private final List<djv.a> a = Lists.newArrayList();
 
-   static void a(dbl $$0, Consumer<wy> $$1, String $$2) {
-      wy $$3 = a($$0, $$2);
-      if ($$3 != null) {
-         $$1.accept($$3);
-      } else {
-         $$1.accept(wx.a);
-         $$1.accept(wy.c("block.minecraft.spawner.desc1").a(n.h));
-         $$1.accept(wx.a().b(wy.c("block.minecraft.spawner.desc2").a(n.j)));
+   public void a(iv $$0, double $$1) {
+      if ($$1 != 0.0) {
+         this.a.add(new djv.a($$0, $$1));
       }
    }
 
-   @Nullable
-   static wy a(dbl $$0, String $$1) {
-      tz $$2 = $$0.e();
-      alg $$3 = a($$2, $$1);
-      return $$3 != null ? mf.f.b($$3).map($$0x -> wy.c($$0x.g()).a(n.h)).orElse(null) : null;
+   public double b(iv $$0, double $$1) {
+      if ($$1 == 0.0) {
+         return 0.0;
+      } else {
+         double $$2 = 0.0;
+
+         for (djv.a $$3 : this.a) {
+            $$2 += $$3.a($$0);
+         }
+
+         return $$2 * $$1;
+      }
    }
 
-   @Nullable
-   private static alg a(tz $$0, String $$1) {
-      if ($$0.b($$1, 10)) {
-         String $$2 = $$0.p($$1).p("entity").l("id");
-         return alg.c($$2);
-      } else {
-         return null;
+   static class a {
+      private final iv a;
+      private final double b;
+
+      public a(iv $$0, double $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public double a(iv $$0) {
+         double $$1 = this.a.j($$0);
+         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
       }
    }
 }

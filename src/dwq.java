@@ -1,20 +1,24 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dwq extends dvx {
-   public static final MapCodec<dwq> b = b(dwq::new);
+public class dwq extends dmm {
+   public static final MapCodec<dwq> a = b(dwq::new);
 
    @Override
    public MapCodec<dwq> a() {
-      return b;
+      return a;
    }
 
-   protected dwq(eag.d $$0) {
-      super(dtr.b.d, $$0);
+   public dwq(ean.d $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(dja $$0, iu $$1, eah $$2, @Nullable bxe $$3, czd $$4) {
-      dwp.a($$0, $$1);
+   protected void a(eao $$0, djh $$1, iv $$2, bwi $$3, bxb $$4) {
+      fex $$5 = new fex(0.25, 0.05F, 0.25);
+      if ($$3 instanceof bxj $$6 && $$6.b(bvo.K)) {
+         $$5 = new fex(0.5, 0.25, 0.5);
+      }
+
+      $$3.a($$0, $$5);
    }
 }

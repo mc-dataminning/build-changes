@@ -1,9 +1,14 @@
 import java.time.Duration;
-import java.time.Instant;
 import jdk.jfr.consumer.RecordedEvent;
 
-public record brt(Instant a, Duration b) {
+public record brt(Duration a, dio b, String c, String d, boolean e) implements brw {
    public static brt a(RecordedEvent $$0) {
-      return new brt($$0.getStartTime(), $$0.getDuration("averageTickDuration"));
+      return new brt(
+         $$0.getDuration(),
+         new dio($$0.getInt("chunkPosX"), $$0.getInt("chunkPosX")),
+         $$0.getString("structure"),
+         $$0.getString("level"),
+         $$0.getBoolean("success")
+      );
    }
 }

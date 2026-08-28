@@ -1,62 +1,107 @@
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.DataResult;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Consumer;
+import org.slf4j.Logger;
 
-public record cus(int c, float d, boolean e) implements dbj {
-   public static final Codec<cus> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayu.l.fieldOf("nutrition").forGetter(cus::a),
-               Codec.FLOAT.fieldOf("saturation").forGetter(cus::b),
-               Codec.BOOL.optionalFieldOf("can_always_eat", false).forGetter(cus::c)
-            )
-            .apply($$0, cus::new)
-   );
-   public static final yw<wj, cus> b = yw.a(yu.h, cus::a, yu.l, cus::b, yu.b, cus::c, cus::new);
+public class cus {
+   private static final Logger a = LogUtils.getLogger();
+   private final cuu b;
+   private final Map<alg, cur> c;
+   private final cut d;
 
-   @Override
-   public void a(dja $$0, bxe $$1, czd $$2, dbi $$3) {
-      azv $$4 = $$1.dY();
-      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), $$3.e().a(), awo.g, 1.0F, $$4.a(1.0F, 0.4F));
-      if ($$1 instanceof crc $$5) {
-         $$5.gu().a(this);
-         $$0.a(null, $$5.dA(), $$5.dC(), $$5.dG(), awn.uX, awo.h, 0.5F, azm.b($$4, 0.9F, 1.0F));
-      }
+   cus(cuu $$0, cut $$1, Map<alg, cur> $$2) {
+      this.b = $$0;
+      this.c = $$2;
+      this.d = $$1;
    }
 
-   public int a() {
-      return this.c;
+   public boolean a(cut $$0) {
+      return $$0.a(this.d);
    }
 
-   public float b() {
+   public cut a() {
       return this.d;
    }
 
-   public boolean c() {
-      return this.e;
+   public cut a(Iterable<alg> $$0) {
+      return this.a($$0, $$0x -> a.warn("Unknown feature flag: {}", $$0x));
+   }
+
+   public cut a(cur... $$0) {
+      return cut.a(this.b, Arrays.asList($$0));
+   }
+
+   public cut a(Iterable<alg> $$0, Consumer<alg> $$1) {
+      Set<cur> $$2 = Sets.newIdentityHashSet();
+
+      for (alg $$3 : $$0) {
+         cur $$4 = this.c.get($$3);
+         if ($$4 == null) {
+            $$1.accept($$3);
+         } else {
+            $$2.add($$4);
+         }
+      }
+
+      return cut.a(this.b, $$2);
+   }
+
+   public Set<alg> b(cut $$0) {
+      Set<alg> $$1 = new HashSet<>();
+      this.c.forEach(($$2, $$3) -> {
+         if ($$0.b($$3)) {
+            $$1.add($$2);
+         }
+      });
+      return $$1;
+   }
+
+   public Codec<cut> b() {
+      return alg.a.listOf().comapFlatMap($$0 -> {
+         Set<alg> $$1 = new HashSet<>();
+         cut $$2 = this.a($$0, $$1::add);
+         return !$$1.isEmpty() ? DataResult.error(() -> "Unknown feature ids: " + $$1, $$2) : DataResult.success($$2);
+      }, $$0 -> List.copyOf(this.b($$0)));
    }
 
    public static class a {
-      private int a;
-      private float b;
-      private boolean c;
+      private final cuu a;
+      private int b;
+      private final Map<alg, cur> c = new LinkedHashMap<>();
 
-      public cus.a a(int $$0) {
-         this.a = $$0;
-         return this;
+      public a(String $$0) {
+         this.a = new cuu($$0);
       }
 
-      public cus.a a(float $$0) {
-         this.b = $$0;
-         return this;
+      public cur a(String $$0) {
+         return this.a(alg.b($$0));
       }
 
-      public cus.a a() {
-         this.c = true;
-         return this;
+      public cur a(alg $$0) {
+         if (this.b >= 64) {
+            throw new IllegalStateException("Too many feature flags");
+         } else {
+            cur $$1 = new cur(this.a, this.b++);
+            cur $$2 = this.c.put($$0, $$1);
+            if ($$2 != null) {
+               throw new IllegalStateException("Duplicate feature flag " + $$0);
+            } else {
+               return $$1;
+            }
+         }
       }
 
-      public cus b() {
-         float $$0 = cuq.a(this.a, this.b);
-         return new cus(this.a, $$0, this.c);
+      public cus a() {
+         cut $$0 = cut.a(this.a, this.c.values());
+         return new cus(this.a, $$0, Map.copyOf(this.c));
       }
    }
 }

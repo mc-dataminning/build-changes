@@ -1,27 +1,39 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dvp extends dqv {
-   public static final MapCodec<dvp> f = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ayu.a(0.0F, 1.0F).fieldOf("leaf_particle_chance").forGetter($$0x -> $$0x.e), lx.bk.fieldOf("leaf_particle").forGetter($$0x -> $$0x.g), t()
-            )
-            .apply($$0, dvp::new)
-   );
-   protected final lv g;
-
-   public dvp(float $$0, lv $$1, eag.d $$2) {
-      super($$0, $$2);
-      this.g = $$1;
-   }
-
-   @Override
-   protected void a(dja $$0, iu $$1, azv $$2) {
-      azq.a($$0, $$1, $$2, this.g);
-   }
+public class dvp extends dnq {
+   public static final MapCodec<dvp> g = b(dvp::new);
 
    @Override
    public MapCodec<dvp> a() {
-      return f;
+      return g;
+   }
+
+   public dvp(ean.d $$0) {
+      super(() -> dxo.c, $$0);
+   }
+
+   @Override
+   public dxm a(iv $$0, eao $$1) {
+      return new dzl($$0, $$1);
+   }
+
+   @Override
+   protected awu<alg> c() {
+      return awx.i.b(awx.ai);
+   }
+
+   @Override
+   protected boolean f_(eao $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(eao $$0, din $$1, iv $$2, jb $$3) {
+      return azm.a(dxu.a($$1, $$2), 0, 15);
+   }
+
+   @Override
+   protected int b(eao $$0, din $$1, iv $$2, jb $$3) {
+      return $$3 == jb.b ? $$0.a($$1, $$2, $$3) : 0;
    }
 }

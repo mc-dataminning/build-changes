@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import java.io.IOException;
+import java.nio.ByteBuffer;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface hod {
+public interface hod extends hoa {
+   ByteBuffer b() throws IOException;
 }

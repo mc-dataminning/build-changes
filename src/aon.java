@@ -10,35 +10,35 @@ public class aon {
    private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("commands.recipe.give.failed"));
    private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wy.c("commands.recipe.take.failed"));
 
-   public static void a(CommandDispatcher<ei> $$0) {
+   public static void a(CommandDispatcher<ej> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("recipe").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("recipe").requires($$0x -> $$0x.c(2)))
                .then(
-                  ej.a("give")
+                  ek.a("give")
                      .then(
-                        ((RequiredArgumentBuilder)ej.a("targets", ev.d())
+                        ((RequiredArgumentBuilder)ek.a("targets", ew.d())
                               .then(
-                                 ej.a("recipe", fi.a(mg.bu))
-                                    .executes($$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), Collections.singleton(fi.d($$0x, "recipe"))))
+                                 ek.a("recipe", fj.a(mh.bu))
+                                    .executes($$0x -> a((ej)$$0x.getSource(), ew.f($$0x, "targets"), Collections.singleton(fj.d($$0x, "recipe"))))
                               ))
-                           .then(ej.a("*").executes($$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), ((ei)$$0x.getSource()).l().aI().e())))
+                           .then(ek.a("*").executes($$0x -> a((ej)$$0x.getSource(), ew.f($$0x, "targets"), ((ej)$$0x.getSource()).l().aI().d())))
                      )
                ))
             .then(
-               ej.a("take")
+               ek.a("take")
                   .then(
-                     ((RequiredArgumentBuilder)ej.a("targets", ev.d())
+                     ((RequiredArgumentBuilder)ek.a("targets", ew.d())
                            .then(
-                              ej.a("recipe", fi.a(mg.bu))
-                                 .executes($$0x -> b((ei)$$0x.getSource(), ev.f($$0x, "targets"), Collections.singleton(fi.d($$0x, "recipe"))))
+                              ek.a("recipe", fj.a(mh.bu))
+                                 .executes($$0x -> b((ej)$$0x.getSource(), ew.f($$0x, "targets"), Collections.singleton(fj.d($$0x, "recipe"))))
                            ))
-                        .then(ej.a("*").executes($$0x -> b((ei)$$0x.getSource(), ev.f($$0x, "targets"), ((ei)$$0x.getSource()).l().aI().e())))
+                        .then(ek.a("*").executes($$0x -> b((ej)$$0x.getSource(), ew.f($$0x, "targets"), ((ej)$$0x.getSource()).l().aI().d())))
                   )
             )
       );
    }
 
-   private static int a(ei $$0, Collection<arr> $$1, Collection<ddz<?>> $$2) throws CommandSyntaxException {
+   private static int a(ej $$0, Collection<arr> $$1, Collection<deg<?>> $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
       for (arr $$4 : $$1) {
@@ -58,7 +58,7 @@ public class aon {
       }
    }
 
-   private static int b(ei $$0, Collection<arr> $$1, Collection<ddz<?>> $$2) throws CommandSyntaxException {
+   private static int b(ej $$0, Collection<arr> $$1, Collection<deg<?>> $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
       for (arr $$4 : $$1) {

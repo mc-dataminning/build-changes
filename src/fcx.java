@@ -1,31 +1,27 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import com.mojang.serialization.Codec;
+import java.util.function.Predicate;
 
-public record fcx(Optional<cl> b) implements fcq {
-   public static final MapCodec<fcx> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cl.a.optionalFieldOf("predicate").forGetter(fcx::c)).apply($$0, fcx::new));
+public interface fcx extends ezp, Predicate<ezo> {
+   Codec<fcx> d = mg.F.q().dispatch("condition", fcx::b, fcy::a);
+   Codec<fcx> e = Codec.lazyInitialized(() -> Codec.withAlternative(d, fck.b));
+   Codec<jf<fcx>> f = alc.a(mh.bs, e);
 
-   @Override
-   public fcr b() {
-      return fcs.j;
-   }
+   fcy b();
 
-   @Override
-   public Set<bax<?>> a() {
-      return Set.of(fcb.i);
-   }
+   @FunctionalInterface
+   public interface a {
+      fcx build();
 
-   public boolean a(ezh $$0) {
-      czd $$1 = $$0.c(fcb.i);
-      return $$1 != null && (this.b.isEmpty() || this.b.get().a($$1));
-   }
+      default fcx.a invert() {
+         return fcu.a(this);
+      }
 
-   public static fcq.a a(cl.a $$0) {
-      return () -> new fcx(Optional.of($$0.b()));
-   }
+      default fcl.a or(fcx.a $$0) {
+         return fcl.a(this, $$0);
+      }
 
-   public Optional<cl> c() {
-      return this.b;
+      default fck.a and(fcx.a $$0) {
+         return fck.a(this, $$0);
+      }
    }
 }

@@ -1,35 +1,96 @@
-public class ddl extends ddk {
-   public ddl(ddh $$0) {
+public class ddl extends ddr {
+   public ddl(ddo $$0) {
       super($$0);
    }
 
-   private static czd c(ddi $$0) {
-      return $$0.a(1, 0);
+   public boolean a(ddp $$0, djh $$1) {
+      if ($$0.e() < 2) {
+         return false;
+      } else {
+         boolean $$2 = false;
+         boolean $$3 = false;
+
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            czk $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if ($$5.c(kk.V)) {
+                  if ($$3) {
+                     return false;
+                  }
+
+                  $$3 = true;
+               } else {
+                  if (!$$5.a(axk.bS)) {
+                     return false;
+                  }
+
+                  $$2 = true;
+               }
+            }
+         }
+
+         return $$3 && $$2;
+      }
    }
 
-   private static czd d(ddi $$0) {
-      return $$0.a(0, 1);
-   }
+   public czk a(ddp $$0, jh.a $$1) {
+      int $$2 = 0;
+      czk $$3 = czk.k;
 
-   private static czd e(ddi $$0) {
-      return $$0.a(2, 1);
-   }
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         czk $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.c(kk.V)) {
+               if (!$$3.f()) {
+                  return czk.k;
+               }
 
-   private static czd f(ddi $$0) {
-      return $$0.a(1, 2);
-   }
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(axk.bS)) {
+                  return czk.k;
+               }
 
-   public boolean a(ddi $$0, dja $$1) {
-      return $$0.f() == 3 && $$0.g() == 3 && $$0.e() == 4 ? c($$0).a(axk.bG) && d($$0).a(axk.bG) && e($$0).a(axk.bG) && f($$0).a(axk.bG) : false;
-   }
+               $$2++;
+            }
+         }
+      }
 
-   public czd a(ddi $$0, jg.a $$1) {
-      dyn $$2 = new dyn(c($$0).h(), d($$0).h(), e($$0).h(), f($$0).h());
-      return dxx.a($$2);
+      dcu $$6 = $$3.a(kk.V);
+      if (!$$3.f() && $$2 >= 1 && $$6 != null) {
+         dcu $$7 = $$6.b();
+         if ($$7 == null) {
+            return czk.k;
+         } else {
+            czk $$8 = $$3.c($$2);
+            $$8.b(kk.V, $$7);
+            return $$8;
+         }
+      } else {
+         return czk.k;
+      }
    }
 
    @Override
-   public dee<ddl> a() {
-      return dee.v;
+   public jo<czk> a(ddp $$0) {
+      jo<czk> $$1 = jo.a($$0.a(), czk.k);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         czk $$3 = $$0.a($$2);
+         czk $$4 = $$3.h().i();
+         if (!$$4.f()) {
+            $$1.set($$2, $$4);
+         } else if ($$3.c(kk.V)) {
+            $$1.set($$2, $$3.c(1));
+            break;
+         }
+      }
+
+      return $$1;
+   }
+
+   @Override
+   public del<ddl> a() {
+      return del.d;
    }
 }

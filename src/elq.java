@@ -1,9 +1,10 @@
-import java.util.stream.Stream;
+import com.mojang.serialization.Codec;
 
-public interface elq {
-   elx m = elx.b;
+public class elq implements elx {
+   public static final Codec<elq> a = eao.a.fieldOf("state").xmap(elq::new, $$0 -> $$0.b).codec();
+   public final eao b;
 
-   default Stream<eiy<?, ?>> e() {
-      return Stream.empty();
+   public elq(eao $$0) {
+      this.b = $$0;
    }
 }

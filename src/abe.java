@@ -1,9 +1,9 @@
 import io.netty.buffer.ByteBuf;
 import java.util.List;
 
-public record abe(alf<? extends jr<?>> b, List<jv.a> c) implements zf<abc> {
-   private static final yw<ByteBuf, alf<? extends jr<?>>> d = alg.b.a(alf::a, alf::a);
-   public static final yw<vu, abe> a = yw.a(d, abe::b, jv.a.a.a(yu.a()), abe::e, abe::new);
+public record abe(alf<? extends js<?>> b, List<jw.a> c) implements zf<abc> {
+   private static final yw<ByteBuf, alf<? extends js<?>>> d = alg.b.a(alf::a, alf::a);
+   public static final yw<vu, abe> a = yw.a(d, abe::b, jw.a.a.a(yu.a()), abe::e, abe::new);
 
    @Override
    public zh<abe> a() {
@@ -14,7 +14,7 @@ public record abe(alf<? extends jr<?>> b, List<jv.a> c) implements zf<abc> {
       $$0.a(this);
    }
 
-   public List<jv.a> e() {
+   public List<jw.a> e() {
       return this.c;
    }
 }

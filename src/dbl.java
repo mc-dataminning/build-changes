@@ -1,173 +1,179 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapDecoder;
-import com.mojang.serialization.MapEncoder;
-import com.mojang.serialization.MapLike;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
-import java.util.UUID;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.Optional;
 
-public final class dbl implements dci {
-   private static final Logger e = LogUtils.getLogger();
-   public static final dbl a = new dbl(new tz());
-   private static final String f = "id";
-   public static final Codec<dbl> b = Codec.withAlternative(tz.a, ux.i).xmap(dbl::new, $$0 -> $$0.i);
-   public static final Codec<dbl> c = b.validate(
-      $$0 -> $$0.e().b("id", 8) ? DataResult.success($$0) : DataResult.error(() -> "Missing id for entity in: " + $$0)
+public record dbl(float c, float d, List<dbl.a> e, dbl.b f, Optional<axr<buz>> g, Optional<jf<awm>> h, Optional<jf<awm>> i) {
+   public static final Codec<dbl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayu.n.optionalFieldOf("block_delay_seconds", 0.0F).forGetter(dbl::b),
+               ayu.n.optionalFieldOf("disable_cooldown_scale", 1.0F).forGetter(dbl::c),
+               dbl.a.a.listOf().optionalFieldOf("damage_reductions", List.of(new dbl.a(90.0F, Optional.empty(), 0.0F, 1.0F))).forGetter(dbl::d),
+               dbl.b.a.optionalFieldOf("item_damage", dbl.b.c).forGetter(dbl::e),
+               axr.b(mh.aN).optionalFieldOf("bypassed_by").forGetter(dbl::f),
+               awm.b.optionalFieldOf("block_sound").forGetter(dbl::g),
+               awm.b.optionalFieldOf("disabled_sound").forGetter(dbl::h)
+            )
+            .apply($$0, dbl::new)
    );
-   @Deprecated
-   public static final yw<ByteBuf, dbl> d = yu.r.a(dbl::new, $$0 -> $$0.i);
-   private static final alg g = dxh.j.a().h().a();
-   private static final alg h = dxh.R.a().h().a();
-   private final tz i;
+   public static final yw<wj, dbl> b = yw.a(
+      yu.l,
+      dbl::b,
+      yu.l,
+      dbl::c,
+      dbl.a.b.a(yu.a()),
+      dbl::d,
+      dbl.b.b,
+      dbl::e,
+      axr.c(mh.aN).a(yu::a),
+      dbl::f,
+      awm.d.a(yu::a),
+      dbl::g,
+      awm.d.a(yu::a),
+      dbl::h,
+      dbl::new
+   );
 
-   private dbl(tz $$0) {
-      this.i = $$0;
+   public void a(arq $$0, bxj $$1) {
+      this.h.ifPresent($$2 -> $$0.a(null, $$1.dz(), $$1.dB(), $$1.dF(), (jf<awm>)$$2, $$1.dl(), 1.0F, 0.8F + $$0.A.i() * 0.4F));
    }
 
-   public static dbl a(tz $$0) {
-      return new dbl($$0.i());
-   }
+   public void a(arq $$0, bxj $$1, float $$2, czk $$3) {
+      int $$4 = this.a($$2);
+      if ($$4 > 0) {
+         if ($$1 instanceof crj $$5) {
+            $$5.gE().a($$3, $$4);
+         }
 
-   public static Predicate<czd> a(ki<dbl> $$0, tz $$1) {
-      return $$2 -> {
-         dbl $$3 = $$2.a($$0, a);
-         return $$3.b($$1);
-      };
-   }
-
-   public boolean b(tz $$0) {
-      return uo.a($$0, this.i, true);
-   }
-
-   public static void a(ki<dbl> $$0, czd $$1, Consumer<tz> $$2) {
-      dbl $$3 = $$1.a($$0, a).a($$2);
-      if ($$3.i.g()) {
-         $$1.e($$0);
-      } else {
-         $$1.b($$0, $$3);
+         $$1.fE();
+         this.i.ifPresent($$2x -> $$0.a(null, $$1.dz(), $$1.dB(), $$1.dF(), $$2x, $$1.dl(), 0.8F, 0.8F + $$0.A.i() * 0.4F));
       }
    }
 
-   public static void a(ki<dbl> $$0, czd $$1, tz $$2) {
-      if (!$$2.g()) {
-         $$1.b($$0, a($$2));
-      } else {
-         $$1.e($$0);
-      }
-   }
+   public void a(djh $$0, czk $$1, bxj $$2, buf $$3, float $$4) {
+      if ($$2 instanceof crj $$5) {
+         if (!$$0.C) {
+            $$5.b(awx.c.b($$1.h()));
+         }
 
-   public dbl a(Consumer<tz> $$0) {
-      tz $$1 = this.i.i();
-      $$0.accept($$1);
-      return new dbl($$1);
-   }
-
-   @Nullable
-   public alg a() {
-      return !this.i.b("id", 8) ? null : alg.c(this.i.l("id"));
-   }
-
-   @Nullable
-   public <T> T a(jg.a $$0, alf<? extends jr<T>> $$1) {
-      alg $$2 = this.a();
-      return $$2 == null ? null : $$0.a($$1).flatMap($$2x -> $$2x.a(alf.a($$1, $$2))).map(je::a).orElse(null);
-   }
-
-   public void a(bwf $$0) {
-      tz $$1 = $$0.f(new tz());
-      UUID $$2 = $$0.cG();
-      $$1.a(this.i);
-      $$0.g($$1);
-      $$0.a_($$2);
-   }
-
-   public boolean a(dxf $$0, jg.a $$1) {
-      tz $$2 = $$0.e($$1);
-      tz $$3 = $$2.i();
-      $$2.a(this.i);
-      if (!$$2.equals($$3)) {
-         try {
-            $$0.d($$2, $$1);
-            $$0.e();
-            return true;
-         } catch (Exception var8) {
-            e.warn("Failed to apply custom data to block entity at {}", $$0.ax_(), var8);
-
-            try {
-               $$0.d($$3, $$1);
-            } catch (Exception var7) {
-               e.warn("Failed to rollback block entity at {} after failure", $$0.ax_(), var7);
-            }
+         int $$7 = this.f.a($$4);
+         if ($$7 > 0) {
+            $$1.a($$7, $$2, bxj.d($$3));
          }
       }
-
-      return false;
    }
 
-   public <T> DataResult<dbl> a(DynamicOps<uw> $$0, MapEncoder<T> $$1, T $$2) {
-      return $$1.encode($$2, $$0, $$0.mapBuilder()).build(this.i).map($$0x -> new dbl((tz)$$0x));
+   private int a(float $$0) {
+      float $$1 = $$0 * this.d;
+      return $$1 > 0.0F ? Math.round($$1 * 20.0F) : 0;
    }
 
-   public <T> DataResult<T> a(MapDecoder<T> $$0) {
-      return this.a(un.a, $$0);
+   public int a() {
+      return Math.round(this.c * 20.0F);
    }
 
-   public <T> DataResult<T> a(DynamicOps<uw> $$0, MapDecoder<T> $$1) {
-      MapLike<uw> $$2 = (MapLike<uw>)$$0.getMap(this.i).getOrThrow();
-      return $$1.decode($$0, $$2);
-   }
+   public float a(bux $$0, float $$1, double $$2) {
+      float $$3 = 0.0F;
 
-   public int b() {
-      return this.i.f();
-   }
-
-   public boolean c() {
-      return this.i.g();
-   }
-
-   public tz d() {
-      return this.i.i();
-   }
-
-   public boolean a(String $$0) {
-      return this.i.e($$0);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if ($$0 == this) {
-         return true;
-      } else {
-         return $$0 instanceof dbl $$1 ? this.i.equals($$1.i) : false;
+      for (dbl.a $$4 : this.e) {
+         $$3 += $$4.a($$0, $$1, $$2);
       }
+
+      return azm.a($$3, 0.0F, $$1);
    }
 
-   @Override
-   public int hashCode() {
-      return this.i.hashCode();
+   public float b() {
+      return this.c;
    }
 
-   @Override
-   public String toString() {
-      return this.i.toString();
+   public float c() {
+      return this.d;
    }
 
-   @Deprecated
-   public tz e() {
+   public List<dbl.a> d() {
+      return this.e;
+   }
+
+   public dbl.b e() {
+      return this.f;
+   }
+
+   public Optional<axr<buz>> f() {
+      return this.g;
+   }
+
+   public Optional<jf<awm>> g() {
+      return this.h;
+   }
+
+   public Optional<jf<awm>> h() {
       return this.i;
    }
 
-   @Override
-   public void a(cyz.b $$0, Consumer<wy> $$1, das $$2, ke $$3) {
-      alg $$4 = alg.c(this.i.l("id"));
-      if (g.equals($$4) || h.equals($$4)) {
-         djv.a(this, $$1, "SpawnData");
+   public static record a(float c, Optional<jj<buz>> d, float e, float f) {
+      public static final Codec<dbl.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  ayu.o.optionalFieldOf("horizontal_blocking_angle", 90.0F).forGetter(dbl.a::a),
+                  ju.a(mh.aN).optionalFieldOf("type").forGetter(dbl.a::b),
+                  Codec.FLOAT.fieldOf("base").forGetter(dbl.a::c),
+                  Codec.FLOAT.fieldOf("factor").forGetter(dbl.a::d)
+               )
+               .apply($$0, dbl.a::new)
+      );
+      public static final yw<wj, dbl.a> b = yw.a(yu.l, dbl.a::a, yu.c(mh.aN).a(yu::a), dbl.a::b, yu.l, dbl.a::c, yu.l, dbl.a::d, dbl.a::new);
+
+      public float a(bux $$0, float $$1, double $$2) {
+         if ($$2 > (double)((float) (Math.PI / 180.0) * this.c)) {
+            return 0.0F;
+         } else {
+            return this.d.isPresent() && !this.d.get().a($$0.l()) ? 0.0F : azm.a(this.e + this.f * $$1, 0.0F, $$1);
+         }
+      }
+
+      public float a() {
+         return this.c;
+      }
+
+      public Optional<jj<buz>> b() {
+         return this.d;
+      }
+
+      public float c() {
+         return this.e;
+      }
+
+      public float d() {
+         return this.f;
+      }
+   }
+
+   public static record b(float d, float e, float f) {
+      public static final Codec<dbl.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  ayu.n.fieldOf("threshold").forGetter(dbl.b::a),
+                  Codec.FLOAT.fieldOf("base").forGetter(dbl.b::b),
+                  Codec.FLOAT.fieldOf("factor").forGetter(dbl.b::c)
+               )
+               .apply($$0, dbl.b::new)
+      );
+      public static final yw<ByteBuf, dbl.b> b = yw.a(yu.l, dbl.b::a, yu.l, dbl.b::b, yu.l, dbl.b::c, dbl.b::new);
+      public static final dbl.b c = new dbl.b(1.0F, 0.0F, 1.0F);
+
+      public int a(float $$0) {
+         return $$0 < this.d ? 0 : azm.d(this.e + this.f * $$0);
+      }
+
+      public float a() {
+         return this.d;
+      }
+
+      public float b() {
+         return this.e;
+      }
+
+      public float c() {
+         return this.f;
       }
    }
 }

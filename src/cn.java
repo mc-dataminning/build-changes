@@ -1,102 +1,67 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Arrays;
 import java.util.Optional;
-import java.util.Set;
-import javax.annotation.Nullable;
 
-public class cn extends dj<cn.a> {
+public class cn extends dk<cn.a> {
    @Override
    public Codec<cn.a> a() {
       return cn.a.a;
    }
 
-   public void a(arr $$0, Collection<bwf> $$1, @Nullable czd $$2) {
-      List<ezh> $$3 = Lists.newArrayList();
-      Set<bwo<?>> $$4 = Sets.newHashSet();
-
-      for (bwf $$5 : $$1) {
-         $$4.add($$5.aq());
-         $$3.add(bx.b($$0, $$5));
-      }
-
-      this.a($$0, $$3x -> $$3x.a($$3, $$4.size(), $$2));
+   public void a(arr $$0, iv $$1, czk $$2) {
+      arq $$3 = $$0.y();
+      eao $$4 = $$3.a_($$1);
+      ezr $$5 = new ezr.a($$3).a(fci.f, $$1.b()).a(fci.a, $$0).a(fci.g, $$4).a(fci.i, $$2).a(fch.o);
+      ezo $$6 = new ezo.a($$5).a(Optional.empty());
+      this.a($$0, $$1x -> $$1x.a($$6));
    }
 
-   public static record a(Optional<bi> b, List<bi> c, cv.d d, Optional<cl> e) implements dj.a {
+   public static record a(Optional<bj> b, Optional<bj> c) implements dk.a {
       public static final Codec<cn.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bx.b.optionalFieldOf("player").forGetter(cn.a::a),
-                  bx.b.listOf().optionalFieldOf("victims", List.of()).forGetter(cn.a::b),
-                  cv.d.d.optionalFieldOf("unique_entity_types", cv.d.c).forGetter(cn.a::c),
-                  cl.a.optionalFieldOf("fired_from_weapon").forGetter(cn.a::d)
-               )
-               .apply($$0, cn.a::new)
+         $$0 -> $$0.group(by.b.optionalFieldOf("player").forGetter(cn.a::a), bj.a.optionalFieldOf("location").forGetter(cn.a::b)).apply($$0, cn.a::new)
       );
 
-      public static aq<cn.a> a(jf<cyz> $$0, bx.a... $$1) {
-         return ap.H.a(new cn.a(Optional.empty(), bx.a($$1), cv.d.c, Optional.of(cl.a.a().a($$0, czh.xg).b())));
+      public static ar<cn.a> a(dmm $$0) {
+         bj $$1 = bj.a(fcw.a($$0).build());
+         return aq.z.a(new cn.a(Optional.empty(), Optional.of($$1)));
       }
 
-      public static aq<cn.a> a(jf<cyz> $$0, cv.d $$1) {
-         return ap.H.a(new cn.a(Optional.empty(), List.of(), $$1, Optional.of(cl.a.a().a($$0, czh.xg).b())));
+      public static ar<cn.a> a(fcx.a... $$0) {
+         bj $$1 = bj.a(Arrays.stream($$0).map(fcx.a::build).toArray(fcx[]::new));
+         return aq.z.a(new cn.a(Optional.empty(), Optional.of($$1)));
       }
 
-      public boolean a(Collection<ezh> $$0, int $$1, @Nullable czd $$2) {
-         if (!this.e.isPresent() || $$2 != null && this.e.get().a($$2)) {
-            if (!this.c.isEmpty()) {
-               List<ezh> $$3 = Lists.newArrayList($$0);
+      private static cn.a c(cu.a $$0, cm.a $$1) {
+         bj $$2 = bj.a(fcv.a($$0).build(), fde.a($$1).build());
+         return new cn.a(Optional.empty(), Optional.of($$2));
+      }
 
-               for (bi $$4 : this.c) {
-                  boolean $$5 = false;
-                  Iterator<ezh> $$6 = $$3.iterator();
+      public static ar<cn.a> a(cu.a $$0, cm.a $$1) {
+         return aq.N.a(c($$0, $$1));
+      }
 
-                  while ($$6.hasNext()) {
-                     ezh $$7 = $$6.next();
-                     if ($$4.a($$7)) {
-                        $$6.remove();
-                        $$5 = true;
-                        break;
-                     }
-                  }
+      public static ar<cn.a> b(cu.a $$0, cm.a $$1) {
+         return aq.aa.a(c($$0, $$1));
+      }
 
-                  if (!$$5) {
-                     return false;
-                  }
-               }
-            }
-
-            return this.d.d($$1);
-         } else {
-            return false;
-         }
+      public boolean a(ezo $$0) {
+         return this.c.isEmpty() || this.c.get().a($$0);
       }
 
       @Override
-      public void a(bj $$0) {
-         dj.a.super.a($$0);
-         $$0.a(this.c, ".victims");
+      public void a(bk $$0) {
+         dk.a.super.a($$0);
+         this.c.ifPresent($$1 -> $$0.a($$1, fch.o, ".location"));
       }
 
       @Override
-      public Optional<bi> a() {
+      public Optional<bj> a() {
          return this.b;
       }
 
-      public List<bi> b() {
+      public Optional<bj> b() {
          return this.c;
-      }
-
-      public cv.d c() {
-         return this.d;
-      }
-
-      public Optional<cl> d() {
-         return this.e;
       }
    }
 }

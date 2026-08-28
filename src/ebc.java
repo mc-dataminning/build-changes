@@ -1,14 +1,17 @@
 public enum ebc implements bak {
-   a,
-   b;
+   a("floor"),
+   b("ceiling"),
+   c("single_wall"),
+   d("double_wall");
 
-   @Override
-   public String toString() {
-      return this.c();
+   private final String e;
+
+   private ebc(final String $$0) {
+      this.e = $$0;
    }
 
    @Override
    public String c() {
-      return this == a ? "left" : "right";
+      return this.e;
    }
 }

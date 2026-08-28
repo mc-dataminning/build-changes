@@ -1,28 +1,21 @@
 import com.mojang.serialization.Codec;
+import java.util.Arrays;
+import java.util.List;
 
-public class ch implements as<ch.a> {
-   @Override
-   public void a(alo $$0, as.a<ch.a> $$1) {
+public record ch(List<dje> d) {
+   public static final ch a = a(dje.values());
+   public static final ch b = a(dje.a, dje.c);
+   public static final Codec<ch> c = dje.f.listOf().xmap(ch::new, ch::a);
+
+   public static ch a(dje... $$0) {
+      return new ch(Arrays.stream($$0).toList());
    }
 
-   @Override
-   public void b(alo $$0, as.a<ch.a> $$1) {
+   public boolean a(dje $$0) {
+      return this.d.contains($$0);
    }
 
-   @Override
-   public void a(alo $$0) {
-   }
-
-   @Override
-   public Codec<ch.a> a() {
-      return ch.a.a;
-   }
-
-   public static record a() implements at {
-      public static final Codec<ch.a> a = Codec.unit(new ch.a());
-
-      @Override
-      public void a(bj $$0) {
-      }
+   public List<dje> a() {
+      return this.d;
    }
 }

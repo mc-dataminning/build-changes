@@ -1,5 +1,5 @@
-public class hez extends hdc {
-   public int a;
+public class hez extends hdz {
+   public czk a = czk.k;
    public boolean b;
    public boolean c;
 }

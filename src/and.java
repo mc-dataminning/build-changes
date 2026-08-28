@@ -8,19 +8,19 @@ public class and {
    private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wy.b("Path not found"));
    private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wy.b("Target not reached"));
 
-   public static void a(CommandDispatcher<ei> $$0) {
+   public static void a(CommandDispatcher<ej> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("debugpath").requires($$0x -> $$0x.c(2)))
-            .then(ej.a("to", gf.a()).executes($$0x -> a((ei)$$0x.getSource(), gf.a($$0x, "to"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("debugpath").requires($$0x -> $$0x.c(2)))
+            .then(ek.a("to", gg.a()).executes($$0x -> a((ej)$$0x.getSource(), gg.a($$0x, "to"))))
       );
    }
 
-   private static int a(ei $$0, iu $$1) throws CommandSyntaxException {
-      if (!($$0.f() instanceof bxg $$3)) {
+   private static int a(ej $$0, iv $$1) throws CommandSyntaxException {
+      if (!($$0.f() instanceof bxl $$3)) {
          throw a.create();
       } else {
-         cgo $$4 = new cgn($$3, $$0.e());
-         exc $$5 = $$4.a($$1, 0);
+         cgt $$4 = new cgs($$3, $$0.e());
+         exj $$5 = $$4.a($$1, 0);
          agm.a($$0.e(), $$3, $$5, $$4.p());
          if ($$5 == null) {
             throw b.create();

@@ -1,59 +1,81 @@
-public class gco extends fyb {
-   private static final wy a = wy.c("gui.abuseReport.title");
-   private static final wy b = wy.c("gui.abuseReport.message");
-   private static final wy c = wy.c("gui.abuseReport.type.chat");
-   private static final wy d = wy.c("gui.abuseReport.type.skin");
-   private static final wy s = wy.c("gui.abuseReport.type.name");
-   private static final int u = 6;
-   private final fyb v;
-   private final gli w;
-   private final gcs x;
-   private final fwb y = fwb.d().a(6);
+import java.util.List;
 
-   public gco(fyb $$0, gli $$1, gcs $$2) {
-      super(a);
-      this.v = $$0;
-      this.w = $$1;
-      this.x = $$2;
+public class gco extends fub {
+   private static final fui c = new fui(alg.b("recipe_book/tab"), alg.b("recipe_book/tab_selected"));
+   private final gcm.a d;
+   private static final float e = 15.0F;
+   private float f;
+
+   public gco(gcm.a $$0) {
+      super(0, 0, 35, 27, false);
+      this.d = $$0;
+      this.a(c);
+   }
+
+   public void a(foz $$0, boolean $$1) {
+      gcq.a $$2 = $$1 ? gcq.a.b : gcq.a.a;
+
+      for (gcq $$4 : $$0.a(this.d.c())) {
+         for (dfi $$5 : $$4.a($$2)) {
+            if ($$0.b($$5.a())) {
+               this.f = 15.0F;
+               return;
+            }
+         }
+      }
    }
 
    @Override
-   public wy i() {
-      return wx.a(super.i(), b);
+   public void b(fsh $$0, int $$1, int $$2, float $$3) {
+      if (this.a != null) {
+         if (this.f > 0.0F) {
+            float $$4 = 1.0F + 0.1F * (float)Math.sin((double)(this.f / 15.0F * (float) Math.PI));
+            $$0.c().a();
+            $$0.c().a((float)(this.F() + 8), (float)(this.G() + 12), 0.0F);
+            $$0.c().b(1.0F, $$4, 1.0F);
+            $$0.c().a((float)(-(this.F() + 8)), (float)(-(this.G() + 12)), 0.0F);
+         }
+
+         alg $$5 = this.a.a(true, this.b);
+         int $$6 = this.F();
+         if (this.b) {
+            $$6 -= 2;
+         }
+
+         $$0.a(gqx::H, $$5, $$6, this.G(), this.g, this.h);
+         this.a($$0);
+         if (this.f > 0.0F) {
+            $$0.c().b();
+            this.f -= $$3;
+         }
+      }
    }
 
-   @Override
-   protected void aO_() {
-      this.y.c().b();
-      this.y.a(new ftq(this.l, this.p), this.y.b().e(6));
-      this.y.a(new ftd(b, this.p).b(true), this.y.b().e(6));
-      fsj $$0 = this.y.a(fsj.a(c, $$0x -> this.m.a(new gck(this.v, this.w, this.x.g()))).a());
-      if (!this.x.l()) {
-         $$0.j = false;
-         $$0.a(ftu.a(wy.c("gui.socialInteractions.tooltip.report.not_reportable")));
-      } else if (!this.x.k()) {
-         $$0.j = false;
-         $$0.a(ftu.a(wy.a("gui.socialInteractions.tooltip.report.no_messages", this.x.c())));
+   private void a(fsh $$0) {
+      int $$1 = this.b ? -2 : 0;
+      if (this.d.b().isPresent()) {
+         $$0.b(this.d.a(), this.F() + 3 + $$1, this.G() + 5);
+         $$0.b(this.d.b().get(), this.F() + 14 + $$1, this.G() + 5);
+      } else {
+         $$0.b(this.d.a(), this.F() + 9 + $$1, this.G() + 5);
+      }
+   }
+
+   public ddt b() {
+      return this.d.c();
+   }
+
+   public boolean a(foz $$0) {
+      List<gcq> $$1 = $$0.a(this.d.c());
+      this.k = false;
+
+      for (gcq $$2 : $$1) {
+         if ($$2.b()) {
+            this.k = true;
+            break;
+         }
       }
 
-      this.y.a(fsj.a(d, $$0x -> this.m.a(new gcq(this.v, this.w, this.x.g(), this.x.h()))).a());
-      this.y.a(fsj.a(s, $$0x -> this.m.a(new gcn(this.v, this.w, this.x.g(), this.x.c()))).a());
-      this.y.a(fwc.b(20));
-      this.y.a(fsj.a(wx.e, $$0x -> this.aL_()).a());
-      this.y.a($$1 -> {
-         fsh var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.y.a();
-      fvv.a(this.y, this.J());
-   }
-
-   @Override
-   public void aL_() {
-      this.m.a(this.v);
+      return this.k;
    }
 }

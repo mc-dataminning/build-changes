@@ -1,38 +1,36 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class fon {
-   private final gka a;
-   private int b = -1;
-   @Nullable
-   private Consumer<tz> c;
+public class fon extends fol {
+   private static final Logger b = LogUtils.getLogger();
+   private static final wy c = wy.c("mco.create.world.wait");
+   private final String d;
+   private final String e;
+   private final long f;
 
-   public fon(gka $$0) {
-      this.a = $$0;
+   public fon(long $$0, String $$1, String $$2) {
+      this.f = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public boolean a(int $$0, @Nullable tz $$1) {
-      if (this.b == $$0 && this.c != null) {
-         this.c.accept($$1);
-         this.c = null;
-         return true;
-      } else {
-         return false;
+   @Override
+   public void run() {
+      fko $$0 = fko.a();
+
+      try {
+         $$0.a(this.f, this.d, this.e);
+      } catch (fmk var3) {
+         b.error("Couldn't create world", var3);
+         this.a(var3);
+      } catch (Exception var4) {
+         b.error("Could not create world", var4);
+         this.a(var4);
       }
    }
 
-   private int a(Consumer<tz> $$0) {
-      this.c = $$0;
-      return ++this.b;
-   }
-
-   public void a(int $$0, Consumer<tz> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new ahk($$2, $$0));
-   }
-
-   public void a(iu $$0, Consumer<tz> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new ags($$2, $$0));
+   @Override
+   public wy a() {
+      return c;
    }
 }

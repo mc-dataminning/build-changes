@@ -1,63 +1,51 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record dfe(int f, int g, List<dfg> h, dfg i, dfg j) implements dfa {
-   public static final MapCodec<dfe> a = RecordCodecBuilder.mapCodec(
+public record dfe(jf<czg> c, int d, ki e) {
+   private static final Codec<dfe> f = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.INT.fieldOf("width").forGetter(dfe::b),
-               Codec.INT.fieldOf("height").forGetter(dfe::c),
-               dfg.a.listOf().fieldOf("ingredients").forGetter(dfe::f),
-               dfg.a.fieldOf("result").forGetter(dfe::d),
-               dfg.a.fieldOf("crafting_station").forGetter(dfe::e)
+               czg.e.fieldOf("id").forGetter(dfe::b),
+               ayu.a(1, 99).optionalFieldOf("count", 1).forGetter(dfe::c),
+               ki.b.optionalFieldOf("components", ki.a).forGetter(dfe::d)
             )
             .apply($$0, dfe::new)
    );
-   public static final yw<wj, dfe> b = yw.a(yu.h, dfe::b, yu.h, dfe::c, dfg.b.a(yu.a()), dfe::f, dfg.b, dfe::d, dfg.b, dfe::e, dfe::new);
-   public static final dfa.a<dfe> c = new dfa.a<>(a, b);
+   public static final Codec<dfe> a = Codec.withAlternative(f, czg.e, $$0 -> new dfe((czg)$$0.a())).validate(dfe::a);
+   public static final yw<wj, dfe> b = yw.a(czg.f, dfe::b, yu.h, dfe::c, ki.c, dfe::d, dfe::new);
 
-   public dfe(int f, int g, List<dfg> h, dfg i, dfg j) {
-      if (h.size() != f * g) {
-         throw new IllegalArgumentException("Invalid shaped recipe display contents");
-      } else {
-         this.f = f;
-         this.g = g;
-         this.h = h;
-         this.i = i;
-         this.j = j;
-      }
+   public dfe(czg $$0) {
+      this($$0.e(), 1, ki.a);
    }
 
-   @Override
-   public dfa.a<dfe> a() {
-      return c;
+   private static DataResult<dfe> a(dfe $$0) {
+      return czk.a(new czk($$0.c, $$0.d, $$0.e)).map($$1 -> $$0);
    }
 
-   @Override
-   public boolean a(cum $$0) {
-      return this.h.stream().allMatch($$1 -> $$1.a($$0)) && dfa.super.a($$0);
+   public czk a(czk $$0) {
+      czk $$1 = $$0.a(this.c.a(), this.d);
+      $$1.b(this.e);
+      return $$1;
    }
 
-   public int b() {
-      return this.f;
+   public boolean b(czk $$0) {
+      czk $$1 = this.a($$0);
+      return czk.a($$0, $$1);
+   }
+
+   public dfn a() {
+      return new dfn.f(new czk(this.c, this.d, this.e));
+   }
+
+   public jf<czg> b() {
+      return this.c;
    }
 
    public int c() {
-      return this.g;
+      return this.d;
    }
 
-   public List<dfg> f() {
-      return this.h;
-   }
-
-   @Override
-   public dfg d() {
-      return this.i;
-   }
-
-   @Override
-   public dfg e() {
-      return this.j;
+   public ki d() {
+      return this.e;
    }
 }

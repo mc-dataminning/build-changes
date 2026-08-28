@@ -8,18 +8,18 @@ import java.util.Collection;
 public class amz {
    private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("commands.deop.failed"));
 
-   public static void a(CommandDispatcher<ei> $$0) {
+   public static void a(CommandDispatcher<ej> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("deop").requires($$0x -> $$0x.c(3)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("deop").requires($$0x -> $$0x.c(3)))
             .then(
-               ej.a("targets", ex.a())
-                  .suggests(($$0x, $$1) -> en.a(((ei)$$0x.getSource()).l().ag().l(), $$1))
-                  .executes($$0x -> a((ei)$$0x.getSource(), ex.a($$0x, "targets")))
+               ek.a("targets", ey.a())
+                  .suggests(($$0x, $$1) -> eo.a(((ej)$$0x.getSource()).l().ag().l(), $$1))
+                  .executes($$0x -> a((ej)$$0x.getSource(), ey.a($$0x, "targets")))
             )
       );
    }
 
-   private static int a(ei $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
+   private static int a(ej $$0, Collection<GameProfile> $$1) throws CommandSyntaxException {
       avq $$2 = $$0.l().ag();
       int $$3 = 0;
 

@@ -1,52 +1,75 @@
 import com.mojang.serialization.Codec;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Predicate;
 
-public class ele extends elb {
-   public ele(Codec<emp> $$0) {
+public class ele extends ejt<ems> {
+   public ele(Codec<ems> $$0) {
       super($$0);
    }
 
    @Override
-   protected Set<iu> a(djz $$0, emp $$1, azv $$2, iu $$3, Predicate<eah> $$4, int $$5, int $$6) {
-      Set<iu> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      Set<iu> $$8 = new HashSet<>();
-      iu.a $$9 = new iu.a();
-
-      for (iu $$10 : $$7) {
-         if (!a($$0, $$7, $$10, $$9)) {
-            $$8.add($$10);
-         }
-      }
-
-      for (iu $$11 : $$8) {
-         $$0.a($$11, dmh.J.m(), 2);
-      }
-
-      return $$8;
-   }
-
-   private static boolean a(djz $$0, Set<iu> $$1, iu $$2, iu.a $$3) {
-      return a($$0, $$2, $$3, ja.c) || a($$0, $$2, $$3, ja.f) || a($$0, $$2, $$3, ja.d) || a($$0, $$2, $$3, ja.e) || a($$0, $$2, $$3, ja.a);
-   }
-
-   private static boolean a(djz $$0, iu $$1, iu.a $$2, ja $$3) {
-      $$2.a($$1, $$3);
-      return !$$0.a_($$2).c($$0, $$2, $$3.g());
-   }
-
-   @Override
-   protected boolean a(djz $$0, emp $$1, ecf $$2, azv $$3, iu $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4.e())) {
-         eah $$5 = $$0.a_($$4);
-         if ($$5.b(eax.I) && !$$5.c(eax.I)) {
-            $$0.a($$4, $$5.b(eax.I, Boolean.valueOf(true)), 2);
-         }
-
-         return true;
-      } else {
+   public boolean a(ejv<ems> $$0) {
+      ems $$1 = $$0.f();
+      dkg $$2 = $$0.b();
+      iv $$3 = $$0.e();
+      if (!$$2.a_($$3.d()).a($$1.f)) {
          return false;
+      } else if ($$1.c && !$$2.a_($$3.e()).a($$1.f)) {
+         return false;
+      } else {
+         eao $$4 = $$2.a_($$3);
+         if (!$$4.l() && !$$4.a($$1.f)) {
+            return false;
+         } else {
+            int $$5 = 0;
+            int $$6 = 0;
+            if ($$2.a_($$3.h()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.i()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.f()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.g()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.e()).a($$1.f)) {
+               $$6++;
+            }
+
+            int $$7 = 0;
+            if ($$2.v($$3.h())) {
+               $$7++;
+            }
+
+            if ($$2.v($$3.i())) {
+               $$7++;
+            }
+
+            if ($$2.v($$3.f())) {
+               $$7++;
+            }
+
+            if ($$2.v($$3.g())) {
+               $$7++;
+            }
+
+            if ($$2.v($$3.e())) {
+               $$7++;
+            }
+
+            if ($$6 == $$1.d && $$7 == $$1.e) {
+               $$2.a($$3, $$1.b.g(), 2);
+               $$2.a($$3, $$1.b.a(), 0);
+               $$5++;
+            }
+
+            return $$5 > 0;
+         }
       }
    }
 }

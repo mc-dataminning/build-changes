@@ -1,7 +1,7 @@
 import java.util.HashSet;
 import java.util.Set;
 
-public record aay(Set<jx> c, Set<jx> d) implements aai {
+public record aay(Set<jy> c, Set<jy> d) implements aai {
    public static final yw<vu, aay> a = aai.a(aay::a, aay::new);
    public static final aai.b<aay> b = aai.a("debug/village_sections");
 
@@ -19,11 +19,11 @@ public record aay(Set<jx> c, Set<jx> d) implements aai {
       return b;
    }
 
-   public Set<jx> b() {
+   public Set<jy> b() {
       return this.c;
    }
 
-   public Set<jx> c() {
+   public Set<jy> c() {
       return this.d;
    }
 }

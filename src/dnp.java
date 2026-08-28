@@ -1,191 +1,51 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Optional;
 
-public class dnp extends dlr implements dpr {
-   public static final MapCodec<dnp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.fieldOf("automatic").forGetter($$0x -> $$0x.e), t()).apply($$0, dnp::new)
-   );
-   private static final Logger d = LogUtils.getLogger();
-   public static final ebf<ja> b = doj.a;
-   public static final eay c = eax.f;
-   private final boolean e;
+public interface dnp<T extends Enum<T>> {
+   int x_ = 4;
 
-   @Override
-   public MapCodec<dnp> a() {
-      return a;
-   }
+   Optional<eao> k_(eao var1);
 
-   public dnp(boolean $$0, eag.d $$1) {
-      super($$1);
-      this.l(this.C.b().b(b, ja.c).b(c, Boolean.valueOf(false)));
-      this.e = $$0;
-   }
+   float ar_();
 
-   @Override
-   public dxf a(iu $$0, eah $$1) {
-      dxq $$2 = new dxq($$0, $$1);
-      $$2.b(this.e);
-      return $$2;
-   }
-
-   @Override
-   protected void a(eah $$0, dja $$1, iu $$2, dmf $$3, @Nullable exw $$4, boolean $$5) {
-      if (!$$1.C) {
-         if ($$1.c_($$2) instanceof dxq $$7) {
-            this.a($$1, $$2, $$7, $$1.D($$2));
-         }
+   default void a_(eao $$0, arq $$1, iv $$2, azv $$3) {
+      float $$4 = 0.05688889F;
+      if ($$3.i() < 0.05688889F) {
+         this.c($$0, $$1, $$2, $$3).ifPresent($$2x -> $$1.b($$2, $$2x));
       }
    }
 
-   private void a(dja $$0, iu $$1, dxq $$2, boolean $$3) {
-      boolean $$4 = $$2.c();
-      if ($$3 != $$4) {
-         $$2.a($$3);
-         if ($$3) {
-            if ($$2.d() || $$2.s() == dxq.a.a) {
-               return;
-            }
+   T c();
 
-            $$2.k();
-            $$0.a($$1, this, 1);
-         }
-      }
-   }
+   default Optional<eao> c(eao $$0, arq $$1, iv $$2, azv $$3) {
+      int $$4 = this.c().ordinal();
+      int $$5 = 0;
+      int $$6 = 0;
 
-   @Override
-   protected void a(eah $$0, arq $$1, iu $$2, azv $$3) {
-      if ($$1.c_($$2) instanceof dxq $$5) {
-         dib $$6 = $$5.a();
-         boolean $$7 = !bal.b($$6.m());
-         dxq.a $$8 = $$5.s();
-         boolean $$9 = $$5.j();
-         if ($$8 == dxq.a.b) {
-            $$5.k();
-            if ($$9) {
-               this.a($$0, $$1, $$2, $$6, $$7);
-            } else if ($$5.t()) {
-               $$6.a(0);
-            }
-
-            if ($$5.c() || $$5.d()) {
-               $$1.a($$2, this, 1);
-            }
-         } else if ($$8 == dxq.a.c) {
-            if ($$9) {
-               this.a($$0, $$1, $$2, $$6, $$7);
-            } else if ($$5.t()) {
-               $$6.a(0);
-            }
-         }
-
-         $$1.b($$2, this);
-      }
-   }
-
-   private void a(eah $$0, arq $$1, iu $$2, dib $$3, boolean $$4) {
-      if ($$4) {
-         $$3.a($$1);
-      } else {
-         $$3.a(0);
-      }
-
-      a($$1, $$2, $$0.c(b));
-   }
-
-   @Override
-   protected bud a(eah $$0, dja $$1, iu $$2, crc $$3, fem $$4) {
-      dxf $$5 = $$1.c_($$2);
-      if ($$5 instanceof dxq && $$3.gG()) {
-         $$3.a((dxq)$$5);
-         return bud.a;
-      } else {
-         return bud.e;
-      }
-   }
-
-   @Override
-   protected boolean c_(eah $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(eah $$0, dja $$1, iu $$2) {
-      dxf $$3 = $$1.c_($$2);
-      return $$3 instanceof dxq ? ((dxq)$$3).a().k() : 0;
-   }
-
-   @Override
-   public void a(dja $$0, iu $$1, eah $$2, bxe $$3, czd $$4) {
-      if ($$0.c_($$1) instanceof dxq $$6) {
-         dib $$8 = $$6.a();
-         if ($$0 instanceof arq $$9) {
-            if (!$$4.c(kj.aa)) {
-               $$8.a($$9.O().c(diw.q));
-               $$6.b(this.e);
-            }
-
-            boolean $$10 = $$0.D($$1);
-            this.a($$0, $$1, $$6, $$10);
-         }
-      }
-   }
-
-   @Override
-   protected eah a(eah $$0, dsz $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected eah a(eah $$0, dri $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(eai.a<dmf, eah> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public eah a(dcw $$0) {
-      return this.m().b(b, $$0.d().g());
-   }
-
-   private static void a(arq $$0, iu $$1, ja $$2) {
-      iu.a $$3 = $$1.k();
-      diw $$4 = $$0.O();
-      int $$5 = $$4.d(diw.z);
-
-      while ($$5-- > 0) {
-         $$3.c($$2);
-         eah $$6 = $$0.a_($$3);
-         dmf $$7 = $$6.b();
-         if (!$$6.a(dmh.ln) || !($$0.c_($$3) instanceof dxq $$9) || $$9.s() != dxq.a.a) {
+      for (iv $$7 : iv.a($$2, 4, 4, 4)) {
+         int $$8 = $$7.k($$2);
+         if ($$8 > 4) {
             break;
          }
 
-         if ($$9.c() || $$9.d()) {
-            dib $$10 = $$9.a();
-            if ($$9.k()) {
-               if (!$$10.a($$0)) {
-                  break;
+         if (!$$7.equals($$2) && $$1.a_($$7).b() instanceof dnp<?> $$9) {
+            Enum<?> $$10 = $$9.c();
+            if (this.c().getClass() == $$10.getClass()) {
+               int $$11 = $$10.ordinal();
+               if ($$11 < $$4) {
+                  return Optional.empty();
                }
 
-               $$0.b($$3, $$7);
-            } else if ($$9.t()) {
-               $$10.a(0);
+               if ($$11 > $$4) {
+                  $$6++;
+               } else {
+                  $$5++;
+               }
             }
          }
-
-         $$2 = $$6.c(b);
       }
 
-      if ($$5 <= 0) {
-         int $$11 = Math.max($$4.d(diw.z), 0);
-         d.warn("Command Block chain tried to execute more than {} steps!", $$11);
-      }
+      float $$12 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
+      float $$13 = $$12 * $$12 * this.ar_();
+      return $$3.i() < $$13 ? this.k_($$0) : Optional.empty();
    }
 }

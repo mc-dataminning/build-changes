@@ -56,6 +56,7 @@ import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.commons.lang3.mutable.MutableObject;
 import org.joml.AxisAngle4f;
 import org.joml.Matrix4f;
+import org.joml.Matrix4fc;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
@@ -66,18 +67,18 @@ public class ayu {
    public static final Codec<Vector3f> c = Codec.FLOAT
       .listOf()
       .comapFlatMap(
-         $$0 -> af.a($$0, 3).map($$0x -> new Vector3f((Float)$$0x.get(0), (Float)$$0x.get(1), (Float)$$0x.get(2))), $$0 -> List.of($$0.x(), $$0.y(), $$0.z())
+         $$0 -> ag.a($$0, 3).map($$0x -> new Vector3f((Float)$$0x.get(0), (Float)$$0x.get(1), (Float)$$0x.get(2))), $$0 -> List.of($$0.x(), $$0.y(), $$0.z())
       );
    public static final Codec<Vector4f> d = Codec.FLOAT
       .listOf()
       .comapFlatMap(
-         $$0 -> af.a($$0, 4).map($$0x -> new Vector4f((Float)$$0x.get(0), (Float)$$0x.get(1), (Float)$$0x.get(2), (Float)$$0x.get(3))),
+         $$0 -> ag.a($$0, 4).map($$0x -> new Vector4f((Float)$$0x.get(0), (Float)$$0x.get(1), (Float)$$0x.get(2), (Float)$$0x.get(3))),
          $$0 -> List.of($$0.x(), $$0.y(), $$0.z(), $$0.w())
       );
    public static final Codec<Quaternionf> e = Codec.FLOAT
       .listOf()
       .comapFlatMap(
-         $$0 -> af.a($$0, 4).map($$0x -> new Quaternionf((Float)$$0x.get(0), (Float)$$0x.get(1), (Float)$$0x.get(2), (Float)$$0x.get(3)).normalize()),
+         $$0 -> ag.a($$0, 4).map($$0x -> new Quaternionf((Float)$$0x.get(0), (Float)$$0x.get(1), (Float)$$0x.get(2), (Float)$$0x.get(3)).normalize()),
          $$0 -> List.of($$0.x, $$0.y, $$0.z, $$0.w)
       );
    public static final Codec<AxisAngle4f> f = RecordCodecBuilder.create(
@@ -85,7 +86,7 @@ public class ayu {
             .apply($$0, AxisAngle4f::new)
    );
    public static final Codec<Quaternionf> g = Codec.withAlternative(e, f.xmap(Quaternionf::new, AxisAngle4f::new));
-   public static final Codec<Matrix4f> h = Codec.FLOAT.listOf().comapFlatMap($$0 -> af.a($$0, 16).map($$0x -> {
+   public static final Codec<Matrix4fc> h = Codec.FLOAT.listOf().comapFlatMap($$0 -> ag.a($$0, 16).map($$0x -> {
          Matrix4f $$1 = new Matrix4f();
 
          for (int $$2 = 0; $$2 < $$0x.size(); $$2++) {
@@ -161,7 +162,7 @@ public class ayu {
    public static final Codec<String> y = Codec.string(0, 16)
       .validate($$0 -> bal.f($$0) ? DataResult.success($$0) : DataResult.error(() -> "Player name contained disallowed characters: '" + $$0 + "'"));
    private static final MapCodec<GameProfile> G = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(jy.e.fieldOf("id").forGetter(GameProfile::getId), y.fieldOf("name").forGetter(GameProfile::getName)).apply($$0, GameProfile::new)
+      $$0 -> $$0.group(jz.e.fieldOf("id").forGetter(GameProfile::getId), y.fieldOf("name").forGetter(GameProfile::getName)).apply($$0, GameProfile::new)
    );
    public static final Codec<GameProfile> z = RecordCodecBuilder.create(
       $$0 -> $$0.group(G.forGetter(Function.identity()), x.lenientOptionalFieldOf("properties", new PropertyMap()).forGetter(GameProfile::getProperties))
@@ -180,7 +181,7 @@ public class ayu {
       .validate($$0 -> !alg.i($$0) ? DataResult.error(() -> "Invalid string to use as a resource path element: " + $$0) : DataResult.success($$0));
    public static final Codec<URI> D = Codec.STRING.comapFlatMap($$0 -> {
       try {
-         return DataResult.success(af.a($$0));
+         return DataResult.success(ag.a($$0));
       } catch (URISyntaxException var2) {
          return DataResult.error(var2::getMessage);
       }
@@ -201,7 +202,7 @@ public class ayu {
    }
 
    public static <P, I> Codec<I> a(Codec<P> $$0, String $$1, String $$2, BiFunction<P, P, DataResult<I>> $$3, Function<I, P> $$4, Function<I, P> $$5) {
-      Codec<I> $$6 = Codec.list($$0).comapFlatMap($$1x -> af.a($$1x, 2).flatMap($$1xx -> {
+      Codec<I> $$6 = Codec.list($$0).comapFlatMap($$1x -> ag.a($$1x, 2).flatMap($$1xx -> {
             P $$2x = (P)$$1xx.get(0);
             P $$3x = (P)$$1xx.get(1);
             return $$3.apply($$2x, $$3x);
@@ -355,7 +356,7 @@ public class ayu {
       return $$0.validate($$0x -> $$0x.isEmpty() ? DataResult.error(() -> "List must have contents") : DataResult.success($$0x));
    }
 
-   public static <T> Codec<ji<T>> c(Codec<ji<T>> $$0) {
+   public static <T> Codec<jj<T>> c(Codec<jj<T>> $$0) {
       return $$0.validate(
          $$0x -> $$0x.d().right().filter(List::isEmpty).isPresent() ? DataResult.error(() -> "List must have contents") : DataResult.success($$0x)
       );
@@ -495,6 +496,17 @@ public class ayu {
             return $$0.isEmpty() ? DataResult.success($$1.emptyMap()) : $$0.encode($$0.get(), $$1, $$2);
          }
       };
+   }
+
+   @Deprecated
+   public static <E extends Enum<E>> Codec<E> c(Function<String, E> $$0) {
+      return Codec.STRING.comapFlatMap($$1 -> {
+         try {
+            return DataResult.success($$0.apply($$1));
+         } catch (IllegalArgumentException var3) {
+            return DataResult.error(() -> "No value with id: " + $$1);
+         }
+      }, Enum::toString);
    }
 
    public static class b<I, V> {

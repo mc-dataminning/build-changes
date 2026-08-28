@@ -15,6 +15,7 @@ import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
@@ -57,36 +58,28 @@ public class tj {
 
    private static int b(tm $$0) throws CommandSyntaxException {
       a();
-      ei $$1 = $$0.b();
+      ej $$1 = $$0.b();
       arq $$2 = $$1.e();
       sv.a($$2);
-      Stream<iu> $$3 = $$0.findTestPos();
-      int $$4 = $$3.mapToInt($$1x -> {
-         if ($$2.c_($$1x) instanceof dza $$3x) {
-            eqt $$4x = $$3x.d();
-            ti.a($$4x, $$2);
-            return 1;
-         } else {
-            return 0;
-         }
-      }).sum();
-      if ($$4 == 0) {
+      List<era> $$3 = $$0.findTestPos().flatMap($$1x -> $$2.a($$1x, dxo.U).stream()).map(dzh::d).toList();
+      $$3.forEach($$1x -> ti.a($$1x, $$2));
+      if ($$3.isEmpty()) {
          throw l.create();
       } else {
-         $$1.a(() -> wy.a("commands.test.clear.success", $$4), true);
-         return $$4;
+         $$1.a(() -> wy.a("commands.test.clear.success", $$3.size()), true);
+         return $$3.size();
       }
    }
 
    private static int c(tm $$0) throws CommandSyntaxException {
-      ei $$1 = $$0.b();
+      ej $$1 = $$0.b();
       arq $$2 = $$1.e();
       int $$3 = 0;
       boolean $$4 = true;
 
-      for (Iterator<iu> $$5 = $$0.findTestPos().iterator(); $$5.hasNext(); $$3++) {
-         iu $$6 = $$5.next();
-         if (!($$2.c_($$6) instanceof dza $$7)) {
+      for (Iterator<iv> $$5 = $$0.findTestPos().iterator(); $$5.hasNext(); $$3++) {
+         iv $$6 = $$5.next();
+         if (!($$2.c_($$6) instanceof dzh $$7)) {
             throw n.create();
          }
 
@@ -106,16 +99,16 @@ public class tj {
 
    private static int d(tm $$0) {
       a();
-      ei $$1 = $$0.b();
+      ej $$1 = $$0.b();
       arq $$2 = $$1.e();
-      iu $$3 = a($$1);
+      iv $$3 = a($$1);
       Collection<sq> $$4 = Stream.concat(a($$1, tg.a(), $$0), a($$1, tg.a(), $$0, 0)).toList();
       sv.a($$2);
       sf.b();
       Collection<sj> $$5 = new ArrayList<>();
 
       for (sq $$6 : $$4) {
-         for (dsz $$7 : dsz.values()) {
+         for (dtg $$7 : dtg.values()) {
             Collection<sq> $$8 = new ArrayList<>();
 
             for (int $$9 = 0; $$9 < 100; $$9++) {
@@ -136,9 +129,9 @@ public class tj {
 
    private static int a(tm $$0, tg $$1, int $$2, int $$3) {
       a();
-      ei $$4 = $$0.b();
+      ej $$4 = $$0.b();
       arq $$5 = $$4.e();
-      iu $$6 = a($$4);
+      iv $$6 = a($$4);
       Collection<sq> $$7 = Stream.concat(a($$4, $$1, $$0), a($$4, $$1, $$0, $$2)).toList();
       if ($$7.isEmpty()) {
          $$4.a(() -> wy.c("commands.test.no_tests"), false);
@@ -155,20 +148,20 @@ public class tj {
    private static int e(tm $$0) throws CommandSyntaxException {
       $$0.b().a(wy.c("commands.test.locate.started"));
       MutableInt $$1 = new MutableInt(0);
-      iu $$2 = iu.a((jo)$$0.b().d());
+      iv $$2 = iv.a((jp)$$0.b().d());
       $$0.findTestPos()
          .forEach(
             $$3x -> {
-               if ($$0.b().e().c_($$3x) instanceof dza $$5) {
-                  ja var13 = $$5.u().a(ja.c);
-                  iu $$8 = $$5.ax_().a(var13, 2);
+               if ($$0.b().e().c_($$3x) instanceof dzh $$5) {
+                  jb var13 = $$5.u().a(jb.c);
+                  iv $$8 = $$5.ax_().a(var13, 2);
                   int $$9 = (int)var13.g().p();
                   String $$10 = String.format(Locale.ROOT, "/tp @s %d %d %d %d 0", $$8.u(), $$8.v(), $$8.w(), $$9);
                   int $$11 = $$2.u() - $$3x.u();
                   int $$12 = $$2.w() - $$3x.w();
                   int $$13 = azm.d(azm.c((float)($$11 * $$11 + $$12 * $$12)));
                   xm $$14 = xb.a((wy)wy.a("chat.coordinates", $$3x.u(), $$3x.v(), $$3x.w()))
-                     .a($$1xx -> $$1xx.a(n.k).a(new ww.g($$10)).a(new xe.e(wy.c("chat.coordinates.tooltip"))));
+                     .a($$1xx -> $$1xx.a(o.k).a(new ww.g($$10)).a(new xe.e(wy.c("chat.coordinates.tooltip"))));
                   $$0.b().a(() -> wy.a("commands.test.locate.found", $$14, $$13), false);
                   $$1.increment();
                }
@@ -183,16 +176,16 @@ public class tj {
       }
    }
 
-   private static ArgumentBuilder<ei, ?> a(
-      ArgumentBuilder<ei, ?> $$0, ant<CommandContext<ei>, tm> $$1, Function<ArgumentBuilder<ei, ?>, ArgumentBuilder<ei, ?>> $$2
+   private static ArgumentBuilder<ej, ?> a(
+      ArgumentBuilder<ej, ?> $$0, ant<CommandContext<ej>, tm> $$1, Function<ArgumentBuilder<ej, ?>, ArgumentBuilder<ej, ?>> $$2
    ) {
       return $$0.executes($$1x -> a($$1.apply($$1x), tg.a(), 0, 8))
          .then(
-            ((RequiredArgumentBuilder)ej.a("numberOfTimes", IntegerArgumentType.integer(0))
+            ((RequiredArgumentBuilder)ek.a("numberOfTimes", IntegerArgumentType.integer(0))
                   .executes($$1x -> a($$1.apply($$1x), new tg(IntegerArgumentType.getInteger($$1x, "numberOfTimes"), false), 0, 8)))
                .then(
                   $$2.apply(
-                     ej.a("untilFailed", BoolArgumentType.bool())
+                     ek.a("untilFailed", BoolArgumentType.bool())
                         .executes(
                            $$1x -> a(
                                  $$1.apply($$1x),
@@ -206,16 +199,16 @@ public class tj {
          );
    }
 
-   private static ArgumentBuilder<ei, ?> a(ArgumentBuilder<ei, ?> $$0, ant<CommandContext<ei>, tm> $$1) {
+   private static ArgumentBuilder<ej, ?> a(ArgumentBuilder<ej, ?> $$0, ant<CommandContext<ej>, tm> $$1) {
       return a($$0, $$1, $$0x -> $$0x);
    }
 
-   private static ArgumentBuilder<ei, ?> b(ArgumentBuilder<ei, ?> $$0, ant<CommandContext<ei>, tm> $$1) {
+   private static ArgumentBuilder<ej, ?> b(ArgumentBuilder<ej, ?> $$0, ant<CommandContext<ej>, tm> $$1) {
       return a(
          $$0,
          $$1,
          $$1x -> $$1x.then(
-               ((RequiredArgumentBuilder)ej.a("rotationSteps", IntegerArgumentType.integer())
+               ((RequiredArgumentBuilder)ek.a("rotationSteps", IntegerArgumentType.integer())
                      .executes(
                         $$1xx -> a(
                               $$1.apply($$1xx),
@@ -225,7 +218,7 @@ public class tj {
                            )
                      ))
                   .then(
-                     ej.a("testsPerRow", IntegerArgumentType.integer())
+                     ek.a("testsPerRow", IntegerArgumentType.integer())
                         .executes(
                            $$1xx -> a(
                                  $$1.apply($$1xx),
@@ -239,30 +232,30 @@ public class tj {
       );
    }
 
-   public static void a(CommandDispatcher<ei> $$0, ee $$1) {
-      ArgumentBuilder<ei, ?> $$2 = b(
-         ej.a("onlyRequiredTests", BoolArgumentType.bool()), $$0x -> tm.a().a($$0x, BoolArgumentType.getBool($$0x, "onlyRequiredTests"))
+   public static void a(CommandDispatcher<ej> $$0, ef $$1) {
+      ArgumentBuilder<ej, ?> $$2 = b(
+         ek.a("onlyRequiredTests", BoolArgumentType.bool()), $$0x -> tm.a().a($$0x, BoolArgumentType.getBool($$0x, "onlyRequiredTests"))
       );
-      LiteralArgumentBuilder<ei> $$3 = (LiteralArgumentBuilder<ei>)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a(
+      LiteralArgumentBuilder<ej> $$3 = (LiteralArgumentBuilder<ej>)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a(
                                                                "test"
                                                             )
                                                             .requires($$0x -> $$0x.c(2)))
                                                          .then(
-                                                            ej.a("run")
-                                                               .then(b(ej.a("tests", fn.a($$1, mg.bh)), $$0x -> tm.a().a($$0x, fn.a($$0x, "tests", mg.bh))))
+                                                            ek.a("run")
+                                                               .then(b(ek.a("tests", fo.a($$1, mh.bh)), $$0x -> tm.a().a($$0x, fo.a($$0x, "tests", mh.bh))))
                                                          ))
                                                       .then(
-                                                         ej.a("runmultiple")
+                                                         ek.a("runmultiple")
                                                             .then(
-                                                               ((RequiredArgumentBuilder)ej.a("tests", fn.a($$1, mg.bh))
-                                                                     .executes($$0x -> a(tm.a().a($$0x, fn.a($$0x, "tests", mg.bh)), tg.a(), 0, 8)))
+                                                               ((RequiredArgumentBuilder)ek.a("tests", fo.a($$1, mh.bh))
+                                                                     .executes($$0x -> a(tm.a().a($$0x, fo.a($$0x, "tests", mh.bh)), tg.a(), 0, 8)))
                                                                   .then(
-                                                                     ej.a("amount", IntegerArgumentType.integer())
+                                                                     ek.a("amount", IntegerArgumentType.integer())
                                                                         .executes(
                                                                            $$0x -> a(
                                                                                  tm.a()
                                                                                     .a(IntegerArgumentType.getInteger($$0x, "amount"))
-                                                                                    .a($$0x, fn.a($$0x, "tests", mg.bh)),
+                                                                                    .a($$0x, fo.a($$0x, "tests", mh.bh)),
                                                                                  tg.a(),
                                                                                  0,
                                                                                  8
@@ -271,54 +264,54 @@ public class tj {
                                                                   )
                                                             )
                                                       ))
-                                                   .then(a(ej.a("runthese"), tm.a()::b)))
-                                                .then(a(ej.a("runclosest"), tm.a()::a)))
-                                             .then(a(ej.a("runthat"), tm.a()::c)))
-                                          .then(b(ej.a("runfailed").then($$2), tm.a()::d)))
+                                                   .then(a(ek.a("runthese"), tm.a()::b)))
+                                                .then(a(ek.a("runclosest"), tm.a()::a)))
+                                             .then(a(ek.a("runthat"), tm.a()::c)))
+                                          .then(b(ek.a("runfailed").then($$2), tm.a()::d)))
                                        .then(
-                                          ej.a("verify").then(ej.a("tests", fn.a($$1, mg.bh)).executes($$0x -> d(tm.a().a($$0x, fn.a($$0x, "tests", mg.bh)))))
+                                          ek.a("verify").then(ek.a("tests", fo.a($$1, mh.bh)).executes($$0x -> d(tm.a().a($$0x, fo.a($$0x, "tests", mh.bh)))))
                                        ))
-                                    .then(ej.a("locate").then(ej.a("tests", fn.a($$1, mg.bh)).executes($$0x -> e(tm.a().a($$0x, fn.a($$0x, "tests", mg.bh)))))))
-                                 .then(ej.a("resetclosest").executes($$0x -> a(tm.a().a($$0x)))))
-                              .then(ej.a("resetthese").executes($$0x -> a(tm.a().b($$0x)))))
-                           .then(ej.a("resetthat").executes($$0x -> a(tm.a().c($$0x)))))
-                        .then(ej.a("clearthat").executes($$0x -> b(tm.a().c($$0x)))))
-                     .then(ej.a("clearthese").executes($$0x -> b(tm.a().b($$0x)))))
+                                    .then(ek.a("locate").then(ek.a("tests", fo.a($$1, mh.bh)).executes($$0x -> e(tm.a().a($$0x, fo.a($$0x, "tests", mh.bh)))))))
+                                 .then(ek.a("resetclosest").executes($$0x -> a(tm.a().a($$0x)))))
+                              .then(ek.a("resetthese").executes($$0x -> a(tm.a().b($$0x)))))
+                           .then(ek.a("resetthat").executes($$0x -> a(tm.a().c($$0x)))))
+                        .then(ek.a("clearthat").executes($$0x -> b(tm.a().c($$0x)))))
+                     .then(ek.a("clearthese").executes($$0x -> b(tm.a().b($$0x)))))
                   .then(
-                     ((LiteralArgumentBuilder)ej.a("clearall").executes($$0x -> b(tm.a().a($$0x, 200))))
+                     ((LiteralArgumentBuilder)ek.a("clearall").executes($$0x -> b(tm.a().a($$0x, 200))))
                         .then(
-                           ej.a("radius", IntegerArgumentType.integer())
+                           ek.a("radius", IntegerArgumentType.integer())
                               .executes($$0x -> b(tm.a().a($$0x, azm.a(IntegerArgumentType.getInteger($$0x, "radius"), 0, 1024))))
                         )
                   ))
-               .then(ej.a("stop").executes($$0x -> a())))
+               .then(ek.a("stop").executes($$0x -> a())))
             .then(
-               ((LiteralArgumentBuilder)ej.a("pos").executes($$0x -> a((ei)$$0x.getSource(), "pos")))
-                  .then(ej.a("var", StringArgumentType.word()).executes($$0x -> a((ei)$$0x.getSource(), StringArgumentType.getString($$0x, "var"))))
+               ((LiteralArgumentBuilder)ek.a("pos").executes($$0x -> a((ej)$$0x.getSource(), "pos")))
+                  .then(ek.a("var", StringArgumentType.word()).executes($$0x -> a((ej)$$0x.getSource(), StringArgumentType.getString($$0x, "var"))))
             ))
          .then(
-            ej.a("create")
+            ek.a("create")
                .then(
-                  ((RequiredArgumentBuilder)ej.a("id", fj.a()).suggests(tj::a).executes($$0x -> a((ei)$$0x.getSource(), fj.a($$0x, "id"), 5, 5, 5)))
+                  ((RequiredArgumentBuilder)ek.a("id", fk.a()).suggests(tj::a).executes($$0x -> a((ej)$$0x.getSource(), fk.a($$0x, "id"), 5, 5, 5)))
                      .then(
-                        ((RequiredArgumentBuilder)ej.a("width", IntegerArgumentType.integer())
+                        ((RequiredArgumentBuilder)ek.a("width", IntegerArgumentType.integer())
                               .executes(
                                  $$0x -> a(
-                                       (ei)$$0x.getSource(),
-                                       fj.a($$0x, "id"),
+                                       (ej)$$0x.getSource(),
+                                       fk.a($$0x, "id"),
                                        IntegerArgumentType.getInteger($$0x, "width"),
                                        IntegerArgumentType.getInteger($$0x, "width"),
                                        IntegerArgumentType.getInteger($$0x, "width")
                                     )
                               ))
                            .then(
-                              ej.a("height", IntegerArgumentType.integer())
+                              ek.a("height", IntegerArgumentType.integer())
                                  .then(
-                                    ej.a("depth", IntegerArgumentType.integer())
+                                    ek.a("depth", IntegerArgumentType.integer())
                                        .executes(
                                           $$0x -> a(
-                                                (ei)$$0x.getSource(),
-                                                fj.a($$0x, "id"),
+                                                (ej)$$0x.getSource(),
+                                                fk.a($$0x, "id"),
                                                 IntegerArgumentType.getInteger($$0x, "width"),
                                                 IntegerArgumentType.getInteger($$0x, "height"),
                                                 IntegerArgumentType.getInteger($$0x, "depth")
@@ -329,46 +322,46 @@ public class tj {
                      )
                )
          );
-      if (ab.aU) {
-         $$3 = (LiteralArgumentBuilder<ei>)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)$$3.then(
-                     ej.a("export").then(ej.a("test", fh.a($$1, mg.bh)).executes($$0x -> a((ei)$$0x.getSource(), fh.a($$0x, "test", mg.bh))))
+      if (ac.aV) {
+         $$3 = (LiteralArgumentBuilder<ej>)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)$$3.then(
+                     ek.a("export").then(ek.a("test", fi.a($$1, mh.bh)).executes($$0x -> a((ej)$$0x.getSource(), fi.a($$0x, "test", mh.bh))))
                   ))
-                  .then(ej.a("exportclosest").executes($$0x -> c(tm.a().a($$0x)))))
-               .then(ej.a("exportthese").executes($$0x -> c(tm.a().b($$0x)))))
-            .then(ej.a("exportthat").executes($$0x -> c(tm.a().c($$0x))));
+                  .then(ek.a("exportclosest").executes($$0x -> c(tm.a().a($$0x)))))
+               .then(ek.a("exportthese").executes($$0x -> c(tm.a().b($$0x)))))
+            .then(ek.a("exportthat").executes($$0x -> c(tm.a().c($$0x))));
       }
 
       $$0.register($$3);
    }
 
-   public static CompletableFuture<Suggestions> a(CommandContext<ei> $$0, SuggestionsBuilder $$1) {
-      Stream<String> $$2 = ((ei)$$0.getSource()).u().f(mg.ay).c().map(je::g);
-      return en.b($$2, $$1);
+   public static CompletableFuture<Suggestions> a(CommandContext<ej> $$0, SuggestionsBuilder $$1) {
+      Stream<String> $$2 = ((ej)$$0.getSource()).u().f(mh.ay).c().map(jf::g);
+      return eo.b($$2, $$1);
    }
 
-   private static int a(ei $$0, sq $$1) {
-      dza $$2 = $$1.f();
+   private static int a(ej $$0, sq $$1) {
+      dzh $$2 = $$1.f();
       $$2.a($$0::a);
       return 1;
    }
 
-   private static Stream<sq> a(ei $$0, tg $$1, tp $$2) {
+   private static Stream<sq> a(ej $$0, tg $$1, tp $$2) {
       return $$2.findTestPos().map($$2x -> a($$2x, $$0, $$1)).flatMap(Optional::stream);
    }
 
-   private static Stream<sq> a(ei $$0, tg $$1, to $$2, int $$3) {
+   private static Stream<sq> a(ej $$0, tg $$1, to $$2, int $$3) {
       return $$2.findTests().filter($$1x -> a($$0, ((sr)$$1x.a()).e())).map($$3x -> new sq($$3x, ti.a($$3), $$0.e(), $$1));
    }
 
-   private static Optional<sq> a(iu $$0, ei $$1, tg $$2) {
+   private static Optional<sq> a(iv $$0, ej $$1, tg $$2) {
       arq $$3 = $$1.e();
-      if ($$3.c_($$0) instanceof dza $$4) {
-         Optional<je.c<sr>> $$6 = $$4.j().flatMap($$1.u().f(mg.bh)::a);
+      if ($$3.c_($$0) instanceof dzh $$4) {
+         Optional<jf.c<sr>> $$6 = $$4.j().flatMap($$1.u().f(mh.bh)::a);
          if ($$6.isEmpty()) {
             $$1.b(wy.a("commands.test.error.non_existant_test", $$4.k()));
             return Optional.empty();
          } else {
-            je.c<sr> $$7 = $$6.get();
+            jf.c<sr> $$7 = $$6.get();
             sq $$8 = new sq($$7, $$4.u(), $$3, $$2);
             $$8.a($$0);
             return !a($$1, $$8.t()) ? Optional.empty() : Optional.of($$8);
@@ -379,41 +372,41 @@ public class tj {
       }
    }
 
-   private static int a(ei $$0, alg $$1, int $$2, int $$3, int $$4) throws CommandSyntaxException {
+   private static int a(ej $$0, alg $$1, int $$2, int $$3, int $$4) throws CommandSyntaxException {
       if ($$2 <= 48 && $$3 <= 48 && $$4 <= 48) {
          arq $$5 = $$0.e();
-         iu $$6 = a($$0);
-         dza $$7 = ti.a($$1, $$6, new jz($$2, $$3, $$4), dsz.a, $$5);
-         iu $$8 = $$7.z();
-         iu $$9 = $$8.b($$2 - 1, 0, $$4 - 1);
-         iu.d($$8, $$9).forEach($$1x -> $$5.b($$1x, dmh.I.m()));
-         $$0.a(() -> wy.a("commands.test.success", $$7.k()), true);
+         iv $$6 = a($$0);
+         dzh $$7 = ti.a($$1, $$6, new ka($$2, $$3, $$4), dtg.a, $$5);
+         iv $$8 = $$7.z();
+         iv $$9 = $$8.b($$2 - 1, 0, $$4 - 1);
+         iv.d($$8, $$9).forEach($$1x -> $$5.b($$1x, dmo.I.m()));
+         $$0.a(() -> wy.a("commands.test.create.success", $$7.k()), true);
          return 1;
       } else {
          throw r.create(48);
       }
    }
 
-   private static int a(ei $$0, String $$1) throws CommandSyntaxException {
-      fem $$2 = (fem)$$0.h().a(10.0, 1.0F, false);
-      iu $$3 = $$2.b();
+   private static int a(ej $$0, String $$1) throws CommandSyntaxException {
+      fet $$2 = (fet)$$0.h().a(10.0, 1.0F, false);
+      iv $$3 = $$2.b();
       arq $$4 = $$0.e();
-      Optional<iu> $$5 = ti.a($$3, 15, $$4);
+      Optional<iv> $$5 = ti.a($$3, 15, $$4);
       if ($$5.isEmpty()) {
          $$5 = ti.a($$3, 200, $$4);
       }
 
       if ($$5.isEmpty()) {
          throw q.create($$3.u(), $$3.v(), $$3.w());
-      } else if ($$4.c_($$5.get()) instanceof dza $$6) {
-         iu var12 = $$6.z();
-         iu $$9 = $$3.b(var12);
+      } else if ($$4.c_($$5.get()) instanceof dzh $$6) {
+         iv var12 = $$6.z();
+         iv $$9 = $$3.b(var12);
          String $$10 = $$9.u() + ", " + $$9.v() + ", " + $$9.w();
          String $$11 = $$6.k().getString();
          xm $$12 = wy.a("commands.test.coordinates", $$9.u(), $$9.v(), $$9.w())
-            .b(xv.a.a(true).a(n.k).a(new xe.e(wy.c("commands.test.coordinates.copy"))).a(new ww.c("final BlockPos " + $$1 + " = new BlockPos(" + $$10 + ");")));
+            .b(xv.a.a(true).a(o.k).a(new xe.e(wy.c("commands.test.coordinates.copy"))).a(new ww.c("final BlockPos " + $$1 + " = new BlockPos(" + $$10 + ");")));
          $$0.a(() -> wy.a("commands.test.relative_position", $$11, $$12), false);
-         agm.a($$4, new iu($$3), $$10, -2147418368, 10000);
+         agm.a($$4, new iv($$3), $$10, -2147418368, 10000);
          return 1;
       } else {
          throw n.create();
@@ -425,7 +418,7 @@ public class tj {
       return 1;
    }
 
-   public static int a(ei $$0, sv $$1) {
+   public static int a(ej $$0, sv $$1) {
       $$1.a(new tj.a($$0));
       te $$2 = new te($$1.a());
       $$2.a(new tj.b($$0, $$2));
@@ -434,11 +427,11 @@ public class tj {
       return 1;
    }
 
-   private static int a(ei $$0, je<sr> $$1) {
-      return !dza.a($$0.e(), $$1.a().e(), $$0::a) ? 0 : 1;
+   private static int a(ej $$0, jf<sr> $$1) {
+      return !dzh.a($$0.e(), $$1.a().e(), $$0::a) ? 0 : 1;
    }
 
-   private static boolean a(ei $$0, alg $$1) {
+   private static boolean a(ej $$0, alg $$1) {
       if ($$0.e().r().b($$1).isEmpty()) {
          $$0.b(wy.a("commands.test.error.structure_not_found", wy.a($$1)));
          return false;
@@ -447,13 +440,13 @@ public class tj {
       }
    }
 
-   private static iu a(ei $$0) {
-      iu $$1 = iu.a((jo)$$0.d());
-      int $$2 = $$0.e().a(egg.a.b, $$1).v();
-      return new iu($$1.u(), $$2, $$1.w() + 3);
+   private static iv a(ej $$0) {
+      iv $$1 = iv.a((jp)$$0.d());
+      int $$2 = $$0.e().a(egn.a.b, $$1).v();
+      return new iv($$1.u(), $$2, $$1.w() + 3);
    }
 
-   static record a(ei a) implements sl {
+   static record a(ej a) implements sl {
       @Override
       public void a(sj $$0) {
          this.a.a(() -> wy.a("commands.test.batch.starting", $$0.c().g(), $$0.a()), true);
@@ -464,7 +457,7 @@ public class tj {
       }
    }
 
-   public static record b(ei a, te b) implements st {
+   public static record b(ej a, te b) implements st {
       @Override
       public void a(sq $$0) {
       }
@@ -486,11 +479,11 @@ public class tj {
 
       private void c() {
          if (this.b.i()) {
-            this.a.a(() -> wy.a("commands.test.summary", this.b.h()).a(n.p), true);
+            this.a.a(() -> wy.a("commands.test.summary", this.b.h()).a(o.p), true);
             if (this.b.d()) {
                this.a.b(wy.a("commands.test.summary.failed", this.b.a()));
             } else {
-               this.a.a(() -> wy.c("commands.test.summary.all_required_passed").a(n.k), true);
+               this.a.a(() -> wy.c("commands.test.summary.all_required_passed").a(o.k), true);
             }
 
             if (this.b.e()) {

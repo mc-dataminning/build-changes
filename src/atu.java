@@ -25,7 +25,7 @@ public class atu {
    private static final Logger b = LogUtils.getLogger();
    public static Consumer<atu> a = $$0 -> {
    };
-   private static final Map<atr, Path> c = af.a(() -> {
+   private static final Map<atr, Path> c = ag.a(() -> {
       synchronized (att.class) {
          Builder<atr, Path> $$0 = ImmutableMap.builder();
 
@@ -146,7 +146,7 @@ public class atu {
    }
 
    public att a(ato $$0) {
-      return new att($$0, this.f, Set.copyOf(this.g), a(this.d), af.a(atr.class, $$0x -> a(this.e.getOrDefault($$0x, Set.of()))));
+      return new att($$0, this.f, Set.copyOf(this.g), a(this.d), ag.a(atr.class, $$0x -> a(this.e.getOrDefault($$0x, Set.of()))));
    }
 
    private static List<Path> a(Collection<Path> $$0) {

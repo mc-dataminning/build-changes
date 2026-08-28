@@ -21,26 +21,26 @@ public class anz {
    private static final int i = 64;
    private static final int j = 256;
 
-   public static void a(CommandDispatcher<ei> $$0, ee $$1) {
+   public static void a(CommandDispatcher<ej> $$0, ef $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("locate").requires($$0x -> $$0x.c(2)))
-                  .then(ej.a("structure").then(ej.a("structure", fm.a(mg.be)).executes($$0x -> a((ei)$$0x.getSource(), fm.a($$0x, "structure", mg.be, c))))))
-               .then(ej.a("biome").then(ej.a("biome", fl.a($$1, mg.aG)).executes($$0x -> a((ei)$$0x.getSource(), fl.a($$0x, "biome", mg.aG))))))
-            .then(ej.a("poi").then(ej.a("poi", fl.a($$1, mg.aa)).executes($$0x -> b((ei)$$0x.getSource(), fl.a($$0x, "poi", mg.aa)))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("locate").requires($$0x -> $$0x.c(2)))
+                  .then(ek.a("structure").then(ek.a("structure", fn.a(mh.be)).executes($$0x -> a((ej)$$0x.getSource(), fn.a($$0x, "structure", mh.be, c))))))
+               .then(ek.a("biome").then(ek.a("biome", fm.a($$1, mh.aG)).executes($$0x -> a((ej)$$0x.getSource(), fm.a($$0x, "biome", mh.aG))))))
+            .then(ek.a("poi").then(ek.a("poi", fm.a($$1, mh.aa)).executes($$0x -> b((ej)$$0x.getSource(), fm.a($$0x, "poi", mh.aa)))))
       );
    }
 
-   private static Optional<? extends ji.b<erb>> a(fm.c<erb> $$0, jr<erb> $$1) {
-      return (Optional<? extends ji.b<erb>>)$$0.a().map($$1x -> $$1.a($$1x).map($$0xx -> ji.a($$0xx)), $$1::a);
+   private static Optional<? extends jj.b<eri>> a(fn.c<eri> $$0, js<eri> $$1) {
+      return (Optional<? extends jj.b<eri>>)$$0.a().map($$1x -> $$1.a($$1x).map($$0xx -> jj.a($$0xx)), $$1::a);
    }
 
-   private static int a(ei $$0, fm.c<erb> $$1) throws CommandSyntaxException {
-      jr<erb> $$2 = $$0.e().F_().f(mg.be);
-      ji<erb> $$3 = (ji<erb>)a($$1, $$2).orElseThrow(() -> c.create($$1.b()));
-      iu $$4 = iu.a((jo)$$0.d());
+   private static int a(ej $$0, fn.c<eri> $$1) throws CommandSyntaxException {
+      js<eri> $$2 = $$0.e().F_().f(mh.be);
+      jj<eri> $$3 = (jj<eri>)a($$1, $$2).orElseThrow(() -> c.create($$1.b()));
+      iv $$4 = iv.a((jp)$$0.d());
       arq $$5 = $$0.e();
-      Stopwatch $$6 = Stopwatch.createStarted(af.d);
-      Pair<iu, je<erb>> $$7 = $$5.m().g().a($$5, $$3, $$4, 100, false);
+      Stopwatch $$6 = Stopwatch.createStarted(ag.d);
+      Pair<iv, jf<eri>> $$7 = $$5.m().g().a($$5, $$3, $$4, 100, false);
       $$6.stop();
       if ($$7 == null) {
          throw b.create($$1.b());
@@ -49,10 +49,10 @@ public class anz {
       }
    }
 
-   private static int a(ei $$0, fl.c<dkd> $$1) throws CommandSyntaxException {
-      iu $$2 = iu.a((jo)$$0.d());
-      Stopwatch $$3 = Stopwatch.createStarted(af.d);
-      Pair<iu, je<dkd>> $$4 = $$0.e().a($$1, $$2, 6400, 32, 64);
+   private static int a(ej $$0, fm.c<dkk> $$1) throws CommandSyntaxException {
+      iv $$2 = iv.a((jp)$$0.d());
+      Stopwatch $$3 = Stopwatch.createStarted(ag.d);
+      Pair<iv, jf<dkk>> $$4 = $$0.e().a($$1, $$2, 6400, 32, 64);
       $$3.stop();
       if ($$4 == null) {
          throw d.create($$1.b());
@@ -61,11 +61,11 @@ public class anz {
       }
    }
 
-   private static int b(ei $$0, fl.c<cij> $$1) throws CommandSyntaxException {
-      iu $$2 = iu.a((jo)$$0.d());
+   private static int b(ej $$0, fm.c<cio> $$1) throws CommandSyntaxException {
+      iv $$2 = iv.a((jp)$$0.d());
       arq $$3 = $$0.e();
-      Stopwatch $$4 = Stopwatch.createStarted(af.d);
-      Optional<Pair<je<cij>, iu>> $$5 = $$3.A().e($$1, $$2, 256, cig.b.c);
+      Stopwatch $$4 = Stopwatch.createStarted(ag.d);
+      Optional<Pair<jf<cio>, iv>> $$5 = $$3.A().e($$1, $$2, 256, cil.b.c);
       $$4.stop();
       if ($$5.isEmpty()) {
          throw e.create($$1.b());
@@ -74,22 +74,22 @@ public class anz {
       }
    }
 
-   public static int a(ei $$0, fl.c<?> $$1, iu $$2, Pair<iu, ? extends je<?>> $$3, String $$4, boolean $$5, Duration $$6) {
-      String $$7 = (String)$$1.a().map($$1x -> $$1.b(), $$2x -> $$1.b() + " (" + ((je)$$3.getSecond()).g() + ")");
+   public static int a(ej $$0, fm.c<?> $$1, iv $$2, Pair<iv, ? extends jf<?>> $$3, String $$4, boolean $$5, Duration $$6) {
+      String $$7 = (String)$$1.a().map($$1x -> $$1.b(), $$2x -> $$1.b() + " (" + ((jf)$$3.getSecond()).g() + ")");
       return a($$0, $$2, $$3, $$4, $$5, $$7, $$6);
    }
 
-   public static int a(ei $$0, fm.c<?> $$1, iu $$2, Pair<iu, ? extends je<?>> $$3, String $$4, boolean $$5, Duration $$6) {
-      String $$7 = (String)$$1.a().map($$0x -> $$0x.a().toString(), $$1x -> "#" + $$1x.b() + " (" + ((je)$$3.getSecond()).g() + ")");
+   public static int a(ej $$0, fn.c<?> $$1, iv $$2, Pair<iv, ? extends jf<?>> $$3, String $$4, boolean $$5, Duration $$6) {
+      String $$7 = (String)$$1.a().map($$0x -> $$0x.a().toString(), $$1x -> "#" + $$1x.b() + " (" + ((jf)$$3.getSecond()).g() + ")");
       return a($$0, $$2, $$3, $$4, $$5, $$7, $$6);
    }
 
-   private static int a(ei $$0, iu $$1, Pair<iu, ? extends je<?>> $$2, String $$3, boolean $$4, String $$5, Duration $$6) {
-      iu $$7 = (iu)$$2.getFirst();
+   private static int a(ej $$0, iv $$1, Pair<iv, ? extends jf<?>> $$2, String $$3, boolean $$4, String $$5, Duration $$6) {
+      iv $$7 = (iv)$$2.getFirst();
       int $$8 = $$4 ? azm.d(azm.c((float)$$1.j($$7))) : azm.d(a($$1.u(), $$1.w(), $$7.u(), $$7.w()));
       String $$9 = $$4 ? String.valueOf($$7.v()) : "~";
       wy $$10 = xb.a((wy)wy.a("chat.coordinates", $$7.u(), $$9, $$7.w()))
-         .a($$2x -> $$2x.a(n.k).a(new ww.g("/tp @s " + $$7.u() + " " + $$9 + " " + $$7.w())).a(new xe.e(wy.c("chat.coordinates.tooltip"))));
+         .a($$2x -> $$2x.a(o.k).a(new ww.g("/tp @s " + $$7.u() + " " + $$9 + " " + $$7.w())).a(new xe.e(wy.c("chat.coordinates.tooltip"))));
       $$0.a(() -> wy.a($$3, $$5, $$10, $$8), false);
       a.info("Locating element " + $$5 + " took " + $$6.toMillis() + " ms");
       return $$8;

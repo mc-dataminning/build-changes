@@ -1,45 +1,53 @@
-public class fgb {
-   private static final fgl<Object> a = new fgl<Object>() {
-      @Override
-      public void a(fgi<Object> $$0) {
-      }
+import com.mojang.authlib.GameProfile;
+import javax.annotation.Nullable;
 
+public interface fgb {
+   String co = "*";
+   fgb cp = new fgb() {
       @Override
-      public boolean a(iu $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-   };
-   private static final fge<Object> b = new fge<Object>() {
-      @Override
-      public void a(fgi<Object> $$0) {
-      }
-
-      @Override
-      public boolean a(iu $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public boolean b(iu $$0, Object $$1) {
-         return false;
-      }
-
-      @Override
-      public int a() {
-         return 0;
+      public String cH() {
+         return "*";
       }
    };
 
-   public static <T> fgl<T> a() {
-      return (fgl<T>)a;
+   String cH();
+
+   @Nullable
+   default wy m_() {
+      return null;
    }
 
-   public static <T> fge<T> b() {
-      return (fge<T>)b;
+   default wy hf() {
+      wy $$0 = this.m_();
+      return $$0 != null ? $$0.f().a($$0x -> $$0x.a(new xe.e(wy.b(this.cH())))) : wy.b(this.cH());
+   }
+
+   static fgb c(final String $$0) {
+      if ($$0.equals("*")) {
+         return cp;
+      } else {
+         final wy $$1 = wy.b($$0);
+         return new fgb() {
+            @Override
+            public String cH() {
+               return $$0;
+            }
+
+            @Override
+            public wy hf() {
+               return $$1;
+            }
+         };
+      }
+   }
+
+   static fgb a(GameProfile $$0) {
+      final String $$1 = $$0.getName();
+      return new fgb() {
+         @Override
+         public String cH() {
+            return $$1;
+         }
+      };
    }
 }

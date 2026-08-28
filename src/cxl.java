@@ -1,191 +1,100 @@
-import java.util.Map;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.Objects;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class cxl extends cyz {
-   @Deprecated
-   private final dmf a;
-
-   public cxl(dmf $$0, cyz.a $$1) {
-      super($$1);
-      this.a = $$0;
-   }
-
-   @Override
-   public bud a(dcy $$0) {
-      bud $$1 = this.a(new dcw($$0));
-      return !$$1.a() && $$0.n().c(kj.w) ? super.a($$0.q(), $$0.o(), $$0.p()) : $$1;
-   }
-
-   public bud a(dcw $$0) {
-      if (!this.c().a($$0.q().K())) {
-         return bud.d;
-      } else if (!$$0.b()) {
-         return bud.d;
-      } else {
-         dcw $$1 = this.b($$0);
-         if ($$1 == null) {
-            return bud.d;
-         } else {
-            eah $$2 = this.c($$1);
-            if ($$2 == null) {
-               return bud.d;
-            } else if (!this.a($$1, $$2)) {
-               return bud.d;
-            } else {
-               iu $$3 = $$1.a();
-               dja $$4 = $$1.q();
-               crc $$5 = $$1.o();
-               czd $$6 = $$1.n();
-               eah $$7 = $$4.a_($$3);
-               if ($$7.a($$2.b())) {
-                  $$7 = this.a($$3, $$4, $$6, $$7);
-                  this.a($$3, $$4, $$5, $$6, $$7);
-                  a($$4, $$3, $$6);
-                  $$7.b().a($$4, $$3, $$7, $$5, $$6);
-                  if ($$5 instanceof arr) {
-                     ap.z.a((arr)$$5, $$3, $$6);
-                  }
-               }
-
-               duc $$8 = $$7.A();
-               $$4.a($$5, $$3, this.a($$7), awo.e, ($$8.a() + 1.0F) / 2.0F, $$8.b() * 0.8F);
-               $$4.a(efh.i, $$3, efh.a.a($$5, $$7));
-               $$6.a(1, $$5);
-               return bud.a;
-            }
-         }
-      }
-   }
-
-   protected awm a(eah $$0) {
-      return $$0.A().e();
-   }
-
+public class cxl {
+   public static final Codec<cxl> a = ayu.c(az.a, ayu.b(az.a.listOf())).xmap(cxl::new, $$0 -> $$0.f);
+   public static final yw<wj, cxl> b = yw.a(az.b.a(yu.a()), $$0 -> $$0.f, cxl::new);
+   public static final wy c = wy.c("item.canBreak").a(o.h);
+   public static final wy d = wy.c("item.canPlace").a(o.h);
+   private static final wy e = wy.c("item.canUse.unknown").a(o.h);
+   private final List<az> f;
    @Nullable
-   public dcw b(dcw $$0) {
-      return $$0;
-   }
-
-   private static void a(dja $$0, iu $$1, czd $$2) {
-      dxf $$3 = $$0.c_($$1);
-      if ($$3 != null) {
-         $$3.a($$2);
-         $$3.e();
-      }
-   }
-
-   protected boolean a(iu $$0, dja $$1, @Nullable crc $$2, czd $$3, eah $$4) {
-      return a($$1, $$2, $$0, $$3);
-   }
-
+   private List<wy> g;
    @Nullable
-   protected eah c(dcw $$0) {
-      eah $$1 = this.c().a($$0);
-      return $$1 != null && this.b($$0, $$1) ? $$1 : null;
+   private eas h;
+   private boolean i;
+   private boolean j;
+
+   public cxl(List<az> $$0) {
+      this.f = $$0;
    }
 
-   private eah a(iu $$0, dja $$1, czd $$2, eah $$3) {
-      dbd $$4 = $$2.a(kj.aq, dbd.a);
-      if ($$4.a()) {
-         return $$3;
-      } else {
-         eah $$5 = $$4.a($$3);
-         if ($$5 != $$3) {
-            $$1.a($$0, $$5, 2);
-         }
-
-         return $$5;
-      }
-   }
-
-   protected boolean b(dcw $$0, eah $$1) {
-      return (!this.b() || $$1.a((djd)$$0.q(), $$0.a())) && $$0.q().a($$1, $$0.a(), fev.a());
-   }
-
-   protected boolean b() {
-      return true;
-   }
-
-   protected boolean a(dcw $$0, eah $$1) {
-      return $$0.q().a($$0.a(), $$1, 11);
-   }
-
-   public static boolean a(dja $$0, @Nullable crc $$1, iu $$2, czd $$3) {
-      if ($$0.C) {
+   private static boolean a(eas $$0, @Nullable eas $$1, boolean $$2) {
+      if ($$1 == null || $$0.a() != $$1.a()) {
          return false;
+      } else if (!$$2) {
+         return true;
+      } else if ($$0.b() == null && $$1.b() == null) {
+         return true;
+      } else if ($$0.b() != null && $$1.b() != null) {
+         jt $$3 = $$0.c().F_();
+         return Objects.equals($$0.b().c($$3), $$1.b().c($$3));
       } else {
-         dbl $$4 = $$3.a(kj.aa, dbl.a);
-         if (!$$4.c()) {
-            dxh<?> $$5 = $$4.a($$0.F_(), mg.e);
-            if ($$5 == null) {
-               return false;
-            }
-
-            dxf $$6 = $$0.c_($$2);
-            if ($$6 != null) {
-               dxh<?> $$7 = $$6.p();
-               if ($$7 != $$5) {
-                  return false;
-               }
-
-               if (!$$7.b() || $$1 != null && $$1.gG()) {
-                  return $$4.a($$6, $$0.F_());
-               }
-
-               return false;
-            }
-         }
-
          return false;
       }
    }
 
-   @Override
-   public boolean a(czd $$0, @Nullable crc $$1) {
-      if ($$1 != null && $$1.G() >= 2) {
-         dbl $$2 = $$0.a(kj.aa);
-         if ($$2 != null) {
-            dxh<?> $$3 = $$2.a($$1.dV().F_(), mg.e);
-            return $$3 != null && $$3.b();
+   public boolean a(eas $$0) {
+      if (a($$0, this.h, this.j)) {
+         return this.i;
+      } else {
+         this.h = $$0;
+         this.j = false;
+
+         for (az $$1 : this.f) {
+            if ($$1.a($$0)) {
+               this.j = this.j | $$1.a();
+               this.i = true;
+               return true;
+            }
+         }
+
+         this.i = false;
+         return false;
+      }
+   }
+
+   private List<wy> a() {
+      if (this.g == null) {
+         this.g = a(this.f);
+      }
+
+      return this.g;
+   }
+
+   public void a(Consumer<wy> $$0) {
+      this.a().forEach($$0);
+   }
+
+   private static List<wy> a(List<az> $$0) {
+      for (az $$1 : $$0) {
+         if ($$1.b().isEmpty()) {
+            return List.of(e);
          }
       }
 
-      return false;
-   }
-
-   public dmf c() {
-      return this.a;
-   }
-
-   public void a(Map<dmf, cyz> $$0, cyz $$1) {
-      $$0.put(this.c(), $$1);
+      return $$0.stream().flatMap($$0x -> $$0x.b().orElseThrow().a()).distinct().map($$0x -> ((dmm)$$0x.a()).f().a(o.i)).toList();
    }
 
    @Override
-   public boolean d() {
-      return !(this.c() instanceof dto);
-   }
-
-   @Override
-   public void a(cnh $$0) {
-      dbv $$1 = $$0.f().b(kj.ap, dbv.a);
-      if ($$1 != null) {
-         czg.a($$0, $$1.e());
-      }
-   }
-
-   public static void a(czd $$0, dxh<?> $$1, tz $$2) {
-      $$2.r("id");
-      if ($$2.g()) {
-         $$0.e(kj.aa);
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         dxf.a($$2, $$1);
-         $$0.b(kj.aa, dbl.a($$2));
+         return $$0 instanceof cxl $$1 ? this.f.equals($$1.f) : false;
       }
    }
 
    @Override
-   public cum k() {
-      return this.c().k();
+   public int hashCode() {
+      return this.f.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "AdventureModePredicate{predicates=" + this.f + "}";
    }
 }

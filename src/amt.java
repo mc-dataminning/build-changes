@@ -22,107 +22,107 @@ public class amt {
    private static final SimpleCommandExceptionType i = new SimpleCommandExceptionType(wy.c("commands.bossbar.set.max.unchanged"));
    private static final SimpleCommandExceptionType j = new SimpleCommandExceptionType(wy.c("commands.bossbar.set.visibility.unchanged.hidden"));
    private static final SimpleCommandExceptionType k = new SimpleCommandExceptionType(wy.c("commands.bossbar.set.visibility.unchanged.visible"));
-   public static final SuggestionProvider<ei> a = ($$0, $$1) -> en.a(((ei)$$0.getSource()).l().aM().a(), $$1);
+   public static final SuggestionProvider<ej> a = ($$0, $$1) -> eo.a(((ej)$$0.getSource()).l().aM().a(), $$1);
 
-   public static void a(CommandDispatcher<ei> $$0, ee $$1) {
+   public static void a(CommandDispatcher<ej> $$0, ef $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a(
                               "bossbar"
                            )
                            .requires($$0x -> $$0x.c(2)))
                         .then(
-                           ej.a("add")
+                           ek.a("add")
                               .then(
-                                 ej.a("id", fj.a())
-                                    .then(ej.a("name", er.a($$1)).executes($$0x -> a((ei)$$0x.getSource(), fj.a($$0x, "id"), er.b($$0x, "name"))))
+                                 ek.a("id", fk.a())
+                                    .then(ek.a("name", es.a($$1)).executes($$0x -> a((ej)$$0x.getSource(), fk.a($$0x, "id"), es.b($$0x, "name"))))
                               )
                         ))
-                     .then(ej.a("remove").then(ej.a("id", fj.a()).suggests(a).executes($$0x -> e((ei)$$0x.getSource(), a($$0x))))))
-                  .then(ej.a("list").executes($$0x -> a((ei)$$0x.getSource()))))
+                     .then(ek.a("remove").then(ek.a("id", fk.a()).suggests(a).executes($$0x -> e((ej)$$0x.getSource(), a($$0x))))))
+                  .then(ek.a("list").executes($$0x -> a((ej)$$0x.getSource()))))
                .then(
-                  ej.a("set")
+                  ek.a("set")
                      .then(
-                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ej.a(
-                                                "id", fj.a()
+                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ek.a(
+                                                "id", fk.a()
                                              )
                                              .suggests(a)
                                              .then(
-                                                ej.a("name")
-                                                   .then(ej.a("name", er.a($$1)).executes($$0x -> a((ei)$$0x.getSource(), a($$0x), er.b($$0x, "name"))))
+                                                ek.a("name")
+                                                   .then(ek.a("name", es.a($$1)).executes($$0x -> a((ej)$$0x.getSource(), a($$0x), es.b($$0x, "name"))))
                                              ))
                                           .then(
-                                             ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a(
+                                             ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a(
                                                                      "color"
                                                                   )
-                                                                  .then(ej.a("pink").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btt.a.a))))
-                                                               .then(ej.a("blue").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btt.a.b))))
-                                                            .then(ej.a("red").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btt.a.c))))
-                                                         .then(ej.a("green").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btt.a.d))))
-                                                      .then(ej.a("yellow").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btt.a.e))))
-                                                   .then(ej.a("purple").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btt.a.f))))
-                                                .then(ej.a("white").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btt.a.g)))
+                                                                  .then(ek.a("pink").executes($$0x -> a((ej)$$0x.getSource(), a($$0x), btw.a.a))))
+                                                               .then(ek.a("blue").executes($$0x -> a((ej)$$0x.getSource(), a($$0x), btw.a.b))))
+                                                            .then(ek.a("red").executes($$0x -> a((ej)$$0x.getSource(), a($$0x), btw.a.c))))
+                                                         .then(ek.a("green").executes($$0x -> a((ej)$$0x.getSource(), a($$0x), btw.a.d))))
+                                                      .then(ek.a("yellow").executes($$0x -> a((ej)$$0x.getSource(), a($$0x), btw.a.e))))
+                                                   .then(ek.a("purple").executes($$0x -> a((ej)$$0x.getSource(), a($$0x), btw.a.f))))
+                                                .then(ek.a("white").executes($$0x -> a((ej)$$0x.getSource(), a($$0x), btw.a.g)))
                                           ))
                                        .then(
-                                          ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("style")
-                                                         .then(ej.a("progress").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btt.b.a))))
-                                                      .then(ej.a("notched_6").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btt.b.b))))
-                                                   .then(ej.a("notched_10").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btt.b.c))))
-                                                .then(ej.a("notched_12").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btt.b.d))))
-                                             .then(ej.a("notched_20").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), btt.b.e)))
+                                          ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("style")
+                                                         .then(ek.a("progress").executes($$0x -> a((ej)$$0x.getSource(), a($$0x), btw.b.a))))
+                                                      .then(ek.a("notched_6").executes($$0x -> a((ej)$$0x.getSource(), a($$0x), btw.b.b))))
+                                                   .then(ek.a("notched_10").executes($$0x -> a((ej)$$0x.getSource(), a($$0x), btw.b.c))))
+                                                .then(ek.a("notched_12").executes($$0x -> a((ej)$$0x.getSource(), a($$0x), btw.b.d))))
+                                             .then(ek.a("notched_20").executes($$0x -> a((ej)$$0x.getSource(), a($$0x), btw.b.e)))
                                        ))
                                     .then(
-                                       ej.a("value")
+                                       ek.a("value")
                                           .then(
-                                             ej.a("value", IntegerArgumentType.integer(0))
-                                                .executes($$0x -> a((ei)$$0x.getSource(), a($$0x), IntegerArgumentType.getInteger($$0x, "value")))
+                                             ek.a("value", IntegerArgumentType.integer(0))
+                                                .executes($$0x -> a((ej)$$0x.getSource(), a($$0x), IntegerArgumentType.getInteger($$0x, "value")))
                                           )
                                     ))
                                  .then(
-                                    ej.a("max")
+                                    ek.a("max")
                                        .then(
-                                          ej.a("max", IntegerArgumentType.integer(1))
-                                             .executes($$0x -> b((ei)$$0x.getSource(), a($$0x), IntegerArgumentType.getInteger($$0x, "max")))
+                                          ek.a("max", IntegerArgumentType.integer(1))
+                                             .executes($$0x -> b((ej)$$0x.getSource(), a($$0x), IntegerArgumentType.getInteger($$0x, "max")))
                                        )
                                  ))
                               .then(
-                                 ej.a("visible")
+                                 ek.a("visible")
                                     .then(
-                                       ej.a("visible", BoolArgumentType.bool())
-                                          .executes($$0x -> a((ei)$$0x.getSource(), a($$0x), BoolArgumentType.getBool($$0x, "visible")))
+                                       ek.a("visible", BoolArgumentType.bool())
+                                          .executes($$0x -> a((ej)$$0x.getSource(), a($$0x), BoolArgumentType.getBool($$0x, "visible")))
                                     )
                               ))
                            .then(
-                              ((LiteralArgumentBuilder)ej.a("players").executes($$0x -> a((ei)$$0x.getSource(), a($$0x), Collections.emptyList())))
-                                 .then(ej.a("targets", ev.d()).executes($$0x -> a((ei)$$0x.getSource(), a($$0x), ev.d($$0x, "targets"))))
+                              ((LiteralArgumentBuilder)ek.a("players").executes($$0x -> a((ej)$$0x.getSource(), a($$0x), Collections.emptyList())))
+                                 .then(ek.a("targets", ew.d()).executes($$0x -> a((ej)$$0x.getSource(), a($$0x), ew.d($$0x, "targets"))))
                            )
                      )
                ))
             .then(
-               ej.a("get")
+               ek.a("get")
                   .then(
-                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ej.a("id", fj.a())
+                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ek.a("id", fk.a())
                                  .suggests(a)
-                                 .then(ej.a("value").executes($$0x -> a((ei)$$0x.getSource(), a($$0x)))))
-                              .then(ej.a("max").executes($$0x -> b((ei)$$0x.getSource(), a($$0x)))))
-                           .then(ej.a("visible").executes($$0x -> c((ei)$$0x.getSource(), a($$0x)))))
-                        .then(ej.a("players").executes($$0x -> d((ei)$$0x.getSource(), a($$0x))))
+                                 .then(ek.a("value").executes($$0x -> a((ej)$$0x.getSource(), a($$0x)))))
+                              .then(ek.a("max").executes($$0x -> b((ej)$$0x.getSource(), a($$0x)))))
+                           .then(ek.a("visible").executes($$0x -> c((ej)$$0x.getSource(), a($$0x)))))
+                        .then(ek.a("players").executes($$0x -> d((ej)$$0x.getSource(), a($$0x))))
                   )
             )
       );
    }
 
-   private static int a(ei $$0, ami $$1) {
+   private static int a(ej $$0, ami $$1) {
       $$0.a(() -> wy.a("commands.bossbar.get.value", $$1.e(), $$1.c()), true);
       return $$1.c();
    }
 
-   private static int b(ei $$0, ami $$1) {
+   private static int b(ej $$0, ami $$1) {
       $$0.a(() -> wy.a("commands.bossbar.get.max", $$1.e(), $$1.d()), true);
       return $$1.d();
    }
 
-   private static int c(ei $$0, ami $$1) {
-      if ($$1.f()) {
+   private static int c(ej $$0, ami $$1) {
+      if ($$1.g()) {
          $$0.a(() -> wy.a("commands.bossbar.get.visible.visible", $$1.e()), true);
          return 1;
       } else {
@@ -131,18 +131,18 @@ public class amt {
       }
    }
 
-   private static int d(ei $$0, ami $$1) {
-      if ($$1.g().isEmpty()) {
+   private static int d(ej $$0, ami $$1) {
+      if ($$1.h().isEmpty()) {
          $$0.a(() -> wy.a("commands.bossbar.get.players.none", $$1.e()), true);
       } else {
-         $$0.a(() -> wy.a("commands.bossbar.get.players.some", $$1.e(), $$1.g().size(), xb.b($$1.g(), crc::m_)), true);
+         $$0.a(() -> wy.a("commands.bossbar.get.players.some", $$1.e(), $$1.h().size(), xb.b($$1.h(), crj::m_)), true);
       }
 
-      return $$1.g().size();
+      return $$1.h().size();
    }
 
-   private static int a(ei $$0, ami $$1, boolean $$2) throws CommandSyntaxException {
-      if ($$1.f() == $$2) {
+   private static int a(ej $$0, ami $$1, boolean $$2) throws CommandSyntaxException {
+      if ($$1.g() == $$2) {
          if ($$2) {
             throw k.create();
          } else {
@@ -160,7 +160,7 @@ public class amt {
       }
    }
 
-   private static int a(ei $$0, ami $$1, int $$2) throws CommandSyntaxException {
+   private static int a(ej $$0, ami $$1, int $$2) throws CommandSyntaxException {
       if ($$1.c() == $$2) {
          throw h.create();
       } else {
@@ -170,7 +170,7 @@ public class amt {
       }
    }
 
-   private static int b(ei $$0, ami $$1, int $$2) throws CommandSyntaxException {
+   private static int b(ej $$0, ami $$1, int $$2) throws CommandSyntaxException {
       if ($$1.d() == $$2) {
          throw i.create();
       } else {
@@ -180,8 +180,8 @@ public class amt {
       }
    }
 
-   private static int a(ei $$0, ami $$1, btt.a $$2) throws CommandSyntaxException {
-      if ($$1.k().equals($$2)) {
+   private static int a(ej $$0, ami $$1, btw.a $$2) throws CommandSyntaxException {
+      if ($$1.l().equals($$2)) {
          throw f.create();
       } else {
          $$1.a($$2);
@@ -190,8 +190,8 @@ public class amt {
       }
    }
 
-   private static int a(ei $$0, ami $$1, btt.b $$2) throws CommandSyntaxException {
-      if ($$1.l().equals($$2)) {
+   private static int a(ej $$0, ami $$1, btw.b $$2) throws CommandSyntaxException {
+      if ($$1.m().equals($$2)) {
          throw g.create();
       } else {
          $$1.a($$2);
@@ -200,9 +200,9 @@ public class amt {
       }
    }
 
-   private static int a(ei $$0, ami $$1, wy $$2) throws CommandSyntaxException {
+   private static int a(ej $$0, ami $$1, wy $$2) throws CommandSyntaxException {
       wy $$3 = xb.a($$0, $$2, null, 0);
-      if ($$1.i().equals($$3)) {
+      if ($$1.j().equals($$3)) {
          throw e.create();
       } else {
          $$1.a($$3);
@@ -211,22 +211,22 @@ public class amt {
       }
    }
 
-   private static int a(ei $$0, ami $$1, Collection<arr> $$2) throws CommandSyntaxException {
+   private static int a(ej $$0, ami $$1, Collection<arr> $$2) throws CommandSyntaxException {
       boolean $$3 = $$1.a($$2);
       if (!$$3) {
          throw d.create();
       } else {
-         if ($$1.g().isEmpty()) {
+         if ($$1.h().isEmpty()) {
             $$0.a(() -> wy.a("commands.bossbar.set.players.success.none", $$1.e()), true);
          } else {
-            $$0.a(() -> wy.a("commands.bossbar.set.players.success.some", $$1.e(), $$2.size(), xb.b($$2, crc::m_)), true);
+            $$0.a(() -> wy.a("commands.bossbar.set.players.success.some", $$1.e(), $$2.size(), xb.b($$2, crj::m_)), true);
          }
 
-         return $$1.g().size();
+         return $$1.h().size();
       }
    }
 
-   private static int a(ei $$0) {
+   private static int a(ej $$0) {
       Collection<ami> $$1 = $$0.l().aM().b();
       if ($$1.isEmpty()) {
          $$0.a(() -> wy.c("commands.bossbar.list.bars.none"), false);
@@ -237,7 +237,7 @@ public class amt {
       return $$1.size();
    }
 
-   private static int a(ei $$0, alg $$1, wy $$2) throws CommandSyntaxException {
+   private static int a(ej $$0, alg $$1, wy $$2) throws CommandSyntaxException {
       amj $$3 = $$0.l().aM();
       if ($$3.a($$1) != null) {
          throw b.create($$1.toString());
@@ -248,7 +248,7 @@ public class amt {
       }
    }
 
-   private static int e(ei $$0, ami $$1) {
+   private static int e(ej $$0, ami $$1) {
       amj $$2 = $$0.l().aM();
       $$1.b();
       $$2.a($$1);
@@ -256,9 +256,9 @@ public class amt {
       return $$2.b().size();
    }
 
-   public static ami a(CommandContext<ei> $$0) throws CommandSyntaxException {
-      alg $$1 = fj.a($$0, "id");
-      ami $$2 = ((ei)$$0.getSource()).l().aM().a($$1);
+   public static ami a(CommandContext<ej> $$0) throws CommandSyntaxException {
+      alg $$1 = fk.a($$0, "id");
+      ami $$2 = ((ej)$$0.getSource()).l().aM().a($$1);
       if ($$2 == null) {
          throw c.create($$1.toString());
       } else {

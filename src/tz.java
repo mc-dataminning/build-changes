@@ -15,7 +15,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
-import java.util.UUID;
 import java.util.Map.Entry;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
@@ -226,19 +225,6 @@ public class tz implements uw {
       this.y.put($$0, uh.a($$1));
    }
 
-   public void a(String $$0, UUID $$1) {
-      this.y.put($$0, uo.a($$1));
-   }
-
-   public UUID a(String $$0) {
-      return uo.a(this.c($$0));
-   }
-
-   public boolean b(String $$0) {
-      uw $$1 = this.c($$0);
-      return $$1 != null && $$1.c() == ud.a && ((ud)$$1).g().length == 4;
-   }
-
    public void a(String $$0, float $$1) {
       this.y.put($$0, uc.a($$1));
    }
@@ -280,21 +266,21 @@ public class tz implements uw {
    }
 
    @Nullable
-   public uw c(String $$0) {
+   public uw a(String $$0) {
       return this.y.get($$0);
    }
 
-   public byte d(String $$0) {
+   public byte b(String $$0) {
       uw $$1 = this.y.get($$0);
       return $$1 == null ? 0 : $$1.b();
    }
 
-   public boolean e(String $$0) {
+   public boolean c(String $$0) {
       return this.y.containsKey($$0);
    }
 
    public boolean b(String $$0, int $$1) {
-      int $$2 = this.d($$0);
+      int $$2 = this.b($$0);
       if ($$2 == $$1) {
          return true;
       } else {
@@ -302,7 +288,7 @@ public class tz implements uw {
       }
    }
 
-   public byte f(String $$0) {
+   public byte d(String $$0) {
       try {
          if (this.b($$0, 99)) {
             return ((up)this.y.get($$0)).i();
@@ -313,7 +299,7 @@ public class tz implements uw {
       return 0;
    }
 
-   public short g(String $$0) {
+   public short e(String $$0) {
       try {
          if (this.b($$0, 99)) {
             return ((up)this.y.get($$0)).h();
@@ -324,29 +310,37 @@ public class tz implements uw {
       return 0;
    }
 
-   public int h(String $$0) {
+   public int f(String $$0) {
+      return this.c($$0, 0);
+   }
+
+   public int c(String $$0, int $$1) {
       try {
          if (this.b($$0, 99)) {
             return ((up)this.y.get($$0)).g();
          }
-      } catch (ClassCastException var3) {
+      } catch (ClassCastException var4) {
       }
 
-      return 0;
+      return $$1;
    }
 
-   public long i(String $$0) {
+   public long g(String $$0) {
+      return this.b($$0, 0L);
+   }
+
+   public long b(String $$0, long $$1) {
       try {
          if (this.b($$0, 99)) {
             return ((up)this.y.get($$0)).f();
          }
-      } catch (ClassCastException var3) {
+      } catch (ClassCastException var5) {
       }
 
-      return 0L;
+      return $$1;
    }
 
-   public float j(String $$0) {
+   public float h(String $$0) {
       return this.b($$0, 0.0F);
    }
 
@@ -361,7 +355,7 @@ public class tz implements uw {
       return $$1;
    }
 
-   public double k(String $$0) {
+   public double i(String $$0) {
       try {
          if (this.b($$0, 99)) {
             return ((up)this.y.get($$0)).j();
@@ -372,7 +366,7 @@ public class tz implements uw {
       return 0.0;
    }
 
-   public String l(String $$0) {
+   public String j(String $$0) {
       try {
          if (this.b($$0, 8)) {
             return this.y.get($$0).p_();
@@ -383,57 +377,57 @@ public class tz implements uw {
       return "";
    }
 
-   public byte[] m(String $$0) {
+   public byte[] k(String $$0) {
       try {
          if (this.b($$0, 7)) {
             return ((tw)this.y.get($$0)).e();
          }
       } catch (ClassCastException var3) {
-         throw new z(this.a($$0, tw.a, var3));
+         throw new aa(this.a($$0, tw.a, var3));
       }
 
       return new byte[0];
    }
 
-   public int[] n(String $$0) {
+   public int[] l(String $$0) {
       try {
          if (this.b($$0, 11)) {
             return ((ud)this.y.get($$0)).g();
          }
       } catch (ClassCastException var3) {
-         throw new z(this.a($$0, ud.a, var3));
+         throw new aa(this.a($$0, ud.a, var3));
       }
 
       return new int[0];
    }
 
-   public long[] o(String $$0) {
+   public long[] m(String $$0) {
       try {
          if (this.b($$0, 12)) {
             return ((ug)this.y.get($$0)).g();
          }
       } catch (ClassCastException var3) {
-         throw new z(this.a($$0, ug.a, var3));
+         throw new aa(this.a($$0, ug.a, var3));
       }
 
       return new long[0];
    }
 
-   public tz p(String $$0) {
+   public tz n(String $$0) {
       try {
          if (this.b($$0, 10)) {
             return (tz)this.y.get($$0);
          }
       } catch (ClassCastException var3) {
-         throw new z(this.a($$0, b, var3));
+         throw new aa(this.a($$0, b, var3));
       }
 
       return new tz();
    }
 
-   public uf c(String $$0, int $$1) {
+   public uf d(String $$0, int $$1) {
       try {
-         if (this.d($$0) == 9) {
+         if (this.b($$0) == 9) {
             uf $$2 = (uf)this.y.get($$0);
             if (!$$2.isEmpty() && $$2.f() != $$1) {
                return new uf();
@@ -442,17 +436,17 @@ public class tz implements uw {
             return $$2;
          }
       } catch (ClassCastException var4) {
-         throw new z(this.a($$0, uf.a, var4));
+         throw new aa(this.a($$0, uf.a, var4));
       }
 
       return new uf();
    }
 
-   public boolean q(String $$0) {
-      return this.f($$0) != 0;
+   public boolean o(String $$0) {
+      return this.d($$0) != 0;
    }
 
-   public void r(String $$0) {
+   public void p(String $$0) {
       this.y.remove($$0);
    }
 
@@ -465,9 +459,9 @@ public class tz implements uw {
       return this.y.isEmpty();
    }
 
-   private o a(String $$0, uy<?> $$1, ClassCastException $$2) {
-      o $$3 = o.a($$2, "Reading NBT data");
-      p $$4 = $$3.a("Corrupt NBT tag", 1);
+   private p a(String $$0, uy<?> $$1, ClassCastException $$2) {
+      p $$3 = p.a($$2, "Reading NBT data");
+      q $$4 = $$3.a("Corrupt NBT tag", 1);
       $$4.a("Tag type found", () -> this.y.get($$0).c().a());
       $$4.a("Tag type expected", $$1::a);
       $$4.a("Tag name", $$0);
@@ -479,7 +473,7 @@ public class tz implements uw {
    }
 
    public tz i() {
-      return new tz(af.a(this.y, uw::d));
+      return new tz(ag.a(this.y, uw::d));
    }
 
    @Override
@@ -504,8 +498,8 @@ public class tz implements uw {
       try {
          return $$0.c($$2, $$3);
       } catch (IOException var7) {
-         o $$5 = o.a(var7, "Loading NBT data");
-         p $$6 = $$5.a("NBT Tag");
+         p $$5 = p.a(var7, "Loading NBT data");
+         q $$6 = $$5.a("NBT Tag");
          $$6.a("Tag name", $$1);
          $$6.a("Tag type", $$0.a());
          throw new uq($$5);
@@ -517,7 +511,7 @@ public class tz implements uw {
          uw $$2 = $$0.y.get($$1);
          if ($$2.b() == 10) {
             if (this.b($$1, 10)) {
-               tz $$3 = this.p($$1);
+               tz $$3 = this.n($$1);
                $$3.a((tz)$$2);
             } else {
                this.a($$1, $$2.d());
@@ -580,8 +574,20 @@ public class tz implements uw {
       this.a($$0, $$1, un.a, $$2);
    }
 
+   public <T> void b(String $$0, Codec<T> $$1, @Nullable T $$2) {
+      if ($$2 != null) {
+         this.a($$0, $$1, $$2);
+      }
+   }
+
    public <T> void a(String $$0, Codec<T> $$1, DynamicOps<uw> $$2, T $$3) {
       this.a($$0, (uw)$$1.encodeStart($$2, $$3).getOrThrow());
+   }
+
+   public <T> void b(String $$0, Codec<T> $$1, DynamicOps<uw> $$2, @Nullable T $$3) {
+      if ($$3 != null) {
+         this.a($$0, $$1, $$2, $$3);
+      }
    }
 
    public <T> void a(MapCodec<T> $$0, T $$1) {
@@ -597,7 +603,7 @@ public class tz implements uw {
    }
 
    public <T> Optional<T> a(String $$0, Codec<T> $$1, DynamicOps<uw> $$2) {
-      uw $$3 = this.c($$0);
+      uw $$3 = this.a($$0);
       return $$3 == null
          ? Optional.empty()
          : $$1.parse($$2, $$3).resultOrPartial($$2x -> c.error("Failed to read field ({}={}): {}", new Object[]{$$0, $$3, $$2x}));

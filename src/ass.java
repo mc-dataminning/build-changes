@@ -134,7 +134,7 @@ public class ass {
                      $$1.b();
                   } catch (Exception var7) {
                      if ($$1.e()) {
-                        throw new z(o.a(var7, "Ticking memory connection"));
+                        throw new aa(p.a(var7, "Ticking memory connection"));
                      }
 
                      d.warn("Failed to handle packet for {}", $$1.a(this.e.bl()), var7);

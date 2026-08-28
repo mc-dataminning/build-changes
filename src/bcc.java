@@ -4,9 +4,9 @@ import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 
-public class bcc extends bhr {
+public class bcc extends bht {
    public bcc(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityBannerColorFix", bix.s, "minecraft:banner");
+      super($$0, $$1, "BlockEntityBannerColorFix", biz.s, "minecraft:banner");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

@@ -1,178 +1,242 @@
-import com.google.common.base.Strings;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Locale;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.nio.ByteBuffer;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.joml.Matrix4f;
 
-public interface fkb {
-   wy a = wy.c("mco.errorMessage.noDetails");
-   Logger b = LogUtils.getLogger();
+public class fkb implements AutoCloseable {
+   private final fhm a;
+   private final fhn b;
+   @Nullable
+   private fhn c = null;
+   private int d;
+   @Nullable
+   private fkd e;
+   @Nullable
+   private RenderSystem.a f;
+   private fkd.b g;
+   private int h;
+   private fkd.c i;
 
-   int a();
+   public fkb(fhm $$0) {
+      this.a = $$0;
+      RenderSystem.assertOnRenderThread();
+      this.b = new fhn(fhl.a, $$0, 0);
+      this.d = GlStateManager._glGenVertexArrays();
+   }
 
-   wy b();
+   public static fkb a(fkd.c $$0, fkd $$1, Consumer<fkc> $$2) {
+      fju $$3 = fka.b().a($$0, $$1);
+      $$2.accept($$3);
+      fkb $$4 = new fkb(fhm.b);
+      $$4.a();
+      $$4.a($$3.b());
+      b();
+      return $$4;
+   }
 
-   String c();
+   public void a(fjx $$0) {
+      fjx var2 = $$0;
 
-   static fkb a(int $$0, String $$1) {
-      if ($$0 == 429) {
-         return fkb.b.c;
-      } else if (Strings.isNullOrEmpty($$1)) {
-         return fkb.b.b($$0);
-      } else {
+      label40: {
          try {
-            JsonObject $$2 = JsonParser.parseString($$1).getAsJsonObject();
-            String $$3 = azc.a($$2, "reason", null);
-            String $$4 = azc.a($$2, "errorMsg", null);
-            int $$5 = azc.a($$2, "errorCode", -1);
-            if ($$4 != null || $$3 != null || $$5 != -1) {
-               return new fkb.c($$0, $$5 != -1 ? $$5 : $$0, $$3, $$4);
+            if (this.e()) {
+               break label40;
             }
-         } catch (Exception var6) {
-            b.error("Could not parse RealmsError", var6);
-         }
 
-         return new fkb.d($$0, $$1);
-      }
-   }
-
-   public static record a(String d) implements fkb {
-      public static final int c = 401;
-
-      @Override
-      public int a() {
-         return 401;
-      }
-
-      @Override
-      public wy b() {
-         return wy.b(this.d);
-      }
-
-      @Override
-      public String c() {
-         return String.format(Locale.ROOT, "Realms authentication error with message '%s'", this.d);
-      }
-   }
-
-   public static record b(int e, @Nullable wy f) implements fkb {
-      public static final fkb.b c = new fkb.b(429, wy.c("mco.errorMessage.serviceBusy"));
-      public static final wy d = wy.c("mco.errorMessage.retry");
-
-      public static fkb.b a(String $$0) {
-         return new fkb.b(500, wy.a("mco.errorMessage.realmsService.unknownCompatibility", $$0));
-      }
-
-      public static fkb.b a(flu $$0) {
-         return new fkb.b(500, wy.a("mco.errorMessage.realmsService.connectivity", $$0.getMessage()));
-      }
-
-      public static fkb.b a(int $$0) {
-         return new fkb.b($$0, d);
-      }
-
-      public static fkb.b b(int $$0) {
-         return new fkb.b($$0, null);
-      }
-
-      @Override
-      public int a() {
-         return this.e;
-      }
-
-      @Override
-      public wy b() {
-         return this.f != null ? this.f : a;
-      }
-
-      @Override
-      public String c() {
-         return this.f != null
-            ? String.format(Locale.ROOT, "Realms service error (%d) with message '%s'", this.e, this.f.getString())
-            : String.format(Locale.ROOT, "Realms service error (%d) with no payload", this.e);
-      }
-
-      public int d() {
-         return this.e;
-      }
-
-      @Nullable
-      public wy e() {
-         return this.f;
-      }
-   }
-
-   public static record c(int c, int d, @Nullable String e, @Nullable String f) implements fkb {
-      @Override
-      public int a() {
-         return this.d;
-      }
-
-      @Override
-      public wy b() {
-         String $$0 = "mco.errorMessage." + this.d;
-         if (hke.a($$0)) {
-            return wy.c($$0);
-         } else {
-            if (this.e != null) {
-               String $$1 = "mco.errorReason." + this.e;
-               if (hke.a($$1)) {
-                  return wy.c($$1);
+            RenderSystem.assertOnRenderThread();
+            fjx.a $$1 = $$0.c();
+            this.e = this.a($$1, $$0.a());
+            this.f = this.b($$1, $$0.b());
+            this.h = $$1.c();
+            this.g = $$1.e();
+            this.i = $$1.d();
+         } catch (Throwable var6) {
+            if ($$0 != null) {
+               try {
+                  var2.close();
+               } catch (Throwable var5) {
+                  var6.addSuppressed(var5);
                }
             }
 
-            return (wy)(this.f != null ? wy.b(this.f) : a);
+            throw var6;
          }
+
+         if ($$0 != null) {
+            $$0.close();
+         }
+
+         return;
       }
 
-      @Override
-      public String c() {
-         return String.format(Locale.ROOT, "Realms service error (%d/%d/%s) with message '%s'", this.c, this.d, this.e, this.f);
-      }
-
-      public int d() {
-         return this.c;
-      }
-
-      public int e() {
-         return this.d;
-      }
-
-      @Nullable
-      public String f() {
-         return this.e;
-      }
-
-      @Nullable
-      public String g() {
-         return this.f;
+      if ($$0 != null) {
+         $$0.close();
       }
    }
 
-   public static record d(int c, String d) implements fkb {
-      @Override
-      public int a() {
-         return this.c;
+   public void a(fjv.a $$0) {
+      fjv.a var2 = $$0;
+
+      label46: {
+         try {
+            if (this.e()) {
+               break label46;
+            }
+
+            RenderSystem.assertOnRenderThread();
+            if (this.c != null) {
+               this.c.close();
+            }
+
+            this.c = new fhn(fhl.b, this.a, $$0.a());
+            this.f = null;
+         } catch (Throwable var6) {
+            if ($$0 != null) {
+               try {
+                  var2.close();
+               } catch (Throwable var5) {
+                  var6.addSuppressed(var5);
+               }
+            }
+
+            throw var6;
+         }
+
+         if ($$0 != null) {
+            $$0.close();
+         }
+
+         return;
       }
 
-      @Override
-      public wy b() {
-         return wy.b(this.d);
+      if ($$0 != null) {
+         $$0.close();
+      }
+   }
+
+   private fkd a(fjx.a $$0, @Nullable ByteBuffer $$1) {
+      boolean $$2 = false;
+      if (!$$0.a().equals(this.e)) {
+         if (this.e != null) {
+            this.e.h();
+         }
+
+         this.b.b();
+         $$0.a().g();
+         $$2 = true;
       }
 
-      @Override
-      public String c() {
-         return String.format(Locale.ROOT, "Realms service error (%d) with raw payload '%s'", this.c, this.d);
+      if ($$1 != null) {
+         if (!$$2) {
+            this.b.b();
+         }
+
+         this.b.a($$1.remaining());
+         this.b.a($$1, 0);
       }
 
-      public int d() {
-         return this.c;
+      return $$0.a();
+   }
+
+   @Nullable
+   private RenderSystem.a b(fjx.a $$0, @Nullable ByteBuffer $$1) {
+      if ($$1 != null) {
+         if (this.c != null) {
+            this.c.close();
+         }
+
+         this.c = new fhn(fhl.b, this.a, $$1);
+         return null;
+      } else {
+         RenderSystem.a $$2 = RenderSystem.getSequentialBuffer($$0.d());
+         if ($$2 != this.f || !$$2.a($$0.c())) {
+            $$2.b($$0.c());
+         }
+
+         return $$2;
+      }
+   }
+
+   public void a() {
+      GlStateManager._glBindVertexArray(this.d);
+   }
+
+   public static void b() {
+      GlStateManager._glBindVertexArray(0);
+   }
+
+   public void c() {
+      RenderSystem.drawElements(this.i.i, this.h, this.f().c);
+   }
+
+   private fkd.b f() {
+      RenderSystem.a $$0 = this.f;
+      return $$0 != null ? $$0.a() : this.g;
+   }
+
+   public void a(Matrix4f $$0, Matrix4f $$1, @Nullable gpv $$2) {
+      this.a($$0, $$1, $$2, null);
+   }
+
+   public void a(fid $$0, @Nullable Consumer<gpv> $$1) {
+      gpv $$2 = $$0.b();
+      if ($$2 != null) {
+         this.a();
+         $$0.a();
+         this.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), $$0.b(), $$1);
+         $$0.c();
+         b();
+      }
+   }
+
+   private void a(Matrix4f $$0, Matrix4f $$1, @Nullable gpv $$2, @Nullable Consumer<gpv> $$3) {
+      if ($$2 != null) {
+         RenderSystem.assertOnRenderThread();
+         if ($$3 != null) {
+            $$3.accept($$2);
+         }
+
+         $$2.a(this.i, $$0, $$1, fpo.Q().aO());
+         $$2.b();
+         this.c();
+         $$2.a();
+      }
+   }
+
+   public void a(gqx $$0) {
+      this.a($$0, null);
+   }
+
+   public void a(gqx $$0, @Nullable Consumer<gpv> $$1) {
+      gpv $$2 = $$0.T();
+      $$0.a();
+      this.a();
+      this.a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), $$2, $$1);
+      b();
+      $$0.b();
+   }
+
+   @Override
+   public void close() {
+      this.b.close();
+      if (this.c != null) {
+         this.c.close();
+         this.c = null;
       }
 
-      public String e() {
-         return this.d;
+      if (this.d >= 0) {
+         RenderSystem.glDeleteVertexArrays(this.d);
+         this.d = -1;
       }
+   }
+
+   public fkd d() {
+      return this.e;
+   }
+
+   public boolean e() {
+      return this.d == -1;
    }
 }

@@ -1,48 +1,59 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.stream.IntStream;
 
-public class eiw extends ejm<elx> {
-   public eiw(Codec<elx> $$0) {
+public class eiw extends ejt<emh> {
+   private static final eao a = dmo.nF.m().b(dlq.b, Integer.valueOf(1)).b(dlq.c, eba.a).b(dlq.d, Integer.valueOf(0));
+   private static final eao b = a.b(dlq.c, eba.c).b(dlq.d, Integer.valueOf(1));
+   private static final eao c = a.b(dlq.c, eba.c);
+   private static final eao d = a.b(dlq.c, eba.b);
+
+   public eiw(Codec<emh> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejo<elx> $$0) {
-      azv $$1 = $$0.d();
-      djz $$2 = $$0.b();
-      dih $$3 = new dih($$0.e());
-      IntArrayList $$4 = af.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
-      IntArrayList $$5 = af.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
-      iu.a $$6 = new iu.a();
-      IntListIterator var8 = $$4.iterator();
+   public boolean a(ejv<emh> $$0) {
+      int $$1 = 0;
+      iv $$2 = $$0.e();
+      dkg $$3 = $$0.b();
+      azv $$4 = $$0.d();
+      emh $$5 = $$0.f();
+      iv.a $$6 = $$2.k();
+      iv.a $$7 = $$2.k();
+      if ($$3.v($$6)) {
+         if (dmo.nF.m().a($$3, $$6)) {
+            int $$8 = $$4.a(12) + 5;
+            if ($$4.i() < $$5.l) {
+               int $$9 = $$4.a(4) + 1;
 
-      while (var8.hasNext()) {
-         Integer $$7 = (Integer)var8.next();
-         IntListIterator var10 = $$5.iterator();
-
-         while (var10.hasNext()) {
-            Integer $$8 = (Integer)var10.next();
-            $$6.d($$7, 0, $$8);
-            iu $$9 = $$2.a(egg.a.f, $$6);
-            if ($$2.v($$9) || $$2.a_($$9).g($$2, $$9).c()) {
-               $$2.a($$9, dmh.cG.m(), 2);
-               buj.a($$2, $$1, $$9, ezd.a);
-               eah $$10 = dmh.cz.m();
-
-               for (ja $$11 : ja.c.a) {
-                  iu $$12 = $$9.a($$11);
-                  if ($$10.a($$2, $$12)) {
-                     $$2.a($$12, $$10, 2);
+               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
+                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
+                     int $$12 = $$10 - $$2.u();
+                     int $$13 = $$11 - $$2.w();
+                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+                        $$7.d($$10, $$3.a(egn.a.b, $$10, $$11) - 1, $$11);
+                        if (b($$3.a_($$7))) {
+                           $$3.a($$7, dmo.l.m(), 2);
+                        }
+                     }
                   }
                }
+            }
 
-               return true;
+            for (int $$14 = 0; $$14 < $$8 && $$3.v($$6); $$14++) {
+               $$3.a($$6, a, 2);
+               $$6.c(jb.b, 1);
+            }
+
+            if ($$6.v() - $$2.v() >= 3) {
+               $$3.a($$6, b, 2);
+               $$3.a($$6.c(jb.a, 1), c, 2);
+               $$3.a($$6.c(jb.a, 1), d, 2);
             }
          }
+
+         $$1++;
       }
 
-      return false;
+      return $$1 > 0;
    }
 }

@@ -12,7 +12,7 @@ public interface wz {
       return Optional.empty();
    }
 
-   default xm a(@Nullable ei $$0, @Nullable bwf $$1, int $$2) throws CommandSyntaxException {
+   default xm a(@Nullable ej $$0, @Nullable bwi $$1, int $$2) throws CommandSyntaxException {
       return xm.a(this);
    }
 

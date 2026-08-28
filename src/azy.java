@@ -23,7 +23,7 @@ public class azy {
       return ($$0 & $$2) == ($$1 & $$2);
    }
 
-   public int a(ja $$0) {
+   public int a(jb $$0) {
       if ($$0.o().b()) {
          return 0;
       } else {

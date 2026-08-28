@@ -1,39 +1,115 @@
-public class btz {
-   public static void a(dja $$0, iu $$1, btw $$2) {
-      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.Set;
+import java.util.function.Predicate;
+
+public interface btz extends btx, Iterable<czk> {
+   float r_ = 4.0F;
+
+   int b();
+
+   boolean c();
+
+   czk a(int var1);
+
+   czk a(int var1, int var2);
+
+   czk b(int var1);
+
+   void a(int var1, czk var2);
+
+   default int ak_() {
+      return 99;
    }
 
-   public static void a(dja $$0, bwf $$1, btw $$2) {
-      a($$0, $$1.dA(), $$1.dC(), $$1.dG(), $$2);
+   default int f_(czk $$0) {
+      return Math.min(this.ak_(), $$0.k());
    }
 
-   private static void a(dja $$0, double $$1, double $$2, double $$3, btw $$4) {
-      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
-         a($$0, $$1, $$2, $$3, $$4.a($$5));
+   void e();
+
+   boolean a(crj var1);
+
+   default void c_(crj $$0) {
+   }
+
+   default void c(crj $$0) {
+   }
+
+   default boolean b(int $$0, czk $$1) {
+      return true;
+   }
+
+   default boolean a(btz $$0, int $$1, czk $$2) {
+      return true;
+   }
+
+   default int a_(czg $$0) {
+      int $$1 = 0;
+
+      for (czk $$2 : this) {
+         if ($$2.h().equals($$0)) {
+            $$1 += $$2.M();
+         }
+      }
+
+      return $$1;
+   }
+
+   default boolean a(Set<czg> $$0) {
+      return this.a_($$1 -> !$$1.f() && $$0.contains($$1.h()));
+   }
+
+   default boolean a_(Predicate<czk> $$0) {
+      for (czk $$1 : this) {
+         if ($$0.test($$1)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   static boolean a(dxm $$0, crj $$1) {
+      return a($$0, $$1, 4.0F);
+   }
+
+   static boolean a(dxm $$0, crj $$1, float $$2) {
+      djh $$3 = $$0.i();
+      iv $$4 = $$0.ax_();
+      if ($$3 == null) {
+         return false;
+      } else {
+         return $$3.c_($$4) != $$0 ? false : $$1.a($$4, (double)$$2);
       }
    }
 
-   public static void a(dja $$0, iu $$1, jn<czd> $$2) {
-      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
+   @Override
+   default Iterator<czk> iterator() {
+      return new btz.a(this);
    }
 
-   public static void a(dja $$0, double $$1, double $$2, double $$3, czd $$4) {
-      double $$5 = (double)bwo.aq.l();
-      double $$6 = 1.0 - $$5;
-      double $$7 = $$5 / 2.0;
-      double $$8 = Math.floor($$1) + $$0.A.j() * $$6 + $$7;
-      double $$9 = Math.floor($$2) + $$0.A.j() * $$6;
-      double $$10 = Math.floor($$3) + $$0.A.j() * $$6 + $$7;
+   public static class a implements Iterator<czk> {
+      private final btz a;
+      private int b;
+      private final int c;
 
-      while (!$$4.f()) {
-         cnh $$11 = new cnh($$0, $$8, $$9, $$10, $$4.a($$0.A.a(21) + 10));
-         float $$12 = 0.05F;
-         $$11.n($$0.A.a(0.0, 0.11485000171139836), $$0.A.a(0.2, 0.11485000171139836), $$0.A.a(0.0, 0.11485000171139836));
-         $$0.b($$11);
+      public a(btz $$0) {
+         this.a = $$0;
+         this.c = $$0.b();
       }
-   }
 
-   public static void a(eah $$0, dja $$1, iu $$2) {
-      $$1.b($$2, $$0.b());
+      @Override
+      public boolean hasNext() {
+         return this.b < this.c;
+      }
+
+      public czk a() {
+         if (!this.hasNext()) {
+            throw new NoSuchElementException();
+         } else {
+            return this.a.a(this.b++);
+         }
+      }
    }
 }

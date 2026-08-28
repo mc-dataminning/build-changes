@@ -9,7 +9,7 @@ public class xc {
    public static final Codec<xc> a = bak.a(xc.a::values).dispatch(xc::c, xc.a::a);
    public static final xc b = new xc(new BitSet(0), xc.a.b);
    public static final xc c = new xc(new BitSet(0), xc.a.a);
-   public static final xv d = xv.a.a(n.i).a(new xe.e(wy.c("chat.filtered")));
+   public static final xv d = xv.a.a(o.i).a(new xe.e(wy.c("chat.filtered")));
    static final MapCodec<xc> e = MapCodec.unit(c);
    static final MapCodec<xc> f = MapCodec.unit(b);
    static final MapCodec<xc> g = ayu.w.xmap(xc::new, xc::d).fieldOf("value");

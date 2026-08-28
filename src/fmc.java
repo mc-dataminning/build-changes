@@ -1,59 +1,99 @@
-import java.util.List;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class fmc {
-   public final int a;
-   public final int b;
-   public final int c;
-   public final int d;
+public class fmc extends fmd {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = "http://";
+   private static final int c = 8080;
+   private static final Pattern d = Pattern.compile("^[a-zA-Z][-a-zA-Z0-9+.]+:");
+   private final boolean e;
+   @Nullable
+   private final String f;
+   private final URI g;
 
-   public fmc(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   private fmc(boolean $$0, @Nullable String $$1, URI $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public void a(frv $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$1 + this.c;
-      int $$6 = $$2 + this.d;
-      boolean $$7 = $$3 >= $$5 && $$3 <= $$5 + this.a && $$4 >= $$6 && $$4 <= $$6 + this.b;
-      this.a($$0, $$5, $$6, $$7);
-   }
-
-   protected abstract void a(frv var1, int var2, int var3, boolean var4);
-
-   public int a() {
-      return this.c + this.a;
-   }
-
-   public int b() {
-      return this.d + this.b;
-   }
-
-   public abstract void a(int var1);
-
-   public static void a(frv $$0, List<fmc> $$1, fsd<?> $$2, int $$3, int $$4, int $$5, int $$6) {
-      for (fmc $$7 : $$1) {
-         if ($$2.a() > $$7.a()) {
-            $$7.a($$0, $$3, $$4, $$5, $$6);
-         }
-      }
-   }
-
-   public static void a(fsd<?> $$0, ftf.a<?> $$1, List<fmc> $$2, int $$3, double $$4, double $$5) {
-      int $$6 = $$0.aE_().indexOf($$1);
-      if ($$6 > -1) {
-         $$0.a($$6);
-         int $$7 = $$0.u();
-         int $$8 = $$0.d($$6);
-         int $$9 = (int)($$4 - (double)$$7);
-         int $$10 = (int)($$5 - (double)$$8);
-
-         for (fmc $$11 : $$2) {
-            if ($$9 >= $$11.c && $$9 <= $$11.a() && $$10 >= $$11.d && $$10 <= $$11.b()) {
-               $$11.a($$6);
+   @Nullable
+   public static fmc a(String $$0) {
+      try {
+         JsonParser $$1 = new JsonParser();
+         JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
+         String $$3 = fnz.b("uploadEndpoint", $$2, null);
+         if ($$3 != null) {
+            int $$4 = fnz.a("port", $$2, -1);
+            URI $$5 = a($$3, $$4);
+            if ($$5 != null) {
+               boolean $$6 = fnz.a("worldClosed", $$2, false);
+               String $$7 = fnz.b("token", $$2, null);
+               return new fmc($$6, $$7, $$5);
             }
          }
+      } catch (Exception var8) {
+         a.error("Could not parse UploadInfo: {}", var8.getMessage());
       }
+
+      return null;
+   }
+
+   @Nullable
+   @VisibleForTesting
+   public static URI a(String $$0, int $$1) {
+      Matcher $$2 = d.matcher($$0);
+      String $$3 = a($$0, $$2);
+
+      try {
+         URI $$4 = new URI($$3);
+         int $$5 = a($$1, $$4.getPort());
+         return $$5 != $$4.getPort() ? new URI($$4.getScheme(), $$4.getUserInfo(), $$4.getHost(), $$5, $$4.getPath(), $$4.getQuery(), $$4.getFragment()) : $$4;
+      } catch (URISyntaxException var6) {
+         a.warn("Failed to parse URI {}", $$3, var6);
+         return null;
+      }
+   }
+
+   private static int a(int $$0, int $$1) {
+      if ($$0 != -1) {
+         return $$0;
+      } else {
+         return $$1 != -1 ? $$1 : 8080;
+      }
+   }
+
+   private static String a(String $$0, Matcher $$1) {
+      return $$1.find() ? $$0 : "http://" + $$0;
+   }
+
+   public static String b(@Nullable String $$0) {
+      JsonObject $$1 = new JsonObject();
+      if ($$0 != null) {
+         $$1.addProperty("token", $$0);
+      }
+
+      return $$1.toString();
+   }
+
+   @Nullable
+   public String a() {
+      return this.f;
+   }
+
+   public URI b() {
+      return this.g;
+   }
+
+   public boolean c() {
+      return this.e;
    }
 }

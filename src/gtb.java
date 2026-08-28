@@ -1,80 +1,111 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-
-public class gtb extends gsg {
-   private static final float a = 0.6666667F;
-   private static final feq b = new feq(0.0, 0.33333334F, 0.046666667F);
-   private final Map<ebv, gtb.a> c;
-
-   public gtb(gsn.a $$0) {
-      super($$0);
-      this.c = ebv.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new gtb.a(a($$0.f(), $$1, true), a($$0.f(), $$1, false))));
+public class gtb<T extends dxm & dxp> implements gsy<T> {
+   public gtb(gsz.a $$0) {
    }
 
    @Override
-   protected ggu a(eah $$0, ebv $$1) {
-      gtb.a $$2 = this.c.get($$1);
-      return $$0.b() instanceof duk ? $$2.a() : $$2.b();
+   public void a(T $$0, float $$1, fjy $$2, gqm $$3, int $$4, int $$5, fex $$6) {
+      if (fpo.Q().t.gF() || fpo.Q().t.V_()) {
+         dxp.a $$7 = $$0.b();
+         if ($$7 != dxp.a.a) {
+            dxp.b $$8 = $$0.c();
+            iv $$9 = $$8.a();
+            ka $$10 = $$8.b();
+            if ($$10.u() >= 1 && $$10.v() >= 1 && $$10.w() >= 1) {
+               float $$11 = 1.0F;
+               float $$12 = 0.9F;
+               float $$13 = 0.5F;
+               fkc $$14 = $$3.getBuffer(gqx.y());
+               iv $$15 = $$9.a($$10);
+               grf.a(
+                  $$2,
+                  $$14,
+                  (double)$$9.u(),
+                  (double)$$9.v(),
+                  (double)$$9.w(),
+                  (double)$$15.u(),
+                  (double)$$15.v(),
+                  (double)$$15.w(),
+                  0.9F,
+                  0.9F,
+                  0.9F,
+                  1.0F,
+                  0.5F,
+                  0.5F,
+                  0.5F
+               );
+               if ($$7 == dxp.a.c && $$0.i() != null) {
+                  this.a($$0, $$0.i(), $$9, $$10, $$3, $$2);
+               }
+            }
+         }
+      }
    }
 
-   @Override
-   protected hle a(ebv $$0) {
-      return gqv.a($$0);
+   private void a(T $$0, din $$1, iv $$2, ka $$3, gqm $$4, fjy $$5) {
+      fkc $$6 = $$4.getBuffer(gqx.y());
+      iv $$7 = $$0.ax_();
+      iv $$8 = $$7.a((ka)$$2);
+
+      for (iv $$9 : iv.c($$8, $$8.a($$3).b(-1, -1, -1))) {
+         eao $$10 = $$1.a_($$9);
+         boolean $$11 = $$10.l();
+         boolean $$12 = $$10.a(dmo.lt);
+         boolean $$13 = $$10.a(dmo.iy);
+         boolean $$14 = $$10.a(dmo.iz);
+         boolean $$15 = $$12 || $$13 || $$14;
+         if ($$11 || $$15) {
+            float $$16 = $$11 ? 0.05F : 0.0F;
+            double $$17 = (double)((float)($$9.u() - $$7.u()) + 0.45F - $$16);
+            double $$18 = (double)((float)($$9.v() - $$7.v()) + 0.45F - $$16);
+            double $$19 = (double)((float)($$9.w() - $$7.w()) + 0.45F - $$16);
+            double $$20 = (double)((float)($$9.u() - $$7.u()) + 0.55F + $$16);
+            double $$21 = (double)((float)($$9.v() - $$7.v()) + 0.55F + $$16);
+            double $$22 = (double)((float)($$9.w() - $$7.w()) + 0.55F + $$16);
+            if ($$11) {
+               grf.a($$5, $$6, $$17, $$18, $$19, $$20, $$21, $$22, 0.5F, 0.5F, 1.0F, 1.0F, 0.5F, 0.5F, 1.0F);
+            } else if ($$12) {
+               grf.a($$5, $$6, $$17, $$18, $$19, $$20, $$21, $$22, 1.0F, 0.75F, 0.75F, 1.0F, 1.0F, 0.75F, 0.75F);
+            } else if ($$13) {
+               grf.a($$5, $$6, $$17, $$18, $$19, $$20, $$21, $$22, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F);
+            } else if ($$14) {
+               grf.a($$5, $$6, $$17, $$18, $$19, $$20, $$21, $$22, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F);
+            }
+         }
+      }
    }
 
-   @Override
-   protected float a() {
-      return 0.6666667F;
-   }
+   private void a(T $$0, iv $$1, ka $$2, fkc $$3, fjy $$4) {
+      din $$5 = $$0.i();
+      if ($$5 != null) {
+         iv $$6 = $$0.ax_();
+         ffg $$7 = new ffa($$2.u(), $$2.v(), $$2.w());
 
-   @Override
-   protected float b() {
-      return 0.6666667F;
-   }
+         for (iv $$8 : iv.c($$1, $$1.a($$2).b(-1, -1, -1))) {
+            if ($$5.a_($$8).a(dmo.lt)) {
+               $$7.c($$8.u() - $$1.u(), $$8.v() - $$1.v(), $$8.w() - $$1.w());
+            }
+         }
 
-   private static void a(fjj $$0, float $$1) {
-      $$0.a(0.5F, 0.5F, 0.5F);
-      $$0.a(a.d.rotationDegrees($$1));
-   }
-
-   @Override
-   protected void a(fjj $$0, float $$1, eah $$2) {
-      a($$0, $$1);
-      if (!($$2.b() instanceof duk)) {
-         $$0.a(0.0F, -0.3125F, -0.4375F);
+         $$7.a(($$4x, $$5x, $$6x, $$7x) -> {
+            float $$8x = 0.48F;
+            float $$9 = (float)($$5x + $$1.u() - $$6.u()) + 0.5F - 0.48F;
+            float $$10 = (float)($$6x + $$1.v() - $$6.v()) + 0.5F - 0.48F;
+            float $$11 = (float)($$7x + $$1.w() - $$6.w()) + 0.5F - 0.48F;
+            float $$12 = (float)($$5x + $$1.u() - $$6.u()) + 0.5F + 0.48F;
+            float $$13 = (float)($$6x + $$1.v() - $$6.v()) + 0.5F + 0.48F;
+            float $$14 = (float)($$7x + $$1.w() - $$6.w()) + 0.5F + 0.48F;
+            grf.a($$4, $$3, $$4x, $$9, $$10, $$11, $$12, $$13, $$14, 0.75F, 0.75F, 1.0F, 0.2F);
+         });
       }
    }
 
    @Override
-   protected feq c() {
-      return b;
+   public boolean a(T $$0) {
+      return true;
    }
 
-   public static void a(fjj $$0, gqa $$1, int $$2, int $$3, ggu $$4, hle $$5) {
-      $$0.a();
-      a($$0, 0.0F);
-      $$0.b(0.6666667F, -0.6666667F, -0.6666667F);
-      fjn $$6 = $$5.a($$1, $$4::a);
-      $$4.a($$0, $$6, $$2, $$3);
-      $$0.b();
-   }
-
-   public static ggu a(giy $$0, ebv $$1, boolean $$2) {
-      gja $$3 = $$2 ? gjb.a($$1) : gjb.b($$1);
-      return new ggu.a($$0.a($$3), gqk::g);
-   }
-
-   public static gji a(boolean $$0) {
-      gjk $$1 = new gjk();
-      gjm $$2 = $$1.a();
-      $$2.a("sign", gjh.c().a(0, 0).a(-12.0F, -14.0F, -1.0F, 24.0F, 12.0F, 2.0F), gje.a);
-      if ($$0) {
-         $$2.a("stick", gjh.c().a(0, 14).a(-1.0F, -2.0F, -1.0F, 2.0F, 14.0F, 2.0F), gje.a);
-      }
-
-      return gji.a($$1, 64, 32);
-   }
-
-   static record a(ggu a, ggu b) {
+   @Override
+   public int aR_() {
+      return 96;
    }
 }

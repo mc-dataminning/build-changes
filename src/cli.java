@@ -1,59 +1,87 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import java.util.function.Predicate;
 
-public class cli extends clg {
-   public cli(bwo<? extends cli> $$0, dja $$1) {
-      super($$0, $$1);
+public class cli {
+   public static final int a = 20;
+   public static final int b = 7;
+   private static final btr i = btr.a(5, 16);
+   private static final float j = 1.0F;
+   private static final float k = 1.25F;
+   private static final float l = 1.25F;
+   private static final float m = 2.0F;
+   private static final float n = 1.25F;
+   private static final btr o = btr.a(600, 1200);
+   public static final int c = 5;
+   public static final int d = 5;
+   public static final float e = 3.5714288F;
+   private static final btr p = btr.a(600, 6000);
+   private static final btr q = btr.a(100, 300);
+   private static final chy r = chy.a().a(($$0, $$1) -> !$$0.an().equals(bwr.ah) && (!$$1.O().c(djd.d) || !$$0.an().equals(bwr.f)) && $$1.A_().a($$0.cQ()));
+   private static final float s = 3.0F;
+   public static final int f = 4;
+   public static final float g = 2.5F;
+   public static final float h = 1.0F;
+
+   protected static void a(clh $$0, azv $$1) {
+      $$0.eb().a(cgl.T, o.a($$1));
+      $$0.eb().a(cgl.W, p.a($$1));
    }
 
-   @Override
-   protected awm u() {
-      return awn.hD;
+   protected static byj<?> a(byj<clh> $$0) {
+      b($$0);
+      c($$0);
+      d($$0);
+      e($$0);
+      $$0.a(ImmutableSet.of(ctd.a));
+      $$0.b(ctd.b);
+      $$0.f();
+      return $$0;
    }
 
-   @Override
-   protected awm gR() {
-      return awn.hE;
+   private static void b(byj<clh> $$0) {
+      $$0.a(ctd.a, 0, ImmutableList.of(new cbu(0.8F), new byv(2.0F), new cag(45, 90), new cak(), new bzg(cgl.Q), new bzg(cgl.T), new bzg(cgl.W)));
    }
 
-   @Override
-   protected awm l_() {
-      return awn.hG;
+   private static void c(byj<clh> $$0) {
+      $$0.a(
+         ctd.b,
+         ImmutableList.of(
+            Pair.of(0, cba.a(bwr.bS, 6.0F, btr.a(30, 60))),
+            Pair.of(0, new byu(bwr.ah)),
+            Pair.of(1, new bzn($$0x -> 1.25F)),
+            Pair.of(2, byx.a(i, 1.25F)),
+            Pair.of(3, new cax(ImmutableList.of(Pair.of(cas.a(1.0F), 2), Pair.of(cbh.a(1.0F, 3), 2), Pair.of(new bzk(30, 60), 1))))
+         ),
+         ImmutableSet.of(Pair.of(cgl.X, cgm.b), Pair.of(cgl.U, cgm.b))
+      );
    }
 
-   @Nullable
-   @Override
-   protected awm gt() {
-      return awn.hH;
+   private static void d(byj<clh> $$0) {
+      $$0.a(
+         ctd.q,
+         ImmutableList.of(Pair.of(0, new cab(o, awn.lF)), Pair.of(1, new cad<>(o, 5, 5, 3.5714288F, $$0x -> $$0x.gF() ? awn.lB : awn.ls))),
+         ImmutableSet.of(Pair.of(cgl.P, cgm.b), Pair.of(cgl.s, cgm.b), Pair.of(cgl.n, cgm.b), Pair.of(cgl.T, cgm.b))
+      );
    }
 
-   @Override
-   protected awm e(buu $$0) {
-      return awn.hI;
+   private static void e(byj<clh> $$0) {
+      $$0.a(
+         ctd.r,
+         ImmutableList.of(
+            Pair.of(0, new caq($$0x -> $$0x.gF() ? q : p, r, 3.0F, $$0x -> $$0x.n_() ? 1.0 : 2.5, $$0x -> $$0x.gF() ? awn.lE : awn.lv, $$0x -> awn.lw)),
+            Pair.of(1, new cap<>($$0x -> $$0x.gF() ? q.a() : p.a(), 4, 7, 1.25F, r, 20, $$0x -> $$0x.gF() ? awn.lD : awn.lu))
+         ),
+         ImmutableSet.of(Pair.of(cgl.P, cgm.b), Pair.of(cgl.s, cgm.b), Pair.of(cgl.W, cgm.b))
+      );
    }
 
-   @Override
-   public boolean a(ciu $$0) {
-      if ($$0 == this) {
-         return false;
-      } else {
-         return !($$0 instanceof cli) && !($$0 instanceof clj) ? false : this.gZ() && ((clh)$$0).gZ();
-      }
+   public static void a(clh $$0) {
+      $$0.eb().a(ImmutableList.of(ctd.r, ctd.q, ctd.b));
    }
 
-   @Override
-   protected void gY() {
-      this.a(awn.hJ, 0.4F, 1.0F);
-   }
-
-   @Nullable
-   @Override
-   public bvv a(arq $$0, bvv $$1) {
-      bwo<? extends clh> $$2 = $$1 instanceof clj ? bwo.aF : bwo.I;
-      clh $$3 = $$2.a($$0, bwn.e);
-      if ($$3 != null) {
-         this.a($$1, $$3);
-      }
-
-      return $$3;
+   public static Predicate<czk> a() {
+      return $$0 -> $$0.a(axk.af);
    }
 }

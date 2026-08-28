@@ -1,35 +1,31 @@
 import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
 
-public record dfb(dfc b, dfa c, OptionalInt d, ddx e, Optional<List<ddq>> f) {
-   public static final yw<wj, dfb> a = yw.a(dfc.a, dfb::a, dfa.e, dfb::b, yu.i, dfb::c, yu.a(mg.af), dfb::d, ddq.a.a(yu.a()).a(yu::a), dfb::e, dfb::new);
-
-   public List<czd> a(baz $$0) {
-      return this.c.d().a($$0);
+public class dfb extends det {
+   public dfb(String $$0, ddx $$1, czk $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public boolean a(cri $$0) {
-      return this.f.isEmpty() ? false : $$0.a(this.f.get(), null);
+   @Override
+   public dem<dfb> b() {
+      return dem.f;
    }
 
-   public dfc a() {
-      return this.b;
+   @Override
+   public del<dfb> a() {
+      return del.s;
    }
 
-   public dfa b() {
-      return this.c;
+   @Override
+   public List<dfh> g() {
+      return List.of(new dfr(this.k().c(), this.c(), new dfn.d(czo.xC)));
    }
 
-   public OptionalInt c() {
-      return this.d;
+   public dfn c() {
+      return new dfn.f(this.l());
    }
 
-   public ddx d() {
-      return this.e;
-   }
-
-   public Optional<List<ddq>> e() {
-      return this.f;
+   @Override
+   public dee h() {
+      return ded.k;
    }
 }

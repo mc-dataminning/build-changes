@@ -1,101 +1,116 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Map;
-import javax.annotation.Nullable;
-
-public class eaa extends doj {
-   public static final MapCodec<eaa> b = b(eaa::new);
-   public static final ebf<ebj> c = eax.bj;
-   public static final eay d = eax.B;
-   public static final int e = 4;
-   private static final ffk f = dmf.c(16.0, 0.0, 4.0);
-   private static final Map<ja, ffk> g = ffh.d(ffh.a(f, dmf.c(4.0, 4.0, 16.0)));
-   private static final Map<ja, ffk> h = ffh.d(ffh.a(f, dmf.c(4.0, 4.0, 20.0)));
-
-   @Override
-   protected MapCodec<eaa> a() {
-      return b;
-   }
-
-   public eaa(eag.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(a, ja.c).b(c, ebj.a).b(d, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected boolean g_(eah $$0) {
-      return true;
-   }
-
-   @Override
-   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
-      return ($$0.c(d) ? g : h).get($$0.c(a));
-   }
-
-   private boolean a(eah $$0, eah $$1) {
-      dmf $$2 = $$0.c(c) == ebj.a ? dmh.bI : dmh.by;
-      return $$1.a($$2) && $$1.c(dzz.c) && $$1.c(a) == $$0.c(a);
-   }
-
-   @Override
-   public eah a(dja $$0, iu $$1, eah $$2, crc $$3) {
-      if (!$$0.C && $$3.gl()) {
-         iu $$4 = $$1.a($$2.c(a).g());
-         if (this.a($$2, $$0.a_($$4))) {
-            $$0.b($$4, false);
+public enum eaa implements bak {
+   a("inactive", eaa.a.a) {
+      @Override
+      protected void a(arq $$0, iv $$1, dzx $$2, dzz $$3, boolean $$4) {
+         $$3.a(czk.k);
+         $$0.c(3016, $$1, $$4 ? 1 : 0);
+      }
+   },
+   b("active", eaa.a.b) {
+      @Override
+      protected void a(arq $$0, iv $$1, dzx $$2, dzz $$3, boolean $$4) {
+         if (!$$3.b()) {
+            dzv.b.a($$0, this, $$2, $$3, $$1);
          }
+
+         $$0.c(3015, $$1, $$4 ? 1 : 0);
+      }
+   },
+   c("unlocking", eaa.a.b) {
+      @Override
+      protected void a(arq $$0, iv $$1, dzx $$2, dzz $$3, boolean $$4) {
+         $$0.a(null, $$1, awn.BN, awo.e);
+      }
+   },
+   d("ejecting", eaa.a.b) {
+      @Override
+      protected void a(arq $$0, iv $$1, dzx $$2, dzz $$3, boolean $$4) {
+         $$0.a(null, $$1, awn.BP, awo.e);
       }
 
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   protected void a(eah $$0, arq $$1, iu $$2, boolean $$3) {
-      iu $$4 = $$2.a($$0.c(a).g());
-      if (this.a($$0, $$1.a_($$4))) {
-         $$1.b($$4, true);
+      @Override
+      protected void a(arq $$0, iv $$1, dzx $$2, dzz $$3) {
+         $$0.a(null, $$1, awn.BH, awo.e);
       }
+   };
+
+   private static final int e = 20;
+   private static final int f = 20;
+   private static final int g = 20;
+   private static final int h = 20;
+   private final String i;
+   private final eaa.a j;
+
+   eaa(final String $$0, final eaa.a $$1) {
+      this.i = $$0;
+      this.j = $$1;
    }
 
    @Override
-   protected eah a(eah $$0, djd $$1, djp $$2, iu $$3, ja $$4, iu $$5, eah $$6, azv $$7) {
-      return $$4.g() == $$0.c(a) && !$$0.a($$1, $$3) ? dmh.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public String c() {
+      return this.i;
    }
 
-   @Override
-   protected boolean a(eah $$0, djd $$1, iu $$2) {
-      eah $$3 = $$1.a_($$2.a($$0.c(a).g()));
-      return this.a($$0, $$3) || $$3.a(dmh.ca) && $$3.c(a) == $$0.c(a);
+   public int a() {
+      return this.j.c;
    }
 
-   @Override
-   protected void a(eah $$0, dja $$1, iu $$2, dmf $$3, @Nullable exw $$4, boolean $$5) {
-      if ($$0.a((djd)$$1, $$2)) {
-         $$1.b($$2.a($$0.c(a).g()), $$3, exs.a($$4, $$0.c(a).g()));
+   public eaa a(arq $$0, iv $$1, dzx $$2, dzy $$3, dzz $$4) {
+      return switch (this) {
+         case a -> a($$0, $$1, $$2, $$3, $$4, $$2.c());
+         case b -> a($$0, $$1, $$2, $$3, $$4, $$2.d());
+         case c -> {
+            $$3.b($$0.ae() + 20L);
+            yield d;
+         }
+         case d -> {
+            if ($$3.d().isEmpty()) {
+               $$3.e();
+               yield a($$0, $$1, $$2, $$3, $$4, $$2.d());
+            } else {
+               float $$5 = $$3.h();
+               this.a($$0, $$1, $$3.g(), $$5);
+               $$4.a($$3.f());
+               boolean $$6 = $$3.d().isEmpty();
+               int $$7 = $$6 ? 20 : 20;
+               $$3.b($$0.ae() + (long)$$7);
+               yield d;
+            }
+         }
+      };
+   }
+
+   private static eaa a(arq $$0, iv $$1, dzx $$2, dzy $$3, dzz $$4, double $$5) {
+      $$4.a($$0, $$1, $$3, $$2, $$5);
+      $$3.b($$0.ae() + 20L);
+      return $$4.c() ? b : a;
+   }
+
+   public void a(arq $$0, iv $$1, eaa $$2, dzx $$3, dzz $$4, boolean $$5) {
+      this.a($$0, $$1, $$3, $$4);
+      $$2.a($$0, $$1, $$3, $$4, $$5);
+   }
+
+   protected void a(arq $$0, iv $$1, dzx $$2, dzz $$3, boolean $$4) {
+   }
+
+   protected void a(arq $$0, iv $$1, dzx $$2, dzz $$3) {
+   }
+
+   private void a(arq $$0, iv $$1, czk $$2, float $$3) {
+      lg.a($$0, $$2, 2, jb.b, fex.c($$1).a(jb.b, 1.2));
+      $$0.c(3017, $$1, 0);
+      $$0.a(null, $$1, awn.BJ, awo.e, 1.0F, 0.8F + 0.4F * $$3);
+   }
+
+   static enum a {
+      a(6),
+      b(12);
+
+      final int c;
+
+      private a(final int $$0) {
+         this.c = $$0;
       }
-   }
-
-   @Override
-   protected czd a(djd $$0, iu $$1, eah $$2, boolean $$3) {
-      return new czd($$2.c(c) == ebj.b ? dmh.by : dmh.bI);
-   }
-
-   @Override
-   protected eah a(eah $$0, dsz $$1) {
-      return $$0.b(a, $$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected eah a(eah $$0, dri $$1) {
-      return $$0.a($$1.a($$0.c(a)));
-   }
-
-   @Override
-   protected void a(eai.a<dmf, eah> $$0) {
-      $$0.a(a, c, d);
-   }
-
-   @Override
-   protected boolean a(eah $$0, exd $$1) {
-      return false;
    }
 }

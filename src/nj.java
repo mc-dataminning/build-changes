@@ -1,82 +1,110 @@
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Lifecycle;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.nio.file.Path;
+import com.google.common.collect.Maps;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import java.util.Map.Entry;
+import java.util.function.BiConsumer;
+import java.util.stream.Collectors;
 
-public class nj implements mm {
-   private static final Logger d = LogUtils.getLogger();
-   private final mo.a e;
-   private final Set<alf<ezm>> f;
-   private final List<nj.a> g;
-   private final CompletableFuture<jg.a> h;
+public abstract class nj implements nl {
+   protected final jh.a a;
+   private final cut b;
+   private final cut c;
+   private final Map<bwr<?>, Map<alf<ezt>, ezt.a>> d = Maps.newHashMap();
 
-   public nj(mo $$0, Set<alf<ezm>> $$1, List<nj.a> $$2, CompletableFuture<jg.a> $$3) {
-      this.e = $$0.a(mg.bq);
-      this.g = $$2;
-      this.f = $$1;
-      this.h = $$3;
+   protected final fcl.a a() {
+      jh.b<dfx> $$0 = this.a.e(mh.aR);
+      return fcl.a(
+         fda.a(ezo.b.a, by.a.a().a(bw.a.a().b(true))), fda.a(ezo.b.c, by.a.a().a(bv.a.a().f(cm.a.a().a(ku.b, kv.a(List.of(new bt($$0.b(axe.p), cw.d.c)))))))
+      );
    }
+
+   protected nj(cut $$0, jh.a $$1) {
+      this($$0, $$0, $$1);
+   }
+
+   protected nj(cut $$0, cut $$1, jh.a $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.a = $$2;
+   }
+
+   public static ezs.a a(Map<cyi, alf<ezt>> $$0) {
+      ezv.a $$1 = ezv.a();
+
+      for (Entry<cyi, alf<ezt>> $$2 : $$0.entrySet()) {
+         $$1 = $$1.a(fah.a($$2.getValue()).a(fda.a(ezo.b.a, by.a.a().a(ke.a(kk.aQ, $$2.getKey())).a(di.b()))));
+      }
+
+      return ezs.a().a($$1);
+   }
+
+   public abstract void b();
 
    @Override
-   public CompletableFuture<?> a(mk $$0) {
-      return this.h.thenCompose($$1 -> this.a($$0, $$1));
-   }
+   public void generate(BiConsumer<alf<ezt>, ezt.a> $$0) {
+      this.b();
+      Set<alf<ezt>> $$1 = new HashSet<>();
+      mg.f
+         .c()
+         .forEach(
+            $$2 -> {
+               bwr<?> $$3 = $$2.a();
+               if ($$3.a(this.b)) {
+                  Optional<alf<ezt>> $$4 = $$3.j();
+                  if ($$4.isPresent()) {
+                     Map<alf<ezt>, ezt.a> $$5 = this.d.remove($$3);
+                     if ($$3.a(this.c) && ($$5 == null || !$$5.containsKey($$4.get()))) {
+                        throw new IllegalStateException(String.format(Locale.ROOT, "Missing loottable '%s' for '%s'", $$4.get(), $$2.h().a()));
+                     }
 
-   private CompletableFuture<?> a(mk $$0, jg.a $$1) {
-      ka<ezm> $$2 = new jm<>(mg.bq, Lifecycle.experimental());
-      Map<egv.a, alg> $$3 = new Object2ObjectOpenHashMap();
-      this.g.forEach($$3x -> $$3x.a().apply($$1).generate(($$3xx, $$4x) -> {
-            alg $$5x = a($$3xx);
-            alg $$6x = $$3.put(buh.a($$5x), $$5x);
-            if ($$6x != null) {
-               af.b("Loot table random sequence seed collision on " + $$6x + " and " + $$3xx.a());
+                     if ($$5 != null) {
+                        $$5.forEach(($$3x, $$4x) -> {
+                           if (!$$1.add($$3x)) {
+                              throw new IllegalStateException(String.format(Locale.ROOT, "Duplicate loottable '%s' for '%s'", $$3x, $$2.h().a()));
+                           } else {
+                              $$0.accept($$3x, $$4x);
+                           }
+                        });
+                     }
+                  } else {
+                     Map<alf<ezt>, ezt.a> $$6 = this.d.remove($$3);
+                     if ($$6 != null) {
+                        throw new IllegalStateException(
+                           String.format(
+                              Locale.ROOT,
+                              "Weird loottables '%s' for '%s', not a LivingEntity so should not have loot",
+                              $$6.keySet().stream().map($$0xx -> $$0xx.a().toString()).collect(Collectors.joining(",")),
+                              $$2.h().a()
+                           )
+                        );
+                     }
+                  }
+               }
             }
-
-            $$4x.a($$5x);
-            ezm $$7 = $$4x.a($$3x.b).b();
-            $$2.a($$3xx, $$7, jq.a);
-         }));
-      $$2.n();
-      azt.a $$4 = new azt.a();
-      jf.a $$5 = new js.c(List.of($$2)).e();
-      ezn $$6 = new ezn($$4, fca.q, $$5);
-
-      for (alf<ezm> $$8 : Sets.difference(this.f, $$2.j())) {
-         $$4.b("Missing built-in table: " + $$8.a());
-      }
-
-      $$2.c().forEach($$1x -> ((ezm)$$1x.a()).a($$6.a(((ezm)$$1x.a()).a()).a("{" + $$1x.h().a() + "}", $$1x.h())));
-      Multimap<String, String> $$9 = $$4.a();
-      if (!$$9.isEmpty()) {
-         $$9.forEach(($$0x, $$1x) -> d.warn("Found validation problem in {}: {}", $$0x, $$1x));
-         throw new IllegalStateException("Failed to validate loot tables, see logs");
-      } else {
-         return CompletableFuture.allOf($$2.k().stream().map($$2x -> {
-            alf<ezm> $$3x = (alf<ezm>)$$2x.getKey();
-            ezm $$4x = (ezm)$$2x.getValue();
-            Path $$5x = this.e.a($$3x.a());
-            return mm.a($$0, $$1, ezm.d, $$4x, $$5x);
-         }).toArray(CompletableFuture[]::new));
+         );
+      if (!this.d.isEmpty()) {
+         throw new IllegalStateException("Created loot tables for entities not supported by datapack: " + this.d.keySet());
       }
    }
 
-   private static alg a(alf<ezm> $$0) {
-      return $$0.a();
+   protected fcx.a a(jg<bwr<?>> $$0) {
+      return fcq.a(bn.a.a().b(by.a.a().a($$0, bwr.ab)));
    }
 
-   @Override
-   public final String a() {
-      return "Loot Tables";
+   protected fcx.a a(jg<bwr<?>> $$0, jg<clb> $$1, alf<clb> $$2) {
+      return fcq.a(bn.a.a().b(by.a.a().a($$0, bwr.ab).a(ke.a(kk.aJ, $$1.b($$2)))));
    }
 
-   public static record a(Function<jg.a, nk> a, bay b) {
+   protected void a(bwr<?> $$0, ezt.a $$1) {
+      this.a($$0, $$0.j().orElseThrow(() -> new IllegalStateException("Entity " + $$0 + " has no loot table")), $$1);
+   }
+
+   protected void a(bwr<?> $$0, alf<ezt> $$1, ezt.a $$2) {
+      this.d.computeIfAbsent($$0, $$0x -> new HashMap<>()).put($$1, $$2);
    }
 }

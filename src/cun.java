@@ -1,12 +1,12 @@
-public class cun {
-   private final String a;
+import java.util.function.Supplier;
 
-   public cun(String $$0) {
-      this.a = $$0;
+public class cun extends ctu {
+   public cun(bwr<? extends cun> $$0, djh $$1, Supplier<czg> $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public String toString() {
-      return this.a;
+   protected double b(bwl $$0) {
+      return (double)($$0.b() * 0.8888889F);
    }
 }

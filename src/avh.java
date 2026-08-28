@@ -18,7 +18,7 @@ public abstract class avh<T> extends avi<Map<alg, T>> {
    private final Codec<T> c;
    private final akz d;
 
-   protected avh(jg.a $$0, Codec<T> $$1, alf<? extends jr<T>> $$2) {
+   protected avh(jh.a $$0, Codec<T> $$1, alf<? extends js<T>> $$2) {
       this($$0.a(JsonOps.INSTANCE), $$1, akz.a($$2));
    }
 
@@ -32,13 +32,13 @@ public abstract class avh<T> extends avi<Map<alg, T>> {
       this.d = $$2;
    }
 
-   protected Map<alg, T> a(avd $$0, bqo $$1) {
+   protected Map<alg, T> a(avd $$0, bqq $$1) {
       Map<alg, T> $$2 = new HashMap<>();
       a($$0, this.d, this.b, this.c, $$2);
       return $$2;
    }
 
-   public static <T> void a(avd $$0, alf<? extends jr<T>> $$1, DynamicOps<JsonElement> $$2, Codec<T> $$3, Map<alg, T> $$4) {
+   public static <T> void a(avd $$0, alf<? extends js<T>> $$1, DynamicOps<JsonElement> $$2, Codec<T> $$3, Map<alg, T> $$4) {
       a($$0, akz.a($$1), $$2, $$3, $$4);
    }
 

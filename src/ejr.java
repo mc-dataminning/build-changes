@@ -1,35 +1,33 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class ejr implements elq {
-   public static final Codec<ejr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               alg.a.listOf().fieldOf("fossil_structures").forGetter($$0x -> $$0x.b),
-               alg.a.listOf().fieldOf("overlay_structures").forGetter($$0x -> $$0x.c),
-               evc.d.fieldOf("fossil_processors").forGetter($$0x -> $$0x.d),
-               evc.d.fieldOf("overlay_processors").forGetter($$0x -> $$0x.e),
-               Codec.intRange(0, 7).fieldOf("max_empty_corners_allowed").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, ejr::new)
-   );
-   public final List<alg> b;
-   public final List<alg> c;
-   public final je<evb> d;
-   public final je<evb> e;
-   public final int f;
+public class ejr extends ejt<eme> {
+   public ejr(Codec<eme> $$0) {
+      super($$0);
+   }
 
-   public ejr(List<alg> $$0, List<alg> $$1, je<evb> $$2, je<evb> $$3, int $$4) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Fossil structure lists need at least one entry");
-      } else if ($$0.size() != $$1.size()) {
-         throw new IllegalArgumentException("Fossil structure lists must be equal lengths");
-      } else {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
+   @Override
+   public boolean a(ejv<eme> $$0) {
+      a($$0.b(), $$0.e(), false);
+      return true;
+   }
+
+   public static void a(djy $$0, iv $$1, boolean $$2) {
+      iv.a $$3 = $$1.k();
+
+      for (int $$4 = -2; $$4 <= 2; $$4++) {
+         for (int $$5 = -2; $$5 <= 2; $$5++) {
+            for (int $$6 = -1; $$6 < 3; $$6++) {
+               iv $$7 = $$3.g($$1).e($$5, $$6, $$4);
+               dmm $$8 = $$6 == -1 ? dmo.cy : dmo.a;
+               if (!$$0.a_($$7).a($$8)) {
+                  if ($$2) {
+                     $$0.a($$7, true, null);
+                  }
+
+                  $$0.a($$7, $$8.m(), 3);
+               }
+            }
+         }
       }
    }
 }

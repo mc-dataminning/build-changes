@@ -1,63 +1,70 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.base.Charsets;
-import com.google.common.hash.HashFunction;
-import com.google.common.hash.Hashing;
-import com.google.common.primitives.Longs;
-import java.util.concurrent.atomic.AtomicLong;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
 
-public final class egv {
-   public static final long a = -7046029254386353131L;
-   public static final long b = 7640891576956012809L;
-   private static final HashFunction c = Hashing.md5();
-   private static final AtomicLong d = new AtomicLong(8682522807148012L);
+public record egv(int g, int h, int i, int j) {
+   public static final Codec<egv> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  Codec.intRange(eel.e, eel.d).fieldOf("min_y").forGetter(egv::c),
+                  Codec.intRange(0, eel.c).fieldOf("height").forGetter(egv::d),
+                  Codec.intRange(1, 4).fieldOf("size_horizontal").forGetter(egv::e),
+                  Codec.intRange(1, 4).fieldOf("size_vertical").forGetter(egv::f)
+               )
+               .apply($$0, egv::new)
+      )
+      .comapFlatMap(egv::a, Function.identity());
+   protected static final egv b = a(-64, 384, 1, 2);
+   protected static final egv c = a(0, 128, 1, 2);
+   protected static final egv d = a(0, 128, 2, 1);
+   protected static final egv e = a(-64, 192, 1, 2);
+   protected static final egv f = a(0, 256, 2, 1);
 
-   @VisibleForTesting
-   public static long a(long $$0) {
-      $$0 = ($$0 ^ $$0 >>> 30) * -4658895280553007687L;
-      $$0 = ($$0 ^ $$0 >>> 27) * -7723592293110705685L;
-      return $$0 ^ $$0 >>> 31;
+   private static DataResult<egv> a(egv $$0) {
+      if ($$0.c() + $$0.d() > eel.d + 1) {
+         return DataResult.error(() -> "min_y + height cannot be higher than: " + (eel.d + 1));
+      } else if ($$0.d() % 16 != 0) {
+         return DataResult.error(() -> "height has to be a multiple of 16");
+      } else {
+         return $$0.c() % 16 != 0 ? DataResult.error(() -> "min_y has to be a multiple of 16") : DataResult.success($$0);
+      }
    }
 
-   public static egv.a b(long $$0) {
-      long $$1 = $$0 ^ 7640891576956012809L;
-      long $$2 = $$1 + -7046029254386353131L;
-      return new egv.a($$1, $$2);
+   public static egv a(int $$0, int $$1, int $$2, int $$3) {
+      egv $$4 = new egv($$0, $$1, $$2, $$3);
+      a($$4).error().ifPresent($$0x -> {
+         throw new IllegalStateException($$0x.message());
+      });
+      return $$4;
    }
 
-   public static egv.a c(long $$0) {
-      return b($$0).a();
+   public int a() {
+      return jq.c(this.f());
    }
 
-   public static egv.a a(String $$0) {
-      byte[] $$1 = c.hashString($$0, Charsets.UTF_8).asBytes();
-      long $$2 = Longs.fromBytes($$1[0], $$1[1], $$1[2], $$1[3], $$1[4], $$1[5], $$1[6], $$1[7]);
-      long $$3 = Longs.fromBytes($$1[8], $$1[9], $$1[10], $$1[11], $$1[12], $$1[13], $$1[14], $$1[15]);
-      return new egv.a($$2, $$3);
+   public int b() {
+      return jq.c(this.e());
    }
 
-   public static long a() {
-      return d.updateAndGet($$0 -> $$0 * 1181783497276652981L) ^ System.nanoTime();
+   public egv a(djj $$0) {
+      int $$1 = Math.max(this.g, $$0.G_());
+      int $$2 = Math.min(this.g + this.h, $$0.ao() + 1) - $$1;
+      return new egv($$1, $$2, this.i, this.j);
    }
 
-   public static record a(long a, long b) {
-      public egv.a a(long $$0, long $$1) {
-         return new egv.a(this.a ^ $$0, this.b ^ $$1);
-      }
+   public int c() {
+      return this.g;
+   }
 
-      public egv.a a(egv.a $$0) {
-         return this.a($$0.a, $$0.b);
-      }
+   public int d() {
+      return this.h;
+   }
 
-      public egv.a a() {
-         return new egv.a(egv.a(this.a), egv.a(this.b));
-      }
+   public int e() {
+      return this.i;
+   }
 
-      public long b() {
-         return this.a;
-      }
-
-      public long c() {
-         return this.b;
-      }
+   public int f() {
+      return this.j;
    }
 }

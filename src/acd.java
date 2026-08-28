@@ -34,28 +34,28 @@ public class acd implements zf<abu> {
       this.f = $$1.g.decode($$0);
    }
 
-   public static acd a(btt $$0) {
-      return new acd($$0.h(), new acd.a($$0));
+   public static acd a(btw $$0) {
+      return new acd($$0.i(), new acd.a($$0));
    }
 
    public static acd a(UUID $$0) {
       return new acd($$0, g);
    }
 
-   public static acd b(btt $$0) {
-      return new acd($$0.h(), new acd.f($$0.j()));
+   public static acd b(btw $$0) {
+      return new acd($$0.i(), new acd.f($$0.k()));
    }
 
-   public static acd c(btt $$0) {
-      return new acd($$0.h(), new acd.e($$0.i()));
+   public static acd c(btw $$0) {
+      return new acd($$0.i(), new acd.e($$0.j()));
    }
 
-   public static acd d(btt $$0) {
-      return new acd($$0.h(), new acd.h($$0.k(), $$0.l()));
+   public static acd d(btw $$0) {
+      return new acd($$0.i(), new acd.h($$0.l(), $$0.m()));
    }
 
-   public static acd e(btt $$0) {
-      return new acd($$0.h(), new acd.g($$0.m(), $$0.n(), $$0.o()));
+   public static acd e(btw $$0) {
+      return new acd($$0.i(), new acd.g($$0.n(), $$0.o(), $$0.p()));
    }
 
    private void a(wj $$0) {
@@ -97,27 +97,27 @@ public class acd implements zf<abu> {
    static class a implements acd.c {
       private final wy a;
       private final float b;
-      private final btt.a c;
-      private final btt.b d;
+      private final btw.a c;
+      private final btw.b d;
       private final boolean e;
       private final boolean f;
       private final boolean g;
 
-      a(btt $$0) {
-         this.a = $$0.i();
-         this.b = $$0.j();
-         this.c = $$0.k();
-         this.d = $$0.l();
-         this.e = $$0.m();
-         this.f = $$0.n();
-         this.g = $$0.o();
+      a(btw $$0) {
+         this.a = $$0.j();
+         this.b = $$0.k();
+         this.c = $$0.l();
+         this.d = $$0.m();
+         this.e = $$0.n();
+         this.f = $$0.o();
+         this.g = $$0.p();
       }
 
       private a(wj $$0) {
          this.a = xa.d.decode($$0);
          this.b = $$0.readFloat();
-         this.c = $$0.b(btt.a.class);
-         this.d = $$0.b(btt.b.class);
+         this.c = $$0.b(btw.a.class);
+         this.d = $$0.b(btw.b.class);
          int $$1 = $$0.readUnsignedByte();
          this.e = ($$1 & 1) > 0;
          this.f = ($$1 & 2) > 0;
@@ -145,7 +145,7 @@ public class acd implements zf<abu> {
    }
 
    public interface b {
-      default void a(UUID $$0, wy $$1, float $$2, btt.a $$3, btt.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      default void a(UUID $$0, wy $$1, float $$2, btw.a $$3, btw.b $$4, boolean $$5, boolean $$6, boolean $$7) {
       }
 
       default void a(UUID $$0) {
@@ -157,7 +157,7 @@ public class acd implements zf<abu> {
       default void a(UUID $$0, wy $$1) {
       }
 
-      default void a(UUID $$0, btt.a $$1, btt.b $$2) {
+      default void a(UUID $$0, btw.a $$1, btw.b $$2) {
       }
 
       default void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
@@ -272,17 +272,17 @@ public class acd implements zf<abu> {
    }
 
    static class h implements acd.c {
-      private final btt.a a;
-      private final btt.b b;
+      private final btw.a a;
+      private final btw.b b;
 
-      h(btt.a $$0, btt.b $$1) {
+      h(btw.a $$0, btw.b $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       private h(wj $$0) {
-         this.a = $$0.b(btt.a.class);
-         this.b = $$0.b(btt.b.class);
+         this.a = $$0.b(btw.a.class);
+         this.b = $$0.b(btw.b.class);
       }
 
       @Override

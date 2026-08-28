@@ -10,95 +10,95 @@ import java.util.Collection;
 public class aog {
    private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("commands.particle.failed"));
 
-   public static void a(CommandDispatcher<ei> $$0, ee $$1) {
+   public static void a(CommandDispatcher<ej> $$0, ef $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("particle").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("particle").requires($$0x -> $$0x.c(2)))
             .then(
-               ((RequiredArgumentBuilder)ej.a("name", ff.a($$1))
+               ((RequiredArgumentBuilder)ek.a("name", fg.a($$1))
                      .executes(
                         $$0x -> a(
-                              (ei)$$0x.getSource(), ff.a($$0x, "name"), ((ei)$$0x.getSource()).d(), feq.c, 0.0F, 0, false, ((ei)$$0x.getSource()).l().ag().t()
+                              (ej)$$0x.getSource(), fg.a($$0x, "name"), ((ej)$$0x.getSource()).d(), fex.c, 0.0F, 0, false, ((ej)$$0x.getSource()).l().ag().t()
                            )
                      ))
                   .then(
-                     ((RequiredArgumentBuilder)ej.a("pos", gm.a())
+                     ((RequiredArgumentBuilder)ek.a("pos", gn.a())
                            .executes(
-                              $$0x -> a((ei)$$0x.getSource(), ff.a($$0x, "name"), gm.a($$0x, "pos"), feq.c, 0.0F, 0, false, ((ei)$$0x.getSource()).l().ag().t())
+                              $$0x -> a((ej)$$0x.getSource(), fg.a($$0x, "name"), gn.a($$0x, "pos"), fex.c, 0.0F, 0, false, ((ej)$$0x.getSource()).l().ag().t())
                            ))
                         .then(
-                           ej.a("delta", gm.a(false))
+                           ek.a("delta", gn.a(false))
                               .then(
-                                 ej.a("speed", FloatArgumentType.floatArg(0.0F))
+                                 ek.a("speed", FloatArgumentType.floatArg(0.0F))
                                     .then(
-                                       ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ej.a("count", IntegerArgumentType.integer(0))
+                                       ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ek.a("count", IntegerArgumentType.integer(0))
                                                 .executes(
                                                    $$0x -> a(
-                                                         (ei)$$0x.getSource(),
-                                                         ff.a($$0x, "name"),
-                                                         gm.a($$0x, "pos"),
-                                                         gm.a($$0x, "delta"),
+                                                         (ej)$$0x.getSource(),
+                                                         fg.a($$0x, "name"),
+                                                         gn.a($$0x, "pos"),
+                                                         gn.a($$0x, "delta"),
                                                          FloatArgumentType.getFloat($$0x, "speed"),
                                                          IntegerArgumentType.getInteger($$0x, "count"),
                                                          false,
-                                                         ((ei)$$0x.getSource()).l().ag().t()
+                                                         ((ej)$$0x.getSource()).l().ag().t()
                                                       )
                                                 ))
                                              .then(
-                                                ((LiteralArgumentBuilder)ej.a("force")
+                                                ((LiteralArgumentBuilder)ek.a("force")
                                                       .executes(
                                                          $$0x -> a(
-                                                               (ei)$$0x.getSource(),
-                                                               ff.a($$0x, "name"),
-                                                               gm.a($$0x, "pos"),
-                                                               gm.a($$0x, "delta"),
+                                                               (ej)$$0x.getSource(),
+                                                               fg.a($$0x, "name"),
+                                                               gn.a($$0x, "pos"),
+                                                               gn.a($$0x, "delta"),
                                                                FloatArgumentType.getFloat($$0x, "speed"),
                                                                IntegerArgumentType.getInteger($$0x, "count"),
                                                                true,
-                                                               ((ei)$$0x.getSource()).l().ag().t()
+                                                               ((ej)$$0x.getSource()).l().ag().t()
                                                             )
                                                       ))
                                                    .then(
-                                                      ej.a("viewers", ev.d())
+                                                      ek.a("viewers", ew.d())
                                                          .executes(
                                                             $$0x -> a(
-                                                                  (ei)$$0x.getSource(),
-                                                                  ff.a($$0x, "name"),
-                                                                  gm.a($$0x, "pos"),
-                                                                  gm.a($$0x, "delta"),
+                                                                  (ej)$$0x.getSource(),
+                                                                  fg.a($$0x, "name"),
+                                                                  gn.a($$0x, "pos"),
+                                                                  gn.a($$0x, "delta"),
                                                                   FloatArgumentType.getFloat($$0x, "speed"),
                                                                   IntegerArgumentType.getInteger($$0x, "count"),
                                                                   true,
-                                                                  ev.f($$0x, "viewers")
+                                                                  ew.f($$0x, "viewers")
                                                                )
                                                          )
                                                    )
                                              ))
                                           .then(
-                                             ((LiteralArgumentBuilder)ej.a("normal")
+                                             ((LiteralArgumentBuilder)ek.a("normal")
                                                    .executes(
                                                       $$0x -> a(
-                                                            (ei)$$0x.getSource(),
-                                                            ff.a($$0x, "name"),
-                                                            gm.a($$0x, "pos"),
-                                                            gm.a($$0x, "delta"),
+                                                            (ej)$$0x.getSource(),
+                                                            fg.a($$0x, "name"),
+                                                            gn.a($$0x, "pos"),
+                                                            gn.a($$0x, "delta"),
                                                             FloatArgumentType.getFloat($$0x, "speed"),
                                                             IntegerArgumentType.getInteger($$0x, "count"),
                                                             false,
-                                                            ((ei)$$0x.getSource()).l().ag().t()
+                                                            ((ej)$$0x.getSource()).l().ag().t()
                                                          )
                                                    ))
                                                 .then(
-                                                   ej.a("viewers", ev.d())
+                                                   ek.a("viewers", ew.d())
                                                       .executes(
                                                          $$0x -> a(
-                                                               (ei)$$0x.getSource(),
-                                                               ff.a($$0x, "name"),
-                                                               gm.a($$0x, "pos"),
-                                                               gm.a($$0x, "delta"),
+                                                               (ej)$$0x.getSource(),
+                                                               fg.a($$0x, "name"),
+                                                               gn.a($$0x, "pos"),
+                                                               gn.a($$0x, "delta"),
                                                                FloatArgumentType.getFloat($$0x, "speed"),
                                                                IntegerArgumentType.getInteger($$0x, "count"),
                                                                false,
-                                                               ev.f($$0x, "viewers")
+                                                               ew.f($$0x, "viewers")
                                                             )
                                                       )
                                                 )
@@ -111,7 +111,7 @@ public class aog {
       );
    }
 
-   private static int a(ei $$0, lv $$1, feq $$2, feq $$3, float $$4, int $$5, boolean $$6, Collection<arr> $$7) throws CommandSyntaxException {
+   private static int a(ej $$0, lw $$1, fex $$2, fex $$3, float $$4, int $$5, boolean $$6, Collection<arr> $$7) throws CommandSyntaxException {
       int $$8 = 0;
 
       for (arr $$9 : $$7) {
@@ -123,7 +123,7 @@ public class aog {
       if ($$8 == 0) {
          throw a.create();
       } else {
-         $$0.a(() -> wy.a("commands.particle.success", mf.i.b($$1.a()).toString()), true);
+         $$0.a(() -> wy.a("commands.particle.success", mg.i.b($$1.a()).toString()), true);
          return $$8;
       }
    }

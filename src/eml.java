@@ -1,28 +1,19 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class eml implements elq {
+public class eml implements elx {
    public static final Codec<eml> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ewo.a.fieldOf("state").forGetter($$0x -> $$0x.b),
-               Codec.BOOL.fieldOf("requires_block_below").orElse(true).forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("rock_count").orElse(4).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("hole_count").orElse(1).forGetter($$0x -> $$0x.e),
-               jt.a(mg.i).fieldOf("valid_blocks").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, eml::new)
+      $$0 -> $$0.group(Codec.list(emf.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, eml::new)
    );
-   public final ewo b;
-   public final boolean c;
-   public final int d;
-   public final int e;
-   public final ji<dmf> f;
+   public final List<emf.a> b;
 
-   public eml(ewo $$0, boolean $$1, int $$2, int $$3, ji<dmf> $$4) {
+   public eml(eao $$0, eao $$1) {
+      this(ImmutableList.of(emf.a(new euo($$0), $$1)));
+   }
+
+   public eml(List<emf.a> $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
    }
 }

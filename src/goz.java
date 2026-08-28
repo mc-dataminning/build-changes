@@ -1,64 +1,92 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
-import org.slf4j.Logger;
+import org.joml.Quaternionf;
 
-public class goz {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = crb.h();
-   public static final Codec<goz> a = Codec.PASSTHROUGH.listOf().validate($$0 -> af.a($$0, c)).xmap(goz::new, $$0 -> $$0.f);
-   private static final DynamicOps<uw> d = un.a;
-   private static final Dynamic<?> e = new Dynamic(d, (uw)czd.f.encodeStart(d, czd.k).getOrThrow());
-   private List<Dynamic<?>> f;
+public class goz extends gou {
+   private final efs a;
+   private float b;
+   private float F;
+   private float G;
+   private float H;
 
-   private goz(List<Dynamic<?>> $$0) {
-      this.f = $$0;
-   }
-
-   public goz() {
-      this(Collections.nCopies(c, e));
-   }
-
-   public List<czd> a(jg.a $$0) {
-      return this.f
-         .stream()
-         .map($$1 -> czd.f.parse(ale.a($$1, $$0)).resultOrPartial($$0xx -> b.warn("Could not parse hotbar item: {}", $$0xx)).orElse(czd.k))
-         .toList();
-   }
-
-   public void a(crb $$0, js $$1) {
-      ale<uw> $$2 = $$1.a(d);
-      Builder<Dynamic<?>> $$3 = ImmutableList.builderWithExpectedSize(c);
-
-      for (int $$4 = 0; $$4 < c; $$4++) {
-         czd $$5 = $$0.a($$4);
-         Optional<Dynamic<?>> $$6 = czd.f
-            .encodeStart($$2, $$5)
-            .resultOrPartial($$0x -> b.warn("Could not encode hotbar item: {}", $$0x))
-            .map($$0x -> new Dynamic(d, $$0x));
-         $$3.add($$6.orElse(e));
+   goz(gkl $$0, double $$1, double $$2, double $$3, efs $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.D = 0.3F;
+      this.a = $$4;
+      this.t = $$5;
+      Optional<fex> $$6 = $$4.a($$0);
+      if ($$6.isPresent()) {
+         fex $$7 = $$6.get();
+         double $$8 = $$1 - $$7.a();
+         double $$9 = $$2 - $$7.b();
+         double $$10 = $$3 - $$7.c();
+         this.F = this.b = (float)azm.d($$8, $$10);
+         this.H = this.G = (float)azm.d($$9, Math.sqrt($$8 * $$8 + $$10 * $$10));
       }
-
-      this.f = $$3.build();
    }
 
-   public boolean a() {
-      for (Dynamic<?> $$0 : this.f) {
-         if (!a($$0)) {
-            return false;
+   @Override
+   public void a(fkc $$0, fow $$1, float $$2) {
+      float $$3 = azm.a(((float)this.s + $$2 - (float) (Math.PI * 2)) * 0.05F) * 2.0F;
+      float $$4 = azm.h($$2, this.F, this.b);
+      float $$5 = azm.h($$2, this.H, this.G) + (float) (Math.PI / 2);
+      Quaternionf $$6 = new Quaternionf();
+      $$6.rotationY($$4).rotateX(-$$5).rotateY($$3);
+      this.a($$0, $$1, $$6, $$2);
+      $$6.rotationY((float) -Math.PI + $$4).rotateX($$5).rotateY($$3);
+      this.a($$0, $$1, $$6, $$2);
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public gny b() {
+      return gny.c;
+   }
+
+   @Override
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         Optional<fex> $$0 = this.a.a(this.c);
+         if ($$0.isEmpty()) {
+            this.k();
+         } else {
+            int $$1 = this.t - this.s;
+            double $$2 = 1.0 / (double)$$1;
+            fex $$3 = $$0.get();
+            this.g = azm.d($$2, this.g, $$3.a());
+            this.h = azm.d($$2, this.h, $$3.b());
+            this.i = azm.d($$2, this.i, $$3.c());
+            double $$4 = this.g - $$3.a();
+            double $$5 = this.h - $$3.b();
+            double $$6 = this.i - $$3.c();
+            this.F = this.b;
+            this.b = (float)azm.d($$4, $$6);
+            this.H = this.G;
+            this.G = (float)azm.d($$5, Math.sqrt($$4 * $$4 + $$6 * $$6));
          }
       }
-
-      return true;
    }
 
-   private static boolean a(Dynamic<?> $$0) {
-      return e.equals($$0);
+   public static class a implements gnx<me> {
+      private final gop a;
+
+      public a(gop $$0) {
+         this.a = $$0;
+      }
+
+      public gnu a(me $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         goz $$8 = new goz($$1, $$2, $$3, $$4, $$0.b(), $$0.c());
+         $$8.a(this.a);
+         $$8.e(1.0F);
+         return $$8;
+      }
    }
 }

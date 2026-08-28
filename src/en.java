@@ -1,268 +1,34 @@
-import com.google.common.base.CharMatcher;
-import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.Message;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JavaOps;
 
-public interface en {
-   CharMatcher c = CharMatcher.anyOf("._/");
-
-   Collection<String> q();
-
-   default Collection<String> y() {
-      return this.q();
+public class en {
+   public static <T> T a(Codec<T> $$0, jh.a $$1, DynamicCommandExceptionType $$2, StringReader $$3) throws CommandSyntaxException {
+      return a(JavaOps.INSTANCE, $$0, $$1, $$2, $$3);
    }
 
-   default Collection<String> z() {
-      return Collections.emptyList();
+   public static <T, O> T a(DynamicOps<O> $$0, Codec<T> $$1, jh.a $$2, DynamicCommandExceptionType $$3, StringReader $$4) throws CommandSyntaxException {
+      int $$5 = $$4.getCursor();
+      ale<O> $$6 = $$2.a($$0);
+      O $$7 = ux.b($$6, $$4);
+      DataResult<T> $$8 = $$1.parse($$6, $$7);
+      return (T)$$8.getOrThrow($$3x -> {
+         $$4.setCursor($$5);
+         return $$3.createWithContext($$4, $$3x);
+      });
    }
 
-   Collection<String> r();
+   public static String a(StringReader $$0, n $$1) {
+      int $$2 = $$0.getCursor();
 
-   Stream<alg> s();
-
-   CompletableFuture<Suggestions> a(CommandContext<?> var1);
-
-   default Collection<en.b> A() {
-      return Collections.singleton(en.b.b);
-   }
-
-   default Collection<en.b> B() {
-      return Collections.singleton(en.b.b);
-   }
-
-   Set<alf<dja>> t();
-
-   js u();
-
-   cum v();
-
-   default void a(jr<?> $$0, en.a $$1, SuggestionsBuilder $$2) {
-      if ($$1.a()) {
-         a($$0.l().map($$0x -> $$0x.h().b()), $$2, "#");
+      while ($$0.canRead() && $$1.test($$0.peek())) {
+         $$0.skip();
       }
 
-      if ($$1.b()) {
-         a($$0.i(), $$2);
-      }
-   }
-
-   CompletableFuture<Suggestions> a(alf<? extends jr<?>> var1, en.a var2, SuggestionsBuilder var3, CommandContext<?> var4);
-
-   boolean c(int var1);
-
-   static <T> void a(Iterable<T> $$0, String $$1, Function<T, alg> $$2, Consumer<T> $$3) {
-      boolean $$4 = $$1.indexOf(58) > -1;
-
-      for (T $$5 : $$0) {
-         alg $$6 = $$2.apply($$5);
-         if ($$4) {
-            String $$7 = $$6.toString();
-            if (a($$1, $$7)) {
-               $$3.accept($$5);
-            }
-         } else if (a($$1, $$6.b()) || $$6.b().equals("minecraft") && a($$1, $$6.a())) {
-            $$3.accept($$5);
-         }
-      }
-   }
-
-   static <T> void a(Iterable<T> $$0, String $$1, String $$2, Function<T, alg> $$3, Consumer<T> $$4) {
-      if ($$1.isEmpty()) {
-         $$0.forEach($$4);
-      } else {
-         String $$5 = Strings.commonPrefix($$1, $$2);
-         if (!$$5.isEmpty()) {
-            String $$6 = $$1.substring($$5.length());
-            a($$0, $$6, $$3, $$4);
-         }
-      }
-   }
-
-   static CompletableFuture<Suggestions> a(Iterable<alg> $$0, SuggestionsBuilder $$1, String $$2) {
-      String $$3 = $$1.getRemaining().toLowerCase(Locale.ROOT);
-      a($$0, $$3, $$2, $$0x -> $$0x, $$2x -> $$1.suggest($$2 + $$2x));
-      return $$1.buildFuture();
-   }
-
-   static CompletableFuture<Suggestions> a(Stream<alg> $$0, SuggestionsBuilder $$1, String $$2) {
-      return a($$0::iterator, $$1, $$2);
-   }
-
-   static CompletableFuture<Suggestions> a(Iterable<alg> $$0, SuggestionsBuilder $$1) {
-      String $$2 = $$1.getRemaining().toLowerCase(Locale.ROOT);
-      a($$0, $$2, $$0x -> $$0x, $$1x -> $$1.suggest($$1x.toString()));
-      return $$1.buildFuture();
-   }
-
-   static <T> CompletableFuture<Suggestions> a(Iterable<T> $$0, SuggestionsBuilder $$1, Function<T, alg> $$2, Function<T, Message> $$3) {
-      String $$4 = $$1.getRemaining().toLowerCase(Locale.ROOT);
-      a($$0, $$4, $$2, $$3x -> $$1.suggest($$2.apply((T)$$3x).toString(), $$3.apply((T)$$3x)));
-      return $$1.buildFuture();
-   }
-
-   static CompletableFuture<Suggestions> a(Stream<alg> $$0, SuggestionsBuilder $$1) {
-      return a($$0::iterator, $$1);
-   }
-
-   static <T> CompletableFuture<Suggestions> a(Stream<T> $$0, SuggestionsBuilder $$1, Function<T, alg> $$2, Function<T, Message> $$3) {
-      return a($$0::iterator, $$1, $$2, $$3);
-   }
-
-   static CompletableFuture<Suggestions> a(String $$0, Collection<en.b> $$1, SuggestionsBuilder $$2, Predicate<String> $$3) {
-      List<String> $$4 = Lists.newArrayList();
-      if (Strings.isNullOrEmpty($$0)) {
-         for (en.b $$5 : $$1) {
-            String $$6 = $$5.c + " " + $$5.d + " " + $$5.e;
-            if ($$3.test($$6)) {
-               $$4.add($$5.c);
-               $$4.add($$5.c + " " + $$5.d);
-               $$4.add($$6);
-            }
-         }
-      } else {
-         String[] $$7 = $$0.split(" ");
-         if ($$7.length == 1) {
-            for (en.b $$8 : $$1) {
-               String $$9 = $$7[0] + " " + $$8.d + " " + $$8.e;
-               if ($$3.test($$9)) {
-                  $$4.add($$7[0] + " " + $$8.d);
-                  $$4.add($$9);
-               }
-            }
-         } else if ($$7.length == 2) {
-            for (en.b $$10 : $$1) {
-               String $$11 = $$7[0] + " " + $$7[1] + " " + $$10.e;
-               if ($$3.test($$11)) {
-                  $$4.add($$11);
-               }
-            }
-         }
-      }
-
-      return b($$4, $$2);
-   }
-
-   static CompletableFuture<Suggestions> b(String $$0, Collection<en.b> $$1, SuggestionsBuilder $$2, Predicate<String> $$3) {
-      List<String> $$4 = Lists.newArrayList();
-      if (Strings.isNullOrEmpty($$0)) {
-         for (en.b $$5 : $$1) {
-            String $$6 = $$5.c + " " + $$5.e;
-            if ($$3.test($$6)) {
-               $$4.add($$5.c);
-               $$4.add($$6);
-            }
-         }
-      } else {
-         String[] $$7 = $$0.split(" ");
-         if ($$7.length == 1) {
-            for (en.b $$8 : $$1) {
-               String $$9 = $$7[0] + " " + $$8.e;
-               if ($$3.test($$9)) {
-                  $$4.add($$9);
-               }
-            }
-         }
-      }
-
-      return b($$4, $$2);
-   }
-
-   static CompletableFuture<Suggestions> b(Iterable<String> $$0, SuggestionsBuilder $$1) {
-      String $$2 = $$1.getRemaining().toLowerCase(Locale.ROOT);
-
-      for (String $$3 : $$0) {
-         if (a($$2, $$3.toLowerCase(Locale.ROOT))) {
-            $$1.suggest($$3);
-         }
-      }
-
-      return $$1.buildFuture();
-   }
-
-   static CompletableFuture<Suggestions> b(Stream<String> $$0, SuggestionsBuilder $$1) {
-      String $$2 = $$1.getRemaining().toLowerCase(Locale.ROOT);
-      $$0.filter($$1x -> a($$2, $$1x.toLowerCase(Locale.ROOT))).forEach($$1::suggest);
-      return $$1.buildFuture();
-   }
-
-   static CompletableFuture<Suggestions> a(String[] $$0, SuggestionsBuilder $$1) {
-      String $$2 = $$1.getRemaining().toLowerCase(Locale.ROOT);
-
-      for (String $$3 : $$0) {
-         if (a($$2, $$3.toLowerCase(Locale.ROOT))) {
-            $$1.suggest($$3);
-         }
-      }
-
-      return $$1.buildFuture();
-   }
-
-   static <T> CompletableFuture<Suggestions> b(Iterable<T> $$0, SuggestionsBuilder $$1, Function<T, String> $$2, Function<T, Message> $$3) {
-      String $$4 = $$1.getRemaining().toLowerCase(Locale.ROOT);
-
-      for (T $$5 : $$0) {
-         String $$6 = $$2.apply($$5);
-         if (a($$4, $$6.toLowerCase(Locale.ROOT))) {
-            $$1.suggest($$6, $$3.apply($$5));
-         }
-      }
-
-      return $$1.buildFuture();
-   }
-
-   static boolean a(String $$0, String $$1) {
-      int $$2 = 0;
-
-      while (!$$1.startsWith($$0, $$2)) {
-         int $$3 = c.indexIn($$1, $$2);
-         if ($$3 < 0) {
-            return false;
-         }
-
-         $$2 = $$3 + 1;
-      }
-
-      return true;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c;
-
-      public boolean a() {
-         return this == a || this == c;
-      }
-
-      public boolean b() {
-         return this == b || this == c;
-      }
-   }
-
-   public static class b {
-      public static final en.b a = new en.b("^", "^", "^");
-      public static final en.b b = new en.b("~", "~", "~");
-      public final String c;
-      public final String d;
-      public final String e;
-
-      public b(String $$0, String $$1, String $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-      }
+      return $$0.getString().substring($$2, $$0.getCursor());
    }
 }

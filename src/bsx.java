@@ -1,101 +1,211 @@
-import com.google.common.collect.Queues;
-import java.util.Locale;
-import java.util.Queue;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.BiFunction;
 import javax.annotation.Nullable;
 
-public interface bsx<T extends Runnable> {
-   @Nullable
-   Runnable a();
+public class bsx {
+   private static final int a = 16;
 
-   boolean a(T var1);
+   public static <K, U, V> CompletableFuture<Map<K, V>> a(Map<K, U> $$0, BiFunction<K, U, V> $$1, int $$2, Executor $$3) {
+      int $$4 = $$0.size();
+      if ($$4 == 0) {
+         return CompletableFuture.completedFuture(Map.of());
+      } else if ($$4 == 1) {
+         Entry<K, U> $$5 = $$0.entrySet().iterator().next();
+         K $$6 = $$5.getKey();
+         U $$7 = $$5.getValue();
+         return CompletableFuture.supplyAsync(() -> {
+            V $$3x = $$1.apply($$6, $$7);
+            return $$3x != null ? Map.of($$6, $$3x) : Map.of();
+         }, $$3);
+      } else {
+         bsx.d<K, U, V> $$8 = (bsx.d<K, U, V>)($$4 <= $$2 ? new bsx.c<>($$1, $$4) : new bsx.a<>($$1, $$4, $$2));
+         return $$8.a($$0, $$3);
+      }
+   }
 
-   boolean b();
+   public static <K, U, V> CompletableFuture<Map<K, V>> a(Map<K, U> $$0, BiFunction<K, U, V> $$1, Executor $$2) {
+      int $$3 = ag.g() * 16;
+      return a($$0, $$1, $$3, $$2);
+   }
 
-   int c();
+   static class a<K, U, V> extends bsx.d<K, U, V> {
+      private final Map<K, V> c;
+      private final int d;
+      private final int e;
 
-   public static final class a implements bsx<bsx.c> {
-      private final Queue<Runnable>[] a;
-      private final AtomicInteger b = new AtomicInteger();
+      a(BiFunction<K, U, V> $$0, int $$1, int $$2) {
+         super($$0, $$1, $$2);
+         this.c = new HashMap<>($$1);
+         this.d = azm.e($$1, $$2);
+         int $$3 = this.d * $$2;
+         int $$4 = $$3 - $$1;
+         this.e = $$2 - $$4;
 
-      public a(int $$0) {
-         this.a = new Queue[$$0];
-
-         for (int $$1 = 0; $$1 < $$0; $$1++) {
-            this.a[$$1] = Queues.newConcurrentLinkedQueue();
-         }
+         assert this.e > 0 && this.e <= $$2;
       }
 
-      @Nullable
       @Override
-      public Runnable a() {
-         for (Queue<Runnable> $$0 : this.a) {
-            Runnable $$1 = $$0.poll();
-            if ($$1 != null) {
-               this.b.decrementAndGet();
-               return $$1;
+      protected CompletableFuture<?> a(bsx.b<K, U, V> $$0, int $$1, int $$2, Executor $$3) {
+         int $$4 = $$2 - $$1;
+
+         assert $$4 == this.d || $$4 == this.d - 1;
+
+         return CompletableFuture.runAsync(a(this.c, $$1, $$2, $$0), $$3);
+      }
+
+      @Override
+      protected int a(int $$0) {
+         return $$0 < this.e ? this.d : this.d - 1;
+      }
+
+      private static <K, U, V> Runnable a(Map<K, V> $$0, int $$1, int $$2, bsx.b<K, U, V> $$3) {
+         return () -> {
+            for (int $$4 = $$1; $$4 < $$2; $$4++) {
+               $$3.a($$4);
             }
-         }
 
-         return null;
-      }
-
-      public boolean a(bsx.c $$0) {
-         int $$1 = $$0.a;
-         if ($$1 < this.a.length && $$1 >= 0) {
-            this.a[$$1].add($$0);
-            this.b.incrementAndGet();
-            return true;
-         } else {
-            throw new IndexOutOfBoundsException(String.format(Locale.ROOT, "Priority %d not supported. Expected range [0-%d]", $$1, this.a.length - 1));
-         }
+            synchronized ($$0) {
+               for (int $$5 = $$1; $$5 < $$2; $$5++) {
+                  $$3.a($$5, $$0);
+               }
+            }
+         };
       }
 
       @Override
-      public boolean b() {
-         return this.b.get() == 0;
-      }
-
-      @Override
-      public int c() {
-         return this.b.get();
+      protected CompletableFuture<Map<K, V>> a(CompletableFuture<?> $$0, bsx.b<K, U, V> $$1) {
+         Map<K, V> $$2 = this.c;
+         return $$0.thenApply($$1x -> $$2);
       }
    }
 
-   public static final class b implements bsx<Runnable> {
-      private final Queue<Runnable> a;
+   static record b<K, U, V>(BiFunction<K, U, V> a, Object[] b, Object[] c) {
+      public b(BiFunction<K, U, V> $$0, int $$1) {
+         this($$0, new Object[$$1], new Object[$$1]);
+      }
 
-      public b(Queue<Runnable> $$0) {
-         this.a = $$0;
+      public void a(int $$0, K $$1, U $$2) {
+         this.b[$$0] = $$1;
+         this.c[$$0] = $$2;
       }
 
       @Nullable
-      @Override
-      public Runnable a() {
-         return this.a.poll();
+      private K b(int $$0) {
+         return (K)this.b[$$0];
       }
 
-      @Override
-      public boolean a(Runnable $$0) {
-         return this.a.add($$0);
+      @Nullable
+      private V c(int $$0) {
+         return (V)this.c[$$0];
       }
 
-      @Override
-      public boolean b() {
-         return this.a.isEmpty();
+      @Nullable
+      private U d(int $$0) {
+         return (U)this.c[$$0];
       }
 
-      @Override
-      public int c() {
-         return this.a.size();
+      public void a(int $$0) {
+         this.c[$$0] = this.a.apply(this.b($$0), this.d($$0));
+      }
+
+      public void a(int $$0, Map<K, V> $$1) {
+         V $$2 = this.c($$0);
+         if ($$2 != null) {
+            K $$3 = this.b($$0);
+            $$1.put($$3, $$2);
+         }
+      }
+
+      public int a() {
+         return this.b.length;
+      }
+
+      public BiFunction<K, U, V> b() {
+         return this.a;
+      }
+
+      public Object[] c() {
+         return this.b;
+      }
+
+      public Object[] d() {
+         return this.c;
       }
    }
 
-   public static record c(int a, Runnable b) implements Runnable {
+   static class c<K, U, V> extends bsx.d<K, U, V> {
+      c(BiFunction<K, U, V> $$0, int $$1) {
+         super($$0, $$1, $$1);
+      }
 
       @Override
-      public void run() {
-         this.b.run();
+      protected int a(int $$0) {
+         return 1;
       }
+
+      @Override
+      protected CompletableFuture<?> a(bsx.b<K, U, V> $$0, int $$1, int $$2, Executor $$3) {
+         assert $$1 + 1 == $$2;
+
+         return CompletableFuture.runAsync(() -> $$0.a($$1), $$3);
+      }
+
+      @Override
+      protected CompletableFuture<Map<K, V>> a(CompletableFuture<?> $$0, bsx.b<K, U, V> $$1) {
+         return $$0.thenApply($$1x -> {
+            Map<K, V> $$2 = new HashMap<>($$1.a());
+
+            for (int $$3 = 0; $$3 < $$1.a(); $$3++) {
+               $$1.a($$3, $$2);
+            }
+
+            return $$2;
+         });
+      }
+   }
+
+   abstract static class d<K, U, V> {
+      private int a;
+      private int c;
+      private final CompletableFuture<?>[] d;
+      private int e;
+      private final bsx.b<K, U, V> f;
+
+      d(BiFunction<K, U, V> $$0, int $$1, int $$2) {
+         this.f = new bsx.b<>($$0, $$1);
+         this.d = new CompletableFuture[$$2];
+      }
+
+      private int a() {
+         return this.c - this.a;
+      }
+
+      public CompletableFuture<Map<K, V>> a(Map<K, U> $$0, Executor $$1) {
+         $$0.forEach(($$1x, $$2) -> {
+            this.f.a(this.c++, (K)$$1x, (U)$$2);
+            if (this.a() == this.a(this.e)) {
+               this.d[this.e++] = this.a(this.f, this.a, this.c, $$1);
+               this.a = this.c;
+            }
+         });
+
+         assert this.c == this.f.a();
+
+         assert this.a == this.c;
+
+         assert this.e == this.d.length;
+
+         return this.a(CompletableFuture.allOf(this.d), this.f);
+      }
+
+      protected abstract int a(int var1);
+
+      protected abstract CompletableFuture<?> a(bsx.b<K, U, V> var1, int var2, int var3, Executor var4);
+
+      protected abstract CompletableFuture<Map<K, V>> a(CompletableFuture<?> var1, bsx.b<K, U, V> var2);
    }
 }

@@ -291,99 +291,111 @@ public class vu extends ByteBuf {
    }
 
    public vu a(long[] $$0) {
-      this.c($$0.length);
-
-      for (long $$1 : $$0) {
-         this.b($$1);
-      }
-
-      return this;
-   }
-
-   public long[] d() {
-      return this.b(null);
-   }
-
-   public long[] b(@Nullable long[] $$0) {
-      return this.a($$0, this.readableBytes() / 8);
-   }
-
-   public long[] a(@Nullable long[] $$0, int $$1) {
-      int $$2 = this.l();
-      if ($$0 == null || $$0.length != $$2) {
-         if ($$2 > $$1) {
-            throw new DecoderException("LongArray with size " + $$2 + " is bigger than allowed " + $$1);
-         }
-
-         $$0 = new long[$$2];
-      }
-
-      for (int $$3 = 0; $$3 < $$0.length; $$3++) {
-         $$0[$$3] = this.readLong();
-      }
-
-      return $$0;
-   }
-
-   public iu e() {
-      return b(this);
-   }
-
-   public static iu b(ByteBuf $$0) {
-      return iu.d($$0.readLong());
-   }
-
-   public vu a(iu $$0) {
       a(this, $$0);
       return this;
    }
 
-   public static void a(ByteBuf $$0, iu $$1) {
+   public static void a(ByteBuf $$0, long[] $$1) {
+      wp.a($$0, $$1.length);
+      b($$0, $$1);
+   }
+
+   public vu b(long[] $$0) {
+      b(this, $$0);
+      return this;
+   }
+
+   public static void b(ByteBuf $$0, long[] $$1) {
+      for (long $$2 : $$1) {
+         $$0.writeLong($$2);
+      }
+   }
+
+   public long[] d() {
+      return b(this);
+   }
+
+   public long[] c(long[] $$0) {
+      return c(this, $$0);
+   }
+
+   public static long[] b(ByteBuf $$0) {
+      int $$1 = wp.a($$0);
+      int $$2 = $$0.readableBytes() / 8;
+      if ($$1 > $$2) {
+         throw new DecoderException("LongArray with size " + $$1 + " is bigger than allowed " + $$2);
+      } else {
+         return c($$0, new long[$$1]);
+      }
+   }
+
+   public static long[] c(ByteBuf $$0, long[] $$1) {
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         $$1[$$2] = $$0.readLong();
+      }
+
+      return $$1;
+   }
+
+   public iv e() {
+      return c(this);
+   }
+
+   public static iv c(ByteBuf $$0) {
+      return iv.d($$0.readLong());
+   }
+
+   public vu a(iv $$0) {
+      a(this, $$0);
+      return this;
+   }
+
+   public static void a(ByteBuf $$0, iv $$1) {
       $$0.writeLong($$1.a());
    }
 
-   public dih f() {
-      return new dih(this.readLong());
+   public dio f() {
+      return new dio(this.readLong());
    }
 
-   public vu a(dih $$0) {
+   public vu a(dio $$0) {
       this.b($$0.a());
       return this;
    }
 
-   public static dih c(ByteBuf $$0) {
-      return new dih($$0.readLong());
+   public static dio d(ByteBuf $$0) {
+      return new dio($$0.readLong());
    }
 
-   public static void a(ByteBuf $$0, dih $$1) {
+   public static void a(ByteBuf $$0, dio $$1) {
       $$0.writeLong($$1.a());
    }
 
-   public jx g() {
-      return jx.a(this.readLong());
+   public jy g() {
+      return jy.a(this.readLong());
    }
 
-   public vu a(jx $$0) {
+   public vu a(jy $$0) {
       this.b($$0.s());
       return this;
    }
 
-   public jd h() {
-      alf<dja> $$0 = this.a(mg.bo);
-      iu $$1 = this.e();
-      return jd.a($$0, $$1);
+   public je h() {
+      alf<djh> $$0 = this.a(mh.bo);
+      iv $$1 = this.e();
+      return je.a($$0, $$1);
    }
 
-   public void a(jd $$0) {
+   public void a(je $$0) {
       this.b($$0.a());
       this.a($$0.b());
    }
 
    public Vector3f i() {
-      return d(this);
+      return e(this);
    }
 
-   public static Vector3f d(ByteBuf $$0) {
+   public static Vector3f e(ByteBuf $$0) {
       return new Vector3f($$0.readFloat(), $$0.readFloat(), $$0.readFloat());
    }
 
@@ -398,10 +410,10 @@ public class vu extends ByteBuf {
    }
 
    public Quaternionf j() {
-      return e(this);
+      return f(this);
    }
 
-   public static Quaternionf e(ByteBuf $$0) {
+   public static Quaternionf f(ByteBuf $$0) {
       return new Quaternionf($$0.readFloat(), $$0.readFloat(), $$0.readFloat(), $$0.readFloat());
    }
 
@@ -416,21 +428,21 @@ public class vu extends ByteBuf {
       $$0.writeFloat($$1.w);
    }
 
-   public static feq f(ByteBuf $$0) {
-      return new feq($$0.readDouble(), $$0.readDouble(), $$0.readDouble());
+   public static fex g(ByteBuf $$0) {
+      return new fex($$0.readDouble(), $$0.readDouble(), $$0.readDouble());
    }
 
-   public feq k() {
-      return f(this);
+   public fex k() {
+      return g(this);
    }
 
-   public static void a(ByteBuf $$0, feq $$1) {
+   public static void a(ByteBuf $$0, fex $$1) {
       $$0.writeDouble($$1.a());
       $$0.writeDouble($$1.b());
       $$0.writeDouble($$1.c());
    }
 
-   public void a(feq $$0) {
+   public void a(fex $$0) {
       a(this, $$0);
    }
 
@@ -471,10 +483,10 @@ public class vu extends ByteBuf {
    }
 
    public UUID n() {
-      return g(this);
+      return h(this);
    }
 
-   public static UUID g(ByteBuf $$0) {
+   public static UUID h(ByteBuf $$0) {
       return new UUID($$0.readLong(), $$0.readLong());
    }
 
@@ -507,11 +519,11 @@ public class vu extends ByteBuf {
 
    @Nullable
    public tz o() {
-      return h(this);
+      return i(this);
    }
 
    @Nullable
-   public static tz h(ByteBuf $$0) {
+   public static tz i(ByteBuf $$0) {
       uw $$1 = a($$0, ui.a(2097152L));
       if ($$1 != null && !($$1 instanceof tz)) {
          throw new DecoderException("Not a compound tag: " + $$1);
@@ -561,7 +573,7 @@ public class vu extends ByteBuf {
       return this;
    }
 
-   public <T> alf<T> a(alf<? extends jr<T>> $$0) {
+   public <T> alf<T> a(alf<? extends js<T>> $$0) {
       alg $$1 = this.q();
       return alf.a($$0, $$1);
    }
@@ -570,7 +582,7 @@ public class vu extends ByteBuf {
       this.a($$0.a());
    }
 
-   public <T> alf<? extends jr<T>> r() {
+   public <T> alf<? extends js<T>> r() {
       alg $$0 = this.q();
       return alf.a($$0);
    }
@@ -605,22 +617,22 @@ public class vu extends ByteBuf {
       return this;
    }
 
-   public fem v() {
-      iu $$0 = this.e();
-      ja $$1 = this.b(ja.class);
+   public fet v() {
+      iv $$0 = this.e();
+      jb $$1 = this.b(jb.class);
       float $$2 = this.readFloat();
       float $$3 = this.readFloat();
       float $$4 = this.readFloat();
       boolean $$5 = this.readBoolean();
       boolean $$6 = this.readBoolean();
-      return new fem(new feq((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5, $$6);
+      return new fet(new fex((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5, $$6);
    }
 
-   public void a(fem $$0) {
-      iu $$1 = $$0.b();
+   public void a(fet $$0) {
+      iv $$1 = $$0.b();
       this.a($$1);
       this.a($$0.c());
-      feq $$2 = $$0.g();
+      fex $$2 = $$0.g();
       this.a((float)($$2.d - (double)$$1.u()));
       this.a((float)($$2.e - (double)$$1.v()));
       this.a((float)($$2.f - (double)$$1.w()));
@@ -651,12 +663,12 @@ public class vu extends ByteBuf {
       }
    }
 
-   public static int i(ByteBuf $$0) {
+   public static int j(ByteBuf $$0) {
       return wp.a($$0);
    }
 
    public int x() {
-      return i(this.d);
+      return j(this.d);
    }
 
    public static void b(ByteBuf $$0, int $$1) {
@@ -1146,7 +1158,7 @@ public class vu extends ByteBuf {
       return this.d.readRetainedSlice($$0);
    }
 
-   public vu j(ByteBuf $$0) {
+   public vu k(ByteBuf $$0) {
       this.d.readBytes($$0);
       return this;
    }
@@ -1263,7 +1275,7 @@ public class vu extends ByteBuf {
       return this;
    }
 
-   public vu k(ByteBuf $$0) {
+   public vu l(ByteBuf $$0) {
       this.d.writeBytes($$0);
       return this;
    }

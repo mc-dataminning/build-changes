@@ -1,42 +1,18 @@
-import java.util.EnumSet;
+public class ceo extends cen {
+   private final cqq h;
 
-public class ceo extends cea {
-   private final bxm a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
-
-   public ceo(bxm $$0, double $$1) {
-      this.a = $$0;
-      this.e = $$1;
-      this.a(EnumSet.of(cea.a.a));
+   public ceo(cqq $$0) {
+      super($$0, crj.class, 8.0F);
+      this.h = $$0;
    }
 
    @Override
    public boolean b() {
-      if (this.a.gb()) {
-         return false;
+      if (this.h.gt()) {
+         this.c = this.h.x();
+         return true;
       } else {
-         feq $$0 = chx.a(this.a, 16, 7, feq.c(this.a.gc()), (float) (Math.PI / 2));
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.d;
-            this.c = $$0.e;
-            this.d = $$0.f;
-            return true;
-         }
+         return false;
       }
-   }
-
-   @Override
-   public boolean c() {
-      return !this.a.O().k();
-   }
-
-   @Override
-   public void d() {
-      this.a.O().a(this.b, this.c, this.d, this.e);
    }
 }

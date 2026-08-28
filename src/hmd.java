@@ -1,17 +1,10 @@
-public abstract class hmd extends hmc implements hmv {
-   private boolean n;
+public interface hmd {
+   hjk a(hlq var1, hlu var2);
 
-   protected hmd(awm $$0, awo $$1, azv $$2) {
-      super($$0, $$1, $$2);
-   }
+   hjk a(String var1, hlu var2);
 
-   @Override
-   public boolean m() {
-      return this.n;
-   }
-
-   protected final void n() {
-      this.n = true;
-      this.i = false;
+   default hjk a(gsg $$0, String $$1, hlu $$2) {
+      hlq $$3 = $$0.a($$1);
+      return $$3 != null ? this.a($$3, $$2) : this.a($$1, $$2);
    }
 }

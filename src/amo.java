@@ -16,34 +16,34 @@ public class amo {
       ($$0, $$1) -> wy.b("commands.advancement.criterionNotFound", $$0, $$1)
    );
 
-   public static void a(CommandDispatcher<ei> $$0) {
+   public static void a(CommandDispatcher<ej> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("advancement").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("advancement").requires($$0x -> $$0x.c(2)))
                .then(
-                  ej.a("grant")
+                  ek.a("grant")
                      .then(
-                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ej.a("targets", ev.d())
+                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ek.a("targets", ew.d())
                                        .then(
-                                          ej.a("only")
+                                          ek.a("only")
                                              .then(
-                                                ((RequiredArgumentBuilder)ej.a("advancement", fi.a(mg.bt))
+                                                ((RequiredArgumentBuilder)ek.a("advancement", fj.a(mh.bt))
                                                       .executes(
                                                          $$0x -> a(
-                                                               (ei)$$0x.getSource(),
-                                                               ev.f($$0x, "targets"),
+                                                               (ej)$$0x.getSource(),
+                                                               ew.f($$0x, "targets"),
                                                                amo.a.a,
-                                                               a($$0x, fi.e($$0x, "advancement"), amo.b.a)
+                                                               a($$0x, fj.e($$0x, "advancement"), amo.b.a)
                                                             )
                                                       ))
                                                    .then(
-                                                      ej.a("criterion", StringArgumentType.greedyString())
-                                                         .suggests(($$0x, $$1) -> en.b(fi.e($$0x, "advancement").b().e().keySet(), $$1))
+                                                      ek.a("criterion", StringArgumentType.greedyString())
+                                                         .suggests(($$0x, $$1) -> eo.b(fj.e($$0x, "advancement").b().e().keySet(), $$1))
                                                          .executes(
                                                             $$0x -> a(
-                                                                  (ei)$$0x.getSource(),
-                                                                  ev.f($$0x, "targets"),
+                                                                  (ej)$$0x.getSource(),
+                                                                  ew.f($$0x, "targets"),
                                                                   amo.a.a,
-                                                                  fi.e($$0x, "advancement"),
+                                                                  fj.e($$0x, "advancement"),
                                                                   StringArgumentType.getString($$0x, "criterion")
                                                                )
                                                          )
@@ -51,60 +51,60 @@ public class amo {
                                              )
                                        ))
                                     .then(
-                                       ej.a("from")
+                                       ek.a("from")
                                           .then(
-                                             ej.a("advancement", fi.a(mg.bt))
+                                             ek.a("advancement", fj.a(mh.bt))
                                                 .executes(
-                                                   $$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), amo.a.a, a($$0x, fi.e($$0x, "advancement"), amo.b.c))
+                                                   $$0x -> a((ej)$$0x.getSource(), ew.f($$0x, "targets"), amo.a.a, a($$0x, fj.e($$0x, "advancement"), amo.b.c))
                                                 )
                                           )
                                     ))
                                  .then(
-                                    ej.a("until")
+                                    ek.a("until")
                                        .then(
-                                          ej.a("advancement", fi.a(mg.bt))
+                                          ek.a("advancement", fj.a(mh.bt))
                                              .executes(
-                                                $$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), amo.a.a, a($$0x, fi.e($$0x, "advancement"), amo.b.d))
+                                                $$0x -> a((ej)$$0x.getSource(), ew.f($$0x, "targets"), amo.a.a, a($$0x, fj.e($$0x, "advancement"), amo.b.d))
                                              )
                                        )
                                  ))
                               .then(
-                                 ej.a("through")
+                                 ek.a("through")
                                     .then(
-                                       ej.a("advancement", fi.a(mg.bt))
+                                       ek.a("advancement", fj.a(mh.bt))
                                           .executes(
-                                             $$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), amo.a.a, a($$0x, fi.e($$0x, "advancement"), amo.b.b))
+                                             $$0x -> a((ej)$$0x.getSource(), ew.f($$0x, "targets"), amo.a.a, a($$0x, fj.e($$0x, "advancement"), amo.b.b))
                                           )
                                     )
                               ))
                            .then(
-                              ej.a("everything")
-                                 .executes($$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), amo.a.a, ((ei)$$0x.getSource()).l().aD().b(), false))
+                              ek.a("everything")
+                                 .executes($$0x -> a((ej)$$0x.getSource(), ew.f($$0x, "targets"), amo.a.a, ((ej)$$0x.getSource()).l().aD().b(), false))
                            )
                      )
                ))
             .then(
-               ej.a("revoke")
+               ek.a("revoke")
                   .then(
-                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ej.a("targets", ev.d())
+                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ek.a("targets", ew.d())
                                     .then(
-                                       ej.a("only")
+                                       ek.a("only")
                                           .then(
-                                             ((RequiredArgumentBuilder)ej.a("advancement", fi.a(mg.bt))
+                                             ((RequiredArgumentBuilder)ek.a("advancement", fj.a(mh.bt))
                                                    .executes(
                                                       $$0x -> a(
-                                                            (ei)$$0x.getSource(), ev.f($$0x, "targets"), amo.a.b, a($$0x, fi.e($$0x, "advancement"), amo.b.a)
+                                                            (ej)$$0x.getSource(), ew.f($$0x, "targets"), amo.a.b, a($$0x, fj.e($$0x, "advancement"), amo.b.a)
                                                          )
                                                    ))
                                                 .then(
-                                                   ej.a("criterion", StringArgumentType.greedyString())
-                                                      .suggests(($$0x, $$1) -> en.b(fi.e($$0x, "advancement").b().e().keySet(), $$1))
+                                                   ek.a("criterion", StringArgumentType.greedyString())
+                                                      .suggests(($$0x, $$1) -> eo.b(fj.e($$0x, "advancement").b().e().keySet(), $$1))
                                                       .executes(
                                                          $$0x -> a(
-                                                               (ei)$$0x.getSource(),
-                                                               ev.f($$0x, "targets"),
+                                                               (ej)$$0x.getSource(),
+                                                               ew.f($$0x, "targets"),
                                                                amo.a.b,
-                                                               fi.e($$0x, "advancement"),
+                                                               fj.e($$0x, "advancement"),
                                                                StringArgumentType.getString($$0x, "criterion")
                                                             )
                                                       )
@@ -112,41 +112,41 @@ public class amo {
                                           )
                                     ))
                                  .then(
-                                    ej.a("from")
+                                    ek.a("from")
                                        .then(
-                                          ej.a("advancement", fi.a(mg.bt))
+                                          ek.a("advancement", fj.a(mh.bt))
                                              .executes(
-                                                $$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), amo.a.b, a($$0x, fi.e($$0x, "advancement"), amo.b.c))
+                                                $$0x -> a((ej)$$0x.getSource(), ew.f($$0x, "targets"), amo.a.b, a($$0x, fj.e($$0x, "advancement"), amo.b.c))
                                              )
                                        )
                                  ))
                               .then(
-                                 ej.a("until")
+                                 ek.a("until")
                                     .then(
-                                       ej.a("advancement", fi.a(mg.bt))
+                                       ek.a("advancement", fj.a(mh.bt))
                                           .executes(
-                                             $$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), amo.a.b, a($$0x, fi.e($$0x, "advancement"), amo.b.d))
+                                             $$0x -> a((ej)$$0x.getSource(), ew.f($$0x, "targets"), amo.a.b, a($$0x, fj.e($$0x, "advancement"), amo.b.d))
                                           )
                                     )
                               ))
                            .then(
-                              ej.a("through")
+                              ek.a("through")
                                  .then(
-                                    ej.a("advancement", fi.a(mg.bt))
-                                       .executes($$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), amo.a.b, a($$0x, fi.e($$0x, "advancement"), amo.b.b)))
+                                    ek.a("advancement", fj.a(mh.bt))
+                                       .executes($$0x -> a((ej)$$0x.getSource(), ew.f($$0x, "targets"), amo.a.b, a($$0x, fj.e($$0x, "advancement"), amo.b.b)))
                                  )
                            ))
-                        .then(ej.a("everything").executes($$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), amo.a.b, ((ei)$$0x.getSource()).l().aD().b())))
+                        .then(ek.a("everything").executes($$0x -> a((ej)$$0x.getSource(), ew.f($$0x, "targets"), amo.a.b, ((ej)$$0x.getSource()).l().aD().b())))
                   )
             )
       );
    }
 
-   private static int a(ei $$0, Collection<arr> $$1, amo.a $$2, Collection<ai> $$3) throws CommandSyntaxException {
+   private static int a(ej $$0, Collection<arr> $$1, amo.a $$2, Collection<aj> $$3) throws CommandSyntaxException {
       return a($$0, $$1, $$2, $$3, true);
    }
 
-   private static int a(ei $$0, Collection<arr> $$1, amo.a $$2, Collection<ai> $$3, boolean $$4) throws CommandSyntaxException {
+   private static int a(ej $$0, Collection<arr> $$1, amo.a $$2, Collection<aj> $$3, boolean $$4) throws CommandSyntaxException {
       int $$5 = 0;
 
       for (arr $$6 : $$1) {
@@ -156,9 +156,9 @@ public class amo {
       if ($$5 == 0) {
          if ($$3.size() == 1) {
             if ($$1.size() == 1) {
-               throw a.create(wy.a($$2.a() + ".one.to.one.failure", ah.a($$3.iterator().next()), $$1.iterator().next().m_()));
+               throw a.create(wy.a($$2.a() + ".one.to.one.failure", ai.a($$3.iterator().next()), $$1.iterator().next().m_()));
             } else {
-               throw a.create(wy.a($$2.a() + ".one.to.many.failure", ah.a($$3.iterator().next()), $$1.size()));
+               throw a.create(wy.a($$2.a() + ".one.to.many.failure", ai.a($$3.iterator().next()), $$1.size()));
             }
          } else if ($$1.size() == 1) {
             throw a.create(wy.a($$2.a() + ".many.to.one.failure", $$3.size(), $$1.iterator().next().m_()));
@@ -168,9 +168,9 @@ public class amo {
       } else {
          if ($$3.size() == 1) {
             if ($$1.size() == 1) {
-               $$0.a(() -> wy.a($$2.a() + ".one.to.one.success", ah.a($$3.iterator().next()), $$1.iterator().next().m_()), true);
+               $$0.a(() -> wy.a($$2.a() + ".one.to.one.success", ai.a($$3.iterator().next()), $$1.iterator().next().m_()), true);
             } else {
-               $$0.a(() -> wy.a($$2.a() + ".one.to.many.success", ah.a($$3.iterator().next()), $$1.size()), true);
+               $$0.a(() -> wy.a($$2.a() + ".one.to.many.success", ai.a($$3.iterator().next()), $$1.size()), true);
             }
          } else if ($$1.size() == 1) {
             $$0.a(() -> wy.a($$2.a() + ".many.to.one.success", $$3.size(), $$1.iterator().next().m_()), true);
@@ -182,11 +182,11 @@ public class amo {
       }
    }
 
-   private static int a(ei $$0, Collection<arr> $$1, amo.a $$2, ai $$3, String $$4) throws CommandSyntaxException {
+   private static int a(ej $$0, Collection<arr> $$1, amo.a $$2, aj $$3, String $$4) throws CommandSyntaxException {
       int $$5 = 0;
-      ah $$6 = $$3.b();
+      ai $$6 = $$3.b();
       if (!$$6.e().containsKey($$4)) {
-         throw b.create(ah.a($$3), $$4);
+         throw b.create(ai.a($$3), $$4);
       } else {
          for (arr $$7 : $$1) {
             if ($$2.a($$7, $$3, $$4)) {
@@ -196,15 +196,15 @@ public class amo {
 
          if ($$5 == 0) {
             if ($$1.size() == 1) {
-               throw a.create(wy.a($$2.a() + ".criterion.to.one.failure", $$4, ah.a($$3), $$1.iterator().next().m_()));
+               throw a.create(wy.a($$2.a() + ".criterion.to.one.failure", $$4, ai.a($$3), $$1.iterator().next().m_()));
             } else {
-               throw a.create(wy.a($$2.a() + ".criterion.to.many.failure", $$4, ah.a($$3), $$1.size()));
+               throw a.create(wy.a($$2.a() + ".criterion.to.many.failure", $$4, ai.a($$3), $$1.size()));
             }
          } else {
             if ($$1.size() == 1) {
-               $$0.a(() -> wy.a($$2.a() + ".criterion.to.one.success", $$4, ah.a($$3), $$1.iterator().next().m_()), true);
+               $$0.a(() -> wy.a($$2.a() + ".criterion.to.one.success", $$4, ai.a($$3), $$1.iterator().next().m_()), true);
             } else {
-               $$0.a(() -> wy.a($$2.a() + ".criterion.to.many.success", $$4, ah.a($$3), $$1.size()), true);
+               $$0.a(() -> wy.a($$2.a() + ".criterion.to.many.success", $$4, ai.a($$3), $$1.size()), true);
             }
 
             return $$5;
@@ -212,15 +212,15 @@ public class amo {
       }
    }
 
-   private static List<ai> a(CommandContext<ei> $$0, ai $$1, amo.b $$2) {
-      an $$3 = ((ei)$$0.getSource()).l().aD().a();
-      aj $$4 = $$3.a($$1);
+   private static List<aj> a(CommandContext<ej> $$0, aj $$1, amo.b $$2) {
+      ao $$3 = ((ej)$$0.getSource()).l().aD().a();
+      ak $$4 = $$3.a($$1);
       if ($$4 == null) {
          return List.of($$1);
       } else {
-         List<ai> $$5 = new ArrayList<>();
+         List<aj> $$5 = new ArrayList<>();
          if ($$2.f) {
-            for (aj $$6 = $$4.c(); $$6 != null; $$6 = $$6.c()) {
+            for (ak $$6 = $$4.c(); $$6 != null; $$6 = $$6.c()) {
                $$5.add($$6.b());
             }
          }
@@ -234,8 +234,8 @@ public class amo {
       }
    }
 
-   private static void a(aj $$0, List<ai> $$1) {
-      for (aj $$2 : $$0.e()) {
+   private static void a(ak $$0, List<aj> $$1) {
+      for (ak $$2 : $$0.e()) {
          $$1.add($$2.b());
          a($$2, $$1);
       }
@@ -244,8 +244,8 @@ public class amo {
    static enum a {
       a("grant") {
          @Override
-         protected boolean a(arr $$0, ai $$1) {
-            ak $$2 = $$0.S().b($$1);
+         protected boolean a(arr $$0, aj $$1) {
+            al $$2 = $$0.S().b($$1);
             if ($$2.a()) {
                return false;
             } else {
@@ -258,14 +258,14 @@ public class amo {
          }
 
          @Override
-         protected boolean a(arr $$0, ai $$1, String $$2) {
+         protected boolean a(arr $$0, aj $$1, String $$2) {
             return $$0.S().a($$1, $$2);
          }
       },
       b("revoke") {
          @Override
-         protected boolean a(arr $$0, ai $$1) {
-            ak $$2 = $$0.S().b($$1);
+         protected boolean a(arr $$0, aj $$1) {
+            al $$2 = $$0.S().b($$1);
             if (!$$2.b()) {
                return false;
             } else {
@@ -278,7 +278,7 @@ public class amo {
          }
 
          @Override
-         protected boolean a(arr $$0, ai $$1, String $$2) {
+         protected boolean a(arr $$0, aj $$1, String $$2) {
             return $$0.S().b($$1, $$2);
          }
       };
@@ -289,13 +289,13 @@ public class amo {
          this.c = "commands.advancement." + $$0;
       }
 
-      public int a(arr $$0, Iterable<ai> $$1, boolean $$2) {
+      public int a(arr $$0, Iterable<aj> $$1, boolean $$2) {
          int $$3 = 0;
          if (!$$2) {
             $$0.S().a($$0, true);
          }
 
-         for (ai $$4 : $$1) {
+         for (aj $$4 : $$1) {
             if (this.a($$0, $$4)) {
                $$3++;
             }
@@ -308,9 +308,9 @@ public class amo {
          return $$3;
       }
 
-      protected abstract boolean a(arr var1, ai var2);
+      protected abstract boolean a(arr var1, aj var2);
 
-      protected abstract boolean a(arr var1, ai var2, String var3);
+      protected abstract boolean a(arr var1, aj var2, String var3);
 
       protected String a() {
          return this.c;

@@ -1,12 +1,7 @@
 import javax.annotation.Nullable;
 
-public class hfe extends hfd implements hew {
+public class hfe extends hcz {
+   public float a;
    @Nullable
-   public cqp c;
-
-   @Nullable
-   @Override
-   public cqp a() {
-      return this.c;
-   }
+   public eao b;
 }

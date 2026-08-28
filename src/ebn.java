@@ -1,37 +1,20 @@
-import java.util.Optional;
+public enum ebn implements bak {
+   a("top"),
+   b("bottom");
 
-public class ebn {
-   private static final azy a = new azy(4);
-   private static final int b = a.a();
-   private static final int c = 0;
-   private static final int d = 4;
-   private static final int e = 8;
-   private static final int f = 12;
+   private final String c;
 
-   public static int a() {
-      return b;
+   private ebn(final String $$0) {
+      this.c = $$0;
    }
 
-   public static int a(ja $$0) {
-      return a.a($$0);
+   @Override
+   public String toString() {
+      return this.c;
    }
 
-   public static int a(float $$0) {
-      return a.b($$0);
-   }
-
-   public static Optional<ja> a(int $$0) {
-      ja $$1 = switch ($$0) {
-         case 0 -> ja.c;
-         case 4 -> ja.f;
-         case 8 -> ja.d;
-         case 12 -> ja.e;
-         default -> null;
-      };
-      return Optional.ofNullable($$1);
-   }
-
-   public static float b(int $$0) {
-      return a.b($$0);
+   @Override
+   public String c() {
+      return this.c;
    }
 }

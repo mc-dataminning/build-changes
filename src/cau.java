@@ -1,34 +1,18 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class cau {
-   public static byw<bxe> a(bxh $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.aq().f()), $$1);
-   }
-
-   public static cag<bxe> a(bwo<?> $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.aq()), $$1);
-   }
-
-   public static cag<bxe> a(float $$0) {
-      return a($$0x -> true, $$0);
-   }
-
-   public static cag<bxe> a(Predicate<bxe> $$0, float $$1) {
-      float $$2 = $$1 * $$1;
-      return cci.a(
-         (Function<cci.b<bxe>, ? extends App<cci.c<bxe>, ccl<bxe>>>)($$2x -> $$2x.group($$2x.c(cgg.o), $$2x.b(cgg.h))
-               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
-                     Optional<bxe> $$8 = $$2x.<cgi>b($$4).a($$0.and($$2xxxx -> $$2xxxx.g($$6) <= (double)$$2 && !$$6.y($$2xxxx)));
-                     if ($$8.isEmpty()) {
-                        return false;
-                     } else {
-                        $$3.a(new bzg($$8.get(), true));
-                        return true;
-                     }
-                  }))
-      );
+   public static bzb<cqv> a() {
+      return ccn.a((Function<ccn.b<cqv>, ? extends App<ccn.c<cqv>, ccq<cqv>>>)($$0 -> $$0.group($$0.c(cgl.c)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
+               cqw $$3 = $$1.gB();
+               boolean $$4 = !$$3.b().a(cqy.b) && !$$3.b().a(cqy.m);
+               if ($$4 && $$1.t() == 0 && $$3.c() <= 1) {
+                  $$1.a($$1.gB().b($$0xx.F_(), cqy.b));
+                  $$1.g($$0xx);
+                  return true;
+               } else {
+                  return false;
+               }
+            })));
    }
 }

@@ -1,17 +1,72 @@
-public class gwt extends gyq<bwv> {
-   private static final alg a = alg.b("textures/entity/squid/glow_squid.png");
+@FunctionalInterface
+public interface gwt<T extends bwi> {
+   gws<T, ?> create(gwt.a var1);
 
-   public gwt(gwh.a $$0, gic $$1, gic $$2) {
-      super($$0, $$1, $$2);
-   }
+   public static class a {
+      private final gwr a;
+      private final hga b;
+      private final gqk c;
+      private final grp d;
+      private final avd e;
+      private final gjk f;
+      private final hlo g;
+      private final fsf h;
+      private final has i;
 
-   @Override
-   public alg a(hem $$0) {
-      return a;
-   }
+      public a(gwr $$0, hga $$1, gqk $$2, grp $$3, avd $$4, gjk $$5, hlo $$6, fsf $$7) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = new has($$6, this.i().c(grg.g));
+      }
 
-   protected int a(bwv $$0, iu $$1) {
-      int $$2 = (int)azm.b(0.0F, 15.0F, 1.0F - (float)$$0.x() / 10.0F);
-      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
+      public gwr a() {
+         return this.a;
+      }
+
+      public hga b() {
+         return this.b;
+      }
+
+      public gqk c() {
+         return this.c;
+      }
+
+      public grp d() {
+         return this.d;
+      }
+
+      public avd e() {
+         return this.e;
+      }
+
+      public gjk f() {
+         return this.f;
+      }
+
+      public hlo g() {
+         return this.g;
+      }
+
+      public has h() {
+         return this.i;
+      }
+
+      public hlx i() {
+         return this.d.a().a();
+      }
+
+      public gjo a(gjm $$0) {
+         return this.f.a($$0);
+      }
+
+      public fsf j() {
+         return this.h;
+      }
    }
 }

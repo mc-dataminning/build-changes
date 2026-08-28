@@ -4,15 +4,15 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 public class auq extends auh {
-   private static final aud d = new aud(wy.c("dataPack.vanilla.description"), ab.b().a(atr.b), Optional.empty());
-   private static final atl e = new atl(cuo.h);
+   private static final aud d = new aud(wy.c("dataPack.vanilla.description"), ac.b().a(atr.b), Optional.empty());
+   private static final atl e = new atl(cuv.h);
    private static final ath f = ath.a(aud.b, d, atl.a, e);
    private static final ato g = new ato("vanilla", wy.c("dataPack.vanilla.name"), auo.c, Optional.of(c));
    private static final atq h = new atq(false, auk.b.b, false);
    private static final atq i = new atq(false, auk.b.a, false);
    private static final alg j = alg.b("datapacks");
 
-   public auq(feg $$0) {
+   public auq(fen $$0) {
       super(atr.b, b(), j, $$0);
    }
 
@@ -42,15 +42,15 @@ public class auq extends auh {
       return auk.a(a($$0, $$2), $$1, atr.b, i);
    }
 
-   public static aun a(Path $$0, feg $$1) {
+   public static aun a(Path $$0, fen $$1) {
       return new aun(new auq($$1), new aui($$0, atr.b, auo.e, $$1));
    }
 
    public static aun c() {
-      return new aun(new auq(new feg($$0 -> true)));
+      return new aun(new auq(new fen($$0 -> true)));
    }
 
-   public static aun a(eyv.c $$0) {
-      return a($$0.a(eyt.j), $$0.d().e());
+   public static aun a(ezc.c $$0) {
+      return a($$0.a(eza.j), $$0.d().e());
    }
 }

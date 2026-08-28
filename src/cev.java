@@ -1,32 +1,39 @@
 import java.util.EnumSet;
 
-public class cev extends cea {
-   private final bxg a;
-   private double b;
-   private double c;
-   private int d;
+public class cev extends cef {
+   private final bxl a;
+   private bxj b;
+   private int c;
 
-   public cev(bxg $$0) {
+   public cev(bxl $$0) {
       this.a = $$0;
-      this.a(EnumSet.of(cea.a.a, cea.a.b));
+      this.a(EnumSet.of(cef.a.a, cef.a.b));
    }
 
    @Override
    public boolean b() {
-      return this.a.dY().i() < 0.02F;
+      bxj $$0 = this.a.f();
+      if ($$0 == null) {
+         return false;
+      } else {
+         this.b = $$0;
+         return true;
+      }
    }
 
    @Override
    public boolean c() {
-      return this.d >= 0;
+      if (!this.b.bI()) {
+         return false;
+      } else {
+         return this.a.g((bwi)this.b) > 225.0 ? false : !this.a.O().k() || this.b();
+      }
    }
 
    @Override
-   public void d() {
-      double $$0 = (Math.PI * 2) * this.a.dY().j();
-      this.b = Math.cos($$0);
-      this.c = Math.sin($$0);
-      this.d = 20 + this.a.dY().a(20);
+   public void e() {
+      this.b = null;
+      this.a.O().m();
    }
 
    @Override
@@ -36,7 +43,23 @@ public class cev extends cea {
 
    @Override
    public void a() {
-      this.d--;
-      this.a.J().a(this.a.dA() + this.b, this.a.dE(), this.a.dG() + this.c);
+      this.a.J().a(this.b, 30.0F, 30.0F);
+      double $$0 = (double)(this.a.dp() * 2.0F * this.a.dp() * 2.0F);
+      double $$1 = this.a.h(this.b.dz(), this.b.dB(), this.b.dF());
+      double $$2 = 0.8;
+      if ($$1 > $$0 && $$1 < 16.0) {
+         $$2 = 1.33;
+      } else if ($$1 < 225.0) {
+         $$2 = 0.6;
+      }
+
+      this.a.O().a(this.b, $$2);
+      this.c = Math.max(this.c - 1, 0);
+      if (!($$1 > $$0)) {
+         if (this.c <= 0) {
+            this.c = 20;
+            this.a.c(a(this.a), this.b);
+         }
+      }
    }
 }

@@ -1,57 +1,55 @@
-import com.google.common.collect.Sets;
 import java.util.EnumSet;
-import java.util.List;
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public class ceu<T extends cst> extends cea {
-   private static final int a = 20;
-   private static final float b = 1.0F;
-   private final T c;
-   private int d;
+public class ceu extends cef {
+   private final bxr a;
+   @Nullable
+   private bxj b;
+   private double c;
+   private double d;
+   private double e;
+   private final double f;
+   private final float g;
 
-   public ceu(T $$0) {
-      this.c = $$0;
-      this.a(EnumSet.of(cea.a.a));
+   public ceu(bxr $$0, double $$1, float $$2) {
+      this.a = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.a(EnumSet.of(cef.a.a));
    }
 
    @Override
    public boolean b() {
-      return this.c.f() == null && !this.c.cX() && this.c.gF() && !this.c.gC().a() && !a(this.c.dV()).c(this.c.dv());
+      this.b = this.a.f();
+      if (this.b == null) {
+         return false;
+      } else if (this.b.g(this.a) > (double)(this.g * this.g)) {
+         return false;
+      } else {
+         fex $$0 = cic.a(this.a, 16, 7, this.b.ds(), (float) (Math.PI / 2));
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.d;
+            this.d = $$0.e;
+            this.e = $$0.f;
+            return true;
+         }
+      }
    }
 
    @Override
    public boolean c() {
-      return this.c.gF() && !this.c.gC().a() && !a(this.c.dV()).c(this.c.dv());
+      return !this.a.O().k() && this.b.bI() && this.b.g(this.a) < (double)(this.g * this.g);
    }
 
    @Override
-   public void a() {
-      if (this.c.gF()) {
-         css $$0 = this.c.gC();
-         if (this.c.af > this.d) {
-            this.d = this.c.af + 20;
-            this.a($$0);
-         }
-
-         if (!this.c.gn()) {
-            feq $$1 = chx.a(this.c, 15, 4, feq.c($$0.q()), (float) (Math.PI / 2));
-            if ($$1 != null) {
-               this.c.O().a($$1.d, $$1.e, $$1.f, 1.0);
-            }
-         }
-      }
+   public void e() {
+      this.b = null;
    }
 
-   private void a(css $$0) {
-      if ($$0.r()) {
-         arq $$1 = a(this.c.dV());
-         Set<cst> $$2 = Sets.newHashSet();
-         List<cst> $$3 = $$1.a(cst.class, this.c.cR().g(16.0), $$0x -> !$$0x.gF() && csu.a($$0x));
-         $$2.addAll($$3);
-
-         for (cst $$4 : $$2) {
-            $$0.a($$1, $$0.j(), $$4, null, true);
-         }
-      }
+   @Override
+   public void d() {
+      this.a.O().a(this.c, this.d, this.e, this.f);
    }
 }

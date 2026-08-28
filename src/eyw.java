@@ -1,313 +1,203 @@
+import com.google.common.collect.Iterables;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PushbackInputStream;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
 
-public class eyw implements Comparable<eyw> {
-   public static final wy a = wy.c("selectWorld.select");
-   private final dje b;
-   private final eyx c;
-   private final String d;
-   private final boolean e;
-   private final boolean f;
-   private final boolean g;
-   private final Path h;
-   @Nullable
-   private wy i;
+public class eyw implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final eyh.a b;
+   private final Map<eyi<?>, Optional<eyh>> c = new HashMap<>();
+   private final DataFixer d;
+   private final jh.a e;
+   private final Path f;
+   private CompletableFuture<?> g = CompletableFuture.completedFuture(null);
 
-   public eyw(dje $$0, eyx $$1, String $$2, boolean $$3, boolean $$4, boolean $$5, Path $$6) {
+   public eyw(eyh.a $$0, Path $$1, DataFixer $$2, jh.a $$3) {
       this.b = $$0;
-      this.c = $$1;
       this.d = $$2;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
+      this.f = $$1;
       this.e = $$3;
    }
 
-   public String a() {
-      return this.d;
+   private Path a(String $$0) {
+      return this.f.resolve($$0 + ".dat");
    }
 
-   public String b() {
-      return StringUtils.isEmpty(this.b.a()) ? this.d : this.b.a();
-   }
-
-   public Path c() {
-      return this.h;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public boolean e() {
-      return this.g;
-   }
-
-   public long f() {
-      return this.c.b();
-   }
-
-   public int a(eyw $$0) {
-      if (this.f() < $$0.f()) {
-         return 1;
+   public <T extends eyh> T a(eyi<T> $$0) {
+      T $$1 = this.b($$0);
+      if ($$1 != null) {
+         return $$1;
       } else {
-         return this.f() > $$0.f() ? -1 : this.d.compareTo($$0.d);
+         T $$2 = (T)$$0.b().apply(this.b);
+         this.a($$0, $$2);
+         return $$2;
       }
    }
 
-   public dje g() {
-      return this.b;
-   }
-
-   public dix h() {
-      return this.b.b();
-   }
-
-   public boolean i() {
-      return this.b.c();
-   }
-
-   public boolean j() {
-      return this.b.e();
-   }
-
-   public xm k() {
-      return bal.b(this.c.c()) ? wy.c("selectWorld.versionUnknown") : wy.b(this.c.c());
-   }
-
-   public eyx l() {
-      return this.c;
-   }
-
-   public boolean m() {
-      return this.o().a();
-   }
-
-   public boolean n() {
-      return this.o() == eyw.a.b;
-   }
-
-   public eyw.a o() {
-      ag $$0 = ab.b();
-      int $$1 = $$0.d().c();
-      int $$2 = this.c.d().c();
-      if (!$$0.g() && $$2 < $$1) {
-         return eyw.a.c;
-      } else {
-         return $$2 > $$1 ? eyw.a.b : eyw.a.a;
-      }
-   }
-
-   public boolean p() {
-      return this.f;
-   }
-
-   public boolean q() {
-      return !this.p() && !this.d() ? !this.r() : true;
-   }
-
-   public boolean r() {
-      return ab.b().d().a(this.c.d());
-   }
-
-   public wy s() {
-      if (this.i == null) {
-         this.i = this.z();
+   @Nullable
+   public <T extends eyh> T b(eyi<T> $$0) {
+      Optional<eyh> $$1 = this.c.get($$0);
+      if ($$1 == null) {
+         $$1 = Optional.ofNullable(this.c($$0));
+         this.c.put($$0, $$1);
       }
 
-      return this.i;
+      return (T)$$1.orElse(null);
    }
 
-   private wy z() {
-      if (this.p()) {
-         return wy.c("selectWorld.locked").a(n.m);
-      } else if (this.d()) {
-         return wy.c("selectWorld.conversion").a(n.m);
-      } else if (!this.r()) {
-         return wy.a("selectWorld.incompatible.info", this.k()).a(n.m);
-      } else {
-         xm $$0 = this.i() ? wy.i().b(wy.c("gameMode.hardcore").b(-65536)) : wy.c("gameMode." + this.h().b());
-         if (this.j()) {
-            $$0.f(", ").b(wy.c("selectWorld.commands"));
+   @Nullable
+   private <T extends eyh> T c(eyi<T> $$0) {
+      try {
+         Path $$1 = this.a($$0.a());
+         if (Files.exists($$1)) {
+            tz $$2 = this.a($$0.a(), $$0.d(), ac.b().d().c());
+            ale<uw> $$3 = this.e.a(un.a);
+            return (T)$$0.c()
+               .apply(this.b)
+               .parse($$3, $$2.n("data"))
+               .resultOrPartial($$1x -> a.error("Failed to parse saved data for '{}': {}", $$0, $$1x))
+               .orElse(null);
          }
+      } catch (Exception var5) {
+         a.error("Error loading saved data: {}", $$0, var5);
+      }
 
-         if (this.e()) {
-            $$0.f(", ").b(wy.c("selectWorld.experimental").a(n.o));
-         }
+      return null;
+   }
 
-         xm $$1 = this.k();
-         xm $$2 = wy.b(", ").b(wy.c("selectWorld.version")).b(wx.v);
-         if (this.m()) {
-            $$2.b($$1.a(this.n() ? n.m : n.u));
+   public <T extends eyh> void a(eyi<T> $$0, T $$1) {
+      this.c.put($$0, Optional.of($$1));
+      $$1.f();
+   }
+
+   public tz a(String $$0, bbb $$1, int $$2) throws IOException {
+      tz var8;
+      try (
+         InputStream $$3 = Files.newInputStream(this.a($$0));
+         PushbackInputStream $$4 = new PushbackInputStream(new ayv($$3), 2);
+      ) {
+         tz $$5;
+         if (this.a($$4)) {
+            $$5 = um.a($$4, ui.a());
          } else {
-            $$2.b($$1);
+            try (DataInputStream $$6 = new DataInputStream($$4)) {
+               $$5 = um.a($$6);
+            }
          }
 
-         $$0.b($$2);
-         return $$0;
+         int $$9 = uo.b($$5, 1343);
+         var8 = $$1.a(this.d, $$5, $$9, $$2);
+      }
+
+      return var8;
+   }
+
+   private boolean a(PushbackInputStream $$0) throws IOException {
+      byte[] $$1 = new byte[2];
+      boolean $$2 = false;
+      int $$3 = $$0.read($$1, 0, 2);
+      if ($$3 == 2) {
+         int $$4 = ($$1[1] & 255) << 8 | $$1[0] & 255;
+         if ($$4 == 35615) {
+            $$2 = true;
+         }
+      }
+
+      if ($$3 != 0) {
+         $$0.unread($$1, 0, $$3);
+      }
+
+      return $$2;
+   }
+
+   public CompletableFuture<?> a() {
+      Map<eyi<?>, tz> $$0 = this.c();
+      if ($$0.isEmpty()) {
+         return CompletableFuture.completedFuture(null);
+      } else {
+         int $$1 = ag.g();
+         int $$2 = $$0.size();
+         if ($$2 > $$1) {
+            this.g = this.g.thenCompose($$3 -> {
+               List<CompletableFuture<?>> $$4 = new ArrayList<>($$1);
+               int $$5 = azm.e($$2, $$1);
+
+               for (List<Entry<eyi<?>, tz>> $$6 : Iterables.partition($$0.entrySet(), $$5)) {
+                  $$4.add(CompletableFuture.runAsync(() -> {
+                     for (Entry<eyi<?>, tz> $$1xx : $$6) {
+                        this.a($$1xx.getKey(), $$1xx.getValue());
+                     }
+                  }, ag.i()));
+               }
+
+               return CompletableFuture.allOf($$4.toArray(CompletableFuture[]::new));
+            });
+         } else {
+            this.g = this.g
+               .thenCompose(
+                  $$1x -> CompletableFuture.allOf(
+                        $$0.entrySet()
+                           .stream()
+                           .map($$0xx -> CompletableFuture.runAsync(() -> this.a((eyi<?>)$$0xx.getKey(), (tz)$$0xx.getValue()), ag.i()))
+                           .toArray(CompletableFuture[]::new)
+                     )
+               );
+         }
+
+         return this.g;
       }
    }
 
-   public wy t() {
-      return a;
+   private Map<eyi<?>, tz> c() {
+      Map<eyi<?>, tz> $$0 = new Object2ObjectArrayMap();
+      ale<uw> $$1 = this.e.a(un.a);
+      this.c.forEach(($$2, $$3) -> $$3.filter(eyh::g).ifPresent($$3x -> {
+            $$0.put($$2, this.a($$2, $$3x, $$1));
+            $$3x.a(false);
+         }));
+      return $$0;
    }
 
-   public boolean u() {
-      return !this.q();
+   private <T extends eyh> tz a(eyi<T> $$0, eyh $$1, ale<uw> $$2) {
+      Codec<T> $$3 = $$0.c().apply(this.b);
+      tz $$4 = new tz();
+      $$4.a("data", (uw)$$3.encodeStart($$2, $$1).getOrThrow());
+      uo.e($$4);
+      return $$4;
    }
 
-   public boolean v() {
-      return !this.d() && !this.p();
-   }
+   private void a(eyi<?> $$0, tz $$1) {
+      Path $$2 = this.a($$0.a());
 
-   public boolean w() {
-      return !this.q();
-   }
-
-   public boolean x() {
-      return !this.q();
-   }
-
-   public boolean y() {
-      return true;
-   }
-
-   public static enum a {
-      a(false, false, ""),
-      b(true, true, "downgrade"),
-      c(true, false, "snapshot");
-
-      private final boolean d;
-      private final boolean e;
-      private final String f;
-
-      private a(final boolean $$0, final boolean $$1, final String $$2) {
-         this.d = $$0;
-         this.e = $$1;
-         this.f = $$2;
-      }
-
-      public boolean a() {
-         return this.d;
-      }
-
-      public boolean b() {
-         return this.e;
-      }
-
-      public String c() {
-         return this.f;
+      try {
+         um.a($$1, $$2);
+      } catch (IOException var5) {
+         a.error("Could not save data to {}", $$2.getFileName(), var5);
       }
    }
 
-   public static class b extends eyw {
-      private static final wy b = wy.c("recover_world.warning").a($$0 -> $$0.a(-65536));
-      private static final wy c = wy.c("recover_world.button");
-      private final long d;
-
-      public b(String $$0, Path $$1, long $$2) {
-         super(null, null, $$0, false, false, false, $$1);
-         this.d = $$2;
-      }
-
-      @Override
-      public String b() {
-         return this.a();
-      }
-
-      @Override
-      public wy s() {
-         return b;
-      }
-
-      @Override
-      public long f() {
-         return this.d;
-      }
-
-      @Override
-      public boolean q() {
-         return false;
-      }
-
-      @Override
-      public wy t() {
-         return c;
-      }
-
-      @Override
-      public boolean u() {
-         return true;
-      }
-
-      @Override
-      public boolean v() {
-         return false;
-      }
-
-      @Override
-      public boolean w() {
-         return false;
-      }
-
-      @Override
-      public boolean x() {
-         return false;
-      }
+   public void b() {
+      this.a().join();
    }
 
-   public static class c extends eyw {
-      private static final wy b = wy.c("symlink_warning.more_info");
-      private static final wy c = wy.c("symlink_warning.title").b(-65536);
-
-      public c(String $$0, Path $$1) {
-         super(null, null, $$0, false, false, false, $$1);
-      }
-
-      @Override
-      public String b() {
-         return this.a();
-      }
-
-      @Override
-      public wy s() {
-         return c;
-      }
-
-      @Override
-      public long f() {
-         return -1L;
-      }
-
-      @Override
-      public boolean q() {
-         return false;
-      }
-
-      @Override
-      public wy t() {
-         return b;
-      }
-
-      @Override
-      public boolean u() {
-         return true;
-      }
-
-      @Override
-      public boolean v() {
-         return false;
-      }
-
-      @Override
-      public boolean w() {
-         return false;
-      }
-
-      @Override
-      public boolean x() {
-         return false;
-      }
+   @Override
+   public void close() {
+      this.b();
    }
 }

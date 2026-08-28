@@ -1,94 +1,61 @@
-import io.netty.buffer.ByteBuf;
-import java.util.List;
-import java.util.function.IntFunction;
+import com.google.common.base.Predicates;
+import java.util.function.Predicate;
 
-public enum bwp implements bak {
-   a(bwp.a.a, 0, 0, "mainhand"),
-   b(bwp.a.a, 1, 5, "offhand"),
-   c(bwp.a.b, 0, 1, 1, "feet"),
-   d(bwp.a.b, 1, 1, 2, "legs"),
-   e(bwp.a.b, 2, 1, 3, "chest"),
-   f(bwp.a.b, 3, 1, 4, "head"),
-   g(bwp.a.c, 0, 1, 6, "body"),
-   h(bwp.a.d, 0, 1, 7, "saddle");
-
-   public static final int i = 0;
-   public static final List<bwp> j = List.of(values());
-   public static final IntFunction<bwp> k = ayc.a($$0 -> $$0.q, values(), ayc.a.a);
-   public static final bak.a<bwp> l = bak.a(bwp::values);
-   public static final yw<ByteBuf, bwp> m = yu.a(k, $$0 -> $$0.q);
-   private final bwp.a n;
-   private final int o;
-   private final int p;
-   private final int q;
-   private final String r;
-
-   private bwp(final bwp.a $$0, final int $$1, final int $$2, final int $$3, final String $$4) {
-      this.n = $$0;
-      this.o = $$1;
-      this.p = $$2;
-      this.q = $$3;
-      this.r = $$4;
-   }
-
-   private bwp(final bwp.a $$0, final int $$1, final int $$2, final String $$3) {
-      this($$0, $$1, 0, $$2, $$3);
-   }
-
-   public bwp.a a() {
-      return this.n;
-   }
-
-   public int b() {
-      return this.o;
-   }
-
-   public int a(int $$0) {
-      return $$0 + this.o;
-   }
-
-   public czd a(czd $$0) {
-      return this.p > 0 ? $$0.a(this.p) : $$0;
-   }
-
-   public int d() {
-      return this.q;
-   }
-
-   public int b(int $$0) {
-      return this.q + $$0;
-   }
-
-   public String e() {
-      return this.r;
-   }
-
-   public boolean f() {
-      return this.n == bwp.a.b || this.n == bwp.a.c;
-   }
-
-   @Override
-   public String c() {
-      return this.r;
-   }
-
-   public boolean g() {
-      return this.n != bwp.a.d;
-   }
-
-   public static bwp a(String $$0) {
-      bwp $$1 = l.a($$0);
-      if ($$1 != null) {
-         return $$1;
-      } else {
-         throw new IllegalArgumentException("Invalid slot '" + $$0 + "'");
+public final class bwp {
+   public static final Predicate<bwi> a = bwi::bI;
+   public static final Predicate<bwi> b = $$0 -> $$0.bI() && $$0 instanceof bxj;
+   public static final Predicate<bwi> c = $$0 -> $$0.bI() && !$$0.bY() && !$$0.bX();
+   public static final Predicate<bwi> d = $$0 -> $$0 instanceof btz && $$0.bI();
+   public static final Predicate<bwi> e = $$0 -> {
+      if ($$0 instanceof crj $$1 && ($$0.V_() || $$1.b())) {
+         return false;
       }
+
+      return true;
+   };
+   public static final Predicate<bwi> f = $$0 -> !$$0.V_();
+   public static final Predicate<bwi> g = f.and(bwi::bK);
+   public static final Predicate<bwi> h = f.and(bwi::bE);
+
+   private bwp() {
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
+   public static Predicate<bwi> a(double $$0, double $$1, double $$2, double $$3) {
+      double $$4 = $$3 * $$3;
+      return $$4x -> $$4x != null && $$4x.h($$0, $$1, $$2) <= $$4;
+   }
+
+   public static Predicate<bwi> a(bwi $$0) {
+      fge $$1 = $$0.cp();
+      fge.a $$2 = $$1 == null ? fge.a.a : $$1.m();
+      return (Predicate<bwi>)($$2 == fge.a.b ? Predicates.alwaysFalse() : f.and($$3 -> {
+         if (!$$3.bF()) {
+            return false;
+         } else if (!$$0.dU().C || $$3 instanceof crj $$4 && $$4.gg()) {
+            fge $$5 = $$3.cp();
+            fge.a $$6 = $$5 == null ? fge.a.a : $$5.m();
+            if ($$6 == fge.a.b) {
+               return false;
+            } else {
+               boolean $$7 = $$1 != null && $$1.a($$5);
+               return ($$2 == fge.a.d || $$6 == fge.a.d) && $$7 ? false : $$2 != fge.a.c && $$6 != fge.a.c || $$7;
+            }
+         } else {
+            return false;
+         }
+      }));
+   }
+
+   public static Predicate<bwi> b(bwi $$0) {
+      return $$1 -> {
+         while ($$1.bX()) {
+            $$1 = $$1.dj();
+            if ($$1 == $$0) {
+               return false;
+            }
+         }
+
+         return true;
+      };
    }
 }

@@ -1,8 +1,8 @@
-public record acu(long[] b, boz c) implements zf<abu> {
+public record acu(long[] b, bpb c) implements zf<abu> {
    public static final yw<vu, acu> a = zf.a(acu::a, acu::new);
 
    private acu(vu $$0) {
-      this($$0.d(), $$0.b(boz.class));
+      this($$0.d(), $$0.b(bpb.class));
    }
 
    private void a(vu $$0) {
@@ -19,7 +19,7 @@ public record acu(long[] b, boz c) implements zf<abu> {
       $$0.a(this);
    }
 
-   public boz e() {
+   public bpb e() {
       return this.c;
    }
 }

@@ -1,26 +1,40 @@
-public interface equ {
-   alf<erh> a = a("villages");
-   alf<erh> b = a("desert_pyramids");
-   alf<erh> c = a("igloos");
-   alf<erh> d = a("jungle_temples");
-   alf<erh> e = a("swamp_huts");
-   alf<erh> f = a("pillager_outposts");
-   alf<erh> g = a("ocean_monuments");
-   alf<erh> h = a("woodland_mansions");
-   alf<erh> i = a("buried_treasures");
-   alf<erh> j = a("mineshafts");
-   alf<erh> k = a("ruined_portals");
-   alf<erh> l = a("shipwrecks");
-   alf<erh> m = a("ocean_ruins");
-   alf<erh> n = a("nether_complexes");
-   alf<erh> o = a("nether_fossils");
-   alf<erh> p = a("end_cities");
-   alf<erh> q = a("ancient_cities");
-   alf<erh> r = a("strongholds");
-   alf<erh> s = a("trail_ruins");
-   alf<erh> t = a("trial_chambers");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   private static alf<erh> a(String $$0) {
-      return alf.a(mg.bd, alg.b($$0));
+public class equ extends eqo {
+   public static final MapCodec<equ> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               egn.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
+               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
+               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, equ::new)
+   );
+   private final egn.a c;
+   private final int d;
+   private final int e;
+
+   private equ(egn.a $$0, int $$1, int $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   public static equ a(egn.a $$0, int $$1, int $$2) {
+      return new equ($$0, $$1, $$2);
+   }
+
+   @Override
+   protected boolean a(eqn $$0, azv $$1, iv $$2) {
+      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
+      long $$4 = $$3 + (long)this.d;
+      long $$5 = $$3 + (long)this.e;
+      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
+   }
+
+   @Override
+   public eqq<?> b() {
+      return eqq.c;
    }
 }

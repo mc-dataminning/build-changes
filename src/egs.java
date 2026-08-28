@@ -1,49 +1,117 @@
-public class egs implements din {
-   private int a;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-   @Override
-   public void a(arq $$0, boolean $$1, boolean $$2) {
-      if ($$1) {
-         if ($$0.O().c(diw.E)) {
-            azv $$3 = $$0.A;
-            this.a--;
-            if (this.a <= 0) {
-               this.a = this.a + (60 + $$3.a(60)) * 20;
-               if ($$0.z_() >= 5 || !$$0.B_().g()) {
-                  for (arr $$4 : $$0.z()) {
-                     if (!$$4.V_()) {
-                        iu $$5 = $$4.dv();
-                        if (!$$0.B_().g() || $$5.v() >= $$0.P() && $$0.h($$5)) {
-                           bub $$6 = $$0.d_($$5);
-                           if ($$6.a($$3.i() * 3.0F)) {
-                              awt $$7 = $$4.I();
-                              int $$8 = azm.a($$7.a(awx.i.b(awx.n)), 1, Integer.MAX_VALUE);
-                              int $$9 = 24000;
-                              if ($$3.a($$8) >= 72000) {
-                                 iu $$10 = $$5.b(20 + $$3.a(15)).g(-10 + $$3.a(21)).e(-10 + $$3.a(21));
-                                 eah $$11 = $$0.a_($$10);
-                                 ewo $$12 = $$0.b_($$10);
-                                 if (djl.a($$0, $$10, $$11, $$12, bwo.aP)) {
-                                    bxw $$13 = null;
-                                    int $$14 = 1 + $$3.a($$6.a().a() + 1);
+public record egs(egv j, eao k, eao l, egt m, ehe.o n, List<dkt.d> o, int p, boolean q, boolean r, boolean s, boolean t) {
+   public static final Codec<egs> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               egv.a.fieldOf("noise").forGetter(egs::f),
+               eao.a.fieldOf("default_block").forGetter(egs::g),
+               eao.a.fieldOf("default_fluid").forGetter(egs::h),
+               egt.a.fieldOf("noise_router").forGetter(egs::i),
+               ehe.o.b.fieldOf("surface_rule").forGetter(egs::j),
+               dkt.d.a.listOf().fieldOf("spawn_target").forGetter(egs::k),
+               Codec.INT.fieldOf("sea_level").forGetter(egs::l),
+               Codec.BOOL.fieldOf("disable_mob_generation").forGetter(egs::a),
+               Codec.BOOL.fieldOf("aquifers_enabled").forGetter(egs::b),
+               Codec.BOOL.fieldOf("ore_veins_enabled").forGetter(egs::c),
+               Codec.BOOL.fieldOf("legacy_random_source").forGetter(egs::n)
+            )
+            .apply($$0, egs::new)
+   );
+   public static final Codec<jf<egs>> b = alc.a(mh.aX, a);
+   public static final alf<egs> c = alf.a(mh.aX, alg.b("overworld"));
+   public static final alf<egs> d = alf.a(mh.aX, alg.b("large_biomes"));
+   public static final alf<egs> e = alf.a(mh.aX, alg.b("amplified"));
+   public static final alf<egs> f = alf.a(mh.aX, alg.b("nether"));
+   public static final alf<egs> g = alf.a(mh.aX, alg.b("end"));
+   public static final alf<egs> h = alf.a(mh.aX, alg.b("caves"));
+   public static final alf<egs> i = alf.a(mh.aX, alg.b("floating_islands"));
 
-                                    for (int $$15 = 0; $$15 < $$14; $$15++) {
-                                       cof $$16 = bwo.aP.a($$0, bwn.a);
-                                       if ($$16 != null) {
-                                          $$16.a($$10, 0.0F, 0.0F);
-                                          $$13 = $$16.a($$0, $$6, bwn.a, $$13);
-                                          $$0.a_($$16);
-                                       }
-                                    }
-                                 }
-                              }
-                           }
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
+   @Deprecated
+   public boolean a() {
+      return this.q;
+   }
+
+   public boolean b() {
+      return this.r;
+   }
+
+   public boolean c() {
+      return this.s;
+   }
+
+   public ehm.a d() {
+      return this.t ? ehm.a.a : ehm.a.b;
+   }
+
+   public static void a(qh<egs> $$0) {
+      $$0.a(c, a($$0, false, false));
+      $$0.a(d, a($$0, false, true));
+      $$0.a(e, a($$0, true, false));
+      $$0.a(f, c($$0));
+      $$0.a(g, b($$0));
+      $$0.a(h, d($$0));
+      $$0.a(i, e($$0));
+   }
+
+   private static egs b(qh<?> $$0) {
+      return new egs(egv.d, dmo.fY.m(), dmo.a.m(), egu.a($$0.a(mh.aO)), qu.c(), List.of(), 0, true, false, false, true);
+   }
+
+   private static egs c(qh<?> $$0) {
+      return new egs(egv.c, dmo.em.m(), dmo.K.m(), egu.a($$0.a(mh.aO), $$0.a(mh.aY)), qu.b(), List.of(), 32, false, false, false, true);
+   }
+
+   private static egs a(qh<?> $$0, boolean $$1, boolean $$2) {
+      return new egs(egv.b, dmo.b.m(), dmo.J.m(), egu.a($$0.a(mh.aO), $$0.a(mh.aY), $$2, $$1), qu.a(), new dla().a(), 63, false, true, true, false);
+   }
+
+   private static egs d(qh<?> $$0) {
+      return new egs(egv.e, dmo.b.m(), dmo.J.m(), egu.b($$0.a(mh.aO), $$0.a(mh.aY)), qu.a(false, true, true), List.of(), 32, false, false, false, true);
+   }
+
+   private static egs e(qh<?> $$0) {
+      return new egs(egv.f, dmo.b.m(), dmo.J.m(), egu.c($$0.a(mh.aO), $$0.a(mh.aY)), qu.a(false, false, false), List.of(), -64, false, false, false, true);
+   }
+
+   public static egs e() {
+      return new egs(egv.b, dmo.b.m(), dmo.a.m(), egu.a(), qu.d(), List.of(), 63, true, false, false, false);
+   }
+
+   public egv f() {
+      return this.j;
+   }
+
+   public eao g() {
+      return this.k;
+   }
+
+   public eao h() {
+      return this.l;
+   }
+
+   public egt i() {
+      return this.m;
+   }
+
+   public ehe.o j() {
+      return this.n;
+   }
+
+   public List<dkt.d> k() {
+      return this.o;
+   }
+
+   public int l() {
+      return this.p;
+   }
+
+   public boolean m() {
+      return this.r;
+   }
+
+   public boolean n() {
+      return this.t;
    }
 }

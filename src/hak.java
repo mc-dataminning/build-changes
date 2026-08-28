@@ -1,81 +1,27 @@
-public class hak<S extends hde, M extends ggm<S>, A extends ggm<S>> extends hav<S, M> {
-   private final A a;
-   private final A b;
-   private final A c;
-   private final A d;
-   private final hag e;
+public class hak extends har<hcs, ggc> {
+   private static final alg a = alg.b("textures/entity/creeper/creeper_armor.png");
+   private final ggc b;
 
-   public hak(gye<S, M> $$0, A $$1, A $$2, hag $$3) {
-      this($$0, $$1, $$2, $$1, $$2, $$3);
-   }
-
-   public hak(gye<S, M> $$0, A $$1, A $$2, A $$3, A $$4, hag $$5) {
+   public hak(gyq<hcs, ggc> $$0, gjk $$1) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
-      this.d = $$4;
-      this.e = $$5;
+      this.b = new ggc($$1.a(gjn.ar));
    }
 
-   public static boolean a(czd $$0, bwp $$1) {
-      dhm $$2 = $$0.a(kj.D);
-      return $$2 != null && a($$2, $$1);
+   protected boolean a(hcs $$0) {
+      return $$0.b;
    }
 
-   private static boolean a(dhm $$0, bwp $$1) {
-      return $$0.d().isPresent() && $$0.b() == $$1;
+   @Override
+   protected float a(float $$0) {
+      return $$0 * 0.01F;
    }
 
-   public void a(fjj $$0, gqa $$1, int $$2, S $$3, float $$4, float $$5) {
-      this.a($$0, $$1, $$3.W, bwp.e, $$2, this.a($$3, bwp.e));
-      this.a($$0, $$1, $$3.X, bwp.d, $$2, this.a($$3, bwp.d));
-      this.a($$0, $$1, $$3.Y, bwp.c, $$2, this.a($$3, bwp.c));
-      this.a($$0, $$1, $$3.V, bwp.f, $$2, this.a($$3, bwp.f));
+   @Override
+   protected alg a() {
+      return a;
    }
 
-   private void a(fjj $$0, gqa $$1, czd $$2, bwp $$3, int $$4, A $$5) {
-      dhm $$6 = $$2.a(kj.D);
-      if ($$6 != null && a($$6, $$3)) {
-         this.d().a($$5);
-         this.a($$5, $$3);
-         hld.d $$7 = this.a($$3) ? hld.d.b : hld.d.a;
-         this.e.a($$7, $$6.d().orElseThrow(), $$5, $$2, $$0, $$1, $$4);
-      }
-   }
-
-   protected void a(A $$0, bwp $$1) {
-      $$0.c_(false);
-      switch ($$1) {
-         case f:
-            $$0.o.k = true;
-            $$0.p.k = true;
-            break;
-         case e:
-            $$0.q.k = true;
-            $$0.r.k = true;
-            $$0.s.k = true;
-            break;
-         case d:
-            $$0.q.k = true;
-            $$0.t.k = true;
-            $$0.u.k = true;
-            break;
-         case c:
-            $$0.t.k = true;
-            $$0.u.k = true;
-      }
-   }
-
-   private A a(S $$0, bwp $$1) {
-      if (this.a($$1)) {
-         return $$0.aj ? this.c : this.a;
-      } else {
-         return $$0.aj ? this.d : this.b;
-      }
-   }
-
-   private boolean a(bwp $$0) {
-      return $$0 == bwp.d;
+   protected ggc b() {
+      return this.b;
    }
 }

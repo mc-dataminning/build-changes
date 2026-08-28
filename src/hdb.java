@@ -1,4 +1,4 @@
-public class hdb extends hdn {
-   public int a;
-   public boolean b;
+public class hdb extends hcz {
+   public float a;
+   public float b;
 }

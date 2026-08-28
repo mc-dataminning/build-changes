@@ -1,245 +1,159 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-
-public class dxu extends dyo implements cvn {
-   public static final int d = 3;
-   public static final int e = 3;
-   public static final int f = 9;
-   public static final int g = 1;
-   public static final int h = 0;
-   public static final int i = 9;
-   public static final int j = 10;
-   private jn<czd> q = jn.a(9, czd.k);
-   private int r = 0;
-   protected final cvh k = new cvh() {
-      private final int[] a = new int[9];
-      private int b = 0;
-
+public class dxu extends dyv implements dyt {
+   private static final int d = 1;
+   private jo<czk> e = jo.a(27, czk.k);
+   private final dya f = new dya() {
       @Override
-      public int a(int $$0) {
-         return $$0 == 9 ? this.b : this.a[$$0];
+      protected void a(djh $$0, iv $$1, eao $$2) {
+         dxu.a($$0, $$1, $$2, awn.eU);
       }
 
       @Override
-      public void a(int $$0, int $$1) {
-         if ($$0 == 9) {
-            this.b = $$1;
-         } else {
-            this.a[$$0] = $$1;
-         }
+      protected void b(djh $$0, iv $$1, eao $$2) {
+         dxu.a($$0, $$1, $$2, awn.eS);
       }
 
       @Override
-      public int a() {
-         return 10;
+      protected void a(djh $$0, iv $$1, eao $$2, int $$3, int $$4) {
+         dxu.this.a($$0, $$1, $$2, $$3, $$4);
       }
-   };
 
-   public dxu(iu $$0, eah $$1) {
-      super(dxh.Q, $$0, $$1);
-   }
-
-   @Override
-   protected wy j() {
-      return wy.c("container.crafter");
-   }
-
-   @Override
-   protected cuv a(int $$0, crb $$1) {
-      return new cvl($$0, $$1, this, this.k);
-   }
-
-   public void a(int $$0, boolean $$1) {
-      if (this.e($$0)) {
-         this.k.a($$0, $$1 ? 0 : 1);
-         this.e();
-      }
-   }
-
-   public boolean c(int $$0) {
-      return $$0 >= 0 && $$0 < 9 ? this.k.a($$0) == 1 : false;
-   }
-
-   @Override
-   public boolean b(int $$0, czd $$1) {
-      if (this.k.a($$0) == 1) {
-         return false;
-      } else {
-         czd $$2 = this.q.get($$0);
-         int $$3 = $$2.M();
-         if ($$3 >= $$2.k()) {
+      @Override
+      protected boolean a(crj $$0) {
+         if (!($$0.bR instanceof cvl)) {
             return false;
          } else {
-            return $$2.f() ? true : !this.a($$3, $$2, $$0);
+            btz $$1 = ((cvl)$$0.bR).l();
+            return $$1 == dxu.this || $$1 instanceof bty && ((bty)$$1).a(dxu.this);
          }
       }
+   };
+   private final dxv g = new dxv();
+
+   protected dxu(dxo<?> $$0, iv $$1, eao $$2) {
+      super($$0, $$1, $$2);
    }
 
-   private boolean a(int $$0, czd $$1, int $$2) {
-      for (int $$3 = $$2 + 1; $$3 < 9; $$3++) {
-         if (!this.c($$3)) {
-            czd $$4 = this.a($$3);
-            if ($$4.f() || $$4.M() < $$0 && czd.c($$4, $$1)) {
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   @Override
-   protected void a(tz $$0, jg.a $$1) {
-      super.a($$0, $$1);
-      this.r = $$0.h("crafting_ticks_remaining");
-      this.q = jn.a(this.b(), czd.k);
-      if (!this.b_($$0)) {
-         btx.b($$0, this.q, $$1);
-      }
-
-      int[] $$2 = $$0.n("disabled_slots");
-
-      for (int $$3 = 0; $$3 < 9; $$3++) {
-         this.k.a($$3, 0);
-      }
-
-      for (int $$4 : $$2) {
-         if (this.e($$4)) {
-            this.k.a($$4, 1);
-         }
-      }
-
-      this.k.a(9, $$0.h("triggered"));
-   }
-
-   @Override
-   protected void b(tz $$0, jg.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("crafting_ticks_remaining", this.r);
-      if (!this.c_($$0)) {
-         btx.a($$0, this.q, $$1);
-      }
-
-      this.c($$0);
-      this.d($$0);
+   public dxu(iv $$0, eao $$1) {
+      this(dxo.b, $$0, $$1);
    }
 
    @Override
    public int b() {
-      return 9;
+      return 27;
    }
 
    @Override
-   public boolean c() {
-      for (czd $$0 : this.q) {
-         if (!$$0.f()) {
-            return false;
-         }
-      }
-
-      return true;
+   protected wy j() {
+      return wy.c("container.chest");
    }
 
    @Override
-   public czd a(int $$0) {
-      return this.q.get($$0);
-   }
-
-   @Override
-   public void a(int $$0, czd $$1) {
-      if (this.c($$0)) {
-         this.a($$0, true);
-      }
-
+   protected void a(tz $$0, jh.a $$1) {
       super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(crc $$0) {
-      return btw.a(this, $$0);
-   }
-
-   @Override
-   public jn<czd> f() {
-      return this.q;
-   }
-
-   @Override
-   protected void a(jn<czd> $$0) {
-      this.q = $$0;
-   }
-
-   @Override
-   public int av_() {
-      return 3;
-   }
-
-   @Override
-   public int g() {
-      return 3;
-   }
-
-   @Override
-   public void fillStackedContents(cri $$0) {
-      for (czd $$1 : this.q) {
-         $$0.a($$1);
+      this.e = jo.a(this.b(), czk.k);
+      if (!this.b_($$0)) {
+         bua.b($$0, this.e, $$1);
       }
    }
 
-   private void c(tz $$0) {
-      IntList $$1 = new IntArrayList();
+   @Override
+   protected void b(tz $$0, jh.a $$1) {
+      super.b($$0, $$1);
+      if (!this.c_($$0)) {
+         bua.a($$0, this.e, $$1);
+      }
+   }
 
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         if (this.c($$2)) {
-            $$1.add($$2);
+   public static void a(djh $$0, iv $$1, eao $$2, dxu $$3) {
+      $$3.g.a();
+   }
+
+   static void a(djh $$0, iv $$1, eao $$2, awm $$3) {
+      ebg $$4 = $$2.c(dnq.d);
+      if ($$4 != ebg.b) {
+         double $$5 = (double)$$1.u() + 0.5;
+         double $$6 = (double)$$1.v() + 0.5;
+         double $$7 = (double)$$1.w() + 0.5;
+         if ($$4 == ebg.c) {
+            jb $$8 = dnq.i($$2);
+            $$5 += (double)$$8.j() * 0.5;
+            $$7 += (double)$$8.l() * 0.5;
+         }
+
+         $$0.a(null, $$5, $$6, $$7, $$3, awo.e, 0.5F, $$0.A.i() * 0.1F + 0.9F);
+      }
+   }
+
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.g.a($$1 > 0);
+         return true;
+      } else {
+         return super.a_($$0, $$1);
+      }
+   }
+
+   @Override
+   public void c_(crj $$0) {
+      if (!this.p && !$$0.V_()) {
+         this.f.a($$0, this.i(), this.ax_(), this.m());
+      }
+   }
+
+   @Override
+   public void c(crj $$0) {
+      if (!this.p && !$$0.V_()) {
+         this.f.b($$0, this.i(), this.ax_(), this.m());
+      }
+   }
+
+   @Override
+   protected jo<czk> f() {
+      return this.e;
+   }
+
+   @Override
+   protected void a(jo<czk> $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   public float a(float $$0) {
+      return this.g.a($$0);
+   }
+
+   public static int a(din $$0, iv $$1) {
+      eao $$2 = $$0.a_($$1);
+      if ($$2.x()) {
+         dxm $$3 = $$0.c_($$1);
+         if ($$3 instanceof dxu) {
+            return ((dxu)$$3).f.a();
          }
       }
 
-      $$0.b("disabled_slots", $$1);
+      return 0;
    }
 
-   private void d(tz $$0) {
-      $$0.a("triggered", this.k.a(9));
+   public static void a(dxu $$0, dxu $$1) {
+      jo<czk> $$2 = $$0.f();
+      $$0.a($$1.f());
+      $$1.a($$2);
    }
 
-   public void a(boolean $$0) {
-      this.k.a(9, $$0 ? 1 : 0);
+   @Override
+   protected cvc a(int $$0, cri $$1) {
+      return cvl.a($$0, $$1, this);
    }
 
-   @VisibleForTesting
-   public boolean k() {
-      return this.k.a(9) == 1;
-   }
-
-   public static void a(dja $$0, iu $$1, eah $$2, dxu $$3) {
-      int $$4 = $$3.r - 1;
-      if ($$4 >= 0) {
-         $$3.r = $$4;
-         if ($$4 == 0) {
-            $$0.a($$1, $$2.b(dnz.b, Boolean.valueOf(false)), 3);
-         }
+   public void k() {
+      if (!this.p) {
+         this.f.c(this.i(), this.ax_(), this.m());
       }
    }
 
-   public void d(int $$0) {
-      this.r = $$0;
-   }
-
-   public int s() {
-      int $$0 = 0;
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         czd $$2 = this.a($$1);
-         if (!$$2.f() || this.c($$1)) {
-            $$0++;
-         }
-      }
-
-      return $$0;
-   }
-
-   private boolean e(int $$0) {
-      return $$0 > -1 && $$0 < 9 && this.q.get($$0).f();
+   protected void a(djh $$0, iv $$1, eao $$2, int $$3, int $$4) {
+      dmm $$5 = $$2.b();
+      $$0.a($$1, $$5, 1, $$4);
    }
 }

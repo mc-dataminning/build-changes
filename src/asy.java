@@ -194,7 +194,7 @@ public abstract class asy implements AutoCloseable {
       $$1.setRequestMethod("POST");
       $$1.setRequestProperty("Content-Type", "application/json; charset=utf-8");
       $$1.setRequestProperty("Accept", "application/json");
-      $$1.setRequestProperty("User-Agent", "Minecraft server" + ab.b().c());
+      $$1.setRequestProperty("User-Agent", "Minecraft server" + ac.b().c());
       return $$1;
    }
 
@@ -233,14 +233,14 @@ public abstract class asy implements AutoCloseable {
 
       protected c(final GameProfile $$1) {
          this.b = $$1;
-         bst $$2 = new bst(asy.this.g, "chat stream for " + $$1.getName());
+         bsv $$2 = new bsv(asy.this.g, "chat stream for " + $$1.getName());
          this.c = $$2::a_;
       }
 
       @Override
       public CompletableFuture<List<asj>> a(List<String> $$0) {
          List<CompletableFuture<asj>> $$1 = $$0.stream().map($$0x -> asy.this.a(this.b, $$0x, asy.this.f, this.c)).collect(ImmutableList.toImmutableList());
-         return af.e($$1).exceptionally($$0x -> ImmutableList.of());
+         return ag.e($$1).exceptionally($$0x -> ImmutableList.of());
       }
 
       @Override

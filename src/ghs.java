@@ -1,51 +1,37 @@
-public class ghs extends gfy<heh> {
-   public static final String a = "lid";
-   private static final String b = "base";
-   private final gjc c;
-   private final gjc d;
+public class ghs extends ggk<hcz> {
+   private final gjo a;
+   private final gjo b;
 
-   public ghs(gjc $$0) {
-      super($$0, gqk::h);
-      this.c = $$0.b("lid");
-      this.d = $$0.b("head");
+   public ghs(gjo $$0) {
+      super($$0);
+      this.a = $$0.b("left_blue_fin");
+      this.b = $$0.b("right_blue_fin");
    }
 
-   private static gjk c() {
-      gjk $$0 = new gjk();
-      gjm $$1 = $$0.a();
-      $$1.a("lid", gjh.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), gje.a(0.0F, 24.0F, 0.0F));
-      $$1.a("base", gjh.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), gje.a(0.0F, 24.0F, 0.0F));
-      return $$0;
+   public static gju a() {
+      gjw $$0 = new gjw();
+      gjy $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", gjt.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gjq.a(0.0F, 22.0F, 0.0F));
+      $$1.a("right_blue_fin", gjt.c().a(24, 0).a(-2.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), gjq.a(-4.0F, 15.0F, -2.0F));
+      $$1.a("left_blue_fin", gjt.c().a(24, 3).a(0.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), gjq.a(4.0F, 15.0F, -2.0F));
+      $$1.a("top_front_fin", gjt.c().a(15, 17).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), gjq.a(0.0F, 14.0F, -4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("top_middle_fin", gjt.c().a(14, 16).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 1.0F), gjq.a(0.0F, 14.0F, 0.0F));
+      $$1.a("top_back_fin", gjt.c().a(23, 18).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), gjq.a(0.0F, 14.0F, 4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_front_fin", gjt.c().a(5, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gjq.a(-4.0F, 22.0F, -4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("left_front_fin", gjt.c().a(1, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gjq.a(4.0F, 22.0F, -4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("bottom_front_fin", gjt.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gjq.a(0.0F, 22.0F, -4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("bottom_middle_fin", gjt.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gjq.a(0.0F, 22.0F, 0.0F));
+      $$1.a("bottom_back_fin", gjt.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gjq.a(0.0F, 22.0F, 4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_back_fin", gjt.c().a(9, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gjq.a(-4.0F, 22.0F, 4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("left_back_fin", gjt.c().a(9, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gjq.a(4.0F, 22.0F, 4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      return gju.a($$0, 32, 32);
    }
 
-   public static gji a() {
-      gjk $$0 = c();
-      $$0.a().a("head", gjh.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), gje.a(0.0F, 12.0F, 0.0F));
-      return gji.a($$0, 64, 64);
-   }
-
-   public static gji b() {
-      gjk $$0 = c();
-      return gji.a($$0, 64, 64);
-   }
-
-   public void a(heh $$0) {
+   @Override
+   public void a(hcz $$0) {
       super.a($$0);
-      float $$1 = (0.5F + $$0.c) * (float) Math.PI;
-      float $$2 = -1.0F + azm.a($$1);
-      float $$3 = 0.0F;
-      if ($$1 > (float) Math.PI) {
-         $$3 = azm.a($$0.u * 0.1F) * 0.7F;
-      }
-
-      this.c.a(0.0F, 16.0F + azm.a($$1) * 8.0F + $$3, 0.0F);
-      if ($$0.c > 0.3F) {
-         this.c.f = $$2 * $$2 * $$2 * $$2 * (float) Math.PI * 0.125F;
-      } else {
-         this.c.f = 0.0F;
-      }
-
-      this.d.e = $$0.ab * (float) (Math.PI / 180.0);
-      this.d.f = ($$0.d - 180.0F - $$0.e) * (float) (Math.PI / 180.0);
+      this.b.g = -0.2F + 0.4F * azm.a($$0.u * 0.2F);
+      this.a.g = 0.2F - 0.4F * azm.a($$0.u * 0.2F);
    }
 }

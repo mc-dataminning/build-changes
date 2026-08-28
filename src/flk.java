@@ -1,22 +1,10 @@
-import com.google.gson.JsonObject;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import com.google.gson.annotations.SerializedName;
+import java.util.List;
 
-public class flk extends flo {
-   @Nullable
-   public String a;
-   public long b;
-   public long c;
-
-   public static flk a(JsonObject $$0) {
-      flk $$1 = new flk();
-
-      try {
-         $$1.a = fnk.b("profileUuid", $$0, null);
-         $$1.b = fnk.a("joinTime", $$0, Long.MIN_VALUE);
-         $$1.c = fnk.a("leaveTime", $$0, Long.MIN_VALUE);
-      } catch (Exception var3) {
-      }
-
-      return $$1;
-   }
+public class flk extends fmd implements flx {
+   @SerializedName("pingResults")
+   public List<fly> a = Lists.newArrayList();
+   @SerializedName("worldIds")
+   public List<Long> b = Lists.newArrayList();
 }

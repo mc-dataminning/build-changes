@@ -1,63 +1,69 @@
-import java.lang.reflect.Constructor;
-import java.util.Arrays;
+import javax.annotation.Nullable;
 
-public class cmq<T extends cmk> {
-   private static cmq<?>[] l = new cmq[0];
-   public static final cmq<cmg> a = a(cmg.class, "HoldingPattern");
-   public static final cmq<cmo> b = a(cmo.class, "StrafePlayer");
-   public static final cmq<cmi> c = a(cmi.class, "LandingApproach");
-   public static final cmq<cmj> d = a(cmj.class, "Landing");
-   public static final cmq<cmp> e = a(cmp.class, "Takeoff");
-   public static final cmq<cmm> f = a(cmm.class, "SittingFlaming");
-   public static final cmq<cmn> g = a(cmn.class, "SittingScanning");
-   public static final cmq<cml> h = a(cml.class, "SittingAttacking");
-   public static final cmq<cme> i = a(cme.class, "ChargingPlayer");
-   public static final cmq<cmf> j = a(cmf.class, "Dying");
-   public static final cmq<cmh> k = a(cmh.class, "Hover");
-   private final Class<? extends cmk> m;
-   private final int n;
-   private final String o;
+public class cmq extends cmj {
+   @Nullable
+   private fex b;
 
-   private cmq(int $$0, Class<? extends cmk> $$1, String $$2) {
-      this.n = $$0;
-      this.m = $$1;
-      this.o = $$2;
-   }
-
-   public cmk a(cma $$0) {
-      try {
-         Constructor<? extends cmk> $$1 = this.a();
-         return $$1.newInstance($$0);
-      } catch (Exception var3) {
-         throw new Error(var3);
-      }
-   }
-
-   protected Constructor<? extends cmk> a() throws NoSuchMethodException {
-      return this.m.getConstructor(cma.class);
-   }
-
-   public int b() {
-      return this.n;
+   public cmq(cmh $$0) {
+      super($$0);
    }
 
    @Override
-   public String toString() {
-      return this.o + " (#" + this.n + ")";
+   public void b() {
+      fex $$0 = this.a.J(1.0F).d();
+      $$0.b((float) (-Math.PI / 4));
+      double $$1 = this.a.c.dz();
+      double $$2 = this.a.c.e(0.5);
+      double $$3 = this.a.c.dF();
+
+      for (int $$4 = 0; $$4 < 8; $$4++) {
+         azv $$5 = this.a.dX();
+         double $$6 = $$1 + $$5.k() / 2.0;
+         double $$7 = $$2 + $$5.k() / 2.0;
+         double $$8 = $$3 + $$5.k() / 2.0;
+         fex $$9 = this.a.dx();
+         this.a.dU().a(ly.h, $$6, $$7, $$8, -$$0.d * 0.08F + $$9.d, -$$0.e * 0.3F + $$9.e, -$$0.f * 0.08F + $$9.f);
+         $$0.b((float) (Math.PI / 16));
+      }
    }
 
-   public static cmq<?> a(int $$0) {
-      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
+   @Override
+   public void a(arq $$0) {
+      if (this.b == null) {
+         this.b = fex.c($$0.a(egn.a.f, ejs.a(this.a.j())));
+      }
+
+      if (this.b.c(this.a.dz(), this.a.dB(), this.a.dF()) < 1.0) {
+         this.a.t().b(cmx.f).i();
+         this.a.t().a(cmx.g);
+      }
    }
 
-   public static int c() {
-      return l.length;
+   @Override
+   public float e() {
+      return 1.5F;
    }
 
-   private static <T extends cmk> cmq<T> a(Class<T> $$0, String $$1) {
-      cmq<T> $$2 = new cmq<>(l.length, $$0, $$1);
-      l = Arrays.copyOf(l, l.length + 1);
-      l[$$2.b()] = $$2;
-      return $$2;
+   @Override
+   public float g() {
+      float $$0 = (float)this.a.dx().i() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return $$1 / $$0;
+   }
+
+   @Override
+   public void c() {
+      this.b = null;
+   }
+
+   @Nullable
+   @Override
+   public fex f() {
+      return this.b;
+   }
+
+   @Override
+   public cmx<cmq> h() {
+      return cmx.d;
    }
 }

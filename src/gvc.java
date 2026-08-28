@@ -1,29 +1,62 @@
-public class gvc extends gxn<ckh, hbp, gel> {
-   private static final alg a = alg.b("textures/entity/allay/allay.png");
+import com.google.common.collect.ImmutableList;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.DoubleSupplier;
 
-   public gvc(gwh.a $$0) {
-      super($$0, new gel($$0.a(gjb.c)), 0.4F);
-      this.a(new han<>(this));
+public class gvc implements guo.a {
+   private final fpo a;
+   private double b = Double.MIN_VALUE;
+   private List<bwi> c = Collections.emptyList();
+
+   public gvc(fpo $$0) {
+      this.a = $$0;
    }
 
-   public alg a(hbp $$0) {
-      return a;
+   @Override
+   public void a(fjy $$0, gqm $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ag.d();
+      if ($$5 - this.b > 1.0E8) {
+         this.b = $$5;
+         bwi $$6 = this.a.j.k().g();
+         this.c = ImmutableList.copyOf($$6.dU().a_($$6, $$6.cQ().g(16.0)));
+      }
+
+      crj $$7 = this.a.t;
+      if ($$7 != null && $$7.ax.isPresent()) {
+         this.a($$0, $$1, $$2, $$3, $$4, $$7, () -> 0.0, 1.0F, 0.0F, 0.0F);
+      }
+
+      for (bwi $$8 : this.c) {
+         if ($$8 != $$7) {
+            this.a($$0, $$1, $$2, $$3, $$4, $$8, () -> this.a($$8), 0.0F, 1.0F, 0.0F);
+         }
+      }
    }
 
-   public hbp a() {
-      return new hbp();
+   private void a(fjy $$0, gqm $$1, double $$2, double $$3, double $$4, bwi $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
+      $$5.ax.ifPresent($$10 -> {
+         double $$11 = $$6.getAsDouble();
+         iv $$12 = $$5.aP();
+         this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
+         iv $$13 = $$5.aN();
+         if (!$$13.equals($$12)) {
+            this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
+         }
+      });
    }
 
-   public void a(ckh $$0, hbp $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      hbr.a($$0, $$1, this.h);
-      $$1.a = $$0.q();
-      $$1.b = $$0.t();
-      $$1.c = $$0.K($$2);
-      $$1.d = $$0.J($$2);
+   private double a(bwi $$0) {
+      return 0.02 * (double)(String.valueOf((double)$$0.ao() + 0.132453657).hashCode() % 1000) / 1000.0;
    }
 
-   protected int a(ckh $$0, iu $$1) {
-      return 15;
+   private void a(iv $$0, fjy $$1, double $$2, double $$3, double $$4, gqm $$5, double $$6, float $$7, float $$8, float $$9) {
+      double $$10 = (double)$$0.u() - $$2 - 2.0 * $$6;
+      double $$11 = (double)$$0.v() - $$3 - 2.0 * $$6;
+      double $$12 = (double)$$0.w() - $$4 - 2.0 * $$6;
+      double $$13 = $$10 + 1.0 + 4.0 * $$6;
+      double $$14 = $$11 + 1.0 + 4.0 * $$6;
+      double $$15 = $$12 + 1.0 + 4.0 * $$6;
+      grf.a($$1, $$5.getBuffer(gqx.y()), $$10, $$11, $$12, $$13, $$14, $$15, $$7, $$8, $$9, 0.4F);
+      guo.a($$1, $$5.getBuffer(gqx.y()), this.a.s.a_($$0).b(this.a.s, $$0, ffc.a()).a($$0), -$$2, -$$3, -$$4, $$7, $$8, $$9, 1.0F, false);
    }
 }

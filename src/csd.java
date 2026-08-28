@@ -1,51 +1,81 @@
-import javax.annotation.Nullable;
-
-public class csd extends crk {
-   private int d = 200;
-
-   public csd(bwo<? extends csd> $$0, dja $$1) {
+public class csd extends cse {
+   public csd(bwr<? extends csd> $$0, djh $$1) {
       super($$0, $$1);
    }
 
-   public csd(dja $$0, bxe $$1, czd $$2, @Nullable czd $$3) {
-      super(bwo.bn, $$1, $$0, $$2, $$3);
+   public csd(djh $$0, clo $$1) {
+      this(bwr.ay, $$0);
+      this.c($$1);
+      this.a_(
+         $$1.dz() - (double)($$1.dp() + 1.0F) * 0.5 * (double)azm.a($$1.aV * (float) (Math.PI / 180.0)),
+         $$1.dD() - 0.1F,
+         $$1.dF() + (double)($$1.dp() + 1.0F) * 0.5 * (double)azm.b($$1.aV * (float) (Math.PI / 180.0))
+      );
    }
 
-   public csd(dja $$0, double $$1, double $$2, double $$3, czd $$4, @Nullable czd $$5) {
-      super(bwo.bn, $$1, $$2, $$3, $$0, $$4, $$5);
+   @Override
+   protected double bb() {
+      return 0.06;
    }
 
    @Override
    public void h() {
       super.h();
-      if (this.dV().C && !this.f()) {
-         this.dV().a(lx.T, this.dA(), this.dC(), this.dG(), 0.0, 0.0, 0.0);
+      fex $$0 = this.dx();
+      fev $$1 = csg.a(this, this::b);
+      this.b($$1);
+      double $$2 = this.dz() + $$0.d;
+      double $$3 = this.dB() + $$0.e;
+      double $$4 = this.dF() + $$0.f;
+      this.A();
+      float $$5 = 0.99F;
+      if (this.dU().a(this.cQ()).noneMatch(ean.a::l)) {
+         this.aq();
+      } else if (this.bh()) {
+         this.aq();
+      } else {
+         this.i($$0.c(0.99F));
+         this.bd();
+         this.a_($$2, $$3, $$4);
       }
    }
 
    @Override
-   protected void a(bxe $$0) {
+   protected void a(feu $$0) {
       super.a($$0);
-      bvj $$1 = new bvj(bvl.x, this.d, 0);
-      $$0.b($$1, this.z());
-   }
-
-   @Override
-   public void a(tz $$0) {
-      super.a($$0);
-      if ($$0.e("Duration")) {
-         this.d = $$0.h("Duration");
+      if (this.q() instanceof bxj $$1) {
+         bwi $$2 = $$0.a();
+         bux $$3 = this.dV().b(this, $$1);
+         if (this.dU() instanceof arq $$4 && $$2.a($$4, $$3, 1.0F)) {
+            dfz.a($$4, $$2, $$3);
+         }
       }
    }
 
    @Override
-   public void b(tz $$0) {
-      super.b($$0);
-      $$0.a("Duration", this.d);
+   protected void a(fet $$0) {
+      super.a($$0);
+      if (!this.dU().C) {
+         this.aq();
+      }
    }
 
    @Override
-   protected czd o() {
-      return new czd(czh.wA);
+   protected void a(akn.a $$0) {
+   }
+
+   @Override
+   public void a(abv $$0) {
+      super.a($$0);
+      double $$1 = $$0.j();
+      double $$2 = $$0.k();
+      double $$3 = $$0.l();
+
+      for (int $$4 = 0; $$4 < 7; $$4++) {
+         double $$5 = 0.4 + 0.1 * (double)$$4;
+         this.dU().a(ly.ak, this.dz(), this.dB(), this.dF(), $$1 * $$5, $$2, $$3 * $$5);
+      }
+
+      this.n($$1, $$2, $$3);
    }
 }

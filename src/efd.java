@@ -1,36 +1,45 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class efd implements efl {
-   public static final MapCodec<efd> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(iu.a.fieldOf("pos").forGetter($$0x -> $$0x.e)).apply($$0, efd::new));
-   public static final yw<ByteBuf, efd> b = yw.a(iu.b, $$0 -> $$0.e, efd::new);
-   private final iu e;
+public class efd<T extends eet> implements efc<T> {
+   private final eev<T> a;
+   private final eey<T> b;
 
-   public efd(iu $$0) {
-      this.e = $$0;
+   public efd(eev<T> $$0, eey<T> $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   @Nullable
+   @Override
+   public T a(int $$0) {
+      return this.a.a($$0);
+   }
+
+   @Nullable
+   @Override
+   public T a(UUID $$0) {
+      return this.a.a($$0);
    }
 
    @Override
-   public Optional<feq> a(dja $$0) {
-      return Optional.of(feq.b(this.e));
+   public Iterable<T> a() {
+      return this.a.a();
    }
 
    @Override
-   public efm<efd> a() {
-      return efm.a;
+   public <U extends T> void a(efa<T, U> $$0, axx<U> $$1) {
+      this.a.a($$0, $$1);
    }
 
-   public static class a implements efm<efd> {
-      @Override
-      public MapCodec<efd> a() {
-         return efd.a;
-      }
+   @Override
+   public void a(fes $$0, Consumer<T> $$1) {
+      this.b.b($$0, axx.forConsumer($$1));
+   }
 
-      @Override
-      public yw<ByteBuf, efd> b() {
-         return efd.b;
-      }
+   @Override
+   public <U extends T> void a(efa<T, U> $$0, fes $$1, axx<U> $$2) {
+      this.b.a($$0, $$1, $$2);
    }
 }

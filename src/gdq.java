@@ -1,529 +1,262 @@
 import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.Date;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
+import java.util.Map;
 import java.util.Optional;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
 
-public class gdq extends ftf<gdq.a> {
-   public static final DateTimeFormatter a = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).withZone(ZoneId.systemDefault());
-   static final alg m = alg.b("world_list/error_highlighted");
-   static final alg n = alg.b("world_list/error");
-   static final alg o = alg.b("world_list/marked_join_highlighted");
-   static final alg p = alg.b("world_list/marked_join");
-   static final alg q = alg.b("world_list/warning_highlighted");
-   static final alg r = alg.b("world_list/warning");
-   static final alg s = alg.b("world_list/join_highlighted");
-   static final alg u = alg.b("world_list/join");
-   static final Logger v = LogUtils.getLogger();
-   static final wy w = wy.c("selectWorld.tooltip.fromNewerVersion1").a(n.m);
-   static final wy x = wy.c("selectWorld.tooltip.fromNewerVersion2").a(n.m);
-   static final wy y = wy.c("selectWorld.tooltip.snapshot1").a(n.g);
-   static final wy z = wy.c("selectWorld.tooltip.snapshot2").a(n.g);
-   static final wy A = wy.c("selectWorld.locked").a(n.m);
-   static final wy B = wy.c("selectWorld.conversion.tooltip").a(n.m);
-   static final wy C = wy.c("selectWorld.incompatible.tooltip").a(n.m);
-   static final wy D = wy.c("selectWorld.experimental");
-   private final gdk E;
-   private CompletableFuture<List<eyw>> F;
+public class gdq extends fyn {
+   private static final wy a = wy.c("editGamerule.title");
+   private static final int b = 8;
+   final fwj c = new fwj(this);
+   private final Consumer<Optional<djd>> d;
+   private final Set<gdq.f> s = Sets.newHashSet();
+   private final djd u;
    @Nullable
-   private List<eyw> G;
-   private String H;
-   private final gdq.b I;
+   private gdq.g v;
+   @Nullable
+   private fsv w;
 
-   public gdq(gdk $$0, foz $$1, int $$2, int $$3, int $$4, int $$5, String $$6, @Nullable gdq $$7) {
-      super($$1, $$2, $$3, $$4, $$5);
-      this.E = $$0;
-      this.I = new gdq.b($$1);
-      this.H = $$6;
-      if ($$7 != null) {
-         this.F = $$7.F;
-      } else {
-         this.F = this.O();
-      }
-
-      this.a(this.M());
+   public gdq(djd $$0, Consumer<Optional<djd>> $$1) {
+      super(a);
+      this.u = $$0;
+      this.d = $$1;
    }
 
    @Override
-   protected void s() {
-      this.aE_().forEach(gdq.a::close);
-      super.s();
-   }
-
-   @Nullable
-   private List<eyw> M() {
-      try {
-         return this.F.getNow(null);
-      } catch (CancellationException | CompletionException var2) {
-         return null;
-      }
-   }
-
-   void N() {
-      this.F = this.O();
+   protected void aO_() {
+      this.c.a(a, this.p);
+      this.v = this.c.c(new gdq.g(this.u));
+      fwn $$0 = this.c.b(fwn.e().a(8));
+      this.w = $$0.a(fsv.a(wx.d, $$0x -> this.d.accept(Optional.of(this.u))).a());
+      $$0.a(fsv.a(wx.e, $$0x -> this.aL_()).a());
+      this.c.a($$1 -> {
+         fst var10000 = this.c($$1);
+      });
+      this.c();
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (fwl.a($$0)) {
-         Optional<gdq.c> $$3 = this.b();
-         if ($$3.isPresent()) {
-            if ($$3.get().b()) {
-               this.c.ak().a(hmp.a(awn.Bv, 1.0F));
-               $$3.get().c();
+   protected void c() {
+      this.c.a();
+      if (this.v != null) {
+         this.v.a(this.n, this.c);
+      }
+   }
+
+   @Override
+   public void aL_() {
+      this.d.accept(Optional.empty());
+   }
+
+   private void m() {
+      if (this.w != null) {
+         this.w.j = this.s.isEmpty();
+      }
+   }
+
+   void a(gdq.f $$0) {
+      this.s.add($$0);
+      this.m();
+   }
+
+   void b(gdq.f $$0) {
+      this.s.remove($$0);
+      this.m();
+   }
+
+   public class a extends gdq.d {
+      private final ftc<Boolean> c;
+
+      public a(final wy $$1, final List<ayy> $$2, final String $$3, final djd.a $$4) {
+         super($$2, $$1);
+         this.c = ftc.b($$4.a()).a().a($$1x -> $$1x.c().f("\n").f($$3)).a(10, 5, 44, 20, $$1, ($$1x, $$2x) -> $$4.a($$2x, null));
+         this.a.add(this.c);
+      }
+
+      @Override
+      public void a(fsh $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, $$2, $$3);
+         this.c.j($$3 + $$4 - 45);
+         this.c.k($$2);
+         this.c.a($$0, $$6, $$7, $$9);
+      }
+   }
+
+   public class b extends gdq.f {
+      final wy b;
+
+      public b(final wy $$1) {
+         super(null);
+         this.b = $$1;
+      }
+
+      @Override
+      public void a(fsh $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.a(gdq.this.m.h, this.b, $$3 + $$4 / 2, $$2 + 5, -1);
+      }
+
+      @Override
+      public List<? extends fus> aE_() {
+         return ImmutableList.of();
+      }
+
+      @Override
+      public List<? extends fwq> b() {
+         return ImmutableList.of(new fwq() {
+            @Override
+            public fwq.a w() {
+               return fwq.a.b;
             }
 
-            return true;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void b(frv $$0, int $$1, int $$2, float $$3) {
-      List<eyw> $$4 = this.M();
-      if ($$4 != this.G) {
-         this.a($$4);
-      }
-
-      super.b($$0, $$1, $$2, $$3);
-   }
-
-   private void a(@Nullable List<eyw> $$0) {
-      if ($$0 == null) {
-         this.P();
-      } else {
-         this.a(this.H, $$0);
-      }
-
-      this.G = $$0;
-   }
-
-   public void a(String $$0) {
-      if (this.G != null && !$$0.equals(this.H)) {
-         this.a($$0, this.G);
-      }
-
-      this.H = $$0;
-   }
-
-   private CompletableFuture<List<eyw>> O() {
-      eyv.a $$0;
-      try {
-         $$0 = this.c.m().b();
-      } catch (eyu var3) {
-         v.error("Couldn't load level list", var3);
-         this.c(var3.a());
-         return CompletableFuture.completedFuture(List.of());
-      }
-
-      if ($$0.a()) {
-         gdc.a(this.c, null);
-         return CompletableFuture.completedFuture(List.of());
-      } else {
-         return this.c.m().a($$0).exceptionally($$0x -> {
-            this.c.a(o.a($$0x, "Couldn't load level list"));
-            return List.of();
+            @Override
+            public void b(fws $$0) {
+               $$0.a(fwr.a, b.this.b);
+            }
          });
       }
    }
 
-   private void a(String $$0, List<eyw> $$1) {
-      this.s();
-      $$0 = $$0.toLowerCase(Locale.ROOT);
+   @FunctionalInterface
+   interface c<T extends djd.g<T>> {
+      gdq.f create(wy var1, List<ayy> var2, String var3, T var4);
+   }
 
-      for (eyw $$2 : $$1) {
-         if (this.a($$0, $$2)) {
-            this.b(new gdq.c(this, $$2));
+   public abstract class d extends gdq.f {
+      private final List<ayy> c;
+      protected final List<fst> a = Lists.newArrayList();
+
+      public d(@Nullable final List<ayy> $$1, final wy $$2) {
+         super($$1);
+         this.c = gdq.this.m.h.c($$2, 175);
+      }
+
+      @Override
+      public List<? extends fus> aE_() {
+         return this.a;
+      }
+
+      @Override
+      public List<? extends fwq> b() {
+         return this.a;
+      }
+
+      protected void a(fsh $$0, int $$1, int $$2) {
+         if (this.c.size() == 1) {
+            $$0.b(gdq.this.m.h, this.c.get(0), $$2, $$1 + 5, -1);
+         } else if (this.c.size() >= 2) {
+            $$0.b(gdq.this.m.h, this.c.get(0), $$2, $$1, -1);
+            $$0.b(gdq.this.m.h, this.c.get(1), $$2, $$1 + 10, -1);
          }
       }
-
-      this.Q();
    }
 
-   private boolean a(String $$0, eyw $$1) {
-      return $$1.b().toLowerCase(Locale.ROOT).contains($$0) || $$1.a().toLowerCase(Locale.ROOT).contains($$0);
-   }
+   public class e extends gdq.d {
+      private final fte d;
 
-   private void P() {
-      this.s();
-      this.b(this.I);
-      this.Q();
-   }
-
-   private void Q() {
-      this.h();
-      this.E.d(true);
-   }
-
-   private void c(wy $$0) {
-      this.c.a(new fxk(wy.c("selectWorld.unable_to_load"), $$0));
-   }
-
-   @Override
-   public int a() {
-      return 270;
-   }
-
-   public void a(@Nullable gdq.a $$0) {
-      super.a($$0);
-      this.E.a($$0 instanceof gdq.c $$1 ? $$1.f : null);
-   }
-
-   public Optional<gdq.c> b() {
-      gdq.a $$0 = this.p();
-      return $$0 instanceof gdq.c $$1 ? Optional.of($$1) : Optional.empty();
-   }
-
-   public gdk c() {
-      return this.E;
-   }
-
-   @Override
-   public void a(fwg $$0) {
-      if (this.aE_().contains(this.I)) {
-         this.I.b($$0);
-      } else {
-         super.a($$0);
-      }
-   }
-
-   public abstract static class a extends ftf.a<gdq.a> implements AutoCloseable {
-      @Override
-      public void close() {
-      }
-   }
-
-   public static class b extends gdq.a {
-      private static final wy a = wy.c("selectWorld.loading_list");
-      private final foz b;
-
-      public b(foz $$0) {
-         this.b = $$0;
+      public e(final wy $$1, final List<ayy> $$2, final String $$3, final djd.d $$4) {
+         super($$2, $$1);
+         this.d = new fte(gdq.this.m.h, 10, 5, 44, 20, $$1.f().f("\n").f($$3).f("\n"));
+         this.d.a(Integer.toString($$4.a()));
+         this.d.b($$1x -> {
+            if ($$4.b($$1x)) {
+               this.d.m(14737632);
+               gdq.this.b(this);
+            } else {
+               this.d.m(-65536);
+               gdq.this.a(this);
+            }
+         });
+         this.a.add(this.d);
       }
 
       @Override
-      public void a(frv $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10 = (this.b.z.n - this.b.h.a(a)) / 2;
-         int $$11 = $$2 + ($$5 - 9) / 2;
-         $$0.b(this.b.h, a, $$10, $$11, -1);
-         String $$12 = fxq.a(af.c());
-         int $$13 = (this.b.z.n - this.b.h.b($$12)) / 2;
-         int $$14 = $$11 + 9;
-         $$0.b(this.b.h, $$12, $$13, $$14, -8355712);
-      }
-
-      @Override
-      public wy a() {
-         return a;
+      public void a(fsh $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, $$2, $$3);
+         this.d.j($$3 + $$4 - 45);
+         this.d.k($$2);
+         this.d.a($$0, $$6, $$7, $$9);
       }
    }
 
-   public final class c extends gdq.a {
-      private static final int b = 32;
-      private static final int c = 32;
-      private final foz d;
-      private final gdk e;
-      final eyw f;
-      private final fxl g;
+   public abstract static class f extends ftb.a<gdq.f> {
       @Nullable
-      private Path h;
-      private long i;
+      final List<ayy> a;
 
-      public c(final gdq $$1, final eyw $$2) {
-         this.d = $$1.c;
-         this.e = $$1.c();
-         this.f = $$2;
-         this.g = fxl.a(this.d.aa(), $$2.a());
-         this.h = $$2.c();
-         this.k();
-         this.m();
+      public f(@Nullable List<ayy> $$0) {
+         this.a = $$0;
       }
+   }
 
-      private void k() {
-         if (this.h != null) {
-            try {
-               BasicFileAttributes $$0 = Files.readAttributes(this.h, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-               if ($$0.isSymbolicLink()) {
-                  List<feh> $$1 = this.d.be().a(this.h);
-                  if (!$$1.isEmpty()) {
-                     gdq.v.warn("{}", fef.a(this.h, $$1));
-                     this.h = null;
-                  } else {
-                     $$0 = Files.readAttributes(this.h, BasicFileAttributes.class);
-                  }
-               }
+   public class g extends ftb<gdq.f> {
+      private static final int m = 24;
 
-               if (!$$0.isRegularFile()) {
-                  this.h = null;
-               }
-            } catch (NoSuchFileException var3) {
-               this.h = null;
-            } catch (IOException var4) {
-               gdq.v.error("could not validate symlink", var4);
-               this.h = null;
+      public g(final djd $$1) {
+         super(fpo.Q(), gdq.this.n, gdq.this.c.d(), gdq.this.c.c(), 24);
+         final Map<djd.b, Map<djd.e<?>, gdq.f>> $$2 = Maps.newHashMap();
+         $$1.a(new djd.c() {
+            @Override
+            public void b(djd.e<djd.a> $$0, djd.f<djd.a> $$1x) {
+               this.a($$0, ($$0x, $$1xxx, $$2xx, $$3) -> gdq.this.new a($$0x, $$1xxx, $$2xx, $$3));
             }
-         }
+
+            @Override
+            public void c(djd.e<djd.d> $$0, djd.f<djd.d> $$1x) {
+               this.a($$0, ($$0x, $$1xxx, $$2xx, $$3) -> gdq.this.new e($$0x, $$1xxx, $$2xx, $$3));
+            }
+
+            private <T extends djd.g<T>> void a(djd.e<T> $$0, gdq.c<T> $$1x) {
+               wy $$2 = wy.c($$0.b());
+               wy $$3 = wy.b($$0.a()).a(o.o);
+               T $$4 = $$1.b($$0);
+               String $$5 = $$4.b();
+               wy $$6 = wy.a("editGamerule.default", wy.b($$5)).a(o.h);
+               String $$7 = $$0.b() + ".description";
+               List<ayy> $$10;
+               String $$11;
+               if (hkr.a($$7)) {
+                  Builder<ayy> $$8 = ImmutableList.builder().add($$3.g());
+                  wy $$9 = wy.c($$7);
+                  gdq.this.p.c($$9, 150).forEach($$8::add);
+                  $$10 = $$8.add($$6.g()).build();
+                  $$11 = $$9.getString() + "\n" + $$6.getString();
+               } else {
+                  $$10 = ImmutableList.of($$3.g(), $$6.g());
+                  $$11 = $$6.getString();
+               }
+
+               $$2.computeIfAbsent($$0.c(), $$0x -> Maps.newHashMap()).put($$0, $$1.create($$2, $$10, $$11, $$4));
+            }
+         });
+         $$2.entrySet()
+            .stream()
+            .sorted(Entry.comparingByKey())
+            .forEach(
+               $$0x -> {
+                  this.b(gdq.this.new b(wy.c(((djd.b)$$0x.getKey()).a()).a(o.r, o.o)));
+                  ((Map)$$0x.getValue())
+                     .entrySet()
+                     .stream()
+                     .sorted(Entry.comparingByKey(Comparator.comparing(djd.e::a)))
+                     .forEach($$0xx -> this.b((gdq.f)$$0xx.getValue()));
+               }
+            );
       }
 
       @Override
-      public wy a() {
-         wy $$0 = wy.a("narrator.select.world_info", this.f.b(), wy.a(new Date(this.f.f())), this.f.s());
-         if (this.f.p()) {
-            $$0 = wx.a($$0, gdq.A);
+      public void b(fsh $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         gdq.f $$4 = this.x();
+         if ($$4 != null && $$4.a != null) {
+            gdq.this.b($$4.a);
          }
-
-         if (this.f.e()) {
-            $$0 = wx.a($$0, gdq.D);
-         }
-
-         return wy.a("narrator.select", $$0);
-      }
-
-      @Override
-      public void a(frv $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         String $$10 = this.f.b();
-         String $$11 = this.f.a();
-         long $$12 = this.f.f();
-         if ($$12 != -1L) {
-            $$11 = $$11 + " (" + gdq.a.format(Instant.ofEpochMilli($$12)) + ")";
-         }
-
-         if (StringUtils.isEmpty($$10)) {
-            $$10 = hke.a("selectWorld.world") + " " + ($$1 + 1);
-         }
-
-         wy $$13 = this.f.s();
-         $$0.b(this.d.h, $$10, $$3 + 32 + 3, $$2 + 1, -1);
-         $$0.b(this.d.h, $$11, $$3 + 32 + 3, $$2 + 9 + 3, -8355712);
-         $$0.b(this.d.h, $$13, $$3 + 32 + 3, $$2 + 9 + 9 + 3, -8355712);
-         $$0.a(gqk::H, this.g.b(), $$3, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
-         if (this.d.n.ac().c() || $$8) {
-            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
-            int $$14 = $$6 - $$3;
-            boolean $$15 = $$14 < 32;
-            alg $$16 = $$15 ? gdq.s : gdq.u;
-            alg $$17 = $$15 ? gdq.q : gdq.r;
-            alg $$18 = $$15 ? gdq.m : gdq.n;
-            alg $$19 = $$15 ? gdq.o : gdq.p;
-            if (this.f instanceof eyw.c || this.f instanceof eyw.b) {
-               $$0.a(gqk::H, $$18, $$3, $$2, 32, 32);
-               $$0.a(gqk::H, $$19, $$3, $$2, 32, 32);
-               return;
-            }
-
-            if (this.f.p()) {
-               $$0.a(gqk::H, $$18, $$3, $$2, 32, 32);
-               if ($$15) {
-                  this.e.b(this.d.h.c(gdq.A, 175));
-               }
-            } else if (this.f.d()) {
-               $$0.a(gqk::H, $$18, $$3, $$2, 32, 32);
-               if ($$15) {
-                  this.e.b(this.d.h.c(gdq.B, 175));
-               }
-            } else if (!this.f.r()) {
-               $$0.a(gqk::H, $$18, $$3, $$2, 32, 32);
-               if ($$15) {
-                  this.e.b(this.d.h.c(gdq.C, 175));
-               }
-            } else if (this.f.m()) {
-               $$0.a(gqk::H, $$19, $$3, $$2, 32, 32);
-               if (this.f.n()) {
-                  $$0.a(gqk::H, $$18, $$3, $$2, 32, 32);
-                  if ($$15) {
-                     this.e.b(ImmutableList.of(gdq.w.g(), gdq.x.g()));
-                  }
-               } else if (!ab.b().g()) {
-                  $$0.a(gqk::H, $$17, $$3, $$2, 32, 32);
-                  if ($$15) {
-                     this.e.b(ImmutableList.of(gdq.y.g(), gdq.z.g()));
-                  }
-               }
-            } else {
-               $$0.a(gqk::H, $$16, $$3, $$2, 32, 32);
-            }
-         }
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         if (!this.f.u()) {
-            return true;
-         } else {
-            gdq.this.a((gdq.a)this);
-            if (!($$0 - (double)gdq.this.u() <= 32.0) && af.c() - this.i >= 250L) {
-               this.i = af.c();
-               return super.a($$0, $$1, $$2);
-            } else {
-               if (this.b()) {
-                  this.d.ak().a(hmp.a(awn.Bv, 1.0F));
-                  this.c();
-               }
-
-               return true;
-            }
-         }
-      }
-
-      public boolean b() {
-         return this.f.u();
-      }
-
-      public void c() {
-         if (this.f.u()) {
-            if (this.f instanceof eyw.c) {
-               this.d.a(fxt.a(() -> this.d.a(this.e)));
-            } else {
-               this.d.x().a(this.f.a(), () -> {
-                  gdq.this.N();
-                  this.d.a(this.e);
-               });
-            }
-         }
-      }
-
-      public void d() {
-         this.d.a(new fwz($$0 -> {
-            if ($$0) {
-               this.d.a(new fxy(true));
-               this.e();
-            }
-
-            this.d.a(this.e);
-         }, wy.c("selectWorld.deleteQuestion"), wy.a("selectWorld.deleteWarning", this.f.b()), wy.c("selectWorld.deleteButton"), wx.e));
-      }
-
-      public void e() {
-         eyv $$0 = this.d.m();
-         String $$1 = this.f.a();
-
-         try (eyv.c $$2 = $$0.e($$1)) {
-            $$2.k();
-         } catch (IOException var8) {
-            fus.b(this.d, $$1);
-            gdq.v.error("Failed to delete world {}", $$1, var8);
-         }
-
-         gdq.this.N();
-      }
-
-      public void g() {
-         this.l();
-         String $$0 = this.f.a();
-
-         eyv.c $$1;
-         try {
-            $$1 = this.d.m().d($$0);
-         } catch (IOException var6) {
-            fus.a(this.d, $$0);
-            gdq.v.error("Failed to access level {}", $$0, var6);
-            gdq.this.N();
-            return;
-         } catch (fef var7) {
-            gdq.v.warn("{}", var7.getMessage());
-            this.d.a(fxt.a(() -> this.d.a(this.e)));
-            return;
-         }
-
-         gdf $$5;
-         try {
-            $$5 = gdf.a(this.d, $$1, $$1x -> {
-               $$1.c();
-               if ($$1x) {
-                  gdq.this.N();
-               }
-
-               this.d.a(this.e);
-            });
-         } catch (uk | uq | IOException var5) {
-            $$1.c();
-            fus.a(this.d, $$0);
-            gdq.v.error("Failed to load world data {}", $$0, var5);
-            gdq.this.N();
-            return;
-         }
-
-         this.d.a($$5);
-      }
-
-      public void h() {
-         this.l();
-
-         try (eyv.c $$0 = this.d.m().d(this.f.a())) {
-            Pair<dje, gdm> $$1 = this.d.x().a($$0);
-            dje $$2 = (dje)$$1.getFirst();
-            gdm $$3 = (gdm)$$1.getSecond();
-            Path $$4 = gdc.a($$0.a(eyt.j), this.d);
-            $$3.b();
-            if ($$3.c().f()) {
-               this.d
-                  .a(
-                     new fwz(
-                        $$3x -> this.d.a((fyb)($$3x ? gdc.a(this.d, this.e, $$2, $$3, $$4) : this.e)),
-                        wy.c("selectWorld.recreate.customized.title"),
-                        wy.c("selectWorld.recreate.customized.text"),
-                        wx.i,
-                        wx.e
-                     )
-                  );
-            } else {
-               this.d.a(gdc.a(this.d, this.e, $$2, $$3, $$4));
-            }
-         } catch (fef var8) {
-            gdq.v.warn("{}", var8.getMessage());
-            this.d.a(fxt.a(() -> this.d.a(this.e)));
-         } catch (Exception var9) {
-            gdq.v.error("Unable to recreate world", var9);
-            this.d.a(new fwu(() -> this.d.a(this.e), wy.c("selectWorld.recreate.error.title"), wy.c("selectWorld.recreate.error.text")));
-         }
-      }
-
-      private void l() {
-         this.d.d(new fxm(wy.c("selectWorld.data_read")));
-      }
-
-      private void m() {
-         boolean $$0 = this.h != null && Files.isRegularFile(this.h);
-         if ($$0) {
-            try (InputStream $$1 = Files.newInputStream(this.h)) {
-               this.g.a(fik.a($$1));
-            } catch (Throwable var7) {
-               gdq.v.error("Invalid icon for world {}", this.f.a(), var7);
-               this.h = null;
-            }
-         } else {
-            this.g.a();
-         }
-      }
-
-      @Override
-      public void close() {
-         this.g.close();
-      }
-
-      public String i() {
-         return this.f.b();
       }
    }
 }

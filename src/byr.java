@@ -1,38 +1,30 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.server.MinecraftServer;
+public class byr extends byk {
+   private final double c;
+   private final double d;
 
-public class byr {
-   public static byw<cqo> a() {
-      return cci.a(
-         (Function<cci.b<cqo>, ? extends App<cci.c<cqo>, ccl<cqo>>>)($$0 -> $$0.group($$0.b(cgg.d), $$0.a(cgg.c))
-               .apply(
-                  $$0,
-                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                        jd $$6 = $$0.b($$1);
-                        if (!$$6.b().a($$4.dt(), 2.0) && !$$4.gB()) {
-                           return false;
-                        } else {
-                           $$1.b();
-                           $$2.a($$6);
-                           $$3.a($$4, (byte)14);
-                           if (!$$4.gz().b().a(cqr.b)) {
-                              return true;
-                           } else {
-                              MinecraftServer $$7 = $$3.p();
-                              Optional.ofNullable($$7.a($$6.a()))
-                                 .flatMap($$1xx -> $$1xx.A().c($$6.b()))
-                                 .flatMap($$0xxx -> mf.x.c().filter($$1xx -> ((cqr)$$1xx.a()).b().test($$0xxx)).findFirst())
-                                 .ifPresent($$2xx -> {
-                                    $$4.a($$4.gz().b($$2xx));
-                                    $$4.g($$3);
-                                 });
-                              return true;
-                           }
-                        }
-                     }
-               ))
-      );
+   public byr(String $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1);
+      this.c = $$2;
+      this.d = $$3;
+      if ($$2 > $$3) {
+         throw new IllegalArgumentException("Minimum value cannot be bigger than maximum value!");
+      } else if ($$1 < $$2) {
+         throw new IllegalArgumentException("Default value cannot be lower than minimum value!");
+      } else if ($$1 > $$3) {
+         throw new IllegalArgumentException("Default value cannot be bigger than maximum value!");
+      }
+   }
+
+   public double d() {
+      return this.c;
+   }
+
+   public double e() {
+      return this.d;
+   }
+
+   @Override
+   public double a(double $$0) {
+      return Double.isNaN($$0) ? this.c : azm.a($$0, this.c, this.d);
    }
 }

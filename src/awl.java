@@ -12,7 +12,7 @@ public class awl {
    public static final awk f = a(awn.rn);
    public static final awk g = a(awn.qN);
 
-   public static awk a(je<awm> $$0) {
+   public static awk a(jf<awm> $$0) {
       return new awk($$0, 12000, 24000, false);
    }
 }

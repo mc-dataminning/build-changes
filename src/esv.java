@@ -1,25 +1,15 @@
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import java.util.List;
 
-public class esv extends erb {
-   public static final MapCodec<esv> d = a(esv::new);
-
-   public esv(erb.c $$0) {
-      super($$0);
+public class esv {
+   public static MapCodec<? extends esu> a(js<MapCodec<? extends esu>> $$0) {
+      js.a($$0, "random", esy.a);
+      js.a($$0, "random_group", esx.a);
+      return js.a($$0, "direct", est.a);
    }
 
-   @Override
-   public Optional<erb.b> a(erb.a $$0) {
-      return a($$0, egg.a.c, $$1 -> a($$1, $$0));
-   }
-
-   private static void a(ert $$0, erb.a $$1) {
-      iu $$2 = new iu($$1.h().a(9), 90, $$1.h().b(9));
-      $$0.a(new esu.a($$2));
-   }
-
-   @Override
-   public erk<?> e() {
-      return erk.a;
+   public static void a(qh<ess> $$0, jf<ess> $$1, List<esu> $$2) {
+      $$2.stream().flatMap(esu::a).map($$0x -> $$0x.a().a()).forEach($$2x -> qo.a($$0, $$2x, new ess($$1, List.of(Pair.of(esq.b($$2x), 1)), ess.a.b)));
    }
 }

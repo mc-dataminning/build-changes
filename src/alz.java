@@ -6,13 +6,13 @@ import java.util.Set;
 import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 
-public class alz extends ffv {
-   public static final eyb<ffw> a = new eyb<>("scoreboard", $$0 -> $$0.a().g().h(), $$0 -> {
+public class alz extends fgc {
+   public static final eyi<fgd> a = new eyi<>("scoreboard", $$0 -> $$0.a().g().h(), $$0 -> {
       alz $$1 = $$0.a().g();
-      return ffw.a.a.xmap($$1::a, ffw::a);
+      return fgd.a.a.xmap($$1::a, fgd::a);
    }, bbb.n);
    private final MinecraftServer c;
-   private final Set<ffn> d = Sets.newHashSet();
+   private final Set<ffu> d = Sets.newHashSet();
    private final List<Runnable> e = Lists.newArrayList();
 
    public alz(MinecraftServer $$0) {
@@ -20,41 +20,41 @@ public class alz extends ffv {
    }
 
    @Override
-   protected void a(ffu $$0, ffn $$1, ffs $$2) {
+   protected void a(fgb $$0, ffu $$1, ffz $$2) {
       super.a($$0, $$1, $$2);
       if (this.d.contains($$1)) {
-         this.c.ag().a(new afo($$0.cI(), $$1.c(), $$2.a(), Optional.ofNullable($$2.d()), Optional.ofNullable($$2.c())));
+         this.c.ag().a(new afo($$0.cH(), $$1.c(), $$2.a(), Optional.ofNullable($$2.d()), Optional.ofNullable($$2.c())));
       }
 
       this.a();
    }
 
    @Override
-   protected void a(ffu $$0, ffn $$1) {
+   protected void a(fgb $$0, ffu $$1) {
       super.a($$0, $$1);
       this.a();
    }
 
    @Override
-   public void a(ffu $$0) {
+   public void a(fgb $$0) {
       super.a($$0);
-      this.c.ag().a(new ael($$0.cI(), null));
+      this.c.ag().a(new ael($$0.cH(), null));
       this.a();
    }
 
    @Override
-   public void b(ffu $$0, ffn $$1) {
+   public void b(fgb $$0, ffu $$1) {
       super.b($$0, $$1);
       if (this.d.contains($$1)) {
-         this.c.ag().a(new ael($$0.cI(), $$1.c()));
+         this.c.ag().a(new ael($$0.cH(), $$1.c()));
       }
 
       this.a();
    }
 
    @Override
-   public void a(ffm $$0, @Nullable ffn $$1) {
-      ffn $$2 = this.a($$0);
+   public void a(fft $$0, @Nullable ffu $$1) {
+      ffu $$2 = this.a($$0);
       super.a($$0, $$1);
       if ($$2 != $$1 && $$2 != null) {
          if (this.h($$2) > 0) {
@@ -76,7 +76,7 @@ public class alz extends ffv {
    }
 
    @Override
-   public boolean a(String $$0, ffq $$1) {
+   public boolean a(String $$0, ffx $$1) {
       if (super.a($$0, $$1)) {
          this.c.ag().a(afn.a($$1, $$0, afn.a.a));
          this.a();
@@ -87,20 +87,20 @@ public class alz extends ffv {
    }
 
    @Override
-   public void b(String $$0, ffq $$1) {
+   public void b(String $$0, ffx $$1) {
       super.b($$0, $$1);
       this.c.ag().a(afn.a($$1, $$0, afn.a.b));
       this.a();
    }
 
    @Override
-   public void a(ffn $$0) {
+   public void a(ffu $$0) {
       super.a($$0);
       this.a();
    }
 
    @Override
-   public void b(ffn $$0) {
+   public void b(ffu $$0) {
       super.b($$0);
       if (this.d.contains($$0)) {
          this.c.ag().a(new afk($$0, 2));
@@ -110,7 +110,7 @@ public class alz extends ffv {
    }
 
    @Override
-   public void c(ffn $$0) {
+   public void c(ffu $$0) {
       super.c($$0);
       if (this.d.contains($$0)) {
          this.g($$0);
@@ -120,21 +120,21 @@ public class alz extends ffv {
    }
 
    @Override
-   public void a(ffq $$0) {
+   public void a(ffx $$0) {
       super.a($$0);
       this.c.ag().a(afn.a($$0, true));
       this.a();
    }
 
    @Override
-   public void b(ffq $$0) {
+   public void b(ffx $$0) {
       super.b($$0);
       this.c.ag().a(afn.a($$0, false));
       this.a();
    }
 
    @Override
-   public void c(ffq $$0) {
+   public void c(ffx $$0) {
       super.c($$0);
       this.c.ag().a(afn.a($$0));
       this.a();
@@ -150,24 +150,24 @@ public class alz extends ffv {
       }
    }
 
-   public List<zf<?>> d(ffn $$0) {
+   public List<zf<?>> d(ffu $$0) {
       List<zf<?>> $$1 = Lists.newArrayList();
       $$1.add(new afk($$0, 0));
 
-      for (ffm $$2 : ffm.values()) {
+      for (fft $$2 : fft.values()) {
          if (this.a($$2) == $$0) {
             $$1.add(new afc($$2, $$0));
          }
       }
 
-      for (ffo $$3 : this.i($$0)) {
+      for (ffv $$3 : this.i($$0)) {
          $$1.add(new afo($$3.c(), $$0.c(), $$3.d(), Optional.ofNullable($$3.e()), Optional.ofNullable($$3.f())));
       }
 
       return $$1;
    }
 
-   public void e(ffn $$0) {
+   public void e(ffu $$0) {
       List<zf<?>> $$1 = this.d($$0);
 
       for (arr $$2 : this.c.ag().t()) {
@@ -179,11 +179,11 @@ public class alz extends ffv {
       this.d.add($$0);
    }
 
-   public List<zf<?>> f(ffn $$0) {
+   public List<zf<?>> f(ffu $$0) {
       List<zf<?>> $$1 = Lists.newArrayList();
       $$1.add(new afk($$0, 1));
 
-      for (ffm $$2 : ffm.values()) {
+      for (fft $$2 : fft.values()) {
          if (this.a($$2) == $$0) {
             $$1.add(new afc($$2, $$0));
          }
@@ -192,7 +192,7 @@ public class alz extends ffv {
       return $$1;
    }
 
-   public void g(ffn $$0) {
+   public void g(ffu $$0) {
       List<zf<?>> $$1 = this.f($$0);
 
       for (arr $$2 : this.c.ag().t()) {
@@ -204,10 +204,10 @@ public class alz extends ffv {
       this.d.remove($$0);
    }
 
-   public int h(ffn $$0) {
+   public int h(ffu $$0) {
       int $$1 = 0;
 
-      for (ffm $$2 : ffm.values()) {
+      for (fft $$2 : fft.values()) {
          if (this.a($$2) == $$0) {
             $$1++;
          }
@@ -216,14 +216,14 @@ public class alz extends ffv {
       return $$1;
    }
 
-   private ffw h() {
-      ffw $$0 = new ffw(this);
+   private fgd h() {
+      fgd $$0 = new fgd(this);
       this.a($$0::f);
       return $$0;
    }
 
-   private ffw a(ffw.a $$0) {
-      ffw $$1 = this.h();
+   private fgd a(fgd.a $$0) {
+      fgd $$1 = this.h();
       $$1.a($$0);
       return $$1;
    }

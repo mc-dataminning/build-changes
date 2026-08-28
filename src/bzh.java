@@ -1,16 +1,34 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
 
-public class bzh {
-   public static <E extends bxe> byw<E> a(Predicate<E> $$0, cgg<?> $$1) {
-      return cci.a((Function<cci.b<E>, ? extends App<cci.c<E>, ccl<E>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$1xx -> ($$2x, $$3, $$4) -> {
-               if ($$0.test((E)$$3)) {
-                  $$1xx.b();
-                  return true;
-               } else {
-                  return false;
-               }
-            })));
+public class bzh extends bza<ckz> {
+   private static final int c = 60;
+   private static final int d = 100;
+   private int e;
+
+   public bzh() {
+      super(ImmutableMap.of(cgl.n, cgm.b), 100);
+   }
+
+   protected boolean a(arq $$0, ckz $$1) {
+      return $$1.at() == bxv.a;
+   }
+
+   protected boolean a(arq $$0, ckz $$1, long $$2) {
+      return this.e < 60;
+   }
+
+   protected void b(arq $$0, ckz $$1, long $$2) {
+      if (!$$1.bk()) {
+         $$1.b(bxv.i);
+         this.e = 0;
+      }
+   }
+
+   protected void c(arq $$0, ckz $$1, long $$2) {
+      $$1.b(bxv.a);
+   }
+
+   protected void d(arq $$0, ckz $$1, long $$2) {
+      this.e++;
    }
 }

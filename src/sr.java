@@ -2,19 +2,19 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 
 public abstract class sr {
-   public static final Codec<sr> b = mf.aC.q().dispatch(sr::a, $$0 -> $$0);
-   private final tk<je<tl>> a;
+   public static final Codec<sr> b = mg.aC.q().dispatch(sr::a, $$0 -> $$0);
+   private final tk<jf<tl>> a;
 
-   public static MapCodec<? extends sr> a(jr<MapCodec<? extends sr>> $$0) {
+   public static MapCodec<? extends sr> a(js<MapCodec<? extends sr>> $$0) {
       a($$0, "block_based", sc.a);
       return a($$0, "function", sg.a);
    }
 
-   private static MapCodec<? extends sr> a(jr<MapCodec<? extends sr>> $$0, String $$1, MapCodec<? extends sr> $$2) {
-      return jr.a($$0, alf.a(mg.az, alg.b($$1)), $$2);
+   private static MapCodec<? extends sr> a(js<MapCodec<? extends sr>> $$0, String $$1, MapCodec<? extends sr> $$2) {
+      return js.a($$0, alf.a(mh.az, alg.b($$1)), $$2);
    }
 
-   protected sr(tk<je<tl>> $$0) {
+   protected sr(tk<jf<tl>> $$0) {
       this.a = $$0;
    }
 
@@ -22,7 +22,7 @@ public abstract class sr {
 
    public abstract MapCodec<? extends sr> a();
 
-   public je<tl> d() {
+   public jf<tl> d() {
       return this.a.a();
    }
 
@@ -58,11 +58,11 @@ public abstract class sr {
       return this.a.j();
    }
 
-   public dsz m() {
+   public dtg m() {
       return this.a.f();
    }
 
-   protected tk<je<tl>> n() {
+   protected tk<jf<tl>> n() {
       return this.a;
    }
 
@@ -85,6 +85,6 @@ public abstract class sr {
    }
 
    protected xm a(String $$0, xm $$1) {
-      return wy.a($$0, $$1.a(n.j)).b(wy.b("\n"));
+      return wy.a($$0, $$1.a(o.j)).b(wy.b("\n"));
    }
 }

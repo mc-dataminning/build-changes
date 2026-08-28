@@ -1,7 +1,7 @@
 public enum eaz implements bak {
-   a("single"),
-   b("left"),
-   c("right");
+   a("floor"),
+   b("wall"),
+   c("ceiling");
 
    private final String d;
 
@@ -12,13 +12,5 @@ public enum eaz implements bak {
    @Override
    public String c() {
       return this.d;
-   }
-
-   public eaz a() {
-      return switch (this) {
-         case a -> a;
-         case b -> c;
-         case c -> b;
-      };
    }
 }

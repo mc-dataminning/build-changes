@@ -1,13 +1,29 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class epi {
-   private static final Codec<Either<eha, epi>> a = Codec.either(eha.a, mf.L.q().dispatch(epi::a, epj::codec));
-   public static final Codec<epi> c = a.xmap(
-      $$0 -> (epi)$$0.map(eph::a, $$0x -> $$0x), $$0 -> $$0.a() == epj.a ? Either.left(((eph)$$0).b()) : Either.right($$0)
+public class epi {
+   public static final Codec<epi> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.intRange(0, eel.c).fieldOf("height").forGetter(epi::a), mg.e.q().fieldOf("block").orElse(dmo.a).forGetter($$0x -> $$0x.b().b()))
+            .apply($$0, epi::new)
    );
+   private final dmm b;
+   private final int c;
 
-   public abstract int a(azv var1, ehd var2);
+   public epi(int $$0, dmm $$1) {
+      this.c = $$0;
+      this.b = $$1;
+   }
 
-   public abstract epj<?> a();
+   public int a() {
+      return this.c;
+   }
+
+   public eao b() {
+      return this.b.m();
+   }
+
+   @Override
+   public String toString() {
+      return (this.c != 1 ? this.c + "*" : "") + mg.e.b(this.b);
+   }
 }

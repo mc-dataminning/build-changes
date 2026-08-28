@@ -1,44 +1,37 @@
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
 
-public class bzg implements caj {
-   private final bwf a;
-   private final boolean b;
+public class bzg extends bza<bxj> {
+   private final cgl<Integer> c;
 
-   public bzg(bwf $$0, boolean $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public bzg(cgl<Integer> $$0) {
+      super(ImmutableMap.of($$0, cgm.a));
+      this.c = $$0;
+   }
+
+   private Optional<Integer> b(bxj $$0) {
+      return $$0.eb().c(this.c);
    }
 
    @Override
-   public feq a() {
-      return this.b ? this.a.dt().b(0.0, (double)this.a.cS(), 0.0) : this.a.dt();
+   protected boolean a(long $$0) {
+      return false;
    }
 
    @Override
-   public iu b() {
-      return this.a.dv();
+   protected boolean a(arq $$0, bxj $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      return $$3.isPresent() && $$3.get() > 0;
    }
 
    @Override
-   public boolean a(bxe $$0) {
-      if (this.a instanceof bxe $$1) {
-         if (!$$1.bK()) {
-            return false;
-         } else {
-            Optional<cgi> $$3 = $$0.ec().c(cgg.h);
-            return $$3.isPresent() && $$3.get().a($$1);
-         }
-      } else {
-         return true;
-      }
-   }
-
-   public bwf c() {
-      return this.a;
+   protected void c(arq $$0, bxj $$1, long $$2) {
+      Optional<Integer> $$3 = this.b($$1);
+      $$1.eb().a(this.c, $$3.get() - 1);
    }
 
    @Override
-   public String toString() {
-      return "EntityTracker for " + this.a;
+   protected void b(arq $$0, bxj $$1, long $$2) {
+      $$1.eb().b(this.c);
    }
 }

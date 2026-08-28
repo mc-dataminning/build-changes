@@ -1,100 +1,61 @@
 import java.util.function.BiConsumer;
 
-public record nv(jg.a a) implements nk {
+public record nv(jh.a a) implements nl {
    @Override
-   public void generate(BiConsumer<alf<ezm>, ezm.a> $$0) {
-      jf<cjb> $$1 = this.a.e(mg.aJ);
+   public void generate(BiConsumer<alf<ezt>, ezt.a> $$0) {
+      jh.b<dkk> $$1 = this.a.e(mh.aG);
       $$0.accept(
-         ezd.aq,
-         ezm.b()
+         ezk.am,
+         ezt.b()
             .a(
-               ezl.a()
-                  .a(fdj.a(1.0F))
-                  .a(ezu.a(czh.vP).a(10))
-                  .a(ezu.a(czh.vO).a(10))
-                  .a(ezu.a(czh.tk).a(10))
-                  .a(ezu.a(czh.qh).a(10))
-                  .a(ezu.a(czh.tm).a(10))
-                  .a(ezu.a(czh.qg).a(10))
-                  .a(ezu.a(czh.oC).a(2))
+               ezs.a()
+                  .a(fdq.a(1.0F))
+                  .a(fah.a(ezk.an).a(10).b(-2))
+                  .a(fah.a(ezk.ao).a(5).b(2).a(fda.a(ezo.b.a, by.a.a().a(ce.a(true)))))
+                  .a(fah.a(ezk.ap).a(85).b(-1))
             )
       );
-      $$0.accept(ezd.ar, ezm.b().a(ezl.a().a(fdj.a(1.0F)).a(ezu.a(czh.qq)).a(ezu.a(czh.qr)).a(ezu.a(czh.qs)).a(ezu.a(czh.qt))));
-      $$0.accept(ezd.as, ezm.b().a(ezl.a().a(fdj.a(1.0F)).a(ezu.a(czh.vM)).a(ezu.a(czh.tl)).a(ezu.a(czh.qM)).a(ezu.a(czh.tj)).a(ezu.a(czh.vZ))));
-      $$0.accept(ezd.at, ezm.b().a(ezl.a().a(fdj.a(1.0F)).a(ezu.a(czh.vt)).a(ezu.a(czh.rE))));
-      $$0.accept(ezd.au, ezm.b().a(ezl.a().a(fdj.a(1.0F)).a(ezu.a(czh.ml)).a(ezu.a(czh.pp))));
-      $$0.accept(ezd.av, ezm.b().a(ezl.a().a(fdj.a(1.0F)).a(ezu.a(czh.ql)).a(ezu.a(czh.vD)).a(ezu.a(czh.ta))));
-      $$0.accept(ezd.aw, ezm.b().a(ezl.a().a(fdj.a(1.0F)).a(ezu.a(czh.sh)).a(ezu.a(czh.si))));
+      $$0.accept(ezk.ap, a());
       $$0.accept(
-         ezd.ax,
-         ezm.b()
+         ezk.an,
+         ezt.b()
             .a(
-               ezl.a()
-                  .a(fdj.a(1.0F))
-                  .a(ezu.a(czh.pk).a(26))
-                  .a(ezu.a(czh.wB).a(fbm.a(fdq.a(0.0F, 1.0F))).a(fbs.a(dba.n)))
-                  .a(ezu.a(czh.wB).a(fbm.a(fdq.a(0.0F, 1.0F))).a(fbs.a(dba.q)))
-                  .a(ezu.a(czh.wB).a(fbm.a(fdq.a(0.0F, 1.0F))).a(fbs.a(dba.I)))
-                  .a(ezu.a(czh.wB).a(fbm.a(fdq.a(0.0F, 1.0F))).a(fbs.a(dba.y)))
-                  .a(ezu.a(czh.wB).a(fbm.a(fdq.a(0.0F, 1.0F))).a(fbs.a(dba.A)))
-                  .a(ezu.a(czh.wB).a(fbm.a(fdq.a(0.0F, 1.0F))).a(fbs.a(dba.i)))
-                  .a(ezu.a(czh.wB).a(fbm.a(fdq.a(0.0F, 1.0F))).a(fbs.a(dba.F)))
-                  .a(ezu.a(czh.wB).a(fbm.a(fdq.a(0.0F, 1.0F))).a(fbs.a(dba.l)))
-                  .a(ezu.a(czh.wB).a(fbm.a(fdq.a(0.0F, 1.0F))).a(fbs.a(dba.w)))
-                  .a(ezu.a(czh.wB).a(fbm.a(fdq.a(0.0F, 1.0F))).a(fbs.a(dba.g)))
-                  .a(ezu.a(czh.wB).a(fbm.a(fdq.a(0.0F, 1.0F))).a(fbs.a(dba.e)))
-                  .a(ezu.a(czh.wB).a(fbm.a(fdq.a(0.0F, 1.0F))).a(fbs.a(dba.L)))
-                  .a(ezu.a(czh.wB).a(fbm.a(fdq.a(0.0F, 1.0F))).a(fbs.a(dba.C)))
+               ezs.a()
+                  .a(fab.a(dmo.fF).a(17))
+                  .a(fab.a(czo.qp).a(10).a(fbu.a(fdx.a(0.0F, 0.9F))))
+                  .a(fab.a(czo.rt).a(10))
+                  .a(fab.a(czo.sH).a(10))
+                  .a(fab.a(czo.tt).a(10).a(fbz.a(dbh.a)))
+                  .a(fab.a(czo.qg).a(5))
+                  .a(fab.a(czo.sd).a(2).a(fbu.a(fdx.a(0.0F, 0.9F))))
+                  .a(fab.a(czo.ph).a(10))
+                  .a(fab.a(czo.qe).a(5))
+                  .a(fab.a(czo.sn).a(1).a(fbt.a(fdq.a(10.0F))))
+                  .a(fab.a(dmo.gg).a(10))
+                  .a(fab.a(czo.tm).a(10))
+                  .a(fab.a(dmo.nF).a(fcv.a(cu.a.a().a(jj.a($$1.b(dkr.y), $$1.b(dkr.z), $$1.b(dkr.A))))).a(10))
             )
       );
-      $$0.accept(ezd.ay, ezm.b().a(ezl.a().a(fdj.a(1.0F)).a(ezu.a(czh.rt))));
-      $$0.accept(ezd.az, ezm.b().a(ezl.a().a(fdj.a(1.0F)).a(ezu.a(czh.rF))));
-      $$0.accept(ezd.aA, ezm.b().a(ezl.a().a(fdj.a(1.0F)).a(ezu.a(czh.fs))));
       $$0.accept(
-         ezd.aB,
-         ezm.b()
+         ezk.ao,
+         ezt.b()
             .a(
-               ezl.a()
-                  .a(fdj.a(1.0F))
-                  .a(ezu.a(czh.df))
-                  .a(ezu.a(czh.dg))
-                  .a(ezu.a(czh.dh))
-                  .a(ezu.a(czh.di))
-                  .a(ezu.a(czh.dj))
-                  .a(ezu.a(czh.dk))
-                  .a(ezu.a(czh.dl))
-                  .a(ezu.a(czh.dm))
-                  .a(ezu.a(czh.dn))
-                  .a(ezu.a(czh.do))
-                  .a(ezu.a(czh.dp))
-                  .a(ezu.a(czh.dq))
-                  .a(ezu.a(czh.dr))
-                  .a(ezu.a(czh.ds))
-                  .a(ezu.a(czh.dt))
-                  .a(ezu.a(czh.du))
+               ezs.a()
+                  .a(fab.a(czo.vW))
+                  .a(fab.a(czo.ou))
+                  .a(fab.a(czo.pj).a(fbu.a(fdx.a(0.0F, 0.25F))).a(fas.a(this.a, fdq.a(30.0F))))
+                  .a(fab.a(czo.sd).a(fbu.a(fdx.a(0.0F, 0.25F))).a(fas.a(this.a, fdq.a(30.0F))))
+                  .a(fab.a(czo.rF).a(fas.a(this.a, fdq.a(30.0F))))
+                  .a(fab.a(czo.xe))
             )
       );
-      $$0.accept(ezd.aC, ezm.b().a(ezl.a().a(fdj.a(1.0F)).a(ezu.a(czh.pH)).a(ezu.a(czh.pI)).a(ezu.a(czh.pJ)).a(ezu.a(czh.pG))));
-      $$0.accept(ezd.aD, ezm.b().a(ezl.a().a(fdj.a(1.0F)).a(ezu.a(czh.pI)).a(ezu.a(czh.pN)).a(ezu.a(czh.pS))));
-      $$0.accept(ezd.aE, ezm.b().a(ezl.a().a(fdj.a(1.0F)).a(ezu.a(czh.qj))));
-      $$0.accept(ezd.aF, ezm.b().a(ezl.a().a(fdj.a(1.0F)).a(ezu.a(czh.dy))));
-      $$0.accept(ezd.aG, ezm.b().a(ezl.a().a(fdj.a(1.0F)).a(ezu.a(czh.wt)).a(ezu.a(czh.wu))));
-      $$0.accept(ezd.aH, ezm.b().a(ezl.a().a(fdj.a(1.0F)).a(ezu.a(czh.rG).a(1)).a(ezs.b().a(699))));
-      $$0.accept(
-         ezd.aI,
-         ezm.b()
-            .a(
-               ezl.a()
-                  .a(fdj.a(1.0F))
-                  .a(
-                     ezo.a(
-                        ezu.a(czh.rH).a(fct.a(ezh.b.a, bx.a.a().a(kd.a(kj.aI, new cye<>($$1.b(cjc.a)))))),
-                        ezu.a(czh.rJ).a(fct.a(ezh.b.a, bx.a.a().a(kd.a(kj.aI, new cye<>($$1.b(cjc.b)))))),
-                        ezu.a(czh.rI).a(fct.a(ezh.b.a, bx.a.a().a(kd.a(kj.aI, new cye<>($$1.b(cjc.c))))))
-                     )
-                  )
-            )
-      );
-      $$0.accept(ezd.aJ, ezm.b().a(ezl.a().a(fdj.a(1.0F)).a(ezu.a(czh.pe))));
+   }
+
+   public static ezt.a a() {
+      return ezt.b().a(ezs.a().a(fab.a(czo.sh).a(60)).a(fab.a(czo.si).a(25)).a(fab.a(czo.sj).a(2)).a(fab.a(czo.sk).a(13)));
+   }
+
+   public jh.a b() {
+      return this.a;
    }
 }

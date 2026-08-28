@@ -1,35 +1,35 @@
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+import it.unimi.dsi.fastutil.objects.ObjectArraySet;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public enum bxq {
-   a(0),
-   b(1),
-   c(2),
-   d(3),
-   e(4),
-   f(5),
-   g(6),
-   h(7),
-   i(8),
-   j(9),
-   k(10),
-   l(11),
-   m(12),
-   n(13),
-   o(14),
-   p(15),
-   q(16),
-   r(17);
+public interface bxq {
+   @Nullable
+   bwo<bxj> d();
 
-   public static final IntFunction<bxq> s = ayc.a(bxq::a, values(), ayc.a.a);
-   public static final yw<ByteBuf, bxq> t = yu.a(s, bxq::a);
-   private final int u;
+   djh dU();
 
-   private bxq(final int $$0) {
-      this.u = $$0;
+   @Nullable
+   default bxj e() {
+      return bwo.a(this.d(), this.dU(), bxj.class);
    }
 
-   public int a() {
-      return this.u;
+   @Nullable
+   default bxj P_() {
+      Set<Object> $$0 = new ObjectArraySet();
+      bxj $$1 = this.e();
+      $$0.add(this);
+
+      while ($$1 instanceof bxq) {
+         bxq $$2 = (bxq)$$1;
+         bxj $$3 = $$2.e();
+         if ($$0.contains($$3)) {
+            return null;
+         }
+
+         $$0.add($$1);
+         $$1 = $$2.e();
+      }
+
+      return $$1;
    }
 }

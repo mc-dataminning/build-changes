@@ -1,62 +1,43 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFixUtils;
-import com.mojang.datafixers.Typed;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JsonOps;
+import org.slf4j.Logger;
 
-public class bke extends bhr {
-   public bke(Schema $$0, String $$1) {
-      super($$0, false, "Villager profession data fix (" + $$1 + ")", bix.D, $$1);
+public class bke extends DataFix {
+   private static final Logger a = LogUtils.getLogger();
+
+   public bke(Schema $$0) {
+      super($$0, true);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      Dynamic<?> $$1 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
-      return $$0.set(
-         DSL.remainderFinder(),
-         $$1.remove("Profession")
-            .remove("Career")
-            .remove("CareerLevel")
-            .set(
-               "VillagerData",
-               $$1.createMap(
-                  ImmutableMap.of(
-                     $$1.createString("type"),
-                     $$1.createString("minecraft:plains"),
-                     $$1.createString("profession"),
-                     $$1.createString(a($$1.get("Profession").asInt(0), $$1.get("Career").asInt(0))),
-                     $$1.createString("level"),
-                     (Dynamic)DataFixUtils.orElse($$1.get("CareerLevel").result(), $$1.createInt(1))
-                  )
-               )
-            )
-      );
+   protected TypeRewriteRule makeRule() {
+      Type<Pair<String, String>> $$0 = this.getInputSchema().getType(biz.z);
+      Type<?> $$1 = this.getOutputSchema().getType(biz.z);
+      return this.a($$0, $$1);
    }
 
-   private static String a(int $$0, int $$1) {
-      if ($$0 == 0) {
-         if ($$1 == 2) {
-            return "minecraft:fisherman";
-         } else if ($$1 == 3) {
-            return "minecraft:shepherd";
-         } else {
-            return $$1 == 4 ? "minecraft:fletcher" : "minecraft:farmer";
+   private <T> TypeRewriteRule a(Type<Pair<String, String>> $$0, Type<T> $$1) {
+      return this.fixTypeEverywhere("UnflattenTextComponentFix", $$0, $$1, $$1x -> $$2 -> ag.a($$1, a($$1x, (String)$$2.getSecond()), true).getValue());
+   }
+
+   private static <T> Dynamic<T> a(DynamicOps<T> $$0, String $$1) {
+      try {
+         JsonElement $$2 = JsonParser.parseString($$1);
+         if (!$$2.isJsonNull()) {
+            return new Dynamic($$0, JsonOps.INSTANCE.convertTo($$0, $$2));
          }
-      } else if ($$0 == 1) {
-         return $$1 == 2 ? "minecraft:cartographer" : "minecraft:librarian";
-      } else if ($$0 == 2) {
-         return "minecraft:cleric";
-      } else if ($$0 == 3) {
-         if ($$1 == 2) {
-            return "minecraft:weaponsmith";
-         } else {
-            return $$1 == 3 ? "minecraft:toolsmith" : "minecraft:armorer";
-         }
-      } else if ($$0 == 4) {
-         return $$1 == 2 ? "minecraft:leatherworker" : "minecraft:butcher";
-      } else {
-         return $$0 == 5 ? "minecraft:nitwit" : "minecraft:none";
+      } catch (Exception var3) {
+         a.error("Failed to unflatten text component json: {}", $$1, var3);
       }
+
+      return new Dynamic($$0, $$0.createString($$1));
    }
 }

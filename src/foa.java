@@ -1,59 +1,22 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public enum foa {
+   a(0, eqy.a),
+   b(1, eqy.b),
+   c(2, eqy.c),
+   d(3, eqy.d);
 
-public abstract class foa extends fnw {
-   private static final Logger b = LogUtils.getLogger();
-   private final long c;
-   private final wy d;
-   private final Runnable e;
+   private final int e;
+   private final wy f;
 
-   public foa(long $$0, wy $$1, Runnable $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   private foa(final int $$0, final alf<eqx> $$1) {
+      this.e = $$0;
+      this.f = wy.c($$1.a().h("generator"));
    }
 
-   protected abstract void a(fjz var1, long var2) throws flv;
-
-   @Override
-   public void run() {
-      fjz $$0 = fjz.a();
-      int $$1 = 0;
-
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            this.a($$0, this.c);
-            if (this.d()) {
-               return;
-            }
-
-            this.e.run();
-            return;
-         } catch (flw var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't reset world");
-            this.a(var5);
-            return;
-         }
-      }
-   }
-
-   @Override
    public wy a() {
-      return this.d;
+      return this.f;
+   }
+
+   public int b() {
+      return this.e;
    }
 }

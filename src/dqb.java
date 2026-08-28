@@ -1,65 +1,79 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Optional;
 
-public class dqb extends dmf implements dtq {
+public class dqb extends dun implements dmp {
    public static final MapCodec<dqb> a = b(dqb::new);
-   private static final eay b = eax.I;
-   private static final ffk c = dmf.b(12.0, 10.0, 16.0);
 
    @Override
    public MapCodec<dqb> a() {
       return a;
    }
 
-   protected dqb(eag.d $$0) {
+   public dqb(ean.d $$0) {
       super($$0);
-      this.l(this.C.b().b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(eai.a<dmf, eah> $$0) {
-      $$0.a(b);
+   public boolean a(djk $$0, iv $$1, eao $$2) {
+      return $$0.a_($$1.d()).l();
    }
 
    @Override
-   protected ewo b_(eah $$0) {
-      return $$0.c(b) ? ewp.c.a(false) : super.b_($$0);
-   }
-
-   @Nullable
-   @Override
-   public eah a(dcw $$0) {
-      eah $$1 = super.a($$0);
-      if ($$1 != null) {
-         ewo $$2 = $$0.q().b_($$0.a());
-         return $$1.b(b, Boolean.valueOf($$2.a() == ewp.c));
-      } else {
-         return null;
-      }
+   public boolean a(djh $$0, azv $$1, iv $$2, eao $$3) {
+      return true;
    }
 
    @Override
-   protected boolean a(eah $$0, djd $$1, iu $$2) {
-      iu $$3 = $$2.d();
-      eah $$4 = $$1.a_($$3);
-      return $$4.c($$1, $$3, ja.a);
-   }
+   public void a(arq $$0, azv $$1, iv $$2, eao $$3) {
+      iv $$4 = $$2.d();
+      eao $$5 = dmo.bA.m();
+      Optional<jf.c<eqm>> $$6 = $$0.F_().f(mh.bb).a(rz.o);
 
-   @Override
-   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
-      return c;
-   }
+      label51:
+      for (int $$7 = 0; $$7 < 128; $$7++) {
+         iv $$8 = $$4;
 
-   @Override
-   protected eah a(eah $$0, djd $$1, djp $$2, iu $$3, ja $$4, iu $$5, eah $$6, azv $$7) {
-      if ($$4 == ja.b && !this.a($$0, $$1, $$3)) {
-         return dmh.a.m();
-      } else {
-         if ($$0.c(b)) {
-            $$2.a($$3, ewp.c, ewp.c.a($$1));
+         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
+            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
+            if (!$$0.a_($$8.e()).a(this) || $$0.a_($$8).m($$0, $$8)) {
+               continue label51;
+            }
          }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         eao $$10 = $$0.a_($$8);
+         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
+            dmp $$11 = (dmp)$$5.b();
+            if ($$11.a((djk)$$0, $$8, $$10)) {
+               $$11.a($$0, $$1, $$8, $$10);
+            }
+         }
+
+         if ($$10.l()) {
+            jf<eqm> $$14;
+            if ($$1.a(8) == 0) {
+               List<ejf<?, ?>> $$12 = $$0.u($$8).a().d().b();
+               if ($$12.isEmpty()) {
+                  continue;
+               }
+
+               int $$13 = $$1.a($$12.size());
+               $$14 = ((emk)$$12.get($$13).c()).d();
+            } else {
+               if (!$$6.isPresent()) {
+                  continue;
+               }
+
+               $$14 = $$6.get();
+            }
+
+            $$14.a().a($$0, $$0.m().g(), $$1, $$8);
+         }
       }
+   }
+
+   @Override
+   public dmp.a an_() {
+      return dmp.a.a;
    }
 }

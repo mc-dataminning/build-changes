@@ -3,58 +3,98 @@ import java.util.Map;
 import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class ok implements od {
-   private final oe b;
-   private final cyz c;
-   private final ddq d;
-   private final int e;
-   private final Map<String, aq<?>> f = new LinkedHashMap<>();
+public class ok implements oe {
+   private final of b;
+   private final ddn c;
+   private final czg d;
+   private final ddx e;
+   private final float f;
+   private final int g;
+   private final Map<String, ar<?>> h = new LinkedHashMap<>();
    @Nullable
-   private String g;
-   private final dem.a<?> h;
+   private String i;
+   private final ddh.a<?> j;
 
-   public ok(oe $$0, dem.a<?> $$1, ddq $$2, diz $$3, int $$4) {
+   private ok(of $$0, ddn $$1, djg $$2, ddx $$3, float $$4, int $$5, ddh.a<?> $$6) {
       this.b = $$0;
-      this.h = $$1;
-      this.c = $$3.h();
-      this.d = $$2;
-      this.e = $$4;
+      this.c = $$1;
+      this.d = $$2.h();
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.j = $$6;
    }
 
-   public static ok a(ddq $$0, oe $$1, diz $$2) {
-      return new ok($$1, deu::new, $$0, $$2, 1);
+   public static <T extends ddh> ok a(ddx $$0, of $$1, djg $$2, float $$3, int $$4, del<T> $$5, ddh.a<T> $$6) {
+      return new ok($$1, a($$5, $$2), $$2, $$0, $$3, $$4, $$6);
    }
 
-   public static ok a(ddq $$0, oe $$1, diz $$2, int $$3) {
-      return new ok($$1, deu::new, $$0, $$2, $$3);
+   public static ok a(ddx $$0, of $$1, djg $$2, float $$3, int $$4) {
+      return new ok($$1, ddn.a, $$2, $$0, $$3, $$4, ddm::new);
    }
 
-   public ok b(String $$0, aq<?> $$1) {
-      this.f.put($$0, $$1);
+   public static ok b(ddx $$0, of $$1, djg $$2, float $$3, int $$4) {
+      return new ok($$1, c($$2), $$2, $$0, $$3, $$4, ddk::new);
+   }
+
+   public static ok c(ddx $$0, of $$1, djg $$2, float $$3, int $$4) {
+      return new ok($$1, b($$2), $$2, $$0, $$3, $$4, dev::new);
+   }
+
+   public static ok d(ddx $$0, of $$1, djg $$2, float $$3, int $$4) {
+      return new ok($$1, ddn.a, $$2, $$0, $$3, $$4, dfa::new);
+   }
+
+   public ok b(String $$0, ar<?> $$1) {
+      this.h.put($$0, $$1);
       return this;
    }
 
    public ok b(@Nullable String $$0) {
-      this.g = $$0;
+      this.i = $$0;
       return this;
    }
 
    @Override
-   public cyz a() {
-      return this.c;
+   public czg a() {
+      return this.d;
    }
 
    @Override
-   public void a(of $$0, alf<ddu<?>> $$1) {
+   public void a(og $$0, alf<deb<?>> $$1) {
       this.a($$1);
-      ah.a $$2 = $$0.a().a("has_the_recipe", dg.a($$1)).a(am.a.c($$1)).a(al.a.b);
-      this.f.forEach($$2::a);
-      dem $$3 = this.h.create(Objects.requireNonNullElse(this.g, ""), this.d, new czd(this.c, this.e));
+      ai.a $$2 = $$0.a().a("has_the_recipe", dh.a($$1)).a(an.a.c($$1)).a(am.a.b);
+      this.h.forEach($$2::a);
+      ddh $$3 = this.j.create(Objects.requireNonNullElse(this.i, ""), this.c, this.e, new czk(this.d), this.f, this.g);
       $$0.a($$1, $$3, $$2.b($$1.a().f("recipes/" + this.b.a() + "/")));
    }
 
-   private void a(alf<ddu<?>> $$0) {
-      if (this.f.isEmpty()) {
+   private static ddn b(djg $$0) {
+      if ($$0.h().f().c(kk.v)) {
+         return ddn.a;
+      } else {
+         return $$0.h() instanceof cxs ? ddn.b : ddn.c;
+      }
+   }
+
+   private static ddn c(djg $$0) {
+      return $$0.h() instanceof cxs ? ddn.b : ddn.c;
+   }
+
+   private static ddn a(del<? extends ddh> $$0, djg $$1) {
+      if ($$0 == del.o) {
+         return b($$1);
+      } else if ($$0 == del.p) {
+         return c($$1);
+      } else if ($$0 != del.q && $$0 != del.r) {
+         throw new IllegalStateException("Unknown cooking recipe type");
+      } else {
+         return ddn.a;
+      }
+   }
+
+   private void a(alf<deb<?>> $$0) {
+      if (this.h.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0.a());
       }
    }

@@ -1,55 +1,146 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class cep extends cea {
-   private final bxm a;
-   @Nullable
-   private bxe b;
-   private double c;
-   private double d;
+public class cep extends cef {
+   protected final bxr a;
+   private final double b;
+   private final boolean c;
+   private exj d;
    private double e;
-   private final double f;
-   private final float g;
+   private double f;
+   private double g;
+   private int h;
+   private int i;
+   private final int j = 20;
+   private long k;
+   private static final long l = 20L;
 
-   public cep(bxm $$0, double $$1, float $$2) {
+   public cep(bxr $$0, double $$1, boolean $$2) {
       this.a = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.a(EnumSet.of(cea.a.a));
+      this.b = $$1;
+      this.c = $$2;
+      this.a(EnumSet.of(cef.a.a, cef.a.b));
    }
 
    @Override
    public boolean b() {
-      this.b = this.a.f();
-      if (this.b == null) {
-         return false;
-      } else if (this.b.g(this.a) > (double)(this.g * this.g)) {
+      long $$0 = this.a.dU().ae();
+      if ($$0 - this.k < 20L) {
          return false;
       } else {
-         feq $$0 = chx.a(this.a, 16, 7, this.b.dt(), (float) (Math.PI / 2));
-         if ($$0 == null) {
+         this.k = $$0;
+         bxj $$1 = this.a.f();
+         if ($$1 == null) {
+            return false;
+         } else if (!$$1.bI()) {
             return false;
          } else {
-            this.c = $$0.d;
-            this.d = $$0.e;
-            this.e = $$0.f;
-            return true;
+            this.d = this.a.O().a($$1, 0);
+            return this.d != null ? true : this.a.h($$1);
          }
       }
    }
 
    @Override
    public boolean c() {
-      return !this.a.O().k() && this.b.bK() && this.b.g(this.a) < (double)(this.g * this.g);
-   }
+      bxj $$0 = this.a.f();
+      if ($$0 == null) {
+         return false;
+      } else if (!$$0.bI()) {
+         return false;
+      } else if (!this.c) {
+         return !this.a.O().k();
+      } else if (!this.a.a($$0.du())) {
+         return false;
+      } else {
+         if ($$0 instanceof crj $$1 && ($$1.V_() || $$1.b())) {
+            return false;
+         }
 
-   @Override
-   public void e() {
-      this.b = null;
+         return true;
+      }
    }
 
    @Override
    public void d() {
-      this.a.O().a(this.c, this.d, this.e, this.f);
+      this.a.O().a(this.d, this.b);
+      this.a.v(true);
+      this.h = 0;
+      this.i = 0;
+   }
+
+   @Override
+   public void e() {
+      bxj $$0 = this.a.f();
+      if (!bwp.e.test($$0)) {
+         this.a.g(null);
+      }
+
+      this.a.v(false);
+      this.a.O().m();
+   }
+
+   @Override
+   public boolean R_() {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      bxj $$0 = this.a.f();
+      if ($$0 != null) {
+         this.a.J().a($$0, 30.0F, 30.0F);
+         this.h = Math.max(this.h - 1, 0);
+         if ((this.c || this.a.P().a($$0))
+            && this.h <= 0
+            && (this.e == 0.0 && this.f == 0.0 && this.g == 0.0 || $$0.h(this.e, this.f, this.g) >= 1.0 || this.a.dX().i() < 0.05F)) {
+            this.e = $$0.dz();
+            this.f = $$0.dB();
+            this.g = $$0.dF();
+            this.h = 4 + this.a.dX().a(7);
+            double $$1 = this.a.g((bwi)$$0);
+            if ($$1 > 1024.0) {
+               this.h += 10;
+            } else if ($$1 > 256.0) {
+               this.h += 5;
+            }
+
+            if (!this.a.O().a($$0, this.b)) {
+               this.h += 15;
+            }
+
+            this.h = this.a(this.h);
+         }
+
+         this.i = Math.max(this.i - 1, 0);
+         this.a($$0);
+      }
+   }
+
+   protected void a(bxj $$0) {
+      if (this.b($$0)) {
+         this.h();
+         this.a.a(buf.a);
+         this.a.c(a(this.a), $$0);
+      }
+   }
+
+   protected void h() {
+      this.i = this.a(20);
+   }
+
+   protected boolean i() {
+      return this.i <= 0;
+   }
+
+   protected boolean b(bxj $$0) {
+      return this.i() && this.a.h($$0) && this.a.P().a($$0);
+   }
+
+   protected int k() {
+      return this.i;
+   }
+
+   protected int l() {
+      return this.a(20);
    }
 }

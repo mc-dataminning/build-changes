@@ -5,19 +5,19 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import java.util.Collection;
 
 public class amr {
-   public static void a(CommandDispatcher<ei> $$0) {
+   public static void a(CommandDispatcher<ej> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("banlist").requires($$0x -> $$0x.c(3)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("banlist").requires($$0x -> $$0x.c(3)))
                   .executes($$0x -> {
-                     avq $$1 = ((ei)$$0x.getSource()).l().ag();
-                     return a((ei)$$0x.getSource(), Lists.newArrayList(Iterables.concat($$1.f().d(), $$1.g().d())));
+                     avq $$1 = ((ej)$$0x.getSource()).l().ag();
+                     return a((ej)$$0x.getSource(), Lists.newArrayList(Iterables.concat($$1.f().d(), $$1.g().d())));
                   }))
-               .then(ej.a("ips").executes($$0x -> a((ei)$$0x.getSource(), ((ei)$$0x.getSource()).l().ag().g().d()))))
-            .then(ej.a("players").executes($$0x -> a((ei)$$0x.getSource(), ((ei)$$0x.getSource()).l().ag().f().d())))
+               .then(ek.a("ips").executes($$0x -> a((ej)$$0x.getSource(), ((ej)$$0x.getSource()).l().ag().g().d()))))
+            .then(ek.a("players").executes($$0x -> a((ej)$$0x.getSource(), ((ej)$$0x.getSource()).l().ag().f().d())))
       );
    }
 
-   private static int a(ei $$0, Collection<? extends avl<?>> $$1) {
+   private static int a(ej $$0, Collection<? extends avl<?>> $$1) {
       if ($$1.isEmpty()) {
          $$0.a(() -> wy.c("commands.banlist.none"), false);
       } else {

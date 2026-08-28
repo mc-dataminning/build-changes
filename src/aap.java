@@ -19,7 +19,7 @@ public record aap(aap.a c) implements aai {
       return this.c;
    }
 
-   public static record a(iu a, String b, int c, int d, boolean e) {
+   public static record a(iv a, String b, int c, int d, boolean e) {
       public a(vu $$0) {
          this($$0.e(), $$0.p(), $$0.readInt(), $$0.readInt(), $$0.readBoolean());
       }

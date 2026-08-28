@@ -1,22 +1,44 @@
-public class ghx extends gfy<hcn> {
-   public ghx(gjc $$0) {
+public class ghx extends ges {
+   public ghx(gjo $$0) {
       super($$0);
    }
 
-   public static gji a() {
-      gjk $$0 = new gjk();
-      gjm $$1 = $$0.a();
-      $$1.a("cube", gjh.c().a(0, 0).a(-4.0F, 16.0F, -4.0F, 8.0F, 8.0F, 8.0F), gje.a);
-      return gji.a($$0, 64, 32);
+   private static void a(gjy $$0) {
+      $$0.a(
+         "bottom",
+         gjt.c().a(0, 0).a(-14.0F, -11.0F, -4.0F, 28.0F, 20.0F, 4.0F).a(0, 0).a(-14.0F, -9.0F, -8.0F, 28.0F, 16.0F, 4.0F),
+         gjq.a(0.0F, -2.1F, 1.0F, 1.5708F, 0.0F, 0.0F)
+      );
+      int $$1 = 20;
+      int $$2 = 7;
+      int $$3 = 6;
+      float $$4 = -5.0F;
+      $$0.a(
+         "left_paddle",
+         gjt.c().a(0, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         gjq.a(3.0F, -4.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
+      );
+      $$0.a(
+         "right_paddle",
+         gjt.c().a(40, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         gjq.a(3.0F, -4.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
+      );
    }
 
-   public static gji b() {
-      gjk $$0 = new gjk();
-      gjm $$1 = $$0.a();
-      $$1.a("cube", gjh.c().a(0, 16).a(-3.0F, 17.0F, -3.0F, 6.0F, 6.0F, 6.0F), gje.a);
-      $$1.a("right_eye", gjh.c().a(32, 0).a(-3.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), gje.a);
-      $$1.a("left_eye", gjh.c().a(32, 4).a(1.25F, 18.0F, -3.5F, 2.0F, 2.0F, 2.0F), gje.a);
-      $$1.a("mouth", gjh.c().a(32, 8).a(0.0F, 21.0F, -3.5F, 1.0F, 1.0F, 1.0F), gje.a);
-      return gji.a($$0, 64, 32);
+   public static gju a() {
+      gjw $$0 = new gjw();
+      gjy $$1 = $$0.a();
+      a($$1);
+      return gju.a($$0, 128, 64);
+   }
+
+   public static gju b() {
+      gjw $$0 = new gjw();
+      gjy $$1 = $$0.a();
+      a($$1);
+      $$1.a("chest_bottom", gjt.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), gjq.a(-2.0F, -10.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lid", gjt.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), gjq.a(-2.0F, -14.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lock", gjt.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), gjq.a(-1.0F, -11.1F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      return gju.a($$0, 128, 128);
    }
 }

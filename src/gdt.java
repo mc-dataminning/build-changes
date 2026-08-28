@@ -1,22 +1,5 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class gdt implements gdv {
-   private static final wy a = wy.c("spectatorMenu.root.prompt");
-   private final List<gdw> b = Lists.newArrayList();
-
-   public gdt() {
-      this.b.add(new gdz());
-      this.b.add(new gea());
-   }
-
-   @Override
-   public List<gdw> a() {
-      return this.b;
-   }
-
-   @Override
-   public wy b() {
-      return a;
-   }
+public record gdt(gea.a a, Set<djd.e<djd.a>> b, @Nullable alf<epj> c) {
 }

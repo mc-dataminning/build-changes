@@ -1,10 +1,8 @@
-public class hby extends hcn {
-   public float a;
-   public int b;
-   public float c;
-   public float d;
-   public float e;
-   public boolean f;
-   public float g;
-   public float h;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface hby {
 }

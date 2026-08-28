@@ -1,58 +1,29 @@
 import com.mojang.serialization.Codec;
-import org.apache.commons.lang3.mutable.MutableInt;
 
-public class ejq extends ejm<ejr> {
-   public ejq(Codec<ejr> $$0) {
+public class ejq extends ejt<eme> {
+   public ejq(Codec<eme> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejo<ejr> $$0) {
-      azv $$1 = $$0.d();
-      djz $$2 = $$0.b();
-      iu $$3 = $$0.e();
-      dsz $$4 = dsz.a($$1);
-      ejr $$5 = $$0.f();
-      int $$6 = $$1.a($$5.b.size());
-      eve $$7 = $$2.a().p().aY();
-      evd $$8 = $$7.a($$5.b.get($$6));
-      evd $$9 = $$7.a($$5.c.get($$6));
-      dih $$10 = new dih($$3);
-      eqt $$11 = new eqt($$10.d() - 16, $$2.G_(), $$10.e() - 16, $$10.f() + 16, $$2.ao(), $$10.g() + 16);
-      euz $$12 = new euz().a($$4).a($$11).a($$1);
-      jz $$13 = $$8.a($$4);
-      iu $$14 = $$3.b(-$$13.u() / 2, 0, -$$13.w() / 2);
-      int $$15 = $$3.v();
+   public boolean a(ejv<eme> $$0) {
+      dkg $$1 = $$0.b();
+      azv $$2 = $$0.d();
+      iv $$3 = $$0.e();
+      float $$4 = (float)$$2.a(3) + 4.0F;
 
-      for (int $$16 = 0; $$16 < $$13.u(); $$16++) {
-         for (int $$17 = 0; $$17 < $$13.w(); $$17++) {
-            $$15 = Math.min($$15, $$2.a(egg.a.c, $$14.u() + $$16, $$14.w() + $$17));
+      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
+         for (int $$6 = azm.d(-$$4); $$6 <= azm.f($$4); $$6++) {
+            for (int $$7 = azm.d(-$$4); $$7 <= azm.f($$4); $$7++) {
+               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
+                  this.a($$1, $$3.b($$6, $$5, $$7), dmo.fY.m());
+               }
+            }
          }
+
+         $$4 -= (float)$$2.a(2) + 0.5F;
       }
 
-      int $$18 = Math.max($$15 - 15 - $$1.a(10), $$2.G_() + 10);
-      iu $$19 = $$8.a($$14.h($$18), dri.a, $$4);
-      if (a($$2, $$8.b($$12, $$19)) > $$5.f) {
-         return false;
-      } else {
-         $$12.b();
-         $$5.d.a().a().forEach($$12::a);
-         $$8.a($$2, $$19, $$19, $$12, $$1, 260);
-         $$12.b();
-         $$5.e.a().a().forEach($$12::a);
-         $$9.a($$2, $$19, $$19, $$12, $$1, 260);
-         return true;
-      }
-   }
-
-   private static int a(djz $$0, eqt $$1) {
-      MutableInt $$2 = new MutableInt(0);
-      $$1.a($$2x -> {
-         eah $$3 = $$0.a_($$2x);
-         if ($$3.l() || $$3.a(dmh.K) || $$3.a(dmh.J)) {
-            $$2.add(1);
-         }
-      });
-      return $$2.getValue();
+      return true;
    }
 }

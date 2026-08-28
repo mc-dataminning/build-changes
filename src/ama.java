@@ -1,6 +1,6 @@
 import net.minecraft.server.MinecraftServer;
 
-public class ama extends bum {
+public class ama extends bup {
    private long g = 0L;
    private long h = 0L;
    private long i = 0L;

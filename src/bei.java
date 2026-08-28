@@ -1,28 +1,25 @@
 import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
+import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Map;
-import java.util.Map.Entry;
 
-public class bei extends bhr {
-   private final Map<String, String> c;
+public class bei extends DataFix {
+   private TypeReference a;
 
-   public bei(Schema $$0, String $$1, String $$2, Map<String, String> $$3) {
-      super($$0, false, $$1, bix.D, $$2);
-      this.c = $$3;
+   public bei(Schema $$0, TypeReference $$1) {
+      super($$0, false);
+      this.a = $$1;
    }
 
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      for (Entry<String, String> $$1 : this.c.entrySet()) {
-         $$0 = $$0.renameField($$1.getKey(), $$1.getValue());
-      }
-
-      return $$0;
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped("EntityFallDistanceFloatToDoubleFixFor" + this.a.typeName(), this.getOutputSchema().getType(this.a), bei::a);
    }
 
-   @Override
-   protected Typed<?> a(Typed<?> $$0) {
-      return $$0.update(DSL.remainderFinder(), this::a);
+   private static Typed<?> a(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(), $$0x -> $$0x.renameAndFixField("FallDistance", "fall_distance", $$0xx -> $$0xx.createDouble((double)$$0xx.asFloat(0.0F)))
+      );
    }
 }

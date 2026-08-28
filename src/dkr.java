@@ -1,89 +1,71 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+public abstract class dkr {
+   public static final alf<dkk> a = a("the_void");
+   public static final alf<dkk> b = a("plains");
+   public static final alf<dkk> c = a("sunflower_plains");
+   public static final alf<dkk> d = a("snowy_plains");
+   public static final alf<dkk> e = a("ice_spikes");
+   public static final alf<dkk> f = a("desert");
+   public static final alf<dkk> g = a("swamp");
+   public static final alf<dkk> h = a("mangrove_swamp");
+   public static final alf<dkk> i = a("forest");
+   public static final alf<dkk> j = a("flower_forest");
+   public static final alf<dkk> k = a("birch_forest");
+   public static final alf<dkk> l = a("dark_forest");
+   public static final alf<dkk> m = a("pale_garden");
+   public static final alf<dkk> n = a("old_growth_birch_forest");
+   public static final alf<dkk> o = a("old_growth_pine_taiga");
+   public static final alf<dkk> p = a("old_growth_spruce_taiga");
+   public static final alf<dkk> q = a("taiga");
+   public static final alf<dkk> r = a("snowy_taiga");
+   public static final alf<dkk> s = a("savanna");
+   public static final alf<dkk> t = a("savanna_plateau");
+   public static final alf<dkk> u = a("windswept_hills");
+   public static final alf<dkk> v = a("windswept_gravelly_hills");
+   public static final alf<dkk> w = a("windswept_forest");
+   public static final alf<dkk> x = a("windswept_savanna");
+   public static final alf<dkk> y = a("jungle");
+   public static final alf<dkk> z = a("sparse_jungle");
+   public static final alf<dkk> A = a("bamboo_jungle");
+   public static final alf<dkk> B = a("badlands");
+   public static final alf<dkk> C = a("eroded_badlands");
+   public static final alf<dkk> D = a("wooded_badlands");
+   public static final alf<dkk> E = a("meadow");
+   public static final alf<dkk> F = a("cherry_grove");
+   public static final alf<dkk> G = a("grove");
+   public static final alf<dkk> H = a("snowy_slopes");
+   public static final alf<dkk> I = a("frozen_peaks");
+   public static final alf<dkk> J = a("jagged_peaks");
+   public static final alf<dkk> K = a("stony_peaks");
+   public static final alf<dkk> L = a("river");
+   public static final alf<dkk> M = a("frozen_river");
+   public static final alf<dkk> N = a("beach");
+   public static final alf<dkk> O = a("snowy_beach");
+   public static final alf<dkk> P = a("stony_shore");
+   public static final alf<dkk> Q = a("warm_ocean");
+   public static final alf<dkk> R = a("lukewarm_ocean");
+   public static final alf<dkk> S = a("deep_lukewarm_ocean");
+   public static final alf<dkk> T = a("ocean");
+   public static final alf<dkk> U = a("deep_ocean");
+   public static final alf<dkk> V = a("cold_ocean");
+   public static final alf<dkk> W = a("deep_cold_ocean");
+   public static final alf<dkk> X = a("frozen_ocean");
+   public static final alf<dkk> Y = a("deep_frozen_ocean");
+   public static final alf<dkk> Z = a("mushroom_fields");
+   public static final alf<dkk> aa = a("dripstone_caves");
+   public static final alf<dkk> ab = a("lush_caves");
+   public static final alf<dkk> ac = a("deep_dark");
+   public static final alf<dkk> ad = a("nether_wastes");
+   public static final alf<dkk> ae = a("warped_forest");
+   public static final alf<dkk> af = a("crimson_forest");
+   public static final alf<dkk> ag = a("soul_sand_valley");
+   public static final alf<dkk> ah = a("basalt_deltas");
+   public static final alf<dkk> ai = a("the_end");
+   public static final alf<dkk> aj = a("end_highlands");
+   public static final alf<dkk> ak = a("end_midlands");
+   public static final alf<dkk> al = a("small_end_islands");
+   public static final alf<dkk> am = a("end_barrens");
 
-public class dkr {
-   public static final Codec<dkr> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dkr.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), ale.c(mg.aG)).apply($$0, dkr::new)
-   );
-   public static final Codec<je<dkr>> b = alc.a(mg.aW, a);
-   private final dkr.a c;
-   private final dkm.c<je<dkd>> d;
-
-   public dkr(dkr.a $$0, jf<dkd> $$1) {
-      this.c = $$0;
-      this.d = $$0.e.apply($$1::b);
-   }
-
-   public dkm.c<je<dkd>> a() {
-      return this.d;
-   }
-
-   public static Map<dkr.a, dkm.c<alf<dkd>>> b() {
-      return dkr.a.f.values().stream().collect(Collectors.toMap($$0 -> (dkr.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
-   }
-
-   public static record a(alg d, dkr.a.a e) {
-      public static final dkr.a a = new dkr.a(
-         alg.b("nether"),
-         new dkr.a.a() {
-            @Override
-            public <T> dkm.c<T> apply(Function<alf<dkd>, T> $$0) {
-               return new dkm.c<>(
-                  List.of(
-                     Pair.of(dkm.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dkk.ad)),
-                     Pair.of(dkm.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dkk.ag)),
-                     Pair.of(dkm.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dkk.af)),
-                     Pair.of(dkm.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(dkk.ae)),
-                     Pair.of(dkm.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(dkk.ah))
-                  )
-               );
-            }
-         }
-      );
-      public static final dkr.a b = new dkr.a(alg.b("overworld"), new dkr.a.a() {
-         @Override
-         public <T> dkm.c<T> apply(Function<alf<dkd>, T> $$0) {
-            return dkr.a.a($$0);
-         }
-      });
-      static final Map<alg, dkr.a> f = Stream.of(a, b).collect(Collectors.toMap(dkr.a::b, $$0 -> (dkr.a)$$0));
-      public static final Codec<dkr.a> c = alg.a
-         .flatXmap(
-            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
-            $$0 -> DataResult.success($$0.d)
-         );
-
-      static <T> dkm.c<T> a(Function<alf<dkd>, T> $$0) {
-         Builder<Pair<dkm.d, T>> $$1 = ImmutableList.builder();
-         new dkt().a($$2 -> $$1.add($$2.mapSecond($$0)));
-         return new dkm.c<>($$1.build());
-      }
-
-      public Stream<alf<dkd>> a() {
-         return this.e.apply($$0 -> $$0).a().stream().<alf<dkd>>map(Pair::getSecond).distinct();
-      }
-
-      public alg b() {
-         return this.d;
-      }
-
-      public dkr.a.a c() {
-         return this.e;
-      }
-
-      @FunctionalInterface
-      interface a {
-         <T> dkm.c<T> apply(Function<alf<dkd>, T> var1);
-      }
+   private static alf<dkk> a(String $$0) {
+      return alf.a(mh.aG, alg.b($$0));
    }
 }

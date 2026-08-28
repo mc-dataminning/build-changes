@@ -4,9 +4,9 @@ import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
 public class art extends aqy {
    public static final int a = 33;
    protected final Long2ByteMap b = new Long2ByteOpenHashMap();
-   private final djx c;
+   private final dke c;
 
-   public art(djx $$0) {
+   public art(dke $$0) {
       super(34, 16, 256);
       this.c = $$0;
       $$0.b(this::b);
@@ -18,7 +18,7 @@ public class art extends aqy {
       return this.c.a($$0, true);
    }
 
-   public int a(dih $$0) {
+   public int a(dio $$0) {
       return this.c($$0.a());
    }
 

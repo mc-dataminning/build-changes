@@ -1,21 +1,7 @@
-public class dam extends dap {
-   public dam(cyz.a $$0) {
-      super($$0);
-   }
+public interface dam {
+   boolean a(djh var1, dza var2, boolean var3, crj var4);
 
-   @Override
-   public bud a(dja $$0, crc $$1, buc $$2) {
-      $$0.a(null, $$1.dA(), $$1.dC(), $$1.dG(), awn.zU, awo.h, 0.5F, 0.4F / ($$0.C_().i() * 0.4F + 0.8F));
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected crm a(arq $$0, bxe $$1, czd $$2) {
-      return new csk($$0, $$1, $$2);
-   }
-
-   @Override
-   protected crm a(dja $$0, jo $$1, czd $$2) {
-      return new csk($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
+   default boolean a(dzb $$0, crj $$1) {
+      return $$0.a($$1);
    }
 }

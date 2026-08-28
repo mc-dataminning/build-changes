@@ -1,265 +1,140 @@
-import it.unimi.dsi.fastutil.longs.Long2LongMap;
-import it.unimi.dsi.fastutil.longs.Long2LongMaps;
-import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.Long2LongMap.Entry;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.LongSummaryStatistics;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
-import java.util.function.BiConsumer;
-import java.util.function.LongPredicate;
-import java.util.function.Predicate;
 
-public class fgf<T> implements fge<T> {
-   private static final Comparator<fgd<?>> a = ($$0, $$1) -> fgi.b.compare($$0.b(), $$1.b());
-   private final LongPredicate b;
-   private final Long2ObjectMap<fgd<T>> c = new Long2ObjectOpenHashMap();
-   private final Long2LongMap d = af.a(new Long2LongOpenHashMap(), $$0x -> $$0x.defaultReturnValue(Long.MAX_VALUE));
-   private final Queue<fgd<T>> e = new PriorityQueue<>(a);
-   private final Queue<fgi<T>> f = new ArrayDeque<>();
-   private final List<fgi<T>> g = new ArrayList<>();
-   private final Set<fgi<?>> h = new ObjectOpenCustomHashSet(fgi.c);
-   private final BiConsumer<fgd<T>, fgi<T>> i = ($$0x, $$1) -> {
-      if ($$1.equals($$0x.b())) {
-         this.b($$1);
-      }
+public class fgf {
+   private static final Map<String, fgf> a = Maps.newHashMap();
+   private static final Map<String, fgf> p = Maps.newHashMap();
+   public static final Codec<fgf> b = Codec.STRING
+      .comapFlatMap($$0 -> a($$0).<DataResult>map(DataResult::success).orElse(DataResult.error(() -> "No scoreboard criteria with name: " + $$0)), fgf::d);
+   public static final fgf c = b("dummy");
+   public static final fgf d = b("trigger");
+   public static final fgf e = b("deathCount");
+   public static final fgf f = b("playerKillCount");
+   public static final fgf g = b("totalKillCount");
+   public static final fgf h = a("health", true, fgf.a.b);
+   public static final fgf i = a("food", true, fgf.a.a);
+   public static final fgf j = a("air", true, fgf.a.a);
+   public static final fgf k = a("armor", true, fgf.a.a);
+   public static final fgf l = a("xp", true, fgf.a.a);
+   public static final fgf m = a("level", true, fgf.a.a);
+   public static final fgf[] n = new fgf[]{
+      b("teamkill." + o.a.g()),
+      b("teamkill." + o.b.g()),
+      b("teamkill." + o.c.g()),
+      b("teamkill." + o.d.g()),
+      b("teamkill." + o.e.g()),
+      b("teamkill." + o.f.g()),
+      b("teamkill." + o.g.g()),
+      b("teamkill." + o.h.g()),
+      b("teamkill." + o.i.g()),
+      b("teamkill." + o.j.g()),
+      b("teamkill." + o.k.g()),
+      b("teamkill." + o.l.g()),
+      b("teamkill." + o.m.g()),
+      b("teamkill." + o.n.g()),
+      b("teamkill." + o.o.g()),
+      b("teamkill." + o.p.g())
    };
+   public static final fgf[] o = new fgf[]{
+      b("killedByTeam." + o.a.g()),
+      b("killedByTeam." + o.b.g()),
+      b("killedByTeam." + o.c.g()),
+      b("killedByTeam." + o.d.g()),
+      b("killedByTeam." + o.e.g()),
+      b("killedByTeam." + o.f.g()),
+      b("killedByTeam." + o.g.g()),
+      b("killedByTeam." + o.h.g()),
+      b("killedByTeam." + o.i.g()),
+      b("killedByTeam." + o.j.g()),
+      b("killedByTeam." + o.k.g()),
+      b("killedByTeam." + o.l.g()),
+      b("killedByTeam." + o.m.g()),
+      b("killedByTeam." + o.n.g()),
+      b("killedByTeam." + o.o.g()),
+      b("killedByTeam." + o.p.g())
+   };
+   private final String q;
+   private final boolean r;
+   private final fgf.a s;
 
-   public fgf(LongPredicate $$0) {
-      this.b = $$0;
+   private static fgf a(String $$0, boolean $$1, fgf.a $$2) {
+      fgf $$3 = new fgf($$0, $$1, $$2);
+      a.put($$0, $$3);
+      return $$3;
    }
 
-   public void a(dih $$0, fgd<T> $$1) {
-      long $$2 = $$0.a();
-      this.c.put($$2, $$1);
-      fgi<T> $$3 = $$1.b();
-      if ($$3 != null) {
-         this.d.put($$2, $$3.c());
-      }
-
-      $$1.a(this.i);
+   private static fgf b(String $$0) {
+      return a($$0, false, fgf.a.a);
    }
 
-   public void a(dih $$0) {
-      long $$1 = $$0.a();
-      fgd<T> $$2 = (fgd<T>)this.c.remove($$1);
-      this.d.remove($$1);
-      if ($$2 != null) {
-         $$2.a(null);
-      }
+   protected fgf(String $$0) {
+      this($$0, false, fgf.a.a);
    }
 
-   @Override
-   public void a(fgi<T> $$0) {
-      long $$1 = dih.a($$0.b());
-      fgd<T> $$2 = (fgd<T>)this.c.get($$1);
-      if ($$2 == null) {
-         af.b("Trying to schedule tick in not loaded position " + $$0.b());
+   protected fgf(String $$0, boolean $$1, fgf.a $$2) {
+      this.q = $$0;
+      this.r = $$1;
+      this.s = $$2;
+      p.put($$0, this);
+   }
+
+   public static Set<String> c() {
+      return ImmutableSet.copyOf(a.keySet());
+   }
+
+   public static Optional<fgf> a(String $$0) {
+      fgf $$1 = p.get($$0);
+      if ($$1 != null) {
+         return Optional.of($$1);
       } else {
-         $$2.a($$0);
+         int $$2 = $$0.indexOf(58);
+         return $$2 < 0 ? Optional.empty() : mg.v.b(alg.a($$0.substring(0, $$2), '.')).flatMap($$2x -> a($$2x, alg.a($$0.substring($$2 + 1), '.')));
       }
    }
 
-   public void a(long $$0, int $$1, BiConsumer<iu, T> $$2) {
-      bqo $$3 = bqn.a();
-      $$3.a("collect");
-      this.a($$0, $$1, $$3);
-      $$3.b("run");
-      $$3.a("ticksToRun", this.f.size());
-      this.a($$2);
-      $$3.b("cleanup");
-      this.c();
-      $$3.c();
+   private static <T> Optional<fgf> a(aww<T> $$0, alg $$1) {
+      return $$0.b().b($$1).map($$0::b);
    }
 
-   private void a(long $$0, int $$1, bqo $$2) {
-      this.a($$0);
-      $$2.a("containersToTick", this.e.size());
-      this.a($$0, $$1);
-      this.b();
+   public String d() {
+      return this.q;
    }
 
-   private void a(long $$0) {
-      ObjectIterator<Entry> $$1 = Long2LongMaps.fastIterator(this.d);
+   public boolean e() {
+      return this.r;
+   }
 
-      while ($$1.hasNext()) {
-         Entry $$2 = (Entry)$$1.next();
-         long $$3 = $$2.getLongKey();
-         long $$4 = $$2.getLongValue();
-         if ($$4 <= $$0) {
-            fgd<T> $$5 = (fgd<T>)this.c.get($$3);
-            if ($$5 == null) {
-               $$1.remove();
-            } else {
-               fgi<T> $$6 = $$5.b();
-               if ($$6 == null) {
-                  $$1.remove();
-               } else if ($$6.c() > $$0) {
-                  $$2.setValue($$6.c());
-               } else if (this.b.test($$3)) {
-                  $$1.remove();
-                  this.e.add($$5);
-               }
-            }
-         }
+   public fgf.a f() {
+      return this.s;
+   }
+
+   public static enum a implements bak {
+      a("integer"),
+      b("hearts");
+
+      private final String d;
+      public static final bak.a<fgf.a> c = bak.a(fgf.a::values);
+
+      private a(final String $$0) {
+         this.d = $$0;
       }
-   }
 
-   private void a(long $$0, int $$1) {
-      fgd<T> $$2;
-      while (this.a($$1) && ($$2 = this.e.poll()) != null) {
-         fgi<T> $$3 = $$2.c();
-         this.c($$3);
-         this.a(this.e, $$2, $$0, $$1);
-         fgi<T> $$4 = $$2.b();
-         if ($$4 != null) {
-            if ($$4.c() <= $$0 && this.a($$1)) {
-               this.e.add($$2);
-            } else {
-               this.b($$4);
-            }
-         }
+      public String a() {
+         return this.d;
       }
-   }
 
-   private void b() {
-      for (fgd<T> $$0 : this.e) {
-         this.b($$0.b());
+      @Override
+      public String c() {
+         return this.d;
       }
-   }
 
-   private void b(fgi<T> $$0) {
-      this.d.put(dih.a($$0.b()), $$0.c());
-   }
-
-   private void a(Queue<fgd<T>> $$0, fgd<T> $$1, long $$2, int $$3) {
-      if (this.a($$3)) {
-         fgd<T> $$4 = $$0.peek();
-         fgi<T> $$5 = $$4 != null ? $$4.b() : null;
-
-         while (this.a($$3)) {
-            fgi<T> $$6 = $$1.b();
-            if ($$6 == null || $$6.c() > $$2 || $$5 != null && fgi.b.compare($$6, $$5) > 0) {
-               break;
-            }
-
-            $$1.c();
-            this.c($$6);
-         }
+      public static fgf.a a(String $$0) {
+         return c.a($$0, a);
       }
-   }
-
-   private void c(fgi<T> $$0) {
-      this.f.add($$0);
-   }
-
-   private boolean a(int $$0) {
-      return this.f.size() < $$0;
-   }
-
-   private void a(BiConsumer<iu, T> $$0) {
-      while (!this.f.isEmpty()) {
-         fgi<T> $$1 = this.f.poll();
-         if (!this.h.isEmpty()) {
-            this.h.remove($$1);
-         }
-
-         this.g.add($$1);
-         $$0.accept($$1.b(), $$1.a());
-      }
-   }
-
-   private void c() {
-      this.f.clear();
-      this.e.clear();
-      this.g.clear();
-      this.h.clear();
-   }
-
-   @Override
-   public boolean a(iu $$0, T $$1) {
-      fgd<T> $$2 = (fgd<T>)this.c.get(dih.a($$0));
-      return $$2 != null && $$2.a($$0, $$1);
-   }
-
-   @Override
-   public boolean b(iu $$0, T $$1) {
-      this.d();
-      return this.h.contains(fgi.a($$1, $$0));
-   }
-
-   private void d() {
-      if (this.h.isEmpty() && !this.f.isEmpty()) {
-         this.h.addAll(this.f);
-      }
-   }
-
-   private void a(eqt $$0, fgf.a<T> $$1) {
-      int $$2 = jx.a((double)$$0.h());
-      int $$3 = jx.a((double)$$0.j());
-      int $$4 = jx.a((double)$$0.k());
-      int $$5 = jx.a((double)$$0.m());
-
-      for (int $$6 = $$2; $$6 <= $$4; $$6++) {
-         for (int $$7 = $$3; $$7 <= $$5; $$7++) {
-            long $$8 = dih.c($$6, $$7);
-            fgd<T> $$9 = (fgd<T>)this.c.get($$8);
-            if ($$9 != null) {
-               $$1.accept($$8, $$9);
-            }
-         }
-      }
-   }
-
-   public void a(eqt $$0) {
-      Predicate<fgi<T>> $$1 = $$1x -> $$0.b($$1x.b());
-      this.a($$0, ($$1x, $$2) -> {
-         fgi<T> $$3 = $$2.b();
-         $$2.a($$1);
-         fgi<T> $$4 = $$2.b();
-         if ($$4 != $$3) {
-            if ($$4 != null) {
-               this.b($$4);
-            } else {
-               this.d.remove($$1x);
-            }
-         }
-      });
-      this.g.removeIf($$1);
-      this.f.removeIf($$1);
-   }
-
-   public void a(eqt $$0, jz $$1) {
-      this.a(this, $$0, $$1);
-   }
-
-   public void a(fgf<T> $$0, eqt $$1, jz $$2) {
-      List<fgi<T>> $$3 = new ArrayList<>();
-      Predicate<fgi<T>> $$4 = $$1x -> $$1.b($$1x.b());
-      $$0.g.stream().filter($$4).forEach($$3::add);
-      $$0.f.stream().filter($$4).forEach($$3::add);
-      $$0.a($$1, ($$2x, $$3x) -> $$3x.d().filter($$4).forEach($$3::add));
-      LongSummaryStatistics $$5 = $$3.stream().mapToLong(fgi::e).summaryStatistics();
-      long $$6 = $$5.getMin();
-      long $$7 = $$5.getMax();
-      $$3.forEach($$3x -> this.a(new fgi<>((T)$$3x.a(), $$3x.b().a($$2), $$3x.c(), $$3x.d(), $$3x.e() - $$6 + $$7 + 1L)));
-   }
-
-   @Override
-   public int a() {
-      return this.c.values().stream().mapToInt(fgk::a).sum();
-   }
-
-   @FunctionalInterface
-   interface a<T> {
-      void accept(long var1, fgd<T> var3);
    }
 }

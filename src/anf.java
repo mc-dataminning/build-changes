@@ -7,21 +7,21 @@ import net.minecraft.server.MinecraftServer;
 public class anf {
    private static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wy.b("commands.difficulty.failure", $$0));
 
-   public static void a(CommandDispatcher<ei> $$0) {
-      LiteralArgumentBuilder<ei> $$1 = ej.a("difficulty");
+   public static void a(CommandDispatcher<ej> $$0) {
+      LiteralArgumentBuilder<ej> $$1 = ek.a("difficulty");
 
-      for (bua $$2 : bua.values()) {
-         $$1.then(ej.a($$2.e()).executes($$1x -> a((ei)$$1x.getSource(), $$2)));
+      for (bud $$2 : bud.values()) {
+         $$1.then(ek.a($$2.e()).executes($$1x -> a((ej)$$1x.getSource(), $$2)));
       }
 
       $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)$$1.requires($$0x -> $$0x.c(2))).executes($$0x -> {
-         bua $$1x = ((ei)$$0x.getSource()).e().an();
-         ((ei)$$0x.getSource()).a(() -> wy.a("commands.difficulty.query", $$1x.b()), false);
+         bud $$1x = ((ej)$$0x.getSource()).e().an();
+         ((ej)$$0x.getSource()).a(() -> wy.a("commands.difficulty.query", $$1x.b()), false);
          return $$1x.a();
       }));
    }
 
-   public static int a(ei $$0, bua $$1) throws CommandSyntaxException {
+   public static int a(ej $$0, bud $$1) throws CommandSyntaxException {
       MinecraftServer $$2 = $$0.l();
       if ($$2.aZ().q() == $$1) {
          throw a.create($$1.e());

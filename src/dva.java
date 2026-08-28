@@ -1,38 +1,35 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dva extends dlr implements dpr {
-   public static final MapCodec<dva> a = b(dva::new);
+public class dva extends doz implements dmp {
+   public static final MapCodec<dva> b = b(dva::new);
+   private static final ffr c = dmm.b(14.0, 0.0, 16.0);
 
-   public dva(eag.d $$0) {
+   @Override
+   public MapCodec<dva> a() {
+      return b;
+   }
+
+   protected dva(ean.d $$0) {
       super($$0);
    }
 
-   @Nullable
    @Override
-   public dxf a(iu $$0, eah $$1) {
-      return new dza($$0, $$1);
+   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
+      return c;
    }
 
    @Override
-   protected bud a(eah $$0, dja $$1, iu $$2, crc $$3, fem $$4) {
-      if ($$1.c_($$2) instanceof dza $$6) {
-         if (!$$3.gG()) {
-            return bud.e;
-         } else {
-            if ($$3.cU().C) {
-               $$3.a($$6);
-            }
-
-            return bud.a;
-         }
-      } else {
-         return bud.e;
-      }
+   public boolean a(djk $$0, iv $$1, eao $$2) {
+      return dmp.a_($$0, $$1, dmo.bE.m());
    }
 
    @Override
-   protected MapCodec<dva> a() {
-      return a;
+   public boolean a(djh $$0, azv $$1, iv $$2, eao $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arq $$0, azv $$1, iv $$2, eao $$3) {
+      dmp.a((djh)$$0, $$2, dmo.bE.m()).ifPresent($$1x -> $$0.b($$1x, dmo.bE.m()));
    }
 }

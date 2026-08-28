@@ -3,79 +3,61 @@ import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import com.mojang.datafixers.util.Either;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
-import org.apache.commons.io.FilenameUtils;
+import java.util.function.Predicate;
 
-public class fn<T> implements ArgumentType<Collection<je.c<T>>> {
-   private static final Collection<String> b = List.of("minecraft:*", "*:asset", "*");
-   public static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> wy.b("argument.resource_selector.not_found", $$0, $$1));
-   final alf<? extends jr<T>> c;
-   private final jg<T> d;
+public class fn<T> implements ArgumentType<fn.c<T>> {
+   private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012", "#skeletons", "#minecraft:skeletons");
+   final alf<? extends js<T>> b;
 
-   fn(ee $$0, alf<? extends jr<T>> $$1) {
-      this.c = $$1;
-      this.d = $$0.e($$1);
+   public fn(alf<? extends js<T>> $$0) {
+      this.b = $$0;
    }
 
-   public Collection<je.c<T>> a(StringReader $$0) throws CommandSyntaxException {
-      String $$1 = a(b($$0));
-      List<je.c<T>> $$2 = this.d.c().filter($$1x -> a($$1, $$1x.h().a())).toList();
-      if ($$2.isEmpty()) {
-         throw a.createWithContext($$0, $$1, this.c.a());
+   public static <T> fn<T> a(alf<? extends js<T>> $$0) {
+      return new fn<>($$0);
+   }
+
+   public static <T> fn.c<T> a(CommandContext<ej> $$0, String $$1, alf<js<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
+      fn.c<?> $$4 = (fn.c<?>)$$0.getArgument($$1, fn.c.class);
+      Optional<fn.c<T>> $$5 = $$4.a($$2);
+      return $$5.orElseThrow(() -> $$3.create($$4));
+   }
+
+   public fn.c<T> a(StringReader $$0) throws CommandSyntaxException {
+      if ($$0.canRead() && $$0.peek() == '#') {
+         int $$1 = $$0.getCursor();
+
+         try {
+            $$0.skip();
+            alg $$2 = alg.a($$0);
+            return new fn.d<>(axr.a(this.b, $$2));
+         } catch (CommandSyntaxException var4) {
+            $$0.setCursor($$1);
+            throw var4;
+         }
       } else {
-         return $$2;
+         alg $$4 = alg.a($$0);
+         return new fn.b<>(alf.a(this.b, $$4));
       }
-   }
-
-   public static <T> Collection<je.c<T>> a(StringReader $$0, jg<T> $$1) {
-      String $$2 = a(b($$0));
-      return $$1.c().filter($$1x -> a($$2, $$1x.h().a())).toList();
-   }
-
-   private static String b(StringReader $$0) {
-      int $$1 = $$0.getCursor();
-
-      while ($$0.canRead() && a($$0.peek())) {
-         $$0.skip();
-      }
-
-      return $$0.getString().substring($$1, $$0.getCursor());
-   }
-
-   private static boolean a(char $$0) {
-      return alg.a($$0) || $$0 == '*' || $$0 == '?';
-   }
-
-   private static String a(String $$0) {
-      return !$$0.contains(":") ? "minecraft:" + $$0 : $$0;
-   }
-
-   private static boolean a(String $$0, alg $$1) {
-      return FilenameUtils.wildcardMatch($$1.toString(), $$0);
-   }
-
-   public static <T> fn<T> a(ee $$0, alf<? extends jr<T>> $$1) {
-      return new fn<>($$0, $$1);
-   }
-
-   public static <T> Collection<je.c<T>> a(CommandContext<ei> $$0, String $$1, alf<? extends jr<T>> $$2) {
-      return (Collection<je.c<T>>)$$0.getArgument($$1, Collection.class);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return en.b(this.d.c_().map(alf::a).map(alg::toString), $$1);
+      return $$0.getSource() instanceof eo $$2 ? $$2.a(this.b, eo.a.c, $$1, $$0) : $$1.buildFuture();
    }
 
    public Collection<String> getExamples() {
-      return b;
+      return a;
    }
 
-   public static class a<T> implements ie<fn<T>, fn.a<T>.a> {
+   public static class a<T> implements ig<fn<T>, fn.a<T>.a> {
       public void a(fn.a<T>.a $$0, vu $$1) {
          $$1.b($$0.b);
       }
@@ -89,24 +71,82 @@ public class fn<T> implements ArgumentType<Collection<je.c<T>>> {
       }
 
       public fn.a<T>.a a(fn<T> $$0) {
-         return new fn.a.a($$0.c);
+         return new fn.a.a($$0.b);
       }
 
-      public final class a implements ie.a<fn<T>> {
-         final alf<? extends jr<T>> b;
+      public final class a implements ig.a<fn<T>> {
+         final alf<? extends js<T>> b;
 
-         a(final alf<? extends jr<T>> $$1) {
+         a(final alf<? extends js<T>> $$1) {
             this.b = $$1;
          }
 
-         public fn<T> a(ee $$0) {
-            return new fn<>($$0, this.b);
+         public fn<T> a(ef $$0) {
+            return new fn<>(this.b);
          }
 
          @Override
-         public ie<fn<T>, ?> a() {
+         public ig<fn<T>, ?> a() {
             return a.this;
          }
+      }
+   }
+
+   static record b<T>(alf<T> a) implements fn.c<T> {
+      @Override
+      public Either<alf<T>, axr<T>> a() {
+         return Either.left(this.a);
+      }
+
+      @Override
+      public <E> Optional<fn.c<E>> a(alf<? extends js<E>> $$0) {
+         return this.a.d($$0).map(fn.b::new);
+      }
+
+      public boolean a(jf<T> $$0) {
+         return $$0.a(this.a);
+      }
+
+      @Override
+      public String b() {
+         return this.a.a().toString();
+      }
+
+      public alf<T> c() {
+         return this.a;
+      }
+   }
+
+   public interface c<T> extends Predicate<jf<T>> {
+      Either<alf<T>, axr<T>> a();
+
+      <E> Optional<fn.c<E>> a(alf<? extends js<E>> var1);
+
+      String b();
+   }
+
+   static record d<T>(axr<T> a) implements fn.c<T> {
+      @Override
+      public Either<alf<T>, axr<T>> a() {
+         return Either.right(this.a);
+      }
+
+      @Override
+      public <E> Optional<fn.c<E>> a(alf<? extends js<E>> $$0) {
+         return this.a.e($$0).map(fn.d::new);
+      }
+
+      public boolean a(jf<T> $$0) {
+         return $$0.a(this.a);
+      }
+
+      @Override
+      public String b() {
+         return "#" + this.a.b();
+      }
+
+      public axr<T> c() {
+         return this.a;
       }
    }
 }

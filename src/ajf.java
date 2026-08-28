@@ -7,11 +7,11 @@ public class ajf implements zf<ajb> {
    }
 
    private ajf(vu $$0) {
-      this.b = wy.a.b($$0.d(262144), js.b);
+      this.b = wy.a.b($$0.d(262144), jt.b);
    }
 
    private void a(vu $$0) {
-      $$0.a(wy.a.a(this.b, js.b));
+      $$0.a(wy.a.a(this.b, jt.b));
    }
 
    @Override

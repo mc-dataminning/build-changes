@@ -6,7 +6,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public record xz(String d, @Nullable gh e) implements ya {
+public record xz(String d, @Nullable gi e) implements ya {
    public static final MapCodec<xz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block").forGetter(xz::b)).apply($$0, xz::new));
    public static final ya.a<xz> b = new ya.a<>(a, "block");
 
@@ -15,21 +15,21 @@ public record xz(String d, @Nullable gh e) implements ya {
    }
 
    @Nullable
-   private static gh a(String $$0) {
+   private static gi a(String $$0) {
       try {
-         return gf.a().a(new StringReader($$0));
+         return gg.a().a(new StringReader($$0));
       } catch (CommandSyntaxException var2) {
          return null;
       }
    }
 
    @Override
-   public Stream<tz> a(ei $$0) {
+   public Stream<tz> a(ej $$0) {
       if (this.e != null) {
          arq $$1 = $$0.e();
-         iu $$2 = this.e.c($$0);
+         iv $$2 = this.e.c($$0);
          if ($$1.p($$2)) {
-            dxf $$3 = $$1.c_($$2);
+            dxm $$3 = $$1.c_($$2);
             if ($$3 != null) {
                return Stream.of($$3.b($$0.u()));
             }
@@ -72,7 +72,7 @@ public record xz(String d, @Nullable gh e) implements ya {
    }
 
    @Nullable
-   public gh c() {
+   public gi c() {
       return this.e;
    }
 }

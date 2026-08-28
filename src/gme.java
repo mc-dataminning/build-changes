@@ -1,45 +1,22 @@
-public class gme extends goi {
-   private final god a;
+import com.mojang.logging.LogUtils;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.net.UnknownHostException;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-   gme(gjz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, god $$7) {
-      super($$0, $$1, $$2, $$3);
-      this.a = $$7;
-      this.t = 4;
-      this.u = 0.008F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.b($$7);
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         this.k = this.k - (double)this.u;
-         this.a(this.j, this.k, this.l);
-         this.b(this.a);
+@FunctionalInterface
+public interface gme {
+   Logger a = LogUtils.getLogger();
+   gme b = $$0 -> {
+      try {
+         InetAddress $$1 = InetAddress.getByName($$0.a());
+         return Optional.of(gmc.a(new InetSocketAddress($$1, $$0.b())));
+      } catch (UnknownHostException var2) {
+         a.debug("Couldn't resolve server {} address", $$0.a(), var2);
+         return Optional.empty();
       }
-   }
+   };
 
-   @Override
-   public gnm b() {
-      return gnm.b;
-   }
-
-   public static class a implements gnl<mb> {
-      private final god a;
-
-      public a(god $$0) {
-         this.a = $$0;
-      }
-
-      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gme($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-      }
-   }
+   Optional<gmc> resolve(gmd var1);
 }

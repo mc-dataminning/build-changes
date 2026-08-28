@@ -11,7 +11,7 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 public class us implements va {
-   private static final Map<String, List<String>> a = af.a(Maps.newHashMap(), $$0 -> {
+   private static final Map<String, List<String>> a = ag.a(Maps.newHashMap(), $$0 -> {
       $$0.put("{}", Lists.newArrayList(new String[]{"DataVersion", "author", "size", "data", "entities", "palette", "palettes"}));
       $$0.put("{}.data.[].{}", Lists.newArrayList(new String[]{"pos", "state", "nbt"}));
       $$0.put("{}.entities.[].{}", Lists.newArrayList(new String[]{"blockPos", "pos"}));
@@ -178,7 +178,7 @@ public class us implements va {
 
          while ($$4.hasNext()) {
             String $$5 = $$4.next();
-            uw $$6 = $$0.c($$5);
+            uw $$6 = $$0.a($$5);
             this.b($$5);
             $$1.append(Strings.repeat($$2, this.n + 1)).append(a($$5)).append(d).append(" ").append(new us($$2, this.n + 1, this.o).a($$6));
             this.b();

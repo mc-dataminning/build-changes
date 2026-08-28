@@ -1,16 +1,24 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public interface hib<T> {
-   void a(@Nullable T var1, czb var2, fjj var3, gqa var4, int var5, int var6, boolean var7);
+public record hib() implements hia<alf<dhx>> {
+   public static final Codec<alf<dhx>> a = alf.a(mh.bk);
+   public static final hia.a<hib, alf<dhx>> b = hia.a.a(MapCodec.unit(new hib()), a);
 
    @Nullable
-   T b(czd var1);
+   public alf<dhx> a(czk $$0, @Nullable gkl $$1, @Nullable bxj $$2, int $$3, czi $$4) {
+      dhv $$5 = $$0.a(kk.W);
+      return $$5 == null ? null : $$5.a().e().orElse(null);
+   }
 
-   public interface a {
-      @Nullable
-      hib<?> a(giy var1);
+   @Override
+   public hia.a<hib, alf<dhx>> a() {
+      return b;
+   }
 
-      MapCodec<? extends hib.a> a();
+   @Override
+   public Codec<alf<dhx>> b() {
+      return a;
    }
 }

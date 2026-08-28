@@ -1,52 +1,40 @@
-public class cyl extends cyz implements czx {
-   public static final byte[] a = new byte[]{1, 2, 3};
-   public static final double b = 0.15;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.Optional;
+import java.util.function.Function;
 
-   public cyl(cyz.a $$0) {
-      super($$0);
+public record cyl<T>(Either<jf<T>, alf<T>> a) {
+   public cyl(jf<T> $$0) {
+      this(Either.left($$0));
    }
 
-   @Override
-   public bud a(dcy $$0) {
-      dja $$1 = $$0.q();
-      if ($$1 instanceof arq $$2) {
-         czd $$3 = $$0.n();
-         feq $$4 = $$0.l();
-         ja $$5 = $$0.k();
-         crx.a(new crs($$1, $$0.o(), $$4.d + (double)$$5.j() * 0.15, $$4.e + (double)$$5.k() * 0.15, $$4.f + (double)$$5.l() * 0.15, $$3), $$2, $$3);
-         $$3.h(1);
-      }
-
-      return bud.a;
+   public cyl(alf<T> $$0) {
+      this(Either.right($$0));
    }
 
-   @Override
-   public bud a(dja $$0, crc $$1, buc $$2) {
-      if ($$1.fJ()) {
-         czd $$3 = $$1.b($$2);
-         if ($$0 instanceof arq $$4) {
-            crx.a(new crs($$0, $$3, $$1), $$4, $$3);
-            $$3.a(1, $$1);
-            $$1.b(awx.c.b(this));
-         }
-
-         return bud.a;
-      } else {
-         return bud.e;
-      }
+   public static <T> Codec<cyl<T>> a(alf<js<T>> $$0, Codec<jf<T>> $$1) {
+      return Codec.either($$1, alf.a($$0).comapFlatMap($$0x -> DataResult.error(() -> "Cannot parse as key without registry"), Function.identity()))
+         .xmap(cyl::new, cyl::b);
    }
 
-   @Override
-   public crx a(dja $$0, jo $$1, czd $$2, ja $$3) {
-      return new crs($$0, $$2.c(1), $$1.a(), $$1.b(), $$1.c(), true);
+   public static <T> yw<wj, cyl<T>> a(alf<js<T>> $$0, yw<wj, jf<T>> $$1) {
+      return yw.a(yu.a($$1, alf.b($$0)), cyl::b, cyl::new);
    }
 
-   @Override
-   public czx.a a() {
-      return czx.a.a().a(cyl::a).a(1.0F).b(0.5F).a(1004).a();
+   public Optional<T> a(js<T> $$0) {
+      return (Optional<T>)this.a.map($$0x -> Optional.of($$0x.a()), $$0::f);
    }
 
-   private static feq a(ld $$0, ja $$1) {
-      return $$0.a().b((double)$$1.j() * 0.5000099999997474, (double)$$1.k() * 0.5000099999997474, (double)$$1.l() * 0.5000099999997474);
+   public Optional<jf<T>> a(jh.a $$0) {
+      return (Optional<jf<T>>)this.a.map(Optional::of, $$1 -> $$0.c($$1).map($$0xx -> $$0xx));
+   }
+
+   public Optional<alf<T>> a() {
+      return (Optional<alf<T>>)this.a.map(jf::e, Optional::of);
+   }
+
+   public Either<jf<T>, alf<T>> b() {
+      return this.a;
    }
 }

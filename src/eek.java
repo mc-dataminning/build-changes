@@ -1,24 +1,15 @@
-import java.util.List;
-import java.util.stream.Stream;
-
-public class eek<T> {
-   private final dih a;
-   private final List<T> b;
-
-   public eek(dih $$0, List<T> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public dih a() {
-      return this.a;
-   }
-
-   public Stream<T> b() {
-      return this.b.stream();
-   }
-
-   public boolean c() {
-      return this.b.isEmpty();
-   }
+public class eek {
+   public static final int a = -64;
+   public static final int b = 384;
+   public static final int c = 384;
+   public static final int d = 384;
+   public static final int e = 0;
+   public static final int f = 256;
+   public static final int g = 128;
+   public static final int h = 128;
+   public static final int i = 0;
+   public static final int j = 256;
+   public static final int k = 128;
+   public static final int l = 256;
+   public static final int m = 63;
 }

@@ -56,7 +56,7 @@ public class ayd<T> extends AbstractCollection<T> {
       if (!this.b.isAssignableFrom($$0)) {
          throw new IllegalArgumentException("Don't know how to search for " + $$0);
       } else {
-         List<? extends T> $$1 = this.a.computeIfAbsent($$0, $$0x -> this.c.stream().filter($$0x::isInstance).collect(af.b()));
+         List<? extends T> $$1 = this.a.computeIfAbsent($$0, $$0x -> this.c.stream().filter($$0x::isInstance).collect(ag.b()));
          return (Collection<S>)Collections.unmodifiableCollection($$1);
       }
    }

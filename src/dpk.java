@@ -1,84 +1,52 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
 
-public class dpk extends dvr implements dmi, dtm {
-   public static final MapCodec<dpk> a = b(dpk::new);
-   public static final ebf<ja> b = eax.T;
-   public static final ebh c = eax.U;
-   private final Function<eah, ffk> g;
-
-   @Override
-   public MapCodec<dpk> a() {
-      return a;
-   }
-
-   protected dpk(eag.d $$0) {
+public abstract class dpk extends dmm implements dpj {
+   public dpk(ean.d $$0) {
       super($$0);
-      this.l(this.C.b().b(b, ja.c).b(c, Integer.valueOf(1)));
-      this.g = this.q();
-   }
-
-   private Function<eah, ffk> q() {
-      return this.a(this.a(b, c));
    }
 
    @Override
-   public eah a(eah $$0, dsz $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
+   protected abstract MapCodec<? extends dpk> a();
+
+   @Override
+   protected void a(eao $$0, djh $$1, iv $$2, eao $$3, boolean $$4) {
+      $$1.a($$2, this, this.b());
    }
 
    @Override
-   public eah a(eah $$0, dri $$1) {
-      return $$0.a($$1.a($$0.c(b)));
+   protected eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
+      $$2.a($$3, this, this.b());
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   public boolean a(eah $$0, dcw $$1) {
-      return this.a($$0, $$1, c) ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   public ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
-      return this.g.apply($$0);
-   }
-
-   @Override
-   public double b() {
-      return 3.0;
-   }
-
-   @Override
-   public ebh c() {
-      return c;
-   }
-
-   @Override
-   public eah a(dcw $$0) {
-      return this.a($$0, this, c, b);
-   }
-
-   @Override
-   protected void a(eai.a<dmf, eah> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public boolean a(djd $$0, iu $$1, eah $$2) {
-      return true;
-   }
-
-   @Override
-   public boolean a(dja $$0, azv $$1, iu $$2, eah $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arq $$0, azv $$1, iu $$2, eah $$3) {
-      int $$4 = $$3.c(c);
-      if ($$4 < 4) {
-         $$0.a($$2, $$3.b(c, Integer.valueOf($$4 + 1)), 2);
-      } else {
-         a($$0, $$2, new czd(this));
+   protected void a(eao $$0, arq $$1, iv $$2, azv $$3) {
+      if (n($$1.a_($$2.e())) && $$2.v() >= $$1.G_()) {
+         cnn $$4 = cnn.a($$1, $$2, $$0);
+         this.a($$4);
       }
    }
+
+   protected void a(cnn $$0) {
+   }
+
+   protected int b() {
+      return 2;
+   }
+
+   public static boolean n(eao $$0) {
+      return $$0.l() || $$0.a(axc.aN) || $$0.n() || $$0.v();
+   }
+
+   @Override
+   public void a(eao $$0, djh $$1, iv $$2, azv $$3) {
+      if ($$3.a(16) == 0) {
+         iv $$4 = $$2.e();
+         if (n($$1.a_($$4))) {
+            azq.a($$1, $$2, $$3, new lq(ly.C, $$0));
+         }
+      }
+   }
+
+   public abstract int b(eao var1, din var2, iv var3);
 }

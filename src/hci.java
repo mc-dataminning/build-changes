@@ -1,3 +1,7 @@
-public class hci extends hdc {
-   public boolean a;
+public class hci extends hdz {
+   public float a;
+   public boolean b = true;
+   public boolean c;
+   public boolean d;
+   public boolean e;
 }

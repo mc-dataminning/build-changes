@@ -1,58 +1,38 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 import java.util.Optional;
 
-public record bs(Optional<ji<dfq>> b, cv.d c) {
-   public static final Codec<bs> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(jt.a(mg.aR).optionalFieldOf("enchantments").forGetter(bs::a), cv.d.d.optionalFieldOf("levels", cv.d.c).forGetter(bs::b))
-            .apply($$0, bs::new)
-   );
-
-   public bs(je<dfq> $$0, cv.d $$1) {
-      this(Optional.of(ji.a($$0)), $$1);
+public class bs extends dk<bs.a> {
+   @Override
+   public Codec<bs.a> a() {
+      return bs.a.a;
    }
 
-   public bs(ji<dfq> $$0, cv.d $$1) {
-      this(Optional.of($$0), $$1);
+   public void a(arr $$0, czk $$1, int $$2) {
+      this.a($$0, $$2x -> $$2x.a($$1, $$2));
    }
 
-   public boolean a(dfw $$0) {
-      if (this.b.isPresent()) {
-         for (je<dfq> $$1 : this.b.get()) {
-            if (this.a($$0, $$1)) {
-               return true;
-            }
-         }
+   public static record a(Optional<bj> b, Optional<cm> c, cw.d d) implements dk.a {
+      public static final Codec<bs.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  by.b.optionalFieldOf("player").forGetter(bs.a::a),
+                  cm.a.optionalFieldOf("item").forGetter(bs.a::c),
+                  cw.d.d.optionalFieldOf("levels", cw.d.c).forGetter(bs.a::d)
+               )
+               .apply($$0, bs.a::new)
+      );
 
-         return false;
-      } else if (this.c != cv.d.c) {
-         for (Entry<je<dfq>> $$2 : $$0.b()) {
-            if (this.c.d($$2.getIntValue())) {
-               return true;
-            }
-         }
-
-         return false;
-      } else {
-         return !$$0.d();
+      public static ar<bs.a> b() {
+         return aq.j.a(new bs.a(Optional.empty(), Optional.empty(), cw.d.c));
       }
-   }
 
-   private boolean a(dfw $$0, je<dfq> $$1) {
-      int $$2 = $$0.a($$1);
-      if ($$2 == 0) {
-         return false;
-      } else {
-         return this.c == cv.d.c ? true : this.c.d($$2);
+      public boolean a(czk $$0, int $$1) {
+         return this.c.isPresent() && !this.c.get().a($$0) ? false : this.d.d($$1);
       }
-   }
 
-   public Optional<ji<dfq>> a() {
-      return this.b;
-   }
-
-   public cv.d b() {
-      return this.c;
+      @Override
+      public Optional<bj> a() {
+         return this.b;
+      }
    }
 }

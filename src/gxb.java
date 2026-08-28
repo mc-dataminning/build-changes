@@ -1,59 +1,43 @@
-import java.util.Arrays;
+public class gxb extends gvn<cjo, hdi, ggo> {
+   private static final alg a = alg.b("textures/entity/fox/fox.png");
+   private static final alg j = alg.b("textures/entity/fox/fox_sleep.png");
+   private static final alg k = alg.b("textures/entity/fox/snow_fox.png");
+   private static final alg l = alg.b("textures/entity/fox/snow_fox_sleep.png");
 
-public class gxb extends gxa<cob, hdg> {
-   private static final alg a = alg.b("textures/entity/illager/illusioner.png");
-
-   public gxb(gwh.a $$0) {
-      super($$0, new ggn<>($$0.a(gjb.bz)), 0.5F);
-      this.a(new han<hdg, ggn<hdg>>(this) {
-         public void a(fjj $$0, gqa $$1, int $$2, hdg $$3, float $$4, float $$5) {
-            if ($$3.n || $$3.c) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5);
-            }
-         }
-      });
-      this.g.c().k = true;
+   public gxb(gwt.a $$0) {
+      super($$0, new ggo($$0.a(gjn.aX)), new ggo($$0.a(gjn.aY)), 0.4F);
+      this.a(new hau(this));
    }
 
-   public alg a(hdg $$0) {
-      return a;
-   }
-
-   public hdg b() {
-      return new hdg();
-   }
-
-   public void a(cob $$0, hdg $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      feq[] $$3 = $$0.J($$2);
-      $$1.a = Arrays.copyOf($$3, $$3.length);
-      $$1.n = $$0.gy();
-   }
-
-   public void a(hdg $$0, fjj $$1, gqa $$2, int $$3) {
-      if ($$0.z) {
-         feq[] $$4 = $$0.a;
-
-         for (int $$5 = 0; $$5 < $$4.length; $$5++) {
-            $$1.a();
-            $$1.a(
-               $$4[$$5].d + (double)azm.b((float)$$5 + $$0.u * 0.5F) * 0.025,
-               $$4[$$5].e + (double)azm.b((float)$$5 + $$0.u * 0.75F) * 0.0125,
-               $$4[$$5].f + (double)azm.b((float)$$5 + $$0.u * 0.7F) * 0.025
-            );
-            super.a($$0, $$1, $$2, $$3);
-            $$1.b();
-         }
-      } else {
-         super.a($$0, $$1, $$2, $$3);
+   protected void a(hdi $$0, fjy $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$0.g || $$0.f) {
+         $$1.a(a.b.rotationDegrees(-$$0.ab));
       }
    }
 
-   protected boolean b(hdg $$0) {
-      return true;
+   public alg a(hdi $$0) {
+      if ($$0.h == cjo.v.a) {
+         return $$0.d ? j : a;
+      } else {
+         return $$0.d ? l : k;
+      }
    }
 
-   protected fel a(cob $$0) {
-      return super.a($$0).c(3.0, 0.0, 3.0);
+   public hdi b() {
+      return new hdi();
+   }
+
+   public void a(cjo $$0, hdi $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      hdo.a($$0, $$1, this.h);
+      $$1.a = $$0.J($$2);
+      $$1.c = $$0.cg();
+      $$1.b = $$0.K($$2);
+      $$1.d = $$0.fQ();
+      $$1.e = $$0.x();
+      $$1.f = $$0.gt();
+      $$1.g = $$0.gu();
+      $$1.h = $$0.t();
    }
 }

@@ -1,92 +1,100 @@
-import java.util.ArrayList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class oi implements od {
-   private final jf<cyz> b;
-   private final oe c;
-   private final czd d;
-   private final List<ddq> e = new ArrayList<>();
-   private final Map<String, aq<?>> f = new LinkedHashMap<>();
+public class oi implements oe {
+   private final jg<czg> b;
+   private final of c;
+   private final czg d;
+   private final int e;
+   private final List<String> f = Lists.newArrayList();
+   private final Map<Character, ddx> g = Maps.newLinkedHashMap();
+   private final Map<String, ar<?>> h = new LinkedHashMap<>();
    @Nullable
-   private String g;
+   private String i;
+   private boolean j = true;
 
-   private oi(jf<cyz> $$0, oe $$1, czd $$2) {
+   private oi(jg<czg> $$0, of $$1, djg $$2, int $$3) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2;
+      this.d = $$2.h();
+      this.e = $$3;
    }
 
-   public static oi a(jf<cyz> $$0, oe $$1, czd $$2) {
-      return new oi($$0, $$1, $$2);
-   }
-
-   public static oi a(jf<cyz> $$0, oe $$1, diz $$2) {
+   public static oi a(jg<czg> $$0, of $$1, djg $$2) {
       return a($$0, $$1, $$2, 1);
    }
 
-   public static oi a(jf<cyz> $$0, oe $$1, diz $$2, int $$3) {
-      return new oi($$0, $$1, $$2.h().m().c($$3));
+   public static oi a(jg<czg> $$0, of $$1, djg $$2, int $$3) {
+      return new oi($$0, $$1, $$2, $$3);
    }
 
-   public oi a(axr<cyz> $$0) {
-      return this.a(ddq.a(this.b.b($$0)));
+   public oi a(Character $$0, axr<czg> $$1) {
+      return this.a($$0, ddx.a(this.b.b($$1)));
    }
 
-   public oi b(diz $$0) {
-      return this.a($$0, 1);
+   public oi a(Character $$0, djg $$1) {
+      return this.a($$0, ddx.a($$1));
    }
 
-   public oi a(diz $$0, int $$1) {
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         this.a(ddq.a($$0));
+   public oi a(Character $$0, ddx $$1) {
+      if (this.g.containsKey($$0)) {
+         throw new IllegalArgumentException("Symbol '" + $$0 + "' is already defined!");
+      } else if ($$0 == ' ') {
+         throw new IllegalArgumentException("Symbol ' ' (whitespace) is reserved and cannot be defined");
+      } else {
+         this.g.put($$0, $$1);
+         return this;
       }
-
-      return this;
    }
 
-   public oi a(ddq $$0) {
-      return this.a($$0, 1);
-   }
-
-   public oi a(ddq $$0, int $$1) {
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         this.e.add($$0);
+   public oi b(String $$0) {
+      if (!this.f.isEmpty() && $$0.length() != this.f.get(0).length()) {
+         throw new IllegalArgumentException("Pattern must be the same width on every line!");
+      } else {
+         this.f.add($$0);
+         return this;
       }
+   }
 
+   public oi b(String $$0, ar<?> $$1) {
+      this.h.put($$0, $$1);
       return this;
    }
 
-   public oi b(String $$0, aq<?> $$1) {
-      this.f.put($$0, $$1);
+   public oi c(@Nullable String $$0) {
+      this.i = $$0;
       return this;
    }
 
-   public oi b(@Nullable String $$0) {
-      this.g = $$0;
+   public oi a(boolean $$0) {
+      this.j = $$0;
       return this;
    }
 
    @Override
-   public cyz a() {
-      return this.d.h();
+   public czg a() {
+      return this.d;
    }
 
    @Override
-   public void a(of $$0, alf<ddu<?>> $$1) {
-      this.a($$1);
-      ah.a $$2 = $$0.a().a("has_the_recipe", dg.a($$1)).a(am.a.c($$1)).a(al.a.b);
-      this.f.forEach($$2::a);
-      dek $$3 = new dek(Objects.requireNonNullElse(this.g, ""), od.a(this.c), this.d, this.e);
-      $$0.a($$1, $$3, $$2.b($$1.a().f("recipes/" + this.c.a() + "/")));
+   public void a(og $$0, alf<deb<?>> $$1) {
+      deq $$2 = this.a($$1);
+      ai.a $$3 = $$0.a().a("has_the_recipe", dh.a($$1)).a(an.a.c($$1)).a(am.a.b);
+      this.h.forEach($$3::a);
+      dep $$4 = new dep(Objects.requireNonNullElse(this.i, ""), oe.a(this.c), $$2, new czk(this.d, this.e), this.j);
+      $$0.a($$1, $$4, $$3.b($$1.a().f("recipes/" + this.c.a() + "/")));
    }
 
-   private void a(alf<ddu<?>> $$0) {
-      if (this.f.isEmpty()) {
+   private deq a(alf<deb<?>> $$0) {
+      if (this.h.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0.a());
+      } else {
+         return deq.a(this.g, this.f);
       }
    }
 }

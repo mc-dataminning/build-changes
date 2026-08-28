@@ -1,103 +1,47 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class czy extends czg {
+   private final bwr<? extends ctw> a;
 
-public abstract class czy extends cyz {
-   public static final Predicate<czd> c = $$0 -> $$0.a(axk.aY);
-   public static final Predicate<czd> d = c.or($$0 -> $$0.a(czh.vE));
-
-   public czy(cyz.a $$0) {
-      super($$0);
+   public czy(bwr<? extends ctw> $$0, czg.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
-   public Predicate<czd> c() {
-      return this.a();
-   }
-
-   public abstract Predicate<czd> a();
-
-   public static czd a(bxe $$0, Predicate<czd> $$1) {
-      if ($$1.test($$0.b(buc.b))) {
-         return $$0.b(buc.b);
+   @Override
+   public bug a(ddf $$0) {
+      djh $$1 = $$0.q();
+      iv $$2 = $$0.a();
+      eao $$3 = $$1.a_($$2);
+      if (!$$3.a(axc.P)) {
+         return bug.d;
       } else {
-         return $$1.test($$0.b(buc.a)) ? $$0.b(buc.a) : czd.k;
-      }
-   }
+         czk $$4 = $$0.n();
+         ebs $$5 = $$3.b() instanceof dmb ? $$3.c(((dmb)$$3.b()).c()) : ebs.a;
+         double $$6 = 0.0;
+         if ($$5.b()) {
+            $$6 = 0.5;
+         }
 
-   public abstract int b();
-
-   protected void a(arq $$0, bxe $$1, buc $$2, czd $$3, List<czd> $$4, float $$5, float $$6, boolean $$7, @Nullable bxe $$8) {
-      float $$9 = dfs.a($$0, $$3, $$1, 0.0F);
-      float $$10 = $$4.size() == 1 ? 0.0F : 2.0F * $$9 / (float)($$4.size() - 1);
-      float $$11 = (float)(($$4.size() - 1) % 2) * $$10 / 2.0F;
-      float $$12 = 1.0F;
-
-      for (int $$13 = 0; $$13 < $$4.size(); $$13++) {
-         czd $$14 = $$4.get($$13);
-         if (!$$14.f()) {
-            float $$15 = $$11 + $$12 * (float)(($$13 + 1) / 2) * $$10;
-            $$12 = -$$12;
-            int $$16 = $$13;
-            crx.a(this.a($$0, $$1, $$3, $$14, $$7), $$0, $$14, $$6x -> this.a($$1, $$6x, $$16, $$5, $$6, $$15, $$8));
-            $$3.a(this.h($$14), $$1, bxe.d($$2));
-            if ($$3.f()) {
-               break;
+         fex $$7 = new fex((double)$$2.u() + 0.5, (double)$$2.v() + 0.0625 + $$6, (double)$$2.w() + 0.5);
+         ctw $$8 = ctw.a($$1, $$7.d, $$7.e, $$7.f, this.a, bwq.o, $$4, $$0.o());
+         if ($$8 == null) {
+            return bug.d;
+         } else {
+            if (ctw.b($$1)) {
+               for (bwi $$10 : $$1.a_(null, $$8.cQ())) {
+                  if ($$10 instanceof ctw) {
+                     return bug.d;
+                  }
+               }
             }
-         }
-      }
-   }
 
-   protected int h(czd $$0) {
-      return 1;
-   }
-
-   protected abstract void a(bxe var1, crx var2, int var3, float var4, float var5, float var6, @Nullable bxe var7);
-
-   protected crx a(dja $$0, bxe $$1, czd $$2, czd $$3, boolean $$4) {
-      cxh $$6 = $$3.h() instanceof cxh $$5 ? $$5 : (cxh)czh.pk;
-      crk $$7 = $$6.a($$0, $$3, $$1, $$2);
-      if ($$4) {
-         $$7.b(true);
-      }
-
-      return $$7;
-   }
-
-   protected static List<czd> a(czd $$0, czd $$1, bxe $$2) {
-      if ($$1.f()) {
-         return List.of();
-      } else {
-         int $$4 = $$2.dV() instanceof arq $$3 ? dfs.a($$3, $$0, $$2, 1) : 1;
-         List<czd> $$5 = new ArrayList<>($$4);
-         czd $$6 = $$1.v();
-
-         for (int $$7 = 0; $$7 < $$4; $$7++) {
-            czd $$8 = a($$0, $$7 == 0 ? $$1 : $$6, $$2, $$7 > 0);
-            if (!$$8.f()) {
-               $$5.add($$8);
+            if ($$1 instanceof arq $$11) {
+               $$11.b($$8);
+               $$11.a(efo.t, $$2, efo.a.a($$0.o(), $$11.a_($$2.e())));
             }
+
+            $$4.h(1);
+            return bug.a;
          }
-
-         return $$5;
-      }
-   }
-
-   protected static czd a(czd $$0, czd $$1, bxe $$2, boolean $$3) {
-      int $$5 = !$$3 && !$$2.fV() && $$2.dV() instanceof arq $$4 ? dfs.a($$4, $$0, $$1, 1) : 0;
-      if ($$5 > $$1.M()) {
-         return czd.k;
-      } else if ($$5 == 0) {
-         czd $$6 = $$1.c(1);
-         $$6.b(kj.u, bau.a);
-         return $$6;
-      } else {
-         czd $$7 = $$1.a($$5);
-         if ($$1.f() && $$2 instanceof crc $$8) {
-            $$8.gj().i($$1);
-         }
-
-         return $$7;
       }
    }
 }

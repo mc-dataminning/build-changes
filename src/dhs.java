@@ -1,32 +1,21 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public record dhs(alg e, wy f, boolean g) {
-   public static final Codec<dhs> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               alg.a.fieldOf("asset_id").forGetter(dhs::a),
-               xa.a.fieldOf("description").forGetter(dhs::b),
-               Codec.BOOL.fieldOf("decal").orElse(false).forGetter(dhs::c)
-            )
-            .apply($$0, dhs::new)
-   );
-   public static final yw<wj, dhs> b = yw.a(alg.b, dhs::a, xa.b, dhs::b, yu.b, dhs::c, dhs::new);
-   public static final Codec<je<dhs>> c = alc.a(mg.bl, a);
-   public static final yw<wj, je<dhs>> d = yu.a(mg.bl, b);
+public interface dhs {
+   alf<? extends js<dhr>> a = alf.a(alg.b("equipment_asset"));
+   alf<dhr> b = a("leather");
+   alf<dhr> c = a("chainmail");
+   alf<dhr> d = a("iron");
+   alf<dhr> e = a("gold");
+   alf<dhr> f = a("diamond");
+   alf<dhr> g = a("turtle_scute");
+   alf<dhr> h = a("netherite");
+   alf<dhr> i = a("armadillo_scute");
+   alf<dhr> j = a("elytra");
+   alf<dhr> k = a("saddle");
+   Map<cyi, alf<dhr>> l = ag.a(cyi.class, $$0 -> a($$0.c() + "_carpet"));
+   alf<dhr> m = a("trader_llama");
 
-   public wy a(je<dhq> $$0) {
-      return this.f.f().c($$0.a().b().a());
-   }
-
-   public alg a() {
-      return this.e;
-   }
-
-   public wy b() {
-      return this.f;
-   }
-
-   public boolean c() {
-      return this.g;
+   static alf<dhr> a(String $$0) {
+      return alf.a(a, alg.b($$0));
    }
 }

@@ -9,25 +9,25 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class ary implements djz {
+public class ary implements dkg {
    private static final Logger a = LogUtils.getLogger();
    private final bai<arg> b;
-   private final ece c;
+   private final ecl c;
    private final arq d;
    private final long e;
-   private final eyr f;
+   private final eyy f;
    private final azv h;
-   private final eee i;
-   private final fgn<dmf> j = new fgn<>($$0x -> this.z($$0x).q());
-   private final fgn<ewn> k = new fgn<>($$0x -> this.z($$0x).r());
-   private final dkf l;
-   private final edi m;
+   private final eel i;
+   private final fgu<dmm> j = new fgu<>($$0x -> this.z($$0x).q());
+   private final fgu<ewu> k = new fgu<>($$0x -> this.z($$0x).r());
+   private final dkm l;
+   private final edp m;
    @Nullable
    private Supplier<String> n;
    private final AtomicLong o = new AtomicLong();
    private static final alg p = alg.b("worldgen_region_random");
 
-   public ary(arq $$0, bai<arg> $$1, edi $$2, ece $$3) {
+   public ary(arq $$0, bai<arg> $$1, edp $$2, ecl $$3) {
       this.m = $$2;
       this.b = $$1;
       this.c = $$3;
@@ -36,14 +36,14 @@ public class ary implements djz {
       this.f = $$0.y_();
       this.h = $$0.m().i().a(p).a(this.c.f().l());
       this.i = $$0.B_();
-      this.l = new dkf(this, dkf.a(this.e));
+      this.l = new dkm(this, dkm.a(this.e));
    }
 
-   public boolean a(dih $$0, int $$1) {
+   public boolean a(dio $$0, int $$1) {
       return this.d.m().a.b($$0, $$1);
    }
 
-   public dih b() {
+   public dio b() {
       return this.c.f();
    }
 
@@ -53,20 +53,20 @@ public class ary implements djz {
    }
 
    @Override
-   public ece a(int $$0, int $$1) {
-      return this.a($$0, $$1, edf.c);
+   public ecl a(int $$0, int $$1) {
+      return this.a($$0, $$1, edm.c);
    }
 
    @Nullable
    @Override
-   public ece a(int $$0, int $$1, edf $$2, boolean $$3) {
+   public ecl a(int $$0, int $$1, edm $$2, boolean $$3) {
       int $$4 = this.c.f().e($$0, $$1);
-      edf $$5 = $$4 >= this.m.b().b() ? null : this.m.b().a($$4);
+      edm $$5 = $$4 >= this.m.b().b() ? null : this.m.b().a($$4);
       arg $$6;
       if ($$5 != null) {
          $$6 = this.b.a($$0, $$1);
          if ($$2.c($$5)) {
-            ece $$7 = $$6.a($$5);
+            ecl $$7 = $$6.a($$5);
             if ($$7 != null) {
                return $$7;
             }
@@ -75,8 +75,8 @@ public class ary implements djz {
          $$6 = null;
       }
 
-      o $$9 = o.a(new IllegalStateException("Requested chunk unavailable during world generation"), "Exception generating new chunk");
-      p $$10 = $$9.a("Chunk request details");
+      p $$9 = p.a(new IllegalStateException("Requested chunk unavailable during world generation"), "Exception generating new chunk");
+      q $$10 = $$9.a("Chunk request details");
       $$10.a("Requested chunk", String.format(Locale.ROOT, "%d, %d", $$0, $$1));
       $$10.a("Generating status", () -> this.m.a().f());
       $$10.a("Requested status", $$2::f);
@@ -85,7 +85,7 @@ public class ary implements djz {
       $$10.a("Dependencies", this.m.b()::toString);
       $$10.a("Requested distance", $$4);
       $$10.a("Generating chunk", this.c.f()::toString);
-      throw new z($$9);
+      throw new aa($$9);
    }
 
    @Override
@@ -95,18 +95,18 @@ public class ary implements djz {
    }
 
    @Override
-   public eah a_(iu $$0) {
-      return this.a(jx.a($$0.u()), jx.a($$0.w())).a_($$0);
+   public eao a_(iv $$0) {
+      return this.a(jy.a($$0.u()), jy.a($$0.w())).a_($$0);
    }
 
    @Override
-   public ewo b_(iu $$0) {
+   public ewv b_(iv $$0) {
       return this.z($$0).b_($$0);
    }
 
    @Nullable
    @Override
-   public crc a(double $$0, double $$1, double $$2, double $$3, Predicate<bwf> $$4) {
+   public crj a(double $$0, double $$1, double $$2, double $$3, Predicate<bwi> $$4) {
       return null;
    }
 
@@ -116,59 +116,59 @@ public class ary implements djz {
    }
 
    @Override
-   public dkf D_() {
+   public dkm D_() {
       return this.l;
    }
 
    @Override
-   public je<dkd> a(int $$0, int $$1, int $$2) {
+   public jf<dkk> a(int $$0, int $$1, int $$2) {
       return this.d.a($$0, $$1, $$2);
    }
 
    @Override
-   public float a(ja $$0, boolean $$1) {
+   public float a(jb $$0, boolean $$1) {
       return 1.0F;
    }
 
    @Override
-   public ewd x_() {
+   public ewk x_() {
       return this.d.x_();
    }
 
    @Override
-   public boolean a(iu $$0, boolean $$1, @Nullable bwf $$2, int $$3) {
-      eah $$4 = this.a_($$0);
+   public boolean a(iv $$0, boolean $$1, @Nullable bwi $$2, int $$3) {
+      eao $$4 = this.a_($$0);
       if ($$4.l()) {
          return false;
       } else {
          if ($$1) {
-            dxf $$5 = $$4.x() ? this.c_($$0) : null;
-            dmf.a($$4, (dja)this.d, $$0, $$5, $$2, czd.k);
+            dxm $$5 = $$4.x() ? this.c_($$0) : null;
+            dmm.a($$4, (djh)this.d, $$0, $$5, $$2, czk.k);
          }
 
-         return this.a($$0, dmh.a.m(), 3, $$3);
+         return this.a($$0, dmo.a.m(), 3, $$3);
       }
    }
 
    @Nullable
    @Override
-   public dxf c_(iu $$0) {
-      ece $$1 = this.z($$0);
-      dxf $$2 = $$1.c_($$0);
+   public dxm c_(iv $$0) {
+      ecl $$1 = this.z($$0);
+      dxm $$2 = $$1.c_($$0);
       if ($$2 != null) {
          return $$2;
       } else {
          tz $$3 = $$1.f($$0);
-         eah $$4 = $$1.a_($$0);
+         eao $$4 = $$1.a_($$0);
          if ($$3 != null) {
-            if ("DUMMY".equals($$3.l("id"))) {
+            if ("DUMMY".equals($$3.j("id"))) {
                if (!$$4.x()) {
                   return null;
                }
 
-               $$2 = ((doz)$$4.b()).a($$0, $$4);
+               $$2 = ((dpg)$$4.b()).a($$0, $$4);
             } else {
-               $$2 = dxf.a($$0, $$4, $$3, this.d.F_());
+               $$2 = dxm.a($$0, $$4, $$3, this.d.F_());
             }
 
             if ($$2 != null) {
@@ -186,15 +186,15 @@ public class ary implements djz {
    }
 
    @Override
-   public boolean f_(iu $$0) {
-      int $$1 = jx.a($$0.u());
-      int $$2 = jx.a($$0.w());
-      dih $$3 = this.b();
+   public boolean f_(iv $$0) {
+      int $$1 = jy.a($$0.u());
+      int $$2 = jy.a($$0.w());
+      dio $$3 = this.b();
       int $$4 = Math.abs($$3.h - $$1);
       int $$5 = Math.abs($$3.i - $$2);
       if ($$4 <= this.m.d() && $$5 <= this.m.d()) {
          if (this.c.A()) {
-            djc $$6 = this.c.B();
+            djj $$6 = this.c.B();
             if ($$6.e($$0.v())) {
                return false;
             }
@@ -202,7 +202,7 @@ public class ary implements djz {
 
          return true;
       } else {
-         af.b(
+         ag.b(
             "Detected setBlock in a far chunk ["
                + $$1
                + ", "
@@ -218,19 +218,19 @@ public class ary implements djz {
    }
 
    @Override
-   public boolean a(iu $$0, eah $$1, int $$2, int $$3) {
+   public boolean a(iv $$0, eao $$1, int $$2, int $$3) {
       if (!this.f_($$0)) {
          return false;
       } else {
-         ece $$4 = this.z($$0);
-         eah $$5 = $$4.a($$0, $$1, $$2);
+         ecl $$4 = this.z($$0);
+         eao $$5 = $$4.a($$0, $$1, $$2);
          if ($$5 != null) {
             this.d.a($$0, $$5, $$1);
          }
 
          if ($$1.x()) {
-            if ($$4.n().d() == edj.b) {
-               dxf $$6 = ((doz)$$1.b()).a($$0, $$1);
+            if ($$4.n().d() == edq.b) {
+               dxm $$6 = ((dpg)$$1.b()).a($$0, $$1);
                if ($$6 != null) {
                   $$4.a($$6);
                } else {
@@ -256,25 +256,25 @@ public class ary implements djz {
       }
    }
 
-   private void f(iu $$0) {
+   private void f(iv $$0) {
       this.z($$0).e($$0);
    }
 
    @Override
-   public boolean b(bwf $$0) {
-      int $$1 = jx.a($$0.dz());
-      int $$2 = jx.a($$0.dF());
+   public boolean b(bwi $$0) {
+      int $$1 = jy.a($$0.dy());
+      int $$2 = jy.a($$0.dE());
       this.a($$1, $$2).a($$0);
       return true;
    }
 
    @Override
-   public boolean a(iu $$0, boolean $$1) {
-      return this.a($$0, dmh.a.m(), 3);
+   public boolean a(iv $$0, boolean $$1) {
+      return this.a($$0, dmo.a.m(), 3);
    }
 
    @Override
-   public ebz A_() {
+   public ecg A_() {
       return this.d.A_();
    }
 
@@ -290,26 +290,26 @@ public class ary implements djz {
    }
 
    @Override
-   public js F_() {
+   public jt F_() {
       return this.d.F_();
    }
 
    @Override
-   public cum K() {
+   public cut K() {
       return this.d.K();
    }
 
    @Override
-   public eyr y_() {
+   public eyy y_() {
       return this.f;
    }
 
    @Override
-   public bub d_(iu $$0) {
-      if (!this.b(jx.a($$0.u()), jx.a($$0.w()))) {
+   public bue d_(iv $$0) {
+      if (!this.b(jy.a($$0.u()), jy.a($$0.w()))) {
          throw new RuntimeException("We are asking a region for a chunk out of bound");
       } else {
-         return new bub(this.d.an(), this.d.af(), 0L, this.d.as());
+         return new bue(this.d.an(), this.d.af(), 0L, this.d.as());
       }
    }
 
@@ -320,7 +320,7 @@ public class ary implements djz {
    }
 
    @Override
-   public eci S() {
+   public ecp S() {
       return this.d.m();
    }
 
@@ -330,12 +330,12 @@ public class ary implements djz {
    }
 
    @Override
-   public fge<dmf> U() {
+   public fgl<dmm> U() {
       return this.j;
    }
 
    @Override
-   public fge<ewn> T() {
+   public fgl<ewu> T() {
       return this.k;
    }
 
@@ -350,53 +350,53 @@ public class ary implements djz {
    }
 
    @Override
-   public int a(egg.a $$0, int $$1, int $$2) {
-      return this.a(jx.a($$1), jx.a($$2)).a($$0, $$1 & 15, $$2 & 15) + 1;
+   public int a(egn.a $$0, int $$1, int $$2) {
+      return this.a(jy.a($$1), jy.a($$2)).a($$0, $$1 & 15, $$2 & 15) + 1;
    }
 
    @Override
-   public void a(@Nullable bwf $$0, iu $$1, awm $$2, awo $$3, float $$4, float $$5) {
+   public void a(@Nullable bwi $$0, iv $$1, awm $$2, awo $$3, float $$4, float $$5) {
    }
 
    @Override
-   public void a(lv $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+   public void a(lw $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
    }
 
    @Override
-   public void a(@Nullable bwf $$0, int $$1, iu $$2, int $$3) {
+   public void a(@Nullable bwi $$0, int $$1, iv $$2, int $$3) {
    }
 
    @Override
-   public void a(je<efh> $$0, feq $$1, efh.a $$2) {
+   public void a(jf<efo> $$0, fex $$1, efo.a $$2) {
    }
 
    @Override
-   public eee B_() {
+   public eel B_() {
       return this.i;
    }
 
    @Override
-   public boolean a(iu $$0, Predicate<eah> $$1) {
+   public boolean a(iv $$0, Predicate<eao> $$1) {
       return $$1.test(this.a_($$0));
    }
 
    @Override
-   public boolean b(iu $$0, Predicate<ewo> $$1) {
+   public boolean b(iv $$0, Predicate<ewv> $$1) {
       return $$1.test(this.b_($$0));
    }
 
    @Override
-   public <T extends bwf> List<T> a(eet<bwf, T> $$0, fel $$1, Predicate<? super T> $$2) {
+   public <T extends bwi> List<T> a(efa<bwi, T> $$0, fes $$1, Predicate<? super T> $$2) {
       return Collections.emptyList();
    }
 
    @Override
-   public List<bwf> a(@Nullable bwf $$0, fel $$1, @Nullable Predicate<? super bwf> $$2) {
+   public List<bwi> a(@Nullable bwi $$0, fes $$1, @Nullable Predicate<? super bwi> $$2) {
       return Collections.emptyList();
    }
 
    @Override
-   public List<crc> z() {
+   public List<crj> z() {
       return Collections.emptyList();
    }
 

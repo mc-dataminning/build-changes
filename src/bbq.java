@@ -9,10 +9,10 @@ public class bbq extends bbs {
    }
 
    private static String a(String $$0) {
-      String $$1 = bks.a($$0);
+      String $$1 = bku.a($$0);
 
       for (String $$2 : a) {
-         String $$3 = bks.a($$2);
+         String $$3 = bku.a($$2);
          if ($$1.startsWith($$3)) {
             return "minecraft:" + $$1.substring($$3.length());
          }

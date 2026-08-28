@@ -1,39 +1,41 @@
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
-import java.util.Optional;
-import java.util.stream.Stream;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class bfu extends DataFix {
+public class bfu extends bht {
+   private static final String c = "minecraft:wolf";
+   private static final String d = "minecraft:generic.max_health";
+
    public bfu(Schema $$0) {
-      super($$0, true);
+      super($$0, false, "FixWolfHealth", biz.D, "minecraft:wolf");
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.writeFixAndRead(
-         "Food to consumable fix",
-         this.getInputSchema().getType(bix.w),
-         this.getOutputSchema().getType(bix.w),
-         $$0 -> {
-            Optional<? extends Dynamic<?>> $$1 = $$0.get("minecraft:food").result();
-            if ($$1.isPresent()) {
-               float $$2 = $$1.get().get("eat_seconds").asFloat(1.6F);
-               Stream<? extends Dynamic<?>> $$3 = $$1.get().get("effects").asStream();
-               Stream<? extends Dynamic<?>> $$4 = $$3.map(
-                  $$0x -> $$0x.emptyMap()
-                        .set("type", $$0x.createString("minecraft:apply_effects"))
-                        .set("effects", $$0x.createList($$0x.get("effect").result().stream()))
-                        .set("probability", $$0x.createFloat($$0x.get("probability").asFloat(1.0F)))
-               );
-               $$0 = Dynamic.copyField($$1.get(), "using_converts_to", $$0, "minecraft:use_remainder");
-               $$0 = $$0.set("minecraft:food", $$1.get().remove("eat_seconds").remove("effects").remove("using_converts_to"));
-               return $$0.set(
-                  "minecraft:consumable", $$0.emptyMap().set("consume_seconds", $$0.createFloat($$2)).set("on_consume_effects", $$0.createList($$4))
-               );
-            } else {
-               return $$0;
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(
+         DSL.remainderFinder(),
+         $$0x -> {
+            MutableBoolean $$1 = new MutableBoolean(false);
+            $$0x = $$0x.update(
+               "Attributes",
+               $$1x -> $$1x.createList(
+                     $$1x.asStream()
+                        .map($$1xx -> "minecraft:generic.max_health".equals(bku.a($$1xx.get("Name").asString(""))) ? $$1xx.update("Base", $$1xxx -> {
+                              if ($$1xxx.asDouble(0.0) == 20.0) {
+                                 $$1.setTrue();
+                                 return $$1xxx.createDouble(40.0);
+                              } else {
+                                 return $$1xxx;
+                              }
+                           }) : $$1xx)
+                  )
+            );
+            if ($$1.isTrue()) {
+               $$0x = $$0x.update("Health", $$0xx -> $$0xx.createFloat($$0xx.asFloat(0.0F) * 2.0F));
             }
+
+            return $$0x;
          }
       );
    }

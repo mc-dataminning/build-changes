@@ -1,15 +1,16 @@
-public class gyk extends guz<col, hei> {
-   private static final alg a = alg.b("textures/entity/skeleton/skeleton.png");
+public class gyk extends gxm<coo, hdr> {
+   private static final alg a = alg.b("textures/entity/illager/pillager.png");
 
-   public gyk(gwh.a $$0) {
-      super($$0, gjb.cW, gjb.db, gjb.dc);
+   public gyk(gwt.a $$0) {
+      super($$0, new ggz<>($$0.a(gjn.cr)), 0.5F);
+      this.a(new haz<>(this));
    }
 
-   public alg b(hei $$0) {
+   public alg a(hdr $$0) {
       return a;
    }
 
-   public hei b() {
-      return new hei();
+   public hdr b() {
+      return new hdr();
    }
 }

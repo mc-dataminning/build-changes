@@ -176,7 +176,7 @@ public interface wy extends Message, xd {
       return xm.a(new ye($$0, $$1, $$2, $$3));
    }
 
-   static xm a(ha $$0, String $$1) {
+   static xm a(hb $$0, String $$1) {
       return xm.a(new yg(Either.left($$0), $$1));
    }
 
@@ -184,7 +184,7 @@ public interface wy extends Message, xd {
       return xm.a(new yg(Either.right($$0), $$1));
    }
 
-   static xm a(ha $$0, Optional<wy> $$1) {
+   static xm a(hb $$0, Optional<wy> $$1) {
       return xm.a(new yh($$0, $$1));
    }
 
@@ -204,7 +204,7 @@ public interface wy extends Message, xd {
       return b($$0.toString());
    }
 
-   static wy a(dih $$0) {
+   static wy a(dio $$0) {
       return b($$0.toString());
    }
 
@@ -218,31 +218,31 @@ public interface wy extends Message, xd {
       private a() {
       }
 
-      static xm b(JsonElement $$0, jg.a $$1) {
+      static xm b(JsonElement $$0, jh.a $$1) {
          return (xm)xa.a.parse($$1.a(JsonOps.INSTANCE), $$0).getOrThrow(JsonParseException::new);
       }
 
-      static JsonElement b(wy $$0, jg.a $$1) {
+      static JsonElement b(wy $$0, jh.a $$1) {
          return (JsonElement)xa.a.encodeStart($$1.a(JsonOps.INSTANCE), $$0).getOrThrow(JsonParseException::new);
       }
 
-      public static String a(wy $$0, jg.a $$1) {
+      public static String a(wy $$0, jh.a $$1) {
          return a.toJson(b($$0, $$1));
       }
 
       @Nullable
-      public static xm a(String $$0, jg.a $$1) {
+      public static xm a(String $$0, jh.a $$1) {
          JsonElement $$2 = JsonParser.parseString($$0);
          return $$2 == null ? null : b($$2, $$1);
       }
 
       @Nullable
-      public static xm a(@Nullable JsonElement $$0, jg.a $$1) {
+      public static xm a(@Nullable JsonElement $$0, jh.a $$1) {
          return $$0 == null ? null : b($$0, $$1);
       }
 
       @Nullable
-      public static xm b(String $$0, jg.a $$1) {
+      public static xm b(String $$0, jh.a $$1) {
          JsonReader $$2 = new JsonReader(new StringReader($$0));
          $$2.setLenient(true);
          JsonElement $$3 = JsonParser.parseReader($$2);
@@ -251,9 +251,9 @@ public interface wy extends Message, xd {
    }
 
    public static class b implements JsonDeserializer<xm>, JsonSerializer<wy> {
-      private final jg.a a;
+      private final jh.a a;
 
-      public b(jg.a $$0) {
+      public b(jh.a $$0) {
          this.a = $$0;
       }
 

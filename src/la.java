@@ -1,33 +1,26 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.function.Predicate;
 
-public record la(Optional<bf<asi<String>, la.a>> c) implements dk<dcm> {
-   public static final Codec<la> a = RecordCodecBuilder.create($$0 -> $$0.group(bf.a(la.a.a).optionalFieldOf("pages").forGetter(la::b)).apply($$0, la::new));
+public record la(Optional<jj<dhx>> c, Optional<jj<dhz>> d) implements dl<dhv> {
+   public static final Codec<la> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ju.a(mh.bk).optionalFieldOf("material").forGetter(la::b), ju.a(mh.bl).optionalFieldOf("pattern").forGetter(la::c)).apply($$0, la::new)
+   );
 
    @Override
-   public ki<dcm> a() {
-      return kj.U;
+   public kj<dhv> a() {
+      return kk.W;
    }
 
-   public boolean a(dcm $$0) {
-      return !this.c.isPresent() || this.c.get().a($$0.a());
+   public boolean a(dhv $$0) {
+      return this.c.isPresent() && !this.c.get().a($$0.a()) ? false : !this.d.isPresent() || this.d.get().a($$0.b());
    }
 
-   public Optional<bf<asi<String>, la.a>> b() {
+   public Optional<jj<dhx>> b() {
       return this.c;
    }
 
-   public static record a(String b) implements Predicate<asi<String>> {
-      public static final Codec<la.a> a = Codec.STRING.xmap(la.a::new, la.a::a);
-
-      public boolean a(asi<String> $$0) {
-         return $$0.a().equals(this.b);
-      }
-
-      public String a() {
-         return this.b;
-      }
+   public Optional<jj<dhz>> c() {
+      return this.d;
    }
 }

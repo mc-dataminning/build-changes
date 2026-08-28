@@ -11,31 +11,31 @@ import java.util.Map;
 public class ans {
    private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("commands.help.failed"));
 
-   public static void a(CommandDispatcher<ei> $$0) {
+   public static void a(CommandDispatcher<ej> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("help").executes($$1 -> {
-               Map<CommandNode<ei>, String> $$2 = $$0.getSmartUsage($$0.getRoot(), (ei)$$1.getSource());
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("help").executes($$1 -> {
+               Map<CommandNode<ej>, String> $$2 = $$0.getSmartUsage($$0.getRoot(), (ej)$$1.getSource());
 
                for (String $$3 : $$2.values()) {
-                  ((ei)$$1.getSource()).a(() -> wy.b("/" + $$3), false);
+                  ((ej)$$1.getSource()).a(() -> wy.b("/" + $$3), false);
                }
 
                return $$2.size();
             }))
             .then(
-               ej.a("command", StringArgumentType.greedyString())
+               ek.a("command", StringArgumentType.greedyString())
                   .executes(
                      $$1 -> {
-                        ParseResults<ei> $$2 = $$0.parse(StringArgumentType.getString($$1, "command"), (ei)$$1.getSource());
+                        ParseResults<ej> $$2 = $$0.parse(StringArgumentType.getString($$1, "command"), (ej)$$1.getSource());
                         if ($$2.getContext().getNodes().isEmpty()) {
                            throw a.create();
                         } else {
-                           Map<CommandNode<ei>, String> $$3 = $$0.getSmartUsage(
-                              ((ParsedCommandNode)Iterables.getLast($$2.getContext().getNodes())).getNode(), (ei)$$1.getSource()
+                           Map<CommandNode<ej>, String> $$3 = $$0.getSmartUsage(
+                              ((ParsedCommandNode)Iterables.getLast($$2.getContext().getNodes())).getNode(), (ej)$$1.getSource()
                            );
 
                            for (String $$4 : $$3.values()) {
-                              ((ei)$$1.getSource()).a(() -> wy.b("/" + $$2.getReader().getString() + " " + $$4), false);
+                              ((ej)$$1.getSource()).a(() -> wy.b("/" + $$2.getReader().getString() + " " + $$4), false);
                            }
 
                            return $$3.size();

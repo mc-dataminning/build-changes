@@ -1,44 +1,18 @@
-import java.util.Arrays;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public enum cqd {
-   a(0, awn.CL, awn.CT),
-   b(40, awn.CK, awn.CU),
-   c(80, awn.CM, awn.CU);
+public class cqd {
+   public static bzb<bxj> a() {
+      return ccn.a(
+         (Function<ccn.b<bxj>, ? extends App<ccn.c<bxj>, ccq<bxj>>>)($$0 -> $$0.group($$0.b(cgl.p), $$0.a(cgl.ai))
+               .apply($$0, ($$1, $$2) -> ($$3, $$4, $$5) -> {
+                     bxj $$6 = $$0.b($$1);
+                     if ($$6.an() == bwr.aj && $$6.eG()) {
+                        $$2.a(true, (long)cpz.d.a($$4.dU().A));
+                     }
 
-   private static final cqd[] d = af.a(values(), $$0 -> Arrays.sort($$0, ($$0x, $$1) -> Integer.compare($$1.e, $$0x.e)));
-   private final int e;
-   private final awm f;
-   private final awm g;
-
-   private cqd(final int $$0, final awm $$1, final awm $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   public int a() {
-      return this.e;
-   }
-
-   public awm b() {
-      return this.f;
-   }
-
-   public awm c() {
-      return this.g;
-   }
-
-   public static cqd a(int $$0) {
-      for (cqd $$1 : d) {
-         if ($$0 >= $$1.e) {
-            return $$1;
-         }
-      }
-
-      return a;
-   }
-
-   public boolean d() {
-      return this == c;
+                     return true;
+                  }))
+      );
    }
 }

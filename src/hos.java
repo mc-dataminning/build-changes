@@ -1,22 +1,29 @@
-import java.time.Duration;
-import javax.annotation.Nullable;
+import com.mojang.authlib.minecraft.TelemetryEvent;
+import com.mojang.authlib.minecraft.TelemetrySession;
+import com.mojang.serialization.Codec;
 
-public class hos {
-   private final boolean a;
-   @Nullable
-   private final Duration b;
+public record hos(how b, hoz c) {
+   public static final Codec<hos> a = how.a.dispatchStable(hos::a, how::c);
 
-   public hos(boolean $$0, @Nullable Duration $$1) {
-      this.b = $$1;
-      this.a = $$0;
+   public hos(how b, hoz c) {
+      c.b().forEach($$1x -> {
+         if (!$$0.a($$1x)) {
+            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
+         }
+      });
+      this.b = b;
+      this.c = c;
    }
 
-   public void a(hoi $$0) {
-      if (this.b != null) {
-         $$0.send(hoj.d, $$0x -> {
-            $$0x.a(hol.x, (int)this.b.toMillis());
-            $$0x.a(hol.y, this.a);
-         });
-      }
+   public TelemetryEvent a(TelemetrySession $$0) {
+      return this.b.a($$0, this.c);
+   }
+
+   public how a() {
+      return this.b;
+   }
+
+   public hoz b() {
+      return this.c;
    }
 }

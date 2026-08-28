@@ -1,43 +1,69 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class dwa extends dvg implements dtq {
-   public static final MapCodec<dwa> a = b(dwa::new);
-   public static final eay c = eax.I;
+public class dwa extends dld {
+   public static final MapCodec<dwa> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cyi.q.fieldOf("color").forGetter(dld::b), t()).apply($$0, dwa::new));
+   public static final ebm<jb> b = dqn.e;
+   private static final Map<jb, ffr> c = ffo.c(dmm.a(16.0, 0.0, 12.5, 14.0, 16.0));
 
    @Override
-   protected MapCodec<? extends dwa> a() {
+   public MapCodec<dwa> a() {
       return a;
    }
 
-   protected dwa(eag.d $$0) {
-      super($$0);
-      this.l(this.m().b(c, Boolean.valueOf(false)));
-   }
-
-   @Nullable
-   @Override
-   public eah a(dcw $$0) {
-      ewo $$1 = $$0.q().b_($$0.a());
-      return super.a($$0).b(c, Boolean.valueOf($$1.b(ewp.c)));
+   public dwa(cyi $$0, ean.d $$1) {
+      super($$0, $$1);
+      this.l(this.C.b().b(b, jb.c));
    }
 
    @Override
-   protected eah a(eah $$0, djd $$1, djp $$2, iu $$3, ja $$4, iu $$5, eah $$6, azv $$7) {
-      if ($$0.c(c)) {
-         $$2.a($$3, ewp.c, ewp.c.a($$1));
+   protected boolean a(eao $$0, djk $$1, iv $$2) {
+      return $$1.a_($$2.a($$0.c(b).g())).e();
+   }
+
+   @Override
+   protected eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
+      return $$4 == $$0.c(b).g() && !$$0.a($$1, $$3) ? dmo.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
+      return c.get($$0.c(b));
+   }
+
+   @Override
+   public eao a(ddd $$0) {
+      eao $$1 = this.m();
+      djk $$2 = $$0.q();
+      iv $$3 = $$0.a();
+      jb[] $$4 = $$0.f();
+
+      for (jb $$5 : $$4) {
+         if ($$5.o().d()) {
+            jb $$6 = $$5.g();
+            $$1 = $$1.b(b, $$6);
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
+         }
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      return null;
    }
 
    @Override
-   protected ewo b_(eah $$0) {
-      return $$0.c(c) ? ewp.c.a(true) : super.b_($$0);
+   protected eao a(eao $$0, dtg $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   protected void a(eai.a<dmf, eah> $$0) {
-      $$0.a(c);
+   protected eao a(eao $$0, drp $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(eap.a<dmm, eao> $$0) {
+      $$0.a(b);
    }
 }

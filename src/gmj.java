@@ -1,43 +1,17 @@
-import org.joml.Vector3f;
-
-public class gmj extends gml<lr> {
-   private final Vector3f a;
-   private final Vector3f b;
-
-   protected gmj(gjz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, lr $$7, god $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      this.a = this.a($$7.b(), $$9);
-      this.b = this.a($$7.c(), $$9);
+public class gmj extends gml {
+   protected gmj(gkl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gop $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, -0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.5F, 20, 0.1F, false);
    }
 
-   private Vector3f a(Vector3f $$0, float $$1) {
-      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
-   }
+   public static class a implements gnx<mc> {
+      private final gop a;
 
-   private void f(float $$0) {
-      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
-      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
-      this.v = $$2.x();
-      this.w = $$2.y();
-      this.x = $$2.z();
-   }
-
-   @Override
-   public void a(fjn $$0, fog $$1, float $$2) {
-      this.f($$2);
-      super.a($$0, $$1, $$2);
-   }
-
-   public static class a implements gnl<lr> {
-      private final god a;
-
-      public a(god $$0) {
+      public a(gop $$0) {
          this.a = $$0;
       }
 
-      public gni a(lr $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gmj($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
+      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gmj($$1, $$2, $$3, $$4, 0.0, 0.0, 0.0, 1.0F, this.a);
       }
    }
 }

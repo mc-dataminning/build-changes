@@ -1,25 +1,50 @@
-public class cgu extends chg {
-   public static final float a = 8.0F;
+import javax.annotation.Nullable;
 
-   @Override
-   protected boolean a(arq $$0, bxe $$1, bxe $$2) {
-      return this.b($$1, $$2) && $$2.bj() && (this.b($$2) || this.a($$1, $$2)) && chm.c($$0, $$1, $$2);
-   }
+public class cgu extends cgs {
+   @Nullable
+   private iv p;
 
-   private boolean a(bxe $$0, bxe $$1) {
-      return !$$0.ec().a(cgg.V) && $$1.aq().a(axf.j);
-   }
-
-   private boolean b(bxe $$0) {
-      return $$0.aq().a(axf.i);
-   }
-
-   private boolean b(bxe $$0, bxe $$1) {
-      return $$1.g($$0) <= 64.0;
+   public cgu(bxl $$0, djh $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected cgg<bxe> b() {
-      return cgg.C;
+   public exj a(iv $$0, int $$1) {
+      this.p = $$0;
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public exj a(bwi $$0, int $$1) {
+      this.p = $$0.du();
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(bwi $$0, double $$1) {
+      exj $$2 = this.a($$0, 0);
+      if ($$2 != null) {
+         return this.a($$2, $$1);
+      } else {
+         this.p = $$0.du();
+         this.d = $$1;
+         return true;
+      }
+   }
+
+   @Override
+   public void c() {
+      if (!this.k()) {
+         super.c();
+      } else {
+         if (this.p != null) {
+            if (!this.p.a(this.a.ds(), (double)this.a.dp())
+               && (!(this.a.dB() > (double)this.p.v()) || !iv.a((double)this.p.u(), this.a.dB(), (double)this.p.w()).a(this.a.ds(), (double)this.a.dp()))) {
+               this.a.L().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
+            } else {
+               this.p = null;
+            }
+         }
+      }
    }
 }

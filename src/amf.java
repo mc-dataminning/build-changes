@@ -1,4 +1,4 @@
-public record amf(aus a, alr b, jl<alp> c, ezb d) implements AutoCloseable {
+public record amf(aus a, alr b, jm<alp> c, ezi d) implements AutoCloseable {
    @Override
    public void close() {
       this.a.close();

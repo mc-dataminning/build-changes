@@ -12,19 +12,19 @@ public class ame {
 
    public static <D, R> CompletableFuture<R> a(ame.c $$0, ame.f<D> $$1, ame.e<D, R> $$2, Executor $$3, Executor $$4) {
       try {
-         Pair<djy, aus> $$5 = $$0.a.a();
+         Pair<dkf, aus> $$5 = $$0.a.a();
          aus $$6 = (aus)$$5.getSecond();
-         jl<alp> $$7 = alp.a();
-         List<jr.a<?>> $$8 = axs.a($$6, $$7.a(alp.a));
-         js.b $$9 = $$7.b(alp.b);
-         List<jg.b<?>> $$10 = axs.a($$9, $$8);
-         js.b $$11 = alb.a($$6, $$10, alb.a);
-         List<jg.b<?>> $$12 = Stream.concat($$10.stream(), $$11.c()).toList();
-         js.b $$13 = alb.a($$6, $$12, alb.b);
-         djy $$14 = (djy)$$5.getFirst();
-         jg.a $$15 = jg.a.a($$12.stream());
+         jm<alp> $$7 = alp.a();
+         List<js.a<?>> $$8 = axs.a($$6, $$7.a(alp.a));
+         jt.b $$9 = $$7.b(alp.b);
+         List<jh.b<?>> $$10 = axs.a($$9, $$8);
+         jt.b $$11 = alb.a($$6, $$10, alb.a);
+         List<jh.b<?>> $$12 = Stream.concat($$10.stream(), $$11.c()).toList();
+         jt.b $$13 = alb.a($$6, $$12, alb.b);
+         dkf $$14 = (dkf)$$5.getFirst();
+         jh.a $$15 = jh.a.a($$12.stream());
          ame.b<D> $$16 = $$1.get(new ame.a($$6, $$14, $$15, $$13));
-         jl<alp> $$17 = $$7.a(alp.b, $$11, $$16.b);
+         jm<alp> $$17 = $$7.a(alp.b, $$11, $$16.b);
          return alr.a($$6, $$17, $$8, $$14.b(), $$0.b(), $$0.c(), $$3, $$4).whenComplete(($$1x, $$2x) -> {
             if ($$2x != null) {
                $$6.close();
@@ -38,18 +38,18 @@ public class ame {
       }
    }
 
-   public static record a(avd a, djy b, jg.a c, js.b d) {
+   public static record a(avd a, dkf b, jh.a c, jt.b d) {
    }
 
-   public static record b<D>(D a, js.b b) {
+   public static record b<D>(D a, jt.b b) {
    }
 
-   public static record c(ame.d a, ej.a b, int c) {
+   public static record c(ame.d a, ek.a b, int c) {
    }
 
-   public static record d(aun a, djy b, boolean c, boolean d) {
-      public Pair<djy, aus> a() {
-         djy $$0 = MinecraftServer.a(this.a, this.b, this.d, this.c);
+   public static record d(aun a, dkf b, boolean c, boolean d) {
+      public Pair<dkf, aus> a() {
+         dkf $$0 = MinecraftServer.a(this.a, this.b, this.d, this.c);
          List<atp> $$1 = this.a.h();
          aus $$2 = new auv(atr.b, $$1);
          return Pair.of($$0, $$2);
@@ -59,7 +59,7 @@ public class ame {
          return this.a;
       }
 
-      public djy c() {
+      public dkf c() {
          return this.b;
       }
 
@@ -74,7 +74,7 @@ public class ame {
 
    @FunctionalInterface
    public interface e<D, R> {
-      R create(aus var1, alr var2, jl<alp> var3, D var4);
+      R create(aus var1, alr var2, jm<alp> var3, D var4);
    }
 
    @FunctionalInterface

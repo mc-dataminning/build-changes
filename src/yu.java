@@ -124,48 +124,57 @@ public interface yu {
          vu.a($$0, $$1);
       }
    };
-   yw<ByteBuf, String> o = b(32767);
-   yw<ByteBuf, uw> p = a((Supplier<ui>)(() -> ui.a(2097152L)));
-   yw<ByteBuf, uw> q = a(ui::a);
-   yw<ByteBuf, tz> r = b((Supplier<ui>)(() -> ui.a(2097152L)));
-   yw<ByteBuf, tz> s = b(ui::a);
-   yw<ByteBuf, Optional<tz>> t = new yw<ByteBuf, Optional<tz>>() {
+   yw<ByteBuf, long[]> o = new yw<ByteBuf, long[]>() {
+      public long[] a(ByteBuf $$0) {
+         return vu.b($$0);
+      }
+
+      public void a(ByteBuf $$0, long[] $$1) {
+         vu.a($$0, $$1);
+      }
+   };
+   yw<ByteBuf, String> p = b(32767);
+   yw<ByteBuf, uw> q = a((Supplier<ui>)(() -> ui.a(2097152L)));
+   yw<ByteBuf, uw> r = a(ui::a);
+   yw<ByteBuf, tz> s = b((Supplier<ui>)(() -> ui.a(2097152L)));
+   yw<ByteBuf, tz> t = b(ui::a);
+   yw<ByteBuf, Optional<tz>> u = new yw<ByteBuf, Optional<tz>>() {
       public Optional<tz> a(ByteBuf $$0) {
-         return Optional.ofNullable(vu.h($$0));
+         return Optional.ofNullable(vu.i($$0));
       }
 
       public void a(ByteBuf $$0, Optional<tz> $$1) {
          vu.a($$0, $$1.orElse(null));
       }
    };
-   yw<ByteBuf, Vector3f> u = new yw<ByteBuf, Vector3f>() {
+   yw<ByteBuf, Vector3f> v = new yw<ByteBuf, Vector3f>() {
       public Vector3f a(ByteBuf $$0) {
-         return vu.d($$0);
+         return vu.e($$0);
       }
 
       public void a(ByteBuf $$0, Vector3f $$1) {
          vu.a($$0, $$1);
       }
    };
-   yw<ByteBuf, Quaternionf> v = new yw<ByteBuf, Quaternionf>() {
+   yw<ByteBuf, Quaternionf> w = new yw<ByteBuf, Quaternionf>() {
       public Quaternionf a(ByteBuf $$0) {
-         return vu.e($$0);
+         return vu.f($$0);
       }
 
       public void a(ByteBuf $$0, Quaternionf $$1) {
          vu.a($$0, $$1);
       }
    };
-   yw<ByteBuf, Integer> w = new yw<ByteBuf, Integer>() {
+   yw<ByteBuf, Integer> x = new yw<ByteBuf, Integer>() {
       public Integer a(ByteBuf $$0) {
-         return vu.i($$0);
+         return vu.j($$0);
       }
 
       public void a(ByteBuf $$0, Integer $$1) {
          vu.b($$0, $$1);
       }
    };
-   yw<ByteBuf, PropertyMap> x = new yw<ByteBuf, PropertyMap>() {
+   yw<ByteBuf, PropertyMap> y = new yw<ByteBuf, PropertyMap>() {
       private static final int a = 64;
       private static final int b = 32767;
       private static final int c = 1024;
@@ -196,19 +205,19 @@ public interface yu {
          }
       }
    };
-   yw<ByteBuf, GameProfile> y = new yw<ByteBuf, GameProfile>() {
+   yw<ByteBuf, GameProfile> z = new yw<ByteBuf, GameProfile>() {
       public GameProfile a(ByteBuf $$0) {
-         UUID $$1 = jy.g.decode($$0);
+         UUID $$1 = jz.g.decode($$0);
          String $$2 = wo.a($$0, 16);
          GameProfile $$3 = new GameProfile($$1, $$2);
-         $$3.getProperties().putAll((Multimap)yu.x.decode($$0));
+         $$3.getProperties().putAll((Multimap)yu.y.decode($$0));
          return $$3;
       }
 
       public void a(ByteBuf $$0, GameProfile $$1) {
-         jy.g.encode($$0, $$1.getId());
+         jz.g.encode($$0, $$1.getId());
          wo.a($$0, $$1.getName(), 16);
-         yu.x.encode($$0, $$1.getProperties());
+         yu.y.encode($$0, $$1.getProperties());
       }
    };
 
@@ -448,13 +457,13 @@ public interface yu {
       };
    }
 
-   static <T> yw<ByteBuf, T> a(jj<T> $$0) {
+   static <T> yw<ByteBuf, T> a(jk<T> $$0) {
       return a($$0::b, $$0::c);
    }
 
-   private static <T, R> yw<wj, R> a(final alf<? extends jr<T>> $$0, final Function<jr<T>, jj<R>> $$1) {
+   private static <T, R> yw<wj, R> a(final alf<? extends js<T>> $$0, final Function<js<T>, jk<R>> $$1) {
       return new yw<wj, R>() {
-         private jj<R> b(wj $$0x) {
+         private jk<R> b(wj $$0x) {
             return $$1.apply($$0.H().f($$0));
          }
 
@@ -470,28 +479,28 @@ public interface yu {
       };
    }
 
-   static <T> yw<wj, T> a(alf<? extends jr<T>> $$0) {
+   static <T> yw<wj, T> a(alf<? extends js<T>> $$0) {
       return a($$0, $$0x -> $$0x);
    }
 
-   static <T> yw<wj, je<T>> b(alf<? extends jr<T>> $$0) {
-      return a($$0, jr::t);
+   static <T> yw<wj, jf<T>> b(alf<? extends js<T>> $$0) {
+      return a($$0, js::t);
    }
 
-   static <T> yw<wj, je<T>> a(final alf<? extends jr<T>> $$0, final yw<? super wj, T> $$1) {
-      return new yw<wj, je<T>>() {
+   static <T> yw<wj, jf<T>> a(final alf<? extends js<T>> $$0, final yw<? super wj, T> $$1) {
+      return new yw<wj, jf<T>>() {
          private static final int c = 0;
 
-         private jj<je<T>> b(wj $$0x) {
+         private jk<jf<T>> b(wj $$0x) {
             return $$0.H().f($$0).t();
          }
 
-         public je<T> a(wj $$0x) {
+         public jf<T> a(wj $$0x) {
             int $$1 = wp.a($$0);
-            return $$1 == 0 ? je.a($$1.decode($$0)) : (je)this.b($$0).b($$1 - 1);
+            return $$1 == 0 ? jf.a($$1.decode($$0)) : (jf)this.b($$0).b($$1 - 1);
          }
 
-         public void a(wj $$0x, je<T> $$1x) {
+         public void a(wj $$0x, jf<T> $$1x) {
             switch ($$1.f()) {
                case a:
                   int $$2 = this.b($$0).c($$1);
@@ -505,28 +514,28 @@ public interface yu {
       };
    }
 
-   static <T> yw<wj, ji<T>> c(final alf<? extends jr<T>> $$0) {
-      return new yw<wj, ji<T>>() {
+   static <T> yw<wj, jj<T>> c(final alf<? extends js<T>> $$0) {
+      return new yw<wj, jj<T>>() {
          private static final int b = -1;
-         private final yw<wj, je<T>> c = yu.b($$0);
+         private final yw<wj, jf<T>> c = yu.b($$0);
 
-         public ji<T> a(wj $$0x) {
+         public jj<T> a(wj $$0x) {
             int $$1 = wp.a($$0) - 1;
             if ($$1 == -1) {
-               jr<T> $$2 = $$0.H().f($$0);
+               js<T> $$2 = $$0.H().f($$0);
                return $$2.a(axr.a($$0, alg.b.decode($$0))).orElseThrow();
             } else {
-               List<je<T>> $$3 = new ArrayList<>(Math.min($$1, 65536));
+               List<jf<T>> $$3 = new ArrayList<>(Math.min($$1, 65536));
 
                for (int $$4 = 0; $$4 < $$1; $$4++) {
                   $$3.add(this.c.decode($$0));
                }
 
-               return ji.a($$3);
+               return jj.a($$3);
             }
          }
 
-         public void a(wj $$0x, ji<T> $$1) {
+         public void a(wj $$0x, jj<T> $$1) {
             Optional<axr<T>> $$2 = $$1.e();
             if ($$2.isPresent()) {
                wp.a($$0, 0);
@@ -534,7 +543,7 @@ public interface yu {
             } else {
                wp.a($$0, $$1.b() + 1);
 
-               for (je<T> $$3 : $$1) {
+               for (jf<T> $$3 : $$1) {
                   this.c.encode($$0, $$3);
                }
             }

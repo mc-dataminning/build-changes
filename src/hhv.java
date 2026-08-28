@@ -1,34 +1,22 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class hhv implements hib<dyn> {
-   private final gsv a;
+public record hhv() implements hia<czi> {
+   public static final Codec<czi> a = czi.j;
+   public static final hia.a<hhv, czi> b = hia.a.a(MapCodec.unit(new hhv()), a);
 
-   public hhv(gsv $$0) {
-      this.a = $$0;
+   public czi a(czk $$0, @Nullable gkl $$1, @Nullable bxj $$2, int $$3, czi $$4) {
+      return $$4;
    }
 
-   @Nullable
-   public dyn a(czd $$0) {
-      return $$0.a(kj.ao);
+   @Override
+   public hia.a<hhv, czi> a() {
+      return b;
    }
 
-   public void a(@Nullable dyn $$0, czb $$1, fjj $$2, gqa $$3, int $$4, int $$5, boolean $$6) {
-      this.a.a($$2, $$3, $$4, $$5, Objects.requireNonNullElse($$0, dyn.a));
-   }
-
-   public static record a() implements hib.a {
-      public static final MapCodec<hhv.a> a = MapCodec.unit(new hhv.a());
-
-      @Override
-      public MapCodec<hhv.a> a() {
-         return a;
-      }
-
-      @Override
-      public hib<?> a(giy $$0) {
-         return new hhv(new gsv($$0));
-      }
+   @Override
+   public Codec<czi> b() {
+      return a;
    }
 }

@@ -1,4 +1,7 @@
+import java.nio.file.Path;
+import javax.annotation.Nullable;
+
 @FunctionalInterface
 public interface gdn {
-   gdm apply(alr var1, jl<alp> var2, gdd var3);
+   boolean create(gdo var1, jm<alp> var2, ezg var3, @Nullable Path var4);
 }

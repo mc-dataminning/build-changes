@@ -1,66 +1,53 @@
-public class ddr extends ddk {
-   public ddr(ddh $$0) {
-      super($$0);
-   }
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public boolean a(ddi $$0, dja $$1) {
-      if ($$0.e() < 2) {
-         return false;
-      } else {
-         boolean $$2 = false;
-         boolean $$3 = false;
+public abstract class ddr implements ddq {
+   private final ddo d;
 
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            czd $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if ($$5.c(kj.M)) {
-                  if ($$3) {
-                     return false;
-                  }
-
-                  $$3 = true;
-               } else {
-                  if (!$$5.a(czh.vt)) {
-                     return false;
-                  }
-
-                  $$2 = true;
-               }
-            }
-         }
-
-         return $$3 && $$2;
-      }
-   }
-
-   public czd a(ddi $$0, jg.a $$1) {
-      int $$2 = 0;
-      czd $$3 = czd.k;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         czd $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.c(kj.M)) {
-               if (!$$3.f()) {
-                  return czd.k;
-               }
-
-               $$3 = $$5;
-            } else {
-               if (!$$5.a(czh.vt)) {
-                  return czd.k;
-               }
-
-               $$2++;
-            }
-         }
-      }
-
-      return !$$3.f() && $$2 >= 1 ? $$3.c($$2 + 1) : czd.k;
+   public ddr(ddo $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public dee<ddr> a() {
-      return dee.e;
+   public boolean am_() {
+      return true;
+   }
+
+   @Override
+   public ddo c() {
+      return this.d;
+   }
+
+   @Override
+   public dea al_() {
+      return dea.b;
+   }
+
+   @Override
+   public abstract del<? extends ddr> a();
+
+   public static class a<T extends ddq> implements del<T> {
+      private final MapCodec<T> w;
+      private final yw<wj, T> x;
+
+      public a(ddr.a.a<T> $$0) {
+         this.w = RecordCodecBuilder.mapCodec($$1 -> $$1.group(ddo.e.fieldOf("category").orElse(ddo.d).forGetter(ddq::c)).apply($$1, $$0::create));
+         this.x = yw.a(ddo.g, ddq::c, $$0::create);
+      }
+
+      @Override
+      public MapCodec<T> a() {
+         return this.w;
+      }
+
+      @Override
+      public yw<wj, T> b() {
+         return this.x;
+      }
+
+      @FunctionalInterface
+      public interface a<T extends ddq> {
+         T create(ddo var1);
+      }
    }
 }

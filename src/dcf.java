@@ -1,60 +1,44 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
+import java.util.Map;
 
-public record dcf(List<dcf.a> e) implements dbj, dci {
-   public static final dcf a = new dcf(List.of());
-   public static final int b = 160;
-   public static final Codec<dcf> c = dcf.a.a.listOf().xmap(dcf::new, dcf::a);
-   public static final yw<wj, dcf> d = dcf.a.b.a(yu.a()).a(dcf::new, dcf::a);
+public record dcf(Map<String, dcf.a> c) {
+   public static final dcf a = new dcf(Map.of());
+   public static final Codec<dcf> b = Codec.unboundedMap(Codec.STRING, dcf.a.a).xmap(dcf::new, dcf::a);
 
-   public dcf a(dcf.a $$0) {
-      return new dcf(af.a(this.e, $$0));
+   public dcf a(String $$0, dcf.a $$1) {
+      return new dcf(ag.a(this.c, $$0, $$1));
    }
 
-   @Override
-   public void a(dja $$0, bxe $$1, czd $$2, dbi $$3) {
-      for (dcf.a $$4 : this.e) {
-         $$1.a($$4.a());
-      }
+   public Map<String, dcf.a> a() {
+      return this.c;
    }
 
-   @Override
-   public void a(cyz.b $$0, Consumer<wy> $$1, das $$2, ke $$3) {
-      if ($$2.b()) {
-         List<bvj> $$4 = new ArrayList<>();
-
-         for (dcf.a $$5 : this.e) {
-            $$4.add($$5.a());
-         }
-
-         daz.a($$4, $$1, 1.0F, $$0.b());
-      }
-   }
-
-   public List<dcf.a> a() {
-      return this.e;
-   }
-
-   public static record a(je<bvh> c, int d) {
+   public static record a(jf<eyl> b, double c, double d, float e) {
       public static final Codec<dcf.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bvh.a.fieldOf("id").forGetter(dcf.a::b), Codec.INT.lenientOptionalFieldOf("duration", 160).forGetter(dcf.a::c))
+         $$0 -> $$0.group(
+                  eyl.b.fieldOf("type").forGetter(dcf.a::a),
+                  Codec.DOUBLE.fieldOf("x").forGetter(dcf.a::b),
+                  Codec.DOUBLE.fieldOf("z").forGetter(dcf.a::c),
+                  Codec.FLOAT.fieldOf("rotation").forGetter(dcf.a::d)
+               )
                .apply($$0, dcf.a::new)
       );
-      public static final yw<wj, dcf.a> b = yw.a(bvh.b, dcf.a::b, yu.h, dcf.a::c, dcf.a::new);
 
-      public bvj a() {
-         return new bvj(this.c, this.d);
+      public jf<eyl> a() {
+         return this.b;
       }
 
-      public je<bvh> b() {
+      public double b() {
          return this.c;
       }
 
-      public int c() {
+      public double c() {
          return this.d;
+      }
+
+      public float d() {
+         return this.e;
       }
    }
 }

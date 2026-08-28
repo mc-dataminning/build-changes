@@ -1,4 +1,7 @@
-public class hej extends hdn {
-   public float a;
-   public int b = 1;
+import javax.annotation.Nullable;
+
+public class hej extends hdz {
+   public czk a = czk.k;
+   @Nullable
+   public cjv b;
 }

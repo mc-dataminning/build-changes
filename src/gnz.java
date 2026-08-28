@@ -1,55 +1,78 @@
-public class gnz extends gnq {
-   private final god b;
-   protected boolean a;
+public class gnz extends gou {
+   private final gop a;
 
-   gnz(gjz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, god $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.b = $$7;
-      this.d(1.5F);
+   gnz(gkl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gop $$7) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.B = 0.96F;
+      this.a = $$7;
+      float $$8 = 2.5F;
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
+      float $$9 = 1.0F - (float)(Math.random() * 0.3F);
+      this.v = $$9;
+      this.w = $$9;
+      this.x = $$9;
+      this.D *= 1.875F;
+      int $$10 = (int)(8.0 / (Math.random() * 0.8 + 0.3));
+      this.t = (int)Math.max((float)$$10 * 2.5F, 1.0F);
+      this.n = false;
       this.b($$7);
    }
 
    @Override
-   public int a(float $$0) {
-      return this.a ? 240 : super.a($$0);
+   public gny b() {
+      return gny.c;
    }
 
    @Override
-   public gnm b() {
-      return gnm.c;
+   public float b(float $$0) {
+      return this.D * azm.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
    }
 
    @Override
    public void a() {
       super.a();
-      this.b(this.b);
-   }
-
-   public static class a implements gnl<mb> {
-      private final god a;
-
-      public a(god $$0) {
-         this.a = $$0;
-      }
-
-      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gnz $$8 = new gnz($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.a = true;
-         return $$8;
+      if (!this.o) {
+         this.b(this.a);
+         crj $$0 = this.c.a(this.g, this.h, this.i, 2.0, false);
+         if ($$0 != null) {
+            double $$1 = $$0.dB();
+            if (this.h > $$1) {
+               this.h = this.h + ($$1 - this.h) * 0.2;
+               this.k = this.k + ($$0.dx().e - this.k) * 0.2;
+               this.c(this.g, this.h, this.i);
+            }
+         }
       }
    }
 
-   public static class b implements gnl<mb> {
-      private final god a;
+   public static class a implements gnx<mc> {
+      private final gop a;
 
-      public b(god $$0) {
+      public a(gop $$0) {
          this.a = $$0;
       }
 
-      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gnz $$8 = new gnz($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
+      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gnz($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
+   }
+
+   public static class b implements gnx<mc> {
+      private final gop a;
+
+      public b(gop $$0) {
+         this.a = $$0;
+      }
+
+      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gnu $$8 = new gnz($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.a(200.0F, 50.0F, 120.0F);
+         $$8.e(0.4F);
          return $$8;
       }
    }

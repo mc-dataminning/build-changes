@@ -1,15 +1,15 @@
-public interface eeu<T> {
-   void g(T var1);
+public interface eeu {
+   eeu a = new eeu() {
+      @Override
+      public void a() {
+      }
 
-   void f(T var1);
+      @Override
+      public void a(bwi.d $$0) {
+      }
+   };
 
-   void e(T var1);
+   void a();
 
-   void d(T var1);
-
-   void c(T var1);
-
-   void b(T var1);
-
-   void a(T var1);
+   void a(bwi.d var1);
 }

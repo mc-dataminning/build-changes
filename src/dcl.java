@@ -1,26 +1,23 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Consumer;
 
-public record dcl(int d, float e) {
-   public static final float a = 5.0F;
-   public static final Codec<dcl> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayu.l.optionalFieldOf("item_damage_per_attack", 1).forGetter(dcl::a),
-               ayu.n.optionalFieldOf("disable_blocking_for_seconds", 0.0F).forGetter(dcl::b)
-            )
-            .apply($$0, dcl::new)
+public record dcl(alf<ezt> b, long c) implements dcp {
+   private static final wy d = wy.c("item.container.loot_table.unknown");
+   public static final Codec<dcl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ezt.a.fieldOf("loot_table").forGetter(dcl::a), Codec.LONG.optionalFieldOf("seed", 0L).forGetter(dcl::b)).apply($$0, dcl::new)
    );
-   public static final yw<wj, dcl> c = yw.a(yu.h, dcl::a, yu.l, dcl::b, dcl::new);
 
-   public dcl(int $$0) {
-      this($$0, 0.0F);
+   @Override
+   public void a(czg.b $$0, Consumer<wy> $$1, daz $$2, kf $$3) {
+      $$1.accept(d);
    }
 
-   public int a() {
-      return this.d;
+   public alf<ezt> a() {
+      return this.b;
    }
 
-   public float b() {
-      return this.e;
+   public long b() {
+      return this.c;
    }
 }

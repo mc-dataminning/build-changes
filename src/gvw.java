@@ -1,22 +1,31 @@
-public class gvw extends gvb<cjh, hci, gfr> {
-   private static final alg a = alg.b("textures/entity/dolphin.png");
+import java.util.function.UnaryOperator;
 
-   public gvw(gwh.a $$0) {
-      super($$0, new gfr($$0.a(gjb.ax)), new gfr($$0.a(gjb.ay)), 0.7F);
-      this.a(new hac(this));
+public class gvw extends gvh {
+   private final ghg a;
+   private final alg g;
+   private final ggk<hck> h;
+
+   public gvw(gwt.a $$0, gjm $$1) {
+      super($$0);
+      this.g = $$1.a().a((UnaryOperator<String>)($$0x -> "textures/entity/" + $$0x + ".png"));
+      this.a = new ghg.a($$0.a(gjn.E), $$0x -> gqx.i());
+      this.h = new gfn($$0.a($$1));
    }
 
-   public alg a(hci $$0) {
-      return a;
+   @Override
+   protected ggk<hck> a() {
+      return this.h;
    }
 
-   public hci a() {
-      return new hci();
+   @Override
+   protected gqx b() {
+      return this.h.a(this.g);
    }
 
-   public void a(cjh $$0, hci $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      hdc.a($$0, $$1, this.h);
-      $$1.a = $$0.dy().j() > 1.0E-7;
+   @Override
+   protected void b(hck $$0, fjy $$1, gqm $$2, int $$3) {
+      if (!$$0.f) {
+         this.a.a($$1, $$2.getBuffer(this.a.a(this.g)), $$3, hja.d);
+      }
    }
 }

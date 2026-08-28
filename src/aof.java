@@ -9,18 +9,18 @@ public class aof {
    private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("commands.pardonip.invalid"));
    private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wy.c("commands.pardonip.failed"));
 
-   public static void a(CommandDispatcher<ei> $$0) {
+   public static void a(CommandDispatcher<ej> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("pardon-ip").requires($$0x -> $$0x.c(3)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("pardon-ip").requires($$0x -> $$0x.c(3)))
             .then(
-               ej.a("target", StringArgumentType.word())
-                  .suggests(($$0x, $$1) -> en.a(((ei)$$0x.getSource()).l().ag().g().a(), $$1))
-                  .executes($$0x -> a((ei)$$0x.getSource(), StringArgumentType.getString($$0x, "target")))
+               ek.a("target", StringArgumentType.word())
+                  .suggests(($$0x, $$1) -> eo.a(((ej)$$0x.getSource()).l().ag().g().a(), $$1))
+                  .executes($$0x -> a((ej)$$0x.getSource(), StringArgumentType.getString($$0x, "target")))
             )
       );
    }
 
-   private static int a(ei $$0, String $$1) throws CommandSyntaxException {
+   private static int a(ej $$0, String $$1) throws CommandSyntaxException {
       if (!InetAddresses.isInetAddress($$1)) {
          throw a.create();
       } else {

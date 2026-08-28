@@ -1,7 +1,10 @@
-import javax.annotation.Nullable;
-
-public class hck extends hcn {
-   public boolean a = true;
-   @Nullable
-   public feq b;
+public class hck extends hcz {
+   public float a;
+   public int b;
+   public float c;
+   public float d;
+   public float e;
+   public boolean f;
+   public float g;
+   public float h;
 }

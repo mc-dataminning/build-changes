@@ -1,7 +1,4 @@
-import javax.annotation.Nullable;
-
-public class hes extends hcn {
+public class hes extends hcz {
    public float a;
-   @Nullable
-   public eah b;
+   public float b;
 }

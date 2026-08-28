@@ -1,26 +1,17 @@
-import java.util.IllegalFormatException;
+import java.io.IOException;
 
-public class hke {
-   private static volatile tu a = tu.a();
+public class hke extends avi<int[]> {
+   private static final alg a = alg.b("textures/colormap/grass.png");
 
-   private hke() {
-   }
-
-   static void a(tu $$0) {
-      a = $$0;
-   }
-
-   public static String a(String $$0, Object... $$1) {
-      String $$2 = a.a($$0);
-
+   protected int[] a(avd $$0, bqq $$1) {
       try {
-         return String.format($$2, $$1);
-      } catch (IllegalFormatException var4) {
-         return "Format error: " + $$2;
+         return hkg.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load grass color texture", var4);
       }
    }
 
-   public static boolean a(String $$0) {
-      return a.b($$0);
+   protected void a(int[] $$0, avd $$1, bqq $$2) {
+      djf.a($$0);
    }
 }

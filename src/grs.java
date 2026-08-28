@@ -1,65 +1,29 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
-
-public record grs(List<grv> a) implements gru {
-   public grs(List<grv> a) {
-      if (a.isEmpty()) {
-         throw new IllegalArgumentException("Variant list must contain at least one element");
-      } else {
-         this.a = a;
-      }
+public record grs(int[] a, int b, jb c, hjk d, boolean e, int f) {
+   public boolean a() {
+      return this.b != -1;
    }
 
-   @Override
-   public Object a(eah $$0) {
-      return this;
+   public int[] b() {
+      return this.a;
    }
 
-   @Override
-   public void a(hlp.a $$0) {
-      this.a.forEach($$1 -> $$0.a($$1.c()));
+   public int c() {
+      return this.b;
    }
 
-   @Override
-   public hkx a(hlg $$0) {
-      if (this.a.size() == 1) {
-         grv $$1 = this.a.getFirst();
-         return $$0.a($$1.c(), $$1);
-      } else {
-         bso.a<hkx> $$2 = bso.b();
-
-         for (grv $$3 : this.a) {
-            hkx $$4 = $$0.a($$3.c(), $$3);
-            $$2.a($$4, $$3.f());
-         }
-
-         return new hlt($$2.a());
-      }
+   public jb d() {
+      return this.c;
    }
 
-   public static class a implements JsonDeserializer<grs> {
-      public grs a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         List<grv> $$3 = Lists.newArrayList();
-         if ($$0.isJsonArray()) {
-            JsonArray $$4 = $$0.getAsJsonArray();
-            if ($$4.isEmpty()) {
-               throw new JsonParseException("Empty variant array");
-            }
+   public hjk e() {
+      return this.d;
+   }
 
-            for (JsonElement $$5 : $$4) {
-               $$3.add((grv)$$2.deserialize($$5, grv.class));
-            }
-         } else {
-            $$3.add((grv)$$2.deserialize($$0, grv.class));
-         }
+   public boolean f() {
+      return this.e;
+   }
 
-         return new grs($$3);
-      }
+   public int g() {
+      return this.f;
    }
 }

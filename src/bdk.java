@@ -118,7 +118,7 @@ public class bdk extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bix.I);
+      Type<?> $$0 = this.getInputSchema().getType(biz.I);
       return this.fixTypeEverywhereTyped("ChunkStructuresTemplateRenameFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), this::a));
    }
 

@@ -1,147 +1,69 @@
-import com.google.common.collect.Sets;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Consumer;
+import java.util.Locale;
+import java.util.UUID;
 import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 
-public class ezh {
-   private final ezk a;
-   private final azv b;
-   private final jf.a c;
-   private final Set<ezh.c<?>> d = Sets.newLinkedHashSet();
+public interface ezh extends ezj {
+   @Override
+   String e();
 
-   ezh(ezk $$0, azv $$1, jf.a $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   void a(boolean var1);
+
+   int j();
+
+   void c(int var1);
+
+   void b(int var1);
+
+   int h();
+
+   @Override
+   default void a(q $$0, djj $$1) {
+      ezj.super.a($$0, $$1);
+      $$0.a("Level name", this::e);
+      $$0.a(
+         "Level game mode",
+         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
+      );
+      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
    }
 
-   public boolean a(bax<?> $$0) {
-      return this.a.b().a($$0);
-   }
+   int f();
 
-   public <T> T b(bax<T> $$0) {
-      return this.a.b().b($$0);
-   }
+   void a(int var1);
+
+   int t();
+
+   void d(int var1);
+
+   int u();
+
+   void e(int var1);
 
    @Nullable
-   public <T> T c(bax<T> $$0) {
-      return this.a.b().c($$0);
-   }
+   UUID v();
 
-   public void a(alg $$0, Consumer<czd> $$1) {
-      this.a.a($$0, $$1);
-   }
+   void a(UUID var1);
 
-   public boolean a(ezh.c<?> $$0) {
-      return this.d.contains($$0);
-   }
+   dje k();
 
-   public boolean b(ezh.c<?> $$0) {
-      return this.d.add($$0);
-   }
+   void a(ecg.d var1);
 
-   public void c(ezh.c<?> $$0) {
-      this.d.remove($$0);
-   }
+   ecg.d p();
 
-   public jf.a a() {
-      return this.c;
-   }
+   boolean n();
 
-   public azv b() {
-      return this.b;
-   }
+   void c(boolean var1);
 
-   public float c() {
-      return this.a.c();
-   }
+   boolean m();
 
-   public arq d() {
-      return this.a.a();
-   }
+   void a(dje var1);
 
-   public static ezh.c<ezm> a(ezm $$0) {
-      return new ezh.c<>(ezj.c, $$0);
-   }
+   fek<MinecraftServer> s();
 
-   public static ezh.c<fcq> a(fcq $$0) {
-      return new ezh.c<>(ezj.a, $$0);
-   }
+   void a(long var1);
 
-   public static ezh.c<fav> a(fav $$0) {
-      return new ezh.c<>(ezj.b, $$0);
-   }
+   void b(long var1);
 
-   public static class a {
-      private final ezk a;
-      @Nullable
-      private azv b;
-
-      public a(ezk $$0) {
-         this.a = $$0;
-      }
-
-      public ezh.a a(long $$0) {
-         if ($$0 != 0L) {
-            this.b = azv.a($$0);
-         }
-
-         return this;
-      }
-
-      public ezh.a a(azv $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public arq a() {
-         return this.a.a();
-      }
-
-      public ezh a(Optional<alg> $$0) {
-         arq $$1 = this.a();
-         MinecraftServer $$2 = $$1.p();
-         azv $$3 = Optional.ofNullable(this.b).or(() -> $$0.map($$1::a)).orElseGet($$1::C_);
-         return new ezh(this.a, $$3, $$2.bc().a());
-      }
-   }
-
-   public static enum b implements bak {
-      a("this", fcb.a),
-      b("attacker", fcb.d),
-      c("direct_attacker", fcb.e),
-      d("attacking_player", fcb.b);
-
-      public static final bak.a<ezh.b> e = bak.a(ezh.b::values);
-      private final String f;
-      private final bax<? extends bwf> g;
-
-      private b(final String $$0, final bax<? extends bwf> $$1) {
-         this.f = $$0;
-         this.g = $$1;
-      }
-
-      public bax<? extends bwf> a() {
-         return this.g;
-      }
-
-      public static ezh.b a(String $$0) {
-         ezh.b $$1 = e.a($$0);
-         if ($$1 != null) {
-            return $$1;
-         } else {
-            throw new IllegalArgumentException("Invalid entity target " + $$0);
-         }
-      }
-
-      @Override
-      public String c() {
-         return this.f;
-      }
-   }
-
-   public static record c<T>(ezj<T> a, T b) {
-   }
+   djd o();
 }

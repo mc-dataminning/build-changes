@@ -1,118 +1,150 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ddp extends ddk {
-   private static final Map<cyz, dbr.a> c = Map.of(
-      czh.vg,
-      dbr.a.b,
-      czh.qh,
-      dbr.a.e,
-      czh.tq,
-      dbr.a.c,
-      czh.vv,
-      dbr.a.d,
-      czh.vw,
-      dbr.a.d,
-      czh.vz,
-      dbr.a.d,
-      czh.vx,
-      dbr.a.d,
-      czh.vA,
-      dbr.a.d,
-      czh.vy,
-      dbr.a.d,
-      czh.vB,
-      dbr.a.d
-   );
-   private static final ddq d = ddq.a(czh.pn);
-   private static final ddq e = ddq.a(czh.sg);
-   private static final ddq f = ddq.a(czh.qi);
+public class ddp implements deh {
+   public static final ddp a = new ddp(0, 0, List.of());
+   private final int b;
+   private final int c;
+   private final List<czk> d;
+   private final crp e = new crp();
+   private final int f;
 
-   public ddp(ddh $$0) {
-      super($$0);
+   private ddp(int $$0, int $$1, List<czk> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      int $$3 = 0;
+
+      for (czk $$4 : $$2) {
+         if (!$$4.f()) {
+            $$3++;
+            this.e.a($$4, 1);
+         }
+      }
+
+      this.f = $$3;
    }
 
-   public boolean a(ddi $$0, dja $$1) {
-      if ($$0.e() < 2) {
-         return false;
-      } else {
-         boolean $$2 = false;
-         boolean $$3 = false;
-         boolean $$4 = false;
-         boolean $$5 = false;
-         boolean $$6 = false;
+   public static ddp a(int $$0, int $$1, List<czk> $$2) {
+      return b($$0, $$1, $$2).a();
+   }
 
-         for (int $$7 = 0; $$7 < $$0.a(); $$7++) {
-            czd $$8 = $$0.a($$7);
-            if (!$$8.f()) {
-               if (c.containsKey($$8.h())) {
-                  if ($$4) {
-                     return false;
-                  }
+   public static ddp.a b(int $$0, int $$1, List<czk> $$2) {
+      if ($$0 != 0 && $$1 != 0) {
+         int $$3 = $$0 - 1;
+         int $$4 = 0;
+         int $$5 = $$1 - 1;
+         int $$6 = 0;
 
-                  $$4 = true;
-               } else if (e.a($$8)) {
-                  if ($$6) {
-                     return false;
-                  }
+         for (int $$7 = 0; $$7 < $$1; $$7++) {
+            boolean $$8 = true;
 
-                  $$6 = true;
-               } else if (d.a($$8)) {
-                  if ($$5) {
-                     return false;
-                  }
-
-                  $$5 = true;
-               } else if (f.a($$8)) {
-                  if ($$2) {
-                     return false;
-                  }
-
-                  $$2 = true;
-               } else {
-                  if (!($$8.h() instanceof cyc)) {
-                     return false;
-                  }
-
-                  $$3 = true;
+            for (int $$9 = 0; $$9 < $$0; $$9++) {
+               czk $$10 = $$2.get($$9 + $$7 * $$0);
+               if (!$$10.f()) {
+                  $$3 = Math.min($$3, $$9);
+                  $$4 = Math.max($$4, $$9);
+                  $$8 = false;
                }
             }
-         }
 
-         return $$2 && $$3;
-      }
-   }
-
-   public czd a(ddi $$0, jg.a $$1) {
-      dbr.a $$2 = dbr.a.a;
-      boolean $$3 = false;
-      boolean $$4 = false;
-      IntList $$5 = new IntArrayList();
-
-      for (int $$6 = 0; $$6 < $$0.a(); $$6++) {
-         czd $$7 = $$0.a($$6);
-         if (!$$7.f()) {
-            dbr.a $$8 = c.get($$7.h());
-            if ($$8 != null) {
-               $$2 = $$8;
-            } else if (e.a($$7)) {
-               $$3 = true;
-            } else if (d.a($$7)) {
-               $$4 = true;
-            } else if ($$7.h() instanceof cyc $$9) {
-               $$5.add($$9.a().f());
+            if (!$$8) {
+               $$5 = Math.min($$5, $$7);
+               $$6 = Math.max($$6, $$7);
             }
          }
-      }
 
-      czd $$10 = new czd(czh.vF);
-      $$10.b(kj.ai, new dbr($$2, $$5, IntList.of(), $$4, $$3));
-      return $$10;
+         int $$11 = $$4 - $$3 + 1;
+         int $$12 = $$6 - $$5 + 1;
+         if ($$11 <= 0 || $$12 <= 0) {
+            return ddp.a.a;
+         } else if ($$11 == $$0 && $$12 == $$1) {
+            return new ddp.a(new ddp($$0, $$1, $$2), $$3, $$5);
+         } else {
+            List<czk> $$13 = new ArrayList<>($$11 * $$12);
+
+            for (int $$14 = 0; $$14 < $$12; $$14++) {
+               for (int $$15 = 0; $$15 < $$11; $$15++) {
+                  int $$16 = $$15 + $$3 + ($$14 + $$5) * $$0;
+                  $$13.add($$2.get($$16));
+               }
+            }
+
+            return new ddp.a(new ddp($$11, $$12, $$13), $$3, $$5);
+         }
+      } else {
+         return ddp.a.a;
+      }
    }
 
    @Override
-   public dee<ddp> a() {
-      return dee.h;
+   public czk a(int $$0) {
+      return this.d.get($$0);
+   }
+
+   public czk a(int $$0, int $$1) {
+      return this.d.get($$0 + $$1 * this.b);
+   }
+
+   @Override
+   public int a() {
+      return this.d.size();
+   }
+
+   @Override
+   public boolean b() {
+      return this.f == 0;
+   }
+
+   public crp c() {
+      return this.e;
+   }
+
+   public List<czk> d() {
+      return this.d;
+   }
+
+   public int e() {
+      return this.f;
+   }
+
+   public int f() {
+      return this.b;
+   }
+
+   public int g() {
+      return this.c;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 == this) {
+         return true;
+      } else {
+         return !($$0 instanceof ddp $$1) ? false : this.b == $$1.b && this.c == $$1.c && this.f == $$1.f && czk.a(this.d, $$1.d);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = czk.a(this.d);
+      $$0 = 31 * $$0 + this.b;
+      return 31 * $$0 + this.c;
+   }
+
+   public static record a(ddp b, int c, int d) {
+      public static final ddp.a a = new ddp.a(ddp.a, 0, 0);
+
+      public ddp a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public int c() {
+         return this.d;
+      }
    }
 }

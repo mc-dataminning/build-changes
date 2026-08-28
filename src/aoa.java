@@ -1,10 +1,10 @@
 @FunctionalInterface
 public interface aoa {
-   void perform(ei var1, bwf var2);
+   void perform(ej var1, bwi var2);
 
-   public static record a(bwf a, eu.a b) implements aoa {
+   public static record a(bwi a, ev.a b) implements aoa {
       @Override
-      public void perform(ei $$0, bwf $$1) {
+      public void perform(ej $$0, bwi $$1) {
          if ($$1 instanceof arr $$2) {
             $$2.a($$0.m(), this.a, this.b);
          } else {
@@ -13,9 +13,9 @@ public interface aoa {
       }
    }
 
-   public static record b(feq a) implements aoa {
+   public static record b(fex a) implements aoa {
       @Override
-      public void perform(ei $$0, bwf $$1) {
+      public void perform(ej $$0, bwi $$1) {
          $$1.a($$0.m(), this.a);
       }
    }

@@ -1,33 +1,45 @@
-public class gio extends gfy<hcn> {
-   private static final int a = 16;
-   private final gjc b;
-   private final gjc c;
-   private final gjc d;
+import java.util.Arrays;
 
-   public gio(gjc $$0) {
-      super($$0, gqk::j);
-      this.b = $$0.b("bone");
-      this.d = this.b.b("wind");
-      this.c = this.b.b("wind_charge");
+public class gio extends ggk<hey> {
+   public static final gjx a = gjx.scaling(0.5F);
+   private final gjo[] b = new gjo[8];
+
+   public gio(gjo $$0) {
+      super($$0);
+      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
    }
 
-   public static gji a() {
-      gjk $$0 = new gjk();
-      gjm $$1 = $$0.a();
-      gjm $$2 = $$1.a("bone", gjh.c(), gje.a(0.0F, 0.0F, 0.0F));
-      $$2.a(
-         "wind",
-         gjh.c().a(15, 20).a(-4.0F, -1.0F, -4.0F, 8.0F, 2.0F, 8.0F, new gjg(0.0F)).a(0, 9).a(-3.0F, -2.0F, -3.0F, 6.0F, 4.0F, 6.0F, new gjg(0.0F)),
-         gje.a(0.0F, 0.0F, 0.0F, 0.0F, -0.7854F, 0.0F)
-      );
-      $$2.a("wind_charge", gjh.c().a(0, 0).a(-2.0F, -2.0F, -2.0F, 4.0F, 4.0F, 4.0F, new gjg(0.0F)), gje.a(0.0F, 0.0F, 0.0F));
-      return gji.a($$0, 64, 32);
+   private static String a(int $$0) {
+      return "tentacle" + $$0;
    }
 
-   @Override
-   public void a(hcn $$0) {
+   public static gju a() {
+      gjw $$0 = new gjw();
+      gjy $$1 = $$0.a();
+      gjs $$2 = new gjs(0.02F);
+      int $$3 = -16;
+      $$1.a("body", gjt.c().a(0, 0).a(-6.0F, -8.0F, -6.0F, 12.0F, 16.0F, 12.0F, $$2), gjq.a(0.0F, 8.0F, 0.0F));
+      int $$4 = 8;
+      gjt $$5 = gjt.c().a(48, 0).a(-1.0F, 0.0F, -1.0F, 2.0F, 18.0F, 2.0F);
+
+      for (int $$6 = 0; $$6 < 8; $$6++) {
+         double $$7 = (double)$$6 * Math.PI * 2.0 / 8.0;
+         float $$8 = (float)Math.cos($$7) * 5.0F;
+         float $$9 = 15.0F;
+         float $$10 = (float)Math.sin($$7) * 5.0F;
+         $$7 = (double)$$6 * Math.PI * -2.0 / 8.0 + (Math.PI / 2);
+         float $$11 = (float)$$7;
+         $$1.a(a($$6), $$5, gjq.a($$8, 15.0F, $$10, 0.0F, $$11, 0.0F));
+      }
+
+      return gju.a($$0, 64, 32);
+   }
+
+   public void a(hey $$0) {
       super.a($$0);
-      this.c.f = -$$0.u * 16.0F * (float) (Math.PI / 180.0);
-      this.d.f = $$0.u * 16.0F * (float) (Math.PI / 180.0);
+
+      for (gjo $$1 : this.b) {
+         $$1.e = $$0.a;
+      }
    }
 }

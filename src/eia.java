@@ -1,19 +1,24 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-record eia(jz e) implements ehn {
-   public static MapCodec<eia> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(jz.g.optionalFieldOf("offset", jz.i).forGetter(eia::g)).apply($$0, eia::new));
+class eia extends eif {
+   private final jj<dmm> e;
+   public static final MapCodec<eia> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(ju.a(mh.i).fieldOf("blocks").forGetter($$0x -> $$0x.e)).apply($$0, eia::new)
+   );
+
+   public eia(ka $$0, jj<dmm> $$1) {
+      super($$0);
+      this.e = $$1;
+   }
 
    @Override
-   public eho<?> a() {
-      return eho.m;
+   protected boolean a(eao $$0) {
+      return $$0.a(this.e);
    }
 
-   public boolean a(djz $$0, iu $$1) {
-      return $$0.a(null, ffh.b().a($$1));
-   }
-
-   public jz g() {
-      return this.e;
+   @Override
+   public ehv<?> a() {
+      return ehv.a;
    }
 }

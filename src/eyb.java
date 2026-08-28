@@ -1,28 +1,25 @@
-import com.mojang.serialization.Codec;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public record eyb<T extends eya>(String a, Function<eya.a, T> b, Function<eya.a, Codec<T>> c, bbb d) {
-   public eyb(String $$0, Supplier<T> $$1, Codec<T> $$2, bbb $$3) {
-      this($$0, $$1x -> $$1.get(), $$1x -> $$2, $$3);
+public class eyb implements eyc {
+   private final djh b;
+
+   public eyb(djh $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if ($$0 instanceof eyb<?> $$1 && this.a.equals($$1.a)) {
-         return true;
-      }
-
-      return false;
+   public void a(jb $$0, eao $$1, iv $$2, iv $$3, int $$4, int $$5) {
+      eyc.a(this.b, $$0, $$2, $$3, $$1, $$4, $$5 - 1);
    }
 
    @Override
-   public int hashCode() {
-      return this.a.hashCode();
+   public void a(iv $$0, dmm $$1, @Nullable eyd $$2) {
+      eao $$3 = this.b.a_($$0);
+      this.a($$3, $$0, $$1, $$2, false);
    }
 
    @Override
-   public String toString() {
-      return "SavedDataType[" + this.a + "]";
+   public void a(eao $$0, iv $$1, dmm $$2, @Nullable eyd $$3, boolean $$4) {
+      eyc.a(this.b, $$0, $$1, $$2, $$3, $$4);
    }
 }

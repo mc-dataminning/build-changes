@@ -20,105 +20,105 @@ public class amp {
       ($$0, $$1, $$2) -> wy.b("commands.attribute.failed.modifier_already_present", $$2, $$1, $$0)
    );
 
-   public static void a(CommandDispatcher<ei> $$0, ee $$1) {
+   public static void a(CommandDispatcher<ej> $$0, ef $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("attribute").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("attribute").requires($$0x -> $$0x.c(2)))
             .then(
-               ej.a("target", ev.a())
+               ek.a("target", ew.a())
                   .then(
-                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ej.a("attribute", fh.a($$1, mg.c))
+                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ek.a("attribute", fi.a($$1, mh.c))
                               .then(
-                                 ((LiteralArgumentBuilder)ej.a("get")
-                                       .executes($$0x -> a((ei)$$0x.getSource(), ev.a($$0x, "target"), fh.a($$0x, "attribute"), 1.0)))
+                                 ((LiteralArgumentBuilder)ek.a("get")
+                                       .executes($$0x -> a((ej)$$0x.getSource(), ew.a($$0x, "target"), fi.a($$0x, "attribute"), 1.0)))
                                     .then(
-                                       ej.a("scale", DoubleArgumentType.doubleArg())
+                                       ek.a("scale", DoubleArgumentType.doubleArg())
                                           .executes(
                                              $$0x -> a(
-                                                   (ei)$$0x.getSource(),
-                                                   ev.a($$0x, "target"),
-                                                   fh.a($$0x, "attribute"),
+                                                   (ej)$$0x.getSource(),
+                                                   ew.a($$0x, "target"),
+                                                   fi.a($$0x, "attribute"),
                                                    DoubleArgumentType.getDouble($$0x, "scale")
                                                 )
                                           )
                                     )
                               ))
                            .then(
-                              ((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("base")
+                              ((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("base")
                                        .then(
-                                          ej.a("set")
+                                          ek.a("set")
                                              .then(
-                                                ej.a("value", DoubleArgumentType.doubleArg())
+                                                ek.a("value", DoubleArgumentType.doubleArg())
                                                    .executes(
                                                       $$0x -> c(
-                                                            (ei)$$0x.getSource(),
-                                                            ev.a($$0x, "target"),
-                                                            fh.a($$0x, "attribute"),
+                                                            (ej)$$0x.getSource(),
+                                                            ew.a($$0x, "target"),
+                                                            fi.a($$0x, "attribute"),
                                                             DoubleArgumentType.getDouble($$0x, "value")
                                                          )
                                                    )
                                              )
                                        ))
                                     .then(
-                                       ((LiteralArgumentBuilder)ej.a("get")
-                                             .executes($$0x -> b((ei)$$0x.getSource(), ev.a($$0x, "target"), fh.a($$0x, "attribute"), 1.0)))
+                                       ((LiteralArgumentBuilder)ek.a("get")
+                                             .executes($$0x -> b((ej)$$0x.getSource(), ew.a($$0x, "target"), fi.a($$0x, "attribute"), 1.0)))
                                           .then(
-                                             ej.a("scale", DoubleArgumentType.doubleArg())
+                                             ek.a("scale", DoubleArgumentType.doubleArg())
                                                 .executes(
                                                    $$0x -> b(
-                                                         (ei)$$0x.getSource(),
-                                                         ev.a($$0x, "target"),
-                                                         fh.a($$0x, "attribute"),
+                                                         (ej)$$0x.getSource(),
+                                                         ew.a($$0x, "target"),
+                                                         fi.a($$0x, "attribute"),
                                                          DoubleArgumentType.getDouble($$0x, "scale")
                                                       )
                                                 )
                                           )
                                     ))
-                                 .then(ej.a("reset").executes($$0x -> a((ei)$$0x.getSource(), ev.a($$0x, "target"), fh.a($$0x, "attribute"))))
+                                 .then(ek.a("reset").executes($$0x -> a((ej)$$0x.getSource(), ew.a($$0x, "target"), fi.a($$0x, "attribute"))))
                            ))
                         .then(
-                           ((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("modifier")
+                           ((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("modifier")
                                     .then(
-                                       ej.a("add")
+                                       ek.a("add")
                                           .then(
-                                             ej.a("id", fj.a())
+                                             ek.a("id", fk.a())
                                                 .then(
-                                                   ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ej.a("value", DoubleArgumentType.doubleArg())
+                                                   ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ek.a("value", DoubleArgumentType.doubleArg())
                                                             .then(
-                                                               ej.a("add_value")
+                                                               ek.a("add_value")
                                                                   .executes(
                                                                      $$0x -> a(
-                                                                           (ei)$$0x.getSource(),
-                                                                           ev.a($$0x, "target"),
-                                                                           fh.a($$0x, "attribute"),
-                                                                           fj.a($$0x, "id"),
+                                                                           (ej)$$0x.getSource(),
+                                                                           ew.a($$0x, "target"),
+                                                                           fi.a($$0x, "attribute"),
+                                                                           fk.a($$0x, "id"),
                                                                            DoubleArgumentType.getDouble($$0x, "value"),
-                                                                           byi.a.a
+                                                                           byn.a.a
                                                                         )
                                                                   )
                                                             ))
                                                          .then(
-                                                            ej.a("add_multiplied_base")
+                                                            ek.a("add_multiplied_base")
                                                                .executes(
                                                                   $$0x -> a(
-                                                                        (ei)$$0x.getSource(),
-                                                                        ev.a($$0x, "target"),
-                                                                        fh.a($$0x, "attribute"),
-                                                                        fj.a($$0x, "id"),
+                                                                        (ej)$$0x.getSource(),
+                                                                        ew.a($$0x, "target"),
+                                                                        fi.a($$0x, "attribute"),
+                                                                        fk.a($$0x, "id"),
                                                                         DoubleArgumentType.getDouble($$0x, "value"),
-                                                                        byi.a.b
+                                                                        byn.a.b
                                                                      )
                                                                )
                                                          ))
                                                       .then(
-                                                         ej.a("add_multiplied_total")
+                                                         ek.a("add_multiplied_total")
                                                             .executes(
                                                                $$0x -> a(
-                                                                     (ei)$$0x.getSource(),
-                                                                     ev.a($$0x, "target"),
-                                                                     fh.a($$0x, "attribute"),
-                                                                     fj.a($$0x, "id"),
+                                                                     (ej)$$0x.getSource(),
+                                                                     ew.a($$0x, "target"),
+                                                                     fi.a($$0x, "attribute"),
+                                                                     fk.a($$0x, "id"),
                                                                      DoubleArgumentType.getDouble($$0x, "value"),
-                                                                     byi.a.c
+                                                                     byn.a.c
                                                                   )
                                                             )
                                                       )
@@ -126,31 +126,31 @@ public class amp {
                                           )
                                     ))
                                  .then(
-                                    ej.a("remove")
+                                    ek.a("remove")
                                        .then(
-                                          ej.a("id", fj.a())
-                                             .suggests(($$0x, $$1x) -> en.a(c(ev.a($$0x, "target"), fh.a($$0x, "attribute")), $$1x))
-                                             .executes($$0x -> a((ei)$$0x.getSource(), ev.a($$0x, "target"), fh.a($$0x, "attribute"), fj.a($$0x, "id")))
+                                          ek.a("id", fk.a())
+                                             .suggests(($$0x, $$1x) -> eo.a(c(ew.a($$0x, "target"), fi.a($$0x, "attribute")), $$1x))
+                                             .executes($$0x -> a((ej)$$0x.getSource(), ew.a($$0x, "target"), fi.a($$0x, "attribute"), fk.a($$0x, "id")))
                                        )
                                  ))
                               .then(
-                                 ej.a("value")
+                                 ek.a("value")
                                     .then(
-                                       ej.a("get")
+                                       ek.a("get")
                                           .then(
-                                             ((RequiredArgumentBuilder)ej.a("id", fj.a())
-                                                   .suggests(($$0x, $$1x) -> en.a(c(ev.a($$0x, "target"), fh.a($$0x, "attribute")), $$1x))
+                                             ((RequiredArgumentBuilder)ek.a("id", fk.a())
+                                                   .suggests(($$0x, $$1x) -> eo.a(c(ew.a($$0x, "target"), fi.a($$0x, "attribute")), $$1x))
                                                    .executes(
-                                                      $$0x -> a((ei)$$0x.getSource(), ev.a($$0x, "target"), fh.a($$0x, "attribute"), fj.a($$0x, "id"), 1.0)
+                                                      $$0x -> a((ej)$$0x.getSource(), ew.a($$0x, "target"), fi.a($$0x, "attribute"), fk.a($$0x, "id"), 1.0)
                                                    ))
                                                 .then(
-                                                   ej.a("scale", DoubleArgumentType.doubleArg())
+                                                   ek.a("scale", DoubleArgumentType.doubleArg())
                                                       .executes(
                                                          $$0x -> a(
-                                                               (ei)$$0x.getSource(),
-                                                               ev.a($$0x, "target"),
-                                                               fh.a($$0x, "attribute"),
-                                                               fj.a($$0x, "id"),
+                                                               (ej)$$0x.getSource(),
+                                                               ew.a($$0x, "target"),
+                                                               fi.a($$0x, "attribute"),
+                                                               fk.a($$0x, "id"),
                                                                DoubleArgumentType.getDouble($$0x, "scale")
                                                             )
                                                       )
@@ -164,103 +164,103 @@ public class amp {
       );
    }
 
-   private static byg a(bwf $$0, je<byf> $$1) throws CommandSyntaxException {
-      byg $$2 = a($$0).fa().a($$1);
+   private static byl a(bwi $$0, jf<byk> $$1) throws CommandSyntaxException {
+      byl $$2 = a($$0).eZ().a($$1);
       if ($$2 == null) {
-         throw b.create($$0.al(), a($$1));
+         throw b.create($$0.ai(), a($$1));
       } else {
          return $$2;
       }
    }
 
-   private static bxe a(bwf $$0) throws CommandSyntaxException {
-      if (!($$0 instanceof bxe)) {
-         throw a.create($$0.al());
+   private static bxj a(bwi $$0) throws CommandSyntaxException {
+      if (!($$0 instanceof bxj)) {
+         throw a.create($$0.ai());
       } else {
-         return (bxe)$$0;
+         return (bxj)$$0;
       }
    }
 
-   private static bxe b(bwf $$0, je<byf> $$1) throws CommandSyntaxException {
-      bxe $$2 = a($$0);
-      if (!$$2.fa().b($$1)) {
-         throw b.create($$0.al(), a($$1));
+   private static bxj b(bwi $$0, jf<byk> $$1) throws CommandSyntaxException {
+      bxj $$2 = a($$0);
+      if (!$$2.eZ().b($$1)) {
+         throw b.create($$0.ai(), a($$1));
       } else {
          return $$2;
       }
    }
 
-   private static int a(ei $$0, bwf $$1, je<byf> $$2, double $$3) throws CommandSyntaxException {
-      bxe $$4 = b($$1, $$2);
+   private static int a(ej $$0, bwi $$1, jf<byk> $$2, double $$3) throws CommandSyntaxException {
+      bxj $$4 = b($$1, $$2);
       double $$5 = $$4.h($$2);
-      $$0.a(() -> wy.a("commands.attribute.value.get.success", a($$2), $$1.al(), $$5), false);
+      $$0.a(() -> wy.a("commands.attribute.value.get.success", a($$2), $$1.ai(), $$5), false);
       return (int)($$5 * $$3);
    }
 
-   private static int b(ei $$0, bwf $$1, je<byf> $$2, double $$3) throws CommandSyntaxException {
-      bxe $$4 = b($$1, $$2);
+   private static int b(ej $$0, bwi $$1, jf<byk> $$2, double $$3) throws CommandSyntaxException {
+      bxj $$4 = b($$1, $$2);
       double $$5 = $$4.i($$2);
-      $$0.a(() -> wy.a("commands.attribute.base_value.get.success", a($$2), $$1.al(), $$5), false);
+      $$0.a(() -> wy.a("commands.attribute.base_value.get.success", a($$2), $$1.ai(), $$5), false);
       return (int)($$5 * $$3);
    }
 
-   private static int a(ei $$0, bwf $$1, je<byf> $$2, alg $$3, double $$4) throws CommandSyntaxException {
-      bxe $$5 = b($$1, $$2);
-      byh $$6 = $$5.fa();
+   private static int a(ej $$0, bwi $$1, jf<byk> $$2, alg $$3, double $$4) throws CommandSyntaxException {
+      bxj $$5 = b($$1, $$2);
+      bym $$6 = $$5.eZ();
       if (!$$6.a($$2, $$3)) {
-         throw c.create($$1.al(), a($$2), $$3);
+         throw c.create($$1.ai(), a($$2), $$3);
       } else {
          double $$7 = $$6.b($$2, $$3);
-         $$0.a(() -> wy.a("commands.attribute.modifier.value.get.success", wy.a($$3), a($$2), $$1.al(), $$7), false);
+         $$0.a(() -> wy.a("commands.attribute.modifier.value.get.success", wy.a($$3), a($$2), $$1.ai(), $$7), false);
          return (int)($$7 * $$4);
       }
    }
 
-   private static Stream<alg> c(bwf $$0, je<byf> $$1) throws CommandSyntaxException {
-      byg $$2 = a($$0, $$1);
-      return $$2.c().stream().map(byi::a);
+   private static Stream<alg> c(bwi $$0, jf<byk> $$1) throws CommandSyntaxException {
+      byl $$2 = a($$0, $$1);
+      return $$2.c().stream().map(byn::a);
    }
 
-   private static int c(ei $$0, bwf $$1, je<byf> $$2, double $$3) throws CommandSyntaxException {
+   private static int c(ej $$0, bwi $$1, jf<byk> $$2, double $$3) throws CommandSyntaxException {
       a($$1, $$2).a($$3);
-      $$0.a(() -> wy.a("commands.attribute.base_value.set.success", a($$2), $$1.al(), $$3), false);
+      $$0.a(() -> wy.a("commands.attribute.base_value.set.success", a($$2), $$1.ai(), $$3), false);
       return 1;
    }
 
-   private static int a(ei $$0, bwf $$1, je<byf> $$2) throws CommandSyntaxException {
-      bxe $$3 = a($$1);
-      if (!$$3.fa().e($$2)) {
-         throw b.create($$1.al(), a($$2));
+   private static int a(ej $$0, bwi $$1, jf<byk> $$2) throws CommandSyntaxException {
+      bxj $$3 = a($$1);
+      if (!$$3.eZ().e($$2)) {
+         throw b.create($$1.ai(), a($$2));
       } else {
          double $$4 = $$3.i($$2);
-         $$0.a(() -> wy.a("commands.attribute.base_value.reset.success", a($$2), $$1.al(), $$4), false);
+         $$0.a(() -> wy.a("commands.attribute.base_value.reset.success", a($$2), $$1.ai(), $$4), false);
          return 1;
       }
    }
 
-   private static int a(ei $$0, bwf $$1, je<byf> $$2, alg $$3, double $$4, byi.a $$5) throws CommandSyntaxException {
-      byg $$6 = a($$1, $$2);
-      byi $$7 = new byi($$3, $$4, $$5);
+   private static int a(ej $$0, bwi $$1, jf<byk> $$2, alg $$3, double $$4, byn.a $$5) throws CommandSyntaxException {
+      byl $$6 = a($$1, $$2);
+      byn $$7 = new byn($$3, $$4, $$5);
       if ($$6.b($$3)) {
-         throw d.create($$1.al(), a($$2), $$3);
+         throw d.create($$1.ai(), a($$2), $$3);
       } else {
          $$6.d($$7);
-         $$0.a(() -> wy.a("commands.attribute.modifier.add.success", wy.a($$3), a($$2), $$1.al()), false);
+         $$0.a(() -> wy.a("commands.attribute.modifier.add.success", wy.a($$3), a($$2), $$1.ai()), false);
          return 1;
       }
    }
 
-   private static int a(ei $$0, bwf $$1, je<byf> $$2, alg $$3) throws CommandSyntaxException {
-      byg $$4 = a($$1, $$2);
+   private static int a(ej $$0, bwi $$1, jf<byk> $$2, alg $$3) throws CommandSyntaxException {
+      byl $$4 = a($$1, $$2);
       if ($$4.c($$3)) {
-         $$0.a(() -> wy.a("commands.attribute.modifier.remove.success", wy.a($$3), a($$2), $$1.al()), false);
+         $$0.a(() -> wy.a("commands.attribute.modifier.remove.success", wy.a($$3), a($$2), $$1.ai()), false);
          return 1;
       } else {
-         throw c.create($$1.al(), a($$2), $$3);
+         throw c.create($$1.ai(), a($$2), $$3);
       }
    }
 
-   private static wy a(je<byf> $$0) {
+   private static wy a(jf<byk> $$0) {
       return wy.c($$0.a().c());
    }
 }

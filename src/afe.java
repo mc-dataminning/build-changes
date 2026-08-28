@@ -5,9 +5,9 @@ public class afe implements zf<abu> {
    private final int b;
    private final int c;
 
-   public afe(bwf $$0, @Nullable bwf $$1) {
-      this.b = $$0.ar();
-      this.c = $$1 != null ? $$1.ar() : 0;
+   public afe(bwi $$0, @Nullable bwi $$1) {
+      this.b = $$0.ao();
+      this.c = $$1 != null ? $$1.ao() : 0;
    }
 
    private afe(vu $$0) {

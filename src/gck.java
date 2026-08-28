@@ -1,64 +1,69 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.UUID;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectMap;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class gck extends gcj<glb.a> {
-   private static final wy C = wy.c("gui.chatReport.title");
-   private static final wy D = wy.c("gui.chatReport.select_chat");
-   private ftb E;
-   private fsj F;
-   private fsj G;
+public class gck {
+   private final Reference2ObjectMap<cwz, gck.a> a = new Reference2ObjectArrayMap();
+   private final gct b;
 
-   private gck(fyb $$0, gli $$1, glb.a $$2) {
-      super(C, $$0, $$1, $$2);
+   public gck(gct $$0) {
+      this.b = $$0;
    }
 
-   public gck(fyb $$0, gli $$1, UUID $$2) {
-      this($$0, $$1, new glb.a($$2, $$1.a().b()));
+   public void a() {
+      this.a.clear();
    }
 
-   public gck(fyb $$0, gli $$1, glb $$2) {
-      this($$0, $$1, new glb.a($$2, $$1.a().b()));
+   private void a(cwz $$0, baz $$1, dfn $$2, boolean $$3) {
+      List<czk> $$4 = $$2.a($$1);
+      if (!$$4.isEmpty()) {
+         this.a.put($$0, new gck.a($$4, $$3));
+      }
    }
 
-   @Override
-   protected void E() {
-      this.F = this.z.a(fsj.a(D, $$0 -> this.m.a(new gcm(this, this.y, this.A, $$0x -> {
-            this.A = $$0x;
-            this.G();
-         }))).a(280).a());
-      this.G = fsj.a(c, $$0 -> this.m.a(new gcp(this, this.A.i(), glh.a, $$0x -> {
-            this.A.a($$0x);
-            this.G();
-         }))).a(280).a();
-      this.z.a(fvt.a(this.p, this.G, b));
-      this.E = this.a(280, 9 * 8, $$0 -> {
-         this.A.a($$0);
-         this.G();
+   protected void a(cwz $$0, baz $$1, dfn $$2) {
+      this.a($$0, $$1, $$2, false);
+   }
+
+   protected void b(cwz $$0, baz $$1, dfn $$2) {
+      this.a($$0, $$1, $$2, true);
+   }
+
+   public void a(fsh $$0, fpo $$1, boolean $$2) {
+      this.a.forEach(($$3, $$4) -> {
+         int $$5 = $$3.e;
+         int $$6 = $$3.f;
+         if ($$4.b && $$2) {
+            $$0.a($$5 - 4, $$6 - 4, $$5 + 20, $$6 + 20, 822018048);
+         } else {
+            $$0.a($$5, $$6, $$5 + 16, $$6 + 16, 822018048);
+         }
+
+         czk $$7 = $$4.a(this.b.currentIndex());
+         $$0.b($$7, $$5, $$6);
+         $$0.a(gqx.P(), $$5, $$6, $$5 + 16, $$6 + 16, 822083583);
+         if ($$4.b) {
+            $$0.a($$1.h, $$7, $$5, $$6);
+         }
       });
-      this.z.a(fvt.a(this.p, this.E, d, $$0 -> $$0.e(12)));
    }
 
-   @Override
-   protected void G() {
-      IntSet $$0 = this.A.a();
-      if ($$0.isEmpty()) {
-         this.F.b(D);
-      } else {
-         this.F.b(wy.a("gui.chatReport.selected_chat", $$0.size()));
+   public void a(fsh $$0, fpo $$1, int $$2, int $$3, @Nullable cwz $$4) {
+      if ($$4 != null) {
+         gck.a $$5 = (gck.a)this.a.get($$4);
+         if ($$5 != null) {
+            czk $$6 = $$5.a(this.b.currentIndex());
+            $$0.a($$1.h, fyn.a($$1, $$6), $$2, $$3, $$6.a(kk.G));
+         }
       }
-
-      glg $$1 = this.A.i();
-      if ($$1 != null) {
-         this.G.b($$1.b());
-      } else {
-         this.G.b(c);
-      }
-
-      super.G();
    }
 
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.E.b($$0, $$1, $$2);
+   static record a(List<czk> a, boolean b) {
+
+      public czk a(int $$0) {
+         int $$1 = this.a.size();
+         return $$1 == 0 ? czk.k : this.a.get($$0 % $$1);
+      }
    }
 }

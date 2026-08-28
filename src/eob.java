@@ -1,29 +1,30 @@
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
+import com.mojang.datafixers.Products.P3;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 
-public class eob extends enr {
-   public static final MapCodec<eob> b = bso.b(eah.a).comapFlatMap(eob::a, $$0 -> $$0.c).fieldOf("entries");
-   private final bso<eah> c;
+public abstract class eob extends eny {
+   protected final long c;
+   protected final evy.a d;
+   protected final float e;
+   protected final evy f;
 
-   private static DataResult<eob> a(bso<eah> $$0) {
-      return $$0.c() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new eob($$0));
+   protected static <P extends eob> P3<Mu<P>, Long, evy.a, Float> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
+         evy.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
+         ayu.o.fieldOf("scale").forGetter($$0x -> $$0x.e)
+      );
    }
 
-   public eob(bso<eah> $$0) {
+   protected eob(long $$0, evy.a $$1, float $$2) {
       this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = evy.b(new ehm(new ego($$0)), $$1);
    }
 
-   public eob(bso.a<eah> $$0) {
-      this($$0.a());
-   }
-
-   @Override
-   protected ens<?> a() {
-      return ens.b;
-   }
-
-   @Override
-   public eah a(azv $$0, iu $$1) {
-      return this.c.b($$0);
+   protected double a(iv $$0, double $$1) {
+      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
    }
 }

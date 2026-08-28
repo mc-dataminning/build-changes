@@ -1,95 +1,43 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dof extends dlr {
-   public static final MapCodec<dof> a = b(dof::new);
-   public static final ebh b = eax.aW;
-   public static final eay c = eax.s;
-   private static final ffk d = dmf.b(16.0, 0.0, 6.0);
+public class dof extends dlx {
+   public static final MapCodec<dof> e = RecordCodecBuilder.mapCodec($$0 -> $$0.group(doc.a.forGetter($$0x -> $$0x.f), t()).apply($$0, dof::new));
+   private final dmm f;
 
    @Override
    public MapCodec<dof> a() {
-      return a;
+      return e;
    }
 
-   public dof(eag.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(b, Integer.valueOf(0)).b(c, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
-      return d;
+   protected dof(dmm $$0, ean.d $$1) {
+      super($$1);
+      this.f = $$0;
    }
 
    @Override
-   protected boolean g_(eah $$0) {
-      return true;
+   protected void a(eao $$0, djh $$1, iv $$2, eao $$3, boolean $$4) {
+      this.a($$0, $$1, $$1, $$1.A, $$2);
    }
 
    @Override
-   protected int a(eah $$0, dig $$1, iu $$2, ja $$3) {
-      return $$0.c(b);
-   }
-
-   private static void d(eah $$0, dja $$1, iu $$2) {
-      int $$3 = $$1.a(djj.a, $$2) - $$1.z_();
-      float $$4 = $$1.a(1.0F);
-      boolean $$5 = $$0.c(c);
-      if ($$5) {
-         $$3 = 15 - $$3;
-      } else if ($$3 > 0) {
-         float $$6 = $$4 < (float) Math.PI ? 0.0F : (float) (Math.PI * 2);
-         $$4 += ($$6 - $$4) * 0.2F;
-         $$3 = Math.round((float)$$3 * azm.b($$4));
-      }
-
-      $$3 = azm.a($$3, 0, 15);
-      if ($$0.c(b) != $$3) {
-         $$1.a($$2, $$0.b(b, Integer.valueOf($$3)), 3);
+   protected void a(eao $$0, arq $$1, iv $$2, azv $$3) {
+      if (!d($$0, $$1, $$2)) {
+         $$1.a($$2, this.f.m().b(b, Boolean.valueOf(false)).b(d, $$0.c(d)), 2);
       }
    }
 
    @Override
-   protected bud a(eah $$0, dja $$1, iu $$2, crc $$3, fem $$4) {
-      if (!$$3.gw()) {
-         return super.a($$0, $$1, $$2, $$3, $$4);
+   protected eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
+      if ($$4.g() == $$0.c(d) && !$$0.a($$1, $$3)) {
+         return dmo.a.m();
       } else {
-         if (!$$1.C) {
-            eah $$5 = $$0.a(c);
-            $$1.a($$2, $$5, 2);
-            $$1.a(efh.c, $$2, efh.a.a($$3, $$5));
-            d($$5, $$1, $$2);
+         if ($$0.c(b)) {
+            $$2.a($$3, eww.c, eww.c.a($$1));
          }
 
-         return bud.a;
+         this.a($$0, $$1, $$2, $$7, $$3);
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
-   }
-
-   @Override
-   protected boolean f_(eah $$0) {
-      return true;
-   }
-
-   @Override
-   public dxf a(iu $$0, eah $$1) {
-      return new dxw($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dxf> dxg<T> a(dja $$0, eah $$1, dxh<T> $$2) {
-      return !$$0.C && $$0.B_().g() ? a($$2, dxh.r, dof::a) : null;
-   }
-
-   private static void a(dja $$0, iu $$1, eah $$2, dxw $$3) {
-      if ($$0.ae() % 20L == 0L) {
-         d($$2, $$0, $$1);
-      }
-   }
-
-   @Override
-   protected void a(eai.a<dmf, eah> $$0) {
-      $$0.a(b, c);
    }
 }

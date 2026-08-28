@@ -1,21 +1,22 @@
-public class gzq extends gwy<coz, hff, giu> {
-   private static final alg a = alg.b("textures/entity/piglin/zombified_piglin.png");
+public class gzq extends gxm<cpa, hdr> {
+   private static final alg a = alg.b("textures/entity/illager/vindicator.png");
 
-   public gzq(gwh.a $$0, gja $$1, gja $$2, gja $$3, gja $$4, gja $$5, gja $$6) {
-      super($$0, new giu($$0.a($$1)), new giu($$0.a($$2)), 0.5F, gxx.a);
-      this.a(new hak<>(this, new ggl($$0.a($$3)), new ggl($$0.a($$4)), new ggl($$0.a($$5)), new ggl($$0.a($$6)), $$0.h()));
+   public gzq(gwt.a $$0) {
+      super($$0, new ggz<>($$0.a(gjn.dL)), 0.5F);
+      this.a(new haz<hdr, ggz<hdr>>(this) {
+         public void a(fjy $$0, gqm $$1, int $$2, hdr $$3, float $$4, float $$5) {
+            if ($$3.c) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5);
+            }
+         }
+      });
    }
 
-   public alg a(hff $$0) {
+   public alg a(hdr $$0) {
       return a;
    }
 
-   public hff b() {
-      return new hff();
-   }
-
-   public void a(coz $$0, hff $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gi();
+   public hdr b() {
+      return new hdr();
    }
 }

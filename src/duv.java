@@ -1,39 +1,30 @@
 import com.mojang.serialization.MapCodec;
 
-public class duv extends dvr implements dmi {
+public class duv extends dmm {
    public static final MapCodec<duv> a = b(duv::new);
-   private static final ffk b = dmf.b(12.0, 0.0, 13.0);
+   private static final ffr b = dmm.a(6.0);
 
    @Override
    public MapCodec<duv> a() {
       return a;
    }
 
-   protected duv(eag.d $$0) {
+   protected duv(ean.d $$0) {
       super($$0);
    }
 
    @Override
-   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
+   protected dsz a_(eao $$0) {
+      return dsz.a;
+   }
+
+   @Override
+   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
       return b;
    }
 
    @Override
-   public boolean a(djd $$0, iu $$1, eah $$2) {
-      return o($$2).m().a($$0, $$1) && $$0.v($$1.d());
-   }
-
-   @Override
-   public boolean a(dja $$0, azv $$1, iu $$2, eah $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arq $$0, azv $$1, iu $$2, eah $$3) {
-      doo.a($$0, o($$3).m(), $$2, 2);
-   }
-
-   private static doo o(eah $$0) {
-      return (doo)($$0.a(dmh.bB) ? dmh.jk : dmh.jj);
+   protected float c(eao $$0, din $$1, iv $$2) {
+      return 1.0F;
    }
 }

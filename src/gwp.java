@@ -1,43 +1,35 @@
-public class gwp extends gvb<cjj, hcw, ggc> {
-   private static final alg a = alg.b("textures/entity/fox/fox.png");
-   private static final alg j = alg.b("textures/entity/fox/fox_sleep.png");
-   private static final alg k = alg.b("textures/entity/fox/snow_fox.png");
-   private static final alg l = alg.b("textures/entity/fox/snow_fox_sleep.png");
+public class gwp extends gxz<coa, hcy, ggi<hcy>> {
+   private static final alg a = alg.b("textures/entity/enderman/enderman.png");
+   private final azv j = azv.a();
 
-   public gwp(gwh.a $$0) {
-      super($$0, new ggc($$0.a(gjb.aX)), new ggc($$0.a(gjb.aY)), 0.4F);
-      this.a(new hai(this));
+   public gwp(gwt.a $$0) {
+      super($$0, new ggi<>($$0.a(gjn.aR)), 0.5F);
+      this.a(new haq(this));
+      this.a(new hai(this, $$0.d()));
    }
 
-   protected void a(hcw $$0, fjj $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if ($$0.g || $$0.f) {
-         $$1.a(a.b.rotationDegrees(-$$0.ab));
-      }
-   }
-
-   public alg a(hcw $$0) {
-      if ($$0.h == cjj.v.a) {
-         return $$0.d ? j : a;
+   public fex a(hcy $$0) {
+      fex $$1 = super.a($$0);
+      if ($$0.a) {
+         double $$2 = 0.02 * (double)$$0.af;
+         return $$1.b(this.j.k() * $$2, 0.0, this.j.k() * $$2);
       } else {
-         return $$0.d ? l : k;
+         return $$1;
       }
    }
 
-   public hcw b() {
-      return new hcw();
+   public alg b(hcy $$0) {
+      return a;
    }
 
-   public void a(cjj $$0, hcw $$1, float $$2) {
+   public hcy a() {
+      return new hcy();
+   }
+
+   public void a(coa $$0, hcy $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      hdc.a($$0, $$1, this.h);
-      $$1.a = $$0.J($$2);
-      $$1.c = $$0.ci();
-      $$1.b = $$0.K($$2);
-      $$1.d = $$0.fR();
-      $$1.e = $$0.x();
-      $$1.f = $$0.gr();
-      $$1.g = $$0.gs();
-      $$1.h = $$0.t();
+      gxk.a($$0, $$1, $$2, this.h);
+      $$1.a = $$0.t();
+      $$1.b = $$0.q();
    }
 }

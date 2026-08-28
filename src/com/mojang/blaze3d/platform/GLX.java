@@ -19,7 +19,7 @@ import org.slf4j.Logger;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
 
-@fgq
+@fgx
 public class GLX {
    private static final Logger LOGGER = LogUtils.getLogger();
    private static String cpuInfo;
@@ -31,7 +31,7 @@ public class GLX {
          : GlStateManager._getString(7937) + " GL version " + GlStateManager._getString(7938) + ", " + GlStateManager._getString(7936);
    }
 
-   public static int _getRefreshRate(fin $$0) {
+   public static int _getRefreshRate(fix $$0) {
       RenderSystem.assertOnRenderThread();
       long $$1 = GLFW.glfwGetWindowMonitor($$0.h());
       if ($$1 == 0L) {
@@ -47,7 +47,7 @@ public class GLX {
    }
 
    public static LongSupplier _initGlfw() {
-      fin.a(($$0x, $$1x) -> {
+      fix.a(($$0x, $$1x) -> {
          throw new IllegalStateException(String.format(Locale.ROOT, "GLFW error before init: [0x%X]%s", $$0x, $$1x));
       });
       List<String> $$0 = Lists.newArrayList();
@@ -76,7 +76,7 @@ public class GLX {
       }
    }
 
-   public static boolean _shouldClose(fin $$0) {
+   public static boolean _shouldClose(fix $$0) {
       return GLFW.glfwWindowShouldClose($$0.h());
    }
 
@@ -87,7 +87,7 @@ public class GLX {
       } catch (Throwable var3) {
       }
 
-      fic.a($$0, $$1);
+      fim.a($$0, $$1);
    }
 
    public static String _getCpuInfo() {

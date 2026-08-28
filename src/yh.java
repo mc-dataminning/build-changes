@@ -4,9 +4,9 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record yh(ha c, Optional<wy> d) implements wz {
+public record yh(hb c, Optional<wy> d) implements wz {
    public static final MapCodec<yh> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ha.a.fieldOf("selector").forGetter(yh::b), xa.a.optionalFieldOf("separator").forGetter(yh::c)).apply($$0, yh::new)
+      $$0 -> $$0.group(hb.a.fieldOf("selector").forGetter(yh::b), xa.a.optionalFieldOf("separator").forGetter(yh::c)).apply($$0, yh::new)
    );
    public static final wz.a<yh> b = new wz.a<>(a, "selector");
 
@@ -16,12 +16,12 @@ public record yh(ha c, Optional<wy> d) implements wz {
    }
 
    @Override
-   public xm a(@Nullable ei $$0, @Nullable bwf $$1, int $$2) throws CommandSyntaxException {
+   public xm a(@Nullable ej $$0, @Nullable bwi $$1, int $$2) throws CommandSyntaxException {
       if ($$0 == null) {
          return wy.i();
       } else {
          Optional<? extends wy> $$3 = xb.a($$0, this.d, $$1, $$2);
-         return xb.a(this.c.b().b($$0), $$3, bwf::m_);
+         return xb.a(this.c.b().b($$0), $$3, bwi::m_);
       }
    }
 
@@ -40,7 +40,7 @@ public record yh(ha c, Optional<wy> d) implements wz {
       return "pattern{" + this.c + "}";
    }
 
-   public ha b() {
+   public hb b() {
       return this.c;
    }
 

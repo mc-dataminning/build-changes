@@ -1,104 +1,62 @@
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.BiConsumer;
 
-public class frg {
-   public static hfn.b a(alg $$0) {
-      return new hfh.a($$0, List.of());
+public class frg implements mn {
+   private final mp.a d;
+
+   public frg(mp $$0) {
+      this.d = $$0.a(mp.b.b, "equipment");
    }
 
-   public static hfn.b a(alg $$0, fqj... $$1) {
-      return new hfh.a($$0, List.of($$1));
+   private static void a(BiConsumer<alf<dhr>, hlp> $$0) {
+      $$0.accept(dhs.b, hlp.a().a(alg.b("leather"), true).a(alg.b("leather_overlay"), false).a(hlp.d.e, hlp.c.a(alg.b("leather"), true)).a());
+      $$0.accept(dhs.c, a("chainmail"));
+      $$0.accept(dhs.d, b("iron"));
+      $$0.accept(dhs.e, b("gold"));
+      $$0.accept(dhs.f, b("diamond"));
+      $$0.accept(dhs.g, hlp.a().b(alg.b("turtle_scute"), false).a());
+      $$0.accept(dhs.h, a("netherite"));
+      $$0.accept(dhs.i, hlp.a().a(hlp.d.d, hlp.c.b(alg.b("armadillo_scute"), false)).a(hlp.d.d, hlp.c.b(alg.b("armadillo_scute_overlay"), true)).a());
+      $$0.accept(dhs.j, hlp.a().a(hlp.d.c, new hlp.c(alg.b("elytra"), Optional.empty(), true)).a());
+      hlp.c $$1 = new hlp.c(alg.b("saddle"));
+      $$0.accept(
+         dhs.k, hlp.a().a(hlp.d.g, $$1).a(hlp.d.h, $$1).a(hlp.d.i, $$1).a(hlp.d.j, $$1).a(hlp.d.k, $$1).a(hlp.d.l, $$1).a(hlp.d.n, $$1).a(hlp.d.m, $$1).a()
+      );
+
+      for (Entry<cyi, alf<dhr>> $$2 : dhs.l.entrySet()) {
+         cyi $$3 = $$2.getKey();
+         alf<dhr> $$4 = $$2.getValue();
+         $$0.accept($$4, hlp.a().a(hlp.d.f, new hlp.c(alg.b($$3.c()))).a());
+      }
+
+      $$0.accept(dhs.m, hlp.a().a(hlp.d.f, new hlp.c(alg.b("trader_llama"))).a());
    }
 
-   public static fqj a(int $$0) {
-      return new fqe($$0);
+   private static hlp a(String $$0) {
+      return hlp.a().a(alg.b($$0)).a();
    }
 
-   public static hfn.b a(hfn.b... $$0) {
-      return new hfk.a(List.of($$0));
+   private static hlp b(String $$0) {
+      return hlp.a().a(alg.b($$0)).a(hlp.d.e, hlp.c.a(alg.b($$0), false)).a();
    }
 
-   public static hfn.b a(alg $$0, hib.a $$1) {
-      return new hfu.a($$0, $$1);
+   @Override
+   public CompletableFuture<?> a(ml $$0) {
+      Map<alf<dhr>, hlp> $$1 = new HashMap<>();
+      a(($$1x, $$2) -> {
+         if ($$1.putIfAbsent($$1x, $$2) != null) {
+            throw new IllegalStateException("Tried to register equipment asset twice for id: " + $$1x);
+         }
+      });
+      return mn.a($$0, hlp.a, this.d::a, $$1);
    }
 
-   public static hfs.a a(hfn.b $$0, float $$1) {
-      return new hfs.a($$1, $$0);
-   }
-
-   public static hfn.b a(hgx $$0, hfn.b $$1, hfs.a... $$2) {
-      return new hfs.b($$0, 1.0F, List.of($$2), Optional.of($$1));
-   }
-
-   public static hfn.b a(hgx $$0, float $$1, hfn.b $$2, hfs.a... $$3) {
-      return new hfs.b($$0, $$1, List.of($$3), Optional.of($$2));
-   }
-
-   public static hfn.b a(hgx $$0, hfn.b $$1, List<hfs.a> $$2) {
-      return new hfs.b($$0, 1.0F, $$2, Optional.of($$1));
-   }
-
-   public static hfn.b a(hgx $$0, List<hfs.a> $$1) {
-      return new hfs.b($$0, 1.0F, $$1, Optional.empty());
-   }
-
-   public static hfn.b a(hgx $$0, float $$1, List<hfs.a> $$2) {
-      return new hfs.b($$0, $$1, $$2, Optional.empty());
-   }
-
-   public static hfn.b a(hga $$0, hfn.b $$1, hfn.b $$2) {
-      return new hfl.a($$0, $$1, $$2);
-   }
-
-   public static <T> hft.b<T> a(T $$0, hfn.b $$1) {
-      return new hft.b<>(List.of($$0), $$1);
-   }
-
-   public static <T> hft.b<T> a(List<T> $$0, hfn.b $$1) {
-      return new hft.b<>($$0, $$1);
-   }
-
-   @SafeVarargs
-   public static <T> hfn.b a(hhn<T> $$0, hfn.b $$1, hft.b<T>... $$2) {
-      return a($$0, $$1, List.of($$2));
-   }
-
-   public static <T> hfn.b a(hhn<T> $$0, hfn.b $$1, List<hft.b<T>> $$2) {
-      return new hft.c(new hft.d<>($$0, $$2), Optional.of($$1));
-   }
-
-   @SafeVarargs
-   public static <T> hfn.b a(hhn<T> $$0, hft.b<T>... $$1) {
-      return a($$0, List.of($$1));
-   }
-
-   public static <T> hfn.b a(hhn<T> $$0, List<hft.b<T>> $$1) {
-      return new hft.c(new hft.d<>($$0, $$1), Optional.empty());
-   }
-
-   public static hga a() {
-      return new hgj();
-   }
-
-   public static hga a(ki<?> $$0) {
-      return new hgf($$0, false);
-   }
-
-   public static hfn.b a(hfn.b $$0, hfn.b $$1) {
-      return a(new hhf(), $$1, a(dja.i, $$0));
-   }
-
-   public static <T extends Comparable<T>> hfn.b a(ebk<T> $$0, hfn.b $$1, Map<T, hfn.b> $$2) {
-      List<hft.b<String>> $$3 = $$2.entrySet().stream().sorted(Entry.comparingByKey()).map($$1x -> {
-         String $$2x = $$0.b((T)$$1x.getKey());
-         return new hft.b<>(List.of($$2x), (hfn.b)$$1x.getValue());
-      }).toList();
-      return a(new hhj($$0.f()), $$1, $$3);
-   }
-
-   public static hfn.b b(hfn.b $$0, hfn.b $$1) {
-      return a(hhk.a("MM-dd", "", Optional.empty()), $$1, List.of(a(List.of("12-24", "12-25", "12-26"), $$0)));
+   @Override
+   public String a() {
+      return "Equipment Asset Definitions";
    }
 }

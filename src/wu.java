@@ -7,7 +7,7 @@ public record wu(wv l, wv m) {
       $$0 -> $$0.group(wv.a.fieldOf("chat").forGetter(wu::a), wv.a.fieldOf("narration").forGetter(wu::b)).apply($$0, wu::new)
    );
    public static final yw<wj, wu> b = yw.a(wv.b, wu::a, wv.b, wu::b, wu::new);
-   public static final yw<wj, je<wu>> c = yu.a(mg.aI, b);
+   public static final yw<wj, jf<wu>> c = yu.a(mh.aI, b);
    public static final wv d = wv.a("chat.type.text");
    public static final alf<wu> e = a("chat");
    public static final alf<wu> f = a("say_command");
@@ -18,7 +18,7 @@ public record wu(wv l, wv m) {
    public static final alf<wu> k = a("emote_command");
 
    private static alf<wu> a(String $$0) {
-      return alf.a(mg.aI, alg.b($$0));
+      return alf.a(mh.aI, alg.b($$0));
    }
 
    public static void a(qh<wu> $$0) {
@@ -31,16 +31,16 @@ public record wu(wv l, wv m) {
       $$0.a(k, new wu(wv.a("chat.type.emote"), wv.a("chat.type.emote")));
    }
 
-   public static wu.a a(alf<wu> $$0, bwf $$1) {
-      return a($$0, $$1.dV().F_(), $$1.m_());
+   public static wu.a a(alf<wu> $$0, bwi $$1) {
+      return a($$0, $$1.dU().F_(), $$1.m_());
    }
 
-   public static wu.a a(alf<wu> $$0, ei $$1) {
+   public static wu.a a(alf<wu> $$0, ej $$1) {
       return a($$0, $$1.u(), $$1.b());
    }
 
-   public static wu.a a(alf<wu> $$0, js $$1, wy $$2) {
-      jr<wu> $$3 = $$1.f(mg.aI);
+   public static wu.a a(alf<wu> $$0, jt $$1, wy $$2) {
+      js<wu> $$3 = $$1.f(mh.aI);
       return new wu.a($$3.b($$0), $$2);
    }
 
@@ -52,10 +52,10 @@ public record wu(wv l, wv m) {
       return this.m;
    }
 
-   public static record a(je<wu> b, wy c, Optional<wy> d) {
+   public static record a(jf<wu> b, wy c, Optional<wy> d) {
       public static final yw<wj, wu.a> a = yw.a(wu.c, wu.a::a, xa.d, wu.a::b, xa.e, wu.a::c, wu.a::new);
 
-      a(je<wu> $$0, wy $$1) {
+      a(jf<wu> $$0, wy $$1) {
          this($$0, $$1, Optional.empty());
       }
 
@@ -71,7 +71,7 @@ public record wu(wv l, wv m) {
          return new wu.a(this.b, this.c, Optional.of($$0));
       }
 
-      public je<wu> a() {
+      public jf<wu> a() {
          return this.b;
       }
 

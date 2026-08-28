@@ -1,11 +1,10 @@
-import javax.annotation.Nullable;
+public class heh extends hdz {
+   public cjt.b a;
+   public float b;
+   public ghj.a c;
 
-public class heh extends hdn {
-   public feq a = feq.c;
-   @Nullable
-   public cyb b;
-   public float c;
-   public float d;
-   public float e;
-   public ja f = ja.a;
+   public heh() {
+      this.a = cjt.b.a;
+      this.c = ghj.a.a;
+   }
 }

@@ -1,139 +1,84 @@
-import com.google.common.collect.ImmutableList;
-import java.util.List;
+public class gim extends ggk<hdz> {
+   private static final String a = "body0";
+   private static final String b = "body1";
+   private static final String c = "right_middle_front_leg";
+   private static final String d = "left_middle_front_leg";
+   private static final String e = "right_middle_hind_leg";
+   private static final String f = "left_middle_hind_leg";
+   private final gjo g;
+   private final gjo i;
+   private final gjo j;
+   private final gjo k;
+   private final gjo l;
+   private final gjo m;
+   private final gjo n;
+   private final gjo o;
+   private final gjo p;
 
-public class gim extends gfy<hey> {
-   private static final float m = 13.0F;
-   private static final float n = 1.0F;
-   protected final gjc a;
-   protected final gjc b;
-   protected final gjc c;
-   protected final gjc d;
-   protected final gjc e;
-   protected final gjc f;
-   protected final gjc g;
-   protected final gjc i;
-   protected final gjc j;
-   protected final gjc k;
-   protected final gjc l;
-   private final List<gjc> o;
-   private final List<gjc> p;
-   private final List<gjc> q;
-   private final List<gjc> r;
-
-   public gim(gjc $$0) {
-      super($$0, gqk::g);
-      this.a = $$0.b("bone");
-      this.b = this.a.b("body");
-      this.c = this.b.b("head");
-      this.k = this.a.b("right_leg");
-      this.f = this.a.b("left_leg");
-      this.j = this.b.b("right_arm");
-      this.g = this.b.b("left_arm");
-      this.d = this.c.b("right_tendril");
-      this.e = this.c.b("left_tendril");
-      this.l = this.b.b("right_ribcage");
-      this.i = this.b.b("left_ribcage");
-      this.o = ImmutableList.of(this.e, this.d);
-      this.p = ImmutableList.of(this.b);
-      this.q = ImmutableList.of(this.c, this.g, this.j, this.f, this.k);
-      this.r = ImmutableList.of(this.b, this.c, this.g, this.j, this.f, this.k);
+   public gim(gjo $$0) {
+      super($$0);
+      this.g = $$0.b("head");
+      this.i = $$0.b("right_hind_leg");
+      this.j = $$0.b("left_hind_leg");
+      this.k = $$0.b("right_middle_hind_leg");
+      this.l = $$0.b("left_middle_hind_leg");
+      this.m = $$0.b("right_middle_front_leg");
+      this.n = $$0.b("left_middle_front_leg");
+      this.o = $$0.b("right_front_leg");
+      this.p = $$0.b("left_front_leg");
    }
 
-   public static gji a() {
-      gjk $$0 = new gjk();
-      gjm $$1 = $$0.a();
-      gjm $$2 = $$1.a("bone", gjh.c(), gje.a(0.0F, 24.0F, 0.0F));
-      gjm $$3 = $$2.a("body", gjh.c().a(0, 0).a(-9.0F, -13.0F, -4.0F, 18.0F, 21.0F, 11.0F), gje.a(0.0F, -21.0F, 0.0F));
-      $$3.a("right_ribcage", gjh.c().a(90, 11).a(-2.0F, -11.0F, -0.1F, 9.0F, 21.0F, 0.0F), gje.a(-7.0F, -2.0F, -4.0F));
-      $$3.a("left_ribcage", gjh.c().a(90, 11).a().a(-7.0F, -11.0F, -0.1F, 9.0F, 21.0F, 0.0F).a(false), gje.a(7.0F, -2.0F, -4.0F));
-      gjm $$4 = $$3.a("head", gjh.c().a(0, 32).a(-8.0F, -16.0F, -5.0F, 16.0F, 16.0F, 10.0F), gje.a(0.0F, -13.0F, 0.0F));
-      $$4.a("right_tendril", gjh.c().a(52, 32).a(-16.0F, -13.0F, 0.0F, 16.0F, 16.0F, 0.0F), gje.a(-8.0F, -12.0F, 0.0F));
-      $$4.a("left_tendril", gjh.c().a(58, 0).a(0.0F, -13.0F, 0.0F, 16.0F, 16.0F, 0.0F), gje.a(8.0F, -12.0F, 0.0F));
-      $$3.a("right_arm", gjh.c().a(44, 50).a(-4.0F, 0.0F, -4.0F, 8.0F, 28.0F, 8.0F), gje.a(-13.0F, -13.0F, 1.0F));
-      $$3.a("left_arm", gjh.c().a(0, 58).a(-4.0F, 0.0F, -4.0F, 8.0F, 28.0F, 8.0F), gje.a(13.0F, -13.0F, 1.0F));
-      $$2.a("right_leg", gjh.c().a(76, 48).a(-3.1F, 0.0F, -3.0F, 6.0F, 13.0F, 6.0F), gje.a(-5.9F, -13.0F, 0.0F));
-      $$2.a("left_leg", gjh.c().a(76, 76).a(-2.9F, 0.0F, -3.0F, 6.0F, 13.0F, 6.0F), gje.a(5.9F, -13.0F, 0.0F));
-      return gji.a($$0, 128, 128);
+   public static gju a() {
+      gjw $$0 = new gjw();
+      gjy $$1 = $$0.a();
+      int $$2 = 15;
+      $$1.a("head", gjt.c().a(32, 4).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F), gjq.a(0.0F, 15.0F, -3.0F));
+      $$1.a("body0", gjt.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), gjq.a(0.0F, 15.0F, 0.0F));
+      $$1.a("body1", gjt.c().a(0, 12).a(-5.0F, -4.0F, -6.0F, 10.0F, 8.0F, 12.0F), gjq.a(0.0F, 15.0F, 9.0F));
+      gjt $$3 = gjt.c().a(18, 0).a(-15.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F);
+      gjt $$4 = gjt.c().a(18, 0).a().a(-1.0F, -1.0F, -1.0F, 16.0F, 2.0F, 2.0F);
+      float $$5 = (float) (Math.PI / 4);
+      float $$6 = (float) (Math.PI / 8);
+      $$1.a("right_hind_leg", $$3, gjq.a(-4.0F, 15.0F, 2.0F, 0.0F, (float) (Math.PI / 4), (float) (-Math.PI / 4)));
+      $$1.a("left_hind_leg", $$4, gjq.a(4.0F, 15.0F, 2.0F, 0.0F, (float) (-Math.PI / 4), (float) (Math.PI / 4)));
+      $$1.a("right_middle_hind_leg", $$3, gjq.a(-4.0F, 15.0F, 1.0F, 0.0F, (float) (Math.PI / 8), -0.58119464F));
+      $$1.a("left_middle_hind_leg", $$4, gjq.a(4.0F, 15.0F, 1.0F, 0.0F, (float) (-Math.PI / 8), 0.58119464F));
+      $$1.a("right_middle_front_leg", $$3, gjq.a(-4.0F, 15.0F, 0.0F, 0.0F, (float) (-Math.PI / 8), -0.58119464F));
+      $$1.a("left_middle_front_leg", $$4, gjq.a(4.0F, 15.0F, 0.0F, 0.0F, (float) (Math.PI / 8), 0.58119464F));
+      $$1.a("right_front_leg", $$3, gjq.a(-4.0F, 15.0F, -1.0F, 0.0F, (float) (-Math.PI / 4), (float) (-Math.PI / 4)));
+      $$1.a("left_front_leg", $$4, gjq.a(4.0F, 15.0F, -1.0F, 0.0F, (float) (Math.PI / 4), (float) (Math.PI / 4)));
+      return gju.a($$0, 64, 32);
    }
 
-   public void a(hey $$0) {
+   public void a(hdz $$0) {
       super.a($$0);
-      this.a($$0.aa, $$0.ab);
-      this.b($$0.ad, $$0.ae);
-      this.a($$0.u);
-      this.a($$0, $$0.u);
-      this.a($$0.g, fpx.e, $$0.u);
-      this.a($$0.h, fpx.f, $$0.u);
-      this.a($$0.f, fpx.b, $$0.u);
-      this.a($$0.e, fpx.a, $$0.u);
-      this.a($$0.c, fpx.c, $$0.u);
-      this.a($$0.d, fpx.d, $$0.u);
-   }
-
-   private void a(float $$0, float $$1) {
-      this.c.e = $$1 * (float) (Math.PI / 180.0);
-      this.c.f = $$0 * (float) (Math.PI / 180.0);
-   }
-
-   private void a(float $$0) {
-      float $$1 = $$0 * 0.1F;
-      float $$2 = azm.b($$1);
-      float $$3 = azm.a($$1);
-      this.c.g += 0.06F * $$2;
-      this.c.e += 0.06F * $$3;
-      this.b.g += 0.025F * $$3;
-      this.b.e += 0.025F * $$2;
-   }
-
-   private void b(float $$0, float $$1) {
-      float $$2 = Math.min(0.5F, 3.0F * $$1);
-      float $$3 = $$0 * 0.8662F;
-      float $$4 = azm.b($$3);
-      float $$5 = azm.a($$3);
-      float $$6 = Math.min(0.35F, $$2);
-      this.c.g += 0.3F * $$5 * $$2;
-      this.c.e = this.c.e + 1.2F * azm.b($$3 + (float) (Math.PI / 2)) * $$6;
-      this.b.g = 0.1F * $$5 * $$2;
-      this.b.e = 1.0F * $$4 * $$6;
-      this.f.e = 1.0F * $$4 * $$2;
-      this.k.e = 1.0F * azm.b($$3 + (float) Math.PI) * $$2;
-      this.g.e = -(0.8F * $$4 * $$2);
-      this.g.g = 0.0F;
-      this.j.e = -(0.8F * $$5 * $$2);
-      this.j.g = 0.0F;
-      this.b();
-   }
-
-   private void b() {
-      this.g.f = 0.0F;
-      this.g.d = 1.0F;
-      this.g.b = 13.0F;
-      this.g.c = -13.0F;
-      this.j.f = 0.0F;
-      this.j.d = 1.0F;
-      this.j.b = -13.0F;
-      this.j.c = -13.0F;
-   }
-
-   private void a(hey $$0, float $$1) {
-      float $$2 = $$0.a * (float)(Math.cos((double)$$1 * 2.25) * Math.PI * 0.1F);
-      this.e.e = $$2;
-      this.d.e = -$$2;
-   }
-
-   public List<gjc> b(hey $$0) {
-      return this.o;
-   }
-
-   public List<gjc> c(hey $$0) {
-      return this.p;
-   }
-
-   public List<gjc> d(hey $$0) {
-      return this.q;
-   }
-
-   public List<gjc> e(hey $$0) {
-      return this.r;
+      this.g.f = $$0.aa * (float) (Math.PI / 180.0);
+      this.g.e = $$0.ab * (float) (Math.PI / 180.0);
+      float $$1 = $$0.ad * 0.6662F;
+      float $$2 = $$0.ae;
+      float $$3 = -(azm.b($$1 * 2.0F + 0.0F) * 0.4F) * $$2;
+      float $$4 = -(azm.b($$1 * 2.0F + (float) Math.PI) * 0.4F) * $$2;
+      float $$5 = -(azm.b($$1 * 2.0F + (float) (Math.PI / 2)) * 0.4F) * $$2;
+      float $$6 = -(azm.b($$1 * 2.0F + (float) (Math.PI * 3.0 / 2.0)) * 0.4F) * $$2;
+      float $$7 = Math.abs(azm.a($$1 + 0.0F) * 0.4F) * $$2;
+      float $$8 = Math.abs(azm.a($$1 + (float) Math.PI) * 0.4F) * $$2;
+      float $$9 = Math.abs(azm.a($$1 + (float) (Math.PI / 2)) * 0.4F) * $$2;
+      float $$10 = Math.abs(azm.a($$1 + (float) (Math.PI * 3.0 / 2.0)) * 0.4F) * $$2;
+      this.i.f += $$3;
+      this.j.f -= $$3;
+      this.k.f += $$4;
+      this.l.f -= $$4;
+      this.m.f += $$5;
+      this.n.f -= $$5;
+      this.o.f += $$6;
+      this.p.f -= $$6;
+      this.i.g += $$7;
+      this.j.g -= $$7;
+      this.k.g += $$8;
+      this.l.g -= $$8;
+      this.m.g += $$9;
+      this.n.g -= $$9;
+      this.o.g += $$10;
+      this.p.g -= $$10;
    }
 }

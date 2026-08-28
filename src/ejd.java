@@ -1,67 +1,48 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntListIterator;
+import java.util.stream.IntStream;
 
-public class ejd extends ejm<elm> {
-   private static final ImmutableList<dmf> a = ImmutableList.of(dmh.I, dmh.fM, dmh.fN, dmh.fO, dmh.fP, dmh.cG, dmh.cD);
-   private static final ja[] b = ja.values();
-   private static final double c = 0.9;
-
-   public ejd(Codec<elm> $$0) {
+public class ejd extends ejt<eme> {
+   public ejd(Codec<eme> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejo<elm> $$0) {
-      boolean $$1 = false;
-      azv $$2 = $$0.d();
-      djz $$3 = $$0.b();
-      elm $$4 = $$0.f();
-      iu $$5 = $$0.e();
-      boolean $$6 = $$2.j() < 0.9;
-      int $$7 = $$6 ? $$4.d().a($$2) : 0;
-      int $$8 = $$6 ? $$4.d().a($$2) : 0;
-      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
-      int $$10 = $$4.c().a($$2);
-      int $$11 = $$4.c().a($$2);
-      int $$12 = Math.max($$10, $$11);
+   public boolean a(ejv<eme> $$0) {
+      azv $$1 = $$0.d();
+      dkg $$2 = $$0.b();
+      dio $$3 = new dio($$0.e());
+      IntArrayList $$4 = ag.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
+      IntArrayList $$5 = ag.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
+      iv.a $$6 = new iv.a();
+      IntListIterator var8 = $$4.iterator();
 
-      for (iu $$13 : iu.a($$5, $$10, 0, $$11)) {
-         if ($$13.k($$5) > $$12) {
-            break;
-         }
+      while (var8.hasNext()) {
+         Integer $$7 = (Integer)var8.next();
+         IntListIterator var10 = $$5.iterator();
 
-         if (a($$3, $$13, $$4)) {
-            if ($$9) {
-               $$1 = true;
-               this.a($$3, $$13, $$4.b());
-            }
+         while (var10.hasNext()) {
+            Integer $$8 = (Integer)var10.next();
+            $$6.d($$7, 0, $$8);
+            iv $$9 = $$2.a(egn.a.f, $$6);
+            if ($$2.v($$9) || $$2.a_($$9).g($$2, $$9).c()) {
+               $$2.a($$9, dmo.cG.m(), 2);
+               bum.a($$2, $$1, $$9, ezk.a);
+               eao $$10 = dmo.cz.m();
 
-            iu $$14 = $$13.b($$7, 0, $$8);
-            if (a($$3, $$14, $$4)) {
-               $$1 = true;
-               this.a($$3, $$14, $$4.a());
+               for (jb $$11 : jb.c.a) {
+                  iv $$12 = $$9.a($$11);
+                  if ($$10.a($$2, $$12)) {
+                     $$2.a($$12, $$10, 2);
+                  }
+               }
+
+               return true;
             }
          }
       }
 
-      return $$1;
-   }
-
-   private static boolean a(djb $$0, iu $$1, elm $$2) {
-      eah $$3 = $$0.a_($$1);
-      if ($$3.a($$2.a().b())) {
-         return false;
-      } else if (a.contains($$3.b())) {
-         return false;
-      } else {
-         for (ja $$4 : b) {
-            boolean $$5 = $$0.a_($$1.a($$4)).l();
-            if ($$5 && $$4 != ja.b || !$$5 && $$4 == ja.b) {
-               return false;
-            }
-         }
-
-         return true;
-      }
+      return false;
    }
 }

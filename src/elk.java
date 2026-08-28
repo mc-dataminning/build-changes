@@ -1,23 +1,43 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class elk implements elq {
-   public static final Codec<elk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(bti.b(0, 3).fieldOf("reach").forGetter($$0x -> $$0x.b), bti.b(1, 10).fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, elk::new)
-   );
-   private final bti b;
-   private final bti c;
+public class elk extends ejt<eme> {
+   private static final iv a = new iv(8, 3, 8);
+   private static final dio b = new dio(a);
+   private static final int c = 16;
+   private static final int d = 1;
 
-   public elk(bti $$0, bti $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public elk(Codec<eme> $$0) {
+      super($$0);
    }
 
-   public bti a() {
-      return this.b;
+   private static int a(int $$0, int $$1, int $$2, int $$3) {
+      return Math.max(Math.abs($$0 - $$2), Math.abs($$1 - $$3));
    }
 
-   public bti b() {
-      return this.c;
+   @Override
+   public boolean a(ejv<eme> $$0) {
+      dkg $$1 = $$0.b();
+      dio $$2 = new dio($$0.e());
+      if (a($$2.h, $$2.i, b.h, b.i) > 1) {
+         return true;
+      } else {
+         iv $$3 = a.h($$0.e().v() + a.v());
+         iv.a $$4 = new iv.a();
+
+         for (int $$5 = $$2.e(); $$5 <= $$2.g(); $$5++) {
+            for (int $$6 = $$2.d(); $$6 <= $$2.f(); $$6++) {
+               if (a($$3.u(), $$3.w(), $$6, $$5) <= 16) {
+                  $$4.d($$6, $$3.v(), $$5);
+                  if ($$4.equals($$3)) {
+                     $$1.a($$4, dmo.m.m(), 2);
+                  } else {
+                     $$1.a($$4, dmo.b.m(), 2);
+                  }
+               }
+            }
+         }
+
+         return true;
+      }
    }
 }

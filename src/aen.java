@@ -3,8 +3,8 @@ public class aen implements zf<abu> {
    private final int b;
    private final byte c;
 
-   public aen(bwf $$0, byte $$1) {
-      this.b = $$0.ar();
+   public aen(bwi $$0, byte $$1) {
+      this.b = $$0.ao();
       this.c = $$1;
    }
 
@@ -27,7 +27,7 @@ public class aen implements zf<abu> {
       $$0.a(this);
    }
 
-   public bwf a(dja $$0) {
+   public bwi a(djh $$0) {
       return $$0.a(this.b);
    }
 

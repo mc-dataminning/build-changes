@@ -1,24 +1,13 @@
-public abstract class haf<S extends hcn, M extends gfy<S>> extends hav<S, M> {
-   public haf(gye<S, M> $$0) {
+public class haf extends hbh<hcm, gfq> {
+   private static final gqx a = gqx.r(alg.b("textures/entity/breeze/breeze_eyes.png"));
+
+   public haf(gyq<hcm, gfq> $$0) {
       super($$0);
    }
 
-   @Override
-   public void a(fjj $$0, gqa $$1, int $$2, S $$3, float $$4, float $$5) {
-      if (this.a($$3)) {
-         float $$6 = $$3.u;
-         M $$7 = this.c();
-         fjn $$8 = $$1.getBuffer(gqk.b(this.a(), this.a($$6) % 1.0F, $$6 * 0.01F % 1.0F));
-         $$7.a($$3);
-         $$7.a($$0, $$8, $$2, hin.d, -8355712);
-      }
+   public void a(fjy $$0, gqm $$1, int $$2, hcm $$3, float $$4, float $$5) {
+      fkc $$6 = $$1.getBuffer(a);
+      gfq $$7 = this.d();
+      gvy.a($$7, $$7.a(), $$7.b()).a($$0, $$6, $$2, hja.d);
    }
-
-   protected abstract boolean a(S var1);
-
-   protected abstract float a(float var1);
-
-   protected abstract alg a();
-
-   protected abstract M c();
 }

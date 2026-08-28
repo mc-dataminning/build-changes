@@ -1,21 +1,22 @@
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class ehy implements ehn {
-   protected final jz f;
+public class ehy implements ehu {
+   public static final MapCodec<ehy> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ka.v(16).optionalFieldOf("offset", iv.c).forGetter($$0x -> $$0x.e)).apply($$0, ehy::new)
+   );
+   private final ka e;
 
-   protected static <P extends ehy> P1<Mu<P>, jz> a(Instance<P> $$0) {
-      return $$0.group(jz.v(16).optionalFieldOf("offset", jz.i).forGetter($$0x -> $$0x.f));
+   public ehy(ka $$0) {
+      this.e = $$0;
    }
 
-   protected ehy(jz $$0) {
-      this.f = $$0;
+   public boolean a(dkg $$0, iv $$1) {
+      return !$$0.t($$1.a(this.e));
    }
 
-   public final boolean a(djz $$0, iu $$1) {
-      return this.a($$0.a_($$1.a(this.f)));
+   @Override
+   public ehv<?> a() {
+      return ehv.h;
    }
-
-   protected abstract boolean a(eah var1);
 }

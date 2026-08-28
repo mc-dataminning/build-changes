@@ -1,84 +1,274 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import java.util.stream.Stream;
+import java.util.OptionalInt;
+import javax.annotation.Nullable;
 
-public class dkq extends dkh {
-   private static final MapCodec<je<dkd>> d = dkd.c.fieldOf("biome");
-   public static final MapCodec<dkm.c<je<dkd>>> b = dkm.c.a(d).fieldOf("biomes");
-   private static final MapCodec<je<dkr>> e = dkr.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
-   public static final MapCodec<dkq> c = Codec.mapEither(b, e).xmap(dkq::new, $$0 -> $$0.f);
-   private final Either<dkm.c<je<dkd>>, je<dkr>> f;
+public class dkq {
+   public static final Codec<dkq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.INT.fieldOf("fog_color").forGetter($$0x -> $$0x.b),
+               Codec.INT.fieldOf("water_color").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("water_fog_color").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("sky_color").forGetter($$0x -> $$0x.e),
+               Codec.INT.optionalFieldOf("foliage_color").forGetter($$0x -> $$0x.f),
+               Codec.INT.optionalFieldOf("grass_color").forGetter($$0x -> $$0x.g),
+               dkq.b.d.optionalFieldOf("grass_color_modifier", dkq.b.a).forGetter($$0x -> $$0x.h),
+               dkj.a.optionalFieldOf("particle").forGetter($$0x -> $$0x.i),
+               awm.b.optionalFieldOf("ambient_sound").forGetter($$0x -> $$0x.j),
+               dki.a.optionalFieldOf("mood_sound").forGetter($$0x -> $$0x.k),
+               dkh.a.optionalFieldOf("additions_sound").forGetter($$0x -> $$0x.l),
+               bsq.a(awk.a).optionalFieldOf("music").forGetter($$0x -> $$0x.m),
+               Codec.FLOAT.fieldOf("music_volume").orElse(1.0F).forGetter($$0x -> $$0x.n)
+            )
+            .apply($$0, dkq::new)
+   );
+   private final int b;
+   private final int c;
+   private final int d;
+   private final int e;
+   private final Optional<Integer> f;
+   private final Optional<Integer> g;
+   private final dkq.b h;
+   private final Optional<dkj> i;
+   private final Optional<jf<awm>> j;
+   private final Optional<dki> k;
+   private final Optional<dkh> l;
+   private final Optional<bsq<awk>> m;
+   private final float n;
 
-   private dkq(Either<dkm.c<je<dkd>>, je<dkr>> $$0) {
-      this.f = $$0;
+   dkq(
+      int $$0,
+      int $$1,
+      int $$2,
+      int $$3,
+      Optional<Integer> $$4,
+      Optional<Integer> $$5,
+      dkq.b $$6,
+      Optional<dkj> $$7,
+      Optional<jf<awm>> $$8,
+      Optional<dki> $$9,
+      Optional<dkh> $$10,
+      Optional<bsq<awk>> $$11,
+      float $$12
+   ) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
+      this.l = $$10;
+      this.m = $$11;
+      this.n = $$12;
    }
 
-   public static dkq a(dkm.c<je<dkd>> $$0) {
-      return new dkq(Either.left($$0));
+   public int a() {
+      return this.b;
    }
 
-   public static dkq a(je<dkr> $$0) {
-      return new dkq(Either.right($$0));
+   public int b() {
+      return this.c;
    }
 
-   private dkm.c<je<dkd>> d() {
-      return (dkm.c<je<dkd>>)this.f.map($$0 -> $$0, $$0 -> ((dkr)$$0.a()).a());
+   public int c() {
+      return this.d;
    }
 
-   @Override
-   protected Stream<je<dkd>> b() {
-      return this.d().a().stream().map(Pair::getSecond);
+   public int d() {
+      return this.e;
    }
 
-   @Override
-   protected MapCodec<? extends dkh> a() {
-      return c;
+   public Optional<Integer> e() {
+      return this.f;
    }
 
-   public boolean a(alf<dkr> $$0) {
-      Optional<je<dkr>> $$1 = this.f.right();
-      return $$1.isPresent() && $$1.get().a($$0);
+   public Optional<Integer> f() {
+      return this.g;
    }
 
-   @Override
-   public je<dkd> getNoiseBiome(int $$0, int $$1, int $$2, dkm.f $$3) {
-      return this.a($$3.a($$0, $$1, $$2));
+   public dkq.b g() {
+      return this.h;
    }
 
-   @bav
-   public je<dkd> a(dkm.h $$0) {
-      return this.d().a($$0);
+   public Optional<dkj> h() {
+      return this.i;
    }
 
-   @Override
-   public void a(List<String> $$0, iu $$1, dkm.f $$2) {
-      int $$3 = jp.a($$1.u());
-      int $$4 = jp.a($$1.v());
-      int $$5 = jp.a($$1.w());
-      dkm.h $$6 = $$2.a($$3, $$4, $$5);
-      float $$7 = dkm.a($$6.d());
-      float $$8 = dkm.a($$6.e());
-      float $$9 = dkm.a($$6.b());
-      float $$10 = dkm.a($$6.c());
-      float $$11 = dkm.a($$6.g());
-      double $$12 = (double)egn.a($$11);
-      dkt $$13 = new dkt();
-      $$0.add(
-         "Biome builder PV: "
-            + dkt.a($$12)
-            + " C: "
-            + $$13.b((double)$$7)
-            + " E: "
-            + $$13.c((double)$$8)
-            + " T: "
-            + $$13.d((double)$$9)
-            + " H: "
-            + $$13.e((double)$$10)
-      );
+   public Optional<jf<awm>> i() {
+      return this.j;
+   }
+
+   public Optional<dki> j() {
+      return this.k;
+   }
+
+   public Optional<dkh> k() {
+      return this.l;
+   }
+
+   public Optional<bsq<awk>> l() {
+      return this.m;
+   }
+
+   public float m() {
+      return this.n;
+   }
+
+   public static class a {
+      private OptionalInt a = OptionalInt.empty();
+      private OptionalInt b = OptionalInt.empty();
+      private OptionalInt c = OptionalInt.empty();
+      private OptionalInt d = OptionalInt.empty();
+      private Optional<Integer> e = Optional.empty();
+      private Optional<Integer> f = Optional.empty();
+      private dkq.b g = dkq.b.a;
+      private Optional<dkj> h = Optional.empty();
+      private Optional<jf<awm>> i = Optional.empty();
+      private Optional<dki> j = Optional.empty();
+      private Optional<dkh> k = Optional.empty();
+      private Optional<bsq<awk>> l = Optional.empty();
+      private float m = 1.0F;
+
+      public dkq.a a(int $$0) {
+         this.a = OptionalInt.of($$0);
+         return this;
+      }
+
+      public dkq.a b(int $$0) {
+         this.b = OptionalInt.of($$0);
+         return this;
+      }
+
+      public dkq.a c(int $$0) {
+         this.c = OptionalInt.of($$0);
+         return this;
+      }
+
+      public dkq.a d(int $$0) {
+         this.d = OptionalInt.of($$0);
+         return this;
+      }
+
+      public dkq.a e(int $$0) {
+         this.e = Optional.of($$0);
+         return this;
+      }
+
+      public dkq.a f(int $$0) {
+         this.f = Optional.of($$0);
+         return this;
+      }
+
+      public dkq.a a(dkq.b $$0) {
+         this.g = $$0;
+         return this;
+      }
+
+      public dkq.a a(dkj $$0) {
+         this.h = Optional.of($$0);
+         return this;
+      }
+
+      public dkq.a a(jf<awm> $$0) {
+         this.i = Optional.of($$0);
+         return this;
+      }
+
+      public dkq.a a(dki $$0) {
+         this.j = Optional.of($$0);
+         return this;
+      }
+
+      public dkq.a a(dkh $$0) {
+         this.k = Optional.of($$0);
+         return this;
+      }
+
+      public dkq.a a(@Nullable awk $$0) {
+         if ($$0 == null) {
+            this.l = Optional.empty();
+            return this;
+         } else {
+            this.l = Optional.of(bsq.a($$0));
+            return this;
+         }
+      }
+
+      public dkq.a a() {
+         return this.a(bsq.a()).a(0.0F);
+      }
+
+      public dkq.a a(bsq<awk> $$0) {
+         this.l = Optional.of($$0);
+         return this;
+      }
+
+      public dkq.a a(float $$0) {
+         this.m = $$0;
+         return this;
+      }
+
+      public dkq b() {
+         return new dkq(
+            this.a.orElseThrow(() -> new IllegalStateException("Missing 'fog' color.")),
+            this.b.orElseThrow(() -> new IllegalStateException("Missing 'water' color.")),
+            this.c.orElseThrow(() -> new IllegalStateException("Missing 'water fog' color.")),
+            this.d.orElseThrow(() -> new IllegalStateException("Missing 'sky' color.")),
+            this.e,
+            this.f,
+            this.g,
+            this.h,
+            this.i,
+            this.j,
+            this.k,
+            this.l,
+            this.m
+         );
+      }
+   }
+
+   public static enum b implements bak {
+      a("none") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            return $$2;
+         }
+      },
+      b("dark_forest") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            return ($$2 & 16711422) + 2634762 >> 1;
+         }
+      },
+      c("swamp") {
+         @Override
+         public int a(double $$0, double $$1, int $$2) {
+            double $$3 = dkk.e.a($$0 * 0.0225, $$1 * 0.0225, false);
+            return $$3 < -0.1 ? 5011004 : 6975545;
+         }
+      };
+
+      private final String e;
+      public static final Codec<dkq.b> d = bak.a(dkq.b::values);
+
+      public abstract int a(double var1, double var3, int var5);
+
+      b(final String $$0) {
+         this.e = $$0;
+      }
+
+      public String a() {
+         return this.e;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
+      }
    }
 }

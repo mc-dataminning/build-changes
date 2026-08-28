@@ -1,248 +1,36 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.JsonOps;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.IdentityHashMap;
+import com.mojang.serialization.Codec;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.SortedMap;
-import java.util.TreeMap;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class deb extends avi<dec> implements ddv {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<alf<ded>, deb.c> b = Map.of(
-      ded.d,
-      $$0 -> $$0 instanceof dep $$1 ? $$1.k() : Optional.empty(),
-      ded.b,
-      $$0 -> $$0 instanceof dep $$1 ? Optional.of($$1.f()) : Optional.empty(),
-      ded.c,
-      $$0 -> $$0 instanceof dep $$1 ? $$1.c() : Optional.empty(),
-      ded.e,
-      b(def.b),
-      ded.f,
-      b(def.c),
-      ded.g,
-      b(def.d),
-      ded.h,
-      b(def.e)
-   );
-   private static final akz c = akz.a(mg.bu);
-   private final jg.a d;
-   private dec e = dec.a;
-   private Map<alf<ded>, ded> f = Map.of();
-   private deh.b<deu> g = deh.b.a();
-   private List<deb.d> h = List.of();
-   private Map<alf<ddu<?>>, List<deb.d>> i = Map.of();
+public interface deb<T extends deh> {
+   Codec<deb<?>> a = mg.r.q().dispatch(deb::a, del::a);
+   Codec<alf<deb<?>>> b = alf.a(mh.bu);
+   yw<wj, deb<?>> c = yu.a(mh.ah).b(deb::a, del::b);
 
-   public deb(jg.a $$0) {
-      this.d = $$0;
+   boolean a(T var1, djh var2);
+
+   czk a(T var1, jh.a var2);
+
+   default boolean am_() {
+      return false;
    }
 
-   protected dec a(avd $$0, bqo $$1) {
-      SortedMap<alg, ddu<?>> $$2 = new TreeMap<>();
-      avh.a($$0, c, this.d.a(JsonOps.INSTANCE), ddu.a, $$2);
-      List<ddz<?>> $$3 = new ArrayList<>($$2.size());
-      $$2.forEach(($$1x, $$2x) -> {
-         alf<ddu<?>> $$3x = alf.a(mg.bu, $$1x);
-         ddz<?> $$4 = new ddz($$3x, $$2x);
-         $$3.add($$4);
-      });
-      return dec.a($$3);
+   default boolean i() {
+      return true;
    }
 
-   protected void a(dec $$0, avd $$1, bqo $$2) {
-      this.e = $$0;
-      a.info("Loaded {} recipes", $$0.a().size());
+   default String j() {
+      return "";
    }
 
-   public void a(cum $$0) {
-      List<deh.a<deu>> $$1 = new ArrayList<>();
-      List<deb.b> $$2 = b.entrySet().stream().map($$0x -> new deb.b((alf<ded>)$$0x.getKey(), (deb.c)$$0x.getValue())).toList();
-      this.e.a().forEach($$3 -> {
-         ddu<?> $$4 = $$3.b();
-         if (!$$4.am_() && $$4.al_().c()) {
-            a.warn("Recipe {} can't be placed due to empty ingredients and will be ignored", $$3.a().a());
-         } else {
-            $$2.forEach($$1xx -> $$1xx.a($$4));
-            if ($$4 instanceof deu $$5 && a($$0, $$5.k()) && $$5.c().a($$0)) {
-               $$1.add(new deh.a<>($$5.k(), new deh<>($$5.c(), Optional.of((ddz<deu>)$$3))));
-            }
-         }
-      });
-      this.f = $$2.stream().collect(Collectors.toUnmodifiableMap($$0x -> $$0x.a, $$1x -> $$1x.a($$0)));
-      this.g = new deh.b<>($$1);
-      this.h = a(this.e.a(), $$0);
-      this.i = this.h.stream().collect(Collectors.groupingBy($$0x -> $$0x.b.a(), IdentityHashMap::new, Collectors.toList()));
+   del<? extends deb<T>> a();
+
+   dem<? extends deb<T>> b();
+
+   dea al_();
+
+   default List<dfh> g() {
+      return List.of();
    }
 
-   static List<ddq> a(cum $$0, List<ddq> $$1) {
-      $$1.removeIf($$1x -> !a($$0, $$1x));
-      return $$1;
-   }
-
-   private static boolean a(cum $$0, ddq $$1) {
-      return $$1.a().allMatch($$1x -> ((cyz)$$1x.a()).a($$0));
-   }
-
-   public <I extends dea, T extends ddu<I>> Optional<ddz<T>> a(def<T> $$0, I $$1, dja $$2, @Nullable alf<ddu<?>> $$3) {
-      ddz<T> $$4 = $$3 != null ? this.a($$0, $$3) : null;
-      return this.a($$0, $$1, $$2, $$4);
-   }
-
-   public <I extends dea, T extends ddu<I>> Optional<ddz<T>> a(def<T> $$0, I $$1, dja $$2, @Nullable ddz<T> $$3) {
-      return $$3 != null && $$3.b().a($$1, $$2) ? Optional.of($$3) : this.a($$0, $$1, $$2);
-   }
-
-   public <I extends dea, T extends ddu<I>> Optional<ddz<T>> a(def<T> $$0, I $$1, dja $$2) {
-      return this.e.a($$0, $$1, $$2).findFirst();
-   }
-
-   public Optional<ddz<?>> b(alf<ddu<?>> $$0) {
-      return Optional.ofNullable(this.e.a($$0));
-   }
-
-   @Nullable
-   private <T extends ddu<?>> ddz<T> a(def<T> $$0, alf<ddu<?>> $$1) {
-      ddz<?> $$2 = this.e.a($$1);
-      return (ddz<T>)($$2 != null && $$2.b().b().equals($$0) ? $$2 : null);
-   }
-
-   public Map<alf<ded>, ded> b() {
-      return this.f;
-   }
-
-   public deh.b<deu> d() {
-      return this.g;
-   }
-
-   @Override
-   public ded a(alf<ded> $$0) {
-      return this.f.getOrDefault($$0, ded.j);
-   }
-
-   @Override
-   public deh.b<deu> a() {
-      return this.g;
-   }
-
-   public Collection<ddz<?>> e() {
-      return this.e.a();
-   }
-
-   @Nullable
-   public deb.d a(dfc $$0) {
-      return this.h.get($$0.a());
-   }
-
-   public void a(alf<ddu<?>> $$0, Consumer<dfb> $$1) {
-      List<deb.d> $$2 = this.i.get($$0);
-      if ($$2 != null) {
-         $$2.forEach($$1x -> $$1.accept($$1x.a));
-      }
-   }
-
-   @VisibleForTesting
-   protected static ddz<?> a(alf<ddu<?>> $$0, JsonObject $$1, jg.a $$2) {
-      ddu<?> $$3 = (ddu<?>)ddu.a.parse($$2.a(JsonOps.INSTANCE), $$1).getOrThrow(JsonParseException::new);
-      return new ddz<>($$0, $$3);
-   }
-
-   public static <I extends dea, T extends ddu<I>> deb.a<I, T> a(final def<T> $$0) {
-      return new deb.a<I, T>() {
-         @Nullable
-         private alf<ddu<?>> b;
-
-         @Override
-         public Optional<ddz<T>> a(I $$0x, arq $$1) {
-            deb $$2 = $$1.t();
-            Optional<ddz<T>> $$3 = $$2.a($$0, $$0, $$1, this.b);
-            if ($$3.isPresent()) {
-               ddz<T> $$4 = $$3.get();
-               this.b = $$4.a();
-               return Optional.of($$4);
-            } else {
-               return Optional.empty();
-            }
-         }
-      };
-   }
-
-   private static List<deb.d> a(Iterable<ddz<?>> $$0, cum $$1) {
-      List<deb.d> $$2 = new ArrayList<>();
-      Object2IntMap<String> $$3 = new Object2IntOpenHashMap();
-
-      for (ddz<?> $$4 : $$0) {
-         ddu<?> $$5 = $$4.b();
-         OptionalInt $$6;
-         if ($$5.j().isEmpty()) {
-            $$6 = OptionalInt.empty();
-         } else {
-            $$6 = OptionalInt.of($$3.computeIfAbsent($$5.j(), $$1x -> $$3.size()));
-         }
-
-         Optional<List<ddq>> $$8;
-         if ($$5.am_()) {
-            $$8 = Optional.empty();
-         } else {
-            $$8 = Optional.of($$5.al_().b());
-         }
-
-         for (dfa $$10 : $$5.g()) {
-            if ($$10.a($$1)) {
-               int $$11 = $$2.size();
-               dfc $$12 = new dfc($$11);
-               dfb $$13 = new dfb($$12, $$10, $$6, $$5.h(), $$8);
-               $$2.add(new deb.d($$13, $$4));
-            }
-         }
-      }
-
-      return $$2;
-   }
-
-   private static deb.c b(def<? extends dem> $$0) {
-      return $$1 -> $$1.b() == $$0 && $$1 instanceof dem $$2 ? Optional.of($$2.k()) : Optional.empty();
-   }
-
-   public interface a<I extends dea, T extends ddu<I>> {
-      Optional<ddz<T>> a(I var1, arq var2);
-   }
-
-   public static class b implements Consumer<ddu<?>> {
-      final alf<ded> a;
-      private final deb.c b;
-      private final List<ddq> c = new ArrayList<>();
-
-      protected b(alf<ded> $$0, deb.c $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public void a(ddu<?> $$0) {
-         this.b.apply($$0).ifPresent(this.c::add);
-      }
-
-      public ded a(cum $$0) {
-         return ded.a(deb.a($$0, this.c));
-      }
-   }
-
-   @FunctionalInterface
-   public interface c {
-      Optional<ddq> apply(ddu<?> var1);
-   }
-
-   public static record d(dfb a, ddz<?> b) {
-   }
+   dee h();
 }

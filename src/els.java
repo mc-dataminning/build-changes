@@ -1,22 +1,18 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class els implements elq {
-   public static final Codec<els> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               enr.a.fieldOf("cap_provider").forGetter($$0x -> $$0x.b),
-               enr.a.fieldOf("stem_provider").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("foliage_radius").orElse(2).forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, els::new)
-   );
-   public final enr b;
-   public final enr c;
-   public final int d;
+public class els implements elx {
+   public static final Codec<els> a = btl.b(0, 256).fieldOf("count").xmap(els::new, els::a).codec();
+   private final btl b;
 
-   public els(enr $$0, enr $$1, int $$2) {
+   public els(int $$0) {
+      this.b = bti.a($$0);
+   }
+
+   public els(btl $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   }
+
+   public btl a() {
+      return this.b;
    }
 }

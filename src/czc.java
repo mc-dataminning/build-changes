@@ -1,10 +1,15 @@
-public class czc extends cyr {
-   public czc(bwo<? extends cmz> $$0, cyz.a $$1) {
-      super($$0, $$1);
+public class czc extends czg implements dam {
+   public czc(czg.a $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(crc $$0, ja $$1, czd $$2, iu $$3) {
-      return !$$0.dV().t($$3) && $$0.a($$3, $$1, $$2);
+   public boolean a(djh $$0, dza $$1, boolean $$2, crj $$3) {
+      if ($$1.a($$0x -> $$0x.a(false), $$2)) {
+         $$0.a(null, $$1.ax_(), awn.nN, awo.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

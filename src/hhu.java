@@ -1,32 +1,27 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.PrimitiveCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class hhu implements hhx {
-   private final gjc a;
+public record hhu(int c) implements hia<String> {
+   public static final PrimitiveCodec<String> a = Codec.STRING;
+   public static final hia.a<hhu, String> b = hia.a.a(
+      RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayu.l.optionalFieldOf("index", 0).forGetter(hhu::c)).apply($$0, hhu::new)), a
+   );
 
-   public hhu(gjc $$0) {
-      this.a = $$0;
+   @Nullable
+   public String a(czk $$0, @Nullable gkl $$1, @Nullable bxj $$2, int $$3, czi $$4) {
+      dbt $$5 = $$0.a(kk.p);
+      return $$5 != null ? $$5.c(this.c) : null;
    }
 
    @Override
-   public void a(czb $$0, fjj $$1, gqa $$2, int $$3, int $$4, boolean $$5) {
-      fjn $$6 = gsu.b.a($$2, gqk::d);
-      $$1.a();
-      $$1.a(0.5F, 0.5F, 0.5F);
-      this.a.a($$1, $$6, $$3, $$4);
-      $$1.b();
+   public hia.a<hhu, String> a() {
+      return b;
    }
 
-   public static record a() implements hib.a {
-      public static final MapCodec<hhu.a> a = MapCodec.unit(new hhu.a());
-
-      @Override
-      public MapCodec<hhu.a> a() {
-         return a;
-      }
-
-      @Override
-      public hib<?> a(giy $$0) {
-         return new hhu($$0.a(gjb.al));
-      }
+   @Override
+   public Codec<String> b() {
+      return a;
    }
 }

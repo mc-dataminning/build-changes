@@ -1,58 +1,87 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class hob implements hoc<hmr> {
-   private final List<hoc<hmr>> a = Lists.newArrayList();
-   @Nullable
-   private final wy b;
+public class hob {
+   private final Set<hob.a> a = Sets.newIdentityHashSet();
+   final fhf b;
+   final Executor c;
 
-   public hob(alg $$0, @Nullable String $$1) {
-      this.b = $$1 == null ? null : wy.c($$1);
+   public hob(fhf $$0, Executor $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Override
-   public int e() {
-      int $$0 = 0;
-
-      for (hoc<hmr> $$1 : this.a) {
-         $$0 += $$1.e();
-      }
-
-      return $$0;
+   public CompletableFuture<hob.a> a(fhf.c $$0) {
+      CompletableFuture<hob.a> $$1 = new CompletableFuture<>();
+      this.c.execute(() -> {
+         fhe $$2 = this.b.a($$0);
+         if ($$2 != null) {
+            hob.a $$3 = new hob.a($$2);
+            this.a.add($$3);
+            $$1.complete($$3);
+         } else {
+            $$1.complete(null);
+         }
+      });
+      return $$1;
    }
 
-   public hmr a(azv $$0) {
-      int $$1 = this.e();
-      if (!this.a.isEmpty() && $$1 != 0) {
-         int $$2 = $$0.a($$1);
+   public void a(Consumer<Stream<fhe>> $$0) {
+      this.c.execute(() -> $$0.accept(this.a.stream().map($$0xx -> $$0xx.b).filter(Objects::nonNull)));
+   }
 
-         for (hoc<hmr> $$3 : this.a) {
-            $$2 -= $$3.e();
-            if ($$2 < 0) {
-               return $$3.b($$0);
+   public void a() {
+      this.c.execute(() -> {
+         Iterator<hob.a> $$0 = this.a.iterator();
+
+         while ($$0.hasNext()) {
+            hob.a $$1 = $$0.next();
+            $$1.b.j();
+            if ($$1.b.h()) {
+               $$1.b();
+               $$0.remove();
             }
          }
+      });
+   }
 
-         return hoa.b;
-      } else {
-         return hoa.b;
+   public void b() {
+      this.a.forEach(hob.a::b);
+      this.a.clear();
+   }
+
+   public class a {
+      @Nullable
+      fhe b;
+      private boolean c;
+
+      public boolean a() {
+         return this.c;
       }
-   }
 
-   public void a(hoc<hmr> $$0) {
-      this.a.add($$0);
-   }
+      public a(final fhe $$1) {
+         this.b = $$1;
+      }
 
-   @Nullable
-   public wy a() {
-      return this.b;
-   }
+      public void a(Consumer<fhe> $$0) {
+         hob.this.c.execute(() -> {
+            if (this.b != null) {
+               $$0.accept(this.b);
+            }
+         });
+      }
 
-   @Override
-   public void a(hnx $$0) {
-      for (hoc<hmr> $$1 : this.a) {
-         $$1.a($$0);
+      public void b() {
+         this.c = true;
+         hob.this.b.a(this.b);
+         this.b = null;
       }
    }
 }

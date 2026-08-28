@@ -1,79 +1,76 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import java.util.function.BiConsumer;
 import javax.annotation.Nullable;
 
-public class dle extends dld implements dtq {
-   public static final MapCodec<dle> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.FLOAT.fieldOf("height").forGetter($$0x -> $$0x.e), Codec.FLOAT.fieldOf("width").forGetter($$0x -> $$0x.f), t())
-            .apply($$0, dle::new)
-   );
-   public static final eay c = eax.I;
-   public static final ebf<ja> d = eax.R;
-   private final float e;
-   private final float f;
-   private final Map<ja, ffk> g;
+public abstract class dle extends dmm {
+   public static final int a = 3;
+   public static final ebf b = ebe.u;
 
    @Override
-   public MapCodec<dle> a() {
-      return b;
+   protected abstract MapCodec<? extends dle> a();
+
+   protected dle(ean.d $$0) {
+      super($$0);
    }
 
-   public dle(float $$0, float $$1, eag.d $$2) {
-      super($$2);
-      this.l(this.m().b(c, Boolean.valueOf(false)).b(d, ja.b));
-      this.g = ffh.d(dmf.c((double)$$1, (double)(16.0F - $$0), 16.0));
-      this.e = $$0;
-      this.f = $$1;
+   protected abstract Iterable<fex> b(eao var1);
+
+   public static boolean c(eao $$0) {
+      return $$0.b(b) && ($$0.a(axc.ag) || $$0.a(axc.bn)) && $$0.c(b);
    }
 
    @Override
-   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
-      return this.g.get($$0.c(d));
+   protected void a(djh $$0, eao $$1, fet $$2, cse $$3) {
+      if (!$$0.C && $$3.bW() && this.d($$1)) {
+         a($$0, $$1, $$2.b(), true);
+      }
+   }
+
+   protected boolean d(eao $$0) {
+      return !$$0.c(b);
    }
 
    @Override
-   protected boolean a(eah $$0, djd $$1, iu $$2) {
-      ja $$3 = $$0.c(d);
-      iu $$4 = $$2.a($$3.g());
-      return $$1.a_($$4).c($$1, $$4, $$3);
+   public void a(eao $$0, djh $$1, iv $$2, azv $$3) {
+      if ($$0.c(b)) {
+         this.b($$0).forEach($$3x -> a($$1, $$3x.b((double)$$2.u(), (double)$$2.v(), (double)$$2.w()), $$3));
+      }
    }
 
-   @Override
-   protected eah a(eah $$0, djd $$1, djp $$2, iu $$3, ja $$4, iu $$5, eah $$6, azv $$7) {
-      if ($$0.c(c)) {
-         $$2.a($$3, ewp.c, ewp.c.a($$1));
+   private static void a(djh $$0, fex $$1, azv $$2) {
+      float $$3 = $$2.i();
+      if ($$3 < 0.3F) {
+         $$0.a(ly.ah, $$1.d, $$1.e, $$1.f, 0.0, 0.0, 0.0);
+         if ($$3 < 0.17F) {
+            $$0.a($$1.d + 0.5, $$1.e + 0.5, $$1.f + 0.5, awn.dN, awo.e, 1.0F + $$2.i(), $$2.i() * 0.7F + 0.3F, false);
+         }
       }
 
-      return $$4 == $$0.c(d).g() && !$$0.a($$1, $$3) ? dmh.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      $$0.a(ly.aM, $$1.d, $$1.e, $$1.f, 0.0, 0.0, 0.0);
    }
 
-   @Nullable
-   @Override
-   public eah a(dcw $$0) {
-      djb $$1 = $$0.q();
-      iu $$2 = $$0.a();
-      return this.m().b(c, Boolean.valueOf($$1.b_($$2).a() == ewp.c)).b(d, $$0.k());
+   public static void a(@Nullable crj $$0, eao $$1, dji $$2, iv $$3) {
+      a($$2, $$1, $$3, false);
+      if ($$1.b() instanceof dle) {
+         ((dle)$$1.b())
+            .b($$1)
+            .forEach($$2x -> $$2.a(ly.ah, (double)$$3.u() + $$2x.a(), (double)$$3.v() + $$2x.b(), (double)$$3.w() + $$2x.c(), 0.0, 0.1F, 0.0));
+      }
+
+      $$2.a(null, $$3, awn.dP, awo.e, 1.0F, 1.0F);
+      $$2.a($$0, efo.c, $$3);
    }
 
-   @Override
-   protected eah a(eah $$0, dsz $$1) {
-      return $$0.b(d, $$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected eah a(eah $$0, dri $$1) {
-      return $$0.a($$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected ewo b_(eah $$0) {
-      return $$0.c(c) ? ewp.c.a(false) : super.b_($$0);
+   private static void a(dji $$0, eao $$1, iv $$2, boolean $$3) {
+      $$0.a($$2, $$1.b(b, Boolean.valueOf($$3)), 11);
    }
 
    @Override
-   protected void a(eai.a<dmf, eah> $$0) {
-      $$0.a(c, d);
+   protected void a(eao $$0, arq $$1, iv $$2, dja $$3, BiConsumer<czk, iv> $$4) {
+      if ($$3.g() && $$0.c(b)) {
+         a(null, $$0, $$1, $$2);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
    }
 }

@@ -1,18 +1,32 @@
-import javax.annotation.Nullable;
+public class cfu extends cep {
+   private final cpe b;
+   private int c;
 
-public class cfu<T extends bxe> extends cft<T> {
-   private boolean i = true;
-
-   public cfu(cst $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable cht.a $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public void a(boolean $$0) {
-      this.i = $$0;
+   public cfu(cpe $$0, double $$1, boolean $$2) {
+      super($$0, $$1, $$2);
+      this.b = $$0;
    }
 
    @Override
-   public boolean b() {
-      return this.i && super.b();
+   public void d() {
+      super.d();
+      this.c = 0;
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.b.v(false);
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      this.c++;
+      if (this.c >= 5 && this.k() < this.l() / 2) {
+         this.b.v(true);
+      } else {
+         this.b.v(false);
+      }
    }
 }

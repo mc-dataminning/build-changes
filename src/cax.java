@@ -1,23 +1,15 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import java.util.Map;
 
-public class cax {
-   public static byw<bxe> a(bwo<?> $$0, int $$1) {
-      int $$2 = $$1 * $$1;
-      return cci.a(
-         (Function<cci.b<bxe>, ? extends App<cci.c<bxe>, ccl<bxe>>>)($$2x -> $$2x.group($$2x.a(cgg.o), $$2x.c(cgg.r), $$2x.b(cgg.h))
-               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     Optional<bxe> $$9 = $$2x.<cgi>b($$5).a($$3xx -> $$3xx.g($$7) <= (double)$$2 && $$0.equals($$3xx.aq()));
-                     if ($$9.isEmpty()) {
-                        return false;
-                     } else {
-                        bxe $$10 = $$9.get();
-                        $$4.a($$10);
-                        $$3.a(new bzg($$10, true));
-                        return true;
-                     }
-                  }))
-      );
+public class cax<E extends bxj> extends bzo<E> {
+   public cax(List<Pair<? extends bzb<? super E>, Integer>> $$0) {
+      this(ImmutableMap.of(), $$0);
+   }
+
+   public cax(Map<cgl<?>, cgm> $$0, List<Pair<? extends bzb<? super E>, Integer>> $$1) {
+      super($$0, ImmutableSet.of(), bzo.a.b, bzo.b.a, $$1);
    }
 }

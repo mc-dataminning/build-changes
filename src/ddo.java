@@ -1,66 +1,30 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public class ddo extends ddk {
-   private static final ddq c = ddq.a(czh.vF);
+public enum ddo implements bak {
+   a("building", 0),
+   b("redstone", 1),
+   c("equipment", 2),
+   d("misc", 3);
 
-   public ddo(ddh $$0) {
-      super($$0);
-   }
+   public static final Codec<ddo> e = bak.a(ddo::values);
+   public static final IntFunction<ddo> f = ayc.a(ddo::a, values(), ayc.a.a);
+   public static final yw<ByteBuf, ddo> g = yu.a(f, ddo::a);
+   private final String h;
+   private final int i;
 
-   public boolean a(ddi $$0, dja $$1) {
-      if ($$0.e() < 2) {
-         return false;
-      } else {
-         boolean $$2 = false;
-         boolean $$3 = false;
-
-         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-            czd $$5 = $$0.a($$4);
-            if (!$$5.f()) {
-               if ($$5.h() instanceof cyc) {
-                  $$2 = true;
-               } else {
-                  if (!c.a($$5)) {
-                     return false;
-                  }
-
-                  if ($$3) {
-                     return false;
-                  }
-
-                  $$3 = true;
-               }
-            }
-         }
-
-         return $$3 && $$2;
-      }
-   }
-
-   public czd a(ddi $$0, jg.a $$1) {
-      IntList $$2 = new IntArrayList();
-      czd $$3 = null;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         czd $$5 = $$0.a($$4);
-         if ($$5.h() instanceof cyc $$7) {
-            $$2.add($$7.a().f());
-         } else if (c.a($$5)) {
-            $$3 = $$5.c(1);
-         }
-      }
-
-      if ($$3 != null && !$$2.isEmpty()) {
-         $$3.a(kj.ai, dbr.a, $$2, dbr::a);
-         return $$3;
-      } else {
-         return czd.k;
-      }
+   private ddo(final String $$0, final int $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    @Override
-   public dee<ddo> a() {
-      return dee.i;
+   public String c() {
+      return this.h;
+   }
+
+   private int a() {
+      return this.i;
    }
 }

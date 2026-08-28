@@ -1,150 +1,156 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.IntSupplier;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class fxr extends fxv {
-   public static final alg a = alg.b("textures/gui/title/mojangstudios.png");
-   private static final int d = axw.a(255, 239, 50, 61);
-   private static final int e = axw.a(255, 0, 0, 0);
-   private static final IntSupplier f = () -> foz.Q().n.a().c() ? e : d;
-   private static final int g = 240;
-   private static final float h = 60.0F;
-   private static final int i = 60;
-   private static final int j = 120;
-   private static final float k = 0.0625F;
-   private static final float l = 0.95F;
-   public static final long b = 1000L;
-   public static final long c = 500L;
-   private final foz m;
-   private final auz n;
-   private final Consumer<Optional<Throwable>> o;
-   private final boolean p;
-   private float q;
-   private long r = -1L;
-   private long s = -1L;
+public class fxr extends fyn {
+   private static final alg a = alg.b("icon/draft_report");
+   private int b;
+   private final wy c;
+   private final boolean d;
+   private wy s;
+   private final List<fsv> u = Lists.newArrayList();
+   @Nullable
+   private fsv v;
 
-   public fxr(foz $$0, auz $$1, Consumer<Optional<Throwable>> $$2, boolean $$3) {
-      this.m = $$0;
-      this.n = $$1;
-      this.o = $$2;
-      this.p = $$3;
-   }
-
-   public static void a(hiz $$0) {
-      $$0.a(a, (hio)(new fxr.a()));
-   }
-
-   private static int a(int $$0, int $$1) {
-      return $$0 & 16777215 | $$1 << 24;
+   public fxr(@Nullable wy $$0, boolean $$1) {
+      super(wy.c($$1 ? "deathScreen.title.hardcore" : "deathScreen.title"));
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public void a(frv $$0, int $$1, int $$2, float $$3) {
-      int $$4 = $$0.a();
-      int $$5 = $$0.b();
-      long $$6 = af.c();
-      if (this.p && this.s == -1L) {
-         this.s = $$6;
-      }
+   protected void aO_() {
+      this.b = 0;
+      this.u.clear();
+      wy $$0 = this.d ? wy.c("deathScreen.spectate") : wy.c("deathScreen.respawn");
+      this.u.add(this.c(fsv.a($$0, $$0x -> {
+         this.m.t.gf();
+         $$0x.j = false;
+      }).a(this.n / 2 - 100, this.o / 4 + 72, 200, 20).a()));
+      this.v = this.c(
+         fsv.a(wy.c("deathScreen.titleScreen"), $$0x -> this.m.ba().a(this.m, this, this::m, true)).a(this.n / 2 - 100, this.o / 4 + 96, 200, 20).a()
+      );
+      this.u.add(this.v);
+      this.c(false);
+      this.s = wy.a("deathScreen.score.value", wy.b(Integer.toString(this.m.t.gc())).a(o.o));
+   }
 
-      float $$7 = this.r > -1L ? (float)($$6 - this.r) / 1000.0F : -1.0F;
-      float $$8 = this.s > -1L ? (float)($$6 - this.s) / 500.0F : -1.0F;
-      float $$10;
-      if ($$7 >= 1.0F) {
-         if (this.m.z != null) {
-            this.m.z.a($$0, 0, 0, $$3);
-         }
+   @Override
+   public boolean aD_() {
+      return false;
+   }
 
-         int $$9 = azm.f((1.0F - azm.a($$7 - 1.0F, 0.0F, 1.0F)) * 255.0F);
-         $$0.a(gqk.M(), 0, 0, $$4, $$5, a(f.getAsInt(), $$9));
-         $$10 = 1.0F - azm.a($$7 - 1.0F, 0.0F, 1.0F);
-      } else if (this.p) {
-         if (this.m.z != null && $$8 < 1.0F) {
-            this.m.z.a($$0, $$1, $$2, $$3);
-         }
-
-         int $$11 = azm.c(azm.a((double)$$8, 0.15, 1.0) * 255.0);
-         $$0.a(gqk.M(), 0, 0, $$4, $$5, a(f.getAsInt(), $$11));
-         $$10 = azm.a($$8, 0.0F, 1.0F);
+   private void m() {
+      if (this.d) {
+         this.E();
       } else {
-         int $$13 = f.getAsInt();
-         float $$14 = (float)($$13 >> 16 & 0xFF) / 255.0F;
-         float $$15 = (float)($$13 >> 8 & 0xFF) / 255.0F;
-         float $$16 = (float)($$13 & 0xFF) / 255.0F;
-         GlStateManager._clearColor($$14, $$15, $$16, 1.0F);
-         GlStateManager._clear(16384);
-         $$10 = 1.0F;
-      }
-
-      int $$18 = (int)((double)$$0.a() * 0.5);
-      int $$19 = (int)((double)$$0.b() * 0.5);
-      double $$20 = Math.min((double)$$0.a() * 0.75, (double)$$0.b()) * 0.25;
-      int $$21 = (int)($$20 * 0.5);
-      double $$22 = $$20 * 4.0;
-      int $$23 = (int)($$22 * 0.5);
-      int $$24 = axw.a($$10);
-      $$0.a($$0x -> gqk.Q(), a, $$18 - $$23, $$19 - $$21, -0.0625F, 0.0F, $$23, (int)$$20, 120, 60, 120, 120, $$24);
-      $$0.a($$0x -> gqk.Q(), a, $$18, $$19 - $$21, 0.0625F, 60.0F, $$23, (int)$$20, 120, 60, 120, 120, $$24);
-      int $$25 = (int)((double)$$0.b() * 0.8325);
-      float $$26 = this.n.b();
-      this.q = azm.a(this.q * 0.95F + $$26 * 0.050000012F, 0.0F, 1.0F);
-      if ($$7 < 1.0F) {
-         this.a($$0, $$4 / 2 - $$23, $$25 - 5, $$4 / 2 + $$23, $$25 + 5, 1.0F - azm.a($$7, 0.0F, 1.0F));
-      }
-
-      if ($$7 >= 2.0F) {
-         this.m.a(null);
-      }
-
-      if (this.r == -1L && this.n.c() && (!this.p || $$8 >= 2.0F)) {
-         try {
-            this.n.d();
-            this.o.accept(Optional.empty());
-         } catch (Throwable var24) {
-            this.o.accept(Optional.of(var24));
-         }
-
-         this.r = af.c();
-         if (this.m.z != null) {
-            this.m.z.b(this.m, $$0.a(), $$0.b());
-         }
+         fxl $$0 = new fxr.a($$0x -> {
+            if ($$0x) {
+               this.E();
+            } else {
+               this.m.t.gf();
+               this.m.a(null);
+            }
+         }, wy.c("deathScreen.quit.confirm"), wx.a, wy.c("deathScreen.titleScreen"), wy.c("deathScreen.respawn"));
+         this.m.a($$0);
+         $$0.b(20);
       }
    }
 
-   private void a(frv $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
-      int $$6 = azm.f((float)($$3 - $$1 - 2) * this.q);
-      int $$7 = Math.round($$5 * 255.0F);
-      int $$8 = axw.a($$7, 255, 255, 255);
-      $$0.a($$1 + 2, $$2 + 2, $$1 + $$6, $$4 - 2, $$8);
-      $$0.a($$1 + 1, $$2, $$3 - 1, $$2 + 1, $$8);
-      $$0.a($$1 + 1, $$4, $$3 - 1, $$4 - 1, $$8);
-      $$0.a($$1, $$2, $$1 + 1, $$4, $$8);
-      $$0.a($$3, $$2, $$3 - 1, $$4, $$8);
+   private void E() {
+      if (this.m.s != null) {
+         this.m.s.ad();
+      }
+
+      this.m.b(new fxy(wy.c("menu.savingLevel")));
+      this.m.a(new fyp());
    }
 
    @Override
-   public boolean a() {
-      return true;
+   public void a(fsh $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.c().a();
+      $$0.c().b(2.0F, 2.0F, 2.0F);
+      $$0.a(this.p, this.l, this.n / 2 / 2, 30, 16777215);
+      $$0.c().b();
+      if (this.c != null) {
+         $$0.a(this.p, this.c, this.n / 2, 85, 16777215);
+      }
+
+      $$0.a(this.p, this.s, this.n / 2, 100, 16777215);
+      if (this.c != null && $$2 > 85 && $$2 < 85 + 9) {
+         xv $$4 = this.a($$1);
+         $$0.a(this.p, $$4, $$1, $$2);
+      }
+
+      if (this.v != null && this.m.ba().c()) {
+         $$0.a(gqx::H, a, this.v.F() + this.v.A() - 17, this.v.G() + 3, 15, 15);
+      }
    }
 
-   static class a extends hio {
-      public a() {
-         super(fxr.a);
+   @Override
+   public void b(fsh $$0, int $$1, int $$2, float $$3) {
+      a($$0, this.n, this.o);
+   }
+
+   static void a(fsh $$0, int $$1, int $$2) {
+      $$0.b(0, 0, $$1, $$2, 1615855616, -1602211792);
+   }
+
+   @Nullable
+   private xv a(int $$0) {
+      if (this.c == null) {
+         return null;
+      } else {
+         int $$1 = this.m.h.a(this.c);
+         int $$2 = this.n / 2 - $$1 / 2;
+         int $$3 = this.n / 2 + $$1 / 2;
+         return $$0 >= $$2 && $$0 <= $$3 ? this.m.h.b().a(this.c, $$0 - $$2) : null;
+      }
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.c != null && $$1 > 85.0 && $$1 < (double)(85 + 9)) {
+         xv $$3 = this.a((int)$$0);
+         if ($$3 != null && $$3.i() != null && $$3.i().a() == ww.a.a) {
+            this.a($$3);
+            return false;
+         }
+      }
+
+      return super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public boolean k() {
+      return false;
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.b++;
+      if (this.b == 20) {
+         this.c(true);
+      }
+   }
+
+   private void c(boolean $$0) {
+      for (fsv $$1 : this.u) {
+         $$1.j = $$0;
+      }
+   }
+
+   public static class a extends fxl {
+      public a(BooleanConsumer $$0, wy $$1, wy $$2, wy $$3, wy $$4) {
+         super($$0, $$1, $$2, $$3, $$4);
       }
 
       @Override
-      public hiy a(avd $$0) throws IOException {
-         avg $$1 = foz.Q().ae().d();
-
-         hiy var4;
-         try (InputStream $$2 = $$1.open(fxr.a)) {
-            var4 = new hiy(fik.a($$2), new hkt(true, true));
-         }
-
-         return var4;
+      public void b(fsh $$0, int $$1, int $$2, float $$3) {
+         fxr.a($$0, this.n, this.o);
       }
    }
 }

@@ -1,27 +1,85 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.stream.Stream;
 
-public class fcs {
-   public static final fcr a = a("inverted", fcn.a);
-   public static final fcr b = a("any_of", fce.a);
-   public static final fcr c = a("all_of", fcd.a);
-   public static final fcr d = a("random_chance", fcv.a);
-   public static final fcr e = a("random_chance_with_enchanted_bonus", fcw.a);
-   public static final fcr f = a("entity_properties", fct.a);
-   public static final fcr g = a("killed_by_player", fcu.a);
-   public static final fcr h = a("entity_scores", fcl.a);
-   public static final fcr i = a("block_state_property", fcp.a);
-   public static final fcr j = a("match_tool", fcx.a);
-   public static final fcr k = a("table_bonus", fcf.a);
-   public static final fcr l = a("survives_explosion", fcm.a);
-   public static final fcr m = a("damage_source_properties", fcj.a);
-   public static final fcr n = a("location_check", fco.a);
-   public static final fcr o = a("weather_check", fda.a);
-   public static final fcr p = a("reference", fch.a);
-   public static final fcr q = a("time_check", fcy.a);
-   public static final fcr r = a("value_check", fcz.a);
-   public static final fcr s = a("enchantment_active_check", fck.a);
+public record fcs(Map<String, ezn> b, ezo.b c) implements fcx {
+   public static final MapCodec<fcs> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.unboundedMap(Codec.STRING, ezn.a).fieldOf("scores").forGetter(fcs::c), ezo.b.e.fieldOf("entity").forGetter(fcs::d))
+            .apply($$0, fcs::new)
+   );
 
-   private static fcr a(String $$0, MapCodec<? extends fcq> $$1) {
-      return jr.a(mf.F, alg.b($$0), new fcr($$1));
+   @Override
+   public fcy b() {
+      return fcz.h;
+   }
+
+   @Override
+   public Set<bax<?>> a() {
+      return Stream.concat(Stream.of(this.c.a()), this.b.values().stream().flatMap($$0 -> $$0.a().stream())).collect(ImmutableSet.toImmutableSet());
+   }
+
+   public boolean a(ezo $$0) {
+      bwi $$1 = $$0.c(this.c.a());
+      if ($$1 == null) {
+         return false;
+      } else {
+         fgc $$2 = $$0.d().g();
+
+         for (Entry<String, ezn> $$3 : this.b.entrySet()) {
+            if (!this.a($$0, $$1, $$2, $$3.getKey(), $$3.getValue())) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   protected boolean a(ezo $$0, bwi $$1, fgc $$2, String $$3, ezn $$4) {
+      ffu $$5 = $$2.a($$3);
+      if ($$5 == null) {
+         return false;
+      } else {
+         ffy $$6 = $$2.d($$1, $$5);
+         return $$6 == null ? false : $$4.b($$0, $$6.a());
+      }
+   }
+
+   public static fcs.a a(ezo.b $$0) {
+      return new fcs.a($$0);
+   }
+
+   public Map<String, ezn> c() {
+      return this.b;
+   }
+
+   public ezo.b d() {
+      return this.c;
+   }
+
+   public static class a implements fcx.a {
+      private final Builder<String, ezn> a = ImmutableMap.builder();
+      private final ezo.b b;
+
+      public a(ezo.b $$0) {
+         this.b = $$0;
+      }
+
+      public fcs.a a(String $$0, ezn $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fcx build() {
+         return new fcs(this.a.build(), this.b);
+      }
    }
 }

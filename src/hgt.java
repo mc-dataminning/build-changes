@@ -1,21 +1,16 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public record hgt(int b) implements hgx {
-   public static final MapCodec<hgt> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayu.l.optionalFieldOf("index", 0).forGetter(hgt::b)).apply($$0, hgt::new));
+public record hgt() implements hgn {
+   public static final MapCodec<hgt> a = MapCodec.unit(new hgt());
 
    @Override
-   public float a(czd $$0, @Nullable gjz $$1, @Nullable bxe $$2, int $$3) {
-      dbm $$4 = $$0.a(kj.p);
-      if ($$4 != null) {
-         Float $$5 = $$4.a(this.b);
-         if ($$5 != null) {
-            return $$5;
-         }
+   public boolean get(czk $$0, @Nullable gkl $$1, @Nullable bxj $$2, int $$3, czi $$4) {
+      if ($$2 instanceof gpj $$5 && $$5.bR.g() == $$0) {
+         return true;
       }
 
-      return 0.0F;
+      return false;
    }
 
    @Override

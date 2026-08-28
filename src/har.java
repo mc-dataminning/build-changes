@@ -1,22 +1,24 @@
-public class har extends hav<hdu, ggw> {
-   public har(gye<hdu, ggw> $$0) {
+public abstract class har<S extends hcz, M extends ggk<S>> extends hbh<S, M> {
+   public har(gyq<S, M> $$0) {
       super($$0);
    }
 
-   public void a(fjj $$0, gqa $$1, int $$2, hdu $$3, float $$4, float $$5) {
-      hfq $$6 = $$3.i;
-      if (!$$6.c() && $$3.g && !$$3.f) {
-         float $$7 = -0.6F;
-         float $$8 = 1.4F;
-         if ($$3.e) {
-            $$7 -= 0.2F * azm.a($$3.u * 0.6F) + 0.2F;
-            $$8 -= 0.09F * azm.a($$3.u * 0.6F);
-         }
-
-         $$0.a();
-         $$0.a(0.1F, $$8, $$7);
-         $$6.a($$0, $$1, $$2, hin.d);
-         $$0.b();
+   @Override
+   public void a(fjy $$0, gqm $$1, int $$2, S $$3, float $$4, float $$5) {
+      if (this.a($$3)) {
+         float $$6 = $$3.u;
+         M $$7 = this.c();
+         fkc $$8 = $$1.getBuffer(gqx.b(this.a(), this.a($$6) % 1.0F, $$6 * 0.01F % 1.0F));
+         $$7.a($$3);
+         $$7.a($$0, $$8, $$2, hja.d, -8355712);
       }
    }
+
+   protected abstract boolean a(S var1);
+
+   protected abstract float a(float var1);
+
+   protected abstract alg a();
+
+   protected abstract M c();
 }

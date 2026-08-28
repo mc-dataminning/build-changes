@@ -1,127 +1,36 @@
 import javax.annotation.Nullable;
 
-public abstract class cga extends cea {
-   private static final int a = 0;
-   private static final int b = 1;
-   private static final int c = 2;
-   protected final bxg e;
-   protected final boolean f;
-   private final boolean d;
-   private int i;
-   private int j;
-   private int k;
-   @Nullable
-   protected bxe g;
-   protected int h = 60;
+public class cga<T extends bxj> extends cfy<T> {
+   private static final int i = 200;
+   private int j = 0;
 
-   public cga(bxg $$0, boolean $$1) {
-      this($$0, $$1, false);
+   public cga(cta $$0, Class<T> $$1, boolean $$2, @Nullable chy.a $$3) {
+      super($$0, $$1, 500, $$2, false, $$3);
    }
 
-   public cga(bxg $$0, boolean $$1, boolean $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.d = $$2;
+   public int i() {
+      return this.j;
+   }
+
+   public void k() {
+      this.j--;
    }
 
    @Override
-   public boolean c() {
-      bxe $$0 = this.e.f();
-      if ($$0 == null) {
-         $$0 = this.g;
-      }
-
-      if ($$0 == null) {
+   public boolean b() {
+      if (this.j > 0 || !this.e.dX().h()) {
          return false;
-      } else if (!this.e.c($$0)) {
+      } else if (!((cta)this.e).gH()) {
          return false;
       } else {
-         ffx $$1 = this.e.cr();
-         ffx $$2 = $$0.cr();
-         if ($$1 != null && $$2 == $$1) {
-            return false;
-         } else {
-            double $$3 = this.l();
-            if (this.e.g((bwf)$$0) > $$3 * $$3) {
-               return false;
-            } else {
-               if (this.f) {
-                  if (this.e.P().a($$0)) {
-                     this.k = 0;
-                  } else if (++this.k > b(this.h)) {
-                     return false;
-                  }
-               }
-
-               this.e.g($$0);
-               return true;
-            }
-         }
+         this.h();
+         return this.c != null;
       }
-   }
-
-   protected double l() {
-      return this.e.h(byk.m);
    }
 
    @Override
    public void d() {
-      this.i = 0;
-      this.j = 0;
-      this.k = 0;
-   }
-
-   @Override
-   public void e() {
-      this.e.g(null);
-      this.g = null;
-   }
-
-   protected boolean a(@Nullable bxe $$0, cht $$1) {
-      if ($$0 == null) {
-         return false;
-      } else if (!$$1.a(a(this.e), this.e, $$0)) {
-         return false;
-      } else if (!this.e.a($$0.dv())) {
-         return false;
-      } else {
-         if (this.d) {
-            if (--this.j <= 0) {
-               this.i = 0;
-            }
-
-            if (this.i == 0) {
-               this.i = this.a($$0) ? 1 : 2;
-            }
-
-            if (this.i == 2) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   private boolean a(bxe $$0) {
-      this.j = b(10 + this.e.dY().a(5));
-      exc $$1 = this.e.O().a($$0, 0);
-      if ($$1 == null) {
-         return false;
-      } else {
-         exa $$2 = $$1.d();
-         if ($$2 == null) {
-            return false;
-         } else {
-            int $$3 = $$2.a - $$0.dz();
-            int $$4 = $$2.c - $$0.dF();
-            return (double)($$3 * $$3 + $$4 * $$4) <= 2.25;
-         }
-      }
-   }
-
-   public cga c(int $$0) {
-      this.h = $$0;
-      return this;
+      this.j = b(200);
+      super.d();
    }
 }

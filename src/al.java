@@ -1,65 +1,65 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Collection;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
-import java.util.function.Predicate;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public record al(List<List<String>> c) {
-   public static final Codec<al> a = Codec.STRING.listOf().listOf().xmap(al::new, al::d);
-   public static final al b = new al(List.of());
+public class al implements Comparable<al> {
+   private static final DateTimeFormatter b = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss Z", Locale.ROOT);
+   private static final Codec<Instant> c = ayu.a(b).xmap(Instant::from, $$0 -> $$0.atZone(ZoneId.systemDefault()));
+   private static final Codec<Map<String, as>> d = Codec.unboundedMap(Codec.STRING, c)
+      .xmap(
+         $$0 -> ag.a($$0, as::new),
+         $$0 -> $$0.entrySet()
+               .stream()
+               .filter($$0x -> ((as)$$0x.getValue()).a())
+               .collect(Collectors.toMap(Entry::getKey, $$0x -> Objects.requireNonNull(((as)$$0x.getValue()).d())))
+      );
+   public static final Codec<al> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(d.optionalFieldOf("criteria", Map.of()).forGetter($$0x -> $$0x.e), Codec.BOOL.fieldOf("done").orElse(true).forGetter(al::a))
+            .apply($$0, ($$0x, $$1) -> new al(new HashMap<>($$0x)))
+   );
+   private final Map<String, as> e;
+   private am f = am.b;
 
-   public al(vu $$0) {
-      this($$0.a((yx<? super vu, List<String>>)($$0x -> $$0x.a(vu::p))));
+   private al(Map<String, as> $$0) {
+      this.e = $$0;
    }
 
-   public void a(vu $$0) {
-      $$0.a(this.c, ($$0x, $$1) -> $$0x.a($$1, vu::a));
+   public al() {
+      this.e = Maps.newHashMap();
    }
 
-   public static al a(Collection<String> $$0) {
-      return new al($$0.stream().map(List::of).toList());
-   }
+   public void a(am $$0) {
+      Set<String> $$1 = $$0.c();
+      this.e.entrySet().removeIf($$1x -> !$$1.contains($$1x.getKey()));
 
-   public static al b(Collection<String> $$0) {
-      return new al(List.of(List.copyOf($$0)));
-   }
-
-   public int a() {
-      return this.c.size();
-   }
-
-   public boolean a(Predicate<String> $$0) {
-      if (this.c.isEmpty()) {
-         return false;
-      } else {
-         for (List<String> $$1 : this.c) {
-            if (!a($$1, $$0)) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   public int b(Predicate<String> $$0) {
-      int $$1 = 0;
-
-      for (List<String> $$2 : this.c) {
-         if (a($$2, $$0)) {
-            $$1++;
-         }
+      for (String $$2 : $$1) {
+         this.e.putIfAbsent($$2, new as());
       }
 
-      return $$1;
+      this.f = $$0;
    }
 
-   private static boolean a(List<String> $$0, Predicate<String> $$1) {
-      for (String $$2 : $$0) {
-         if ($$1.test($$2)) {
+   public boolean a() {
+      return this.f.a(this::d);
+   }
+
+   public boolean b() {
+      for (as $$0 : this.e.values()) {
+         if ($$0.a()) {
             return true;
          }
       }
@@ -67,53 +67,117 @@ public record al(List<List<String>> c) {
       return false;
    }
 
-   public DataResult<al> a(Set<String> $$0) {
-      Set<String> $$1 = new ObjectOpenHashSet();
-
-      for (List<String> $$2 : this.c) {
-         if ($$2.isEmpty() && $$0.isEmpty()) {
-            return DataResult.error(() -> "Requirement entry cannot be empty");
-         }
-
-         $$1.addAll($$2);
-      }
-
-      if (!$$0.equals($$1)) {
-         Set<String> $$3 = Sets.difference($$0, $$1);
-         Set<String> $$4 = Sets.difference($$1, $$0);
-         return DataResult.error(() -> "Advancement completion requirements did not exactly match specified criteria. Missing: " + $$3 + ". Unknown: " + $$4);
+   public boolean a(String $$0) {
+      as $$1 = this.e.get($$0);
+      if ($$1 != null && !$$1.a()) {
+         $$1.b();
+         return true;
       } else {
-         return DataResult.success(this);
+         return false;
       }
    }
 
-   public boolean b() {
-      return this.c.isEmpty();
+   public boolean b(String $$0) {
+      as $$1 = this.e.get($$0);
+      if ($$1 != null && $$1.a()) {
+         $$1.c();
+         return true;
+      } else {
+         return false;
+      }
    }
 
    @Override
    public String toString() {
-      return this.c.toString();
+      return "AdvancementProgress{criteria=" + this.e + ", requirements=" + this.f + "}";
    }
 
-   public Set<String> c() {
-      Set<String> $$0 = new ObjectOpenHashSet();
+   public void a(vu $$0) {
+      $$0.a(this.e, vu::a, ($$0x, $$1) -> $$1.a($$0x));
+   }
 
-      for (List<String> $$1 : this.c) {
-         $$0.addAll($$1);
+   public static al b(vu $$0) {
+      Map<String, as> $$1 = $$0.a(vu::p, as::b);
+      return new al($$1);
+   }
+
+   @Nullable
+   public as c(String $$0) {
+      return this.e.get($$0);
+   }
+
+   private boolean d(String $$0) {
+      as $$1 = this.c($$0);
+      return $$1 != null && $$1.a();
+   }
+
+   public float c() {
+      if (this.e.isEmpty()) {
+         return 0.0F;
+      } else {
+         float $$0 = (float)this.f.a();
+         float $$1 = (float)this.h();
+         return $$1 / $$0;
+      }
+   }
+
+   @Nullable
+   public wy d() {
+      if (this.e.isEmpty()) {
+         return null;
+      } else {
+         int $$0 = this.f.a();
+         if ($$0 <= 1) {
+            return null;
+         } else {
+            int $$1 = this.h();
+            return wy.a("advancements.progress", $$1, $$0);
+         }
+      }
+   }
+
+   private int h() {
+      return this.f.b(this::d);
+   }
+
+   public Iterable<String> e() {
+      List<String> $$0 = Lists.newArrayList();
+
+      for (Entry<String, as> $$1 : this.e.entrySet()) {
+         if (!$$1.getValue().a()) {
+            $$0.add($$1.getKey());
+         }
       }
 
       return $$0;
    }
 
-   public List<List<String>> d() {
-      return this.c;
+   public Iterable<String> f() {
+      List<String> $$0 = Lists.newArrayList();
+
+      for (Entry<String, as> $$1 : this.e.entrySet()) {
+         if ($$1.getValue().a()) {
+            $$0.add($$1.getKey());
+         }
+      }
+
+      return $$0;
    }
 
-   public interface a {
-      al.a a = al::a;
-      al.a b = al::b;
+   @Nullable
+   public Instant g() {
+      return this.e.values().stream().map(as::d).filter(Objects::nonNull).min(Comparator.naturalOrder()).orElse(null);
+   }
 
-      al create(Collection<String> var1);
+   public int a(al $$0) {
+      Instant $$1 = this.g();
+      Instant $$2 = $$0.g();
+      if ($$1 == null && $$2 != null) {
+         return 1;
+      } else if ($$1 != null && $$2 == null) {
+         return -1;
+      } else {
+         return $$1 == null && $$2 == null ? 0 : $$1.compareTo($$2);
+      }
    }
 }

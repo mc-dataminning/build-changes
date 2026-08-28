@@ -1,25 +1,32 @@
-public abstract class hav<S extends hcn, M extends gfy<? super S>> {
-   private final gye<S, M> a;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public hav(gye<S, M> $$0) {
-      this.a = $$0;
+public class hav extends hbh<hdp, ggw> {
+   private static final alg a = alg.b("invisible");
+   private static final Map<clp, alg> b = Maps.newEnumMap(
+      Map.of(
+         clp.a,
+         a,
+         clp.b,
+         alg.b("textures/entity/horse/horse_markings_white.png"),
+         clp.c,
+         alg.b("textures/entity/horse/horse_markings_whitefield.png"),
+         clp.d,
+         alg.b("textures/entity/horse/horse_markings_whitedots.png"),
+         clp.e,
+         alg.b("textures/entity/horse/horse_markings_blackdots.png")
+      )
+   );
+
+   public hav(gyq<hdp, ggw> $$0) {
+      super($$0);
    }
 
-   protected static <S extends hdn> void a(gfy<S> $$0, alg $$1, fjj $$2, gqa $$3, int $$4, S $$5, int $$6) {
-      if (!$$5.z) {
-         $$0.a($$5);
-         b($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   public void a(fjy $$0, gqm $$1, int $$2, hdp $$3, float $$4, float $$5) {
+      alg $$6 = b.get($$3.h);
+      if ($$6 != a && !$$3.z) {
+         fkc $$7 = $$1.getBuffer(gqx.j($$6));
+         this.d().a($$0, $$7, $$2, gxu.a($$3, 0.0F));
       }
    }
-
-   protected static void b(gfy<?> $$0, alg $$1, fjj $$2, gqa $$3, int $$4, hdn $$5, int $$6) {
-      fjn $$7 = $$3.getBuffer(gqk.g($$1));
-      $$0.a($$2, $$7, $$4, gxi.a($$5, 0.0F), $$6);
-   }
-
-   public M d() {
-      return this.a.c();
-   }
-
-   public abstract void a(fjj var1, gqa var2, int var3, S var4, float var5, float var6);
 }

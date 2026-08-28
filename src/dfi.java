@@ -1,12 +1,35 @@
-public class dfi {
-   public static dfg.i<?> a(jr<dfg.i<?>> $$0) {
-      jr.a($$0, "empty", dfg.c.f);
-      jr.a($$0, "any_fuel", dfg.a.f);
-      jr.a($$0, "item", dfg.d.e);
-      jr.a($$0, "item_stack", dfg.f.e);
-      jr.a($$0, "tag", dfg.h.e);
-      jr.a($$0, "smithing_trim", dfg.g.e);
-      jr.a($$0, "with_remainder", dfg.j.e);
-      return jr.a($$0, "composite", dfg.b.e);
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
+
+public record dfi(dfj b, dfh c, OptionalInt d, dee e, Optional<List<ddx>> f) {
+   public static final yw<wj, dfi> a = yw.a(dfj.a, dfi::a, dfh.e, dfi::b, yu.i, dfi::c, yu.a(mh.af), dfi::d, ddx.a.a(yu.a()).a(yu::a), dfi::e, dfi::new);
+
+   public List<czk> a(baz $$0) {
+      return this.c.d().a($$0);
+   }
+
+   public boolean a(crp $$0) {
+      return this.f.isEmpty() ? false : $$0.a(this.f.get(), null);
+   }
+
+   public dfj a() {
+      return this.b;
+   }
+
+   public dfh b() {
+      return this.c;
+   }
+
+   public OptionalInt c() {
+      return this.d;
+   }
+
+   public dee d() {
+      return this.e;
+   }
+
+   public Optional<List<ddx>> e() {
+      return this.f;
    }
 }

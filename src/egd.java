@@ -1,38 +1,181 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public class egd {
-   public final enr a;
-   public final enr b;
-   public final enr c;
-   public final enr d;
-   public final enr e;
-   public final List<eah> f;
-   public final axr<dmf> g;
-   public final axr<dmf> h;
-   public static final Codec<egd> i = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               enr.a.fieldOf("filling_provider").forGetter($$0x -> $$0x.a),
-               enr.a.fieldOf("inner_layer_provider").forGetter($$0x -> $$0x.b),
-               enr.a.fieldOf("alternate_inner_layer_provider").forGetter($$0x -> $$0x.c),
-               enr.a.fieldOf("middle_layer_provider").forGetter($$0x -> $$0x.d),
-               enr.a.fieldOf("outer_layer_provider").forGetter($$0x -> $$0x.e),
-               ayu.b(eah.a.listOf()).fieldOf("inner_placements").forGetter($$0x -> $$0x.f),
-               axr.b(mg.i).fieldOf("cannot_replace").forGetter($$0x -> $$0x.g),
-               axr.b(mg.i).fieldOf("invalid_blocks").forGetter($$0x -> $$0x.h)
-            )
-            .apply($$0, egd::new)
-   );
+public abstract class egd {
+   public static egd.b a(int $$0, int $$1) {
+      return new egd.b($$0 - 1, $$1 + 1);
+   }
 
-   public egd(enr $$0, enr $$1, enr $$2, enr $$3, enr $$4, List<eah> $$5, axr<dmf> $$6, axr<dmf> $$7) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
+   public static egd.b b(int $$0, int $$1) {
+      return new egd.b($$0, $$1);
+   }
+
+   public static egd a(int $$0) {
+      return new egd.c($$0, false);
+   }
+
+   public static egd b(int $$0) {
+      return new egd.c($$0 + 1, false);
+   }
+
+   public static egd c(int $$0) {
+      return new egd.c($$0, true);
+   }
+
+   public static egd d(int $$0) {
+      return new egd.c($$0 - 1, true);
+   }
+
+   public static egd a() {
+      return egd.a.a;
+   }
+
+   public static egd a(OptionalInt $$0, OptionalInt $$1) {
+      if ($$0.isPresent() && $$1.isPresent()) {
+         return b($$0.getAsInt(), $$1.getAsInt());
+      } else if ($$0.isPresent()) {
+         return c($$0.getAsInt());
+      } else {
+         return $$1.isPresent() ? a($$1.getAsInt()) : a();
+      }
+   }
+
+   public abstract OptionalInt b();
+
+   public abstract OptionalInt c();
+
+   public abstract OptionalInt d();
+
+   public egd a(OptionalInt $$0) {
+      return a($$0, this.b());
+   }
+
+   public egd b(OptionalInt $$0) {
+      return a(this.c(), $$0);
+   }
+
+   public static Optional<egd> a(djn $$0, iv $$1, int $$2, Predicate<eao> $$3, Predicate<eao> $$4) {
+      iv.a $$5 = $$1.k();
+      if (!$$0.a($$1, $$3)) {
+         return Optional.empty();
+      } else {
+         int $$6 = $$1.v();
+         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, jb.b);
+         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, jb.a);
+         return Optional.of(a($$8, $$7));
+      }
+   }
+
+   private static OptionalInt a(djn $$0, int $$1, Predicate<eao> $$2, Predicate<eao> $$3, iv.a $$4, int $$5, jb $$6) {
+      $$4.q($$5);
+
+      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
+         $$4.c($$6);
+      }
+
+      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
+   }
+
+   public static final class a extends egd {
+      static final egd.a a = new egd.a();
+
+      private a() {
+      }
+
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return "C(-)";
+      }
+   }
+
+   public static final class b extends egd {
+      private final int a;
+      private final int b;
+
+      protected b(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+         if (this.g() < 0) {
+            throw new IllegalArgumentException("Column of negative height: " + this);
+         }
+      }
+
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.of(this.b);
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.of(this.a);
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.of(this.g());
+      }
+
+      public int e() {
+         return this.b;
+      }
+
+      public int f() {
+         return this.a;
+      }
+
+      public int g() {
+         return this.b - this.a - 1;
+      }
+
+      @Override
+      public String toString() {
+         return "C(" + this.b + "-" + this.a + ")";
+      }
+   }
+
+   public static final class c extends egd {
+      private final int a;
+      private final boolean b;
+
+      public c(int $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Override
+      public OptionalInt b() {
+         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
+      }
+
+      @Override
+      public OptionalInt c() {
+         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
+      }
    }
 }

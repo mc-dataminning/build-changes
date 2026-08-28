@@ -1,5 +1,3 @@
-public class hem extends hdn {
+public class hem extends hdz {
    public float a;
-   public float b;
-   public float c;
 }

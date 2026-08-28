@@ -1,56 +1,63 @@
-import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class cme extends cmc {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 10;
-   @Nullable
-   private feq d;
-   private int e;
+public class cme extends bwi {
+   public final cmh a;
+   public final String b;
+   private final bwl c;
 
-   public cme(cma $$0) {
-      super($$0);
+   public cme(cmh $$0, String $$1, float $$2, float $$3) {
+      super($$0.an(), $$0.dU());
+      this.c = bwl.b($$2, $$3);
+      this.i_();
+      this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public void a(arq $$0) {
-      if (this.d == null) {
-         b.warn("Aborting charge player as no target was set.");
-         this.a.t().a(cmq.a);
-      } else if (this.e > 0 && this.e++ >= 10) {
-         this.a.t().a(cmq.a);
-      } else {
-         double $$1 = this.d.c(this.a.dA(), this.a.dC(), this.a.dG());
-         if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
-            this.e++;
-         }
-      }
+   protected void a(akn.a $$0) {
    }
 
    @Override
-   public void c() {
-      this.d = null;
-      this.e = 0;
-   }
-
-   public void a(feq $$0) {
-      this.d = $$0;
+   protected void a(tz $$0) {
    }
 
    @Override
-   public float e() {
-      return 3.0F;
+   protected void b(tz $$0) {
+   }
+
+   @Override
+   public boolean bE() {
+      return true;
    }
 
    @Nullable
    @Override
-   public feq f() {
-      return this.d;
+   public czk dH() {
+      return this.a.dH();
    }
 
    @Override
-   public cmq<cme> h() {
-      return cmq.i;
+   public final boolean a(arq $$0, bux $$1, float $$2) {
+      return this.d($$1) ? false : this.a.a($$0, this, $$1, $$2);
+   }
+
+   @Override
+   public boolean u(bwi $$0) {
+      return this == $$0 || this.a == $$0;
+   }
+
+   @Override
+   public zf<abu> a(aro $$0) {
+      throw new UnsupportedOperationException();
+   }
+
+   @Override
+   public bwl a(bxv $$0) {
+      return this.c;
+   }
+
+   @Override
+   public boolean dS() {
+      return false;
    }
 }

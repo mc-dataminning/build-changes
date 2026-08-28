@@ -1,42 +1,36 @@
-public class gyx extends guy<cud, hdr> {
-   private final gre g;
+public class gyx extends gxz<cou, hev, gij> {
+   public static final alg a = alg.b("textures/entity/slime/slime.png");
 
-   public gyx(gwh.a $$0) {
-      super($$0, gjb.dy);
-      this.g = $$0.d();
+   public gyx(gwt.a $$0) {
+      super($$0, new gij($$0.a(gjn.de)), 0.25F);
+      this.a(new hbl(this, $$0.f()));
    }
 
-   protected void a(hdr $$0, eah $$1, fjj $$2, gqa $$3, int $$4) {
-      float $$5 = $$0.n;
-      if ($$5 > -1.0F && $$5 < 10.0F) {
-         float $$6 = 1.0F - $$5 / 10.0F;
-         $$6 = azm.a($$6, 0.0F, 1.0F);
-         $$6 *= $$6;
-         $$6 *= $$6;
-         float $$7 = 1.0F + $$6 * 0.3F;
-         $$2.b($$7, $$7, $$7);
-      }
-
-      a(this.g, $$1, $$2, $$3, $$4, $$5 > -1.0F && (int)$$5 / 5 % 2 == 0);
+   protected float a(hev $$0) {
+      return (float)$$0.b * 0.25F;
    }
 
-   public static void a(gre $$0, eah $$1, fjj $$2, gqa $$3, int $$4, boolean $$5) {
-      int $$6;
-      if ($$5) {
-         $$6 = hin.a(hin.a(1.0F), 10);
-      } else {
-         $$6 = hin.d;
-      }
-
-      $$0.a($$1, $$2, $$3, $$4, $$6);
+   protected void a(hev $$0, fjy $$1) {
+      float $$2 = 0.999F;
+      $$1.b(0.999F, 0.999F, 0.999F);
+      $$1.a(0.0F, 0.001F, 0.0F);
+      float $$3 = (float)$$0.b;
+      float $$4 = $$0.a / ($$3 * 0.5F + 1.0F);
+      float $$5 = 1.0F / ($$4 + 1.0F);
+      $$1.b($$5 * $$3, 1.0F / $$5 * $$3, $$5 * $$3);
    }
 
-   public hdr a() {
-      return new hdr();
+   public alg b(hev $$0) {
+      return a;
    }
 
-   public void a(cud $$0, hdr $$1, float $$2) {
+   public hev b() {
+      return new hev();
+   }
+
+   public void a(cou $$0, hev $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.n = $$0.q() > -1 ? (float)$$0.q() - $$2 + 1.0F : -1.0F;
+      $$1.a = azm.h($$2, $$0.bG, $$0.bF);
+      $$1.b = $$0.gr();
    }
 }

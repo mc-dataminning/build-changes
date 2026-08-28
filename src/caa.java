@@ -1,44 +1,33 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class caa extends byv<cqo> {
-   private final float c;
-
-   public caa(float $$0) {
-      super(ImmutableMap.of(cgg.n, cgh.c, cgg.o, cgh.c), Integer.MAX_VALUE);
-      this.c = $$0;
-   }
-
-   protected boolean a(arq $$0, cqo $$1) {
-      crc $$2 = $$1.x();
-      return $$1.bK() && $$2 != null && !$$1.bj() && !$$1.T && $$1.g($$2) <= 16.0 && $$2.bR != null;
-   }
-
-   protected boolean a(arq $$0, cqo $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(arq $$0, cqo $$1, long $$2) {
-      this.a($$1);
-   }
-
-   protected void c(arq $$0, cqo $$1, long $$2) {
-      bye<?> $$3 = $$1.ec();
-      $$3.b(cgg.n);
-      $$3.b(cgg.o);
-   }
-
-   protected void d(arq $$0, cqo $$1, long $$2) {
-      this.a($$1);
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   private void a(cqo $$0) {
-      bye<?> $$1 = $$0.ec();
-      $$1.a(cgg.n, new cgj(new bzg($$0.x(), false), this.c, 2));
-      $$1.a(cgg.o, new bzg($$0.x(), true));
+public class caa {
+   public static cal<bxj> a(int $$0, float $$1, int $$2) {
+      return ccn.a(
+         (Function<ccn.b<bxj>, ? extends App<ccn.c<bxj>, ccq<bxj>>>)($$3 -> $$3.group(
+                  $$3.c(cgl.n), $$3.a(cgl.b), $$3.a(cgl.D), $$3.a(cgl.u), $$3.a(cgl.o), $$3.a(cgl.s), $$3.a(cgl.r)
+               )
+               .apply(
+                  $$3,
+                  ($$4, $$5, $$6, $$7, $$8, $$9, $$10) -> ($$11, $$12, $$13) -> {
+                        $$11.A()
+                           .d($$0xxxx -> $$0xxxx.a(cip.n), $$0xxxx -> true, $$12.du(), $$2 + 1, cil.b.c)
+                           .filter($$2xxxx -> $$2xxxx.a($$12.ds(), (double)$$2))
+                           .or(() -> $$11.A().a($$0xxxxx -> $$0xxxxx.a(cip.n), $$0xxxxx -> true, cil.b.c, $$12.du(), $$0, $$12.dX()))
+                           .or(() -> $$3.<je>a($$5).map(je::b))
+                           .ifPresent($$10xx -> {
+                              $$7.b();
+                              $$8.b();
+                              $$9.b();
+                              $$10.b();
+                              $$6.a(je.a($$11.aj(), $$10xx));
+                              if (!$$10xx.a($$12.ds(), (double)$$2)) {
+                                 $$4.a(new cgo($$10xx, $$1, $$2));
+                              }
+                           });
+                        return true;
+                     }
+               ))
+      );
    }
 }

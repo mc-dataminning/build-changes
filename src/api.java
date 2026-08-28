@@ -5,22 +5,22 @@ import java.util.Collection;
 import javax.annotation.Nullable;
 
 public class api {
-   public static void a(CommandDispatcher<ei> $$0) {
-      RequiredArgumentBuilder<ei, gy> $$1 = (RequiredArgumentBuilder<ei, gy>)((RequiredArgumentBuilder)ej.a("targets", ev.d())
-            .executes($$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), null, null)))
-         .then(ej.a("*").then(ej.a("sound", fj.a()).suggests(ij.b).executes($$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), null, fj.a($$0x, "sound")))));
+   public static void a(CommandDispatcher<ej> $$0) {
+      RequiredArgumentBuilder<ej, gz> $$1 = (RequiredArgumentBuilder<ej, gz>)((RequiredArgumentBuilder)ek.a("targets", ew.d())
+            .executes($$0x -> a((ej)$$0x.getSource(), ew.f($$0x, "targets"), null, null)))
+         .then(ek.a("*").then(ek.a("sound", fk.a()).suggests(ik.b).executes($$0x -> a((ej)$$0x.getSource(), ew.f($$0x, "targets"), null, fk.a($$0x, "sound")))));
 
       for (awo $$2 : awo.values()) {
          $$1.then(
-            ((LiteralArgumentBuilder)ej.a($$2.a()).executes($$1x -> a((ei)$$1x.getSource(), ev.f($$1x, "targets"), $$2, null)))
-               .then(ej.a("sound", fj.a()).suggests(ij.b).executes($$1x -> a((ei)$$1x.getSource(), ev.f($$1x, "targets"), $$2, fj.a($$1x, "sound"))))
+            ((LiteralArgumentBuilder)ek.a($$2.a()).executes($$1x -> a((ej)$$1x.getSource(), ew.f($$1x, "targets"), $$2, null)))
+               .then(ek.a("sound", fk.a()).suggests(ik.b).executes($$1x -> a((ej)$$1x.getSource(), ew.f($$1x, "targets"), $$2, fk.a($$1x, "sound"))))
          );
       }
 
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("stopsound").requires($$0x -> $$0x.c(2))).then($$1));
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("stopsound").requires($$0x -> $$0x.c(2))).then($$1));
    }
 
-   private static int a(ei $$0, Collection<arr> $$1, @Nullable awo $$2, @Nullable alg $$3) {
+   private static int a(ej $$0, Collection<arr> $$1, @Nullable awo $$2, @Nullable alg $$3) {
       afx $$4 = new afx($$3, $$2);
 
       for (arr $$5 : $$1) {

@@ -3,12 +3,12 @@ import javax.annotation.Nullable;
 
 public class asd implements asa {
    private final asa a;
-   private final bst b;
+   private final bsv b;
    private boolean c;
 
    private asd(asa $$0, Executor $$1) {
       this.a = $$0;
-      this.b = new bst($$1, "progressListener");
+      this.b = new bsv($$1, "progressListener");
    }
 
    public static asd a(asa $$0, Executor $$1) {
@@ -18,12 +18,12 @@ public class asd implements asa {
    }
 
    @Override
-   public void a(dih $$0) {
+   public void a(dio $$0) {
       this.b.a_(() -> this.a.a($$0));
    }
 
    @Override
-   public void a(dih $$0, @Nullable edf $$1) {
+   public void a(dio $$0, @Nullable edm $$1) {
       if (this.c) {
          this.b.a_(() -> this.a.a($$0, $$1));
       }

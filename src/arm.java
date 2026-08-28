@@ -6,12 +6,12 @@ import java.util.Collections;
 import java.util.Set;
 import java.util.function.Function;
 
-public class arm extends btt {
+public class arm extends btw {
    private final Set<arr> h = Sets.newHashSet();
    private final Set<arr> i = Collections.unmodifiableSet(this.h);
    private boolean j = true;
 
-   public arm(wy $$0, btt.a $$1, btt.b $$2) {
+   public arm(wy $$0, btw.a $$1, btw.b $$2) {
       super(azm.a(), $$0, $$1, $$2);
    }
 
@@ -24,7 +24,7 @@ public class arm extends btt {
    }
 
    @Override
-   public void a(btt.a $$0) {
+   public void a(btw.a $$0) {
       if ($$0 != this.c) {
          super.a($$0);
          this.a(acd::d);
@@ -32,7 +32,7 @@ public class arm extends btt {
    }
 
    @Override
-   public void a(btt.b $$0) {
+   public void a(btw.b $$0) {
       if ($$0 != this.d) {
          super.a($$0);
          this.a(acd::d);
@@ -40,7 +40,7 @@ public class arm extends btt {
    }
 
    @Override
-   public btt a(boolean $$0) {
+   public btw a(boolean $$0) {
       if ($$0 != this.e) {
          super.a($$0);
          this.a(acd::e);
@@ -50,7 +50,7 @@ public class arm extends btt {
    }
 
    @Override
-   public btt b(boolean $$0) {
+   public btw b(boolean $$0) {
       if ($$0 != this.f) {
          super.b($$0);
          this.a(acd::e);
@@ -60,7 +60,7 @@ public class arm extends btt {
    }
 
    @Override
-   public btt c(boolean $$0) {
+   public btw c(boolean $$0) {
       if ($$0 != this.g) {
          super.c($$0);
          this.a(acd::e);
@@ -77,7 +77,7 @@ public class arm extends btt {
       }
    }
 
-   private void a(Function<btt, acd> $$0) {
+   private void a(Function<btw, acd> $$0) {
       if (this.j) {
          acd $$1 = $$0.apply(this);
 
@@ -95,7 +95,7 @@ public class arm extends btt {
 
    public void b(arr $$0) {
       if (this.h.remove($$0) && this.j) {
-         $$0.f.b(acd.a(this.h()));
+         $$0.f.b(acd.a(this.i()));
       }
    }
 
@@ -107,7 +107,7 @@ public class arm extends btt {
       }
    }
 
-   public boolean f() {
+   public boolean g() {
       return this.j;
    }
 
@@ -116,12 +116,12 @@ public class arm extends btt {
          this.j = $$0;
 
          for (arr $$1 : this.h) {
-            $$1.f.b($$0 ? acd.a(this) : acd.a(this.h()));
+            $$1.f.b($$0 ? acd.a(this) : acd.a(this.i()));
          }
       }
    }
 
-   public Collection<arr> g() {
+   public Collection<arr> h() {
       return this.i;
    }
 }

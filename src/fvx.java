@@ -1,130 +1,81 @@
-import java.util.function.Consumer;
+import com.mojang.logging.LogUtils;
+import org.lwjgl.PointerBuffer;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.util.freetype.FT_Vector;
+import org.lwjgl.util.freetype.FreeType;
+import org.slf4j.Logger;
 
-public class fvx implements fvy {
-   public static final int a = 33;
-   private static final int b = 30;
-   private final fvv c = new fvv();
-   private final fvv d = new fvv();
-   private final fvv e = new fvv();
-   private final fyb f;
-   private int g;
-   private int h;
+public class fvx {
+   private static final Logger b = LogUtils.getLogger();
+   public static final Object a = new Object();
+   private static long c = 0L;
 
-   public fvx(fyb $$0) {
-      this($$0, 33);
+   public static long a() {
+      synchronized (a) {
+         if (c == 0L) {
+            MemoryStack $$0 = MemoryStack.stackPush();
+
+            try {
+               PointerBuffer $$1 = $$0.mallocPointer(1);
+               a(FreeType.FT_Init_FreeType($$1), "Initializing FreeType library");
+               c = $$1.get();
+            } catch (Throwable var6) {
+               if ($$0 != null) {
+                  try {
+                     $$0.close();
+                  } catch (Throwable var5) {
+                     var6.addSuppressed(var5);
+                  }
+               }
+
+               throw var6;
+            }
+
+            if ($$0 != null) {
+               $$0.close();
+            }
+         }
+
+         return c;
+      }
    }
 
-   public fvx(fyb $$0, int $$1) {
-      this($$0, $$1, $$1);
+   public static void a(int $$0, String $$1) {
+      if ($$0 != 0) {
+         throw new IllegalStateException("FreeType error: " + a($$0) + " (" + $$1 + ")");
+      }
    }
 
-   public fvx(fyb $$0, int $$1, int $$2) {
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-      this.c.c().a(0.5F, 0.5F);
-      this.d.c().a(0.5F, 0.5F);
+   public static boolean b(int $$0, String $$1) {
+      if ($$0 != 0) {
+         b.error("FreeType error: {} ({})", a($$0), $$1);
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   @Override
-   public void j(int $$0) {
+   private static String a(int $$0) {
+      String $$1 = FreeType.FT_Error_String($$0);
+      return $$1 != null ? $$1 : "Unrecognized error: 0x" + Integer.toHexString($$0);
    }
 
-   @Override
-   public void k(int $$0) {
+   public static FT_Vector a(FT_Vector $$0, float $$1, float $$2) {
+      long $$3 = (long)Math.round($$1 * 64.0F);
+      long $$4 = (long)Math.round($$2 * 64.0F);
+      return $$0.set($$3, $$4);
    }
 
-   @Override
-   public int F() {
-      return 0;
+   public static float a(FT_Vector $$0) {
+      return (float)$$0.x() / 64.0F;
    }
 
-   @Override
-   public int G() {
-      return 0;
-   }
-
-   @Override
-   public int A() {
-      return this.f.n;
-   }
-
-   @Override
-   public int y() {
-      return this.f.o;
-   }
-
-   public int b() {
-      return this.h;
-   }
-
-   public void a(int $$0) {
-      this.h = $$0;
-   }
-
-   public void b(int $$0) {
-      this.g = $$0;
-   }
-
-   public int c() {
-      return this.g;
-   }
-
-   public int d() {
-      return this.f.o - this.c() - this.b();
-   }
-
-   @Override
-   public void b(Consumer<fvz> $$0) {
-      this.c.b($$0);
-      this.e.b($$0);
-      this.d.b($$0);
-   }
-
-   @Override
-   public void a() {
-      int $$0 = this.c();
-      int $$1 = this.b();
-      this.c.b(this.f.n);
-      this.c.a($$0);
-      this.c.c(0, 0);
-      this.c.a();
-      this.d.b(this.f.n);
-      this.d.a($$1);
-      this.d.a();
-      this.d.k(this.f.o - $$1);
-      this.e.b(this.f.n);
-      this.e.a();
-      int $$2 = $$0 + 30;
-      int $$3 = this.f.o - $$1 - this.e.y();
-      this.e.c(0, Math.min($$2, $$3));
-   }
-
-   public <T extends fvz> T a(T $$0) {
-      return this.c.a($$0);
-   }
-
-   public <T extends fvz> T a(T $$0, Consumer<fwa> $$1) {
-      return this.c.a($$0, $$1);
-   }
-
-   public void a(wy $$0, frt $$1) {
-      this.c.a(new ftq($$0, $$1));
-   }
-
-   public <T extends fvz> T b(T $$0) {
-      return this.d.a($$0);
-   }
-
-   public <T extends fvz> T b(T $$0, Consumer<fwa> $$1) {
-      return this.d.a($$0, $$1);
-   }
-
-   public <T extends fvz> T c(T $$0) {
-      return this.e.a($$0);
-   }
-
-   public <T extends fvz> T c(T $$0, Consumer<fwa> $$1) {
-      return this.e.a($$0, $$1);
+   public static void b() {
+      synchronized (a) {
+         if (c != 0L) {
+            FreeType.FT_Done_Library(c);
+            c = 0L;
+         }
+      }
    }
 }

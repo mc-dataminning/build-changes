@@ -9,7 +9,7 @@ import javax.swing.Timer;
 import net.minecraft.server.MinecraftServer;
 
 public class aqo extends JComponent {
-   private static final DecimalFormat a = af.a(
+   private static final DecimalFormat a = ag.a(
       new DecimalFormat("########0.000"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT))
    );
    private final int[] b = new int[256];

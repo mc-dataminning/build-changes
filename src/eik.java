@@ -1,24 +1,52 @@
 import com.mojang.serialization.Codec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record eik<WC extends eif>(eim<WC> d, WC e) {
-   public static final Codec<eik<?>> a = mf.N.q().dispatch($$0 -> $$0.d, eim::c);
-   public static final Codec<je<eik<?>>> b = alc.a(mg.aK, a);
-   public static final Codec<ji<eik<?>>> c = jt.a(mg.aK, a);
+public class eik extends eim {
+   public static final Codec<eik> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eim.d.forGetter($$0x -> $$0x), btj.c.fieldOf("vertical_rotation").forGetter($$0x -> $$0x.b), eik.a.a.fieldOf("shape").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, eik::new)
+   );
+   public final btj b;
+   public final eik.a c;
 
-   public boolean a(azv $$0) {
-      return this.d.a(this.e, $$0);
+   public eik(float $$0, epp $$1, btj $$2, ehh $$3, ein $$4, jj<dmm> $$5, btj $$6, eik.a $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
    }
 
-   public boolean a(eih $$0, ece $$1, Function<iu, je<dkd>> $$2, azv $$3, efs $$4, dih $$5, ecd $$6) {
-      return ab.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
+   public eik(eim $$0, btj $$1, eik.a $$2) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2);
    }
 
-   public eim<WC> a() {
-      return this.d;
-   }
+   public static class a {
+      public static final Codec<eik.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  btj.c.fieldOf("distance_factor").forGetter($$0x -> $$0x.b),
+                  btj.c.fieldOf("thickness").forGetter($$0x -> $$0x.c),
+                  ayu.l.fieldOf("width_smoothness").forGetter($$0x -> $$0x.d),
+                  btj.c.fieldOf("horizontal_radius_factor").forGetter($$0x -> $$0x.e),
+                  Codec.FLOAT.fieldOf("vertical_radius_default_factor").forGetter($$0x -> $$0x.f),
+                  Codec.FLOAT.fieldOf("vertical_radius_center_factor").forGetter($$0x -> $$0x.g)
+               )
+               .apply($$0, eik.a::new)
+      );
+      public final btj b;
+      public final btj c;
+      public final int d;
+      public final btj e;
+      public final float f;
+      public final float g;
 
-   public WC b() {
-      return this.e;
+      public a(btj $$0, btj $$1, int $$2, btj $$3, float $$4, float $$5) {
+         this.d = $$2;
+         this.e = $$3;
+         this.f = $$4;
+         this.g = $$5;
+         this.b = $$0;
+         this.c = $$1;
+      }
    }
 }

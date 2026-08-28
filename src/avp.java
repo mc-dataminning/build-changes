@@ -47,7 +47,7 @@ public class avp {
          $$0.as().findProfilesByNames($$3, $$2);
       } else {
          for (String $$4 : $$3) {
-            $$2.onProfileLookupSucceeded(jy.b($$4));
+            $$2.onProfileLookupSucceeded(jz.b($$4));
          }
       }
    }
@@ -246,7 +246,7 @@ public class avp {
             a($$0, Lists.newArrayList(new String[]{$$1}), $$5);
             return !$$4.isEmpty() ? $$4.get(0).getId() : null;
          } else {
-            return jy.a($$1);
+            return jz.a($$1);
          }
       } else {
          try {
@@ -405,7 +405,7 @@ public class avp {
    }
 
    private static File g(MinecraftServer $$0) {
-      return $$0.a(eyt.d).toFile();
+      return $$0.a(eza.d).toFile();
    }
 
    private static void b(File $$0) {

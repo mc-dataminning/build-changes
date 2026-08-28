@@ -1,101 +1,79 @@
 import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public abstract class byv<E extends bxe> implements byw<E> {
-   public static final int a = 60;
-   protected final Map<cgg<?>, cgh> b;
-   private byv.a c = byv.a.a;
-   private long d;
-   private final int e;
-   private final int f;
+public class byv<E extends bxr> extends bza<E> {
+   private static final int c = 100;
+   private static final int d = 120;
+   private static final int e = 5;
+   private static final int f = 4;
+   private final float g;
+   private final Function<bxr, axr<buz>> h;
 
-   public byv(Map<cgg<?>, cgh> $$0) {
-      this($$0, 60);
+   public byv(float $$0) {
+      this($$0, $$0x -> axd.F);
    }
 
-   public byv(Map<cgg<?>, cgh> $$0, int $$1) {
-      this($$0, $$1, $$1);
-   }
-
-   public byv(Map<cgg<?>, cgh> $$0, int $$1, int $$2) {
-      this.e = $$1;
-      this.f = $$2;
-      this.b = $$0;
-   }
-
-   @Override
-   public byv.a a() {
-      return this.c;
-   }
-
-   @Override
-   public final boolean e(arq $$0, E $$1, long $$2) {
-      if (this.a($$1) && this.a($$0, $$1)) {
-         this.c = byv.a.b;
-         int $$3 = this.e + $$0.C_().a(this.f + 1 - this.e);
-         this.d = $$2 + (long)$$3;
-         this.d($$0, $$1, $$2);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected void d(arq $$0, E $$1, long $$2) {
-   }
-
-   @Override
-   public final void f(arq $$0, E $$1, long $$2) {
-      if (!this.a($$2) && this.a($$0, $$1, $$2)) {
-         this.c($$0, $$1, $$2);
-      } else {
-         this.g($$0, $$1, $$2);
-      }
-   }
-
-   protected void c(arq $$0, E $$1, long $$2) {
-   }
-
-   @Override
-   public final void g(arq $$0, E $$1, long $$2) {
-      this.c = byv.a.a;
-      this.b($$0, $$1, $$2);
-   }
-
-   protected void b(arq $$0, E $$1, long $$2) {
-   }
-
-   protected boolean a(arq $$0, E $$1, long $$2) {
-      return false;
-   }
-
-   protected boolean a(long $$0) {
-      return $$0 > this.d;
+   public byv(float $$0, Function<bxr, axr<buz>> $$1) {
+      super(Map.of(cgl.aa, cgm.c, cgl.y, cgm.c), 100, 120);
+      this.g = $$0;
+      this.h = $$1;
    }
 
    protected boolean a(arq $$0, E $$1) {
+      return $$1.eb().c(cgl.y).map($$1x -> $$1x.a(this.h.apply($$1))).orElse(false) || $$1.eb().a(cgl.aa);
+   }
+
+   protected boolean a(arq $$0, E $$1, long $$2) {
       return true;
    }
 
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+   protected void b(arq $$0, E $$1, long $$2) {
+      $$1.eb().a(cgl.aa, true);
+      $$1.eb().b(cgl.n);
    }
 
-   protected boolean a(E $$0) {
-      for (Entry<cgg<?>, cgh> $$1 : this.b.entrySet()) {
-         cgg<?> $$2 = $$1.getKey();
-         cgh $$3 = $$1.getValue();
-         if (!$$0.ec().a($$2, $$3)) {
-            return false;
+   protected void c(arq $$0, E $$1, long $$2) {
+      byj<?> $$3 = $$1.eb();
+      $$3.b(cgl.aa);
+   }
+
+   protected void d(arq $$0, E $$1, long $$2) {
+      if ($$1.O().k()) {
+         fex $$3 = this.a($$1, $$0);
+         if ($$3 != null) {
+            $$1.eb().a(cgl.n, new cgo($$3, this.g, 0));
+         }
+      }
+   }
+
+   @Nullable
+   private fex a(E $$0, arq $$1) {
+      if ($$0.bW()) {
+         Optional<fex> $$2 = this.a((din)$$1, $$0).map(fex::c);
+         if ($$2.isPresent()) {
+            return $$2.get();
          }
       }
 
-      return true;
+      return cif.a($$0, 5, 4);
    }
 
-   public static enum a {
-      a,
-      b;
+   private Optional<iv> a(din $$0, bwi $$1) {
+      iv $$2 = $$1.du();
+      if (!$$0.a_($$2).g($$0, $$2).c()) {
+         return Optional.empty();
+      } else {
+         Predicate<iv> $$3;
+         if (azm.f($$1.dp()) == 2) {
+            $$3 = $$1x -> iv.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(axh.a));
+         } else {
+            $$3 = $$1x -> $$0.b_($$1x).a(axh.a);
+         }
+
+         return iv.a($$2, 5, 1, $$3);
+      }
    }
 }

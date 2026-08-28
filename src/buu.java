@@ -1,125 +1,142 @@
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Objects;
 import javax.annotation.Nullable;
 
 public class buu {
-   private final je<buw> a;
-   @Nullable
-   private final bwf b;
-   @Nullable
-   private final bwf c;
-   @Nullable
-   private final feq d;
+   public static final int a = 100;
+   public static final int b = 300;
+   private static final xv c = xv.a.a(new ww.e(ayh.w)).a(new xe.e(wy.b("MCPE-28723")));
+   private final List<bus> d = Lists.newArrayList();
+   private final bxj e;
+   private int f;
+   private int g;
+   private int h;
+   private boolean i;
+   private boolean j;
 
-   @Override
-   public String toString() {
-      return "DamageSource (" + this.k().a() + ")";
+   public buu(bxj $$0) {
+      this.e = $$0;
    }
 
-   public float a() {
-      return this.k().c();
+   public void a(bux $$0, float $$1) {
+      this.c();
+      bvc $$2 = bvc.a(this.e);
+      bus $$3 = new bus($$0, $$1, $$2, (float)this.e.Z);
+      this.d.add($$3);
+      this.f = this.e.af;
+      this.j = true;
+      if (!this.i && this.e.bI() && a($$0)) {
+         this.i = true;
+         this.g = this.e.af;
+         this.h = this.g;
+         this.e.e_();
+      }
    }
 
-   public boolean b() {
-      return this.b == this.c;
+   private static boolean a(bux $$0) {
+      return $$0.d() instanceof bxj;
    }
 
-   private buu(je<buw> $$0, @Nullable bwf $$1, @Nullable bwf $$2, @Nullable feq $$3) {
-      this.a = $$0;
-      this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
+   private wy a(bwi $$0, wy $$1, String $$2, String $$3) {
+      czk $$5 = $$0 instanceof bxj $$4 ? $$4.fa() : czk.k;
+      return !$$5.f() && $$5.c(kk.g) ? wy.a($$2, this.e.m_(), $$1, $$5.K()) : wy.a($$3, this.e.m_(), $$1);
    }
 
-   public buu(je<buw> $$0, @Nullable bwf $$1, @Nullable bwf $$2) {
-      this($$0, $$1, $$2, null);
-   }
-
-   public buu(je<buw> $$0, feq $$1) {
-      this($$0, null, null, $$1);
-   }
-
-   public buu(je<buw> $$0, @Nullable bwf $$1) {
-      this($$0, $$1, $$1);
-   }
-
-   public buu(je<buw> $$0) {
-      this($$0, null, null, null);
-   }
-
-   @Nullable
-   public bwf c() {
-      return this.c;
-   }
-
-   @Nullable
-   public bwf d() {
-      return this.b;
-   }
-
-   @Nullable
-   public czd e() {
-      return this.c != null ? this.c.dZ() : null;
-   }
-
-   public wy a(bxe $$0) {
-      String $$1 = "death.attack." + this.k().a();
-      if (this.b == null && this.c == null) {
-         bxe $$5 = $$0.eT();
-         String $$6 = $$1 + ".player";
-         return $$5 != null ? wy.a($$6, $$0.m_(), $$5.m_()) : wy.a($$1, $$0.m_());
+   private wy a(bus $$0, @Nullable bwi $$1) {
+      bux $$2 = $$0.a();
+      if (!$$2.a(axd.m) && !$$2.a(axd.s)) {
+         wy $$4 = a($$1);
+         bwi $$5 = $$2.d();
+         wy $$6 = a($$5);
+         if ($$6 != null && !$$6.equals($$4)) {
+            return this.a($$5, $$6, "death.fell.assist.item", "death.fell.assist");
+         } else {
+            return (wy)($$4 != null ? this.a($$1, $$4, "death.fell.finish.item", "death.fell.finish") : wy.a("death.fell.killer", this.e.m_()));
+         }
       } else {
-         wy $$2 = this.b == null ? this.c.m_() : this.b.m_();
-         czd $$4 = this.b instanceof bxe $$3 ? $$3.fb() : czd.k;
-         return !$$4.f() && $$4.c(kj.g) ? wy.a($$1 + ".item", $$0.m_(), $$2, $$4.K()) : wy.a($$1, $$0.m_(), $$2);
+         bvc $$3 = Objects.requireNonNullElse($$0.c(), bvc.a);
+         return wy.a($$3.a(), this.e.m_());
       }
-   }
-
-   public String f() {
-      return this.k().a();
-   }
-
-   public boolean g() {
-      return switch (this.k().b()) {
-         case a -> false;
-         case b -> this.b instanceof bxe && !(this.b instanceof crc);
-         case c -> true;
-      };
-   }
-
-   public boolean h() {
-      if (this.d() instanceof crc $$0 && $$0.gk().d) {
-         return true;
-      }
-
-      return false;
    }
 
    @Nullable
-   public feq i() {
-      if (this.d != null) {
-         return this.d;
+   private static wy a(@Nullable bwi $$0) {
+      return $$0 == null ? null : $$0.m_();
+   }
+
+   public wy a() {
+      if (this.d.isEmpty()) {
+         return wy.a("death.attack.generic", this.e.m_());
       } else {
-         return this.c != null ? this.c.dt() : null;
+         bus $$0 = this.d.get(this.d.size() - 1);
+         bux $$1 = $$0.a();
+         bus $$2 = this.d();
+         bvb $$3 = $$1.k().e();
+         if ($$3 == bvb.b && $$2 != null) {
+            return this.a($$2, $$1.d());
+         } else if ($$3 == bvb.c) {
+            String $$4 = "death.attack." + $$1.f();
+            wy $$5 = xb.a((wy)wy.c($$4 + ".link")).c(c);
+            return wy.a($$4 + ".message", this.e.m_(), $$5);
+         } else {
+            return $$1.a(this.e);
+         }
       }
    }
 
    @Nullable
-   public feq j() {
-      return this.d;
+   private bus d() {
+      bus $$0 = null;
+      bus $$1 = null;
+      float $$2 = 0.0F;
+      float $$3 = 0.0F;
+
+      for (int $$4 = 0; $$4 < this.d.size(); $$4++) {
+         bus $$5 = this.d.get($$4);
+         bus $$6 = $$4 > 0 ? this.d.get($$4 - 1) : null;
+         bux $$7 = $$5.a();
+         boolean $$8 = $$7.a(axd.s);
+         float $$9 = $$8 ? Float.MAX_VALUE : $$5.d();
+         if (($$7.a(axd.m) || $$8) && $$9 > 0.0F && ($$0 == null || $$9 > $$3)) {
+            if ($$4 > 0) {
+               $$0 = $$6;
+            } else {
+               $$0 = $$5;
+            }
+
+            $$3 = $$9;
+         }
+
+         if ($$5.c() != null && ($$1 == null || $$5.b() > $$2)) {
+            $$1 = $$5;
+            $$2 = $$5.b();
+         }
+      }
+
+      if ($$3 > 5.0F && $$0 != null) {
+         return $$0;
+      } else {
+         return $$2 > 5.0F && $$1 != null ? $$1 : null;
+      }
    }
 
-   public boolean a(axr<buw> $$0) {
-      return this.a.a($$0);
+   public int b() {
+      return this.i ? this.e.af - this.g : this.h - this.g;
    }
 
-   public boolean a(alf<buw> $$0) {
-      return this.a.a($$0);
-   }
+   public void c() {
+      int $$0 = this.i ? 300 : 100;
+      if (this.j && (!this.e.bI() || this.e.af - this.f > $$0)) {
+         boolean $$1 = this.i;
+         this.j = false;
+         this.i = false;
+         this.h = this.e.af;
+         if ($$1) {
+            this.e.J_();
+         }
 
-   public buw k() {
-      return this.a.a();
-   }
-
-   public je<buw> l() {
-      return this.a;
+         this.d.clear();
+      }
    }
 }

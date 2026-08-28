@@ -1,66 +1,84 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Streams;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
-import java.util.List;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
-public class gsc {
-   private final gry a;
-   private final grs b;
+public record gsc(gsb b, gsb c, gsb d, gsb e, gsb f, gsb g, gsb h, gsb i) {
+   public static final gsc a = new gsc(gsb.a, gsb.a, gsb.a, gsb.a, gsb.a, gsb.a, gsb.a, gsb.a);
 
-   public gsc(gry $$0, grs $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public gsb a(czi $$0) {
+      return switch ($$0) {
+         case b -> this.b;
+         case c -> this.c;
+         case d -> this.d;
+         case e -> this.e;
+         case f -> this.f;
+         case g -> this.g;
+         case h -> this.h;
+         case i -> this.i;
+         default -> gsb.a;
+      };
    }
 
-   public grs a() {
+   public gsb a() {
       return this.b;
    }
 
-   public Predicate<eah> a(eai<dmf, eah> $$0) {
-      return this.a.getPredicate($$0);
+   public gsb b() {
+      return this.c;
    }
 
-   public static class a implements JsonDeserializer<gsc> {
+   public gsb c() {
+      return this.d;
+   }
+
+   public gsb d() {
+      return this.e;
+   }
+
+   public gsb e() {
+      return this.f;
+   }
+
+   public gsb f() {
+      return this.g;
+   }
+
+   public gsb g() {
+      return this.h;
+   }
+
+   public gsb h() {
+      return this.i;
+   }
+
+   protected static class a implements JsonDeserializer<gsc> {
       public gsc a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
          JsonObject $$3 = $$0.getAsJsonObject();
-         return new gsc(this.b($$3), (grs)$$2.deserialize($$3.get("apply"), grs.class));
-      }
-
-      private gry b(JsonObject $$0) {
-         return $$0.has("when") ? a(azc.u($$0, "when")) : gry.b;
-      }
-
-      @VisibleForTesting
-      static gry a(JsonObject $$0) {
-         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
-         if ($$1.isEmpty()) {
-            throw new JsonParseException("No elements found in selector");
-         } else if ($$1.size() == 1) {
-            if ($$0.has("OR")) {
-               List<gry> $$2 = Streams.stream(azc.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new gsb($$2);
-            } else if ($$0.has("AND")) {
-               List<gry> $$3 = Streams.stream(azc.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new grx($$3);
-            } else {
-               return a($$1.iterator().next());
-            }
-         } else {
-            return new grx($$1.stream().map(gsc.a::a).collect(Collectors.toList()));
+         gsb $$4 = this.a($$2, $$3, czi.c);
+         gsb $$5 = this.a($$2, $$3, czi.b);
+         if ($$5 == gsb.a) {
+            $$5 = $$4;
          }
+
+         gsb $$6 = this.a($$2, $$3, czi.e);
+         gsb $$7 = this.a($$2, $$3, czi.d);
+         if ($$7 == gsb.a) {
+            $$7 = $$6;
+         }
+
+         gsb $$8 = this.a($$2, $$3, czi.f);
+         gsb $$9 = this.a($$2, $$3, czi.g);
+         gsb $$10 = this.a($$2, $$3, czi.h);
+         gsb $$11 = this.a($$2, $$3, czi.i);
+         return new gsc($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
       }
 
-      private static gry a(Entry<String, JsonElement> $$0) {
-         return new grz($$0.getKey(), $$0.getValue().getAsString());
+      private gsb a(JsonDeserializationContext $$0, JsonObject $$1, czi $$2) {
+         String $$3 = $$2.c();
+         return $$1.has($$3) ? (gsb)$$0.deserialize($$1.get($$3), gsb.class) : gsb.a;
       }
    }
 }

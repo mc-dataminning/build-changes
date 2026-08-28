@@ -1,43 +1,38 @@
-public class bxa {
-   private static final int a = 140;
-   private static final int b = 700;
-   private final akn c;
-   private final akj<Integer> d;
-   private boolean e;
-   private int f;
+import com.mojang.serialization.Codec;
+import java.util.function.IntFunction;
 
-   public bxa(akn $$0, akj<Integer> $$1) {
-      this.c = $$0;
-      this.d = $$1;
+public enum bxa implements azp, bak {
+   a(0, "left", "options.mainHand.left"),
+   b(1, "right", "options.mainHand.right");
+
+   public static final Codec<bxa> c = bak.a(bxa::values);
+   public static final IntFunction<bxa> d = ayc.a(bxa::b, values(), ayc.a.a);
+   private final int e;
+   private final String f;
+   private final String g;
+
+   private bxa(final int $$0, final String $$1, final String $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public void a() {
-      this.e = true;
-      this.f = 0;
+   public bxa e() {
+      return this == a ? b : a;
    }
 
-   public boolean a(azv $$0) {
-      if (this.e) {
-         return false;
-      } else {
-         this.e = true;
-         this.f = 0;
-         this.c.a(this.d, $$0.a(841) + 140);
-         return true;
-      }
+   @Override
+   public int b() {
+      return this.e;
    }
 
-   public void b() {
-      if (this.e && this.f++ > this.d()) {
-         this.e = false;
-      }
+   @Override
+   public String a() {
+      return this.g;
    }
 
-   public float c() {
-      return this.e ? 1.0F + 1.15F * azm.a((float)this.f / (float)this.d() * (float) Math.PI) : 1.0F;
-   }
-
-   private int d() {
-      return this.c.a(this.d);
+   @Override
+   public String c() {
+      return this.f;
    }
 }

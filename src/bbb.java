@@ -8,25 +8,25 @@ import com.mojang.serialization.DynamicOps;
 import java.util.Set;
 
 public enum bbb {
-   a(bix.a),
-   b(bix.b),
-   c(bix.c),
-   d(bix.d),
-   e(bix.e),
-   f(bix.f),
-   g(bix.g),
-   h(bix.h),
-   i(bix.i),
-   j(bix.j),
-   k(bix.k),
-   l(bix.l),
-   m(bix.m),
-   n(bix.o),
-   o(bix.n),
-   p(bix.p),
-   q(bix.q),
-   r(bix.O),
-   s(bix.r);
+   a(biz.a),
+   b(biz.b),
+   c(biz.c),
+   d(biz.d),
+   e(biz.e),
+   f(biz.f),
+   g(biz.g),
+   h(biz.h),
+   i(biz.i),
+   j(biz.j),
+   k(biz.k),
+   l(biz.l),
+   m(biz.m),
+   n(biz.o),
+   o(biz.n),
+   p(biz.p),
+   q(biz.q),
+   r(biz.O),
+   s(biz.r);
 
    public static final Set<TypeReference> t;
    private final TypeReference u;
@@ -36,7 +36,7 @@ public enum bbb {
    }
 
    static int a() {
-      return ab.b().d().c();
+      return ac.b().d().c();
    }
 
    public <A> Codec<A> a(final Codec<A> $$0, final DataFixer $$1, final int $$2) {

@@ -42,12 +42,12 @@ public class asu implements aiz {
 
    private void a(aiw $$0, boolean $$1) {
       this.d.a(aji.d);
-      if ($$0.b() != ab.b().e()) {
+      if ($$0.b() != ac.b().e()) {
          wy $$2;
          if ($$0.b() < 754) {
-            $$2 = wy.a("multiplayer.disconnect.outdated_client", ab.b().c());
+            $$2 = wy.a("multiplayer.disconnect.outdated_client", ac.b().c());
          } else {
-            $$2 = wy.a("multiplayer.disconnect.incompatible", ab.b().c());
+            $$2 = wy.a("multiplayer.disconnect.incompatible", ac.b().c());
          }
 
          this.d.a(new ajf($$2));

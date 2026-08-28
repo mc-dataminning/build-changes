@@ -1,8 +1,8 @@
 import java.util.Iterator;
 
 public interface akr {
-   static <T> void a(int $$0, int $$1, ddu<?> $$2, Iterable<T> $$3, akr.a<T> $$4) {
-      if ($$2 instanceof dei $$5) {
+   static <T> void a(int $$0, int $$1, deb<?> $$2, Iterable<T> $$3, akr.a<T> $$4) {
+      if ($$2 instanceof dep $$5) {
          a($$0, $$1, $$5.k(), $$5.l(), $$3, $$4);
       } else {
          a($$0, $$1, $$0, $$1, $$3, $$4);

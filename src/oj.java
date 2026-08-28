@@ -1,100 +1,91 @@
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class oj implements od {
-   private final oe b;
-   private final ddg c;
-   private final cyz d;
-   private final ddq e;
-   private final float f;
-   private final int g;
-   private final Map<String, aq<?>> h = new LinkedHashMap<>();
+public class oj implements oe {
+   private final jg<czg> b;
+   private final of c;
+   private final czk d;
+   private final List<ddx> e = new ArrayList<>();
+   private final Map<String, ar<?>> f = new LinkedHashMap<>();
    @Nullable
-   private String i;
-   private final dda.a<?> j;
+   private String g;
 
-   private oj(oe $$0, ddg $$1, diz $$2, ddq $$3, float $$4, int $$5, dda.a<?> $$6) {
+   private oj(jg<czg> $$0, of $$1, czk $$2) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2.h();
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.j = $$6;
+      this.d = $$2;
    }
 
-   public static <T extends dda> oj a(ddq $$0, oe $$1, diz $$2, float $$3, int $$4, dee<T> $$5, dda.a<T> $$6) {
-      return new oj($$1, a($$5, $$2), $$2, $$0, $$3, $$4, $$6);
+   public static oj a(jg<czg> $$0, of $$1, czk $$2) {
+      return new oj($$0, $$1, $$2);
    }
 
-   public static oj a(ddq $$0, oe $$1, diz $$2, float $$3, int $$4) {
-      return new oj($$1, ddg.a, $$2, $$0, $$3, $$4, ddf::new);
+   public static oj a(jg<czg> $$0, of $$1, djg $$2) {
+      return a($$0, $$1, $$2, 1);
    }
 
-   public static oj b(ddq $$0, oe $$1, diz $$2, float $$3, int $$4) {
-      return new oj($$1, c($$2), $$2, $$0, $$3, $$4, ddd::new);
+   public static oj a(jg<czg> $$0, of $$1, djg $$2, int $$3) {
+      return new oj($$0, $$1, $$2.h().m().c($$3));
    }
 
-   public static oj c(ddq $$0, oe $$1, diz $$2, float $$3, int $$4) {
-      return new oj($$1, b($$2), $$2, $$0, $$3, $$4, deo::new);
+   public oj a(axr<czg> $$0) {
+      return this.a(ddx.a(this.b.b($$0)));
    }
 
-   public static oj d(ddq $$0, oe $$1, diz $$2, float $$3, int $$4) {
-      return new oj($$1, ddg.a, $$2, $$0, $$3, $$4, det::new);
+   public oj b(djg $$0) {
+      return this.a($$0, 1);
    }
 
-   public oj b(String $$0, aq<?> $$1) {
-      this.h.put($$0, $$1);
+   public oj a(djg $$0, int $$1) {
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         this.a(ddx.a($$0));
+      }
+
+      return this;
+   }
+
+   public oj a(ddx $$0) {
+      return this.a($$0, 1);
+   }
+
+   public oj a(ddx $$0, int $$1) {
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         this.e.add($$0);
+      }
+
+      return this;
+   }
+
+   public oj b(String $$0, ar<?> $$1) {
+      this.f.put($$0, $$1);
       return this;
    }
 
    public oj b(@Nullable String $$0) {
-      this.i = $$0;
+      this.g = $$0;
       return this;
    }
 
    @Override
-   public cyz a() {
-      return this.d;
+   public czg a() {
+      return this.d.h();
    }
 
    @Override
-   public void a(of $$0, alf<ddu<?>> $$1) {
+   public void a(og $$0, alf<deb<?>> $$1) {
       this.a($$1);
-      ah.a $$2 = $$0.a().a("has_the_recipe", dg.a($$1)).a(am.a.c($$1)).a(al.a.b);
-      this.h.forEach($$2::a);
-      dda $$3 = this.j.create(Objects.requireNonNullElse(this.i, ""), this.c, this.e, new czd(this.d), this.f, this.g);
-      $$0.a($$1, $$3, $$2.b($$1.a().f("recipes/" + this.b.a() + "/")));
+      ai.a $$2 = $$0.a().a("has_the_recipe", dh.a($$1)).a(an.a.c($$1)).a(am.a.b);
+      this.f.forEach($$2::a);
+      der $$3 = new der(Objects.requireNonNullElse(this.g, ""), oe.a(this.c), this.d, this.e);
+      $$0.a($$1, $$3, $$2.b($$1.a().f("recipes/" + this.c.a() + "/")));
    }
 
-   private static ddg b(diz $$0) {
-      if ($$0.h().f().c(kj.v)) {
-         return ddg.a;
-      } else {
-         return $$0.h() instanceof cxl ? ddg.b : ddg.c;
-      }
-   }
-
-   private static ddg c(diz $$0) {
-      return $$0.h() instanceof cxl ? ddg.b : ddg.c;
-   }
-
-   private static ddg a(dee<? extends dda> $$0, diz $$1) {
-      if ($$0 == dee.o) {
-         return b($$1);
-      } else if ($$0 == dee.p) {
-         return c($$1);
-      } else if ($$0 != dee.q && $$0 != dee.r) {
-         throw new IllegalStateException("Unknown cooking recipe type");
-      } else {
-         return ddg.a;
-      }
-   }
-
-   private void a(alf<ddu<?>> $$0) {
-      if (this.h.isEmpty()) {
+   private void a(alf<deb<?>> $$0) {
+      if (this.f.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0.a());
       }
    }

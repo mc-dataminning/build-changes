@@ -16,78 +16,78 @@ public class amw {
    private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wy.c("commands.clone.overlap"));
    private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> wy.b("commands.clone.toobig", $$0, $$1));
    private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wy.c("commands.clone.failed"));
-   public static final Predicate<eal> a = $$0 -> !$$0.a().l();
+   public static final Predicate<eas> a = $$0 -> !$$0.a().l();
 
-   public static void a(CommandDispatcher<ei> $$0, ee $$1) {
+   public static void a(CommandDispatcher<ej> $$0, ef $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("clone").requires($$0x -> $$0x.c(2)))
-               .then(a($$1, $$0x -> ((ei)$$0x.getSource()).e())))
-            .then(ej.a("from").then(ej.a("sourceDimension", et.a()).then(a($$1, $$0x -> et.a($$0x, "sourceDimension")))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("clone").requires($$0x -> $$0x.c(2)))
+               .then(a($$1, $$0x -> ((ej)$$0x.getSource()).e())))
+            .then(ek.a("from").then(ek.a("sourceDimension", eu.a()).then(a($$1, $$0x -> eu.a($$0x, "sourceDimension")))))
       );
    }
 
-   private static ArgumentBuilder<ei, ?> a(ee $$0, ant<CommandContext<ei>, arq> $$1) {
-      return ej.a("begin", gf.a())
+   private static ArgumentBuilder<ej, ?> a(ef $$0, ant<CommandContext<ej>, arq> $$1) {
+      return ek.a("begin", gg.a())
          .then(
-            ((RequiredArgumentBuilder)ej.a("end", gf.a()).then(a($$0, $$1, $$0x -> ((ei)$$0x.getSource()).e())))
-               .then(ej.a("to").then(ej.a("targetDimension", et.a()).then(a($$0, $$1, $$0x -> et.a($$0x, "targetDimension")))))
+            ((RequiredArgumentBuilder)ek.a("end", gg.a()).then(a($$0, $$1, $$0x -> ((ej)$$0x.getSource()).e())))
+               .then(ek.a("to").then(ek.a("targetDimension", eu.a()).then(a($$0, $$1, $$0x -> eu.a($$0x, "targetDimension")))))
          );
    }
 
-   private static amw.c a(CommandContext<ei> $$0, arq $$1, String $$2) throws CommandSyntaxException {
-      iu $$3 = gf.a($$0, $$1, $$2);
+   private static amw.c a(CommandContext<ej> $$0, arq $$1, String $$2) throws CommandSyntaxException {
+      iv $$3 = gg.a($$0, $$1, $$2);
       return new amw.c($$1, $$3);
    }
 
-   private static ArgumentBuilder<ei, ?> a(ee $$0, ant<CommandContext<ei>, arq> $$1, ant<CommandContext<ei>, arq> $$2) {
-      ant<CommandContext<ei>, amw.c> $$3 = $$1x -> a($$1x, $$1.apply($$1x), "begin");
-      ant<CommandContext<ei>, amw.c> $$4 = $$1x -> a($$1x, $$1.apply($$1x), "end");
-      ant<CommandContext<ei>, amw.c> $$5 = $$1x -> a($$1x, $$2.apply($$1x), "destination");
-      return a($$0, $$3, $$4, $$5, false, ej.a("destination", gf.a())).then(a($$0, $$3, $$4, $$5, true, ej.a("strict")));
+   private static ArgumentBuilder<ej, ?> a(ef $$0, ant<CommandContext<ej>, arq> $$1, ant<CommandContext<ej>, arq> $$2) {
+      ant<CommandContext<ej>, amw.c> $$3 = $$1x -> a($$1x, $$1.apply($$1x), "begin");
+      ant<CommandContext<ej>, amw.c> $$4 = $$1x -> a($$1x, $$1.apply($$1x), "end");
+      ant<CommandContext<ej>, amw.c> $$5 = $$1x -> a($$1x, $$2.apply($$1x), "destination");
+      return a($$0, $$3, $$4, $$5, false, ek.a("destination", gg.a())).then(a($$0, $$3, $$4, $$5, true, ek.a("strict")));
    }
 
-   private static ArgumentBuilder<ei, ?> a(
-      ee $$0,
-      ant<CommandContext<ei>, amw.c> $$1,
-      ant<CommandContext<ei>, amw.c> $$2,
-      ant<CommandContext<ei>, amw.c> $$3,
+   private static ArgumentBuilder<ej, ?> a(
+      ef $$0,
+      ant<CommandContext<ej>, amw.c> $$1,
+      ant<CommandContext<ej>, amw.c> $$2,
+      ant<CommandContext<ej>, amw.c> $$3,
       boolean $$4,
-      ArgumentBuilder<ei, ?> $$5
+      ArgumentBuilder<ej, ?> $$5
    ) {
-      return $$5.executes($$4x -> a((ei)$$4x.getSource(), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), $$0xx -> true, amw.d.c, $$4))
-         .then(a($$1, $$2, $$3, $$0x -> $$0xx -> true, $$4, ej.a("replace")))
-         .then(a($$1, $$2, $$3, $$0x -> a, $$4, ej.a("masked")))
-         .then(ej.a("filtered").then(a($$1, $$2, $$3, $$0x -> gb.a($$0x, "filter"), $$4, ej.a("filter", gb.a($$0)))));
+      return $$5.executes($$4x -> a((ej)$$4x.getSource(), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), $$0xx -> true, amw.d.c, $$4))
+         .then(a($$1, $$2, $$3, $$0x -> $$0xx -> true, $$4, ek.a("replace")))
+         .then(a($$1, $$2, $$3, $$0x -> a, $$4, ek.a("masked")))
+         .then(ek.a("filtered").then(a($$1, $$2, $$3, $$0x -> gc.a($$0x, "filter"), $$4, ek.a("filter", gc.a($$0)))));
    }
 
-   private static ArgumentBuilder<ei, ?> a(
-      ant<CommandContext<ei>, amw.c> $$0,
-      ant<CommandContext<ei>, amw.c> $$1,
-      ant<CommandContext<ei>, amw.c> $$2,
-      ant<CommandContext<ei>, Predicate<eal>> $$3,
+   private static ArgumentBuilder<ej, ?> a(
+      ant<CommandContext<ej>, amw.c> $$0,
+      ant<CommandContext<ej>, amw.c> $$1,
+      ant<CommandContext<ej>, amw.c> $$2,
+      ant<CommandContext<ej>, Predicate<eas>> $$3,
       boolean $$4,
-      ArgumentBuilder<ei, ?> $$5
+      ArgumentBuilder<ej, ?> $$5
    ) {
-      return $$5.executes($$5x -> a((ei)$$5x.getSource(), $$0.apply($$5x), $$1.apply($$5x), $$2.apply($$5x), $$3.apply($$5x), amw.d.c, $$4))
-         .then(ej.a("force").executes($$5x -> a((ei)$$5x.getSource(), $$0.apply($$5x), $$1.apply($$5x), $$2.apply($$5x), $$3.apply($$5x), amw.d.a, $$4)))
-         .then(ej.a("move").executes($$5x -> a((ei)$$5x.getSource(), $$0.apply($$5x), $$1.apply($$5x), $$2.apply($$5x), $$3.apply($$5x), amw.d.b, $$4)))
-         .then(ej.a("normal").executes($$5x -> a((ei)$$5x.getSource(), $$0.apply($$5x), $$1.apply($$5x), $$2.apply($$5x), $$3.apply($$5x), amw.d.c, $$4)));
+      return $$5.executes($$5x -> a((ej)$$5x.getSource(), $$0.apply($$5x), $$1.apply($$5x), $$2.apply($$5x), $$3.apply($$5x), amw.d.c, $$4))
+         .then(ek.a("force").executes($$5x -> a((ej)$$5x.getSource(), $$0.apply($$5x), $$1.apply($$5x), $$2.apply($$5x), $$3.apply($$5x), amw.d.a, $$4)))
+         .then(ek.a("move").executes($$5x -> a((ej)$$5x.getSource(), $$0.apply($$5x), $$1.apply($$5x), $$2.apply($$5x), $$3.apply($$5x), amw.d.b, $$4)))
+         .then(ek.a("normal").executes($$5x -> a((ej)$$5x.getSource(), $$0.apply($$5x), $$1.apply($$5x), $$2.apply($$5x), $$3.apply($$5x), amw.d.c, $$4)));
    }
 
-   private static int a(ei $$0, amw.c $$1, amw.c $$2, amw.c $$3, Predicate<eal> $$4, amw.d $$5, boolean $$6) throws CommandSyntaxException {
-      iu $$7 = $$1.b();
-      iu $$8 = $$2.b();
-      eqt $$9 = eqt.a($$7, $$8);
-      iu $$10 = $$3.b();
-      iu $$11 = $$10.a($$9.c());
-      eqt $$12 = eqt.a($$10, $$11);
+   private static int a(ej $$0, amw.c $$1, amw.c $$2, amw.c $$3, Predicate<eas> $$4, amw.d $$5, boolean $$6) throws CommandSyntaxException {
+      iv $$7 = $$1.b();
+      iv $$8 = $$2.b();
+      era $$9 = era.a($$7, $$8);
+      iv $$10 = $$3.b();
+      iv $$11 = $$10.a($$9.c());
+      era $$12 = era.a($$10, $$11);
       arq $$13 = $$1.a();
       arq $$14 = $$3.a();
       if (!$$5.a() && $$13 == $$14 && $$12.a($$9)) {
          throw b.create();
       } else {
          int $$15 = $$9.d() * $$9.e() * $$9.f();
-         int $$16 = $$0.e().O().d(diw.B);
+         int $$16 = $$0.e().O().d(djd.B);
          if ($$15 > $$16) {
             throw c.create($$16, $$15);
          } else if ($$13.a($$7, $$8) && $$14.a($$10, $$11)) {
@@ -97,18 +97,18 @@ public class amw {
                List<amw.b> $$17 = Lists.newArrayList();
                List<amw.b> $$18 = Lists.newArrayList();
                List<amw.b> $$19 = Lists.newArrayList();
-               Deque<iu> $$20 = Lists.newLinkedList();
-               iu $$21 = new iu($$12.h() - $$9.h(), $$12.i() - $$9.i(), $$12.j() - $$9.j());
+               Deque<iv> $$20 = Lists.newLinkedList();
+               iv $$21 = new iv($$12.h() - $$9.h(), $$12.i() - $$9.i(), $$12.j() - $$9.j());
 
                for (int $$22 = $$9.j(); $$22 <= $$9.m(); $$22++) {
                   for (int $$23 = $$9.i(); $$23 <= $$9.l(); $$23++) {
                      for (int $$24 = $$9.h(); $$24 <= $$9.k(); $$24++) {
-                        iu $$25 = new iu($$24, $$23, $$22);
-                        iu $$26 = $$25.a((jz)$$21);
-                        eal $$27 = new eal($$13, $$25, false);
-                        eah $$28 = $$27.a();
+                        iv $$25 = new iv($$24, $$23, $$22);
+                        iv $$26 = $$25.a((ka)$$21);
+                        eas $$27 = new eas($$13, $$25, false);
+                        eao $$28 = $$27.a();
                         if ($$4.test($$27)) {
-                           dxf $$29 = $$13.c_($$25);
+                           dxm $$29 = $$13.c_($$25);
                            if ($$29 != null) {
                               amw.a $$30 = new amw.a($$29.e($$0.u()), $$29.r());
                               $$18.add(new amw.b($$26, $$28, $$30));
@@ -127,14 +127,14 @@ public class amw {
 
                int $$31 = 2 | ($$6 ? 816 : 0);
                if ($$5 == amw.d.b) {
-                  for (iu $$32 : $$20) {
-                     $$13.a($$32, dmh.iy.m(), $$31 | 816);
+                  for (iv $$32 : $$20) {
+                     $$13.a($$32, dmo.iy.m(), $$31 | 816);
                   }
 
                   int $$33 = $$6 ? $$31 : 3;
 
-                  for (iu $$34 : $$20) {
-                     $$13.a($$34, dmh.a.m(), $$33);
+                  for (iv $$34 : $$20) {
+                     $$13.a($$34, dmo.a.m(), $$33);
                   }
                }
 
@@ -145,7 +145,7 @@ public class amw {
                List<amw.b> $$36 = Lists.reverse($$35);
 
                for (amw.b $$37 : $$36) {
-                  $$14.a($$37.a, dmh.iy.m(), $$31 | 816);
+                  $$14.a($$37.a, dmo.iy.m(), $$31 | 816);
                }
 
                int $$38 = 0;
@@ -157,7 +157,7 @@ public class amw {
                }
 
                for (amw.b $$40 : $$18) {
-                  dxf $$41 = $$14.c_($$40.a);
+                  dxm $$41 = $$14.c_($$40.a);
                   if ($$40.c != null && $$41 != null) {
                      $$41.d($$40.c.a, $$14.F_());
                      $$41.a($$40.c.b);
@@ -183,18 +183,18 @@ public class amw {
                }
             }
          } else {
-            throw gf.a.create();
+            throw gg.a.create();
          }
       }
    }
 
-   static record a(tz a, kg b) {
+   static record a(tz a, kh b) {
    }
 
-   static record b(iu a, eah b, @Nullable amw.a c) {
+   static record b(iv a, eao b, @Nullable amw.a c) {
    }
 
-   static record c(arq a, iu b) {
+   static record c(arq a, iv b) {
    }
 
    static enum d {

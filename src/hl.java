@@ -1,30 +1,37 @@
-public record hl(int a, ef b, hl.a c) {
-   public void a(int $$0) {
-      this.b.onSuccess($$0);
-   }
+import javax.annotation.Nullable;
 
-   public void a() {
-      this.b.onFailure();
-   }
+public interface hl<T> {
+   void a(hj<T> var1);
 
-   public void b() {
-      this.c.discard();
-   }
+   void a(@Nullable hn var1);
 
-   public int c() {
-      return this.a;
-   }
+   @Nullable
+   hn a();
 
-   public ef d() {
-      return this.b;
-   }
+   hm b();
 
-   public hl.a e() {
-      return this.c;
-   }
+   static <T extends el<T>> hl<T> a(final hk<T> $$0, final hm $$1) {
+      return new hl<T>() {
+         @Override
+         public void a(hj<T> $$0x) {
+            $$0.a(new hg<>($$1, $$0));
+         }
 
-   @FunctionalInterface
-   public interface a {
-      void discard();
+         @Override
+         public void a(@Nullable hn $$0x) {
+            $$0.a($$0);
+         }
+
+         @Nullable
+         @Override
+         public hn a() {
+            return $$0.b();
+         }
+
+         @Override
+         public hm b() {
+            return $$1;
+         }
+      };
    }
 }

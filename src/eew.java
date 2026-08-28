@@ -1,45 +1,14 @@
-import java.util.UUID;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.io.IOException;
+import java.util.concurrent.CompletableFuture;
 
-public class eew<T extends eem> implements eev<T> {
-   private final eeo<T> a;
-   private final eer<T> b;
+public interface eew<T> extends AutoCloseable {
+   CompletableFuture<eer<T>> a(dio var1);
 
-   public eew(eeo<T> $$0, eer<T> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   void a(eer<T> var1);
 
-   @Nullable
-   @Override
-   public T a(int $$0) {
-      return this.a.a($$0);
-   }
-
-   @Nullable
-   @Override
-   public T a(UUID $$0) {
-      return this.a.a($$0);
-   }
+   void a(boolean var1);
 
    @Override
-   public Iterable<T> a() {
-      return this.a.a();
-   }
-
-   @Override
-   public <U extends T> void a(eet<T, U> $$0, axx<U> $$1) {
-      this.a.a($$0, $$1);
-   }
-
-   @Override
-   public void a(fel $$0, Consumer<T> $$1) {
-      this.b.b($$0, axx.forConsumer($$1));
-   }
-
-   @Override
-   public <U extends T> void a(eet<T, U> $$0, fel $$1, axx<U> $$2) {
-      this.b.a($$0, $$1, $$2);
+   default void close() throws IOException {
    }
 }

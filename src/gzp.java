@@ -1,28 +1,31 @@
-public class gzp extends gwy<coy, hfe, git<hfe>> {
-   private static final alg a = alg.b("textures/entity/zombie_villager/zombie_villager.png");
+public class gzp extends gvn<cqv, hfj, gix> {
+   private static final alg j = alg.b("textures/entity/villager/villager.png");
+   public static final ham.a a = new ham.a(-0.1171875F, -0.07421875F, 1.0F);
 
-   public gzp(gwh.a $$0) {
-      super($$0, new git<>($$0.a(gjb.eq)), new git<>($$0.a(gjb.er)), 0.5F, gzd.a);
-      this.a(new hak<>(this, new git($$0.a(gjb.eu)), new git($$0.a(gjb.ev)), new git($$0.a(gjb.es)), new git($$0.a(gjb.et)), $$0.h()));
-      this.a(new hbf<>(this, $$0.e(), "zombie_villager"));
+   public gzp(gwt.a $$0) {
+      super($$0, new gix($$0.a(gjn.dJ)), new gix($$0.a(gjn.dK)), 0.5F);
+      this.a(new ham<>(this, $$0.f(), a));
+      this.a(new hbr<>(this, $$0.e(), "villager"));
+      this.a(new hal<>(this));
    }
 
-   public alg a(hfe $$0) {
-      return a;
+   public alg a(hfj $$0) {
+      return j;
    }
 
-   public hfe b() {
-      return new hfe();
+   protected float b(hfj $$0) {
+      float $$1 = super.g($$0);
+      return $$0.aj ? $$1 * 0.5F : $$1;
    }
 
-   public void a(coy $$0, hfe $$1, float $$2) {
+   public hfj b() {
+      return new hfj();
+   }
+
+   public void a(cqv $$0, hfj $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.b = $$0.gy();
-      $$1.c = $$0.gz();
-      $$1.a = $$0.gi();
-   }
-
-   protected boolean b(hfe $$0) {
-      return super.a($$0) || $$0.b;
+      hdo.a($$0, $$1, this.h);
+      $$1.a = $$0.q() > 0;
+      $$1.b = $$0.gB();
    }
 }

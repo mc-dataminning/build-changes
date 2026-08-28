@@ -1,61 +1,71 @@
-import com.google.common.base.Predicates;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import java.util.EnumMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Map.Entry;
 
-public final class bwm {
-   public static final Predicate<bwf> a = bwf::bK;
-   public static final Predicate<bwf> b = $$0 -> $$0.bK() && $$0 instanceof bxe;
-   public static final Predicate<bwf> c = $$0 -> $$0.bK() && !$$0.ca() && !$$0.bZ();
-   public static final Predicate<bwf> d = $$0 -> $$0 instanceof btw && $$0.bK();
-   public static final Predicate<bwf> e = $$0 -> {
-      if ($$0 instanceof crc $$1 && ($$0.V_() || $$1.b())) {
-         return false;
+public class bwm {
+   public static final Codec<bwm> a = Codec.unboundedMap(bws.l, czk.b).xmap($$0 -> {
+      EnumMap<bws, czk> $$1 = new EnumMap<>(bws.class);
+      $$1.putAll($$0);
+      return new bwm($$1);
+   }, $$0 -> {
+      Map<bws, czk> $$1 = new EnumMap<>($$0.b);
+      $$1.values().removeIf(czk::f);
+      return $$1;
+   });
+   private final EnumMap<bws, czk> b;
+
+   private bwm(EnumMap<bws, czk> $$0) {
+      this.b = $$0;
+   }
+
+   public bwm() {
+      this(new EnumMap<>(bws.class));
+   }
+
+   public czk a(bws $$0, czk $$1) {
+      $$1.h().l($$1);
+      return Objects.requireNonNullElse(this.b.put($$0, $$1), czk.k);
+   }
+
+   public czk a(bws $$0) {
+      return this.b.getOrDefault($$0, czk.k);
+   }
+
+   public boolean a() {
+      for (czk $$0 : this.b.values()) {
+         if (!$$0.f()) {
+            return false;
+         }
       }
 
       return true;
-   };
-   public static final Predicate<bwf> f = $$0 -> !$$0.V_();
-   public static final Predicate<bwf> g = f.and(bwf::bM);
-   public static final Predicate<bwf> h = f.and(bwf::bG);
-
-   private bwm() {
    }
 
-   public static Predicate<bwf> a(double $$0, double $$1, double $$2, double $$3) {
-      double $$4 = $$3 * $$3;
-      return $$4x -> $$4x != null && $$4x.h($$0, $$1, $$2) <= $$4;
-   }
-
-   public static Predicate<bwf> a(bwf $$0) {
-      ffx $$1 = $$0.cr();
-      ffx.a $$2 = $$1 == null ? ffx.a.a : $$1.m();
-      return (Predicate<bwf>)($$2 == ffx.a.b ? Predicates.alwaysFalse() : f.and($$3 -> {
-         if (!$$3.bH()) {
-            return false;
-         } else if (!$$0.dV().C || $$3 instanceof crc $$4 && $$4.gh()) {
-            ffx $$5 = $$3.cr();
-            ffx.a $$6 = $$5 == null ? ffx.a.a : $$5.m();
-            if ($$6 == ffx.a.b) {
-               return false;
-            } else {
-               boolean $$7 = $$1 != null && $$1.a($$5);
-               return ($$2 == ffx.a.d || $$6 == ffx.a.d) && $$7 ? false : $$2 != ffx.a.c && $$6 != ffx.a.c || $$7;
-            }
-         } else {
-            return false;
+   public void a(bwi $$0) {
+      for (Entry<bws, czk> $$1 : this.b.entrySet()) {
+         czk $$2 = $$1.getValue();
+         if (!$$2.f()) {
+            $$2.a($$0.dU(), $$0, $$1.getKey());
          }
-      }));
+      }
    }
 
-   public static Predicate<bwf> b(bwf $$0) {
-      return $$1 -> {
-         while ($$1.bZ()) {
-            $$1 = $$1.dk();
-            if ($$1 == $$0) {
-               return false;
-            }
-         }
+   public void a(bwm $$0) {
+      this.b.clear();
+      this.b.putAll($$0.b);
+   }
 
-         return true;
-      };
+   public void a(bxj $$0) {
+      for (czk $$1 : this.b.values()) {
+         $$0.a($$1, true, false);
+      }
+
+      this.b();
+   }
+
+   public void b() {
+      this.b.replaceAll(($$0, $$1) -> czk.k);
    }
 }

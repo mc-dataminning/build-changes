@@ -1,56 +1,71 @@
-@FunctionalInterface
-public interface gsn<T extends dxf> {
-   gsm<T> create(gsn.a var1);
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
 
-   public static class a {
-      private final gsl a;
-      private final gre b;
-      private final hfo c;
-      private final gxf d;
-      private final gwf e;
-      private final giy f;
-      private final frt g;
+public class gsn implements gry.a {
+   private final List<gsn.c> a;
 
-      public a(gsl $$0, gre $$1, hfo $$2, gxf $$3, gwf $$4, giy $$5, frt $$6) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
+   gsn(List<gsn.c> $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public Object a(eao $$0) {
+      IntList $$1 = new IntArrayList();
+
+      for (int $$2 = 0; $$2 < this.a.size(); $$2++) {
+         if (this.a.get($$2).a.test($$0)) {
+            $$1.add($$2);
+         }
       }
 
-      public gsl a() {
-         return this.a;
+      record a(gsn a, IntList b) {
+         a(IntList b) {
+            this.b = b;
+         }
       }
 
-      public gre b() {
+      return new a($$1);
+   }
+
+   @Override
+   public void a(hmb.a $$0) {
+      this.a.forEach($$1 -> $$1.b.a($$0));
+   }
+
+   @Override
+   public gry a(hls $$0) {
+      List<hlz.a> $$1 = new ArrayList<>(this.a.size());
+
+      for (gsn.c $$2 : this.a) {
+         gry $$3 = $$2.b.a($$0);
+         $$1.add(new hlz.a($$2.a, $$3));
+      }
+
+      return new hlz($$1);
+   }
+
+   public static record b(List<gso> b) {
+      public static final Codec<gsn.b> a = ayu.b(gso.a.listOf()).xmap(gsn.b::new, gsn.b::a);
+
+      public gsn a(eap<dmm, eao> $$0) {
+         List<gsn.c> $$1 = new ArrayList<>(this.b.size());
+
+         for (gso $$2 : this.b) {
+            $$1.add(new gsn.c($$2.a($$0), $$2.b()));
+         }
+
+         return new gsn($$1);
+      }
+
+      public List<gso> a() {
          return this.b;
       }
+   }
 
-      public gwf c() {
-         return this.e;
-      }
-
-      public hfo d() {
-         return this.c;
-      }
-
-      public gxf e() {
-         return this.d;
-      }
-
-      public giy f() {
-         return this.f;
-      }
-
-      public gjc a(gja $$0) {
-         return this.f.a($$0);
-      }
-
-      public frt g() {
-         return this.g;
-      }
+   static record c(Predicate<eao> a, gsd b) {
    }
 }

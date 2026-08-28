@@ -1,37 +1,80 @@
 import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record cy(tz c) {
-   public static final Codec<cy> a = ux.j.xmap(cy::new, cy::a);
-   public static final yw<ByteBuf, cy> b = yu.r.a(cy::new, cy::a);
+public record cy(cw.c b, cw.c c, cw.c d, cw.c e, cw.c f, cw.c g, cw.c h) {
+   public static final Codec<cy> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               cw.c.d.optionalFieldOf("x", cw.c.c).forGetter(cy::a),
+               cw.c.d.optionalFieldOf("y", cw.c.c).forGetter(cy::b),
+               cw.c.d.optionalFieldOf("z", cw.c.c).forGetter(cy::c),
+               cw.c.d.optionalFieldOf("speed", cw.c.c).forGetter(cy::d),
+               cw.c.d.optionalFieldOf("horizontal_speed", cw.c.c).forGetter(cy::e),
+               cw.c.d.optionalFieldOf("vertical_speed", cw.c.c).forGetter(cy::f),
+               cw.c.d.optionalFieldOf("fall_distance", cw.c.c).forGetter(cy::g)
+            )
+            .apply($$0, cy::new)
+   );
 
-   public boolean a(ke $$0) {
-      dbl $$1 = $$0.a(kj.b, dbl.a);
-      return $$1.b(this.c);
+   public static cy a(cw.c $$0) {
+      return new cy(cw.c.c, cw.c.c, cw.c.c, $$0, cw.c.c, cw.c.c, cw.c.c);
    }
 
-   public boolean a(bwf $$0) {
-      return this.a(b($$0));
+   public static cy b(cw.c $$0) {
+      return new cy(cw.c.c, cw.c.c, cw.c.c, cw.c.c, $$0, cw.c.c, cw.c.c);
    }
 
-   public boolean a(@Nullable uw $$0) {
-      return $$0 != null && uo.a(this.c, $$0, true);
+   public static cy c(cw.c $$0) {
+      return new cy(cw.c.c, cw.c.c, cw.c.c, cw.c.c, cw.c.c, $$0, cw.c.c);
    }
 
-   public static tz b(bwf $$0) {
-      tz $$1 = $$0.f(new tz());
-      if ($$0 instanceof crc $$2) {
-         czd $$3 = $$2.gj().g();
-         if (!$$3.f()) {
-            $$1.a("SelectedItem", $$3.a($$0.dX()));
+   public static cy d(cw.c $$0) {
+      return new cy(cw.c.c, cw.c.c, cw.c.c, cw.c.c, cw.c.c, cw.c.c, $$0);
+   }
+
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (this.b.d($$0) && this.c.d($$1) && this.d.d($$2)) {
+         double $$4 = azm.f($$0, $$1, $$2);
+         if (!this.e.e($$4)) {
+            return false;
+         } else {
+            double $$5 = azm.e($$0, $$2);
+            if (!this.f.e($$5)) {
+               return false;
+            } else {
+               double $$6 = Math.abs($$1);
+               return !this.g.d($$6) ? false : this.h.d($$3);
+            }
          }
+      } else {
+         return false;
       }
-
-      return $$1;
    }
 
-   public tz a() {
+   public cw.c a() {
+      return this.b;
+   }
+
+   public cw.c b() {
       return this.c;
+   }
+
+   public cw.c c() {
+      return this.d;
+   }
+
+   public cw.c d() {
+      return this.e;
+   }
+
+   public cw.c e() {
+      return this.f;
+   }
+
+   public cw.c f() {
+      return this.g;
+   }
+
+   public cw.c g() {
+      return this.h;
    }
 }

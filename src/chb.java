@@ -1,18 +1,13 @@
 import com.google.common.collect.ImmutableSet;
 import java.util.Set;
 
-public class chb extends chm<bxe> {
+public class chb extends chr<bxj> {
    @Override
-   public Set<cgg<?>> a() {
-      return ImmutableSet.of(cgg.Y);
+   protected void a(arq $$0, bxj $$1) {
    }
 
    @Override
-   protected void a(arq $$0, bxe $$1) {
-      if ($$1.bj()) {
-         $$1.ec().a(cgg.Y, bau.a);
-      } else {
-         $$1.ec().b(cgg.Y);
-      }
+   public Set<cgl<?>> a() {
+      return ImmutableSet.of();
    }
 }

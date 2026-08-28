@@ -1,19 +1,37 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dhq(dhp e, wy f) {
-   public static final Codec<dhq> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dhp.b.forGetter(dhq::a), xa.a.fieldOf("description").forGetter(dhq::b)).apply($$0, dhq::new)
-   );
-   public static final yw<wj, dhq> b = yw.a(dhp.c, dhq::a, xa.b, dhq::b, dhq::new);
-   public static final Codec<je<dhq>> c = alc.a(mg.bk, a);
-   public static final yw<wj, je<dhq>> d = yu.a(mg.bk, b);
+public enum dhq implements bak {
+   a(bws.f, 11, "helmet"),
+   b(bws.e, 16, "chestplate"),
+   c(bws.d, 15, "leggings"),
+   d(bws.c, 13, "boots"),
+   e(bws.g, 16, "body");
 
-   public dhp a() {
-      return this.e;
+   public static final Codec<dhq> f = bak.b(dhq::values);
+   private final bws g;
+   private final String h;
+   private final int i;
+
+   private dhq(final bws $$0, final int $$1, final String $$2) {
+      this.g = $$0;
+      this.h = $$2;
+      this.i = $$1;
    }
 
-   public wy b() {
-      return this.f;
+   public int a(int $$0) {
+      return this.i * $$0;
+   }
+
+   public bws a() {
+      return this.g;
+   }
+
+   public String b() {
+      return this.h;
+   }
+
+   @Override
+   public String c() {
+      return this.h;
    }
 }

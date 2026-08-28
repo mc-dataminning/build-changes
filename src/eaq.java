@@ -1,51 +1,167 @@
-import com.google.common.collect.Maps;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.Map.Entry;
-import java.util.function.Predicate;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class eaq implements Predicate<eah> {
-   public static final Predicate<eah> a = $$0 -> true;
-   private final eai<dmf, eah> b;
-   private final Map<ebk<?>, Predicate<Object>> c = Maps.newHashMap();
-
-   private eaq(eai<dmf, eah> $$0) {
-      this.b = $$0;
-   }
-
-   public static eaq a(dmf $$0) {
-      return new eaq($$0.l());
-   }
-
-   public boolean a(@Nullable eah $$0) {
-      if ($$0 != null && $$0.b().equals(this.b.c())) {
-         if (this.c.isEmpty()) {
-            return true;
+public abstract class eaq<O, S> {
+   public static final String b = "Name";
+   public static final String c = "Properties";
+   private static final Function<Entry<ebr<?>, Comparable<?>>, String> a = new Function<Entry<ebr<?>, Comparable<?>>, String>() {
+      public String a(@Nullable Entry<ebr<?>, Comparable<?>> $$0) {
+         if ($$0 == null) {
+            return "<NULL>";
          } else {
-            for (Entry<ebk<?>, Predicate<Object>> $$1 : this.c.entrySet()) {
-               if (!this.a($$0, $$1.getKey(), $$1.getValue())) {
-                  return false;
-               }
-            }
-
-            return true;
+            ebr<?> $$1 = $$0.getKey();
+            return $$1.f() + "=" + this.a($$1, $$0.getValue());
          }
+      }
+
+      private <T extends Comparable<T>> String a(ebr<T> $$0, Comparable<?> $$1) {
+         return $$0.b((T)$$1);
+      }
+   };
+   protected final O d;
+   private final Reference2ObjectArrayMap<ebr<?>, Comparable<?>> f;
+   private Map<ebr<?>, S[]> g;
+   protected final MapCodec<S> e;
+
+   protected eaq(O $$0, Reference2ObjectArrayMap<ebr<?>, Comparable<?>> $$1, MapCodec<S> $$2) {
+      this.d = $$0;
+      this.f = $$1;
+      this.e = $$2;
+   }
+
+   public <T extends Comparable<T>> S a(ebr<T> $$0) {
+      return this.b($$0, a($$0.a(), this.c($$0)));
+   }
+
+   protected static <T> T a(List<T> $$0, T $$1) {
+      int $$2 = $$0.indexOf($$1) + 1;
+      return $$2 == $$0.size() ? $$0.getFirst() : $$0.get($$2);
+   }
+
+   @Override
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append(this.d);
+      if (!this.G().isEmpty()) {
+         $$0.append('[');
+         $$0.append(this.G().entrySet().stream().map(a).collect(Collectors.joining(",")));
+         $$0.append(']');
+      }
+
+      return $$0.toString();
+   }
+
+   @Override
+   public final boolean equals(Object $$0) {
+      return super.equals($$0);
+   }
+
+   @Override
+   public int hashCode() {
+      return super.hashCode();
+   }
+
+   public Collection<ebr<?>> F() {
+      return Collections.unmodifiableCollection(this.f.keySet());
+   }
+
+   public boolean b(ebr<?> $$0) {
+      return this.f.containsKey($$0);
+   }
+
+   public <T extends Comparable<T>> T c(ebr<T> $$0) {
+      Comparable<?> $$1 = (Comparable<?>)this.f.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("Cannot get property " + $$0 + " as it does not exist in " + this.d);
       } else {
-         return false;
+         return $$0.g().cast($$1);
       }
    }
 
-   protected <T extends Comparable<T>> boolean a(eah $$0, ebk<T> $$1, Predicate<Object> $$2) {
-      T $$3 = $$0.c($$1);
-      return $$2.test($$3);
+   public <T extends Comparable<T>> Optional<T> d(ebr<T> $$0) {
+      return Optional.ofNullable(this.e($$0));
    }
 
-   public <V extends Comparable<V>> eaq a(ebk<V> $$0, Predicate<Object> $$1) {
-      if (!this.b.d().contains($$0)) {
-         throw new IllegalArgumentException(this.b + " cannot support property " + $$0);
+   public <T extends Comparable<T>> T a(ebr<T> $$0, T $$1) {
+      return Objects.requireNonNullElse(this.e($$0), $$1);
+   }
+
+   @Nullable
+   private <T extends Comparable<T>> T e(ebr<T> $$0) {
+      Comparable<?> $$1 = (Comparable<?>)this.f.get($$0);
+      return $$1 == null ? null : $$0.g().cast($$1);
+   }
+
+   public <T extends Comparable<T>, V extends T> S b(ebr<T> $$0, V $$1) {
+      Comparable<?> $$2 = (Comparable<?>)this.f.get($$0);
+      if ($$2 == null) {
+         throw new IllegalArgumentException("Cannot set property " + $$0 + " as it does not exist in " + this.d);
       } else {
-         this.c.put($$0, $$1);
-         return this;
+         return this.a($$0, $$1, $$2);
       }
+   }
+
+   public <T extends Comparable<T>, V extends T> S c(ebr<T> $$0, V $$1) {
+      Comparable<?> $$2 = (Comparable<?>)this.f.get($$0);
+      return (S)($$2 == null ? this : this.a($$0, $$1, $$2));
+   }
+
+   private <T extends Comparable<T>, V extends T> S a(ebr<T> $$0, V $$1, Comparable<?> $$2) {
+      if ($$2.equals($$1)) {
+         return (S)this;
+      } else {
+         int $$3 = $$0.a((T)$$1);
+         if ($$3 < 0) {
+            throw new IllegalArgumentException("Cannot set property " + $$0 + " to " + $$1 + " on " + this.d + ", it is not an allowed value");
+         } else {
+            return (S)this.g.get($$0)[$$3];
+         }
+      }
+   }
+
+   public void a(Map<Map<ebr<?>, Comparable<?>>, S> $$0) {
+      if (this.g != null) {
+         throw new IllegalStateException();
+      } else {
+         Map<ebr<?>, S[]> $$1 = new Reference2ObjectArrayMap(this.f.size());
+         ObjectIterator var3 = this.f.entrySet().iterator();
+
+         while (var3.hasNext()) {
+            Entry<ebr<?>, Comparable<?>> $$2 = (Entry<ebr<?>, Comparable<?>>)var3.next();
+            ebr<?> $$3 = $$2.getKey();
+            $$1.put($$3, $$3.a().stream().map($$2x -> $$0.get(this.d($$3, $$2x))).toArray());
+         }
+
+         this.g = $$1;
+      }
+   }
+
+   private Map<ebr<?>, Comparable<?>> d(ebr<?> $$0, Comparable<?> $$1) {
+      Map<ebr<?>, Comparable<?>> $$2 = new Reference2ObjectArrayMap(this.f);
+      $$2.put($$0, $$1);
+      return $$2;
+   }
+
+   public Map<ebr<?>, Comparable<?>> G() {
+      return this.f;
+   }
+
+   protected static <O, S extends eaq<O, S>> Codec<S> a(Codec<O> $$0, Function<O, S> $$1) {
+      return $$0.dispatch("Name", $$0x -> $$0x.d, $$1x -> {
+         S $$2 = $$1.apply((O)$$1x);
+         return $$2.G().isEmpty() ? MapCodec.unit($$2) : $$2.e.codec().lenientOptionalFieldOf("Properties").xmap($$1xx -> $$1xx.orElse($$2), Optional::of);
+      });
    }
 }

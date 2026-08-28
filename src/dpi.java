@@ -1,48 +1,58 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dpi extends dvr implements dmi {
-   private static final double b = 0.7;
-   private static final double c = 10.0;
-   private static final double d = 5.0;
-   private static final int e = 13;
-   private static final int f = 30;
-   public static final MapCodec<dpi> a = b(dpi::new);
+public abstract class dpi extends dqn {
+   public static final ebm<eaz> c = ebe.X;
 
-   public dpi(eag.d $$0) {
+   protected dpi(ean.d $$0) {
       super($$0);
    }
 
    @Override
-   protected MapCodec<? extends dpi> a() {
-      return a;
-   }
+   protected abstract MapCodec<? extends dpi> a();
 
    @Override
-   public void a(eah $$0, dja $$1, iu $$2, azv $$3) {
-      if ($$3.a(30) == 0 && $$1.X() && $$1.b(egg.a.f, $$2) <= $$2.v()) {
-         $$1.a($$2, awn.jo, awo.e, 1.0F, 1.0F, false);
+   protected boolean a(eao $$0, djk $$1, iv $$2) {
+      return b($$1, $$2, n($$0).g());
+   }
+
+   public static boolean b(djk $$0, iv $$1, jb $$2) {
+      iv $$3 = $$1.a($$2);
+      return $$0.a_($$3).c($$0, $$3, $$2.g());
+   }
+
+   @Nullable
+   @Override
+   public eao a(ddd $$0) {
+      for (jb $$1 : $$0.f()) {
+         eao $$2;
+         if ($$1.o() == jb.a.b) {
+            $$2 = this.m().b(c, $$1 == jb.b ? eaz.c : eaz.a).b(e, $$0.g());
+         } else {
+            $$2 = this.m().b(c, eaz.b).b(e, $$1.g());
+         }
+
+         if ($$2.a((djk)$$0.q(), $$0.a())) {
+            return $$2;
+         }
       }
 
-      if ($$1.B($$2) <= 13 && $$3.j() <= 0.7) {
-         double $$4 = (double)$$2.u() + $$3.j() * 10.0 - 5.0;
-         double $$5 = (double)$$2.v() + $$3.j() * 5.0;
-         double $$6 = (double)$$2.w() + $$3.j() * 10.0 - 5.0;
-         $$1.a(lx.bj, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+      return null;
+   }
+
+   @Override
+   protected eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
+      return n($$0).g() == $$4 && !$$0.a($$1, $$3) ? dmo.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   protected static jb n(eao $$0) {
+      switch ((eaz)$$0.c(c)) {
+         case c:
+            return jb.a;
+         case a:
+            return jb.b;
+         default:
+            return $$0.c(e);
       }
-   }
-
-   @Override
-   public boolean a(djd $$0, iu $$1, eah $$2) {
-      return true;
-   }
-
-   @Override
-   public boolean a(dja $$0, azv $$1, iu $$2, eah $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arq $$0, azv $$1, iu $$2, eah $$3) {
-      a($$0, $$2, new czd(this));
    }
 }

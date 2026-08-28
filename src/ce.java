@@ -1,84 +1,34 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class ce extends dj<ce.a> {
+public record ce(Optional<Boolean> d) implements bz {
+   public static final ce b = new ce(Optional.empty());
+   public static final MapCodec<ce> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("in_open_water").forGetter(ce::b)).apply($$0, ce::new)
+   );
+
+   public static ce a(boolean $$0) {
+      return new ce(Optional.of($$0));
+   }
+
    @Override
-   public Codec<ce.a> a() {
-      return ce.a.a;
+   public MapCodec<ce> a() {
+      return ca.b;
    }
 
-   public void a(arr $$0, czd $$1, crt $$2, Collection<czd> $$3) {
-      ezh $$4 = bx.b($$0, (bwf)($$2.j() != null ? $$2.j() : $$2));
-      this.a($$0, $$3x -> $$3x.a($$1, $$4, $$3));
+   @Override
+   public boolean a(bwi $$0, arq $$1, @Nullable fex $$2) {
+      if (this.d.isEmpty()) {
+         return true;
+      } else {
+         return $$0 instanceof csa $$3 ? this.d.get() == $$3.f() : false;
+      }
    }
 
-   public static record a(Optional<bi> b, Optional<cl> c, Optional<bi> d, Optional<cl> e) implements dj.a {
-      public static final Codec<ce.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bx.b.optionalFieldOf("player").forGetter(ce.a::a),
-                  cl.a.optionalFieldOf("rod").forGetter(ce.a::b),
-                  bx.b.optionalFieldOf("entity").forGetter(ce.a::c),
-                  cl.a.optionalFieldOf("item").forGetter(ce.a::d)
-               )
-               .apply($$0, ce.a::new)
-      );
-
-      public static aq<ce.a> a(Optional<cl> $$0, Optional<bx> $$1, Optional<cl> $$2) {
-         return ap.E.a(new ce.a(Optional.empty(), $$0, bx.a($$1), $$2));
-      }
-
-      public boolean a(czd $$0, ezh $$1, Collection<czd> $$2) {
-         if (this.c.isPresent() && !this.c.get().a($$0)) {
-            return false;
-         } else if (this.d.isPresent() && !this.d.get().a($$1)) {
-            return false;
-         } else {
-            if (this.e.isPresent()) {
-               boolean $$3 = false;
-               bwf $$4 = $$1.c(fcb.a);
-               if ($$4 instanceof cnh $$5 && this.e.get().a($$5.f())) {
-                  $$3 = true;
-               }
-
-               for (czd $$6 : $$2) {
-                  if (this.e.get().a($$6)) {
-                     $$3 = true;
-                     break;
-                  }
-               }
-
-               if (!$$3) {
-                  return false;
-               }
-            }
-
-            return true;
-         }
-      }
-
-      @Override
-      public void a(bj $$0) {
-         dj.a.super.a($$0);
-         $$0.a(this.d, ".entity");
-      }
-
-      @Override
-      public Optional<bi> a() {
-         return this.b;
-      }
-
-      public Optional<cl> b() {
-         return this.c;
-      }
-
-      public Optional<bi> c() {
-         return this.d;
-      }
-
-      public Optional<cl> d() {
-         return this.e;
-      }
+   public Optional<Boolean> b() {
+      return this.d;
    }
 }

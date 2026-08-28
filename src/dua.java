@@ -1,33 +1,49 @@
 import com.mojang.serialization.MapCodec;
 
-public class dua extends dls {
-   public static final MapCodec<dua> b = b(dua::new);
+public class dua extends dqg {
+   public static final MapCodec<dua> a = b(dua::new);
 
    @Override
    public MapCodec<dua> a() {
-      return b;
+      return a;
    }
 
-   public dua(eag.d $$0) {
-      super($$0, 2.0F);
-   }
-
-   @Override
-   protected eah a(eah $$0, djd $$1, djp $$2, iu $$3, ja $$4, iu $$5, eah $$6, azv $$7) {
-      return this.a($$0, $$1, $$3) ? this.m() : dmh.a.m();
+   public dua(ean.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected boolean a(eah $$0, djd $$1, iu $$2) {
-      return o($$1.a_($$2.e()));
-   }
-
-   public static boolean o(eah $$0) {
-      return $$0.a(axc.aV);
+   public void a(djh $$0, eao $$1, iv $$2, bwi $$3, double $$4) {
+      if (!$$3.cd()) {
+         $$3.a($$4, 0.0F, $$0.al().l());
+      }
    }
 
    @Override
-   protected boolean g(eah $$0) {
-      return true;
+   public void a(din $$0, bwi $$1) {
+      if ($$1.cd()) {
+         super.a($$0, $$1);
+      } else {
+         this.a($$1);
+      }
+   }
+
+   private void a(bwi $$0) {
+      fex $$1 = $$0.dx();
+      if ($$1.e < 0.0) {
+         double $$2 = $$0 instanceof bxj ? 1.0 : 0.8;
+         $$0.n($$1.d, -$$1.e * $$2, $$1.f);
+      }
+   }
+
+   @Override
+   public void a(djh $$0, iv $$1, eao $$2, bwi $$3) {
+      double $$4 = Math.abs($$3.dx().e);
+      if ($$4 < 0.1 && !$$3.cc()) {
+         double $$5 = 0.4 + $$4 * 0.2;
+         $$3.i($$3.dx().d($$5, 1.0, $$5));
+      }
+
+      super.a($$0, $$1, $$2, $$3);
    }
 }

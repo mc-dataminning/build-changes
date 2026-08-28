@@ -1,42 +1,65 @@
+import java.time.Duration;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class hpa implements hpd {
-   private static final int a = 600;
-   private static final wy b = wy.c("tutorial.open_inventory.title");
-   private static final wy c = wy.a("tutorial.open_inventory.description", hpc.a("inventory"));
-   private final hpc d;
-   @Nullable
-   private fuv e;
-   private int f;
+public class hpa {
+   private final UUID a = UUID.randomUUID();
+   private final hov b;
+   private final hpe c;
+   private final hpg d = new hpg();
+   private final hpd e;
+   private final hpf f;
 
-   public hpa(hpc $$0) {
-      this.d = $$0;
+   public hpa(hov $$0, boolean $$1, @Nullable Duration $$2, @Nullable String $$3) {
+      this.c = new hpe($$3);
+      this.e = new hpd();
+      this.f = new hpf($$1, $$2);
+      this.b = $$0.decorate($$0x -> {
+         this.c.a($$0x);
+         $$0x.a(hoy.i, this.a);
+      });
    }
 
-   @Override
    public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(hpe.f);
-      } else {
-         if (this.f >= 600 && this.e == null) {
-            foz $$0 = this.d.e();
-            this.e = new fuv($$0.h, fuv.a.d, b, c, false);
-            $$0.aA().a(this.e);
-         }
-      }
+      this.e.a(this.b);
    }
 
-   @Override
+   public void a(dje $$0, boolean $$1) {
+      this.c.a($$0, $$1);
+      this.d.a();
+      this.b();
+   }
+
+   public void a(String $$0) {
+      this.c.a($$0);
+      this.b();
+   }
+
+   public void a(long $$0) {
+      this.d.a($$0);
+   }
+
    public void b() {
-      if (this.e != null) {
-         this.e.e();
-         this.e = null;
+      if (this.c.a(this.b)) {
+         this.f.a(this.b);
+         this.e.a();
       }
    }
 
-   @Override
    public void c() {
-      this.d.a(hpe.e);
+      this.c.a(this.b);
+      this.e.d();
+      this.d.a(this.b);
+   }
+
+   public void a(djh $$0, aj $$1) {
+      alg $$2 = $$1.a();
+      if ($$1.b().g() && "minecraft".equals($$2.b())) {
+         long $$3 = $$0.ae();
+         this.b.send(how.f, $$2x -> {
+            $$2x.a(hoy.D, $$2.toString());
+            $$2x.a(hoy.E, $$3);
+         });
+      }
    }
 }

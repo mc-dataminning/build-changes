@@ -1,132 +1,359 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.jtracy.MemoryPool;
-import com.mojang.jtracy.TracyClient;
-import java.nio.ByteBuffer;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import java.nio.IntBuffer;
+import java.util.Collections;
+import java.util.List;
+import java.util.Locale;
+import java.util.Objects;
+import java.util.OptionalLong;
+import java.util.Set;
 import javax.annotation.Nullable;
+import org.lwjgl.openal.AL;
+import org.lwjgl.openal.AL10;
+import org.lwjgl.openal.ALC;
+import org.lwjgl.openal.ALC10;
+import org.lwjgl.openal.ALC11;
+import org.lwjgl.openal.ALCCapabilities;
+import org.lwjgl.openal.ALCapabilities;
+import org.lwjgl.openal.ALUtil;
+import org.lwjgl.system.MemoryStack;
+import org.slf4j.Logger;
 
-public class fhf implements AutoCloseable {
-   private static final MemoryPool c = TracyClient.createMemoryPool("GPU Buffers");
-   private final fhd d;
-   private final fhe e;
+public class fhf {
+   static final Logger a = LogUtils.getLogger();
+   private static final int b = 0;
+   private static final int c = 30;
+   private long d;
+   private long e;
    private boolean f;
-   private boolean g = false;
-   public final int a;
-   public int b;
-
-   public fhf(fhd $$0, fhe $$1, int $$2) {
-      this.d = $$0;
-      this.b = $$2;
-      this.e = $$1;
-      this.a = GlStateManager._glGenBuffers();
-   }
-
-   public fhf(fhd $$0, fhe $$1, ByteBuffer $$2) {
-      this($$0, $$1, $$2.remaining());
-      this.a($$2, 0);
-   }
-
-   public void a(int $$0) {
-      if (this.f) {
-         throw new IllegalStateException("Buffer already closed");
-      } else {
-         if (this.g) {
-            c.free((long)this.a);
-         }
-
-         this.b = $$0;
-         if (this.e.l) {
-            this.g = false;
-         } else {
-            this.b();
-            GlStateManager._glBufferData(this.d.h, (long)$$0, this.e.j);
-            c.malloc((long)this.a, $$0);
-            this.g = true;
-         }
+   @Nullable
+   private String g;
+   private static final fhf.a h = new fhf.a() {
+      @Nullable
+      @Override
+      public fhe a() {
+         return null;
       }
+
+      @Override
+      public boolean a(fhe $$0) {
+         return false;
+      }
+
+      @Override
+      public void b() {
+      }
+
+      @Override
+      public int c() {
+         return 0;
+      }
+
+      @Override
+      public int d() {
+         return 0;
+      }
+   };
+   private fhf.a i = h;
+   private fhf.a j = h;
+   private final fhg k = new fhg();
+
+   public fhf() {
+      this.g = a();
    }
 
-   public void a(ByteBuffer $$0, int $$1) {
-      if (this.f) {
-         throw new IllegalStateException("Buffer already closed");
-      } else if (!this.e.l) {
-         throw new IllegalStateException("Buffer is not writable");
+   public void a(@Nullable String $$0, boolean $$1) {
+      this.d = a($$0);
+      this.f = false;
+      ALCCapabilities $$2 = ALC.createCapabilities(this.d);
+      if (fhi.a(this.d, "Get capabilities")) {
+         throw new IllegalStateException("Failed to get OpenAL capabilities");
+      } else if (!$$2.OpenALC11) {
+         throw new IllegalStateException("OpenAL 1.1 not supported");
       } else {
-         int $$2 = $$0.remaining();
-         if ($$2 + $$1 > this.b) {
-            throw new IllegalArgumentException(
-               "Cannot write more data than this buffer can hold (attempting to write " + $$2 + " bytes at offset " + $$1 + " to " + this.b + " size buffer)"
-            );
+         MemoryStack $$3 = MemoryStack.stackPush();
+
+         try {
+            IntBuffer $$4 = this.a($$3, $$2.ALC_SOFT_HRTF && $$1);
+            this.e = ALC10.alcCreateContext(this.d, $$4);
+         } catch (Throwable var9) {
+            if ($$3 != null) {
+               try {
+                  $$3.close();
+               } catch (Throwable var8) {
+                  var9.addSuppressed(var8);
+               }
+            }
+
+            throw var9;
+         }
+
+         if ($$3 != null) {
+            $$3.close();
+         }
+
+         if (fhi.a(this.d, "Create context")) {
+            throw new IllegalStateException("Unable to create OpenAL context");
          } else {
-            this.b();
-            if (this.g) {
-               GlStateManager._glBufferSubData(this.d.h, $$1, $$0);
-            } else if ($$1 == 0 && $$2 == this.b) {
-               GlStateManager._glBufferData(this.d.h, $$0, this.e.j);
-               c.malloc((long)this.a, this.b);
-               this.g = true;
+            ALC10.alcMakeContextCurrent(this.e);
+            int $$5 = this.i();
+            int $$6 = azm.a((int)azm.c((float)$$5), 2, 8);
+            int $$7 = azm.a($$5 - $$6, 8, 255);
+            this.i = new fhf.b($$7);
+            this.j = new fhf.b($$6);
+            ALCapabilities $$8 = AL.createCapabilities($$2);
+            fhi.a("Initialization");
+            if (!$$8.AL_EXT_source_distance_model) {
+               throw new IllegalStateException("AL_EXT_source_distance_model is not supported");
             } else {
-               GlStateManager._glBufferData(this.d.h, (long)this.b, this.e.j);
-               GlStateManager._glBufferSubData(this.d.h, $$1, $$0);
-               c.malloc((long)this.a, this.b);
-               this.g = true;
+               AL10.alEnable(512);
+               if (!$$8.AL_EXT_LINEAR_DISTANCE) {
+                  throw new IllegalStateException("AL_EXT_LINEAR_DISTANCE is not supported");
+               } else {
+                  fhi.a("Enable per-source distance models");
+                  a.info("OpenAL initialized on device {}", this.b());
+                  this.f = ALC10.alcIsExtensionPresent(this.d, "ALC_EXT_disconnect");
+               }
             }
          }
       }
    }
 
-   @Nullable
-   public fhf.a a() {
-      return this.a(0, this.b);
-   }
-
-   @Nullable
-   public fhf.a a(int $$0, int $$1) {
-      if (this.f) {
-         throw new IllegalStateException("Buffer already closed");
-      } else if (!this.e.k) {
-         throw new IllegalStateException("Buffer is not readable");
-      } else if ($$0 + $$1 > this.b) {
-         throw new IllegalArgumentException(
-            "Cannot read more data than this buffer can hold (attempting to read " + $$1 + " bytes at offset " + $$0 + " from " + this.b + " size buffer)"
-         );
-      } else {
-         this.b();
-         ByteBuffer $$2 = GlStateManager._glMapBufferRange(this.d.h, $$0, $$1, 1);
-         return $$2 == null ? null : new fhf.a(this.d.h, $$2);
+   private IntBuffer a(MemoryStack $$0, boolean $$1) {
+      int $$2 = 5;
+      IntBuffer $$3 = $$0.callocInt(11);
+      int $$4 = ALC10.alcGetInteger(this.d, 6548);
+      if ($$4 > 0) {
+         $$3.put(6546).put($$1 ? 1 : 0);
+         $$3.put(6550).put(0);
       }
+
+      $$3.put(6554).put(1);
+      return $$3.put(0).flip();
    }
 
-   @Override
-   public void close() {
-      if (!this.f) {
-         this.f = true;
-         GlStateManager._glDeleteBuffers(this.a);
-         if (this.g) {
-            c.free((long)this.a);
+   private int i() {
+      MemoryStack $$0 = MemoryStack.stackPush();
+
+      int var7;
+      label58: {
+         try {
+            int $$1 = ALC10.alcGetInteger(this.d, 4098);
+            if (fhi.a(this.d, "Get attributes size")) {
+               throw new IllegalStateException("Failed to get OpenAL attributes");
+            }
+
+            IntBuffer $$2 = $$0.mallocInt($$1);
+            ALC10.alcGetIntegerv(this.d, 4099, $$2);
+            if (fhi.a(this.d, "Get attributes")) {
+               throw new IllegalStateException("Failed to get OpenAL attributes");
+            }
+
+            int $$3 = 0;
+
+            while ($$3 < $$1) {
+               int $$4 = $$2.get($$3++);
+               if ($$4 == 0) {
+                  break;
+               }
+
+               int $$5 = $$2.get($$3++);
+               if ($$4 == 4112) {
+                  var7 = $$5;
+                  break label58;
+               }
+            }
+         } catch (Throwable var9) {
+            if ($$0 != null) {
+               try {
+                  $$0.close();
+               } catch (Throwable var8) {
+                  var9.addSuppressed(var8);
+               }
+            }
+
+            throw var9;
          }
+
+         if ($$0 != null) {
+            $$0.close();
+         }
+
+         return 30;
+      }
+
+      if ($$0 != null) {
+         $$0.close();
+      }
+
+      return var7;
+   }
+
+   @Nullable
+   public static String a() {
+      if (!ALC10.alcIsExtensionPresent(0L, "ALC_ENUMERATE_ALL_EXT")) {
+         return null;
+      } else {
+         ALUtil.getStringList(0L, 4115);
+         return ALC10.alcGetString(0L, 4114);
       }
    }
 
-   public void b() {
-      GlStateManager._glBindBuffer(this.d.h, this.a);
+   public String b() {
+      String $$0 = ALC10.alcGetString(this.d, 4115);
+      if ($$0 == null) {
+         $$0 = ALC10.alcGetString(this.d, 4101);
+      }
+
+      if ($$0 == null) {
+         $$0 = "Unknown";
+      }
+
+      return $$0;
    }
 
-   public static class a implements AutoCloseable {
+   public synchronized boolean c() {
+      String $$0 = a();
+      if (Objects.equals(this.g, $$0)) {
+         return false;
+      } else {
+         this.g = $$0;
+         return true;
+      }
+   }
+
+   private static long a(@Nullable String $$0) {
+      OptionalLong $$1 = OptionalLong.empty();
+      if ($$0 != null) {
+         $$1 = b($$0);
+      }
+
+      if ($$1.isEmpty()) {
+         $$1 = b(a());
+      }
+
+      if ($$1.isEmpty()) {
+         $$1 = b(null);
+      }
+
+      if ($$1.isEmpty()) {
+         throw new IllegalStateException("Failed to open OpenAL device");
+      } else {
+         return $$1.getAsLong();
+      }
+   }
+
+   private static OptionalLong b(@Nullable String $$0) {
+      long $$1 = ALC10.alcOpenDevice($$0);
+      return $$1 != 0L && !fhi.a($$1, "Open device") ? OptionalLong.of($$1) : OptionalLong.empty();
+   }
+
+   public void d() {
+      this.i.b();
+      this.j.b();
+      ALC10.alcDestroyContext(this.e);
+      if (this.d != 0L) {
+         ALC10.alcCloseDevice(this.d);
+      }
+   }
+
+   public fhg e() {
+      return this.k;
+   }
+
+   @Nullable
+   public fhe a(fhf.c $$0) {
+      return ($$0 == fhf.c.b ? this.j : this.i).a();
+   }
+
+   public void a(fhe $$0) {
+      if (!this.i.a($$0) && !this.j.a($$0)) {
+         throw new IllegalStateException("Tried to release unknown channel");
+      }
+   }
+
+   public String f() {
+      return String.format(Locale.ROOT, "Sounds: %d/%d + %d/%d", this.i.d(), this.i.c(), this.j.d(), this.j.c());
+   }
+
+   public List<String> g() {
+      List<String> $$0 = ALUtil.getStringList(0L, 4115);
+      return $$0 == null ? Collections.emptyList() : $$0;
+   }
+
+   public boolean h() {
+      return this.f && ALC11.alcGetInteger(this.d, 787) == 0;
+   }
+
+   interface a {
+      @Nullable
+      fhe a();
+
+      boolean a(fhe var1);
+
+      void b();
+
+      int c();
+
+      int d();
+   }
+
+   static class b implements fhf.a {
       private final int a;
-      private final ByteBuffer b;
+      private final Set<fhe> b = Sets.newIdentityHashSet();
 
-      protected a(int $$0, ByteBuffer $$1) {
+      public b(int $$0) {
          this.a = $$0;
-         this.b = $$1;
       }
 
-      public ByteBuffer a() {
-         return this.b;
+      @Nullable
+      @Override
+      public fhe a() {
+         if (this.b.size() >= this.a) {
+            if (ac.aV) {
+               fhf.a.warn("Maximum sound pool size {} reached", this.a);
+            }
+
+            return null;
+         } else {
+            fhe $$0 = fhe.a();
+            if ($$0 != null) {
+               this.b.add($$0);
+            }
+
+            return $$0;
+         }
       }
 
       @Override
-      public void close() {
-         GlStateManager._glUnmapBuffer(this.a);
+      public boolean a(fhe $$0) {
+         if (!this.b.remove($$0)) {
+            return false;
+         } else {
+            $$0.b();
+            return true;
+         }
       }
+
+      @Override
+      public void b() {
+         this.b.forEach(fhe::b);
+         this.b.clear();
+      }
+
+      @Override
+      public int c() {
+         return this.a;
+      }
+
+      @Override
+      public int d() {
+         return this.b.size();
+      }
+   }
+
+   public static enum c {
+      a,
+      b;
    }
 }

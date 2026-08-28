@@ -1,19 +1,25 @@
-import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class duy extends dmf {
-   public static final MapCodec<duy> a = b(duy::new);
+public interface duy {
+   dcm c();
 
-   @Override
-   public MapCodec<duy> a() {
-      return a;
+   static List<duy> d() {
+      return mg.g.s().map(duy::a).filter(Objects::nonNull).collect(Collectors.toList());
    }
 
-   public duy(eag.d $$0) {
-      super($$0);
-   }
+   @Nullable
+   static duy a(djg $$0) {
+      if ($$0.h() instanceof cxs $$1) {
+         dmm var6 = $$1.c();
+         if (var6 instanceof duy) {
+            return (duy)var6;
+         }
+      }
 
-   @Override
-   public void a(eah $$0, dja $$1, iu $$2, azv $$3) {
-      eaf.a($$0, $$1, $$2, $$3);
+      czg $$2 = $$0.h();
+      return $$2 instanceof duy ? (duy)$$2 : null;
    }
 }

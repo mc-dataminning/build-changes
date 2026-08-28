@@ -1,28 +1,16 @@
-import java.util.List;
-import javax.annotation.Nullable;
-
-public class hms {
-   private final List<hmr> a;
-   private final boolean b;
-   @Nullable
-   private final String c;
-
-   public hms(List<hmr> $$0, boolean $$1, @Nullable String $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public class hms extends hmu {
+   public hms(cja $$0) {
+      super($$0, awn.bQ, awo.g);
+      this.j = 0;
    }
 
-   public List<hmr> a() {
-      return this.a;
+   @Override
+   protected hmq o() {
+      return new hmt(this.n);
    }
 
-   public boolean b() {
-      return this.b;
-   }
-
-   @Nullable
-   public String c() {
-      return this.c;
+   @Override
+   protected boolean p() {
+      return !this.n.X_();
    }
 }

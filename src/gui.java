@@ -1,107 +1,320 @@
-import java.time.Duration;
-import java.time.Instant;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.UUID;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
-import org.joml.Matrix4f;
-import org.joml.Vector4f;
+import org.slf4j.Logger;
 
-public class gui implements guc.a {
-   private static final Duration a = Duration.ofMillis(500L);
-   private static final int b = 10;
-   private static final Vector4f c = new Vector4f(1.0F, 1.0F, 0.0F, 0.25F);
-   private static final Vector4f d = new Vector4f(0.25F, 0.125F, 0.0F, 0.125F);
-   private final foz e;
-   private final djj f;
-   private Instant g = Instant.now();
+public class gui implements guo.a {
+   private static final Logger a = LogUtils.getLogger();
+   private static final boolean b = true;
+   private static final boolean c = false;
+   private static final boolean d = false;
+   private static final boolean e = false;
+   private static final boolean f = false;
+   private static final boolean g = false;
+   private static final boolean h = false;
+   private static final boolean i = false;
+   private static final boolean j = true;
+   private static final boolean k = false;
+   private static final boolean l = true;
+   private static final boolean m = true;
+   private static final boolean n = true;
+   private static final boolean o = true;
+   private static final boolean p = true;
+   private static final boolean q = true;
+   private static final boolean r = true;
+   private static final boolean s = true;
+   private static final boolean t = true;
+   private static final boolean u = true;
+   private static final boolean v = true;
+   private static final boolean w = true;
+   private static final int x = 30;
+   private static final int y = 30;
+   private static final int z = 8;
+   private static final float A = 0.02F;
+   private static final int B = -16711681;
+   private static final int C = -3355444;
+   private static final int D = -98404;
+   private static final int E = -23296;
+   private final fpo F;
+   private final Map<iv, gui.a> G = Maps.newHashMap();
+   private final Map<UUID, aaf.a> H = Maps.newHashMap();
    @Nullable
-   private gui.a h;
+   private UUID I;
 
-   public gui(foz $$0, djj $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public gui(fpo $$0) {
+      this.F = $$0;
    }
 
    @Override
-   public void a(fjj $$0, gqa $$1, double $$2, double $$3, double $$4) {
-      Instant $$5 = Instant.now();
-      if (this.h == null || Duration.between(this.g, $$5).compareTo(a) > 0) {
-         this.g = $$5;
-         this.h = new gui.a(this.e.s.x_(), jx.a(this.e.t.dv()), 10, this.f);
-      }
-
-      a($$0, this.h.a, this.h.c, $$1, $$2, $$3, $$4, c);
-      a($$0, this.h.b, this.h.c, $$1, $$2, $$3, $$4, d);
-      fjn $$6 = $$1.getBuffer(gqk.F());
-      a($$0, this.h.a, this.h.c, $$6, $$2, $$3, $$4, c);
-      a($$0, this.h.b, this.h.c, $$6, $$2, $$3, $$4, d);
+   public void a() {
+      this.G.clear();
+      this.H.clear();
+      this.I = null;
    }
 
-   private static void a(fjj $$0, fez $$1, jx $$2, fjn $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
-      $$1.a(($$7x, $$8, $$9, $$10) -> {
-         int $$11 = $$8 + $$2.u();
-         int $$12 = $$9 + $$2.v();
-         int $$13 = $$10 + $$2.w();
-         a($$0, $$3, $$7x, $$4, $$5, $$6, $$11, $$12, $$13, $$7);
+   public void a(gui.a $$0) {
+      this.G.put($$0.a, $$0);
+   }
+
+   public void a(iv $$0) {
+      this.G.remove($$0);
+   }
+
+   public void a(iv $$0, int $$1) {
+      gui.a $$2 = this.G.get($$0);
+      if ($$2 == null) {
+         a.warn("Strange, setFreeTicketCount was called for an unknown POI: {}", $$0);
+      } else {
+         $$2.c = $$1;
+      }
+   }
+
+   public void a(aaf.a $$0) {
+      this.H.put($$0.a(), $$0);
+   }
+
+   public void a(int $$0) {
+      this.H.values().removeIf($$1 -> $$1.b() == $$0);
+   }
+
+   @Override
+   public void a(fjy $$0, gqm $$1, double $$2, double $$3, double $$4) {
+      this.b();
+      this.b($$0, $$1, $$2, $$3, $$4);
+      if (!this.F.t.V_()) {
+         this.d();
+      }
+   }
+
+   private void b() {
+      this.H.entrySet().removeIf($$0 -> {
+         bwi $$1 = this.F.s.a($$0.getValue().b());
+         return $$1 == null || $$1.dP();
       });
    }
 
-   private static void a(fjj $$0, fez $$1, jx $$2, gqa $$3, double $$4, double $$5, double $$6, Vector4f $$7) {
-      $$1.a(($$7x, $$8, $$9, $$10, $$11, $$12) -> {
-         int $$13 = $$7x + $$2.u();
-         int $$14 = $$8 + $$2.v();
-         int $$15 = $$9 + $$2.w();
-         int $$16 = $$10 + $$2.u();
-         int $$17 = $$11 + $$2.v();
-         int $$18 = $$12 + $$2.w();
-         fjn $$19 = $$3.getBuffer(gqk.a(1.0));
-         a($$0, $$19, $$4, $$5, $$6, $$13, $$14, $$15, $$16, $$17, $$18, $$7);
-      }, true);
+   private void b(fjy $$0, gqm $$1, double $$2, double $$3, double $$4) {
+      iv $$5 = iv.a($$2, $$3, $$4);
+      this.H.values().forEach($$5x -> {
+         if (this.c($$5x)) {
+            this.b($$0, $$1, $$5x, $$2, $$3, $$4);
+         }
+      });
+
+      for (iv $$6 : this.G.keySet()) {
+         if ($$5.a($$6, 30.0)) {
+            a($$0, $$1, $$6);
+         }
+      }
+
+      this.G.values().forEach($$3x -> {
+         if ($$5.a($$3x.a, 30.0)) {
+            this.a($$0, $$1, $$3x);
+         }
+      });
+      this.c().forEach(($$3x, $$4x) -> {
+         if ($$5.a($$3x, 30.0)) {
+            this.a($$0, $$1, $$3x, $$4x);
+         }
+      });
    }
 
-   private static void a(fjj $$0, fjn $$1, ja $$2, double $$3, double $$4, double $$5, int $$6, int $$7, int $$8, Vector4f $$9) {
-      float $$10 = (float)((double)jx.c($$6) - $$3);
-      float $$11 = (float)((double)jx.c($$7) - $$4);
-      float $$12 = (float)((double)jx.c($$8) - $$5);
-      gqu.a($$0, $$1, $$2, $$10, $$11, $$12, $$10 + 16.0F, $$11 + 16.0F, $$12 + 16.0F, $$9.x(), $$9.y(), $$9.z(), $$9.w());
+   private static void a(fjy $$0, gqm $$1, iv $$2) {
+      float $$3 = 0.05F;
+      guo.a($$0, $$1, $$2, 0.05F, 0.2F, 0.2F, 1.0F, 0.3F);
    }
 
-   private static void a(fjj $$0, fjn $$1, double $$2, double $$3, double $$4, int $$5, int $$6, int $$7, int $$8, int $$9, int $$10, Vector4f $$11) {
-      float $$12 = (float)((double)jx.c($$5) - $$2);
-      float $$13 = (float)((double)jx.c($$6) - $$3);
-      float $$14 = (float)((double)jx.c($$7) - $$4);
-      float $$15 = (float)((double)jx.c($$8) - $$2);
-      float $$16 = (float)((double)jx.c($$9) - $$3);
-      float $$17 = (float)((double)jx.c($$10) - $$4);
-      Matrix4f $$18 = $$0.c().a();
-      $$1.a($$18, $$12, $$13, $$14).a($$11.x(), $$11.y(), $$11.z(), 1.0F);
-      $$1.a($$18, $$15, $$16, $$17).a($$11.x(), $$11.y(), $$11.z(), 1.0F);
+   private void a(fjy $$0, gqm $$1, iv $$2, List<String> $$3) {
+      float $$4 = 0.05F;
+      guo.a($$0, $$1, $$2, 0.05F, 0.2F, 0.2F, 1.0F, 0.3F);
+      a($$0, $$1, $$3 + "", $$2, 0, -256);
+      a($$0, $$1, "Ghost POI", $$2, 1, -65536);
    }
 
-   static final class a {
-      final fez a;
-      final fez b;
-      final jx c;
+   private void a(fjy $$0, gqm $$1, gui.a $$2) {
+      int $$3 = 0;
+      Set<String> $$4 = this.b($$2);
+      if ($$4.size() < 4) {
+         a($$0, $$1, "Owners: " + $$4, $$2, $$3, -256);
+      } else {
+         a($$0, $$1, $$4.size() + " ticket holders", $$2, $$3, -256);
+      }
 
-      a(ewd $$0, jx $$1, int $$2, djj $$3) {
-         int $$4 = $$2 * 2 + 1;
-         this.a = new fet($$4, $$4, $$4);
-         this.b = new fet($$4, $$4, $$4);
+      $$3++;
+      Set<String> $$5 = this.c($$2);
+      if ($$5.size() < 4) {
+         a($$0, $$1, "Candidates: " + $$5, $$2, $$3, -23296);
+      } else {
+         a($$0, $$1, $$5.size() + " potential owners", $$2, $$3, -23296);
+      }
 
-         for (int $$5 = 0; $$5 < $$4; $$5++) {
-            for (int $$6 = 0; $$6 < $$4; $$6++) {
-               for (int $$7 = 0; $$7 < $$4; $$7++) {
-                  jx $$8 = jx.a($$1.a() + $$7 - $$2, $$1.b() + $$6 - $$2, $$1.c() + $$5 - $$2);
-                  ewc.b $$9 = $$0.b($$3, $$8);
-                  if ($$9 == ewc.b.c) {
-                     this.a.c($$7, $$6, $$5);
-                     this.b.c($$7, $$6, $$5);
-                  } else if ($$9 == ewc.b.b) {
-                     this.b.c($$7, $$6, $$5);
-                  }
-               }
+      a($$0, $$1, "Free tickets: " + $$2.c, $$2, ++$$3, -256);
+      a($$0, $$1, $$2.b, $$2, ++$$3, -1);
+   }
+
+   private void a(fjy $$0, gqm $$1, aaf.a $$2, double $$3, double $$4, double $$5) {
+      if ($$2.j() != null) {
+         gux.a($$0, $$1, $$2.j(), 0.5F, false, false, $$3, $$4, $$5);
+      }
+   }
+
+   private void b(fjy $$0, gqm $$1, aaf.a $$2, double $$3, double $$4, double $$5) {
+      boolean $$6 = this.b($$2);
+      int $$7 = 0;
+      a($$0, $$1, $$2.h(), $$7, $$2.c(), -1, 0.03F);
+      $$7++;
+      if ($$6) {
+         a($$0, $$1, $$2.h(), $$7, $$2.d() + " " + $$2.e() + " xp", -1, 0.02F);
+         $$7++;
+      }
+
+      if ($$6) {
+         int $$8 = $$2.f() < $$2.g() ? -23296 : -1;
+         a($$0, $$1, $$2.h(), $$7, "health: " + String.format(Locale.ROOT, "%.1f", $$2.f()) + " / " + String.format(Locale.ROOT, "%.1f", $$2.g()), $$8, 0.02F);
+         $$7++;
+      }
+
+      if ($$6 && !$$2.i().equals("")) {
+         a($$0, $$1, $$2.h(), $$7, $$2.i(), -98404, 0.02F);
+         $$7++;
+      }
+
+      if ($$6) {
+         for (String $$9 : $$2.n()) {
+            a($$0, $$1, $$2.h(), $$7, $$9, -16711681, 0.02F);
+            $$7++;
+         }
+      }
+
+      if ($$6) {
+         for (String $$10 : $$2.m()) {
+            a($$0, $$1, $$2.h(), $$7, $$10, -16711936, 0.02F);
+            $$7++;
+         }
+      }
+
+      if ($$2.k()) {
+         a($$0, $$1, $$2.h(), $$7, "Wants Golem", -23296, 0.02F);
+         $$7++;
+      }
+
+      if ($$6 && $$2.l() != -1) {
+         a($$0, $$1, $$2.h(), $$7, "Anger Level: " + $$2.l(), -98404, 0.02F);
+         $$7++;
+      }
+
+      if ($$6) {
+         for (String $$11 : $$2.p()) {
+            if ($$11.startsWith($$2.c())) {
+               a($$0, $$1, $$2.h(), $$7, $$11, -1, 0.02F);
+            } else {
+               a($$0, $$1, $$2.h(), $$7, $$11, -23296, 0.02F);
+            }
+
+            $$7++;
+         }
+      }
+
+      if ($$6) {
+         for (String $$12 : Lists.reverse($$2.o())) {
+            a($$0, $$1, $$2.h(), $$7, $$12, -3355444, 0.02F);
+            $$7++;
+         }
+      }
+
+      if ($$6) {
+         this.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+   }
+
+   private static void a(fjy $$0, gqm $$1, String $$2, gui.a $$3, int $$4, int $$5) {
+      a($$0, $$1, $$2, $$3.a, $$4, $$5);
+   }
+
+   private static void a(fjy $$0, gqm $$1, String $$2, iv $$3, int $$4, int $$5) {
+      double $$6 = 1.3;
+      double $$7 = 0.2;
+      double $$8 = (double)$$3.u() + 0.5;
+      double $$9 = (double)$$3.v() + 1.3 + (double)$$4 * 0.2;
+      double $$10 = (double)$$3.w() + 0.5;
+      guo.a($$0, $$1, $$2, $$8, $$9, $$10, $$5, 0.02F, true, 0.0F, true);
+   }
+
+   private static void a(fjy $$0, gqm $$1, jp $$2, int $$3, String $$4, int $$5, float $$6) {
+      double $$7 = 2.4;
+      double $$8 = 0.25;
+      iv $$9 = iv.a($$2);
+      double $$10 = (double)$$9.u() + 0.5;
+      double $$11 = $$2.b() + 2.4 + (double)$$3 * 0.25;
+      double $$12 = (double)$$9.w() + 0.5;
+      float $$13 = 0.5F;
+      guo.a($$0, $$1, $$4, $$10, $$11, $$12, $$5, $$6, false, 0.5F, true);
+   }
+
+   private Set<String> b(gui.a $$0) {
+      return this.b($$0.a).stream().map(agl::a).collect(Collectors.toSet());
+   }
+
+   private Set<String> c(gui.a $$0) {
+      return this.c($$0.a).stream().map(agl::a).collect(Collectors.toSet());
+   }
+
+   private boolean b(aaf.a $$0) {
+      return Objects.equals(this.I, $$0.a());
+   }
+
+   private boolean c(aaf.a $$0) {
+      crj $$1 = this.F.t;
+      iv $$2 = iv.a($$1.dz(), $$0.h().b(), $$1.dF());
+      iv $$3 = iv.a((jp)$$0.h());
+      return $$2.a($$3, 30.0);
+   }
+
+   private Collection<UUID> b(iv $$0) {
+      return this.H.values().stream().filter($$1 -> $$1.a($$0)).map(aaf.a::a).collect(Collectors.toSet());
+   }
+
+   private Collection<UUID> c(iv $$0) {
+      return this.H.values().stream().filter($$1 -> $$1.b($$0)).map(aaf.a::a).collect(Collectors.toSet());
+   }
+
+   private Map<iv, List<String>> c() {
+      Map<iv, List<String>> $$0 = Maps.newHashMap();
+
+      for (aaf.a $$1 : this.H.values()) {
+         for (iv $$2 : Iterables.concat($$1.q(), $$1.r())) {
+            if (!this.G.containsKey($$2)) {
+               $$0.computeIfAbsent($$2, $$0x -> Lists.newArrayList()).add($$1.c());
             }
          }
+      }
 
-         this.c = jx.a($$1.a() - $$2, $$1.b() - $$2, $$1.c() - $$2);
+      return $$0;
+   }
+
+   private void d() {
+      guo.a(this.F.ao(), 8).ifPresent($$0 -> this.I = $$0.cF());
+   }
+
+   public static class a {
+      public final iv a;
+      public final String b;
+      public int c;
+
+      public a(iv $$0, String $$1, int $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
    }
 }

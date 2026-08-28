@@ -1,55 +1,21 @@
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 
-public class oo implements od {
-   private final oe b;
-   private final je<cyz> c;
-   private final ddq d;
-   private final ddq e;
-   private final Map<String, aq<?>> f = new LinkedHashMap<>();
-   @Nullable
-   private String g;
+public class oo {
+   private final Function<ddo, deb<?>> a;
 
-   private oo(oe $$0, je<cyz> $$1, ddq $$2, ddq $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
+   public oo(Function<ddo, deb<?>> $$0) {
+      this.a = $$0;
    }
 
-   public static oo a(oe $$0, ddq $$1, ddq $$2, cyz $$3) {
-      return new oo($$0, $$3.e(), $$1, $$2);
+   public static oo a(Function<ddo, deb<?>> $$0) {
+      return new oo($$0);
    }
 
-   public oo b(String $$0, aq<?> $$1) {
-      this.f.put($$0, $$1);
-      return this;
+   public void a(og $$0, String $$1) {
+      this.a($$0, alf.a(mh.bu, alg.a($$1)));
    }
 
-   public oo b(@Nullable String $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   @Override
-   public cyz a() {
-      return this.c.a();
-   }
-
-   @Override
-   public void a(of $$0, alf<ddu<?>> $$1) {
-      this.a($$1);
-      ah.a $$2 = $$0.a().a("has_the_recipe", dg.a($$1)).a(am.a.c($$1)).a(al.a.b);
-      this.f.forEach($$2::a);
-      dew $$3 = new dew(Objects.requireNonNullElse(this.g, ""), od.a(this.b), this.d, this.e, new dex(this.c.a()));
-      $$0.a($$1, $$3, $$2.b($$1.a().f("recipes/" + this.b.a() + "/")));
-   }
-
-   private void a(alf<ddu<?>> $$0) {
-      if (this.f.isEmpty()) {
-         throw new IllegalStateException("No way of obtaining recipe " + $$0.a());
-      }
+   public void a(og $$0, alf<deb<?>> $$1) {
+      $$0.a($$1, this.a.apply(ddo.d), null);
    }
 }

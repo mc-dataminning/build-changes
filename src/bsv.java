@@ -1,20 +1,13 @@
-import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.Executor;
-import java.util.function.Consumer;
 
-public class bsv extends bsr<bsx.c> {
-   public bsv(int $$0, Executor $$1, String $$2) {
-      super(new bsx.a($$0), $$1, $$2);
-      brz.a.a(this);
+public class bsv extends bst<Runnable> {
+   public bsv(Executor $$0, String $$1) {
+      super(new bta.b(new ConcurrentLinkedQueue<>()), $$0, $$1);
    }
 
-   public bsx.c b(Runnable $$0) {
-      return new bsx.c(0, $$0);
-   }
-
-   public <Source> CompletableFuture<Source> a(int $$0, Consumer<CompletableFuture<Source>> $$1) {
-      CompletableFuture<Source> $$2 = new CompletableFuture<>();
-      this.a_(new bsx.c($$0, () -> $$1.accept($$2)));
-      return $$2;
+   @Override
+   public Runnable f(Runnable $$0) {
+      return $$0;
    }
 }

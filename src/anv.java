@@ -13,17 +13,17 @@ public class anv {
    private anv() {
    }
 
-   public static void a(CommandDispatcher<ei> $$0) {
+   public static void a(CommandDispatcher<ej> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("jfr").requires($$0x -> $$0x.c(4)))
-               .then(ej.a("start").executes($$0x -> a((ei)$$0x.getSource()))))
-            .then(ej.a("stop").executes($$0x -> b((ei)$$0x.getSource())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("jfr").requires($$0x -> $$0x.c(4)))
+               .then(ek.a("start").executes($$0x -> a((ej)$$0x.getSource()))))
+            .then(ek.a("stop").executes($$0x -> b((ej)$$0x.getSource())))
       );
    }
 
-   private static int a(ei $$0) throws CommandSyntaxException {
-      bqu $$1 = bqu.a($$0.l());
-      if (!bqw.f.a($$1)) {
+   private static int a(ej $$0) throws CommandSyntaxException {
+      bqw $$1 = bqw.a($$0.l());
+      if (!bqy.f.a($$1)) {
          throw a.create();
       } else {
          $$0.a(() -> wy.c("commands.jfr.started"), false);
@@ -31,11 +31,11 @@ public class anv {
       }
    }
 
-   private static int b(ei $$0) throws CommandSyntaxException {
+   private static int b(ej $$0) throws CommandSyntaxException {
       try {
-         Path $$1 = Paths.get(".").relativize(bqw.f.b().normalize());
-         Path $$2 = $$0.l().r() && !ab.aU ? $$1 : $$1.toAbsolutePath();
-         wy $$3 = wy.b($$1.toString()).a(n.t).a($$1x -> $$1x.a(new ww.c($$2.toString())).a(new xe.e(wy.c("chat.copy.click"))));
+         Path $$1 = Paths.get(".").relativize(bqy.f.b().normalize());
+         Path $$2 = $$0.l().r() && !ac.aV ? $$1 : $$1.toAbsolutePath();
+         wy $$3 = wy.b($$1.toString()).a(o.t).a($$1x -> $$1x.a(new ww.c($$2.toString())).a(new xe.e(wy.c("chat.copy.click"))));
          $$0.a(() -> wy.a("commands.jfr.stopped", $$3), false);
          return 1;
       } catch (Throwable var4) {

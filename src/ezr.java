@@ -1,30 +1,95 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import com.google.common.collect.Maps;
+import java.util.Map;
 import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class ezr extends ezz {
-   public static final MapCodec<ezr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alg.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, ezr::new)
-   );
-   private final alg j;
+public class ezr {
+   private final arq a;
+   private final baz b;
+   private final Map<alg, ezr.b> c;
+   private final float d;
 
-   private ezr(alg $$0, int $$1, int $$2, List<fcq> $$3, List<fav> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   public ezr(arq $$0, baz $$1, Map<alg, ezr.b> $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   @Override
-   public ezy a() {
-      return ezv.e;
+   public arq a() {
+      return this.a;
    }
 
-   @Override
-   public void a(Consumer<czd> $$0, ezh $$1) {
-      $$1.a(this.j, $$0);
+   public baz b() {
+      return this.b;
    }
 
-   public static ezz.a<?> a(alg $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new ezr($$0, $$1, $$2, $$3, $$4));
+   public void a(alg $$0, Consumer<czk> $$1) {
+      ezr.b $$2 = this.c.get($$0);
+      if ($$2 != null) {
+         $$2.add($$1);
+      }
+   }
+
+   public float c() {
+      return this.d;
+   }
+
+   public static class a {
+      private final arq a;
+      private final baz.a b = new baz.a();
+      private final Map<alg, ezr.b> c = Maps.newHashMap();
+      private float d;
+
+      public a(arq $$0) {
+         this.a = $$0;
+      }
+
+      public arq a() {
+         return this.a;
+      }
+
+      public <T> ezr.a a(bax<T> $$0, T $$1) {
+         this.b.a($$0, $$1);
+         return this;
+      }
+
+      public <T> ezr.a b(bax<T> $$0, @Nullable T $$1) {
+         this.b.b($$0, $$1);
+         return this;
+      }
+
+      public <T> T a(bax<T> $$0) {
+         return this.b.a($$0);
+      }
+
+      @Nullable
+      public <T> T b(bax<T> $$0) {
+         return this.b.b($$0);
+      }
+
+      public ezr.a a(alg $$0, ezr.b $$1) {
+         ezr.b $$2 = this.c.put($$0, $$1);
+         if ($$2 != null) {
+            throw new IllegalStateException("Duplicated dynamic drop '" + this.c + "'");
+         } else {
+            return this;
+         }
+      }
+
+      public ezr.a a(float $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public ezr a(bay $$0) {
+         baz $$1 = this.b.a($$0);
+         return new ezr(this.a, $$1, this.c, this.d);
+      }
+   }
+
+   @FunctionalInterface
+   public interface b {
+      void add(Consumer<czk> var1);
    }
 }

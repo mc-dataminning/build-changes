@@ -1,29 +1,43 @@
-public class gym extends gvb<clu, hek, ghy> {
-   private static final alg a = alg.b("textures/entity/sniffer/sniffer.png");
+public class gym extends gxz<cjy, hen, ggk<hcz>> {
+   private static final alg a = alg.b("textures/entity/fish/pufferfish.png");
+   private final ggk<hcz> j;
+   private final ggk<hcz> k;
+   private final ggk<hcz> l = this.c();
 
-   public gym(gwh.a $$0) {
-      super($$0, new ghy($$0.a(gjb.dg)), new ghy($$0.a(gjb.dh)), 1.1F);
+   public gym(gwt.a $$0) {
+      super($$0, new ghs($$0.a(gjn.cE)), 0.2F);
+      this.k = new ght($$0.a(gjn.cF));
+      this.j = new ghu($$0.a(gjn.cG));
    }
 
-   public alg a(hek $$0) {
+   public alg a(hen $$0) {
       return a;
    }
 
-   public hek b() {
-      return new hek();
+   public hen b() {
+      return new hen();
    }
 
-   public void a(clu $$0, hek $$1, float $$2) {
+   protected float b(hen $$0) {
+      return 0.1F + 0.1F * (float)$$0.a;
+   }
+
+   public void a(hen $$0, fjy $$1, gqm $$2, int $$3) {
+      this.g = switch ($$0.a) {
+         case 0 -> this.j;
+         case 1 -> this.k;
+         default -> this.l;
+      };
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   public void a(cjy $$0, hen $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
-      $$1.b.a($$0.bK);
-      $$1.c.a($$0.bI);
-      $$1.d.a($$0.bL);
-      $$1.e.a($$0.bG);
-      $$1.f.a($$0.bH);
+      $$1.a = $$0.x();
    }
 
-   protected fel a(clu $$0) {
-      return super.a($$0).g(0.6F);
+   protected void a(hen $$0, fjy $$1, float $$2, float $$3) {
+      $$1.a(0.0F, azm.b($$0.u * 0.05F) * 0.08F, 0.0F);
+      super.a($$0, $$1, $$2, $$3);
    }
 }

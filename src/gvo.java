@@ -1,39 +1,29 @@
-public class gvo extends gvb<cix, hcc, gfh> {
-   public gvo(gwh.a $$0) {
-      super($$0, new gfh($$0.a(gjb.Q)), new gfh($$0.a(gjb.R)), 0.4F);
-      this.a(new gzx(this, $$0.f()));
+public class gvo extends gxz<ckl, hcb, gex> {
+   private static final alg a = alg.b("textures/entity/allay/allay.png");
+
+   public gvo(gwt.a $$0) {
+      super($$0, new gex($$0.a(gjn.c)), 0.4F);
+      this.a(new haz<>(this));
    }
 
-   public alg a(hcc $$0) {
-      return $$0.a;
+   public alg a(hcb $$0) {
+      return a;
    }
 
-   public hcc a() {
-      return new hcc();
+   public hcb a() {
+      return new hcb();
    }
 
-   public void a(cix $$0, hcc $$1, float $$2) {
+   public void a(ckl $$0, hcb $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gD().a().b().b();
-      $$1.d = $$0.ci();
-      $$1.e = $$0.cj();
-      $$1.f = $$0.x();
-      $$1.g = $$0.J($$2);
-      $$1.h = $$0.K($$2);
-      $$1.i = $$0.L($$2);
-      $$1.b = $$0.gI();
-      $$1.c = $$0.q() ? $$0.gF() : null;
+      hcd.a($$0, $$1, this.h);
+      $$1.a = $$0.q();
+      $$1.b = $$0.t();
+      $$1.c = $$0.K($$2);
+      $$1.d = $$0.J($$2);
    }
 
-   protected void a(hcc $$0, fjj $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      float $$4 = $$0.g;
-      if ($$4 > 0.0F) {
-         $$1.a(0.4F * $$4, 0.15F * $$4, 0.1F * $$4);
-         $$1.a(a.f.rotationDegrees(azm.i($$4, 0.0F, 90.0F)));
-         if ($$0.b) {
-            $$1.a(0.15F * $$4, 0.0F, 0.0F);
-         }
-      }
+   protected int a(ckl $$0, iv $$1) {
+      return 15;
    }
 }

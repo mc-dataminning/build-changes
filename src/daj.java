@@ -1,41 +1,43 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class daj extends cxl implements cxz {
-   private final awm a;
+public class daj extends czg {
+   public daj(czg.a $$0) {
+      super($$0);
+   }
 
-   public daj(dmf $$0, awm $$1, cyz.a $$2) {
-      super($$0, $$2);
-      this.a = $$1;
+   public static dcn a() {
+      jg<dmm> $$0 = mg.a(mg.e);
+      return new dcn(
+         List.of(dcn.a.a(jj.a(dmo.bz.p()), 15.0F), dcn.a.b($$0.b(axc.Q), 15.0F), dcn.a.b($$0.b(axc.a), 5.0F), dcn.a.b(jj.a(dmo.fx.p(), dmo.fy.p()), 2.0F)),
+         1.0F,
+         1,
+         true
+      );
    }
 
    @Override
-   public bud a(dcy $$0) {
-      bud $$1 = super.a($$0);
-      crc $$2 = $$0.o();
-      if ($$1.a() && $$2 != null) {
-         $$2.a($$0.p(), cxr.b($$0.n(), $$2));
-      }
-
-      return $$1;
-   }
-
-   @Override
-   protected awm a(eah $$0) {
-      return this.a;
-   }
-
-   @Override
-   public boolean a(@Nullable bxe $$0, dja $$1, iu $$2, @Nullable fem $$3) {
-      if ($$1.k($$2) && $$1.v($$2)) {
-         if (!$$1.C) {
-            $$1.a($$2, this.c().m(), 3);
+   public bug a(ddf $$0) {
+      djh $$1 = $$0.q();
+      iv $$2 = $$0.a();
+      eao $$3 = $$1.a_($$2);
+      if ($$3.b() instanceof dqf $$5 && !$$5.q($$3)) {
+         crj $$6 = $$0.o();
+         czk $$7 = $$0.n();
+         if ($$6 instanceof arr) {
+            aq.N.a((arr)$$6, $$2, $$7);
          }
 
-         $$1.a($$0, efh.z, $$2);
-         $$1.a($$0, $$2, this.a, awo.e, 1.0F, 1.0F);
-         return true;
-      } else {
-         return false;
+         $$1.a($$6, $$2, awn.lR, awo.e, 1.0F, 1.0F);
+         eao $$8 = $$5.p($$3);
+         $$1.b($$2, $$8);
+         $$1.a(efo.c, $$2, efo.a.a($$0.o(), $$8));
+         if ($$6 != null) {
+            $$7.a(1, $$6, bxj.d($$0.p()));
+         }
+
+         return bug.a;
       }
+
+      return super.a($$0);
    }
 }

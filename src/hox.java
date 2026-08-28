@@ -1,69 +1,59 @@
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+import java.nio.file.Path;
+import java.time.LocalDate;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class hox implements hpd {
-   private static final int a = 1200;
-   private static final wy b = wy.c("tutorial.craft_planks.title");
-   private static final wy c = wy.c("tutorial.craft_planks.description");
-   private final hpc d;
+public class hox implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final String b = ".json";
+   private static final int c = 7;
+   private final bph d;
    @Nullable
-   private fuv e;
-   private int f;
+   private CompletableFuture<Optional<hot>> e;
 
-   public hox(hpc $$0) {
+   private hox(bph $$0) {
       this.d = $$0;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(hpe.f);
-      } else {
-         foz $$0 = this.d.e();
-         if (this.f == 1) {
-            gox $$1 = $$0.t;
-            if ($$1 != null) {
-               if ($$1.gj().a(axk.b)) {
-                  this.d.a(hpe.f);
-                  return;
-               }
+   public static CompletableFuture<Optional<hox>> a(Path $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            bph $$1 = bph.a($$0, ".json");
+            $$1.a().a(LocalDate.now(), 7).a();
+            return Optional.of(new hox($$1));
+         } catch (Exception var2) {
+            a.error("Failed to create telemetry log manager", var2);
+            return Optional.empty();
+         }
+      }, ag.h());
+   }
 
-               if (a($$1, axk.b)) {
-                  this.d.a(hpe.f);
-                  return;
-               }
+   public CompletableFuture<Optional<hou>> a() {
+      if (this.e == null) {
+         this.e = CompletableFuture.supplyAsync(() -> {
+            try {
+               bph.e $$0 = this.d.a(LocalDate.now());
+               FileChannel $$1 = $$0.e();
+               return Optional.of(new hot($$1, ag.h()));
+            } catch (IOException var3) {
+               a.error("Failed to open channel for telemetry event log", var3);
+               return Optional.empty();
             }
-         }
-
-         if (this.f >= 1200 && this.e == null) {
-            this.e = new fuv($$0.h, fuv.a.e, b, c, false);
-            $$0.aA().a(this.e);
-         }
+         }, ag.h());
       }
+
+      return this.e.thenApply($$0 -> $$0.map(hot::a));
    }
 
    @Override
-   public void b() {
+   public void close() {
       if (this.e != null) {
-         this.e.e();
-         this.e = null;
+         this.e.thenAccept($$0 -> $$0.ifPresent(hot::close));
       }
-   }
-
-   @Override
-   public void a(czd $$0) {
-      if ($$0.a(axk.b)) {
-         this.d.a(hpe.f);
-      }
-   }
-
-   public static boolean a(gox $$0, axr<cyz> $$1) {
-      for (je<cyz> $$2 : mf.g.c($$1)) {
-         if ($$0.l().a(awx.b.b($$2.a())) > 0) {
-            return true;
-         }
-      }
-
-      return false;
    }
 }

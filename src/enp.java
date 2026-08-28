@@ -1,18 +1,48 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class enp<P extends eno> {
-   public static final enp<enn> a = a("mangrove_root_placer", enn.c);
-   private final MapCodec<P> b;
+public class enp extends enj {
+   public static final MapCodec<enp> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(btl.b(0, 24).fieldOf("trunk_height").forGetter($$0x -> $$0x.b)).apply($$0, enp::new)
+   );
+   private final btl b;
 
-   private static <P extends eno> enp<P> a(String $$0, MapCodec<P> $$1) {
-      return jr.a(mf.W, $$0, new enp<>($$1));
+   public enp(btl $$0, btl $$1, btl $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
-   private enp(MapCodec<P> $$0) {
-      this.b = $$0;
+   @Override
+   protected enk<?> a() {
+      return enk.b;
    }
 
-   public MapCodec<P> a() {
-      return this.b;
+   @Override
+   protected void a(djn $$0, enj.b $$1, azv $$2, emt $$3, int $$4, enj.a $$5, int $$6, int $$7, int $$8) {
+      iv $$9 = $$5.a();
+      int $$10 = $$2.a(2);
+      int $$11 = 1;
+      int $$12 = 0;
+
+      for (int $$13 = $$8; $$13 >= -$$6; $$13--) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$10, $$13, $$5.c());
+         if ($$10 >= $$11) {
+            $$10 = $$12;
+            $$12 = 1;
+            $$11 = Math.min($$11 + 1, $$7 + $$5.b());
+         } else {
+            $$10++;
+         }
+      }
+   }
+
+   @Override
+   public int a(azv $$0, int $$1, emt $$2) {
+      return Math.max(4, $$1 - this.b.a($$0));
+   }
+
+   @Override
+   protected boolean a(azv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

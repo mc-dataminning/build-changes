@@ -1,26 +1,47 @@
-public class gig extends gfy<het> {
-   private final gjc a;
-
-   public gig(gjc $$0) {
+public class gig<S extends heu> extends ggy<S> {
+   public gig(gjo $$0) {
       super($$0);
-      this.a = $$0.b("tail");
    }
 
-   public static gji a(gjg $$0) {
-      gjk $$1 = new gjk();
-      gjm $$2 = $$1.a();
-      int $$3 = 22;
-      $$2.a("body", gjh.c().a(0, 0).a(-1.0F, -1.5F, -3.0F, 2.0F, 3.0F, 6.0F, $$0), gje.a(0.0F, 22.0F, 0.0F));
-      $$2.a("tail", gjh.c().a(22, -6).a(0.0F, -1.5F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), gje.a(0.0F, 22.0F, 3.0F));
-      $$2.a("right_fin", gjh.c().a(2, 16).a(-2.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), gje.a(-1.0F, 22.5F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("left_fin", gjh.c().a(2, 12).a(0.0F, -1.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), gje.a(1.0F, 22.5F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("top_fin", gjh.c().a(10, -5).a(0.0F, -3.0F, 0.0F, 0.0F, 3.0F, 6.0F, $$0), gje.a(0.0F, 20.5F, -3.0F));
-      return gji.a($$1, 32, 32);
+   public static gju c() {
+      gjw $$0 = ggy.a(gjs.a, 0.0F);
+      gjy $$1 = $$0.a();
+      a($$1);
+      return gju.a($$0, 64, 32);
    }
 
-   public void a(het $$0) {
+   protected static void a(gjy $$0) {
+      $$0.a("right_arm", gjt.c().a(40, 16).a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), gjq.a(-5.0F, 2.0F, 0.0F));
+      $$0.a("left_arm", gjt.c().a(40, 16).a().a(-1.0F, -2.0F, -1.0F, 2.0F, 12.0F, 2.0F), gjq.a(5.0F, 2.0F, 0.0F));
+      $$0.a("right_leg", gjt.c().a(0, 16).a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), gjq.a(-2.0F, 12.0F, 0.0F));
+      $$0.a("left_leg", gjt.c().a(0, 16).a().a(-1.0F, 0.0F, -1.0F, 2.0F, 12.0F, 2.0F), gjq.a(2.0F, 12.0F, 0.0F));
+   }
+
+   public void a(S $$0) {
       super.a($$0);
-      float $$1 = $$0.ak ? 1.0F : 1.5F;
-      this.a.f = -$$1 * 0.45F * azm.a(0.6F * $$0.u);
+      if ($$0.b && !$$0.d) {
+         float $$1 = $$0.H;
+         float $$2 = azm.a($$1 * (float) Math.PI);
+         float $$3 = azm.a((1.0F - (1.0F - $$1) * (1.0F - $$1)) * (float) Math.PI);
+         this.r.g = 0.0F;
+         this.s.g = 0.0F;
+         this.r.f = -(0.1F - $$2 * 0.6F);
+         this.s.f = 0.1F - $$2 * 0.6F;
+         this.r.e = (float) (-Math.PI / 2);
+         this.s.e = (float) (-Math.PI / 2);
+         this.r.e -= $$2 * 1.2F - $$3 * 0.4F;
+         this.s.e -= $$2 * 1.2F - $$3 * 0.4F;
+         gey.a(this.r, this.s, $$0.u);
+      }
+   }
+
+   @Override
+   public void a(bxa $$0, fjy $$1) {
+      this.e().a($$1);
+      float $$2 = $$0 == bxa.b ? 1.0F : -1.0F;
+      gjo $$3 = this.a($$0);
+      $$3.b += $$2;
+      $$3.a($$1);
+      $$3.b -= $$2;
    }
 }

@@ -1,71 +1,50 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+public class gtl implements gsy<eaj> {
+   private final grp a;
 
-class gtl {
-   private final Map<iu, dxf> a;
-   @Nullable
-   private final List<ecw<eah>> b;
-   private final boolean c;
-   private final eco d;
-
-   gtl(eco $$0) {
-      this.d = $$0;
-      this.c = $$0.H().ak();
-      this.a = ImmutableMap.copyOf($$0.I());
-      if ($$0 instanceof eck) {
-         this.b = null;
-      } else {
-         ecp[] $$1 = $$0.d();
-         this.b = new ArrayList<>($$1.length);
-
-         for (ecp $$2 : $$1) {
-            this.b.add($$2.c() ? null : $$2.h().d());
-         }
-      }
+   public gtl(gsz.a $$0) {
+      this.a = $$0.b();
    }
 
-   @Nullable
-   public dxf a(iu $$0) {
-      return this.a.get($$0);
-   }
-
-   public eah b(iu $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      if (this.c) {
-         eah $$4 = null;
-         if ($$2 == 60) {
-            $$4 = dmh.iy.m();
-         }
-
-         if ($$2 == 70) {
-            $$4 = efx.a($$1, $$3);
-         }
-
-         return $$4 == null ? dmh.a.m() : $$4;
-      } else if (this.b == null) {
-         return dmh.a.m();
-      } else {
-         try {
-            int $$5 = this.d.f($$2);
-            if ($$5 >= 0 && $$5 < this.b.size()) {
-               ecw<eah> $$6 = this.b.get($$5);
-               if ($$6 != null) {
-                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
-               }
+   public void a(eaj $$0, float $$1, fjy $$2, gqm $$3, int $$4, int $$5, fex $$6) {
+      djh $$7 = $$0.i();
+      if ($$7 != null) {
+         iv $$8 = $$0.ax_().a($$0.f().g());
+         eao $$9 = $$0.j();
+         if (!$$9.l()) {
+            grr.a();
+            $$2.a();
+            $$2.a($$0.b($$1), $$0.c($$1), $$0.d($$1));
+            if ($$9.a(dmo.bJ) && $$0.a($$1) <= 4.0F) {
+               $$9 = $$9.b(eah.d, Boolean.valueOf($$0.a($$1) <= 0.5F));
+               this.a($$8, $$9, $$2, $$3, $$7, false, $$5);
+            } else if ($$0.d() && !$$0.a()) {
+               ebq $$10 = $$9.a(dmo.by) ? ebq.b : ebq.a;
+               eao $$11 = dmo.bJ.m().b(eah.c, $$10).b(eah.a, $$9.c(eag.a));
+               $$11 = $$11.b(eah.d, Boolean.valueOf($$0.a($$1) >= 0.5F));
+               this.a($$8, $$11, $$2, $$3, $$7, false, $$5);
+               iv $$12 = $$8.a($$0.f());
+               $$2.b();
+               $$2.a();
+               $$9 = $$9.b(eag.c, Boolean.valueOf(true));
+               this.a($$12, $$9, $$2, $$3, $$7, true, $$5);
+            } else {
+               this.a($$8, $$9, $$2, $$3, $$7, false, $$5);
             }
 
-            return dmh.a.m();
-         } catch (Throwable var8) {
-            o $$8 = o.a(var8, "Getting block state");
-            p $$9 = $$8.a("Block being got");
-            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
-            throw new z($$8);
+            $$2.b();
+            grr.b();
          }
       }
+   }
+
+   private void a(iv $$0, eao $$1, fjy $$2, gqm $$3, djh $$4, boolean $$5, int $$6) {
+      gqx $$7 = gqe.b($$1);
+      fkc $$8 = $$3.getBuffer($$7);
+      this.a.b().a($$4, this.a.a($$1), $$1, $$0, $$2, $$8, $$5, azv.a(), $$1.b($$0), $$6);
+   }
+
+   @Override
+   public int aR_() {
+      return 68;
    }
 }

@@ -11,7 +11,7 @@ public class aic implements zf<agp> {
       this.c = $$1;
    }
 
-   public static aic a(ai $$0) {
+   public static aic a(aj $$0) {
       return new aic(aic.a.a, $$0.a());
    }
 

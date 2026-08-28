@@ -28,13 +28,13 @@ public class bce extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      OpticFinder<String> $$0 = DSL.fieldFinder("id", bks.a());
-      Type<?> $$1 = this.getInputSchema().getType(bix.s);
-      Type<?> $$2 = this.getOutputSchema().getType(bix.s);
+      OpticFinder<String> $$0 = DSL.fieldFinder("id", bku.a());
+      Type<?> $$1 = this.getInputSchema().getType(biz.s);
+      Type<?> $$2 = this.getOutputSchema().getType(biz.s);
       Type<?> $$3 = bbd.a($$1, $$1, $$2);
       return this.fixTypeEverywhereTyped("BlockEntityCustomNameToComponentFix", $$1, $$2, $$3x -> {
          Optional<String> $$4 = $$3x.getOptional($$0);
-         return $$4.isPresent() && !a.contains($$4.get()) ? bbd.a($$2, $$3x) : af.a(bbd.a($$3, $$3x), $$2, bce::a);
+         return $$4.isPresent() && !a.contains($$4.get()) ? bbd.a($$2, $$3x) : ag.a(bbd.a($$3, $$3x), $$2, bce::a);
       });
    }
 

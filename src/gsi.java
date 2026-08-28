@@ -1,118 +1,23 @@
-import java.util.List;
+import java.util.function.UnaryOperator;
 
-public class gsi<T extends dxf & dwz> implements gsm<T> {
-   public static final alg a = alg.b("textures/entity/beacon_beam.png");
-   public static final int b = 2048;
-   private static final float e = 96.0F;
-   public static final float c = 0.2F;
-   public static final float d = 0.25F;
+@FunctionalInterface
+public interface gsi extends UnaryOperator<gsh> {
+   gsi.a<i> a = gsh::a;
+   gsi.a<i> b = gsh::b;
+   gsi.a<alg> c = gsh::a;
+   gsi.a<Boolean> d = gsh::a;
+   gsi.a<Integer> e = gsh::a;
 
-   public gsi(gsn.a $$0) {
+   default gsi then(gsi $$0) {
+      return $$1 -> $$0.apply(this.apply($$1));
    }
 
-   @Override
-   public void a(T $$0, float $$1, fjj $$2, gqa $$3, int $$4, int $$5, feq $$6) {
-      long $$7 = $$0.i().ae();
-      float $$8 = (float)$$6.d($$0.ax_().b()).i();
-      float $$9 = Math.max(1.0F, $$8 / 96.0F);
-      List<dwz.a> $$10 = $$0.a();
-      int $$11 = 0;
+   @FunctionalInterface
+   public interface a<T> {
+      gsh apply(gsh var1, T var2);
 
-      for (int $$12 = 0; $$12 < $$10.size(); $$12++) {
-         dwz.a $$13 = $$10.get($$12);
-         a($$2, $$3, $$1, $$9, $$7, $$11, $$12 == $$10.size() - 1 ? 2048 : $$13.c(), $$13.b());
-         $$11 += $$13.c();
+      default gsi withValue(T $$0) {
+         return $$1 -> this.apply($$1, $$0);
       }
-   }
-
-   private static void a(fjj $$0, gqa $$1, float $$2, float $$3, long $$4, int $$5, int $$6, int $$7) {
-      a($$0, $$1, a, $$2, 1.0F, $$4, $$5, $$6, $$7, 0.2F * $$3, 0.25F * $$3);
-   }
-
-   public static void a(fjj $$0, gqa $$1, alg $$2, float $$3, float $$4, long $$5, int $$6, int $$7, int $$8, float $$9, float $$10) {
-      int $$11 = $$6 + $$7;
-      $$0.a();
-      $$0.a(0.5, 0.0, 0.5);
-      float $$12 = (float)Math.floorMod($$5, 40) + $$3;
-      float $$13 = $$7 < 0 ? $$12 : -$$12;
-      float $$14 = azm.i($$13 * 0.2F - (float)azm.d($$13 * 0.1F));
-      $$0.a();
-      $$0.a(a.d.rotationDegrees($$12 * 2.25F - 45.0F));
-      float $$15 = 0.0F;
-      float $$18 = 0.0F;
-      float $$19 = -$$9;
-      float $$20 = 0.0F;
-      float $$21 = 0.0F;
-      float $$22 = -$$9;
-      float $$23 = 0.0F;
-      float $$24 = 1.0F;
-      float $$25 = -1.0F + $$14;
-      float $$26 = (float)$$7 * $$4 * (0.5F / $$9) + $$25;
-      a($$0, $$1.getBuffer(gqk.e($$2, false)), $$8, $$6, $$11, 0.0F, $$9, $$9, 0.0F, $$19, 0.0F, 0.0F, $$22, 0.0F, 1.0F, $$26, $$25);
-      $$0.b();
-      $$15 = -$$10;
-      float $$28 = -$$10;
-      $$18 = -$$10;
-      $$19 = -$$10;
-      $$23 = 0.0F;
-      $$24 = 1.0F;
-      $$25 = -1.0F + $$14;
-      $$26 = (float)$$7 * $$4 + $$25;
-      a($$0, $$1.getBuffer(gqk.e($$2, true)), axw.c(32, $$8), $$6, $$11, $$15, $$28, $$10, $$18, $$19, $$10, $$10, $$10, 0.0F, 1.0F, $$26, $$25);
-      $$0.b();
-   }
-
-   private static void a(
-      fjj $$0,
-      fjn $$1,
-      int $$2,
-      int $$3,
-      int $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      float $$9,
-      float $$10,
-      float $$11,
-      float $$12,
-      float $$13,
-      float $$14,
-      float $$15,
-      float $$16
-   ) {
-      fjj.a $$17 = $$0.c();
-      a($$17, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$13, $$14, $$15, $$16);
-      a($$17, $$1, $$2, $$3, $$4, $$11, $$12, $$9, $$10, $$13, $$14, $$15, $$16);
-      a($$17, $$1, $$2, $$3, $$4, $$7, $$8, $$11, $$12, $$13, $$14, $$15, $$16);
-      a($$17, $$1, $$2, $$3, $$4, $$9, $$10, $$5, $$6, $$13, $$14, $$15, $$16);
-   }
-
-   private static void a(
-      fjj.a $$0, fjn $$1, int $$2, int $$3, int $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11, float $$12
-   ) {
-      a($$0, $$1, $$2, $$4, $$5, $$6, $$10, $$11);
-      a($$0, $$1, $$2, $$3, $$5, $$6, $$10, $$12);
-      a($$0, $$1, $$2, $$3, $$7, $$8, $$9, $$12);
-      a($$0, $$1, $$2, $$4, $$7, $$8, $$9, $$11);
-   }
-
-   private static void a(fjj.a $$0, fjn $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      $$1.a($$0, $$4, (float)$$3, $$5).a($$2).a($$6, $$7).b(hin.d).c(15728880).b($$0, 0.0F, 1.0F, 0.0F);
-   }
-
-   @Override
-   public boolean a(T $$0) {
-      return true;
-   }
-
-   @Override
-   public int aR_() {
-      return Integer.MAX_VALUE;
-   }
-
-   @Override
-   public boolean a(T $$0, feq $$1) {
-      return feq.b($$0.ax_()).d(1.0, 0.0, 1.0).a((jo)$$1.d(1.0, 0.0, 1.0), (double)this.aR_());
    }
 }

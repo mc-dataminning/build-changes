@@ -10,53 +10,66 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.concurrent.CompletableFuture;
 
-public class gg implements ArgumentType<gh> {
-   private static final Collection<String> b = Arrays.asList("0 0", "~ ~", "~1 ~-2", "^ ^", "^-1 ^0");
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("argument.pos2d.incomplete"));
+public class gg implements ArgumentType<gi> {
+   private static final Collection<String> d = Arrays.asList("0 0 0", "~ ~ ~", "^ ^ ^", "^1 ^ ^-5", "~0.5 ~1 ~-5");
+   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("argument.pos.unloaded"));
+   public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wy.c("argument.pos.outofworld"));
+   public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wy.c("argument.pos.outofbounds"));
 
    public static gg a() {
       return new gg();
    }
 
-   public static arb a(CommandContext<ei> $$0, String $$1) {
-      iu $$2 = ((gh)$$0.getArgument($$1, gh.class)).c((ei)$$0.getSource());
-      return new arb($$2.u(), $$2.w());
+   public static iv a(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
+      arq $$2 = ((ej)$$0.getSource()).e();
+      return a($$0, $$2, $$1);
    }
 
-   public gh a(StringReader $$0) throws CommandSyntaxException {
-      int $$1 = $$0.getCursor();
-      if (!$$0.canRead()) {
-         throw a.createWithContext($$0);
+   public static iv a(CommandContext<ej> $$0, arq $$1, String $$2) throws CommandSyntaxException {
+      iv $$3 = b($$0, $$2);
+      if (!$$1.C($$3)) {
+         throw a.create();
+      } else if (!$$1.k($$3)) {
+         throw b.create();
       } else {
-         gn $$2 = gn.a($$0);
-         if ($$0.canRead() && $$0.peek() == ' ') {
-            $$0.skip();
-            gn $$3 = gn.a($$0);
-            return new go($$2, new gn(true, 0.0), $$3);
-         } else {
-            $$0.setCursor($$1);
-            throw a.createWithContext($$0);
-         }
+         return $$3;
       }
    }
 
+   public static iv b(CommandContext<ej> $$0, String $$1) {
+      return ((gi)$$0.getArgument($$1, gi.class)).c((ej)$$0.getSource());
+   }
+
+   public static iv c(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
+      iv $$2 = b($$0, $$1);
+      if (!djh.l($$2)) {
+         throw c.create();
+      } else {
+         return $$2;
+      }
+   }
+
+   public gi a(StringReader $$0) throws CommandSyntaxException {
+      return (gi)($$0.canRead() && $$0.peek() == '^' ? gj.a($$0) : gp.a($$0));
+   }
+
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      if (!($$0.getSource() instanceof en)) {
+      if (!($$0.getSource() instanceof eo)) {
          return Suggestions.empty();
       } else {
          String $$2 = $$1.getRemaining();
-         Collection<en.b> $$3;
+         Collection<eo.b> $$3;
          if (!$$2.isEmpty() && $$2.charAt(0) == '^') {
-            $$3 = Collections.singleton(en.b.a);
+            $$3 = Collections.singleton(eo.b.a);
          } else {
-            $$3 = ((en)$$0.getSource()).A();
+            $$3 = ((eo)$$0.getSource()).A();
          }
 
-         return en.b($$2, $$3, $$1, ej.a(this::a));
+         return eo.a($$2, $$3, $$1, ek.a(this::a));
       }
    }
 
    public Collection<String> getExamples() {
-      return b;
+      return d;
    }
 }

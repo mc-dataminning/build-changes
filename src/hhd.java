@@ -1,27 +1,16 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public record hhd() implements hhn<cxw.a> {
-   public static final Codec<cxw.a> a = cxw.a.d;
-   public static final hhn.a<hhd, cxw.a> b = hhn.a.a(MapCodec.unit(new hhd()), a);
+public record hhd() implements hhk {
+   public static final MapCodec<hhd> a = MapCodec.unit(new hhd());
 
-   public cxw.a a(czd $$0, @Nullable gjz $$1, @Nullable bxe $$2, int $$3, czb $$4) {
-      dbh $$5 = $$0.a(kj.P);
-      if ($$5 == null || $$5.b()) {
-         return cxw.a.a;
-      } else {
-         return $$5.a(czh.vE) ? cxw.a.c : cxw.a.b;
-      }
+   @Override
+   public float a(czk $$0, @Nullable gkl $$1, @Nullable bxj $$2, int $$3) {
+      return $$2 instanceof crj $$4 ? $$4.gE().a($$0, 0.0F) : 0.0F;
    }
 
    @Override
-   public hhn.a<hhd, cxw.a> a() {
-      return b;
-   }
-
-   @Override
-   public Codec<cxw.a> b() {
+   public MapCodec<hhd> a() {
       return a;
    }
 }

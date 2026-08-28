@@ -1,44 +1,35 @@
-public class gqy implements fjn {
-   private final fjn a;
-   private final hix b;
+public class gqy {
+   private final long[] a;
+   private int b;
+   private int c;
 
-   public gqy(fjn $$0, hix $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public gqy(int $$0) {
+      this.a = new long[$$0];
    }
 
-   @Override
-   public fjn a(float $$0, float $$1, float $$2) {
-      return this.a.a($$0, $$1, $$2);
-   }
+   public long a(long $$0) {
+      if (this.b < this.a.length) {
+         this.b++;
+      }
 
-   @Override
-   public fjn a(int $$0, int $$1, int $$2, int $$3) {
-      return this.a.a($$0, $$1, $$2, $$3);
-   }
+      this.a[this.c] = $$0;
+      this.c = (this.c + 1) % this.a.length;
+      long $$1 = Long.MAX_VALUE;
+      long $$2 = Long.MIN_VALUE;
+      long $$3 = 0L;
 
-   @Override
-   public fjn a(float $$0, float $$1) {
-      return this.a.a(this.b.a($$0), this.b.c($$1));
-   }
+      for (int $$4 = 0; $$4 < this.b; $$4++) {
+         long $$5 = this.a[$$4];
+         $$3 += $$5;
+         $$1 = Math.min($$1, $$5);
+         $$2 = Math.max($$2, $$5);
+      }
 
-   @Override
-   public fjn a(int $$0, int $$1) {
-      return this.a.a($$0, $$1);
-   }
-
-   @Override
-   public fjn b(int $$0, int $$1) {
-      return this.a.b($$0, $$1);
-   }
-
-   @Override
-   public fjn b(float $$0, float $$1, float $$2) {
-      return this.a.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-      this.a.a($$0, $$1, $$2, $$3, this.b.a($$4), this.b.c($$5), $$6, $$7, $$8, $$9, $$10);
+      if (this.b > 2) {
+         $$3 -= $$1 + $$2;
+         return $$3 / (long)(this.b - 2);
+      } else {
+         return $$3 > 0L ? (long)this.b / $$3 : 0L;
+      }
    }
 }

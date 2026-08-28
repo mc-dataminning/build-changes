@@ -1,20 +1,31 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class cct {
-   public static byw<bxe> a() {
-      return cci.a(
-         (Function<cci.b<bxe>, ? extends App<cci.c<bxe>, ccl<bxe>>>)($$0 -> $$0.group($$0.a(cgg.o), $$0.a(cgg.aA), $$0.a(cgg.az), $$0.c(cgg.p))
-               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$4x, $$5, $$6) -> {
-                     Optional<iu> $$7 = $$0.<bxe>a($$3).map(bwf::dv).or(() -> $$0.a($$2));
-                     if ($$7.isEmpty()) {
-                        return false;
-                     } else {
-                        $$1.a(new byy($$7.get()));
-                        return true;
-                     }
-                  }))
-      );
+public class cct<E extends cqm> extends bza<E> {
+   public cct(int $$0) {
+      super(ImmutableMap.of(cgl.p, cgm.b, cgl.n, cgm.b), $$0);
+   }
+
+   protected boolean a(arq $$0, E $$1, long $$2) {
+      return $$1.dQ() == null;
+   }
+
+   protected boolean a(arq $$0, E $$1) {
+      return $$1.aH() || $$1.bh() || $$1.bu();
+   }
+
+   protected void b(arq $$0, E $$1, long $$2) {
+      if ($$1.aH()) {
+         $$1.b(bxv.o);
+         $$1.a(awn.CP, 5.0F, 1.0F);
+      } else {
+         $$1.a(awn.CK, 5.0F, 1.0F);
+         this.c($$0, $$1, $$2);
+      }
+   }
+
+   protected void c(arq $$0, E $$1, long $$2) {
+      if ($$1.dQ() == null) {
+         $$1.a(bwi.d.b);
+      }
    }
 }

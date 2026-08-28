@@ -1,32 +1,39 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+import javax.annotation.Nullable;
 
-public enum czz implements bak {
-   a(0, "common", n.p),
-   b(1, "uncommon", n.o),
-   c(2, "rare", n.l),
-   d(3, "epic", n.n);
+public class czz extends cxy {
+   private final bwr<? extends bxl> a;
+   private final awm b;
 
-   public static final Codec<czz> e = bak.b(czz::values);
-   public static final IntFunction<czz> f = ayc.a($$0 -> $$0.h, values(), ayc.a.a);
-   public static final yw<ByteBuf, czz> g = yu.a(f, $$0 -> $$0.h);
-   private final int h;
-   private final String i;
-   private final n j;
-
-   private czz(final int $$0, final String $$1, final n $$2) {
-      this.h = $$0;
-      this.i = $$1;
-      this.j = $$2;
-   }
-
-   public n a() {
-      return this.j;
+   public czz(bwr<? extends bxl> $$0, ewu $$1, awm $$2, czg.a $$3) {
+      super($$1, $$3);
+      this.a = $$0;
+      this.b = $$2;
    }
 
    @Override
-   public String c() {
-      return this.i;
+   public void a(@Nullable bxj $$0, djh $$1, czk $$2, iv $$3) {
+      if ($$1 instanceof arq) {
+         this.a((arq)$$1, $$2, $$3);
+         $$1.a($$0, efo.t, $$3);
+      }
+   }
+
+   @Override
+   protected void a(@Nullable bxj $$0, dji $$1, iv $$2) {
+      $$1.a($$0, $$2, this.b, awo.g, 1.0F, 1.0F);
+   }
+
+   private void a(arq $$0, czk $$1, iv $$2) {
+      bxl $$3 = this.a.b($$0, bwr.a($$0, $$1, null), $$2, bwq.l, true, false);
+      if ($$3 instanceof cjb $$4) {
+         dbs $$5 = $$1.a(kk.Z, dbs.a);
+         $$4.h($$5.d());
+         $$4.w(true);
+      }
+
+      if ($$3 != null) {
+         $$0.a_($$3);
+         $$3.T();
+      }
    }
 }

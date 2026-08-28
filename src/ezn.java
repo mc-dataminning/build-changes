@@ -1,67 +1,109 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Set;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
 public class ezn {
-   private final azt a;
-   private final bay b;
-   private final Optional<jf.a> c;
-   private final Set<alf<?>> d;
+   private static final Codec<ezn> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               fdu.a.optionalFieldOf("min").forGetter($$0x -> Optional.ofNullable($$0x.c)),
+               fdu.a.optionalFieldOf("max").forGetter($$0x -> Optional.ofNullable($$0x.d))
+            )
+            .apply($$0, ezn::new)
+   );
+   public static final Codec<ezn> a = Codec.either(Codec.INT, b).xmap($$0 -> (ezn)$$0.map(ezn::a, Function.identity()), $$0 -> {
+      OptionalInt $$1 = $$0.b();
+      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
+   });
+   @Nullable
+   private final fdt c;
+   @Nullable
+   private final fdt d;
+   private final ezn.b e;
+   private final ezn.a f;
 
-   public ezn(azt $$0, bay $$1, jf.a $$2) {
-      this($$0, $$1, Optional.of($$2), Set.of());
+   public Set<bax<?>> a() {
+      Builder<bax<?>> $$0 = ImmutableSet.builder();
+      if (this.c != null) {
+         $$0.addAll(this.c.a());
+      }
+
+      if (this.d != null) {
+         $$0.addAll(this.d.a());
+      }
+
+      return $$0.build();
    }
 
-   public ezn(azt $$0, bay $$1) {
-      this($$0, $$1, Optional.empty(), Set.of());
+   private ezn(Optional<fdt> $$0, Optional<fdt> $$1) {
+      this($$0.orElse(null), $$1.orElse(null));
    }
 
-   private ezn(azt $$0, bay $$1, Optional<jf.a> $$2, Set<alf<?>> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   public ezn a(String $$0) {
-      return new ezn(this.a.a($$0), this.b, this.c, this.d);
-   }
-
-   public ezn a(String $$0, alf<?> $$1) {
-      Set<alf<?>> $$2 = ImmutableSet.builder().addAll(this.d).add($$1).build();
-      return new ezn(this.a.a($$0), this.b, this.c, $$2);
-   }
-
-   public boolean a(alf<?> $$0) {
-      return this.d.contains($$0);
-   }
-
-   public void b(String $$0) {
-      this.a.b($$0);
-   }
-
-   public void a(ezi $$0) {
-      Set<bax<?>> $$1 = $$0.a();
-      Set<bax<?>> $$2 = Sets.difference($$1, this.b.b());
-      if (!$$2.isEmpty()) {
-         this.a.b("Parameters " + $$2 + " are not provided in this context");
+   private ezn(@Nullable fdt $$0, @Nullable fdt $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$0 == null) {
+         if ($$1 == null) {
+            this.e = ($$0x, $$1x) -> $$1x;
+            this.f = ($$0x, $$1x) -> true;
+         } else {
+            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
+            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
+         }
+      } else if ($$1 == null) {
+         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
+         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
+      } else {
+         this.e = ($$2, $$3) -> azm.a($$3, $$0.a($$2), $$1.a($$2));
+         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
       }
    }
 
-   public jf.a a() {
-      return this.c.orElseThrow(() -> new UnsupportedOperationException("References not allowed"));
+   public static ezn a(int $$0) {
+      fdq $$1 = fdq.a((float)$$0);
+      return new ezn(Optional.of($$1), Optional.of($$1));
    }
 
-   public boolean b() {
-      return this.c.isPresent();
+   public static ezn a(int $$0, int $$1) {
+      return new ezn(Optional.of(fdq.a((float)$$0)), Optional.of(fdq.a((float)$$1)));
    }
 
-   public ezn a(bay $$0) {
-      return new ezn(this.a, $$0, this.c, this.d);
+   public static ezn b(int $$0) {
+      return new ezn(Optional.of(fdq.a((float)$$0)), Optional.empty());
    }
 
-   public azt c() {
-      return this.a;
+   public static ezn c(int $$0) {
+      return new ezn(Optional.empty(), Optional.of(fdq.a((float)$$0)));
+   }
+
+   public int a(ezo $$0, int $$1) {
+      return this.e.apply($$0, $$1);
+   }
+
+   public boolean b(ezo $$0, int $$1) {
+      return this.f.test($$0, $$1);
+   }
+
+   private OptionalInt b() {
+      return Objects.equals(this.c, this.d) && this.c instanceof fdq $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
+         ? OptionalInt.of((int)$$0.c())
+         : OptionalInt.empty();
+   }
+
+   @FunctionalInterface
+   interface a {
+      boolean test(ezo var1, int var2);
+   }
+
+   @FunctionalInterface
+   interface b {
+      int apply(ezo var1, int var2);
    }
 }

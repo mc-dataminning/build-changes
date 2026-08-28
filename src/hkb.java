@@ -1,40 +1,75 @@
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public abstract class hkb implements auw, AutoCloseable {
-   private final hiw a;
-   private final alg b;
-   private final Set<auc<?>> c;
+public class hkb extends auh {
+   private static final aud e = new aud(wy.c("resourcePack.vanilla.description"), ac.b().a(atr.a), Optional.empty());
+   private static final ath f = ath.a(aud.b, e);
+   public static final String d = "high_contrast";
+   private static final Map<String, wy> g = Map.of(
+      "programmer_art", wy.c("resourcePack.programmer_art.name"), "high_contrast", wy.c("resourcePack.high_contrast.name")
+   );
+   private static final ato h = new ato("vanilla", wy.c("resourcePack.vanilla.name"), auo.c, Optional.of(c));
+   private static final atq i = new atq(true, auk.b.b, false);
+   private static final atq j = new atq(false, auk.b.a, false);
+   private static final alg k = alg.b("resourcepacks");
+   @Nullable
+   private final Path l;
 
-   public hkb(hiz $$0, alg $$1, alg $$2) {
-      this($$0, $$1, $$2, his.a);
+   public hkb(Path $$0, fen $$1) {
+      super(atr.a, b($$0), k, $$1);
+      this.l = this.a($$0);
    }
 
-   public hkb(hiz $$0, alg $$1, alg $$2, Set<auc<?>> $$3) {
-      this.b = $$2;
-      this.a = new hiw($$1);
-      $$0.a(this.a.g(), this.a);
-      this.c = $$3;
+   private static ato a(String $$0, wy $$1) {
+      return new ato($$0, $$1, auo.c, Optional.of(auj.a($$0)));
    }
 
-   protected hix a(alg $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public final CompletableFuture<Void> a(auw.a $$0, avd $$1, Executor $$2, Executor $$3) {
-      return his.a(this.a).a($$1, this.b, 0, $$2, this.c).thenCompose(his.a::a).thenCompose($$0::a).thenAcceptAsync(this::a, $$3);
-   }
-
-   private void a(his.a $$0) {
-      try (bqt $$1 = bqn.a().d("upload")) {
-         this.a.a($$0);
+   @Nullable
+   private Path a(Path $$0) {
+      if (ac.aV && $$0.getFileSystem() == FileSystems.getDefault()) {
+         Path $$1 = $$0.getParent().resolve("resourcepacks");
+         if (Files.isDirectory($$1)) {
+            return $$1;
+         }
       }
+
+      return null;
+   }
+
+   private static att b(Path $$0) {
+      atu $$1 = new atu().a(f).a("minecraft", "realms");
+      return $$1.b().a().a(atr.a, $$0).a(h);
    }
 
    @Override
-   public void close() {
-      this.a.f();
+   protected wy a(String $$0) {
+      wy $$1 = g.get($$0);
+      return (wy)($$1 != null ? $$1 : wy.b($$0));
+   }
+
+   @Nullable
+   @Override
+   protected auk a(atp $$0) {
+      return auk.a(h, b($$0), atr.a, i);
+   }
+
+   @Nullable
+   @Override
+   protected auk a(String $$0, auk.c $$1, wy $$2) {
+      return auk.a(a($$0, $$2), $$1, atr.a, j);
+   }
+
+   @Override
+   protected void a(BiConsumer<String, Function<String, auk>> $$0) {
+      super.a($$0);
+      if (this.l != null) {
+         this.a(this.l, $$0);
+      }
    }
 }

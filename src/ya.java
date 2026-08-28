@@ -5,7 +5,7 @@ import java.util.stream.Stream;
 public interface ya {
    MapCodec<ya> c = xa.a(new ya.a[]{yb.b, xz.b, yi.b}, ya.a::a, ya::a, "source");
 
-   Stream<tz> a(ei var1) throws CommandSyntaxException;
+   Stream<tz> a(ej var1) throws CommandSyntaxException;
 
    ya.a<?> a();
 

@@ -1,132 +1,63 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
+import java.util.function.Consumer;
 
-public class fah extends fau {
+public class fah extends fag {
    public static final MapCodec<fah> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  fah.b.b.fieldOf("source").forGetter($$0x -> $$0x.b),
-                  ki.a.listOf().optionalFieldOf("include").forGetter($$0x -> $$0x.c),
-                  ki.a.listOf().optionalFieldOf("exclude").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, fah::new)
+      $$0 -> $$0.group(Codec.either(ezt.a, ezt.d).fieldOf("value").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, fah::new)
    );
-   private final fah.b b;
-   private final Optional<List<ki<?>>> c;
-   private final Optional<List<ki<?>>> d;
-   private final Predicate<ki<?>> e;
+   private final Either<alf<ezt>, ezt> j;
 
-   fah(List<fcq> $$0, fah.b $$1, Optional<List<ki<?>>> $$2, Optional<List<ki<?>>> $$3) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2.map(List::copyOf);
-      this.d = $$3.map(List::copyOf);
-      List<Predicate<ki<?>>> $$4 = new ArrayList<>(2);
-      $$3.ifPresent($$1x -> $$4.add($$1xx -> !$$1x.contains($$1xx)));
-      $$2.ifPresent($$1x -> $$4.add($$1x::contains));
-      this.e = af.a($$4);
+   private fah(Either<alf<ezt>, ezt> $$0, int $$1, int $$2, List<fcx> $$3, List<fbc> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public faw<fah> b() {
-      return fax.J;
+   public faf a() {
+      return fac.d;
    }
 
    @Override
-   public Set<bax<?>> a() {
-      return this.b.a();
+   public void a(Consumer<czk> $$0, ezo $$1) {
+      ((ezt)this.j.map($$1x -> $$1.a().c($$1x).map(jf::a).orElse(ezt.f), $$0x -> $$0x)).a($$1, $$0);
    }
 
    @Override
-   public czd a(czd $$0, ezh $$1) {
-      kg $$2 = this.b.a($$1);
-      $$0.b($$2.a(this.e));
-      return $$0;
+   public void a(ezu $$0) {
+      Optional<alf<ezt>> $$1 = this.j.left();
+      if ($$1.isPresent()) {
+         alf<ezt> $$2 = $$1.get();
+         if (!$$0.b()) {
+            $$0.b("Uses reference to " + $$2.a() + ", but references are not allowed");
+            return;
+         }
+
+         if ($$0.a($$2)) {
+            $$0.b("Table " + $$2.a() + " is recursively called");
+            return;
+         }
+      }
+
+      super.a($$0);
+      this.j
+         .ifLeft(
+            $$1x -> $$0.a()
+                  .c($$1x)
+                  .ifPresentOrElse($$2x -> ((ezt)$$2x.a()).a($$0.a("->{" + $$1x.a() + "}", $$1x)), () -> $$0.b("Unknown loot table called " + $$1x.a()))
+         )
+         .ifRight($$1x -> $$1x.a($$0.a("->{inline}")));
    }
 
-   public static fah.a a(fah.b $$0) {
-      return new fah.a($$0);
+   public static fag.a<?> a(alf<ezt> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new fah(Either.left($$0), $$1, $$2, $$3, $$4));
    }
 
-   public static class a extends fau.a<fah.a> {
-      private final fah.b a;
-      private Optional<Builder<ki<?>>> b = Optional.empty();
-      private Optional<Builder<ki<?>>> c = Optional.empty();
-
-      a(fah.b $$0) {
-         this.a = $$0;
-      }
-
-      public fah.a a(ki<?> $$0) {
-         if (this.b.isEmpty()) {
-            this.b = Optional.of(ImmutableList.builder());
-         }
-
-         this.b.get().add($$0);
-         return this;
-      }
-
-      public fah.a b(ki<?> $$0) {
-         if (this.c.isEmpty()) {
-            this.c = Optional.of(ImmutableList.builder());
-         }
-
-         this.c.get().add($$0);
-         return this;
-      }
-
-      protected fah.a a() {
-         return this;
-      }
-
-      @Override
-      public fav b() {
-         return new fah(this.g(), this.a, this.b.map(Builder::build), this.c.map(Builder::build));
-      }
-   }
-
-   public static enum b implements bak {
-      a("block_entity");
-
-      public static final Codec<fah.b> b = bak.b(fah.b::values);
-      private final String c;
-
-      private b(final String $$0) {
-         this.c = $$0;
-      }
-
-      public kg a(ezh $$0) {
-         switch (this) {
-            case a:
-               dxf $$1 = $$0.c(fcb.h);
-               return $$1 != null ? $$1.q() : kg.a;
-            default:
-               throw new MatchException(null, null);
-         }
-      }
-
-      public Set<bax<?>> a() {
-         switch (this) {
-            case a:
-               return Set.of(fcb.h);
-            default:
-               throw new MatchException(null, null);
-         }
-      }
-
-      @Override
-      public String c() {
-         return this.c;
-      }
+   public static fag.a<?> a(ezt $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new fah(Either.right($$0), $$1, $$2, $$3, $$4));
    }
 }

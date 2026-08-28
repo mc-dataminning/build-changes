@@ -1,70 +1,132 @@
-import java.util.Set;
-import java.util.function.BiFunction;
-import java.util.function.UnaryOperator;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-public record gdm(ehe a, jr<eef> b, ehb c, jl<alp> d, alr e, djy f, gdh g) {
-   public gdm(ehc $$0, jl<alp> $$1, alr $$2, djy $$3) {
-      this($$0.a(), $$0.b(), $$1, $$2, $$3, new gdh(gdo.a.a, Set.of(), null));
+public class gdm extends fyn {
+   private static final wy a = wy.c("selectWorld.experimental.title");
+   private static final wy b = wy.c("selectWorld.experimental.message");
+   private static final wy c = wy.c("selectWorld.experimental.details");
+   private static final int d = 10;
+   private static final int s = 100;
+   private final BooleanConsumer u;
+   final Collection<auk> v;
+   private final fwi w = new fwi().a(10).b(20);
+
+   public gdm(Collection<auk> $$0, BooleanConsumer $$1) {
+      super(a);
+      this.v = $$0;
+      this.u = $$1;
    }
 
-   public gdm(ehe $$0, ehb $$1, jl<alp> $$2, alr $$3, djy $$4, gdh $$5) {
-      this($$0, $$2.a(alp.c).f(mg.bp), $$1, $$2.a(alp.c), $$3, $$4, $$5);
+   @Override
+   public wy i() {
+      return wx.a(super.i(), b);
    }
 
-   public gdm a(ehe $$0, ehb $$1) {
-      return new gdm($$0, this.b, $$1, this.d, this.e, this.f, this.g);
+   @Override
+   protected void aO_() {
+      super.aO_();
+      fwi.b $$0 = this.w.d(2);
+      fwm $$1 = $$0.b().b();
+      $$0.a(new fuc(this.l, this.p), 2, $$1);
+      ftp $$2 = $$0.a(new ftp(b, this.p).b(true), 2, $$1);
+      $$2.d(310);
+      $$0.a(fsv.a(c, $$0x -> this.m.a(new gdm.a())).a(100).a(), 2, $$1);
+      $$0.a(fsv.a(wx.i, $$0x -> this.u.accept(true)).a());
+      $$0.a(fsv.a(wx.k, $$0x -> this.u.accept(false)).a());
+      this.w.a($$1x -> {
+         fst var10000 = this.c($$1x);
+      });
+      this.w.a();
+      this.c();
    }
 
-   public gdm a(gdm.b $$0) {
-      return new gdm($$0.apply(this.a), this.b, this.c, this.d, this.e, this.f, this.g);
+   @Override
+   protected void c() {
+      fwh.a(this.w, 0, 0, this.n, this.o, 0.5F, 0.5F);
    }
 
-   public gdm a(gdm.a $$0) {
-      return new gdm(this.a, this.b, $$0.apply(this.a(), this.c), this.d, this.e, this.f, this.g);
+   @Override
+   public void aL_() {
+      this.u.accept(false);
    }
 
-   public js.b a() {
-      return this.d.a();
-   }
+   class a extends fyn {
+      private static final wy b = wy.c("selectWorld.experimental.details.title");
+      final fwj c = new fwj(this);
+      @Nullable
+      private gdm.a.a d;
 
-   public void b() {
-      for (eef $$0 : this.d()) {
-         $$0.b().a();
+      a() {
+         super(b);
       }
-   }
 
-   public ehe c() {
-      return this.a;
-   }
+      @Override
+      protected void aO_() {
+         this.c.a(b, this.p);
+         this.d = this.c.c(new gdm.a.a(this.m, gdm.this.v));
+         this.c.b(fsv.a(wx.k, $$0 -> this.aL_()).a());
+         this.c.a($$1 -> {
+            fst var10000 = this.c($$1);
+         });
+         this.c();
+      }
 
-   public jr<eef> d() {
-      return this.b;
-   }
+      @Override
+      protected void c() {
+         if (this.d != null) {
+            this.d.a(this.n, this.c);
+         }
 
-   public ehb e() {
-      return this.c;
-   }
+         this.c.a();
+      }
 
-   public jl<alp> f() {
-      return this.d;
-   }
+      @Override
+      public void aL_() {
+         this.m.a(gdm.this);
+      }
 
-   public alr g() {
-      return this.e;
-   }
+      class a extends ftr<gdm.a.b> {
+         public a(final fpo $$0, final Collection<auk> $$1) {
+            super($$0, a.this.n, a.this.c.d(), a.this.c.c(), (9 + 2) * 3);
 
-   public djy h() {
-      return this.f;
-   }
+            for (auk $$2 : $$1) {
+               String $$3 = cuv.a(cuv.g, $$2.e());
+               if (!$$3.isEmpty()) {
+                  wy $$4 = xb.a($$2.b().f(), xv.a.a(true));
+                  wy $$5 = wy.a("selectWorld.experimental.details.entry", $$3);
+                  this.b(a.this.new b($$4, $$5, fto.a(a.this.p, $$5, this.a())));
+               }
+            }
+         }
 
-   public gdh i() {
-      return this.g;
-   }
+         @Override
+         public int a() {
+            return this.g * 3 / 4;
+         }
+      }
 
-   @FunctionalInterface
-   public interface a extends BiFunction<js.b, ehb, ehb> {
-   }
+      class b extends ftr.a<gdm.a.b> {
+         private final wy b;
+         private final wy c;
+         private final fto d;
 
-   public interface b extends UnaryOperator<ehe> {
+         b(final wy $$0, final wy $$1, final fto $$2) {
+            this.b = $$0;
+            this.c = $$1;
+            this.d = $$2;
+         }
+
+         @Override
+         public void a(fsh $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.b(a.this.m.h, this.b, $$3, $$2, -1);
+            this.d.b($$0, $$3, $$2 + 12, 9, -1);
+         }
+
+         @Override
+         public wy a() {
+            return wy.a("narrator.select", wx.a(this.b, this.c));
+         }
+      }
    }
 }

@@ -1,44 +1,100 @@
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.function.Consumer;
 
-public class dao extends cxl {
-   protected final dmf a;
-   private final ja b;
+public class dao extends czg {
+   private static final o a = o.h;
+   private static final o b = o.j;
+   private static final wy c = wy.c(ag.a("item", alg.b("smithing_template.ingredients"))).a(a);
+   private static final wy d = wy.c(ag.a("item", alg.b("smithing_template.applies_to"))).a(a);
+   private static final wy o = wy.c(ag.a("item", alg.b("smithing_template"))).a(a);
+   private static final wy p = wy.c(ag.a("item", alg.b("smithing_template.armor_trim.applies_to"))).a(b);
+   private static final wy q = wy.c(ag.a("item", alg.b("smithing_template.armor_trim.ingredients"))).a(b);
+   private static final wy r = wy.c(ag.a("item", alg.b("smithing_template.armor_trim.base_slot_description")));
+   private static final wy s = wy.c(ag.a("item", alg.b("smithing_template.armor_trim.additions_slot_description")));
+   private static final wy t = wy.c(ag.a("item", alg.b("smithing_template.netherite_upgrade.applies_to"))).a(b);
+   private static final wy u = wy.c(ag.a("item", alg.b("smithing_template.netherite_upgrade.ingredients"))).a(b);
+   private static final wy v = wy.c(ag.a("item", alg.b("smithing_template.netherite_upgrade.base_slot_description")));
+   private static final wy w = wy.c(ag.a("item", alg.b("smithing_template.netherite_upgrade.additions_slot_description")));
+   private static final alg x = alg.b("container/slot/helmet");
+   private static final alg y = alg.b("container/slot/chestplate");
+   private static final alg z = alg.b("container/slot/leggings");
+   private static final alg A = alg.b("container/slot/boots");
+   private static final alg B = alg.b("container/slot/hoe");
+   private static final alg C = alg.b("container/slot/axe");
+   private static final alg D = alg.b("container/slot/sword");
+   private static final alg E = alg.b("container/slot/shovel");
+   private static final alg F = alg.b("container/slot/pickaxe");
+   private static final alg G = alg.b("container/slot/ingot");
+   private static final alg H = alg.b("container/slot/redstone_dust");
+   private static final alg I = alg.b("container/slot/quartz");
+   private static final alg J = alg.b("container/slot/emerald");
+   private static final alg K = alg.b("container/slot/diamond");
+   private static final alg L = alg.b("container/slot/lapis_lazuli");
+   private static final alg M = alg.b("container/slot/amethyst_shard");
+   private final wy N;
+   private final wy O;
+   private final wy P;
+   private final wy Q;
+   private final List<alg> R;
+   private final List<alg> S;
 
-   public dao(dmf $$0, dmf $$1, ja $$2, cyz.a $$3) {
-      super($$0, $$3);
-      this.a = $$1;
-      this.b = $$2;
+   public dao(wy $$0, wy $$1, wy $$2, wy $$3, List<alg> $$4, List<alg> $$5, czg.a $$6) {
+      super($$6);
+      this.N = $$0;
+      this.O = $$1;
+      this.P = $$2;
+      this.Q = $$3;
+      this.R = $$4;
+      this.S = $$5;
    }
 
-   protected boolean a(djd $$0, eah $$1, iu $$2) {
-      return $$1.a($$0, $$2);
+   public static dao a(czg.a $$0) {
+      return new dao(p, q, r, s, o(), p(), $$0);
    }
 
-   @Nullable
+   public static dao b(czg.a $$0) {
+      return new dao(t, u, v, w, q(), r(), $$0);
+   }
+
+   private static List<alg> o() {
+      return List.of(x, y, z, A);
+   }
+
+   private static List<alg> p() {
+      return List.of(G, H, L, I, K, J, M);
+   }
+
+   private static List<alg> q() {
+      return List.of(x, D, y, F, z, C, A, B, E);
+   }
+
+   private static List<alg> r() {
+      return List.of(G);
+   }
+
    @Override
-   protected eah c(dcw $$0) {
-      eah $$1 = this.a.a($$0);
-      eah $$2 = null;
-      djd $$3 = $$0.q();
-      iu $$4 = $$0.a();
-
-      for (ja $$5 : $$0.f()) {
-         if ($$5 != this.b.g()) {
-            eah $$6 = $$5 == this.b ? this.c().a($$0) : $$1;
-            if ($$6 != null && this.a($$3, $$6, $$4)) {
-               $$2 = $$6;
-               break;
-            }
-         }
-      }
-
-      return $$2 != null && $$3.a($$2, $$4, fev.a()) ? $$2 : null;
+   public void a(czk $$0, czg.b $$1, dco $$2, Consumer<wy> $$3, daz $$4) {
+      $$3.accept(o);
+      $$3.accept(wx.a);
+      $$3.accept(d);
+      $$3.accept(wx.a().b(this.N));
+      $$3.accept(c);
+      $$3.accept(wx.a().b(this.O));
    }
 
-   @Override
-   public void a(Map<dmf, cyz> $$0, cyz $$1) {
-      super.a($$0, $$1);
-      $$0.put(this.a, $$1);
+   public wy a() {
+      return this.P;
+   }
+
+   public wy b() {
+      return this.Q;
+   }
+
+   public List<alg> c() {
+      return this.R;
+   }
+
+   public List<alg> n() {
+      return this.S;
    }
 }

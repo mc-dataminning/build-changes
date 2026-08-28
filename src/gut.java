@@ -1,45 +1,41 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public class gut implements guc.a {
-   private final List<iu> a = Lists.newArrayList();
-   private final List<Float> b = Lists.newArrayList();
-   private final List<Float> c = Lists.newArrayList();
-   private final List<Float> d = Lists.newArrayList();
-   private final List<Float> e = Lists.newArrayList();
-   private final List<Float> f = Lists.newArrayList();
+public class gut implements guo.a {
+   private final fpo a;
+   private static final int b = 10;
 
-   public void a(iu $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a.add($$0);
-      this.b.add($$1);
-      this.c.add($$5);
-      this.d.add($$2);
-      this.e.add($$3);
-      this.f.add($$4);
+   public gut(fpo $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a(fjj $$0, gqa $$1, double $$2, double $$3, double $$4) {
-      fjn $$5 = $$1.getBuffer(gqk.B());
+   public void a(fjy $$0, gqm $$1, double $$2, double $$3, double $$4) {
+      djh $$5 = this.a.s;
+      iv $$6 = iv.a($$2, $$3, $$4);
+      LongSet $$7 = new LongOpenHashSet();
 
-      for (int $$6 = 0; $$6 < this.a.size(); $$6++) {
-         iu $$7 = this.a.get($$6);
-         Float $$8 = this.b.get($$6);
-         float $$9 = $$8 / 2.0F;
-         gqu.b(
-            $$0,
-            $$5,
-            (double)((float)$$7.u() + 0.5F - $$9) - $$2,
-            (double)((float)$$7.v() + 0.5F - $$9) - $$3,
-            (double)((float)$$7.w() + 0.5F - $$9) - $$4,
-            (double)((float)$$7.u() + 0.5F + $$9) - $$2,
-            (double)((float)$$7.v() + 0.5F + $$9) - $$3,
-            (double)((float)$$7.w() + 0.5F + $$9) - $$4,
-            this.d.get($$6),
-            this.e.get($$6),
-            this.f.get($$6),
-            this.c.get($$6)
-         );
+      for (iv $$8 : iv.c($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
+         int $$9 = $$5.a(djq.a, $$8);
+         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
+         int $$11 = azm.g($$10, 0.9F, 0.9F);
+         long $$12 = jy.e($$8.a());
+         if ($$7.add($$12)) {
+            guo.a(
+               $$0,
+               $$1,
+               $$5.S().q().a(djq.a, jy.a($$12)),
+               (double)jy.a(jy.b($$12), 8),
+               (double)jy.a(jy.c($$12), 8),
+               (double)jy.a(jy.d($$12), 8),
+               16711680,
+               0.3F
+            );
+         }
+
+         if ($$9 != 15) {
+            guo.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
+         }
       }
    }
 }

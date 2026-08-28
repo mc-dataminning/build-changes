@@ -2,46 +2,32 @@ import com.google.common.collect.ImmutableSet;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class cho extends chm<bxm> {
-   private static final cht a = cht.b().d();
-   private final Predicate<czd> b;
-
-   public cho(Predicate<czd> $$0) {
-      this.b = $$0;
-   }
-
-   protected void a(arq $$0, bxm $$1) {
-      bye<?> $$2 = $$1.ec();
-      cht $$3 = a.c().a((double)((float)$$1.h(byk.E)));
-      List<crc> $$4 = $$0.z()
-         .stream()
-         .filter(bwm.f)
-         .filter($$3x -> $$3.a($$0, $$1, $$3x))
-         .filter(this::a)
-         .filter($$1x -> !$$1.y($$1x))
-         .sorted(Comparator.comparingDouble($$1::g))
-         .collect(Collectors.toList());
-      if (!$$4.isEmpty()) {
-         crc $$5 = $$4.get(0);
-         $$2.a(cgg.P, $$5);
-      } else {
-         $$2.b(cgg.P);
-      }
-   }
-
-   private boolean a(crc $$0) {
-      return this.a($$0.fb()) || this.a($$0.fc());
-   }
-
-   private boolean a(czd $$0) {
-      return this.b.test($$0);
+public class cho extends chr<bxj> {
+   @Override
+   public Set<cgl<?>> a() {
+      return ImmutableSet.of(cgl.j, cgl.k, cgl.l, cgl.m);
    }
 
    @Override
-   public Set<cgg<?>> a() {
-      return ImmutableSet.of(cgg.P);
+   protected void a(arq $$0, bxj $$1) {
+      List<crj> $$2 = $$0.z()
+         .stream()
+         .filter(bwp.f)
+         .filter($$1x -> $$1.a($$1x, this.a($$1)))
+         .sorted(Comparator.comparingDouble($$1::g))
+         .collect(Collectors.toList());
+      byj<?> $$3 = $$1.eb();
+      $$3.a(cgl.j, $$2);
+      List<crj> $$4 = $$2.stream().filter($$2x -> b($$0, $$1, $$2x)).collect(Collectors.toList());
+      $$3.a(cgl.k, $$4.isEmpty() ? null : $$4.get(0));
+      List<crj> $$5 = $$4.stream().filter($$2x -> c($$0, $$1, $$2x)).toList();
+      $$3.a(cgl.m, $$5);
+      $$3.a(cgl.l, $$5.isEmpty() ? null : $$5.get(0));
+   }
+
+   protected double a(bxj $$0) {
+      return $$0.h(byp.m);
    }
 }

@@ -1,78 +1,111 @@
-import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.Codec;
+import java.util.Arrays;
+import java.util.function.IntFunction;
+import javax.annotation.Nullable;
+import org.jetbrains.annotations.Contract;
 
-public final class dje {
-   private final String a;
-   private final dix b;
-   private final boolean c;
-   private final bua d;
-   private final boolean e;
-   private final diw f;
-   private final djy g;
+public enum dje implements bak {
+   a(0, "survival"),
+   b(1, "creative"),
+   c(2, "adventure"),
+   d(3, "spectator");
 
-   public dje(String $$0, dix $$1, boolean $$2, bua $$3, boolean $$4, diw $$5, djy $$6) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
+   public static final dje e = a;
+   public static final bak.a<dje> f = bak.a(dje::values);
+   private static final IntFunction<dje> h = ayc.a(dje::a, values(), ayc.a.a);
+   @Deprecated
+   public static final Codec<dje> g = Codec.INT.xmap(dje::a, dje::a);
+   private static final int i = -1;
+   private final int j;
+   private final String k;
+   private final wy l;
+   private final wy m;
+
+   private dje(final int $$0, final String $$1) {
+      this.j = $$0;
+      this.k = $$1;
+      this.l = wy.c("selectWorld.gameMode." + $$1);
+      this.m = wy.c("gameMode." + $$1);
    }
 
-   public static dje a(Dynamic<?> $$0, djy $$1) {
-      dix $$2 = dix.a($$0.get("GameType").asInt(0));
-      return new dje(
-         $$0.get("LevelName").asString(""),
-         $$2,
-         $$0.get("hardcore").asBoolean(false),
-         $$0.get("Difficulty").asNumber().map($$0x -> bua.a($$0x.byteValue())).result().orElse(bua.c),
-         $$0.get("allowCommands").asBoolean($$2 == dix.b),
-         new diw($$1.b(), $$0.get("GameRules")),
-         $$1
-      );
+   public int a() {
+      return this.j;
    }
 
-   public String a() {
-      return this.a;
+   public String b() {
+      return this.k;
    }
 
-   public dix b() {
-      return this.b;
+   @Override
+   public String c() {
+      return this.k;
    }
 
-   public boolean c() {
-      return this.c;
+   public wy d() {
+      return this.m;
    }
 
-   public bua d() {
-      return this.d;
+   public wy e() {
+      return this.l;
    }
 
-   public boolean e() {
-      return this.e;
+   public void a(crf $$0) {
+      if (this == b) {
+         $$0.c = true;
+         $$0.d = true;
+         $$0.a = true;
+      } else if (this == d) {
+         $$0.c = true;
+         $$0.d = false;
+         $$0.a = true;
+         $$0.b = true;
+      } else {
+         $$0.c = false;
+         $$0.d = false;
+         $$0.a = false;
+         $$0.b = false;
+      }
+
+      $$0.e = !this.f();
    }
 
-   public diw f() {
-      return this.f;
+   public boolean f() {
+      return this == c || this == d;
    }
 
-   public djy g() {
-      return this.g;
+   public boolean g() {
+      return this == b;
    }
 
-   public dje a(dix $$0) {
-      return new dje(this.a, $$0, this.c, this.d, this.e, this.f, this.g);
+   public boolean h() {
+      return this == a || this == c;
    }
 
-   public dje a(bua $$0) {
-      return new dje(this.a, this.b, this.c, $$0, this.e, this.f, this.g);
+   public static dje a(int $$0) {
+      return h.apply($$0);
    }
 
-   public dje a(djy $$0) {
-      return new dje(this.a, this.b, this.c, this.d, this.e, this.f, $$0);
+   public static dje a(String $$0) {
+      return a($$0, a);
    }
 
-   public dje h() {
-      return new dje(this.a, this.b, this.c, this.d, this.e, this.f.a(this.g.b()), this.g);
+   @Nullable
+   @Contract("_,!null->!null;_,null->_")
+   public static dje a(String $$0, @Nullable dje $$1) {
+      dje $$2 = f.a($$0);
+      return $$2 != null ? $$2 : $$1;
+   }
+
+   public static int a(@Nullable dje $$0) {
+      return $$0 != null ? $$0.j : -1;
+   }
+
+   @Nullable
+   public static dje b(int $$0) {
+      return $$0 == -1 ? null : a($$0);
+   }
+
+   public static boolean c(int $$0) {
+      return Arrays.stream(values()).anyMatch($$1 -> $$1.j == $$0);
    }
 }

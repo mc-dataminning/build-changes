@@ -1,35 +1,23 @@
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
-
 public class ded {
-   public static final alf<? extends jr<ded>> a = alf.a(alg.b("recipe_property_set"));
-   public static final alf<ded> b = a("smithing_base");
-   public static final alf<ded> c = a("smithing_template");
-   public static final alf<ded> d = a("smithing_addition");
-   public static final alf<ded> e = a("furnace_input");
-   public static final alf<ded> f = a("blast_furnace_input");
-   public static final alf<ded> g = a("smoker_input");
-   public static final alf<ded> h = a("campfire_input");
-   public static final yw<wj, ded> i = cyz.f.a(yu.a()).a($$0 -> new ded(Set.copyOf($$0)), $$0 -> List.copyOf($$0.k));
-   public static final ded j = new ded(Set.of());
-   private final Set<je<cyz>> k;
+   public static final dee a = a("crafting_building_blocks");
+   public static final dee b = a("crafting_redstone");
+   public static final dee c = a("crafting_equipment");
+   public static final dee d = a("crafting_misc");
+   public static final dee e = a("furnace_food");
+   public static final dee f = a("furnace_blocks");
+   public static final dee g = a("furnace_misc");
+   public static final dee h = a("blast_furnace_blocks");
+   public static final dee i = a("blast_furnace_misc");
+   public static final dee j = a("smoker_food");
+   public static final dee k = a("stonecutter");
+   public static final dee l = a("smithing");
+   public static final dee m = a("campfire");
 
-   private ded(Set<je<cyz>> $$0) {
-      this.k = $$0;
+   private static dee a(String $$0) {
+      return js.a(mg.az, $$0, new dee());
    }
 
-   private static alf<ded> a(String $$0) {
-      return alf.a(a, alg.b($$0));
-   }
-
-   public boolean a(czd $$0) {
-      return this.k.contains($$0.i());
-   }
-
-   static ded a(Collection<ddq> $$0) {
-      Set<je<cyz>> $$1 = $$0.stream().flatMap(ddq::a).collect(Collectors.toUnmodifiableSet());
-      return new ded($$1);
+   public static dee a(js<dee> $$0) {
+      return m;
    }
 }

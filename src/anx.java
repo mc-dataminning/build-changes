@@ -4,16 +4,16 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import java.util.Collection;
 
 public class anx {
-   public static void a(CommandDispatcher<ei> $$0) {
+   public static void a(CommandDispatcher<ej> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("kill").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((ei)$$0x.getSource(), ImmutableList.of(((ei)$$0x.getSource()).g()))))
-            .then(ej.a("targets", ev.b()).executes($$0x -> a((ei)$$0x.getSource(), ev.b($$0x, "targets"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("kill").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((ej)$$0x.getSource(), ImmutableList.of(((ej)$$0x.getSource()).g()))))
+            .then(ek.a("targets", ew.b()).executes($$0x -> a((ej)$$0x.getSource(), ew.b($$0x, "targets"))))
       );
    }
 
-   private static int a(ei $$0, Collection<? extends bwf> $$1) {
-      for (bwf $$2 : $$1) {
+   private static int a(ej $$0, Collection<? extends bwi> $$1) {
+      for (bwi $$2 : $$1) {
          $$2.c($$0.e());
       }
 

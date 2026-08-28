@@ -5,7 +5,7 @@ public record zm(aai c) implements zf<zl> {
    private static final int d = 1048576;
    public static final yw<wj, zm> a = aai.<wj>a(
          $$0 -> aaj.a($$0, 1048576),
-         af.a(
+         ag.a(
             Lists.newArrayList(
                new aai.c[]{
                   new aai.c<>(aag.b, aag.a),

@@ -1,44 +1,32 @@
 import com.google.common.collect.Maps;
+import java.util.Locale;
 import java.util.Map;
 
-public class gvs extends gxn<cje, hce, gfo> {
-   private final Map<cjf.a, gek<gfo>> a;
-
-   public gvs(gwh.a $$0) {
-      super($$0, new gfo($$0.a(gjb.an)), 0.7F);
-      this.a = a($$0);
-   }
-
-   private static Map<cjf.a, gek<gfo>> a(gwh.a $$0) {
-      return Maps.newEnumMap(
-         Map.of(
-            cjf.a.a,
-            new gek<>(new gfo($$0.a(gjb.an)), new gfo($$0.a(gjb.ao))),
-            cjf.a.c,
-            new gek<>(new gfo($$0.a(gjb.dO)), new gfo($$0.a(gjb.dP))),
-            cjf.a.b,
-            new gek<>(new gfo($$0.a(gjb.ae)), new gfo($$0.a(gjb.af)))
-         )
-      );
-   }
-
-   public alg a(hce $$0) {
-      return $$0.a == null ? him.c() : $$0.a.b().b().b();
-   }
-
-   public hce a() {
-      return new hce();
-   }
-
-   public void a(cje $$0, hce $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.t().a();
-   }
-
-   public void a(hce $$0, fjj $$1, gqa $$2, int $$3) {
-      if ($$0.a != null) {
-         this.g = this.a.get($$0.a.b().a()).a($$0.aj);
-         super.a($$0, $$1, $$2, $$3);
+public class gvs extends gvn<ckr, hcg, gfe> {
+   private static final Map<ckr.e, alg> a = ag.a(Maps.newHashMap(), $$0 -> {
+      for (ckr.e $$1 : ckr.e.values()) {
+         $$0.put($$1, alg.b(String.format(Locale.ROOT, "textures/entity/axolotl/axolotl_%s.png", $$1.b())));
       }
+   });
+
+   public gvs(gwt.a $$0) {
+      super($$0, new gfe($$0.a(gjn.m)), new gfe($$0.a(gjn.n)), 0.5F);
+   }
+
+   public alg a(hcg $$0) {
+      return a.get($$0.a);
+   }
+
+   public hcg a() {
+      return new hcg();
+   }
+
+   public void a(ckr $$0, hcg $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.t();
+      $$1.b = $$0.bN.a($$2);
+      $$1.d = $$0.bO.a($$2);
+      $$1.e = $$0.bP.a($$2);
+      $$1.c = $$0.bQ.a($$2);
    }
 }

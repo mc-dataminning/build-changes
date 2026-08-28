@@ -1,30 +1,35 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dwk extends dpy {
-   public static final MapCodec<dwk> c = b(dwk::new);
-   private static final ffk g = dmf.b(8.0, 9.0, 16.0);
+public class dwk extends dot implements dwi {
+   public static final MapCodec<dwk> g = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ebd.a.fieldOf("block_set_type").forGetter(dot::b), dwi.a.e.fieldOf("weathering_state").forGetter(dwk::q), t()).apply($$0, dwk::new)
+   );
+   private final dwi.a h;
 
    @Override
    public MapCodec<dwk> a() {
-      return c;
+      return g;
    }
 
-   public dwk(eag.d $$0) {
-      super($$0, ja.a, g, false, 0.1);
-   }
-
-   @Override
-   protected int a(azv $$0) {
-      return drs.a($$0);
+   protected dwk(ebd $$0, dwi.a $$1, ean.d $$2) {
+      super($$0, $$2);
+      this.h = $$1;
    }
 
    @Override
-   protected dmf b() {
-      return dmh.pg;
+   protected void b(eao $$0, arq $$1, iv $$2, azv $$3) {
+      if ($$0.c(dot.c) == ebk.b) {
+         this.a_($$0, $$1, $$2, $$3);
+      }
    }
 
    @Override
-   protected boolean h(eah $$0) {
-      return drs.a($$0);
+   protected boolean f(eao $$0) {
+      return dwi.c($$0.b()).isPresent();
+   }
+
+   public dwi.a q() {
+      return this.h;
    }
 }

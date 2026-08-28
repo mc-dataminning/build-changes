@@ -1,5 +1,5 @@
-public class heu extends hdn {
-   public boolean a;
+public class heu extends hdq {
    public boolean b;
    public boolean c;
+   public boolean d;
 }

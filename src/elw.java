@@ -1,21 +1,32 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class elw extends eli {
-   public static final Codec<elw> c = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               enr.a.fieldOf("state_provider").forGetter($$0x -> $$0x.b),
-               ayu.m.fieldOf("spread_width").forGetter($$0x -> $$0x.d),
-               ayu.m.fieldOf("spread_height").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, elw::new)
+public class elw implements elx {
+   public static final Codec<elw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(iv.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, elw::new)
    );
-   public final int d;
-   public final int e;
+   private final Optional<iv> b;
+   private final boolean c;
 
-   public elw(enr $$0, int $$1, int $$2) {
-      super($$0);
-      this.d = $$1;
-      this.e = $$2;
+   private elw(Optional<iv> $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public static elw a(iv $$0, boolean $$1) {
+      return new elw(Optional.of($$0), $$1);
+   }
+
+   public static elw a() {
+      return new elw(Optional.empty(), false);
+   }
+
+   public Optional<iv> b() {
+      return this.b;
+   }
+
+   public boolean c() {
+      return this.c;
    }
 }

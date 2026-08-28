@@ -10,7 +10,6 @@ public class s implements UncaughtExceptionHandler {
 
    @Override
    public void uncaughtException(Thread $$0, Throwable $$1) {
-      this.a.error("Caught previously unhandled exception :");
-      this.a.error($$0.getName(), $$1);
+      this.a.error("Caught previously unhandled exception :", $$1);
    }
 }

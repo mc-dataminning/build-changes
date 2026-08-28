@@ -1,21 +1,46 @@
-import com.mojang.serialization.Codec;
+import java.time.Instant;
+import javax.annotation.Nullable;
 
-public interface as<T extends at> {
-   void a(alo var1, as.a<T> var2);
+public class as {
+   @Nullable
+   private Instant a;
 
-   void b(alo var1, as.a<T> var2);
-
-   void a(alo var1);
-
-   Codec<T> a();
-
-   default aq<T> a(T $$0) {
-      return new aq<>(this, $$0);
+   public as() {
    }
 
-   public static record a<T extends at>(T a, ai b, String c) {
-      public void a(alo $$0) {
-         $$0.a(this.b, this.c);
-      }
+   public as(Instant $$0) {
+      this.a = $$0;
+   }
+
+   public boolean a() {
+      return this.a != null;
+   }
+
+   public void b() {
+      this.a = Instant.now();
+   }
+
+   public void c() {
+      this.a = null;
+   }
+
+   @Nullable
+   public Instant d() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "CriterionProgress{obtained=" + (this.a == null ? "false" : this.a) + "}";
+   }
+
+   public void a(vu $$0) {
+      $$0.a(this.a, vu::a);
+   }
+
+   public static as b(vu $$0) {
+      as $$1 = new as();
+      $$1.a = $$0.c(vu::t);
+      return $$1;
    }
 }

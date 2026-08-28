@@ -1,170 +1,108 @@
-import com.google.gson.JsonObject;
+import com.google.common.annotations.VisibleForTesting;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
-import com.mojang.brigadier.exceptions.Dynamic3CommandExceptionType;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import com.mojang.datafixers.util.Either;
-import java.util.Arrays;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import com.mojang.serialization.JavaOps;
 import java.util.Collection;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Predicate;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class fl<T> implements ArgumentType<fl.c<T>> {
-   private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012", "#skeletons", "#minecraft:skeletons");
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> wy.b("argument.resource_tag.not_found", $$0, $$1));
-   private static final Dynamic3CommandExceptionType c = new Dynamic3CommandExceptionType(
-      ($$0, $$1, $$2) -> wy.b("argument.resource_tag.invalid_type", $$0, $$1, $$2)
-   );
-   private final jg<T> d;
-   final alf<? extends jr<T>> e;
+public class fl<T> implements ArgumentType<jf<T>> {
+   private static final Collection<String> b = List.of("foo", "foo:bar", "012", "{}", "true");
+   public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> wy.b("argument.resource_or_id.failed_to_parse", $$0));
+   private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wy.c("argument.resource_or_id.invalid"));
+   private final jh.a d;
+   private final boolean e;
+   private final Codec<jf<T>> f;
 
-   public fl(ee $$0, alf<? extends jr<T>> $$1) {
-      this.e = $$1;
-      this.d = $$0.e($$1);
+   protected fl(ef $$0, alf<js<T>> $$1, Codec<jf<T>> $$2) {
+      this.d = $$0;
+      this.e = $$0.a($$1).isPresent();
+      this.f = $$2;
    }
 
-   public static <T> fl<T> a(ee $$0, alf<? extends jr<T>> $$1) {
-      return new fl<>($$0, $$1);
+   public static fl.c a(ef $$0) {
+      return new fl.c($$0);
    }
 
-   public static <T> fl.c<T> a(CommandContext<ei> $$0, String $$1, alf<jr<T>> $$2) throws CommandSyntaxException {
-      fl.c<?> $$3 = (fl.c<?>)$$0.getArgument($$1, fl.c.class);
-      Optional<fl.c<T>> $$4 = $$3.a($$2);
-      return $$4.orElseThrow(() -> (CommandSyntaxException)$$3.a().map($$1xx -> {
-            alf<?> $$2x = $$1xx.h();
-            return fh.b.create($$2x.a(), $$2x.b(), $$2.a());
-         }, $$1xx -> {
-            axr<?> $$2x = $$1xx.h();
-            return c.create($$2x.b(), $$2x.a(), $$2.a());
-         }));
+   public static jf<ezt> a(CommandContext<ej> $$0, String $$1) throws CommandSyntaxException {
+      return d($$0, $$1);
    }
 
-   public fl.c<T> a(StringReader $$0) throws CommandSyntaxException {
-      if ($$0.canRead() && $$0.peek() == '#') {
-         int $$1 = $$0.getCursor();
+   public static fl.a b(ef $$0) {
+      return new fl.a($$0);
+   }
 
-         try {
-            $$0.skip();
-            alg $$2 = alg.a($$0);
-            axr<T> $$3 = axr.a(this.e, $$2);
-            ji.c<T> $$4 = this.d.a($$3).orElseThrow(() -> b.createWithContext($$0, $$2, this.e.a()));
-            return new fl.d<>($$4);
-         } catch (CommandSyntaxException var6) {
-            $$0.setCursor($$1);
-            throw var6;
-         }
+   public static jf<fbc> b(CommandContext<ej> $$0, String $$1) {
+      return d($$0, $$1);
+   }
+
+   public static fl.b c(ef $$0) {
+      return new fl.b($$0);
+   }
+
+   public static jf<fcx> c(CommandContext<ej> $$0, String $$1) {
+      return d($$0, $$1);
+   }
+
+   private static <T> jf<T> d(CommandContext<ej> $$0, String $$1) {
+      return (jf<T>)$$0.getArgument($$1, jf.class);
+   }
+
+   @Nullable
+   public jf<T> a(StringReader $$0) throws CommandSyntaxException {
+      ale<?> $$1 = this.d.a(JavaOps.INSTANCE);
+      Dynamic<?> $$2 = a((DynamicOps<T>)$$1, $$0);
+      return !this.e ? null : (jf)this.f.parse($$2).getOrThrow($$1x -> a.createWithContext($$0, $$1x));
+   }
+
+   @VisibleForTesting
+   static <T> Dynamic<T> a(DynamicOps<T> $$0, StringReader $$1) throws CommandSyntaxException {
+      int $$2 = $$1.getCursor();
+      T $$3 = ux.b($$0, $$1);
+      if (b($$1)) {
+         return new Dynamic($$0, $$3);
       } else {
-         alg $$6 = alg.a($$0);
-         alf<T> $$7 = alf.a(this.e, $$6);
-         je.c<T> $$8 = this.d.a($$7).orElseThrow(() -> fh.a.createWithContext($$0, $$6, this.e.a()));
-         return new fl.b<>($$8);
+         $$1.setCursor($$2);
+         alg $$4 = alg.a($$1);
+         if (b($$1)) {
+            return new Dynamic($$0, $$0.createString($$4.toString()));
+         } else {
+            $$1.setCursor($$2);
+            throw c.createWithContext($$1);
+         }
       }
    }
 
-   public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      en.a(this.d.f().map(axr::b), $$1, "#");
-      return en.a(this.d.c_().map(alf::a), $$1);
+   private static boolean b(StringReader $$0) {
+      return !$$0.canRead() || $$0.peek() == ' ';
    }
 
    public Collection<String> getExamples() {
-      return a;
+      return b;
    }
 
-   public static class a<T> implements ie<fl<T>, fl.a<T>.a> {
-      public void a(fl.a<T>.a $$0, vu $$1) {
-         $$1.b($$0.b);
-      }
-
-      public fl.a<T>.a a(vu $$0) {
-         return new fl.a.a($$0.r());
-      }
-
-      public void a(fl.a<T>.a $$0, JsonObject $$1) {
-         $$1.addProperty("registry", $$0.b.a().toString());
-      }
-
-      public fl.a<T>.a a(fl<T> $$0) {
-         return new fl.a.a($$0.e);
-      }
-
-      public final class a implements ie.a<fl<T>> {
-         final alf<? extends jr<T>> b;
-
-         a(final alf<? extends jr<T>> $$1) {
-            this.b = $$1;
-         }
-
-         public fl<T> a(ee $$0) {
-            return new fl<>($$0, this.b);
-         }
-
-         @Override
-         public ie<fl<T>, ?> a() {
-            return a.this;
-         }
+   public static class a extends fl<fbc> {
+      protected a(ef $$0) {
+         super($$0, mh.br, fbe.d);
       }
    }
 
-   static record b<T>(je.c<T> a) implements fl.c<T> {
-      @Override
-      public Either<je.c<T>, ji.c<T>> a() {
-         return Either.left(this.a);
-      }
-
-      @Override
-      public <E> Optional<fl.c<E>> a(alf<? extends jr<E>> $$0) {
-         return this.a.h().c($$0) ? Optional.of((fl.c<E>)this) : Optional.empty();
-      }
-
-      public boolean a(je<T> $$0) {
-         return $$0.equals(this.a);
-      }
-
-      @Override
-      public String b() {
-         return this.a.h().a().toString();
-      }
-
-      public je.c<T> c() {
-         return this.a;
+   public static class b extends fl<fcx> {
+      protected b(ef $$0) {
+         super($$0, mh.bs, fcx.f);
       }
    }
 
-   public interface c<T> extends Predicate<je<T>> {
-      Either<je.c<T>, ji.c<T>> a();
-
-      <E> Optional<fl.c<E>> a(alf<? extends jr<E>> var1);
-
-      String b();
-   }
-
-   static record d<T>(ji.c<T> a) implements fl.c<T> {
-      @Override
-      public Either<je.c<T>, ji.c<T>> a() {
-         return Either.right(this.a);
-      }
-
-      @Override
-      public <E> Optional<fl.c<E>> a(alf<? extends jr<E>> $$0) {
-         return this.a.h().d($$0) ? Optional.of((fl.c<E>)this) : Optional.empty();
-      }
-
-      public boolean a(je<T> $$0) {
-         return this.a.a($$0);
-      }
-
-      @Override
-      public String b() {
-         return "#" + this.a.h().b();
-      }
-
-      public ji.c<T> c() {
-         return this.a;
+   public static class c extends fl<ezt> {
+      protected c(ef $$0) {
+         super($$0, mh.bq, ezt.e);
       }
    }
 }

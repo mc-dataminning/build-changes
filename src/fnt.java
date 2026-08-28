@@ -1,38 +1,40 @@
-public class fnt extends fnw {
-   private static final wy b = wy.c("mco.connect.connecting");
-   private final hph c;
-   private final fla d;
-   private final flb e;
+import javax.annotation.Nullable;
 
-   public fnt(fyb $$0, fla $$1, flb $$2) {
-      this.d = $$1;
-      this.e = $$2;
-      this.c = new hph($$0);
+public class fnt {
+   public final int a;
+   @Nullable
+   public final String b;
+
+   fnt(int $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public void run() {
-      if (this.e.a != null) {
-         this.c.a(this.d, glr.a(this.e.a));
+   @Nullable
+   public String a() {
+      if (this.a >= 200 && this.a < 300) {
+         return null;
       } else {
-         this.b();
+         return this.a == 400 && this.b != null ? this.b : String.valueOf(this.a);
       }
    }
 
-   @Override
-   public void b() {
-      super.b();
-      this.c.a();
-      foz.Q().af().i();
-   }
+   public static class a {
+      private int a = -1;
+      private String b;
 
-   @Override
-   public void c() {
-      this.c.b();
-   }
+      public fnt.a a(int $$0) {
+         this.a = $$0;
+         return this;
+      }
 
-   @Override
-   public wy a() {
-      return b;
+      public fnt.a a(@Nullable String $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public fnt a() {
+         return new fnt(this.a, this.b);
+      }
    }
 }

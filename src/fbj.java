@@ -1,52 +1,44 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
 import java.util.Optional;
 
-public class fbj extends fau {
+public class fbj extends fbb {
    public static final MapCodec<fbj> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  dbr.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
-                  dbr.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
-                  dbr.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
-                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
-                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
+                  asi.a(Codec.string(0, 32)).optionalFieldOf("title").forGetter($$0x -> $$0x.c),
+                  Codec.STRING.optionalFieldOf("author").forGetter($$0x -> $$0x.b),
+                  ayu.a(0, 3).optionalFieldOf("generation").forGetter($$0x -> $$0x.d)
                )
             )
             .apply($$0, fbj::new)
    );
-   public static final dbr b = new dbr(dbr.a.a, IntList.of(), IntList.of(), false, false);
-   final Optional<dbr.a> c;
-   final Optional<IntList> d;
-   final Optional<IntList> e;
-   final Optional<Boolean> f;
-   final Optional<Boolean> h;
+   private final Optional<String> b;
+   private final Optional<asi<String>> c;
+   private final Optional<Integer> d;
 
-   public fbj(List<fcq> $$0, Optional<dbr.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
+   public fbj(List<fcx> $$0, Optional<asi<String>> $$1, Optional<String> $$2, Optional<Integer> $$3) {
       super($$0);
+      this.b = $$2;
       this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.h = $$5;
+      this.d = $$3;
    }
 
    @Override
-   protected czd a(czd $$0, ezh $$1) {
-      $$0.a(kj.ai, b, this::a);
+   protected czk a(czk $$0, ezo $$1) {
+      $$0.a(kk.V, dcu.a, this::a);
       return $$0;
    }
 
-   private dbr a(dbr $$0) {
-      return new dbr(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
+   private dcu a(dcu $$0) {
+      return new dcu(this.c.orElseGet($$0::d), this.b.orElseGet($$0::e), this.d.orElseGet($$0::f), $$0.a(), $$0.g());
    }
 
    @Override
-   public faw<fbj> b() {
-      return fax.L;
+   public fbd<fbj> b() {
+      return fbe.M;
    }
 }

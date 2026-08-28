@@ -9,22 +9,22 @@ public class awn {
    public static final awm e = a("entity.allay.item_given");
    public static final awm f = a("entity.allay.item_taken");
    public static final awm g = a("entity.allay.item_thrown");
-   public static final je.c<awm> h = b("ambient.cave");
-   public static final je.c<awm> i = b("ambient.basalt_deltas.additions");
-   public static final je.c<awm> j = b("ambient.basalt_deltas.loop");
-   public static final je.c<awm> k = b("ambient.basalt_deltas.mood");
-   public static final je.c<awm> l = b("ambient.crimson_forest.additions");
-   public static final je.c<awm> m = b("ambient.crimson_forest.loop");
-   public static final je.c<awm> n = b("ambient.crimson_forest.mood");
-   public static final je.c<awm> o = b("ambient.nether_wastes.additions");
-   public static final je.c<awm> p = b("ambient.nether_wastes.loop");
-   public static final je.c<awm> q = b("ambient.nether_wastes.mood");
-   public static final je.c<awm> r = b("ambient.soul_sand_valley.additions");
-   public static final je.c<awm> s = b("ambient.soul_sand_valley.loop");
-   public static final je.c<awm> t = b("ambient.soul_sand_valley.mood");
-   public static final je.c<awm> u = b("ambient.warped_forest.additions");
-   public static final je.c<awm> v = b("ambient.warped_forest.loop");
-   public static final je.c<awm> w = b("ambient.warped_forest.mood");
+   public static final jf.c<awm> h = b("ambient.cave");
+   public static final jf.c<awm> i = b("ambient.basalt_deltas.additions");
+   public static final jf.c<awm> j = b("ambient.basalt_deltas.loop");
+   public static final jf.c<awm> k = b("ambient.basalt_deltas.mood");
+   public static final jf.c<awm> l = b("ambient.crimson_forest.additions");
+   public static final jf.c<awm> m = b("ambient.crimson_forest.loop");
+   public static final jf.c<awm> n = b("ambient.crimson_forest.mood");
+   public static final jf.c<awm> o = b("ambient.nether_wastes.additions");
+   public static final jf.c<awm> p = b("ambient.nether_wastes.loop");
+   public static final jf.c<awm> q = b("ambient.nether_wastes.mood");
+   public static final jf.c<awm> r = b("ambient.soul_sand_valley.additions");
+   public static final jf.c<awm> s = b("ambient.soul_sand_valley.loop");
+   public static final jf.c<awm> t = b("ambient.soul_sand_valley.mood");
+   public static final jf.c<awm> u = b("ambient.warped_forest.additions");
+   public static final jf.c<awm> v = b("ambient.warped_forest.loop");
+   public static final jf.c<awm> w = b("ambient.warped_forest.mood");
    public static final awm x = a("ambient.underwater.enter");
    public static final awm y = a("ambient.underwater.exit");
    public static final awm z = a("ambient.underwater.loop");
@@ -69,16 +69,16 @@ public class awn {
    public static final awm am = a("entity.armadillo.peek");
    public static final awm an = a("entity.armadillo.unroll_start");
    public static final awm ao = a("entity.armadillo.brush");
-   public static final je<awm> ap = b("item.armor.equip_chain");
-   public static final je<awm> aq = b("item.armor.equip_diamond");
-   public static final je<awm> ar = b("item.armor.equip_elytra");
-   public static final je<awm> as = b("item.armor.equip_generic");
-   public static final je<awm> at = b("item.armor.equip_gold");
-   public static final je<awm> au = b("item.armor.equip_iron");
-   public static final je<awm> av = b("item.armor.equip_leather");
-   public static final je<awm> aw = b("item.armor.equip_netherite");
-   public static final je<awm> ax = b("item.armor.equip_turtle");
-   public static final je<awm> ay = b("item.armor.equip_wolf");
+   public static final jf<awm> ap = b("item.armor.equip_chain");
+   public static final jf<awm> aq = b("item.armor.equip_diamond");
+   public static final jf<awm> ar = b("item.armor.equip_elytra");
+   public static final jf<awm> as = b("item.armor.equip_generic");
+   public static final jf<awm> at = b("item.armor.equip_gold");
+   public static final jf<awm> au = b("item.armor.equip_iron");
+   public static final jf<awm> av = b("item.armor.equip_leather");
+   public static final jf<awm> aw = b("item.armor.equip_netherite");
+   public static final jf<awm> ax = b("item.armor.equip_turtle");
+   public static final jf<awm> ay = b("item.armor.equip_wolf");
    public static final awm az = a("item.armor.unequip_wolf");
    public static final awm aA = a("entity.armor_stand.break");
    public static final awm aB = a("entity.armor_stand.fall");
@@ -200,7 +200,7 @@ public class awn {
    public static final awm cN = a("entity.breeze.death");
    public static final awm cO = a("entity.breeze.hurt");
    public static final awm cP = a("entity.breeze.whirl");
-   public static final je.c<awm> cQ = b("entity.breeze.wind_burst");
+   public static final jf.c<awm> cQ = b("entity.breeze.wind_burst");
    public static final awm cR = a("block.brewing_stand.brew");
    public static final awm cS = a("item.brush.brushing.generic");
    public static final awm cT = a("item.brush.brushing.sand");
@@ -243,7 +243,7 @@ public class awn {
    public static final awm dE = a("entity.camel.death");
    public static final awm dF = a("entity.camel.eat");
    public static final awm dG = a("entity.camel.hurt");
-   public static final je.c<awm> dH = b("entity.camel.saddle");
+   public static final jf.c<awm> dH = b("entity.camel.saddle");
    public static final awm dI = a("entity.camel.sit");
    public static final awm dJ = a("entity.camel.stand");
    public static final awm dK = a("entity.camel.step");
@@ -403,12 +403,12 @@ public class awn {
    public static final awm gI = a("block.crop.break");
    public static final awm gJ = a("item.crop.plant");
    public static final awm gK = a("item.crossbow.hit");
-   public static final je<awm> gL = b("item.crossbow.loading_end");
-   public static final je<awm> gM = b("item.crossbow.loading_middle");
-   public static final je<awm> gN = b("item.crossbow.loading_start");
-   public static final je<awm> gO = b("item.crossbow.quick_charge_1");
-   public static final je<awm> gP = b("item.crossbow.quick_charge_2");
-   public static final je<awm> gQ = b("item.crossbow.quick_charge_3");
+   public static final jf<awm> gL = b("item.crossbow.loading_end");
+   public static final jf<awm> gM = b("item.crossbow.loading_middle");
+   public static final jf<awm> gN = b("item.crossbow.loading_start");
+   public static final jf<awm> gO = b("item.crossbow.quick_charge_1");
+   public static final jf<awm> gP = b("item.crossbow.quick_charge_2");
+   public static final jf<awm> gQ = b("item.crossbow.quick_charge_3");
    public static final awm gR = a("item.crossbow.shoot");
    public static final awm gS = a("block.deadbush.idle");
    public static final awm gT = a("block.decorated_pot.break");
@@ -606,9 +606,9 @@ public class awn {
    public static final awm kD = a("entity.generic.big_fall");
    public static final awm kE = a("entity.generic.burn");
    public static final awm kF = a("entity.generic.death");
-   public static final je.c<awm> kG = b("entity.generic.drink");
-   public static final je.c<awm> kH = b("entity.generic.eat");
-   public static final je.c<awm> kI = b("entity.generic.explode");
+   public static final jf.c<awm> kG = b("entity.generic.drink");
+   public static final jf.c<awm> kH = b("entity.generic.eat");
+   public static final jf.c<awm> kI = b("entity.generic.explode");
    public static final awm kJ = a("entity.generic.extinguish_fire");
    public static final awm kK = a("entity.generic.hurt");
    public static final awm kL = a("entity.generic.small_fall");
@@ -735,12 +735,12 @@ public class awn {
    public static final awm nc = a("block.honey_block.slide");
    public static final awm nd = a("block.honey_block.step");
    public static final awm ne = a("item.honeycomb.wax_on");
-   public static final je.c<awm> nf = b("item.honey_bottle.drink");
+   public static final jf.c<awm> nf = b("item.honey_bottle.drink");
    public static final int ng = 8;
-   public static final ImmutableList<je.c<awm>> nh = a();
+   public static final ImmutableList<jf.c<awm>> nh = a();
    public static final awm ni = a("entity.horse.ambient");
    public static final awm nj = a("entity.horse.angry");
-   public static final je.c<awm> nk = b("entity.horse.armor");
+   public static final jf.c<awm> nk = b("entity.horse.armor");
    public static final awm nl = a("entity.horse.breathe");
    public static final awm nm = a("entity.horse.death");
    public static final awm nn = a("entity.horse.eat");
@@ -748,7 +748,7 @@ public class awn {
    public static final awm np = a("entity.horse.hurt");
    public static final awm nq = a("entity.horse.jump");
    public static final awm nr = a("entity.horse.land");
-   public static final je.c<awm> ns = b("entity.horse.saddle");
+   public static final jf.c<awm> ns = b("entity.horse.saddle");
    public static final awm nt = a("entity.horse.step");
    public static final awm nu = a("entity.horse.step_wood");
    public static final awm nv = a("entity.hostile.big_fall");
@@ -790,7 +790,7 @@ public class awn {
    public static final awm of = a("entity.item_frame.place");
    public static final awm og = a("entity.item_frame.remove_item");
    public static final awm oh = a("entity.item_frame.rotate_item");
-   public static final je.c<awm> oi = b("entity.item.break");
+   public static final jf.c<awm> oi = b("entity.item.break");
    public static final awm oj = a("entity.item.pickup");
    public static final awm ok = a("block.ladder.break");
    public static final awm ol = a("block.ladder.fall");
@@ -826,7 +826,7 @@ public class awn {
    public static final awm oP = a("entity.llama.hurt");
    public static final awm oQ = a("entity.llama.spit");
    public static final awm oR = a("entity.llama.step");
-   public static final je.c<awm> oS = b("entity.llama.swag");
+   public static final jf.c<awm> oS = b("entity.llama.swag");
    public static final awm oT = a("entity.magma_cube.death_small");
    public static final awm oU = a("block.lodestone.break");
    public static final awm oV = a("block.lodestone.step");
@@ -902,56 +902,56 @@ public class awn {
    public static final awm qn = a("entity.mule.eat");
    public static final awm qo = a("entity.mule.hurt");
    public static final awm qp = a("entity.mule.jump");
-   public static final je.c<awm> qq = b("music.creative");
-   public static final je.c<awm> qr = b("music.credits");
-   public static final je.c<awm> qs = b("music_disc.5");
-   public static final je.c<awm> qt = b("music_disc.11");
-   public static final je.c<awm> qu = b("music_disc.13");
-   public static final je.c<awm> qv = b("music_disc.blocks");
-   public static final je.c<awm> qw = b("music_disc.cat");
-   public static final je.c<awm> qx = b("music_disc.chirp");
-   public static final je.c<awm> qy = b("music_disc.far");
-   public static final je.c<awm> qz = b("music_disc.mall");
-   public static final je.c<awm> qA = b("music_disc.mellohi");
-   public static final je.c<awm> qB = b("music_disc.pigstep");
-   public static final je.c<awm> qC = b("music_disc.stal");
-   public static final je.c<awm> qD = b("music_disc.strad");
-   public static final je.c<awm> qE = b("music_disc.wait");
-   public static final je.c<awm> qF = b("music_disc.ward");
-   public static final je.c<awm> qG = b("music_disc.otherside");
-   public static final je.c<awm> qH = b("music_disc.relic");
-   public static final je.c<awm> qI = b("music_disc.creator");
-   public static final je.c<awm> qJ = b("music_disc.creator_music_box");
-   public static final je.c<awm> qK = b("music_disc.precipice");
-   public static final je.c<awm> qL = b("music.dragon");
-   public static final je.c<awm> qM = b("music.end");
-   public static final je.c<awm> qN = b("music.game");
-   public static final je.c<awm> qO = b("music.menu");
-   public static final je.c<awm> qP = b("music.nether.basalt_deltas");
-   public static final je.c<awm> qQ = b("music.nether.crimson_forest");
-   public static final je.c<awm> qR = b("music.overworld.deep_dark");
-   public static final je.c<awm> qS = b("music.overworld.dripstone_caves");
-   public static final je.c<awm> qT = b("music.overworld.grove");
-   public static final je.c<awm> qU = b("music.overworld.jagged_peaks");
-   public static final je.c<awm> qV = b("music.overworld.lush_caves");
-   public static final je.c<awm> qW = b("music.overworld.swamp");
-   public static final je.c<awm> qX = b("music.overworld.forest");
-   public static final je.c<awm> qY = b("music.overworld.old_growth_taiga");
-   public static final je.c<awm> qZ = b("music.overworld.meadow");
-   public static final je.c<awm> ra = b("music.overworld.cherry_grove");
-   public static final je.c<awm> rb = b("music.nether.nether_wastes");
-   public static final je.c<awm> rc = b("music.overworld.frozen_peaks");
-   public static final je.c<awm> rd = b("music.overworld.snowy_slopes");
-   public static final je.c<awm> re = b("music.nether.soul_sand_valley");
-   public static final je.c<awm> rf = b("music.overworld.stony_peaks");
-   public static final je.c<awm> rg = b("music.nether.warped_forest");
-   public static final je.c<awm> rh = b("music.overworld.flower_forest");
-   public static final je.c<awm> ri = b("music.overworld.desert");
-   public static final je.c<awm> rj = b("music.overworld.badlands");
-   public static final je.c<awm> rk = b("music.overworld.jungle");
-   public static final je.c<awm> rl = b("music.overworld.sparse_jungle");
-   public static final je.c<awm> rm = b("music.overworld.bamboo_jungle");
-   public static final je.c<awm> rn = b("music.under_water");
+   public static final jf.c<awm> qq = b("music.creative");
+   public static final jf.c<awm> qr = b("music.credits");
+   public static final jf.c<awm> qs = b("music_disc.5");
+   public static final jf.c<awm> qt = b("music_disc.11");
+   public static final jf.c<awm> qu = b("music_disc.13");
+   public static final jf.c<awm> qv = b("music_disc.blocks");
+   public static final jf.c<awm> qw = b("music_disc.cat");
+   public static final jf.c<awm> qx = b("music_disc.chirp");
+   public static final jf.c<awm> qy = b("music_disc.far");
+   public static final jf.c<awm> qz = b("music_disc.mall");
+   public static final jf.c<awm> qA = b("music_disc.mellohi");
+   public static final jf.c<awm> qB = b("music_disc.pigstep");
+   public static final jf.c<awm> qC = b("music_disc.stal");
+   public static final jf.c<awm> qD = b("music_disc.strad");
+   public static final jf.c<awm> qE = b("music_disc.wait");
+   public static final jf.c<awm> qF = b("music_disc.ward");
+   public static final jf.c<awm> qG = b("music_disc.otherside");
+   public static final jf.c<awm> qH = b("music_disc.relic");
+   public static final jf.c<awm> qI = b("music_disc.creator");
+   public static final jf.c<awm> qJ = b("music_disc.creator_music_box");
+   public static final jf.c<awm> qK = b("music_disc.precipice");
+   public static final jf.c<awm> qL = b("music.dragon");
+   public static final jf.c<awm> qM = b("music.end");
+   public static final jf.c<awm> qN = b("music.game");
+   public static final jf.c<awm> qO = b("music.menu");
+   public static final jf.c<awm> qP = b("music.nether.basalt_deltas");
+   public static final jf.c<awm> qQ = b("music.nether.crimson_forest");
+   public static final jf.c<awm> qR = b("music.overworld.deep_dark");
+   public static final jf.c<awm> qS = b("music.overworld.dripstone_caves");
+   public static final jf.c<awm> qT = b("music.overworld.grove");
+   public static final jf.c<awm> qU = b("music.overworld.jagged_peaks");
+   public static final jf.c<awm> qV = b("music.overworld.lush_caves");
+   public static final jf.c<awm> qW = b("music.overworld.swamp");
+   public static final jf.c<awm> qX = b("music.overworld.forest");
+   public static final jf.c<awm> qY = b("music.overworld.old_growth_taiga");
+   public static final jf.c<awm> qZ = b("music.overworld.meadow");
+   public static final jf.c<awm> ra = b("music.overworld.cherry_grove");
+   public static final jf.c<awm> rb = b("music.nether.nether_wastes");
+   public static final jf.c<awm> rc = b("music.overworld.frozen_peaks");
+   public static final jf.c<awm> rd = b("music.overworld.snowy_slopes");
+   public static final jf.c<awm> re = b("music.nether.soul_sand_valley");
+   public static final jf.c<awm> rf = b("music.overworld.stony_peaks");
+   public static final jf.c<awm> rg = b("music.nether.warped_forest");
+   public static final jf.c<awm> rh = b("music.overworld.flower_forest");
+   public static final jf.c<awm> ri = b("music.overworld.desert");
+   public static final jf.c<awm> rj = b("music.overworld.badlands");
+   public static final jf.c<awm> rk = b("music.overworld.jungle");
+   public static final jf.c<awm> rl = b("music.overworld.sparse_jungle");
+   public static final jf.c<awm> rm = b("music.overworld.bamboo_jungle");
+   public static final jf.c<awm> rn = b("music.under_water");
    public static final awm ro = a("block.nether_bricks.break");
    public static final awm rp = a("block.nether_bricks.step");
    public static final awm rq = a("block.nether_bricks.place");
@@ -1020,32 +1020,32 @@ public class awn {
    public static final awm sB = a("block.netherrack.place");
    public static final awm sC = a("block.netherrack.hit");
    public static final awm sD = a("block.netherrack.fall");
-   public static final je.c<awm> sE = b("block.note_block.basedrum");
-   public static final je.c<awm> sF = b("block.note_block.bass");
-   public static final je.c<awm> sG = b("block.note_block.bell");
-   public static final je.c<awm> sH = b("block.note_block.chime");
-   public static final je.c<awm> sI = b("block.note_block.flute");
-   public static final je.c<awm> sJ = b("block.note_block.guitar");
-   public static final je.c<awm> sK = b("block.note_block.harp");
-   public static final je.c<awm> sL = b("block.note_block.hat");
-   public static final je.c<awm> sM = b("block.note_block.pling");
-   public static final je.c<awm> sN = b("block.note_block.snare");
-   public static final je.c<awm> sO = b("block.note_block.xylophone");
-   public static final je.c<awm> sP = b("block.note_block.iron_xylophone");
-   public static final je.c<awm> sQ = b("block.note_block.cow_bell");
-   public static final je.c<awm> sR = b("block.note_block.didgeridoo");
-   public static final je.c<awm> sS = b("block.note_block.bit");
-   public static final je.c<awm> sT = b("block.note_block.banjo");
-   public static final je.c<awm> sU = b("block.note_block.imitate.zombie");
-   public static final je.c<awm> sV = b("block.note_block.imitate.skeleton");
-   public static final je.c<awm> sW = b("block.note_block.imitate.creeper");
-   public static final je.c<awm> sX = b("block.note_block.imitate.ender_dragon");
-   public static final je.c<awm> sY = b("block.note_block.imitate.wither_skeleton");
-   public static final je.c<awm> sZ = b("block.note_block.imitate.piglin");
+   public static final jf.c<awm> sE = b("block.note_block.basedrum");
+   public static final jf.c<awm> sF = b("block.note_block.bass");
+   public static final jf.c<awm> sG = b("block.note_block.bell");
+   public static final jf.c<awm> sH = b("block.note_block.chime");
+   public static final jf.c<awm> sI = b("block.note_block.flute");
+   public static final jf.c<awm> sJ = b("block.note_block.guitar");
+   public static final jf.c<awm> sK = b("block.note_block.harp");
+   public static final jf.c<awm> sL = b("block.note_block.hat");
+   public static final jf.c<awm> sM = b("block.note_block.pling");
+   public static final jf.c<awm> sN = b("block.note_block.snare");
+   public static final jf.c<awm> sO = b("block.note_block.xylophone");
+   public static final jf.c<awm> sP = b("block.note_block.iron_xylophone");
+   public static final jf.c<awm> sQ = b("block.note_block.cow_bell");
+   public static final jf.c<awm> sR = b("block.note_block.didgeridoo");
+   public static final jf.c<awm> sS = b("block.note_block.bit");
+   public static final jf.c<awm> sT = b("block.note_block.banjo");
+   public static final jf.c<awm> sU = b("block.note_block.imitate.zombie");
+   public static final jf.c<awm> sV = b("block.note_block.imitate.skeleton");
+   public static final jf.c<awm> sW = b("block.note_block.imitate.creeper");
+   public static final jf.c<awm> sX = b("block.note_block.imitate.ender_dragon");
+   public static final jf.c<awm> sY = b("block.note_block.imitate.wither_skeleton");
+   public static final jf.c<awm> sZ = b("block.note_block.imitate.piglin");
    public static final awm ta = a("entity.ocelot.hurt");
    public static final awm tb = a("entity.ocelot.ambient");
    public static final awm tc = a("entity.ocelot.death");
-   public static final je.c<awm> td = b("item.ominous_bottle.dispose");
+   public static final jf.c<awm> td = b("item.ominous_bottle.dispose");
    public static final awm te = a("entity.painting.break");
    public static final awm tf = a("entity.painting.place");
    public static final awm tg = a("block.pale_hanging_moss.idle");
@@ -1111,7 +1111,7 @@ public class awn {
    public static final awm uo = a("entity.pig.ambient");
    public static final awm up = a("entity.pig.death");
    public static final awm uq = a("entity.pig.hurt");
-   public static final je.c<awm> ur = b("entity.pig.saddle");
+   public static final jf.c<awm> ur = b("entity.pig.saddle");
    public static final awm us = a("entity.pig.step");
    public static final awm ut = a("entity.piglin.admiring_item");
    public static final awm uu = a("entity.piglin.ambient");
@@ -1188,7 +1188,7 @@ public class awn {
    public static final awm vN = a("entity.rabbit.death");
    public static final awm vO = a("entity.rabbit.hurt");
    public static final awm vP = a("entity.rabbit.jump");
-   public static final je.c<awm> vQ = b("event.raid.horn");
+   public static final jf.c<awm> vQ = b("event.raid.horn");
    public static final awm vR = a("entity.ravager.ambient");
    public static final awm vS = a("entity.ravager.attack");
    public static final awm vT = a("entity.ravager.celebrate");
@@ -1210,7 +1210,7 @@ public class awn {
    public static final awm wj = a("block.redstone_torch.burnout");
    public static final awm wk = a("block.respawn_anchor.ambient");
    public static final awm wl = a("block.respawn_anchor.charge");
-   public static final je.c<awm> wm = b("block.respawn_anchor.deplete");
+   public static final jf.c<awm> wm = b("block.respawn_anchor.deplete");
    public static final awm wn = a("block.respawn_anchor.set_spawn");
    public static final awm wo = a("block.rooted_dirt.break");
    public static final awm wp = a("block.rooted_dirt.fall");
@@ -1269,8 +1269,8 @@ public class awn {
    public static final awm xq = a("entity.sheep.hurt");
    public static final awm xr = a("entity.sheep.shear");
    public static final awm xs = a("entity.sheep.step");
-   public static final je.c<awm> xt = b("item.shield.block");
-   public static final je.c<awm> xu = b("item.shield.break");
+   public static final jf.c<awm> xt = b("item.shield.block");
+   public static final jf.c<awm> xu = b("item.shield.break");
    public static final awm xv = a("block.shroomlight.break");
    public static final awm xw = a("block.shroomlight.step");
    public static final awm xx = a("block.shroomlight.place");
@@ -1334,7 +1334,7 @@ public class awn {
    public static final awm yD = a("block.soul_soil.place");
    public static final awm yE = a("block.soul_soil.hit");
    public static final awm yF = a("block.soul_soil.fall");
-   public static final je.c<awm> yG = b("particle.soul_escape");
+   public static final jf.c<awm> yG = b("particle.soul_escape");
    public static final awm yH = a("block.spawner.break");
    public static final awm yI = a("block.spawner.fall");
    public static final awm yJ = a("block.spawner.hit");
@@ -1362,7 +1362,7 @@ public class awn {
    public static final awm zf = a("entity.strider.step");
    public static final awm zg = a("entity.strider.step_lava");
    public static final awm zh = a("entity.strider.eat");
-   public static final je.c<awm> zi = b("entity.strider.saddle");
+   public static final jf.c<awm> zi = b("entity.strider.saddle");
    public static final awm zj = a("entity.slime.death_small");
    public static final awm zk = a("entity.slime.hurt_small");
    public static final awm zl = a("entity.slime.jump_small");
@@ -1439,11 +1439,11 @@ public class awn {
    public static final awm AE = a("item.trident.hit");
    public static final awm AF = a("item.trident.hit_ground");
    public static final awm AG = a("item.trident.return");
-   public static final je<awm> AH = b("item.trident.riptide_1");
-   public static final je<awm> AI = b("item.trident.riptide_2");
-   public static final je<awm> AJ = b("item.trident.riptide_3");
-   public static final je<awm> AK = b("item.trident.throw");
-   public static final je<awm> AL = b("item.trident.thunder");
+   public static final jf<awm> AH = b("item.trident.riptide_1");
+   public static final jf<awm> AI = b("item.trident.riptide_2");
+   public static final jf<awm> AJ = b("item.trident.riptide_3");
+   public static final jf<awm> AK = b("item.trident.throw");
+   public static final jf<awm> AL = b("item.trident.thunder");
    public static final awm AM = a("block.tripwire.attach");
    public static final awm AN = a("block.tripwire.click_off");
    public static final awm AO = a("block.tripwire.click_on");
@@ -1479,7 +1479,7 @@ public class awn {
    public static final awm Bs = a("entity.turtle.shamble");
    public static final awm Bt = a("entity.turtle.shamble_baby");
    public static final awm Bu = a("entity.turtle.swim");
-   public static final je.c<awm> Bv = b("ui.button.click");
+   public static final jf.c<awm> Bv = b("ui.button.click");
    public static final awm Bw = a("ui.loom.select_pattern");
    public static final awm Bx = a("ui.loom.take_result");
    public static final awm By = a("ui.cartography_table.take_result");
@@ -1582,7 +1582,7 @@ public class awn {
    public static final awm Dr = a("block.wet_sponge.hit");
    public static final awm Ds = a("block.wet_sponge.place");
    public static final awm Dt = a("block.wet_sponge.step");
-   public static final je.c<awm> Du = b("entity.wind_charge.wind_burst");
+   public static final jf.c<awm> Du = b("entity.wind_charge.wind_burst");
    public static final awm Dv = a("entity.wind_charge.throw");
    public static final awm Dw = a("entity.witch.ambient");
    public static final awm Dx = a("entity.witch.celebrate");
@@ -1600,7 +1600,7 @@ public class awn {
    public static final awm DJ = a("entity.wither_skeleton.hurt");
    public static final awm DK = a("entity.wither_skeleton.step");
    public static final awm DL = a("entity.wither.spawn");
-   public static final je.c<awm> DM = b("item.wolf_armor.break");
+   public static final jf.c<awm> DM = b("item.wolf_armor.break");
    public static final awm DN = a("item.wolf_armor.crack");
    public static final awm DO = a("item.wolf_armor.damage");
    public static final awm DP = a("item.wolf_armor.repair");
@@ -1664,8 +1664,8 @@ public class awn {
    public static final awm EV = a("event.mob_effect.trial_omen");
    public static final awm EW = a("event.mob_effect.raid_omen");
 
-   private static je<awm> a(alg $$0, alg $$1, float $$2) {
-      return jr.b(mf.b, $$0, awm.a($$1, $$2));
+   private static jf<awm> a(alg $$0, alg $$1, float $$2) {
+      return js.b(mg.b, $$0, awm.a($$1, $$2));
    }
 
    private static awm a(String $$0) {
@@ -1676,23 +1676,23 @@ public class awn {
       return a($$0, $$0);
    }
 
-   private static je.c<awm> b(String $$0) {
+   private static jf.c<awm> b(String $$0) {
       return b(alg.b($$0));
    }
 
-   private static je.c<awm> b(alg $$0) {
+   private static jf.c<awm> b(alg $$0) {
       return b($$0, $$0);
    }
 
    private static awm a(alg $$0, alg $$1) {
-      return jr.a(mf.b, $$0, awm.a($$1));
+      return js.a(mg.b, $$0, awm.a($$1));
    }
 
-   private static je.c<awm> b(alg $$0, alg $$1) {
-      return jr.b(mf.b, $$0, awm.a($$1));
+   private static jf.c<awm> b(alg $$0, alg $$1) {
+      return js.b(mg.b, $$0, awm.a($$1));
    }
 
-   private static ImmutableList<je.c<awm>> a() {
+   private static ImmutableList<jf.c<awm>> a() {
       return IntStream.range(0, 8).mapToObj($$0 -> b("item.goat_horn.sound." + $$0)).collect(ImmutableList.toImmutableList());
    }
 }

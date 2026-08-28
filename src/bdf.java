@@ -66,8 +66,8 @@ public class bdf extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bix.c);
-      Type<?> $$1 = this.getOutputSchema().getType(bix.c);
+      Type<?> $$0 = this.getInputSchema().getType(biz.c);
+      Type<?> $$1 = this.getOutputSchema().getType(biz.c);
       return this.writeFixAndRead("ChunkPalettedStorageFix", $$0, $$1, this::b);
    }
 

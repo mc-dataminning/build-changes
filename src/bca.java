@@ -19,7 +19,7 @@ public class bca extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(bix.c);
+      Type<?> $$0 = this.getOutputSchema().getType(biz.c);
       return this.fixTypeEverywhereTyped(this.a, $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> a($$0xx, $$0xx.get("__context"))));
    }
 
@@ -28,13 +28,13 @@ public class bca extends DataFix {
       boolean $$2 = "minecraft:overworld".equals($$1.get("dimension").asString().result().orElse(""));
       Optional<? extends Dynamic<?>> $$3 = $$0.get("Status").result();
       if ($$2 && $$3.isPresent()) {
-         String $$4 = bks.a($$3.get().asString("empty"));
+         String $$4 = bku.a($$3.get().asString("empty"));
          Optional<? extends Dynamic<?>> $$5 = $$0.get("below_zero_retrogen").result();
          if (!b.contains($$4)) {
             $$0 = a($$0, 384, -64);
          } else if ($$5.isPresent()) {
             Dynamic<?> $$6 = (Dynamic<?>)$$5.get();
-            String $$7 = bks.a($$6.get("target_status").asString("empty"));
+            String $$7 = bku.a($$6.get("target_status").asString("empty"));
             if (!b.contains($$7)) {
                $$0 = a($$0, 256, 0);
             }
@@ -47,7 +47,7 @@ public class bca extends DataFix {
    private static Dynamic<?> a(Dynamic<?> $$0, int $$1, int $$2) {
       return $$0.set(
          "blending_data",
-         $$0.createMap(Map.of($$0.createString("min_section"), $$0.createInt(jx.a($$2)), $$0.createString("max_section"), $$0.createInt(jx.a($$2 + $$1))))
+         $$0.createMap(Map.of($$0.createString("min_section"), $$0.createInt(jy.a($$2)), $$0.createString("max_section"), $$0.createInt(jy.a($$2 + $$1))))
       );
    }
 }

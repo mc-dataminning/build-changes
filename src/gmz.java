@@ -1,53 +1,30 @@
-public class gmz extends goi {
-   gmz(gjz $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.C = true;
-      this.B = 0.86F;
-      this.j *= 0.01F;
-      this.k *= 0.01F;
-      this.l *= 0.01F;
-      this.k += 0.1;
-      this.D *= 1.5F;
-      this.t = 16;
-      this.n = false;
+public class gmz extends gog {
+   gmz(gkl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gop $$7) {
+      super($$0, $$1, $$2, $$3, $$7, 0.0125F);
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.D *= 0.75F;
+      this.t = 60 + this.r.a(12);
+      this.c(15916745);
+      this.b($$7);
    }
 
    @Override
-   public gnm b() {
-      return gnm.b;
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
    }
 
-   @Override
-   public float b(float $$0) {
-      return this.D * azm.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
+   public static class a implements gnx<mc> {
+      private final gop a;
 
-   public static class a implements gnl<mb> {
-      private final god a;
-
-      public a(god $$0) {
+      public a(gop $$0) {
          this.a = $$0;
       }
 
-      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gmz $$8 = new gmz($$1, $$2, $$3 + 0.5, $$4);
-         $$8.a(this.a);
-         $$8.a(1.0F, 1.0F, 1.0F);
-         return $$8;
-      }
-   }
-
-   public static class b implements gnl<mb> {
-      private final god a;
-
-      public b(god $$0) {
-         this.a = $$0;
-      }
-
-      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gmz $$8 = new gmz($$1, $$2, $$3, $$4);
-         $$8.a(this.a);
-         return $$8;
+      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gmz($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

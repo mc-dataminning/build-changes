@@ -5,26 +5,26 @@ import java.util.Collection;
 import java.util.Collections;
 
 public class apc {
-   public static void a(CommandDispatcher<ei> $$0) {
+   public static void a(CommandDispatcher<ej> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("spawnpoint").requires($$0x -> $$0x.c(2)))
-               .executes($$0x -> a((ei)$$0x.getSource(), Collections.singleton(((ei)$$0x.getSource()).h()), iu.a((jo)((ei)$$0x.getSource()).d()), 0.0F)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("spawnpoint").requires($$0x -> $$0x.c(2)))
+               .executes($$0x -> a((ej)$$0x.getSource(), Collections.singleton(((ej)$$0x.getSource()).h()), iv.a((jp)((ej)$$0x.getSource()).d()), 0.0F)))
             .then(
-               ((RequiredArgumentBuilder)ej.a("targets", ev.d())
-                     .executes($$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), iu.a((jo)((ei)$$0x.getSource()).d()), 0.0F)))
+               ((RequiredArgumentBuilder)ek.a("targets", ew.d())
+                     .executes($$0x -> a((ej)$$0x.getSource(), ew.f($$0x, "targets"), iv.a((jp)((ej)$$0x.getSource()).d()), 0.0F)))
                   .then(
-                     ((RequiredArgumentBuilder)ej.a("pos", gf.a()).executes($$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), gf.c($$0x, "pos"), 0.0F)))
-                        .then(ej.a("angle", eo.a()).executes($$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), gf.c($$0x, "pos"), eo.a($$0x, "angle"))))
+                     ((RequiredArgumentBuilder)ek.a("pos", gg.a()).executes($$0x -> a((ej)$$0x.getSource(), ew.f($$0x, "targets"), gg.c($$0x, "pos"), 0.0F)))
+                        .then(ek.a("angle", ep.a()).executes($$0x -> a((ej)$$0x.getSource(), ew.f($$0x, "targets"), gg.c($$0x, "pos"), ep.a($$0x, "angle"))))
                   )
             )
       );
    }
 
-   private static int a(ei $$0, Collection<arr> $$1, iu $$2, float $$3) {
-      alf<dja> $$4 = $$0.e().aj();
+   private static int a(ej $$0, Collection<arr> $$1, iv $$2, float $$3) {
+      alf<djh> $$4 = $$0.e().aj();
 
       for (arr $$5 : $$1) {
-         $$5.a($$4, $$2, $$3, true, false);
+         $$5.a(new arr.a($$4, $$2, $$3, true), false);
       }
 
       String $$6 = $$4.a().toString();

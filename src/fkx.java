@@ -1,13 +1,16 @@
-import com.google.gson.annotations.SerializedName;
+public class fkx extends fkw {
+   private final wy a;
 
-public class fkx extends flo implements fli {
-   @SerializedName("name")
-   public String a;
-   @SerializedName("description")
-   public String b;
-
-   public fkx(String $$0, String $$1) {
+   public fkx(wy $$0) {
       this.a = $$0;
-      this.b = $$1;
+   }
+
+   public fkx(String $$0) {
+      this(wy.b($$0));
+   }
+
+   @Override
+   public wy a() {
+      return wy.a("mco.upload.failed", this.a);
    }
 }

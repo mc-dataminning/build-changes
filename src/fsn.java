@@ -1,10 +1,8 @@
-public class fsn {
-   public static fto a(int $$0, fsj.c $$1, boolean $$2) {
-      return fto.a(wy.c("options.language"), $$1, $$2).a($$0).a(alg.b("icon/language"), 15, 15).a();
-   }
+public abstract class fsn extends fsq {
+   protected final fps a;
 
-   public static fto b(int $$0, fsj.c $$1, boolean $$2) {
-      wy $$3 = $$2 ? wy.c("options.accessibility") : wy.c("accessibility.onboarding.accessibility.button");
-      return fto.a($$3, $$1, $$2).a($$0).a(alg.b("icon/accessibility"), 15, 15).a();
+   protected fsn(fps $$0, int $$1, int $$2, int $$3, int $$4, double $$5) {
+      super($$1, $$2, $$3, $$4, wx.a, $$5);
+      this.a = $$0;
    }
 }

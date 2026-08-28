@@ -1,27 +1,34 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.Map;
+import java.util.Map.Entry;
 
-public class dp extends dj<dp.a> {
-   @Override
-   public Codec<dp.a> a() {
-      return dp.a.a;
-   }
+public record dp(Map<cxa, cm> b) {
+   public static final Codec<dp> a = Codec.unboundedMap(cxb.a, cm.a).xmap(dp::new, dp::a);
 
-   public void a(arr $$0) {
-      this.a($$0, $$0x -> true);
-   }
-
-   public static record a(Optional<bi> b) implements dj.a {
-      public static final Codec<dp.a> a = RecordCodecBuilder.create($$0 -> $$0.group(bx.b.optionalFieldOf("player").forGetter(dp.a::a)).apply($$0, dp.a::new));
-
-      public static aq<dp.a> a(bx.a $$0) {
-         return ap.U.a(new dp.a(Optional.of(bx.a($$0))));
+   public boolean a(bwi $$0) {
+      for (Entry<cxa, cm> $$1 : this.b.entrySet()) {
+         if (!a($$0, $$1.getValue(), $$1.getKey().a())) {
+            return false;
+         }
       }
 
-      @Override
-      public Optional<bi> a() {
-         return this.b;
+      return true;
+   }
+
+   private static boolean a(bwi $$0, cm $$1, IntList $$2) {
+      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+         int $$4 = $$2.getInt($$3);
+         bya $$5 = $$0.a_($$4);
+         if ($$1.a($$5.a())) {
+            return true;
+         }
       }
+
+      return false;
+   }
+
+   public Map<cxa, cm> a() {
+      return this.b;
    }
 }

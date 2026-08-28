@@ -1,125 +1,428 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import org.joml.Matrix4f;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Queues;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Future;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import org.joml.Vector3d;
+import org.slf4j.Logger;
 
 public class grc {
-   public static final alg a = alg.b("textures/misc/forcefield.png");
-   private boolean b = true;
-   private double c;
-   private double d;
-   private double e;
-   private double f;
-   private fjm[] g = new fjm[4];
+   private static final Logger a = LogUtils.getLogger();
+   private static final jb[] b = jb.values();
+   private static final int c = 60;
+   private static final int d = jy.a(60);
+   private static final double e = Math.ceil(Math.sqrt(3.0) * 16.0);
+   private boolean f = true;
+   @Nullable
+   private Future<?> g;
+   @Nullable
+   private grk h;
+   private final AtomicReference<grc.b> i = new AtomicReference<>();
+   private final AtomicReference<grc.a> j = new AtomicReference<>();
+   private final AtomicBoolean k = new AtomicBoolean(false);
 
-   public grc() {
-      for (ja $$0 : ja.c.a) {
-         this.g[$$0.e()] = new fjm(fhe.b);
+   public void a(@Nullable grk $$0) {
+      if (this.g != null) {
+         try {
+            this.g.get();
+            this.g = null;
+         } catch (Exception var3) {
+            a.warn("Full update failed", var3);
+         }
       }
-   }
 
-   private void a(ebz $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6) {
-      try (fjg $$7 = new fjg(fjh.i.b() * 4)) {
-         double $$8 = $$0.e();
-         double $$9 = $$0.g();
-         double $$10 = $$0.f();
-         double $$11 = $$0.h();
-         double $$12 = Math.max((double)azm.a($$2 - $$1), $$10);
-         double $$13 = Math.min((double)azm.c($$2 + $$1), $$11);
-         float $$14 = (float)(azm.a($$12) & 1) * 0.5F;
-         float $$15 = (float)($$13 - $$12) / 2.0F;
-         double $$16 = Math.max((double)azm.a($$3 - $$1), $$8);
-         double $$17 = Math.min((double)azm.c($$3 + $$1), $$9);
-         float $$18 = (float)(azm.a($$16) & 1) * 0.5F;
-         float $$19 = (float)($$17 - $$16) / 2.0F;
-
-         for (ja $$20 : ja.c.a) {
-            fjf $$21 = new fjf($$7, fjo.c.h, fjh.i);
-            switch ($$20) {
-               case f:
-                  $$21.a((float)($$9 - $$8), -$$4, (float)($$13 - $$10)).a($$14, $$5);
-                  $$21.a((float)($$9 - $$8), -$$4, (float)($$12 - $$10)).a($$15 + $$14, $$5);
-                  $$21.a((float)($$9 - $$8), $$4, (float)($$12 - $$10)).a($$15 + $$14, $$6);
-                  $$21.a((float)($$9 - $$8), $$4, (float)($$13 - $$10)).a($$14, $$6);
-                  break;
-               case e:
-                  $$21.a(0.0F, -$$4, (float)($$12 - $$10)).a($$14, $$5);
-                  $$21.a(0.0F, -$$4, (float)($$13 - $$10)).a($$15 + $$14, $$5);
-                  $$21.a(0.0F, $$4, (float)($$13 - $$10)).a($$15 + $$14, $$6);
-                  $$21.a(0.0F, $$4, (float)($$12 - $$10)).a($$14, $$6);
-                  break;
-               case d:
-                  $$21.a((float)($$16 - $$8), -$$4, (float)($$11 - $$10)).a($$18, $$5);
-                  $$21.a((float)($$17 - $$8), -$$4, (float)($$11 - $$10)).a($$19 + $$18, $$5);
-                  $$21.a((float)($$17 - $$8), $$4, (float)($$11 - $$10)).a($$19 + $$18, $$6);
-                  $$21.a((float)($$16 - $$8), $$4, (float)($$11 - $$10)).a($$18, $$6);
-                  break;
-               case c:
-                  $$21.a((float)($$17 - $$8), -$$4, 0.0F).a($$18, $$5);
-                  $$21.a((float)($$16 - $$8), -$$4, 0.0F).a($$19 + $$18, $$5);
-                  $$21.a((float)($$16 - $$8), $$4, 0.0F).a($$19 + $$18, $$6);
-                  $$21.a((float)($$17 - $$8), $$4, 0.0F).a($$18, $$6);
-            }
-
-            this.g[$$20.e()].a();
-            this.g[$$20.e()].a($$21.b());
-         }
-
-         fjm.b();
-         this.c = $$0.e();
-         this.d = $$0.g();
-         this.e = $$0.f();
-         this.f = $$0.h();
-         this.b = false;
-      }
-   }
-
-   public void a(ebz $$0, feq $$1, double $$2, double $$3) {
-      double $$4 = $$0.e();
-      double $$5 = $$0.g();
-      double $$6 = $$0.f();
-      double $$7 = $$0.h();
-      if ((!($$1.d < $$5 - $$2) || !($$1.d > $$4 + $$2) || !($$1.f < $$7 - $$2) || !($$1.f > $$6 + $$2))
-         && !($$1.d < $$4 - $$2)
-         && !($$1.d > $$5 + $$2)
-         && !($$1.f < $$6 - $$2)
-         && !($$1.f > $$7 + $$2)) {
-         double $$8 = 1.0 - $$0.b($$1.d, $$1.f) / $$2;
-         $$8 = Math.pow($$8, 4.0);
-         $$8 = azm.a($$8, 0.0, 1.0);
-         double $$9 = $$1.d;
-         double $$10 = $$1.f;
-         float $$11 = (float)$$3;
-         gqk $$12 = gqk.G();
-         int $$13 = $$0.d().a();
-         float $$14 = (float)axw.b($$13) / 255.0F;
-         float $$15 = (float)axw.c($$13) / 255.0F;
-         float $$16 = (float)axw.d($$13) / 255.0F;
-         RenderSystem.setShaderColor($$14, $$15, $$16, (float)$$8);
-         float $$17 = (float)(af.c() % 3000L) / 3000.0F;
-         RenderSystem.setTextureMatrix(new Matrix4f().translation($$17, $$17, 0.0F));
-         float $$18 = (float)(-azm.e($$1.e * 0.5));
-         float $$19 = $$18 + $$11;
-         RenderSystem.setModelOffset((float)(this.c - $$9), (float)(-$$1.e), (float)(this.e - $$10));
-         if (this.a($$0)) {
-            this.a($$0, $$2, $$10, $$9, $$11, $$19, $$18);
-         }
-
-         for (ebz.b $$20 : $$0.c($$9, $$10)) {
-            if ($$20.b() < $$2) {
-               this.g[$$20.a().e()].a($$12);
-            }
-         }
-
-         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-         RenderSystem.resetTextureMatrix();
-         RenderSystem.resetModelOffset();
+      this.h = $$0;
+      if ($$0 != null) {
+         this.i.set(new grc.b($$0));
+         this.a();
+      } else {
+         this.i.set(null);
       }
    }
 
    public void a() {
-      this.b = true;
+      this.f = true;
    }
 
-   private boolean a(ebz $$0) {
-      return this.b || $$0.e() != this.c || $$0.f() != this.e || $$0.g() != this.d || $$0.h() != this.f;
+   public void a(guf $$0, List<gub.b> $$1, List<gub.b> $$2) {
+      this.i.get().a().b.a(($$2x, $$3, $$4, $$5) -> {
+         gub.b $$6 = $$2x.a();
+         if ($$6 != null) {
+            $$1.add($$6);
+            if ($$5) {
+               $$2.add($$6);
+            }
+         }
+      }, $$0, 32);
+   }
+
+   public boolean b() {
+      return this.k.compareAndSet(true, false);
+   }
+
+   public void a(dio $$0) {
+      grc.a $$1 = this.j.get();
+      if ($$1 != null) {
+         this.a($$1, $$0);
+      }
+
+      grc.a $$2 = this.i.get().b;
+      if ($$2 != $$1) {
+         this.a($$2, $$0);
+      }
+   }
+
+   public void a(gub.b $$0) {
+      grc.a $$1 = this.j.get();
+      if ($$1 != null) {
+         $$1.b.add($$0);
+      }
+
+      grc.a $$2 = this.i.get().b;
+      if ($$2 != $$1) {
+         $$2.b.add($$0);
+      }
+   }
+
+   public void a(boolean $$0, fow $$1, guf $$2, List<gub.b> $$3, LongOpenHashSet $$4) {
+      fex $$5 = $$1.b();
+      if (this.f && (this.g == null || this.g.isDone())) {
+         this.a($$0, $$1, $$5, $$4);
+      }
+
+      this.a($$0, $$2, $$3, $$5, $$4);
+   }
+
+   private void a(boolean $$0, fow $$1, fex $$2, LongOpenHashSet $$3) {
+      this.f = false;
+      LongOpenHashSet $$4 = $$3.clone();
+      this.g = CompletableFuture.runAsync(() -> {
+         grc.b $$4x = new grc.b(this.h);
+         this.j.set($$4x.b);
+         Queue<grc.d> $$5 = Queues.newArrayDeque();
+         this.a($$1, $$5);
+         $$5.forEach($$1xx -> $$4x.a.a.a($$1xx.a, $$1xx));
+         this.a($$4x.a, $$2, $$5, $$0, $$0xx -> {
+         }, $$4);
+         this.i.set($$4x);
+         this.j.set(null);
+         this.k.set(true);
+      }, ag.h());
+   }
+
+   private void a(boolean $$0, guf $$1, List<gub.b> $$2, fex $$3, LongOpenHashSet $$4) {
+      grc.b $$5 = this.i.get();
+      this.a($$5);
+      if (!$$5.b.b.isEmpty()) {
+         Queue<grc.d> $$6 = Queues.newArrayDeque();
+
+         while (!$$5.b.b.isEmpty()) {
+            gub.b $$7 = $$5.b.b.poll();
+            grc.d $$8 = $$5.a.a.a($$7);
+            if ($$8 != null && $$8.a == $$7) {
+               $$6.add($$8);
+            }
+         }
+
+         guf $$9 = gqh.a($$1);
+         Consumer<gub.b> $$10 = $$1x -> {
+            if ($$9.a($$1x.b())) {
+               this.k.set(true);
+            }
+         };
+         this.a($$5.a, $$3, $$6, $$0, $$10, $$4);
+      }
+   }
+
+   private void a(grc.b $$0) {
+      LongIterator $$1 = $$0.b.a.iterator();
+
+      while ($$1.hasNext()) {
+         long $$2 = $$1.nextLong();
+         List<gub.b> $$3 = (List<gub.b>)$$0.a.c.get($$2);
+         if ($$3 != null && $$3.get(0).a()) {
+            $$0.b.b.addAll($$3);
+            $$0.a.c.remove($$2);
+         }
+      }
+
+      $$0.b.a.clear();
+   }
+
+   private void a(grc.a $$0, dio $$1) {
+      $$0.a.add(dio.c($$1.h - 1, $$1.i));
+      $$0.a.add(dio.c($$1.h, $$1.i - 1));
+      $$0.a.add(dio.c($$1.h + 1, $$1.i));
+      $$0.a.add(dio.c($$1.h, $$1.i + 1));
+      $$0.a.add(dio.c($$1.h - 1, $$1.i - 1));
+      $$0.a.add(dio.c($$1.h - 1, $$1.i + 1));
+      $$0.a.add(dio.c($$1.h + 1, $$1.i - 1));
+      $$0.a.add(dio.c($$1.h + 1, $$1.i + 1));
+   }
+
+   private void a(fow $$0, Queue<grc.d> $$1) {
+      iv $$2 = $$0.c();
+      long $$3 = jy.c($$2);
+      int $$4 = jy.c($$3);
+      gub.b $$5 = this.h.a($$3);
+      if ($$5 == null) {
+         djj $$6 = this.h.c();
+         boolean $$7 = $$4 < $$6.aq();
+         int $$8 = $$7 ? $$6.aq() : $$6.ar();
+         int $$9 = this.h.b();
+         List<grc.d> $$10 = Lists.newArrayList();
+         int $$11 = jy.b($$3);
+         int $$12 = jy.d($$3);
+
+         for (int $$13 = -$$9; $$13 <= $$9; $$13++) {
+            for (int $$14 = -$$9; $$14 <= $$9; $$14++) {
+               gub.b $$15 = this.h.a(jy.b($$13 + $$11, $$8, $$14 + $$12));
+               if ($$15 != null && this.a($$3, $$15.g())) {
+                  jb $$16 = $$7 ? jb.b : jb.a;
+                  grc.d $$17 = new grc.d($$15, $$16, 0);
+                  $$17.a($$17.d, $$16);
+                  if ($$13 > 0) {
+                     $$17.a($$17.d, jb.f);
+                  } else if ($$13 < 0) {
+                     $$17.a($$17.d, jb.e);
+                  }
+
+                  if ($$14 > 0) {
+                     $$17.a($$17.d, jb.d);
+                  } else if ($$14 < 0) {
+                     $$17.a($$17.d, jb.c);
+                  }
+
+                  $$10.add($$17);
+               }
+            }
+         }
+
+         $$10.sort(Comparator.comparingDouble($$1x -> $$2.j(jy.a($$1x.a.g()).k())));
+         $$1.addAll($$10);
+      } else {
+         $$1.add(new grc.d($$5, null, 0));
+      }
+   }
+
+   private void a(grc.c $$0, fex $$1, Queue<grc.d> $$2, boolean $$3, Consumer<gub.b> $$4, LongOpenHashSet $$5) {
+      jy $$6 = jy.a($$1);
+      long $$7 = $$6.s();
+      iv $$8 = $$6.k();
+
+      while (!$$2.isEmpty()) {
+         grc.d $$9 = $$2.poll();
+         gub.b $$10 = $$9.a;
+         if (!$$5.contains($$9.a.g())) {
+            if ($$0.b.a($$9.a)) {
+               $$4.accept($$9.a);
+            }
+         } else {
+            $$9.a.c.compareAndSet(gub.a.a, gub.a.b);
+         }
+
+         long $$11 = $$10.g();
+         boolean $$12 = Math.abs(jy.b($$11) - $$6.a()) > d || Math.abs(jy.c($$11) - $$6.b()) > d || Math.abs(jy.d($$11) - $$6.c()) > d;
+
+         for (jb $$13 : b) {
+            gub.b $$14 = this.a($$7, $$10, $$13);
+            if ($$14 != null && (!$$3 || !$$9.a($$13.g()))) {
+               if ($$3 && $$9.a()) {
+                  gub.a $$15 = $$10.d();
+                  boolean $$16 = false;
+
+                  for (int $$17 = 0; $$17 < b.length; $$17++) {
+                     if ($$9.a($$17) && $$15.a(b[$$17].g(), $$13)) {
+                        $$16 = true;
+                        break;
+                     }
+                  }
+
+                  if (!$$16) {
+                     continue;
+                  }
+               }
+
+               if ($$3 && $$12) {
+                  int $$18 = jy.c(jy.b($$11));
+                  int $$19 = jy.c(jy.c($$11));
+                  int $$20 = jy.c(jy.d($$11));
+                  boolean $$21 = $$13.o() == jb.a.a ? $$8.u() > $$18 : $$8.u() < $$18;
+                  boolean $$22 = $$13.o() == jb.a.b ? $$8.v() > $$19 : $$8.v() < $$19;
+                  boolean $$23 = $$13.o() == jb.a.c ? $$8.w() > $$20 : $$8.w() < $$20;
+                  Vector3d $$24 = new Vector3d((double)($$18 + ($$21 ? 16 : 0)), (double)($$19 + ($$22 ? 16 : 0)), (double)($$20 + ($$23 ? 16 : 0)));
+                  Vector3d $$25 = new Vector3d($$1.d, $$1.e, $$1.f).sub($$24).normalize().mul(e);
+                  boolean $$26 = true;
+
+                  while ($$24.distanceSquared($$1.d, $$1.e, $$1.f) > 3600.0) {
+                     $$24.add($$25);
+                     djj $$27 = this.h.c();
+                     if ($$24.y > (double)$$27.ao() || $$24.y < (double)$$27.G_()) {
+                        break;
+                     }
+
+                     gub.b $$28 = this.h.a(iv.a($$24.x, $$24.y, $$24.z));
+                     if ($$28 == null || $$0.a.a($$28) == null) {
+                        $$26 = false;
+                        break;
+                     }
+                  }
+
+                  if (!$$26) {
+                     continue;
+                  }
+               }
+
+               grc.d $$29 = $$0.a.a($$14);
+               if ($$29 != null) {
+                  $$29.b($$13);
+               } else {
+                  grc.d $$30 = new grc.d($$14, $$13, $$9.b + 1);
+                  $$30.a($$9.d, $$13);
+                  if ($$14.a()) {
+                     $$2.add($$30);
+                     $$0.a.a($$14, $$30);
+                  } else if (this.a($$7, $$14.g())) {
+                     $$0.a.a($$14, $$30);
+                     long $$31 = jy.g($$14.g());
+                     ((List)$$0.c.computeIfAbsent($$31, $$0x -> new ArrayList())).add($$14);
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private boolean a(long $$0, long $$1) {
+      return aqz.a(jy.b($$0), jy.d($$0), this.h.b(), jy.b($$1), jy.d($$1));
+   }
+
+   @Nullable
+   private gub.b a(long $$0, gub.b $$1, jb $$2) {
+      long $$3 = $$1.a($$2);
+      if (!this.a($$0, $$3)) {
+         return null;
+      } else {
+         return azm.a(jy.c($$0) - jy.c($$3)) > this.h.b() ? null : this.h.a($$3);
+      }
+   }
+
+   @Nullable
+   @bav
+   public grc.d b(gub.b $$0) {
+      return this.i.get().a.a.a($$0);
+   }
+
+   public gqn c() {
+      return this.i.get().a.b;
+   }
+
+   static record a(LongSet a, BlockingQueue<gub.b> b) {
+
+      a() {
+         this(new LongOpenHashSet(), new LinkedBlockingQueue<>());
+      }
+   }
+
+   static record b(grc.c a, grc.a b) {
+
+      b(grk $$0) {
+         this(new grc.c($$0), new grc.a());
+      }
+   }
+
+   static class c {
+      public final grc.e a;
+      public final gqn b;
+      public final Long2ObjectMap<List<gub.b>> c;
+
+      public c(grk $$0) {
+         this.a = new grc.e($$0.f.length);
+         this.b = new gqn($$0.d(), $$0.b(), $$0.c, $$0.b.G_());
+         this.c = new Long2ObjectOpenHashMap();
+      }
+   }
+
+   @bav
+   public static class d {
+      @bav
+      protected final gub.b a;
+      private byte c;
+      byte d;
+      @bav
+      public final int b;
+
+      d(gub.b $$0, @Nullable jb $$1, int $$2) {
+         this.a = $$0;
+         if ($$1 != null) {
+            this.b($$1);
+         }
+
+         this.b = $$2;
+      }
+
+      void a(byte $$0, jb $$1) {
+         this.d = (byte)(this.d | $$0 | 1 << $$1.ordinal());
+      }
+
+      boolean a(jb $$0) {
+         return (this.d & 1 << $$0.ordinal()) > 0;
+      }
+
+      void b(jb $$0) {
+         this.c = (byte)(this.c | this.c | 1 << $$0.ordinal());
+      }
+
+      @bav
+      public boolean a(int $$0) {
+         return (this.c & 1 << $$0) > 0;
+      }
+
+      boolean a() {
+         return this.c != 0;
+      }
+
+      @Override
+      public int hashCode() {
+         return Long.hashCode(this.a.g());
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         return !($$0 instanceof grc.d $$1) ? false : this.a.g() == $$1.a.g();
+      }
+   }
+
+   static class e {
+      private final grc.d[] a;
+
+      e(int $$0) {
+         this.a = new grc.d[$$0];
+      }
+
+      public void a(gub.b $$0, grc.d $$1) {
+         this.a[$$0.b] = $$1;
+      }
+
+      @Nullable
+      public grc.d a(gub.b $$0) {
+         int $$1 = $$0.b;
+         return $$1 >= 0 && $$1 < this.a.length ? this.a[$$1] : null;
+      }
    }
 }

@@ -75,7 +75,7 @@ public class aun {
    }
 
    private List<auk> c(Collection<String> $$0) {
-      List<auk> $$1 = this.d($$0).collect(af.b());
+      List<auk> $$1 = this.d($$0).collect(ag.b());
 
       for (auk $$2 : this.b.values()) {
          if ($$2.i() && !$$1.contains($$2)) {
@@ -102,8 +102,8 @@ public class aun {
       return this.c.stream().map(auk::g).collect(ImmutableSet.toImmutableSet());
    }
 
-   public cum f() {
-      return this.g().stream().map(auk::e).reduce(cum::c).orElse(cum.a());
+   public cut f() {
+      return this.g().stream().map(auk::e).reduce(cut::c).orElse(cut.a());
    }
 
    public Collection<auk> g() {

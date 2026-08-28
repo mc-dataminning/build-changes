@@ -1,23 +1,15 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.JsonSerializationContext;
-import com.google.gson.JsonSerializer;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import io.netty.buffer.ByteBuf;
-import java.lang.reflect.Type;
 import java.util.function.UnaryOperator;
 import javax.annotation.Nullable;
 
 public final class alg implements Comparable<alg> {
    public static final Codec<alg> a = Codec.STRING.comapFlatMap(alg::d, alg::toString).stable();
-   public static final yw<ByteBuf, alg> b = yu.o.a(alg::a, alg::toString);
+   public static final yw<ByteBuf, alg> b = yu.p.a(alg::a, alg::toString);
    public static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wy.c("argument.id.invalid"));
    public static final char d = ':';
    public static final String e = "minecraft";
@@ -96,7 +88,7 @@ public final class alg implements Comparable<alg> {
    public static DataResult<alg> d(String $$0) {
       try {
          return DataResult.success(a($$0));
-      } catch (aa var2) {
+      } catch (ab var2) {
          return DataResult.error(() -> "Not a valid resource location: " + $$0 + " " + var2.getMessage());
       }
    }
@@ -189,7 +181,7 @@ public final class alg implements Comparable<alg> {
 
       try {
          return a($$2);
-      } catch (aa var4) {
+      } catch (ab var4) {
          $$0.setCursor($$1);
          throw c.createWithContext($$0);
       }
@@ -203,7 +195,7 @@ public final class alg implements Comparable<alg> {
       } else {
          try {
             return a($$2);
-         } catch (aa var4) {
+         } catch (ab var4) {
             $$0.setCursor($$1);
             throw c.createWithContext($$0);
          }
@@ -236,7 +228,7 @@ public final class alg implements Comparable<alg> {
 
    private static String e(String $$0, String $$1) {
       if (!j($$0)) {
-         throw new aa("Non [a-z0-9_.-] character in namespace of location: " + $$0 + ":" + $$1);
+         throw new ab("Non [a-z0-9_.-] character in namespace of location: " + $$0 + ":" + $$1);
       } else {
          return $$0;
       }
@@ -252,19 +244,9 @@ public final class alg implements Comparable<alg> {
 
    private static String f(String $$0, String $$1) {
       if (!i($$1)) {
-         throw new aa("Non [a-z0-9/._-] character in path of location: " + $$0 + ":" + $$1);
+         throw new ab("Non [a-z0-9/._-] character in path of location: " + $$0 + ":" + $$1);
       } else {
          return $$1;
-      }
-   }
-
-   public static class a implements JsonDeserializer<alg>, JsonSerializer<alg> {
-      public alg a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         return alg.a(azc.a($$0, "location"));
-      }
-
-      public JsonElement a(alg $$0, Type $$1, JsonSerializationContext $$2) {
-         return new JsonPrimitive($$0.toString());
       }
    }
 }

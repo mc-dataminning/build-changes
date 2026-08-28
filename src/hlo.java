@@ -1,61 +1,21 @@
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.ArrayList;
-import java.util.BitSet;
-import java.util.Collections;
-import java.util.List;
 import java.util.Map;
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
-public class hlo extends hlb {
-   private final List<hlo.a> b;
-   private final Map<eah, BitSet> c = new Reference2ObjectOpenHashMap();
+public class hlo extends avh<hlp> {
+   public static final hlp a = new hlp(Map.of());
+   private static final akz b = akz.a("equipment");
+   private Map<alf<dhr>, hlp> c = Map.of();
 
-   private static hkx a(List<hlo.a> $$0) {
-      if ($$0.isEmpty()) {
-         throw new IllegalArgumentException("Model must have at least one selector");
-      } else {
-         return $$0.getFirst().b();
-      }
+   public hlo() {
+      super(hlp.a, b);
    }
 
-   public hlo(List<hlo.a> $$0) {
-      super(a($$0));
-      this.b = $$0;
+   protected void a(Map<alg, hlp> $$0, avd $$1, bqq $$2) {
+      this.c = $$0.entrySet().stream().collect(Collectors.toUnmodifiableMap($$0x -> alf.a(dhs.a, (alg)$$0x.getKey()), Entry::getValue));
    }
 
-   @Override
-   public List<grh> a(@Nullable eah $$0, @Nullable ja $$1, azv $$2) {
-      if ($$0 == null) {
-         return Collections.emptyList();
-      } else {
-         BitSet $$3 = this.c.get($$0);
-         if ($$3 == null) {
-            $$3 = new BitSet();
-
-            for (int $$4 = 0; $$4 < this.b.size(); $$4++) {
-               if (this.b.get($$4).a.test($$0)) {
-                  $$3.set($$4);
-               }
-            }
-
-            this.c.put($$0, $$3);
-         }
-
-         List<grh> $$5 = new ArrayList<>();
-         long $$6 = $$2.g();
-
-         for (int $$7 = 0; $$7 < $$3.length(); $$7++) {
-            if ($$3.get($$7)) {
-               $$2.b($$6);
-               $$5.addAll(this.b.get($$7).b.a($$0, $$1, $$2));
-            }
-         }
-
-         return $$5;
-      }
-   }
-
-   public static record a(Predicate<eah> a, hkx b) {
+   public hlp a(alf<dhr> $$0) {
+      return this.c.getOrDefault($$0, a);
    }
 }

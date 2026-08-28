@@ -1,26 +1,35 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class kt {
-   public static final ks.b<kr> a = a("damage", kr.a);
-   public static final ks.b<ku.a> b = a("enchantments", ku.a.a);
-   public static final ks.b<ku.b> c = a("stored_enchantments", ku.b.a);
-   public static final ks.b<ky> d = a("potion_contents", ky.a);
-   public static final ks.b<kq> e = a("custom_data", kq.a);
-   public static final ks.b<kp> f = a("container", kp.a);
-   public static final ks.b<ko> g = a("bundle_contents", ko.a);
-   public static final ks.b<kv> h = a("firework_explosion", kv.a);
-   public static final ks.b<kw> i = a("fireworks", kw.a);
-   public static final ks.b<la> j = a("writable_book_content", la.a);
-   public static final ks.b<lb> k = a("written_book_content", lb.a);
-   public static final ks.b<kn> l = a("attribute_modifiers", kn.a);
-   public static final ks.b<kz> m = a("trim", kz.a);
-   public static final ks.b<kx> n = a("jukebox_playable", kx.a);
+public interface kt {
+   Codec<Map<kt.b<?>, kt>> b = Codec.dispatchedMap(mg.ao.q(), kt.b::a);
 
-   private static <T extends ks> ks.b<T> a(String $$0, Codec<T> $$1) {
-      return jr.a(mf.ao, $$0, new ks.b<>($$1));
+   static MapCodec<kt.a<?>> a(String $$0) {
+      return mg.ao.q().dispatchMap($$0, kt.a::a, kt.b::b);
    }
 
-   public static ks.b<?> a(jr<ks.b<?>> $$0) {
-      return a;
+   boolean a(kf var1);
+
+   public static record a<T extends kt>(kt.b<T> a, T b) {
+   }
+
+   public static final class b<T extends kt> {
+      private final Codec<T> a;
+      private final MapCodec<kt.a<T>> b;
+
+      public b(Codec<T> $$0) {
+         this.a = $$0;
+         this.b = RecordCodecBuilder.mapCodec($$1 -> $$1.group($$0.fieldOf("value").forGetter(kt.a::b)).apply($$1, $$0xx -> new kt.a<>(this, (T)$$0xx)));
+      }
+
+      public Codec<T> a() {
+         return this.a;
+      }
+
+      public MapCodec<kt.a<T>> b() {
+         return this.b;
+      }
    }
 }

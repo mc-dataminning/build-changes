@@ -1,54 +1,38 @@
-public class goe extends gnu {
-   goe(gjz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, god $$8) {
-      super($$0, $$1, $$2, $$3, $$8, 0.0F);
-      this.B = 0.92F;
-      this.D = 0.5F;
-      this.e(1.0F);
-      this.a((float)axw.b($$7), (float)axw.c($$7), (float)axw.d($$7));
-      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
-      this.b($$8);
+public class goe extends gou {
+   private final gop a;
+
+   goe(gkl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gop $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.B = 0.96F;
+      this.a = $$7;
+      this.d(1.0F);
       this.n = false;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
+      this.b($$7);
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public gny b() {
+      return gny.c;
    }
 
    @Override
    public void a() {
       super.a();
-      if (!this.o) {
-         this.b(this.a);
-         if (this.s > this.t / 2) {
-            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
-         }
-
-         if (this.c.a_(iu.a(this.g, this.h, this.i)).l()) {
-            this.k -= 0.0074F;
-         }
-      }
+      this.b(this.a);
    }
 
-   public static class a implements gnl<mb> {
-      private final god a;
-
-      public a(god $$0) {
-         this.a = $$0;
-      }
-
-      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new goe($$1, $$2, $$3, $$4, $$5, $$6, $$7, axw.a(255, 204, 31, 102), this.a);
-      }
-   }
-
-   public static class b implements gnl<mb> {
-      private final god a;
-
-      public b(god $$0) {
-         this.a = $$0;
-      }
-
-      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new goe($$1, $$2, $$3, $$4, $$5, $$6, $$7, axw.a(255, 255, 255, 255), this.a);
+   public static record a(gop a) implements gnx<mc> {
+      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         goe $$8 = new goe($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.b($$5, $$6, $$7);
+         $$8.a($$1.A.a(4) + 6);
+         return $$8;
       }
    }
 }

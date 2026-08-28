@@ -1,10 +1,10 @@
 public class aqq implements Comparable<aqq> {
    private final int a;
-   private final iu b;
+   private final iv b;
    private int c;
    private int d;
 
-   public aqq(int $$0, iu $$1) {
+   public aqq(int $$0, iv $$1) {
       this.a = $$0;
       this.b = $$1;
    }
@@ -13,7 +13,7 @@ public class aqq implements Comparable<aqq> {
       return this.a;
    }
 
-   public iu b() {
+   public iv b() {
       return this.b;
    }
 

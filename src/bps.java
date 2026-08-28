@@ -1,67 +1,45 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
-public abstract class bps<S> {
-   private final Map<bps.b<?>, bps.a<?>> a = new HashMap<>();
-   private final bpp<S> b;
-   private final bpq<S> c;
+public interface bps<S> {
+   void a(int var1, bpx<S> var2, Object var3);
 
-   protected bps(bpp<S> $$0, bpq<S> $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   default void a(int $$0, Object $$1) {
+      this.a($$0, bpx.b(), $$1);
    }
 
-   public bpq<S> a() {
-      return this.c;
-   }
+   void a(int var1);
 
-   public <T> Optional<T> a(bpn<T> $$0) {
-      Optional<T> $$1 = this.b($$0);
-      if ($$1.isPresent()) {
-         this.c.a(this.c());
-      }
+   public static class a<S> implements bps<S> {
+      private final List<bpt<S>> a = new ArrayList<>();
+      private int b = -1;
 
-      return $$1;
-   }
-
-   public <T> Optional<T> b(bpn<T> $$0) {
-      bps.b<T> $$1 = new bps.b<>($$0, this.c());
-      bps.a<T> $$2 = this.a($$1);
-      if ($$2 != null) {
-         this.a($$2.b());
-         return $$2.a;
-      } else {
-         bpt<S, T> $$3 = this.b.a($$0);
-         if ($$3 == null) {
-            throw new IllegalStateException("No symbol " + $$0);
-         } else {
-            Optional<T> $$4 = $$3.a(this);
-            this.a($$1, $$4);
-            return $$4;
+      private void b(int $$0) {
+         if ($$0 > this.b) {
+            this.b = $$0;
+            this.a.clear();
          }
       }
-   }
 
-   @Nullable
-   private <T> bps.a<T> a(bps.b<T> $$0) {
-      return (bps.a<T>)this.a.get($$0);
-   }
+      @Override
+      public void a(int $$0) {
+         this.b($$0);
+      }
 
-   private <T> void a(bps.b<T> $$0, Optional<T> $$1) {
-      this.a.put($$0, new bps.a<>($$1, this.c()));
-   }
+      @Override
+      public void a(int $$0, bpx<S> $$1, Object $$2) {
+         this.b($$0);
+         if ($$0 == this.b) {
+            this.a.add(new bpt<>($$0, $$1, $$2));
+         }
+      }
 
-   public abstract S b();
+      public List<bpt<S>> a() {
+         return this.a;
+      }
 
-   public abstract int c();
-
-   public abstract void a(int var1);
-
-   static record a<T>(Optional<T> a, int b) {
-   }
-
-   static record b<T>(bpn<T> a, int b) {
+      public int b() {
+         return this.b;
+      }
    }
 }

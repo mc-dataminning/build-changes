@@ -1,59 +1,58 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public class ecc implements AutoCloseable {
-   private final djb a;
-   private final Long2ObjectMap<ecp> b = new Long2ObjectOpenHashMap();
-   @Nullable
-   private ecp c;
-   private long d;
+public record ecc(String n, ebd o, duj p, duj q, awm r, awm s) {
+   private static final Map<String, ecc> t = new Object2ObjectArrayMap();
+   public static final Codec<ecc> a = Codec.stringResolver(ecc::b, t::get);
+   public static final ecc b = a(new ecc("oak", ebd.g));
+   public static final ecc c = a(new ecc("spruce", ebd.h));
+   public static final ecc d = a(new ecc("birch", ebd.i));
+   public static final ecc e = a(new ecc("acacia", ebd.j));
+   public static final ecc f = a(new ecc("cherry", ebd.k, duj.aW, duj.aZ, awn.eQ, awn.eR));
+   public static final ecc g = a(new ecc("jungle", ebd.l));
+   public static final ecc h = a(new ecc("dark_oak", ebd.m));
+   public static final ecc i = a(new ecc("pale_oak", ebd.n));
+   public static final ecc j = a(new ecc("crimson", ebd.o, duj.aV, duj.aS, awn.rI, awn.rJ));
+   public static final ecc k = a(new ecc("warped", ebd.p, duj.aV, duj.aS, awn.rI, awn.rJ));
+   public static final ecc l = a(new ecc("mangrove", ebd.q));
+   public static final ecc m = a(new ecc("bamboo", ebd.r, duj.aU, duj.aT, awn.bw, awn.bx));
 
-   public ecc(djb $$0) {
-      this.a = $$0;
+   public ecc(String $$0, ebd $$1) {
+      this($$0, $$1, duj.b, duj.aR, awn.jl, awn.jm);
    }
 
-   @Nullable
-   public ecp a(iu $$0) {
-      int $$1 = this.a.f($$0.v());
-      if ($$1 >= 0 && $$1 < this.a.ap()) {
-         long $$2 = jx.c($$0);
-         if (this.c == null || this.d != $$2) {
-            this.c = (ecp)this.b.computeIfAbsent($$2, $$2x -> {
-               ece $$3 = this.a.a(jx.a($$0.u()), jx.a($$0.w()));
-               ecp $$4 = $$3.b($$1);
-               $$4.a();
-               return $$4;
-            });
-            this.d = $$2;
-         }
-
-         return this.c;
-      } else {
-         return null;
-      }
+   private static ecc a(ecc $$0) {
+      t.put($$0.b(), $$0);
+      return $$0;
    }
 
-   public eah b(iu $$0) {
-      ecp $$1 = this.a($$0);
-      if ($$1 == null) {
-         return dmh.a.m();
-      } else {
-         int $$2 = jx.b($$0.u());
-         int $$3 = jx.b($$0.v());
-         int $$4 = jx.b($$0.w());
-         return $$1.a($$2, $$3, $$4);
-      }
+   public static Stream<ecc> a() {
+      return t.values().stream();
    }
 
-   @Override
-   public void close() {
-      ObjectIterator var1 = this.b.values().iterator();
+   public String b() {
+      return this.n;
+   }
 
-      while (var1.hasNext()) {
-         ecp $$0 = (ecp)var1.next();
-         $$0.b();
-      }
+   public ebd c() {
+      return this.o;
+   }
+
+   public duj d() {
+      return this.p;
+   }
+
+   public duj e() {
+      return this.q;
+   }
+
+   public awm f() {
+      return this.r;
+   }
+
+   public awm g() {
+      return this.s;
    }
 }

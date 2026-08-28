@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import java.util.Collections;
@@ -13,7 +14,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.Map.Entry;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -55,8 +55,8 @@ public final class uo {
             return false;
          } else {
             for (String $$5 : $$3.e()) {
-               uw $$6 = $$3.c($$5);
-               if (!a($$6, $$4.c($$5), $$2)) {
+               uw $$6 = $$3.a($$5);
+               if (!a($$6, $$4.a($$5), $$2)) {
                   return false;
                }
             }
@@ -96,53 +96,23 @@ public final class uo {
       }
    }
 
-   public static ud a(UUID $$0) {
-      return new ud(jy.a($$0));
-   }
-
-   public static UUID a(uw $$0) {
-      if ($$0.c() != ud.a) {
-         throw new IllegalArgumentException("Expected UUID-Tag to be of type " + ud.a.a() + ", but found " + $$0.c().a() + ".");
-      } else {
-         int[] $$1 = ((ud)$$0).g();
-         if ($$1.length != 4) {
-            throw new IllegalArgumentException("Expected UUID-Array to be of length 4, but found " + $$1.length + ".");
-         } else {
-            return jy.a($$1);
-         }
-      }
-   }
-
-   public static Optional<iu> a(tz $$0, String $$1) {
-      int[] $$2 = $$0.n($$1);
-      return $$2.length == 3 ? Optional.of(new iu($$2[0], $$2[1], $$2[2])) : Optional.empty();
-   }
-
-   public static uw a(iu $$0) {
-      return a((jz)$$0);
-   }
-
-   public static uw a(jz $$0) {
-      return new ud(new int[]{$$0.u(), $$0.v(), $$0.w()});
-   }
-
-   public static eah a(jf<dmf> $$0, tz $$1) {
+   public static eao a(jg<dmm> $$0, tz $$1) {
       if (!$$1.b("Name", 8)) {
-         return dmh.a.m();
+         return dmo.a.m();
       } else {
-         alg $$2 = alg.a($$1.l("Name"));
-         Optional<? extends je<dmf>> $$3 = $$0.a(alf.a(mg.i, $$2));
+         alg $$2 = alg.a($$1.j("Name"));
+         Optional<? extends jf<dmm>> $$3 = $$0.a(alf.a(mh.i, $$2));
          if ($$3.isEmpty()) {
-            return dmh.a.m();
+            return dmo.a.m();
          } else {
-            dmf $$4 = $$3.get().a();
-            eah $$5 = $$4.m();
+            dmm $$4 = $$3.get().a();
+            eao $$5 = $$4.m();
             if ($$1.b("Properties", 10)) {
-               tz $$6 = $$1.p("Properties");
-               eai<dmf, eah> $$7 = $$4.l();
+               tz $$6 = $$1.n("Properties");
+               eap<dmm, eao> $$7 = $$4.l();
 
                for (String $$8 : $$6.e()) {
-                  ebk<?> $$9 = $$7.a($$8);
+                  ebr<?> $$9 = $$7.a($$8);
                   if ($$9 != null) {
                      $$5 = a($$5, $$9, $$8, $$6, $$1);
                   }
@@ -154,25 +124,25 @@ public final class uo {
       }
    }
 
-   private static <S extends eaj<?, S>, T extends Comparable<T>> S a(S $$0, ebk<T> $$1, String $$2, tz $$3, tz $$4) {
-      Optional<T> $$5 = $$1.b($$3.l($$2));
+   private static <S extends eaq<?, S>, T extends Comparable<T>> S a(S $$0, ebr<T> $$1, String $$2, tz $$3, tz $$4) {
+      Optional<T> $$5 = $$1.b($$3.j($$2));
       if ($$5.isPresent()) {
          return $$0.b($$1, $$5.get());
       } else {
-         j.warn("Unable to read property: {} with value: {} for blockstate: {}", new Object[]{$$2, $$3.l($$2), $$4});
+         j.warn("Unable to read property: {} with value: {} for blockstate: {}", new Object[]{$$2, $$3.j($$2), $$4});
          return $$0;
       }
    }
 
-   public static tz a(eah $$0) {
+   public static tz a(eao $$0) {
       tz $$1 = new tz();
-      $$1.a("Name", mf.e.b($$0.b()).toString());
-      Map<ebk<?>, Comparable<?>> $$2 = $$0.G();
+      $$1.a("Name", mg.e.b($$0.b()).toString());
+      Map<ebr<?>, Comparable<?>> $$2 = $$0.G();
       if (!$$2.isEmpty()) {
          tz $$3 = new tz();
 
-         for (Entry<ebk<?>, Comparable<?>> $$4 : $$2.entrySet()) {
-            ebk<?> $$5 = $$4.getKey();
+         for (Entry<ebr<?>, Comparable<?>> $$4 : $$2.entrySet()) {
+            ebr<?> $$5 = $$4.getKey();
             $$3.a($$5.f(), a($$5, $$4.getValue()));
          }
 
@@ -182,15 +152,15 @@ public final class uo {
       return $$1;
    }
 
-   public static tz a(ewo $$0) {
+   public static tz a(ewv $$0) {
       tz $$1 = new tz();
-      $$1.a("Name", mf.c.b($$0.a()).toString());
-      Map<ebk<?>, Comparable<?>> $$2 = $$0.G();
+      $$1.a("Name", mg.c.b($$0.a()).toString());
+      Map<ebr<?>, Comparable<?>> $$2 = $$0.G();
       if (!$$2.isEmpty()) {
          tz $$3 = new tz();
 
-         for (Entry<ebk<?>, Comparable<?>> $$4 : $$2.entrySet()) {
-            ebk<?> $$5 = $$4.getKey();
+         for (Entry<ebr<?>, Comparable<?>> $$4 : $$2.entrySet()) {
+            ebr<?> $$5 = $$4.getKey();
             $$3.a($$5.f(), a($$5, $$4.getValue()));
          }
 
@@ -200,11 +170,11 @@ public final class uo {
       return $$1;
    }
 
-   private static <T extends Comparable<T>> String a(ebk<T> $$0, Comparable<?> $$1) {
+   private static <T extends Comparable<T>> String a(ebr<T> $$0, Comparable<?> $$1) {
       return $$0.b((T)$$1);
    }
 
-   public static String b(uw $$0) {
+   public static String a(uw $$0) {
       return a($$0, false);
    }
 
@@ -301,7 +271,7 @@ public final class uo {
 
                String $$24 = $$20.get($$23);
                a($$2 + 1, $$0).append('"').append($$24).append('"').append($$22, 0, $$22.length() - $$24.length()).append(": ");
-               a($$0, $$19.c($$24), $$2 + 1, $$3);
+               a($$0, $$19.a($$24), $$2 + 1, $$3);
             }
 
             if (!$$20.isEmpty()) {
@@ -402,7 +372,7 @@ public final class uo {
       return $$1;
    }
 
-   public static wy c(uw $$0) {
+   public static wy b(uw $$0) {
       return new vb("").a($$0);
    }
 
@@ -419,16 +389,16 @@ public final class uo {
       boolean $$1 = $$0.b("palettes", 9);
       uf $$2;
       if ($$1) {
-         $$2 = $$0.c("palettes", 9).b(0);
+         $$2 = $$0.d("palettes", 9).b(0);
       } else {
-         $$2 = $$0.c("palette", 10);
+         $$2 = $$0.d("palette", 10);
       }
 
       uf $$4 = $$2.stream().map(tz.class::cast).map(uo::d).map(uu::a).collect(Collectors.toCollection(uf::new));
       $$0.a("palette", $$4);
       if ($$1) {
          uf $$5 = new uf();
-         uf $$6 = $$0.c("palettes", 9);
+         uf $$6 = $$0.d("palettes", 9);
          $$6.stream().map(uf.class::cast).forEach($$2x -> {
             tz $$3x = new tz();
 
@@ -442,36 +412,36 @@ public final class uo {
       }
 
       if ($$0.b("entities", 9)) {
-         uf $$7 = $$0.c("entities", 10);
-         uf $$8 = $$7.stream().map(tz.class::cast).sorted(Comparator.comparing($$0x -> $$0x.c("pos", 6), c)).collect(Collectors.toCollection(uf::new));
+         uf $$7 = $$0.d("entities", 10);
+         uf $$8 = $$7.stream().map(tz.class::cast).sorted(Comparator.comparing($$0x -> $$0x.d("pos", 6), c)).collect(Collectors.toCollection(uf::new));
          $$0.a("entities", $$8);
       }
 
-      uf $$9 = $$0.c("blocks", 10)
+      uf $$9 = $$0.d("blocks", 10)
          .stream()
          .map(tz.class::cast)
-         .sorted(Comparator.comparing($$0x -> $$0x.c("pos", 3), b))
-         .peek($$1x -> $$1x.a("state", $$4.j($$1x.h("state"))))
+         .sorted(Comparator.comparing($$0x -> $$0x.d("pos", 3), b))
+         .peek($$1x -> $$1x.a("state", $$4.j($$1x.f("state"))))
          .collect(Collectors.toCollection(uf::new));
       $$0.a("data", $$9);
-      $$0.r("blocks");
+      $$0.p("blocks");
       return $$0;
    }
 
    @VisibleForTesting
    static tz c(tz $$0) {
-      uf $$1 = $$0.c("palette", 8);
+      uf $$1 = $$0.d("palette", 8);
       Map<String, uw> $$2 = $$1.stream().map(uu.class::cast).map(uu::p_).collect(ImmutableMap.toImmutableMap(Function.identity(), uo::b));
       if ($$0.b("palettes", 9)) {
          $$0.a(
             "palettes",
-            $$0.c("palettes", 10)
+            $$0.d("palettes", 10)
                .stream()
                .map(tz.class::cast)
-               .map($$1x -> $$2.keySet().stream().map($$1x::l).map(uo::b).collect(Collectors.toCollection(uf::new)))
+               .map($$1x -> $$2.keySet().stream().map($$1x::j).map(uo::b).collect(Collectors.toCollection(uf::new)))
                .collect(Collectors.toCollection(uf::new))
          );
-         $$0.r("palette");
+         $$0.p("palette");
       } else {
          $$0.a("palette", $$2.values().stream().collect(Collectors.toCollection(uf::new)));
       }
@@ -484,11 +454,11 @@ public final class uo {
             $$3.put($$1.j($$4), $$4);
          }
 
-         uf $$5 = $$0.c("data", 10);
+         uf $$5 = $$0.d("data", 10);
 
          for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
             tz $$7 = $$5.a($$6);
-            String $$8 = $$7.l("state");
+            String $$8 = $$7.j("state");
             int $$9 = $$3.getInt($$8);
             if ($$9 == -1) {
                throw new IllegalStateException("Entry " + $$8 + " missing from palette");
@@ -498,7 +468,7 @@ public final class uo {
          }
 
          $$0.a("blocks", $$5);
-         $$0.r("data");
+         $$0.p("data");
       }
 
       return $$0;
@@ -506,10 +476,10 @@ public final class uo {
 
    @VisibleForTesting
    static String d(tz $$0) {
-      StringBuilder $$1 = new StringBuilder($$0.l("Name"));
+      StringBuilder $$1 = new StringBuilder($$0.j("Name"));
       if ($$0.b("Properties", 10)) {
-         tz $$2 = $$0.p("Properties");
-         String $$3 = $$2.e().stream().sorted().map($$1x -> $$1x + ":" + $$2.c($$1x).p_()).collect(Collectors.joining(","));
+         tz $$2 = $$0.n("Properties");
+         String $$3 = $$2.e().stream().sorted().map($$1x -> $$1x + ":" + $$2.a($$1x).p_()).collect(Collectors.joining(","));
          $$1.append('{').append($$3).append('}');
       }
 
@@ -545,7 +515,7 @@ public final class uo {
    }
 
    public static tz e(tz $$0) {
-      int $$1 = ab.b().d().c();
+      int $$1 = ac.b().d().c();
       return a($$0, $$1);
    }
 
@@ -555,6 +525,10 @@ public final class uo {
    }
 
    public static int b(tz $$0, int $$1) {
-      return $$0.b("DataVersion", 99) ? $$0.h("DataVersion") : $$1;
+      return $$0.b("DataVersion", 99) ? $$0.f("DataVersion") : $$1;
+   }
+
+   public static int a(Dynamic<?> $$0, int $$1) {
+      return $$0.get("DataVersion").asInt($$1);
    }
 }

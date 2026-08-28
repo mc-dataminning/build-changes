@@ -1,4 +1,4 @@
-public record aat(iu c) implements aai {
+public record aat(iv c) implements aai {
    public static final yw<vu, aat> a = aai.a(aat::a, aat::new);
    public static final aai.b<aat> b = aai.a("debug/poi_removed");
 
@@ -15,7 +15,7 @@ public record aat(iu c) implements aai {
       return b;
    }
 
-   public iu b() {
+   public iv b() {
       return this.c;
    }
 }

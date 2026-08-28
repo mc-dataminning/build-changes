@@ -19,10 +19,10 @@ public class bbs extends DataFix {
 
    protected TypeRewriteRule makeRule() {
       return TypeRewriteRule.seq(
-         this.fixTypeEverywhereTyped(this.a + " (Components)", this.getInputSchema().getType(bix.w), this::a),
+         this.fixTypeEverywhereTyped(this.a + " (Components)", this.getInputSchema().getType(biz.w), this::a),
          new TypeRewriteRule[]{
-            this.fixTypeEverywhereTyped(this.a + " (Entity)", this.getInputSchema().getType(bix.D), this::b),
-            this.fixTypeEverywhereTyped(this.a + " (Player)", this.getInputSchema().getType(bix.b), this::b)
+            this.fixTypeEverywhereTyped(this.a + " (Entity)", this.getInputSchema().getType(biz.D), this::b),
+            this.fixTypeEverywhereTyped(this.a + " (Player)", this.getInputSchema().getType(biz.b), this::b)
          }
       );
    }

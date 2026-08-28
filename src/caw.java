@@ -1,33 +1,26 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableInt;
 
 public class caw {
-   private static final int a = 300;
+   private static final float b = 0.95F;
+   public static final int a = 3;
 
-   public static byw<bxe> a(int $$0, int $$1) {
-      int $$2 = $$0 * 20;
-      MutableInt $$3 = new MutableInt(0);
-      return cci.a(
-         (Function<cci.b<bxe>, ? extends App<cci.c<bxe>, ccl<bxe>>>)($$3x -> $$3x.group($$3x.b(cgg.D), $$3x.b(cgg.E))
-               .apply($$3x, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                     long $$9 = $$3x.<Long>b($$5);
-                     boolean $$10 = $$9 + 300L <= $$8;
-                     if ($$3.getValue() <= $$2 && !$$10) {
-                        iu $$11 = $$3x.<jd>b($$4).b();
-                        if ($$11.a($$7.dv(), (double)$$1)) {
-                           $$3.increment();
-                        }
-
-                        return true;
-                     } else {
-                        $$5.b();
-                        $$4.b();
-                        $$7.ec().a($$6.af(), $$6.ae());
-                        $$3.setValue(0);
-                        return true;
+   public static bzb<bxj> a() {
+      return ccn.a((Function<ccn.b<bxj>, ? extends App<ccn.c<bxj>, ccq<bxj>>>)($$0 -> $$0.group($$0.b(cgl.e)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
+               if ($$2.A.i() <= 0.95F) {
+                  return false;
+               } else {
+                  iv $$5 = $$0.<je>b($$1).b();
+                  if ($$5.a($$3.du(), 3.0)) {
+                     eao $$6 = $$2.a_($$5);
+                     if ($$6.a(dmo.oJ)) {
+                        dmi $$7 = (dmi)$$6.b();
+                        $$7.a($$3, $$2, $$5, null);
                      }
-                  }))
-      );
+                  }
+
+                  return true;
+               }
+            })));
    }
 }

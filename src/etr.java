@@ -1,124 +1,48 @@
-import java.util.Map;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class etr {
-   private static final int a = 32;
-   static final iu b = new iu(4, 0, 15);
-   private static final alg[] c = new alg[]{
-      alg.b("shipwreck/with_mast"),
-      alg.b("shipwreck/sideways_full"),
-      alg.b("shipwreck/sideways_fronthalf"),
-      alg.b("shipwreck/sideways_backhalf"),
-      alg.b("shipwreck/rightsideup_full"),
-      alg.b("shipwreck/rightsideup_fronthalf"),
-      alg.b("shipwreck/rightsideup_backhalf"),
-      alg.b("shipwreck/with_mast_degraded"),
-      alg.b("shipwreck/rightsideup_full_degraded"),
-      alg.b("shipwreck/rightsideup_fronthalf_degraded"),
-      alg.b("shipwreck/rightsideup_backhalf_degraded")
-   };
-   private static final alg[] d = new alg[]{
-      alg.b("shipwreck/with_mast"),
-      alg.b("shipwreck/upsidedown_full"),
-      alg.b("shipwreck/upsidedown_fronthalf"),
-      alg.b("shipwreck/upsidedown_backhalf"),
-      alg.b("shipwreck/sideways_full"),
-      alg.b("shipwreck/sideways_fronthalf"),
-      alg.b("shipwreck/sideways_backhalf"),
-      alg.b("shipwreck/rightsideup_full"),
-      alg.b("shipwreck/rightsideup_fronthalf"),
-      alg.b("shipwreck/rightsideup_backhalf"),
-      alg.b("shipwreck/with_mast_degraded"),
-      alg.b("shipwreck/upsidedown_full_degraded"),
-      alg.b("shipwreck/upsidedown_fronthalf_degraded"),
-      alg.b("shipwreck/upsidedown_backhalf_degraded"),
-      alg.b("shipwreck/sideways_full_degraded"),
-      alg.b("shipwreck/sideways_fronthalf_degraded"),
-      alg.b("shipwreck/sideways_backhalf_degraded"),
-      alg.b("shipwreck/rightsideup_full_degraded"),
-      alg.b("shipwreck/rightsideup_fronthalf_degraded"),
-      alg.b("shipwreck/rightsideup_backhalf_degraded")
-   };
-   static final Map<String, alf<ezm>> e = Map.of("map_chest", ezd.G, "treasure_chest", ezd.I, "supply_chest", ezd.H);
+public class etr extends eri {
+   public static final MapCodec<etr> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(a($$0), epp.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, etr::new)
+   );
+   public final epp e;
 
-   public static etr.a a(eve $$0, iu $$1, dsz $$2, erg $$3, azv $$4, boolean $$5) {
-      alg $$6 = af.a($$5 ? c : d, $$4);
-      etr.a $$7 = new etr.a($$0, $$6, $$1, $$2, $$5);
-      $$3.a($$7);
-      return $$7;
+   public etr(eri.c $$0, epp $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
-   public static class a extends erl {
-      private final boolean h;
+   @Override
+   public Optional<eri.b> a(eri.a $$0) {
+      ehm $$1 = $$0.f();
+      int $$2 = $$0.h().d() + $$1.a(16);
+      int $$3 = $$0.h().e() + $$1.a(16);
+      int $$4 = $$0.b().f();
+      ehk $$5 = new ehk($$0.b(), $$0.i());
+      int $$6 = this.e.a($$1, $$5);
+      djt $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
+      iv.a $$8 = new iv.a($$2, $$6, $$3);
 
-      public a(eve $$0, alg $$1, iu $$2, dsz $$3, boolean $$4) {
-         super(ers.ab, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
-         this.h = $$4;
-      }
-
-      public a(eve $$0, tz $$1) {
-         super(ers.ab, $$1, $$0, $$1x -> a(dsz.valueOf($$1.l("Rot"))));
-         this.h = $$1.q("isBeached");
-      }
-
-      @Override
-      protected void a(err $$0, tz $$1) {
-         super.a($$0, $$1);
-         $$1.a("isBeached", this.h);
-         $$1.a("Rot", this.c.d().name());
-      }
-
-      private static euz a(dsz $$0) {
-         return new euz().a($$0).a(dri.a).a(etr.b).a(eue.d);
-      }
-
-      @Override
-      protected void a(String $$0, iu $$1, djr $$2, azv $$3, eqt $$4) {
-         alf<ezm> $$5 = etr.e.get($$0);
-         if ($$5 != null) {
-            buj.a($$2, $$3, $$1.e(), $$5);
+      while ($$6 > $$4) {
+         eao $$9 = $$7.a($$6);
+         eao $$10 = $$7.a(--$$6);
+         if ($$9.l() && ($$10.a(dmo.en) || $$10.c(dix.a, $$8.q($$6), jb.b))) {
+            break;
          }
       }
 
-      @Override
-      public void a(djz $$0, djw $$1, ecf $$2, azv $$3, eqt $$4, dih $$5, iu $$6) {
-         if (this.l()) {
-            super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-         } else {
-            int $$7 = $$0.ao() + 1;
-            int $$8 = 0;
-            jz $$9 = this.b.a();
-            egg.a $$10 = this.h ? egg.a.a : egg.a.c;
-            int $$11 = $$9.u() * $$9.w();
-            if ($$11 == 0) {
-               $$8 = $$0.a($$10, this.d.u(), this.d.w());
-            } else {
-               iu $$12 = this.d.b($$9.u() - 1, 0, $$9.w() - 1);
-
-               for (iu $$13 : iu.c(this.d, $$12)) {
-                  int $$14 = $$0.a($$10, $$13.u(), $$13.w());
-                  $$8 += $$14;
-                  $$7 = Math.min($$7, $$14);
-               }
-
-               $$8 /= $$11;
-            }
-
-            this.c(this.h ? this.a($$7, $$3) : $$8);
-            super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-         }
+      if ($$6 <= $$4) {
+         return Optional.empty();
+      } else {
+         iv $$11 = new iv($$2, $$6, $$3);
+         return Optional.of(new eri.b($$11, (Consumer<esa>)($$3x -> etq.a($$0.e(), $$3x, $$1, $$11))));
       }
+   }
 
-      public boolean l() {
-         jz $$0 = this.b.a();
-         return $$0.u() > 32 || $$0.v() > 32;
-      }
-
-      public int a(int $$0, azv $$1) {
-         return $$0 - this.b.a().v() / 2 - $$1.a(3);
-      }
-
-      public void c(int $$0) {
-         this.d = new iu(this.d.u(), $$0, this.d.w());
-      }
+   @Override
+   public err<?> e() {
+      return err.i;
    }
 }

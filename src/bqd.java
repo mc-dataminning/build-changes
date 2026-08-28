@@ -1,25 +1,24 @@
 import com.mojang.brigadier.StringReader;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Optional;
 
-public class bqd<T> implements bpt<StringReader, Dynamic<? extends T>> {
-   private final DynamicOps<T> a;
+public class bqd extends bpu<StringReader> {
+   private final StringReader a;
 
-   public bqd(DynamicOps<T> $$0) {
-      this.a = $$0;
+   public bqd(bpr<StringReader> $$0, bps<StringReader> $$1, StringReader $$2) {
+      super($$0, $$1);
+      this.a = $$2;
+   }
+
+   public StringReader d() {
+      return this.a;
    }
 
    @Override
-   public Optional<Dynamic<? extends T>> a(bps<StringReader> $$0) {
-      $$0.b().skipWhitespace();
-      int $$1 = $$0.c();
+   public int c() {
+      return this.a.getCursor();
+   }
 
-      try {
-         return Optional.of(new Dynamic(this.a, ux.b(this.a, $$0.b())));
-      } catch (Exception var4) {
-         $$0.a().a($$1, var4);
-         return Optional.empty();
-      }
+   @Override
+   public void a(int $$0) {
+      this.a.setCursor($$0);
    }
 }

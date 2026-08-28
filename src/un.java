@@ -173,12 +173,12 @@ public class un implements DynamicOps<uw> {
       return $$0 instanceof tz $$1 ? DataResult.success(new MapLike<uw>() {
          @Nullable
          public uw a(uw $$0) {
-            return $$1.c($$0.p_());
+            return $$1.a($$0.p_());
          }
 
          @Nullable
          public uw a(String $$0) {
-            return $$1.c($$0);
+            return $$1.a($$0);
          }
 
          public Stream<Pair<uw, uw>> entries() {
@@ -200,7 +200,7 @@ public class un implements DynamicOps<uw> {
 
    private static uw a(tz $$0) {
       if ($$0.f() == 1) {
-         uw $$1 = $$0.c("");
+         uw $$1 = $$0.a("");
          if ($$1 != null) {
             return $$1;
          }
@@ -263,7 +263,7 @@ public class un implements DynamicOps<uw> {
    public uw a(uw $$0, String $$1) {
       if ($$0 instanceof tz $$2) {
          tz $$3 = $$2.h();
-         $$3.r($$1);
+         $$3.p($$1);
          return $$3;
       } else {
          return $$0;
@@ -360,7 +360,7 @@ public class un implements DynamicOps<uw> {
       }
 
       private static boolean a(tz $$0) {
-         return $$0.f() == 1 && $$0.e("");
+         return $$0.f() == 1 && $$0.c("");
       }
 
       private static uw b(uw $$0) {

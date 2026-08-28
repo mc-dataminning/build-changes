@@ -1,187 +1,91 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.UUID;
 import javax.annotation.Nullable;
 
-public class bwy extends bwf implements bvy, byb {
-   private static final akj<Float> a = akn.a(bwy.class, akl.d);
-   private static final akj<Float> b = akn.a(bwy.class, akl.d);
-   private static final akj<Boolean> c = akn.a(bwy.class, akl.k);
-   private static final String d = "width";
-   private static final String e = "height";
-   private static final String f = "attack";
-   private static final String g = "interaction";
-   private static final String h = "response";
-   @Nullable
-   private bwy.a i;
-   @Nullable
-   private bwy.a j;
+public class bwy extends ckd {
+   private static final akj<Integer> bO = akn.a(bwy.class, akl.b);
 
-   public bwy(bwo<?> $$0, dja $$1) {
+   public bwy(bwr<? extends bwy> $$0, djh $$1) {
       super($$0, $$1);
-      this.ad = true;
+   }
+
+   @Override
+   protected lw q() {
+      return ly.aS;
    }
 
    @Override
    protected void a(akn.a $$0) {
-      $$0.a(a, 1.0F);
-      $$0.a(b, 1.0F);
-      $$0.a(c, false);
-   }
-
-   @Override
-   protected void a(tz $$0) {
-      if ($$0.b("width", 99)) {
-         this.a($$0.j("width"));
-      }
-
-      if ($$0.b("height", 99)) {
-         this.b($$0.j("height"));
-      }
-
-      this.i = $$0.<bwy.a>a("attack", bwy.a.a).orElse(null);
-      this.j = $$0.<bwy.a>a("interaction", bwy.a.a).orElse(null);
-      this.a($$0.q("response"));
-      this.a(this.ax());
-   }
-
-   @Override
-   protected void b(tz $$0) {
-      $$0.a("width", this.g());
-      $$0.a("height", this.j());
-      if (this.i != null) {
-         $$0.a("attack", bwy.a.a, this.i);
-      }
-
-      if (this.j != null) {
-         $$0.a("interaction", bwy.a.a, this.j);
-      }
-
-      $$0.a("response", this.m());
-   }
-
-   @Override
-   public void a(akj<?> $$0) {
       super.a($$0);
-      if (b.equals($$0) || a.equals($$0)) {
-         this.i_();
-      }
-   }
-
-   @Override
-   public boolean bF() {
-      return false;
-   }
-
-   @Override
-   public boolean bG() {
-      return true;
-   }
-
-   @Override
-   public ewt j_() {
-      return ewt.d;
-   }
-
-   @Override
-   public boolean g_() {
-      return true;
-   }
-
-   @Override
-   public boolean v(bwf $$0) {
-      if ($$0 instanceof crc $$1) {
-         this.i = new bwy.a($$1.cG(), this.dV().ae());
-         if ($$1 instanceof arr $$2) {
-            ap.h.a($$2, this, $$1.dW().p(), 1.0F, 1.0F, false);
-         }
-
-         return !this.m();
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public final boolean a(arq $$0, buu $$1, float $$2) {
-      return false;
-   }
-
-   @Override
-   public bud a(crc $$0, buc $$1) {
-      if (this.dV().C) {
-         return this.m() ? bud.a : bud.c;
-      } else {
-         this.j = new bwy.a($$0.cG(), this.dV().ae());
-         return bud.c;
-      }
-   }
-
-   @Override
-   public void h() {
+      $$0.a(bO, 0);
    }
 
    @Nullable
    @Override
-   public bxe am() {
-      return this.i != null ? this.dV().a(this.i.a()) : null;
-   }
-
-   @Nullable
-   @Override
-   public bxe f() {
-      return this.j != null ? this.dV().a(this.j.a()) : null;
-   }
-
-   private void a(float $$0) {
-      this.al.a(a, $$0);
-   }
-
-   private float g() {
-      return this.al.a(a);
-   }
-
-   private void b(float $$0) {
-      this.al.a(b, $$0);
-   }
-
-   private float j() {
-      return this.al.a(b);
-   }
-
-   private void a(boolean $$0) {
-      this.al.a(c, $$0);
-   }
-
-   private boolean m() {
-      return this.al.a(c);
-   }
-
-   private bwi n() {
-      return bwi.b(this.g(), this.j());
+   public bvy a(arq $$0, bvy $$1) {
+      return bwr.ag.a($$0, bwq.e);
    }
 
    @Override
-   public bwi a(bxq $$0) {
-      return this.n();
+   protected awm t() {
+      return awn.ln;
    }
 
    @Override
-   protected fel c(feq $$0) {
-      return this.n().a($$0);
+   protected awm u() {
+      return awn.lk;
    }
 
-   static record a(UUID b, long c) {
-      public static final Codec<bwy.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(jy.a.fieldOf("player").forGetter(bwy.a::a), Codec.LONG.fieldOf("timestamp").forGetter(bwy.a::b)).apply($$0, bwy.a::new)
-      );
+   @Override
+   protected awm e(bux $$0) {
+      return awn.lm;
+   }
 
-      public UUID a() {
-         return this.b;
+   @Override
+   protected awm l_() {
+      return awn.ll;
+   }
+
+   @Override
+   public void b(tz $$0) {
+      super.b($$0);
+      $$0.a("DarkTicksRemaining", this.x());
+   }
+
+   @Override
+   public void a(tz $$0) {
+      super.a($$0);
+      this.s($$0.f("DarkTicksRemaining"));
+   }
+
+   @Override
+   public void k_() {
+      super.k_();
+      int $$0 = this.x();
+      if ($$0 > 0) {
+         this.s($$0 - 1);
       }
 
-      public long b() {
-         return this.c;
+      this.dU().a(ly.aT, this.d(0.6), this.dC(), this.g(0.6), 0.0, 0.0, 0.0);
+   }
+
+   @Override
+   public boolean a(arq $$0, bux $$1, float $$2) {
+      boolean $$3 = super.a($$0, $$1, $$2);
+      if ($$3) {
+         this.s(100);
       }
+
+      return $$3;
+   }
+
+   private void s(int $$0) {
+      this.al.a(bO, $$0);
+   }
+
+   public int x() {
+      return this.al.a(bO);
+   }
+
+   public static boolean a(bwr<? extends bxj> $$0, djy $$1, bwq $$2, iv $$3, azv $$4) {
+      return $$3.v() <= $$1.P() - 33 && $$1.b($$3, 0) == 0 && $$1.a_($$3).a(dmo.J);
    }
 }

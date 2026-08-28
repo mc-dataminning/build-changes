@@ -20,39 +20,39 @@ public class amy {
    private static final Dynamic2CommandExceptionType e = new Dynamic2CommandExceptionType(
       ($$0, $$1) -> wy.b("commands.datapack.enable.failed.no_flags", $$0, $$1)
    );
-   private static final SuggestionProvider<ei> f = ($$0, $$1) -> en.b(
-         ((ei)$$0.getSource()).l().aF().e().stream().map(StringArgumentType::escapeIfRequired), $$1
+   private static final SuggestionProvider<ej> f = ($$0, $$1) -> eo.b(
+         ((ej)$$0.getSource()).l().aF().e().stream().map(StringArgumentType::escapeIfRequired), $$1
       );
-   private static final SuggestionProvider<ei> g = ($$0, $$1) -> {
-      aun $$2 = ((ei)$$0.getSource()).l().aF();
+   private static final SuggestionProvider<ej> g = ($$0, $$1) -> {
+      aun $$2 = ((ej)$$0.getSource()).l().aF();
       Collection<String> $$3 = $$2.e();
-      cum $$4 = ((ei)$$0.getSource()).v();
-      return en.b(
+      cut $$4 = ((ej)$$0.getSource()).v();
+      return eo.b(
          $$2.d().stream().filter($$1x -> $$1x.e().a($$4)).map(auk::g).filter($$1x -> !$$3.contains($$1x)).map(StringArgumentType::escapeIfRequired), $$1
       );
    };
 
-   public static void a(CommandDispatcher<ei> $$0) {
+   public static void a(CommandDispatcher<ej> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("datapack").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("datapack").requires($$0x -> $$0x.c(2)))
                   .then(
-                     ej.a("enable")
+                     ek.a("enable")
                         .then(
-                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ej.a(
+                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ek.a(
                                              "name", StringArgumentType.string()
                                           )
                                           .suggests(g)
                                           .executes(
-                                             $$0x -> a((ei)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$1.k().a($$0xx, $$1, auk::h, false))
+                                             $$0x -> a((ej)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$1.k().a($$0xx, $$1, auk::h, false))
                                           ))
                                        .then(
-                                          ej.a("after")
+                                          ek.a("after")
                                              .then(
-                                                ej.a("existing", StringArgumentType.string())
+                                                ek.a("existing", StringArgumentType.string())
                                                    .suggests(f)
                                                    .executes(
                                                       $$0x -> a(
-                                                            (ei)$$0x.getSource(),
+                                                            (ej)$$0x.getSource(),
                                                             a($$0x, "name", true),
                                                             ($$1, $$2) -> $$1.add($$1.indexOf(a($$0x, "existing", false)) + 1, $$2)
                                                          )
@@ -60,35 +60,35 @@ public class amy {
                                              )
                                        ))
                                     .then(
-                                       ej.a("before")
+                                       ek.a("before")
                                           .then(
-                                             ej.a("existing", StringArgumentType.string())
+                                             ek.a("existing", StringArgumentType.string())
                                                 .suggests(f)
                                                 .executes(
                                                    $$0x -> a(
-                                                         (ei)$$0x.getSource(),
+                                                         (ej)$$0x.getSource(),
                                                          a($$0x, "name", true),
                                                          ($$1, $$2) -> $$1.add($$1.indexOf(a($$0x, "existing", false)), $$2)
                                                       )
                                                 )
                                           )
                                     ))
-                                 .then(ej.a("last").executes($$0x -> a((ei)$$0x.getSource(), a($$0x, "name", true), List::add))))
-                              .then(ej.a("first").executes($$0x -> a((ei)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$0xx.add(0, $$1))))
+                                 .then(ek.a("last").executes($$0x -> a((ej)$$0x.getSource(), a($$0x, "name", true), List::add))))
+                              .then(ek.a("first").executes($$0x -> a((ej)$$0x.getSource(), a($$0x, "name", true), ($$0xx, $$1) -> $$0xx.add(0, $$1))))
                         )
                   ))
                .then(
-                  ej.a("disable").then(ej.a("name", StringArgumentType.string()).suggests(f).executes($$0x -> a((ei)$$0x.getSource(), a($$0x, "name", false))))
+                  ek.a("disable").then(ek.a("name", StringArgumentType.string()).suggests(f).executes($$0x -> a((ej)$$0x.getSource(), a($$0x, "name", false))))
                ))
             .then(
-               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("list").executes($$0x -> a((ei)$$0x.getSource())))
-                     .then(ej.a("available").executes($$0x -> b((ei)$$0x.getSource()))))
-                  .then(ej.a("enabled").executes($$0x -> c((ei)$$0x.getSource())))
+               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("list").executes($$0x -> a((ej)$$0x.getSource())))
+                     .then(ek.a("available").executes($$0x -> b((ej)$$0x.getSource()))))
+                  .then(ek.a("enabled").executes($$0x -> c((ej)$$0x.getSource())))
             )
       );
    }
 
-   private static int a(ei $$0, auk $$1, amy.a $$2) throws CommandSyntaxException {
+   private static int a(ej $$0, auk $$1, amy.a $$2) throws CommandSyntaxException {
       aun $$3 = $$0.l().aF();
       List<auk> $$4 = Lists.newArrayList($$3.g());
       $$2.apply($$4, $$1);
@@ -97,7 +97,7 @@ public class amy {
       return $$4.size();
    }
 
-   private static int a(ei $$0, auk $$1) {
+   private static int a(ej $$0, auk $$1) {
       aun $$2 = $$0.l().aF();
       List<auk> $$3 = Lists.newArrayList($$2.g());
       $$3.remove($$1);
@@ -106,16 +106,16 @@ public class amy {
       return $$3.size();
    }
 
-   private static int a(ei $$0) {
+   private static int a(ej $$0) {
       return c($$0) + b($$0);
    }
 
-   private static int b(ei $$0) {
+   private static int b(ej $$0) {
       aun $$1 = $$0.l().aF();
       $$1.a();
       Collection<auk> $$2 = $$1.g();
       Collection<auk> $$3 = $$1.d();
-      cum $$4 = $$0.v();
+      cut $$4 = $$0.v();
       List<auk> $$5 = $$3.stream().filter($$2x -> !$$2.contains($$2x) && $$2x.e().a($$4)).toList();
       if ($$5.isEmpty()) {
          $$0.a(() -> wy.c("commands.datapack.list.available.none"), false);
@@ -126,7 +126,7 @@ public class amy {
       return $$5.size();
    }
 
-   private static int c(ei $$0) {
+   private static int c(ej $$0) {
       aun $$1 = $$0.l().aF();
       $$1.a();
       Collection<? extends auk> $$2 = $$1.g();
@@ -139,9 +139,9 @@ public class amy {
       return $$2.size();
    }
 
-   private static auk a(CommandContext<ei> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
+   private static auk a(CommandContext<ej> $$0, String $$1, boolean $$2) throws CommandSyntaxException {
       String $$3 = StringArgumentType.getString($$0, $$1);
-      aun $$4 = ((ei)$$0.getSource()).l().aF();
+      aun $$4 = ((ej)$$0.getSource()).l().aF();
       auk $$5 = $$4.c($$3);
       if ($$5 == null) {
          throw a.create($$3);
@@ -152,12 +152,12 @@ public class amy {
          } else if (!$$2 && !$$6) {
             throw c.create($$3);
          } else {
-            cum $$7 = ((ei)$$0.getSource()).v();
-            cum $$8 = $$5.e();
+            cut $$7 = ((ej)$$0.getSource()).v();
+            cut $$8 = $$5.e();
             if (!$$2 && !$$8.b() && $$5.l() == auo.d) {
                throw d.create($$3);
             } else if (!$$8.a($$7)) {
-               throw e.create($$3, cuo.a($$7, $$8));
+               throw e.create($$3, cuv.a($$7, $$8));
             } else {
                return $$5;
             }

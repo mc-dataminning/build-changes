@@ -1,145 +1,56 @@
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.List;
-import java.util.Locale;
-import javax.annotation.Nullable;
+public class fuc extends fsr {
+   private float a = 0.5F;
 
-public class fuc {
-   private static final int a = 105;
-   private static final int b = 5;
-   private static final int c = 10;
-   private final frt d;
-   @Nullable
-   private bqm e;
-   private String f = "root";
-   private int g = 0;
-
-   public fuc(frt $$0) {
-      this.d = $$0;
+   public fuc(wy $$0, fsf $$1) {
+      this(0, 0, $$1.a($$0.g()), 9, $$0, $$1);
    }
 
-   public void a(@Nullable bqm $$0) {
-      this.e = $$0;
+   public fuc(int $$0, int $$1, wy $$2, fsf $$3) {
+      this(0, 0, $$0, $$1, $$2, $$3);
    }
 
-   public void a(int $$0) {
-      this.g = $$0;
+   public fuc(int $$0, int $$1, int $$2, int $$3, wy $$4, fsf $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.j = false;
    }
 
-   public void a(frv $$0) {
-      if (this.e != null) {
-         List<bqq> $$1 = this.e.a(this.f);
-         bqq $$2 = $$1.removeFirst();
-         int $$3 = $$0.a() - 105 - 10;
-         int $$4 = $$3 - 105;
-         int $$5 = $$3 + 105;
-         int $$6 = $$1.size() * 9;
-         int $$7 = $$0.b() - this.g - 5;
-         int $$8 = $$7 - $$6;
-         int $$9 = 62;
-         int $$10 = $$8 - 62 - 5;
-         $$0.a($$4 - 5, $$10 - 62 - 5, $$5 + 5, $$7 + 5, -1873784752);
-         $$0.a($$4x -> {
-            double $$5x = 0.0;
-
-            for (bqq $$6x : $$1) {
-               int $$7x = azm.a($$6x.a / 4.0) + 1;
-               fjn $$8x = $$4x.getBuffer(gqk.D());
-               int $$9x = axw.f($$6x.a());
-               int $$10x = axw.a($$9x, -8355712);
-               fjj.a $$11x = $$0.c().c();
-               $$8x.a($$11x, (float)$$3, (float)$$10, 10.0F).a($$9x);
-
-               for (int $$12x = $$7x; $$12x >= 0; $$12x--) {
-                  float $$13x = (float)(($$5x + $$6x.a * (double)$$12x / (double)$$7x) * (float) (Math.PI * 2) / 100.0);
-                  float $$14x = azm.a($$13x) * 105.0F;
-                  float $$15x = azm.b($$13x) * 105.0F * 0.5F;
-                  $$8x.a($$11x, (float)$$3 + $$14x, (float)$$10 - $$15x, 10.0F).a($$9x);
-               }
-
-               $$8x = $$4x.getBuffer(gqk.C());
-
-               for (int $$16x = $$7x; $$16x > 0; $$16x--) {
-                  float $$17x = (float)(($$5x + $$6x.a * (double)$$16x / (double)$$7x) * (float) (Math.PI * 2) / 100.0);
-                  float $$18x = azm.a($$17x) * 105.0F;
-                  float $$19x = azm.b($$17x) * 105.0F * 0.5F;
-                  float $$20x = (float)(($$5x + $$6x.a * (double)($$16x - 1) / (double)$$7x) * (float) (Math.PI * 2) / 100.0);
-                  float $$21 = azm.a($$20x) * 105.0F;
-                  float $$22 = azm.b($$20x) * 105.0F * 0.5F;
-                  if (!(($$19x + $$22) / 2.0F > 0.0F)) {
-                     $$8x.a($$11x, (float)$$3 + $$18x, (float)$$10 - $$19x, 10.0F).a($$10x);
-                     $$8x.a($$11x, (float)$$3 + $$18x, (float)$$10 - $$19x + 10.0F, 10.0F).a($$10x);
-                     $$8x.a($$11x, (float)$$3 + $$21, (float)$$10 - $$22 + 10.0F, 10.0F).a($$10x);
-                     $$8x.a($$11x, (float)$$3 + $$21, (float)$$10 - $$22, 10.0F).a($$10x);
-                  }
-               }
-
-               $$5x += $$6x.a;
-            }
-         });
-         DecimalFormat $$11 = new DecimalFormat("##0.00");
-         $$11.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT));
-         String $$12 = bqm.b($$2.d);
-         String $$13 = "";
-         if (!"unspecified".equals($$12)) {
-            $$13 = $$13 + "[0] ";
-         }
-
-         if ($$12.isEmpty()) {
-            $$13 = $$13 + "ROOT ";
-         } else {
-            $$13 = $$13 + $$12 + " ";
-         }
-
-         int $$14 = 16777215;
-         int $$15 = $$10 - 62;
-         $$0.b(this.d, $$13, $$4, $$15, 16777215);
-         $$13 = $$11.format($$2.b) + "%";
-         $$0.b(this.d, $$13, $$5 - this.d.b($$13), $$15, 16777215);
-
-         for (int $$16 = 0; $$16 < $$1.size(); $$16++) {
-            bqq $$17 = $$1.get($$16);
-            StringBuilder $$18 = new StringBuilder();
-            if ("unspecified".equals($$17.d)) {
-               $$18.append("[?] ");
-            } else {
-               $$18.append("[").append($$16 + 1).append("] ");
-            }
-
-            String $$19 = $$18.append($$17.d).toString();
-            int $$20 = $$8 + $$16 * 9;
-            $$0.b(this.d, $$19, $$4, $$20, $$17.a());
-            $$19 = $$11.format($$17.a) + "%";
-            $$0.b(this.d, $$19, $$5 - 50 - this.d.b($$19), $$20, $$17.a());
-            $$19 = $$11.format($$17.b) + "%";
-            $$0.b(this.d, $$19, $$5 - this.d.b($$19), $$20, $$17.a());
-         }
-      }
+   public fuc b(int $$0) {
+      super.a($$0);
+      return this;
    }
 
-   public void b(int $$0) {
-      if (this.e != null) {
-         List<bqq> $$1 = this.e.a(this.f);
-         if (!$$1.isEmpty()) {
-            bqq $$2 = $$1.remove(0);
-            if ($$0 == 0) {
-               if (!$$2.d.isEmpty()) {
-                  int $$3 = this.f.lastIndexOf(30);
-                  if ($$3 >= 0) {
-                     this.f = this.f.substring(0, $$3);
-                  }
-               }
-            } else {
-               $$0--;
-               if ($$0 < $$1.size() && !"unspecified".equals($$1.get($$0).d)) {
-                  if (!this.f.isEmpty()) {
-                     this.f = this.f + "\u001e";
-                  }
+   private fuc b(float $$0) {
+      this.a = $$0;
+      return this;
+   }
 
-                  this.f = this.f + $$1.get($$0).d;
-               }
-            }
-         }
-      }
+   public fuc c() {
+      return this.b(0.0F);
+   }
+
+   public fuc e() {
+      return this.b(0.5F);
+   }
+
+   public fuc g() {
+      return this.b(1.0F);
+   }
+
+   @Override
+   public void b(fsh $$0, int $$1, int $$2, float $$3) {
+      wy $$4 = this.B();
+      fsf $$5 = this.a();
+      int $$6 = this.A();
+      int $$7 = $$5.a($$4);
+      int $$8 = this.F() + Math.round(this.a * (float)($$6 - $$7));
+      int $$9 = this.G() + (this.y() - 9) / 2;
+      ayy $$10 = $$7 > $$6 ? this.a($$4, $$6) : $$4.g();
+      $$0.b($$5, $$10, $$8, $$9, this.b());
+   }
+
+   private ayy a(wy $$0, int $$1) {
+      fsf $$2 = this.a();
+      xd $$3 = $$2.a($$0, $$1 - $$2.a(wx.u));
+      return tu.a().a(xd.a($$3, wx.u));
    }
 }

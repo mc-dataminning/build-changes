@@ -1,27 +1,33 @@
-public class gih extends gfy<het> {
-   private final gjc a;
+public class gih extends gii {
+   protected final gjo a;
 
-   public gih(gjc $$0) {
+   public gih(gjo $$0) {
       super($$0);
-      this.a = $$0.b("tail");
+      this.a = $$0.b("head");
    }
 
-   public static gji a(gjg $$0) {
-      gjk $$1 = new gjk();
-      gjm $$2 = $$1.a();
-      int $$3 = 19;
-      $$2.a("body", gjh.c().a(0, 20).a(-1.0F, -3.0F, -3.0F, 2.0F, 6.0F, 6.0F, $$0), gje.a(0.0F, 19.0F, 0.0F));
-      $$2.a("tail", gjh.c().a(21, 16).a(0.0F, -3.0F, 0.0F, 0.0F, 6.0F, 5.0F, $$0), gje.a(0.0F, 19.0F, 3.0F));
-      $$2.a("right_fin", gjh.c().a(2, 16).a(-2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), gje.a(-1.0F, 20.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("left_fin", gjh.c().a(2, 12).a(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 0.0F, $$0), gje.a(1.0F, 20.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("top_fin", gjh.c().a(20, 11).a(0.0F, -4.0F, 0.0F, 0.0F, 4.0F, 6.0F, $$0), gje.a(0.0F, 16.0F, -3.0F));
-      $$2.a("bottom_fin", gjh.c().a(20, 21).a(0.0F, 0.0F, 0.0F, 0.0F, 4.0F, 6.0F, $$0), gje.a(0.0F, 22.0F, -3.0F));
-      return gji.a($$1, 32, 32);
+   public static gjw a() {
+      gjw $$0 = new gjw();
+      gjy $$1 = $$0.a();
+      $$1.a("head", gjt.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gjq.a);
+      return $$0;
    }
 
-   public void a(het $$0) {
-      super.a($$0);
-      float $$1 = $$0.ak ? 1.0F : 1.5F;
-      this.a.f = -$$1 * 0.45F * azm.a(0.6F * $$0.u);
+   public static gju b() {
+      gjw $$0 = a();
+      gjy $$1 = $$0.a();
+      $$1.b("head").a("hat", gjt.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new gjs(0.25F)), gjq.a);
+      return gju.a($$0, 64, 64);
+   }
+
+   public static gju c() {
+      gjw $$0 = a();
+      return gju.a($$0, 64, 32);
+   }
+
+   @Override
+   public void a(float $$0, float $$1, float $$2) {
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
    }
 }

@@ -3,18 +3,18 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import net.minecraft.server.MinecraftServer;
 
 public class ane {
-   public static void a(CommandDispatcher<ei> $$0) {
+   public static void a(CommandDispatcher<ej> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("defaultgamemode").requires($$0x -> $$0x.c(2)))
-            .then(ej.a("gamemode", ew.a()).executes($$0x -> a((ei)$$0x.getSource(), ew.a($$0x, "gamemode"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("defaultgamemode").requires($$0x -> $$0x.c(2)))
+            .then(ek.a("gamemode", ex.a()).executes($$0x -> a((ej)$$0x.getSource(), ex.a($$0x, "gamemode"))))
       );
    }
 
-   private static int a(ei $$0, dix $$1) {
+   private static int a(ej $$0, dje $$1) {
       int $$2 = 0;
       MinecraftServer $$3 = $$0.l();
       $$3.a($$1);
-      dix $$4 = $$3.bd();
+      dje $$4 = $$3.bd();
       if ($$4 != null) {
          for (arr $$5 : $$3.ag().t()) {
             if ($$5.a($$4)) {

@@ -1,95 +1,55 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public record ay(Optional<ji<dmf>> c, Optional<dq> d, Optional<cy> e) {
-   public static final Codec<ay> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               jt.a(mg.i).optionalFieldOf("blocks").forGetter(ay::b),
-               dq.a.optionalFieldOf("state").forGetter(ay::c),
-               cy.a.optionalFieldOf("nbt").forGetter(ay::d)
-            )
-            .apply($$0, ay::new)
-   );
-   public static final yw<wj, ay> b = yw.a(yu.a(yu.c(mg.i)), ay::b, yu.a(dq.b), ay::c, yu.a(cy.b), ay::d, ay::new);
-
-   public boolean a(arq $$0, iu $$1) {
-      if (!$$0.p($$1)) {
-         return false;
-      } else {
-         return !this.a($$0.a_($$1)) ? false : !this.e.isPresent() || a($$0, $$0.c_($$1), this.e.get());
-      }
+public class ay extends dk<ay.a> {
+   @Override
+   public Codec<ay.a> a() {
+      return ay.a.a;
    }
 
-   public boolean a(eal $$0) {
-      return !this.a($$0.a()) ? false : !this.e.isPresent() || a($$0.c(), $$0.b(), this.e.get());
+   public void a(arr $$0, eao $$1, czk $$2, int $$3) {
+      this.a($$0, $$3x -> $$3x.a($$1, $$2, $$3));
    }
 
-   private boolean a(eah $$0) {
-      return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
-   }
+   public static record a(Optional<bj> b, Optional<jf<dmm>> c, Optional<cm> d, cw.d e) implements dk.a {
+      public static final Codec<ay.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  by.b.optionalFieldOf("player").forGetter(ay.a::a),
+                  mg.e.r().optionalFieldOf("block").forGetter(ay.a::b),
+                  cm.a.optionalFieldOf("item").forGetter(ay.a::c),
+                  cw.d.d.optionalFieldOf("num_bees_inside", cw.d.c).forGetter(ay.a::d)
+               )
+               .apply($$0, ay.a::new)
+      );
 
-   private static boolean a(djd $$0, @Nullable dxf $$1, cy $$2) {
-      return $$1 != null && $$2.a($$1.b($$0.F_()));
-   }
-
-   public boolean a() {
-      return this.e.isPresent();
-   }
-
-   public Optional<ji<dmf>> b() {
-      return this.c;
-   }
-
-   public Optional<dq> c() {
-      return this.d;
-   }
-
-   public Optional<cy> d() {
-      return this.e;
-   }
-
-   public static class a {
-      private Optional<ji<dmf>> a = Optional.empty();
-      private Optional<dq> b = Optional.empty();
-      private Optional<cy> c = Optional.empty();
-
-      private a() {
+      public static ar<ay.a> a(dmm $$0, cm.a $$1, cw.d $$2) {
+         return aq.L.a(new ay.a(Optional.empty(), Optional.of($$0.p()), Optional.of($$1.b()), $$2));
       }
 
-      public static ay.a a() {
-         return new ay.a();
+      public boolean a(eao $$0, czk $$1, int $$2) {
+         if (this.c.isPresent() && !$$0.a(this.c.get())) {
+            return false;
+         } else {
+            return this.d.isPresent() && !this.d.get().a($$1) ? false : this.e.d($$2);
+         }
       }
 
-      public ay.a a(jf<dmf> $$0, dmf... $$1) {
-         return this.a($$0, Arrays.asList($$1));
+      @Override
+      public Optional<bj> a() {
+         return this.b;
       }
 
-      public ay.a a(jf<dmf> $$0, Collection<dmf> $$1) {
-         this.a = Optional.of(ji.a(dmf::p, $$1));
-         return this;
+      public Optional<jf<dmm>> b() {
+         return this.c;
       }
 
-      public ay.a a(jf<dmf> $$0, axr<dmf> $$1) {
-         this.a = Optional.of($$0.b($$1));
-         return this;
+      public Optional<cm> c() {
+         return this.d;
       }
 
-      public ay.a a(tz $$0) {
-         this.c = Optional.of(new cy($$0));
-         return this;
-      }
-
-      public ay.a a(dq.a $$0) {
-         this.b = $$0.b();
-         return this;
-      }
-
-      public ay b() {
-         return new ay(this.a, this.b, this.c);
+      public cw.d d() {
+         return this.e;
       }
    }
 }

@@ -1,112 +1,102 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.List;
-import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableObject;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
 
 public class esl {
-   private static final int c = Integer.MIN_VALUE;
-   private static final MutableObject<Codec<je<esl>>> d = new MutableObject();
-   public static final Codec<esl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.lazyInitialized(d::getValue).fieldOf("fallback").forGetter(esl::a),
-               Codec.mapPair(esj.f.fieldOf("element"), Codec.intRange(1, 150).fieldOf("weight")).codec().listOf().fieldOf("elements").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, esl::new)
-   );
-   public static final Codec<je<esl>> b = af.a(alc.a(mg.bf, a), d::setValue);
-   private final List<Pair<esj, Integer>> e;
-   private final ObjectArrayList<esj> f;
-   private final je<esl> g;
-   private int h = Integer.MIN_VALUE;
+   private final int a;
+   private final int b;
+   private final int c;
+   private final int d;
+   private final ess.a e;
 
-   public esl(je<esl> $$0, List<Pair<esj, Integer>> $$1) {
-      this.e = $$1;
-      this.f = new ObjectArrayList();
-
-      for (Pair<esj, Integer> $$2 : $$1) {
-         esj $$3 = (esj)$$2.getFirst();
-
-         for (int $$4 = 0; $$4 < $$2.getSecond(); $$4++) {
-            this.f.add($$3);
-         }
-      }
-
-      this.g = $$0;
+   public esl(int $$0, int $$1, int $$2, int $$3, ess.a $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   public esl(je<esl> $$0, List<Pair<Function<esl.a, ? extends esj>, Integer>> $$1, esl.a $$2) {
-      this.e = Lists.newArrayList();
-      this.f = new ObjectArrayList();
-
-      for (Pair<Function<esl.a, ? extends esj>, Integer> $$3 : $$1) {
-         esj $$4 = (esj)((Function)$$3.getFirst()).apply($$2);
-         this.e.add(Pair.of($$4, (Integer)$$3.getSecond()));
-
-         for (int $$5 = 0; $$5 < $$3.getSecond(); $$5++) {
-            this.f.add($$4);
-         }
-      }
-
-      this.g = $$0;
-   }
-
-   public int a(eve $$0) {
-      if (this.h == Integer.MIN_VALUE) {
-         this.h = this.f.stream().filter($$0x -> $$0x != esc.b).mapToInt($$1 -> $$1.a($$0, iu.c, dsz.a).e()).max().orElse(0);
-      }
-
-      return this.h;
-   }
-
-   public je<esl> a() {
-      return this.g;
-   }
-
-   public esj a(azv $$0) {
-      return (esj)(this.f.isEmpty() ? esc.b : (esj)this.f.get($$0.a(this.f.size())));
-   }
-
-   public List<esj> b(azv $$0) {
-      return af.a(this.f, $$0);
+   public int a() {
+      return this.a;
    }
 
    public int b() {
-      return this.f.size();
+      return this.b;
    }
 
-   public static enum a implements bak {
-      a("terrain_matching", ImmutableList.of(new euj(egg.a.a, -1))),
-      b("rigid", ImmutableList.of());
+   public int c() {
+      return this.c;
+   }
 
-      public static final bak.a<esl.a> c = bak.a(esl.a::values);
-      private final String d;
-      private final ImmutableList<eva> e;
+   public int d() {
+      return this.d;
+   }
 
-      private a(final String $$0, final ImmutableList<eva> $$1) {
-         this.d = $$0;
-         this.e = $$1;
+   public ess.a e() {
+      return this.e;
+   }
+
+   public <T> Dynamic<T> a(DynamicOps<T> $$0) {
+      Builder<T, T> $$1 = ImmutableMap.builder();
+      $$1.put($$0.createString("source_x"), $$0.createInt(this.a))
+         .put($$0.createString("source_ground_y"), $$0.createInt(this.b))
+         .put($$0.createString("source_z"), $$0.createInt(this.c))
+         .put($$0.createString("delta_y"), $$0.createInt(this.d))
+         .put($$0.createString("dest_proj"), $$0.createString(this.e.a()));
+      return new Dynamic($$0, $$0.createMap($$1.build()));
+   }
+
+   public static <T> esl a(Dynamic<T> $$0) {
+      return new esl(
+         $$0.get("source_x").asInt(0),
+         $$0.get("source_ground_y").asInt(0),
+         $$0.get("source_z").asInt(0),
+         $$0.get("delta_y").asInt(0),
+         ess.a.a($$0.get("dest_proj").asString(""))
+      );
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         esl $$1 = (esl)$$0;
+         if (this.a != $$1.a) {
+            return false;
+         } else if (this.c != $$1.c) {
+            return false;
+         } else {
+            return this.d != $$1.d ? false : this.e == $$1.e;
+         }
+      } else {
+         return false;
       }
+   }
 
-      public String a() {
-         return this.d;
-      }
+   @Override
+   public int hashCode() {
+      int $$0 = this.a;
+      $$0 = 31 * $$0 + this.b;
+      $$0 = 31 * $$0 + this.c;
+      $$0 = 31 * $$0 + this.d;
+      return 31 * $$0 + this.e.hashCode();
+   }
 
-      public static esl.a a(String $$0) {
-         return c.a($$0);
-      }
-
-      public ImmutableList<eva> b() {
-         return this.e;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
+   @Override
+   public String toString() {
+      return "JigsawJunction{sourceX="
+         + this.a
+         + ", sourceGroundY="
+         + this.b
+         + ", sourceZ="
+         + this.c
+         + ", deltaY="
+         + this.d
+         + ", destProjection="
+         + this.e
+         + "}";
    }
 }

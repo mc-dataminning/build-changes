@@ -1,40 +1,41 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class ccd extends byv<cqo> {
-   public ccd() {
-      super(ImmutableMap.of());
+public class ccd {
+   private static final int a = 16;
+
+   public static bzb<bxj> a(Predicate<jf<cio>> $$0, cgl<je> $$1) {
+      return ccn.a((Function<ccn.b<bxj>, ? extends App<ccn.c<bxj>, ccq<bxj>>>)($$2 -> $$2.group($$2.b($$1)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               je $$6 = $$2.b($$2x);
+               iv $$7 = $$6.b();
+               if ($$3.aj() == $$6.a() && $$7.a($$4.ds(), 16.0)) {
+                  arq $$8 = $$3.p().a($$6.a());
+                  if ($$8 == null || !$$8.A().a($$7, $$0)) {
+                     $$2x.b();
+                  } else if (a($$8, $$7, $$4)) {
+                     $$2x.b();
+                     if (!a($$8, $$7)) {
+                        $$3.A().b($$7);
+                        agm.c($$3, $$7);
+                     }
+                  }
+
+                  return true;
+               } else {
+                  return false;
+               }
+            })));
    }
 
-   protected boolean a(arq $$0, cqo $$1, long $$2) {
-      return c($$1) || b($$1);
+   private static boolean a(arq $$0, iv $$1, bxj $$2) {
+      eao $$3 = $$0.a_($$1);
+      return $$3.a(axc.T) && $$3.c(dmf.c) && !$$2.fQ();
    }
 
-   protected void b(arq $$0, cqo $$1, long $$2) {
-      if (c($$1) || b($$1)) {
-         bye<?> $$3 = $$1.ec();
-         if (!$$3.c(csw.g)) {
-            $$3.b(cgg.u);
-            $$3.b(cgg.n);
-            $$3.b(cgg.o);
-            $$3.b(cgg.s);
-            $$3.b(cgg.r);
-         }
-
-         $$3.a(csw.g);
-      }
-   }
-
-   protected void c(arq $$0, cqo $$1, long $$2) {
-      if ($$2 % 100L == 0L) {
-         $$1.a($$0, $$2, 3);
-      }
-   }
-
-   public static boolean b(bxe $$0) {
-      return $$0.ec().a(cgg.B);
-   }
-
-   public static boolean c(bxe $$0) {
-      return $$0.ec().a(cgg.y);
+   private static boolean a(arq $$0, iv $$1) {
+      List<cqv> $$2 = $$0.a(cqv.class, new fes($$1), bxj::fQ);
+      return !$$2.isEmpty();
    }
 }

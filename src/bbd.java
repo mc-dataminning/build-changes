@@ -1,4 +1,5 @@
 import com.mojang.datafixers.DataFixUtils;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.RewriteResult;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
@@ -32,7 +33,7 @@ public class bbd {
          : $$0;
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0, int $$1, int $$2, int $$3) {
+   public static Dynamic<?> a(Dynamic<?> $$0, int $$1, int $$2, int $$3) {
       return $$0.createIntList(IntStream.of($$1, $$2, $$3));
    }
 
@@ -110,5 +111,9 @@ public class bbd {
          case 15 -> "black";
          default -> "white";
       };
+   }
+
+   public static <T> Typed<?> a(Typed<?> $$0, OpticFinder<T> $$1, Dynamic<?> $$2) {
+      return $$0.set($$1, ag.a($$1.type(), $$2, true));
    }
 }

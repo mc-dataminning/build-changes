@@ -5,11 +5,11 @@ public record aea(List<UUID> b) implements zf<abu> {
    public static final yw<vu, aea> a = zf.a(aea::a, aea::new);
 
    private aea(vu $$0) {
-      this($$0.a(jy.g));
+      this($$0.a(jz.g));
    }
 
    private void a(vu $$0) {
-      $$0.a(this.b, jy.g);
+      $$0.a(this.b, jz.g);
    }
 
    @Override

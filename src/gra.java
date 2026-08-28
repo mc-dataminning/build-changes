@@ -1,20 +1,30 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.List;
+import java.util.Map;
 
-public final class gra implements AutoCloseable {
-   private final foz a;
-   private final fil b;
+public class gra implements AutoCloseable {
+   private static final List<gqx> b = gqx.U();
+   public static final int a = b.stream().mapToInt(gqx::V).sum();
+   private final Map<gqx, fjv> c = ag.a(new Reference2ObjectArrayMap(b.size()), $$0 -> {
+      for (gqx $$1 : b) {
+         $$0.put($$1, new fjv($$1.V()));
+      }
+   });
 
-   public gra(foz $$0) {
-      this.a = $$0;
-      this.b = new fil(fii::new);
+   public fjv a(gqx $$0) {
+      return this.c.get($$0);
    }
 
-   public fin a(fia $$0, @Nullable String $$1, String $$2) {
-      return new fin(this.a, this.b, $$0, $$1, $$2);
+   public void a() {
+      this.c.values().forEach(fjv::b);
+   }
+
+   public void b() {
+      this.c.values().forEach(fjv::c);
    }
 
    @Override
    public void close() {
-      this.b.a();
+      this.c.values().forEach(fjv::close);
    }
 }

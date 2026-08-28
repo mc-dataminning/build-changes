@@ -1,43 +1,133 @@
-public class ghj<T extends hdn> extends gfy<T> {
-   protected final gjc b;
-   protected final gjc c;
-   protected final gjc d;
-   protected final gjc e;
-   protected final gjc f;
-   protected final gjc g;
+public class ghj extends ggk<heh> {
+   private static final String a = "feather";
+   private final gjo b;
+   private final gjo c;
+   private final gjo d;
+   private final gjo e;
+   private final gjo f;
+   private final gjo g;
+   private final gjo i;
 
-   protected ghj(gjc $$0) {
+   public ghj(gjo $$0) {
       super($$0);
-      this.b = $$0.b("head");
-      this.c = $$0.b("body");
-      this.d = $$0.b("right_hind_leg");
-      this.e = $$0.b("left_hind_leg");
-      this.f = $$0.b("right_front_leg");
-      this.g = $$0.b("left_front_leg");
+      this.b = $$0.b("body");
+      this.c = $$0.b("tail");
+      this.d = $$0.b("left_wing");
+      this.e = $$0.b("right_wing");
+      this.f = $$0.b("head");
+      this.g = $$0.b("left_leg");
+      this.i = $$0.b("right_leg");
    }
 
-   public static gjk a(int $$0, gjg $$1) {
-      gjk $$2 = new gjk();
-      gjm $$3 = $$2.a();
-      $$3.a("head", gjh.c().a(0, 0).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, $$1), gje.a(0.0F, (float)(18 - $$0), -6.0F));
-      $$3.a("body", gjh.c().a(28, 8).a(-5.0F, -10.0F, -7.0F, 10.0F, 16.0F, 8.0F, $$1), gje.a(0.0F, (float)(17 - $$0), 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      gjh $$4 = gjh.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, (float)$$0, 4.0F, $$1);
-      $$3.a("right_hind_leg", $$4, gje.a(-3.0F, (float)(24 - $$0), 7.0F));
-      $$3.a("left_hind_leg", $$4, gje.a(3.0F, (float)(24 - $$0), 7.0F));
-      $$3.a("right_front_leg", $$4, gje.a(-3.0F, (float)(24 - $$0), -5.0F));
-      $$3.a("left_front_leg", $$4, gje.a(3.0F, (float)(24 - $$0), -5.0F));
-      return $$2;
+   public static gju a() {
+      gjw $$0 = new gjw();
+      gjy $$1 = $$0.a();
+      $$1.a("body", gjt.c().a(2, 8).a(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F), gjq.a(0.0F, 16.5F, -3.0F, 0.4937F, 0.0F, 0.0F));
+      $$1.a("tail", gjt.c().a(22, 1).a(-1.5F, -1.0F, -1.0F, 3.0F, 4.0F, 1.0F), gjq.a(0.0F, 21.07F, 1.16F, 1.015F, 0.0F, 0.0F));
+      $$1.a("left_wing", gjt.c().a(19, 8).a(-0.5F, 0.0F, -1.5F, 1.0F, 5.0F, 3.0F), gjq.a(1.5F, 16.94F, -2.76F, -0.6981F, (float) -Math.PI, 0.0F));
+      $$1.a("right_wing", gjt.c().a(19, 8).a(-0.5F, 0.0F, -1.5F, 1.0F, 5.0F, 3.0F), gjq.a(-1.5F, 16.94F, -2.76F, -0.6981F, (float) -Math.PI, 0.0F));
+      gjy $$2 = $$1.a("head", gjt.c().a(2, 2).a(-1.0F, -1.5F, -1.0F, 2.0F, 3.0F, 2.0F), gjq.a(0.0F, 15.69F, -2.76F));
+      $$2.a("head2", gjt.c().a(10, 0).a(-1.0F, -0.5F, -2.0F, 2.0F, 1.0F, 4.0F), gjq.a(0.0F, -2.0F, -1.0F));
+      $$2.a("beak1", gjt.c().a(11, 7).a(-0.5F, -1.0F, -0.5F, 1.0F, 2.0F, 1.0F), gjq.a(0.0F, -0.5F, -1.5F));
+      $$2.a("beak2", gjt.c().a(16, 7).a(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F), gjq.a(0.0F, -1.75F, -2.45F));
+      $$2.a("feather", gjt.c().a(2, 18).a(0.0F, -4.0F, -2.0F, 0.0F, 5.0F, 4.0F), gjq.a(0.0F, -2.15F, 0.15F, -0.2214F, 0.0F, 0.0F));
+      gjt $$3 = gjt.c().a(14, 18).a(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F);
+      $$1.a("left_leg", $$3, gjq.a(1.0F, 22.0F, -1.05F, -0.0299F, 0.0F, 0.0F));
+      $$1.a("right_leg", $$3, gjq.a(-1.0F, 22.0F, -1.05F, -0.0299F, 0.0F, 0.0F));
+      return gju.a($$0, 32, 32);
    }
 
-   public void a(T $$0) {
+   public void a(heh $$0) {
       super.a($$0);
-      this.b.e = $$0.ab * (float) (Math.PI / 180.0);
-      this.b.f = $$0.aa * (float) (Math.PI / 180.0);
-      float $$1 = $$0.ad;
-      float $$2 = $$0.ae;
-      this.d.e = azm.b($$1 * 0.6662F) * 1.4F * $$2;
-      this.e.e = azm.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.f.e = azm.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.g.e = azm.b($$1 * 0.6662F) * 1.4F * $$2;
+      this.a($$0.c);
+      this.f.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.f.f = $$0.aa * (float) (Math.PI / 180.0);
+      switch ($$0.c) {
+         case b:
+            this.g.e = this.g.e + azm.b($$0.ad * 0.6662F) * 1.4F * $$0.ae;
+            this.i.e = this.i.e + azm.b($$0.ad * 0.6662F + (float) Math.PI) * 1.4F * $$0.ae;
+         case a:
+         case e:
+         default:
+            float $$3 = $$0.b * 0.3F;
+            this.f.c += $$3;
+            this.c.e = this.c.e + azm.b($$0.ad * 0.6662F) * 0.3F * $$0.ae;
+            this.c.c += $$3;
+            this.b.c += $$3;
+            this.d.g = -0.0873F - $$0.b;
+            this.d.c += $$3;
+            this.e.g = 0.0873F + $$0.b;
+            this.e.c += $$3;
+            this.g.c += $$3;
+            this.i.c += $$3;
+         case c:
+            break;
+         case d:
+            float $$1 = azm.b($$0.u);
+            float $$2 = azm.a($$0.u);
+            this.f.b += $$1;
+            this.f.c += $$2;
+            this.f.e = 0.0F;
+            this.f.f = 0.0F;
+            this.f.g = azm.a($$0.u) * 0.4F;
+            this.b.b += $$1;
+            this.b.c += $$2;
+            this.d.g = -0.0873F - $$0.b;
+            this.d.b += $$1;
+            this.d.c += $$2;
+            this.e.g = 0.0873F + $$0.b;
+            this.e.b += $$1;
+            this.e.c += $$2;
+            this.c.b += $$1;
+            this.c.c += $$2;
+      }
+   }
+
+   private void a(ghj.a $$0) {
+      switch ($$0) {
+         case a:
+            this.g.e += (float) (Math.PI * 2.0 / 9.0);
+            this.i.e += (float) (Math.PI * 2.0 / 9.0);
+         case b:
+         case e:
+         default:
+            break;
+         case c:
+            float $$1 = 1.9F;
+            this.f.c++;
+            this.c.e += (float) (Math.PI / 6);
+            this.c.c++;
+            this.b.c++;
+            this.d.g = -0.0873F;
+            this.d.c++;
+            this.e.g = 0.0873F;
+            this.e.c++;
+            this.g.c++;
+            this.i.c++;
+            this.g.e++;
+            this.i.e++;
+            break;
+         case d:
+            this.g.g = (float) (-Math.PI / 9);
+            this.i.g = (float) (Math.PI / 9);
+      }
+   }
+
+   public static ghj.a a(cjt $$0) {
+      if ($$0.gG()) {
+         return ghj.a.d;
+      } else if ($$0.x()) {
+         return ghj.a.c;
+      } else {
+         return $$0.gI() ? ghj.a.a : ghj.a.b;
+      }
+   }
+
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

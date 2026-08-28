@@ -1,104 +1,118 @@
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import java.util.List;
 
-public class gsu implements gsm<dxs> {
-   public static final gpz a = new gpz(hiw.d, "entity/conduit");
-   public static final hle b = a.a("base");
-   public static final hle c = a.a("cage");
-   public static final hle d = a.a("wind");
-   public static final hle e = a.a("wind_vertical");
-   public static final hle f = a.a("open_eye");
-   public static final hle g = a.a("closed_eye");
-   private final gjc h;
-   private final gjc i;
-   private final gjc j;
-   private final gjc k;
-   private final gsl l;
+public class gsu<T extends dxm & dxg> implements gsy<T> {
+   public static final alg a = alg.b("textures/entity/beacon_beam.png");
+   public static final int b = 2048;
+   private static final float e = 96.0F;
+   public static final float c = 0.2F;
+   public static final float d = 0.25F;
 
-   public gsu(gsn.a $$0) {
-      this.l = $$0.a();
-      this.h = $$0.a(gjb.ak);
-      this.i = $$0.a(gjb.am);
-      this.j = $$0.a(gjb.al);
-      this.k = $$0.a(gjb.aj);
+   public gsu(gsz.a $$0) {
    }
 
-   public static gji b() {
-      gjk $$0 = new gjk();
-      gjm $$1 = $$0.a();
-      $$1.a("eye", gjh.c().a(0, 0).a(-4.0F, -4.0F, 0.0F, 8.0F, 8.0F, 0.0F, new gjg(0.01F)), gje.a);
-      return gji.a($$0, 16, 16);
-   }
+   @Override
+   public void a(T $$0, float $$1, fjy $$2, gqm $$3, int $$4, int $$5, fex $$6) {
+      long $$7 = $$0.i().ae();
+      float $$8 = (float)$$6.d($$0.ax_().b()).i();
+      float $$9 = Math.max(1.0F, $$8 / 96.0F);
+      List<dxg.a> $$10 = $$0.a();
+      int $$11 = 0;
 
-   public static gji c() {
-      gjk $$0 = new gjk();
-      gjm $$1 = $$0.a();
-      $$1.a("wind", gjh.c().a(0, 0).a(-8.0F, -8.0F, -8.0F, 16.0F, 16.0F, 16.0F), gje.a);
-      return gji.a($$0, 64, 32);
-   }
-
-   public static gji d() {
-      gjk $$0 = new gjk();
-      gjm $$1 = $$0.a();
-      $$1.a("shell", gjh.c().a(0, 0).a(-3.0F, -3.0F, -3.0F, 6.0F, 6.0F, 6.0F), gje.a);
-      return gji.a($$0, 32, 16);
-   }
-
-   public static gji e() {
-      gjk $$0 = new gjk();
-      gjm $$1 = $$0.a();
-      $$1.a("shell", gjh.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), gje.a);
-      return gji.a($$0, 32, 16);
-   }
-
-   public void a(dxs $$0, float $$1, fjj $$2, gqa $$3, int $$4, int $$5, feq $$6) {
-      float $$7 = (float)$$0.a + $$1;
-      if (!$$0.c()) {
-         float $$8 = $$0.a(0.0F);
-         fjn $$9 = b.a($$3, gqk::d);
-         $$2.a();
-         $$2.a(0.5F, 0.5F, 0.5F);
-         $$2.a(new Quaternionf().rotationY($$8 * (float) (Math.PI / 180.0)));
-         this.j.a($$2, $$9, $$4, $$5);
-         $$2.b();
-      } else {
-         float $$10 = $$0.a($$1) * (180.0F / (float)Math.PI);
-         float $$11 = azm.a($$7 * 0.1F) / 2.0F + 0.5F;
-         $$11 = $$11 * $$11 + $$11;
-         $$2.a();
-         $$2.a(0.5F, 0.3F + $$11 * 0.2F, 0.5F);
-         Vector3f $$12 = new Vector3f(0.5F, 1.0F, 0.5F).normalize();
-         $$2.a(new Quaternionf().rotationAxis($$10 * (float) (Math.PI / 180.0), $$12));
-         this.k.a($$2, c.a($$3, gqk::g), $$4, $$5);
-         $$2.b();
-         int $$13 = $$0.a / 66 % 3;
-         $$2.a();
-         $$2.a(0.5F, 0.5F, 0.5F);
-         if ($$13 == 1) {
-            $$2.a(new Quaternionf().rotationX((float) (Math.PI / 2)));
-         } else if ($$13 == 2) {
-            $$2.a(new Quaternionf().rotationZ((float) (Math.PI / 2)));
-         }
-
-         fjn $$14 = ($$13 == 1 ? e : d).a($$3, gqk::g);
-         this.i.a($$2, $$14, $$4, $$5);
-         $$2.b();
-         $$2.a();
-         $$2.a(0.5F, 0.5F, 0.5F);
-         $$2.b(0.875F, 0.875F, 0.875F);
-         $$2.a(new Quaternionf().rotationXYZ((float) Math.PI, 0.0F, (float) Math.PI));
-         this.i.a($$2, $$14, $$4, $$5);
-         $$2.b();
-         fog $$15 = this.l.b;
-         $$2.a();
-         $$2.a(0.5F, 0.3F + $$11 * 0.2F, 0.5F);
-         $$2.b(0.5F, 0.5F, 0.5F);
-         float $$16 = -$$15.e();
-         $$2.a(new Quaternionf().rotationYXZ($$16 * (float) (Math.PI / 180.0), $$15.d() * (float) (Math.PI / 180.0), (float) Math.PI));
-         float $$17 = 1.3333334F;
-         $$2.b(1.3333334F, 1.3333334F, 1.3333334F);
-         this.h.a($$2, ($$0.d() ? f : g).a($$3, gqk::g), $$4, $$5);
-         $$2.b();
+      for (int $$12 = 0; $$12 < $$10.size(); $$12++) {
+         dxg.a $$13 = $$10.get($$12);
+         a($$2, $$3, $$1, $$9, $$7, $$11, $$12 == $$10.size() - 1 ? 2048 : $$13.c(), $$13.b());
+         $$11 += $$13.c();
       }
+   }
+
+   private static void a(fjy $$0, gqm $$1, float $$2, float $$3, long $$4, int $$5, int $$6, int $$7) {
+      a($$0, $$1, a, $$2, 1.0F, $$4, $$5, $$6, $$7, 0.2F * $$3, 0.25F * $$3);
+   }
+
+   public static void a(fjy $$0, gqm $$1, alg $$2, float $$3, float $$4, long $$5, int $$6, int $$7, int $$8, float $$9, float $$10) {
+      int $$11 = $$6 + $$7;
+      $$0.a();
+      $$0.a(0.5, 0.0, 0.5);
+      float $$12 = (float)Math.floorMod($$5, 40) + $$3;
+      float $$13 = $$7 < 0 ? $$12 : -$$12;
+      float $$14 = azm.i($$13 * 0.2F - (float)azm.d($$13 * 0.1F));
+      $$0.a();
+      $$0.a(a.d.rotationDegrees($$12 * 2.25F - 45.0F));
+      float $$15 = 0.0F;
+      float $$18 = 0.0F;
+      float $$19 = -$$9;
+      float $$20 = 0.0F;
+      float $$21 = 0.0F;
+      float $$22 = -$$9;
+      float $$23 = 0.0F;
+      float $$24 = 1.0F;
+      float $$25 = -1.0F + $$14;
+      float $$26 = (float)$$7 * $$4 * (0.5F / $$9) + $$25;
+      a($$0, $$1.getBuffer(gqx.e($$2, false)), $$8, $$6, $$11, 0.0F, $$9, $$9, 0.0F, $$19, 0.0F, 0.0F, $$22, 0.0F, 1.0F, $$26, $$25);
+      $$0.b();
+      $$15 = -$$10;
+      float $$28 = -$$10;
+      $$18 = -$$10;
+      $$19 = -$$10;
+      $$23 = 0.0F;
+      $$24 = 1.0F;
+      $$25 = -1.0F + $$14;
+      $$26 = (float)$$7 * $$4 + $$25;
+      a($$0, $$1.getBuffer(gqx.e($$2, true)), axw.c(32, $$8), $$6, $$11, $$15, $$28, $$10, $$18, $$19, $$10, $$10, $$10, 0.0F, 1.0F, $$26, $$25);
+      $$0.b();
+   }
+
+   private static void a(
+      fjy $$0,
+      fkc $$1,
+      int $$2,
+      int $$3,
+      int $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      float $$13,
+      float $$14,
+      float $$15,
+      float $$16
+   ) {
+      fjy.a $$17 = $$0.c();
+      a($$17, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$13, $$14, $$15, $$16);
+      a($$17, $$1, $$2, $$3, $$4, $$11, $$12, $$9, $$10, $$13, $$14, $$15, $$16);
+      a($$17, $$1, $$2, $$3, $$4, $$7, $$8, $$11, $$12, $$13, $$14, $$15, $$16);
+      a($$17, $$1, $$2, $$3, $$4, $$9, $$10, $$5, $$6, $$13, $$14, $$15, $$16);
+   }
+
+   private static void a(
+      fjy.a $$0, fkc $$1, int $$2, int $$3, int $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, float $$11, float $$12
+   ) {
+      a($$0, $$1, $$2, $$4, $$5, $$6, $$10, $$11);
+      a($$0, $$1, $$2, $$3, $$5, $$6, $$10, $$12);
+      a($$0, $$1, $$2, $$3, $$7, $$8, $$9, $$12);
+      a($$0, $$1, $$2, $$4, $$7, $$8, $$9, $$11);
+   }
+
+   private static void a(fjy.a $$0, fkc $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      $$1.a($$0, $$4, (float)$$3, $$5).a($$2).a($$6, $$7).b(hja.d).c(15728880).b($$0, 0.0F, 1.0F, 0.0F);
+   }
+
+   @Override
+   public boolean a(T $$0) {
+      return true;
+   }
+
+   @Override
+   public int aR_() {
+      return Integer.MAX_VALUE;
+   }
+
+   @Override
+   public boolean a(T $$0, fex $$1) {
+      return fex.b($$0.ax_()).d(1.0, 0.0, 1.0).a((jp)$$1.d(1.0, 0.0, 1.0), (double)this.aR_());
    }
 }

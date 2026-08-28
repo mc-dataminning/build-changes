@@ -24,13 +24,13 @@ public class atk implements AutoCloseable {
    private static final Logger a = LogUtils.getLogger();
    private static final int b = 20;
    private final Path c;
-   private final bpg<atk.e> d;
-   private final bst e = new bst(af.j(), "download-queue");
+   private final bpi<atk.e> d;
+   private final bsv e = new bsv(ag.j(), "download-queue");
 
    public atk(Path $$0) throws IOException {
       this.c = $$0;
-      v.c($$0);
-      this.d = bpg.a(atk.e.a, $$0.resolve("log.json"));
+      w.c($$0);
+      this.d = bpi.a(atk.e.a, $$0.resolve("log.json"));
       atj.a($$0, 20);
    }
 
@@ -119,7 +119,7 @@ public class atk implements AutoCloseable {
    static record e(UUID b, String c, Instant d, Optional<String> e, Either<String, atk.d> f) {
       public static final Codec<atk.e> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  jy.d.fieldOf("id").forGetter(atk.e::a),
+                  jz.d.fieldOf("id").forGetter(atk.e::a),
                   Codec.STRING.fieldOf("url").forGetter(atk.e::b),
                   ayu.q.fieldOf("time").forGetter(atk.e::c),
                   Codec.STRING.optionalFieldOf("hash").forGetter(atk.e::d),

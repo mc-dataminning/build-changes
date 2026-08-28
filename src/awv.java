@@ -4,7 +4,7 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 public interface awv {
-   DecimalFormat a = af.a(new DecimalFormat("########0.00"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
+   DecimalFormat a = ag.a(new DecimalFormat("########0.00"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
    awv b = NumberFormat.getIntegerInstance(Locale.US)::format;
    awv c = $$0 -> a.format((double)$$0 * 0.1);
    awv d = $$0 -> {

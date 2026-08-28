@@ -1,137 +1,63 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.lang.reflect.Constructor;
+import java.util.Arrays;
 
-public abstract class cmx extends bwf {
-   private static final Logger b = LogUtils.getLogger();
-   private int c;
-   protected iu a;
+public class cmx<T extends cmr> {
+   private static cmx<?>[] l = new cmx[0];
+   public static final cmx<cmn> a = a(cmn.class, "HoldingPattern");
+   public static final cmx<cmv> b = a(cmv.class, "StrafePlayer");
+   public static final cmx<cmp> c = a(cmp.class, "LandingApproach");
+   public static final cmx<cmq> d = a(cmq.class, "Landing");
+   public static final cmx<cmw> e = a(cmw.class, "Takeoff");
+   public static final cmx<cmt> f = a(cmt.class, "SittingFlaming");
+   public static final cmx<cmu> g = a(cmu.class, "SittingScanning");
+   public static final cmx<cms> h = a(cms.class, "SittingAttacking");
+   public static final cmx<cml> i = a(cml.class, "ChargingPlayer");
+   public static final cmx<cmm> j = a(cmm.class, "Dying");
+   public static final cmx<cmo> k = a(cmo.class, "Hover");
+   private final Class<? extends cmr> m;
+   private final int n;
+   private final String o;
 
-   protected cmx(bwo<? extends cmx> $$0, dja $$1) {
-      super($$0, $$1);
+   private cmx(int $$0, Class<? extends cmr> $$1, String $$2) {
+      this.n = $$0;
+      this.m = $$1;
+      this.o = $$2;
    }
 
-   protected cmx(bwo<? extends cmx> $$0, dja $$1, iu $$2) {
-      this($$0, $$1);
-      this.a = $$2;
-   }
-
-   protected abstract void f();
-
-   @Override
-   public void h() {
-      if (this.dV() instanceof arq $$0) {
-         this.aA();
-         if (this.c++ == 100) {
-            this.c = 0;
-            if (!this.dQ() && !this.g()) {
-               this.at();
-               this.a($$0, null);
-            }
-         }
+   public cmr a(cmh $$0) {
+      try {
+         Constructor<? extends cmr> $$1 = this.a();
+         return $$1.newInstance($$0);
+      } catch (Exception var3) {
+         throw new Error(var3);
       }
    }
 
-   public abstract boolean g();
+   protected Constructor<? extends cmr> a() throws NoSuchMethodException {
+      return this.m.getConstructor(cmh.class);
+   }
 
-   @Override
-   public boolean bG() {
-      return true;
+   public int b() {
+      return this.n;
    }
 
    @Override
-   public boolean v(bwf $$0) {
-      if ($$0 instanceof crc $$1) {
-         return !this.dV().a($$1, this.a) ? true : this.b(this.dW().a($$1), 0.0F);
-      } else {
-         return false;
-      }
+   public String toString() {
+      return this.o + " (#" + this.n + ")";
    }
 
-   @Override
-   public boolean b(buu $$0) {
-      return !this.d($$0);
+   public static cmx<?> a(int $$0) {
+      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
    }
 
-   @Override
-   public boolean a(arq $$0, buu $$1, float $$2) {
-      if (this.d($$1)) {
-         return false;
-      } else if (!$$0.O().c(diw.d) && $$1.d() instanceof bxg) {
-         return false;
-      } else {
-         if (!this.dQ()) {
-            this.c($$0);
-            this.bC();
-            this.a($$0, $$1.d());
-         }
-
-         return true;
-      }
+   public static int c() {
+      return l.length;
    }
 
-   @Override
-   public boolean a(dit $$0) {
-      return $$0.h() ? super.a($$0) : true;
-   }
-
-   @Override
-   public void a(bxi $$0, feq $$1) {
-      if (this.dV() instanceof arq $$2 && !this.dQ() && $$1.h() > 0.0) {
-         this.c($$2);
-         this.a($$2, null);
-      }
-   }
-
-   @Override
-   public void i(double $$0, double $$1, double $$2) {
-      if (this.dV() instanceof arq $$3 && !this.dQ() && $$0 * $$0 + $$1 * $$1 + $$2 * $$2 > 0.0) {
-         this.c($$3);
-         this.a($$3, null);
-      }
-   }
-
-   @Override
-   public void b(tz $$0) {
-      iu $$1 = this.j();
-      $$0.a("TileX", $$1.u());
-      $$0.a("TileY", $$1.v());
-      $$0.a("TileZ", $$1.w());
-   }
-
-   @Override
-   public void a(tz $$0) {
-      iu $$1 = new iu($$0.h("TileX"), $$0.h("TileY"), $$0.h("TileZ"));
-      if (!$$1.a(this.dv(), 16.0)) {
-         b.error("Block-attached entity at invalid position: {}", $$1);
-      } else {
-         this.a = $$1;
-      }
-   }
-
-   public abstract void a(arq var1, @Nullable bwf var2);
-
-   @Override
-   protected boolean bI() {
-      return false;
-   }
-
-   @Override
-   public void a_(double $$0, double $$1, double $$2) {
-      this.a = iu.a($$0, $$1, $$2);
-      this.f();
-      this.ar = true;
-   }
-
-   public iu j() {
-      return this.a;
-   }
-
-   @Override
-   public void a(arq $$0, bxd $$1) {
-   }
-
-   @Override
-   public void i_() {
+   private static <T extends cmr> cmx<T> a(Class<T> $$0, String $$1) {
+      cmx<T> $$2 = new cmx<>(l.length, $$0, $$1);
+      l = Arrays.copyOf(l, l.length + 1);
+      l[$$2.b()] = $$2;
+      return $$2;
    }
 }

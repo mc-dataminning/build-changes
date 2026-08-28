@@ -1,130 +1,177 @@
-import java.util.Locale;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.google.common.collect.EvictingQueue;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.mojang.blaze3d.platform.GLX;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.Queue;
 import javax.annotation.Nullable;
-import org.lwjgl.glfw.GLFWVidMode;
-import org.lwjgl.glfw.GLFWVidMode.Buffer;
+import org.lwjgl.opengl.ARBDebugOutput;
+import org.lwjgl.opengl.GL;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GLCapabilities;
+import org.lwjgl.opengl.GLDebugMessageARBCallback;
+import org.lwjgl.opengl.GLDebugMessageCallback;
+import org.lwjgl.opengl.KHRDebug;
+import org.slf4j.Logger;
 
-public final class fim {
-   private final int a;
-   private final int b;
-   private final int c;
-   private final int d;
-   private final int e;
-   private final int f;
-   private static final Pattern g = Pattern.compile("(\\d+)x(\\d+)(?:@(\\d+)(?::(\\d+))?)?");
+public class fim {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = 10;
+   private static final Queue<fim.a> c = EvictingQueue.create(10);
+   @Nullable
+   private static volatile fim.a d;
+   private static final List<Integer> e = ImmutableList.of(37190, 37191, 37192, 33387);
+   private static final List<Integer> f = ImmutableList.of(37190, 37191, 37192);
+   private static boolean g;
 
-   public fim(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
+   private static String d(int $$0) {
+      return "Unknown (0x" + Integer.toHexString($$0).toUpperCase() + ")";
    }
 
-   public fim(Buffer $$0) {
-      this.a = $$0.width();
-      this.b = $$0.height();
-      this.c = $$0.redBits();
-      this.d = $$0.greenBits();
-      this.e = $$0.blueBits();
-      this.f = $$0.refreshRate();
-   }
-
-   public fim(GLFWVidMode $$0) {
-      this.a = $$0.width();
-      this.b = $$0.height();
-      this.c = $$0.redBits();
-      this.d = $$0.greenBits();
-      this.e = $$0.blueBits();
-      this.f = $$0.refreshRate();
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public int b() {
-      return this.b;
-   }
-
-   public int c() {
-      return this.c;
-   }
-
-   public int d() {
-      return this.d;
-   }
-
-   public int e() {
-      return this.e;
-   }
-
-   public int f() {
-      return this.f;
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         fim $$1 = (fim)$$0;
-         return this.a == $$1.a && this.b == $$1.b && this.c == $$1.c && this.d == $$1.d && this.e == $$1.e && this.f == $$1.f;
-      } else {
-         return false;
+   public static String a(int $$0) {
+      switch ($$0) {
+         case 33350:
+            return "API";
+         case 33351:
+            return "WINDOW SYSTEM";
+         case 33352:
+            return "SHADER COMPILER";
+         case 33353:
+            return "THIRD PARTY";
+         case 33354:
+            return "APPLICATION";
+         case 33355:
+            return "OTHER";
+         default:
+            return d($$0);
       }
    }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.a, this.b, this.c, this.d, this.e, this.f);
+   public static String b(int $$0) {
+      switch ($$0) {
+         case 33356:
+            return "ERROR";
+         case 33357:
+            return "DEPRECATED BEHAVIOR";
+         case 33358:
+            return "UNDEFINED BEHAVIOR";
+         case 33359:
+            return "PORTABILITY";
+         case 33360:
+            return "PERFORMANCE";
+         case 33361:
+            return "OTHER";
+         case 33384:
+            return "MARKER";
+         default:
+            return d($$0);
+      }
    }
 
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "%sx%s@%s (%sbit)", this.a, this.b, this.f, this.c + this.d + this.e);
+   public static String c(int $$0) {
+      switch ($$0) {
+         case 33387:
+            return "NOTIFICATION";
+         case 37190:
+            return "HIGH";
+         case 37191:
+            return "MEDIUM";
+         case 37192:
+            return "LOW";
+         default:
+            return d($$0);
+      }
    }
 
-   public static Optional<fim> a(@Nullable String $$0) {
-      if ($$0 == null) {
-         return Optional.empty();
-      } else {
-         try {
-            Matcher $$1 = g.matcher($$0);
-            if ($$1.matches()) {
-               int $$2 = Integer.parseInt($$1.group(1));
-               int $$3 = Integer.parseInt($$1.group(2));
-               String $$4 = $$1.group(3);
-               int $$5;
-               if ($$4 == null) {
-                  $$5 = 60;
-               } else {
-                  $$5 = Integer.parseInt($$4);
-               }
+   private static void a(int $$0, int $$1, int $$2, int $$3, int $$4, long $$5, long $$6) {
+      String $$7 = GLDebugMessageCallback.getMessage($$4, $$5);
+      fim.a $$8;
+      synchronized (c) {
+         $$8 = d;
+         if ($$8 != null && $$8.a($$0, $$1, $$2, $$3, $$7)) {
+            $$8.f++;
+         } else {
+            $$8 = new fim.a($$0, $$1, $$2, $$3, $$7);
+            c.add($$8);
+            d = $$8;
+         }
+      }
 
-               String $$7 = $$1.group(4);
-               int $$8;
-               if ($$7 == null) {
-                  $$8 = 24;
-               } else {
-                  $$8 = Integer.parseInt($$7);
-               }
+      a.info("OpenGL debug message: {}", $$8);
+   }
 
-               int $$10 = $$8 / 3;
-               return Optional.of(new fim($$2, $$3, $$10, $$10, $$10, $$5));
-            }
-         } catch (Exception var9) {
+   public static List<String> a() {
+      synchronized (c) {
+         List<String> $$0 = Lists.newArrayListWithCapacity(c.size());
+
+         for (fim.a $$1 : c) {
+            $$0.add($$1 + " x " + $$1.f);
          }
 
-         return Optional.empty();
+         return $$0;
       }
    }
 
-   public String g() {
-      return String.format(Locale.ROOT, "%sx%s@%s:%s", this.a, this.b, this.f, this.c + this.d + this.e);
+   public static boolean b() {
+      return g;
+   }
+
+   public static void a(int $$0, boolean $$1) {
+      if ($$0 > 0) {
+         GLCapabilities $$2 = GL.getCapabilities();
+         if ($$2.GL_KHR_debug) {
+            g = true;
+            GL11.glEnable(37600);
+            if ($$1) {
+               GL11.glEnable(33346);
+            }
+
+            for (int $$3 = 0; $$3 < e.size(); $$3++) {
+               boolean $$4 = $$3 < $$0;
+               KHRDebug.glDebugMessageControl(4352, 4352, e.get($$3), (int[])null, $$4);
+            }
+
+            KHRDebug.glDebugMessageCallback(GLX.make(GLDebugMessageCallback.create(fim::a), fij::a), 0L);
+         } else if ($$2.GL_ARB_debug_output) {
+            g = true;
+            if ($$1) {
+               GL11.glEnable(33346);
+            }
+
+            for (int $$5 = 0; $$5 < f.size(); $$5++) {
+               boolean $$6 = $$5 < $$0;
+               ARBDebugOutput.glDebugMessageControlARB(4352, 4352, f.get($$5), (int[])null, $$6);
+            }
+
+            ARBDebugOutput.glDebugMessageCallbackARB(GLX.make(GLDebugMessageARBCallback.create(fim::a), fij::a), 0L);
+         }
+      }
+   }
+
+   static class a {
+      private final int a;
+      private final int b;
+      private final int c;
+      private final int d;
+      private final String e;
+      int f = 1;
+
+      a(int $$0, int $$1, int $$2, int $$3, String $$4) {
+         this.a = $$2;
+         this.b = $$0;
+         this.c = $$1;
+         this.d = $$3;
+         this.e = $$4;
+      }
+
+      boolean a(int $$0, int $$1, int $$2, int $$3, String $$4) {
+         return $$1 == this.c && $$0 == this.b && $$2 == this.a && $$3 == this.d && $$4.equals(this.e);
+      }
+
+      @Override
+      public String toString() {
+         return "id=" + this.a + ", source=" + fim.a(this.b) + ", type=" + fim.b(this.c) + ", severity=" + fim.c(this.d) + ", message='" + this.e + "'";
+      }
    }
 }

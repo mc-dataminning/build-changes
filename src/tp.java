@@ -2,5 +2,5 @@ import java.util.stream.Stream;
 
 @FunctionalInterface
 public interface tp {
-   Stream<iu> findTestPos();
+   Stream<iv> findTestPos();
 }

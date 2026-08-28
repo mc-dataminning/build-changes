@@ -1,10 +1,10 @@
 public class abz implements zf<abu> {
    public static final yw<vu, abz> a = zf.a(abz::a, abz::new);
    private final int b;
-   private final iu c;
+   private final iv c;
    private final int d;
 
-   public abz(int $$0, iu $$1, int $$2) {
+   public abz(int $$0, iv $$1, int $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -35,7 +35,7 @@ public class abz implements zf<abu> {
       return this.b;
    }
 
-   public iu e() {
+   public iv e() {
       return this.c;
    }
 

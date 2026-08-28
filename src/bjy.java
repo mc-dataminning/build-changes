@@ -1,128 +1,38 @@
+import com.google.common.base.Suppliers;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.function.UnaryOperator;
+import com.mojang.datafixers.util.Pair;
+import java.util.function.Supplier;
 
-public class bjy extends DataFix {
-   private static final List<String> a = List.of(
-      "minecraft:banner_patterns",
-      "minecraft:bees",
-      "minecraft:block_entity_data",
-      "minecraft:block_state",
-      "minecraft:bundle_contents",
-      "minecraft:charged_projectiles",
-      "minecraft:container",
-      "minecraft:container_loot",
-      "minecraft:firework_explosion",
-      "minecraft:fireworks",
-      "minecraft:instrument",
-      "minecraft:map_id",
-      "minecraft:painting/variant",
-      "minecraft:pot_decorations",
-      "minecraft:potion_contents",
-      "minecraft:tropical_fish/pattern",
-      "minecraft:written_book_content"
-   );
+public class bjy extends bex {
+   private final Supplier<bjy.a> b = Suppliers.memoize(() -> {
+      Type<?> $$0x = this.getInputSchema().getChoiceType(biz.D, "minecraft:potion");
+      Type<?> $$1 = bbd.a($$0x, this.getInputSchema().getType(biz.D), this.getOutputSchema().getType(biz.D));
+      OpticFinder<?> $$2 = $$1.findField("Item");
+      OpticFinder<Pair<String, String>> $$3 = DSL.fieldFinder("id", DSL.named(biz.F.typeName(), bku.a()));
+      return new bjy.a($$2, $$3);
+   });
 
    public bjy(Schema $$0) {
-      super($$0, true);
+      super("ThrownPotionSplitFix", $$0, true);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bix.w);
-      Type<?> $$1 = this.getOutputSchema().getType(bix.w);
-      OpticFinder<?> $$2 = $$0.findField("minecraft:can_place_on");
-      OpticFinder<?> $$3 = $$0.findField("minecraft:can_break");
-      Type<?> $$4 = $$1.findFieldType("minecraft:can_place_on");
-      Type<?> $$5 = $$1.findFieldType("minecraft:can_break");
-      return this.fixTypeEverywhereTyped("TooltipDisplayComponentFix", $$0, $$1, $$4x -> a($$4x, $$2, $$3, $$4, $$5));
+   @Override
+   protected Pair<String, Typed<?>> a(String $$0, Typed<?> $$1) {
+      if (!$$0.equals("minecraft:potion")) {
+         return Pair.of($$0, $$1);
+      } else {
+         String $$2 = this.b.get().a($$1);
+         return "minecraft:lingering_potion".equals($$2) ? Pair.of("minecraft:lingering_potion", $$1) : Pair.of("minecraft:splash_potion", $$1);
+      }
    }
 
-   private static Typed<?> a(Typed<?> $$0, OpticFinder<?> $$1, OpticFinder<?> $$2, Type<?> $$3, Type<?> $$4) {
-      Set<String> $$5 = new HashSet<>();
-      $$0 = a($$0, $$1, $$3, "minecraft:can_place_on", $$5);
-      $$0 = a($$0, $$2, $$4, "minecraft:can_break", $$5);
-      return $$0.update(
-         DSL.remainderFinder(),
-         $$1x -> {
-            $$1x = a($$1x, "minecraft:trim", $$5);
-            $$1x = a($$1x, "minecraft:unbreakable", $$5);
-            $$1x = a($$1x, "minecraft:dyed_color", "rgb", $$5);
-            $$1x = a($$1x, "minecraft:attribute_modifiers", "modifiers", $$5);
-            $$1x = a($$1x, "minecraft:enchantments", "levels", $$5);
-            $$1x = a($$1x, "minecraft:stored_enchantments", "levels", $$5);
-            boolean $$2x = $$1x.get("minecraft:hide_tooltip").result().isPresent();
-            $$1x = $$1x.remove("minecraft:hide_tooltip");
-            boolean $$3x = $$1x.get("minecraft:hide_additional_tooltip").result().isPresent();
-            $$1x = $$1x.remove("minecraft:hide_additional_tooltip");
-            if ($$3x) {
-               for (String $$4x : a) {
-                  if ($$1x.get($$4x).result().isPresent()) {
-                     $$5.add($$4x);
-                  }
-               }
-            }
-
-            return $$5.isEmpty() && !$$2x
-               ? $$1x
-               : $$1x.set(
-                  "minecraft:tooltip_display",
-                  $$1x.createMap(
-                     Map.of(
-                        $$1x.createString("hide_tooltip"),
-                        $$1x.createBoolean($$2x),
-                        $$1x.createString("hidden_components"),
-                        $$1x.createList($$5.stream().map($$1x::createString))
-                     )
-                  )
-               );
-         }
-      );
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0, String $$1, Set<String> $$2) {
-      return a($$0, $$1, $$2, UnaryOperator.identity());
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0, String $$1, String $$2, Set<String> $$3) {
-      return a($$0, $$1, $$3, $$1x -> (Dynamic)DataFixUtils.orElse($$1x.get($$2).result(), $$1x));
-   }
-
-   private static Dynamic<?> a(Dynamic<?> $$0, String $$1, Set<String> $$2, UnaryOperator<Dynamic<?>> $$3) {
-      return $$0.update($$1, $$3x -> {
-         boolean $$4 = $$3x.get("show_in_tooltip").asBoolean(true);
-         if (!$$4) {
-            $$2.add($$1);
-         }
-
-         return $$3.apply($$3x.remove("show_in_tooltip"));
-      });
-   }
-
-   private static Typed<?> a(Typed<?> $$0, OpticFinder<?> $$1, Type<?> $$2, String $$3, Set<String> $$4) {
-      return $$0.updateTyped($$1, $$2, $$3x -> af.a($$3x, $$2, $$2xx -> {
-            OptionalDynamic<?> $$3xx = $$2xx.get("predicates");
-            if ($$3xx.result().isEmpty()) {
-               return $$2xx;
-            } else {
-               boolean $$4x = $$2xx.get("show_in_tooltip").asBoolean(true);
-               if (!$$4x) {
-                  $$4.add($$3);
-               }
-
-               return (Dynamic)$$3xx.result().get();
-            }
-         }));
+   static record a(OpticFinder<?> a, OpticFinder<Pair<String, String>> b) {
+      public String a(Typed<?> $$0) {
+         return $$0.getOptionalTyped(this.a).flatMap($$0x -> $$0x.getOptional(this.b)).<String>map(Pair::getSecond).map(bku::a).orElse("");
+      }
    }
 }

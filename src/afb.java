@@ -1,9 +1,9 @@
 public class afb implements zf<abu> {
    public static final yw<vu, afb> a = zf.a(afb::a, afb::new);
-   private final iu b;
+   private final iv b;
    private final float c;
 
-   public afb(iu $$0, float $$1) {
+   public afb(iv $$0, float $$1) {
       this.b = $$0;
       this.c = $$1;
    }
@@ -27,7 +27,7 @@ public class afb implements zf<abu> {
       $$0.a(this);
    }
 
-   public iu b() {
+   public iv b() {
       return this.b;
    }
 

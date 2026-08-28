@@ -1,16 +1,28 @@
-public class hkv {
-   public static final alg a = alg.b("armor_trims");
-   public static final alg b = alg.b("banner_patterns");
-   public static final alg c = alg.b("beds");
-   public static final alg d = alg.b("blocks");
-   public static final alg e = alg.b("chests");
-   public static final alg f = alg.b("decorated_pot");
-   public static final alg g = alg.b("gui");
-   public static final alg h = alg.b("map_decorations");
-   public static final alg i = alg.b("mob_effects");
-   public static final alg j = alg.b("paintings");
-   public static final alg k = alg.b("particles");
-   public static final alg l = alg.b("shield_patterns");
-   public static final alg m = alg.b("shulker_boxes");
-   public static final alg n = alg.b("signs");
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+
+public record hkv(int c, Optional<Integer> d) {
+   public static final Codec<hkv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ayu.l.fieldOf("index").forGetter(hkv::a), ayu.m.optionalFieldOf("time").forGetter(hkv::b)).apply($$0, hkv::new)
+   );
+   public static final Codec<hkv> b = Codec.either(ayu.l, a)
+      .xmap($$0 -> (hkv)$$0.map(hkv::new, $$0x -> $$0x), $$0 -> $$0.d.isPresent() ? Either.right($$0) : Either.left($$0.c));
+
+   public hkv(int $$0) {
+      this($$0, Optional.empty());
+   }
+
+   public int a(int $$0) {
+      return this.d.orElse($$0);
+   }
+
+   public int a() {
+      return this.c;
+   }
+
+   public Optional<Integer> b() {
+      return this.d;
+   }
 }

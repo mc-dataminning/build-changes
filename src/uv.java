@@ -121,7 +121,7 @@ public class uv implements va {
             this.b.append(',');
          }
 
-         this.b.append(a($$2)).append(':').append(new uv().a($$0.c($$2)));
+         this.b.append(a($$2)).append(':').append(new uv().a($$0.a($$2)));
       }
 
       this.b.append('}');

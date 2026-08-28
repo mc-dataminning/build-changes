@@ -1,36 +1,49 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.joml.Vector3f;
+import io.netty.buffer.ByteBuf;
 
-public class lr extends ly {
-   public static final int a = 3790560;
-   public static final lr b = new lr(3790560, 16711680, 1.0F);
-   public static final MapCodec<lr> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ayu.i.fieldOf("from_color").forGetter($$0x -> $$0x.h), ayu.i.fieldOf("to_color").forGetter($$0x -> $$0x.i), g.fieldOf("scale").forGetter(ly::d)
-            )
-            .apply($$0, lr::new)
-   );
-   public static final yw<wj, lr> d = yw.a(yu.g, $$0 -> $$0.h, yu.g, $$0 -> $$0.i, yu.l, ly::d, lr::new);
-   private final int h;
-   private final int i;
+public class lr implements lw {
+   private final lx<lr> a;
+   private final int b;
 
-   public lr(int $$0, int $$1, float $$2) {
-      super($$2);
-      this.h = $$0;
-      this.i = $$1;
+   public static MapCodec<lr> a(lx<lr> $$0) {
+      return ayu.j.xmap($$1 -> new lr($$0, $$1), $$0x -> $$0x.b).fieldOf("color");
    }
 
-   public Vector3f b() {
-      return axw.h(this.h);
+   public static yw<? super ByteBuf, lr> b(lx<lr> $$0) {
+      return yu.g.a($$1 -> new lr($$0, $$1), $$0x -> $$0x.b);
    }
 
-   public Vector3f c() {
-      return axw.h(this.i);
+   private lr(lx<lr> $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
    @Override
-   public lw<lr> a() {
-      return lx.o;
+   public lx<lr> a() {
+      return this.a;
+   }
+
+   public float b() {
+      return (float)axw.b(this.b) / 255.0F;
+   }
+
+   public float c() {
+      return (float)axw.c(this.b) / 255.0F;
+   }
+
+   public float d() {
+      return (float)axw.d(this.b) / 255.0F;
+   }
+
+   public float e() {
+      return (float)axw.a(this.b) / 255.0F;
+   }
+
+   public static lr a(lx<lr> $$0, int $$1) {
+      return new lr($$0, $$1);
+   }
+
+   public static lr a(lx<lr> $$0, float $$1, float $$2, float $$3) {
+      return a($$0, axw.a(1.0F, $$1, $$2, $$3));
    }
 }

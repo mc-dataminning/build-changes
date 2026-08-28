@@ -1,29 +1,15 @@
-public enum efb {
-   a(false, false),
-   b(true, false),
-   c(true, true);
+public interface efb<T> {
+   void g(T var1);
 
-   private final boolean d;
-   private final boolean e;
+   void f(T var1);
 
-   private efb(final boolean $$0, final boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
+   void e(T var1);
 
-   public boolean a() {
-      return this.e;
-   }
+   void d(T var1);
 
-   public boolean b() {
-      return this.d;
-   }
+   void c(T var1);
 
-   public static efb a(are $$0) {
-      if ($$0.a(are.d)) {
-         return c;
-      } else {
-         return $$0.a(are.b) ? b : a;
-      }
-   }
+   void b(T var1);
+
+   void a(T var1);
 }

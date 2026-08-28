@@ -5,7 +5,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 public class arw {
    public static final MapCodec<arw> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               mf.aA.q().fieldOf("type").forGetter(arw::a),
+               mg.aA.q().fieldOf("type").forGetter(arw::a),
                ayu.l.fieldOf("level").forGetter(arw::b),
                Codec.LONG.optionalFieldOf("ticks_left", 0L).forGetter($$0x -> $$0x.d)
             )
@@ -28,8 +28,8 @@ public class arw {
    @Override
    public String toString() {
       return this.b.c()
-         ? "Ticket[" + af.a(mf.aA, this.b) + " " + this.c + "] with " + this.d + " ticks left ( out of" + this.b.d() + ")"
-         : "Ticket[" + af.a(mf.aA, this.b) + " " + this.c + "] with no timeout";
+         ? "Ticket[" + ag.a(mg.aA, this.b) + " " + this.c + "] with " + this.d + " ticks left ( out of" + this.b.d() + ")"
+         : "Ticket[" + ag.a(mg.aA, this.b) + " " + this.c + "] with no timeout";
    }
 
    public arx a() {

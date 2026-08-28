@@ -1,62 +1,47 @@
+import java.util.List;
 import javax.annotation.Nullable;
 
-public interface fug extends ftt {
-   long t = 250L;
-
-   default void f(double $$0, double $$1) {
-   }
-
-   default boolean a(double $$0, double $$1, int $$2) {
-      return false;
-   }
-
-   default boolean b(double $$0, double $$1, int $$2) {
-      return false;
-   }
-
-   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      return false;
-   }
-
-   default boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return false;
-   }
-
-   default boolean a(int $$0, int $$1, int $$2) {
-      return false;
-   }
-
-   default boolean c(int $$0, int $$1, int $$2) {
-      return false;
-   }
-
-   default boolean a(char $$0, int $$1) {
-      return false;
-   }
-
+public class fug implements fwt {
+   private static final int a = 170;
+   private final wy b;
    @Nullable
-   default frs a(fwm $$0) {
-      return null;
-   }
-
-   default boolean a_(double $$0, double $$1) {
-      return false;
-   }
-
-   void a(boolean var1);
-
-   boolean aJ_();
-
+   private List<ayy> c;
    @Nullable
-   default frs aK_() {
-      return this.aJ_() ? frs.a(this) : null;
+   private tu d;
+   @Nullable
+   private final wy e;
+
+   private fug(wy $$0, @Nullable wy $$1) {
+      this.b = $$0;
+      this.e = $$1;
    }
 
-   default fwq J() {
-      return fwq.a();
+   public static fug a(wy $$0, @Nullable wy $$1) {
+      return new fug($$0, $$1);
    }
 
-   default fwq b(fwo $$0) {
-      return this.J().c($$0);
+   public static fug a(wy $$0) {
+      return new fug($$0, $$0);
+   }
+
+   @Override
+   public void b(fws $$0) {
+      if (this.e != null) {
+         $$0.a(fwr.c, this.e);
+      }
+   }
+
+   public List<ayy> a(fpo $$0) {
+      tu $$1 = tu.a();
+      if (this.c == null || $$1 != this.d) {
+         this.c = a($$0, this.b);
+         this.d = $$1;
+      }
+
+      return this.c;
+   }
+
+   public static List<ayy> a(fpo $$0, wy $$1) {
+      return $$0.h.c($$1, 170);
    }
 }

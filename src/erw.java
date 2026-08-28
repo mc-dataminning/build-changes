@@ -1,72 +1,26 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import java.util.function.Predicate;
 
-public class erw extends ery {
-   public static final MapCodec<erw> a = RecordCodecBuilder.mapCodec(
-         $$0 -> a($$0)
-               .and(
-                  $$0.group(
-                     Codec.intRange(0, 4096).fieldOf("spacing").forGetter(erw::a),
-                     Codec.intRange(0, 4096).fieldOf("separation").forGetter(erw::b),
-                     erx.c.optionalFieldOf("spread_type", erx.a).forGetter(erw::c)
-                  )
-               )
-               .apply($$0, erw::new)
-      )
-      .validate(erw::a);
-   private final int c;
-   private final int d;
-   private final erx e;
+@FunctionalInterface
+public interface erw<C extends elx> {
+   Optional<erv<C>> createGenerator(erw.a<C> var1);
 
-   private static DataResult<erw> a(erw $$0) {
-      return $$0.c <= $$0.d ? DataResult.error(() -> "Spacing has to be larger than separation") : DataResult.success($$0);
+   static <C extends elx> erw<C> simple(Predicate<erw.a<C>> $$0, erv<C> $$1) {
+      Optional<erv<C>> $$2 = Optional.of($$1);
+      return $$2x -> $$0.test($$2x) ? $$2 : Optional.empty();
    }
 
-   public erw(jz $$0, ery.c $$1, float $$2, int $$3, Optional<ery.a> $$4, int $$5, int $$6, erx $$7) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.e = $$7;
+   static <C extends elx> Predicate<erw.a<C>> checkForBiomeOnTop(egn.a $$0) {
+      return $$1 -> $$1.a($$0);
    }
 
-   public erw(int $$0, int $$1, erx $$2, int $$3) {
-      this(jz.i, ery.c.a, 1.0F, $$3, Optional.empty(), $$0, $$1, $$2);
-   }
-
-   public int a() {
-      return this.c;
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public erx c() {
-      return this.e;
-   }
-
-   public dih a(long $$0, int $$1, int $$2) {
-      int $$3 = Math.floorDiv($$1, this.c);
-      int $$4 = Math.floorDiv($$2, this.c);
-      ehf $$5 = new ehf(new egh(0L));
-      $$5.a($$0, $$3, $$4, this.i());
-      int $$6 = this.c - this.d;
-      int $$7 = this.e.a($$5, $$6);
-      int $$8 = this.e.a($$5, $$6);
-      return new dih($$3 * this.c + $$7, $$4 * this.c + $$8);
-   }
-
-   @Override
-   protected boolean a(ecg $$0, int $$1, int $$2) {
-      dih $$3 = this.a($$0.d(), $$1, $$2);
-      return $$3.h == $$1 && $$3.i == $$2;
-   }
-
-   @Override
-   public erz<?> e() {
-      return erz.a;
+   public static record a<C extends elx>(ecm a, dko b, ehb c, long d, dio e, C f, djj g, Predicate<jf<dkk>> h, evl i, jt j) {
+      public boolean a(egn.a $$0) {
+         int $$1 = this.e.b();
+         int $$2 = this.e.c();
+         int $$3 = this.a.c($$1, $$2, $$0, this.g, this.c);
+         jf<dkk> $$4 = this.a.d().getNoiseBiome(jq.a($$1), jq.a($$3), jq.a($$2), this.c.b());
+         return this.h.test($$4);
+      }
    }
 }

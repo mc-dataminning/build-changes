@@ -1,77 +1,26 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.OptionalInt;
-import java.util.function.BiConsumer;
 
-public class eot extends eox {
-   public static final MapCodec<eot> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eot::new));
+public class eot<P extends eos> {
+   public static final eot<eou> a = a("trunk_vine", eou.a);
+   public static final eot<eop> b = a("leave_vine", eop.a);
+   public static final eot<eoq> c = a("pale_moss", eoq.a);
+   public static final eot<eoo> d = a("creaking_heart", eoo.a);
+   public static final eot<eon> e = a("cocoa", eon.a);
+   public static final eot<eom> f = a("beehive", eom.a);
+   public static final eot<eok> g = a("alter_ground", eok.a);
+   public static final eot<eol> h = a("attached_to_leaves", eol.a);
+   public static final eot<eor> i = a("place_on_ground", eor.a);
+   private final MapCodec<P> j;
 
-   public eot(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
+   private static <P extends eos> eot<P> a(String $$0, MapCodec<P> $$1) {
+      return js.a(mg.X, $$0, new eot<>($$1));
    }
 
-   @Override
-   protected eoy<?> a() {
-      return eoy.b;
+   private eot(MapCodec<P> $$0) {
+      this.j = $$0;
    }
 
-   @Override
-   public List<enc.a> a(djg $$0, BiConsumer<iu, eah> $$1, azv $$2, int $$3, iu $$4, emm $$5) {
-      a($$0, $$1, $$2, $$4.e(), $$5);
-      List<enc.a> $$6 = Lists.newArrayList();
-      ja $$7 = ja.c.a.a($$2);
-      int $$8 = $$3 - $$2.a(4) - 1;
-      int $$9 = 3 - $$2.a(3);
-      iu.a $$10 = new iu.a();
-      int $$11 = $$4.u();
-      int $$12 = $$4.w();
-      OptionalInt $$13 = OptionalInt.empty();
-
-      for (int $$14 = 0; $$14 < $$3; $$14++) {
-         int $$15 = $$4.v() + $$14;
-         if ($$14 >= $$8 && $$9 > 0) {
-            $$11 += $$7.j();
-            $$12 += $$7.l();
-            $$9--;
-         }
-
-         if (this.b($$0, $$1, $$2, $$10.d($$11, $$15, $$12), $$5)) {
-            $$13 = OptionalInt.of($$15 + 1);
-         }
-      }
-
-      if ($$13.isPresent()) {
-         $$6.add(new enc.a(new iu($$11, $$13.getAsInt(), $$12), 1, false));
-      }
-
-      $$11 = $$4.u();
-      $$12 = $$4.w();
-      ja $$16 = ja.c.a.a($$2);
-      if ($$16 != $$7) {
-         int $$17 = $$8 - $$2.a(2) - 1;
-         int $$18 = 1 + $$2.a(3);
-         $$13 = OptionalInt.empty();
-
-         for (int $$19 = $$17; $$19 < $$3 && $$18 > 0; $$18--) {
-            if ($$19 >= 1) {
-               int $$20 = $$4.v() + $$19;
-               $$11 += $$16.j();
-               $$12 += $$16.l();
-               if (this.b($$0, $$1, $$2, $$10.d($$11, $$20, $$12), $$5)) {
-                  $$13 = OptionalInt.of($$20 + 1);
-               }
-            }
-
-            $$19++;
-         }
-
-         if ($$13.isPresent()) {
-            $$6.add(new enc.a(new iu($$11, $$13.getAsInt(), $$12), 0, false));
-         }
-      }
-
-      return $$6;
+   public MapCodec<P> a() {
+      return this.j;
    }
 }

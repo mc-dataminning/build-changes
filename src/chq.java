@@ -1,36 +1,38 @@
-import com.google.common.collect.ImmutableMap;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
 
-public class chq extends chg {
-   private static final ImmutableMap<bwo<?>, Float> a = ImmutableMap.builder()
-      .put(bwo.K, 8.0F)
-      .put(bwo.S, 12.0F)
-      .put(bwo.am, 8.0F)
-      .put(bwo.an, 12.0F)
-      .put(bwo.aT, 15.0F)
-      .put(bwo.aZ, 12.0F)
-      .put(bwo.bC, 8.0F)
-      .put(bwo.bE, 10.0F)
-      .put(bwo.bN, 10.0F)
-      .put(bwo.bO, 8.0F)
-      .put(bwo.bQ, 8.0F)
-      .build();
+public class chq {
+   private final bxl a;
+   private final IntSet b = new IntOpenHashSet();
+   private final IntSet c = new IntOpenHashSet();
 
-   @Override
-   protected boolean a(arq $$0, bxe $$1, bxe $$2) {
-      return this.b($$2) && this.a($$1, $$2);
+   public chq(bxl $$0) {
+      this.a = $$0;
    }
 
-   private boolean a(bxe $$0, bxe $$1) {
-      float $$2 = (Float)a.get($$1.aq());
-      return $$1.g($$0) <= (double)($$2 * $$2);
+   public void a() {
+      this.b.clear();
+      this.c.clear();
    }
 
-   @Override
-   protected cgg<bxe> b() {
-      return cgg.B;
-   }
+   public boolean a(bwi $$0) {
+      int $$1 = $$0.ao();
+      if (this.b.contains($$1)) {
+         return true;
+      } else if (this.c.contains($$1)) {
+         return false;
+      } else {
+         bqq $$2 = bqp.a();
+         $$2.a("hasLineOfSight");
+         boolean $$3 = this.a.E($$0);
+         $$2.c();
+         if ($$3) {
+            this.b.add($$1);
+         } else {
+            this.c.add($$1);
+         }
 
-   private boolean b(bxe $$0) {
-      return a.containsKey($$0.aq());
+         return $$3;
+      }
    }
 }

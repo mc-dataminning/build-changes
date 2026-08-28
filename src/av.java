@@ -1,220 +1,124 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
 public class av {
-   private final aj a;
-   @Nullable
-   private final av b;
-   @Nullable
-   private final av c;
-   private final int d;
-   private final List<av> e = Lists.newArrayList();
-   private av f;
-   @Nullable
-   private av g;
-   private int h;
-   private float i;
-   private float j;
+   public static final Codec<av> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               czk.d.fieldOf("icon").forGetter(av::c),
+               xa.a.fieldOf("title").forGetter(av::a),
+               xa.a.fieldOf("description").forGetter(av::b),
+               iw.a.optionalFieldOf("background").forGetter(av::d),
+               ap.d.optionalFieldOf("frame", ap.a).forGetter(av::e),
+               Codec.BOOL.optionalFieldOf("show_toast", true).forGetter(av::h),
+               Codec.BOOL.optionalFieldOf("announce_to_chat", true).forGetter(av::i),
+               Codec.BOOL.optionalFieldOf("hidden", false).forGetter(av::j)
+            )
+            .apply($$0, av::new)
+   );
+   public static final yw<wj, av> b = yw.a(av::a, av::b);
+   private final wy c;
+   private final wy d;
+   private final czk e;
+   private final Optional<iw> f;
+   private final ap g;
+   private final boolean h;
+   private final boolean i;
+   private final boolean j;
    private float k;
    private float l;
 
-   public av(aj $$0, @Nullable av $$1, @Nullable av $$2, int $$3, int $$4) {
-      if ($$0.a().c().isEmpty()) {
-         throw new IllegalArgumentException("Can't position an invisible advancement!");
-      } else {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.f = this;
-         this.h = $$4;
-         this.i = -1.0F;
-         av $$5 = null;
-
-         for (aj $$6 : $$0.e()) {
-            $$5 = this.a($$6, $$5);
-         }
-      }
+   public av(czk $$0, wy $$1, wy $$2, Optional<iw> $$3, ap $$4, boolean $$5, boolean $$6, boolean $$7) {
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$0;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
    }
 
-   @Nullable
-   private av a(aj $$0, @Nullable av $$1) {
-      if ($$0.a().c().isPresent()) {
-         $$1 = new av($$0, this, $$1, this.e.size() + 1, this.h + 1);
-         this.e.add($$1);
-      } else {
-         for (aj $$2 : $$0.e()) {
-            $$1 = this.a($$2, $$1);
-         }
-      }
-
-      return $$1;
+   public void a(float $$0, float $$1) {
+      this.k = $$0;
+      this.l = $$1;
    }
 
-   private void a() {
-      if (this.e.isEmpty()) {
-         if (this.c != null) {
-            this.i = this.c.i + 1.0F;
-         } else {
-            this.i = 0.0F;
-         }
-      } else {
-         av $$0 = null;
-
-         for (av $$1 : this.e) {
-            $$1.a();
-            $$0 = $$1.a($$0 == null ? $$1 : $$0);
-         }
-
-         this.b();
-         float $$2 = (this.e.get(0).i + this.e.get(this.e.size() - 1).i) / 2.0F;
-         if (this.c != null) {
-            this.i = this.c.i + 1.0F;
-            this.j = this.i - $$2;
-         } else {
-            this.i = $$2;
-         }
-      }
+   public wy a() {
+      return this.c;
    }
 
-   private float a(float $$0, int $$1, float $$2) {
-      this.i += $$0;
-      this.h = $$1;
-      if (this.i < $$2) {
-         $$2 = this.i;
-      }
-
-      for (av $$3 : this.e) {
-         $$2 = $$3.a($$0 + this.j, $$1 + 1, $$2);
-      }
-
-      return $$2;
+   public wy b() {
+      return this.d;
    }
 
-   private void a(float $$0) {
-      this.i += $$0;
-
-      for (av $$1 : this.e) {
-         $$1.a($$0);
-      }
+   public czk c() {
+      return this.e;
    }
 
-   private void b() {
-      float $$0 = 0.0F;
-      float $$1 = 0.0F;
-
-      for (int $$2 = this.e.size() - 1; $$2 >= 0; $$2--) {
-         av $$3 = this.e.get($$2);
-         $$3.i += $$0;
-         $$3.j += $$0;
-         $$1 += $$3.k;
-         $$0 += $$3.l + $$1;
-      }
+   public Optional<iw> d() {
+      return this.f;
    }
 
-   @Nullable
-   private av c() {
-      if (this.g != null) {
-         return this.g;
-      } else {
-         return !this.e.isEmpty() ? this.e.get(0) : null;
-      }
+   public ap e() {
+      return this.g;
    }
 
-   @Nullable
-   private av d() {
-      if (this.g != null) {
-         return this.g;
-      } else {
-         return !this.e.isEmpty() ? this.e.get(this.e.size() - 1) : null;
-      }
+   public float f() {
+      return this.k;
    }
 
-   private av a(av $$0) {
-      if (this.c == null) {
-         return $$0;
-      } else {
-         av $$1 = this;
-         av $$2 = this;
-         av $$3 = this.c;
-         av $$4 = this.b.e.get(0);
-         float $$5 = this.j;
-         float $$6 = this.j;
-         float $$7 = $$3.j;
-
-         float $$8;
-         for ($$8 = $$4.j; $$3.d() != null && $$1.c() != null; $$6 += $$2.j) {
-            $$3 = $$3.d();
-            $$1 = $$1.c();
-            $$4 = $$4.c();
-            $$2 = $$2.d();
-            $$2.f = this;
-            float $$9 = $$3.i + $$7 - ($$1.i + $$5) + 1.0F;
-            if ($$9 > 0.0F) {
-               $$3.a(this, $$0).a(this, $$9);
-               $$5 += $$9;
-               $$6 += $$9;
-            }
-
-            $$7 += $$3.j;
-            $$5 += $$1.j;
-            $$8 += $$4.j;
-         }
-
-         if ($$3.d() != null && $$2.d() == null) {
-            $$2.g = $$3.d();
-            $$2.j += $$7 - $$6;
-         } else {
-            if ($$1.c() != null && $$4.c() == null) {
-               $$4.g = $$1.c();
-               $$4.j += $$5 - $$8;
-            }
-
-            $$0 = this;
-         }
-
-         return $$0;
-      }
+   public float g() {
+      return this.l;
    }
 
-   private void a(av $$0, float $$1) {
-      float $$2 = (float)($$0.d - this.d);
-      if ($$2 != 0.0F) {
-         $$0.k -= $$1 / $$2;
-         this.k += $$1 / $$2;
-      }
-
-      $$0.l += $$1;
-      $$0.i += $$1;
-      $$0.j += $$1;
+   public boolean h() {
+      return this.h;
    }
 
-   private av a(av $$0, av $$1) {
-      return this.f != null && $$0.b.e.contains(this.f) ? this.f : $$1;
+   public boolean i() {
+      return this.i;
    }
 
-   private void e() {
-      this.a.a().c().ifPresent($$0x -> $$0x.a((float)this.h, this.i));
-      if (!this.e.isEmpty()) {
-         for (av $$0 : this.e) {
-            $$0.e();
-         }
-      }
+   public boolean j() {
+      return this.j;
    }
 
-   public static void a(aj $$0) {
-      if ($$0.a().c().isEmpty()) {
-         throw new IllegalArgumentException("Can't position children of an invisible root!");
-      } else {
-         av $$1 = new av($$0, null, null, 1, 0);
-         $$1.a();
-         float $$2 = $$1.a(0.0F, 0, $$1.i);
-         if ($$2 < 0.0F) {
-            $$1.a(-$$2);
-         }
-
-         $$1.e();
+   private void a(wj $$0) {
+      xa.d.encode($$0, this.c);
+      xa.d.encode($$0, this.d);
+      czk.i.encode($$0, this.e);
+      $$0.a(this.g);
+      int $$1 = 0;
+      if (this.f.isPresent()) {
+         $$1 |= 1;
       }
+
+      if (this.h) {
+         $$1 |= 2;
+      }
+
+      if (this.j) {
+         $$1 |= 4;
+      }
+
+      $$0.q($$1);
+      this.f.map(iw::a).ifPresent($$0::a);
+      $$0.a(this.k);
+      $$0.a(this.l);
+   }
+
+   private static av b(wj $$0) {
+      wy $$1 = xa.d.decode($$0);
+      wy $$2 = xa.d.decode($$0);
+      czk $$3 = czk.i.decode($$0);
+      ap $$4 = $$0.b(ap.class);
+      int $$5 = $$0.readInt();
+      Optional<iw> $$6 = ($$5 & 1) != 0 ? Optional.of(new iw($$0.q())) : Optional.empty();
+      boolean $$7 = ($$5 & 2) != 0;
+      boolean $$8 = ($$5 & 4) != 0;
+      av $$9 = new av($$3, $$1, $$2, $$6, $$4, $$7, false, $$8);
+      $$9.a($$0.readFloat(), $$0.readFloat());
+      return $$9;
    }
 }

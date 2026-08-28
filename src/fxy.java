@@ -1,17 +1,25 @@
 import javax.annotation.Nullable;
 
-public class fxy extends fyb implements azu {
+public class fxy extends fyn {
    @Nullable
-   private wy a;
-   @Nullable
-   private wy b;
-   private int c;
-   private boolean d;
-   private final boolean s;
+   private ftg a;
 
-   public fxy(boolean $$0) {
-      super(fop.a);
-      this.s = $$0;
+   public fxy(wy $$0) {
+      super($$0);
+   }
+
+   @Override
+   protected void aO_() {
+      this.a = this.c(new ftg(this.n, this.l, this.p, 12));
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      if (this.a != null) {
+         this.a.b(this.n);
+         this.a.c(this.n / 2 - this.a.A() / 2, this.o / 2 - 9 / 2);
+      }
    }
 
    @Override
@@ -25,47 +33,9 @@ public class fxy extends fyb implements azu {
    }
 
    @Override
-   public void a(wy $$0) {
-      this.b($$0);
-   }
-
-   @Override
-   public void b(wy $$0) {
-      this.a = $$0;
-      this.c(wy.c("menu.working"));
-   }
-
-   @Override
-   public void c(wy $$0) {
-      this.b = $$0;
-      this.a(0);
-   }
-
-   @Override
-   public void a(int $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public void a() {
-      this.d = true;
-   }
-
-   @Override
-   public void a(frv $$0, int $$1, int $$2, float $$3) {
-      if (this.d) {
-         if (this.s) {
-            this.m.a(null);
-         }
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-         if (this.a != null) {
-            $$0.a(this.p, this.a, this.n / 2, 70, 16777215);
-         }
-
-         if (this.b != null && this.c != 0) {
-            $$0.a(this.p, wy.i().b(this.b).f(" " + this.c + "%"), this.n / 2, 90, 16777215);
-         }
-      }
+   public void b(fsh $$0, int $$1, int $$2, float $$3) {
+      this.a($$0, $$3);
+      this.r();
+      this.a($$0);
    }
 }

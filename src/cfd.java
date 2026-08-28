@@ -1,24 +1,13 @@
-public class cfd extends cea {
-   private final bxm a;
+import javax.annotation.Nullable;
 
-   public cfd(bxm $$0) {
-      this.a = $$0;
+public class cfd extends cfc {
+   public cfd(bxr $$0, double $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
+   @Nullable
    @Override
-   public boolean b() {
-      return this.a.dV().V() && this.a.a(bwp.f).f() && chy.a(this.a);
-   }
-
-   @Override
-   public void d() {
-      ((cgn)this.a.O()).c(true);
-   }
-
-   @Override
-   public void e() {
-      if (chy.a(this.a)) {
-         ((cgn)this.a.O()).c(false);
-      }
+   protected fex h() {
+      return bzc.a(this.b, 10, 7);
    }
 }

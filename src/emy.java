@@ -1,28 +1,29 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalInt;
 
-public class emy extends emx {
-   public static final MapCodec<emy> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, emy::new));
+public abstract class emy {
+   public static final Codec<emy> a = mg.Y.q().dispatch(emy::b, emz::a);
+   protected static final int b = 16;
+   protected final OptionalInt c;
 
-   public emy(bti $$0, bti $$1, int $$2) {
-      super($$0, $$1, $$2);
+   protected static <S extends emy> RecordCodecBuilder<S, OptionalInt> a() {
+      return Codec.intRange(0, 80)
+         .optionalFieldOf("min_clipped_height")
+         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
+         .forGetter($$0 -> $$0.c);
    }
 
-   @Override
-   protected end<?> a() {
-      return end.e;
+   public emy(OptionalInt $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   protected void a(djg $$0, enc.b $$1, azv $$2, emm $$3, int $$4, enc.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + $$5.b() - 1 - $$9;
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
+   protected abstract emz<?> b();
 
-   @Override
-   protected boolean a(azv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
+   public abstract int a(int var1, int var2);
+
+   public OptionalInt c() {
+      return this.c;
    }
 }

@@ -1,161 +1,46 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+public class cva {
+   public static final cuz a = new cuz.a().a(4).a(0.3F).b();
+   public static final cuz b = new cuz.a().a(5).a(0.6F).b();
+   public static final cuz c = new cuz.a().a(3).a(0.3F).b();
+   public static final cuz d = new cuz.a().a(1).a(0.6F).b();
+   public static final cuz e = a(6).b();
+   public static final cuz f = new cuz.a().a(5).a(0.6F).b();
+   public static final cuz g = new cuz.a().a(3).a(0.6F).b();
+   public static final cuz h = new cuz.a().a(2).a(0.3F).b();
+   public static final cuz i = new cuz.a().a(4).a(0.3F).a().b();
+   public static final cuz j = new cuz.a().a(2).a(0.1F).b();
+   public static final cuz k = new cuz.a().a(8).a(0.8F).b();
+   public static final cuz l = new cuz.a().a(6).a(0.6F).b();
+   public static final cuz m = new cuz.a().a(5).a(0.6F).b();
+   public static final cuz n = new cuz.a().a(6).a(0.8F).b();
+   public static final cuz o = new cuz.a().a(8).a(0.8F).b();
+   public static final cuz p = new cuz.a().a(5).a(0.6F).b();
+   public static final cuz q = new cuz.a().a(6).a(0.8F).b();
+   public static final cuz r = new cuz.a().a(2).a(0.1F).b();
+   public static final cuz s = new cuz.a().a(1).a(0.3F).b();
+   public static final cuz t = new cuz.a().a(4).a(1.2F).a().b();
+   public static final cuz u = new cuz.a().a(4).a(1.2F).a().b();
+   public static final cuz v = new cuz.a().a(6).a(1.2F).b();
+   public static final cuz w = new cuz.a().a(6).a(0.1F).a().b();
+   public static final cuz x = new cuz.a().a(2).a(0.3F).b();
+   public static final cuz y = a(6).b();
+   public static final cuz z = new cuz.a().a(2).a(0.3F).b();
+   public static final cuz A = new cuz.a().a(2).a(0.3F).b();
+   public static final cuz B = new cuz.a().a(3).a(0.3F).b();
+   public static final cuz C = new cuz.a().a(1).a(0.3F).b();
+   public static final cuz D = new cuz.a().a(1).a(0.1F).b();
+   public static final cuz E = new cuz.a().a(8).a(0.3F).b();
+   public static final cuz F = new cuz.a().a(3).a(0.3F).b();
+   public static final cuz G = a(10).b();
+   public static final cuz H = new cuz.a().a(4).a(0.1F).b();
+   public static final cuz I = new cuz.a().a(2).a(0.1F).b();
+   public static final cuz J = new cuz.a().a(2).a(0.8F).b();
+   public static final cuz K = a(6).a().b();
+   public static final cuz L = new cuz.a().a(2).a(0.1F).b();
+   public static final cuz M = new cuz.a().a(2).a(0.1F).b();
+   public static final cuz N = new cuz.a().a(1).a(0.1F).b();
 
-public class cva extends cuv {
-   private static final int m = 0;
-   private static final int n = 1;
-   private static final int o = 3;
-   private static final int p = 1;
-   private static final int q = 28;
-   private static final int r = 28;
-   private static final int s = 37;
-   private static final int t = 0;
-   private final btw u = new buk(1) {
-      @Override
-      public boolean b(int $$0, czd $$1) {
-         return $$1.a(axk.bb);
-      }
-
-      @Override
-      public int ak_() {
-         return 1;
-      }
-   };
-   private final cva.a v;
-   private final cvi w;
-   private final cvh x;
-
-   public cva(int $$0, btw $$1) {
-      this($$0, $$1, new cwr(3), cvi.a);
-   }
-
-   public cva(int $$0, btw $$1, cvh $$2, cvi $$3) {
-      super(cwe.j, $$0);
-      a($$2, 3);
-      this.x = $$2;
-      this.w = $$3;
-      this.v = new cva.a(this.u, 0, 136, 110);
-      this.a(this.v);
-      this.a($$2);
-      this.c($$1, 36, 137);
-   }
-
-   @Override
-   public void a(crc $$0) {
-      super.a($$0);
-      if (!$$0.dV().C) {
-         czd $$1 = this.v.a(this.v.a());
-         if (!$$1.f()) {
-            $$0.a($$1, false);
-         }
-      }
-   }
-
-   @Override
-   public boolean b(crc $$0) {
-      return a(this.w, $$0, dmh.gn);
-   }
-
-   @Override
-   public void b(int $$0, int $$1) {
-      super.b($$0, $$1);
-      this.d();
-   }
-
-   @Override
-   public czd b(crc $$0, int $$1) {
-      czd $$2 = czd.k;
-      cws $$3 = this.k.get($$1);
-      if ($$3 != null && $$3.h()) {
-         czd $$4 = $$3.g();
-         $$2 = $$4.v();
-         if ($$1 == 0) {
-            if (!this.a($$4, 1, 37, true)) {
-               return czd.k;
-            }
-
-            $$3.b($$4, $$2);
-         } else if (!this.v.h() && this.v.a($$4) && $$4.M() == 1) {
-            if (!this.a($$4, 0, 1, false)) {
-               return czd.k;
-            }
-         } else if ($$1 >= 1 && $$1 < 28) {
-            if (!this.a($$4, 28, 37, false)) {
-               return czd.k;
-            }
-         } else if ($$1 >= 28 && $$1 < 37) {
-            if (!this.a($$4, 1, 28, false)) {
-               return czd.k;
-            }
-         } else if (!this.a($$4, 1, 37, false)) {
-            return czd.k;
-         }
-
-         if ($$4.f()) {
-            $$3.e(czd.k);
-         } else {
-            $$3.d();
-         }
-
-         if ($$4.M() == $$2.M()) {
-            return czd.k;
-         }
-
-         $$3.a($$0, $$4);
-      }
-
-      return $$2;
-   }
-
-   public int l() {
-      return this.x.a(0);
-   }
-
-   public static int a(@Nullable je<bvh> $$0) {
-      return $$0 == null ? 0 : mf.d.t().a($$0) + 1;
-   }
-
-   @Nullable
-   public static je<bvh> e(int $$0) {
-      return $$0 == 0 ? null : mf.d.t().a($$0 - 1);
-   }
-
-   @Nullable
-   public je<bvh> m() {
-      return e(this.x.a(1));
-   }
-
-   @Nullable
-   public je<bvh> n() {
-      return e(this.x.a(2));
-   }
-
-   public void a(Optional<je<bvh>> $$0, Optional<je<bvh>> $$1) {
-      if (this.v.h()) {
-         this.x.a(1, a($$0.orElse(null)));
-         this.x.a(2, a($$1.orElse(null)));
-         this.v.a(1);
-         this.w.a(dja::q);
-      }
-   }
-
-   public boolean o() {
-      return !this.u.a(0).f();
-   }
-
-   static class a extends cws {
-      public a(btw $$0, int $$1, int $$2, int $$3) {
-         super($$0, $$1, $$2, $$3);
-      }
-
-      @Override
-      public boolean a(czd $$0) {
-         return $$0.a(axk.bb);
-      }
-
-      @Override
-      public int a() {
-         return 1;
-      }
+   private static cuz.a a(int $$0) {
+      return new cuz.a().a($$0).a(0.6F);
    }
 }

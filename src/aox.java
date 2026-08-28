@@ -27,34 +27,34 @@ public class aox {
    private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wy.c("commands.scoreboard.players.enable.invalid"));
    private static final Dynamic2CommandExceptionType f = new Dynamic2CommandExceptionType(($$0, $$1) -> wy.b("commands.scoreboard.players.get.null", $$0, $$1));
 
-   public static void a(CommandDispatcher<ei> $$0, ee $$1) {
+   public static void a(CommandDispatcher<ej> $$0, ef $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("scoreboard").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("scoreboard").requires($$0x -> $$0x.c(2)))
                .then(
-                  ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("objectives")
-                                 .then(ej.a("list").executes($$0x -> b((ei)$$0x.getSource()))))
+                  ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("objectives")
+                                 .then(ek.a("list").executes($$0x -> b((ej)$$0x.getSource()))))
                               .then(
-                                 ej.a("add")
+                                 ek.a("add")
                                     .then(
-                                       ej.a("objective", StringArgumentType.word())
+                                       ek.a("objective", StringArgumentType.word())
                                           .then(
-                                             ((RequiredArgumentBuilder)ej.a("criteria", fd.a())
+                                             ((RequiredArgumentBuilder)ek.a("criteria", fe.a())
                                                    .executes(
                                                       $$0x -> a(
-                                                            (ei)$$0x.getSource(),
+                                                            (ej)$$0x.getSource(),
                                                             StringArgumentType.getString($$0x, "objective"),
-                                                            fd.a($$0x, "criteria"),
+                                                            fe.a($$0x, "criteria"),
                                                             wy.b(StringArgumentType.getString($$0x, "objective"))
                                                          )
                                                    ))
                                                 .then(
-                                                   ej.a("displayName", er.a($$1))
+                                                   ek.a("displayName", es.a($$1))
                                                       .executes(
                                                          $$0x -> a(
-                                                               (ei)$$0x.getSource(),
+                                                               (ej)$$0x.getSource(),
                                                                StringArgumentType.getString($$0x, "objective"),
-                                                               fd.a($$0x, "criteria"),
-                                                               er.b($$0x, "displayName")
+                                                               fe.a($$0x, "criteria"),
+                                                               es.b($$0x, "displayName")
                                                             )
                                                       )
                                                 )
@@ -62,60 +62,60 @@ public class aox {
                                     )
                               ))
                            .then(
-                              ej.a("modify")
+                              ek.a("modify")
                                  .then(
-                                    ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ej.a("objective", fc.a())
+                                    ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ek.a("objective", fd.a())
                                                 .then(
-                                                   ej.a("displayname")
+                                                   ek.a("displayname")
                                                       .then(
-                                                         ej.a("displayName", er.a($$1))
-                                                            .executes($$0x -> a((ei)$$0x.getSource(), fc.a($$0x, "objective"), er.b($$0x, "displayName")))
+                                                         ek.a("displayName", es.a($$1))
+                                                            .executes($$0x -> a((ej)$$0x.getSource(), fd.a($$0x, "objective"), es.b($$0x, "displayName")))
                                                       )
                                                 ))
                                              .then(a()))
                                           .then(
-                                             ej.a("displayautoupdate")
+                                             ek.a("displayautoupdate")
                                                 .then(
-                                                   ej.a("value", BoolArgumentType.bool())
+                                                   ek.a("value", BoolArgumentType.bool())
                                                       .executes(
-                                                         $$0x -> a((ei)$$0x.getSource(), fc.a($$0x, "objective"), BoolArgumentType.getBool($$0x, "value"))
+                                                         $$0x -> a((ej)$$0x.getSource(), fd.a($$0x, "objective"), BoolArgumentType.getBool($$0x, "value"))
                                                       )
                                                 )
                                           ))
-                                       .then(a($$1, ej.a("numberformat"), ($$0x, $$1x) -> a((ei)$$0x.getSource(), fc.a($$0x, "objective"), $$1x)))
+                                       .then(a($$1, ek.a("numberformat"), ($$0x, $$1x) -> a((ej)$$0x.getSource(), fd.a($$0x, "objective"), $$1x)))
                                  )
                            ))
-                        .then(ej.a("remove").then(ej.a("objective", fc.a()).executes($$0x -> a((ei)$$0x.getSource(), fc.a($$0x, "objective"))))))
+                        .then(ek.a("remove").then(ek.a("objective", fd.a()).executes($$0x -> a((ej)$$0x.getSource(), fd.a($$0x, "objective"))))))
                      .then(
-                        ej.a("setdisplay")
+                        ek.a("setdisplay")
                            .then(
-                              ((RequiredArgumentBuilder)ej.a("slot", fp.a()).executes($$0x -> a((ei)$$0x.getSource(), fp.a($$0x, "slot"))))
-                                 .then(ej.a("objective", fc.a()).executes($$0x -> a((ei)$$0x.getSource(), fp.a($$0x, "slot"), fc.a($$0x, "objective"))))
+                              ((RequiredArgumentBuilder)ek.a("slot", fq.a()).executes($$0x -> a((ej)$$0x.getSource(), fq.a($$0x, "slot"))))
+                                 .then(ek.a("objective", fd.a()).executes($$0x -> a((ej)$$0x.getSource(), fq.a($$0x, "slot"), fd.a($$0x, "objective"))))
                            )
                      )
                ))
             .then(
-               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a(
+               ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a(
                                              "players"
                                           )
                                           .then(
-                                             ((LiteralArgumentBuilder)ej.a("list").executes($$0x -> a((ei)$$0x.getSource())))
-                                                .then(ej.a("target", fo.a()).suggests(fo.a).executes($$0x -> a((ei)$$0x.getSource(), fo.a($$0x, "target"))))
+                                             ((LiteralArgumentBuilder)ek.a("list").executes($$0x -> a((ej)$$0x.getSource())))
+                                                .then(ek.a("target", fp.a()).suggests(fp.a).executes($$0x -> a((ej)$$0x.getSource(), fp.a($$0x, "target"))))
                                           ))
                                        .then(
-                                          ej.a("set")
+                                          ek.a("set")
                                              .then(
-                                                ej.a("targets", fo.b())
-                                                   .suggests(fo.a)
+                                                ek.a("targets", fp.b())
+                                                   .suggests(fp.a)
                                                    .then(
-                                                      ej.a("objective", fc.a())
+                                                      ek.a("objective", fd.a())
                                                          .then(
-                                                            ej.a("score", IntegerArgumentType.integer())
+                                                            ek.a("score", IntegerArgumentType.integer())
                                                                .executes(
                                                                   $$0x -> a(
-                                                                        (ei)$$0x.getSource(),
-                                                                        fo.c($$0x, "targets"),
-                                                                        fc.b($$0x, "objective"),
+                                                                        (ej)$$0x.getSource(),
+                                                                        fp.c($$0x, "targets"),
+                                                                        fd.b($$0x, "objective"),
                                                                         IntegerArgumentType.getInteger($$0x, "score")
                                                                      )
                                                                )
@@ -124,30 +124,30 @@ public class aox {
                                              )
                                        ))
                                     .then(
-                                       ej.a("get")
+                                       ek.a("get")
                                           .then(
-                                             ej.a("target", fo.a())
-                                                .suggests(fo.a)
+                                             ek.a("target", fp.a())
+                                                .suggests(fp.a)
                                                 .then(
-                                                   ej.a("objective", fc.a())
-                                                      .executes($$0x -> a((ei)$$0x.getSource(), fo.a($$0x, "target"), fc.a($$0x, "objective")))
+                                                   ek.a("objective", fd.a())
+                                                      .executes($$0x -> a((ej)$$0x.getSource(), fp.a($$0x, "target"), fd.a($$0x, "objective")))
                                                 )
                                           )
                                     ))
                                  .then(
-                                    ej.a("add")
+                                    ek.a("add")
                                        .then(
-                                          ej.a("targets", fo.b())
-                                             .suggests(fo.a)
+                                          ek.a("targets", fp.b())
+                                             .suggests(fp.a)
                                              .then(
-                                                ej.a("objective", fc.a())
+                                                ek.a("objective", fd.a())
                                                    .then(
-                                                      ej.a("score", IntegerArgumentType.integer(0))
+                                                      ek.a("score", IntegerArgumentType.integer(0))
                                                          .executes(
                                                             $$0x -> b(
-                                                                  (ei)$$0x.getSource(),
-                                                                  fo.c($$0x, "targets"),
-                                                                  fc.b($$0x, "objective"),
+                                                                  (ej)$$0x.getSource(),
+                                                                  fp.c($$0x, "targets"),
+                                                                  fd.b($$0x, "objective"),
                                                                   IntegerArgumentType.getInteger($$0x, "score")
                                                                )
                                                          )
@@ -156,19 +156,19 @@ public class aox {
                                        )
                                  ))
                               .then(
-                                 ej.a("remove")
+                                 ek.a("remove")
                                     .then(
-                                       ej.a("targets", fo.b())
-                                          .suggests(fo.a)
+                                       ek.a("targets", fp.b())
+                                          .suggests(fp.a)
                                           .then(
-                                             ej.a("objective", fc.a())
+                                             ek.a("objective", fd.a())
                                                 .then(
-                                                   ej.a("score", IntegerArgumentType.integer(0))
+                                                   ek.a("score", IntegerArgumentType.integer(0))
                                                       .executes(
                                                          $$0x -> c(
-                                                               (ei)$$0x.getSource(),
-                                                               fo.c($$0x, "targets"),
-                                                               fc.b($$0x, "objective"),
+                                                               (ej)$$0x.getSource(),
+                                                               fp.c($$0x, "targets"),
+                                                               fd.b($$0x, "objective"),
                                                                IntegerArgumentType.getInteger($$0x, "score")
                                                             )
                                                       )
@@ -177,84 +177,84 @@ public class aox {
                                     )
                               ))
                            .then(
-                              ej.a("reset")
+                              ek.a("reset")
                                  .then(
-                                    ((RequiredArgumentBuilder)ej.a("targets", fo.b())
-                                          .suggests(fo.a)
-                                          .executes($$0x -> a((ei)$$0x.getSource(), fo.c($$0x, "targets"))))
+                                    ((RequiredArgumentBuilder)ek.a("targets", fp.b())
+                                          .suggests(fp.a)
+                                          .executes($$0x -> a((ej)$$0x.getSource(), fp.c($$0x, "targets"))))
                                        .then(
-                                          ej.a("objective", fc.a()).executes($$0x -> b((ei)$$0x.getSource(), fo.c($$0x, "targets"), fc.a($$0x, "objective")))
+                                          ek.a("objective", fd.a()).executes($$0x -> b((ej)$$0x.getSource(), fp.c($$0x, "targets"), fd.a($$0x, "objective")))
                                        )
                                  )
                            ))
                         .then(
-                           ej.a("enable")
+                           ek.a("enable")
                               .then(
-                                 ej.a("targets", fo.b())
-                                    .suggests(fo.a)
+                                 ek.a("targets", fp.b())
+                                    .suggests(fp.a)
                                     .then(
-                                       ej.a("objective", fc.a())
-                                          .suggests(($$0x, $$1x) -> a((ei)$$0x.getSource(), fo.c($$0x, "targets"), $$1x))
-                                          .executes($$0x -> a((ei)$$0x.getSource(), fo.c($$0x, "targets"), fc.a($$0x, "objective")))
+                                       ek.a("objective", fd.a())
+                                          .suggests(($$0x, $$1x) -> a((ej)$$0x.getSource(), fp.c($$0x, "targets"), $$1x))
+                                          .executes($$0x -> a((ej)$$0x.getSource(), fp.c($$0x, "targets"), fd.a($$0x, "objective")))
                                     )
                               )
                         ))
                      .then(
-                        ((LiteralArgumentBuilder)ej.a("display")
+                        ((LiteralArgumentBuilder)ek.a("display")
                               .then(
-                                 ej.a("name")
+                                 ek.a("name")
                                     .then(
-                                       ej.a("targets", fo.b())
-                                          .suggests(fo.a)
+                                       ek.a("targets", fp.b())
+                                          .suggests(fp.a)
                                           .then(
-                                             ((RequiredArgumentBuilder)ej.a("objective", fc.a())
+                                             ((RequiredArgumentBuilder)ek.a("objective", fd.a())
                                                    .then(
-                                                      ej.a("name", er.a($$1))
+                                                      ek.a("name", es.a($$1))
                                                          .executes(
-                                                            $$0x -> a((ei)$$0x.getSource(), fo.c($$0x, "targets"), fc.a($$0x, "objective"), er.b($$0x, "name"))
+                                                            $$0x -> a((ej)$$0x.getSource(), fp.c($$0x, "targets"), fd.a($$0x, "objective"), es.b($$0x, "name"))
                                                          )
                                                    ))
-                                                .executes($$0x -> a((ei)$$0x.getSource(), fo.c($$0x, "targets"), fc.a($$0x, "objective"), null))
+                                                .executes($$0x -> a((ej)$$0x.getSource(), fp.c($$0x, "targets"), fd.a($$0x, "objective"), null))
                                           )
                                     )
                               ))
                            .then(
-                              ej.a("numberformat")
+                              ek.a("numberformat")
                                  .then(
-                                    ej.a("targets", fo.b())
-                                       .suggests(fo.a)
+                                    ek.a("targets", fp.b())
+                                       .suggests(fp.a)
                                        .then(
                                           a(
                                              $$1,
-                                             ej.a("objective", fc.a()),
-                                             ($$0x, $$1x) -> a((ei)$$0x.getSource(), fo.c($$0x, "targets"), fc.a($$0x, "objective"), $$1x)
+                                             ek.a("objective", fd.a()),
+                                             ($$0x, $$1x) -> a((ej)$$0x.getSource(), fp.c($$0x, "targets"), fd.a($$0x, "objective"), $$1x)
                                           )
                                        )
                                  )
                            )
                      ))
                   .then(
-                     ej.a("operation")
+                     ek.a("operation")
                         .then(
-                           ej.a("targets", fo.b())
-                              .suggests(fo.a)
+                           ek.a("targets", fp.b())
+                              .suggests(fp.a)
                               .then(
-                                 ej.a("targetObjective", fc.a())
+                                 ek.a("targetObjective", fd.a())
                                     .then(
-                                       ej.a("operation", fe.a())
+                                       ek.a("operation", ff.a())
                                           .then(
-                                             ej.a("source", fo.b())
-                                                .suggests(fo.a)
+                                             ek.a("source", fp.b())
+                                                .suggests(fp.a)
                                                 .then(
-                                                   ej.a("sourceObjective", fc.a())
+                                                   ek.a("sourceObjective", fd.a())
                                                       .executes(
                                                          $$0x -> a(
-                                                               (ei)$$0x.getSource(),
-                                                               fo.c($$0x, "targets"),
-                                                               fc.b($$0x, "targetObjective"),
-                                                               fe.a($$0x, "operation"),
-                                                               fo.c($$0x, "source"),
-                                                               fc.a($$0x, "sourceObjective")
+                                                               (ej)$$0x.getSource(),
+                                                               fp.c($$0x, "targets"),
+                                                               fd.b($$0x, "targetObjective"),
+                                                               ff.a($$0x, "operation"),
+                                                               fp.c($$0x, "source"),
+                                                               fd.a($$0x, "sourceObjective")
                                                             )
                                                       )
                                                 )
@@ -267,36 +267,36 @@ public class aox {
       );
    }
 
-   private static ArgumentBuilder<ei, ?> a(ee $$0, ArgumentBuilder<ei, ?> $$1, aox.a $$2) {
-      return $$1.then(ej.a("blank").executes($$1x -> $$2.run($$1x, ym.a))).then(ej.a("fixed").then(ej.a("contents", er.a($$0)).executes($$1x -> {
-         wy $$2x = er.b($$1x, "contents");
+   private static ArgumentBuilder<ej, ?> a(ef $$0, ArgumentBuilder<ej, ?> $$1, aox.a $$2) {
+      return $$1.then(ek.a("blank").executes($$1x -> $$2.run($$1x, ym.a))).then(ek.a("fixed").then(ek.a("contents", es.a($$0)).executes($$1x -> {
+         wy $$2x = es.b($$1x, "contents");
          return $$2.run($$1x, new yn($$2x));
-      }))).then(ej.a("styled").then(ej.a("style", fu.a($$0)).executes($$1x -> {
-         xv $$2x = fu.a($$1x, "style");
+      }))).then(ek.a("styled").then(ek.a("style", fv.a($$0)).executes($$1x -> {
+         xv $$2x = fv.a($$1x, "style");
          return $$2.run($$1x, new yr($$2x));
       }))).executes($$1x -> $$2.run($$1x, null));
    }
 
-   private static LiteralArgumentBuilder<ei> a() {
-      LiteralArgumentBuilder<ei> $$0 = ej.a("rendertype");
+   private static LiteralArgumentBuilder<ej> a() {
+      LiteralArgumentBuilder<ej> $$0 = ek.a("rendertype");
 
-      for (ffy.a $$1 : ffy.a.values()) {
-         $$0.then(ej.a($$1.a()).executes($$1x -> a((ei)$$1x.getSource(), fc.a($$1x, "objective"), $$1)));
+      for (fgf.a $$1 : fgf.a.values()) {
+         $$0.then(ek.a($$1.a()).executes($$1x -> a((ej)$$1x.getSource(), fd.a($$1x, "objective"), $$1)));
       }
 
       return $$0;
    }
 
-   private static CompletableFuture<Suggestions> a(ei $$0, Collection<ffu> $$1, SuggestionsBuilder $$2) {
+   private static CompletableFuture<Suggestions> a(ej $$0, Collection<fgb> $$1, SuggestionsBuilder $$2) {
       List<String> $$3 = Lists.newArrayList();
-      ffv $$4 = $$0.l().aJ();
+      fgc $$4 = $$0.l().aJ();
 
-      for (ffn $$5 : $$4.b()) {
-         if ($$5.d() == ffy.d) {
+      for (ffu $$5 : $$4.b()) {
+         if ($$5.d() == fgf.d) {
             boolean $$6 = false;
 
-            for (ffu $$7 : $$1) {
-               ffr $$8 = $$4.d($$7, $$5);
+            for (fgb $$7 : $$1) {
+               ffy $$8 = $$4.d($$7, $$5);
                if ($$8 == null || $$8.b()) {
                   $$6 = true;
                   break;
@@ -309,33 +309,33 @@ public class aox {
          }
       }
 
-      return en.b($$3, $$2);
+      return eo.b($$3, $$2);
    }
 
-   private static int a(ei $$0, ffu $$1, ffn $$2) throws CommandSyntaxException {
-      ffv $$3 = $$0.l().aJ();
-      ffr $$4 = $$3.d($$1, $$2);
+   private static int a(ej $$0, fgb $$1, ffu $$2) throws CommandSyntaxException {
+      fgc $$3 = $$0.l().aJ();
+      ffy $$4 = $$3.d($$1, $$2);
       if ($$4 == null) {
-         throw f.create($$2.c(), $$1.hd());
+         throw f.create($$2.c(), $$1.hf());
       } else {
-         $$0.a(() -> wy.a("commands.scoreboard.players.get.success", $$1.hd(), $$4.a(), $$2.h()), false);
+         $$0.a(() -> wy.a("commands.scoreboard.players.get.success", $$1.hf(), $$4.a(), $$2.h()), false);
          return $$4.a();
       }
    }
 
-   private static wy a(Collection<ffu> $$0) {
-      return $$0.iterator().next().hd();
+   private static wy a(Collection<fgb> $$0) {
+      return $$0.iterator().next().hf();
    }
 
-   private static int a(ei $$0, Collection<ffu> $$1, ffn $$2, fe.a $$3, Collection<ffu> $$4, ffn $$5) throws CommandSyntaxException {
-      ffv $$6 = $$0.l().aJ();
+   private static int a(ej $$0, Collection<fgb> $$1, ffu $$2, ff.a $$3, Collection<fgb> $$4, ffu $$5) throws CommandSyntaxException {
+      fgc $$6 = $$0.l().aJ();
       int $$7 = 0;
 
-      for (ffu $$8 : $$1) {
-         fft $$9 = $$6.c($$8, $$2);
+      for (fgb $$8 : $$1) {
+         fga $$9 = $$6.c($$8, $$2);
 
-         for (ffu $$10 : $$4) {
-            fft $$11 = $$6.c($$10, $$5);
+         for (fgb $$10 : $$4) {
+            fga $$11 = $$6.c($$10, $$5);
             $$3.apply($$9, $$11);
          }
 
@@ -352,15 +352,15 @@ public class aox {
       return $$7;
    }
 
-   private static int a(ei $$0, Collection<ffu> $$1, ffn $$2) throws CommandSyntaxException {
-      if ($$2.d() != ffy.d) {
+   private static int a(ej $$0, Collection<fgb> $$1, ffu $$2) throws CommandSyntaxException {
+      if ($$2.d() != fgf.d) {
          throw e.create();
       } else {
-         ffv $$3 = $$0.l().aJ();
+         fgc $$3 = $$0.l().aJ();
          int $$4 = 0;
 
-         for (ffu $$5 : $$1) {
-            fft $$6 = $$3.c($$5, $$2);
+         for (fgb $$5 : $$1) {
+            fga $$6 = $$3.c($$5, $$2);
             if ($$6.d()) {
                $$6.e();
                $$4++;
@@ -381,10 +381,10 @@ public class aox {
       }
    }
 
-   private static int a(ei $$0, Collection<ffu> $$1) {
-      ffv $$2 = $$0.l().aJ();
+   private static int a(ej $$0, Collection<fgb> $$1) {
+      fgc $$2 = $$0.l().aJ();
 
-      for (ffu $$3 : $$1) {
+      for (fgb $$3 : $$1) {
          $$2.b($$3);
       }
 
@@ -397,10 +397,10 @@ public class aox {
       return $$1.size();
    }
 
-   private static int b(ei $$0, Collection<ffu> $$1, ffn $$2) {
-      ffv $$3 = $$0.l().aJ();
+   private static int b(ej $$0, Collection<fgb> $$1, ffu $$2) {
+      fgc $$3 = $$0.l().aJ();
 
-      for (ffu $$4 : $$1) {
+      for (fgb $$4 : $$1) {
          $$3.e($$4, $$2);
       }
 
@@ -413,10 +413,10 @@ public class aox {
       return $$1.size();
    }
 
-   private static int a(ei $$0, Collection<ffu> $$1, ffn $$2, int $$3) {
-      ffv $$4 = $$0.l().aJ();
+   private static int a(ej $$0, Collection<fgb> $$1, ffu $$2, int $$3) {
+      fgc $$4 = $$0.l().aJ();
 
-      for (ffu $$5 : $$1) {
+      for (fgb $$5 : $$1) {
          $$4.c($$5, $$2).a($$3);
       }
 
@@ -429,10 +429,10 @@ public class aox {
       return $$3 * $$1.size();
    }
 
-   private static int a(ei $$0, Collection<ffu> $$1, ffn $$2, @Nullable wy $$3) {
-      ffv $$4 = $$0.l().aJ();
+   private static int a(ej $$0, Collection<fgb> $$1, ffu $$2, @Nullable wy $$3) {
+      fgc $$4 = $$0.l().aJ();
 
-      for (ffu $$5 : $$1) {
+      for (fgb $$5 : $$1) {
          $$4.c($$5, $$2).a($$3);
       }
 
@@ -451,10 +451,10 @@ public class aox {
       return $$1.size();
    }
 
-   private static int a(ei $$0, Collection<ffu> $$1, ffn $$2, @Nullable yo $$3) {
-      ffv $$4 = $$0.l().aJ();
+   private static int a(ej $$0, Collection<fgb> $$1, ffu $$2, @Nullable yo $$3) {
+      fgc $$4 = $$0.l().aJ();
 
-      for (ffu $$5 : $$1) {
+      for (fgb $$5 : $$1) {
          $$4.c($$5, $$2).a($$3);
       }
 
@@ -473,12 +473,12 @@ public class aox {
       return $$1.size();
    }
 
-   private static int b(ei $$0, Collection<ffu> $$1, ffn $$2, int $$3) {
-      ffv $$4 = $$0.l().aJ();
+   private static int b(ej $$0, Collection<fgb> $$1, ffu $$2, int $$3) {
+      fgc $$4 = $$0.l().aJ();
       int $$5 = 0;
 
-      for (ffu $$6 : $$1) {
-         fft $$7 = $$4.c($$6, $$2);
+      for (fgb $$6 : $$1) {
+         fga $$7 = $$4.c($$6, $$2);
          $$7.a($$7.a() + $$3);
          $$5 += $$7.a();
       }
@@ -493,12 +493,12 @@ public class aox {
       return $$5;
    }
 
-   private static int c(ei $$0, Collection<ffu> $$1, ffn $$2, int $$3) {
-      ffv $$4 = $$0.l().aJ();
+   private static int c(ej $$0, Collection<fgb> $$1, ffu $$2, int $$3) {
+      fgc $$4 = $$0.l().aJ();
       int $$5 = 0;
 
-      for (ffu $$6 : $$1) {
-         fft $$7 = $$4.c($$6, $$2);
+      for (fgb $$6 : $$1) {
+         fga $$7 = $$4.c($$6, $$2);
          $$7.a($$7.a() - $$3);
          $$5 += $$7.a();
       }
@@ -513,33 +513,33 @@ public class aox {
       return $$5;
    }
 
-   private static int a(ei $$0) {
-      Collection<ffu> $$1 = $$0.l().aJ().d();
+   private static int a(ej $$0) {
+      Collection<fgb> $$1 = $$0.l().aJ().d();
       if ($$1.isEmpty()) {
          $$0.a(() -> wy.c("commands.scoreboard.players.list.empty"), false);
       } else {
-         $$0.a(() -> wy.a("commands.scoreboard.players.list.success", $$1.size(), xb.b($$1, ffu::hd)), false);
+         $$0.a(() -> wy.a("commands.scoreboard.players.list.success", $$1.size(), xb.b($$1, fgb::hf)), false);
       }
 
       return $$1.size();
    }
 
-   private static int a(ei $$0, ffu $$1) {
-      Object2IntMap<ffn> $$2 = $$0.l().aJ().c($$1);
+   private static int a(ej $$0, fgb $$1) {
+      Object2IntMap<ffu> $$2 = $$0.l().aJ().c($$1);
       if ($$2.isEmpty()) {
-         $$0.a(() -> wy.a("commands.scoreboard.players.list.entity.empty", $$1.hd()), false);
+         $$0.a(() -> wy.a("commands.scoreboard.players.list.entity.empty", $$1.hf()), false);
       } else {
-         $$0.a(() -> wy.a("commands.scoreboard.players.list.entity.success", $$1.hd(), $$2.size()), false);
+         $$0.a(() -> wy.a("commands.scoreboard.players.list.entity.success", $$1.hf(), $$2.size()), false);
          Object2IntMaps.fastForEach(
-            $$2, $$1x -> $$0.a(() -> wy.a("commands.scoreboard.players.list.entity.entry", ((ffn)$$1x.getKey()).h(), $$1x.getIntValue()), false)
+            $$2, $$1x -> $$0.a(() -> wy.a("commands.scoreboard.players.list.entity.entry", ((ffu)$$1x.getKey()).h(), $$1x.getIntValue()), false)
          );
       }
 
       return $$2.size();
    }
 
-   private static int a(ei $$0, ffm $$1) throws CommandSyntaxException {
-      ffv $$2 = $$0.l().aJ();
+   private static int a(ej $$0, fft $$1) throws CommandSyntaxException {
+      fgc $$2 = $$0.l().aJ();
       if ($$2.a($$1) == null) {
          throw b.create();
       } else {
@@ -549,8 +549,8 @@ public class aox {
       }
    }
 
-   private static int a(ei $$0, ffm $$1, ffn $$2) throws CommandSyntaxException {
-      ffv $$3 = $$0.l().aJ();
+   private static int a(ej $$0, fft $$1, ffu $$2) throws CommandSyntaxException {
+      fgc $$3 = $$0.l().aJ();
       if ($$3.a($$1) == $$2) {
          throw c.create();
       } else {
@@ -560,7 +560,7 @@ public class aox {
       }
    }
 
-   private static int a(ei $$0, ffn $$1, wy $$2) {
+   private static int a(ej $$0, ffu $$1, wy $$2) {
       if (!$$1.e().equals($$2)) {
          $$1.a($$2);
          $$0.a(() -> wy.a("commands.scoreboard.objectives.modify.displayname", $$1.c(), $$1.h()), true);
@@ -569,7 +569,7 @@ public class aox {
       return 0;
    }
 
-   private static int a(ei $$0, ffn $$1, boolean $$2) {
+   private static int a(ej $$0, ffu $$1, boolean $$2) {
       if ($$1.f() != $$2) {
          $$1.a($$2);
          if ($$2) {
@@ -582,7 +582,7 @@ public class aox {
       return 0;
    }
 
-   private static int a(ei $$0, ffn $$1, @Nullable yo $$2) {
+   private static int a(ej $$0, ffu $$1, @Nullable yo $$2) {
       $$1.b($$2);
       if ($$2 != null) {
          $$0.a(() -> wy.a("commands.scoreboard.objectives.modify.objectiveFormat.set", $$1.c()), true);
@@ -593,7 +593,7 @@ public class aox {
       return 0;
    }
 
-   private static int a(ei $$0, ffn $$1, ffy.a $$2) {
+   private static int a(ej $$0, ffu $$1, fgf.a $$2) {
       if ($$1.i() != $$2) {
          $$1.a($$2);
          $$0.a(() -> wy.a("commands.scoreboard.objectives.modify.rendertype", $$1.h()), true);
@@ -602,31 +602,31 @@ public class aox {
       return 0;
    }
 
-   private static int a(ei $$0, ffn $$1) {
-      ffv $$2 = $$0.l().aJ();
+   private static int a(ej $$0, ffu $$1) {
+      fgc $$2 = $$0.l().aJ();
       $$2.j($$1);
       $$0.a(() -> wy.a("commands.scoreboard.objectives.remove.success", $$1.h()), true);
       return $$2.b().size();
    }
 
-   private static int a(ei $$0, String $$1, ffy $$2, wy $$3) throws CommandSyntaxException {
-      ffv $$4 = $$0.l().aJ();
+   private static int a(ej $$0, String $$1, fgf $$2, wy $$3) throws CommandSyntaxException {
+      fgc $$4 = $$0.l().aJ();
       if ($$4.a($$1) != null) {
          throw a.create();
       } else {
          $$4.a($$1, $$2, $$3, $$2.f(), false, null);
-         ffn $$5 = $$4.a($$1);
+         ffu $$5 = $$4.a($$1);
          $$0.a(() -> wy.a("commands.scoreboard.objectives.add.success", $$5.h()), true);
          return $$4.b().size();
       }
    }
 
-   private static int b(ei $$0) {
-      Collection<ffn> $$1 = $$0.l().aJ().b();
+   private static int b(ej $$0) {
+      Collection<ffu> $$1 = $$0.l().aJ().b();
       if ($$1.isEmpty()) {
          $$0.a(() -> wy.c("commands.scoreboard.objectives.list.empty"), false);
       } else {
-         $$0.a(() -> wy.a("commands.scoreboard.objectives.list.success", $$1.size(), xb.b($$1, ffn::h)), false);
+         $$0.a(() -> wy.a("commands.scoreboard.objectives.list.success", $$1.size(), xb.b($$1, ffu::h)), false);
       }
 
       return $$1.size();
@@ -634,6 +634,6 @@ public class aox {
 
    @FunctionalInterface
    public interface a {
-      int run(CommandContext<ei> var1, @Nullable yo var2) throws CommandSyntaxException;
+      int run(CommandContext<ej> var1, @Nullable yo var2) throws CommandSyntaxException;
    }
 }

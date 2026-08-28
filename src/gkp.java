@@ -1,167 +1,157 @@
 import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
+import java.util.Locale;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class gkp {
-   private static final Logger a = LogUtils.getLogger();
-   private static final bst b = new bst(af.h(), "server-list-io");
-   private static final int c = 16;
-   private final foz d;
-   private final List<gko> e = Lists.newArrayList();
-   private final List<gko> f = Lists.newArrayList();
-
-   public gkp(foz $$0) {
-      this.d = $$0;
-   }
-
-   public void a() {
-      try {
-         this.e.clear();
-         this.f.clear();
-         tz $$0 = um.a(this.d.q.toPath().resolve("servers.dat"));
-         if ($$0 == null) {
-            return;
-         }
-
-         uf $$1 = $$0.c("servers", 10);
-
-         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-            tz $$3 = $$1.a($$2);
-            gko $$4 = gko.a($$3);
-            if ($$3.q("hidden")) {
-               this.f.add($$4);
-            } else {
-               this.e.add($$4);
-            }
-         }
-      } catch (Exception var6) {
-         a.error("Couldn't load server list", var6);
-      }
-   }
-
-   public void b() {
-      try {
-         uf $$0 = new uf();
-
-         for (gko $$1 : this.e) {
-            tz $$2 = $$1.a();
-            $$2.a("hidden", false);
-            $$0.add($$2);
-         }
-
-         for (gko $$3 : this.f) {
-            tz $$4 = $$3.a();
-            $$4.a("hidden", true);
-            $$0.add($$4);
-         }
-
-         tz $$5 = new tz();
-         $$5.a("servers", $$0);
-         Path $$6 = this.d.q.toPath();
-         Path $$7 = Files.createTempFile($$6, "servers", ".dat");
-         um.b($$5, $$7);
-         Path $$8 = $$6.resolve("servers.dat_old");
-         Path $$9 = $$6.resolve("servers.dat");
-         af.a($$9, $$7, $$8);
-      } catch (Exception var7) {
-         a.error("Couldn't save server list", var7);
-      }
-   }
-
-   public gko a(int $$0) {
-      return this.e.get($$0);
-   }
-
+public class gkp implements eo {
+   private final gkm a;
+   private final fpo b;
+   private int d = -1;
    @Nullable
-   public gko a(String $$0) {
-      for (gko $$1 : this.e) {
-         if ($$1.b.equals($$0)) {
-            return $$1;
-         }
-      }
+   private CompletableFuture<Suggestions> e;
+   private final Set<String> f = new HashSet<>();
 
-      for (gko $$2 : this.f) {
-         if ($$2.b.equals($$0)) {
-            return $$2;
-         }
-      }
-
-      return null;
+   public gkp(gkm $$0, fpo $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Nullable
-   public gko b(String $$0) {
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         gko $$2 = this.f.get($$1);
-         if ($$2.b.equals($$0)) {
-            this.f.remove($$1);
-            this.e.add($$2);
-            return $$2;
-         }
+   @Override
+   public Collection<String> q() {
+      List<String> $$0 = Lists.newArrayList();
+
+      for (gkx $$1 : this.a.m()) {
+         $$0.add($$1.a().getName());
       }
 
-      return null;
+      return $$0;
    }
 
-   public void a(gko $$0) {
-      if (!this.e.remove($$0)) {
-         this.f.remove($$0);
-      }
-   }
-
-   public void a(gko $$0, boolean $$1) {
-      if ($$1) {
-         this.f.add(0, $$0);
-
-         while (this.f.size() > 16) {
-            this.f.remove(this.f.size() - 1);
-         }
+   @Override
+   public Collection<String> y() {
+      if (this.f.isEmpty()) {
+         return this.q();
       } else {
-         this.e.add($$0);
+         Set<String> $$0 = new HashSet<>(this.q());
+         $$0.addAll(this.f);
+         return $$0;
       }
    }
 
-   public int c() {
-      return this.e.size();
+   @Override
+   public Collection<String> z() {
+      return (Collection<String>)(this.b.w != null && this.b.w.d() == fev.a.c ? Collections.singleton(((feu)this.b.w).a().cG()) : Collections.emptyList());
    }
 
-   public void a(int $$0, int $$1) {
-      gko $$2 = this.a($$0);
-      this.e.set($$0, this.a($$1));
-      this.e.set($$1, $$2);
-      this.b();
+   @Override
+   public Collection<String> r() {
+      return this.a.z().e();
    }
 
-   public void a(int $$0, gko $$1) {
-      this.e.set($$0, $$1);
+   @Override
+   public Stream<alg> s() {
+      return this.b.ak().c().stream();
    }
 
-   private static boolean a(gko $$0, List<gko> $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         gko $$3 = $$1.get($$2);
-         if (Objects.equals($$3.a, $$0.a) && $$3.b.equals($$0.b)) {
-            $$1.set($$2, $$0);
-            return true;
-         }
+   @Override
+   public boolean c(int $$0) {
+      gpj $$1 = this.b.t;
+      return $$1 != null ? $$1.s($$0) : $$0 == 0;
+   }
+
+   @Override
+   public CompletableFuture<Suggestions> a(alf<? extends js<?>> $$0, eo.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
+      return this.u().a($$0).map($$2x -> {
+         this.a($$2x, $$1, $$2);
+         return $$2.buildFuture();
+      }).orElseGet(() -> this.a($$3));
+   }
+
+   @Override
+   public CompletableFuture<Suggestions> a(CommandContext<?> $$0) {
+      if (this.e != null) {
+         this.e.cancel(false);
       }
 
-      return false;
+      this.e = new CompletableFuture<>();
+      int $$1 = ++this.d;
+      this.a.b(new ahc($$1, $$0.getInput()));
+      return this.e;
    }
 
-   public static void b(gko $$0) {
-      b.a_(() -> {
-         gkp $$1 = new gkp(foz.Q());
-         $$1.a();
-         if (!a($$0, $$1.e)) {
-            a($$0, $$1.f);
-         }
+   private static String a(double $$0) {
+      return String.format(Locale.ROOT, "%.2f", $$0);
+   }
 
-         $$1.b();
-      });
+   private static String a(int $$0) {
+      return Integer.toString($$0);
+   }
+
+   @Override
+   public Collection<eo.b> A() {
+      fev $$0 = this.b.w;
+      if ($$0 != null && $$0.d() == fev.a.b) {
+         iv $$1 = ((fet)$$0).b();
+         return Collections.singleton(new eo.b(a($$1.u()), a($$1.v()), a($$1.w())));
+      } else {
+         return eo.super.A();
+      }
+   }
+
+   @Override
+   public Collection<eo.b> B() {
+      fev $$0 = this.b.w;
+      if ($$0 != null && $$0.d() == fev.a.b) {
+         fex $$1 = $$0.g();
+         return Collections.singleton(new eo.b(a($$1.d), a($$1.e), a($$1.f)));
+      } else {
+         return eo.super.B();
+      }
+   }
+
+   @Override
+   public Set<alf<djh>> t() {
+      return this.a.u();
+   }
+
+   @Override
+   public jt u() {
+      return this.a.v();
+   }
+
+   @Override
+   public cut v() {
+      return this.a.y();
+   }
+
+   public void a(int $$0, Suggestions $$1) {
+      if ($$0 == this.d) {
+         this.e.complete($$1);
+         this.e = null;
+         this.d = -1;
+      }
+   }
+
+   public void a(acs.a $$0, List<String> $$1) {
+      switch ($$0) {
+         case a:
+            this.f.addAll($$1);
+            break;
+         case b:
+            $$1.forEach(this.f::remove);
+            break;
+         case c:
+            this.f.clear();
+            this.f.addAll($$1);
+      }
    }
 }

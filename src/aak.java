@@ -1,9 +1,9 @@
-public record aak(alf<efh> c, feq d) implements aai {
+public record aak(alf<efo> c, fex d) implements aai {
    public static final yw<vu, aak> a = aai.a(aak::a, aak::new);
    public static final aai.b<aak> b = aai.a("debug/game_event");
 
    private aak(vu $$0) {
-      this($$0.a(mg.H), $$0.k());
+      this($$0.a(mh.H), $$0.k());
    }
 
    private void a(vu $$0) {
@@ -16,11 +16,11 @@ public record aak(alf<efh> c, feq d) implements aai {
       return b;
    }
 
-   public alf<efh> b() {
+   public alf<efo> b() {
       return this.c;
    }
 
-   public feq c() {
+   public fex c() {
       return this.d;
    }
 }

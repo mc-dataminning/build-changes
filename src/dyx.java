@@ -1,69 +1,113 @@
 import javax.annotation.Nullable;
 
-public class dyx extends dxf implements djv {
-   private final dic a = new dic() {
-      @Override
-      public void a(dja $$0, iu $$1, int $$2) {
-         $$0.a($$1, dmh.cD, $$2, 0);
+public class dyx extends dxm implements efq.b<efx.b>, efx {
+   private efx.a a;
+   private final efx.b b;
+   private final efx.d c = this.a();
+   private int d;
+
+   protected dyx(dxo<?> $$0, iv $$1, eao $$2) {
+      super($$0, $$1, $$2);
+      this.a = new efx.a();
+      this.b = new efx.b(this);
+   }
+
+   public dyx(iv $$0, eao $$1) {
+      this(dxo.J, $$0, $$1);
+   }
+
+   public efx.d a() {
+      return new dyx.a(this.ax_());
+   }
+
+   @Override
+   protected void a(tz $$0, jh.a $$1) {
+      super.a($$0, $$1);
+      this.d = $$0.f("last_vibration_frequency");
+      ale<uw> $$2 = $$1.a(un.a);
+      this.a = $$0.<efx.a>a("listener", efx.a.a, $$2).orElseGet(efx.a::new);
+   }
+
+   @Override
+   protected void b(tz $$0, jh.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("last_vibration_frequency", this.d);
+      ale<uw> $$2 = $$1.a(un.a);
+      $$0.a("listener", efx.a.a, $$2, this.a);
+   }
+
+   @Override
+   public efx.a x() {
+      return this.a;
+   }
+
+   @Override
+   public efx.d gt() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   public void a(int $$0) {
+      this.d = $$0;
+   }
+
+   public efx.b f() {
+      return this.b;
+   }
+
+   protected class a implements efx.d {
+      public static final int b = 8;
+      protected final iv c;
+      private final efs a;
+
+      public a(final iv $$1) {
+         this.c = $$1;
+         this.a = new efk($$1);
       }
 
       @Override
-      public void a(@Nullable dja $$0, iu $$1, dju $$2) {
-         super.a($$0, $$1, $$2);
-         if ($$0 != null) {
-            eah $$3 = $$0.a_($$1);
-            $$0.a($$1, $$3, $$3, 260);
+      public int a() {
+         return 8;
+      }
+
+      @Override
+      public efs b() {
+         return this.a;
+      }
+
+      @Override
+      public boolean d() {
+         return true;
+      }
+
+      @Override
+      public boolean a(arq $$0, iv $$1, jf<efo> $$2, @Nullable efo.a $$3) {
+         return !$$1.equals(this.c) || !$$2.a(efo.f) && !$$2.a(efo.i) ? dtn.q(dyx.this.m()) : false;
+      }
+
+      @Override
+      public void a(arq $$0, iv $$1, jf<efo> $$2, @Nullable bwi $$3, @Nullable bwi $$4, float $$5) {
+         eao $$6 = dyx.this.m();
+         if (dtn.q($$6)) {
+            dyx.this.a(efx.a_($$2));
+            int $$7 = efx.a_($$5, this.a());
+            if ($$6.b() instanceof dtn $$8) {
+               $$8.a($$3, $$0, this.c, $$6, $$7, dyx.this.d());
+            }
          }
       }
-   };
 
-   public dyx(iu $$0, eah $$1) {
-      super(dxh.j, $$0, $$1);
-   }
+      @Override
+      public void e() {
+         dyx.this.e();
+      }
 
-   @Override
-   protected void a(tz $$0, jg.a $$1) {
-      super.a($$0, $$1);
-      this.a.a(this.n, this.o, $$0);
-   }
-
-   @Override
-   protected void b(tz $$0, jg.a $$1) {
-      super.b($$0, $$1);
-      this.a.a($$0);
-   }
-
-   public static void a(dja $$0, iu $$1, eah $$2, dyx $$3) {
-      $$3.a.a($$0, $$1);
-   }
-
-   public static void b(dja $$0, iu $$1, eah $$2, dyx $$3) {
-      $$3.a.a((arq)$$0, $$1);
-   }
-
-   public aca a() {
-      return aca.a(this);
-   }
-
-   @Override
-   public tz a(jg.a $$0) {
-      tz $$1 = this.e($$0);
-      $$1.r("SpawnPotentials");
-      return $$1;
-   }
-
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      return this.a.a(this.n, $$0) ? true : super.a_($$0, $$1);
-   }
-
-   @Override
-   public void a(bwo<?> $$0, azv $$1) {
-      this.a.a($$0, this.n, $$1, this.o);
-      this.e();
-   }
-
-   public dic c() {
-      return this.a;
+      @Override
+      public boolean f() {
+         return true;
+      }
    }
 }

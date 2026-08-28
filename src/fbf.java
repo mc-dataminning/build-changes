@@ -1,63 +1,40 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class fbf extends fau {
+public class fbf extends fbb {
    public static final MapCodec<fbf> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  alf.a(mg.bq).fieldOf("name").forGetter($$0x -> $$0x.b),
-                  Codec.LONG.optionalFieldOf("seed", 0L).forGetter($$0x -> $$0x.c),
-                  mf.j.r().fieldOf("type").forGetter($$0x -> $$0x.d)
-               )
-            )
+            .and($$0.group(ezm.e.fieldOf("component").forGetter($$0x -> $$0x.b), fbe.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
             .apply($$0, fbf::new)
    );
-   private final alf<ezm> b;
-   private final long c;
-   private final je<dxh<?>> d;
+   private final ezl<?> b;
+   private final fbc c;
 
-   private fbf(List<fcq> $$0, alf<ezm> $$1, long $$2, je<dxh<?>> $$3) {
+   private fbf(List<fcx> $$0, ezl<?> $$1, fbc $$2) {
       super($$0);
       this.b = $$1;
       this.c = $$2;
-      this.d = $$3;
    }
 
    @Override
-   public faw<fbf> b() {
-      return fax.y;
+   public fbd<fbf> b() {
+      return fbe.u;
    }
 
    @Override
-   public czd a(czd $$0, ezh $$1) {
+   public czk a(czk $$0, ezo $$1) {
       if ($$0.f()) {
          return $$0;
       } else {
-         $$0.b(kj.at, new dce(this.b, this.c));
+         this.b.a($$0, $$1x -> this.c.apply($$1x, $$1));
          return $$0;
       }
    }
 
    @Override
-   public void a(ezn $$0) {
+   public void a(ezu $$0) {
       super.a($$0);
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
-      } else {
-         if ($$0.a().c(this.b).isEmpty()) {
-            $$0.b("Missing loot table used for container: " + this.b.a());
-         }
-      }
-   }
-
-   public static fau.a<?> a(dxh<?> $$0, alf<ezm> $$1) {
-      return a($$2 -> new fbf($$2, $$1, 0L, $$0.a()));
-   }
-
-   public static fau.a<?> a(dxh<?> $$0, alf<ezm> $$1, long $$2) {
-      return a($$3 -> new fbf($$3, $$1, $$2, $$0.a()));
+      this.c.a($$0.a(".modifier"));
    }
 }

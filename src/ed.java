@@ -1,39 +1,142 @@
-import com.mojang.serialization.Codec;
-import java.util.Optional;
+import com.mojang.brigadier.exceptions.BuiltInExceptionProvider;
+import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
+import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 
-public class ed {
-   public static final Codec<ed> a = alg.a.xmap(ed::new, ed::a);
-   private final alg b;
-   private boolean c;
-   private Optional<hw<ei>> d = Optional.empty();
+public class ed implements BuiltInExceptionProvider {
+   private static final Dynamic2CommandExceptionType a = new Dynamic2CommandExceptionType(($$0, $$1) -> wy.b("argument.double.low", $$1, $$0));
+   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> wy.b("argument.double.big", $$1, $$0));
+   private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> wy.b("argument.float.low", $$1, $$0));
+   private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> wy.b("argument.float.big", $$1, $$0));
+   private static final Dynamic2CommandExceptionType e = new Dynamic2CommandExceptionType(($$0, $$1) -> wy.b("argument.integer.low", $$1, $$0));
+   private static final Dynamic2CommandExceptionType f = new Dynamic2CommandExceptionType(($$0, $$1) -> wy.b("argument.integer.big", $$1, $$0));
+   private static final Dynamic2CommandExceptionType g = new Dynamic2CommandExceptionType(($$0, $$1) -> wy.b("argument.long.low", $$1, $$0));
+   private static final Dynamic2CommandExceptionType h = new Dynamic2CommandExceptionType(($$0, $$1) -> wy.b("argument.long.big", $$1, $$0));
+   private static final DynamicCommandExceptionType i = new DynamicCommandExceptionType($$0 -> wy.b("argument.literal.incorrect", $$0));
+   private static final SimpleCommandExceptionType j = new SimpleCommandExceptionType(wy.c("parsing.quote.expected.start"));
+   private static final SimpleCommandExceptionType k = new SimpleCommandExceptionType(wy.c("parsing.quote.expected.end"));
+   private static final DynamicCommandExceptionType l = new DynamicCommandExceptionType($$0 -> wy.b("parsing.quote.escape", $$0));
+   private static final DynamicCommandExceptionType m = new DynamicCommandExceptionType($$0 -> wy.b("parsing.bool.invalid", $$0));
+   private static final DynamicCommandExceptionType n = new DynamicCommandExceptionType($$0 -> wy.b("parsing.int.invalid", $$0));
+   private static final SimpleCommandExceptionType o = new SimpleCommandExceptionType(wy.c("parsing.int.expected"));
+   private static final DynamicCommandExceptionType p = new DynamicCommandExceptionType($$0 -> wy.b("parsing.long.invalid", $$0));
+   private static final SimpleCommandExceptionType q = new SimpleCommandExceptionType(wy.c("parsing.long.expected"));
+   private static final DynamicCommandExceptionType r = new DynamicCommandExceptionType($$0 -> wy.b("parsing.double.invalid", $$0));
+   private static final SimpleCommandExceptionType s = new SimpleCommandExceptionType(wy.c("parsing.double.expected"));
+   private static final DynamicCommandExceptionType t = new DynamicCommandExceptionType($$0 -> wy.b("parsing.float.invalid", $$0));
+   private static final SimpleCommandExceptionType u = new SimpleCommandExceptionType(wy.c("parsing.float.expected"));
+   private static final SimpleCommandExceptionType v = new SimpleCommandExceptionType(wy.c("parsing.bool.expected"));
+   private static final DynamicCommandExceptionType w = new DynamicCommandExceptionType($$0 -> wy.b("parsing.expected", $$0));
+   private static final SimpleCommandExceptionType x = new SimpleCommandExceptionType(wy.c("command.unknown.command"));
+   private static final SimpleCommandExceptionType y = new SimpleCommandExceptionType(wy.c("command.unknown.argument"));
+   private static final SimpleCommandExceptionType z = new SimpleCommandExceptionType(wy.c("command.expected.separator"));
+   private static final DynamicCommandExceptionType A = new DynamicCommandExceptionType($$0 -> wy.b("command.exception", $$0));
 
-   public ed(alg $$0) {
-      this.b = $$0;
+   public Dynamic2CommandExceptionType doubleTooLow() {
+      return a;
    }
 
-   public Optional<hw<ei>> a(alv $$0) {
-      if (!this.c) {
-         this.d = $$0.a(this.b);
-         this.c = true;
-      }
-
-      return this.d;
+   public Dynamic2CommandExceptionType doubleTooHigh() {
+      return b;
    }
 
-   public alg a() {
-      return this.b;
+   public Dynamic2CommandExceptionType floatTooLow() {
+      return c;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if ($$0 == this) {
-         return true;
-      } else {
-         if ($$0 instanceof ed $$1 && this.a().equals($$1.a())) {
-            return true;
-         }
+   public Dynamic2CommandExceptionType floatTooHigh() {
+      return d;
+   }
 
-         return false;
-      }
+   public Dynamic2CommandExceptionType integerTooLow() {
+      return e;
+   }
+
+   public Dynamic2CommandExceptionType integerTooHigh() {
+      return f;
+   }
+
+   public Dynamic2CommandExceptionType longTooLow() {
+      return g;
+   }
+
+   public Dynamic2CommandExceptionType longTooHigh() {
+      return h;
+   }
+
+   public DynamicCommandExceptionType literalIncorrect() {
+      return i;
+   }
+
+   public SimpleCommandExceptionType readerExpectedStartOfQuote() {
+      return j;
+   }
+
+   public SimpleCommandExceptionType readerExpectedEndOfQuote() {
+      return k;
+   }
+
+   public DynamicCommandExceptionType readerInvalidEscape() {
+      return l;
+   }
+
+   public DynamicCommandExceptionType readerInvalidBool() {
+      return m;
+   }
+
+   public DynamicCommandExceptionType readerInvalidInt() {
+      return n;
+   }
+
+   public SimpleCommandExceptionType readerExpectedInt() {
+      return o;
+   }
+
+   public DynamicCommandExceptionType readerInvalidLong() {
+      return p;
+   }
+
+   public SimpleCommandExceptionType readerExpectedLong() {
+      return q;
+   }
+
+   public DynamicCommandExceptionType readerInvalidDouble() {
+      return r;
+   }
+
+   public SimpleCommandExceptionType readerExpectedDouble() {
+      return s;
+   }
+
+   public DynamicCommandExceptionType readerInvalidFloat() {
+      return t;
+   }
+
+   public SimpleCommandExceptionType readerExpectedFloat() {
+      return u;
+   }
+
+   public SimpleCommandExceptionType readerExpectedBool() {
+      return v;
+   }
+
+   public DynamicCommandExceptionType readerExpectedSymbol() {
+      return w;
+   }
+
+   public SimpleCommandExceptionType dispatcherUnknownCommand() {
+      return x;
+   }
+
+   public SimpleCommandExceptionType dispatcherUnknownArgument() {
+      return y;
+   }
+
+   public SimpleCommandExceptionType dispatcherExpectedArgumentSeparator() {
+      return z;
+   }
+
+   public DynamicCommandExceptionType dispatcherParseException() {
+      return A;
    }
 }

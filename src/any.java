@@ -4,22 +4,22 @@ import java.util.List;
 import java.util.function.Function;
 
 public class any {
-   public static void a(CommandDispatcher<ei> $$0) {
+   public static void a(CommandDispatcher<ej> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("list").executes($$0x -> a((ei)$$0x.getSource())))
-            .then(ej.a("uuids").executes($$0x -> b((ei)$$0x.getSource())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("list").executes($$0x -> a((ej)$$0x.getSource())))
+            .then(ek.a("uuids").executes($$0x -> b((ej)$$0x.getSource())))
       );
    }
 
-   private static int a(ei $$0) {
-      return a($$0, crc::m_);
+   private static int a(ej $$0) {
+      return a($$0, crj::m_);
    }
 
-   private static int b(ei $$0) {
-      return a($$0, $$0x -> wy.a("commands.list.nameAndId", $$0x.al(), wy.a($$0x.gi().getId())));
+   private static int b(ej $$0) {
+      return a($$0, $$0x -> wy.a("commands.list.nameAndId", $$0x.ai(), wy.a($$0x.gh().getId())));
    }
 
-   private static int a(ei $$0, Function<arr, wy> $$1) {
+   private static int a(ej $$0, Function<arr, wy> $$1) {
       avq $$2 = $$0.l().ag();
       List<arr> $$3 = $$2.t();
       wy $$4 = xb.b($$3, $$1);

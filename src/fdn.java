@@ -1,21 +1,26 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class fdn {
-   private static final Codec<fdm> h = mf.G.q().dispatch(fdm::b, fdl::a);
-   public static final Codec<fdm> a = Codec.lazyInitialized(() -> {
-      Codec<fdm> $$0 = Codec.withAlternative(h, fdq.a.codec());
-      return Codec.either(fdj.b, $$0).xmap(Either::unwrap, $$0x -> $$0x instanceof fdj $$1 ? Either.left($$1) : Either.right($$0x));
-   });
-   public static final fdl b = a("constant", fdj.a);
-   public static final fdl c = a("uniform", fdq.a);
-   public static final fdl d = a("binomial", fdi.a);
-   public static final fdl e = a("score", fdo.a);
-   public static final fdl f = a("storage", fdp.a);
-   public static final fdl g = a("enchantment_level", fdk.a);
+public record fdn(alg b) implements fdl {
+   public static final MapCodec<fdn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alg.a.fieldOf("source").forGetter(fdn::c)).apply($$0, fdn::new));
 
-   private static fdl a(String $$0, MapCodec<? extends fdm> $$1) {
-      return jr.a(mf.G, alg.b($$0), new fdl($$1));
+   @Override
+   public fdk a() {
+      return fdm.b;
+   }
+
+   @Override
+   public uw a(ezo $$0) {
+      return $$0.d().p().aK().a(this.b);
+   }
+
+   @Override
+   public Set<bax<?>> b() {
+      return Set.of();
+   }
+
+   public alg c() {
+      return this.b;
    }
 }

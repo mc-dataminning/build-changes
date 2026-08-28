@@ -1,231 +1,150 @@
-import java.time.LocalDate;
-import java.time.temporal.ChronoField;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.shorts.Short2ObjectMap;
+import it.unimi.dsi.fastutil.shorts.Short2ObjectOpenHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public class cin extends cim {
-   public static final float a = 0.5F;
-   public static final float b = 10.0F;
-   private static final akj<Byte> bF = akn.a(cin.class, akl.a);
-   private static final int bG = 1;
-   private static final cht bH = cht.b().a(4.0);
-   public final bvw c = new bvw();
-   public final bvw d = new bvw();
-   @Nullable
-   private iu bI;
+public class cin {
+   private static final Logger a = LogUtils.getLogger();
+   private final Short2ObjectMap<cim> b = new Short2ObjectOpenHashMap();
+   private final Map<jf<cio>, Set<cim>> c = Maps.newHashMap();
+   private final Runnable d;
+   private boolean e;
 
-   public cin(bwo<? extends cin> $$0, dja $$1) {
-      super($$0, $$1);
-      if (!$$1.C) {
-         this.w(true);
+   public cin(Runnable $$0) {
+      this($$0, true, ImmutableList.of());
+   }
+
+   cin(Runnable $$0, boolean $$1, List<cim> $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      $$2.forEach(this::a);
+   }
+
+   public cin.a a() {
+      return new cin.a(this.e, this.b.values().stream().map(cim::a).toList());
+   }
+
+   public Stream<cim> a(Predicate<jf<cio>> $$0, cil.b $$1) {
+      return this.c.entrySet().stream().filter($$1x -> $$0.test((jf<cio>)$$1x.getKey())).flatMap($$0x -> ((Set)$$0x.getValue()).stream()).filter($$1.a());
+   }
+
+   public void a(iv $$0, jf<cio> $$1) {
+      if (this.a(new cim($$0, $$1, this.d))) {
+         a.debug("Added POI of type {} @ {}", $$1.g(), $$0);
+         this.d.run();
       }
    }
 
-   @Override
-   public boolean ba() {
-      return !this.m() && (float)this.af % 10.0F == 0.0F;
-   }
+   private boolean a(cim $$0) {
+      iv $$1 = $$0.g();
+      jf<cio> $$2 = $$0.h();
+      short $$3 = jy.b($$1);
+      cim $$4 = (cim)this.b.get($$3);
+      if ($$4 != null) {
+         if ($$2.equals($$4.h())) {
+            return false;
+         }
 
-   @Override
-   protected void a(akn.a $$0) {
-      super.a($$0);
-      $$0.a(bF, (byte)0);
-   }
-
-   @Override
-   protected float fe() {
-      return 0.1F;
-   }
-
-   @Override
-   public float ff() {
-      return super.ff() * 0.95F;
-   }
-
-   @Nullable
-   @Override
-   public awm u() {
-      return this.m() && this.ae.a(4) != 0 ? null : awn.bF;
-   }
-
-   @Override
-   protected awm e(buu $$0) {
-      return awn.bH;
-   }
-
-   @Override
-   protected awm l_() {
-      return awn.bG;
-   }
-
-   @Override
-   public boolean bH() {
-      return false;
-   }
-
-   @Override
-   protected void D(bwf $$0) {
-   }
-
-   @Override
-   protected void o() {
-   }
-
-   public static byj.a j() {
-      return bxg.E().a(byk.s, 6.0);
-   }
-
-   public boolean m() {
-      return (this.al.a(bF) & 1) != 0;
-   }
-
-   public void w(boolean $$0) {
-      byte $$1 = this.al.a(bF);
-      if ($$0) {
-         this.al.a(bF, (byte)($$1 | 1));
-      } else {
-         this.al.a(bF, (byte)($$1 & -2));
-      }
-   }
-
-   @Override
-   public void h() {
-      super.h();
-      if (this.m()) {
-         this.i(feq.c);
-         this.o(this.dA(), (double)azm.a(this.dC()) + 1.0 - (double)this.dr(), this.dG());
-      } else {
-         this.i(this.dy().d(1.0, 0.6, 1.0));
+         ag.b("POI data mismatch: already registered at " + $$1);
       }
 
-      this.q();
-   }
-
-   @Override
-   protected void a(arq $$0) {
-      super.a($$0);
-      iu $$1 = this.dv();
-      iu $$2 = $$1.d();
-      if (this.m()) {
-         boolean $$3 = this.bb();
-         if ($$0.a_($$2).d($$0, $$1)) {
-            if (this.ae.a(200) == 0) {
-               this.aX = (float)this.ae.a(360);
-            }
-
-            if ($$0.a(bH, this) != null) {
-               this.w(false);
-               if (!$$3) {
-                  $$0.a(null, 1025, $$1, 0);
-               }
-            }
-         } else {
-            this.w(false);
-            if (!$$3) {
-               $$0.a(null, 1025, $$1, 0);
-            }
-         }
-      } else {
-         if (this.bI != null && (!$$0.v(this.bI) || this.bI.v() <= $$0.G_())) {
-            this.bI = null;
-         }
-
-         if (this.bI == null || this.ae.a(30) == 0 || this.bI.a(this.dt(), 2.0)) {
-            this.bI = iu.a(
-               this.dA() + (double)this.ae.a(7) - (double)this.ae.a(7),
-               this.dC() + (double)this.ae.a(6) - 2.0,
-               this.dG() + (double)this.ae.a(7) - (double)this.ae.a(7)
-            );
-         }
-
-         double $$4 = (double)this.bI.u() + 0.5 - this.dA();
-         double $$5 = (double)this.bI.v() + 0.1 - this.dC();
-         double $$6 = (double)this.bI.w() + 0.5 - this.dG();
-         feq $$7 = this.dy();
-         feq $$8 = $$7.b((Math.signum($$4) * 0.5 - $$7.d) * 0.1F, (Math.signum($$5) * 0.7F - $$7.e) * 0.1F, (Math.signum($$6) * 0.5 - $$7.f) * 0.1F);
-         this.i($$8);
-         float $$9 = (float)(azm.d($$8.f, $$8.d) * 180.0F / (float)Math.PI) - 90.0F;
-         float $$10 = azm.h($$9 - this.dL());
-         this.bi = 0.5F;
-         this.w(this.dL() + $$10);
-         if (this.ae.a(100) == 0 && $$0.a_($$2).d($$0, $$2)) {
-            this.w(true);
-         }
-      }
-   }
-
-   @Override
-   protected bwf.d bg() {
-      return bwf.d.c;
-   }
-
-   @Override
-   protected void a(double $$0, boolean $$1, eah $$2, iu $$3) {
-   }
-
-   @Override
-   public boolean g_() {
+      this.b.put($$3, $$0);
+      this.c.computeIfAbsent($$2, $$0x -> Sets.newHashSet()).add($$0);
       return true;
    }
 
-   @Override
-   public boolean a(arq $$0, buu $$1, float $$2) {
-      if (this.a($$0, $$1)) {
-         return false;
+   public void a(iv $$0) {
+      cim $$1 = (cim)this.b.remove(jy.b($$0));
+      if ($$1 == null) {
+         a.error("POI data mismatch: never registered at {}", $$0);
       } else {
-         if (this.m()) {
-            this.w(false);
-         }
-
-         return super.a($$0, $$1, $$2);
+         this.c.get($$1.h()).remove($$1);
+         a.debug("Removed POI of type {} @ {}", LogUtils.defer($$1::h), LogUtils.defer($$1::g));
+         this.d.run();
       }
    }
 
-   @Override
-   public void a(tz $$0) {
-      super.a($$0);
-      this.al.a(bF, $$0.f("BatFlags"));
+   @Deprecated
+   @bav
+   public int b(iv $$0) {
+      return this.e($$0).map(cim::b).orElse(0);
    }
 
-   @Override
-   public void b(tz $$0) {
-      super.b($$0);
-      $$0.a("BatFlags", this.al.a(bF).byteValue());
-   }
-
-   public static boolean b(bwo<cin> $$0, djb $$1, bwn $$2, iu $$3, azv $$4) {
-      if ($$3.v() >= $$1.a(egg.a.b, $$3).v()) {
-         return false;
+   public boolean c(iv $$0) {
+      cim $$1 = (cim)this.b.get(jy.b($$0));
+      if ($$1 == null) {
+         throw (IllegalStateException)ag.b(new IllegalStateException("POI never registered at " + $$0));
       } else {
-         int $$5 = $$1.B($$3);
-         int $$6 = 4;
-         if (n()) {
-            $$6 = 7;
-         } else if ($$4.h()) {
-            return false;
-         }
-
-         if ($$5 > $$4.a($$6)) {
-            return false;
-         } else {
-            return !$$1.a_($$3.e()).a(axc.cl) ? false : a($$0, $$1, $$2, $$3, $$4);
-         }
+         boolean $$2 = $$1.d();
+         this.d.run();
+         return $$2;
       }
    }
 
-   private static boolean n() {
-      LocalDate $$0 = LocalDate.now();
-      int $$1 = $$0.get(ChronoField.DAY_OF_MONTH);
-      int $$2 = $$0.get(ChronoField.MONTH_OF_YEAR);
-      return $$2 == 10 && $$1 >= 20 || $$2 == 11 && $$1 <= 3;
+   public boolean a(iv $$0, Predicate<jf<cio>> $$1) {
+      return this.d($$0).filter($$1).isPresent();
    }
 
-   private void q() {
-      if (this.m()) {
-         this.c.a();
-         this.d.b(this.af);
-      } else {
-         this.d.a();
-         this.c.b(this.af);
+   public Optional<jf<cio>> d(iv $$0) {
+      return this.e($$0).map(cim::h);
+   }
+
+   private Optional<cim> e(iv $$0) {
+      return Optional.ofNullable((cim)this.b.get(jy.b($$0)));
+   }
+
+   public void a(Consumer<BiConsumer<iv, jf<cio>>> $$0) {
+      if (!this.e) {
+         Short2ObjectMap<cim> $$1 = new Short2ObjectOpenHashMap(this.b);
+         this.c();
+         $$0.accept(($$1x, $$2) -> {
+            short $$3 = jy.b($$1x);
+            cim $$4 = (cim)$$1.computeIfAbsent($$3, $$2x -> new cim($$1x, $$2, this.d));
+            this.a($$4);
+         });
+         this.e = true;
+         this.d.run();
+      }
+   }
+
+   private void c() {
+      this.b.clear();
+      this.c.clear();
+   }
+
+   boolean b() {
+      return this.e;
+   }
+
+   public static record a(boolean b, List<cim.a> c) {
+      public static final Codec<cin.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.BOOL.lenientOptionalFieldOf("Valid", false).forGetter(cin.a::a), cim.a.a.listOf().fieldOf("Records").forGetter(cin.a::b))
+               .apply($$0, cin.a::new)
+      );
+
+      public cin a(Runnable $$0) {
+         return new cin($$0, this.b, this.c.stream().map($$1 -> $$1.a($$0)).toList());
+      }
+
+      public boolean a() {
+         return this.b;
+      }
+
+      public List<cim.a> b() {
+         return this.c;
       }
    }
 }

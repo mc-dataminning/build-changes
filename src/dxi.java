@@ -1,20 +1,20 @@
-public interface dxi {
-   dxi.a b();
+public class dxi extends dxm {
+   private final cyi a;
 
-   dxi.b c();
-
-   public static enum a {
-      a,
-      b,
-      c;
+   public dxi(iv $$0, eao $$1) {
+      this($$0, $$1, ((dmf)$$1.b()).b());
    }
 
-   public static record b(iu a, jz b) {
-      public static dxi.b a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-         int $$6 = Math.min($$0, $$3);
-         int $$7 = Math.min($$1, $$4);
-         int $$8 = Math.min($$2, $$5);
-         return new dxi.b(new iu($$6, $$7, $$8), new jz(Math.max($$0, $$3) - $$6, Math.max($$1, $$4) - $$7, Math.max($$2, $$5) - $$8));
-      }
+   public dxi(iv $$0, eao $$1, cyi $$2) {
+      super(dxo.z, $$0, $$1);
+      this.a = $$2;
+   }
+
+   public aca a() {
+      return aca.a(this);
+   }
+
+   public cyi c() {
+      return this.a;
    }
 }

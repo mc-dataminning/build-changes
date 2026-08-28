@@ -1,53 +1,28 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public abstract class ddk implements ddj {
-   private final ddh c;
-
-   public ddk(ddh $$0) {
-      this.c = $$0;
+public class ddk extends ddh {
+   public ddk(String $$0, ddn $$1, ddx $$2, czk $$3, float $$4, int $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean am_() {
-      return true;
+   protected czg f() {
+      return czo.xx;
    }
 
    @Override
-   public ddh c() {
-      return this.c;
+   public del<ddk> a() {
+      return del.p;
    }
 
    @Override
-   public ddt al_() {
-      return ddt.b;
+   public dem<ddk> b() {
+      return dem.c;
    }
 
    @Override
-   public abstract dee<? extends ddk> a();
-
-   public static class a<T extends ddj> implements dee<T> {
-      private final MapCodec<T> w;
-      private final yw<wj, T> x;
-
-      public a(ddk.a.a<T> $$0) {
-         this.w = RecordCodecBuilder.mapCodec($$1 -> $$1.group(ddh.e.fieldOf("category").orElse(ddh.d).forGetter(ddj::c)).apply($$1, $$0::create));
-         this.x = yw.a(ddh.g, ddj::c, $$0::create);
-      }
-
-      @Override
-      public MapCodec<T> a() {
-         return this.w;
-      }
-
-      @Override
-      public yw<wj, T> b() {
-         return this.x;
-      }
-
-      @FunctionalInterface
-      public interface a<T extends ddj> {
-         T create(ddh var1);
-      }
+   public dee h() {
+      return switch (this.e()) {
+         case b -> ded.h;
+         case a, c -> ded.i;
+      };
    }
 }

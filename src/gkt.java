@@ -1,200 +1,68 @@
-import com.google.common.collect.Queues;
-import com.mojang.authlib.GameProfile;
-import java.time.Instant;
-import java.util.Deque;
-import java.util.UUID;
-import java.util.function.BooleanSupplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import com.google.common.base.Splitter;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.SimpleChannelInboundHandler;
+import java.util.List;
 
-public class gkt {
-   private static final wy a = wy.c("chat.validation_error").a(n.m, n.u);
-   private final foz b;
-   private final Deque<gkt.a> c = Queues.newArrayDeque();
-   private long d;
-   private long e;
+public class gkt extends SimpleChannelInboundHandler<ByteBuf> {
+   private static final Splitter a = Splitter.on('\u0000').limit(6);
+   private final gmd b;
+   private final gkt.a c;
 
-   public gkt(foz $$0) {
+   public gkt(gmd $$0, gkt.a $$1) {
       this.b = $$0;
+      this.c = $$1;
    }
 
-   public void a() {
-      if (this.d != 0L) {
-         if (af.c() >= this.e + this.d) {
-            gkt.a $$0 = this.c.poll();
+   public void channelActive(ChannelHandlerContext $$0) throws Exception {
+      super.channelActive($$0);
+      ByteBuf $$1 = $$0.alloc().buffer();
 
-            while ($$0 != null && !$$0.a()) {
-               $$0 = this.c.poll();
-            }
+      try {
+         $$1.writeByte(254);
+         $$1.writeByte(1);
+         $$1.writeByte(250);
+         ask.a($$1, "MC|PingHost");
+         int $$2 = $$1.writerIndex();
+         $$1.writeShort(0);
+         int $$3 = $$1.writerIndex();
+         $$1.writeByte(127);
+         ask.a($$1, this.b.a());
+         $$1.writeInt(this.b.b());
+         int $$4 = $$1.writerIndex() - $$3;
+         $$1.setShort($$2, $$4);
+         $$0.channel().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
+      } catch (Exception var6) {
+         $$1.release();
+         throw var6;
+      }
+   }
+
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1) {
+      short $$2 = $$1.readUnsignedByte();
+      if ($$2 == 255) {
+         String $$3 = ask.a($$1);
+         List<String> $$4 = a.splitToList($$3);
+         if ("§1".equals($$4.get(0))) {
+            int $$5 = azm.a($$4.get(1), 0);
+            String $$6 = $$4.get(2);
+            String $$7 = $$4.get(3);
+            int $$8 = azm.a($$4.get(4), -1);
+            int $$9 = azm.a($$4.get(5), -1);
+            this.c.handleResponse($$5, $$6, $$7, $$8, $$9);
          }
       }
+
+      $$0.close();
    }
 
-   public void a(double $$0) {
-      long $$1 = (long)($$0 * 1000.0);
-      if ($$1 == 0L && this.d > 0L) {
-         this.c.forEach(gkt.a::a);
-         this.c.clear();
-      }
-
-      this.d = $$1;
+   public void exceptionCaught(ChannelHandlerContext $$0, Throwable $$1) {
+      $$0.close();
    }
 
-   public void b() {
-      this.c.remove().a();
-   }
-
-   public long c() {
-      return (long)this.c.size();
-   }
-
-   public void d() {
-      this.c.forEach(gkt.a::a);
-      this.c.clear();
-   }
-
-   public boolean a(xk $$0) {
-      return this.c.removeIf($$1 -> $$0.equals($$1.b()));
-   }
-
-   private boolean e() {
-      return this.d > 0L && af.c() < this.e + this.d;
-   }
-
-   private void a(@Nullable xk $$0, BooleanSupplier $$1) {
-      if (this.e()) {
-         this.c.add(new gkt.a($$0, $$1));
-      } else {
-         $$1.getAsBoolean();
-      }
-   }
-
-   public void a(xo $$0, GameProfile $$1, wu.a $$2) {
-      boolean $$3 = this.b.n.aj().c();
-      xo $$4 = $$3 ? $$0.a() : $$0;
-      wy $$5 = $$2.a($$4.d());
-      Instant $$6 = Instant.now();
-      this.a($$0.l(), () -> {
-         boolean $$6x = this.a($$2, $$0, $$5, $$1, $$3, $$6);
-         gka $$7 = this.b.L();
-         if ($$7 != null) {
-            $$7.a($$0, $$6x);
-         }
-
-         return $$6x;
-      });
-   }
-
-   public void a(UUID $$0, wu.a $$1) {
-      this.a(null, () -> {
-         if (this.b.a($$0)) {
-            return false;
-         } else {
-            wy $$2 = $$1.a(a);
-            this.b.m.d().a($$2, null, fot.d());
-            this.e = af.c();
-            return true;
-         }
-      });
-   }
-
-   public void a(wy $$0, wu.a $$1) {
-      Instant $$2 = Instant.now();
-      this.a(null, () -> {
-         wy $$3 = $$1.a($$0);
-         this.b.m.d().a($$3);
-         this.a($$1, $$0);
-         this.a($$3, $$2);
-         this.e = af.c();
-         return true;
-      });
-   }
-
-   private boolean a(wu.a $$0, xo $$1, wy $$2, GameProfile $$3, boolean $$4, Instant $$5) {
-      gkv $$6 = this.a($$1, $$2, $$5);
-      if ($$4 && $$6.a()) {
-         return false;
-      } else if (!this.b.a($$1.g()) && !$$1.j()) {
-         fot $$7 = $$6.a($$1);
-         xk $$8 = $$1.l();
-         xc $$9 = $$1.o();
-         if ($$9.a()) {
-            this.b.m.d().a($$2, $$8, $$7);
-            this.a($$0, $$1.d());
-         } else {
-            wy $$10 = $$9.b($$1.c());
-            if ($$10 != null) {
-               this.b.m.d().a($$0.a($$10), $$8, $$7);
-               this.a($$0, $$10);
-            }
-         }
-
-         this.a($$1, $$0, $$3, $$6);
-         this.e = af.c();
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private void a(wu.a $$0, wy $$1) {
-      this.b.aY().a($$0.b($$1));
-   }
-
-   private gkv a(xo $$0, wy $$1, Instant $$2) {
-      return this.a($$0.g()) ? gkv.a : gkv.a($$0, $$1, $$2);
-   }
-
-   private void a(xo $$0, wu.a $$1, GameProfile $$2, gkv $$3) {
-      gku $$4 = this.b.ba().b();
-      $$4.a(gkx.a($$2, $$0, $$3));
-   }
-
-   private void a(wy $$0, Instant $$1) {
-      gku $$2 = this.b.ba().b();
-      $$2.a(gkx.a($$0, $$1));
-   }
-
-   public void a(wy $$0, boolean $$1) {
-      if (!this.b.n.ah().c() || !this.b.a(this.a($$0))) {
-         if ($$1) {
-            this.b.m.a($$0, false);
-         } else {
-            this.b.m.d().a($$0);
-            this.a($$0, Instant.now());
-         }
-
-         this.b.aY().b($$0);
-      }
-   }
-
-   private UUID a(wy $$0) {
-      String $$1 = baj.a($$0);
-      String $$2 = StringUtils.substringBetween($$1, "<", ">");
-      return $$2 == null ? af.e : this.b.aN().a($$2);
-   }
-
-   private boolean a(UUID $$0) {
-      if (this.b.T() && this.b.t != null) {
-         UUID $$1 = this.b.t.gi().getId();
-         return $$1.equals($$0);
-      } else {
-         return false;
-      }
-   }
-
-   static record a(@Nullable xk a, BooleanSupplier b) {
-      public boolean a() {
-         return this.b.getAsBoolean();
-      }
-
-      @Nullable
-      public xk b() {
-         return this.a;
-      }
-
-      public BooleanSupplier c() {
-         return this.b;
-      }
+   @FunctionalInterface
+   public interface a {
+      void handleResponse(int var1, String var2, String var3, int var4, int var5);
    }
 }

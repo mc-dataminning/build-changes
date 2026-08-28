@@ -1,55 +1,59 @@
-import org.joml.Quaternionf;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Ordering;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-public abstract class guv extends gwg<ctn, hby> {
-   public guv(gwh.a $$0) {
-      super($$0);
-      this.e = 0.8F;
+public class guv implements guo.a {
+   private final fpo a;
+   private final Map<Long, Map<iv, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
+
+   guv(fpo $$0) {
+      this.a = $$0;
    }
 
-   public void a(hby $$0, fjj $$1, gqa $$2, int $$3) {
-      $$1.a();
-      $$1.a(0.0F, 0.375F, 0.0F);
-      $$1.a(a.d.rotationDegrees(180.0F - $$0.a));
-      float $$4 = $$0.c;
-      if ($$4 > 0.0F) {
-         $$1.a(a.b.rotationDegrees(azm.a($$4) * $$4 * $$0.d / 10.0F * (float)$$0.b));
+   public void a(long $$0, iv $$1) {
+      Map<iv, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
+      int $$3 = $$2.getOrDefault($$1, 0);
+      $$2.put($$1, $$3 + 1);
+   }
+
+   @Override
+   public void a(fjy $$0, gqm $$1, double $$2, double $$3, double $$4) {
+      long $$5 = this.a.s.ae();
+      int $$6 = 200;
+      double $$7 = 0.0025;
+      Set<iv> $$8 = Sets.newHashSet();
+      Map<iv, Integer> $$9 = Maps.newHashMap();
+      fkc $$10 = $$1.getBuffer(gqx.y());
+      Iterator<Entry<Long, Map<iv, Integer>>> $$11 = this.b.entrySet().iterator();
+
+      while ($$11.hasNext()) {
+         Entry<Long, Map<iv, Integer>> $$12 = $$11.next();
+         Long $$13 = $$12.getKey();
+         Map<iv, Integer> $$14 = $$12.getValue();
+         long $$15 = $$5 - $$13;
+         if ($$15 > 200L) {
+            $$11.remove();
+         } else {
+            for (Entry<iv, Integer> $$16 : $$14.entrySet()) {
+               iv $$17 = $$16.getKey();
+               Integer $$18 = $$16.getValue();
+               if ($$8.add($$17)) {
+                  fes $$19 = new fes(iv.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
+                  grf.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
+                  $$9.put($$17, $$18);
+               }
+            }
+         }
       }
 
-      if (!$$0.f && !azm.a($$0.e, 0.0F)) {
-         $$1.a(new Quaternionf().setAngleAxis($$0.e * (float) (Math.PI / 180.0), 1.0F, 0.0F, 1.0F));
+      for (Entry<iv, Integer> $$20 : $$9.entrySet()) {
+         iv $$21 = $$20.getKey();
+         Integer $$22 = $$20.getValue();
+         guo.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
       }
-
-      $$1.b(-1.0F, -1.0F, 1.0F);
-      $$1.a(a.d.rotationDegrees(90.0F));
-      gfy<hby> $$5 = this.a();
-      $$5.a($$0);
-      fjn $$6 = $$2.getBuffer(this.b());
-      $$5.a($$1, $$6, $$3, hin.d);
-      this.b($$0, $$1, $$2, $$3);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected void b(hby $$0, fjj $$1, gqa $$2, int $$3) {
-   }
-
-   protected abstract gfy<hby> a();
-
-   protected abstract gqk b();
-
-   public hby c() {
-      return new hby();
-   }
-
-   public void a(ctn $$0, hby $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.l($$2);
-      $$1.c = (float)$$0.I() - $$2;
-      $$1.b = $$0.J();
-      $$1.d = Math.max($$0.H() - $$2, 0.0F);
-      $$1.e = $$0.a($$2);
-      $$1.f = $$0.bn();
-      $$1.g = $$0.a(0, $$2);
-      $$1.h = $$0.a(1, $$2);
    }
 }

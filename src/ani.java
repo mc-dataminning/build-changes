@@ -15,19 +15,19 @@ public class ani {
    private static final Dynamic2CommandExceptionType d = new Dynamic2CommandExceptionType(($$0, $$1) -> wy.b("commands.enchant.failed.level", $$0, $$1));
    private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wy.c("commands.enchant.failed"));
 
-   public static void a(CommandDispatcher<ei> $$0, ee $$1) {
+   public static void a(CommandDispatcher<ej> $$0, ef $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("enchant").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("enchant").requires($$0x -> $$0x.c(2)))
             .then(
-               ej.a("targets", ev.b())
+               ek.a("targets", ew.b())
                   .then(
-                     ((RequiredArgumentBuilder)ej.a("enchantment", fh.a($$1, mg.aR))
-                           .executes($$0x -> a((ei)$$0x.getSource(), ev.b($$0x, "targets"), fh.g($$0x, "enchantment"), 1)))
+                     ((RequiredArgumentBuilder)ek.a("enchantment", fi.a($$1, mh.aR))
+                           .executes($$0x -> a((ej)$$0x.getSource(), ew.b($$0x, "targets"), fi.g($$0x, "enchantment"), 1)))
                         .then(
-                           ej.a("level", IntegerArgumentType.integer(0))
+                           ek.a("level", IntegerArgumentType.integer(0))
                               .executes(
                                  $$0x -> a(
-                                       (ei)$$0x.getSource(), ev.b($$0x, "targets"), fh.g($$0x, "enchantment"), IntegerArgumentType.getInteger($$0x, "level")
+                                       (ej)$$0x.getSource(), ew.b($$0x, "targets"), fi.g($$0x, "enchantment"), IntegerArgumentType.getInteger($$0x, "level")
                                     )
                               )
                         )
@@ -36,29 +36,29 @@ public class ani {
       );
    }
 
-   private static int a(ei $$0, Collection<? extends bwf> $$1, je<dfq> $$2, int $$3) throws CommandSyntaxException {
-      dfq $$4 = $$2.a();
+   private static int a(ej $$0, Collection<? extends bwi> $$1, jf<dfx> $$2, int $$3) throws CommandSyntaxException {
+      dfx $$4 = $$2.a();
       if ($$3 > $$4.e()) {
          throw d.create($$3, $$4.e());
       } else {
          int $$5 = 0;
 
-         for (bwf $$6 : $$1) {
-            if ($$6 instanceof bxe) {
-               bxe $$7 = (bxe)$$6;
-               czd $$8 = $$7.fb();
+         for (bwi $$6 : $$1) {
+            if ($$6 instanceof bxj) {
+               bxj $$7 = (bxj)$$6;
+               czk $$8 = $$7.fa();
                if (!$$8.f()) {
-                  if ($$4.c($$8) && dfs.a(dfs.b($$8).a(), $$2)) {
+                  if ($$4.c($$8) && dfz.a(dfz.b($$8).a(), $$2)) {
                      $$8.a($$2, $$3);
                      $$5++;
                   } else if ($$1.size() == 1) {
                      throw c.create($$8.y().getString());
                   }
                } else if ($$1.size() == 1) {
-                  throw b.create($$7.al().getString());
+                  throw b.create($$7.ai().getString());
                }
             } else if ($$1.size() == 1) {
-               throw a.create($$6.al().getString());
+               throw a.create($$6.ai().getString());
             }
          }
 
@@ -66,9 +66,9 @@ public class ani {
             throw e.create();
          } else {
             if ($$1.size() == 1) {
-               $$0.a(() -> wy.a("commands.enchant.success.single", dfq.a($$2, $$3), $$1.iterator().next().m_()), true);
+               $$0.a(() -> wy.a("commands.enchant.success.single", dfx.a($$2, $$3), $$1.iterator().next().m_()), true);
             } else {
-               $$0.a(() -> wy.a("commands.enchant.success.multiple", dfq.a($$2, $$3), $$1.size()), true);
+               $$0.a(() -> wy.a("commands.enchant.success.multiple", dfx.a($$2, $$3), $$1.size()), true);
             }
 
             return $$5;

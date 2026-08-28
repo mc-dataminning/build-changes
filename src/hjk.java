@@ -1,20 +1,121 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public record hjk(azx c) implements hjc {
-   public static final MapCodec<hjk> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(azx.a.fieldOf("pattern").forGetter(hjk::b)).apply($$0, hjk::new));
+public class hjk {
+   private final alg a;
+   private final hje b;
+   final int c;
+   final int d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final float h;
 
-   @Override
-   public void a(avd $$0, hjc.a $$1) {
-      $$1.a(this.c.c());
+   protected hjk(alg $$0, hje $$1, int $$2, int $$3, int $$4, int $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$4;
+      this.d = $$5;
+      this.e = (float)$$4 / (float)$$2;
+      this.f = (float)($$4 + $$1.a()) / (float)$$2;
+      this.g = (float)$$5 / (float)$$3;
+      this.h = (float)($$5 + $$1.b()) / (float)$$3;
    }
 
-   @Override
-   public MapCodec<hjk> a() {
-      return b;
-   }
-
-   public azx b() {
+   public int a() {
       return this.c;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public float c() {
+      return this.e;
+   }
+
+   public float d() {
+      return this.f;
+   }
+
+   public hje e() {
+      return this.b;
+   }
+
+   @Nullable
+   public hjk.a f() {
+      final hjg $$0 = this.b.e();
+      return $$0 != null ? new hjk.a() {
+         @Override
+         public void a(fjr $$0x) {
+            $$0.a(hjk.this.c, hjk.this.d, $$0);
+         }
+
+         @Override
+         public void close() {
+            $$0.close();
+         }
+      } : null;
+   }
+
+   public float a(float $$0) {
+      float $$1 = this.f - this.e;
+      return this.e + $$1 * $$0;
+   }
+
+   public float b(float $$0) {
+      float $$1 = this.f - this.e;
+      return ($$0 - this.e) / $$1;
+   }
+
+   public float g() {
+      return this.g;
+   }
+
+   public float h() {
+      return this.h;
+   }
+
+   public float c(float $$0) {
+      float $$1 = this.h - this.g;
+      return this.g + $$1 * $$0;
+   }
+
+   public float d(float $$0) {
+      float $$1 = this.h - this.g;
+      return ($$0 - this.g) / $$1;
+   }
+
+   public alg i() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return "TextureAtlasSprite{contents='" + this.b + "', u0=" + this.e + ", u1=" + this.f + ", v0=" + this.g + ", v1=" + this.h + "}";
+   }
+
+   public void a(fjr $$0) {
+      this.b.a(this.c, this.d, $$0);
+   }
+
+   private float k() {
+      float $$0 = (float)this.b.a() / (this.f - this.e);
+      float $$1 = (float)this.b.b() / (this.h - this.g);
+      return Math.max($$1, $$0);
+   }
+
+   public float j() {
+      return 4.0F / this.k();
+   }
+
+   public fkc a(fkc $$0) {
+      return new grj($$0, this);
+   }
+
+   public interface a extends AutoCloseable {
+      void a(fjr var1);
+
+      @Override
+      void close();
    }
 }

@@ -2,7 +2,7 @@ import com.mojang.authlib.GameProfile;
 import java.time.Duration;
 import java.util.UUID;
 
-public record xp(UUID a, crg b) {
+public record xp(UUID a, crn b) {
    public xu a(Duration $$0) {
       return new xu.a(this.b.a(), () -> this.b.b().a($$0));
    }
@@ -23,13 +23,13 @@ public record xp(UUID a, crg b) {
       return this.a;
    }
 
-   public crg d() {
+   public crn d() {
       return this.b;
    }
 
-   public static record a(UUID a, crg.a b) {
+   public static record a(UUID a, crn.a b) {
       public static xp.a a(vu $$0) {
-         return new xp.a($$0.n(), new crg.a($$0));
+         return new xp.a($$0.n(), new crn.a($$0));
       }
 
       public static void a(vu $$0, xp.a $$1) {
@@ -37,8 +37,8 @@ public record xp(UUID a, crg b) {
          $$1.b.a($$0);
       }
 
-      public xp a(GameProfile $$0, bab $$1) throws crg.b {
-         return new xp(this.a, crg.a($$1, $$0.getId(), this.b));
+      public xp a(GameProfile $$0, bab $$1) throws crn.b {
+         return new xp(this.a, crn.a($$1, $$0.getId(), this.b));
       }
    }
 }

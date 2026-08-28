@@ -1,80 +1,142 @@
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.concurrent.CompletionException;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
 public class fkf {
-   private static final Logger a = LogUtils.getLogger();
-
-   public static void a(foz $$0, fyb $$1, fyb $$2, int $$3, fla $$4, @Nullable fny $$5) {
-      gdc.a($$0, $$1, ($$6, $$7, $$8, $$9) -> {
-         Path $$10;
-         try {
-            $$10 = a($$7, $$8, $$9);
-         } catch (IOException var13) {
-            a.warn("Failed to create temporary world folder.");
-            $$0.a(new fmn(wy.c("mco.create.world.failed"), $$2));
-            return true;
-         }
-
-         flg $$13 = flg.a($$8.J(), $$8.J().e(), ab.b().c());
-         fkm $$14 = new fkm($$10, $$13, $$0.X(), $$4.a, $$3, fkn.f());
-         $$0.d(new fwu($$14::b, wy.c("mco.create.world.reset.title"), wy.i(), wx.e, false));
-         if ($$5 != null) {
-            $$5.run();
-         }
-
-         $$14.a().handleAsync(($$5xx, $$6x) -> {
-            if ($$6x != null) {
-               if ($$6x instanceof CompletionException $$7x) {
-                  $$6x = $$7x.getCause();
-               }
-
-               if ($$6x instanceof fkg) {
-                  $$0.d($$2);
-               } else {
-                  if ($$6x instanceof fki $$8x) {
-                     a.warn("Failed to create realms world {}", $$8x.a());
-                  } else {
-                     a.warn("Failed to create realms world {}", $$6x.getMessage());
-                  }
-
-                  $$0.d(new fmn(wy.c("mco.create.world.failed"), $$2));
-               }
-            } else {
-               if ($$1 instanceof fmj $$9x) {
-                  $$9x.a($$4.a);
-               }
-
-               if ($$5 != null) {
-                  fju.a($$4, $$1, true);
-               } else {
-                  $$0.d($$1);
-               }
-
-               fju.g();
-            }
-
-            return null;
-         }, $$0);
-         return true;
-      });
+   public static fkc a() {
+      throw new IllegalArgumentException();
    }
 
-   private static Path a(jl<alp> $$0, eyz $$1, @Nullable Path $$2) throws IOException {
-      Path $$3 = Files.createTempDirectory("minecraft_realms_world_upload");
-      if ($$2 != null) {
-         Files.move($$2, $$3.resolve("datapacks"));
+   public static fkc a(fkc $$0) {
+      return $$0;
+   }
+
+   public static fkc a(fkc $$0, fkc $$1) {
+      return new fkf.a($$0, $$1);
+   }
+
+   public static fkc a(fkc... $$0) {
+      return new fkf.b($$0);
+   }
+
+   static class a implements fkc {
+      private final fkc a;
+      private final fkc b;
+
+      public a(fkc $$0, fkc $$1) {
+         if ($$0 == $$1) {
+            throw new IllegalArgumentException("Duplicate delegates");
+         } else {
+            this.a = $$0;
+            this.b = $$1;
+         }
       }
 
-      tz $$4 = $$1.a($$0.a(), null);
-      tz $$5 = new tz();
-      $$5.a("Data", $$4);
-      Path $$6 = Files.createFile($$3.resolve("level.dat"));
-      um.a($$5, $$6);
-      return $$3;
+      @Override
+      public fkc a(float $$0, float $$1, float $$2) {
+         this.a.a($$0, $$1, $$2);
+         this.b.a($$0, $$1, $$2);
+         return this;
+      }
+
+      @Override
+      public fkc a(int $$0, int $$1, int $$2, int $$3) {
+         this.a.a($$0, $$1, $$2, $$3);
+         this.b.a($$0, $$1, $$2, $$3);
+         return this;
+      }
+
+      @Override
+      public fkc a(float $$0, float $$1) {
+         this.a.a($$0, $$1);
+         this.b.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fkc a(int $$0, int $$1) {
+         this.a.a($$0, $$1);
+         this.b.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fkc b(int $$0, int $$1) {
+         this.a.b($$0, $$1);
+         this.b.b($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fkc b(float $$0, float $$1, float $$2) {
+         this.a.b($$0, $$1, $$2);
+         this.b.b($$0, $$1, $$2);
+         return this;
+      }
+
+      @Override
+      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
+         this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
+      }
+   }
+
+   static record b(fkc[] a) implements fkc {
+      b(fkc[] a) {
+         for (int $$1 = 0; $$1 < a.length; $$1++) {
+            for (int $$2 = $$1 + 1; $$2 < a.length; $$2++) {
+               if (a[$$1] == a[$$2]) {
+                  throw new IllegalArgumentException("Duplicate delegates");
+               }
+            }
+         }
+
+         this.a = a;
+      }
+
+      private void a(Consumer<fkc> $$0) {
+         for (fkc $$1 : this.a) {
+            $$0.accept($$1);
+         }
+      }
+
+      @Override
+      public fkc a(float $$0, float $$1, float $$2) {
+         this.a($$3 -> $$3.a($$0, $$1, $$2));
+         return this;
+      }
+
+      @Override
+      public fkc a(int $$0, int $$1, int $$2, int $$3) {
+         this.a($$4 -> $$4.a($$0, $$1, $$2, $$3));
+         return this;
+      }
+
+      @Override
+      public fkc a(float $$0, float $$1) {
+         this.a($$2 -> $$2.a($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public fkc a(int $$0, int $$1) {
+         this.a($$2 -> $$2.a($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public fkc b(int $$0, int $$1) {
+         this.a($$2 -> $$2.b($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public fkc b(float $$0, float $$1, float $$2) {
+         this.a($$3 -> $$3.b($$0, $$1, $$2));
+         return this;
+      }
+
+      @Override
+      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+         this.a($$11 -> $$11.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10));
+      }
    }
 }

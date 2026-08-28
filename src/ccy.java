@@ -1,59 +1,20 @@
-public class ccy implements ccz {
-   private final bxg a;
-   private static final int b = 15;
-   private static final int c = 10;
-   private static final int d = 10;
-   private int e;
-   private float f;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-   public ccy(bxg $$0) {
-      this.a = $$0;
-   }
-
-   public void a() {
-      if (this.f()) {
-         this.a.aV = this.a.dL();
-         this.c();
-         this.f = this.a.aX;
-         this.e = 0;
-      } else {
-         if (this.e()) {
-            if (Math.abs(this.a.aX - this.f) > 15.0F) {
-               this.e = 0;
-               this.f = this.a.aX;
-               this.b();
-            } else {
-               this.e++;
-               if (this.e > 10) {
-                  this.d();
-               }
-            }
-         }
-      }
-   }
-
-   private void b() {
-      this.a.aV = azm.c(this.a.aV, this.a.aX, (float)this.a.ad());
-   }
-
-   private void c() {
-      this.a.aX = azm.c(this.a.aX, this.a.aV, (float)this.a.ad());
-   }
-
-   private void d() {
-      int $$0 = this.e - 10;
-      float $$1 = azm.a((float)$$0 / 10.0F, 0.0F, 1.0F);
-      float $$2 = (float)this.a.ad() * (1.0F - $$1);
-      this.a.aV = azm.c(this.a.aV, this.a.aX, $$2);
-   }
-
-   private boolean e() {
-      return !(this.a.cZ() instanceof bxg);
-   }
-
-   private boolean f() {
-      double $$0 = this.a.dA() - this.a.K;
-      double $$1 = this.a.dG() - this.a.M;
-      return $$0 * $$0 + $$1 * $$1 > 2.5000003E-7F;
+public class ccy {
+   public static bzb<bxj> a() {
+      return ccn.a(
+         (Function<ccn.b<bxj>, ? extends App<ccn.c<bxj>, ccq<bxj>>>)($$0 -> $$0.group($$0.a(cgl.o), $$0.a(cgl.aA), $$0.a(cgl.az), $$0.c(cgl.p))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$4x, $$5, $$6) -> {
+                     Optional<iv> $$7 = $$0.<bxj>a($$3).map(bwi::du).or(() -> $$0.a($$2));
+                     if ($$7.isEmpty()) {
+                        return false;
+                     } else {
+                        $$1.a(new bzd($$7.get()));
+                        return true;
+                     }
+                  }))
+      );
    }
 }

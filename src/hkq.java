@@ -1,12 +1,31 @@
-import com.mojang.serialization.Codec;
-import java.util.Map;
+import com.google.common.collect.Lists;
+import com.ibm.icu.lang.UCharacter;
+import com.ibm.icu.text.ArabicShaping;
+import com.ibm.icu.text.Bidi;
+import com.ibm.icu.text.BidiRun;
+import java.util.List;
 
-public record hkq(Map<String, hkf> d) {
-   public static final Codec<String> a = Codec.string(1, 16);
-   public static final Codec<hkq> b = Codec.unboundedMap(a, hkf.a).xmap(hkq::new, hkq::a);
-   public static final auc<hkq> c = new auc<>("language", b);
+public class hkq {
+   public static ayy a(xd $$0, boolean $$1) {
+      xw $$2 = xw.a($$0, UCharacter::getMirror, hkq::a);
+      Bidi $$3 = new Bidi($$2.a(), $$1 ? 127 : 126);
+      $$3.setReorderingMode(0);
+      List<ayy> $$4 = Lists.newArrayList();
+      int $$5 = $$3.countRuns();
 
-   public Map<String, hkf> a() {
-      return this.d;
+      for (int $$6 = 0; $$6 < $$5; $$6++) {
+         BidiRun $$7 = $$3.getVisualRun($$6);
+         $$4.addAll($$2.a($$7.getStart(), $$7.getLength(), $$7.isOddRun()));
+      }
+
+      return ayy.composite($$4);
+   }
+
+   private static String a(String $$0) {
+      try {
+         return new ArabicShaping(8).shape($$0);
+      } catch (Exception var2) {
+         return $$0;
+      }
    }
 }

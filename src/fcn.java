@@ -1,36 +1,60 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public record fcn(fcq b) implements fcq {
-   public static final MapCodec<fcn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(fcq.e.fieldOf("term").forGetter(fcn::c)).apply($$0, fcn::new));
+public abstract class fcn implements fcx {
+   protected final List<fcx> c;
+   private final Predicate<ezo> a;
+
+   protected fcn(List<fcx> $$0, Predicate<ezo> $$1) {
+      this.c = $$0;
+      this.a = $$1;
+   }
+
+   protected static <T extends fcn> MapCodec<T> a(Function<List<fcx>, T> $$0) {
+      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(fcx.e.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
+   }
+
+   protected static <T extends fcn> Codec<T> b(Function<List<fcx>, T> $$0) {
+      return fcx.e.listOf().xmap($$0, $$0x -> $$0x.c);
+   }
+
+   public final boolean a(ezo $$0) {
+      return this.a.test($$0);
+   }
 
    @Override
-   public fcr b() {
-      return fcs.a;
+   public void a(ezu $$0) {
+      fcx.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
+      }
    }
 
-   public boolean a(ezh $$0) {
-      return !this.b.test($$0);
-   }
+   public abstract static class a implements fcx.a {
+      private final Builder<fcx> a = ImmutableList.builder();
 
-   @Override
-   public Set<bax<?>> a() {
-      return this.b.a();
-   }
+      protected a(fcx.a... $$0) {
+         for (fcx.a $$1 : $$0) {
+            this.a.add($$1.build());
+         }
+      }
 
-   @Override
-   public void a(ezn $$0) {
-      fcq.super.a($$0);
-      this.b.a($$0);
-   }
+      public void a(fcx.a $$0) {
+         this.a.add($$0.build());
+      }
 
-   public static fcq.a a(fcq.a $$0) {
-      fcn $$1 = new fcn($$0.build());
-      return () -> $$1;
-   }
+      @Override
+      public fcx build() {
+         return this.a(this.a.build());
+      }
 
-   public fcq c() {
-      return this.b;
+      protected abstract fcx a(List<fcx> var1);
    }
 }

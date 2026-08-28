@@ -1,16 +1,7 @@
-public abstract class cwk extends cuv {
-   public cwk(cwe<?> $$0, int $$1) {
-      super($$0, $$1);
-   }
+import javax.annotation.Nullable;
 
-   public abstract cwk.a a(boolean var1, boolean var2, ddz<?> var3, arq var4, crb var5);
-
-   public abstract void a(cri var1);
-
-   public abstract cwl aj_();
-
-   public static enum a {
-      a,
-      b;
-   }
+@FunctionalInterface
+public interface cwk {
+   @Nullable
+   cvc createMenu(int var1, cri var2, crj var3);
 }

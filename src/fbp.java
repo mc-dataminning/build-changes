@@ -1,93 +1,83 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 import java.util.Set;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
 
-public class fbp extends fau {
+public class fbp extends fbb {
    public static final MapCodec<fbp> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  xa.a.sizeLimitedListOf(256).fieldOf("lore").forGetter($$0x -> $$0x.b),
-                  fat.a(256).forGetter($$0x -> $$0x.c),
-                  ezh.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d)
+                  Codec.unboundedMap(dfx.c, fdu.a).optionalFieldOf("enchantments", Map.of()).forGetter($$0x -> $$0x.b),
+                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
                )
             )
             .apply($$0, fbp::new)
    );
-   private final List<wy> b;
-   private final fat c;
-   private final Optional<ezh.b> d;
+   private final Map<jf<dfx>, fdt> b;
+   private final boolean c;
 
-   public fbp(List<fcq> $$0, List<wy> $$1, fat $$2, Optional<ezh.b> $$3) {
+   fbp(List<fcx> $$0, Map<jf<dfx>, fdt> $$1, boolean $$2) {
       super($$0);
-      this.b = List.copyOf($$1);
+      this.b = Map.copyOf($$1);
       this.c = $$2;
-      this.d = $$3;
    }
 
    @Override
-   public faw<fbp> b() {
-      return fax.A;
+   public fbd<fbp> b() {
+      return fbe.i;
    }
 
    @Override
    public Set<bax<?>> a() {
-      return this.d.<Set<bax<?>>>map($$0 -> Set.of($$0.a())).orElseGet(Set::of);
+      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
    }
 
    @Override
-   public czd a(czd $$0, ezh $$1) {
-      $$0.a(kj.j, dbw.a, $$1x -> new dbw(this.a($$1x, $$1)));
+   public czk a(czk $$0, ezo $$1) {
+      if ($$0.a(czo.rF)) {
+         $$0 = $$0.a((djg)czo.vG);
+      }
+
+      dfz.a($$0, $$1x -> {
+         if (this.c) {
+            this.b.forEach(($$2, $$3) -> $$1x.a((jf<dfx>)$$2, azm.a($$1x.a((jf<dfx>)$$2) + $$3.a($$1), 0, 255)));
+         } else {
+            this.b.forEach(($$2, $$3) -> $$1x.a((jf<dfx>)$$2, azm.a($$3.a($$1), 0, 255)));
+         }
+      });
       return $$0;
    }
 
-   private List<wy> a(@Nullable dbw $$0, ezh $$1) {
-      if ($$0 == null && this.b.isEmpty()) {
-         return List.of();
-      } else {
-         UnaryOperator<wy> $$2 = fbq.a($$1, this.d.orElse(null));
-         List<wy> $$3 = this.b.stream().map($$2).toList();
-         return this.c.a($$0.a(), $$3, 256);
-      }
-   }
+   public static class a extends fbb.a<fbp.a> {
+      private final Builder<jf<dfx>, fdt> a = ImmutableMap.builder();
+      private final boolean b;
 
-   public static fbp.a c() {
-      return new fbp.a();
-   }
-
-   public static class a extends fau.a<fbp.a> {
-      private Optional<ezh.b> a = Optional.empty();
-      private final Builder<wy> b = ImmutableList.builder();
-      private fat c = fat.a.b;
-
-      public fbp.a a(fat $$0) {
-         this.c = $$0;
-         return this;
+      public a() {
+         this(false);
       }
 
-      public fbp.a a(ezh.b $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public fbp.a a(wy $$0) {
-         this.b.add($$0);
-         return this;
+      public a(boolean $$0) {
+         this.b = $$0;
       }
 
       protected fbp.a a() {
          return this;
       }
 
+      public fbp.a a(jf<dfx> $$0, fdt $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
       @Override
-      public fav b() {
-         return new fbp(this.g(), this.b.build(), this.c, this.a);
+      public fbc b() {
+         return new fbp(this.g(), this.a.build(), this.b);
       }
    }
 }

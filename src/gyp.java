@@ -1,30 +1,26 @@
-public class gyp<T extends cop> extends gxn<T, hdn, gia> {
-   private static final alg a = alg.b("textures/entity/spider/spider.png");
+public class gyp extends gxz<coq, hep, ghy> {
+   private static final alg a = alg.b("textures/entity/illager/ravager.png");
 
-   public gyp(gwh.a $$0) {
-      this($$0, gjb.dk);
+   public gyp(gwt.a $$0) {
+      super($$0, new ghy($$0.a(gjn.cJ)), 1.1F);
    }
 
-   public gyp(gwh.a $$0, gja $$1) {
-      super($$0, new gia($$0.a($$1)), 0.8F);
-      this.a(new hbb<>(this));
-   }
-
-   @Override
-   protected float aS_() {
-      return 180.0F;
-   }
-
-   @Override
-   public alg b(hdn $$0) {
+   public alg a(hep $$0) {
       return a;
    }
 
-   public hdn b() {
-      return new hdn();
+   public hep b() {
+      return new hep();
    }
 
-   public void a(T $$0, hdn $$1, float $$2) {
+   public void a(coq $$0, hep $$1, float $$2) {
       super.a($$0, $$1, $$2);
+      $$1.a = (float)$$0.q() > 0.0F ? (float)$$0.q() - $$2 : 0.0F;
+      $$1.b = (float)$$0.m() > 0.0F ? (float)$$0.m() - $$2 : 0.0F;
+      if ($$0.gA() > 0) {
+         $$1.c = ((float)(20 - $$0.gA()) + $$2) / 20.0F;
+      } else {
+         $$1.c = 0.0F;
+      }
    }
 }

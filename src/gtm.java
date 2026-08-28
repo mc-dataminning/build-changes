@@ -1,66 +1,53 @@
-import javax.annotation.Nullable;
+public class gtm implements gsy<dyz> {
+   private final gtm.a a;
 
-public class gtm implements did {
-   public static final int a = 1;
-   public static final int b = 3;
-   private final int e;
-   private final int f;
-   protected final gtl[] c;
-   protected final dja d;
-
-   gtm(dja $$0, int $$1, int $$2, gtl[] $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.c = $$3;
+   public gtm(gsz.a $$0) {
+      this($$0.f());
    }
 
-   @Override
-   public eah a_(iu $$0) {
-      return this.a(jx.a($$0.u()), jx.a($$0.w())).b($$0);
+   public gtm(gjk $$0) {
+      this.a = new gtm.a($$0.a(gjn.cT));
    }
 
-   @Override
-   public ewo b_(iu $$0) {
-      return this.a(jx.a($$0.u()), jx.a($$0.w())).b($$0).y();
+   public void a(dyz $$0, float $$1, fjy $$2, gqm $$3, int $$4, int $$5, fex $$6) {
+      jb $$7 = $$0.m().a(dtv.c, jb.b);
+      cyi $$8 = $$0.s();
+      hlq $$9;
+      if ($$8 == null) {
+         $$9 = grg.s;
+      } else {
+         $$9 = grg.d($$8);
+      }
+
+      float $$11 = $$0.a($$1);
+      this.a($$2, $$3, $$4, $$5, $$7, $$11, $$9);
    }
 
-   @Override
-   public float a(ja $$0, boolean $$1) {
-      return this.d.a($$0, $$1);
+   public void a(fjy $$0, gqm $$1, int $$2, int $$3, jb $$4, float $$5, hlq $$6) {
+      $$0.a();
+      $$0.a(0.5F, 0.5F, 0.5F);
+      float $$7 = 0.9995F;
+      $$0.b(0.9995F, 0.9995F, 0.9995F);
+      $$0.a($$4.b());
+      $$0.b(1.0F, -1.0F, -1.0F);
+      $$0.a(0.0F, -1.0F, 0.0F);
+      this.a.a($$5);
+      fkc $$8 = $$6.a($$1, this.a::a);
+      this.a.a($$0, $$8, $$2, $$3);
+      $$0.b();
    }
 
-   @Override
-   public ewd x_() {
-      return this.d.x_();
-   }
+   static class a extends ghg {
+      private final gjo a;
 
-   @Nullable
-   @Override
-   public dxf c_(iu $$0) {
-      return this.a(jx.a($$0.u()), jx.a($$0.w())).a($$0);
-   }
+      public a(gjo $$0) {
+         super($$0, gqx::g);
+         this.a = $$0.b("lid");
+      }
 
-   private gtl a(int $$0, int $$1) {
-      return this.c[a(this.e, this.f, $$0, $$1)];
-   }
-
-   @Override
-   public int a(iu $$0, dil $$1) {
-      return this.d.a($$0, $$1);
-   }
-
-   @Override
-   public int G_() {
-      return this.d.G_();
-   }
-
-   @Override
-   public int H_() {
-      return this.d.H_();
-   }
-
-   public static int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$2 - $$0 + ($$3 - $$1) * 3;
+      public void a(float $$0) {
+         this.a.a(0.0F, 24.0F - $$0 * 0.5F * 16.0F, 0.0F);
+         this.a.f = 270.0F * $$0 * (float) (Math.PI / 180.0);
+      }
    }
 }

@@ -1,11 +1,10 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
-import com.mojang.datafixers.util.Pair;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class boh extends bks {
+public class boh extends bku {
    public boh(int $$0, Schema $$1) {
       super($$0, $$1);
    }
@@ -14,21 +13,26 @@ public class boh extends bks {
       super.registerTypes($$0, $$1, $$2);
       $$0.registerType(
          true,
-         bix.A,
-         () -> DSL.optional(
-               DSL.field(
-                  "equipment",
-                  DSL.optionalFields(
-                     new Pair[]{
-                        Pair.of("mainhand", bix.t.in($$0)),
-                        Pair.of("offhand", bix.t.in($$0)),
-                        Pair.of("feet", bix.t.in($$0)),
-                        Pair.of("legs", bix.t.in($$0)),
-                        Pair.of("chest", bix.t.in($$0)),
-                        Pair.of("head", bix.t.in($$0)),
-                        Pair.of("body", bix.t.in($$0)),
-                        Pair.of("saddle", bix.t.in($$0))
-                     }
+         biz.z,
+         () -> DSL.or(
+               DSL.or(DSL.constType(DSL.string()), DSL.list(biz.z.in($$0))),
+               DSL.optionalFields(
+                  "extra",
+                  DSL.list(biz.z.in($$0)),
+                  "separator",
+                  biz.z.in($$0),
+                  "hover_event",
+                  DSL.taggedChoice(
+                     "action",
+                     DSL.string(),
+                     Map.of(
+                        "show_text",
+                        DSL.optionalFields("value", biz.z.in($$0)),
+                        "show_item",
+                        biz.t.in($$0),
+                        "show_entity",
+                        DSL.optionalFields("id", biz.B.in($$0), "name", biz.z.in($$0))
+                     )
                   )
                )
             )

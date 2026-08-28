@@ -1,65 +1,96 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dnt extends dlr implements dtq {
+public class dnt extends dsg {
    public static final MapCodec<dnt> a = b(dnt::new);
-   public static final eay b = eax.I;
-   private static final ffk c = dmf.a(6.0);
 
    @Override
    public MapCodec<dnt> a() {
       return a;
    }
 
-   public dnt(eag.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(b, Boolean.valueOf(true)));
+   protected dnt(ean.d $$0) {
+      super(10.0F, $$0);
+      this.l(
+         this.C
+            .b()
+            .b(b, Boolean.valueOf(false))
+            .b(c, Boolean.valueOf(false))
+            .b(d, Boolean.valueOf(false))
+            .b(e, Boolean.valueOf(false))
+            .b(f, Boolean.valueOf(false))
+            .b(g, Boolean.valueOf(false))
+      );
    }
 
    @Override
-   protected void a(eai.a<dmf, eah> $$0) {
-      $$0.a(b);
+   public eao a(ddd $$0) {
+      return a($$0.q(), $$0.a(), this.m());
+   }
+
+   public static eao a(din $$0, iv $$1, eao $$2) {
+      eao $$3 = $$0.a_($$1.e());
+      eao $$4 = $$0.a_($$1.d());
+      eao $$5 = $$0.a_($$1.f());
+      eao $$6 = $$0.a_($$1.i());
+      eao $$7 = $$0.a_($$1.g());
+      eao $$8 = $$0.a_($$1.h());
+      dmm $$9 = $$2.b();
+      return $$2.c(g, Boolean.valueOf($$3.a($$9) || $$3.a(dmo.lb) || $$3.a(dmo.fY)))
+         .c(f, Boolean.valueOf($$4.a($$9) || $$4.a(dmo.lb)))
+         .c(b, Boolean.valueOf($$5.a($$9) || $$5.a(dmo.lb)))
+         .c(c, Boolean.valueOf($$6.a($$9) || $$6.a(dmo.lb)))
+         .c(d, Boolean.valueOf($$7.a($$9) || $$7.a(dmo.lb)))
+         .c(e, Boolean.valueOf($$8.a($$9) || $$8.a(dmo.lb)));
    }
 
    @Override
-   public dxf a(iu $$0, eah $$1) {
-      return new dxs($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dxf> dxg<T> a(dja $$0, eah $$1, dxh<T> $$2) {
-      return a($$2, dxh.A, $$0.C ? dxs::a : dxs::b);
-   }
-
-   @Override
-   protected ewo b_(eah $$0) {
-      return $$0.c(b) ? ewp.c.a(false) : super.b_($$0);
+   protected eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
+      if (!$$0.a($$1, $$3)) {
+         $$2.a($$3, this, 1);
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      } else {
+         boolean $$8 = $$6.a(this) || $$6.a(dmo.lb) || $$4 == jb.a && $$6.a(dmo.fY);
+         return $$0.b(h.get($$4), Boolean.valueOf($$8));
+      }
    }
 
    @Override
-   protected eah a(eah $$0, djd $$1, djp $$2, iu $$3, ja $$4, iu $$5, eah $$6, azv $$7) {
-      if ($$0.c(b)) {
-         $$2.a($$3, ewp.c, ewp.c.a($$1));
+   protected void a(eao $$0, arq $$1, iv $$2, azv $$3) {
+      if (!$$0.a($$1, $$2)) {
+         $$1.b($$2, true);
+      }
+   }
+
+   @Override
+   protected boolean a(eao $$0, djk $$1, iv $$2) {
+      eao $$3 = $$1.a_($$2.e());
+      boolean $$4 = !$$1.a_($$2.d()).l() && !$$3.l();
+
+      for (jb $$5 : jb.c.a) {
+         iv $$6 = $$2.a($$5);
+         eao $$7 = $$1.a_($$6);
+         if ($$7.a(this)) {
+            if ($$4) {
+               return false;
+            }
+
+            eao $$8 = $$1.a_($$6.e());
+            if ($$8.a(this) || $$8.a(dmo.fY)) {
+               return true;
+            }
+         }
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      return $$3.a(this) || $$3.a(dmo.fY);
    }
 
    @Override
-   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
-      return c;
-   }
-
-   @Nullable
-   @Override
-   public eah a(dcw $$0) {
-      ewo $$1 = $$0.q().b_($$0.a());
-      return this.m().b(b, Boolean.valueOf($$1.a(axh.a) && $$1.e() == 8));
+   protected void a(eap.a<dmm, eao> $$0) {
+      $$0.a(b, c, d, e, f, g);
    }
 
    @Override
-   protected boolean a(eah $$0, exd $$1) {
+   protected boolean a(eao $$0, exk $$1) {
       return false;
    }
 }

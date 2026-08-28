@@ -1,98 +1,37 @@
-import java.util.Set;
+import javax.annotation.Nullable;
 
-public record exo(arq d, feq e, feq f, float g, float h, boolean i, boolean j, Set<bxs> k, exo.a l) {
-   public static final exo.a a = $$0 -> {
-   };
-   public static final exo.a b = exo::a;
-   public static final exo.a c = exo::b;
+public class exo {
+   private final dir a;
+   @Nullable
+   private final exn b;
+   private final iv c;
+   private final iv.a d = new iv.a();
 
-   public exo(arq $$0, feq $$1, feq $$2, float $$3, float $$4, exo.a $$5) {
-      this($$0, $$1, $$2, $$3, $$4, Set.of(), $$5);
-   }
-
-   public exo(arq $$0, feq $$1, feq $$2, float $$3, float $$4, Set<bxs> $$5, exo.a $$6) {
-      this($$0, $$1, $$2, $$3, $$4, false, false, $$5, $$6);
-   }
-
-   public exo(arq $$0, bwf $$1, exo.a $$2) {
-      this($$0, a($$0, $$1), feq.c, 0.0F, 0.0F, false, false, Set.of(), $$2);
-   }
-
-   private static void a(bwf $$0) {
-      if ($$0 instanceof arr $$1) {
-         $$1.f.b(new adh(1032, iu.c, 0, false));
+   public exo(dir $$0, bxl $$1) {
+      this.a = $$0;
+      if ($$1.dU() instanceof arq $$2) {
+         this.b = $$2.I();
+      } else {
+         this.b = null;
       }
+
+      this.c = $$1.du();
    }
 
-   private static void b(bwf $$0) {
-      $$0.f(iu.a((jo)$$0.dt()));
+   public exm a(int $$0, int $$1, int $$2) {
+      iv $$3 = this.d.d($$0, $$1, $$2);
+      return this.b == null ? exr.b(this.a, $$3) : this.b.a(this.a, $$3);
    }
 
-   public static exo a(arq $$0, bwf $$1, exo.a $$2) {
-      return new exo($$0, a($$0, $$1), feq.c, 0.0F, 0.0F, true, false, Set.of(), $$2);
+   public eao a(iv $$0) {
+      return this.a.a_($$0);
    }
 
-   private static feq a(arq $$0, bwf $$1) {
-      return $$1.a($$0, $$0.aa()).c();
+   public dir a() {
+      return this.a;
    }
 
-   public exo a(float $$0, float $$1) {
-      return new exo(this.b(), this.c(), this.d(), $$0, $$1, this.g(), this.h(), this.i(), this.j());
-   }
-
-   public exo a(feq $$0) {
-      return new exo(this.b(), $$0, this.d(), this.e(), this.f(), this.g(), this.h(), this.i(), this.j());
-   }
-
-   public exo a() {
-      return new exo(this.b(), this.c(), this.d(), this.e(), this.f(), this.g(), true, this.i(), this.j());
-   }
-
-   public arq b() {
-      return this.d;
-   }
-
-   public feq c() {
-      return this.e;
-   }
-
-   public feq d() {
-      return this.f;
-   }
-
-   public float e() {
-      return this.g;
-   }
-
-   public float f() {
-      return this.h;
-   }
-
-   public boolean g() {
-      return this.i;
-   }
-
-   public boolean h() {
-      return this.j;
-   }
-
-   public Set<bxs> i() {
-      return this.k;
-   }
-
-   public exo.a j() {
-      return this.l;
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void onTransition(bwf var1);
-
-      default exo.a then(exo.a $$0) {
-         return $$1 -> {
-            this.onTransition($$1);
-            $$0.onTransition($$1);
-         };
-      }
+   public iv b() {
+      return this.c;
    }
 }

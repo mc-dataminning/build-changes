@@ -1,76 +1,62 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class fnc extends hpw {
+   private final fyn a;
+   private final fnc.a b;
+   private fto c = fto.a;
 
-public class fnc extends hpj {
-   private static final Logger a = LogUtils.getLogger();
-   private static final wy b = wy.c("mco.terms.title");
-   private static final wy c = wy.c("mco.terms.sentence.1");
-   private static final wy C = wx.a().b(wy.c("mco.terms.sentence.2").c(xv.a.c(true)));
-   private final fyb D;
-   private final fla E;
-   private boolean F;
+   public fnc(fmk $$0, fyn $$1) {
+      super(fpf.a);
+      this.a = $$1;
+      this.b = a($$0);
+   }
 
-   public fnc(fyb $$0, fla $$1) {
-      super(b);
-      this.D = $$0;
-      this.E = $$1;
+   public fnc(wy $$0, fyn $$1) {
+      super(fpf.a);
+      this.a = $$1;
+      this.b = a($$0);
+   }
+
+   public fnc(wy $$0, wy $$1, fyn $$2) {
+      super(fpf.a);
+      this.a = $$2;
+      this.b = a($$0, $$1);
+   }
+
+   private static fnc.a a(fmk $$0) {
+      fkq $$1 = $$0.a;
+      return a(wy.a("mco.errorMessage.realmsService.realmsError", $$1.a()), $$1.b());
+   }
+
+   private static fnc.a a(wy $$0) {
+      return a(wy.c("mco.errorMessage.generic"), $$0);
+   }
+
+   private static fnc.a a(wy $$0, wy $$1) {
+      return new fnc.a($$0, $$1);
    }
 
    @Override
    public void aO_() {
-      int $$0 = this.n / 4 - 2;
-      this.c(fsj.a(wy.c("mco.terms.buttons.agree"), $$0x -> this.E()).a(this.n / 4, g(12), $$0, 20).a());
-      this.c(fsj.a(wy.c("mco.terms.buttons.disagree"), $$0x -> this.m.a(this.D)).a(this.n / 2 + 4, g(12), $$0, 20).a());
+      this.c(fsv.a(wx.h, $$0 -> this.aL_()).a(this.n / 2 - 100, this.o - 52, 200, 20).a());
+      this.c = fto.a(this.p, this.b.b, this.n * 3 / 4);
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.m.a(this.D);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
-   }
-
-   private void E() {
-      fjz $$0 = fjz.a();
-
-      try {
-         $$0.j();
-         this.m.a(new fmp(this.D, new fnv(this.D, this.E)));
-      } catch (flv var3) {
-         a.error("Couldn't agree to TOS", var3);
-      }
-   }
-
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.F) {
-         this.m.p.a(ayh.s.toString());
-         af.n().a(ayh.s);
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
-      }
+   public void aL_() {
+      this.m.a(this.a);
    }
 
    @Override
    public wy i() {
-      return wx.a(super.i(), c).b(wx.v).b(C);
+      return wy.i().b(this.b.a).f(": ").b(this.b.b);
    }
 
    @Override
-   public void a(frv $$0, int $$1, int $$2, float $$3) {
+   public void a(fsh $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 17, -1);
-      $$0.b(this.p, c, this.n / 2 - 120, g(5), -1);
-      int $$4 = this.p.a(c);
-      int $$5 = this.n / 2 - 121 + $$4;
-      int $$6 = g(5);
-      int $$7 = $$5 + this.p.a(C) + 1;
-      int $$8 = $$6 + 1 + 9;
-      this.F = $$5 <= $$1 && $$1 <= $$7 && $$6 <= $$2 && $$2 <= $$8;
-      $$0.b(this.p, C, this.n / 2 - 120 + $$4, g(5), this.F ? 7107012 : 3368635);
+      $$0.a(this.p, this.b.a, this.n / 2, 80, -1);
+      this.c.a($$0, this.n / 2, 100, 9, -2142128);
+   }
+
+   static record a(wy a, wy b) {
    }
 }

@@ -1,27 +1,57 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Streams;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import java.util.List;
+public class gnj extends gou {
+   private final gop a;
 
-public class gnj {
-   private final List<alg> a;
-
-   private gnj(List<alg> $$0) {
-      this.a = $$0;
+   protected gnj(gkl $$0, double $$1, double $$2, double $$3, gop $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$4;
+      this.b($$4);
+      this.t = 12 + this.r.a(4);
+      this.D = 1.0F;
+      this.b(1.0F, 1.0F);
    }
 
-   public List<alg> a() {
-      return this.a;
+   @Override
+   public gny b() {
+      return gny.b;
    }
 
-   public static gnj a(JsonObject $$0) {
-      JsonArray $$1 = azc.a($$0, "textures", null);
-      if ($$1 == null) {
-         return new gnj(List.of());
+   @Override
+   public int a(float $$0) {
+      return 15728880;
+   }
+
+   @Override
+   public void a() {
+      if (this.s++ >= this.t) {
+         this.k();
       } else {
-         List<alg> $$2 = Streams.stream($$1).map($$0x -> azc.a($$0x, "texture")).map(alg::a).collect(ImmutableList.toImmutableList());
-         return new gnj($$2);
+         this.b(this.a);
+      }
+   }
+
+   public static class a implements gnx<mc> {
+      private final gop a;
+
+      public a(gop $$0) {
+         this.a = $$0;
+      }
+
+      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gnj($$1, $$2, $$3, $$4, this.a);
+      }
+   }
+
+   public static class b implements gnx<mc> {
+      private final gop a;
+
+      public b(gop $$0) {
+         this.a = $$0;
+      }
+
+      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gnu $$8 = new gnj($$1, $$2, $$3, $$4, this.a);
+         $$8.d(0.15F);
+         return $$8;
       }
    }
 }

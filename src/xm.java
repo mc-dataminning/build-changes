@@ -61,12 +61,12 @@ public class xm implements wy {
       return this;
    }
 
-   public xm a(n... $$0) {
+   public xm a(o... $$0) {
       this.b(this.a().a($$0));
       return this;
    }
 
-   public xm a(n $$0) {
+   public xm a(o $$0) {
       this.b(this.a().b($$0));
       return this;
    }

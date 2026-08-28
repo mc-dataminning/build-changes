@@ -1,57 +1,58 @@
-public class cvw extends cuv {
-   public static final int m = 5;
-   private final btw n;
+public abstract class cvw {
+   private int a;
 
-   public cvw(int $$0, crb $$1) {
-      this($$0, $$1, new buk(5));
-   }
-
-   public cvw(int $$0, crb $$1, btw $$2) {
-      super(cwe.q, $$0);
-      this.n = $$2;
-      a($$2, 5);
-      $$2.c_($$1.h);
-
-      for (int $$3 = 0; $$3 < 5; $$3++) {
-         this.a(new cws($$2, $$3, 44 + $$3 * 18, 20));
-      }
-
-      this.c($$1, 8, 51);
-   }
-
-   @Override
-   public boolean b(crc $$0) {
-      return this.n.a($$0);
-   }
-
-   @Override
-   public czd b(crc $$0, int $$1) {
-      czd $$2 = czd.k;
-      cws $$3 = this.k.get($$1);
-      if ($$3 != null && $$3.h()) {
-         czd $$4 = $$3.g();
-         $$2 = $$4.v();
-         if ($$1 < this.n.b()) {
-            if (!this.a($$4, this.n.b(), this.k.size(), true)) {
-               return czd.k;
-            }
-         } else if (!this.a($$4, 0, this.n.b(), false)) {
-            return czd.k;
+   public static cvw a(final cvo $$0, final int $$1) {
+      return new cvw() {
+         @Override
+         public int b() {
+            return $$0.a($$1);
          }
 
-         if ($$4.f()) {
-            $$3.e(czd.k);
-         } else {
-            $$3.d();
+         @Override
+         public void a(int $$0x) {
+            $$0.a($$1, $$0);
          }
-      }
-
-      return $$2;
+      };
    }
 
-   @Override
-   public void a(crc $$0) {
-      super.a($$0);
-      this.n.c($$0);
+   public static cvw a(final int[] $$0, final int $$1) {
+      return new cvw() {
+         @Override
+         public int b() {
+            return $$0[$$1];
+         }
+
+         @Override
+         public void a(int $$0x) {
+            $$0[$$1] = $$0;
+         }
+      };
+   }
+
+   public static cvw a() {
+      return new cvw() {
+         private int a;
+
+         @Override
+         public int b() {
+            return this.a;
+         }
+
+         @Override
+         public void a(int $$0) {
+            this.a = $$0;
+         }
+      };
+   }
+
+   public abstract int b();
+
+   public abstract void a(int var1);
+
+   public boolean c() {
+      int $$0 = this.b();
+      boolean $$1 = $$0 != this.a;
+      this.a = $$0;
+      return $$1;
    }
 }

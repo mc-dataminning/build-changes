@@ -8,9 +8,9 @@ public class td implements tq {
    public void a(sq $$0) {
       String $$1 = $$0.c().x();
       if ($$0.r()) {
-         a.error("{} failed at {}! {}", new Object[]{$$0.b(), $$1, af.c($$0.n())});
+         a.error("{} failed at {}! {}", new Object[]{$$0.b(), $$1, ag.c($$0.n())});
       } else {
-         a.warn("(optional) {} failed at {}. {}", new Object[]{$$0.b(), $$1, af.c($$0.n())});
+         a.warn("(optional) {} failed at {}. {}", new Object[]{$$0.b(), $$1, ag.c($$0.n())});
       }
    }
 

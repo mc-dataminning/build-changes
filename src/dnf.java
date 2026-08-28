@@ -1,55 +1,30 @@
 import com.mojang.serialization.MapCodec;
 
-public class dnf extends dpx implements dnd {
-   public static final MapCodec<dnf> c = b(dnf::new);
+public class dnf extends dmm {
+   public static final MapCodec<dnf> a = b(dnf::new);
+   private static final ffr b = dmm.b(16.0, 0.0, 1.0);
 
    @Override
-   public MapCodec<dnf> a() {
-      return c;
+   public MapCodec<? extends dnf> a() {
+      return a;
    }
 
-   public dnf(eag.d $$0) {
-      super($$0, ja.a, s_, false);
-      this.l(this.C.b().b(t_, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected dpy c() {
-      return (dpy)dmh.td;
+   public dnf(ean.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected eah a(eah $$0, eah $$1) {
-      return $$1.b(t_, $$0.c(t_));
+   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
+      return b;
    }
 
    @Override
-   protected czd a(djd $$0, iu $$1, eah $$2, boolean $$3) {
-      return new czd(czh.xH);
+   protected eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
+      return !$$0.a($$1, $$3) ? dmo.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected bud a(eah $$0, dja $$1, iu $$2, crc $$3, fem $$4) {
-      return dnd.a($$3, $$0, $$1, $$2);
-   }
-
-   @Override
-   protected void a(eai.a<dmf, eah> $$0) {
-      $$0.a(t_);
-   }
-
-   @Override
-   public boolean a(djd $$0, iu $$1, eah $$2) {
-      return !$$2.c(t_);
-   }
-
-   @Override
-   public boolean a(dja $$0, azv $$1, iu $$2, eah $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arq $$0, azv $$1, iu $$2, eah $$3) {
-      $$0.a($$2, $$3.b(t_, Boolean.valueOf(true)), 2);
+   protected boolean a(eao $$0, djk $$1, iv $$2) {
+      return !$$1.v($$2.e());
    }
 }

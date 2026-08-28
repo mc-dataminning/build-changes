@@ -9,25 +9,25 @@ public class anw {
    private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("commands.kick.owner.failed"));
    private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wy.c("commands.kick.singleplayer.failed"));
 
-   public static void a(CommandDispatcher<ei> $$0) {
+   public static void a(CommandDispatcher<ej> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("kick").requires($$0x -> $$0x.c(3)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("kick").requires($$0x -> $$0x.c(3)))
             .then(
-               ((RequiredArgumentBuilder)ej.a("targets", ev.d())
-                     .executes($$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), wy.c("multiplayer.disconnect.kicked"))))
-                  .then(ej.a("reason", ez.a()).executes($$0x -> a((ei)$$0x.getSource(), ev.f($$0x, "targets"), ez.a($$0x, "reason"))))
+               ((RequiredArgumentBuilder)ek.a("targets", ew.d())
+                     .executes($$0x -> a((ej)$$0x.getSource(), ew.f($$0x, "targets"), wy.c("multiplayer.disconnect.kicked"))))
+                  .then(ek.a("reason", fa.a()).executes($$0x -> a((ej)$$0x.getSource(), ew.f($$0x, "targets"), fa.a($$0x, "reason"))))
             )
       );
    }
 
-   private static int a(ei $$0, Collection<arr> $$1, wy $$2) throws CommandSyntaxException {
+   private static int a(ej $$0, Collection<arr> $$1, wy $$2) throws CommandSyntaxException {
       if (!$$0.l().r()) {
          throw b.create();
       } else {
          int $$3 = 0;
 
          for (arr $$4 : $$1) {
-            if (!$$0.l().a($$4.gi())) {
+            if (!$$0.l().a($$4.gh())) {
                $$4.f.a($$2);
                $$0.a(() -> wy.a("commands.kick.success", $$4.m_(), $$2), true);
                $$3++;

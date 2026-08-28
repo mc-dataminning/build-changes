@@ -1,15 +1,20 @@
-public class hjx extends hkb {
-   private static final alg a = alg.b("back");
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public hjx(hiz $$0) {
-      super($$0, alg.b("textures/atlas/paintings.png"), hkv.j);
+public record hjx(azx c) implements hjp {
+   public static final MapCodec<hjx> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(azx.a.fieldOf("pattern").forGetter(hjx::b)).apply($$0, hjx::new));
+
+   @Override
+   public void a(avd $$0, hjp.a $$1) {
+      $$1.a(this.c.c());
    }
 
-   public hix a(cnd $$0) {
-      return this.a($$0.d());
+   @Override
+   public MapCodec<hjx> a() {
+      return b;
    }
 
-   public hix a() {
-      return this.a(a);
+   public azx b() {
+      return this.c;
    }
 }

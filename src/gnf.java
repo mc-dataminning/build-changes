@@ -1,42 +1,66 @@
-public class gnf extends gni {
-   private final ggu a;
-   private final gqk b = gqk.j(gwa.a);
-
-   gnf(gjz $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
-      this.a = new ggh(foz.Q().aS().a(gjb.aO));
-      this.u = 0.0F;
-      this.t = 30;
+public class gnf extends goc {
+   gnf(gkl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
    @Override
-   public gnm b() {
-      return gnm.d;
+   public gny b() {
+      return gny.b;
    }
 
    @Override
-   public void a(fjj $$0, gqa $$1, fog $$2, float $$3) {
-      float $$4 = ((float)this.s + $$3) / (float)this.t;
-      float $$5 = 0.05F + 0.5F * azm.a($$4 * (float) Math.PI);
-      int $$6 = axw.a($$5, 1.0F, 1.0F, 1.0F);
-      $$0.a();
-      $$0.a($$2.f());
-      $$0.a(a.b.rotationDegrees(60.0F - 150.0F * $$4));
-      float $$7 = 0.42553192F;
-      $$0.b(0.42553192F, -0.42553192F, -0.42553192F);
-      $$0.a(0.0F, -0.56F, 3.5F);
-      fjn $$8 = $$1.getBuffer(this.b);
-      this.a.a($$0, $$8, 15728880, hin.d, $$6);
-      $$0.b();
+   public void a(double $$0, double $$1, double $$2) {
+      this.a(this.n().d($$0, $$1, $$2));
+      this.l();
    }
 
    @Override
-   public void a(fjn $$0, fog $$1, float $$2) {
+   public float b(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      return this.D * (1.0F - $$1 * $$1 * 0.5F);
    }
 
-   public static class a implements gnl<mb> {
-      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gnf($$1, $$2, $$3, $$4);
+   @Override
+   public int a(float $$0) {
+      float $$1 = ((float)this.s + $$0) / (float)this.t;
+      $$1 = azm.a($$1, 0.0F, 1.0F);
+      int $$2 = super.a($$0);
+      int $$3 = $$2 & 0xFF;
+      int $$4 = $$2 >> 16 & 0xFF;
+      $$3 += (int)($$1 * 15.0F * 16.0F);
+      if ($$3 > 240) {
+         $$3 = 240;
+      }
+
+      return $$3 | $$4 << 16;
+   }
+
+   public static class a implements gnx<mc> {
+      private final gop a;
+
+      public a(gop $$0) {
+         this.a = $$0;
+      }
+
+      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gnf $$8 = new gnf($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
+   }
+
+   public static class b implements gnx<mc> {
+      private final gop a;
+
+      public b(gop $$0) {
+         this.a = $$0;
+      }
+
+      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gnf $$8 = new gnf($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         $$8.d(0.5F);
+         return $$8;
       }
    }
 }

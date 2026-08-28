@@ -178,7 +178,7 @@ public abstract class aqk<T extends aqk<T>> {
       return $$0;
    }
 
-   protected abstract T b(js var1, Properties var2);
+   protected abstract T b(jt var1, Properties var2);
 
    public class a<V> implements Supplier<V> {
       private final String b;
@@ -196,7 +196,7 @@ public abstract class aqk<T extends aqk<T>> {
          return this.c;
       }
 
-      public T a(js $$0, V $$1) {
+      public T a(jt $$0, V $$1) {
          Properties $$2 = aqk.this.a();
          $$2.put(this.b, this.d.apply($$1));
          return aqk.this.b($$0, $$2);

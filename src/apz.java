@@ -9,5 +9,5 @@ public interface apz {
 
    wy a(uw var1);
 
-   wy a(fa.g var1, double var2, int var4);
+   wy a(fb.g var1, double var2, int var4);
 }

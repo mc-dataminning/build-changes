@@ -1,30 +1,17 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.Optional;
+import java.util.Locale;
 
-public class glt {
-   public static final glt a = new glt(gls.b, glu.createDnsSrvRedirectHandler(), glp.a());
-   private final gls b;
-   private final glu c;
-   private final glp d;
+public enum glt {
+   a("chat"),
+   b("skin"),
+   c("username");
 
-   @VisibleForTesting
-   glt(gls $$0, glu $$1, glp $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   private final String d;
+
+   private glt(final String $$0) {
+      this.d = $$0.toUpperCase(Locale.ROOT);
    }
 
-   public Optional<glq> a(glr $$0) {
-      Optional<glq> $$1 = this.b.resolve($$0);
-      if ((!$$1.isPresent() || this.d.a($$1.get())) && this.d.a($$0)) {
-         Optional<glr> $$2 = this.c.lookupRedirect($$0);
-         if ($$2.isPresent()) {
-            $$1 = this.b.resolve($$2.get()).filter(this.d::a);
-         }
-
-         return $$1;
-      } else {
-         return Optional.empty();
-      }
+   public String a() {
+      return this.d;
    }
 }

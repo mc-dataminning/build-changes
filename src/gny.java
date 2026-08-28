@@ -1,20 +1,18 @@
-public class gny extends gna {
-   protected gny(gjz $$0, double $$1, double $$2, double $$3, double $$4, god $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-      this.t = 16;
-      this.D = 1.5F;
-      this.b($$5);
+import javax.annotation.Nullable;
+
+public record gny(String f, @Nullable gqx g) {
+   public static final gny a = new gny("TERRAIN_SHEET", gqx.B(hjj.c));
+   public static final gny b = new gny("PARTICLE_SHEET_OPAQUE", gqx.A(hjj.d));
+   public static final gny c = new gny("PARTICLE_SHEET_TRANSLUCENT", gqx.B(hjj.d));
+   public static final gny d = new gny("CUSTOM", null);
+   public static final gny e = new gny("NO_RENDER", null);
+
+   public String a() {
+      return this.f;
    }
 
-   public static class a implements gnl<mb> {
-      private final god a;
-
-      public a(god $$0) {
-         this.a = $$0;
-      }
-
-      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gny($$1, $$2, $$3, $$4, $$5, this.a);
-      }
+   @Nullable
+   public gqx b() {
+      return this.g;
    }
 }

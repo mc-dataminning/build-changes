@@ -1,5 +1,3 @@
-public class hdh extends hdn {
-   public float a;
-   public int b;
-   public bwb.a c = bwb.a.a;
+public class hdh extends hcz {
+   public fex a = fex.c;
 }

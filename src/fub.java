@@ -1,29 +1,36 @@
-import java.util.Locale;
+import javax.annotation.Nullable;
 
-public class fub extends fty {
-   private static final int f = 500;
+public class fub extends fst {
+   @Nullable
+   protected fui a;
+   protected boolean b;
 
-   public fub(frt $$0, bpc $$1) {
-      super($$0, $$1);
+   public fub(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      super($$0, $$1, $$2, $$3, wx.a);
+      this.b = $$4;
+   }
+
+   public void a(fui $$0) {
+      this.a = $$0;
+   }
+
+   public void b(boolean $$0) {
+      this.b = $$0;
+   }
+
+   public boolean a() {
+      return this.b;
    }
 
    @Override
-   protected void d(frv $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, "500 ms", $$1 + 1, $$3 - 60 + 1);
+   public void a(fws $$0) {
+      this.c($$0);
    }
 
    @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round($$0));
-   }
-
-   @Override
-   protected int b(double $$0) {
-      return (int)Math.round($$0 * 60.0 / 500.0);
-   }
-
-   @Override
-   protected int a(long $$0) {
-      return this.a((double)$$0, 0.0, -16711936, 250.0, -256, 500.0, -65536);
+   public void b(fsh $$0, int $$1, int $$2, float $$3) {
+      if (this.a != null) {
+         $$0.a(gqx::H, this.a.a(this.b, this.D()), this.F(), this.G(), this.g, this.h);
+      }
    }
 }

@@ -28,16 +28,16 @@ public class ahl implements zf<agp> {
       this.d = $$1;
    }
 
-   public static ahl a(bwf $$0, boolean $$1) {
-      return new ahl($$0.ar(), $$1, e);
+   public static ahl a(bwi $$0, boolean $$1) {
+      return new ahl($$0.ao(), $$1, e);
    }
 
-   public static ahl a(bwf $$0, boolean $$1, buc $$2) {
-      return new ahl($$0.ar(), $$1, new ahl.d($$2));
+   public static ahl a(bwi $$0, boolean $$1, buf $$2) {
+      return new ahl($$0.ao(), $$1, new ahl.d($$2));
    }
 
-   public static ahl a(bwf $$0, boolean $$1, buc $$2, feq $$3) {
-      return new ahl($$0.ar(), $$1, new ahl.e($$2, $$3));
+   public static ahl a(bwi $$0, boolean $$1, buf $$2, fex $$3) {
+      return new ahl($$0.ao(), $$1, new ahl.e($$2, $$3));
    }
 
    private ahl(vu $$0) {
@@ -64,7 +64,7 @@ public class ahl implements zf<agp> {
    }
 
    @Nullable
-   public bwf a(arq $$0) {
+   public bwi a(arq $$0) {
       return $$0.b(this.b);
    }
 
@@ -97,22 +97,22 @@ public class ahl implements zf<agp> {
    }
 
    public interface c {
-      void a(buc var1);
+      void a(buf var1);
 
-      void a(buc var1, feq var2);
+      void a(buf var1, fex var2);
 
       void a();
    }
 
    static class d implements ahl.a {
-      private final buc a;
+      private final buf a;
 
-      d(buc $$0) {
+      d(buf $$0) {
          this.a = $$0;
       }
 
       private d(vu $$0) {
-         this.a = $$0.b(buc.class);
+         this.a = $$0.b(buf.class);
       }
 
       @Override
@@ -132,17 +132,17 @@ public class ahl implements zf<agp> {
    }
 
    static class e implements ahl.a {
-      private final buc a;
-      private final feq b;
+      private final buf a;
+      private final fex b;
 
-      e(buc $$0, feq $$1) {
+      e(buf $$0, fex $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       private e(vu $$0) {
-         this.b = new feq((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
-         this.a = $$0.b(buc.class);
+         this.b = new fex((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
+         this.a = $$0.b(buf.class);
       }
 
       @Override

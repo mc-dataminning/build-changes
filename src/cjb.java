@@ -1,46 +1,90 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Optional;
 
-public record cjb(ctd<cjb.a> e, ctj f) implements ctf<cti, ctg> {
-   public static final Codec<cjb> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ctd.a(cjb.a.c, cjb.a.a).forGetter(cjb::b), ctj.b.fieldOf("spawn_conditions").forGetter(cjb::c)).apply($$0, cjb::new)
-   );
-   public static final Codec<cjb> b = RecordCodecBuilder.create($$0 -> $$0.group(ctd.a(cjb.a.c, cjb.a.a).forGetter(cjb::b)).apply($$0, cjb::new));
-   public static final Codec<je<cjb>> c = ald.a(mg.aJ);
-   public static final yw<wj, je<cjb>> d = yu.b(mg.aJ);
+public interface cjb {
+   boolean m();
 
-   private cjb(ctd<cjb.a> $$0) {
-      this($$0, ctj.a);
+   void w(boolean var1);
+
+   void a_(czk var1);
+
+   void h(tz var1);
+
+   czk S_();
+
+   awm n();
+
+   @Deprecated
+   static void a(bxl $$0, czk $$1) {
+      $$1.a(kk.g, $$0);
+      dbs.a(kk.Z, $$1, $$1x -> {
+         if ($$0.gi()) {
+            $$1x.a("NoAI", $$0.gi());
+         }
+
+         if ($$0.aZ()) {
+            $$1x.a("Silent", $$0.aZ());
+         }
+
+         if ($$0.ba()) {
+            $$1x.a("NoGravity", $$0.ba());
+         }
+
+         if ($$0.cl()) {
+            $$1x.a("Glowing", $$0.cl());
+         }
+
+         if ($$0.cB()) {
+            $$1x.a("Invulnerable", $$0.cB());
+         }
+
+         $$1x.a("Health", $$0.eF());
+      });
    }
 
-   @Override
-   public List<ctf.a<cti, ctg>> a() {
-      return this.f.a();
-   }
-
-   public ctd<cjb.a> b() {
-      return this.e;
-   }
-
-   public ctj c() {
-      return this.f;
-   }
-
-   public static enum a implements bak {
-      a("normal"),
-      b("cold");
-
-      public static final Codec<cjb.a> c = bak.a(cjb.a::values);
-      private final String d;
-
-      private a(final String $$0) {
-         this.d = $$0;
+   @Deprecated
+   static void a(bxl $$0, tz $$1) {
+      if ($$1.c("NoAI")) {
+         $$0.t($$1.o("NoAI"));
       }
 
-      @Override
-      public String c() {
-         return this.d;
+      if ($$1.c("Silent")) {
+         $$0.e($$1.o("Silent"));
+      }
+
+      if ($$1.c("NoGravity")) {
+         $$0.f($$1.o("NoGravity"));
+      }
+
+      if ($$1.c("Glowing")) {
+         $$0.j($$1.o("Glowing"));
+      }
+
+      if ($$1.c("Invulnerable")) {
+         $$0.m($$1.o("Invulnerable"));
+      }
+
+      if ($$1.b("Health", 99)) {
+         $$0.d($$1.h("Health"));
+      }
+   }
+
+   static <T extends bxj & cjb> Optional<bug> a(crj $$0, buf $$1, T $$2) {
+      czk $$3 = $$0.b($$1);
+      if ($$3.h() == czo.rp && $$2.bI()) {
+         $$2.a($$2.n(), 1.0F, 1.0F);
+         czk $$4 = $$2.S_();
+         $$2.a_($$4);
+         czk $$5 = czn.a($$3, $$0, $$4, false);
+         $$0.a($$1, $$5);
+         djh $$6 = $$2.dU();
+         if (!$$6.C) {
+            aq.k.a((arr)$$0, $$4);
+         }
+
+         $$2.aq();
+         return Optional.of(bug.a);
+      } else {
+         return Optional.empty();
       }
    }
 }

@@ -8,9 +8,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 
-public record yg(Either<ha, String> d, String e) implements wz {
+public record yg(Either<hb, String> d, String e) implements wz {
    public static final MapCodec<yg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.either(ha.a, Codec.STRING).fieldOf("name").forGetter(yg::b), Codec.STRING.fieldOf("objective").forGetter(yg::c))
+      $$0 -> $$0.group(Codec.either(hb.a, Codec.STRING).fieldOf("name").forGetter(yg::b), Codec.STRING.fieldOf("objective").forGetter(yg::c))
             .apply($$0, yg::new)
    );
    public static final MapCodec<yg> b = a.fieldOf("score");
@@ -21,31 +21,31 @@ public record yg(Either<ha, String> d, String e) implements wz {
       return c;
    }
 
-   private ffu a(ei $$0) throws CommandSyntaxException {
-      Optional<ha> $$1 = this.d.left();
+   private fgb a(ej $$0) throws CommandSyntaxException {
+      Optional<hb> $$1 = this.d.left();
       if ($$1.isPresent()) {
-         List<? extends bwf> $$2 = $$1.get().b().b($$0);
+         List<? extends bwi> $$2 = $$1.get().b().b($$0);
          if (!$$2.isEmpty()) {
             if ($$2.size() != 1) {
-               throw ev.a.create();
+               throw ew.a.create();
             } else {
                return $$2.getFirst();
             }
          } else {
-            return ffu.c($$1.get().a());
+            return fgb.c($$1.get().a());
          }
       } else {
-         return ffu.c((String)this.d.right().orElseThrow());
+         return fgb.c((String)this.d.right().orElseThrow());
       }
    }
 
-   private xm a(ffu $$0, ei $$1) {
+   private xm a(fgb $$0, ej $$1) {
       MinecraftServer $$2 = $$1.l();
       if ($$2 != null) {
-         ffv $$3 = $$2.aJ();
-         ffn $$4 = $$3.a(this.e);
+         fgc $$3 = $$2.aJ();
+         ffu $$4 = $$3.a(this.e);
          if ($$4 != null) {
-            ffr $$5 = $$3.d($$0, $$4);
+            ffy $$5 = $$3.d($$0, $$4);
             if ($$5 != null) {
                return $$5.a($$4.a(yr.b));
             }
@@ -56,12 +56,12 @@ public record yg(Either<ha, String> d, String e) implements wz {
    }
 
    @Override
-   public xm a(@Nullable ei $$0, @Nullable bwf $$1, int $$2) throws CommandSyntaxException {
+   public xm a(@Nullable ej $$0, @Nullable bwi $$1, int $$2) throws CommandSyntaxException {
       if ($$0 == null) {
          return wy.i();
       } else {
-         ffu $$3 = this.a($$0);
-         ffu $$4 = (ffu)($$1 != null && $$3.equals(ffu.cp) ? $$1 : $$3);
+         fgb $$3 = this.a($$0);
+         fgb $$4 = (fgb)($$1 != null && $$3.equals(fgb.cp) ? $$1 : $$3);
          return this.a($$4, $$0);
       }
    }
@@ -71,7 +71,7 @@ public record yg(Either<ha, String> d, String e) implements wz {
       return "score{name='" + this.d + "', objective='" + this.e + "'}";
    }
 
-   public Either<ha, String> b() {
+   public Either<hb, String> b() {
       return this.d;
    }
 

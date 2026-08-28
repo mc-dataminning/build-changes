@@ -1,31 +1,19 @@
-import java.util.List;
-
-public class deu extends dem {
-   public deu(String $$0, ddq $$1, czd $$2) {
-      super($$0, $$1, $$2);
+public record deu(czk a) implements deh {
+   @Override
+   public czk a(int $$0) {
+      if ($$0 != 0) {
+         throw new IllegalArgumentException("No item for index " + $$0);
+      } else {
+         return this.a;
+      }
    }
 
    @Override
-   public def<deu> b() {
-      return def.f;
+   public int a() {
+      return 1;
    }
 
-   @Override
-   public dee<deu> a() {
-      return dee.s;
-   }
-
-   @Override
-   public List<dfa> g() {
-      return List.of(new dfk(this.k().c(), this.c(), new dfg.d(czh.xC)));
-   }
-
-   public dfg c() {
-      return new dfg.f(this.l());
-   }
-
-   @Override
-   public ddx h() {
-      return ddw.k;
+   public czk c() {
+      return this.a;
    }
 }

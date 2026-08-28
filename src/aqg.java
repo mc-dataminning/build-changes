@@ -36,12 +36,12 @@ public class aqg extends MinecraftServer implements alx {
    @Nullable
    private final asy u;
    @Nullable
-   private bpa v;
+   private bpc v;
    @Nullable
-   private box w;
+   private boz w;
    private final aly x;
 
-   public aqg(Thread $$0, eyv.c $$1, aun $$2, amf $$3, aqi $$4, DataFixer $$5, amb $$6, asb $$7) {
+   public aqg(Thread $$0, ezc.c $$1, aun $$2, amf $$3, aqi $$4, DataFixer $$5, amb $$6, asb $$7) {
       super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, $$5, $$6, $$7);
       this.s = $$4;
       this.q = new awd(this);
@@ -67,9 +67,9 @@ public class aqg extends MinecraftServer implements alx {
          }
       };
       $$0.setDaemon(true);
-      $$0.setUncaughtExceptionHandler(new r(l));
+      $$0.setUncaughtExceptionHandler(new s(l));
       $$0.start();
-      l.info("Starting minecraft server version {}", ab.b().c());
+      l.info("Starting minecraft server version {}", ac.b().c());
       if (Runtime.getRuntime().maxMemory() / 1024L / 1024L < 512L) {
          l.warn("To start the server with more ram, launch it as \"java -Xmx1024M -Xms1024M -jar minecraft_server.jar\"");
       }
@@ -129,18 +129,18 @@ public class aqg extends MinecraftServer implements alx {
          return false;
       } else {
          this.a(new aqf(this, this.bb(), this.g));
-         this.w = new box(this.bs());
-         this.v = new bpa(bpd.values().length, this.w, boz.a);
-         long $$4 = af.d();
-         dyv.a(this.i, this);
+         this.w = new boz(this.bs());
+         this.v = new bpc(bpf.values().length, this.w, bpb.a);
+         long $$4 = ag.d();
+         dzc.a(this.i, this);
          avm.a(this.aa());
          l.info("Preparing level \"{}\"", this.j());
          this.q_();
-         long $$5 = af.d() - $$4;
+         long $$5 = ag.d() - $$4;
          String $$6 = String.format(Locale.ROOT, "%.3fs", (double)$$5 / 1.0E9);
          l.info("Done ({})! For help, type \"help\"", $$6);
          if ($$1.n != null) {
-            this.aL().b(diw.C).a($$1.n, this);
+            this.aL().b(djd.C).a($$1.n, this);
          }
 
          if ($$1.o) {
@@ -155,14 +155,14 @@ public class aqg extends MinecraftServer implements alx {
 
          if (this.bv() > 0L) {
             Thread $$7 = new Thread(new aqj(this));
-            $$7.setUncaughtExceptionHandler(new s(l));
+            $$7.setUncaughtExceptionHandler(new t(l));
             $$7.setName("Server Watchdog");
             $$7.setDaemon(true);
             $$7.start();
          }
 
          if ($$1.N) {
-            bpj.a(this);
+            bpl.a(this);
             l.info("JMX monitoring enabled");
          }
 
@@ -186,7 +186,7 @@ public class aqg extends MinecraftServer implements alx {
    }
 
    @Override
-   public ad a(ad $$0) {
+   public ae a(ae $$0) {
       $$0.a("Is Modded", () -> this.Q().b());
       $$0.a("Type", () -> "Dedicated Server (map_server.txt)");
       return $$0;
@@ -236,11 +236,11 @@ public class aqg extends MinecraftServer implements alx {
    }
 
    @Override
-   public boolean a(dja $$0) {
-      return $$0.aj() == dja.j ? this.a().u : true;
+   public boolean a(djh $$0) {
+      return $$0.aj() == djh.j ? this.a().u : true;
    }
 
-   public void a(String $$0, ei $$1) {
+   public void a(String $$0, ej $$1) {
       this.o.add(new alk($$0, $$1));
    }
 
@@ -314,17 +314,17 @@ public class aqg extends MinecraftServer implements alx {
    }
 
    @Override
-   public boolean a(arq $$0, iu $$1, crc $$2) {
-      if ($$0.aj() != dja.i) {
+   public boolean a(arq $$0, iv $$1, crj $$2) {
+      if ($$0.aj() != djh.i) {
          return false;
       } else if (this.bs().k().c()) {
          return false;
-      } else if (this.bs().f($$2.gi())) {
+      } else if (this.bs().f($$2.gh())) {
          return false;
       } else if (this.al() <= 0) {
          return false;
       } else {
-         iu $$3 = $$0.aa();
+         iv $$3 = $$0.aa();
          int $$4 = azm.a($$1.u() - $$3.u());
          int $$5 = azm.a($$1.w() - $$3.w());
          int $$6 = Math.max($$4, $$5);
@@ -484,8 +484,8 @@ public class aqg extends MinecraftServer implements alx {
    @Override
    public void v() {
       super.v();
-      af.k();
-      dyv.a();
+      ag.k();
+      dzc.a();
    }
 
    @Override
@@ -510,12 +510,12 @@ public class aqg extends MinecraftServer implements alx {
 
    @Override
    public asz a(arr $$0) {
-      return this.u != null ? this.u.a($$0.gi()) : asz.e;
+      return this.u != null ? this.u.a($$0.gh()) : asz.e;
    }
 
    @Nullable
    @Override
-   public dix bd() {
+   public dje bd() {
       return this.s.a().h ? this.j.k() : null;
    }
 
@@ -531,17 +531,17 @@ public class aqg extends MinecraftServer implements alx {
    }
 
    @Override
-   public bpb f() {
+   public bpd f() {
       return this.v;
    }
 
    @Override
    public boolean g() {
-      return this.w.a(boz.a);
+      return this.w.a(bpb.a);
    }
 
    @Override
-   public void a(arr $$0, boz $$1) {
+   public void a(arr $$0, bpb $$1) {
       this.w.a($$0, $$1);
    }
 
@@ -571,7 +571,7 @@ public class aqg extends MinecraftServer implements alx {
          return Optional.empty();
       } else {
          try {
-            return Optional.of(af.a($$1));
+            return Optional.of(ag.a($$1));
          } catch (Exception var3) {
             l.warn("Failed to parse bug link {}", $$1, var3);
             return Optional.empty();

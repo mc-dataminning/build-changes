@@ -1,22 +1,16 @@
-public class cwr implements cvh {
-   private final int[] a;
-
-   public cwr(int $$0) {
-      this.a = new int[$$0];
+public abstract class cwr extends cvc {
+   public cwr(cwl<?> $$0, int $$1) {
+      super($$0, $$1);
    }
 
-   @Override
-   public int a(int $$0) {
-      return this.a[$$0];
-   }
+   public abstract cwr.a a(boolean var1, boolean var2, deg<?> var3, arq var4, cri var5);
 
-   @Override
-   public void a(int $$0, int $$1) {
-      this.a[$$0] = $$1;
-   }
+   public abstract void a(crp var1);
 
-   @Override
-   public int a() {
-      return this.a.length;
+   public abstract cws aj_();
+
+   public static enum a {
+      a,
+      b;
    }
 }

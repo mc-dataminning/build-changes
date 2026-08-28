@@ -1,17 +1,25 @@
 import java.util.EnumSet;
 
-public class cdu extends cea {
-   private final bxg a;
+public class cdu extends cef {
+   private final bxl a;
+   private final djh b;
 
-   public cdu(bxg $$0) {
+   public cdu(bxl $$0, djh $$1) {
       this.a = $$0;
-      this.a(EnumSet.of(cea.a.c));
-      $$0.O().a(true);
+      this.b = $$1;
+      this.a(EnumSet.of(cef.a.c));
    }
 
    @Override
    public boolean b() {
-      return this.a.bj() && this.a.b(axh.a) > this.a.dp() || this.a.bw();
+      boolean $$0 = this.a.aw || this.a.av;
+      if ($$0 && this.a.an().a(axf.h)) {
+         iv $$1 = this.a.du().d();
+         eao $$2 = this.b.a_($$1);
+         return $$2.a(dmo.rx) || $$2.g(this.b, $$1) == ffo.a();
+      } else {
+         return false;
+      }
    }
 
    @Override
@@ -21,8 +29,6 @@ public class cdu extends cea {
 
    @Override
    public void a() {
-      if (this.a.dY().i() < 0.8F) {
-         this.a.N().a();
-      }
+      this.a.N().a();
    }
 }

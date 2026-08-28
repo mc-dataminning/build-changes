@@ -1,124 +1,128 @@
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cmg extends cmc {
-   private static final cht b = cht.a().d();
-   @Nullable
-   private exc c;
-   @Nullable
-   private feq d;
-   private boolean e;
+public class cmg extends bwi {
+   private static final akj<Optional<iv>> b = akn.a(cmg.class, akl.p);
+   private static final akj<Boolean> c = akn.a(cmg.class, akl.k);
+   public int a;
 
-   public cmg(cma $$0) {
-      super($$0);
+   public cmg(bwr<? extends cmg> $$0, djh $$1) {
+      super($$0, $$1);
+      this.I = true;
+      this.a = this.ae.a(100000);
+   }
+
+   public cmg(djh $$0, double $$1, double $$2, double $$3) {
+      this(bwr.R, $$0);
+      this.a_($$1, $$2, $$3);
    }
 
    @Override
-   public cmq<cmg> h() {
-      return cmq.a;
+   protected bwi.c be() {
+      return bwi.c.a;
    }
 
    @Override
-   public void a(arq $$0) {
-      double $$1 = this.d == null ? 0.0 : this.d.c(this.a.dA(), this.a.dC(), this.a.dG());
-      if ($$1 < 100.0 || $$1 > 22500.0 || this.a.P || this.a.Q) {
-         this.b($$0);
+   protected void a(akn.a $$0) {
+      $$0.a(b, Optional.empty());
+      $$0.a(c, true);
+   }
+
+   @Override
+   public void h() {
+      this.a++;
+      this.aI();
+      this.bU();
+      if (this.dU() instanceof arq) {
+         iv $$0 = this.du();
+         if (((arq)this.dU()).F() != null && this.dU().a_($$0).l()) {
+            this.dU().b($$0, dlz.a(this.dU(), $$0));
+         }
       }
    }
 
    @Override
-   public void c() {
-      this.c = null;
-      this.d = null;
+   protected void b(tz $$0) {
+      $$0.b("beam_target", iv.a, this.f());
+      $$0.a("ShowBottom", this.g());
    }
 
-   @Nullable
    @Override
-   public feq f() {
-      return this.d;
+   protected void a(tz $$0) {
+      this.a($$0.<iv>a("beam_target", iv.a).orElse(null));
+      if ($$0.b("ShowBottom", 1)) {
+         this.a($$0.o("ShowBottom"));
+      }
    }
 
-   private void b(arq $$0) {
-      if (this.c != null && this.c.c()) {
-         iu $$1 = $$0.a(egg.a.f, ejl.a(this.a.j()));
-         int $$2 = this.a.x() == null ? 0 : this.a.x().e();
-         if (this.a.dY().a($$2 + 3) == 0) {
-            this.a.t().a(cmq.c);
-            return;
-         }
+   @Override
+   public boolean bE() {
+      return true;
+   }
 
-         crc $$3 = $$0.a(b, this.a, (double)$$1.u(), (double)$$1.v(), (double)$$1.w());
-         double $$4;
-         if ($$3 != null) {
-            $$4 = $$1.b($$3.dt()) / 512.0;
-         } else {
-            $$4 = 64.0;
-         }
+   @Override
+   public final boolean b(bux $$0) {
+      return this.d($$0) ? false : !($$0.d() instanceof cmh);
+   }
 
-         if ($$3 != null && (this.a.dY().a((int)($$4 + 2.0)) == 0 || this.a.dY().a($$2 + 2) == 0)) {
-            this.a($$3);
-            return;
-         }
-      }
-
-      if (this.c == null || this.c.c()) {
-         int $$6 = this.a.n();
-         int $$7 = $$6;
-         if (this.a.dY().a(8) == 0) {
-            this.e = !this.e;
-            $$7 = $$6 + 6;
-         }
-
-         if (this.e) {
-            $$7++;
-         } else {
-            $$7--;
-         }
-
-         if (this.a.x() != null && this.a.x().e() >= 0) {
-            $$7 %= 12;
-            if ($$7 < 0) {
-               $$7 += 12;
+   @Override
+   public final boolean a(arq $$0, bux $$1, float $$2) {
+      if (this.d($$1)) {
+         return false;
+      } else if ($$1.d() instanceof cmh) {
+         return false;
+      } else {
+         if (!this.dP()) {
+            this.a(bwi.d.a);
+            if (!$$1.a(axd.l)) {
+               bux $$3 = $$1.d() != null ? this.dV().d(this, $$1.d()) : null;
+               $$0.a(this, $$3, null, this.dz(), this.dB(), this.dF(), 6.0F, false, djh.a.b);
             }
-         } else {
-            $$7 -= 12;
-            $$7 &= 7;
-            $$7 += 12;
+
+            this.a($$0, $$1);
          }
 
-         this.c = this.a.a($$6, $$7, null);
-         if (this.c != null) {
-            this.c.a();
-         }
-      }
-
-      this.i();
-   }
-
-   private void a(crc $$0) {
-      this.a.t().a(cmq.b);
-      this.a.t().b(cmq.b).a($$0);
-   }
-
-   private void i() {
-      if (this.c != null && !this.c.c()) {
-         jz $$0 = this.c.g();
-         this.c.a();
-         double $$1 = (double)$$0.u();
-         double $$2 = (double)$$0.w();
-
-         double $$3;
-         do {
-            $$3 = (double)((float)$$0.v() + this.a.dY().i() * 20.0F);
-         } while ($$3 < (double)$$0.v());
-
-         this.d = new feq($$1, $$3, $$2);
+         return true;
       }
    }
 
    @Override
-   public void a(clz $$0, iu $$1, buu $$2, @Nullable crc $$3) {
-      if ($$3 != null && this.a.c($$3)) {
-         this.a($$3);
+   public void c(arq $$0) {
+      this.a($$0, this.dV().p());
+      super.c($$0);
+   }
+
+   private void a(arq $$0, bux $$1) {
+      eeo $$2 = $$0.F();
+      if ($$2 != null) {
+         $$2.a(this, $$1);
       }
+   }
+
+   public void a(@Nullable iv $$0) {
+      this.ar().a(b, Optional.ofNullable($$0));
+   }
+
+   @Nullable
+   public iv f() {
+      return this.ar().a(b).orElse(null);
+   }
+
+   public void a(boolean $$0) {
+      this.ar().a(c, $$0);
+   }
+
+   public boolean g() {
+      return this.ar().a(c);
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      return super.a($$0) || this.f() != null;
+   }
+
+   @Override
+   public czk dH() {
+      return new czk(czo.wq);
    }
 }

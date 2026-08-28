@@ -1,93 +1,117 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableSet.Builder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
 
-public class fag extends fau {
-   public static final MapCodec<fag> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  mf.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
-                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(ebk::f).toList())
-               )
-            )
-            .apply($$0, fag::new)
-   );
-   private final je<dmf> b;
-   private final Set<ebk<?>> c;
+public abstract class fag extends fae {
+   public static final int d = 1;
+   public static final int f = 0;
+   protected final int g;
+   protected final int h;
+   protected final List<fbc> i;
+   final BiFunction<czk, ezo, czk> a;
+   private final fad j = new fag.c() {
+      @Override
+      public void a(Consumer<czk> $$0, ezo $$1) {
+         fag.this.a(fbc.a(fag.this.a, $$0, $$1), $$1);
+      }
+   };
 
-   fag(List<fcq> $$0, je<dmf> $$1, Set<ebk<?>> $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   protected fag(int $$0, int $$1, List<fcx> $$2, List<fbc> $$3) {
+      super($$2);
+      this.g = $$0;
+      this.h = $$1;
+      this.i = $$3;
+      this.a = fbe.a($$3);
    }
 
-   private fag(List<fcq> $$0, je<dmf> $$1, List<String> $$2) {
-      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
+   protected static <T extends fag> P4<Mu<T>, Integer, Integer, List<fcx>, List<fbc>> b(Instance<T> $$0) {
+      return $$0.group(Codec.INT.optionalFieldOf("weight", 1).forGetter($$0x -> $$0x.g), Codec.INT.optionalFieldOf("quality", 0).forGetter($$0x -> $$0x.h))
+         .and(a($$0).t1())
+         .and(fbe.c.listOf().optionalFieldOf("functions", List.of()).forGetter($$0x -> $$0x.i));
    }
 
    @Override
-   public faw<fag> b() {
-      return fax.D;
+   public void a(ezu $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.i.size(); $$1++) {
+         this.i.get($$1).a($$0.a(".functions[" + $$1 + "]"));
+      }
    }
+
+   protected abstract void a(Consumer<czk> var1, ezo var2);
 
    @Override
-   public Set<bax<?>> a() {
-      return Set.of(fcb.g);
+   public boolean expand(ezo $$0, Consumer<fad> $$1) {
+      if (this.a($$0)) {
+         $$1.accept(this.j);
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   @Override
-   protected czd a(czd $$0, ezh $$1) {
-      eah $$2 = $$1.c(fcb.g);
-      if ($$2 != null) {
-         $$0.a(kj.aq, dbd.a, $$1x -> {
-            for (ebk<?> $$2x : this.c) {
-               if ($$2.b($$2x)) {
-                  $$1x = $$1x.a($$2x, $$2);
-               }
-            }
-
-            return $$1x;
-         });
-      }
-
-      return $$0;
+   public static fag.a<?> a(fag.d $$0) {
+      return new fag.b($$0);
    }
 
-   public static fag.a a(dmf $$0) {
-      return new fag.a($$0);
+   public abstract static class a<T extends fag.a<T>> extends fae.a<T> implements fay<T> {
+      protected int a = 1;
+      protected int b = 0;
+      private final Builder<fbc> c = ImmutableList.builder();
+
+      public T a(fbc.a $$0) {
+         this.c.add($$0.b());
+         return this.aB_();
+      }
+
+      protected List<fbc> a() {
+         return this.c.build();
+      }
+
+      public T a(int $$0) {
+         this.a = $$0;
+         return this.aB_();
+      }
+
+      public T b(int $$0) {
+         this.b = $$0;
+         return this.aB_();
+      }
    }
 
-   public static class a extends fau.a<fag.a> {
-      private final je<dmf> a;
-      private final Builder<ebk<?>> b = ImmutableSet.builder();
+   static class b extends fag.a<fag.b> {
+      private final fag.d c;
 
-      a(dmf $$0) {
-         this.a = $$0.p();
+      public b(fag.d $$0) {
+         this.c = $$0;
       }
 
-      public fag.a a(ebk<?> $$0) {
-         if (!this.a.a().l().d().contains($$0)) {
-            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
-         } else {
-            this.b.add($$0);
-            return this;
-         }
-      }
-
-      protected fag.a a() {
+      protected fag.b g() {
          return this;
       }
 
       @Override
-      public fav b() {
-         return new fag(this.g(), this.a, this.b.build());
+      public fae b() {
+         return this.c.build(this.a, this.b, this.f(), this.a());
       }
+   }
+
+   protected abstract class c implements fad {
+      @Override
+      public int a(float $$0) {
+         return Math.max(azm.d((float)fag.this.g + (float)fag.this.h * $$0), 0);
+      }
+   }
+
+   @FunctionalInterface
+   protected interface d {
+      fag build(int var1, int var2, List<fcx> var3, List<fbc> var4);
    }
 }

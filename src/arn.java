@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class arn extends eci {
+public class arn extends ecp {
    private static final Logger b = LogUtils.getLogger();
    private final ard c;
    private final arq d;
@@ -26,35 +26,35 @@ public class arn extends eci {
    final aru f;
    private final arn.a g;
    public final aqu a;
-   private final eyp h;
-   private final djx i;
+   private final eyw h;
+   private final dke i;
    private long j;
    private boolean k = true;
    private boolean l = true;
    private static final int m = 4;
    private final long[] n = new long[4];
-   private final edf[] o = new edf[4];
-   private final ece[] p = new ece[4];
-   private final List<eco> q = new ObjectArrayList();
+   private final edm[] o = new edm[4];
+   private final ecl[] p = new ecl[4];
+   private final List<ecv> q = new ObjectArrayList();
    private final Set<aqs> r = new ReferenceOpenHashSet();
    @Nullable
    @bav
-   private djl.d s;
+   private djs.d s;
 
-   public arn(arq $$0, eyv.c $$1, DataFixer $$2, eve $$3, Executor $$4, ecf $$5, int $$6, int $$7, boolean $$8, asa $$9, eel $$10, Supplier<eyp> $$11) {
+   public arn(arq $$0, ezc.c $$1, DataFixer $$2, evl $$3, Executor $$4, ecm $$5, int $$6, int $$7, boolean $$8, asa $$9, ees $$10, Supplier<eyw> $$11) {
       this.d = $$0;
       this.g = new arn.a($$0);
       this.e = Thread.currentThread();
       Path $$12 = $$1.a($$0.aj()).resolve("data");
 
       try {
-         v.c($$12);
+         w.c($$12);
       } catch (IOException var15) {
          b.error("Failed to create dimension data storage directory", var15);
       }
 
-      this.h = new eyp(new eya.a($$0), $$12, $$2, $$0.F_());
-      this.i = this.h.a(djx.b);
+      this.h = new eyw(new eyh.a($$0), $$12, $$2, $$0.F_());
+      this.i = this.h.a(dke.b);
       this.a = new aqu($$0, $$1, $$2, $$3, $$4, this.g, this, $$5, $$9, $$10, $$11, this.i, $$6, $$8);
       this.f = this.a.d();
       this.c = this.a.j();
@@ -75,7 +75,7 @@ public class arn extends eci {
       return this.a.h();
    }
 
-   private void a(long $$0, @Nullable ece $$1, edf $$2) {
+   private void a(long $$0, @Nullable ecl $$1, edm $$2) {
       for (int $$3 = 3; $$3 > 0; $$3--) {
          this.n[$$3] = this.n[$$3 - 1];
          this.o[$$3] = this.o[$$3 - 1];
@@ -89,17 +89,17 @@ public class arn extends eci {
 
    @Nullable
    @Override
-   public ece a(int $$0, int $$1, edf $$2, boolean $$3) {
+   public ecl a(int $$0, int $$1, edm $$2, boolean $$3) {
       if (Thread.currentThread() != this.e) {
-         return CompletableFuture.<ece>supplyAsync(() -> this.a($$0, $$1, $$2, $$3), this.g).join();
+         return CompletableFuture.<ecl>supplyAsync(() -> this.a($$0, $$1, $$2, $$3), this.g).join();
       } else {
-         bqo $$4 = bqn.a();
+         bqq $$4 = bqp.a();
          $$4.f("getChunk");
-         long $$5 = dih.c($$0, $$1);
+         long $$5 = dio.c($$0, $$1);
 
          for (int $$6 = 0; $$6 < 4; $$6++) {
             if ($$5 == this.n[$$6] && $$2 == this.o[$$6]) {
-               ece $$7 = this.p[$$6];
+               ecl $$7 = this.p[$$6];
                if ($$7 != null || !$$3) {
                   return $$7;
                }
@@ -107,12 +107,12 @@ public class arn extends eci {
          }
 
          $$4.f("getChunkCacheMiss");
-         CompletableFuture<aqv<ece>> $$8 = this.c($$0, $$1, $$2, $$3);
+         CompletableFuture<aqv<ecl>> $$8 = this.c($$0, $$1, $$2, $$3);
          this.g.b($$8::isDone);
-         aqv<ece> $$9 = $$8.join();
-         ece $$10 = $$9.b(null);
+         aqv<ecl> $$9 = $$8.join();
+         ecl $$10 = $$9.b(null);
          if ($$10 == null && $$3) {
-            throw (IllegalStateException)af.b(new IllegalStateException("Chunk not there when requested: " + $$9.b()));
+            throw (IllegalStateException)ag.b(new IllegalStateException("Chunk not there when requested: " + $$9.b()));
          } else {
             this.a($$5, $$10, $$2);
             return $$10;
@@ -122,17 +122,17 @@ public class arn extends eci {
 
    @Nullable
    @Override
-   public eco a(int $$0, int $$1) {
+   public ecv a(int $$0, int $$1) {
       if (Thread.currentThread() != this.e) {
          return null;
       } else {
-         bqn.a().f("getChunkNow");
-         long $$2 = dih.c($$0, $$1);
+         bqp.a().f("getChunkNow");
+         long $$2 = dio.c($$0, $$1);
 
          for (int $$3 = 0; $$3 < 4; $$3++) {
-            if ($$2 == this.n[$$3] && this.o[$$3] == edf.n) {
-               ece $$4 = this.p[$$3];
-               return $$4 instanceof eco ? (eco)$$4 : null;
+            if ($$2 == this.n[$$3] && this.o[$$3] == edm.n) {
+               ecl $$4 = this.p[$$3];
+               return $$4 instanceof ecv ? (ecv)$$4 : null;
             }
          }
 
@@ -140,11 +140,11 @@ public class arn extends eci {
          if ($$5 == null) {
             return null;
          } else {
-            ece $$6 = $$5.b(edf.n);
+            ecl $$6 = $$5.b(edm.n);
             if ($$6 != null) {
-               this.a($$2, $$6, edf.n);
-               if ($$6 instanceof eco) {
-                  return (eco)$$6;
+               this.a($$2, $$6, edm.n);
+               if ($$6 instanceof ecv) {
+                  return (ecv)$$6;
                }
             }
 
@@ -154,39 +154,39 @@ public class arn extends eci {
    }
 
    private void s() {
-      Arrays.fill(this.n, dih.c);
+      Arrays.fill(this.n, dio.c);
       Arrays.fill(this.o, null);
       Arrays.fill(this.p, null);
    }
 
-   public CompletableFuture<aqv<ece>> b(int $$0, int $$1, edf $$2, boolean $$3) {
+   public CompletableFuture<aqv<ecl>> b(int $$0, int $$1, edm $$2, boolean $$3) {
       boolean $$4 = Thread.currentThread() == this.e;
-      CompletableFuture<aqv<ece>> $$5;
+      CompletableFuture<aqv<ecl>> $$5;
       if ($$4) {
          $$5 = this.c($$0, $$1, $$2, $$3);
          this.g.b($$5::isDone);
       } else {
-         $$5 = CompletableFuture.<CompletableFuture<aqv<ece>>>supplyAsync(() -> this.c($$0, $$1, $$2, $$3), this.g).thenCompose($$0x -> $$0x);
+         $$5 = CompletableFuture.<CompletableFuture<aqv<ecl>>>supplyAsync(() -> this.c($$0, $$1, $$2, $$3), this.g).thenCompose($$0x -> $$0x);
       }
 
       return $$5;
    }
 
-   private CompletableFuture<aqv<ece>> c(int $$0, int $$1, edf $$2, boolean $$3) {
-      dih $$4 = new dih($$0, $$1);
+   private CompletableFuture<aqv<ecl>> c(int $$0, int $$1, edm $$2, boolean $$3) {
+      dio $$4 = new dio($$0, $$1);
       long $$5 = $$4.a();
       int $$6 = aqt.a($$2);
       aqs $$7 = this.b($$5);
       if ($$3) {
          this.a(new arw(arx.i, $$6), $$4);
          if (this.a($$7, $$6)) {
-            bqo $$8 = bqn.a();
+            bqq $$8 = bqp.a();
             $$8.a("chunkLoad");
             this.t();
             $$7 = this.b($$5);
             $$8.c();
             if (this.a($$7, $$6)) {
-               throw (IllegalStateException)af.b(new IllegalStateException("No chunk holder after ticket has been added"));
+               throw (IllegalStateException)ag.b(new IllegalStateException("No chunk holder after ticket has been added"));
             }
          }
       }
@@ -200,20 +200,20 @@ public class arn extends eci {
 
    @Override
    public boolean b(int $$0, int $$1) {
-      aqs $$2 = this.b(new dih($$0, $$1).a());
-      int $$3 = aqt.a(edf.n);
+      aqs $$2 = this.b(new dio($$0, $$1).a());
+      int $$3 = aqt.a(edm.n);
       return !this.a($$2, $$3);
    }
 
    @Nullable
    @Override
-   public ecq c(int $$0, int $$1) {
-      long $$2 = dih.c($$0, $$1);
+   public ecx c(int $$0, int $$1) {
+      long $$2 = dio.c($$0, $$1);
       aqs $$3 = this.b($$2);
-      return $$3 == null ? null : $$3.a(edf.k.c());
+      return $$3 == null ? null : $$3.a(edm.k.c());
    }
 
-   public dja c() {
+   public djh c() {
       return this.d;
    }
 
@@ -257,7 +257,7 @@ public class arn extends eci {
 
    @Override
    public void a(BooleanSupplier $$0, boolean $$1) {
-      bqo $$2 = bqn.a();
+      bqq $$2 = bqp.a();
       $$2.a("purge");
       if (this.d.u().i() || !$$1) {
          this.i.c();
@@ -281,7 +281,8 @@ public class arn extends eci {
       long $$1 = $$0 - this.j;
       this.j = $$0;
       if (!this.d.ak()) {
-         bqo $$2 = bqn.a();
+         bqq $$2 = bqp.a();
+         $$2.a("pollingChunks");
          if (this.d.u().i()) {
             $$2.a("tickingChunks");
             this.a($$2, $$1);
@@ -293,11 +294,11 @@ public class arn extends eci {
       }
    }
 
-   private void a(bqo $$0) {
+   private void a(bqq $$0) {
       $$0.a("broadcast");
 
       for (aqs $$1 : this.r) {
-         eco $$2 = $$1.d();
+         ecv $$2 = $$1.d();
          if ($$2 != null) {
             $$1.a($$2);
          }
@@ -307,32 +308,32 @@ public class arn extends eci {
       $$0.c();
    }
 
-   private void a(bqo $$0, long $$1) {
+   private void a(bqq $$0, long $$1) {
       $$0.b("naturalSpawnCount");
       int $$2 = this.c.a();
-      djl.d $$3 = djl.a($$2, this.d.C(), this::a, new djk(this.a));
+      djs.d $$3 = djs.a($$2, this.d.C(), this::a, new djr(this.a));
       this.s = $$3;
       $$0.b("spawnAndTick");
-      boolean $$4 = this.d.O().c(diw.f);
-      int $$5 = this.d.O().d(diw.p);
-      List<bxh> $$7;
+      boolean $$4 = this.d.O().c(djd.f);
+      int $$5 = this.d.O().d(djd.p);
+      List<bxm> $$7;
       if ($$4 && (this.k || this.l)) {
          boolean $$6 = this.d.y_().c() % 400L == 0L;
-         $$7 = djl.a($$3, this.l, this.k, $$6);
+         $$7 = djs.a($$3, this.l, this.k, $$6);
       } else {
          $$7 = List.of();
       }
 
-      List<eco> $$9 = this.q;
+      List<ecv> $$9 = this.q;
 
       try {
          $$0.a("filteringSpawningChunks");
          this.a.a($$9);
          $$0.b("shuffleSpawningChunks");
-         af.c($$9, this.d.A);
+         ag.c($$9, this.d.A);
          $$0.b("tickSpawningChunks");
 
-         for (eco $$10 : $$9) {
+         for (ecv $$10 : $$9) {
             this.a($$10, $$1, $$7, $$3);
          }
       } finally {
@@ -348,8 +349,8 @@ public class arn extends eci {
       }
    }
 
-   private void a(eco $$0, long $$1, List<bxh> $$2, djl.d $$3) {
-      dih $$4 = $$0.f();
+   private void a(ecv $$0, long $$1, List<bxm> $$2, djs.d $$3) {
+      dio $$4 = $$0.f();
       $$0.b($$1);
       if (this.c.c($$4.a())) {
          this.d.a($$0);
@@ -357,12 +358,12 @@ public class arn extends eci {
 
       if (!$$2.isEmpty()) {
          if (this.d.c($$4)) {
-            djl.a(this.d, $$0, $$3, $$2);
+            djs.a(this.d, $$0, $$3, $$2);
          }
       }
    }
 
-   private void a(long $$0, Consumer<eco> $$1) {
+   private void a(long $$0, Consumer<ecv> $$1) {
       aqs $$2 = this.b($$0);
       if ($$2 != null) {
          $$2.c().getNow(aqs.a).a($$1);
@@ -379,15 +380,15 @@ public class arn extends eci {
       return this.g.by();
    }
 
-   public ecf g() {
+   public ecm g() {
       return this.a.a();
    }
 
-   public ecg h() {
+   public ecn h() {
       return this.a.b();
    }
 
-   public egu i() {
+   public ehb i() {
       return this.a.c();
    }
 
@@ -396,17 +397,17 @@ public class arn extends eci {
       return this.a.i();
    }
 
-   public void a(iu $$0) {
-      int $$1 = jx.a($$0.u());
-      int $$2 = jx.a($$0.w());
-      aqs $$3 = this.b(dih.c($$1, $$2));
+   public void a(iv $$0) {
+      int $$1 = jy.a($$0.u());
+      int $$2 = jy.a($$0.w());
+      aqs $$3 = this.b(dio.c($$1, $$2));
       if ($$3 != null && $$3.a($$0)) {
          this.r.add($$3);
       }
    }
 
    @Override
-   public void a(djj $$0, jx $$1) {
+   public void a(djq $$0, jy $$1) {
       this.g.execute(() -> {
          aqs $$2 = this.b($$1.r().a());
          if ($$2 != null && $$2.a($$0, $$1.b())) {
@@ -415,20 +416,20 @@ public class arn extends eci {
       });
    }
 
-   public void a(arw $$0, dih $$1) {
+   public void a(arw $$0, dio $$1) {
       this.i.a($$0, $$1);
    }
 
-   public void a(arx $$0, dih $$1, int $$2) {
+   public void a(arx $$0, dio $$1, int $$2) {
       this.i.a($$0, $$1, $$2);
    }
 
-   public void b(arx $$0, dih $$1, int $$2) {
+   public void b(arx $$0, dio $$1, int $$2) {
       this.i.b($$0, $$1, $$2);
    }
 
    @Override
-   public boolean a(dih $$0, boolean $$1) {
+   public boolean a(dio $$0, boolean $$1) {
       return this.i.a($$0, $$1);
    }
 
@@ -438,24 +439,24 @@ public class arn extends eci {
    }
 
    public void a(arr $$0) {
-      if (!$$0.dQ()) {
+      if (!$$0.dP()) {
          this.a.a($$0);
       }
    }
 
-   public void a(bwf $$0) {
+   public void a(bwi $$0) {
       this.a.b($$0);
    }
 
-   public void b(bwf $$0) {
+   public void b(bwi $$0) {
       this.a.a($$0);
    }
 
-   public void a(bwf $$0, zf<?> $$1) {
+   public void a(bwi $$0, zf<?> $$1) {
       this.a.b($$0, $$1);
    }
 
-   public void b(bwf $$0, zf<?> $$1) {
+   public void b(bwi $$0, zf<?> $$1) {
       this.a.a($$0, $$1);
    }
 
@@ -473,25 +474,25 @@ public class arn extends eci {
       this.l = this.l;
    }
 
-   public String a(dih $$0) {
+   public String a(dio $$0) {
       return this.a.a($$0);
    }
 
-   public eyp l() {
+   public eyw l() {
       return this.h;
    }
 
-   public cig m() {
+   public cil m() {
       return this.a.m();
    }
 
-   public edn n() {
+   public edu n() {
       return this.a.p();
    }
 
    @Nullable
    @bav
-   public djl.d o() {
+   public djs.d o() {
       return this.s;
    }
 
@@ -505,8 +506,8 @@ public class arn extends eci {
       }
    }
 
-   final class a extends bss<Runnable> {
-      a(final dja $$0) {
+   final class a extends bsu<Runnable> {
+      a(final djh $$0) {
          super("Chunk source main thread executor for " + $$0.aj().a());
       }
 
@@ -537,7 +538,7 @@ public class arn extends eci {
 
       @Override
       protected void d(Runnable $$0) {
-         bqn.a().f("runTask");
+         bqp.a().f("runTask");
          super.d($$0);
       }
 

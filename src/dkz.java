@@ -1,16 +1,14 @@
-import com.mojang.serialization.MapCodec;
-import java.util.function.Supplier;
+public class dkz {
+   public static final alf<dky> a = a("nether");
+   public static final alf<dky> b = a("overworld");
 
-public abstract class dkz<E extends dxf> extends dlr {
-   protected final Supplier<dxh<? extends E>> a;
-
-   protected dkz(eag.d $$0, Supplier<dxh<? extends E>> $$1) {
-      super($$0);
-      this.a = $$1;
+   public static void a(qh<dky> $$0) {
+      jg<dkk> $$1 = $$0.a(mh.aG);
+      $$0.a(a, new dky(dky.a.a, $$1));
+      $$0.a(b, new dky(dky.a.b, $$1));
    }
 
-   @Override
-   protected abstract MapCodec<? extends dkz<E>> a();
-
-   public abstract don.c<? extends dxn> a(eah var1, dja var2, iu var3, boolean var4);
+   private static alf<dky> a(String $$0) {
+      return alf.a(mh.aW, alg.b($$0));
+   }
 }

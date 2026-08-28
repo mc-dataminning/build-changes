@@ -1,50 +1,25 @@
-import java.util.Optional;
+public final class djt implements eci {
+   private final int a;
+   private final eao[] b;
 
-public class djt extends diu {
-   private final boolean a;
-   private final boolean b;
-   private final Optional<Float> c;
-   private final Optional<ji<dmf>> d;
-
-   public djt(boolean $$0, boolean $$1, Optional<Float> $$2, Optional<ji<dmf>> $$3) {
+   public djt(int $$0, eao[] $$1) {
       this.a = $$0;
       this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
    }
 
    @Override
-   public Optional<Float> a(dit $$0, dig $$1, iu $$2, eah $$3, ewo $$4) {
-      if (this.d.isPresent()) {
-         return $$3.a(this.d.get()) ? Optional.of(3600000.0F) : Optional.empty();
+   public eao a(int $$0) {
+      int $$1 = $$0 - this.a;
+      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : dmo.a.m();
+   }
+
+   @Override
+   public void a(int $$0, eao $$1) {
+      int $$2 = $$0 - this.a;
+      if ($$2 >= 0 && $$2 < this.b.length) {
+         this.b[$$2] = $$1;
       } else {
-         return super.a($$0, $$1, $$2, $$3, $$4);
+         throw new IllegalArgumentException("Outside of column height: " + $$0);
       }
-   }
-
-   @Override
-   public boolean a(dit $$0, dig $$1, iu $$2, eah $$3, float $$4) {
-      return this.a;
-   }
-
-   @Override
-   public boolean a(dit $$0, bwf $$1) {
-      return this.b;
-   }
-
-   @Override
-   public float a(bwf $$0) {
-      boolean var10000;
-      label17: {
-         if ($$0 instanceof crc $$1 && $$1.gk().b) {
-            var10000 = true;
-            break label17;
-         }
-
-         var10000 = false;
-      }
-
-      boolean $$2 = var10000;
-      return $$2 ? 0.0F : this.c.orElseGet(() -> super.a($$0));
    }
 }

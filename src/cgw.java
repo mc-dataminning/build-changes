@@ -1,13 +1,8 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class cgw extends chm<bxe> {
-   @Override
-   protected void a(arq $$0, bxe $$1) {
-   }
-
-   @Override
-   public Set<cgg<?>> a() {
-      return ImmutableSet.of();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface cgw {
 }

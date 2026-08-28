@@ -1,34 +1,48 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
-public interface fvm {
-   MapCodec<fvm> b = fvn.f.dispatchMap(fvm::a, fvn::a);
+public enum fvm implements bak {
+   a("uniform"),
+   b("jp");
 
-   fvn a();
+   public static final Codec<fvm> c = bak.a(fvm::values);
+   private final String d;
 
-   Either<fvm.b, fvm.c> b();
-
-   public static record a(fvm b, fva.a c) {
-      public static final Codec<fvm.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(fvm.b.forGetter(fvm.a::a), fva.a.a.optionalFieldOf("filter", fva.a.b).forGetter(fvm.a::b)).apply($$0, fvm.a::new)
-      );
-
-      public fvm a() {
-         return this.b;
-      }
-
-      public fva.a b() {
-         return this.c;
-      }
+   private fvm(final String $$0) {
+      this.d = $$0;
    }
 
-   public interface b {
-      fhj load(avd var1) throws IOException;
+   @Override
+   public String c() {
+      return this.d;
    }
 
-   public static record c(alg a) {
+   public static class a {
+      private final Map<fvm, Boolean> c;
+      public static final Codec<fvm.a> a = Codec.unboundedMap(fvm.c, Codec.BOOL).xmap(fvm.a::new, $$0 -> $$0.c);
+      public static final fvm.a b = new fvm.a(Map.of());
+
+      public a(Map<fvm, Boolean> $$0) {
+         this.c = $$0;
+      }
+
+      public boolean a(Set<fvm> $$0) {
+         for (Entry<fvm, Boolean> $$1 : this.c.entrySet()) {
+            if ($$0.contains($$1.getKey()) != $$1.getValue()) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+
+      public fvm.a a(fvm.a $$0) {
+         Map<fvm, Boolean> $$1 = new HashMap<>($$0.c);
+         $$1.putAll(this.c);
+         return new fvm.a(Map.copyOf($$1));
+      }
    }
 }

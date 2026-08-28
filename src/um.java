@@ -183,8 +183,8 @@ public class um {
       try {
          return uz.a($$2).c($$0, $$1);
       } catch (IOException var6) {
-         o $$4 = o.a(var6, "Loading NBT data");
-         p $$5 = $$4.a("NBT Tag");
+         p $$4 = p.a(var6, "Loading NBT data");
+         q $$5 = $$4.a("NBT Tag");
          $$5.a("Tag type", $$2);
          throw new uq($$4);
       }
@@ -200,7 +200,7 @@ public class um {
          try {
             super.writeUTF($$0);
          } catch (UTFDataFormatException var3) {
-            af.a("Failed to write NBT String", var3);
+            ag.a("Failed to write NBT String", var3);
             super.writeUTF("");
          }
       }

@@ -12,55 +12,55 @@ public class akl {
    public static final akk<Integer> b = akk.a(yu.h);
    public static final akk<Long> c = akk.a(yu.k);
    public static final akk<Float> d = akk.a(yu.l);
-   public static final akk<String> e = akk.a(yu.o);
+   public static final akk<String> e = akk.a(yu.p);
    public static final akk<wy> f = akk.a(xa.d);
    public static final akk<Optional<wy>> g = akk.a(xa.e);
-   public static final akk<czd> h = new akk<czd>() {
+   public static final akk<czk> h = new akk<czk>() {
       @Override
-      public yw<? super wj, czd> codec() {
-         return czd.h;
+      public yw<? super wj, czk> codec() {
+         return czk.h;
       }
 
-      public czd a(czd $$0) {
+      public czk a(czk $$0) {
          return $$0.v();
       }
    };
-   public static final akk<eah> i = akk.a(yu.a(dmf.k));
-   private static final yw<ByteBuf, Optional<eah>> J = new yw<ByteBuf, Optional<eah>>() {
-      public void a(ByteBuf $$0, Optional<eah> $$1) {
+   public static final akk<eao> i = akk.a(yu.a(dmm.k));
+   private static final yw<ByteBuf, Optional<eao>> J = new yw<ByteBuf, Optional<eao>>() {
+      public void a(ByteBuf $$0, Optional<eao> $$1) {
          if ($$1.isPresent()) {
-            wp.a($$0, dmf.j($$1.get()));
+            wp.a($$0, dmm.j($$1.get()));
          } else {
             wp.a($$0, 0);
          }
       }
 
-      public Optional<eah> a(ByteBuf $$0) {
+      public Optional<eao> a(ByteBuf $$0) {
          int $$1 = wp.a($$0);
-         return $$1 == 0 ? Optional.empty() : Optional.of(dmf.a($$1));
+         return $$1 == 0 ? Optional.empty() : Optional.of(dmm.a($$1));
       }
    };
-   public static final akk<Optional<eah>> j = akk.a(J);
+   public static final akk<Optional<eao>> j = akk.a(J);
    public static final akk<Boolean> k = akk.a(yu.b);
-   public static final akk<lv> l = akk.a(lx.bl);
-   public static final akk<List<lv>> m = akk.a(lx.bl.a(yu.a()));
-   public static final akk<jw> n = akk.a(jw.a);
-   public static final akk<iu> o = akk.a(iu.b);
-   public static final akk<Optional<iu>> p = akk.a(iu.b.a(yu::a));
-   public static final akk<ja> q = akk.a(ja.j);
-   public static final akk<Optional<bwl<bxe>>> r = akk.a(bwl.b().a(yu::a));
-   public static final akk<Optional<jd>> s = akk.a(jd.c.a(yu::a));
+   public static final akk<lw> l = akk.a(ly.bl);
+   public static final akk<List<lw>> m = akk.a(ly.bl.a(yu.a()));
+   public static final akk<jx> n = akk.a(jx.b);
+   public static final akk<iv> o = akk.a(iv.b);
+   public static final akk<Optional<iv>> p = akk.a(iv.b.a(yu::a));
+   public static final akk<jb> q = akk.a(jb.j);
+   public static final akk<Optional<bwo<bxj>>> r = akk.a(bwo.b().a(yu::a));
+   public static final akk<Optional<je>> s = akk.a(je.c.a(yu::a));
    public static final akk<tz> t = new akk<tz>() {
       @Override
       public yw<? super wj, tz> codec() {
-         return yu.s;
+         return yu.t;
       }
 
       public tz a(tz $$0) {
          return $$0.i();
       }
    };
-   public static final akk<cqp> u = akk.a(cqp.d);
+   public static final akk<cqw> u = akk.a(cqw.d);
    private static final yw<ByteBuf, OptionalInt> K = new yw<ByteBuf, OptionalInt>() {
       public OptionalInt a(ByteBuf $$0) {
          int $$1 = wp.a($$0);
@@ -72,18 +72,18 @@ public class akl {
       }
    };
    public static final akk<OptionalInt> v = akk.a(K);
-   public static final akk<bxq> w = akk.a(bxq.t);
-   public static final akk<je<ciy>> x = akk.a(ciy.d);
-   public static final akk<je<cjb>> y = akk.a(cjb.d);
-   public static final akk<je<cjf>> z = akk.a(cjf.d);
-   public static final akk<je<ckf>> A = akk.a(ckf.d);
-   public static final akk<je<ckx>> B = akk.a(ckx.d);
-   public static final akk<je<cjq>> C = akk.a(cjq.d);
-   public static final akk<je<cnd>> D = akk.a(cnd.d);
-   public static final akk<ckk.a> E = akk.a(ckk.a.e);
-   public static final akk<clu.a> F = akk.a(clu.a.i);
-   public static final akk<Vector3f> G = akk.a(yu.u);
-   public static final akk<Quaternionf> H = akk.a(yu.v);
+   public static final akk<bxv> w = akk.a(bxv.t);
+   public static final akk<jf<cjd>> x = akk.a(cjd.d);
+   public static final akk<jf<cjg>> y = akk.a(cjg.d);
+   public static final akk<jf<cjk>> z = akk.a(cjk.d);
+   public static final akk<jf<ckj>> A = akk.a(ckj.d);
+   public static final akk<jf<clb>> B = akk.a(clb.d);
+   public static final akk<jf<cjv>> C = akk.a(cjv.d);
+   public static final akk<jf<cnk>> D = akk.a(cnk.d);
+   public static final akk<cko.a> E = akk.a(cko.a.e);
+   public static final akk<cmb.a> F = akk.a(cmb.a.i);
+   public static final akk<Vector3f> G = akk.a(yu.v);
+   public static final akk<Quaternionf> H = akk.a(yu.w);
 
    public static void a(akk<?> $$0) {
       I.d($$0);

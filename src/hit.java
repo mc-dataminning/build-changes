@@ -1,6 +1,20 @@
-public interface hit extends AutoCloseable {
-   void a(int var1, int var2);
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   @Override
-   void close();
+public class hit {
+   @Nullable
+   public alg a;
+   public final List<hit.a> b = new ArrayList<>();
+
+   public static class a {
+      @Nullable
+      public hjk a;
+      public byte b;
+      public byte c;
+      public byte d;
+      public boolean e;
+      @Nullable
+      public wy f;
+   }
 }

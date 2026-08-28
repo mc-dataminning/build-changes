@@ -1,4 +1,4 @@
-public record aaz(iu c, float d, float e, float f, float g, float h) implements aai {
+public record aaz(iv c, float d, float e, float f, float g, float h) implements aai {
    public static final yw<vu, aaz> a = aai.a(aaz::a, aaz::new);
    public static final aai.b<aaz> b = aai.a("debug/worldgen_attempt");
 
@@ -20,7 +20,7 @@ public record aaz(iu c, float d, float e, float f, float g, float h) implements 
       return b;
    }
 
-   public iu b() {
+   public iv b() {
       return this.c;
    }
 

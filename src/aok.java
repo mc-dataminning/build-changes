@@ -12,24 +12,24 @@ public class aok {
    private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("commands.publish.failed"));
    private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wy.b("commands.publish.alreadyPublished", $$0));
 
-   public static void a(CommandDispatcher<ei> $$0) {
+   public static void a(CommandDispatcher<ej> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("publish").requires($$0x -> $$0x.c(4)))
-               .executes($$0x -> a((ei)$$0x.getSource(), azd.a(), false, null)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("publish").requires($$0x -> $$0x.c(4)))
+               .executes($$0x -> a((ej)$$0x.getSource(), azd.a(), false, null)))
             .then(
-               ((RequiredArgumentBuilder)ej.a("allowCommands", BoolArgumentType.bool())
-                     .executes($$0x -> a((ei)$$0x.getSource(), azd.a(), BoolArgumentType.getBool($$0x, "allowCommands"), null)))
+               ((RequiredArgumentBuilder)ek.a("allowCommands", BoolArgumentType.bool())
+                     .executes($$0x -> a((ej)$$0x.getSource(), azd.a(), BoolArgumentType.getBool($$0x, "allowCommands"), null)))
                   .then(
-                     ((RequiredArgumentBuilder)ej.a("gamemode", ew.a())
-                           .executes($$0x -> a((ei)$$0x.getSource(), azd.a(), BoolArgumentType.getBool($$0x, "allowCommands"), ew.a($$0x, "gamemode"))))
+                     ((RequiredArgumentBuilder)ek.a("gamemode", ex.a())
+                           .executes($$0x -> a((ej)$$0x.getSource(), azd.a(), BoolArgumentType.getBool($$0x, "allowCommands"), ex.a($$0x, "gamemode"))))
                         .then(
-                           ej.a("port", IntegerArgumentType.integer(0, 65535))
+                           ek.a("port", IntegerArgumentType.integer(0, 65535))
                               .executes(
                                  $$0x -> a(
-                                       (ei)$$0x.getSource(),
+                                       (ej)$$0x.getSource(),
                                        IntegerArgumentType.getInteger($$0x, "port"),
                                        BoolArgumentType.getBool($$0x, "allowCommands"),
-                                       ew.a($$0x, "gamemode")
+                                       ex.a($$0x, "gamemode")
                                     )
                               )
                         )
@@ -38,7 +38,7 @@ public class aok {
       );
    }
 
-   private static int a(ei $$0, int $$1, boolean $$2, @Nullable dix $$3) throws CommandSyntaxException {
+   private static int a(ej $$0, int $$1, boolean $$2, @Nullable dje $$3) throws CommandSyntaxException {
       if ($$0.l().r()) {
          throw b.create($$0.l().S());
       } else if (!$$0.l().a($$3, $$2, $$1)) {

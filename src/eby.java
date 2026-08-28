@@ -1,15 +1,27 @@
-public enum eby {
-   a(4259712),
-   b(16724016),
-   c(2138367);
+import com.mojang.serialization.Codec;
 
-   private final int d;
+public enum eby implements bak {
+   a("save"),
+   b("load"),
+   c("corner"),
+   d("data");
 
-   private eby(final int $$0) {
-      this.d = $$0;
+   @Deprecated
+   public static final Codec<eby> e = ayu.c(eby::valueOf);
+   private final String f;
+   private final wy g;
+
+   private eby(final String $$0) {
+      this.f = $$0;
+      this.g = wy.c("structure_block.mode_info." + $$0);
    }
 
-   public int a() {
-      return this.d;
+   @Override
+   public String c() {
+      return this.f;
+   }
+
+   public wy a() {
+      return this.g;
    }
 }

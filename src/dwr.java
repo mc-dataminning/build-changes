@@ -1,21 +1,30 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dwr extends dmy {
-   public static final MapCodec<dwr> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cyb.q.fieldOf("color").forGetter(dwr::b), t()).apply($$0, dwr::new));
-   private final cyb c;
+public class dwr extends dqf {
+   public static final MapCodec<dwr> c = b(dwr::new);
+   private static final ffr g = dmm.b(8.0, 9.0, 16.0);
 
    @Override
    public MapCodec<dwr> a() {
-      return b;
+      return c;
    }
 
-   protected dwr(cyb $$0, eag.d $$1) {
-      super($$1);
-      this.c = $$0;
+   public dwr(ean.d $$0) {
+      super($$0, jb.a, g, false, 0.1);
    }
 
-   public cyb b() {
-      return this.c;
+   @Override
+   protected int a(azv $$0) {
+      return drz.a($$0);
+   }
+
+   @Override
+   protected dmm b() {
+      return dmo.pg;
+   }
+
+   @Override
+   protected boolean h(eao $$0) {
+      return drz.a($$0);
    }
 }

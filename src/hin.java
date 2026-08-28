@@ -1,61 +1,59 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.function.UnaryOperator;
+import javax.annotation.Nullable;
 
-public class hin implements AutoCloseable {
-   private static final int e = 16;
-   public static final int a = 0;
-   public static final int b = 3;
-   public static final int c = 10;
-   public static final int d = a(0, 10);
-   private final hik f = new hik(16, 16, false);
+public class hin implements hio<dck> {
+   private final dty.a a;
+   private final gii b;
+   @Nullable
+   private final alg c;
+   private final float d;
 
-   public hin() {
-      fik $$0 = this.f.e();
+   public hin(dty.a $$0, gii $$1, @Nullable alg $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+   }
 
-      for (int $$1 = 0; $$1 < 16; $$1++) {
-         for (int $$2 = 0; $$2 < 16; $$2++) {
-            if ($$1 < 8) {
-               $$0.a($$2, $$1, -1291911168);
-            } else {
-               int $$3 = (int)((1.0F - (float)$$2 / 15.0F * 0.75F) * 255.0F);
-               $$0.a($$2, $$1, axw.c($$3, -1));
-            }
-         }
+   @Nullable
+   public dck a(czk $$0) {
+      return $$0.a(kk.ak);
+   }
+
+   public void a(@Nullable dck $$0, czi $$1, fjy $$2, gqm $$3, int $$4, int $$5, boolean $$6) {
+      gqx $$7 = gto.a(this.a, $$0, this.c);
+      gto.a(null, 180.0F, this.d, $$2, $$3, $$4, this.b, $$7);
+   }
+
+   public static record a(dty.a b, Optional<alg> c, float d) implements hio.a {
+      public static final MapCodec<hin.a> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  dty.a.b.fieldOf("kind").forGetter(hin.a::b),
+                  alg.a.optionalFieldOf("texture").forGetter(hin.a::c),
+                  Codec.FLOAT.optionalFieldOf("animation", 0.0F).forGetter(hin.a::d)
+               )
+               .apply($$0, hin.a::new)
+      );
+
+      public a(dty.a $$0) {
+         this($$0, Optional.empty(), 0.0F);
       }
 
-      RenderSystem.activeTexture(33985);
-      this.f.c();
-      this.f.a(false, false);
-      this.f.a(true);
-      $$0.a(0, 0, 0, 0, 0, $$0.a(), $$0.b(), false);
-      RenderSystem.activeTexture(33984);
-   }
+      @Override
+      public MapCodec<hin.a> a() {
+         return a;
+      }
 
-   @Override
-   public void close() {
-      this.f.close();
-   }
-
-   public void a() {
-      RenderSystem.setupOverlayColor(this.f.a(), 16);
-   }
-
-   public static int a(float $$0) {
-      return (int)($$0 * 15.0F);
-   }
-
-   public static int a(boolean $$0) {
-      return $$0 ? 3 : 10;
-   }
-
-   public static int a(int $$0, int $$1) {
-      return $$0 | $$1 << 16;
-   }
-
-   public static int a(float $$0, boolean $$1) {
-      return a(a($$0), a($$1));
-   }
-
-   public void b() {
-      RenderSystem.teardownOverlayColor();
+      @Nullable
+      @Override
+      public hio<?> a(gjk $$0) {
+         gii $$1 = gto.a($$0, this.b);
+         alg $$2 = this.c.<alg>map($$0x -> $$0x.a((UnaryOperator<String>)($$0xx -> "textures/entity/" + $$0xx + ".png"))).orElse(null);
+         return $$1 != null ? new hin(this.b, $$1, $$2, this.d) : null;
+      }
    }
 }

@@ -1,62 +1,61 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.DoubleSupplier;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-public class guq implements guc.a {
-   private final foz a;
-   private double b = Double.MIN_VALUE;
-   private List<bwf> c = Collections.emptyList();
+public class guq implements guo.a {
+   private static final float a = 0.02F;
+   private final Map<iv, guq.a> b = Maps.newHashMap();
 
-   public guq(foz $$0) {
-      this.a = $$0;
+   public void a(iv $$0, int $$1, String $$2, int $$3) {
+      this.b.put($$0, new guq.a($$1, $$2, ag.c() + (long)$$3));
    }
 
    @Override
-   public void a(fjj $$0, gqa $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)af.d();
-      if ($$5 - this.b > 1.0E8) {
-         this.b = $$5;
-         bwf $$6 = this.a.j.k().g();
-         this.c = ImmutableList.copyOf($$6.dV().a_($$6, $$6.cR().g(16.0)));
-      }
+   public void a() {
+      this.b.clear();
+   }
 
-      crc $$7 = this.a.t;
-      if ($$7 != null && $$7.ax.isPresent()) {
-         this.a($$0, $$1, $$2, $$3, $$4, $$7, () -> 0.0, 1.0F, 0.0F, 0.0F);
-      }
+   @Override
+   public void a(fjy $$0, gqm $$1, double $$2, double $$3, double $$4) {
+      long $$5 = ag.c();
+      this.b.entrySet().removeIf($$1x -> $$5 > ((guq.a)$$1x.getValue()).c);
+      this.b.forEach(($$2x, $$3x) -> this.a($$0, $$1, $$2x, $$3x));
+   }
 
-      for (bwf $$8 : this.c) {
-         if ($$8 != $$7) {
-            this.a($$0, $$1, $$2, $$3, $$4, $$8, () -> this.a($$8), 0.0F, 1.0F, 0.0F);
-         }
+   private void a(fjy $$0, gqm $$1, iv $$2, guq.a $$3) {
+      guo.a($$0, $$1, $$2, 0.02F, $$3.a(), $$3.b(), $$3.c(), $$3.d() * 0.75F);
+      if (!$$3.b.isEmpty()) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v() + 1.2;
+         double $$6 = (double)$$2.w() + 0.5;
+         guo.a($$0, $$1, $$3.b, $$4, $$5, $$6, -1, 0.01F, true, 0.0F, true);
       }
    }
 
-   private void a(fjj $$0, gqa $$1, double $$2, double $$3, double $$4, bwf $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
-      $$5.ax.ifPresent($$10 -> {
-         double $$11 = $$6.getAsDouble();
-         iu $$12 = $$5.aR();
-         this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
-         iu $$13 = $$5.aP();
-         if (!$$13.equals($$12)) {
-            this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
-         }
-      });
-   }
+   static class a {
+      public int a;
+      public String b;
+      public long c;
 
-   private double a(bwf $$0) {
-      return 0.02 * (double)(String.valueOf((double)$$0.ar() + 0.132453657).hashCode() % 1000) / 1000.0;
-   }
+      public a(int $$0, String $$1, long $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
 
-   private void a(iu $$0, fjj $$1, double $$2, double $$3, double $$4, gqa $$5, double $$6, float $$7, float $$8, float $$9) {
-      double $$10 = (double)$$0.u() - $$2 - 2.0 * $$6;
-      double $$11 = (double)$$0.v() - $$3 - 2.0 * $$6;
-      double $$12 = (double)$$0.w() - $$4 - 2.0 * $$6;
-      double $$13 = $$10 + 1.0 + 4.0 * $$6;
-      double $$14 = $$11 + 1.0 + 4.0 * $$6;
-      double $$15 = $$12 + 1.0 + 4.0 * $$6;
-      gqu.a($$1, $$5.getBuffer(gqk.y()), $$10, $$11, $$12, $$13, $$14, $$15, $$7, $$8, $$9, 0.4F);
-      guc.a($$1, $$5.getBuffer(gqk.y()), this.a.s.a_($$0).b(this.a.s, $$0, fev.a()).a($$0), -$$2, -$$3, -$$4, $$7, $$8, $$9, 1.0F, false);
+      public float a() {
+         return (float)(this.a >> 16 & 0xFF) / 255.0F;
+      }
+
+      public float b() {
+         return (float)(this.a >> 8 & 0xFF) / 255.0F;
+      }
+
+      public float c() {
+         return (float)(this.a & 0xFF) / 255.0F;
+      }
+
+      public float d() {
+         return (float)(this.a >> 24 & 0xFF) / 255.0F;
+      }
    }
 }

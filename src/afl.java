@@ -5,13 +5,13 @@ public class afl implements zf<abu> {
    private final int b;
    private final int[] c;
 
-   public afl(bwf $$0) {
-      this.b = $$0.ar();
-      List<bwf> $$1 = $$0.cY();
+   public afl(bwi $$0) {
+      this.b = $$0.ao();
+      List<bwi> $$1 = $$0.cX();
       this.c = new int[$$1.size()];
 
       for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.c[$$2] = $$1.get($$2).ar();
+         this.c[$$2] = $$1.get($$2).ao();
       }
    }
 

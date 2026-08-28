@@ -1,19 +1,17 @@
-public class dab extends cza {
-   private final arr a;
-
-   public dab(arr $$0) {
-      this.a = $$0;
+public class dab extends cxs {
+   public dab(dmm $$0, czg.a $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected void b(alg $$0, int $$1) {
-      super.b($$0, $$1);
-      this.a.f.b(new acr($$0, $$1));
+   public bug a(ddf $$0) {
+      return bug.e;
    }
 
    @Override
-   protected void b(alg $$0) {
-      super.b($$0);
-      this.a.f.b(new acr($$0, 0));
+   public bug a(djh $$0, crj $$1, buf $$2) {
+      fet $$3 = a($$0, $$1, diq.b.b);
+      fet $$4 = $$3.a($$3.b().d());
+      return super.a(new ddf($$1, $$2, $$4));
    }
 }

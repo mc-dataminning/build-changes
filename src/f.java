@@ -2,6 +2,7 @@ import org.apache.commons.lang3.tuple.Triple;
 import org.joml.Math;
 import org.joml.Matrix3f;
 import org.joml.Matrix4f;
+import org.joml.Matrix4fc;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
@@ -145,15 +146,30 @@ public class f {
       return Triple.of($$9, $$19, $$2.conjugate());
    }
 
-   public static boolean a(Matrix4f $$0) {
-      return ($$0.properties() & 4) != 0;
+   private static boolean b(Matrix4fc $$0, int $$1) {
+      return ($$0.properties() & $$1) != 0;
    }
 
-   public static boolean b(Matrix4f $$0) {
-      return ($$0.properties() & 8) != 0;
+   public static boolean a(Matrix4fc $$0, int $$1) {
+      if (b($$0, $$1)) {
+         return true;
+      } else if ($$0 instanceof Matrix4f $$2) {
+         $$2.determineProperties();
+         return b($$0, $$1);
+      } else {
+         return false;
+      }
    }
 
-   public static boolean c(Matrix4f $$0) {
-      return ($$0.properties() & 16) != 0;
+   public static boolean a(Matrix4fc $$0) {
+      return a($$0, 4);
+   }
+
+   public static boolean b(Matrix4fc $$0) {
+      return a($$0, 8);
+   }
+
+   public static boolean c(Matrix4fc $$0) {
+      return a($$0, 16);
    }
 }

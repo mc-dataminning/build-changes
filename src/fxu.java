@@ -1,27 +1,61 @@
-public class fxu extends fyb {
-   private static final wy a = wy.c("outOfMemory.title");
-   private static final wy b = wy.c("outOfMemory.message");
-   private static final int c = 300;
-   private final fvx d = new fvx(this);
+public class fxu extends fyn {
+   private static final wy a = wy.c("gui.toMenu");
+   private static final wy b = wy.c("gui.toTitle");
+   private static final wy c = wy.c("gui.report_to_server");
+   private static final wy d = wy.c("gui.open_report_dir");
+   private final fyn s;
+   private final vt u;
+   private final wy v;
+   private final fwn w = fwn.d();
 
-   public fxu() {
-      super(a);
+   public fxu(fyn $$0, wy $$1, wy $$2) {
+      this($$0, $$1, new vt($$2));
+   }
+
+   public fxu(fyn $$0, wy $$1, wy $$2, wy $$3) {
+      this($$0, $$1, new vt($$2), $$3);
+   }
+
+   public fxu(fyn $$0, wy $$1, vt $$2) {
+      this($$0, $$1, $$2, a);
+   }
+
+   public fxu(fyn $$0, wy $$1, vt $$2, wy $$3) {
+      super($$1);
+      this.s = $$0;
+      this.u = $$2;
+      this.v = $$3;
    }
 
    @Override
    protected void aO_() {
-      this.d.a(a, this.p);
-      this.d.c(new fsu(300, b, this.p));
-      fwb $$0 = this.d.b(fwb.e().a(8));
-      $$0.a(fsj.a(wx.l, $$0x -> this.m.a(new fyd())).a());
-      $$0.a(fsj.a(wy.c("menu.quit"), $$0x -> this.m.q()).a());
-      this.d.a(this::c);
+      this.w.c().b().a(10);
+      this.w.a(new fuc(this.l, this.p));
+      this.w.a(new ftp(this.u.a(), this.p).d(this.n - 50).b(true));
+      this.w.c().a(2);
+      this.u.c().ifPresent($$0 -> this.w.a(fsv.a(c, fxk.b(this, $$0, false)).a(200).a()));
+      this.u.b().ifPresent($$0 -> this.w.a(fsv.a(d, $$1x -> ag.n().a($$0.getParent())).a(200).a()));
+      fsv $$0;
+      if (this.m.F()) {
+         $$0 = fsv.a(this.v, $$0x -> this.m.a(this.s)).a(200).a();
+      } else {
+         $$0 = fsv.a(b, $$0x -> this.m.a(new fyp())).a(200).a();
+      }
+
+      this.w.a($$0);
+      this.w.a();
+      this.w.a(this::c);
       this.c();
    }
 
    @Override
    protected void c() {
-      this.d.a();
+      fwh.a(this.w, this.J());
+   }
+
+   @Override
+   public wy i() {
+      return wx.a(this.l, this.u.a());
    }
 
    @Override

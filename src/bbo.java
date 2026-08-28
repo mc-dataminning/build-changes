@@ -2,9 +2,9 @@ import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 
-public class bbo extends bhr {
+public class bbo extends bht {
    public bbo(Schema $$0) {
-      super($$0, false, "AreaEffectCloudDurationScaleFix", bix.D, "minecraft:area_effect_cloud");
+      super($$0, false, "AreaEffectCloudDurationScaleFix", biz.D, "minecraft:area_effect_cloud");
    }
 
    @Override

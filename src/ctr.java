@@ -1,12 +1,19 @@
-import java.util.function.Supplier;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ctr extends ctn {
-   public ctr(bwo<? extends ctr> $$0, dja $$1, Supplier<cyz> $$2) {
-      super($$0, $$1, $$2);
+public record ctr(jj<eri> c) implements ctn {
+   public static final MapCodec<ctr> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ju.a(mh.be).fieldOf("structures").forGetter(ctr::b)).apply($$0, ctr::new));
+
+   public boolean a(ctp $$0) {
+      return $$0.b().a().b().a($$0.a(), this.c).b();
    }
 
    @Override
-   protected double b(bwi $$0) {
-      return (double)($$0.b() / 3.0F);
+   public MapCodec<ctr> a() {
+      return a;
+   }
+
+   public jj<eri> b() {
+      return this.c;
    }
 }

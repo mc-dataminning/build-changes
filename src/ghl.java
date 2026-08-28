@@ -1,44 +1,24 @@
-public class ghl extends geg {
-   public ghl(gjc $$0) {
+import java.util.Set;
+
+public class ghl extends ghv<hdz> {
+   public static final gjx a = new gff(false, 4.0F, 4.0F, Set.of("head"));
+
+   public ghl(gjo $$0) {
       super($$0);
    }
 
-   private static void a(gjm $$0) {
-      $$0.a(
-         "bottom",
-         gjh.c().a(0, 0).a(-14.0F, -11.0F, -4.0F, 28.0F, 20.0F, 4.0F).a(0, 0).a(-14.0F, -9.0F, -8.0F, 28.0F, 16.0F, 4.0F),
-         gje.a(0.0F, -2.1F, 1.0F, 1.5708F, 0.0F, 0.0F)
-      );
-      int $$1 = 20;
-      int $$2 = 7;
-      int $$3 = 6;
-      float $$4 = -5.0F;
-      $$0.a(
-         "left_paddle",
-         gjh.c().a(0, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         gje.a(3.0F, -4.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
-      );
-      $$0.a(
-         "right_paddle",
-         gjh.c().a(40, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         gje.a(3.0F, -4.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
-      );
+   public static gju b(gjs $$0) {
+      return gju.a(c($$0), 64, 64);
    }
 
-   public static gji a() {
-      gjk $$0 = new gjk();
-      gjm $$1 = $$0.a();
-      a($$1);
-      return gji.a($$0, 128, 64);
-   }
-
-   public static gji b() {
-      gjk $$0 = new gjk();
-      gjm $$1 = $$0.a();
-      a($$1);
-      $$1.a("chest_bottom", gjh.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), gje.a(-2.0F, -10.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("chest_lid", gjh.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), gje.a(-2.0F, -14.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("chest_lock", gjh.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), gje.a(-1.0F, -11.1F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      return gji.a($$0, 128, 128);
+   protected static gjw c(gjs $$0) {
+      gjw $$1 = ghv.a(6, $$0);
+      gjy $$2 = $$1.a();
+      $$2.a(
+         "head",
+         gjt.c().a(0, 0).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, $$0).a(16, 16).a(-2.0F, 0.0F, -9.0F, 4.0F, 3.0F, 1.0F, $$0),
+         gjq.a(0.0F, 12.0F, -6.0F)
+      );
+      return $$1;
    }
 }

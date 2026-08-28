@@ -1,67 +1,20 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import java.util.Optional;
-
 public class cpj {
-   protected static final ImmutableList<? extends chn<? extends chm<? super cpi>>> a = ImmutableList.of(chn.c, chn.d);
-   protected static final ImmutableList<? extends cgg<?>> b = ImmutableList.of(cgg.g, cgg.h, cgg.k, cgg.l, cgg.m, cgg.o, cgg.n, cgg.F, cgg.u, cgg.p, cgg.q);
+   private static final double a = 50.0;
 
-   static void a(bye<cpi> $$0) {
-      $$0.a(csw.a, 0, ImmutableList.of(new cbp<cpi>(0.8F) {
-         protected boolean a(arq $$0, cpi $$1) {
-            return $$1.n() && super.a($$0, (bxe)$$1);
-         }
-      }, new cab(45, 90), new caf()));
+   public static fex a(bxj $$0, azv $$1) {
+      int $$2 = 90;
+      float $$3 = $$0.aX + 180.0F + (float)$$1.k() * 90.0F / 2.0F;
+      float $$4 = azm.h($$1.i(), 4.0F, 8.0F);
+      fex $$5 = fex.a(0.0F, $$3).c((double)$$4);
+      return $$0.ds().e($$5);
    }
 
-   static void b(bye<cpi> $$0) {
-      $$0.a(
-         csw.b,
-         10,
-         ImmutableList.of(
-            cbh.a(($$0x, $$1) -> $$1.gz(), ($$0x, $$1) -> $$1.ec().c(cgg.l)),
-            cav.a(8.0F, bto.a(30, 60)),
-            new cas(ImmutableList.of(Pair.of(can.a(0.3F), 2), Pair.of(cbc.a(0.3F, 3), 2), Pair.of(new bzf(30, 60), 1)))
-         )
-      );
+   public static boolean a(cph $$0, fex $$1) {
+      fex $$2 = new fex($$0.dz(), $$0.dB(), $$0.dF());
+      return $$1.f($$2) > a($$0) ? false : $$0.dU().a(new diq($$2, $$1, diq.a.a, diq.b.a, $$0)).d() == fev.a.a;
    }
 
-   static void a(cpi $$0, bye<cpi> $$1) {
-      $$1.a(csw.k, 10, ImmutableList.of(cba.a(1.0F), cac.a(cpi::n, 40), cbk.a(($$1x, $$2) -> !a($$0, $$2))), ImmutableSet.of(Pair.of(cgg.p, cgh.a)));
-   }
-
-   private static boolean a(cpi $$0, bxe $$1) {
-      Optional<List<crc>> $$2 = $$0.ec().c(cgg.m);
-      return $$2.<Boolean>map($$1x -> {
-         if ($$1 instanceof crc $$2x && $$1x.contains($$2x)) {
-            return true;
-         }
-
-         return false;
-      }).orElse(false);
-   }
-
-   public static bye.b<cpi> a() {
-      return bye.a(b, a);
-   }
-
-   public static bye<cpi> b(cpi $$0, bye<cpi> $$1) {
-      a($$1);
-      b($$1);
-      a($$0, $$1);
-      $$1.a(ImmutableSet.of(csw.a));
-      $$1.b(csw.b);
-      $$1.f();
-      return $$1;
-   }
-
-   public static void a(cpi $$0) {
-      if (!$$0.n()) {
-         $$0.ec().f();
-      } else {
-         $$0.ec().a(ImmutableList.of(csw.k, csw.b));
-      }
+   private static double a(cph $$0) {
+      return Math.max(50.0, $$0.h(byp.m));
    }
 }

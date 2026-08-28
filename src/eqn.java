@@ -1,40 +1,42 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class eqn extends eqh {
-   public static final MapCodec<eqn> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               egg.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
-               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
-               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, eqn::new)
-   );
-   private final egg.a c;
-   private final int d;
-   private final int e;
+public class eqn extends ehk {
+   private final dkg a;
+   private final ecm b;
+   private final Optional<eqm> c;
 
-   private eqn(egg.a $$0, int $$1, int $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public eqn(dkg $$0, ecm $$1, Optional<eqm> $$2) {
+      super($$1, $$0);
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public static eqn a(egg.a $$0, int $$1, int $$2) {
-      return new eqn($$0, $$1, $$2);
+   public int a(egn.a $$0, int $$1, int $$2) {
+      return this.a.a($$0, $$1, $$2);
    }
 
-   @Override
-   protected boolean a(eqg $$0, azv $$1, iu $$2) {
-      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
-      long $$4 = $$3 + (long)this.d;
-      long $$5 = $$3 + (long)this.e;
-      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
+   public eck a(dio $$0) {
+      return ((edf)this.a.a($$0.h, $$0.i)).F();
    }
 
-   @Override
-   public eqj<?> b() {
-      return eqj.c;
+   public eao a(iv $$0) {
+      return this.a.a_($$0);
+   }
+
+   public int c() {
+      return this.a.G_();
+   }
+
+   public dkg d() {
+      return this.a;
+   }
+
+   public Optional<eqm> e() {
+      return this.c;
+   }
+
+   public ecm f() {
+      return this.b;
    }
 }

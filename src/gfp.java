@@ -1,87 +1,50 @@
-import java.util.List;
+public class gfp extends ghg {
+   private static final String a = "left_pages";
+   private static final String b = "right_pages";
+   private static final String c = "flip_page1";
+   private static final String d = "flip_page2";
+   private final gjo e;
+   private final gjo f;
+   private final gjo g;
+   private final gjo h;
+   private final gjo i;
+   private final gjo j;
 
-public class gfp extends gfy<hcf> {
-   public static final List<gjc> a = List.of();
-   private final gjc b;
-   private final List<gjc> c;
-
-   public gfp(gjc $$0) {
-      super($$0);
-      gjc $$1 = $$0.b("root");
-      gjc $$2 = $$1.b("upper_body");
-      this.b = $$2.b("head");
-      this.c = List.of(this.b);
+   public gfp(gjo $$0) {
+      super($$0, gqx::d);
+      this.e = $$0.b("left_lid");
+      this.f = $$0.b("right_lid");
+      this.g = $$0.b("left_pages");
+      this.h = $$0.b("right_pages");
+      this.i = $$0.b("flip_page1");
+      this.j = $$0.b("flip_page2");
    }
 
-   private static gjk b() {
-      gjk $$0 = new gjk();
-      gjm $$1 = $$0.a();
-      gjm $$2 = $$1.a("root", gjh.c(), gje.a(0.0F, 24.0F, 0.0F));
-      gjm $$3 = $$2.a("upper_body", gjh.c(), gje.a(-1.0F, -19.0F, 0.0F));
-      $$3.a(
-         "head",
-         gjh.c()
-            .a(0, 0)
-            .a(-3.0F, -10.0F, -3.0F, 6.0F, 10.0F, 6.0F)
-            .a(28, 31)
-            .a(-3.0F, -13.0F, -3.0F, 6.0F, 3.0F, 6.0F)
-            .a(12, 40)
-            .a(3.0F, -13.0F, 0.0F, 9.0F, 14.0F, 0.0F)
-            .a(34, 12)
-            .a(-12.0F, -14.0F, 0.0F, 9.0F, 14.0F, 0.0F),
-         gje.a(-3.0F, -11.0F, 0.0F)
-      );
-      $$3.a("body", gjh.c().a(0, 16).a(0.0F, -3.0F, -3.0F, 6.0F, 13.0F, 5.0F).a(24, 0).a(-6.0F, -4.0F, -3.0F, 6.0F, 7.0F, 5.0F), gje.a(0.0F, -7.0F, 1.0F));
-      $$3.a(
-         "right_arm", gjh.c().a(22, 13).a(-2.0F, -1.5F, -1.5F, 3.0F, 21.0F, 3.0F).a(46, 0).a(-2.0F, 19.5F, -1.5F, 3.0F, 4.0F, 3.0F), gje.a(-7.0F, -9.5F, 1.5F)
-      );
-      $$3.a(
-         "left_arm",
-         gjh.c()
-            .a(30, 40)
-            .a(0.0F, -1.0F, -1.5F, 3.0F, 16.0F, 3.0F)
-            .a(52, 12)
-            .a(0.0F, -5.0F, -1.5F, 3.0F, 4.0F, 3.0F)
-            .a(52, 19)
-            .a(0.0F, 15.0F, -1.5F, 3.0F, 4.0F, 3.0F),
-         gje.a(6.0F, -9.0F, 0.5F)
-      );
-      $$2.a(
-         "left_leg", gjh.c().a(42, 40).a(-1.5F, 0.0F, -1.5F, 3.0F, 16.0F, 3.0F).a(45, 55).a(-1.5F, 15.7F, -4.5F, 5.0F, 0.0F, 9.0F), gje.a(1.5F, -16.0F, 0.5F)
-      );
-      $$2.a(
-         "right_leg",
-         gjh.c()
-            .a(0, 34)
-            .a(-3.0F, -1.5F, -1.5F, 3.0F, 19.0F, 3.0F)
-            .a(45, 46)
-            .a(-5.0F, 17.2F, -4.5F, 5.0F, 0.0F, 9.0F)
-            .a(12, 34)
-            .a(-3.0F, -4.5F, -1.5F, 3.0F, 3.0F, 3.0F),
-         gje.a(-1.0F, -17.5F, 0.5F)
-      );
-      return $$0;
+   public static gju a() {
+      gjw $$0 = new gjw();
+      gjy $$1 = $$0.a();
+      $$1.a("left_lid", gjt.c().a(0, 0).a(-6.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), gjq.a(0.0F, 0.0F, -1.0F));
+      $$1.a("right_lid", gjt.c().a(16, 0).a(0.0F, -5.0F, -0.005F, 6.0F, 10.0F, 0.005F), gjq.a(0.0F, 0.0F, 1.0F));
+      $$1.a("seam", gjt.c().a(12, 0).a(-1.0F, -5.0F, 0.0F, 2.0F, 10.0F, 0.005F), gjq.b(0.0F, (float) (Math.PI / 2), 0.0F));
+      $$1.a("left_pages", gjt.c().a(0, 10).a(0.0F, -4.0F, -0.99F, 5.0F, 8.0F, 1.0F), gjq.a);
+      $$1.a("right_pages", gjt.c().a(12, 10).a(0.0F, -4.0F, -0.01F, 5.0F, 8.0F, 1.0F), gjq.a);
+      gjt $$2 = gjt.c().a(24, 10).a(0.0F, -4.0F, 0.0F, 5.0F, 8.0F, 0.005F);
+      $$1.a("flip_page1", $$2, gjq.a);
+      $$1.a("flip_page2", $$2, gjq.a);
+      return gju.a($$0, 64, 32);
    }
 
-   public static gji a() {
-      gjk $$0 = b();
-      return gji.a($$0, 64, 64);
-   }
-
-   public void a(hcf $$0) {
-      super.a($$0);
-      this.b.e = $$0.ab * (float) (Math.PI / 180.0);
-      this.b.f = $$0.aa * (float) (Math.PI / 180.0);
-      if ($$0.e) {
-         this.a(fpu.a, $$0.ad, $$0.ae, 1.0F, 1.0F);
-      }
-
-      this.a($$0.b, fpu.b, $$0.u);
-      this.a($$0.a, fpu.c, $$0.u);
-      this.a($$0.c, fpu.d, $$0.u);
-   }
-
-   public List<gjc> b(hcf $$0) {
-      return !$$0.d ? a : this.c;
+   public void a(float $$0, float $$1, float $$2, float $$3) {
+      float $$4 = (azm.a($$0 * 0.02F) * 0.1F + 1.25F) * $$3;
+      this.e.f = (float) Math.PI + $$4;
+      this.f.f = -$$4;
+      this.g.f = $$4;
+      this.h.f = -$$4;
+      this.i.f = $$4 - $$4 * 2.0F * $$1;
+      this.j.f = $$4 - $$4 * 2.0F * $$2;
+      this.g.b = azm.a($$4);
+      this.h.b = azm.a($$4);
+      this.i.b = azm.a($$4);
+      this.j.b = azm.a($$4);
    }
 }

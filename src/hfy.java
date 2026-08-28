@@ -1,17 +1,28 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public record hfy(ks.a<?> b) implements hga {
-   public static final MapCodec<hfy> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ks.a("predicate").forGetter(hfy::b)).apply($$0, hfy::new));
+public class hfy implements hfz {
+   public static final hfz a = new hfy();
 
    @Override
-   public boolean get(czd $$0, @Nullable gjz $$1, @Nullable bxe $$2, int $$3, czb $$4) {
-      return this.b.b().a($$0);
+   public void a(hgc $$0, czk $$1, hga $$2, czi $$3, @Nullable gkl $$4, @Nullable bxj $$5, int $$6) {
    }
 
-   @Override
-   public MapCodec<hfy> a() {
-      return a;
+   public static record a() implements hfz.b {
+      public static final MapCodec<hfy.a> a = MapCodec.unit(hfy.a::new);
+
+      @Override
+      public void a(hmb.a $$0) {
+      }
+
+      @Override
+      public hfz a(hfz.a $$0) {
+         return hfy.a;
+      }
+
+      @Override
+      public MapCodec<hfy.a> a() {
+         return a;
+      }
    }
 }

@@ -1,41 +1,19 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-public class cgy extends chm<bxe> {
-   private static final int a = 200;
-   private static final int b = 599;
-
-   public cgy() {
-      this(200);
-   }
-
-   public cgy(int $$0) {
-      super($$0);
-   }
-
+public class cgy extends chr<bvy> {
    @Override
-   protected void a(arq $$0, bxe $$1) {
-      a($$1);
+   public Set<cgl<?>> a() {
+      return ImmutableSet.of(cgl.L, cgl.h);
    }
 
-   @Override
-   public Set<cgg<?>> a() {
-      return ImmutableSet.of(cgg.g);
+   protected void a(arq $$0, bvy $$1) {
+      $$1.eb().c(cgl.h).ifPresent($$1x -> this.a($$1, $$1x));
    }
 
-   public static void a(bxe $$0) {
-      Optional<List<bxe>> $$1 = $$0.ec().c(cgg.g);
-      if (!$$1.isEmpty()) {
-         boolean $$2 = $$1.get().stream().anyMatch($$0x -> $$0x.aq().equals(bwo.ap));
-         if ($$2) {
-            b($$0);
-         }
-      }
-   }
-
-   public static void b(bxe $$0) {
-      $$0.ec().a(cgg.G, true, 599L);
+   private void a(bvy $$0, cgn $$1) {
+      Optional<bvy> $$2 = $$1.a($$1x -> $$1x.an() == $$0.an() && !$$1x.n_()).map(bvy.class::cast);
+      $$0.eb().a(cgl.L, $$2);
    }
 }

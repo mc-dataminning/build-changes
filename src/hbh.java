@@ -1,20 +1,25 @@
-public class hbh extends gzz<hez, gip> {
-   public hbh(gye<hez, gip> $$0) {
-      super($$0);
+public abstract class hbh<S extends hcz, M extends ggk<? super S>> {
+   private final gyq<S, M> a;
+
+   public hbh(gyq<S, M> $$0) {
+      this.a = $$0;
    }
 
-   protected void a(hez $$0, fjj $$1) {
-      if ($$0.c) {
-         this.d().e().a($$1);
-         this.d().b().a($$1);
-         this.d().c().a($$1);
-         $$1.a(0.0625F, 0.25F, 0.0F);
-         $$1.a(a.f.rotationDegrees(180.0F));
-         $$1.a(a.b.rotationDegrees(140.0F));
-         $$1.a(a.f.rotationDegrees(10.0F));
-         $$1.a(a.b.rotationDegrees(180.0F));
-      } else {
-         super.a($$0, $$1);
+   protected static <S extends hdz> void a(ggk<S> $$0, alg $$1, fjy $$2, gqm $$3, int $$4, S $$5, int $$6) {
+      if (!$$5.z) {
+         $$0.a($$5);
+         b($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
    }
+
+   protected static void b(ggk<?> $$0, alg $$1, fjy $$2, gqm $$3, int $$4, hdz $$5, int $$6) {
+      fkc $$7 = $$3.getBuffer(gqx.g($$1));
+      $$0.a($$2, $$7, $$4, gxu.a($$5, 0.0F), $$6);
+   }
+
+   public M d() {
+      return this.a.c();
+   }
+
+   public abstract void a(fjy var1, gqm var2, int var3, S var4, float var5, float var6);
 }

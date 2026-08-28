@@ -10,12 +10,12 @@ import java.util.function.IntSupplier;
 import javax.annotation.Nullable;
 
 public class aqs extends arg {
-   public static final aqv<eco> a = aqv.a("Unloaded level chunk");
-   private static final CompletableFuture<aqv<eco>> e = CompletableFuture.completedFuture(a);
-   private final djc f;
-   private volatile CompletableFuture<aqv<eco>> g = e;
-   private volatile CompletableFuture<aqv<eco>> h = e;
-   private volatile CompletableFuture<aqv<eco>> i = e;
+   public static final aqv<ecv> a = aqv.a("Unloaded level chunk");
+   private static final CompletableFuture<aqv<ecv>> e = CompletableFuture.completedFuture(a);
+   private final djj f;
+   private volatile CompletableFuture<aqv<ecv>> g = e;
+   private volatile CompletableFuture<aqv<ecv>> h = e;
+   private volatile CompletableFuture<aqv<ecv>> i = e;
    private int j;
    private int k;
    private int l;
@@ -23,7 +23,7 @@ public class aqs extends arg {
    private final ShortSet[] n;
    private final BitSet o = new BitSet();
    private final BitSet p = new BitSet();
-   private final ewd q;
+   private final ewk q;
    private final aqs.a r;
    private final aqs.b s;
    private boolean t;
@@ -31,7 +31,7 @@ public class aqs extends arg {
    private CompletableFuture<?> v = CompletableFuture.completedFuture(null);
    private CompletableFuture<?> w = CompletableFuture.completedFuture(null);
 
-   public aqs(dih $$0, int $$1, djc $$2, ewd $$3, aqs.a $$4, aqs.b $$5) {
+   public aqs(dio $$0, int $$1, djj $$2, ewk $$3, aqs.a $$4, aqs.b $$5) {
       super($$0);
       this.f = $$2;
       this.q = $$3;
@@ -44,25 +44,25 @@ public class aqs extends arg {
       this.n = new ShortSet[$$2.ap()];
    }
 
-   public CompletableFuture<aqv<eco>> a() {
+   public CompletableFuture<aqv<ecv>> a() {
       return this.h;
    }
 
-   public CompletableFuture<aqv<eco>> b() {
+   public CompletableFuture<aqv<ecv>> b() {
       return this.i;
    }
 
-   public CompletableFuture<aqv<eco>> c() {
+   public CompletableFuture<aqv<ecv>> c() {
       return this.g;
    }
 
    @Nullable
-   public eco d() {
+   public ecv d() {
       return this.a().getNow(a).b(null);
    }
 
    @Nullable
-   public eco e() {
+   public ecv e() {
       return !this.v.isDone() ? null : this.d();
    }
 
@@ -95,8 +95,8 @@ public class aqs extends arg {
       }
    }
 
-   public boolean a(iu $$0) {
-      eco $$1 = this.d();
+   public boolean a(iv $$0) {
+      ecv $$1 = this.d();
       if ($$1 == null) {
          return false;
       } else {
@@ -107,25 +107,25 @@ public class aqs extends arg {
             this.n[$$3] = new ShortOpenHashSet();
          }
 
-         this.n[$$3].add(jx.b($$0));
+         this.n[$$3].add(jy.b($$0));
          return !$$2;
       }
    }
 
-   public boolean a(djj $$0, int $$1) {
-      ece $$2 = this.b(edf.k);
+   public boolean a(djq $$0, int $$1) {
+      ecl $$2 = this.b(edm.k);
       if ($$2 == null) {
          return false;
       } else {
          $$2.i();
-         eco $$3 = this.d();
+         ecv $$3 = this.d();
          if ($$3 == null) {
             return false;
          } else {
             int $$4 = this.q.d();
             int $$5 = this.q.e();
             if ($$1 >= $$4 && $$1 <= $$5) {
-               BitSet $$6 = $$0 == djj.a ? this.p : this.o;
+               BitSet $$6 = $$0 == djq.a ? this.p : this.o;
                int $$7 = $$1 - $$4;
                if (!$$6.get($$7)) {
                   $$6.set($$7);
@@ -144,9 +144,9 @@ public class aqs extends arg {
       return this.m || !this.p.isEmpty() || !this.o.isEmpty();
    }
 
-   public void a(eco $$0) {
+   public void a(ecv $$0) {
       if (this.i()) {
-         dja $$1 = $$0.H();
+         djh $$1 = $$0.H();
          if (!this.p.isEmpty() || !this.o.isEmpty()) {
             List<arr> $$2 = this.s.a(this.d, true);
             if (!$$2.isEmpty()) {
@@ -167,14 +167,14 @@ public class aqs extends arg {
                   this.n[$$5] = null;
                   if (!$$4.isEmpty()) {
                      int $$7 = this.f.h($$5);
-                     jx $$8 = jx.a($$0.f(), $$7);
+                     jy $$8 = jy.a($$0.f(), $$7);
                      if ($$6.size() == 1) {
-                        iu $$9 = $$8.g($$6.iterator().nextShort());
-                        eah $$10 = $$1.a_($$9);
+                        iv $$9 = $$8.g($$6.iterator().nextShort());
+                        eao $$10 = $$1.a_($$9);
                         this.a($$4, new acc($$9, $$10));
                         this.a($$4, $$1, $$9, $$10);
                      } else {
-                        ecp $$11 = $$0.b($$5);
+                        ecw $$11 = $$0.b($$5);
                         aeo $$12 = new aeo($$8, $$6, $$11);
                         this.a($$4, $$12);
                         $$12.a(($$2, $$3) -> this.a($$4, $$1, $$2, $$3));
@@ -188,14 +188,14 @@ public class aqs extends arg {
       }
    }
 
-   private void a(List<arr> $$0, dja $$1, iu $$2, eah $$3) {
+   private void a(List<arr> $$0, djh $$1, iv $$2, eao $$3) {
       if ($$3.x()) {
          this.a($$0, $$1, $$2);
       }
    }
 
-   private void a(List<arr> $$0, dja $$1, iu $$2) {
-      dxf $$3 = $$1.c_($$2);
+   private void a(List<arr> $$0, djh $$1, iv $$2) {
+      dxm $$3 = $$1.c_($$2);
       if ($$3 != null) {
          zf<?> $$4 = $$3.au_();
          if ($$4 != null) {
@@ -226,7 +226,7 @@ public class aqs extends arg {
       this.k = $$0;
    }
 
-   private void a(aqu $$0, CompletableFuture<aqv<eco>> $$1, Executor $$2, are $$3) {
+   private void a(aqu $$0, CompletableFuture<aqv<ecv>> $$1, Executor $$2, are $$3) {
       this.u.cancel(false);
       CompletableFuture<Void> $$4 = new CompletableFuture<>();
       $$4.thenRunAsync(() -> $$0.a(this.d, $$3), $$2);
@@ -273,7 +273,7 @@ public class aqs extends arg {
       boolean $$9 = $$3.a(are.d);
       if (!$$8 && $$9) {
          if (this.i != e) {
-            throw (IllegalStateException)af.b(new IllegalStateException());
+            throw (IllegalStateException)ag.b(new IllegalStateException());
          }
 
          this.i = $$0.a(this);
@@ -304,10 +304,10 @@ public class aqs extends arg {
 
    @FunctionalInterface
    public interface a {
-      void onLevelChange(dih var1, IntSupplier var2, int var3, IntConsumer var4);
+      void onLevelChange(dio var1, IntSupplier var2, int var3, IntConsumer var4);
    }
 
    public interface b {
-      List<arr> a(dih var1, boolean var2);
+      List<arr> a(dio var1, boolean var2);
    }
 }

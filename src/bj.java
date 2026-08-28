@@ -1,35 +1,29 @@
+import com.mojang.serialization.Codec;
 import java.util.List;
-import java.util.Optional;
+import java.util.function.Predicate;
 
 public class bj {
-   private final azt a;
-   private final jf.a b;
+   public static final Codec<bj> a = fcx.e.listOf().xmap(bj::new, $$0 -> $$0.b);
+   private final List<fcx> b;
+   private final Predicate<ezo> c;
 
-   public bj(azt $$0, jf.a $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   bj(List<fcx> $$0) {
+      this.b = $$0;
+      this.c = ag.a($$0);
    }
 
-   public void a(Optional<bi> $$0, String $$1) {
-      $$0.ifPresent($$1x -> this.a($$1x, $$1));
+   public static bj a(fcx... $$0) {
+      return new bj(List.of($$0));
    }
 
-   public void a(List<bi> $$0, String $$1) {
-      this.a($$0, fca.n, $$1);
+   public boolean a(ezo $$0) {
+      return this.c.test($$0);
    }
 
-   public void a(bi $$0, String $$1) {
-      this.a($$0, fca.n, $$1);
-   }
-
-   public void a(bi $$0, bay $$1, String $$2) {
-      $$0.a(new ezn(this.a.a($$2), $$1, this.b));
-   }
-
-   public void a(List<bi> $$0, bay $$1, String $$2) {
-      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
-         bi $$4 = $$0.get($$3);
-         $$4.a(new ezn(this.a.a($$2 + "[" + $$3 + "]"), $$1, this.b));
+   public void a(ezu $$0) {
+      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
+         fcx $$2 = this.b.get($$1);
+         $$2.a($$0.a("[" + $$1 + "]"));
       }
    }
 }

@@ -1,19 +1,19 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ctj(List<ctf.a<cti, ctg>> c) {
-   public static final ctj a = new ctj(List.of());
-   public static final Codec<ctj> b = ctf.a.a(ctg.b).listOf().xmap(ctj::new, ctj::a);
+public record ctj(jj<dkk> c) implements ctn {
+   public static final MapCodec<ctj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ju.a(mh.aG).fieldOf("biomes").forGetter(ctj::b)).apply($$0, ctj::new));
 
-   public static ctj a(ctg $$0, int $$1) {
-      return new ctj(ctf.a($$0, $$1));
+   public boolean a(ctp $$0) {
+      return this.c.a($$0.c());
    }
 
-   public static ctj a(int $$0) {
-      return new ctj(ctf.a($$0));
+   @Override
+   public MapCodec<ctj> a() {
+      return a;
    }
 
-   public List<ctf.a<cti, ctg>> a() {
+   public jj<dkk> b() {
       return this.c;
    }
 }

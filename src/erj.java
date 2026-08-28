@@ -1,128 +1,179 @@
+import com.mojang.datafixers.DataFixer;
 import com.mojang.logging.LogUtils;
-import java.util.List;
+import it.unimi.dsi.fastutil.longs.Long2BooleanMap;
+import it.unimi.dsi.fastutil.longs.Long2BooleanOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.HashMap;
+import java.util.Map;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public final class erj {
-   public static final String a = "INVALID";
-   public static final erj b = new erj(null, new dih(0, 0), 0, new erq(List.of()));
-   private static final Logger c = LogUtils.getLogger();
-   private final erb d;
-   private final erq e;
-   private final dih f;
-   private int g;
-   @Nullable
-   private volatile eqt h;
+public class erj {
+   private static final Logger a = LogUtils.getLogger();
+   private static final int b = -1;
+   private final edu c;
+   private final jt d;
+   private final evl e;
+   private final alf<djh> f;
+   private final ecm g;
+   private final ehb h;
+   private final djj i;
+   private final dko j;
+   private final long k;
+   private final DataFixer l;
+   private final Long2ObjectMap<Object2IntMap<eri>> m = new Long2ObjectOpenHashMap();
+   private final Map<eri, Long2BooleanMap> n = new HashMap<>();
 
-   public erj(erb $$0, dih $$1, int $$2, erq $$3) {
-      this.d = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.e = $$3;
+   public erj(edu $$0, jt $$1, evl $$2, alf<djh> $$3, ecm $$4, ehb $$5, djj $$6, dko $$7, long $$8, DataFixer $$9) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
+      this.k = $$8;
+      this.l = $$9;
+   }
+
+   public erk a(dio $$0, eri $$1, esf $$2, boolean $$3) {
+      long $$4 = $$0.a();
+      Object2IntMap<eri> $$5 = (Object2IntMap<eri>)this.m.get($$4);
+      if ($$5 != null) {
+         return this.a($$5, $$1, $$3);
+      } else {
+         erk $$6 = this.a($$0, $$1, $$3, $$4);
+         if ($$6 != null) {
+            return $$6;
+         } else if (!$$2.a($$0.h, $$0.i, this.k)) {
+            return erk.b;
+         } else {
+            boolean $$7 = this.n.computeIfAbsent($$1, $$0x -> new Long2BooleanOpenHashMap()).computeIfAbsent($$4, $$2x -> this.b($$0, $$1));
+            return !$$7 ? erk.b : erk.c;
+         }
+      }
+   }
+
+   private boolean b(dio $$0, eri $$1) {
+      return $$1.b(new eri.a(this.d, this.g, this.j, this.h, this.e, this.k, $$0, this.i, $$1.a()::a)).isPresent();
    }
 
    @Nullable
-   public static erj a(err $$0, tz $$1, long $$2) {
-      String $$3 = $$1.l("id");
-      if ("INVALID".equals($$3)) {
-         return b;
+   private erk a(dio $$0, eri $$1, boolean $$2, long $$3) {
+      vd $$4 = new vd(new vf(ue.a, "DataVersion"), new vf("Level", "Structures", tz.b, "Starts"), new vf("structures", tz.b, "starts"));
+
+      try {
+         this.c.a($$0, $$4).join();
+      } catch (Exception var13) {
+         a.warn("Failed to read chunk {}", $$0, var13);
+         return erk.c;
+      }
+
+      if (!($$4.d() instanceof tz $$7)) {
+         return null;
       } else {
-         jr<erb> $$4 = $$0.b().f(mg.be);
-         erb $$5 = $$4.a(alg.a($$3));
-         if ($$5 == null) {
-            c.error("Unknown stucture id: {}", $$3);
+         int $$8 = edv.a($$7);
+         if ($$8 <= 1493) {
+            return erk.c;
+         } else {
+            edv.a($$7, this.f, this.g.c());
+
+            tz $$9;
+            try {
+               $$9 = bbb.c.a(this.l, $$7, $$8);
+            } catch (Exception var12) {
+               a.warn("Failed to partially datafix chunk {}", $$0, var12);
+               return erk.c;
+            }
+
+            Object2IntMap<eri> $$12 = this.a($$9);
+            if ($$12 == null) {
+               return null;
+            } else {
+               this.a($$3, $$12);
+               return this.a($$12, $$1, $$2);
+            }
+         }
+      }
+   }
+
+   @Nullable
+   private Object2IntMap<eri> a(tz $$0) {
+      if (!$$0.b("structures", 10)) {
+         return null;
+      } else {
+         tz $$1 = $$0.n("structures");
+         if (!$$1.b("starts", 10)) {
             return null;
          } else {
-            dih $$6 = new dih($$1.h("ChunkX"), $$1.h("ChunkZ"));
-            int $$7 = $$1.h("references");
-            uf $$8 = $$1.c("Children", 10);
+            tz $$2 = $$1.n("starts");
+            if ($$2.g()) {
+               return Object2IntMaps.emptyMap();
+            } else {
+               Object2IntMap<eri> $$3 = new Object2IntOpenHashMap();
+               js<eri> $$4 = this.d.f(mh.be);
 
-            try {
-               erq $$9 = erq.a($$8, $$0);
-               if ($$5 instanceof etm) {
-                  $$9 = etm.a($$6, $$2, $$9);
+               for (String $$5 : $$2.e()) {
+                  alg $$6 = alg.c($$5);
+                  if ($$6 != null) {
+                     eri $$7 = $$4.a($$6);
+                     if ($$7 != null) {
+                        tz $$8 = $$2.n($$5);
+                        if (!$$8.g()) {
+                           String $$9 = $$8.j("id");
+                           if (!"INVALID".equals($$9)) {
+                              int $$10 = $$8.f("references");
+                              $$3.put($$7, $$10);
+                           }
+                        }
+                     }
+                  }
                }
 
-               return new erj($$5, $$6, $$7, $$9);
-            } catch (Exception var11) {
-               c.error("Failed Start with id {}", $$3, var11);
-               return null;
+               return $$3;
             }
          }
       }
    }
 
-   public eqt a() {
-      eqt $$0 = this.h;
-      if ($$0 == null) {
-         $$0 = this.d.a(this.e.b());
-         this.h = $$0;
-      }
-
-      return $$0;
+   private static Object2IntMap<eri> a(Object2IntMap<eri> $$0) {
+      return $$0.isEmpty() ? Object2IntMaps.emptyMap() : $$0;
    }
 
-   public void a(djz $$0, djw $$1, ecf $$2, azv $$3, eqt $$4, dih $$5) {
-      List<erf> $$6 = this.e.c();
-      if (!$$6.isEmpty()) {
-         eqt $$7 = $$6.get(0).f;
-         iu $$8 = $$7.g();
-         iu $$9 = new iu($$8.u(), $$7.i(), $$8.w());
+   private erk a(Object2IntMap<eri> $$0, eri $$1, boolean $$2) {
+      int $$3 = $$0.getOrDefault($$1, -1);
+      return $$3 == -1 || $$2 && $$3 != 0 ? erk.b : erk.a;
+   }
 
-         for (erf $$10 : $$6) {
-            if ($$10.f().a($$4)) {
-               $$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$9);
-            }
+   public void a(dio $$0, Map<eri, erq> $$1) {
+      long $$2 = $$0.a();
+      Object2IntMap<eri> $$3 = new Object2IntOpenHashMap();
+      $$1.forEach(($$1x, $$2x) -> {
+         if ($$2x.b()) {
+            $$3.put($$1x, $$2x.f());
+         }
+      });
+      this.a($$2, $$3);
+   }
+
+   private void a(long $$0, Object2IntMap<eri> $$1) {
+      this.m.put($$0, a($$1));
+      this.n.values().forEach($$1x -> $$1x.remove($$0));
+   }
+
+   public void a(dio $$0, eri $$1) {
+      this.m.compute($$0.a(), ($$1x, $$2) -> {
+         if ($$2 == null || $$2.isEmpty()) {
+            $$2 = new Object2IntOpenHashMap();
          }
 
-         this.d.a($$0, $$1, $$2, $$3, $$4, $$5, this.e);
-      }
-   }
-
-   public tz a(err $$0, dih $$1) {
-      tz $$2 = new tz();
-      if (this.b()) {
-         $$2.a("id", $$0.b().f(mg.be).b(this.d).toString());
-         $$2.a("ChunkX", $$1.h);
-         $$2.a("ChunkZ", $$1.i);
-         $$2.a("references", this.g);
-         $$2.a("Children", this.e.a($$0));
+         $$2.computeInt($$1, ($$0xx, $$1xx) -> $$1xx == null ? 1 : $$1xx + 1);
          return $$2;
-      } else {
-         $$2.a("id", "INVALID");
-         return $$2;
-      }
-   }
-
-   public boolean b() {
-      return !this.e.a();
-   }
-
-   public dih c() {
-      return this.f;
-   }
-
-   public boolean d() {
-      return this.g < this.g();
-   }
-
-   public void e() {
-      this.g++;
-   }
-
-   public int f() {
-      return this.g;
-   }
-
-   protected int g() {
-      return 1;
-   }
-
-   public erb h() {
-      return this.d;
-   }
-
-   public List<erf> i() {
-      return this.e.c();
+      });
    }
 }

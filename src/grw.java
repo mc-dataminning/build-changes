@@ -1,51 +1,119 @@
-import com.google.common.base.Splitter;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.io.Reader;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class grw {
-   private static final Splitter a = Splitter.on(',');
-   private static final Splitter b = Splitter.on('=').limit(2);
+public record grw(@Nullable hme b, @Nullable hmf.a d, @Nullable Boolean e, @Nullable gsc f, gsg.a g, @Nullable alg h) implements hmf {
+   @VisibleForTesting
+   static final Gson a = new GsonBuilder()
+      .registerTypeAdapter(grw.class, new grw.a())
+      .registerTypeAdapter(grt.class, new grt.a())
+      .registerTypeAdapter(gru.class, new gru.a())
+      .registerTypeAdapter(gsb.class, new gsb.a())
+      .registerTypeAdapter(gsc.class, new gsc.a())
+      .create();
 
-   public static <O, S extends eaj<O, S>> Predicate<eaj<O, S>> a(eai<O, S> $$0, String $$1) {
-      Map<ebk<?>, Comparable<?>> $$2 = new HashMap<>();
-
-      for (String $$3 : a.split($$1)) {
-         Iterator<String> $$4 = b.split($$3).iterator();
-         if ($$4.hasNext()) {
-            String $$5 = $$4.next();
-            ebk<?> $$6 = $$0.a($$5);
-            if ($$6 != null && $$4.hasNext()) {
-               String $$7 = $$4.next();
-               Comparable<?> $$8 = a((ebk<Comparable<?>>)$$6, $$7);
-               if ($$8 == null) {
-                  throw new RuntimeException("Unknown value: '" + $$7 + "' for blockstate property: '" + $$5 + "' " + $$6.a());
-               }
-
-               $$2.put($$6, $$8);
-            } else if (!$$5.isEmpty()) {
-               throw new RuntimeException("Unknown blockstate property: '" + $$5 + "'");
-            }
-         }
-      }
-
-      return $$1x -> {
-         for (Entry<ebk<?>, Comparable<?>> $$2x : $$2.entrySet()) {
-            if (!Objects.equals($$1x.c($$2x.getKey()), $$2x.getValue())) {
-               return false;
-            }
-         }
-
-         return true;
-      };
+   public static grw a(Reader $$0) {
+      return azc.a(a, $$0, grw.class);
    }
 
    @Nullable
-   private static <T extends Comparable<T>> T a(ebk<T> $$0, String $$1) {
-      return $$0.b($$1).orElse(null);
+   @Override
+   public hme a() {
+      return this.b;
+   }
+
+   @Nullable
+   @Override
+   public hmf.a b() {
+      return this.d;
+   }
+
+   @Nullable
+   @Override
+   public Boolean c() {
+      return this.e;
+   }
+
+   @Nullable
+   @Override
+   public gsc d() {
+      return this.f;
+   }
+
+   @Override
+   public gsg.a e() {
+      return this.g;
+   }
+
+   @Nullable
+   @Override
+   public alg f() {
+      return this.h;
+   }
+
+   public static class a implements JsonDeserializer<grw> {
+      public grw a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         hme $$4 = this.a($$2, $$3);
+         String $$5 = this.c($$3);
+         gsg.a $$6 = this.b($$3);
+         Boolean $$7 = this.a($$3);
+         gsc $$8 = null;
+         if ($$3.has("display")) {
+            JsonObject $$9 = azc.u($$3, "display");
+            $$8 = (gsc)$$2.deserialize($$9, gsc.class);
+         }
+
+         hmf.a $$10 = null;
+         if ($$3.has("gui_light")) {
+            $$10 = hmf.a.a(azc.i($$3, "gui_light"));
+         }
+
+         alg $$11 = $$5.isEmpty() ? null : alg.a($$5);
+         return new grw($$4, $$10, $$7, $$8, $$6, $$11);
+      }
+
+      private gsg.a b(JsonObject $$0) {
+         if ($$0.has("textures")) {
+            JsonObject $$1 = azc.u($$0, "textures");
+            return gsg.a($$1, hjj.c);
+         } else {
+            return gsg.a.a;
+         }
+      }
+
+      private String c(JsonObject $$0) {
+         return azc.a($$0, "parent", "");
+      }
+
+      @Nullable
+      protected Boolean a(JsonObject $$0) {
+         return $$0.has("ambientocclusion") ? azc.k($$0, "ambientocclusion") : null;
+      }
+
+      @Nullable
+      protected hme a(JsonDeserializationContext $$0, JsonObject $$1) {
+         if (!$$1.has("elements")) {
+            return null;
+         } else {
+            List<grt> $$2 = new ArrayList<>();
+
+            for (JsonElement $$3 : azc.v($$1, "elements")) {
+               $$2.add((grt)$$0.deserialize($$3, grt.class));
+            }
+
+            return new gsf($$2);
+         }
+      }
    }
 }

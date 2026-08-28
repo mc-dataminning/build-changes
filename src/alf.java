@@ -9,20 +9,20 @@ public class alf<T> {
    private final alg b;
    private final alg c;
 
-   public static <T> Codec<alf<T>> a(alf<? extends jr<T>> $$0) {
+   public static <T> Codec<alf<T>> a(alf<? extends js<T>> $$0) {
       return alg.a.xmap($$1 -> a($$0, $$1), alf::a);
    }
 
-   public static <T> yw<ByteBuf, alf<T>> b(alf<? extends jr<T>> $$0) {
+   public static <T> yw<ByteBuf, alf<T>> b(alf<? extends js<T>> $$0) {
       return alg.b.a($$1 -> a($$0, $$1), alf::a);
    }
 
-   public static <T> alf<T> a(alf<? extends jr<T>> $$0, alg $$1) {
+   public static <T> alf<T> a(alf<? extends js<T>> $$0, alg $$1) {
       return a($$0.c, $$1);
    }
 
-   public static <T> alf<jr<T>> a(alg $$0) {
-      return a(mg.a, $$0);
+   public static <T> alf<js<T>> a(alg $$0) {
+      return a(mh.a, $$0);
    }
 
    private static <T> alf<T> a(alg $$0, alg $$1) {
@@ -39,11 +39,11 @@ public class alf<T> {
       return "ResourceKey[" + this.b + " / " + this.c + "]";
    }
 
-   public boolean c(alf<? extends jr<?>> $$0) {
+   public boolean c(alf<? extends js<?>> $$0) {
       return this.b.equals($$0.a());
    }
 
-   public <E> Optional<alf<E>> d(alf<? extends jr<E>> $$0) {
+   public <E> Optional<alf<E>> d(alf<? extends js<E>> $$0) {
       return this.c($$0) ? Optional.of((alf<E>)this) : Optional.empty();
    }
 
@@ -55,7 +55,7 @@ public class alf<T> {
       return this.b;
    }
 
-   public alf<jr<T>> c() {
+   public alf<js<T>> c() {
       return a(this.b);
    }
 

@@ -1,38 +1,24 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
+import java.util.Map;
+import java.util.Optional;
 
-public class bis extends DataFix {
+public class bis extends bhu {
    public bis(Schema $$0) {
-      super($$0, false);
+      super($$0, true, "PrimedTnt BlockState fixer", biz.D, "minecraft:tnt");
    }
 
-   protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(
-         "RaidRenamesDataFix", this.getInputSchema().getType(bix.l), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("data", bis::a))
-      );
+   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("Fuse").get().result();
+      return $$1.isPresent() ? $$0.set("fuse", $$1.get()) : $$0;
    }
 
-   private static Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.renameAndFixField("Raids", "raids", $$0x -> $$0x.createList($$0x.asStream().map(bis::b)))
-         .renameField("Tick", "tick")
-         .renameField("NextAvailableID", "next_id");
+   private static <T> Dynamic<T> c(Dynamic<T> $$0) {
+      return $$0.set("block_state", $$0.createMap(Map.of($$0.createString("Name"), $$0.createString("minecraft:tnt"))));
    }
 
-   private static Dynamic<?> b(Dynamic<?> $$0) {
-      return bbd.a($$0, "CX", "CY", "CZ", "center")
-         .renameField("Id", "id")
-         .renameField("Started", "started")
-         .renameField("Active", "active")
-         .renameField("TicksActive", "ticks_active")
-         .renameField("BadOmenLevel", "raid_omen_level")
-         .renameField("GroupsSpawned", "groups_spawned")
-         .renameField("PreRaidTicks", "cooldown_ticks")
-         .renameField("PostRaidTicks", "post_raid_ticks")
-         .renameField("TotalHealth", "total_health")
-         .renameField("NumGroups", "group_count")
-         .renameField("Status", "status");
+   @Override
+   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
+      return b(c($$0));
    }
 }

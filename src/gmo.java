@@ -1,43 +1,40 @@
-public class gmo extends goi {
-   private final god a;
-
-   protected gmo(gjz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, god $$7) {
+public class gmo extends gou {
+   gmo(gkl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
       super($$0, $$1, $$2, $$3);
-      this.u = -0.1F;
-      this.B = 0.9F;
-      this.a = $$7;
-      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
-      float $$8 = this.r.i() * 0.3F + 0.7F;
-      this.v = $$8;
-      this.w = $$8;
-      this.x = $$8;
-      this.D = 0.1F * (this.r.i() * this.r.i() * 6.0F + 1.0F);
-      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
-      this.b($$7);
-   }
-
-   @Override
-   public gnm b() {
-      return gnm.b;
+      this.u = -0.125F;
+      this.B = 0.85F;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.t = (int)(40.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
    public void a() {
       super.a();
-      this.b(this.a);
+      if (!this.o && !this.c.b_(iv.a(this.g, this.h, this.i)).a(axh.a)) {
+         this.k();
+      }
    }
 
-   public static class a implements gnl<mb> {
-      private final god a;
+   @Override
+   public gny b() {
+      return gny.b;
+   }
 
-      public a(god $$0) {
+   public static class a implements gnx<mc> {
+      private final gop a;
+
+      public a(gop $$0) {
          this.a = $$0;
       }
 
-      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gmo($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gmo $$8 = new gmo($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
       }
    }
 }

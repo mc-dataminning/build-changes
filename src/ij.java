@@ -1,54 +1,52 @@
-import com.google.common.collect.Maps;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.SuggestionProvider;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
+import com.google.gson.JsonObject;
+import com.mojang.brigadier.arguments.ArgumentType;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public class ij {
-   private static final Map<alg, SuggestionProvider<en>> d = Maps.newHashMap();
-   private static final alg e = alg.b("ask_server");
-   public static final SuggestionProvider<en> a = a(e, ($$0, $$1) -> ((en)$$0.getSource()).a($$0));
-   public static final SuggestionProvider<ei> b = a(alg.b("available_sounds"), ($$0, $$1) -> en.a(((en)$$0.getSource()).s(), $$1));
-   public static final SuggestionProvider<ei> c = a(
-      alg.b("summonable_entities"),
-      ($$0, $$1) -> en.a(mf.f.s().filter($$1x -> $$1x.a(((en)$$0.getSource()).v()) && $$1x.c()), $$1, bwo::a, $$0x -> wy.c(af.a("entity", bwo.a($$0x))))
-   );
+public class ij<A extends ArgumentType<?>> implements ig<A, ij<A>.a> {
+   private final ij<A>.a a;
 
-   public static <S extends en> SuggestionProvider<S> a(alg $$0, SuggestionProvider<en> $$1) {
-      if (d.containsKey($$0)) {
-         throw new IllegalArgumentException("A command suggestion provider is already registered with the name " + $$0);
-      } else {
-         d.put($$0, $$1);
-         return new ij.a($$0, $$1);
-      }
+   private ij(Function<ef, A> $$0) {
+      this.a = new ij.a($$0);
    }
 
-   public static SuggestionProvider<en> a(alg $$0) {
-      return d.getOrDefault($$0, a);
+   public static <T extends ArgumentType<?>> ij<T> a(Supplier<T> $$0) {
+      return new ij<>($$1 -> $$0.get());
    }
 
-   public static alg a(SuggestionProvider<en> $$0) {
-      return $$0 instanceof ij.a ? ((ij.a)$$0).b : e;
+   public static <T extends ArgumentType<?>> ij<T> a(Function<ef, T> $$0) {
+      return new ij<>($$0);
    }
 
-   public static SuggestionProvider<en> b(SuggestionProvider<en> $$0) {
-      return $$0 instanceof ij.a ? $$0 : a;
+   public void a(ij<A>.a $$0, vu $$1) {
    }
 
-   protected static class a implements SuggestionProvider<en> {
-      private final SuggestionProvider<en> a;
-      final alg b;
+   public void a(ij<A>.a $$0, JsonObject $$1) {
+   }
 
-      public a(alg $$0, SuggestionProvider<en> $$1) {
-         this.a = $$1;
-         this.b = $$0;
+   public ij<A>.a a(vu $$0) {
+      return this.a;
+   }
+
+   public ij<A>.a b(A $$0) {
+      return this.a;
+   }
+
+   public final class a implements ig.a<A> {
+      private final Function<ef, A> b;
+
+      public a(final Function<ef, A> $$1) {
+         this.b = $$1;
       }
 
-      public CompletableFuture<Suggestions> getSuggestions(CommandContext<en> $$0, SuggestionsBuilder $$1) throws CommandSyntaxException {
-         return this.a.getSuggestions($$0, $$1);
+      @Override
+      public A b(ef $$0) {
+         return this.b.apply($$0);
+      }
+
+      @Override
+      public ig<A, ?> a() {
+         return ij.this;
       }
    }
 }

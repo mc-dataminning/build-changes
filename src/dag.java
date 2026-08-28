@@ -1,21 +1,32 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public class dag extends dao {
-   public dag(dmf $$0, dmf $$1, cyz.a $$2) {
-      super($$0, $$1, ja.a, $$2);
+public enum dag implements bak {
+   a(0, "common", o.p),
+   b(1, "uncommon", o.o),
+   c(2, "rare", o.l),
+   d(3, "epic", o.n);
+
+   public static final Codec<dag> e = bak.b(dag::values);
+   public static final IntFunction<dag> f = ayc.a($$0 -> $$0.h, values(), ayc.a.a);
+   public static final yw<ByteBuf, dag> g = yu.a(f, $$0 -> $$0.h);
+   private final int h;
+   private final String i;
+   private final o j;
+
+   private dag(final int $$0, final String $$1, final o $$2) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
    }
 
-   public dag(cyz.a $$0, dmf $$1, dmf $$2, ja $$3) {
-      super($$1, $$2, $$3, $$0);
+   public o a() {
+      return this.j;
    }
 
    @Override
-   protected boolean a(iu $$0, dja $$1, @Nullable crc $$2, czd $$3, eah $$4) {
-      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
-      if (!$$1.C && !$$5 && $$2 != null && $$1.c_($$0) instanceof dyt $$6 && $$1.a_($$0).b() instanceof dtp $$7) {
-         $$7.a($$2, $$6, true);
-      }
-
-      return $$5;
+   public String c() {
+      return this.i;
    }
 }

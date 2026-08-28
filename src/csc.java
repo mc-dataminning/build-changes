@@ -1,51 +1,48 @@
-public class csc extends cse {
-   public csc(bwo<? extends csc> $$0, dja $$1) {
+public class csc extends cry {
+   private int d = 1;
+
+   public csc(bwr<? extends csc> $$0, djh $$1) {
       super($$0, $$1);
    }
 
-   public csc(dja $$0, bxe $$1, czd $$2) {
-      super(bwo.bk, $$1, $$0, $$2);
-   }
-
-   public csc(dja $$0, double $$1, double $$2, double $$3, czd $$4) {
-      super(bwo.bk, $$1, $$2, $$3, $$0, $$4);
+   public csc(djh $$0, bxj $$1, fex $$2, int $$3) {
+      super(bwr.Y, $$1, $$2, $$0);
+      this.d = $$3;
    }
 
    @Override
-   protected cyz g() {
-      return czh.rs;
-   }
-
-   private lv j() {
-      czd $$0 = this.f();
-      return (lv)($$0.f() ? lx.Z : new lt(lx.U, $$0));
-   }
-
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         lv $$1 = this.j();
-
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dV().a($$1, this.dA(), this.dC(), this.dG(), 0.0, 0.0, 0.0);
-         }
+   protected void a(fev $$0) {
+      super.a($$0);
+      if (this.dU() instanceof arq $$1) {
+         boolean $$2 = $$1.O().c(djd.d);
+         this.dU().a(this, this.dz(), this.dB(), this.dF(), (float)this.d, $$2, djh.a.c);
+         this.aq();
       }
    }
 
    @Override
-   protected void a(fen $$0) {
+   protected void a(feu $$0) {
       super.a($$0);
-      bwf $$1 = $$0.a();
-      int $$2 = $$1 instanceof cnm ? 3 : 0;
-      $$1.a(this.dW().b(this, this.q()), (float)$$2);
+      if (this.dU() instanceof arq $$1) {
+         bwi var6 = $$0.a();
+         bwi $$4 = this.q();
+         bux $$5 = this.dV().a((cry)this, $$4);
+         var6.a($$1, $$5, 6.0F);
+         dfz.a($$1, var6, $$5);
+      }
    }
 
    @Override
-   protected void a(feo $$0) {
+   public void b(tz $$0) {
+      super.b($$0);
+      $$0.a("ExplosionPower", (byte)this.d);
+   }
+
+   @Override
+   public void a(tz $$0) {
       super.a($$0);
-      if (!this.dV().C) {
-         this.dV().a(this, (byte)3);
-         this.at();
+      if ($$0.b("ExplosionPower", 99)) {
+         this.d = $$0.d("ExplosionPower");
       }
    }
 }

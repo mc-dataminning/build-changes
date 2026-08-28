@@ -1,131 +1,167 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.Objects;
-import java.util.UUID;
-import java.util.concurrent.CancellationException;
+import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeoutException;
-import java.util.function.Function;
+import java.util.concurrent.Executor;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fnv extends fnw {
-   private static final wy b = wy.c("multiplayer.applyingPack");
-   private static final Logger c = LogUtils.getLogger();
-   private static final wy d = wy.c("mco.connect.connecting");
-   private final fla e;
-   private final fyb f;
+public class fnv {
+   static final Logger a = LogUtils.getLogger();
+   final Executor b;
+   final TimeUnit c;
+   final bap d;
 
-   public fnv(fyb $$0, fla $$1) {
-      this.f = $$0;
-      this.e = $$1;
+   public fnv(Executor $$0, TimeUnit $$1, bap $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   @Override
-   public void run() {
-      flb $$0;
-      try {
-         $$0 = this.f();
-      } catch (CancellationException var4) {
-         c.info("User aborted connecting to realms");
-         return;
-      } catch (flv var5) {
-         switch (var5.a.a()) {
-            case 6002:
-               a(new fnc(this.f, this.e));
-               return;
-            case 6006:
-               boolean $$3 = foz.Q().b(this.e.g);
-               a(
-                  (fyb)($$3
-                     ? new fmh(this.f, this.e.a, this.e.i())
-                     : new fmn(wy.c("mco.brokenworld.nonowner.title"), wy.c("mco.brokenworld.nonowner.error"), this.f))
-               );
-               return;
-            default:
-               this.a(var5);
-               c.error("Couldn't connect to world", var5);
-               return;
-         }
-      } catch (TimeoutException var6) {
-         this.a(wy.c("mco.errorMessage.connectionFailure"));
-         return;
-      } catch (Exception var7) {
-         c.error("Couldn't connect to world", var7);
-         this.a(var7);
-         return;
-      }
-
-      if ($$0.a == null) {
-         this.a(wy.c("mco.errorMessage.connectionFailure"));
+   public <T> fnv.e<T> a(String $$0, Callable<T> $$1, Duration $$2, fnw $$3) {
+      long $$4 = this.c.convert($$2);
+      if ($$4 == 0L) {
+         throw new IllegalArgumentException("Period of " + $$2 + " too short for selected resolution of " + this.c);
       } else {
-         boolean $$7 = $$0.b != null && $$0.c != null;
-         fyb $$8 = (fyb)($$7 ? this.a($$0, a(this.e), this::a) : this.a($$0));
-         a($$8);
+         return new fnv.e<>($$0, $$1, $$4, $$3);
       }
    }
 
-   private static UUID a(fla $$0) {
-      return $$0.q != null
-         ? UUID.nameUUIDFromBytes(("minigame:" + $$0.q).getBytes(StandardCharsets.UTF_8))
-         : UUID.nameUUIDFromBytes(("realms:" + Objects.requireNonNullElse($$0.c, "") + ":" + $$0.p).getBytes(StandardCharsets.UTF_8));
+   public fnv.c a() {
+      return new fnv.c();
    }
 
-   @Override
-   public wy a() {
-      return d;
+   static record a<T>(Either<T, Exception> a, long b) {
    }
 
-   private flb f() throws flv, TimeoutException, CancellationException {
-      fjz $$0 = fjz.a();
+   class b<T> {
+      private final fnv.e<T> a;
+      private final Consumer<T> b;
+      private long c = -1L;
 
-      for (int $$1 = 0; $$1 < 40; $$1++) {
-         if (this.d()) {
-            throw new CancellationException();
-         }
+      b(final fnv.e<T> $$0, final Consumer<T> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-         try {
-            return $$0.c(this.e.a);
-         } catch (flw var4) {
-            a((long)var4.c);
+      void a(long $$0) {
+         this.a.a($$0);
+         this.a();
+      }
+
+      void a() {
+         fnv.d<T> $$0 = this.a.g;
+         if ($$0 != null && this.c < $$0.b) {
+            this.b.accept($$0.a);
+            this.c = $$0.b;
          }
       }
 
-      throw new TimeoutException();
-   }
-
-   public fmp a(flb $$0) {
-      return new fmq(this.f, new fnt(this.f, this.e, $$0));
-   }
-
-   private ftl a(flb $$0, UUID $$1, Function<flb, fyb> $$2) {
-      wy $$3 = wy.c("mco.configure.world.resourcepack.question");
-      return fmv.a(this.f, $$3, $$3x -> {
-         a(new fxm(b));
-         this.a($$0, $$1).thenRun(() -> a($$2.apply($$0))).exceptionally($$1xx -> {
-            foz.Q().af().i();
-            c.error("Failed to download resource pack from {}", $$0, $$1xx);
-            a(new fmn(wy.c("mco.download.resourcePack.fail"), this.f));
-            return null;
-         });
-      });
-   }
-
-   private CompletableFuture<?> a(flb $$0, UUID $$1) {
-      try {
-         if ($$0.b == null) {
-            return CompletableFuture.failedFuture(new IllegalStateException("resourcePackUrl was null"));
-         } else if ($$0.c == null) {
-            return CompletableFuture.failedFuture(new IllegalStateException("resourcePackHash was null"));
-         } else {
-            hlw $$2 = foz.Q().af();
-            CompletableFuture<Void> $$3 = $$2.b($$1);
-            $$2.g();
-            $$2.a($$1, new URL($$0.b), $$0.c);
-            return $$3;
+      void b() {
+         fnv.d<T> $$0 = this.a.g;
+         if ($$0 != null) {
+            this.b.accept($$0.a);
+            this.c = $$0.b;
          }
-      } catch (Exception var5) {
-         return CompletableFuture.failedFuture(var5);
+      }
+
+      void c() {
+         this.a.a();
+         this.c = -1L;
+      }
+   }
+
+   public class c {
+      private final List<fnv.b<?>> b = new ArrayList<>();
+
+      public <T> void a(fnv.e<T> $$0, Consumer<T> $$1) {
+         fnv.b<T> $$2 = fnv.this.new b<>($$0, $$1);
+         this.b.add($$2);
+         $$2.a();
+      }
+
+      public void a() {
+         for (fnv.b<?> $$0 : this.b) {
+            $$0.b();
+         }
+      }
+
+      public void b() {
+         for (fnv.b<?> $$0 : this.b) {
+            $$0.a(fnv.this.d.get(fnv.this.c));
+         }
+      }
+
+      public void c() {
+         for (fnv.b<?> $$0 : this.b) {
+            $$0.c();
+         }
+      }
+   }
+
+   static record d<T>(T a, long b) {
+   }
+
+   public class e<T> {
+      private final String b;
+      private final Callable<T> c;
+      private final long d;
+      private final fnw e;
+      @Nullable
+      private CompletableFuture<fnv.a<T>> f;
+      @Nullable
+      fnv.d<T> g;
+      private long h = -1L;
+
+      e(final String $$1, final Callable<T> $$2, final long $$3, final fnw $$4) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+
+      void a(long $$0) {
+         if (this.f != null) {
+            fnv.a<T> $$1 = this.f.getNow(null);
+            if ($$1 == null) {
+               return;
+            }
+
+            this.f = null;
+            long $$2 = $$1.b;
+            $$1.a().ifLeft($$1x -> {
+               this.g = new fnv.d<>((T)$$1x, $$2);
+               this.h = $$2 + this.d * this.e.a();
+            }).ifRight($$1x -> {
+               long $$2x = this.e.b();
+               fnv.a.warn("Failed to process task {}, will repeat after {} cycles", new Object[]{this.b, $$2x, $$1x});
+               this.h = $$2 + this.d * $$2x;
+            });
+         }
+
+         if (this.h <= $$0) {
+            this.f = CompletableFuture.supplyAsync(() -> {
+               try {
+                  T $$0x = this.c.call();
+                  long $$1x = fnv.this.d.get(fnv.this.c);
+                  return new fnv.a<>(Either.left($$0x), $$1x);
+               } catch (Exception var4x) {
+                  long $$3 = fnv.this.d.get(fnv.this.c);
+                  return new fnv.a<>(Either.right(var4x), $$3);
+               }
+            }, fnv.this.b);
+         }
+      }
+
+      public void a() {
+         this.f = null;
+         this.g = null;
+         this.h = -1L;
       }
    }
 }

@@ -1,32 +1,20 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class haj extends hbh<hco, gft> {
+   private static final alg a = alg.b("textures/entity/cat/cat_collar.png");
+   private final gft b;
+   private final gft c;
 
-public class haj extends hav<hdd, ggk> {
-   private static final alg a = alg.b("invisible");
-   private static final Map<cll, alg> b = Maps.newEnumMap(
-      Map.of(
-         cll.a,
-         a,
-         cll.b,
-         alg.b("textures/entity/horse/horse_markings_white.png"),
-         cll.c,
-         alg.b("textures/entity/horse/horse_markings_whitefield.png"),
-         cll.d,
-         alg.b("textures/entity/horse/horse_markings_whitedots.png"),
-         cll.e,
-         alg.b("textures/entity/horse/horse_markings_blackdots.png")
-      )
-   );
-
-   public haj(gye<hdd, ggk> $$0) {
+   public haj(gyq<hco, gft> $$0, gjk $$1) {
       super($$0);
+      this.b = new gft($$1.a(gjn.T));
+      this.c = new gft($$1.a(gjn.S));
    }
 
-   public void a(fjj $$0, gqa $$1, int $$2, hdd $$3, float $$4, float $$5) {
-      alg $$6 = b.get($$3.h);
-      if ($$6 != a && !$$3.z) {
-         fjn $$7 = $$1.getBuffer(gqk.j($$6));
-         this.d().a($$0, $$7, $$2, gxi.a($$3, 0.0F));
+   public void a(fjy $$0, gqm $$1, int $$2, hco $$3, float $$4, float $$5) {
+      cyi $$6 = $$3.c;
+      if ($$6 != null) {
+         int $$7 = $$6.d();
+         gft $$8 = $$3.aj ? this.c : this.b;
+         a($$8, a, $$0, $$1, $$2, $$3, $$7);
       }
    }
 }

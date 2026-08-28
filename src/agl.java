@@ -69,12 +69,12 @@ public class agl {
       "Fist"
    };
 
-   public static String a(bwf $$0) {
-      if ($$0 instanceof crc) {
-         return $$0.al().getString();
+   public static String a(bwi $$0) {
+      if ($$0 instanceof crj) {
+         return $$0.ai().getString();
       } else {
-         wy $$1 = $$0.an();
-         return $$1 != null ? $$1.getString() : a($$0.cG());
+         wy $$1 = $$0.ak();
+         return $$1 != null ? $$1.getString() : a($$0.cF());
       }
    }
 
@@ -84,7 +84,7 @@ public class agl {
    }
 
    private static String a(azv $$0, String[] $$1) {
-      return af.a($$1, $$0);
+      return ag.a($$1, $$0);
    }
 
    private static azv b(UUID $$0) {

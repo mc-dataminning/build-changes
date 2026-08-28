@@ -1,22 +1,32 @@
 import com.mojang.serialization.MapCodec;
 
-public class dld extends dmf {
-   public static final MapCodec<dld> a = b(dld::new);
+public abstract class dld extends dly {
+   private final cyi a;
 
-   @Override
-   public MapCodec<? extends dld> a() {
-      return a;
-   }
-
-   public dld(eag.d $$0) {
-      super($$0);
+   protected dld(cyi $$0, ean.d $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   protected void a(dja $$0, eah $$1, fem $$2, crx $$3) {
-      if (!$$0.C) {
-         iu $$4 = $$2.b();
-         $$0.a(null, $$4, awn.E, awo.e, 1.0F, 0.5F + $$0.A.i() * 1.2F);
-      }
+   protected abstract MapCodec<? extends dld> a();
+
+   @Override
+   public boolean a(eao $$0) {
+      return true;
+   }
+
+   @Override
+   public dxm a(iv $$0, eao $$1) {
+      return new dxa($$0, $$1, this.a);
+   }
+
+   @Override
+   protected czk a(djk $$0, iv $$1, eao $$2, boolean $$3) {
+      return $$0.c_($$1) instanceof dxa $$4 ? $$4.c() : super.a($$0, $$1, $$2, $$3);
+   }
+
+   public cyi b() {
+      return this.a;
    }
 }

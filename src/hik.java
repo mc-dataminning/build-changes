@@ -1,72 +1,14 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.file.Path;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class hik extends hii implements hij {
-   private static final Logger d = LogUtils.getLogger();
+public interface hik extends hio<Void> {
    @Nullable
-   private fik e;
-
-   public hik(fik $$0) {
-      this.e = $$0;
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> {
-            TextureUtil.prepareImage(this.a(), this.e.a(), this.e.b());
-            this.d();
-         });
-      } else {
-         TextureUtil.prepareImage(this.a(), this.e.a(), this.e.b());
-         this.d();
-      }
+   default Void a(czk $$0) {
+      return null;
    }
 
-   public hik(int $$0, int $$1, boolean $$2) {
-      this.e = new fik($$0, $$1, $$2);
-      TextureUtil.prepareImage(this.a(), this.e.a(), this.e.b());
+   default void a(@Nullable Void $$0, czi $$1, fjy $$2, gqm $$3, int $$4, int $$5, boolean $$6) {
+      this.a($$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   @Override
-   public void d() {
-      if (this.e != null) {
-         this.c();
-         this.e.a(0, 0, 0, false);
-      } else {
-         d.warn("Trying to upload disposed texture {}", this.a());
-      }
-   }
-
-   @Nullable
-   public fik e() {
-      return this.e;
-   }
-
-   public void a(fik $$0) {
-      if (this.e != null) {
-         this.e.close();
-      }
-
-      this.e = $$0;
-   }
-
-   @Override
-   public void close() {
-      if (this.e != null) {
-         this.e.close();
-         this.b();
-         this.e = null;
-      }
-   }
-
-   @Override
-   public void a(alg $$0, Path $$1) throws IOException {
-      if (this.e != null) {
-         String $$2 = $$0.c() + ".png";
-         Path $$3 = $$1.resolve($$2);
-         this.e.a($$3);
-      }
-   }
+   void a(czi var1, fjy var2, gqm var3, int var4, int var5, boolean var6);
 }

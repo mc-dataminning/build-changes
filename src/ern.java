@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface ern {
+public interface ern {
+   void a(erm var1);
+
+   @Nullable
+   erm a(era var1);
 }

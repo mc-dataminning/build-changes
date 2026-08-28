@@ -7,9 +7,9 @@ public enum alp {
    d;
 
    private static final List<alp> e = List.of(values());
-   private static final js.b f = js.a(mf.aF);
+   private static final jt.b f = jt.a(mg.aF);
 
-   public static jl<alp> a() {
-      return new jl<>(e).a(a, f);
+   public static jm<alp> a() {
+      return new jm<>(e).a(a, f);
    }
 }

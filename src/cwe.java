@@ -1,55 +1,101 @@
-public class cwe<T extends cuv> implements cuj {
-   public static final cwe<cve> a = a("generic_9x1", cve::a);
-   public static final cwe<cve> b = a("generic_9x2", cve::b);
-   public static final cwe<cve> c = a("generic_9x3", cve::c);
-   public static final cwe<cve> d = a("generic_9x4", cve::d);
-   public static final cwe<cve> e = a("generic_9x5", cve::e);
-   public static final cwe<cve> f = a("generic_9x6", cve::f);
-   public static final cwe<cvq> g = a("generic_3x3", cvq::new);
-   public static final cwe<cvl> h = a("crafter_3x3", cvl::new);
-   public static final cwe<cuy> i = a("anvil", cuy::new);
-   public static final cwe<cva> j = a("beacon", cva::new);
-   public static final cwe<cvb> k = a("blast_furnace", cvb::new);
-   public static final cwe<cvc> l = a("brewing_stand", cvc::new);
-   public static final cwe<cvo> m = a("crafting", cvo::new);
-   public static final cwe<cvr> n = a("enchantment", cvr::new);
-   public static final cwe<cvt> o = a("furnace", cvt::new);
-   public static final cwe<cvv> p = a("grindstone", cvv::new);
-   public static final cwe<cvw> q = a("hopper", cvw::new);
-   public static final cwe<cwb> r = a("lectern", ($$0, $$1) -> new cwb($$0));
-   public static final cwe<cwc> s = a("loom", cwc::new);
-   public static final cwe<cwg> t = a("merchant", cwg::new);
-   public static final cwe<cwp> u = a("shulker_box", cwp::new);
-   public static final cwe<cwv> v = a("smithing", cwv::new);
-   public static final cwe<cww> w = a("smoker", cww::new);
-   public static final cwe<cvd> x = a("cartography_table", cvd::new);
-   public static final cwe<cwy> y = a("stonecutter", cwy::new);
-   private final cum z;
-   private final cwe.a<T> A;
+public class cwe extends cvc {
+   private static final alg m = alg.b("container/slot/saddle");
+   private static final alg n = alg.b("container/slot/llama_armor");
+   private static final alg o = alg.b("container/slot/horse_armor");
+   private final btz p;
+   private final cll q;
+   private static final int r = 0;
+   private static final int s = 1;
+   private static final int t = 2;
 
-   private static <T extends cuv> cwe<T> a(String $$0, cwe.a<T> $$1) {
-      return jr.a(mf.p, $$0, new cwe<>($$1, cuo.g));
-   }
+   public cwe(int $$0, cri $$1, btz $$2, final cll $$3, int $$4) {
+      super(null, $$0);
+      this.p = $$2;
+      this.q = $$3;
+      $$2.c_($$1.h);
+      btz $$5 = $$3.h(bws.h);
+      this.a(new cvg($$5, $$3, bws.h, 0, 8, 18, m) {
+         @Override
+         public boolean b() {
+            return $$3.e(bws.h) && $$3.an().a(axf.J);
+         }
+      });
+      final boolean $$6 = $$3 instanceof clo;
+      alg $$7 = $$6 ? n : o;
+      btz $$8 = $$3.h(bws.g);
+      this.a(new cvg($$8, $$3, bws.g, 0, 8, 36, $$7) {
+         @Override
+         public boolean b() {
+            return $$3.e(bws.g) && ($$3.an().a(axf.K) || $$6);
+         }
+      });
+      if ($$4 > 0) {
+         for (int $$9 = 0; $$9 < 3; $$9++) {
+            for (int $$10 = 0; $$10 < $$4; $$10++) {
+               this.a(new cwz($$2, $$10 + $$9 * $$4, 80 + $$10 * 18, 18 + $$9 * 18));
+            }
+         }
+      }
 
-   private static <T extends cuv> cwe<T> a(String $$0, cwe.a<T> $$1, cuk... $$2) {
-      return jr.a(mf.p, $$0, new cwe<>($$1, cuo.e.a($$2)));
-   }
-
-   private cwe(cwe.a<T> $$0, cum $$1) {
-      this.A = $$0;
-      this.z = $$1;
-   }
-
-   public T a(int $$0, crb $$1) {
-      return this.A.create($$0, $$1);
+      this.c($$1, 8, 84);
    }
 
    @Override
-   public cum k() {
-      return this.z;
+   public boolean b(crj $$0) {
+      return !this.q.a(this.p) && this.p.a($$0) && this.q.bI() && $$0.b(this.q, 4.0);
    }
 
-   interface a<T extends cuv> {
-      T create(int var1, crb var2);
+   @Override
+   public czk b(crj $$0, int $$1) {
+      czk $$2 = czk.k;
+      cwz $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         czk $$4 = $$3.g();
+         $$2 = $$4.v();
+         int $$5 = 2 + this.p.b();
+         if ($$1 < $$5) {
+            if (!this.a($$4, $$5, this.k.size(), true)) {
+               return czk.k;
+            }
+         } else if (this.b(1).a($$4) && !this.b(1).h()) {
+            if (!this.a($$4, 1, 2, false)) {
+               return czk.k;
+            }
+         } else if (this.b(0).a($$4) && !this.b(0).h()) {
+            if (!this.a($$4, 0, 1, false)) {
+               return czk.k;
+            }
+         } else if (this.p.b() == 0 || !this.a($$4, 2, $$5, false)) {
+            int $$6 = $$5 + 27;
+            int $$8 = $$6 + 9;
+            if ($$1 >= $$6 && $$1 < $$8) {
+               if (!this.a($$4, $$5, $$6, false)) {
+                  return czk.k;
+               }
+            } else if ($$1 >= $$5 && $$1 < $$6) {
+               if (!this.a($$4, $$6, $$8, false)) {
+                  return czk.k;
+               }
+            } else if (!this.a($$4, $$6, $$6, false)) {
+               return czk.k;
+            }
+
+            return czk.k;
+         }
+
+         if ($$4.f()) {
+            $$3.e(czk.k);
+         } else {
+            $$3.d();
+         }
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public void a(crj $$0) {
+      super.a($$0);
+      this.p.c($$0);
    }
 }

@@ -1,67 +1,58 @@
+import com.google.gson.annotations.SerializedName;
 import com.mojang.logging.LogUtils;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
 import org.slf4j.Logger;
 
-public class fob extends fnw {
-   private static final Logger b = LogUtils.getLogger();
-   private static final wy c = wy.c("mco.backup.restoring");
-   private final fkp d;
-   private final long e;
-   private final fmj f;
+public class fob {
+   private static final String a = "realms_persistence.json";
+   private static final flg b = new flg();
+   private static final Logger c = LogUtils.getLogger();
 
-   public fob(fkp $$0, long $$1, fmj $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public fob.a a() {
+      return b();
    }
 
-   @Override
-   public void run() {
-      fjz $$0 = fjz.a();
-      int $$1 = 0;
+   public void a(fob.a $$0) {
+      b($$0);
+   }
 
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
+   public static fob.a b() {
+      Path $$0 = c();
 
-            $$0.b(this.e, this.d.a);
-            a(1L);
-            if (this.d()) {
-               return;
-            }
-
-            a(this.f.g());
-            return;
-         } catch (flw var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (flv var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't restore backup", var5);
-            a(new fmn(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't restore backup", var6);
-            this.a(var6);
-            return;
+      try {
+         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
+         fob.a $$2 = b.a($$1, fob.a.class);
+         if ($$2 != null) {
+            return $$2;
          }
+      } catch (NoSuchFileException var3) {
+      } catch (Exception var4) {
+         c.warn("Failed to read Realms storage {}", $$0, var4);
+      }
+
+      return new fob.a();
+   }
+
+   public static void b(fob.a $$0) {
+      Path $$1 = c();
+
+      try {
+         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
+      } catch (Exception var3) {
       }
    }
 
-   @Override
-   public wy a() {
-      return c;
+   private static Path c() {
+      return fpo.Q().q.toPath().resolve("realms_persistence.json");
+   }
+
+   public static class a implements flx {
+      @SerializedName("newsLink")
+      public String a;
+      @SerializedName("hasUnreadNews")
+      public boolean b;
    }
 }

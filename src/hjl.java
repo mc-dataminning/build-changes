@@ -1,129 +1,44 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import java.io.Closeable;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.annotation.Nullable;
 
-public record hjl(alg c, List<hjl.a> d, double e, double f) implements hjc {
-   static final Logger g = LogUtils.getLogger();
-   public static final MapCodec<hjl> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               alg.a.fieldOf("resource").forGetter(hjl::b),
-               ayu.b(hjl.a.a.listOf()).fieldOf("regions").forGetter(hjl::c),
-               Codec.DOUBLE.optionalFieldOf("divisor_x", 1.0).forGetter(hjl::d),
-               Codec.DOUBLE.optionalFieldOf("divisor_y", 1.0).forGetter(hjl::e)
-            )
-            .apply($$0, hjl::new)
-   );
+public record hjl(fiu a, @Nullable hlg b) implements Closeable {
+   public static hjl a(avd $$0, alg $$1) throws IOException {
+      avb $$2 = $$0.getResourceOrThrow($$1);
 
-   @Override
-   public void a(avd $$0, hjc.a $$1) {
-      alg $$2 = a.a(this.c);
-      Optional<avb> $$3 = $$0.getResource($$2);
-      if ($$3.isPresent()) {
-         hjh $$4 = new hjh($$2, $$3.get(), this.d.size());
-
-         for (hjl.a $$5 : this.d) {
-            $$1.a($$5.b, new hjl.b($$4, $$5, this.e, this.f));
-         }
-      } else {
-         g.warn("Missing sprite: {}", $$2);
+      fiu $$4;
+      try (InputStream $$3 = $$2.d()) {
+         $$4 = fiu.a($$3);
       }
+
+      hlg $$6 = $$2.f().a(hlg.d).orElse(null);
+      return new hjl($$4, $$6);
+   }
+
+   public static hjl a() {
+      return new hjl(hiz.a(), null);
+   }
+
+   public boolean b() {
+      return this.b != null ? this.b.a() : false;
+   }
+
+   public boolean c() {
+      return this.b != null ? this.b.b() : false;
    }
 
    @Override
-   public MapCodec<hjl> a() {
-      return b;
+   public void close() {
+      this.a.close();
    }
 
-   public alg b() {
-      return this.c;
+   public fiu d() {
+      return this.a;
    }
 
-   public List<hjl.a> c() {
-      return this.d;
-   }
-
-   public double d() {
-      return this.e;
-   }
-
-   public double e() {
-      return this.f;
-   }
-
-   public static record a(alg b, double c, double d, double e, double f) {
-      public static final Codec<hjl.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  alg.a.fieldOf("sprite").forGetter(hjl.a::a),
-                  Codec.DOUBLE.fieldOf("x").forGetter(hjl.a::b),
-                  Codec.DOUBLE.fieldOf("y").forGetter(hjl.a::c),
-                  Codec.DOUBLE.fieldOf("width").forGetter(hjl.a::d),
-                  Codec.DOUBLE.fieldOf("height").forGetter(hjl.a::e)
-               )
-               .apply($$0, hjl.a::new)
-      );
-
-      public alg a() {
-         return this.b;
-      }
-
-      public double b() {
-         return this.c;
-      }
-
-      public double c() {
-         return this.d;
-      }
-
-      public double d() {
-         return this.e;
-      }
-
-      public double e() {
-         return this.f;
-      }
-   }
-
-   static class b implements hjc.b {
-      private final hjh a;
-      private final hjl.a b;
-      private final double c;
-      private final double d;
-
-      b(hjh $$0, hjl.a $$1, double $$2, double $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      public hir a(hjb $$0) {
-         try {
-            fik $$1 = this.a.a();
-            double $$2 = (double)$$1.a() / this.c;
-            double $$3 = (double)$$1.b() / this.d;
-            int $$4 = azm.a(this.b.c * $$2);
-            int $$5 = azm.a(this.b.d * $$3);
-            int $$6 = azm.a(this.b.e * $$2);
-            int $$7 = azm.a(this.b.f * $$3);
-            fik $$8 = new fik(fik.a.a, $$6, $$7, false);
-            $$1.a($$8, $$4, $$5, 0, 0, $$6, $$7, false, false);
-            return new hir(this.b.b, new hkk($$6, $$7), $$8, avf.a);
-         } catch (Exception var16) {
-            hjl.g.error("Failed to unstitch region {}", this.b.b, var16);
-         } finally {
-            this.a.b();
-         }
-
-         return him.b();
-      }
-
-      @Override
-      public void a() {
-         this.a.b();
-      }
+   @Nullable
+   public hlg e() {
+      return this.b;
    }
 }

@@ -1,40 +1,42 @@
-public class gzj extends gxn<cmu, hfa, giq> {
-   private static final alg a = alg.b("textures/entity/wither/wither_invulnerable.png");
-   private static final alg j = alg.b("textures/entity/wither/wither.png");
+public class gzj extends gvk<cuk, hed> {
+   private final grp g;
 
-   public gzj(gwh.a $$0) {
-      super($$0, new giq($$0.a(gjb.dS)), 1.0F);
-      this.a(new hbi(this, $$0.f()));
+   public gzj(gwt.a $$0) {
+      super($$0, gjn.dy);
+      this.g = $$0.d();
    }
 
-   protected int a(cmu $$0, iu $$1) {
-      return 15;
-   }
-
-   public alg a(hfa $$0) {
-      int $$1 = azm.d($$0.c);
-      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : j;
-   }
-
-   public hfa b() {
-      return new hfa();
-   }
-
-   protected void a(hfa $$0, fjj $$1) {
-      float $$2 = 2.0F;
-      if ($$0.c > 0.0F) {
-         $$2 -= $$0.c / 220.0F * 0.5F;
+   protected void a(hed $$0, eao $$1, fjy $$2, gqm $$3, int $$4) {
+      float $$5 = $$0.n;
+      if ($$5 > -1.0F && $$5 < 10.0F) {
+         float $$6 = 1.0F - $$5 / 10.0F;
+         $$6 = azm.a($$6, 0.0F, 1.0F);
+         $$6 *= $$6;
+         $$6 *= $$6;
+         float $$7 = 1.0F + $$6 * 0.3F;
+         $$2.b($$7, $$7, $$7);
       }
 
-      $$1.b($$2, $$2, $$2);
+      a(this.g, $$1, $$2, $$3, $$4, $$5 > -1.0F && (int)$$5 / 5 % 2 == 0);
    }
 
-   public void a(cmu $$0, hfa $$1, float $$2) {
+   public static void a(grp $$0, eao $$1, fjy $$2, gqm $$3, int $$4, boolean $$5) {
+      int $$6;
+      if ($$5) {
+         $$6 = hja.a(hja.a(1.0F), 10);
+      } else {
+         $$6 = hja.d;
+      }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6);
+   }
+
+   public hed a() {
+      return new hed();
+   }
+
+   public void a(cuk $$0, hed $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      int $$3 = $$0.t();
-      $$1.c = $$3 > 0 ? (float)$$3 - $$2 : 0.0F;
-      System.arraycopy($$0.q(), 0, $$1.a, 0, $$1.a.length);
-      System.arraycopy($$0.n(), 0, $$1.b, 0, $$1.b.length);
-      $$1.d = $$0.x();
+      $$1.n = $$0.q() > -1 ? (float)$$0.q() - $$2 + 1.0F : -1.0F;
    }
 }

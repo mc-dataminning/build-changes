@@ -1,63 +1,91 @@
-import com.google.common.collect.Sets;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import java.util.EnumMap;
 import java.util.Map;
-import java.util.Set;
+import org.joml.Matrix4f;
+import org.joml.Matrix4fc;
 
-public class hlk {
-   static final int a = -1;
-   private static final int b = 0;
+public enum hlk implements hly {
+   a(i.a, i.a),
+   b(i.a, i.b),
+   c(i.a, i.c),
+   d(i.a, i.d),
+   e(i.b, i.a),
+   f(i.b, i.b),
+   g(i.b, i.c),
+   h(i.b, i.d),
+   i(i.c, i.a),
+   j(i.c, i.b),
+   k(i.c, i.c),
+   l(i.c, i.d),
+   m(i.d, i.a),
+   n(i.d, i.b),
+   o(i.d, i.c),
+   p(i.d, i.d);
 
-   public static Object2IntMap<eah> a(fqb $$0, hkz.c $$1) {
-      Map<dmf, List<ebk<?>>> $$2 = new HashMap<>();
-      Map<hlk.a, Set<eah>> $$3 = new HashMap<>();
-      $$1.c().forEach(($$3x, $$4x) -> {
-         List<ebk<?>> $$5x = $$2.computeIfAbsent($$4x.a().b(), $$1xx -> List.copyOf($$0.a($$1xx)));
-         hlk.a $$6x = hlk.a.a($$4x.a(), $$4x.b(), $$5x);
-         $$3.computeIfAbsent($$6x, $$0xx -> Sets.newIdentityHashSet()).add($$4x.a());
-      });
-      int $$4 = 1;
-      Object2IntMap<eah> $$5 = new Object2IntOpenHashMap();
-      $$5.defaultReturnValue(-1);
+   private static final hlk[][] r = ag.a(new hlk[i.values().length][i.values().length], $$0 -> {
+      for (hlk $$1 : values()) {
+         $$0[$$1.s.ordinal()][$$1.t.ordinal()] = $$1;
+      }
+   });
+   private final i s;
+   private final i t;
+   final k u;
+   private final h v;
+   final Map<jb, Matrix4fc> w = new EnumMap<>(jb.class);
+   final Map<jb, Matrix4fc> x = new EnumMap<>(jb.class);
+   private final hlk.a y = new hlk.a(this);
 
-      for (Set<eah> $$6 : $$3.values()) {
-         Iterator<eah> $$7 = $$6.iterator();
-
-         while ($$7.hasNext()) {
-            eah $$8 = $$7.next();
-            if ($$8.o() != dss.b) {
-               $$7.remove();
-               $$5.put($$8, 0);
-            }
-         }
-
-         if ($$6.size() > 1) {
-            int $$9 = $$4++;
-            $$6.forEach($$2x -> $$5.put($$2x, $$9));
-         }
+   private hlk(final i $$0, final i $$1) {
+      this.s = $$0;
+      this.t = $$1;
+      this.v = h.a($$0, $$1);
+      if (this.v != h.a) {
+         this.u = new k(new Matrix4f(this.v.b()));
+      } else {
+         this.u = k.a();
       }
 
-      return $$5;
+      for (jb $$2 : jb.values()) {
+         Matrix4fc $$3 = iu.a(this.u, $$2).c();
+         this.w.put($$2, $$3);
+         this.x.put($$2, $$3.invertAffine(new Matrix4f()));
+      }
    }
 
-   static record a(Object a, List<Object> b) {
-      public static hlk.a a(eah $$0, gru $$1, List<ebk<?>> $$2) {
-         List<Object> $$3 = a($$0, $$2);
-         Object $$4 = $$1.a($$0);
-         return new hlk.a($$4, $$3);
+   @Override
+   public k a() {
+      return this.u;
+   }
+
+   public static hlk a(i $$0, i $$1) {
+      return r[$$0.ordinal()][$$1.ordinal()];
+   }
+
+   public h b() {
+      return this.v;
+   }
+
+   public hly c() {
+      return this.y;
+   }
+
+   static record a(hlk a) implements hly {
+      @Override
+      public k a() {
+         return this.a.u;
       }
 
-      private static List<Object> a(eah $$0, List<ebk<?>> $$1) {
-         Object[] $$2 = new Object[$$1.size()];
+      @Override
+      public Matrix4fc a(jb $$0) {
+         return this.a.w.getOrDefault($$0, q);
+      }
 
-         for (int $$3 = 0; $$3 < $$1.size(); $$3++) {
-            $$2[$$3] = $$0.c($$1.get($$3));
-         }
+      @Override
+      public Matrix4fc b(jb $$0) {
+         return this.a.x.getOrDefault($$0, q);
+      }
 
-         return List.of($$2);
+      public hlk b() {
+         return this.a;
       }
    }
 }

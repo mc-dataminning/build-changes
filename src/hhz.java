@@ -1,51 +1,19 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class hhz implements hhx {
-   private final gta a;
-   private final float b;
-   private final ja c;
-   private final hle d;
+public class hhz {
+   private static final ayu.b<alg, hia.a<?, ?>> b = new ayu.b<>();
+   public static final Codec<hia.a<?, ?>> a = b.a(alg.a);
 
-   public hhz(gta $$0, float $$1, ja $$2, hle $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   @Override
-   public void a(czb $$0, fjj $$1, gqa $$2, int $$3, int $$4, boolean $$5) {
-      this.a.a($$1, $$2, $$3, $$4, this.c, this.b, this.d);
-   }
-
-   public static record a(alg b, float c, ja d) implements hib.a {
-      public static final MapCodec<hhz.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  alg.a.fieldOf("texture").forGetter(hhz.a::b),
-                  Codec.FLOAT.optionalFieldOf("openness", 0.0F).forGetter(hhz.a::c),
-                  ja.g.optionalFieldOf("orientation", ja.b).forGetter(hhz.a::d)
-               )
-               .apply($$0, hhz.a::new)
-      );
-
-      public a() {
-         this(alg.b("shulker"), 0.0F, ja.b);
-      }
-
-      public a(cyb $$0) {
-         this(gqv.e($$0), 0.0F, ja.b);
-      }
-
-      @Override
-      public MapCodec<hhz.a> a() {
-         return a;
-      }
-
-      @Override
-      public hib<?> a(giy $$0) {
-         return new hhz(new gta($$0), this.c, this.d, gqv.p.a(this.b));
-      }
+   public static void a() {
+      b.a(alg.b("custom_model_data"), hhu.b);
+      b.a(alg.b("main_hand"), hhy.b);
+      b.a(alg.b("charge_type"), hhq.b);
+      b.a(alg.b("trim_material"), hib.b);
+      b.a(alg.b("block_state"), hhw.b);
+      b.a(alg.b("display_context"), hhv.b);
+      b.a(alg.b("local_time"), hhx.c);
+      b.a(alg.b("context_entity_type"), hht.b);
+      b.a(alg.b("context_dimension"), hhs.b);
+      b.a(alg.b("component"), hhr.c());
    }
 }

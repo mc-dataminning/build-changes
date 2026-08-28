@@ -1,62 +1,43 @@
-public class bxf extends bwf {
-   private static final String a = "data";
-   private tz b = new tz();
+public class bxf {
+   private static final int a = 140;
+   private static final int b = 700;
+   private final akn c;
+   private final akj<Integer> d;
+   private boolean e;
+   private int f;
 
-   public bxf(bwo<?> $$0, dja $$1) {
-      super($$0, $$1);
-      this.ad = true;
+   public bxf(akn $$0, akj<Integer> $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   @Override
-   public void h() {
+   public void a() {
+      this.e = true;
+      this.f = 0;
    }
 
-   @Override
-   protected void a(akn.a $$0) {
+   public boolean a(azv $$0) {
+      if (this.e) {
+         return false;
+      } else {
+         this.e = true;
+         this.f = 0;
+         this.c.a(this.d, $$0.a(841) + 140);
+         return true;
+      }
    }
 
-   @Override
-   protected void a(tz $$0) {
-      this.b = $$0.p("data");
+   public void b() {
+      if (this.e && this.f++ > this.d()) {
+         this.e = false;
+      }
    }
 
-   @Override
-   protected void b(tz $$0) {
-      $$0.a("data", this.b.i());
+   public float c() {
+      return this.e ? 1.0F + 1.15F * azm.a((float)this.f / (float)this.d() * (float) Math.PI) : 1.0F;
    }
 
-   @Override
-   public zf<abu> a(aro $$0) {
-      throw new IllegalStateException("Markers should never be sent");
-   }
-
-   @Override
-   protected boolean r(bwf $$0) {
-      return false;
-   }
-
-   @Override
-   protected boolean bQ() {
-      return false;
-   }
-
-   @Override
-   protected void p(bwf $$0) {
-      throw new IllegalStateException("Should never addPassenger without checking couldAcceptPassenger()");
-   }
-
-   @Override
-   public ewt j_() {
-      return ewt.d;
-   }
-
-   @Override
-   public boolean g_() {
-      return true;
-   }
-
-   @Override
-   public final boolean a(arq $$0, buu $$1, float $$2) {
-      return false;
+   private int d() {
+      return this.c.a(this.d);
    }
 }

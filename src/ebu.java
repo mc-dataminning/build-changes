@@ -1,21 +1,37 @@
-public enum ebu implements bak {
-   a("none"),
-   b("low"),
-   c("tall");
+import java.util.Optional;
 
-   private final String d;
+public class ebu {
+   private static final azy a = new azy(4);
+   private static final int b = a.a();
+   private static final int c = 0;
+   private static final int d = 4;
+   private static final int e = 8;
+   private static final int f = 12;
 
-   private ebu(final String $$0) {
-      this.d = $$0;
+   public static int a() {
+      return b;
    }
 
-   @Override
-   public String toString() {
-      return this.c();
+   public static int a(jb $$0) {
+      return a.a($$0);
    }
 
-   @Override
-   public String c() {
-      return this.d;
+   public static int a(float $$0) {
+      return a.b($$0);
+   }
+
+   public static Optional<jb> a(int $$0) {
+      jb $$1 = switch ($$0) {
+         case 0 -> jb.c;
+         case 4 -> jb.f;
+         case 8 -> jb.d;
+         case 12 -> jb.e;
+         default -> null;
+      };
+      return Optional.ofNullable($$1);
+   }
+
+   public static float b(int $$0) {
+      return a.b($$0);
    }
 }

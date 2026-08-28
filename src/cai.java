@@ -1,54 +1,27 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.List;
-import java.util.Optional;
 import java.util.function.Function;
 
 public class cai {
-   public static byw<cqo> a() {
-      return cci.a(
-         (Function<cci.b<cqo>, ? extends App<cci.c<cqo>, ccl<cqo>>>)($$0 -> $$0.group($$0.b(cgg.c), $$0.b(cgg.g))
-               .apply(
-                  $$0,
-                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                        jd $$6 = $$0.b($$1);
-                        $$3.A()
-                           .c($$6.b())
-                           .ifPresent(
-                              $$4x -> $$0.<List<bxe>>b($$2)
-                                    .stream()
-                                    .filter($$1xxx -> $$1xxx instanceof cqo && $$1xxx != $$4)
-                                    .map($$0xxxx -> (cqo)$$0xxxx)
-                                    .filter(bxe::bK)
-                                    .filter($$2xxx -> a($$6, $$4x, $$2xxx))
-                                    .reduce($$4, cai::a)
-                           );
+   private static final int a = 1;
+
+   public static bzb<bxj> a(float $$0) {
+      return ccn.a(
+         (Function<ccn.b<bxj>, ? extends App<ccn.c<bxj>, ccq<bxj>>>)($$1 -> $$1.group($$1.a(cgl.o), $$1.c(cgl.n), $$1.b(cgl.t))
+               .apply($$1, ($$2, $$3, $$4) -> ($$5, $$6, $$7) -> {
+                     if ($$6.bX()) {
+                        return false;
+                     } else {
+                        bwi $$8 = $$1.b($$4);
+                        if ($$8.a($$6, 1.0)) {
+                           $$6.n($$8);
+                        } else {
+                           $$2.a(new bzl($$8, true));
+                           $$3.a(new cgo(new bzl($$8, false), $$0, 1));
+                        }
+
                         return true;
                      }
-               ))
+                  }))
       );
-   }
-
-   private static cqo a(cqo $$0, cqo $$1) {
-      cqo $$2;
-      cqo $$3;
-      if ($$0.t() > $$1.t()) {
-         $$2 = $$0;
-         $$3 = $$1;
-      } else {
-         $$2 = $$1;
-         $$3 = $$0;
-      }
-
-      $$3.ec().b(cgg.c);
-      return $$2;
-   }
-
-   private static boolean a(jd $$0, je<cij> $$1, cqo $$2) {
-      Optional<jd> $$3 = $$2.ec().c(cgg.c);
-      return $$3.isPresent() && $$0.equals($$3.get()) && a($$1, $$2.gz().b());
-   }
-
-   private static boolean a(je<cij> $$0, je<cqr> $$1) {
-      return $$1.a().b().test($$0);
    }
 }

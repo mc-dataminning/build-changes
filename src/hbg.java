@@ -1,44 +1,34 @@
-import javax.annotation.Nullable;
+public class hbg<S extends hel, M extends ggk<S> & gfa & ggu> extends haz<S, M> {
+   private static final float a = (float) (-Math.PI / 6);
+   private static final float b = (float) (Math.PI / 2);
 
-public class hbg<S extends hde, M extends gfy<S>> extends hav<S, M> {
-   private final gfu a;
-   private final gfu b;
-   private final hag c;
-
-   public hbg(gye<S, M> $$0, giy $$1, hag $$2) {
+   public hbg(gyq<S, M> $$0) {
       super($$0);
-      this.a = new gfu($$1.a(gjb.aP));
-      this.b = new gfu($$1.a(gjb.aQ));
-      this.c = $$2;
    }
 
-   public void a(fjj $$0, gqa $$1, int $$2, S $$3, float $$4, float $$5) {
-      czd $$6 = $$3.W;
-      dhm $$7 = $$6.a(kj.D);
-      if ($$7 != null && !$$7.d().isEmpty()) {
-         alg $$8 = a($$3);
-         gfu $$9 = $$3.aj ? this.b : this.a;
-         $$0.a();
-         $$0.a(0.0F, 0.0F, 0.125F);
-         $$9.a($$3);
-         this.c.a(hld.d.c, $$7.d().get(), $$9, $$6, $$0, $$1, $$2, $$8);
-         $$0.b();
+   protected void a(S $$0, hgc $$1, bxa $$2, fjy $$3, gqm $$4, int $$5) {
+      if (!$$1.c()) {
+         buf $$6 = $$2 == $$0.e ? buf.a : buf.b;
+         if ($$0.R && $$0.M == $$6 && $$0.H < 1.0E-5F && !$$0.aI.c()) {
+            this.a($$0.aI, $$2, $$3, $$4, $$5);
+         } else {
+            super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         }
       }
    }
 
-   @Nullable
-   private static alg a(hde $$0) {
-      if ($$0 instanceof hdz $$1) {
-         hjy $$2 = $$1.a;
-         if ($$2.d() != null) {
-            return $$2.d();
-         }
-
-         if ($$2.c() != null && $$1.ay) {
-            return $$2.c();
-         }
-      }
-
-      return null;
+   private void a(hgc $$0, bxa $$1, fjy $$2, gqm $$3, int $$4) {
+      $$2.a();
+      this.d().e().a($$2);
+      gjo $$5 = this.d().b();
+      float $$6 = $$5.e;
+      $$5.e = azm.a($$5.e, (float) (-Math.PI / 6), (float) (Math.PI / 2));
+      $$5.a($$2);
+      $$5.e = $$6;
+      ham.a($$2, ham.a.a);
+      boolean $$7 = $$1 == bxa.a;
+      $$2.a(($$7 ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
+      $$0.a($$2, $$3, $$4, hja.d);
+      $$2.b();
    }
 }

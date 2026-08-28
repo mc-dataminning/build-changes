@@ -5,7 +5,7 @@ public interface we {
 
    void a(vt var1);
 
-   default void a(zf $$0, Exception $$1) throws z {
+   default void a(zf $$0, Exception $$1) throws aa {
       throw zi.a($$1, $$0, this);
    }
 
@@ -19,13 +19,13 @@ public interface we {
       return this.c();
    }
 
-   default void a(o $$0) {
-      p $$1 = $$0.a("Connection");
+   default void a(p $$0) {
+      q $$1 = $$0.a("Connection");
       $$1.a("Protocol", () -> this.b().a());
       $$1.a("Flow", () -> this.a().toString());
       this.a($$0, $$1);
    }
 
-   default void a(o $$0, p $$1) {
+   default void a(p $$0, q $$1) {
    }
 }

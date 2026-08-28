@@ -1,22 +1,21 @@
-import java.util.function.UnaryOperator;
+public class gyc extends gvn<cjr, hdf, ghh> {
+   private static final alg a = alg.b("textures/entity/cat/ocelot.png");
 
-public class gyc extends guv {
-   private final gfy<hby> a;
-   private final alg g;
-
-   public gyc(gwh.a $$0, gja $$1) {
-      super($$0);
-      this.g = $$1.a().a((UnaryOperator<String>)($$0x -> "textures/entity/" + $$0x + ".png"));
-      this.a = new ghl($$0.a($$1));
+   public gyc(gwt.a $$0) {
+      super($$0, new ghh($$0.a(gjn.bV)), new ghh($$0.a(gjn.bW)), 0.4F);
    }
 
-   @Override
-   protected gfy<hby> a() {
-      return this.a;
+   public alg a(hdf $$0) {
+      return a;
    }
 
-   @Override
-   protected gqk b() {
-      return this.a.a(this.g);
+   public hdf b() {
+      return new hdf();
+   }
+
+   public void a(cjr $$0, hdf $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.d = $$0.cg();
+      $$1.e = $$0.ch();
    }
 }

@@ -1,36 +1,54 @@
 import com.mojang.serialization.Codec;
+import javax.annotation.Nullable;
 
-public class ekt extends ejm<emi> {
-   public ekt(Codec<emi> $$0) {
+public class ekt extends ejt<emm> {
+   public ekt(Codec<emm> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejo<emi> $$0) {
-      emi $$1 = $$0.f();
-      djz $$2 = $$0.b();
-      iu $$3 = $$0.e();
-      eah $$4 = $$1.a().a($$0.d(), $$3);
-      if ($$4.a($$2, $$3)) {
-         if ($$4.b() instanceof doo) {
-            if (!$$2.v($$3.d())) {
-               return false;
+   public boolean a(ejv<emm> $$0) {
+      emm $$1 = $$0.f();
+      dkg $$2 = $$0.b();
+      azv $$3 = $$0.d();
+      dmm $$4 = $$1.b.b();
+      iv $$5 = a($$2, $$0.e().k().a(jb.a.b, $$2.G_() + 1, $$2.ao()), $$4);
+      if ($$5 == null) {
+         return false;
+      } else {
+         int $$6 = $$1.a().a($$3);
+         int $$7 = $$1.a().a($$3);
+         int $$8 = $$1.a().a($$3);
+         int $$9 = Math.max($$6, Math.max($$7, $$8));
+         boolean $$10 = false;
+
+         for (iv $$11 : iv.a($$5, $$6, $$7, $$8)) {
+            if ($$11.k($$5) > $$9) {
+               break;
             }
 
-            doo.a($$2, $$4, $$3, 2);
-         } else if ($$4.b() instanceof drj) {
-            drj.a($$2, $$3, $$2.C_(), 2);
-         } else {
-            $$2.a($$3, $$4, 2);
+            eao $$12 = $$2.a_($$11);
+            if ($$12.a($$4)) {
+               this.a($$2, $$11, $$1.c);
+               $$10 = true;
+            }
          }
 
-         if ($$1.b()) {
-            $$2.a($$3, $$2.a_($$3).b(), 1);
-         }
-
-         return true;
-      } else {
-         return false;
+         return $$10;
       }
+   }
+
+   @Nullable
+   private static iv a(dji $$0, iv.a $$1, dmm $$2) {
+      while ($$1.v() > $$0.G_() + 1) {
+         eao $$3 = $$0.a_($$1);
+         if ($$3.a($$2)) {
+            return $$1;
+         }
+
+         $$1.c(jb.a);
+      }
+
+      return null;
    }
 }

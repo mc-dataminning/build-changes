@@ -1,16 +1,17 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface epj<P extends epi> {
-   epj<eph> a = a("constant", eph.b);
-   epj<epl> b = a("uniform", epl.a);
-   epj<epg> c = a("biased_to_bottom", epg.a);
-   epj<epm> d = a("very_biased_to_bottom", epm.a);
-   epj<epk> e = a("trapezoid", epk.a);
-   epj<epn> f = a("weighted_list", epn.a);
+public record epj(jf<czg> c, epl d) {
+   public static final Codec<epj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(czg.e.fieldOf("display").forGetter($$0x -> $$0x.c), epl.a.fieldOf("settings").forGetter($$0x -> $$0x.d)).apply($$0, epj::new)
+   );
+   public static final Codec<jf<epj>> b = alc.a(mh.aS, a);
 
-   MapCodec<P> codec();
+   public jf<czg> a() {
+      return this.c;
+   }
 
-   private static <P extends epi> epj<P> a(String $$0, MapCodec<P> $$1) {
-      return jr.a(mf.L, $$0, () -> $$1);
+   public epl b() {
+      return this.d;
    }
 }

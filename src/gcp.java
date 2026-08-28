@@ -1,168 +1,157 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-public class gcp extends fyb {
-   private static final wy a = wy.c("gui.abuseReport.reason.title");
-   private static final wy b = wy.c("gui.abuseReport.reason.description");
-   private static final wy c = wy.c("gui.abuseReport.read_info");
-   private static final int d = 320;
-   private static final int s = 62;
-   private static final int u = 4;
-   @Nullable
-   private final fyb v;
-   @Nullable
-   private gcp.a w;
-   @Nullable
-   glg x;
-   private final Consumer<glg> y;
-   final fvx z = new fvx(this);
-   final glh A;
+public class gcp extends fst {
+   private static final alg a = alg.b("recipe_book/slot_many_craftable");
+   private static final alg b = alg.b("recipe_book/slot_craftable");
+   private static final alg c = alg.b("recipe_book/slot_many_uncraftable");
+   private static final alg d = alg.b("recipe_book/slot_uncraftable");
+   private static final float e = 15.0F;
+   private static final int f = 25;
+   private static final wy m = wy.c("gui.recipebook.moreRecipes");
+   private gcq n = gcq.a;
+   private List<gcp.a> o = List.of();
+   private boolean p;
+   private final gct q;
+   private float r;
 
-   public gcp(@Nullable fyb $$0, @Nullable glg $$1, glh $$2, Consumer<glg> $$3) {
-      super(a);
-      this.v = $$0;
-      this.x = $$1;
-      this.y = $$3;
-      this.A = $$2;
+   public gcp(gct $$0) {
+      super(0, 0, 25, 25, wx.a);
+      this.q = $$0;
    }
 
-   @Override
-   protected void aO_() {
-      this.z.a(a, this.p);
-      fwb $$0 = this.z.c(fwb.d().a(4));
-      this.w = $$0.a(new gcp.a(this.m));
-      gcp.a.a $$1 = x.a(this.x, this.w::a);
-      this.w.a($$1);
-      $$0.a(fwc.b(this.I()));
-      fwb $$2 = this.z.b(fwb.e().a(8));
-      $$2.a(fsj.a(c, fwy.b(this, ayh.m)).a());
-      $$2.a(fsj.a(wx.d, $$0x -> {
-         gcp.a.a $$1x = this.w.p();
-         if ($$1x != null) {
-            this.y.accept($$1x.b());
-         }
-
-         this.m.a(this.v);
-      }).a());
-      this.z.a($$1x -> {
-         fsh var10000 = this.c($$1x);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.z.a();
-      if (this.w != null) {
-         this.w.b(this.n, this.L(), this.z.c());
+   public void a(gcq $$0, boolean $$1, gcn $$2, baz $$3) {
+      this.n = $$0;
+      List<dfi> $$4 = $$0.a($$1 ? gcq.a.b : gcq.a.a);
+      this.o = $$4.stream().map($$1x -> new gcp.a($$1x.a(), $$1x.a($$3))).toList();
+      this.p = a(this.o);
+      List<dfj> $$5 = $$4.stream().map(dfi::a).filter($$2.d()::b).toList();
+      if (!$$5.isEmpty()) {
+         $$5.forEach($$2::a);
+         this.r = 15.0F;
       }
    }
 
-   @Override
-   public void a(frv $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.m(), this.F(), this.E(), this.G(), -16777216);
-      $$0.b(this.m(), this.F(), this.H(), this.I(), -1);
-      $$0.b(this.p, b, this.m() + 4, this.F() + 4, -1);
-      gcp.a.a $$4 = this.w.p();
-      if ($$4 != null) {
-         int $$5 = this.m() + 4 + 16;
-         int $$6 = this.E() - 4;
-         int $$7 = this.F() + 4 + 9 + 2;
-         int $$8 = this.G() - 4;
-         int $$9 = $$6 - $$5;
-         int $$10 = $$8 - $$7;
-         int $$11 = this.p.b($$4.b.c(), $$9);
-         $$0.a(this.p, $$4.b.c(), $$5, $$7 + ($$10 - $$11) / 2, $$9, -1);
-      }
-   }
+   private static boolean a(List<gcp.a> $$0) {
+      Iterator<czk> $$1 = $$0.stream().flatMap($$0x -> $$0x.b().stream()).iterator();
+      if (!$$1.hasNext()) {
+         return true;
+      } else {
+         czk $$2 = $$1.next();
 
-   private int m() {
-      return (this.n - 320) / 2;
-   }
-
-   private int E() {
-      return (this.n + 320) / 2;
-   }
-
-   private int F() {
-      return this.G() - this.I();
-   }
-
-   private int G() {
-      return this.o - this.z.b() - 4;
-   }
-
-   private int H() {
-      return 320;
-   }
-
-   private int I() {
-      return 62;
-   }
-
-   int L() {
-      return this.z.d() - this.I() - 8;
-   }
-
-   @Override
-   public void aL_() {
-      this.m.a(this.v);
-   }
-
-   public class a extends ftf<gcp.a.a> {
-      public a(final foz $$1) {
-         super($$1, gcp.this.n, gcp.this.L(), gcp.this.z.c(), 18);
-
-         for (glg $$2 : glg.values()) {
-            if (!glg.a(gcp.this.A).contains($$2)) {
-               this.b(new gcp.a.a($$2));
+         while ($$1.hasNext()) {
+            czk $$3 = $$1.next();
+            if (!czk.c($$2, $$3)) {
+               return false;
             }
          }
+
+         return true;
+      }
+   }
+
+   public gcq a() {
+      return this.n;
+   }
+
+   @Override
+   public void b(fsh $$0, int $$1, int $$2, float $$3) {
+      alg $$4;
+      if (this.n.a()) {
+         if (this.g()) {
+            $$4 = a;
+         } else {
+            $$4 = b;
+         }
+      } else if (this.g()) {
+         $$4 = c;
+      } else {
+         $$4 = d;
       }
 
-      @Nullable
-      public gcp.a.a a(glg $$0) {
-         return this.aE_().stream().filter($$1 -> $$1.b == $$0).findFirst().orElse(null);
+      boolean $$8 = this.r > 0.0F;
+      if ($$8) {
+         float $$9 = 1.0F + 0.1F * (float)Math.sin((double)(this.r / 15.0F * (float) Math.PI));
+         $$0.c().a();
+         $$0.c().a((float)(this.F() + 8), (float)(this.G() + 12), 0.0F);
+         $$0.c().b($$9, $$9, 1.0F);
+         $$0.c().a((float)(-(this.F() + 8)), (float)(-(this.G() + 12)), 0.0F);
+         this.r -= $$3;
       }
 
-      @Override
-      public int a() {
-         return 320;
+      $$0.a(gqx::H, $$4, this.F(), this.G(), this.g, this.h);
+      czk $$10 = this.e();
+      int $$11 = 4;
+      if (this.g() && this.p) {
+         $$0.a($$10, this.F() + $$11 + 1, this.G() + $$11 + 1, 0, 10);
+         $$11--;
       }
 
-      public void a(@Nullable gcp.a.a $$0) {
-         super.a($$0);
-         gcp.this.x = $$0 != null ? $$0.b() : null;
+      $$0.b($$10, this.F() + $$11, this.G() + $$11);
+      if ($$8) {
+         $$0.c().b();
+      }
+   }
+
+   private boolean g() {
+      return this.o.size() > 1;
+   }
+
+   public boolean b() {
+      return this.o.size() == 1;
+   }
+
+   public dfj c() {
+      int $$0 = this.q.currentIndex() % this.o.size();
+      return this.o.get($$0).a;
+   }
+
+   public czk e() {
+      int $$0 = this.q.currentIndex();
+      int $$1 = this.o.size();
+      int $$2 = $$0 / $$1;
+      int $$3 = $$0 - $$1 * $$2;
+      return this.o.get($$3).a($$2);
+   }
+
+   public List<wy> a(czk $$0) {
+      List<wy> $$1 = new ArrayList<>(fyn.a(fpo.Q(), $$0));
+      if (this.g()) {
+         $$1.add(m);
       }
 
-      public class a extends ftf.a<gcp.a.a> {
-         final glg b;
+      return $$1;
+   }
 
-         public a(final glg $$1) {
-            this.b = $$1;
-         }
+   @Override
+   public void a(fws $$0) {
+      $$0.a(fwr.a, wy.a("narration.recipe", this.e().y()));
+      if (this.g()) {
+         $$0.a(fwr.d, wy.c("narration.button.usage.hovered"), wy.c("narration.recipe.usage.more"));
+      } else {
+         $$0.a(fwr.d, wy.c("narration.button.usage.hovered"));
+      }
+   }
 
-         @Override
-         public void a(frv $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            int $$10 = $$3 + 1;
-            int $$11 = $$2 + ($$5 - 9) / 2 + 1;
-            $$0.b(gcp.this.p, this.b.b(), $$10, $$11, -1);
-         }
+   @Override
+   public int A() {
+      return 25;
+   }
 
-         @Override
-         public wy a() {
-            return wy.a("gui.abuseReport.reason.narration", this.b.b(), this.b.c());
-         }
+   @Override
+   protected boolean g(int $$0) {
+      return $$0 == 0 || $$0 == 1;
+   }
 
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            a.this.a(this);
-            return super.a($$0, $$1, $$2);
-         }
+   static record a(dfj a, List<czk> b) {
 
-         public glg b() {
-            return this.b;
+      public czk a(int $$0) {
+         if (this.b.isEmpty()) {
+            return czk.k;
+         } else {
+            int $$1 = $$0 % this.b.size();
+            return this.b.get($$1);
          }
       }
    }

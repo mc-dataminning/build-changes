@@ -1,54 +1,28 @@
-import com.google.common.collect.Lists;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.util.Collections;
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.Logger;
 
-public class flr extends flo {
-   private static final Logger e = LogUtils.getLogger();
-   public List<flq> a;
-   public int b;
-   public int c;
-   public int d;
-
-   public flr() {
-   }
-
-   public flr(int $$0) {
-      this.a = Collections.emptyList();
-      this.b = 0;
-      this.c = $$0;
-      this.d = -1;
-   }
-
-   public boolean a() {
-      return this.b * this.c >= this.d && this.b > 0 && this.d > 0 && this.c > 0;
-   }
+public class flr extends fmd {
+   private static final Logger b = LogUtils.getLogger();
+   public List<flp> a;
 
    public static flr a(String $$0) {
       flr $$1 = new flr();
-      $$1.a = Lists.newArrayList();
+      $$1.a = new ArrayList<>();
 
       try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("templates").isJsonArray()) {
-            Iterator<JsonElement> $$4 = $$3.get("templates").getAsJsonArray().iterator();
-
-            while ($$4.hasNext()) {
-               $$1.a.add(flq.a($$4.next().getAsJsonObject()));
+         JsonObject $$2 = JsonParser.parseString($$0).getAsJsonObject();
+         if ($$2.get("servers").isJsonArray()) {
+            for (JsonElement $$4 : $$2.get("servers").getAsJsonArray()) {
+               $$1.a.add(flp.a($$4.getAsJsonObject()));
             }
          }
-
-         $$1.b = fnk.a("page", $$3, 0);
-         $$1.c = fnk.a("size", $$3, 0);
-         $$1.d = fnk.a("total", $$3, 0);
-      } catch (Exception var5) {
-         e.error("Could not parse WorldTemplatePaginatedList: {}", var5.getMessage());
+      } catch (Exception var6) {
+         b.error("Could not parse McoServerList: {}", var6.getMessage());
       }
 
       return $$1;

@@ -1,46 +1,22 @@
-public class gvm extends gxn<cpa, hca, gfe> {
-   private static final alg a = alg.b("textures/entity/breeze/breeze.png");
+public abstract class gvm<T extends cpe, S extends hfp, M extends gje<S>> extends gxk<T, S, M> {
+   private static final alg a = alg.b("textures/entity/zombie/zombie.png");
 
-   public gvm(gwh.a $$0) {
-      super($$0, new gfe($$0.a(gjb.K)), 0.5F);
-      this.a(new gzu($$0, this));
-      this.a(new gzt(this));
+   protected gvm(gwt.a $$0, M $$1, M $$2, M $$3, M $$4, M $$5, M $$6) {
+      super($$0, $$1, $$2, 0.5F);
+      this.a(new haw<>(this, $$3, $$4, $$5, $$6, $$0.h()));
    }
 
-   public void a(hca $$0, fjj $$1, gqa $$2, int $$3) {
-      gfe $$4 = this.c();
-      a($$4, $$4.a(), $$4.c());
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   public alg a(hca $$0) {
+   public alg a(S $$0) {
       return a;
    }
 
-   public hca a() {
-      return new hca();
-   }
-
-   public void a(cpa $$0, hca $$1, float $$2) {
+   public void a(T $$0, S $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a.a($$0.a);
-      $$1.b.a($$0.bG);
-      $$1.c.a($$0.b);
-      $$1.d.a($$0.c);
-      $$1.e.a($$0.bH);
-      $$1.f.a($$0.d);
+      $$1.a = $$0.gk();
+      $$1.b = $$0.gx();
    }
 
-   public static gfe a(gfe $$0, gjc... $$1) {
-      $$0.a().k = false;
-      $$0.b().k = false;
-      $$0.c().k = false;
-      $$0.d().k = false;
-
-      for (gjc $$2 : $$1) {
-         $$2.k = true;
-      }
-
-      return $$0;
+   protected boolean b(S $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

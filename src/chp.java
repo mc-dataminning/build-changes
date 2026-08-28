@@ -1,28 +1,42 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
 import java.util.List;
 import java.util.Set;
 
-public class chp extends chm<bxe> {
-   @Override
-   public Set<cgg<?>> a() {
-      return ImmutableSet.of(cgg.i);
+public class chp extends chr<cqv> {
+   private static final int a = 40;
+
+   public chp() {
+      super(40);
+   }
+
+   protected void a(arq $$0, cqv $$1) {
+      alf<djh> $$2 = $$0.aj();
+      iv $$3 = $$1.du();
+      List<je> $$4 = Lists.newArrayList();
+      int $$5 = 4;
+
+      for (int $$6 = -4; $$6 <= 4; $$6++) {
+         for (int $$7 = -2; $$7 <= 2; $$7++) {
+            for (int $$8 = -4; $$8 <= 4; $$8++) {
+               iv $$9 = $$3.b($$6, $$7, $$8);
+               if ($$1.gB().b().a().e().contains($$0.a_($$9).b())) {
+                  $$4.add(je.a($$2, $$9));
+               }
+            }
+         }
+      }
+
+      byj<?> $$10 = $$1.eb();
+      if (!$$4.isEmpty()) {
+         $$10.a(cgl.f, $$4);
+      } else {
+         $$10.b(cgl.f);
+      }
    }
 
    @Override
-   protected void a(arq $$0, bxe $$1) {
-      $$1.ec().a(cgg.i, this.a($$1));
-   }
-
-   private List<bxe> a(bxe $$0) {
-      return ImmutableList.copyOf(this.c($$0).b(this::b));
-   }
-
-   private boolean b(bxe $$0) {
-      return $$0.aq() == bwo.bD && $$0.n_();
-   }
-
-   private cgi c(bxe $$0) {
-      return $$0.ec().c(cgg.h).orElse(cgi.a());
+   public Set<cgl<?>> a() {
+      return ImmutableSet.of(cgl.f);
    }
 }

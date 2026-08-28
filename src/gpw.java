@@ -1,81 +1,114 @@
-import java.util.Set;
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.List;
+import java.util.stream.IntStream;
+import org.joml.Matrix4f;
+import org.joml.Matrix4fStack;
 
-public class gpw implements gqe.a {
-   public static final alg a = gqe.a;
-   public static final alg b = alg.b("translucent");
-   public static final alg c = alg.b("item_entity");
-   public static final alg d = alg.b("particles");
-   public static final alg e = alg.b("weather");
-   public static final alg f = alg.b("clouds");
-   public static final alg g = alg.b("entity_outline");
-   public static final Set<alg> h = Set.of(a);
-   public static final Set<alg> i = Set.of(a, g);
-   public static final Set<alg> j = Set.of(a, b, c, d, e, f);
-   public fiw<fhu> k = fiw.a();
-   @Nullable
-   public fiw<fhu> l;
-   @Nullable
-   public fiw<fhu> m;
-   @Nullable
-   public fiw<fhu> n;
-   @Nullable
-   public fiw<fhu> o;
-   @Nullable
-   public fiw<fhu> p;
-   @Nullable
-   public fiw<fhu> q;
+public class gpw {
+   private static final int a = 6;
+   private final List<alg> b;
+   private final fkb[] c = new fkb[6];
 
-   @Override
-   public void a(alg $$0, fiw<fhu> $$1) {
-      if ($$0.equals(a)) {
-         this.k = $$1;
-      } else if ($$0.equals(b)) {
-         this.l = $$1;
-      } else if ($$0.equals(c)) {
-         this.m = $$1;
-      } else if ($$0.equals(d)) {
-         this.n = $$1;
-      } else if ($$0.equals(e)) {
-         this.o = $$1;
-      } else if ($$0.equals(f)) {
-         this.p = $$1;
-      } else {
-         if (!$$0.equals(g)) {
-            throw new IllegalArgumentException("No target with id " + $$0);
+   public gpw(alg $$0) {
+      this.b = IntStream.range(0, 6).mapToObj($$1 -> $$0.e($$0.a() + "_" + $$1 + ".png")).toList();
+   }
+
+   public void a(fpo $$0, float $$1, float $$2, float $$3) {
+      if (this.c[0] == null) {
+         this.a();
+      }
+
+      Matrix4f $$4 = new Matrix4f().setPerspective(1.4835298F, (float)$$0.aO().k() / (float)$$0.aO().l(), 0.05F, 10.0F);
+      RenderSystem.backupProjectionMatrix();
+      RenderSystem.setProjectionMatrix($$4, fhb.a);
+      Matrix4fStack $$5 = RenderSystem.getModelViewStack();
+      $$5.pushMatrix();
+      $$5.rotationX((float) Math.PI);
+      int $$6 = 2;
+
+      for (int $$7 = 0; $$7 < 4; $$7++) {
+         $$5.pushMatrix();
+         float $$8 = ((float)($$7 % 2) / 2.0F - 0.5F) / 256.0F;
+         float $$9 = ((float)($$7 / 2) / 2.0F - 0.5F) / 256.0F;
+         float $$10 = 0.0F;
+         $$5.translate($$8, $$9, 0.0F);
+         $$5.rotateX($$1 * (float) (Math.PI / 180.0));
+         $$5.rotateY($$2 * (float) (Math.PI / 180.0));
+         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, $$3 / (float)($$7 + 1));
+
+         for (int $$11 = 0; $$11 < 6; $$11++) {
+            this.c[$$11].a();
+            this.c[$$11].a(gqx.I(this.b.get($$11)));
          }
 
-         this.q = $$1;
+         fkb.b();
+         $$5.popMatrix();
+         RenderSystem.colorMask(true, true, true, false);
+      }
+
+      RenderSystem.colorMask(true, true, true, true);
+      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.restoreProjectionMatrix();
+      $$5.popMatrix();
+   }
+
+   private void a() {
+      try (fjv $$0 = new fjv(fjw.i.b() * 4)) {
+         for (int $$1 = 0; $$1 < 6; $$1++) {
+            fju $$2 = new fju($$0, fkd.c.h, fjw.i);
+            if ($$1 == 0) {
+               $$2.a(-1.0F, -1.0F, 1.0F).a(0.0F, 0.0F);
+               $$2.a(-1.0F, 1.0F, 1.0F).a(0.0F, 1.0F);
+               $$2.a(1.0F, 1.0F, 1.0F).a(1.0F, 1.0F);
+               $$2.a(1.0F, -1.0F, 1.0F).a(1.0F, 0.0F);
+            }
+
+            if ($$1 == 1) {
+               $$2.a(1.0F, -1.0F, 1.0F).a(0.0F, 0.0F);
+               $$2.a(1.0F, 1.0F, 1.0F).a(0.0F, 1.0F);
+               $$2.a(1.0F, 1.0F, -1.0F).a(1.0F, 1.0F);
+               $$2.a(1.0F, -1.0F, -1.0F).a(1.0F, 0.0F);
+            }
+
+            if ($$1 == 2) {
+               $$2.a(1.0F, -1.0F, -1.0F).a(0.0F, 0.0F);
+               $$2.a(1.0F, 1.0F, -1.0F).a(0.0F, 1.0F);
+               $$2.a(-1.0F, 1.0F, -1.0F).a(1.0F, 1.0F);
+               $$2.a(-1.0F, -1.0F, -1.0F).a(1.0F, 0.0F);
+            }
+
+            if ($$1 == 3) {
+               $$2.a(-1.0F, -1.0F, -1.0F).a(0.0F, 0.0F);
+               $$2.a(-1.0F, 1.0F, -1.0F).a(0.0F, 1.0F);
+               $$2.a(-1.0F, 1.0F, 1.0F).a(1.0F, 1.0F);
+               $$2.a(-1.0F, -1.0F, 1.0F).a(1.0F, 0.0F);
+            }
+
+            if ($$1 == 4) {
+               $$2.a(-1.0F, -1.0F, -1.0F).a(0.0F, 0.0F);
+               $$2.a(-1.0F, -1.0F, 1.0F).a(0.0F, 1.0F);
+               $$2.a(1.0F, -1.0F, 1.0F).a(1.0F, 1.0F);
+               $$2.a(1.0F, -1.0F, -1.0F).a(1.0F, 0.0F);
+            }
+
+            if ($$1 == 5) {
+               $$2.a(-1.0F, 1.0F, 1.0F).a(0.0F, 0.0F);
+               $$2.a(-1.0F, 1.0F, -1.0F).a(0.0F, 1.0F);
+               $$2.a(1.0F, 1.0F, -1.0F).a(1.0F, 1.0F);
+               $$2.a(1.0F, 1.0F, 1.0F).a(1.0F, 0.0F);
+            }
+
+            this.c[$$1] = new fkb(fhm.b);
+            this.c[$$1].a();
+            this.c[$$1].a($$2.b());
+            fkb.b();
+         }
       }
    }
 
-   @Nullable
-   @Override
-   public fiw<fhu> a(alg $$0) {
-      if ($$0.equals(a)) {
-         return this.k;
-      } else if ($$0.equals(b)) {
-         return this.l;
-      } else if ($$0.equals(c)) {
-         return this.m;
-      } else if ($$0.equals(d)) {
-         return this.n;
-      } else if ($$0.equals(e)) {
-         return this.o;
-      } else if ($$0.equals(f)) {
-         return this.p;
-      } else {
-         return $$0.equals(g) ? this.q : null;
+   public void a(hjm $$0) {
+      for (alg $$1 : this.b) {
+         $$0.a($$1);
       }
-   }
-
-   public void a() {
-      this.k = fiw.a();
-      this.l = null;
-      this.m = null;
-      this.n = null;
-      this.o = null;
-      this.p = null;
-      this.q = null;
    }
 }

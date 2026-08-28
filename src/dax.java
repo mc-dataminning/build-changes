@@ -1,43 +1,18 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
-
-public class dax implements cuj {
-   public static final Codec<je<dax>> a = mf.h.r();
-   public static final yw<wj, je<dax>> b = yu.b(mg.ae);
-   private final String c;
-   private final List<bvj> d;
-   private cum e = cuo.g;
-
-   public dax(String $$0, bvj... $$1) {
-      this.c = $$0;
-      this.d = List.of($$1);
-   }
-
-   public dax a(cuk... $$0) {
-      this.e = cuo.e.a($$0);
-      return this;
+public class dax extends cxo {
+   public dax(czg.a $$0) {
+      super($$0);
    }
 
    @Override
-   public cum k() {
-      return this.e;
+   public czk m() {
+      czk $$0 = super.m();
+      $$0.b(kk.R, new dbg(dbh.C));
+      return $$0;
    }
 
-   public List<bvj> a() {
-      return this.d;
-   }
-
-   public String b() {
-      return this.c;
-   }
-
-   public boolean c() {
-      for (bvj $$0 : this.d) {
-         if ($$0.c().a().a()) {
-            return true;
-         }
-      }
-
-      return false;
+   @Override
+   public wy a(czk $$0) {
+      dbg $$1 = $$0.a(kk.R);
+      return $$1 != null ? $$1.a(this.n + ".effect.") : super.a($$0);
    }
 }

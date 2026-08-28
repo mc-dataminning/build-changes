@@ -1,61 +1,505 @@
-import java.util.function.Consumer;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.bytes.ByteArrayList;
+import it.unimi.dsi.fastutil.bytes.ByteList;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.IntBuffer;
+import java.util.List;
+import java.util.function.Function;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
+import javax.annotation.Nullable;
+import org.lwjgl.system.MemoryUtil;
+import org.slf4j.Logger;
 
-public class fwc implements fvz {
-   private int a;
-   private int b;
-   private final int c;
-   private final int d;
+public class fwc implements fhr {
+   static final Logger b = LogUtils.getLogger();
+   private static final int c = 16;
+   private static final int d = 2;
+   private static final int e = 32;
+   private static final int f = 64;
+   private static final int g = 96;
+   private static final int h = 128;
+   private final fvk<fwc.d> i;
 
-   public fwc(int $$0, int $$1) {
-      this(0, 0, $$0, $$1);
+   fwc(fvk<fwc.d> $$0) {
+      this.i = $$0;
    }
 
-   public fwc(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   public static fwc a(int $$0) {
-      return new fwc($$0, 0);
-   }
-
-   public static fwc b(int $$0) {
-      return new fwc(0, $$0);
+   @Nullable
+   @Override
+   public fhq a(int $$0) {
+      return this.i.a($$0);
    }
 
    @Override
-   public void j(int $$0) {
-      this.a = $$0;
+   public IntSet a() {
+      return this.i.b();
    }
 
-   @Override
-   public void k(int $$0) {
-      this.b = $$0;
+   @VisibleForTesting
+   static void a(IntBuffer $$0, int $$1, int $$2, int $$3) {
+      int $$4 = 32 - $$2 - 1;
+      int $$5 = 32 - $$3 - 1;
+
+      for (int $$6 = $$4; $$6 >= $$5; $$6--) {
+         if ($$6 < 32 && $$6 >= 0) {
+            boolean $$7 = ($$1 >> $$6 & 1) != 0;
+            $$0.put($$7 ? -1 : 0);
+         } else {
+            $$0.put(0);
+         }
+      }
    }
 
-   @Override
-   public int F() {
-      return this.a;
+   static void a(IntBuffer $$0, fwc.f $$1, int $$2, int $$3) {
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         int $$5 = $$1.a($$4);
+         a($$0, $$5, $$2, $$3);
+      }
    }
 
-   @Override
-   public int G() {
-      return this.b;
+   @VisibleForTesting
+   static void a(InputStream $$0, fwc.h $$1) throws IOException {
+      int $$2 = 0;
+      ByteList $$3 = new ByteArrayList(128);
+
+      while (true) {
+         boolean $$4 = a($$0, $$3, 58);
+         int $$5 = $$3.size();
+         if ($$5 == 0 && !$$4) {
+            return;
+         }
+
+         if (!$$4 || $$5 != 4 && $$5 != 5 && $$5 != 6) {
+            throw new IllegalArgumentException("Invalid entry at line " + $$2 + ": expected 4, 5 or 6 hex digits followed by a colon");
+         }
+
+         int $$6 = 0;
+
+         for (int $$7 = 0; $$7 < $$5; $$7++) {
+            $$6 = $$6 << 4 | a($$2, $$3.getByte($$7));
+         }
+
+         $$3.clear();
+         a($$0, $$3, 10);
+         int $$8 = $$3.size();
+
+         fwc.f $$9 = switch ($$8) {
+            case 32 -> fwc.a.a($$2, $$3);
+            case 64 -> fwc.i.a($$2, $$3);
+            case 96 -> fwc.e.b($$2, $$3);
+            case 128 -> fwc.e.a($$2, $$3);
+            default -> throw new IllegalArgumentException(
+            "Invalid entry at line " + $$2 + ": expected hex number describing (8,16,24,32) x 16 bitmap, followed by a new line"
+         );
+         };
+         $$1.accept($$6, $$9);
+         $$2++;
+         $$3.clear();
+      }
    }
 
-   @Override
-   public int A() {
-      return this.c;
+   static int a(int $$0, ByteList $$1, int $$2) {
+      return a($$0, $$1.getByte($$2));
    }
 
-   @Override
-   public int y() {
-      return this.d;
+   private static int a(int $$0, byte $$1) {
+      return switch ($$1) {
+         case 48 -> 0;
+         case 49 -> 1;
+         case 50 -> 2;
+         case 51 -> 3;
+         case 52 -> 4;
+         case 53 -> 5;
+         case 54 -> 6;
+         case 55 -> 7;
+         case 56 -> 8;
+         case 57 -> 9;
+         default -> throw new IllegalArgumentException("Invalid entry at line " + $$0 + ": expected hex digit, got " + (char)$$1);
+         case 65 -> 10;
+         case 66 -> 11;
+         case 67 -> 12;
+         case 68 -> 13;
+         case 69 -> 14;
+         case 70 -> 15;
+      };
    }
 
-   @Override
-   public void a(Consumer<fsh> $$0) {
+   private static boolean a(InputStream $$0, ByteList $$1, int $$2) throws IOException {
+      while (true) {
+         int $$3 = $$0.read();
+         if ($$3 == -1) {
+            return false;
+         }
+
+         if ($$3 == $$2) {
+            return true;
+         }
+
+         $$1.add((byte)$$3);
+      }
+   }
+
+   static record a(byte[] a) implements fwc.f {
+      @Override
+      public int a(int $$0) {
+         return this.a[$$0] << 24;
+      }
+
+      static fwc.f a(int $$0, ByteList $$1) {
+         byte[] $$2 = new byte[16];
+         int $$3 = 0;
+
+         for (int $$4 = 0; $$4 < 16; $$4++) {
+            int $$5 = fwc.a($$0, $$1, $$3++);
+            int $$6 = fwc.a($$0, $$1, $$3++);
+            byte $$7 = (byte)($$5 << 4 | $$6);
+            $$2[$$4] = $$7;
+         }
+
+         return new fwc.a($$2);
+      }
+
+      @Override
+      public int a() {
+         return 8;
+      }
+
+      public byte[] b() {
+         return this.a;
+      }
+   }
+
+   public static class b implements fvy {
+      public static final MapCodec<fwc.b> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(alg.a.fieldOf("hex_file").forGetter($$0x -> $$0x.c), fwc.g.a.listOf().fieldOf("size_overrides").forGetter($$0x -> $$0x.d))
+               .apply($$0, fwc.b::new)
+      );
+      private final alg c;
+      private final List<fwc.g> d;
+
+      private b(alg $$0, List<fwc.g> $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
+
+      @Override
+      public fvz a() {
+         return fvz.d;
+      }
+
+      @Override
+      public Either<fvy.b, fvy.c> b() {
+         return Either.left(this::a);
+      }
+
+      private fhr a(avd $$0) throws IOException {
+         fwc var3;
+         try (InputStream $$1 = $$0.open(this.c)) {
+            var3 = this.a($$1);
+         }
+
+         return var3;
+      }
+
+      private fwc a(InputStream $$0) throws IOException {
+         fvk<fwc.f> $$1 = new fvk<>(fwc.f[]::new, fwc.f[][]::new);
+         fwc.h $$2 = $$1::a;
+
+         fwc var17;
+         try (ZipInputStream $$3 = new ZipInputStream($$0)) {
+            ZipEntry $$4;
+            while (($$4 = $$3.getNextEntry()) != null) {
+               String $$5 = $$4.getName();
+               if ($$5.endsWith(".hex")) {
+                  fwc.b.info("Found {}, loading", $$5);
+                  fwc.a(new ayv($$3), $$2);
+               }
+            }
+
+            fvk<fwc.d> $$6 = new fvk<>(fwc.d[]::new, fwc.d[][]::new);
+
+            for (fwc.g $$7 : this.d) {
+               int $$8 = $$7.b;
+               int $$9 = $$7.c;
+               fwc.c $$10 = $$7.d;
+
+               for (int $$11 = $$8; $$11 <= $$9; $$11++) {
+                  fwc.f $$12 = $$1.b($$11);
+                  if ($$12 != null) {
+                     $$6.a($$11, new fwc.d($$12, $$10.c, $$10.d));
+                  }
+               }
+            }
+
+            $$1.a(($$1x, $$2x) -> {
+               int $$3x = $$2x.d();
+               int $$4x = fwc.c.a($$3x);
+               int $$5 = fwc.c.b($$3x);
+               $$6.a($$1x, new fwc.d($$2x, $$4x, $$5));
+            });
+            var17 = new fwc($$6);
+         }
+
+         return var17;
+      }
+   }
+
+   public static record c(int c, int d) {
+      public static final MapCodec<fwc.c> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(Codec.INT.fieldOf("left").forGetter(fwc.c::b), Codec.INT.fieldOf("right").forGetter(fwc.c::c)).apply($$0, fwc.c::new)
+      );
+      public static final Codec<fwc.c> b = a.codec();
+
+      public int a() {
+         return a(this.c, this.d);
+      }
+
+      public static int a(int $$0, int $$1) {
+         return ($$0 & 0xFF) << 8 | $$1 & 0xFF;
+      }
+
+      public static int a(int $$0) {
+         return (byte)($$0 >> 8);
+      }
+
+      public static int b(int $$0) {
+         return (byte)$$0;
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public int c() {
+         return this.d;
+      }
+   }
+
+   static record d(fwc.f a, int b, int c) implements fhq {
+
+      public int c() {
+         return this.c - this.b + 1;
+      }
+
+      @Override
+      public float getAdvance() {
+         return (float)(this.c() / 2 + 1);
+      }
+
+      @Override
+      public float b() {
+         return 0.5F;
+      }
+
+      @Override
+      public float a() {
+         return 0.5F;
+      }
+
+      @Override
+      public fvr bake(Function<fhs, fvr> $$0) {
+         return $$0.apply(new fhs() {
+            @Override
+            public float d() {
+               return 2.0F;
+            }
+
+            @Override
+            public int a() {
+               return d.this.c();
+            }
+
+            @Override
+            public int b() {
+               return 16;
+            }
+
+            @Override
+            public void a(int $$0, int $$1, fjr $$2) {
+               IntBuffer $$3 = MemoryUtil.memAllocInt(d.this.c() * 16);
+               fwc.a($$3, d.this.a, d.this.b, d.this.c);
+               $$3.rewind();
+               $$2.a($$3, fiu.a.a, 0, $$0, $$1, d.this.c(), 16);
+               MemoryUtil.memFree($$3);
+            }
+
+            @Override
+            public boolean c() {
+               return true;
+            }
+         });
+      }
+
+      public fwc.f d() {
+         return this.a;
+      }
+
+      public int e() {
+         return this.b;
+      }
+
+      public int f() {
+         return this.c;
+      }
+   }
+
+   static record e(int[] a, int b) implements fwc.f {
+      private static final int c = 24;
+
+      @Override
+      public int a(int $$0) {
+         return this.a[$$0];
+      }
+
+      static fwc.f b(int $$0, ByteList $$1) {
+         int[] $$2 = new int[16];
+         int $$3 = 0;
+         int $$4 = 0;
+
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            int $$6 = fwc.a($$0, $$1, $$4++);
+            int $$7 = fwc.a($$0, $$1, $$4++);
+            int $$8 = fwc.a($$0, $$1, $$4++);
+            int $$9 = fwc.a($$0, $$1, $$4++);
+            int $$10 = fwc.a($$0, $$1, $$4++);
+            int $$11 = fwc.a($$0, $$1, $$4++);
+            int $$12 = $$6 << 20 | $$7 << 16 | $$8 << 12 | $$9 << 8 | $$10 << 4 | $$11;
+            $$2[$$5] = $$12 << 8;
+            $$3 |= $$12;
+         }
+
+         return new fwc.e($$2, 24);
+      }
+
+      public static fwc.f a(int $$0, ByteList $$1) {
+         int[] $$2 = new int[16];
+         int $$3 = 0;
+         int $$4 = 0;
+
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            int $$6 = fwc.a($$0, $$1, $$4++);
+            int $$7 = fwc.a($$0, $$1, $$4++);
+            int $$8 = fwc.a($$0, $$1, $$4++);
+            int $$9 = fwc.a($$0, $$1, $$4++);
+            int $$10 = fwc.a($$0, $$1, $$4++);
+            int $$11 = fwc.a($$0, $$1, $$4++);
+            int $$12 = fwc.a($$0, $$1, $$4++);
+            int $$13 = fwc.a($$0, $$1, $$4++);
+            int $$14 = $$6 << 28 | $$7 << 24 | $$8 << 20 | $$9 << 16 | $$10 << 12 | $$11 << 8 | $$12 << 4 | $$13;
+            $$2[$$5] = $$14;
+            $$3 |= $$14;
+         }
+
+         return new fwc.e($$2, 32);
+      }
+
+      public int[] b() {
+         return this.a;
+      }
+
+      @Override
+      public int a() {
+         return this.b;
+      }
+   }
+
+   public interface f {
+      int a(int var1);
+
+      int a();
+
+      default int c() {
+         int $$0 = 0;
+
+         for (int $$1 = 0; $$1 < 16; $$1++) {
+            $$0 |= this.a($$1);
+         }
+
+         return $$0;
+      }
+
+      default int d() {
+         int $$0 = this.c();
+         int $$1 = this.a();
+         int $$2;
+         int $$3;
+         if ($$0 == 0) {
+            $$2 = 0;
+            $$3 = $$1;
+         } else {
+            $$2 = Integer.numberOfLeadingZeros($$0);
+            $$3 = 32 - Integer.numberOfTrailingZeros($$0) - 1;
+         }
+
+         return fwc.c.a($$2, $$3);
+      }
+   }
+
+   static record g(int b, int c, fwc.c d) {
+      private static final Codec<fwc.g> e = RecordCodecBuilder.create(
+         $$0 -> $$0.group(ayu.B.fieldOf("from").forGetter(fwc.g::a), ayu.B.fieldOf("to").forGetter(fwc.g::b), fwc.c.a.forGetter(fwc.g::c))
+               .apply($$0, fwc.g::new)
+      );
+      public static final Codec<fwc.g> a = e.validate(
+         $$0 -> $$0.b >= $$0.c ? DataResult.error(() -> "Invalid range: [" + $$0.b + ";" + $$0.c + "]") : DataResult.success($$0)
+      );
+
+      public int a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
+
+      public fwc.c c() {
+         return this.d;
+      }
+   }
+
+   @FunctionalInterface
+   public interface h {
+      void accept(int var1, fwc.f var2);
+   }
+
+   static record i(short[] a) implements fwc.f {
+      @Override
+      public int a(int $$0) {
+         return this.a[$$0] << 16;
+      }
+
+      static fwc.f a(int $$0, ByteList $$1) {
+         short[] $$2 = new short[16];
+         int $$3 = 0;
+
+         for (int $$4 = 0; $$4 < 16; $$4++) {
+            int $$5 = fwc.a($$0, $$1, $$3++);
+            int $$6 = fwc.a($$0, $$1, $$3++);
+            int $$7 = fwc.a($$0, $$1, $$3++);
+            int $$8 = fwc.a($$0, $$1, $$3++);
+            short $$9 = (short)($$5 << 12 | $$6 << 8 | $$7 << 4 | $$8);
+            $$2[$$4] = $$9;
+         }
+
+         return new fwc.i($$2);
+      }
+
+      @Override
+      public int a() {
+         return 16;
+      }
+
+      public short[] b() {
+         return this.a;
+      }
    }
 }

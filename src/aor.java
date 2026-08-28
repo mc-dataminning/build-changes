@@ -3,48 +3,48 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 
 public class aor {
-   public static void a(CommandDispatcher<ei> $$0) {
+   public static void a(CommandDispatcher<ej> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("rotate").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("rotate").requires($$0x -> $$0x.c(2)))
             .then(
-               ((RequiredArgumentBuilder)ej.a("target", ev.a())
-                     .then(ej.a("rotation", gj.a()).executes($$0x -> a((ei)$$0x.getSource(), ev.a($$0x, "target"), gj.a($$0x, "rotation")))))
+               ((RequiredArgumentBuilder)ek.a("target", ew.a())
+                     .then(ek.a("rotation", gk.a()).executes($$0x -> a((ej)$$0x.getSource(), ew.a($$0x, "target"), gk.a($$0x, "rotation")))))
                   .then(
-                     ((LiteralArgumentBuilder)ej.a("facing")
+                     ((LiteralArgumentBuilder)ek.a("facing")
                            .then(
-                              ej.a("entity")
+                              ek.a("entity")
                                  .then(
-                                    ((RequiredArgumentBuilder)ej.a("facingEntity", ev.a())
-                                          .executes($$0x -> a((ei)$$0x.getSource(), ev.a($$0x, "target"), new aoa.a(ev.a($$0x, "facingEntity"), eu.a.a))))
+                                    ((RequiredArgumentBuilder)ek.a("facingEntity", ew.a())
+                                          .executes($$0x -> a((ej)$$0x.getSource(), ew.a($$0x, "target"), new aoa.a(ew.a($$0x, "facingEntity"), ev.a.a))))
                                        .then(
-                                          ej.a("facingAnchor", eu.a())
+                                          ek.a("facingAnchor", ev.a())
                                              .executes(
                                                 $$0x -> a(
-                                                      (ei)$$0x.getSource(),
-                                                      ev.a($$0x, "target"),
-                                                      new aoa.a(ev.a($$0x, "facingEntity"), eu.a($$0x, "facingAnchor"))
+                                                      (ej)$$0x.getSource(),
+                                                      ew.a($$0x, "target"),
+                                                      new aoa.a(ew.a($$0x, "facingEntity"), ev.a($$0x, "facingAnchor"))
                                                    )
                                              )
                                        )
                                  )
                            ))
                         .then(
-                           ej.a("facingLocation", gm.a())
-                              .executes($$0x -> a((ei)$$0x.getSource(), ev.a($$0x, "target"), new aoa.b(gm.a($$0x, "facingLocation"))))
+                           ek.a("facingLocation", gn.a())
+                              .executes($$0x -> a((ej)$$0x.getSource(), ew.a($$0x, "target"), new aoa.b(gn.a($$0x, "facingLocation"))))
                         )
                   )
             )
       );
    }
 
-   private static int a(ei $$0, bwf $$1, gh $$2) {
-      fep $$3 = $$2.b($$0);
-      $$1.a($$3.j, $$3.i);
+   private static int a(ej $$0, bwi $$1, gi $$2) {
+      few $$3 = $$2.b($$0);
+      $$1.a($$3.k, $$3.j);
       $$0.a(() -> wy.a("commands.rotate.success", $$1.m_()), true);
       return 1;
    }
 
-   private static int a(ei $$0, bwf $$1, aoa $$2) {
+   private static int a(ej $$0, bwi $$1, aoa $$2) {
       $$2.perform($$0, $$1);
       $$0.a(() -> wy.a("commands.rotate.success", $$1.m_()), true);
       return 1;

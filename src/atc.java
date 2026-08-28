@@ -6,9 +6,9 @@ import java.util.function.Consumer;
 public class atc implements ash {
    public static final ash.a a = new ash.a("synchronize_registries");
    private final List<auj> b;
-   private final jl<alp> c;
+   private final jm<alp> c;
 
-   public atc(List<auj> $$0, jl<alp> $$1) {
+   public atc(List<auj> $$0, jm<alp> $$1) {
       this.b = $$0;
       this.c = $$1;
    }
@@ -20,7 +20,7 @@ public class atc implements ash {
 
    private void a(Consumer<zf<?>> $$0, Set<auj> $$1) {
       DynamicOps<uw> $$2 = this.c.a().a(un.a);
-      jv.a($$2, this.c.c(alp.b), $$1, ($$1x, $$2x) -> $$0.accept(new abe($$1x, $$2x)));
+      jw.a($$2, this.c.c(alp.b), $$1, ($$1x, $$2x) -> $$0.accept(new abe($$1x, $$2x)));
       $$0.accept(new zw(axt.a(this.c)));
    }
 

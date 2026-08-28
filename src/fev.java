@@ -1,30 +1,26 @@
-import java.util.Objects;
+public abstract class fev {
+   protected final fex a;
 
-public interface fev {
-   static fev a() {
-      return ffa.a;
+   protected fev(fex $$0) {
+      this.a = $$0;
    }
 
-   static fev a(bwf $$0) {
-      Objects.requireNonNull($$0);
-
-      return (fev)(switch ($$0) {
-         case ctp $$1 -> ctp.b($$1.dV()) ? new ffe($$1, false) : new ffa($$0, false);
-         default -> new ffa($$0, false);
-      });
+   public double a(bwi $$0) {
+      double $$1 = this.a.d - $$0.dz();
+      double $$2 = this.a.e - $$0.dB();
+      double $$3 = this.a.f - $$0.dF();
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
    }
 
-   static fev a(bwf $$0, boolean $$1) {
-      return new ffa($$0, $$1);
+   public abstract fev.a d();
+
+   public fex g() {
+      return this.a;
    }
 
-   boolean b();
-
-   boolean a(ffk var1, iu var2, boolean var3);
-
-   boolean a(cyz var1);
-
-   boolean a(ewo var1, ewo var2);
-
-   ffk a(eah var1, dik var2, iu var3);
+   public static enum a {
+      a,
+      b,
+      c;
+   }
 }

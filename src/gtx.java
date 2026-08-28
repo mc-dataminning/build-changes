@@ -1,66 +1,71 @@
-import java.util.HashMap;
+import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import org.joml.Matrix4f;
+import javax.annotation.Nullable;
 
-public class gtx {
-   private static final int a = axw.a(255, 255, 100, 255);
-   private static final int b = axw.a(255, 100, 255, 255);
-   private static final int c = axw.a(255, 0, 255, 0);
-   private static final int d = axw.a(255, 255, 165, 0);
-   private static final int e = axw.a(255, 255, 0, 0);
-   private static final int f = 20;
-   private static final float g = (float) (Math.PI / 10);
-   private final foz h;
-   private final Map<Integer, aah.a> i = new HashMap<>();
+class gtx {
+   private final Map<iv, dxm> a;
+   @Nullable
+   private final List<edd<eao>> b;
+   private final boolean c;
+   private final ecv d;
 
-   public gtx(foz $$0) {
-      this.h = $$0;
-   }
+   gtx(ecv $$0) {
+      this.d = $$0;
+      this.c = $$0.H().ak();
+      this.a = ImmutableMap.copyOf($$0.I());
+      if ($$0 instanceof ecr) {
+         this.b = null;
+      } else {
+         ecw[] $$1 = $$0.d();
+         this.b = new ArrayList<>($$1.length);
 
-   public void a(fjj $$0, gqa $$1, double $$2, double $$3, double $$4) {
-      gox $$5 = this.h.t;
-      $$5.dV().a(bwo.r, $$5.cR().g(100.0), $$0x -> true).forEach($$6 -> {
-         Optional<aah.a> $$7 = Optional.ofNullable(this.i.get($$6.ar()));
-         $$7.map(aah.a::d).map($$1xx -> $$5.dV().a($$1xx)).map($$0xx -> $$0xx.p(this.h.av().a(true))).ifPresent($$6x -> {
-            a($$0, $$1, $$2, $$3, $$4, $$6.dt(), $$6x, b);
-            feq $$7x = $$6x.b(0.0, 0.01F, 0.0);
-            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(gqk.a(2.0)), $$7x, 4.0F, c);
-            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(gqk.a(2.0)), $$7x, 8.0F, d);
-            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(gqk.a(2.0)), $$7x, 24.0F, e);
-         });
-         $$7.map(aah.a::e).ifPresent($$6x -> {
-            a($$0, $$1, $$2, $$3, $$4, $$6.dt(), $$6x.b(), a);
-            guc.a($$0, $$1, fel.a(feq.a($$6x)).d(-$$2, -$$3, -$$4), 1.0F, 0.0F, 0.0F, 1.0F);
-         });
-      });
-   }
-
-   private static void a(fjj $$0, gqa $$1, double $$2, double $$3, double $$4, feq $$5, feq $$6, int $$7) {
-      fjn $$8 = $$1.getBuffer(gqk.a(2.0));
-      $$8.a($$0.c(), (float)($$5.d - $$2), (float)($$5.e - $$3), (float)($$5.f - $$4)).a($$7);
-      $$8.a($$0.c(), (float)($$6.d - $$2), (float)($$6.e - $$3), (float)($$6.f - $$4)).a($$7);
-   }
-
-   private static void a(Matrix4f $$0, double $$1, double $$2, double $$3, fjn $$4, feq $$5, float $$6, int $$7) {
-      for (int $$8 = 0; $$8 < 20; $$8++) {
-         a($$8, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         for (ecw $$2 : $$1) {
+            this.b.add($$2.c() ? null : $$2.h().d());
+         }
       }
-
-      a(0, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   private static void a(int $$0, Matrix4f $$1, double $$2, double $$3, double $$4, fjn $$5, feq $$6, float $$7, int $$8) {
-      float $$9 = (float)$$0 * (float) (Math.PI / 10);
-      feq $$10 = $$6.b((double)$$7 * Math.cos((double)$$9), 0.0, (double)$$7 * Math.sin((double)$$9));
-      $$5.a($$1, (float)($$10.d - $$2), (float)($$10.e - $$3), (float)($$10.f - $$4)).a($$8);
+   @Nullable
+   public dxm a(iv $$0) {
+      return this.a.get($$0);
    }
 
-   public void a() {
-      this.i.clear();
-   }
+   public eao b(iv $$0) {
+      int $$1 = $$0.u();
+      int $$2 = $$0.v();
+      int $$3 = $$0.w();
+      if (this.c) {
+         eao $$4 = null;
+         if ($$2 == 60) {
+            $$4 = dmo.iy.m();
+         }
 
-   public void a(aah.a $$0) {
-      this.i.put($$0.c(), $$0);
+         if ($$2 == 70) {
+            $$4 = ege.a($$1, $$3);
+         }
+
+         return $$4 == null ? dmo.a.m() : $$4;
+      } else if (this.b == null) {
+         return dmo.a.m();
+      } else {
+         try {
+            int $$5 = this.d.f($$2);
+            if ($$5 >= 0 && $$5 < this.b.size()) {
+               edd<eao> $$6 = this.b.get($$5);
+               if ($$6 != null) {
+                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
+               }
+            }
+
+            return dmo.a.m();
+         } catch (Throwable var8) {
+            p $$8 = p.a(var8, "Getting block state");
+            q $$9 = $$8.a("Block being got");
+            $$9.a("Location", () -> q.a(this.d, $$1, $$2, $$3));
+            throw new aa($$8);
+         }
+      }
    }
 }

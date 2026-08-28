@@ -1,21 +1,19 @@
-class bvb extends bvh {
-   protected bvb(bvi $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+
+public enum bvb implements bak {
+   a("default"),
+   b("fall_variants"),
+   c("intentional_game_design");
+
+   public static final Codec<bvb> d = bak.a(bvb::values);
+   private final String e;
+
+   private bvb(final String $$0) {
+      this.e = $$0;
    }
 
    @Override
-   public boolean a(arq $$0, bxe $$1, int $$2) {
-      return $$1.fw() > 0.0F;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public void a(bxe $$0, int $$1) {
-      super.a($$0, $$1);
-      $$0.E(Math.max($$0.fw(), (float)(4 * (1 + $$1))));
+   public String c() {
+      return this.e;
    }
 }

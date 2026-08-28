@@ -1,73 +1,31 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Pair;
-import java.util.Map;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-
-public class cyt extends cyz {
-   protected static final Map<dmf, Pair<Predicate<dcy>, Consumer<dcy>>> a = Maps.newHashMap(
-      ImmutableMap.of(
-         dmh.i,
-         Pair.of(cyt::b, a(dmh.cN.m())),
-         dmh.lk,
-         Pair.of(cyt::b, a(dmh.cN.m())),
-         dmh.j,
-         Pair.of(cyt::b, a(dmh.cN.m())),
-         dmh.k,
-         Pair.of(cyt::b, a(dmh.j.m())),
-         dmh.tr,
-         Pair.of((Predicate<dcy>)$$0 -> true, a(dmh.j.m(), czh.eg))
-      )
-   );
-
-   public cyt(dar $$0, float $$1, float $$2, cyz.a $$3) {
-      super($$3.c($$0, $$1, $$2));
+public class cyt extends czg {
+   public cyt(czg.a $$0) {
+      super($$0);
    }
 
    @Override
-   public bud a(dcy $$0) {
-      dja $$1 = $$0.q();
-      iu $$2 = $$0.a();
-      Pair<Predicate<dcy>, Consumer<dcy>> $$3 = a.get($$1.a_($$2).b());
-      if ($$3 == null) {
-         return bud.e;
-      } else {
-         Predicate<dcy> $$4 = (Predicate<dcy>)$$3.getFirst();
-         Consumer<dcy> $$5 = (Consumer<dcy>)$$3.getSecond();
-         if ($$4.test($$0)) {
-            crc $$6 = $$0.o();
-            $$1.a($$6, $$2, awn.mP, awo.e, 1.0F, 1.0F);
-            if (!$$1.C) {
-               $$5.accept($$0);
-               if ($$6 != null) {
-                  $$0.n().a(1, $$6, bxe.d($$0.p()));
-               }
-            }
-
-            return bud.a;
-         } else {
-            return bud.e;
+   public bug a(djh $$0, crj $$1, buf $$2) {
+      czk $$3 = $$1.b($$2);
+      if ($$1.ck != null) {
+         if (!$$0.C) {
+            int $$4 = $$1.ck.a($$3);
+            $$3.a($$4, $$1, bxj.d($$2));
          }
+
+         $$0.a(null, $$1.dz(), $$1.dB(), $$1.dF(), awn.jA, awo.g, 1.0F, 0.4F / ($$0.C_().i() * 0.4F + 0.8F));
+         $$1.a(efo.C);
+      } else {
+         $$0.a(null, $$1.dz(), $$1.dB(), $$1.dF(), awn.jC, awo.g, 0.5F, 0.4F / ($$0.C_().i() * 0.4F + 0.8F));
+         if ($$0 instanceof arq $$5) {
+            int $$6 = (int)(dfz.b($$5, $$3, $$1) * 20.0F);
+            int $$7 = dfz.a($$5, $$3, $$1);
+            cse.a(new csa($$1, $$0, $$7, $$6), $$5, $$3);
+         }
+
+         $$1.b(awx.c.b(this));
+         $$1.a(efo.D);
       }
-   }
 
-   public static Consumer<dcy> a(eah $$0) {
-      return $$1 -> {
-         $$1.q().a($$1.a(), $$0, 11);
-         $$1.q().a(efh.c, $$1.a(), efh.a.a($$1.o(), $$0));
-      };
-   }
-
-   public static Consumer<dcy> a(eah $$0, diz $$1) {
-      return $$2 -> {
-         $$2.q().a($$2.a(), $$0, 11);
-         $$2.q().a(efh.c, $$2.a(), efh.a.a($$2.o(), $$0));
-         dmf.a($$2.q(), $$2.a(), $$2.k(), new czd($$1));
-      };
-   }
-
-   public static boolean b(dcy $$0) {
-      return $$0.k() != ja.a && $$0.q().a_($$0.a().d()).l();
+      return bug.a;
    }
 }

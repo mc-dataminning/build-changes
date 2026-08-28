@@ -1,27 +1,30 @@
-public class gzc extends gxn<cos, hev, gij> {
-   private static final alg a = alg.b("textures/entity/illager/vex.png");
-   private static final alg j = alg.b("textures/entity/illager/vex_charging.png");
+public class gzc<T extends ckd> extends gvn<T, hey, gio> {
+   private static final alg a = alg.b("textures/entity/squid/squid.png");
 
-   public gzc(gwh.a $$0) {
-      super($$0, new gij($$0.a(gjb.dI)), 0.3F);
-      this.a(new han<>(this));
+   public gzc(gwt.a $$0, gio $$1, gio $$2) {
+      super($$0, $$1, $$2, 0.7F);
    }
 
-   protected int a(cos $$0, iu $$1) {
-      return 15;
+   public alg a(hey $$0) {
+      return a;
    }
 
-   public alg a(hev $$0) {
-      return $$0.a ? j : a;
+   public hey b() {
+      return new hey();
    }
 
-   public hev b() {
-      return new hev();
-   }
-
-   public void a(cos $$0, hev $$1, float $$2) {
+   public void a(T $$0, hey $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      hbr.a($$0, $$1, this.h);
-      $$1.a = $$0.t();
+      $$1.a = azm.h($$2, $$0.bN, $$0.bM);
+      $$1.b = azm.h($$2, $$0.bH, $$0.bG);
+      $$1.c = azm.h($$2, $$0.bJ, $$0.bI);
+   }
+
+   protected void a(hey $$0, fjy $$1, float $$2, float $$3) {
+      $$1.a(0.0F, $$0.aj ? 0.25F : 0.5F, 0.0F);
+      $$1.a(a.d.rotationDegrees(180.0F - $$2));
+      $$1.a(a.b.rotationDegrees($$0.b));
+      $$1.a(a.d.rotationDegrees($$0.c));
+      $$1.a(0.0F, $$0.aj ? -0.6F : -1.2F, 0.0F);
    }
 }

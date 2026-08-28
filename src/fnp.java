@@ -1,172 +1,195 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-import java.util.Arrays;
+import com.google.common.collect.ImmutableList;
 import java.util.List;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
-public class fnp {
-   private fnp() {
-   }
+public class fnp extends hpw {
+   private static final int C = 2;
+   public static final List<bud> a = ImmutableList.of(bud.a, bud.b, bud.c, bud.d);
+   private static final int D = 0;
+   public static final List<dje> b = ImmutableList.of(dje.a, dje.b, dje.c);
+   private static final wy E = wy.c("mco.configure.world.edit.slot.name");
+   static final wy F = wy.c("mco.configure.world.spawnProtection");
+   private fte G;
+   protected final fmy c;
+   private int H;
+   private int I;
+   private final flv J;
+   private final flp.d K;
+   private bud L;
+   private dje M;
+   private final String N;
+   private String O;
+   private boolean P;
+   private boolean Q;
+   int R;
+   private boolean S;
+   private boolean T;
+   fnp.a U;
 
-   @VisibleForTesting
-   protected static List<String> a(String $$0) {
-      return Arrays.asList($$0.split("\\n"));
-   }
-
-   public static List<fnp.a> a(String $$0, fnp.b... $$1) {
-      return a($$0, Arrays.asList($$1));
-   }
-
-   private static List<fnp.a> a(String $$0, List<fnp.b> $$1) {
-      List<String> $$2 = a($$0);
-      return a($$2, $$1);
-   }
-
-   private static List<fnp.a> a(List<String> $$0, List<fnp.b> $$1) {
-      int $$2 = 0;
-      List<fnp.a> $$3 = Lists.newArrayList();
-
-      for (String $$4 : $$0) {
-         List<fnp.b> $$5 = Lists.newArrayList();
-
-         for (String $$7 : a($$4, "%link")) {
-            if ("%link".equals($$7)) {
-               $$5.add($$1.get($$2++));
-            } else {
-               $$5.add(fnp.b.a($$7));
-            }
-         }
-
-         $$3.add(new fnp.a($$5));
-      }
-
-      return $$3;
-   }
-
-   public static List<String> a(String $$0, String $$1) {
-      if ($$1.isEmpty()) {
-         throw new IllegalArgumentException("Delimiter cannot be the empty string");
+   public fnp(fmy $$0, flv $$1, flp.d $$2, int $$3) {
+      super(wy.c("mco.configure.world.buttons.options"));
+      this.c = $$0;
+      this.J = $$1;
+      this.K = $$2;
+      this.L = a(a, $$1.f, 2);
+      this.M = a(b, $$1.g, 0);
+      this.N = $$1.b($$3);
+      this.a($$1.a($$3));
+      if ($$2 == flp.d.a) {
+         this.P = $$1.a;
+         this.R = $$1.c;
+         this.T = $$1.e;
+         this.Q = $$1.b;
+         this.S = $$1.d;
       } else {
-         List<String> $$2 = Lists.newArrayList();
-         int $$3 = 0;
-
-         int $$4;
-         while (($$4 = $$0.indexOf($$1, $$3)) != -1) {
-            if ($$4 > $$3) {
-               $$2.add($$0.substring($$3, $$4));
-            }
-
-            $$2.add($$1);
-            $$3 = $$4 + $$1.length();
-         }
-
-         if ($$3 < $$0.length()) {
-            $$2.add($$0.substring($$3));
-         }
-
-         return $$2;
+         this.P = true;
+         this.R = 0;
+         this.T = false;
+         this.Q = true;
+         this.S = true;
       }
    }
 
-   public static class a {
-      public final List<fnp.b> a;
+   @Override
+   public void aL_() {
+      this.m.a(this.c);
+   }
 
-      a(fnp.b... $$0) {
-         this(Arrays.asList($$0));
-      }
-
-      a(List<fnp.b> $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public String toString() {
-         return "Line{segments=" + this.a + "}";
-      }
-
-      @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            fnp.a $$1 = (fnp.a)$$0;
-            return Objects.equals(this.a, $$1.a);
-         } else {
-            return false;
-         }
-      }
-
-      @Override
-      public int hashCode() {
-         return Objects.hash(this.a);
+   private static <T> T a(List<T> $$0, int $$1, int $$2) {
+      try {
+         return $$0.get($$1);
+      } catch (IndexOutOfBoundsException var4) {
+         return $$0.get($$2);
       }
    }
 
-   public static class b {
-      private final String a;
-      @Nullable
-      private final String b;
-      @Nullable
-      private final String c;
+   private static <T> int a(List<T> $$0, T $$1, int $$2) {
+      int $$3 = $$0.indexOf($$1);
+      return $$3 == -1 ? $$2 : $$3;
+   }
 
-      private b(String $$0) {
-         this.a = $$0;
-         this.b = null;
-         this.c = null;
+   @Override
+   public void aO_() {
+      this.I = 170;
+      this.H = this.n / 2 - this.I;
+      int $$0 = this.n / 2 + 10;
+      if (this.K != flp.d.a) {
+         wy $$1;
+         if (this.K == flp.d.c) {
+            $$1 = wy.c("mco.configure.world.edit.subscreen.adventuremap");
+         } else if (this.K == flp.d.e) {
+            $$1 = wy.c("mco.configure.world.edit.subscreen.inspiration");
+         } else {
+            $$1 = wy.c("mco.configure.world.edit.subscreen.experience");
+         }
+
+         this.a(new hpv($$1, this.n / 2, 26, 16711680));
       }
 
-      private b(String $$0, @Nullable String $$1, @Nullable String $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
+      this.G = this.d(new fte(this.m.h, this.H, g(1), this.I, 20, null, wy.c("mco.configure.world.edit.slot.name")));
+      this.G.f(10);
+      this.G.a(this.O);
+      this.G.b(this::a);
+      ftc<Boolean> $$4 = this.c(ftc.b(this.P).a($$0, g(1), this.I, 20, wy.c("mco.configure.world.pvp"), ($$0x, $$1) -> this.P = $$1));
+      this.c(ftc.a(dje::e).a(b).a(this.M).a(this.H, g(3), this.I, 20, wy.c("selectWorld.gameMode"), ($$0x, $$1) -> this.M = $$1));
+      this.U = this.c(new fnp.a($$0, g(3), this.I, this.R, 0.0F, 16.0F));
+      wy $$5 = wy.c("mco.configure.world.spawn_toggle.message");
+      ftc<Boolean> $$6 = ftc.b(this.L != bud.a && this.Q)
+         .a($$0, g(5), this.I, 20, wy.c("mco.configure.world.spawnMonsters"), this.a($$5, $$0x -> this.Q = $$0x));
+      this.c(ftc.a(bud::b).a(a).a(this.L).a(this.H, g(5), this.I, 20, wy.c("options.difficulty"), ($$1, $$2) -> {
+         this.L = $$2;
+         if (this.K == flp.d.a) {
+            boolean $$3 = this.L != bud.a;
+            $$6.j = $$3;
+            $$6.a($$3 && this.Q);
+         }
+      }));
+      this.c($$6);
+      ftc<Boolean> $$7 = this.c(ftc.b(this.T).a(this.H, g(7), this.I, 20, wy.c("mco.configure.world.forceGameMode"), ($$0x, $$1) -> this.T = $$1));
+      ftc<Boolean> $$8 = this.c(ftc.b(this.S).a($$0, g(7), this.I, 20, wy.c("mco.configure.world.commandBlocks"), ($$0x, $$1) -> this.S = $$1));
+      if (this.K != flp.d.a) {
+         $$4.j = false;
+         $$6.j = false;
+         this.U.j = false;
+         $$8.j = false;
+         $$7.j = false;
+      }
+
+      if (this.L == bud.a) {
+         $$6.j = false;
+      }
+
+      this.c(fsv.a(wy.c("mco.configure.world.buttons.done"), $$0x -> this.E()).a(this.H, g(13), this.I, 20).a());
+      this.c(fsv.a(wx.e, $$0x -> this.aL_()).a($$0, g(13), this.I, 20).a());
+   }
+
+   private ftc.b<Boolean> a(wy $$0, Consumer<Boolean> $$1) {
+      return ($$2, $$3) -> {
+         if ($$3) {
+            $$1.accept(true);
+         } else {
+            this.m.a(fnk.b(this, $$0, $$1xx -> {
+               $$1.accept(false);
+               $$1xx.aL_();
+            }));
+         }
+      };
+   }
+
+   @Override
+   public wy i() {
+      return wx.a(this.n(), this.m());
+   }
+
+   @Override
+   public void a(fsh $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 17, -1);
+      $$0.b(this.p, E, this.H + this.I / 2 - this.p.a(E) / 2, g(0) - 5, -1);
+      this.G.a($$0, $$1, $$2, $$3);
+   }
+
+   private void a(String $$0) {
+      if ($$0.equals(this.N)) {
+         this.O = "";
+      } else {
+         this.O = $$0;
+      }
+   }
+
+   private void E() {
+      int $$0 = a(a, this.L, 2);
+      int $$1 = a(b, this.M, 0);
+      if (this.K != flp.d.c && this.K != flp.d.d && this.K != flp.d.e) {
+         boolean $$2 = this.K == flp.d.a && this.L != bud.a && this.Q;
+         this.c.a(new flv(this.P, $$2, this.R, this.S, $$0, $$1, this.J.h, this.T, this.O, this.J.i, this.J.j));
+      } else {
+         this.c.a(new flv(this.J.a, this.J.b, this.J.c, this.J.d, $$0, $$1, this.J.h, this.J.e, this.O, this.J.i, this.J.j));
+      }
+   }
+
+   class a extends fsq {
+      private final double d;
+      private final double e;
+
+      public a(final int $$0, final int $$1, final int $$2, final int $$3, final float $$4, final float $$5) {
+         super($$0, $$1, $$2, 20, wx.a, 0.0);
+         this.d = (double)$$4;
+         this.e = (double)$$5;
+         this.c = (double)((azm.a((float)$$3, $$4, $$5) - $$4) / ($$5 - $$4));
+         this.b();
       }
 
       @Override
-      public boolean equals(Object $$0) {
-         if (this == $$0) {
-            return true;
-         } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-            fnp.b $$1 = (fnp.b)$$0;
-            return Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b) && Objects.equals(this.c, $$1.c);
-         } else {
-            return false;
+      public void a() {
+         if (fnp.this.U.j) {
+            fnp.this.R = (int)azm.d(azm.a(this.c, 0.0, 1.0), this.d, this.e);
          }
       }
 
       @Override
-      public int hashCode() {
-         return Objects.hash(this.a, this.b, this.c);
-      }
-
-      @Override
-      public String toString() {
-         return "Segment{fullText='" + this.a + "', linkTitle='" + this.b + "', linkUrl='" + this.c + "'}";
-      }
-
-      public String a() {
-         return this.b() ? this.b : this.a;
-      }
-
-      public boolean b() {
-         return this.b != null;
-      }
-
-      public String c() {
-         if (!this.b()) {
-            throw new IllegalStateException("Not a link: " + this);
-         } else {
-            return this.c;
-         }
-      }
-
-      public static fnp.b a(String $$0, String $$1) {
-         return new fnp.b(null, $$0, $$1);
-      }
-
-      @VisibleForTesting
-      protected static fnp.b a(String $$0) {
-         return new fnp.b($$0);
+      protected void b() {
+         this.b(wx.a(fnp.F, (wy)(fnp.this.R == 0 ? wx.c : wy.b(String.valueOf(fnp.this.R)))));
       }
    }
 }

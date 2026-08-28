@@ -1,34 +1,48 @@
-import com.mojang.datafixers.kinds.App;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
-public class cac {
-   public static <T extends bxg> cag<T> a(int $$0) {
-      return a($$0x -> true, $$0);
+public class cac<E extends bxl> extends cad<E> {
+   private final axr<dmm> m;
+   private final float n;
+   private final List<cad.a> o = new ArrayList<>();
+   private boolean p;
+
+   public cac(btr $$0, int $$1, int $$2, float $$3, Function<E, awm> $$4, axr<dmm> $$5, float $$6, BiPredicate<E, iv> $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$7);
+      this.m = $$5;
+      this.n = $$6;
    }
 
-   public static <T extends bxg> cag<T> a(Predicate<T> $$0, int $$1) {
-      return cci.a(
-         (Function<cci.b<T>, ? extends App<cci.c<T>, ccl<T>>>)($$2 -> $$2.group($$2.a(cgg.o), $$2.b(cgg.p), $$2.c(cgg.q), $$2.b(cgg.h))
-               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$7, $$8, $$9) -> {
-                     bxe $$10 = $$2.b($$4);
-                     if ($$0.test((T)$$8) && !a($$8) && $$8.h($$10) && $$2.<cgi>b($$6).a($$10)) {
-                        $$3.a(new bzg($$10, true));
-                        $$8.a(buc.a);
-                        $$8.c($$7, $$10);
-                        $$5.a(true, (long)$$1);
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+   @Override
+   protected void a(arq $$0, E $$1, long $$2) {
+      super.a($$0, $$1, $$2);
+      this.o.clear();
+      this.p = $$1.dX().i() < this.n;
    }
 
-   private static boolean a(bxg $$0) {
-      return $$0.b($$1 -> {
-         cyz $$2 = $$1.h();
-         return $$2 instanceof czy && $$0.a((czy)$$2);
-      });
+   @Override
+   protected Optional<cad.a> a(arq $$0) {
+      if (!this.p) {
+         return super.a($$0);
+      } else {
+         iv.a $$1 = new iv.a();
+
+         while (!this.h.isEmpty()) {
+            Optional<cad.a> $$2 = super.a($$0);
+            if ($$2.isPresent()) {
+               cad.a $$3 = $$2.get();
+               if ($$0.a_($$1.a($$3.a(), jb.a)).a(this.m)) {
+                  return $$2;
+               }
+
+               this.o.add($$3);
+            }
+         }
+
+         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
+      }
    }
 }

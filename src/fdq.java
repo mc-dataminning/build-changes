@@ -1,42 +1,36 @@
-import com.google.common.collect.Sets;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
 
-public record fdq(fdm b, fdm c) implements fdm {
-   public static final MapCodec<fdq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(fdn.a.fieldOf("min").forGetter(fdq::c), fdn.a.fieldOf("max").forGetter(fdq::d)).apply($$0, fdq::new)
-   );
+public record fdq(float c) implements fdt {
+   public static final MapCodec<fdq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(fdq::c)).apply($$0, fdq::new));
+   public static final Codec<fdq> b = Codec.FLOAT.xmap(fdq::new, fdq::c);
 
    @Override
-   public fdl b() {
-      return fdn.c;
-   }
-
-   public static fdq a(float $$0, float $$1) {
-      return new fdq(fdj.a($$0), fdj.a($$1));
+   public fds b() {
+      return fdu.b;
    }
 
    @Override
-   public int a(ezh $$0) {
-      return azm.a($$0.b(), this.b.a($$0), this.c.a($$0));
-   }
-
-   @Override
-   public float b(ezh $$0) {
-      return azm.a($$0.b(), this.b.b($$0), this.c.b($$0));
-   }
-
-   @Override
-   public Set<bax<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
-
-   public fdm c() {
-      return this.b;
-   }
-
-   public fdm d() {
+   public float b(ezo $$0) {
       return this.c;
+   }
+
+   public static fdq a(float $$0) {
+      return new fdq($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return $$0 != null && this.getClass() == $$0.getClass() ? Float.compare(((fdq)$$0).c, this.c) == 0 : false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.c != 0.0F ? Float.floatToIntBits(this.c) : 0;
    }
 }

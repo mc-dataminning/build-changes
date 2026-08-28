@@ -4,9 +4,9 @@ import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
 import java.util.Optional;
 
-public class bbp extends bhr {
+public class bbp extends bht {
    public bbp(Schema $$0) {
-      super($$0, false, "AreaEffectCloudPotionFix", bix.D, "minecraft:area_effect_cloud");
+      super($$0, false, "AreaEffectCloudPotionFix", biz.D, "minecraft:area_effect_cloud");
    }
 
    @Override

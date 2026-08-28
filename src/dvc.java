@@ -1,23 +1,39 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dvc extends dqv {
-   public static final MapCodec<dvc> g = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ayu.a(0.0F, 1.0F).fieldOf("leaf_particle_chance").forGetter($$0x -> $$0x.e), t()).apply($$0, dvc::new)
-   );
+public class dvc extends dvy implements dmp {
+   public static final MapCodec<dvc> a = b(dvc::new);
+   private static final ffr b = dmm.b(12.0, 0.0, 13.0);
 
-   public dvc(float $$0, eag.d $$1) {
-      super($$0, $$1);
+   @Override
+   public MapCodec<dvc> a() {
+      return a;
+   }
+
+   protected dvc(ean.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected void a(dja $$0, iu $$1, azv $$2) {
-      lq $$3 = lq.a(lx.J, $$0.s($$1));
-      azq.a($$0, $$1, $$2, $$3);
+   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
+      return b;
    }
 
    @Override
-   public MapCodec<? extends dvc> a() {
-      return g;
+   public boolean a(djk $$0, iv $$1, eao $$2) {
+      return o($$2).m().a($$0, $$1) && $$0.v($$1.d());
+   }
+
+   @Override
+   public boolean a(djh $$0, azv $$1, iv $$2, eao $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arq $$0, azv $$1, iv $$2, eao $$3) {
+      dov.a($$0, o($$3).m(), $$2, 2);
+   }
+
+   private static dov o(eao $$0) {
+      return (dov)($$0.a(dmo.bB) ? dmo.jk : dmo.jj);
    }
 }

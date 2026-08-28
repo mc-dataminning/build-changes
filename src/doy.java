@@ -1,126 +1,62 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class doy extends dkz<dyd> implements dtq {
-   public static final MapCodec<doy> b = b(doy::new);
-   public static final ebf<ja> c = dqg.e;
-   public static final eay d = eax.I;
-   private static final ffk e = dmf.b(14.0, 0.0, 14.0);
-   private static final wy f = wy.c("container.enderchest");
+public class doy extends dos {
+   private static final Logger f = LogUtils.getLogger();
+   public static final MapCodec<doy> e = b(doy::new);
+   private static final lh g = new lg();
 
    @Override
    public MapCodec<doy> a() {
-      return b;
-   }
-
-   protected doy(eag.d $$0) {
-      super($$0, () -> dxh.d);
-      this.l(this.C.b().b(c, ja.c).b(d, Boolean.valueOf(false)));
-   }
-
-   @Override
-   public don.c<? extends dxn> a(eah $$0, dja $$1, iu $$2, boolean $$3) {
-      return don.b::b;
-   }
-
-   @Override
-   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
       return e;
    }
 
-   @Override
-   public eah a(dcw $$0) {
-      ewo $$1 = $$0.q().b_($$0.a());
-      return this.m().b(c, $$0.g().g()).b(d, Boolean.valueOf($$1.a() == ewp.c));
+   public doy(ean.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected bud a(eah $$0, dja $$1, iu $$2, crc $$3, fem $$4) {
-      cwj $$5 = $$3.gx();
-      if ($$5 != null && $$1.c_($$2) instanceof dyd $$7) {
-         iu $$9 = $$2.d();
-         if ($$1.a_($$9).d($$1, $$9)) {
-            return bud.a;
-         } else {
-            if ($$1 instanceof arq $$10) {
-               $$5.a($$7);
-               $$3.a(new bul(($$1x, $$2x, $$3x) -> cve.a($$1x, $$2x, $$5), f));
-               $$3.a(awx.aj);
-               cps.a($$10, $$3, true);
-            }
+   protected lh a(djh $$0, czk $$1) {
+      return g;
+   }
 
-            return bud.a;
-         }
+   @Override
+   public dxm a(iv $$0, eao $$1) {
+      return new dyi($$0, $$1);
+   }
+
+   @Override
+   protected void a(arq $$0, eao $$1, iv $$2) {
+      dyh $$3 = $$0.a($$2, dxo.g).orElse(null);
+      if ($$3 == null) {
+         f.warn("Ignoring dispensing attempt for Dropper without matching block entity at {}", $$2);
       } else {
-         return bud.a;
-      }
-   }
+         le $$4 = new le($$0, $$2, $$1, $$3);
+         int $$5 = $$3.a($$0.A);
+         if ($$5 < 0) {
+            $$0.c(1001, $$2, 0);
+         } else {
+            czk $$6 = $$3.a($$5);
+            if (!$$6.f()) {
+               jb $$7 = $$0.a_($$2).c(b);
+               btz $$8 = dyp.a($$0, $$2.a($$7));
+               czk $$9;
+               if ($$8 == null) {
+                  $$9 = g.dispense($$4, $$6);
+               } else {
+                  $$9 = dyp.a($$3, $$8, $$6.c(1), $$7.g());
+                  if ($$9.f()) {
+                     $$9 = $$6.v();
+                     $$9.h(1);
+                  } else {
+                     $$9 = $$6.v();
+                  }
+               }
 
-   @Override
-   public dxf a(iu $$0, eah $$1) {
-      return new dyd($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dxf> dxg<T> a(dja $$0, eah $$1, dxh<T> $$2) {
-      return $$0.C ? a($$2, dxh.d, dyd::a) : null;
-   }
-
-   @Override
-   public void a(eah $$0, dja $$1, iu $$2, azv $$3) {
-      for (int $$4 = 0; $$4 < 3; $$4++) {
-         int $$5 = $$3.a(2) * 2 - 1;
-         int $$6 = $$3.a(2) * 2 - 1;
-         double $$7 = (double)$$2.u() + 0.5 + 0.25 * (double)$$5;
-         double $$8 = (double)((float)$$2.v() + $$3.i());
-         double $$9 = (double)$$2.w() + 0.5 + 0.25 * (double)$$6;
-         double $$10 = (double)($$3.i() * (float)$$5);
-         double $$11 = ((double)$$3.i() - 0.5) * 0.125;
-         double $$12 = (double)($$3.i() * (float)$$6);
-         $$1.a(lx.af, $$7, $$8, $$9, $$10, $$11, $$12);
-      }
-   }
-
-   @Override
-   protected eah a(eah $$0, dsz $$1) {
-      return $$0.b(c, $$1.a($$0.c(c)));
-   }
-
-   @Override
-   protected eah a(eah $$0, dri $$1) {
-      return $$0.a($$1.a($$0.c(c)));
-   }
-
-   @Override
-   protected void a(eai.a<dmf, eah> $$0) {
-      $$0.a(c, d);
-   }
-
-   @Override
-   protected ewo b_(eah $$0) {
-      return $$0.c(d) ? ewp.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected eah a(eah $$0, djd $$1, djp $$2, iu $$3, ja $$4, iu $$5, eah $$6, azv $$7) {
-      if ($$0.c(d)) {
-         $$2.a($$3, ewp.c, ewp.c.a($$1));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected boolean a(eah $$0, exd $$1) {
-      return false;
-   }
-
-   @Override
-   protected void a(eah $$0, arq $$1, iu $$2, azv $$3) {
-      dxf $$4 = $$1.c_($$2);
-      if ($$4 instanceof dyd) {
-         ((dyd)$$4).a();
+               $$3.a($$5, $$9);
+            }
+         }
       }
    }
 }

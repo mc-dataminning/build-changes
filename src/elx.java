@@ -1,6 +1,9 @@
-import com.mojang.serialization.Codec;
+import java.util.stream.Stream;
 
-public class elx implements elq {
-   public static final Codec<elx> a = Codec.unit(() -> elx.b);
-   public static final elx b = new elx();
+public interface elx {
+   eme m = eme.b;
+
+   default Stream<ejf<?, ?>> e() {
+      return Stream.empty();
+   }
 }

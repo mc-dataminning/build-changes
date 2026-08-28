@@ -1,75 +1,148 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.JsonOps;
-import java.io.BufferedReader;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UncheckedIOException;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.concurrent.CompletableFuture;
 import org.slf4j.Logger;
 
 public class hjd {
    private static final Logger a = LogUtils.getLogger();
-   private static final akz b = new akz("atlases", ".json");
-   private final List<hjc> c;
+   private static final int b = 64;
+   private static final int c = 64;
+   private static final int d = 32;
 
-   private hjd(List<hjc> $$0) {
-      this.c = $$0;
+   public static CompletableFuture<alg> a(alg $$0, Path $$1, String $$2, boolean $$3) {
+      return CompletableFuture.<fiu>supplyAsync(() -> {
+         fiu $$3x;
+         try {
+            $$3x = a($$1, $$2);
+         } catch (IOException var5) {
+            throw new UncheckedIOException(var5);
+         }
+
+         return $$3 ? a($$3x, $$2) : $$3x;
+      }, ag.j().a("downloadTexture")).thenCompose($$1x -> a($$0, $$1x));
    }
 
-   public List<Function<hjb, hir>> a(avd $$0) {
-      final Map<alg, hjc.b> $$1 = new HashMap<>();
-      hjc.a $$2 = new hjc.a() {
-         @Override
-         public void a(alg $$0, hjc.b $$1x) {
-            hjc.b $$2 = $$1.put($$0, $$1);
-            if ($$2 != null) {
-               $$2.a();
+   private static fiu a(Path $$0, String $$1) throws IOException {
+      if (Files.isRegularFile($$0)) {
+         a.debug("Loading HTTP texture from local cache ({})", $$0);
+
+         fiu var17;
+         try (InputStream $$2 = Files.newInputStream($$0)) {
+            var17 = fiu.a($$2);
+         }
+
+         return var17;
+      } else {
+         HttpURLConnection $$3 = null;
+         a.debug("Downloading HTTP texture from {} to {}", $$1, $$0);
+         URI $$4 = URI.create($$1);
+
+         fiu $$7;
+         try {
+            $$3 = (HttpURLConnection)$$4.toURL().openConnection(fpo.Q().Z());
+            $$3.setDoInput(true);
+            $$3.setDoOutput(false);
+            $$3.connect();
+            int $$5 = $$3.getResponseCode();
+            if ($$5 / 100 != 2) {
+               throw new IOException("Failed to open " + $$4 + ", HTTP error code: " + $$5);
+            }
+
+            byte[] $$6 = $$3.getInputStream().readAllBytes();
+
+            try {
+               w.c($$0.getParent());
+               Files.write($$0, $$6);
+            } catch (IOException var13) {
+               a.warn("Failed to cache texture {} in {}", $$1, $$0);
+            }
+
+            $$7 = fiu.a($$6);
+         } finally {
+            if ($$3 != null) {
+               $$3.disconnect();
             }
          }
 
-         @Override
-         public void a(Predicate<alg> $$0) {
-            Iterator<Entry<alg, hjc.b>> $$1 = $$1.entrySet().iterator();
-
-            while ($$1.hasNext()) {
-               Entry<alg, hjc.b> $$2 = $$1.next();
-               if ($$0.test($$2.getKey())) {
-                  $$2.getValue().a();
-                  $$1.remove();
-               }
-            }
-         }
-      };
-      this.c.forEach($$2x -> $$2x.a($$0, $$2));
-      Builder<Function<hjb, hir>> $$3 = ImmutableList.builder();
-      $$3.add((Function<hjb, hir>)$$0x -> him.b());
-      $$3.addAll($$1.values());
-      return $$3.build();
+         return $$7;
+      }
    }
 
-   public static hjd a(avd $$0, alg $$1) {
-      alg $$2 = b.a($$1);
-      List<hjc> $$3 = new ArrayList<>();
+   private static CompletableFuture<alg> a(alg $$0, fiu $$1) {
+      fpo $$2 = fpo.Q();
+      return CompletableFuture.supplyAsync(() -> {
+         $$2.aa().a($$0, new hix($$0::toString, $$1));
+         return $$0;
+      }, $$2);
+   }
 
-      for (avb $$4 : $$0.a($$2)) {
-         try (BufferedReader $$5 = $$4.e()) {
-            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
-            $$3.addAll((Collection<? extends hjc>)hje.b.parse($$6).getOrThrow());
-         } catch (Exception var11) {
-            a.error("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
+   private static fiu a(fiu $$0, String $$1) {
+      int $$2 = $$0.b();
+      int $$3 = $$0.a();
+      if ($$3 == 64 && ($$2 == 32 || $$2 == 64)) {
+         boolean $$4 = $$2 == 32;
+         if ($$4) {
+            fiu $$5 = new fiu(64, 64, true);
+            $$5.a($$0);
+            $$0.close();
+            $$0 = $$5;
+            $$5.a(0, 32, 64, 32, 0);
+            $$5.a(4, 16, 16, 32, 4, 4, true, false);
+            $$5.a(8, 16, 16, 32, 4, 4, true, false);
+            $$5.a(0, 20, 24, 32, 4, 12, true, false);
+            $$5.a(4, 20, 16, 32, 4, 12, true, false);
+            $$5.a(8, 20, 8, 32, 4, 12, true, false);
+            $$5.a(12, 20, 16, 32, 4, 12, true, false);
+            $$5.a(44, 16, -8, 32, 4, 4, true, false);
+            $$5.a(48, 16, -8, 32, 4, 4, true, false);
+            $$5.a(40, 20, 0, 32, 4, 12, true, false);
+            $$5.a(44, 20, -8, 32, 4, 12, true, false);
+            $$5.a(48, 20, -16, 32, 4, 12, true, false);
+            $$5.a(52, 20, -8, 32, 4, 12, true, false);
+         }
+
+         b($$0, 0, 0, 32, 16);
+         if ($$4) {
+            a($$0, 32, 0, 64, 32);
+         }
+
+         b($$0, 0, 16, 64, 32);
+         b($$0, 16, 48, 48, 64);
+         return $$0;
+      } else {
+         $$0.close();
+         throw new IllegalStateException("Discarding incorrectly sized (" + $$3 + "x" + $$2 + ") skin texture from " + $$1);
+      }
+   }
+
+   private static void a(fiu $$0, int $$1, int $$2, int $$3, int $$4) {
+      for (int $$5 = $$1; $$5 < $$3; $$5++) {
+         for (int $$6 = $$2; $$6 < $$4; $$6++) {
+            int $$7 = $$0.a($$5, $$6);
+            if (axw.a($$7) < 128) {
+               return;
+            }
          }
       }
 
-      return new hjd($$3);
+      for (int $$8 = $$1; $$8 < $$3; $$8++) {
+         for (int $$9 = $$2; $$9 < $$4; $$9++) {
+            $$0.a($$8, $$9, $$0.a($$8, $$9) & 16777215);
+         }
+      }
+   }
+
+   private static void b(fiu $$0, int $$1, int $$2, int $$3, int $$4) {
+      for (int $$5 = $$1; $$5 < $$3; $$5++) {
+         for (int $$6 = $$2; $$6 < $$4; $$6++) {
+            $$0.a($$5, $$6, axw.f($$0.a($$5, $$6)));
+         }
+      }
    }
 }

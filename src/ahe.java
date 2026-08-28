@@ -1,5 +1,5 @@
 public record ahe(int b, int c) implements zf<agp> {
-   public static final yw<vu, ahe> a = yw.a(yu.w, ahe::b, yu.h, ahe::e, ahe::new);
+   public static final yw<vu, ahe> a = yw.a(yu.x, ahe::b, yu.h, ahe::e, ahe::new);
 
    @Override
    public zh<ahe> a() {

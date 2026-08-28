@@ -1,120 +1,54 @@
-public abstract class fse extends fsh {
-   private static final alg a = alg.b("widget/slider");
-   private static final alg d = alg.b("widget/slider_highlighted");
-   private static final alg e = alg.b("widget/slider_handle");
-   private static final alg f = alg.b("widget/slider_handle_highlighted");
-   protected static final int b = 2;
-   private static final int m = 8;
-   private static final int n = 4;
-   protected double c;
-   private boolean o;
+import javax.annotation.Nullable;
 
-   public fse(int $$0, int $$1, int $$2, int $$3, wy $$4, double $$5) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
+public interface fse {
+   static fse a(fus $$0) {
+      return new fse.a($$0);
    }
 
-   private alg c() {
-      return this.E() && this.aJ_() && !this.o ? d : a;
+   @Nullable
+   static fse a(fur $$0, @Nullable fse $$1) {
+      return $$1 == null ? null : new fse.b($$0, $$1);
    }
 
-   private alg e() {
-      return !this.E() || !this.i && !this.o ? e : f;
+   static fse a(fus $$0, fur... $$1) {
+      fse $$2 = a($$0);
+
+      for (fur $$3 : $$1) {
+         $$2 = a($$3, $$2);
+      }
+
+      return $$2;
    }
 
-   @Override
-   protected xm d() {
-      return wy.a("gui.narrate.slider", this.B());
+   fus a();
+
+   void a(boolean var1);
+
+   public static record a(fus a) implements fse {
+      @Override
+      public void a(boolean $$0) {
+         this.a.a($$0);
+      }
    }
 
-   @Override
-   public void a(fwg $$0) {
-      $$0.a(fwf.a, this.d());
-      if (this.j) {
-         if (this.aJ_()) {
-            $$0.a(fwf.d, wy.c("narration.slider.usage.focused"));
+   public static record b(fur a, fse b) implements fse {
+      @Override
+      public void a(boolean $$0) {
+         if (!$$0) {
+            this.a.a(null);
          } else {
-            $$0.a(fwf.d, wy.c("narration.slider.usage.hovered"));
-         }
-      }
-   }
-
-   @Override
-   public void b(frv $$0, int $$1, int $$2, float $$3) {
-      foz $$4 = foz.Q();
-      $$0.a(gqk::H, this.c(), this.F(), this.G(), this.A(), this.y(), axw.a(this.l));
-      $$0.a(gqk::H, this.e(), this.F() + (int)(this.c * (double)(this.g - 8)), this.G(), 8, this.y(), axw.a(this.l));
-      int $$5 = this.j ? 16777215 : 10526880;
-      this.a($$0, $$4.h, 2, $$5 | azm.f(this.l * 255.0F) << 24);
-   }
-
-   @Override
-   public void a(double $$0, double $$1) {
-      this.a($$0);
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      super.a($$0);
-      if (!$$0) {
-         this.o = false;
-      } else {
-         fow $$1 = foz.Q().aX();
-         if ($$1 == fow.b || $$1 == fow.d) {
-            this.o = true;
-         }
-      }
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (fwl.a($$0)) {
-         this.o = !this.o;
-         return true;
-      } else {
-         if (this.o) {
-            boolean $$3 = $$0 == 263;
-            if ($$3 || $$0 == 262) {
-               float $$4 = $$3 ? -1.0F : 1.0F;
-               this.b(this.c + (double)($$4 / (float)(this.g - 8)));
-               return true;
-            }
+            this.a.a(this.b.a());
          }
 
-         return false;
-      }
-   }
-
-   private void a(double $$0) {
-      this.b(($$0 - (double)(this.F() + 4)) / (double)(this.g - 8));
-   }
-
-   private void b(double $$0) {
-      double $$1 = this.c;
-      this.c = azm.a($$0, 0.0, 1.0);
-      if ($$1 != this.c) {
-         this.a();
+         this.b.a($$0);
       }
 
-      this.b();
+      public fur b() {
+         return this.a;
+      }
+
+      public fse c() {
+         return this.b;
+      }
    }
-
-   @Override
-   protected void b(double $$0, double $$1, double $$2, double $$3) {
-      this.a($$0);
-      super.b($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public void a(hoa $$0) {
-   }
-
-   @Override
-   public void b(double $$0, double $$1) {
-      super.a(foz.Q().ak());
-   }
-
-   protected abstract void b();
-
-   protected abstract void a();
 }

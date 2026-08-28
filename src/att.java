@@ -31,11 +31,11 @@ public class att implements atp {
    @Nullable
    @Override
    public auu<InputStream> a(String... $$0) {
-      v.a($$0);
+      w.a($$0);
       List<String> $$1 = List.of($$0);
 
       for (Path $$2 : this.g) {
-         Path $$3 = v.a($$2, $$1);
+         Path $$3 = w.a($$2, $$1);
          if (Files.exists($$3) && ats.a($$3)) {
             return auu.create($$3);
          }
@@ -45,19 +45,19 @@ public class att implements atp {
    }
 
    public void a(atr $$0, alg $$1, Consumer<Path> $$2) {
-      v.d($$1.a()).ifSuccess($$3 -> {
+      w.d($$1.a()).ifSuccess($$3 -> {
          String $$4 = $$1.b();
 
          for (Path $$5 : this.h.get($$0)) {
             Path $$6 = $$5.resolve($$4);
-            $$2.accept(v.a($$6, $$3));
+            $$2.accept(w.a($$6, $$3));
          }
       }).ifError($$1x -> c.error("Invalid path {}: {}", $$1, $$1x.message()));
    }
 
    @Override
    public void a(atr $$0, String $$1, String $$2, atp.a $$3) {
-      v.d($$2).ifSuccess($$3x -> {
+      w.d($$2).ifSuccess($$3x -> {
          List<Path> $$4 = this.h.get($$0);
          int $$5 = $$4.size();
          if ($$5 == 1) {
@@ -88,11 +88,11 @@ public class att implements atp {
    @Nullable
    @Override
    public auu<InputStream> a(atr $$0, alg $$1) {
-      return (auu<InputStream>)v.d($$1.a()).mapOrElse($$2 -> {
+      return (auu<InputStream>)w.d($$1.a()).mapOrElse($$2 -> {
          String $$3 = $$1.b();
 
          for (Path $$4 : this.h.get($$0)) {
-            Path $$5 = v.a($$4.resolve($$3), $$2);
+            Path $$5 = w.a($$4.resolve($$3), $$2);
             if (Files.exists($$5) && ats.a($$5)) {
                return auu.create($$5);
             }

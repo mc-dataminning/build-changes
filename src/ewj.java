@@ -1,213 +1,325 @@
-import it.unimi.dsi.fastutil.HashCommon;
-import it.unimi.dsi.fastutil.longs.Long2LongLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
-import java.util.NoSuchElementException;
+import it.unimi.dsi.fastutil.longs.Long2ByteMap;
+import it.unimi.dsi.fastutil.longs.Long2ByteOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import javax.annotation.Nullable;
 
-public class ewj extends LongLinkedOpenHashSet {
-   private final ewj.a a;
+public abstract class ewj<M extends ewg<M>> {
+   private final djq i;
+   protected final ecy a;
+   protected final Long2ByteMap b = new Long2ByteOpenHashMap();
+   private final LongSet j = new LongOpenHashSet();
+   protected volatile M c;
+   protected final M d;
+   protected final LongSet e = new LongOpenHashSet();
+   protected final LongSet f = new LongOpenHashSet();
+   protected final Long2ObjectMap<ecq> g = Long2ObjectMaps.synchronize(new Long2ObjectOpenHashMap());
+   private final LongSet k = new LongOpenHashSet();
+   private final LongSet l = new LongOpenHashSet();
+   protected volatile boolean h;
 
-   public ewj(int $$0, float $$1) {
-      super($$0, $$1);
-      this.a = new ewj.a($$0 / 64, $$1);
+   protected ewj(djq $$0, ecy $$1, M $$2) {
+      this.i = $$0;
+      this.a = $$1;
+      this.d = $$2;
+      this.c = $$2.b();
+      this.c.d();
+      this.b.defaultReturnValue((byte)0);
    }
 
-   public boolean add(long $$0) {
-      return this.a.c($$0);
+   protected boolean b(long $$0) {
+      return this.a($$0, true) != null;
    }
 
-   public boolean rem(long $$0) {
-      return this.a.d($$0);
+   @Nullable
+   protected ecq a(long $$0, boolean $$1) {
+      return this.a($$1 ? this.d : this.c, $$0);
    }
 
-   public long removeFirstLong() {
-      return this.a.a();
+   @Nullable
+   protected ecq a(M $$0, long $$1) {
+      return $$0.c($$1);
    }
 
-   public int size() {
-      throw new UnsupportedOperationException();
+   @Nullable
+   protected ecq c(long $$0) {
+      ecq $$1 = this.d.c($$0);
+      if ($$1 == null) {
+         return null;
+      } else {
+         if (this.e.add($$0)) {
+            $$1 = $$1.b();
+            this.d.a($$0, $$1);
+            this.d.c();
+         }
+
+         return $$1;
+      }
    }
 
-   public boolean isEmpty() {
-      return this.a.isEmpty();
+   @Nullable
+   public ecq d(long $$0) {
+      ecq $$1 = (ecq)this.g.get($$0);
+      return $$1 != null ? $$1 : this.a($$0, false);
    }
 
-   protected static class a extends Long2LongLinkedOpenHashMap {
-      private static final int a = azm.f(60000000);
-      private static final int b = azm.f(60000000);
-      private static final int c = 64 - a - b;
-      private static final int d = 0;
-      private static final int e = c;
-      private static final int g = c + b;
-      private static final long h = 3L << g | 3L | 3L << e;
-      private int i = -1;
-      private long j;
-      private final int k;
+   protected abstract int a(long var1);
 
-      public a(int $$0, float $$1) {
-         super($$0, $$1);
-         this.k = $$0;
+   protected int e(long $$0) {
+      long $$1 = jy.e($$0);
+      ecq $$2 = this.a($$1, true);
+      return $$2.a(jy.b(iv.a($$0)), jy.b(iv.b($$0)), jy.b(iv.c($$0)));
+   }
+
+   protected void a(long $$0, int $$1) {
+      long $$2 = jy.e($$0);
+      ecq $$3;
+      if (this.e.add($$2)) {
+         $$3 = this.d.a($$2);
+      } else {
+         $$3 = this.a($$2, true);
       }
 
-      static long a(long $$0) {
-         return $$0 & ~h;
-      }
+      $$3.a(jy.b(iv.a($$0)), jy.b(iv.b($$0)), jy.b(iv.c($$0)), $$1);
+      jy.a($$0, this.f::add);
+   }
 
-      static int b(long $$0) {
-         int $$1 = (int)($$0 >>> g & 3L);
-         int $$2 = (int)($$0 >>> 0 & 3L);
-         int $$3 = (int)($$0 >>> e & 3L);
-         return $$1 << 4 | $$3 << 2 | $$2;
-      }
+   protected void f(long $$0) {
+      int $$1 = jy.b($$0);
+      int $$2 = jy.c($$0);
+      int $$3 = jy.d($$0);
 
-      static long a(long $$0, int $$1) {
-         $$0 |= (long)($$1 >>> 4 & 3) << g;
-         $$0 |= (long)($$1 >>> 2 & 3) << e;
-         return $$0 | (long)($$1 >>> 0 & 3) << 0;
-      }
-
-      public boolean c(long $$0) {
-         long $$1 = a($$0);
-         int $$2 = b($$0);
-         long $$3 = 1L << $$2;
-         int $$4;
-         if ($$1 == 0L) {
-            if (this.containsNullKey) {
-               return this.a(this.n, $$3);
+      for (int $$4 = -1; $$4 <= 1; $$4++) {
+         for (int $$5 = -1; $$5 <= 1; $$5++) {
+            for (int $$6 = -1; $$6 <= 1; $$6++) {
+               this.f.add(jy.b($$1 + $$5, $$2 + $$6, $$3 + $$4));
             }
+         }
+      }
+   }
 
-            this.containsNullKey = true;
-            $$4 = this.n;
-         } else {
-            if (this.i != -1 && $$1 == this.j) {
-               return this.a(this.i, $$3);
+   protected ecq g(long $$0) {
+      ecq $$1 = (ecq)this.g.get($$0);
+      return $$1 != null ? $$1 : new ecq();
+   }
+
+   protected boolean a() {
+      return this.h;
+   }
+
+   protected void a(ewm<M, ?> $$0) {
+      if (this.h) {
+         this.h = false;
+         LongIterator $$5 = this.l.iterator();
+
+         while ($$5.hasNext()) {
+            long $$1 = (Long)$$5.next();
+            ecq $$2 = (ecq)this.g.remove($$1);
+            ecq $$3 = this.d.d($$1);
+            if (this.k.contains(jy.f($$1))) {
+               if ($$2 != null) {
+                  this.g.put($$1, $$2);
+               } else if ($$3 != null) {
+                  this.g.put($$1, $$3);
+               }
             }
+         }
 
-            long[] $$5 = this.key;
-            $$4 = (int)HashCommon.mix($$1) & this.mask;
+         this.d.c();
+         $$5 = this.l.iterator();
 
-            for (long $$7 = $$5[$$4]; $$7 != 0L; $$7 = $$5[$$4]) {
-               if ($$7 == $$1) {
-                  this.i = $$4;
-                  this.j = $$1;
-                  return this.a($$4, $$3);
+         while ($$5.hasNext()) {
+            long $$4 = (Long)$$5.next();
+            this.i($$4);
+            this.e.add($$4);
+         }
+
+         this.l.clear();
+         ObjectIterator<Entry<ecq>> $$5x = Long2ObjectMaps.fastIterator(this.g);
+
+         while ($$5x.hasNext()) {
+            Entry<ecq> $$6 = (Entry<ecq>)$$5x.next();
+            long $$7 = $$6.getLongKey();
+            if (this.b($$7)) {
+               ecq $$8 = (ecq)$$6.getValue();
+               if (this.d.c($$7) != $$8) {
+                  this.d.a($$7, $$8);
+                  this.e.add($$7);
                }
 
-               $$4 = $$4 + 1 & this.mask;
+               $$5x.remove();
             }
          }
 
-         this.key[$$4] = $$1;
-         this.value[$$4] = $$3;
-         if (this.size == 0) {
-            this.first = this.last = $$4;
-            this.link[$$4] = -1L;
-         } else {
-            this.link[this.last] = this.link[this.last] ^ (this.link[this.last] ^ (long)$$4 & 4294967295L) & 4294967295L;
-            this.link[$$4] = ((long)this.last & 4294967295L) << 32 | 4294967295L;
-            this.last = $$4;
-         }
-
-         if (this.size++ >= this.maxFill) {
-            this.rehash(HashCommon.arraySize(this.size + 1, this.f));
-         }
-
-         return false;
+         this.d.c();
       }
+   }
 
-      private boolean a(int $$0, long $$1) {
-         boolean $$2 = (this.value[$$0] & $$1) != 0L;
-         this.value[$$0] = this.value[$$0] | $$1;
-         return $$2;
+   protected void h(long $$0) {
+   }
+
+   protected void i(long $$0) {
+   }
+
+   protected void b(long $$0, boolean $$1) {
+      if ($$1) {
+         this.j.add($$0);
+      } else {
+         this.j.remove($$0);
       }
+   }
 
-      public boolean d(long $$0) {
-         long $$1 = a($$0);
-         int $$2 = b($$0);
-         long $$3 = 1L << $$2;
-         if ($$1 == 0L) {
-            return this.containsNullKey ? this.e($$3) : false;
-         } else if (this.i != -1 && $$1 == this.j) {
-            return this.b(this.i, $$3);
-         } else {
-            long[] $$4 = this.key;
-            int $$5 = (int)HashCommon.mix($$1) & this.mask;
+   protected boolean j(long $$0) {
+      long $$1 = jy.f($$0);
+      return this.j.contains($$1);
+   }
 
-            for (long $$6 = $$4[$$5]; $$6 != 0L; $$6 = $$4[$$5]) {
-               if ($$1 == $$6) {
-                  this.i = $$5;
-                  this.j = $$1;
-                  return this.b($$5, $$3);
+   protected boolean k(long $$0) {
+      return this.j.contains($$0);
+   }
+
+   public void c(long $$0, boolean $$1) {
+      if ($$1) {
+         this.k.add($$0);
+      } else {
+         this.k.remove($$0);
+      }
+   }
+
+   protected void a(long $$0, @Nullable ecq $$1) {
+      if ($$1 != null) {
+         this.g.put($$0, $$1);
+         this.h = true;
+      } else {
+         this.g.remove($$0);
+      }
+   }
+
+   protected void d(long $$0, boolean $$1) {
+      byte $$2 = this.b.get($$0);
+      byte $$3 = ewj.a.a($$2, !$$1);
+      if ($$2 != $$3) {
+         this.a($$0, $$3);
+         int $$4 = $$1 ? -1 : 1;
+
+         for (int $$5 = -1; $$5 <= 1; $$5++) {
+            for (int $$6 = -1; $$6 <= 1; $$6++) {
+               for (int $$7 = -1; $$7 <= 1; $$7++) {
+                  if ($$5 != 0 || $$6 != 0 || $$7 != 0) {
+                     long $$8 = jy.a($$0, $$5, $$6, $$7);
+                     byte $$9 = this.b.get($$8);
+                     this.a($$8, ewj.a.a($$9, ewj.a.b($$9) + $$4));
+                  }
                }
-
-               $$5 = $$5 + 1 & this.mask;
             }
-
-            return false;
          }
       }
+   }
 
-      private boolean e(long $$0) {
-         if ((this.value[this.n] & $$0) == 0L) {
-            return false;
+   protected void a(long $$0, byte $$1) {
+      if ($$1 != 0) {
+         if (this.b.put($$0, $$1) == 0) {
+            this.m($$0);
+         }
+      } else if (this.b.remove($$0) != 0) {
+         this.n($$0);
+      }
+   }
+
+   private void m(long $$0) {
+      if (!this.l.remove($$0)) {
+         this.d.a($$0, this.g($$0));
+         this.e.add($$0);
+         this.h($$0);
+         this.f($$0);
+         this.h = true;
+      }
+   }
+
+   private void n(long $$0) {
+      this.l.add($$0);
+      this.h = true;
+   }
+
+   protected void b() {
+      if (!this.e.isEmpty()) {
+         M $$0 = this.d.b();
+         $$0.d();
+         this.c = $$0;
+         this.e.clear();
+      }
+
+      if (!this.f.isEmpty()) {
+         LongIterator $$1 = this.f.iterator();
+
+         while ($$1.hasNext()) {
+            long $$2 = $$1.nextLong();
+            this.a.a(this.i, jy.a($$2));
+         }
+
+         this.f.clear();
+      }
+   }
+
+   public ewj.b l(long $$0) {
+      return ewj.a.c(this.b.get($$0));
+   }
+
+   protected static class a {
+      public static final byte a = 0;
+      private static final int b = 0;
+      private static final int c = 26;
+      private static final byte d = 32;
+      private static final byte e = 31;
+
+      public static byte a(byte $$0, boolean $$1) {
+         return (byte)($$1 ? $$0 | 32 : $$0 & -33);
+      }
+
+      public static byte a(byte $$0, int $$1) {
+         if ($$1 >= 0 && $$1 <= 26) {
+            return (byte)($$0 & -32 | $$1 & 31);
          } else {
-            this.value[this.n] = this.value[this.n] & ~$$0;
-            if (this.value[this.n] != 0L) {
-               return true;
-            } else {
-               this.containsNullKey = false;
-               this.size--;
-               this.fixPointers(this.n);
-               if (this.size < this.maxFill / 4 && this.n > 16) {
-                  this.rehash(this.n / 2);
-               }
-
-               return true;
-            }
+            throw new IllegalArgumentException("Neighbor count was not within range [0; 26]");
          }
       }
 
-      private boolean b(int $$0, long $$1) {
-         if ((this.value[$$0] & $$1) == 0L) {
-            return false;
+      public static boolean a(byte $$0) {
+         return ($$0 & 32) != 0;
+      }
+
+      public static int b(byte $$0) {
+         return $$0 & 31;
+      }
+
+      public static ewj.b c(byte $$0) {
+         if ($$0 == 0) {
+            return ewj.b.a;
          } else {
-            this.value[$$0] = this.value[$$0] & ~$$1;
-            if (this.value[$$0] != 0L) {
-               return true;
-            } else {
-               this.i = -1;
-               this.size--;
-               this.fixPointers($$0);
-               this.shiftKeys($$0);
-               if (this.size < this.maxFill / 4 && this.n > 16) {
-                  this.rehash(this.n / 2);
-               }
-
-               return true;
-            }
+            return a($$0) ? ewj.b.c : ewj.b.b;
          }
       }
+   }
 
-      public long a() {
-         if (this.size == 0) {
-            throw new NoSuchElementException();
-         } else {
-            int $$0 = this.first;
-            long $$1 = this.key[$$0];
-            int $$2 = Long.numberOfTrailingZeros(this.value[$$0]);
-            this.value[$$0] = this.value[$$0] & ~(1L << $$2);
-            if (this.value[$$0] == 0L) {
-               this.removeFirstLong();
-               this.i = -1;
-            }
+   public static enum b {
+      a("2"),
+      b("1"),
+      c("0");
 
-            return a($$1, $$2);
-         }
+      private final String d;
+
+      private b(final String $$0) {
+         this.d = $$0;
       }
 
-      protected void rehash(int $$0) {
-         if ($$0 > this.k) {
-            super.rehash($$0);
-         }
+      public String a() {
+         return this.d;
       }
    }
 }

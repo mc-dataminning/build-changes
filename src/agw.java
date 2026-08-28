@@ -1,10 +1,10 @@
 import java.time.Instant;
 
-public record agw(String b, Instant c, long d, ep e, xf.b f) implements zf<agp> {
+public record agw(String b, Instant c, long d, eq e, xf.b f) implements zf<agp> {
    public static final yw<vu, agw> a = zf.a(agw::a, agw::new);
 
    private agw(vu $$0) {
-      this($$0.p(), $$0.t(), $$0.readLong(), new ep($$0), new xf.b($$0));
+      this($$0.p(), $$0.t(), $$0.readLong(), new eq($$0), new xf.b($$0));
    }
 
    private void a(vu $$0) {
@@ -32,7 +32,7 @@ public record agw(String b, Instant c, long d, ep e, xf.b f) implements zf<agp> 
       return this.d;
    }
 
-   public ep g() {
+   public eq g() {
       return this.e;
    }
 

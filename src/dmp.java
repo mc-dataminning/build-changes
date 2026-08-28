@@ -1,35 +1,45 @@
-import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Optional;
 
-public class dmp extends dvr implements dmi {
-   public static final MapCodec<dmp> a = b(dmp::new);
-   private static final ffk b = dmf.b(16.0, 0.0, 13.0);
+public interface dmp {
+   boolean a(djk var1, iv var2, eao var3);
 
-   @Override
-   public MapCodec<dmp> a() {
-      return a;
+   boolean a(djh var1, azv var2, iv var3, eao var4);
+
+   void a(arq var1, azv var2, iv var3, eao var4);
+
+   static boolean a_(djk $$0, iv $$1, eao $$2) {
+      return a(jb.c.a.a().toList(), $$0, $$1, $$2).isPresent();
    }
 
-   protected dmp(eag.d $$0) {
-      super($$0);
+   static Optional<iv> a(djh $$0, iv $$1, eao $$2) {
+      return a(jb.c.a.c($$0.A), $$0, $$1, $$2);
    }
 
-   @Override
-   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
-      return b;
+   private static Optional<iv> a(List<jb> $$0, djk $$1, iv $$2, eao $$3) {
+      for (jb $$4 : $$0) {
+         iv $$5 = $$2.a($$4);
+         if ($$1.v($$5) && $$3.a($$1, $$5)) {
+            return Optional.of($$5);
+         }
+      }
+
+      return Optional.empty();
    }
 
-   @Override
-   public boolean a(djd $$0, iu $$1, eah $$2) {
-      return dmi.a_($$0, $$1, $$2);
+   default iv a(iv $$0) {
+      return switch (this.an_()) {
+         case a -> $$0.d();
+         case b -> $$0;
+      };
    }
 
-   @Override
-   public boolean a(dja $$0, azv $$1, iu $$2, eah $$3) {
-      return true;
+   default dmp.a an_() {
+      return dmp.a.b;
    }
 
-   @Override
-   public void a(arq $$0, azv $$1, iu $$2, eah $$3) {
-      dmi.a((dja)$$0, $$2, $$3).ifPresent($$1x -> $$0.b($$1x, this.m()));
+   public static enum a {
+      a,
+      b;
    }
 }

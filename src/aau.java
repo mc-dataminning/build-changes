@@ -1,4 +1,4 @@
-public record aau(iu c, int d) implements aai {
+public record aau(iv c, int d) implements aai {
    public static final yw<vu, aau> a = aai.a(aau::a, aau::new);
    public static final aai.b<aau> b = aai.a("debug/poi_ticket_count");
 
@@ -16,7 +16,7 @@ public record aau(iu c, int d) implements aai {
       return b;
    }
 
-   public iu b() {
+   public iv b() {
       return this.c;
    }
 

@@ -1,107 +1,202 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.logging.LogUtils;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Collection;
+import java.util.List;
 import java.util.Map;
-import org.slf4j.Logger;
+import java.util.Set;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
 public class byl {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<bwo<? extends bxe>, byj> b = ImmutableMap.builder()
-      .put(bwo.c, ckh.j().a())
-      .put(bwo.e, ckk.q().a())
-      .put(bwo.f, cmw.j().a())
-      .put(bwo.h, ckn.gr().a())
-      .put(bwo.k, cin.j().a())
-      .put(bwo.l, civ.gF().a())
-      .put(bwo.o, cnm.j().a())
-      .put(bwo.q, cnn.gr().a())
-      .put(bwo.u, cix.gH().a())
-      .put(bwo.t, cks.q().a())
-      .put(bwo.v, cno.j().a())
-      .put(bwo.z, cja.q().a())
-      .put(bwo.A, ciq.j().a())
-      .put(bwo.C, cje.q().a())
-      .put(bwo.D, cpi.m().a())
-      .put(bwo.E, cnp.j().a())
-      .put(bwo.H, cjh.gr().a())
-      .put(bwo.I, clg.q().a())
-      .put(bwo.K, cnr.j().a())
-      .put(bwo.M, cns.j().a())
-      .put(bwo.N, cnt.j().a())
-      .put(bwo.O, cnu.j().a())
-      .put(bwo.P, cma.m().a())
-      .put(bwo.S, cnw.m().a())
-      .put(bwo.r, cpa.j().a())
-      .put(bwo.aa, cjj.q().a())
-      .put(bwo.ab, ckv.gr().a())
-      .put(bwo.ad, cnx.n().a())
-      .put(bwo.ae, cny.j().a())
-      .put(bwo.ag, bwv.gr().a())
-      .put(bwo.ah, cld.t().a())
-      .put(bwo.ai, cnz.q().a())
-      .put(bwo.aj, cpl.t().a())
-      .put(bwo.al, clh.gS().a())
-      .put(bwo.am, cox.gs().a())
-      .put(bwo.an, cob.m().a())
-      .put(bwo.ap, cjk.j().a())
-      .put(bwo.ax, clk.gD().a())
-      .put(bwo.az, coc.j().a())
-      .put(bwo.aE, cje.q().a())
-      .put(bwo.aF, clg.q().a())
-      .put(bwo.aI, cjm.q().a())
-      .put(bwo.aN, cjn.gE().a())
-      .put(bwo.aO, cjo.gD().a())
-      .put(bwo.aP, cod.gu().a())
-      .put(bwo.aQ, cjp.q().a())
-      .put(bwo.aR, cpr.gv().a())
-      .put(bwo.aS, cpu.n().a())
-      .put(bwo.aT, cog.m().a())
-      .put(bwo.bS, crc.fX().a())
-      .put(bwo.aU, cjs.q().a())
-      .put(bwo.aX, ciq.j().a())
-      .put(bwo.aY, cju.t().a())
-      .put(bwo.aZ, coi.j().a())
-      .put(bwo.ba, ciq.j().a())
-      .put(bwo.bb, cjw.q().a())
-      .put(bwo.bc, coj.j().a())
-      .put(bwo.be, cok.j().a())
-      .put(bwo.bf, cnl.j().a())
-      .put(bwo.bg, cln.q().a())
-      .put(bwo.bh, cod.gu().a())
-      .put(bwo.bj, clu.q().a())
-      .put(bwo.bl, cjy.j().a())
-      .put(bwo.bo, cop.m().a())
-      .put(bwo.br, cjz.gr().a())
-      .put(bwo.bs, cnl.j().a())
-      .put(bwo.bt, cor.t().a())
-      .put(bwo.bu, cla.x().a())
-      .put(bwo.by, clk.gD().a())
-      .put(bwo.bA, ciq.j().a())
-      .put(bwo.bB, ckc.x().a())
-      .put(bwo.bC, cos.j().a())
-      .put(bwo.bD, cqo.gA().a())
-      .put(bwo.bE, cot.m().a())
-      .put(bwo.bG, cqf.j().a())
-      .put(bwo.bF, bxg.E().a())
-      .put(bwo.bI, cou.m().a())
-      .put(bwo.bJ, cmu.m().a())
-      .put(bwo.bK, cnl.j().a())
-      .put(bwo.bM, cke.gE().a())
-      .put(bwo.bN, cow.j().a())
-      .put(bwo.bO, cox.gs().a())
-      .put(bwo.bP, clr.q().a())
-      .put(bwo.bQ, cox.gs().a())
-      .put(bwo.bR, coz.gy().a())
-      .build();
+   private static final String b = "base";
+   private static final String c = "modifiers";
+   public static final String a = "id";
+   private final jf<byk> d;
+   private final Map<byn.a, Map<alg, byn>> e = Maps.newEnumMap(byn.a.class);
+   private final Map<alg, byn> f = new Object2ObjectArrayMap();
+   private final Map<alg, byn> g = new Object2ObjectArrayMap();
+   private double h;
+   private boolean i = true;
+   private double j;
+   private final Consumer<byl> k;
 
-   public static byj a(bwo<? extends bxe> $$0) {
-      return b.get($$0);
+   public byl(jf<byk> $$0, Consumer<byl> $$1) {
+      this.d = $$0;
+      this.k = $$1;
+      this.h = $$0.a().a();
    }
 
-   public static boolean b(bwo<?> $$0) {
-      return b.containsKey($$0);
+   public jf<byk> a() {
+      return this.d;
    }
 
-   public static void a() {
-      mf.f.s().filter($$0 -> $$0.f() != bxh.h).filter($$0 -> !b((bwo<?>)$$0)).map(mf.f::b).forEach($$0 -> af.b("Entity " + $$0 + " has no attributes"));
+   public double b() {
+      return this.h;
+   }
+
+   public void a(double $$0) {
+      if ($$0 != this.h) {
+         this.h = $$0;
+         this.e();
+      }
+   }
+
+   @VisibleForTesting
+   Map<alg, byn> a(byn.a $$0) {
+      return this.e.computeIfAbsent($$0, $$0x -> new Object2ObjectOpenHashMap());
+   }
+
+   public Set<byn> c() {
+      return ImmutableSet.copyOf(this.f.values());
+   }
+
+   public Set<byn> d() {
+      return ImmutableSet.copyOf(this.g.values());
+   }
+
+   @Nullable
+   public byn a(alg $$0) {
+      return this.f.get($$0);
+   }
+
+   public boolean b(alg $$0) {
+      return this.f.get($$0) != null;
+   }
+
+   private void f(byn $$0) {
+      byn $$1 = this.f.putIfAbsent($$0.a(), $$0);
+      if ($$1 != null) {
+         throw new IllegalArgumentException("Modifier is already applied on this attribute!");
+      } else {
+         this.a($$0.c()).put($$0.a(), $$0);
+         this.e();
+      }
+   }
+
+   public void a(byn $$0) {
+      byn $$1 = this.f.put($$0.a(), $$0);
+      if ($$0 != $$1) {
+         this.a($$0.c()).put($$0.a(), $$0);
+         this.e();
+      }
+   }
+
+   public void b(byn $$0) {
+      this.f($$0);
+   }
+
+   public void c(byn $$0) {
+      this.c($$0.a());
+      this.f($$0);
+      this.g.put($$0.a(), $$0);
+   }
+
+   public void d(byn $$0) {
+      this.f($$0);
+      this.g.put($$0.a(), $$0);
+   }
+
+   public void a(Collection<byn> $$0) {
+      for (byn $$1 : $$0) {
+         this.d($$1);
+      }
+   }
+
+   protected void e() {
+      this.i = true;
+      this.k.accept(this);
+   }
+
+   public void e(byn $$0) {
+      this.c($$0.a());
+   }
+
+   public boolean c(alg $$0) {
+      byn $$1 = this.f.remove($$0);
+      if ($$1 == null) {
+         return false;
+      } else {
+         this.a($$1.c()).remove($$0);
+         this.g.remove($$0);
+         this.e();
+         return true;
+      }
+   }
+
+   public void f() {
+      for (byn $$0 : this.c()) {
+         this.e($$0);
+      }
+   }
+
+   public double g() {
+      if (this.i) {
+         this.j = this.i();
+         this.i = false;
+      }
+
+      return this.j;
+   }
+
+   private double i() {
+      double $$0 = this.b();
+
+      for (byn $$1 : this.b(byn.a.a)) {
+         $$0 += $$1.b();
+      }
+
+      double $$2 = $$0;
+
+      for (byn $$3 : this.b(byn.a.b)) {
+         $$2 += $$0 * $$3.b();
+      }
+
+      for (byn $$4 : this.b(byn.a.c)) {
+         $$2 *= 1.0 + $$4.b();
+      }
+
+      return this.d.a().a($$2);
+   }
+
+   private Collection<byn> b(byn.a $$0) {
+      return this.e.getOrDefault($$0, Map.of()).values();
+   }
+
+   public void a(byl $$0) {
+      this.h = $$0.h;
+      this.f.clear();
+      this.f.putAll($$0.f);
+      this.g.clear();
+      this.g.putAll($$0.g);
+      this.e.clear();
+      $$0.e.forEach(($$0x, $$1) -> this.a($$0x).putAll((Map<? extends alg, ? extends byn>)$$1));
+      this.e();
+   }
+
+   public tz h() {
+      tz $$0 = new tz();
+      alf<byk> $$1 = this.d.e().orElseThrow(() -> new IllegalStateException("Tried to serialize unregistered attribute"));
+      $$0.a("id", $$1.a().toString());
+      $$0.a("base", this.h);
+      if (!this.g.isEmpty()) {
+         $$0.a("modifiers", byn.b.listOf(), List.copyOf(this.g.values()));
+      }
+
+      return $$0;
+   }
+
+   public void a(tz $$0) {
+      this.h = $$0.i("base");
+
+      for (byn $$2 : $$0.<List>a("modifiers", byn.b.listOf()).orElse(List.of())) {
+         this.f.put($$2.a(), $$2);
+         this.a($$2.c()).put($$2.a(), $$2);
+         this.g.put($$2.a(), $$2);
+      }
+
+      this.e();
    }
 }

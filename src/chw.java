@@ -1,13 +1,25 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class chw {
-   @Nullable
-   public static feq a(bxm $$0, int $$1, int $$2, int $$3, feq $$4, double $$5) {
-      feq $$6 = $$4.a($$0.dA(), $$0.dC(), $$0.dG());
-      boolean $$7 = chy.a($$0, $$1);
-      return cib.a($$0, () -> {
-         iu $$7x = chv.a($$0, $$1, $$2, $$3, $$6.d, $$6.f, $$5, $$7);
-         return $$7x != null && !chy.a($$0, $$7x) ? $$7x : null;
-      });
+public class chw extends chk<cqm> {
+   @Override
+   public Set<cgl<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cgl.C)));
+   }
+
+   protected void a(arq $$0, cqm $$1) {
+      super.a($$0, $$1);
+      a($$1, $$0x -> $$0x.an() == bwr.bS)
+         .or(() -> a($$1, $$0xx -> $$0xx.an() != bwr.bS))
+         .ifPresentOrElse($$1x -> $$1.eb().a(cgl.C, $$1x), () -> $$1.eb().b(cgl.C));
+   }
+
+   private static Optional<bxj> a(cqm $$0, Predicate<bxj> $$1) {
+      return $$0.eb().c(cgl.g).stream().flatMap(Collection::stream).filter($$0::b).filter($$1).findFirst();
    }
 }

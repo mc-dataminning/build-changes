@@ -1,16 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class elu implements elq {
+public record elu(eog b, ehu c, btl d, int e) implements elx {
    public static final Codec<elu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.intRange(0, eee.c).fieldOf("height").forGetter($$0x -> $$0x.b), eah.a.fieldOf("state").forGetter($$0x -> $$0x.c))
+      $$0 -> $$0.group(
+               eog.a.fieldOf("state_provider").forGetter(elu::a),
+               ehu.b.fieldOf("target").forGetter(elu::b),
+               btl.b(0, 8).fieldOf("radius").forGetter(elu::c),
+               Codec.intRange(0, 4).fieldOf("half_height").forGetter(elu::d)
+            )
             .apply($$0, elu::new)
    );
-   public final int b;
-   public final eah c;
 
-   public elu(int $$0, eah $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public eog a() {
+      return this.b;
+   }
+
+   public ehu b() {
+      return this.c;
+   }
+
+   public btl c() {
+      return this.d;
+   }
+
+   public int d() {
+      return this.e;
    }
 }

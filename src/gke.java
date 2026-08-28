@@ -1,18 +1,36 @@
-import com.mojang.authlib.GameProfile;
-import java.util.Map;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public record gke(
-   GameProfile a,
-   hon b,
-   js.b c,
-   cum d,
-   @Nullable String e,
-   @Nullable gko f,
-   @Nullable fyb g,
-   Map<alg, byte[]> h,
-   @Nullable fsk.b i,
-   Map<String, String> j,
-   aly k
-) {
+public class gke<C extends gke.a<C>, D> {
+   private final Function<C, D> a;
+   @Nullable
+   private C b;
+   @Nullable
+   private D c;
+
+   public gke(Function<C, D> $$0) {
+      this.a = $$0;
+   }
+
+   public D a(C $$0) {
+      if ($$0 == this.b && this.c != null) {
+         return this.c;
+      } else {
+         D $$1 = this.a.apply($$0);
+         this.c = $$1;
+         this.b = $$0;
+         $$0.registerForCleaning(this);
+         return $$1;
+      }
+   }
+
+   public void a() {
+      this.c = null;
+      this.b = null;
+   }
+
+   @FunctionalInterface
+   public interface a<C extends gke.a<C>> {
+      void registerForCleaning(gke<C, ?> var1);
+   }
 }

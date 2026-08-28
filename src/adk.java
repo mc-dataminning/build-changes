@@ -13,7 +13,7 @@ public class adk {
    private final List<byte[]> f;
    private final List<byte[]> g;
 
-   public adk(dih $$0, ewd $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+   public adk(dio $$0, ewk $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
       this.b = new BitSet();
       this.c = new BitSet();
       this.d = new BitSet();
@@ -23,11 +23,11 @@ public class adk {
 
       for (int $$4 = 0; $$4 < $$1.c(); $$4++) {
          if ($$2 == null || $$2.get($$4)) {
-            this.a($$0, $$1, djj.a, $$4, this.b, this.d, this.f);
+            this.a($$0, $$1, djq.a, $$4, this.b, this.d, this.f);
          }
 
          if ($$3 == null || $$3.get($$4)) {
-            this.a($$0, $$1, djj.b, $$4, this.c, this.e, this.g);
+            this.a($$0, $$1, djq.b, $$4, this.c, this.e, this.g);
          }
       }
    }
@@ -50,8 +50,8 @@ public class adk {
       $$0.a(this.g, a);
    }
 
-   private void a(dih $$0, ewd $$1, djj $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
-      ecj $$7 = $$1.a($$2).a(jx.a($$0, $$1.d() + $$3));
+   private void a(dio $$0, ewk $$1, djq $$2, int $$3, BitSet $$4, BitSet $$5, List<byte[]> $$6) {
+      ecq $$7 = $$1.a($$2).a(jy.a($$0, $$1.d() + $$3));
       if ($$7 != null) {
          if ($$7.d()) {
             $$5.set($$3);

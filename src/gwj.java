@@ -1,34 +1,43 @@
-public class gwj extends gwg<crp, hcp> {
-   private static final alg a = alg.b("textures/entity/illager/evoker_fangs.png");
-   private final gga g;
+public class gwj<T extends clk> extends gvj<T, hcv, gge> {
+   private final alg a;
 
-   public gwj(gwh.a $$0) {
-      super($$0);
-      this.g = new gga($$0.a(gjb.aW));
+   public gwj(gwt.a $$0, gwj.a $$1) {
+      super($$0, new gge($$0.a($$1.d)), new gge($$0.a($$1.e)));
+      this.a = $$1.c;
+      this.a(new hbj<>(this, $$0.h(), $$1.f, $$0x -> $$0x.b, new ggl($$0.a($$1.g)), new ggl($$0.a($$1.h))));
    }
 
-   public void a(hcp $$0, fjj $$1, gqa $$2, int $$3) {
-      float $$4 = $$0.b;
-      if ($$4 != 0.0F) {
-         $$1.a();
-         $$1.a(a.d.rotationDegrees(90.0F - $$0.a));
-         $$1.b(-1.0F, -1.0F, 1.0F);
-         $$1.a(0.0F, -1.501F, 0.0F);
-         this.g.a($$0);
-         fjn $$5 = $$2.getBuffer(this.g.a(a));
-         this.g.a($$1, $$5, $$3, hin.d);
-         $$1.b();
-         super.a($$0, $$1, $$2, $$3);
-      }
+   public alg a(hcv $$0) {
+      return this.a;
    }
 
-   public hcp a() {
-      return new hcp();
+   public hcv a() {
+      return new hcv();
    }
 
-   public void a(crp $$0, hcp $$1, float $$2) {
+   public void a(T $$0, hcv $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.dL();
-      $$1.b = $$0.a($$2);
+      $$1.a = $$0.t();
+   }
+
+   public static enum a {
+      a(alg.b("textures/entity/horse/donkey.png"), gjn.az, gjn.aA, hlp.d.k, gjn.aB, gjn.aC),
+      b(alg.b("textures/entity/horse/mule.png"), gjn.bP, gjn.bQ, hlp.d.l, gjn.bR, gjn.bS);
+
+      final alg c;
+      final gjm d;
+      final gjm e;
+      final hlp.d f;
+      final gjm g;
+      final gjm h;
+
+      private a(final alg $$0, final gjm $$1, final gjm $$2, final hlp.d $$3, final gjm $$4, final gjm $$5) {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+         this.g = $$4;
+         this.h = $$5;
+      }
    }
 }

@@ -1,19 +1,23 @@
 import com.mojang.serialization.Codec;
 
-public class eku extends ejm<emj> {
-   public eku(Codec<emj> $$0) {
+public class eku extends ejt<eml> {
+   public eku(Codec<eml> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejo<emj> $$0) {
-      azv $$1 = $$0.d();
-      emj $$2 = $$0.f();
-      djz $$3 = $$0.b();
-      iu $$4 = $$0.e();
-      ecf $$5 = $$0.c();
-      int $$6 = $$1.a($$2.b.b());
-      eqf $$7 = $$2.b.a($$6).a();
-      return $$7.a($$3, $$5, $$1, $$4);
+   public boolean a(ejv<eml> $$0) {
+      dkg $$1 = $$0.b();
+      iv $$2 = $$0.e();
+      eml $$3 = $$0.f();
+
+      for (emf.a $$4 : $$3.b) {
+         if ($$4.b.a($$1.a_($$2), $$0.d())) {
+            $$1.a($$2, $$4.c, 2);
+            break;
+         }
+      }
+
+      return true;
    }
 }

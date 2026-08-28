@@ -4,12 +4,12 @@ public class ahw implements zf<agp> {
    private final ahw.a c;
    private final int d;
 
-   public ahw(bwf $$0, ahw.a $$1) {
+   public ahw(bwi $$0, ahw.a $$1) {
       this($$0, $$1, 0);
    }
 
-   public ahw(bwf $$0, ahw.a $$1, int $$2) {
-      this.b = $$0.ar();
+   public ahw(bwi $$0, ahw.a $$1, int $$2) {
+      this.b = $$0.ao();
       this.c = $$1;
       this.d = $$2;
    }

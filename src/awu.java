@@ -1,8 +1,8 @@
 import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class awu<T> extends ffy {
-   public static final yw<wj, awu<?>> a = yu.a(mg.ar).b(awu::a, aww::a);
+public class awu<T> extends fgf {
+   public static final yw<wj, awu<?>> a = yu.a(mh.ar).b(awu::a, aww::a);
    private final awv p;
    private final T q;
    private final aww<T> r;
@@ -15,7 +15,7 @@ public class awu<T> extends ffy {
    }
 
    public static <T> String a(aww<T> $$0, T $$1) {
-      return a(mf.v.b($$0)) + ":" + a($$0.b().b($$1));
+      return a(mg.v.b($$0)) + ":" + a($$0.b().b($$1));
    }
 
    private static <T> String a(@Nullable alg $$0) {

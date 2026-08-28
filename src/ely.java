@@ -1,53 +1,53 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class ely implements elq {
-   public static final Codec<ely> a = RecordCodecBuilder.create(
+public class ely implements elx {
+   public static final Codec<Double> a = Codec.doubleRange(0.0, 1.0);
+   public static final Codec<ely> b = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.list(ely.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 64).fieldOf("size").forGetter($$0x -> $$0x.c),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("discard_chance_on_air_exposure").forGetter($$0x -> $$0x.d)
+               egk.i.fieldOf("blocks").forGetter($$0x -> $$0x.c),
+               egm.a.fieldOf("layers").forGetter($$0x -> $$0x.d),
+               egl.a.fieldOf("crack").forGetter($$0x -> $$0x.e),
+               a.fieldOf("use_potential_placements_chance").orElse(0.35).forGetter($$0x -> $$0x.f),
+               a.fieldOf("use_alternate_layer0_chance").orElse(0.0).forGetter($$0x -> $$0x.g),
+               Codec.BOOL.fieldOf("placements_require_layer0_alternate").orElse(true).forGetter($$0x -> $$0x.h),
+               btl.b(1, 20).fieldOf("outer_wall_distance").orElse(btr.a(4, 5)).forGetter($$0x -> $$0x.i),
+               btl.b(1, 20).fieldOf("distribution_points").orElse(btr.a(3, 4)).forGetter($$0x -> $$0x.j),
+               btl.b(0, 10).fieldOf("point_offset").orElse(btr.a(1, 2)).forGetter($$0x -> $$0x.k),
+               Codec.INT.fieldOf("min_gen_offset").orElse(-16).forGetter($$0x -> $$0x.l),
+               Codec.INT.fieldOf("max_gen_offset").orElse(16).forGetter($$0x -> $$0x.n),
+               a.fieldOf("noise_multiplier").orElse(0.05).forGetter($$0x -> $$0x.o),
+               Codec.INT.fieldOf("invalid_blocks_threshold").forGetter($$0x -> $$0x.p)
             )
             .apply($$0, ely::new)
    );
-   public final List<ely.a> b;
-   public final int c;
-   public final float d;
+   public final egk c;
+   public final egm d;
+   public final egl e;
+   public final double f;
+   public final double g;
+   public final boolean h;
+   public final btl i;
+   public final btl j;
+   public final btl k;
+   public final int l;
+   public final int n;
+   public final double o;
+   public final int p;
 
-   public ely(List<ely.a> $$0, int $$1, float $$2) {
-      this.c = $$1;
-      this.b = $$0;
-      this.d = $$2;
-   }
-
-   public ely(List<ely.a> $$0, int $$1) {
-      this($$0, $$1, 0.0F);
-   }
-
-   public ely(eux $$0, eah $$1, int $$2, float $$3) {
-      this(ImmutableList.of(new ely.a($$0, $$1)), $$2, $$3);
-   }
-
-   public ely(eux $$0, eah $$1, int $$2) {
-      this(ImmutableList.of(new ely.a($$0, $$1)), $$2, 0.0F);
-   }
-
-   public static ely.a a(eux $$0, eah $$1) {
-      return new ely.a($$0, $$1);
-   }
-
-   public static class a {
-      public static final Codec<ely.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(eux.c.fieldOf("target").forGetter($$0x -> $$0x.b), eah.a.fieldOf("state").forGetter($$0x -> $$0x.c)).apply($$0, ely.a::new)
-      );
-      public final eux b;
-      public final eah c;
-
-      a(eux $$0, eah $$1) {
-         this.b = $$0;
-         this.c = $$1;
-      }
+   public ely(egk $$0, egm $$1, egl $$2, double $$3, double $$4, boolean $$5, btl $$6, btl $$7, btl $$8, int $$9, int $$10, double $$11, int $$12) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
+      this.j = $$7;
+      this.k = $$8;
+      this.l = $$9;
+      this.n = $$10;
+      this.o = $$11;
+      this.p = $$12;
    }
 }

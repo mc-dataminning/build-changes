@@ -98,7 +98,7 @@ public class asv implements ajj, wm {
             this.h = asv.a.b;
             this.g.a(new ajd("", this.f.R().getPublic().getEncoded(), this.e, true));
          } else {
-            this.b(jy.b(this.j));
+            this.b(jz.b(this.j));
          }
       }
    }
@@ -166,7 +166,7 @@ public class asv implements ajj, wm {
                   asv.this.b($$2);
                } else if (asv.this.f.U()) {
                   asv.c.warn("Failed to verify username but will let them in anyway!");
-                  asv.this.b(jy.b($$0));
+                  asv.this.b(jz.b($$0));
                } else {
                   asv.this.a(wy.c("multiplayer.disconnect.unverified_username"));
                   asv.c.error("Username '{}' tried to join with an invalid session", $$0);
@@ -174,7 +174,7 @@ public class asv implements ajj, wm {
             } catch (AuthenticationUnavailableException var4) {
                if (asv.this.f.U()) {
                   asv.c.warn("Authentication servers are down but will let them in anyway!");
-                  asv.this.b(jy.b($$0));
+                  asv.this.b(jz.b($$0));
                } else {
                   asv.this.a(wy.c("multiplayer.disconnect.authservers_down"));
                   asv.c.error("Couldn't verify username because servers are unavailable");
@@ -188,7 +188,7 @@ public class asv implements ajj, wm {
             return asv.this.f.ab() && $$0 instanceof InetSocketAddress ? ((InetSocketAddress)$$0).getAddress() : null;
          }
       };
-      $$8.setUncaughtExceptionHandler(new r(c));
+      $$8.setUncaughtExceptionHandler(new s(c));
       $$8.start();
    }
 
@@ -209,7 +209,7 @@ public class asv implements ajj, wm {
    }
 
    @Override
-   public void a(o $$0, p $$1) {
+   public void a(p $$0, q $$1) {
       $$1.a("Login phase", () -> this.h.toString());
    }
 

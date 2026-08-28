@@ -1,30 +1,45 @@
-public class cfk extends cea {
-   private final bxm a;
+import java.util.EnumSet;
 
-   public cfk(bxm $$0) {
+public class cfk extends cef {
+   private final byf a;
+
+   public cfk(byf $$0) {
       this.a = $$0;
+      this.a(EnumSet.of(cef.a.c, cef.a.a));
+   }
+
+   @Override
+   public boolean c() {
+      return this.a.gt();
    }
 
    @Override
    public boolean b() {
-      return this.a.aJ() && !this.a.dV().b_(this.a.dv()).a(axh.a);
+      boolean $$0 = this.a.gt();
+      if (!$$0 && !this.a.q()) {
+         return false;
+      } else if (this.a.bh()) {
+         return false;
+      } else if (!this.a.aH()) {
+         return false;
+      } else {
+         bxj $$1 = this.a.e();
+         if ($$1 == null) {
+            return true;
+         } else {
+            return this.a.g((bwi)$$1) < 144.0 && $$1.eq() != null ? false : $$0;
+         }
+      }
    }
 
    @Override
    public void d() {
-      iu $$0 = null;
+      this.a.O().m();
+      this.a.x(true);
+   }
 
-      for (iu $$2 : iu.b(
-         azm.a(this.a.dA() - 2.0), azm.a(this.a.dC() - 2.0), azm.a(this.a.dG() - 2.0), azm.a(this.a.dA() + 2.0), this.a.dB(), azm.a(this.a.dG() + 2.0)
-      )) {
-         if (this.a.dV().b_($$2).a(axh.a)) {
-            $$0 = $$2;
-            break;
-         }
-      }
-
-      if ($$0 != null) {
-         this.a.L().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
-      }
+   @Override
+   public void e() {
+      this.a.x(false);
    }
 }

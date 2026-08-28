@@ -16,7 +16,7 @@ public class ayr implements AutoCloseable {
 
    public static ayr a(Path $$0) throws IOException {
       Path $$1 = $$0.resolve("session.lock");
-      v.c($$0);
+      w.c($$0);
       FileChannel $$2 = FileChannel.open($$1, StandardOpenOption.CREATE, StandardOpenOption.WRITE);
 
       try {

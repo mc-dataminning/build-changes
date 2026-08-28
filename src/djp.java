@@ -1,25 +1,25 @@
+import javax.annotation.Nullable;
+
 public interface djp {
-   <T> fgi<T> a(iu var1, T var2, int var3, fgm var4);
+   boolean a(iv var1, eao var2, int var3, int var4);
 
-   <T> fgi<T> a(iu var1, T var2, int var3);
-
-   fge<dmf> U();
-
-   default void a(iu $$0, dmf $$1, int $$2, fgm $$3) {
-      this.U().a(this.a($$0, $$1, $$2, $$3));
+   default boolean a(iv $$0, eao $$1, int $$2) {
+      return this.a($$0, $$1, $$2, 512);
    }
 
-   default void a(iu $$0, dmf $$1, int $$2) {
-      this.U().a(this.a($$0, $$1, $$2));
+   boolean a(iv var1, boolean var2);
+
+   default boolean b(iv $$0, boolean $$1) {
+      return this.a($$0, $$1, null);
    }
 
-   fge<ewn> T();
-
-   default void a(iu $$0, ewn $$1, int $$2, fgm $$3) {
-      this.T().a(this.a($$0, $$1, $$2, $$3));
+   default boolean a(iv $$0, boolean $$1, @Nullable bwi $$2) {
+      return this.a($$0, $$1, $$2, 512);
    }
 
-   default void a(iu $$0, ewn $$1, int $$2) {
-      this.T().a(this.a($$0, $$1, $$2));
+   boolean a(iv var1, boolean var2, @Nullable bwi var3, int var4);
+
+   default boolean b(bwi $$0) {
+      return false;
    }
 }

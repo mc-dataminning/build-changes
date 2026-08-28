@@ -1,8 +1,9 @@
-public class hco extends hdn {
-   public czd b = czd.k;
-   public boolean c;
-   public boolean d;
-   public float e;
-   public float f;
-   public float g;
+import javax.annotation.Nullable;
+
+public class hco extends hdf {
+   private static final alg j = alg.b("textures/entity/cat/tabby.png");
+   public alg a = j;
+   public boolean b;
+   @Nullable
+   public cyi c;
 }

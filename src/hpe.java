@@ -1,36 +1,60 @@
-import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public enum hpe {
-   a("movement", hoz::new),
-   b("find_tree", hoy::new),
-   c("punch_tree", hpb::new),
-   d("open_inventory", hpa::new),
-   e("craft_planks", hox::new),
-   f("none", how::new);
+public class hpe {
+   private boolean a;
+   @Nullable
+   private hoy.b b;
+   @Nullable
+   private String c;
+   @Nullable
+   private final String d;
 
-   private final String g;
-   private final Function<hpc, ? extends hpd> h;
-
-   private <T extends hpd> hpe(final String $$0, final Function<hpc, T> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+   public hpe(@Nullable String $$0) {
+      this.d = $$0;
    }
 
-   public hpd a(hpc $$0) {
-      return this.h.apply($$0);
-   }
-
-   public String a() {
-      return this.g;
-   }
-
-   public static hpe a(String $$0) {
-      for (hpe $$1 : values()) {
-         if ($$1.g.equals($$0)) {
-            return $$1;
-         }
+   public void a(hoz.a $$0) {
+      if (this.c != null) {
+         $$0.a(hoy.j, !this.c.equals("vanilla"));
       }
 
-      return f;
+      $$0.a(hoy.k, this.a());
+   }
+
+   private hoy.c a() {
+      gla $$0 = fpo.Q().S();
+      if ($$0 != null && $$0.e()) {
+         return hoy.c.a;
+      } else {
+         return fpo.Q().U() ? hoy.c.b : hoy.c.c;
+      }
+   }
+
+   public boolean a(hov $$0) {
+      if (!this.a && this.b != null && this.c != null) {
+         this.a = true;
+         $$0.send(how.b, $$0x -> {
+            $$0x.a(hoy.n, this.b);
+            if (this.d != null) {
+               $$0x.a(hoy.o, this.d);
+            }
+         });
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   public void a(dje $$0, boolean $$1) {
+      this.b = switch ($$0) {
+         case a -> $$1 ? hoy.b.e : hoy.b.a;
+         case b -> hoy.b.b;
+         case c -> hoy.b.c;
+         case d -> hoy.b.d;
+      };
+   }
+
+   public void a(String $$0) {
+      this.c = $$0;
    }
 }

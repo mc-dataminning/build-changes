@@ -19,9 +19,9 @@ public class aui implements aup {
    private final Path c;
    private final atr d;
    private final auo e;
-   private final feg f;
+   private final fen f;
 
-   public aui(Path $$0, atr $$1, auo $$2, feg $$3) {
+   public aui(Path $$0, atr $$1, auo $$2, fen $$3) {
       this.c = $$0;
       this.d = $$1;
       this.e = $$2;
@@ -35,7 +35,7 @@ public class aui implements aup {
    @Override
    public void loadPacks(Consumer<auk> $$0) {
       try {
-         v.c(this.c);
+         w.c(this.c);
          a(this.c, this.f, ($$1, $$2) -> {
             ato $$3 = this.b($$1);
             auk $$4 = auk.a($$3, $$2, this.d, b);
@@ -53,16 +53,16 @@ public class aui implements aup {
       return new ato("file/" + $$1, wy.b($$1), this.e, Optional.empty());
    }
 
-   public static void a(Path $$0, feg $$1, BiConsumer<Path, auk.c> $$2) throws IOException {
+   public static void a(Path $$0, fen $$1, BiConsumer<Path, auk.c> $$2) throws IOException {
       aui.a $$3 = new aui.a($$1);
 
       try (DirectoryStream<Path> $$4 = Files.newDirectoryStream($$0)) {
          for (Path $$5 : $$4) {
             try {
-               List<feh> $$6 = new ArrayList<>();
+               List<feo> $$6 = new ArrayList<>();
                auk.c $$7 = $$3.a($$5, $$6);
                if (!$$6.isEmpty()) {
-                  a.warn("Ignoring potential pack entry: {}", fef.a($$5, $$6));
+                  a.warn("Ignoring potential pack entry: {}", fem.a($$5, $$6));
                } else if ($$7 != null) {
                   $$2.accept($$5, $$7);
                } else {
@@ -76,7 +76,7 @@ public class aui implements aup {
    }
 
    static class a extends aum<auk.c> {
-      protected a(feg $$0) {
+      protected a(fen $$0) {
          super($$0);
       }
 

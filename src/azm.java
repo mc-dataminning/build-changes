@@ -23,7 +23,7 @@ public class azm {
    public static final Vector3f h = new Vector3f(0.0F, 1.0F, 0.0F);
    public static final Vector3f i = new Vector3f(1.0F, 0.0F, 0.0F);
    public static final Vector3f j = new Vector3f(0.0F, 0.0F, 1.0F);
-   private static final float[] p = af.a(new float[65536], $$0x -> {
+   private static final float[] p = ag.a(new float[65536], $$0x -> {
       for (int $$1x = 0; $$1x < $$0x.length; $$1x++) {
          $$0x[$$1x] = (float)Math.sin((double)$$1x * Math.PI * 2.0 / 65536.0);
       }
@@ -288,7 +288,7 @@ public class azm {
    }
 
    @Deprecated
-   public static long a(jz $$0) {
+   public static long a(ka $$0) {
       return b($$0.u(), $$0.v(), $$0.w());
    }
 
@@ -317,7 +317,7 @@ public class azm {
       return ($$0 - $$1) / ($$2 - $$1);
    }
 
-   public static boolean a(feq $$0, feq $$1, fel $$2) {
+   public static boolean a(fex $$0, fex $$1, fes $$2) {
       double $$3 = ($$2.a + $$2.d) * 0.5;
       double $$4 = ($$2.d - $$2.a) * 0.5;
       double $$5 = $$0.d - $$3;
@@ -519,8 +519,8 @@ public class azm {
       return $$1 + $$0 * ($$2 - $$1);
    }
 
-   public static feq a(double $$0, feq $$1, feq $$2) {
-      return new feq(d($$0, $$1.d, $$2.d), d($$0, $$1.e, $$2.e), d($$0, $$1.f, $$2.f));
+   public static fex a(double $$0, fex $$1, fex $$2) {
+      return new fex(d($$0, $$1.d, $$2.d), d($$0, $$1.e, $$2.e), d($$0, $$1.f, $$2.f));
    }
 
    public static double d(double $$0, double $$1, double $$2) {

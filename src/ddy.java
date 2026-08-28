@@ -1,80 +1,66 @@
-import java.lang.ref.WeakReference;
-import java.util.Arrays;
-import java.util.Optional;
-import javax.annotation.Nullable;
-
-public class ddy {
-   private final ddy.a[] a;
-   private WeakReference<deb> b = new WeakReference<>(null);
-
-   public ddy(int $$0) {
-      this.a = new ddy.a[$$0];
+public class ddy extends ddr {
+   public ddy(ddo $$0) {
+      super($$0);
    }
 
-   public Optional<ddz<ddj>> a(arq $$0, ddi $$1) {
-      if ($$1.b()) {
-         return Optional.empty();
+   public boolean a(ddp $$0, djh $$1) {
+      if ($$0.e() < 2) {
+         return false;
       } else {
-         this.a($$0);
+         boolean $$2 = false;
+         boolean $$3 = false;
 
-         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
-            ddy.a $$3 = this.a[$$2];
-            if ($$3 != null && $$3.a($$1)) {
-               this.a($$2);
-               return Optional.ofNullable($$3.d());
-            }
-         }
+         for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+            czk $$5 = $$0.a($$4);
+            if (!$$5.f()) {
+               if ($$5.c(kk.M)) {
+                  if ($$3) {
+                     return false;
+                  }
 
-         return this.a($$1, $$0);
-      }
-   }
+                  $$3 = true;
+               } else {
+                  if (!$$5.a(czo.vt)) {
+                     return false;
+                  }
 
-   private void a(arq $$0) {
-      deb $$1 = $$0.t();
-      if ($$1 != this.b.get()) {
-         this.b = new WeakReference<>($$1);
-         Arrays.fill(this.a, null);
-      }
-   }
-
-   private Optional<ddz<ddj>> a(ddi $$0, arq $$1) {
-      Optional<ddz<ddj>> $$2 = $$1.t().a(def.a, $$0, $$1);
-      this.a($$0, $$2.orElse(null));
-      return $$2;
-   }
-
-   private void a(int $$0) {
-      if ($$0 > 0) {
-         ddy.a $$1 = this.a[$$0];
-         System.arraycopy(this.a, 0, this.a, 1, $$0);
-         this.a[0] = $$1;
-      }
-   }
-
-   private void a(ddi $$0, @Nullable ddz<ddj> $$1) {
-      jn<czd> $$2 = jn.a($$0.a(), czd.k);
-
-      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
-         $$2.set($$3, $$0.a($$3).c(1));
-      }
-
-      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
-      this.a[0] = new ddy.a($$2, $$0.f(), $$0.g(), $$1);
-   }
-
-   static record a(jn<czd> a, int b, int c, @Nullable ddz<ddj> d) {
-      public boolean a(ddi $$0) {
-         if (this.b == $$0.f() && this.c == $$0.g()) {
-            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
-               if (!czd.c(this.a.get($$1), $$0.a($$1))) {
-                  return false;
+                  $$2 = true;
                }
             }
+         }
 
-            return true;
-         } else {
-            return false;
+         return $$3 && $$2;
+      }
+   }
+
+   public czk a(ddp $$0, jh.a $$1) {
+      int $$2 = 0;
+      czk $$3 = czk.k;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         czk $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if ($$5.c(kk.M)) {
+               if (!$$3.f()) {
+                  return czk.k;
+               }
+
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(czo.vt)) {
+                  return czk.k;
+               }
+
+               $$2++;
+            }
          }
       }
+
+      return !$$3.f() && $$2 >= 1 ? $$3.c($$2 + 1) : czk.k;
+   }
+
+   @Override
+   public del<ddy> a() {
+      return del.e;
    }
 }

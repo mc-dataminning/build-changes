@@ -13,9 +13,9 @@ import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
 public class sq {
-   private final je.c<sr> a;
+   private final jf.c<sr> a;
    @Nullable
-   private iu b;
+   private iv b;
    private final arq c;
    private final Collection<st> d = Lists.newArrayList();
    private final int e;
@@ -28,13 +28,13 @@ public class sq {
    private final tg l;
    private final Stopwatch m = Stopwatch.createUnstarted();
    private boolean n;
-   private final dsz o;
+   private final dtg o;
    @Nullable
    private so p;
    @Nullable
-   private dza q;
+   private dzh q;
 
-   public sq(je.c<sr> $$0, dsz $$1, arq $$2, tg $$3) {
+   public sq(jf.c<sr> $$0, dtg $$1, arq $$2, tg $$3) {
       this.a = $$0;
       this.c = $$2;
       this.l = $$3;
@@ -42,7 +42,7 @@ public class sq {
       this.o = $$1;
    }
 
-   public void a(@Nullable iu $$0) {
+   public void a(@Nullable iv $$0) {
       this.b = $$0;
    }
 
@@ -53,14 +53,14 @@ public class sq {
 
    public void a() {
       if (!this.h) {
-         dza $$0 = this.f();
+         dzh $$0 = this.f();
          if (!$$0.A()) {
             this.a(wy.a("test.error.structure.failure", $$0.k().getString()));
          }
 
          this.h = true;
          $$0.C();
-         eqt $$1 = $$0.d();
+         era $$1 = $$0.d();
          this.c.n().a($$1);
          this.c.a($$1);
          this.d.forEach($$0x -> $$0x.a(this));
@@ -158,26 +158,26 @@ public class sq {
    }
 
    @Nullable
-   public iu c() {
+   public iv c() {
       return this.b;
    }
 
-   public iu d() {
+   public iv d() {
       return this.q.B();
    }
 
-   public fel e() {
-      dza $$0 = this.f();
+   public fes e() {
+      dzh $$0 = this.f();
       return $$0.f();
    }
 
-   public dza f() {
+   public dzh f() {
       if (this.q == null) {
          if (this.b == null) {
             throw new IllegalStateException("This GameTestInfo has no position");
          }
 
-         if (this.c.c_(this.b) instanceof dza $$0) {
+         if (this.c.c_(this.b) instanceof dzh $$0) {
             this.q = $$0;
          }
 
@@ -225,9 +225,9 @@ public class sq {
    public void m() {
       if (this.p == null) {
          this.G();
-         fel $$0 = this.e();
-         List<bwf> $$1 = this.g().a(bwf.class, $$0.g(1.0), $$0x -> !($$0x instanceof crc));
-         $$1.forEach($$0x -> $$0x.a(bwf.e.b));
+         fes $$0 = this.e();
+         List<bwi> $$1 = this.g().a(bwi.class, $$0.g(1.0), $$0x -> !($$0x instanceof crj));
+         $$1.forEach($$0x -> $$0x.a(bwi.d.b));
       }
    }
 
@@ -259,12 +259,12 @@ public class sq {
       return this;
    }
 
-   private dza a(iu $$0, dsz $$1, arq $$2) {
-      $$2.b($$0, dmh.pJ.m());
-      dza $$3 = Objects.requireNonNull((dza)$$2.c_($$0));
+   private dzh a(iv $$0, dtg $$1, arq $$2) {
+      $$2.b($$0, dmo.pJ.m());
+      dzh $$3 = Objects.requireNonNull((dzh)$$2.c_($$0));
       alf<sr> $$4 = this.w().h();
-      jz $$5 = dza.a($$2, $$4).orElse(new jz(1, 1, 1));
-      $$3.a(new dza.a(Optional.of($$4), $$5, $$1, false, dza.b.a, Optional.empty()));
+      ka $$5 = dzh.a($$2, $$4).orElse(new ka(1, 1, 1));
+      $$3.a(new dzh.a(Optional.of($$4), $$5, $$1, false, dzh.b.a, Optional.empty()));
       return $$3;
    }
 
@@ -290,7 +290,7 @@ public class sq {
       return this.a.a().e();
    }
 
-   public dsz u() {
+   public dtg u() {
       return this.a.a().n().f().a(this.o);
    }
 
@@ -298,7 +298,7 @@ public class sq {
       return this.a.a();
    }
 
-   public je.c<sr> w() {
+   public jf.c<sr> w() {
       return this.a;
    }
 

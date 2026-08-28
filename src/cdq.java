@@ -1,47 +1,21 @@
-public class cdq extends cee {
-   private static final int[] a = new int[]{0, 1, 4, 5, 6, 7};
-   private final cjh b;
-   private final int c;
-   private boolean d;
+import java.util.EnumSet;
 
-   public cdq(cjh $$0, int $$1) {
-      this.b = $$0;
-      this.c = b($$1);
+public class cdq extends cef {
+   private final bxr a;
+
+   public cdq(bxr $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(cef.a.a, cef.a.b));
    }
 
    @Override
    public boolean b() {
-      if (this.b.dY().a(this.c) != 0) {
-         return false;
-      } else {
-         ja $$0 = this.b.cP();
-         int $$1 = $$0.j();
-         int $$2 = $$0.l();
-         iu $$3 = this.b.dv();
-
-         for (int $$4 : a) {
-            if (!this.a($$3, $$1, $$2, $$4) || !this.b($$3, $$1, $$2, $$4)) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   private boolean a(iu $$0, int $$1, int $$2, int $$3) {
-      iu $$4 = $$0.b($$1 * $$3, 0, $$2 * $$3);
-      return this.b.dV().b_($$4).a(axh.a) && !this.b.dV().a_($$4).d();
-   }
-
-   private boolean b(iu $$0, int $$1, int $$2, int $$3) {
-      return this.b.dV().a_($$0.b($$1 * $$3, 1, $$2 * $$3)).l() && this.b.dV().a_($$0.b($$1 * $$3, 2, $$2 * $$3)).l();
+      return this.a.cr() < 140;
    }
 
    @Override
    public boolean c() {
-      double $$0 = this.b.dy().e;
-      return (!($$0 * $$0 < 0.03F) || this.b.dN() == 0.0F || !(Math.abs(this.b.dN()) < 10.0F) || !this.b.bj()) && !this.b.aJ();
+      return this.b();
    }
 
    @Override
@@ -51,35 +25,38 @@ public class cdq extends cee {
 
    @Override
    public void d() {
-      ja $$0 = this.b.cP();
-      this.b.i(this.b.dy().b((double)$$0.j() * 0.6, 0.7, (double)$$0.l() * 0.6));
-      this.b.O().m();
+      this.h();
    }
 
-   @Override
-   public void e() {
-      this.b.x(0.0F);
+   private void h() {
+      Iterable<iv> $$0 = iv.b(
+         azm.a(this.a.dz() - 1.0), this.a.dA(), azm.a(this.a.dF() - 1.0), azm.a(this.a.dz() + 1.0), azm.a(this.a.dB() + 8.0), azm.a(this.a.dF() + 1.0)
+      );
+      iv $$1 = null;
+
+      for (iv $$2 : $$0) {
+         if (this.a(this.a.dU(), $$2)) {
+            $$1 = $$2;
+            break;
+         }
+      }
+
+      if ($$1 == null) {
+         $$1 = iv.a(this.a.dz(), this.a.dB() + 8.0, this.a.dF());
+      }
+
+      this.a.O().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
    }
 
    @Override
    public void a() {
-      boolean $$0 = this.d;
-      if (!$$0) {
-         ewo $$1 = this.b.dV().b_(this.b.dv());
-         this.d = $$1.a(axh.a);
-      }
+      this.h();
+      this.a.a(0.02F, new fex((double)this.a.bg, (double)this.a.bh, (double)this.a.bi));
+      this.a.a(bxn.a, this.a.dx());
+   }
 
-      if (this.d && !$$0) {
-         this.b.a(awn.hz, 1.0F, 1.0F);
-      }
-
-      feq $$2 = this.b.dy();
-      if ($$2.e * $$2.e < 0.03F && this.b.dN() != 0.0F) {
-         this.b.x(azm.i(0.2F, this.b.dN(), 0.0F));
-      } else if ($$2.g() > 1.0E-5F) {
-         double $$3 = $$2.i();
-         double $$4 = Math.atan2(-$$2.e, $$3) * 180.0F / (float)Math.PI;
-         this.b.x((float)$$4);
-      }
+   private boolean a(djk $$0, iv $$1) {
+      eao $$2 = $$0.a_($$1);
+      return ($$0.b_($$1).c() || $$2.a(dmo.nJ)) && $$2.a(exk.a);
    }
 }

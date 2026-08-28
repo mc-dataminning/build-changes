@@ -16,8 +16,8 @@ public class yr implements yo {
       }
    };
    public static final yr b = new yr(xv.a);
-   public static final yr c = new yr(xv.a.a(n.m));
-   public static final yr d = new yr(xv.a.a(n.o));
+   public static final yr c = new yr(xv.a.a(o.m));
+   public static final yr d = new yr(xv.a.a(o.o));
    final xv e;
 
    public yr(xv $$0) {

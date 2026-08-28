@@ -25,16 +25,16 @@ public class bbz extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bix.c);
+      Type<?> $$0 = this.getInputSchema().getType(biz.c);
       Type<?> $$1 = $$0.findFieldType("Level");
       OpticFinder<?> $$2 = DSL.fieldFinder("Level", $$1);
       OpticFinder<?> $$3 = $$2.type().findField("Sections");
       Type<?> $$4 = ((ListType)$$3.type()).getElement();
       OpticFinder<?> $$5 = DSL.typeFinder($$4);
-      Type<Pair<String, Dynamic<?>>> $$6 = DSL.named(bix.u.typeName(), DSL.remainderType());
+      Type<Pair<String, Dynamic<?>>> $$6 = DSL.named(biz.u.typeName(), DSL.remainderType());
       OpticFinder<List<Pair<String, Dynamic<?>>>> $$7 = DSL.fieldFinder("Palette", DSL.list($$6));
       return this.fixTypeEverywhereTyped(
-         "BitStorageAlignFix", $$0, this.getOutputSchema().getType(bix.c), $$4x -> $$4x.updateTyped($$2, $$3xx -> this.a(a($$3, $$5, $$7, $$3xx)))
+         "BitStorageAlignFix", $$0, this.getOutputSchema().getType(biz.c), $$4x -> $$4x.updateTyped($$2, $$3xx -> this.a(a($$3, $$5, $$7, $$3xx)))
       );
    }
 

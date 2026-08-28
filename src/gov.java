@@ -1,19 +1,29 @@
-public class gov {
-   public cra a = cra.b;
-   protected fep b = fep.a;
-
-   public void a() {
+public class gov extends gog {
+   gov(gkl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gop $$7) {
+      super($$0, $$1, $$2, $$3, $$7, 1.25F);
+      this.B = 0.6F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.D *= 0.75F;
+      this.t = 60 + this.r.a(12);
+      this.b($$7);
+      if (this.r.a(4) == 0) {
+         this.a(0.6F + this.r.i() * 0.2F, 0.6F + this.r.i() * 0.3F, this.r.i() * 0.2F);
+      } else {
+         this.a(0.1F + this.r.i() * 0.2F, 0.4F + this.r.i() * 0.3F, this.r.i() * 0.2F);
+      }
    }
 
-   public fep b() {
-      return this.b;
-   }
+   public static class a implements gnx<mc> {
+      private final gop a;
 
-   public boolean c() {
-      return this.b.j > 1.0E-5F;
-   }
+      public a(gop $$0) {
+         this.a = $$0;
+      }
 
-   public void d() {
-      this.a = new cra(this.a.a(), this.a.b(), this.a.c(), this.a.d(), true, this.a.f(), this.a.g());
+      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gov($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
    }
 }

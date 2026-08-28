@@ -1,41 +1,80 @@
-import com.mojang.serialization.Codec;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.concurrent.TimeUnit;
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.slf4j.Logger;
 
-public class eju extends eio {
-   public eju(Codec<els> $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected void a(djb $$0, azv $$1, iu $$2, int $$3, iu.a $$4, els $$5) {
-      int $$6 = $$5.d;
-
-      for (int $$7 = -$$6; $$7 <= $$6; $$7++) {
-         for (int $$8 = -$$6; $$8 <= $$6; $$8++) {
-            boolean $$9 = $$7 == -$$6;
-            boolean $$10 = $$7 == $$6;
-            boolean $$11 = $$8 == -$$6;
-            boolean $$12 = $$8 == $$6;
-            boolean $$13 = $$9 || $$10;
-            boolean $$14 = $$11 || $$12;
-            if (!$$13 || !$$14) {
-               $$4.a($$2, $$7, $$3, $$8);
-               boolean $$15 = $$9 || $$14 && $$7 == 1 - $$6;
-               boolean $$16 = $$10 || $$14 && $$7 == $$6 - 1;
-               boolean $$17 = $$11 || $$13 && $$8 == 1 - $$6;
-               boolean $$18 = $$12 || $$13 && $$8 == $$6 - 1;
-               eah $$19 = $$5.b.a($$1, $$2);
-               if ($$19.b(dqh.e) && $$19.b(dqh.c) && $$19.b(dqh.b) && $$19.b(dqh.d)) {
-                  $$19 = $$19.b(dqh.e, Boolean.valueOf($$15)).b(dqh.c, Boolean.valueOf($$16)).b(dqh.b, Boolean.valueOf($$17)).b(dqh.d, Boolean.valueOf($$18));
-               }
-
-               this.a($$0, $$4, $$19);
-            }
+public class eju {
+   private static final Logger a = LogUtils.getLogger();
+   private static final LoadingCache<arq, eju.b> b = CacheBuilder.newBuilder()
+      .weakKeys()
+      .expireAfterAccess(5L, TimeUnit.MINUTES)
+      .build(new CacheLoader<arq, eju.b>() {
+         public eju.b a(arq $$0) {
+            return new eju.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
          }
+      });
+
+   public static void a(arq $$0) {
+      try {
+         ((eju.b)b.get($$0)).b().increment();
+      } catch (Exception var2) {
+         a.error("Failed to increment chunk count", var2);
       }
    }
 
-   @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      return $$3 <= 3 ? 0 : $$2;
+   public static void a(arq $$0, ejf<?, ?> $$1, Optional<eqm> $$2) {
+      try {
+         ((eju.b)b.get($$0)).a().computeInt(new eju.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
+      } catch (Exception var4) {
+         a.error("Failed to increment feature count", var4);
+      }
+   }
+
+   public static void a() {
+      b.invalidateAll();
+      a.debug("Cleared feature counts");
+   }
+
+   public static void b() {
+      a.debug("Logging feature counts:");
+      b.asMap()
+         .forEach(
+            ($$0, $$1) -> {
+               String $$2 = $$0.aj().a().toString();
+               boolean $$3 = $$0.p().x();
+               js<eqm> $$4 = $$0.F_().f(mh.bb);
+               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
+               Integer $$6 = $$1.b().getValue();
+               a.debug($$5 + " total_chunks: " + $$6);
+               $$1.a()
+                  .forEach(
+                     ($$3x, $$4x) -> a.debug(
+                           $$5
+                              + " "
+                              + String.format(Locale.ROOT, "%10d ", $$4x)
+                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
+                              + $$3x.b().flatMap($$4::d).<alg>map(alf::a)
+                              + " "
+                              + $$3x.a().b()
+                              + " "
+                              + $$3x.a()
+                        )
+                  );
+            }
+         );
+   }
+
+   static record a(ejf<?, ?> a, Optional<eqm> b) {
+   }
+
+   static record b(Object2IntMap<eju.a> a, MutableInt b) {
    }
 }

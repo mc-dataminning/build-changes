@@ -1,151 +1,278 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import java.util.Map;
-import java.util.Optional;
+import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.DynamicOps;
+import java.util.List;
+import java.util.Set;
+import java.util.UUID;
 import javax.annotation.Nullable;
 
-public final class dzv {
-   private static final Map<String, dzv> l = new Object2ObjectArrayMap();
-   public static final Codec<dzv> a = Codec.stringResolver($$0 -> $$0.m, l::get);
-   public static final dzv b = new dzv(
-      "oak", 0.1F, Optional.empty(), Optional.empty(), Optional.of(rn.g), Optional.of(rn.q), Optional.of(rn.F), Optional.of(rn.M)
-   );
-   public static final dzv c = new dzv(
-      "spruce", 0.5F, Optional.of(rn.t), Optional.of(rn.u), Optional.of(rn.n), Optional.empty(), Optional.empty(), Optional.empty()
-   );
-   public static final dzv d = new dzv(
-      "mangrove", 0.85F, Optional.empty(), Optional.empty(), Optional.of(rn.A), Optional.of(rn.B), Optional.empty(), Optional.empty()
-   );
-   public static final dzv e = new dzv("azalea", Optional.empty(), Optional.of(rn.z), Optional.empty());
-   public static final dzv f = new dzv("birch", Optional.empty(), Optional.of(rn.l), Optional.of(rn.J));
-   public static final dzv g = new dzv("jungle", Optional.of(rn.s), Optional.of(rn.r), Optional.empty());
-   public static final dzv h = new dzv("acacia", Optional.empty(), Optional.of(rn.m), Optional.empty());
-   public static final dzv i = new dzv("cherry", Optional.empty(), Optional.of(rn.C), Optional.of(rn.O));
-   public static final dzv j = new dzv("dark_oak", Optional.of(rn.h), Optional.empty(), Optional.empty());
-   public static final dzv k = new dzv("pale_oak", Optional.of(rn.j), Optional.empty(), Optional.empty());
-   private final String m;
-   private final float n;
-   private final Optional<alf<eiy<?, ?>>> o;
-   private final Optional<alf<eiy<?, ?>>> p;
-   private final Optional<alf<eiy<?, ?>>> q;
-   private final Optional<alf<eiy<?, ?>>> r;
-   private final Optional<alf<eiy<?, ?>>> s;
-   private final Optional<alf<eiy<?, ?>>> t;
+public class dzv extends dxm {
+   private final dzy a = new dzy();
+   private final dzz b = new dzz();
+   private final dzw c = new dzw();
+   private dzx d = dzx.b;
 
-   public dzv(String $$0, Optional<alf<eiy<?, ?>>> $$1, Optional<alf<eiy<?, ?>>> $$2, Optional<alf<eiy<?, ?>>> $$3) {
-      this($$0, 0.0F, $$1, Optional.empty(), $$2, Optional.empty(), $$3, Optional.empty());
-   }
-
-   public dzv(
-      String $$0,
-      float $$1,
-      Optional<alf<eiy<?, ?>>> $$2,
-      Optional<alf<eiy<?, ?>>> $$3,
-      Optional<alf<eiy<?, ?>>> $$4,
-      Optional<alf<eiy<?, ?>>> $$5,
-      Optional<alf<eiy<?, ?>>> $$6,
-      Optional<alf<eiy<?, ?>>> $$7
-   ) {
-      this.m = $$0;
-      this.n = $$1;
-      this.o = $$2;
-      this.p = $$3;
-      this.q = $$4;
-      this.r = $$5;
-      this.s = $$6;
-      this.t = $$7;
-      l.put($$0, this);
+   public dzv(iv $$0, eao $$1) {
+      super(dxo.S, $$0, $$1);
    }
 
    @Nullable
-   private alf<eiy<?, ?>> a(azv $$0, boolean $$1) {
-      if ($$0.i() < this.n) {
-         if ($$1 && this.t.isPresent()) {
-            return this.t.get();
+   @Override
+   public zf<abu> au_() {
+      return aca.a(this);
+   }
+
+   @Override
+   public tz a(jh.a $$0) {
+      return ag.a(new tz(), $$1 -> $$1.a("shared_data", dzz.b, $$0.a(un.a), this.b));
+   }
+
+   @Override
+   protected void b(tz $$0, jh.a $$1) {
+      super.b($$0, $$1);
+      ale<uw> $$2 = $$1.a(un.a);
+      $$0.a("config", dzx.c, $$2, this.d);
+      $$0.a("shared_data", dzz.b, $$2, this.b);
+      $$0.a("server_data", dzy.b, $$2, this.a);
+   }
+
+   @Override
+   protected void a(tz $$0, jh.a $$1) {
+      super.a($$0, $$1);
+      DynamicOps<uw> $$2 = $$1.a(un.a);
+      $$0.<dzy>a("server_data", dzy.b, $$2).ifPresent(this.a::a);
+      this.d = $$0.<dzx>a("config", dzx.c, $$2).orElse(dzx.b);
+      $$0.<dzz>a("shared_data", dzz.b, $$2).ifPresent(this.b::a);
+   }
+
+   @Nullable
+   public dzy a() {
+      return this.n != null && !this.n.C ? this.a : null;
+   }
+
+   public dzz c() {
+      return this.b;
+   }
+
+   public dzw d() {
+      return this.c;
+   }
+
+   public dzx f() {
+      return this.d;
+   }
+
+   @VisibleForTesting
+   public void a(dzx $$0) {
+      this.d = $$0;
+   }
+
+   public static final class a {
+      private static final int a = 20;
+      private static final float b = 0.5F;
+      private static final float c = 0.02F;
+      private static final int d = 20;
+      private static final int e = 20;
+
+      public static void a(djh $$0, iv $$1, eao $$2, dzw $$3, dzz $$4) {
+         $$3.c();
+         if ($$0.ae() % 20L == 0L) {
+            a($$0, $$1, $$2, $$4);
          }
 
-         if (this.r.isPresent()) {
-            return this.r.get();
+         a($$0, $$1, $$4, $$2.c(dvx.d) ? ly.N : ly.aM);
+         a($$0, $$1, $$4);
+      }
+
+      public static void a(djh $$0, iv $$1, eao $$2, dzz $$3, lw $$4) {
+         a($$0, $$1, $$2, $$3);
+         azv $$5 = $$0.A;
+
+         for (int $$6 = 0; $$6 < 20; $$6++) {
+            fex $$7 = b($$1, $$5);
+            $$0.a(ly.ah, $$7.a(), $$7.b(), $$7.c(), 0.0, 0.0, 0.0);
+            $$0.a($$4, $$7.a(), $$7.b(), $$7.c(), 0.0, 0.0, 0.0);
          }
       }
 
-      return $$1 && this.s.isPresent() ? this.s.get() : this.q.orElse(null);
-   }
+      public static void a(djh $$0, iv $$1, lw $$2) {
+         azv $$3 = $$0.A;
 
-   @Nullable
-   private alf<eiy<?, ?>> a(azv $$0) {
-      return this.p.isPresent() && $$0.i() < this.n ? this.p.get() : this.o.orElse(null);
-   }
+         for (int $$4 = 0; $$4 < 20; $$4++) {
+            fex $$5 = a($$1, $$3);
+            fex $$6 = new fex($$3.k() * 0.02, $$3.k() * 0.02, $$3.k() * 0.02);
+            $$0.a($$2, $$5.a(), $$5.b(), $$5.c(), $$6.a(), $$6.b(), $$6.c());
+         }
+      }
 
-   public boolean a(arq $$0, ecf $$1, iu $$2, eah $$3, azv $$4) {
-      alf<eiy<?, ?>> $$5 = this.a($$4);
-      if ($$5 != null) {
-         je<eiy<?, ?>> $$6 = $$0.F_().f(mg.aL).a($$5).orElse(null);
-         if ($$6 != null) {
-            for (int $$7 = 0; $$7 >= -1; $$7--) {
-               for (int $$8 = 0; $$8 >= -1; $$8--) {
-                  if (a($$3, $$0, $$2, $$7, $$8)) {
-                     eiy<?, ?> $$9 = $$6.a();
-                     eah $$10 = dmh.a.m();
-                     $$0.a($$2.b($$7, 0, $$8), $$10, 260);
-                     $$0.a($$2.b($$7 + 1, 0, $$8), $$10, 260);
-                     $$0.a($$2.b($$7, 0, $$8 + 1), $$10, 260);
-                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$10, 260);
-                     if ($$9.a($$0, $$1, $$4, $$2.b($$7, 0, $$8))) {
-                        return true;
-                     }
+      private static void a(djh $$0, iv $$1, dzz $$2, lw $$3) {
+         azv $$4 = $$0.C_();
+         if ($$4.i() <= 0.5F) {
+            fex $$5 = b($$1, $$4);
+            $$0.a(ly.ah, $$5.a(), $$5.b(), $$5.c(), 0.0, 0.0, 0.0);
+            if (a($$2)) {
+               $$0.a($$3, $$5.a(), $$5.b(), $$5.c(), 0.0, 0.0, 0.0);
+            }
+         }
+      }
 
-                     $$0.a($$2.b($$7, 0, $$8), $$3, 260);
-                     $$0.a($$2.b($$7 + 1, 0, $$8), $$3, 260);
-                     $$0.a($$2.b($$7, 0, $$8 + 1), $$3, 260);
-                     $$0.a($$2.b($$7 + 1, 0, $$8 + 1), $$3, 260);
-                     return false;
-                  }
+      private static void a(djh $$0, fex $$1, crj $$2) {
+         azv $$3 = $$0.A;
+         fex $$4 = $$1.a($$2.ds().b(0.0, (double)($$2.dq() / 2.0F), 0.0));
+         int $$5 = azm.a($$3, 2, 5);
+
+         for (int $$6 = 0; $$6 < $$5; $$6++) {
+            fex $$7 = $$4.a($$3, 1.0F);
+            $$0.a(ly.bd, $$1.a(), $$1.b(), $$1.c(), $$7.a(), $$7.b(), $$7.c());
+         }
+      }
+
+      private static void a(djh $$0, iv $$1, eao $$2, dzz $$3) {
+         Set<UUID> $$4 = $$3.d();
+         if (!$$4.isEmpty()) {
+            fex $$5 = a($$1, $$2.c(dvx.c));
+
+            for (UUID $$6 : $$4) {
+               crj $$7 = $$0.a($$6);
+               if ($$7 != null && a($$1, $$3, $$7)) {
+                  a($$0, $$5, $$7);
                }
             }
          }
       }
 
-      alf<eiy<?, ?>> $$11 = this.a($$4, this.a($$0, $$2));
-      if ($$11 == null) {
-         return false;
-      } else {
-         je<eiy<?, ?>> $$12 = $$0.F_().f(mg.aL).a($$11).orElse(null);
-         if ($$12 == null) {
-            return false;
-         } else {
-            eiy<?, ?> $$13 = $$12.a();
-            eah $$14 = $$0.b_($$2).g();
-            $$0.a($$2, $$14, 260);
-            if ($$13.a($$0, $$1, $$4, $$2)) {
-               if ($$0.a_($$2) == $$14) {
-                  $$0.a($$2, $$3, $$14, 2);
-               }
+      private static boolean a(iv $$0, dzz $$1, crj $$2) {
+         return $$2.du().j($$0) <= azm.k($$1.e());
+      }
 
-               return true;
+      private static void a(djh $$0, iv $$1, dzz $$2) {
+         if (a($$2)) {
+            azv $$3 = $$0.C_();
+            if ($$3.i() <= 0.02F) {
+               $$0.a($$1, awn.BF, awo.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
+            }
+         }
+      }
+
+      public static boolean a(dzz $$0) {
+         return $$0.b();
+      }
+
+      private static fex a(iv $$0, azv $$1) {
+         return fex.a($$0).b(azm.a($$1, 0.4, 0.6), azm.a($$1, 0.4, 0.6), azm.a($$1, 0.4, 0.6));
+      }
+
+      private static fex b(iv $$0, azv $$1) {
+         return fex.a($$0).b(azm.a($$1, 0.1, 0.9), azm.a($$1, 0.25, 0.75), azm.a($$1, 0.1, 0.9));
+      }
+
+      private static fex a(iv $$0, jb $$1) {
+         return fex.c($$0).b((double)$$1.j() * 0.5, 1.75, (double)$$1.l() * 0.5);
+      }
+   }
+
+   public static final class b {
+      private static final int a = 14;
+      private static final int b = 20;
+      private static final int c = 15;
+
+      public static void a(arq $$0, iv $$1, eao $$2, dzx $$3, dzy $$4, dzz $$5) {
+         eaa $$6 = $$2.c(dvx.b);
+         if (a($$0.ae(), $$6)) {
+            a($$0, $$6, $$3, $$5, $$1);
+         }
+
+         eao $$7 = $$2;
+         if ($$0.ae() >= $$4.c()) {
+            $$7 = $$2.b(dvx.b, $$6.a($$0, $$1, $$3, $$4, $$5));
+            if ($$2 != $$7) {
+               a($$0, $$1, $$2, $$7, $$3, $$5);
+            }
+         }
+
+         if ($$4.c || $$5.c) {
+            dzv.a($$0, $$1, $$2);
+            if ($$5.c) {
+               $$0.a($$1, $$2, $$7, 2);
+            }
+
+            $$4.c = false;
+            $$5.c = false;
+         }
+      }
+
+      public static void a(arq $$0, iv $$1, eao $$2, dzx $$3, dzy $$4, dzz $$5, crj $$6, czk $$7) {
+         eaa $$8 = $$2.c(dvx.b);
+         if (a($$3, $$8)) {
+            if (!a($$3, $$7)) {
+               a($$0, $$4, $$1, awn.BO);
+            } else if ($$4.a($$6)) {
+               a($$0, $$4, $$1, awn.BK);
             } else {
-               $$0.a($$2, $$3, 260);
-               return false;
+               List<czk> $$9 = a($$0, $$3, $$1, $$6, $$7);
+               if (!$$9.isEmpty()) {
+                  $$6.b(awx.c.b($$7.h()));
+                  $$7.a($$3.e().M(), (bxj)$$6);
+                  a($$0, $$2, $$1, $$3, $$4, $$5, $$9);
+                  $$4.b($$6);
+                  $$5.a($$0, $$1, $$4, $$3, $$3.d());
+               }
             }
          }
       }
-   }
 
-   private static boolean a(eah $$0, dig $$1, iu $$2, int $$3, int $$4) {
-      dmf $$5 = $$0.b();
-      return $$1.a_($$2.b($$3, 0, $$4)).a($$5)
-         && $$1.a_($$2.b($$3 + 1, 0, $$4)).a($$5)
-         && $$1.a_($$2.b($$3, 0, $$4 + 1)).a($$5)
-         && $$1.a_($$2.b($$3 + 1, 0, $$4 + 1)).a($$5);
-   }
+      static void a(arq $$0, iv $$1, eao $$2, eao $$3, dzx $$4, dzz $$5) {
+         eaa $$6 = $$2.c(dvx.b);
+         eaa $$7 = $$3.c(dvx.b);
+         $$0.a($$1, $$3, 3);
+         $$6.a($$0, $$1, $$7, $$4, $$5, $$3.c(dvx.d));
+      }
 
-   private boolean a(djb $$0, iu $$1) {
-      for (iu $$2 : iu.a.c($$1.e().d(2).f(2), $$1.d().e(2).g(2))) {
-         if ($$0.a_($$2).a(axc.V)) {
-            return true;
+      static void a(arq $$0, eaa $$1, dzx $$2, dzz $$3, iv $$4) {
+         if (!a($$2, $$1)) {
+            $$3.a(czk.k);
+         } else {
+            czk $$5 = a($$0, $$4, $$2.f().orElse($$2.b()));
+            $$3.a($$5);
          }
       }
 
-      return false;
+      private static czk a(arq $$0, iv $$1, alf<ezt> $$2) {
+         ezt $$3 = $$0.p().bc().b($$2);
+         ezr $$4 = new ezr.a($$0).a(fci.f, fex.b($$1)).a(fch.l);
+         List<czk> $$5 = $$3.a($$4, $$0.C_());
+         return $$5.isEmpty() ? czk.k : ag.a($$5, $$0.C_());
+      }
+
+      private static void a(arq $$0, eao $$1, iv $$2, dzx $$3, dzy $$4, dzz $$5, List<czk> $$6) {
+         $$4.a($$6);
+         $$5.a($$4.f());
+         $$4.b($$0.ae() + 14L);
+         a($$0, $$2, $$1, $$1.b(dvx.b, eaa.c), $$3, $$5);
+      }
+
+      private static List<czk> a(arq $$0, dzx $$1, iv $$2, crj $$3, czk $$4) {
+         ezt $$5 = $$0.p().bc().b($$1.b());
+         ezr $$6 = new ezr.a($$0).a(fci.f, fex.b($$2)).a($$3.eg()).a(fci.a, $$3).a(fci.i, $$4).a(fch.l);
+         return $$5.a($$6);
+      }
+
+      private static boolean a(dzx $$0, eaa $$1) {
+         return !$$0.e().f() && $$1 != eaa.a;
+      }
+
+      private static boolean a(dzx $$0, czk $$1) {
+         return czk.c($$1, $$0.e()) && $$1.M() >= $$0.e().M();
+      }
+
+      private static boolean a(long $$0, eaa $$1) {
+         return $$0 % 20L == 0L && $$1 == eaa.b;
+      }
+
+      private static void a(arq $$0, dzy $$1, iv $$2, awm $$3) {
+         if ($$0.ae() >= $$1.a() + 15L) {
+            $$0.a(null, $$2, $$3, awo.e);
+            $$1.a($$0.ae());
+         }
+      }
    }
 }

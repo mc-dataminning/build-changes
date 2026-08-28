@@ -1,30 +1,29 @@
 import com.mojang.serialization.MapCodec;
 
-public class dvn extends dpy {
-   public static final MapCodec<dvn> c = b(dvn::new);
-   private static final ffk g = dmf.b(8.0, 0.0, 15.0);
+public class dvn extends dqg {
+   public static final MapCodec<dvn> b = b(dvn::new);
 
-   @Override
-   public MapCodec<dvn> a() {
-      return c;
-   }
-
-   public dvn(eag.d $$0) {
-      super($$0, ja.b, g, false, 0.1);
+   protected dvn(ean.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected int a(azv $$0) {
-      return drs.a($$0);
+   protected MapCodec<? extends dvn> a() {
+      return b;
    }
 
    @Override
-   protected dmf b() {
-      return dmh.pi;
+   protected ffr c(eao $$0, din $$1, iv $$2, ffc $$3) {
+      return ffo.a();
    }
 
    @Override
-   protected boolean h(eah $$0) {
-      return drs.a($$0);
+   protected float c(eao $$0, din $$1, iv $$2) {
+      return 1.0F;
+   }
+
+   @Override
+   protected boolean e_(eao $$0) {
+      return true;
    }
 }

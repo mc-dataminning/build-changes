@@ -1,58 +1,37 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import io.netty.buffer.ByteBuf;
 import javax.annotation.Nullable;
 
-public class cz extends dj<cz.a> {
-   @Override
-   public Codec<cz.a> a() {
-      return cz.a.a;
+public record cz(tz c) {
+   public static final Codec<cz> a = ux.j.xmap(cz::new, cz::a);
+   public static final yw<ByteBuf, cz> b = yu.s.a(cz::new, cz::a);
+
+   public boolean a(kf $$0) {
+      dbs $$1 = $$0.a(kk.b, dbs.a);
+      return $$1.b(this.c);
    }
 
-   public void a(arr $$0, czd $$1, @Nullable bwf $$2) {
-      ezh $$3 = bx.b($$0, $$2);
-      this.a($$0, $$3x -> $$3x.a($$0, $$1, $$3));
+   public boolean a(bwi $$0) {
+      return this.a(b($$0));
    }
 
-   public static record a(Optional<bi> b, Optional<cl> c, Optional<bi> d) implements dj.a {
-      public static final Codec<cz.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bx.b.optionalFieldOf("player").forGetter(cz.a::a),
-                  cl.a.optionalFieldOf("item").forGetter(cz.a::b),
-                  bx.b.optionalFieldOf("entity").forGetter(cz.a::c)
-               )
-               .apply($$0, cz.a::new)
-      );
+   public boolean a(@Nullable uw $$0) {
+      return $$0 != null && uo.a(this.c, $$0, true);
+   }
 
-      public static aq<cz.a> a(bi $$0, Optional<cl> $$1, Optional<bi> $$2) {
-         return ap.R.a(new cz.a(Optional.of($$0), $$1, $$2));
+   public static tz b(bwi $$0) {
+      tz $$1 = $$0.f(new tz());
+      if ($$0 instanceof crj $$2) {
+         czk $$3 = $$2.gi().g();
+         if (!$$3.f()) {
+            $$1.a("SelectedItem", $$3.a($$0.dW()));
+         }
       }
 
-      public static aq<cz.a> a(Optional<bi> $$0, Optional<cl> $$1, Optional<bi> $$2) {
-         return ap.S.a(new cz.a($$0, $$1, $$2));
-      }
+      return $$1;
+   }
 
-      public boolean a(arr $$0, czd $$1, ezh $$2) {
-         return this.c.isPresent() && !this.c.get().a($$1) ? false : !this.d.isPresent() || this.d.get().a($$2);
-      }
-
-      @Override
-      public void a(bj $$0) {
-         dj.a.super.a($$0);
-         $$0.a(this.d, ".entity");
-      }
-
-      @Override
-      public Optional<bi> a() {
-         return this.b;
-      }
-
-      public Optional<cl> b() {
-         return this.c;
-      }
-
-      public Optional<bi> c() {
-         return this.d;
-      }
+   public tz a() {
+      return this.c;
    }
 }

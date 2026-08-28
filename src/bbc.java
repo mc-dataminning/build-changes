@@ -27,7 +27,7 @@ import java.util.stream.Stream;
 
 public class bbc {
    private static final BiFunction<Integer, Schema, Schema> b = Schema::new;
-   private static final BiFunction<Integer, Schema, Schema> c = bks::new;
+   private static final BiFunction<Integer, Schema, Schema> c = bku::new;
    private static final Result d = b();
    public static final int a = 4295;
 
@@ -39,7 +39,7 @@ public class bbc {
    }
 
    private static Result b() {
-      DataFixerBuilder $$0 = new DataFixerBuilder(ab.b().d().c());
+      DataFixerBuilder $$0 = new DataFixerBuilder(ac.b().d().c());
       a($$0);
       return $$0.build();
    }
@@ -56,98 +56,98 @@ public class bbc {
    }
 
    private static void a(DataFixerBuilder $$0) {
-      $$0.addSchema(99, bou::new);
-      Schema $$1 = $$0.addSchema(100, bkt::new);
-      $$0.addFixer(new beg($$1));
+      $$0.addSchema(99, bow::new);
+      Schema $$1 = $$0.addSchema(100, bkv::new);
+      $$0.addFixer(new beh($$1));
       Schema $$2 = $$0.addSchema(101, b);
-      $$0.addFixer(new bkh($$2));
-      Schema $$3 = $$0.addSchema(102, bku::new);
-      $$0.addFixer(new bgh($$3, true));
-      $$0.addFixer(new bgj($$3, false));
+      $$0.addFixer(new bkj($$2));
+      Schema $$3 = $$0.addSchema(102, bkw::new);
+      $$0.addFixer(new bgj($$3, true));
+      $$0.addFixer(new bgl($$3, false));
       Schema $$4 = $$0.addSchema(105, b);
-      $$0.addFixer(new bgn($$4, true));
-      Schema $$5 = $$0.addSchema(106, bkw::new);
-      $$0.addFixer(new bhp($$5, true));
-      Schema $$6 = $$0.addSchema(107, bkx::new);
-      $$0.addFixer(new bep($$6));
+      $$0.addFixer(new bgp($$4, true));
+      Schema $$5 = $$0.addSchema(106, bky::new);
+      $$0.addFixer(new bhr($$5, true));
+      Schema $$6 = $$0.addSchema(107, bkz::new);
+      $$0.addFixer(new beq($$6));
       Schema $$7 = $$0.addSchema(108, b);
-      $$0.addFixer(new bfd($$7, true));
+      $$0.addFixer(new bfe($$7, true));
       Schema $$8 = $$0.addSchema(109, b);
-      $$0.addFixer(new bek($$8, true));
+      $$0.addFixer(new bel($$8, true));
       Schema $$9 = $$0.addSchema(110, b);
-      $$0.addFixer(new bel($$9, true));
+      $$0.addFixer(new bem($$9, true));
       Schema $$10 = $$0.addSchema(111, b);
-      $$0.addFixer(new beq($$10, true));
+      $$0.addFixer(new ber($$10, true));
       Schema $$11 = $$0.addSchema(113, b);
-      $$0.addFixer(new bev($$11, true));
-      Schema $$12 = $$0.addSchema(135, bkz::new);
-      $$0.addFixer(new bex($$12, true));
-      Schema $$13 = $$0.addSchema(143, bla::new);
-      $$0.addFixer(new bff($$13, true));
+      $$0.addFixer(new bew($$11, true));
+      Schema $$12 = $$0.addSchema(135, blb::new);
+      $$0.addFixer(new bey($$12, true));
+      Schema $$13 = $$0.addSchema(143, blc::new);
+      $$0.addFixer(new bfg($$13, true));
       Schema $$14 = $$0.addSchema(147, b);
-      $$0.addFixer(new bdy($$14, true));
+      $$0.addFixer(new bdz($$14, true));
       Schema $$15 = $$0.addSchema(165, b);
-      $$0.addFixer(new bju($$15));
-      Schema $$16 = $$0.addSchema(501, bom::new);
-      $$0.addFixer(new bbl($$16, "Add 1.10 entities fix", bix.D));
+      $$0.addFixer(new bjw($$15));
+      Schema $$16 = $$0.addSchema(501, boo::new);
+      $$0.addFixer(new bbl($$16, "Add 1.10 entities fix", biz.D));
       Schema $$17 = $$0.addSchema(502, b);
-      $$0.addFixer(bgl.a($$17, "cooked_fished item renamer", $$0x -> Objects.equals(bks.a($$0x), "minecraft:cooked_fished") ? "minecraft:cooked_fish" : $$0x));
-      $$0.addFixer(new bfk($$17, false));
+      $$0.addFixer(bgn.a($$17, "cooked_fished item renamer", $$0x -> Objects.equals(bku.a($$0x), "minecraft:cooked_fished") ? "minecraft:cooked_fish" : $$0x));
+      $$0.addFixer(new bfl($$17, false));
       Schema $$18 = $$0.addSchema(505, b);
-      $$0.addFixer(new bic($$18, false));
-      Schema $$19 = $$0.addSchema(700, bon::new);
-      $$0.addFixer(new bef($$19, true));
-      Schema $$20 = $$0.addSchema(701, boo::new);
-      $$0.addFixer(new bfb($$20, true));
-      Schema $$21 = $$0.addSchema(702, bop::new);
-      $$0.addFixer(new bfj($$21));
-      Schema $$22 = $$0.addSchema(703, boq::new);
-      $$0.addFixer(new bem($$22, true));
-      Schema $$23 = $$0.addSchema(704, bor::new);
+      $$0.addFixer(new bie($$18, false));
+      Schema $$19 = $$0.addSchema(700, bop::new);
+      $$0.addFixer(new beg($$19, true));
+      Schema $$20 = $$0.addSchema(701, boq::new);
+      $$0.addFixer(new bfc($$20, true));
+      Schema $$21 = $$0.addSchema(702, bor::new);
+      $$0.addFixer(new bfk($$21));
+      Schema $$22 = $$0.addSchema(703, bos::new);
+      $$0.addFixer(new ben($$22, true));
+      Schema $$23 = $$0.addSchema(704, bot::new);
       $$0.addFixer(new bcg($$23, true));
-      Schema $$24 = $$0.addSchema(705, bos::new);
-      $$0.addFixer(new ben($$24, true));
+      Schema $$24 = $$0.addSchema(705, bou::new);
+      $$0.addFixer(new beo($$24, true));
       Schema $$25 = $$0.addSchema(804, c);
-      $$0.addFixer(new bgf($$25, true));
+      $$0.addFixer(new bgh($$25, true));
       Schema $$26 = $$0.addSchema(806, c);
-      $$0.addFixer(new bgx($$26, false));
-      Schema $$27 = $$0.addSchema(808, bot::new);
-      $$0.addFixer(new bbl($$27, "added shulker box", bix.s));
+      $$0.addFixer(new bgz($$26, false));
+      Schema $$27 = $$0.addSchema(808, bov::new);
+      $$0.addFixer(new bbl($$27, "added shulker box", biz.s));
       Schema $$28 = $$0.addSchema(808, 1, c);
-      $$0.addFixer(new bez($$28, false));
+      $$0.addFixer(new bfa($$28, false));
       Schema $$29 = $$0.addSchema(813, c);
-      $$0.addFixer(new bgm($$29, false));
+      $$0.addFixer(new bgo($$29, false));
       $$0.addFixer(new bck($$29, false));
       Schema $$30 = $$0.addSchema(816, c);
-      $$0.addFixer(new bif($$30, false));
+      $$0.addFixer(new bih($$30, false));
       Schema $$31 = $$0.addSchema(820, c);
-      $$0.addFixer(bgl.a($$31, "totem item renamer", a("minecraft:totem", "minecraft:totem_of_undying")));
-      Schema $$32 = $$0.addSchema(1022, bkv::new);
-      $$0.addFixer(new bko($$32, "added shoulder entities to players", bix.b));
-      Schema $$33 = $$0.addSchema(1125, bky::new);
+      $$0.addFixer(bgn.a($$31, "totem item renamer", a("minecraft:totem", "minecraft:totem_of_undying")));
+      Schema $$32 = $$0.addSchema(1022, bkx::new);
+      $$0.addFixer(new bkq($$32, "added shoulder entities to players", biz.b));
+      Schema $$33 = $$0.addSchema(1125, bla::new);
       $$0.addFixer(new bcz($$33, true));
       $$0.addFixer(new bbw($$33, false));
       Schema $$34 = $$0.addSchema(1344, c);
-      $$0.addFixer(new bid($$34, false));
+      $$0.addFixer(new bif($$34, false));
       Schema $$35 = $$0.addSchema(1446, c);
-      $$0.addFixer(new bie($$35, false));
+      $$0.addFixer(new big($$35, false));
       Schema $$36 = $$0.addSchema(1450, c);
       $$0.addFixer(new bcs($$36, false));
-      Schema $$37 = $$0.addSchema(1451, blb::new);
-      $$0.addFixer(new bbl($$37, "AddTrappedChestFix", bix.s));
-      Schema $$38 = $$0.addSchema(1451, 1, blc::new);
+      Schema $$37 = $$0.addSchema(1451, bld::new);
+      $$0.addFixer(new bbl($$37, "AddTrappedChestFix", biz.s));
+      Schema $$38 = $$0.addSchema(1451, 1, ble::new);
       $$0.addFixer(new bdf($$38, true));
-      Schema $$39 = $$0.addSchema(1451, 2, bld::new);
+      Schema $$39 = $$0.addSchema(1451, 2, blf::new);
       $$0.addFixer(new bcd($$39, true));
-      Schema $$40 = $$0.addSchema(1451, 3, ble::new);
-      $$0.addFixer(new bea($$40, true));
-      $$0.addFixer(new bgr($$40, false));
-      Schema $$41 = $$0.addSchema(1451, 4, blf::new);
+      Schema $$40 = $$0.addSchema(1451, 3, blg::new);
+      $$0.addFixer(new beb($$40, true));
+      $$0.addFixer(new bgt($$40, false));
+      Schema $$41 = $$0.addSchema(1451, 4, blh::new);
       $$0.addFixer(new bcn($$41, true));
-      $$0.addFixer(new bgv($$41, false));
-      Schema $$42 = $$0.addSchema(1451, 5, blg::new);
+      $$0.addFixer(new bgx($$41, false));
+      Schema $$42 = $$0.addSchema(1451, 5, bli::new);
       $$0.addFixer(
-         new bgk(
+         new bgm(
             $$42,
             false,
             Set.of(
@@ -177,50 +177,50 @@ public class bbc {
             )
          )
       );
-      $$0.addFixer(new bbl($$42, "RemoveNoteBlockFlowerPotFix", bix.s));
-      $$0.addFixer(new bgs($$42, false, "minecraft:spawn_egg"));
-      $$0.addFixer(new bfi($$42, false));
+      $$0.addFixer(new bbl($$42, "RemoveNoteBlockFlowerPotFix", biz.s));
+      $$0.addFixer(new bgu($$42, false, "minecraft:spawn_egg"));
+      $$0.addFixer(new bfj($$42, false));
       $$0.addFixer(new bcc($$42, false));
-      $$0.addFixer(new bhf($$42, false));
-      Schema $$43 = $$0.addSchema(1451, 6, blh::new);
-      $$0.addFixer(new bjn($$43, true));
+      $$0.addFixer(new bhh($$42, false));
+      Schema $$43 = $$0.addSchema(1451, 6, blj::new);
+      $$0.addFixer(new bjp($$43, true));
       $$0.addFixer(new bch($$43, false));
       Schema $$44 = $$0.addSchema(1451, 7, c);
-      $$0.addFixer(new bki($$44));
+      $$0.addFixer(new bkk($$44));
       Schema $$45 = $$0.addSchema(1456, c);
-      $$0.addFixer(new beo($$45, false));
-      Schema $$46 = $$0.addSchema(1458, bli::new);
-      $$0.addFixer(new bee($$46));
-      $$0.addFixer(new bgg($$46));
+      $$0.addFixer(new bep($$45, false));
+      Schema $$46 = $$0.addSchema(1458, blk::new);
+      $$0.addFixer(new bef($$46));
+      $$0.addFixer(new bgi($$46));
       $$0.addFixer(new bce($$46));
-      Schema $$47 = $$0.addSchema(1460, blj::new);
-      $$0.addFixer(new ber($$47, false));
-      Schema $$48 = $$0.addSchema(1466, blk::new);
-      $$0.addFixer(new bbl($$48, "Add DUMMY block entity", bix.s));
-      $$0.addFixer(new bdl($$48, true));
-      Schema $$49 = $$0.addSchema(1470, bll::new);
-      $$0.addFixer(new bbl($$49, "Add 1.13 entities fix", bix.D));
+      Schema $$47 = $$0.addSchema(1460, bll::new);
+      $$0.addFixer(new bes($$47, false));
+      Schema $$48 = $$0.addSchema(1466, blm::new);
+      $$0.addFixer(new bbl($$48, "Add DUMMY block entity", biz.s));
+      $$0.addFixer(new bdm($$48, true));
+      Schema $$49 = $$0.addSchema(1470, bln::new);
+      $$0.addFixer(new bbl($$49, "Add 1.13 entities fix", biz.D));
       Schema $$50 = $$0.addSchema(1474, c);
-      $$0.addFixer(new bdm($$50, false));
+      $$0.addFixer(new bdn($$50, false));
       $$0.addFixer(
-         bcq.a($$50, "Colorless shulker block fixer", $$0x -> Objects.equals(bks.a($$0x), "minecraft:purple_shulker_box") ? "minecraft:shulker_box" : $$0x)
+         bcq.a($$50, "Colorless shulker block fixer", $$0x -> Objects.equals(bku.a($$0x), "minecraft:purple_shulker_box") ? "minecraft:shulker_box" : $$0x)
       );
       $$0.addFixer(
-         bgl.a($$50, "Colorless shulker item fixer", $$0x -> Objects.equals(bks.a($$0x), "minecraft:purple_shulker_box") ? "minecraft:shulker_box" : $$0x)
+         bgn.a($$50, "Colorless shulker item fixer", $$0x -> Objects.equals(bku.a($$0x), "minecraft:purple_shulker_box") ? "minecraft:shulker_box" : $$0x)
       );
       Schema $$51 = $$0.addSchema(1475, c);
       $$0.addFixer(bcq.a($$51, "Flowing fixer", b(ImmutableMap.of("minecraft:flowing_water", "minecraft:water", "minecraft:flowing_lava", "minecraft:lava"))));
       Schema $$52 = $$0.addSchema(1480, c);
-      $$0.addFixer(bcq.a($$52, "Rename coral blocks", b(bjd.a)));
-      $$0.addFixer(bgl.a($$52, "Rename coral items", b(bjd.a)));
-      Schema $$53 = $$0.addSchema(1481, blm::new);
-      $$0.addFixer(new bbl($$53, "Add conduit", bix.s));
-      Schema $$54 = $$0.addSchema(1483, bln::new);
-      $$0.addFixer(new bet($$54, true));
-      $$0.addFixer(bgl.a($$54, "Rename pufferfish egg item", b(bet.a)));
+      $$0.addFixer(bcq.a($$52, "Rename coral blocks", b(bjf.a)));
+      $$0.addFixer(bgn.a($$52, "Rename coral items", b(bjf.a)));
+      Schema $$53 = $$0.addSchema(1481, blo::new);
+      $$0.addFixer(new bbl($$53, "Add conduit", biz.s));
+      Schema $$54 = $$0.addSchema(1483, blp::new);
+      $$0.addFixer(new beu($$54, true));
+      $$0.addFixer(bgn.a($$54, "Rename pufferfish egg item", b(beu.a)));
       Schema $$55 = $$0.addSchema(1484, c);
       $$0.addFixer(
-         bgl.a(
+         bgn.a(
             $$55,
             "Rename seagrass items",
             b(ImmutableMap.of("minecraft:sea_grass", "minecraft:seagrass", "minecraft:tall_sea_grass", "minecraft:tall_seagrass"))
@@ -233,13 +233,13 @@ public class bbc {
             b(ImmutableMap.of("minecraft:sea_grass", "minecraft:seagrass", "minecraft:tall_sea_grass", "minecraft:tall_seagrass"))
          )
       );
-      $$0.addFixer(new bga($$55, false));
-      Schema $$56 = $$0.addSchema(1486, blo::new);
-      $$0.addFixer(new bed($$56, true));
-      $$0.addFixer(bgl.a($$56, "Rename cod/salmon egg items", b(bed.b)));
+      $$0.addFixer(new bgb($$55, false));
+      Schema $$56 = $$0.addSchema(1486, blq::new);
+      $$0.addFixer(new bee($$56, true));
+      $$0.addFixer(bgn.a($$56, "Rename cod/salmon egg items", b(bee.b)));
       Schema $$57 = $$0.addSchema(1487, c);
       $$0.addFixer(
-         bgl.a(
+         bgn.a(
             $$57,
             "Rename prismarine_brick(s)_* blocks",
             b(
@@ -266,10 +266,10 @@ public class bbc {
             )
          )
       );
-      Schema $$58 = $$0.addSchema(1488, blp::new);
+      Schema $$58 = $$0.addSchema(1488, blr::new);
       $$0.addFixer(bcq.a($$58, "Rename kelp/kelptop", b(ImmutableMap.of("minecraft:kelp_top", "minecraft:kelp", "minecraft:kelp", "minecraft:kelp_plant"))));
-      $$0.addFixer(bgl.a($$58, "Rename kelptop", a("minecraft:kelp_top", "minecraft:kelp")));
-      $$0.addFixer(new bhs($$58, true, "Command block block entity custom name fix", bix.s, "minecraft:command_block") {
+      $$0.addFixer(bgn.a($$58, "Rename kelptop", a("minecraft:kelp_top", "minecraft:kelp")));
+      $$0.addFixer(new bhu($$58, true, "Command block block entity custom name fix", biz.s, "minecraft:command_block") {
          @Override
          protected <T> Dynamic<T> a(Dynamic<T> $$0) {
             return bce.a($$0);
@@ -278,10 +278,10 @@ public class bbc {
       $$0.addFixer(
          new DataFix($$58, false) {
             protected TypeRewriteRule makeRule() {
-               Type<?> $$0 = this.getInputSchema().getType(bix.D);
-               OpticFinder<String> $$1 = DSL.fieldFinder("id", bks.a());
+               Type<?> $$0 = this.getInputSchema().getType(biz.D);
+               OpticFinder<String> $$1 = DSL.fieldFinder("id", bku.a());
                OpticFinder<?> $$2 = $$0.findField("CustomName");
-               OpticFinder<Pair<String, String>> $$3 = DSL.typeFinder(this.getInputSchema().getType(bix.z));
+               OpticFinder<Pair<String, String>> $$3 = DSL.typeFinder(this.getInputSchema().getType(biz.z));
                return this.fixTypeEverywhereTyped(
                   "Command block minecart custom name fix",
                   $$0,
@@ -295,11 +295,11 @@ public class bbc {
             }
          }
       );
-      $$0.addFixer(new bgc($$58, false));
+      $$0.addFixer(new bgd($$58, false));
       Schema $$59 = $$0.addSchema(1490, c);
       $$0.addFixer(bcq.a($$59, "Rename melon_block", a("minecraft:melon_block", "minecraft:melon")));
       $$0.addFixer(
-         bgl.a(
+         bgn.a(
             $$59,
             "Rename melon_block/melon/speckled_melon",
             b(
@@ -317,42 +317,42 @@ public class bbc {
       Schema $$60 = $$0.addSchema(1492, c);
       $$0.addFixer(new bdk($$60, false));
       Schema $$61 = $$0.addSchema(1494, c);
-      $$0.addFixer(new bgq($$61, false));
+      $$0.addFixer(new bgs($$61, false));
       Schema $$62 = $$0.addSchema(1496, c);
-      $$0.addFixer(new bhb($$62, false));
+      $$0.addFixer(new bhd($$62, false));
       Schema $$63 = $$0.addSchema(1500, c);
       $$0.addFixer(new bci($$63, false));
       Schema $$64 = $$0.addSchema(1501, c);
       $$0.addFixer(new bbm($$64, false));
       Schema $$65 = $$0.addSchema(1502, c);
-      $$0.addFixer(new bht($$65, "Recipes fix", bix.L, b(biu.a)));
+      $$0.addFixer(new bhv($$65, "Recipes fix", biz.L, b(biw.a)));
       Schema $$66 = $$0.addSchema(1506, c);
-      $$0.addFixer(new bhe($$66, false));
-      Schema $$67 = $$0.addSchema(1510, blq::new);
-      $$0.addFixer(bcq.a($$67, "Block renamening fix", b(bfe.b)));
-      $$0.addFixer(bgl.a($$67, "Item renamening fix", b(bfe.c)));
-      $$0.addFixer(new bht($$67, "Recipes renamening fix", bix.L, b(biv.a)));
-      $$0.addFixer(new bfe($$67, true));
+      $$0.addFixer(new bhg($$66, false));
+      Schema $$67 = $$0.addSchema(1510, bls::new);
+      $$0.addFixer(bcq.a($$67, "Block renamening fix", b(bff.b)));
+      $$0.addFixer(bgn.a($$67, "Item renamening fix", b(bff.c)));
+      $$0.addFixer(new bhv($$67, "Recipes renamening fix", biz.L, b(bix.a)));
+      $$0.addFixer(new bff($$67, true));
       $$0.addFixer(
-         new bjo(
+         new bjq(
             $$67,
             "SwimStatsRenameFix",
             ImmutableMap.of("minecraft:swim_one_cm", "minecraft:walk_on_water_one_cm", "minecraft:dive_one_cm", "minecraft:walk_under_water_one_cm")
          )
       );
       Schema $$68 = $$0.addSchema(1514, c);
-      $$0.addFixer(new bji($$68, "ObjectiveDisplayNameFix", bix.J));
-      $$0.addFixer(new bji($$68, "TeamDisplayNameFix", bix.K));
-      $$0.addFixer(new bhv($$68));
+      $$0.addFixer(new bjk($$68, "ObjectiveDisplayNameFix", biz.J));
+      $$0.addFixer(new bjk($$68, "TeamDisplayNameFix", biz.K));
+      $$0.addFixer(new bhx($$68));
       Schema $$69 = $$0.addSchema(1515, c);
-      $$0.addFixer(bcq.a($$69, "Rename coral fan blocks", b(bjc.a)));
+      $$0.addFixer(bcq.a($$69, "Rename coral fan blocks", b(bje.a)));
       Schema $$70 = $$0.addSchema(1624, c);
-      $$0.addFixer(new bjz($$70, false));
-      Schema $$71 = $$0.addSchema(1800, blr::new);
-      $$0.addFixer(new bbl($$71, "Added 1.14 mobs fix", bix.D));
-      $$0.addFixer(bgl.a($$71, "Rename dye items", b(bdu.a)));
-      Schema $$72 = $$0.addSchema(1801, bls::new);
-      $$0.addFixer(new bbl($$72, "Added Illager Beast", bix.D));
+      $$0.addFixer(new bkb($$70, false));
+      Schema $$71 = $$0.addSchema(1800, blt::new);
+      $$0.addFixer(new bbl($$71, "Added 1.14 mobs fix", biz.D));
+      $$0.addFixer(bgn.a($$71, "Rename dye items", b(bdv.a)));
+      Schema $$72 = $$0.addSchema(1801, blu::new);
+      $$0.addFixer(new bbl($$72, "Added Illager Beast", biz.D));
       Schema $$73 = $$0.addSchema(1802, c);
       $$0.addFixer(
          bcq.a(
@@ -371,88 +371,88 @@ public class bbc {
          )
       );
       $$0.addFixer(
-         bgl.a(
+         bgn.a(
             $$73,
             "Rename sign item & stone slabs",
             b(ImmutableMap.of("minecraft:stone_slab", "minecraft:smooth_stone_slab", "minecraft:sign", "minecraft:oak_sign"))
          )
       );
       Schema $$74 = $$0.addSchema(1803, c);
-      $$0.addFixer(new bgi($$74));
-      Schema $$75 = $$0.addSchema(1904, blt::new);
-      $$0.addFixer(new bbl($$75, "Added Cats", bix.D));
-      $$0.addFixer(new bec($$75, false));
+      $$0.addFixer(new bgk($$74));
+      Schema $$75 = $$0.addSchema(1904, blv::new);
+      $$0.addFixer(new bbl($$75, "Added Cats", biz.D));
+      $$0.addFixer(new bed($$75, false));
       Schema $$76 = $$0.addSchema(1905, c);
       $$0.addFixer(new bdi($$76, false));
-      Schema $$77 = $$0.addSchema(1906, blu::new);
-      $$0.addFixer(new bbl($$77, "Add POI Blocks", bix.s));
-      Schema $$78 = $$0.addSchema(1909, blv::new);
-      $$0.addFixer(new bbl($$78, "Add jigsaw", bix.s));
+      Schema $$77 = $$0.addSchema(1906, blw::new);
+      $$0.addFixer(new bbl($$77, "Add POI Blocks", biz.s));
+      Schema $$78 = $$0.addSchema(1909, blx::new);
+      $$0.addFixer(new bbl($$78, "Add jigsaw", biz.s));
       Schema $$79 = $$0.addSchema(1911, c);
       $$0.addFixer(new bdj($$79, false));
       Schema $$80 = $$0.addSchema(1914, c);
-      $$0.addFixer(new bkk($$80, false));
+      $$0.addFixer(new bkm($$80, false));
       Schema $$81 = $$0.addSchema(1917, c);
       $$0.addFixer(new bcv($$81, false));
       Schema $$82 = $$0.addSchema(1918, c);
-      $$0.addFixer(new bke($$82, "minecraft:villager"));
-      $$0.addFixer(new bke($$82, "minecraft:zombie_villager"));
-      Schema $$83 = $$0.addSchema(1920, blw::new);
-      $$0.addFixer(new bhu($$83, false));
-      $$0.addFixer(new bbl($$83, "Add campfire", bix.s));
-      Schema $$84 = $$0.addSchema(1925, blx::new);
-      $$0.addFixer(new bhl($$84));
-      Schema $$85 = $$0.addSchema(1928, bly::new);
-      $$0.addFixer(new beu($$85, true));
-      $$0.addFixer(bgl.a($$85, "Rename ravager egg item", b(beu.a)));
-      Schema $$86 = $$0.addSchema(1929, blz::new);
-      $$0.addFixer(new bbl($$86, "Add Wandering Trader and Trader Llama", bix.D));
-      Schema $$87 = $$0.addSchema(1931, bma::new);
-      $$0.addFixer(new bbl($$87, "Added Fox", bix.D));
+      $$0.addFixer(new bkg($$82, "minecraft:villager"));
+      $$0.addFixer(new bkg($$82, "minecraft:zombie_villager"));
+      Schema $$83 = $$0.addSchema(1920, bly::new);
+      $$0.addFixer(new bhw($$83, false));
+      $$0.addFixer(new bbl($$83, "Add campfire", biz.s));
+      Schema $$84 = $$0.addSchema(1925, blz::new);
+      $$0.addFixer(new bhn($$84));
+      Schema $$85 = $$0.addSchema(1928, bma::new);
+      $$0.addFixer(new bev($$85, true));
+      $$0.addFixer(bgn.a($$85, "Rename ravager egg item", b(bev.a)));
+      Schema $$86 = $$0.addSchema(1929, bmb::new);
+      $$0.addFixer(new bbl($$86, "Add Wandering Trader and Trader Llama", biz.D));
+      Schema $$87 = $$0.addSchema(1931, bmc::new);
+      $$0.addFixer(new bbl($$87, "Added Fox", biz.D));
       Schema $$88 = $$0.addSchema(1936, c);
-      $$0.addFixer(new bia($$88, false));
+      $$0.addFixer(new bic($$88, false));
       Schema $$89 = $$0.addSchema(1946, c);
-      $$0.addFixer(new bje($$89, false));
+      $$0.addFixer(new bjg($$89, false));
       Schema $$90 = $$0.addSchema(1948, c);
-      $$0.addFixer(new bhy($$90));
+      $$0.addFixer(new bia($$90));
       Schema $$91 = $$0.addSchema(1953, c);
-      $$0.addFixer(new bhw($$91, false));
+      $$0.addFixer(new bhy($$91, false));
       Schema $$92 = $$0.addSchema(1955, c);
-      $$0.addFixer(new bkg($$92, false));
-      $$0.addFixer(new bkp($$92, false));
+      $$0.addFixer(new bki($$92, false));
+      $$0.addFixer(new bkr($$92, false));
       Schema $$93 = $$0.addSchema(1961, c);
       $$0.addFixer(new bde($$93, false));
       Schema $$94 = $$0.addSchema(1963, c);
-      $$0.addFixer(new bja($$94, false));
-      Schema $$95 = $$0.addSchema(2100, bmb::new);
-      $$0.addFixer(new bbl($$95, "Added Bee and Bee Stinger", bix.D));
-      $$0.addFixer(new bbl($$95, "Add beehive", bix.s));
-      $$0.addFixer(new bht($$95, "Rename sugar recipe", bix.L, a("minecraft:sugar", "minecraft:sugar_from_sugar_cane")));
+      $$0.addFixer(new bjc($$94, false));
+      Schema $$95 = $$0.addSchema(2100, bmd::new);
+      $$0.addFixer(new bbl($$95, "Added Bee and Bee Stinger", biz.D));
+      $$0.addFixer(new bbl($$95, "Add beehive", biz.s));
+      $$0.addFixer(new bhv($$95, "Rename sugar recipe", biz.L, a("minecraft:sugar", "minecraft:sugar_from_sugar_cane")));
       $$0.addFixer(new bbn($$95, false, "Rename sugar recipe advancement", a("minecraft:recipes/misc/sugar", "minecraft:recipes/misc/sugar_from_sugar_cane")));
       Schema $$96 = $$0.addSchema(2202, c);
       $$0.addFixer(new bda($$96, false));
       Schema $$97 = $$0.addSchema(2209, c);
       UnaryOperator<String> $$98 = a("minecraft:bee_hive", "minecraft:beehive");
-      $$0.addFixer(bgl.a($$97, "Rename bee_hive item to beehive", $$98));
-      $$0.addFixer(new bip($$97, "Rename bee_hive poi to beehive", $$98));
+      $$0.addFixer(bgn.a($$97, "Rename bee_hive item to beehive", $$98));
+      $$0.addFixer(new bir($$97, "Rename bee_hive poi to beehive", $$98));
       $$0.addFixer(bcq.a($$97, "Rename bee_hive block to beehive", $$98));
       Schema $$99 = $$0.addSchema(2211, c);
-      $$0.addFixer(new bjq($$99, false));
+      $$0.addFixer(new bjs($$99, false));
       Schema $$100 = $$0.addSchema(2218, c);
-      $$0.addFixer(new bfv($$100, false));
-      Schema $$101 = $$0.addSchema(2501, bmc::new);
-      $$0.addFixer(new bfx($$101, true));
-      Schema $$102 = $$0.addSchema(2502, bmd::new);
-      $$0.addFixer(new bbl($$102, "Added Hoglin", bix.D));
+      $$0.addFixer(new bfw($$100, false));
+      Schema $$101 = $$0.addSchema(2501, bme::new);
+      $$0.addFixer(new bfy($$101, true));
+      Schema $$102 = $$0.addSchema(2502, bmf::new);
+      $$0.addFixer(new bbl($$102, "Added Hoglin", biz.D));
       Schema $$103 = $$0.addSchema(2503, c);
-      $$0.addFixer(new bkj($$103, false));
+      $$0.addFixer(new bkl($$103, false));
       $$0.addFixer(new bbn($$103, false, "Composter category change", a("minecraft:recipes/misc/composter", "minecraft:recipes/decorations/composter")));
-      Schema $$104 = $$0.addSchema(2505, bme::new);
-      $$0.addFixer(new bbl($$104, "Added Piglin", bix.D));
-      $$0.addFixer(new bhm($$104, "minecraft:villager"));
+      Schema $$104 = $$0.addSchema(2505, bmg::new);
+      $$0.addFixer(new bbl($$104, "Added Piglin", biz.D));
+      $$0.addFixer(new bho($$104, "minecraft:villager"));
       Schema $$105 = $$0.addSchema(2508, c);
       $$0.addFixer(
-         bgl.a(
+         bgn.a(
             $$105,
             "Renamed fungi items to fungus",
             b(ImmutableMap.of("minecraft:warped_fungi", "minecraft:warped_fungus", "minecraft:crimson_fungi", "minecraft:crimson_fungus"))
@@ -465,30 +465,30 @@ public class bbc {
             b(ImmutableMap.of("minecraft:warped_fungi", "minecraft:warped_fungus", "minecraft:crimson_fungi", "minecraft:crimson_fungus"))
          )
       );
-      Schema $$106 = $$0.addSchema(2509, bmf::new);
-      $$0.addFixer(new bfl($$106));
-      $$0.addFixer(bgl.a($$106, "Rename zombie pigman egg item", b(bfl.a)));
+      Schema $$106 = $$0.addSchema(2509, bmh::new);
+      $$0.addFixer(new bfm($$106));
+      $$0.addFixer(bgn.a($$106, "Rename zombie pigman egg item", b(bfm.a)));
       Schema $$107 = $$0.addSchema(2511, c);
-      $$0.addFixer(new bes($$107));
-      Schema $$108 = $$0.addSchema(2511, 1, bmg::new);
-      $$0.addFixer(new bhq($$108, "SplashPotionItemFieldRenameFix", bix.D, "minecraft:potion"));
+      $$0.addFixer(new bet($$107));
+      Schema $$108 = $$0.addSchema(2511, 1, bmi::new);
+      $$0.addFixer(new bhs($$108, "SplashPotionItemFieldRenameFix", biz.D, "minecraft:potion"));
       Schema $$109 = $$0.addSchema(2514, c);
-      $$0.addFixer(new bfg($$109));
+      $$0.addFixer(new bfh($$109));
       $$0.addFixer(new bcm($$109));
-      $$0.addFixer(new bin($$109));
-      $$0.addFixer(new bhh($$109));
-      $$0.addFixer(new bjh($$109));
-      $$0.addFixer(new bgw($$109));
+      $$0.addFixer(new bip($$109));
+      $$0.addFixer(new bhj($$109));
+      $$0.addFixer(new bjj($$109));
+      $$0.addFixer(new bgy($$109));
       Schema $$110 = $$0.addSchema(2516, c);
-      $$0.addFixer(new bfz($$110, "minecraft:villager"));
-      $$0.addFixer(new bfz($$110, "minecraft:zombie_villager"));
+      $$0.addFixer(new bga($$110, "minecraft:villager"));
+      $$0.addFixer(new bga($$110, "minecraft:zombie_villager"));
       Schema $$111 = $$0.addSchema(2518, c);
-      $$0.addFixer(new bgy($$111, false));
-      $$0.addFixer(new bgz($$111));
-      Schema $$112 = $$0.addSchema(2519, bmh::new);
-      $$0.addFixer(new bbl($$112, "Added Strider", bix.D));
-      Schema $$113 = $$0.addSchema(2522, bmi::new);
-      $$0.addFixer(new bbl($$113, "Added Zoglin", bix.D));
+      $$0.addFixer(new bha($$111, false));
+      $$0.addFixer(new bhb($$111));
+      Schema $$112 = $$0.addSchema(2519, bmj::new);
+      $$0.addFixer(new bbl($$112, "Added Strider", biz.D));
+      Schema $$113 = $$0.addSchema(2522, bmk::new);
+      $$0.addFixer(new bbl($$113, "Added Zoglin", biz.D));
       Schema $$114 = $$0.addSchema(2523, c);
       $$0.addFixer(
          new bbt(
@@ -522,7 +522,7 @@ public class bbc {
       $$0.addFixer(new bbz($$115));
       Schema $$116 = $$0.addSchema(2528, c);
       $$0.addFixer(
-         bgl.a(
+         bgn.a(
             $$116,
             "Rename soul fire torch and soul fire lantern",
             b(ImmutableMap.of("minecraft:soul_fire_torch", "minecraft:soul_torch", "minecraft:soul_fire_lantern", "minecraft:soul_lantern"))
@@ -545,42 +545,42 @@ public class bbc {
          )
       );
       Schema $$117 = $$0.addSchema(2529, c);
-      $$0.addFixer(new bjp($$117, false));
+      $$0.addFixer(new bjr($$117, false));
       Schema $$118 = $$0.addSchema(2531, c);
-      $$0.addFixer(new biw($$118));
+      $$0.addFixer(new biy($$118));
       Schema $$119 = $$0.addSchema(2533, c);
-      $$0.addFixer(new bkf($$119));
+      $$0.addFixer(new bkh($$119));
       Schema $$120 = $$0.addSchema(2535, c);
-      $$0.addFixer(new bfa($$120));
+      $$0.addFixer(new bfb($$120));
       Schema $$121 = $$0.addSchema(2538, c);
-      $$0.addFixer(new bhg($$121));
+      $$0.addFixer(new bhi($$121));
       Schema $$122 = $$0.addSchema(2550, c);
-      $$0.addFixer(new bkm($$122));
-      Schema $$123 = $$0.addSchema(2551, bmj::new);
-      $$0.addFixer(new bko($$123, "add types to WorldGenData", bix.O));
+      $$0.addFixer(new bko($$122));
+      Schema $$123 = $$0.addSchema(2551, bml::new);
+      $$0.addFixer(new bkq($$123, "add types to WorldGenData", biz.O));
       Schema $$124 = $$0.addSchema(2552, c);
-      $$0.addFixer(new bht($$124, "Nether biome rename", bix.M, a("minecraft:nether", "minecraft:nether_wastes")));
+      $$0.addFixer(new bhv($$124, "Nether biome rename", biz.M, a("minecraft:nether", "minecraft:nether_wastes")));
       Schema $$125 = $$0.addSchema(2553, c);
-      $$0.addFixer(new bht($$125, "Biomes fix", bix.M, b(bby.a)));
+      $$0.addFixer(new bhv($$125, "Biomes fix", biz.M, b(bby.a)));
       Schema $$126 = $$0.addSchema(2558, c);
-      $$0.addFixer(new bhn($$126, false));
-      $$0.addFixer(new bii($$126, false, "Rename swapHands setting", "key_key.swapHands", "key_key.swapOffhand"));
-      Schema $$127 = $$0.addSchema(2568, bmk::new);
-      $$0.addFixer(new bbl($$127, "Added Piglin Brute", bix.D));
-      Schema $$128 = $$0.addSchema(2571, bml::new);
-      $$0.addFixer(new bbl($$128, "Added Goat", bix.D));
+      $$0.addFixer(new bhp($$126, false));
+      $$0.addFixer(new bik($$126, false, "Rename swapHands setting", "key_key.swapHands", "key_key.swapOffhand"));
+      Schema $$127 = $$0.addSchema(2568, bmm::new);
+      $$0.addFixer(new bbl($$127, "Added Piglin Brute", biz.D));
+      Schema $$128 = $$0.addSchema(2571, bmn::new);
+      $$0.addFixer(new bbl($$128, "Added Goat", biz.D));
       Schema $$129 = $$0.addSchema(2679, c);
       $$0.addFixer(new bcw($$129, false));
       Schema $$130 = $$0.addSchema(2680, c);
-      $$0.addFixer(bgl.a($$130, "Renamed grass path item to dirt path", a("minecraft:grass_path", "minecraft:dirt_path")));
+      $$0.addFixer(bgn.a($$130, "Renamed grass path item to dirt path", a("minecraft:grass_path", "minecraft:dirt_path")));
       $$0.addFixer(bcq.a($$130, "Renamed grass path block to dirt path", a("minecraft:grass_path", "minecraft:dirt_path")));
-      Schema $$131 = $$0.addSchema(2684, bmm::new);
-      $$0.addFixer(new bbl($$131, "Added Sculk Sensor", bix.s));
-      Schema $$132 = $$0.addSchema(2686, bmn::new);
-      $$0.addFixer(new bbl($$132, "Added Axolotl", bix.D));
-      Schema $$133 = $$0.addSchema(2688, bmo::new);
-      $$0.addFixer(new bbl($$133, "Added Glow Squid", bix.D));
-      $$0.addFixer(new bbl($$133, "Added Glow Item Frame", bix.D));
+      Schema $$131 = $$0.addSchema(2684, bmo::new);
+      $$0.addFixer(new bbl($$131, "Added Sculk Sensor", biz.s));
+      Schema $$132 = $$0.addSchema(2686, bmp::new);
+      $$0.addFixer(new bbl($$132, "Added Axolotl", biz.D));
+      Schema $$133 = $$0.addSchema(2688, bmq::new);
+      $$0.addFixer(new bbl($$133, "Added Glow Squid", biz.D));
+      $$0.addFixer(new bbl($$133, "Added Glow Item Frame", biz.D));
       Schema $$134 = $$0.addSchema(2690, c);
       ImmutableMap<String, String> $$135 = ImmutableMap.builder()
          .put("minecraft:weathered_copper_block", "minecraft:oxidized_copper_block")
@@ -604,7 +604,7 @@ public class bbc {
          .put("minecraft:waxed_semi_weathered_cut_copper_slab", "minecraft:waxed_weathered_cut_copper_slab")
          .put("minecraft:waxed_lightly_weathered_cut_copper_slab", "minecraft:waxed_exposed_cut_copper_slab")
          .build();
-      $$0.addFixer(bgl.a($$134, "Renamed copper block items to new oxidized terms", b($$135)));
+      $$0.addFixer(bgn.a($$134, "Renamed copper block items to new oxidized terms", b($$135)));
       $$0.addFixer(bcq.a($$134, "Renamed copper blocks to new oxidized terms", b($$135)));
       Schema $$136 = $$0.addSchema(2691, c);
       ImmutableMap<String, String> $$137 = ImmutableMap.builder()
@@ -613,10 +613,10 @@ public class bbc {
          .put("minecraft:weathered_copper_block", "minecraft:weathered_copper")
          .put("minecraft:exposed_copper_block", "minecraft:exposed_copper")
          .build();
-      $$0.addFixer(bgl.a($$136, "Rename copper item suffixes", b($$137)));
+      $$0.addFixer(bgn.a($$136, "Rename copper item suffixes", b($$137)));
       $$0.addFixer(bcq.a($$136, "Rename copper blocks suffixes", b($$137)));
       Schema $$138 = $$0.addSchema(2693, c);
-      $$0.addFixer(new bbk($$138, bix.O, "has_increased_height_already", false));
+      $$0.addFixer(new bbk($$138, biz.O, "has_increased_height_already", false));
       Schema $$139 = $$0.addSchema(2696, c);
       ImmutableMap<String, String> $$140 = ImmutableMap.builder()
          .put("minecraft:grimstone", "minecraft:deepslate")
@@ -637,7 +637,7 @@ public class bbc {
          .put("minecraft:grimstone_brick_wall", "minecraft:deepslate_brick_wall")
          .put("minecraft:chiseled_grimstone", "minecraft:chiseled_deepslate")
          .build();
-      $$0.addFixer(bgl.a($$139, "Renamed grimstone block items to deepslate", b($$140)));
+      $$0.addFixer(bgn.a($$139, "Renamed grimstone block items to deepslate", b($$140)));
       $$0.addFixer(bcq.a($$139, "Renamed grimstone blocks to deepslate", b($$140)));
       Schema $$141 = $$0.addSchema(2700, c);
       $$0.addFixer(
@@ -648,39 +648,39 @@ public class bbc {
          )
       );
       Schema $$142 = $$0.addSchema(2701, c);
-      $$0.addFixer(new bjg($$142));
+      $$0.addFixer(new bji($$142));
       Schema $$143 = $$0.addSchema(2702, c);
       $$0.addFixer(new bbg($$143));
-      Schema $$144 = $$0.addSchema(2704, bmp::new);
-      $$0.addFixer(new bbl($$144, "Added Goat", bix.D));
-      Schema $$145 = $$0.addSchema(2707, bmq::new);
-      $$0.addFixer(new bbl($$145, "Added Marker", bix.D));
-      $$0.addFixer(new bbk($$145, bix.O, "has_increased_height_already", true));
+      Schema $$144 = $$0.addSchema(2704, bmr::new);
+      $$0.addFixer(new bbl($$144, "Added Goat", biz.D));
+      Schema $$145 = $$0.addSchema(2707, bms::new);
+      $$0.addFixer(new bbl($$145, "Added Marker", biz.D));
+      $$0.addFixer(new bbk($$145, biz.O, "has_increased_height_already", true));
       Schema $$146 = $$0.addSchema(2710, c);
-      $$0.addFixer(new bjo($$146, "Renamed play_one_minute stat to play_time", ImmutableMap.of("minecraft:play_one_minute", "minecraft:play_time")));
+      $$0.addFixer(new bjq($$146, "Renamed play_one_minute stat to play_time", ImmutableMap.of("minecraft:play_one_minute", "minecraft:play_time")));
       Schema $$147 = $$0.addSchema(2717, c);
-      $$0.addFixer(bgl.a($$147, "Rename azalea_leaves_flowers", b(ImmutableMap.of("minecraft:azalea_leaves_flowers", "minecraft:flowering_azalea_leaves"))));
+      $$0.addFixer(bgn.a($$147, "Rename azalea_leaves_flowers", b(ImmutableMap.of("minecraft:azalea_leaves_flowers", "minecraft:flowering_azalea_leaves"))));
       $$0.addFixer(
          bcq.a($$147, "Rename azalea_leaves_flowers items", b(ImmutableMap.of("minecraft:azalea_leaves_flowers", "minecraft:flowering_azalea_leaves")))
       );
       Schema $$148 = $$0.addSchema(2825, c);
-      $$0.addFixer(new bbk($$148, bix.O, "has_increased_height_already", false));
-      Schema $$149 = $$0.addSchema(2831, bmr::new);
-      $$0.addFixer(new bjm($$149));
-      Schema $$150 = $$0.addSchema(2832, bms::new);
-      $$0.addFixer(new bkn($$150));
+      $$0.addFixer(new bbk($$148, biz.O, "has_increased_height_already", false));
+      Schema $$149 = $$0.addSchema(2831, bmt::new);
+      $$0.addFixer(new bjo($$149));
+      Schema $$150 = $$0.addSchema(2832, bmu::new);
+      $$0.addFixer(new bkp($$150));
       $$0.addFixer(new bdd($$150));
       Schema $$151 = $$0.addSchema(2833, c);
-      $$0.addFixer(new bkl($$151));
+      $$0.addFixer(new bkn($$151));
       Schema $$152 = $$0.addSchema(2838, c);
-      $$0.addFixer(new bht($$152, "Caves and Cliffs biome renames", bix.M, b(bcx.a)));
+      $$0.addFixer(new bhv($$152, "Caves and Cliffs biome renames", biz.M, b(bcx.a)));
       Schema $$153 = $$0.addSchema(2841, c);
       $$0.addFixer(new bdg($$153));
-      Schema $$154 = $$0.addSchema(2842, bmt::new);
+      Schema $$154 = $$0.addSchema(2842, bmv::new);
       $$0.addFixer(new bdh($$154));
       Schema $$155 = $$0.addSchema(2843, c);
-      $$0.addFixer(new bij($$155));
-      $$0.addFixer(new bht($$155, "Remove Deep Warm Ocean", bix.M, a("minecraft:deep_warm_ocean", "minecraft:warm_ocean")));
+      $$0.addFixer(new bil($$155));
+      $$0.addFixer(new bhv($$155, "Remove Deep Warm Ocean", biz.M, a("minecraft:deep_warm_ocean", "minecraft:warm_ocean")));
       Schema $$156 = $$0.addSchema(2846, c);
       $$0.addFixer(
          new bbn(
@@ -700,31 +700,31 @@ public class bbc {
          )
       );
       Schema $$157 = $$0.addSchema(2852, c);
-      $$0.addFixer(new bkl($$157));
+      $$0.addFixer(new bkn($$157));
       Schema $$158 = $$0.addSchema(2967, c);
-      $$0.addFixer(new bjr($$158));
+      $$0.addFixer(new bjt($$158));
       Schema $$159 = $$0.addSchema(2970, c);
-      $$0.addFixer(new bjs($$159));
-      Schema $$160 = $$0.addSchema(3076, bmu::new);
-      $$0.addFixer(new bbl($$160, "Added Sculk Catalyst", bix.s));
+      $$0.addFixer(new bju($$159));
+      Schema $$160 = $$0.addSchema(3076, bmw::new);
+      $$0.addFixer(new bbl($$160, "Added Sculk Catalyst", biz.s));
       Schema $$161 = $$0.addSchema(3077, c);
       $$0.addFixer(new bdb($$161));
-      Schema $$162 = $$0.addSchema(3078, bmv::new);
-      $$0.addFixer(new bbl($$162, "Added Frog", bix.D));
-      $$0.addFixer(new bbl($$162, "Added Tadpole", bix.D));
-      $$0.addFixer(new bbl($$162, "Added Sculk Shrieker", bix.s));
-      Schema $$163 = $$0.addSchema(3081, bmw::new);
-      $$0.addFixer(new bbl($$163, "Added Warden", bix.D));
-      Schema $$164 = $$0.addSchema(3082, bmx::new);
-      $$0.addFixer(new bbl($$164, "Added Chest Boat", bix.D));
-      Schema $$165 = $$0.addSchema(3083, bmy::new);
-      $$0.addFixer(new bbl($$165, "Added Allay", bix.D));
+      Schema $$162 = $$0.addSchema(3078, bmx::new);
+      $$0.addFixer(new bbl($$162, "Added Frog", biz.D));
+      $$0.addFixer(new bbl($$162, "Added Tadpole", biz.D));
+      $$0.addFixer(new bbl($$162, "Added Sculk Shrieker", biz.s));
+      Schema $$163 = $$0.addSchema(3081, bmy::new);
+      $$0.addFixer(new bbl($$163, "Added Warden", biz.D));
+      Schema $$164 = $$0.addSchema(3082, bmz::new);
+      $$0.addFixer(new bbl($$164, "Added Chest Boat", biz.D));
+      Schema $$165 = $$0.addSchema(3083, bna::new);
+      $$0.addFixer(new bbl($$165, "Added Allay", biz.D));
       Schema $$166 = $$0.addSchema(3084, c);
       $$0.addFixer(
-         new bht(
+         new bhv(
             $$166,
             "game_event_renames_3084",
-            bix.G,
+            biz.G,
             b(
                ImmutableMap.builder()
                   .put("minecraft:block_press", "minecraft:block_activate")
@@ -747,7 +747,7 @@ public class bbc {
          )
       );
       Schema $$167 = $$0.addSchema(3086, c);
-      $$0.addFixer(new bfh($$167, "Change cat variant type", bix.D, "minecraft:cat", "CatType", af.a(new Int2ObjectOpenHashMap(), $$0x -> {
+      $$0.addFixer(new bfi($$167, "Change cat variant type", biz.D, "minecraft:cat", "CatType", ag.a(new Int2ObjectOpenHashMap(), $$0x -> {
          $$0x.defaultReturnValue("minecraft:tabby");
          $$0x.put(0, "minecraft:tabby");
          $$0x.put(1, "minecraft:black");
@@ -774,61 +774,61 @@ public class bbc {
          .put("textures/entity/cat/jellie.png", "minecraft:jellie")
          .put("textures/entity/cat/all_black.png", "minecraft:all_black")
          .build();
-      $$0.addFixer(new bdo($$167, "Migrate cat variant advancement", "minecraft:husbandry/complete_catalogue", $$1x -> (String)$$168.getOrDefault($$1x, $$1x)));
+      $$0.addFixer(new bdp($$167, "Migrate cat variant advancement", "minecraft:husbandry/complete_catalogue", $$1x -> (String)$$168.getOrDefault($$1x, $$1x)));
       Schema $$169 = $$0.addSchema(3087, c);
-      $$0.addFixer(new bfh($$169, "Change frog variant type", bix.D, "minecraft:frog", "Variant", af.a(new Int2ObjectOpenHashMap(), $$0x -> {
+      $$0.addFixer(new bfi($$169, "Change frog variant type", biz.D, "minecraft:frog", "Variant", ag.a(new Int2ObjectOpenHashMap(), $$0x -> {
          $$0x.put(0, "minecraft:temperate");
          $$0x.put(1, "minecraft:warm");
          $$0x.put(2, "minecraft:cold");
       })::get));
       Schema $$170 = $$0.addSchema(3090, c);
-      $$0.addFixer(new bei($$170, "EntityPaintingFieldsRenameFix", "minecraft:painting", Map.of("Motive", "variant", "Facing", "facing")));
+      $$0.addFixer(new bej($$170, "EntityPaintingFieldsRenameFix", "minecraft:painting", Map.of("Motive", "variant", "Facing", "facing")));
       Schema $$171 = $$0.addSchema(3093, c);
-      $$0.addFixer(new bej($$171));
+      $$0.addFixer(new bek($$171));
       Schema $$172 = $$0.addSchema(3094, c);
-      $$0.addFixer(new bfy($$172));
+      $$0.addFixer(new bfz($$172));
       Schema $$173 = $$0.addSchema(3097, c);
-      $$0.addFixer(new bfp($$173));
       $$0.addFixer(new bfq($$173));
+      $$0.addFixer(new bfr($$173));
       Map<String, String> $$174 = Map.of("minecraft:british", "minecraft:british_shorthair");
-      $$0.addFixer(new bkd($$173, "Rename british shorthair", bix.D, "minecraft:cat", $$174));
+      $$0.addFixer(new bkf($$173, "Rename british shorthair", biz.D, "minecraft:cat", $$174));
       $$0.addFixer(
-         new bdo(
+         new bdp(
             $$173, "Migrate cat variant advancement for british shorthair", "minecraft:husbandry/complete_catalogue", $$1x -> $$174.getOrDefault($$1x, $$1x)
          )
       );
-      $$0.addFixer(new bio($$173, "Remove unpopulated villager PoI types", Set.of("minecraft:unemployed", "minecraft:nitwit")::contains));
+      $$0.addFixer(new biq($$173, "Remove unpopulated villager PoI types", Set.of("minecraft:unemployed", "minecraft:nitwit")::contains));
       Schema $$175 = $$0.addSchema(3108, c);
       $$0.addFixer(new bcb($$175));
       Schema $$176 = $$0.addSchema(3201, c);
-      $$0.addFixer(new bih($$176));
-      Schema $$177 = $$0.addSchema(3202, bmz::new);
-      $$0.addFixer(new bbl($$177, "Added Hanging Sign", bix.s));
-      Schema $$178 = $$0.addSchema(3203, bna::new);
-      $$0.addFixer(new bbl($$178, "Added Camel", bix.D));
-      Schema $$179 = $$0.addSchema(3204, bnb::new);
-      $$0.addFixer(new bbl($$179, "Added Chiseled Bookshelf", bix.s));
+      $$0.addFixer(new bij($$176));
+      Schema $$177 = $$0.addSchema(3202, bnb::new);
+      $$0.addFixer(new bbl($$177, "Added Hanging Sign", biz.s));
+      Schema $$178 = $$0.addSchema(3203, bnc::new);
+      $$0.addFixer(new bbl($$178, "Added Camel", biz.D));
+      Schema $$179 = $$0.addSchema(3204, bnd::new);
+      $$0.addFixer(new bbl($$179, "Added Chiseled Bookshelf", biz.s));
       Schema $$180 = $$0.addSchema(3209, c);
-      $$0.addFixer(new bgs($$180, false, "minecraft:pig_spawn_egg"));
+      $$0.addFixer(new bgu($$180, false, "minecraft:pig_spawn_egg"));
       Schema $$181 = $$0.addSchema(3214, c);
-      $$0.addFixer(new bib($$181));
+      $$0.addFixer(new bid($$181));
       Schema $$182 = $$0.addSchema(3319, c);
-      $$0.addFixer(new bhz($$182));
+      $$0.addFixer(new bib($$182));
       Schema $$183 = $$0.addSchema(3322, c);
-      $$0.addFixer(new bdv($$183));
-      Schema $$184 = $$0.addSchema(3325, bnc::new);
-      $$0.addFixer(new bbl($$184, "Added displays", bix.D));
-      Schema $$185 = $$0.addSchema(3326, bnd::new);
-      $$0.addFixer(new bbl($$185, "Added Sniffer", bix.D));
-      Schema $$186 = $$0.addSchema(3327, bne::new);
-      $$0.addFixer(new bbl($$186, "Archaeology", bix.s));
-      Schema $$187 = $$0.addSchema(3328, bnf::new);
-      $$0.addFixer(new bbl($$187, "Added interaction", bix.D));
-      Schema $$188 = $$0.addSchema(3438, bng::new);
+      $$0.addFixer(new bdw($$183));
+      Schema $$184 = $$0.addSchema(3325, bne::new);
+      $$0.addFixer(new bbl($$184, "Added displays", biz.D));
+      Schema $$185 = $$0.addSchema(3326, bnf::new);
+      $$0.addFixer(new bbl($$185, "Added Sniffer", biz.D));
+      Schema $$186 = $$0.addSchema(3327, bng::new);
+      $$0.addFixer(new bbl($$186, "Archaeology", biz.s));
+      Schema $$187 = $$0.addSchema(3328, bnh::new);
+      $$0.addFixer(new bbl($$187, "Added interaction", biz.D));
+      Schema $$188 = $$0.addSchema(3438, bni::new);
       $$0.addFixer(bcj.a($$188, "Rename Suspicious Sand to Brushable Block", a("minecraft:suspicious_sand", "minecraft:brushable_block")));
-      $$0.addFixer(new beb($$188));
+      $$0.addFixer(new bec($$188));
       $$0.addFixer(
-         bgl.a(
+         bgn.a(
             $$188,
             "Pottery shard renaming",
             b(
@@ -845,16 +845,16 @@ public class bbc {
             )
          )
       );
-      $$0.addFixer(new bbl($$188, "Added calibrated sculk sensor", bix.s));
-      Schema $$189 = $$0.addSchema(3439, bnh::new);
+      $$0.addFixer(new bbl($$188, "Added calibrated sculk sensor", biz.s));
+      Schema $$189 = $$0.addSchema(3439, bnj::new);
       $$0.addFixer(new bcl($$189, "Updated sign text format for Signs", "minecraft:sign"));
       $$0.addFixer(new bcl($$189, "Updated sign text format for Hanging Signs", "minecraft:hanging_sign"));
       Schema $$190 = $$0.addSchema(3440, c);
-      $$0.addFixer(new bht($$190, "Replace experimental 1.20 overworld", bix.N, a("minecraft:overworld_update_1_20", "minecraft:overworld")));
-      $$0.addFixer(new bfo($$190, "Remove 1.20 feature toggle", Set.of("minecraft:update_1_20")));
+      $$0.addFixer(new bhv($$190, "Replace experimental 1.20 overworld", biz.N, a("minecraft:overworld_update_1_20", "minecraft:overworld")));
+      $$0.addFixer(new bfp($$190, "Remove 1.20 feature toggle", Set.of("minecraft:update_1_20")));
       Schema $$191 = $$0.addSchema(3447, c);
       $$0.addFixer(
-         bgl.a(
+         bgn.a(
             $$191,
             "Pottery shard item renaming to Pottery sherd",
             b(
@@ -884,11 +884,11 @@ public class bbc {
             )
          )
       );
-      Schema $$192 = $$0.addSchema(3448, bni::new);
-      $$0.addFixer(new bdr($$192));
+      Schema $$192 = $$0.addSchema(3448, bnk::new);
+      $$0.addFixer(new bds($$192));
       Schema $$193 = $$0.addSchema(3450, c);
       $$0.addFixer(
-         new biy(
+         new bja(
             $$193,
             "Remove liquid_carvers and heightmap chunk statuses",
             b(Map.of("minecraft:liquid_carvers", "minecraft:carvers", "minecraft:heightmaps", "minecraft:spawn"))
@@ -897,147 +897,147 @@ public class bbc {
       Schema $$194 = $$0.addSchema(3451, c);
       $$0.addFixer(new bdc($$194));
       Schema $$195 = $$0.addSchema(3459, c);
-      $$0.addFixer(new bhc($$195));
+      $$0.addFixer(new bhe($$195));
       Schema $$196 = $$0.addSchema(3564, c);
-      $$0.addFixer(new bdt($$196, "minecraft:sign"));
-      $$0.addFixer(new bdt($$196, "minecraft:hanging_sign"));
+      $$0.addFixer(new bdu($$196, "minecraft:sign"));
+      $$0.addFixer(new bdu($$196, "minecraft:hanging_sign"));
       Schema $$197 = $$0.addSchema(3565, c);
-      $$0.addFixer(new bit($$197));
+      $$0.addFixer(new biv($$197));
       Schema $$198 = $$0.addSchema(3566, c);
-      $$0.addFixer(new bjj($$198));
+      $$0.addFixer(new bjl($$198));
       Schema $$199 = $$0.addSchema(3568, c);
-      $$0.addFixer(new bho($$199));
-      Schema $$200 = $$0.addSchema(3682, bnj::new);
-      $$0.addFixer(new bbl($$200, "Added Crafter", bix.s));
-      Schema $$201 = $$0.addSchema(3683, bnk::new);
-      $$0.addFixer(new biq($$201));
-      Schema $$202 = $$0.addSchema(3685, bnl::new);
-      $$0.addFixer(new bfs($$202));
-      Schema $$203 = $$0.addSchema(3689, bnm::new);
-      $$0.addFixer(new bbl($$203, "Added Breeze", bix.D));
-      $$0.addFixer(new bbl($$203, "Added Trial Spawner", bix.s));
+      $$0.addFixer(new bhq($$199));
+      Schema $$200 = $$0.addSchema(3682, bnl::new);
+      $$0.addFixer(new bbl($$200, "Added Crafter", biz.s));
+      Schema $$201 = $$0.addSchema(3683, bnm::new);
+      $$0.addFixer(new bis($$201));
+      Schema $$202 = $$0.addSchema(3685, bnn::new);
+      $$0.addFixer(new bft($$202));
+      Schema $$203 = $$0.addSchema(3689, bno::new);
+      $$0.addFixer(new bbl($$203, "Added Breeze", biz.D));
+      $$0.addFixer(new bbl($$203, "Added Trial Spawner", biz.s));
       Schema $$204 = $$0.addSchema(3692, c);
       UnaryOperator<String> $$205 = b(Map.of("minecraft:grass", "minecraft:short_grass"));
       $$0.addFixer(bcq.a($$204, "Rename grass block to short_grass", $$205));
-      $$0.addFixer(bgl.a($$204, "Rename grass item to short_grass", $$205));
-      Schema $$206 = $$0.addSchema(3799, bnn::new);
-      $$0.addFixer(new bbl($$206, "Added Armadillo", bix.D));
+      $$0.addFixer(bgn.a($$204, "Rename grass item to short_grass", $$205));
+      Schema $$206 = $$0.addSchema(3799, bnp::new);
+      $$0.addFixer(new bbl($$206, "Added Armadillo", biz.D));
       Schema $$207 = $$0.addSchema(3800, c);
       UnaryOperator<String> $$208 = b(Map.of("minecraft:scute", "minecraft:turtle_scute"));
-      $$0.addFixer(bgl.a($$207, "Rename scute item to turtle_scute", $$208));
+      $$0.addFixer(bgn.a($$207, "Rename scute item to turtle_scute", $$208));
       Schema $$209 = $$0.addSchema(3803, c);
-      $$0.addFixer(new bjb($$209, "Rename sweeping enchant to sweeping_edge", Map.of("minecraft:sweeping", "minecraft:sweeping_edge")));
-      Schema $$210 = $$0.addSchema(3807, bno::new);
-      $$0.addFixer(new bbl($$210, "Added Vault", bix.s));
+      $$0.addFixer(new bjd($$209, "Rename sweeping enchant to sweeping_edge", Map.of("minecraft:sweeping", "minecraft:sweeping_edge")));
+      Schema $$210 = $$0.addSchema(3807, bnq::new);
+      $$0.addFixer(new bbl($$210, "Added Vault", biz.s));
       Schema $$211 = $$0.addSchema(3807, 1, c);
-      $$0.addFixer(new bhk($$211));
-      Schema $$212 = $$0.addSchema(3808, bnp::new);
-      $$0.addFixer(new bgb($$212, "minecraft:horse", "ArmorItem", true));
-      Schema $$213 = $$0.addSchema(3808, 1, bnq::new);
-      $$0.addFixer(new bgb($$213, "minecraft:llama", "DecorItem", false));
-      Schema $$214 = $$0.addSchema(3808, 2, bnr::new);
-      $$0.addFixer(new bgb($$214, "minecraft:trader_llama", "DecorItem", false));
+      $$0.addFixer(new bhm($$211));
+      Schema $$212 = $$0.addSchema(3808, bnr::new);
+      $$0.addFixer(new bgc($$212, "minecraft:horse", "ArmorItem", true));
+      Schema $$213 = $$0.addSchema(3808, 1, bns::new);
+      $$0.addFixer(new bgc($$213, "minecraft:llama", "DecorItem", false));
+      Schema $$214 = $$0.addSchema(3808, 2, bnt::new);
+      $$0.addFixer(new bgc($$214, "minecraft:trader_llama", "DecorItem", false));
       Schema $$215 = $$0.addSchema(3809, c);
       $$0.addFixer(new bcy($$215));
       Schema $$216 = $$0.addSchema(3812, c);
-      $$0.addFixer(new bft($$216));
-      Schema $$217 = $$0.addSchema(3813, bns::new);
+      $$0.addFixer(new bfu($$216));
+      Schema $$217 = $$0.addSchema(3813, bnu::new);
       $$0.addFixer(new bco($$217));
       Schema $$218 = $$0.addSchema(3814, c);
       $$0.addFixer(new bbt($$218, "Rename jump strength attribute", a("minecraft:horse.jump_strength", "minecraft:generic.jump_strength")));
-      Schema $$219 = $$0.addSchema(3816, bnt::new);
-      $$0.addFixer(new bbl($$219, "Added Bogged", bix.D));
-      Schema $$220 = $$0.addSchema(3818, bnu::new);
+      Schema $$219 = $$0.addSchema(3816, bnv::new);
+      $$0.addFixer(new bbl($$219, "Added Bogged", biz.D));
+      Schema $$220 = $$0.addSchema(3818, bnw::new);
       $$0.addFixer(new bbx($$220));
-      $$0.addFixer(new bdw($$220));
+      $$0.addFixer(new bdx($$220));
       Schema $$221 = $$0.addSchema(3818, 1, c);
       $$0.addFixer(new bbv($$221));
       Schema $$222 = $$0.addSchema(3818, 2, c);
-      $$0.addFixer(new bjx($$222));
-      Schema $$223 = $$0.addSchema(3818, 3, bnv::new);
-      $$0.addFixer(new bko($$223, "Inject data component types", bix.w));
-      Schema $$224 = $$0.addSchema(3818, 4, bnw::new);
-      $$0.addFixer(new bik($$224));
-      Schema $$225 = $$0.addSchema(3818, 5, bnx::new);
-      $$0.addFixer(new bgo($$225));
+      $$0.addFixer(new bjz($$222));
+      Schema $$223 = $$0.addSchema(3818, 3, bnx::new);
+      $$0.addFixer(new bkq($$223, "Inject data component types", biz.w));
+      Schema $$224 = $$0.addSchema(3818, 4, bny::new);
+      $$0.addFixer(new bim($$224));
+      Schema $$225 = $$0.addSchema(3818, 5, bnz::new);
+      $$0.addFixer(new bgq($$225));
       Schema $$226 = $$0.addSchema(3818, 6, c);
       $$0.addFixer(new bbp($$226));
       Schema $$227 = $$0.addSchema(3820, c);
-      $$0.addFixer(new bim($$227));
-      $$0.addFixer(new bhj($$227));
-      Schema $$228 = $$0.addSchema(3825, bny::new);
-      $$0.addFixer(new bgp($$228));
+      $$0.addFixer(new bio($$227));
+      $$0.addFixer(new bhl($$227));
+      Schema $$228 = $$0.addSchema(3825, boa::new);
+      $$0.addFixer(new bgr($$228));
       $$0.addFixer(new bbu($$228));
-      $$0.addFixer(new bka($$228));
-      $$0.addFixer(new bbl($$228, "Added Ominous Item Spawner", bix.D));
+      $$0.addFixer(new bkc($$228));
+      $$0.addFixer(new bbl($$228, "Added Ominous Item Spawner", biz.D));
       Schema $$229 = $$0.addSchema(3828, c);
-      $$0.addFixer(new bdx($$229));
+      $$0.addFixer(new bdy($$229));
       Schema $$230 = $$0.addSchema(3833, c);
-      $$0.addFixer(new biz($$230));
-      Schema $$231 = $$0.addSchema(3938, bnz::new);
-      $$0.addFixer(new bir($$231));
+      $$0.addFixer(new bjb($$230));
+      Schema $$231 = $$0.addSchema(3938, bob::new);
+      $$0.addFixer(new bit($$231));
       Schema $$232 = $$0.addSchema(3939, c);
-      $$0.addFixer(new bfo($$232, "Remove 1.21 feature toggle", Set.of("minecraft:update_1_21")));
+      $$0.addFixer(new bfp($$232, "Remove 1.21 feature toggle", Set.of("minecraft:update_1_21")));
       Schema $$233 = $$0.addSchema(3943, c);
-      $$0.addFixer(new big($$233));
+      $$0.addFixer(new bii($$233));
       Schema $$234 = $$0.addSchema(3945, c);
       $$0.addFixer(new bbr($$234));
-      $$0.addFixer(new bha($$234));
+      $$0.addFixer(new bhc($$234));
       Schema $$235 = $$0.addSchema(4054, c);
-      $$0.addFixer(new bhx($$235));
+      $$0.addFixer(new bhz($$235));
       Schema $$236 = $$0.addSchema(4055, c);
       $$0.addFixer(new bbq($$236));
       Schema $$237 = $$0.addSchema(4057, c);
       $$0.addFixer(new bcu($$237));
-      Schema $$238 = $$0.addSchema(4059, boa::new);
-      $$0.addFixer(new bfu($$238));
+      Schema $$238 = $$0.addSchema(4059, boc::new);
+      $$0.addFixer(new bfv($$238));
       Schema $$239 = $$0.addSchema(4061, c);
-      $$0.addFixer(new bkb($$239));
+      $$0.addFixer(new bkd($$239));
       Schema $$240 = $$0.addSchema(4064, c);
-      $$0.addFixer(new bfr($$240));
-      Schema $$241 = $$0.addSchema(4067, bob::new);
+      $$0.addFixer(new bfs($$240));
+      Schema $$241 = $$0.addSchema(4067, bod::new);
       $$0.addFixer(new bct($$241));
-      $$0.addFixer(new bfo($$241, "Remove Bundle experimental feature flag", Set.of("minecraft:bundle")));
+      $$0.addFixer(new bfp($$241, "Remove Bundle experimental feature flag", Set.of("minecraft:bundle")));
       Schema $$242 = $$0.addSchema(4068, c);
-      $$0.addFixer(new bhi($$242));
-      $$0.addFixer(new bdn($$242));
-      Schema $$243 = $$0.addSchema(4070, boc::new);
-      $$0.addFixer(new bbl($$243, "Added Pale Oak Boat and Pale Oak Chest Boat", bix.D));
-      Schema $$244 = $$0.addSchema(4071, bod::new);
-      $$0.addFixer(new bbl($$244, "Added Creaking", bix.D));
-      $$0.addFixer(new bbl($$244, "Added Creaking Heart", bix.s));
+      $$0.addFixer(new bhk($$242));
+      $$0.addFixer(new bdo($$242));
+      Schema $$243 = $$0.addSchema(4070, boe::new);
+      $$0.addFixer(new bbl($$243, "Added Pale Oak Boat and Pale Oak Chest Boat", biz.D));
+      Schema $$244 = $$0.addSchema(4071, bof::new);
+      $$0.addFixer(new bbl($$244, "Added Creaking", biz.D));
+      $$0.addFixer(new bbl($$244, "Added Creaking Heart", biz.s));
       Schema $$245 = $$0.addSchema(4081, c);
-      $$0.addFixer(new bey($$245));
+      $$0.addFixer(new bez($$245));
       Schema $$246 = $$0.addSchema(4173, c);
-      $$0.addFixer(new bei($$246, "Rename TNT Minecart fuse", "minecraft:tnt_minecart", Map.of("TNTFuse", "fuse")));
+      $$0.addFixer(new bej($$246, "Rename TNT Minecart fuse", "minecraft:tnt_minecart", Map.of("TNTFuse", "fuse")));
       Schema $$247 = $$0.addSchema(4175, c);
-      $$0.addFixer(new bfn($$247));
-      $$0.addFixer(new bdp($$247));
+      $$0.addFixer(new bfo($$247));
+      $$0.addFixer(new bdq($$247));
       Schema $$248 = $$0.addSchema(4176, c);
-      $$0.addFixer(new bgd($$248));
-      $$0.addFixer(new bge($$248));
+      $$0.addFixer(new bgf($$248));
+      $$0.addFixer(new bgg($$248));
       Schema $$249 = $$0.addSchema(4180, c);
-      $$0.addFixer(new bfo($$249, "Remove Winter Drop toggle", Set.of("minecraft:winter_drop")));
+      $$0.addFixer(new bfp($$249, "Remove Winter Drop toggle", Set.of("minecraft:winter_drop")));
       Schema $$250 = $$0.addSchema(4181, c);
       $$0.addFixer(new bcf($$250, "minecraft:furnace"));
       $$0.addFixer(new bcf($$250, "minecraft:smoker"));
       $$0.addFixer(new bcf($$250, "minecraft:blast_furnace"));
       Schema $$251 = $$0.addSchema(4187, c);
-      $$0.addFixer(new bdz($$251, "Villager follow range fix undo", "minecraft:villager", "minecraft:follow_range", $$0x -> $$0x == 48.0 ? 16.0 : $$0x));
-      $$0.addFixer(new bdz($$251, "Bee follow range fix", "minecraft:bee", "minecraft:follow_range", $$0x -> $$0x == 48.0 ? 16.0 : $$0x));
-      $$0.addFixer(new bdz($$251, "Allay follow range fix", "minecraft:allay", "minecraft:follow_range", $$0x -> $$0x == 48.0 ? 16.0 : $$0x));
-      $$0.addFixer(new bdz($$251, "Llama follow range fix", "minecraft:llama", "minecraft:follow_range", $$0x -> $$0x == 40.0 ? 16.0 : $$0x));
-      $$0.addFixer(new bdz($$251, "Piglin Brute follow range fix", "minecraft:piglin_brute", "minecraft:follow_range", $$0x -> $$0x == 16.0 ? 12.0 : $$0x));
-      $$0.addFixer(new bdz($$251, "Warden follow range fix", "minecraft:warden", "minecraft:follow_range", $$0x -> $$0x == 16.0 ? 24.0 : $$0x));
-      Schema $$252 = $$0.addSchema(4290, boe::new);
-      $$0.addFixer(new bkc($$252));
+      $$0.addFixer(new bea($$251, "Villager follow range fix undo", "minecraft:villager", "minecraft:follow_range", $$0x -> $$0x == 48.0 ? 16.0 : $$0x));
+      $$0.addFixer(new bea($$251, "Bee follow range fix", "minecraft:bee", "minecraft:follow_range", $$0x -> $$0x == 48.0 ? 16.0 : $$0x));
+      $$0.addFixer(new bea($$251, "Allay follow range fix", "minecraft:allay", "minecraft:follow_range", $$0x -> $$0x == 48.0 ? 16.0 : $$0x));
+      $$0.addFixer(new bea($$251, "Llama follow range fix", "minecraft:llama", "minecraft:follow_range", $$0x -> $$0x == 40.0 ? 16.0 : $$0x));
+      $$0.addFixer(new bea($$251, "Piglin Brute follow range fix", "minecraft:piglin_brute", "minecraft:follow_range", $$0x -> $$0x == 16.0 ? 12.0 : $$0x));
+      $$0.addFixer(new bea($$251, "Warden follow range fix", "minecraft:warden", "minecraft:follow_range", $$0x -> $$0x == 16.0 ? 24.0 : $$0x));
+      Schema $$252 = $$0.addSchema(4290, bog::new);
+      $$0.addFixer(new bke($$252));
       Schema $$253 = $$0.addSchema(4291, c);
-      $$0.addFixer(new bhd($$253));
-      $$0.addFixer(new bjv($$253));
-      Schema $$254 = $$0.addSchema(4292, bof::new);
-      $$0.addFixer(new bjt($$254));
+      $$0.addFixer(new bhf($$253));
+      $$0.addFixer(new bjx($$253));
+      Schema $$254 = $$0.addSchema(4292, boh::new);
+      $$0.addFixer(new bjv($$254));
       Schema $$255 = $$0.addSchema(4293, c);
-      $$0.addFixer(new bds($$255));
+      $$0.addFixer(new bdt($$255));
       Schema $$256 = $$0.addSchema(4294, c);
       $$0.addFixer(
          new bcp(
@@ -1054,30 +1054,33 @@ public class bbc {
       Schema $$258 = $$0.addSchema(4296, c);
       $$0.addFixer(new bbo($$258));
       Schema $$259 = $$0.addSchema(4297, c);
-      $$0.addFixer(new bfw($$259));
+      $$0.addFixer(new bfx($$259));
       Schema $$260 = $$0.addSchema(4299, c);
-      $$0.addFixer(new bfc($$260));
-      Schema $$261 = $$0.addSchema(4300, bog::new);
-      $$0.addFixer(new bjf($$261));
-      Schema $$262 = $$0.addSchema(4301, boh::new);
-      $$0.addFixer(new bfm($$262));
-      Schema $$263 = $$0.addSchema(4302, boi::new);
-      $$0.addFixer(new bbl($$263, "Added Test and Test Instance Block Entities", bix.s));
+      $$0.addFixer(new bfd($$260));
+      Schema $$261 = $$0.addSchema(4300, boi::new);
+      $$0.addFixer(new bjh($$261));
+      Schema $$262 = $$0.addSchema(4301, boj::new);
+      $$0.addFixer(new bfn($$262));
+      Schema $$263 = $$0.addSchema(4302, bok::new);
+      $$0.addFixer(new bbl($$263, "Added Test and Test Instance Block Entities", biz.s));
       Schema $$264 = $$0.addSchema(4303, c);
-      $$0.addFixer(new beh($$264, bix.D));
-      $$0.addFixer(new beh($$264, bix.b));
+      $$0.addFixer(new bei($$264, biz.D));
+      $$0.addFixer(new bei($$264, biz.b));
       Schema $$265 = $$0.addSchema(4305, c);
       $$0.addFixer(new bcp($$265, "rename test block mode", "minecraft:test_block", "test_block_mode", "mode", $$0x -> $$0x));
-      Schema $$266 = $$0.addSchema(4306, boj::new);
-      $$0.addFixer(new bjw($$266));
-      Schema $$267 = $$0.addSchema(4307, bok::new);
-      $$0.addFixer(new bjy($$267));
+      Schema $$266 = $$0.addSchema(4306, bol::new);
+      $$0.addFixer(new bjy($$266));
+      Schema $$267 = $$0.addSchema(4307, bom::new);
+      $$0.addFixer(new bka($$267));
       Schema $$268 = $$0.addSchema(4309, c);
-      $$0.addFixer(new bis($$268));
+      $$0.addFixer(new biu($$268));
+      $$0.addFixer(new bdl($$268));
       Schema $$269 = $$0.addSchema(4311, c);
       $$0.addFixer(new bbn($$269, false, "Use lodestone category change", a("minecraft:nether/use_lodestone", "minecraft:adventure/use_lodestone")));
-      Schema $$270 = $$0.addSchema(4312, bol::new);
-      $$0.addFixer(new bil($$270));
+      Schema $$270 = $$0.addSchema(4312, bon::new);
+      $$0.addFixer(new bin($$270));
+      Schema $$271 = $$0.addSchema(4314, c);
+      $$0.addFixer(new bge($$271));
    }
 
    private static UnaryOperator<String> a(Map<String, String> $$0) {
@@ -1085,10 +1088,10 @@ public class bbc {
    }
 
    private static UnaryOperator<String> b(Map<String, String> $$0) {
-      return $$1 -> $$0.getOrDefault(bks.a($$1), $$1);
+      return $$1 -> $$0.getOrDefault(bku.a($$1), $$1);
    }
 
    private static UnaryOperator<String> a(String $$0, String $$1) {
-      return $$2 -> Objects.equals(bks.a($$2), $$0) ? $$1 : $$2;
+      return $$2 -> Objects.equals(bku.a($$2), $$0) ? $$1 : $$2;
    }
 }

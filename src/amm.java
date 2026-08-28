@@ -59,7 +59,7 @@ public class amm {
 
                for (Socket $$3 : this.h) {
                   if (!$$3.isClosed()) {
-                     af.i().execute(() -> {
+                     ag.i().execute(() -> {
                         try {
                            OutputStream $$2x = $$3.getOutputStream();
                            $$2x.write($$2);
@@ -125,8 +125,8 @@ public class amm {
          return null;
       } else {
          arr $$1 = $$0.get(0);
-         String $$2 = (String)amu.a.inverse().get($$1.dV().aj());
-         return $$2 == null ? null : new amm.a($$2, $$1.dA(), $$1.dC(), $$1.dG(), $$1.dL(), $$1.dN());
+         String $$2 = (String)amu.a.inverse().get($$1.dU().aj());
+         return $$2 == null ? null : new amm.a($$2, $$1.dz(), $$1.dB(), $$1.dF(), $$1.dK(), $$1.dM());
       }
    }
 

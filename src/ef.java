@@ -1,34 +1,25 @@
-@FunctionalInterface
-public interface ef {
-   ef a = new ef() {
-      @Override
-      public void onResult(boolean $$0, int $$1) {
-      }
+import java.util.Optional;
+import java.util.stream.Stream;
 
-      @Override
-      public String toString() {
-         return "<empty>";
-      }
-   };
+public interface ef extends jh.a {
+   static ef a(final jh.a $$0, final cut $$1) {
+      return new ef() {
+         @Override
+         public Stream<alf<? extends js<?>>> b() {
+            return $$0.b();
+         }
 
-   void onResult(boolean var1, int var2);
+         @Override
+         public <T> Optional<jh.b<T>> a(alf<? extends js<? extends T>> $$0x) {
+            return $$0.a($$0).map($$1xx -> $$1xx.a($$1));
+         }
 
-   default void onSuccess(int $$0) {
-      this.onResult(true, $$0);
+         @Override
+         public cut a() {
+            return $$1;
+         }
+      };
    }
 
-   default void onFailure() {
-      this.onResult(false, 0);
-   }
-
-   static ef chain(ef $$0, ef $$1) {
-      if ($$0 == a) {
-         return $$1;
-      } else {
-         return $$1 == a ? $$0 : ($$2, $$3) -> {
-            $$0.onResult($$2, $$3);
-            $$1.onResult($$2, $$3);
-         };
-      }
-   }
+   cut a();
 }

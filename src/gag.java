@@ -1,45 +1,79 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Objects;
 
-public class gag extends fyb {
-   private static final List<ebs> a = List.of(ebs.values());
-   private static final wy b = wy.c(dmh.pI.v());
-   private static final wy c = wy.c("test_block.message");
-   private final iu d;
-   private ebs s;
-   private String u;
-   @Nullable
-   private fss v;
-
-   public gag(dyz $$0) {
-      super(b);
-      this.d = $$0.ax_();
-      this.s = $$0.d();
-      this.u = $$0.t();
-   }
-
-   @Override
-   public void aO_() {
-      this.v = new fss(this.p, this.n / 2 - 152, 80, 240, 20, wy.c("test_block.message"));
-      this.v.f(128);
-      this.v.a(this.u);
-      this.c(this.v);
-      this.b(this.v);
-      this.a(this.s);
-      this.c(fsq.<ebs>a(ebs::a).a(a).a().a(this.s).a(this.n / 2 - 4 - 150, 185, 50, 20, b, ($$0, $$1) -> this.a($$1)));
-      this.c(fsj.a(wx.d, $$0 -> this.m()).a(this.n / 2 - 4 - 150, 210, 150, 20).a());
-      this.c(fsj.a(wx.e, $$0 -> this.E()).a(this.n / 2 + 4, 210, 150, 20).a());
-   }
-
-   @Override
-   public void a(frv $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 10, 16777215);
-      if (this.s != ebs.a) {
-         $$0.b(this.p, c, this.n / 2 - 153, 70, 10526880);
+public class gag extends fzk implements gai<cwi> {
+   private final cwi y;
+   private final cvq z = new cvq() {
+      @Override
+      public void a(cvc $$0, int $$1, czk $$2) {
+         gag.this.M();
       }
 
-      $$0.b(this.p, this.s.b(), this.n / 2 - 153, 174, 10526880);
+      @Override
+      public void a(cvc $$0, int $$1, int $$2) {
+         if ($$1 == 0) {
+            gag.this.N();
+         }
+      }
+   };
+
+   public gag(cwi $$0, cri $$1, wy $$2) {
+      this.y = $$0;
+   }
+
+   public cwi L() {
+      return this.y;
+   }
+
+   @Override
+   protected void aO_() {
+      super.aO_();
+      this.y.a(this.z);
+   }
+
+   @Override
+   public void aL_() {
+      this.m.t.p();
+      super.aL_();
+   }
+
+   @Override
+   public void aF_() {
+      super.aF_();
+      this.y.b(this.z);
+   }
+
+   @Override
+   protected void m() {
+      if (this.m.t.gv()) {
+         this.c(fsv.a(wx.d, $$0 -> this.aL_()).a(this.n / 2 - 100, 196, 98, 20).a());
+         this.c(fsv.a(wy.c("lectern.take_book"), $$0 -> this.g(3)).a(this.n / 2 + 2, 196, 98, 20).a());
+      } else {
+         super.m();
+      }
+   }
+
+   @Override
+   protected void G() {
+      this.g(1);
+   }
+
+   @Override
+   protected void H() {
+      this.g(2);
+   }
+
+   @Override
+   protected boolean b(int $$0) {
+      if ($$0 != this.y.m()) {
+         this.g(100 + $$0);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private void g(int $$0) {
+      this.m.r.a(this.y.l, $$0);
    }
 
    @Override
@@ -47,28 +81,17 @@ public class gag extends fyb {
       return false;
    }
 
-   private void m() {
-      this.u = this.v.a();
-      this.m.L().b(new aim(this.d, this.s, this.u));
-      this.aL_();
+   void M() {
+      czk $$0 = this.y.l();
+      this.a(Objects.requireNonNullElse(fzk.a.a($$0), fzk.d));
+   }
+
+   void N() {
+      this.a(this.y.m());
    }
 
    @Override
-   public void aL_() {
-      this.E();
-   }
-
-   private void E() {
-      this.m.a(null);
-   }
-
-   private void a(ebs $$0) {
-      this.s = $$0;
-      this.v.k = $$0 != ebs.a;
-   }
-
-   @Override
-   public void b(frv $$0, int $$1, int $$2, float $$3) {
-      this.b($$0);
+   protected void I() {
+      this.m.t.p();
    }
 }

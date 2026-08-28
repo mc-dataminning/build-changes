@@ -1,70 +1,45 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+public class cdt extends ces {
+   private final cjc g;
 
-public class cdt extends cea {
-   protected final bxm a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
-   private final dja f;
-
-   public cdt(bxm $$0, double $$1) {
-      this.a = $$0;
-      this.e = $$1;
-      this.f = $$0.dV();
-      this.a(EnumSet.of(cea.a.a));
+   public cdt(cjc $$0, double $$1) {
+      super($$0, $$1, 8);
+      this.g = $$0;
    }
 
    @Override
    public boolean b() {
-      if (this.a.f() != null) {
-         return false;
-      } else if (!this.f.V()) {
-         return false;
-      } else if (!this.a.bY()) {
-         return false;
-      } else if (!this.f.h(this.a.dv())) {
-         return false;
-      } else {
-         return !this.a.a(bwp.f).f() ? false : this.h();
-      }
-   }
-
-   protected boolean h() {
-      feq $$0 = this.i();
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.b = $$0.d;
-         this.c = $$0.e;
-         this.d = $$0.f;
-         return true;
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return !this.a.O().k();
+      return this.g.q() && !this.g.gt() && super.b();
    }
 
    @Override
    public void d() {
-      this.a.O().a(this.b, this.c, this.d, this.e);
+      super.d();
+      this.g.x(false);
    }
 
-   @Nullable
-   protected feq i() {
-      azv $$0 = this.a.dY();
-      iu $$1 = this.a.dv();
+   @Override
+   public void e() {
+      super.e();
+      this.g.x(false);
+   }
 
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         iu $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
-         if (!this.f.h($$3) && this.a.c($$3) < 0.0F) {
-            return feq.c($$3);
+   @Override
+   public void a() {
+      super.a();
+      this.g.x(this.m());
+   }
+
+   @Override
+   protected boolean a(djk $$0, iv $$1) {
+      if (!$$0.v($$1.d())) {
+         return false;
+      } else {
+         eao $$2 = $$0.a_($$1);
+         if ($$2.a(dmo.cG)) {
+            return dxu.a($$0, $$1) < 1;
+         } else {
+            return $$2.a(dmo.cO) && $$2.c(dpx.b) ? true : $$2.a(axc.T, $$0x -> $$0x.d(dmf.b).map($$0xx -> $$0xx != ebb.a).orElse(true));
          }
       }
-
-      return null;
    }
 }

@@ -1,197 +1,154 @@
-import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
-import java.util.ArrayDeque;
-import java.util.Deque;
-import javax.annotation.Nullable;
+import java.util.Comparator;
+import java.util.Optional;
 
-public class ext extends exy {
-   private final Deque<iu> b = new ArrayDeque<>();
-   private final Deque<iu> c = new ArrayDeque<>();
-   private final Object2IntMap<iu> d = new Object2IntLinkedOpenHashMap();
+public class ext {
+   public static final int a = 3;
+   private static final int b = 16;
+   private static final int c = 128;
+   private static final int d = 5;
+   private static final int e = 4;
+   private static final int f = 3;
+   private static final int g = -1;
+   private static final int h = 4;
+   private static final int i = -1;
+   private static final int j = 3;
+   private static final int k = -1;
+   private static final int l = 2;
+   private static final int m = -1;
+   private final arq n;
 
-   public ext(dso $$0) {
-      super($$0);
+   public ext(arq $$0) {
+      this.n = $$0;
    }
 
-   @Override
-   public void a(dja $$0, iu $$1, eah $$2, @Nullable exw $$3, boolean $$4) {
-      exw $$5 = a($$0, $$3);
-      this.a($$0, $$1, $$5);
-      ObjectIterator<Entry<iu>> $$6 = this.d.object2IntEntrySet().iterator();
-
-      for (boolean $$7 = true; $$6.hasNext(); $$7 = false) {
-         Entry<iu> $$8 = (Entry<iu>)$$6.next();
-         iu $$9 = (iu)$$8.getKey();
-         int $$10 = $$8.getIntValue();
-         int $$11 = b($$10);
-         eah $$12 = $$0.a_($$9);
-         if ($$12.a(this.a) && !$$12.c(dso.f).equals($$11)) {
-            int $$13 = 2;
-            if (!$$4 || !$$7) {
-               $$13 |= 128;
-            }
-
-            $$0.a($$9, $$12.b(dso.f, Integer.valueOf($$11)), $$13);
-         } else {
-            $$6.remove();
-         }
-      }
-
-      this.a($$0);
+   public Optional<iv> a(iv $$0, boolean $$1, ecg $$2) {
+      cil $$3 = this.n.A();
+      int $$4 = $$1 ? 16 : 128;
+      $$3.a(this.n, $$0, $$4);
+      return $$3.b($$0x -> $$0x.a(cip.r), $$0, $$4, cil.b.c)
+         .map(cim::g)
+         .filter($$2::a)
+         .filter($$0x -> this.n.a_($$0x).b(ebe.J))
+         .min(Comparator.<iv>comparingDouble($$1x -> $$1x.j($$0)).thenComparingInt(ka::v));
    }
 
-   private void a(dja $$0) {
-      this.d.forEach(($$1, $$2) -> {
-         exw $$3 = a($$2);
-         eah $$4 = $$0.a_($$1);
+   public Optional<m.a> a(iv $$0, jb.a $$1) {
+      jb $$2 = jb.a(jb.b.a, $$1);
+      double $$3 = -1.0;
+      iv $$4 = null;
+      double $$5 = -1.0;
+      iv $$6 = null;
+      ecg $$7 = this.n.A_();
+      int $$8 = Math.min(this.n.ao(), this.n.G_() + this.n.l() - 1);
+      int $$9 = 1;
+      iv.a $$10 = $$0.k();
 
-         for (ja $$5 : $$3.f()) {
-            if (a($$4, $$5)) {
-               iu $$6 = $$1.a($$5);
-               eah $$7 = $$0.a_($$6);
-               exw $$8 = $$3.c($$5);
-               $$0.a($$7, $$6, this.a, $$8, false);
-               if ($$7.d($$0, $$6)) {
-                  for (ja $$9 : $$8.f()) {
-                     if ($$9 != $$5.g()) {
-                        $$0.b($$6.a($$9), this.a, $$8.c($$9));
+      for (iv.a $$11 : iv.a($$0, 16, jb.f, jb.d)) {
+         int $$12 = Math.min($$8, this.n.a(egn.a.e, $$11.u(), $$11.w()));
+         if ($$7.a($$11) && $$7.a($$11.c($$2, 1))) {
+            $$11.c($$2.g(), 1);
+
+            for (int $$13 = $$12; $$13 >= this.n.G_(); $$13--) {
+               $$11.q($$13);
+               if (this.a($$11)) {
+                  int $$14 = $$13;
+
+                  while ($$13 > this.n.G_() && this.a($$11.c(jb.a))) {
+                     $$13--;
+                  }
+
+                  if ($$13 + 4 <= $$8) {
+                     int $$15 = $$14 - $$13;
+                     if ($$15 <= 0 || $$15 >= 3) {
+                        $$11.q($$13);
+                        if (this.a($$11, $$10, $$2, 0)) {
+                           double $$16 = $$0.j($$11);
+                           if (this.a($$11, $$10, $$2, -1) && this.a($$11, $$10, $$2, 1) && ($$3 == -1.0 || $$3 > $$16)) {
+                              $$3 = $$16;
+                              $$4 = $$11.j();
+                           }
+
+                           if ($$3 == -1.0 && ($$5 == -1.0 || $$5 > $$16)) {
+                              $$5 = $$16;
+                              $$6 = $$11.j();
+                           }
+                        }
                      }
                   }
                }
             }
          }
-      });
-   }
-
-   private static boolean a(eah $$0, ja $$1) {
-      ebf<ebm> $$2 = dso.g.get($$1);
-      return $$2 == null ? $$1 == ja.a : $$0.c($$2).a();
-   }
-
-   private static exw a(dja $$0, @Nullable exw $$1) {
-      exw $$2;
-      if ($$1 != null) {
-         $$2 = $$1;
-      } else {
-         $$2 = exw.a($$0.A);
       }
 
-      return $$2.a(ja.b).a(exw.a.a);
-   }
-
-   private void a(dja $$0, iu $$1, exw $$2) {
-      eah $$3 = $$0.a_($$1);
-      if ($$3.a(this.a)) {
-         this.a($$1, $$3.c(dso.f), $$2);
-         this.b.add($$1);
-      } else {
-         this.a($$0, $$1, 0, $$2, true);
+      if ($$3 == -1.0 && $$5 != -1.0) {
+         $$4 = $$6;
+         $$3 = $$5;
       }
 
-      while (!this.b.isEmpty()) {
-         iu $$4 = this.b.removeFirst();
-         int $$5 = this.d.getInt($$4);
-         exw $$6 = a($$5);
-         int $$7 = b($$5);
-         int $$8 = this.a($$0, $$4);
-         int $$9 = this.b($$0, $$4);
-         int $$10 = Math.max($$8, $$9);
-         int $$11;
-         if ($$10 < $$7) {
-            if ($$8 > 0 && !this.c.contains($$4)) {
-               this.c.add($$4);
-            }
-
-            $$11 = 0;
-         } else {
-            $$11 = $$10;
+      if ($$3 == -1.0) {
+         int $$17 = Math.max(this.n.G_() - -1, 70);
+         int $$18 = $$8 - 9;
+         if ($$18 < $$17) {
+            return Optional.empty();
          }
 
-         if ($$11 != $$7) {
-            this.a($$4, $$11, $$6);
-         }
+         $$4 = new iv($$0.u() - $$2.j() * 1, azm.a($$0.v(), $$17, $$18), $$0.w() - $$2.l() * 1).j();
+         $$4 = $$7.b($$4);
+         jb $$19 = $$2.h();
 
-         this.a($$0, $$4, $$11, $$6, $$7 > $$10);
-      }
-
-      while (!this.c.isEmpty()) {
-         iu $$13 = this.c.removeFirst();
-         int $$14 = this.d.getInt($$13);
-         int $$15 = b($$14);
-         int $$16 = this.a($$0, $$13);
-         int $$17 = this.b($$0, $$13);
-         int $$18 = Math.max($$16, $$17);
-         exw $$19 = a($$14);
-         if ($$18 > $$15) {
-            this.a($$13, $$18, $$19);
-         } else if ($$18 < $$15) {
-            throw new IllegalStateException("Turning off wire while trying to turn it on. Should not happen.");
-         }
-
-         this.a($$0, $$13, $$18, $$19, false);
-      }
-   }
-
-   private static int a(exw $$0, int $$1) {
-      return $$0.i() << 4 | $$1;
-   }
-
-   private static exw a(int $$0) {
-      return exw.a($$0 >> 4);
-   }
-
-   private static int b(int $$0) {
-      return $$0 & 15;
-   }
-
-   private void a(iu $$0, int $$1, exw $$2) {
-      this.d.compute($$0, ($$2x, $$3) -> $$3 == null ? a($$2, $$1) : a(a($$3), $$1));
-   }
-
-   private void a(dja $$0, iu $$1, int $$2, exw $$3, boolean $$4) {
-      for (ja $$5 : $$3.g()) {
-         iu $$6 = $$1.a($$5);
-         this.b($$0, $$6, $$2, $$3.b($$5), $$4);
-      }
-
-      for (ja $$7 : $$3.h()) {
-         iu $$8 = $$1.a($$7);
-         boolean $$9 = $$0.a_($$8).d($$0, $$8);
-
-         for (ja $$10 : $$3.g()) {
-            iu $$11 = $$1.a($$10);
-            if ($$7 == ja.b && !$$9) {
-               iu $$12 = $$8.a($$10);
-               this.b($$0, $$12, $$2, $$3.b($$10), $$4);
-            } else if ($$7 == ja.a && !$$0.a_($$11).d($$0, $$11)) {
-               iu $$13 = $$8.a($$10);
-               this.b($$0, $$13, $$2, $$3.b($$10), $$4);
+         for (int $$20 = -1; $$20 < 2; $$20++) {
+            for (int $$21 = 0; $$21 < 2; $$21++) {
+               for (int $$22 = -1; $$22 < 3; $$22++) {
+                  eao $$23 = $$22 < 0 ? dmo.cy.m() : dmo.a.m();
+                  $$10.a($$4, $$21 * $$2.j() + $$20 * $$19.j(), $$22, $$21 * $$2.l() + $$20 * $$19.l());
+                  this.n.b($$10, $$23);
+               }
             }
          }
       }
-   }
 
-   private void b(dja $$0, iu $$1, int $$2, exw $$3, boolean $$4) {
-      eah $$5 = $$0.a_($$1);
-      if ($$5.a(this.a)) {
-         int $$6 = this.a($$1, $$5);
-         if ($$6 < $$2 - 1 && !this.c.contains($$1)) {
-            this.c.add($$1);
-            this.a($$1, $$6, $$3);
-         }
-
-         if ($$4 && $$6 > $$2 && !this.b.contains($$1)) {
-            this.b.add($$1);
-            this.a($$1, $$6, $$3);
+      for (int $$24 = -1; $$24 < 3; $$24++) {
+         for (int $$25 = -1; $$25 < 4; $$25++) {
+            if ($$24 == -1 || $$24 == 2 || $$25 == -1 || $$25 == 3) {
+               $$10.a($$4, $$24 * $$2.j(), $$25, $$24 * $$2.l());
+               this.n.a($$10, dmo.cy.m(), 3);
+            }
          }
       }
+
+      eao $$26 = dmo.eu.m().b(drx.b, $$1);
+
+      for (int $$27 = 0; $$27 < 2; $$27++) {
+         for (int $$28 = 0; $$28 < 3; $$28++) {
+            $$10.a($$4, $$27 * $$2.j(), $$28, $$27 * $$2.l());
+            this.n.a($$10, $$26, 18);
+         }
+      }
+
+      return Optional.of(new m.a($$4.j(), 2, 3));
    }
 
-   @Override
-   protected int a(iu $$0, eah $$1) {
-      int $$2 = this.d.getOrDefault($$0, -1);
-      return $$2 != -1 ? b($$2) : super.a($$0, $$1);
+   private boolean a(iv.a $$0) {
+      eao $$1 = this.n.a_($$0);
+      return $$1.v() && $$1.y().c();
+   }
+
+   private boolean a(iv $$0, iv.a $$1, jb $$2, int $$3) {
+      jb $$4 = $$2.h();
+
+      for (int $$5 = -1; $$5 < 3; $$5++) {
+         for (int $$6 = -1; $$6 < 4; $$6++) {
+            $$1.a($$0, $$2.j() * $$5 + $$4.j() * $$3, $$6, $$2.l() * $$5 + $$4.l() * $$3);
+            if ($$6 < 0 && !this.n.a_($$1).e()) {
+               return false;
+            }
+
+            if ($$6 >= 0 && !this.a($$1)) {
+               return false;
+            }
+         }
+      }
+
+      return true;
    }
 }

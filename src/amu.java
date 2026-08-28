@@ -16,54 +16,54 @@ public class amu {
    private static final String d = "0.0.0.0";
    private static final int e = 10000;
    private static final int f = 100;
-   public static BiMap<String, alf<dja>> a = ImmutableBiMap.of("o", dja.i, "n", dja.j, "e", dja.k);
+   public static BiMap<String, alf<djh>> a = ImmutableBiMap.of("o", djh.i, "n", djh.j, "e", djh.k);
    @Nullable
    private static amm g;
    @Nullable
    private static aml h;
 
-   public static void a(CommandDispatcher<ei> $$0) {
+   public static void a(CommandDispatcher<ej> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("chase")
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("chase")
                   .then(
-                     ((LiteralArgumentBuilder)ej.a("follow")
+                     ((LiteralArgumentBuilder)ek.a("follow")
                            .then(
-                              ((RequiredArgumentBuilder)ej.a("host", StringArgumentType.string())
-                                    .executes($$0x -> b((ei)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), 10000)))
+                              ((RequiredArgumentBuilder)ek.a("host", StringArgumentType.string())
+                                    .executes($$0x -> b((ej)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), 10000)))
                                  .then(
-                                    ej.a("port", IntegerArgumentType.integer(1, 65535))
+                                    ek.a("port", IntegerArgumentType.integer(1, 65535))
                                        .executes(
                                           $$0x -> b(
-                                                (ei)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), IntegerArgumentType.getInteger($$0x, "port")
+                                                (ej)$$0x.getSource(), StringArgumentType.getString($$0x, "host"), IntegerArgumentType.getInteger($$0x, "port")
                                              )
                                        )
                                  )
                            ))
-                        .executes($$0x -> b((ei)$$0x.getSource(), "localhost", 10000))
+                        .executes($$0x -> b((ej)$$0x.getSource(), "localhost", 10000))
                   ))
                .then(
-                  ((LiteralArgumentBuilder)ej.a("lead")
+                  ((LiteralArgumentBuilder)ek.a("lead")
                         .then(
-                           ((RequiredArgumentBuilder)ej.a("bind_address", StringArgumentType.string())
-                                 .executes($$0x -> a((ei)$$0x.getSource(), StringArgumentType.getString($$0x, "bind_address"), 10000)))
+                           ((RequiredArgumentBuilder)ek.a("bind_address", StringArgumentType.string())
+                                 .executes($$0x -> a((ej)$$0x.getSource(), StringArgumentType.getString($$0x, "bind_address"), 10000)))
                               .then(
-                                 ej.a("port", IntegerArgumentType.integer(1024, 65535))
+                                 ek.a("port", IntegerArgumentType.integer(1024, 65535))
                                     .executes(
                                        $$0x -> a(
-                                             (ei)$$0x.getSource(),
+                                             (ej)$$0x.getSource(),
                                              StringArgumentType.getString($$0x, "bind_address"),
                                              IntegerArgumentType.getInteger($$0x, "port")
                                           )
                                     )
                               )
                         ))
-                     .executes($$0x -> a((ei)$$0x.getSource(), "0.0.0.0", 10000))
+                     .executes($$0x -> a((ej)$$0x.getSource(), "0.0.0.0", 10000))
                ))
-            .then(ej.a("stop").executes($$0x -> a((ei)$$0x.getSource())))
+            .then(ek.a("stop").executes($$0x -> a((ej)$$0x.getSource())))
       );
    }
 
-   private static int a(ei $$0) {
+   private static int a(ej $$0) {
       if (h != null) {
          h.b();
          $$0.a(() -> wy.b("You have now stopped chasing"), false);
@@ -79,7 +79,7 @@ public class amu {
       return 0;
    }
 
-   private static boolean b(ei $$0) {
+   private static boolean b(ej $$0) {
       if (g != null) {
          $$0.b(wy.b("Chase server is already running. Stop it using /chase stop"));
          return true;
@@ -91,7 +91,7 @@ public class amu {
       }
    }
 
-   private static int a(ei $$0, String $$1, int $$2) {
+   private static int a(ej $$0, String $$1, int $$2) {
       if (b($$0)) {
          return 0;
       } else {
@@ -110,7 +110,7 @@ public class amu {
       }
    }
 
-   private static int b(ei $$0, String $$1, int $$2) {
+   private static int b(ej $$0, String $$1, int $$2) {
       if (b($$0)) {
          return 0;
       } else {

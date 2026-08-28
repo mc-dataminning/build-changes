@@ -1,52 +1,81 @@
+import com.google.common.base.Predicates;
 import com.mojang.serialization.MapCodec;
 
-public abstract class dpd extends dmf implements dpc {
-   public dpd(eag.d $$0) {
+public class dpd extends dmm {
+   public static final MapCodec<dpd> a = b(dpd::new);
+   public static final ebm<jb> b = dqn.e;
+   public static final ebf c = ebe.k;
+   private static final ffr d = dmm.b(16.0, 0.0, 13.0);
+   private static final ffr e = ffo.a(d, dmm.b(8.0, 13.0, 16.0));
+   private static eat f;
+
+   @Override
+   public MapCodec<dpd> a() {
+      return a;
+   }
+
+   public dpd(ean.d $$0) {
       super($$0);
+      this.l(this.C.b().b(b, jb.c).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected abstract MapCodec<? extends dpd> a();
-
-   @Override
-   protected void a(eah $$0, dja $$1, iu $$2, eah $$3, boolean $$4) {
-      $$1.a($$2, this, this.b());
+   protected boolean g_(eao $$0) {
+      return true;
    }
 
    @Override
-   protected eah a(eah $$0, djd $$1, djp $$2, iu $$3, ja $$4, iu $$5, eah $$6, azv $$7) {
-      $$2.a($$3, this, this.b());
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
+      return $$0.c(c) ? e : d;
    }
 
    @Override
-   protected void a(eah $$0, arq $$1, iu $$2, azv $$3) {
-      if (n($$1.a_($$2.e())) && $$2.v() >= $$1.G_()) {
-         cng $$4 = cng.a($$1, $$2, $$0);
-         this.a($$4);
+   public eao a(ddd $$0) {
+      return this.m().b(b, $$0.g().g()).b(c, Boolean.valueOf(false));
+   }
+
+   @Override
+   protected boolean c_(eao $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(eao $$0, djh $$1, iv $$2) {
+      return $$0.c(c) ? 15 : 0;
+   }
+
+   @Override
+   protected eao a(eao $$0, dtg $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected eao a(eao $$0, drp $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(eap.a<dmm, eao> $$0) {
+      $$0.a(b, c);
+   }
+
+   public static eat b() {
+      if (f == null) {
+         f = eau.a()
+            .a("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
+            .a('?', eas.a(eax.a))
+            .a('^', eas.a(eax.a(dmo.fX).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jb.d))))
+            .a('>', eas.a(eax.a(dmo.fX).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jb.e))))
+            .a('v', eas.a(eax.a(dmo.fX).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jb.c))))
+            .a('<', eas.a(eax.a(dmo.fX).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jb.f))))
+            .b();
       }
-   }
 
-   protected void a(cng $$0) {
-   }
-
-   protected int b() {
-      return 2;
-   }
-
-   public static boolean n(eah $$0) {
-      return $$0.l() || $$0.a(axc.aN) || $$0.n() || $$0.v();
+      return f;
    }
 
    @Override
-   public void a(eah $$0, dja $$1, iu $$2, azv $$3) {
-      if ($$3.a(16) == 0) {
-         iu $$4 = $$2.e();
-         if (n($$1.a_($$4))) {
-            azq.a($$1, $$2, $$3, new lp(lx.C, $$0));
-         }
-      }
+   protected boolean a(eao $$0, exk $$1) {
+      return false;
    }
-
-   public abstract int b(eah var1, dig var2, iu var3);
 }

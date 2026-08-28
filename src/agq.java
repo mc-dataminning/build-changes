@@ -5,7 +5,7 @@ public interface agq extends wk {
    Logger a = LogUtils.getLogger();
 
    @Override
-   default void a(zf $$0, Exception $$1) throws z {
+   default void a(zf $$0, Exception $$1) throws aa {
       a.error("Failed to handle packet {}, suppressing error", $$0, $$1);
    }
 }

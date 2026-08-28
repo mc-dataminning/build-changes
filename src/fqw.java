@@ -1,115 +1,42 @@
-import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntList;
+import javax.annotation.Nullable;
 
-public interface fqw extends Supplier<JsonElement> {
-   void a(eai<?, ?> var1);
+public record fqw(int b) implements fqy {
+   public static final MapCodec<fqw> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayu.i.fieldOf("default").forGetter(fqw::b)).apply($$0, fqw::new));
 
-   static fqw.c a() {
-      return new fqw.c();
+   public fqw() {
+      this(-7697782);
    }
 
-   static fqw a(fqw... $$0) {
-      return new fqw.a(fqw.b.a, Arrays.asList($$0));
-   }
+   @Override
+   public int a(czk $$0, @Nullable gkl $$1, @Nullable bxj $$2) {
+      dby $$3 = $$0.a(kk.ai);
+      IntList $$4 = $$3 != null ? $$3.b() : IntList.of();
+      int $$5 = $$4.size();
+      if ($$5 == 0) {
+         return this.b;
+      } else if ($$5 == 1) {
+         return axw.f($$4.getInt(0));
+      } else {
+         int $$6 = 0;
+         int $$7 = 0;
+         int $$8 = 0;
 
-   static fqw b(fqw... $$0) {
-      return new fqw.a(fqw.b.b, Arrays.asList($$0));
-   }
-
-   public static class a implements fqw {
-      private final fqw.b a;
-      private final List<fqw> b;
-
-      a(fqw.b $$0, List<fqw> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      @Override
-      public void a(eai<?, ?> $$0) {
-         this.b.forEach($$1 -> $$1.a($$0));
-      }
-
-      public JsonElement b() {
-         JsonArray $$0 = new JsonArray();
-         this.b.stream().map(Supplier::get).forEach($$0::add);
-         JsonObject $$1 = new JsonObject();
-         $$1.add(this.a.c, $$0);
-         return $$1;
-      }
-   }
-
-   public static enum b {
-      a("AND"),
-      b("OR");
-
-      final String c;
-
-      private b(final String $$0) {
-         this.c = $$0;
-      }
-   }
-
-   public static class c implements fqw {
-      private final Map<ebk<?>, String> a = Maps.newHashMap();
-
-      private static <T extends Comparable<T>> String a(ebk<T> $$0, Stream<T> $$1) {
-         return $$1.<CharSequence>map($$0::b).collect(Collectors.joining("|"));
-      }
-
-      private static <T extends Comparable<T>> String c(ebk<T> $$0, T $$1, T[] $$2) {
-         return a($$0, Stream.concat(Stream.of($$1), Stream.of($$2)));
-      }
-
-      private <T extends Comparable<T>> void a(ebk<T> $$0, String $$1) {
-         String $$2 = this.a.put($$0, $$1);
-         if ($$2 != null) {
-            throw new IllegalStateException("Tried to replace " + $$0 + " value from " + $$2 + " to " + $$1);
+         for (int $$9 = 0; $$9 < $$5; $$9++) {
+            int $$10 = $$4.getInt($$9);
+            $$6 += axw.b($$10);
+            $$7 += axw.c($$10);
+            $$8 += axw.d($$10);
          }
-      }
 
-      public final <T extends Comparable<T>> fqw.c a(ebk<T> $$0, T $$1) {
-         this.a($$0, $$0.b($$1));
-         return this;
+         return axw.a($$6 / $$5, $$7 / $$5, $$8 / $$5);
       }
+   }
 
-      @SafeVarargs
-      public final <T extends Comparable<T>> fqw.c a(ebk<T> $$0, T $$1, T... $$2) {
-         this.a($$0, c($$0, $$1, $$2));
-         return this;
-      }
-
-      public final <T extends Comparable<T>> fqw.c b(ebk<T> $$0, T $$1) {
-         this.a($$0, "!" + $$0.b($$1));
-         return this;
-      }
-
-      @SafeVarargs
-      public final <T extends Comparable<T>> fqw.c b(ebk<T> $$0, T $$1, T... $$2) {
-         this.a($$0, "!" + c($$0, $$1, $$2));
-         return this;
-      }
-
-      public JsonElement b() {
-         JsonObject $$0 = new JsonObject();
-         this.a.forEach(($$1, $$2) -> $$0.addProperty($$1.f(), $$2));
-         return $$0;
-      }
-
-      @Override
-      public void a(eai<?, ?> $$0) {
-         List<ebk<?>> $$1 = this.a.keySet().stream().filter($$1x -> $$0.a($$1x.f()) != $$1x).collect(Collectors.toList());
-         if (!$$1.isEmpty()) {
-            throw new IllegalStateException("Properties " + $$1 + " are missing from " + $$0);
-         }
-      }
+   @Override
+   public MapCodec<fqw> a() {
+      return a;
    }
 }

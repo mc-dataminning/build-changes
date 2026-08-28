@@ -1,6 +1,6 @@
 import net.minecraft.server.MinecraftServer;
 
-public class awd implements eh {
+public class awd implements ei {
    private static final String b = "Rcon";
    private static final wy c = wy.b("Rcon");
    private final StringBuffer d = new StringBuffer();
@@ -18,9 +18,9 @@ public class awd implements eh {
       return this.d.toString();
    }
 
-   public ei g() {
+   public ej g() {
       arq $$0 = this.e.J();
-      return new ei(this, feq.a($$0.aa()), fep.a, $$0, 4, "Rcon", c, this.e, null);
+      return new ej(this, fex.a($$0.aa()), few.a, $$0, 4, "Rcon", c, this.e, null);
    }
 
    @Override

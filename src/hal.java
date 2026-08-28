@@ -1,27 +1,23 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-
-public class hal extends hav<hdh, ggo> {
-   private static final Map<bwb.a, alg> a = ImmutableMap.of(
-      bwb.a.b,
-      alg.b("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
-      bwb.a.c,
-      alg.b("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
-      bwb.a.d,
-      alg.b("textures/entity/iron_golem/iron_golem_crackiness_high.png")
-   );
-
-   public hal(gye<hdh, ggo> $$0) {
+public class hal<S extends hdo, M extends ggk<S> & giw> extends hbh<S, M> {
+   public hal(gyq<S, M> $$0) {
       super($$0);
    }
 
-   public void a(fjj $$0, gqa $$1, int $$2, hdh $$3, float $$4, float $$5) {
-      if (!$$3.z) {
-         bwb.a $$6 = $$3.c;
-         if ($$6 != bwb.a.a) {
-            alg $$7 = a.get($$6);
-            b(this.d(), $$7, $$0, $$1, $$2, $$3, -1);
-         }
+   public void a(fjy $$0, gqm $$1, int $$2, S $$3, float $$4, float $$5) {
+      hgc $$6 = $$3.i;
+      if (!$$6.c()) {
+         $$0.a();
+         this.a($$3, $$0);
+         $$6.a($$0, $$1, $$2, hja.d);
+         $$0.b();
       }
+   }
+
+   protected void a(S $$0, fjy $$1) {
+      this.d().a($$1);
+      $$1.a(a.b.rotation(0.75F));
+      $$1.b(1.07F, 1.07F, 1.07F);
+      $$1.a(0.0F, 0.13F, -0.34F);
+      $$1.a(a.b.rotation((float) Math.PI));
    }
 }

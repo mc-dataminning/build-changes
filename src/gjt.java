@@ -1,25 +1,83 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Set;
+
 public class gjt {
-   private static final int a = 49;
-   private static final int b = 3;
-   private double c = 2000000.0;
-   private int d = 1;
-   private volatile long e = af.d();
+   private static final Set<jb> a = EnumSet.allOf(jb.class);
+   private final List<gjr> b = Lists.newArrayList();
+   private int c;
+   private int d;
+   private boolean e;
 
-   public void a() {
-      this.e = af.d();
+   public gjt a(int $$0, int $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      return this;
    }
 
-   public void a(int $$0) {
-      if ($$0 > 0) {
-         double $$1 = (double)(af.d() - this.e);
-         double $$2 = $$1 / (double)$$0;
-         double $$3 = azm.a($$2, this.c / 3.0, this.c * 3.0);
-         this.c = (this.c * (double)this.d + $$3) / (double)(this.d + 1);
-         this.d = Math.min(49, this.d + 1);
-      }
+   public gjt a() {
+      return this.a(true);
    }
 
-   public float b() {
-      return (float)(7000000.0 / this.c);
+   public gjt a(boolean $$0) {
+      this.e = $$0;
+      return this;
+   }
+
+   public gjt a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, gjs $$7, int $$8, int $$9) {
+      this.a($$8, $$9);
+      this.b.add(new gjr($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, $$7, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public gjt a(String $$0, float $$1, float $$2, float $$3, int $$4, int $$5, int $$6, int $$7, int $$8) {
+      this.a($$7, $$8);
+      this.b.add(new gjr($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, (float)$$4, (float)$$5, (float)$$6, gjs.a, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public gjt a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      this.b.add(new gjr(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, gjs.a, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public gjt a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, Set<jb> $$6) {
+      this.b.add(new gjr(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, gjs.a, this.e, 1.0F, 1.0F, $$6));
+      return this;
+   }
+
+   public gjt a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
+      this.b.add(new gjr($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, gjs.a, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public gjt a(String $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, gjs $$7) {
+      this.b.add(new gjr($$0, (float)this.c, (float)this.d, $$1, $$2, $$3, $$4, $$5, $$6, $$7, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public gjt a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, boolean $$6) {
+      this.b.add(new gjr(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, gjs.a, $$6, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public gjt a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, gjs $$6, float $$7, float $$8) {
+      this.b.add(new gjr(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, $$7, $$8, a));
+      return this;
+   }
+
+   public gjt a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, gjs $$6) {
+      this.b.add(new gjr(null, (float)this.c, (float)this.d, $$0, $$1, $$2, $$3, $$4, $$5, $$6, this.e, 1.0F, 1.0F, a));
+      return this;
+   }
+
+   public List<gjr> b() {
+      return ImmutableList.copyOf(this.b);
+   }
+
+   public static gjt c() {
+      return new gjt();
    }
 }

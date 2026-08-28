@@ -1,11 +1,11 @@
 public class ain implements zf<agp> {
    public static final yw<vu, ain> a = zf.a(ain::a, ain::new);
    private static final int b = 384;
-   private final iu c;
+   private final iv c;
    private final String[] d;
    private final boolean e;
 
-   public ain(iu $$0, boolean $$1, String $$2, String $$3, String $$4, String $$5) {
+   public ain(iv $$0, boolean $$1, String $$2, String $$3, String $$4, String $$5) {
       this.c = $$0;
       this.e = $$1;
       this.d = new String[]{$$2, $$3, $$4, $$5};
@@ -39,7 +39,7 @@ public class ain implements zf<agp> {
       $$0.a(this);
    }
 
-   public iu b() {
+   public iv b() {
       return this.c;
    }
 

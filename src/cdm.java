@@ -1,77 +1,83 @@
 import java.util.EnumSet;
-import java.util.List;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cdm extends cea {
-   private static final cht d = cht.b().a(8.0).d();
-   protected final ciu a;
-   private final Class<? extends ciu> e;
-   protected final arq b;
+public class cdm<T extends bxj> extends cef {
+   protected final bxr a;
+   private final double i;
+   private final double j;
    @Nullable
-   protected ciu c;
-   private int f;
-   private final double g;
+   protected T b;
+   protected final float c;
+   @Nullable
+   protected exj d;
+   protected final cgt e;
+   protected final Class<T> f;
+   protected final Predicate<bxj> g;
+   protected final Predicate<bxj> h;
+   private final chy k;
 
-   public cdm(ciu $$0, double $$1) {
-      this($$0, $$1, (Class<? extends ciu>)$$0.getClass());
+   public cdm(bxr $$0, Class<T> $$1, float $$2, double $$3, double $$4) {
+      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, bwp.e::test);
    }
 
-   public cdm(ciu $$0, double $$1, Class<? extends ciu> $$2) {
+   public cdm(bxr $$0, Class<T> $$1, Predicate<bxj> $$2, float $$3, double $$4, double $$5, Predicate<bxj> $$6) {
       this.a = $$0;
-      this.b = a($$0);
-      this.e = $$2;
-      this.g = $$1;
-      this.a(EnumSet.of(cea.a.a, cea.a.b));
+      this.f = $$1;
+      this.g = $$2;
+      this.c = $$3;
+      this.i = $$4;
+      this.j = $$5;
+      this.h = $$6;
+      this.e = $$0.O();
+      this.a(EnumSet.of(cef.a.a));
+      this.k = chy.a().a((double)$$3).a(($$2x, $$3x) -> $$6.test($$2x) && $$2.test($$2x));
+   }
+
+   public cdm(bxr $$0, Class<T> $$1, float $$2, double $$3, double $$4, Predicate<bxj> $$5) {
+      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, $$5);
    }
 
    @Override
    public boolean b() {
-      if (!this.a.gB()) {
+      this.b = a(this.a)
+         .a(this.a.dU().a(this.f, this.a.cQ().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.dz(), this.a.dB(), this.a.dF());
+      if (this.b == null) {
          return false;
       } else {
-         this.c = this.h();
-         return this.c != null;
+         fex $$0 = cic.a(this.a, 16, 7, this.b.ds());
+         if ($$0 == null) {
+            return false;
+         } else if (this.b.h($$0.d, $$0.e, $$0.f) < this.b.g(this.a)) {
+            return false;
+         } else {
+            this.d = this.e.a($$0.d, $$0.e, $$0.f, 0);
+            return this.d != null;
+         }
       }
    }
 
    @Override
    public boolean c() {
-      return this.c.bK() && this.c.gB() && this.f < 60 && !this.c.go();
+      return !this.e.k();
+   }
+
+   @Override
+   public void d() {
+      this.e.a(this.d, this.i);
    }
 
    @Override
    public void e() {
-      this.c = null;
-      this.f = 0;
+      this.b = null;
    }
 
    @Override
    public void a() {
-      this.a.J().a(this.c, 10.0F, (float)this.a.ac());
-      this.a.O().a(this.c, this.g);
-      this.f++;
-      if (this.f >= this.a(60) && this.a.g(this.c) < 9.0) {
-         this.g();
+      if (this.a.g((bwi)this.b) < 49.0) {
+         this.a.O().a(this.j);
+      } else {
+         this.a.O().a(this.i);
       }
-   }
-
-   @Nullable
-   private ciu h() {
-      List<? extends ciu> $$0 = this.b.a(this.e, d, this.a, this.a.cR().g(8.0));
-      double $$1 = Double.MAX_VALUE;
-      ciu $$2 = null;
-
-      for (ciu $$3 : $$0) {
-         if (this.a.a($$3) && !$$3.go() && this.a.g($$3) < $$1) {
-            $$2 = $$3;
-            $$1 = this.a.g($$3);
-         }
-      }
-
-      return $$2;
-   }
-
-   protected void g() {
-      this.a.a(this.b, this.c);
    }
 }

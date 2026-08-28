@@ -1,13 +1,5 @@
-import javax.annotation.Nullable;
-
-public class heo extends hch {
-   @Nullable
-   public bwc.k.e a;
-   @Nullable
-   public bwc.k.b f;
-
-   @Override
-   public boolean a() {
-      return this.a != null;
-   }
+public class heo extends hdz {
+   public float a;
+   public boolean b;
+   public cjz.g c = cjz.g.a;
 }

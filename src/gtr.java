@@ -1,57 +1,41 @@
-import java.util.BitSet;
-import java.util.Set;
+public class gtr extends gts<dzi> {
+   private static final alg c = alg.b("textures/entity/end_gateway_beam.png");
 
-public class gtr {
-   private static final int a = ja.values().length;
-   private final BitSet b = new BitSet(a * a);
+   public gtr(gsz.a $$0) {
+      super($$0);
+   }
 
-   public void a(Set<ja> $$0) {
-      for (ja $$1 : $$0) {
-         for (ja $$2 : $$0) {
-            this.a($$1, $$2, true);
-         }
+   public void a(dzi $$0, float $$1, fjy $$2, gqm $$3, int $$4, int $$5, fex $$6) {
+      if ($$0.a() || $$0.c()) {
+         float $$7 = $$0.a() ? $$0.a($$1) : $$0.b($$1);
+         double $$8 = $$0.a() ? (double)$$0.i().ao() : 50.0;
+         $$7 = azm.a($$7 * (float) Math.PI);
+         int $$9 = azm.a((double)$$7 * $$8);
+         int $$10 = $$0.a() ? cyi.c.d() : cyi.k.d();
+         long $$11 = $$0.i().ae();
+         gsu.a($$2, $$3, c, $$1, $$7, $$11, -$$9, $$9 * 2, $$10, 0.15F, 0.175F);
       }
-   }
 
-   public void a(ja $$0, ja $$1, boolean $$2) {
-      this.b.set($$0.ordinal() + $$1.ordinal() * a, $$2);
-      this.b.set($$1.ordinal() + $$0.ordinal() * a, $$2);
-   }
-
-   public void a(boolean $$0) {
-      this.b.set(0, this.b.size(), $$0);
-   }
-
-   public boolean a(ja $$0, ja $$1) {
-      return this.b.get($$0.ordinal() + $$1.ordinal() * a);
+      super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
    @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append(' ');
+   protected float b() {
+      return 1.0F;
+   }
 
-      for (ja $$1 : ja.values()) {
-         $$0.append(' ').append($$1.toString().toUpperCase().charAt(0));
-      }
+   @Override
+   protected float c() {
+      return 0.0F;
+   }
 
-      $$0.append('\n');
+   @Override
+   protected gqx d() {
+      return gqx.u();
+   }
 
-      for (ja $$2 : ja.values()) {
-         $$0.append($$2.toString().toUpperCase().charAt(0));
-
-         for (ja $$3 : ja.values()) {
-            if ($$2 == $$3) {
-               $$0.append("  ");
-            } else {
-               boolean $$4 = this.a($$2, $$3);
-               $$0.append(' ').append((char)($$4 ? 'Y' : 'n'));
-            }
-         }
-
-         $$0.append('\n');
-      }
-
-      return $$0.toString();
+   @Override
+   public int aR_() {
+      return 256;
    }
 }

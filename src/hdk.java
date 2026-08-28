@@ -1,3 +1,3 @@
-public class hdk extends hdi {
-   public float d;
+public class hdk extends hdz {
+   public boolean a;
 }

@@ -1,44 +1,30 @@
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import java.util.List;
+public class gak extends fzb {
+   private final dii u;
 
-public class gak implements gan {
-   private static final int a = 10;
-   private static final int b = 2;
-   private final List<ProfileResult> c;
-
-   public gak(gak.a $$0) {
-      this.c = $$0.a();
+   public gak(dii $$0) {
+      this.u = $$0;
    }
 
    @Override
-   public int a(frt $$0) {
-      return this.c.size() * 12 + 2;
+   public dii m() {
+      return this.u;
    }
 
    @Override
-   public int b(frt $$0) {
-      int $$1 = 0;
+   int E() {
+      return 150;
+   }
 
-      for (ProfileResult $$2 : this.c) {
-         int $$3 = $$0.b($$2.profile().getName());
-         if ($$3 > $$1) {
-            $$1 = $$3;
-         }
+   @Override
+   protected void aO_() {
+      super.aO_();
+      this.a.a(this.m().m());
+   }
+
+   @Override
+   protected void a(dii $$0) {
+      if ($$0 instanceof cug.a $$1) {
+         this.m.L().b(new aii($$1.h().ao(), this.a.a(), $$0.p()));
       }
-
-      return $$1 + 10 + 6;
-   }
-
-   @Override
-   public void a(frt $$0, int $$1, int $$2, int $$3, int $$4, frv $$5) {
-      for (int $$6 = 0; $$6 < this.c.size(); $$6++) {
-         ProfileResult $$7 = this.c.get($$6);
-         int $$8 = $$2 + 2 + $$6 * 12;
-         fti.a($$5, foz.Q().an().b($$7.profile()), $$1 + 2, $$8, 10);
-         $$5.b($$0, $$7.profile().getName(), $$1 + 10 + 4, $$8 + 2, -1);
-      }
-   }
-
-   public static record a(List<ProfileResult> a) implements cxc {
    }
 }

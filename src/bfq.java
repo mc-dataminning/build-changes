@@ -1,13 +1,13 @@
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.serialization.Dynamic;
 
-public class bfq extends bhs {
+public class bfq extends bgv {
    public bfq(Schema $$0) {
-      super($$0, false, "Remove filtered text from signs", bix.s, "minecraft:sign");
+      super($$0, "Remove filtered text from books", $$0x -> $$0x.equals("minecraft:writable_book") || $$0x.equals("minecraft:written_book"));
    }
 
    @Override
-   protected <T> Dynamic<T> a(Dynamic<T> $$0) {
-      return $$0.remove("FilteredText1").remove("FilteredText2").remove("FilteredText3").remove("FilteredText4");
+   protected Typed<?> a(Typed<?> $$0) {
+      return ag.a($$0, $$0.getType(), $$0x -> $$0x.remove("filtered_title").remove("filtered_pages"));
    }
 }

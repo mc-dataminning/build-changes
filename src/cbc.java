@@ -1,22 +1,23 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class cbc {
-   public static cag<bxe> a(float $$0, int $$1) {
-      return a($$0x -> true, $$1x -> $$0, $$1);
-   }
-
-   public static cag<bxe> a(Predicate<bxe> $$0, Function<bxe, Float> $$1, int $$2) {
-      return cci.a(
-         (Function<cci.b<bxe>, ? extends App<cci.c<bxe>, ccl<bxe>>>)($$3 -> $$3.group($$3.c(cgg.n), $$3.b(cgg.o)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                  if (!$$0.test($$7)) {
-                     return false;
-                  } else {
-                     $$4.a(new cgj($$3.b($$5), $$1.apply($$7), $$2));
-                     return true;
-                  }
-               }))
+   public static bzb<bxj> a(bwr<?> $$0, int $$1) {
+      int $$2 = $$1 * $$1;
+      return ccn.a(
+         (Function<ccn.b<bxj>, ? extends App<ccn.c<bxj>, ccq<bxj>>>)($$2x -> $$2x.group($$2x.a(cgl.o), $$2x.c(cgl.r), $$2x.b(cgl.h))
+               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<bxj> $$9 = $$2x.<cgn>b($$5).a($$3xx -> $$3xx.g($$7) <= (double)$$2 && $$0.equals($$3xx.an()));
+                     if ($$9.isEmpty()) {
+                        return false;
+                     } else {
+                        bxj $$10 = $$9.get();
+                        $$4.a($$10);
+                        $$3.a(new bzl($$10, true));
+                        return true;
+                     }
+                  }))
       );
    }
 }

@@ -1,19 +1,24 @@
 import com.mojang.serialization.MapCodec;
 
-public class dpz extends dmf {
-   public static final MapCodec<dpz> d = b(dpz::new);
+public class dpz extends dqn {
+   public static final MapCodec<dpz> a = b(dpz::new);
 
    @Override
-   protected MapCodec<? extends dpz> a() {
-      return d;
+   public MapCodec<dpz> a() {
+      return a;
    }
 
-   protected dpz(eag.d $$0) {
+   public dpz(ean.d $$0) {
       super($$0);
    }
 
    @Override
-   protected boolean b(eah $$0, eah $$1, ja $$2) {
-      return $$1.a(this) ? true : super.b($$0, $$1, $$2);
+   protected void a(eap.a<dmm, eao> $$0) {
+      $$0.a(e);
+   }
+
+   @Override
+   public eao a(ddd $$0) {
+      return this.m().b(e, $$0.g().g());
    }
 }

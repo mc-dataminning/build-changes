@@ -1,9 +1,16 @@
-import java.util.function.Predicate;
+import java.util.List;
+import javax.annotation.Nullable;
 
-@FunctionalInterface
 public interface gry {
-   gry b = $$0 -> $$0x -> true;
-   gry c = $$0 -> $$0x -> false;
+   List<grs> a(eao var1, @Nullable jb var2, azv var3);
 
-   Predicate<eah> getPredicate(eai<dmf, eah> var1);
+   boolean a();
+
+   hjk b();
+
+   public interface a extends hmb {
+      gry a(hls var1);
+
+      Object a(eao var1);
+   }
 }

@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface cqx {
+   cqw gB();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@u
-@w
-interface cqx {
+   void a(cqw var1);
 }

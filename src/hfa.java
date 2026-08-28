@@ -1,6 +1,13 @@
-public class hfa extends hdn {
-   public float[] a = new float[2];
-   public float[] b = new float[2];
-   public float c;
-   public boolean d;
+import javax.annotation.Nullable;
+
+public class hfa extends hct {
+   @Nullable
+   public bwf.k.e a;
+   @Nullable
+   public bwf.k.b f;
+
+   @Override
+   public boolean a() {
+      return this.a != null;
+   }
 }

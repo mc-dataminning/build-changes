@@ -1,184 +1,41 @@
-import java.util.UUID;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.Consumer;
 
-public class eyo implements eza {
-   private final ezb a;
-   private final eza b;
+public record eyo(int c) implements dcp {
+   public static final Codec<eyo> a = Codec.INT.xmap(eyo::new, eyo::b);
+   public static final yw<ByteBuf, eyo> b = yu.h.a(eyo::new, eyo::b);
+   private static final wy d = wy.c("filled_map.locked").a(o.h);
 
-   public eyo(ezb $$0, eza $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public String a() {
+      return "map_" + this.c;
    }
 
    @Override
-   public iu a() {
-      return this.b.a();
+   public void a(czg.b $$0, Consumer<wy> $$1, daz $$2, kf $$3) {
+      eyq $$4 = $$0.a(this);
+      if ($$4 == null) {
+         $$1.accept(wy.c("filled_map.unknown").a(o.h));
+      } else {
+         dch $$5 = $$3.a(kk.O);
+         if ($$3.a(kk.g) == null && $$5 == null) {
+            $$1.accept(wy.a("filled_map.id", this.c).a(o.h));
+         }
+
+         if ($$4.i || $$5 == dch.a) {
+            $$1.accept(d);
+         }
+
+         if ($$2.a()) {
+            int $$6 = $$5 == dch.b ? 1 : 0;
+            int $$7 = Math.min($$4.g + $$6, 4);
+            $$1.accept(wy.a("filled_map.scale", 1 << $$7).a(o.h));
+            $$1.accept(wy.a("filled_map.level", $$7, 4).a(o.h));
+         }
+      }
    }
 
-   @Override
-   public float b() {
-      return this.b.b();
-   }
-
-   @Override
-   public long c() {
-      return this.b.c();
-   }
-
-   @Override
-   public long d() {
-      return this.b.d();
-   }
-
-   @Override
-   public String e() {
-      return this.a.e();
-   }
-
-   @Override
-   public int f() {
-      return this.b.f();
-   }
-
-   @Override
-   public void a(int $$0) {
-   }
-
-   @Override
-   public boolean g() {
-      return this.b.g();
-   }
-
-   @Override
-   public int h() {
-      return this.b.h();
-   }
-
-   @Override
-   public boolean i() {
-      return this.b.i();
-   }
-
-   @Override
-   public int j() {
-      return this.b.j();
-   }
-
-   @Override
-   public dix k() {
-      return this.a.k();
-   }
-
-   @Override
-   public void a(long $$0) {
-   }
-
-   @Override
-   public void b(long $$0) {
-   }
-
-   @Override
-   public void a(iu $$0, float $$1) {
-   }
-
-   @Override
-   public void a(boolean $$0) {
-   }
-
-   @Override
-   public void b(int $$0) {
-   }
-
-   @Override
-   public void b(boolean $$0) {
-   }
-
-   @Override
-   public void c(int $$0) {
-   }
-
-   @Override
-   public void a(dix $$0) {
-   }
-
-   @Override
-   public boolean l() {
-      return this.a.l();
-   }
-
-   @Override
-   public boolean m() {
-      return this.a.m();
-   }
-
-   @Override
-   public boolean n() {
-      return this.b.n();
-   }
-
-   @Override
-   public void c(boolean $$0) {
-   }
-
-   @Override
-   public diw o() {
-      return this.a.o();
-   }
-
-   @Override
-   public ebz.d p() {
-      return this.b.p();
-   }
-
-   @Override
-   public void a(ebz.d $$0) {
-   }
-
-   @Override
-   public bua q() {
-      return this.a.q();
-   }
-
-   @Override
-   public boolean r() {
-      return this.a.r();
-   }
-
-   @Override
-   public fed<MinecraftServer> s() {
-      return this.b.s();
-   }
-
-   @Override
-   public int t() {
-      return 0;
-   }
-
-   @Override
-   public void d(int $$0) {
-   }
-
-   @Override
-   public int u() {
-      return 0;
-   }
-
-   @Override
-   public void e(int $$0) {
-   }
-
-   @Override
-   public UUID v() {
-      return null;
-   }
-
-   @Override
-   public void a(UUID $$0) {
-   }
-
-   @Override
-   public void a(p $$0, djc $$1) {
-      $$0.a("Derived", true);
-      this.b.a($$0, $$1);
+   public int b() {
+      return this.c;
    }
 }

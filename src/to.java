@@ -2,5 +2,5 @@ import java.util.stream.Stream;
 
 @FunctionalInterface
 public interface to {
-   Stream<je.c<sr>> findTests();
+   Stream<jf.c<sr>> findTests();
 }

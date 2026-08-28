@@ -12,45 +12,45 @@ public class apk {
    private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("commands.tag.add.failed"));
    private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wy.c("commands.tag.remove.failed"));
 
-   public static void a(CommandDispatcher<ei> $$0) {
+   public static void a(CommandDispatcher<ej> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("tag").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("tag").requires($$0x -> $$0x.c(2)))
             .then(
-               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ej.a("targets", ev.b())
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ek.a("targets", ew.b())
                         .then(
-                           ej.a("add")
+                           ek.a("add")
                               .then(
-                                 ej.a("name", StringArgumentType.word())
-                                    .executes($$0x -> a((ei)$$0x.getSource(), ev.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
+                                 ek.a("name", StringArgumentType.word())
+                                    .executes($$0x -> a((ej)$$0x.getSource(), ew.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
                               )
                         ))
                      .then(
-                        ej.a("remove")
+                        ek.a("remove")
                            .then(
-                              ej.a("name", StringArgumentType.word())
-                                 .suggests(($$0x, $$1) -> en.b(a(ev.b($$0x, "targets")), $$1))
-                                 .executes($$0x -> b((ei)$$0x.getSource(), ev.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
+                              ek.a("name", StringArgumentType.word())
+                                 .suggests(($$0x, $$1) -> eo.b(a(ew.b($$0x, "targets")), $$1))
+                                 .executes($$0x -> b((ej)$$0x.getSource(), ew.b($$0x, "targets"), StringArgumentType.getString($$0x, "name")))
                            )
                      ))
-                  .then(ej.a("list").executes($$0x -> a((ei)$$0x.getSource(), ev.b($$0x, "targets"))))
+                  .then(ek.a("list").executes($$0x -> a((ej)$$0x.getSource(), ew.b($$0x, "targets"))))
             )
       );
    }
 
-   private static Collection<String> a(Collection<? extends bwf> $$0) {
+   private static Collection<String> a(Collection<? extends bwi> $$0) {
       Set<String> $$1 = Sets.newHashSet();
 
-      for (bwf $$2 : $$0) {
-         $$1.addAll($$2.as());
+      for (bwi $$2 : $$0) {
+         $$1.addAll($$2.ap());
       }
 
       return $$1;
    }
 
-   private static int a(ei $$0, Collection<? extends bwf> $$1, String $$2) throws CommandSyntaxException {
+   private static int a(ej $$0, Collection<? extends bwi> $$1, String $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
-      for (bwf $$4 : $$1) {
+      for (bwi $$4 : $$1) {
          if ($$4.a($$2)) {
             $$3++;
          }
@@ -69,10 +69,10 @@ public class apk {
       }
    }
 
-   private static int b(ei $$0, Collection<? extends bwf> $$1, String $$2) throws CommandSyntaxException {
+   private static int b(ej $$0, Collection<? extends bwi> $$1, String $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
-      for (bwf $$4 : $$1) {
+      for (bwi $$4 : $$1) {
          if ($$4.b($$2)) {
             $$3++;
          }
@@ -91,15 +91,15 @@ public class apk {
       }
    }
 
-   private static int a(ei $$0, Collection<? extends bwf> $$1) {
+   private static int a(ej $$0, Collection<? extends bwi> $$1) {
       Set<String> $$2 = Sets.newHashSet();
 
-      for (bwf $$3 : $$1) {
-         $$2.addAll($$3.as());
+      for (bwi $$3 : $$1) {
+         $$2.addAll($$3.ap());
       }
 
       if ($$1.size() == 1) {
-         bwf $$4 = $$1.iterator().next();
+         bwi $$4 = $$1.iterator().next();
          if ($$2.isEmpty()) {
             $$0.a(() -> wy.a("commands.tag.list.single.empty", $$4.m_()), false);
          } else {

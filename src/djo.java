@@ -1,41 +1,15 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+public interface djo extends djk {
+   long am();
 
-public class djo {
-   private final List<djo.a> a = Lists.newArrayList();
-
-   public void a(iu $$0, double $$1) {
-      if ($$1 != 0.0) {
-         this.a.add(new djo.a($$0, $$1));
-      }
+   default float as() {
+      return eel.k[this.B_().b(this.am())];
    }
 
-   public double b(iu $$0, double $$1) {
-      if ($$1 == 0.0) {
-         return 0.0;
-      } else {
-         double $$2 = 0.0;
-
-         for (djo.a $$3 : this.a) {
-            $$2 += $$3.a($$0);
-         }
-
-         return $$2 * $$1;
-      }
+   default float f(float $$0) {
+      return this.B_().a(this.am());
    }
 
-   static class a {
-      private final iu a;
-      private final double b;
-
-      public a(iu $$0, double $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public double a(iu $$0) {
-         double $$1 = this.a.j($$0);
-         return $$1 == 0.0 ? Double.POSITIVE_INFINITY : this.b / Math.sqrt($$1);
-      }
+   default int at() {
+      return this.B_().b(this.am());
    }
 }

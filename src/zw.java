@@ -2,9 +2,9 @@ import java.util.Map;
 
 public class zw implements zf<zl> {
    public static final yw<vu, zw> a = zf.a(zw::a, zw::new);
-   private final Map<alf<? extends jr<?>>, axt.a> b;
+   private final Map<alf<? extends js<?>>, axt.a> b;
 
-   public zw(Map<alf<? extends jr<?>>, axt.a> $$0) {
+   public zw(Map<alf<? extends js<?>>, axt.a> $$0) {
       this.b = $$0;
    }
 
@@ -25,7 +25,7 @@ public class zw implements zf<zl> {
       $$0.a(this);
    }
 
-   public Map<alf<? extends jr<?>>, axt.a> b() {
+   public Map<alf<? extends js<?>>, axt.a> b() {
       return this.b;
    }
 }

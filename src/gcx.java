@@ -1,149 +1,71 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.function.DoubleConsumer;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class gcx extends fsg {
-   private static final int a = 32;
-   private static final String c = "telemetry.event.required";
-   private static final String d = "telemetry.event.optional";
-   private static final String e = "telemetry.event.optional.disabled";
-   private static final wy f = wy.c("telemetry_info.property_title").a(n.t);
-   private final frt m;
-   private gcx.a n;
+public class gcx {
+   private final glg a;
+   private final glo b;
+   private final Predicate<glj.a> c;
    @Nullable
-   private DoubleConsumer o;
+   private xt d = null;
+   private int e;
+   private int f;
+   @Nullable
+   private xo g;
 
-   public gcx(int $$0, int $$1, int $$2, int $$3, frt $$4) {
-      super($$0, $$1, $$2, $$3, wy.i());
-      this.m = $$4;
-      this.n = this.c(foz.Q().C());
+   public gcx(glu $$0, Predicate<glj.a> $$1) {
+      this.a = $$0.b();
+      this.b = new glo($$0.a().b().leadingContextMessageCount());
+      this.c = $$1;
+      this.e = this.a.b();
    }
 
-   public void b(boolean $$0) {
-      this.n = this.c($$0);
-      this.h();
-   }
+   public void a(int $$0, gcx.a $$1) {
+      int $$2 = 0;
 
-   public void q() {
-      this.n = this.c(foz.Q().C());
-      this.h();
-   }
+      while ($$2 < $$0) {
+         gli $$3 = this.a.b(this.e);
+         if ($$3 == null) {
+            break;
+         }
 
-   private gcx.a c(boolean $$0) {
-      gcx.b $$1 = new gcx.b(this.r());
-      List<hoj> $$2 = new ArrayList<>(hoj.g());
-      $$2.sort(Comparator.comparing(hoj::d));
+         int $$4 = this.e--;
+         if ($$3 instanceof glj.a $$5 && !$$5.g().equals(this.g)) {
+            if (this.a($$1, $$5)) {
+               if (this.f > 0) {
+                  $$1.a(wy.a("gui.chatSelection.fold", this.f));
+                  this.f = 0;
+               }
 
-      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-         hoj $$4 = $$2.get($$3);
-         boolean $$5 = $$4.d() && !$$0;
-         this.a($$1, $$4, $$5);
-         if ($$3 < $$2.size() - 1) {
-            $$1.a(9);
+               $$1.a($$4, $$5);
+               $$2++;
+            } else {
+               this.f++;
+            }
+
+            this.g = $$5.g();
          }
       }
-
-      return $$1.a();
    }
 
-   public void a(@Nullable DoubleConsumer $$0) {
-      this.o = $$0;
-   }
+   private boolean a(gcx.a $$0, glj.a $$1) {
+      xo $$2 = $$1.g();
+      boolean $$3 = this.b.b($$2);
+      if (this.c.test($$1)) {
+         this.b.a($$2);
+         if (this.d != null && !this.d.a($$2.k())) {
+            $$0.a(wy.a("gui.chatSelection.join", $$1.f().getName()).a(o.o));
+         }
 
-   @Override
-   public void a(double $$0) {
-      super.a($$0);
-      if (this.o != null) {
-         this.o.accept(this.g());
+         this.d = $$2.k();
+         return true;
+      } else {
+         return $$3;
       }
    }
 
-   @Override
-   protected int c() {
-      return this.n.a().y();
-   }
+   public interface a {
+      void a(int var1, glj.a var2);
 
-   @Override
-   protected double o() {
-      return 9.0;
-   }
-
-   @Override
-   protected void c(frv $$0, int $$1, int $$2, float $$3) {
-      int $$4 = this.p();
-      int $$5 = this.e();
-      $$0.c().a();
-      $$0.c().a((double)$$5, (double)$$4, 0.0);
-      this.n.a().a($$4x -> $$4x.a($$0, $$1, $$2, $$3));
-      $$0.c().b();
-   }
-
-   @Override
-   protected void a(fwg $$0) {
-      $$0.a(fwf.a, this.n.b());
-   }
-
-   private wy a(wy $$0, boolean $$1) {
-      return (wy)($$1 ? $$0.f().a(n.h) : $$0);
-   }
-
-   private void a(gcx.b $$0, hoj $$1, boolean $$2) {
-      String $$3 = $$1.d() ? ($$2 ? "telemetry.event.optional.disabled" : "telemetry.event.optional") : "telemetry.event.required";
-      $$0.b(this.m, this.a(wy.a($$3, $$1.e()), $$2));
-      $$0.b(this.m, $$1.f().a(n.h));
-      $$0.a(9 / 2);
-      $$0.a(this.m, this.a(f, $$2), 2);
-      this.a($$1, $$0, $$2);
-   }
-
-   private void a(hoj $$0, gcx.b $$1, boolean $$2) {
-      for (hol<?> $$3 : $$0.b()) {
-         $$1.a(this.m, this.a($$3.a(), $$2));
-      }
-   }
-
-   private int r() {
-      return this.g - this.b();
-   }
-
-   static record a(fvy a, wy b) {
-   }
-
-   static class b {
-      private final int a;
-      private final fwb b;
-      private final xm c = wy.i();
-
-      public b(int $$0) {
-         this.a = $$0;
-         this.b = fwb.d();
-         this.b.c().a();
-         this.b.a(fwc.a($$0));
-      }
-
-      public void a(frt $$0, wy $$1) {
-         this.a($$0, $$1, 0);
-      }
-
-      public void a(frt $$0, wy $$1, int $$2) {
-         this.b.a(new ftd($$1, $$0).d(this.a), $$1x -> $$1x.e($$2));
-         this.c.b($$1).f("\n");
-      }
-
-      public void b(frt $$0, wy $$1) {
-         this.b.a(new ftd($$1, $$0).d(this.a - 64).b(true), $$0x -> $$0x.b().f(32));
-         this.c.b($$1).f("\n");
-      }
-
-      public void a(int $$0) {
-         this.b.a(fwc.b($$0));
-      }
-
-      public gcx.a a() {
-         this.b.a();
-         return new gcx.a(this.b, this.c);
-      }
+      void a(wy var1);
    }
 }

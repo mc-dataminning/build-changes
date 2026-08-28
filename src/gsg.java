@@ -1,122 +1,175 @@
+import com.google.common.collect.Lists;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMaps;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class gsg implements gsm<dyt> {
-   private static final int a = -988212;
-   private static final int b = azm.h(16);
-   private final frt c;
+public class gsg {
+   public static final gsg a = new gsg(Map.of());
+   private static final char b = '#';
+   private final Map<String, hlq> c;
 
-   public gsg(gsn.a $$0) {
-      this.c = $$0.g();
+   gsg(Map<String, hlq> $$0) {
+      this.c = $$0;
    }
 
-   protected abstract ggu a(eah var1, ebv var2);
-
-   protected abstract hle a(ebv var1);
-
-   protected abstract float a();
-
-   protected abstract float b();
-
-   protected abstract feq c();
-
-   protected abstract void a(fjj var1, float var2, eah var3);
-
-   public void a(dyt $$0, float $$1, fjj $$2, gqa $$3, int $$4, int $$5, feq $$6) {
-      eah $$7 = $$0.m();
-      dtp $$8 = (dtp)$$7.b();
-      ggu $$9 = this.a($$7, $$8.d());
-      this.a($$0, $$2, $$3, $$4, $$5, $$7, $$8, $$8.d(), $$9);
-   }
-
-   private void a(dyt $$0, fjj $$1, gqa $$2, int $$3, int $$4, eah $$5, dtp $$6, ebv $$7, ggu $$8) {
-      $$1.a();
-      this.a($$1, -$$6.h($$5), $$5);
-      this.a($$1, $$2, $$3, $$4, $$7, $$8);
-      this.a($$0.ax_(), $$0.j(), $$1, $$2, $$3, $$0.a(), $$0.c(), true);
-      this.a($$0.ax_(), $$0.k(), $$1, $$2, $$3, $$0.a(), $$0.c(), false);
-      $$1.b();
-   }
-
-   protected void a(fjj $$0, gqa $$1, int $$2, int $$3, ebv $$4, ggu $$5) {
-      $$0.a();
-      float $$6 = this.a();
-      $$0.b($$6, -$$6, -$$6);
-      hle $$7 = this.a($$4);
-      fjn $$8 = $$7.a($$1, $$5::a);
-      $$5.a($$0, $$8, $$2, $$3);
-      $$0.b();
-   }
-
-   private void a(iu $$0, dyu $$1, fjj $$2, gqa $$3, int $$4, int $$5, int $$6, boolean $$7) {
-      $$2.a();
-      this.a($$2, $$7, this.c());
-      int $$8 = a($$1);
-      int $$9 = 4 * $$5 / 2;
-      ayy[] $$10 = $$1.a(foz.Q().aT(), $$1x -> {
-         List<ayy> $$2x = this.c.c($$1x, $$6);
-         return $$2x.isEmpty() ? ayy.a : $$2x.get(0);
-      });
-      int $$11;
-      boolean $$12;
-      int $$13;
-      if ($$1.a()) {
-         $$11 = $$1.b().g();
-         $$12 = a($$0, $$11);
-         $$13 = 15728880;
-      } else {
-         $$11 = $$8;
-         $$12 = false;
-         $$13 = $$4;
+   @Nullable
+   public hlq a(String $$0) {
+      if (b($$0)) {
+         $$0 = $$0.substring(1);
       }
 
-      for (int $$17 = 0; $$17 < 4; $$17++) {
-         ayy $$18 = $$10[$$17];
-         float $$19 = (float)(-this.c.a($$18) / 2);
-         if ($$12) {
-            this.c.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, $$8, $$2.c().a(), $$3, $$13);
-         } else {
-            this.c.a($$18, $$19, (float)($$17 * $$5 - $$9), $$11, false, $$2.c().a(), $$3, frt.a.c, 0, $$13);
+      return this.c.get($$0);
+   }
+
+   private static boolean b(String $$0) {
+      return $$0.charAt(0) == '#';
+   }
+
+   public static gsg.a a(JsonObject $$0, alg $$1) {
+      gsg.a.a $$2 = new gsg.a.a();
+
+      for (Entry<String, JsonElement> $$3 : $$0.entrySet()) {
+         a($$1, $$3.getKey(), $$3.getValue().getAsString(), $$2);
+      }
+
+      return $$2.a();
+   }
+
+   private static void a(alg $$0, String $$1, String $$2, gsg.a.a $$3) {
+      if (b($$2)) {
+         $$3.a($$1, $$2.substring(1));
+      } else {
+         alg $$4 = alg.c($$2);
+         if ($$4 == null) {
+            throw new JsonParseException($$2 + " is not valid resource location");
          }
-      }
 
-      $$2.b();
+         $$3.a($$1, new hlq($$0, $$4));
+      }
    }
 
-   private void a(fjj $$0, boolean $$1, feq $$2) {
-      if (!$$1) {
-         $$0.a(a.d.rotationDegrees(180.0F));
+   public static record a(Map<String, gsg.d> b) {
+      public static final gsg.a a = new gsg.a(Map.of());
+
+      public Map<String, gsg.d> a() {
+         return this.b;
       }
 
-      float $$3 = 0.015625F * this.b();
-      $$0.a($$2);
-      $$0.b($$3, -$$3, $$3);
-   }
+      public static class a {
+         private final Map<String, gsg.d> a = new HashMap<>();
 
-   private static boolean a(iu $$0, int $$1) {
-      if ($$1 == cyb.p.g()) {
-         return true;
-      } else {
-         foz $$2 = foz.Q();
-         gox $$3 = $$2.t;
-         if ($$3 != null && $$2.n.aE().a() && $$3.gH()) {
-            return true;
-         } else {
-            bwf $$4 = $$2.ao();
-            return $$4 != null && $$4.g(feq.b($$0)) < (double)b;
+         public gsg.a.a a(String $$0, String $$1) {
+            this.a.put($$0, new gsg.b($$1));
+            return this;
+         }
+
+         public gsg.a.a a(String $$0, hlq $$1) {
+            this.a.put($$0, new gsg.e($$1));
+            return this;
+         }
+
+         public gsg.a a() {
+            return this.a.isEmpty() ? gsg.a.a : new gsg.a(Map.copyOf(this.a));
          }
       }
    }
 
-   public static int a(dyu $$0) {
-      int $$1 = $$0.b().g();
-      if ($$1 == cyb.p.g() && $$0.a()) {
-         return -988212;
-      } else {
-         double $$2 = 0.4;
-         int $$3 = (int)((double)axw.b($$1) * 0.4);
-         int $$4 = (int)((double)axw.c($$1) * 0.4);
-         int $$5 = (int)((double)axw.d($$1) * 0.4);
-         return axw.a(0, $$3, $$4, $$5);
+   static record b(String a) implements gsg.d {
+   }
+
+   public static class c {
+      private static final Logger a = LogUtils.getLogger();
+      private final List<gsg.a> b = new ArrayList<>();
+
+      public gsg.c a(gsg.a $$0) {
+         this.b.addLast($$0);
+         return this;
       }
+
+      public gsg.c b(gsg.a $$0) {
+         this.b.addFirst($$0);
+         return this;
+      }
+
+      public gsg a(hlu $$0) {
+         if (this.b.isEmpty()) {
+            return gsg.a;
+         } else {
+            Object2ObjectMap<String, hlq> $$1 = new Object2ObjectArrayMap();
+            Object2ObjectMap<String, gsg.b> $$2 = new Object2ObjectArrayMap();
+
+            for (gsg.a $$3 : Lists.reverse(this.b)) {
+               $$3.b.forEach(($$2x, $$3x) -> {
+                  Objects.requireNonNull($$3x);
+                  switch ($$3x) {
+                     case gsg.e $$6x:
+                        $$2.remove($$2x);
+                        $$1.put($$2x, $$6x.a());
+                        break;
+                     case gsg.b $$7x:
+                        $$1.remove($$2x);
+                        $$2.put($$2x, $$7x);
+                        break;
+                     default:
+                        throw new MatchException(null, null);
+                  }
+               });
+            }
+
+            if ($$2.isEmpty()) {
+               return new gsg($$1);
+            } else {
+               boolean $$4 = true;
+
+               while ($$4) {
+                  $$4 = false;
+                  ObjectIterator<it.unimi.dsi.fastutil.objects.Object2ObjectMap.Entry<String, gsg.b>> $$5 = Object2ObjectMaps.fastIterator($$2);
+
+                  while ($$5.hasNext()) {
+                     it.unimi.dsi.fastutil.objects.Object2ObjectMap.Entry<String, gsg.b> $$6 = (it.unimi.dsi.fastutil.objects.Object2ObjectMap.Entry<String, gsg.b>)$$5.next();
+                     hlq $$7 = (hlq)$$1.get(((gsg.b)$$6.getValue()).a);
+                     if ($$7 != null) {
+                        $$1.put((String)$$6.getKey(), $$7);
+                        $$5.remove();
+                        $$4 = true;
+                     }
+                  }
+               }
+
+               if (!$$2.isEmpty()) {
+                  a.warn(
+                     "Unresolved texture references in {}:\n{}",
+                     $$0.debugName(),
+                     $$2.entrySet()
+                        .stream()
+                        .map($$0x -> "\t#" + (String)$$0x.getKey() + "-> #" + ((gsg.b)$$0x.getValue()).a + "\n")
+                        .collect(Collectors.joining())
+                  );
+               }
+
+               return new gsg($$1);
+            }
+         }
+      }
+   }
+
+   public sealed interface d permits gsg.e, gsg.b {
+   }
+
+   static record e(hlq a) implements gsg.d {
    }
 }

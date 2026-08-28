@@ -1,34 +1,42 @@
-public class hau<S extends hdz, M extends gfy<S> & geo & ggi> extends han<S, M> {
-   private static final float a = (float) (-Math.PI / 6);
-   private static final float b = (float) (Math.PI / 2);
-
-   public hau(gye<S, M> $$0) {
+public class hau extends hbh<hdi, ggo> {
+   public hau(gyq<hdi, ggo> $$0) {
       super($$0);
    }
 
-   protected void a(S $$0, hfq $$1, bwx $$2, fjj $$3, gqa $$4, int $$5) {
-      if (!$$1.c()) {
-         buc $$6 = $$2 == $$0.e ? buc.a : buc.b;
-         if ($$0.R && $$0.M == $$6 && $$0.H < 1.0E-5F && !$$0.aI.c()) {
-            this.a($$0.aI, $$2, $$3, $$4, $$5);
-         } else {
-            super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   public void a(fjy $$0, gqm $$1, int $$2, hdi $$3, float $$4, float $$5) {
+      hgc $$6 = $$3.i;
+      if (!$$6.c()) {
+         boolean $$7 = $$3.d;
+         boolean $$8 = $$3.aj;
+         $$0.a();
+         $$0.a(this.d().b.b / 16.0F, this.d().b.c / 16.0F, this.d().b.d / 16.0F);
+         if ($$8) {
+            float $$9 = 0.75F;
+            $$0.b(0.75F, 0.75F, 0.75F);
          }
-      }
-   }
 
-   private void a(hfq $$0, bwx $$1, fjj $$2, gqa $$3, int $$4) {
-      $$2.a();
-      this.d().e().a($$2);
-      gjc $$5 = this.d().b();
-      float $$6 = $$5.e;
-      $$5.e = azm.a($$5.e, (float) (-Math.PI / 6), (float) (Math.PI / 2));
-      $$5.a($$2);
-      $$5.e = $$6;
-      haa.a($$2, haa.a.a);
-      boolean $$7 = $$1 == bwx.a;
-      $$2.a(($$7 ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
-      $$0.a($$2, $$3, $$4, hin.d);
-      $$2.b();
+         $$0.a(a.f.rotation($$3.a));
+         $$0.a(a.d.rotationDegrees($$4));
+         $$0.a(a.b.rotationDegrees($$5));
+         if ($$3.aj) {
+            if ($$7) {
+               $$0.a(0.4F, 0.26F, 0.15F);
+            } else {
+               $$0.a(0.06F, 0.26F, -0.5F);
+            }
+         } else if ($$7) {
+            $$0.a(0.46F, 0.26F, 0.22F);
+         } else {
+            $$0.a(0.06F, 0.27F, -0.5F);
+         }
+
+         $$0.a(a.b.rotationDegrees(90.0F));
+         if ($$7) {
+            $$0.a(a.f.rotationDegrees(90.0F));
+         }
+
+         $$6.a($$0, $$1, $$2, hja.d);
+         $$0.b();
+      }
    }
 }

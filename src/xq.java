@@ -35,7 +35,7 @@ public record xq<S>(List<xq.a<S>> a) {
          CommandNode $$5 = $$3.getNode();
          if ($$5 instanceof ArgumentCommandNode) {
             ArgumentCommandNode<S, ?> $$4 = (ArgumentCommandNode<S, ?>)$$5;
-            if ($$4.getType() instanceof fq) {
+            if ($$4.getType() instanceof fr) {
                ParsedArgument<S, ?> $$5x = (ParsedArgument<S, ?>)$$1.getArguments().get($$4.getName());
                if ($$5x != null) {
                   String $$6 = $$5x.getRange().get($$0);

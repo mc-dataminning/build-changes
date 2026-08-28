@@ -4,37 +4,37 @@ import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
 import java.util.function.Supplier;
 
-public class blk extends bks {
+public class blk extends bku {
    public blk(int $$0, Schema $$1) {
       super($$0, $$1);
    }
 
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(
-         false,
-         bix.c,
-         () -> DSL.fields(
-               "Level",
-               DSL.optionalFields(
-                  "Entities",
-                  DSL.list(bix.C.in($$0)),
-                  "TileEntities",
-                  DSL.list(DSL.or(bix.s.in($$0), DSL.remainder())),
-                  "TileTicks",
-                  DSL.list(DSL.fields("i", bix.E.in($$0))),
-                  "Sections",
-                  DSL.list(DSL.optionalFields("Palette", DSL.list(bix.u.in($$0)))),
-                  "Structures",
-                  DSL.optionalFields("Starts", DSL.compoundList(bix.I.in($$0)))
-               )
-            )
-      );
+      $$0.registerType(true, biz.D, () -> DSL.and(biz.A.in($$0), DSL.optionalFields("CustomName", biz.z.in($$0), DSL.taggedChoiceLazy("id", a(), $$1))));
    }
 
    public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
-      $$1.put("DUMMY", DSL::remainder);
+      $$0.register($$1, "minecraft:beacon", () -> b($$0));
+      $$0.register($$1, "minecraft:banner", () -> b($$0));
+      $$0.register($$1, "minecraft:brewing_stand", () -> a($$0));
+      $$0.register($$1, "minecraft:chest", () -> a($$0));
+      $$0.register($$1, "minecraft:trapped_chest", () -> a($$0));
+      $$0.register($$1, "minecraft:dispenser", () -> a($$0));
+      $$0.register($$1, "minecraft:dropper", () -> a($$0));
+      $$0.register($$1, "minecraft:enchanting_table", () -> b($$0));
+      $$0.register($$1, "minecraft:furnace", () -> a($$0));
+      $$0.register($$1, "minecraft:hopper", () -> a($$0));
+      $$0.register($$1, "minecraft:shulker_box", () -> a($$0));
       return $$1;
+   }
+
+   public static TypeTemplate a(Schema $$0) {
+      return DSL.optionalFields("Items", DSL.list(biz.t.in($$0)), "CustomName", biz.z.in($$0));
+   }
+
+   public static TypeTemplate b(Schema $$0) {
+      return DSL.optionalFields("CustomName", biz.z.in($$0));
    }
 }

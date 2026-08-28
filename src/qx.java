@@ -2,166 +2,166 @@ import com.mojang.datafixers.util.Pair;
 import java.util.List;
 
 public class qx {
-   public static final alf<esl> a = qo.a("trail_ruins/tower");
+   public static final alf<ess> a = qo.a("trail_ruins/tower");
 
-   public static void a(qh<esl> $$0) {
-      jf<esl> $$1 = $$0.a(mg.bf);
-      je<esl> $$2 = $$1.b(qo.a);
-      jf<evb> $$3 = $$0.a(mg.bc);
-      je<evb> $$4 = $$3.b(qp.J);
-      je<evb> $$5 = $$3.b(qp.K);
-      je<evb> $$6 = $$3.b(qp.L);
+   public static void a(qh<ess> $$0) {
+      jg<ess> $$1 = $$0.a(mh.bf);
+      jf<ess> $$2 = $$1.b(qo.a);
+      jg<evi> $$3 = $$0.a(mh.bc);
+      jf<evi> $$4 = $$3.b(qp.J);
+      jf<evi> $$5 = $$3.b(qp.K);
+      jf<evi> $$6 = $$3.b(qp.L);
       $$0.a(
          a,
-         new esl(
+         new ess(
             $$2,
             List.of(
-               Pair.of(esj.b("trail_ruins/tower/tower_1", $$4), 1),
-               Pair.of(esj.b("trail_ruins/tower/tower_2", $$4), 1),
-               Pair.of(esj.b("trail_ruins/tower/tower_3", $$4), 1),
-               Pair.of(esj.b("trail_ruins/tower/tower_4", $$4), 1),
-               Pair.of(esj.b("trail_ruins/tower/tower_5", $$4), 1)
+               Pair.of(esq.b("trail_ruins/tower/tower_1", $$4), 1),
+               Pair.of(esq.b("trail_ruins/tower/tower_2", $$4), 1),
+               Pair.of(esq.b("trail_ruins/tower/tower_3", $$4), 1),
+               Pair.of(esq.b("trail_ruins/tower/tower_4", $$4), 1),
+               Pair.of(esq.b("trail_ruins/tower/tower_5", $$4), 1)
             ),
-            esl.a.b
+            ess.a.b
          )
       );
       qo.a(
          $$0,
          "trail_ruins/tower/tower_top",
-         new esl(
+         new ess(
             $$2,
             List.of(
-               Pair.of(esj.b("trail_ruins/tower/tower_top_1", $$6), 1),
-               Pair.of(esj.b("trail_ruins/tower/tower_top_2", $$6), 1),
-               Pair.of(esj.b("trail_ruins/tower/tower_top_3", $$6), 1),
-               Pair.of(esj.b("trail_ruins/tower/tower_top_4", $$6), 1),
-               Pair.of(esj.b("trail_ruins/tower/tower_top_5", $$6), 1)
+               Pair.of(esq.b("trail_ruins/tower/tower_top_1", $$6), 1),
+               Pair.of(esq.b("trail_ruins/tower/tower_top_2", $$6), 1),
+               Pair.of(esq.b("trail_ruins/tower/tower_top_3", $$6), 1),
+               Pair.of(esq.b("trail_ruins/tower/tower_top_4", $$6), 1),
+               Pair.of(esq.b("trail_ruins/tower/tower_top_5", $$6), 1)
             ),
-            esl.a.b
+            ess.a.b
          )
       );
       qo.a(
          $$0,
          "trail_ruins/tower/additions",
-         new esl(
+         new ess(
             $$2,
             List.of(
-               Pair.of(esj.b("trail_ruins/tower/hall_1", $$4), 1),
-               Pair.of(esj.b("trail_ruins/tower/hall_2", $$4), 1),
-               Pair.of(esj.b("trail_ruins/tower/hall_3", $$4), 1),
-               Pair.of(esj.b("trail_ruins/tower/hall_4", $$4), 1),
-               Pair.of(esj.b("trail_ruins/tower/hall_5", $$4), 1),
-               Pair.of(esj.b("trail_ruins/tower/large_hall_1", $$4), 1),
-               Pair.of(esj.b("trail_ruins/tower/large_hall_2", $$4), 1),
-               Pair.of(esj.b("trail_ruins/tower/large_hall_3", $$4), 1),
-               Pair.of(esj.b("trail_ruins/tower/large_hall_4", $$4), 1),
-               Pair.of(esj.b("trail_ruins/tower/large_hall_5", $$4), 1),
-               Pair.of(esj.b("trail_ruins/tower/one_room_1", $$4), 1),
-               Pair.of(esj.b("trail_ruins/tower/one_room_2", $$4), 1),
-               Pair.of(esj.b("trail_ruins/tower/one_room_3", $$4), 1),
-               Pair.of(esj.b("trail_ruins/tower/one_room_4", $$4), 1),
-               Pair.of(esj.b("trail_ruins/tower/one_room_5", $$4), 1),
-               Pair.of(esj.b("trail_ruins/tower/platform_1", $$4), 1),
-               Pair.of(esj.b("trail_ruins/tower/platform_2", $$4), 1),
-               Pair.of(esj.b("trail_ruins/tower/platform_3", $$4), 1),
-               Pair.of(esj.b("trail_ruins/tower/platform_4", $$4), 1),
-               Pair.of(esj.b("trail_ruins/tower/platform_5", $$4), 1),
-               Pair.of(esj.b("trail_ruins/tower/stable_1", $$4), 1),
-               Pair.of(esj.b("trail_ruins/tower/stable_2", $$4), 1),
-               Pair.of(esj.b("trail_ruins/tower/stable_3", $$4), 1),
-               Pair.of(esj.b("trail_ruins/tower/stable_4", $$4), 1),
-               Pair.of(esj.b("trail_ruins/tower/stable_5", $$4), 1)
+               Pair.of(esq.b("trail_ruins/tower/hall_1", $$4), 1),
+               Pair.of(esq.b("trail_ruins/tower/hall_2", $$4), 1),
+               Pair.of(esq.b("trail_ruins/tower/hall_3", $$4), 1),
+               Pair.of(esq.b("trail_ruins/tower/hall_4", $$4), 1),
+               Pair.of(esq.b("trail_ruins/tower/hall_5", $$4), 1),
+               Pair.of(esq.b("trail_ruins/tower/large_hall_1", $$4), 1),
+               Pair.of(esq.b("trail_ruins/tower/large_hall_2", $$4), 1),
+               Pair.of(esq.b("trail_ruins/tower/large_hall_3", $$4), 1),
+               Pair.of(esq.b("trail_ruins/tower/large_hall_4", $$4), 1),
+               Pair.of(esq.b("trail_ruins/tower/large_hall_5", $$4), 1),
+               Pair.of(esq.b("trail_ruins/tower/one_room_1", $$4), 1),
+               Pair.of(esq.b("trail_ruins/tower/one_room_2", $$4), 1),
+               Pair.of(esq.b("trail_ruins/tower/one_room_3", $$4), 1),
+               Pair.of(esq.b("trail_ruins/tower/one_room_4", $$4), 1),
+               Pair.of(esq.b("trail_ruins/tower/one_room_5", $$4), 1),
+               Pair.of(esq.b("trail_ruins/tower/platform_1", $$4), 1),
+               Pair.of(esq.b("trail_ruins/tower/platform_2", $$4), 1),
+               Pair.of(esq.b("trail_ruins/tower/platform_3", $$4), 1),
+               Pair.of(esq.b("trail_ruins/tower/platform_4", $$4), 1),
+               Pair.of(esq.b("trail_ruins/tower/platform_5", $$4), 1),
+               Pair.of(esq.b("trail_ruins/tower/stable_1", $$4), 1),
+               Pair.of(esq.b("trail_ruins/tower/stable_2", $$4), 1),
+               Pair.of(esq.b("trail_ruins/tower/stable_3", $$4), 1),
+               Pair.of(esq.b("trail_ruins/tower/stable_4", $$4), 1),
+               Pair.of(esq.b("trail_ruins/tower/stable_5", $$4), 1)
             ),
-            esl.a.b
+            ess.a.b
          )
       );
       qo.a(
          $$0,
          "trail_ruins/roads",
-         new esl(
+         new ess(
             $$2,
             List.of(
-               Pair.of(esj.b("trail_ruins/roads/long_road_end", $$5), 1),
-               Pair.of(esj.b("trail_ruins/roads/road_end_1", $$5), 1),
-               Pair.of(esj.b("trail_ruins/roads/road_section_1", $$5), 1),
-               Pair.of(esj.b("trail_ruins/roads/road_section_2", $$5), 1),
-               Pair.of(esj.b("trail_ruins/roads/road_section_3", $$5), 1),
-               Pair.of(esj.b("trail_ruins/roads/road_section_4", $$5), 1),
-               Pair.of(esj.b("trail_ruins/roads/road_spacer_1", $$5), 1)
+               Pair.of(esq.b("trail_ruins/roads/long_road_end", $$5), 1),
+               Pair.of(esq.b("trail_ruins/roads/road_end_1", $$5), 1),
+               Pair.of(esq.b("trail_ruins/roads/road_section_1", $$5), 1),
+               Pair.of(esq.b("trail_ruins/roads/road_section_2", $$5), 1),
+               Pair.of(esq.b("trail_ruins/roads/road_section_3", $$5), 1),
+               Pair.of(esq.b("trail_ruins/roads/road_section_4", $$5), 1),
+               Pair.of(esq.b("trail_ruins/roads/road_spacer_1", $$5), 1)
             ),
-            esl.a.b
+            ess.a.b
          )
       );
       qo.a(
          $$0,
          "trail_ruins/buildings",
-         new esl(
+         new ess(
             $$2,
             List.of(
-               Pair.of(esj.b("trail_ruins/buildings/group_hall_1", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/group_hall_2", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/group_hall_3", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/group_hall_4", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/group_hall_5", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/large_room_1", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/large_room_2", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/large_room_3", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/large_room_4", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/large_room_5", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/one_room_1", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/one_room_2", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/one_room_3", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/one_room_4", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/one_room_5", $$4), 1)
+               Pair.of(esq.b("trail_ruins/buildings/group_hall_1", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/group_hall_2", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/group_hall_3", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/group_hall_4", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/group_hall_5", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/large_room_1", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/large_room_2", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/large_room_3", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/large_room_4", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/large_room_5", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/one_room_1", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/one_room_2", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/one_room_3", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/one_room_4", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/one_room_5", $$4), 1)
             ),
-            esl.a.b
+            ess.a.b
          )
       );
       qo.a(
          $$0,
          "trail_ruins/buildings/grouped",
-         new esl(
+         new ess(
             $$2,
             List.of(
-               Pair.of(esj.b("trail_ruins/buildings/group_full_1", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/group_full_2", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/group_full_3", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/group_full_4", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/group_full_5", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/group_lower_1", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/group_lower_2", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/group_lower_3", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/group_lower_4", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/group_lower_5", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/group_upper_1", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/group_upper_2", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/group_upper_3", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/group_upper_4", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/group_upper_5", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/group_room_1", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/group_room_2", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/group_room_3", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/group_room_4", $$4), 1),
-               Pair.of(esj.b("trail_ruins/buildings/group_room_5", $$4), 1)
+               Pair.of(esq.b("trail_ruins/buildings/group_full_1", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/group_full_2", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/group_full_3", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/group_full_4", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/group_full_5", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/group_lower_1", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/group_lower_2", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/group_lower_3", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/group_lower_4", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/group_lower_5", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/group_upper_1", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/group_upper_2", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/group_upper_3", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/group_upper_4", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/group_upper_5", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/group_room_1", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/group_room_2", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/group_room_3", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/group_room_4", $$4), 1),
+               Pair.of(esq.b("trail_ruins/buildings/group_room_5", $$4), 1)
             ),
-            esl.a.b
+            ess.a.b
          )
       );
       qo.a(
          $$0,
          "trail_ruins/decor",
-         new esl(
+         new ess(
             $$2,
             List.of(
-               Pair.of(esj.b("trail_ruins/decor/decor_1", $$4), 1),
-               Pair.of(esj.b("trail_ruins/decor/decor_2", $$4), 1),
-               Pair.of(esj.b("trail_ruins/decor/decor_3", $$4), 1),
-               Pair.of(esj.b("trail_ruins/decor/decor_4", $$4), 1),
-               Pair.of(esj.b("trail_ruins/decor/decor_5", $$4), 1),
-               Pair.of(esj.b("trail_ruins/decor/decor_6", $$4), 1),
-               Pair.of(esj.b("trail_ruins/decor/decor_7", $$4), 1)
+               Pair.of(esq.b("trail_ruins/decor/decor_1", $$4), 1),
+               Pair.of(esq.b("trail_ruins/decor/decor_2", $$4), 1),
+               Pair.of(esq.b("trail_ruins/decor/decor_3", $$4), 1),
+               Pair.of(esq.b("trail_ruins/decor/decor_4", $$4), 1),
+               Pair.of(esq.b("trail_ruins/decor/decor_5", $$4), 1),
+               Pair.of(esq.b("trail_ruins/decor/decor_6", $$4), 1),
+               Pair.of(esq.b("trail_ruins/decor/decor_7", $$4), 1)
             ),
-            esl.a.b
+            ess.a.b
          )
       );
    }

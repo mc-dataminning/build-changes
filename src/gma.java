@@ -1,25 +1,8 @@
-public class gma extends goi {
-   gma(gjz $$0, double $$1, double $$2, double $$3, eah $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.a(foz.Q().ap().a().a($$4));
-      this.u = 0.0F;
-      this.t = 80;
-      this.n = false;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   @Override
-   public gnm b() {
-      return gnm.a;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return 0.5F;
-   }
-
-   public static class a implements gnl<lp> {
-      public gni a(lp $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gma($$1, $$2, $$3, $$4, $$0.b());
-      }
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface gma {
 }

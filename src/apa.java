@@ -9,29 +9,29 @@ import javax.annotation.Nullable;
 public class apa {
    private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("commands.setblock.failed"));
 
-   public static void a(CommandDispatcher<ei> $$0, ee $$1) {
-      Predicate<eal> $$2 = $$0x -> $$0x.c().v($$0x.d());
+   public static void a(CommandDispatcher<ej> $$0, ef $$1) {
+      Predicate<eas> $$2 = $$0x -> $$0x.c().v($$0x.d());
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("setblock").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("setblock").requires($$0x -> $$0x.c(2)))
             .then(
-               ej.a("pos", gf.a())
+               ek.a("pos", gg.a())
                   .then(
-                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ej.a("block", gc.a($$1))
-                                    .executes($$0x -> a((ei)$$0x.getSource(), gf.a($$0x, "pos"), gc.a($$0x, "block"), apa.a.a, null, false)))
-                                 .then(ej.a("destroy").executes($$0x -> a((ei)$$0x.getSource(), gf.a($$0x, "pos"), gc.a($$0x, "block"), apa.a.b, null, false))))
-                              .then(ej.a("keep").executes($$1x -> a((ei)$$1x.getSource(), gf.a($$1x, "pos"), gc.a($$1x, "block"), apa.a.a, $$2, false))))
-                           .then(ej.a("replace").executes($$0x -> a((ei)$$0x.getSource(), gf.a($$0x, "pos"), gc.a($$0x, "block"), apa.a.a, null, false))))
-                        .then(ej.a("strict").executes($$0x -> a((ei)$$0x.getSource(), gf.a($$0x, "pos"), gc.a($$0x, "block"), apa.a.a, null, true)))
+                     ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)ek.a("block", gd.a($$1))
+                                    .executes($$0x -> a((ej)$$0x.getSource(), gg.a($$0x, "pos"), gd.a($$0x, "block"), apa.a.a, null, false)))
+                                 .then(ek.a("destroy").executes($$0x -> a((ej)$$0x.getSource(), gg.a($$0x, "pos"), gd.a($$0x, "block"), apa.a.b, null, false))))
+                              .then(ek.a("keep").executes($$1x -> a((ej)$$1x.getSource(), gg.a($$1x, "pos"), gd.a($$1x, "block"), apa.a.a, $$2, false))))
+                           .then(ek.a("replace").executes($$0x -> a((ej)$$0x.getSource(), gg.a($$0x, "pos"), gd.a($$0x, "block"), apa.a.a, null, false))))
+                        .then(ek.a("strict").executes($$0x -> a((ej)$$0x.getSource(), gg.a($$0x, "pos"), gd.a($$0x, "block"), apa.a.a, null, true)))
                   )
             )
       );
    }
 
-   private static int a(ei $$0, iu $$1, ga $$2, apa.a $$3, @Nullable Predicate<eal> $$4, boolean $$5) throws CommandSyntaxException {
+   private static int a(ej $$0, iv $$1, gb $$2, apa.a $$3, @Nullable Predicate<eas> $$4, boolean $$5) throws CommandSyntaxException {
       arq $$6 = $$0.e();
       if ($$6.ak()) {
          throw a.create();
-      } else if ($$4 != null && !$$4.test(new eal($$6, $$1, true))) {
+      } else if ($$4 != null && !$$4.test(new eas($$6, $$1, true))) {
          throw a.create();
       } else {
          boolean $$7;

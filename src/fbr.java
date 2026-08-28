@@ -1,39 +1,41 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
+import java.util.Optional;
 
-public class fbr extends fau {
-   static final MapCodec<fbr> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(fdn.a.fieldOf("amplifier").forGetter($$0x -> $$0x.b)).apply($$0, fbr::new));
-   private final fdm b;
+public class fbr extends fbb {
+   public static final MapCodec<fbr> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  fba.e.a(dby.c, 256).optionalFieldOf("explosions").forGetter($$0x -> $$0x.c),
+                  ayu.k.optionalFieldOf("flight_duration").forGetter($$0x -> $$0x.d)
+               )
+            )
+            .apply($$0, fbr::new)
+   );
+   public static final dbz b = new dbz(0, List.of());
+   private final Optional<fba.e<dby>> c;
+   private final Optional<Integer> d;
 
-   private fbr(List<fcq> $$0, fdm $$1) {
+   protected fbr(List<fcx> $$0, Optional<fba.e<dby>> $$1, Optional<Integer> $$2) {
       super($$0);
-      this.b = $$1;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public Set<bax<?>> a() {
-      return this.b.a();
-   }
-
-   @Override
-   public faw<fbr> b() {
-      return fax.Q;
-   }
-
-   @Override
-   public czd a(czd $$0, ezh $$1) {
-      int $$2 = azm.a(this.b.a($$1), 0, 4);
-      $$0.b(kj.ad, new dcb($$2));
+   protected czk a(czk $$0, ezo $$1) {
+      $$0.a(kk.aj, b, this::a);
       return $$0;
    }
 
-   public fdm c() {
-      return this.b;
+   private dbz a(dbz $$0) {
+      return new dbz(this.d.orElseGet($$0::a), this.c.<List<dby>>map($$1 -> $$1.a($$0.b())).orElse($$0.b()));
    }
 
-   public static fau.a<?> a(fdm $$0) {
-      return a($$1 -> new fbr($$1, $$0));
+   @Override
+   public fbd<fbr> b() {
+      return fbe.K;
    }
 }

@@ -1,63 +1,95 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class az extends dj<az.a> {
-   @Override
-   public Codec<az.a> a() {
-      return az.a.a;
+public record az(Optional<jj<dmm>> c, Optional<dr> d, Optional<cz> e) {
+   public static final Codec<az> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ju.a(mh.i).optionalFieldOf("blocks").forGetter(az::b),
+               dr.a.optionalFieldOf("state").forGetter(az::c),
+               cz.a.optionalFieldOf("nbt").forGetter(az::d)
+            )
+            .apply($$0, az::new)
+   );
+   public static final yw<wj, az> b = yw.a(yu.a(yu.c(mh.i)), az::b, yu.a(dr.b), az::c, yu.a(cz.b), az::d, az::new);
+
+   public boolean a(arq $$0, iv $$1) {
+      if (!$$0.p($$1)) {
+         return false;
+      } else {
+         return !this.a($$0.a_($$1)) ? false : !this.e.isPresent() || a($$0, $$0.c_($$1), this.e.get());
+      }
    }
 
-   public void a(arr $$0, ciu $$1, ciu $$2, @Nullable bvv $$3) {
-      ezh $$4 = bx.b($$0, $$1);
-      ezh $$5 = bx.b($$0, $$2);
-      ezh $$6 = $$3 != null ? bx.b($$0, $$3) : null;
-      this.a($$0, $$3x -> $$3x.a($$4, $$5, $$6));
+   public boolean a(eas $$0) {
+      return !this.a($$0.a()) ? false : !this.e.isPresent() || a($$0.c(), $$0.b(), this.e.get());
    }
 
-   public static record a(Optional<bi> b, Optional<bi> c, Optional<bi> d, Optional<bi> e) implements dj.a {
-      public static final Codec<az.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bx.b.optionalFieldOf("player").forGetter(az.a::a),
-                  bx.b.optionalFieldOf("parent").forGetter(az.a::c),
-                  bx.b.optionalFieldOf("partner").forGetter(az.a::d),
-                  bx.b.optionalFieldOf("child").forGetter(az.a::e)
-               )
-               .apply($$0, az.a::new)
-      );
+   private boolean a(eao $$0) {
+      return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
+   }
 
-      public static aq<az.a> b() {
-         return ap.p.a(new az.a(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty()));
+   private static boolean a(djk $$0, @Nullable dxm $$1, cz $$2) {
+      return $$1 != null && $$2.a($$1.b($$0.F_()));
+   }
+
+   public boolean a() {
+      return this.e.isPresent();
+   }
+
+   public Optional<jj<dmm>> b() {
+      return this.c;
+   }
+
+   public Optional<dr> c() {
+      return this.d;
+   }
+
+   public Optional<cz> d() {
+      return this.e;
+   }
+
+   public static class a {
+      private Optional<jj<dmm>> a = Optional.empty();
+      private Optional<dr> b = Optional.empty();
+      private Optional<cz> c = Optional.empty();
+
+      private a() {
       }
 
-      public static aq<az.a> a(bx.a $$0) {
-         return ap.p.a(new az.a(Optional.empty(), Optional.empty(), Optional.empty(), Optional.of(bx.a($$0))));
+      public static az.a a() {
+         return new az.a();
       }
 
-      public static aq<az.a> a(Optional<bx> $$0, Optional<bx> $$1, Optional<bx> $$2) {
-         return ap.p.a(new az.a(Optional.empty(), bx.a($$0), bx.a($$1), bx.a($$2)));
+      public az.a a(jg<dmm> $$0, dmm... $$1) {
+         return this.a($$0, Arrays.asList($$1));
       }
 
-      public boolean a(ezh $$0, ezh $$1, @Nullable ezh $$2) {
-         return !this.e.isPresent() || $$2 != null && this.e.get().a($$2) ? a(this.c, $$0) && a(this.d, $$1) || a(this.c, $$1) && a(this.d, $$0) : false;
+      public az.a a(jg<dmm> $$0, Collection<dmm> $$1) {
+         this.a = Optional.of(jj.a(dmm::p, $$1));
+         return this;
       }
 
-      private static boolean a(Optional<bi> $$0, ezh $$1) {
-         return $$0.isEmpty() || $$0.get().a($$1);
+      public az.a a(jg<dmm> $$0, axr<dmm> $$1) {
+         this.a = Optional.of($$0.b($$1));
+         return this;
       }
 
-      @Override
-      public void a(bj $$0) {
-         dj.a.super.a($$0);
-         $$0.a(this.c, ".parent");
-         $$0.a(this.d, ".partner");
-         $$0.a(this.e, ".child");
+      public az.a a(tz $$0) {
+         this.c = Optional.of(new cz($$0));
+         return this;
       }
 
-      @Override
-      public Optional<bi> a() {
-         return this.b;
+      public az.a a(dr.a $$0) {
+         this.b = $$0.b();
+         return this;
+      }
+
+      public az b() {
+         return new az(this.a, this.b, this.c);
       }
    }
 }

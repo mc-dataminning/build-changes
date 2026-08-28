@@ -1,189 +1,128 @@
-import java.time.LocalDate;
-import java.time.temporal.ChronoField;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public abstract class cnl extends cod implements coh {
-   private static final int a = 20;
-   private static final int b = 40;
-   private final cfa<cnl> c = new cfa<>(this, 1.0, 20, 15.0F);
-   private final cek d = new cek(this, 1.2, false) {
-      @Override
-      public void e() {
-         super.e();
-         cnl.this.v(false);
-      }
+public class cnl {
+   public static final alf<cnk> a = a("kebab");
+   public static final alf<cnk> b = a("aztec");
+   public static final alf<cnk> c = a("alban");
+   public static final alf<cnk> d = a("aztec2");
+   public static final alf<cnk> e = a("bomb");
+   public static final alf<cnk> f = a("plant");
+   public static final alf<cnk> g = a("wasteland");
+   public static final alf<cnk> h = a("pool");
+   public static final alf<cnk> i = a("courbet");
+   public static final alf<cnk> j = a("sea");
+   public static final alf<cnk> k = a("sunset");
+   public static final alf<cnk> l = a("creebet");
+   public static final alf<cnk> m = a("wanderer");
+   public static final alf<cnk> n = a("graham");
+   public static final alf<cnk> o = a("match");
+   public static final alf<cnk> p = a("bust");
+   public static final alf<cnk> q = a("stage");
+   public static final alf<cnk> r = a("void");
+   public static final alf<cnk> s = a("skull_and_roses");
+   public static final alf<cnk> t = a("wither");
+   public static final alf<cnk> u = a("fighters");
+   public static final alf<cnk> v = a("pointer");
+   public static final alf<cnk> w = a("pigscene");
+   public static final alf<cnk> x = a("burning_skull");
+   public static final alf<cnk> y = a("skeleton");
+   public static final alf<cnk> z = a("donkey_kong");
+   public static final alf<cnk> A = a("earth");
+   public static final alf<cnk> B = a("wind");
+   public static final alf<cnk> C = a("water");
+   public static final alf<cnk> D = a("fire");
+   public static final alf<cnk> E = a("baroque");
+   public static final alf<cnk> F = a("humble");
+   public static final alf<cnk> G = a("meditative");
+   public static final alf<cnk> H = a("prairie_ride");
+   public static final alf<cnk> I = a("unpacked");
+   public static final alf<cnk> J = a("backyard");
+   public static final alf<cnk> K = a("bouquet");
+   public static final alf<cnk> L = a("cavebird");
+   public static final alf<cnk> M = a("changing");
+   public static final alf<cnk> N = a("cotan");
+   public static final alf<cnk> O = a("endboss");
+   public static final alf<cnk> P = a("fern");
+   public static final alf<cnk> Q = a("finding");
+   public static final alf<cnk> R = a("lowmist");
+   public static final alf<cnk> S = a("orb");
+   public static final alf<cnk> T = a("owlemons");
+   public static final alf<cnk> U = a("passage");
+   public static final alf<cnk> V = a("pond");
+   public static final alf<cnk> W = a("sunflowers");
+   public static final alf<cnk> X = a("tides");
 
-      @Override
-      public void d() {
-         super.d();
-         cnl.this.v(true);
-      }
-   };
-
-   protected cnl(bwo<? extends cnl> $$0, dja $$1) {
-      super($$0, $$1);
-      this.n();
+   public static void a(qh<cnk> $$0) {
+      a($$0, a, 1, 1);
+      a($$0, b, 1, 1);
+      a($$0, c, 1, 1);
+      a($$0, d, 1, 1);
+      a($$0, e, 1, 1);
+      a($$0, f, 1, 1);
+      a($$0, g, 1, 1);
+      a($$0, h, 2, 1);
+      a($$0, i, 2, 1);
+      a($$0, j, 2, 1);
+      a($$0, k, 2, 1);
+      a($$0, l, 2, 1);
+      a($$0, m, 1, 2);
+      a($$0, n, 1, 2);
+      a($$0, o, 2, 2);
+      a($$0, p, 2, 2);
+      a($$0, q, 2, 2);
+      a($$0, r, 2, 2);
+      a($$0, s, 2, 2);
+      a($$0, t, 2, 2, false);
+      a($$0, u, 4, 2);
+      a($$0, v, 4, 4);
+      a($$0, w, 4, 4);
+      a($$0, x, 4, 4);
+      a($$0, y, 4, 3);
+      a($$0, A, 2, 2, false);
+      a($$0, B, 2, 2, false);
+      a($$0, C, 2, 2, false);
+      a($$0, D, 2, 2, false);
+      a($$0, z, 4, 3);
+      a($$0, E, 2, 2);
+      a($$0, F, 2, 2);
+      a($$0, G, 1, 1);
+      a($$0, H, 1, 2);
+      a($$0, I, 4, 4);
+      a($$0, J, 3, 4);
+      a($$0, K, 3, 3);
+      a($$0, L, 3, 3);
+      a($$0, M, 4, 2);
+      a($$0, N, 3, 3);
+      a($$0, O, 3, 3);
+      a($$0, P, 3, 3);
+      a($$0, Q, 4, 2);
+      a($$0, R, 4, 2);
+      a($$0, S, 4, 4);
+      a($$0, T, 3, 3);
+      a($$0, U, 4, 2);
+      a($$0, V, 3, 4);
+      a($$0, W, 3, 3);
+      a($$0, X, 3, 3);
    }
 
-   @Override
-   protected void D() {
-      this.bD.a(2, new cfd(this));
-      this.bD.a(3, new cdt(this, 1.0));
-      this.bD.a(3, new cdh<>(this, cke.class, 6.0F, 1.0, 1.2));
-      this.bD.a(5, new cfn(this, 1.0));
-      this.bD.a(6, new cei(this, crc.class, 8.0F));
-      this.bD.a(6, new cev(this));
-      this.bE.a(1, new cfs(this));
-      this.bE.a(2, new cft<>(this, crc.class, true));
-      this.bE.a(3, new cft<>(this, cjk.class, true));
-      this.bE.a(3, new cft<>(this, ckc.class, 10, true, false, ckc.bG));
+   private static void a(qh<cnk> $$0, alf<cnk> $$1, int $$2, int $$3) {
+      a($$0, $$1, $$2, $$3, true);
    }
 
-   public static byj.a j() {
-      return cod.gu().a(byk.v, 0.25);
+   private static void a(qh<cnk> $$0, alf<cnk> $$1, int $$2, int $$3, boolean $$4) {
+      $$0.a(
+         $$1,
+         new cnk(
+            $$2,
+            $$3,
+            $$1.a(),
+            Optional.of(wy.c($$1.a().c("painting", "title")).a(o.o)),
+            $$4 ? Optional.of(wy.c($$1.a().c("painting", "author")).a(o.h)) : Optional.empty()
+         )
+      );
    }
 
-   @Override
-   protected void b(iu $$0, eah $$1) {
-      this.a(this.m(), 0.15F, 1.0F);
-   }
-
-   abstract awm m();
-
-   @Override
-   public void k_() {
-      boolean $$0 = this.gl();
-      if ($$0) {
-         czd $$1 = this.a(bwp.f);
-         if (!$$1.f()) {
-            if ($$1.m()) {
-               cyz $$2 = $$1.h();
-               $$1.b($$1.o() + this.ae.a(2));
-               if ($$1.o() >= $$1.p()) {
-                  this.a($$2, bwp.f);
-                  this.a(bwp.f, czd.k);
-               }
-            }
-
-            $$0 = false;
-         }
-
-         if ($$0) {
-            this.e(8.0F);
-         }
-      }
-
-      super.k_();
-   }
-
-   @Override
-   public void r() {
-      super.r();
-      if (this.dl() instanceof bxm $$0) {
-         this.aV = $$0.aV;
-      }
-   }
-
-   @Override
-   protected void a(azv $$0, bub $$1) {
-      super.a($$0, $$1);
-      this.a(bwp.a, new czd(czh.pj));
-   }
-
-   @Nullable
-   @Override
-   public bxw a(djr $$0, bub $$1, bwn $$2, @Nullable bxw $$3) {
-      $$3 = super.a($$0, $$1, $$2, $$3);
-      azv $$4 = $$0.C_();
-      this.a($$4, $$1);
-      this.a($$0, $$4, $$1);
-      this.n();
-      this.a_($$4.i() < 0.55F * $$1.d());
-      if (this.a(bwp.f).f()) {
-         LocalDate $$5 = LocalDate.now();
-         int $$6 = $$5.get(ChronoField.DAY_OF_MONTH);
-         int $$7 = $$5.get(ChronoField.MONTH_OF_YEAR);
-         if ($$7 == 10 && $$6 == 31 && $$4.i() < 0.25F) {
-            this.a(bwp.f, new czd($$4.i() < 0.1F ? dmh.ew : dmh.ev));
-            this.a(bwp.f, 0.0F);
-         }
-      }
-
-      return $$3;
-   }
-
-   public void n() {
-      if (this.dV() != null && !this.dV().C) {
-         this.bD.a(this.d);
-         this.bD.a(this.c);
-         czd $$0 = this.b(crz.a(this, czh.pj));
-         if ($$0.a(czh.pj)) {
-            int $$1 = this.q();
-            if (this.dV().an() != bua.d) {
-               $$1 = this.t();
-            }
-
-            this.c.c($$1);
-            this.bD.a(4, this.c);
-         } else {
-            this.bD.a(4, this.d);
-         }
-      }
-   }
-
-   protected int q() {
-      return 20;
-   }
-
-   protected int t() {
-      return 40;
-   }
-
-   @Override
-   public void a(bxe $$0, float $$1) {
-      czd $$2 = this.b(crz.a(this, czh.pj));
-      czd $$3 = this.d($$2);
-      crk $$4 = this.a($$3, $$1, $$2);
-      double $$5 = $$0.dA() - this.dA();
-      double $$6 = $$0.e(0.3333333333333333) - $$4.dC();
-      double $$7 = $$0.dG() - this.dG();
-      double $$8 = Math.sqrt($$5 * $$5 + $$7 * $$7);
-      if (this.dV() instanceof arq $$9) {
-         crx.a($$4, $$9, $$3, $$5, $$6 + $$8 * 0.2F, $$7, 1.6F, (float)(14 - $$9.an().a() * 4));
-      }
-
-      this.a(awn.yd, 1.0F, 1.0F / (this.dY().i() * 0.4F + 0.8F));
-   }
-
-   protected crk a(czd $$0, float $$1, @Nullable czd $$2) {
-      return crz.a(this, $$0, $$1, $$2);
-   }
-
-   @Override
-   public boolean a(czy $$0) {
-      return $$0 == czh.pj;
-   }
-
-   @Override
-   public axr<cyz> Y() {
-      return axk.bT;
-   }
-
-   @Override
-   public void a(tz $$0) {
-      super.a($$0);
-      this.n();
-   }
-
-   @Override
-   public void a(bwp $$0, czd $$1, czd $$2) {
-      super.a($$0, $$1, $$2);
-      if (!this.dV().C) {
-         this.n();
-      }
-   }
-
-   public boolean x() {
-      return this.cw();
+   private static alf<cnk> a(String $$0) {
+      return alf.a(mh.aZ, alg.b($$0));
    }
 }

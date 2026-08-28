@@ -1,44 +1,64 @@
-public class gus implements guc.a {
-   private final foz a;
+import java.util.Map.Entry;
+import org.joml.Vector3f;
 
-   public gus(foz $$0) {
+public class gus implements guo.a {
+   private final fpo a;
+   private static final int b = 2;
+   private static final float c = 0.09375F;
+
+   public gus(fpo $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void a(fjj $$0, gqa $$1, double $$2, double $$3, double $$4) {
-      iu $$5 = this.a.t.dv();
-      djd $$6 = this.a.t.dV();
+   public void a(fjy $$0, gqm $$1, double $$2, double $$3, double $$4) {
+      dji $$5 = this.a.s;
+      fkc $$6 = $$1.getBuffer(gqx.B());
+      iv $$7 = iv.a($$2, 0.0, $$4);
 
-      for (iu $$7 : iu.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
-         ewo $$8 = $$6.b_($$7);
-         if ($$8.a(axh.a)) {
-            double $$9 = (double)((float)$$7.v() + $$8.a($$6, $$7));
-            guc.a(
-               $$0,
-               $$1,
-               new fel(
-                     (double)((float)$$7.u() + 0.01F),
-                     (double)((float)$$7.v() + 0.01F),
-                     (double)((float)$$7.w() + 0.01F),
-                     (double)((float)$$7.u() + 0.99F),
-                     $$9,
-                     (double)((float)$$7.w() + 0.99F)
-                  )
-                  .d(-$$2, -$$3, -$$4),
-               0.0F,
-               1.0F,
-               0.0F,
-               0.15F
-            );
+      for (int $$8 = -2; $$8 <= 2; $$8++) {
+         for (int $$9 = -2; $$9 <= 2; $$9++) {
+            ecl $$10 = $$5.z($$7.b($$8 * 16, 0, $$9 * 16));
+
+            for (Entry<egn.a, egn> $$11 : $$10.e()) {
+               egn.a $$12 = $$11.getKey();
+               dio $$13 = $$10.f();
+               Vector3f $$14 = this.a($$12);
+
+               for (int $$15 = 0; $$15 < 16; $$15++) {
+                  for (int $$16 = 0; $$16 < 16; $$16++) {
+                     int $$17 = jy.a($$13.h, $$15);
+                     int $$18 = jy.a($$13.i, $$16);
+                     float $$19 = (float)((double)((float)$$5.a($$12, $$17, $$18) + (float)$$12.ordinal() * 0.09375F) - $$3);
+                     grf.b(
+                        $$0,
+                        $$6,
+                        (double)((float)$$17 + 0.25F) - $$2,
+                        (double)$$19,
+                        (double)((float)$$18 + 0.25F) - $$4,
+                        (double)((float)$$17 + 0.75F) - $$2,
+                        (double)($$19 + 0.09375F),
+                        (double)((float)$$18 + 0.75F) - $$4,
+                        $$14.x(),
+                        $$14.y(),
+                        $$14.z(),
+                        1.0F
+                     );
+                  }
+               }
+            }
          }
       }
+   }
 
-      for (iu $$10 : iu.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
-         ewo $$11 = $$6.b_($$10);
-         if ($$11.a(axh.a)) {
-            guc.a($$0, $$1, String.valueOf($$11.e()), (double)$$10.u() + 0.5, (double)((float)$$10.v() + $$11.a($$6, $$10)), (double)$$10.w() + 0.5, -16777216);
-         }
-      }
+   private Vector3f a(egn.a $$0) {
+      return switch ($$0) {
+         case a -> new Vector3f(1.0F, 1.0F, 0.0F);
+         case c -> new Vector3f(1.0F, 0.0F, 1.0F);
+         case b -> new Vector3f(0.0F, 0.7F, 0.0F);
+         case d -> new Vector3f(0.0F, 0.0F, 0.5F);
+         case e -> new Vector3f(0.0F, 0.3F, 0.3F);
+         case f -> new Vector3f(0.0F, 0.5F, 0.5F);
+      };
    }
 }

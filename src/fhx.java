@@ -1,22 +1,13 @@
-import java.io.File;
-import java.time.Duration;
+public interface fhx {
+   <T> fjg<T> a(String var1, fjf<T> var2);
 
-public class fhx {
-   private static final Duration a = Duration.ofSeconds(15L);
+   <T> void a(fjg<T> var1);
 
-   public static void a(File $$0, long $$1) {
-      Thread $$2 = new Thread(() -> {
-         try {
-            Thread.sleep(a);
-         } catch (InterruptedException var4) {
-            return;
-         }
+   <T> fjg<T> b(fjg<T> var1);
 
-         o $$3 = aqj.a("Client shutdown", $$1);
-         foz.a($$0, $$3);
-      });
-      $$2.setDaemon(true);
-      $$2.setName("Client shutdown watchdog");
-      $$2.start();
-   }
+   void a(fhx var1);
+
+   void a();
+
+   void a(Runnable var1);
 }

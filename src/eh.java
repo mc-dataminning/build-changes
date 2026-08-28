@@ -1,34 +1,27 @@
+import java.util.Map;
+import javax.annotation.Nullable;
+
 public interface eh {
    eh a = new eh() {
+      @Nullable
       @Override
-      public void a(wy $$0) {
-      }
-
-      @Override
-      public boolean t_() {
-         return false;
-      }
-
-      @Override
-      public boolean u_() {
-         return false;
-      }
-
-      @Override
-      public boolean c() {
-         return false;
+      public xo a(String $$0) {
+         return null;
       }
    };
 
-   void a(wy var1);
+   @Nullable
+   xo a(String var1);
 
-   boolean t_();
+   public static record a(Map<String, xo> b) implements eh {
+      @Nullable
+      @Override
+      public xo a(String $$0) {
+         return this.b.get($$0);
+      }
 
-   boolean u_();
-
-   boolean c();
-
-   default boolean o_() {
-      return false;
+      public Map<String, xo> a() {
+         return this.b;
+      }
    }
 }

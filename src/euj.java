@@ -1,45 +1,65 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public class euj extends eva {
-   public static final MapCodec<euj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(egg.a.g.fieldOf("heightmap").orElse(egg.a.a).forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("offset").orElse(0).forGetter($$0x -> $$0x.c))
-            .apply($$0, euj::new)
-   );
-   private final egg.a b;
-   private final int c;
+public class euj extends evh {
+   public static final MapCodec<euj> a = MapCodec.unit(() -> euj.b);
+   public static final euj b = new euj();
+   private final Map<dmm, dmm> c = ag.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(dmo.m, dmo.pZ);
+      $$0.put(dmo.cx, dmo.pZ);
+      $$0.put(dmo.b, dmo.qd);
+      $$0.put(dmo.eZ, dmo.qe);
+      $$0.put(dmo.fa, dmo.qe);
+      $$0.put(dmo.dc, dmo.qa);
+      $$0.put(dmo.nO, dmo.qa);
+      $$0.put(dmo.nQ, dmo.ql);
+      $$0.put(dmo.fC, dmo.qi);
+      $$0.put(dmo.nM, dmo.qi);
+      $$0.put(dmo.kl, dmo.qc);
+      $$0.put(dmo.oc, dmo.qc);
+      $$0.put(dmo.kh, dmo.qm);
+      $$0.put(dmo.kg, dmo.qm);
+      $$0.put(dmo.kn, dmo.qh);
+      $$0.put(dmo.oa, dmo.qh);
+      $$0.put(dmo.oq, dmo.qj);
+      $$0.put(dmo.oo, dmo.qj);
+      $$0.put(dmo.go, dmo.qb);
+      $$0.put(dmo.gp, dmo.qb);
+      $$0.put(dmo.fc, dmo.qg);
+      $$0.put(dmo.fb, dmo.qf);
+      $$0.put(dmo.fo, dmo.fp);
+   });
 
-   public euj(egg.a $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private euj() {
    }
 
-   @Nullable
    @Override
-   public evd.d a(djd $$0, iu $$1, iu $$2, evd.d $$3, evd.d $$4, euz $$5) {
-      egg.a $$6;
-      if ($$0 instanceof arq) {
-         if (this.b == egg.a.a) {
-            $$6 = egg.a.b;
-         } else if (this.b == egg.a.c) {
-            $$6 = egg.a.d;
-         } else {
-            $$6 = this.b;
-         }
+   public evk.d a(djk $$0, iv $$1, iv $$2, evk.d $$3, evk.d $$4, evg $$5) {
+      dmm $$6 = this.c.get($$4.b().b());
+      if ($$6 == null) {
+         return $$4;
       } else {
-         $$6 = this.b;
-      }
+         eao $$7 = $$4.b();
+         eao $$8 = $$6.m();
+         if ($$7.b(duq.b)) {
+            $$8 = $$8.b(duq.b, $$7.c(duq.b));
+         }
 
-      iu $$10 = $$4.a();
-      int $$11 = $$0.a($$6, $$10.u(), $$10.w()) + this.c;
-      int $$12 = $$3.a().v();
-      return new evd.d(new iu($$10.u(), $$11 + $$12, $$10.w()), $$4.b(), $$4.c());
+         if ($$7.b(duq.c)) {
+            $$8 = $$8.b(duq.c, $$7.c(duq.c));
+         }
+
+         if ($$7.b(dtz.b)) {
+            $$8 = $$8.b(dtz.b, $$7.c(dtz.b));
+         }
+
+         return new evk.d($$4.a(), $$8, $$4.c());
+      }
    }
 
    @Override
-   protected evc<?> a() {
-      return evc.g;
+   protected evj<?> a() {
+      return evj.l;
    }
 }

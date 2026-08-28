@@ -1,24 +1,20 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ens<P extends enr> {
-   public static final ens<eoa> a = a("simple_state_provider", eoa.b);
-   public static final ens<eob> b = a("weighted_state_provider", eob.b);
-   public static final ens<enw> c = a("noise_threshold_provider", enw.b);
-   public static final ens<env> d = a("noise_provider", env.g);
-   public static final ens<ent> e = a("dual_noise_provider", ent.b);
-   public static final ens<eny> f = a("rotated_block_provider", eny.b);
-   public static final ens<enx> g = a("randomized_int_state_provider", enx.b);
-   private final MapCodec<P> h;
+public record ens(eny b, float c) {
+   public static final Codec<ens> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eny.a.fieldOf("above_root_provider").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("above_root_placement_chance").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, ens::new)
+   );
 
-   private static <P extends enr> ens<P> a(String $$0, MapCodec<P> $$1) {
-      return jr.a(mf.T, $$0, new ens<>($$1));
+   public eny a() {
+      return this.b;
    }
 
-   private ens(MapCodec<P> $$0) {
-      this.h = $$0;
-   }
-
-   public MapCodec<P> a() {
-      return this.h;
+   public float b() {
+      return this.c;
    }
 }

@@ -1,11 +1,7 @@
-public class hdo extends hdn {
-   public clk.d a;
-   public boolean b;
-   public czd c;
-   public boolean d;
+public class hdo extends hdz {
+   public final hgc i = new hgc();
 
-   public hdo() {
-      this.a = clk.d.a;
-      this.c = czd.k;
+   public static void a(bxj $$0, hdo $$1, hga $$2) {
+      $$2.a($$1.i, $$0.fa(), czi.h, $$0);
    }
 }

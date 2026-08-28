@@ -4,22 +4,22 @@ import com.mojang.brigadier.tree.LiteralCommandNode;
 import java.util.Collection;
 
 public class aoc {
-   public static void a(CommandDispatcher<ei> $$0) {
-      LiteralCommandNode<ei> $$1 = $$0.register(
-         (LiteralArgumentBuilder)ej.a("msg").then(ej.a("targets", ev.d()).then(ej.a("message", ez.a()).executes($$0x -> {
-            Collection<arr> $$1x = ev.f($$0x, "targets");
+   public static void a(CommandDispatcher<ej> $$0) {
+      LiteralCommandNode<ej> $$1 = $$0.register(
+         (LiteralArgumentBuilder)ek.a("msg").then(ek.a("targets", ew.d()).then(ek.a("message", fa.a()).executes($$0x -> {
+            Collection<arr> $$1x = ew.f($$0x, "targets");
             if (!$$1x.isEmpty()) {
-               ez.a($$0x, "message", $$2 -> a((ei)$$0x.getSource(), $$1x, $$2));
+               fa.a($$0x, "message", $$2 -> a((ej)$$0x.getSource(), $$1x, $$2));
             }
 
             return $$1x.size();
          })))
       );
-      $$0.register((LiteralArgumentBuilder)ej.a("tell").redirect($$1));
-      $$0.register((LiteralArgumentBuilder)ej.a("w").redirect($$1));
+      $$0.register((LiteralArgumentBuilder)ek.a("tell").redirect($$1));
+      $$0.register((LiteralArgumentBuilder)ek.a("w").redirect($$1));
    }
 
-   private static void a(ei $$0, Collection<arr> $$1, xo $$2) {
+   private static void a(ej $$0, Collection<arr> $$1, xo $$2) {
       wu.a $$3 = wu.a(wu.g, $$0);
       xn $$4 = xn.a($$2);
       boolean $$5 = false;

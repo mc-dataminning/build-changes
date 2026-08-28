@@ -1,12 +1,12 @@
-public class hae extends hah<hcm, gfw<hcm>> {
-   private static final gqk a = gqk.q(alg.b("textures/entity/enderman/enderman_eyes.png"));
+public class hae<M extends ghq> extends hbp<M> {
+   private static final alg a = alg.b("textures/entity/bee/bee_stinger.png");
 
-   public hae(gye<hcm, gfw<hcm>> $$0) {
-      super($$0);
+   public hae(gxu<?, hel, M> $$0, gwt.a $$1) {
+      super($$0, new gfk($$1.a(gjn.z)), a, hbp.a.b);
    }
 
    @Override
-   public gqk a() {
-      return a;
+   protected int a(hel $$0) {
+      return $$0.k;
    }
 }

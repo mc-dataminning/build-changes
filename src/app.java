@@ -9,40 +9,40 @@ public class app {
    private static final float a = 10000.0F;
    private static final String b = String.valueOf(20);
 
-   public static void a(CommandDispatcher<ei> $$0) {
+   public static void a(CommandDispatcher<ej> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a(
                                  "tick"
                               )
                               .requires($$0x -> $$0x.c(3)))
-                           .then(ej.a("query").executes($$0x -> a((ei)$$0x.getSource()))))
+                           .then(ek.a("query").executes($$0x -> a((ej)$$0x.getSource()))))
                         .then(
-                           ej.a("rate")
+                           ek.a("rate")
                               .then(
-                                 ej.a("rate", FloatArgumentType.floatArg(1.0F, 10000.0F))
-                                    .suggests(($$0x, $$1) -> en.a(new String[]{b}, $$1))
-                                    .executes($$0x -> a((ei)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "rate")))
+                                 ek.a("rate", FloatArgumentType.floatArg(1.0F, 10000.0F))
+                                    .suggests(($$0x, $$1) -> eo.a(new String[]{b}, $$1))
+                                    .executes($$0x -> a((ej)$$0x.getSource(), FloatArgumentType.getFloat($$0x, "rate")))
                               )
                         ))
                      .then(
-                        ((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("step").executes($$0x -> b((ei)$$0x.getSource(), 1)))
-                              .then(ej.a("stop").executes($$0x -> b((ei)$$0x.getSource()))))
+                        ((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("step").executes($$0x -> b((ej)$$0x.getSource(), 1)))
+                              .then(ek.a("stop").executes($$0x -> b((ej)$$0x.getSource()))))
                            .then(
-                              ej.a("time", fy.a(1))
-                                 .suggests(($$0x, $$1) -> en.a(new String[]{"1t", "1s"}, $$1))
-                                 .executes($$0x -> b((ei)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
+                              ek.a("time", fz.a(1))
+                                 .suggests(($$0x, $$1) -> eo.a(new String[]{"1t", "1s"}, $$1))
+                                 .executes($$0x -> b((ej)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
                            )
                      ))
                   .then(
-                     ((LiteralArgumentBuilder)ej.a("sprint").then(ej.a("stop").executes($$0x -> c((ei)$$0x.getSource()))))
+                     ((LiteralArgumentBuilder)ek.a("sprint").then(ek.a("stop").executes($$0x -> c((ej)$$0x.getSource()))))
                         .then(
-                           ej.a("time", fy.a(1))
-                              .suggests(($$0x, $$1) -> en.a(new String[]{"60s", "1d", "3d"}, $$1))
-                              .executes($$0x -> a((ei)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
+                           ek.a("time", fz.a(1))
+                              .suggests(($$0x, $$1) -> eo.a(new String[]{"60s", "1d", "3d"}, $$1))
+                              .executes($$0x -> a((ej)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "time")))
                         )
                   ))
-               .then(ej.a("unfreeze").executes($$0x -> a((ei)$$0x.getSource(), false))))
-            .then(ej.a("freeze").executes($$0x -> a((ei)$$0x.getSource(), true)))
+               .then(ek.a("unfreeze").executes($$0x -> a((ej)$$0x.getSource(), false))))
+            .then(ek.a("freeze").executes($$0x -> a((ej)$$0x.getSource(), true)))
       );
    }
 
@@ -50,7 +50,7 @@ public class app {
       return String.format(Locale.ROOT, "%.1f", (float)$$0 / (float)baq.b);
    }
 
-   private static int a(ei $$0, float $$1) {
+   private static int a(ej $$0, float $$1) {
       ama $$2 = $$0.l().aP();
       $$2.a($$1);
       String $$3 = String.format(Locale.ROOT, "%.1f", $$1);
@@ -58,7 +58,7 @@ public class app {
       return (int)$$1;
    }
 
-   private static int a(ei $$0) {
+   private static int a(ej $$0) {
       ama $$1 = $$0.l().aP();
       String $$2 = a($$0.l().aQ());
       float $$3 = $$1.f();
@@ -88,7 +88,7 @@ public class app {
       return (int)$$3;
    }
 
-   private static int a(ei $$0, int $$1) {
+   private static int a(ej $$0, int $$1) {
       boolean $$2 = $$0.l().aP().b($$1);
       if ($$2) {
          $$0.a(() -> wy.c("commands.tick.sprint.stop.success"), true);
@@ -98,7 +98,7 @@ public class app {
       return 1;
    }
 
-   private static int a(ei $$0, boolean $$1) {
+   private static int a(ej $$0, boolean $$1) {
       ama $$2 = $$0.l().aP();
       if ($$1) {
          if ($$2.a()) {
@@ -120,7 +120,7 @@ public class app {
       return $$1 ? 1 : 0;
    }
 
-   private static int b(ei $$0, int $$1) {
+   private static int b(ej $$0, int $$1) {
       ama $$2 = $$0.l().aP();
       boolean $$3 = $$2.a($$1);
       if ($$3) {
@@ -132,7 +132,7 @@ public class app {
       return 1;
    }
 
-   private static int b(ei $$0) {
+   private static int b(ej $$0) {
       ama $$1 = $$0.l().aP();
       boolean $$2 = $$1.b();
       if ($$2) {
@@ -144,7 +144,7 @@ public class app {
       }
    }
 
-   private static int c(ei $$0) {
+   private static int c(ej $$0) {
       ama $$1 = $$0.l().aP();
       boolean $$2 = $$1.c();
       if ($$2) {

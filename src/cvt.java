@@ -1,9 +1,19 @@
-public class cvt extends cux {
-   public cvt(int $$0, crb $$1) {
-      super(cwe.o, def.b, ded.e, cwl.b, $$0, $$1);
+public class cvt extends cwz {
+   private final cvs a;
+
+   public cvt(btz $$0, int $$1, int $$2, int $$3, cvs $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$4;
    }
 
-   public cvt(int $$0, crb $$1, btw $$2, cvh $$3) {
-      super(cwe.o, def.b, ded.e, cwl.b, $$0, $$1, $$2, $$3);
+   @Override
+   public boolean a(czk $$0) {
+      return !this.a.e(this.d) && super.a($$0);
+   }
+
+   @Override
+   public void d() {
+      super.d();
+      this.a.a(this.c);
    }
 }

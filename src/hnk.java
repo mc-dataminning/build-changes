@@ -1,100 +1,51 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.InetAddress;
-import java.net.MulticastSocket;
-import java.net.SocketTimeoutException;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
-
 public class hnk {
-   static final AtomicInteger a = new AtomicInteger(0);
-   static final Logger b = LogUtils.getLogger();
+   public static class a extends hmq {
+      private final gpj n;
 
-   public static class a extends Thread {
-      private final hnk.b a;
-      private final InetAddress b;
-      private final MulticastSocket c;
-
-      public a(hnk.b $$0) throws IOException {
-         super("LanServerDetector #" + hnk.a.incrementAndGet());
-         this.a = $$0;
-         this.setDaemon(true);
-         this.setUncaughtExceptionHandler(new r(hnk.b));
-         this.c = new MulticastSocket(4445);
-         this.b = InetAddress.getByName("224.0.2.60");
-         this.c.setSoTimeout(5000);
-         this.c.joinGroup(this.b);
+      protected a(gpj $$0, awm $$1) {
+         super($$1, awo.i, hnh.t());
+         this.n = $$0;
+         this.i = false;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
       }
 
       @Override
-      public void run() {
-         byte[] $$0 = new byte[1024];
-
-         while (!this.isInterrupted()) {
-            DatagramPacket $$1 = new DatagramPacket($$0, $$0.length);
-
-            try {
-               this.c.receive($$1);
-            } catch (SocketTimeoutException var5) {
-               continue;
-            } catch (IOException var6) {
-               hnk.b.error("Couldn't ping server", var6);
-               break;
-            }
-
-            String $$4 = new String($$1.getData(), $$1.getOffset(), $$1.getLength(), StandardCharsets.UTF_8);
-            hnk.b.debug("{}: {}", $$1.getAddress(), $$4);
-            this.a.a($$4, $$1.getAddress());
+      public void q() {
+         if (this.n.dP() || !this.n.bl()) {
+            this.n();
          }
-
-         try {
-            this.c.leaveGroup(this.b);
-         } catch (IOException var4) {
-         }
-
-         this.c.close();
       }
    }
 
-   public static class b {
-      private final List<hnj> a = Lists.newArrayList();
-      private boolean b;
+   public static class b extends hmq {
+      public static final int n = 40;
+      private final gpj o;
+      private int p;
 
-      @Nullable
-      public synchronized List<hnj> a() {
-         if (this.b) {
-            List<hnj> $$0 = List.copyOf(this.a);
-            this.b = false;
-            return $$0;
-         } else {
-            return null;
-         }
+      public b(gpj $$0) {
+         super(awn.z, awo.i, hnh.t());
+         this.o = $$0;
+         this.i = true;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
       }
 
-      public synchronized void a(String $$0, InetAddress $$1) {
-         String $$2 = hnl.a($$0);
-         String $$3 = hnl.b($$0);
-         if ($$3 != null) {
-            $$3 = $$1.getHostAddress() + ":" + $$3;
-            boolean $$4 = false;
-
-            for (hnj $$5 : this.a) {
-               if ($$5.b().equals($$3)) {
-                  $$5.c();
-                  $$4 = true;
-                  break;
-               }
+      @Override
+      public void q() {
+         if (!this.o.dP() && this.p >= 0) {
+            if (this.o.bl()) {
+               this.p++;
+            } else {
+               this.p -= 2;
             }
 
-            if (!$$4) {
-               this.a.add(new hnj($$2, $$3));
-               this.b = true;
-            }
+            this.p = Math.min(this.p, 40);
+            this.d = Math.max(0.0F, Math.min((float)this.p / 40.0F, 1.0F));
+         } else {
+            this.n();
          }
       }
    }

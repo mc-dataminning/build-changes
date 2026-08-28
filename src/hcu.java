@@ -1,4 +1,3 @@
-public class hcu extends hcn {
+public class hcu extends hdo {
    public boolean a;
-   public final hfq b = new hfq();
 }

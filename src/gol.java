@@ -1,53 +1,55 @@
-public class gol extends goi {
-   private final feq a;
+public class gol extends goc {
+   private final gop b;
+   protected boolean a;
 
-   gol(gjz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, feq $$7, int $$8) {
+   gol(gkl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gop $$7) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      $$8 = axw.a($$8, 0.875F + this.r.i() * 0.25F, 0.875F + this.r.i() * 0.25F, 0.875F + this.r.i() * 0.25F);
-      this.v = (float)axw.b($$8) / 255.0F;
-      this.w = (float)axw.c($$8) / 255.0F;
-      this.x = (float)axw.d($$8) / 255.0F;
-      this.D = 0.26F;
-      this.a = $$7;
-   }
-
-   @Override
-   public gnm b() {
-      return gnm.b;
-   }
-
-   @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         int $$0 = this.t - this.s;
-         double $$1 = 1.0 / (double)$$0;
-         this.g = azm.d($$1, this.g, this.a.a());
-         this.h = azm.d($$1, this.h, this.a.b());
-         this.i = azm.d($$1, this.i, this.a.c());
-      }
+      this.b = $$7;
+      this.d(1.5F);
+      this.b($$7);
    }
 
    @Override
    public int a(float $$0) {
-      return 15728880;
+      return this.a ? 240 : super.a($$0);
    }
 
-   public static class a implements gnl<mc> {
-      private final god a;
+   @Override
+   public gny b() {
+      return gny.c;
+   }
 
-      public a(god $$0) {
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.b);
+   }
+
+   public static class a implements gnx<mc> {
+      private final gop a;
+
+      public a(gop $$0) {
          this.a = $$0;
       }
 
-      public gni a(mc $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gol $$8 = new gol($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b(), $$0.c());
-         $$8.a(this.a);
-         $$8.a($$0.d());
+      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gol $$8 = new gol($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.a = true;
+         return $$8;
+      }
+   }
+
+   public static class b implements gnx<mc> {
+      private final gop a;
+
+      public b(gop $$0) {
+         this.a = $$0;
+      }
+
+      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gol $$8 = new gol($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
          return $$8;
       }
    }

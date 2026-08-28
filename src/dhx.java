@@ -1,43 +1,19 @@
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dhx {
-   void a(@Nullable crc var1);
+public record dhx(dhw e, wy f) {
+   public static final Codec<dhx> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dhw.b.forGetter(dhx::a), xa.a.fieldOf("description").forGetter(dhx::b)).apply($$0, dhx::new)
+   );
+   public static final yw<wj, dhx> b = yw.a(dhw.c, dhx::a, xa.b, dhx::b, dhx::new);
+   public static final Codec<jf<dhx>> c = alc.a(mh.bk, a);
+   public static final yw<wj, jf<dhx>> d = yu.a(mh.bk, b);
 
-   @Nullable
-   crc x();
-
-   dhz gs();
-
-   void a(dhz var1);
-
-   void a(dhy var1);
-
-   void i(czd var1);
-
-   int t();
-
-   void s(int var1);
-
-   boolean gt();
-
-   awm gu();
-
-   default boolean gC() {
-      return false;
+   public dhw a() {
+      return this.e;
    }
 
-   default void a(crc $$0, wy $$1, int $$2) {
-      OptionalInt $$3 = $$0.a(new bul(($$0x, $$1x, $$2x) -> new cwg($$0x, $$1x, this), $$1));
-      if ($$3.isPresent()) {
-         dhz $$4 = this.gs();
-         if (!$$4.isEmpty()) {
-            $$0.a($$3.getAsInt(), $$4, $$2, this.t(), this.gt(), this.gC());
-         }
-      }
+   public wy b() {
+      return this.f;
    }
-
-   boolean gy();
-
-   boolean e(crc var1);
 }

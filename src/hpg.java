@@ -1,37 +1,37 @@
-public class hpg extends hpj {
-   private final wy a;
-   private ftc b = ftc.a;
-   private final fyb c;
-   private int C;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
 
-   public hpg(fyb $$0, wy $$1, wy $$2) {
-      super($$1);
-      this.c = $$0;
-      this.a = $$2;
+public class hpg {
+   private static final int a = -1;
+   private Optional<Instant> b = Optional.empty();
+   private long c;
+   private long d;
+
+   public void a() {
+      this.d = -1L;
+      if (this.b.isEmpty()) {
+         this.b = Optional.of(Instant.now());
+      }
    }
 
-   @Override
-   public void aO_() {
-      this.m.af().i();
-      this.b = ftc.a(this.p, this.a, this.n - 50);
-      this.C = this.b.a() * 9;
-      this.c(fsj.a(wx.k, $$0 -> this.m.a(this.c)).a(this.n / 2 - 100, this.o / 2 + this.C / 2 + 9, 200, 20).a());
+   public void a(long $$0) {
+      if (this.d != -1L) {
+         this.c = this.c + Math.max(0L, $$0 - this.d);
+      }
+
+      this.d = $$0;
    }
 
-   @Override
-   public wy i() {
-      return wy.i().b(this.l).f(": ").b(this.a);
+   private int a(Instant $$0) {
+      Duration $$1 = Duration.between($$0, Instant.now());
+      return (int)$$1.toSeconds();
    }
 
-   @Override
-   public void aL_() {
-      foz.Q().a(this.c);
-   }
-
-   @Override
-   public void a(frv $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, this.o / 2 - this.C / 2 - 9 * 2, 11184810);
-      this.b.a($$0, this.n / 2, this.o / 2 - this.C / 2);
+   public void a(hov $$0) {
+      this.b.ifPresent($$1 -> $$0.send(how.e, $$1x -> {
+            $$1x.a(hoy.p, this.a($$1));
+            $$1x.a(hoy.q, (int)this.c);
+         }));
    }
 }

@@ -1,157 +1,51 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
 public class euz {
-   private dri a;
-   private dsz b;
-   private iu c;
-   private boolean d;
-   @Nullable
-   private eqt e;
-   private eun f;
-   @Nullable
-   private azv g;
-   private int h;
-   private final List<eva> i;
-   private boolean j;
-   private boolean k;
+   public static final evr a = evr.a;
+   public static final Codec<euz> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eve.c.fieldOf("input_predicate").forGetter($$0x -> $$0x.c),
+               eve.c.fieldOf("location_predicate").forGetter($$0x -> $$0x.d),
+               eux.c.lenientOptionalFieldOf("position_predicate", euw.b).forGetter($$0x -> $$0x.e),
+               eao.a.fieldOf("output_state").forGetter($$0x -> $$0x.f),
+               evs.c.lenientOptionalFieldOf("block_entity_modifier", a).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, euz::new)
+   );
+   private final eve c;
+   private final eve d;
+   private final eux e;
+   private final eao f;
+   private final evs g;
 
-   public euz() {
-      this.a = dri.a;
-      this.b = dsz.a;
-      this.c = iu.c;
-      this.f = eun.b;
-      this.i = Lists.newArrayList();
+   public euz(eve $$0, eve $$1, eao $$2) {
+      this($$0, $$1, euw.b, $$2);
    }
 
-   public euz a() {
-      euz $$0 = new euz();
-      $$0.a = this.a;
-      $$0.b = this.b;
-      $$0.c = this.c;
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      $$0.g = this.g;
-      $$0.h = this.h;
-      $$0.i.addAll(this.i);
-      $$0.j = this.j;
-      $$0.k = this.k;
-      return $$0;
+   public euz(eve $$0, eve $$1, eux $$2, eao $$3) {
+      this($$0, $$1, $$2, $$3, a);
    }
 
-   public euz a(dri $$0) {
-      this.a = $$0;
-      return this;
-   }
-
-   public euz a(dsz $$0) {
-      this.b = $$0;
-      return this;
-   }
-
-   public euz a(iu $$0) {
+   public euz(eve $$0, eve $$1, eux $$2, eao $$3, evs $$4) {
       this.c = $$0;
-      return this;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
-   public euz a(boolean $$0) {
-      this.d = $$0;
-      return this;
+   public boolean a(eao $$0, eao $$1, iv $$2, iv $$3, iv $$4, azv $$5) {
+      return this.c.a($$0, $$5) && this.d.a($$1, $$5) && this.e.a($$2, $$3, $$4, $$5);
    }
 
-   public euz a(eqt $$0) {
-      this.e = $$0;
-      return this;
-   }
-
-   public euz a(@Nullable azv $$0) {
-      this.g = $$0;
-      return this;
-   }
-
-   public euz a(eun $$0) {
-      this.f = $$0;
-      return this;
-   }
-
-   public euz b(boolean $$0) {
-      this.j = $$0;
-      return this;
-   }
-
-   public euz b() {
-      this.i.clear();
-      return this;
-   }
-
-   public euz a(eva $$0) {
-      this.i.add($$0);
-      return this;
-   }
-
-   public euz b(eva $$0) {
-      this.i.remove($$0);
-      return this;
-   }
-
-   public dri c() {
-      return this.a;
-   }
-
-   public dsz d() {
-      return this.b;
-   }
-
-   public iu e() {
-      return this.c;
-   }
-
-   public azv b(@Nullable iu $$0) {
-      if (this.g != null) {
-         return this.g;
-      } else {
-         return $$0 == null ? azv.a(af.c()) : azv.a(azm.a($$0));
-      }
-   }
-
-   public boolean f() {
-      return this.d;
+   public eao a() {
+      return this.f;
    }
 
    @Nullable
-   public eqt g() {
-      return this.e;
-   }
-
-   public boolean h() {
-      return this.j;
-   }
-
-   public List<eva> i() {
-      return this.i;
-   }
-
-   public boolean j() {
-      return this.f == eun.b;
-   }
-
-   public evd.b a(List<evd.b> $$0, @Nullable iu $$1) {
-      int $$2 = $$0.size();
-      if ($$2 == 0) {
-         throw new IllegalStateException("No palettes");
-      } else {
-         return $$0.get(this.b($$1).a($$2));
-      }
-   }
-
-   public euz c(boolean $$0) {
-      this.k = $$0;
-      return this;
-   }
-
-   public boolean k() {
-      return this.k;
+   public tz a(azv $$0, @Nullable tz $$1) {
+      return this.g.a($$0, $$1);
    }
 }

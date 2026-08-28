@@ -1,1021 +1,216 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.ArrayList;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
-public class etx {
-   public static void a(eve $$0, iu $$1, dsz $$2, List<etx.i> $$3, azv $$4) {
-      etx.c $$5 = new etx.c($$4);
-      etx.d $$6 = new etx.d($$0, $$4);
-      $$6.a($$1, $$2, $$3, $$5);
+public class etx extends eri {
+   private static final String[] e = new String[]{
+      "ruined_portal/portal_1",
+      "ruined_portal/portal_2",
+      "ruined_portal/portal_3",
+      "ruined_portal/portal_4",
+      "ruined_portal/portal_5",
+      "ruined_portal/portal_6",
+      "ruined_portal/portal_7",
+      "ruined_portal/portal_8",
+      "ruined_portal/portal_9",
+      "ruined_portal/portal_10"
+   };
+   private static final String[] f = new String[]{"ruined_portal/giant_portal_1", "ruined_portal/giant_portal_2", "ruined_portal/giant_portal_3"};
+   private static final float g = 0.05F;
+   private static final int h = 15;
+   private final List<etx.a> i;
+   public static final MapCodec<etx> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(a($$0), ayu.b(etx.a.a.listOf()).fieldOf("setups").forGetter($$0x -> $$0x.i)).apply($$0, etx::new)
+   );
+
+   public etx(eri.c $$0, List<etx.a> $$1) {
+      super($$0);
+      this.i = $$1;
    }
 
-   static class a extends etx.b {
-      @Override
-      public String a(azv $$0) {
-         return "1x1_a" + ($$0.a(5) + 1);
-      }
-
-      @Override
-      public String b(azv $$0) {
-         return "1x1_as" + ($$0.a(4) + 1);
-      }
-
-      @Override
-      public String a(azv $$0, boolean $$1) {
-         return "1x2_a" + ($$0.a(9) + 1);
-      }
-
-      @Override
-      public String b(azv $$0, boolean $$1) {
-         return "1x2_b" + ($$0.a(5) + 1);
-      }
-
-      @Override
-      public String c(azv $$0) {
-         return "1x2_s" + ($$0.a(2) + 1);
-      }
-
-      @Override
-      public String d(azv $$0) {
-         return "2x2_a" + ($$0.a(4) + 1);
-      }
-
-      @Override
-      public String e(azv $$0) {
-         return "2x2_s1";
-      }
+   public etx(eri.c $$0, etx.a $$1) {
+      this($$0, List.of($$1));
    }
 
-   abstract static class b {
-      public abstract String a(azv var1);
+   @Override
+   public Optional<eri.b> a(eri.a $$0) {
+      etw.a $$1 = new etw.a();
+      ehm $$2 = $$0.f();
+      etx.a $$3 = null;
+      if (this.i.size() > 1) {
+         float $$4 = 0.0F;
 
-      public abstract String b(azv var1);
-
-      public abstract String a(azv var1, boolean var2);
-
-      public abstract String b(azv var1, boolean var2);
-
-      public abstract String c(azv var1);
-
-      public abstract String d(azv var1);
-
-      public abstract String e(azv var1);
-   }
-
-   static class c {
-      private static final int a = 11;
-      private static final int b = 0;
-      private static final int c = 1;
-      private static final int d = 2;
-      private static final int e = 3;
-      private static final int f = 4;
-      private static final int g = 5;
-      private static final int h = 65536;
-      private static final int i = 131072;
-      private static final int j = 262144;
-      private static final int k = 1048576;
-      private static final int l = 2097152;
-      private static final int m = 4194304;
-      private static final int n = 8388608;
-      private static final int o = 983040;
-      private static final int p = 65535;
-      private final azv q;
-      final etx.g r;
-      final etx.g s;
-      final etx.g[] t;
-      final int u;
-      final int v;
-
-      public c(azv $$0) {
-         this.q = $$0;
-         int $$1 = 11;
-         this.u = 7;
-         this.v = 4;
-         this.r = new etx.g(11, 11, 5);
-         this.r.a(this.u, this.v, this.u + 1, this.v + 1, 3);
-         this.r.a(this.u - 1, this.v, this.u - 1, this.v + 1, 2);
-         this.r.a(this.u + 2, this.v - 2, this.u + 3, this.v + 3, 5);
-         this.r.a(this.u + 1, this.v - 2, this.u + 1, this.v - 1, 1);
-         this.r.a(this.u + 1, this.v + 2, this.u + 1, this.v + 3, 1);
-         this.r.a(this.u - 1, this.v - 1, 1);
-         this.r.a(this.u - 1, this.v + 2, 1);
-         this.r.a(0, 0, 11, 1, 5);
-         this.r.a(0, 9, 11, 11, 5);
-         this.a(this.r, this.u, this.v - 2, ja.e, 6);
-         this.a(this.r, this.u, this.v + 3, ja.e, 6);
-         this.a(this.r, this.u - 2, this.v - 1, ja.e, 3);
-         this.a(this.r, this.u - 2, this.v + 2, ja.e, 3);
-
-         while (this.a(this.r)) {
+         for (etx.a $$5 : this.i) {
+            $$4 += $$5.h();
          }
 
-         this.t = new etx.g[3];
-         this.t[0] = new etx.g(11, 11, 5);
-         this.t[1] = new etx.g(11, 11, 5);
-         this.t[2] = new etx.g(11, 11, 5);
-         this.a(this.r, this.t[0]);
-         this.a(this.r, this.t[1]);
-         this.t[0].a(this.u + 1, this.v, this.u + 1, this.v + 1, 8388608);
-         this.t[1].a(this.u + 1, this.v, this.u + 1, this.v + 1, 8388608);
-         this.s = new etx.g(this.r.b, this.r.c, 5);
-         this.a();
-         this.a(this.s, this.t[2]);
-      }
+         float $$6 = $$2.i();
 
-      public static boolean a(etx.g $$0, int $$1, int $$2) {
-         int $$3 = $$0.a($$1, $$2);
-         return $$3 == 1 || $$3 == 2 || $$3 == 3 || $$3 == 4;
-      }
-
-      public boolean a(etx.g $$0, int $$1, int $$2, int $$3, int $$4) {
-         return (this.t[$$3].a($$1, $$2) & 65535) == $$4;
-      }
-
-      @Nullable
-      public ja b(etx.g $$0, int $$1, int $$2, int $$3, int $$4) {
-         for (ja $$5 : ja.c.a) {
-            if (this.a($$0, $$1 + $$5.j(), $$2 + $$5.l(), $$3, $$4)) {
-               return $$5;
+         for (etx.a $$7 : this.i) {
+            $$6 -= $$7.h() / $$4;
+            if ($$6 < 0.0F) {
+               $$3 = $$7;
+               break;
             }
          }
-
-         return null;
+      } else {
+         $$3 = this.i.get(0);
       }
 
-      private void a(etx.g $$0, int $$1, int $$2, ja $$3, int $$4) {
-         if ($$4 > 0) {
-            $$0.a($$1, $$2, 1);
-            $$0.a($$1 + $$3.j(), $$2 + $$3.l(), 0, 1);
-
-            for (int $$5 = 0; $$5 < 8; $$5++) {
-               ja $$6 = ja.b(this.q.a(4));
-               if ($$6 != $$3.g() && ($$6 != ja.f || !this.q.h())) {
-                  int $$7 = $$1 + $$3.j();
-                  int $$8 = $$2 + $$3.l();
-                  if ($$0.a($$7 + $$6.j(), $$8 + $$6.l()) == 0 && $$0.a($$7 + $$6.j() * 2, $$8 + $$6.l() * 2) == 0) {
-                     this.a($$0, $$1 + $$3.j() + $$6.j(), $$2 + $$3.l() + $$6.l(), $$6, $$4 - 1);
-                     break;
-                  }
-               }
-            }
-
-            ja $$9 = $$3.h();
-            ja $$10 = $$3.i();
-            $$0.a($$1 + $$9.j(), $$2 + $$9.l(), 0, 2);
-            $$0.a($$1 + $$10.j(), $$2 + $$10.l(), 0, 2);
-            $$0.a($$1 + $$3.j() + $$9.j(), $$2 + $$3.l() + $$9.l(), 0, 2);
-            $$0.a($$1 + $$3.j() + $$10.j(), $$2 + $$3.l() + $$10.l(), 0, 2);
-            $$0.a($$1 + $$3.j() * 2, $$2 + $$3.l() * 2, 0, 2);
-            $$0.a($$1 + $$9.j() * 2, $$2 + $$9.l() * 2, 0, 2);
-            $$0.a($$1 + $$10.j() * 2, $$2 + $$10.l() * 2, 0, 2);
-         }
-      }
-
-      private boolean a(etx.g $$0) {
-         boolean $$1 = false;
-
-         for (int $$2 = 0; $$2 < $$0.c; $$2++) {
-            for (int $$3 = 0; $$3 < $$0.b; $$3++) {
-               if ($$0.a($$3, $$2) == 0) {
-                  int $$4 = 0;
-                  $$4 += a($$0, $$3 + 1, $$2) ? 1 : 0;
-                  $$4 += a($$0, $$3 - 1, $$2) ? 1 : 0;
-                  $$4 += a($$0, $$3, $$2 + 1) ? 1 : 0;
-                  $$4 += a($$0, $$3, $$2 - 1) ? 1 : 0;
-                  if ($$4 >= 3) {
-                     $$0.a($$3, $$2, 2);
-                     $$1 = true;
-                  } else if ($$4 == 2) {
-                     int $$5 = 0;
-                     $$5 += a($$0, $$3 + 1, $$2 + 1) ? 1 : 0;
-                     $$5 += a($$0, $$3 - 1, $$2 + 1) ? 1 : 0;
-                     $$5 += a($$0, $$3 + 1, $$2 - 1) ? 1 : 0;
-                     $$5 += a($$0, $$3 - 1, $$2 - 1) ? 1 : 0;
-                     if ($$5 <= 1) {
-                        $$0.a($$3, $$2, 2);
-                        $$1 = true;
-                     }
-                  }
-               }
-            }
-         }
-
-         return $$1;
-      }
-
-      private void a() {
-         List<bat<Integer, Integer>> $$0 = Lists.newArrayList();
-         etx.g $$1 = this.t[1];
-
-         for (int $$2 = 0; $$2 < this.s.c; $$2++) {
-            for (int $$3 = 0; $$3 < this.s.b; $$3++) {
-               int $$4 = $$1.a($$3, $$2);
-               int $$5 = $$4 & 983040;
-               if ($$5 == 131072 && ($$4 & 2097152) == 2097152) {
-                  $$0.add(new bat<>($$3, $$2));
-               }
-            }
-         }
-
-         if ($$0.isEmpty()) {
-            this.s.a(0, 0, this.s.b, this.s.c, 5);
+      if ($$3 == null) {
+         throw new IllegalStateException();
+      } else {
+         etx.a $$8 = $$3;
+         $$1.d = a($$2, $$8.b());
+         $$1.c = $$8.c();
+         $$1.e = $$8.d();
+         $$1.f = $$8.e();
+         $$1.g = $$8.g();
+         alg $$9;
+         if ($$2.i() < 0.05F) {
+            $$9 = alg.b(f[$$2.a(f.length)]);
          } else {
-            bat<Integer, Integer> $$6 = $$0.get(this.q.a($$0.size()));
-            int $$7 = $$1.a($$6.a(), $$6.b());
-            $$1.a($$6.a(), $$6.b(), $$7 | 4194304);
-            ja $$8 = this.b(this.r, $$6.a(), $$6.b(), 1, $$7 & 65535);
-            int $$9 = $$6.a() + $$8.j();
-            int $$10 = $$6.b() + $$8.l();
-
-            for (int $$11 = 0; $$11 < this.s.c; $$11++) {
-               for (int $$12 = 0; $$12 < this.s.b; $$12++) {
-                  if (!a(this.r, $$12, $$11)) {
-                     this.s.a($$12, $$11, 5);
-                  } else if ($$12 == $$6.a() && $$11 == $$6.b()) {
-                     this.s.a($$12, $$11, 3);
-                  } else if ($$12 == $$9 && $$11 == $$10) {
-                     this.s.a($$12, $$11, 3);
-                     this.t[2].a($$12, $$11, 8388608);
-                  }
-               }
-            }
-
-            List<ja> $$13 = Lists.newArrayList();
-
-            for (ja $$14 : ja.c.a) {
-               if (this.s.a($$9 + $$14.j(), $$10 + $$14.l()) == 0) {
-                  $$13.add($$14);
-               }
-            }
-
-            if ($$13.isEmpty()) {
-               this.s.a(0, 0, this.s.b, this.s.c, 5);
-               $$1.a($$6.a(), $$6.b(), $$7);
-            } else {
-               ja $$15 = $$13.get(this.q.a($$13.size()));
-               this.a(this.s, $$9 + $$15.j(), $$10 + $$15.l(), $$15, 4);
-
-               while (this.a(this.s)) {
-               }
-            }
-         }
-      }
-
-      private void a(etx.g $$0, etx.g $$1) {
-         ObjectArrayList<bat<Integer, Integer>> $$2 = new ObjectArrayList();
-
-         for (int $$3 = 0; $$3 < $$0.c; $$3++) {
-            for (int $$4 = 0; $$4 < $$0.b; $$4++) {
-               if ($$0.a($$4, $$3) == 2) {
-                  $$2.add(new bat<>($$4, $$3));
-               }
-            }
+            $$9 = alg.b(e[$$2.a(e.length)]);
          }
 
-         af.c($$2, this.q);
-         int $$5 = 10;
-         ObjectListIterator var20 = $$2.iterator();
-
-         while (var20.hasNext()) {
-            bat<Integer, Integer> $$6 = (bat<Integer, Integer>)var20.next();
-            int $$7 = $$6.a();
-            int $$8 = $$6.b();
-            if ($$1.a($$7, $$8) == 0) {
-               int $$9 = $$7;
-               int $$10 = $$7;
-               int $$11 = $$8;
-               int $$12 = $$8;
-               int $$13 = 65536;
-               if ($$1.a($$7 + 1, $$8) == 0
-                  && $$1.a($$7, $$8 + 1) == 0
-                  && $$1.a($$7 + 1, $$8 + 1) == 0
-                  && $$0.a($$7 + 1, $$8) == 2
-                  && $$0.a($$7, $$8 + 1) == 2
-                  && $$0.a($$7 + 1, $$8 + 1) == 2) {
-                  $$10 = $$7 + 1;
-                  $$12 = $$8 + 1;
-                  $$13 = 262144;
-               } else if ($$1.a($$7 - 1, $$8) == 0
-                  && $$1.a($$7, $$8 + 1) == 0
-                  && $$1.a($$7 - 1, $$8 + 1) == 0
-                  && $$0.a($$7 - 1, $$8) == 2
-                  && $$0.a($$7, $$8 + 1) == 2
-                  && $$0.a($$7 - 1, $$8 + 1) == 2) {
-                  $$9 = $$7 - 1;
-                  $$12 = $$8 + 1;
-                  $$13 = 262144;
-               } else if ($$1.a($$7 - 1, $$8) == 0
-                  && $$1.a($$7, $$8 - 1) == 0
-                  && $$1.a($$7 - 1, $$8 - 1) == 0
-                  && $$0.a($$7 - 1, $$8) == 2
-                  && $$0.a($$7, $$8 - 1) == 2
-                  && $$0.a($$7 - 1, $$8 - 1) == 2) {
-                  $$9 = $$7 - 1;
-                  $$11 = $$8 - 1;
-                  $$13 = 262144;
-               } else if ($$1.a($$7 + 1, $$8) == 0 && $$0.a($$7 + 1, $$8) == 2) {
-                  $$10 = $$7 + 1;
-                  $$13 = 131072;
-               } else if ($$1.a($$7, $$8 + 1) == 0 && $$0.a($$7, $$8 + 1) == 2) {
-                  $$12 = $$8 + 1;
-                  $$13 = 131072;
-               } else if ($$1.a($$7 - 1, $$8) == 0 && $$0.a($$7 - 1, $$8) == 2) {
-                  $$9 = $$7 - 1;
-                  $$13 = 131072;
-               } else if ($$1.a($$7, $$8 - 1) == 0 && $$0.a($$7, $$8 - 1) == 2) {
-                  $$11 = $$8 - 1;
-                  $$13 = 131072;
-               }
-
-               int $$14 = this.q.h() ? $$9 : $$10;
-               int $$15 = this.q.h() ? $$11 : $$12;
-               int $$16 = 2097152;
-               if (!$$0.b($$14, $$15, 1)) {
-                  $$14 = $$14 == $$9 ? $$10 : $$9;
-                  $$15 = $$15 == $$11 ? $$12 : $$11;
-                  if (!$$0.b($$14, $$15, 1)) {
-                     $$15 = $$15 == $$11 ? $$12 : $$11;
-                     if (!$$0.b($$14, $$15, 1)) {
-                        $$14 = $$14 == $$9 ? $$10 : $$9;
-                        $$15 = $$15 == $$11 ? $$12 : $$11;
-                        if (!$$0.b($$14, $$15, 1)) {
-                           $$16 = 0;
-                           $$14 = $$9;
-                           $$15 = $$11;
-                        }
-                     }
-                  }
-               }
-
-               for (int $$17 = $$11; $$17 <= $$12; $$17++) {
-                  for (int $$18 = $$9; $$18 <= $$10; $$18++) {
-                     if ($$18 == $$14 && $$17 == $$15) {
-                        $$1.a($$18, $$17, 1048576 | $$16 | $$13 | $$5);
-                     } else {
-                        $$1.a($$18, $$17, $$13 | $$5);
-                     }
-                  }
-               }
-
-               $$5++;
+         evk $$11 = $$0.e().a($$9);
+         dtg $$12 = ag.a(dtg.values(), $$2);
+         drp $$13 = $$2.i() < 0.5F ? drp.a : drp.c;
+         iv $$14 = new iv($$11.a().u() / 2, 0, $$11.a().w() / 2);
+         ecm $$15 = $$0.b();
+         djj $$16 = $$0.i();
+         ehb $$17 = $$0.d();
+         iv $$18 = $$0.h().l();
+         era $$19 = $$11.a($$18, $$12, $$14, $$13);
+         iv $$20 = $$19.g();
+         int $$21 = $$15.a($$20.u(), $$20.w(), etw.a($$8.a()), $$16, $$17) - 1;
+         int $$22 = a($$2, $$15, $$8.a(), $$1.d, $$21, $$19.e(), $$19, $$16, $$17);
+         iv $$23 = new iv($$18.u(), $$22, $$18.w());
+         return Optional.of(new eri.b($$23, (Consumer<esa>)($$11x -> {
+            if ($$8.f()) {
+               $$1.b = a($$23, $$0.b().d().getNoiseBiome(jq.a($$23.u()), jq.a($$23.v()), jq.a($$23.w()), $$17.b()), $$15.f());
             }
-         }
+
+            $$11x.a(new etw($$0.e(), $$23, $$8.a(), $$1, $$9, $$11, $$12, $$13, $$14));
+         })));
       }
    }
 
-   static class d {
-      private final eve a;
-      private final azv b;
-      private int c;
-      private int d;
-
-      public d(eve $$0, azv $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public void a(iu $$0, dsz $$1, List<etx.i> $$2, etx.c $$3) {
-         etx.e $$4 = new etx.e();
-         $$4.b = $$0;
-         $$4.a = $$1;
-         $$4.c = "wall_flat";
-         etx.e $$5 = new etx.e();
-         this.a($$2, $$4);
-         $$5.b = $$4.b.b(8);
-         $$5.a = $$4.a;
-         $$5.c = "wall_window";
-         if (!$$2.isEmpty()) {
-         }
-
-         etx.g $$6 = $$3.r;
-         etx.g $$7 = $$3.s;
-         this.c = $$3.u + 1;
-         this.d = $$3.v + 1;
-         int $$8 = $$3.u + 1;
-         int $$9 = $$3.v;
-         this.a($$2, $$4, $$6, ja.d, this.c, this.d, $$8, $$9);
-         this.a($$2, $$5, $$6, ja.d, this.c, this.d, $$8, $$9);
-         etx.e $$10 = new etx.e();
-         $$10.b = $$4.b.b(19);
-         $$10.a = $$4.a;
-         $$10.c = "wall_window";
-         boolean $$11 = false;
-
-         for (int $$12 = 0; $$12 < $$7.c && !$$11; $$12++) {
-            for (int $$13 = $$7.b - 1; $$13 >= 0 && !$$11; $$13--) {
-               if (etx.c.a($$7, $$13, $$12)) {
-                  $$10.b = $$10.b.a($$1.a(ja.d), 8 + ($$12 - this.d) * 8);
-                  $$10.b = $$10.b.a($$1.a(ja.f), ($$13 - this.c) * 8);
-                  this.b($$2, $$10);
-                  this.a($$2, $$10, $$7, ja.d, $$13, $$12, $$13, $$12);
-                  $$11 = true;
-               }
-            }
-         }
-
-         this.a($$2, $$0.b(16), $$1, $$6, $$7);
-         this.a($$2, $$0.b(27), $$1, $$7, null);
-         if (!$$2.isEmpty()) {
-         }
-
-         etx.b[] $$14 = new etx.b[]{new etx.a(), new etx.f(), new etx.h()};
-
-         for (int $$15 = 0; $$15 < 3; $$15++) {
-            iu $$16 = $$0.b(8 * $$15 + ($$15 == 2 ? 3 : 0));
-            etx.g $$17 = $$3.t[$$15];
-            etx.g $$18 = $$15 == 2 ? $$7 : $$6;
-            String $$19 = $$15 == 0 ? "carpet_south_1" : "carpet_south_2";
-            String $$20 = $$15 == 0 ? "carpet_west_1" : "carpet_west_2";
-
-            for (int $$21 = 0; $$21 < $$18.c; $$21++) {
-               for (int $$22 = 0; $$22 < $$18.b; $$22++) {
-                  if ($$18.a($$22, $$21) == 1) {
-                     iu $$23 = $$16.a($$1.a(ja.d), 8 + ($$21 - this.d) * 8);
-                     $$23 = $$23.a($$1.a(ja.f), ($$22 - this.c) * 8);
-                     $$2.add(new etx.i(this.a, "corridor_floor", $$23, $$1));
-                     if ($$18.a($$22, $$21 - 1) == 1 || ($$17.a($$22, $$21 - 1) & 8388608) == 8388608) {
-                        $$2.add(new etx.i(this.a, "carpet_north", $$23.a($$1.a(ja.f), 1).d(), $$1));
-                     }
-
-                     if ($$18.a($$22 + 1, $$21) == 1 || ($$17.a($$22 + 1, $$21) & 8388608) == 8388608) {
-                        $$2.add(new etx.i(this.a, "carpet_east", $$23.a($$1.a(ja.d), 1).a($$1.a(ja.f), 5).d(), $$1));
-                     }
-
-                     if ($$18.a($$22, $$21 + 1) == 1 || ($$17.a($$22, $$21 + 1) & 8388608) == 8388608) {
-                        $$2.add(new etx.i(this.a, $$19, $$23.a($$1.a(ja.d), 5).a($$1.a(ja.e), 1), $$1));
-                     }
-
-                     if ($$18.a($$22 - 1, $$21) == 1 || ($$17.a($$22 - 1, $$21) & 8388608) == 8388608) {
-                        $$2.add(new etx.i(this.a, $$20, $$23.a($$1.a(ja.e), 1).a($$1.a(ja.c), 1), $$1));
-                     }
-                  }
-               }
-            }
-
-            String $$24 = $$15 == 0 ? "indoors_wall_1" : "indoors_wall_2";
-            String $$25 = $$15 == 0 ? "indoors_door_1" : "indoors_door_2";
-            List<ja> $$26 = Lists.newArrayList();
-
-            for (int $$27 = 0; $$27 < $$18.c; $$27++) {
-               for (int $$28 = 0; $$28 < $$18.b; $$28++) {
-                  boolean $$29 = $$15 == 2 && $$18.a($$28, $$27) == 3;
-                  if ($$18.a($$28, $$27) == 2 || $$29) {
-                     int $$30 = $$17.a($$28, $$27);
-                     int $$31 = $$30 & 983040;
-                     int $$32 = $$30 & 65535;
-                     $$29 = $$29 && ($$30 & 8388608) == 8388608;
-                     $$26.clear();
-                     if (($$30 & 2097152) == 2097152) {
-                        for (ja $$33 : ja.c.a) {
-                           if ($$18.a($$28 + $$33.j(), $$27 + $$33.l()) == 1) {
-                              $$26.add($$33);
-                           }
-                        }
-                     }
-
-                     ja $$34 = null;
-                     if (!$$26.isEmpty()) {
-                        $$34 = $$26.get(this.b.a($$26.size()));
-                     } else if (($$30 & 1048576) == 1048576) {
-                        $$34 = ja.b;
-                     }
-
-                     iu $$35 = $$16.a($$1.a(ja.d), 8 + ($$27 - this.d) * 8);
-                     $$35 = $$35.a($$1.a(ja.f), -1 + ($$28 - this.c) * 8);
-                     if (etx.c.a($$18, $$28 - 1, $$27) && !$$3.a($$18, $$28 - 1, $$27, $$15, $$32)) {
-                        $$2.add(new etx.i(this.a, $$34 == ja.e ? $$25 : $$24, $$35, $$1));
-                     }
-
-                     if ($$18.a($$28 + 1, $$27) == 1 && !$$29) {
-                        iu $$36 = $$35.a($$1.a(ja.f), 8);
-                        $$2.add(new etx.i(this.a, $$34 == ja.f ? $$25 : $$24, $$36, $$1));
-                     }
-
-                     if (etx.c.a($$18, $$28, $$27 + 1) && !$$3.a($$18, $$28, $$27 + 1, $$15, $$32)) {
-                        iu $$37 = $$35.a($$1.a(ja.d), 7);
-                        $$37 = $$37.a($$1.a(ja.f), 7);
-                        $$2.add(new etx.i(this.a, $$34 == ja.d ? $$25 : $$24, $$37, $$1.a(dsz.b)));
-                     }
-
-                     if ($$18.a($$28, $$27 - 1) == 1 && !$$29) {
-                        iu $$38 = $$35.a($$1.a(ja.c), 1);
-                        $$38 = $$38.a($$1.a(ja.f), 7);
-                        $$2.add(new etx.i(this.a, $$34 == ja.c ? $$25 : $$24, $$38, $$1.a(dsz.b)));
-                     }
-
-                     if ($$31 == 65536) {
-                        this.a($$2, $$35, $$1, $$34, $$14[$$15]);
-                     } else if ($$31 == 131072 && $$34 != null) {
-                        ja $$39 = $$3.b($$18, $$28, $$27, $$15, $$32);
-                        boolean $$40 = ($$30 & 4194304) == 4194304;
-                        this.a($$2, $$35, $$1, $$39, $$34, $$14[$$15], $$40);
-                     } else if ($$31 == 262144 && $$34 != null && $$34 != ja.b) {
-                        ja $$41 = $$34.h();
-                        if (!$$3.a($$18, $$28 + $$41.j(), $$27 + $$41.l(), $$15, $$32)) {
-                           $$41 = $$41.g();
-                        }
-
-                        this.a($$2, $$35, $$1, $$41, $$34, $$14[$$15]);
-                     } else if ($$31 == 262144 && $$34 == ja.b) {
-                        this.a($$2, $$35, $$1, $$14[$$15]);
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      private void a(List<etx.i> $$0, etx.e $$1, etx.g $$2, ja $$3, int $$4, int $$5, int $$6, int $$7) {
-         int $$8 = $$4;
-         int $$9 = $$5;
-         ja $$10 = $$3;
-
-         do {
-            if (!etx.c.a($$2, $$8 + $$3.j(), $$9 + $$3.l())) {
-               this.c($$0, $$1);
-               $$3 = $$3.h();
-               if ($$8 != $$6 || $$9 != $$7 || $$10 != $$3) {
-                  this.b($$0, $$1);
-               }
-            } else if (etx.c.a($$2, $$8 + $$3.j(), $$9 + $$3.l()) && etx.c.a($$2, $$8 + $$3.j() + $$3.i().j(), $$9 + $$3.l() + $$3.i().l())) {
-               this.d($$0, $$1);
-               $$8 += $$3.j();
-               $$9 += $$3.l();
-               $$3 = $$3.i();
-            } else {
-               $$8 += $$3.j();
-               $$9 += $$3.l();
-               if ($$8 != $$6 || $$9 != $$7 || $$10 != $$3) {
-                  this.b($$0, $$1);
-               }
-            }
-         } while ($$8 != $$6 || $$9 != $$7 || $$10 != $$3);
-      }
-
-      private void a(List<etx.i> $$0, iu $$1, dsz $$2, etx.g $$3, @Nullable etx.g $$4) {
-         for (int $$5 = 0; $$5 < $$3.c; $$5++) {
-            for (int $$6 = 0; $$6 < $$3.b; $$6++) {
-               iu $$27 = $$1.a($$2.a(ja.d), 8 + ($$5 - this.d) * 8);
-               $$27 = $$27.a($$2.a(ja.f), ($$6 - this.c) * 8);
-               boolean $$8 = $$4 != null && etx.c.a($$4, $$6, $$5);
-               if (etx.c.a($$3, $$6, $$5) && !$$8) {
-                  $$0.add(new etx.i(this.a, "roof", $$27.b(3), $$2));
-                  if (!etx.c.a($$3, $$6 + 1, $$5)) {
-                     iu $$9 = $$27.a($$2.a(ja.f), 6);
-                     $$0.add(new etx.i(this.a, "roof_front", $$9, $$2));
-                  }
-
-                  if (!etx.c.a($$3, $$6 - 1, $$5)) {
-                     iu $$10 = $$27.a($$2.a(ja.f), 0);
-                     $$10 = $$10.a($$2.a(ja.d), 7);
-                     $$0.add(new etx.i(this.a, "roof_front", $$10, $$2.a(dsz.c)));
-                  }
-
-                  if (!etx.c.a($$3, $$6, $$5 - 1)) {
-                     iu $$11 = $$27.a($$2.a(ja.e), 1);
-                     $$0.add(new etx.i(this.a, "roof_front", $$11, $$2.a(dsz.d)));
-                  }
-
-                  if (!etx.c.a($$3, $$6, $$5 + 1)) {
-                     iu $$12 = $$27.a($$2.a(ja.f), 6);
-                     $$12 = $$12.a($$2.a(ja.d), 6);
-                     $$0.add(new etx.i(this.a, "roof_front", $$12, $$2.a(dsz.b)));
-                  }
-               }
-            }
-         }
-
-         if ($$4 != null) {
-            for (int $$13 = 0; $$13 < $$3.c; $$13++) {
-               for (int $$14 = 0; $$14 < $$3.b; $$14++) {
-                  iu var17 = $$1.a($$2.a(ja.d), 8 + ($$13 - this.d) * 8);
-                  var17 = var17.a($$2.a(ja.f), ($$14 - this.c) * 8);
-                  boolean $$16 = etx.c.a($$4, $$14, $$13);
-                  if (etx.c.a($$3, $$14, $$13) && $$16) {
-                     if (!etx.c.a($$3, $$14 + 1, $$13)) {
-                        iu $$17 = var17.a($$2.a(ja.f), 7);
-                        $$0.add(new etx.i(this.a, "small_wall", $$17, $$2));
-                     }
-
-                     if (!etx.c.a($$3, $$14 - 1, $$13)) {
-                        iu $$18 = var17.a($$2.a(ja.e), 1);
-                        $$18 = $$18.a($$2.a(ja.d), 6);
-                        $$0.add(new etx.i(this.a, "small_wall", $$18, $$2.a(dsz.c)));
-                     }
-
-                     if (!etx.c.a($$3, $$14, $$13 - 1)) {
-                        iu $$19 = var17.a($$2.a(ja.e), 0);
-                        $$19 = $$19.a($$2.a(ja.c), 1);
-                        $$0.add(new etx.i(this.a, "small_wall", $$19, $$2.a(dsz.d)));
-                     }
-
-                     if (!etx.c.a($$3, $$14, $$13 + 1)) {
-                        iu $$20 = var17.a($$2.a(ja.f), 6);
-                        $$20 = $$20.a($$2.a(ja.d), 7);
-                        $$0.add(new etx.i(this.a, "small_wall", $$20, $$2.a(dsz.b)));
-                     }
-
-                     if (!etx.c.a($$3, $$14 + 1, $$13)) {
-                        if (!etx.c.a($$3, $$14, $$13 - 1)) {
-                           iu $$21 = var17.a($$2.a(ja.f), 7);
-                           $$21 = $$21.a($$2.a(ja.c), 2);
-                           $$0.add(new etx.i(this.a, "small_wall_corner", $$21, $$2));
-                        }
-
-                        if (!etx.c.a($$3, $$14, $$13 + 1)) {
-                           iu $$22 = var17.a($$2.a(ja.f), 8);
-                           $$22 = $$22.a($$2.a(ja.d), 7);
-                           $$0.add(new etx.i(this.a, "small_wall_corner", $$22, $$2.a(dsz.b)));
-                        }
-                     }
-
-                     if (!etx.c.a($$3, $$14 - 1, $$13)) {
-                        if (!etx.c.a($$3, $$14, $$13 - 1)) {
-                           iu $$23 = var17.a($$2.a(ja.e), 2);
-                           $$23 = $$23.a($$2.a(ja.c), 1);
-                           $$0.add(new etx.i(this.a, "small_wall_corner", $$23, $$2.a(dsz.d)));
-                        }
-
-                        if (!etx.c.a($$3, $$14, $$13 + 1)) {
-                           iu $$24 = var17.a($$2.a(ja.e), 1);
-                           $$24 = $$24.a($$2.a(ja.d), 8);
-                           $$0.add(new etx.i(this.a, "small_wall_corner", $$24, $$2.a(dsz.c)));
-                        }
-                     }
-                  }
-               }
-            }
-         }
-
-         for (int $$25 = 0; $$25 < $$3.c; $$25++) {
-            for (int $$26 = 0; $$26 < $$3.b; $$26++) {
-               iu var19 = $$1.a($$2.a(ja.d), 8 + ($$25 - this.d) * 8);
-               var19 = var19.a($$2.a(ja.f), ($$26 - this.c) * 8);
-               boolean $$28 = $$4 != null && etx.c.a($$4, $$26, $$25);
-               if (etx.c.a($$3, $$26, $$25) && !$$28) {
-                  if (!etx.c.a($$3, $$26 + 1, $$25)) {
-                     iu $$29 = var19.a($$2.a(ja.f), 6);
-                     if (!etx.c.a($$3, $$26, $$25 + 1)) {
-                        iu $$30 = $$29.a($$2.a(ja.d), 6);
-                        $$0.add(new etx.i(this.a, "roof_corner", $$30, $$2));
-                     } else if (etx.c.a($$3, $$26 + 1, $$25 + 1)) {
-                        iu $$31 = $$29.a($$2.a(ja.d), 5);
-                        $$0.add(new etx.i(this.a, "roof_inner_corner", $$31, $$2));
-                     }
-
-                     if (!etx.c.a($$3, $$26, $$25 - 1)) {
-                        $$0.add(new etx.i(this.a, "roof_corner", $$29, $$2.a(dsz.d)));
-                     } else if (etx.c.a($$3, $$26 + 1, $$25 - 1)) {
-                        iu $$32 = var19.a($$2.a(ja.f), 9);
-                        $$32 = $$32.a($$2.a(ja.c), 2);
-                        $$0.add(new etx.i(this.a, "roof_inner_corner", $$32, $$2.a(dsz.b)));
-                     }
-                  }
-
-                  if (!etx.c.a($$3, $$26 - 1, $$25)) {
-                     iu $$33 = var19.a($$2.a(ja.f), 0);
-                     $$33 = $$33.a($$2.a(ja.d), 0);
-                     if (!etx.c.a($$3, $$26, $$25 + 1)) {
-                        iu $$34 = $$33.a($$2.a(ja.d), 6);
-                        $$0.add(new etx.i(this.a, "roof_corner", $$34, $$2.a(dsz.b)));
-                     } else if (etx.c.a($$3, $$26 - 1, $$25 + 1)) {
-                        iu $$35 = $$33.a($$2.a(ja.d), 8);
-                        $$35 = $$35.a($$2.a(ja.e), 3);
-                        $$0.add(new etx.i(this.a, "roof_inner_corner", $$35, $$2.a(dsz.d)));
-                     }
-
-                     if (!etx.c.a($$3, $$26, $$25 - 1)) {
-                        $$0.add(new etx.i(this.a, "roof_corner", $$33, $$2.a(dsz.c)));
-                     } else if (etx.c.a($$3, $$26 - 1, $$25 - 1)) {
-                        iu $$36 = $$33.a($$2.a(ja.d), 1);
-                        $$0.add(new etx.i(this.a, "roof_inner_corner", $$36, $$2.a(dsz.c)));
-                     }
-                  }
-               }
-            }
-         }
-      }
-
-      private void a(List<etx.i> $$0, etx.e $$1) {
-         ja $$2 = $$1.a.a(ja.e);
-         $$0.add(new etx.i(this.a, "entrance", $$1.b.a($$2, 9), $$1.a));
-         $$1.b = $$1.b.a($$1.a.a(ja.d), 16);
-      }
-
-      private void b(List<etx.i> $$0, etx.e $$1) {
-         $$0.add(new etx.i(this.a, $$1.c, $$1.b.a($$1.a.a(ja.f), 7), $$1.a));
-         $$1.b = $$1.b.a($$1.a.a(ja.d), 8);
-      }
-
-      private void c(List<etx.i> $$0, etx.e $$1) {
-         $$1.b = $$1.b.a($$1.a.a(ja.d), -1);
-         $$0.add(new etx.i(this.a, "wall_corner", $$1.b, $$1.a));
-         $$1.b = $$1.b.a($$1.a.a(ja.d), -7);
-         $$1.b = $$1.b.a($$1.a.a(ja.e), -6);
-         $$1.a = $$1.a.a(dsz.b);
-      }
-
-      private void d(List<etx.i> $$0, etx.e $$1) {
-         $$1.b = $$1.b.a($$1.a.a(ja.d), 6);
-         $$1.b = $$1.b.a($$1.a.a(ja.f), 8);
-         $$1.a = $$1.a.a(dsz.d);
-      }
-
-      private void a(List<etx.i> $$0, iu $$1, dsz $$2, ja $$3, etx.b $$4) {
-         dsz $$5 = dsz.a;
-         String $$6 = $$4.a(this.b);
-         if ($$3 != ja.f) {
-            if ($$3 == ja.c) {
-               $$5 = $$5.a(dsz.d);
-            } else if ($$3 == ja.e) {
-               $$5 = $$5.a(dsz.c);
-            } else if ($$3 == ja.d) {
-               $$5 = $$5.a(dsz.b);
-            } else {
-               $$6 = $$4.b(this.b);
-            }
-         }
-
-         iu $$7 = evd.a(new iu(1, 0, 0), dri.a, $$5, 7, 7);
-         $$5 = $$5.a($$2);
-         $$7 = $$7.a($$2);
-         iu $$8 = $$1.b($$7.u(), 0, $$7.w());
-         $$0.add(new etx.i(this.a, $$6, $$8, $$5));
-      }
-
-      private void a(List<etx.i> $$0, iu $$1, dsz $$2, ja $$3, ja $$4, etx.b $$5, boolean $$6) {
-         if ($$4 == ja.f && $$3 == ja.d) {
-            iu $$7 = $$1.a($$2.a(ja.f), 1);
-            $$0.add(new etx.i(this.a, $$5.a(this.b, $$6), $$7, $$2));
-         } else if ($$4 == ja.f && $$3 == ja.c) {
-            iu $$8 = $$1.a($$2.a(ja.f), 1);
-            $$8 = $$8.a($$2.a(ja.d), 6);
-            $$0.add(new etx.i(this.a, $$5.a(this.b, $$6), $$8, $$2, dri.b));
-         } else if ($$4 == ja.e && $$3 == ja.c) {
-            iu $$9 = $$1.a($$2.a(ja.f), 7);
-            $$9 = $$9.a($$2.a(ja.d), 6);
-            $$0.add(new etx.i(this.a, $$5.a(this.b, $$6), $$9, $$2.a(dsz.c)));
-         } else if ($$4 == ja.e && $$3 == ja.d) {
-            iu $$10 = $$1.a($$2.a(ja.f), 7);
-            $$0.add(new etx.i(this.a, $$5.a(this.b, $$6), $$10, $$2, dri.c));
-         } else if ($$4 == ja.d && $$3 == ja.f) {
-            iu $$11 = $$1.a($$2.a(ja.f), 1);
-            $$0.add(new etx.i(this.a, $$5.a(this.b, $$6), $$11, $$2.a(dsz.b), dri.b));
-         } else if ($$4 == ja.d && $$3 == ja.e) {
-            iu $$12 = $$1.a($$2.a(ja.f), 7);
-            $$0.add(new etx.i(this.a, $$5.a(this.b, $$6), $$12, $$2.a(dsz.b)));
-         } else if ($$4 == ja.c && $$3 == ja.e) {
-            iu $$13 = $$1.a($$2.a(ja.f), 7);
-            $$13 = $$13.a($$2.a(ja.d), 6);
-            $$0.add(new etx.i(this.a, $$5.a(this.b, $$6), $$13, $$2.a(dsz.b), dri.c));
-         } else if ($$4 == ja.c && $$3 == ja.f) {
-            iu $$14 = $$1.a($$2.a(ja.f), 1);
-            $$14 = $$14.a($$2.a(ja.d), 6);
-            $$0.add(new etx.i(this.a, $$5.a(this.b, $$6), $$14, $$2.a(dsz.d)));
-         } else if ($$4 == ja.d && $$3 == ja.c) {
-            iu $$15 = $$1.a($$2.a(ja.f), 1);
-            $$15 = $$15.a($$2.a(ja.c), 8);
-            $$0.add(new etx.i(this.a, $$5.b(this.b, $$6), $$15, $$2));
-         } else if ($$4 == ja.c && $$3 == ja.d) {
-            iu $$16 = $$1.a($$2.a(ja.f), 7);
-            $$16 = $$16.a($$2.a(ja.d), 14);
-            $$0.add(new etx.i(this.a, $$5.b(this.b, $$6), $$16, $$2.a(dsz.c)));
-         } else if ($$4 == ja.e && $$3 == ja.f) {
-            iu $$17 = $$1.a($$2.a(ja.f), 15);
-            $$0.add(new etx.i(this.a, $$5.b(this.b, $$6), $$17, $$2.a(dsz.b)));
-         } else if ($$4 == ja.f && $$3 == ja.e) {
-            iu $$18 = $$1.a($$2.a(ja.e), 7);
-            $$18 = $$18.a($$2.a(ja.d), 6);
-            $$0.add(new etx.i(this.a, $$5.b(this.b, $$6), $$18, $$2.a(dsz.d)));
-         } else if ($$4 == ja.b && $$3 == ja.f) {
-            iu $$19 = $$1.a($$2.a(ja.f), 15);
-            $$0.add(new etx.i(this.a, $$5.c(this.b), $$19, $$2.a(dsz.b)));
-         } else if ($$4 == ja.b && $$3 == ja.d) {
-            iu $$20 = $$1.a($$2.a(ja.f), 1);
-            $$20 = $$20.a($$2.a(ja.c), 0);
-            $$0.add(new etx.i(this.a, $$5.c(this.b), $$20, $$2));
-         }
-      }
-
-      private void a(List<etx.i> $$0, iu $$1, dsz $$2, ja $$3, ja $$4, etx.b $$5) {
-         int $$6 = 0;
-         int $$7 = 0;
-         dsz $$8 = $$2;
-         dri $$9 = dri.a;
-         if ($$4 == ja.f && $$3 == ja.d) {
-            $$6 = -7;
-         } else if ($$4 == ja.f && $$3 == ja.c) {
-            $$6 = -7;
-            $$7 = 6;
-            $$9 = dri.b;
-         } else if ($$4 == ja.c && $$3 == ja.f) {
-            $$6 = 1;
-            $$7 = 14;
-            $$8 = $$2.a(dsz.d);
-         } else if ($$4 == ja.c && $$3 == ja.e) {
-            $$6 = 7;
-            $$7 = 14;
-            $$8 = $$2.a(dsz.d);
-            $$9 = dri.b;
-         } else if ($$4 == ja.d && $$3 == ja.e) {
-            $$6 = 7;
-            $$7 = -8;
-            $$8 = $$2.a(dsz.b);
-         } else if ($$4 == ja.d && $$3 == ja.f) {
-            $$6 = 1;
-            $$7 = -8;
-            $$8 = $$2.a(dsz.b);
-            $$9 = dri.b;
-         } else if ($$4 == ja.e && $$3 == ja.c) {
-            $$6 = 15;
-            $$7 = 6;
-            $$8 = $$2.a(dsz.c);
-         } else if ($$4 == ja.e && $$3 == ja.d) {
-            $$6 = 15;
-            $$9 = dri.c;
-         }
-
-         iu $$10 = $$1.a($$2.a(ja.f), $$6);
-         $$10 = $$10.a($$2.a(ja.d), $$7);
-         $$0.add(new etx.i(this.a, $$5.d(this.b), $$10, $$8, $$9));
-      }
-
-      private void a(List<etx.i> $$0, iu $$1, dsz $$2, etx.b $$3) {
-         iu $$4 = $$1.a($$2.a(ja.f), 1);
-         $$0.add(new etx.i(this.a, $$3.e(this.b), $$4, $$2, dri.a));
+   private static boolean a(ehm $$0, float $$1) {
+      if ($$1 == 0.0F) {
+         return false;
+      } else {
+         return $$1 == 1.0F ? true : $$0.i() < $$1;
       }
    }
 
-   static class e {
-      public dsz a;
-      public iu b;
-      public String c;
+   private static boolean a(iv $$0, jf<dkk> $$1, int $$2) {
+      return $$1.a().b($$0, $$2);
    }
 
-   static class f extends etx.b {
-      @Override
-      public String a(azv $$0) {
-         return "1x1_b" + ($$0.a(4) + 1);
-      }
-
-      @Override
-      public String b(azv $$0) {
-         return "1x1_as" + ($$0.a(4) + 1);
-      }
-
-      @Override
-      public String a(azv $$0, boolean $$1) {
-         return $$1 ? "1x2_c_stairs" : "1x2_c" + ($$0.a(4) + 1);
-      }
-
-      @Override
-      public String b(azv $$0, boolean $$1) {
-         return $$1 ? "1x2_d_stairs" : "1x2_d" + ($$0.a(5) + 1);
-      }
-
-      @Override
-      public String c(azv $$0) {
-         return "1x2_se" + ($$0.a(1) + 1);
-      }
-
-      @Override
-      public String d(azv $$0) {
-         return "2x2_b" + ($$0.a(5) + 1);
-      }
-
-      @Override
-      public String e(azv $$0) {
-         return "2x2_s1";
-      }
-   }
-
-   static class g {
-      private final int[][] a;
-      final int b;
-      final int c;
-      private final int d;
-
-      public g(int $$0, int $$1, int $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.a = new int[$$0][$$1];
-      }
-
-      public void a(int $$0, int $$1, int $$2) {
-         if ($$0 >= 0 && $$0 < this.b && $$1 >= 0 && $$1 < this.c) {
-            this.a[$$0][$$1] = $$2;
-         }
-      }
-
-      public void a(int $$0, int $$1, int $$2, int $$3, int $$4) {
-         for (int $$5 = $$1; $$5 <= $$3; $$5++) {
-            for (int $$6 = $$0; $$6 <= $$2; $$6++) {
-               this.a($$6, $$5, $$4);
-            }
-         }
-      }
-
-      public int a(int $$0, int $$1) {
-         return $$0 >= 0 && $$0 < this.b && $$1 >= 0 && $$1 < this.c ? this.a[$$0][$$1] : this.d;
-      }
-
-      public void a(int $$0, int $$1, int $$2, int $$3) {
-         if (this.a($$0, $$1) == $$2) {
-            this.a($$0, $$1, $$3);
-         }
-      }
-
-      public boolean b(int $$0, int $$1, int $$2) {
-         return this.a($$0 - 1, $$1) == $$2 || this.a($$0 + 1, $$1) == $$2 || this.a($$0, $$1 + 1) == $$2 || this.a($$0, $$1 - 1) == $$2;
-      }
-   }
-
-   static class h extends etx.f {
-   }
-
-   public static class i extends erl {
-      public i(eve $$0, String $$1, iu $$2, dsz $$3) {
-         this($$0, $$1, $$2, $$3, dri.a);
-      }
-
-      public i(eve $$0, String $$1, iu $$2, dsz $$3, dri $$4) {
-         super(ers.Z, 0, $$0, a($$1), $$1, a($$4, $$3), $$2);
-      }
-
-      public i(eve $$0, tz $$1) {
-         super(ers.Z, $$1, $$0, $$1x -> a(dri.valueOf($$1.l("Mi")), dsz.valueOf($$1.l("Rot"))));
-      }
-
-      @Override
-      protected alg b() {
-         return a(this.a);
-      }
-
-      private static alg a(String $$0) {
-         return alg.b("woodland_mansion/" + $$0);
-      }
-
-      private static euz a(dri $$0, dsz $$1) {
-         return new euz().a(true).a($$1).a($$0).a(eue.b);
-      }
-
-      @Override
-      protected void a(err $$0, tz $$1) {
-         super.a($$0, $$1);
-         $$1.a("Rot", this.c.d().name());
-         $$1.a("Mi", this.c.c().name());
-      }
-
-      @Override
-      protected void a(String $$0, iu $$1, djr $$2, azv $$3, eqt $$4) {
-         if ($$0.startsWith("Chest")) {
-            dsz $$5 = this.c.d();
-            eah $$6 = dmh.cG.m();
-            if ("ChestWest".equals($$0)) {
-               $$6 = $$6.b(dnj.c, $$5.a(ja.e));
-            } else if ("ChestEast".equals($$0)) {
-               $$6 = $$6.b(dnj.c, $$5.a(ja.f));
-            } else if ("ChestSouth".equals($$0)) {
-               $$6 = $$6.b(dnj.c, $$5.a(ja.d));
-            } else if ("ChestNorth".equals($$0)) {
-               $$6 = $$6.b(dnj.c, $$5.a(ja.c));
-            }
-
-            this.a($$2, $$4, $$3, $$1, ezd.C, $$6);
+   private static int a(azv $$0, ecm $$1, etw.b $$2, boolean $$3, int $$4, int $$5, era $$6, djj $$7, ehb $$8) {
+      int $$9 = $$7.G_() + 15;
+      int $$10;
+      if ($$2 == etw.b.f) {
+         if ($$3) {
+            $$10 = azm.b($$0, 32, 100);
+         } else if ($$0.i() < 0.5F) {
+            $$10 = azm.b($$0, 27, 29);
          } else {
-            List<bxg> $$7 = new ArrayList<>();
-            switch ($$0) {
-               case "Mage":
-                  $$7.add(bwo.S.a($$2.a(), bwn.d));
-                  break;
-               case "Warrior":
-                  $$7.add(bwo.bE.a($$2.a(), bwn.d));
-                  break;
-               case "Group of Allays":
-                  int $$8 = $$2.C_().a(3) + 1;
+            $$10 = azm.b($$0, 29, 100);
+         }
+      } else if ($$2 == etw.b.d) {
+         int $$13 = $$4 - $$5;
+         $$10 = a($$0, 70, $$13);
+      } else if ($$2 == etw.b.e) {
+         int $$15 = $$4 - $$5;
+         $$10 = a($$0, $$9, $$15);
+      } else if ($$2 == etw.b.b) {
+         $$10 = $$4 - $$5 + azm.b($$0, 2, 8);
+      } else {
+         $$10 = $$4;
+      }
 
-                  for (int $$9 = 0; $$9 < $$8; $$9++) {
-                     $$7.add(bwo.c.a($$2.a(), bwn.d));
-                  }
-                  break;
-               default:
-                  return;
-            }
+      List<iv> $$19 = ImmutableList.of(new iv($$6.h(), 0, $$6.j()), new iv($$6.k(), 0, $$6.j()), new iv($$6.h(), 0, $$6.m()), new iv($$6.k(), 0, $$6.m()));
+      List<djt> $$20 = $$19.stream().map($$3x -> $$1.a($$3x.u(), $$3x.w(), $$7, $$8)).collect(Collectors.toList());
+      egn.a $$21 = $$2 == etw.b.c ? egn.a.c : egn.a.a;
 
-            for (bxg $$10 : $$7) {
-               if ($$10 != null) {
-                  $$10.fZ();
-                  $$10.a($$1, 0.0F, 0.0F);
-                  $$10.a($$2, $$2.d_($$10.dv()), bwn.d, null);
-                  $$2.a_($$10);
-                  $$2.a($$1, dmh.a.m(), 2);
+      int $$22;
+      for ($$22 = $$10; $$22 > $$9; $$22--) {
+         int $$23 = 0;
+
+         for (djt $$24 : $$20) {
+            eao $$25 = $$24.a($$22);
+            if ($$21.e().test($$25)) {
+               if (++$$23 == 3) {
+                  return $$22;
                }
             }
          }
+      }
+
+      return $$22;
+   }
+
+   private static int a(azv $$0, int $$1, int $$2) {
+      return $$1 < $$2 ? azm.b($$0, $$1, $$2) : $$2;
+   }
+
+   @Override
+   public err<?> e() {
+      return err.l;
+   }
+
+   public static record a(etw.b b, float c, float d, boolean e, boolean f, boolean g, boolean h, float i) {
+      public static final Codec<etx.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  etw.b.g.fieldOf("placement").forGetter(etx.a::a),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("air_pocket_probability").forGetter(etx.a::b),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("mossiness").forGetter(etx.a::c),
+                  Codec.BOOL.fieldOf("overgrown").forGetter(etx.a::d),
+                  Codec.BOOL.fieldOf("vines").forGetter(etx.a::e),
+                  Codec.BOOL.fieldOf("can_be_cold").forGetter(etx.a::f),
+                  Codec.BOOL.fieldOf("replace_with_blackstone").forGetter(etx.a::g),
+                  ayu.o.fieldOf("weight").forGetter(etx.a::h)
+               )
+               .apply($$0, etx.a::new)
+      );
+
+      public etw.b a() {
+         return this.b;
+      }
+
+      public float b() {
+         return this.c;
+      }
+
+      public float c() {
+         return this.d;
+      }
+
+      public boolean d() {
+         return this.e;
+      }
+
+      public boolean e() {
+         return this.f;
+      }
+
+      public boolean f() {
+         return this.g;
+      }
+
+      public boolean g() {
+         return this.h;
+      }
+
+      public float h() {
+         return this.i;
       }
    }
 }

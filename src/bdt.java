@@ -1,56 +1,50 @@
-import com.google.common.collect.Streams;
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
 import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.OptionalDynamic;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
 
 public class bdt extends DataFix {
-   private final String a;
+   private static final List<String> a = List.of("feet", "legs", "chest", "head");
+   private static final List<String> b = List.of("mainhand", "offhand");
+   private static final float c = 0.085F;
 
-   public bdt(Schema $$0, String $$1) {
+   public bdt(Schema $$0) {
       super($$0, false);
-      this.a = $$1;
    }
 
-   private <T> Dynamic<T> a(Dynamic<T> $$0) {
-      $$0 = $$0.update("front_text", bdt::b);
-      $$0 = $$0.update("back_text", bdt::b);
+   protected TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped("DropChancesFormatFix", this.getInputSchema().getType(biz.D), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
+            List<Float> $$1 = a($$0x.get("ArmorDropChances"));
+            List<Float> $$2 = a($$0x.get("HandDropChances"));
+            float $$3 = $$0x.get("body_armor_drop_chance").asNumber().result().map(Number::floatValue).orElse(0.085F);
+            $$0x = $$0x.remove("ArmorDropChances").remove("HandDropChances").remove("body_armor_drop_chance");
+            Dynamic<?> $$4 = $$0x.emptyMap();
+            $$4 = a($$4, $$1, a);
+            $$4 = a($$4, $$2, b);
+            if ($$3 != 0.085F) {
+               $$4 = $$4.set("body", $$0x.createFloat($$3));
+            }
 
-      for (String $$1 : bcl.a) {
-         $$0 = $$0.remove($$1);
+            return !$$4.equals($$0x.emptyMap()) ? $$0x.set("drop_chances", $$4) : $$0x;
+         }));
+   }
+
+   private static Dynamic<?> a(Dynamic<?> $$0, List<Float> $$1, List<String> $$2) {
+      for (int $$3 = 0; $$3 < $$2.size() && $$3 < $$1.size(); $$3++) {
+         String $$4 = $$2.get($$3);
+         float $$5 = $$1.get($$3);
+         if ($$5 != 0.085F) {
+            $$0 = $$0.set($$4, $$0.createFloat($$5));
+         }
       }
 
       return $$0;
    }
 
-   private static <T> Dynamic<T> b(Dynamic<T> $$0) {
-      Optional<Stream<Dynamic<T>>> $$1 = $$0.get("filtered_messages").asStreamOpt().result();
-      if ($$1.isEmpty()) {
-         return $$0;
-      } else {
-         Dynamic<T> $$2 = bbe.a($$0.getOps());
-         List<Dynamic<T>> $$3 = $$0.get("messages").asStreamOpt().result().orElse(Stream.of()).toList();
-         List<Dynamic<T>> $$4 = Streams.mapWithIndex($$1.get(), ($$2x, $$3x) -> {
-            Dynamic<T> $$4x = $$3x < (long)$$3.size() ? $$3.get((int)$$3x) : $$2;
-            return $$2x.equals($$2) ? $$4x : $$2x;
-         }).toList();
-         return $$4.equals($$3) ? $$0.remove("filtered_messages") : $$0.set("filtered_messages", $$0.createList($$4.stream()));
-      }
-   }
-
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bix.s);
-      Type<?> $$1 = this.getInputSchema().getChoiceType(bix.s, this.a);
-      OpticFinder<?> $$2 = DSL.namedChoice(this.a, $$1);
-      return this.fixTypeEverywhereTyped("DropInvalidSignDataFix for " + this.a, $$0, $$2x -> $$2x.updateTyped($$2, $$1, $$1xx -> {
-            boolean $$2xx = ((Dynamic)$$1xx.get(DSL.remainderFinder())).get("_filtered_correct").asBoolean(false);
-            return $$2xx ? $$1xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.remove("_filtered_correct")) : af.a($$1xx, $$1, this::a);
-         }));
+   private static List<Float> a(OptionalDynamic<?> $$0) {
+      return $$0.asStream().map($$0x -> $$0x.asFloat(0.085F)).toList();
    }
 }

@@ -1,86 +1,60 @@
-import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
-
 public class bwh {
-   private final Map<bwg, List<feq>> a;
+   private static final float a = (float) (Math.PI / 12);
+   private static final float b = (float) (-Math.PI / 12);
+   private float c;
+   private float d;
+   private float e;
+   private float f;
+   private float g;
+   private float h;
+   private final bxj i;
 
-   bwh(Map<bwg, List<feq>> $$0) {
-      this.a = $$0;
+   public bwh(bxj $$0) {
+      this.i = $$0;
    }
 
-   public static bwh a(float $$0, float $$1) {
-      return a().a($$0, $$1);
-   }
-
-   public static bwh.a a() {
-      return new bwh.a();
-   }
-
-   public bwh a(float $$0, float $$1, float $$2) {
-      return new bwh(af.a(bwg.class, $$3 -> {
-         List<feq> $$4 = new ArrayList<>();
-
-         for (feq $$5 : this.a.get($$3)) {
-            $$4.add($$5.d((double)$$0, (double)$$1, (double)$$2));
+   public void a() {
+      this.f = this.c;
+      this.g = this.d;
+      this.h = this.e;
+      float $$3;
+      float $$4;
+      float $$5;
+      if (this.i.fI()) {
+         float $$0 = 1.0F;
+         fex $$1 = this.i.dx();
+         if ($$1.e < 0.0) {
+            fex $$2 = $$1.d();
+            $$0 = 1.0F - (float)Math.pow(-$$2.e, 1.5);
          }
 
-         return $$4;
-      }));
-   }
-
-   @Nullable
-   public feq a(bwg $$0, int $$1, float $$2) {
-      List<feq> $$3 = this.a.get($$0);
-      return $$1 >= 0 && $$1 < $$3.size() ? a($$3.get($$1), $$2) : null;
-   }
-
-   public feq b(bwg $$0, int $$1, float $$2) {
-      feq $$3 = this.a($$0, $$1, $$2);
-      if ($$3 == null) {
-         throw new IllegalStateException("Had no attachment point of type: " + $$0 + " for index: " + $$1);
+         $$3 = azm.h($$0, (float) (Math.PI / 12), (float) (Math.PI / 9));
+         $$4 = azm.h($$0, (float) (-Math.PI / 12), (float) (-Math.PI / 2));
+         $$5 = 0.0F;
+      } else if (this.i.cg()) {
+         $$3 = (float) (Math.PI * 2.0 / 9.0);
+         $$4 = (float) (-Math.PI / 4);
+         $$5 = 0.08726646F;
       } else {
-         return $$3;
+         $$3 = (float) (Math.PI / 12);
+         $$4 = (float) (-Math.PI / 12);
+         $$5 = 0.0F;
       }
+
+      this.c = this.c + ($$3 - this.c) * 0.3F;
+      this.d = this.d + ($$5 - this.d) * 0.3F;
+      this.e = this.e + ($$4 - this.e) * 0.3F;
    }
 
-   public feq c(bwg $$0, int $$1, float $$2) {
-      List<feq> $$3 = this.a.get($$0);
-      if ($$3.isEmpty()) {
-         throw new IllegalStateException("Had no attachment points of type: " + $$0);
-      } else {
-         feq $$4 = $$3.get(azm.a($$1, 0, $$3.size() - 1));
-         return a($$4, $$2);
-      }
+   public float a(float $$0) {
+      return azm.h($$0, this.f, this.c);
    }
 
-   private static feq a(feq $$0, float $$1) {
-      return $$0.b(-$$1 * (float) (Math.PI / 180.0));
+   public float b(float $$0) {
+      return azm.h($$0, this.g, this.d);
    }
 
-   public static class a {
-      private final Map<bwg, List<feq>> a = new EnumMap<>(bwg.class);
-
-      a() {
-      }
-
-      public bwh.a a(bwg $$0, float $$1, float $$2, float $$3) {
-         return this.a($$0, new feq((double)$$1, (double)$$2, (double)$$3));
-      }
-
-      public bwh.a a(bwg $$0, feq $$1) {
-         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>(1)).add($$1);
-         return this;
-      }
-
-      public bwh a(float $$0, float $$1) {
-         Map<bwg, List<feq>> $$2 = af.a(bwg.class, $$2x -> {
-            List<feq> $$3 = this.a.get($$2x);
-            return $$3 == null ? $$2x.a($$0, $$1) : List.copyOf($$3);
-         });
-         return new bwh($$2);
-      }
+   public float c(float $$0) {
+      return azm.h($$0, this.h, this.e);
    }
 }

@@ -1,7 +1,4 @@
-public class hds extends hdn {
-   public cjl.a a;
-
-   public hds() {
-      this.a = cjl.a.a;
-   }
+public class hds extends hdr {
+   public fex[] a = new fex[0];
+   public boolean n;
 }

@@ -7,6 +7,7 @@ public class sy {
    private final Collection<sq> b = Lists.newCopyOnWriteArrayList();
    @Nullable
    private sv c;
+   private sy.a d = sy.a.a;
 
    private sy() {
    }
@@ -16,16 +17,20 @@ public class sy {
    }
 
    public void a() {
-      this.b.clear();
-      if (this.c != null) {
-         this.c.c();
-         this.c = null;
+      if (this.d != sy.a.a) {
+         this.d = sy.a.c;
+      } else {
+         this.b.clear();
+         if (this.c != null) {
+            this.c.c();
+            this.c = null;
+         }
       }
    }
 
    public void a(sv $$0) {
       if (this.c != null) {
-         af.b("The runner was already set in GameTestTicker");
+         ag.b("The runner was already set in GameTestTicker");
       }
 
       this.c = $$0;
@@ -33,8 +38,20 @@ public class sy {
 
    public void b() {
       if (this.c != null) {
-         this.b.forEach($$0 -> $$0.a(this.c));
+         this.d = sy.a.b;
+         this.b.forEach($$0x -> $$0x.a(this.c));
          this.b.removeIf(sq::k);
+         sy.a $$0 = this.d;
+         this.d = sy.a.a;
+         if ($$0 == sy.a.c) {
+            this.a();
+         }
       }
+   }
+
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

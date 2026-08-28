@@ -1,25 +1,28 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
-public class eyi extends eya {
-   private static final int c = -1;
-   public static final Codec<eyi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.INT.optionalFieldOf("map", -1).forGetter($$0x -> $$0x.d)).apply($$0, eyi::new)
-   );
-   public static final eyb<eyi> b = new eyb<>("idcounts", eyi::new, a, bbb.k);
-   private int d;
-
-   public eyi() {
-      this(-1);
+public record eyi<T extends eyh>(String a, Function<eyh.a, T> b, Function<eyh.a, Codec<T>> c, bbb d) {
+   public eyi(String $$0, Supplier<T> $$1, Codec<T> $$2, bbb $$3) {
+      this($$0, $$1x -> $$1.get(), $$1x -> $$2, $$3);
    }
 
-   public eyi(int $$0) {
-      this.d = $$0;
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 instanceof eyi<?> $$1 && this.a.equals($$1.a)) {
+         return true;
+      }
+
+      return false;
    }
 
-   public eyh a() {
-      eyh $$0 = new eyh(++this.d);
-      this.f();
-      return $$0;
+   @Override
+   public int hashCode() {
+      return this.a.hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "SavedDataType[" + this.a + "]";
    }
 }

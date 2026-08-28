@@ -1,129 +1,43 @@
-public class ggh extends gfy<hda> {
-   public static final gjl a = gjl.scaling(2.35F);
-   private static final float[] b = new float[]{1.75F, 0.25F, 0.0F, 0.0F, 0.5F, 0.5F, 0.5F, 0.5F, 1.25F, 0.75F, 0.0F, 0.0F};
-   private static final float[] c = new float[]{0.0F, 0.0F, 0.0F, 0.0F, 0.25F, 1.75F, 1.25F, 0.75F, 0.0F, 0.0F, 0.0F, 0.0F};
-   private static final float[] d = new float[]{0.0F, 0.0F, 0.25F, 1.75F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.75F, 1.25F};
-   private static final float[] e = new float[]{0.0F, 0.0F, 8.0F, -8.0F, -8.0F, 8.0F, 8.0F, -8.0F, 0.0F, 0.0F, 8.0F, -8.0F};
-   private static final float[] f = new float[]{-8.0F, -8.0F, -8.0F, -8.0F, 0.0F, 0.0F, 0.0F, 0.0F, 8.0F, 8.0F, 8.0F, 8.0F};
-   private static final float[] g = new float[]{8.0F, -8.0F, 0.0F, 0.0F, -8.0F, -8.0F, 8.0F, 8.0F, 8.0F, -8.0F, 0.0F, 0.0F};
-   private static final String i = "eye";
-   private static final String j = "tail0";
-   private static final String k = "tail1";
-   private static final String l = "tail2";
-   private final gjc m;
-   private final gjc n;
-   private final gjc[] o = new gjc[12];
-   private final gjc[] p;
+import org.joml.Quaternionf;
 
-   public ggh(gjc $$0) {
+public class ggh extends ggk<hcw> {
+   private static final String e = "outer_glass";
+   private static final String f = "inner_glass";
+   private static final String g = "base";
+   private static final float i = (float)Math.sin(Math.PI / 4);
+   public final gjo a;
+   public final gjo b;
+   public final gjo c;
+   public final gjo d;
+
+   public ggh(gjo $$0) {
       super($$0);
-      this.m = $$0.b("head");
-
-      for (int $$1 = 0; $$1 < this.o.length; $$1++) {
-         this.o[$$1] = this.m.b(a($$1));
-      }
-
-      this.n = this.m.b("eye");
-      this.p = new gjc[3];
-      this.p[0] = this.m.b("tail0");
-      this.p[1] = this.p[0].b("tail1");
-      this.p[2] = this.p[1].b("tail2");
+      this.a = $$0.b("base");
+      this.b = $$0.b("outer_glass");
+      this.c = this.b.b("inner_glass");
+      this.d = this.c.b("cube");
    }
 
-   private static String a(int $$0) {
-      return "spike" + $$0;
+   public static gju a() {
+      gjw $$0 = new gjw();
+      gjy $$1 = $$0.a();
+      float $$2 = 0.875F;
+      gjt $$3 = gjt.c().a(0, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F);
+      gjy $$4 = $$1.a("outer_glass", $$3, gjq.a(0.0F, 24.0F, 0.0F));
+      gjy $$5 = $$4.a("inner_glass", $$3, gjq.a.a(0.875F));
+      $$5.a("cube", gjt.c().a(32, 0).a(-4.0F, -4.0F, -4.0F, 8.0F, 8.0F, 8.0F), gjq.a.a(0.765625F));
+      $$1.a("base", gjt.c().a(0, 16).a(-6.0F, 0.0F, -6.0F, 12.0F, 4.0F, 12.0F), gjq.a);
+      return gju.a($$0, 64, 32);
    }
 
-   public static gji a() {
-      gjk $$0 = new gjk();
-      gjm $$1 = $$0.a();
-      gjm $$2 = $$1.a(
-         "head",
-         gjh.c()
-            .a(0, 0)
-            .a(-6.0F, 10.0F, -8.0F, 12.0F, 12.0F, 16.0F)
-            .a(0, 28)
-            .a(-8.0F, 10.0F, -6.0F, 2.0F, 12.0F, 12.0F)
-            .a(0, 28)
-            .a(6.0F, 10.0F, -6.0F, 2.0F, 12.0F, 12.0F, true)
-            .a(16, 40)
-            .a(-6.0F, 8.0F, -6.0F, 12.0F, 2.0F, 12.0F)
-            .a(16, 40)
-            .a(-6.0F, 22.0F, -6.0F, 12.0F, 2.0F, 12.0F),
-         gje.a
-      );
-      gjh $$3 = gjh.c().a(0, 0).a(-1.0F, -4.5F, -1.0F, 2.0F, 9.0F, 2.0F);
-
-      for (int $$4 = 0; $$4 < 12; $$4++) {
-         float $$5 = b($$4, 0.0F, 0.0F);
-         float $$6 = c($$4, 0.0F, 0.0F);
-         float $$7 = d($$4, 0.0F, 0.0F);
-         float $$8 = (float) Math.PI * b[$$4];
-         float $$9 = (float) Math.PI * c[$$4];
-         float $$10 = (float) Math.PI * d[$$4];
-         $$2.a(a($$4), $$3, gje.a($$5, $$6, $$7, $$8, $$9, $$10));
-      }
-
-      $$2.a("eye", gjh.c().a(8, 0).a(-1.0F, 15.0F, 0.0F, 2.0F, 2.0F, 1.0F), gje.a(0.0F, 0.0F, -8.25F));
-      gjm $$11 = $$2.a("tail0", gjh.c().a(40, 0).a(-2.0F, 14.0F, 7.0F, 4.0F, 4.0F, 8.0F), gje.a);
-      gjm $$12 = $$11.a("tail1", gjh.c().a(0, 54).a(0.0F, 14.0F, 0.0F, 3.0F, 3.0F, 7.0F), gje.a(-1.5F, 0.5F, 14.0F));
-      $$12.a("tail2", gjh.c().a(41, 32).a(0.0F, 14.0F, 0.0F, 2.0F, 2.0F, 6.0F).a(25, 19).a(1.0F, 10.5F, 3.0F, 1.0F, 9.0F, 9.0F), gje.a(0.5F, 0.5F, 6.0F));
-      return gji.a($$0, 64, 64);
-   }
-
-   public static gji b() {
-      return a().a(a);
-   }
-
-   public void a(hda $$0) {
+   public void a(hcw $$0) {
       super.a($$0);
-      this.m.f = $$0.aa * (float) (Math.PI / 180.0);
-      this.m.e = $$0.ab * (float) (Math.PI / 180.0);
-      float $$1 = (1.0F - $$0.a) * 0.55F;
-      this.a($$0.u, $$1);
-      if ($$0.e != null && $$0.d != null) {
-         double $$2 = $$0.e.e - $$0.c.e;
-         if ($$2 > 0.0) {
-            this.n.c = 0.0F;
-         } else {
-            this.n.c = 1.0F;
-         }
-
-         feq $$3 = $$0.d;
-         $$3 = new feq($$3.d, 0.0, $$3.f);
-         feq $$4 = new feq($$0.c.d - $$0.e.d, 0.0, $$0.c.f - $$0.e.f).d().b((float) (Math.PI / 2));
-         double $$5 = $$3.b($$4);
-         this.n.b = azm.c((float)Math.abs($$5)) * 2.0F * (float)Math.signum($$5);
-      }
-
-      this.n.k = true;
-      float $$6 = $$0.b;
-      this.p[0].f = azm.a($$6) * (float) Math.PI * 0.05F;
-      this.p[1].f = azm.a($$6) * (float) Math.PI * 0.1F;
-      this.p[2].f = azm.a($$6) * (float) Math.PI * 0.15F;
-   }
-
-   private void a(float $$0, float $$1) {
-      for (int $$2 = 0; $$2 < 12; $$2++) {
-         this.o[$$2].b = b($$2, $$0, $$1);
-         this.o[$$2].c = c($$2, $$0, $$1);
-         this.o[$$2].d = d($$2, $$0, $$1);
-      }
-   }
-
-   private static float a(int $$0, float $$1, float $$2) {
-      return 1.0F + azm.b($$1 * 1.5F + (float)$$0) * 0.01F - $$2;
-   }
-
-   private static float b(int $$0, float $$1, float $$2) {
-      return e[$$0] * a($$0, $$1, $$2);
-   }
-
-   private static float c(int $$0, float $$1, float $$2) {
-      return 16.0F + f[$$0] * a($$0, $$1, $$2);
-   }
-
-   private static float d(int $$0, float $$1, float $$2) {
-      return g[$$0] * a($$0, $$1, $$2);
+      this.a.k = $$0.a;
+      float $$1 = $$0.u * 3.0F;
+      float $$2 = gwn.a($$0.u) * 16.0F;
+      this.b.c += $$2 / 2.0F;
+      this.b.a(a.d.rotationDegrees($$1).rotateAxis((float) (Math.PI / 3), i, 0.0F, i));
+      this.c.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), i, 0.0F, i).rotateY($$1 * (float) (Math.PI / 180.0)));
+      this.d.a(new Quaternionf().setAngleAxis((float) (Math.PI / 3), i, 0.0F, i).rotateY($$1 * (float) (Math.PI / 180.0)));
    }
 }

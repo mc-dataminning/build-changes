@@ -14,11 +14,11 @@ public abstract class bbh extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(this.a, this.getInputSchema().getType(bix.u), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
+      return this.fixTypeEverywhereTyped(this.a, this.getInputSchema().getType(biz.u), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
    }
 
    private Dynamic<?> a(Dynamic<?> $$0) {
-      Optional<String> $$1 = $$0.get("Name").asString().result().map(bks::a);
+      Optional<String> $$1 = $$0.get("Name").asString().result().map(bku::a);
       return $$1.isPresent() && this.a($$1.get()) ? $$0.update("Properties", $$1x -> this.a($$1.get(), $$1x)) : $$0;
    }
 

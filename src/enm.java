@@ -1,40 +1,49 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record enm(ji<dmf> b, ji<dmf> c, enr d, int e, int f, float g) {
-   public static final Codec<enm> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               jt.a(mg.i).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
-               jt.a(mg.i).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
-               enr.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
-               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, enm::new)
+public class enm extends enj {
+   public static final MapCodec<enm> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(btl.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, enm::new)
    );
+   private final btl b;
 
-   public ji<dmf> a() {
-      return this.b;
+   public enm(btl $$0, btl $$1, btl $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
-   public ji<dmf> b() {
-      return this.c;
+   @Override
+   protected enk<?> a() {
+      return enk.h;
    }
 
-   public enr c() {
-      return this.d;
+   @Override
+   protected void a(djn $$0, enj.b $$1, azv $$2, emt $$3, int $$4, enj.a $$5, int $$6, int $$7, int $$8) {
+      iv $$9 = $$5.a();
+      int $$10 = 0;
+
+      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
+         int $$12 = $$9.v() - $$11;
+         int $$13 = $$7 + $$5.b() + azm.d((float)$$12 / (float)$$6 * 3.5F);
+         int $$14;
+         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
+            $$14 = $$13 + 1;
+         } else {
+            $$14 = $$13;
+         }
+
+         this.a($$0, $$1, $$2, $$3, new iv($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
+         $$10 = $$13;
+      }
    }
 
-   public int d() {
-      return this.e;
+   @Override
+   public int a(azv $$0, int $$1, emt $$2) {
+      return this.b.a($$0);
    }
 
-   public int e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
+   @Override
+   protected boolean a(azv $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

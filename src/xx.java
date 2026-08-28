@@ -12,8 +12,8 @@ import javax.annotation.Nullable;
 public final class xx {
    private static final String b = "#";
    public static final Codec<xx> a = Codec.STRING.comapFlatMap(xx::a, xx::b);
-   private static final Map<n, xx> c = Stream.of(n.values())
-      .filter(n::e)
+   private static final Map<o, xx> c = Stream.of(o.values())
+      .filter(o::e)
       .collect(ImmutableMap.toImmutableMap(Function.identity(), $$0 -> new xx($$0.f(), $$0.g())));
    private static final Map<String, xx> d = c.values().stream().collect(ImmutableMap.toImmutableMap($$0 -> $$0.f, Function.identity()));
    private final int e;
@@ -65,7 +65,7 @@ public final class xx {
    }
 
    @Nullable
-   public static xx a(n $$0) {
+   public static xx a(o $$0) {
       return c.get($$0);
    }
 

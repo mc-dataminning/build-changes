@@ -1,4 +1,3 @@
-public class hdw extends hdn {
-   public float a;
-   public int b;
+public class hdw extends hdu {
+   public float d;
 }

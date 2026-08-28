@@ -1,62 +1,164 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Map.Entry;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.BiConsumer;
+import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
+import java.util.Arrays;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.function.ToIntFunction;
+import javax.annotation.Nullable;
 
-public class fqr implements mm {
-   private final mo.a d;
+public class fqr {
+   private static final int a = 256;
+   private final ThreadLocal<fqr.b> b = ThreadLocal.withInitial(fqr.b::new);
+   private final Long2ObjectLinkedOpenHashMap<fqr.a> c = new Long2ObjectLinkedOpenHashMap(256, 0.25F);
+   private final ReentrantReadWriteLock d = new ReentrantReadWriteLock();
+   private final ToIntFunction<iv> e;
 
-   public fqr(mo $$0) {
-      this.d = $$0.a(mo.b.b, "equipment");
+   public fqr(ToIntFunction<iv> $$0) {
+      this.e = $$0;
    }
 
-   private static void a(BiConsumer<alf<dhk>, hld> $$0) {
-      $$0.accept(dhl.b, hld.a().a(alg.b("leather"), true).a(alg.b("leather_overlay"), false).a(hld.d.e, hld.c.a(alg.b("leather"), true)).a());
-      $$0.accept(dhl.c, a("chainmail"));
-      $$0.accept(dhl.d, b("iron"));
-      $$0.accept(dhl.e, b("gold"));
-      $$0.accept(dhl.f, b("diamond"));
-      $$0.accept(dhl.g, hld.a().b(alg.b("turtle_scute"), false).a());
-      $$0.accept(dhl.h, a("netherite"));
-      $$0.accept(dhl.i, hld.a().a(hld.d.d, hld.c.b(alg.b("armadillo_scute"), false)).a(hld.d.d, hld.c.b(alg.b("armadillo_scute_overlay"), true)).a());
-      $$0.accept(dhl.j, hld.a().a(hld.d.c, new hld.c(alg.b("elytra"), Optional.empty(), true)).a());
-      hld.c $$1 = new hld.c(alg.b("saddle"));
-      $$0.accept(
-         dhl.k, hld.a().a(hld.d.g, $$1).a(hld.d.h, $$1).a(hld.d.i, $$1).a(hld.d.j, $$1).a(hld.d.k, $$1).a(hld.d.l, $$1).a(hld.d.n, $$1).a(hld.d.m, $$1).a()
-      );
-
-      for (Entry<cyb, alf<dhk>> $$2 : dhl.l.entrySet()) {
-         cyb $$3 = $$2.getKey();
-         alf<dhk> $$4 = $$2.getValue();
-         $$0.accept($$4, hld.a().a(hld.d.f, new hld.c(alg.b($$3.c()))).a());
+   public int a(iv $$0) {
+      int $$1 = jy.a($$0.u());
+      int $$2 = jy.a($$0.w());
+      fqr.b $$3 = this.b.get();
+      if ($$3.a != $$1 || $$3.b != $$2 || $$3.c == null || $$3.c.a()) {
+         $$3.a = $$1;
+         $$3.b = $$2;
+         $$3.c = this.b($$1, $$2);
       }
 
-      $$0.accept(dhl.m, hld.a().a(hld.d.f, new hld.c(alg.b("trader_llama"))).a());
+      int[] $$4 = $$3.c.a($$0.v());
+      int $$5 = $$0.u() & 15;
+      int $$6 = $$0.w() & 15;
+      int $$7 = $$6 << 4 | $$5;
+      int $$8 = $$4[$$7];
+      if ($$8 != -1) {
+         return $$8;
+      } else {
+         int $$9 = this.e.applyAsInt($$0);
+         $$4[$$7] = $$9;
+         return $$9;
+      }
    }
 
-   private static hld a(String $$0) {
-      return hld.a().a(alg.b($$0)).a();
-   }
+   public void a(int $$0, int $$1) {
+      try {
+         this.d.writeLock().lock();
 
-   private static hld b(String $$0) {
-      return hld.a().a(alg.b($$0)).a(hld.d.e, hld.c.a(alg.b($$0), false)).a();
-   }
-
-   @Override
-   public CompletableFuture<?> a(mk $$0) {
-      Map<alf<dhk>, hld> $$1 = new HashMap<>();
-      a(($$1x, $$2) -> {
-         if ($$1.putIfAbsent($$1x, $$2) != null) {
-            throw new IllegalStateException("Tried to register equipment asset twice for id: " + $$1x);
+         for (int $$2 = -1; $$2 <= 1; $$2++) {
+            for (int $$3 = -1; $$3 <= 1; $$3++) {
+               long $$4 = dio.c($$0 + $$2, $$1 + $$3);
+               fqr.a $$5 = (fqr.a)this.c.remove($$4);
+               if ($$5 != null) {
+                  $$5.b();
+               }
+            }
          }
-      });
-      return mm.a($$0, hld.a, this.d::a, $$1);
+      } finally {
+         this.d.writeLock().unlock();
+      }
    }
 
-   @Override
-   public String a() {
-      return "Equipment Asset Definitions";
+   public void a() {
+      try {
+         this.d.writeLock().lock();
+         this.c.values().forEach(fqr.a::b);
+         this.c.clear();
+      } finally {
+         this.d.writeLock().unlock();
+      }
+   }
+
+   private fqr.a b(int $$0, int $$1) {
+      long $$2 = dio.c($$0, $$1);
+      this.d.readLock().lock();
+
+      try {
+         fqr.a $$3 = (fqr.a)this.c.get($$2);
+         if ($$3 != null) {
+            return $$3;
+         }
+      } finally {
+         this.d.readLock().unlock();
+      }
+
+      this.d.writeLock().lock();
+
+      fqr.a $$5;
+      try {
+         fqr.a $$4 = (fqr.a)this.c.get($$2);
+         if ($$4 == null) {
+            $$5 = new fqr.a();
+            if (this.c.size() >= 256) {
+               fqr.a $$6 = (fqr.a)this.c.removeFirst();
+               if ($$6 != null) {
+                  $$6.b();
+               }
+            }
+
+            this.c.put($$2, $$5);
+            return $$5;
+         }
+
+         $$5 = $$4;
+      } finally {
+         this.d.writeLock().unlock();
+      }
+
+      return $$5;
+   }
+
+   static class a {
+      private final Int2ObjectArrayMap<int[]> a = new Int2ObjectArrayMap(16);
+      private final ReentrantReadWriteLock b = new ReentrantReadWriteLock();
+      private static final int c = azm.h(16);
+      private volatile boolean d;
+
+      public int[] a(int $$0) {
+         this.b.readLock().lock();
+
+         try {
+            int[] $$1 = (int[])this.a.get($$0);
+            if ($$1 != null) {
+               return $$1;
+            }
+         } finally {
+            this.b.readLock().unlock();
+         }
+
+         this.b.writeLock().lock();
+
+         int[] var12;
+         try {
+            var12 = (int[])this.a.computeIfAbsent($$0, $$0x -> this.c());
+         } finally {
+            this.b.writeLock().unlock();
+         }
+
+         return var12;
+      }
+
+      private int[] c() {
+         int[] $$0 = new int[c];
+         Arrays.fill($$0, -1);
+         return $$0;
+      }
+
+      public boolean a() {
+         return this.d;
+      }
+
+      public void b() {
+         this.d = true;
+      }
+   }
+
+   static class b {
+      public int a = Integer.MIN_VALUE;
+      public int b = Integer.MIN_VALUE;
+      @Nullable
+      fqr.a c;
+
+      private b() {
+      }
    }
 }

@@ -1,32 +1,45 @@
-public class gxj extends gvb<clk, hdo, ggr> {
-   private static final alg a = alg.b("textures/entity/llama/creamy.png");
-   private static final alg j = alg.b("textures/entity/llama/white.png");
-   private static final alg k = alg.b("textures/entity/llama/brown.png");
-   private static final alg l = alg.b("textures/entity/llama/gray.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gxj(gwh.a $$0, gja $$1, gja $$2) {
-      super($$0, new ggr($$0.a($$1)), new ggr($$0.a($$2)), 0.7F);
-      this.a(new hap(this, $$0.f(), $$0.h()));
+public final class gxj extends gvj<cln, hdp, ggw> {
+   private static final Map<clu, alg> a = Maps.newEnumMap(
+      Map.of(
+         clu.a,
+         alg.b("textures/entity/horse/horse_white.png"),
+         clu.b,
+         alg.b("textures/entity/horse/horse_creamy.png"),
+         clu.c,
+         alg.b("textures/entity/horse/horse_chestnut.png"),
+         clu.d,
+         alg.b("textures/entity/horse/horse_brown.png"),
+         clu.e,
+         alg.b("textures/entity/horse/horse_black.png"),
+         clu.f,
+         alg.b("textures/entity/horse/horse_gray.png"),
+         clu.g,
+         alg.b("textures/entity/horse/horse_darkbrown.png")
+      )
+   );
+
+   public gxj(gwt.a $$0) {
+      super($$0, new ggw($$0.a(gjn.bn)), new ggw($$0.a(gjn.bq)));
+      this.a(new hav(this));
+      this.a(new hbj<>(this, $$0.h(), hlp.d.e, $$0x -> $$0x.i, new ggw($$0.a(gjn.bo)), new ggw($$0.a(gjn.br))));
+      this.a(new hbj<>(this, $$0.h(), hlp.d.j, $$0x -> $$0x.b, new ggl($$0.a(gjn.bp)), new ggl($$0.a(gjn.bs))));
    }
 
-   public alg a(hdo $$0) {
-      return switch ($$0.a) {
-         case a -> a;
-         case b -> j;
-         case c -> k;
-         case d -> l;
-      };
+   public alg a(hdp $$0) {
+      return a.get($$0.a);
    }
 
-   public hdo b() {
-      return new hdo();
+   public hdp b() {
+      return new hdp();
    }
 
-   public void a(clk $$0, hdo $$1, float $$2) {
+   public void a(cln $$0, hdp $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gE();
-      $$1.b = !$$0.n_() && $$0.t();
-      $$1.c = $$0.aj();
-      $$1.d = $$0.gu();
+      $$1.a = $$0.q();
+      $$1.h = $$0.t();
+      $$1.i = $$0.fX().v();
    }
 }

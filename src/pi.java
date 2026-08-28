@@ -1,13 +1,12 @@
 import java.util.concurrent.CompletableFuture;
 
-public class pi extends pl<ewn> {
-   public pi(mo $$0, CompletableFuture<jg.a> $$1) {
-      super($$0, mg.F, $$1, $$0x -> $$0x.k().h());
+public class pi extends pr<epj> {
+   public pi(mp $$0, CompletableFuture<jh.a> $$1) {
+      super($$0, mh.aS, $$1);
    }
 
    @Override
-   protected void a(jg.a $$0) {
-      this.a(axh.a).a(ewp.c, ewp.b);
-      this.a(axh.b).a(ewp.e, ewp.d);
+   protected void a(jh.a $$0) {
+      this.b(axg.a).a(epk.a).a(epk.b).a(epk.c).a(epk.d).a(epk.e).a(epk.f).a(epk.g).a(epk.h).a(epk.i);
    }
 }

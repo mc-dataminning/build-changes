@@ -1,69 +1,63 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class eok extends eol {
-   public static final MapCodec<eok> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ayu.m.fieldOf("tries").orElse(128).forGetter($$0x -> $$0x.b),
-               ayu.l.fieldOf("radius").orElse(2).forGetter($$0x -> $$0x.c),
-               ayu.l.fieldOf("height").orElse(1).forGetter($$0x -> $$0x.d),
-               enr.a.fieldOf("block_state_provider").forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, eok::new)
-   );
-   private final int b;
-   private final int c;
-   private final int d;
-   private final enr e;
+public class eok extends eos {
+   public static final MapCodec<eok> a = eny.a.fieldOf("provider").xmap(eok::new, $$0 -> $$0.b);
+   private final eny b;
 
-   public eok(int $$0, int $$1, int $$2, enr $$3) {
+   public eok(eny $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
    }
 
    @Override
-   protected eom<?> a() {
-      return eom.i;
+   protected eot<?> a() {
+      return eot.g;
    }
 
    @Override
-   public void a(eol.a $$0) {
-      List<iu> $$1 = eky.a($$0);
+   public void a(eos.a $$0) {
+      List<iv> $$1 = elf.a($$0);
       if (!$$1.isEmpty()) {
-         iu $$2 = $$1.getFirst();
-         int $$3 = $$2.v();
-         int $$4 = $$2.u();
-         int $$5 = $$2.u();
-         int $$6 = $$2.w();
-         int $$7 = $$2.w();
+         int $$2 = $$1.get(0).v();
+         $$1.stream().filter($$1x -> $$1x.v() == $$2).forEach($$1x -> {
+            this.a($$0, $$1x.h().f());
+            this.a($$0, $$1x.g(2).f());
+            this.a($$0, $$1x.h().e(2));
+            this.a($$0, $$1x.g(2).e(2));
 
-         for (iu $$8 : $$1) {
-            if ($$8.v() == $$3) {
-               $$4 = Math.min($$4, $$8.u());
-               $$5 = Math.max($$5, $$8.u());
-               $$6 = Math.min($$6, $$8.w());
-               $$7 = Math.max($$7, $$8.w());
+            for (int $$2x = 0; $$2x < 5; $$2x++) {
+               int $$3 = $$0.b().a(64);
+               int $$4 = $$3 % 8;
+               int $$5 = $$3 / 8;
+               if ($$4 == 0 || $$4 == 7 || $$5 == 0 || $$5 == 7) {
+                  this.a($$0, $$1x.b(-3 + $$4, 0, -3 + $$5));
+               }
             }
-         }
+         });
+      }
+   }
 
-         azv $$9 = $$0.b();
-         eqt $$10 = new eqt($$4, $$3, $$6, $$5, $$3, $$7).c(this.c, this.d, this.c);
-         iu.a $$11 = new iu.a();
-
-         for (int $$12 = 0; $$12 < this.b; $$12++) {
-            $$11.d($$9.a($$10.h(), $$10.k()), $$9.a($$10.i(), $$10.l()), $$9.a($$10.j(), $$10.m()));
-            this.a($$0, $$11);
+   private void a(eos.a $$0, iv $$1) {
+      for (int $$2 = -2; $$2 <= 2; $$2++) {
+         for (int $$3 = -2; $$3 <= 2; $$3++) {
+            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
+               this.b($$0, $$1.b($$2, 0, $$3));
+            }
          }
       }
    }
 
-   private void a(eol.a $$0, iu $$1) {
-      iu $$2 = $$1.d();
-      if ($$0.a().a($$2, $$0x -> $$0x.l() || $$0x.a(dmh.fx)) && eky.a($$0.a(), $$1)) {
-         $$0.a($$2, this.e.a($$0.b(), $$2));
+   private void b(eos.a $$0, iv $$1) {
+      for (int $$2 = 2; $$2 >= -3; $$2--) {
+         iv $$3 = $$1.b($$2);
+         if (ejt.a($$0.a(), $$3)) {
+            $$0.a($$3, this.b.a($$0.b(), $$1));
+            break;
+         }
+
+         if (!$$0.a($$3) && $$2 < 0) {
+            break;
+         }
       }
    }
 }

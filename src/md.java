@@ -1,33 +1,27 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class md implements lv {
-   private static final Codec<efl> c = efl.c
-      .validate($$0 -> $$0 instanceof eff ? DataResult.error(() -> "Entity position sources are not allowed") : DataResult.success($$0));
+public record md(fex c, int d, int e) implements lw {
    public static final MapCodec<md> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(c.fieldOf("destination").forGetter(md::b), Codec.INT.fieldOf("arrival_in_ticks").forGetter(md::c)).apply($$0, md::new)
+      $$0 -> $$0.group(fex.a.fieldOf("target").forGetter(md::b), ayu.i.fieldOf("color").forGetter(md::c), ayu.m.fieldOf("duration").forGetter(md::d))
+            .apply($$0, md::new)
    );
-   public static final yw<wj, md> b = yw.a(efl.d, md::b, yu.h, md::c, md::new);
-   private final efl d;
-   private final int e;
-
-   public md(efl $$0, int $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
+   public static final yw<wj, md> b = yw.a(fex.b, md::b, yu.g, md::c, yu.h, md::d, md::new);
 
    @Override
-   public lw<md> a() {
-      return lx.V;
+   public lx<md> a() {
+      return ly.W;
    }
 
-   public efl b() {
-      return this.d;
+   public fex b() {
+      return this.c;
    }
 
    public int c() {
+      return this.d;
+   }
+
+   public int d() {
       return this.e;
    }
 }

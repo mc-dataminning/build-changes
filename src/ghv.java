@@ -1,33 +1,43 @@
-public class ghv extends ghw {
-   protected final gjc a;
+public class ghv<T extends hdz> extends ggk<T> {
+   protected final gjo b;
+   protected final gjo c;
+   protected final gjo d;
+   protected final gjo e;
+   protected final gjo f;
+   protected final gjo g;
 
-   public ghv(gjc $$0) {
+   protected ghv(gjo $$0) {
       super($$0);
-      this.a = $$0.b("head");
+      this.b = $$0.b("head");
+      this.c = $$0.b("body");
+      this.d = $$0.b("right_hind_leg");
+      this.e = $$0.b("left_hind_leg");
+      this.f = $$0.b("right_front_leg");
+      this.g = $$0.b("left_front_leg");
    }
 
-   public static gjk a() {
-      gjk $$0 = new gjk();
-      gjm $$1 = $$0.a();
-      $$1.a("head", gjh.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gje.a);
-      return $$0;
+   public static gjw a(int $$0, gjs $$1) {
+      gjw $$2 = new gjw();
+      gjy $$3 = $$2.a();
+      $$3.a("head", gjt.c().a(0, 0).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, $$1), gjq.a(0.0F, (float)(18 - $$0), -6.0F));
+      $$3.a("body", gjt.c().a(28, 8).a(-5.0F, -10.0F, -7.0F, 10.0F, 16.0F, 8.0F, $$1), gjq.a(0.0F, (float)(17 - $$0), 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      gjt $$4 = gjt.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, (float)$$0, 4.0F, $$1);
+      $$3.a("right_hind_leg", $$4, gjq.a(-3.0F, (float)(24 - $$0), 7.0F));
+      $$3.a("left_hind_leg", $$4, gjq.a(3.0F, (float)(24 - $$0), 7.0F));
+      $$3.a("right_front_leg", $$4, gjq.a(-3.0F, (float)(24 - $$0), -5.0F));
+      $$3.a("left_front_leg", $$4, gjq.a(3.0F, (float)(24 - $$0), -5.0F));
+      return $$2;
    }
 
-   public static gji b() {
-      gjk $$0 = a();
-      gjm $$1 = $$0.a();
-      $$1.b("head").a("hat", gjh.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new gjg(0.25F)), gje.a);
-      return gji.a($$0, 64, 64);
-   }
-
-   public static gji c() {
-      gjk $$0 = a();
-      return gji.a($$0, 64, 32);
-   }
-
-   @Override
-   public void a(float $$0, float $$1, float $$2) {
-      this.a.f = $$1 * (float) (Math.PI / 180.0);
-      this.a.e = $$2 * (float) (Math.PI / 180.0);
+   public void a(T $$0) {
+      super.a($$0);
+      this.b.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.b.f = $$0.aa * (float) (Math.PI / 180.0);
+      float $$1 = $$0.ad;
+      float $$2 = $$0.ae;
+      this.d.e = azm.b($$1 * 0.6662F) * 1.4F * $$2;
+      this.e.e = azm.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.f.e = azm.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.g.e = azm.b($$1 * 0.6662F) * 1.4F * $$2;
    }
 }

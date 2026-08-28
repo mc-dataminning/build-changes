@@ -1,81 +1,61 @@
-import com.mojang.authlib.GameProfile;
-
 public class goy extends gou {
-   private feq h = feq.c;
-   private int i;
+   private final gop a;
+   private static final int b = 8;
 
-   public goy(gjz $$0, GameProfile $$1) {
-      super($$0, $$1);
-      this.ad = true;
+   protected goy(gkl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gop $$8) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$8;
+      this.B = 0.96F;
+      this.u = -0.1F;
+      this.C = true;
+      this.j *= 0.0;
+      this.k *= 0.9;
+      this.l *= 0.0;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
+      this.D *= 0.75F * $$7;
+      this.t = (int)(8.0F / azm.b(this.r, 0.5F, 1.0F) * $$7);
+      this.t = Math.max(this.t, 1);
+      this.b($$8);
+      this.n = true;
    }
 
    @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cR().a() * 10.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 1.0;
+   public gny b() {
+      return gny.b;
+   }
+
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
+
+   @Override
+   public goh.a p() {
+      return goh.a.b;
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.a);
+   }
+
+   @Override
+   public float b(float $$0) {
+      return this.D * azm.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
+
+   public static class a implements gnx<mc> {
+      private final gop a;
+
+      public a(gop $$0) {
+         this.a = $$0;
       }
 
-      $$1 *= 64.0 * cK();
-      return $$0 < $$1 * $$1;
-   }
-
-   @Override
-   public boolean b(buu $$0) {
-      return true;
-   }
-
-   @Override
-   public void h() {
-      super.h();
-      this.r(false);
-   }
-
-   @Override
-   public void k_() {
-      if (this.bR()) {
-         this.N_().e();
+      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new goy($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.5F, this.a);
       }
-
-      if (this.bl > 0) {
-         this.a(this.bl, this.bk);
-         this.bl--;
-      }
-
-      if (this.i > 0) {
-         this.j(new feq((this.h.d - this.dy().d) / (double)this.i, (this.h.e - this.dy().e) / (double)this.i, (this.h.f - this.dy().f) / (double)this.i));
-         this.i--;
-      }
-
-      this.bV = this.bW;
-      this.eZ();
-      float $$1;
-      if (this.aJ() && !this.eH()) {
-         $$1 = (float)Math.min(0.1, this.dy().i());
-      } else {
-         $$1 = 0.0F;
-      }
-
-      this.bW = this.bW + ($$1 - this.bW) * 0.4F;
-
-      try (bqt $$2 = bqn.a().d("push")) {
-         this.o();
-      }
-   }
-
-   @Override
-   public void k(double $$0, double $$1, double $$2) {
-      this.h = new feq($$0, $$1, $$2);
-      this.i = this.aq().p() + 1;
-   }
-
-   @Override
-   protected void gc() {
-   }
-
-   @Override
-   public void a(abv $$0) {
-      super.a($$0);
-      this.by();
    }
 }

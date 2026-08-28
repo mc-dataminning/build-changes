@@ -1,41 +1,50 @@
-import java.util.Map;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public interface dtm {
-   int d = 1;
-   int e = 4;
-   ebh f = eax.V;
+public class dtm extends dly {
+   public static final MapCodec<dtm> a = b(dtm::new);
+   public static final ebf b = ebe.c;
+   private final btl c = bti.a(5);
 
-   default Function<eah, ffk> a(ebf<ja> $$0, ebh $$1) {
-      Map<ja, ffk> $$2 = ffh.c(dmf.a(0.0, 0.0, 0.0, 8.0, this.b(), 8.0));
-      return $$3 -> {
-         ffk $$4 = ffh.a();
-         ja $$5 = $$3.c($$0);
-         int $$6 = $$3.c($$1);
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            $$4 = ffh.a($$4, $$2.get($$5));
-            $$5 = $$5.i();
-         }
-
-         return $$4.b();
-      };
+   @Override
+   public MapCodec<dtm> a() {
+      return a;
    }
 
-   default ebh c() {
-      return f;
+   public dtm(ean.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(b, Boolean.valueOf(false)));
    }
 
-   default double b() {
-      return 1.0;
+   @Override
+   protected void a(eap.a<dmm, eao> $$0) {
+      $$0.a(b);
    }
 
-   default boolean a(eah $$0, dcw $$1, ebh $$2) {
-      return !$$1.h() && $$1.n().a($$0.b().h()) && $$0.c($$2) < 4;
+   @Override
+   protected void a(eao $$0, arq $$1, iv $$2, azv $$3) {
+      if ($$0.c(b)) {
+         $$1.a($$2, $$0.b(b, Boolean.valueOf(false)), 3);
+      }
    }
 
-   default eah a(dcw $$0, dmf $$1, ebh $$2, ebf<ja> $$3) {
-      eah $$4 = $$0.q().a_($$0.a());
-      return $$4.a($$1) ? $$4.b($$2, Integer.valueOf(Math.min(4, $$4.c($$2) + 1))) : $$1.m().b($$3, $$0.g().g());
+   @Nullable
+   @Override
+   public dxm a(iv $$0, eao $$1) {
+      return new dyw($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dxm> dxn<T> a(djh $$0, eao $$1, dxo<T> $$2) {
+      return $$0.C ? null : a($$2, dxo.L, dyw::a);
+   }
+
+   @Override
+   protected void a(eao $$0, arq $$1, iv $$2, czk $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         this.a($$1, $$2, $$3, this.c);
+      }
    }
 }

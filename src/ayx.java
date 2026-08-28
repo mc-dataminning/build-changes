@@ -23,7 +23,7 @@ public class ayx implements Closeable {
       this.c = $$0.resolveSibling($$0.getFileName().toString() + "_tmp");
 
       try {
-         this.d = af.f.newFileSystem(this.c, ImmutableMap.of("create", "true"));
+         this.d = ag.f.newFileSystem(this.c, ImmutableMap.of("create", "true"));
       } catch (IOException var3) {
          throw new UncheckedIOException(var3);
       }

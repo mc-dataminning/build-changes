@@ -1,23 +1,37 @@
-public class gvd extends gvb<ckk, hbq, gen> {
-   private static final alg a = alg.b("textures/entity/armadillo.png");
+import com.google.common.collect.Sets;
+import java.util.Set;
 
-   public gvd(gwh.a $$0) {
-      super($$0, new gen($$0.a(gjb.d)), new gen($$0.a(gjb.e)), 0.4F);
+public class gvd implements guo.a {
+   private static final int a = 60;
+   private final Set<jy> b = Sets.newHashSet();
+
+   gvd() {
    }
 
-   public alg a(hbq $$0) {
-      return a;
+   @Override
+   public void a() {
+      this.b.clear();
    }
 
-   public hbq a() {
-      return new hbq();
+   public void a(jy $$0) {
+      this.b.add($$0);
    }
 
-   public void a(ckk $$0, hbq $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.x();
-      $$1.d.a($$0.bM);
-      $$1.b.a($$0.bK);
-      $$1.c.a($$0.bL);
+   public void b(jy $$0) {
+      this.b.remove($$0);
+   }
+
+   @Override
+   public void a(fjy $$0, gqm $$1, double $$2, double $$3, double $$4) {
+      iv $$5 = iv.a($$2, $$3, $$4);
+      this.b.forEach($$3x -> {
+         if ($$5.a($$3x.k(), 60.0)) {
+            a($$0, $$1, $$3x);
+         }
+      });
+   }
+
+   private static void a(fjy $$0, gqm $$1, jy $$2) {
+      guo.a($$0, $$1, $$2.k(), 0.2F, 1.0F, 0.2F, 0.15F);
    }
 }

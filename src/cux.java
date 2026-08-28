@@ -1,158 +1,31 @@
-import java.util.List;
+public class cux {
+   public static final int a = 20;
+   public static final float b = 20.0F;
+   public static final float c = 5.0F;
+   public static final float d = 2.5F;
+   public static final float e = 4.0F;
+   public static final int f = 80;
+   public static final int g = 10;
+   public static final int h = 18;
+   public static final int i = 6;
+   public static final int j = 0;
+   public static final float k = 0.1F;
+   public static final float l = 0.3F;
+   public static final float m = 0.6F;
+   public static final float n = 0.8F;
+   public static final float o = 1.0F;
+   public static final float p = 1.2F;
+   public static final float q = 6.0F;
+   public static final float r = 0.05F;
+   public static final float s = 0.2F;
+   public static final float t = 0.005F;
+   public static final float u = 0.1F;
+   public static final float v = 0.0F;
+   public static final float w = 0.0F;
+   public static final float x = 0.1F;
+   public static final float y = 0.01F;
 
-public abstract class cux extends cwk {
-   public static final int m = 0;
-   public static final int n = 1;
-   public static final int o = 2;
-   public static final int p = 3;
-   public static final int q = 4;
-   private static final int s = 3;
-   private static final int t = 30;
-   private static final int u = 30;
-   private static final int v = 39;
-   final btw w;
-   private final cvh x;
-   protected final dja r;
-   private final def<? extends dda> y;
-   private final ded z;
-   private final cwl A;
-
-   protected cux(cwe<?> $$0, def<? extends dda> $$1, alf<ded> $$2, cwl $$3, int $$4, crb $$5) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, new buk(3), new cwr(4));
-   }
-
-   protected cux(cwe<?> $$0, def<? extends dda> $$1, alf<ded> $$2, cwl $$3, int $$4, crb $$5, btw $$6, cvh $$7) {
-      super($$0, $$4);
-      this.y = $$1;
-      this.A = $$3;
-      a($$6, 3);
-      a($$7, 4);
-      this.w = $$6;
-      this.x = $$7;
-      this.r = $$5.h.dV();
-      this.z = this.r.Q().a($$2);
-      this.a(new cws($$6, 0, 56, 17));
-      this.a(new cvs(this, $$6, 1, 56, 53));
-      this.a(new cvu($$5.h, $$6, 2, 116, 35));
-      this.c($$5, 8, 84);
-      this.a($$7);
-   }
-
-   @Override
-   public void a(cri $$0) {
-      if (this.w instanceof cwx) {
-         ((cwx)this.w).fillStackedContents($$0);
-      }
-   }
-
-   public cws l() {
-      return this.k.get(2);
-   }
-
-   @Override
-   public boolean b(crc $$0) {
-      return this.w.a($$0);
-   }
-
-   @Override
-   public czd b(crc $$0, int $$1) {
-      czd $$2 = czd.k;
-      cws $$3 = this.k.get($$1);
-      if ($$3 != null && $$3.h()) {
-         czd $$4 = $$3.g();
-         $$2 = $$4.v();
-         if ($$1 == 2) {
-            if (!this.a($$4, 3, 39, true)) {
-               return czd.k;
-            }
-
-            $$3.b($$4, $$2);
-         } else if ($$1 != 1 && $$1 != 0) {
-            if (this.c($$4)) {
-               if (!this.a($$4, 0, 1, false)) {
-                  return czd.k;
-               }
-            } else if (this.d($$4)) {
-               if (!this.a($$4, 1, 2, false)) {
-                  return czd.k;
-               }
-            } else if ($$1 >= 3 && $$1 < 30) {
-               if (!this.a($$4, 30, 39, false)) {
-                  return czd.k;
-               }
-            } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
-               return czd.k;
-            }
-         } else if (!this.a($$4, 3, 39, false)) {
-            return czd.k;
-         }
-
-         if ($$4.f()) {
-            $$3.e(czd.k);
-         } else {
-            $$3.d();
-         }
-
-         if ($$4.M() == $$2.M()) {
-            return czd.k;
-         }
-
-         $$3.a($$0, $$4);
-      }
-
-      return $$2;
-   }
-
-   protected boolean c(czd $$0) {
-      return this.z.a($$0);
-   }
-
-   protected boolean d(czd $$0) {
-      return this.r.M().a($$0);
-   }
-
-   public float m() {
-      int $$0 = this.x.a(2);
-      int $$1 = this.x.a(3);
-      return $$1 != 0 && $$0 != 0 ? azm.a((float)$$0 / (float)$$1, 0.0F, 1.0F) : 0.0F;
-   }
-
-   public float n() {
-      int $$0 = this.x.a(1);
-      if ($$0 == 0) {
-         $$0 = 200;
-      }
-
-      return azm.a((float)this.x.a(0) / (float)$$0, 0.0F, 1.0F);
-   }
-
-   public boolean o() {
-      return this.x.a(0) > 0;
-   }
-
-   @Override
-   public cwl aj_() {
-      return this.A;
-   }
-
-   @Override
-   public cwk.a a(boolean $$0, boolean $$1, ddz<?> $$2, final arq $$3, crb $$4) {
-      final List<cws> $$5 = List.of(this.b(0), this.b(2));
-      return aks.a(new aks.a<dda>() {
-         @Override
-         public void a(cri $$0) {
-            cux.this.a($$0);
-         }
-
-         @Override
-         public void a() {
-            $$5.forEach($$0 -> $$0.f(czd.k));
-         }
-
-         @Override
-         public boolean a(ddz<dda> $$0) {
-            return $$0.b().a(new den(cux.this.w.a(0)), $$3);
-         }
-      }, 1, 1, List.of(this.b(0)), $$5, $$4, (ddz<dda>)$$2, $$0, $$1);
+   public static float a(int $$0, float $$1) {
+      return (float)$$0 * $$1 * 2.0F;
    }
 }

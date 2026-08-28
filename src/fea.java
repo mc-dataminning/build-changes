@@ -1,32 +1,31 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class fea implements feb<MinecraftServer> {
-   final alg a;
+public record fea(String b) implements fec {
+   public static final MapCodec<fea> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(fea::c)).apply($$0, fea::new));
 
-   public fea(alg $$0) {
-      this.a = $$0;
+   public static fec a(String $$0) {
+      return new fea($$0);
    }
 
-   public void a(MinecraftServer $$0, fed<MinecraftServer> $$1, long $$2) {
-      alv $$3 = $$0.aE();
-
-      for (hw<ei> $$5 : $$3.b(this.a)) {
-         $$3.a($$5, $$3.c());
-      }
+   @Override
+   public feb a() {
+      return fed.b;
    }
 
-   public static class a extends feb.a<MinecraftServer, fea> {
-      public a() {
-         super(alg.b("function_tag"), fea.class);
-      }
+   @Override
+   public fgb a(ezo $$0) {
+      return fgb.c(this.b);
+   }
 
-      public void a(tz $$0, fea $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
+   @Override
+   public Set<bax<?>> b() {
+      return Set.of();
+   }
 
-      public fea a(tz $$0) {
-         alg $$1 = alg.a($$0.l("Name"));
-         return new fea($$1);
-      }
+   public String c() {
+      return this.b;
    }
 }

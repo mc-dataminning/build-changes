@@ -1,29 +1,61 @@
-public class deo extends dda {
-   public deo(String $$0, ddg $$1, ddq $$2, czd $$3, float $$4, int $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
+import java.util.List;
+import java.util.Optional;
+
+public record deo<T extends deb<?>>(dfn a, Optional<deg<T>> b) {
+   public static <T extends deb<?>> yw<wj, deo<T>> a() {
+      return yw.a(dfn.b, deo::b, $$0 -> new deo<>($$0, Optional.empty()));
    }
 
-   @Override
-   protected cyz f() {
-      return czh.fk;
+   public dfn b() {
+      return this.a;
    }
 
-   @Override
-   public dee<deo> a() {
-      return dee.o;
+   public Optional<deg<T>> c() {
+      return this.b;
    }
 
-   @Override
-   public def<deo> b() {
-      return def.b;
+   public static record a<T extends deb<?>>(ddx a, deo<T> b) {
+
+      public static <T extends deb<?>> yw<wj, deo.a<T>> a() {
+         return yw.a(ddx.a, deo.a::b, deo.a(), deo.a::c, deo.a::new);
+      }
+
+      public ddx b() {
+         return this.a;
+      }
+
+      public deo<T> c() {
+         return this.b;
+      }
    }
 
-   @Override
-   public ddx h() {
-      return switch (this.e()) {
-         case b -> ddw.f;
-         case a -> ddw.e;
-         case c -> ddw.g;
-      };
+   public static record b<T extends deb<?>>(List<deo.a<T>> a) {
+      public static <T extends deb<?>> deo.b<T> a() {
+         return new deo.b<>(List.of());
+      }
+
+      public static <T extends deb<?>> yw<wj, deo.b<T>> b() {
+         return yw.a(deo.a.<T>a().a(yu.a()), deo.b::e, deo.b::new);
+      }
+
+      public boolean a(czk $$0) {
+         return this.a.stream().anyMatch($$1 -> $$1.a.a($$0));
+      }
+
+      public deo.b<T> b(czk $$0) {
+         return new deo.b<>(this.a.stream().filter($$1 -> $$1.a.a($$0)).toList());
+      }
+
+      public boolean c() {
+         return this.a.isEmpty();
+      }
+
+      public int d() {
+         return this.a.size();
+      }
+
+      public List<deo.a<T>> e() {
+         return this.a;
+      }
    }
 }

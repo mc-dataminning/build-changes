@@ -1,28 +1,36 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public class fcu implements fcq {
-   private static final fcu b = new fcu();
-   public static final MapCodec<fcu> a = MapCodec.unit(b);
-
-   private fcu() {
-   }
+public record fcu(fcx b) implements fcx {
+   public static final MapCodec<fcu> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(fcx.e.fieldOf("term").forGetter(fcu::c)).apply($$0, fcu::new));
 
    @Override
-   public fcr b() {
-      return fcs.g;
+   public fcy b() {
+      return fcz.a;
+   }
+
+   public boolean a(ezo $$0) {
+      return !this.b.test($$0);
    }
 
    @Override
    public Set<bax<?>> a() {
-      return Set.of(fcb.b);
+      return this.b.a();
    }
 
-   public boolean a(ezh $$0) {
-      return $$0.a(fcb.b);
+   @Override
+   public void a(ezu $$0) {
+      fcx.super.a($$0);
+      this.b.a($$0);
    }
 
-   public static fcq.a c() {
-      return () -> b;
+   public static fcx.a a(fcx.a $$0) {
+      fcu $$1 = new fcu($$0.build());
+      return () -> $$1;
+   }
+
+   public fcx c() {
+      return this.b;
    }
 }

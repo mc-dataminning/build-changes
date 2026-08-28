@@ -1,44 +1,40 @@
-import java.util.Set;
+public class ggg extends ggk<hdq> {
+   public static final gjx a = gjx.scaling(0.5F);
+   private final gjo b;
+   private final gjo c;
 
-public class ggg extends ghj<hcz> {
-   public static final gjl a = new get(true, 19.0F, 1.0F, 2.5F, 2.0F, 24.0F, Set.of("head"));
-
-   public ggg(gjc $$0) {
+   public ggg(gjo $$0) {
       super($$0);
+      this.c = $$0.b("left_wing");
+      this.b = $$0.b("right_wing");
    }
 
-   public static gji a() {
-      gjk $$0 = new gjk();
-      gjm $$1 = $$0.a();
-      gjm $$2 = $$1.a(
-         "head",
-         gjh.c()
-            .a(2, 61)
-            .a("right ear", -6.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .a(2, 61)
-            .a()
-            .a("left ear", 2.0F, -11.0F, -10.0F, 3.0F, 2.0F, 1.0F)
-            .a(23, 52)
-            .a("goatee", -0.5F, -3.0F, -14.0F, 0.0F, 7.0F, 5.0F),
-         gje.a(1.0F, 14.0F, 0.0F)
+   public static gju a() {
+      gjw $$0 = new gjw();
+      gjy $$1 = $$0.a();
+      gjs $$2 = new gjs(1.0F);
+      $$1.a(
+         "left_wing",
+         gjt.c().a(22, 0).a(-10.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
+         gjq.a(5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (-Math.PI / 12))
       );
-      $$2.a("left_horn", gjh.c().a(12, 55).a(-0.01F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), gje.a(0.0F, 0.0F, 0.0F));
-      $$2.a("right_horn", gjh.c().a(12, 55).a(-2.99F, -16.0F, -10.0F, 2.0F, 7.0F, 2.0F), gje.a(0.0F, 0.0F, 0.0F));
-      $$2.a("nose", gjh.c().a(34, 46).a(-3.0F, -4.0F, -8.0F, 5.0F, 7.0F, 10.0F), gje.a(0.0F, -8.0F, -8.0F, 0.9599F, 0.0F, 0.0F));
-      $$1.a("body", gjh.c().a(1, 1).a(-4.0F, -17.0F, -7.0F, 9.0F, 11.0F, 16.0F).a(0, 28).a(-5.0F, -18.0F, -8.0F, 11.0F, 14.0F, 11.0F), gje.a(0.0F, 24.0F, 0.0F));
-      $$1.a("left_hind_leg", gjh.c().a(36, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), gje.a(1.0F, 14.0F, 4.0F));
-      $$1.a("right_hind_leg", gjh.c().a(49, 29).a(0.0F, 4.0F, 0.0F, 3.0F, 6.0F, 3.0F), gje.a(-3.0F, 14.0F, 4.0F));
-      $$1.a("left_front_leg", gjh.c().a(49, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), gje.a(1.0F, 14.0F, -6.0F));
-      $$1.a("right_front_leg", gjh.c().a(35, 2).a(0.0F, 0.0F, 0.0F, 3.0F, 10.0F, 3.0F), gje.a(-3.0F, 14.0F, -6.0F));
-      return gji.a($$0, 64, 64);
+      $$1.a(
+         "right_wing",
+         gjt.c().a(22, 0).a().a(0.0F, 0.0F, 0.0F, 10.0F, 20.0F, 2.0F, $$2),
+         gjq.a(-5.0F, 0.0F, 0.0F, (float) (Math.PI / 12), 0.0F, (float) (Math.PI / 12))
+      );
+      return gju.a($$0, 64, 32);
    }
 
-   public void a(hcz $$0) {
+   public void a(hdq $$0) {
       super.a($$0);
-      this.b.b("left_horn").k = $$0.a;
-      this.b.b("right_horn").k = $$0.b;
-      if ($$0.c != 0.0F) {
-         this.b.e = $$0.c;
-      }
+      this.c.c = $$0.N ? 3.0F : 0.0F;
+      this.c.e = $$0.S;
+      this.c.g = $$0.U;
+      this.c.f = $$0.T;
+      this.b.f = -this.c.f;
+      this.b.c = this.c.c;
+      this.b.e = this.c.e;
+      this.b.g = -this.c.g;
    }
 }

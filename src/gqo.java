@@ -1,63 +1,81 @@
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Optional;
 
-public class gqo {
-   private static final Logger a = LogUtils.getLogger();
-   private final Queue<gqn> b;
-   private volatile int c;
+public class gqo implements gqm {
+   private final gqm.a a;
+   private final gqm.a b = gqm.a(new fjv(1536));
+   private int c = 255;
+   private int d = 255;
+   private int e = 255;
+   private int f = 255;
 
-   private gqo(List<gqn> $$0) {
-      this.b = Queues.newArrayDeque($$0);
-      this.c = this.b.size();
+   public gqo(gqm.a $$0) {
+      this.a = $$0;
    }
 
-   public static gqo a(int $$0) {
-      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / gqn.a);
-      int $$2 = Math.max(1, Math.min($$0, $$1));
-      List<gqn> $$3 = new ArrayList<>($$2);
-
-      try {
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3.add(new gqn());
-         }
-      } catch (OutOfMemoryError var7) {
-         a.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
-         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            $$3.remove($$3.size() - 1).close();
-         }
-      }
-
-      return new gqo($$3);
-   }
-
-   @Nullable
-   public gqn a() {
-      gqn $$0 = this.b.poll();
-      if ($$0 != null) {
-         this.c = this.b.size();
-         return $$0;
+   @Override
+   public fkc getBuffer(gqx $$0) {
+      if ($$0.Z()) {
+         fkc $$1 = this.b.getBuffer($$0);
+         return new gqo.a($$1, this.c, this.d, this.e, this.f);
       } else {
-         return null;
+         fkc $$2 = this.a.getBuffer($$0);
+         Optional<gqx> $$3 = $$0.Y();
+         if ($$3.isPresent()) {
+            fkc $$4 = this.b.getBuffer($$3.get());
+            gqo.a $$5 = new gqo.a($$4, this.c, this.d, this.e, this.f);
+            return fkf.a($$5, $$2);
+         } else {
+            return $$2;
+         }
       }
    }
 
-   public void a(gqn $$0) {
-      this.b.add($$0);
-      this.c = this.b.size();
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public boolean b() {
-      return this.b.isEmpty();
+   public void a() {
+      this.b.b();
    }
 
-   public int c() {
-      return this.c;
+   static record a(fkc a, int b) implements fkc {
+      public a(fkc $$0, int $$1, int $$2, int $$3, int $$4) {
+         this($$0, axw.a($$4, $$1, $$2, $$3));
+      }
+
+      @Override
+      public fkc a(float $$0, float $$1, float $$2) {
+         this.a.a($$0, $$1, $$2).a(this.b);
+         return this;
+      }
+
+      @Override
+      public fkc a(int $$0, int $$1, int $$2, int $$3) {
+         return this;
+      }
+
+      @Override
+      public fkc a(float $$0, float $$1) {
+         this.a.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fkc a(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public fkc b(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public fkc b(float $$0, float $$1, float $$2) {
+         return this;
+      }
    }
 }

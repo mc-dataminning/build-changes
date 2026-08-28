@@ -1,122 +1,91 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.Map;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-public class exi extends exb {
-   private final boolean a;
-   private final Long2ObjectMap<exf> l = new Long2ObjectOpenHashMap();
+public abstract class exi {
+   protected exo b;
+   protected bxl c;
+   protected final Int2ObjectMap<exh> d = new Int2ObjectOpenHashMap();
+   protected int e;
+   protected int f;
+   protected int g;
+   protected boolean h = true;
+   protected boolean i;
+   protected boolean j;
+   protected boolean k;
 
-   public exi(boolean $$0) {
-      this.a = $$0;
+   public void a(dju $$0, bxl $$1) {
+      this.b = new exo($$0, $$1);
+      this.c = $$1;
+      this.d.clear();
+      this.e = azm.d($$1.dp() + 1.0F);
+      this.f = azm.d($$1.dq() + 1.0F);
+      this.g = azm.d($$1.dp() + 1.0F);
    }
 
-   @Override
-   public void a(djn $$0, bxg $$1) {
-      super.a($$0, $$1);
-      this.l.clear();
-   }
-
-   @Override
    public void b() {
-      super.b();
-      this.l.clear();
+      this.b = null;
+      this.c = null;
    }
 
-   @Override
-   public exa a() {
-      return this.c(azm.a(this.c.cR().a), azm.a(this.c.cR().b + 0.5), azm.a(this.c.cR().c));
+   protected exh b(iv $$0) {
+      return this.c($$0.u(), $$0.v(), $$0.w());
    }
 
-   @Override
-   public exj a(double $$0, double $$1, double $$2) {
-      return this.b($$0, $$1, $$2);
+   protected exh c(int $$0, int $$1, int $$2) {
+      return (exh)this.d.computeIfAbsent(exh.b($$0, $$1, $$2), $$3 -> new exh($$0, $$1, $$2));
    }
 
-   @Override
-   public int a(exa[] $$0, exa $$1) {
-      int $$2 = 0;
-      Map<ja, exa> $$3 = Maps.newEnumMap(ja.class);
+   public abstract exh a();
 
-      for (ja $$4 : ja.values()) {
-         exa $$5 = this.a($$1.a + $$4.j(), $$1.b + $$4.k(), $$1.c + $$4.l());
-         $$3.put($$4, $$5);
-         if (this.a($$5)) {
-            $$0[$$2++] = $$5;
-         }
-      }
+   public abstract exq a(double var1, double var3, double var5);
 
-      for (ja $$6 : ja.c.a) {
-         ja $$7 = $$6.h();
-         if (b($$3.get($$6)) && b($$3.get($$7))) {
-            exa $$8 = this.a($$1.a + $$6.j() + $$7.j(), $$1.b, $$1.c + $$6.l() + $$7.l());
-            if (this.a($$8)) {
-               $$0[$$2++] = $$8;
-            }
-         }
-      }
-
-      return $$2;
+   protected exq b(double $$0, double $$1, double $$2) {
+      return new exq(this.c(azm.a($$0), azm.a($$1), azm.a($$2)));
    }
 
-   protected boolean a(@Nullable exa $$0) {
-      return $$0 != null && !$$0.i;
+   public abstract int a(exh[] var1, exh var2);
+
+   public abstract exm a(exo var1, int var2, int var3, int var4, bxl var5);
+
+   public abstract exm a(exo var1, int var2, int var3, int var4);
+
+   public exm a(bxl $$0, iv $$1) {
+      return this.a(new exo($$0.dU(), $$0), $$1.u(), $$1.v(), $$1.w());
    }
 
-   private static boolean b(@Nullable exa $$0) {
-      return $$0 != null && $$0.k >= 0.0F;
+   public void a(boolean $$0) {
+      this.h = $$0;
    }
 
-   @Nullable
-   protected exa a(int $$0, int $$1, int $$2) {
-      exa $$3 = null;
-      exf $$4 = this.b($$0, $$1, $$2);
-      if (this.a && $$4 == exf.u || $$4 == exf.j) {
-         float $$5 = this.c.a($$4);
-         if ($$5 >= 0.0F) {
-            $$3 = this.c($$0, $$1, $$2);
-            $$3.l = $$4;
-            $$3.k = Math.max($$3.k, $$5);
-            if (this.b.a().b_(new iu($$0, $$1, $$2)).c()) {
-               $$3.k += 8.0F;
-            }
-         }
-      }
-
-      return $$3;
+   public void b(boolean $$0) {
+      this.i = $$0;
    }
 
-   protected exf b(int $$0, int $$1, int $$2) {
-      return (exf)this.l.computeIfAbsent(iu.a($$0, $$1, $$2), $$3 -> this.a(this.b, $$0, $$1, $$2));
+   public void c(boolean $$0) {
+      this.j = $$0;
    }
 
-   @Override
-   public exf a(exh $$0, int $$1, int $$2, int $$3) {
-      return this.a($$0, $$1, $$2, $$3, this.c);
+   public void d(boolean $$0) {
+      this.k = $$0;
    }
 
-   @Override
-   public exf a(exh $$0, int $$1, int $$2, int $$3, bxg $$4) {
-      iu.a $$5 = new iu.a();
+   public boolean d() {
+      return this.h;
+   }
 
-      for (int $$6 = $$1; $$6 < $$1 + this.e; $$6++) {
-         for (int $$7 = $$2; $$7 < $$2 + this.f; $$7++) {
-            for (int $$8 = $$3; $$8 < $$3 + this.g; $$8++) {
-               eah $$9 = $$0.a($$5.d($$6, $$7, $$8));
-               ewo $$10 = $$9.y();
-               if ($$10.c() && $$9.a(exd.b) && $$9.l()) {
-                  return exf.u;
-               }
+   public boolean e() {
+      return this.i;
+   }
 
-               if (!$$10.a(axh.a)) {
-                  return exf.a;
-               }
-            }
-         }
-      }
+   public boolean f() {
+      return this.j;
+   }
 
-      eah $$11 = $$0.a($$5);
-      return $$11.a(exd.b) ? exf.j : exf.a;
+   public boolean g() {
+      return this.k;
+   }
+
+   public static boolean a(eao $$0) {
+      return $$0.a(axc.aN) || $$0.a(dmo.K) || $$0.a(dmo.lp) || dnc.h($$0) || $$0.a(dmo.fU);
    }
 }

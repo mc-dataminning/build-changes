@@ -1,32 +1,75 @@
-public interface cyy {
-   int a = 256;
-   float b = 7.0F;
-   alf<cyw> c = a("ponder_goat_horn");
-   alf<cyw> d = a("sing_goat_horn");
-   alf<cyw> e = a("seek_goat_horn");
-   alf<cyw> f = a("feel_goat_horn");
-   alf<cyw> g = a("admire_goat_horn");
-   alf<cyw> h = a("call_goat_horn");
-   alf<cyw> i = a("yearn_goat_horn");
-   alf<cyw> j = a("dream_goat_horn");
+import java.util.Optional;
+import java.util.function.Consumer;
 
-   private static alf<cyw> a(String $$0) {
-      return alf.a(mg.aU, alg.b($$0));
+public class cyy extends czg {
+   private static final wy a = wy.c("painting.random").a(o.h);
+   private final bwr<? extends cng> b;
+
+   public cyy(bwr<? extends cng> $$0, czg.a $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
-   static void a(qh<cyw> $$0) {
-      a($$0, c, (je<awm>)awn.nh.get(0), 7.0F, 256.0F);
-      a($$0, d, (je<awm>)awn.nh.get(1), 7.0F, 256.0F);
-      a($$0, e, (je<awm>)awn.nh.get(2), 7.0F, 256.0F);
-      a($$0, f, (je<awm>)awn.nh.get(3), 7.0F, 256.0F);
-      a($$0, g, (je<awm>)awn.nh.get(4), 7.0F, 256.0F);
-      a($$0, h, (je<awm>)awn.nh.get(5), 7.0F, 256.0F);
-      a($$0, i, (je<awm>)awn.nh.get(6), 7.0F, 256.0F);
-      a($$0, j, (je<awm>)awn.nh.get(7), 7.0F, 256.0F);
+   @Override
+   public bug a(ddf $$0) {
+      iv $$1 = $$0.a();
+      jb $$2 = $$0.k();
+      iv $$3 = $$1.a($$2);
+      crj $$4 = $$0.o();
+      czk $$5 = $$0.n();
+      if ($$4 != null && !this.a($$4, $$2, $$5, $$3)) {
+         return bug.d;
+      } else {
+         djh $$6 = $$0.q();
+         cng $$8;
+         if (this.b == bwr.aK) {
+            Optional<cnj> $$7 = cnj.a($$6, $$3, $$2);
+            if ($$7.isEmpty()) {
+               return bug.c;
+            }
+
+            $$8 = $$7.get();
+         } else if (this.b == bwr.as) {
+            $$8 = new cnh($$6, $$3, $$2);
+         } else {
+            if (this.b != bwr.af) {
+               return bug.a;
+            }
+
+            $$8 = new cnf($$6, $$3, $$2);
+         }
+
+         bwr.<cng>a($$6, $$5, $$4).accept($$8);
+         if ($$8.g()) {
+            if (!$$6.C) {
+               $$8.v();
+               $$6.a($$4, efo.t, $$8.ds());
+               $$6.b($$8);
+            }
+
+            $$5.h(1);
+            return bug.a;
+         } else {
+            return bug.c;
+         }
+      }
    }
 
-   static void a(qh<cyw> $$0, alf<cyw> $$1, je<awm> $$2, float $$3, float $$4) {
-      xm $$5 = wy.c(af.a("instrument", $$1.a()));
-      $$0.a($$1, new cyw($$2, $$3, $$4, $$5));
+   protected boolean a(crj $$0, jb $$1, czk $$2, iv $$3) {
+      return !$$1.o().b() && $$0.a($$3, $$1, $$2);
+   }
+
+   @Override
+   public void a(czk $$0, czg.b $$1, dco $$2, Consumer<wy> $$3, daz $$4) {
+      if (this.b == bwr.aK && $$2.a(kk.aL)) {
+         jf<cnk> $$5 = $$0.a(kk.aL);
+         if ($$5 != null) {
+            $$5.a().e().ifPresent($$3);
+            $$5.a().f().ifPresent($$3);
+            $$3.accept(wy.a("painting.dimensions", $$5.a().b(), $$5.a().c()));
+         } else if ($$4.b()) {
+            $$3.accept(a);
+         }
+      }
    }
 }

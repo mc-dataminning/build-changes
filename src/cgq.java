@@ -1,41 +1,37 @@
-public class cgq extends cgo {
-   private boolean p;
-
-   public cgq(bxg $$0, dja $$1) {
+public class cgq extends cgt {
+   public cgq(bxl $$0, djh $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected exe a(int $$0) {
-      this.p = this.a.aq() == bwo.H;
-      this.o = new exi(this.p);
-      this.o.a(false);
-      return new exe(this.o, $$0);
+   protected exl a(int $$0) {
+      this.o = new exe(false);
+      return new exl(this.o, $$0);
    }
 
    @Override
    protected boolean a() {
-      return this.p || this.a.bm();
+      return true;
    }
 
    @Override
-   protected feq b() {
-      return new feq(this.a.dA(), this.a.e(0.5), this.a.dG());
+   protected fex b() {
+      return new fex(this.a.dz(), this.a.e(0.5), this.a.dF());
    }
 
    @Override
-   protected double a(feq $$0) {
+   protected double a(fex $$0) {
       return $$0.e;
    }
 
    @Override
-   protected boolean a(feq $$0, feq $$1) {
-      return a(this.a, $$0, $$1, false);
+   protected boolean a(fex $$0, fex $$1) {
+      return this.a.bk() ? a(this.a, $$0, $$1, false) : false;
    }
 
    @Override
-   public boolean a(iu $$0) {
-      return !this.b.a_($$0).s();
+   public boolean a(iv $$0) {
+      return !this.b.a_($$0.e()).l();
    }
 
    @Override

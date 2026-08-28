@@ -12,12 +12,12 @@ import joptsimple.OptionSpec;
 import net.minecraft.obfuscate.DontObfuscate;
 
 public class Main {
-   @ac(
+   @ad(
       a = "System.out needed before bootstrap"
    )
    @DontObfuscate
    public static void main(String[] $$0) throws IOException {
-      ab.a();
+      ac.a();
       OptionParser $$1 = new OptionParser();
       OptionSpec<Void> $$2 = $$1.accepts("help", "Show the help menu").forHelp();
       OptionSpec<Void> $$3 = $$1.accepts("server", "Include server generators");
@@ -35,7 +35,7 @@ public class Main {
          boolean $$13 = $$11 || $$9.has($$4);
          boolean $$14 = $$11 || $$9.has($$5);
          Collection<Path> $$15 = $$9.valuesOf($$8).stream().map($$0x -> Paths.get($$0x)).toList();
-         ml $$16 = new ml($$10, ab.b(), true);
+         mm $$16 = new mm($$10, ac.b(), true);
          a($$16, $$15, $$12, $$13, $$14);
          $$16.a();
       } else {
@@ -43,55 +43,54 @@ public class Main {
       }
    }
 
-   private static <T extends mm> mm.a<T> a(BiFunction<mo, CompletableFuture<jg.a>, T> $$0, CompletableFuture<jg.a> $$1) {
+   private static <T extends mn> mn.a<T> a(BiFunction<mp, CompletableFuture<jh.a>, T> $$0, CompletableFuture<jh.a> $$1) {
       return $$2 -> $$0.apply($$2, $$1);
    }
 
-   public static void a(ml $$0, Collection<Path> $$1, boolean $$2, boolean $$3, boolean $$4) {
-      ml.a $$5 = $$0.a($$2);
-      $$5.a($$1x -> new oz($$1x, $$1).a(new pa()));
-      CompletableFuture<jg.a> $$6 = CompletableFuture.supplyAsync(ov::a, af.h());
-      ml.a $$7 = $$0.a($$2);
-      $$7.a(a(os::new, $$6));
-      $$7.a(a(ms::a, $$6));
-      $$7.a(a(nw::a, $$6));
-      $$7.a(a(oq.a::new, $$6));
-      pq<dmf> $$8 = $$7.a(a(pt::new, $$6));
-      pq<cyz> $$9 = $$7.a($$2x -> new pv($$2x, $$6, $$8.c()));
-      pq<dkd> $$10 = $$7.a(a(pd::new, $$6));
-      pq<dwu> $$11 = $$7.a(a(pc::new, $$6));
-      pq<erb> $$12 = $$7.a(a(pp::new, $$6));
-      $$7.a(a(pe::new, $$6));
-      $$7.a(a(pg::new, $$6));
+   public static void a(mm $$0, Collection<Path> $$1, boolean $$2, boolean $$3, boolean $$4) {
+      mm.a $$5 = $$0.a($$2);
+      $$5.a($$1x -> new pa($$1x, $$1).a(new pb()));
+      CompletableFuture<jh.a> $$6 = CompletableFuture.supplyAsync(ow::a, ag.h());
+      mm.a $$7 = $$0.a($$2);
+      $$7.a(a(ot::new, $$6));
+      $$7.a(a(mt::a, $$6));
+      $$7.a(a(nx::a, $$6));
+      $$7.a(a(or.a::new, $$6));
+      pr<dmm> $$8 = $$7.a(a(pt::new, $$6));
+      pr<czg> $$9 = $$7.a($$2x -> new pv($$2x, $$6, $$8.c()));
+      pr<dkk> $$10 = $$7.a(a(pe::new, $$6));
+      pr<dxb> $$11 = $$7.a(a(pd::new, $$6));
+      pr<eri> $$12 = $$7.a(a(pq::new, $$6));
+      $$7.a(a(pf::new, $$6));
       $$7.a(a(ph::new, $$6));
       $$7.a(a(pi::new, $$6));
       $$7.a(a(pj::new, $$6));
       $$7.a(a(pk::new, $$6));
-      $$7.a(a(pn::new, $$6));
+      $$7.a(a(pl::new, $$6));
       $$7.a(a(po::new, $$6));
+      $$7.a(a(pp::new, $$6));
       $$7.a(a(pw::new, $$6));
       $$7.a(a(pu::new, $$6));
       $$7 = $$0.a($$3);
-      $$7.a($$1x -> new ox($$1x, $$1));
+      $$7.a($$1x -> new oy($$1x, $$1));
       $$7 = $$0.a($$4);
-      $$7.a(a(mz::new, $$6));
-      $$7.a(a(nd::new, $$6));
       $$7.a(a(na::new, $$6));
+      $$7.a(a(ne::new, $$6));
       $$7.a(a(nb::new, $$6));
+      $$7.a(a(nc::new, $$6));
+      $$7.a(ng::new);
       $$7.a(nf::new);
-      $$7.a(ne::new);
-      $$7.a(nc::new);
-      CompletableFuture<ju.g> $$15 = ou.a($$6);
-      CompletableFuture<jg.a> $$16 = $$15.thenApply(ju.g::b);
-      ml.a $$17 = $$0.a($$2, "trade_rebalance");
-      $$17.a(a(os::new, $$16));
-      $$17.a($$0x -> oa.a($$0x, wy.c("dataPack.trade_rebalance.description"), cum.a(cuo.b)));
-      $$17.a(a(no::a, $$6));
+      $$7.a(nd::new);
+      CompletableFuture<jv.g> $$15 = ov.a($$6);
+      CompletableFuture<jh.a> $$16 = $$15.thenApply(jv.g::b);
+      mm.a $$17 = $$0.a($$2, "trade_rebalance");
+      $$17.a(a(ot::new, $$16));
+      $$17.a($$0x -> ob.a($$0x, wy.c("dataPack.trade_rebalance.description"), cut.a(cuv.b)));
+      $$17.a(a(np::a, $$6));
       $$17.a(a(ps::new, $$6));
-      $$17.a(a(pr::new, $$6));
       $$7 = $$0.a($$2, "redstone_experiments");
-      $$7.a($$0x -> oa.a($$0x, wy.c("dataPack.redstone_experiments.description"), cum.a(cuo.c)));
+      $$7.a($$0x -> ob.a($$0x, wy.c("dataPack.redstone_experiments.description"), cut.a(cuv.c)));
       $$7 = $$0.a($$2, "minecart_improvements");
-      $$7.a($$0x -> oa.a($$0x, wy.c("dataPack.minecart_improvements.description"), cum.a(cuo.d)));
+      $$7.a($$0x -> ob.a($$0x, wy.c("dataPack.minecart_improvements.description"), cut.a(cuv.d)));
    }
 }

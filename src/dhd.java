@@ -1,78 +1,8 @@
-public interface dhd {
-   alf<dgy> a = dhe.a("trades/desert_armorer_boots_4");
-   alf<dgy> b = dhe.a("trades/desert_armorer_leggings_4");
-   alf<dgy> c = dhe.a("trades/desert_armorer_chestplate_4");
-   alf<dgy> d = dhe.a("trades/desert_armorer_helmet_4");
-   alf<dgy> e = dhe.a("trades/desert_armorer_leggings_5");
-   alf<dgy> f = dhe.a("trades/desert_armorer_chestplate_5");
-   alf<dgy> g = dhe.a("trades/plains_armorer_boots_4");
-   alf<dgy> h = dhe.a("trades/plains_armorer_leggings_4");
-   alf<dgy> i = dhe.a("trades/plains_armorer_chestplate_4");
-   alf<dgy> j = dhe.a("trades/plains_armorer_helmet_4");
-   alf<dgy> k = dhe.a("trades/plains_armorer_boots_5");
-   alf<dgy> l = dhe.a("trades/plains_armorer_leggings_5");
-   alf<dgy> m = dhe.a("trades/savanna_armorer_boots_4");
-   alf<dgy> n = dhe.a("trades/savanna_armorer_leggings_4");
-   alf<dgy> o = dhe.a("trades/savanna_armorer_chestplate_4");
-   alf<dgy> p = dhe.a("trades/savanna_armorer_helmet_4");
-   alf<dgy> q = dhe.a("trades/savanna_armorer_chestplate_5");
-   alf<dgy> r = dhe.a("trades/savanna_armorer_helmet_5");
-   alf<dgy> s = dhe.a("trades/snow_armorer_boots_4");
-   alf<dgy> t = dhe.a("trades/snow_armorer_helmet_4");
-   alf<dgy> u = dhe.a("trades/snow_armorer_boots_5");
-   alf<dgy> v = dhe.a("trades/snow_armorer_helmet_5");
-   alf<dgy> w = dhe.a("trades/jungle_armorer_boots_4");
-   alf<dgy> x = dhe.a("trades/jungle_armorer_leggings_4");
-   alf<dgy> y = dhe.a("trades/jungle_armorer_chestplate_4");
-   alf<dgy> z = dhe.a("trades/jungle_armorer_helmet_4");
-   alf<dgy> A = dhe.a("trades/jungle_armorer_boots_5");
-   alf<dgy> B = dhe.a("trades/jungle_armorer_helmet_5");
-   alf<dgy> C = dhe.a("trades/swamp_armorer_boots_4");
-   alf<dgy> D = dhe.a("trades/swamp_armorer_leggings_4");
-   alf<dgy> E = dhe.a("trades/swamp_armorer_chestplate_4");
-   alf<dgy> F = dhe.a("trades/swamp_armorer_helmet_4");
-   alf<dgy> G = dhe.a("trades/swamp_armorer_boots_5");
-   alf<dgy> H = dhe.a("trades/swamp_armorer_helmet_5");
-   alf<dgy> I = dhe.a("trades/taiga_armorer_leggings_5");
-   alf<dgy> J = dhe.a("trades/taiga_armorer_chestplate_5");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   static void a(qh<dgy> $$0) {
-      jf<dfq> $$1 = $$0.a(mg.aR);
-      $$0.a(a, new dhc($$1.b(dfv.h), btf.a(1)));
-      $$0.a(b, new dhc($$1.b(dfv.h), btf.a(1)));
-      $$0.a(c, new dhc($$1.b(dfv.h), btf.a(1)));
-      $$0.a(d, new dhc($$1.b(dfv.h), btf.a(1)));
-      $$0.a(e, new dhc($$1.b(dfv.h), btf.a(1)));
-      $$0.a(f, new dhc($$1.b(dfv.h), btf.a(1)));
-      $$0.a(g, new dhc($$1.b(dfv.a), btf.a(1)));
-      $$0.a(h, new dhc($$1.b(dfv.a), btf.a(1)));
-      $$0.a(i, new dhc($$1.b(dfv.a), btf.a(1)));
-      $$0.a(j, new dhc($$1.b(dfv.a), btf.a(1)));
-      $$0.a(k, new dhc($$1.b(dfv.a), btf.a(1)));
-      $$0.a(l, new dhc($$1.b(dfv.a), btf.a(1)));
-      $$0.a(m, new dhc($$1.b(dfv.k), btf.a(1)));
-      $$0.a(n, new dhc($$1.b(dfv.k), btf.a(1)));
-      $$0.a(o, new dhc($$1.b(dfv.k), btf.a(1)));
-      $$0.a(p, new dhc($$1.b(dfv.k), btf.a(1)));
-      $$0.a(q, new dhc($$1.b(dfv.k), btf.a(1)));
-      $$0.a(r, new dhc($$1.b(dfv.k), btf.a(1)));
-      $$0.a(s, new dhc($$1.b(dfv.j), btf.a(1)));
-      $$0.a(t, new dhc($$1.b(dfv.g), btf.a(1)));
-      $$0.a(u, new dhc($$1.b(dfv.j), btf.a(1)));
-      $$0.a(v, new dhc($$1.b(dfv.g), btf.a(1)));
-      $$0.a(w, new dhc($$1.b(dfv.w), btf.a(1)));
-      $$0.a(x, new dhc($$1.b(dfv.w), btf.a(1)));
-      $$0.a(y, new dhc($$1.b(dfv.w), btf.a(1)));
-      $$0.a(z, new dhc($$1.b(dfv.w), btf.a(1)));
-      $$0.a(A, new dhc($$1.b(dfv.c), btf.a(1)));
-      $$0.a(B, new dhc($$1.b(dfv.e), btf.a(1)));
-      $$0.a(C, new dhc($$1.b(dfv.O), btf.a(1)));
-      $$0.a(D, new dhc($$1.b(dfv.O), btf.a(1)));
-      $$0.a(E, new dhc($$1.b(dfv.O), btf.a(1)));
-      $$0.a(F, new dhc($$1.b(dfv.O), btf.a(1)));
-      $$0.a(G, new dhc($$1.b(dfv.i), btf.a(1)));
-      $$0.a(H, new dhc($$1.b(dfv.f), btf.a(1)));
-      $$0.a(I, new dhc($$1.b(dfv.d), btf.a(1)));
-      $$0.a(J, new dhc($$1.b(dfv.d), btf.a(1)));
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface dhd {
 }

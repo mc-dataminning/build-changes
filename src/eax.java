@@ -1,138 +1,51 @@
-public class eax {
-   public static final eay a = eay.a("attached");
-   public static final eay b = eay.a("berries");
-   public static final eay c = eay.a("bloom");
-   public static final eay d = eay.a("bottom");
-   public static final eay e = eay.a("can_summon");
-   public static final eay f = eay.a("conditional");
-   public static final eay g = eay.a("disarmed");
-   public static final eay h = eay.a("drag");
-   public static final eay i = eay.a("enabled");
-   public static final eay j = eay.a("extended");
-   public static final eay k = eay.a("eye");
-   public static final eay l = eay.a("falling");
-   public static final eay m = eay.a("hanging");
-   public static final eay n = eay.a("has_bottle_0");
-   public static final eay o = eay.a("has_bottle_1");
-   public static final eay p = eay.a("has_bottle_2");
-   public static final eay q = eay.a("has_record");
-   public static final eay r = eay.a("has_book");
-   public static final eay s = eay.a("inverted");
-   public static final eay t = eay.a("in_wall");
-   public static final eay u = eay.a("lit");
-   public static final eay v = eay.a("locked");
-   public static final eay w = eay.a("natural");
-   public static final eay x = eay.a("occupied");
-   public static final eay y = eay.a("open");
-   public static final eay z = eay.a("persistent");
-   public static final eay A = eay.a("powered");
-   public static final eay B = eay.a("short");
-   public static final eay C = eay.a("shrieking");
-   public static final eay D = eay.a("signal_fire");
-   public static final eay E = eay.a("snowy");
-   public static final eay F = eay.a("tip");
-   public static final eay G = eay.a("triggered");
-   public static final eay H = eay.a("unstable");
-   public static final eay I = eay.a("waterlogged");
-   public static final ebf<ja.a> J = ebf.a("axis", ja.a.class, ja.a.a, ja.a.c);
-   public static final ebf<ja.a> K = ebf.a("axis", ja.a.class);
-   public static final eay L = eay.a("up");
-   public static final eay M = eay.a("down");
-   public static final eay N = eay.a("north");
-   public static final eay O = eay.a("east");
-   public static final eay P = eay.a("south");
-   public static final eay Q = eay.a("west");
-   public static final ebf<ja> R = ebf.a("facing", ja.class, ja.c, ja.f, ja.d, ja.e, ja.b, ja.a);
-   public static final ebf<ja> S = ebf.a("facing", ja.class, $$0 -> $$0 != ja.b);
-   public static final ebf<ja> T = ebf.a("facing", ja.class, ja.c.a);
-   public static final ebh U = ebh.a("flower_amount", 1, 4);
-   public static final ebh V = ebh.a("segment_amount", 1, 4);
-   public static final ebf<jc> W = ebf.a("orientation", jc.class);
-   public static final ebf<eas> X = ebf.a("face", eas.class);
-   public static final ebf<eav> Y = ebf.a("attachment", eav.class);
-   public static final ebf<ebu> Z = ebf.a("east", ebu.class);
-   public static final ebf<ebu> aa = ebf.a("north", ebu.class);
-   public static final ebf<ebu> ab = ebf.a("south", ebu.class);
-   public static final ebf<ebu> ac = ebf.a("west", ebu.class);
-   public static final ebf<ebm> ad = ebf.a("east", ebm.class);
-   public static final ebf<ebm> ae = ebf.a("north", ebm.class);
-   public static final ebf<ebm> af = ebf.a("south", ebm.class);
-   public static final ebf<ebm> ag = ebf.a("west", ebm.class);
-   public static final ebf<ebd> ah = ebf.a("half", ebd.class);
-   public static final ebf<ebg> ai = ebf.a("half", ebg.class);
-   public static final ebf<ebl> aj = ebf.a("shape", ebl.class);
-   public static final ebf<ebl> ak = ebf.a("shape", ebl.class, $$0 -> $$0 != ebl.j && $$0 != ebl.i && $$0 != ebl.g && $$0 != ebl.h);
-   public static final int al = 1;
-   public static final int am = 2;
-   public static final int an = 3;
-   public static final int ao = 4;
-   public static final int ap = 5;
-   public static final int aq = 7;
-   public static final int ar = 15;
-   public static final int as = 25;
-   public static final ebh at = ebh.a("age", 0, 1);
-   public static final ebh au = ebh.a("age", 0, 2);
-   public static final ebh av = ebh.a("age", 0, 3);
-   public static final ebh aw = ebh.a("age", 0, 4);
-   public static final ebh ax = ebh.a("age", 0, 5);
-   public static final ebh ay = ebh.a("age", 0, 7);
-   public static final ebh az = ebh.a("age", 0, 15);
-   public static final ebh aA = ebh.a("age", 0, 25);
-   public static final ebh aB = ebh.a("bites", 0, 6);
-   public static final ebh aC = ebh.a("candles", 1, 4);
-   public static final ebh aD = ebh.a("delay", 1, 4);
-   public static final int aE = 7;
-   public static final ebh aF = ebh.a("distance", 1, 7);
-   public static final ebh aG = ebh.a("eggs", 1, 4);
-   public static final ebh aH = ebh.a("hatch", 0, 2);
-   public static final ebh aI = ebh.a("layers", 1, 8);
-   public static final int aJ = 0;
-   public static final int aK = 1;
-   public static final int aL = 3;
-   public static final int aM = 8;
-   public static final ebh aN = ebh.a("level", 1, 3);
-   public static final ebh aO = ebh.a("level", 0, 8);
-   public static final ebh aP = ebh.a("level", 1, 8);
-   public static final ebh aQ = ebh.a("honey_level", 0, 5);
-   public static final int aR = 15;
-   public static final ebh aS = ebh.a("level", 0, 15);
-   public static final ebh aT = ebh.a("moisture", 0, 7);
-   public static final ebh aU = ebh.a("note", 0, 24);
-   public static final ebh aV = ebh.a("pickles", 1, 4);
-   public static final ebh aW = ebh.a("power", 0, 15);
-   public static final ebh aX = ebh.a("stage", 0, 1);
-   public static final int aY = 7;
-   public static final ebh aZ = ebh.a("distance", 0, 7);
-   public static final int ba = 0;
-   public static final int bb = 4;
-   public static final ebh bc = ebh.a("charges", 0, 4);
-   public static final ebh bd = ebh.a("rotation", 0, ebn.a());
-   public static final ebf<eau> be = ebf.a("part", eau.class);
-   public static final ebf<eaz> bf = ebf.a("type", eaz.class);
-   public static final ebf<eba> bg = ebf.a("mode", eba.class);
-   public static final ebf<ebc> bh = ebf.a("hinge", ebc.class);
-   public static final ebf<ebi> bi = ebf.a("instrument", ebi.class);
-   public static final ebf<ebj> bj = ebf.a("type", ebj.class);
-   public static final ebf<ebp> bk = ebf.a("type", ebp.class);
-   public static final ebf<ebq> bl = ebf.a("shape", ebq.class);
-   public static final ebf<ebr> bm = ebf.a("mode", ebr.class);
-   public static final ebf<eat> bn = ebf.a("leaves", eat.class);
-   public static final ebf<ebt> bo = ebf.a("tilt", ebt.class);
-   public static final ebf<ja> bp = ebf.a("vertical_direction", ja.class, ja.b, ja.a);
-   public static final ebf<ebe> bq = ebf.a("thickness", ebe.class);
-   public static final ebf<ebo> br = ebf.a("sculk_sensor_phase", ebo.class);
-   public static final eay bs = eay.a("slot_0_occupied");
-   public static final eay bt = eay.a("slot_1_occupied");
-   public static final eay bu = eay.a("slot_2_occupied");
-   public static final eay bv = eay.a("slot_3_occupied");
-   public static final eay bw = eay.a("slot_4_occupied");
-   public static final eay bx = eay.a("slot_5_occupied");
-   public static final ebh by = ebh.a("dusted", 0, 3);
-   public static final eay bz = eay.a("cracked");
-   public static final eay bA = eay.a("crafting");
-   public static final ebf<dzm> bB = ebf.a("trial_spawner_state", dzm.class);
-   public static final ebf<dzt> bC = ebf.a("vault_state", dzt.class);
-   public static final ebf<ebb> bD = ebf.a("creaking_heart_state", ebb.class);
-   public static final eay bE = eay.a("ominous");
-   public static final ebf<ebs> bF = ebf.a("mode", ebs.class);
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
+
+public class eax implements Predicate<eao> {
+   public static final Predicate<eao> a = $$0 -> true;
+   private final eap<dmm, eao> b;
+   private final Map<ebr<?>, Predicate<Object>> c = Maps.newHashMap();
+
+   private eax(eap<dmm, eao> $$0) {
+      this.b = $$0;
+   }
+
+   public static eax a(dmm $$0) {
+      return new eax($$0.l());
+   }
+
+   public boolean a(@Nullable eao $$0) {
+      if ($$0 != null && $$0.b().equals(this.b.c())) {
+         if (this.c.isEmpty()) {
+            return true;
+         } else {
+            for (Entry<ebr<?>, Predicate<Object>> $$1 : this.c.entrySet()) {
+               if (!this.a($$0, $$1.getKey(), $$1.getValue())) {
+                  return false;
+               }
+            }
+
+            return true;
+         }
+      } else {
+         return false;
+      }
+   }
+
+   protected <T extends Comparable<T>> boolean a(eao $$0, ebr<T> $$1, Predicate<Object> $$2) {
+      T $$3 = $$0.c($$1);
+      return $$2.test($$3);
+   }
+
+   public <V extends Comparable<V>> eax a(ebr<V> $$0, Predicate<Object> $$1) {
+      if (!this.b.d().contains($$0)) {
+         throw new IllegalArgumentException(this.b + " cannot support property " + $$0);
+      } else {
+         this.c.put($$0, $$1);
+         return this;
+      }
+   }
 }

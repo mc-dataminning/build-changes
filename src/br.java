@@ -1,38 +1,58 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class br extends dj<br.a> {
+public class br extends dk<br.a> {
    @Override
    public Codec<br.a> a() {
       return br.a.a;
    }
 
-   public void a(arr $$0, czd $$1, int $$2) {
-      this.a($$0, $$2x -> $$2x.a($$1, $$2));
+   public void a(arr $$0, @Nullable bwi $$1) {
+      ezo $$2 = $$1 != null ? by.b($$0, $$1) : null;
+      this.a($$0, $$2x -> $$2x.a($$0, $$2));
    }
 
-   public static record a(Optional<bi> b, Optional<cl> c, cv.d d) implements dj.a {
+   public static record a(Optional<bj> b, Optional<cx> c, Optional<bj> d) implements dk.a {
       public static final Codec<br.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  bx.b.optionalFieldOf("player").forGetter(br.a::a),
-                  cl.a.optionalFieldOf("item").forGetter(br.a::c),
-                  cv.d.d.optionalFieldOf("levels", cv.d.c).forGetter(br.a::d)
+                  by.b.optionalFieldOf("player").forGetter(br.a::a),
+                  cx.a.optionalFieldOf("effects").forGetter(br.a::b),
+                  by.b.optionalFieldOf("source").forGetter(br.a::c)
                )
                .apply($$0, br.a::new)
       );
 
-      public static aq<br.a> b() {
-         return ap.j.a(new br.a(Optional.empty(), Optional.empty(), cv.d.c));
+      public static ar<br.a> a(cx.a $$0) {
+         return aq.B.a(new br.a(Optional.empty(), $$0.b(), Optional.empty()));
       }
 
-      public boolean a(czd $$0, int $$1) {
-         return this.c.isPresent() && !this.c.get().a($$0) ? false : this.d.d($$1);
+      public static ar<br.a> a(by.a $$0) {
+         return aq.B.a(new br.a(Optional.empty(), Optional.empty(), Optional.of(by.a($$0.b()))));
+      }
+
+      public boolean a(arr $$0, @Nullable ezo $$1) {
+         return this.c.isPresent() && !this.c.get().a((bxj)$$0) ? false : !this.d.isPresent() || $$1 != null && this.d.get().a($$1);
       }
 
       @Override
-      public Optional<bi> a() {
+      public void a(bk $$0) {
+         dk.a.super.a($$0);
+         $$0.a(this.d, ".source");
+      }
+
+      @Override
+      public Optional<bj> a() {
          return this.b;
+      }
+
+      public Optional<cx> b() {
+         return this.c;
+      }
+
+      public Optional<bj> c() {
+         return this.d;
       }
    }
 }

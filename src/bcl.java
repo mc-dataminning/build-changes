@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
-public class bcl extends bhs {
+public class bcl extends bhu {
    public static final List<String> a = List.of(
       "Text1", "Text2", "Text3", "Text4", "FilteredText1", "FilteredText2", "FilteredText3", "FilteredText4", "Color", "GlowingText"
    );
@@ -13,7 +13,7 @@ public class bcl extends bhs {
    private static final String c = "black";
 
    public bcl(Schema $$0, String $$1, String $$2) {
-      super($$0, true, $$1, bix.s, $$2);
+      super($$0, true, $$1, biz.s, $$2);
    }
 
    @Override

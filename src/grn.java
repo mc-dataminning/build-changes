@@ -1,154 +1,130 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.mojang.logging.LogUtils;
-import java.io.Reader;
-import java.lang.reflect.Type;
-import java.util.IdentityHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.Map.Entry;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.blaze3d.systems.RenderSystem;
+import org.joml.Matrix4f;
 
 public class grn {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Gson a = new GsonBuilder()
-      .registerTypeAdapter(grn.class, new grn.a())
-      .registerTypeAdapter(grv.class, new grv.a())
-      .registerTypeAdapter(grs.class, new grs.a())
-      .registerTypeAdapter(gsa.b.class, new gsa.c())
-      .registerTypeAdapter(gsc.class, new gsc.a())
-      .create();
-   private final Map<String, grs> c;
-   @Nullable
-   private final gsa.b d;
+   public static final alg a = alg.b("textures/misc/forcefield.png");
+   private boolean b = true;
+   private double c;
+   private double d;
+   private double e;
+   private double f;
+   private double g;
+   private double h;
+   private fkb[] i = new fkb[4];
 
-   public static grn a(Reader $$0) {
-      return azc.a(a, $$0, grn.class);
-   }
-
-   public static grn a(JsonElement $$0) {
-      return (grn)a.fromJson($$0, grn.class);
-   }
-
-   public grn(Map<String, grs> $$0, @Nullable gsa.b $$1) {
-      this.d = $$1;
-      this.c = $$0;
-   }
-
-   @VisibleForTesting
-   public grs a(String $$0) {
-      grs $$1 = this.c.get($$0);
-      if ($$1 == null) {
-         throw new grn.b();
-      } else {
-         return $$1;
+   public grn() {
+      for (jb $$0 : jb.c.a) {
+         this.i[$$0.e()] = new fkb(fhm.b);
       }
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof grn $$1) ? false : this.c.equals($$1.c) && Objects.equals(this.d, $$1.d);
-      }
-   }
+   private void a(ecg $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6) {
+      try (fjv $$7 = new fjv(fjw.i.b() * 4)) {
+         double $$8 = $$0.e();
+         double $$9 = $$0.g();
+         double $$10 = $$0.f();
+         double $$11 = $$0.h();
+         double $$12 = Math.max((double)azm.a($$2 - $$1), $$10);
+         double $$13 = Math.min((double)azm.c($$2 + $$1), $$11);
+         float $$14 = (float)(azm.a($$12) & 1) * 0.5F;
+         float $$15 = (float)($$13 - $$12) / 2.0F;
+         double $$16 = Math.max((double)azm.a($$3 - $$1), $$8);
+         double $$17 = Math.min((double)azm.c($$3 + $$1), $$9);
+         float $$18 = (float)(azm.a($$16) & 1) * 0.5F;
+         float $$19 = (float)($$17 - $$16) / 2.0F;
 
-   @Override
-   public int hashCode() {
-      return 31 * this.c.hashCode() + (this.d != null ? this.d.hashCode() : 0);
-   }
+         for (jb $$20 : jb.c.a) {
+            fju $$21 = new fju($$7, fkd.c.h, fjw.i);
+            switch ($$20) {
+               case f:
+                  $$21.a((float)($$9 - $$16), -$$4, (float)($$13 - $$12)).a($$14, $$5);
+                  $$21.a((float)($$9 - $$16), -$$4, 0.0F).a($$15 + $$14, $$5);
+                  $$21.a((float)($$9 - $$16), $$4, 0.0F).a($$15 + $$14, $$6);
+                  $$21.a((float)($$9 - $$16), $$4, (float)($$13 - $$12)).a($$14, $$6);
+                  break;
+               case e:
+                  $$21.a(0.0F, -$$4, 0.0F).a($$14, $$5);
+                  $$21.a(0.0F, -$$4, (float)($$13 - $$12)).a($$15 + $$14, $$5);
+                  $$21.a(0.0F, $$4, (float)($$13 - $$12)).a($$15 + $$14, $$6);
+                  $$21.a(0.0F, $$4, 0.0F).a($$14, $$6);
+                  break;
+               case d:
+                  $$21.a(0.0F, -$$4, (float)($$11 - $$12)).a($$18, $$5);
+                  $$21.a((float)($$17 - $$16), -$$4, (float)($$11 - $$12)).a($$19 + $$18, $$5);
+                  $$21.a((float)($$17 - $$16), $$4, (float)($$11 - $$12)).a($$19 + $$18, $$6);
+                  $$21.a(0.0F, $$4, (float)($$11 - $$12)).a($$18, $$6);
+                  break;
+               case c:
+                  $$21.a((float)($$17 - $$16), -$$4, 0.0F).a($$18, $$5);
+                  $$21.a(0.0F, -$$4, 0.0F).a($$19 + $$18, $$5);
+                  $$21.a(0.0F, $$4, 0.0F).a($$19 + $$18, $$6);
+                  $$21.a((float)($$17 - $$16), $$4, 0.0F).a($$18, $$6);
+            }
 
-   @VisibleForTesting
-   public Set<grs> a() {
-      Set<grs> $$0 = Sets.newHashSet(this.c.values());
-      if (this.d != null) {
-         $$0.addAll(this.d.a());
-      }
-
-      return $$0;
-   }
-
-   @Nullable
-   public gsa.b b() {
-      return this.d;
-   }
-
-   public Map<eah, gru> a(eai<dmf, eah> $$0, String $$1) {
-      Map<eah, gru> $$2 = new IdentityHashMap<>();
-      List<eah> $$3 = $$0.a();
-      gsa $$4;
-      if (this.d != null) {
-         $$4 = this.d.a($$0);
-         $$3.forEach($$2x -> $$2.put($$2x, $$4));
-      } else {
-         $$4 = null;
-      }
-
-      this.c.forEach(($$5x, $$6) -> {
-         try {
-            $$3.stream().filter(grw.a($$0, $$5x)).forEach($$3xx -> {
-               gru $$4x = $$2.put($$3xx, $$6);
-               if ($$4x != null && $$4x != $$4) {
-                  String $$5xx = this.c.entrySet().stream().filter($$1xxx -> $$1xxx.getValue() == $$4).findFirst().get().getKey();
-                  throw new RuntimeException("Overlapping definition with: " + $$5xx);
-               }
-            });
-         } catch (Exception var9) {
-            b.warn("Exception loading blockstate definition: '{}' for variant: '{}': {}", new Object[]{$$1, $$5x, var9.getMessage()});
+            this.i[$$20.e()].a();
+            this.i[$$20.e()].a($$21.b());
          }
-      });
-      return $$2;
+
+         fkb.b();
+         this.e = $$8;
+         this.f = $$9;
+         this.g = $$10;
+         this.h = $$11;
+         this.c = $$16;
+         this.d = $$12;
+         this.b = false;
+      }
    }
 
-   public static class a implements JsonDeserializer<grn> {
-      public grn a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         Map<String, grs> $$4 = this.a($$2, $$3);
-         gsa.b $$5 = this.b($$2, $$3);
-         if ($$4.isEmpty() && $$5 == null) {
-            throw new JsonParseException("Neither 'variants' nor 'multipart' found");
-         } else {
-            return new grn($$4, $$5);
+   public void a(ecg $$0, fex $$1, double $$2, double $$3) {
+      double $$4 = $$0.e();
+      double $$5 = $$0.g();
+      double $$6 = $$0.f();
+      double $$7 = $$0.h();
+      if ((!($$1.d < $$5 - $$2) || !($$1.d > $$4 + $$2) || !($$1.f < $$7 - $$2) || !($$1.f > $$6 + $$2))
+         && !($$1.d < $$4 - $$2)
+         && !($$1.d > $$5 + $$2)
+         && !($$1.f < $$6 - $$2)
+         && !($$1.f > $$7 + $$2)) {
+         double $$8 = 1.0 - $$0.b($$1.d, $$1.f) / $$2;
+         $$8 = Math.pow($$8, 4.0);
+         $$8 = azm.a($$8, 0.0, 1.0);
+         double $$9 = $$1.d;
+         double $$10 = $$1.f;
+         float $$11 = (float)$$3;
+         gqx $$12 = gqx.G();
+         int $$13 = $$0.d().a();
+         float $$14 = (float)axw.b($$13) / 255.0F;
+         float $$15 = (float)axw.c($$13) / 255.0F;
+         float $$16 = (float)axw.d($$13) / 255.0F;
+         RenderSystem.setShaderColor($$14, $$15, $$16, (float)$$8);
+         float $$17 = (float)(ag.c() % 3000L) / 3000.0F;
+         RenderSystem.setTextureMatrix(new Matrix4f().translation($$17, $$17, 0.0F));
+         float $$18 = (float)(-azm.e($$1.e * 0.5));
+         float $$19 = $$18 + $$11;
+         if (this.a($$0)) {
+            this.a($$0, $$2, $$10, $$9, $$11, $$19, $$18);
          }
-      }
 
-      protected Map<String, grs> a(JsonDeserializationContext $$0, JsonObject $$1) {
-         Map<String, grs> $$2 = Maps.newHashMap();
-         if ($$1.has("variants")) {
-            JsonObject $$3 = azc.u($$1, "variants");
+         RenderSystem.setModelOffset((float)(this.c - $$9), (float)(-$$1.e), (float)(this.d - $$10));
 
-            for (Entry<String, JsonElement> $$4 : $$3.entrySet()) {
-               $$2.put($$4.getKey(), (grs)$$0.deserialize($$4.getValue(), grs.class));
+         for (ecg.b $$20 : $$0.c($$9, $$10)) {
+            if ($$20.b() < $$2) {
+               this.i[$$20.a().e()].a($$12);
             }
          }
 
-         return $$2;
-      }
-
-      @Nullable
-      protected gsa.b b(JsonDeserializationContext $$0, JsonObject $$1) {
-         if (!$$1.has("multipart")) {
-            return null;
-         } else {
-            JsonArray $$2 = azc.v($$1, "multipart");
-            return (gsa.b)$$0.deserialize($$2, gsa.b.class);
-         }
+         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+         RenderSystem.resetTextureMatrix();
+         RenderSystem.resetModelOffset();
       }
    }
 
-   protected static class b extends RuntimeException {
+   public void a() {
+      this.b = true;
+   }
+
+   private boolean a(ecg $$0) {
+      return this.b || $$0.e() != this.e || $$0.f() != this.g || $$0.g() != this.f || $$0.h() != this.h;
    }
 }

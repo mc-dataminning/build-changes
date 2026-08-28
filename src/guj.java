@@ -1,59 +1,66 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Ordering;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+import java.util.Optional;
+import org.joml.Matrix4f;
 
-public class guj implements guc.a {
-   private final foz a;
-   private final Map<Long, Map<iu, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
+public class guj {
+   private static final int a = axw.a(255, 255, 100, 255);
+   private static final int b = axw.a(255, 100, 255, 255);
+   private static final int c = axw.a(255, 0, 255, 0);
+   private static final int d = axw.a(255, 255, 165, 0);
+   private static final int e = axw.a(255, 255, 0, 0);
+   private static final int f = 20;
+   private static final float g = (float) (Math.PI / 10);
+   private final fpo h;
+   private final Map<Integer, aah.a> i = new HashMap<>();
 
-   guj(foz $$0) {
-      this.a = $$0;
+   public guj(fpo $$0) {
+      this.h = $$0;
    }
 
-   public void a(long $$0, iu $$1) {
-      Map<iu, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
-      int $$3 = $$2.getOrDefault($$1, 0);
-      $$2.put($$1, $$3 + 1);
+   public void a(fjy $$0, gqm $$1, double $$2, double $$3, double $$4) {
+      gpj $$5 = this.h.t;
+      $$5.dU().a(bwr.r, $$5.cQ().g(100.0), $$0x -> true).forEach($$6 -> {
+         Optional<aah.a> $$7 = Optional.ofNullable(this.i.get($$6.ao()));
+         $$7.map(aah.a::d).map($$1xx -> $$5.dU().a($$1xx)).map($$0xx -> $$0xx.p(this.h.av().a(true))).ifPresent($$6x -> {
+            a($$0, $$1, $$2, $$3, $$4, $$6.ds(), $$6x, b);
+            fex $$7x = $$6x.b(0.0, 0.01F, 0.0);
+            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(gqx.a(2.0)), $$7x, 4.0F, c);
+            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(gqx.a(2.0)), $$7x, 8.0F, d);
+            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(gqx.a(2.0)), $$7x, 24.0F, e);
+         });
+         $$7.map(aah.a::e).ifPresent($$6x -> {
+            a($$0, $$1, $$2, $$3, $$4, $$6.ds(), $$6x.b(), a);
+            guo.a($$0, $$1, fes.a(fex.a($$6x)).d(-$$2, -$$3, -$$4), 1.0F, 0.0F, 0.0F, 1.0F);
+         });
+      });
    }
 
-   @Override
-   public void a(fjj $$0, gqa $$1, double $$2, double $$3, double $$4) {
-      long $$5 = this.a.s.ae();
-      int $$6 = 200;
-      double $$7 = 0.0025;
-      Set<iu> $$8 = Sets.newHashSet();
-      Map<iu, Integer> $$9 = Maps.newHashMap();
-      fjn $$10 = $$1.getBuffer(gqk.y());
-      Iterator<Entry<Long, Map<iu, Integer>>> $$11 = this.b.entrySet().iterator();
+   private static void a(fjy $$0, gqm $$1, double $$2, double $$3, double $$4, fex $$5, fex $$6, int $$7) {
+      fkc $$8 = $$1.getBuffer(gqx.a(2.0));
+      $$8.a($$0.c(), (float)($$5.d - $$2), (float)($$5.e - $$3), (float)($$5.f - $$4)).a($$7);
+      $$8.a($$0.c(), (float)($$6.d - $$2), (float)($$6.e - $$3), (float)($$6.f - $$4)).a($$7);
+   }
 
-      while ($$11.hasNext()) {
-         Entry<Long, Map<iu, Integer>> $$12 = $$11.next();
-         Long $$13 = $$12.getKey();
-         Map<iu, Integer> $$14 = $$12.getValue();
-         long $$15 = $$5 - $$13;
-         if ($$15 > 200L) {
-            $$11.remove();
-         } else {
-            for (Entry<iu, Integer> $$16 : $$14.entrySet()) {
-               iu $$17 = $$16.getKey();
-               Integer $$18 = $$16.getValue();
-               if ($$8.add($$17)) {
-                  fel $$19 = new fel(iu.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
-                  gqu.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
-                  $$9.put($$17, $$18);
-               }
-            }
-         }
+   private static void a(Matrix4f $$0, double $$1, double $$2, double $$3, fkc $$4, fex $$5, float $$6, int $$7) {
+      for (int $$8 = 0; $$8 < 20; $$8++) {
+         a($$8, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
 
-      for (Entry<iu, Integer> $$20 : $$9.entrySet()) {
-         iu $$21 = $$20.getKey();
-         Integer $$22 = $$20.getValue();
-         guc.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
-      }
+      a(0, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   private static void a(int $$0, Matrix4f $$1, double $$2, double $$3, double $$4, fkc $$5, fex $$6, float $$7, int $$8) {
+      float $$9 = (float)$$0 * (float) (Math.PI / 10);
+      fex $$10 = $$6.b((double)$$7 * Math.cos((double)$$9), 0.0, (double)$$7 * Math.sin((double)$$9));
+      $$5.a($$1, (float)($$10.d - $$2), (float)($$10.e - $$3), (float)($$10.f - $$4)).a($$8);
+   }
+
+   public void a() {
+      this.i.clear();
+   }
+
+   public void a(aah.a $$0) {
+      this.i.put($$0.c(), $$0);
    }
 }

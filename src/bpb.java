@@ -1,7 +1,3 @@
-public interface bpb {
-   void a(long[] var1);
-
-   void a(long var1);
-
-   void a(long var1, int var3);
+public enum bpb {
+   a;
 }

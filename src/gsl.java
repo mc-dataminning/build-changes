@@ -1,83 +1,33 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import java.util.List;
 import java.util.Map;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.util.Objects;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
 
-public class gsl implements ave {
-   private Map<dxh<?>, gsm<?>> d = ImmutableMap.of();
-   private final frt e;
-   private final Supplier<giy> f;
-   public dja a;
-   public fog b;
-   public feo c;
-   private final gre g;
-   private final hfo h;
-   private final gxf i;
-   private final gwf j;
-
-   public gsl(frt $$0, Supplier<giy> $$1, gre $$2, hfo $$3, gxf $$4, gwf $$5) {
-      this.i = $$4;
-      this.h = $$3;
-      this.j = $$5;
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   @Nullable
-   public <E extends dxf> gsm<E> a(E $$0) {
-      return (gsm<E>)this.d.get($$0.p());
-   }
-
-   public void a(dja $$0, fog $$1, feo $$2) {
-      if (this.a != $$0) {
-         this.a($$0);
-      }
-
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public <E extends dxf> void a(E $$0, float $$1, fjj $$2, gqa $$3) {
-      gsm<E> $$4 = this.a($$0);
-      if ($$4 != null) {
-         if ($$0.l() && $$0.p().a($$0.m())) {
-            if ($$4.a($$0, this.b.b())) {
-               try {
-                  a($$4, $$0, $$1, $$2, $$3, this.b.b());
-               } catch (Throwable var9) {
-                  o $$6 = o.a(var9, "Rendering Block Entity");
-                  p $$7 = $$6.a("Block Entity Details");
-                  $$0.a($$7);
-                  throw new z($$6);
-               }
-            }
+@FunctionalInterface
+public interface gsl {
+   Codec<gsl> a = Codec.recursive("condition", $$0 -> {
+      Codec<gsk> $$1 = Codec.simpleMap(gsk.a.c, $$0.listOf(), bak.a(gsk.a.values())).codec().comapFlatMap($$0x -> {
+         if ($$0x.size() != 1) {
+            return DataResult.error(() -> "Invalid map size for combiner condition, expected exactly one element");
+         } else {
+            Entry<gsk.a, List<gsl>> $$1x = (Entry<gsk.a, List<gsl>>)$$0x.entrySet().iterator().next();
+            return DataResult.success(new gsk($$1x.getKey(), $$1x.getValue()));
          }
-      }
-   }
+      }, $$0x -> Map.of($$0x.a(), $$0x.b()));
+      return Codec.either($$1, gsm.b).flatComapMap($$0x -> (gsl)$$0x.map($$0xx -> $$0xx, $$0xx -> $$0xx), $$0x -> {
+         Objects.requireNonNull($$0x);
 
-   private static <T extends dxf> void a(gsm<T> $$0, T $$1, float $$2, fjj $$3, gqa $$4, feq $$5) {
-      dja $$6 = $$1.i();
-      int $$7;
-      if ($$6 != null) {
-         $$7 = gpv.a($$6, $$1.ax_());
-      } else {
-         $$7 = 15728880;
-      }
+         return switch ($$0x) {
+            case gsk $$3 -> DataResult.success(Either.left($$3));
+            case gsm $$4 -> DataResult.success(Either.right($$4));
+            default -> DataResult.error(() -> "Unrecognized condition");
+         };
+      });
+   });
 
-      $$0.a($$1, $$2, $$3, $$4, $$7, hin.d, $$5);
-   }
-
-   public void a(@Nullable dja $$0) {
-      this.a = $$0;
-      if ($$0 == null) {
-         this.b = null;
-      }
-   }
-
-   @Override
-   public void a(avd $$0) {
-      gsn.a $$1 = new gsn.a(this, this.g, this.h, this.i, this.j, this.f.get(), this.e);
-      this.d = gso.a($$1);
-   }
+   <O, S extends eaq<O, S>> Predicate<S> instantiate(eap<O, S> var1);
 }

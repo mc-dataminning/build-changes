@@ -1,125 +1,168 @@
-enum fyi {
-   a(
-      new fyi.a(alg.b("advancements/tab_above_left_selected"), alg.b("advancements/tab_above_middle_selected"), alg.b("advancements/tab_above_right_selected")),
-      new fyi.a(alg.b("advancements/tab_above_left"), alg.b("advancements/tab_above_middle"), alg.b("advancements/tab_above_right")),
-      28,
-      32,
-      8
-   ),
-   b(
-      new fyi.a(alg.b("advancements/tab_below_left_selected"), alg.b("advancements/tab_below_middle_selected"), alg.b("advancements/tab_below_right_selected")),
-      new fyi.a(alg.b("advancements/tab_below_left"), alg.b("advancements/tab_below_middle"), alg.b("advancements/tab_below_right")),
-      28,
-      32,
-      8
-   ),
-   c(
-      new fyi.a(alg.b("advancements/tab_left_top_selected"), alg.b("advancements/tab_left_middle_selected"), alg.b("advancements/tab_left_bottom_selected")),
-      new fyi.a(alg.b("advancements/tab_left_top"), alg.b("advancements/tab_left_middle"), alg.b("advancements/tab_left_bottom")),
-      32,
-      28,
-      5
-   ),
-   d(
-      new fyi.a(alg.b("advancements/tab_right_top_selected"), alg.b("advancements/tab_right_middle_selected"), alg.b("advancements/tab_right_bottom_selected")),
-      new fyi.a(alg.b("advancements/tab_right_top"), alg.b("advancements/tab_right_middle"), alg.b("advancements/tab_right_bottom")),
-      32,
-      28,
-      5
-   );
+import java.net.URI;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-   private final fyi.a e;
-   private final fyi.a f;
-   private final int g;
-   private final int h;
-   private final int i;
+public class fyi extends fyn {
+   private static final alg a = alg.b("icon/draft_report");
+   private static final int b = 2;
+   private static final int c = 50;
+   private static final int d = 4;
+   private static final int s = 204;
+   private static final int u = 98;
+   private static final wy v = wy.c("menu.returnToGame");
+   private static final wy w = wy.c("gui.advancements");
+   private static final wy x = wy.c("gui.stats");
+   private static final wy y = wy.c("menu.sendFeedback");
+   private static final wy z = wy.c("menu.reportBugs");
+   private static final wy A = wy.c("menu.feedback");
+   private static final wy B = wy.c("menu.server_links");
+   private static final wy C = wy.c("menu.options");
+   private static final wy D = wy.c("menu.shareToLan");
+   private static final wy E = wy.c("menu.playerReporting");
+   private static final wy F = wy.c("menu.returnToMenu");
+   private static final wy G = wy.c("menu.savingLevel");
+   private static final wy H = wy.c("menu.game");
+   private static final wy I = wy.c("menu.paused");
+   private final boolean J;
+   @Nullable
+   private fsv K;
 
-   private fyi(final fyi.a $$0, final fyi.a $$1, final int $$2, final int $$3, final int $$4) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      this.i = $$4;
+   public fyi(boolean $$0) {
+      super($$0 ? H : I);
+      this.J = $$0;
    }
 
-   public int a() {
-      return this.i;
+   public boolean m() {
+      return this.J;
    }
 
-   public void a(frv $$0, int $$1, int $$2, boolean $$3, int $$4) {
-      fyi.a $$5 = $$3 ? this.e : this.f;
-      alg $$6;
-      if ($$4 == 0) {
-         $$6 = $$5.a();
-      } else if ($$4 == this.i - 1) {
-         $$6 = $$5.c();
+   @Override
+   protected void aO_() {
+      if (this.J) {
+         this.E();
+      }
+
+      this.c(new fuc(0, this.J ? 40 : 10, this.n, 9, this.l, this.p));
+   }
+
+   private void E() {
+      fwi $$0 = new fwi();
+      $$0.c().a(4, 4, 4, 0);
+      fwi.b $$1 = $$0.d(2);
+      $$1.a(fsv.a(v, $$0x -> {
+         this.m.a(null);
+         this.m.o.i();
+      }).a(204).a(), 2, $$0.b().c(50));
+      $$1.a(this.a(w, () -> new fyx(this.m.t.j.p(), this)));
+      $$1.a(this.a(x, () -> new fyr(this, this.m.t.l())));
+      aly $$2 = this.m.t.j.E();
+      if ($$2.a()) {
+         a(this, $$1);
       } else {
-         $$6 = $$5.b();
+         $$1.a(this.a(A, () -> new fyi.a(this)));
+         $$1.a(this.a(B, () -> new gbh(this, $$2)));
       }
 
-      $$0.a(gqk::H, $$6, $$1 + this.a($$4), $$2 + this.b($$4), this.g, this.h);
-   }
-
-   public void a(frv $$0, int $$1, int $$2, int $$3, czd $$4) {
-      int $$5 = $$1 + this.a($$3);
-      int $$6 = $$2 + this.b($$3);
-      switch (this) {
-         case a:
-            $$5 += 6;
-            $$6 += 9;
-            break;
-         case b:
-            $$5 += 6;
-            $$6 += 6;
-            break;
-         case c:
-            $$5 += 10;
-            $$6 += 5;
-            break;
-         case d:
-            $$5 += 6;
-            $$6 += 5;
+      $$1.a(this.a(C, () -> new gbs(this, this.m.n)));
+      if (this.m.U() && !this.m.V().r()) {
+         $$1.a(this.a(D, () -> new fyo(this)));
+      } else {
+         $$1.a(this.a(E, () -> new gdh(this)));
       }
 
-      $$0.b($$4, $$5, $$6);
+      wy $$3 = this.m.T() ? F : wx.p;
+      this.K = $$1.a(fsv.a($$3, $$0x -> {
+         $$0x.j = false;
+         this.m.ba().a(this.m, this, this::F, true);
+      }).a(204).a(), 2);
+      $$0.a();
+      fwh.a($$0, 0, 0, this.n, this.o, 0.5F, 0.25F);
+      $$0.a(this::c);
    }
 
-   public int a(int $$0) {
-      switch (this) {
-         case a:
-            return (this.g + 4) * $$0;
-         case b:
-            return (this.g + 4) * $$0;
-         case c:
-            return -this.g + 4;
-         case d:
-            return 248;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+   static void a(fyn $$0, fwi.b $$1) {
+      $$1.a(a($$0, y, ac.b().g() ? ayh.i : ayh.h));
+      $$1.a(a($$0, z, ayh.j)).j = !ac.b().d().a();
+   }
+
+   private void F() {
+      boolean $$0 = this.m.T();
+      gla $$1 = this.m.S();
+      this.m.s.ad();
+      if ($$0) {
+         this.m.b(new fxy(G));
+      } else {
+         this.m.y();
       }
-   }
 
-   public int b(int $$0) {
-      switch (this) {
-         case a:
-            return -this.h + 4;
-         case b:
-            return 136;
-         case c:
-            return this.h * $$0;
-         case d:
-            return this.h * $$0;
-         default:
-            throw new UnsupportedOperationException("Don't know what this tab type is!" + this);
+      fyp $$2 = new fyp();
+      if ($$0) {
+         this.m.a($$2);
+      } else if ($$1 != null && $$1.e()) {
+         this.m.a(new fkj($$2));
+      } else {
+         this.m.a(new gbf($$2));
       }
    }
 
-   public boolean a(int $$0, int $$1, int $$2, double $$3, double $$4) {
-      int $$5 = $$0 + this.a($$2);
-      int $$6 = $$1 + this.b($$2);
-      return $$3 > (double)$$5 && $$3 < (double)($$5 + this.g) && $$4 > (double)$$6 && $$4 < (double)($$6 + this.h);
+   @Override
+   public void e() {
+      super.e();
    }
 
-   static record a(alg a, alg b, alg c) {
+   @Override
+   public void a(fsh $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if (this.J && this.m != null && this.m.ba().c() && this.K != null) {
+         $$0.a(gqx::H, a, this.K.F() + this.K.A() - 17, this.K.G() + 3, 15, 15);
+      }
+   }
+
+   @Override
+   public void b(fsh $$0, int $$1, int $$2, float $$3) {
+      if (this.J) {
+         super.b($$0, $$1, $$2, $$3);
+      }
+   }
+
+   private fsv a(wy $$0, Supplier<fyn> $$1) {
+      return fsv.a($$0, $$1x -> this.m.a($$1.get())).a(98).a();
+   }
+
+   private static fsv a(fyn $$0, wy $$1, URI $$2) {
+      return fsv.a($$1, fxk.b($$0, $$2)).a(98).a();
+   }
+
+   static class a extends fyn {
+      private static final wy b = wy.c("menu.feedback.title");
+      public final fyn a;
+      private final fwj c = new fwj(this);
+
+      protected a(fyn $$0) {
+         super(b);
+         this.a = $$0;
+      }
+
+      @Override
+      protected void aO_() {
+         this.c.a(b, this.p);
+         fwi $$0 = this.c.c(new fwi());
+         $$0.c().a(4, 4, 4, 0);
+         fwi.b $$1 = $$0.d(2);
+         fyi.a(this, $$1);
+         this.c.b(fsv.a(wx.k, $$0x -> this.aL_()).a(200).a());
+         this.c.a(this::c);
+         this.c();
+      }
+
+      @Override
+      protected void c() {
+         this.c.a();
+      }
+
+      @Override
+      public void aL_() {
+         this.m.a(this.a);
+      }
    }
 }

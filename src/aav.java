@@ -1,15 +1,15 @@
 import java.util.List;
 
-public record aav(List<iu> c) implements aai {
+public record aav(List<iv> c) implements aai {
    public static final yw<vu, aav> a = aai.a(aav::a, aav::new);
    public static final aai.b<aav> b = aai.a("debug/raids");
 
    private aav(vu $$0) {
-      this($$0.a(iu.b));
+      this($$0.a(iv.b));
    }
 
    private void a(vu $$0) {
-      $$0.a(this.c, iu.b);
+      $$0.a(this.c, iv.b);
    }
 
    @Override
@@ -17,7 +17,7 @@ public record aav(List<iu> c) implements aai {
       return b;
    }
 
-   public List<iu> b() {
+   public List<iv> b() {
       return this.c;
    }
 }

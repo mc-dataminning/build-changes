@@ -5,28 +5,28 @@ import com.mojang.serialization.DynamicOps;
 import com.mojang.serialization.Lifecycle;
 import java.util.Optional;
 
-public final class alc<E> implements Codec<je<E>> {
-   private final alf<? extends jr<E>> a;
+public final class alc<E> implements Codec<jf<E>> {
+   private final alf<? extends js<E>> a;
    private final Codec<E> b;
    private final boolean c;
 
-   public static <E> alc<E> a(alf<? extends jr<E>> $$0, Codec<E> $$1) {
+   public static <E> alc<E> a(alf<? extends js<E>> $$0, Codec<E> $$1) {
       return a($$0, $$1, true);
    }
 
-   public static <E> alc<E> a(alf<? extends jr<E>> $$0, Codec<E> $$1, boolean $$2) {
+   public static <E> alc<E> a(alf<? extends js<E>> $$0, Codec<E> $$1, boolean $$2) {
       return new alc<>($$0, $$1, $$2);
    }
 
-   private alc(alf<? extends jr<E>> $$0, Codec<E> $$1, boolean $$2) {
+   private alc(alf<? extends js<E>> $$0, Codec<E> $$1, boolean $$2) {
       this.a = $$0;
       this.b = $$1;
       this.c = $$2;
    }
 
-   public <T> DataResult<T> a(je<E> $$0, DynamicOps<T> $$1, T $$2) {
+   public <T> DataResult<T> a(jf<E> $$0, DynamicOps<T> $$1, T $$2) {
       if ($$1 instanceof ale<?> $$3) {
-         Optional<jh<E>> $$4 = $$3.a(this.a);
+         Optional<ji<E>> $$4 = $$3.a(this.a);
          if ($$4.isPresent()) {
             if (!$$0.a($$4.get())) {
                return DataResult.error(() -> "Element " + $$0 + " is not valid in current registry set");
@@ -39,16 +39,16 @@ public final class alc<E> implements Codec<je<E>> {
       return this.b.encode($$0.a(), $$1, $$2);
    }
 
-   public <T> DataResult<Pair<je<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
+   public <T> DataResult<Pair<jf<E>, T>> decode(DynamicOps<T> $$0, T $$1) {
       if ($$0 instanceof ale<?> $$2) {
-         Optional<jf<E>> $$3 = $$2.b(this.a);
+         Optional<jg<E>> $$3 = $$2.b(this.a);
          if ($$3.isEmpty()) {
             return DataResult.error(() -> "Registry does not exist: " + this.a);
          } else {
-            jf<E> $$4 = $$3.get();
+            jg<E> $$4 = $$3.get();
             DataResult<Pair<alg, T>> $$5 = alg.a.decode($$0, $$1);
             if ($$5.result().isEmpty()) {
-               return !this.c ? DataResult.error(() -> "Inline definitions not allowed here") : this.b.decode($$0, $$1).map($$0x -> $$0x.mapFirst(je::a));
+               return !this.c ? DataResult.error(() -> "Inline definitions not allowed here") : this.b.decode($$0, $$1).map($$0x -> $$0x.mapFirst(jf::a));
             } else {
                Pair<alg, T> $$6 = (Pair<alg, T>)$$5.result().get();
                alf<E> $$7 = alf.a(this.a, (alg)$$6.getFirst());
@@ -60,7 +60,7 @@ public final class alc<E> implements Codec<je<E>> {
             }
          }
       } else {
-         return this.b.decode($$0, $$1).map($$0x -> $$0x.mapFirst(je::a));
+         return this.b.decode($$0, $$1).map($$0x -> $$0x.mapFirst(jf::a));
       }
    }
 

@@ -7,11 +7,11 @@ public class afk implements zf<abu> {
    public static final int d = 2;
    private final String e;
    private final wy f;
-   private final ffy.a g;
+   private final fgf.a g;
    private final Optional<yo> h;
    private final int i;
 
-   public afk(ffn $$0, int $$1) {
+   public afk(ffu $$0, int $$1) {
       this.e = $$0.c();
       this.f = $$0.e();
       this.g = $$0.i();
@@ -24,11 +24,11 @@ public class afk implements zf<abu> {
       this.i = $$0.readByte();
       if (this.i != 0 && this.i != 2) {
          this.f = wx.a;
-         this.g = ffy.a.a;
+         this.g = fgf.a.a;
          this.h = Optional.empty();
       } else {
          this.f = xa.d.decode($$0);
-         this.g = $$0.b(ffy.a.class);
+         this.g = $$0.b(fgf.a.class);
          this.h = yq.d.decode($$0);
       }
    }
@@ -64,7 +64,7 @@ public class afk implements zf<abu> {
       return this.i;
    }
 
-   public ffy.a g() {
+   public fgf.a g() {
       return this.g;
    }
 

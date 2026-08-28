@@ -1,63 +1,49 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class eod extends eol {
-   public static final MapCodec<eod> a = enr.a.fieldOf("provider").xmap(eod::new, $$0 -> $$0.b);
-   private final enr b;
+public class eod extends eob {
+   public static final MapCodec<eod> b = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
+                  eao.a.fieldOf("default_state").forGetter($$0x -> $$0x.i),
+                  ayu.b(eao.a.listOf()).fieldOf("low_states").forGetter($$0x -> $$0x.j),
+                  ayu.b(eao.a.listOf()).fieldOf("high_states").forGetter($$0x -> $$0x.k)
+               )
+            )
+            .apply($$0, eod::new)
+   );
+   private final float g;
+   private final float h;
+   private final eao i;
+   private final List<eao> j;
+   private final List<eao> k;
 
-   public eod(enr $$0) {
-      this.b = $$0;
+   public eod(long $$0, evy.a $$1, float $$2, float $$3, float $$4, eao $$5, List<eao> $$6, List<eao> $$7) {
+      super($$0, $$1, $$2);
+      this.g = $$3;
+      this.h = $$4;
+      this.i = $$5;
+      this.j = $$6;
+      this.k = $$7;
    }
 
    @Override
-   protected eom<?> a() {
-      return eom.g;
+   protected enz<?> a() {
+      return enz.c;
    }
 
    @Override
-   public void a(eol.a $$0) {
-      List<iu> $$1 = eky.a($$0);
-      if (!$$1.isEmpty()) {
-         int $$2 = $$1.get(0).v();
-         $$1.stream().filter($$1x -> $$1x.v() == $$2).forEach($$1x -> {
-            this.a($$0, $$1x.h().f());
-            this.a($$0, $$1x.g(2).f());
-            this.a($$0, $$1x.h().e(2));
-            this.a($$0, $$1x.g(2).e(2));
-
-            for (int $$2x = 0; $$2x < 5; $$2x++) {
-               int $$3 = $$0.b().a(64);
-               int $$4 = $$3 % 8;
-               int $$5 = $$3 / 8;
-               if ($$4 == 0 || $$4 == 7 || $$5 == 0 || $$5 == 7) {
-                  this.a($$0, $$1x.b(-3 + $$4, 0, -3 + $$5));
-               }
-            }
-         });
-      }
-   }
-
-   private void a(eol.a $$0, iu $$1) {
-      for (int $$2 = -2; $$2 <= 2; $$2++) {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
-               this.b($$0, $$1.b($$2, 0, $$3));
-            }
-         }
-      }
-   }
-
-   private void b(eol.a $$0, iu $$1) {
-      for (int $$2 = 2; $$2 >= -3; $$2--) {
-         iu $$3 = $$1.b($$2);
-         if (ejm.a($$0.a(), $$3)) {
-            $$0.a($$3, this.b.a($$0.b(), $$1));
-            break;
-         }
-
-         if (!$$0.a($$3) && $$2 < 0) {
-            break;
-         }
+   public eao a(azv $$0, iv $$1) {
+      double $$2 = this.a($$1, (double)this.e);
+      if ($$2 < (double)this.g) {
+         return ag.a(this.j, $$0);
+      } else {
+         return $$0.i() < this.h ? ag.a(this.k, $$0) : this.i;
       }
    }
 }

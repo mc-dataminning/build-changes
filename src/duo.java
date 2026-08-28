@@ -1,30 +1,22 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class duo extends dmf {
-   public static final MapCodec<duo> a = b(duo::new);
-   private static final ffk b = dmf.a(6.0);
+public class duo extends dvn implements dmd {
+   public static final MapCodec<duo> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cyi.q.fieldOf("color").forGetter(duo::b), t()).apply($$0, duo::new));
+   private final cyi c;
 
    @Override
    public MapCodec<duo> a() {
       return a;
    }
 
-   protected duo(eag.d $$0) {
-      super($$0);
+   public duo(cyi $$0, ean.d $$1) {
+      super($$1);
+      this.c = $$0;
    }
 
    @Override
-   protected dss a_(eah $$0) {
-      return dss.a;
-   }
-
-   @Override
-   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
-      return b;
-   }
-
-   @Override
-   protected float c(eah $$0, dig $$1, iu $$2) {
-      return 1.0F;
+   public cyi b() {
+      return this.c;
    }
 }

@@ -1,103 +1,52 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fbq extends fau {
-   private static final Logger b = LogUtils.getLogger();
+public class fbq extends fbb {
    public static final MapCodec<fbq> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  xa.a.optionalFieldOf("name").forGetter($$0x -> $$0x.c),
-                  ezh.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d),
-                  fbq.a.c.optionalFieldOf("target", fbq.a.a).forGetter($$0x -> $$0x.e)
+                  dby.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
+                  dby.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
+                  dby.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
+                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
+                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
                )
             )
             .apply($$0, fbq::new)
    );
-   private final Optional<wy> c;
-   private final Optional<ezh.b> d;
-   private final fbq.a e;
+   public static final dby b = new dby(dby.a.a, IntList.of(), IntList.of(), false, false);
+   final Optional<dby.a> c;
+   final Optional<IntList> d;
+   final Optional<IntList> e;
+   final Optional<Boolean> f;
+   final Optional<Boolean> h;
 
-   private fbq(List<fcq> $$0, Optional<wy> $$1, Optional<ezh.b> $$2, fbq.a $$3) {
+   public fbq(List<fcx> $$0, Optional<dby.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
       super($$0);
       this.c = $$1;
       this.d = $$2;
       this.e = $$3;
+      this.f = $$4;
+      this.h = $$5;
    }
 
    @Override
-   public faw<fbq> b() {
-      return fax.p;
-   }
-
-   @Override
-   public Set<bax<?>> a() {
-      return this.d.<Set<bax<?>>>map($$0 -> Set.of($$0.a())).orElse(Set.of());
-   }
-
-   public static UnaryOperator<wy> a(ezh $$0, @Nullable ezh.b $$1) {
-      if ($$1 != null) {
-         bwf $$2 = $$0.c($$1.a());
-         if ($$2 != null) {
-            ei $$3 = $$2.d($$0.d()).a(2);
-            return $$2x -> {
-               try {
-                  return xb.a($$3, $$2x, $$2, 0);
-               } catch (CommandSyntaxException var4) {
-                  b.warn("Failed to resolve text component", var4);
-                  return $$2x;
-               }
-            };
-         }
-      }
-
-      return $$0x -> $$0x;
-   }
-
-   @Override
-   public czd a(czd $$0, ezh $$1) {
-      this.c.ifPresent($$2 -> $$0.b(this.e.a(), a($$1, this.d.orElse(null)).apply($$2)));
+   protected czk a(czk $$0, ezo $$1) {
+      $$0.a(kk.ai, b, this::a);
       return $$0;
    }
 
-   public static fau.a<?> a(wy $$0, fbq.a $$1) {
-      return a($$2 -> new fbq($$2, Optional.of($$0), Optional.empty(), $$1));
+   private dby a(dby $$0) {
+      return new dby(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
    }
 
-   public static fau.a<?> a(wy $$0, fbq.a $$1, ezh.b $$2) {
-      return a($$3 -> new fbq($$3, Optional.of($$0), Optional.of($$2), $$1));
-   }
-
-   public static enum a implements bak {
-      a("custom_name"),
-      b("item_name");
-
-      public static final Codec<fbq.a> c = bak.a(fbq.a::values);
-      private final String d;
-
-      private a(final String $$0) {
-         this.d = $$0;
-      }
-
-      @Override
-      public String c() {
-         return this.d;
-      }
-
-      public ki<wy> a() {
-         return switch (this) {
-            case a -> kj.g;
-            case b -> kj.h;
-         };
-      }
+   @Override
+   public fbd<fbq> b() {
+      return fbe.L;
    }
 }

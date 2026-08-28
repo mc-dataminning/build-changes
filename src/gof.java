@@ -1,99 +1,68 @@
-import java.util.Optional;
+import org.joml.Quaternionf;
 
-public class gof extends goi {
-   gof(gjz $$0, god $$1, double $$2, double $$3, double $$4) {
-      super($$0, $$2, $$3 - 0.125, $$4);
-      this.b(0.01F, 0.01F);
-      this.a($$1);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
-      this.n = false;
-      this.B = 1.0F;
-      this.u = 0.0F;
-   }
+public class gof extends gou {
+   private static final float a = 1.0472F;
+   private int b;
 
-   gof(gjz $$0, god $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      super($$0, $$2, $$3 - 0.125, $$4, $$5, $$6, $$7);
-      this.b(0.01F, 0.01F);
-      this.a($$1);
-      this.D = this.D * (this.r.i() * 0.6F + 0.6F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
-      this.n = false;
-      this.B = 1.0F;
+   gof(gkl $$0, double $$1, double $$2, double $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.D = 0.85F;
+      this.b = $$4;
+      this.t = 30;
       this.u = 0.0F;
+      this.j = 0.0;
+      this.k = 0.1;
+      this.l = 0.0;
    }
 
    @Override
-   public gnm b() {
-      return gnm.b;
+   public float b(float $$0) {
+      return this.D * azm.a(((float)this.s + $$0) / (float)this.t * 0.75F, 0.0F, 1.0F);
    }
 
-   public static class a implements gnl<mb> {
-      private final god a;
-
-      public a(god $$0) {
-         this.a = $$0;
-      }
-
-      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         azv $$8 = $$1.A;
-         double $$9 = $$8.k() * 1.0E-6F;
-         double $$10 = $$8.k() * 1.0E-4F;
-         double $$11 = $$8.k() * 1.0E-6F;
-         gof $$12 = new gof($$1, this.a, $$2, $$3, $$4, $$9, $$10, $$11);
-         $$12.a(0.9F, 0.4F, 0.5F);
-         return $$12;
+   @Override
+   public void a(fkc $$0, fow $$1, float $$2) {
+      if (this.b <= 0) {
+         this.y = 1.0F - azm.a(((float)this.s + $$2) / (float)this.t, 0.0F, 1.0F);
+         Quaternionf $$3 = new Quaternionf();
+         $$3.rotationX(-1.0472F);
+         this.a($$0, $$1, $$3, $$2);
+         $$3.rotationYXZ((float) -Math.PI, 1.0472F, 0.0F);
+         this.a($$0, $$1, $$3, $$2);
       }
    }
 
-   public static class b implements gnl<mb> {
-      private final god a;
+   @Override
+   public int a(float $$0) {
+      return 240;
+   }
 
-      public b(god $$0) {
+   @Override
+   public gny b() {
+      return gny.c;
+   }
+
+   @Override
+   public void a() {
+      if (this.b > 0) {
+         this.b--;
+      } else {
+         super.a();
+      }
+   }
+
+   public static class a implements gnx<mb> {
+      private final gop a;
+
+      public a(gop $$0) {
          this.a = $$0;
       }
 
-      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gof $$8 = new gof($$1, this.a, $$2, $$3, $$4, 0.0, -0.8F, 0.0) {
-            @Override
-            public Optional<lu> o() {
-               return Optional.of(lu.a);
-            }
-         };
-         $$8.t = azm.b($$1.A, 500, 1000);
-         $$8.u = 0.01F;
-         $$8.a(0.32F, 0.5F, 0.22F);
+      public gnu a(mb $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gof $$8 = new gof($$1, $$2, $$3, $$4, $$0.b());
+         $$8.a(this.a);
+         $$8.e(1.0F);
          return $$8;
-      }
-   }
-
-   public static class c implements gnl<mb> {
-      private final god a;
-
-      public c(god $$0) {
-         this.a = $$0;
-      }
-
-      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gof $$8 = new gof($$1, this.a, $$2, $$3, $$4);
-         $$8.a(0.4F, 0.4F, 0.7F);
-         return $$8;
-      }
-   }
-
-   public static class d implements gnl<mb> {
-      private final god a;
-
-      public d(god $$0) {
-         this.a = $$0;
-      }
-
-      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         double $$8 = (double)$$1.A.i() * -1.9 * (double)$$1.A.i() * 0.1;
-         gof $$9 = new gof($$1, this.a, $$2, $$3, $$4, 0.0, $$8, 0.0);
-         $$9.a(0.1F, 0.1F, 0.3F);
-         $$9.b(0.001F, 0.001F);
-         return $$9;
       }
    }
 }

@@ -1,65 +1,58 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class da extends dj<da.a> {
+public class da extends dk<da.a> {
    @Override
    public Codec<da.a> a() {
       return da.a.a;
    }
 
-   public void a(arr $$0, bwf $$1, buu $$2, float $$3, float $$4, boolean $$5) {
-      ezh $$6 = bx.b($$0, $$1);
-      this.a($$0, $$6x -> $$6x.a($$0, $$6, $$2, $$3, $$4, $$5));
+   public void a(arr $$0, czk $$1, @Nullable bwi $$2) {
+      ezo $$3 = by.b($$0, $$2);
+      this.a($$0, $$3x -> $$3x.a($$0, $$1, $$3));
    }
 
-   public static record a(Optional<bi> b, Optional<bl> c, Optional<bi> d) implements dj.a {
+   public static record a(Optional<bj> b, Optional<cm> c, Optional<bj> d) implements dk.a {
       public static final Codec<da.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
-                  bx.b.optionalFieldOf("player").forGetter(da.a::a),
-                  bl.a.optionalFieldOf("damage").forGetter(da.a::c),
-                  bx.b.optionalFieldOf("entity").forGetter(da.a::d)
+                  by.b.optionalFieldOf("player").forGetter(da.a::a),
+                  cm.a.optionalFieldOf("item").forGetter(da.a::b),
+                  by.b.optionalFieldOf("entity").forGetter(da.a::c)
                )
                .apply($$0, da.a::new)
       );
 
-      public static aq<da.a> b() {
-         return ap.h.a(new da.a(Optional.empty(), Optional.empty(), Optional.empty()));
+      public static ar<da.a> a(bj $$0, Optional<cm> $$1, Optional<bj> $$2) {
+         return aq.R.a(new da.a(Optional.of($$0), $$1, $$2));
       }
 
-      public static aq<da.a> a(Optional<bl> $$0) {
-         return ap.h.a(new da.a(Optional.empty(), $$0, Optional.empty()));
+      public static ar<da.a> a(Optional<bj> $$0, Optional<cm> $$1, Optional<bj> $$2) {
+         return aq.S.a(new da.a($$0, $$1, $$2));
       }
 
-      public static aq<da.a> a(bl.a $$0) {
-         return ap.h.a(new da.a(Optional.empty(), Optional.of($$0.b()), Optional.empty()));
-      }
-
-      public static aq<da.a> b(Optional<bx> $$0) {
-         return ap.h.a(new da.a(Optional.empty(), Optional.empty(), bx.a($$0)));
-      }
-
-      public static aq<da.a> a(Optional<bl> $$0, Optional<bx> $$1) {
-         return ap.h.a(new da.a(Optional.empty(), $$0, bx.a($$1)));
-      }
-
-      public static aq<da.a> a(bl.a $$0, Optional<bx> $$1) {
-         return ap.h.a(new da.a(Optional.empty(), Optional.of($$0.b()), bx.a($$1)));
-      }
-
-      public boolean a(arr $$0, ezh $$1, buu $$2, float $$3, float $$4, boolean $$5) {
-         return this.c.isPresent() && !this.c.get().a($$0, $$2, $$3, $$4, $$5) ? false : !this.d.isPresent() || this.d.get().a($$1);
+      public boolean a(arr $$0, czk $$1, ezo $$2) {
+         return this.c.isPresent() && !this.c.get().a($$1) ? false : !this.d.isPresent() || this.d.get().a($$2);
       }
 
       @Override
-      public void a(bj $$0) {
-         dj.a.super.a($$0);
+      public void a(bk $$0) {
+         dk.a.super.a($$0);
          $$0.a(this.d, ".entity");
       }
 
       @Override
-      public Optional<bi> a() {
+      public Optional<bj> a() {
          return this.b;
+      }
+
+      public Optional<cm> b() {
+         return this.c;
+      }
+
+      public Optional<bj> c() {
+         return this.d;
       }
    }
 }

@@ -1,67 +1,45 @@
-public class ghb extends gei<hdy> {
-   public ghb(gjc $$0) {
+import java.util.Arrays;
+
+public class ghb extends ggk<hev> {
+   private static final int a = 8;
+   private final gjo[] b = new gjo[8];
+
+   public ghb(gjo $$0) {
       super($$0);
+      Arrays.setAll(this.b, $$1 -> $$0.b(a($$1)));
    }
 
-   public void a(hdy $$0) {
-      super.a($$0);
-      float $$1 = (float) (Math.PI / 6);
-      float $$2 = $$0.H;
-      cpt $$3 = $$0.d;
-      if ($$3 == cpt.e) {
-         float $$4 = $$0.u / 60.0F;
-         this.f.g = (float) (Math.PI / 6) + (float) (Math.PI / 180.0) * azm.a($$4 * 30.0F) * 10.0F;
-         this.g.g = (float) (-Math.PI / 6) - (float) (Math.PI / 180.0) * azm.b($$4 * 30.0F) * 10.0F;
-         this.o.b = this.o.b + azm.a($$4 * 10.0F);
-         this.o.c = this.o.c + azm.a($$4 * 40.0F) + 0.4F;
-         this.r.g = (float) (Math.PI / 180.0) * (70.0F + azm.b($$4 * 40.0F) * 10.0F);
-         this.s.g = this.r.g * -1.0F;
-         this.r.c = this.r.c + (azm.a($$4 * 40.0F) * 0.5F - 0.5F);
-         this.s.c = this.s.c + azm.a($$4 * 40.0F) * 0.5F + 0.5F;
-         this.q.c = this.q.c + azm.a($$4 * 40.0F) * 0.35F;
-      } else if ($$3 == cpt.a && $$2 == 0.0F) {
-         this.b($$0);
-      } else if ($$3 == cpt.b) {
-         gem.a(this.r, this.s, this.o, $$0.e == bwx.b);
-      } else if ($$3 == cpt.c) {
-         gem.a(this.r, this.s, $$0.c, $$0.K, $$0.e == bwx.b);
-      } else if ($$3 == cpt.d) {
-         this.o.e = 0.5F;
-         this.o.f = 0.0F;
-         if ($$0.e == bwx.a) {
-            this.r.f = -0.5F;
-            this.r.e = -0.9F;
-         } else {
-            this.s.f = 0.5F;
-            this.s.e = -0.9F;
+   private static String a(int $$0) {
+      return "cube" + $$0;
+   }
+
+   public static gju a() {
+      gjw $$0 = new gjw();
+      gjy $$1 = $$0.a();
+
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         int $$3 = 0;
+         int $$4 = 0;
+         if ($$2 > 0 && $$2 < 4) {
+            $$4 += 9 * $$2;
+         } else if ($$2 > 3) {
+            $$3 = 32;
+            $$4 += 9 * $$2 - 36;
          }
+
+         $$1.a(a($$2), gjt.c().a($$3, $$4).a(-4.0F, (float)(16 + $$2), -4.0F, 8.0F, 1.0F, 8.0F), gjq.a);
       }
+
+      $$1.a("inside_cube", gjt.c().a(24, 40).a(-2.0F, 18.0F, -2.0F, 4.0F, 4.0F, 4.0F), gjq.a);
+      return gju.a($$0, 64, 64);
    }
 
-   protected void a(hdy $$0, float $$1) {
-      float $$2 = $$0.H;
-      if ($$2 > 0.0F && $$0.d == cpt.a) {
-         gem.a(this.r, this.s, $$0.e, $$2, $$0.u);
-      } else {
-         super.a($$0, $$1);
-      }
-   }
+   public void a(hev $$0) {
+      super.a($$0);
+      float $$1 = Math.max(0.0F, $$0.a);
 
-   private void b(hdy $$0) {
-      if ($$0.e == bwx.a) {
-         this.s.e = -1.8F;
-      } else {
-         this.r.e = -1.8F;
+      for (int $$2 = 0; $$2 < this.b.length; $$2++) {
+         this.b[$$2].c = (float)(-(4 - $$2)) * $$1 * 1.7F;
       }
-   }
-
-   @Override
-   public void c_(boolean $$0) {
-      super.c_($$0);
-      this.a.k = $$0;
-      this.b.k = $$0;
-      this.c.k = $$0;
-      this.d.k = $$0;
-      this.e.k = $$0;
    }
 }

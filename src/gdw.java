@@ -1,9 +1,75 @@
-public interface gdw {
-   void a(gdu var1);
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   wy aP_();
+public class gdw extends fyn {
+   private static final Logger d = LogUtils.getLogger();
+   public static final ehl a = new ehl((long)"test1".hashCode(), true, false);
+   protected final fyn b;
+   private fsv s;
+   private fsv u;
+   private fsv v;
+   private fsv w;
+   protected fte c;
+   private gec x;
 
-   void a(frv var1, float var2, float var3);
+   public gdw(fyn $$0) {
+      super(wy.c("selectWorld.title"));
+      this.b = $$0;
+   }
 
-   boolean aQ_();
+   @Override
+   protected void aO_() {
+      this.c = new fte(this.p, this.n / 2 - 100, 22, 200, 20, this.c, wy.c("selectWorld.search"));
+      this.c.b($$0 -> this.x.a($$0));
+      this.d(this.c);
+      this.x = this.c(new gec(this, this.m, this.n, this.o - 112, 48, 36, this.c.a(), this.x));
+      this.u = this.c(fsv.a(ezd.a, $$0 -> this.x.b().ifPresent(gec.c::c)).a(this.n / 2 - 154, this.o - 52, 150, 20).a());
+      this.c(fsv.a(wy.c("selectWorld.create"), $$0 -> gdo.a(this.m, this)).a(this.n / 2 + 4, this.o - 52, 150, 20).a());
+      this.v = this.c(fsv.a(wy.c("selectWorld.edit"), $$0 -> this.x.b().ifPresent(gec.c::g)).a(this.n / 2 - 154, this.o - 28, 72, 20).a());
+      this.s = this.c(fsv.a(wy.c("selectWorld.delete"), $$0 -> this.x.b().ifPresent(gec.c::d)).a(this.n / 2 - 76, this.o - 28, 72, 20).a());
+      this.w = this.c(fsv.a(wy.c("selectWorld.recreate"), $$0 -> this.x.b().ifPresent(gec.c::h)).a(this.n / 2 + 4, this.o - 28, 72, 20).a());
+      this.c(fsv.a(wx.k, $$0 -> this.m.a(this.b)).a(this.n / 2 + 82, this.o - 28, 72, 20).a());
+      this.a(null);
+   }
+
+   @Override
+   protected void aC_() {
+      this.b(this.c);
+   }
+
+   @Override
+   public void aL_() {
+      this.m.a(this.b);
+   }
+
+   @Override
+   public void a(fsh $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.c.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 8, 16777215);
+   }
+
+   public void a(@Nullable ezd $$0) {
+      if ($$0 == null) {
+         this.u.b(ezd.a);
+         this.u.j = false;
+         this.v.j = false;
+         this.w.j = false;
+         this.s.j = false;
+      } else {
+         this.u.b($$0.t());
+         this.u.j = $$0.u();
+         this.v.j = $$0.w();
+         this.w.j = $$0.x();
+         this.s.j = $$0.y();
+      }
+   }
+
+   @Override
+   public void aF_() {
+      if (this.x != null) {
+         this.x.aE_().forEach(gec.a::close);
+      }
+   }
 }

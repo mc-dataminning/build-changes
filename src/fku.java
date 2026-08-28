@@ -1,33 +1,80 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
-import java.util.Iterator;
-import java.util.List;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.concurrent.CompletionException;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fku extends flo {
-   private static final Logger b = LogUtils.getLogger();
-   public List<fkt> a = Lists.newArrayList();
+public class fku {
+   private static final Logger a = LogUtils.getLogger();
 
-   public static fku a(String $$0) {
-      fku $$1 = new fku();
-
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("invites").isJsonArray()) {
-            Iterator<JsonElement> $$4 = $$3.get("invites").getAsJsonArray().iterator();
-
-            while ($$4.hasNext()) {
-               $$1.a.add(fkt.a($$4.next().getAsJsonObject()));
-            }
+   public static void a(fpo $$0, fyn $$1, fyn $$2, int $$3, flp $$4, @Nullable fon $$5) {
+      gdo.a($$0, $$1, ($$6, $$7, $$8, $$9) -> {
+         Path $$10;
+         try {
+            $$10 = a($$7, $$8, $$9);
+         } catch (IOException var13) {
+            a.warn("Failed to create temporary world folder.");
+            $$0.a(new fnc(wy.c("mco.create.world.failed"), $$2));
+            return true;
          }
-      } catch (Exception var5) {
-         b.error("Could not parse PendingInvitesList: {}", var5.getMessage());
+
+         flv $$13 = flv.a($$8.J(), $$8.J().e(), ac.b().c());
+         flb $$14 = new flb($$10, $$13, $$0.X(), $$4.a, $$3, flc.f());
+         $$0.d(new fxg($$14::b, wy.c("mco.create.world.reset.title"), wy.i(), wx.e, false));
+         if ($$5 != null) {
+            $$5.run();
+         }
+
+         $$14.a().handleAsync(($$5xx, $$6x) -> {
+            if ($$6x != null) {
+               if ($$6x instanceof CompletionException $$7x) {
+                  $$6x = $$7x.getCause();
+               }
+
+               if ($$6x instanceof fkv) {
+                  $$0.d($$2);
+               } else {
+                  if ($$6x instanceof fkx $$8x) {
+                     a.warn("Failed to create realms world {}", $$8x.a());
+                  } else {
+                     a.warn("Failed to create realms world {}", $$6x.getMessage());
+                  }
+
+                  $$0.d(new fnc(wy.c("mco.create.world.failed"), $$2));
+               }
+            } else {
+               if ($$1 instanceof fmy $$9x) {
+                  $$9x.a($$4.a);
+               }
+
+               if ($$5 != null) {
+                  fkj.a($$4, $$1, true);
+               } else {
+                  $$0.d($$1);
+               }
+
+               fkj.g();
+            }
+
+            return null;
+         }, $$0);
+         return true;
+      });
+   }
+
+   private static Path a(jm<alp> $$0, ezg $$1, @Nullable Path $$2) throws IOException {
+      Path $$3 = Files.createTempDirectory("minecraft_realms_world_upload");
+      if ($$2 != null) {
+         Files.move($$2, $$3.resolve("datapacks"));
       }
 
-      return $$1;
+      tz $$4 = $$1.a($$0.a(), null);
+      tz $$5 = new tz();
+      $$5.a("Data", $$4);
+      Path $$6 = Files.createFile($$3.resolve("level.dat"));
+      um.a($$5, $$6);
+      return $$3;
    }
 }

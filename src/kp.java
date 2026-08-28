@@ -2,19 +2,19 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record kp(Optional<bf<czd, cl>> c) implements dk<dbv> {
-   public static final Codec<kp> a = RecordCodecBuilder.create($$0 -> $$0.group(bf.a(cl.a).optionalFieldOf("items").forGetter(kp::b)).apply($$0, kp::new));
+public record kp(Optional<bg<czk, cm>> c) implements dl<dbn> {
+   public static final Codec<kp> a = RecordCodecBuilder.create($$0 -> $$0.group(bg.a(cm.a).optionalFieldOf("items").forGetter(kp::b)).apply($$0, kp::new));
 
    @Override
-   public ki<dbv> a() {
-      return kj.ap;
+   public kj<dbn> a() {
+      return kk.Q;
    }
 
-   public boolean a(dbv $$0) {
-      return !this.c.isPresent() || this.c.get().a($$0.d());
+   public boolean a(dbn $$0) {
+      return !this.c.isPresent() || this.c.get().a($$0.c());
    }
 
-   public Optional<bf<czd, cl>> b() {
+   public Optional<bg<czk, cm>> b() {
       return this.c;
    }
 }

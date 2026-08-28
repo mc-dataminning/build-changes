@@ -1,29 +1,30 @@
-import net.minecraft.server.MinecraftServer;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public class fdz implements feb<MinecraftServer> {
-   final alg a;
+public record fdz(ezo.b c) implements fec {
+   public static final MapCodec<fdz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ezo.b.e.fieldOf("target").forGetter(fdz::c)).apply($$0, fdz::new));
+   public static final Codec<fdz> b = ezo.b.e.xmap(fdz::new, fdz::c);
 
-   public fdz(alg $$0) {
-      this.a = $$0;
+   public static fec a(ezo.b $$0) {
+      return new fdz($$0);
    }
 
-   public void a(MinecraftServer $$0, fed<MinecraftServer> $$1, long $$2) {
-      alv $$3 = $$0.aE();
-      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
+   @Override
+   public feb a() {
+      return fed.c;
    }
 
-   public static class a extends feb.a<MinecraftServer, fdz> {
-      public a() {
-         super(alg.b("function"), fdz.class);
-      }
+   @Nullable
+   @Override
+   public fgb a(ezo $$0) {
+      return $$0.c(this.c.a());
+   }
 
-      public void a(tz $$0, fdz $$1) {
-         $$0.a("Name", $$1.a.toString());
-      }
-
-      public fdz a(tz $$0) {
-         alg $$1 = alg.a($$0.l("Name"));
-         return new fdz($$1);
-      }
+   @Override
+   public Set<bax<?>> b() {
+      return Set.of(this.c.a());
    }
 }

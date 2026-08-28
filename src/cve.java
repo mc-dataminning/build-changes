@@ -1,104 +1,158 @@
-public class cve extends cuv {
-   private final btw m;
-   private final int n;
+import java.util.List;
 
-   private cve(cwe<?> $$0, int $$1, crb $$2, int $$3) {
-      this($$0, $$1, $$2, new buk(9 * $$3), $$3);
+public abstract class cve extends cwr {
+   public static final int m = 0;
+   public static final int n = 1;
+   public static final int o = 2;
+   public static final int p = 3;
+   public static final int q = 4;
+   private static final int s = 3;
+   private static final int t = 30;
+   private static final int u = 30;
+   private static final int v = 39;
+   final btz w;
+   private final cvo x;
+   protected final djh r;
+   private final dem<? extends ddh> y;
+   private final dek z;
+   private final cws A;
+
+   protected cve(cwl<?> $$0, dem<? extends ddh> $$1, alf<dek> $$2, cws $$3, int $$4, cri $$5) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, new bun(3), new cwy(4));
    }
 
-   public static cve a(int $$0, crb $$1) {
-      return new cve(cwe.a, $$0, $$1, 1);
+   protected cve(cwl<?> $$0, dem<? extends ddh> $$1, alf<dek> $$2, cws $$3, int $$4, cri $$5, btz $$6, cvo $$7) {
+      super($$0, $$4);
+      this.y = $$1;
+      this.A = $$3;
+      a($$6, 3);
+      a($$7, 4);
+      this.w = $$6;
+      this.x = $$7;
+      this.r = $$5.h.dU();
+      this.z = this.r.Q().a($$2);
+      this.a(new cwz($$6, 0, 56, 17));
+      this.a(new cvz(this, $$6, 1, 56, 53));
+      this.a(new cwb($$5.h, $$6, 2, 116, 35));
+      this.c($$5, 8, 84);
+      this.a($$7);
    }
 
-   public static cve b(int $$0, crb $$1) {
-      return new cve(cwe.b, $$0, $$1, 2);
-   }
-
-   public static cve c(int $$0, crb $$1) {
-      return new cve(cwe.c, $$0, $$1, 3);
-   }
-
-   public static cve d(int $$0, crb $$1) {
-      return new cve(cwe.d, $$0, $$1, 4);
-   }
-
-   public static cve e(int $$0, crb $$1) {
-      return new cve(cwe.e, $$0, $$1, 5);
-   }
-
-   public static cve f(int $$0, crb $$1) {
-      return new cve(cwe.f, $$0, $$1, 6);
-   }
-
-   public static cve a(int $$0, crb $$1, btw $$2) {
-      return new cve(cwe.c, $$0, $$1, $$2, 3);
-   }
-
-   public static cve b(int $$0, crb $$1, btw $$2) {
-      return new cve(cwe.f, $$0, $$1, $$2, 6);
-   }
-
-   public cve(cwe<?> $$0, int $$1, crb $$2, btw $$3, int $$4) {
-      super($$0, $$1);
-      a($$3, $$4 * 9);
-      this.m = $$3;
-      this.n = $$4;
-      $$3.c_($$2.h);
-      int $$5 = 18;
-      this.d($$3, 8, 18);
-      int $$6 = 18 + this.n * 18 + 13;
-      this.c($$2, 8, $$6);
-   }
-
-   private void d(btw $$0, int $$1, int $$2) {
-      for (int $$3 = 0; $$3 < this.n; $$3++) {
-         for (int $$4 = 0; $$4 < 9; $$4++) {
-            this.a(new cws($$0, $$4 + $$3 * 9, $$1 + $$4 * 18, $$2 + $$3 * 18));
-         }
+   @Override
+   public void a(crp $$0) {
+      if (this.w instanceof cxe) {
+         ((cxe)this.w).fillStackedContents($$0);
       }
    }
 
-   @Override
-   public boolean b(crc $$0) {
-      return this.m.a($$0);
+   public cwz l() {
+      return this.k.get(2);
    }
 
    @Override
-   public czd b(crc $$0, int $$1) {
-      czd $$2 = czd.k;
-      cws $$3 = this.k.get($$1);
+   public boolean b(crj $$0) {
+      return this.w.a($$0);
+   }
+
+   @Override
+   public czk b(crj $$0, int $$1) {
+      czk $$2 = czk.k;
+      cwz $$3 = this.k.get($$1);
       if ($$3 != null && $$3.h()) {
-         czd $$4 = $$3.g();
+         czk $$4 = $$3.g();
          $$2 = $$4.v();
-         if ($$1 < this.n * 9) {
-            if (!this.a($$4, this.n * 9, this.k.size(), true)) {
-               return czd.k;
+         if ($$1 == 2) {
+            if (!this.a($$4, 3, 39, true)) {
+               return czk.k;
             }
-         } else if (!this.a($$4, 0, this.n * 9, false)) {
-            return czd.k;
+
+            $$3.b($$4, $$2);
+         } else if ($$1 != 1 && $$1 != 0) {
+            if (this.c($$4)) {
+               if (!this.a($$4, 0, 1, false)) {
+                  return czk.k;
+               }
+            } else if (this.d($$4)) {
+               if (!this.a($$4, 1, 2, false)) {
+                  return czk.k;
+               }
+            } else if ($$1 >= 3 && $$1 < 30) {
+               if (!this.a($$4, 30, 39, false)) {
+                  return czk.k;
+               }
+            } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
+               return czk.k;
+            }
+         } else if (!this.a($$4, 3, 39, false)) {
+            return czk.k;
          }
 
          if ($$4.f()) {
-            $$3.e(czd.k);
+            $$3.e(czk.k);
          } else {
             $$3.d();
          }
+
+         if ($$4.M() == $$2.M()) {
+            return czk.k;
+         }
+
+         $$3.a($$0, $$4);
       }
 
       return $$2;
    }
 
+   protected boolean c(czk $$0) {
+      return this.z.a($$0);
+   }
+
+   protected boolean d(czk $$0) {
+      return this.r.M().a($$0);
+   }
+
+   public float m() {
+      int $$0 = this.x.a(2);
+      int $$1 = this.x.a(3);
+      return $$1 != 0 && $$0 != 0 ? azm.a((float)$$0 / (float)$$1, 0.0F, 1.0F) : 0.0F;
+   }
+
+   public float n() {
+      int $$0 = this.x.a(1);
+      if ($$0 == 0) {
+         $$0 = 200;
+      }
+
+      return azm.a((float)this.x.a(0) / (float)$$0, 0.0F, 1.0F);
+   }
+
+   public boolean o() {
+      return this.x.a(0) > 0;
+   }
+
    @Override
-   public void a(crc $$0) {
-      super.a($$0);
-      this.m.c($$0);
+   public cws aj_() {
+      return this.A;
    }
 
-   public btw l() {
-      return this.m;
-   }
+   @Override
+   public cwr.a a(boolean $$0, boolean $$1, deg<?> $$2, final arq $$3, cri $$4) {
+      final List<cwz> $$5 = List.of(this.b(0), this.b(2));
+      return aks.a(new aks.a<ddh>() {
+         @Override
+         public void a(crp $$0) {
+            cve.this.a($$0);
+         }
 
-   public int m() {
-      return this.n;
+         @Override
+         public void a() {
+            $$5.forEach($$0 -> $$0.f(czk.k));
+         }
+
+         @Override
+         public boolean a(deg<ddh> $$0) {
+            return $$0.b().a(new deu(cve.this.w.a(0)), $$3);
+         }
+      }, 1, 1, List.of(this.b(0)), $$5, $$4, (deg<ddh>)$$2, $$0, $$1);
    }
 }

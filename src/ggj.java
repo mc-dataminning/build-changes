@@ -1,80 +1,47 @@
-import java.util.Set;
+public class ggj extends ggk<hcz> {
+   private static final int a = 4;
+   private static final int[][] b = new int[][]{{4, 3, 2}, {6, 4, 5}, {3, 3, 1}, {1, 2, 1}};
+   private static final int[][] c = new int[][]{{0, 0}, {0, 5}, {0, 14}, {0, 18}};
+   private final gjo[] d = new gjo[4];
 
-public class ggj extends gfy<hdb> {
-   public static final gjl a = new get(true, 8.0F, 6.0F, 1.9F, 2.0F, 24.0F, Set.of("head"));
-   private static final float b = 0.87266463F;
-   private static final float c = (float) (-Math.PI / 9);
-   private final gjc d;
-   private final gjc e;
-   private final gjc f;
-   private final gjc g;
-   private final gjc i;
-   private final gjc j;
-   private final gjc k;
-   private final gjc l;
-   private final gjc m;
-
-   public ggj(gjc $$0) {
+   public ggj(gjo $$0) {
       super($$0);
-      this.g = $$0.b("body");
-      this.m = this.g.b("mane");
-      this.d = $$0.b("head");
-      this.e = this.d.b("right_ear");
-      this.f = this.d.b("left_ear");
-      this.i = $$0.b("right_front_leg");
-      this.j = $$0.b("left_front_leg");
-      this.k = $$0.b("right_hind_leg");
-      this.l = $$0.b("left_hind_leg");
+
+      for (int $$1 = 0; $$1 < 4; $$1++) {
+         this.d[$$1] = $$0.b(a($$1));
+      }
    }
 
-   private static gjk c() {
-      gjk $$0 = new gjk();
-      gjm $$1 = $$0.a();
-      gjm $$2 = $$1.a("body", gjh.c().a(1, 1).a(-8.0F, -7.0F, -13.0F, 16.0F, 14.0F, 26.0F), gje.a(0.0F, 7.0F, 0.0F));
-      $$2.a("mane", gjh.c().a(90, 33).a(0.0F, 0.0F, -9.0F, 0.0F, 10.0F, 19.0F, new gjg(0.001F)), gje.a(0.0F, -14.0F, -7.0F));
-      gjm $$3 = $$1.a("head", gjh.c().a(61, 1).a(-7.0F, -3.0F, -19.0F, 14.0F, 6.0F, 19.0F), gje.a(0.0F, 2.0F, -12.0F, 0.87266463F, 0.0F, 0.0F));
-      $$3.a("right_ear", gjh.c().a(1, 1).a(-6.0F, -1.0F, -2.0F, 6.0F, 1.0F, 4.0F), gje.a(-6.0F, -2.0F, -3.0F, 0.0F, 0.0F, (float) (-Math.PI * 2.0 / 9.0)));
-      $$3.a("left_ear", gjh.c().a(1, 6).a(0.0F, -1.0F, -2.0F, 6.0F, 1.0F, 4.0F), gje.a(6.0F, -2.0F, -3.0F, 0.0F, 0.0F, (float) (Math.PI * 2.0 / 9.0)));
-      $$3.a("right_horn", gjh.c().a(10, 13).a(-1.0F, -11.0F, -1.0F, 2.0F, 11.0F, 2.0F), gje.a(-7.0F, 2.0F, -12.0F));
-      $$3.a("left_horn", gjh.c().a(1, 13).a(-1.0F, -11.0F, -1.0F, 2.0F, 11.0F, 2.0F), gje.a(7.0F, 2.0F, -12.0F));
-      int $$4 = 14;
-      int $$5 = 11;
-      $$1.a("right_front_leg", gjh.c().a(66, 42).a(-3.0F, 0.0F, -3.0F, 6.0F, 14.0F, 6.0F), gje.a(-4.0F, 10.0F, -8.5F));
-      $$1.a("left_front_leg", gjh.c().a(41, 42).a(-3.0F, 0.0F, -3.0F, 6.0F, 14.0F, 6.0F), gje.a(4.0F, 10.0F, -8.5F));
-      $$1.a("right_hind_leg", gjh.c().a(21, 45).a(-2.5F, 0.0F, -2.5F, 5.0F, 11.0F, 5.0F), gje.a(-5.0F, 13.0F, 10.0F));
-      $$1.a("left_hind_leg", gjh.c().a(0, 45).a(-2.5F, 0.0F, -2.5F, 5.0F, 11.0F, 5.0F), gje.a(5.0F, 13.0F, 10.0F));
-      return $$0;
+   private static String a(int $$0) {
+      return "segment" + $$0;
    }
 
-   public static gji a() {
-      gjk $$0 = c();
-      return gji.a($$0, 128, 64);
-   }
+   public static gju a() {
+      gjw $$0 = new gjw();
+      gjy $$1 = $$0.a();
+      float $$2 = -3.5F;
 
-   public static gji b() {
-      gjk $$0 = c();
-      gjm $$1 = $$0.a().b("body");
-      $$1.a("mane", gjh.c().a(90, 33).a(0.0F, 0.0F, -9.0F, 0.0F, 10.0F, 19.0F, new gjg(0.001F)), gje.a(0.0F, -14.0F, -3.0F));
-      return gji.a($$0, 128, 64).a(a);
-   }
-
-   public void a(hdb $$0) {
-      super.a($$0);
-      float $$1 = $$0.ae;
-      float $$2 = $$0.ad;
-      this.e.g = (float) (-Math.PI * 2.0 / 9.0) - $$1 * azm.a($$2);
-      this.f.g = (float) (Math.PI * 2.0 / 9.0) + $$1 * azm.a($$2);
-      this.d.f = $$0.aa * (float) (Math.PI / 180.0);
-      float $$3 = 1.0F - (float)azm.a(10 - 2 * $$0.a) / 10.0F;
-      this.d.e = azm.h($$3, 0.87266463F, (float) (-Math.PI / 9));
-      if ($$0.aj) {
-         this.d.c += $$3 * 2.5F;
+      for (int $$3 = 0; $$3 < 4; $$3++) {
+         $$1.a(
+            a($$3),
+            gjt.c().a(c[$$3][0], c[$$3][1]).a((float)b[$$3][0] * -0.5F, 0.0F, (float)b[$$3][2] * -0.5F, (float)b[$$3][0], (float)b[$$3][1], (float)b[$$3][2]),
+            gjq.a(0.0F, (float)(24 - b[$$3][1]), $$2)
+         );
+         if ($$3 < 3) {
+            $$2 += (float)(b[$$3][2] + b[$$3 + 1][2]) * 0.5F;
+         }
       }
 
-      float $$4 = 1.2F;
-      this.i.e = azm.b($$2) * 1.2F * $$1;
-      this.j.e = azm.b($$2 + (float) Math.PI) * 1.2F * $$1;
-      this.k.e = this.j.e;
-      this.l.e = this.i.e;
+      return gju.a($$0, 64, 32);
+   }
+
+   @Override
+   public void a(hcz $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.d.length; $$1++) {
+         this.d[$$1].f = azm.b($$0.u * 0.9F + (float)$$1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.01F * (float)(1 + Math.abs($$1 - 2));
+         this.d[$$1].b = azm.a($$0.u * 0.9F + (float)$$1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.1F * (float)Math.abs($$1 - 2);
+      }
    }
 }

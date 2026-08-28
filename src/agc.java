@@ -1,9 +1,9 @@
 import java.util.Set;
 
-public record agc(int b, bxr c, Set<bxs> d, boolean e) implements zf<abu> {
-   public static final yw<vu, agc> a = yw.a(yu.h, agc::b, bxr.a, agc::e, bxs.m, agc::f, yu.b, agc::g, agc::new);
+public record agc(int b, bxw c, Set<bxx> d, boolean e) implements zf<abu> {
+   public static final yw<vu, agc> a = yw.a(yu.h, agc::b, bxw.a, agc::e, bxx.m, agc::f, yu.b, agc::g, agc::new);
 
-   public static agc a(int $$0, bxr $$1, Set<bxs> $$2, boolean $$3) {
+   public static agc a(int $$0, bxw $$1, Set<bxx> $$2, boolean $$3) {
       return new agc($$0, $$1, $$2, $$3);
    }
 
@@ -16,11 +16,11 @@ public record agc(int b, bxr c, Set<bxs> d, boolean e) implements zf<abu> {
       $$0.a(this);
    }
 
-   public bxr e() {
+   public bxw e() {
       return this.c;
    }
 
-   public Set<bxs> f() {
+   public Set<bxx> f() {
       return this.d;
    }
 

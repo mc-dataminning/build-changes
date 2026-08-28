@@ -3,12 +3,12 @@ import java.util.Iterator;
 import java.util.Map;
 
 public class aww<T> implements Iterable<awu<T>> {
-   private final jr<T> a;
+   private final js<T> a;
    private final Map<T, awu<T>> b = new IdentityHashMap<>();
    private final wy c;
    private final yw<wj, awu<T>> d;
 
-   public aww(jr<T> $$0, wy $$1) {
+   public aww(js<T> $$0, wy $$1) {
       this.a = $$0;
       this.c = $$1;
       this.d = yu.a($$0.g()).a(this::b, awu::b);
@@ -26,7 +26,7 @@ public class aww<T> implements Iterable<awu<T>> {
       return this.b.computeIfAbsent($$0, $$1x -> new awu<>(this, (T)$$1x, $$1));
    }
 
-   public jr<T> b() {
+   public js<T> b() {
       return this.a;
    }
 

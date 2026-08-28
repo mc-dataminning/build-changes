@@ -1,37 +1,19 @@
-public abstract class cag<E extends bxe> implements byw<E>, ccl<E> {
-   private byv.a a;
+import com.google.common.collect.ImmutableMap;
 
-   public cag() {
-      this.a = byv.a.a;
+public class cag extends bza<bxl> {
+   public cag(int $$0, int $$1) {
+      super(ImmutableMap.of(cgl.o, cgm.a), $$0, $$1);
    }
 
-   @Override
-   public final byv.a a() {
-      return this.a;
+   protected boolean a(arq $$0, bxl $$1, long $$2) {
+      return $$1.eb().c(cgl.o).filter($$1x -> $$1x.a($$1)).isPresent();
    }
 
-   @Override
-   public final boolean e(arq $$0, E $$1, long $$2) {
-      if (this.trigger($$0, $$1, $$2)) {
-         this.a = byv.a.b;
-         return true;
-      } else {
-         return false;
-      }
+   protected void b(arq $$0, bxl $$1, long $$2) {
+      $$1.eb().b(cgl.o);
    }
 
-   @Override
-   public final void f(arq $$0, E $$1, long $$2) {
-      this.g($$0, $$1, $$2);
-   }
-
-   @Override
-   public final void g(arq $$0, E $$1, long $$2) {
-      this.a = byv.a.a;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+   protected void c(arq $$0, bxl $$1, long $$2) {
+      $$1.eb().c(cgl.o).ifPresent($$1x -> $$1.J().a($$1x.a()));
    }
 }

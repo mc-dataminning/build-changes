@@ -1,40 +1,40 @@
-public class gzv extends hav<hdz, ghe> {
-   private final ggm<hdz> a;
-   private final hlc b;
+public class gzv extends gxz<cnb, hfm, gjc> {
+   private static final alg a = alg.b("textures/entity/wither/wither_invulnerable.png");
+   private static final alg j = alg.b("textures/entity/wither/wither.png");
 
-   public gzv(gye<hdz, ghe> $$0, giy $$1, hlc $$2) {
-      super($$0);
-      this.a = new ghc<>($$1.a(gjb.ct));
-      this.b = $$2;
+   public gzv(gwt.a $$0) {
+      super($$0, new gjc($$0.a(gjn.dS)), 1.0F);
+      this.a(new hbu(this, $$0.f()));
    }
 
-   private boolean a(czd $$0, hld.d $$1) {
-      dhm $$2 = $$0.a(kj.D);
-      if ($$2 != null && !$$2.d().isEmpty()) {
-         hld $$3 = this.b.a($$2.d().get());
-         return !$$3.a($$1).isEmpty();
-      } else {
-         return false;
-      }
+   protected int a(cnb $$0, iv $$1) {
+      return 15;
    }
 
-   public void a(fjj $$0, gqa $$1, int $$2, hdz $$3, float $$4, float $$5) {
-      if (!$$3.z && $$3.ay) {
-         hjy $$6 = $$3.a;
-         if ($$6.c() != null) {
-            if (!this.a($$3.W, hld.d.c)) {
-               $$0.a();
-               if (this.a($$3.W, hld.d.a)) {
-                  $$0.a(0.0F, -0.053125F, 0.06875F);
-               }
+   public alg a(hfm $$0) {
+      int $$1 = azm.d($$0.c);
+      return $$1 > 0 && ($$1 > 80 || $$1 / 5 % 2 != 1) ? a : j;
+   }
 
-               fjn $$7 = $$1.getBuffer(gqk.d($$6.c()));
-               this.d().a(this.a);
-               this.a.a($$3);
-               this.a.a($$0, $$7, $$2, hin.d);
-               $$0.b();
-            }
-         }
+   public hfm b() {
+      return new hfm();
+   }
+
+   protected void a(hfm $$0, fjy $$1) {
+      float $$2 = 2.0F;
+      if ($$0.c > 0.0F) {
+         $$2 -= $$0.c / 220.0F * 0.5F;
       }
+
+      $$1.b($$2, $$2, $$2);
+   }
+
+   public void a(cnb $$0, hfm $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      int $$3 = $$0.t();
+      $$1.c = $$3 > 0 ? (float)$$3 - $$2 : 0.0F;
+      System.arraycopy($$0.q(), 0, $$1.a, 0, $$1.a.length);
+      System.arraycopy($$0.n(), 0, $$1.b, 0, $$1.b.length);
+      $$1.d = $$0.x();
    }
 }

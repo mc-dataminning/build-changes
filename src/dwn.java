@@ -1,61 +1,33 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dwn extends dmf {
-   public static final MapCodec<dwn> a = b(dwn::new);
+public class dwn extends dtz implements dwi {
+   public static final MapCodec<dwn> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dwi.a.e.fieldOf("weathering_state").forGetter(dnp::c), t()).apply($$0, dwn::new)
+   );
+   private final dwi.a e;
 
    @Override
    public MapCodec<dwn> a() {
-      return a;
+      return d;
    }
 
-   protected dwn(eag.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected void a(eah $$0, dja $$1, iu $$2, eah $$3, boolean $$4) {
-      if ($$1.B_().i()) {
-         $$1.a($$2, dmh.aV.m(), 3);
-         $$1.c(2009, $$2, 0);
-         $$1.a(null, $$2, awn.Dp, awo.e, 1.0F, (1.0F + $$1.C_().i() * 0.2F) * 0.7F);
-      }
+   public dwn(dwi.a $$0, ean.d $$1) {
+      super($$1);
+      this.e = $$0;
    }
 
    @Override
-   public void a(eah $$0, dja $$1, iu $$2, azv $$3) {
-      ja $$4 = ja.b($$3);
-      if ($$4 != ja.b) {
-         iu $$5 = $$2.a($$4);
-         eah $$6 = $$1.a_($$5);
-         if (!$$0.t() || !$$6.c($$1, $$5, $$4.g())) {
-            double $$7 = (double)$$2.u();
-            double $$8 = (double)$$2.v();
-            double $$9 = (double)$$2.w();
-            if ($$4 == ja.a) {
-               $$8 -= 0.05;
-               $$7 += $$3.j();
-               $$9 += $$3.j();
-            } else {
-               $$8 += $$3.j() * 0.8;
-               if ($$4.o() == ja.a.a) {
-                  $$9 += $$3.j();
-                  if ($$4 == ja.f) {
-                     $$7++;
-                  } else {
-                     $$7 += 0.05;
-                  }
-               } else {
-                  $$7 += $$3.j();
-                  if ($$4 == ja.d) {
-                     $$9++;
-                  } else {
-                     $$9 += 0.05;
-                  }
-               }
-            }
+   protected void b(eao $$0, arq $$1, iv $$2, azv $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
 
-            $$1.a(lx.l, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-         }
-      }
+   @Override
+   protected boolean f(eao $$0) {
+      return dwi.c($$0.b()).isPresent();
+   }
+
+   public dwi.a q() {
+      return this.e;
    }
 }

@@ -1,4 +1,4 @@
-public record aas(iu c, String d, int e) implements aai {
+public record aas(iv c, String d, int e) implements aai {
    public static final yw<vu, aas> a = aai.a(aas::a, aas::new);
    public static final aai.b<aas> b = aai.a("debug/poi_added");
 
@@ -17,7 +17,7 @@ public record aas(iu c, String d, int e) implements aai {
       return b;
    }
 
-   public iu b() {
+   public iv b() {
       return this.c;
    }
 

@@ -1,3 +1,4 @@
-public class heb extends hdn {
-   public int a;
+public class heb extends hcz {
+   public float a;
+   public float b;
 }

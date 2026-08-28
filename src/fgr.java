@@ -1,11 +1,7 @@
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import javax.annotation.Nonnull;
-import javax.annotation.meta.TypeQualifierDefault;
+public interface fgr<T> {
+   void a(fgp<T> var1);
 
-@Nonnull
-@TypeQualifierDefault({ElementType.FIELD})
-@Retention(RetentionPolicy.RUNTIME)
-public @interface fgr {
+   boolean a(iv var1, T var2);
+
+   int a();
 }

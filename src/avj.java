@@ -1,88 +1,113 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionStage;
 import java.util.concurrent.Executor;
 import java.util.concurrent.atomic.AtomicInteger;
+import javax.annotation.Nullable;
 
 public class avj<S> implements auz {
-   private static final int c = 2;
-   private static final int d = 2;
-   private static final int e = 1;
-   protected final CompletableFuture<bau> a = new CompletableFuture<>();
-   protected CompletableFuture<List<S>> b;
+   private static final int a = 2;
+   private static final int b = 2;
+   private static final int c = 1;
+   final CompletableFuture<bau> d = new CompletableFuture<>();
+   @Nullable
+   private CompletableFuture<List<S>> e;
    final Set<auw> f;
    private final int g;
-   private int h;
-   private int i;
+   private final AtomicInteger h = new AtomicInteger();
+   private final AtomicInteger i = new AtomicInteger();
    private final AtomicInteger j = new AtomicInteger();
    private final AtomicInteger k = new AtomicInteger();
 
-   public static avj<Void> a(avd $$0, List<auw> $$1, Executor $$2, Executor $$3, CompletableFuture<bau> $$4) {
-      return new avj<>($$2, $$3, $$0, $$1, ($$1x, $$2x, $$3x, $$4x, $$5) -> $$3x.a($$1x, $$2x, $$2, $$5), $$4);
+   public static auz b(avd $$0, List<auw> $$1, Executor $$2, Executor $$3, CompletableFuture<bau> $$4) {
+      avj<Void> $$5 = new avj<>($$1);
+      $$5.b($$2, $$3, $$0, $$1, avj.a.a, $$4);
+      return $$5;
    }
 
-   protected avj(Executor $$0, final Executor $$1, avd $$2, List<auw> $$3, avj.a<S> $$4, CompletableFuture<bau> $$5) {
-      this.g = $$3.size();
-      this.j.incrementAndGet();
-      $$5.thenRun(this.k::incrementAndGet);
-      List<CompletableFuture<S>> $$6 = Lists.newArrayList();
-      CompletableFuture<?> $$7 = $$5;
-      this.f = Sets.newHashSet($$3);
+   protected avj(List<auw> $$0) {
+      this.g = $$0.size();
+      this.f = new HashSet<>($$0);
+   }
 
-      for (final auw $$8 : $$3) {
-         final CompletableFuture<?> $$9 = $$7;
-         CompletableFuture<S> $$10 = $$4.create(new auw.a() {
-            @Override
-            public <T> CompletableFuture<T> a(T $$0) {
-               $$1.execute(() -> {
-                  avj.this.f.remove($$8);
-                  if (avj.this.f.isEmpty()) {
-                     avj.this.a.complete(bau.a);
-                  }
-               });
-               return avj.this.a.thenCombine((CompletionStage<? extends T>)$$9, ($$1xx, $$2) -> $$0);
-            }
-         }, $$2, $$8, $$1x -> {
-            this.j.incrementAndGet();
-            $$0.execute(() -> {
-               $$1x.run();
-               this.k.incrementAndGet();
-            });
-         }, $$1x -> {
-            this.h++;
-            $$1.execute(() -> {
-               $$1x.run();
-               this.i++;
-            });
+   protected void b(Executor $$0, Executor $$1, avd $$2, List<auw> $$3, avj.a<S> $$4, CompletableFuture<?> $$5) {
+      this.e = this.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   protected CompletableFuture<List<S>> a(Executor $$0, Executor $$1, avd $$2, List<auw> $$3, avj.a<S> $$4, CompletableFuture<?> $$5) {
+      Executor $$6 = $$1x -> {
+         this.h.incrementAndGet();
+         $$0.execute(() -> {
+            $$1x.run();
+            this.i.incrementAndGet();
          });
-         $$6.add($$10);
-         $$7 = $$10;
+      };
+      Executor $$7 = $$1x -> {
+         this.j.incrementAndGet();
+         $$1.execute(() -> {
+            $$1x.run();
+            this.k.incrementAndGet();
+         });
+      };
+      this.h.incrementAndGet();
+      $$5.thenRun(this.i::incrementAndGet);
+      CompletableFuture<?> $$8 = $$5;
+      List<CompletableFuture<S>> $$9 = new ArrayList<>();
+
+      for (auw $$10 : $$3) {
+         auw.a $$11 = this.a($$10, $$8, $$1);
+         CompletableFuture<S> $$12 = $$4.create($$11, $$2, $$10, $$6, $$7);
+         $$9.add($$12);
+         $$8 = $$12;
       }
 
-      this.b = af.e($$6);
+      return ag.e($$9);
+   }
+
+   private auw.a a(final auw $$0, final CompletableFuture<?> $$1, final Executor $$2) {
+      return new auw.a() {
+         @Override
+         public <T> CompletableFuture<T> wait(T $$0x) {
+            $$2.execute(() -> {
+               avj.this.f.remove($$0);
+               if (avj.this.f.isEmpty()) {
+                  avj.this.d.complete(bau.a);
+               }
+            });
+            return avj.this.d.thenCombine((CompletionStage<? extends T>)$$1, ($$1xx, $$2xx) -> $$0);
+         }
+      };
    }
 
    @Override
    public CompletableFuture<?> a() {
-      return this.b;
+      return Objects.requireNonNull(this.e, "not started");
    }
 
    @Override
    public float b() {
       int $$0 = this.g - this.f.size();
-      float $$1 = (float)(this.k.get() * 2 + this.i * 2 + $$0 * 1);
-      float $$2 = (float)(this.j.get() * 2 + this.h * 2 + this.g * 1);
+      float $$1 = (float)a(this.i.get(), this.k.get(), $$0);
+      float $$2 = (float)a(this.h.get(), this.j.get(), this.g);
       return $$1 / $$2;
    }
 
-   public static auz a(avd $$0, List<auw> $$1, Executor $$2, Executor $$3, CompletableFuture<bau> $$4, boolean $$5) {
-      return (auz)($$5 ? new auy($$0, $$1, $$2, $$3, $$4) : a($$0, $$1, $$2, $$3, $$4));
+   private static int a(int $$0, int $$1, int $$2) {
+      return $$0 * 2 + $$1 * 2 + $$2 * 1;
    }
 
+   public static auz a(avd $$0, List<auw> $$1, Executor $$2, Executor $$3, CompletableFuture<bau> $$4, boolean $$5) {
+      return $$5 ? auy.a($$0, $$1, $$2, $$3, $$4) : b($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @FunctionalInterface
    protected interface a<S> {
+      avj.a<Void> a = ($$0, $$1, $$2, $$3, $$4) -> $$2.reload($$0, $$1, $$3, $$4);
+
       CompletableFuture<S> create(auw.a var1, avd var2, auw var3, Executor var4, Executor var5);
    }
 }

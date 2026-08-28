@@ -14,8 +14,8 @@ public class bbw extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(bix.F.typeName(), bks.a()));
-      return this.fixTypeEverywhereTyped("BedItemColorFix", this.getInputSchema().getType(bix.t), $$1 -> {
+      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(biz.F.typeName(), bku.a()));
+      return this.fixTypeEverywhereTyped("BedItemColorFix", this.getInputSchema().getType(biz.t), $$1 -> {
          Optional<Pair<String, String>> $$2 = $$1.getOptional($$0);
          if ($$2.isPresent() && Objects.equals($$2.get().getSecond(), "minecraft:bed")) {
             Dynamic<?> $$3 = (Dynamic<?>)$$1.get(DSL.remainderFinder());

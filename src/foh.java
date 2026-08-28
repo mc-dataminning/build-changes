@@ -1,26 +1,53 @@
-public enum foh {
-   a(true, false),
-   b(false, false),
-   c(false, true);
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   private static final foh[] d = values();
-   private final boolean e;
-   private final boolean f;
+public class foh extends fol {
+   private static final Logger b = LogUtils.getLogger();
+   private static final wy c = wy.c("mco.configure.world.closing");
+   private final flp d;
+   private final fmy e;
 
-   private foh(final boolean $$0, final boolean $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public foh(flp $$0, fmy $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public boolean a() {
-      return this.e;
+   @Override
+   public void run() {
+      fko $$0 = fko.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
+            return;
+         }
+
+         try {
+            boolean $$2 = $$0.g(this.d.a);
+            if ($$2) {
+               this.e.f();
+               this.d.e = flp.c.a;
+               a(this.e);
+               break;
+            }
+         } catch (fml var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Failed to close server", var5);
+            this.a(var5);
+         }
+      }
    }
 
-   public boolean b() {
-      return this.f;
-   }
-
-   public foh c() {
-      return d[(this.ordinal() + 1) % d.length];
+   @Override
+   public wy a() {
+      return c;
    }
 }

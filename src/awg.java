@@ -123,7 +123,7 @@ public class awg extends awf {
    }
 
    private byte[] b(DatagramPacket $$0) throws IOException {
-      long $$1 = af.c();
+      long $$1 = ag.c();
       if ($$1 < this.u + 5000L) {
          byte[] $$2 = this.t.a();
          byte[] $$3 = this.a($$0.getSocketAddress());
@@ -197,7 +197,7 @@ public class awg extends awf {
 
    private void d() {
       if (this.a) {
-         long $$0 = af.c();
+         long $$0 = ag.c();
          if ($$0 >= this.i + 30000L) {
             this.i = $$0;
             this.s.values().removeIf($$1 -> $$1.a($$0));
@@ -208,7 +208,7 @@ public class awg extends awf {
    @Override
    public void run() {
       d.info("Query running on {}:{}", this.r, this.j);
-      this.i = af.c();
+      this.i = ag.c();
       DatagramPacket $$0 = new DatagramPacket(this.p, this.p.length);
 
       try {

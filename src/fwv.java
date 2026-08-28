@@ -1,66 +1,88 @@
-public class fwv extends fyb {
-   private static final wy s = wy.c("selectWorld.backupJoinSkipButton");
-   public static final wy a = wy.c("selectWorld.backupJoinConfirmButton");
-   private final Runnable u;
-   protected final fwv.a b;
-   private final wy v;
-   private final boolean w;
-   private ftc x = ftc.a;
-   final wy c;
-   protected int d;
-   private fsl y;
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.function.Consumer;
 
-   public fwv(Runnable $$0, fwv.a $$1, wy $$2, wy $$3, boolean $$4) {
-      this($$0, $$1, $$2, $$3, a, $$4);
+public class fwv {
+   int a;
+   final Map<fwv.a, fwv.b> b = Maps.newTreeMap(Comparator.<fwv.a, fwr>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
+
+   public void a(Consumer<fws> $$0) {
+      this.a++;
+      $$0.accept(new fwv.c(0));
    }
 
-   public fwv(Runnable $$0, fwv.a $$1, wy $$2, wy $$3, wy $$4, boolean $$5) {
-      super($$2);
-      this.u = $$0;
-      this.b = $$1;
-      this.v = $$3;
-      this.w = $$5;
-      this.c = $$4;
+   public String a(boolean $$0) {
+      final StringBuilder $$1 = new StringBuilder();
+      Consumer<String> $$2 = new Consumer<String>() {
+         private boolean b = true;
+
+         public void a(String $$0) {
+            if (!this.b) {
+               $$1.append(". ");
+            }
+
+            this.b = false;
+            $$1.append($$0);
+         }
+      };
+      this.b.forEach(($$2x, $$3) -> {
+         if ($$3.b == this.a && ($$0 || !$$3.c)) {
+            $$3.a.a($$2);
+            $$3.c = true;
+         }
+      });
+      return $$1.toString();
    }
 
-   @Override
-   protected void aO_() {
-      super.aO_();
-      this.x = ftc.a(this.p, this.v, this.n - 50);
-      int $$0 = (this.x.a() + 1) * 9;
-      this.y = fsl.a(wy.c("selectWorld.backupEraseCache"), this.p).a(this.n / 2 - 155 + 80, 76 + $$0).a();
-      if (this.w) {
-         this.c(this.y);
-      }
+   static class a {
+      final fwr a;
+      final int b;
 
-      this.c(fsj.a(this.c, $$0x -> this.b.proceed(true, this.y.a())).a(this.n / 2 - 155, 100 + $$0, 150, 20).a());
-      this.c(fsj.a(s, $$0x -> this.b.proceed(false, this.y.a())).a(this.n / 2 - 155 + 160, 100 + $$0, 150, 20).a());
-      this.c(fsj.a(wx.e, $$0x -> this.u.run()).a(this.n / 2 - 155 + 80, 124 + $$0, 150, 20).a());
-   }
-
-   @Override
-   public void a(frv $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 50, 16777215);
-      this.x.a($$0, this.n / 2, 70);
-   }
-
-   @Override
-   public boolean aD_() {
-      return false;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.u.run();
-         return true;
-      } else {
-         return super.a($$0, $$1, $$2);
+      a(fwr $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
    }
 
-   public interface a {
-      void proceed(boolean var1, boolean var2);
+   static class b {
+      fwu<?> a;
+      int b;
+      boolean c;
+
+      b() {
+         this.a = fwu.a;
+         this.b = -1;
+      }
+
+      public fwv.b a(int $$0, fwu<?> $$1) {
+         if (!this.a.equals($$1)) {
+            this.a = $$1;
+            this.c = false;
+         } else if (this.b + 1 != $$0) {
+            this.c = false;
+         }
+
+         this.b = $$0;
+         return this;
+      }
+   }
+
+   class c implements fws {
+      private final int b;
+
+      c(final int $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      public void a(fwr $$0, fwu<?> $$1) {
+         fwv.this.b.computeIfAbsent(new fwv.a($$0, this.b), $$0x -> new fwv.b()).a(fwv.this.a, $$1);
+      }
+
+      @Override
+      public fws a() {
+         return fwv.this.new c(this.b + 1);
+      }
    }
 }

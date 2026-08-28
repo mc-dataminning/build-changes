@@ -1,202 +1,113 @@
-import java.util.List;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
+import org.joml.Matrix4f;
+import org.joml.Vector3f;
 
-public class fxc extends fyb {
-   private static final wy b = wy.c("createWorld.customize.flat.title");
-   static final alg c = alg.b("container/slot");
-   private static final int d = 18;
-   private static final int s = 20;
-   private static final int u = 1;
-   private static final int v = 1;
-   private static final int w = 2;
-   private static final int x = 2;
-   private final fvx y = new fvx(this, 33, 64);
-   protected final gdc a;
-   private final Consumer<epe> z;
-   epe A;
+public record fxc(fxb a, int b, int c) {
+   private static final fxc d = new fxc(0, 0, 0, 0);
+
+   public fxc(int $$0, int $$1, int $$2, int $$3) {
+      this(new fxb($$0, $$1), $$2, $$3);
+   }
+
+   public static fxc a() {
+      return d;
+   }
+
+   public static fxc a(fwz $$0, int $$1, int $$2, int $$3, int $$4) {
+      return switch ($$0) {
+         case a -> new fxc($$1, $$2, $$3, $$4);
+         case b -> new fxc($$2, $$1, $$4, $$3);
+      };
+   }
+
+   public fxc a(fxa $$0) {
+      return new fxc(this.a.a($$0), this.b, this.c);
+   }
+
+   public int a(fwz $$0) {
+      return switch ($$0) {
+         case a -> this.b;
+         case b -> this.c;
+      };
+   }
+
+   public int b(fxa $$0) {
+      fwz $$1 = $$0.a();
+      return $$0.c() ? this.a.a($$1) + this.a($$1) - 1 : this.a.a($$1);
+   }
+
+   public fxc c(fxa $$0) {
+      int $$1 = this.b($$0);
+      fwz $$2 = $$0.a().a();
+      int $$3 = this.b($$2.c());
+      int $$4 = this.a($$2);
+      return a($$0.a(), $$1, $$3, 1, $$4).a($$0);
+   }
+
+   public boolean a(fxc $$0) {
+      return this.a($$0, fwz.a) && this.a($$0, fwz.b);
+   }
+
+   public boolean a(fxc $$0, fwz $$1) {
+      int $$2 = this.b($$1.c());
+      int $$3 = $$0.b($$1.c());
+      int $$4 = this.b($$1.b());
+      int $$5 = $$0.b($$1.b());
+      return Math.max($$2, $$3) <= Math.min($$4, $$5);
+   }
+
+   public int b(fwz $$0) {
+      return (this.b($$0.b()) + this.b($$0.c())) / 2;
+   }
+
    @Nullable
-   private fxc.a B;
-   @Nullable
-   private fsj C;
-
-   public fxc(gdc $$0, Consumer<epe> $$1, epe $$2) {
-      super(b);
-      this.a = $$0;
-      this.z = $$1;
-      this.A = $$2;
+   public fxc b(fxc $$0) {
+      int $$1 = Math.max(this.d(), $$0.d());
+      int $$2 = Math.max(this.b(), $$0.b());
+      int $$3 = Math.min(this.e(), $$0.e());
+      int $$4 = Math.min(this.c(), $$0.c());
+      return $$1 < $$3 && $$2 < $$4 ? new fxc($$1, $$2, $$3 - $$1, $$4 - $$2) : null;
    }
 
-   public epe l() {
-      return this.A;
+   public int b() {
+      return this.a.b();
    }
 
-   public void a(epe $$0) {
-      this.A = $$0;
-      if (this.B != null) {
-         this.B.b();
-         this.m();
+   public int c() {
+      return this.a.b() + this.c;
+   }
+
+   public int d() {
+      return this.a.a();
+   }
+
+   public int e() {
+      return this.a.a() + this.b;
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return $$0 >= this.d() && $$0 < this.e() && $$1 >= this.b() && $$1 < this.c();
+   }
+
+   public fxc a(Matrix4f $$0) {
+      if (f.a($$0)) {
+         return this;
+      } else {
+         Vector3f $$1 = $$0.transformPosition((float)this.d(), (float)this.b(), 0.0F, new Vector3f());
+         Vector3f $$2 = $$0.transformPosition((float)this.e(), (float)this.c(), 0.0F, new Vector3f());
+         return new fxc(azm.d($$1.x), azm.d($$1.y), azm.d($$2.x - $$1.x), azm.d($$2.y - $$1.y));
       }
    }
 
-   @Override
-   protected void aO_() {
-      this.y.a(this.l, this.p);
-      this.B = this.y.c(new fxc.a());
-      fwb $$0 = this.y.b(fwb.d().a(4));
-      $$0.c().e();
-      fwb $$1 = $$0.a(fwb.e().a(8));
-      fwb $$2 = $$0.a(fwb.e().a(8));
-      this.C = $$1.a(fsj.a(wy.c("createWorld.customize.flat.removeLayer"), $$0x -> {
-         if (this.E()) {
-            List<epb> $$1x = this.A.e();
-            int $$2x = this.B.aE_().indexOf(this.B.p());
-            int $$3 = $$1x.size() - $$2x - 1;
-            $$1x.remove($$3);
-            this.B.a($$1x.isEmpty() ? null : this.B.aE_().get(Math.min($$2x, $$1x.size() - 1)));
-            this.A.g();
-            this.B.b();
-            this.m();
-         }
-      }).a());
-      $$1.a(fsj.a(wy.c("createWorld.customize.presets"), $$0x -> {
-         this.m.a(new fxx(this));
-         this.A.g();
-         this.m();
-      }).a());
-      $$2.a(fsj.a(wx.d, $$0x -> {
-         this.z.accept(this.A);
-         this.aL_();
-         this.A.g();
-      }).a());
-      $$2.a(fsj.a(wx.e, $$0x -> {
-         this.aL_();
-         this.A.g();
-      }).a());
-      this.A.g();
-      this.m();
-      this.y.a(this::c);
-      this.c();
+   public fxb f() {
+      return this.a;
    }
 
-   @Override
-   protected void c() {
-      if (this.B != null) {
-         this.B.a(this.n, this.y);
-      }
-
-      this.y.a();
+   public int g() {
+      return this.b;
    }
 
-   void m() {
-      if (this.C != null) {
-         this.C.j = this.E();
-      }
-   }
-
-   private boolean E() {
-      return this.B != null && this.B.p() != null;
-   }
-
-   @Override
-   public void aL_() {
-      this.m.a(this.a);
-   }
-
-   class a extends ftf<fxc.a.a> {
-      private static final wy m = wy.c("createWorld.customize.flat.tile").a(n.t);
-      private static final wy n = wy.c("createWorld.customize.flat.height").a(n.t);
-
-      public a() {
-         super(fxc.this.m, fxc.this.n, fxc.this.o - 103, 43, 24, (int)(9.0 * 1.5));
-
-         for (int $$0 = 0; $$0 < fxc.this.A.e().size(); $$0++) {
-            this.b(new fxc.a.a());
-         }
-      }
-
-      public void a(@Nullable fxc.a.a $$0) {
-         super.a($$0);
-         fxc.this.m();
-      }
-
-      public void b() {
-         int $$0 = this.aE_().indexOf(this.p());
-         this.s();
-
-         for (int $$1 = 0; $$1 < fxc.this.A.e().size(); $$1++) {
-            this.b(new fxc.a.a());
-         }
-
-         List<fxc.a.a> $$2 = this.aE_();
-         if ($$0 >= 0 && $$0 < $$2.size()) {
-            this.a($$2.get($$0));
-         }
-      }
-
-      @Override
-      protected void a(frv $$0, int $$1, int $$2) {
-         $$0.b(fxc.this.p, m, $$1, $$2, -1);
-         $$0.b(fxc.this.p, n, $$1 + this.a() - fxc.this.p.a(n) - 8, $$2, -1);
-      }
-
-      class a extends ftf.a<fxc.a.a> {
-         @Override
-         public void a(frv $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            epb $$10 = fxc.this.A.e().get(fxc.this.A.e().size() - $$1 - 1);
-            eah $$11 = $$10.b();
-            czd $$12 = this.a($$11);
-            this.a($$0, $$3, $$2, $$12);
-            int $$13 = $$2 + $$5 / 2 - 9 / 2;
-            $$0.b(fxc.this.p, $$12.y(), $$3 + 18 + 5, $$13, -1);
-            wy $$14;
-            if ($$1 == 0) {
-               $$14 = wy.a("createWorld.customize.flat.layer.top", $$10.a());
-            } else if ($$1 == fxc.this.A.e().size() - 1) {
-               $$14 = wy.a("createWorld.customize.flat.layer.bottom", $$10.a());
-            } else {
-               $$14 = wy.a("createWorld.customize.flat.layer", $$10.a());
-            }
-
-            $$0.b(fxc.this.p, $$14, $$3 + $$4 - fxc.this.p.a($$14) - 8, $$13, -1);
-         }
-
-         private czd a(eah $$0) {
-            cyz $$1 = $$0.b().h();
-            if ($$1 == czh.a) {
-               if ($$0.a(dmh.J)) {
-                  $$1 = czh.rp;
-               } else if ($$0.a(dmh.K)) {
-                  $$1 = czh.rq;
-               }
-            }
-
-            return new czd($$1);
-         }
-
-         @Override
-         public wy a() {
-            epb $$0 = fxc.this.A.e().get(fxc.this.A.e().size() - a.this.aE_().indexOf(this) - 1);
-            czd $$1 = this.a($$0.b());
-            return (wy)(!$$1.f() ? wy.a("narrator.select", $$1.y()) : wx.a);
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            a.this.a(this);
-            return super.a($$0, $$1, $$2);
-         }
-
-         private void a(frv $$0, int $$1, int $$2, czd $$3) {
-            this.a($$0, $$1 + 1, $$2 + 1);
-            if (!$$3.f()) {
-               $$0.b($$3, $$1 + 2, $$2 + 2);
-            }
-         }
-
-         private void a(frv $$0, int $$1, int $$2) {
-            $$0.a(gqk::H, fxc.c, $$1, $$2, 18, 18);
-         }
-      }
+   public int h() {
+      return this.c;
    }
 }

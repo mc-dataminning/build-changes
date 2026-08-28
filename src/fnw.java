@@ -1,56 +1,41 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public abstract class fnw implements Runnable {
-   protected static final int a = 25;
-   private static final Logger b = LogUtils.getLogger();
-   private boolean c = false;
-
-   protected static void a(long $$0) {
-      try {
-         Thread.sleep($$0 * 1000L);
-      } catch (InterruptedException var3) {
-         Thread.currentThread().interrupt();
-         b.error("", var3);
+public interface fnw {
+   fnw a = new fnw() {
+      @Override
+      public long a() {
+         return 1L;
       }
-   }
 
-   public static void a(fyb $$0) {
-      foz $$1 = foz.Q();
-      $$1.execute(() -> $$1.a($$0));
-   }
-
-   protected void a(wy $$0) {
-      this.b();
-      foz $$1 = foz.Q();
-      $$1.execute(() -> $$1.a(new fmn($$0, new fju(new fyd()))));
-   }
-
-   protected void a(Exception $$0) {
-      if ($$0 instanceof flv $$1) {
-         this.a($$1.a.b());
-      } else {
-         this.a(wy.b($$0.getMessage()));
+      @Override
+      public long b() {
+         return 1L;
       }
-   }
+   };
 
-   protected void a(flv $$0) {
-      this.a($$0.a.b());
-   }
+   long a();
 
-   public abstract wy a();
+   long b();
 
-   public boolean d() {
-      return this.c;
-   }
+   static fnw a(final int $$0) {
+      return new fnw() {
+         private static final Logger c = LogUtils.getLogger();
+         private int d;
 
-   public void c() {
-   }
+         @Override
+         public long a() {
+            this.d = 0;
+            return 1L;
+         }
 
-   public void e() {
-   }
-
-   public void b() {
-      this.c = true;
+         @Override
+         public long b() {
+            this.d++;
+            long $$0 = Math.min(1L << this.d, (long)$$0);
+            c.debug("Skipping for {} extra cycles", $$0);
+            return $$0;
+         }
+      };
    }
 }

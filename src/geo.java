@@ -1,3 +1,8 @@
-public interface geo {
-   void a(bwx var1, fjj var2);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface geo {
 }

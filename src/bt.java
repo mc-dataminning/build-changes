@@ -1,56 +1,58 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
 import java.util.Optional;
 
-public class bt extends dj<bt.a> {
-   @Override
-   public Codec<bt.a> a() {
-      return bt.a.a;
+public record bt(Optional<jj<dfx>> b, cw.d c) {
+   public static final Codec<bt> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(ju.a(mh.aR).optionalFieldOf("enchantments").forGetter(bt::a), cw.d.d.optionalFieldOf("levels", cw.d.c).forGetter(bt::b))
+            .apply($$0, bt::new)
+   );
+
+   public bt(jf<dfx> $$0, cw.d $$1) {
+      this(Optional.of(jj.a($$0)), $$1);
    }
 
-   public void a(arr $$0, eah $$1) {
-      this.a($$0, $$1x -> $$1x.a($$1));
+   public bt(jj<dfx> $$0, cw.d $$1) {
+      this(Optional.of($$0), $$1);
    }
 
-   public static record a(Optional<bi> b, Optional<je<dmf>> c, Optional<dq> d) implements dj.a {
-      public static final Codec<bt.a> a = RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     bx.b.optionalFieldOf("player").forGetter(bt.a::a),
-                     mf.e.r().optionalFieldOf("block").forGetter(bt.a::b),
-                     dq.a.optionalFieldOf("state").forGetter(bt.a::c)
-                  )
-                  .apply($$0, bt.a::new)
-         )
-         .validate(bt.a::a);
+   public boolean a(dgd $$0) {
+      if (this.b.isPresent()) {
+         for (jf<dfx> $$1 : this.b.get()) {
+            if (this.a($$0, $$1)) {
+               return true;
+            }
+         }
 
-      private static DataResult<bt.a> a(bt.a $$0) {
-         return $$0.c
-            .<DataResult<bt.a>>flatMap(
-               $$1 -> $$0.d.<String>flatMap($$1x -> $$1x.a(((dmf)$$1.a()).l())).map($$1x -> DataResult.error(() -> "Block" + $$1 + " has no property " + $$1x))
-            )
-            .orElseGet(() -> DataResult.success($$0));
-      }
+         return false;
+      } else if (this.c != cw.d.c) {
+         for (Entry<jf<dfx>> $$2 : $$0.b()) {
+            if (this.c.d($$2.getIntValue())) {
+               return true;
+            }
+         }
 
-      public static aq<bt.a> a(dmf $$0) {
-         return ap.e.a(new bt.a(Optional.empty(), Optional.of($$0.p()), Optional.empty()));
+         return false;
+      } else {
+         return !$$0.d();
       }
+   }
 
-      public boolean a(eah $$0) {
-         return this.c.isPresent() && !$$0.a(this.c.get()) ? false : !this.d.isPresent() || this.d.get().a($$0);
+   private boolean a(dgd $$0, jf<dfx> $$1) {
+      int $$2 = $$0.a($$1);
+      if ($$2 == 0) {
+         return false;
+      } else {
+         return this.c == cw.d.c ? true : this.c.d($$2);
       }
+   }
 
-      @Override
-      public Optional<bi> a() {
-         return this.b;
-      }
+   public Optional<jj<dfx>> a() {
+      return this.b;
+   }
 
-      public Optional<je<dmf>> b() {
-         return this.c;
-      }
-
-      public Optional<dq> c() {
-         return this.d;
-      }
+   public cw.d b() {
+      return this.c;
    }
 }

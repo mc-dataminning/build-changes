@@ -1,47 +1,35 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class ftu {
+   public static final int a = 8;
+   public static final int b = 8;
+   public static final int c = 8;
+   public static final int d = 8;
+   public static final int e = 40;
+   public static final int f = 8;
+   public static final int g = 8;
+   public static final int h = 8;
+   public static final int i = 64;
+   public static final int j = 64;
 
-public class ftu implements fwh {
-   private static final int a = 170;
-   private final wy b;
-   @Nullable
-   private List<ayy> c;
-   @Nullable
-   private tu d;
-   @Nullable
-   private final wy e;
-
-   private ftu(wy $$0, @Nullable wy $$1) {
-      this.b = $$0;
-      this.e = $$1;
+   public static void a(fsh $$0, hkl $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, -1);
    }
 
-   public static ftu a(wy $$0, @Nullable wy $$1) {
-      return new ftu($$0, $$1);
+   public static void a(fsh $$0, hkl $$1, int $$2, int $$3, int $$4, int $$5) {
+      a($$0, $$1.a(), $$2, $$3, $$4, true, false, $$5);
    }
 
-   public static ftu a(wy $$0) {
-      return new ftu($$0, $$0);
-   }
-
-   @Override
-   public void b(fwg $$0) {
-      if (this.e != null) {
-         $$0.a(fwf.c, this.e);
+   public static void a(fsh $$0, alg $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6, int $$7) {
+      int $$8 = 8 + ($$6 ? 8 : 0);
+      int $$9 = 8 * ($$6 ? -1 : 1);
+      $$0.a(gqx::H, $$1, $$2, $$3, 8.0F, (float)$$8, $$4, $$4, 8, $$9, 64, 64, $$7);
+      if ($$5) {
+         a($$0, $$1, $$2, $$3, $$4, $$6, $$7);
       }
    }
 
-   public List<ayy> a(foz $$0) {
-      tu $$1 = tu.a();
-      if (this.c == null || $$1 != this.d) {
-         this.c = a($$0, this.b);
-         this.d = $$1;
-      }
-
-      return this.c;
-   }
-
-   public static List<ayy> a(foz $$0, wy $$1) {
-      return $$0.h.c($$1, 170);
+   private static void a(fsh $$0, alg $$1, int $$2, int $$3, int $$4, boolean $$5, int $$6) {
+      int $$7 = 8 + ($$5 ? 8 : 0);
+      int $$8 = 8 * ($$5 ? -1 : 1);
+      $$0.a(gqx::H, $$1, $$2, $$3, 40.0F, (float)$$7, $$4, $$4, 8, $$8, 64, 64, $$6);
    }
 }

@@ -1,26 +1,54 @@
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public class ept extends eqh {
-   private static final ept c = new ept();
-   public static MapCodec<ept> a = MapCodec.unit(() -> c);
+public class ept extends epp {
+   public static final MapCodec<ept> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ehh.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               ehh.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, ept::new)
+   );
+   private static final Logger b = LogUtils.getLogger();
+   private final ehh d;
+   private final ehh e;
+   private final int f;
 
-   private ept() {
+   private ept(ehh $$0, ehh $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public static ept a() {
-      return c;
+   public static ept a(ehh $$0, ehh $$1, int $$2) {
+      return new ept($$0, $$1, $$2);
    }
 
    @Override
-   protected boolean a(eqg $$0, azv $$1, iu $$2) {
-      eqf $$3 = $$0.e()
-         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
-      je<dkd> $$4 = $$0.d().u($$2);
-      return $$0.f().a($$4).a($$3);
+   public int a(azv $$0, ehk $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$3 - $$2 - this.f + 1 <= 0) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = azm.a($$0, $$2 + this.f, $$3);
+         int $$5 = azm.a($$0, $$2, $$4 - 1);
+         return azm.a($$0, $$2, $$5 - 1 + this.f);
+      }
    }
 
    @Override
-   public eqj<?> b() {
-      return eqj.e;
+   public epq<?> a() {
+      return epq.d;
+   }
+
+   @Override
+   public String toString() {
+      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
    }
 }

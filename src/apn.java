@@ -14,101 +14,101 @@ import javax.annotation.Nullable;
 public class apn {
    private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("commands.teleport.invalidPosition"));
 
-   public static void a(CommandDispatcher<ei> $$0) {
-      LiteralCommandNode<ei> $$1 = $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("teleport").requires($$0x -> $$0x.c(2)))
+   public static void a(CommandDispatcher<ej> $$0) {
+      LiteralCommandNode<ej> $$1 = $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("teleport").requires($$0x -> $$0x.c(2)))
                   .then(
-                     ej.a("location", gm.a())
+                     ek.a("location", gn.a())
                         .executes(
                            $$0x -> a(
-                                 (ei)$$0x.getSource(),
-                                 Collections.singleton(((ei)$$0x.getSource()).g()),
-                                 ((ei)$$0x.getSource()).e(),
-                                 gm.b($$0x, "location"),
+                                 (ej)$$0x.getSource(),
+                                 Collections.singleton(((ej)$$0x.getSource()).g()),
+                                 ((ej)$$0x.getSource()).e(),
+                                 gn.b($$0x, "location"),
                                  null,
                                  null
                               )
                         )
                   ))
                .then(
-                  ej.a("destination", ev.a())
-                     .executes($$0x -> a((ei)$$0x.getSource(), Collections.singleton(((ei)$$0x.getSource()).g()), ev.a($$0x, "destination")))
+                  ek.a("destination", ew.a())
+                     .executes($$0x -> a((ej)$$0x.getSource(), Collections.singleton(((ej)$$0x.getSource()).g()), ew.a($$0x, "destination")))
                ))
             .then(
-               ((RequiredArgumentBuilder)ej.a("targets", ev.b())
+               ((RequiredArgumentBuilder)ek.a("targets", ew.b())
                      .then(
-                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ej.a("location", gm.a())
+                        ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ek.a("location", gn.a())
                                  .executes(
-                                    $$0x -> a((ei)$$0x.getSource(), ev.b($$0x, "targets"), ((ei)$$0x.getSource()).e(), gm.b($$0x, "location"), null, null)
+                                    $$0x -> a((ej)$$0x.getSource(), ew.b($$0x, "targets"), ((ej)$$0x.getSource()).e(), gn.b($$0x, "location"), null, null)
                                  ))
                               .then(
-                                 ej.a("rotation", gj.a())
+                                 ek.a("rotation", gk.a())
                                     .executes(
                                        $$0x -> a(
-                                             (ei)$$0x.getSource(),
-                                             ev.b($$0x, "targets"),
-                                             ((ei)$$0x.getSource()).e(),
-                                             gm.b($$0x, "location"),
-                                             gj.a($$0x, "rotation"),
+                                             (ej)$$0x.getSource(),
+                                             ew.b($$0x, "targets"),
+                                             ((ej)$$0x.getSource()).e(),
+                                             gn.b($$0x, "location"),
+                                             gk.a($$0x, "rotation"),
                                              null
                                           )
                                     )
                               ))
                            .then(
-                              ((LiteralArgumentBuilder)ej.a("facing")
+                              ((LiteralArgumentBuilder)ek.a("facing")
                                     .then(
-                                       ej.a("entity")
+                                       ek.a("entity")
                                           .then(
-                                             ((RequiredArgumentBuilder)ej.a("facingEntity", ev.a())
+                                             ((RequiredArgumentBuilder)ek.a("facingEntity", ew.a())
                                                    .executes(
                                                       $$0x -> a(
-                                                            (ei)$$0x.getSource(),
-                                                            ev.b($$0x, "targets"),
-                                                            ((ei)$$0x.getSource()).e(),
-                                                            gm.b($$0x, "location"),
+                                                            (ej)$$0x.getSource(),
+                                                            ew.b($$0x, "targets"),
+                                                            ((ej)$$0x.getSource()).e(),
+                                                            gn.b($$0x, "location"),
                                                             null,
-                                                            new aoa.a(ev.a($$0x, "facingEntity"), eu.a.a)
+                                                            new aoa.a(ew.a($$0x, "facingEntity"), ev.a.a)
                                                          )
                                                    ))
                                                 .then(
-                                                   ej.a("facingAnchor", eu.a())
+                                                   ek.a("facingAnchor", ev.a())
                                                       .executes(
                                                          $$0x -> a(
-                                                               (ei)$$0x.getSource(),
-                                                               ev.b($$0x, "targets"),
-                                                               ((ei)$$0x.getSource()).e(),
-                                                               gm.b($$0x, "location"),
+                                                               (ej)$$0x.getSource(),
+                                                               ew.b($$0x, "targets"),
+                                                               ((ej)$$0x.getSource()).e(),
+                                                               gn.b($$0x, "location"),
                                                                null,
-                                                               new aoa.a(ev.a($$0x, "facingEntity"), eu.a($$0x, "facingAnchor"))
+                                                               new aoa.a(ew.a($$0x, "facingEntity"), ev.a($$0x, "facingAnchor"))
                                                             )
                                                       )
                                                 )
                                           )
                                     ))
                                  .then(
-                                    ej.a("facingLocation", gm.a())
+                                    ek.a("facingLocation", gn.a())
                                        .executes(
                                           $$0x -> a(
-                                                (ei)$$0x.getSource(),
-                                                ev.b($$0x, "targets"),
-                                                ((ei)$$0x.getSource()).e(),
-                                                gm.b($$0x, "location"),
+                                                (ej)$$0x.getSource(),
+                                                ew.b($$0x, "targets"),
+                                                ((ej)$$0x.getSource()).e(),
+                                                gn.b($$0x, "location"),
                                                 null,
-                                                new aoa.b(gm.a($$0x, "facingLocation"))
+                                                new aoa.b(gn.a($$0x, "facingLocation"))
                                              )
                                        )
                                  )
                            )
                      ))
-                  .then(ej.a("destination", ev.a()).executes($$0x -> a((ei)$$0x.getSource(), ev.b($$0x, "targets"), ev.a($$0x, "destination"))))
+                  .then(ek.a("destination", ew.a()).executes($$0x -> a((ej)$$0x.getSource(), ew.b($$0x, "targets"), ew.a($$0x, "destination"))))
             )
       );
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("tp").requires($$0x -> $$0x.c(2))).redirect($$1));
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("tp").requires($$0x -> $$0x.c(2))).redirect($$1));
    }
 
-   private static int a(ei $$0, Collection<? extends bwf> $$1, bwf $$2) throws CommandSyntaxException {
-      for (bwf $$3 : $$1) {
-         a($$0, $$3, (arq)$$2.dV(), $$2.dA(), $$2.dC(), $$2.dG(), EnumSet.noneOf(bxs.class), $$2.dL(), $$2.dN(), null);
+   private static int a(ej $$0, Collection<? extends bwi> $$1, bwi $$2) throws CommandSyntaxException {
+      for (bwi $$3 : $$1) {
+         a($$0, $$3, (arq)$$2.dU(), $$2.dz(), $$2.dB(), $$2.dF(), EnumSet.noneOf(bxx.class), $$2.dK(), $$2.dM(), null);
       }
 
       if ($$1.size() == 1) {
@@ -120,16 +120,16 @@ public class apn {
       return $$1.size();
    }
 
-   private static int a(ei $$0, Collection<? extends bwf> $$1, arq $$2, gh $$3, @Nullable gh $$4, @Nullable aoa $$5) throws CommandSyntaxException {
-      feq $$6 = $$3.a($$0);
-      fep $$7 = $$4 == null ? null : $$4.b($$0);
+   private static int a(ej $$0, Collection<? extends bwi> $$1, arq $$2, gi $$3, @Nullable gi $$4, @Nullable aoa $$5) throws CommandSyntaxException {
+      fex $$6 = $$3.a($$0);
+      few $$7 = $$4 == null ? null : $$4.b($$0);
 
-      for (bwf $$8 : $$1) {
-         Set<bxs> $$9 = a($$3, $$4, $$8.dV().aj() == $$2.aj());
+      for (bwi $$8 : $$1) {
+         Set<bxx> $$9 = a($$3, $$4, $$8.dU().aj() == $$2.aj());
          if ($$7 == null) {
-            a($$0, $$8, $$2, $$6.d, $$6.e, $$6.f, $$9, $$8.dL(), $$8.dN(), $$5);
+            a($$0, $$8, $$2, $$6.d, $$6.e, $$6.f, $$9, $$8.dK(), $$8.dM(), $$5);
          } else {
-            a($$0, $$8, $$2, $$6.d, $$6.e, $$6.f, $$9, $$7.j, $$7.i, $$5);
+            a($$0, $$8, $$2, $$6.d, $$6.e, $$6.f, $$9, $$7.k, $$7.j, $$5);
          }
       }
 
@@ -142,35 +142,35 @@ public class apn {
       return $$1.size();
    }
 
-   private static Set<bxs> a(gh $$0, @Nullable gh $$1, boolean $$2) {
-      Set<bxs> $$3 = EnumSet.noneOf(bxs.class);
+   private static Set<bxx> a(gi $$0, @Nullable gi $$1, boolean $$2) {
+      Set<bxx> $$3 = EnumSet.noneOf(bxx.class);
       if ($$0.a()) {
-         $$3.add(bxs.f);
+         $$3.add(bxx.f);
          if ($$2) {
-            $$3.add(bxs.a);
+            $$3.add(bxx.a);
          }
       }
 
       if ($$0.b()) {
-         $$3.add(bxs.g);
+         $$3.add(bxx.g);
          if ($$2) {
-            $$3.add(bxs.b);
+            $$3.add(bxx.b);
          }
       }
 
       if ($$0.c()) {
-         $$3.add(bxs.h);
+         $$3.add(bxx.h);
          if ($$2) {
-            $$3.add(bxs.c);
+            $$3.add(bxx.c);
          }
       }
 
       if ($$1 == null || $$1.a()) {
-         $$3.add(bxs.e);
+         $$3.add(bxx.e);
       }
 
       if ($$1 == null || $$1.b()) {
-         $$3.add(bxs.d);
+         $$3.add(bxx.d);
       }
 
       return $$3;
@@ -180,16 +180,16 @@ public class apn {
       return String.format(Locale.ROOT, "%f", $$0);
    }
 
-   private static void a(ei $$0, bwf $$1, arq $$2, double $$3, double $$4, double $$5, Set<bxs> $$6, float $$7, float $$8, @Nullable aoa $$9) throws CommandSyntaxException {
-      iu $$10 = iu.a($$3, $$4, $$5);
-      if (!dja.l($$10)) {
+   private static void a(ej $$0, bwi $$1, arq $$2, double $$3, double $$4, double $$5, Set<bxx> $$6, float $$7, float $$8, @Nullable aoa $$9) throws CommandSyntaxException {
+      iv $$10 = iv.a($$3, $$4, $$5);
+      if (!djh.l($$10)) {
          throw a.create();
       } else {
-         double $$11 = $$6.contains(bxs.a) ? $$3 - $$1.dA() : $$3;
-         double $$12 = $$6.contains(bxs.b) ? $$4 - $$1.dC() : $$4;
-         double $$13 = $$6.contains(bxs.c) ? $$5 - $$1.dG() : $$5;
-         float $$14 = $$6.contains(bxs.d) ? $$7 - $$1.dL() : $$7;
-         float $$15 = $$6.contains(bxs.e) ? $$8 - $$1.dN() : $$8;
+         double $$11 = $$6.contains(bxx.a) ? $$3 - $$1.dz() : $$3;
+         double $$12 = $$6.contains(bxx.b) ? $$4 - $$1.dB() : $$4;
+         double $$13 = $$6.contains(bxx.c) ? $$5 - $$1.dF() : $$5;
+         float $$14 = $$6.contains(bxx.d) ? $$7 - $$1.dK() : $$7;
+         float $$15 = $$6.contains(bxx.e) ? $$8 - $$1.dM() : $$8;
          float $$16 = azm.h($$14);
          float $$17 = azm.h($$15);
          if ($$1.a($$2, $$11, $$12, $$13, $$6, $$16, $$17, true)) {
@@ -197,12 +197,12 @@ public class apn {
                $$9.perform($$0, $$1);
             }
 
-            if (!($$1 instanceof bxe $$18) || !$$18.fJ()) {
-               $$1.i($$1.dy().d(1.0, 0.0, 1.0));
+            if (!($$1 instanceof bxj $$18) || !$$18.fI()) {
+               $$1.i($$1.dx().d(1.0, 0.0, 1.0));
                $$1.d(true);
             }
 
-            if ($$1 instanceof bxm $$19) {
+            if ($$1 instanceof bxr $$19) {
                $$19.O().m();
             }
          }

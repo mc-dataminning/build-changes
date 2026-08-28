@@ -1,43 +1,38 @@
-public interface cpn {
-   int m_ = 10;
-   float n_ = 0.2F;
+import java.util.Map;
 
-   int q();
-
-   static boolean a(arq $$0, bxe $$1, bxe $$2) {
-      float $$3 = (float)$$1.h(byk.c);
-      float $$4;
-      if (!$$1.n_() && (int)$$3 > 0) {
-         $$4 = $$3 / 2.0F + (float)$$0.A.a((int)$$3);
-      } else {
-         $$4 = $$3;
-      }
-
-      buu $$6 = $$1.dW().b($$1);
-      boolean $$7 = $$2.a($$0, $$6, $$4);
-      if ($$7) {
-         dfs.a($$0, (bwf)$$2, $$6);
-         if (!$$1.n_()) {
-            a($$1, $$2);
-         }
-      }
-
-      return $$7;
+public class cpn extends bza<cph> {
+   public cpn() {
+      super(Map.of(cgl.p, cgm.a, cgl.n, cgm.b, cgl.aV, cgm.b, cgl.aW, cgm.b));
    }
 
-   static void a(bxe $$0, bxe $$1) {
-      double $$2 = $$0.h(byk.d);
-      double $$3 = $$1.h(byk.p);
-      double $$4 = $$2 - $$3;
-      if (!($$4 <= 0.0)) {
-         double $$5 = $$1.dA() - $$0.dA();
-         double $$6 = $$1.dG() - $$0.dG();
-         float $$7 = (float)($$0.dV().A.a(21) - 10);
-         double $$8 = $$4 * (double)($$0.dV().A.i() * 0.5F + 0.2F);
-         feq $$9 = new feq($$5, 0.0, $$6).d().c($$8).b($$7);
-         double $$10 = $$4 * (double)$$0.dV().A.i() * 0.5;
-         $$1.i($$9.d, $$10, $$9.f);
-         $$1.T = true;
+   protected boolean a(arq $$0, cph $$1) {
+      return $$1.aH() && !$$1.bh() && $$1.at() == bxv.a;
+   }
+
+   protected void a(arq $$0, cph $$1, long $$2) {
+      bxj $$3 = $$1.eb().c(cgl.p).orElse(null);
+      if ($$3 != null) {
+         boolean $$4 = $$1.l($$3.ds());
+         fex $$5 = null;
+         if ($$4) {
+            fex $$6 = cic.a($$1, 5, 5, $$3.ds());
+            if ($$6 != null && cpj.a($$1, $$6) && $$3.h($$6.d, $$6.e, $$6.f) > $$3.g($$1)) {
+               $$5 = $$6;
+            }
+         }
+
+         if ($$5 == null) {
+            $$5 = $$1.dX().h() ? cpj.a($$3, $$1.dX()) : a($$1, $$3);
+         }
+
+         $$1.eb().a(cgl.n, new cgo(iv.a((jp)$$5), 0.6F, 1));
       }
+   }
+
+   private static fex a(cph $$0, bxj $$1) {
+      fex $$2 = $$1.ds().d($$0.ds());
+      double $$3 = $$2.g() - azm.d($$0.dX().j(), 8.0, 4.0);
+      fex $$4 = $$2.d().d($$3, $$3, $$3);
+      return $$0.ds().e($$4);
    }
 }

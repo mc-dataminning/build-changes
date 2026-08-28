@@ -1,21 +1,14 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class hgo implements hgx {
-   public static final MapCodec<hgo> a = hgp.a.xmap(hgo::new, $$0 -> $$0.b);
-   private final hgp b;
-
-   public hgo(boolean $$0, hgp.a $$1) {
-      this(new hgp($$0, $$1));
-   }
-
-   private hgo(hgp $$0) {
-      this.b = $$0;
-   }
+public record hgo(int b) implements hgn {
+   public static final MapCodec<hgo> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayu.l.optionalFieldOf("index", 0).forGetter(hgo::b)).apply($$0, hgo::new));
 
    @Override
-   public float a(czd $$0, @Nullable gjz $$1, @Nullable bxe $$2, int $$3) {
-      return this.b.a($$0, $$1, $$2, $$3);
+   public boolean get(czk $$0, @Nullable gkl $$1, @Nullable bxj $$2, int $$3, czi $$4) {
+      dbt $$5 = $$0.a(kk.p);
+      return $$5 != null ? $$5.b(this.b) == Boolean.TRUE : false;
    }
 
    @Override

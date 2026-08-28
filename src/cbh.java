@@ -1,43 +1,22 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class cbh {
-   public static <E extends bxg> byw<E> a(cbh.b<E> $$0) {
-      return a(($$0x, $$1) -> true, $$0);
+   public static cal<bxj> a(float $$0, int $$1) {
+      return a($$0x -> true, $$1x -> $$0, $$1);
    }
 
-   public static <E extends bxg> byw<E> a(cbh.a<E> $$0, cbh.b<E> $$1) {
-      return cci.a(
-         (Function<cci.b<E>, ? extends App<cci.c<E>, ccl<E>>>)($$2 -> $$2.group($$2.c(cgg.p), $$2.a(cgg.F)).apply($$2, ($$2x, $$3) -> ($$4, $$5, $$6) -> {
-                  if (!$$0.test($$4, (E)$$5)) {
+   public static cal<bxj> a(Predicate<bxj> $$0, Function<bxj, Float> $$1, int $$2) {
+      return ccn.a(
+         (Function<ccn.b<bxj>, ? extends App<ccn.c<bxj>, ccq<bxj>>>)($$3 -> $$3.group($$3.c(cgl.n), $$3.b(cgl.o)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
+                  if (!$$0.test($$7)) {
                      return false;
                   } else {
-                     Optional<? extends bxe> $$7 = $$1.get($$4, (E)$$5);
-                     if ($$7.isEmpty()) {
-                        return false;
-                     } else {
-                        bxe $$8 = $$7.get();
-                        if (!$$5.c($$8)) {
-                           return false;
-                        } else {
-                           $$2x.a($$8);
-                           $$3.b();
-                           return true;
-                        }
-                     }
+                     $$4.a(new cgo($$3.b($$5), $$1.apply($$7), $$2));
+                     return true;
                   }
                }))
       );
-   }
-
-   @FunctionalInterface
-   public interface a<E> {
-      boolean test(arq var1, E var2);
-   }
-
-   @FunctionalInterface
-   public interface b<E> {
-      Optional<? extends bxe> get(arq var1, E var2);
    }
 }

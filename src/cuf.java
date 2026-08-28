@@ -1,387 +1,51 @@
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
-import javax.annotation.Nullable;
-
 public class cuf extends ctx {
-   private static final double b = 0.01;
-   private static final double c = 0.2;
-   private static final double d = 0.4;
-   private static final double e = 0.4;
-   private final bwz f;
-   private feq g = feq.c;
-
-   public cuf(ctp $$0) {
-      super($$0);
-      this.f = new bwz($$0, this::a);
+   public cuf(bwr<? extends cuf> $$0, djh $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public bwz a() {
-      return this.f;
-   }
-
-   public void a(bwz $$0) {
-      this.a(this.g);
+   protected czg o() {
+      return czo.ow;
    }
 
    @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.g = new feq($$0, $$1, $$2);
-      this.a(this.g);
+   public czk dH() {
+      return new czk(czo.ow);
    }
 
    @Override
-   public void b() {
-      if (this.c() instanceof arq $$0) {
-         this.a.bf();
-         iu var11 = this.a.j();
-         eah $$3 = this.c().a_(var11);
-         boolean $$4 = dlu.h($$3);
-         this.a.a($$4);
-         if ($$4) {
-            this.a($$0);
-            if ($$3.a(dmh.hI)) {
-               this.a.a(var11.u(), var11.v(), var11.w(), $$3.c(dsi.d));
-            }
-         } else {
-            this.a.e($$0);
-         }
-
-         this.a.aK();
-         this.a(0.0F);
-         double $$5 = this.a.K - this.g();
-         double $$6 = this.a.M - this.i();
-         if ($$5 * $$5 + $$6 * $$6 > 0.001) {
-            this.b((float)(azm.d($$6, $$5) * 180.0 / Math.PI));
-            if (this.a.m()) {
-               this.b(this.k() + 180.0F);
-            }
-         }
-
-         double $$7 = (double)azm.h(this.k() - this.a.N);
-         if ($$7 < -170.0 || $$7 >= 170.0) {
-            this.b(this.k() + 180.0F);
-            this.a.b(!this.a.m());
-         }
-
-         this.a(this.j() % 360.0F);
-         this.b(this.k() % 360.0F);
-         this.d();
-      } else {
-         if (this.f.d()) {
-            this.f.e();
-         } else {
-            this.a.ay();
-            this.a(this.j() % 360.0F);
-            this.b(this.k() % 360.0F);
-         }
-      }
+   public int b() {
+      return 27;
    }
 
    @Override
-   public void a(arq $$0) {
-      iu $$1 = this.a.j();
-      eah $$2 = this.c().a_($$1);
-      this.a.k();
-      double $$3 = this.a.dA();
-      double $$4 = this.a.dC();
-      double $$5 = this.a.dG();
-      feq $$6 = this.d($$3, $$4, $$5);
-      $$4 = (double)$$1.v();
-      boolean $$7 = false;
-      boolean $$8 = false;
-      if ($$2.a(dmh.bw)) {
-         $$7 = $$2.c(dsi.d);
-         $$8 = !$$7;
-      }
-
-      double $$9 = 0.0078125;
-      if (this.a.bj()) {
-         $$9 *= 0.2;
-      }
-
-      feq $$10 = this.e();
-      ebl $$11 = $$2.c(((dlu)$$2.b()).c());
-      switch ($$11) {
-         case c:
-            this.a($$10.b(-$$9, 0.0, 0.0));
-            $$4++;
-            break;
-         case d:
-            this.a($$10.b($$9, 0.0, 0.0));
-            $$4++;
-            break;
-         case e:
-            this.a($$10.b(0.0, 0.0, $$9));
-            $$4++;
-            break;
-         case f:
-            this.a($$10.b(0.0, 0.0, -$$9));
-            $$4++;
-      }
-
-      $$10 = this.e();
-      Pair<jz, jz> $$12 = ctp.a($$11);
-      jz $$13 = (jz)$$12.getFirst();
-      jz $$14 = (jz)$$12.getSecond();
-      double $$15 = (double)($$14.u() - $$13.u());
-      double $$16 = (double)($$14.w() - $$13.w());
-      double $$17 = Math.sqrt($$15 * $$15 + $$16 * $$16);
-      double $$18 = $$10.d * $$15 + $$10.f * $$16;
-      if ($$18 < 0.0) {
-         $$15 = -$$15;
-         $$16 = -$$16;
-      }
-
-      double $$19 = Math.min(2.0, $$10.i());
-      $$10 = new feq($$19 * $$15 / $$17, $$10.e, $$19 * $$16 / $$17);
-      this.a($$10);
-      bwf $$20 = this.a.cZ();
-      feq $$22;
-      if (this.a.cZ() instanceof arr $$21) {
-         $$22 = $$21.aj();
-      } else {
-         $$22 = feq.c;
-      }
-
-      if ($$20 instanceof crc && $$22.h() > 0.0) {
-         feq $$24 = $$22.d();
-         double $$25 = this.e().j();
-         if ($$24.h() > 0.0 && $$25 < 0.01) {
-            this.a(this.e().b($$22.d * 0.001, 0.0, $$22.f * 0.001));
-            $$8 = false;
-         }
-      }
-
-      if ($$8) {
-         double $$26 = this.e().i();
-         if ($$26 < 0.03) {
-            this.a(feq.c);
-         } else {
-            this.a(this.e().d(0.5, 0.0, 0.5));
-         }
-      }
-
-      double $$27 = (double)$$1.u() + 0.5 + (double)$$13.u() * 0.5;
-      double $$28 = (double)$$1.w() + 0.5 + (double)$$13.w() * 0.5;
-      double $$29 = (double)$$1.u() + 0.5 + (double)$$14.u() * 0.5;
-      double $$30 = (double)$$1.w() + 0.5 + (double)$$14.w() * 0.5;
-      $$15 = $$29 - $$27;
-      $$16 = $$30 - $$28;
-      double $$31;
-      if ($$15 == 0.0) {
-         $$31 = $$5 - (double)$$1.w();
-      } else if ($$16 == 0.0) {
-         $$31 = $$3 - (double)$$1.u();
-      } else {
-         double $$33 = $$3 - $$27;
-         double $$34 = $$5 - $$28;
-         $$31 = ($$33 * $$15 + $$34 * $$16) * 2.0;
-      }
-
-      $$3 = $$27 + $$15 * $$31;
-      $$5 = $$28 + $$16 * $$31;
-      this.c($$3, $$4, $$5);
-      double $$36 = this.a.ca() ? 0.75 : 1.0;
-      double $$37 = this.a.a($$0);
-      $$10 = this.e();
-      this.a.a(bxi.a, new feq(azm.a($$36 * $$10.d, -$$37, $$37), 0.0, azm.a($$36 * $$10.f, -$$37, $$37)));
-      if ($$13.v() != 0 && azm.a(this.a.dA()) - $$1.u() == $$13.u() && azm.a(this.a.dG()) - $$1.w() == $$13.w()) {
-         this.c(this.a.dA(), this.a.dC() + (double)$$13.v(), this.a.dG());
-      } else if ($$14.v() != 0 && azm.a(this.a.dA()) - $$1.u() == $$14.u() && azm.a(this.a.dG()) - $$1.w() == $$14.w()) {
-         this.c(this.a.dA(), this.a.dC() + (double)$$14.v(), this.a.dG());
-      }
-
-      this.a(this.a.a(this.e()));
-      feq $$38 = this.d(this.a.dA(), this.a.dC(), this.a.dG());
-      if ($$38 != null && $$6 != null) {
-         double $$39 = ($$6.e - $$38.e) * 0.05;
-         feq $$40 = this.e();
-         double $$41 = $$40.i();
-         if ($$41 > 0.0) {
-            this.a($$40.d(($$41 + $$39) / $$41, 1.0, ($$41 + $$39) / $$41));
-         }
-
-         this.c(this.a.dA(), $$38.e, this.a.dG());
-      }
-
-      int $$42 = azm.a(this.a.dA());
-      int $$43 = azm.a(this.a.dG());
-      if ($$42 != $$1.u() || $$43 != $$1.w()) {
-         feq $$44 = this.e();
-         double $$45 = $$44.i();
-         this.b($$45 * (double)($$42 - $$1.u()), $$44.e, $$45 * (double)($$43 - $$1.w()));
-      }
-
-      if ($$7) {
-         feq $$46 = this.e();
-         double $$47 = $$46.i();
-         if ($$47 > 0.01) {
-            double $$48 = 0.06;
-            this.a($$46.b($$46.d / $$47 * 0.06, 0.0, $$46.f / $$47 * 0.06));
-         } else {
-            feq $$49 = this.e();
-            double $$50 = $$49.d;
-            double $$51 = $$49.f;
-            if ($$11 == ebl.b) {
-               if (this.a.b($$1.h())) {
-                  $$50 = 0.02;
-               } else if (this.a.b($$1.i())) {
-                  $$50 = -0.02;
-               }
-            } else {
-               if ($$11 != ebl.a) {
-                  return;
-               }
-
-               if (this.a.b($$1.f())) {
-                  $$51 = 0.02;
-               } else if (this.a.b($$1.g())) {
-                  $$51 = -0.02;
-               }
-            }
-
-            this.b($$50, $$49.e, $$51);
-         }
-      }
-   }
-
-   @Nullable
-   public feq a(double $$0, double $$1, double $$2, double $$3) {
-      int $$4 = azm.a($$0);
-      int $$5 = azm.a($$1);
-      int $$6 = azm.a($$2);
-      if (this.c().a_(new iu($$4, $$5 - 1, $$6)).a(axc.P)) {
-         $$5--;
-      }
-
-      eah $$7 = this.c().a_(new iu($$4, $$5, $$6));
-      if (dlu.h($$7)) {
-         ebl $$8 = $$7.c(((dlu)$$7.b()).c());
-         $$1 = (double)$$5;
-         if ($$8.b()) {
-            $$1 = (double)($$5 + 1);
-         }
-
-         Pair<jz, jz> $$9 = ctp.a($$8);
-         jz $$10 = (jz)$$9.getFirst();
-         jz $$11 = (jz)$$9.getSecond();
-         double $$12 = (double)($$11.u() - $$10.u());
-         double $$13 = (double)($$11.w() - $$10.w());
-         double $$14 = Math.sqrt($$12 * $$12 + $$13 * $$13);
-         $$12 /= $$14;
-         $$13 /= $$14;
-         $$0 += $$12 * $$3;
-         $$2 += $$13 * $$3;
-         if ($$10.v() != 0 && azm.a($$0) - $$4 == $$10.u() && azm.a($$2) - $$6 == $$10.w()) {
-            $$1 += (double)$$10.v();
-         } else if ($$11.v() != 0 && azm.a($$0) - $$4 == $$11.u() && azm.a($$2) - $$6 == $$11.w()) {
-            $$1 += (double)$$11.v();
-         }
-
-         return this.d($$0, $$1, $$2);
-      } else {
-         return null;
-      }
-   }
-
-   @Nullable
-   public feq d(double $$0, double $$1, double $$2) {
-      int $$3 = azm.a($$0);
-      int $$4 = azm.a($$1);
-      int $$5 = azm.a($$2);
-      if (this.c().a_(new iu($$3, $$4 - 1, $$5)).a(axc.P)) {
-         $$4--;
-      }
-
-      eah $$6 = this.c().a_(new iu($$3, $$4, $$5));
-      if (dlu.h($$6)) {
-         ebl $$7 = $$6.c(((dlu)$$6.b()).c());
-         Pair<jz, jz> $$8 = ctp.a($$7);
-         jz $$9 = (jz)$$8.getFirst();
-         jz $$10 = (jz)$$8.getSecond();
-         double $$11 = (double)$$3 + 0.5 + (double)$$9.u() * 0.5;
-         double $$12 = (double)$$4 + 0.0625 + (double)$$9.v() * 0.5;
-         double $$13 = (double)$$5 + 0.5 + (double)$$9.w() * 0.5;
-         double $$14 = (double)$$3 + 0.5 + (double)$$10.u() * 0.5;
-         double $$15 = (double)$$4 + 0.0625 + (double)$$10.v() * 0.5;
-         double $$16 = (double)$$5 + 0.5 + (double)$$10.w() * 0.5;
-         double $$17 = $$14 - $$11;
-         double $$18 = ($$15 - $$12) * 2.0;
-         double $$19 = $$16 - $$13;
-         double $$20;
-         if ($$17 == 0.0) {
-            $$20 = $$2 - (double)$$5;
-         } else if ($$19 == 0.0) {
-            $$20 = $$0 - (double)$$3;
-         } else {
-            double $$22 = $$0 - $$11;
-            double $$23 = $$2 - $$13;
-            $$20 = ($$22 * $$17 + $$23 * $$19) * 2.0;
-         }
-
-         $$0 = $$11 + $$17 * $$20;
-         $$1 = $$12 + $$18 * $$20;
-         $$2 = $$13 + $$19 * $$20;
-         if ($$18 < 0.0) {
-            $$1++;
-         } else if ($$18 > 0.0) {
-            $$1 += 0.5;
-         }
-
-         return new feq($$0, $$1, $$2);
-      } else {
-         return null;
-      }
+   public eao v() {
+      return dmo.cG.m().b(dnq.c, jb.c);
    }
 
    @Override
-   public double a(iu $$0, ebl $$1, double $$2) {
-      return 0.0;
+   public int x() {
+      return 8;
    }
 
    @Override
-   public boolean d() {
-      fel $$0 = this.a.cR().c(0.2F, 0.0, 0.2F);
-      if (this.a.z() && this.e().j() >= 0.01) {
-         List<bwf> $$1 = this.c().a(this.a, $$0, bwm.a(this.a));
-         if (!$$1.isEmpty()) {
-            for (bwf $$2 : $$1) {
-               if (!($$2 instanceof crc) && !($$2 instanceof cjk) && !($$2 instanceof ctp) && !this.a.ca() && !$$2.bZ()) {
-                  $$2.n(this.a);
-               } else {
-                  $$2.h(this.a);
-               }
-            }
-         }
-      } else {
-         for (bwf $$3 : this.c().a_(this.a, $$0)) {
-            if (!this.a.y($$3) && $$3.bH() && $$3 instanceof ctp) {
-               $$3.h(this.a);
-            }
-         }
+   public cvc a(int $$0, cri $$1) {
+      return cvl.a($$0, $$1, this);
+   }
+
+   @Override
+   public void c(crj $$0) {
+      this.dU().a(efo.j, this.ds(), efo.a.a($$0));
+   }
+
+   @Override
+   public bug a(crj $$0, buf $$1) {
+      bug $$2 = this.b_($$0);
+      if ($$2.a() && $$0.dU() instanceof arq $$3) {
+         this.a(efo.k, $$0);
+         cpz.a($$3, $$0, true);
       }
 
-      return false;
-   }
-
-   @Override
-   public ja l() {
-      return this.a.m() ? this.a.cO().g().h() : this.a.cO().h();
-   }
-
-   @Override
-   public feq c(feq $$0) {
-      return !Double.isNaN($$0.d) && !Double.isNaN($$0.e) && !Double.isNaN($$0.f) ? new feq(azm.a($$0.d, -0.4, 0.4), $$0.e, azm.a($$0.f, -0.4, 0.4)) : feq.c;
-   }
-
-   @Override
-   public double b(arq $$0) {
-      return this.a.bj() ? 0.2 : 0.4;
-   }
-
-   @Override
-   public double m() {
-      return this.a.ca() ? 0.997 : 0.96;
+      return $$2;
    }
 }

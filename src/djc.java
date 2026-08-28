@@ -1,59 +1,19 @@
-public interface djc {
-   int H_();
+public class djc {
+   public static final int a = -10380959;
+   public static final int b = -8345771;
+   public static final int c = -12012264;
+   public static final int d = -7158200;
+   private static int[] e = new int[65536];
 
-   int G_();
-
-   default int ao() {
-      return this.G_() + this.H_() - 1;
+   public static void a(int[] $$0) {
+      e = $$0;
    }
 
-   default int ap() {
-      return this.ar() - this.aq() + 1;
-   }
-
-   default int aq() {
-      return jx.a(this.G_());
-   }
-
-   default int ar() {
-      return jx.a(this.ao());
-   }
-
-   default boolean d(int $$0) {
-      return $$0 >= this.G_() && $$0 <= this.ao();
-   }
-
-   default boolean t(iu $$0) {
-      return this.e($$0.v());
-   }
-
-   default boolean e(int $$0) {
-      return $$0 < this.G_() || $$0 > this.ao();
-   }
-
-   default int f(int $$0) {
-      return this.g(jx.a($$0));
-   }
-
-   default int g(int $$0) {
-      return $$0 - this.aq();
-   }
-
-   default int h(int $$0) {
-      return $$0 + this.aq();
-   }
-
-   static djc e(final int $$0, final int $$1) {
-      return new djc() {
-         @Override
-         public int H_() {
-            return $$1;
-         }
-
-         @Override
-         public int G_() {
-            return $$0;
-         }
-      };
+   public static int a(double $$0, double $$1) {
+      $$1 *= $$0;
+      int $$2 = (int)((1.0 - $$0) * 255.0);
+      int $$3 = (int)((1.0 - $$1) * 255.0);
+      int $$4 = $$3 << 8 | $$2;
+      return $$4 >= e.length ? -12012264 : e[$$4];
    }
 }

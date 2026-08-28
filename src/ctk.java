@@ -1,19 +1,17 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ctk(ji<erb> c) implements ctg {
-   public static final MapCodec<ctk> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(jt.a(mg.be).fieldOf("structures").forGetter(ctk::b)).apply($$0, ctk::new));
-
-   public boolean a(cti $$0) {
-      return $$0.b().a().b().a($$0.a(), this.c).b();
+public record ctk<T>(T a, iw b) {
+   public ctk(T $$0, alg $$1) {
+      this($$0, new iw($$1));
    }
 
-   @Override
-   public MapCodec<ctk> a() {
-      return a;
+   public static <T> MapCodec<ctk<T>> a(Codec<T> $$0, T $$1) {
+      return RecordCodecBuilder.mapCodec($$2 -> $$2.group($$0.optionalFieldOf("model", $$1).forGetter(ctk::a), iw.b.forGetter(ctk::b)).apply($$2, ctk::new));
    }
 
-   public ji<erb> b() {
-      return this.c;
+   public static <T> yw<wj, ctk<T>> a(yw<? super wj, T> $$0) {
+      return yw.a($$0, ctk::a, iw.c, ctk::b, ctk::new);
    }
 }

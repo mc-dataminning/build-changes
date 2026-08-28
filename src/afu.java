@@ -1,16 +1,16 @@
 public class afu implements zf<abu> {
    public static final yw<wj, afu> a = zf.a(afu::a, afu::new);
-   private final je<awm> b;
+   private final jf<awm> b;
    private final awo c;
    private final int d;
    private final float e;
    private final float f;
    private final long g;
 
-   public afu(je<awm> $$0, awo $$1, bwf $$2, float $$3, float $$4, long $$5) {
+   public afu(jf<awm> $$0, awo $$1, bwi $$2, float $$3, float $$4, long $$5) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2.ar();
+      this.d = $$2.ao();
       this.e = $$3;
       this.f = $$4;
       this.g = $$5;
@@ -43,7 +43,7 @@ public class afu implements zf<abu> {
       $$0.a(this);
    }
 
-   public je<awm> b() {
+   public jf<awm> b() {
       return this.b;
    }
 

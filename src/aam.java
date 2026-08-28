@@ -1,4 +1,4 @@
-public record aam(iu c, int d, String e, int f) implements aai {
+public record aam(iv c, int d, String e, int f) implements aai {
    public static final yw<vu, aam> a = aai.a(aam::a, aam::new);
    public static final aai.b<aam> b = aai.a("debug/game_test_add_marker");
 
@@ -18,7 +18,7 @@ public record aam(iu c, int d, String e, int f) implements aai {
       return b;
    }
 
-   public iu b() {
+   public iv b() {
       return this.c;
    }
 

@@ -1,144 +1,99 @@
-import java.util.List;
-import org.apache.commons.lang3.mutable.MutableInt;
+public class dxd {
+   public static final alf<dxb> a = a("base");
+   public static final alf<dxb> b = a("square_bottom_left");
+   public static final alf<dxb> c = a("square_bottom_right");
+   public static final alf<dxb> d = a("square_top_left");
+   public static final alf<dxb> e = a("square_top_right");
+   public static final alf<dxb> f = a("stripe_bottom");
+   public static final alf<dxb> g = a("stripe_top");
+   public static final alf<dxb> h = a("stripe_left");
+   public static final alf<dxb> i = a("stripe_right");
+   public static final alf<dxb> j = a("stripe_center");
+   public static final alf<dxb> k = a("stripe_middle");
+   public static final alf<dxb> l = a("stripe_downright");
+   public static final alf<dxb> m = a("stripe_downleft");
+   public static final alf<dxb> n = a("small_stripes");
+   public static final alf<dxb> o = a("cross");
+   public static final alf<dxb> p = a("straight_cross");
+   public static final alf<dxb> q = a("triangle_bottom");
+   public static final alf<dxb> r = a("triangle_top");
+   public static final alf<dxb> s = a("triangles_bottom");
+   public static final alf<dxb> t = a("triangles_top");
+   public static final alf<dxb> u = a("diagonal_left");
+   public static final alf<dxb> v = a("diagonal_up_right");
+   public static final alf<dxb> w = a("diagonal_up_left");
+   public static final alf<dxb> x = a("diagonal_right");
+   public static final alf<dxb> y = a("circle");
+   public static final alf<dxb> z = a("rhombus");
+   public static final alf<dxb> A = a("half_vertical");
+   public static final alf<dxb> B = a("half_horizontal");
+   public static final alf<dxb> C = a("half_vertical_right");
+   public static final alf<dxb> D = a("half_horizontal_bottom");
+   public static final alf<dxb> E = a("border");
+   public static final alf<dxb> F = a("curly_border");
+   public static final alf<dxb> G = a("gradient");
+   public static final alf<dxb> H = a("gradient_up");
+   public static final alf<dxb> I = a("bricks");
+   public static final alf<dxb> J = a("globe");
+   public static final alf<dxb> K = a("creeper");
+   public static final alf<dxb> L = a("skull");
+   public static final alf<dxb> M = a("flower");
+   public static final alf<dxb> N = a("mojang");
+   public static final alf<dxb> O = a("piglin");
+   public static final alf<dxb> P = a("flow");
+   public static final alf<dxb> Q = a("guster");
 
-public class dxd extends dxf {
-   private static final int d = 50;
-   private static final int e = 60;
-   private static final int f = 60;
-   private static final int g = 40;
-   private static final int h = 5;
-   private static final int i = 48;
-   private static final int j = 32;
-   private static final int k = 48;
-   private long l;
-   public int a;
-   public boolean b;
-   public ja c;
-   private List<bxe> m;
-   private boolean q;
-   private int r;
-
-   public dxd(iu $$0, eah $$1) {
-      super(dxh.F, $$0, $$1);
+   private static alf<dxb> a(String $$0) {
+      return alf.a(mh.aF, alg.b($$0));
    }
 
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.a();
-         this.r = 0;
-         this.c = ja.a($$1);
-         this.a = 0;
-         this.b = true;
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
+   public static void a(qh<dxb> $$0) {
+      a($$0, a);
+      a($$0, b);
+      a($$0, c);
+      a($$0, d);
+      a($$0, e);
+      a($$0, f);
+      a($$0, g);
+      a($$0, h);
+      a($$0, i);
+      a($$0, j);
+      a($$0, k);
+      a($$0, l);
+      a($$0, m);
+      a($$0, n);
+      a($$0, o);
+      a($$0, p);
+      a($$0, q);
+      a($$0, r);
+      a($$0, s);
+      a($$0, t);
+      a($$0, u);
+      a($$0, v);
+      a($$0, w);
+      a($$0, x);
+      a($$0, y);
+      a($$0, z);
+      a($$0, A);
+      a($$0, B);
+      a($$0, C);
+      a($$0, D);
+      a($$0, E);
+      a($$0, G);
+      a($$0, H);
+      a($$0, I);
+      a($$0, F);
+      a($$0, J);
+      a($$0, K);
+      a($$0, L);
+      a($$0, M);
+      a($$0, N);
+      a($$0, O);
+      a($$0, P);
+      a($$0, Q);
    }
 
-   private static void a(dja $$0, iu $$1, eah $$2, dxd $$3, dxd.a $$4) {
-      if ($$3.b) {
-         $$3.a++;
-      }
-
-      if ($$3.a >= 50) {
-         $$3.b = false;
-         $$3.a = 0;
-      }
-
-      if ($$3.a >= 5 && $$3.r == 0 && a($$1, $$3.m)) {
-         $$3.q = true;
-         $$0.a(null, $$1, awn.ca, awo.e, 1.0F, 1.0F);
-      }
-
-      if ($$3.q) {
-         if ($$3.r < 40) {
-            $$3.r++;
-         } else {
-            $$4.run($$0, $$1, $$3.m);
-            $$3.q = false;
-         }
-      }
-   }
-
-   public static void a(dja $$0, iu $$1, eah $$2, dxd $$3) {
-      a($$0, $$1, $$2, $$3, dxd::b);
-   }
-
-   public static void b(dja $$0, iu $$1, eah $$2, dxd $$3) {
-      a($$0, $$1, $$2, $$3, dxd::a);
-   }
-
-   public void a(ja $$0) {
-      iu $$1 = this.ax_();
-      this.c = $$0;
-      if (this.b) {
-         this.a = 0;
-      } else {
-         this.b = true;
-      }
-
-      this.n.a($$1, this.m().b(), 1, $$0.d());
-   }
-
-   private void a() {
-      iu $$0 = this.ax_();
-      if (this.n.ae() > this.l + 60L || this.m == null) {
-         this.l = this.n.ae();
-         fel $$1 = new fel($$0).g(48.0);
-         this.m = this.n.a(bxe.class, $$1);
-      }
-
-      if (!this.n.C) {
-         for (bxe $$2 : this.m) {
-            if ($$2.bK() && !$$2.dQ() && $$0.a($$2.dt(), 32.0)) {
-               $$2.ec().a(cgg.E, this.n.ae());
-            }
-         }
-      }
-   }
-
-   private static boolean a(iu $$0, List<bxe> $$1) {
-      for (bxe $$2 : $$1) {
-         if ($$2.bK() && !$$2.dQ() && $$0.a($$2.dt(), 32.0) && $$2.aq().a(axf.c)) {
-            return true;
-         }
-      }
-
-      return false;
-   }
-
-   private static void a(dja $$0, iu $$1, List<bxe> $$2) {
-      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach(dxd::a);
-   }
-
-   private static void b(dja $$0, iu $$1, List<bxe> $$2) {
-      MutableInt $$3 = new MutableInt(16700985);
-      int $$4 = (int)$$2.stream().filter($$1x -> $$1.a($$1x.dt(), 48.0)).count();
-      $$2.stream().filter($$1x -> a($$1, $$1x)).forEach($$4x -> {
-         float $$5 = 1.0F;
-         double $$6 = Math.sqrt(($$4x.dA() - (double)$$1.u()) * ($$4x.dA() - (double)$$1.u()) + ($$4x.dG() - (double)$$1.w()) * ($$4x.dG() - (double)$$1.w()));
-         double $$7 = (double)((float)$$1.u() + 0.5F) + 1.0 / $$6 * ($$4x.dA() - (double)$$1.u());
-         double $$8 = (double)((float)$$1.w() + 0.5F) + 1.0 / $$6 * ($$4x.dG() - (double)$$1.w());
-         int $$9 = azm.a(($$4 - 21) / -2, 3, 15);
-
-         for (int $$10 = 0; $$10 < $$9; $$10++) {
-            int $$11 = $$3.addAndGet(5);
-            $$0.a(lq.a(lx.u, $$11), $$7, (double)((float)$$1.v() + 0.5F), $$8, 0.0, 0.0, 0.0);
-         }
-      });
-   }
-
-   private static boolean a(iu $$0, bxe $$1) {
-      return $$1.bK() && !$$1.dQ() && $$0.a($$1.dt(), 48.0) && $$1.aq().a(axf.c);
-   }
-
-   private static void a(bxe $$0) {
-      $$0.a(new bvj(bvl.x, 60));
-   }
-
-   @FunctionalInterface
-   interface a {
-      void run(dja var1, iu var2, List<bxe> var3);
+   public static void a(qh<dxb> $$0, alf<dxb> $$1) {
+      $$0.a($$1, new dxb($$1.a(), "block.minecraft.banner." + $$1.a().e()));
    }
 }

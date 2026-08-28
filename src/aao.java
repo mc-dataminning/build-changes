@@ -1,6 +1,6 @@
 import java.util.List;
 
-public record aao(int c, iu d, List<aao.a> e) implements aai {
+public record aao(int c, iv d, List<aao.a> e) implements aai {
    public static final yw<vu, aao> a = aai.a(aao::a, aao::new);
    public static final aai.b<aao> b = aai.a("debug/goal_selector");
 
@@ -23,7 +23,7 @@ public record aao(int c, iu d, List<aao.a> e) implements aai {
       return this.c;
    }
 
-   public iu c() {
+   public iv c() {
       return this.d;
    }
 

@@ -1,21 +1,17 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 
-public class eny extends enr {
-   public static final MapCodec<eny> b = eah.a.fieldOf("state").xmap(eag.a::b, dmf::m).xmap(eny::new, $$0 -> $$0.c);
-   private final dmf c;
+public abstract class eny {
+   public static final Codec<eny> a = mg.T.q().dispatch(eny::a, enz::a);
 
-   public eny(dmf $$0) {
-      this.c = $$0;
+   public static eoh a(eao $$0) {
+      return new eoh($$0);
    }
 
-   @Override
-   protected ens<?> a() {
-      return ens.f;
+   public static eoh a(dmm $$0) {
+      return new eoh($$0.m());
    }
 
-   @Override
-   public eah a(azv $$0, iu $$1) {
-      ja.a $$2 = ja.a.a($$0);
-      return this.c.m().c(dsy.d, $$2);
-   }
+   protected abstract enz<?> a();
+
+   public abstract eao a(azv var1, iv var2);
 }

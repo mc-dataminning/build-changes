@@ -11,19 +11,19 @@ public class awk {
             )
             .apply($$0, awk::new)
    );
-   private final je<awm> b;
+   private final jf<awm> b;
    private final int c;
    private final int d;
    private final boolean e;
 
-   public awk(je<awm> $$0, int $$1, int $$2, boolean $$3) {
+   public awk(jf<awm> $$0, int $$1, int $$2, boolean $$3) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
       this.e = $$3;
    }
 
-   public je<awm> a() {
+   public jf<awm> a() {
       return this.b;
    }
 

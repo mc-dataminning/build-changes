@@ -1,72 +1,65 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public abstract class dlp extends dmf implements dtq {
-   public static final eay b = eax.I;
-   private static final ffk a = dmf.b(12.0, 0.0, 4.0);
-
-   protected dlp(eag.d $$0) {
-      super($$0);
-      this.l(this.C.b().b(b, Boolean.valueOf(true)));
-   }
+public class dlp extends dmm implements dmp {
+   public static final MapCodec<dlp> a = b(dlp::new);
+   private static final ffr b = dmm.b(8.0, 0.0, 12.0);
 
    @Override
-   protected abstract MapCodec<? extends dlp> a();
-
-   protected void a(eah $$0, dig $$1, djp $$2, azv $$3, iu $$4) {
-      if (!d($$0, $$1, $$4)) {
-         $$2.a($$4, this, 60 + $$3.a(40));
-      }
-   }
-
-   protected static boolean d(eah $$0, dig $$1, iu $$2) {
-      if ($$0.c(b)) {
-         return true;
-      } else {
-         for (ja $$3 : ja.values()) {
-            if ($$1.b_($$2.a($$3)).a(axh.a)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
-   }
-
-   @Nullable
-   @Override
-   public eah a(dcw $$0) {
-      ewo $$1 = $$0.q().b_($$0.a());
-      return this.m().b(b, Boolean.valueOf($$1.a(axh.a) && $$1.e() == 8));
-   }
-
-   @Override
-   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
+   public MapCodec<dlp> a() {
       return a;
    }
 
+   public dlp(ean.d $$0) {
+      super($$0);
+   }
+
    @Override
-   protected eah a(eah $$0, djd $$1, djp $$2, iu $$3, ja $$4, iu $$5, eah $$6, azv $$7) {
-      if ($$0.c(b)) {
-         $$2.a($$3, ewp.c, ewp.c.a($$1));
+   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
+      return b.a($$0.a($$2));
+   }
+
+   @Override
+   protected void b(eao $$0, arq $$1, iv $$2, azv $$3) {
+      if ($$3.a(3) == 0 && $$1.v($$2.d()) && $$1.b($$2.d(), 0) >= 9) {
+         this.a($$1, $$2);
       }
-
-      return $$4 == ja.a && !this.a($$0, $$1, $$3) ? dmh.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected boolean a(eah $$0, djd $$1, iu $$2) {
-      iu $$3 = $$2.e();
-      return $$1.a_($$3).c($$1, $$3, ja.b);
+   protected boolean a(eao $$0, djk $$1, iv $$2) {
+      return $$1.a_($$2.e()).a(axc.ax);
    }
 
    @Override
-   protected void a(eai.a<dmf, eah> $$0) {
-      $$0.a(b);
+   protected eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
+      if (!$$0.a($$1, $$3)) {
+         return dmo.a.m();
+      } else {
+         return $$4 == jb.b && $$6.a(dmo.nF) ? dmo.nF.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      }
    }
 
    @Override
-   protected ewo b_(eah $$0) {
-      return $$0.c(b) ? ewp.c.a(false) : super.b_($$0);
+   protected czk a(djk $$0, iv $$1, eao $$2, boolean $$3) {
+      return new czk(czo.ej);
+   }
+
+   @Override
+   public boolean a(djk $$0, iv $$1, eao $$2) {
+      return $$0.a_($$1.d()).l();
+   }
+
+   @Override
+   public boolean a(djh $$0, azv $$1, iv $$2, eao $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arq $$0, azv $$1, iv $$2, eao $$3) {
+      this.a($$0, $$2);
+   }
+
+   protected void a(djh $$0, iv $$1) {
+      $$0.a($$1.d(), dmo.nF.m().b(dlq.c, eba.b), 3);
    }
 }

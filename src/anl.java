@@ -17,27 +17,27 @@ public class anl {
    public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("argument.pos.unloaded"));
    private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> wy.b("commands.fillbiome.toobig", $$0, $$1));
 
-   public static void a(CommandDispatcher<ei> $$0, ee $$1) {
+   public static void a(CommandDispatcher<ej> $$0, ef $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("fillbiome").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("fillbiome").requires($$0x -> $$0x.c(2)))
             .then(
-               ej.a("from", gf.a())
+               ek.a("from", gg.a())
                   .then(
-                     ej.a("to", gf.a())
+                     ek.a("to", gg.a())
                         .then(
-                           ((RequiredArgumentBuilder)ej.a("biome", fh.a($$1, mg.aG))
-                                 .executes($$0x -> a((ei)$$0x.getSource(), gf.a($$0x, "from"), gf.a($$0x, "to"), fh.a($$0x, "biome", mg.aG), $$0xx -> true)))
+                           ((RequiredArgumentBuilder)ek.a("biome", fi.a($$1, mh.aG))
+                                 .executes($$0x -> a((ej)$$0x.getSource(), gg.a($$0x, "from"), gg.a($$0x, "to"), fi.a($$0x, "biome", mh.aG), $$0xx -> true)))
                               .then(
-                                 ej.a("replace")
+                                 ek.a("replace")
                                     .then(
-                                       ej.a("filter", fl.a($$1, mg.aG))
+                                       ek.a("filter", fm.a($$1, mh.aG))
                                           .executes(
                                              $$0x -> a(
-                                                   (ei)$$0x.getSource(),
-                                                   gf.a($$0x, "from"),
-                                                   gf.a($$0x, "to"),
-                                                   fh.a($$0x, "biome", mg.aG),
-                                                   fl.a($$0x, "filter", mg.aG)::test
+                                                   (ej)$$0x.getSource(),
+                                                   gg.a($$0x, "from"),
+                                                   gg.a($$0x, "to"),
+                                                   fi.a($$0x, "biome", mh.aG),
+                                                   fm.a($$0x, "filter", mh.aG)::test
                                                 )
                                           )
                                     )
@@ -49,19 +49,19 @@ public class anl {
    }
 
    private static int a(int $$0) {
-      return jp.c(jp.a($$0));
+      return jq.c(jq.a($$0));
    }
 
-   private static iu a(iu $$0) {
-      return new iu(a($$0.u()), a($$0.v()), a($$0.w()));
+   private static iv a(iv $$0) {
+      return new iv(a($$0.u()), a($$0.v()), a($$0.w()));
    }
 
-   private static dkg a(MutableInt $$0, ece $$1, eqt $$2, je<dkd> $$3, Predicate<je<dkd>> $$4) {
+   private static dkn a(MutableInt $$0, ecl $$1, era $$2, jf<dkk> $$3, Predicate<jf<dkk>> $$4) {
       return ($$5, $$6, $$7, $$8) -> {
-         int $$9 = jp.c($$5);
-         int $$10 = jp.c($$6);
-         int $$11 = jp.c($$7);
-         je<dkd> $$12 = $$1.getNoiseBiome($$5, $$6, $$7);
+         int $$9 = jq.c($$5);
+         int $$10 = jq.c($$6);
+         int $$11 = jq.c($$7);
+         jf<dkk> $$12 = $$1.getNoiseBiome($$5, $$6, $$7);
          if ($$2.d($$9, $$10, $$11) && $$4.test($$12)) {
             $$0.increment();
             return $$3;
@@ -71,25 +71,25 @@ public class anl {
       };
    }
 
-   public static Either<Integer, CommandSyntaxException> a(arq $$0, iu $$1, iu $$2, je<dkd> $$3) {
+   public static Either<Integer, CommandSyntaxException> a(arq $$0, iv $$1, iv $$2, jf<dkk> $$3) {
       return a($$0, $$1, $$2, $$3, $$0x -> true, $$0x -> {
       });
    }
 
-   public static Either<Integer, CommandSyntaxException> a(arq $$0, iu $$1, iu $$2, je<dkd> $$3, Predicate<je<dkd>> $$4, Consumer<Supplier<wy>> $$5) {
-      iu $$6 = a($$1);
-      iu $$7 = a($$2);
-      eqt $$8 = eqt.a($$6, $$7);
+   public static Either<Integer, CommandSyntaxException> a(arq $$0, iv $$1, iv $$2, jf<dkk> $$3, Predicate<jf<dkk>> $$4, Consumer<Supplier<wy>> $$5) {
+      iv $$6 = a($$1);
+      iv $$7 = a($$2);
+      era $$8 = era.a($$6, $$7);
       int $$9 = $$8.d() * $$8.e() * $$8.f();
-      int $$10 = $$0.O().d(diw.B);
+      int $$10 = $$0.O().d(djd.B);
       if ($$9 > $$10) {
          return Either.right(b.create($$10, $$9));
       } else {
-         List<ece> $$11 = new ArrayList<>();
+         List<ecl> $$11 = new ArrayList<>();
 
-         for (int $$12 = jx.a($$8.j()); $$12 <= jx.a($$8.m()); $$12++) {
-            for (int $$13 = jx.a($$8.h()); $$13 <= jx.a($$8.k()); $$13++) {
-               ece $$14 = $$0.a($$13, $$12, edf.n, false);
+         for (int $$12 = jy.a($$8.j()); $$12 <= jy.a($$8.m()); $$12++) {
+            for (int $$13 = jy.a($$8.h()); $$13 <= jy.a($$8.k()); $$13++) {
+               ecl $$14 = $$0.a($$13, $$12, edm.n, false);
                if ($$14 == null) {
                   return Either.right(a.create());
                }
@@ -100,7 +100,7 @@ public class anl {
 
          MutableInt $$15 = new MutableInt(0);
 
-         for (ece $$16 : $$11) {
+         for (ecl $$16 : $$11) {
             $$16.a(a($$15, $$16, $$8, $$3, $$4), $$0.m().i().b());
             $$16.i();
          }
@@ -111,7 +111,7 @@ public class anl {
       }
    }
 
-   private static int a(ei $$0, iu $$1, iu $$2, je.c<dkd> $$3, Predicate<je<dkd>> $$4) throws CommandSyntaxException {
+   private static int a(ej $$0, iv $$1, iv $$2, jf.c<dkk> $$3, Predicate<jf<dkk>> $$4) throws CommandSyntaxException {
       Either<Integer, CommandSyntaxException> $$5 = a($$0.e(), $$1, $$2, $$3, $$4, $$1x -> $$0.a($$1x, true));
       Optional<CommandSyntaxException> $$6 = $$5.right();
       if ($$6.isPresent()) {

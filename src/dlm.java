@@ -1,75 +1,103 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class dlm extends dmf implements dtq {
+public class dlm extends dpk {
    public static final MapCodec<dlm> a = b(dlm::new);
-   public static final eay b = eax.I;
+   public static final ebm<jb> b = dqn.e;
+   private static final Map<jb.a, ffr> c = ffo.a(
+      ffo.a(dmm.b(12.0, 0.0, 4.0), dmm.a(8.0, 10.0, 4.0, 5.0), dmm.a(4.0, 8.0, 5.0, 10.0), dmm.a(10.0, 16.0, 10.0, 16.0))
+   );
+   private static final wy d = wy.c("container.repair");
+   private static final float e = 2.0F;
+   private static final int f = 40;
 
    @Override
    public MapCodec<dlm> a() {
       return a;
    }
 
-   protected dlm(eag.d $$0) {
+   public dlm(ean.d $$0) {
       super($$0);
-      this.l(this.m().b(b, Boolean.valueOf(false)));
+      this.l(this.C.b().b(b, jb.c));
    }
 
    @Override
-   protected boolean e_(eah $$0) {
-      return $$0.y().c();
+   public eao a(ddd $$0) {
+      return this.m().b(b, $$0.g().h());
    }
 
    @Override
-   protected dss a_(eah $$0) {
-      return dss.a;
-   }
-
-   @Override
-   protected float c(eah $$0, dig $$1, iu $$2) {
-      return 1.0F;
-   }
-
-   @Override
-   protected eah a(eah $$0, djd $$1, djp $$2, iu $$3, ja $$4, iu $$5, eah $$6, azv $$7) {
-      if ($$0.c(b)) {
-         $$2.a($$3, ewp.c, ewp.c.a($$1));
+   protected bug a(eao $$0, djh $$1, iv $$2, crj $$3, fet $$4) {
+      if (!$$1.C) {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(awx.aC);
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected ewo b_(eah $$0) {
-      return $$0.c(b) ? ewp.c.a(false) : super.b_($$0);
+      return bug.a;
    }
 
    @Nullable
    @Override
-   public eah a(dcw $$0) {
-      return this.m().b(b, Boolean.valueOf($$0.q().b_($$0.a()).a() == ewp.c));
+   protected bui b(eao $$0, djh $$1, iv $$2) {
+      return new buo(($$2x, $$3, $$4) -> new cvf($$2x, $$3, cvp.a($$1, $$2)), d);
    }
 
    @Override
-   protected void a(eai.a<dmf, eah> $$0) {
+   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
+      return c.get($$0.c(b).o());
+   }
+
+   @Override
+   protected void a(cnn $$0) {
+      $$0.b(2.0F, 40);
+   }
+
+   @Override
+   public void a(djh $$0, iv $$1, eao $$2, eao $$3, cnn $$4) {
+      if (!$$4.aZ()) {
+         $$0.c(1031, $$1, 0);
+      }
+   }
+
+   @Override
+   public void a(djh $$0, iv $$1, cnn $$2) {
+      if (!$$2.aZ()) {
+         $$0.c(1029, $$1, 0);
+      }
+   }
+
+   @Override
+   public bux a(bwi $$0) {
+      return $$0.dV().b($$0);
+   }
+
+   @Nullable
+   public static eao e(eao $$0) {
+      if ($$0.a(dmo.ht)) {
+         return dmo.hu.m().b(b, $$0.c(b));
+      } else {
+         return $$0.a(dmo.hu) ? dmo.hv.m().b(b, $$0.c(b)) : null;
+      }
+   }
+
+   @Override
+   protected eao a(eao $$0, dtg $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(eap.a<dmm, eao> $$0) {
       $$0.a(b);
    }
 
    @Override
-   public czd a(@Nullable bxe $$0, djb $$1, iu $$2, eah $$3) {
-      if ($$0 instanceof crc $$4 && $$4.b()) {
-         return dtq.super.a($$0, $$1, $$2, $$3);
-      }
-
-      return czd.k;
+   protected boolean a(eao $$0, exk $$1) {
+      return false;
    }
 
    @Override
-   public boolean a(@Nullable bxe $$0, dig $$1, iu $$2, eah $$3, ewn $$4) {
-      if ($$0 instanceof crc $$5 && $$5.b()) {
-         return dtq.super.a($$0, $$1, $$2, $$3, $$4);
-      }
-
-      return false;
+   public int b(eao $$0, din $$1, iv $$2) {
+      return $$0.a($$1, $$2).ak;
    }
 }

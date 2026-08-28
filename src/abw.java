@@ -8,8 +8,8 @@ public class abw implements zf<abu> {
    private final int g;
    private final int h;
 
-   public abw(bwf $$0, int $$1) {
-      this.g = $$0.ar();
+   public abw(bwi $$0, int $$1) {
+      this.g = $$0.ao();
       this.h = $$1;
    }
 

@@ -1,84 +1,70 @@
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Function;
 import java.util.stream.Collectors;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class hlj {
-   static final Logger a = LogUtils.getLogger();
-   private final Map<alg, hls> b;
-   final hls c;
-   private final List<hlp> d = new ArrayList<>();
-   private final Map<alg, hls> e = new HashMap<>();
+public class hlj implements AutoCloseable {
+   private final Map<alg, hlj.a> a;
 
-   public hlj(Map<alg, hls> $$0, hls $$1) {
-      this.b = $$0;
-      this.c = $$1;
-      this.e.put(hlf.a, $$1);
+   public hlj(Map<alg, alg> $$0, hjm $$1) {
+      this.a = $$0.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$1x -> {
+         hjj $$2 = new hjj((alg)$$1x.getKey());
+         $$1.a((alg)$$1x.getKey(), $$2);
+         return new hlj.a($$2, (alg)$$1x.getValue());
+      }));
    }
 
-   public void a() {
-      this.e.put(grp.a, new grp());
+   public hjj a(alg $$0) {
+      return this.a.get($$0).a();
    }
 
-   public void a(hlp $$0) {
-      this.d.add($$0);
+   @Override
+   public void close() {
+      this.a.values().forEach(hlj.a::close);
+      this.a.clear();
    }
 
-   public void b() {
-      this.d.forEach($$0 -> $$0.a(new hlj.a()));
+   public Map<alg, CompletableFuture<hlj.b>> a(avd $$0, int $$1, Executor $$2) {
+      return ag.a(
+         this.a, (Function<? super hlj.a, CompletableFuture<hlj.b>>)($$3 -> hjf.a($$3.a).a($$0, $$3.b, $$1, $$2).thenApply($$1xx -> new hlj.b($$3.a, $$1xx)))
+      );
    }
 
-   public Map<alg, hls> c() {
-      return this.e;
-   }
-
-   public Set<alg> d() {
-      return Sets.difference(this.b.keySet(), this.e.keySet());
-   }
-
-   hls a(alg $$0) {
-      return this.e.computeIfAbsent($$0, this::b);
-   }
-
-   private hls b(alg $$0) {
-      hls $$1 = this.b.get($$0);
-      if ($$1 == null) {
-         a.warn("Missing block model: '{}'", $$0);
-         return this.c;
-      } else {
-         return $$1;
-      }
-   }
-
-   class a implements hlp.a {
-      private final List<alg> b = new ArrayList<>();
-      private final Set<alg> c = new HashSet<>();
+   static record a(hjj a, alg b) implements AutoCloseable {
 
       @Override
-      public hls a(alg $$0) {
-         if (this.b.contains($$0)) {
-            hlj.a.warn("Detected model loading loop: {}->{}", this.a(), $$0);
-            return hlj.this.c;
-         } else {
-            hls $$1 = hlj.this.a($$0);
-            if (this.c.add($$0)) {
-               this.b.add($$0);
-               $$1.a(this);
-               this.b.remove($$0);
-            }
+      public void close() {
+         this.a.g();
+      }
+   }
 
-            return $$1;
-         }
+   public static class b {
+      private final hjj a;
+      private final hjf.a b;
+
+      public b(hjj $$0, hjf.a $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      private String a() {
-         return this.b.stream().map(alg::toString).collect(Collectors.joining("->"));
+      @Nullable
+      public hjk a(alg $$0) {
+         return this.b.f().get($$0);
+      }
+
+      public hjk a() {
+         return this.b.e();
+      }
+
+      public CompletableFuture<Void> b() {
+         return this.b.g();
+      }
+
+      public void c() {
+         this.a.a(this.b);
       }
    }
 }

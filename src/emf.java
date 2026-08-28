@@ -1,26 +1,53 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class emf implements elq {
+public class emf implements elx {
    public static final Codec<emf> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               eah.a.fieldOf("target").forGetter($$0x -> $$0x.b),
-               eah.a.fieldOf("state").forGetter($$0x -> $$0x.c),
-               bti.b(0, 12).fieldOf("radius").forGetter($$0x -> $$0x.d)
+               Codec.list(emf.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b),
+               Codec.intRange(0, 64).fieldOf("size").forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("discard_chance_on_air_exposure").forGetter($$0x -> $$0x.d)
             )
             .apply($$0, emf::new)
    );
-   public final eah b;
-   public final eah c;
-   private final bti d;
+   public final List<emf.a> b;
+   public final int c;
+   public final float d;
 
-   public emf(eah $$0, eah $$1, bti $$2) {
-      this.b = $$0;
+   public emf(List<emf.a> $$0, int $$1, float $$2) {
       this.c = $$1;
+      this.b = $$0;
       this.d = $$2;
    }
 
-   public bti a() {
-      return this.d;
+   public emf(List<emf.a> $$0, int $$1) {
+      this($$0, $$1, 0.0F);
+   }
+
+   public emf(eve $$0, eao $$1, int $$2, float $$3) {
+      this(ImmutableList.of(new emf.a($$0, $$1)), $$2, $$3);
+   }
+
+   public emf(eve $$0, eao $$1, int $$2) {
+      this(ImmutableList.of(new emf.a($$0, $$1)), $$2, 0.0F);
+   }
+
+   public static emf.a a(eve $$0, eao $$1) {
+      return new emf.a($$0, $$1);
+   }
+
+   public static class a {
+      public static final Codec<emf.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(eve.c.fieldOf("target").forGetter($$0x -> $$0x.b), eao.a.fieldOf("state").forGetter($$0x -> $$0x.c)).apply($$0, emf.a::new)
+      );
+      public final eve b;
+      public final eao c;
+
+      a(eve $$0, eao $$1) {
+         this.b = $$0;
+         this.c = $$1;
+      }
    }
 }

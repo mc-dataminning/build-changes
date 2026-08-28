@@ -1,118 +1,83 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.security.PublicKey;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Arrays;
+import java.util.UUID;
 
-public class crn extends crk {
-   private static final int d = 600;
-   private static final int e = -1;
-   private static final akj<Integer> f = akn.a(crn.class, akl.b);
-   private static final byte g = 0;
+public record crn(crn.a d) {
+   public static final wy a = wy.c("multiplayer.disconnect.expired_public_key");
+   private static final wy e = wy.c("multiplayer.disconnect.invalid_public_key_signature");
+   public static final Duration b = Duration.ofHours(8L);
+   public static final Codec<crn> c = crn.a.a.xmap(crn::new, crn::b);
 
-   public crn(bwo<? extends crn> $$0, dja $$1) {
-      super($$0, $$1);
-   }
-
-   public crn(dja $$0, double $$1, double $$2, double $$3, czd $$4, @Nullable czd $$5) {
-      super(bwo.g, $$1, $$2, $$3, $$0, $$4, $$5);
-      this.D();
-   }
-
-   public crn(dja $$0, bxe $$1, czd $$2, @Nullable czd $$3) {
-      super(bwo.g, $$1, $$0, $$2, $$3);
-      this.D();
-   }
-
-   private daz B() {
-      return this.s().a(kj.R, daz.a);
-   }
-
-   private float C() {
-      return this.s().a(kj.S, 1.0F);
-   }
-
-   private void a(daz $$0) {
-      this.s().b(kj.R, $$0);
-      this.D();
-   }
-
-   @Override
-   protected void a(czd $$0) {
-      super.a($$0);
-      this.D();
-   }
-
-   private void D() {
-      daz $$0 = this.B();
-      this.al.a(f, $$0.equals(daz.a) ? -1 : $$0.b());
-   }
-
-   public void a(bvj $$0) {
-      this.a(this.B().a($$0));
-   }
-
-   @Override
-   protected void a(akn.a $$0) {
-      super.a($$0);
-      $$0.a(f, -1);
-   }
-
-   @Override
-   public void h() {
-      super.h();
-      if (this.dV().C) {
-         if (this.f()) {
-            if (this.a % 5 == 0) {
-               this.b(1);
-            }
-         } else {
-            this.b(2);
-         }
-      } else if (this.f() && this.a != 0 && !this.B().equals(daz.a) && this.a >= 600) {
-         this.dV().a(this, (byte)0);
-         this.a(new czd(czh.pk));
-      }
-   }
-
-   private void b(int $$0) {
-      int $$1 = this.y();
-      if ($$1 != -1 && $$0 > 0) {
-         for (int $$2 = 0; $$2 < $$0; $$2++) {
-            this.dV().a(lq.a(lx.u, $$1), this.d(0.5), this.dD(), this.g(0.5), 0.0, 0.0, 0.0);
-         }
-      }
-   }
-
-   public int y() {
-      return this.al.a(f);
-   }
-
-   @Override
-   protected void a(bxe $$0) {
-      super.a($$0);
-      bwf $$1 = this.z();
-      daz $$2 = this.B();
-      float $$3 = this.C();
-      $$2.a($$2x -> $$0.b($$2x, $$1), $$3);
-   }
-
-   @Override
-   protected czd o() {
-      return new czd(czh.pk);
-   }
-
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 0) {
-         int $$1 = this.y();
-         if ($$1 != -1) {
-            float $$2 = (float)($$1 >> 16 & 0xFF) / 255.0F;
-            float $$3 = (float)($$1 >> 8 & 0xFF) / 255.0F;
-            float $$4 = (float)($$1 >> 0 & 0xFF) / 255.0F;
-
-            for (int $$5 = 0; $$5 < 20; $$5++) {
-               this.dV().a(lq.a(lx.u, $$2, $$3, $$4), this.d(0.5), this.dD(), this.g(0.5), 0.0, 0.0, 0.0);
-            }
-         }
+   public static crn a(bab $$0, UUID $$1, crn.a $$2) throws crn.b {
+      if (!$$2.a($$0, $$1)) {
+         throw new crn.b(e);
       } else {
-         super.b($$0);
+         return new crn($$2);
+      }
+   }
+
+   public bab a() {
+      return bab.a(this.d.c, "SHA256withRSA");
+   }
+
+   public crn.a b() {
+      return this.d;
+   }
+
+   public static record a(Instant b, PublicKey c, byte[] d) {
+      private static final int e = 4096;
+      public static final Codec<crn.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  ayu.q.fieldOf("expires_at").forGetter(crn.a::b), ayj.f.fieldOf("key").forGetter(crn.a::c), ayu.r.fieldOf("signature_v2").forGetter(crn.a::d)
+               )
+               .apply($$0, crn.a::new)
+      );
+
+      public a(vu $$0) {
+         this($$0.t(), $$0.u(), $$0.a(4096));
+      }
+
+      public void a(vu $$0) {
+         $$0.a(this.b);
+         $$0.a(this.c);
+         $$0.a(this.d);
+      }
+
+      boolean a(bab $$0, UUID $$1) {
+         return $$0.a(this.a($$1), this.d);
+      }
+
+      private byte[] a(UUID $$0) {
+         byte[] $$1 = this.c.getEncoded();
+         byte[] $$2 = new byte[24 + $$1.length];
+         ByteBuffer $$3 = ByteBuffer.wrap($$2).order(ByteOrder.BIG_ENDIAN);
+         $$3.putLong($$0.getMostSignificantBits()).putLong($$0.getLeastSignificantBits()).putLong(this.b.toEpochMilli()).put($$1);
+         return $$2;
+      }
+
+      public boolean a() {
+         return this.b.isBefore(Instant.now());
+      }
+
+      public boolean a(Duration $$0) {
+         return this.b.plus($$0).isBefore(Instant.now());
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         return !($$0 instanceof crn.a $$1) ? false : this.b.equals($$1.b) && this.c.equals($$1.c) && Arrays.equals(this.d, $$1.d);
+      }
+   }
+
+   public static class b extends xy {
+      public b(wy $$0) {
+         super($$0);
       }
    }
 }

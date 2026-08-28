@@ -1,28 +1,34 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
+public class hmz extends hmq {
+   private static final float n = 0.0F;
+   private static final float o = 1.0F;
+   private static final float p = 0.7F;
+   private static final float q = 0.5F;
+   private final cog r;
 
-public class hmz<T> extends hna<T> {
-   private final hne<T> c;
-
-   public hmz(Function<T, Stream<String>> $$0, Function<T, Stream<alg>> $$1, List<T> $$2) {
-      super($$1, $$2);
-      this.c = hne.plainText($$2, $$0);
+   public hmz(cog $$0) {
+      super(awn.lU, awo.f, hnh.t());
+      this.r = $$0;
+      this.k = hnh.a.a;
+      this.i = true;
+      this.j = 0;
    }
 
    @Override
-   protected List<T> a(String $$0) {
-      return this.c.search($$0);
+   public boolean s() {
+      return !this.r.aZ();
    }
 
    @Override
-   protected List<T> a(String $$0, String $$1) {
-      List<T> $$2 = this.b.a($$0);
-      List<T> $$3 = this.b.b($$1);
-      List<T> $$4 = this.c.search($$1);
-      Iterator<T> $$5 = new hnc<T>($$3.iterator(), $$4.iterator(), this.a);
-      return ImmutableList.copyOf(new hnb<T>($$2.iterator(), $$5, this.a));
+   public void q() {
+      if (!this.r.dP() && this.r.f() == null) {
+         this.f = (double)((float)this.r.dz());
+         this.g = (double)((float)this.r.dB());
+         this.h = (double)((float)this.r.dF());
+         float $$0 = this.r.L(0.0F);
+         this.d = 0.0F + 1.0F * $$0 * $$0;
+         this.e = 0.7F + 0.5F * $$0;
+      } else {
+         this.n();
+      }
    }
 }

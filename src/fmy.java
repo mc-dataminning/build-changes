@@ -1,334 +1,362 @@
 import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
 import com.mojang.logging.LogUtils;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.function.Consumer;
-import java.util.stream.Collectors;
+import java.util.Objects;
+import java.util.function.Supplier;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fmy extends hpj {
-   static final Logger a = LogUtils.getLogger();
-   static final alg b = alg.b("widget/slot_frame");
-   private static final wy c = wy.c("mco.template.button.select");
-   private static final wy C = wy.c("mco.template.button.trailer");
-   private static final wy D = wy.c("mco.template.button.publisher");
-   private static final int E = 100;
-   private static final int F = 10;
-   private final fvx G = new fvx(this);
-   final Consumer<flq> H;
-   fmy.b I;
-   private final fla.d J;
-   private fsj K;
-   private fsj L;
-   private fsj M;
+public class fmy extends hpw {
+   private static final alg a = alg.b("realm_status/expired");
+   private static final alg b = alg.b("realm_status/expires_soon");
+   private static final alg c = alg.b("realm_status/open");
+   private static final alg C = alg.b("realm_status/closed");
+   private static final Logger D = LogUtils.getLogger();
+   private static final wy E = wy.c("mco.configure.worlds.title");
+   private static final wy F = wy.c("mco.configure.world.title");
+   private static final wy G = wy.c("mco.selectServer.expired");
+   private static final wy H = wy.c("mco.selectServer.expires.soon");
+   private static final wy I = wy.c("mco.selectServer.expires.day");
+   private static final wy J = wy.c("mco.selectServer.open");
+   private static final wy K = wy.c("mco.selectServer.closed");
+   private static final int L = 80;
+   private static final int M = 5;
    @Nullable
-   flq N = null;
+   private wy N;
+   private final fkj O;
    @Nullable
-   String O;
-   @Nullable
-   private wy[] P;
-   @Nullable
-   List<fnp.a> Q;
+   private flp P;
+   private final long Q;
+   private int R;
+   private int S;
+   private fsv T;
+   private fsv U;
+   private fsv V;
+   private fsv W;
+   private fsv X;
+   private fsv Y;
+   private fsv Z;
+   private boolean aa;
+   private final List<fmq> ab = Lists.newArrayList();
 
-   public fmy(wy $$0, Consumer<flq> $$1, fla.d $$2) {
-      this($$0, $$1, $$2, null);
-   }
-
-   public fmy(wy $$0, Consumer<flq> $$1, fla.d $$2, @Nullable flr $$3) {
-      super($$0);
-      this.H = $$1;
-      this.J = $$2;
-      if ($$3 == null) {
-         this.I = new fmy.b(this);
-         this.a(new flr(10));
-      } else {
-         this.I = new fmy.b(this, Lists.newArrayList($$3.a));
-         this.a($$3);
-      }
-   }
-
-   public void a(wy... $$0) {
-      this.P = $$0;
+   public fmy(fkj $$0, long $$1) {
+      super(F);
+      this.O = $$0;
+      this.Q = $$1;
    }
 
    @Override
    public void aO_() {
-      this.G.a(this.l, this.p);
-      this.I = this.G.c(new fmy.b(this, this.I.c()));
-      fwb $$0 = this.G.b(fwb.e().a(10));
-      $$0.c().b();
-      this.L = $$0.a(fsj.a(C, $$0x -> this.G()).a(100).a());
-      this.K = $$0.a(fsj.a(c, $$0x -> this.F()).a(100).a());
-      $$0.a(fsj.a(wx.e, $$0x -> this.aL_()).a(100).a());
-      this.M = $$0.a(fsj.a(D, $$0x -> this.H()).a(100).a());
-      this.E();
-      this.G.a($$1 -> {
-         fsh var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.I.b(this.n, this.o - this.G.b() - this.I());
-      this.G.a();
-   }
-
-   @Override
-   public wy i() {
-      List<wy> $$0 = Lists.newArrayListWithCapacity(2);
-      $$0.add(this.l);
-      if (this.P != null) {
-         $$0.addAll(Arrays.asList(this.P));
+      if (this.P == null) {
+         this.a(this.Q);
       }
 
-      return wx.a($$0);
+      this.R = this.n / 2 - 187;
+      this.S = this.n / 2 + 190;
+      this.T = this.c(fsv.a(wy.c("mco.configure.world.buttons.players"), $$0x -> this.m.a(new fnj(this, this.P))).a(this.a(0, 3), g(0), 100, 20).a());
+      this.U = this.c(fsv.a(wy.c("mco.configure.world.buttons.settings"), $$0x -> this.m.a(new fno(this, this.P.g()))).a(this.a(1, 3), g(0), 100, 20).a());
+      this.V = this.c(
+         fsv.a(wy.c("mco.configure.world.buttons.subscription"), $$0x -> this.m.a(new fnq(this, this.P.g(), this.O))).a(this.a(2, 3), g(0), 100, 20).a()
+      );
+      this.ab.clear();
+
+      for (int $$0 = 1; $$0 < 5; $$0++) {
+         this.ab.add(this.a($$0));
+      }
+
+      this.Z = this.c(
+         fsv.a(wy.c("mco.configure.world.buttons.switchminigame"), $$0x -> this.m.a(new fnn(wy.c("mco.template.title.minigame"), this::a, flp.d.b)))
+            .a(this.b(0), g(13) - 5, 100, 20)
+            .a()
+      );
+      this.W = this.c(
+         fsv.a(wy.c("mco.configure.world.buttons.options"), $$0x -> this.m.a(new fnp(this, this.P.i.get(this.P.p).d(), this.P.m, this.P.p)))
+            .a(this.b(0), g(13) - 5, 90, 20)
+            .a()
+      );
+      this.X = this.c(fsv.a(wy.c("mco.configure.world.backup"), $$0x -> this.m.a(new fmv(this, this.P.g(), this.P.p))).a(this.b(1), g(13) - 5, 90, 20).a());
+      this.Y = this.c(
+         fsv.a(wy.c("mco.configure.world.buttons.resetworld"), $$0x -> this.m.a(fnl.a(this, this.P.g(), () -> this.m.execute(() -> this.m.a(this.g())))))
+            .a(this.b(2), g(13) - 5, 90, 20)
+            .a()
+      );
+      this.c(fsv.a(wx.k, $$0x -> this.aL_()).a(this.S - 80 + 8, g(13) - 5, 70, 20).a());
+      this.X.j = true;
+      if (this.P == null) {
+         this.I();
+         this.H();
+         this.T.j = false;
+         this.U.j = false;
+         this.V.j = false;
+      } else {
+         this.E();
+         if (this.G()) {
+            this.H();
+         } else {
+            this.I();
+         }
+      }
    }
 
-   void E() {
-      this.M.k = this.N != null && !this.N.e.isEmpty();
-      this.L.k = this.N != null && !this.N.g.isEmpty();
-      this.K.j = this.N != null;
+   private fmq a(int $$0) {
+      int $$1 = this.h($$0);
+      int $$2 = g(5) + 5;
+      fmq $$3 = new fmq($$1, $$2, 80, 80, $$0, $$1x -> {
+         fmq.b $$2x = ((fmq)$$1x).a();
+         if ($$2x != null) {
+            switch ($$2x.c) {
+               case a:
+                  break;
+               case c:
+                  this.a(this.P);
+                  break;
+               case b:
+                  if ($$2x.b) {
+                     this.F();
+                  } else if ($$2x.a) {
+                     this.b($$0, this.P);
+                  } else {
+                     this.a($$0, this.P);
+                  }
+                  break;
+               default:
+                  throw new IllegalStateException("Unknown action " + $$2x.c);
+            }
+         }
+      });
+      if (this.P != null) {
+         $$3.a(this.P);
+      }
+
+      return this.c($$3);
+   }
+
+   private int b(int $$0) {
+      return this.R + $$0 * 95;
+   }
+
+   private int a(int $$0, int $$1) {
+      return this.n / 2 - ($$1 * 105 - 5) / 2 + $$0 * 105;
+   }
+
+   @Override
+   public void a(fsh $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.N = null;
+      $$0.a(this.p, E, this.n / 2, g(4), -1);
+      if (this.P == null) {
+         $$0.a(this.p, this.l, this.n / 2, 17, -1);
+      } else {
+         String $$4 = Objects.requireNonNullElse(this.P.b(), "");
+         int $$5 = this.p.b($$4);
+         int $$6 = this.P.e == flp.c.a ? -6250336 : 8388479;
+         int $$7 = this.p.a(this.l);
+         $$0.a(this.p, this.l, this.n / 2, 12, -1);
+         $$0.a(this.p, $$4, this.n / 2, 24, $$6);
+         int $$8 = Math.min(this.a(2, 3) + 80 - 11, this.n / 2 + $$5 / 2 + $$7 / 2 + 10);
+         this.b($$0, $$8, 7, $$1, $$2);
+         if (this.G()) {
+            String $$9 = this.P.c();
+            if ($$9 != null) {
+               $$0.b(this.p, wy.a("mco.configure.world.minigame", $$9), this.R + 80 + 20 + 10, g(13), -1);
+            }
+         }
+      }
+   }
+
+   private int h(int $$0) {
+      return this.R + ($$0 - 1) * 98;
    }
 
    @Override
    public void aL_() {
-      this.H.accept(null);
-   }
-
-   private void F() {
-      if (this.N != null) {
-         this.H.accept(this.N);
-      }
-   }
-
-   private void G() {
-      if (this.N != null && !this.N.g.isBlank()) {
-         fwy.a(this, this.N.g);
-      }
-   }
-
-   private void H() {
-      if (this.N != null && !this.N.e.isBlank()) {
-         fwy.a(this, this.N.e);
-      }
-   }
-
-   private void a(final flr $$0) {
-      (new Thread("realms-template-fetcher") {
-         @Override
-         public void run() {
-            flr $$0 = $$0;
-            fjz $$1 = fjz.a();
-
-            while ($$0 != null) {
-               Either<flr, Exception> $$2 = fmy.this.a($$0, $$1);
-               $$0 = fmy.this.m.a(() -> {
-                  if ($$2.right().isPresent()) {
-                     fmy.a.error("Couldn't fetch templates", (Throwable)$$2.right().get());
-                     if (fmy.this.I.b()) {
-                        fmy.this.Q = fnp.a(hke.a("mco.template.select.failure"));
-                     }
-
-                     return null;
-                  } else {
-                     flr $$1x = (flr)$$2.left().get();
-
-                     for (flq $$2x : $$1x.a) {
-                        fmy.this.I.a($$2x);
-                     }
-
-                     if ($$1x.a.isEmpty()) {
-                        if (fmy.this.I.b()) {
-                           String $$3 = hke.a("mco.template.select.none", "%link");
-                           fnp.b $$4 = fnp.b.a(hke.a("mco.template.select.none.linkTitle"), ayh.t.toString());
-                           fmy.this.Q = fnp.a($$3, $$4);
-                        }
-
-                        return null;
-                     } else {
-                        return $$1x;
-                     }
-                  }
-               }).join();
-            }
-         }
-      }).start();
-   }
-
-   Either<flr, Exception> a(flr $$0, fjz $$1) {
-      try {
-         return Either.left($$1.a($$0.b + 1, $$0.c, this.J));
-      } catch (flv var4) {
-         return Either.right(var4);
+      this.m.a(this.O);
+      if (this.aa) {
+         this.O.h();
       }
    }
 
    @Override
-   public void a(frv $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.O = null;
-      if (this.Q != null) {
-         this.a($$0, $$1, $$2, this.Q);
-      }
+   public void a(long $$0) {
+      new Thread(() -> {
+         fko $$1 = fko.a();
 
-      if (this.P != null) {
-         for (int $$4 = 0; $$4 < this.P.length; $$4++) {
-            wy $$5 = this.P[$$4];
-            $$0.a(this.p, $$5, this.n / 2, g(-1 + $$4), -6250336);
+         try {
+            flp $$2 = $$1.a($$0);
+            this.m.execute(() -> {
+               this.P = $$2;
+               this.E();
+               if (this.G()) {
+                  this.b(this.Z);
+               } else {
+                  this.b(this.W);
+                  this.b(this.X);
+                  this.b(this.Y);
+               }
+
+               for (fmq $$1x : this.ab) {
+                  $$1x.a($$2);
+               }
+            });
+         } catch (fmk var5) {
+            D.error("Couldn't get own world", var5);
+            this.m.execute(() -> this.m.a(new fnc(var5, this.O)));
          }
+      }).start();
+   }
+
+   private void E() {
+      this.T.j = !this.P.j;
+      this.U.j = !this.P.j;
+      this.V.j = true;
+      this.Z.j = !this.P.j;
+      this.W.j = !this.P.j;
+      this.Y.j = !this.P.j;
+   }
+
+   private void a(flp $$0) {
+      if (this.P.e == flp.c.b) {
+         fkj.a($$0, this);
+      } else {
+         this.b(true);
       }
    }
 
-   private void a(frv $$0, int $$1, int $$2, List<fnp.a> $$3) {
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         fnp.a $$5 = $$3.get($$4);
-         int $$6 = g(4 + $$4);
-         int $$7 = $$5.a.stream().mapToInt($$0x -> this.p.b($$0x.a())).sum();
-         int $$8 = this.n / 2 - $$7 / 2;
-
-         for (fnp.b $$9 : $$5.a) {
-            int $$10 = $$9.b() ? 3368635 : -1;
-            int $$11 = $$0.b(this.p, $$9.a(), $$8, $$6, $$10);
-            if ($$9.b() && $$1 > $$8 && $$1 < $$11 && $$2 > $$6 - 3 && $$2 < $$6 + 8) {
-               this.d(wy.b($$9.c()));
-               this.O = $$9.c();
-            }
-
-            $$8 = $$11;
-         }
-      }
+   private void F() {
+      fnn $$0 = new fnn(wy.c("mco.template.title.minigame"), this::a, flp.d.b);
+      $$0.a(wy.c("mco.minigame.world.info.line1"), wy.c("mco.minigame.world.info.line2"));
+      this.m.a($$0);
    }
 
-   int I() {
-      return this.P != null ? g(1) : 33;
+   private void a(int $$0, flp $$1) {
+      this.m.a(fnk.a(this, wy.c("mco.configure.world.slot.switch.question.line1"), $$2 -> {
+         this.f();
+         this.m.a(new fne(this.O, new fot($$1.a, $$0, () -> this.m.execute(() -> this.m.a(this.g())))));
+      }));
    }
 
-   class a extends ftf.a<fmy.a> {
-      private static final ftw c = new ftw(alg.b("icon/link"), alg.b("icon/link_highlighted"));
-      private static final ftw d = new ftw(alg.b("icon/video_link"), alg.b("icon/video_link_highlighted"));
-      private static final wy e = wy.c("mco.template.info.tooltip");
-      private static final wy f = wy.c("mco.template.trailer.tooltip");
-      public final flq a;
-      private long g;
-      @Nullable
-      private fsv h;
-      @Nullable
-      private fsv i;
-
-      public a(final flq $$0) {
-         this.a = $$0;
-         if (!$$0.e.isBlank()) {
-            this.h = new fsv(15, 15, c, fwy.b(fmy.this, $$0.e), e);
-            this.h.a(ftu.a(e));
-         }
-
-         if (!$$0.g.isBlank()) {
-            this.i = new fsv(15, 15, d, fwy.b(fmy.this, $$0.g), f);
-            this.i.a(ftu.a(f));
-         }
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         fmy.this.N = this.a;
-         fmy.this.E();
-         if (af.c() - this.g < 250L && this.aJ_()) {
-            fmy.this.H.accept(this.a);
-         }
-
-         this.g = af.c();
-         if (this.h != null) {
-            this.h.a($$0, $$1, $$2);
-         }
-
-         if (this.i != null) {
-            this.i.a($$0, $$1, $$2);
-         }
-
-         return super.a($$0, $$1, $$2);
-      }
-
-      @Override
-      public void a(frv $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.a(gqk::H, fnn.a(this.a.a, this.a.f), $$3 + 1, $$2 + 1 + 1, 0.0F, 0.0F, 38, 38, 38, 38);
-         $$0.a(gqk::H, fmy.b, $$3, $$2 + 1, 40, 40);
-         int $$10 = 5;
-         int $$11 = fmy.this.p.b(this.a.c);
-         if (this.h != null) {
-            this.h.c($$3 + $$4 - $$11 - this.h.A() - 10, $$2);
-            this.h.a($$0, $$6, $$7, $$9);
-         }
-
-         if (this.i != null) {
-            this.i.c($$3 + $$4 - $$11 - this.i.A() * 2 - 15, $$2);
-            this.i.a($$0, $$6, $$7, $$9);
-         }
-
-         int $$12 = $$3 + 45 + 20;
-         int $$13 = $$2 + 5;
-         $$0.b(fmy.this.p, this.a.b, $$12, $$13, -1);
-         $$0.b(fmy.this.p, this.a.c, $$3 + $$4 - $$11 - 5, $$13, 7105644);
-         $$0.b(fmy.this.p, this.a.d, $$12, $$13 + 9 + 5, -6250336);
-         if (!this.a.h.isBlank()) {
-            $$0.b(fmy.this.p, this.a.h, $$12, $$2 + $$5 - 9 / 2 - 5, 5000268);
-         }
-      }
-
-      @Override
-      public wy a() {
-         wy $$0 = wx.b(
-            wy.b(this.a.b), wy.a("mco.template.select.narrate.authors", this.a.d), wy.b(this.a.h), wy.a("mco.template.select.narrate.version", this.a.c)
-         );
-         return wy.a("narrator.select", $$0);
-      }
+   private void b(int $$0, flp $$1) {
+      this.m.a(fnk.a(this, wy.c("mco.configure.world.slot.switch.question.line1"), $$2 -> {
+         this.f();
+         fnl $$3 = fnl.a(this, $$0, $$1, () -> this.m.execute(() -> this.m.a(this.g())));
+         this.m.a($$3);
+      }));
    }
 
-   class b extends ftf<fmy.a> {
-      public b(final fmy param1) {
-         this(var1, Collections.emptyList());
-      }
-
-      public b(final Iterable<flq> param1, final Iterable $$0) {
-         super(foz.Q(), var1.n, var1.o - 33 - var1.I(), var1.I(), 46);
-         this.a = var1;
-         $$0.forEach(this::a);
-      }
-
-      public void a(flq $$0) {
-         this.b(this.a.new a($$0));
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         if (this.a.O != null) {
-            fwy.a(this.a, this.a.O);
-            return true;
+   private void b(fsh $$0, int $$1, int $$2, int $$3, int $$4) {
+      if (this.P.j) {
+         this.a($$0, $$1, $$2, $$3, $$4, a, () -> G);
+      } else if (this.P.e == flp.c.a) {
+         this.a($$0, $$1, $$2, $$3, $$4, C, () -> K);
+      } else if (this.P.e == flp.c.b) {
+         if (this.P.l < 7) {
+            this.a($$0, $$1, $$2, $$3, $$4, b, () -> {
+               if (this.P.l <= 0) {
+                  return H;
+               } else {
+                  return (wy)(this.P.l == 1 ? I : wy.a("mco.selectServer.expires.days", this.P.l));
+               }
+            });
          } else {
-            return super.a($$0, $$1, $$2);
+            this.a($$0, $$1, $$2, $$3, $$4, c, () -> J);
          }
       }
+   }
 
-      public void a(@Nullable fmy.a $$0) {
-         super.a($$0);
-         this.a.N = $$0 == null ? null : $$0.a;
-         this.a.E();
+   private void a(fsh $$0, int $$1, int $$2, int $$3, int $$4, alg $$5, Supplier<wy> $$6) {
+      $$0.a(gqx::H, $$5, $$1, $$2, 10, 28);
+      if ($$3 >= $$1 && $$3 <= $$1 + 9 && $$4 >= $$2 && $$4 <= $$2 + 27) {
+         this.d($$6.get());
+      }
+   }
+
+   private boolean G() {
+      return this.P != null && this.P.i();
+   }
+
+   private void H() {
+      this.a(this.W);
+      this.a(this.X);
+      this.a(this.Y);
+   }
+
+   private void a(fsv $$0) {
+      $$0.k = false;
+   }
+
+   private void b(fsv $$0) {
+      $$0.k = true;
+   }
+
+   private void I() {
+      this.a(this.Z);
+   }
+
+   public void a(flv $$0) {
+      flv $$1 = this.P.i.get(this.P.p);
+      $$0.k = $$1.k;
+      $$0.l = $$1.l;
+      fko $$2 = fko.a();
+
+      try {
+         $$2.a(this.P.a, this.P.p, $$0);
+         this.P.i.put(this.P.p, $$0);
+         if ($$1.g != $$0.g || $$1.h != $$0.h) {
+            fkj.g();
+         }
+      } catch (fmk var5) {
+         D.error("Couldn't save slot settings", var5);
+         this.m.a(new fnc(var5, this));
+         return;
       }
 
-      @Override
-      public int a() {
-         return 300;
+      this.m.a(this);
+   }
+
+   public void a(String $$0, String $$1) {
+      String $$2 = bal.h($$1) ? "" : $$1;
+      fko $$3 = fko.a();
+
+      try {
+         $$3.b(this.P.a, $$0, $$2);
+         this.P.a($$0);
+         this.P.b($$2);
+         this.f();
+      } catch (fmk var6) {
+         D.error("Couldn't save settings", var6);
+         this.m.a(new fnc(var6, this));
+         return;
       }
 
-      public boolean b() {
-         return this.t() == 0;
-      }
+      this.m.a(this);
+   }
 
-      public List<flq> c() {
-         return this.aE_().stream().map($$0 -> $$0.a).collect(Collectors.toList());
+   public void b(boolean $$0) {
+      fmy $$1 = this.g();
+      this.m.a(new fne($$1, new fom(this.P, $$1, $$0, this.m)));
+   }
+
+   public void b() {
+      fmy $$0 = this.g();
+      this.m.a(new fne($$0, new foh(this.P, $$0)));
+   }
+
+   public void f() {
+      this.aa = true;
+   }
+
+   private void a(@Nullable fmf $$0) {
+      if ($$0 != null && fmf.a.b == $$0.i) {
+         this.f();
+         this.m.a(new fne(this.O, new fos(this.P.a, $$0, this.g())));
+      } else {
+         this.m.a(this);
       }
+   }
+
+   public fmy g() {
+      fmy $$0 = new fmy(this.O, this.Q);
+      $$0.aa = this.aa;
+      return $$0;
    }
 }

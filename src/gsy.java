@@ -1,23 +1,15 @@
-public class gsy implements gsm<dyl> {
-   private final gfd a;
+public interface gsy<T extends dxm> {
+   void a(T var1, float var2, fjy var3, gqm var4, int var5, int var6, fex var7);
 
-   public gsy(gsn.a $$0) {
-      this.a = new gfd($$0.a(gjb.J));
+   default boolean a(T $$0) {
+      return false;
    }
 
-   public void a(dyl $$0, float $$1, fjj $$2, gqa $$3, int $$4, int $$5, feq $$6) {
-      eah $$7 = $$0.m();
-      if ($$7.c(dqw.d)) {
-         $$2.a();
-         $$2.a(0.5F, 1.0625F, 0.5F);
-         float $$8 = $$7.c(dqw.b).h().p();
-         $$2.a(a.d.rotationDegrees(-$$8));
-         $$2.a(a.f.rotationDegrees(67.5F));
-         $$2.a(0.0F, -0.125F, 0.0F);
-         this.a.a(0.0F, 0.1F, 0.9F, 1.2F);
-         fjn $$9 = gsw.a.a($$3, gqk::d);
-         this.a.a($$2, $$9, $$4, $$5);
-         $$2.b();
-      }
+   default int aR_() {
+      return 64;
+   }
+
+   default boolean a(T $$0, fex $$1) {
+      return fex.b($$0.ax_()).a((jp)$$1, (double)this.aR_());
    }
 }

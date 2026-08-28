@@ -100,7 +100,7 @@ public abstract class avv<K, V extends avu<K>> {
 
    public void e() throws IOException {
       JsonArray $$0 = new JsonArray();
-      this.d.values().stream().map($$0x -> af.a(new JsonObject(), $$0x::a)).forEach($$0::add);
+      this.d.values().stream().map($$0x -> ag.a(new JsonObject(), $$0x::a)).forEach($$0::add);
 
       try (BufferedWriter $$1 = Files.newWriter(this.c, StandardCharsets.UTF_8)) {
          b.toJson($$0, b.newJsonWriter($$1));

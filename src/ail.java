@@ -4,14 +4,14 @@ public class ail implements zf<agp> {
    private static final int c = 2;
    private static final int d = 4;
    private static final int e = 8;
-   private final iu f;
-   private final dyy.a g;
-   private final ebr h;
+   private final iv f;
+   private final dzf.a g;
+   private final eby h;
    private final String i;
-   private final iu j;
-   private final jz k;
-   private final dri l;
-   private final dsz m;
+   private final iv j;
+   private final ka k;
+   private final drp l;
+   private final dtg m;
    private final String n;
    private final boolean o;
    private final boolean p;
@@ -21,14 +21,14 @@ public class ail implements zf<agp> {
    private final long t;
 
    public ail(
-      iu $$0,
-      dyy.a $$1,
-      ebr $$2,
+      iv $$0,
+      dzf.a $$1,
+      eby $$2,
       String $$3,
-      iu $$4,
-      jz $$5,
-      dri $$6,
-      dsz $$7,
+      iv $$4,
+      ka $$5,
+      drp $$6,
+      dtg $$7,
       String $$8,
       boolean $$9,
       boolean $$10,
@@ -56,15 +56,15 @@ public class ail implements zf<agp> {
 
    private ail(vu $$0) {
       this.f = $$0.e();
-      this.g = $$0.b(dyy.a.class);
-      this.h = $$0.b(ebr.class);
+      this.g = $$0.b(dzf.a.class);
+      this.h = $$0.b(eby.class);
       this.i = $$0.p();
       int $$1 = 48;
-      this.j = new iu(azm.a($$0.readByte(), -48, 48), azm.a($$0.readByte(), -48, 48), azm.a($$0.readByte(), -48, 48));
+      this.j = new iv(azm.a($$0.readByte(), -48, 48), azm.a($$0.readByte(), -48, 48), azm.a($$0.readByte(), -48, 48));
       int $$2 = 48;
-      this.k = new jz(azm.a($$0.readByte(), 0, 48), azm.a($$0.readByte(), 0, 48), azm.a($$0.readByte(), 0, 48));
-      this.l = $$0.b(dri.class);
-      this.m = $$0.b(dsz.class);
+      this.k = new ka(azm.a($$0.readByte(), 0, 48), azm.a($$0.readByte(), 0, 48), azm.a($$0.readByte(), 0, 48));
+      this.l = $$0.b(drp.class);
+      this.m = $$0.b(dtg.class);
       this.n = $$0.d(128);
       this.s = azm.a($$0.readFloat(), 0.0F, 1.0F);
       this.t = $$0.m();
@@ -120,15 +120,15 @@ public class ail implements zf<agp> {
       $$0.a(this);
    }
 
-   public iu b() {
+   public iv b() {
       return this.f;
    }
 
-   public dyy.a e() {
+   public dzf.a e() {
       return this.g;
    }
 
-   public ebr f() {
+   public eby f() {
       return this.h;
    }
 
@@ -136,19 +136,19 @@ public class ail implements zf<agp> {
       return this.i;
    }
 
-   public iu h() {
+   public iv h() {
       return this.j;
    }
 
-   public jz i() {
+   public ka i() {
       return this.k;
    }
 
-   public dri j() {
+   public drp j() {
       return this.l;
    }
 
-   public dsz k() {
+   public dtg k() {
       return this.m;
    }
 

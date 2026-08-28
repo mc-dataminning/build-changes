@@ -1,107 +1,121 @@
-public abstract class hmc implements hmu {
-   protected hmr a;
-   protected final awo b;
-   protected final alg c;
-   protected float d = 1.0F;
-   protected float e = 1.0F;
-   protected double f;
-   protected double g;
-   protected double h;
-   protected boolean i;
-   protected int j;
-   protected hmu.a k = hmu.a.b;
-   protected boolean l;
-   protected azv m;
+import javax.annotation.Nullable;
 
-   protected hmc(awm $$0, awo $$1, azv $$2) {
-      this($$0.a(), $$1, $$2);
+public interface hmc extends hlu {
+   boolean a = true;
+   hmf.a b = hmf.a.b;
+
+   hmf a();
+
+   @Nullable
+   hmc b();
+
+   static gsg a(hmc $$0) {
+      hmc $$1 = $$0;
+
+      gsg.c $$2;
+      for ($$2 = new gsg.c(); $$1 != null; $$1 = $$1.b()) {
+         $$2.a($$1.a().e());
+      }
+
+      return $$2.a($$0);
    }
 
-   protected hmc(alg $$0, awo $$1, azv $$2) {
-      this.c = $$0;
-      this.b = $$1;
-      this.m = $$2;
+   default gsg g() {
+      return a(this);
    }
 
-   @Override
-   public alg a() {
-      return this.c;
-   }
-
-   @Override
-   public hob a(hoa $$0) {
-      if (this.c.equals(hoa.c)) {
-         this.a = hoa.e;
-         return hoa.d;
-      } else {
-         hob $$1 = $$0.a(this.c);
-         if ($$1 == null) {
-            this.a = hoa.b;
-         } else {
-            this.a = $$1.a(this.m);
+   static boolean b(hmc $$0) {
+      while ($$0 != null) {
+         Boolean $$1 = $$0.a().c();
+         if ($$1 != null) {
+            return $$1;
          }
 
-         return $$1;
+         $$0 = $$0.b();
       }
+
+      return true;
    }
 
-   @Override
-   public hmr b() {
-      return this.a;
+   default boolean c() {
+      return b(this);
    }
 
-   @Override
-   public awo c() {
-      return this.b;
+   static hmf.a c(hmc $$0) {
+      while ($$0 != null) {
+         hmf.a $$1 = $$0.a().b();
+         if ($$1 != null) {
+            return $$1;
+         }
+
+         $$0 = $$0.b();
+      }
+
+      return b;
    }
 
-   @Override
-   public boolean d() {
-      return this.i;
+   default hmf.a d() {
+      return c(this);
    }
 
-   @Override
-   public int e() {
-      return this.j;
+   static hme d(hmc $$0) {
+      while ($$0 != null) {
+         hme $$1 = $$0.a().a();
+         if ($$1 != null) {
+            return $$1;
+         }
+
+         $$0 = $$0.b();
+      }
+
+      return hme.a;
    }
 
-   @Override
-   public float f() {
-      return this.d * this.a.c().a(this.m);
+   default hme f() {
+      return d(this);
    }
 
-   @Override
-   public float g() {
-      return this.e * this.a.d().a(this.m);
+   default hma a(gsg $$0, hls $$1, hly $$2) {
+      return this.f().bake($$0, $$1, $$2, this);
    }
 
-   @Override
-   public double h() {
-      return this.f;
+   static hjk a(gsg $$0, hls $$1, hlu $$2) {
+      return $$1.a().a($$0, "particle", $$2);
    }
 
-   @Override
-   public double i() {
-      return this.g;
+   default hjk a(gsg $$0, hls $$1) {
+      return a($$0, $$1, this);
    }
 
-   @Override
-   public double j() {
-      return this.h;
+   static gsb a(hmc $$0, czi $$1) {
+      while ($$0 != null) {
+         gsc $$2 = $$0.a().d();
+         if ($$2 != null) {
+            gsb $$3 = $$2.a($$1);
+            if ($$3 != gsb.a) {
+               return $$3;
+            }
+         }
+
+         $$0 = $$0.b();
+      }
+
+      return gsb.a;
    }
 
-   @Override
-   public hmu.a k() {
-      return this.k;
+   static gsc e(hmc $$0) {
+      gsb $$1 = a($$0, czi.b);
+      gsb $$2 = a($$0, czi.c);
+      gsb $$3 = a($$0, czi.d);
+      gsb $$4 = a($$0, czi.e);
+      gsb $$5 = a($$0, czi.f);
+      gsb $$6 = a($$0, czi.g);
+      gsb $$7 = a($$0, czi.h);
+      gsb $$8 = a($$0, czi.i);
+      return new gsc($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
    }
 
-   @Override
-   public boolean l() {
-      return this.l;
-   }
-
-   @Override
-   public String toString() {
-      return "SoundInstance[" + this.c + "]";
+   default gsc e() {
+      return e(this);
    }
 }

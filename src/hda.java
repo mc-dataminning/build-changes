@@ -1,19 +1,8 @@
-import javax.annotation.Nullable;
-
-public class hda extends hdn {
-   public float a;
-   public float b;
-   public feq c;
-   @Nullable
-   public feq d;
-   @Nullable
-   public feq e;
-   @Nullable
-   public feq f;
+public class hda extends hdz {
+   public czk b = czk.k;
+   public boolean c;
+   public boolean d;
+   public float e;
+   public float f;
    public float g;
-   public float h;
-
-   public hda() {
-      this.c = feq.c;
-   }
 }

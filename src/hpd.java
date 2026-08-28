@@ -1,25 +1,53 @@
-public interface hpd {
-   default void b() {
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
+
+public final class hpd extends hpb {
+   private static final long a = a(Runtime.getRuntime().maxMemory());
+   private final LongList b = new LongArrayList();
+   private final LongList c = new LongArrayList();
+   private final LongList d = new LongArrayList();
+
+   @Override
+   public void a(hov $$0) {
+      if (fpo.Q().C()) {
+         super.a($$0);
+      }
    }
 
-   default void a() {
+   private void g() {
+      this.b.clear();
+      this.c.clear();
+      this.d.clear();
    }
 
-   default void a(gov $$0) {
+   @Override
+   public void f() {
+      this.b.add((long)fpo.Q().o());
+      this.h();
+      this.c.add(fpo.Q().p());
    }
 
-   default void a(double $$0, double $$1) {
+   private void h() {
+      long $$0 = Runtime.getRuntime().totalMemory();
+      long $$1 = Runtime.getRuntime().freeMemory();
+      long $$2 = $$0 - $$1;
+      this.d.add(a($$2));
    }
 
-   default void a(gjz $$0, feo $$1) {
+   @Override
+   public void b(hov $$0) {
+      $$0.send(how.c, $$0x -> {
+         $$0x.a(hoy.r, new LongArrayList(this.b));
+         $$0x.a(hoy.s, new LongArrayList(this.c));
+         $$0x.a(hoy.t, new LongArrayList(this.d));
+         $$0x.a(hoy.u, this.e());
+         $$0x.a(hoy.v, fpo.Q().n.aH());
+         $$0x.a(hoy.w, (int)a);
+      });
+      this.g();
    }
 
-   default void a(gjz $$0, iu $$1, eah $$2, float $$3) {
-   }
-
-   default void c() {
-   }
-
-   default void a(czd $$0) {
+   private static long a(long $$0) {
+      return $$0 / 1000L;
    }
 }

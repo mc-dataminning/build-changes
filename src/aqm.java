@@ -127,7 +127,7 @@ public class aqm extends JComponent {
             this.a($$1, $$2, $$2x);
          }
       });
-      this.f.setUncaughtExceptionHandler(new r(b));
+      this.f.setUncaughtExceptionHandler(new s(b));
       this.f.setDaemon(true);
       return $$0;
    }

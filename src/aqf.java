@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 public class aqf extends avq {
    private static final Logger h = LogUtils.getLogger();
 
-   public aqf(aqg $$0, jl<alp> $$1, eyy $$2) {
+   public aqf(aqg $$0, jm<alp> $$1, ezf $$2) {
       super($$0, $$1, $$2, $$0.a().G);
       aqh $$3 = $$0.a();
       this.a($$3.E);

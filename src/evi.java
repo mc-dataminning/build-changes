@@ -1,22 +1,18 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class evi implements evl {
-   public static final MapCodec<evi> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(tz.a.fieldOf("data").forGetter($$0x -> $$0x.b)).apply($$0, evi::new));
-   private final tz b;
+public class evi {
+   private final List<evh> a;
 
-   public evi(tz $$0) {
-      this.b = $$0;
+   public evi(List<evh> $$0) {
+      this.a = $$0;
+   }
+
+   public List<evh> a() {
+      return this.a;
    }
 
    @Override
-   public tz a(azv $$0, @Nullable tz $$1) {
-      return $$1 == null ? this.b.i() : $$1.a(this.b);
-   }
-
-   @Override
-   public evm<?> a() {
-      return evm.c;
+   public String toString() {
+      return "ProcessorList[" + this.a + "]";
    }
 }

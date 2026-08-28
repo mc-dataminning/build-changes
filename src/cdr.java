@@ -1,95 +1,77 @@
-public abstract class cdr extends cea {
-   protected bxg d;
-   protected iu e = iu.c;
-   protected boolean f;
-   private boolean a;
-   private float b;
-   private float c;
+import java.util.EnumSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public cdr(bxg $$0) {
-      this.d = $$0;
-      if (!chy.a($$0)) {
-         throw new IllegalArgumentException("Unsupported mob type for DoorInteractGoal");
-      }
+public class cdr extends cef {
+   private static final chy d = chy.b().a(8.0).d();
+   protected final ciz a;
+   private final Class<? extends ciz> e;
+   protected final arq b;
+   @Nullable
+   protected ciz c;
+   private int f;
+   private final double g;
+
+   public cdr(ciz $$0, double $$1) {
+      this($$0, $$1, (Class<? extends ciz>)$$0.getClass());
    }
 
-   protected boolean h() {
-      if (!this.f) {
-         return false;
-      } else {
-         eah $$0 = this.d.dV().a_(this.e);
-         if (!($$0.b() instanceof dom)) {
-            this.f = false;
-            return false;
-         } else {
-            return $$0.c(dom.e);
-         }
-      }
-   }
-
-   protected void a(boolean $$0) {
-      if (this.f) {
-         eah $$1 = this.d.dV().a_(this.e);
-         if ($$1.b() instanceof dom) {
-            ((dom)$$1.b()).a(this.d, this.d.dV(), $$1, this.e, $$0);
-         }
-      }
+   public cdr(ciz $$0, double $$1, Class<? extends ciz> $$2) {
+      this.a = $$0;
+      this.b = a($$0);
+      this.e = $$2;
+      this.g = $$1;
+      this.a(EnumSet.of(cef.a.a, cef.a.b));
    }
 
    @Override
    public boolean b() {
-      if (!chy.a(this.d)) {
-         return false;
-      } else if (!this.d.P) {
+      if (!this.a.gD()) {
          return false;
       } else {
-         cgn $$0 = (cgn)this.d.O();
-         exc $$1 = $$0.i();
-         if ($$1 != null && !$$1.c()) {
-            for (int $$2 = 0; $$2 < Math.min($$1.f() + 2, $$1.e()); $$2++) {
-               exa $$3 = $$1.a($$2);
-               this.e = new iu($$3.a, $$3.b + 1, $$3.c);
-               if (!(this.d.h((double)this.e.u(), this.d.dC(), (double)this.e.w()) > 2.25)) {
-                  this.f = dom.a(this.d.dV(), this.e);
-                  if (this.f) {
-                     return true;
-                  }
-               }
-            }
-
-            this.e = this.d.dv().d();
-            this.f = dom.a(this.d.dV(), this.e);
-            return this.f;
-         } else {
-            return false;
-         }
+         this.c = this.h();
+         return this.c != null;
       }
    }
 
    @Override
    public boolean c() {
-      return !this.a;
+      return this.c.bI() && this.c.gD() && this.f < 60 && !this.c.gq();
    }
 
    @Override
-   public void d() {
-      this.a = false;
-      this.b = (float)((double)this.e.u() + 0.5 - this.d.dA());
-      this.c = (float)((double)this.e.w() + 0.5 - this.d.dG());
-   }
-
-   @Override
-   public boolean R_() {
-      return true;
+   public void e() {
+      this.c = null;
+      this.f = 0;
    }
 
    @Override
    public void a() {
-      float $$0 = (float)((double)this.e.u() + 0.5 - this.d.dA());
-      float $$1 = (float)((double)this.e.w() + 0.5 - this.d.dG());
-      float $$2 = this.b * $$0 + this.c * $$1;
-      if ($$2 < 0.0F) {
-         this.a = true;
+      this.a.J().a(this.c, 10.0F, (float)this.a.ad());
+      this.a.O().a(this.c, this.g);
+      this.f++;
+      if (this.f >= this.a(60) && this.a.g(this.c) < 9.0) {
+         this.g();
       }
+   }
+
+   @Nullable
+   private ciz h() {
+      List<? extends ciz> $$0 = this.b.a(this.e, d, this.a, this.a.cQ().g(8.0));
+      double $$1 = Double.MAX_VALUE;
+      ciz $$2 = null;
+
+      for (ciz $$3 : $$0) {
+         if (this.a.a($$3) && !$$3.gq() && this.a.g($$3) < $$1) {
+            $$2 = $$3;
+            $$1 = this.a.g($$3);
+         }
+      }
+
+      return $$2;
+   }
+
+   protected void g() {
+      this.a.a(this.b, this.c);
    }
 }

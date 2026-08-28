@@ -1,27 +1,36 @@
-public class gwk<T extends coo> extends gxa<T, hcq> {
-   private static final alg a = alg.b("textures/entity/illager/evoker.png");
+public class gwk extends gws<crv, hcz> {
+   private static final alg a = alg.b("textures/entity/enderdragon/dragon_fireball.png");
+   private static final gqx g = gqx.g(a);
 
-   public gwk(gwh.a $$0) {
-      super($$0, new ggn<>($$0.a(gjb.aV)), 0.5F);
-      this.a(new han<hcq, ggn<hcq>>(this) {
-         public void a(fjj $$0, gqa $$1, int $$2, hcq $$3, float $$4, float $$5) {
-            if ($$3.a) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5);
-            }
-         }
-      });
+   public gwk(gwt.a $$0) {
+      super($$0);
    }
 
-   public alg a(hcq $$0) {
-      return a;
+   protected int a(crv $$0, iv $$1) {
+      return 15;
    }
 
-   public hcq b() {
-      return new hcq();
+   @Override
+   public void a(hcz $$0, fjy $$1, gqm $$2, int $$3) {
+      $$1.a();
+      $$1.b(2.0F, 2.0F, 2.0F);
+      $$1.a(this.d.b());
+      fjy.a $$4 = $$1.c();
+      fkc $$5 = $$2.getBuffer(g);
+      a($$5, $$4, $$3, 0.0F, 0, 0, 1);
+      a($$5, $$4, $$3, 1.0F, 0, 1, 1);
+      a($$5, $$4, $$3, 1.0F, 1, 1, 0);
+      a($$5, $$4, $$3, 0.0F, 1, 0, 0);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public void a(T $$0, hcq $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.gy();
+   private static void a(fkc $$0, fjy.a $$1, int $$2, float $$3, int $$4, int $$5, int $$6) {
+      $$0.a($$1, $$3 - 0.5F, (float)$$4 - 0.25F, 0.0F).a(-1).a((float)$$5, (float)$$6).b(hja.d).c($$2).b($$1, 0.0F, 1.0F, 0.0F);
+   }
+
+   @Override
+   public hcz d() {
+      return new hcz();
    }
 }

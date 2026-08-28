@@ -1,41 +1,29 @@
-import com.google.common.collect.Lists;
-import java.util.Iterator;
+import com.google.common.collect.ImmutableList;
+import java.util.Collections;
 import java.util.List;
-import org.joml.Vector3f;
 
-public class gun implements guc.a {
-   public static final int a = 200;
-   private final foz b;
-   private final List<aaw> c = Lists.newArrayList();
+public class gun implements guo.a {
+   private final fpo a;
+   private double b = Double.MIN_VALUE;
+   private List<ffr> c = Collections.emptyList();
 
-   gun(foz $$0) {
-      this.b = $$0;
-   }
-
-   public void a(aaw $$0) {
-      this.c.add($$0);
+   public gun(fpo $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public void a(fjj $$0, gqa $$1, double $$2, double $$3, double $$4) {
-      fjn $$5 = $$1.getBuffer(gqk.y());
-      long $$6 = this.b.s.ae();
-      Iterator<aaw> $$7 = this.c.iterator();
+   public void a(fjy $$0, gqm $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ag.d();
+      if ($$5 - this.b > 1.0E8) {
+         this.b = $$5;
+         bwi $$6 = this.a.j.k().g();
+         this.c = ImmutableList.copyOf($$6.dU().d($$6, $$6.cQ().g(6.0)));
+      }
 
-      while ($$7.hasNext()) {
-         aaw $$8 = $$7.next();
-         long $$9 = $$6 - $$8.b();
-         if ($$9 > 200L) {
-            $$7.remove();
-         } else {
-            for (aaw.a $$10 : $$8.c()) {
-               Vector3f $$11 = $$10.a().c().a($$2, $$3 - 0.1, $$4).k();
-               exw $$12 = $$10.b();
-               gqu.a($$0, $$5, $$11, $$12.b().r().c(0.5), -16776961);
-               gqu.a($$0, $$5, $$11, $$12.c().r().c(0.4), -65536);
-               gqu.a($$0, $$5, $$11, $$12.d().r().c(0.3), -256);
-            }
-         }
+      fkc $$7 = $$1.getBuffer(gqx.y());
+
+      for (ffr $$8 : this.c) {
+         guo.a($$0, $$7, $$8, -$$2, -$$3, -$$4, 1.0F, 1.0F, 1.0F, 1.0F, true);
       }
    }
 }

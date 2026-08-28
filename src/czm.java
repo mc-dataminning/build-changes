@@ -1,43 +1,37 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public class czm extends cyz {
-   private static final Logger a = LogUtils.getLogger();
+public enum czm implements bak {
+   a(0, "none"),
+   b(1, "eat"),
+   c(2, "drink"),
+   d(3, "block"),
+   e(4, "bow"),
+   f(5, "spear"),
+   g(6, "crossbow"),
+   h(7, "spyglass"),
+   i(8, "toot_horn"),
+   j(9, "brush"),
+   k(10, "bundle");
 
-   public czm(cyz.a $$0) {
-      super($$0);
+   private static final IntFunction<czm> n = ayc.a(czm::a, values(), ayc.a.a);
+   public static final Codec<czm> l = bak.a(czm::values);
+   public static final yw<ByteBuf, czm> m = yu.a(n, czm::a);
+   private final int o;
+   private final String p;
+
+   private czm(final int $$0, final String $$1) {
+      this.o = $$0;
+      this.p = $$1;
+   }
+
+   public int a() {
+      return this.o;
    }
 
    @Override
-   public bud a(dja $$0, crc $$1, buc $$2) {
-      czd $$3 = $$1.b($$2);
-      List<alf<ddu<?>>> $$4 = $$3.a(kj.ag, List.of());
-      $$3.a(1, $$1);
-      if ($$4.isEmpty()) {
-         return bud.d;
-      } else {
-         if (!$$0.C) {
-            deb $$5 = $$0.p().aI();
-            List<ddz<?>> $$6 = new ArrayList<>($$4.size());
-
-            for (alf<ddu<?>> $$7 : $$4) {
-               Optional<ddz<?>> $$8 = $$5.b($$7);
-               if (!$$8.isPresent()) {
-                  a.error("Invalid recipe: {}", $$7);
-                  return bud.d;
-               }
-
-               $$6.add($$8.get());
-            }
-
-            $$1.a($$6);
-            $$1.b(awx.c.b(this));
-         }
-
-         return bud.a;
-      }
+   public String c() {
+      return this.p;
    }
 }

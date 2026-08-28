@@ -1,13 +1,13 @@
 public class awx {
-   public static final aww<dmf> a = a("mined", mf.e);
-   public static final aww<cyz> b = a("crafted", mf.g);
-   public static final aww<cyz> c = a("used", mf.g);
-   public static final aww<cyz> d = a("broken", mf.g);
-   public static final aww<cyz> e = a("picked_up", mf.g);
-   public static final aww<cyz> f = a("dropped", mf.g);
-   public static final aww<bwo<?>> g = a("killed", mf.f);
-   public static final aww<bwo<?>> h = a("killed_by", mf.f);
-   public static final aww<alg> i = a("custom", mf.k);
+   public static final aww<dmm> a = a("mined", mg.e);
+   public static final aww<czg> b = a("crafted", mg.g);
+   public static final aww<czg> c = a("used", mg.g);
+   public static final aww<czg> d = a("broken", mg.g);
+   public static final aww<czg> e = a("picked_up", mg.g);
+   public static final aww<czg> f = a("dropped", mg.g);
+   public static final aww<bwr<?>> g = a("killed", mg.f);
+   public static final aww<bwr<?>> h = a("killed_by", mg.f);
+   public static final aww<alg> i = a("custom", mg.k);
    public static final alg j = a("leave_game", awv.b);
    public static final alg k = a("play_time", awv.e);
    public static final alg l = a("total_world_time", awv.e);
@@ -86,13 +86,13 @@ public class awx {
 
    private static alg a(String $$0, awv $$1) {
       alg $$2 = alg.b($$0);
-      jr.a(mf.k, $$0, $$2);
+      js.a(mg.k, $$0, $$2);
       i.a($$2, $$1);
       return $$2;
    }
 
-   private static <T> aww<T> a(String $$0, jr<T> $$1) {
+   private static <T> aww<T> a(String $$0, js<T> $$1) {
       wy $$2 = wy.c("stat_type.minecraft." + $$0);
-      return jr.a(mf.v, $$0, new aww<>($$1, $$2));
+      return js.a(mg.v, $$0, new aww<>($$1, $$2));
    }
 }

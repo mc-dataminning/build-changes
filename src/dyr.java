@@ -1,196 +1,143 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import java.util.OptionalInt;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
 
-public class dyr extends dxf implements efj.b<efq.b>, efq {
-   private static final int a = 10;
-   private static final int b = 20;
-   private static final int c = 5;
-   private static final int d = 6;
-   private static final int h = 40;
-   private static final int i = 90;
-   private static final Int2ObjectMap<awm> j = af.a(new Int2ObjectOpenHashMap(), $$0 -> {
-      $$0.put(1, awn.CV);
-      $$0.put(2, awn.CW);
-      $$0.put(3, awn.CX);
-      $$0.put(4, awn.CU);
-   });
-   private int k;
-   private final efq.d l = new dyr.a();
-   private efq.a m = new efq.a();
-   private final efq.b q = new efq.b(this);
+public class dyr extends dxm implements fgj.a {
+   public static final String b = "RecordItem";
+   public static final String c = "ticks_since_song_started";
+   private czk d = czk.k;
+   private final czr e = new czr(this::k, this.ax_());
 
-   public dyr(iu $$0, eah $$1) {
-      super(dxh.M, $$0, $$1);
+   public dyr(iv $$0, eao $$1) {
+      super(dxo.e, $$0, $$1);
+   }
+
+   public czr j() {
+      return this.e;
+   }
+
+   public void k() {
+      this.n.a(this.ax_(), this.m().b());
+      this.e();
+   }
+
+   private void a(boolean $$0) {
+      if (this.n != null && this.n.a_(this.ax_()) == this.m()) {
+         this.n.a(this.ax_(), this.m().b(dqu.b, Boolean.valueOf($$0)), 2);
+         this.n.a(efo.c, this.ax_(), efo.a.a(this.m()));
+      }
+   }
+
+   public void s() {
+      if (this.n != null && !this.n.C) {
+         iv $$0 = this.ax_();
+         czk $$1 = this.f();
+         if (!$$1.f()) {
+            this.h();
+            fex $$2 = fex.a($$0, 0.5, 1.01, 0.5).a(this.n.A, 0.7F);
+            czk $$3 = $$1.v();
+            cno $$4 = new cno(this.n, $$2.a(), $$2.b(), $$2.c(), $$3);
+            $$4.j();
+            this.n.b($$4);
+         }
+      }
+   }
+
+   public static void a(djh $$0, iv $$1, eao $$2, dyr $$3) {
+      $$3.e.b($$0, $$2);
+   }
+
+   public int u() {
+      return czq.a(this.n.F_(), this.d).map(jf::a).map(czq::e).orElse(0);
    }
 
    @Override
-   public efq.a x() {
-      return this.m;
-   }
-
-   @Override
-   public efq.d gr() {
-      return this.l;
-   }
-
-   @Override
-   protected void a(tz $$0, jg.a $$1) {
+   protected void a(tz $$0, jh.a $$1) {
       super.a($$0, $$1);
-      if ($$0.b("warning_level", 99)) {
-         this.k = $$0.h("warning_level");
+      ale<uw> $$2 = $$1.a(un.a);
+      czk $$3 = $$0.<czk>a("RecordItem", czk.b, $$2).orElse(czk.k);
+      if (!this.d.f() && !czk.c($$3, this.d)) {
+         this.e.a(this.n, this.m());
       }
 
-      ale<uw> $$2 = $$1.a(un.a);
-      this.m = $$0.<efq.a>a("listener", efq.a.a, $$2).orElseGet(efq.a::new);
+      this.d = $$3;
+      if ($$0.b("ticks_since_song_started", 4)) {
+         czq.a($$1, this.d).ifPresent($$1x -> this.e.a($$1x, $$0.g("ticks_since_song_started")));
+      }
    }
 
    @Override
-   protected void b(tz $$0, jg.a $$1) {
+   protected void b(tz $$0, jh.a $$1) {
       super.b($$0, $$1);
-      $$0.a("warning_level", this.k);
-      ale<uw> $$2 = $$1.a(un.a);
-      $$0.a("listener", efq.a.a, $$2, this.m);
-   }
-
-   @Nullable
-   public static arr a(@Nullable bwf $$0) {
-      if ($$0 instanceof arr) {
-         return (arr)$$0;
-      } else {
-         if ($$0 != null) {
-            bxe $$6 = $$0.cW();
-            if ($$6 instanceof arr) {
-               return (arr)$$6;
-            }
-         }
-
-         if ($$0 instanceof crx $$3) {
-            bwf var3 = $$3.q();
-            if (var3 instanceof arr) {
-               return (arr)var3;
-            }
-         }
-
-         if ($$0 instanceof cnh $$5) {
-            bwf var9 = $$5.q();
-            if (var9 instanceof arr) {
-               return (arr)var9;
-            }
-         }
-
-         return null;
+      if (!this.f().f()) {
+         ale<uw> $$2 = $$1.a(un.a);
+         $$0.a("RecordItem", czk.b, $$2, this.f());
       }
-   }
 
-   public void a(arq $$0, @Nullable arr $$1) {
-      if ($$1 != null) {
-         eah $$2 = this.m();
-         if (!$$2.c(dth.b)) {
-            this.k = 0;
-            if (!this.b($$0) || this.b($$0, $$1)) {
-               this.a($$0, (bwf)$$1);
-            }
-         }
+      if (this.e.b() != null) {
+         $$0.a("ticks_since_song_started", this.e.c());
       }
-   }
-
-   private boolean b(arq $$0, arr $$1) {
-      OptionalInt $$2 = cqh.a($$0, this.ax_(), $$1);
-      $$2.ifPresent($$0x -> this.k = $$0x);
-      return $$2.isPresent();
-   }
-
-   private void a(arq $$0, @Nullable bwf $$1) {
-      iu $$2 = this.ax_();
-      eah $$3 = this.m();
-      $$0.a($$2, $$3.b(dth.b, Boolean.valueOf(true)), 2);
-      $$0.a($$2, $$3.b(), 90);
-      $$0.c(3007, $$2, 0);
-      $$0.a(efh.N, $$2, efh.a.a($$1));
-   }
-
-   private boolean b(arq $$0) {
-      return this.m().c(dth.d) && $$0.an() != bua.a && $$0.O().c(diw.O);
    }
 
    @Override
-   public void a(iu $$0, eah $$1) {
-      if ($$1.c(dth.b) && this.n instanceof arq $$2) {
-         this.a($$2);
+   public czk f() {
+      return this.d;
+   }
+
+   @Override
+   public czk c(int $$0) {
+      czk $$1 = this.d;
+      this.b(czk.k);
+      return $$1;
+   }
+
+   @Override
+   public void b(czk $$0) {
+      this.d = $$0;
+      boolean $$1 = !this.d.f();
+      Optional<jf<czq>> $$2 = czq.a(this.n.F_(), this.d);
+      this.a($$1);
+      if ($$1 && $$2.isPresent()) {
+         this.e.a(this.n, $$2.get());
+      } else {
+         this.e.a(this.n, this.m());
       }
    }
 
-   public void a(arq $$0) {
-      if (this.b($$0) && this.k > 0) {
-         if (!this.c($$0)) {
-            this.b((dja)$$0);
-         }
-
-         cqf.a($$0, feq.b(this.ax_()), null, 40);
-      }
+   @Override
+   public int ak_() {
+      return 1;
    }
 
-   private void b(dja $$0) {
-      awm $$1 = (awm)j.get(this.k);
-      if ($$1 != null) {
-         iu $$2 = this.ax_();
-         int $$3 = $$2.u() + azm.b($$0.A, -10, 10);
-         int $$4 = $$2.v() + azm.b($$0.A, -10, 10);
-         int $$5 = $$2.w() + azm.b($$0.A, -10, 10);
-         $$0.a(null, (double)$$3, (double)$$4, (double)$$5, $$1, awo.f, 5.0F, 1.0F);
-      }
+   @Override
+   public dxm t() {
+      return this;
    }
 
-   private boolean c(arq $$0) {
-      return this.k < 4 ? false : bah.a(bwo.bG, bwn.k, $$0, this.ax_(), 20, 5, 6, bah.a.b, false).isPresent();
+   @Override
+   public boolean b(int $$0, czk $$1) {
+      return $$1.c(kk.ae) && this.a($$0).f();
    }
 
-   public efq.b a() {
-      return this.q;
+   @Override
+   public boolean a(btz $$0, int $$1, czk $$2) {
+      return $$0.a_(czk::f);
    }
 
-   class a implements efq.d {
-      private static final int b = 8;
-      private final efl c = new efd(dyr.this.o);
+   @Override
+   public void a(iv $$0, eao $$1) {
+      this.s();
+   }
 
-      public a() {
-      }
+   @VisibleForTesting
+   public void c(czk $$0) {
+      this.d = $$0;
+      czq.a(this.n.F_(), $$0).ifPresent($$0x -> this.e.a($$0x, 0L));
+      this.n.a(this.ax_(), this.m().b());
+      this.e();
+   }
 
-      @Override
-      public int a() {
-         return 8;
-      }
-
-      @Override
-      public efl b() {
-         return this.c;
-      }
-
-      @Override
-      public axr<efh> c() {
-         return axi.c;
-      }
-
-      @Override
-      public boolean a(arq $$0, iu $$1, je<efh> $$2, efh.a $$3) {
-         return !dyr.this.m().c(dth.b) && dyr.a($$3.a()) != null;
-      }
-
-      @Override
-      public void a(arq $$0, iu $$1, je<efh> $$2, @Nullable bwf $$3, @Nullable bwf $$4, float $$5) {
-         dyr.this.a($$0, dyr.a($$4 != null ? $$4 : $$3));
-      }
-
-      @Override
-      public void e() {
-         dyr.this.e();
-      }
-
-      @Override
-      public boolean f() {
-         return true;
-      }
+   @VisibleForTesting
+   public void v() {
+      czq.a(this.n.F_(), this.f()).ifPresent($$0 -> this.e.a(this.n, (jf<czq>)$$0));
    }
 }

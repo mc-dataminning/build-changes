@@ -3,7 +3,7 @@ import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 
 public class aye {
    public static final int a = -1;
-   private final Object2IntMap<Class<?>> b = af.a(new Object2IntOpenHashMap(), $$0 -> $$0.defaultReturnValue(-1));
+   private final Object2IntMap<Class<?>> b = ag.a(new Object2IntOpenHashMap(), $$0 -> $$0.defaultReturnValue(-1));
 
    public int a(Class<?> $$0) {
       int $$1 = this.b.getInt($$0);

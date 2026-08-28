@@ -17,20 +17,20 @@ public class aoh {
    private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wy.c("commands.perf.notRunning"));
    private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wy.c("commands.perf.alreadyRunning"));
 
-   public static void a(CommandDispatcher<ei> $$0) {
+   public static void a(CommandDispatcher<ej> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("perf").requires($$0x -> $$0x.c(4)))
-               .then(ej.a("start").executes($$0x -> a((ei)$$0x.getSource()))))
-            .then(ej.a("stop").executes($$0x -> b((ei)$$0x.getSource())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("perf").requires($$0x -> $$0x.c(4)))
+               .then(ek.a("start").executes($$0x -> a((ej)$$0x.getSource()))))
+            .then(ek.a("stop").executes($$0x -> b((ej)$$0x.getSource())))
       );
    }
 
-   private static int a(ei $$0) throws CommandSyntaxException {
+   private static int a(ej $$0) throws CommandSyntaxException {
       MinecraftServer $$1 = $$0.l();
       if ($$1.aT()) {
          throw c.create();
       } else {
-         Consumer<bqm> $$2 = $$1x -> a($$0, $$1x);
+         Consumer<bqo> $$2 = $$1x -> a($$0, $$1x);
          Consumer<Path> $$3 = $$2x -> a($$0, $$2x, $$1);
          $$1.a($$2, $$3);
          $$0.a(() -> wy.c("commands.perf.started"), false);
@@ -38,7 +38,7 @@ public class aoh {
       }
    }
 
-   private static int b(ei $$0) throws CommandSyntaxException {
+   private static int b(ej $$0) throws CommandSyntaxException {
       MinecraftServer $$1 = $$0.l();
       if (!$$1.aT()) {
          throw b.create();
@@ -48,20 +48,20 @@ public class aoh {
       }
    }
 
-   private static void a(ei $$0, Path $$1, MinecraftServer $$2) {
-      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", af.f(), $$2.aZ().e(), ab.b().b());
+   private static void a(ej $$0, Path $$1, MinecraftServer $$2) {
+      String $$3 = String.format(Locale.ROOT, "%s-%s-%s", ag.f(), $$2.aZ().e(), ac.b().b());
 
       String $$4;
       try {
-         $$4 = v.a(bsj.a, $$3, ".zip");
+         $$4 = w.a(bsl.a, $$3, ".zip");
       } catch (IOException var11) {
          $$0.b(wy.c("commands.perf.reportFailed"));
          a.error("Failed to create report name", var11);
          return;
       }
 
-      try (ayx $$7 = new ayx(bsj.a.resolve($$4))) {
-         $$7.a(Paths.get("system.txt"), $$2.b(new ad()).a());
+      try (ayx $$7 = new ayx(bsl.a.resolve($$4))) {
+         $$7.a(Paths.get("system.txt"), $$2.b(new ae()).a());
          $$7.a($$1);
       }
 
@@ -74,8 +74,8 @@ public class aoh {
       $$0.a(() -> wy.a("commands.perf.reportSaved", $$4), false);
    }
 
-   private static void a(ei $$0, bqm $$1) {
-      if ($$1 != bqi.a) {
+   private static void a(ej $$0, bqo $$1) {
+      if ($$1 != bqk.a) {
          int $$2 = $$1.f();
          double $$3 = (double)$$1.g() / (double)baq.a;
          $$0.a(() -> wy.a("commands.perf.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2, String.format(Locale.ROOT, "%.2f", (double)$$2 / $$3)), false);

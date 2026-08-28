@@ -1,19 +1,28 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ems<P extends emr> {
-   public static final ems<emu> a = a("two_layers_feature_size", emu.d);
-   public static final ems<emt> b = a("three_layers_feature_size", emt.d);
-   private final MapCodec<P> c;
+public class ems implements elx {
+   public static final Codec<ems> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ewv.a.fieldOf("state").forGetter($$0x -> $$0x.b),
+               Codec.BOOL.fieldOf("requires_block_below").orElse(true).forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("rock_count").orElse(4).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("hole_count").orElse(1).forGetter($$0x -> $$0x.e),
+               ju.a(mh.i).fieldOf("valid_blocks").forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, ems::new)
+   );
+   public final ewv b;
+   public final boolean c;
+   public final int d;
+   public final int e;
+   public final jj<dmm> f;
 
-   private static <P extends emr> ems<P> a(String $$0, MapCodec<P> $$1) {
-      return jr.a(mf.Y, $$0, new ems<>($$1));
-   }
-
-   private ems(MapCodec<P> $$0) {
-      this.c = $$0;
-   }
-
-   public MapCodec<P> a() {
-      return this.c;
+   public ems(ewv $$0, boolean $$1, int $$2, int $$3, jj<dmm> $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
    }
 }

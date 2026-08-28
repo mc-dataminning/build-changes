@@ -1,57 +1,77 @@
-public class cwh extends cws {
-   private final cwf a;
-   private final crc b;
-   private int g;
-   private final dhx h;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
 
-   public cwh(crc $$0, dhx $$1, cwf $$2, int $$3, int $$4, int $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.b = $$0;
-      this.h = $$1;
-      this.a = $$2;
+public class cwh {
+   private final List<cwh.b> a;
+   private final cwh.b b;
+
+   cwh(List<cwh.b> $$0, cwh.b $$1) {
+      if (!$$0.isEmpty() && !$$1.equals(cwh.b.e)) {
+         this.a = $$0;
+         this.b = $$1;
+      } else {
+         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
+      }
    }
 
-   @Override
-   public boolean a(czd $$0) {
-      return false;
+   public static cwh.a a() {
+      return new cwh.a();
    }
 
-   @Override
-   public czd a(int $$0) {
-      if (this.h()) {
-         this.g = this.g + Math.min($$0, this.g().M());
+   public cwh.b a(int $$0) {
+      return this.a.get($$0);
+   }
+
+   public cwh.b b() {
+      return this.b;
+   }
+
+   public List<cwh.b> c() {
+      return this.a;
+   }
+
+   public int d() {
+      return this.a.size();
+   }
+
+   public int e() {
+      return this.d();
+   }
+
+   public static class a {
+      private final List<cwh.b> a = new ArrayList<>();
+      private cwh.b b = cwh.b.e;
+
+      public cwh.a a(int $$0, int $$1, int $$2, Predicate<czk> $$3) {
+         this.a.add(new cwh.b($$0, $$1, $$2, $$3));
+         return this;
       }
 
-      return super.a($$0);
-   }
+      public cwh.a a(int $$0, int $$1, int $$2) {
+         this.b = new cwh.b($$0, $$1, $$2, $$0x -> false);
+         return this;
+      }
 
-   @Override
-   protected void a(czd $$0, int $$1) {
-      this.g += $$1;
-      this.c_($$0);
-   }
+      public cwh a() {
+         int $$0 = this.a.size();
 
-   @Override
-   protected void c_(czd $$0) {
-      $$0.a(this.b.dV(), this.b, this.g);
-      this.g = 0;
-   }
-
-   @Override
-   public void a(crc $$0, czd $$1) {
-      this.c_($$1);
-      dhy $$2 = this.a.g();
-      if ($$2 != null) {
-         czd $$3 = this.a.a(0);
-         czd $$4 = this.a.a(1);
-         if ($$2.b($$3, $$4) || $$2.b($$4, $$3)) {
-            this.h.a($$2);
-            $$0.a(awx.T);
-            this.a.a(0, $$3);
-            this.a.a(1, $$4);
+         for (int $$1 = 0; $$1 < $$0; $$1++) {
+            cwh.b $$2 = this.a.get($$1);
+            if ($$2.a != $$1) {
+               throw new IllegalArgumentException("Expected input slots to have continous indexes");
+            }
          }
 
-         this.h.s(this.h.t() + $$2.q());
+         if (this.b.a != $$0) {
+            throw new IllegalArgumentException("Expected result slot index to follow last input slot");
+         } else {
+            return new cwh(this.a, this.b);
+         }
       }
+   }
+
+   public static record b(int a, int b, int c, Predicate<czk> d) {
+      static final cwh.b e = new cwh.b(0, 0, 0, $$0 -> true);
    }
 }

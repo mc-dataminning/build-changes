@@ -12,7 +12,7 @@ public class alv {
    private static final alg b = alg.b("tick");
    private static final alg c = alg.b("load");
    private final MinecraftServer d;
-   private List<hw<ei>> e = ImmutableList.of();
+   private List<hx<ej>> e = ImmutableList.of();
    private boolean f;
    private alu g;
 
@@ -22,7 +22,7 @@ public class alv {
       this.b($$1);
    }
 
-   public CommandDispatcher<ei> a() {
+   public CommandDispatcher<ej> a() {
       return this.d.aG().a();
    }
 
@@ -30,7 +30,7 @@ public class alv {
       if (this.d.aP().i()) {
          if (this.f) {
             this.f = false;
-            Collection<hw<ei>> $$0 = this.g.b(c);
+            Collection<hx<ej>> $$0 = this.g.b(c);
             this.a($$0, c);
          }
 
@@ -38,24 +38,24 @@ public class alv {
       }
    }
 
-   private void a(Collection<hw<ei>> $$0, alg $$1) {
-      bqn.a().a($$1::toString);
+   private void a(Collection<hx<ej>> $$0, alg $$1) {
+      bqp.a().a($$1::toString);
 
-      for (hw<ei> $$2 : $$0) {
+      for (hx<ej> $$2 : $$0) {
          this.a($$2, this.c());
       }
 
-      bqn.a().c();
+      bqp.a().c();
    }
 
-   public void a(hw<ei> $$0, ei $$1) {
-      bqo $$2 = bqn.a();
+   public void a(hx<ej> $$0, ej $$1) {
+      bqq $$2 = bqp.a();
       $$2.a(() -> "function " + $$0.a());
 
       try {
-         hy<ei> $$3 = $$0.a(null, this.a());
-         ej.a($$1, $$2x -> hj.a($$2x, $$3, $$1, ef.a));
-      } catch (el var9) {
+         hz<ej> $$3 = $$0.a(null, this.a());
+         ek.a($$1, $$2x -> hk.a($$2x, $$3, $$1, eg.a));
+      } catch (em var9) {
       } catch (Exception var10) {
          a.warn("Failed to execute function {}", $$0.a(), var10);
       } finally {
@@ -73,15 +73,15 @@ public class alv {
       this.f = true;
    }
 
-   public ei c() {
+   public ej c() {
       return this.d.aH().a(2).a();
    }
 
-   public Optional<hw<ei>> a(alg $$0) {
+   public Optional<hx<ej>> a(alg $$0) {
       return this.g.a($$0);
    }
 
-   public List<hw<ei>> b(alg $$0) {
+   public List<hx<ej>> b(alg $$0) {
       return this.g.b($$0);
    }
 

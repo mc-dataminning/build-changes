@@ -1,28 +1,20 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dha(ji<dfq> c, bti d) implements dgy {
-   public static final MapCodec<dha> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(jt.a(mg.aR).fieldOf("enchantments").forGetter(dha::b), bti.c.fieldOf("cost").forGetter(dha::c)).apply($$0, dha::new)
-   );
+public record dha(dge c) implements dgq {
+   public static final MapCodec<dha> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dge.b.fieldOf("value").forGetter(dha::b)).apply($$0, dha::new));
 
    @Override
-   public void a(czd $$0, dfw.a $$1, azv $$2, bub $$3) {
-      for (dft $$5 : dfs.b($$2, $$0, this.d.a($$2), this.c.a())) {
-         $$1.b($$5.b(), $$5.c());
-      }
+   public float a(int $$0, azv $$1, float $$2) {
+      return this.c.a($$0);
    }
 
    @Override
    public MapCodec<dha> a() {
-      return b;
+      return a;
    }
 
-   public ji<dfq> b() {
+   public dge b() {
       return this.c;
-   }
-
-   public bti c() {
-      return this.d;
    }
 }

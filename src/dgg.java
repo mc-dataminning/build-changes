@@ -1,60 +1,36 @@
-import com.google.common.collect.HashMultimap;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record dgg(alg b, je<byf> d, dfx e, byi.a f) implements dgi {
-   public static final MapCodec<dgg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               alg.a.fieldOf("id").forGetter(dgg::b),
-               byf.a.fieldOf("attribute").forGetter(dgg::c),
-               dfx.b.fieldOf("amount").forGetter(dgg::d),
-               byi.a.f.fieldOf("operation").forGetter(dgg::e)
-            )
-            .apply($$0, dgg::new)
-   );
-
-   private alg a(bak $$0) {
-      return this.b.g("/" + $$0.c());
+public record dgg<T>(dgb a, dgb b, T c, Optional<fcx> d) {
+   public static <S> Codec<dgg<S>> a(Codec<S> $$0, bay $$1) {
+      return RecordCodecBuilder.create(
+         $$2 -> $$2.group(
+                  dgb.d.fieldOf("enchanted").forGetter(dgg::a),
+                  dgb.d.fieldOf("affected").forGetter(dgg::b),
+                  $$0.fieldOf("effect").forGetter(dgg::c),
+                  dfu.a($$1).optionalFieldOf("requirements").forGetter(dgg::d)
+               )
+               .apply($$2, dgg::new)
+      );
    }
 
-   public byi a(int $$0, bak $$1) {
-      return new byi(this.a($$1), (double)this.d().a($$0), this.e());
+   public static <S> Codec<dgg<S>> b(Codec<S> $$0, bay $$1) {
+      return RecordCodecBuilder.create(
+         $$2 -> $$2.group(
+                  dgb.d
+                     .validate($$0xx -> $$0xx != dgb.b ? DataResult.success($$0xx) : DataResult.error(() -> "enchanted must be attacker or victim"))
+                     .fieldOf("enchanted")
+                     .forGetter(dgg::a),
+                  $$0.fieldOf("effect").forGetter(dgg::c),
+                  dfu.a($$1).optionalFieldOf("requirements").forGetter(dgg::d)
+               )
+               .apply($$2, ($$0xx, $$1xx, $$2x) -> new dgg<>($$0xx, dgb.c, $$1xx, $$2x))
+      );
    }
 
-   @Override
-   public void a(arq $$0, int $$1, dfp $$2, bwf $$3, feq $$4, boolean $$5) {
-      if ($$5 && $$3 instanceof bxe $$6) {
-         $$6.fa().a(this.a($$1, $$2.b()));
-      }
-   }
-
-   @Override
-   public void a(dfp $$0, bwf $$1, feq $$2, int $$3) {
-      if ($$1 instanceof bxe $$4) {
-         $$4.fa().b(this.a($$3, $$0.b()));
-      }
-   }
-
-   private HashMultimap<je<byf>, byi> a(int $$0, bwp $$1) {
-      HashMultimap<je<byf>, byi> $$2 = HashMultimap.create();
-      $$2.put(this.d, this.a($$0, (bak)$$1));
-      return $$2;
-   }
-
-   @Override
-   public MapCodec<dgg> a() {
-      return a;
-   }
-
-   public je<byf> c() {
-      return this.d;
-   }
-
-   public dfx d() {
-      return this.e;
-   }
-
-   public byi.a e() {
-      return this.f;
+   public boolean a(ezo $$0) {
+      return this.d.isEmpty() ? true : this.d.get().test($$0);
    }
 }

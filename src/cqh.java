@@ -1,119 +1,32 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Comparator;
-import java.util.List;
+import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
-import java.util.OptionalInt;
+import java.util.function.Function;
 
 public class cqh {
-   public static final Codec<cqh> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayu.l.fieldOf("ticks_since_last_warning").orElse(0).forGetter($$0x -> $$0x.g),
-               ayu.l.fieldOf("warning_level").orElse(0).forGetter($$0x -> $$0x.h),
-               ayu.l.fieldOf("cooldown_ticks").orElse(0).forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, cqh::new)
-   );
-   public static final int b = 4;
-   private static final double c = 16.0;
-   private static final int d = 48;
-   private static final int e = 12000;
-   private static final int f = 200;
-   private int g;
-   private int h;
-   private int i;
+   public static bzb<bxj> a(int $$0, int $$1) {
+      return ccn.a(
+         (Function<ccn.b<bxj>, ? extends App<ccn.c<bxj>, ccq<bxj>>>)($$2 -> $$2.group($$2.b(cgl.ae), $$2.b(cgl.M), $$2.a(cgl.af), $$2.a(cgl.ag))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
+                     if (!$$7.fb().f()) {
+                        return false;
+                     } else {
+                        Optional<Integer> $$9 = $$2.a($$5);
+                        if ($$9.isEmpty()) {
+                           $$5.a(0);
+                        } else {
+                           int $$10 = $$9.get();
+                           if ($$10 > $$0) {
+                              $$3.b();
+                              $$5.b();
+                              $$6.a(true, (long)$$1);
+                           } else {
+                              $$5.a($$10 + 1);
+                           }
+                        }
 
-   public cqh(int $$0, int $$1, int $$2) {
-      this.g = $$0;
-      this.h = $$1;
-      this.i = $$2;
-   }
-
-   public cqh() {
-      this(0, 0, 0);
-   }
-
-   public void a() {
-      if (this.g >= 12000) {
-         this.f();
-         this.g = 0;
-      } else {
-         this.g++;
-      }
-
-      if (this.i > 0) {
-         this.i--;
-      }
-   }
-
-   public void b() {
-      this.g = 0;
-      this.h = 0;
-      this.i = 0;
-   }
-
-   public static OptionalInt a(arq $$0, iu $$1, arr $$2) {
-      if (a($$0, $$1)) {
-         return OptionalInt.empty();
-      } else {
-         List<arr> $$3 = b($$0, $$1);
-         if (!$$3.contains($$2)) {
-            $$3.add($$2);
-         }
-
-         if ($$3.stream().anyMatch($$0x -> $$0x.ac().map(cqh::d).orElse(false))) {
-            return OptionalInt.empty();
-         } else {
-            Optional<cqh> $$4 = $$3.stream().flatMap($$0x -> $$0x.ac().stream()).max(Comparator.comparingInt(cqh::c));
-            if ($$4.isPresent()) {
-               cqh $$5 = $$4.get();
-               $$5.e();
-               $$3.forEach($$1x -> $$1x.ac().ifPresent($$1xx -> $$1xx.a($$5)));
-               return OptionalInt.of($$5.h);
-            } else {
-               return OptionalInt.empty();
-            }
-         }
-      }
-   }
-
-   private boolean d() {
-      return this.i > 0;
-   }
-
-   private static boolean a(arq $$0, iu $$1) {
-      fel $$2 = fel.a(feq.b($$1), 48.0, 48.0, 48.0);
-      return !$$0.a(cqf.class, $$2).isEmpty();
-   }
-
-   private static List<arr> b(arq $$0, iu $$1) {
-      feq $$2 = feq.b($$1);
-      return $$0.a($$1x -> !$$1x.V_() && $$1x.dt().a((jo)$$2, 16.0) && $$1x.bK());
-   }
-
-   private void e() {
-      if (!this.d()) {
-         this.g = 0;
-         this.i = 200;
-         this.a(this.c() + 1);
-      }
-   }
-
-   private void f() {
-      this.a(this.c() - 1);
-   }
-
-   public void a(int $$0) {
-      this.h = azm.a($$0, 0, 4);
-   }
-
-   public int c() {
-      return this.h;
-   }
-
-   private void a(cqh $$0) {
-      this.h = $$0.h;
-      this.i = $$0.i;
-      this.g = $$0.g;
+                        return true;
+                     }
+                  }))
+      );
    }
 }

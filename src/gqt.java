@@ -1,82 +1,70 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+public class gqt {
+   private int a;
+   private int b;
+   private int c;
+   private int d;
 
-public record gqt(alg b, alg c, List<gqt.a> d, List<gqt.b> e, gqq f) {
-   public static final Codec<gqt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               alg.a.fieldOf("vertex").forGetter(gqt::a),
-               alg.a.fieldOf("fragment").forGetter(gqt::b),
-               gqt.a.a.listOf().optionalFieldOf("samplers", List.of()).forGetter(gqt::c),
-               gqt.b.a.listOf().optionalFieldOf("uniforms", List.of()).forGetter(gqt::d),
-               gqq.b.optionalFieldOf("defines", gqq.a).forGetter(gqt::e)
-            )
-            .apply($$0, gqt::new)
-   );
+   public gqt(int $$0, int $$1, int $$2, int $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+   }
 
-   public alg a() {
+   public gqt a(gqt $$0) {
+      int $$1 = this.a;
+      int $$2 = this.b;
+      int $$3 = this.a + this.c;
+      int $$4 = this.b + this.d;
+      int $$5 = $$0.a();
+      int $$6 = $$0.b();
+      int $$7 = $$5 + $$0.c();
+      int $$8 = $$6 + $$0.d();
+      this.a = Math.max($$1, $$5);
+      this.b = Math.max($$2, $$6);
+      this.c = Math.max(0, Math.min($$3, $$7) - this.a);
+      this.d = Math.max(0, Math.min($$4, $$8) - this.b);
+      return this;
+   }
+
+   public int a() {
+      return this.a;
+   }
+
+   public int b() {
       return this.b;
    }
 
-   public alg b() {
+   public void a(int $$0) {
+      this.a = $$0;
+   }
+
+   public void b(int $$0) {
+      this.b = $$0;
+   }
+
+   public int c() {
       return this.c;
    }
 
-   public List<gqt.a> c() {
+   public int d() {
       return this.d;
    }
 
-   public List<gqt.b> d() {
-      return this.e;
+   public void c(int $$0) {
+      this.c = $$0;
    }
 
-   public gqq e() {
-      return this.f;
+   public void d(int $$0) {
+      this.d = $$0;
    }
 
-   public static record a(String b) {
-      public static final Codec<gqt.a> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(gqt.a::a)).apply($$0, gqt.a::new));
-
-      public String a() {
-         return this.b;
-      }
+   public void a(int $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public static record b(String b, String c, int d, List<Float> e) {
-      public static final Codec<gqt.b> a = RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     Codec.STRING.fieldOf("name").forGetter(gqt.b::a),
-                     Codec.STRING.fieldOf("type").forGetter(gqt.b::b),
-                     Codec.INT.fieldOf("count").forGetter(gqt.b::c),
-                     Codec.FLOAT.listOf().fieldOf("values").forGetter(gqt.b::d)
-                  )
-                  .apply($$0, gqt.b::new)
-         )
-         .validate(gqt.b::a);
-
-      private static DataResult<gqt.b> a(gqt.b $$0) {
-         int $$1 = $$0.d;
-         int $$2 = $$0.e.size();
-         return $$2 != $$1 && $$2 > 1
-            ? DataResult.error(() -> "Invalid amount of uniform values specified (expected " + $$1 + ", found " + $$2 + ")")
-            : DataResult.success($$0);
-      }
-
-      public String a() {
-         return this.b;
-      }
-
-      public String b() {
-         return this.c;
-      }
-
-      public int c() {
-         return this.d;
-      }
-
-      public List<Float> d() {
-         return this.e;
-      }
+   public boolean b(int $$0, int $$1) {
+      return $$0 >= this.a && $$0 <= this.a + this.c && $$1 >= this.b && $$1 <= this.b + this.d;
    }
 }

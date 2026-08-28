@@ -1,51 +1,59 @@
-import com.mojang.serialization.Codec;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
+import org.slf4j.Logger;
 
-public record fco(Optional<ct> b, iu c) implements fcq {
-   private static final MapCodec<iu> g = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.INT.optionalFieldOf("offsetX", 0).forGetter(jz::u),
-               Codec.INT.optionalFieldOf("offsetY", 0).forGetter(jz::v),
-               Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(jz::w)
-            )
-            .apply($$0, iu::new)
-   );
-   public static final MapCodec<fco> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ct.a.optionalFieldOf("predicate").forGetter(fco::c), g.forGetter(fco::d)).apply($$0, fco::new)
-   );
+public record fco(alf<fcx> b) implements fcx {
+   private static final Logger c = LogUtils.getLogger();
+   public static final MapCodec<fco> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alf.a(mh.bs).fieldOf("name").forGetter(fco::c)).apply($$0, fco::new));
 
    @Override
-   public fcr b() {
-      return fcs.n;
-   }
-
-   public boolean a(ezh $$0) {
-      feq $$1 = $$0.c(fcb.f);
-      return $$1 != null
-         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
+   public fcy b() {
+      return fcz.p;
    }
 
    @Override
-   public Set<bax<?>> a() {
-      return Set.of(fcb.f);
+   public void a(ezu $$0) {
+      if (!$$0.b()) {
+         $$0.b("Uses reference to " + this.b.a() + ", but references are not allowed");
+      } else if ($$0.a(this.b)) {
+         $$0.b("Condition " + this.b.a() + " is recursively called");
+      } else {
+         fcx.super.a($$0);
+         $$0.a()
+            .c(this.b)
+            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.b.a() + "}", this.b)), () -> $$0.b("Unknown condition table called " + this.b.a()));
+      }
    }
 
-   public static fcq.a a(ct.a $$0) {
-      return () -> new fco(Optional.of($$0.b()), iu.c);
+   public boolean a(ezo $$0) {
+      fcx $$1 = $$0.a().c(this.b).map(jf.c::a).orElse(null);
+      if ($$1 == null) {
+         c.warn("Tried using unknown condition table called {}", this.b.a());
+         return false;
+      } else {
+         ezo.c<?> $$2 = ezo.a($$1);
+         if ($$0.b($$2)) {
+            boolean var4;
+            try {
+               var4 = $$1.test($$0);
+            } finally {
+               $$0.c($$2);
+            }
+
+            return var4;
+         } else {
+            c.warn("Detected infinite loop in loot tables");
+            return false;
+         }
+      }
    }
 
-   public static fcq.a a(ct.a $$0, iu $$1) {
-      return () -> new fco(Optional.of($$0.b()), $$1);
+   public static fcx.a a(alf<fcx> $$0) {
+      return () -> new fco($$0);
    }
 
-   public Optional<ct> c() {
+   public alf<fcx> c() {
       return this.b;
-   }
-
-   public iu d() {
-      return this.c;
    }
 }

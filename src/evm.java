@@ -1,14 +1,20 @@
 import com.mojang.serialization.MapCodec;
 
-public interface evm<P extends evl> {
-   evm<evj> a = a("clear", evj.a);
-   evm<evk> b = a("passthrough", evk.b);
-   evm<evi> c = a("append_static", evi.a);
-   evm<evh> d = a("append_loot", evh.a);
+public class evm extends eve {
+   public static final MapCodec<evm> a = axr.a(mh.i).fieldOf("tag").xmap(evm::new, $$0 -> $$0.b);
+   private final axr<dmm> b;
 
-   MapCodec<P> codec();
+   public evm(axr<dmm> $$0) {
+      this.b = $$0;
+   }
 
-   private static <P extends evl> evm<P> a(String $$0, MapCodec<P> $$1) {
-      return jr.a(mf.n, $$0, () -> $$1);
+   @Override
+   public boolean a(eao $$0, azv $$1) {
+      return $$0.a(this.b);
+   }
+
+   @Override
+   protected evf<?> a() {
+      return evf.d;
    }
 }

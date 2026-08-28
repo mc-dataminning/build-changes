@@ -1,36 +1,46 @@
-public class gvy extends gwg<cro, hcn> {
-   private static final alg a = alg.b("textures/entity/enderdragon/dragon_fireball.png");
-   private static final gqk g = gqk.g(a);
+public class gvy extends gxz<cph, hcm, gfq> {
+   private static final alg a = alg.b("textures/entity/breeze/breeze.png");
 
-   public gvy(gwh.a $$0) {
-      super($$0);
+   public gvy(gwt.a $$0) {
+      super($$0, new gfq($$0.a(gjn.K)), 0.5F);
+      this.a(new hag($$0, this));
+      this.a(new haf(this));
    }
 
-   protected int a(cro $$0, iu $$1) {
-      return 15;
-   }
-
-   @Override
-   public void a(hcn $$0, fjj $$1, gqa $$2, int $$3) {
-      $$1.a();
-      $$1.b(2.0F, 2.0F, 2.0F);
-      $$1.a(this.d.b());
-      fjj.a $$4 = $$1.c();
-      fjn $$5 = $$2.getBuffer(g);
-      a($$5, $$4, $$3, 0.0F, 0, 0, 1);
-      a($$5, $$4, $$3, 1.0F, 0, 1, 1);
-      a($$5, $$4, $$3, 1.0F, 1, 1, 0);
-      a($$5, $$4, $$3, 0.0F, 1, 0, 0);
-      $$1.b();
+   public void a(hcm $$0, fjy $$1, gqm $$2, int $$3) {
+      gfq $$4 = this.c();
+      a($$4, $$4.a(), $$4.c());
       super.a($$0, $$1, $$2, $$3);
    }
 
-   private static void a(fjn $$0, fjj.a $$1, int $$2, float $$3, int $$4, int $$5, int $$6) {
-      $$0.a($$1, $$3 - 0.5F, (float)$$4 - 0.25F, 0.0F).a(-1).a((float)$$5, (float)$$6).b(hin.d).c($$2).b($$1, 0.0F, 1.0F, 0.0F);
+   public alg a(hcm $$0) {
+      return a;
    }
 
-   @Override
-   public hcn d() {
-      return new hcn();
+   public hcm a() {
+      return new hcm();
+   }
+
+   public void a(cph $$0, hcm $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a.a($$0.a);
+      $$1.b.a($$0.bG);
+      $$1.c.a($$0.b);
+      $$1.d.a($$0.c);
+      $$1.e.a($$0.bH);
+      $$1.f.a($$0.d);
+   }
+
+   public static gfq a(gfq $$0, gjo... $$1) {
+      $$0.a().k = false;
+      $$0.b().k = false;
+      $$0.c().k = false;
+      $$0.d().k = false;
+
+      for (gjo $$2 : $$1) {
+         $$2.k = true;
+      }
+
+      return $$0;
    }
 }

@@ -1,25 +1,21 @@
-public class gzi extends gxn<cou, hez, gip> {
-   private static final alg a = alg.b("textures/entity/witch.png");
+public class gzi extends gvr<cru, hfd> {
+   public static final alg a = alg.b("textures/entity/projectiles/arrow.png");
+   public static final alg g = alg.b("textures/entity/projectiles/tipped_arrow.png");
 
-   public gzi(gwh.a $$0) {
-      super($$0, new gip($$0.a(gjb.dR)), 0.5F);
-      this.a(new hbh(this));
+   public gzi(gwt.a $$0) {
+      super($$0);
    }
 
-   public alg a(hez $$0) {
-      return a;
+   protected alg a(hfd $$0) {
+      return $$0.d ? g : a;
    }
 
-   public hez b() {
-      return new hez();
+   public hfd a() {
+      return new hfd();
    }
 
-   public void a(cou $$0, hez $$1, float $$2) {
+   public void a(cru $$0, hfd $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      hdc.a($$0, $$1, this.h);
-      $$1.a = $$0.ar();
-      czd $$3 = $$0.fb();
-      $$1.b = !$$3.f();
-      $$1.c = $$3.a(czh.tt);
+      $$1.d = $$0.y() > 0;
    }
 }

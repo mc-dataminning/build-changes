@@ -1,12 +1,13 @@
-public class hat extends hah<hdw, ggy> {
-   private static final gqk a = gqk.q(alg.b("textures/entity/phantom_eyes.png"));
-
-   public hat(gye<hdw, ggy> $$0) {
+public abstract class hat<S extends hcz, M extends ggk<S>> extends hbh<S, M> {
+   public hat(gyq<S, M> $$0) {
       super($$0);
    }
 
    @Override
-   public gqk a() {
-      return a;
+   public void a(fjy $$0, gqm $$1, int $$2, S $$3, float $$4, float $$5) {
+      fkc $$6 = $$1.getBuffer(this.a());
+      this.d().a($$0, $$6, $$2, hja.d);
    }
+
+   public abstract gqx a();
 }

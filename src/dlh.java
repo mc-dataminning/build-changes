@@ -1,45 +1,66 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dlh extends dvr implements dmi {
-   public static final MapCodec<dlh> a = b(dlh::new);
-   private static final ffk b = ffh.a(dmf.b(16.0, 8.0, 16.0), dmf.b(4.0, 0.0, 8.0));
+public abstract class dlh extends dly {
+   public static final ebm<jb> a = dqn.e;
+   public static final ebf b = ebe.u;
 
-   @Override
-   public MapCodec<dlh> a() {
-      return a;
-   }
-
-   protected dlh(eag.d $$0) {
+   protected dlh(ean.d $$0) {
       super($$0);
+      this.l(this.C.b().b(a, jb.c).b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
-      return b;
+   protected abstract MapCodec<? extends dlh> a();
+
+   @Override
+   protected bug a(eao $$0, djh $$1, iv $$2, crj $$3, fet $$4) {
+      if (!$$1.C) {
+         this.a($$1, $$2, $$3);
+      }
+
+      return bug.a;
+   }
+
+   protected abstract void a(djh var1, iv var2, crj var3);
+
+   @Override
+   public eao a(ddd $$0) {
+      return this.m().b(a, $$0.g().g());
    }
 
    @Override
-   protected boolean b(eah $$0, dig $$1, iu $$2) {
-      return $$0.a(dmh.ei) || super.b($$0, $$1, $$2);
+   protected void a(eao $$0, arq $$1, iv $$2, boolean $$3) {
+      buc.a($$0, $$1, $$2);
    }
 
    @Override
-   public boolean a(djd $$0, iu $$1, eah $$2) {
-      return $$0.b_($$1.d()).c();
+   protected boolean c_(eao $$0) {
+      return true;
    }
 
    @Override
-   public boolean a(dja $$0, azv $$1, iu $$2, eah $$3) {
-      return (double)$$0.A.i() < 0.45;
+   protected int a(eao $$0, djh $$1, iv $$2) {
+      return cvc.a($$1.c_($$2));
    }
 
    @Override
-   public void a(arq $$0, azv $$1, iu $$2, eah $$3) {
-      dzv.e.a($$0, $$0.m().g(), $$2, $$3, $$1);
+   protected eao a(eao $$0, dtg $$1) {
+      return $$0.b(a, $$1.a($$0.c(a)));
    }
 
    @Override
-   protected boolean a(eah $$0, exd $$1) {
-      return false;
+   protected eao a(eao $$0, drp $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(eap.a<dmm, eao> $$0) {
+      $$0.a(a, b);
+   }
+
+   @Nullable
+   protected static <T extends dxm> dxn<T> a(djh $$0, dxo<T> $$1, dxo<? extends dwz> $$2) {
+      return $$0 instanceof arq $$3 ? a($$1, $$2, ($$1x, $$2x, $$3x, $$4) -> dwz.a($$3, $$2x, $$3x, $$4)) : null;
    }
 }

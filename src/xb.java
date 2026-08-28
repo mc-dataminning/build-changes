@@ -10,7 +10,7 @@ import javax.annotation.Nullable;
 
 public class xb {
    public static final String a = ", ";
-   public static final wy b = wy.b(", ").a(n.h);
+   public static final wy b = wy.b(", ").a(o.h);
    public static final wy c = wy.b(", ");
 
    public static xm a(xm $$0, xv $$1) {
@@ -26,11 +26,11 @@ public class xb {
       }
    }
 
-   public static Optional<xm> a(@Nullable ei $$0, Optional<wy> $$1, @Nullable bwf $$2, int $$3) throws CommandSyntaxException {
+   public static Optional<xm> a(@Nullable ej $$0, Optional<wy> $$1, @Nullable bwi $$2, int $$3) throws CommandSyntaxException {
       return $$1.isPresent() ? Optional.of(a($$0, $$1.get(), $$2, $$3)) : Optional.empty();
    }
 
-   public static xm a(@Nullable ei $$0, wy $$1, @Nullable bwf $$2, int $$3) throws CommandSyntaxException {
+   public static xm a(@Nullable ej $$0, wy $$1, @Nullable bwi $$2, int $$3) throws CommandSyntaxException {
       if ($$3 > 100) {
          return $$1.f();
       } else {
@@ -44,7 +44,7 @@ public class xb {
       }
    }
 
-   private static xv a(@Nullable ei $$0, xv $$1, @Nullable bwf $$2, int $$3) throws CommandSyntaxException {
+   private static xv a(@Nullable ej $$0, xv $$1, @Nullable bwi $$2, int $$3) throws CommandSyntaxException {
       if ($$1.j() instanceof xe.e var5) {
          xe.e var10000 = var5;
 
@@ -63,7 +63,7 @@ public class xb {
    }
 
    public static wy a(Collection<String> $$0) {
-      return a($$0, $$0x -> wy.b($$0x).a(n.k));
+      return a($$0, $$0x -> wy.b($$0x).a(o.k));
    }
 
    public static <T extends Comparable<T>> wy a(Collection<T> $$0, Function<T, wy> $$1) {
@@ -131,6 +131,6 @@ public class xb {
    }
 
    public static xm a(String $$0) {
-      return a((wy)wy.b($$0).a($$1 -> $$1.a(n.k).a(new ww.c($$0)).a(new xe.e(wy.c("chat.copy.click"))).a($$0)));
+      return a((wy)wy.b($$0).a($$1 -> $$1.a(o.k).a(new ww.c($$0)).a(new xe.e(wy.c("chat.copy.click"))).a($$0)));
    }
 }

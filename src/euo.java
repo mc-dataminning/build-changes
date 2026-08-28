@@ -1,14 +1,20 @@
 import com.mojang.serialization.MapCodec;
 
-public class euo extends eva {
-   public static final MapCodec<euo> a = MapCodec.unit(() -> euo.b);
-   public static final euo b = new euo();
+public class euo extends eve {
+   public static final MapCodec<euo> a = eao.a.fieldOf("block_state").xmap(euo::new, $$0 -> $$0.b);
+   private final eao b;
 
-   private euo() {
+   public euo(eao $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected evc<?> a() {
-      return evc.j;
+   public boolean a(eao $$0, azv $$1) {
+      return $$0 == this.b;
+   }
+
+   @Override
+   protected evf<?> a() {
+      return evf.c;
    }
 }

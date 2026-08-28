@@ -1,153 +1,49 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+public class ftl extends fsv {
+   private boolean a;
 
-public class ftl extends fyb {
-   private static final alg a = alg.b("popup/background");
-   private static final int b = 12;
-   private static final int c = 18;
-   private static final int d = 6;
-   private static final int s = 130;
-   private static final int u = 64;
-   private static final int v = 250;
-   private final fyb w;
-   @Nullable
-   private final alg x;
-   private final wy y;
-   private final List<ftl.b> z;
-   @Nullable
-   private final Runnable A;
-   private final int B;
-   private final fwb C = fwb.d();
-
-   ftl(fyb $$0, int $$1, @Nullable alg $$2, wy $$3, wy $$4, List<ftl.b> $$5, @Nullable Runnable $$6) {
-      super($$3);
-      this.w = $$0;
-      this.x = $$2;
-      this.y = $$4;
-      this.z = $$5;
-      this.A = $$6;
-      this.B = $$1 - 36;
+   public ftl(int $$0, int $$1, fsv.c $$2) {
+      super($$0, $$1, 20, 20, wy.c("narrator.button.difficulty_lock"), $$2, q);
    }
 
    @Override
-   public void aG_() {
-      super.aG_();
-      this.w.o();
+   protected xm d() {
+      return wx.a(super.d(), this.a() ? wy.c("narrator.button.difficulty_lock.locked") : wy.c("narrator.button.difficulty_lock.unlocked"));
+   }
+
+   public boolean a() {
+      return this.a;
+   }
+
+   public void b(boolean $$0) {
+      this.a = $$0;
    }
 
    @Override
-   protected void aO_() {
-      this.w.b(this.m, this.n, this.o);
-      this.C.a(12).c().b();
-      this.C.a(new ftd(this.l.f().a(n.r), this.p).d(this.B).b(true));
-      if (this.x != null) {
-         this.C.a(fsw.a(130, 64, this.x, 130, 64));
+   public void b(fsh $$0, int $$1, int $$2, float $$3) {
+      ftl.a $$4;
+      if (!this.j) {
+         $$4 = this.a ? ftl.a.c : ftl.a.f;
+      } else if (this.D()) {
+         $$4 = this.a ? ftl.a.b : ftl.a.e;
+      } else {
+         $$4 = this.a ? ftl.a.a : ftl.a.d;
       }
 
-      this.C.a(new ftd(this.y, this.p).d(this.B).b(true));
-      this.C.a(this.m());
-      this.C.a($$1 -> {
-         fsh var10000 = this.c($$1);
-      });
-      this.c();
+      $$0.a(gqx::H, $$4.g, this.F(), this.G(), this.g, this.h);
    }
 
-   private fwb m() {
-      int $$0 = 6 * (this.z.size() - 1);
-      int $$1 = Math.min((this.B - $$0) / this.z.size(), 150);
-      fwb $$2 = fwb.e();
-      $$2.a(6);
+   static enum a {
+      a(alg.b("widget/locked_button")),
+      b(alg.b("widget/locked_button_highlighted")),
+      c(alg.b("widget/locked_button_disabled")),
+      d(alg.b("widget/unlocked_button")),
+      e(alg.b("widget/unlocked_button_highlighted")),
+      f(alg.b("widget/unlocked_button_disabled"));
 
-      for (ftl.b $$3 : this.z) {
-         $$2.a(fsj.a($$3.a(), $$1x -> $$3.b().accept(this)).a($$1).a());
-      }
+      final alg g;
 
-      return $$2;
-   }
-
-   @Override
-   protected void c() {
-      this.w.a(this.m, this.n, this.o);
-      this.C.a();
-      fvv.a(this.C, this.J());
-   }
-
-   @Override
-   public void b(frv $$0, int $$1, int $$2, float $$3) {
-      this.w.a($$0, -1, -1, $$3);
-      $$0.d();
-      RenderSystem.clear(256);
-      this.b($$0);
-      $$0.a(gqk::H, a, this.C.F() - 18, this.C.G() - 18, this.C.A() + 36, this.C.y() + 36);
-   }
-
-   @Override
-   public wy i() {
-      return wx.a(this.l, this.y);
-   }
-
-   @Override
-   public void aL_() {
-      if (this.A != null) {
-         this.A.run();
-      }
-
-      this.m.a(this.w);
-   }
-
-   public static class a {
-      private final fyb a;
-      private final wy b;
-      private wy c = wx.a;
-      private int d = 250;
-      @Nullable
-      private alg e;
-      private final List<ftl.b> f = new ArrayList<>();
-      @Nullable
-      private Runnable g = null;
-
-      public a(fyb $$0, wy $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public ftl.a a(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public ftl.a a(alg $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public ftl.a a(wy $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public ftl.a a(wy $$0, Consumer<ftl> $$1) {
-         this.f.add(new ftl.b($$0, $$1));
-         return this;
-      }
-
-      public ftl.a a(Runnable $$0) {
+      private a(final alg $$0) {
          this.g = $$0;
-         return this;
       }
-
-      public ftl a() {
-         if (this.f.isEmpty()) {
-            throw new IllegalStateException("Popup must have at least one button");
-         } else {
-            return new ftl(this.a, this.d, this.e, this.b, this.c, List.copyOf(this.f), this.g);
-         }
-      }
-   }
-
-   static record b(wy a, Consumer<ftl> b) {
    }
 }

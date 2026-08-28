@@ -1,43 +1,8 @@
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.util.function.Function;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class frd<T> {
-   final String a;
-   final Function<T, JsonElement> b;
-
-   public frd(String $$0, Function<T, JsonElement> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public frd<T>.a a(T $$0) {
-      return new frd.a($$0);
-   }
-
-   @Override
-   public String toString() {
-      return this.a;
-   }
-
-   public class a {
-      private final T b;
-
-      public a(final T $$1) {
-         this.b = $$1;
-      }
-
-      public frd<T> a() {
-         return frd.this;
-      }
-
-      public void a(JsonObject $$0) {
-         $$0.add(frd.this.a, frd.this.b.apply(this.b));
-      }
-
-      @Override
-      public String toString() {
-         return frd.this.a + "=" + this.b;
-      }
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface frd {
 }

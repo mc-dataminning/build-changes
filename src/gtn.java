@@ -1,57 +1,80 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-public class gtn {
-   private final Long2ObjectMap<gtn.a> a = new Long2ObjectOpenHashMap();
+public class gtn extends gss {
+   private static final float a = 0.6666667F;
+   private static final fex b = new fex(0.0, 0.33333334F, 0.046666667F);
+   private final Map<ecc, gtn.a> c;
 
-   @Nullable
-   public gtm a(dja $$0, jx $$1) {
-      gtn.a $$2 = this.a($$0, $$1.a(), $$1.c());
-      if ($$2.a().c($$1.b())) {
-         return null;
-      } else {
-         int $$3 = $$1.a() - 1;
-         int $$4 = $$1.c() - 1;
-         int $$5 = $$1.a() + 1;
-         int $$6 = $$1.c() + 1;
-         gtl[] $$7 = new gtl[9];
+   public gtn(gsz.a $$0) {
+      super($$0);
+      this.c = ecc.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new gtn.a(a($$0.f(), $$1, true), a($$0.f(), $$1, false))));
+   }
 
-         for (int $$8 = $$4; $$8 <= $$6; $$8++) {
-            for (int $$9 = $$3; $$9 <= $$5; $$9++) {
-               int $$10 = gtm.a($$3, $$4, $$9, $$8);
-               gtn.a $$11 = $$9 == $$1.a() && $$8 == $$1.c() ? $$2 : this.a($$0, $$9, $$8);
-               $$7[$$10] = $$11.b();
-            }
-         }
+   @Override
+   protected ghg a(eao $$0, ecc $$1) {
+      gtn.a $$2 = this.c.get($$1);
+      return $$0.b() instanceof dur ? $$2.a() : $$2.b();
+   }
 
-         return new gtm($$0, $$3, $$4, $$7);
+   @Override
+   protected hlq a(ecc $$0) {
+      return grg.a($$0);
+   }
+
+   @Override
+   protected float a() {
+      return 0.6666667F;
+   }
+
+   @Override
+   protected float b() {
+      return 0.6666667F;
+   }
+
+   private static void a(fjy $$0, float $$1) {
+      $$0.a(0.5F, 0.5F, 0.5F);
+      $$0.a(a.d.rotationDegrees($$1));
+   }
+
+   @Override
+   protected void a(fjy $$0, float $$1, eao $$2) {
+      a($$0, $$1);
+      if (!($$2.b() instanceof dur)) {
+         $$0.a(0.0F, -0.3125F, -0.4375F);
       }
    }
 
-   private gtn.a a(dja $$0, int $$1, int $$2) {
-      return (gtn.a)this.a.computeIfAbsent(dih.c($$1, $$2), $$1x -> new gtn.a($$0.d(dih.a($$1x), dih.b($$1x))));
+   @Override
+   protected fex c() {
+      return b;
    }
 
-   static final class a {
-      private final eco a;
-      @Nullable
-      private gtl b;
+   public static void a(fjy $$0, gqm $$1, int $$2, int $$3, ghg $$4, hlq $$5) {
+      $$0.a();
+      a($$0, 0.0F);
+      $$0.b(0.6666667F, -0.6666667F, -0.6666667F);
+      fkc $$6 = $$5.a($$1, $$4::a);
+      $$4.a($$0, $$6, $$2, $$3);
+      $$0.b();
+   }
 
-      a(eco $$0) {
-         this.a = $$0;
+   public static ghg a(gjk $$0, ecc $$1, boolean $$2) {
+      gjm $$3 = $$2 ? gjn.a($$1) : gjn.b($$1);
+      return new ghg.a($$0.a($$3), gqx::g);
+   }
+
+   public static gju a(boolean $$0) {
+      gjw $$1 = new gjw();
+      gjy $$2 = $$1.a();
+      $$2.a("sign", gjt.c().a(0, 0).a(-12.0F, -14.0F, -1.0F, 24.0F, 12.0F, 2.0F), gjq.a);
+      if ($$0) {
+         $$2.a("stick", gjt.c().a(0, 14).a(-1.0F, -2.0F, -1.0F, 2.0F, 14.0F, 2.0F), gjq.a);
       }
 
-      public eco a() {
-         return this.a;
-      }
+      return gju.a($$1, 64, 32);
+   }
 
-      public gtl b() {
-         if (this.b == null) {
-            this.b = new gtl(this.a);
-         }
-
-         return this.b;
-      }
+   static record a(ghg a, ghg b) {
    }
 }

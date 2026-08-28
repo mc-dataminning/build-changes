@@ -17,7 +17,7 @@ public class ban {
    @Nullable
    private volatile Thread e;
    @Nullable
-   private volatile z f;
+   private volatile aa f;
 
    public ban(String $$0) {
       this.b = $$0;
@@ -53,7 +53,7 @@ public class ban {
          this.d.lock();
          Thread $$0 = this.e;
          if ($$0 != null) {
-            z $$1 = a(this.b, $$0);
+            aa $$1 = a(this.b, $$0);
             this.f = $$1;
             this.c.release();
             throw $$1;
@@ -65,14 +65,14 @@ public class ban {
       }
    }
 
-   public static z a(String $$0, @Nullable Thread $$1) {
+   public static aa a(String $$0, @Nullable Thread $$1) {
       String $$2 = Stream.of(Thread.currentThread(), $$1).filter(Objects::nonNull).map(ban::a).collect(Collectors.joining("\n"));
       String $$3 = "Accessing " + $$0 + " from multiple threads";
-      o $$4 = new o($$3, new IllegalStateException($$3));
-      p $$5 = $$4.a("Thread dumps");
+      p $$4 = new p($$3, new IllegalStateException($$3));
+      q $$5 = $$4.a("Thread dumps");
       $$5.a("Thread dumps", $$2);
       a.error("Thread dumps: \n" + $$2);
-      return new z($$4);
+      return new aa($$4);
    }
 
    private static String a(Thread $$0) {

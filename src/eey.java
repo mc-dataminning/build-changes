@@ -1,133 +1,122 @@
-import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2ObjectFunction;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongAVLTreeSet;
+import it.unimi.dsi.fastutil.longs.LongIterator;
 import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import it.unimi.dsi.fastutil.longs.LongSet;
-import org.slf4j.Logger;
+import it.unimi.dsi.fastutil.longs.LongSortedSet;
+import java.util.Objects;
+import java.util.Spliterators;
+import java.util.PrimitiveIterator.OfLong;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
+import javax.annotation.Nullable;
 
-public class eey<T extends eem> {
-   static final Logger a = LogUtils.getLogger();
-   final eeu<T> b;
-   final eeo<T> c;
-   final eer<T> d;
-   private final LongSet e = new LongOpenHashSet();
-   private final eev<T> f;
+public class eey<T extends eet> {
+   public static final int a = 2;
+   public static final int b = 4;
+   private final Class<T> c;
+   private final Long2ObjectFunction<efi> d;
+   private final Long2ObjectMap<eex<T>> e = new Long2ObjectOpenHashMap();
+   private final LongSortedSet f = new LongAVLTreeSet();
 
-   public eey(Class<T> $$0, eeu<T> $$1) {
-      this.c = new eeo<>();
-      this.d = new eer<>($$0, $$0x -> this.e.contains($$0x) ? efb.c : efb.b);
-      this.b = $$1;
-      this.f = new eew<>(this.c, this.d);
+   public eey(Class<T> $$0, Long2ObjectFunction<efi> $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public void a(dih $$0) {
-      long $$1 = $$0.a();
-      this.e.add($$1);
-      this.d.b($$1).forEach($$0x -> {
-         efb $$1x = $$0x.a(efb.c);
-         if (!$$1x.a()) {
-            $$0x.b().filter($$0xx -> !$$0xx.dU()).forEach(this.b::e);
-         }
-      });
-   }
+   public void a(fes $$0, axx<eex<T>> $$1) {
+      int $$2 = jy.a($$0.a - 2.0);
+      int $$3 = jy.a($$0.b - 4.0);
+      int $$4 = jy.a($$0.c - 2.0);
+      int $$5 = jy.a($$0.d + 2.0);
+      int $$6 = jy.a($$0.e + 0.0);
+      int $$7 = jy.a($$0.f + 2.0);
 
-   public void b(dih $$0) {
-      long $$1 = $$0.a();
-      this.e.remove($$1);
-      this.d.b($$1).forEach($$0x -> {
-         efb $$1x = $$0x.a(efb.b);
-         if ($$1x.a()) {
-            $$0x.b().filter($$0xx -> !$$0xx.dU()).forEach(this.b::d);
-         }
-      });
-   }
+      for (int $$8 = $$2; $$8 <= $$5; $$8++) {
+         long $$9 = jy.b($$8, 0, 0);
+         long $$10 = jy.b($$8, -1, -1);
+         LongIterator $$11 = this.f.subSet($$9, $$10 + 1L).iterator();
 
-   public eev<T> a() {
-      return this.f;
-   }
-
-   public void a(T $$0) {
-      this.c.a($$0);
-      long $$1 = jx.c($$0.dv());
-      eeq<T> $$2 = this.d.c($$1);
-      $$2.a($$0);
-      $$0.a(new eey.a($$0, $$1, $$2));
-      this.b.g($$0);
-      this.b.c($$0);
-      if ($$0.dU() || $$2.c().a()) {
-         this.b.e($$0);
-      }
-   }
-
-   @bav
-   public int b() {
-      return this.c.b();
-   }
-
-   void a(long $$0, eeq<T> $$1) {
-      if ($$1.a()) {
-         this.d.e($$0);
-      }
-   }
-
-   @bav
-   public String c() {
-      return this.c.b() + "," + this.d.b() + "," + this.e.size();
-   }
-
-   class a implements een {
-      private final T c;
-      private long d;
-      private eeq<T> e;
-
-      a(final T $$0, final long $$1, final eeq<T> $$2) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-      }
-
-      @Override
-      public void a() {
-         iu $$0 = this.c.dv();
-         long $$1 = jx.c($$0);
-         if ($$1 != this.d) {
-            efb $$2 = this.e.c();
-            if (!this.e.b(this.c)) {
-               eey.a.warn("Entity {} wasn't found in section {} (moving to {})", new Object[]{this.c, jx.a(this.d), $$1});
-            }
-
-            eey.this.a(this.d, this.e);
-            eeq<T> $$3 = eey.this.d.c($$1);
-            $$3.a(this.c);
-            this.e = $$3;
-            this.d = $$1;
-            eey.this.b.a(this.c);
-            if (!this.c.dU()) {
-               boolean $$4 = $$2.a();
-               boolean $$5 = $$3.c().a();
-               if ($$4 && !$$5) {
-                  eey.this.b.d(this.c);
-               } else if (!$$4 && $$5) {
-                  eey.this.b.e(this.c);
+         while ($$11.hasNext()) {
+            long $$12 = $$11.nextLong();
+            int $$13 = jy.c($$12);
+            int $$14 = jy.d($$12);
+            if ($$13 >= $$3 && $$13 <= $$6 && $$14 >= $$4 && $$14 <= $$7) {
+               eex<T> $$15 = (eex<T>)this.e.get($$12);
+               if ($$15 != null && !$$15.a() && $$15.c().b() && $$1.accept($$15).a()) {
+                  return;
                }
             }
          }
       }
+   }
 
-      @Override
-      public void a(bwf.e $$0) {
-         if (!this.e.b(this.c)) {
-            eey.a.warn("Entity {} wasn't found in section {} (destroying due to {})", new Object[]{this.c, jx.a(this.d), $$0});
-         }
-
-         efb $$1 = this.e.c();
-         if ($$1.a() || this.c.dU()) {
-            eey.this.b.d(this.c);
-         }
-
-         eey.this.b.b(this.c);
-         eey.this.b.f(this.c);
-         eey.this.c.b(this.c);
-         this.c.a(a);
-         eey.this.a(this.d, this.e);
+   public LongStream a(long $$0) {
+      int $$1 = dio.a($$0);
+      int $$2 = dio.b($$0);
+      LongSortedSet $$3 = this.a($$1, $$2);
+      if ($$3.isEmpty()) {
+         return LongStream.empty();
+      } else {
+         OfLong $$4 = $$3.iterator();
+         return StreamSupport.longStream(Spliterators.spliteratorUnknownSize($$4, 1301), false);
       }
+   }
+
+   private LongSortedSet a(int $$0, int $$1) {
+      long $$2 = jy.b($$0, 0, $$1);
+      long $$3 = jy.b($$0, -1, $$1);
+      return this.f.subSet($$2, $$3 + 1L);
+   }
+
+   public Stream<eex<T>> b(long $$0) {
+      return this.a($$0).<eex<T>>mapToObj(this.e::get).filter(Objects::nonNull);
+   }
+
+   private static long f(long $$0) {
+      return dio.c(jy.b($$0), jy.d($$0));
+   }
+
+   public eex<T> c(long $$0) {
+      return (eex<T>)this.e.computeIfAbsent($$0, this::g);
+   }
+
+   @Nullable
+   public eex<T> d(long $$0) {
+      return (eex<T>)this.e.get($$0);
+   }
+
+   private eex<T> g(long $$0) {
+      long $$1 = f($$0);
+      efi $$2 = (efi)this.d.get($$1);
+      this.f.add($$0);
+      return new eex<>(this.c, $$2);
+   }
+
+   public LongSet a() {
+      LongSet $$0 = new LongOpenHashSet();
+      this.e.keySet().forEach($$1 -> $$0.add(f($$1)));
+      return $$0;
+   }
+
+   public void b(fes $$0, axx<T> $$1) {
+      this.a($$0, $$2 -> $$2.a($$0, $$1));
+   }
+
+   public <U extends T> void a(efa<T, U> $$0, fes $$1, axx<U> $$2) {
+      this.a($$1, $$3 -> $$3.a($$0, $$1, $$2));
+   }
+
+   public void e(long $$0) {
+      this.e.remove($$0);
+      this.f.remove($$0);
+   }
+
+   @bav
+   public int b() {
+      return this.f.size();
    }
 }

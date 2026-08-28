@@ -1,35 +1,23 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class hhs implements hhx {
-   private final gsj a;
-   private final hle b;
+public record hhs() implements hia<alf<djh>> {
+   public static final Codec<alf<djh>> a = alf.a(mh.bo);
+   public static final hia.a<hhs, alf<djh>> b = hia.a.a(MapCodec.unit(new hhs()), a);
 
-   public hhs(gsj $$0, hle $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   @Nullable
+   public alf<djh> a(czk $$0, @Nullable gkl $$1, @Nullable bxj $$2, int $$3, czi $$4) {
+      return $$1 != null ? $$1.aj() : null;
    }
 
    @Override
-   public void a(czb $$0, fjj $$1, gqa $$2, int $$3, int $$4, boolean $$5) {
-      this.a.a($$1, $$2, $$3, $$4, this.b);
+   public hia.a<hhs, alf<djh>> a() {
+      return b;
    }
 
-   public static record a(alg b) implements hib.a {
-      public static final MapCodec<hhs.a> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alg.a.fieldOf("texture").forGetter(hhs.a::b)).apply($$0, hhs.a::new));
-
-      public a(cyb $$0) {
-         this(gqv.b($$0));
-      }
-
-      @Override
-      public MapCodec<hhs.a> a() {
-         return a;
-      }
-
-      @Override
-      public hib<?> a(giy $$0) {
-         return new hhs(new gsj($$0), gqv.o.a(this.b));
-      }
+   @Override
+   public Codec<alf<djh>> b() {
+      return a;
    }
 }

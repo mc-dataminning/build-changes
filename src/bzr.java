@@ -1,31 +1,37 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.Collections;
-import java.util.List;
 import java.util.function.Function;
 
 public class bzr {
-   public static byw<bxm> a(float $$0) {
-      return cci.a(
-         (Function<cci.b<bxm>, ? extends App<cci.c<bxm>, ccl<bxm>>>)($$1 -> $$1.group($$1.c(cgg.n))
-               .apply(
-                  $$1,
-                  $$1x -> ($$2, $$3, $$4) -> {
-                        if ($$2.h($$3.dv())) {
-                           return false;
-                        } else {
-                           iu $$5 = $$3.dv();
-                           List<iu> $$6 = iu.d($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(iu::j).collect(af.b());
-                           Collections.shuffle($$6);
-                           $$6.stream()
-                              .filter($$1xxx -> !$$2.h($$1xxx))
-                              .filter($$2x -> $$2.a($$2x, $$3))
-                              .filter($$2x -> $$2.g($$3))
-                              .findFirst()
-                              .ifPresent($$2x -> $$1x.a(new cgj($$2x, $$0, 0)));
-                           return true;
+   public static bzb<cqv> a(float $$0, int $$1) {
+      return ccn.a((Function<ccn.b<cqv>, ? extends App<ccn.c<cqv>, ccq<cqv>>>)($$2 -> $$2.group($$2.c(cgl.n)).apply($$2, $$2x -> ($$3, $$4, $$5) -> {
+               if ($$3.c($$4.du())) {
+                  return false;
+               } else {
+                  cil $$6 = $$3.A();
+                  int $$7 = $$6.a(jy.a($$4.du()));
+                  fex $$8 = null;
+
+                  for (int $$9 = 0; $$9 < 5; $$9++) {
+                     fex $$10 = cif.a($$4, 15, 7, $$1xxxx -> (double)(-$$6.a(jy.a($$1xxxx))));
+                     if ($$10 != null) {
+                        int $$11 = $$6.a(jy.a(iv.a((jp)$$10)));
+                        if ($$11 < $$7) {
+                           $$8 = $$10;
+                           break;
+                        }
+
+                        if ($$11 == $$7) {
+                           $$8 = $$10;
                         }
                      }
-               ))
-      );
+                  }
+
+                  if ($$8 != null) {
+                     $$2x.a(new cgo($$8, $$0, $$1));
+                  }
+
+                  return true;
+               }
+            })));
    }
 }

@@ -28,13 +28,13 @@ public class ye implements wz {
    private final String g;
    private final ya h;
    @Nullable
-   protected final fa.g c;
+   protected final fb.g c;
 
    public ye(String $$0, boolean $$1, Optional<wy> $$2, ya $$3) {
       this($$0, a($$0), $$1, $$2, $$3);
    }
 
-   private ye(String $$0, @Nullable fa.g $$1, boolean $$2, Optional<wy> $$3, ya $$4) {
+   private ye(String $$0, @Nullable fb.g $$1, boolean $$2, Optional<wy> $$3, ya $$4) {
       this.g = $$0;
       this.c = $$1;
       this.e = $$2;
@@ -43,9 +43,9 @@ public class ye implements wz {
    }
 
    @Nullable
-   private static fa.g a(String $$0) {
+   private static fb.g a(String $$0) {
       try {
-         return new fa().a(new StringReader($$0));
+         return new fb().a(new StringReader($$0));
       } catch (CommandSyntaxException var2) {
          return null;
       }
@@ -94,7 +94,7 @@ public class ye implements wz {
    }
 
    @Override
-   public xm a(@Nullable ei $$0, @Nullable bwf $$1, int $$2) throws CommandSyntaxException {
+   public xm a(@Nullable ej $$0, @Nullable bwi $$1, int $$2) throws CommandSyntaxException {
       if ($$0 != null && this.c != null) {
          Stream<uw> $$3 = this.h.a($$0).flatMap($$0x -> {
             try {

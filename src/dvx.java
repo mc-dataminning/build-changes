@@ -1,60 +1,70 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dvx extends dlb {
-   public static final MapCodec<dvx> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dtr.a.b.fieldOf("kind").forGetter(dlb::b), t()).apply($$0, dvx::new));
-   public static final ebf<ja> d = dqg.e;
-   private static final Map<ja, ffk> b = ffh.c(dmf.c(8.0, 8.0, 16.0));
-
-   @Override
-   public MapCodec<? extends dvx> a() {
-      return c;
-   }
-
-   protected dvx(dtr.a $$0, eag.d $$1) {
-      super($$0, $$1);
-      this.l(this.m().b(d, ja.c));
-   }
+public class dvx extends dly {
+   public static final MapCodec<dvx> a = b(dvx::new);
+   public static final ebr<eaa> b = ebe.bC;
+   public static final ebm<jb> c = dqn.e;
+   public static final ebf d = ebe.bE;
 
    @Override
-   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
-      return b.get($$0.c(d));
+   public MapCodec<dvx> a() {
+      return a;
+   }
+
+   public dvx(ean.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(c, jb.c).b(b, eaa.a).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public eah a(dcw $$0) {
-      eah $$1 = super.a($$0);
-      dig $$2 = $$0.q();
-      iu $$3 = $$0.a();
-      ja[] $$4 = $$0.f();
-
-      for (ja $$5 : $$4) {
-         if ($$5.o().d()) {
-            ja $$6 = $$5.g();
-            $$1 = $$1.b(d, $$6);
-            if (!$$2.a_($$3.a($$5)).a($$0)) {
-               return $$1;
+   public bug a(czk $$0, eao $$1, djh $$2, iv $$3, crj $$4, buf $$5, fet $$6) {
+      if (!$$0.f() && $$1.c(b) == eaa.b) {
+         if ($$2 instanceof arq $$7) {
+            if (!($$7.c_($$3) instanceof dzv $$8)) {
+               return bug.f;
             }
+
+            dzv.b.a($$7, $$3, $$1, $$8.f(), $$8.a(), $$8.c(), $$4, $$0);
          }
+
+         return bug.b;
+      } else {
+         return bug.f;
       }
+   }
 
-      return null;
+   @Nullable
+   @Override
+   public dxm a(iv $$0, eao $$1) {
+      return new dzv($$0, $$1);
    }
 
    @Override
-   protected eah a(eah $$0, dsz $$1) {
-      return $$0.b(d, $$1.a($$0.c(d)));
+   protected void a(eap.a<dmm, eao> $$0) {
+      $$0.a(c, b, d);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dxm> dxn<T> a(djh $$0, eao $$1, dxo<T> $$2) {
+      return $$0 instanceof arq $$3
+         ? a($$2, dxo.S, ($$1x, $$2x, $$3x, $$4) -> dzv.b.a($$3, $$2x, $$3x, $$4.f(), $$4.a(), $$4.c()))
+         : a($$2, dxo.S, ($$0x, $$1x, $$2x, $$3x) -> dzv.a.a($$0x, $$1x, $$2x, $$3x.d(), $$3x.c()));
    }
 
    @Override
-   protected eah a(eah $$0, dri $$1) {
-      return $$0.a($$1.a($$0.c(d)));
+   public eao a(ddd $$0) {
+      return this.m().b(c, $$0.g().g());
    }
 
    @Override
-   protected void a(eai.a<dmf, eah> $$0) {
-      super.a($$0);
-      $$0.a(d);
+   public eao a(eao $$0, dtg $$1) {
+      return $$0.b(c, $$1.a($$0.c(c)));
+   }
+
+   @Override
+   public eao a(eao $$0, drp $$1) {
+      return $$0.a($$1.a($$0.c(c)));
    }
 }

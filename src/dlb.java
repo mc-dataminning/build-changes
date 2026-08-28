@@ -1,62 +1,58 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public abstract class dlb extends dlr {
-   public static final eay a = eax.A;
-   private final dtr.a b;
+public class dlb extends dko {
+   public static final MapCodec<dlb> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ale.d(dkr.ai), ale.d(dkr.aj), ale.d(dkr.ak), ale.d(dkr.al), ale.d(dkr.am)).apply($$0, $$0.stable(dlb::new))
+   );
+   private final jf<dkk> c;
+   private final jf<dkk> d;
+   private final jf<dkk> e;
+   private final jf<dkk> f;
+   private final jf<dkk> g;
 
-   public dlb(dtr.a $$0, eag.d $$1) {
-      super($$1);
-      this.b = $$0;
-      this.l(this.C.b().b(a, Boolean.valueOf(false)));
+   public static dlb a(jg<dkk> $$0) {
+      return new dlb($$0.b(dkr.ai), $$0.b(dkr.aj), $$0.b(dkr.ak), $$0.b(dkr.al), $$0.b(dkr.am));
+   }
+
+   private dlb(jf<dkk> $$0, jf<dkk> $$1, jf<dkk> $$2, jf<dkk> $$3, jf<dkk> $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
    @Override
-   protected abstract MapCodec<? extends dlb> a();
-
-   @Override
-   public dxf a(iu $$0, eah $$1) {
-      return new dyv($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dxf> dxg<T> a(dja $$0, eah $$1, dxh<T> $$2) {
-      if ($$0.C) {
-         boolean $$3 = $$1.a(dmh.hp) || $$1.a(dmh.hq) || $$1.a(dmh.hr) || $$1.a(dmh.hs);
-         if ($$3) {
-            return a($$2, dxh.q, dyv::a);
-         }
-      }
-
-      return null;
-   }
-
-   public dtr.a b() {
-      return this.b;
+   protected Stream<jf<dkk>> b() {
+      return Stream.of(this.c, this.d, this.e, this.f, this.g);
    }
 
    @Override
-   protected boolean a(eah $$0, exd $$1) {
-      return false;
+   protected MapCodec<? extends dko> a() {
+      return b;
    }
 
    @Override
-   protected void a(eai.a<dmf, eah> $$0) {
-      $$0.a(a);
-   }
-
-   @Override
-   public eah a(dcw $$0) {
-      return this.m().b(a, Boolean.valueOf($$0.q().D($$0.a())));
-   }
-
-   @Override
-   protected void a(eah $$0, dja $$1, iu $$2, dmf $$3, @Nullable exw $$4, boolean $$5) {
-      if (!$$1.C) {
-         boolean $$6 = $$1.D($$2);
-         if ($$6 != $$0.c(a)) {
-            $$1.a($$2, $$0.b(a, Boolean.valueOf($$6)), 2);
+   public jf<dkk> getNoiseBiome(int $$0, int $$1, int $$2, dkt.f $$3) {
+      int $$4 = jq.c($$0);
+      int $$5 = jq.c($$1);
+      int $$6 = jq.c($$2);
+      int $$7 = jy.a($$4);
+      int $$8 = jy.a($$6);
+      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
+         return this.c;
+      } else {
+         int $$9 = (jy.a($$4) * 2 + 1) * 8;
+         int $$10 = (jy.a($$6) * 2 + 1) * 8;
+         double $$11 = $$3.e().a(new egg.e($$9, $$5, $$10));
+         if ($$11 > 0.25) {
+            return this.d;
+         } else if ($$11 >= -0.0625) {
+            return this.e;
+         } else {
+            return $$11 < -0.21875 ? this.f : this.g;
          }
       }
    }

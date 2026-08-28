@@ -1,15 +1,72 @@
-public interface dea {
-   czd a(int var1);
+import it.unimi.dsi.fastutil.ints.IntArrayList;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
-   int a();
+public class dea {
+   public static final int a = -1;
+   public static final dea b = new dea(List.of(), IntList.of());
+   private final List<ddx> c;
+   private final IntList d;
 
-   default boolean b() {
-      for (int $$0 = 0; $$0 < this.a(); $$0++) {
-         if (!this.a($$0).f()) {
-            return false;
+   private dea(List<ddx> $$0, IntList $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   public static dea a(ddx $$0) {
+      return $$0.b() ? b : new dea(List.of($$0), IntList.of(0));
+   }
+
+   public static dea a(List<Optional<ddx>> $$0) {
+      int $$1 = $$0.size();
+      List<ddx> $$2 = new ArrayList<>($$1);
+      IntList $$3 = new IntArrayList($$1);
+      int $$4 = 0;
+
+      for (Optional<ddx> $$5 : $$0) {
+         if ($$5.isPresent()) {
+            ddx $$6 = $$5.get();
+            if ($$6.b()) {
+               return b;
+            }
+
+            $$2.add($$6);
+            $$3.add($$4++);
+         } else {
+            $$3.add(-1);
          }
       }
 
-      return true;
+      return new dea($$2, $$3);
+   }
+
+   public static dea b(List<ddx> $$0) {
+      int $$1 = $$0.size();
+      IntList $$2 = new IntArrayList($$1);
+
+      for (int $$3 = 0; $$3 < $$1; $$3++) {
+         ddx $$4 = $$0.get($$3);
+         if ($$4.b()) {
+            return b;
+         }
+
+         $$2.add($$3);
+      }
+
+      return new dea($$0, $$2);
+   }
+
+   public IntList a() {
+      return this.d;
+   }
+
+   public List<ddx> b() {
+      return this.c;
+   }
+
+   public boolean c() {
+      return this.d.isEmpty();
    }
 }

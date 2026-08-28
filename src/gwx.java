@@ -1,45 +1,56 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+public class gwx extends gws<bww, hdd> {
+   private static final alg a = alg.b("textures/entity/experience_orb.png");
+   private static final gqx g = gqx.i(a);
 
-public final class gwx extends gux<clj, hdd, ggk> {
-   private static final Map<clq, alg> a = Maps.newEnumMap(
-      Map.of(
-         clq.a,
-         alg.b("textures/entity/horse/horse_white.png"),
-         clq.b,
-         alg.b("textures/entity/horse/horse_creamy.png"),
-         clq.c,
-         alg.b("textures/entity/horse/horse_chestnut.png"),
-         clq.d,
-         alg.b("textures/entity/horse/horse_brown.png"),
-         clq.e,
-         alg.b("textures/entity/horse/horse_black.png"),
-         clq.f,
-         alg.b("textures/entity/horse/horse_gray.png"),
-         clq.g,
-         alg.b("textures/entity/horse/horse_darkbrown.png")
-      )
-   );
-
-   public gwx(gwh.a $$0) {
-      super($$0, new ggk($$0.a(gjb.bn)), new ggk($$0.a(gjb.bq)));
-      this.a(new haj(this));
-      this.a(new hax<>(this, $$0.h(), hld.d.e, $$0x -> $$0x.i, new ggk($$0.a(gjb.bo)), new ggk($$0.a(gjb.br))));
-      this.a(new hax<>(this, $$0.h(), hld.d.j, $$0x -> $$0x.b, new gfz($$0.a(gjb.bp)), new gfz($$0.a(gjb.bs))));
+   public gwx(gwt.a $$0) {
+      super($$0);
+      this.e = 0.15F;
+      this.f = 0.75F;
    }
 
-   public alg a(hdd $$0) {
-      return a.get($$0.a);
+   protected int a(bww $$0, iv $$1) {
+      return azm.a(super.a($$0, $$1) + 7, 0, 15);
    }
 
-   public hdd b() {
+   public void a(hdd $$0, fjy $$1, gqm $$2, int $$3) {
+      $$1.a();
+      int $$4 = $$0.a;
+      float $$5 = (float)($$4 % 4 * 16 + 0) / 64.0F;
+      float $$6 = (float)($$4 % 4 * 16 + 16) / 64.0F;
+      float $$7 = (float)($$4 / 4 * 16 + 0) / 64.0F;
+      float $$8 = (float)($$4 / 4 * 16 + 16) / 64.0F;
+      float $$9 = 1.0F;
+      float $$10 = 0.5F;
+      float $$11 = 0.25F;
+      float $$12 = 255.0F;
+      float $$13 = $$0.u / 2.0F;
+      int $$14 = (int)((azm.a($$13 + 0.0F) + 1.0F) * 0.5F * 255.0F);
+      int $$15 = 255;
+      int $$16 = (int)((azm.a($$13 + (float) (Math.PI * 4.0 / 3.0)) + 1.0F) * 0.1F * 255.0F);
+      $$1.a(0.0F, 0.1F, 0.0F);
+      $$1.a(this.d.b());
+      float $$17 = 0.3F;
+      $$1.b(0.3F, 0.3F, 0.3F);
+      fkc $$18 = $$2.getBuffer(g);
+      fjy.a $$19 = $$1.c();
+      a($$18, $$19, -0.5F, -0.25F, $$14, 255, $$16, $$5, $$8, $$3);
+      a($$18, $$19, 0.5F, -0.25F, $$14, 255, $$16, $$6, $$8, $$3);
+      a($$18, $$19, 0.5F, 0.75F, $$14, 255, $$16, $$6, $$7, $$3);
+      a($$18, $$19, -0.5F, 0.75F, $$14, 255, $$16, $$5, $$7, $$3);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   private static void a(fkc $$0, fjy.a $$1, float $$2, float $$3, int $$4, int $$5, int $$6, float $$7, float $$8, int $$9) {
+      $$0.a($$1, $$2, $$3, 0.0F).a($$4, $$5, $$6, 128).a($$7, $$8).b(hja.d).c($$9).b($$1, 0.0F, 1.0F, 0.0F);
+   }
+
+   public hdd a() {
       return new hdd();
    }
 
-   public void a(clj $$0, hdd $$1, float $$2) {
+   public void a(bww $$0, hdd $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.q();
-      $$1.h = $$0.t();
-      $$1.i = $$0.aj().v();
+      $$1.a = $$0.g();
    }
 }

@@ -1,22 +1,50 @@
-import java.util.ArrayList;
-import java.util.List;
+public class gbi extends fyn {
+   private static final int a = 600;
+   private final vr b;
+   private fsv c;
+   private int d;
+   private final fwn s = fwn.d();
 
-public class gbi extends gbh {
-   private static final wy a = wy.c("options.skinCustomisation.title");
-
-   public gbi(fyb $$0, fpd $$1) {
-      super($$0, $$1, a);
+   public gbi(wy $$0, vr $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   protected void m() {
-      List<fsh> $$0 = new ArrayList<>();
+   public boolean aD_() {
+      return false;
+   }
 
-      for (cre $$1 : cre.values()) {
-         $$0.add(fsq.b(this.c.a($$1)).a($$1.d(), ($$1x, $$2) -> this.c.a($$1, $$2)));
+   @Override
+   protected void aO_() {
+      this.s.c().b().a(10);
+      this.s.a(new fuc(this.l, this.p));
+      this.c = this.s.a(fsv.a(wx.p, $$0 -> this.b.a(fxm.a)).a());
+      this.c.j = false;
+      this.s.a();
+      this.s.a($$1 -> {
+         fst var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      fwh.a(this.s, this.J());
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.d++;
+      if (this.d == 600) {
+         this.c.j = true;
       }
 
-      $$0.add(this.c.x().a(this.c));
-      this.d.a($$0);
+      if (this.b.i()) {
+         this.b.b();
+      } else {
+         this.b.n();
+      }
    }
 }

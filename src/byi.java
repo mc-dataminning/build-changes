@@ -1,56 +1,43 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+public class byi {
+   private float a;
+   private float b;
+   private float c;
+   private float d = 1.0F;
 
-public record byi(alg d, double e, byi.a f) {
-   public static final MapCodec<byi> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alg.a.fieldOf("id").forGetter(byi::a), Codec.DOUBLE.fieldOf("amount").forGetter(byi::b), byi.a.f.fieldOf("operation").forGetter(byi::c))
-            .apply($$0, byi::new)
-   );
-   public static final Codec<byi> b = a.codec();
-   public static final yw<ByteBuf, byi> c = yw.a(alg.b, byi::a, yu.m, byi::b, byi.a.e, byi::c, byi::new);
-
-   public boolean a(alg $$0) {
-      return $$0.equals(this.d);
+   public void a(float $$0) {
+      this.b = $$0;
    }
 
-   public alg a() {
-      return this.d;
+   public void a(float $$0, float $$1, float $$2) {
+      this.a = this.b;
+      this.b = this.b + ($$0 - this.b) * $$1;
+      this.c = this.c + this.b;
+      this.d = $$2;
    }
 
-   public double b() {
-      return this.e;
+   public void a() {
+      this.a = 0.0F;
+      this.b = 0.0F;
+      this.c = 0.0F;
    }
 
-   public byi.a c() {
-      return this.f;
+   public float b() {
+      return this.b;
    }
 
-   public static enum a implements bak {
-      a("add_value", 0),
-      b("add_multiplied_base", 1),
-      c("add_multiplied_total", 2);
+   public float b(float $$0) {
+      return Math.min(azm.h($$0, this.a, this.b), 1.0F);
+   }
 
-      public static final IntFunction<byi.a> d = ayc.a(byi.a::a, values(), ayc.a.a);
-      public static final yw<ByteBuf, byi.a> e = yu.a(d, byi.a::a);
-      public static final Codec<byi.a> f = bak.a(byi.a::values);
-      private final String g;
-      private final int h;
+   public float c() {
+      return this.c * this.d;
+   }
 
-      private a(final String $$0, final int $$1) {
-         this.g = $$0;
-         this.h = $$1;
-      }
+   public float c(float $$0) {
+      return (this.c - this.b * (1.0F - $$0)) * this.d;
+   }
 
-      public int a() {
-         return this.h;
-      }
-
-      @Override
-      public String c() {
-         return this.g;
-      }
+   public boolean d() {
+      return this.b > 1.0E-5F;
    }
 }

@@ -1,17 +1,17 @@
 public class ahz implements zf<agp> {
    public static final yw<vu, ahz> a = zf.a(ahz::a, ahz::new);
-   private final cwl b;
+   private final cws b;
    private final boolean c;
    private final boolean d;
 
-   public ahz(cwl $$0, boolean $$1, boolean $$2) {
+   public ahz(cws $$0, boolean $$1, boolean $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
    }
 
    private ahz(vu $$0) {
-      this.b = $$0.b(cwl.class);
+      this.b = $$0.b(cws.class);
       this.c = $$0.readBoolean();
       this.d = $$0.readBoolean();
    }
@@ -31,7 +31,7 @@ public class ahz implements zf<agp> {
       $$0.a(this);
    }
 
-   public cwl b() {
+   public cws b() {
       return this.b;
    }
 

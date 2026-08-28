@@ -1,21 +1,26 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-@Deprecated
-public class ehx extends ehy {
-   public static final MapCodec<ehx> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ehx::new));
+public class ehx implements ehu {
+   private final ka e;
+   private final jb f;
+   public static final MapCodec<ehx> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ka.v(16).optionalFieldOf("offset", ka.i).forGetter($$0x -> $$0x.e), jb.g.fieldOf("direction").forGetter($$0x -> $$0x.f))
+            .apply($$0, ehx::new)
+   );
 
-   public ehx(jz $$0) {
-      super($$0);
+   public ehx(ka $$0, jb $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   public boolean a(dkg $$0, iv $$1) {
+      iv $$2 = $$1.a(this.e);
+      return $$0.a_($$2).c($$0, $$2, this.f);
    }
 
    @Override
-   protected boolean a(eah $$0) {
-      return $$0.e();
-   }
-
-   @Override
-   public eho<?> a() {
-      return eho.e;
+   public ehv<?> a() {
+      return ehv.d;
    }
 }

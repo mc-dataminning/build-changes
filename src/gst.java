@@ -1,64 +1,75 @@
-import java.util.Calendar;
+public class gst implements gsy<dxa> {
+   private static final int a = 16;
+   private static final float b = 0.6666667F;
+   private final gfh c;
+   private final gfh d;
+   private final gfg e;
+   private final gfg f;
 
-public class gst<T extends dxf & dym> implements gsm<T> {
-   private final gfi a;
-   private final gfi b;
-   private final gfi c;
-   private final boolean d = b();
-
-   public gst(gsn.a $$0) {
-      this.a = new gfi($$0.a(gjb.X));
-      this.b = new gfi($$0.a(gjb.aD));
-      this.c = new gfi($$0.a(gjb.aE));
+   public gst(gsz.a $$0) {
+      this($$0.f());
    }
 
-   public static boolean b() {
-      Calendar $$0 = Calendar.getInstance();
-      return $$0.get(2) + 1 == 12 && $$0.get(5) >= 24 && $$0.get(5) <= 26;
+   public gst(gjk $$0) {
+      this.c = new gfh($$0.a(gjn.q));
+      this.d = new gfh($$0.a(gjn.s));
+      this.e = new gfg($$0.a(gjn.r));
+      this.f = new gfg($$0.a(gjn.t));
    }
 
-   @Override
-   public void a(T $$0, float $$1, fjj $$2, gqa $$3, int $$4, int $$5, feq $$6) {
-      dja $$7 = $$0.i();
-      boolean $$8 = $$7 != null;
-      eah $$9 = $$8 ? $$0.m() : dmh.cG.m().b(dnj.c, ja.d);
-      eaz $$10 = $$9.b(dnj.d) ? $$9.c(dnj.d) : eaz.a;
-      if ($$9.b() instanceof dkz<?> $$12) {
-         boolean $$13 = $$10 != eaz.a;
-         $$2.a();
-         float $$14 = $$9.c(dnj.c).p();
-         $$2.a(0.5F, 0.5F, 0.5F);
-         $$2.a(a.d.rotationDegrees(-$$14));
-         $$2.a(-0.5F, -0.5F, -0.5F);
-         don.c<? extends dxn> $$15;
-         if ($$8) {
-            $$15 = $$12.a($$9, $$7, $$0.ax_(), true);
-         } else {
-            $$15 = don.b::b;
-         }
+   public void a(dxa $$0, float $$1, fjy $$2, gqm $$3, int $$4, int $$5, fex $$6) {
+      eao $$7 = $$0.m();
+      gfh $$9;
+      gfg $$10;
+      float $$8;
+      if ($$7.b() instanceof dlr) {
+         $$8 = -ebu.b($$7.c(dlr.b));
+         $$9 = this.c;
+         $$10 = this.e;
+      } else {
+         $$8 = -$$7.c(dwa.b).p();
+         $$9 = this.d;
+         $$10 = this.f;
+      }
 
-         float $$17 = $$15.apply(dnj.a($$0)).get($$1);
-         $$17 = 1.0F - $$17;
-         $$17 = 1.0F - $$17 * $$17 * $$17;
-         int $$18 = $$15.apply(new gsq<>()).applyAsInt($$4);
-         hle $$19 = gqv.a($$0, $$10, this.d);
-         fjn $$20 = $$19.a($$3, gqk::f);
-         if ($$13) {
-            if ($$10 == eaz.b) {
-               this.a($$2, $$20, this.b, $$17, $$18, $$5);
-            } else {
-               this.a($$2, $$20, this.c, $$17, $$18, $$5);
-            }
-         } else {
-            this.a($$2, $$20, this.a, $$17, $$18, $$5);
-         }
+      long $$14 = $$0.i().ae();
+      iv $$15 = $$0.ax_();
+      float $$16 = ((float)Math.floorMod((long)($$15.u() * 7 + $$15.v() * 9 + $$15.w() * 13) + $$14, 100L) + $$1) / 100.0F;
+      a($$2, $$3, $$4, $$5, $$8, $$9, $$10, $$16, $$0.f(), $$0.b());
+   }
 
-         $$2.b();
+   public void a(fjy $$0, gqm $$1, int $$2, int $$3, cyi $$4, dxc $$5) {
+      a($$0, $$1, $$2, $$3, 0.0F, this.c, this.e, 0.0F, $$4, $$5);
+   }
+
+   private static void a(fjy $$0, gqm $$1, int $$2, int $$3, float $$4, gfh $$5, gfg $$6, float $$7, cyi $$8, dxc $$9) {
+      $$0.a();
+      $$0.a(0.5F, 0.0F, 0.5F);
+      $$0.a(a.d.rotationDegrees($$4));
+      $$0.b(0.6666667F, -0.6666667F, -0.6666667F);
+      $$5.a($$0, hlt.f.a($$1, gqx::d), $$2, $$3);
+      $$6.a($$7);
+      a($$0, $$1, $$2, $$3, $$6.e(), hlt.f, true, $$8, $$9);
+      $$0.b();
+   }
+
+   public static void a(fjy $$0, gqm $$1, int $$2, int $$3, gjo $$4, hlq $$5, boolean $$6, cyi $$7, dxc $$8) {
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, true);
+   }
+
+   public static void a(fjy $$0, gqm $$1, int $$2, int $$3, gjo $$4, hlq $$5, boolean $$6, cyi $$7, dxc $$8, boolean $$9, boolean $$10) {
+      $$4.a($$0, $$5.a($$1, gqx::d, $$10, $$9), $$2, $$3);
+      a($$0, $$1, $$2, $$3, $$4, $$6 ? grg.w : grg.x, $$7);
+
+      for (int $$11 = 0; $$11 < 16 && $$11 < $$8.b().size(); $$11++) {
+         dxc.b $$12 = $$8.b().get($$11);
+         hlq $$13 = $$6 ? grg.a($$12.b()) : grg.b($$12.b());
+         a($$0, $$1, $$2, $$3, $$4, $$13, $$12.c());
       }
    }
 
-   private void a(fjj $$0, fjn $$1, gfi $$2, float $$3, int $$4, int $$5) {
-      $$2.a($$3);
-      $$2.a($$0, $$1, $$4, $$5);
+   private static void a(fjy $$0, gqm $$1, int $$2, int $$3, gjo $$4, hlq $$5, cyi $$6) {
+      int $$7 = $$6.d();
+      $$4.a($$0, $$5.a($$1, gqx::n), $$2, $$3, $$7);
    }
 }

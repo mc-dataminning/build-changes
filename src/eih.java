@@ -1,31 +1,19 @@
-import java.util.Optional;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eih extends ehd {
-   private final js a;
-   private final egk b;
-   private final egu c;
-   private final egx.o d;
+record eih(ka e) implements ehu {
+   public static MapCodec<eih> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ka.g.optionalFieldOf("offset", ka.i).forGetter(eih::g)).apply($$0, eih::new));
 
-   public eih(egj $$0, js $$1, djc $$2, egk $$3, egu $$4, egx.o $$5) {
-      super($$0, $$2);
-      this.a = $$1;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
+   @Override
+   public ehv<?> a() {
+      return ehv.m;
    }
 
-   @Deprecated
-   public Optional<eah> a(Function<iu, je<dkd>> $$0, ece $$1, iu $$2, boolean $$3) {
-      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   public boolean a(dkg $$0, iv $$1) {
+      return $$0.a(null, ffo.b().a($$1));
    }
 
-   @Deprecated
-   public js c() {
-      return this.a;
-   }
-
-   public egu d() {
-      return this.c;
+   public ka g() {
+      return this.e;
    }
 }

@@ -1,80 +1,30 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class df extends dj<df.a> {
+public record df(boolean d, boolean e) implements bz {
+   public static final MapCodec<df> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("has_raid", false).forGetter(df::b), Codec.BOOL.optionalFieldOf("is_captain", false).forGetter(df::c))
+            .apply($$0, df::new)
+   );
+   public static final df c = new df(false, true);
+
    @Override
-   public Codec<df.a> a() {
-      return df.a.a;
+   public MapCodec<df> a() {
+      return ca.e;
    }
 
-   public void a(arr $$0, alf<ddu<?>> $$1, List<czd> $$2) {
-      this.a($$0, $$2x -> $$2x.b($$1, $$2));
+   @Override
+   public boolean a(bwi $$0, arq $$1, @Nullable fex $$2) {
+      return !($$0 instanceof cta $$3) ? false : $$3.gG() == this.d && $$3.gF() == this.e;
    }
 
-   public static record a(Optional<bi> b, alf<ddu<?>> c, List<cl> d) implements dj.a {
-      public static final Codec<df.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bx.b.optionalFieldOf("player").forGetter(df.a::a),
-                  alf.a(mg.bu).fieldOf("recipe_id").forGetter(df.a::b),
-                  cl.a.listOf().optionalFieldOf("ingredients", List.of()).forGetter(df.a::c)
-               )
-               .apply($$0, df.a::new)
-      );
+   public boolean b() {
+      return this.d;
+   }
 
-      public static aq<df.a> a(alf<ddu<?>> $$0, List<cl.a> $$1) {
-         return ap.ac.a(new df.a(Optional.empty(), $$0, $$1.stream().map(cl.a::b).toList()));
-      }
-
-      public static aq<df.a> a(alf<ddu<?>> $$0) {
-         return ap.ac.a(new df.a(Optional.empty(), $$0, List.of()));
-      }
-
-      public static aq<df.a> b(alf<ddu<?>> $$0) {
-         return ap.ad.a(new df.a(Optional.empty(), $$0, List.of()));
-      }
-
-      boolean b(alf<ddu<?>> $$0, List<czd> $$1) {
-         if ($$0 != this.c) {
-            return false;
-         } else {
-            List<czd> $$2 = new ArrayList<>($$1);
-
-            for (cl $$3 : this.d) {
-               boolean $$4 = false;
-               Iterator<czd> $$5 = $$2.iterator();
-
-               while ($$5.hasNext()) {
-                  if ($$3.a($$5.next())) {
-                     $$5.remove();
-                     $$4 = true;
-                     break;
-                  }
-               }
-
-               if (!$$4) {
-                  return false;
-               }
-            }
-
-            return true;
-         }
-      }
-
-      @Override
-      public Optional<bi> a() {
-         return this.b;
-      }
-
-      public alf<ddu<?>> b() {
-         return this.c;
-      }
-
-      public List<cl> c() {
-         return this.d;
-      }
+   public boolean c() {
+      return this.e;
    }
 }

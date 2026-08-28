@@ -1,125 +1,93 @@
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
-public class fan extends fau {
-   public static final axr<erb> a = axn.l;
-   public static final je<eye> b = eyf.i;
-   public static final byte c = 2;
-   public static final int d = 50;
-   public static final boolean e = true;
-   public static final MapCodec<fan> f = RecordCodecBuilder.mapCodec(
+public class fan extends fbb {
+   public static final MapCodec<fan> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
             .and(
                $$0.group(
-                  axr.a(mg.be).optionalFieldOf("destination", a).forGetter($$0x -> $$0x.h),
-                  eye.b.optionalFieldOf("decoration", b).forGetter($$0x -> $$0x.i),
-                  Codec.BYTE.optionalFieldOf("zoom", (byte)2).forGetter($$0x -> $$0x.j),
-                  Codec.INT.optionalFieldOf("search_radius", 50).forGetter($$0x -> $$0x.k),
-                  Codec.BOOL.optionalFieldOf("skip_existing_chunks", true).forGetter($$0x -> $$0x.l)
+                  mg.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
+                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(ebr::f).toList())
                )
             )
             .apply($$0, fan::new)
    );
-   private final axr<erb> h;
-   private final je<eye> i;
-   private final byte j;
-   private final int k;
-   private final boolean l;
+   private final jf<dmm> b;
+   private final Set<ebr<?>> c;
 
-   fan(List<fcq> $$0, axr<erb> $$1, je<eye> $$2, byte $$3, int $$4, boolean $$5) {
+   fan(List<fcx> $$0, jf<dmm> $$1, Set<ebr<?>> $$2) {
       super($$0);
-      this.h = $$1;
-      this.i = $$2;
-      this.j = $$3;
-      this.k = $$4;
-      this.l = $$5;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   private fan(List<fcx> $$0, jf<dmm> $$1, List<String> $$2) {
+      this($$0, $$1, $$2.stream().map($$1.a().l()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
    }
 
    @Override
-   public faw<fan> b() {
-      return fax.q;
+   public fbd<fan> b() {
+      return fbe.D;
    }
 
    @Override
    public Set<bax<?>> a() {
-      return Set.of(fcb.f);
+      return Set.of(fci.g);
    }
 
    @Override
-   public czd a(czd $$0, ezh $$1) {
-      if (!$$0.a(czh.vt)) {
-         return $$0;
-      } else {
-         feq $$2 = $$1.c(fcb.f);
-         if ($$2 != null) {
-            arq $$3 = $$1.d();
-            iu $$4 = $$3.a(this.h, iu.a((jo)$$2), this.k, this.l);
-            if ($$4 != null) {
-               czd $$5 = czq.a($$3, $$4.u(), $$4.w(), this.j, true, true);
-               czq.a($$3, $$5);
-               eyj.a($$5, $$4, "+", this.i);
-               return $$5;
+   protected czk a(czk $$0, ezo $$1) {
+      eao $$2 = $$1.c(fci.g);
+      if ($$2 != null) {
+         $$0.a(kk.aq, dbk.a, $$1x -> {
+            for (ebr<?> $$2x : this.c) {
+               if ($$2.b($$2x)) {
+                  $$1x = $$1x.a($$2x, $$2);
+               }
             }
-         }
 
-         return $$0;
+            return $$1x;
+         });
       }
+
+      return $$0;
    }
 
-   public static fan.a c() {
-      return new fan.a();
+   public static fan.a a(dmm $$0) {
+      return new fan.a($$0);
    }
 
-   public static class a extends fau.a<fan.a> {
-      private axr<erb> a;
-      private je<eye> b;
-      private byte c;
-      private int d;
-      private boolean e;
+   public static class a extends fbb.a<fan.a> {
+      private final jf<dmm> a;
+      private final Builder<ebr<?>> b = ImmutableSet.builder();
 
-      public a() {
-         this.a = fan.a;
-         this.b = fan.b;
-         this.c = 2;
-         this.d = 50;
-         this.e = true;
+      a(dmm $$0) {
+         this.a = $$0.p();
+      }
+
+      public fan.a a(ebr<?> $$0) {
+         if (!this.a.a().l().d().contains($$0)) {
+            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
+         } else {
+            this.b.add($$0);
+            return this;
+         }
       }
 
       protected fan.a a() {
          return this;
       }
 
-      public fan.a a(axr<erb> $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public fan.a a(je<eye> $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public fan.a a(byte $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fan.a a(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public fan.a a(boolean $$0) {
-         this.e = $$0;
-         return this;
-      }
-
       @Override
-      public fav b() {
-         return new fan(this.g(), this.a, this.b, this.c, this.d, this.e);
+      public fbc b() {
+         return new fan(this.g(), this.a, this.b.build());
       }
    }
 }

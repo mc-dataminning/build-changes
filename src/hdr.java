@@ -1,3 +1,9 @@
-public class hdr extends hdq {
-   public float n = -1.0F;
+public class hdr extends hcd {
+   public boolean b;
+   public boolean c;
+   public bxa d = bxa.b;
+   public cnr.a j = cnr.a.h;
+   public int k;
+   public int l;
+   public float m;
 }

@@ -39,7 +39,7 @@ public class su {
    private static final OptionSpec<String> i = d.accepts("packs", "A folder of datapacks to include in the world").withRequiredArg();
    private static final OptionSpec<Void> j = d.accepts("help").forHelp();
 
-   @ac(
+   @ad(
       a = "Using System.err due to no bootstrap"
    )
    public static void a(String[] $$0, Consumer<String> $$1) throws Exception {
@@ -59,7 +59,7 @@ public class su {
          }
 
          ali.a();
-         af.p();
+         ag.p();
          String $$3 = (String)$$2.valueOf(e);
          a($$3);
          $$1.accept($$3);
@@ -68,7 +68,7 @@ public class su {
             a($$3, $$4);
          }
 
-         eyv.c $$5 = eyv.b(Paths.get($$3)).e("gametestworld");
+         ezc.c $$5 = ezc.b(Paths.get($$3)).e("gametestworld");
          aun $$6 = auq.a($$5);
          MinecraftServer.a((Function<Thread, sx>)($$3x -> sx.a($$3x, $$5, $$6, a($$2, g), $$2.has(h))));
       }

@@ -1,47 +1,35 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
 
-public class bk extends dj<bk.a> {
-   @Override
-   public Codec<bk.a> a() {
-      return bk.a.a;
+public class bk {
+   private final azt a;
+   private final jg.a b;
+
+   public bk(azt $$0, jg.a $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(arr $$0, cox $$1, cqo $$2) {
-      ezh $$3 = bx.b($$0, $$1);
-      ezh $$4 = bx.b($$0, $$2);
-      this.a($$0, $$2x -> $$2x.a($$3, $$4));
+   public void a(Optional<bj> $$0, String $$1) {
+      $$0.ifPresent($$1x -> this.a($$1x, $$1));
    }
 
-   public static record a(Optional<bi> b, Optional<bi> c, Optional<bi> d) implements dj.a {
-      public static final Codec<bk.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  bx.b.optionalFieldOf("player").forGetter(bk.a::a),
-                  bx.b.optionalFieldOf("zombie").forGetter(bk.a::c),
-                  bx.b.optionalFieldOf("villager").forGetter(bk.a::d)
-               )
-               .apply($$0, bk.a::new)
-      );
+   public void a(List<bj> $$0, String $$1) {
+      this.a($$0, fch.n, $$1);
+   }
 
-      public static aq<bk.a> b() {
-         return ap.s.a(new bk.a(Optional.empty(), Optional.empty(), Optional.empty()));
-      }
+   public void a(bj $$0, String $$1) {
+      this.a($$0, fch.n, $$1);
+   }
 
-      public boolean a(ezh $$0, ezh $$1) {
-         return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
-      }
+   public void a(bj $$0, bay $$1, String $$2) {
+      $$0.a(new ezu(this.a.a($$2), $$1, this.b));
+   }
 
-      @Override
-      public void a(bj $$0) {
-         dj.a.super.a($$0);
-         $$0.a(this.c, ".zombie");
-         $$0.a(this.d, ".villager");
-      }
-
-      @Override
-      public Optional<bi> a() {
-         return this.b;
+   public void a(List<bj> $$0, bay $$1, String $$2) {
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         bj $$4 = $$0.get($$3);
+         $$4.a(new ezu(this.a.a($$2 + "[" + $$3 + "]"), $$1, this.b));
       }
    }
 }

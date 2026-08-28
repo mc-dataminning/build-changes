@@ -1,137 +1,166 @@
-import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntSortedMap;
-import java.util.Collections;
-import java.util.SequencedSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class dye {
-   private final Object2IntSortedMap<cyz> a;
+public class dye extends dxm implements bum, fgj.a {
+   public static final String d = "sherds";
+   public static final String e = "item";
+   public static final int f = 1;
+   public long g;
+   @Nullable
+   public dye.a h;
+   private dyu k;
+   private czk l = czk.k;
+   @Nullable
+   protected alf<ezt> i;
+   protected long j;
 
-   dye(Object2IntSortedMap<cyz> $$0) {
-      this.a = $$0;
+   public dye(iv $$0, eao $$1) {
+      super(dxo.P, $$0, $$1);
+      this.k = dyu.a;
    }
 
-   public boolean a(czd $$0) {
-      return this.a.containsKey($$0.h());
-   }
-
-   public SequencedSet<cyz> a() {
-      return Collections.unmodifiableSequencedSet(this.a.keySet());
-   }
-
-   public int b(czd $$0) {
-      return $$0.f() ? 0 : this.a.getInt($$0.h());
-   }
-
-   public static dye a(jg.a $$0, cum $$1) {
-      return a($$0, $$1, 200);
-   }
-
-   public static dye a(jg.a $$0, cum $$1, int $$2) {
-      return new dye.a($$0, $$1)
-         .a(czh.rq, $$2 * 100)
-         .a(dmh.jd, $$2 * 8 * 10)
-         .a(czh.to, $$2 * 12)
-         .a(czh.pl, $$2 * 8)
-         .a(czh.pm, $$2 * 8)
-         .a(axk.r, $$2 * 3 / 2)
-         .a(axk.D, $$2 * 3 / 2)
-         .a(axk.b, $$2 * 3 / 2)
-         .a(dmh.y, $$2 * 3 / 2)
-         .a(axk.i, $$2 * 3 / 2)
-         .a(dmh.iw, $$2 * 3 / 2)
-         .a(axk.j, $$2 * 3 / 4)
-         .a(dmh.kf, $$2 * 3 / 4)
-         .a(axk.n, $$2 * 3 / 2)
-         .a(axk.m, $$2 * 3 / 2)
-         .a(axk.k, $$2 * 3 / 2)
-         .a(axk.l, $$2 * 3 / 2)
-         .a(dmh.bf, $$2 * 3 / 2)
-         .a(dmh.cv, $$2 * 3 / 2)
-         .a(dmh.cw, $$2 * 3 / 2)
-         .a(dmh.oG, $$2 * 3 / 2)
-         .a(dmh.ek, $$2 * 3 / 2)
-         .a(dmh.cG, $$2 * 3 / 2)
-         .a(dmh.hw, $$2 * 3 / 2)
-         .a(dmh.cL, $$2 * 3 / 2)
-         .a(dmh.hA, $$2 * 3 / 2)
-         .a(axk.F, $$2 * 3 / 2)
-         .a(czh.pj, $$2 * 3 / 2)
-         .a(czh.sd, $$2 * 3 / 2)
-         .a(dmh.da, $$2 * 3 / 2)
-         .a(axk.aV, $$2)
-         .a(axk.bv, $$2 * 4)
-         .a(czh.pB, $$2)
-         .a(czh.pA, $$2)
-         .a(czh.pE, $$2)
-         .a(czh.pD, $$2)
-         .a(czh.pC, $$2)
-         .a(axk.h, $$2)
-         .a(axk.aS, $$2 * 6)
-         .a(axk.a, $$2 / 2)
-         .a(axk.d, $$2 / 2)
-         .a(czh.qe, $$2 / 2)
-         .a(axk.p, $$2 / 2)
-         .a(czh.ph, $$2 / 2)
-         .a(axk.g, 1 + $$2 / 3)
-         .a(dmh.mK, 1 + $$2 * 20)
-         .a(czh.xg, $$2 * 3 / 2)
-         .a(dmh.nF, $$2 / 4)
-         .a(dmh.bC, $$2 / 2)
-         .a(dmh.bE, $$2 / 2)
-         .a(dmh.bF, $$2 / 2)
-         .a(dmh.oy, $$2 / 4)
-         .a(dmh.oz, $$2 * 3 / 2)
-         .a(dmh.oA, $$2 * 3 / 2)
-         .a(dmh.oD, $$2 * 3 / 2)
-         .a(dmh.oE, $$2 * 3 / 2)
-         .a(dmh.oH, $$2 * 3 / 2)
-         .a(dmh.pK, $$2 * 3 / 2)
-         .a(dmh.tg, $$2 / 2)
-         .a(dmh.th, $$2 / 2)
-         .a(dmh.ag, $$2 * 3 / 2)
-         .a(dmh.tl, $$2 / 2)
-         .a(axk.aM)
-         .a();
-   }
-
-   public static class a {
-      private final jg<cyz> a;
-      private final cum b;
-      private final Object2IntSortedMap<cyz> c = new Object2IntLinkedOpenHashMap();
-
-      public a(jg.a $$0, cum $$1) {
-         this.a = $$0.e(mg.K);
-         this.b = $$1;
+   @Override
+   protected void b(tz $$0, jh.a $$1) {
+      super.b($$0, $$1);
+      if (!this.k.equals(dyu.a)) {
+         $$0.a("sherds", dyu.b, this.k);
       }
 
-      public dye a() {
-         return new dye(this.c);
+      if (!this.c_($$0) && !this.l.f()) {
+         $$0.a("item", czk.b, $$1.a(un.a), this.l);
+      }
+   }
+
+   @Override
+   protected void a(tz $$0, jh.a $$1) {
+      super.a($$0, $$1);
+      this.k = $$0.<dyu>a("sherds", dyu.b).orElse(dyu.a);
+      if (!this.b_($$0)) {
+         ale<uw> $$2 = $$1.a(un.a);
+         this.l = $$0.<czk>a("item", czk.b, $$2).orElse(czk.k);
+      } else {
+         this.l = czk.k;
+      }
+   }
+
+   public aca j() {
+      return aca.a(this);
+   }
+
+   @Override
+   public tz a(jh.a $$0) {
+      return this.e($$0);
+   }
+
+   public jb k() {
+      return this.m().c(ebe.T);
+   }
+
+   public dyu s() {
+      return this.k;
+   }
+
+   public static czk a(dyu $$0) {
+      czk $$1 = czo.eV.m();
+      $$1.b(kk.ao, $$0);
+      return $$1;
+   }
+
+   @Nullable
+   @Override
+   public alf<ezt> at_() {
+      return this.i;
+   }
+
+   @Override
+   public void a(@Nullable alf<ezt> $$0) {
+      this.i = $$0;
+   }
+
+   @Override
+   public long aw_() {
+      return this.j;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.j = $$0;
+   }
+
+   @Override
+   protected void a(kh.a $$0) {
+      super.a($$0);
+      $$0.a(kk.ao, this.k);
+      $$0.a(kk.ap, dcc.a(List.of(this.l)));
+   }
+
+   @Override
+   protected void a(kf $$0) {
+      super.a($$0);
+      this.k = $$0.a(kk.ao, dyu.a);
+      this.l = $$0.a(kk.ap, dcc.a).a();
+   }
+
+   @Override
+   public void a(tz $$0) {
+      super.a($$0);
+      $$0.p("sherds");
+      $$0.p("item");
+   }
+
+   @Override
+   public czk f() {
+      this.d_(null);
+      return this.l;
+   }
+
+   @Override
+   public czk c(int $$0) {
+      this.d_(null);
+      czk $$1 = this.l.a($$0);
+      if (this.l.f()) {
+         this.l = czk.k;
       }
 
-      public dye.a a(axr<cyz> $$0) {
-         this.c.keySet().removeIf($$1 -> $$1.e().a($$0));
-         return this;
-      }
+      return $$1;
+   }
 
-      public dye.a a(axr<cyz> $$0, int $$1) {
-         this.a.a($$0).ifPresent($$1x -> {
-            for (je<cyz> $$2 : $$1x) {
-               this.a($$1, $$2.a());
-            }
-         });
-         return this;
-      }
+   @Override
+   public void b(czk $$0) {
+      this.d_(null);
+      this.l = $$0;
+   }
 
-      public dye.a a(diz $$0, int $$1) {
-         cyz $$2 = $$0.h();
-         this.a($$1, $$2);
-         return this;
-      }
+   @Override
+   public dxm t() {
+      return this;
+   }
 
-      private void a(int $$0, cyz $$1) {
-         if ($$1.a(this.b)) {
-            this.c.put($$1, $$0);
-         }
+   public void a(dye.a $$0) {
+      if (this.n != null && !this.n.w_()) {
+         this.n.a(this.ax_(), this.m().b(), 1, $$0.ordinal());
+      }
+   }
+
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if (this.n != null && $$0 == 1 && $$1 >= 0 && $$1 < dye.a.values().length) {
+         this.g = this.n.ae();
+         this.h = dye.a.values()[$$1];
+         return true;
+      } else {
+         return super.a_($$0, $$1);
+      }
+   }
+
+   public static enum a {
+      a(7),
+      b(10);
+
+      public final int c;
+
+      private a(final int $$0) {
+         this.c = $$0;
       }
    }
 }

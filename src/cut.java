@@ -1,46 +1,112 @@
-public class cut {
-   public static final cus a = new cus.a().a(4).a(0.3F).b();
-   public static final cus b = new cus.a().a(5).a(0.6F).b();
-   public static final cus c = new cus.a().a(3).a(0.3F).b();
-   public static final cus d = new cus.a().a(1).a(0.6F).b();
-   public static final cus e = a(6).b();
-   public static final cus f = new cus.a().a(5).a(0.6F).b();
-   public static final cus g = new cus.a().a(3).a(0.6F).b();
-   public static final cus h = new cus.a().a(2).a(0.3F).b();
-   public static final cus i = new cus.a().a(4).a(0.3F).a().b();
-   public static final cus j = new cus.a().a(2).a(0.1F).b();
-   public static final cus k = new cus.a().a(8).a(0.8F).b();
-   public static final cus l = new cus.a().a(6).a(0.6F).b();
-   public static final cus m = new cus.a().a(5).a(0.6F).b();
-   public static final cus n = new cus.a().a(6).a(0.8F).b();
-   public static final cus o = new cus.a().a(8).a(0.8F).b();
-   public static final cus p = new cus.a().a(5).a(0.6F).b();
-   public static final cus q = new cus.a().a(6).a(0.8F).b();
-   public static final cus r = new cus.a().a(2).a(0.1F).b();
-   public static final cus s = new cus.a().a(1).a(0.3F).b();
-   public static final cus t = new cus.a().a(4).a(1.2F).a().b();
-   public static final cus u = new cus.a().a(4).a(1.2F).a().b();
-   public static final cus v = new cus.a().a(6).a(1.2F).b();
-   public static final cus w = new cus.a().a(6).a(0.1F).a().b();
-   public static final cus x = new cus.a().a(2).a(0.3F).b();
-   public static final cus y = a(6).b();
-   public static final cus z = new cus.a().a(2).a(0.3F).b();
-   public static final cus A = new cus.a().a(2).a(0.3F).b();
-   public static final cus B = new cus.a().a(3).a(0.3F).b();
-   public static final cus C = new cus.a().a(1).a(0.3F).b();
-   public static final cus D = new cus.a().a(1).a(0.1F).b();
-   public static final cus E = new cus.a().a(8).a(0.3F).b();
-   public static final cus F = new cus.a().a(3).a(0.3F).b();
-   public static final cus G = a(10).b();
-   public static final cus H = new cus.a().a(4).a(0.1F).b();
-   public static final cus I = new cus.a().a(2).a(0.1F).b();
-   public static final cus J = new cus.a().a(2).a(0.8F).b();
-   public static final cus K = a(6).a().b();
-   public static final cus L = new cus.a().a(2).a(0.1F).b();
-   public static final cus M = new cus.a().a(2).a(0.1F).b();
-   public static final cus N = new cus.a().a(1).a(0.1F).b();
+import it.unimi.dsi.fastutil.HashCommon;
+import java.util.Arrays;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-   private static cus.a a(int $$0) {
-      return new cus.a().a($$0).a(0.6F);
+public final class cut {
+   private static final cut b = new cut(null, 0L);
+   public static final int a = 64;
+   @Nullable
+   private final cuu c;
+   private final long d;
+
+   private cut(@Nullable cuu $$0, long $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
+
+   static cut a(cuu $$0, Collection<cur> $$1) {
+      if ($$1.isEmpty()) {
+         return b;
+      } else {
+         long $$2 = a($$0, 0L, $$1);
+         return new cut($$0, $$2);
+      }
+   }
+
+   public static cut a() {
+      return b;
+   }
+
+   public static cut a(cur $$0) {
+      return new cut($$0.a, $$0.b);
+   }
+
+   public static cut a(cur $$0, cur... $$1) {
+      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
+      return new cut($$0.a, $$2);
+   }
+
+   private static long a(cuu $$0, long $$1, Iterable<cur> $$2) {
+      for (cur $$3 : $$2) {
+         if ($$0 != $$3.a) {
+            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
+         }
+
+         $$1 |= $$3.b;
+      }
+
+      return $$1;
+   }
+
+   public boolean b(cur $$0) {
+      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
+   }
+
+   public boolean b() {
+      return this.equals(b);
+   }
+
+   public boolean a(cut $$0) {
+      if (this.c == null) {
+         return true;
+      } else {
+         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
+      }
+   }
+
+   public boolean b(cut $$0) {
+      return this.c != null && $$0.c != null && this.c == $$0.c ? (this.d & $$0.d) != 0L : false;
+   }
+
+   public cut c(cut $$0) {
+      if (this.c == null) {
+         return $$0;
+      } else if ($$0.c == null) {
+         return this;
+      } else if (this.c != $$0.c) {
+         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
+      } else {
+         return new cut(this.c, this.d | $$0.d);
+      }
+   }
+
+   public cut d(cut $$0) {
+      if (this.c == null || $$0.c == null) {
+         return this;
+      } else if (this.c != $$0.c) {
+         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
+      } else {
+         long $$1 = this.d & ~$$0.d;
+         return $$1 == 0L ? b : new cut(this.c, $$1);
+      }
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof cut $$1 && this.c == $$1.c && this.d == $$1.d) {
+            return true;
+         }
+
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return (int)HashCommon.mix(this.d);
    }
 }

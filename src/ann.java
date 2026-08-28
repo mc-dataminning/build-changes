@@ -14,37 +14,37 @@ public class ann {
    private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wy.c("commands.forceload.added.failure"));
    private static final SimpleCommandExceptionType e = new SimpleCommandExceptionType(wy.c("commands.forceload.removed.failure"));
 
-   public static void a(CommandDispatcher<ei> $$0) {
+   public static void a(CommandDispatcher<ej> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("forceload").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("forceload").requires($$0x -> $$0x.c(2)))
                   .then(
-                     ej.a("add")
+                     ek.a("add")
                         .then(
-                           ((RequiredArgumentBuilder)ej.a("from", gg.a())
-                                 .executes($$0x -> a((ei)$$0x.getSource(), gg.a($$0x, "from"), gg.a($$0x, "from"), true)))
-                              .then(ej.a("to", gg.a()).executes($$0x -> a((ei)$$0x.getSource(), gg.a($$0x, "from"), gg.a($$0x, "to"), true)))
+                           ((RequiredArgumentBuilder)ek.a("from", gh.a())
+                                 .executes($$0x -> a((ej)$$0x.getSource(), gh.a($$0x, "from"), gh.a($$0x, "from"), true)))
+                              .then(ek.a("to", gh.a()).executes($$0x -> a((ej)$$0x.getSource(), gh.a($$0x, "from"), gh.a($$0x, "to"), true)))
                         )
                   ))
                .then(
-                  ((LiteralArgumentBuilder)ej.a("remove")
+                  ((LiteralArgumentBuilder)ek.a("remove")
                         .then(
-                           ((RequiredArgumentBuilder)ej.a("from", gg.a())
-                                 .executes($$0x -> a((ei)$$0x.getSource(), gg.a($$0x, "from"), gg.a($$0x, "from"), false)))
-                              .then(ej.a("to", gg.a()).executes($$0x -> a((ei)$$0x.getSource(), gg.a($$0x, "from"), gg.a($$0x, "to"), false)))
+                           ((RequiredArgumentBuilder)ek.a("from", gh.a())
+                                 .executes($$0x -> a((ej)$$0x.getSource(), gh.a($$0x, "from"), gh.a($$0x, "from"), false)))
+                              .then(ek.a("to", gh.a()).executes($$0x -> a((ej)$$0x.getSource(), gh.a($$0x, "from"), gh.a($$0x, "to"), false)))
                         ))
-                     .then(ej.a("all").executes($$0x -> b((ei)$$0x.getSource())))
+                     .then(ek.a("all").executes($$0x -> b((ej)$$0x.getSource())))
                ))
             .then(
-               ((LiteralArgumentBuilder)ej.a("query").executes($$0x -> a((ei)$$0x.getSource())))
-                  .then(ej.a("pos", gg.a()).executes($$0x -> a((ei)$$0x.getSource(), gg.a($$0x, "pos"))))
+               ((LiteralArgumentBuilder)ek.a("query").executes($$0x -> a((ej)$$0x.getSource())))
+                  .then(ek.a("pos", gh.a()).executes($$0x -> a((ej)$$0x.getSource(), gh.a($$0x, "pos"))))
             )
       );
    }
 
-   private static int a(ei $$0, arb $$1) throws CommandSyntaxException {
-      dih $$2 = $$1.a();
+   private static int a(ej $$0, arb $$1) throws CommandSyntaxException {
+      dio $$2 = $$1.a();
       arq $$3 = $$0.e();
-      alf<dja> $$4 = $$3.aj();
+      alf<djh> $$4 = $$3.aj();
       boolean $$5 = $$3.y().contains($$2.a());
       if ($$5) {
          $$0.a(() -> wy.a("commands.forceload.query.success", wy.a($$2), wy.a($$4.a())), false);
@@ -54,13 +54,13 @@ public class ann {
       }
    }
 
-   private static int a(ei $$0) {
+   private static int a(ej $$0) {
       arq $$1 = $$0.e();
-      alf<dja> $$2 = $$1.aj();
+      alf<djh> $$2 = $$1.aj();
       LongSet $$3 = $$1.y();
       int $$4 = $$3.size();
       if ($$4 > 0) {
-         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(dih::new).map(dih::toString).iterator());
+         String $$5 = Joiner.on(", ").join($$3.stream().sorted().map(dio::new).map(dio::toString).iterator());
          if ($$4 == 1) {
             $$0.a(() -> wy.a("commands.forceload.list.single", wy.a($$2.a()), $$5), false);
          } else {
@@ -73,32 +73,32 @@ public class ann {
       return $$4;
    }
 
-   private static int b(ei $$0) {
+   private static int b(ej $$0) {
       arq $$1 = $$0.e();
-      alf<dja> $$2 = $$1.aj();
+      alf<djh> $$2 = $$1.aj();
       LongSet $$3 = $$1.y();
-      $$3.forEach($$1x -> $$1.a(dih.a($$1x), dih.b($$1x), false));
+      $$3.forEach($$1x -> $$1.a(dio.a($$1x), dio.b($$1x), false));
       $$0.a(() -> wy.a("commands.forceload.removed.all", wy.a($$2.a())), true);
       return 0;
    }
 
-   private static int a(ei $$0, arb $$1, arb $$2, boolean $$3) throws CommandSyntaxException {
+   private static int a(ej $$0, arb $$1, arb $$2, boolean $$3) throws CommandSyntaxException {
       int $$4 = Math.min($$1.c(), $$2.c());
       int $$5 = Math.min($$1.d(), $$2.d());
       int $$6 = Math.max($$1.c(), $$2.c());
       int $$7 = Math.max($$1.d(), $$2.d());
       if ($$4 >= -30000000 && $$5 >= -30000000 && $$6 < 30000000 && $$7 < 30000000) {
-         int $$8 = jx.a($$4);
-         int $$9 = jx.a($$5);
-         int $$10 = jx.a($$6);
-         int $$11 = jx.a($$7);
+         int $$8 = jy.a($$4);
+         int $$9 = jy.a($$5);
+         int $$10 = jy.a($$6);
+         int $$11 = jy.a($$7);
          long $$12 = ((long)($$10 - $$8) + 1L) * ((long)($$11 - $$9) + 1L);
          if ($$12 > 256L) {
             throw b.create(256, $$12);
          } else {
             arq $$13 = $$0.e();
-            alf<dja> $$14 = $$13.aj();
-            dih $$15 = null;
+            alf<djh> $$14 = $$13.aj();
+            dio $$15 = null;
             int $$16 = 0;
 
             for (int $$17 = $$8; $$17 <= $$10; $$17++) {
@@ -107,13 +107,13 @@ public class ann {
                   if ($$19) {
                      $$16++;
                      if ($$15 == null) {
-                        $$15 = new dih($$17, $$18);
+                        $$15 = new dio($$17, $$18);
                      }
                   }
                }
             }
 
-            dih $$20 = $$15;
+            dio $$20 = $$15;
             int $$21 = $$16;
             if ($$21 == 0) {
                throw ($$3 ? d : e).create();
@@ -121,8 +121,8 @@ public class ann {
                if ($$21 == 1) {
                   $$0.a(() -> wy.a("commands.forceload." + ($$3 ? "added" : "removed") + ".single", wy.a($$20), wy.a($$14.a())), true);
                } else {
-                  dih $$22 = new dih($$8, $$9);
-                  dih $$23 = new dih($$10, $$11);
+                  dio $$22 = new dio($$8, $$9);
+                  dio $$23 = new dio($$10, $$11);
                   $$0.a(() -> wy.a("commands.forceload." + ($$3 ? "added" : "removed") + ".multiple", $$21, wy.a($$14.a()), wy.a($$22), wy.a($$23)), true);
                }
 
@@ -130,7 +130,7 @@ public class ann {
             }
          }
       } else {
-         throw gf.b.create();
+         throw gg.b.create();
       }
    }
 }

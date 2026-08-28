@@ -1,50 +1,43 @@
-public abstract class cnk extends cst {
-   protected cnk(bwo<? extends cnk> $$0, dja $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+
+public record cnk(int e, int f, alg g, Optional<wy> h, Optional<wy> i) {
+   public static final Codec<cnk> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ayu.a(1, 16).fieldOf("width").forGetter(cnk::b),
+               ayu.a(1, 16).fieldOf("height").forGetter(cnk::c),
+               alg.a.fieldOf("asset_id").forGetter(cnk::d),
+               xa.a.optionalFieldOf("title").forGetter(cnk::e),
+               xa.a.optionalFieldOf("author").forGetter(cnk::f)
+            )
+            .apply($$0, cnk::new)
+   );
+   public static final yw<wj, cnk> b = yw.a(yu.h, cnk::b, yu.h, cnk::c, alg.b, cnk::d, xa.e, cnk::e, xa.e, cnk::f, cnk::new);
+   public static final Codec<jf<cnk>> c = alc.a(mh.aZ, a);
+   public static final yw<wj, jf<cnk>> d = yu.a(mh.aZ, b);
+
+   public int a() {
+      return this.b() * this.c();
    }
 
-   @Override
-   protected void D() {
-      super.D();
+   public int b() {
+      return this.e;
    }
 
-   public cnk.a j() {
-      return cnk.a.a;
+   public int c() {
+      return this.f;
    }
 
-   @Override
-   public boolean c(bxe $$0) {
-      return $$0 instanceof cqj && $$0.n_() ? false : super.c($$0);
+   public alg d() {
+      return this.g;
    }
 
-   @Override
-   protected boolean t(bwf $$0) {
-      if (super.t($$0)) {
-         return true;
-      } else {
-         return !$$0.aq().a(axf.z) ? false : this.cr() == null && $$0.cr() == null;
-      }
+   public Optional<wy> e() {
+      return this.h;
    }
 
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e,
-      f,
-      g,
-      h;
-   }
-
-   protected class b extends ces {
-      public b(final cst $$1) {
-         super($$1, false);
-      }
-
-      @Override
-      public boolean b() {
-         return super.b() && cnk.this.gF();
-      }
+   public Optional<wy> f() {
+      return this.i;
    }
 }

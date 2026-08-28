@@ -62,7 +62,7 @@ public record akd(wy b, Optional<akd.b> c, Optional<akd.c> d, Optional<akd.a> e,
 
    public static record b(int b, int c, List<GameProfile> d) {
       private static final Codec<GameProfile> e = RecordCodecBuilder.create(
-         $$0 -> $$0.group(jy.d.fieldOf("id").forGetter(GameProfile::getId), Codec.STRING.fieldOf("name").forGetter(GameProfile::getName))
+         $$0 -> $$0.group(jz.d.fieldOf("id").forGetter(GameProfile::getId), Codec.STRING.fieldOf("name").forGetter(GameProfile::getName))
                .apply($$0, GameProfile::new)
       );
       public static final Codec<akd.b> a = RecordCodecBuilder.create(
@@ -93,7 +93,7 @@ public record akd(wy b, Optional<akd.b> c, Optional<akd.c> d, Optional<akd.a> e,
       );
 
       public static akd.c a() {
-         ag $$0 = ab.b();
+         ah $$0 = ac.b();
          return new akd.c($$0.c(), $$0.e());
       }
    }

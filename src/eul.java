@@ -1,20 +1,27 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class eul extends eva {
-   public static final MapCodec<eul> a = MapCodec.unit(() -> eul.b);
-   public static final eul b = new eul();
+public class eul extends evh {
+   public static final MapCodec<eul> a = eao.a.xmap(ean.a::b, dmm::m).listOf().fieldOf("blocks").xmap(eul::new, $$0 -> $$0.e);
+   public static final eul b = new eul(ImmutableList.of(dmo.pG));
+   public static final eul c = new eul(ImmutableList.of(dmo.a));
+   public static final eul d = new eul(ImmutableList.of(dmo.a, dmo.pG));
+   private final ImmutableList<dmm> e;
+
+   public eul(List<dmm> $$0) {
+      this.e = ImmutableList.copyOf($$0);
+   }
 
    @Nullable
    @Override
-   public evd.d a(djd $$0, iu $$1, iu $$2, evd.d $$3, evd.d $$4, euz $$5) {
-      iu $$6 = $$4.a();
-      boolean $$7 = $$0.a_($$6).a(dmh.K);
-      return $$7 && !dmf.a($$4.b().f($$0, $$6)) ? new evd.d($$6, dmh.K.m(), $$4.c()) : $$4;
+   public evk.d a(djk $$0, iv $$1, iv $$2, evk.d $$3, evk.d $$4, evg $$5) {
+      return this.e.contains($$4.b().b()) ? null : $$4;
    }
 
    @Override
-   protected evc<?> a() {
-      return evc.m;
+   protected evj<?> a() {
+      return evj.e;
    }
 }

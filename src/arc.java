@@ -55,7 +55,7 @@ public class arc extends ars {
    }
 
    @Override
-   public void a(iu $$0, ahv.a $$1, ja $$2, int $$3, int $$4) {
+   public void a(iv $$0, ahv.a $$1, jb $$2, int $$3, int $$4) {
       if (this.f) {
          this.f();
       } else {
@@ -64,20 +64,20 @@ public class arc extends ars {
    }
 
    @Override
-   public bud a(arr $$0, dja $$1, czd $$2, buc $$3) {
+   public bug a(arr $$0, djh $$1, czk $$2, buf $$3) {
       if (this.f) {
          this.f();
-         return bud.e;
+         return bug.e;
       } else {
          return super.a($$0, $$1, $$2, $$3);
       }
    }
 
    @Override
-   public bud a(arr $$0, dja $$1, czd $$2, buc $$3, fem $$4) {
+   public bug a(arr $$0, djh $$1, czk $$2, buf $$3, fet $$4) {
       if (this.f) {
          this.f();
-         return bud.e;
+         return bug.e;
       } else {
          return super.a($$0, $$1, $$2, $$3, $$4);
       }

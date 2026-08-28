@@ -1,2 +1,8 @@
-public record gdd(ehc a, djy b) {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface gdd {
 }

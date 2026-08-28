@@ -1,174 +1,29 @@
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
+import java.util.function.ToIntFunction;
 import javax.annotation.Nullable;
 
-public class dnk extends dlr {
-   public static final MapCodec<dnk> a = b(dnk::new);
-   private static final int d = 6;
-   public static final int b = 3;
-   public static final List<eay> c = List.of(eax.bs, eax.bt, eax.bu, eax.bv, eax.bw, eax.bx);
+public interface dnk {
+   ffr s_ = dmm.b(14.0, 0.0, 16.0);
+   ebf t_ = ebe.b;
 
-   @Override
-   public MapCodec<dnk> a() {
-      return a;
-   }
-
-   public dnk(eag.d $$0) {
-      super($$0);
-      eah $$1 = this.C.b().b(dqg.e, ja.c);
-
-      for (eay $$2 : c) {
-         $$1 = $$1.b($$2, Boolean.valueOf(false));
-      }
-
-      this.l($$1);
-   }
-
-   @Override
-   protected bud a(czd $$0, eah $$1, dja $$2, iu $$3, crc $$4, buc $$5, fem $$6) {
-      if ($$2.c_($$3) instanceof dxp $$7) {
-         if (!$$0.a(axk.ba)) {
-            return bud.f;
-         } else {
-            OptionalInt $$9 = this.a($$6, $$1);
-            if ($$9.isEmpty()) {
-               return bud.e;
-            } else if ($$1.c(c.get($$9.getAsInt()))) {
-               return bud.f;
-            } else {
-               a($$2, $$3, $$4, $$7, $$0, $$9.getAsInt());
-               return bud.a;
-            }
-         }
+   static bug a(@Nullable bwi $$0, eao $$1, djh $$2, iv $$3) {
+      if ($$1.c(t_)) {
+         dmm.a($$2, $$3, new czk(czo.xH, 1));
+         float $$4 = azm.b($$2.A, 0.8F, 1.2F);
+         $$2.a(null, $$3, awn.ei, awo.e, 1.0F, $$4);
+         eao $$5 = $$1.b(t_, Boolean.valueOf(false));
+         $$2.a($$3, $$5, 2);
+         $$2.a(efo.c, $$3, efo.a.a($$0, $$5));
+         return bug.a;
       } else {
-         return bud.e;
+         return bug.e;
       }
    }
 
-   @Override
-   protected bud a(eah $$0, dja $$1, iu $$2, crc $$3, fem $$4) {
-      if ($$1.c_($$2) instanceof dxp $$5) {
-         OptionalInt $$7 = this.a($$4, $$0);
-         if ($$7.isEmpty()) {
-            return bud.e;
-         } else if (!$$0.c(c.get($$7.getAsInt()))) {
-            return bud.c;
-         } else {
-            a($$1, $$2, $$3, $$5, $$7.getAsInt());
-            return bud.a;
-         }
-      } else {
-         return bud.e;
-      }
+   static boolean j_(eao $$0) {
+      return $$0.b(t_) && $$0.c(t_);
    }
 
-   private OptionalInt a(fem $$0, eah $$1) {
-      return a($$0, $$1.c(dqg.e)).map($$0x -> {
-         int $$1x = $$0x.j >= 0.5F ? 0 : 1;
-         int $$2 = a($$0x.i);
-         return OptionalInt.of($$2 + $$1x * 3);
-      }).orElseGet(OptionalInt::empty);
-   }
-
-   private static Optional<fep> a(fem $$0, ja $$1) {
-      ja $$2 = $$0.c();
-      if ($$1 != $$2) {
-         return Optional.empty();
-      } else {
-         iu $$3 = $$0.b().a($$2);
-         feq $$4 = $$0.g().a((double)$$3.u(), (double)$$3.v(), (double)$$3.w());
-         double $$5 = $$4.a();
-         double $$6 = $$4.b();
-         double $$7 = $$4.c();
-
-         return switch ($$2) {
-            case c -> Optional.of(new fep((float)(1.0 - $$5), (float)$$6));
-            case d -> Optional.of(new fep((float)$$5, (float)$$6));
-            case e -> Optional.of(new fep((float)$$7, (float)$$6));
-            case f -> Optional.of(new fep((float)(1.0 - $$7), (float)$$6));
-            case a, b -> Optional.empty();
-         };
-      }
-   }
-
-   private static int a(float $$0) {
-      float $$1 = 0.0625F;
-      float $$2 = 0.375F;
-      if ($$0 < 0.375F) {
-         return 0;
-      } else {
-         float $$3 = 0.6875F;
-         return $$0 < 0.6875F ? 1 : 2;
-      }
-   }
-
-   private static void a(dja $$0, iu $$1, crc $$2, dxp $$3, czd $$4, int $$5) {
-      if (!$$0.C) {
-         $$2.b(awx.c.b($$4.h()));
-         awm $$6 = $$4.a(czh.vG) ? awn.fe : awn.fd;
-         $$3.a($$5, $$4.b(1, $$2));
-         $$0.a(null, $$1, $$6, awo.e, 1.0F, 1.0F);
-      }
-   }
-
-   private static void a(dja $$0, iu $$1, crc $$2, dxp $$3, int $$4) {
-      if (!$$0.C) {
-         czd $$5 = $$3.a($$4, 1);
-         awm $$6 = $$5.a(czh.vG) ? awn.fh : awn.fg;
-         $$0.a(null, $$1, $$6, awo.e, 1.0F, 1.0F);
-         if (!$$2.gj().g($$5)) {
-            $$2.a($$5, false);
-         }
-
-         $$0.a($$2, efh.c, $$1);
-      }
-   }
-
-   @Nullable
-   @Override
-   public dxf a(iu $$0, eah $$1) {
-      return new dxp($$0, $$1);
-   }
-
-   @Override
-   protected void a(eai.a<dmf, eah> $$0) {
-      $$0.a(dqg.e);
-      c.forEach($$1 -> $$0.a($$1));
-   }
-
-   @Override
-   protected void a(eah $$0, arq $$1, iu $$2, boolean $$3) {
-      btz.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public eah a(dcw $$0) {
-      return this.m().b(dqg.e, $$0.g().g());
-   }
-
-   @Override
-   public eah a(eah $$0, dsz $$1) {
-      return $$0.b(dqg.e, $$1.a($$0.c(dqg.e)));
-   }
-
-   @Override
-   public eah a(eah $$0, dri $$1) {
-      return $$0.a($$1.a($$0.c(dqg.e)));
-   }
-
-   @Override
-   protected boolean c_(eah $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(eah $$0, dja $$1, iu $$2) {
-      if ($$1.w_()) {
-         return 0;
-      } else {
-         return $$1.c_($$2) instanceof dxp $$3 ? $$3.j() + 1 : 0;
-      }
+   static ToIntFunction<eao> i_(int $$0) {
+      return $$1 -> $$1.c(ebe.b) ? $$0 : 0;
    }
 }

@@ -1,69 +1,57 @@
 import javax.annotation.Nullable;
 
-public class cmj extends cmc {
-   @Nullable
-   private feq b;
+public abstract class cmj implements cmr {
+   protected final cmh a;
 
-   public cmj(cma $$0) {
-      super($$0);
+   public cmj(cmh $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public boolean a() {
+      return false;
    }
 
    @Override
    public void b() {
-      feq $$0 = this.a.J(1.0F).d();
-      $$0.b((float) (-Math.PI / 4));
-      double $$1 = this.a.c.dA();
-      double $$2 = this.a.c.e(0.5);
-      double $$3 = this.a.c.dG();
-
-      for (int $$4 = 0; $$4 < 8; $$4++) {
-         azv $$5 = this.a.dY();
-         double $$6 = $$1 + $$5.k() / 2.0;
-         double $$7 = $$2 + $$5.k() / 2.0;
-         double $$8 = $$3 + $$5.k() / 2.0;
-         feq $$9 = this.a.dy();
-         this.a.dV().a(lx.h, $$6, $$7, $$8, -$$0.d * 0.08F + $$9.d, -$$0.e * 0.3F + $$9.e, -$$0.f * 0.08F + $$9.f);
-         $$0.b((float) (Math.PI / 16));
-      }
    }
 
    @Override
    public void a(arq $$0) {
-      if (this.b == null) {
-         this.b = feq.c($$0.a(egg.a.f, ejl.a(this.a.j())));
-      }
-
-      if (this.b.c(this.a.dA(), this.a.dC(), this.a.dG()) < 1.0) {
-         this.a.t().b(cmq.f).i();
-         this.a.t().a(cmq.g);
-      }
    }
 
    @Override
-   public float e() {
-      return 1.5F;
-   }
-
-   @Override
-   public float g() {
-      float $$0 = (float)this.a.dy().i() + 1.0F;
-      float $$1 = Math.min($$0, 40.0F);
-      return $$1 / $$0;
+   public void a(cmg $$0, iv $$1, bux $$2, @Nullable crj $$3) {
    }
 
    @Override
    public void c() {
-      this.b = null;
+   }
+
+   @Override
+   public void d() {
+   }
+
+   @Override
+   public float e() {
+      return 0.6F;
    }
 
    @Nullable
    @Override
-   public feq f() {
-      return this.b;
+   public fex f() {
+      return null;
    }
 
    @Override
-   public cmq<cmj> h() {
-      return cmq.d;
+   public float a(bux $$0, float $$1) {
+      return $$1;
+   }
+
+   @Override
+   public float g() {
+      float $$0 = (float)this.a.dx().i() + 1.0F;
+      float $$1 = Math.min($$0, 40.0F);
+      return 0.7F / $$1 / $$0;
    }
 }

@@ -1,43 +1,30 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class emk implements elq {
+public record emk(int b, int c, int d, jf<eqm> e) implements elx {
    public static final Codec<emk> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
-               ekw.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
-               iu.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
+               ayu.m.fieldOf("tries").orElse(128).forGetter(emk::a),
+               ayu.l.fieldOf("xz_spread").orElse(7).forGetter(emk::b),
+               ayu.l.fieldOf("y_spread").orElse(3).forGetter(emk::c),
+               eqm.b.fieldOf("feature").forGetter(emk::d)
             )
             .apply($$0, emk::new)
    );
-   private final boolean b;
-   private final List<ekw.a> c;
-   @Nullable
-   private final iu d;
 
-   public emk(boolean $$0, List<ekw.a> $$1, @Nullable iu $$2) {
-      this($$0, $$1, Optional.ofNullable($$2));
-   }
-
-   private emk(boolean $$0, List<ekw.a> $$1, Optional<iu> $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2.orElse(null);
-   }
-
-   public boolean a() {
+   public int a() {
       return this.b;
    }
 
-   public List<ekw.a> b() {
+   public int b() {
       return this.c;
    }
 
-   @Nullable
-   public iu c() {
+   public int c() {
       return this.d;
+   }
+
+   public jf<eqm> d() {
+      return this.e;
    }
 }

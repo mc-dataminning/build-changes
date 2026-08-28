@@ -26,49 +26,49 @@ public class apg {
       ($$0, $$1) -> wy.b("commands.spreadplayers.failed.invalid.height", $$0, $$1)
    );
 
-   public static void a(CommandDispatcher<ei> $$0) {
+   public static void a(CommandDispatcher<ej> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("spreadplayers").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("spreadplayers").requires($$0x -> $$0x.c(2)))
             .then(
-               ej.a("center", gl.a())
+               ek.a("center", gm.a())
                   .then(
-                     ej.a("spreadDistance", FloatArgumentType.floatArg(0.0F))
+                     ek.a("spreadDistance", FloatArgumentType.floatArg(0.0F))
                         .then(
-                           ((RequiredArgumentBuilder)ej.a("maxRange", FloatArgumentType.floatArg(1.0F))
+                           ((RequiredArgumentBuilder)ek.a("maxRange", FloatArgumentType.floatArg(1.0F))
                                  .then(
-                                    ej.a("respectTeams", BoolArgumentType.bool())
+                                    ek.a("respectTeams", BoolArgumentType.bool())
                                        .then(
-                                          ej.a("targets", ev.b())
+                                          ek.a("targets", ew.b())
                                              .executes(
                                                 $$0x -> a(
-                                                      (ei)$$0x.getSource(),
-                                                      gl.a($$0x, "center"),
+                                                      (ej)$$0x.getSource(),
+                                                      gm.a($$0x, "center"),
                                                       FloatArgumentType.getFloat($$0x, "spreadDistance"),
                                                       FloatArgumentType.getFloat($$0x, "maxRange"),
-                                                      ((ei)$$0x.getSource()).e().ao() + 1,
+                                                      ((ej)$$0x.getSource()).e().ao() + 1,
                                                       BoolArgumentType.getBool($$0x, "respectTeams"),
-                                                      ev.b($$0x, "targets")
+                                                      ew.b($$0x, "targets")
                                                    )
                                              )
                                        )
                                  ))
                               .then(
-                                 ej.a("under")
+                                 ek.a("under")
                                     .then(
-                                       ej.a("maxHeight", IntegerArgumentType.integer())
+                                       ek.a("maxHeight", IntegerArgumentType.integer())
                                           .then(
-                                             ej.a("respectTeams", BoolArgumentType.bool())
+                                             ek.a("respectTeams", BoolArgumentType.bool())
                                                 .then(
-                                                   ej.a("targets", ev.b())
+                                                   ek.a("targets", ew.b())
                                                       .executes(
                                                          $$0x -> a(
-                                                               (ei)$$0x.getSource(),
-                                                               gl.a($$0x, "center"),
+                                                               (ej)$$0x.getSource(),
+                                                               gm.a($$0x, "center"),
                                                                FloatArgumentType.getFloat($$0x, "spreadDistance"),
                                                                FloatArgumentType.getFloat($$0x, "maxRange"),
                                                                IntegerArgumentType.getInteger($$0x, "maxHeight"),
                                                                BoolArgumentType.getBool($$0x, "respectTeams"),
-                                                               ev.b($$0x, "targets")
+                                                               ew.b($$0x, "targets")
                                                             )
                                                       )
                                                 )
@@ -81,34 +81,34 @@ public class apg {
       );
    }
 
-   private static int a(ei $$0, fep $$1, float $$2, float $$3, int $$4, boolean $$5, Collection<? extends bwf> $$6) throws CommandSyntaxException {
+   private static int a(ej $$0, few $$1, float $$2, float $$3, int $$4, boolean $$5, Collection<? extends bwi> $$6) throws CommandSyntaxException {
       arq $$7 = $$0.e();
       int $$8 = $$7.G_();
       if ($$4 < $$8) {
          throw d.create($$4, $$8);
       } else {
          azv $$9 = azv.a();
-         double $$10 = (double)($$1.i - $$3);
-         double $$11 = (double)($$1.j - $$3);
-         double $$12 = (double)($$1.i + $$3);
-         double $$13 = (double)($$1.j + $$3);
+         double $$10 = (double)($$1.j - $$3);
+         double $$11 = (double)($$1.k - $$3);
+         double $$12 = (double)($$1.j + $$3);
+         double $$13 = (double)($$1.k + $$3);
          apg.a[] $$14 = a($$9, $$5 ? a($$6) : $$6.size(), $$10, $$11, $$12, $$13);
          a($$1, (double)$$2, $$7, $$9, $$10, $$11, $$12, $$13, $$4, $$14, $$5);
          double $$15 = a($$6, $$7, $$14, $$4, $$5);
          $$0.a(
-            () -> wy.a("commands.spreadplayers.success." + ($$5 ? "teams" : "entities"), $$14.length, $$1.i, $$1.j, String.format(Locale.ROOT, "%.2f", $$15)),
+            () -> wy.a("commands.spreadplayers.success." + ($$5 ? "teams" : "entities"), $$14.length, $$1.j, $$1.k, String.format(Locale.ROOT, "%.2f", $$15)),
             true
          );
          return $$14.length;
       }
    }
 
-   private static int a(Collection<? extends bwf> $$0) {
-      Set<ffx> $$1 = Sets.newHashSet();
+   private static int a(Collection<? extends bwi> $$0) {
+      Set<fge> $$1 = Sets.newHashSet();
 
-      for (bwf $$2 : $$0) {
-         if ($$2 instanceof crc) {
-            $$1.add($$2.cr());
+      for (bwi $$2 : $$0) {
+         if ($$2 instanceof crj) {
+            $$1.add($$2.cp());
          } else {
             $$1.add(null);
          }
@@ -117,7 +117,7 @@ public class apg {
       return $$1.size();
    }
 
-   private static void a(fep $$0, double $$1, arq $$2, azv $$3, double $$4, double $$5, double $$6, double $$7, int $$8, apg.a[] $$9, boolean $$10) throws CommandSyntaxException {
+   private static void a(few $$0, double $$1, arq $$2, azv $$3, double $$4, double $$5, double $$6, double $$7, int $$8, apg.a[] $$9, boolean $$10) throws CommandSyntaxException {
       boolean $$11 = true;
       double $$12 = Float.MAX_VALUE;
 
@@ -179,22 +179,22 @@ public class apg {
 
       if ($$13 >= 10000) {
          if ($$10) {
-            throw b.create($$9.length, $$0.i, $$0.j, String.format(Locale.ROOT, "%.2f", $$12));
+            throw b.create($$9.length, $$0.j, $$0.k, String.format(Locale.ROOT, "%.2f", $$12));
          } else {
-            throw c.create($$9.length, $$0.i, $$0.j, String.format(Locale.ROOT, "%.2f", $$12));
+            throw c.create($$9.length, $$0.j, $$0.k, String.format(Locale.ROOT, "%.2f", $$12));
          }
       }
    }
 
-   private static double a(Collection<? extends bwf> $$0, arq $$1, apg.a[] $$2, int $$3, boolean $$4) {
+   private static double a(Collection<? extends bwi> $$0, arq $$1, apg.a[] $$2, int $$3, boolean $$4) {
       double $$5 = 0.0;
       int $$6 = 0;
-      Map<ffx, apg.a> $$7 = Maps.newHashMap();
+      Map<fge, apg.a> $$7 = Maps.newHashMap();
 
-      for (bwf $$8 : $$0) {
+      for (bwi $$8 : $$0) {
          apg.a $$10;
          if ($$4) {
-            ffx $$9 = $$8 instanceof crc ? $$8.cr() : null;
+            fge $$9 = $$8 instanceof crj ? $$8.cp() : null;
             if (!$$7.containsKey($$9)) {
                $$7.put($$9, $$2[$$6++]);
             }
@@ -204,7 +204,7 @@ public class apg {
             $$10 = $$2[$$6++];
          }
 
-         $$8.a($$1, (double)azm.a($$10.a) + 0.5, (double)$$10.a($$1, $$3), (double)azm.a($$10.b) + 0.5, Set.of(), $$8.dL(), $$8.dN(), true);
+         $$8.a($$1, (double)azm.a($$10.a) + 0.5, (double)$$10.a($$1, $$3), (double)azm.a($$10.b) + 0.5, Set.of(), $$8.dK(), $$8.dM(), true);
          double $$12 = Double.MAX_VALUE;
 
          for (apg.a $$13 : $$2) {
@@ -278,14 +278,14 @@ public class apg {
          return $$4;
       }
 
-      public int a(dig $$0, int $$1) {
-         iu.a $$2 = new iu.a(this.a, (double)($$1 + 1), this.b);
+      public int a(din $$0, int $$1) {
+         iv.a $$2 = new iv.a(this.a, (double)($$1 + 1), this.b);
          boolean $$3 = $$0.a_($$2).l();
-         $$2.c(ja.a);
+         $$2.c(jb.a);
          boolean $$4 = $$0.a_($$2).l();
 
          while ($$2.v() > $$0.G_()) {
-            $$2.c(ja.a);
+            $$2.c(jb.a);
             boolean $$5 = $$0.a_($$2).l();
             if (!$$5 && $$4 && $$3) {
                return $$2.v() + 1;
@@ -298,9 +298,9 @@ public class apg {
          return $$1 + 1;
       }
 
-      public boolean b(dig $$0, int $$1) {
-         iu $$2 = iu.a(this.a, (double)(this.a($$0, $$1) - 1), this.b);
-         eah $$3 = $$0.a_($$2);
+      public boolean b(din $$0, int $$1) {
+         iv $$2 = iv.a(this.a, (double)(this.a($$0, $$1) - 1), this.b);
+         eao $$3 = $$0.a_($$2);
          return $$2.v() < $$1 && !$$3.n() && !$$3.a(axc.aN);
       }
 

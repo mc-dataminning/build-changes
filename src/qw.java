@@ -57,8 +57,8 @@ public class qw {
    }
 
    private static <C, I extends bar<C>> ayn<C, I> a(I $$0, I $$1, float $$2, float $$3, bar<Float> $$4) {
-      float $$5 = egn.a(0.4F);
-      float $$6 = egn.a(0.56666666F);
+      float $$5 = egu.a(0.4F);
+      float $$6 = egu.a(0.56666666F);
       float $$7 = ($$5 + $$6) / 2.0F;
       ayn.b<C, I> $$8 = ayn.a($$1, $$4);
       $$8.a($$5, 0.0F);

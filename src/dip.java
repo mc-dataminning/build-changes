@@ -1,46 +1,25 @@
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public enum dip implements did {
-   a;
+public class dip {
+   private final fex a;
+   private final fex b;
+   private final Predicate<eao> c;
 
-   @Override
-   public float a(ja $$0, boolean $$1) {
-      return 1.0F;
+   public dip(fex $$0, fex $$1, Predicate<eao> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   @Override
-   public ewd x_() {
-      return ewd.c;
+   public fex a() {
+      return this.b;
    }
 
-   @Override
-   public int a(iu $$0, dil $$1) {
-      return -1;
+   public fex b() {
+      return this.a;
    }
 
-   @Nullable
-   @Override
-   public dxf c_(iu $$0) {
-      return null;
-   }
-
-   @Override
-   public eah a_(iu $$0) {
-      return dmh.a.m();
-   }
-
-   @Override
-   public ewo b_(iu $$0) {
-      return ewp.a.g();
-   }
-
-   @Override
-   public int H_() {
-      return 0;
-   }
-
-   @Override
-   public int G_() {
-      return 0;
+   public Predicate<eao> c() {
+      return this.c;
    }
 }

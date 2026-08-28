@@ -1,35 +1,47 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public abstract class pm extends pl<cyz> {
-   private final CompletableFuture<pq.c<dmf>> d;
-   private final Map<axr<dmf>, axr<cyz>> g = new HashMap<>();
+public abstract class pm<T> extends pr<T> {
+   private final Function<T, alf<T>> d;
 
-   public pm(mo $$0, CompletableFuture<jg.a> $$1, CompletableFuture<pq.c<dmf>> $$2) {
-      super($$0, mg.K, $$1, $$0x -> $$0x.e().h());
-      this.d = $$2;
-   }
-
-   public pm(mo $$0, CompletableFuture<jg.a> $$1, CompletableFuture<pq.c<cyz>> $$2, CompletableFuture<pq.c<dmf>> $$3) {
-      super($$0, mg.K, $$1, $$2, $$0x -> $$0x.e().h());
+   public pm(mp $$0, alf<? extends js<T>> $$1, CompletableFuture<jh.a> $$2, Function<T, alf<T>> $$3) {
+      super($$0, $$1, $$2);
       this.d = $$3;
    }
 
-   protected void a(axr<dmf> $$0, axr<cyz> $$1) {
-      this.g.put($$0, $$1);
+   public pm(mp $$0, alf<? extends js<T>> $$1, CompletableFuture<jh.a> $$2, CompletableFuture<pr.c<T>> $$3, Function<T, alf<T>> $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.d = $$4;
    }
 
-   @Override
-   protected CompletableFuture<jg.a> b() {
-      return super.b().thenCombine(this.d, ($$0, $$1) -> {
-         this.g.forEach(($$1x, $$2) -> {
-            axo $$3 = this.c((axr<cyz>)$$2);
-            Optional<axo> $$4 = $$1.apply($$1x);
-            $$4.orElseThrow(() -> new IllegalStateException("Missing block tag " + $$2.b())).b().forEach($$3::a);
-         });
-         return (jg.a)$$0;
-      });
+   protected pm.a<T> a(axr<T> $$0) {
+      axo $$1 = this.c($$0);
+      return new pm.a<>($$1, this.d);
+   }
+
+   protected static class a<T> extends pr.b<T> {
+      private final Function<T, alf<T>> a;
+
+      a(axo $$0, Function<T, alf<T>> $$1) {
+         super($$0);
+         this.a = $$1;
+      }
+
+      public pm.a<T> a(axr<T> $$0) {
+         super.b($$0);
+         return this;
+      }
+
+      public final pm.a<T> a(T $$0) {
+         this.a(this.a.apply($$0));
+         return this;
+      }
+
+      @SafeVarargs
+      public final pm.a<T> a(T... $$0) {
+         Stream.<T>of($$0).map(this.a).forEach(this::a);
+         return this;
+      }
    }
 }

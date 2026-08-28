@@ -1,8 +1,4 @@
-import javax.annotation.ParametersAreNonnullByDefault;
-
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface dhn {
+@FunctionalInterface
+public interface dhn {
+   jj<bwr<?>> get(jg<bwr<?>> var1);
 }

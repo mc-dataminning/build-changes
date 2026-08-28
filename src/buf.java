@@ -1,3 +1,4 @@
-public interface buf extends cwd {
-   wy m_();
+public enum buf {
+   a,
+   b;
 }

@@ -1,46 +1,90 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.base.Splitter;
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.OpticFinder;
+import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Dynamic;
-import org.slf4j.Logger;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+import org.apache.commons.lang3.math.NumberUtils;
 
-public class bhh extends bbj {
-   private static final Logger b = LogUtils.getLogger();
+public class bhh extends DataFix {
+   private static final String b = "generatorOptions";
+   @VisibleForTesting
+   static final String a = "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;1;village";
+   private static final Splitter c = Splitter.on(';').limit(5);
+   private static final Splitter d = Splitter.on(',');
+   private static final Splitter e = Splitter.on('x').limit(2);
+   private static final Splitter f = Splitter.on('*').limit(2);
+   private static final Splitter g = Splitter.on(':').limit(3);
 
-   public bhh(Schema $$0) {
-      super($$0, bix.a);
+   public bhh(Schema $$0, boolean $$1) {
+      super($$0, $$1);
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(this.a);
-      OpticFinder<?> $$1 = $$0.findField("CustomBossEvents");
-      OpticFinder<?> $$2 = DSL.typeFinder(DSL.and(DSL.optional(DSL.field("Name", this.getInputSchema().getTypeRaw(bix.z))), DSL.remainderType()));
-      return this.fixTypeEverywhereTyped("LevelUUIDFix", $$0, $$2x -> $$2x.update(DSL.remainderFinder(), $$0xx -> {
-            $$0xx = this.c($$0xx);
-            return this.b($$0xx);
-         }).updateTyped($$1, $$1xx -> $$1xx.updateTyped($$2, $$0xxx -> $$0xxx.update(DSL.remainderFinder(), this::d))));
+   public TypeRewriteRule makeRule() {
+      return this.fixTypeEverywhereTyped("LevelFlatGeneratorInfoFix", this.getInputSchema().getType(biz.a), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
    }
 
-   private Dynamic<?> b(Dynamic<?> $$0) {
-      return a($$0, "WanderingTraderId", "WanderingTraderId").orElse($$0);
+   private Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.get("generatorName").asString("").equalsIgnoreCase("flat")
+         ? $$0.update("generatorOptions", $$0x -> (Dynamic)DataFixUtils.orElse($$0x.asString().map(this::a).map($$0x::createString).result(), $$0x))
+         : $$0;
    }
 
-   private Dynamic<?> c(Dynamic<?> $$0) {
-      return $$0.update(
-         "DimensionData",
-         $$0x -> $$0x.updateMapValues(
-               $$0xx -> $$0xx.mapSecond($$0xxx -> $$0xxx.update("DragonFight", $$0xxxx -> c($$0xxxx, "DragonUUID", "Dragon").orElse($$0xxxx)))
-            )
-      );
-   }
+   @VisibleForTesting
+   String a(String $$0) {
+      if ($$0.isEmpty()) {
+         return "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;1;village";
+      } else {
+         Iterator<String> $$1 = c.split($$0).iterator();
+         String $$2 = $$1.next();
+         int $$3;
+         String $$4;
+         if ($$1.hasNext()) {
+            $$3 = NumberUtils.toInt($$2, 0);
+            $$4 = $$1.next();
+         } else {
+            $$3 = 0;
+            $$4 = $$2;
+         }
 
-   private Dynamic<?> d(Dynamic<?> $$0) {
-      return $$0.update("Players", $$1 -> $$0.createList($$1.asStream().map($$0xx -> (Dynamic)a($$0xx).orElseGet(() -> {
-               b.warn("CustomBossEvents contains invalid UUIDs.");
-               return $$0xx;
-            }))));
+         if ($$3 >= 0 && $$3 <= 3) {
+            StringBuilder $$7 = new StringBuilder();
+            Splitter $$8 = $$3 < 3 ? e : f;
+            $$7.append(StreamSupport.<String>stream(d.split($$4).spliterator(), false).map($$2x -> {
+               List<String> $$3x = $$8.splitToList($$2x);
+               int $$4x;
+               String $$5x;
+               if ($$3x.size() == 2) {
+                  $$4x = NumberUtils.toInt($$3x.get(0));
+                  $$5x = $$3x.get(1);
+               } else {
+                  $$4x = 1;
+                  $$5x = $$3x.get(0);
+               }
+
+               List<String> $$8x = g.splitToList($$5x);
+               int $$9 = $$8x.get(0).equals("minecraft") ? 1 : 0;
+               String $$10 = $$8x.get($$9);
+               int $$11 = $$3 == 3 ? beb.a("minecraft:" + $$10) : NumberUtils.toInt($$10, 0);
+               int $$12 = $$9 + 1;
+               int $$13 = $$8x.size() > $$12 ? NumberUtils.toInt($$8x.get($$12), 0) : 0;
+               return ($$4x == 1 ? "" : $$4x + "*") + bcr.b($$11 << 4 | $$13).get("Name").asString("");
+            }).collect(Collectors.joining(",")));
+
+            while ($$1.hasNext()) {
+               $$7.append(';').append($$1.next());
+            }
+
+            return $$7.toString();
+         } else {
+            return "minecraft:bedrock,2*minecraft:dirt,minecraft:grass_block;1;village";
+         }
+      }
    }
 }

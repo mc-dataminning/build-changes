@@ -1,38 +1,30 @@
-public class gzb extends gux<clh, hco, geh<hco>> {
-   private final alg a;
+public class gzb<T extends cow> extends gxz<T, hdz, gim> {
+   private static final alg a = alg.b("textures/entity/spider/spider.png");
 
-   public gzb(gwh.a $$0, gzb.a $$1) {
-      super($$0, new ggk($$0.a($$1.d)), new ggk($$0.a($$1.e)));
-      this.a = $$1.c;
-      this.a(new hax<>(this, $$0.h(), $$1.f, $$0x -> $$0x.b, new gfz($$0.a($$1.g)), new gfz($$0.a($$1.h))));
+   public gzb(gwt.a $$0) {
+      this($$0, gjn.dk);
    }
 
-   public alg a(hco $$0) {
-      return this.a;
+   public gzb(gwt.a $$0, gjm $$1) {
+      super($$0, new gim($$0.a($$1)), 0.8F);
+      this.a(new hbn<>(this));
    }
 
-   public hco b() {
-      return new hco();
+   @Override
+   protected float aS_() {
+      return 180.0F;
    }
 
-   public static enum a {
-      a(alg.b("textures/entity/horse/horse_skeleton.png"), gjb.cX, gjb.cY, hld.d.n, gjb.cZ, gjb.da),
-      b(alg.b("textures/entity/horse/horse_zombie.png"), gjb.ek, gjb.el, hld.d.m, gjb.em, gjb.en);
+   @Override
+   public alg b(hdz $$0) {
+      return a;
+   }
 
-      final alg c;
-      final gja d;
-      final gja e;
-      final hld.d f;
-      final gja g;
-      final gja h;
+   public hdz b() {
+      return new hdz();
+   }
 
-      private a(final alg $$0, final gja $$1, final gja $$2, final hld.d $$3, final gja $$4, final gja $$5) {
-         this.c = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-         this.g = $$4;
-         this.h = $$5;
-      }
+   public void a(T $$0, hdz $$1, float $$2) {
+      super.a($$0, $$1, $$2);
    }
 }

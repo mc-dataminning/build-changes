@@ -1,277 +1,192 @@
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
-import org.apache.commons.lang3.math.Fraction;
+import java.util.Map;
+import javax.annotation.Nullable;
 
-public class cxs extends cyz {
-   public static final int a = 4;
-   public static final int b = 3;
-   public static final int c = 12;
-   public static final int d = 11;
-   private static final int o = axw.a(1.0F, 1.0F, 0.33F, 0.33F);
-   private static final int p = axw.a(1.0F, 0.44F, 0.53F, 1.0F);
-   private static final int q = 10;
-   private static final int r = 2;
-   private static final int s = 200;
+public class cxs extends czg {
+   @Deprecated
+   private final dmm a;
 
-   public cxs(cyz.a $$0) {
-      super($$0);
-   }
-
-   public static float c(czd $$0) {
-      dbg $$1 = $$0.a(kj.Q, dbg.a);
-      return $$1.f().floatValue();
+   public cxs(dmm $$0, czg.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   public boolean a(czd $$0, cws $$1, cvf $$2, crc $$3) {
-      dbg $$4 = $$0.a(kj.Q);
-      if ($$4 == null) {
-         return false;
+   public bug a(ddf $$0) {
+      bug $$1 = this.a(new ddd($$0));
+      return !$$1.a() && $$0.n().c(kk.w) ? super.a($$0.q(), $$0.o(), $$0.p()) : $$1;
+   }
+
+   public bug a(ddd $$0) {
+      if (!this.c().a($$0.q().K())) {
+         return bug.d;
+      } else if (!$$0.b()) {
+         return bug.d;
       } else {
-         czd $$5 = $$1.g();
-         dbg.a $$6 = new dbg.a($$4);
-         if ($$2 == cvf.a && !$$5.f()) {
-            if ($$6.a($$1, $$3) > 0) {
-               b($$3);
+         ddd $$1 = this.b($$0);
+         if ($$1 == null) {
+            return bug.d;
+         } else {
+            eao $$2 = this.c($$1);
+            if ($$2 == null) {
+               return bug.d;
+            } else if (!this.a($$1, $$2)) {
+               return bug.d;
             } else {
-               c($$3);
-            }
-
-            $$0.b(kj.Q, $$6.d());
-            this.a($$3);
-            return true;
-         } else if ($$2 == cvf.b && $$5.f()) {
-            czd $$7 = $$6.b();
-            if ($$7 != null) {
-               czd $$8 = $$1.d($$7);
-               if ($$8.M() > 0) {
-                  $$6.a($$8);
-               } else {
-                  a((bwf)$$3);
-               }
-            }
-
-            $$0.b(kj.Q, $$6.d());
-            this.a($$3);
-            return true;
-         } else {
-            return false;
-         }
-      }
-   }
-
-   @Override
-   public boolean a(czd $$0, czd $$1, cws $$2, cvf $$3, crc $$4, bxv $$5) {
-      if ($$3 == cvf.a && $$1.f()) {
-         a($$0, -1);
-         return false;
-      } else {
-         dbg $$6 = $$0.a(kj.Q);
-         if ($$6 == null) {
-            return false;
-         } else {
-            dbg.a $$7 = new dbg.a($$6);
-            if ($$3 == cvf.a && !$$1.f()) {
-               if ($$2.b($$4) && $$7.a($$1) > 0) {
-                  b($$4);
-               } else {
-                  c($$4);
-               }
-
-               $$0.b(kj.Q, $$7.d());
-               this.a($$4);
-               return true;
-            } else if ($$3 == cvf.b && $$1.f()) {
-               if ($$2.b($$4)) {
-                  czd $$8 = $$7.b();
-                  if ($$8 != null) {
-                     a((bwf)$$4);
-                     $$5.a($$8);
+               iv $$3 = $$1.a();
+               djh $$4 = $$1.q();
+               crj $$5 = $$1.o();
+               czk $$6 = $$1.n();
+               eao $$7 = $$4.a_($$3);
+               if ($$7.a($$2.b())) {
+                  $$7 = this.a($$3, $$4, $$6, $$7);
+                  this.a($$3, $$4, $$5, $$6, $$7);
+                  a($$4, $$3, $$6);
+                  $$7.b().a($$4, $$3, $$7, $$5, $$6);
+                  if ($$5 instanceof arr) {
+                     aq.z.a((arr)$$5, $$3, $$6);
                   }
                }
 
-               $$0.b(kj.Q, $$7.d());
-               this.a($$4);
-               return true;
-            } else {
-               a($$0, -1);
-               return false;
+               duj $$8 = $$7.A();
+               $$4.a($$5, $$3, this.a($$7), awo.e, ($$8.a() + 1.0F) / 2.0F, $$8.b() * 0.8F);
+               $$4.a(efo.i, $$3, efo.a.a($$5, $$7));
+               $$6.a(1, $$5);
+               return bug.a;
             }
          }
       }
    }
 
-   @Override
-   public bud a(dja $$0, crc $$1, buc $$2) {
-      $$1.c($$2);
-      return bud.a;
+   protected awm a(eao $$0) {
+      return $$0.A().e();
    }
 
-   private void a(dja $$0, crc $$1, czd $$2) {
-      if (this.b($$2, $$1)) {
-         a($$0, $$1);
-         $$1.b(awx.c.b(this));
+   @Nullable
+   public ddd b(ddd $$0) {
+      return $$0;
+   }
+
+   private static void a(djh $$0, iv $$1, czk $$2) {
+      dxm $$3 = $$0.c_($$1);
+      if ($$3 != null) {
+         $$3.a($$2);
+         $$3.e();
       }
    }
 
-   @Override
-   public boolean d(czd $$0) {
-      dbg $$1 = $$0.a(kj.Q, dbg.a);
-      return $$1.f().compareTo(Fraction.ZERO) > 0;
+   protected boolean a(iv $$0, djh $$1, @Nullable crj $$2, czk $$3, eao $$4) {
+      return a($$1, $$2, $$0, $$3);
    }
 
-   @Override
-   public int e(czd $$0) {
-      dbg $$1 = $$0.a(kj.Q, dbg.a);
-      return Math.min(1 + azm.a($$1.f(), 12), 13);
+   @Nullable
+   protected eao c(ddd $$0) {
+      eao $$1 = this.c().a($$0);
+      return $$1 != null && this.b($$0, $$1) ? $$1 : null;
    }
 
-   @Override
-   public int f(czd $$0) {
-      dbg $$1 = $$0.a(kj.Q, dbg.a);
-      return $$1.f().compareTo(Fraction.ONE) >= 0 ? o : p;
-   }
-
-   public static void a(czd $$0, int $$1) {
-      dbg $$2 = $$0.a(kj.Q);
-      if ($$2 != null) {
-         dbg.a $$3 = new dbg.a($$2);
-         $$3.a($$1);
-         $$0.b(kj.Q, $$3.d());
-      }
-   }
-
-   public static boolean g(czd $$0) {
-      dbg $$1 = $$0.a(kj.Q);
-      return $$1 != null && $$1.h() != -1;
-   }
-
-   public static int h(czd $$0) {
-      dbg $$1 = $$0.a(kj.Q, dbg.a);
-      return $$1.h();
-   }
-
-   public static czd i(czd $$0) {
-      dbg $$1 = $$0.a(kj.Q);
-      return $$1 != null && $$1.h() != -1 ? $$1.a($$1.h()) : czd.k;
-   }
-
-   public static int j(czd $$0) {
-      dbg $$1 = $$0.a(kj.Q, dbg.a);
-      return $$1.a();
-   }
-
-   private boolean b(czd $$0, crc $$1) {
-      dbg $$2 = $$0.a(kj.Q);
-      if ($$2 != null && !$$2.g()) {
-         Optional<czd> $$3 = a($$0, $$1, $$2);
-         if ($$3.isPresent()) {
-            $$1.a($$3.get(), true);
-            return true;
-         } else {
-            return false;
-         }
+   private eao a(iv $$0, djh $$1, czk $$2, eao $$3) {
+      dbk $$4 = $$2.a(kk.aq, dbk.a);
+      if ($$4.a()) {
+         return $$3;
       } else {
+         eao $$5 = $$4.a($$3);
+         if ($$5 != $$3) {
+            $$1.a($$0, $$5, 2);
+         }
+
+         return $$5;
+      }
+   }
+
+   protected boolean b(ddd $$0, eao $$1) {
+      crj $$2 = $$0.o();
+      return (!this.b() || $$1.a((djk)$$0.q(), $$0.a())) && $$0.q().a($$1, $$0.a(), ffc.b($$2));
+   }
+
+   protected boolean b() {
+      return true;
+   }
+
+   protected boolean a(ddd $$0, eao $$1) {
+      return $$0.q().a($$0.a(), $$1, 11);
+   }
+
+   public static boolean a(djh $$0, @Nullable crj $$1, iv $$2, czk $$3) {
+      if ($$0.C) {
+         return false;
+      } else {
+         dbs $$4 = $$3.a(kk.aa, dbs.a);
+         if (!$$4.c()) {
+            dxo<?> $$5 = $$4.a($$0.F_(), mh.e);
+            if ($$5 == null) {
+               return false;
+            }
+
+            dxm $$6 = $$0.c_($$2);
+            if ($$6 != null) {
+               dxo<?> $$7 = $$6.p();
+               if ($$7 != $$5) {
+                  return false;
+               }
+
+               if (!$$7.b() || $$1 != null && $$1.gF()) {
+                  return $$4.a($$6, $$0.F_());
+               }
+
+               return false;
+            }
+         }
+
          return false;
       }
    }
 
-   private static Optional<czd> a(czd $$0, crc $$1, dbg $$2) {
-      dbg.a $$3 = new dbg.a($$2);
-      czd $$4 = $$3.b();
-      if ($$4 != null) {
-         a((bwf)$$1);
-         $$0.b(kj.Q, $$3.d());
-         return Optional.of($$4);
-      } else {
-         return Optional.empty();
-      }
-   }
-
    @Override
-   public void a(dja $$0, bxe $$1, czd $$2, int $$3) {
-      if ($$1 instanceof crc $$4) {
-         int $$5 = this.a($$2, $$1);
-         boolean $$6 = $$3 == $$5;
-         if ($$6 || $$3 < $$5 - 10 && $$3 % 2 == 0) {
-            this.a($$0, $$4, $$2);
+   public boolean a(czk $$0, @Nullable crj $$1) {
+      if ($$1 != null && $$1.G() >= 2) {
+         dbs $$2 = $$0.a(kk.aa);
+         if ($$2 != null) {
+            dxo<?> $$3 = $$2.a($$1.dU().F_(), mh.e);
+            return $$3 != null && $$3.b();
          }
       }
+
+      return false;
+   }
+
+   public dmm c() {
+      return this.a;
+   }
+
+   public void a(Map<dmm, czg> $$0, czg $$1) {
+      $$0.put(this.c(), $$1);
    }
 
    @Override
-   public int a(czd $$0, bxe $$1) {
-      return 200;
+   public boolean d() {
+      return !(this.c() instanceof dtv);
    }
 
    @Override
-   public czf b(czd $$0) {
-      return czf.k;
-   }
-
-   @Override
-   public Optional<cxc> k(czd $$0) {
-      dch $$1 = $$0.a(kj.q, dch.c);
-      return !$$1.a(kj.Q) ? Optional.empty() : Optional.ofNullable($$0.a(kj.Q)).map(cxb::new);
-   }
-
-   @Override
-   public void a(cnh $$0) {
-      dbg $$1 = $$0.f().a(kj.Q);
+   public void a(cno $$0) {
+      dcc $$1 = $$0.f().b(kk.ap, dcc.a);
       if ($$1 != null) {
-         $$0.f().b(kj.Q, dbg.a);
-         czg.a($$0, $$1.d());
+         czn.a($$0, $$1.e());
       }
    }
 
-   public static List<cxs> a() {
-      return Stream.of(czh.rM, czh.rN, czh.rO, czh.rP, czh.rQ, czh.rR, czh.rS, czh.rT, czh.rU, czh.rV, czh.rW, czh.sc, czh.rZ, czh.sa, czh.sb, czh.rY, czh.rX)
-         .map($$0 -> (cxs)$$0)
-         .toList();
-   }
-
-   public static cyz a(cyb $$0) {
-      return switch ($$0) {
-         case a -> czh.rN;
-         case b -> czh.rO;
-         case c -> czh.rP;
-         case d -> czh.rQ;
-         case e -> czh.rR;
-         case f -> czh.rS;
-         case g -> czh.rT;
-         case h -> czh.rU;
-         case i -> czh.rV;
-         case j -> czh.rW;
-         case l -> czh.rY;
-         case m -> czh.rZ;
-         case n -> czh.sa;
-         case o -> czh.sb;
-         case p -> czh.sc;
-         case k -> czh.rX;
-      };
-   }
-
-   private static void a(bwf $$0) {
-      $$0.a(awn.ds, 0.8F, 0.8F + $$0.dV().C_().i() * 0.4F);
-   }
-
-   private static void b(bwf $$0) {
-      $$0.a(awn.dq, 0.8F, 0.8F + $$0.dV().C_().i() * 0.4F);
-   }
-
-   private static void c(bwf $$0) {
-      $$0.a(awn.dr, 1.0F, 1.0F);
-   }
-
-   private static void a(dja $$0, bwf $$1) {
-      $$0.a(null, $$1.dv(), awn.dp, awo.h, 0.8F, 0.8F + $$1.dV().C_().i() * 0.4F);
-   }
-
-   private void a(crc $$0) {
-      cuv $$1 = $$0.bR;
-      if ($$1 != null) {
-         $$1.a($$0.gj());
+   public static void a(czk $$0, dxo<?> $$1, tz $$2) {
+      $$2.p("id");
+      if ($$2.g()) {
+         $$0.e(kk.aa);
+      } else {
+         dxm.a($$2, $$1);
+         $$0.b(kk.aa, dbs.a($$2));
       }
+   }
+
+   @Override
+   public cut k() {
+      return this.c().k();
    }
 }

@@ -1,38 +1,23 @@
-public class gib extends gfy<hdz> {
-   private static final int a = 2;
-   private final gjc[] b = new gjc[2];
+import java.util.Set;
 
-   public gib(gjc $$0) {
+public class gib extends ghv<her> {
+   public static final gjx a = new gff(false, 8.0F, 4.0F, 2.0F, 2.0F, 24.0F, Set.of("head"));
+
+   public gib(gjo $$0) {
       super($$0);
-
-      for (int $$1 = 0; $$1 < 2; $$1++) {
-         this.b[$$1] = $$0.b(a($$1));
-      }
    }
 
-   private static String a(int $$0) {
-      return "box" + $$0;
+   public static gju a() {
+      gjw $$0 = ghv.a(12, gjs.a);
+      gjy $$1 = $$0.a();
+      $$1.a("head", gjt.c().a(0, 0).a(-3.0F, -4.0F, -6.0F, 6.0F, 6.0F, 8.0F), gjq.a(0.0F, 6.0F, -8.0F));
+      $$1.a("body", gjt.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F), gjq.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      return gju.a($$0, 64, 32);
    }
 
-   public static gji a() {
-      gjk $$0 = new gjk();
-      gjm $$1 = $$0.a();
-
-      for (int $$2 = 0; $$2 < 2; $$2++) {
-         float $$3 = -3.2F + 9.6F * (float)($$2 + 1);
-         float $$4 = 0.75F * (float)($$2 + 1);
-         $$1.a(a($$2), gjh.c().a(0, 0).a(-8.0F, -16.0F + $$3, -8.0F, 16.0F, 32.0F, 16.0F), gje.a.a($$4));
-      }
-
-      return gji.a($$0, 64, 64);
-   }
-
-   public void a(hdz $$0) {
+   public void a(her $$0) {
       super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.b.length; $$1++) {
-         float $$2 = $$0.u * (float)(-(45 + ($$1 + 1) * 5));
-         this.b[$$1].f = azm.h($$2) * (float) (Math.PI / 180.0);
-      }
+      this.b.c = this.b.c + $$0.a * 9.0F * $$0.ag;
+      this.b.e = $$0.b;
    }
 }

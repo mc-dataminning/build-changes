@@ -1,31 +1,46 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record cq(cv.d b) {
-   public static final Codec<cq> a = RecordCodecBuilder.create($$0 -> $$0.group(cv.d.d.optionalFieldOf("light", cv.d.c).forGetter(cq::a)).apply($$0, cq::new));
-
-   public boolean a(arq $$0, iu $$1) {
-      return !$$0.p($$1) ? false : this.b.d($$0.B($$1));
+public class cq extends dk<cq.a> {
+   @Override
+   public Codec<cq.a> a() {
+      return cq.a.a;
    }
 
-   public cv.d a() {
-      return this.b;
+   public void a(arr $$0, fex $$1, int $$2) {
+      this.a($$0, $$3 -> $$3.a($$0, $$1, $$2));
    }
 
-   public static class a {
-      private cv.d a = cv.d.c;
+   public static record a(Optional<bj> b, Optional<bp> c, cw.d d) implements dk.a {
+      public static final Codec<cq.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  by.b.optionalFieldOf("player").forGetter(cq.a::a),
+                  bp.a.optionalFieldOf("distance").forGetter(cq.a::b),
+                  cw.d.d.optionalFieldOf("duration", cw.d.c).forGetter(cq.a::c)
+               )
+               .apply($$0, cq.a::new)
+      );
 
-      public static cq.a a() {
-         return new cq.a();
+      public static ar<cq.a> a(bp $$0) {
+         return aq.v.a(new cq.a(Optional.empty(), Optional.of($$0), cw.d.c));
       }
 
-      public cq.a a(cv.d $$0) {
-         this.a = $$0;
-         return this;
+      public boolean a(arr $$0, fex $$1, int $$2) {
+         return this.c.isPresent() && !this.c.get().a($$1.d, $$1.e, $$1.f, $$0.dz(), $$0.dB(), $$0.dF()) ? false : this.d.d($$2);
       }
 
-      public cq b() {
-         return new cq(this.a);
+      @Override
+      public Optional<bj> a() {
+         return this.b;
+      }
+
+      public Optional<bp> b() {
+         return this.c;
+      }
+
+      public cw.d c() {
+         return this.d;
       }
    }
 }

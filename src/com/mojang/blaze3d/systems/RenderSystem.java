@@ -1,6 +1,5 @@
 package com.mojang.blaze3d.systems;
 
-import com.google.common.collect.Queues;
 import com.mojang.blaze3d.platform.GLX;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.logging.LogUtils;
@@ -8,7 +7,6 @@ import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.util.Locale;
-import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Consumer;
@@ -22,28 +20,25 @@ import org.lwjgl.glfw.GLFWErrorCallbackI;
 import org.lwjgl.system.MemoryUtil;
 import org.slf4j.Logger;
 
-@fgq
+@fgx
 public class RenderSystem {
    static final Logger LOGGER = LogUtils.getLogger();
-   private static final ConcurrentLinkedQueue<fht> recordingQueue = Queues.newConcurrentLinkedQueue();
-   private static final fjl RENDER_THREAD_TESSELATOR = new fjl(1536);
    private static final int MINIMUM_ATLAS_TEXTURE_SIZE = 1024;
    @Nullable
    private static Thread renderThread;
    private static int MAX_SUPPORTED_TEXTURE_SIZE = -1;
-   private static boolean isInInit;
    private static double lastDrawTime = Double.MIN_VALUE;
    private static final RenderSystem.a sharedSequential = new RenderSystem.a(1, 1, IntConsumer::accept);
    private static final RenderSystem.a sharedSequentialQuad = new RenderSystem.a(4, 6, ($$0, $$1) -> {
-      $$0.accept($$1 + 0);
+      $$0.accept($$1);
       $$0.accept($$1 + 1);
       $$0.accept($$1 + 2);
       $$0.accept($$1 + 2);
       $$0.accept($$1 + 3);
-      $$0.accept($$1 + 0);
+      $$0.accept($$1);
    });
    private static final RenderSystem.a sharedSequentialLines = new RenderSystem.a(4, 6, ($$0, $$1) -> {
-      $$0.accept($$1 + 0);
+      $$0.accept($$1);
       $$0.accept($$1 + 1);
       $$0.accept($$1 + 2);
       $$0.accept($$1 + 3);
@@ -52,25 +47,23 @@ public class RenderSystem {
    });
    private static Matrix4f projectionMatrix = new Matrix4f();
    private static Matrix4f savedProjectionMatrix = new Matrix4f();
-   private static fgt projectionType = fgt.a;
-   private static fgt savedProjectionType = fgt.a;
+   private static fhb projectionType = fhb.a;
+   private static fhb savedProjectionType = fhb.a;
    private static final Matrix4fStack modelViewStack = new Matrix4fStack(16);
    private static Matrix4f textureMatrix = new Matrix4f();
-   private static final int[] shaderTextures = new int[12];
+   private static final fjr[] shaderTextures = new fjr[12];
    private static final float[] shaderColor = new float[]{1.0F, 1.0F, 1.0F, 1.0F};
    private static float shaderGlintAlpha = 1.0F;
-   private static gpo shaderFog = gpo.a;
+   private static gqa shaderFog = gqa.a;
    private static final Vector3f[] shaderLightDirections = new Vector3f[2];
    private static float shaderGameTime;
-   private static Vector3f modelOffset = new Vector3f();
+   private static final Vector3f modelOffset = new Vector3f();
    private static float shaderLineWidth = 1.0F;
    private static String apiDescription = "Unknown";
-   @Nullable
-   private static gpj shader;
    private static final AtomicLong pollEventsWaitStart = new AtomicLong();
    private static final AtomicBoolean pollingEvents = new AtomicBoolean(false);
    @Nullable
-   private static fjm QUAD_VERTICES;
+   private static fkb QUAD_VERTICES;
 
    public static void initRenderThread() {
       if (renderThread != null) {
@@ -84,16 +77,6 @@ public class RenderSystem {
       return Thread.currentThread() == renderThread;
    }
 
-   public static boolean isOnRenderThreadOrInit() {
-      return isInInit || isOnRenderThread();
-   }
-
-   public static void assertOnRenderThreadOrInit() {
-      if (!isInInit && !isOnRenderThread()) {
-         throw constructThreadException();
-      }
-   }
-
    public static void assertOnRenderThread() {
       if (!isOnRenderThread()) {
          throw constructThreadException();
@@ -104,38 +87,26 @@ public class RenderSystem {
       return new IllegalStateException("Rendersystem called from wrong thread");
    }
 
-   public static void recordRenderCall(fht $$0) {
-      recordingQueue.add($$0);
-   }
-
    private static void pollEvents() {
-      pollEventsWaitStart.set(af.c());
+      pollEventsWaitStart.set(ag.c());
       pollingEvents.set(true);
       GLFW.glfwPollEvents();
       pollingEvents.set(false);
    }
 
    public static boolean isFrozenAtPollEvents() {
-      return pollingEvents.get() && af.c() - pollEventsWaitStart.get() > 200L;
+      return pollingEvents.get() && ag.c() - pollEventsWaitStart.get() > 200L;
    }
 
-   public static void flipFrame(long $$0, @Nullable fgv $$1) {
+   public static void flipFrame(long $$0, @Nullable fhd $$1) {
       pollEvents();
-      replayQueue();
-      fjl.b().c();
+      fka.b().c();
       GLFW.glfwSwapBuffers($$0);
       if ($$1 != null) {
          $$1.b();
       }
 
       pollEvents();
-   }
-
-   public static void replayQueue() {
-      while (!recordingQueue.isEmpty()) {
-         fht $$0 = recordingQueue.poll();
-         $$0.execute();
-      }
    }
 
    public static void limitDisplayFPS(int $$0) {
@@ -187,31 +158,11 @@ public class RenderSystem {
       GlStateManager._disableBlend();
    }
 
-   public static void blendFunc(GlStateManager.SourceFactor $$0, GlStateManager.DestFactor $$1) {
-      assertOnRenderThread();
-      GlStateManager._blendFunc($$0.value, $$1.value);
-   }
-
-   public static void blendFunc(int $$0, int $$1) {
-      assertOnRenderThread();
-      GlStateManager._blendFunc($$0, $$1);
-   }
-
    public static void blendFuncSeparate(
       GlStateManager.SourceFactor $$0, GlStateManager.DestFactor $$1, GlStateManager.SourceFactor $$2, GlStateManager.DestFactor $$3
    ) {
       assertOnRenderThread();
       GlStateManager._blendFuncSeparate($$0.value, $$1.value, $$2.value, $$3.value);
-   }
-
-   public static void blendFuncSeparate(int $$0, int $$1, int $$2, int $$3) {
-      assertOnRenderThread();
-      GlStateManager._blendFuncSeparate($$0, $$1, $$2, $$3);
-   }
-
-   public static void blendEquation(int $$0) {
-      assertOnRenderThread();
-      GlStateManager._blendEquation($$0);
    }
 
    public static void enableCull() {
@@ -256,24 +207,12 @@ public class RenderSystem {
 
    public static void logicOp(GlStateManager.h $$0) {
       assertOnRenderThread();
-      GlStateManager._logicOp($$0.q);
+      GlStateManager._logicOp($$0.r);
    }
 
    public static void activeTexture(int $$0) {
       assertOnRenderThread();
       GlStateManager._activeTexture($$0);
-   }
-
-   public static void texParameter(int $$0, int $$1, int $$2) {
-      GlStateManager._texParameter($$0, $$1, $$2);
-   }
-
-   public static void deleteTexture(int $$0) {
-      GlStateManager._deleteTexture($$0);
-   }
-
-   public static void bindTextureForSetup(int $$0) {
-      bindTexture($$0);
    }
 
    public static void bindTexture(int $$0) {
@@ -289,44 +228,20 @@ public class RenderSystem {
       GlStateManager._colorMask($$0, $$1, $$2, $$3);
    }
 
-   public static void stencilFunc(int $$0, int $$1, int $$2) {
-      assertOnRenderThread();
-      GlStateManager._stencilFunc($$0, $$1, $$2);
-   }
-
-   public static void stencilMask(int $$0) {
-      assertOnRenderThread();
-      GlStateManager._stencilMask($$0);
-   }
-
-   public static void stencilOp(int $$0, int $$1, int $$2) {
-      assertOnRenderThread();
-      GlStateManager._stencilOp($$0, $$1, $$2);
-   }
-
-   public static void clearDepth(double $$0) {
-      GlStateManager._clearDepth($$0);
-   }
-
    public static void clearColor(float $$0, float $$1, float $$2, float $$3) {
       GlStateManager._clearColor($$0, $$1, $$2, $$3);
-   }
-
-   public static void clearStencil(int $$0) {
-      assertOnRenderThread();
-      GlStateManager._clearStencil($$0);
    }
 
    public static void clear(int $$0) {
       GlStateManager._clear($$0);
    }
 
-   public static void setShaderFog(gpo $$0) {
+   public static void setShaderFog(gqa $$0) {
       assertOnRenderThread();
       shaderFog = $$0;
    }
 
-   public static gpo getShaderFog() {
+   public static gqa getShaderFog() {
       assertOnRenderThread();
       return shaderFog;
    }
@@ -351,7 +266,7 @@ public class RenderSystem {
       shaderLightDirections[1] = $$1;
    }
 
-   public static void setupShaderLights(gpj $$0) {
+   public static void setupShaderLights(gpv $$0) {
       assertOnRenderThread();
       if ($$0.f != null) {
          $$0.f.a(shaderLightDirections[0]);
@@ -443,7 +358,7 @@ public class RenderSystem {
 
    public static int maxSupportedTextureSize() {
       if (MAX_SUPPORTED_TEXTURE_SIZE == -1) {
-         assertOnRenderThreadOrInit();
+         assertOnRenderThread();
          int $$0 = GlStateManager._getInteger(3379);
 
          for (int $$1 = Math.max(32768, $$0); $$1 >= 1024; $$1 >>= 1) {
@@ -462,24 +377,6 @@ public class RenderSystem {
       return MAX_SUPPORTED_TEXTURE_SIZE;
    }
 
-   public static void glBindBuffer(int $$0, int $$1) {
-      GlStateManager._glBindBuffer($$0, $$1);
-   }
-
-   public static void glBindVertexArray(int $$0) {
-      GlStateManager._glBindVertexArray($$0);
-   }
-
-   public static void glBufferData(int $$0, ByteBuffer $$1, int $$2) {
-      assertOnRenderThreadOrInit();
-      GlStateManager._glBufferData($$0, $$1, $$2);
-   }
-
-   public static void glDeleteBuffers(int $$0) {
-      assertOnRenderThread();
-      GlStateManager._glDeleteBuffers($$0);
-   }
-
    public static void glDeleteVertexArrays(int $$0) {
       assertOnRenderThread();
       GlStateManager._glDeleteVertexArrays($$0);
@@ -495,19 +392,9 @@ public class RenderSystem {
       GlStateManager._glUniform1($$0, $$1);
    }
 
-   public static void glUniform2(int $$0, IntBuffer $$1) {
-      assertOnRenderThread();
-      GlStateManager._glUniform2($$0, $$1);
-   }
-
    public static void glUniform3(int $$0, IntBuffer $$1) {
       assertOnRenderThread();
       GlStateManager._glUniform3($$0, $$1);
-   }
-
-   public static void glUniform4(int $$0, IntBuffer $$1) {
-      assertOnRenderThread();
-      GlStateManager._glUniform4($$0, $$1);
    }
 
    public static void glUniform1(int $$0, FloatBuffer $$1) {
@@ -530,29 +417,19 @@ public class RenderSystem {
       GlStateManager._glUniform4($$0, $$1);
    }
 
-   public static void glUniformMatrix2(int $$0, boolean $$1, FloatBuffer $$2) {
+   public static void glUniformMatrix4(int $$0, FloatBuffer $$1) {
       assertOnRenderThread();
-      GlStateManager._glUniformMatrix2($$0, $$1, $$2);
+      GlStateManager._glUniformMatrix4($$0, $$1);
    }
 
-   public static void glUniformMatrix3(int $$0, boolean $$1, FloatBuffer $$2) {
-      assertOnRenderThread();
-      GlStateManager._glUniformMatrix3($$0, $$1, $$2);
-   }
-
-   public static void glUniformMatrix4(int $$0, boolean $$1, FloatBuffer $$2) {
-      assertOnRenderThread();
-      GlStateManager._glUniformMatrix4($$0, $$1, $$2);
-   }
-
-   public static void setupOverlayColor(int $$0, int $$1) {
+   public static void setupOverlayColor(@Nullable fjr $$0) {
       assertOnRenderThread();
       setShaderTexture(1, $$0);
    }
 
    public static void teardownOverlayColor() {
       assertOnRenderThread();
-      setShaderTexture(1, 0);
+      setShaderTexture(1, (fjr)null);
    }
 
    public static void setupLevelDiffuseLighting(Vector3f $$0, Vector3f $$1) {
@@ -570,78 +447,35 @@ public class RenderSystem {
       GlStateManager.setupGui3DDiffuseLighting($$0, $$1);
    }
 
-   public static void beginInitialization() {
-      isInInit = true;
-   }
-
-   public static void finishInitialization() {
-      isInInit = false;
-      if (!recordingQueue.isEmpty()) {
-         replayQueue();
-      }
-
-      if (!recordingQueue.isEmpty()) {
-         throw new IllegalStateException("Recorded to render queue during initialization");
-      }
-   }
-
-   public static fjl renderThreadTesselator() {
-      assertOnRenderThread();
-      return RENDER_THREAD_TESSELATOR;
-   }
-
    public static void defaultBlendFunc() {
       blendFuncSeparate(
          GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
       );
    }
 
-   @Nullable
-   public static gpj setShader(gqs $$0) {
-      assertOnRenderThread();
-      gpj $$1 = foz.Q().ab().a($$0);
-      shader = $$1;
-      return $$1;
-   }
-
-   public static void setShader(gpj $$0) {
-      assertOnRenderThread();
-      shader = $$0;
-   }
-
-   public static void clearShader() {
-      assertOnRenderThread();
-      shader = null;
-   }
-
-   @Nullable
-   public static gpj getShader() {
-      assertOnRenderThread();
-      return shader;
-   }
-
    public static void setShaderTexture(int $$0, alg $$1) {
       assertOnRenderThread();
       if ($$0 >= 0 && $$0 < shaderTextures.length) {
-         hiz $$2 = foz.Q().aa();
-         hii $$3 = $$2.b($$1);
-         shaderTextures[$$0] = $$3.a();
+         hjm $$2 = fpo.Q().aa();
+         hiv $$3 = $$2.b($$1);
+         shaderTextures[$$0] = $$3.d();
       }
    }
 
-   public static void setShaderTexture(int $$0, int $$1) {
+   public static void setShaderTexture(int $$0, @Nullable fjr $$1) {
       assertOnRenderThread();
       if ($$0 >= 0 && $$0 < shaderTextures.length) {
          shaderTextures[$$0] = $$1;
       }
    }
 
-   public static int getShaderTexture(int $$0) {
+   @Nullable
+   public static fjr getShaderTexture(int $$0) {
       assertOnRenderThread();
-      return $$0 >= 0 && $$0 < shaderTextures.length ? shaderTextures[$$0] : 0;
+      return $$0 >= 0 && $$0 < shaderTextures.length ? shaderTextures[$$0] : null;
    }
 
-   public static void setProjectionMatrix(Matrix4f $$0, fgt $$1) {
+   public static void setProjectionMatrix(Matrix4f $$0, fhb $$1) {
       assertOnRenderThread();
       projectionMatrix = new Matrix4f($$0);
       projectionType = $$1;
@@ -689,7 +523,7 @@ public class RenderSystem {
       return textureMatrix;
    }
 
-   public static RenderSystem.a getSequentialBuffer(fjo.c $$0) {
+   public static RenderSystem.a getSequentialBuffer(fkd.c $$0) {
       assertOnRenderThread();
 
       return switch ($$0) {
@@ -709,23 +543,23 @@ public class RenderSystem {
       return shaderGameTime;
    }
 
-   public static fgt getProjectionType() {
+   public static fhb getProjectionType() {
       assertOnRenderThread();
       return projectionType;
    }
 
-   public static fjm getQuadVertices() {
+   public static fkb getQuadVertices() {
       if (QUAD_VERTICES == null) {
-         try (fjg $$0 = new fjg(fjh.e.b() * 4)) {
-            fjf $$1 = new fjf($$0, fjo.c.h, fjh.e);
+         try (fjv $$0 = new fjv(fjw.e.b() * 4)) {
+            fju $$1 = new fju($$0, fkd.c.h, fjw.e);
             $$1.a(0.0F, 0.0F, 0.0F);
             $$1.a(1.0F, 0.0F, 0.0F);
             $$1.a(1.0F, 1.0F, 0.0F);
             $$1.a(0.0F, 1.0F, 0.0F);
-            QUAD_VERTICES = new fjm(fhe.b);
+            QUAD_VERTICES = new fkb(fhm.b);
             QUAD_VERTICES.a();
             QUAD_VERTICES.a($$1.b());
-            fjm.b();
+            fkb.b();
          }
       }
 
@@ -752,8 +586,8 @@ public class RenderSystem {
       private final int b;
       private final RenderSystem.a.a c;
       @Nullable
-      private fhf d;
-      private fjo.b e = fjo.b.a;
+      private fhn d;
+      private fkd.b e = fkd.b.a;
       private int f;
 
       a(int $$0, int $$1, RenderSystem.a.a $$2) {
@@ -768,7 +602,7 @@ public class RenderSystem {
 
       public void b(int $$0) {
          if (this.d == null) {
-            this.d = new fhf(fhd.b, fhe.a, 0);
+            this.d = new fhn(fhl.b, fhm.a, 0);
          }
 
          this.d.b();
@@ -781,7 +615,7 @@ public class RenderSystem {
             RenderSystem.LOGGER.debug("Growing IndexBuffer: Old limit {}, new limit {}.", this.f, $$0);
             int $$1 = $$0 / this.b;
             int $$2 = $$1 * this.a;
-            fjo.b $$3 = fjo.b.a($$2);
+            fkd.b $$3 = fkd.b.a($$2);
             int $$4 = azm.d($$0 * $$3.d, 4);
             ByteBuffer $$5 = MemoryUtil.memAlloc($$4);
 
@@ -814,7 +648,7 @@ public class RenderSystem {
          }
       }
 
-      public fjo.b a() {
+      public fkd.b a() {
          return this.e;
       }
 

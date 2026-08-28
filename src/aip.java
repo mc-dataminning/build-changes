@@ -27,7 +27,7 @@ public class aip implements zf<agp> {
    }
 
    @Nullable
-   public bwf a(arq $$0) {
+   public bwi a(arq $$0) {
       return $$0.b(this.b);
    }
 }

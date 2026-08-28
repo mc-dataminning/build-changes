@@ -1,26 +1,61 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class dbk {
-   public static final dbi a = a().a();
-   public static final dbi b = b().a();
-   public static final dbi c = b().a(2.0F).a(awn.nf).a(new dct(bvl.s)).a();
-   public static final dbi d = b().b(awn.td).a();
-   public static final dbi e = a().a(0.8F).a();
-   public static final dbi f = a().a(new dcp(new bvj(bvl.q, 600, 0), 0.3F)).a();
-   public static final dbi g = a().a(new dcp(List.of(new bvj(bvl.j, 400, 1), new bvj(bvl.k, 6000, 0), new bvj(bvl.l, 6000, 0), new bvj(bvl.v, 2400, 3)))).a();
-   public static final dbi h = a().a(new dcp(List.of(new bvj(bvl.j, 100, 1), new bvj(bvl.v, 2400, 0)))).a();
-   public static final dbi i = a().a(new dcp(new bvj(bvl.s, 100, 0), 0.6F)).a();
-   public static final dbi j = a().a(new dcp(List.of(new bvj(bvl.s, 1200, 1), new bvj(bvl.q, 300, 2), new bvj(bvl.i, 300, 0)))).a();
-   public static final dbi k = a().a(new dcp(new bvj(bvl.q, 600, 0), 0.8F)).a();
-   public static final dbi l = a().a(new dcp(new bvj(bvl.s, 100, 0))).a();
-   public static final dbi m = b().a(dcq.a).a();
-   public static final dbi n = a().a(new dcu()).a();
+public record dbk(Map<String, String> d) implements dcp {
+   public static final dbk a = new dbk(Map.of());
+   public static final Codec<dbk> b = Codec.unboundedMap(Codec.STRING, Codec.STRING).xmap(dbk::new, dbk::b);
+   private static final yw<ByteBuf, Map<String, String>> e = yu.a(Object2ObjectOpenHashMap::new, yu.p, yu.p);
+   public static final yw<ByteBuf, dbk> c = e.a(dbk::new, dbk::b);
 
-   public static dbi.a a() {
-      return dbi.b().a(1.6F).a(czf.b).a(awn.kH).a(true);
+   public <T extends Comparable<T>> dbk a(ebr<T> $$0, T $$1) {
+      return new dbk(ag.a(this.d, $$0.f(), $$0.b($$1)));
    }
 
-   public static dbi.a b() {
-      return dbi.b().a(1.6F).a(czf.c).a(awn.kG).a(false);
+   public <T extends Comparable<T>> dbk a(ebr<T> $$0, eao $$1) {
+      return this.a($$0, $$1.c($$0));
+   }
+
+   @Nullable
+   public <T extends Comparable<T>> T a(ebr<T> $$0) {
+      String $$1 = this.d.get($$0.f());
+      return $$1 == null ? null : $$0.b($$1).orElse(null);
+   }
+
+   public eao a(eao $$0) {
+      eap<dmm, eao> $$1 = $$0.b().l();
+
+      for (Entry<String, String> $$2 : this.d.entrySet()) {
+         ebr<?> $$3 = $$1.a($$2.getKey());
+         if ($$3 != null) {
+            $$0 = a($$0, $$3, $$2.getValue());
+         }
+      }
+
+      return $$0;
+   }
+
+   private static <T extends Comparable<T>> eao a(eao $$0, ebr<T> $$1, String $$2) {
+      return $$1.b($$2).map($$2x -> $$0.b($$1, $$2x)).orElse($$0);
+   }
+
+   public boolean a() {
+      return this.d.isEmpty();
+   }
+
+   @Override
+   public void a(czg.b $$0, Consumer<wy> $$1, daz $$2, kf $$3) {
+      Integer $$4 = this.a(dmg.c);
+      if ($$4 != null) {
+         $$1.accept(wy.a("container.beehive.honey", $$4, 5).a(o.h));
+      }
+   }
+
+   public Map<String, String> b() {
+      return this.d;
    }
 }

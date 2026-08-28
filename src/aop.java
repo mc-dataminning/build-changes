@@ -6,7 +6,7 @@ import com.mojang.brigadier.context.ContextChain;
 import java.util.List;
 
 public class aop {
-   public static <T extends ek<T>> void a(CommandDispatcher<T> $$0) {
+   public static <T extends el<T>> void a(CommandDispatcher<T> $$0) {
       $$0.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)LiteralArgumentBuilder.literal("return")
                      .requires($$0x -> $$0x.c(2)))
@@ -16,35 +16,35 @@ public class aop {
       );
    }
 
-   static class a<T extends ek<T>> implements hg.a<T> {
-      public void a(T $$0, ContextChain<T> $$1, he $$2, hk<T> $$3) {
+   static class a<T extends el<T>> implements hh.a<T> {
+      public void a(T $$0, ContextChain<T> $$1, hf $$2, hl<T> $$3) {
          $$0.p().onFailure();
-         hl $$4 = $$3.b();
+         hm $$4 = $$3.b();
          $$4.a();
          $$4.b();
       }
    }
 
-   static class b<T extends ek<T>> implements hh.a<T> {
-      public void a(T $$0, List<T> $$1, ContextChain<T> $$2, he $$3, hk<T> $$4) {
+   static class b<T extends el<T>> implements hi.a<T> {
+      public void a(T $$0, List<T> $$1, ContextChain<T> $$2, hf $$3, hl<T> $$4) {
          if ($$1.isEmpty()) {
             if ($$3.c()) {
-               $$4.a(ht.a());
+               $$4.a(hu.a());
             }
          } else {
             $$4.b().b();
             ContextChain<T> $$5 = $$2.nextStage();
             String $$6 = $$5.getTopContext().getInput();
-            $$4.a(new hp.a<>($$6, $$5, $$3.d(), $$0, $$1));
+            $$4.a(new hq.a<>($$6, $$5, $$3.d(), $$0, $$1));
          }
       }
    }
 
-   static class c<T extends ek<T>> implements hg.a<T> {
-      public void a(T $$0, ContextChain<T> $$1, he $$2, hk<T> $$3) {
+   static class c<T extends el<T>> implements hh.a<T> {
+      public void a(T $$0, ContextChain<T> $$1, hf $$2, hl<T> $$3) {
          int $$4 = IntegerArgumentType.getInteger($$1.getTopContext(), "value");
          $$0.p().onSuccess($$4);
-         hl $$5 = $$3.b();
+         hm $$5 = $$3.b();
          $$5.a($$4);
          $$5.b();
       }

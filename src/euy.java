@@ -1,16 +1,13 @@
 import com.mojang.serialization.MapCodec;
 
 public interface euy<P extends eux> {
-   euy<eua> a = a("always_true", eua.a);
-   euy<euf> b = a("block_match", euf.a);
-   euy<euh> c = a("blockstate_match", euh.a);
-   euy<evf> d = a("tag_match", evf.a);
-   euy<euu> e = a("random_block_match", euu.a);
-   euy<euv> f = a("random_blockstate_match", euv.a);
+   euy<euw> a = a("always_true", euw.a);
+   euy<eut> b = a("linear_pos", eut.a);
+   euy<eui> c = a("axis_aligned_linear_pos", eui.a);
 
    MapCodec<P> codec();
 
    static <P extends eux> euy<P> a(String $$0, MapCodec<P> $$1) {
-      return jr.a(mf.m, $$0, () -> $$1);
+      return js.a(mg.o, $$0, () -> $$1);
    }
 }

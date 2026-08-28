@@ -1,56 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
 
-public class btn extends btg {
-   public static final MapCodec<btn> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.FLOAT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("max_exclusive").forGetter($$0x -> $$0x.d))
-               .apply($$0, btn::new)
-      )
-      .validate(
-         $$0 -> $$0.d <= $$0.b
-               ? DataResult.error(() -> "Max must be larger than min, min_inclusive: " + $$0.b + ", max_exclusive: " + $$0.d)
-               : DataResult.success($$0)
-      );
-   private final float b;
-   private final float d;
+public class btn implements bto {
+   private final bto[] a;
 
-   private btn(float $$0, float $$1) {
-      this.b = $$0;
-      this.d = $$1;
-   }
-
-   public static btn b(float $$0, float $$1) {
-      if ($$1 <= $$0) {
-         throw new IllegalArgumentException("Max must exceed min");
-      } else {
-         return new btn($$0, $$1);
-      }
+   public btn(bto... $$0) {
+      this.a = $$0;
    }
 
    @Override
    public float a(azv $$0) {
-      return azm.b($$0, this.b, this.d);
-   }
+      float $$1 = 1.0F;
 
-   @Override
-   public float a() {
-      return this.b;
-   }
+      for (bto $$2 : this.a) {
+         $$1 *= $$2.a($$0);
+      }
 
-   @Override
-   public float b() {
-      return this.d;
-   }
-
-   @Override
-   public bth<?> c() {
-      return bth.b;
+      return $$1;
    }
 
    @Override
    public String toString() {
-      return "[" + this.b + "-" + this.d + "]";
+      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
    }
 }

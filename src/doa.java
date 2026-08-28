@@ -1,30 +1,65 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class doa extends dmf {
+public class doa extends dly implements dtx {
    public static final MapCodec<doa> a = b(doa::new);
-   private static final wy b = wy.c("container.crafting");
+   public static final ebf b = ebe.I;
+   private static final ffr c = dmm.a(6.0);
 
    @Override
-   public MapCodec<? extends doa> a() {
+   public MapCodec<doa> a() {
       return a;
    }
 
-   protected doa(eag.d $$0) {
+   public doa(ean.d $$0) {
       super($$0);
+      this.l(this.C.b().b(b, Boolean.valueOf(true)));
    }
 
    @Override
-   protected bud a(eah $$0, dja $$1, iu $$2, crc $$3, fem $$4) {
-      if (!$$1.C) {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(awx.an);
+   protected void a(eap.a<dmm, eao> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   public dxm a(iv $$0, eao $$1) {
+      return new dxz($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dxm> dxn<T> a(djh $$0, eao $$1, dxo<T> $$2) {
+      return a($$2, dxo.A, $$0.C ? dxz::a : dxz::b);
+   }
+
+   @Override
+   protected ewv b_(eao $$0) {
+      return $$0.c(b) ? eww.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
+      if ($$0.c(b)) {
+         $$2.a($$3, eww.c, eww.c.a($$1));
       }
 
-      return bud.a;
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected buf b(eah $$0, dja $$1, iu $$2) {
-      return new bul(($$2x, $$3, $$4) -> new cvo($$2x, $$3, cvi.a($$1, $$2)), b);
+   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
+      return c;
+   }
+
+   @Nullable
+   @Override
+   public eao a(ddd $$0) {
+      ewv $$1 = $$0.q().b_($$0.a());
+      return this.m().b(b, Boolean.valueOf($$1.a(axh.a) && $$1.e() == 8));
+   }
+
+   @Override
+   protected boolean a(eao $$0, exk $$1) {
+      return false;
    }
 }

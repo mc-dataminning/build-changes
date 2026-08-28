@@ -1,59 +1,32 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eip extends ejm<ema> {
-   private static final eah a = dmh.nF.m().b(dlj.b, Integer.valueOf(1)).b(dlj.c, eat.a).b(dlj.d, Integer.valueOf(0));
-   private static final eah b = a.b(dlj.c, eat.c).b(dlj.d, Integer.valueOf(1));
-   private static final eah c = a.b(dlj.c, eat.c);
-   private static final eah d = a.b(dlj.c, eat.b);
+public class eip extends eim {
+   public static final Codec<eip> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eim.d.forGetter($$0x -> $$0x),
+               btj.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
+               btj.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
+               btj.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
+            )
+            .apply($$0, eip::new)
+   );
+   public final btj b;
+   public final btj c;
+   final btj j;
 
-   public eip(Codec<ema> $$0) {
-      super($$0);
+   public eip(float $$0, epp $$1, btj $$2, ehh $$3, ein $$4, jj<dmm> $$5, btj $$6, btj $$7, btj $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
+      this.j = $$8;
    }
 
-   @Override
-   public boolean a(ejo<ema> $$0) {
-      int $$1 = 0;
-      iu $$2 = $$0.e();
-      djz $$3 = $$0.b();
-      azv $$4 = $$0.d();
-      ema $$5 = $$0.f();
-      iu.a $$6 = $$2.k();
-      iu.a $$7 = $$2.k();
-      if ($$3.v($$6)) {
-         if (dmh.nF.m().a($$3, $$6)) {
-            int $$8 = $$4.a(12) + 5;
-            if ($$4.i() < $$5.l) {
-               int $$9 = $$4.a(4) + 1;
+   public eip(float $$0, epp $$1, btj $$2, ehh $$3, jj<dmm> $$4, btj $$5, btj $$6, btj $$7) {
+      this($$0, $$1, $$2, $$3, ein.a, $$4, $$5, $$6, $$7);
+   }
 
-               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
-                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
-                     int $$12 = $$10 - $$2.u();
-                     int $$13 = $$11 - $$2.w();
-                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-                        $$7.d($$10, $$3.a(egg.a.b, $$10, $$11) - 1, $$11);
-                        if (b($$3.a_($$7))) {
-                           $$3.a($$7, dmh.l.m(), 2);
-                        }
-                     }
-                  }
-               }
-            }
-
-            for (int $$14 = 0; $$14 < $$8 && $$3.v($$6); $$14++) {
-               $$3.a($$6, a, 2);
-               $$6.c(ja.b, 1);
-            }
-
-            if ($$6.v() - $$2.v() >= 3) {
-               $$3.a($$6, b, 2);
-               $$3.a($$6.c(ja.a, 1), c, 2);
-               $$3.a($$6.c(ja.a, 1), d, 2);
-            }
-         }
-
-         $$1++;
-      }
-
-      return $$1 > 0;
+   public eip(eim $$0, btj $$1, btj $$2, btj $$3) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
    }
 }

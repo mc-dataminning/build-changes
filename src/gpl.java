@@ -1,122 +1,64 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Collections;
 import java.util.List;
-import java.util.stream.IntStream;
-import org.joml.Matrix4f;
-import org.joml.Matrix4fStack;
+import java.util.Optional;
+import org.slf4j.Logger;
 
 public class gpl {
-   private static final int a = 6;
-   private final List<alg> b;
-   private final fjm[] c = new fjm[6];
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = cri.h();
+   public static final Codec<gpl> a = Codec.PASSTHROUGH.listOf().validate($$0 -> ag.a($$0, c)).xmap(gpl::new, $$0 -> $$0.f);
+   private static final DynamicOps<uw> d = un.a;
+   private static final Dynamic<?> e = new Dynamic(d, (uw)czk.f.encodeStart(d, czk.k).getOrThrow());
+   private List<Dynamic<?>> f;
 
-   public gpl(alg $$0) {
-      this.b = IntStream.range(0, 6).mapToObj($$1 -> $$0.e($$0.a() + "_" + $$1 + ".png")).toList();
+   private gpl(List<Dynamic<?>> $$0) {
+      this.f = $$0;
    }
 
-   public void a(foz $$0, float $$1, float $$2, float $$3) {
-      if (this.c[0] == null) {
-         this.a();
-      }
-
-      Matrix4f $$4 = new Matrix4f().setPerspective(1.4835298F, (float)$$0.aO().k() / (float)$$0.aO().l(), 0.05F, 10.0F);
-      RenderSystem.backupProjectionMatrix();
-      RenderSystem.setProjectionMatrix($$4, fgt.a);
-      Matrix4fStack $$5 = RenderSystem.getModelViewStack();
-      $$5.pushMatrix();
-      $$5.rotationX((float) Math.PI);
-      RenderSystem.setShader(gpk.h);
-      RenderSystem.enableBlend();
-      RenderSystem.disableCull();
-      RenderSystem.depthMask(false);
-      int $$6 = 2;
-
-      for (int $$7 = 0; $$7 < 4; $$7++) {
-         $$5.pushMatrix();
-         float $$8 = ((float)($$7 % 2) / 2.0F - 0.5F) / 256.0F;
-         float $$9 = ((float)($$7 / 2) / 2.0F - 0.5F) / 256.0F;
-         float $$10 = 0.0F;
-         $$5.translate($$8, $$9, 0.0F);
-         $$5.rotateX($$1 * (float) (Math.PI / 180.0));
-         $$5.rotateY($$2 * (float) (Math.PI / 180.0));
-         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, $$3 / (float)($$7 + 1));
-
-         for (int $$11 = 0; $$11 < 6; $$11++) {
-            RenderSystem.setShaderTexture(0, this.b.get($$11));
-            this.c[$$11].a();
-            this.c[$$11].a(RenderSystem.getModelViewMatrix(), RenderSystem.getProjectionMatrix(), RenderSystem.getShader());
-         }
-
-         fjm.b();
-         $$5.popMatrix();
-         RenderSystem.colorMask(true, true, true, false);
-      }
-
-      RenderSystem.colorMask(true, true, true, true);
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.restoreProjectionMatrix();
-      $$5.popMatrix();
-      RenderSystem.depthMask(true);
-      RenderSystem.enableCull();
-      RenderSystem.enableDepthTest();
+   public gpl() {
+      this(Collections.nCopies(c, e));
    }
 
-   private void a() {
-      try (fjg $$0 = new fjg(fjh.i.b() * 4)) {
-         for (int $$1 = 0; $$1 < 6; $$1++) {
-            fjf $$2 = new fjf($$0, fjo.c.h, fjh.i);
-            if ($$1 == 0) {
-               $$2.a(-1.0F, -1.0F, 1.0F).a(0.0F, 0.0F);
-               $$2.a(-1.0F, 1.0F, 1.0F).a(0.0F, 1.0F);
-               $$2.a(1.0F, 1.0F, 1.0F).a(1.0F, 1.0F);
-               $$2.a(1.0F, -1.0F, 1.0F).a(1.0F, 0.0F);
-            }
+   public List<czk> a(jh.a $$0) {
+      return this.f
+         .stream()
+         .map($$1 -> czk.f.parse(ale.a($$1, $$0)).resultOrPartial($$0xx -> b.warn("Could not parse hotbar item: {}", $$0xx)).orElse(czk.k))
+         .toList();
+   }
 
-            if ($$1 == 1) {
-               $$2.a(1.0F, -1.0F, 1.0F).a(0.0F, 0.0F);
-               $$2.a(1.0F, 1.0F, 1.0F).a(0.0F, 1.0F);
-               $$2.a(1.0F, 1.0F, -1.0F).a(1.0F, 1.0F);
-               $$2.a(1.0F, -1.0F, -1.0F).a(1.0F, 0.0F);
-            }
+   public void a(cri $$0, jt $$1) {
+      ale<uw> $$2 = $$1.a(d);
+      Builder<Dynamic<?>> $$3 = ImmutableList.builderWithExpectedSize(c);
 
-            if ($$1 == 2) {
-               $$2.a(1.0F, -1.0F, -1.0F).a(0.0F, 0.0F);
-               $$2.a(1.0F, 1.0F, -1.0F).a(0.0F, 1.0F);
-               $$2.a(-1.0F, 1.0F, -1.0F).a(1.0F, 1.0F);
-               $$2.a(-1.0F, -1.0F, -1.0F).a(1.0F, 0.0F);
-            }
+      for (int $$4 = 0; $$4 < c; $$4++) {
+         czk $$5 = $$0.a($$4);
+         Optional<Dynamic<?>> $$6 = czk.f
+            .encodeStart($$2, $$5)
+            .resultOrPartial($$0x -> b.warn("Could not encode hotbar item: {}", $$0x))
+            .map($$0x -> new Dynamic(d, $$0x));
+         $$3.add($$6.orElse(e));
+      }
 
-            if ($$1 == 3) {
-               $$2.a(-1.0F, -1.0F, -1.0F).a(0.0F, 0.0F);
-               $$2.a(-1.0F, 1.0F, -1.0F).a(0.0F, 1.0F);
-               $$2.a(-1.0F, 1.0F, 1.0F).a(1.0F, 1.0F);
-               $$2.a(-1.0F, -1.0F, 1.0F).a(1.0F, 0.0F);
-            }
+      this.f = $$3.build();
+   }
 
-            if ($$1 == 4) {
-               $$2.a(-1.0F, -1.0F, -1.0F).a(0.0F, 0.0F);
-               $$2.a(-1.0F, -1.0F, 1.0F).a(0.0F, 1.0F);
-               $$2.a(1.0F, -1.0F, 1.0F).a(1.0F, 1.0F);
-               $$2.a(1.0F, -1.0F, -1.0F).a(1.0F, 0.0F);
-            }
-
-            if ($$1 == 5) {
-               $$2.a(-1.0F, 1.0F, 1.0F).a(0.0F, 0.0F);
-               $$2.a(-1.0F, 1.0F, -1.0F).a(0.0F, 1.0F);
-               $$2.a(1.0F, 1.0F, -1.0F).a(1.0F, 1.0F);
-               $$2.a(1.0F, 1.0F, 1.0F).a(1.0F, 0.0F);
-            }
-
-            this.c[$$1] = new fjm(fhe.b);
-            this.c[$$1].a();
-            this.c[$$1].a($$2.b());
-            fjm.b();
+   public boolean a() {
+      for (Dynamic<?> $$0 : this.f) {
+         if (!a($$0)) {
+            return false;
          }
       }
+
+      return true;
    }
 
-   public void a(hiz $$0) {
-      for (alg $$1 : this.b) {
-         $$0.a($$1);
-      }
+   private static boolean a(Dynamic<?> $$0) {
+      return e.equals($$0);
    }
 }

@@ -1,43 +1,38 @@
-public class byd {
-   private float a;
-   private float b;
-   private float c;
-   private float d = 1.0F;
+import javax.annotation.Nullable;
 
-   public void a(float $$0) {
-      this.b = $$0;
-   }
+public interface byd {
+   byc a = ($$0, $$1, $$2) -> true;
+   byc b = ($$0, $$1, $$2) -> {
+      if ($$2 != null && $$0.A_().a($$1)) {
+         iv $$3 = $$1.d();
+         return $$0.b_($$1).a(axh.a) && !$$0.a_($$3).d($$0, $$3);
+      } else {
+         return false;
+      }
+   };
+   byc c = ($$0, $$1, $$2) -> $$2 != null && $$0.A_().a($$1) ? $$0.b_($$1).a(axh.b) : false;
+   byc d = new byc() {
+      @Override
+      public boolean isSpawnPositionOk(djk $$0, iv $$1, @Nullable bwr<?> $$2) {
+         if ($$2 != null && $$0.A_().a($$1)) {
+            iv $$3 = $$1.d();
+            iv $$4 = $$1.e();
+            eao $$5 = $$0.a_($$4);
+            return !$$5.a($$0, $$4, $$2) ? false : this.a($$0, $$1, $$2) && this.a($$0, $$3, $$2);
+         } else {
+            return false;
+         }
+      }
 
-   public void a(float $$0, float $$1, float $$2) {
-      this.a = this.b;
-      this.b = this.b + ($$0 - this.b) * $$1;
-      this.c = this.c + this.b;
-      this.d = $$2;
-   }
+      private boolean a(djk $$0, iv $$1, bwr<?> $$2) {
+         eao $$3 = $$0.a_($$1);
+         return djs.a($$0, $$1, $$3, $$3.y(), $$2);
+      }
 
-   public void a() {
-      this.a = 0.0F;
-      this.b = 0.0F;
-      this.c = 0.0F;
-   }
-
-   public float b() {
-      return this.b;
-   }
-
-   public float b(float $$0) {
-      return Math.min(azm.h($$0, this.a, this.b), 1.0F);
-   }
-
-   public float c() {
-      return this.c * this.d;
-   }
-
-   public float c(float $$0) {
-      return (this.c - this.b * (1.0F - $$0)) * this.d;
-   }
-
-   public boolean d() {
-      return this.b > 1.0E-5F;
-   }
+      @Override
+      public iv a(djk $$0, iv $$1) {
+         iv $$2 = $$1.e();
+         return $$0.a_($$2).a(exk.a) ? $$2 : $$1;
+      }
+   };
 }

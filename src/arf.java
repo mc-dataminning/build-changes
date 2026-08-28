@@ -5,9 +5,9 @@ public interface arf {
 
    void a(arg var1);
 
-   CompletableFuture<ece> a(arg var1, edi var2, bai<arg> var3);
+   CompletableFuture<ecl> a(arg var1, edp var2, bai<arg> var3);
 
-   aqr a(edf var1, dih var2);
+   aqr a(edm var1, dio var2);
 
    void g();
 }

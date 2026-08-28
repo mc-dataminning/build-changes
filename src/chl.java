@@ -1,38 +1,27 @@
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
 
-public class chl {
-   private final bxg a;
-   private final IntSet b = new IntOpenHashSet();
-   private final IntSet c = new IntOpenHashSet();
+public abstract class chl extends chr<bxj> {
+   protected abstract boolean a(arq var1, bxj var2, bxj var3);
 
-   public chl(bxg $$0) {
-      this.a = $$0;
+   protected abstract cgl<bxj> b();
+
+   @Override
+   public Set<cgl<?>> a() {
+      return ImmutableSet.of(this.b());
    }
 
-   public void a() {
-      this.b.clear();
-      this.c.clear();
+   @Override
+   protected void a(arq $$0, bxj $$1) {
+      $$1.eb().a(this.b(), this.c($$0, $$1));
    }
 
-   public boolean a(bwf $$0) {
-      int $$1 = $$0.ar();
-      if (this.b.contains($$1)) {
-         return true;
-      } else if (this.c.contains($$1)) {
-         return false;
-      } else {
-         bqo $$2 = bqn.a();
-         $$2.a("hasLineOfSight");
-         boolean $$3 = this.a.E($$0);
-         $$2.c();
-         if ($$3) {
-            this.b.add($$1);
-         } else {
-            this.c.add($$1);
-         }
+   private Optional<bxj> c(arq $$0, bxj $$1) {
+      return this.a($$1).flatMap($$2 -> $$2.a($$2x -> this.a($$0, $$1, $$2x)));
+   }
 
-         return $$3;
-      }
+   protected Optional<cgn> a(bxj $$0) {
+      return $$0.eb().c(cgl.h);
    }
 }

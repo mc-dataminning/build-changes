@@ -1,53 +1,38 @@
-public class esu {
-   public static class a extends erf {
-      public a(iu $$0) {
-         super(ers.aa, 0, new eqt($$0));
-      }
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-      public a(tz $$0) {
-         super(ers.aa, $$0);
-      }
+public interface esu {
+   Codec<esu> b = mg.ah.q().dispatch(esu::b, Function.identity());
 
-      @Override
-      protected void a(err $$0, tz $$1) {
-      }
+   void a(azv var1, BiConsumer<alf<ess>, alf<ess>> var2);
 
-      @Override
-      public void a(djz $$0, djw $$1, ecf $$2, azv $$3, eqt $$4, dih $$5, iu $$6) {
-         int $$7 = $$0.a(egg.a.c, this.f.h(), this.f.j());
-         iu.a $$8 = new iu.a(this.f.h(), $$7, this.f.j());
+   Stream<alf<ess>> a();
 
-         while ($$8.v() > $$0.G_()) {
-            eah $$9 = $$0.a_($$8);
-            eah $$10 = $$0.a_($$8.e());
-            if ($$10 == dmh.bc.m() || $$10 == dmh.b.m() || $$10 == dmh.g.m() || $$10 == dmh.c.m() || $$10 == dmh.e.m()) {
-               eah $$11 = !$$9.l() && !this.b($$9) ? $$9 : dmh.L.m();
-
-               for (ja $$12 : ja.values()) {
-                  iu $$13 = $$8.a($$12);
-                  eah $$14 = $$0.a_($$13);
-                  if ($$14.l() || this.b($$14)) {
-                     iu $$15 = $$13.e();
-                     eah $$16 = $$0.a_($$15);
-                     if (($$16.l() || this.b($$16)) && $$12 != ja.b) {
-                        $$0.a($$13, $$10, 3);
-                     } else {
-                        $$0.a($$13, $$11, 3);
-                     }
-                  }
-               }
-
-               this.f = new eqt($$8);
-               this.a($$0, $$4, $$3, $$8, ezd.F, null);
-               return;
-            }
-
-            $$8.e(0, -1, 0);
-         }
-      }
-
-      private boolean b(eah $$0) {
-         return $$0 == dmh.J.m() || $$0 == dmh.K.m();
-      }
+   static est a(String $$0, String $$1) {
+      return a(qo.a($$0), qo.a($$1));
    }
+
+   static est a(alf<ess> $$0, alf<ess> $$1) {
+      return new est($$0, $$1);
+   }
+
+   static esy a(String $$0, bsq<String> $$1) {
+      bsq.a<alf<ess>> $$2 = bsq.b();
+      $$1.d().forEach($$1x -> $$2.a(qo.a((String)$$1x.a()), $$1x.b()));
+      return a(qo.a($$0), $$2.a());
+   }
+
+   static esy a(alf<ess> $$0, bsq<alf<ess>> $$1) {
+      return new esy($$0, $$1);
+   }
+
+   static esx a(bsq<List<esu>> $$0) {
+      return new esx($$0);
+   }
+
+   MapCodec<? extends esu> b();
 }

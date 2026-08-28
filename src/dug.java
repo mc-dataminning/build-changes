@@ -1,46 +1,36 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class dug extends dtz {
-   protected dug(eag.d $$0) {
+public class dug extends dmm {
+   public static final MapCodec<dug> b = b(dug::new);
+   public static final ebf c = ebe.E;
+
+   @Override
+   protected MapCodec<? extends dug> a() {
+      return b;
+   }
+
+   protected dug(ean.d $$0) {
       super($$0);
-   }
-
-   private static boolean b(eah $$0, djd $$1, iu $$2) {
-      iu $$3 = $$2.d();
-      eah $$4 = $$1.a_($$3);
-      if ($$4.a(dmh.ed) && $$4.c(dty.c) == 1) {
-         return true;
-      } else if ($$4.y().e() == 8) {
-         return false;
-      } else {
-         int $$5 = ewf.a($$0, $$4, ja.b, $$4.g());
-         return $$5 < 15;
-      }
+      this.l(this.C.b().b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected abstract MapCodec<? extends dug> a();
-
-   private static boolean c(eah $$0, djd $$1, iu $$2) {
-      iu $$3 = $$2.d();
-      return b($$0, $$1, $$2) && !$$1.b_($$3).a(axh.a);
+   protected eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
+      return $$4 == jb.b ? $$0.b(c, Boolean.valueOf(o($$6))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
    @Override
-   protected void b(eah $$0, arq $$1, iu $$2, azv $$3) {
-      if (!b($$0, $$1, $$2)) {
-         $$1.b($$2, dmh.j.m());
-      } else {
-         if ($$1.B($$2.d()) >= 9) {
-            eah $$4 = this.m();
+   public eao a(ddd $$0) {
+      eao $$1 = $$0.q().a_($$0.a().d());
+      return this.m().b(c, Boolean.valueOf(o($$1)));
+   }
 
-            for (int $$5 = 0; $$5 < 4; $$5++) {
-               iu $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
-               if ($$1.a_($$6).a(dmh.j) && c($$4, $$1, $$6)) {
-                  $$1.b($$6, $$4.b(c, Boolean.valueOf(o($$1.a_($$6.d())))));
-               }
-            }
-         }
-      }
+   protected static boolean o(eao $$0) {
+      return $$0.a(axc.bC);
+   }
+
+   @Override
+   protected void a(eap.a<dmm, eao> $$0) {
+      $$0.a(c);
    }
 }

@@ -1,53 +1,31 @@
-import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
-import org.joml.Quaternionf;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public enum hky implements hln {
-   a(0, 0),
-   b(0, 90),
-   c(0, 180),
-   d(0, 270),
-   e(90, 0),
-   f(90, 90),
-   g(90, 180),
-   h(90, 270),
-   i(180, 0),
-   j(180, 90),
-   k(180, 180),
-   l(180, 270),
-   m(270, 0),
-   n(270, 90),
-   o(270, 180),
-   p(270, 270);
+public record hky(hky.a c) {
+   public static final Codec<hky> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(hky.a.d.optionalFieldOf("hat", hky.a.a).forGetter(hky::a)).apply($$0, hky::new)
+   );
+   public static final auc<hky> b = new auc<>("villager", a);
 
-   private static final int q = 360;
-   private static final Map<Integer, hky> r = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.u, $$0 -> (hky)$$0));
-   private final j s;
-   private final h t;
-   private final int u;
-
-   private static int b(int $$0, int $$1) {
-      return $$0 * 360 + $$1;
+   public hky.a a() {
+      return this.c;
    }
 
-   private hky(final int $$0, final int $$1) {
-      this.u = b($$0, $$1);
-      Quaternionf $$2 = new Quaternionf().rotateYXZ((float)(-$$1) * (float) (Math.PI / 180.0), (float)(-$$0) * (float) (Math.PI / 180.0), 0.0F);
-      this.s = new j(null, $$2, null, null);
-      this.t = h.a($$0, $$1);
-   }
+   public static enum a implements bak {
+      a("none"),
+      b("partial"),
+      c("full");
 
-   @Override
-   public j a() {
-      return this.s;
-   }
+      public static final Codec<hky.a> d = bak.a(hky.a::values);
+      private final String e;
 
-   public static hky a(int $$0, int $$1) {
-      return r.get(b(azm.b($$0, 360), azm.b($$1, 360)));
-   }
+      private a(final String $$0) {
+         this.e = $$0;
+      }
 
-   public h c() {
-      return this.t;
+      @Override
+      public String c() {
+         return this.e;
+      }
    }
 }

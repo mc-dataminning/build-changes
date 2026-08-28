@@ -3,14 +3,14 @@ import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 
 public class apb {
-   public static void a(CommandDispatcher<ei> $$0) {
+   public static void a(CommandDispatcher<ej> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("setidletimeout").requires($$0x -> $$0x.c(3)))
-            .then(ej.a("minutes", IntegerArgumentType.integer(0)).executes($$0x -> a((ei)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "minutes"))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("setidletimeout").requires($$0x -> $$0x.c(3)))
+            .then(ek.a("minutes", IntegerArgumentType.integer(0)).executes($$0x -> a((ej)$$0x.getSource(), IntegerArgumentType.getInteger($$0x, "minutes"))))
       );
    }
 
-   private static int a(ei $$0, int $$1) {
+   private static int a(ej $$0, int $$1) {
       $$0.l().c($$1);
       if ($$1 > 0) {
          $$0.a(() -> wy.a("commands.setidletimeout.success", $$1), true);

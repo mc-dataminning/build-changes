@@ -1,35 +1,32 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
 
-public interface ks {
-   Codec<Map<ks.b<?>, ks>> b = Codec.dispatchedMap(mf.ao.q(), ks.b::a);
+public record ks(cw.d c, cw.d d) implements kt {
+   public static final Codec<ks> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cw.d.d.optionalFieldOf("durability", cw.d.c).forGetter(ks::a), cw.d.d.optionalFieldOf("damage", cw.d.c).forGetter(ks::b))
+            .apply($$0, ks::new)
+   );
 
-   static MapCodec<ks.a<?>> a(String $$0) {
-      return mf.ao.q().dispatchMap($$0, ks.a::a, ks.b::b);
+   @Override
+   public boolean a(kf $$0) {
+      Integer $$1 = $$0.a(kk.e);
+      if ($$1 == null) {
+         return false;
+      } else {
+         int $$2 = $$0.a(kk.d, 0);
+         return !this.c.d($$2 - $$1) ? false : this.d.d($$1);
+      }
    }
 
-   boolean a(ke var1);
-
-   public static record a<T extends ks>(ks.b<T> a, T b) {
+   public static ks a(cw.d $$0) {
+      return new ks($$0, cw.d.c);
    }
 
-   public static final class b<T extends ks> {
-      private final Codec<T> a;
-      private final MapCodec<ks.a<T>> b;
+   public cw.d a() {
+      return this.c;
+   }
 
-      public b(Codec<T> $$0) {
-         this.a = $$0;
-         this.b = RecordCodecBuilder.mapCodec($$1 -> $$1.group($$0.fieldOf("value").forGetter(ks.a::b)).apply($$1, $$0xx -> new ks.a<>(this, (T)$$0xx)));
-      }
-
-      public Codec<T> a() {
-         return this.a;
-      }
-
-      public MapCodec<ks.a<T>> b() {
-         return this.b;
-      }
+   public cw.d b() {
+      return this.d;
    }
 }

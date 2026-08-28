@@ -1,121 +1,145 @@
-public class cub extends ctq implements dyh {
-   private boolean c = true;
-   private boolean d = false;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-   public cub(bwo<? extends cub> $$0, dja $$1) {
-      super($$0, $$1);
-   }
+public interface cub extends btz, bui {
+   fex ds();
 
-   @Override
-   public eah v() {
-      return dmh.hD.m();
-   }
+   fes cQ();
 
-   @Override
-   public int x() {
-      return 1;
-   }
+   @Nullable
+   alf<ezt> q();
 
-   @Override
-   public int b() {
-      return 5;
-   }
+   void a(@Nullable alf<ezt> var1);
 
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      boolean $$4 = !$$3;
-      if ($$4 != this.B()) {
-         this.r($$4);
-      }
-   }
+   long s();
 
-   public boolean B() {
-      return this.c;
-   }
+   void a(long var1);
 
-   public void r(boolean $$0) {
-      this.c = $$0;
-   }
+   jo<czk> t();
+
+   void u();
+
+   djh dU();
+
+   boolean dP();
 
    @Override
-   public double C() {
-      return this.dA();
+   default boolean c() {
+      return this.ah_();
    }
 
-   @Override
-   public double D() {
-      return this.dC() + 0.5;
-   }
-
-   @Override
-   public double E() {
-      return this.dG();
-   }
-
-   @Override
-   public boolean F() {
-      return false;
-   }
-
-   @Override
-   public void h() {
-      this.d = false;
-      super.h();
-      this.K();
-   }
-
-   @Override
-   protected double a(iu $$0, ebl $$1, double $$2) {
-      double $$3 = super.a($$0, $$1, $$2);
-      this.K();
-      return $$3;
-   }
-
-   private void K() {
-      if (!this.dV().C && this.bK() && this.B() && !this.d && this.G()) {
-         this.d = true;
-         this.e();
-      }
-   }
-
-   public boolean G() {
-      if (dyi.a(this.dV(), this)) {
-         return true;
+   default void a(tz $$0, jh.a $$1) {
+      if (this.q() != null) {
+         $$0.a("LootTable", this.q().a().toString());
+         if (this.s() != 0L) {
+            $$0.a("LootTableSeed", this.s());
+         }
       } else {
-         for (cnh $$1 : this.dV().a(cnh.class, this.cR().c(0.25, 0.0, 0.25), bwm.a)) {
-            if (dyi.a(this, $$1)) {
-               return true;
-            }
+         bua.a($$0, this.t(), $$1);
+      }
+   }
+
+   default void b(tz $$0, jh.a $$1) {
+      this.u();
+      alf<ezt> $$2 = $$0.<alf<ezt>>a("LootTable", ezt.a).orElse(null);
+      this.a($$2);
+      this.a($$0.b("LootTableSeed", 0L));
+      if ($$2 == null) {
+         bua.b($$0, this.t(), $$1);
+      }
+   }
+
+   default void a(bux $$0, arq $$1, bwi $$2) {
+      if ($$1.O().c(djd.j)) {
+         buc.a($$1, $$2, this);
+         bwi $$3 = $$0.c();
+         if ($$3 != null && $$3.an() == bwr.bS) {
+            cpz.a($$1, (crj)$$3, true);
+         }
+      }
+   }
+
+   default bug b_(crj $$0) {
+      $$0.a(this);
+      return bug.a;
+   }
+
+   default void f(@Nullable crj $$0) {
+      MinecraftServer $$1 = this.dU().p();
+      if (this.q() != null && $$1 != null) {
+         ezt $$2 = $$1.bc().b(this.q());
+         if ($$0 != null) {
+            aq.Q.a((arr)$$0, this.q());
          }
 
-         return false;
+         this.a(null);
+         ezr.a $$3 = new ezr.a((arq)this.dU()).a(fci.f, this.ds());
+         if ($$0 != null) {
+            $$3.a($$0.eg()).a(fci.a, $$0);
+         }
+
+         $$2.a(this, $$3.a(fch.c), this.s());
       }
    }
 
-   @Override
-   protected cyz o() {
-      return czh.oz;
+   default void ag_() {
+      this.f(null);
+      this.t().clear();
    }
 
-   @Override
-   public czd dI() {
-      return new czd(czh.oz);
+   default boolean ah_() {
+      for (czk $$0 : this.t()) {
+         if (!$$0.f()) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   @Override
-   protected void b(tz $$0) {
-      super.b($$0);
-      $$0.a("Enabled", this.c);
+   default czk f_(int $$0) {
+      this.f(null);
+      czk $$1 = this.t().get($$0);
+      if ($$1.f()) {
+         return czk.k;
+      } else {
+         this.t().set($$0, czk.k);
+         return $$1;
+      }
    }
 
-   @Override
-   protected void a(tz $$0) {
-      super.a($$0);
-      this.c = $$0.e("Enabled") ? $$0.q("Enabled") : true;
+   default czk g_(int $$0) {
+      this.f(null);
+      return this.t().get($$0);
    }
 
-   @Override
-   public cuv a(int $$0, crb $$1) {
-      return new cvw($$0, $$1, this);
+   default czk b(int $$0, int $$1) {
+      this.f(null);
+      return bua.a(this.t(), $$0, $$1);
+   }
+
+   default void c(int $$0, czk $$1) {
+      this.f(null);
+      this.t().set($$0, $$1);
+      $$1.f(this.f_($$1));
+   }
+
+   default bya h_(final int $$0) {
+      return $$0 >= 0 && $$0 < this.b() ? new bya() {
+         @Override
+         public czk a() {
+            return cub.this.g_($$0);
+         }
+
+         @Override
+         public boolean a(czk $$0x) {
+            cub.this.c($$0, $$0);
+            return true;
+         }
+      } : bya.a;
+   }
+
+   default boolean g(crj $$0) {
+      return !this.dP() && $$0.a(this.cQ(), 4.0);
    }
 }

@@ -1,62 +1,55 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import org.slf4j.Logger;
 
-public class dor extends dol {
-   private static final Logger f = LogUtils.getLogger();
-   public static final MapCodec<dor> e = b(dor::new);
-   private static final lg g = new lf();
+public class dor extends dmm {
+   public static final MapCodec<dor> a = b(dor::new);
+   private static final ffr b = dmm.b(16.0, 0.0, 15.0);
 
    @Override
    public MapCodec<dor> a() {
-      return e;
+      return a;
    }
 
-   public dor(eag.d $$0) {
+   protected dor(ean.d $$0) {
       super($$0);
    }
 
    @Override
-   protected lg a(dja $$0, czd $$1) {
-      return g;
+   protected boolean g_(eao $$0) {
+      return true;
    }
 
    @Override
-   public dxf a(iu $$0, eah $$1) {
-      return new dyb($$0, $$1);
+   public eao a(ddd $$0) {
+      return !this.m().a((djk)$$0.q(), $$0.a()) ? dmm.a(this.m(), dmo.j.m(), $$0.q(), $$0.a()) : super.a($$0);
    }
 
    @Override
-   protected void a(arq $$0, eah $$1, iu $$2) {
-      dya $$3 = $$0.a($$2, dxh.g).orElse(null);
-      if ($$3 == null) {
-         f.warn("Ignoring dispensing attempt for Dropper without matching block entity at {}", $$2);
-      } else {
-         ld $$4 = new ld($$0, $$2, $$1, $$3);
-         int $$5 = $$3.a($$0.A);
-         if ($$5 < 0) {
-            $$0.c(1001, $$2, 0);
-         } else {
-            czd $$6 = $$3.a($$5);
-            if (!$$6.f()) {
-               ja $$7 = $$0.a_($$2).c(b);
-               btw $$8 = dyi.a($$0, $$2.a($$7));
-               czd $$9;
-               if ($$8 == null) {
-                  $$9 = g.dispense($$4, $$6);
-               } else {
-                  $$9 = dyi.a($$3, $$8, $$6.c(1), $$7.g());
-                  if ($$9.f()) {
-                     $$9 = $$6.v();
-                     $$9.h(1);
-                  } else {
-                     $$9 = $$6.v();
-                  }
-               }
-
-               $$3.a($$5, $$9);
-            }
-         }
+   protected eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
+      if ($$4 == jb.b && !$$0.a($$1, $$3)) {
+         $$2.a($$3, this, 1);
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected void a(eao $$0, arq $$1, iv $$2, azv $$3) {
+      dpl.a(null, $$0, $$1, $$2);
+   }
+
+   @Override
+   protected boolean a(eao $$0, djk $$1, iv $$2) {
+      eao $$3 = $$1.a_($$2.d());
+      return !$$3.e() || $$3.b() instanceof dpn;
+   }
+
+   @Override
+   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
+      return b;
+   }
+
+   @Override
+   protected boolean a(eao $$0, exk $$1) {
+      return false;
    }
 }

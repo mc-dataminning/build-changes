@@ -1,50 +1,64 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cdn extends cen {
-   private final cix g;
+public class cdn extends cef {
+   private final cki a;
+   @Nullable
+   private crj b;
+   private final arq c;
+   private final float d;
+   private int e;
+   private final chy f;
 
-   public cdn(cix $$0, double $$1, int $$2) {
-      super($$0, $$1, $$2, 6);
-      this.g = $$0;
-      this.f = -2;
-      this.a(EnumSet.of(cea.a.c, cea.a.a));
+   public cdn(cki $$0, float $$1) {
+      this.a = $$0;
+      this.c = a($$0);
+      this.d = $$1;
+      this.f = chy.b().a((double)$$1);
+      this.a(EnumSet.of(cef.a.b));
    }
 
    @Override
    public boolean b() {
-      return this.g.q() && !this.g.gr() && !this.g.gE() && super.b();
+      this.b = this.c.a(this.f, this.a);
+      return this.b == null ? false : this.a(this.b);
    }
 
    @Override
-   public void d() {
-      super.d();
-      this.g.x(false);
-   }
-
-   @Override
-   protected int a(bxm $$0) {
-      return 40;
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.g.z(false);
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.g.x(false);
-      if (!this.m()) {
-         this.g.z(false);
-      } else if (!this.g.gE()) {
-         this.g.z(true);
+   public boolean c() {
+      if (!this.b.bI()) {
+         return false;
+      } else {
+         return this.a.g(this.b) > (double)(this.d * this.d) ? false : this.e > 0 && this.a(this.b);
       }
    }
 
    @Override
-   protected boolean a(djd $$0, iu $$1) {
-      return $$0.v($$1.d()) && $$0.a_($$1).a(axc.T);
+   public void d() {
+      this.a.z(true);
+      this.e = this.a(40 + this.a.dX().a(40));
+   }
+
+   @Override
+   public void e() {
+      this.a.z(false);
+      this.b = null;
+   }
+
+   @Override
+   public void a() {
+      this.a.J().a(this.b.dz(), this.b.dD(), this.b.dF(), 10.0F, (float)this.a.ad());
+      this.e--;
+   }
+
+   private boolean a(crj $$0) {
+      for (buf $$1 : buf.values()) {
+         czk $$2 = $$0.b($$1);
+         if ($$2.a(czo.sH) || this.a.i($$2)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 }

@@ -1,62 +1,152 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonElement;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.JsonOps;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public record dcu(float c) implements dcr {
-   private static final float f = 16.0F;
-   public static final MapCodec<dcu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ayu.o.optionalFieldOf("diameter", 16.0F).forGetter(dcu::b)).apply($$0, dcu::new)
+public record dcu(asi<String> k, String l, int m, List<asi<wy>> n, boolean o) implements dbm<wy, dcu>, dcp {
+   public static final dcu a = new dcu(asi.a(""), "", 0, List.of(), true);
+   public static final int b = 32767;
+   public static final int c = 16;
+   public static final int d = 32;
+   public static final int e = 3;
+   public static final int f = 2;
+   public static final Codec<wy> g = xa.a(32767);
+   public static final Codec<List<asi<wy>>> h = a(g);
+   public static final Codec<dcu> i = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               asi.a(Codec.string(0, 32)).fieldOf("title").forGetter(dcu::d),
+               Codec.STRING.fieldOf("author").forGetter(dcu::e),
+               ayu.a(0, 3).optionalFieldOf("generation", 0).forGetter(dcu::f),
+               h.optionalFieldOf("pages", List.of()).forGetter(dcu::a),
+               Codec.BOOL.optionalFieldOf("resolved", false).forGetter(dcu::g)
+            )
+            .apply($$0, dcu::new)
    );
-   public static final yw<wj, dcu> b = yw.a(yu.l, dcu::b, dcu::new);
+   public static final yw<wj, dcu> j = yw.a(asi.a(yu.b(32)), dcu::d, yu.p, dcu::e, yu.h, dcu::f, asi.a(xa.b).a(yu.a()), dcu::a, yu.b, dcu::g, dcu::new);
 
-   public dcu() {
-      this(16.0F);
+   public dcu(asi<String> k, String l, int m, List<asi<wy>> n, boolean o) {
+      if (m >= 0 && m <= 3) {
+         this.k = k;
+         this.l = l;
+         this.m = m;
+         this.n = n;
+         this.o = o;
+      } else {
+         throw new IllegalArgumentException("Generation was " + m + ", but must be between 0 and 3");
+      }
    }
 
-   @Override
-   public dcr.a<dcu> a() {
-      return dcr.a.d;
+   private static Codec<asi<wy>> b(Codec<wy> $$0) {
+      return asi.a($$0);
    }
 
-   @Override
-   public boolean a(dja $$0, czd $$1, bxe $$2) {
-      boolean $$3 = false;
+   public static Codec<List<asi<wy>>> a(Codec<wy> $$0) {
+      return b($$0).listOf();
+   }
 
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         double $$5 = $$2.dA() + ($$2.dY().j() - 0.5) * (double)this.c;
-         double $$6 = azm.a($$2.dC() + ($$2.dY().j() - 0.5) * (double)this.c, (double)$$0.G_(), (double)($$0.G_() + ((arq)$$0).l() - 1));
-         double $$7 = $$2.dG() + ($$2.dY().j() - 0.5) * (double)this.c;
-         if ($$2.bZ()) {
-            $$2.bP();
+   @Nullable
+   public dcu b() {
+      return this.m >= 2 ? null : new dcu(this.k, this.l, this.m + 1, this.n, this.o);
+   }
+
+   public static boolean a(czk $$0, ej $$1, @Nullable crj $$2) {
+      dcu $$3 = $$0.a(kk.V);
+      if ($$3 != null && !$$3.g()) {
+         dcu $$4 = $$3.a($$1, $$2);
+         if ($$4 != null) {
+            $$0.b(kk.V, $$4);
+            return true;
          }
 
-         feq $$8 = $$2.dt();
-         if ($$2.b($$5, $$6, $$7, true)) {
-            $$0.a(efh.R, $$8, efh.a.a($$2));
-            awo $$10;
-            awm $$9;
-            if ($$2 instanceof cjj) {
-               $$9 = awn.jT;
-               $$10 = awo.g;
-            } else {
-               $$9 = awn.fl;
-               $$10 = awo.h;
+         $$0.b(kk.V, $$3.c());
+      }
+
+      return false;
+   }
+
+   @Nullable
+   public dcu a(ej $$0, @Nullable crj $$1) {
+      if (this.o) {
+         return null;
+      } else {
+         Builder<asi<wy>> $$2 = ImmutableList.builderWithExpectedSize(this.n.size());
+
+         for (asi<wy> $$3 : this.n) {
+            Optional<asi<wy>> $$4 = a($$0, $$1, $$3);
+            if ($$4.isEmpty()) {
+               return null;
             }
 
-            $$0.a(null, $$2.dA(), $$2.dC(), $$2.dG(), $$9, $$10);
-            $$2.k();
-            $$3 = true;
-            break;
+            $$2.add($$4.get());
          }
-      }
 
-      if ($$3 && $$2 instanceof crc $$13) {
-         $$13.gP();
+         return new dcu(this.k, this.l, this.m, $$2.build(), true);
       }
-
-      return $$3;
    }
 
-   public float b() {
-      return this.c;
+   public dcu c() {
+      return new dcu(this.k, this.l, this.m, this.n, true);
+   }
+
+   private static Optional<asi<wy>> a(ej $$0, @Nullable crj $$1, asi<wy> $$2) {
+      return $$2.b($$2x -> {
+         try {
+            wy $$3 = xb.a($$0, $$2x, $$1, 0);
+            return a($$3, $$0.u()) ? Optional.empty() : Optional.of($$3);
+         } catch (Exception var4) {
+            return Optional.of($$2x);
+         }
+      });
+   }
+
+   private static boolean a(wy $$0, jh.a $$1) {
+      DataResult<JsonElement> $$2 = xa.a.encodeStart($$1.a(JsonOps.INSTANCE), $$0);
+      return $$2.isSuccess() && azc.a((JsonElement)$$2.getOrThrow(), 32767);
+   }
+
+   public List<wy> a(boolean $$0) {
+      return Lists.transform(this.n, $$1 -> (wy)$$1.a($$0));
+   }
+
+   public dcu b(List<asi<wy>> $$0) {
+      return new dcu(this.k, this.l, this.m, $$0, false);
+   }
+
+   @Override
+   public void a(czg.b $$0, Consumer<wy> $$1, daz $$2, kf $$3) {
+      if (!bal.h(this.l)) {
+         $$1.accept(wy.a("book.byAuthor", this.l).a(o.h));
+      }
+
+      $$1.accept(wy.c("book.generation." + this.m).a(o.h));
+   }
+
+   public asi<String> d() {
+      return this.k;
+   }
+
+   public String e() {
+      return this.l;
+   }
+
+   public int f() {
+      return this.m;
+   }
+
+   @Override
+   public List<asi<wy>> a() {
+      return this.n;
+   }
+
+   public boolean g() {
+      return this.o;
    }
 }

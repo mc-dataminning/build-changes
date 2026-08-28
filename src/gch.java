@@ -1,4 +1,8 @@
-@FunctionalInterface
-public interface gch {
-   int currentIndex();
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface gch {
 }

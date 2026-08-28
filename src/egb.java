@@ -1,112 +1,97 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
+import java.util.BitSet;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.LongStream;
+import javax.annotation.Nullable;
 
-public class egb extends ecf {
-   public static final MapCodec<egb> c = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(epe.a.fieldOf("settings").forGetter(egb::h)).apply($$0, $$0.stable(egb::new))
+public final class egb {
+   private static final BitSet c = new BitSet(0);
+   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
+   private static final Codec<edm> e = mg.l
+      .q()
+      .comapFlatMap($$0 -> $$0 == edm.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
+   public static final Codec<egb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               e.fieldOf("target_status").forGetter(egb::a),
+               d.lenientOptionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
+            )
+            .apply($$0, egb::new)
    );
-   private final epe d;
+   private static final Set<alf<dkk>> f = Set.of(dkr.ab, dkr.aa, dkr.ac);
+   public static final djj b = new djj() {
+      @Override
+      public int H_() {
+         return 64;
+      }
 
-   public egb(epe $$0) {
-      super(new dko($$0.d()), af.b($$0::a));
-      this.d = $$0;
+      @Override
+      public int G_() {
+         return -64;
+      }
+   };
+   private final edm g;
+   private final BitSet h;
+
+   private egb(edm $$0, Optional<BitSet> $$1) {
+      this.g = $$0;
+      this.h = $$1.orElse(c);
    }
 
-   @Override
-   public ecg a(jg<erh> $$0, egu $$1, long $$2) {
-      Stream<je<erh>> $$3 = this.d.c().map(ji::a).orElseGet(() -> $$0.c().map($$0xx -> $$0xx));
-      return ecg.a($$1, $$2, this.b, $$3);
+   @Nullable
+   public static egb a(tz $$0) {
+      edm $$1 = edm.a($$0.j("target_status"));
+      return $$1 == edm.c ? null : new egb($$1, Optional.of(BitSet.valueOf($$0.m("missing_bedrock"))));
    }
 
-   @Override
-   protected MapCodec<? extends ecf> b() {
-      return c;
+   public static void a(edf $$0) {
+      int $$1 = 4;
+      iv.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
+         if ($$0.a_($$1x).a(dmo.I)) {
+            $$0.a($$1x, dmo.tt.m());
+         }
+      });
    }
 
-   public epe h() {
-      return this.d;
-   }
+   public void b(edf $$0) {
+      djj $$1 = $$0.B();
+      int $$2 = $$1.G_();
+      int $$3 = $$1.ao();
 
-   @Override
-   public void a(ary $$0, djw $$1, egu $$2, ece $$3) {
-   }
-
-   @Override
-   public int a(djc $$0) {
-      return $$0.G_() + Math.min($$0.H_(), this.d.f().size());
-   }
-
-   @Override
-   public CompletableFuture<ece> a(ehi $$0, egu $$1, djw $$2, ece $$3) {
-      List<eah> $$4 = this.d.f();
-      iu.a $$5 = new iu.a();
-      egg $$6 = $$3.a(egg.a.c);
-      egg $$7 = $$3.a(egg.a.a);
-
-      for (int $$8 = 0; $$8 < Math.min($$3.H_(), $$4.size()); $$8++) {
-         eah $$9 = $$4.get($$8);
-         if ($$9 != null) {
-            int $$10 = $$3.G_() + $$8;
-
-            for (int $$11 = 0; $$11 < 16; $$11++) {
-               for (int $$12 = 0; $$12 < 16; $$12++) {
-                  $$3.a($$5.d($$11, $$10, $$12), $$9);
-                  $$6.a($$11, $$10, $$12, $$9);
-                  $$7.a($$11, $$10, $$12, $$9);
-               }
+      for (int $$4 = 0; $$4 < 16; $$4++) {
+         for (int $$5 = 0; $$5 < 16; $$5++) {
+            if (this.a($$4, $$5)) {
+               iv.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, dmo.a.m()));
             }
          }
       }
-
-      return CompletableFuture.completedFuture($$3);
    }
 
-   @Override
-   public int a(int $$0, int $$1, egg.a $$2, djc $$3, egu $$4) {
-      List<eah> $$5 = this.d.f();
+   public edm a() {
+      return this.g;
+   }
 
-      for (int $$6 = Math.min($$5.size() - 1, $$3.ao()); $$6 >= 0; $$6--) {
-         eah $$7 = $$5.get($$6);
-         if ($$7 != null && $$2.e().test($$7)) {
-            return $$3.G_() + $$6 + 1;
-         }
+   public boolean b() {
+      return !this.h.isEmpty();
+   }
+
+   public boolean a(int $$0, int $$1) {
+      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
+   }
+
+   public static dkn a(dkn $$0, ecl $$1) {
+      if (!$$1.A()) {
+         return $$0;
+      } else {
+         Predicate<alf<dkk>> $$2 = f::contains;
+         return ($$3, $$4, $$5, $$6) -> {
+            jf<dkk> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
+            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
+         };
       }
-
-      return $$3.G_();
-   }
-
-   @Override
-   public djm a(int $$0, int $$1, djc $$2, egu $$3) {
-      return new djm($$2.G_(), this.d.f().stream().limit((long)$$2.H_()).map($$0x -> $$0x == null ? dmh.a.m() : $$0x).toArray(eah[]::new));
-   }
-
-   @Override
-   public void a(List<String> $$0, egu $$1, iu $$2) {
-   }
-
-   @Override
-   public void a(ary $$0, long $$1, egu $$2, dkf $$3, djw $$4, ece $$5) {
-   }
-
-   @Override
-   public void a(ary $$0) {
-   }
-
-   @Override
-   public int g() {
-      return 0;
-   }
-
-   @Override
-   public int e() {
-      return 384;
-   }
-
-   @Override
-   public int f() {
-      return -63;
    }
 }

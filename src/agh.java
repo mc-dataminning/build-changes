@@ -9,11 +9,11 @@ public class agh implements zf<abu> {
    private final int b;
    private final List<agh.a> c;
 
-   public agh(int $$0, Collection<byg> $$1) {
+   public agh(int $$0, Collection<byl> $$1) {
       this.b = $$0;
       this.c = Lists.newArrayList();
 
-      for (byg $$2 : $$1) {
+      for (byl $$2 : $$1) {
          this.c.add(new agh.a($$2.a(), $$2.b(), $$2.c()));
       }
    }
@@ -40,11 +40,11 @@ public class agh implements zf<abu> {
       return this.c;
    }
 
-   public static record a(je<byf> c, double d, Collection<byi> e) {
-      public static final yw<ByteBuf, byi> a = yw.a(alg.b, byi::a, yu.m, byi::b, byi.a.e, byi::c, byi::new);
-      public static final yw<wj, agh.a> b = yw.a(byf.b, agh.a::a, yu.m, agh.a::b, a.a(yu.a(ArrayList::new)), agh.a::c, agh.a::new);
+   public static record a(jf<byk> c, double d, Collection<byn> e) {
+      public static final yw<ByteBuf, byn> a = yw.a(alg.b, byn::a, yu.m, byn::b, byn.a.e, byn::c, byn::new);
+      public static final yw<wj, agh.a> b = yw.a(byk.b, agh.a::a, yu.m, agh.a::b, a.a(yu.a(ArrayList::new)), agh.a::c, agh.a::new);
 
-      public je<byf> a() {
+      public jf<byk> a() {
          return this.c;
       }
 
@@ -52,7 +52,7 @@ public class agh implements zf<abu> {
          return this.d;
       }
 
-      public Collection<byi> c() {
+      public Collection<byn> c() {
          return this.e;
       }
    }

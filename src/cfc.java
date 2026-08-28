@@ -1,125 +1,87 @@
+import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class cfc extends cen {
-   private final dmf g;
-   private final bxg h;
-   private int i;
-   private static final int j = 20;
+public class cfc extends cef {
+   public static final int a = 120;
+   protected final bxr b;
+   protected double c;
+   protected double d;
+   protected double e;
+   protected final double f;
+   protected int g;
+   protected boolean h;
+   private final boolean i;
 
-   public cfc(dmf $$0, bxm $$1, double $$2, int $$3) {
-      super($$1, $$2, 24, $$3);
-      this.g = $$0;
-      this.h = $$1;
+   public cfc(bxr $$0, double $$1) {
+      this($$0, $$1, 120);
+   }
+
+   public cfc(bxr $$0, double $$1, int $$2) {
+      this($$0, $$1, $$2, true);
+   }
+
+   public cfc(bxr $$0, double $$1, int $$2, boolean $$3) {
+      this.b = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.i = $$3;
+      this.a(EnumSet.of(cef.a.a));
    }
 
    @Override
    public boolean b() {
-      if (!a(this.h).O().c(diw.d)) {
+      if (this.b.cW()) {
          return false;
-      } else if (this.c > 0) {
-         this.c--;
-         return false;
-      } else if (this.n()) {
-         this.c = b(20);
-         return true;
       } else {
-         this.c = this.a(this.a);
-         return false;
-      }
-   }
+         if (!this.h) {
+            if (this.i && this.b.ev() >= 100) {
+               return false;
+            }
 
-   @Override
-   public void e() {
-      super.e();
-      this.h.Z = 1.0;
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.i = 0;
-   }
-
-   public void a(djb $$0, iu $$1) {
-   }
-
-   public void a(dja $$0, iu $$1) {
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      dja $$0 = this.h.dV();
-      iu $$1 = this.h.dv();
-      iu $$2 = this.a($$1, $$0);
-      azv $$3 = this.h.dY();
-      if (this.m() && $$2 != null) {
-         if (this.i > 0) {
-            feq $$4 = this.h.dy();
-            this.h.n($$4.d, 0.3, $$4.f);
-            if (!$$0.C) {
-               double $$5 = 0.08;
-               ((arq)$$0)
-                  .a(
-                     new lt(lx.U, new czd(czh.rH)),
-                     (double)$$2.u() + 0.5,
-                     (double)$$2.v() + 0.7,
-                     (double)$$2.w() + 0.5,
-                     3,
-                     ((double)$$3.i() - 0.5) * 0.08,
-                     ((double)$$3.i() - 0.5) * 0.08,
-                     ((double)$$3.i() - 0.5) * 0.08,
-                     0.15F
-                  );
+            if (this.b.dX().a(b(this.g)) != 0) {
+               return false;
             }
          }
 
-         if (this.i % 2 == 0) {
-            feq $$6 = this.h.dy();
-            this.h.n($$6.d, -0.3, $$6.f);
-            if (this.i % 6 == 0) {
-               this.a((djb)$$0, this.e);
-            }
+         fex $$0 = this.h();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.c = $$0.d;
+            this.d = $$0.e;
+            this.e = $$0.f;
+            this.h = false;
+            return true;
          }
-
-         if (this.i > 60) {
-            $$0.a($$2, false);
-            if (!$$0.C) {
-               for (int $$7 = 0; $$7 < 20; $$7++) {
-                  double $$8 = $$3.k() * 0.02;
-                  double $$9 = $$3.k() * 0.02;
-                  double $$10 = $$3.k() * 0.02;
-                  ((arq)$$0).a(lx.ae, (double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5, 1, $$8, $$9, $$10, 0.15F);
-               }
-
-               this.a($$0, $$2);
-            }
-         }
-
-         this.i++;
       }
    }
 
    @Nullable
-   private iu a(iu $$0, dig $$1) {
-      if ($$1.a_($$0).a(this.g)) {
-         return $$0;
-      } else {
-         iu[] $$2 = new iu[]{$$0.e(), $$0.h(), $$0.i(), $$0.f(), $$0.g(), $$0.e().e()};
-
-         for (iu $$3 : $$2) {
-            if ($$1.a_($$3).a(this.g)) {
-               return $$3;
-            }
-         }
-
-         return null;
-      }
+   protected fex h() {
+      return cic.a(this.b, 10, 7);
    }
 
    @Override
-   protected boolean a(djd $$0, iu $$1) {
-      ece $$2 = $$0.a(jx.a($$1.u()), jx.a($$1.w()), edf.n, false);
-      return $$2 == null ? false : $$2.a_($$1).a(this.g) && $$2.a_($$1.d()).l() && $$2.a_($$1.b(2)).l();
+   public boolean c() {
+      return !this.b.O().k() && !this.b.cW();
+   }
+
+   @Override
+   public void d() {
+      this.b.O().a(this.c, this.d, this.e, this.f);
+   }
+
+   @Override
+   public void e() {
+      this.b.O().m();
+      super.e();
+   }
+
+   public void i() {
+      this.h = true;
+   }
+
+   public void c(int $$0) {
+      this.g = $$0;
    }
 }

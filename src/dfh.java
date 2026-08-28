@@ -1,9 +1,20 @@
-public class dfh {
-   public static final bax<dye> a = bax.a("fuel_values");
-   public static final bax<jg.a> b = bax.a("registries");
-   public static final bay c = new bay.a().b(a).b(b).a();
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-   public static baz a(dja $$0) {
-      return new baz.a().a(a, $$0.M()).a(b, $$0.F_()).a(c);
+public interface dfh {
+   Codec<dfh> d = mg.ax.q().dispatch(dfh::a, dfh.a::a);
+   yw<wj, dfh> e = yu.a(mh.ag).b(dfh::a, dfh.a::b);
+
+   dfn d();
+
+   dfn e();
+
+   dfh.a<? extends dfh> a();
+
+   default boolean a(cut $$0) {
+      return this.d().a($$0) && this.e().a($$0);
+   }
+
+   public static record a<T extends dfh>(MapCodec<T> a, yw<wj, T> b) {
    }
 }

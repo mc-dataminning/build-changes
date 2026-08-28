@@ -1,79 +1,132 @@
-import org.joml.Matrix4f;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
 
-public class gpy {
-   private static final float a = -0.01F;
-   private static final float b = -0.001F;
-   private static final int c = 128;
-   private static final int d = 128;
-   private final hjv e;
-   private final hju f;
+public abstract class gpy {
+   private static final Object2ObjectMap<alg, gpy> a = ag.a(new Object2ObjectArrayMap(), $$0 -> {
+      gpy.c $$1 = new gpy.c();
+      $$0.defaultReturnValue($$1);
+      $$0.put(eej.e, $$1);
+      $$0.put(eej.f, new gpy.b());
+      $$0.put(eej.g, new gpy.a());
+   });
+   private final float b;
+   private final boolean c;
+   private final gpy.d d;
+   private final boolean e;
+   private final boolean f;
 
-   public gpy(hju $$0, hjv $$1) {
-      this.f = $$0;
-      this.e = $$1;
+   public gpy(float $$0, boolean $$1, gpy.d $$2, boolean $$3, boolean $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
    }
 
-   public void a(hig $$0, fjj $$1, gqa $$2, boolean $$3, int $$4) {
-      Matrix4f $$5 = $$1.c().a();
-      fjn $$6 = $$2.getBuffer(gqk.u($$0.a));
-      $$6.a($$5, 0.0F, 128.0F, -0.01F).a(-1).a(0.0F, 1.0F).c($$4);
-      $$6.a($$5, 128.0F, 128.0F, -0.01F).a(-1).a(1.0F, 1.0F).c($$4);
-      $$6.a($$5, 128.0F, 0.0F, -0.01F).a(-1).a(1.0F, 0.0F).c($$4);
-      $$6.a($$5, 0.0F, 0.0F, -0.01F).a(-1).a(0.0F, 0.0F).c($$4);
-      int $$7 = 0;
+   public static gpy a(eel $$0) {
+      return (gpy)a.get($$0.r());
+   }
 
-      for (hig.a $$8 : $$0.b) {
-         if (!$$3 || $$8.e) {
-            $$1.a();
-            $$1.a((float)$$8.b / 2.0F + 64.0F, (float)$$8.c / 2.0F + 64.0F, -0.02F);
-            $$1.a(a.f.rotationDegrees((float)($$8.d * 360) / 16.0F));
-            $$1.b(4.0F, 4.0F, 3.0F);
-            $$1.a(-0.125F, 0.125F, 0.0F);
-            Matrix4f $$9 = $$1.c().a();
-            hix $$10 = $$8.a;
-            if ($$10 != null) {
-               fjn $$11 = $$2.getBuffer(gqk.u($$10.i()));
-               $$11.a($$9, -1.0F, 1.0F, (float)$$7 * -0.001F).a(-1).a($$10.c(), $$10.g()).c($$4);
-               $$11.a($$9, 1.0F, 1.0F, (float)$$7 * -0.001F).a(-1).a($$10.d(), $$10.g()).c($$4);
-               $$11.a($$9, 1.0F, -1.0F, (float)$$7 * -0.001F).a(-1).a($$10.d(), $$10.h()).c($$4);
-               $$11.a($$9, -1.0F, -1.0F, (float)$$7 * -0.001F).a(-1).a($$10.c(), $$10.h()).c($$4);
-               $$1.b();
-            }
+   public boolean a(float $$0) {
+      return false;
+   }
 
-            if ($$8.f != null) {
-               frt $$12 = foz.Q().h;
-               float $$13 = (float)$$12.a($$8.f);
-               float $$14 = azm.a(25.0F / $$13, 0.0F, 6.0F / 9.0F);
-               $$1.a();
-               $$1.a((float)$$8.b / 2.0F + 64.0F - $$13 * $$14 / 2.0F, (float)$$8.c / 2.0F + 64.0F + 4.0F, -0.025F);
-               $$1.b($$14, $$14, 1.0F);
-               $$1.a(0.0F, 0.0F, -0.1F);
-               $$12.a($$8.f, 0.0F, 0.0F, -1, false, $$1.c().a(), $$2, frt.a.a, Integer.MIN_VALUE, $$4, false);
-               $$1.b();
-            }
+   public int b(float $$0) {
+      return 0;
+   }
 
-            $$7++;
-         }
+   public float a() {
+      return this.b;
+   }
+
+   public boolean b() {
+      return this.c;
+   }
+
+   public abstract fex a(fex var1, float var2);
+
+   public abstract boolean a(int var1, int var2);
+
+   public gpy.d c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public boolean e() {
+      return this.f;
+   }
+
+   public static class a extends gpy {
+      public a() {
+         super(Float.NaN, false, gpy.d.c, true, false);
+      }
+
+      @Override
+      public fex a(fex $$0, float $$1) {
+         return $$0.c(0.15F);
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return false;
       }
    }
 
-   public void a(eyh $$0, eyj $$1, hig $$2) {
-      $$2.a = this.e.b($$0, $$1);
-      $$2.b.clear();
+   public static class b extends gpy {
+      public b() {
+         super(Float.NaN, true, gpy.d.a, false, true);
+      }
 
-      for (eyd $$3 : $$1.e()) {
-         $$2.b.add(this.a($$3));
+      @Override
+      public fex a(fex $$0, float $$1) {
+         return $$0;
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return true;
       }
    }
 
-   private hig.a a(eyd $$0) {
-      hig.a $$1 = new hig.a();
-      $$1.a = this.f.a($$0);
-      $$1.b = $$0.d();
-      $$1.c = $$0.e();
-      $$1.d = $$0.f();
-      $$1.f = $$0.g().orElse(null);
-      $$1.e = $$0.b();
-      return $$1;
+   public static class c extends gpy {
+      public static final int a = 192;
+      private static final float b = 0.4F;
+
+      public c() {
+         super(192.0F, true, gpy.d.b, false, false);
+      }
+
+      @Override
+      public boolean a(float $$0) {
+         float $$1 = azm.b($$0 * (float) (Math.PI * 2));
+         return $$1 >= -0.4F && $$1 <= 0.4F;
+      }
+
+      @Override
+      public int b(float $$0) {
+         float $$1 = azm.b($$0 * (float) (Math.PI * 2));
+         float $$2 = $$1 / 0.4F * 0.5F + 0.5F;
+         float $$3 = azm.l(1.0F - (1.0F - azm.a($$2 * (float) Math.PI)) * 0.99F);
+         return axw.a($$3, $$2 * 0.3F + 0.7F, $$2 * $$2 * 0.7F + 0.2F, 0.2F);
+      }
+
+      @Override
+      public fex a(fex $$0, float $$1) {
+         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
+      }
+
+      @Override
+      public boolean a(int $$0, int $$1) {
+         return false;
+      }
+   }
+
+   public static enum d {
+      a,
+      b,
+      c;
    }
 }

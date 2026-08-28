@@ -53,23 +53,23 @@ public interface xe {
    public static class b {
       public static final MapCodec<xe.b> a = RecordCodecBuilder.mapCodec(
          $$0 -> $$0.group(
-                  mf.f.q().fieldOf("id").forGetter($$0x -> $$0x.b),
-                  jy.f.fieldOf("uuid").forGetter($$0x -> $$0x.c),
+                  mg.f.q().fieldOf("id").forGetter($$0x -> $$0x.b),
+                  jz.f.fieldOf("uuid").forGetter($$0x -> $$0x.c),
                   xa.a.optionalFieldOf("name").forGetter($$0x -> $$0x.d)
                )
                .apply($$0, xe.b::new)
       );
-      public final bwo<?> b;
+      public final bwr<?> b;
       public final UUID c;
       public final Optional<wy> d;
       @Nullable
       private List<wy> e;
 
-      public b(bwo<?> $$0, UUID $$1, @Nullable wy $$2) {
+      public b(bwr<?> $$0, UUID $$1, @Nullable wy $$2) {
          this($$0, $$1, Optional.ofNullable($$2));
       }
 
-      public b(bwo<?> $$0, UUID $$1, Optional<wy> $$2) {
+      public b(bwr<?> $$0, UUID $$1, Optional<wy> $$2) {
          this.b = $$0;
          this.c = $$1;
          this.d = $$2;
@@ -119,10 +119,10 @@ public interface xe {
       }
    }
 
-   public static record d(czd c) implements xe {
-      public static final MapCodec<xe.d> b = czd.a.xmap(xe.d::new, xe.d::b);
+   public static record d(czk c) implements xe {
+      public static final MapCodec<xe.d> b = czk.a.xmap(xe.d::new, xe.d::b);
 
-      public d(czd c) {
+      public d(czk c) {
          c = c.v();
          this.c = c;
       }
@@ -134,7 +134,7 @@ public interface xe {
 
       @Override
       public boolean equals(Object $$0) {
-         if ($$0 instanceof xe.d $$1 && czd.a(this.c, $$1.c)) {
+         if ($$0 instanceof xe.d $$1 && czk.a(this.c, $$1.c)) {
             return true;
          }
 
@@ -143,10 +143,10 @@ public interface xe {
 
       @Override
       public int hashCode() {
-         return czd.b(this.c);
+         return czk.b(this.c);
       }
 
-      public czd b() {
+      public czk b() {
          return this.c;
       }
    }

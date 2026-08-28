@@ -1,498 +1,542 @@
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.Locale;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public final class dkt {
-   private static final float h = 0.05F;
-   private static final float i = 0.26666668F;
-   public static final float a = 0.4F;
-   private static final float j = 0.93333334F;
-   private static final float k = 0.1F;
-   public static final float b = 0.56666666F;
-   private static final float l = 0.7666667F;
-   public static final float c = -0.11F;
-   public static final float d = 0.03F;
-   public static final float e = 0.3F;
-   public static final float f = -0.78F;
-   public static final float g = -0.375F;
-   private static final float m = -0.225F;
-   private static final float n = 0.9F;
-   private final dkm.b o = dkm.b.a(-1.0F, 1.0F);
-   private final dkm.b[] p = new dkm.b[]{dkm.b.a(-1.0F, -0.45F), dkm.b.a(-0.45F, -0.15F), dkm.b.a(-0.15F, 0.2F), dkm.b.a(0.2F, 0.55F), dkm.b.a(0.55F, 1.0F)};
-   private final dkm.b[] q = new dkm.b[]{dkm.b.a(-1.0F, -0.35F), dkm.b.a(-0.35F, -0.1F), dkm.b.a(-0.1F, 0.1F), dkm.b.a(0.1F, 0.3F), dkm.b.a(0.3F, 1.0F)};
-   private final dkm.b[] r = new dkm.b[]{
-      dkm.b.a(-1.0F, -0.78F),
-      dkm.b.a(-0.78F, -0.375F),
-      dkm.b.a(-0.375F, -0.2225F),
-      dkm.b.a(-0.2225F, 0.05F),
-      dkm.b.a(0.05F, 0.45F),
-      dkm.b.a(0.45F, 0.55F),
-      dkm.b.a(0.55F, 1.0F)
-   };
-   private final dkm.b s = this.p[0];
-   private final dkm.b t = dkm.b.a(this.p[1], this.p[4]);
-   private final dkm.b u = dkm.b.a(-1.2F, -1.05F);
-   private final dkm.b v = dkm.b.a(-1.05F, -0.455F);
-   private final dkm.b w = dkm.b.a(-0.455F, -0.19F);
-   private final dkm.b x = dkm.b.a(-0.19F, -0.11F);
-   private final dkm.b y = dkm.b.a(-0.11F, 0.55F);
-   private final dkm.b z = dkm.b.a(-0.11F, 0.03F);
-   private final dkm.b A = dkm.b.a(0.03F, 0.3F);
-   private final dkm.b B = dkm.b.a(0.3F, 1.0F);
-   private final alf<dkd>[][] C = new alf[][]{{dkk.Y, dkk.W, dkk.U, dkk.S, dkk.Q}, {dkk.X, dkk.V, dkk.T, dkk.R, dkk.Q}};
-   private final alf<dkd>[][] D = new alf[][]{
-      {dkk.d, dkk.d, dkk.d, dkk.r, dkk.q},
-      {dkk.b, dkk.b, dkk.i, dkk.q, dkk.p},
-      {dkk.j, dkk.b, dkk.i, dkk.k, dkk.l},
-      {dkk.s, dkk.s, dkk.i, dkk.y, dkk.y},
-      {dkk.f, dkk.f, dkk.f, dkk.f, dkk.f}
-   };
-   private final alf<dkd>[][] E = new alf[][]{
-      {dkk.e, null, dkk.r, null, null},
-      {null, null, null, null, dkk.o},
-      {dkk.c, null, null, dkk.n, null},
-      {null, null, dkk.b, dkk.z, dkk.A},
-      {null, null, null, null, null}
-   };
-   private final alf<dkd>[][] F = new alf[][]{
-      {dkk.d, dkk.d, dkk.d, dkk.r, dkk.r},
-      {dkk.E, dkk.E, dkk.i, dkk.q, dkk.p},
-      {dkk.E, dkk.E, dkk.E, dkk.E, dkk.m},
-      {dkk.t, dkk.t, dkk.i, dkk.i, dkk.y},
-      {dkk.B, dkk.B, dkk.B, dkk.D, dkk.D}
-   };
-   private final alf<dkd>[][] G = new alf[][]{
-      {dkk.e, null, null, null, null},
-      {dkk.F, null, dkk.E, dkk.E, dkk.o},
-      {dkk.F, dkk.F, dkk.i, dkk.k, null},
-      {null, null, null, null, null},
-      {dkk.C, dkk.C, null, null, null}
-   };
-   private final alf<dkd>[][] H = new alf[][]{
-      {dkk.v, dkk.v, dkk.u, dkk.w, dkk.w},
-      {dkk.v, dkk.v, dkk.u, dkk.w, dkk.w},
-      {dkk.u, dkk.u, dkk.u, dkk.w, dkk.w},
-      {null, null, null, null, null},
-      {null, null, null, null, null}
-   };
+public class dkt {
+   private static final boolean b = false;
+   private static final float c = 10000.0F;
+   @VisibleForTesting
+   protected static final int a = 7;
 
-   public List<dkm.d> a() {
-      dkm.b $$0 = dkm.b.a(0.0F);
-      float $$1 = 0.16F;
-      return List.of(
-         new dkm.d(this.o, this.o, dkm.b.a(this.y, this.o), this.o, $$0, dkm.b.a(-1.0F, -0.16F), 0L),
-         new dkm.d(this.o, this.o, dkm.b.a(this.y, this.o), this.o, $$0, dkm.b.a(0.16F, 1.0F), 0L)
+   public static dkt.h a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      return new dkt.h(a($$0), a($$1), a($$2), a($$3), a($$4), a($$5));
+   }
+
+   public static dkt.d a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
+      return new dkt.d(dkt.b.a($$0), dkt.b.a($$1), dkt.b.a($$2), dkt.b.a($$3), dkt.b.a($$4), dkt.b.a($$5), a($$6));
+   }
+
+   public static dkt.d a(dkt.b $$0, dkt.b $$1, dkt.b $$2, dkt.b $$3, dkt.b $$4, dkt.b $$5, float $$6) {
+      return new dkt.d($$0, $$1, $$2, $$3, $$4, $$5, a($$6));
+   }
+
+   public static long a(float $$0) {
+      return (long)($$0 * 10000.0F);
+   }
+
+   public static float a(long $$0) {
+      return (float)$$0 / 10000.0F;
+   }
+
+   public static dkt.f a() {
+      egg $$0 = egh.a();
+      return new dkt.f($$0, $$0, $$0, $$0, $$0, $$0, List.of());
+   }
+
+   public static iv a(List<dkt.d> $$0, dkt.f $$1) {
+      return (new dkt.g($$0, $$1)).b.a();
+   }
+
+   interface a<T> {
+      long distance(dkt.e.b<T> var1, long[] var2);
+   }
+
+   public static record b(long b, long c) {
+      public static final Codec<dkt.b> a = ayu.a(
+         Codec.floatRange(-2.0F, 2.0F),
+         "min",
+         "max",
+         ($$0, $$1) -> $$0.compareTo($$1) > 0
+               ? DataResult.error(() -> "Cannon construct interval, min > max (" + $$0 + " > " + $$1 + ")")
+               : DataResult.success(new dkt.b(dkt.a($$0), dkt.a($$1))),
+         $$0 -> dkt.a($$0.a()),
+         $$0 -> dkt.a($$0.b())
       );
-   }
 
-   protected void a(Consumer<Pair<dkm.d, alf<dkd>>> $$0) {
-      if (ab.ar) {
-         this.b($$0);
-      } else {
-         this.c($$0);
-         this.d($$0);
-         this.e($$0);
+      public static dkt.b a(float $$0) {
+         return a($$0, $$0);
       }
-   }
 
-   private void b(Consumer<Pair<dkm.d, alf<dkd>>> $$0) {
-      jg.a $$1 = ov.a();
-      jf<efz> $$2 = $$1.e(mg.aO);
-      ega.w.a $$3 = new ega.w.a($$2.b(egn.d));
-      ega.w.a $$4 = new ega.w.a($$2.b(egn.e));
-      ega.w.a $$5 = new ega.w.a($$2.b(egn.g));
-      $$0.accept(Pair.of(dkm.a(this.o, this.o, this.o, this.o, dkm.b.a(0.0F), this.o, 0.01F), dkk.b));
-      if (qw.a($$4, $$5, -0.15F, 0.0F, 0.0F, 0.1F, 0.0F, -0.03F, false, false, bar.a) instanceof ayn.e<?, ?> $$7) {
-         alf<dkd> $$8 = dkk.f;
-
-         for (float $$9 : $$7.e()) {
-            $$0.accept(Pair.of(dkm.a(this.o, this.o, this.o, dkm.b.a($$9), dkm.b.a(0.0F), this.o, 0.0F), $$8));
-            $$8 = $$8 == dkk.f ? dkk.B : dkk.f;
+      public static dkt.b a(float $$0, float $$1) {
+         if ($$0 > $$1) {
+            throw new IllegalArgumentException("min > max: " + $$0 + " " + $$1);
+         } else {
+            return new dkt.b(dkt.a($$0), dkt.a($$1));
          }
       }
 
-      if (qw.a($$3, $$4, $$5, false) instanceof ayn.e<?, ?> $$11) {
-         for (float $$12 : $$11.e()) {
-            $$0.accept(Pair.of(dkm.a(this.o, this.o, dkm.b.a($$12), this.o, dkm.b.a(0.0F), this.o, 0.0F), dkk.r));
+      public static dkt.b a(dkt.b $$0, dkt.b $$1) {
+         if ($$0.a() > $$1.b()) {
+            throw new IllegalArgumentException("min > max: " + $$0 + " " + $$1);
+         } else {
+            return new dkt.b($$0.a(), $$1.b());
          }
       }
-   }
 
-   private void c(Consumer<Pair<dkm.d, alf<dkd>>> $$0) {
-      this.a($$0, this.o, this.o, this.u, this.o, this.o, 0.0F, dkk.Z);
+      @Override
+      public String toString() {
+         return this.b == this.c ? String.format(Locale.ROOT, "%d", this.b) : String.format(Locale.ROOT, "[%d-%d]", this.b, this.c);
+      }
 
-      for (int $$1 = 0; $$1 < this.p.length; $$1++) {
-         dkm.b $$2 = this.p[$$1];
-         this.a($$0, $$2, this.o, this.v, this.o, this.o, 0.0F, this.C[0][$$1]);
-         this.a($$0, $$2, this.o, this.w, this.o, this.o, 0.0F, this.C[1][$$1]);
+      public long a(long $$0) {
+         long $$1 = $$0 - this.c;
+         long $$2 = this.b - $$0;
+         return $$1 > 0L ? $$1 : Math.max($$2, 0L);
+      }
+
+      public long a(dkt.b $$0) {
+         long $$1 = $$0.a() - this.c;
+         long $$2 = this.b - $$0.b();
+         return $$1 > 0L ? $$1 : Math.max($$2, 0L);
+      }
+
+      public dkt.b b(@Nullable dkt.b $$0) {
+         return $$0 == null ? this : new dkt.b(Math.min(this.b, $$0.a()), Math.max(this.c, $$0.b()));
+      }
+
+      public long a() {
+         return this.b;
+      }
+
+      public long b() {
+         return this.c;
       }
    }
 
-   private void d(Consumer<Pair<dkm.d, alf<dkd>>> $$0) {
-      this.c($$0, dkm.b.a(-1.0F, -0.93333334F));
-      this.b($$0, dkm.b.a(-0.93333334F, -0.7666667F));
-      this.a($$0, dkm.b.a(-0.7666667F, -0.56666666F));
-      this.b($$0, dkm.b.a(-0.56666666F, -0.4F));
-      this.c($$0, dkm.b.a(-0.4F, -0.26666668F));
-      this.d($$0, dkm.b.a(-0.26666668F, -0.05F));
-      this.e($$0, dkm.b.a(-0.05F, 0.05F));
-      this.d($$0, dkm.b.a(0.05F, 0.26666668F));
-      this.c($$0, dkm.b.a(0.26666668F, 0.4F));
-      this.b($$0, dkm.b.a(0.4F, 0.56666666F));
-      this.a($$0, dkm.b.a(0.56666666F, 0.7666667F));
-      this.b($$0, dkm.b.a(0.7666667F, 0.93333334F));
-      this.c($$0, dkm.b.a(0.93333334F, 1.0F));
-   }
+   public static class c<T> {
+      private final List<Pair<dkt.d, T>> a;
+      private final dkt.e<T> b;
 
-   private void a(Consumer<Pair<dkm.d, alf<dkd>>> $$0, dkm.b $$1) {
-      for (int $$2 = 0; $$2 < this.p.length; $$2++) {
-         dkm.b $$3 = this.p[$$2];
+      public static <T> Codec<dkt.c<T>> a(MapCodec<T> $$0) {
+         return ayu.b(
+               RecordCodecBuilder.create(
+                     $$1 -> $$1.group(dkt.d.a.fieldOf("parameters").forGetter(Pair::getFirst), $$0.forGetter(Pair::getSecond)).apply($$1, Pair::of)
+                  )
+                  .listOf()
+            )
+            .xmap(dkt.c::new, dkt.c::a);
+      }
 
-         for (int $$4 = 0; $$4 < this.q.length; $$4++) {
-            dkm.b $$5 = this.q[$$4];
-            alf<dkd> $$6 = this.a($$2, $$4, $$1);
-            alf<dkd> $$7 = this.b($$2, $$4, $$1);
-            alf<dkd> $$8 = this.c($$2, $$4, $$1);
-            alf<dkd> $$9 = this.e($$2, $$4, $$1);
-            alf<dkd> $$10 = this.h($$2, $$4, $$1);
-            alf<dkd> $$11 = this.a($$2, $$4, $$1, $$10);
-            alf<dkd> $$12 = this.f($$2, $$4, $$1);
-            this.a($$0, $$3, $$5, dkm.b.a(this.x, this.B), this.r[0], $$1, 0.0F, $$12);
-            this.a($$0, $$3, $$5, dkm.b.a(this.x, this.z), this.r[1], $$1, 0.0F, $$8);
-            this.a($$0, $$3, $$5, dkm.b.a(this.A, this.B), this.r[1], $$1, 0.0F, $$12);
-            this.a($$0, $$3, $$5, dkm.b.a(this.x, this.z), dkm.b.a(this.r[2], this.r[3]), $$1, 0.0F, $$6);
-            this.a($$0, $$3, $$5, dkm.b.a(this.A, this.B), this.r[2], $$1, 0.0F, $$9);
-            this.a($$0, $$3, $$5, this.A, this.r[3], $$1, 0.0F, $$7);
-            this.a($$0, $$3, $$5, this.B, this.r[3], $$1, 0.0F, $$9);
-            this.a($$0, $$3, $$5, dkm.b.a(this.x, this.B), this.r[4], $$1, 0.0F, $$6);
-            this.a($$0, $$3, $$5, dkm.b.a(this.x, this.z), this.r[5], $$1, 0.0F, $$11);
-            this.a($$0, $$3, $$5, dkm.b.a(this.A, this.B), this.r[5], $$1, 0.0F, $$10);
-            this.a($$0, $$3, $$5, dkm.b.a(this.x, this.B), this.r[6], $$1, 0.0F, $$6);
+      public c(List<Pair<dkt.d, T>> $$0) {
+         this.a = $$0;
+         this.b = dkt.e.a($$0);
+      }
+
+      public List<Pair<dkt.d, T>> a() {
+         return this.a;
+      }
+
+      public T a(dkt.h $$0) {
+         return this.c($$0);
+      }
+
+      @VisibleForTesting
+      public T b(dkt.h $$0) {
+         Iterator<Pair<dkt.d, T>> $$1 = this.a().iterator();
+         Pair<dkt.d, T> $$2 = $$1.next();
+         long $$3 = ((dkt.d)$$2.getFirst()).a($$0);
+         T $$4 = (T)$$2.getSecond();
+
+         while ($$1.hasNext()) {
+            Pair<dkt.d, T> $$5 = $$1.next();
+            long $$6 = ((dkt.d)$$5.getFirst()).a($$0);
+            if ($$6 < $$3) {
+               $$3 = $$6;
+               $$4 = (T)$$5.getSecond();
+            }
          }
+
+         return $$4;
+      }
+
+      public T c(dkt.h $$0) {
+         return this.a($$0, dkt.e.b::a);
+      }
+
+      protected T a(dkt.h $$0, dkt.a<T> $$1) {
+         return this.b.a($$0, $$1);
       }
    }
 
-   private void b(Consumer<Pair<dkm.d, alf<dkd>>> $$0, dkm.b $$1) {
-      for (int $$2 = 0; $$2 < this.p.length; $$2++) {
-         dkm.b $$3 = this.p[$$2];
+   public static record d(dkt.b b, dkt.b c, dkt.b d, dkt.b e, dkt.b f, dkt.b g, long h) {
+      public static final Codec<dkt.d> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  dkt.b.a.fieldOf("temperature").forGetter($$0x -> $$0x.b),
+                  dkt.b.a.fieldOf("humidity").forGetter($$0x -> $$0x.c),
+                  dkt.b.a.fieldOf("continentalness").forGetter($$0x -> $$0x.d),
+                  dkt.b.a.fieldOf("erosion").forGetter($$0x -> $$0x.e),
+                  dkt.b.a.fieldOf("depth").forGetter($$0x -> $$0x.f),
+                  dkt.b.a.fieldOf("weirdness").forGetter($$0x -> $$0x.g),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("offset").xmap(dkt::a, dkt::a).forGetter($$0x -> $$0x.h)
+               )
+               .apply($$0, dkt.d::new)
+      );
 
-         for (int $$4 = 0; $$4 < this.q.length; $$4++) {
-            dkm.b $$5 = this.q[$$4];
-            alf<dkd> $$6 = this.a($$2, $$4, $$1);
-            alf<dkd> $$7 = this.b($$2, $$4, $$1);
-            alf<dkd> $$8 = this.c($$2, $$4, $$1);
-            alf<dkd> $$9 = this.e($$2, $$4, $$1);
-            alf<dkd> $$10 = this.h($$2, $$4, $$1);
-            alf<dkd> $$11 = this.a($$2, $$4, $$1, $$6);
-            alf<dkd> $$12 = this.g($$2, $$4, $$1);
-            alf<dkd> $$13 = this.f($$2, $$4, $$1);
-            this.a($$0, $$3, $$5, this.x, dkm.b.a(this.r[0], this.r[1]), $$1, 0.0F, $$6);
-            this.a($$0, $$3, $$5, this.z, this.r[0], $$1, 0.0F, $$12);
-            this.a($$0, $$3, $$5, dkm.b.a(this.A, this.B), this.r[0], $$1, 0.0F, $$13);
-            this.a($$0, $$3, $$5, this.z, this.r[1], $$1, 0.0F, $$8);
-            this.a($$0, $$3, $$5, dkm.b.a(this.A, this.B), this.r[1], $$1, 0.0F, $$12);
-            this.a($$0, $$3, $$5, dkm.b.a(this.x, this.z), dkm.b.a(this.r[2], this.r[3]), $$1, 0.0F, $$6);
-            this.a($$0, $$3, $$5, dkm.b.a(this.A, this.B), this.r[2], $$1, 0.0F, $$9);
-            this.a($$0, $$3, $$5, this.A, this.r[3], $$1, 0.0F, $$7);
-            this.a($$0, $$3, $$5, this.B, this.r[3], $$1, 0.0F, $$9);
-            this.a($$0, $$3, $$5, dkm.b.a(this.x, this.B), this.r[4], $$1, 0.0F, $$6);
-            this.a($$0, $$3, $$5, dkm.b.a(this.x, this.z), this.r[5], $$1, 0.0F, $$11);
-            this.a($$0, $$3, $$5, dkm.b.a(this.A, this.B), this.r[5], $$1, 0.0F, $$10);
-            this.a($$0, $$3, $$5, dkm.b.a(this.x, this.B), this.r[6], $$1, 0.0F, $$6);
-         }
+      long a(dkt.h $$0) {
+         return azm.b(this.b.a($$0.a))
+            + azm.b(this.c.a($$0.b))
+            + azm.b(this.d.a($$0.c))
+            + azm.b(this.e.a($$0.d))
+            + azm.b(this.f.a($$0.e))
+            + azm.b(this.g.a($$0.f))
+            + azm.b(this.h);
+      }
+
+      protected List<dkt.b> a() {
+         return ImmutableList.of(this.b, this.c, this.d, this.e, this.f, this.g, new dkt.b(this.h, this.h));
       }
    }
 
-   private void c(Consumer<Pair<dkm.d, alf<dkd>>> $$0, dkm.b $$1) {
-      this.a($$0, this.o, this.o, this.x, dkm.b.a(this.r[0], this.r[2]), $$1, 0.0F, dkk.P);
-      this.a($$0, dkm.b.a(this.p[1], this.p[2]), this.o, dkm.b.a(this.z, this.B), this.r[6], $$1, 0.0F, dkk.g);
-      this.a($$0, dkm.b.a(this.p[3], this.p[4]), this.o, dkm.b.a(this.z, this.B), this.r[6], $$1, 0.0F, dkk.h);
+   protected static final class e<T> {
+      private static final int a = 6;
+      private final dkt.e.b<T> b;
+      private final ThreadLocal<dkt.e.a<T>> c = new ThreadLocal<>();
 
-      for (int $$2 = 0; $$2 < this.p.length; $$2++) {
-         dkm.b $$3 = this.p[$$2];
+      private e(dkt.e.b<T> $$0) {
+         this.b = $$0;
+      }
 
-         for (int $$4 = 0; $$4 < this.q.length; $$4++) {
-            dkm.b $$5 = this.q[$$4];
-            alf<dkd> $$6 = this.a($$2, $$4, $$1);
-            alf<dkd> $$7 = this.b($$2, $$4, $$1);
-            alf<dkd> $$8 = this.c($$2, $$4, $$1);
-            alf<dkd> $$9 = this.h($$2, $$4, $$1);
-            alf<dkd> $$10 = this.e($$2, $$4, $$1);
-            alf<dkd> $$11 = this.a($$2, $$4);
-            alf<dkd> $$12 = this.a($$2, $$4, $$1, $$6);
-            alf<dkd> $$13 = this.d($$2, $$4, $$1);
-            alf<dkd> $$14 = this.g($$2, $$4, $$1);
-            this.a($$0, $$3, $$5, dkm.b.a(this.z, this.B), this.r[0], $$1, 0.0F, $$14);
-            this.a($$0, $$3, $$5, dkm.b.a(this.z, this.A), this.r[1], $$1, 0.0F, $$8);
-            this.a($$0, $$3, $$5, this.B, this.r[1], $$1, 0.0F, $$2 == 0 ? $$14 : $$10);
-            this.a($$0, $$3, $$5, this.z, this.r[2], $$1, 0.0F, $$6);
-            this.a($$0, $$3, $$5, this.A, this.r[2], $$1, 0.0F, $$7);
-            this.a($$0, $$3, $$5, this.B, this.r[2], $$1, 0.0F, $$10);
-            this.a($$0, $$3, $$5, dkm.b.a(this.x, this.z), this.r[3], $$1, 0.0F, $$6);
-            this.a($$0, $$3, $$5, dkm.b.a(this.A, this.B), this.r[3], $$1, 0.0F, $$7);
-            if ($$1.b() < 0L) {
-               this.a($$0, $$3, $$5, this.x, this.r[4], $$1, 0.0F, $$11);
-               this.a($$0, $$3, $$5, dkm.b.a(this.z, this.B), this.r[4], $$1, 0.0F, $$6);
+      public static <T> dkt.e<T> a(List<Pair<dkt.d, T>> $$0) {
+         if ($$0.isEmpty()) {
+            throw new IllegalArgumentException("Need at least one value to build the search tree.");
+         } else {
+            int $$1 = ((dkt.d)$$0.get(0).getFirst()).a().size();
+            if ($$1 != 7) {
+               throw new IllegalStateException("Expecting parameter space to be 7, got " + $$1);
             } else {
-               this.a($$0, $$3, $$5, dkm.b.a(this.x, this.B), this.r[4], $$1, 0.0F, $$6);
-            }
-
-            this.a($$0, $$3, $$5, this.x, this.r[5], $$1, 0.0F, $$13);
-            this.a($$0, $$3, $$5, this.z, this.r[5], $$1, 0.0F, $$12);
-            this.a($$0, $$3, $$5, dkm.b.a(this.A, this.B), this.r[5], $$1, 0.0F, $$9);
-            if ($$1.b() < 0L) {
-               this.a($$0, $$3, $$5, this.x, this.r[6], $$1, 0.0F, $$11);
-            } else {
-               this.a($$0, $$3, $$5, this.x, this.r[6], $$1, 0.0F, $$6);
-            }
-
-            if ($$2 == 0) {
-               this.a($$0, $$3, $$5, dkm.b.a(this.z, this.B), this.r[6], $$1, 0.0F, $$6);
+               List<dkt.e.a<T>> $$2 = $$0.stream()
+                  .map($$0x -> new dkt.e.a<>((dkt.d)$$0x.getFirst(), $$0x.getSecond()))
+                  .collect(Collectors.toCollection(ArrayList::new));
+               return new dkt.e<>(a($$1, $$2));
             }
          }
       }
+
+      private static <T> dkt.e.b<T> a(int $$0, List<? extends dkt.e.b<T>> $$1) {
+         if ($$1.isEmpty()) {
+            throw new IllegalStateException("Need at least one child to build a node");
+         } else if ($$1.size() == 1) {
+            return (dkt.e.b<T>)$$1.get(0);
+         } else if ($$1.size() <= 6) {
+            $$1.sort(Comparator.comparingLong($$1x -> {
+               long $$2x = 0L;
+
+               for (int $$3x = 0; $$3x < $$0; $$3x++) {
+                  dkt.b $$4x = $$1x.a[$$3x];
+                  $$2x += Math.abs(($$4x.a() + $$4x.b()) / 2L);
+               }
+
+               return $$2x;
+            }));
+            return new dkt.e.c<>($$1);
+         } else {
+            long $$2 = Long.MAX_VALUE;
+            int $$3 = -1;
+            List<dkt.e.c<T>> $$4 = null;
+
+            for (int $$5 = 0; $$5 < $$0; $$5++) {
+               a($$1, $$0, $$5, false);
+               List<dkt.e.c<T>> $$6 = b($$1);
+               long $$7 = 0L;
+
+               for (dkt.e.c<T> $$8 : $$6) {
+                  $$7 += a($$8.a);
+               }
+
+               if ($$2 > $$7) {
+                  $$2 = $$7;
+                  $$3 = $$5;
+                  $$4 = $$6;
+               }
+            }
+
+            a($$4, $$0, $$3, true);
+            return new dkt.e.c<>($$4.stream().map($$1x -> a($$0, Arrays.asList($$1x.b))).collect(Collectors.toList()));
+         }
+      }
+
+      private static <T> void a(List<? extends dkt.e.b<T>> $$0, int $$1, int $$2, boolean $$3) {
+         Comparator<dkt.e.b<T>> $$4 = a($$2, $$3);
+
+         for (int $$5 = 1; $$5 < $$1; $$5++) {
+            $$4 = $$4.thenComparing(a(($$2 + $$5) % $$1, $$3));
+         }
+
+         $$0.sort($$4);
+      }
+
+      private static <T> Comparator<dkt.e.b<T>> a(int $$0, boolean $$1) {
+         return Comparator.comparingLong($$2 -> {
+            dkt.b $$3 = $$2.a[$$0];
+            long $$4 = ($$3.a() + $$3.b()) / 2L;
+            return $$1 ? Math.abs($$4) : $$4;
+         });
+      }
+
+      private static <T> List<dkt.e.c<T>> b(List<? extends dkt.e.b<T>> $$0) {
+         List<dkt.e.c<T>> $$1 = Lists.newArrayList();
+         List<dkt.e.b<T>> $$2 = Lists.newArrayList();
+         int $$3 = (int)Math.pow(6.0, Math.floor(Math.log((double)$$0.size() - 0.01) / Math.log(6.0)));
+
+         for (dkt.e.b<T> $$4 : $$0) {
+            $$2.add($$4);
+            if ($$2.size() >= $$3) {
+               $$1.add(new dkt.e.c<>($$2));
+               $$2 = Lists.newArrayList();
+            }
+         }
+
+         if (!$$2.isEmpty()) {
+            $$1.add(new dkt.e.c<>($$2));
+         }
+
+         return $$1;
+      }
+
+      private static long a(dkt.b[] $$0) {
+         long $$1 = 0L;
+
+         for (dkt.b $$2 : $$0) {
+            $$1 += Math.abs($$2.b() - $$2.a());
+         }
+
+         return $$1;
+      }
+
+      static <T> List<dkt.b> c(List<? extends dkt.e.b<T>> $$0) {
+         if ($$0.isEmpty()) {
+            throw new IllegalArgumentException("SubTree needs at least one child");
+         } else {
+            int $$1 = 7;
+            List<dkt.b> $$2 = Lists.newArrayList();
+
+            for (int $$3 = 0; $$3 < 7; $$3++) {
+               $$2.add(null);
+            }
+
+            for (dkt.e.b<T> $$4 : $$0) {
+               for (int $$5 = 0; $$5 < 7; $$5++) {
+                  $$2.set($$5, $$4.a[$$5].b($$2.get($$5)));
+               }
+            }
+
+            return $$2;
+         }
+      }
+
+      public T a(dkt.h $$0, dkt.a<T> $$1) {
+         long[] $$2 = $$0.a();
+         dkt.e.a<T> $$3 = this.b.a($$2, this.c.get(), $$1);
+         this.c.set($$3);
+         return $$3.b;
+      }
+
+      static final class a<T> extends dkt.e.b<T> {
+         final T b;
+
+         a(dkt.d $$0, T $$1) {
+            super($$0.a());
+            this.b = $$1;
+         }
+
+         @Override
+         protected dkt.e.a<T> a(long[] $$0, @Nullable dkt.e.a<T> $$1, dkt.a<T> $$2) {
+            return this;
+         }
+      }
+
+      abstract static class b<T> {
+         protected final dkt.b[] a;
+
+         protected b(List<dkt.b> $$0) {
+            this.a = $$0.toArray(new dkt.b[0]);
+         }
+
+         protected abstract dkt.e.a<T> a(long[] var1, @Nullable dkt.e.a<T> var2, dkt.a<T> var3);
+
+         protected long a(long[] $$0) {
+            long $$1 = 0L;
+
+            for (int $$2 = 0; $$2 < 7; $$2++) {
+               $$1 += azm.b(this.a[$$2].a($$0[$$2]));
+            }
+
+            return $$1;
+         }
+
+         @Override
+         public String toString() {
+            return Arrays.toString((Object[])this.a);
+         }
+      }
+
+      static final class c<T> extends dkt.e.b<T> {
+         final dkt.e.b<T>[] b;
+
+         protected c(List<? extends dkt.e.b<T>> $$0) {
+            this(dkt.e.c($$0), $$0);
+         }
+
+         protected c(List<dkt.b> $$0, List<? extends dkt.e.b<T>> $$1) {
+            super($$0);
+            this.b = $$1.toArray(new dkt.e.b[0]);
+         }
+
+         @Override
+         protected dkt.e.a<T> a(long[] $$0, @Nullable dkt.e.a<T> $$1, dkt.a<T> $$2) {
+            long $$3 = $$1 == null ? Long.MAX_VALUE : $$2.distance($$1, $$0);
+            dkt.e.a<T> $$4 = $$1;
+
+            for (dkt.e.b<T> $$5 : this.b) {
+               long $$6 = $$2.distance($$5, $$0);
+               if ($$3 > $$6) {
+                  dkt.e.a<T> $$7 = $$5.a($$0, $$4, $$2);
+                  long $$8 = $$5 == $$7 ? $$6 : $$2.distance($$7, $$0);
+                  if ($$3 > $$8) {
+                     $$3 = $$8;
+                     $$4 = $$7;
+                  }
+               }
+            }
+
+            return $$4;
+         }
+      }
    }
 
-   private void d(Consumer<Pair<dkm.d, alf<dkd>>> $$0, dkm.b $$1) {
-      this.a($$0, this.o, this.o, this.x, dkm.b.a(this.r[0], this.r[2]), $$1, 0.0F, dkk.P);
-      this.a($$0, dkm.b.a(this.p[1], this.p[2]), this.o, dkm.b.a(this.z, this.B), this.r[6], $$1, 0.0F, dkk.g);
-      this.a($$0, dkm.b.a(this.p[3], this.p[4]), this.o, dkm.b.a(this.z, this.B), this.r[6], $$1, 0.0F, dkk.h);
+   public static record f(egg a, egg b, egg c, egg d, egg e, egg f, List<dkt.d> g) {
+      public dkt.h a(int $$0, int $$1, int $$2) {
+         int $$3 = jq.c($$0);
+         int $$4 = jq.c($$1);
+         int $$5 = jq.c($$2);
+         egg.e $$6 = new egg.e($$3, $$4, $$5);
+         return dkt.a((float)this.a.a($$6), (float)this.b.a($$6), (float)this.c.a($$6), (float)this.d.a($$6), (float)this.e.a($$6), (float)this.f.a($$6));
+      }
 
-      for (int $$2 = 0; $$2 < this.p.length; $$2++) {
-         dkm.b $$3 = this.p[$$2];
+      public iv a() {
+         return this.g.isEmpty() ? iv.c : dkt.a(this.g, this);
+      }
 
-         for (int $$4 = 0; $$4 < this.q.length; $$4++) {
-            dkm.b $$5 = this.q[$$4];
-            alf<dkd> $$6 = this.a($$2, $$4, $$1);
-            alf<dkd> $$7 = this.b($$2, $$4, $$1);
-            alf<dkd> $$8 = this.c($$2, $$4, $$1);
-            alf<dkd> $$9 = this.a($$2, $$4);
-            alf<dkd> $$10 = this.a($$2, $$4, $$1, $$6);
-            alf<dkd> $$11 = this.d($$2, $$4, $$1);
-            this.a($$0, $$3, $$5, this.z, dkm.b.a(this.r[0], this.r[1]), $$1, 0.0F, $$7);
-            this.a($$0, $$3, $$5, dkm.b.a(this.A, this.B), dkm.b.a(this.r[0], this.r[1]), $$1, 0.0F, $$8);
-            this.a($$0, $$3, $$5, this.z, dkm.b.a(this.r[2], this.r[3]), $$1, 0.0F, $$6);
-            this.a($$0, $$3, $$5, dkm.b.a(this.A, this.B), dkm.b.a(this.r[2], this.r[3]), $$1, 0.0F, $$7);
-            this.a($$0, $$3, $$5, this.x, dkm.b.a(this.r[3], this.r[4]), $$1, 0.0F, $$9);
-            this.a($$0, $$3, $$5, dkm.b.a(this.z, this.B), this.r[4], $$1, 0.0F, $$6);
-            this.a($$0, $$3, $$5, this.x, this.r[5], $$1, 0.0F, $$11);
-            this.a($$0, $$3, $$5, this.z, this.r[5], $$1, 0.0F, $$10);
-            this.a($$0, $$3, $$5, dkm.b.a(this.A, this.B), this.r[5], $$1, 0.0F, $$6);
-            this.a($$0, $$3, $$5, this.x, this.r[6], $$1, 0.0F, $$9);
-            if ($$2 == 0) {
-               this.a($$0, $$3, $$5, dkm.b.a(this.z, this.B), this.r[6], $$1, 0.0F, $$6);
+      public egg b() {
+         return this.a;
+      }
+
+      public egg c() {
+         return this.b;
+      }
+
+      public egg d() {
+         return this.c;
+      }
+
+      public egg e() {
+         return this.d;
+      }
+
+      public egg f() {
+         return this.e;
+      }
+
+      public egg g() {
+         return this.f;
+      }
+
+      public List<dkt.d> h() {
+         return this.g;
+      }
+   }
+
+   static class g {
+      private static final long a = 2048L;
+      dkt.g.a b;
+
+      g(List<dkt.d> $$0, dkt.f $$1) {
+         this.b = a($$0, $$1, 0, 0);
+         this.a($$0, $$1, 2048.0F, 512.0F);
+         this.a($$0, $$1, 512.0F, 32.0F);
+      }
+
+      private void a(List<dkt.d> $$0, dkt.f $$1, float $$2, float $$3) {
+         float $$4 = 0.0F;
+         float $$5 = $$3;
+         iv $$6 = this.b.a();
+
+         while ($$5 <= $$2) {
+            int $$7 = $$6.u() + (int)(Math.sin((double)$$4) * (double)$$5);
+            int $$8 = $$6.w() + (int)(Math.cos((double)$$4) * (double)$$5);
+            dkt.g.a $$9 = a($$0, $$1, $$7, $$8);
+            if ($$9.b() < this.b.b()) {
+               this.b = $$9;
+            }
+
+            $$4 += $$3 / $$5;
+            if ((double)$$4 > Math.PI * 2) {
+               $$4 = 0.0F;
+               $$5 += $$3;
             }
          }
       }
-   }
 
-   private void e(Consumer<Pair<dkm.d, alf<dkd>>> $$0, dkm.b $$1) {
-      this.a($$0, this.s, this.o, this.x, dkm.b.a(this.r[0], this.r[1]), $$1, 0.0F, $$1.b() < 0L ? dkk.P : dkk.M);
-      this.a($$0, this.t, this.o, this.x, dkm.b.a(this.r[0], this.r[1]), $$1, 0.0F, $$1.b() < 0L ? dkk.P : dkk.L);
-      this.a($$0, this.s, this.o, this.z, dkm.b.a(this.r[0], this.r[1]), $$1, 0.0F, dkk.M);
-      this.a($$0, this.t, this.o, this.z, dkm.b.a(this.r[0], this.r[1]), $$1, 0.0F, dkk.L);
-      this.a($$0, this.s, this.o, dkm.b.a(this.x, this.B), dkm.b.a(this.r[2], this.r[5]), $$1, 0.0F, dkk.M);
-      this.a($$0, this.t, this.o, dkm.b.a(this.x, this.B), dkm.b.a(this.r[2], this.r[5]), $$1, 0.0F, dkk.L);
-      this.a($$0, this.s, this.o, this.x, this.r[6], $$1, 0.0F, dkk.M);
-      this.a($$0, this.t, this.o, this.x, this.r[6], $$1, 0.0F, dkk.L);
-      this.a($$0, dkm.b.a(this.p[1], this.p[2]), this.o, dkm.b.a(this.y, this.B), this.r[6], $$1, 0.0F, dkk.g);
-      this.a($$0, dkm.b.a(this.p[3], this.p[4]), this.o, dkm.b.a(this.y, this.B), this.r[6], $$1, 0.0F, dkk.h);
-      this.a($$0, this.s, this.o, dkm.b.a(this.y, this.B), this.r[6], $$1, 0.0F, dkk.M);
+      private static dkt.g.a a(List<dkt.d> $$0, dkt.f $$1, int $$2, int $$3) {
+         dkt.h $$4 = $$1.a(jq.a($$2), 0, jq.a($$3));
+         dkt.h $$5 = new dkt.h($$4.b(), $$4.c(), $$4.d(), $$4.e(), 0L, $$4.g());
+         long $$6 = Long.MAX_VALUE;
 
-      for (int $$2 = 0; $$2 < this.p.length; $$2++) {
-         dkm.b $$3 = this.p[$$2];
-
-         for (int $$4 = 0; $$4 < this.q.length; $$4++) {
-            dkm.b $$5 = this.q[$$4];
-            alf<dkd> $$6 = this.b($$2, $$4, $$1);
-            this.a($$0, $$3, $$5, dkm.b.a(this.A, this.B), dkm.b.a(this.r[0], this.r[1]), $$1, 0.0F, $$6);
+         for (dkt.d $$7 : $$0) {
+            $$6 = Math.min($$6, $$7.a($$5));
          }
+
+         long $$8 = azm.b((long)$$2) + azm.b((long)$$3);
+         long $$9 = $$6 * azm.b(2048L) + $$8;
+         return new dkt.g.a(new iv($$2, 0, $$3), $$9);
+      }
+
+      static record a(iv a, long b) {
       }
    }
 
-   private void e(Consumer<Pair<dkm.d, alf<dkd>>> $$0) {
-      this.b($$0, this.o, this.o, dkm.b.a(0.8F, 1.0F), this.o, this.o, 0.0F, dkk.aa);
-      this.b($$0, this.o, dkm.b.a(0.7F, 1.0F), this.o, this.o, this.o, 0.0F, dkk.ab);
-      this.c($$0, this.o, this.o, this.o, dkm.b.a(this.r[0], this.r[1]), this.o, 0.0F, dkk.ac);
-   }
+   public static record h(long a, long b, long c, long d, long e, long f) {
 
-   private alf<dkd> a(int $$0, int $$1, dkm.b $$2) {
-      if ($$2.b() < 0L) {
-         return this.D[$$0][$$1];
-      } else {
-         alf<dkd> $$3 = this.E[$$0][$$1];
-         return $$3 == null ? this.D[$$0][$$1] : $$3;
-      }
-   }
-
-   private alf<dkd> b(int $$0, int $$1, dkm.b $$2) {
-      return $$0 == 4 ? this.a($$1, $$2) : this.a($$0, $$1, $$2);
-   }
-
-   private alf<dkd> c(int $$0, int $$1, dkm.b $$2) {
-      return $$0 == 0 ? this.g($$0, $$1, $$2) : this.b($$0, $$1, $$2);
-   }
-
-   private alf<dkd> a(int $$0, int $$1, dkm.b $$2, alf<dkd> $$3) {
-      return $$0 > 1 && $$1 < 4 && $$2.b() >= 0L ? dkk.x : $$3;
-   }
-
-   private alf<dkd> d(int $$0, int $$1, dkm.b $$2) {
-      alf<dkd> $$3 = $$2.b() >= 0L ? this.a($$0, $$1, $$2) : this.a($$0, $$1);
-      return this.a($$0, $$1, $$2, $$3);
-   }
-
-   private alf<dkd> a(int $$0, int $$1) {
-      if ($$0 == 0) {
-         return dkk.O;
-      } else {
-         return $$0 == 4 ? dkk.f : dkk.N;
-      }
-   }
-
-   private alf<dkd> a(int $$0, dkm.b $$1) {
-      if ($$0 < 2) {
-         return $$1.b() < 0L ? dkk.B : dkk.C;
-      } else {
-         return $$0 < 3 ? dkk.B : dkk.D;
-      }
-   }
-
-   private alf<dkd> e(int $$0, int $$1, dkm.b $$2) {
-      if ($$2.b() >= 0L) {
-         alf<dkd> $$3 = this.G[$$0][$$1];
-         if ($$3 != null) {
-            return $$3;
-         }
+      @VisibleForTesting
+      protected long[] a() {
+         return new long[]{this.a, this.b, this.c, this.d, this.e, this.f, 0L};
       }
 
-      return this.F[$$0][$$1];
-   }
-
-   private alf<dkd> f(int $$0, int $$1, dkm.b $$2) {
-      if ($$0 <= 2) {
-         return $$2.b() < 0L ? dkk.J : dkk.I;
-      } else {
-         return $$0 == 3 ? dkk.K : this.a($$1, $$2);
-      }
-   }
-
-   private alf<dkd> g(int $$0, int $$1, dkm.b $$2) {
-      if ($$0 >= 3) {
-         return this.e($$0, $$1, $$2);
-      } else {
-         return $$1 <= 1 ? dkk.H : dkk.G;
-      }
-   }
-
-   private alf<dkd> h(int $$0, int $$1, dkm.b $$2) {
-      alf<dkd> $$3 = this.H[$$0][$$1];
-      return $$3 == null ? this.a($$0, $$1, $$2) : $$3;
-   }
-
-   private void a(Consumer<Pair<dkm.d, alf<dkd>>> $$0, dkm.b $$1, dkm.b $$2, dkm.b $$3, dkm.b $$4, dkm.b $$5, float $$6, alf<dkd> $$7) {
-      $$0.accept(Pair.of(dkm.a($$1, $$2, $$3, $$4, dkm.b.a(0.0F), $$5, $$6), $$7));
-      $$0.accept(Pair.of(dkm.a($$1, $$2, $$3, $$4, dkm.b.a(1.0F), $$5, $$6), $$7));
-   }
-
-   private void b(Consumer<Pair<dkm.d, alf<dkd>>> $$0, dkm.b $$1, dkm.b $$2, dkm.b $$3, dkm.b $$4, dkm.b $$5, float $$6, alf<dkd> $$7) {
-      $$0.accept(Pair.of(dkm.a($$1, $$2, $$3, $$4, dkm.b.a(0.2F, 0.9F), $$5, $$6), $$7));
-   }
-
-   private void c(Consumer<Pair<dkm.d, alf<dkd>>> $$0, dkm.b $$1, dkm.b $$2, dkm.b $$3, dkm.b $$4, dkm.b $$5, float $$6, alf<dkd> $$7) {
-      $$0.accept(Pair.of(dkm.a($$1, $$2, $$3, $$4, dkm.b.a(1.1F), $$5, $$6), $$7));
-   }
-
-   public static boolean a(efz $$0, efz $$1, efz.b $$2) {
-      return $$0.a($$2) < -0.225F && $$1.a($$2) > 0.9F;
-   }
-
-   public static String a(double $$0) {
-      if ($$0 < (double)egn.a(0.05F)) {
-         return "Valley";
-      } else if ($$0 < (double)egn.a(0.26666668F)) {
-         return "Low";
-      } else if ($$0 < (double)egn.a(0.4F)) {
-         return "Mid";
-      } else {
-         return $$0 < (double)egn.a(0.56666666F) ? "High" : "Peak";
-      }
-   }
-
-   public String b(double $$0) {
-      double $$1 = (double)dkm.a((float)$$0);
-      if ($$1 < (double)this.u.b()) {
-         return "Mushroom fields";
-      } else if ($$1 < (double)this.v.b()) {
-         return "Deep ocean";
-      } else if ($$1 < (double)this.w.b()) {
-         return "Ocean";
-      } else if ($$1 < (double)this.x.b()) {
-         return "Coast";
-      } else if ($$1 < (double)this.z.b()) {
-         return "Near inland";
-      } else {
-         return $$1 < (double)this.A.b() ? "Mid inland" : "Far inland";
-      }
-   }
-
-   public String c(double $$0) {
-      return a($$0, this.r);
-   }
-
-   public String d(double $$0) {
-      return a($$0, this.p);
-   }
-
-   public String e(double $$0) {
-      return a($$0, this.q);
-   }
-
-   private static String a(double $$0, dkm.b[] $$1) {
-      double $$2 = (double)dkm.a((float)$$0);
-
-      for (int $$3 = 0; $$3 < $$1.length; $$3++) {
-         if ($$2 < (double)$$1[$$3].b()) {
-            return $$3 + "";
-         }
+      public long b() {
+         return this.a;
       }
 
-      return "?";
-   }
+      public long c() {
+         return this.b;
+      }
 
-   @bav
-   public dkm.b[] b() {
-      return this.p;
-   }
+      public long d() {
+         return this.c;
+      }
 
-   @bav
-   public dkm.b[] c() {
-      return this.q;
-   }
+      public long e() {
+         return this.d;
+      }
 
-   @bav
-   public dkm.b[] d() {
-      return this.r;
-   }
+      public long f() {
+         return this.e;
+      }
 
-   @bav
-   public dkm.b[] e() {
-      return new dkm.b[]{this.u, this.v, this.w, this.x, this.z, this.A, this.B};
-   }
-
-   @bav
-   public dkm.b[] f() {
-      return new dkm.b[]{
-         dkm.b.a(-2.0F, egn.a(0.05F)),
-         dkm.b.a(egn.a(0.05F), egn.a(0.26666668F)),
-         dkm.b.a(egn.a(0.26666668F), egn.a(0.4F)),
-         dkm.b.a(egn.a(0.4F), egn.a(0.56666666F)),
-         dkm.b.a(egn.a(0.56666666F), 2.0F)
-      };
-   }
-
-   @bav
-   public dkm.b[] g() {
-      return new dkm.b[]{dkm.b.a(-2.0F, 0.0F), dkm.b.a(0.0F, 2.0F)};
+      public long g() {
+         return this.f;
+      }
    }
 }

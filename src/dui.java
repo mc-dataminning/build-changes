@@ -1,31 +1,60 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dui extends dql implements dlw {
-   public static final MapCodec<dui> h = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cyb.q.fieldOf("color").forGetter(dui::b), t()).apply($$0, dui::new));
-   private final cyb i;
+public class dui extends dmm {
+   public static final MapCodec<dui> a = b(dui::new);
+   private static final ffr b = dmm.b(16.0, 0.0, 14.0);
+   private static final int c = 20;
 
    @Override
    public MapCodec<dui> a() {
-      return h;
+      return a;
    }
 
-   public dui(cyb $$0, eag.d $$1) {
-      super($$1);
-      this.i = $$0;
-      this.l(
-         this.C
-            .b()
-            .b(a, Boolean.valueOf(false))
-            .b(b, Boolean.valueOf(false))
-            .b(c, Boolean.valueOf(false))
-            .b(d, Boolean.valueOf(false))
-            .b(e, Boolean.valueOf(false))
-      );
+   public dui(ean.d $$0) {
+      super($$0);
    }
 
    @Override
-   public cyb b() {
-      return this.i;
+   protected ffr b(eao $$0, din $$1, iv $$2, ffc $$3) {
+      return b;
+   }
+
+   @Override
+   protected ffr b_(eao $$0, din $$1, iv $$2) {
+      return ffo.b();
+   }
+
+   @Override
+   protected ffr c(eao $$0, din $$1, iv $$2, ffc $$3) {
+      return ffo.b();
+   }
+
+   @Override
+   protected void a(eao $$0, arq $$1, iv $$2, azv $$3) {
+      dmt.b($$1, $$2.d(), $$0);
+   }
+
+   @Override
+   protected eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
+      if ($$4 == jb.b && $$6.a(dmo.J)) {
+         $$2.a($$3, this, 20);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Override
+   protected void a(eao $$0, djh $$1, iv $$2, eao $$3, boolean $$4) {
+      $$1.a($$2, this, 20);
+   }
+
+   @Override
+   protected boolean a(eao $$0, exk $$1) {
+      return false;
+   }
+
+   @Override
+   protected float c(eao $$0, din $$1, iv $$2) {
+      return 0.2F;
    }
 }

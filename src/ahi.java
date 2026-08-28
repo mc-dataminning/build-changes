@@ -1,8 +1,8 @@
-public record ahi(boz b) implements zf<agp> {
+public record ahi(bpb b) implements zf<agp> {
    public static final yw<vu, ahi> a = zf.a(ahi::a, ahi::new);
 
    private ahi(vu $$0) {
-      this($$0.b(boz.class));
+      this($$0.b(bpb.class));
    }
 
    private void a(vu $$0) {

@@ -1,24 +1,38 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eql extends eqh {
-   public static final MapCodec<eql> a = ayu.m.fieldOf("chance").xmap(eql::new, $$0 -> $$0.c);
-   private final int c;
+public class eql extends eqt {
+   public static final MapCodec<eql> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, eql::new)
+   );
+   private final double c;
+   private final int d;
+   private final int e;
 
-   private eql(int $$0) {
+   private eql(double $$0, int $$1, int $$2) {
       this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public static eql a(int $$0) {
-      return new eql($$0);
-   }
-
-   @Override
-   protected boolean a(eqg $$0, azv $$1, iu $$2) {
-      return $$1.i() < 1.0F / (float)this.c;
+   public static eql a(double $$0, int $$1, int $$2) {
+      return new eql($$0, $$1, $$2);
    }
 
    @Override
-   public eqj<?> b() {
-      return eqj.b;
+   protected int a(azv $$0, iv $$1) {
+      double $$2 = dkk.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
+      return $$2 < this.c ? this.d : this.e;
+   }
+
+   @Override
+   public eqq<?> b() {
+      return eqq.h;
    }
 }

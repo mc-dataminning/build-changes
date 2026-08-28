@@ -1,82 +1,122 @@
 import com.mojang.serialization.MapCodec;
 
-public class dql extends dod {
-   public static final MapCodec<dql> g = b(dql::new);
+public class dql extends dqg {
+   public static final MapCodec<dql> a = b(dql::new);
+   private static final double b = 0.13;
+   private static final double c = 0.08;
+   private static final double e = 0.05;
+   private static final int f = 20;
+   private static final ffr g = dmm.b(14.0, 0.0, 15.0);
 
    @Override
-   public MapCodec<? extends dql> a() {
+   public MapCodec<dql> a() {
+      return a;
+   }
+
+   public dql(ean.d $$0) {
+      super($$0);
+   }
+
+   private static boolean c(bwi $$0) {
+      return $$0 instanceof bxj || $$0 instanceof ctw || $$0 instanceof cnp || $$0 instanceof ctu;
+   }
+
+   @Override
+   protected ffr b(eao $$0, din $$1, iv $$2, ffc $$3) {
       return g;
    }
 
-   protected dql(eag.d $$0) {
-      super(2.0F, 16.0F, 2.0F, 16.0F, 16.0F, $$0);
-      this.l(
-         this.C
-            .b()
-            .b(a, Boolean.valueOf(false))
-            .b(b, Boolean.valueOf(false))
-            .b(c, Boolean.valueOf(false))
-            .b(d, Boolean.valueOf(false))
-            .b(e, Boolean.valueOf(false))
-      );
-   }
-
    @Override
-   public eah a(dcw $$0) {
-      dig $$1 = $$0.q();
-      iu $$2 = $$0.a();
-      ewo $$3 = $$0.q().b_($$0.a());
-      iu $$4 = $$2.f();
-      iu $$5 = $$2.g();
-      iu $$6 = $$2.h();
-      iu $$7 = $$2.i();
-      eah $$8 = $$1.a_($$4);
-      eah $$9 = $$1.a_($$5);
-      eah $$10 = $$1.a_($$6);
-      eah $$11 = $$1.a_($$7);
-      return this.m()
-         .b(a, Boolean.valueOf(this.a($$8, $$8.c($$1, $$4, ja.d))))
-         .b(c, Boolean.valueOf(this.a($$9, $$9.c($$1, $$5, ja.c))))
-         .b(d, Boolean.valueOf(this.a($$10, $$10.c($$1, $$6, ja.f))))
-         .b(b, Boolean.valueOf(this.a($$11, $$11.c($$1, $$7, ja.e))))
-         .b(e, Boolean.valueOf($$3.a() == ewp.c));
-   }
-
-   @Override
-   protected eah a(eah $$0, djd $$1, djp $$2, iu $$3, ja $$4, iu $$5, eah $$6, azv $$7) {
-      if ($$0.c(e)) {
-         $$2.a($$3, ewp.c, ewp.c.a($$1));
+   public void a(djh $$0, eao $$1, iv $$2, bwi $$3, double $$4) {
+      $$3.a(awn.nc, 1.0F, 1.0F);
+      if (!$$0.C) {
+         $$0.a($$3, (byte)54);
       }
 
-      return $$4.o().d() ? $$0.b(f.get($$4), Boolean.valueOf(this.a($$6, $$6.c($$1, $$5, $$4.g())))) : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      if ($$3.a($$4, 0.2F, $$0.al().l())) {
+         $$3.a(this.I.g(), this.I.a() * 0.5F, this.I.b() * 0.75F);
+      }
    }
 
    @Override
-   protected ffk c(eah $$0, dig $$1, iu $$2, fev $$3) {
-      return ffh.a();
-   }
-
-   @Override
-   protected boolean b(eah $$0, eah $$1, ja $$2) {
-      if ($$1.a(this)) {
-         if (!$$2.o().d()) {
-            return true;
-         }
-
-         if ($$0.c(f.get($$2)) && $$1.c(f.get($$2.g()))) {
-            return true;
-         }
+   protected void a(eao $$0, djh $$1, iv $$2, bwi $$3, bxb $$4) {
+      if (this.a($$2, $$3)) {
+         this.a($$3, $$2);
+         this.d($$3);
+         this.a($$1, $$3);
       }
 
-      return super.b($$0, $$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4);
    }
 
-   public final boolean a(eah $$0, boolean $$1) {
-      return !k($$0) && $$1 || $$0.b() instanceof dql || $$0.a(axc.N);
+   private static double b(double $$0) {
+      return $$0 / 0.98F + 0.08;
    }
 
-   @Override
-   protected void a(eai.a<dmf, eah> $$0) {
-      $$0.a(a, b, d, c, e);
+   private static double c(double $$0) {
+      return ($$0 - 0.08) * 0.98F;
+   }
+
+   private boolean a(iv $$0, bwi $$1) {
+      if ($$1.aH()) {
+         return false;
+      } else if ($$1.dB() > (double)$$0.v() + 0.9375 - 1.0E-7) {
+         return false;
+      } else if (b($$1.dx().e) >= -0.08) {
+         return false;
+      } else {
+         double $$2 = Math.abs((double)$$0.u() + 0.5 - $$1.dz());
+         double $$3 = Math.abs((double)$$0.w() + 0.5 - $$1.dF());
+         double $$4 = 0.4375 + (double)($$1.dp() / 2.0F);
+         return $$2 + 1.0E-7 > $$4 || $$3 + 1.0E-7 > $$4;
+      }
+   }
+
+   private void a(bwi $$0, iv $$1) {
+      if ($$0 instanceof arr && $$0.dU().ae() % 20L == 0L) {
+         aq.K.a((arr)$$0, $$0.dU().a_($$1));
+      }
+   }
+
+   private void d(bwi $$0) {
+      fex $$1 = $$0.dx();
+      if (b($$0.dx().e) < -0.13) {
+         double $$2 = -0.05 / b($$0.dx().e);
+         $$0.i(new fex($$1.d * $$2, c(-0.05), $$1.f * $$2));
+      } else {
+         $$0.i(new fex($$1.d, c(-0.05), $$1.f));
+      }
+
+      $$0.k();
+   }
+
+   private void a(djh $$0, bwi $$1) {
+      if (c($$1)) {
+         if ($$0.A.a(5) == 0) {
+            $$1.a(awn.nc, 1.0F, 1.0F);
+         }
+
+         if (!$$0.C && $$0.A.a(5) == 0) {
+            $$0.a($$1, (byte)53);
+         }
+      }
+   }
+
+   public static void a(bwi $$0) {
+      a($$0, 5);
+   }
+
+   public static void b(bwi $$0) {
+      a($$0, 10);
+   }
+
+   private static void a(bwi $$0, int $$1) {
+      if ($$0.dU().C) {
+         eao $$2 = dmo.pO.m();
+
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            $$0.dU().a(new lq(ly.b, $$2), $$0.dz(), $$0.dB(), $$0.dF(), 0.0, 0.0, 0.0);
+         }
+      }
    }
 }

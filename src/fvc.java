@@ -1,112 +1,71 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import java.nio.file.Path;
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class fvc extends hii implements hij {
-   private static final int d = 256;
-   private final fvd e;
-   private final boolean f;
-   private final fvc.a g;
+public class fvc implements fvf {
+   private static final alg e = alg.b("toast/advancement");
+   public static final int a = 5000;
+   private final aj f;
+   private fvf.a g = fvf.a.b;
 
-   public fvc(fvd $$0, boolean $$1) {
-      this.f = $$1;
-      this.g = new fvc.a(0, 0, 256, 256);
-      TextureUtil.prepareImage($$1 ? fik.b.a : fik.b.d, this.a(), 256, 256);
-      this.a(false, false);
-      this.e = $$0;
+   public fvc(aj $$0) {
+      this.f = $$0;
    }
 
    @Override
-   public void close() {
-      this.b();
+   public fvf.a a() {
+      return this.g;
+   }
+
+   @Override
+   public void a(fvg $$0, long $$1) {
+      av $$2 = this.f.b().c().orElse(null);
+      if ($$2 == null) {
+         this.g = fvf.a.b;
+      } else {
+         this.g = (double)$$1 >= 5000.0 * $$0.d() ? fvf.a.b : fvf.a.a;
+      }
    }
 
    @Nullable
-   public fvf a(fhk $$0) {
-      if ($$0.c() != this.f) {
-         return null;
-      } else {
-         fvc.a $$1 = this.g.a($$0);
-         if ($$1 != null) {
-            this.c();
-            $$0.a($$1.a, $$1.b);
-            float $$2 = 256.0F;
-            float $$3 = 256.0F;
-            float $$4 = 0.01F;
-            return new fvf(
-               this.e,
-               ((float)$$1.a + 0.01F) / 256.0F,
-               ((float)$$1.a - 0.01F + (float)$$0.a()) / 256.0F,
-               ((float)$$1.b + 0.01F) / 256.0F,
-               ((float)$$1.b - 0.01F + (float)$$0.b()) / 256.0F,
-               $$0.e(),
-               $$0.f(),
-               $$0.g(),
-               $$0.h()
-            );
-         } else {
-            return null;
-         }
-      }
+   @Override
+   public awm b() {
+      return this.e() ? awn.BB : null;
+   }
+
+   private boolean e() {
+      Optional<av> $$0 = this.f.b().c();
+      return $$0.isPresent() && $$0.get().e().equals(ap.b);
    }
 
    @Override
-   public void a(alg $$0, Path $$1) {
-      String $$2 = $$0.c();
-      TextureUtil.writeAsPNG($$1, $$2, this.a(), 0, 256, 256, $$0x -> ($$0x & 0xFF000000) == 0 ? -16777216 : $$0x);
-   }
-
-   static class a {
-      final int a;
-      final int b;
-      private final int c;
-      private final int d;
-      @Nullable
-      private fvc.a e;
-      @Nullable
-      private fvc.a f;
-      private boolean g;
-
-      a(int $$0, int $$1, int $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      @Nullable
-      fvc.a a(fhk $$0) {
-         if (this.e != null && this.f != null) {
-            fvc.a $$1 = this.e.a($$0);
-            if ($$1 == null) {
-               $$1 = this.f.a($$0);
-            }
-
-            return $$1;
-         } else if (this.g) {
-            return null;
+   public void a(fsh $$0, fsf $$1, long $$2) {
+      av $$3 = this.f.b().c().orElse(null);
+      $$0.a(gqx::H, e, 0, 0, this.c(), this.d());
+      if ($$3 != null) {
+         List<ayy> $$4 = $$1.c($$3.a(), 125);
+         int $$5 = $$3.e() == ap.b ? -30465 : -256;
+         if ($$4.size() == 1) {
+            $$0.a($$1, $$3.e().b(), 30, 7, $$5, false);
+            $$0.a($$1, $$4.get(0), 30, 18, -1, false);
          } else {
-            int $$2 = $$0.a();
-            int $$3 = $$0.b();
-            if ($$2 > this.c || $$3 > this.d) {
-               return null;
-            } else if ($$2 == this.c && $$3 == this.d) {
-               this.g = true;
-               return this;
+            int $$6 = 1500;
+            float $$7 = 300.0F;
+            if ($$2 < 1500L) {
+               int $$8 = azm.d(azm.a((float)(1500L - $$2) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
+               $$0.a($$1, $$3.e().b(), 30, 11, $$5 | $$8, false);
             } else {
-               int $$4 = this.c - $$2;
-               int $$5 = this.d - $$3;
-               if ($$4 > $$5) {
-                  this.e = new fvc.a(this.a, this.b, $$2, this.d);
-                  this.f = new fvc.a(this.a + $$2 + 1, this.b, this.c - $$2 - 1, this.d);
-               } else {
-                  this.e = new fvc.a(this.a, this.b, this.c, $$3);
-                  this.f = new fvc.a(this.a, this.b + $$3 + 1, this.c, this.d - $$3 - 1);
-               }
+               int $$9 = azm.d(azm.a((float)($$2 - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
+               int $$10 = this.d() / 2 - $$4.size() * 9 / 2;
 
-               return this.e.a($$0);
+               for (ayy $$11 : $$4) {
+                  $$0.a($$1, $$11, 30, $$10, 16777215 | $$9, false);
+                  $$10 += 9;
+               }
             }
          }
+
+         $$0.b($$3.c(), 8, 8);
       }
    }
 }

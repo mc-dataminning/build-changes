@@ -1,3 +1,8 @@
-public interface hnz {
-   void a(hmu var1, hob var2, float var3);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface hnz {
 }

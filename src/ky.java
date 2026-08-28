@@ -1,24 +1,34 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record ky(ji<dax> c) implements dk<daz> {
-   public static final Codec<ky> a = jt.a(mg.ae).xmap(ky::new, ky::b);
+public record ky(Optional<jj<czq>> c) implements dl<czp> {
+   public static final Codec<ky> a = RecordCodecBuilder.create($$0 -> $$0.group(ju.a(mh.aV).optionalFieldOf("song").forGetter(ky::c)).apply($$0, ky::new));
 
    @Override
-   public ki<daz> a() {
-      return kj.R;
+   public kj<czp> a() {
+      return kk.ae;
    }
 
-   public boolean a(daz $$0) {
-      Optional<je<dax>> $$1 = $$0.e();
-      return !$$1.isEmpty() && this.c.a($$1.get());
+   public boolean a(czp $$0) {
+      if (!this.c.isPresent()) {
+         return true;
+      } else {
+         boolean $$1 = false;
+
+         for (jf<czq> $$2 : this.c.get()) {
+            Optional<alf<czq>> $$3 = $$2.e();
+            if (!$$3.isEmpty() && $$3.equals($$0.a().a())) {
+               $$1 = true;
+               break;
+            }
+         }
+
+         return $$1;
+      }
    }
 
-   public static ks a(ji<dax> $$0) {
-      return new ky($$0);
-   }
-
-   public ji<dax> b() {
-      return this.c;
+   public static ky b() {
+      return new ky(Optional.empty());
    }
 }

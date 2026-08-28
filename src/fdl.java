@@ -1,4 +1,11 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Set;
+import javax.annotation.Nullable;
 
-public record fdl(MapCodec<? extends fdm> a) {
+public interface fdl {
+   @Nullable
+   uw a(ezo var1);
+
+   Set<bax<?>> b();
+
+   fdk a();
 }

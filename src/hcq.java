@@ -1,3 +1,6 @@
-public class hcq extends hdf {
-   public boolean a;
+import javax.annotation.Nullable;
+
+public class hcq extends hdz {
+   @Nullable
+   public cjk a;
 }

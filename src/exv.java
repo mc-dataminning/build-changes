@@ -1,46 +1,98 @@
-import java.util.Locale;
-import javax.annotation.Nullable;
+import java.util.Set;
 
-public interface exv {
-   ja[] a = new ja[]{ja.e, ja.f, ja.a, ja.b, ja.c, ja.d};
+public record exv(arq d, fex e, fex f, float g, float h, boolean i, boolean j, Set<bxx> k, exv.a l) {
+   public static final exv.a a = $$0 -> {
+   };
+   public static final exv.a b = exv::a;
+   public static final exv.a c = exv::b;
 
-   void a(ja var1, eah var2, iu var3, iu var4, int var5, int var6);
+   public exv(arq $$0, fex $$1, fex $$2, float $$3, float $$4, exv.a $$5) {
+      this($$0, $$1, $$2, $$3, $$4, Set.of(), $$5);
+   }
 
-   void a(iu var1, dmf var2, @Nullable exw var3);
+   public exv(arq $$0, fex $$1, fex $$2, float $$3, float $$4, Set<bxx> $$5, exv.a $$6) {
+      this($$0, $$1, $$2, $$3, $$4, false, false, $$5, $$6);
+   }
 
-   void a(eah var1, iu var2, dmf var3, @Nullable exw var4, boolean var5);
+   public exv(arq $$0, bwi $$1, exv.a $$2) {
+      this($$0, a($$0, $$1), fex.c, 0.0F, 0.0F, false, false, Set.of(), $$2);
+   }
 
-   default void a(iu $$0, dmf $$1, @Nullable ja $$2, @Nullable exw $$3) {
-      for (ja $$4 : a) {
-         if ($$4 != $$2) {
-            this.a($$0.a($$4), $$1, null);
-         }
+   private static void a(bwi $$0) {
+      if ($$0 instanceof arr $$1) {
+         $$1.f.b(new adh(1032, iv.c, 0, false));
       }
    }
 
-   static void a(djb $$0, ja $$1, iu $$2, iu $$3, eah $$4, int $$5, int $$6) {
-      eah $$7 = $$0.a_($$2);
-      if (($$5 & 128) == 0 || !$$7.a(dmh.cH)) {
-         eah $$8 = $$7.a($$0, $$0, $$2, $$1, $$3, $$4, $$0.C_());
-         dmf.a($$7, $$8, $$0, $$2, $$5, $$6);
-      }
+   private static void b(bwi $$0) {
+      $$0.f(iv.a((jp)$$0.ds()));
    }
 
-   static void a(dja $$0, eah $$1, iu $$2, dmf $$3, @Nullable exw $$4, boolean $$5) {
-      try {
-         $$1.a($$0, $$2, $$3, $$4, $$5);
-      } catch (Throwable var9) {
-         o $$7 = o.a(var9, "Exception while updating neighbours");
-         p $$8 = $$7.a("Block being updated");
-         $$8.a("Source block type", () -> {
-            try {
-               return String.format(Locale.ROOT, "ID #%s (%s // %s)", mf.e.b($$3), $$3.v(), $$3.getClass().getCanonicalName());
-            } catch (Throwable var2x) {
-               return "ID #" + mf.e.b($$3);
-            }
-         });
-         p.a($$8, $$0, $$2, $$1);
-         throw new z($$7);
+   public static exv a(arq $$0, bwi $$1, exv.a $$2) {
+      return new exv($$0, a($$0, $$1), fex.c, 0.0F, 0.0F, true, false, Set.of(), $$2);
+   }
+
+   private static fex a(arq $$0, bwi $$1) {
+      return $$1.a($$0, $$0.aa()).c();
+   }
+
+   public exv a(float $$0, float $$1) {
+      return new exv(this.b(), this.c(), this.d(), $$0, $$1, this.g(), this.h(), this.i(), this.j());
+   }
+
+   public exv a(fex $$0) {
+      return new exv(this.b(), $$0, this.d(), this.e(), this.f(), this.g(), this.h(), this.i(), this.j());
+   }
+
+   public exv a() {
+      return new exv(this.b(), this.c(), this.d(), this.e(), this.f(), this.g(), true, this.i(), this.j());
+   }
+
+   public arq b() {
+      return this.d;
+   }
+
+   public fex c() {
+      return this.e;
+   }
+
+   public fex d() {
+      return this.f;
+   }
+
+   public float e() {
+      return this.g;
+   }
+
+   public float f() {
+      return this.h;
+   }
+
+   public boolean g() {
+      return this.i;
+   }
+
+   public boolean h() {
+      return this.j;
+   }
+
+   public Set<bxx> i() {
+      return this.k;
+   }
+
+   public exv.a j() {
+      return this.l;
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void onTransition(bwi var1);
+
+      default exv.a then(exv.a $$0) {
+         return $$1 -> {
+            this.onTransition($$1);
+            $$0.onTransition($$1);
+         };
       }
    }
 }

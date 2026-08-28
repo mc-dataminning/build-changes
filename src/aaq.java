@@ -1,4 +1,4 @@
-public record aaq(long c, iu d) implements aai {
+public record aaq(long c, iv d) implements aai {
    public static final yw<vu, aaq> a = aai.a(aaq::a, aaq::new);
    public static final aai.b<aaq> b = aai.a("debug/neighbors_update");
 
@@ -20,7 +20,7 @@ public record aaq(long c, iu d) implements aai {
       return this.c;
    }
 
-   public iu c() {
+   public iv c() {
       return this.d;
    }
 }

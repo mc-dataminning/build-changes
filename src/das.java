@@ -1,32 +1,19 @@
-public interface das {
-   das.a a = new das.a(false, false);
-   das.a b = new das.a(true, false);
+import javax.annotation.Nullable;
 
-   boolean a();
+public class das extends cxo {
+   public das(czg.a $$0) {
+      super($$0);
+   }
 
-   boolean b();
+   @Override
+   public crr a(djh $$0, czk $$1, bxj $$2, @Nullable czk $$3) {
+      return new csk($$0, $$2, $$1.c(1), $$3);
+   }
 
-   public static record a(boolean c, boolean d) implements das {
-      @Override
-      public boolean a() {
-         return this.c;
-      }
-
-      @Override
-      public boolean b() {
-         return this.d;
-      }
-
-      public das.a c() {
-         return new das.a(this.c, true);
-      }
-
-      public boolean d() {
-         return this.c;
-      }
-
-      public boolean e() {
-         return this.d;
-      }
+   @Override
+   public cse a(djh $$0, jp $$1, czk $$2, jb $$3) {
+      csk $$4 = new csk($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1), null);
+      $$4.b = crr.a.b;
+      return $$4;
    }
 }

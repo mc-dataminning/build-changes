@@ -1,25 +1,37 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public record dh(Optional<Boolean> c) implements by {
-   public static final MapCodec<dh> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.BOOL.optionalFieldOf("sheared").forGetter(dh::c)).apply($$0, dh::new)
-   );
-
+public class dh extends dk<dh.a> {
    @Override
-   public MapCodec<dh> a() {
-      return bz.f;
+   public Codec<dh.a> a() {
+      return dh.a.a;
    }
 
-   @Override
-   public boolean a(bwf $$0, arq $$1, @Nullable feq $$2) {
-      return $$0 instanceof cjw $$3 ? !this.c.isPresent() || $$3.x() == this.c.get() : false;
+   public void a(arr $$0, deg<?> $$1) {
+      this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static dh b() {
-      return new dh(Optional.of(false));
+   public static ar<dh.a> a(alf<deb<?>> $$0) {
+      return aq.g.a(new dh.a(Optional.empty(), $$0));
+   }
+
+   public static record a(Optional<bj> b, alf<deb<?>> c) implements dk.a {
+      public static final Codec<dh.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(by.b.optionalFieldOf("player").forGetter(dh.a::a), deb.b.fieldOf("recipe").forGetter(dh.a::b)).apply($$0, dh.a::new)
+      );
+
+      public boolean a(deg<?> $$0) {
+         return this.c == $$0.a();
+      }
+
+      @Override
+      public Optional<bj> a() {
+         return this.b;
+      }
+
+      public alf<deb<?>> b() {
+         return this.c;
+      }
    }
 }

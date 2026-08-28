@@ -19,9 +19,9 @@ public abstract class auh implements aup {
    private final atr e;
    private final att f;
    private final alg g;
-   private final feg h;
+   private final fen h;
 
-   public auh(atr $$0, att $$1, alg $$2, feg $$3) {
+   public auh(atr $$0, att $$1, alg $$2, fen $$3) {
       this.e = $$0;
       this.f = $$1;
       this.g = $$2;

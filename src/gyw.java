@@ -1,21 +1,15 @@
-public class gyw extends gvf<crn, her> {
-   public static final alg a = alg.b("textures/entity/projectiles/arrow.png");
-   public static final alg g = alg.b("textures/entity/projectiles/tipped_arrow.png");
+public class gyw extends gvl<cot, heu> {
+   private static final alg a = alg.b("textures/entity/skeleton/skeleton.png");
 
-   public gyw(gwh.a $$0) {
-      super($$0);
+   public gyw(gwt.a $$0) {
+      super($$0, gjn.cW, gjn.db, gjn.dc);
    }
 
-   protected alg a(her $$0) {
-      return $$0.d ? g : a;
+   public alg b(heu $$0) {
+      return a;
    }
 
-   public her a() {
-      return new her();
-   }
-
-   public void a(crn $$0, her $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.d = $$0.y() > 0;
+   public heu b() {
+      return new heu();
    }
 }

@@ -1,65 +1,63 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dli extends dmf implements dmi {
-   public static final MapCodec<dli> a = b(dli::new);
-   private static final ffk b = dmf.b(8.0, 0.0, 12.0);
+public abstract class dli extends dly {
+   public static final ebf a = ebe.A;
+   private final dty.a b;
 
-   @Override
-   public MapCodec<dli> a() {
-      return a;
-   }
-
-   public dli(eag.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
-      return b.a($$0.a($$2));
+   public dli(dty.a $$0, ean.d $$1) {
+      super($$1);
+      this.b = $$0;
+      this.l(this.C.b().b(a, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void b(eah $$0, arq $$1, iu $$2, azv $$3) {
-      if ($$3.a(3) == 0 && $$1.v($$2.d()) && $$1.b($$2.d(), 0) >= 9) {
-         this.a($$1, $$2);
+   protected abstract MapCodec<? extends dli> a();
+
+   @Override
+   public dxm a(iv $$0, eao $$1) {
+      return new dzc($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dxm> dxn<T> a(djh $$0, eao $$1, dxo<T> $$2) {
+      if ($$0.C) {
+         boolean $$3 = $$1.a(dmo.hp) || $$1.a(dmo.hq) || $$1.a(dmo.hr) || $$1.a(dmo.hs);
+         if ($$3) {
+            return a($$2, dxo.q, dzc::a);
+         }
       }
+
+      return null;
+   }
+
+   public dty.a b() {
+      return this.b;
    }
 
    @Override
-   protected boolean a(eah $$0, djd $$1, iu $$2) {
-      return $$1.a_($$2.e()).a(axc.ax);
+   protected boolean a(eao $$0, exk $$1) {
+      return false;
    }
 
    @Override
-   protected eah a(eah $$0, djd $$1, djp $$2, iu $$3, ja $$4, iu $$5, eah $$6, azv $$7) {
-      if (!$$0.a($$1, $$3)) {
-         return dmh.a.m();
-      } else {
-         return $$4 == ja.b && $$6.a(dmh.nF) ? dmh.nF.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   protected void a(eap.a<dmm, eao> $$0) {
+      $$0.a(a);
+   }
+
+   @Override
+   public eao a(ddd $$0) {
+      return this.m().b(a, Boolean.valueOf($$0.q().D($$0.a())));
+   }
+
+   @Override
+   protected void a(eao $$0, djh $$1, iv $$2, dmm $$3, @Nullable eyd $$4, boolean $$5) {
+      if (!$$1.C) {
+         boolean $$6 = $$1.D($$2);
+         if ($$6 != $$0.c(a)) {
+            $$1.a($$2, $$0.b(a, Boolean.valueOf($$6)), 2);
+         }
       }
-   }
-
-   @Override
-   protected czd a(djd $$0, iu $$1, eah $$2, boolean $$3) {
-      return new czd(czh.ej);
-   }
-
-   @Override
-   public boolean a(djd $$0, iu $$1, eah $$2) {
-      return $$0.a_($$1.d()).l();
-   }
-
-   @Override
-   public boolean a(dja $$0, azv $$1, iu $$2, eah $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arq $$0, azv $$1, iu $$2, eah $$3) {
-      this.a($$0, $$2);
-   }
-
-   protected void a(dja $$0, iu $$1) {
-      $$0.a($$1.d(), dmh.nF.m().b(dlj.c, eat.b), 3);
    }
 }

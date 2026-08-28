@@ -10,9 +10,9 @@ public abstract class tn {
       a.add($$0);
    }
 
-   public static void b(jr<Consumer<sp>> $$0) {
+   public static void b(js<Consumer<sp>> $$0) {
       for (tn $$1 : a) {
-         $$1.a(($$1x, $$2) -> jr.a($$0, $$1x, $$2));
+         $$1.a(($$1x, $$2) -> js.a($$0, $$1x, $$2));
       }
    }
 

@@ -1,374 +1,306 @@
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMaps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.function.BiConsumer;
-import java.util.function.Predicate;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class djx extends eya {
-   private static final int c = 4;
-   private static final Logger d = LogUtils.getLogger();
-   private static final Codec<Pair<dih, arw>> e = Codec.mapPair(dih.a.fieldOf("chunk_pos"), arw.a).codec();
-   public static final Codec<djx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(e.listOf().optionalFieldOf("tickets", List.of()).forGetter(djx::h)).apply($$0, djx::a)
-   );
-   public static final eyb<djx> b = new eyb<>("chunks", djx::new, a, bbb.i);
-   private final Long2ObjectOpenHashMap<List<arw>> f;
-   private final Long2ObjectOpenHashMap<List<arw>> g;
-   private LongSet h = new LongOpenHashSet();
+public class djx implements dja {
+   private static final djb a = new djb();
+   private static final int b = 16;
+   private static final float c = 2.0F;
+   private final boolean d;
+   private final dja.a e;
+   private final arq f;
+   private final fex g;
    @Nullable
-   private djx.a i;
-   @Nullable
-   private djx.a j;
+   private final bwi h;
+   private final float i;
+   private final bux j;
+   private final djb k;
+   private final Map<crj, fex> l = new HashMap<>();
 
-   private djx(Long2ObjectOpenHashMap<List<arw>> $$0, Long2ObjectOpenHashMap<List<arw>> $$1) {
+   public djx(arq $$0, @Nullable bwi $$1, @Nullable bux $$2, @Nullable djb $$3, fex $$4, float $$5, boolean $$6, dja.a $$7) {
       this.f = $$0;
-      this.g = $$1;
-      this.i();
+      this.h = $$1;
+      this.i = $$5;
+      this.g = $$4;
+      this.d = $$6;
+      this.e = $$7;
+      this.j = $$2 == null ? $$0.al().a(this) : $$2;
+      this.k = $$3 == null ? this.b($$1) : $$3;
    }
 
-   public djx() {
-      this(new Long2ObjectOpenHashMap(4), new Long2ObjectOpenHashMap());
+   private djb b(@Nullable bwi $$0) {
+      return (djb)($$0 == null ? a : new diy($$0));
    }
 
-   private static djx a(List<Pair<dih, arw>> $$0) {
-      Long2ObjectOpenHashMap<List<arw>> $$1 = new Long2ObjectOpenHashMap();
+   public static float a(fex $$0, bwi $$1) {
+      fes $$2 = $$1.cQ();
+      double $$3 = 1.0 / (($$2.d - $$2.a) * 2.0 + 1.0);
+      double $$4 = 1.0 / (($$2.e - $$2.b) * 2.0 + 1.0);
+      double $$5 = 1.0 / (($$2.f - $$2.c) * 2.0 + 1.0);
+      double $$6 = (1.0 - Math.floor(1.0 / $$3) * $$3) / 2.0;
+      double $$7 = (1.0 - Math.floor(1.0 / $$5) * $$5) / 2.0;
+      if (!($$3 < 0.0) && !($$4 < 0.0) && !($$5 < 0.0)) {
+         int $$8 = 0;
+         int $$9 = 0;
 
-      for (Pair<dih, arw> $$2 : $$0) {
-         dih $$3 = (dih)$$2.getFirst();
-         List<arw> $$4 = (List<arw>)$$1.computeIfAbsent($$3.a(), $$0x -> new ObjectArrayList(4));
-         $$4.add((arw)$$2.getSecond());
-      }
+         for (double $$10 = 0.0; $$10 <= 1.0; $$10 += $$3) {
+            for (double $$11 = 0.0; $$11 <= 1.0; $$11 += $$4) {
+               for (double $$12 = 0.0; $$12 <= 1.0; $$12 += $$5) {
+                  double $$13 = azm.d($$10, $$2.a, $$2.d);
+                  double $$14 = azm.d($$11, $$2.b, $$2.e);
+                  double $$15 = azm.d($$12, $$2.c, $$2.f);
+                  fex $$16 = new fex($$13 + $$6, $$14, $$15 + $$7);
+                  if ($$1.dU().a(new diq($$16, $$0, diq.a.a, diq.b.a, $$1)).d() == fev.a.a) {
+                     $$8++;
+                  }
 
-      return new djx(new Long2ObjectOpenHashMap(4), $$1);
-   }
-
-   private List<Pair<dih, arw>> h() {
-      List<Pair<dih, arw>> $$0 = new ArrayList<>();
-      this.a((BiConsumer<dih, arw>)(($$1, $$2) -> {
-         if ($$2.a().e()) {
-            $$0.add(new Pair($$1, $$2));
+                  $$9++;
+               }
+            }
          }
-      }));
-      return $$0;
+
+         return (float)$$8 / (float)$$9;
+      } else {
+         return 0.0F;
+      }
    }
 
-   private void a(BiConsumer<dih, arw> $$0) {
-      a($$0, this.f);
-      a($$0, this.g);
+   @Override
+   public float e() {
+      return this.i;
    }
 
-   private static void a(BiConsumer<dih, arw> $$0, Long2ObjectOpenHashMap<List<arw>> $$1) {
-      ObjectIterator var2 = Long2ObjectMaps.fastIterable($$1).iterator();
+   @Override
+   public fex f() {
+      return this.g;
+   }
 
-      while (var2.hasNext()) {
-         Entry<List<arw>> $$2 = (Entry<List<arw>>)var2.next();
-         dih $$3 = new dih($$2.getLongKey());
+   private List<iv> m() {
+      Set<iv> $$0 = new HashSet<>();
+      int $$1 = 16;
 
-         for (arw $$4 : (List)$$2.getValue()) {
-            $$0.accept($$3, $$4);
+      for (int $$2 = 0; $$2 < 16; $$2++) {
+         for (int $$3 = 0; $$3 < 16; $$3++) {
+            for (int $$4 = 0; $$4 < 16; $$4++) {
+               if ($$2 == 0 || $$2 == 15 || $$3 == 0 || $$3 == 15 || $$4 == 0 || $$4 == 15) {
+                  double $$5 = (double)((float)$$2 / 15.0F * 2.0F - 1.0F);
+                  double $$6 = (double)((float)$$3 / 15.0F * 2.0F - 1.0F);
+                  double $$7 = (double)((float)$$4 / 15.0F * 2.0F - 1.0F);
+                  double $$8 = Math.sqrt($$5 * $$5 + $$6 * $$6 + $$7 * $$7);
+                  $$5 /= $$8;
+                  $$6 /= $$8;
+                  $$7 /= $$8;
+                  float $$9 = this.i * (0.7F + this.f.A.i() * 0.6F);
+                  double $$10 = this.g.d;
+                  double $$11 = this.g.e;
+                  double $$12 = this.g.f;
+
+                  for (float $$13 = 0.3F; $$9 > 0.0F; $$9 -= 0.22500001F) {
+                     iv $$14 = iv.a($$10, $$11, $$12);
+                     eao $$15 = this.f.a_($$14);
+                     ewv $$16 = this.f.b_($$14);
+                     if (!this.f.k($$14)) {
+                        break;
+                     }
+
+                     Optional<Float> $$17 = this.k.a(this, this.f, $$14, $$15, $$16);
+                     if ($$17.isPresent()) {
+                        $$9 -= ($$17.get() + 0.3F) * 0.3F;
+                     }
+
+                     if ($$9 > 0.0F && this.k.a(this, this.f, $$14, $$15, $$9)) {
+                        $$0.add($$14);
+                     }
+
+                     $$10 += $$5 * 0.3F;
+                     $$11 += $$6 * 0.3F;
+                     $$12 += $$7 * 0.3F;
+                  }
+               }
+            }
+         }
+      }
+
+      return new ObjectArrayList($$0);
+   }
+
+   private void n() {
+      float $$0 = this.i * 2.0F;
+      int $$1 = azm.a(this.g.d - (double)$$0 - 1.0);
+      int $$2 = azm.a(this.g.d + (double)$$0 + 1.0);
+      int $$3 = azm.a(this.g.e - (double)$$0 - 1.0);
+      int $$4 = azm.a(this.g.e + (double)$$0 + 1.0);
+      int $$5 = azm.a(this.g.f - (double)$$0 - 1.0);
+      int $$6 = azm.a(this.g.f + (double)$$0 + 1.0);
+
+      for (bwi $$8 : this.f.a_(this.h, new fes((double)$$1, (double)$$3, (double)$$5, (double)$$2, (double)$$4, (double)$$6))) {
+         if (!$$8.a(this)) {
+            double $$9 = Math.sqrt($$8.g(this.g)) / (double)$$0;
+            if ($$9 <= 1.0) {
+               double $$10 = $$8.dz() - this.g.d;
+               double $$11 = ($$8 instanceof cnp ? $$8.dB() : $$8.dD()) - this.g.e;
+               double $$12 = $$8.dF() - this.g.f;
+               double $$13 = Math.sqrt($$10 * $$10 + $$11 * $$11 + $$12 * $$12);
+               if ($$13 != 0.0) {
+                  $$10 /= $$13;
+                  $$11 /= $$13;
+                  $$12 /= $$13;
+                  boolean $$14 = this.k.a(this, $$8);
+                  float $$15 = this.k.a($$8);
+                  float $$16 = !$$14 && $$15 == 0.0F ? 0.0F : a(this.g, $$8);
+                  if ($$14) {
+                     $$8.a(this.f, this.j, this.k.a(this, $$8, $$16));
+                  }
+
+                  double $$17 = (1.0 - $$9) * (double)$$16 * (double)$$15;
+                  double $$19;
+                  if ($$8 instanceof bxj $$18) {
+                     $$19 = $$17 * (1.0 - $$18.h(byp.i));
+                  } else {
+                     $$19 = $$17;
+                  }
+
+                  $$10 *= $$19;
+                  $$11 *= $$19;
+                  $$12 *= $$19;
+                  fex $$21 = new fex($$10, $$11, $$12);
+                  $$8.h($$21);
+                  if ($$8 instanceof crj) {
+                     crj $$22 = (crj)$$8;
+                     if (!$$22.V_() && (!$$22.b() || !$$22.gj().b)) {
+                        this.l.put($$22, $$21);
+                     }
+                  }
+
+                  $$8.b_(this.h);
+               }
+            }
          }
       }
    }
 
-   public void a() {
-      ObjectIterator var1 = Long2ObjectMaps.fastIterable(this.g).iterator();
+   private void a(List<iv> $$0) {
+      List<djx.a> $$1 = new ArrayList<>();
+      ag.c($$0, this.f.A);
 
-      while (var1.hasNext()) {
-         Entry<List<arw>> $$0 = (Entry<List<arw>>)var1.next();
+      for (iv $$2 : $$0) {
+         this.f.a_($$2).a(this.f, $$2, this, ($$1x, $$2x) -> a($$1, $$1x, $$2x));
+      }
 
-         for (arw $$1 : (List)$$0.getValue()) {
-            this.a($$0.getLongKey(), $$1);
+      for (djx.a $$3 : $$1) {
+         dmm.a(this.f, $$3.a, $$3.b);
+      }
+   }
+
+   private void b(List<iv> $$0) {
+      for (iv $$1 : $$0) {
+         if (this.f.A.a(3) == 0 && this.f.a_($$1).l() && this.f.a_($$1.e()).s()) {
+            this.f.b($$1, dlz.a(this.f, $$1));
+         }
+      }
+   }
+
+   public void i() {
+      this.f.a(this.h, efo.w, this.g);
+      List<iv> $$0 = this.m();
+      this.n();
+      if (this.o()) {
+         bqq $$1 = bqp.a();
+         $$1.a("explosion_blocks");
+         this.a($$0);
+         $$1.c();
+      }
+
+      if (this.d) {
+         this.b($$0);
+      }
+   }
+
+   private static void a(List<djx.a> $$0, czk $$1, iv $$2) {
+      for (djx.a $$3 : $$0) {
+         $$3.a($$1);
+         if ($$1.f()) {
+            return;
          }
       }
 
-      this.g.clear();
+      $$0.add(new djx.a($$2, $$1));
    }
 
-   public void a(@Nullable djx.a $$0) {
-      this.i = $$0;
+   private boolean o() {
+      return this.e != dja.a.a;
    }
 
-   public void b(@Nullable djx.a $$0) {
-      this.j = $$0;
+   public Map<crj, fex> j() {
+      return this.l;
    }
 
-   public boolean b() {
-      return !this.f.isEmpty();
-   }
-
-   public List<arw> a(long $$0) {
-      return (List<arw>)this.f.getOrDefault($$0, List.of());
-   }
-
-   private List<arw> b(long $$0) {
-      return (List<arw>)this.f.computeIfAbsent($$0, $$0x -> new ObjectArrayList(4));
-   }
-
-   public void a(arx $$0, dih $$1, int $$2) {
-      arw $$3 = new arw($$0, aqt.a(are.b) - $$2);
-      this.a($$1.a(), $$3);
-   }
-
-   public void a(arw $$0, dih $$1) {
-      this.a($$1.a(), $$0);
-   }
-
-   public boolean a(long $$0, arw $$1) {
-      List<arw> $$2 = this.b($$0);
-
-      for (arw $$3 : $$2) {
-         if (a($$1, $$3)) {
-            $$3.c();
-            this.f();
-            return false;
-         }
-      }
-
-      int $$4 = a($$2, true);
-      int $$5 = a($$2, false);
-      $$2.add($$1);
-      if ($$1.a().b() && $$1.b() < $$4 && this.j != null) {
-         this.j.update($$0, $$1.b(), true);
-      }
-
-      if ($$1.a().a() && $$1.b() < $$5 && this.i != null) {
-         this.i.update($$0, $$1.b(), true);
-      }
-
-      if ($$1.a().equals(arx.f)) {
-         this.h.add($$0);
-      }
-
-      this.f();
-      return true;
-   }
-
-   private static boolean a(arw $$0, arw $$1) {
-      return $$1.a() == $$0.a() && $$1.b() == $$0.b();
-   }
-
-   public int a(long $$0, boolean $$1) {
-      return a(this.a($$0), $$1);
-   }
-
-   private static int a(List<arw> $$0, boolean $$1) {
-      arw $$2 = b($$0, $$1);
-      return $$2 == null ? aqt.b + 1 : $$2.b();
+   @Override
+   public arq a() {
+      return this.f;
    }
 
    @Nullable
-   private static arw b(@Nullable List<arw> $$0, boolean $$1) {
-      if ($$0 == null) {
-         return null;
-      } else {
-         arw $$2 = null;
-
-         for (arw $$3 : $$0) {
-            if ($$2 == null || $$3.b() < $$2.b()) {
-               if ($$1 && $$3.a().b()) {
-                  $$2 = $$3;
-               } else if (!$$1 && $$3.a().a()) {
-                  $$2 = $$3;
-               }
-            }
-         }
-
-         return $$2;
-      }
+   @Override
+   public bxj c() {
+      return dja.a(this.h);
    }
 
-   public void b(arx $$0, dih $$1, int $$2) {
-      arw $$3 = new arw($$0, aqt.a(are.b) - $$2);
-      this.b($$1.a(), $$3);
-   }
-
-   public void b(arw $$0, dih $$1) {
-      this.b($$1.a(), $$0);
-   }
-
-   public boolean b(long $$0, arw $$1) {
-      List<arw> $$2 = (List<arw>)this.f.get($$0);
-      if ($$2 == null) {
-         return false;
-      } else {
-         boolean $$3 = false;
-         Iterator<arw> $$4 = $$2.iterator();
-
-         while ($$4.hasNext()) {
-            arw $$5 = $$4.next();
-            if (a($$1, $$5)) {
-               $$4.remove();
-               $$3 = true;
-               break;
-            }
-         }
-
-         if (!$$3) {
-            return false;
-         } else {
-            if ($$2.isEmpty()) {
-               this.f.remove($$0);
-            }
-
-            if ($$1.a().b() && this.j != null) {
-               this.j.update($$0, a($$2, true), false);
-            }
-
-            if ($$1.a().a() && this.i != null) {
-               this.i.update($$0, a($$2, false), false);
-            }
-
-            if ($$1.a().equals(arx.f)) {
-               this.i();
-            }
-
-            this.f();
-            return true;
-         }
-      }
-   }
-
-   private void i() {
-      this.h = this.a((Predicate<arw>)($$0 -> $$0.a().equals(arx.f)));
-   }
-
-   public String b(long $$0, boolean $$1) {
-      List<arw> $$2 = this.a($$0);
-      arw $$3 = b($$2, $$1);
-      return $$3 == null ? "no_ticket" : $$3.toString();
-   }
-
-   public void c() {
-      this.a($$0 -> {
-         $$0.d();
-         return $$0.e();
-      }, null);
-      this.f();
-   }
-
-   public void d() {
-      this.a($$0 -> $$0.a() != arx.i, this.g);
-   }
-
-   public void a(Predicate<arw> $$0, @Nullable Long2ObjectOpenHashMap<List<arw>> $$1) {
-      ObjectIterator<Entry<List<arw>>> $$2 = this.f.long2ObjectEntrySet().fastIterator();
-      boolean $$3 = false;
-
-      while ($$2.hasNext()) {
-         Entry<List<arw>> $$4 = (Entry<List<arw>>)$$2.next();
-         Iterator<arw> $$5 = ((List)$$4.getValue()).iterator();
-         boolean $$6 = false;
-         boolean $$7 = false;
-
-         while ($$5.hasNext()) {
-            arw $$8 = $$5.next();
-            if ($$0.test($$8)) {
-               if ($$1 != null) {
-                  List<arw> $$9 = (List<arw>)$$1.computeIfAbsent($$4.getLongKey(), $$1x -> new ObjectArrayList(((List)$$4.getValue()).size()));
-                  $$9.add($$8);
-               }
-
-               $$5.remove();
-               if ($$8.a().a()) {
-                  $$7 = true;
-               }
-
-               if ($$8.a().b()) {
-                  $$6 = true;
-               }
-
-               if ($$8.a().equals(arx.f)) {
-                  $$3 = true;
-               }
-            }
-         }
-
-         if ($$7 || $$6) {
-            if ($$7 && this.i != null) {
-               this.i.update($$4.getLongKey(), a((List<arw>)$$4.getValue(), false), false);
-            }
-
-            if ($$6 && this.j != null) {
-               this.j.update($$4.getLongKey(), a((List<arw>)$$4.getValue(), true), false);
-            }
-
-            this.f();
-            if (((List)$$4.getValue()).isEmpty()) {
-               $$2.remove();
-            }
-         }
-      }
-
-      if ($$3) {
-         this.i();
-      }
-   }
-
-   public void a(int $$0, arx $$1) {
-      List<Pair<arw, Long>> $$2 = new ArrayList<>();
-      ObjectIterator var4 = this.f.long2ObjectEntrySet().iterator();
-
-      while (var4.hasNext()) {
-         Entry<List<arw>> $$3 = (Entry<List<arw>>)var4.next();
-
-         for (arw $$4 : (List)$$3.getValue()) {
-            if ($$4.a() == $$1) {
-               $$2.add(Pair.of($$4, $$3.getLongKey()));
-            }
-         }
-      }
-
-      for (Pair<arw, Long> $$5 : $$2) {
-         Long $$6 = (Long)$$5.getSecond();
-         arw $$7 = (arw)$$5.getFirst();
-         this.b($$6, $$7);
-         arx $$8 = $$7.a();
-         this.a($$6, new arw($$8, $$0));
-      }
-   }
-
-   public boolean a(dih $$0, boolean $$1) {
-      arw $$2 = new arw(arx.f, aqu.c);
-      return $$1 ? this.a($$0.a(), $$2) : this.b($$0.a(), $$2);
-   }
-
-   public LongSet e() {
+   @Nullable
+   @Override
+   public bwi d() {
       return this.h;
    }
 
-   private LongSet a(Predicate<arw> $$0) {
-      LongOpenHashSet $$1 = new LongOpenHashSet();
-      ObjectIterator var3 = Long2ObjectMaps.fastIterable(this.f).iterator();
-
-      while (var3.hasNext()) {
-         Entry<List<arw>> $$2 = (Entry<List<arw>>)var3.next();
-
-         for (arw $$3 : (List)$$2.getValue()) {
-            if ($$0.test($$3)) {
-               $$1.add($$2.getLongKey());
-               break;
-            }
-         }
-      }
-
-      return $$1;
+   public bux k() {
+      return this.j;
    }
 
-   @FunctionalInterface
-   public interface a {
-      void update(long var1, int var3, boolean var4);
+   @Override
+   public dja.a b() {
+      return this.e;
+   }
+
+   @Override
+   public boolean g() {
+      if (this.e != dja.a.d) {
+         return false;
+      } else {
+         return this.h != null && this.h.an() == bwr.s ? this.f.O().c(djd.d) : true;
+      }
+   }
+
+   @Override
+   public boolean h() {
+      boolean $$0 = this.f.O().c(djd.d);
+      boolean $$1 = this.h == null || !this.h.bh();
+      boolean $$2 = this.h == null || this.h.an() != bwr.s && this.h.an() != bwr.bH;
+      return $$0 ? $$1 && $$2 : this.e.a() && $$1 && $$2;
+   }
+
+   public boolean l() {
+      return this.i < 2.0F || !this.o();
+   }
+
+   static class a {
+      final iv a;
+      czk b;
+
+      a(iv $$0, czk $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public void a(czk $$0) {
+         if (cno.a(this.b, $$0)) {
+            this.b = cno.a(this.b, $$0, 16);
+         }
+      }
    }
 }

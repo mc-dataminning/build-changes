@@ -29,14 +29,14 @@ public class alo {
    private static final Gson b = new GsonBuilder().setPrettyPrinting().create();
    private final avq c;
    private final Path d;
-   private an e;
-   private final Map<ai, ak> f = new LinkedHashMap<>();
-   private final Set<ai> g = new HashSet<>();
-   private final Set<ai> h = new HashSet<>();
-   private final Set<aj> i = new HashSet<>();
+   private ao e;
+   private final Map<aj, al> f = new LinkedHashMap<>();
+   private final Set<aj> g = new HashSet<>();
+   private final Set<aj> h = new HashSet<>();
+   private final Set<ak> i = new HashSet<>();
    private arr j;
    @Nullable
-   private ai k;
+   private aj k;
    private boolean l = true;
    private final Codec<alo.a> m;
 
@@ -55,7 +55,7 @@ public class alo {
    }
 
    public void a() {
-      for (as<?> $$0 : mf.ak) {
+      for (at<?> $$0 : mg.ak) {
          $$0.a(this);
       }
    }
@@ -73,14 +73,14 @@ public class alo {
    }
 
    private void b(alt $$0) {
-      for (ai $$1 : $$0.b()) {
+      for (aj $$1 : $$0.b()) {
          this.d($$1);
       }
    }
 
    private void c(alt $$0) {
-      for (ai $$1 : $$0.b()) {
-         ah $$2 = $$1.b();
+      for (aj $$1 : $$0.b()) {
+         ai $$2 = $$1.b();
          if ($$2.e().isEmpty()) {
             this.a($$1, "");
             $$2.d().a(this.j);
@@ -124,7 +124,7 @@ public class alo {
       JsonElement $$0 = (JsonElement)this.m.encodeStart(JsonOps.INSTANCE, this.c()).getOrThrow();
 
       try {
-         v.c(this.d.getParent());
+         w.c(this.d.getParent());
 
          try (Writer $$1 = Files.newBufferedWriter(this.d, StandardCharsets.UTF_8)) {
             b.toJson($$0, b.newJsonWriter($$1));
@@ -136,7 +136,7 @@ public class alo {
 
    private void a(alt $$0, alo.a $$1) {
       $$1.a(($$1x, $$2) -> {
-         ai $$3 = $$0.a($$1x);
+         aj $$3 = $$0.a($$1x);
          if ($$3 == null) {
             a.warn("Ignored advancement '{}' in progress file {} - it doesn't exist anymore?", $$1x, this.d);
          } else {
@@ -148,7 +148,7 @@ public class alo {
    }
 
    private alo.a c() {
-      Map<alg, ak> $$0 = new LinkedHashMap<>();
+      Map<alg, al> $$0 = new LinkedHashMap<>();
       this.f.forEach(($$1, $$2) -> {
          if ($$2.b()) {
             $$0.put($$1.a(), $$2);
@@ -157,9 +157,9 @@ public class alo {
       return new alo.a($$0);
    }
 
-   public boolean a(ai $$0, String $$1) {
+   public boolean a(aj $$0, String $$1) {
       boolean $$2 = false;
-      ak $$3 = this.b($$0);
+      al $$3 = this.b($$0);
       boolean $$4 = $$3.a();
       if ($$3.a($$1)) {
          this.e($$0);
@@ -168,7 +168,7 @@ public class alo {
          if (!$$4 && $$3.a()) {
             $$0.b().d().a(this.j);
             $$0.b().c().ifPresent($$1x -> {
-               if ($$1x.i() && this.j.y().O().c(diw.C)) {
+               if ($$1x.i() && this.j.y().O().c(djd.C)) {
                   this.c.a($$1x.e().a($$0, this.j), false);
                }
             });
@@ -182,9 +182,9 @@ public class alo {
       return $$2;
    }
 
-   public boolean b(ai $$0, String $$1) {
+   public boolean b(aj $$0, String $$1) {
       boolean $$2 = false;
-      ak $$3 = this.b($$0);
+      al $$3 = this.b($$0);
       boolean $$4 = $$3.a();
       if ($$3.b($$1)) {
          this.d($$0);
@@ -199,18 +199,18 @@ public class alo {
       return $$2;
    }
 
-   private void c(ai $$0) {
-      aj $$1 = this.e.a($$0);
+   private void c(aj $$0) {
+      ak $$1 = this.e.a($$0);
       if ($$1 != null) {
          this.i.add($$1.d());
       }
    }
 
-   private void d(ai $$0) {
-      ak $$1 = this.b($$0);
+   private void d(aj $$0) {
+      al $$1 = this.b($$0);
       if (!$$1.a()) {
-         for (Entry<String, aq<?>> $$2 : $$0.b().e().entrySet()) {
-            ar $$3 = $$1.c($$2.getKey());
+         for (Entry<String, ar<?>> $$2 : $$0.b().e().entrySet()) {
+            as $$3 = $$1.c($$2.getKey());
             if ($$3 != null && !$$3.a()) {
                this.a($$0, $$2.getKey(), $$2.getValue());
             }
@@ -218,38 +218,38 @@ public class alo {
       }
    }
 
-   private <T extends at> void a(ai $$0, String $$1, aq<T> $$2) {
-      $$2.a().a(this, new as.a<>($$2.b(), $$0, $$1));
+   private <T extends au> void a(aj $$0, String $$1, ar<T> $$2) {
+      $$2.a().a(this, new at.a<>($$2.b(), $$0, $$1));
    }
 
-   private void e(ai $$0) {
-      ak $$1 = this.b($$0);
+   private void e(aj $$0) {
+      al $$1 = this.b($$0);
 
-      for (Entry<String, aq<?>> $$2 : $$0.b().e().entrySet()) {
-         ar $$3 = $$1.c($$2.getKey());
+      for (Entry<String, ar<?>> $$2 : $$0.b().e().entrySet()) {
+         as $$3 = $$1.c($$2.getKey());
          if ($$3 != null && ($$3.a() || $$1.a())) {
             this.b($$0, $$2.getKey(), $$2.getValue());
          }
       }
    }
 
-   private <T extends at> void b(ai $$0, String $$1, aq<T> $$2) {
-      $$2.a().b(this, new as.a<>($$2.b(), $$0, $$1));
+   private <T extends au> void b(aj $$0, String $$1, ar<T> $$2) {
+      $$2.a().b(this, new at.a<>($$2.b(), $$0, $$1));
    }
 
    public void a(arr $$0, boolean $$1) {
       if (this.l || !this.i.isEmpty() || !this.h.isEmpty()) {
-         Map<alg, ak> $$2 = new HashMap<>();
-         Set<ai> $$3 = new HashSet<>();
+         Map<alg, al> $$2 = new HashMap<>();
+         Set<aj> $$3 = new HashSet<>();
          Set<alg> $$4 = new HashSet<>();
 
-         for (aj $$5 : this.i) {
+         for (ak $$5 : this.i) {
             this.a($$5, $$3, $$4);
          }
 
          this.i.clear();
 
-         for (ai $$6 : this.h) {
+         for (aj $$6 : this.h) {
             if (this.g.contains($$6)) {
                $$2.put($$6.a(), this.f.get($$6));
             }
@@ -264,8 +264,8 @@ public class alo {
       this.l = false;
    }
 
-   public void a(@Nullable ai $$0) {
-      ai $$1 = this.k;
+   public void a(@Nullable aj $$0) {
+      aj $$1 = this.k;
       if ($$0 != null && $$0.b().a() && $$0.b().c().isPresent()) {
          this.k = $$0;
       } else {
@@ -277,24 +277,24 @@ public class alo {
       }
    }
 
-   public ak b(ai $$0) {
-      ak $$1 = this.f.get($$0);
+   public al b(aj $$0) {
+      al $$1 = this.f.get($$0);
       if ($$1 == null) {
-         $$1 = new ak();
+         $$1 = new al();
          this.a($$0, $$1);
       }
 
       return $$1;
    }
 
-   private void a(ai $$0, ak $$1) {
+   private void a(aj $$0, al $$1) {
       $$1.a($$0.b().f());
       this.f.put($$0, $$1);
    }
 
-   private void a(aj $$0, Set<ai> $$1, Set<alg> $$2) {
+   private void a(ak $$0, Set<aj> $$1, Set<alg> $$2) {
       amg.a($$0, $$0x -> this.b($$0x.b()).a(), ($$2x, $$3) -> {
-         ai $$4 = $$2x.b();
+         aj $$4 = $$2x.b();
          if ($$3) {
             if (this.g.add($$4)) {
                $$1.add($$4);
@@ -308,14 +308,14 @@ public class alo {
       });
    }
 
-   static record a(Map<alg, ak> b) {
-      public static final Codec<alo.a> a = Codec.unboundedMap(alg.a, ak.a).xmap(alo.a::new, alo.a::a);
+   static record a(Map<alg, al> b) {
+      public static final Codec<alo.a> a = Codec.unboundedMap(alg.a, al.a).xmap(alo.a::new, alo.a::a);
 
-      public void a(BiConsumer<alg, ak> $$0) {
+      public void a(BiConsumer<alg, al> $$0) {
          this.b.entrySet().stream().sorted(Entry.comparingByValue()).forEach($$1 -> $$0.accept($$1.getKey(), $$1.getValue()));
       }
 
-      public Map<alg, ak> a() {
+      public Map<alg, al> a() {
          return this.b;
       }
    }

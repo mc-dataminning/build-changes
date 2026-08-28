@@ -5,25 +5,25 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import java.util.Collection;
 
 public class apu {
-   public static void a(CommandDispatcher<ei> $$0) {
+   public static void a(CommandDispatcher<ej> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("warden_spawn_tracker").requires($$0x -> $$0x.c(2)))
-               .then(ej.a("clear").executes($$0x -> a((ei)$$0x.getSource(), ImmutableList.of(((ei)$$0x.getSource()).h())))))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("warden_spawn_tracker").requires($$0x -> $$0x.c(2)))
+               .then(ek.a("clear").executes($$0x -> a((ej)$$0x.getSource(), ImmutableList.of(((ej)$$0x.getSource()).h())))))
             .then(
-               ej.a("set")
+               ek.a("set")
                   .then(
-                     ej.a("warning_level", IntegerArgumentType.integer(0, 4))
+                     ek.a("warning_level", IntegerArgumentType.integer(0, 4))
                         .executes(
-                           $$0x -> a((ei)$$0x.getSource(), ImmutableList.of(((ei)$$0x.getSource()).h()), IntegerArgumentType.getInteger($$0x, "warning_level"))
+                           $$0x -> a((ej)$$0x.getSource(), ImmutableList.of(((ej)$$0x.getSource()).h()), IntegerArgumentType.getInteger($$0x, "warning_level"))
                         )
                   )
             )
       );
    }
 
-   private static int a(ei $$0, Collection<? extends crc> $$1, int $$2) {
-      for (crc $$3 : $$1) {
-         $$3.ac().ifPresent($$1x -> $$1x.a($$2));
+   private static int a(ej $$0, Collection<? extends crj> $$1, int $$2) {
+      for (crj $$3 : $$1) {
+         $$3.Z().ifPresent($$1x -> $$1x.a($$2));
       }
 
       if ($$1.size() == 1) {
@@ -35,9 +35,9 @@ public class apu {
       return $$1.size();
    }
 
-   private static int a(ei $$0, Collection<? extends crc> $$1) {
-      for (crc $$2 : $$1) {
-         $$2.ac().ifPresent(cqh::b);
+   private static int a(ej $$0, Collection<? extends crj> $$1) {
+      for (crj $$2 : $$1) {
+         $$2.Z().ifPresent(cqo::b);
       }
 
       if ($$1.size() == 1) {

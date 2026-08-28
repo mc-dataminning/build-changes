@@ -1,57 +1,72 @@
-import java.util.UUID;
-import java.util.function.Supplier;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class gcq extends gcj<glj.a> {
-   private static final int C = 85;
-   private static final int D = 178;
-   private static final wy E = wy.c("gui.abuseReport.skin.title");
-   private ftb F;
-   private fsj G;
+public class gcq {
+   public static final gcq a = new gcq(List.of());
+   private final List<dfi> b;
+   private final Set<dfj> c = new HashSet<>();
+   private final Set<dfj> d = new HashSet<>();
 
-   private gcq(fyb $$0, gli $$1, glj.a $$2) {
-      super(E, $$0, $$1, $$2);
+   public gcq(List<dfi> $$0) {
+      this.b = $$0;
    }
 
-   public gcq(fyb $$0, gli $$1, UUID $$2, Supplier<hjy> $$3) {
-      this($$0, $$1, new glj.a($$2, $$3, $$1.a().b()));
+   public void a(crp $$0, Predicate<dfh> $$1) {
+      for (dfi $$2 : this.b) {
+         boolean $$3 = $$1.test($$2.b());
+         if ($$3) {
+            this.d.add($$2.a());
+         } else {
+            this.d.remove($$2.a());
+         }
+
+         if ($$3 && $$2.a($$0)) {
+            this.c.add($$2.a());
+         } else {
+            this.c.remove($$2.a());
+         }
+      }
    }
 
-   public gcq(fyb $$0, gli $$1, glj $$2) {
-      this($$0, $$1, new glj.a($$2, $$1.a().b()));
+   public boolean a(dfj $$0) {
+      return this.c.contains($$0);
    }
 
-   @Override
-   protected void E() {
-      fwb $$0 = this.z.a(fwb.e().a(8));
-      $$0.c().e();
-      $$0.a(new ftj(85, 120, this.m.aS(), this.A.e().a()));
-      fwb $$1 = $$0.a(fwb.d().a(8));
-      this.G = fsj.a(c, $$0x -> this.m.a(new gcp(this, this.A.i(), glh.b, $$0xx -> {
-            this.A.a($$0xx);
-            this.G();
-         }))).a(178).a();
-      $$1.a(fvt.a(this.p, this.G, b));
-      this.F = this.a(178, 9 * 8, $$0x -> {
-         this.A.a($$0x);
-         this.G();
-      });
-      $$1.a(fvt.a(this.p, this.F, d, $$0x -> $$0x.e(12)));
+   public boolean a() {
+      return !this.c.isEmpty();
    }
 
-   @Override
-   protected void G() {
-      glg $$0 = this.A.i();
-      if ($$0 != null) {
-         this.G.b($$0.b());
-      } else {
-         this.G.b(c);
+   public boolean b() {
+      return !this.d.isEmpty();
+   }
+
+   public List<dfi> c() {
+      return this.b;
+   }
+
+   public List<dfi> a(gcq.a $$0) {
+      Predicate<dfj> $$1 = switch ($$0) {
+         case a -> this.d::contains;
+         case b -> this.c::contains;
+         case c -> $$0x -> this.d.contains($$0x) && !this.c.contains($$0x);
+      };
+      List<dfi> $$2 = new ArrayList<>();
+
+      for (dfi $$3 : this.b) {
+         if ($$1.test($$3.a())) {
+            $$2.add($$3);
+         }
       }
 
-      super.G();
+      return $$2;
    }
 
-   @Override
-   public boolean b(double $$0, double $$1, int $$2) {
-      return super.b($$0, $$1, $$2) ? true : this.F.b($$0, $$1, $$2);
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

@@ -1,9 +1,9 @@
 public class ags implements zf<agp> {
    public static final yw<vu, ags> a = zf.a(ags::a, ags::new);
    private final int b;
-   private final iu c;
+   private final iv c;
 
-   public ags(int $$0, iu $$1) {
+   public ags(int $$0, iv $$1) {
       this.b = $$0;
       this.c = $$1;
    }
@@ -31,7 +31,7 @@ public class ags implements zf<agp> {
       return this.b;
    }
 
-   public iu e() {
+   public iv e() {
       return this.c;
    }
 }

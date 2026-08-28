@@ -1,27 +1,19 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.PrimitiveCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public record hhj(String c) implements hhn<String> {
-   public static final PrimitiveCodec<String> a = Codec.STRING;
-   public static final hhn.a<hhj, String> b = hhn.a.a(
-      RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("block_state_property").forGetter(hhj::c)).apply($$0, hhj::new)), a
-   );
+public class hhj {
+   private static final ayu.b<alg, MapCodec<? extends hhk>> b = new ayu.b<>();
+   public static final MapCodec<hhk> a = b.a(alg.a).dispatchMap("property", hhk::a, $$0 -> $$0);
 
-   @Nullable
-   public String a(czd $$0, @Nullable gjz $$1, @Nullable bxe $$2, int $$3, czb $$4) {
-      dbd $$5 = $$0.a(kj.aq);
-      return $$5 == null ? null : $$5.b().get(this.c);
-   }
-
-   @Override
-   public hhn.a<hhj, String> a() {
-      return b;
-   }
-
-   @Override
-   public Codec<String> b() {
-      return a;
+   public static void a() {
+      b.a(alg.b("custom_model_data"), hhg.a);
+      b.a(alg.b("bundle/fullness"), hha.a);
+      b.a(alg.b("damage"), hhh.a);
+      b.a(alg.b("cooldown"), hhd.a);
+      b.a(alg.b("time"), hhl.a);
+      b.a(alg.b("compass"), hhb.a);
+      b.a(alg.b("crossbow/pull"), hhf.a);
+      b.a(alg.b("use_cycle"), hhm.a);
+      b.a(alg.b("use_duration"), hhn.a);
+      b.a(alg.b("count"), hhe.a);
    }
 }

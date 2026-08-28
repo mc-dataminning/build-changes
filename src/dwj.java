@@ -1,24 +1,33 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dwj extends dmf {
-   public static final MapCodec<dwj> a = b(dwj::new);
-
-   @Override
-   public MapCodec<dwj> a() {
-      return a;
-   }
-
-   public dwj(eag.d $$0) {
-      super($$0);
-   }
+public class dwj extends dob implements dwi {
+   public static final MapCodec<dwj> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dwi.a.e.fieldOf("weathering_state").forGetter(dwj::q), t()).apply($$0, dwj::new)
+   );
+   private final dwi.a e;
 
    @Override
-   protected void a(eah $$0, dja $$1, iu $$2, bwf $$3) {
-      feq $$4 = new feq(0.25, 0.05F, 0.25);
-      if ($$3 instanceof bxe $$5 && $$5.b(bvl.K)) {
-         $$4 = new feq(0.5, 0.25, 0.5);
-      }
+   protected MapCodec<dwj> a() {
+      return d;
+   }
 
-      $$3.a($$0, $$4);
+   public dwj(dwi.a $$0, ean.d $$1) {
+      super($$1);
+      this.e = $$0;
+   }
+
+   @Override
+   protected void b(eao $$0, arq $$1, iv $$2, azv $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected boolean f(eao $$0) {
+      return dwi.c($$0.b()).isPresent();
+   }
+
+   public dwi.a q() {
+      return this.e;
    }
 }

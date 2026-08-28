@@ -1,30 +1,64 @@
-import javax.annotation.Nullable;
+public abstract class cry extends crs implements csb {
+   private static final float d = 12.25F;
+   private static final akj<czk> e = akn.a(cry.class, akl.h);
 
-@FunctionalInterface
-public interface cry {
-   cry a = ($$0, $$1, $$2) -> {
-   };
-   cry b = ($$0, $$1, $$2) -> {
-      float $$3 = 170.0F + $$2.i() * 20.0F;
-      $$0.i($$0.dy().c(-0.5));
-      $$0.w($$0.dL() + $$3);
-      $$0.N += $$3;
-      $$0.ar = true;
-   };
-   cry c = ($$0, $$1, $$2) -> {
-      if ($$1 != null) {
-         feq $$3 = $$1.bT().d();
-         $$0.i($$3);
-         $$0.ar = true;
-      }
-   };
-   cry d = ($$0, $$1, $$2) -> {
-      if ($$1 != null) {
-         feq $$3 = $$1.dy().d();
-         $$0.i($$3);
-         $$0.ar = true;
-      }
-   };
+   public cry(bwr<? extends cry> $$0, djh $$1) {
+      super($$0, $$1);
+   }
 
-   void deflect(crx var1, @Nullable bwf var2, azv var3);
+   public cry(bwr<? extends cry> $$0, double $$1, double $$2, double $$3, fex $$4, djh $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public cry(bwr<? extends cry> $$0, bxj $$1, fex $$2, djh $$3) {
+      super($$0, $$1, $$2, $$3);
+   }
+
+   public void a(czk $$0) {
+      if ($$0.f()) {
+         this.ar().a(e, this.o());
+      } else {
+         this.ar().a(e, $$0.c(1));
+      }
+   }
+
+   @Override
+   protected void aK() {
+   }
+
+   @Override
+   public czk f() {
+      return this.ar().a(e);
+   }
+
+   @Override
+   protected void a(akn.a $$0) {
+      $$0.a(e, this.o());
+   }
+
+   @Override
+   public void b(tz $$0) {
+      ale<uw> $$1 = this.dW().a(un.a);
+      $$0.a("Item", czk.b, $$1, this.f());
+   }
+
+   @Override
+   public void a(tz $$0) {
+      ale<uw> $$1 = this.dW().a(un.a);
+      this.a($$0.<czk>a("Item", czk.b, $$1).orElse(this.o()));
+   }
+
+   private czk o() {
+      return new czk(czo.vg);
+   }
+
+   @Override
+   public bya a_(int $$0) {
+      return $$0 == 0 ? bya.a(this::f, this::a) : super.a_($$0);
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      return this.af < 2 && $$0 < 12.25 ? false : super.a($$0);
+   }
 }

@@ -2,7 +2,7 @@ import org.jetbrains.annotations.VisibleForTesting;
 
 public class ait {
    private static final double a = 4096.0;
-   private feq b = feq.c;
+   private fex b = fex.c;
 
    @VisibleForTesting
    static long a(double $$0) {
@@ -14,38 +14,38 @@ public class ait {
       return (double)$$0 / 4096.0;
    }
 
-   public feq a(long $$0, long $$1, long $$2) {
+   public fex a(long $$0, long $$1, long $$2) {
       if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
          return this.b;
       } else {
          double $$3 = $$0 == 0L ? this.b.d : a(a(this.b.d) + $$0);
          double $$4 = $$1 == 0L ? this.b.e : a(a(this.b.e) + $$1);
          double $$5 = $$2 == 0L ? this.b.f : a(a(this.b.f) + $$2);
-         return new feq($$3, $$4, $$5);
+         return new fex($$3, $$4, $$5);
       }
    }
 
-   public long a(feq $$0) {
+   public long a(fex $$0) {
       return a($$0.d) - a(this.b.d);
    }
 
-   public long b(feq $$0) {
+   public long b(fex $$0) {
       return a($$0.e) - a(this.b.e);
    }
 
-   public long c(feq $$0) {
+   public long c(fex $$0) {
       return a($$0.f) - a(this.b.f);
    }
 
-   public feq d(feq $$0) {
+   public fex d(fex $$0) {
       return $$0.d(this.b);
    }
 
-   public void e(feq $$0) {
+   public void e(fex $$0) {
       this.b = $$0;
    }
 
-   public feq a() {
+   public fex a() {
       return this.b;
    }
 }

@@ -1,47 +1,22 @@
-import com.google.common.collect.Maps;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Supplier;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class frb implements Supplier<JsonElement> {
-   private final Map<frd<?>, frd<?>.a> a = Maps.newLinkedHashMap();
+public record frb(int b) implements fqy {
+   public static final MapCodec<frb> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ayu.i.fieldOf("default").forGetter(frb::b)).apply($$0, frb::new));
 
-   public <T> frb a(frd<T> $$0, T $$1) {
-      frd<?>.a $$2 = this.a.put($$0, $$0.a($$1));
-      if ($$2 != null) {
-         throw new IllegalStateException("Replacing value of " + $$2 + " with " + $$1);
-      } else {
-         return this;
-      }
+   public frb() {
+      this(-13083194);
    }
 
-   public static frb a() {
-      return new frb();
+   @Override
+   public int a(czk $$0, @Nullable gkl $$1, @Nullable bxj $$2) {
+      dbg $$3 = $$0.a(kk.R);
+      return $$3 != null ? axw.f($$3.a(this.b)) : axw.f(this.b);
    }
 
-   public static frb a(frb $$0, frb $$1) {
-      frb $$2 = new frb();
-      $$2.a.putAll($$0.a);
-      $$2.a.putAll($$1.a);
-      return $$2;
-   }
-
-   public JsonElement b() {
-      JsonObject $$0 = new JsonObject();
-      this.a.values().forEach($$1 -> $$1.a($$0));
-      return $$0;
-   }
-
-   public static JsonElement a(List<frb> $$0) {
-      if ($$0.size() == 1) {
-         return $$0.get(0).b();
-      } else {
-         JsonArray $$1 = new JsonArray();
-         $$0.forEach($$1x -> $$1.add($$1x.b()));
-         return $$1;
-      }
+   @Override
+   public MapCodec<frb> a() {
+      return a;
    }
 }

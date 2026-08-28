@@ -1,48 +1,34 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class caz {
-   public static byw<bxm> a(cgg<iu> $$0, float $$1, int $$2, boolean $$3) {
-      return a($$0, $$1, $$2, $$3, feq::c);
+   public static bzb<bxj> a(bxm $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.an().f()), $$1);
    }
 
-   public static cag<bxm> b(cgg<? extends bwf> $$0, float $$1, int $$2, boolean $$3) {
-      return a($$0, $$1, $$2, $$3, bwf::dt);
+   public static cal<bxj> a(bwr<?> $$0, float $$1) {
+      return a($$1x -> $$0.equals($$1x.an()), $$1);
    }
 
-   private static <T> cag<bxm> a(cgg<T> $$0, float $$1, int $$2, boolean $$3, Function<T, feq> $$4) {
-      return cci.a(
-         (Function<cci.b<bxm>, ? extends App<cci.c<bxm>, ccl<bxm>>>)($$5 -> $$5.group($$5.a(cgg.n), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                  Optional<cgj> $$10 = $$5.a($$5x);
-                  if ($$10.isPresent() && !$$3) {
-                     return false;
-                  } else {
-                     feq $$11 = $$8.dt();
-                     feq $$12 = $$4.apply($$5.b($$6));
-                     if (!$$11.a((jo)$$12, (double)$$2)) {
+   public static cal<bxj> a(float $$0) {
+      return a($$0x -> true, $$0);
+   }
+
+   public static cal<bxj> a(Predicate<bxj> $$0, float $$1) {
+      float $$2 = $$1 * $$1;
+      return ccn.a(
+         (Function<ccn.b<bxj>, ? extends App<ccn.c<bxj>, ccq<bxj>>>)($$2x -> $$2x.group($$2x.c(cgl.o), $$2x.b(cgl.h))
+               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
+                     Optional<bxj> $$8 = $$2x.<cgn>b($$4).a($$0.and($$2xxxx -> $$2xxxx.g($$6) <= (double)$$2 && !$$6.y($$2xxxx)));
+                     if ($$8.isEmpty()) {
                         return false;
                      } else {
-                        if ($$10.isPresent() && $$10.get().b() == $$1) {
-                           feq $$13 = $$10.get().a().a().d($$11);
-                           feq $$14 = $$12.d($$11);
-                           if ($$13.b($$14) < 0.0) {
-                              return false;
-                           }
-                        }
-
-                        for (int $$15 = 0; $$15 < 10; $$15++) {
-                           feq $$16 = cia.b($$8, 16, 7, $$12);
-                           if ($$16 != null) {
-                              $$5x.a(new cgj($$16, $$1, 0));
-                              break;
-                           }
-                        }
-
+                        $$3.a(new bzl($$8.get(), true));
                         return true;
                      }
-                  }
-               }))
+                  }))
       );
    }
 }

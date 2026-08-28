@@ -1,44 +1,22 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 
-public class dt extends dj<dt.a> {
-   @Override
-   public Codec<dt.a> a() {
-      return dt.a.a;
-   }
-
-   public void a(arr $$0, ciu $$1) {
-      ezh $$2 = bx.b($$0, $$1);
-      this.a($$0, $$1x -> $$1x.a($$2));
-   }
-
-   public static record a(Optional<bi> b, Optional<bi> c) implements dj.a {
-      public static final Codec<dt.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bx.b.optionalFieldOf("player").forGetter(dt.a::a), bx.b.optionalFieldOf("entity").forGetter(dt.a::c)).apply($$0, dt.a::new)
+public record dt<T>(axr<T> a, boolean b) {
+   public static <T> Codec<dt<T>> a(alf<? extends js<T>> $$0) {
+      return RecordCodecBuilder.create(
+         $$1 -> $$1.group(axr.a($$0).fieldOf("id").forGetter(dt::a), Codec.BOOL.fieldOf("expected").forGetter(dt::b)).apply($$1, dt::new)
       );
+   }
 
-      public static aq<dt.a> b() {
-         return ap.y.a(new dt.a(Optional.empty(), Optional.empty()));
-      }
+   public static <T> dt<T> a(axr<T> $$0) {
+      return new dt<>($$0, true);
+   }
 
-      public static aq<dt.a> a(bx.a $$0) {
-         return ap.y.a(new dt.a(Optional.empty(), Optional.of(bx.a($$0))));
-      }
+   public static <T> dt<T> b(axr<T> $$0) {
+      return new dt<>($$0, false);
+   }
 
-      public boolean a(ezh $$0) {
-         return this.c.isEmpty() || this.c.get().a($$0);
-      }
-
-      @Override
-      public void a(bj $$0) {
-         dj.a.super.a($$0);
-         $$0.a(this.c, ".entity");
-      }
-
-      @Override
-      public Optional<bi> a() {
-         return this.b;
-      }
+   public boolean a(jf<T> $$0) {
+      return $$0.a(this.a) == this.b;
    }
 }

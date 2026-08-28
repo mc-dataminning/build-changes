@@ -1,25 +1,25 @@
 public class ahv implements zf<agp> {
    public static final yw<vu, ahv> a = zf.a(ahv::a, ahv::new);
-   private final iu b;
-   private final ja c;
+   private final iv b;
+   private final jb c;
    private final ahv.a d;
    private final int e;
 
-   public ahv(ahv.a $$0, iu $$1, ja $$2, int $$3) {
+   public ahv(ahv.a $$0, iv $$1, jb $$2, int $$3) {
       this.d = $$0;
       this.b = $$1.j();
       this.c = $$2;
       this.e = $$3;
    }
 
-   public ahv(ahv.a $$0, iu $$1, ja $$2) {
+   public ahv(ahv.a $$0, iv $$1, jb $$2) {
       this($$0, $$1, $$2, 0);
    }
 
    private ahv(vu $$0) {
       this.d = $$0.b(ahv.a.class);
       this.b = $$0.e();
-      this.c = ja.a($$0.readUnsignedByte());
+      this.c = jb.a($$0.readUnsignedByte());
       this.e = $$0.l();
    }
 
@@ -39,11 +39,11 @@ public class ahv implements zf<agp> {
       $$0.a(this);
    }
 
-   public iu b() {
+   public iv b() {
       return this.b;
    }
 
-   public ja e() {
+   public jb e() {
       return this.c;
    }
 

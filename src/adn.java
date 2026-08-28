@@ -1,13 +1,13 @@
 public class adn implements zf<abu> {
    public static final yw<wj, adn> a = zf.a(adn::a, adn::new);
    private final int b;
-   private final dhz c;
+   private final dig c;
    private final int d;
    private final int e;
    private final boolean f;
    private final boolean g;
 
-   public adn(int $$0, dhz $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
+   public adn(int $$0, dig $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
       this.b = $$0;
       this.c = $$1.a();
       this.d = $$2;
@@ -18,7 +18,7 @@ public class adn implements zf<abu> {
 
    private adn(wj $$0) {
       this.b = $$0.x();
-      this.c = dhz.b.decode($$0);
+      this.c = dig.b.decode($$0);
       this.d = $$0.l();
       this.e = $$0.l();
       this.f = $$0.readBoolean();
@@ -27,7 +27,7 @@ public class adn implements zf<abu> {
 
    private void a(wj $$0) {
       $$0.f(this.b);
-      dhz.b.encode($$0, this.c);
+      dig.b.encode($$0, this.c);
       $$0.c(this.d);
       $$0.c(this.e);
       $$0.a(this.f);
@@ -47,7 +47,7 @@ public class adn implements zf<abu> {
       return this.b;
    }
 
-   public dhz e() {
+   public dig e() {
       return this.c;
    }
 

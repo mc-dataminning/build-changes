@@ -1,73 +1,159 @@
-import com.google.common.collect.Lists;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketAddress;
-import java.util.Comparator;
+import java.util.ArrayList;
 import java.util.List;
-import org.apache.commons.io.IOUtils;
+import java.util.NoSuchElementException;
+import org.joml.Matrix3f;
+import org.joml.Matrix4f;
+import org.joml.Matrix4fc;
+import org.joml.Quaternionfc;
+import org.joml.Vector3f;
+import org.joml.Vector3fc;
 
 public class fjy {
-   public static List<flj> a(fjy.a... $$0) {
-      for (fjy.a $$1 : $$0) {
-         a($$1.j);
-      }
+   private final List<fjy.a> a = new ArrayList<>(16);
+   private int b;
 
-      List<flj> $$2 = Lists.newArrayList();
-
-      for (fjy.a $$3 : $$0) {
-         $$2.add(new flj($$3.i, a($$3.j)));
-      }
-
-      $$2.sort(Comparator.comparingInt(flj::a));
-      return $$2;
+   public fjy() {
+      this.a.add(new fjy.a());
    }
 
-   private static int a(String $$0) {
-      int $$1 = 700;
-      long $$2 = 0L;
-      Socket $$3 = null;
+   public void a(double $$0, double $$1, double $$2) {
+      this.a((float)$$0, (float)$$1, (float)$$2);
+   }
 
-      for (int $$4 = 0; $$4 < 5; $$4++) {
-         try {
-            SocketAddress $$5 = new InetSocketAddress($$0, 80);
-            $$3 = new Socket();
-            long $$6 = b();
-            $$3.connect($$5, 700);
-            $$2 += b() - $$6;
-         } catch (Exception var12) {
-            $$2 += 700L;
-         } finally {
-            IOUtils.closeQuietly($$3);
+   public void a(float $$0, float $$1, float $$2) {
+      this.c().a($$0, $$1, $$2);
+   }
+
+   public void a(fex $$0) {
+      this.a($$0.d, $$0.e, $$0.f);
+   }
+
+   public void b(float $$0, float $$1, float $$2) {
+      this.c().b($$0, $$1, $$2);
+   }
+
+   public void a(Quaternionfc $$0) {
+      this.c().a($$0);
+   }
+
+   public void a(Quaternionfc $$0, float $$1, float $$2, float $$3) {
+      this.c().a($$0, $$1, $$2, $$3);
+   }
+
+   public void a() {
+      fjy.a $$0 = this.c();
+      this.b++;
+      if (this.b >= this.a.size()) {
+         this.a.add($$0.d());
+      } else {
+         this.a.get(this.b).a($$0);
+      }
+   }
+
+   public void b() {
+      if (this.b == 0) {
+         throw new NoSuchElementException();
+      } else {
+         this.b--;
+      }
+   }
+
+   public fjy.a c() {
+      return this.a.get(this.b);
+   }
+
+   public boolean d() {
+      return this.b == 0;
+   }
+
+   public void e() {
+      this.c().c();
+   }
+
+   public void a(Matrix4fc $$0) {
+      this.c().a($$0);
+   }
+
+   public static final class a {
+      private final Matrix4f a = new Matrix4f();
+      private final Matrix3f b = new Matrix3f();
+      private boolean c = true;
+
+      private void e() {
+         this.b.set(this.a).invert().transpose();
+         this.c = false;
+      }
+
+      void a(fjy.a $$0) {
+         this.a.set($$0.a);
+         this.b.set($$0.b);
+         this.c = $$0.c;
+      }
+
+      public Matrix4f a() {
+         return this.a;
+      }
+
+      public Matrix3f b() {
+         return this.b;
+      }
+
+      public Vector3f a(Vector3fc $$0, Vector3f $$1) {
+         return this.a($$0.x(), $$0.y(), $$0.z(), $$1);
+      }
+
+      public Vector3f a(float $$0, float $$1, float $$2, Vector3f $$3) {
+         Vector3f $$4 = this.b.transform($$0, $$1, $$2, $$3);
+         return this.c ? $$4 : $$4.normalize();
+      }
+
+      public Matrix4f a(float $$0, float $$1, float $$2) {
+         return this.a.translate($$0, $$1, $$2);
+      }
+
+      public void b(float $$0, float $$1, float $$2) {
+         this.a.scale($$0, $$1, $$2);
+         if (Math.abs($$0) == Math.abs($$1) && Math.abs($$1) == Math.abs($$2)) {
+            if ($$0 < 0.0F || $$1 < 0.0F || $$2 < 0.0F) {
+               this.b.scale(Math.signum($$0), Math.signum($$1), Math.signum($$2));
+            }
+         } else {
+            this.b.scale(1.0F / $$0, 1.0F / $$1, 1.0F / $$2);
+            this.c = false;
          }
       }
 
-      return (int)((double)$$2 / 5.0);
-   }
+      public void a(Quaternionfc $$0) {
+         this.a.rotate($$0);
+         this.b.rotate($$0);
+      }
 
-   private static long b() {
-      return af.c();
-   }
+      public void a(Quaternionfc $$0, float $$1, float $$2, float $$3) {
+         this.a.rotateAround($$0, $$1, $$2, $$3);
+         this.b.rotate($$0);
+      }
 
-   public static List<flj> a() {
-      return a(fjy.a.values());
-   }
+      public void c() {
+         this.a.identity();
+         this.b.identity();
+         this.c = true;
+      }
 
-   static enum a {
-      a("us-east-1", "ec2.us-east-1.amazonaws.com"),
-      b("us-west-2", "ec2.us-west-2.amazonaws.com"),
-      c("us-west-1", "ec2.us-west-1.amazonaws.com"),
-      d("eu-west-1", "ec2.eu-west-1.amazonaws.com"),
-      e("ap-southeast-1", "ec2.ap-southeast-1.amazonaws.com"),
-      f("ap-southeast-2", "ec2.ap-southeast-2.amazonaws.com"),
-      g("ap-northeast-1", "ec2.ap-northeast-1.amazonaws.com"),
-      h("sa-east-1", "ec2.sa-east-1.amazonaws.com");
+      public void a(Matrix4fc $$0) {
+         this.a.mul($$0);
+         if (!f.b($$0)) {
+            if (f.c($$0)) {
+               this.b.mul(new Matrix3f($$0));
+            } else {
+               this.e();
+            }
+         }
+      }
 
-      final String i;
-      final String j;
-
-      private a(final String $$0, final String $$1) {
-         this.i = $$0;
-         this.j = $$1;
+      public fjy.a d() {
+         fjy.a $$0 = new fjy.a();
+         $$0.a(this);
+         return $$0;
       }
    }
 }

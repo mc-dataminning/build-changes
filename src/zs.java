@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public record zs(UUID c, String d, String e, boolean f, Optional<wy> g) implements zf<zl> {
    public static final int a = 40;
-   public static final yw<ByteBuf, zs> b = yw.a(jy.g, zs::b, yu.o, zs::e, yu.b(40), zs::f, yu.b, zs::g, xa.f.a(yu::a), zs::h, zs::new);
+   public static final yw<ByteBuf, zs> b = yw.a(jz.g, zs::b, yu.p, zs::e, yu.b(40), zs::f, yu.b, zs::g, xa.f.a(yu::a), zs::h, zs::new);
 
    public zs(UUID c, String d, String e, boolean f, Optional<wy> g) {
       if (e.length() > 40) {

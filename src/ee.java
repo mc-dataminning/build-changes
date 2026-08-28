@@ -1,25 +1,39 @@
+import com.mojang.serialization.Codec;
 import java.util.Optional;
-import java.util.stream.Stream;
 
-public interface ee extends jg.a {
-   static ee a(final jg.a $$0, final cum $$1) {
-      return new ee() {
-         @Override
-         public Stream<alf<? extends jr<?>>> b() {
-            return $$0.b();
-         }
+public class ee {
+   public static final Codec<ee> a = alg.a.xmap(ee::new, ee::a);
+   private final alg b;
+   private boolean c;
+   private Optional<hx<ej>> d = Optional.empty();
 
-         @Override
-         public <T> Optional<jg.b<T>> a(alf<? extends jr<? extends T>> $$0x) {
-            return $$0.a($$0).map($$1xx -> $$1xx.a($$1));
-         }
-
-         @Override
-         public cum a() {
-            return $$1;
-         }
-      };
+   public ee(alg $$0) {
+      this.b = $$0;
    }
 
-   cum a();
+   public Optional<hx<ej>> a(alv $$0) {
+      if (!this.c) {
+         this.d = $$0.a(this.b);
+         this.c = true;
+      }
+
+      return this.d;
+   }
+
+   public alg a() {
+      return this.b;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 == this) {
+         return true;
+      } else {
+         if ($$0 instanceof ee $$1 && this.a().equals($$1.a())) {
+            return true;
+         }
+
+         return false;
+      }
+   }
 }

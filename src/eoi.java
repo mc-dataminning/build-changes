@@ -1,60 +1,29 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 
-public class eoi extends eol {
-   public static final MapCodec<eoi> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(eoi::new, $$0 -> $$0.b);
-   private final float b;
+public class eoi extends eny {
+   public static final MapCodec<eoi> b = bsq.b(eao.a).comapFlatMap(eoi::a, $$0 -> $$0.c).fieldOf("entries");
+   private final bsq<eao> c;
+
+   private static DataResult<eoi> a(bsq<eao> $$0) {
+      return $$0.c() ? DataResult.error(() -> "WeightedStateProvider with no states") : DataResult.success(new eoi($$0));
+   }
+
+   public eoi(bsq<eao> $$0) {
+      this.c = $$0;
+   }
+
+   public eoi(bsq.a<eao> $$0) {
+      this($$0.a());
+   }
 
    @Override
-   protected eom<?> a() {
-      return eom.b;
-   }
-
-   public eoi(float $$0) {
-      this.b = $$0;
+   protected enz<?> a() {
+      return enz.b;
    }
 
    @Override
-   public void a(eol.a $$0) {
-      azv $$1 = $$0.b();
-      $$0.d().forEach($$2 -> {
-         if ($$1.i() < this.b) {
-            iu $$3 = $$2.h();
-            if ($$0.a($$3)) {
-               a($$3, dvs.d, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            iu $$4 = $$2.i();
-            if ($$0.a($$4)) {
-               a($$4, dvs.f, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            iu $$5 = $$2.f();
-            if ($$0.a($$5)) {
-               a($$5, dvs.e, $$0);
-            }
-         }
-
-         if ($$1.i() < this.b) {
-            iu $$6 = $$2.g();
-            if ($$0.a($$6)) {
-               a($$6, dvs.c, $$0);
-            }
-         }
-      });
-   }
-
-   private static void a(iu $$0, eay $$1, eol.a $$2) {
-      $$2.a($$0, $$1);
-      int $$3 = 4;
-
-      for (iu var4 = $$0.e(); $$2.a(var4) && $$3 > 0; $$3--) {
-         $$2.a(var4, $$1);
-         var4 = var4.e();
-      }
+   public eao a(azv $$0, iv $$1) {
+      return this.c.b($$0);
    }
 }

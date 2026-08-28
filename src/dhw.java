@@ -1,57 +1,67 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.function.UnaryOperator;
+import io.netty.buffer.ByteBuf;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Map;
 
-public record dhw(je<cyz> d, int e, kd f, czd g) {
-   public static final Codec<dhw> a = RecordCodecBuilder.create(
+public record dhw(dhw.a o, Map<alf<dhr>, dhw.a> p) {
+   public static final String a = "_";
+   public static final MapCodec<dhw> b = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               cyz.e.fieldOf("id").forGetter(dhw::a),
-               ayu.m.fieldOf("count").orElse(1).forGetter(dhw::b),
-               kd.a.optionalFieldOf("components", kd.c).forGetter(dhw::c)
+               dhw.a.a.fieldOf("asset_name").forGetter(dhw::a),
+               Codec.unboundedMap(alf.a(dhs.a), dhw.a.a).optionalFieldOf("override_armor_assets", Map.of()).forGetter(dhw::b)
             )
             .apply($$0, dhw::new)
    );
-   public static final yw<wj, dhw> b = yw.a(cyz.f, dhw::a, yu.h, dhw::b, kd.b, dhw::c, dhw::new);
-   public static final yw<wj, Optional<dhw>> c = b.a(yu::a);
+   public static final yw<ByteBuf, dhw> c = yw.a(dhw.a.b, dhw::a, yu.a(Object2ObjectOpenHashMap::new, alf.b(dhs.a), dhw.a.b), dhw::b, dhw::new);
+   public static final dhw d = a("quartz");
+   public static final dhw e = a("iron", Map.of(dhs.d, "iron_darker"));
+   public static final dhw f = a("netherite", Map.of(dhs.h, "netherite_darker"));
+   public static final dhw g = a("redstone");
+   public static final dhw h = a("copper");
+   public static final dhw i = a("gold", Map.of(dhs.e, "gold_darker"));
+   public static final dhw j = a("emerald");
+   public static final dhw k = a("diamond", Map.of(dhs.f, "diamond_darker"));
+   public static final dhw l = a("lapis");
+   public static final dhw m = a("amethyst");
+   public static final dhw n = a("resin");
 
-   public dhw(diz $$0) {
-      this($$0, 1);
+   public static dhw a(String $$0) {
+      return new dhw(new dhw.a($$0), Map.of());
    }
 
-   public dhw(diz $$0, int $$1) {
-      this($$0.h().e(), $$1, kd.c);
+   public static dhw a(String $$0, Map<alf<dhr>, String> $$1) {
+      return new dhw(new dhw.a($$0), Map.copyOf(Maps.transformValues($$1, dhw.a::new)));
    }
 
-   public dhw(je<cyz> $$0, int $$1, kd $$2) {
-      this($$0, $$1, $$2, a($$0, $$1, $$2));
+   public dhw.a a(alf<dhr> $$0) {
+      return this.p.getOrDefault($$0, this.o);
    }
 
-   public dhw a(UnaryOperator<kd.a> $$0) {
-      return new dhw(this.d, this.e, $$0.apply(kd.a()).a());
+   public dhw.a a() {
+      return this.o;
    }
 
-   private static czd a(je<cyz> $$0, int $$1, kd $$2) {
-      return new czd($$0, $$1, $$2.c());
+   public Map<alf<dhr>, dhw.a> b() {
+      return this.p;
    }
 
-   public boolean a(czd $$0) {
-      return $$0.a(this.d) && this.f.a($$0);
-   }
+   public static record a(String c) {
+      public static final Codec<dhw.a> a = ayu.C.xmap(dhw.a::new, dhw.a::a);
+      public static final yw<ByteBuf, dhw.a> b = yu.p.a(dhw.a::new, dhw.a::a);
 
-   public je<cyz> a() {
-      return this.d;
-   }
+      public a(String c) {
+         if (!alg.i(c)) {
+            throw new IllegalArgumentException("Invalid string to use as a resource path element: " + c);
+         } else {
+            this.c = c;
+         }
+      }
 
-   public int b() {
-      return this.e;
-   }
-
-   public kd c() {
-      return this.f;
-   }
-
-   public czd d() {
-      return this.g;
+      public String a() {
+         return this.c;
+      }
    }
 }

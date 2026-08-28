@@ -121,7 +121,7 @@ public class azn {
       }
    }
 
-   public static void a(p $$0) {
+   public static void a(q $$0) {
       $$0.a("Modules", () -> a().stream().sorted(Comparator.comparing($$0x -> $$0x.a)).map($$0x -> "\n\t\t" + $$0x).collect(Collectors.joining()));
    }
 

@@ -1,152 +1,78 @@
-import java.util.List;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Objects;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public record y(String f, List<String> g) {
-   public static final y a = new y(
-      "Minecraft Crash Report",
-      List.of(
-         "Who set us up the TNT?",
-         "Everything's going to plan. No, really, that was supposed to happen.",
-         "Uh... Did I do that?",
-         "Oops.",
-         "Why did you do that?",
-         "I feel sad now :(",
-         "My bad.",
-         "I'm sorry, Dave.",
-         "I let you down. Sorry :(",
-         "On the bright side, I bought you a teddy bear!",
-         "Daisy, daisy...",
-         "Oh - I know what I did wrong!",
-         "Hey, that tickles! Hehehe!",
-         "I blame Dinnerbone.",
-         "You should try our sister game, Minceraft!",
-         "Don't be sad. I'll do better next time, I promise!",
-         "Don't be sad, have a hug! <3",
-         "I just don't know what went wrong :(",
-         "Shall we play a game?",
-         "Quite honestly, I wouldn't worry myself about that.",
-         "I bet Cylons wouldn't have this problem.",
-         "Sorry :(",
-         "Surprise! Haha. Well, this is awkward.",
-         "Would you like a cupcake?",
-         "Hi. I'm Minecraft, and I'm a crashaholic.",
-         "Ooh. Shiny.",
-         "This doesn't make any sense!",
-         "Why is it breaking :(",
-         "Don't do that.",
-         "Ouch. That hurt :(",
-         "You're mean.",
-         "This is a token for 1 free hug. Redeem at your nearest Mojangsta: [~~HUG~~]",
-         "There are four lights!",
-         "But it works on my machine."
-      )
-   );
-   public static final y b = new y(
-      "Minecraft Profiler Results",
-      List.of(
-         "I'd Rather Be Surfing",
-         "Shiny numbers!",
-         "Am I not running fast enough? :(",
-         "I'm working as hard as I can!",
-         "Will I ever be good enough for you? :(",
-         "Speedy. Zoooooom!",
-         "Hello world",
-         "40% better than a crash report.",
-         "Now with extra numbers",
-         "Now with less numbers",
-         "Now with the same numbers",
-         "You should add flames to things, it makes them go faster!",
-         "Do you feel the need for... optimization?",
-         "*cracks redstone whip*",
-         "Maybe if you treated it better then it'll have more motivation to work faster! Poor server."
-      )
-   );
-   public static final y c = new y(
-      "Minecraft Test Report",
-      List.of(
-         "Don't mind me",
-         "One day I will be a real crash!",
-         "Booo! Haha, did I scare you?",
-         "Help, I'm trapped in a report factory!",
-         "Have I answered your question?",
-         "No hugs here, sorry",
-         "I Can't Believe It's Not A Crash Report!",
-         "Where's the kaboom!?"
-      )
-   );
-   public static final y d = new y(
-      "Minecraft Network Protocol Error Report",
-      List.of(
-         "0xBADF00D",
-         "+'${`%&NO CARRIER",
-         "Please insert The Internet CD #4",
-         "Sabotage!",
-         "Are you sure you are not moving wrongly?",
-         "This time is not my fault, I promise!",
-         "All lines are down!",
-         "Maybe a shark bit some cable",
-         "404",
-         "I'm sorry, I don't speak that language",
-         "What we've got here is failure to communicate",
-         "It's the tubes, they're clogged!",
-         "Abort, Retry, Ignore?",
-         "Could be worse, I guess",
-         "Wait, was the last bit one or zero?",
-         "Too many suspicious packets",
-         "Don't worry, I'll be fine",
-         "Maybe this time it will work!",
-         "I heard pigeons are more reliable"
-      )
-   );
-   public static final y e = new y(
-      "Minecraft Chunk IO Error Report",
-      List.of(
-         "I have failed you!",
-         "Let's not do it again...",
-         "Worst magic trick ever!",
-         "Remember to backup your worlds regularly",
-         "Pirates stole your chunk!",
-         "Ker-chunk!",
-         "Ideally, this shouldn't be here",
-         "Let's hope it wasn't anything important",
-         "Computers were a mistake",
-         "Welp",
-         "Not my proudest moment",
-         "Who needs blocks in a block game, right?",
-         "This chunk is no more...it has ceased to be...this is an EX-chunk",
-         "loss.mca"
-      )
-   );
-
-   public String a() {
-      try {
-         return this.g.get((int)(af.d() % (long)this.g.size()));
-      } catch (Throwable var2) {
-         return "Witty comment unavailable :(";
-      }
+public class y {
+   @Deprecated
+   public static <T> T a(@Nullable T $$0, T $$1) {
+      return Objects.requireNonNullElse($$0, $$1);
    }
 
-   public void a(StringBuilder $$0, List<String> $$1) {
-      $$0.append("---- ");
-      $$0.append(this.b());
-      $$0.append(" ----\n");
-      $$0.append("// ");
-      $$0.append(this.a());
-      $$0.append('\n');
-
-      for (String $$2 : $$1) {
-         $$0.append("// ");
-         $$0.append($$2);
-         $$0.append('\n');
-      }
-
-      $$0.append('\n');
+   @Nullable
+   public static <T, R> R a(@Nullable T $$0, Function<T, R> $$1) {
+      return $$0 == null ? null : $$1.apply($$0);
    }
 
-   public String b() {
-      return this.f;
+   public static <T, R> R a(@Nullable T $$0, Function<T, R> $$1, R $$2) {
+      return $$0 == null ? $$2 : $$1.apply($$0);
    }
 
-   public List<String> c() {
-      return this.g;
+   public static <T, R> R a(@Nullable T $$0, Function<T, R> $$1, Supplier<R> $$2) {
+      return $$0 == null ? $$2.get() : $$1.apply($$0);
+   }
+
+   @Nullable
+   public static <T> T a(Collection<T> $$0) {
+      Iterator<T> $$1 = $$0.iterator();
+      return $$1.hasNext() ? $$1.next() : null;
+   }
+
+   public static <T> T a(Collection<T> $$0, T $$1) {
+      Iterator<T> $$2 = $$0.iterator();
+      return $$2.hasNext() ? $$2.next() : $$1;
+   }
+
+   public static <T> T a(Collection<T> $$0, Supplier<T> $$1) {
+      Iterator<T> $$2 = $$0.iterator();
+      return $$2.hasNext() ? $$2.next() : $$1.get();
+   }
+
+   public static <T> boolean a(@Nullable T[] $$0) {
+      return $$0 == null || $$0.length == 0;
+   }
+
+   public static boolean a(@Nullable boolean[] $$0) {
+      return $$0 == null || $$0.length == 0;
+   }
+
+   public static boolean a(@Nullable byte[] $$0) {
+      return $$0 == null || $$0.length == 0;
+   }
+
+   public static boolean a(@Nullable char[] $$0) {
+      return $$0 == null || $$0.length == 0;
+   }
+
+   public static boolean a(@Nullable short[] $$0) {
+      return $$0 == null || $$0.length == 0;
+   }
+
+   public static boolean a(@Nullable int[] $$0) {
+      return $$0 == null || $$0.length == 0;
+   }
+
+   public static boolean a(@Nullable long[] $$0) {
+      return $$0 == null || $$0.length == 0;
+   }
+
+   public static boolean a(@Nullable float[] $$0) {
+      return $$0 == null || $$0.length == 0;
+   }
+
+   public static boolean a(@Nullable double[] $$0) {
+      return $$0 == null || $$0.length == 0;
    }
 }

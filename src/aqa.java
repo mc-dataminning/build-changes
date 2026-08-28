@@ -33,49 +33,49 @@ public class aqa {
    public static final List<aqa.c> b = a.stream().map($$0 -> $$0.apply("target")).collect(ImmutableList.toImmutableList());
    public static final List<aqa.c> c = a.stream().map($$0 -> $$0.apply("source")).collect(ImmutableList.toImmutableList());
 
-   public static void a(CommandDispatcher<ei> $$0) {
-      LiteralArgumentBuilder<ei> $$1 = (LiteralArgumentBuilder<ei>)ej.a("data").requires($$0x -> $$0x.c(2));
+   public static void a(CommandDispatcher<ej> $$0) {
+      LiteralArgumentBuilder<ej> $$1 = (LiteralArgumentBuilder<ej>)ek.a("data").requires($$0x -> $$0x.c(2));
 
       for (aqa.c $$2 : b) {
          ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)$$1.then(
-                     $$2.a(ej.a("merge"), $$1x -> $$1x.then(ej.a("nbt", es.a()).executes($$1xx -> a((ei)$$1xx.getSource(), $$2.a($$1xx), es.a($$1xx, "nbt")))))
+                     $$2.a(ek.a("merge"), $$1x -> $$1x.then(ek.a("nbt", et.a()).executes($$1xx -> a((ej)$$1xx.getSource(), $$2.a($$1xx), et.a($$1xx, "nbt")))))
                   ))
                   .then(
                      $$2.a(
-                        ej.a("get"),
-                        $$1x -> $$1x.executes($$1xx -> a((ei)$$1xx.getSource(), $$2.a($$1xx)))
+                        ek.a("get"),
+                        $$1x -> $$1x.executes($$1xx -> a((ej)$$1xx.getSource(), $$2.a($$1xx)))
                               .then(
-                                 ((RequiredArgumentBuilder)ej.a("path", fa.a()).executes($$1xx -> b((ei)$$1xx.getSource(), $$2.a($$1xx), fa.a($$1xx, "path"))))
+                                 ((RequiredArgumentBuilder)ek.a("path", fb.a()).executes($$1xx -> b((ej)$$1xx.getSource(), $$2.a($$1xx), fb.a($$1xx, "path"))))
                                     .then(
-                                       ej.a("scale", DoubleArgumentType.doubleArg())
+                                       ek.a("scale", DoubleArgumentType.doubleArg())
                                           .executes(
-                                             $$1xx -> a((ei)$$1xx.getSource(), $$2.a($$1xx), fa.a($$1xx, "path"), DoubleArgumentType.getDouble($$1xx, "scale"))
+                                             $$1xx -> a((ej)$$1xx.getSource(), $$2.a($$1xx), fb.a($$1xx, "path"), DoubleArgumentType.getDouble($$1xx, "scale"))
                                           )
                                     )
                               )
                      )
                   ))
                .then(
-                  $$2.a(ej.a("remove"), $$1x -> $$1x.then(ej.a("path", fa.a()).executes($$1xx -> a((ei)$$1xx.getSource(), $$2.a($$1xx), fa.a($$1xx, "path")))))
+                  $$2.a(ek.a("remove"), $$1x -> $$1x.then(ek.a("path", fb.a()).executes($$1xx -> a((ej)$$1xx.getSource(), $$2.a($$1xx), fb.a($$1xx, "path")))))
                ))
             .then(
                a(
-                  (BiConsumer<ArgumentBuilder<ei, ?>, aqa.b>)(($$0x, $$1x) -> $$0x.then(
-                           ej.a("insert")
+                  (BiConsumer<ArgumentBuilder<ej, ?>, aqa.b>)(($$0x, $$1x) -> $$0x.then(
+                           ek.a("insert")
                               .then(
-                                 ej.a("index", IntegerArgumentType.integer())
+                                 ek.a("index", IntegerArgumentType.integer())
                                     .then($$1x.create(($$0xx, $$1xx, $$2x, $$3) -> $$2x.a(IntegerArgumentType.getInteger($$0xx, "index"), $$1xx, $$3)))
                               )
                         )
-                        .then(ej.a("prepend").then($$1x.create(($$0xx, $$1xx, $$2x, $$3) -> $$2x.a(0, $$1xx, $$3))))
-                        .then(ej.a("append").then($$1x.create(($$0xx, $$1xx, $$2x, $$3) -> $$2x.a(-1, $$1xx, $$3))))
-                        .then(ej.a("set").then($$1x.create(($$0xx, $$1xx, $$2x, $$3) -> $$2x.a($$1xx, (uw)Iterables.getLast($$3)))))
-                        .then(ej.a("merge").then($$1x.create(($$0xx, $$1xx, $$2x, $$3) -> {
+                        .then(ek.a("prepend").then($$1x.create(($$0xx, $$1xx, $$2x, $$3) -> $$2x.a(0, $$1xx, $$3))))
+                        .then(ek.a("append").then($$1x.create(($$0xx, $$1xx, $$2x, $$3) -> $$2x.a(-1, $$1xx, $$3))))
+                        .then(ek.a("set").then($$1x.create(($$0xx, $$1xx, $$2x, $$3) -> $$2x.a($$1xx, (uw)Iterables.getLast($$3)))))
+                        .then(ek.a("merge").then($$1x.create(($$0xx, $$1xx, $$2x, $$3) -> {
                            tz $$4 = new tz();
 
                            for (uw $$5 : $$3) {
-                              if (fa.g.a($$5, 0)) {
-                                 throw fa.b.create();
+                              if (fb.g.a($$5, 0)) {
+                                 throw fb.b.create();
                               }
 
                               if (!($$5 instanceof tz $$6)) {
@@ -126,34 +126,34 @@ public class aqa {
       return $$2;
    }
 
-   private static ArgumentBuilder<ei, ?> a(BiConsumer<ArgumentBuilder<ei, ?>, aqa.b> $$0) {
-      LiteralArgumentBuilder<ei> $$1 = ej.a("modify");
+   private static ArgumentBuilder<ej, ?> a(BiConsumer<ArgumentBuilder<ej, ?>, aqa.b> $$0) {
+      LiteralArgumentBuilder<ej> $$1 = ek.a("modify");
 
       for (aqa.c $$2 : b) {
          $$2.a(
             $$1,
             $$2x -> {
-               ArgumentBuilder<ei, ?> $$3 = ej.a("targetPath", fa.a());
+               ArgumentBuilder<ej, ?> $$3 = ek.a("targetPath", fb.a());
 
                for (aqa.c $$4 : c) {
                   $$0.accept(
                      $$3,
                      $$2xx -> $$4.a(
-                           ej.a("from"),
+                           ek.a("from"),
                            $$3x -> $$3x.executes($$3xx -> a($$3xx, $$2, $$2xx, a($$3xx, $$4)))
-                                 .then(ej.a("sourcePath", fa.a()).executes($$3xx -> a($$3xx, $$2, $$2xx, b($$3xx, $$4))))
+                                 .then(ek.a("sourcePath", fb.a()).executes($$3xx -> a($$3xx, $$2, $$2xx, b($$3xx, $$4))))
                         )
                   );
                   $$0.accept(
                      $$3,
                      $$2xx -> $$4.a(
-                           ej.a("string"),
+                           ek.a("string"),
                            $$3x -> $$3x.executes($$3xx -> a($$3xx, $$2, $$2xx, a(a($$3xx, $$4), $$0xxxxx -> $$0xxxxx)))
                                  .then(
-                                    ((RequiredArgumentBuilder)ej.a("sourcePath", fa.a())
+                                    ((RequiredArgumentBuilder)ek.a("sourcePath", fb.a())
                                           .executes($$3xx -> a($$3xx, $$2, $$2xx, a(b($$3xx, $$4), $$0xxxxx -> $$0xxxxx))))
                                        .then(
-                                          ((RequiredArgumentBuilder)ej.a("start", IntegerArgumentType.integer())
+                                          ((RequiredArgumentBuilder)ek.a("start", IntegerArgumentType.integer())
                                                 .executes(
                                                    $$3xx -> a(
                                                          $$3xx,
@@ -163,7 +163,7 @@ public class aqa {
                                                       )
                                                 ))
                                              .then(
-                                                ej.a("end", IntegerArgumentType.integer())
+                                                ek.a("end", IntegerArgumentType.integer())
                                                    .executes(
                                                       $$3xx -> a(
                                                             $$3xx,
@@ -186,8 +186,8 @@ public class aqa {
                   );
                }
 
-               $$0.accept($$3, $$1xx -> ej.a("value").then(ej.a("value", fb.a()).executes($$2xx -> {
-                     List<uw> $$3x = Collections.singletonList(fb.a($$2xx, "value"));
+               $$0.accept($$3, $$1xx -> ek.a("value").then(ek.a("value", fc.a()).executes($$2xx -> {
+                     List<uw> $$3x = Collections.singletonList(fc.a($$2xx, "value"));
                      return a($$2xx, $$2, $$1xx, $$3x);
                   })));
                return $$2x.then($$3);
@@ -222,32 +222,32 @@ public class aqa {
       return $$0 >= 0 ? $$0 : $$1 + $$0;
    }
 
-   private static List<uw> a(CommandContext<ei> $$0, aqa.c $$1) throws CommandSyntaxException {
+   private static List<uw> a(CommandContext<ej> $$0, aqa.c $$1) throws CommandSyntaxException {
       apz $$2 = $$1.a($$0);
       return Collections.singletonList($$2.a());
    }
 
-   private static List<uw> b(CommandContext<ei> $$0, aqa.c $$1) throws CommandSyntaxException {
+   private static List<uw> b(CommandContext<ej> $$0, aqa.c $$1) throws CommandSyntaxException {
       apz $$2 = $$1.a($$0);
-      fa.g $$3 = fa.a($$0, "sourcePath");
+      fb.g $$3 = fb.a($$0, "sourcePath");
       return $$3.a($$2.a());
    }
 
-   private static int a(CommandContext<ei> $$0, aqa.c $$1, aqa.a $$2, List<uw> $$3) throws CommandSyntaxException {
+   private static int a(CommandContext<ej> $$0, aqa.c $$1, aqa.a $$2, List<uw> $$3) throws CommandSyntaxException {
       apz $$4 = $$1.a($$0);
-      fa.g $$5 = fa.a($$0, "targetPath");
+      fb.g $$5 = fb.a($$0, "targetPath");
       tz $$6 = $$4.a();
       int $$7 = $$2.modify($$0, $$6, $$5, $$3);
       if ($$7 == 0) {
          throw d.create();
       } else {
          $$4.a($$6);
-         ((ei)$$0.getSource()).a(() -> $$4.b(), true);
+         ((ej)$$0.getSource()).a(() -> $$4.b(), true);
          return $$7;
       }
    }
 
-   private static int a(ei $$0, apz $$1, fa.g $$2) throws CommandSyntaxException {
+   private static int a(ej $$0, apz $$1, fb.g $$2) throws CommandSyntaxException {
       tz $$3 = $$1.a();
       int $$4 = $$2.c($$3);
       if ($$4 == 0) {
@@ -259,7 +259,7 @@ public class aqa {
       }
    }
 
-   public static uw a(fa.g $$0, apz $$1) throws CommandSyntaxException {
+   public static uw a(fb.g $$0, apz $$1) throws CommandSyntaxException {
       Collection<uw> $$2 = $$0.a($$1.a());
       Iterator<uw> $$3 = $$2.iterator();
       uw $$4 = $$3.next();
@@ -270,7 +270,7 @@ public class aqa {
       }
    }
 
-   private static int b(ei $$0, apz $$1, fa.g $$2) throws CommandSyntaxException {
+   private static int b(ej $$0, apz $$1, fb.g $$2) throws CommandSyntaxException {
       uw $$3 = a($$2, $$1);
       int $$4;
       if ($$3 instanceof up) {
@@ -291,7 +291,7 @@ public class aqa {
       return $$4;
    }
 
-   private static int a(ei $$0, apz $$1, fa.g $$2, double $$3) throws CommandSyntaxException {
+   private static int a(ej $$0, apz $$1, fb.g $$2, double $$3) throws CommandSyntaxException {
       uw $$4 = a($$2, $$1);
       if (!($$4 instanceof up)) {
          throw e.create($$2.toString());
@@ -302,16 +302,16 @@ public class aqa {
       }
    }
 
-   private static int a(ei $$0, apz $$1) throws CommandSyntaxException {
+   private static int a(ej $$0, apz $$1) throws CommandSyntaxException {
       tz $$2 = $$1.a();
       $$0.a(() -> $$1.a((uw)$$2), false);
       return 1;
    }
 
-   private static int a(ei $$0, apz $$1, tz $$2) throws CommandSyntaxException {
+   private static int a(ej $$0, apz $$1, tz $$2) throws CommandSyntaxException {
       tz $$3 = $$1.a();
-      if (fa.g.a($$2, 0)) {
-         throw fa.b.create();
+      if (fb.g.a($$2, 0)) {
+         throw fb.b.create();
       } else {
          tz $$4 = $$3.i().a($$2);
          if ($$3.equals($$4)) {
@@ -326,18 +326,18 @@ public class aqa {
 
    @FunctionalInterface
    interface a {
-      int modify(CommandContext<ei> var1, tz var2, fa.g var3, List<uw> var4) throws CommandSyntaxException;
+      int modify(CommandContext<ej> var1, tz var2, fb.g var3, List<uw> var4) throws CommandSyntaxException;
    }
 
    @FunctionalInterface
    interface b {
-      ArgumentBuilder<ei, ?> create(aqa.a var1);
+      ArgumentBuilder<ej, ?> create(aqa.a var1);
    }
 
    public interface c {
-      apz a(CommandContext<ei> var1) throws CommandSyntaxException;
+      apz a(CommandContext<ej> var1) throws CommandSyntaxException;
 
-      ArgumentBuilder<ei, ?> a(ArgumentBuilder<ei, ?> var1, Function<ArgumentBuilder<ei, ?>, ArgumentBuilder<ei, ?>> var2);
+      ArgumentBuilder<ej, ?> a(ArgumentBuilder<ej, ?> var1, Function<ArgumentBuilder<ej, ?>, ArgumentBuilder<ej, ?>> var2);
    }
 
    @FunctionalInterface

@@ -9,65 +9,19 @@ import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.nio.channels.SeekableByteChannel;
 import java.nio.file.Path;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.function.IntUnaryOperator;
 import javax.annotation.Nullable;
 import org.lwjgl.system.MemoryUtil;
 import org.slf4j.Logger;
 
-@fgq
+@fgx
 public class TextureUtil {
    private static final Logger LOGGER = LogUtils.getLogger();
    public static final int MIN_MIPMAP_LEVEL = 0;
    private static final int DEFAULT_IMAGE_BUFFER_SIZE = 8192;
 
-   public static int generateTextureId() {
-      RenderSystem.assertOnRenderThreadOrInit();
-      if (ab.aU) {
-         int[] $$0 = new int[ThreadLocalRandom.current().nextInt(15) + 1];
-         GlStateManager._genTextures($$0);
-         int $$1 = GlStateManager._genTexture();
-         GlStateManager._deleteTextures($$0);
-         return $$1;
-      } else {
-         return GlStateManager._genTexture();
-      }
-   }
-
-   public static void releaseTextureId(int $$0) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      GlStateManager._deleteTexture($$0);
-   }
-
-   public static void prepareImage(int $$0, int $$1, int $$2) {
-      prepareImage(fik.b.a, $$0, 0, $$1, $$2);
-   }
-
-   public static void prepareImage(fik.b $$0, int $$1, int $$2, int $$3) {
-      prepareImage($$0, $$1, 0, $$2, $$3);
-   }
-
-   public static void prepareImage(int $$0, int $$1, int $$2, int $$3) {
-      prepareImage(fik.b.a, $$0, $$1, $$2, $$3);
-   }
-
-   public static void prepareImage(fik.b $$0, int $$1, int $$2, int $$3, int $$4) {
-      RenderSystem.assertOnRenderThreadOrInit();
-      bind($$1);
-      if ($$2 >= 0) {
-         GlStateManager._texParameter(3553, 33085, $$2);
-         GlStateManager._texParameter(3553, 33082, 0);
-         GlStateManager._texParameter(3553, 33083, $$2);
-         GlStateManager._texParameter(3553, 34049, 0.0F);
-      }
-
-      for (int $$5 = 0; $$5 <= $$2; $$5++) {
-         GlStateManager._texImage2D(3553, $$5, $$0.a(), $$3 >> $$5, $$4 >> $$5, 0, 6408, 5121, null);
-      }
-   }
-
    private static void bind(int $$0) {
-      RenderSystem.assertOnRenderThreadOrInit();
+      RenderSystem.assertOnRenderThread();
       GlStateManager._bindTexture($$0);
    }
 
@@ -105,7 +59,7 @@ public class TextureUtil {
          int $$8 = $$4 >> $$7;
          int $$9 = $$5 >> $$7;
 
-         try (fik $$10 = new fik($$8, $$9, false)) {
+         try (fiu $$10 = new fiu($$8, $$9, false)) {
             $$10.a($$7, false);
             if ($$6 != null) {
                $$10.b($$6);

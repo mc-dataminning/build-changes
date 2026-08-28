@@ -1,63 +1,50 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
-public class bc extends dj<bc.a> {
+public class bc extends dk<bc.a> {
    @Override
    public Codec<bc.a> a() {
       return bc.a.a;
    }
 
-   public void a(arr $$0, Collection<? extends bwf> $$1) {
-      List<ezh> $$2 = $$1.stream().map($$1x -> bx.b($$0, $$1x)).collect(Collectors.toList());
-      this.a($$0, $$1x -> $$1x.a($$2));
+   public void a(arr $$0, alf<djh> $$1, alf<djh> $$2) {
+      this.a($$0, $$2x -> $$2x.b($$1, $$2));
    }
 
-   public static record a(Optional<bi> b, List<bi> c) implements dj.a {
+   public static record a(Optional<bj> b, Optional<alf<djh>> c, Optional<alf<djh>> d) implements dk.a {
       public static final Codec<bc.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bx.b.optionalFieldOf("player").forGetter(bc.a::a), bx.b.listOf().optionalFieldOf("victims", List.of()).forGetter(bc.a::b))
+         $$0 -> $$0.group(
+                  by.b.optionalFieldOf("player").forGetter(bc.a::a),
+                  alf.a(mh.bo).optionalFieldOf("from").forGetter(bc.a::c),
+                  alf.a(mh.bo).optionalFieldOf("to").forGetter(bc.a::d)
+               )
                .apply($$0, bc.a::new)
       );
 
-      public static aq<bc.a> a(bx.a... $$0) {
-         return ap.F.a(new bc.a(Optional.empty(), bx.a($$0)));
+      public static ar<bc.a> b() {
+         return aq.w.a(new bc.a(Optional.empty(), Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(Collection<? extends ezh> $$0) {
-         for (bi $$1 : this.c) {
-            boolean $$2 = false;
+      public static ar<bc.a> a(alf<djh> $$0, alf<djh> $$1) {
+         return aq.w.a(new bc.a(Optional.empty(), Optional.of($$0), Optional.of($$1)));
+      }
 
-            for (ezh $$3 : $$0) {
-               if ($$1.a($$3)) {
-                  $$2 = true;
-                  break;
-               }
-            }
+      public static ar<bc.a> a(alf<djh> $$0) {
+         return aq.w.a(new bc.a(Optional.empty(), Optional.empty(), Optional.of($$0)));
+      }
 
-            if (!$$2) {
-               return false;
-            }
-         }
+      public static ar<bc.a> b(alf<djh> $$0) {
+         return aq.w.a(new bc.a(Optional.empty(), Optional.of($$0), Optional.empty()));
+      }
 
-         return true;
+      public boolean b(alf<djh> $$0, alf<djh> $$1) {
+         return this.c.isPresent() && this.c.get() != $$0 ? false : !this.d.isPresent() || this.d.get() == $$1;
       }
 
       @Override
-      public void a(bj $$0) {
-         dj.a.super.a($$0);
-         $$0.a(this.c, ".victims");
-      }
-
-      @Override
-      public Optional<bi> a() {
+      public Optional<bj> a() {
          return this.b;
-      }
-
-      public List<bi> b() {
-         return this.c;
       }
    }
 }

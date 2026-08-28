@@ -1,100 +1,60 @@
-import java.util.List;
-import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public class dah extends cyz {
-   private static final n a = n.h;
-   private static final n b = n.j;
-   private static final wy c = wy.c(af.a("item", alg.b("smithing_template.ingredients"))).a(a);
-   private static final wy d = wy.c(af.a("item", alg.b("smithing_template.applies_to"))).a(a);
-   private static final wy o = wy.c(af.a("item", alg.b("smithing_template"))).a(a);
-   private static final wy p = wy.c(af.a("item", alg.b("smithing_template.armor_trim.applies_to"))).a(b);
-   private static final wy q = wy.c(af.a("item", alg.b("smithing_template.armor_trim.ingredients"))).a(b);
-   private static final wy r = wy.c(af.a("item", alg.b("smithing_template.armor_trim.base_slot_description")));
-   private static final wy s = wy.c(af.a("item", alg.b("smithing_template.armor_trim.additions_slot_description")));
-   private static final wy t = wy.c(af.a("item", alg.b("smithing_template.netherite_upgrade.applies_to"))).a(b);
-   private static final wy u = wy.c(af.a("item", alg.b("smithing_template.netherite_upgrade.ingredients"))).a(b);
-   private static final wy v = wy.c(af.a("item", alg.b("smithing_template.netherite_upgrade.base_slot_description")));
-   private static final wy w = wy.c(af.a("item", alg.b("smithing_template.netherite_upgrade.additions_slot_description")));
-   private static final alg x = alg.b("container/slot/helmet");
-   private static final alg y = alg.b("container/slot/chestplate");
-   private static final alg z = alg.b("container/slot/leggings");
-   private static final alg A = alg.b("container/slot/boots");
-   private static final alg B = alg.b("container/slot/hoe");
-   private static final alg C = alg.b("container/slot/axe");
-   private static final alg D = alg.b("container/slot/sword");
-   private static final alg E = alg.b("container/slot/shovel");
-   private static final alg F = alg.b("container/slot/pickaxe");
-   private static final alg G = alg.b("container/slot/ingot");
-   private static final alg H = alg.b("container/slot/redstone_dust");
-   private static final alg I = alg.b("container/slot/quartz");
-   private static final alg J = alg.b("container/slot/emerald");
-   private static final alg K = alg.b("container/slot/diamond");
-   private static final alg L = alg.b("container/slot/lapis_lazuli");
-   private static final alg M = alg.b("container/slot/amethyst_shard");
-   private final wy N;
-   private final wy O;
-   private final wy P;
-   private final wy Q;
-   private final List<alg> R;
-   private final List<alg> S;
-
-   public dah(wy $$0, wy $$1, wy $$2, wy $$3, List<alg> $$4, List<alg> $$5, cyz.a $$6) {
-      super($$6);
-      this.N = $$0;
-      this.O = $$1;
-      this.P = $$2;
-      this.Q = $$3;
-      this.R = $$4;
-      this.S = $$5;
+public class dah extends cxs {
+   public dah(dmm $$0, czg.a $$1) {
+      super($$0, $$1);
    }
 
-   public static dah a(cyz.a $$0) {
-      return new dah(p, q, r, s, o(), p(), $$0);
-   }
+   @Nullable
+   @Override
+   public ddd b(ddd $$0) {
+      iv $$1 = $$0.a();
+      djh $$2 = $$0.q();
+      eao $$3 = $$2.a_($$1);
+      dmm $$4 = this.c();
+      if (!$$3.a($$4)) {
+         return dtj.a($$2, $$1) == 7 ? null : $$0;
+      } else {
+         jb $$5;
+         if ($$0.h()) {
+            $$5 = $$0.m() ? $$0.k().g() : $$0.k();
+         } else {
+            $$5 = $$0.k() == jb.b ? $$0.g() : jb.b;
+         }
 
-   public static dah b(cyz.a $$0) {
-      return new dah(t, u, v, w, q(), r(), $$0);
-   }
+         int $$7 = 0;
+         iv.a $$8 = $$1.k().c($$5);
 
-   private static List<alg> o() {
-      return List.of(x, y, z, A);
-   }
+         while ($$7 < 7) {
+            if (!$$2.C && !$$2.k($$8)) {
+               crj $$9 = $$0.o();
+               int $$10 = $$2.ao();
+               if ($$9 instanceof arr && $$8.v() > $$10) {
+                  ((arr)$$9).b(wy.a("build.tooHigh", $$10).a(o.m), true);
+               }
+               break;
+            }
 
-   private static List<alg> p() {
-      return List.of(G, H, L, I, K, J, M);
-   }
+            $$3 = $$2.a_($$8);
+            if (!$$3.a(this.c())) {
+               if ($$3.a($$0)) {
+                  return ddd.a($$0, $$8, $$5);
+               }
+               break;
+            }
 
-   private static List<alg> q() {
-      return List.of(x, D, y, F, z, C, A, B, E);
-   }
+            $$8.c($$5);
+            if ($$5.o().d()) {
+               $$7++;
+            }
+         }
 
-   private static List<alg> r() {
-      return List.of(G);
+         return null;
+      }
    }
 
    @Override
-   public void a(czd $$0, cyz.b $$1, dch $$2, Consumer<wy> $$3, das $$4) {
-      $$3.accept(o);
-      $$3.accept(wx.a);
-      $$3.accept(d);
-      $$3.accept(wx.a().b(this.N));
-      $$3.accept(c);
-      $$3.accept(wx.a().b(this.O));
-   }
-
-   public wy a() {
-      return this.P;
-   }
-
-   public wy b() {
-      return this.Q;
-   }
-
-   public List<alg> c() {
-      return this.R;
-   }
-
-   public List<alg> n() {
-      return this.S;
+   protected boolean b() {
+      return false;
    }
 }

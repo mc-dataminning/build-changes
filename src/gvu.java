@@ -1,38 +1,31 @@
-public class gvu extends gxn<cnp, hcg, gfq> {
-   private static final alg a = alg.b("textures/entity/creeper/creeper.png");
+public class gvu extends gvn<cja, hci, gfj> {
+   private static final alg a = alg.b("textures/entity/bee/bee_angry.png");
+   private static final alg j = alg.b("textures/entity/bee/bee_angry_nectar.png");
+   private static final alg k = alg.b("textures/entity/bee/bee.png");
+   private static final alg l = alg.b("textures/entity/bee/bee_nectar.png");
 
-   public gvu(gwh.a $$0) {
-      super($$0, new gfq($$0.a(gjb.aq)), 0.5F);
-      this.a(new gzy(this, $$0.f()));
+   public gvu(gwt.a $$0) {
+      super($$0, new gfj($$0.a(gjn.x)), new gfj($$0.a(gjn.y)), 0.4F);
    }
 
-   protected void a(hcg $$0, fjj $$1) {
-      float $$2 = $$0.a;
-      float $$3 = 1.0F + azm.a($$2 * 100.0F) * $$2 * 0.01F;
-      $$2 = azm.a($$2, 0.0F, 1.0F);
-      $$2 *= $$2;
-      $$2 *= $$2;
-      float $$4 = (1.0F + $$2 * 0.4F) * $$3;
-      float $$5 = (1.0F + $$2 * 0.1F) / $$3;
-      $$1.b($$4, $$5, $$4);
+   public alg a(hci $$0) {
+      if ($$0.d) {
+         return $$0.e ? j : a;
+      } else {
+         return $$0.e ? l : k;
+      }
    }
 
-   protected float a(hcg $$0) {
-      float $$1 = $$0.a;
-      return (int)($$1 * 10.0F) % 2 == 0 ? 0.0F : azm.a($$1, 0.5F, 1.0F);
+   public hci a() {
+      return new hci();
    }
 
-   public alg b(hcg $$0) {
-      return a;
-   }
-
-   public hcg a() {
-      return new hcg();
-   }
-
-   public void a(cnp $$0, hcg $$1, float $$2) {
+   public void a(cja $$0, hci $$1, float $$2) {
       super.a($$0, $$1, $$2);
       $$1.a = $$0.J($$2);
-      $$1.b = $$0.m();
+      $$1.b = !$$0.gG();
+      $$1.c = $$0.aH() && $$0.dx().h() < 1.0E-7;
+      $$1.d = $$0.X_();
+      $$1.e = $$0.gF();
    }
 }

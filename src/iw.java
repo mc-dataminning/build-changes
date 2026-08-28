@@ -1,35 +1,22 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.JavaOps;
-import java.util.HashMap;
-import java.util.Map;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.UnaryOperator;
 
-public class iw<T> {
-   private final Codec<T> a;
+public record iw(alg d, alg e) {
+   public static final Codec<iw> a = alg.a.xmap(iw::new, iw::a);
+   public static final MapCodec<iw> b = a.fieldOf("asset_id");
+   public static final yw<ByteBuf, iw> c = yw.a(alg.b, iw::a, iw::new);
 
-   iw(Codec<T> $$0) {
-      this.a = $$0;
+   public iw(alg $$0) {
+      this($$0, $$0.a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png")));
    }
 
-   public T a(T $$0, jg.a $$1, jg.a $$2) {
-      DynamicOps<Object> $$3 = $$1.a(JavaOps.INSTANCE);
-      DynamicOps<Object> $$4 = $$2.a(JavaOps.INSTANCE);
-      Object $$5 = this.a.encodeStart($$3, $$0).getOrThrow($$0x -> new IllegalStateException("Failed to encode: " + $$0x));
-      return (T)this.a.parse($$4, $$5).getOrThrow($$0x -> new IllegalStateException("Failed to decode: " + $$0x));
+   public alg a() {
+      return this.d;
    }
 
-   public static class a {
-      private final Map<alf<? extends jr<?>>, iw<?>> a = new HashMap<>();
-
-      public <T> iw.a a(alf<? extends jr<? extends T>> $$0, Codec<T> $$1) {
-         this.a.put($$0, new iw($$1));
-         return this;
-      }
-
-      @Nullable
-      public <T> iw<T> a(alf<? extends jr<? extends T>> $$0) {
-         return (iw<T>)this.a.get($$0);
-      }
+   public alg b() {
+      return this.e;
    }
 }

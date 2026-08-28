@@ -1,39 +1,35 @@
+import com.google.common.collect.Sets;
+import java.util.Set;
 import javax.annotation.Nullable;
 
-public abstract class exy {
-   protected final dso a;
-
-   protected exy(dso $$0) {
-      this.a = $$0;
+public class exy extends eyf {
+   public exy(dsv $$0) {
+      super($$0);
    }
 
-   public abstract void a(dja var1, iu var2, eah var3, @Nullable exw var4, boolean var5);
+   @Override
+   public void a(djh $$0, iv $$1, eao $$2, @Nullable eyd $$3, boolean $$4) {
+      int $$5 = this.c($$0, $$1);
+      if ($$2.c(dsv.f) != $$5) {
+         if ($$0.a_($$1) == $$2) {
+            $$0.a($$1, $$2.b(dsv.f, Integer.valueOf($$5)), 2);
+         }
 
-   protected int a(dja $$0, iu $$1) {
-      return this.a.a($$0, $$1);
-   }
+         Set<iv> $$6 = Sets.newHashSet();
+         $$6.add($$1);
 
-   protected int a(iu $$0, eah $$1) {
-      return $$1.a(this.a) ? $$1.c(dso.f) : 0;
-   }
+         for (jb $$7 : jb.values()) {
+            $$6.add($$1.a($$7));
+         }
 
-   protected int b(dja $$0, iu $$1) {
-      int $$2 = 0;
-
-      for (ja $$3 : ja.c.a) {
-         iu $$4 = $$1.a($$3);
-         eah $$5 = $$0.a_($$4);
-         $$2 = Math.max($$2, this.a($$4, $$5));
-         iu $$6 = $$1.d();
-         if ($$5.d($$0, $$4) && !$$0.a_($$6).d($$0, $$6)) {
-            iu $$7 = $$4.d();
-            $$2 = Math.max($$2, this.a($$7, $$0.a_($$7)));
-         } else if (!$$5.d($$0, $$4)) {
-            iu $$8 = $$4.e();
-            $$2 = Math.max($$2, this.a($$8, $$0.a_($$8)));
+         for (iv $$8 : $$6) {
+            $$0.a($$8, this.a);
          }
       }
+   }
 
-      return Math.max(0, $$2 - 1);
+   private int c(djh $$0, iv $$1) {
+      int $$2 = this.a($$0, $$1);
+      return $$2 == 15 ? $$2 : Math.max($$2, this.b($$0, $$1));
    }
 }

@@ -1,34 +1,31 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Function;
 
-public class bzw extends byv<bxg> {
-   public static final int c = 100;
-   private final bto d;
-   private final awm e;
-
-   public bzw(bto $$0, awm $$1) {
-      super(ImmutableMap.of(cgg.o, cgh.c, cgg.U, cgh.a), 100);
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   protected boolean a(arq $$0, bxg $$1, long $$2) {
-      return !$$1.aJ();
-   }
-
-   protected void b(arq $$0, bxg $$1, long $$2) {
-      $$1.q(true);
-      $$1.b(bxq.g);
-   }
-
-   protected void c(arq $$0, bxg $$1, long $$2) {
-      if ($$1.aJ()) {
-         $$1.i($$1.dy().d(0.1F, 1.0, 0.1F));
-         $$0.a(null, $$1, this.e, awo.g, 2.0F, 1.0F);
-      }
-
-      $$1.q(false);
-      $$1.b(bxq.a);
-      $$1.ec().b(cgg.U);
-      $$1.ec().a(cgg.T, this.d.a($$0.A));
+public class bzw {
+   public static bzb<bxr> a(float $$0) {
+      return ccn.a(
+         (Function<ccn.b<bxr>, ? extends App<ccn.c<bxr>, ccq<bxr>>>)($$1 -> $$1.group($$1.c(cgl.n))
+               .apply(
+                  $$1,
+                  $$1x -> ($$2, $$3, $$4) -> {
+                        if ($$2.h($$3.du())) {
+                           return false;
+                        } else {
+                           iv $$5 = $$3.du();
+                           List<iv> $$6 = iv.d($$5.b(-1, -1, -1), $$5.b(1, 1, 1)).map(iv::j).collect(ag.b());
+                           Collections.shuffle($$6);
+                           $$6.stream()
+                              .filter($$1xxx -> !$$2.h($$1xxx))
+                              .filter($$2x -> $$2.a($$2x, $$3))
+                              .filter($$2x -> $$2.g($$3))
+                              .findFirst()
+                              .ifPresent($$2x -> $$1x.a(new cgo($$2x, $$0, 0)));
+                           return true;
+                        }
+                     }
+               ))
+      );
    }
 }

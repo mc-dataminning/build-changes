@@ -1,80 +1,105 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Map.Entry;
+import javax.annotation.Nullable;
 
-public record cx(cv.c b, cv.c c, cv.c d, cv.c e, cv.c f, cv.c g, cv.c h) {
-   public static final Codec<cx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               cv.c.d.optionalFieldOf("x", cv.c.c).forGetter(cx::a),
-               cv.c.d.optionalFieldOf("y", cv.c.c).forGetter(cx::b),
-               cv.c.d.optionalFieldOf("z", cv.c.c).forGetter(cx::c),
-               cv.c.d.optionalFieldOf("speed", cv.c.c).forGetter(cx::d),
-               cv.c.d.optionalFieldOf("horizontal_speed", cv.c.c).forGetter(cx::e),
-               cv.c.d.optionalFieldOf("vertical_speed", cv.c.c).forGetter(cx::f),
-               cv.c.d.optionalFieldOf("fall_distance", cv.c.c).forGetter(cx::g)
-            )
-            .apply($$0, cx::new)
-   );
+public record cx(Map<jf<bvk>, cx.b> b) {
+   public static final Codec<cx> a = Codec.unboundedMap(bvk.a, cx.b.a).xmap(cx::new, cx::a);
 
-   public static cx a(cv.c $$0) {
-      return new cx(cv.c.c, cv.c.c, cv.c.c, $$0, cv.c.c, cv.c.c, cv.c.c);
-   }
-
-   public static cx b(cv.c $$0) {
-      return new cx(cv.c.c, cv.c.c, cv.c.c, cv.c.c, $$0, cv.c.c, cv.c.c);
-   }
-
-   public static cx c(cv.c $$0) {
-      return new cx(cv.c.c, cv.c.c, cv.c.c, cv.c.c, cv.c.c, $$0, cv.c.c);
-   }
-
-   public static cx d(cv.c $$0) {
-      return new cx(cv.c.c, cv.c.c, cv.c.c, cv.c.c, cv.c.c, cv.c.c, $$0);
-   }
-
-   public boolean a(double $$0, double $$1, double $$2, double $$3) {
-      if (this.b.d($$0) && this.c.d($$1) && this.d.d($$2)) {
-         double $$4 = azm.f($$0, $$1, $$2);
-         if (!this.e.e($$4)) {
-            return false;
-         } else {
-            double $$5 = azm.e($$0, $$2);
-            if (!this.f.e($$5)) {
-               return false;
-            } else {
-               double $$6 = Math.abs($$1);
-               return !this.g.d($$6) ? false : this.h.d($$3);
-            }
-         }
-      } else {
-         return false;
+   public boolean a(bwi $$0) {
+      if ($$0 instanceof bxj $$1 && this.a($$1.eD())) {
+         return true;
       }
+
+      return false;
    }
 
-   public cv.c a() {
+   public boolean a(bxj $$0) {
+      return this.a($$0.eD());
+   }
+
+   public boolean a(Map<jf<bvk>, bvm> $$0) {
+      for (Entry<jf<bvk>, cx.b> $$1 : this.b.entrySet()) {
+         bvm $$2 = $$0.get($$1.getKey());
+         if (!$$1.getValue().a($$2)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public Map<jf<bvk>, cx.b> a() {
       return this.b;
    }
 
-   public cv.c b() {
-      return this.c;
+   public static class a {
+      private final Builder<jf<bvk>, cx.b> a = ImmutableMap.builder();
+
+      public static cx.a a() {
+         return new cx.a();
+      }
+
+      public cx.a a(jf<bvk> $$0) {
+         this.a.put($$0, new cx.b());
+         return this;
+      }
+
+      public cx.a a(jf<bvk> $$0, cx.b $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      public Optional<cx> b() {
+         return Optional.of(new cx(this.a.build()));
+      }
    }
 
-   public cv.c c() {
-      return this.d;
-   }
+   public static record b(cw.d b, cw.d c, Optional<Boolean> d, Optional<Boolean> e) {
+      public static final Codec<cx.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  cw.d.d.optionalFieldOf("amplifier", cw.d.c).forGetter(cx.b::a),
+                  cw.d.d.optionalFieldOf("duration", cw.d.c).forGetter(cx.b::b),
+                  Codec.BOOL.optionalFieldOf("ambient").forGetter(cx.b::c),
+                  Codec.BOOL.optionalFieldOf("visible").forGetter(cx.b::d)
+               )
+               .apply($$0, cx.b::new)
+      );
 
-   public cv.c d() {
-      return this.e;
-   }
+      public b() {
+         this(cw.d.c, cw.d.c, Optional.empty(), Optional.empty());
+      }
 
-   public cv.c e() {
-      return this.f;
-   }
+      public boolean a(@Nullable bvm $$0) {
+         if ($$0 == null) {
+            return false;
+         } else if (!this.b.d($$0.e())) {
+            return false;
+         } else if (!this.c.d($$0.d())) {
+            return false;
+         } else {
+            return this.d.isPresent() && this.d.get() != $$0.f() ? false : !this.e.isPresent() || this.e.get() == $$0.g();
+         }
+      }
 
-   public cv.c f() {
-      return this.g;
-   }
+      public cw.d a() {
+         return this.b;
+      }
 
-   public cv.c g() {
-      return this.h;
+      public cw.d b() {
+         return this.c;
+      }
+
+      public Optional<Boolean> c() {
+         return this.d;
+      }
+
+      public Optional<Boolean> d() {
+         return this.e;
+      }
    }
 }

@@ -4,8 +4,8 @@ public class aex implements zf<abu> {
    public static final yw<vu, aex> a = zf.a(aex::a, aex::new);
    private final int b;
 
-   public aex(bwf $$0) {
-      this.b = $$0.ar();
+   public aex(bwi $$0) {
+      this.b = $$0.ao();
    }
 
    private aex(vu $$0) {
@@ -26,7 +26,7 @@ public class aex implements zf<abu> {
    }
 
    @Nullable
-   public bwf a(dja $$0) {
+   public bwi a(djh $$0) {
       return $$0.a(this.b);
    }
 }

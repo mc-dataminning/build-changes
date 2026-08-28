@@ -2,7 +2,7 @@ public class aeu implements zf<abu> {
    public static final yw<vu, aeu> a = zf.a(aeu::a, aeu::new);
    private final double b;
 
-   public aeu(ebz $$0) {
+   public aeu(ecg $$0) {
       this.b = $$0.k();
    }
 

@@ -6,8 +6,8 @@ import java.util.function.Predicate;
 public class amg {
    private static final int a = 2;
 
-   private static amg.b a(ah $$0, boolean $$1) {
-      Optional<au> $$2 = $$0.c();
+   private static amg.b a(ai $$0, boolean $$1) {
+      Optional<av> $$2 = $$0.c();
       if ($$2.isEmpty()) {
          return amg.b.b;
       } else if ($$1) {
@@ -32,13 +32,13 @@ public class amg {
       return false;
    }
 
-   private static boolean a(aj $$0, Stack<amg.b> $$1, Predicate<aj> $$2, amg.a $$3) {
+   private static boolean a(ak $$0, Stack<amg.b> $$1, Predicate<ak> $$2, amg.a $$3) {
       boolean $$4 = $$2.test($$0);
       amg.b $$5 = a($$0.a(), $$4);
       boolean $$6 = $$4;
       $$1.push($$5);
 
-      for (aj $$7 : $$0.e()) {
+      for (ak $$7 : $$0.e()) {
          $$6 |= a($$7, $$1, $$2, $$3);
       }
 
@@ -48,8 +48,8 @@ public class amg {
       return $$6;
    }
 
-   public static void a(aj $$0, Predicate<aj> $$1, amg.a $$2) {
-      aj $$3 = $$0.d();
+   public static void a(ak $$0, Predicate<ak> $$1, amg.a $$2) {
+      ak $$3 = $$0.d();
       Stack<amg.b> $$4 = new ObjectArrayList();
 
       for (int $$5 = 0; $$5 <= 2; $$5++) {
@@ -61,7 +61,7 @@ public class amg {
 
    @FunctionalInterface
    public interface a {
-      void accept(aj var1, boolean var2);
+      void accept(ak var1, boolean var2);
    }
 
    static enum b {

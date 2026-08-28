@@ -1,92 +1,40 @@
-import com.google.common.base.Suppliers;
-import com.google.common.collect.BiMap;
-import com.google.common.collect.ImmutableBiMap;
-import java.util.Optional;
-import java.util.function.Supplier;
-
-public class cyu extends cyz implements daf {
-   public static final Supplier<BiMap<dmf, dmf>> a = Suppliers.memoize(
-      () -> ImmutableBiMap.builder()
-            .put(dmh.rE, dmh.se)
-            .put(dmh.rF, dmh.sg)
-            .put(dmh.rG, dmh.sf)
-            .put(dmh.rH, dmh.sh)
-            .put(dmh.rN, dmh.sl)
-            .put(dmh.rM, dmh.sk)
-            .put(dmh.rL, dmh.sj)
-            .put(dmh.rK, dmh.si)
-            .put(dmh.sd, dmh.st)
-            .put(dmh.sc, dmh.ss)
-            .put(dmh.sb, dmh.sr)
-            .put(dmh.sa, dmh.sq)
-            .put(dmh.rZ, dmh.sp)
-            .put(dmh.rY, dmh.so)
-            .put(dmh.rX, dmh.sn)
-            .put(dmh.rW, dmh.sm)
-            .put(dmh.rR, dmh.rV)
-            .put(dmh.rQ, dmh.rU)
-            .put(dmh.rP, dmh.rT)
-            .put(dmh.rO, dmh.rS)
-            .put(dmh.su, dmh.sy)
-            .put(dmh.sv, dmh.sz)
-            .put(dmh.sx, dmh.sB)
-            .put(dmh.sw, dmh.sA)
-            .put(dmh.sC, dmh.sG)
-            .put(dmh.sD, dmh.sH)
-            .put(dmh.sF, dmh.sJ)
-            .put(dmh.sE, dmh.sI)
-            .put(dmh.sK, dmh.sO)
-            .put(dmh.sL, dmh.sP)
-            .put(dmh.sM, dmh.sQ)
-            .put(dmh.sN, dmh.sR)
-            .put(dmh.sS, dmh.sW)
-            .put(dmh.sT, dmh.sX)
-            .put(dmh.sU, dmh.sY)
-            .put(dmh.sV, dmh.sZ)
-            .build()
-   );
-   public static final Supplier<BiMap<dmf, dmf>> b = Suppliers.memoize(() -> a.get().inverse());
-
-   public cyu(cyz.a $$0) {
+public class cyu extends czg {
+   public cyu(czg.a $$0) {
       super($$0);
    }
 
    @Override
-   public bud a(dcy $$0) {
-      dja $$1 = $$0.q();
-      iu $$2 = $$0.a();
-      eah $$3 = $$1.a_($$2);
-      return a($$3).map($$3x -> {
-         crc $$4 = $$0.o();
-         czd $$5 = $$0.n();
-         if ($$4 instanceof arr $$6) {
-            ap.N.a($$6, $$2, $$5);
+   public bug a(ddf $$0) {
+      crj $$1 = $$0.o();
+      djh $$2 = $$0.q();
+      iv $$3 = $$0.a();
+      eao $$4 = $$2.a_($$3);
+      if (!dnc.i($$4) && !dnd.h($$4) && !dne.h($$4)) {
+         iv $$5 = $$3.a($$0.k());
+         if (dlz.a($$2, $$5, $$0.g())) {
+            $$2.a($$1, $$5, awn.jD, awo.e, 1.0F, $$2.C_().i() * 0.4F + 0.8F);
+            eao $$6 = dlz.a($$2, $$5);
+            $$2.a($$5, $$6, 11);
+            $$2.a($$1, efo.i, $$3);
+            czk $$7 = $$0.n();
+            if ($$1 instanceof arr) {
+               aq.z.a((arr)$$1, $$5, $$7);
+               $$7.a(1, $$1, bxj.d($$0.p()));
+            }
+
+            return bug.a;
+         } else {
+            return bug.d;
+         }
+      } else {
+         $$2.a($$1, $$3, awn.jD, awo.e, 1.0F, $$2.C_().i() * 0.4F + 0.8F);
+         $$2.a($$3, $$4.b(ebe.u, Boolean.valueOf(true)), 11);
+         $$2.a($$1, efo.c, $$3);
+         if ($$1 != null) {
+            $$0.n().a(1, $$1, bxj.d($$0.p()));
          }
 
-         $$5.h(1);
-         $$1.a($$2, $$3x, 11);
-         $$1.a(efh.c, $$2, efh.a.a($$4, $$3x));
-         $$1.a($$4, 3003, $$2, 0);
-         return bud.a;
-      }).orElse(bud.e);
-   }
-
-   public static Optional<eah> a(eah $$0) {
-      return Optional.ofNullable((dmf)a.get().get($$0.b())).map($$1 -> ((dmf)$$1).m($$0));
-   }
-
-   @Override
-   public boolean a(dja $$0, dyt $$1, boolean $$2, crc $$3) {
-      if ($$1.b(true)) {
-         $$0.a(null, 3003, $$1.ax_(), 0);
-         return true;
-      } else {
-         return false;
+         return bug.a;
       }
-   }
-
-   @Override
-   public boolean a(dyu $$0, crc $$1) {
-      return true;
    }
 }

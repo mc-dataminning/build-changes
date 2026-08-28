@@ -1,42 +1,22 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
-public class chk extends chm<cqo> {
-   private static final int a = 40;
-
-   public chk() {
-      super(40);
-   }
-
-   protected void a(arq $$0, cqo $$1) {
-      alf<dja> $$2 = $$0.aj();
-      iu $$3 = $$1.dv();
-      List<jd> $$4 = Lists.newArrayList();
-      int $$5 = 4;
-
-      for (int $$6 = -4; $$6 <= 4; $$6++) {
-         for (int $$7 = -2; $$7 <= 2; $$7++) {
-            for (int $$8 = -4; $$8 <= 4; $$8++) {
-               iu $$9 = $$3.b($$6, $$7, $$8);
-               if ($$1.gz().b().a().e().contains($$0.a_($$9).b())) {
-                  $$4.add(jd.a($$2, $$9));
-               }
-            }
-         }
-      }
-
-      bye<?> $$10 = $$1.ec();
-      if (!$$4.isEmpty()) {
-         $$10.a(cgg.f, $$4);
-      } else {
-         $$10.b(cgg.f);
-      }
+public class chk<T extends bxj> extends chr<T> {
+   @Override
+   protected void a(arq $$0, T $$1) {
+      double $$2 = $$1.h(byp.m);
+      fes $$3 = $$1.cQ().c($$2, $$2, $$2);
+      List<bxj> $$4 = $$0.a(bxj.class, $$3, $$1x -> $$1x != $$1 && $$1x.bI());
+      $$4.sort(Comparator.comparingDouble($$1::g));
+      byj<?> $$5 = $$1.eb();
+      $$5.a(cgl.g, $$4);
+      $$5.a(cgl.h, new cgn($$0, $$1, $$4));
    }
 
    @Override
-   public Set<cgg<?>> a() {
-      return ImmutableSet.of(cgg.f);
+   public Set<cgl<?>> a() {
+      return ImmutableSet.of(cgl.g, cgl.h);
    }
 }

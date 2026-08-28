@@ -1,97 +1,54 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dwt extends dxf implements bug {
-   public static final int a = 6;
-   private static final String b = "patterns";
-   @Nullable
-   private wy c;
-   private final cyb d;
-   private dwv e = dwv.a;
+public class dwt extends dma {
+   public static final MapCodec<dwt> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.intRange(1, 1024).fieldOf("max_weight").forGetter($$0x -> $$0x.e), ebd.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.b), t())
+            .apply($$0, dwt::new)
+   );
+   public static final ebo d = ebe.aW;
+   private final int e;
 
-   public dwt(iu $$0, eah $$1) {
-      this($$0, $$1, ((dkw)$$1.b()).b());
+   @Override
+   public MapCodec<dwt> a() {
+      return c;
    }
 
-   public dwt(iu $$0, eah $$1, cyb $$2) {
-      super(dxh.u, $$0, $$1);
-      this.d = $$2;
+   protected dwt(int $$0, ebd $$1, ean.d $$2) {
+      super($$2, $$1);
+      this.l(this.C.b().b(d, Integer.valueOf(0)));
+      this.e = $$0;
    }
 
    @Override
-   public wy al() {
-      return (wy)(this.c != null ? this.c : wy.c("block.minecraft.banner"));
-   }
-
-   @Nullable
-   @Override
-   public wy an() {
-      return this.c;
-   }
-
-   @Override
-   protected void b(tz $$0, jg.a $$1) {
-      super.b($$0, $$1);
-      ale<uw> $$2 = $$1.a(un.a);
-      if (!this.e.equals(dwv.a)) {
-         $$0.a("patterns", dwv.b, $$2, this.e);
-      }
-
-      if (this.c != null) {
-         $$0.a("CustomName", xa.a, $$2, this.c);
+   protected int b(djh $$0, iv $$1) {
+      int $$2 = Math.min(a($$0, a.a($$1), bwi.class), this.e);
+      if ($$2 > 0) {
+         float $$3 = (float)Math.min(this.e, $$2) / (float)this.e;
+         return azm.f($$3 * 15.0F);
+      } else {
+         return 0;
       }
    }
 
    @Override
-   protected void a(tz $$0, jg.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.e("CustomName")) {
-         this.c = a($$0.c("CustomName"), $$1);
-      }
-
-      ale<uw> $$2 = $$1.a(un.a);
-      this.e = $$0.<dwv>a("patterns", dwv.b, $$2).orElse(dwv.a);
-   }
-
-   public aca a() {
-      return aca.a(this);
+   protected int h(eao $$0) {
+      return $$0.c(d);
    }
 
    @Override
-   public tz a(jg.a $$0) {
-      return this.d($$0);
-   }
-
-   public dwv b() {
-      return this.e;
-   }
-
-   public czd c() {
-      czd $$0 = new czd(dlk.a(this.d));
-      $$0.b(this.q());
-      return $$0;
-   }
-
-   public cyb f() {
-      return this.d;
+   protected eao a(eao $$0, int $$1) {
+      return $$0.b(d, Integer.valueOf($$1));
    }
 
    @Override
-   protected void a(ke $$0) {
-      super.a($$0);
-      this.e = $$0.a(kj.am, dwv.a);
-      this.c = $$0.a(kj.g);
+   protected int b() {
+      return 10;
    }
 
    @Override
-   protected void a(kg.a $$0) {
-      super.a($$0);
-      $$0.a(kj.am, this.e);
-      $$0.a(kj.g, this.c);
-   }
-
-   @Override
-   public void a(tz $$0) {
-      $$0.r("patterns");
-      $$0.r("CustomName");
+   protected void a(eap.a<dmm, eao> $$0) {
+      $$0.a(d);
    }
 }

@@ -1,116 +1,79 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import java.util.function.ToIntFunction;
 
-public class drg extends dtb implements dtq {
-   public static final MapCodec<drg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dzv.a.fieldOf("tree").forGetter($$0x -> $$0x.g), t()).apply($$0, drg::new)
-   );
-   public static final ebh b = eax.aw;
-   public static final int c = 4;
-   private static final int[] h = new int[]{13, 10, 7, 3, 0};
-   private static final ffk[] i = dmf.a(4, $$0 -> dmf.b(2.0, (double)h[$$0], 16.0));
-   private static final eay D = eax.I;
-   public static final eay d = eax.m;
+public class drg extends dmm implements dtx {
+   public static final MapCodec<drg> a = b(drg::new);
+   public static final int b = 15;
+   public static final ebo c = ebe.aS;
+   public static final ebf d = ebe.I;
+   public static final ToIntFunction<eao> e = $$0 -> $$0.c(c);
 
    @Override
    public MapCodec<drg> a() {
       return a;
    }
 
-   public drg(dzv $$0, eag.d $$1) {
-      super($$0, $$1);
-      this.l(this.C.b().b(f, Integer.valueOf(0)).b(b, Integer.valueOf(0)).b(D, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
+   public drg(ean.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(c, Integer.valueOf(15)).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(eai.a<dmf, eah> $$0) {
-      $$0.a(f).a(b).a(D).a(d);
+   protected void a(eap.a<dmm, eao> $$0) {
+      $$0.a(c, d);
    }
 
    @Override
-   protected boolean b(eah $$0, dig $$1, iu $$2) {
-      return super.b($$0, $$1, $$2) || $$0.a(dmh.ei);
-   }
-
-   @Nullable
-   @Override
-   public eah a(dcw $$0) {
-      ewo $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == ewp.c;
-      return super.a($$0).b(D, Boolean.valueOf($$2)).b(b, Integer.valueOf(4));
-   }
-
-   @Override
-   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
-      int $$4 = $$0.c(d) ? $$0.c(b) : 4;
-      return i[$$4].a($$0.a($$2));
-   }
-
-   @Override
-   protected boolean a(eah $$0, djd $$1, iu $$2) {
-      return o($$0) ? $$1.a_($$2.d()).a(dmh.aS) : super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   protected eah a(eah $$0, djd $$1, djp $$2, iu $$3, ja $$4, iu $$5, eah $$6, azv $$7) {
-      if ($$0.c(D)) {
-         $$2.a($$3, ewp.c, ewp.c.a($$1));
-      }
-
-      return $$4 == ja.b && !$$0.a($$1, $$3) ? dmh.a.m() : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-   }
-
-   @Override
-   protected ewo b_(eah $$0) {
-      return $$0.c(D) ? ewp.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected void b(eah $$0, arq $$1, iu $$2, azv $$3) {
-      if (!o($$0)) {
-         if ($$3.a(7) == 0) {
-            this.a($$1, $$2, $$0, $$3);
-         }
+   protected bug a(eao $$0, djh $$1, iv $$2, crj $$3, fet $$4) {
+      if (!$$1.C && $$3.gF()) {
+         $$1.a($$2, $$0.a(c), 2);
+         return bug.b;
       } else {
-         if (!q($$0)) {
-            $$1.a($$2, $$0.a(b), 2);
-         }
+         return bug.c;
       }
    }
 
    @Override
-   public boolean a(djd $$0, iu $$1, eah $$2) {
-      return !o($$2) || !q($$2);
+   protected ffr a(eao $$0, din $$1, iv $$2, ffc $$3) {
+      return $$3.a(czo.ig) ? ffo.b() : ffo.a();
    }
 
    @Override
-   public boolean a(dja $$0, azv $$1, iu $$2, eah $$3) {
-      return o($$3) ? !q($$3) : super.a($$0, $$1, $$2, $$3);
+   protected boolean e_(eao $$0) {
+      return $$0.y().c();
    }
 
    @Override
-   public void a(arq $$0, azv $$1, iu $$2, eah $$3) {
-      if (o($$3) && !q($$3)) {
-         $$0.a($$2, $$3.a(b), 2);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
+   protected dsz a_(eao $$0) {
+      return dsz.a;
+   }
+
+   @Override
+   protected float c(eao $$0, din $$1, iv $$2) {
+      return 1.0F;
+   }
+
+   @Override
+   protected eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
+      if ($$0.c(d)) {
+         $$2.a($$3, eww.c, eww.c.a($$1));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
    }
 
-   private static boolean o(eah $$0) {
-      return $$0.c(d);
+   @Override
+   protected ewv b_(eao $$0) {
+      return $$0.c(d) ? eww.c.a(false) : super.b_($$0);
    }
 
-   private static boolean q(eah $$0) {
-      return $$0.c(b) == 4;
+   @Override
+   protected czk a(djk $$0, iv $$1, eao $$2, boolean $$3) {
+      return a(super.a($$0, $$1, $$2, $$3), $$2.c(c));
    }
 
-   public static eah c() {
-      return b(0);
-   }
-
-   public static eah b(int $$0) {
-      return dmh.H.m().b(d, Boolean.valueOf(true)).b(b, Integer.valueOf($$0));
+   public static czk a(czk $$0, int $$1) {
+      $$0.b(kk.aq, dbk.a.a(c, $$1));
+      return $$0;
    }
 }

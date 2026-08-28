@@ -1,11 +1,37 @@
+import com.mojang.authlib.GameProfile;
+import java.net.SocketAddress;
 import javax.annotation.Nullable;
 
-public record hnu(@Nullable awk a, float b) {
-   public hnu(awk $$0) {
-      this($$0, 1.0F);
+public class hnu extends avq {
+   @Nullable
+   private tz h;
+
+   public hnu(hnv $$0, jm<alp> $$1, ezf $$2) {
+      super($$0, $$1, $$2, 8);
+      this.a(10);
    }
 
-   public boolean a(hmu $$0) {
-      return this.a == null ? false : this.a.d() && !this.a.a().a().a().equals($$0.a());
+   @Override
+   protected void b(arr $$0) {
+      if (this.b().a($$0.gh())) {
+         this.h = $$0.f(new tz());
+      }
+
+      super.b($$0);
+   }
+
+   @Override
+   public wy a(SocketAddress $$0, GameProfile $$1) {
+      return (wy)(this.b().a($$1) && this.a($$1.getName()) != null ? wy.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
+   }
+
+   public hnv b() {
+      return (hnv)super.c();
+   }
+
+   @Nullable
+   @Override
+   public tz r() {
+      return this.h;
    }
 }

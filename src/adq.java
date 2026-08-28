@@ -1,8 +1,8 @@
-public record adq(feq b, float c, float d) implements zf<abu> {
-   public static final yw<vu, adq> a = yw.a(feq.b, adq::b, yu.l, adq::e, yu.l, adq::f, adq::new);
+public record adq(fex b, float c, float d) implements zf<abu> {
+   public static final yw<vu, adq> a = yw.a(fex.b, adq::b, yu.l, adq::e, yu.l, adq::f, adq::new);
 
-   public static adq a(bwf $$0) {
-      return new adq($$0.dt(), $$0.dL(), $$0.dN());
+   public static adq a(bwi $$0) {
+      return new adq($$0.ds(), $$0.dK(), $$0.dM());
    }
 
    @Override

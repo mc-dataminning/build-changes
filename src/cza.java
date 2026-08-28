@@ -1,69 +1,73 @@
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
-import java.util.Iterator;
+import com.mojang.datafixers.util.Pair;
 import java.util.Map;
-import java.util.Map.Entry;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 
-public class cza {
-   private final Map<alg, cza.a> a = Maps.newHashMap();
-   private int b;
+public class cza extends czg {
+   protected static final Map<dmm, Pair<Predicate<ddf>, Consumer<ddf>>> a = Maps.newHashMap(
+      ImmutableMap.of(
+         dmo.i,
+         Pair.of(cza::b, a(dmo.cN.m())),
+         dmo.lk,
+         Pair.of(cza::b, a(dmo.cN.m())),
+         dmo.j,
+         Pair.of(cza::b, a(dmo.cN.m())),
+         dmo.k,
+         Pair.of(cza::b, a(dmo.j.m())),
+         dmo.tr,
+         Pair.of((Predicate<ddf>)$$0 -> true, a(dmo.j.m(), czo.eg))
+      )
+   );
 
-   public boolean a(czd $$0) {
-      return this.a($$0, 0.0F) > 0.0F;
+   public cza(day $$0, float $$1, float $$2, czg.a $$3) {
+      super($$3.c($$0, $$1, $$2));
    }
 
-   public float a(czd $$0, float $$1) {
-      alg $$2 = this.b($$0);
-      cza.a $$3 = this.a.get($$2);
-      if ($$3 != null) {
-         float $$4 = (float)($$3.b - $$3.a);
-         float $$5 = (float)$$3.b - ((float)this.b + $$1);
-         return azm.a($$5 / $$4, 0.0F, 1.0F);
+   @Override
+   public bug a(ddf $$0) {
+      djh $$1 = $$0.q();
+      iv $$2 = $$0.a();
+      Pair<Predicate<ddf>, Consumer<ddf>> $$3 = a.get($$1.a_($$2).b());
+      if ($$3 == null) {
+         return bug.e;
       } else {
-         return 0.0F;
-      }
-   }
-
-   public void a() {
-      this.b++;
-      if (!this.a.isEmpty()) {
-         Iterator<Entry<alg, cza.a>> $$0 = this.a.entrySet().iterator();
-
-         while ($$0.hasNext()) {
-            Entry<alg, cza.a> $$1 = $$0.next();
-            if ($$1.getValue().b <= this.b) {
-               $$0.remove();
-               this.b($$1.getKey());
+         Predicate<ddf> $$4 = (Predicate<ddf>)$$3.getFirst();
+         Consumer<ddf> $$5 = (Consumer<ddf>)$$3.getSecond();
+         if ($$4.test($$0)) {
+            crj $$6 = $$0.o();
+            $$1.a($$6, $$2, awn.mP, awo.e, 1.0F, 1.0F);
+            if (!$$1.C) {
+               $$5.accept($$0);
+               if ($$6 != null) {
+                  $$0.n().a(1, $$6, bxj.d($$0.p()));
+               }
             }
+
+            return bug.a;
+         } else {
+            return bug.e;
          }
       }
    }
 
-   public alg b(czd $$0) {
-      dcj $$1 = $$0.a(kj.y);
-      alg $$2 = mf.g.b($$0.h());
-      return $$1 == null ? $$2 : $$1.c().orElse($$2);
+   public static Consumer<ddf> a(eao $$0) {
+      return $$1 -> {
+         $$1.q().a($$1.a(), $$0, 11);
+         $$1.q().a(efo.c, $$1.a(), efo.a.a($$1.o(), $$0));
+      };
    }
 
-   public void a(czd $$0, int $$1) {
-      this.a(this.b($$0), $$1);
+   public static Consumer<ddf> a(eao $$0, djg $$1) {
+      return $$2 -> {
+         $$2.q().a($$2.a(), $$0, 11);
+         $$2.q().a(efo.c, $$2.a(), efo.a.a($$2.o(), $$0));
+         dmm.a($$2.q(), $$2.a(), $$2.k(), new czk($$1));
+      };
    }
 
-   public void a(alg $$0, int $$1) {
-      this.a.put($$0, new cza.a(this.b, this.b + $$1));
-      this.b($$0, $$1);
-   }
-
-   public void a(alg $$0) {
-      this.a.remove($$0);
-      this.b($$0);
-   }
-
-   protected void b(alg $$0, int $$1) {
-   }
-
-   protected void b(alg $$0) {
-   }
-
-   static record a(int a, int b) {
+   public static boolean b(ddf $$0) {
+      return $$0.k() != jb.a && $$0.q().a_($$0.a().d()).l();
    }
 }

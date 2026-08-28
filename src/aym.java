@@ -6,7 +6,7 @@ public class aym {
    private aym() {
    }
 
-   public static feq a(feq $$0, aym.a $$1) {
+   public static fex a(fex $$0, aym.a $$1) {
       int $$2 = azm.a($$0.a());
       int $$3 = azm.a($$0.b());
       int $$4 = azm.a($$0.c());
@@ -14,7 +14,7 @@ public class aym {
       double $$6 = $$0.b() - (double)$$3;
       double $$7 = $$0.c() - (double)$$4;
       double $$8 = 0.0;
-      feq $$9 = feq.c;
+      fex $$9 = fex.c;
 
       for (int $$10 = 0; $$10 < 6; $$10++) {
          double $$11 = azm.d($$5, c[$$10 + 1], c[$$10]);
@@ -39,6 +39,6 @@ public class aym {
 
    @FunctionalInterface
    public interface a {
-      feq fetch(int var1, int var2, int var3);
+      fex fetch(int var1, int var2, int var3);
    }
 }

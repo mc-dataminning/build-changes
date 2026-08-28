@@ -1,36 +1,24 @@
-import java.util.function.Function;
-import javax.annotation.Nullable;
+public class gjs {
+   public static final gjs a = new gjs(0.0F);
+   final float b;
+   final float c;
+   final float d;
 
-public class gjs<C extends gjs.a<C>, D> {
-   private final Function<C, D> a;
-   @Nullable
-   private C b;
-   @Nullable
-   private D c;
-
-   public gjs(Function<C, D> $$0) {
-      this.a = $$0;
+   public gjs(float $$0, float $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public D a(C $$0) {
-      if ($$0 == this.b && this.c != null) {
-         return this.c;
-      } else {
-         D $$1 = this.a.apply($$0);
-         this.c = $$1;
-         this.b = $$0;
-         $$0.registerForCleaning(this);
-         return $$1;
-      }
+   public gjs(float $$0) {
+      this($$0, $$0, $$0);
    }
 
-   public void a() {
-      this.c = null;
-      this.b = null;
+   public gjs a(float $$0) {
+      return new gjs(this.b + $$0, this.c + $$0, this.d + $$0);
    }
 
-   @FunctionalInterface
-   public interface a<C extends gjs.a<C>> {
-      void registerForCleaning(gjs<C, ?> var1);
+   public gjs a(float $$0, float $$1, float $$2) {
+      return new gjs(this.b + $$0, this.c + $$1, this.d + $$2);
    }
 }

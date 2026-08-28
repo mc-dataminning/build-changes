@@ -1,85 +1,89 @@
-import com.google.common.annotations.VisibleForTesting;
-import java.util.ArrayDeque;
-import java.util.Collection;
-import java.util.Deque;
-import java.util.Iterator;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.Locale;
+import java.util.Optional;
+import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWVidMode;
+import org.lwjgl.glfw.GLFWVidMode.Buffer;
 
-public class fis implements fit, AutoCloseable {
-   private final int b;
-   private final Deque<fis.a<?>> c = new ArrayDeque<>();
+public final class fis {
+   private final long a;
+   private final List<fiw> b;
+   private fiw c;
+   private int d;
+   private int e;
 
-   public fis(int $$0) {
-      this.b = $$0;
+   public fis(long $$0) {
+      this.a = $$0;
+      this.b = Lists.newArrayList();
+      this.a();
    }
 
    public void a() {
-      Iterator<? extends fis.a<?>> $$0 = this.c.iterator();
+      this.b.clear();
+      Buffer $$0 = GLFW.glfwGetVideoModes(this.a);
 
-      while ($$0.hasNext()) {
-         fis.a<?> $$1 = (fis.a<?>)$$0.next();
-         if ($$1.c-- == 0) {
-            $$1.close();
-            $$0.remove();
-         }
-      }
-   }
-
-   @Override
-   public <T> T a(fiv<T> $$0) {
-      T $$1 = this.b($$0);
-      $$0.b($$1);
-      return $$1;
-   }
-
-   private <T> T b(fiv<T> $$0) {
-      Iterator<? extends fis.a<?>> $$1 = this.c.iterator();
-
-      while ($$1.hasNext()) {
-         fis.a<?> $$2 = (fis.a<?>)$$1.next();
-         if ($$0.a($$2.a)) {
-            $$1.remove();
-            return (T)$$2.b;
+      for (int $$1 = $$0.limit() - 1; $$1 >= 0; $$1--) {
+         $$0.position($$1);
+         fiw $$2 = new fiw($$0);
+         if ($$2.c() >= 8 && $$2.d() >= 8 && $$2.e() >= 8) {
+            this.b.add($$2);
          }
       }
 
-      return $$0.f();
+      int[] $$3 = new int[1];
+      int[] $$4 = new int[1];
+      GLFW.glfwGetMonitorPos(this.a, $$3, $$4);
+      this.d = $$3[0];
+      this.e = $$4[0];
+      GLFWVidMode $$5 = GLFW.glfwGetVideoMode(this.a);
+      this.c = new fiw($$5);
    }
 
-   @Override
-   public <T> void a(fiv<T> $$0, T $$1) {
-      this.c.addFirst(new fis.a<>($$0, $$1, this.b));
+   public fiw a(Optional<fiw> $$0) {
+      if ($$0.isPresent()) {
+         fiw $$1 = $$0.get();
+
+         for (fiw $$2 : this.b) {
+            if ($$2.equals($$1)) {
+               return $$2;
+            }
+         }
+      }
+
+      return this.b();
    }
 
-   public void b() {
-      this.c.forEach(fis.a::close);
-      this.c.clear();
+   public int a(fiw $$0) {
+      return this.b.indexOf($$0);
    }
 
-   @Override
-   public void close() {
-      this.b();
-   }
-
-   @VisibleForTesting
-   protected Collection<fis.a<?>> c() {
+   public fiw b() {
       return this.c;
    }
 
-   @VisibleForTesting
-   protected static final class a<T> implements AutoCloseable {
-      final fiv<T> a;
-      final T b;
-      int c;
+   public int c() {
+      return this.d;
+   }
 
-      a(fiv<T> $$0, T $$1, int $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
+   public int d() {
+      return this.e;
+   }
 
-      @Override
-      public void close() {
-         this.a.a(this.b);
-      }
+   public fiw a(int $$0) {
+      return this.b.get($$0);
+   }
+
+   public int e() {
+      return this.b.size();
+   }
+
+   public long f() {
+      return this.a;
+   }
+
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "Monitor[%s %sx%s %s]", this.a, this.d, this.e, this.c);
    }
 }

@@ -1,44 +1,31 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.function.Function;
 
-public record dgp(jz d, Optional<ehn> e, enr f, Optional<je<efh>> g) implements dgh {
-   public static final MapCodec<dgp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               jz.g.optionalFieldOf("offset", jz.i).forGetter(dgp::b),
-               ehn.b.optionalFieldOf("predicate").forGetter(dgp::c),
-               enr.a.fieldOf("block_state").forGetter(dgp::d),
-               efh.aj.optionalFieldOf("trigger_game_event").forGetter(dgp::e)
-            )
-            .apply($$0, dgp::new)
-   );
+public interface dgp {
+   Codec<dgp> c = mg.at.q().dispatch(dgp::a, Function.identity());
 
-   @Override
-   public void a(arq $$0, int $$1, dfp $$2, bwf $$3, feq $$4) {
-      iu $$5 = iu.a((jo)$$4).a(this.d);
-      if (this.e.map($$2x -> $$2x.test($$0, $$5)).orElse(true) && $$0.b($$5, this.f.a($$3.dY(), $$5))) {
-         this.g.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
-      }
+   static MapCodec<? extends dgp> b(js<MapCodec<? extends dgp>> $$0) {
+      js.a($$0, "all_of", dgi.b.a);
+      js.a($$0, "apply_mob_effect", dgj.a);
+      js.a($$0, "attribute", dgn.a);
+      js.a($$0, "change_item_damage", dgk.a);
+      js.a($$0, "damage_entity", dgl.a);
+      js.a($$0, "explode", dgr.a);
+      js.a($$0, "ignite", dgs.a);
+      js.a($$0, "play_sound", dgu.a);
+      js.a($$0, "replace_block", dgw.a);
+      js.a($$0, "replace_disk", dgx.a);
+      js.a($$0, "run_function", dgy.a);
+      js.a($$0, "set_block_properties", dgz.a);
+      js.a($$0, "spawn_particles", dhb.a);
+      return js.a($$0, "summon_entity", dhc.a);
    }
 
-   @Override
-   public MapCodec<dgp> a() {
-      return a;
+   void a(arq var1, int var2, dfw var3, bwi var4, fex var5, boolean var6);
+
+   default void a(dfw $$0, bwi $$1, fex $$2, int $$3) {
    }
 
-   public jz b() {
-      return this.d;
-   }
-
-   public Optional<ehn> c() {
-      return this.e;
-   }
-
-   public enr d() {
-      return this.f;
-   }
-
-   public Optional<je<efh>> e() {
-      return this.g;
-   }
+   MapCodec<? extends dgp> a();
 }

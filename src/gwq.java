@@ -1,23 +1,21 @@
-public class gwq extends gxn<ckv, hcx, ggd> {
-   public gwq(gwh.a $$0) {
-      super($$0, new ggd($$0.a(gjb.aZ)), 0.3F);
+public class gwq extends gxz<cob, hdz, ggj> {
+   private static final alg a = alg.b("textures/entity/endermite.png");
+
+   public gwq(gwt.a $$0) {
+      super($$0, new ggj($$0.a(gjn.aS)), 0.3F);
    }
 
-   public alg a(hcx $$0) {
-      return $$0.f;
+   @Override
+   protected float aS_() {
+      return 180.0F;
    }
 
-   public hcx b() {
-      return new hcx();
+   @Override
+   public alg b(hdz $$0) {
+      return a;
    }
 
-   public void a(ckv $$0, hcx $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.bj();
-      $$1.b.a($$0.bI);
-      $$1.c.a($$0.bK);
-      $$1.d.a($$0.bL);
-      $$1.e.a($$0.bM);
-      $$1.f = $$0.x().a().b().b();
+   public hdz b() {
+      return new hdz();
    }
 }

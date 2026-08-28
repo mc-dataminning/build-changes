@@ -1,487 +1,122 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.common.collect.UnmodifiableIterator;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Collection;
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableObject;
-import org.slf4j.Logger;
 
-public class bye<E extends bxe> {
-   static final Logger a = LogUtils.getLogger();
-   private final Supplier<Codec<bye<E>>> b;
-   private static final int c = 20;
-   private final Map<cgg<?>, Optional<? extends cgf<?>>> d = Maps.newHashMap();
-   private final Map<chn<? extends chm<? super E>>, chm<? super E>> e = Maps.newLinkedHashMap();
-   private final Map<Integer, Map<csw, Set<byw<? super E>>>> f = Maps.newTreeMap();
-   private csy g = csy.c;
-   private final Map<csw, Set<Pair<cgg<?>, cgh>>> h = Maps.newHashMap();
-   private final Map<csw, Set<cgg<?>>> i = Maps.newHashMap();
-   private Set<csw> j = Sets.newHashSet();
-   private final Set<csw> k = Sets.newHashSet();
-   private csw l = csw.b;
-   private long m = -9999L;
+public class bye {
+   private static final Map<bwr<?>, bye.a> a = Maps.newHashMap();
 
-   public static <E extends bxe> bye.b<E> a(Collection<? extends cgg<?>> $$0, Collection<? extends chn<? extends chm<? super E>>> $$1) {
-      return new bye.b<>($$0, $$1);
-   }
-
-   public static <E extends bxe> Codec<bye<E>> b(final Collection<? extends cgg<?>> $$0, final Collection<? extends chn<? extends chm<? super E>>> $$1) {
-      final MutableObject<Codec<bye<E>>> $$2 = new MutableObject();
-      $$2.setValue(
-         (new MapCodec<bye<E>>() {
-               public <T> Stream<T> keys(DynamicOps<T> $$0x) {
-                  return $$0.stream().flatMap($$0xx -> $$0xx.a().map($$1xxx -> mf.z.b($$0xx)).stream()).map($$1xx -> (T)$$0.createString($$1xx.toString()));
-               }
-
-               public <T> DataResult<bye<E>> decode(DynamicOps<T> $$0x, MapLike<T> $$1x) {
-                  MutableObject<DataResult<Builder<bye.a<?>>>> $$2 = new MutableObject(DataResult.success(ImmutableList.builder()));
-                  $$1.entries().forEach($$2xxx -> {
-                     DataResult<cgg<?>> $$3x = mf.z.q().parse($$0, $$2xxx.getFirst());
-                     DataResult<? extends bye.a<?>> $$4 = $$3x.flatMap($$2xxxxx -> this.a($$2xxxxx, $$0, (T)$$2xxx.getSecond()));
-                     $$2.setValue(((DataResult)$$2.getValue()).apply2(Builder::add, $$4));
-                  });
-                  ImmutableList<bye.a<?>> $$3 = ((DataResult)$$2.getValue())
-                     .resultOrPartial(bye.a::error)
-                     .<ImmutableList<bye.a<?>>>map(Builder::build)
-                     .orElseGet(ImmutableList::of);
-                  return DataResult.success(new bye<>($$0, $$1, $$3, $$2::getValue));
-               }
-
-               private <T, U> DataResult<bye.a<U>> a(cgg<U> $$0x, DynamicOps<T> $$1x, T $$2x) {
-                  return $$0.a()
-                     .<DataResult>map(DataResult::success)
-                     .orElseGet(() -> DataResult.error(() -> "No codec for memory: " + $$0))
-                     .flatMap($$2xxx -> $$2xxx.parse($$1, $$2))
-                     .map($$1xxx -> new bye.a<>($$0, Optional.of($$1xxx)));
-               }
-
-               public <T> RecordBuilder<T> a(bye<E> $$0x, DynamicOps<T> $$1x, RecordBuilder<T> $$2x) {
-                  $$0.j().forEach($$2xxx -> $$2xxx.a($$1, $$2));
-                  return $$2;
-               }
-            })
-            .fieldOf("memories")
-            .codec()
-      );
-      return (Codec<bye<E>>)$$2.getValue();
-   }
-
-   public bye(
-      Collection<? extends cgg<?>> $$0, Collection<? extends chn<? extends chm<? super E>>> $$1, ImmutableList<bye.a<?>> $$2, Supplier<Codec<bye<E>>> $$3
-   ) {
-      this.b = $$3;
-
-      for (cgg<?> $$4 : $$0) {
-         this.d.put($$4, Optional.empty());
-      }
-
-      for (chn<? extends chm<? super E>> $$5 : $$1) {
-         this.e.put($$5, (chm<? super E>)$$5.a());
-      }
-
-      for (chm<? super E> $$6 : this.e.values()) {
-         for (cgg<?> $$7 : $$6.a()) {
-            this.d.put($$7, Optional.empty());
-         }
-      }
-
-      UnmodifiableIterator var11 = $$2.iterator();
-
-      while (var11.hasNext()) {
-         bye.a<?> $$8 = (bye.a<?>)var11.next();
-         $$8.a(this);
+   private static <T extends bxl> void a(bwr<T> $$0, byc $$1, egn.a $$2, bye.b<T> $$3) {
+      bye.a $$4 = a.put($$0, new bye.a($$2, $$1, $$3));
+      if ($$4 != null) {
+         throw new IllegalStateException("Duplicate registration for type " + mg.f.b($$0));
       }
    }
 
-   public <T> DataResult<T> a(DynamicOps<T> $$0) {
-      return this.b.get().encodeStart($$0, this);
+   public static byc a(bwr<?> $$0) {
+      bye.a $$1 = a.get($$0);
+      return $$1 == null ? byd.a : $$1.b;
    }
 
-   Stream<bye.a<?>> j() {
-      return this.d.entrySet().stream().map($$0 -> bye.a.a($$0.getKey(), $$0.getValue()));
+   public static boolean a(bwr<?> $$0, djk $$1, iv $$2) {
+      return a($$0).isSpawnPositionOk($$1, $$2, $$0);
    }
 
-   public boolean a(cgg<?> $$0) {
-      return this.a($$0, cgh.a);
+   public static egn.a b(@Nullable bwr<?> $$0) {
+      bye.a $$1 = a.get($$0);
+      return $$1 == null ? egn.a.f : $$1.a;
    }
 
-   public void a() {
-      this.d.keySet().forEach($$0 -> this.d.put((cgg<?>)$$0, Optional.empty()));
+   public static <T extends bwi> boolean a(bwr<T> $$0, djy $$1, bwq $$2, iv $$3, azv $$4) {
+      bye.a $$5 = a.get($$0);
+      return $$5 == null || $$5.c.test($$0, $$1, $$2, $$3, $$4);
    }
 
-   public <U> void b(cgg<U> $$0) {
-      this.a($$0, Optional.empty());
+   static {
+      a(bwr.h, byd.b, egn.a.f, ckr::a);
+      a(bwr.A, byd.b, egn.a.f, ckh::c);
+      a(bwr.H, byd.b, egn.a.f, ciy::b);
+      a(bwr.K, byd.b, egn.a.f, cny::a);
+      a(bwr.ai, byd.b, egn.a.f, cog::b);
+      a(bwr.aX, byd.b, egn.a.f, ckh::c);
+      a(bwr.ba, byd.b, egn.a.f, ckh::c);
+      a(bwr.br, byd.b, egn.a.f, ciy::b);
+      a(bwr.bA, byd.b, egn.a.f, ckf::b);
+      a(bwr.e, byd.d, egn.a.f, cko::c);
+      a(bwr.k, byd.d, egn.a.f, cis::b);
+      a(bwr.o, byd.d, egn.a.f, cok::c);
+      a(bwr.q, byd.d, egn.a.f, cok::b);
+      a(bwr.r, byd.d, egn.a.f, cok::c);
+      a(bwr.t, byd.d, egn.a.f, ckw::c);
+      a(bwr.v, byd.d, egn.a.f, cok::b);
+      a(bwr.z, byd.d, egn.a.f, ciz::b);
+      a(bwr.C, byd.d, egn.a.f, ciz::b);
+      a(bwr.E, byd.d, egn.a.f, cok::b);
+      a(bwr.I, byd.d, egn.a.f, ciz::b);
+      a(bwr.N, byd.d, egn.a.f, cok::b);
+      a(bwr.O, byd.d, egn.a.f, cob::b);
+      a(bwr.P, byd.d, egn.a.f, bxl::a);
+      a(bwr.ab, byd.d, egn.a.f, ckz::c);
+      a(bwr.ad, byd.d, egn.a.f, coe::b);
+      a(bwr.ae, byd.d, egn.a.f, cok::b);
+      a(bwr.ag, byd.b, egn.a.f, bwy::a);
+      a(bwr.ah, byd.d, egn.a.f, clh::c);
+      a(bwr.al, byd.d, egn.a.f, ciz::b);
+      a(bwr.am, byd.d, egn.a.f, coh::a);
+      a(bwr.ap, byd.d, egn.a.f, bxl::a);
+      a(bwr.ax, byd.d, egn.a.f, ciz::b);
+      a(bwr.az, byd.d, egn.a.f, coj::b);
+      a(bwr.aE, byd.d, egn.a.f, cjq::c);
+      a(bwr.aF, byd.d, egn.a.f, ciz::b);
+      a(bwr.aI, byd.d, egn.a.e, cjr::c);
+      a(bwr.aO, byd.d, egn.a.e, cjt::c);
+      a(bwr.aQ, byd.d, egn.a.f, ciz::b);
+      a(bwr.aj, byd.d, egn.a.f, cps::c);
+      a(bwr.aR, byd.d, egn.a.f, cpy::b);
+      a(bwr.aT, byd.d, egn.a.f, col::b);
+      a(bwr.aU, byd.d, egn.a.f, cjx::c);
+      a(bwr.aY, byd.d, egn.a.f, cjz::c);
+      a(bwr.bb, byd.d, egn.a.f, ciz::b);
+      a(bwr.be, byd.d, egn.a.f, cos::b);
+      a(bwr.bf, byd.d, egn.a.f, cok::b);
+      a(bwr.bg, byd.d, egn.a.f, clr::c);
+      a(bwr.bh, byd.d, egn.a.f, cou::c);
+      a(bwr.bl, byd.d, egn.a.f, bxl::a);
+      a(bwr.bo, byd.d, egn.a.f, cok::b);
+      a(bwr.bs, byd.d, egn.a.f, cox::a);
+      a(bwr.bt, byd.c, egn.a.f, coy::c);
+      a(bwr.bB, byd.d, egn.a.f, ckg::c);
+      a(bwr.bD, byd.d, egn.a.f, bxl::a);
+      a(bwr.bI, byd.d, egn.a.f, cok::b);
+      a(bwr.bJ, byd.d, egn.a.f, cok::b);
+      a(bwr.bK, byd.d, egn.a.f, cok::b);
+      a(bwr.bM, byd.d, egn.a.f, cki::c);
+      a(bwr.bN, byd.d, egn.a.f, cok::c);
+      a(bwr.D, byd.d, egn.a.f, cok::b);
+      a(bwr.bO, byd.d, egn.a.f, cok::b);
+      a(bwr.bP, byd.d, egn.a.f, clv::c);
+      a(bwr.bR, byd.d, egn.a.f, cpg::b);
+      a(bwr.bQ, byd.d, egn.a.f, cok::b);
+      a(bwr.u, byd.d, egn.a.f, ciz::b);
+      a(bwr.M, byd.b, egn.a.f, cog::b);
+      a(bwr.S, byd.a, egn.a.f, cok::b);
+      a(bwr.aa, byd.a, egn.a.f, cjo::c);
+      a(bwr.an, byd.a, egn.a.f, cok::b);
+      a(bwr.aN, byd.a, egn.a.f, ciz::b);
+      a(bwr.aP, byd.a, egn.a.f, bxl::a);
+      a(bwr.aZ, byd.d, egn.a.f, cok::b);
+      a(bwr.bc, byd.a, egn.a.f, bxl::a);
+      a(bwr.by, byd.a, egn.a.f, ciz::b);
+      a(bwr.bC, byd.a, egn.a.f, cok::b);
+      a(bwr.bE, byd.a, egn.a.f, cok::b);
+      a(bwr.bF, byd.d, egn.a.f, bxl::a);
+      a(bwr.bG, byd.a, egn.a.f, cok::b);
    }
 
-   public <U> void a(cgg<U> $$0, @Nullable U $$1) {
-      this.a($$0, Optional.ofNullable($$1));
+   static record a(egn.a a, byc b, bye.b<?> c) {
    }
 
-   public <U> void a(cgg<U> $$0, U $$1, long $$2) {
-      this.b($$0, Optional.of(cgf.a($$1, $$2)));
-   }
-
-   public <U> void a(cgg<U> $$0, Optional<? extends U> $$1) {
-      this.b($$0, $$1.map(cgf::a));
-   }
-
-   <U> void b(cgg<U> $$0, Optional<? extends cgf<?>> $$1) {
-      if (this.d.containsKey($$0)) {
-         if ($$1.isPresent() && this.a($$1.get().c())) {
-            this.b($$0);
-         } else {
-            this.d.put($$0, $$1);
-         }
-      }
-   }
-
-   public <U> Optional<U> c(cgg<U> $$0) {
-      Optional<? extends cgf<?>> $$1 = this.d.get($$0);
-      if ($$1 == null) {
-         throw new IllegalStateException("Unregistered memory fetched: " + $$0);
-      } else {
-         return $$1.map(cgf::c);
-      }
-   }
-
-   @Nullable
-   public <U> Optional<U> d(cgg<U> $$0) {
-      Optional<? extends cgf<?>> $$1 = this.d.get($$0);
-      return $$1 == null ? null : $$1.map(cgf::c);
-   }
-
-   public <U> long e(cgg<U> $$0) {
-      Optional<? extends cgf<?>> $$1 = this.d.get($$0);
-      return $$1.<Long>map(cgf::b).orElse(0L);
-   }
-
-   @Deprecated
-   @bav
-   public Map<cgg<?>, Optional<? extends cgf<?>>> b() {
-      return this.d;
-   }
-
-   public <U> boolean b(cgg<U> $$0, U $$1) {
-      return !this.a($$0) ? false : this.c($$0).filter($$1x -> $$1x.equals($$1)).isPresent();
-   }
-
-   public boolean a(cgg<?> $$0, cgh $$1) {
-      Optional<? extends cgf<?>> $$2 = this.d.get($$0);
-      return $$2 == null ? false : $$1 == cgh.c || $$1 == cgh.a && $$2.isPresent() || $$1 == cgh.b && $$2.isEmpty();
-   }
-
-   public csy c() {
-      return this.g;
-   }
-
-   public void a(csy $$0) {
-      this.g = $$0;
-   }
-
-   public void a(Set<csw> $$0) {
-      this.j = $$0;
-   }
-
-   @Deprecated
-   @bav
-   public Set<csw> d() {
-      return this.k;
-   }
-
-   @Deprecated
-   @bav
-   public List<byw<? super E>> e() {
-      List<byw<? super E>> $$0 = new ObjectArrayList();
-
-      for (Map<csw, Set<byw<? super E>>> $$1 : this.f.values()) {
-         for (Set<byw<? super E>> $$2 : $$1.values()) {
-            for (byw<? super E> $$3 : $$2) {
-               if ($$3.a() == byv.a.b) {
-                  $$0.add($$3);
-               }
-            }
-         }
-      }
-
-      return $$0;
-   }
-
-   public void f() {
-      this.d(this.l);
-   }
-
-   public Optional<csw> g() {
-      for (csw $$0 : this.k) {
-         if (!this.j.contains($$0)) {
-            return Optional.of($$0);
-         }
-      }
-
-      return Optional.empty();
-   }
-
-   public void a(csw $$0) {
-      if (this.f($$0)) {
-         this.d($$0);
-      } else {
-         this.f();
-      }
-   }
-
-   private void d(csw $$0) {
-      if (!this.c($$0)) {
-         this.e($$0);
-         this.k.clear();
-         this.k.addAll(this.j);
-         this.k.add($$0);
-      }
-   }
-
-   private void e(csw $$0) {
-      for (csw $$1 : this.k) {
-         if ($$1 != $$0) {
-            Set<cgg<?>> $$2 = this.i.get($$1);
-            if ($$2 != null) {
-               for (cgg<?> $$3 : $$2) {
-                  this.b($$3);
-               }
-            }
-         }
-      }
-   }
-
-   public void a(long $$0, long $$1) {
-      if ($$1 - this.m > 20L) {
-         this.m = $$1;
-         csw $$2 = this.c().a((int)($$0 % 24000L));
-         if (!this.k.contains($$2)) {
-            this.a($$2);
-         }
-      }
-   }
-
-   public void a(List<csw> $$0) {
-      for (csw $$1 : $$0) {
-         if (this.f($$1)) {
-            this.d($$1);
-            break;
-         }
-      }
-   }
-
-   public void b(csw $$0) {
-      this.l = $$0;
-   }
-
-   public void a(csw $$0, int $$1, ImmutableList<? extends byw<? super E>> $$2) {
-      this.a($$0, this.a($$1, $$2));
-   }
-
-   public void a(csw $$0, int $$1, ImmutableList<? extends byw<? super E>> $$2, cgg<?> $$3) {
-      Set<Pair<cgg<?>, cgh>> $$4 = ImmutableSet.of(Pair.of($$3, cgh.a));
-      Set<cgg<?>> $$5 = ImmutableSet.of($$3);
-      this.a($$0, this.a($$1, $$2), $$4, $$5);
-   }
-
-   public void a(csw $$0, ImmutableList<? extends Pair<Integer, ? extends byw<? super E>>> $$1) {
-      this.a($$0, $$1, ImmutableSet.of(), Sets.newHashSet());
-   }
-
-   public void a(csw $$0, int $$1, ImmutableList<? extends byw<? super E>> $$2, Set<Pair<cgg<?>, cgh>> $$3) {
-      this.a($$0, this.a($$1, $$2), $$3);
-   }
-
-   public void a(csw $$0, ImmutableList<? extends Pair<Integer, ? extends byw<? super E>>> $$1, Set<Pair<cgg<?>, cgh>> $$2) {
-      this.a($$0, $$1, $$2, Sets.newHashSet());
-   }
-
-   public void a(csw $$0, ImmutableList<? extends Pair<Integer, ? extends byw<? super E>>> $$1, Set<Pair<cgg<?>, cgh>> $$2, Set<cgg<?>> $$3) {
-      this.h.put($$0, $$2);
-      if (!$$3.isEmpty()) {
-         this.i.put($$0, $$3);
-      }
-
-      UnmodifiableIterator var5 = $$1.iterator();
-
-      while (var5.hasNext()) {
-         Pair<Integer, ? extends byw<? super E>> $$4 = (Pair<Integer, ? extends byw<? super E>>)var5.next();
-         this.f
-            .computeIfAbsent((Integer)$$4.getFirst(), $$0x -> Maps.newHashMap())
-            .computeIfAbsent($$0, $$0x -> Sets.newLinkedHashSet())
-            .add((byw<? super E>)$$4.getSecond());
-      }
-   }
-
-   @VisibleForTesting
-   public void h() {
-      this.f.clear();
-   }
-
-   public boolean c(csw $$0) {
-      return this.k.contains($$0);
-   }
-
-   public bye<E> i() {
-      bye<E> $$0 = new bye<>(this.d.keySet(), this.e.keySet(), ImmutableList.of(), this.b);
-
-      for (Entry<cgg<?>, Optional<? extends cgf<?>>> $$1 : this.d.entrySet()) {
-         cgg<?> $$2 = $$1.getKey();
-         if ($$1.getValue().isPresent()) {
-            $$0.d.put($$2, $$1.getValue());
-         }
-      }
-
-      return $$0;
-   }
-
-   public void a(arq $$0, E $$1) {
-      this.k();
-      this.c($$0, $$1);
-      this.d($$0, $$1);
-      this.e($$0, $$1);
-   }
-
-   private void c(arq $$0, E $$1) {
-      for (chm<? super E> $$2 : this.e.values()) {
-         $$2.b($$0, $$1);
-      }
-   }
-
-   private void k() {
-      for (Entry<cgg<?>, Optional<? extends cgf<?>>> $$0 : this.d.entrySet()) {
-         if ($$0.getValue().isPresent()) {
-            cgf<?> $$1 = (cgf<?>)$$0.getValue().get();
-            if ($$1.d()) {
-               this.b($$0.getKey());
-            }
-
-            $$1.a();
-         }
-      }
-   }
-
-   public void b(arq $$0, E $$1) {
-      long $$2 = $$1.dV().ae();
-
-      for (byw<? super E> $$3 : this.e()) {
-         $$3.g($$0, $$1, $$2);
-      }
-   }
-
-   private void d(arq $$0, E $$1) {
-      long $$2 = $$0.ae();
-
-      for (Map<csw, Set<byw<? super E>>> $$3 : this.f.values()) {
-         for (Entry<csw, Set<byw<? super E>>> $$4 : $$3.entrySet()) {
-            csw $$5 = $$4.getKey();
-            if (this.k.contains($$5)) {
-               for (byw<? super E> $$7 : $$4.getValue()) {
-                  if ($$7.a() == byv.a.a) {
-                     $$7.e($$0, $$1, $$2);
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private void e(arq $$0, E $$1) {
-      long $$2 = $$0.ae();
-
-      for (byw<? super E> $$3 : this.e()) {
-         $$3.f($$0, $$1, $$2);
-      }
-   }
-
-   private boolean f(csw $$0) {
-      if (!this.h.containsKey($$0)) {
-         return false;
-      } else {
-         for (Pair<cgg<?>, cgh> $$1 : this.h.get($$0)) {
-            cgg<?> $$2 = (cgg<?>)$$1.getFirst();
-            cgh $$3 = (cgh)$$1.getSecond();
-            if (!this.a($$2, $$3)) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   private boolean a(Object $$0) {
-      return $$0 instanceof Collection && ((Collection)$$0).isEmpty();
-   }
-
-   ImmutableList<? extends Pair<Integer, ? extends byw<? super E>>> a(int $$0, ImmutableList<? extends byw<? super E>> $$1) {
-      int $$2 = $$0;
-      Builder<Pair<Integer, ? extends byw<? super E>>> $$3 = ImmutableList.builder();
-      UnmodifiableIterator var5 = $$1.iterator();
-
-      while (var5.hasNext()) {
-         byw<? super E> $$4 = (byw<? super E>)var5.next();
-         $$3.add(Pair.of($$2++, $$4));
-      }
-
-      return $$3.build();
-   }
-
-   static final class a<U> {
-      private final cgg<U> a;
-      private final Optional<? extends cgf<U>> b;
-
-      static <U> bye.a<U> a(cgg<U> $$0, Optional<? extends cgf<?>> $$1) {
-         return new bye.a<>($$0, (Optional<? extends cgf<U>>)$$1);
-      }
-
-      a(cgg<U> $$0, Optional<? extends cgf<U>> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      void a(bye<?> $$0) {
-         $$0.b(this.a, this.b);
-      }
-
-      public <T> void a(DynamicOps<T> $$0, RecordBuilder<T> $$1) {
-         this.a.a().ifPresent($$2 -> this.b.ifPresent($$3 -> $$1.add(mf.z.q().encodeStart($$0, this.a), $$2.encodeStart($$0, $$3))));
-      }
-   }
-
-   public static final class b<E extends bxe> {
-      private final Collection<? extends cgg<?>> a;
-      private final Collection<? extends chn<? extends chm<? super E>>> b;
-      private final Codec<bye<E>> c;
-
-      b(Collection<? extends cgg<?>> $$0, Collection<? extends chn<? extends chm<? super E>>> $$1) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = bye.b($$0, $$1);
-      }
-
-      public bye<E> a(Dynamic<?> $$0) {
-         return this.c.parse($$0).resultOrPartial(bye.a::error).orElseGet(() -> new bye<>(this.a, this.b, ImmutableList.of(), () -> this.c));
-      }
+   @FunctionalInterface
+   public interface b<T extends bwi> {
+      boolean test(bwr<T> var1, djy var2, bwq var3, iv var4, azv var5);
    }
 }

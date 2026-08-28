@@ -1,26 +1,51 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class eom<P extends eol> {
-   public static final eom<eon> a = a("trunk_vine", eon.a);
-   public static final eom<eoi> b = a("leave_vine", eoi.a);
-   public static final eom<eoj> c = a("pale_moss", eoj.a);
-   public static final eom<eoh> d = a("creaking_heart", eoh.a);
-   public static final eom<eog> e = a("cocoa", eog.a);
-   public static final eom<eof> f = a("beehive", eof.a);
-   public static final eom<eod> g = a("alter_ground", eod.a);
-   public static final eom<eoe> h = a("attached_to_leaves", eoe.a);
-   public static final eom<eok> i = a("place_on_ground", eok.a);
-   private final MapCodec<P> j;
+public class eom extends eos {
+   public static final MapCodec<eom> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(eom::new, $$0 -> $$0.d);
+   private static final jb b = jb.d;
+   private static final jb[] c = jb.c.a.a().filter($$0 -> $$0 != b.g()).toArray(jb[]::new);
+   private final float d;
 
-   private static <P extends eol> eom<P> a(String $$0, MapCodec<P> $$1) {
-      return jr.a(mf.X, $$0, new eom<>($$1));
+   public eom(float $$0) {
+      this.d = $$0;
    }
 
-   private eom(MapCodec<P> $$0) {
-      this.j = $$0;
+   @Override
+   protected eot<?> a() {
+      return eot.f;
    }
 
-   public MapCodec<P> a() {
-      return this.j;
+   @Override
+   public void a(eos.a $$0) {
+      List<iv> $$1 = $$0.d();
+      List<iv> $$2 = $$0.c();
+      if (!$$2.isEmpty()) {
+         azv $$3 = $$0.b();
+         if (!($$3.i() >= this.d)) {
+            int $$4 = !$$1.isEmpty()
+               ? Math.max($$1.getFirst().v() - 1, $$2.getFirst().v() + 1)
+               : Math.min($$2.getFirst().v() + 1 + $$3.a(3), $$2.getLast().v());
+            List<iv> $$5 = $$2.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
+            if (!$$5.isEmpty()) {
+               ag.c($$5, $$3);
+               Optional<iv> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
+               if (!$$6.isEmpty()) {
+                  $$0.a($$6.get(), dmo.pM.m().b(dmg.b, b));
+                  $$0.a().a($$6.get(), dxo.I).ifPresent($$1x -> {
+                     int $$2x = 2 + $$3.a(2);
+
+                     for (int $$3x = 0; $$3x < $$2x; $$3x++) {
+                        $$1x.a(dxj.c.a($$3.a(599)));
+                     }
+                  });
+               }
+            }
+         }
+      }
    }
 }

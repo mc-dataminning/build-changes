@@ -1,49 +1,45 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 
-public class eub extends euq {
-   public static final MapCodec<eub> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
-               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
-               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f),
-               ja.a.e.fieldOf("axis").orElse(ja.a.b).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, eub::new)
-   );
-   private final float b;
-   private final float d;
-   private final int e;
-   private final int f;
-   private final ja.a g;
+public class eub extends eri {
+   public static final MapCodec<eub> d = a(eub::new);
 
-   public eub(float $$0, float $$1, int $$2, int $$3, ja.a $$4) {
-      if ($$2 >= $$3) {
-         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
-      } else {
-         this.b = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
-         this.g = $$4;
-      }
+   public eub(eri.c $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(iu $$0, iu $$1, iu $$2, azv $$3) {
-      ja $$4 = ja.a(ja.b.a, this.g);
-      float $$5 = (float)Math.abs(($$1.u() - $$2.u()) * $$4.j());
-      float $$6 = (float)Math.abs(($$1.v() - $$2.v()) * $$4.k());
-      float $$7 = (float)Math.abs(($$1.w() - $$2.w()) * $$4.l());
-      int $$8 = (int)($$5 + $$6 + $$7);
-      float $$9 = $$3.i();
-      return $$9 <= azm.b(this.b, this.d, azm.f((float)$$8, (float)this.e, (float)this.f));
+   public Optional<eri.b> a(eri.a $$0) {
+      return Optional.of(new eri.b($$0.h().l(), (Consumer<esa>)($$1 -> a($$1, $$0))));
+   }
+
+   private static void a(esa $$0, eri.a $$1) {
+      int $$2 = 0;
+
+      eua.m $$3;
+      do {
+         $$0.b();
+         $$1.f().c($$1.g() + (long)($$2++), $$1.h().h, $$1.h().i);
+         eua.a();
+         $$3 = new eua.m($$1.f(), $$1.h().a(2), $$1.h().b(2));
+         $$0.a($$3);
+         $$3.a($$3, $$0, $$1.f());
+         List<erm> $$4 = $$3.c;
+
+         while (!$$4.isEmpty()) {
+            int $$5 = $$1.f().a($$4.size());
+            erm $$6 = $$4.remove($$5);
+            $$6.a($$3, $$0, $$1.f());
+         }
+
+         $$0.a($$1.b().f(), $$1.b().g(), $$1.f(), 10);
+      } while ($$0.c() || $$3.b == null);
    }
 
    @Override
-   protected eur<?> a() {
-      return eur.c;
+   public err<?> e() {
+      return err.n;
    }
 }

@@ -1,2 +1,8 @@
-public record eys(ezb a, ehb.b b) {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@x
+@v
+interface eys {
 }

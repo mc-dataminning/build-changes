@@ -1,243 +1,127 @@
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Function;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dzb extends dzc {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 200;
-   private static final int c = 40;
-   private static final int d = 2400;
-   private static final int e = 1;
-   private static final int f = 10;
-   private long g;
-   private int h;
+public class dzb {
+   private static final Codec<wy[]> c = xa.a
+      .listOf()
+      .comapFlatMap(
+         $$0 -> ag.a($$0, 4).map($$0x -> new wy[]{(wy)$$0x.get(0), (wy)$$0x.get(1), (wy)$$0x.get(2), (wy)$$0x.get(3)}),
+         $$0 -> List.of($$0[0], $$0[1], $$0[2], $$0[3])
+      );
+   public static final Codec<dzb> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               c.fieldOf("messages").forGetter($$0x -> $$0x.d),
+               c.lenientOptionalFieldOf("filtered_messages").forGetter(dzb::d),
+               cyi.q.fieldOf("color").orElse(cyi.p).forGetter($$0x -> $$0x.f),
+               Codec.BOOL.fieldOf("has_glowing_text").orElse(false).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, dzb::a)
+   );
+   public static final int b = 4;
+   private final wy[] d;
+   private final wy[] e;
+   private final cyi f;
+   private final boolean g;
    @Nullable
-   private iu i;
-   private boolean j;
+   private ayy[] h;
+   private boolean i;
 
-   public dzb(iu $$0, eah $$1) {
-      super(dxh.w, $$0, $$1);
+   public dzb() {
+      this(c(), c(), cyi.p, false);
    }
 
-   @Override
-   protected void b(tz $$0, jg.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("Age", this.g);
-      if (this.i != null) {
-         $$0.a("exit_portal", uo.a(this.i));
-      }
-
-      if (this.j) {
-         $$0.a("ExactTeleport", true);
-      }
+   public dzb(wy[] $$0, wy[] $$1, cyi $$2, boolean $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
-   @Override
-   protected void a(tz $$0, jg.a $$1) {
-      super.a($$0, $$1);
-      this.g = $$0.i("Age");
-      uo.a($$0, "exit_portal").filter(dja::l).ifPresent($$0x -> this.i = $$0x);
-      this.j = $$0.q("ExactTeleport");
+   private static wy[] c() {
+      return new wy[]{wx.a, wx.a, wx.a, wx.a};
    }
 
-   public static void a(dja $$0, iu $$1, eah $$2, dzb $$3) {
-      $$3.g++;
-      if ($$3.c()) {
-         $$3.h--;
-      }
-   }
-
-   public static void b(dja $$0, iu $$1, eah $$2, dzb $$3) {
-      boolean $$4 = $$3.a();
-      boolean $$5 = $$3.c();
-      $$3.g++;
-      if ($$5) {
-         $$3.h--;
-      } else if ($$3.g % 2400L == 0L) {
-         c($$0, $$1, $$2, $$3);
-      }
-
-      if ($$4 != $$3.a() || $$5 != $$3.c()) {
-         a($$0, $$1, $$2);
-      }
+   private static dzb a(wy[] $$0, Optional<wy[]> $$1, cyi $$2, boolean $$3) {
+      return new dzb($$0, $$1.orElse(Arrays.copyOf($$0, $$0.length)), $$2, $$3);
    }
 
    public boolean a() {
-      return this.g < 200L;
+      return this.g;
    }
 
-   public boolean c() {
-      return this.h > 0;
+   public dzb a(boolean $$0) {
+      return $$0 == this.g ? this : new dzb(this.d, this.e, this.f, $$0);
    }
 
-   public float a(float $$0) {
-      return azm.a(((float)this.g + $$0) / 200.0F, 0.0F, 1.0F);
+   public cyi b() {
+      return this.f;
    }
 
-   public float b(float $$0) {
-      return 1.0F - azm.a(((float)this.h - $$0) / 40.0F, 0.0F, 1.0F);
+   public dzb a(cyi $$0) {
+      return $$0 == this.b() ? this : new dzb(this.d, this.e, $$0, this.g);
    }
 
-   public aca d() {
-      return aca.a(this);
+   public wy a(int $$0, boolean $$1) {
+      return this.b($$1)[$$0];
    }
 
-   @Override
-   public tz a(jg.a $$0) {
-      return this.e($$0);
+   public dzb a(int $$0, wy $$1) {
+      return this.a($$0, $$1, $$1);
    }
 
-   public static void c(dja $$0, iu $$1, eah $$2, dzb $$3) {
-      if (!$$0.C) {
-         $$3.h = 40;
-         $$0.a($$1, $$2.b(), 1, 0);
-         a($$0, $$1, $$2);
-      }
+   public dzb a(int $$0, wy $$1, wy $$2) {
+      wy[] $$3 = Arrays.copyOf(this.d, this.d.length);
+      wy[] $$4 = Arrays.copyOf(this.e, this.e.length);
+      $$3[$$0] = $$1;
+      $$4[$$0] = $$2;
+      return new dzb($$3, $$4, this.f, this.g);
    }
 
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.h = 40;
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
+   public boolean a(crj $$0) {
+      return Arrays.stream(this.b($$0.X())).anyMatch($$0x -> !$$0x.getString().isEmpty());
    }
 
-   @Nullable
-   public feq a(arq $$0, iu $$1) {
-      if (this.i == null && $$0.aj() == dja.k) {
-         iu $$2 = b($$0, $$1);
-         $$2 = $$2.b(10);
-         a.debug("Creating portal at {}", $$2);
-         a($$0, $$2, elp.a($$1, false));
-         this.a($$2, this.j);
-      }
-
-      if (this.i != null) {
-         iu $$3 = this.j ? this.i : a((dja)$$0, this.i);
-         return $$3.c();
-      } else {
-         return null;
-      }
+   public wy[] b(boolean $$0) {
+      return $$0 ? this.e : this.d;
    }
 
-   private static iu a(dja $$0, iu $$1) {
-      iu $$2 = a($$0, $$1.b(0, 2, 0), 5, false);
-      a.debug("Best exit position for portal at {} is {}", $$1, $$2);
-      return $$2.d();
-   }
+   public ayy[] a(boolean $$0, Function<wy, ayy> $$1) {
+      if (this.h == null || this.i != $$0) {
+         this.i = $$0;
+         this.h = new ayy[4];
 
-   private static iu b(arq $$0, iu $$1) {
-      feq $$2 = c($$0, $$1);
-      eco $$3 = a((dja)$$0, $$2);
-      iu $$4 = a($$3);
-      if ($$4 == null) {
-         iu $$5 = iu.a($$2.d + 0.5, 75.0, $$2.f + 0.5);
-         a.debug("Failed to find a suitable block to teleport to, spawning an island on {}", $$5);
-         $$0.F_().a(mg.aL).flatMap($$0x -> $$0x.a(rh.f)).ifPresent($$2x -> ((eiy)$$2x.a()).a($$0, $$0.m().g(), azv.a($$5.a()), $$5));
-         $$4 = $$5;
-      } else {
-         a.debug("Found suitable block to teleport to: {}", $$4);
-      }
-
-      return a($$0, $$4, 16, true);
-   }
-
-   private static feq c(arq $$0, iu $$1) {
-      feq $$2 = new feq((double)$$1.u(), 0.0, (double)$$1.w()).d();
-      int $$3 = 1024;
-      feq $$4 = $$2.c(1024.0);
-
-      for (int $$5 = 16; !a($$0, $$4) && $$5-- > 0; $$4 = $$4.e($$2.c(-16.0))) {
-         a.debug("Skipping backwards past nonempty chunk at {}", $$4);
-      }
-
-      for (int var6 = 16; a($$0, $$4) && var6-- > 0; $$4 = $$4.e($$2.c(16.0))) {
-         a.debug("Skipping forward past empty chunk at {}", $$4);
-      }
-
-      a.debug("Found chunk at {}", $$4);
-      return $$4;
-   }
-
-   private static boolean a(arq $$0, feq $$1) {
-      return a((dja)$$0, $$1).a() == -1;
-   }
-
-   private static iu a(dig $$0, iu $$1, int $$2, boolean $$3) {
-      iu $$4 = null;
-
-      for (int $$5 = -$$2; $$5 <= $$2; $$5++) {
-         for (int $$6 = -$$2; $$6 <= $$2; $$6++) {
-            if ($$5 != 0 || $$6 != 0 || $$3) {
-               for (int $$7 = $$0.ao(); $$7 > ($$4 == null ? $$0.G_() : $$4.v()); $$7--) {
-                  iu $$8 = new iu($$1.u() + $$5, $$7, $$1.w() + $$6);
-                  eah $$9 = $$0.a_($$8);
-                  if ($$9.m($$0, $$8) && ($$3 || !$$9.a(dmh.I))) {
-                     $$4 = $$8;
-                     break;
-                  }
-               }
-            }
+         for (int $$2 = 0; $$2 < 4; $$2++) {
+            this.h[$$2] = $$1.apply(this.a($$2, $$0));
          }
       }
 
-      return $$4 == null ? $$1 : $$4;
+      return this.h;
    }
 
-   private static eco a(dja $$0, feq $$1) {
-      return $$0.d(azm.a($$1.d / 16.0), azm.a($$1.f / 16.0));
-   }
-
-   @Nullable
-   private static iu a(eco $$0) {
-      dih $$1 = $$0.f();
-      iu $$2 = new iu($$1.d(), 30, $$1.e());
-      int $$3 = $$0.b() + 16 - 1;
-      iu $$4 = new iu($$1.f(), $$3, $$1.g());
-      iu $$5 = null;
-      double $$6 = 0.0;
-
-      for (iu $$7 : iu.c($$2, $$4)) {
-         eah $$8 = $$0.a_($$7);
-         iu $$9 = $$7.d();
-         iu $$10 = $$7.b(2);
-         if ($$8.a(dmh.fY) && !$$0.a_($$9).m($$0, $$9) && !$$0.a_($$10).m($$0, $$10)) {
-            double $$11 = $$7.c(0.0, 0.0, 0.0);
-            if ($$5 == null || $$11 < $$6) {
-               $$5 = $$7;
-               $$6 = $$11;
-            }
+   private Optional<wy[]> d() {
+      for (int $$0 = 0; $$0 < 4; $$0++) {
+         if (!this.e[$$0].equals(this.d[$$0])) {
+            return Optional.of(this.e);
          }
       }
 
-      return $$5;
+      return Optional.empty();
    }
 
-   private static void a(arq $$0, iu $$1, elp $$2) {
-      ejm.M.a($$2, $$0, $$0.m().g(), azv.a(), $$1);
-   }
-
-   @Override
-   public boolean a(ja $$0) {
-      return dmf.a(this.m(), this.n.a_(this.ax_().a($$0)), $$0);
-   }
-
-   public int f() {
-      int $$0 = 0;
-
-      for (ja $$1 : ja.values()) {
-         $$0 += this.a($$1) ? 1 : 0;
+   public boolean b(crj $$0) {
+      for (wy $$1 : this.b($$0.X())) {
+         xv $$2 = $$1.a();
+         ww $$3 = $$2.i();
+         if ($$3 != null && $$3.a() == ww.a.c) {
+            return true;
+         }
       }
 
-      return $$0;
-   }
-
-   public void a(iu $$0, boolean $$1) {
-      this.j = $$1;
-      this.i = $$0;
-      this.e();
+      return false;
    }
 }

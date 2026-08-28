@@ -1,33 +1,67 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 
-public class ejk extends ejm<elx> {
-   public ejk(Codec<elx> $$0) {
+public class ejk extends ejt<elt> {
+   private static final ImmutableList<dmm> a = ImmutableList.of(dmo.I, dmo.fM, dmo.fN, dmo.fO, dmo.fP, dmo.cG, dmo.cD);
+   private static final jb[] b = jb.values();
+   private static final double c = 0.9;
+
+   public ejk(Codec<elt> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ejo<elx> $$0) {
-      a($$0.b(), $$0.e(), false);
-      return true;
-   }
+   public boolean a(ejv<elt> $$0) {
+      boolean $$1 = false;
+      azv $$2 = $$0.d();
+      dkg $$3 = $$0.b();
+      elt $$4 = $$0.f();
+      iv $$5 = $$0.e();
+      boolean $$6 = $$2.j() < 0.9;
+      int $$7 = $$6 ? $$4.d().a($$2) : 0;
+      int $$8 = $$6 ? $$4.d().a($$2) : 0;
+      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
+      int $$10 = $$4.c().a($$2);
+      int $$11 = $$4.c().a($$2);
+      int $$12 = Math.max($$10, $$11);
 
-   public static void a(djr $$0, iu $$1, boolean $$2) {
-      iu.a $$3 = $$1.k();
+      for (iv $$13 : iv.a($$5, $$10, 0, $$11)) {
+         if ($$13.k($$5) > $$12) {
+            break;
+         }
 
-      for (int $$4 = -2; $$4 <= 2; $$4++) {
-         for (int $$5 = -2; $$5 <= 2; $$5++) {
-            for (int $$6 = -1; $$6 < 3; $$6++) {
-               iu $$7 = $$3.g($$1).e($$5, $$6, $$4);
-               dmf $$8 = $$6 == -1 ? dmh.cy : dmh.a;
-               if (!$$0.a_($$7).a($$8)) {
-                  if ($$2) {
-                     $$0.a($$7, true, null);
-                  }
+         if (a($$3, $$13, $$4)) {
+            if ($$9) {
+               $$1 = true;
+               this.a($$3, $$13, $$4.b());
+            }
 
-                  $$0.a($$7, $$8.m(), 3);
-               }
+            iv $$14 = $$13.b($$7, 0, $$8);
+            if (a($$3, $$14, $$4)) {
+               $$1 = true;
+               this.a($$3, $$14, $$4.a());
             }
          }
+      }
+
+      return $$1;
+   }
+
+   private static boolean a(dji $$0, iv $$1, elt $$2) {
+      eao $$3 = $$0.a_($$1);
+      if ($$3.a($$2.a().b())) {
+         return false;
+      } else if (a.contains($$3.b())) {
+         return false;
+      } else {
+         for (jb $$4 : b) {
+            boolean $$5 = $$0.a_($$1.a($$4)).l();
+            if ($$5 && $$4 != jb.b || !$$5 && $$4 == jb.b) {
+               return false;
+            }
+         }
+
+         return true;
       }
    }
 }

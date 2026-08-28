@@ -14,54 +14,54 @@ public class ang {
    private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wy.c("commands.effect.clear.everything.failed"));
    private static final SimpleCommandExceptionType c = new SimpleCommandExceptionType(wy.c("commands.effect.clear.specific.failed"));
 
-   public static void a(CommandDispatcher<ei> $$0, ee $$1) {
+   public static void a(CommandDispatcher<ej> $$0, ef $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("effect").requires($$0x -> $$0x.c(2)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("effect").requires($$0x -> $$0x.c(2)))
                .then(
-                  ((LiteralArgumentBuilder)ej.a("clear").executes($$0x -> a((ei)$$0x.getSource(), ImmutableList.of(((ei)$$0x.getSource()).g()))))
+                  ((LiteralArgumentBuilder)ek.a("clear").executes($$0x -> a((ej)$$0x.getSource(), ImmutableList.of(((ej)$$0x.getSource()).g()))))
                      .then(
-                        ((RequiredArgumentBuilder)ej.a("targets", ev.b()).executes($$0x -> a((ei)$$0x.getSource(), ev.b($$0x, "targets"))))
-                           .then(ej.a("effect", fh.a($$1, mg.W)).executes($$0x -> a((ei)$$0x.getSource(), ev.b($$0x, "targets"), fh.f($$0x, "effect"))))
+                        ((RequiredArgumentBuilder)ek.a("targets", ew.b()).executes($$0x -> a((ej)$$0x.getSource(), ew.b($$0x, "targets"))))
+                           .then(ek.a("effect", fi.a($$1, mh.W)).executes($$0x -> a((ej)$$0x.getSource(), ew.b($$0x, "targets"), fi.f($$0x, "effect"))))
                      )
                ))
             .then(
-               ej.a("give")
+               ek.a("give")
                   .then(
-                     ej.a("targets", ev.b())
+                     ek.a("targets", ew.b())
                         .then(
-                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ej.a("effect", fh.a($$1, mg.W))
-                                    .executes($$0x -> a((ei)$$0x.getSource(), ev.b($$0x, "targets"), fh.f($$0x, "effect"), null, 0, true)))
+                           ((RequiredArgumentBuilder)((RequiredArgumentBuilder)ek.a("effect", fi.a($$1, mh.W))
+                                    .executes($$0x -> a((ej)$$0x.getSource(), ew.b($$0x, "targets"), fi.f($$0x, "effect"), null, 0, true)))
                                  .then(
-                                    ((RequiredArgumentBuilder)ej.a("seconds", IntegerArgumentType.integer(1, 1000000))
+                                    ((RequiredArgumentBuilder)ek.a("seconds", IntegerArgumentType.integer(1, 1000000))
                                           .executes(
                                              $$0x -> a(
-                                                   (ei)$$0x.getSource(),
-                                                   ev.b($$0x, "targets"),
-                                                   fh.f($$0x, "effect"),
+                                                   (ej)$$0x.getSource(),
+                                                   ew.b($$0x, "targets"),
+                                                   fi.f($$0x, "effect"),
                                                    IntegerArgumentType.getInteger($$0x, "seconds"),
                                                    0,
                                                    true
                                                 )
                                           ))
                                        .then(
-                                          ((RequiredArgumentBuilder)ej.a("amplifier", IntegerArgumentType.integer(0, 255))
+                                          ((RequiredArgumentBuilder)ek.a("amplifier", IntegerArgumentType.integer(0, 255))
                                                 .executes(
                                                    $$0x -> a(
-                                                         (ei)$$0x.getSource(),
-                                                         ev.b($$0x, "targets"),
-                                                         fh.f($$0x, "effect"),
+                                                         (ej)$$0x.getSource(),
+                                                         ew.b($$0x, "targets"),
+                                                         fi.f($$0x, "effect"),
                                                          IntegerArgumentType.getInteger($$0x, "seconds"),
                                                          IntegerArgumentType.getInteger($$0x, "amplifier"),
                                                          true
                                                       )
                                                 ))
                                              .then(
-                                                ej.a("hideParticles", BoolArgumentType.bool())
+                                                ek.a("hideParticles", BoolArgumentType.bool())
                                                    .executes(
                                                       $$0x -> a(
-                                                            (ei)$$0x.getSource(),
-                                                            ev.b($$0x, "targets"),
-                                                            fh.f($$0x, "effect"),
+                                                            (ej)$$0x.getSource(),
+                                                            ew.b($$0x, "targets"),
+                                                            fi.f($$0x, "effect"),
                                                             IntegerArgumentType.getInteger($$0x, "seconds"),
                                                             IntegerArgumentType.getInteger($$0x, "amplifier"),
                                                             !BoolArgumentType.getBool($$0x, "hideParticles")
@@ -71,27 +71,27 @@ public class ang {
                                        )
                                  ))
                               .then(
-                                 ((LiteralArgumentBuilder)ej.a("infinite")
-                                       .executes($$0x -> a((ei)$$0x.getSource(), ev.b($$0x, "targets"), fh.f($$0x, "effect"), -1, 0, true)))
+                                 ((LiteralArgumentBuilder)ek.a("infinite")
+                                       .executes($$0x -> a((ej)$$0x.getSource(), ew.b($$0x, "targets"), fi.f($$0x, "effect"), -1, 0, true)))
                                     .then(
-                                       ((RequiredArgumentBuilder)ej.a("amplifier", IntegerArgumentType.integer(0, 255))
+                                       ((RequiredArgumentBuilder)ek.a("amplifier", IntegerArgumentType.integer(0, 255))
                                              .executes(
                                                 $$0x -> a(
-                                                      (ei)$$0x.getSource(),
-                                                      ev.b($$0x, "targets"),
-                                                      fh.f($$0x, "effect"),
+                                                      (ej)$$0x.getSource(),
+                                                      ew.b($$0x, "targets"),
+                                                      fi.f($$0x, "effect"),
                                                       -1,
                                                       IntegerArgumentType.getInteger($$0x, "amplifier"),
                                                       true
                                                    )
                                              ))
                                           .then(
-                                             ej.a("hideParticles", BoolArgumentType.bool())
+                                             ek.a("hideParticles", BoolArgumentType.bool())
                                                 .executes(
                                                    $$0x -> a(
-                                                         (ei)$$0x.getSource(),
-                                                         ev.b($$0x, "targets"),
-                                                         fh.f($$0x, "effect"),
+                                                         (ej)$$0x.getSource(),
+                                                         ew.b($$0x, "targets"),
+                                                         fi.f($$0x, "effect"),
                                                          -1,
                                                          IntegerArgumentType.getInteger($$0x, "amplifier"),
                                                          !BoolArgumentType.getBool($$0x, "hideParticles")
@@ -106,8 +106,8 @@ public class ang {
       );
    }
 
-   private static int a(ei $$0, Collection<? extends bwf> $$1, je<bvh> $$2, @Nullable Integer $$3, int $$4, boolean $$5) throws CommandSyntaxException {
-      bvh $$6 = $$2.a();
+   private static int a(ej $$0, Collection<? extends bwi> $$1, jf<bvk> $$2, @Nullable Integer $$3, int $$4, boolean $$5) throws CommandSyntaxException {
+      bvk $$6 = $$2.a();
       int $$7 = 0;
       int $$8;
       if ($$3 != null) {
@@ -124,10 +124,10 @@ public class ang {
          $$8 = 600;
       }
 
-      for (bwf $$13 : $$1) {
-         if ($$13 instanceof bxe) {
-            bvj $$14 = new bvj($$2, $$8, $$4, false, $$5);
-            if (((bxe)$$13).b($$14, $$0.f())) {
+      for (bwi $$13 : $$1) {
+         if ($$13 instanceof bxj) {
+            bvm $$14 = new bvm($$2, $$8, $$4, false, $$5);
+            if (((bxj)$$13).b($$14, $$0.f())) {
                $$7++;
             }
          }
@@ -146,11 +146,11 @@ public class ang {
       }
    }
 
-   private static int a(ei $$0, Collection<? extends bwf> $$1) throws CommandSyntaxException {
+   private static int a(ej $$0, Collection<? extends bwi> $$1) throws CommandSyntaxException {
       int $$2 = 0;
 
-      for (bwf $$3 : $$1) {
-         if ($$3 instanceof bxe && ((bxe)$$3).eC()) {
+      for (bwi $$3 : $$1) {
+         if ($$3 instanceof bxj && ((bxj)$$3).eB()) {
             $$2++;
          }
       }
@@ -168,12 +168,12 @@ public class ang {
       }
    }
 
-   private static int a(ei $$0, Collection<? extends bwf> $$1, je<bvh> $$2) throws CommandSyntaxException {
-      bvh $$3 = $$2.a();
+   private static int a(ej $$0, Collection<? extends bwi> $$1, jf<bvk> $$2) throws CommandSyntaxException {
+      bvk $$3 = $$2.a();
       int $$4 = 0;
 
-      for (bwf $$5 : $$1) {
-         if ($$5 instanceof bxe && ((bxe)$$5).e($$2)) {
+      for (bwi $$5 : $$1) {
+         if ($$5 instanceof bxj && ((bxj)$$5).e($$2)) {
             $$4++;
          }
       }

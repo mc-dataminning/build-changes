@@ -1,80 +1,48 @@
-public class gil extends gfy<hex> implements ggi, gik {
-   public static final gjl a = gjl.scaling(0.5F);
-   private final gjc b;
-   private final gjc c;
-   private final gjc d;
-   private final gjc e;
-   private final gjc f;
-   private final gjc g;
+public class gil extends ggk<hdz> {
+   private static final String a = "upper_body";
+   private final gjo b;
+   private final gjo c;
+   private final gjo d;
+   private final gjo e;
 
-   public gil(gjc $$0) {
+   public gil(gjo $$0) {
       super($$0);
-      this.b = $$0.b("head");
-      this.c = this.b.b("hat");
-      this.d = this.c.b("hat_rim");
-      this.e = $$0.b("right_leg");
-      this.f = $$0.b("left_leg");
-      this.g = $$0.b("arms");
+      this.c = $$0.b("head");
+      this.d = $$0.b("left_arm");
+      this.e = $$0.b("right_arm");
+      this.b = $$0.b("upper_body");
    }
 
-   public static gjk a() {
-      gjk $$0 = new gjk();
-      gjm $$1 = $$0.a();
-      float $$2 = 0.5F;
-      gjm $$3 = $$1.a("head", gjh.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F), gje.a);
-      gjm $$4 = $$3.a("hat", gjh.c().a(32, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F, new gjg(0.51F)), gje.a);
-      $$4.a("hat_rim", gjh.c().a(30, 47).a(-8.0F, -8.0F, -6.0F, 16.0F, 16.0F, 1.0F), gje.b((float) (-Math.PI / 2), 0.0F, 0.0F));
-      $$3.a("nose", gjh.c().a(24, 0).a(-1.0F, -1.0F, -6.0F, 2.0F, 4.0F, 2.0F), gje.a(0.0F, -2.0F, 0.0F));
-      gjm $$5 = $$1.a("body", gjh.c().a(16, 20).a(-4.0F, 0.0F, -3.0F, 8.0F, 12.0F, 6.0F), gje.a);
-      $$5.a("jacket", gjh.c().a(0, 38).a(-4.0F, 0.0F, -3.0F, 8.0F, 20.0F, 6.0F, new gjg(0.5F)), gje.a);
-      $$1.a(
-         "arms",
-         gjh.c()
-            .a(44, 22)
-            .a(-8.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F)
-            .a(44, 22)
-            .a(4.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F, true)
-            .a(40, 38)
-            .a(-4.0F, 2.0F, -2.0F, 8.0F, 4.0F, 4.0F),
-         gje.a(0.0F, 3.0F, -1.0F, -0.75F, 0.0F, 0.0F)
-      );
-      $$1.a("right_leg", gjh.c().a(0, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), gje.a(-2.0F, 12.0F, 0.0F));
-      $$1.a("left_leg", gjh.c().a(0, 22).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), gje.a(2.0F, 12.0F, 0.0F));
-      return $$0;
+   public static gju a() {
+      gjw $$0 = new gjw();
+      gjy $$1 = $$0.a();
+      float $$2 = 4.0F;
+      gjs $$3 = new gjs(-0.5F);
+      $$1.a("head", gjt.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$3), gjq.a(0.0F, 4.0F, 0.0F));
+      gjt $$4 = gjt.c().a(32, 0).a(-1.0F, 0.0F, -1.0F, 12.0F, 2.0F, 2.0F, $$3);
+      $$1.a("left_arm", $$4, gjq.a(5.0F, 6.0F, 1.0F, 0.0F, 0.0F, 1.0F));
+      $$1.a("right_arm", $$4, gjq.a(-5.0F, 6.0F, -1.0F, 0.0F, (float) Math.PI, -1.0F));
+      $$1.a("upper_body", gjt.c().a(0, 16).a(-5.0F, -10.0F, -5.0F, 10.0F, 10.0F, 10.0F, $$3), gjq.a(0.0F, 13.0F, 0.0F));
+      $$1.a("lower_body", gjt.c().a(0, 36).a(-6.0F, -12.0F, -6.0F, 12.0F, 12.0F, 12.0F, $$3), gjq.a(0.0F, 24.0F, 0.0F));
+      return gju.a($$0, 64, 64);
    }
 
-   public void a(hex $$0) {
+   public void a(hdz $$0) {
       super.a($$0);
-      this.b.f = $$0.aa * (float) (Math.PI / 180.0);
-      this.b.e = $$0.ab * (float) (Math.PI / 180.0);
-      if ($$0.a) {
-         this.b.g = 0.3F * azm.a(0.45F * $$0.u);
-         this.b.e = 0.4F;
-      } else {
-         this.b.g = 0.0F;
-      }
-
-      this.e.e = azm.b($$0.ad * 0.6662F) * 1.4F * $$0.ae * 0.5F;
-      this.f.e = azm.b($$0.ad * 0.6662F + (float) Math.PI) * 1.4F * $$0.ae * 0.5F;
-      this.e.f = 0.0F;
-      this.f.f = 0.0F;
+      this.c.f = $$0.aa * (float) (Math.PI / 180.0);
+      this.c.e = $$0.ab * (float) (Math.PI / 180.0);
+      this.b.f = $$0.aa * (float) (Math.PI / 180.0) * 0.25F;
+      float $$1 = azm.a(this.b.f);
+      float $$2 = azm.b(this.b.f);
+      this.d.f = this.b.f;
+      this.e.f = this.b.f + (float) Math.PI;
+      this.d.b = $$2 * 5.0F;
+      this.d.d = -$$1 * 5.0F;
+      this.e.b = -$$2 * 5.0F;
+      this.e.d = $$1 * 5.0F;
    }
 
-   @Override
-   public gjc b() {
-      return this.b;
-   }
-
-   @Override
-   public void a(boolean $$0) {
-      this.b.k = $$0;
-      this.c.k = $$0;
-      this.d.k = $$0;
-   }
-
-   @Override
-   public void a(fjj $$0) {
-      this.v.a($$0);
-      this.g.a($$0);
+   public gjo b() {
+      return this.c;
    }
 }

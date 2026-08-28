@@ -27,19 +27,19 @@ public class asc implements asa {
    }
 
    @Override
-   public void a(dih $$0) {
-      this.e = af.c();
+   public void a(dio $$0) {
+      this.e = ag.c();
       this.d = this.e;
    }
 
    @Override
-   public void a(dih $$0, @Nullable edf $$1) {
-      if ($$1 == edf.n) {
+   public void a(dio $$0, @Nullable edm $$1) {
+      if ($$1 == edm.n) {
          this.c++;
       }
 
       int $$2 = this.d();
-      if (af.c() > this.e) {
+      if (ag.c() > this.e) {
          this.e += 500L;
          a.info(wy.a("menu.preparingSpawn", azm.a($$2, 0, 100)).getString());
       }
@@ -51,7 +51,7 @@ public class asc implements asa {
 
    @Override
    public void b() {
-      a.info("Time elapsed: {} ms", af.c() - this.d);
+      a.info("Time elapsed: {} ms", ag.c() - this.d);
       this.e = Long.MAX_VALUE;
    }
 

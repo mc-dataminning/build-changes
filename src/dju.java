@@ -1,76 +1,108 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import com.google.common.base.Suppliers;
+import java.util.List;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
 
-public record dju(tz d, Optional<dju.a> e, Optional<bwr> f) {
-   public static final String a = "entity";
-   public static final Codec<dju> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               tz.a.fieldOf("entity").forGetter($$0x -> $$0x.d),
-               dju.a.a.optionalFieldOf("custom_spawn_rules").forGetter($$0x -> $$0x.e),
-               bwr.b.optionalFieldOf("equipment").forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, dju::new)
-   );
-   public static final Codec<bso<dju>> c = bso.a(b);
+public class dju implements dir {
+   protected final int a;
+   protected final int b;
+   protected final ecl[][] c;
+   protected boolean d;
+   protected final djh e;
+   private final Supplier<jf<dkk>> f;
 
-   public dju() {
-      this(new tz(), Optional.empty(), Optional.empty());
-   }
+   public dju(djh $$0, iv $$1, iv $$2) {
+      this.e = $$0;
+      this.f = Suppliers.memoize(() -> $$0.F_().f(mh.aG).b(dkr.b));
+      this.a = jy.a($$1.u());
+      this.b = jy.a($$1.w());
+      int $$3 = jy.a($$2.u());
+      int $$4 = jy.a($$2.w());
+      this.c = new ecl[$$3 - this.a + 1][$$4 - this.b + 1];
+      ecp $$5 = $$0.S();
+      this.d = true;
 
-   public dju(tz d, Optional<dju.a> e, Optional<bwr> f) {
-      if (d.e("id")) {
-         alg $$3 = alg.c(d.l("id"));
-         if ($$3 != null) {
-            d.a("id", $$3.toString());
-         } else {
-            d.r("id");
+      for (int $$6 = this.a; $$6 <= $$3; $$6++) {
+         for (int $$7 = this.b; $$7 <= $$4; $$7++) {
+            this.c[$$6 - this.a][$$7 - this.b] = $$5.a($$6, $$7);
          }
       }
 
-      this.d = d;
-      this.e = e;
-      this.f = f;
+      for (int $$8 = jy.a($$1.u()); $$8 <= jy.a($$2.u()); $$8++) {
+         for (int $$9 = jy.a($$1.w()); $$9 <= jy.a($$2.w()); $$9++) {
+            ecl $$10 = this.c[$$8 - this.a][$$9 - this.b];
+            if ($$10 != null && !$$10.a($$1.v(), $$2.v())) {
+               this.d = false;
+               return;
+            }
+         }
+      }
    }
 
-   public tz a() {
-      return this.d;
+   private ecl d(iv $$0) {
+      return this.a(jy.a($$0.u()), jy.a($$0.w()));
    }
 
-   public Optional<dju.a> b() {
-      return this.e;
+   private ecl a(int $$0, int $$1) {
+      int $$2 = $$0 - this.a;
+      int $$3 = $$1 - this.b;
+      if ($$2 >= 0 && $$2 < this.c.length && $$3 >= 0 && $$3 < this.c[$$2].length) {
+         ecl $$4 = this.c[$$2][$$3];
+         return (ecl)($$4 != null ? $$4 : new ecr(this.e, new dio($$0, $$1), this.f.get()));
+      } else {
+         return new ecr(this.e, new dio($$0, $$1), this.f.get());
+      }
    }
 
-   public Optional<bwr> c() {
-      return this.f;
+   @Override
+   public ecg A_() {
+      return this.e.A_();
    }
 
-   public static record a(aze<Integer> b, aze<Integer> c) {
-      private static final aze<Integer> d = new aze<>(0, 15);
-      public static final Codec<dju.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(a("block_light_limit").forGetter($$0x -> $$0x.b), a("sky_light_limit").forGetter($$0x -> $$0x.c)).apply($$0, dju.a::new)
-      );
+   @Override
+   public din c(int $$0, int $$1) {
+      return this.a($$0, $$1);
+   }
 
-      private static DataResult<aze<Integer>> a(aze<Integer> $$0) {
-         return !d.a($$0) ? DataResult.error(() -> "Light values must be withing range " + d) : DataResult.success($$0);
-      }
+   @Override
+   public List<ffr> c(@Nullable bwi $$0, fes $$1) {
+      return List.of();
+   }
 
-      private static MapCodec<aze<Integer>> a(String $$0) {
-         return aze.a.lenientOptionalFieldOf($$0, d).validate(dju.a::a);
-      }
+   @Nullable
+   @Override
+   public dxm c_(iv $$0) {
+      ecl $$1 = this.d($$0);
+      return $$1.c_($$0);
+   }
 
-      public boolean a(iu $$0, arq $$1) {
-         return this.b.a($$1.a(djj.b, $$0)) && this.c.a($$1.a(djj.a, $$0));
+   @Override
+   public eao a_(iv $$0) {
+      if (this.t($$0)) {
+         return dmo.a.m();
+      } else {
+         ecl $$1 = this.d($$0);
+         return $$1.a_($$0);
       }
+   }
 
-      public aze<Integer> a() {
-         return this.b;
+   @Override
+   public ewv b_(iv $$0) {
+      if (this.t($$0)) {
+         return eww.a.g();
+      } else {
+         ecl $$1 = this.d($$0);
+         return $$1.b_($$0);
       }
+   }
 
-      public aze<Integer> b() {
-         return this.c;
-      }
+   @Override
+   public int G_() {
+      return this.e.G_();
+   }
+
+   @Override
+   public int H_() {
+      return this.e.H_();
    }
 }

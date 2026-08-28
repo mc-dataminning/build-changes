@@ -1,37 +1,33 @@
-import java.time.Duration;
-import java.time.Instant;
-import java.util.Optional;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+import java.util.concurrent.Executor;
+import org.apache.commons.io.IOUtils;
+import org.slf4j.Logger;
 
-public class hot {
-   private static final int a = -1;
-   private Optional<Instant> b = Optional.empty();
-   private long c;
-   private long d;
+public class hot implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final bpi<hos> b;
+   private final bsv c;
 
-   public void a() {
-      this.d = -1L;
-      if (this.b.isEmpty()) {
-         this.b = Optional.of(Instant.now());
-      }
+   public hot(FileChannel $$0, Executor $$1) {
+      this.b = new bpi<>(hos.a, $$0);
+      this.c = new bsv($$1, "telemetry-event-log");
    }
 
-   public void a(long $$0) {
-      if (this.d != -1L) {
-         this.c = this.c + Math.max(0L, $$0 - this.d);
-      }
-
-      this.d = $$0;
+   public hou a() {
+      return $$0 -> this.c.a_(() -> {
+            try {
+               this.b.a($$0);
+            } catch (IOException var3) {
+               a.error("Failed to write telemetry event to log", var3);
+            }
+         });
    }
 
-   private int a(Instant $$0) {
-      Duration $$1 = Duration.between($$0, Instant.now());
-      return (int)$$1.toSeconds();
-   }
-
-   public void a(hoi $$0) {
-      this.b.ifPresent($$1 -> $$0.send(hoj.e, $$1x -> {
-            $$1x.a(hol.p, this.a($$1));
-            $$1x.a(hol.q, (int)this.c);
-         }));
+   @Override
+   public void close() {
+      this.c.a_(() -> IOUtils.closeQuietly(this.b));
+      this.c.close();
    }
 }

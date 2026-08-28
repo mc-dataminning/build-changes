@@ -1,54 +1,22 @@
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.OptionalDynamic;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.format.SignStyle;
+import java.time.temporal.ChronoField;
 
 public class eyx {
-   private final int a;
-   private final long b;
-   private final String c;
-   private final eyn d;
-   private final boolean e;
-
-   private eyx(int $$0, long $$1, String $$2, int $$3, String $$4, boolean $$5) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = new eyn($$3, $$4);
-      this.e = $$5;
-   }
-
-   public static eyx a(Dynamic<?> $$0) {
-      int $$1 = $$0.get("version").asInt(0);
-      long $$2 = $$0.get("LastPlayed").asLong(0L);
-      OptionalDynamic<?> $$3 = $$0.get("Version");
-      return $$3.result().isPresent()
-         ? new eyx(
-            $$1,
-            $$2,
-            $$3.get("Name").asString(ab.b().c()),
-            $$3.get("Id").asInt(ab.b().d().c()),
-            $$3.get("Series").asString(eyn.a),
-            $$3.get("Snapshot").asBoolean(!ab.b().g())
-         )
-         : new eyx($$1, $$2, "", 0, eyn.a, false);
-   }
-
-   public int a() {
-      return this.a;
-   }
-
-   public long b() {
-      return this.b;
-   }
-
-   public String c() {
-      return this.c;
-   }
-
-   public eyn d() {
-      return this.d;
-   }
-
-   public boolean e() {
-      return this.e;
+   public static DateTimeFormatter a() {
+      return new DateTimeFormatterBuilder()
+         .appendValue(ChronoField.YEAR, 4, 10, SignStyle.EXCEEDS_PAD)
+         .appendLiteral('-')
+         .appendValue(ChronoField.MONTH_OF_YEAR, 2)
+         .appendLiteral('-')
+         .appendValue(ChronoField.DAY_OF_MONTH, 2)
+         .appendLiteral('_')
+         .appendValue(ChronoField.HOUR_OF_DAY, 2)
+         .appendLiteral('-')
+         .appendValue(ChronoField.MINUTE_OF_HOUR, 2)
+         .appendLiteral('-')
+         .appendValue(ChronoField.SECOND_OF_MINUTE, 2)
+         .toFormatter();
    }
 }

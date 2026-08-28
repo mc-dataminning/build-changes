@@ -1,181 +1,320 @@
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.blaze3d.systems.RenderSystem;
-import org.joml.Matrix3f;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalDouble;
 import org.joml.Matrix4f;
 import org.joml.Matrix4fStack;
-import org.joml.Vector3f;
 
-public class gqw implements AutoCloseable {
-   private static final alg b = alg.b("textures/environment/sun.png");
-   private static final alg c = alg.b("textures/environment/moon_phases.png");
-   public static final alg a = alg.b("textures/environment/end_sky.png");
-   private static final float d = 512.0F;
-   private final fjm e = fjm.a(fjo.c.h, fjh.e, this::a);
-   private final fjm f = fjm.a(fjo.c.g, fjh.e, $$0 -> this.a($$0, 16.0F));
-   private final fjm g = fjm.a(fjo.c.g, fjh.e, $$0 -> this.a($$0, -16.0F));
-   private final fjm h = fjm.a(fjo.c.h, fjh.j, this::b);
-
-   private void a(fjn $$0) {
-      azv $$1 = azv.a(10842L);
-      int $$2 = 1500;
-      float $$3 = 100.0F;
-
-      for (int $$4 = 0; $$4 < 1500; $$4++) {
-         float $$5 = $$1.i() * 2.0F - 1.0F;
-         float $$6 = $$1.i() * 2.0F - 1.0F;
-         float $$7 = $$1.i() * 2.0F - 1.0F;
-         float $$8 = 0.15F + $$1.i() * 0.1F;
-         float $$9 = azm.k($$5, $$6, $$7);
-         if (!($$9 <= 0.010000001F) && !($$9 >= 1.0F)) {
-            Vector3f $$10 = new Vector3f($$5, $$6, $$7).normalize(100.0F);
-            float $$11 = (float)($$1.j() * (float) Math.PI * 2.0);
-            Matrix3f $$12 = new Matrix3f().rotateTowards(new Vector3f($$10).negate(), new Vector3f(0.0F, 1.0F, 0.0F)).rotateZ(-$$11);
-            $$0.a(new Vector3f($$8, -$$8, 0.0F).mul($$12).add($$10));
-            $$0.a(new Vector3f($$8, $$8, 0.0F).mul($$12).add($$10));
-            $$0.a(new Vector3f(-$$8, $$8, 0.0F).mul($$12).add($$10));
-            $$0.a(new Vector3f(-$$8, -$$8, 0.0F).mul($$12).add($$10));
-         }
+public abstract class gqw {
+   public static final double a = 8.0;
+   protected final String b;
+   private final Runnable A;
+   private final Runnable B;
+   protected static final gqw.j c = new gqw.j(hjj.c, bas.b, true);
+   protected static final gqw.j d = new gqw.j(hjj.c, bas.b, false);
+   protected static final gqw.b e = new gqw.b();
+   protected static final gqw.k f = new gqw.k("default_texturing", () -> {
+   }, () -> {
+   });
+   protected static final gqw.k g = new gqw.k("glint_texturing", () -> a(8.0F), () -> RenderSystem.resetTextureMatrix());
+   protected static final gqw.k h = new gqw.k("entity_glint_texturing", () -> a(0.16F), () -> RenderSystem.resetTextureMatrix());
+   protected static final gqw.d i = new gqw.d(true);
+   protected static final gqw.d j = new gqw.d(false);
+   protected static final gqw.i k = new gqw.i(true);
+   protected static final gqw.i l = new gqw.i(false);
+   protected static final gqw.c m = new gqw.c("no_layering", () -> {
+   }, () -> {
+   });
+   protected static final gqw.c n = new gqw.c("polygon_offset_layering", () -> {
+      RenderSystem.polygonOffset(-1.0F, -10.0F);
+      RenderSystem.enablePolygonOffset();
+   }, () -> {
+      RenderSystem.polygonOffset(0.0F, 0.0F);
+      RenderSystem.disablePolygonOffset();
+   });
+   protected static final gqw.c o = new gqw.c("view_offset_z_layering", () -> {
+      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
+      $$0.pushMatrix();
+      RenderSystem.getProjectionType().a($$0, 1.0F);
+   }, () -> {
+      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
+      $$0.popMatrix();
+   });
+   protected static final gqw.c p = new gqw.c("view_offset_z_layering_forward", () -> {
+      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
+      $$0.pushMatrix();
+      RenderSystem.getProjectionType().a($$0, -1.0F);
+   }, () -> {
+      Matrix4fStack $$0 = RenderSystem.getModelViewStack();
+      $$0.popMatrix();
+   });
+   protected static final gqw.c q = new gqw.c("world_border_layering", () -> {
+      RenderSystem.polygonOffset(-3.0F, -3.0F);
+      RenderSystem.enablePolygonOffset();
+   }, () -> {
+      RenderSystem.polygonOffset(0.0F, 0.0F);
+      RenderSystem.disablePolygonOffset();
+   });
+   protected static final gqw.h r = new gqw.h("main_target", () -> fpo.Q().h().a(false), () -> {
+   });
+   protected static final gqw.h s = new gqw.h("light_texture_target", () -> fpo.Q().j.l().a().a(true), () -> fpo.Q().h().a(true));
+   protected static final gqw.h t = new gqw.h("outline_target", () -> {
+      fie $$0 = fpo.Q().f.p();
+      if ($$0 != null) {
+         $$0.a(false);
+      } else {
+         fpo.Q().h().a(false);
       }
-   }
-
-   private void a(fjn $$0, float $$1) {
-      float $$2 = Math.signum($$1) * 512.0F;
-      $$0.a(0.0F, $$1, 0.0F);
-
-      for (int $$3 = -180; $$3 <= 180; $$3 += 45) {
-         $$0.a($$2 * azm.b((float)$$3 * (float) (Math.PI / 180.0)), $$1, 512.0F * azm.a((float)$$3 * (float) (Math.PI / 180.0)));
+   }, () -> fpo.Q().h().a(false));
+   protected static final gqw.h u = new gqw.h("translucent_target", () -> {
+      fie $$0 = fpo.Q().f.q();
+      if ($$0 != null) {
+         $$0.a(false);
+      } else {
+         fpo.Q().h().a(false);
       }
-   }
-
-   public void a(float $$0, float $$1, float $$2) {
-      RenderSystem.setShaderColor($$0, $$1, $$2, 1.0F);
-      this.f.a(gqk.H());
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-   }
-
-   public void a(fjj $$0) {
-      RenderSystem.setShaderColor(0.0F, 0.0F, 0.0F, 1.0F);
-      $$0.a();
-      $$0.a(0.0F, 12.0F, 0.0F);
-      this.g.a(gqk.H());
-      $$0.b();
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-   }
-
-   public void a(fjj $$0, gqa.a $$1, float $$2, int $$3, float $$4, float $$5, gpo $$6) {
-      $$0.a();
-      $$0.a(a.d.rotationDegrees(-90.0F));
-      $$0.a(a.b.rotationDegrees($$2 * 360.0F));
-      this.a($$4, $$1, $$0);
-      this.a($$3, $$4, $$1, $$0);
-      $$1.b();
-      if ($$5 > 0.0F) {
-         this.a($$6, $$5, $$0);
+   }, () -> fpo.Q().h().a(false));
+   protected static final gqw.h v = new gqw.h("particles_target", () -> {
+      fie $$0 = fpo.Q().f.s();
+      if ($$0 != null) {
+         $$0.a(false);
+      } else {
+         fpo.Q().h().a(false);
       }
-
-      $$0.b();
-   }
-
-   private void a(float $$0, gqa $$1, fjj $$2) {
-      float $$3 = 30.0F;
-      float $$4 = 100.0F;
-      fjn $$5 = $$1.getBuffer(gqk.C(b));
-      int $$6 = axw.a($$0);
-      Matrix4f $$7 = $$2.c().a();
-      $$5.a($$7, -30.0F, 100.0F, -30.0F).a(0.0F, 0.0F).a($$6);
-      $$5.a($$7, 30.0F, 100.0F, -30.0F).a(1.0F, 0.0F).a($$6);
-      $$5.a($$7, 30.0F, 100.0F, 30.0F).a(1.0F, 1.0F).a($$6);
-      $$5.a($$7, -30.0F, 100.0F, 30.0F).a(0.0F, 1.0F).a($$6);
-   }
-
-   private void a(int $$0, float $$1, gqa $$2, fjj $$3) {
-      float $$4 = 20.0F;
-      int $$5 = $$0 % 4;
-      int $$6 = $$0 / 4 % 2;
-      float $$7 = (float)($$5 + 0) / 4.0F;
-      float $$8 = (float)($$6 + 0) / 2.0F;
-      float $$9 = (float)($$5 + 1) / 4.0F;
-      float $$10 = (float)($$6 + 1) / 2.0F;
-      float $$11 = 100.0F;
-      fjn $$12 = $$2.getBuffer(gqk.C(c));
-      int $$13 = axw.a($$1);
-      Matrix4f $$14 = $$3.c().a();
-      $$12.a($$14, -20.0F, -100.0F, 20.0F).a($$9, $$10).a($$13);
-      $$12.a($$14, 20.0F, -100.0F, 20.0F).a($$7, $$10).a($$13);
-      $$12.a($$14, 20.0F, -100.0F, -20.0F).a($$7, $$8).a($$13);
-      $$12.a($$14, -20.0F, -100.0F, -20.0F).a($$9, $$8).a($$13);
-   }
-
-   private void a(gpo $$0, float $$1, fjj $$2) {
-      Matrix4fStack $$3 = RenderSystem.getModelViewStack();
-      $$3.pushMatrix();
-      $$3.mul($$2.c().a());
-      RenderSystem.setShaderColor($$1, $$1, $$1, $$1);
-      RenderSystem.setShaderFog(gpo.a);
-      this.e.a(gqk.K());
-      RenderSystem.setShaderFog($$0);
-      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-      $$3.popMatrix();
-   }
-
-   public void a(fjj $$0, gqa.a $$1, float $$2, int $$3) {
-      $$0.a();
-      $$0.a(a.b.rotationDegrees(90.0F));
-      float $$4 = azm.a($$2) < 0.0F ? 180.0F : 0.0F;
-      $$0.a(a.f.rotationDegrees($$4));
-      $$0.a(a.f.rotationDegrees(90.0F));
-      Matrix4f $$5 = $$0.c().a();
-      fjn $$6 = $$1.getBuffer(gqk.J());
-      float $$7 = axw.i($$3);
-      $$6.a($$5, 0.0F, 100.0F, 0.0F).a($$3);
-      int $$8 = axw.g($$3);
-      int $$9 = 16;
-
-      for (int $$10 = 0; $$10 <= 16; $$10++) {
-         float $$11 = (float)$$10 * (float) (Math.PI * 2) / 16.0F;
-         float $$12 = azm.a($$11);
-         float $$13 = azm.b($$11);
-         $$6.a($$5, $$12 * 120.0F, $$13 * 120.0F, -$$13 * 40.0F * $$7).a($$8);
+   }, () -> fpo.Q().h().a(false));
+   protected static final gqw.h w = new gqw.h("weather_target", () -> {
+      fie $$0 = fpo.Q().f.t();
+      if ($$0 != null) {
+         $$0.a(false);
+      } else {
+         fpo.Q().h().a(false);
       }
-
-      $$0.b();
-   }
-
-   private void b(fjn $$0) {
-      for (int $$1 = 0; $$1 < 6; $$1++) {
-         Matrix4f $$2 = new Matrix4f();
-         switch ($$1) {
-            case 1:
-               $$2.rotationX((float) (Math.PI / 2));
-               break;
-            case 2:
-               $$2.rotationX((float) (-Math.PI / 2));
-               break;
-            case 3:
-               $$2.rotationX((float) Math.PI);
-               break;
-            case 4:
-               $$2.rotationZ((float) (Math.PI / 2));
-               break;
-            case 5:
-               $$2.rotationZ((float) (-Math.PI / 2));
-         }
-
-         $$0.a($$2, -100.0F, -100.0F, -100.0F).a(0.0F, 0.0F).a(-14145496);
-         $$0.a($$2, -100.0F, -100.0F, 100.0F).a(0.0F, 16.0F).a(-14145496);
-         $$0.a($$2, 100.0F, -100.0F, 100.0F).a(16.0F, 16.0F).a(-14145496);
-         $$0.a($$2, 100.0F, -100.0F, -100.0F).a(16.0F, 0.0F).a(-14145496);
+   }, () -> fpo.Q().h().a(false));
+   protected static final gqw.h x = new gqw.h("clouds_target", () -> {
+      fie $$0 = fpo.Q().f.u();
+      if ($$0 != null) {
+         $$0.a(false);
+      } else {
+         fpo.Q().h().a(false);
       }
+   }, () -> fpo.Q().h().a(false));
+   protected static final gqw.h y = new gqw.h("item_entity_target", () -> {
+      fie $$0 = fpo.Q().f.r();
+      if ($$0 != null) {
+         $$0.a(false);
+      } else {
+         fpo.Q().h().a(false);
+      }
+   }, () -> fpo.Q().h().a(false));
+   protected static final gqw.e z = new gqw.e(OptionalDouble.of(1.0));
+
+   public gqw(String $$0, Runnable $$1, Runnable $$2) {
+      this.b = $$0;
+      this.A = $$1;
+      this.B = $$2;
    }
 
    public void a() {
-      this.h.a(gqk.I());
+      this.A.run();
+   }
+
+   public void b() {
+      this.B.run();
    }
 
    @Override
-   public void close() {
-      this.e.close();
-      this.f.close();
-      this.g.close();
-      this.h.close();
+   public String toString() {
+      return this.b;
+   }
+
+   private static void a(float $$0) {
+      long $$1 = (long)((double)ag.c() * fpo.Q().n.ap().c() * 8.0);
+      float $$2 = (float)($$1 % 110000L) / 110000.0F;
+      float $$3 = (float)($$1 % 30000L) / 30000.0F;
+      Matrix4f $$4 = new Matrix4f().translation(-$$2, $$3, 0.0F);
+      $$4.rotateZ((float) (Math.PI / 18)).scale($$0);
+      RenderSystem.setTextureMatrix($$4);
+   }
+
+   static class a extends gqw {
+      private final boolean A;
+
+      public a(String $$0, Runnable $$1, Runnable $$2, boolean $$3) {
+         super($$0, $$1, $$2);
+         this.A = $$3;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + this.A + "]";
+      }
+   }
+
+   protected static class b extends gqw {
+      public b(Runnable $$0, Runnable $$1) {
+         super("texture", $$0, $$1);
+      }
+
+      b() {
+         super("texture", () -> {
+         }, () -> {
+         });
+      }
+
+      protected Optional<alg> c() {
+         return Optional.empty();
+      }
+   }
+
+   protected static class c extends gqw {
+      public c(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class d extends gqw.a {
+      public d(boolean $$0) {
+         super("lightmap", () -> {
+            if ($$0) {
+               fpo.Q().j.l().d();
+            }
+         }, () -> {
+            if ($$0) {
+               fpo.Q().j.l().c();
+            }
+         }, $$0);
+      }
+   }
+
+   protected static class e extends gqw {
+      private final OptionalDouble A;
+
+      public e(OptionalDouble $$0) {
+         super("line_width", () -> {
+            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
+               if ($$0.isPresent()) {
+                  RenderSystem.lineWidth((float)$$0.getAsDouble());
+               } else {
+                  RenderSystem.lineWidth(Math.max(2.5F, (float)fpo.Q().aO().k() / 1920.0F * 2.5F));
+               }
+            }
+         }, () -> {
+            if (!Objects.equals($$0, OptionalDouble.of(1.0))) {
+               RenderSystem.lineWidth(1.0F);
+            }
+         });
+         this.A = $$0;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + (this.A.isPresent() ? this.A.getAsDouble() : "window_scale") + "]";
+      }
+   }
+
+   protected static class f extends gqw.b {
+      private final Optional<alg> A;
+
+      f(List<gqw.f.b> $$0) {
+         super(() -> {
+            for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+               gqw.f.b $$2 = $$0.get($$1);
+               hjm $$3 = fpo.Q().aa();
+               hiv $$4 = $$3.b($$2.a);
+               $$4.a($$2.b, $$2.c);
+               RenderSystem.setShaderTexture($$1, $$4.d());
+            }
+         }, () -> {
+         });
+         this.A = $$0.isEmpty() ? Optional.empty() : Optional.of($$0.getFirst().a);
+      }
+
+      @Override
+      protected Optional<alg> c() {
+         return this.A;
+      }
+
+      public static gqw.f.a d() {
+         return new gqw.f.a();
+      }
+
+      public static final class a {
+         private final Builder<gqw.f.b> a = new Builder();
+
+         public gqw.f.a a(alg $$0, boolean $$1, boolean $$2) {
+            this.a.add(new gqw.f.b($$0, $$1, $$2));
+            return this;
+         }
+
+         public gqw.f a() {
+            return new gqw.f(this.a.build());
+         }
+      }
+
+      static record b(alg a, boolean b, boolean c) {
+      }
+   }
+
+   protected static final class g extends gqw.k {
+      public g(float $$0, float $$1) {
+         super("offset_texturing", () -> RenderSystem.setTextureMatrix(new Matrix4f().translation($$0, $$1, 0.0F)), () -> RenderSystem.resetTextureMatrix());
+      }
+   }
+
+   protected static class h extends gqw {
+      public h(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
+   }
+
+   protected static class i extends gqw.a {
+      public i(boolean $$0) {
+         super("overlay", () -> {
+            if ($$0) {
+               fpo.Q().j.m().a();
+            }
+         }, () -> {
+            if ($$0) {
+               fpo.Q().j.m().b();
+            }
+         }, $$0);
+      }
+   }
+
+   protected static class j extends gqw.b {
+      private final Optional<alg> A;
+      private final bas B;
+      private final boolean C;
+
+      public j(alg $$0, bas $$1, boolean $$2) {
+         super(() -> {
+            hjm $$3 = fpo.Q().aa();
+            hiv $$4 = $$3.b($$0);
+            $$4.a($$1, $$2);
+            RenderSystem.setShaderTexture(0, $$4.d());
+         }, () -> {
+         });
+         this.A = Optional.of($$0);
+         this.B = $$1;
+         this.C = $$2;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + "[" + this.A + "(blur=" + this.B + ", mipmap=" + this.C + ")]";
+      }
+
+      @Override
+      protected Optional<alg> c() {
+         return this.A;
+      }
+   }
+
+   protected static class k extends gqw {
+      public k(String $$0, Runnable $$1, Runnable $$2) {
+         super($$0, $$1, $$2);
+      }
    }
 }

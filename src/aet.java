@@ -4,7 +4,7 @@ public class aet implements zf<abu> {
    private final double c;
    private final long d;
 
-   public aet(ebz $$0) {
+   public aet(ecg $$0) {
       this.b = $$0.i();
       this.c = $$0.k();
       this.d = $$0.j();

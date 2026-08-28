@@ -1,72 +1,69 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.Collection;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class eoe extends eol {
-   public static final MapCodec<eoe> a = RecordCodecBuilder.mapCodec(
+public class eoe extends eny {
+   public static final MapCodec<eoe> b = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 16).fieldOf("exclusion_radius_xz").forGetter($$0x -> $$0x.c),
-               Codec.intRange(0, 16).fieldOf("exclusion_radius_y").forGetter($$0x -> $$0x.d),
-               enr.a.fieldOf("block_provider").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 16).fieldOf("required_empty_blocks").forGetter($$0x -> $$0x.f),
-               ayu.b(ja.g.listOf()).fieldOf("directions").forGetter($$0x -> $$0x.g)
+               eny.a.fieldOf("source").forGetter($$0x -> $$0x.c),
+               Codec.STRING.fieldOf("property").forGetter($$0x -> $$0x.d),
+               btl.c.fieldOf("values").forGetter($$0x -> $$0x.f)
             )
             .apply($$0, eoe::new)
    );
-   protected final float b;
-   protected final int c;
-   protected final int d;
-   protected final enr e;
-   protected final int f;
-   protected final List<ja> g;
+   private final eny c;
+   private final String d;
+   @Nullable
+   private ebo e;
+   private final btl f;
 
-   public eoe(float $$0, int $$1, int $$2, enr $$3, int $$4, List<ja> $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-   }
+   public eoe(eny $$0, ebo $$1, btl $$2) {
+      this.c = $$0;
+      this.e = $$1;
+      this.d = $$1.f();
+      this.f = $$2;
+      Collection<Integer> $$3 = $$1.a();
 
-   @Override
-   public void a(eol.a $$0) {
-      Set<iu> $$1 = new HashSet<>();
-      azv $$2 = $$0.b();
-
-      for (iu $$3 : af.a($$0.d(), $$2)) {
-         ja $$4 = af.a(this.g, $$2);
-         iu $$5 = $$3.a($$4);
-         if (!$$1.contains($$5) && $$2.i() < this.b && this.a($$0, $$3, $$4)) {
-            iu $$6 = $$5.b(-this.c, -this.d, -this.c);
-            iu $$7 = $$5.b(this.c, this.d, this.c);
-
-            for (iu $$8 : iu.c($$6, $$7)) {
-               $$1.add($$8.j());
-            }
-
-            $$0.a($$5, this.e.a($$2, $$5));
+      for (int $$4 = $$2.a(); $$4 <= $$2.b(); $$4++) {
+         if (!$$3.contains($$4)) {
+            throw new IllegalArgumentException("Property value out of range: " + $$1.f() + ": " + $$4);
          }
       }
    }
 
-   private boolean a(eol.a $$0, iu $$1, ja $$2) {
-      for (int $$3 = 1; $$3 <= this.f; $$3++) {
-         iu $$4 = $$1.a($$2, $$3);
-         if (!$$0.a($$4)) {
-            return false;
-         }
-      }
-
-      return true;
+   public eoe(eny $$0, String $$1, btl $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.f = $$2;
    }
 
    @Override
-   protected eom<?> a() {
-      return eom.h;
+   protected enz<?> a() {
+      return enz.g;
+   }
+
+   @Override
+   public eao a(azv $$0, iv $$1) {
+      eao $$2 = this.c.a($$0, $$1);
+      if (this.e == null || !$$2.b(this.e)) {
+         ebo $$3 = a($$2, this.d);
+         if ($$3 == null) {
+            return $$2;
+         }
+
+         this.e = $$3;
+      }
+
+      return $$2.b(this.e, Integer.valueOf(this.f.a($$0)));
+   }
+
+   @Nullable
+   private static ebo a(eao $$0, String $$1) {
+      Collection<ebr<?>> $$2 = $$0.F();
+      Optional<ebo> $$3 = $$2.stream().filter($$1x -> $$1x.f().equals($$1)).filter($$0x -> $$0x instanceof ebo).map($$0x -> (ebo)$$0x).findAny();
+      return $$3.orElse(null);
    }
 }

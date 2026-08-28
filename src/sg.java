@@ -4,18 +4,18 @@ import java.util.function.Consumer;
 
 public class sg extends sr {
    public static final MapCodec<sg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(alf.a(mg.ay).fieldOf("function").forGetter(sg::q), tk.a.forGetter(sr::n)).apply($$0, sg::new)
+      $$0 -> $$0.group(alf.a(mh.ay).fieldOf("function").forGetter(sg::q), tk.a.forGetter(sr::n)).apply($$0, sg::new)
    );
    private final alf<Consumer<sp>> c;
 
-   public sg(alf<Consumer<sp>> $$0, tk<je<tl>> $$1) {
+   public sg(alf<Consumer<sp>> $$0, tk<jf<tl>> $$1) {
       super($$1);
       this.c = $$0;
    }
 
    @Override
    public void a(sp $$0) {
-      $$0.a().F_().c(this.c).map(je.c::a).orElseThrow(() -> new IllegalStateException("Trying to access missing test function: " + this.c.a())).accept($$0);
+      $$0.a().F_().c(this.c).map(jf.c::a).orElseThrow(() -> new IllegalStateException("Trying to access missing test function: " + this.c.a())).accept($$0);
    }
 
    private alf<Consumer<sp>> q() {

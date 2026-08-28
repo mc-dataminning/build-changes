@@ -1,25 +1,22 @@
-public class gxg extends gwg<cnb, hcn> {
-   private static final alg a = alg.b("textures/entity/lead_knot.png");
-   private final ggq g;
+public class gxg extends gvn<clh, hdl, ggs> {
+   private static final alg a = alg.b("textures/entity/goat/goat.png");
 
-   public gxg(gwh.a $$0) {
-      super($$0);
-      this.g = new ggq($$0.a(gjb.bD));
+   public gxg(gwt.a $$0) {
+      super($$0, new ggs($$0.a(gjn.bh)), new ggs($$0.a(gjn.bi)), 0.7F);
    }
 
-   @Override
-   public void a(hcn $$0, fjj $$1, gqa $$2, int $$3) {
-      $$1.a();
-      $$1.b(-1.0F, -1.0F, 1.0F);
-      this.g.a($$0);
-      fjn $$4 = $$2.getBuffer(this.g.a(a));
-      this.g.a($$1, $$4, $$3, hin.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   public alg a(hdl $$0) {
+      return a;
    }
 
-   @Override
-   public hcn d() {
-      return new hcn();
+   public hdl b() {
+      return new hdl();
+   }
+
+   public void a(clh $$0, hdl $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gt();
+      $$1.b = $$0.gu();
+      $$1.c = $$0.gG();
    }
 }

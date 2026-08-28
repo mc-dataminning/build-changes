@@ -7,7 +7,7 @@ public record yi(alg d) implements ya {
    public static final ya.a<yi> b = new ya.a<>(a, "storage");
 
    @Override
-   public Stream<tz> a(ei $$0) {
+   public Stream<tz> a(ej $$0) {
       tz $$1 = $$0.l().aK().a(this.d);
       return Stream.of($$1);
    }

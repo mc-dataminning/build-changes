@@ -1,169 +1,125 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.google.gson.JsonSyntaxException;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.io.IOException;
-import java.io.Reader;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.Instant;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class gpr extends avi<gpr.a> {
-   private static final Logger a = LogUtils.getLogger();
-   private static final alg b = alg.b("gpu_warnlist.json");
-   private ImmutableMap<String, String> c = ImmutableMap.of();
-   private boolean d;
-   private boolean e;
-   private boolean f;
-
-   public boolean a() {
-      return !this.c.isEmpty();
-   }
-
-   public boolean b() {
-      return this.a() && !this.e;
-   }
-
-   public void d() {
-      this.d = true;
-   }
-
-   public void e() {
-      this.e = true;
-   }
-
-   public void f() {
-      this.e = true;
-      this.f = true;
-   }
-
-   public boolean g() {
-      return this.d && !this.e;
-   }
-
-   public boolean h() {
-      return this.f;
-   }
-
-   public void i() {
-      this.d = false;
-      this.e = false;
-      this.f = false;
-   }
-
-   @Nullable
-   public String j() {
-      return (String)this.c.get("renderer");
-   }
-
-   @Nullable
-   public String k() {
-      return (String)this.c.get("version");
-   }
-
-   @Nullable
-   public String l() {
-      return (String)this.c.get("vendor");
-   }
-
-   @Nullable
-   public String m() {
-      StringBuilder $$0 = new StringBuilder();
-      this.c.forEach(($$1, $$2) -> $$0.append($$1).append(": ").append($$2));
-      return $$0.length() == 0 ? null : $$0.toString();
-   }
-
-   protected gpr.a a(avd $$0, bqo $$1) {
-      List<Pattern> $$2 = Lists.newArrayList();
-      List<Pattern> $$3 = Lists.newArrayList();
-      List<Pattern> $$4 = Lists.newArrayList();
-      JsonObject $$5 = c($$0, $$1);
-      if ($$5 != null) {
-         try (bqt $$6 = $$1.d("compile_regex")) {
-            a($$5.getAsJsonArray("renderer"), $$2);
-            a($$5.getAsJsonArray("version"), $$3);
-            a($$5.getAsJsonArray("vendor"), $$4);
-         }
+public class gpr {
+   private static final gpr a = new gpr("") {
+      @Override
+      public void a(fpo $$0) {
       }
 
-      return new gpr.a($$2, $$3, $$4);
-   }
-
-   protected void a(gpr.a $$0, avd $$1, bqo $$2) {
-      this.c = $$0.a();
-   }
-
-   private static void a(JsonArray $$0, List<Pattern> $$1) {
-      $$0.forEach($$1x -> $$1.add(Pattern.compile($$1x.getAsString(), 2)));
-   }
-
+      @Override
+      public void a(gpr.c $$0, String $$1, String $$2) {
+      }
+   };
+   private static final Logger b = LogUtils.getLogger();
+   private static final Gson c = new GsonBuilder().create();
+   private final Path d;
    @Nullable
-   private static JsonObject c(avd $$0, bqo $$1) {
-      try {
-         JsonObject var4;
-         try (
-            bqt $$2 = $$1.d("parse_json");
-            Reader $$3 = $$0.openAsReader(b);
-         ) {
-            var4 = JsonParser.parseReader($$3).getAsJsonObject();
-         }
+   private gpr.b e;
 
-         return var4;
-      } catch (JsonSyntaxException | IOException var10) {
-         a.warn("Failed to load GPU warnlist");
-         return null;
-      }
+   gpr(String $$0) {
+      this.d = fpo.Q().q.toPath().resolve($$0);
    }
 
-   protected static final class a {
-      private final List<Pattern> a;
-      private final List<Pattern> b;
-      private final List<Pattern> c;
+   public static gpr a(@Nullable String $$0) {
+      return $$0 == null ? a : new gpr($$0);
+   }
 
-      a(List<Pattern> $$0, List<Pattern> $$1, List<Pattern> $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
+   public void a(gpr.c $$0, String $$1, String $$2) {
+      this.e = new gpr.b($$0, $$1, $$2);
+   }
 
-      private static String a(List<Pattern> $$0, String $$1) {
-         List<String> $$2 = Lists.newArrayList();
-
-         for (Pattern $$3 : $$0) {
-            Matcher $$4 = $$3.matcher($$1);
-
-            while ($$4.find()) {
-               $$2.add($$4.group());
+   public void a(fpo $$0) {
+      if ($$0.r != null && this.e != null) {
+         ag.i().execute(() -> {
+            try {
+               Files.deleteIfExists(this.d);
+            } catch (IOException var3) {
+               b.error("Failed to delete quickplay log file {}", this.d, var3);
             }
-         }
 
-         return String.join(", ", $$2);
+            gpr.a $$2 = new gpr.a(this.e, Instant.now(), $$0.r.i());
+            Codec.list(gpr.a.a).encodeStart(JsonOps.INSTANCE, List.of($$2)).resultOrPartial(ag.a("Quick Play: ", b::error)).ifPresent($$0xx -> {
+               try {
+                  Files.createDirectories(this.d.getParent());
+                  Files.writeString(this.d, c.toJson($$0xx));
+               } catch (IOException var3x) {
+                  b.error("Failed to write to quickplay log file {}", this.d, var3x);
+               }
+            });
+         });
+      } else {
+         b.error("Failed to log session for quickplay. Missing world data or gamemode");
+      }
+   }
+
+   static record a(gpr.b b, Instant c, dje d) {
+      public static final Codec<gpr.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(gpr.b.a.forGetter(gpr.a::a), ayu.q.fieldOf("lastPlayedTime").forGetter(gpr.a::b), dje.f.fieldOf("gamemode").forGetter(gpr.a::c))
+               .apply($$0, gpr.a::new)
+      );
+
+      public gpr.b a() {
+         return this.b;
       }
 
-      ImmutableMap<String, String> a() {
-         Builder<String, String> $$0 = new Builder();
-         String $$1 = a(this.a, fid.c());
-         if (!$$1.isEmpty()) {
-            $$0.put("renderer", $$1);
-         }
+      public Instant b() {
+         return this.c;
+      }
 
-         String $$2 = a(this.b, fid.d());
-         if (!$$2.isEmpty()) {
-            $$0.put("version", $$2);
-         }
+      public dje c() {
+         return this.d;
+      }
+   }
 
-         String $$3 = a(this.c, fid.a());
-         if (!$$3.isEmpty()) {
-            $$0.put("vendor", $$3);
-         }
+   static record b(gpr.c b, String c, String d) {
+      public static final MapCodec<gpr.b> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  gpr.c.d.fieldOf("type").forGetter(gpr.b::a), ayu.s.fieldOf("id").forGetter(gpr.b::b), Codec.STRING.fieldOf("name").forGetter(gpr.b::c)
+               )
+               .apply($$0, gpr.b::new)
+      );
 
-         return $$0.build();
+      public gpr.c a() {
+         return this.b;
+      }
+
+      public String b() {
+         return this.c;
+      }
+
+      public String c() {
+         return this.d;
+      }
+   }
+
+   public static enum c implements bak {
+      a("singleplayer"),
+      b("multiplayer"),
+      c("realms");
+
+      static final Codec<gpr.c> d = bak.a(gpr.c::values);
+      private final String e;
+
+      private c(final String $$0) {
+         this.e = $$0;
+      }
+
+      @Override
+      public String c() {
+         return this.e;
       }
    }
 }

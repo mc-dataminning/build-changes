@@ -1,15 +1,22 @@
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public abstract class eva {
-   @Nullable
-   public evd.d a(djd $$0, iu $$1, iu $$2, evd.d $$3, evd.d $$4, euz $$5) {
-      return $$4;
+public class eva extends evh {
+   public final axr<dmm> a;
+   public static final MapCodec<eva> b = axr.b(mh.i).xmap(eva::new, $$0 -> $$0.a).fieldOf("value");
+
+   public eva(axr<dmm> $$0) {
+      this.a = $$0;
    }
 
-   protected abstract evc<?> a();
+   @Nullable
+   @Override
+   public evk.d a(djk $$0, iv $$1, iv $$2, evk.d $$3, evk.d $$4, evg $$5) {
+      return ejt.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
+   }
 
-   public List<evd.d> a(djr $$0, iu $$1, iu $$2, List<evd.d> $$3, List<evd.d> $$4, euz $$5) {
-      return $$4;
+   @Override
+   protected evj<?> a() {
+      return evj.n;
    }
 }

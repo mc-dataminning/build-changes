@@ -1,91 +1,76 @@
-public class gno extends goi {
-   private final double a;
-   private final double b;
-   private final double F;
+public class gno extends gnu {
+   private static final int a = 3;
+   private final bwi b;
+   private final bwi D;
+   private int E;
+   private final gwr F;
+   private double G;
+   private double H;
+   private double I;
+   private double J;
+   private double K;
+   private double L;
 
-   protected gno(gjz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.g = $$1;
-      this.h = $$2;
-      this.i = $$3;
-      this.a = this.g;
-      this.b = this.h;
-      this.F = this.i;
-      this.D = 0.1F * (this.r.i() * 0.2F + 0.5F);
-      float $$7 = this.r.i() * 0.6F + 0.4F;
-      this.v = $$7 * 0.9F;
-      this.w = $$7 * 0.3F;
-      this.x = $$7;
-      this.t = (int)(Math.random() * 10.0) + 40;
+   public gno(gwr $$0, gkl $$1, bwi $$2, bwi $$3) {
+      this($$0, $$1, $$2, $$3, $$2.dx());
+   }
+
+   private gno(gwr $$0, gkl $$1, bwi $$2, bwi $$3, fex $$4) {
+      super($$1, $$2.dz(), $$2.dB(), $$2.dF(), $$4.d, $$4.e, $$4.f);
+      this.b = this.a($$2);
+      this.D = $$3;
+      this.F = $$0;
+      this.c();
+      this.d();
+   }
+
+   private bwi a(bwi $$0) {
+      return (bwi)(!($$0 instanceof cno) ? $$0 : ((cno)$$0).v());
    }
 
    @Override
-   public gnm b() {
-      return gnm.b;
+   public gny b() {
+      return gny.d;
    }
 
    @Override
-   public void a(double $$0, double $$1, double $$2) {
-      this.a(this.n().d($$0, $$1, $$2));
-      this.l();
+   public void a(fjy $$0, gqm $$1, fow $$2, float $$3) {
+      float $$4 = ((float)this.E + $$3) / 3.0F;
+      $$4 *= $$4;
+      double $$5 = azm.d((double)$$3, this.J, this.G);
+      double $$6 = azm.d((double)$$3, this.K, this.H);
+      double $$7 = azm.d((double)$$3, this.L, this.I);
+      double $$8 = azm.d((double)$$4, this.b.dz(), $$5);
+      double $$9 = azm.d((double)$$4, this.b.dB(), $$6);
+      double $$10 = azm.d((double)$$4, this.b.dF(), $$7);
+      fex $$11 = $$2.b();
+      this.F.a(this.b, $$8 - $$11.a(), $$9 - $$11.b(), $$10 - $$11.c(), $$3, new fjy(), $$1, this.F.a(this.b, $$3));
    }
 
    @Override
-   public float b(float $$0) {
-      float $$1 = ((float)this.s + $$0) / (float)this.t;
-      $$1 = 1.0F - $$1;
-      $$1 *= $$1;
-      $$1 = 1.0F - $$1;
-      return this.D * $$1;
-   }
-
-   @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      float $$2 = (float)this.s / (float)this.t;
-      $$2 *= $$2;
-      $$2 *= $$2;
-      int $$3 = $$1 & 0xFF;
-      int $$4 = $$1 >> 16 & 0xFF;
-      $$4 += (int)($$2 * 15.0F * 16.0F);
-      if ($$4 > 240) {
-         $$4 = 240;
-      }
-
-      return $$3 | $$4 << 16;
+   public void a(fkc $$0, fow $$1, float $$2) {
    }
 
    @Override
    public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.s++ >= this.t) {
+      this.E++;
+      if (this.E == 3) {
          this.k();
-      } else {
-         float $$0 = (float)this.s / (float)this.t;
-         float var3 = -$$0 + $$0 * $$0 * 2.0F;
-         float var4 = 1.0F - var3;
-         this.g = this.a + this.j * (double)var4;
-         this.h = this.b + this.k * (double)var4 + (double)(1.0F - $$0);
-         this.i = this.F + this.l * (double)var4;
       }
+
+      this.d();
+      this.c();
    }
 
-   public static class a implements gnl<mb> {
-      private final god a;
+   private void c() {
+      this.G = this.D.dz();
+      this.H = (this.D.dB() + this.D.dD()) / 2.0;
+      this.I = this.D.dF();
+   }
 
-      public a(god $$0) {
-         this.a = $$0;
-      }
-
-      public gni a(mb $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gno $$8 = new gno($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
-      }
+   private void d() {
+      this.J = this.G;
+      this.K = this.H;
+      this.L = this.I;
    }
 }

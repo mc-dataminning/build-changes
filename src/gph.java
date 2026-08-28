@@ -1,21 +1,19 @@
 public class gph {
-   public static final dil a = dkd::a;
-   public static final dil b = ($$0, $$1, $$2) -> $$0.f();
-   public static final dil c = ($$0, $$1, $$2) -> $$0.i();
+   public crh a = crh.b;
+   protected few b = few.a;
 
-   private static int a(did $$0, iu $$1, dil $$2) {
-      return $$0.a($$1, $$2);
+   public void a() {
    }
 
-   public static int a(did $$0, iu $$1) {
-      return a($$0, $$1, a);
+   public few b() {
+      return this.b;
    }
 
-   public static int b(did $$0, iu $$1) {
-      return a($$0, $$1, b);
+   public boolean c() {
+      return this.b.k > 1.0E-5F;
    }
 
-   public static int c(did $$0, iu $$1) {
-      return a($$0, $$1, c);
+   public void d() {
+      this.a = new crh(this.a.a(), this.a.b(), this.a.c(), this.a.d(), true, this.a.f(), this.a.g());
    }
 }

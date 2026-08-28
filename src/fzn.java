@@ -1,24 +1,82 @@
-public class fzn extends fyq<cvv> {
-   private static final alg G = alg.b("container/grindstone/error");
-   private static final alg H = alg.b("textures/gui/container/grindstone.png");
+public class fzn extends fzb {
+   private final dxx u;
+   private ftc<dxx.a> v;
+   private ftc<Boolean> w;
+   private ftc<Boolean> x;
+   private dxx.a y = dxx.a.c;
+   private boolean z;
+   private boolean A;
 
-   public fzn(cvv $$0, crb $$1, wy $$2) {
-      super($$0, $$1, $$2);
+   public fzn(dxx $$0) {
+      this.u = $$0;
    }
 
    @Override
-   public void a(frv $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   dii m() {
+      return this.u.a();
    }
 
    @Override
-   protected void a(frv $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.n - this.s) / 2;
-      int $$5 = (this.o - this.u) / 2;
-      $$0.a(gqk::H, H, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      if ((this.z.b(0).h() || this.z.b(1).h()) && !this.z.b(2).h()) {
-         $$0.a(gqk::H, G, $$4 + 92, $$5 + 31, 28, 21);
-      }
+   int E() {
+      return 135;
+   }
+
+   @Override
+   protected void aO_() {
+      super.aO_();
+      this.v = this.c(ftc.<dxx.a>a($$0 -> {
+         return switch ($$0) {
+            case a -> wy.c("advMode.mode.sequence");
+            case b -> wy.c("advMode.mode.auto");
+            case c -> wy.c("advMode.mode.redstone");
+         };
+      }).a(dxx.a.values()).a().a(this.y).a(this.n / 2 - 50 - 100 - 4, 165, 100, 20, wy.c("advMode.mode"), ($$0, $$1) -> this.y = $$1));
+      this.w = this.c(
+         ftc.a(wy.c("advMode.mode.conditional"), wy.c("advMode.mode.unconditional"))
+            .a()
+            .a(this.z)
+            .a(this.n / 2 - 50, 165, 100, 20, wy.c("advMode.type"), ($$0, $$1) -> this.z = $$1)
+      );
+      this.x = this.c(
+         ftc.a(wy.c("advMode.mode.autoexec.bat"), wy.c("advMode.mode.redstoneTriggered"))
+            .a()
+            .a(this.A)
+            .a(this.n / 2 + 50 + 4, 165, 100, 20, wy.c("advMode.triggering"), ($$0, $$1) -> this.A = $$1)
+      );
+      this.f(false);
+   }
+
+   private void f(boolean $$0) {
+      this.c.j = $$0;
+      this.s.j = $$0;
+      this.v.j = $$0;
+      this.w.j = $$0;
+      this.x.j = $$0;
+   }
+
+   public void G() {
+      dii $$0 = this.u.a();
+      this.a.a($$0.m());
+      boolean $$1 = $$0.p();
+      this.y = this.u.s();
+      this.z = this.u.t();
+      this.A = this.u.d();
+      this.s.a($$1);
+      this.v.a(this.y);
+      this.w.a(this.z);
+      this.x.a(this.A);
+      this.c($$1);
+      this.f(true);
+   }
+
+   @Override
+   public void a(fpo $$0, int $$1, int $$2) {
+      super.a($$0, $$1, $$2);
+      this.f(true);
+   }
+
+   @Override
+   protected void a(dii $$0) {
+      this.m.L().b(new aih(iv.a((jp)$$0.g()), this.a.a(), this.y, $$0.p(), this.z, this.A));
    }
 }

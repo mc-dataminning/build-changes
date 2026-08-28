@@ -147,7 +147,7 @@ public class xv {
       return Objects.equals(this.c, $$0) ? this : a(new xv($$0, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, this.m), this.c, $$0);
    }
 
-   public xv a(@Nullable n $$0) {
+   public xv a(@Nullable o $$0) {
       return this.a($$0 != null ? xx.a($$0) : null);
    }
 
@@ -195,7 +195,7 @@ public class xv {
       return Objects.equals(this.m, $$0) ? this : a(new xv(this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, this.l, $$0), this.m, $$0);
    }
 
-   public xv b(n $$0) {
+   public xv b(o $$0) {
       xx $$1 = this.c;
       Boolean $$2 = this.e;
       Boolean $$3 = this.f;
@@ -227,7 +227,7 @@ public class xv {
       return new xv($$1, this.d, $$2, $$3, $$5, $$4, $$6, this.j, this.k, this.l, this.m);
    }
 
-   public xv c(n $$0) {
+   public xv c(o $$0) {
       xx $$1 = this.c;
       Boolean $$2 = this.e;
       Boolean $$3 = this.f;
@@ -264,7 +264,7 @@ public class xv {
       return new xv($$1, this.d, $$2, $$3, $$5, $$4, $$6, this.j, this.k, this.l, this.m);
    }
 
-   public xv a(n... $$0) {
+   public xv a(o... $$0) {
       xx $$1 = this.c;
       Boolean $$2 = this.e;
       Boolean $$3 = this.f;
@@ -272,7 +272,7 @@ public class xv {
       Boolean $$5 = this.g;
       Boolean $$6 = this.i;
 
-      for (n $$7 : $$0) {
+      for (o $$7 : $$0) {
          switch ($$7) {
             case q:
                $$6 = true;

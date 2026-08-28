@@ -1,40 +1,42 @@
-public class gnr extends goi {
-   private final god a;
+public class gnr extends gnu {
+   private final ghg a;
+   private final gqx b = gqx.j(gwm.a);
 
-   gnr(gjz $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, god $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.a = $$7;
-      this.d(1.5F);
-      this.n = false;
-      this.b($$7);
+   gnr(gkl $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
+      this.a = new ggt(fpo.Q().aS().a(gjn.aO));
+      this.u = 0.0F;
+      this.t = 30;
    }
 
    @Override
-   public int a(float $$0) {
-      return 240;
+   public gny b() {
+      return gny.d;
    }
 
    @Override
-   public gnm b() {
-      return gnm.c;
+   public void a(fjy $$0, gqm $$1, fow $$2, float $$3) {
+      float $$4 = ((float)this.s + $$3) / (float)this.t;
+      float $$5 = 0.05F + 0.5F * azm.a($$4 * (float) Math.PI);
+      int $$6 = axw.a($$5, 1.0F, 1.0F, 1.0F);
+      $$0.a();
+      $$0.a($$2.f());
+      $$0.a(a.b.rotationDegrees(60.0F - 150.0F * $$4));
+      float $$7 = 0.42553192F;
+      $$0.b(0.42553192F, -0.42553192F, -0.42553192F);
+      $$0.a(0.0F, -0.56F, 3.5F);
+      fkc $$8 = $$1.getBuffer(this.b);
+      this.a.a($$0, $$8, 15728880, hja.d, $$6);
+      $$0.b();
    }
 
    @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
+   public void a(fkc $$0, fow $$1, float $$2) {
    }
 
-   public static record a(god a) implements gnl<lz> {
-      public gni a(lz $$0, gjz $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gnr $$8 = new gnr($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.b($$5, $$6, $$7);
-         $$8.A = $$0.b();
-         $$8.z = $$0.b();
-         $$8.a($$1.A.a(12) + 8);
-         return $$8;
+   public static class a implements gnx<mc> {
+      public gnu a(mc $$0, gkl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gnr($$1, $$2, $$3, $$4);
       }
    }
 }

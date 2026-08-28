@@ -1,36 +1,23 @@
-import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
-import com.mojang.datafixers.Typed;
+import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
+import java.util.Map;
 
-public class bee extends DataFix {
-   public bee(Schema $$0) {
-      super($$0, true);
+public class bee extends bjn {
+   public static final Map<String, String> a = ImmutableMap.builder()
+      .put("minecraft:salmon_mob", "minecraft:salmon")
+      .put("minecraft:cod_mob", "minecraft:cod")
+      .build();
+   public static final Map<String, String> b = ImmutableMap.builder()
+      .put("minecraft:salmon_mob_spawn_egg", "minecraft:salmon_spawn_egg")
+      .put("minecraft:cod_mob_spawn_egg", "minecraft:cod_spawn_egg")
+      .build();
+
+   public bee(Schema $$0, boolean $$1) {
+      super("EntityCodSalmonFix", $$0, $$1);
    }
 
-   public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bix.D);
-      Type<?> $$1 = this.getOutputSchema().getType(bix.D);
-      OpticFinder<String> $$2 = DSL.fieldFinder("id", bks.a());
-      OpticFinder<String> $$3 = $$0.findField("CustomName");
-      Type<?> $$4 = $$1.findFieldType("CustomName");
-      return this.fixTypeEverywhereTyped("EntityCustomNameToComponentFix", $$0, $$1, $$3x -> a($$3x, $$2, $$3, $$4));
-   }
-
-   private static <T> Typed<?> a(Typed<?> $$0, OpticFinder<String> $$1, OpticFinder<String> $$2, Type<T> $$3) {
-      return $$0.update($$2, $$3, $$3x -> {
-         String $$4 = $$0.getOptional($$1).orElse("");
-         Dynamic<?> $$5 = a($$0.getOps(), $$3x, $$4);
-         return af.a($$3, $$5).getValue();
-      });
-   }
-
-   private static <T> Dynamic<T> a(DynamicOps<T> $$0, String $$1, String $$2) {
-      return "minecraft:commandblock_minecart".equals($$2) ? new Dynamic($$0, $$0.createString($$1)) : bbe.a($$0, $$1);
+   @Override
+   protected String a(String $$0) {
+      return a.getOrDefault($$0, $$0);
    }
 }

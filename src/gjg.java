@@ -1,24 +1,20 @@
-public class gjg {
-   public static final gjg a = new gjg(0.0F);
-   final float b;
-   final float c;
-   final float d;
-
-   public gjg(float $$0, float $$1, float $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+public class gjg extends geu<hfr> {
+   public gjg(gjo $$0) {
+      super($$0);
    }
 
-   public gjg(float $$0) {
-      this($$0, $$0, $$0);
+   public void a(hfr $$0) {
+      super.a($$0);
+      gey.a(this.s, this.r, $$0.a, $$0.H, $$0.u);
    }
 
-   public gjg a(float $$0) {
-      return new gjg(this.b + $$0, this.c + $$0, this.d + $$0);
-   }
-
-   public gjg a(float $$0, float $$1, float $$2) {
-      return new gjg(this.b + $$0, this.c + $$1, this.d + $$2);
+   @Override
+   public void c_(boolean $$0) {
+      super.c_($$0);
+      this.a.k = $$0;
+      this.b.k = $$0;
+      this.c.k = $$0;
+      this.d.k = $$0;
+      this.e.k = $$0;
    }
 }

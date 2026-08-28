@@ -1,23 +1,50 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public class dka {
-   public static final Codec<dka> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(awm.b.fieldOf("sound").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("tick_chance").forGetter($$0x -> $$0x.c)).apply($$0, dka::new)
-   );
-   private final je<awm> b;
-   private final double c;
+public class dka extends djb {
+   private final boolean a;
+   private final boolean b;
+   private final Optional<Float> c;
+   private final Optional<jj<dmm>> d;
 
-   public dka(je<awm> $$0, double $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public dka(boolean $$0, boolean $$1, Optional<Float> $$2, Optional<jj<dmm>> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public je<awm> a() {
+   @Override
+   public Optional<Float> a(dja $$0, din $$1, iv $$2, eao $$3, ewv $$4) {
+      if (this.d.isPresent()) {
+         return $$3.a(this.d.get()) ? Optional.of(3600000.0F) : Optional.empty();
+      } else {
+         return super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   @Override
+   public boolean a(dja $$0, din $$1, iv $$2, eao $$3, float $$4) {
+      return this.a;
+   }
+
+   @Override
+   public boolean a(dja $$0, bwi $$1) {
       return this.b;
    }
 
-   public double b() {
-      return this.c;
+   @Override
+   public float a(bwi $$0) {
+      boolean var10000;
+      label17: {
+         if ($$0 instanceof crj $$1 && $$1.gj().b) {
+            var10000 = true;
+            break label17;
+         }
+
+         var10000 = false;
+      }
+
+      boolean $$2 = var10000;
+      return $$2 ? 0.0F : this.c.orElseGet(() -> super.a($$0));
    }
 }

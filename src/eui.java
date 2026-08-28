@@ -1,64 +1,49 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntIterator;
-import java.util.List;
-import java.util.stream.IntStream;
 
-public class eui extends eva {
+public class eui extends eux {
    public static final MapCodec<eui> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(evc.a.fieldOf("delegate").forGetter($$0x -> $$0x.b), bti.e.fieldOf("limit").forGetter($$0x -> $$0x.c)).apply($$0, eui::new)
+      $$0 -> $$0.group(
+               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
+               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
+               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f),
+               jb.a.e.fieldOf("axis").orElse(jb.a.b).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, eui::new)
    );
-   private final eva b;
-   private final bti c;
+   private final float b;
+   private final float d;
+   private final int e;
+   private final int f;
+   private final jb.a g;
 
-   public eui(eva $$0, bti $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   @Override
-   protected evc<?> a() {
-      return evc.o;
-   }
-
-   @Override
-   public final List<evd.d> a(djr $$0, iu $$1, iu $$2, List<evd.d> $$3, List<evd.d> $$4, euz $$5) {
-      if (this.c.b() != 0 && !$$4.isEmpty()) {
-         if ($$3.size() != $$4.size()) {
-            af.b(
-               "Original block info list not in sync with processed list, skipping processing. Original size: "
-                  + $$3.size()
-                  + ", Processed size: "
-                  + $$4.size()
-            );
-            return $$4;
-         } else {
-            azv $$6 = azv.a($$0.a().E()).e().a($$1);
-            int $$7 = Math.min(this.c.a($$6), $$4.size());
-            if ($$7 < 1) {
-               return $$4;
-            } else {
-               IntArrayList $$8 = af.a(IntStream.range(0, $$4.size()), $$6);
-               IntIterator $$9 = $$8.intIterator();
-               int $$10 = 0;
-
-               while ($$9.hasNext() && $$10 < $$7) {
-                  int $$11 = $$9.nextInt();
-                  evd.d $$12 = $$3.get($$11);
-                  evd.d $$13 = $$4.get($$11);
-                  evd.d $$14 = this.b.a($$0, $$1, $$2, $$12, $$13, $$5);
-                  if ($$14 != null && !$$13.equals($$14)) {
-                     $$10++;
-                     $$4.set($$11, $$14);
-                  }
-               }
-
-               return $$4;
-            }
-         }
+   public eui(float $$0, float $$1, int $$2, int $$3, jb.a $$4) {
+      if ($$2 >= $$3) {
+         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
       } else {
-         return $$4;
+         this.b = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3;
+         this.g = $$4;
       }
+   }
+
+   @Override
+   public boolean a(iv $$0, iv $$1, iv $$2, azv $$3) {
+      jb $$4 = jb.a(jb.b.a, this.g);
+      float $$5 = (float)Math.abs(($$1.u() - $$2.u()) * $$4.j());
+      float $$6 = (float)Math.abs(($$1.v() - $$2.v()) * $$4.k());
+      float $$7 = (float)Math.abs(($$1.w() - $$2.w()) * $$4.l());
+      int $$8 = (int)($$5 + $$6 + $$7);
+      float $$9 = $$3.i();
+      return $$9 <= azm.b(this.b, this.d, azm.f((float)$$8, (float)this.e, (float)this.f));
+   }
+
+   @Override
+   protected euy<?> a() {
+      return euy.c;
    }
 }

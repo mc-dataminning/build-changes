@@ -1,67 +1,97 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.List;
+import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
-import java.util.function.Function;
 
-public class cch {
-   public static byw<cqo> a(float $$0) {
-      return cci.a(
-         (Function<cci.b<cqo>, ? extends App<cci.c<cqo>, ccl<cqo>>>)($$1 -> $$1.group($$1.b(cgg.d), $$1.c(cgg.c), $$1.b(cgg.g), $$1.a(cgg.n), $$1.a(cgg.o))
-               .apply(
-                  $$1,
-                  ($$2, $$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
-                        if ($$7.n_()) {
-                           return false;
-                        } else if (!$$7.gz().b().a(cqr.b)) {
-                           return false;
-                        } else {
-                           iu $$9 = $$1.<jd>b($$2).b();
-                           Optional<je<cij>> $$10 = $$6x.A().c($$9);
-                           if ($$10.isEmpty()) {
-                              return true;
-                           } else {
-                              $$1.<List<bxe>>b($$4)
-                                 .stream()
-                                 .filter($$1xxx -> $$1xxx instanceof cqo && $$1xxx != $$7)
-                                 .map($$0xxxx -> (cqo)$$0xxxx)
-                                 .filter(bxe::bK)
-                                 .filter($$2xx -> a($$10.get(), $$2xx, $$9))
-                                 .findFirst()
-                                 .ifPresent($$6xx -> {
-                                    $$5.b();
-                                    $$6.b();
-                                    $$2.b();
-                                    if ($$6xx.ec().c(cgg.c).isEmpty()) {
-                                       byx.a($$6xx, $$9, $$0, 1);
-                                       $$6xx.ec().a(cgg.d, jd.a($$6x.aj(), $$9));
-                                       agm.c($$6x, $$9);
-                                    }
-                                 });
-                              return true;
-                           }
-                        }
-                     }
-               ))
-      );
+public class cch extends bza<cqv> {
+   private long c;
+
+   public cch() {
+      super(ImmutableMap.of(cgl.s, cgm.a, cgl.h, cgm.a), 350, 350);
    }
 
-   private static boolean a(je<cij> $$0, cqo $$1, iu $$2) {
-      boolean $$3 = $$1.ec().c(cgg.d).isPresent();
-      if ($$3) {
-         return false;
-      } else {
-         Optional<jd> $$4 = $$1.ec().c(cgg.c);
-         je<cqr> $$5 = $$1.gz().b();
-         if ($$5.a().b().test($$0)) {
-            return $$4.isEmpty() ? a($$1, $$2, $$0.a()) : $$4.get().b().equals($$2);
-         } else {
-            return false;
+   protected boolean a(arq $$0, cqv $$1) {
+      return this.a($$1);
+   }
+
+   protected boolean a(arq $$0, cqv $$1, long $$2) {
+      return $$2 <= this.c && this.a($$1);
+   }
+
+   protected void b(arq $$0, cqv $$1, long $$2) {
+      bvy $$3 = $$1.eb().c(cgl.s).get();
+      bzc.a($$1, $$3, 0.5F, 2);
+      $$0.a($$3, (byte)18);
+      $$0.a($$1, (byte)18);
+      int $$4 = 275 + $$1.dX().a(50);
+      this.c = $$2 + (long)$$4;
+   }
+
+   protected void c(arq $$0, cqv $$1, long $$2) {
+      cqv $$3 = (cqv)$$1.eb().c(cgl.s).get();
+      if (!($$1.g($$3) > 5.0)) {
+         bzc.a($$1, $$3, 0.5F, 2);
+         if ($$2 >= this.c) {
+            $$1.gJ();
+            $$3.gJ();
+            this.a($$0, $$1, $$3);
+         } else if ($$1.dX().a(35) == 0) {
+            $$0.a($$3, (byte)12);
+            $$0.a($$1, (byte)12);
          }
       }
    }
 
-   private static boolean a(bxm $$0, iu $$1, cij $$2) {
-      exc $$3 = $$0.O().a($$1, $$2.c());
+   private void a(arq $$0, cqv $$1, cqv $$2) {
+      Optional<iv> $$3 = this.b($$0, $$1);
+      if ($$3.isEmpty()) {
+         $$0.a($$2, (byte)13);
+         $$0.a($$1, (byte)13);
+      } else {
+         Optional<cqv> $$4 = this.b($$0, $$1, $$2);
+         if ($$4.isPresent()) {
+            this.a($$0, $$4.get(), $$3.get());
+         } else {
+            $$0.A().b($$3.get());
+            agm.c($$0, $$3.get());
+         }
+      }
+   }
+
+   protected void d(arq $$0, cqv $$1, long $$2) {
+      $$1.eb().b(cgl.s);
+   }
+
+   private boolean a(cqv $$0) {
+      byj<cqv> $$1 = $$0.eb();
+      Optional<bvy> $$2 = $$1.c(cgl.s).filter($$0x -> $$0x.an() == bwr.bD);
+      return $$2.isEmpty() ? false : bzc.a($$1, cgl.s, bwr.bD) && $$0.T_() && $$2.get().T_();
+   }
+
+   private Optional<iv> b(arq $$0, cqv $$1) {
+      return $$0.A().a($$0x -> $$0x.a(cip.n), ($$1x, $$2) -> this.a($$1, $$2, $$1x), $$1.du(), 48);
+   }
+
+   private boolean a(cqv $$0, iv $$1, jf<cio> $$2) {
+      exj $$3 = $$0.O().a($$1, $$2.a().c());
       return $$3 != null && $$3.j();
+   }
+
+   private Optional<cqv> b(arq $$0, cqv $$1, cqv $$2) {
+      cqv $$3 = $$1.b($$0, $$2);
+      if ($$3 == null) {
+         return Optional.empty();
+      } else {
+         $$1.c_(6000);
+         $$2.c_(6000);
+         $$3.c_(-24000);
+         $$3.b($$1.dz(), $$1.dB(), $$1.dF(), 0.0F, 0.0F);
+         $$0.a_($$3);
+         $$0.a($$3, (byte)12);
+         return Optional.of($$3);
+      }
+   }
+
+   private void a(arq $$0, cqv $$1, iv $$2) {
+      je $$3 = je.a($$0.aj(), $$2);
+      $$1.eb().a(cgl.b, $$3);
    }
 }

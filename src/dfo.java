@@ -1,20 +1,9 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
+public class dfo {
+   public static final bax<dyl> a = bax.a("fuel_values");
+   public static final bax<jh.a> b = bax.a("registries");
+   public static final bay c = new bay.a().b(a).b(b).a();
 
-public record dfo(int c) {
-   public static final Codec<dfo> a = RecordCodecBuilder.create($$0 -> $$0.group(ayu.m.fieldOf("value").forGetter(dfo::a)).apply($$0, dfo::new));
-   public static final yw<ByteBuf, dfo> b = yw.a(yu.h, dfo::a, dfo::new);
-
-   public dfo(int c) {
-      if (c <= 0) {
-         throw new IllegalArgumentException("Enchantment value must be positive, but was " + c);
-      } else {
-         this.c = c;
-      }
-   }
-
-   public int a() {
-      return this.c;
+   public static baz a(djh $$0) {
+      return new baz.a().a(a, $$0.M()).a(b, $$0.F_()).a(c);
    }
 }

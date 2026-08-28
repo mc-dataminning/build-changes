@@ -1,4 +1,27 @@
-@FunctionalInterface
-public interface dxg<T extends dxf> {
-   void tick(dja var1, iu var2, eah var3, T var4);
+import java.util.List;
+
+public interface dxg {
+   List<dxg.a> a();
+
+   public static class a {
+      private final int a;
+      private int b;
+
+      public a(int $$0) {
+         this.a = $$0;
+         this.b = 1;
+      }
+
+      public void a() {
+         this.b++;
+      }
+
+      public int b() {
+         return this.a;
+      }
+
+      public int c() {
+         return this.b;
+      }
+   }
 }

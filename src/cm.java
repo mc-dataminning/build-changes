@@ -1,67 +1,98 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
+import java.util.Map;
 import java.util.Optional;
+import java.util.function.Predicate;
 
-public class cm extends dj<cm.a> {
-   @Override
-   public Codec<cm.a> a() {
-      return cm.a.a;
+public record cm(Optional<jj<czg>> b, cw.d c, ke d, Map<kt.b<?>, kt> e) implements Predicate<czk> {
+   public static final Codec<cm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ju.a(mh.K).optionalFieldOf("items").forGetter(cm::a),
+               cw.d.d.optionalFieldOf("count", cw.d.c).forGetter(cm::b),
+               ke.a.optionalFieldOf("components", ke.c).forGetter(cm::c),
+               kt.b.optionalFieldOf("predicates", Map.of()).forGetter(cm::d)
+            )
+            .apply($$0, cm::new)
+   );
+
+   public boolean a(czk $$0) {
+      if (this.b.isPresent() && !$$0.a(this.b.get())) {
+         return false;
+      } else if (!this.c.d($$0.M())) {
+         return false;
+      } else if (!this.d.a($$0)) {
+         return false;
+      } else {
+         for (kt $$1 : this.e.values()) {
+            if (!$$1.a($$0)) {
+               return false;
+            }
+         }
+
+         return true;
+      }
    }
 
-   public void a(arr $$0, iu $$1, czd $$2) {
-      arq $$3 = $$0.y();
-      eah $$4 = $$3.a_($$1);
-      ezk $$5 = new ezk.a($$3).a(fcb.f, $$1.b()).a(fcb.a, $$0).a(fcb.g, $$4).a(fcb.i, $$2).a(fca.o);
-      ezh $$6 = new ezh.a($$5).a(Optional.empty());
-      this.a($$0, $$1x -> $$1x.a($$6));
+   public Optional<jj<czg>> a() {
+      return this.b;
    }
 
-   public static record a(Optional<bi> b, Optional<bi> c) implements dj.a {
-      public static final Codec<cm.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bx.b.optionalFieldOf("player").forGetter(cm.a::a), bi.a.optionalFieldOf("location").forGetter(cm.a::b)).apply($$0, cm.a::new)
-      );
+   public cw.d b() {
+      return this.c;
+   }
 
-      public static aq<cm.a> a(dmf $$0) {
-         bi $$1 = bi.a(fcp.a($$0).build());
-         return ap.z.a(new cm.a(Optional.empty(), Optional.of($$1)));
+   public ke c() {
+      return this.d;
+   }
+
+   public Map<kt.b<?>, kt> d() {
+      return this.e;
+   }
+
+   public static class a {
+      private Optional<jj<czg>> a = Optional.empty();
+      private cw.d b = cw.d.c;
+      private ke c;
+      private final Builder<kt.b<?>, kt> d;
+
+      private a() {
+         this.c = ke.c;
+         this.d = ImmutableMap.builder();
       }
 
-      public static aq<cm.a> a(fcq.a... $$0) {
-         bi $$1 = bi.a(Arrays.stream($$0).map(fcq.a::build).toArray(fcq[]::new));
-         return ap.z.a(new cm.a(Optional.empty(), Optional.of($$1)));
+      public static cm.a a() {
+         return new cm.a();
       }
 
-      private static cm.a c(ct.a $$0, cl.a $$1) {
-         bi $$2 = bi.a(fco.a($$0).build(), fcx.a($$1).build());
-         return new cm.a(Optional.empty(), Optional.of($$2));
+      public cm.a a(jg<czg> $$0, djg... $$1) {
+         this.a = Optional.of(jj.a($$0x -> $$0x.h().e(), $$1));
+         return this;
       }
 
-      public static aq<cm.a> a(ct.a $$0, cl.a $$1) {
-         return ap.N.a(c($$0, $$1));
+      public cm.a a(jg<czg> $$0, axr<czg> $$1) {
+         this.a = Optional.of($$0.b($$1));
+         return this;
       }
 
-      public static aq<cm.a> b(ct.a $$0, cl.a $$1) {
-         return ap.aa.a(c($$0, $$1));
+      public cm.a a(cw.d $$0) {
+         this.b = $$0;
+         return this;
       }
 
-      public boolean a(ezh $$0) {
-         return this.c.isEmpty() || this.c.get().a($$0);
+      public <T extends kt> cm.a a(kt.b<T> $$0, T $$1) {
+         this.d.put($$0, $$1);
+         return this;
       }
 
-      @Override
-      public void a(bj $$0) {
-         dj.a.super.a($$0);
-         this.c.ifPresent($$1 -> $$0.a($$1, fca.o, ".location"));
+      public cm.a a(ke $$0) {
+         this.c = $$0;
+         return this;
       }
 
-      @Override
-      public Optional<bi> a() {
-         return this.b;
-      }
-
-      public Optional<bi> b() {
-         return this.c;
+      public cm b() {
+         return new cm(this.a, this.b, this.c, this.d.build());
       }
    }
 }

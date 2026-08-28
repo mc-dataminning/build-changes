@@ -5,9 +5,9 @@ import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 public class aou {
    private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wy.c("commands.save.alreadyOn"));
 
-   public static void a(CommandDispatcher<ei> $$0) {
-      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ej.a("save-on").requires($$0x -> $$0x.c(4))).executes($$0x -> {
-         ei $$1 = (ei)$$0x.getSource();
+   public static void a(CommandDispatcher<ej> $$0) {
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)ek.a("save-on").requires($$0x -> $$0x.c(4))).executes($$0x -> {
+         ej $$1 = (ej)$$0x.getSource();
          boolean $$2 = false;
 
          for (arq $$3 : $$1.l().L()) {

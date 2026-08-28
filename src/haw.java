@@ -1,42 +1,81 @@
-public class haw extends hav<hef, ghp> {
-   private static final alg a = alg.b("textures/entity/sheep/sheep_fur.png");
-   private final gfy<hef> b;
-   private final gfy<hef> c;
+public class haw<S extends hdq, M extends ggy<S>, A extends ggy<S>> extends hbh<S, M> {
+   private final A a;
+   private final A b;
+   private final A c;
+   private final A d;
+   private final has e;
 
-   public haw(gye<hef, ghp> $$0, giy $$1) {
-      super($$0);
-      this.b = new gho($$1.a(gjb.cQ));
-      this.c = new gho($$1.a(gjb.cP));
+   public haw(gyq<S, M> $$0, A $$1, A $$2, has $$3) {
+      this($$0, $$1, $$2, $$1, $$2, $$3);
    }
 
-   public void a(fjj $$0, gqa $$1, int $$2, hef $$3, float $$4, float $$5) {
-      if (!$$3.c) {
-         gfy<hef> $$6 = $$3.aj ? this.c : this.b;
-         if ($$3.z) {
-            if ($$3.ao) {
-               $$6.a($$3);
-               fjn $$7 = $$1.getBuffer(gqk.s(a));
-               $$6.a($$0, $$7, $$2, gxi.a($$3, 0.0F), -16777216);
-            }
-         } else {
-            int $$17;
-            if ($$3.aq != null && "jeb_".equals($$3.aq.getString())) {
-               int $$8 = 25;
-               int $$9 = azm.d($$3.u);
-               int $$10 = $$9 / 25 + $$3.e;
-               int $$11 = cyb.values().length;
-               int $$12 = $$10 % $$11;
-               int $$13 = ($$10 + 1) % $$11;
-               float $$14 = ((float)($$9 % 25) + azm.i($$3.u)) / 25.0F;
-               int $$15 = cjw.a(cyb.a($$12));
-               int $$16 = cjw.a(cyb.a($$13));
-               $$17 = axw.a($$14, $$15, $$16);
-            } else {
-               $$17 = cjw.a($$3.d);
-            }
+   public haw(gyq<S, M> $$0, A $$1, A $$2, A $$3, A $$4, has $$5) {
+      super($$0);
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
+      this.d = $$4;
+      this.e = $$5;
+   }
 
-            a($$6, a, $$0, $$1, $$2, $$3, $$17);
-         }
+   public static boolean a(czk $$0, bws $$1) {
+      dht $$2 = $$0.a(kk.D);
+      return $$2 != null && a($$2, $$1);
+   }
+
+   private static boolean a(dht $$0, bws $$1) {
+      return $$0.d().isPresent() && $$0.b() == $$1;
+   }
+
+   public void a(fjy $$0, gqm $$1, int $$2, S $$3, float $$4, float $$5) {
+      this.a($$0, $$1, $$3.W, bws.e, $$2, this.a($$3, bws.e));
+      this.a($$0, $$1, $$3.X, bws.d, $$2, this.a($$3, bws.d));
+      this.a($$0, $$1, $$3.Y, bws.c, $$2, this.a($$3, bws.c));
+      this.a($$0, $$1, $$3.V, bws.f, $$2, this.a($$3, bws.f));
+   }
+
+   private void a(fjy $$0, gqm $$1, czk $$2, bws $$3, int $$4, A $$5) {
+      dht $$6 = $$2.a(kk.D);
+      if ($$6 != null && a($$6, $$3)) {
+         this.d().a($$5);
+         this.a($$5, $$3);
+         hlp.d $$7 = this.a($$3) ? hlp.d.b : hlp.d.a;
+         this.e.a($$7, $$6.d().orElseThrow(), $$5, $$2, $$0, $$1, $$4);
       }
+   }
+
+   protected void a(A $$0, bws $$1) {
+      $$0.c_(false);
+      switch ($$1) {
+         case f:
+            $$0.o.k = true;
+            $$0.p.k = true;
+            break;
+         case e:
+            $$0.q.k = true;
+            $$0.r.k = true;
+            $$0.s.k = true;
+            break;
+         case d:
+            $$0.q.k = true;
+            $$0.t.k = true;
+            $$0.u.k = true;
+            break;
+         case c:
+            $$0.t.k = true;
+            $$0.u.k = true;
+      }
+   }
+
+   private A a(S $$0, bws $$1) {
+      if (this.a($$1)) {
+         return $$0.aj ? this.c : this.a;
+      } else {
+         return $$0.aj ? this.d : this.b;
+      }
+   }
+
+   private boolean a(bws $$0) {
+      return $$0 == bws.d;
    }
 }

@@ -1,7 +1,8 @@
-import javax.annotation.Nullable;
-
-public class hcm extends hde {
-   public boolean a;
-   @Nullable
-   public eah b;
+public class hcm extends hdz {
+   public final bvz a = new bvz();
+   public final bvz b = new bvz();
+   public final bvz c = new bvz();
+   public final bvz d = new bvz();
+   public final bvz e = new bvz();
+   public final bvz f = new bvz();
 }

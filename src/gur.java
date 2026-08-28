@@ -1,37 +1,52 @@
-import com.google.common.collect.Sets;
-import java.util.Set;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.List;
 
-public class gur implements guc.a {
-   private static final int a = 60;
-   private final Set<jx> b = Sets.newHashSet();
-
-   gur() {
-   }
+public class gur implements guo.a {
+   private static final int a = 160;
+   private final fpo b;
+   private final Int2ObjectMap<gur.a> c = new Int2ObjectOpenHashMap();
 
    @Override
    public void a() {
-      this.b.clear();
+      this.c.clear();
    }
 
-   public void a(jx $$0) {
-      this.b.add($$0);
+   public void a(int $$0, iv $$1, List<aao.a> $$2) {
+      this.c.put($$0, new gur.a($$1, $$2));
    }
 
-   public void b(jx $$0) {
-      this.b.remove($$0);
+   public void a(int $$0) {
+      this.c.remove($$0);
+   }
+
+   public gur(fpo $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public void a(fjj $$0, gqa $$1, double $$2, double $$3, double $$4) {
-      iu $$5 = iu.a($$2, $$3, $$4);
-      this.b.forEach($$3x -> {
-         if ($$5.a($$3x.k(), 60.0)) {
-            a($$0, $$1, $$3x);
+   public void a(fjy $$0, gqm $$1, double $$2, double $$3, double $$4) {
+      fow $$5 = this.b.j.k();
+      iv $$6 = iv.a($$5.b().d, 0.0, $$5.b().f);
+      ObjectIterator var11 = this.c.values().iterator();
+
+      while (var11.hasNext()) {
+         gur.a $$7 = (gur.a)var11.next();
+         iv $$8 = $$7.a;
+         if ($$6.a($$8, 160.0)) {
+            for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
+               aao.a $$10 = $$7.b.get($$9);
+               double $$11 = (double)$$8.u() + 0.5;
+               double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
+               double $$13 = (double)$$8.w() + 0.5;
+               int $$14 = $$10.b() ? -16711936 : -3355444;
+               guo.a($$0, $$1, $$10.c(), $$11, $$12, $$13, $$14);
+            }
          }
-      });
+      }
    }
 
-   private static void a(fjj $$0, gqa $$1, jx $$2) {
-      guc.a($$0, $$1, $$2.k(), 0.2F, 1.0F, 0.2F, 0.15F);
+   static record a(iv a, List<aao.a> b) {
    }
 }

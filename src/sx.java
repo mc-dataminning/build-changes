@@ -22,34 +22,34 @@ public class sx extends MinecraftServer {
    private static final int m = 20;
    private static final int n = 14999992;
    private static final amb o = new amb(null, ServicesKeySet.EMPTY, null, null);
-   private static final cum p = cuo.e.a().d(cum.a(cuo.c, cuo.d));
-   private final boy q = new boy(4);
+   private static final cut p = cuv.e.a().d(cut.a(cuv.c, cuv.d));
+   private final bpa q = new bpa(4);
    private final Optional<String> r;
    private final boolean s;
    private List<sj> t = new ArrayList<>();
    private final Stopwatch u = Stopwatch.createUnstarted();
-   private static final ehe v = new ehe(0L, false, false);
+   private static final ehl v = new ehl(0L, false, false);
    @Nullable
    private te w;
 
-   public static sx a(Thread $$0, eyv.c $$1, aun $$2, Optional<String> $$3, boolean $$4) {
+   public static sx a(Thread $$0, ezc.c $$1, aun $$2, Optional<String> $$3, boolean $$4) {
       $$2.a();
       ArrayList<String> $$5 = new ArrayList<>($$2.c());
       $$5.remove("vanilla");
       $$5.addFirst("vanilla");
-      djy $$6 = new djy(new dio($$5, List.of()), p);
-      dje $$7 = new dje("Test Level", dix.b, false, bua.c, true, new diw(p), $$6);
+      dkf $$6 = new dkf(new div($$5, List.of()), p);
+      djl $$7 = new djl("Test Level", dje.b, false, bud.c, true, new djd(p), $$6);
       ame.d $$8 = new ame.d($$2, $$6, false, true);
-      ame.c $$9 = new ame.c($$8, ej.a.b, 4);
+      ame.c $$9 = new ame.c($$8, ek.a.b, 4);
 
       try {
          l.debug("Starting resource loading");
          Stopwatch $$10 = Stopwatch.createStarted();
-         amf $$11 = af.<amf>c($$2x -> ame.a($$9, $$1xx -> {
-               jr<eef> $$2xx = new jm<>(mg.bp, Lifecycle.stable()).n();
-               ehb.b $$3x = $$1xx.c().e(mg.bn).b(eqr.b).a().a().a($$2xx);
-               return new ame.b<>(new eyz($$7, v, $$3x.d(), $$3x.a()), $$3x.b());
-            }, amf::new, af.h(), $$2x)).get();
+         amf $$11 = ag.<amf>c($$2x -> ame.a($$9, $$1xx -> {
+               js<eem> $$2xx = new jn<>(mh.bp, Lifecycle.stable()).n();
+               ehi.b $$3x = $$1xx.c().e(mh.bn).b(eqy.b).a().a().a($$2xx);
+               return new ame.b<>(new ezg($$7, v, $$3x.d(), $$3x.a()), $$3x.b());
+            }, amf::new, ag.h(), $$2x)).get();
          $$10.stop();
          l.debug("Finished resource loading after {} ms", $$10.elapsed(TimeUnit.MILLISECONDS));
          return new sx($$0, $$1, $$2, $$11, $$3, $$4);
@@ -60,7 +60,7 @@ public class sx extends MinecraftServer {
       }
    }
 
-   private sx(Thread $$0, eyv.c $$1, aun $$2, amf $$3, Optional<String> $$4, boolean $$5) {
+   private sx(Thread $$0, ezc.c $$1, aun $$2, amf $$3, Optional<String> $$4, boolean $$5) {
       super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, bbc.a(), o, asc::b);
       this.r = $$4;
       this.s = $$5;
@@ -78,14 +78,14 @@ public class sx extends MinecraftServer {
    }
 
    private List<sj> b(arq $$0) {
-      jr<sr> $$1 = $$0.F_().f(mg.bh);
-      Collection<je.c<sr>> $$2;
+      js<sr> $$1 = $$0.F_().f(mh.bh);
+      Collection<jf.c<sr>> $$2;
       sk.a $$3;
       if (this.r.isPresent()) {
          $$2 = a($$0.F_(), this.r.get()).filter($$0x -> !((sr)$$0x.a()).i()).toList();
          if (this.s) {
             $$3 = sx::a;
-            l.info("Verify requested. Will run each test that matches {} {} times", this.r.get(), 100 * dsz.values().length);
+            l.info("Verify requested. Will run each test that matches {} {} times", this.r.get(), 100 * dtg.values().length);
          } else {
             $$3 = sk.a;
             l.info("Will run tests matching {} ({} tests)", this.r.get(), $$2.size());
@@ -98,10 +98,10 @@ public class sx extends MinecraftServer {
       return sk.a($$2, $$3, $$0);
    }
 
-   private static Stream<sq> a(je.c<sr> $$0, arq $$1) {
+   private static Stream<sq> a(jf.c<sr> $$0, arq $$1) {
       Builder<sq> $$2 = Stream.builder();
 
-      for (dsz $$3 : dsz.values()) {
+      for (dtg $$3 : dtg.values()) {
          for (int $$4 = 0; $$4 < 100; $$4++) {
             $$2.add(new sq($$0, $$3, $$1, tg.a()));
          }
@@ -110,8 +110,8 @@ public class sx extends MinecraftServer {
       return $$2.build();
    }
 
-   public static Stream<je.c<sr>> a(js $$0, String $$1) {
-      return fn.a(new StringReader($$1), $$0.f(mg.bh)).stream();
+   public static Stream<jf.c<sr>> a(jt $$0, String $$1) {
+      return fo.a(new StringReader($$1), $$0.f(mh.bh)).stream();
    }
 
    @Override
@@ -148,7 +148,7 @@ public class sx extends MinecraftServer {
    }
 
    private static void a(sq $$0) {
-      if ($$0.u() != dsz.a) {
+      if ($$0.u() != dtg.a) {
          l.info("   - {} with rotation {}: {}", new Object[]{$$0.b(), $$0.u().c(), $$0.n().a().getString()});
       } else {
          l.info("   - {}: {}", $$0.b(), $$0.n().a().getString());
@@ -156,7 +156,7 @@ public class sx extends MinecraftServer {
    }
 
    @Override
-   public bpb f() {
+   public bpd f() {
       return this.q;
    }
 
@@ -171,7 +171,7 @@ public class sx extends MinecraftServer {
    }
 
    @Override
-   public ad a(ad $$0) {
+   public ae a(ae $$0) {
       $$0.a("Type", "Game test server");
       return $$0;
    }
@@ -184,14 +184,14 @@ public class sx extends MinecraftServer {
    }
 
    @Override
-   public void a(o $$0) {
+   public void a(p $$0) {
       super.a($$0);
-      l.error("Game test server crashed\n{}", $$0.a(y.a));
+      l.error("Game test server crashed\n{}", $$0.a(z.a));
       System.exit(1);
    }
 
    private void c(arq $$0) {
-      iu $$1 = new iu($$0.A.a(-14999992, 14999992), -59, $$0.A.a(-14999992, 14999992));
+      iv $$1 = new iv($$0.A.a(-14999992, 14999992), -59, $$0.A.a(-14999992, 14999992));
       $$0.a($$1, 0.0F);
       sv $$2 = sv.a.a(this.t, $$0).a((sv.c)(new th($$1, 8, false))).a();
       Collection<sq> $$3 = $$2.a();

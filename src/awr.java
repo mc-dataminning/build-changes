@@ -6,31 +6,31 @@ import java.util.function.UnaryOperator;
 
 public final class awr {
    public static final yw<vu, awr> a = yw.a(awr::b, awr::a);
-   private static final Map<cwl, Pair<String, String>> b = ImmutableMap.of(
-      cwl.a,
+   private static final Map<cws, Pair<String, String>> b = ImmutableMap.of(
+      cws.a,
       Pair.of("isGuiOpen", "isFilteringCraftable"),
-      cwl.b,
+      cws.b,
       Pair.of("isFurnaceGuiOpen", "isFurnaceFilteringCraftable"),
-      cwl.c,
+      cws.c,
       Pair.of("isBlastingFurnaceGuiOpen", "isBlastingFurnaceFilteringCraftable"),
-      cwl.d,
+      cws.d,
       Pair.of("isSmokerGuiOpen", "isSmokerFilteringCraftable")
    );
-   private final Map<cwl, awr.a> c;
+   private final Map<cws, awr.a> c;
 
-   private awr(Map<cwl, awr.a> $$0) {
+   private awr(Map<cws, awr.a> $$0) {
       this.c = $$0;
    }
 
    public awr() {
-      this(new EnumMap<>(cwl.class));
+      this(new EnumMap<>(cws.class));
    }
 
-   private awr.a c(cwl $$0) {
+   private awr.a c(cws $$0) {
       return this.c.getOrDefault($$0, awr.a.a);
    }
 
-   private void a(cwl $$0, UnaryOperator<awr.a> $$1) {
+   private void a(cws $$0, UnaryOperator<awr.a> $$1) {
       this.c.compute($$0, ($$1x, $$2) -> {
          if ($$2 == null) {
             $$2 = awr.a.a;
@@ -45,26 +45,26 @@ public final class awr {
       });
    }
 
-   public boolean a(cwl $$0) {
+   public boolean a(cws $$0) {
       return this.c($$0).b;
    }
 
-   public void a(cwl $$0, boolean $$1) {
+   public void a(cws $$0, boolean $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public boolean b(cwl $$0) {
+   public boolean b(cws $$0) {
       return this.c($$0).c;
    }
 
-   public void b(cwl $$0, boolean $$1) {
+   public void b(cws $$0, boolean $$1) {
       this.a($$0, $$1x -> $$1x.b($$1));
    }
 
    private static awr a(vu $$0) {
-      Map<cwl, awr.a> $$1 = new EnumMap<>(cwl.class);
+      Map<cws, awr.a> $$1 = new EnumMap<>(cws.class);
 
-      for (cwl $$2 : cwl.values()) {
+      for (cws $$2 : cws.values()) {
          boolean $$3 = $$0.readBoolean();
          boolean $$4 = $$0.readBoolean();
          if ($$3 || $$4) {
@@ -76,7 +76,7 @@ public final class awr {
    }
 
    private void b(vu $$0) {
-      for (cwl $$1 : cwl.values()) {
+      for (cws $$1 : cws.values()) {
          awr.a $$2 = this.c.getOrDefault($$1, awr.a.a);
          $$0.a($$2.b);
          $$0.a($$2.c);
@@ -84,10 +84,10 @@ public final class awr {
    }
 
    public static awr a(tz $$0) {
-      Map<cwl, awr.a> $$1 = new EnumMap<>(cwl.class);
+      Map<cws, awr.a> $$1 = new EnumMap<>(cws.class);
       b.forEach(($$2, $$3) -> {
-         boolean $$4 = $$0.q((String)$$3.getFirst());
-         boolean $$5 = $$0.q((String)$$3.getSecond());
+         boolean $$4 = $$0.o((String)$$3.getFirst());
+         boolean $$5 = $$0.o((String)$$3.getSecond());
          if ($$4 || $$5) {
             $$1.put($$2, new awr.a($$4, $$5));
          }

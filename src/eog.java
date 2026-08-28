@@ -1,39 +1,49 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class eog extends eol {
-   public static final MapCodec<eog> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(eog::new, $$0 -> $$0.b);
-   private final float b;
+public record eog(eny b, List<eog.a> c) {
+   public static final Codec<eog> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eny.a.fieldOf("fallback").forGetter(eog::a), eog.a.a.listOf().fieldOf("rules").forGetter(eog::b)).apply($$0, eog::new)
+   );
 
-   public eog(float $$0) {
-      this.b = $$0;
+   public static eog a(eny $$0) {
+      return new eog($$0, List.of());
    }
 
-   @Override
-   protected eom<?> a() {
-      return eom.e;
+   public static eog a(dmm $$0) {
+      return a(eny.a($$0));
    }
 
-   @Override
-   public void a(eol.a $$0) {
-      azv $$1 = $$0.b();
-      if (!($$1.i() >= this.b)) {
-         List<iu> $$2 = $$0.c();
-         if (!$$2.isEmpty()) {
-            int $$3 = $$2.getFirst().v();
-            $$2.stream().filter($$1x -> $$1x.v() - $$3 <= 2).forEach($$2x -> {
-               for (ja $$3x : ja.c.a) {
-                  if ($$1.i() <= 0.25F) {
-                     ja $$4 = $$3x.g();
-                     iu $$5 = $$2x.b($$4.j(), 0, $$4.l());
-                     if ($$0.a($$5)) {
-                        $$0.a($$5, dmh.gb.m().b(dnn.c, Integer.valueOf($$1.a(3))).b(dnn.e, $$3x));
-                     }
-                  }
-               }
-            });
+   public eao a(dkg $$0, azv $$1, iv $$2) {
+      for (eog.a $$3 : this.c) {
+         if ($$3.a().test($$0, $$2)) {
+            return $$3.b().a($$1, $$2);
          }
+      }
+
+      return this.b.a($$1, $$2);
+   }
+
+   public eny a() {
+      return this.b;
+   }
+
+   public List<eog.a> b() {
+      return this.c;
+   }
+
+   public static record a(ehu b, eny c) {
+      public static final Codec<eog.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(ehu.b.fieldOf("if_true").forGetter(eog.a::a), eny.a.fieldOf("then").forGetter(eog.a::b)).apply($$0, eog.a::new)
+      );
+
+      public ehu a() {
+         return this.b;
+      }
+
+      public eny b() {
+         return this.c;
       }
    }
 }

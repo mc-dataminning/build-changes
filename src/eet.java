@@ -1,38 +1,21 @@
-import javax.annotation.Nullable;
+import java.util.stream.Stream;
 
-public interface eet<B, T extends B> {
-   static <B, T extends B> eet<B, T> a(final Class<T> $$0) {
-      return new eet<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.isInstance($$0) ? $$0 : null);
-         }
+public interface eet extends efh {
+   int ao();
 
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
-   }
+   iv du();
 
-   static <B, T extends B> eet<B, T> b(final Class<T> $$0) {
-      return new eet<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.equals($$0.getClass()) ? $$0 : null);
-         }
+   fes cQ();
 
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
-   }
+   void a(eeu var1);
 
-   @Nullable
-   T a(B var1);
+   Stream<? extends eet> cZ();
 
-   Class<? extends B> a();
+   Stream<? extends eet> da();
+
+   void c(bwi.d var1);
+
+   boolean dS();
+
+   boolean dT();
 }

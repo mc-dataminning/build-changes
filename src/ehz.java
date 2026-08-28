@@ -1,18 +1,24 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-class ehz implements ehn {
-   public static ehz a = new ehz();
-   public static final MapCodec<ehz> e = MapCodec.unit(() -> a);
+public class ehz extends eif {
+   final axr<dmm> a;
+   public static final MapCodec<ehz> e = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(axr.a(mh.i).fieldOf("tag").forGetter($$0x -> $$0x.a)).apply($$0, ehz::new)
+   );
 
-   private ehz() {
-   }
-
-   public boolean a(djz $$0, iu $$1) {
-      return true;
+   protected ehz(ka $$0, axr<dmm> $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
    @Override
-   public eho<?> a() {
-      return eho.l;
+   protected boolean a(eao $$0) {
+      return $$0.a(this.a);
+   }
+
+   @Override
+   public ehv<?> a() {
+      return ehv.b;
    }
 }

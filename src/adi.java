@@ -10,9 +10,9 @@ public class adi implements zf<abu> {
    private final int i;
    private final boolean j;
    private final boolean k;
-   private final lv l;
+   private final lw l;
 
-   public <T extends lv> adi(T $$0, boolean $$1, boolean $$2, double $$3, double $$4, double $$5, float $$6, float $$7, float $$8, float $$9, int $$10) {
+   public <T extends lw> adi(T $$0, boolean $$1, boolean $$2, double $$3, double $$4, double $$5, float $$6, float $$7, float $$8, float $$9, int $$10) {
       this.l = $$0;
       this.j = $$1;
       this.k = $$2;
@@ -37,7 +37,7 @@ public class adi implements zf<abu> {
       this.g = $$0.readFloat();
       this.h = $$0.readFloat();
       this.i = $$0.readInt();
-      this.l = lx.bl.decode($$0);
+      this.l = ly.bl.decode($$0);
    }
 
    private void a(wj $$0) {
@@ -51,7 +51,7 @@ public class adi implements zf<abu> {
       $$0.a(this.g);
       $$0.a(this.h);
       $$0.q(this.i);
-      lx.bl.encode($$0, this.l);
+      ly.bl.encode($$0, this.l);
    }
 
    @Override
@@ -103,7 +103,7 @@ public class adi implements zf<abu> {
       return this.i;
    }
 
-   public lv n() {
+   public lw n() {
       return this.l;
    }
 }

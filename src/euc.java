@@ -1,65 +1,98 @@
-import com.google.common.collect.Maps;
-import com.mojang.serialization.MapCodec;
-import java.util.Map;
+public class euc extends erg {
+   private boolean h;
+   private boolean i;
 
-public class euc extends eva {
-   public static final MapCodec<euc> a = MapCodec.unit(() -> euc.b);
-   public static final euc b = new euc();
-   private final Map<dmf, dmf> c = af.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(dmh.m, dmh.pZ);
-      $$0.put(dmh.cx, dmh.pZ);
-      $$0.put(dmh.b, dmh.qd);
-      $$0.put(dmh.eZ, dmh.qe);
-      $$0.put(dmh.fa, dmh.qe);
-      $$0.put(dmh.dc, dmh.qa);
-      $$0.put(dmh.nO, dmh.qa);
-      $$0.put(dmh.nQ, dmh.ql);
-      $$0.put(dmh.fC, dmh.qi);
-      $$0.put(dmh.nM, dmh.qi);
-      $$0.put(dmh.kl, dmh.qc);
-      $$0.put(dmh.oc, dmh.qc);
-      $$0.put(dmh.kh, dmh.qm);
-      $$0.put(dmh.kg, dmh.qm);
-      $$0.put(dmh.kn, dmh.qh);
-      $$0.put(dmh.oa, dmh.qh);
-      $$0.put(dmh.oq, dmh.qj);
-      $$0.put(dmh.oo, dmh.qj);
-      $$0.put(dmh.go, dmh.qb);
-      $$0.put(dmh.gp, dmh.qb);
-      $$0.put(dmh.fc, dmh.qg);
-      $$0.put(dmh.fb, dmh.qf);
-      $$0.put(dmh.fo, dmh.fp);
-   });
+   public euc(azv $$0, int $$1, int $$2) {
+      super(erz.K, $$1, 64, $$2, 7, 7, 9, a($$0));
+   }
 
-   private euc() {
+   public euc(tz $$0) {
+      super(erz.K, $$0);
+      this.h = $$0.o("Witch");
+      this.i = $$0.o("Cat");
    }
 
    @Override
-   public evd.d a(djd $$0, iu $$1, iu $$2, evd.d $$3, evd.d $$4, euz $$5) {
-      dmf $$6 = this.c.get($$4.b().b());
-      if ($$6 == null) {
-         return $$4;
-      } else {
-         eah $$7 = $$4.b();
-         eah $$8 = $$6.m();
-         if ($$7.b(duj.b)) {
-            $$8 = $$8.b(duj.b, $$7.c(duj.b));
+   protected void a(ery $$0, tz $$1) {
+      super.a($$0, $$1);
+      $$1.a("Witch", this.h);
+      $$1.a("Cat", this.i);
+   }
+
+   @Override
+   public void a(dkg $$0, dkd $$1, ecm $$2, azv $$3, era $$4, dio $$5, iv $$6) {
+      if (this.a($$0, $$4, 0)) {
+         this.a($$0, $$4, 1, 1, 1, 5, 1, 7, dmo.o.m(), dmo.o.m(), false);
+         this.a($$0, $$4, 1, 4, 2, 5, 4, 7, dmo.o.m(), dmo.o.m(), false);
+         this.a($$0, $$4, 2, 1, 0, 4, 1, 0, dmo.o.m(), dmo.o.m(), false);
+         this.a($$0, $$4, 2, 2, 2, 3, 3, 2, dmo.o.m(), dmo.o.m(), false);
+         this.a($$0, $$4, 1, 2, 3, 1, 3, 6, dmo.o.m(), dmo.o.m(), false);
+         this.a($$0, $$4, 5, 2, 3, 5, 3, 6, dmo.o.m(), dmo.o.m(), false);
+         this.a($$0, $$4, 2, 2, 7, 4, 3, 7, dmo.o.m(), dmo.o.m(), false);
+         this.a($$0, $$4, 1, 0, 2, 1, 3, 2, dmo.X.m(), dmo.X.m(), false);
+         this.a($$0, $$4, 5, 0, 2, 5, 3, 2, dmo.X.m(), dmo.X.m(), false);
+         this.a($$0, $$4, 1, 0, 7, 1, 3, 7, dmo.X.m(), dmo.X.m(), false);
+         this.a($$0, $$4, 5, 0, 7, 5, 3, 7, dmo.X.m(), dmo.X.m(), false);
+         this.a($$0, dmo.el.m(), 2, 3, 2, $$4);
+         this.a($$0, dmo.el.m(), 3, 3, 7, $$4);
+         this.a($$0, dmo.a.m(), 1, 3, 4, $$4);
+         this.a($$0, dmo.a.m(), 5, 3, 4, $$4);
+         this.a($$0, dmo.a.m(), 5, 3, 5, $$4);
+         this.a($$0, dmo.gP.m(), 1, 3, 5, $$4);
+         this.a($$0, dmo.cL.m(), 3, 2, 6, $$4);
+         this.a($$0, dmo.fS.m(), 4, 2, 6, $$4);
+         this.a($$0, dmo.el.m(), 1, 2, 1, $$4);
+         this.a($$0, dmo.el.m(), 5, 2, 1, $$4);
+         eao $$7 = dmo.gj.m().b(duq.b, jb.c);
+         eao $$8 = dmo.gj.m().b(duq.b, jb.f);
+         eao $$9 = dmo.gj.m().b(duq.b, jb.e);
+         eao $$10 = dmo.gj.m().b(duq.b, jb.d);
+         this.a($$0, $$4, 0, 4, 1, 6, 4, 1, $$7, $$7, false);
+         this.a($$0, $$4, 0, 4, 2, 0, 4, 7, $$8, $$8, false);
+         this.a($$0, $$4, 6, 4, 2, 6, 4, 7, $$9, $$9, false);
+         this.a($$0, $$4, 0, 4, 8, 6, 4, 8, $$10, $$10, false);
+         this.a($$0, $$7.b(duq.d, ebx.e), 0, 4, 1, $$4);
+         this.a($$0, $$7.b(duq.d, ebx.d), 6, 4, 1, $$4);
+         this.a($$0, $$10.b(duq.d, ebx.d), 0, 4, 8, $$4);
+         this.a($$0, $$10.b(duq.d, ebx.e), 6, 4, 8, $$4);
+
+         for (int $$11 = 2; $$11 <= 7; $$11 += 5) {
+            for (int $$12 = 1; $$12 <= 5; $$12 += 4) {
+               this.b($$0, dmo.X.m(), $$12, -1, $$11, $$4);
+            }
          }
 
-         if ($$7.b(duj.c)) {
-            $$8 = $$8.b(duj.c, $$7.c(duj.c));
+         if (!this.h) {
+            iv $$13 = this.b(2, 2, 5);
+            if ($$4.b($$13)) {
+               this.h = true;
+               cpb $$14 = bwr.bI.a($$0.a(), bwq.d);
+               if ($$14 != null) {
+                  $$14.gb();
+                  $$14.b((double)$$13.u() + 0.5, (double)$$13.v(), (double)$$13.w() + 0.5, 0.0F, 0.0F);
+                  $$14.a($$0, $$0.d_($$13), bwq.d, null);
+                  $$0.a_($$14);
+               }
+            }
          }
 
-         if ($$7.b(dts.b)) {
-            $$8 = $$8.b(dts.b, $$7.c(dts.b));
-         }
-
-         return new evd.d($$4.a(), $$8, $$4.c());
+         this.a($$0, $$4);
       }
    }
 
-   @Override
-   protected evc<?> a() {
-      return evc.l;
+   private void a(djy $$0, era $$1) {
+      if (!this.i) {
+         iv $$2 = this.b(2, 2, 5);
+         if ($$1.b($$2)) {
+            this.i = true;
+            cjc $$3 = bwr.u.a($$0.a(), bwq.d);
+            if ($$3 != null) {
+               $$3.gb();
+               $$3.b((double)$$2.u() + 0.5, (double)$$2.v(), (double)$$2.w() + 0.5, 0.0F, 0.0F);
+               $$3.a($$0, $$0.d_($$2), bwq.d, null);
+               $$0.a_($$3);
+            }
+         }
+      }
    }
 }

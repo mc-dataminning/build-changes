@@ -1,180 +1,103 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class dto extends dlr {
-   public static final MapCodec<dto> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(cyb.q.optionalFieldOf("color").forGetter($$0x -> Optional.ofNullable($$0x.e)), t())
-            .apply($$0, ($$0x, $$1) -> new dto((cyb)$$0x.orElse(null), $$1))
-   );
-   public static final Map<ja, ffk> b = ffh.d(dmf.c(16.0, 0.0, 1.0));
-   public static final ebf<ja> c = doj.a;
-   public static final alg d = alg.b("contents");
-   @Nullable
-   private final cyb e;
+public class dto extends dly implements dtx {
+   public static final MapCodec<dto> a = b(dto::new);
+   public static final ebf b = ebe.C;
+   public static final ebf c = ebe.I;
+   public static final ebf d = ebe.e;
+   private static final ffr f = dmm.b(16.0, 0.0, 8.0);
+   public static final double e = f.c(jb.a.b);
 
    @Override
    public MapCodec<dto> a() {
       return a;
    }
 
-   public dto(@Nullable cyb $$0, eag.d $$1) {
-      super($$1);
-      this.e = $$0;
-      this.l(this.C.b().b(c, ja.b));
+   public dto(ean.d $$0) {
+      super($$0);
+      this.l(this.C.b().b(b, Boolean.valueOf(false)).b(c, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public dxf a(iu $$0, eah $$1) {
-      return new dys(this.e, $$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dxf> dxg<T> a(dja $$0, eah $$1, dxh<T> $$2) {
-      return a($$2, dxh.y, dys::a);
-   }
-
-   @Override
-   protected bud a(eah $$0, dja $$1, iu $$2, crc $$3, fem $$4) {
-      if ($$1 instanceof arq $$5 && $$1.c_($$2) instanceof dys $$6 && a($$0, $$1, $$2, $$6)) {
-         $$3.a($$6);
-         $$3.a(awx.aq);
-         cps.a($$5, $$3, true);
-      }
-
-      return bud.a;
-   }
-
-   private static boolean a(eah $$0, dja $$1, iu $$2, dys $$3) {
-      if ($$3.k() != dys.a.a) {
-         return true;
-      } else {
-         fel $$4 = coj.a(1.0F, $$0.c(c), 0.0F, 0.5F, $$2.c()).h(1.0E-6);
-         return $$1.b($$4);
-      }
-   }
-
-   @Override
-   public eah a(dcw $$0) {
-      return this.m().b(c, $$0.k());
-   }
-
-   @Override
-   protected void a(eai.a<dmf, eah> $$0) {
+   protected void a(eap.a<dmm, eao> $$0) {
+      $$0.a(b);
       $$0.a(c);
+      $$0.a(d);
    }
 
    @Override
-   public eah a(dja $$0, iu $$1, eah $$2, crc $$3) {
-      dxf $$4 = $$0.c_($$1);
-      if ($$4 instanceof dys $$5) {
-         if (!$$0.C && $$3.gl() && !$$5.c()) {
-            czd $$6 = b(this.b());
-            $$6.b($$4.q());
-            cnh $$7 = new cnh($$0, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, $$6);
-            $$7.j();
-            $$0.b($$7);
-         } else {
-            $$5.d_($$3);
+   public void a(djh $$0, iv $$1, eao $$2, bwi $$3) {
+      if ($$0 instanceof arq $$4) {
+         arr $$5 = dyy.a($$3);
+         if ($$5 != null) {
+            $$4.a($$1, dxo.M).ifPresent($$2x -> $$2x.a($$4, $$5));
          }
       }
 
-      return super.a($$0, $$1, $$2, $$3);
+      super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected List<czd> a(eah $$0, ezk.a $$1) {
-      dxf $$2 = $$1.b(fcb.h);
-      if ($$2 instanceof dys $$3) {
-         $$1 = $$1.a(d, $$1x -> {
-            for (int $$2x = 0; $$2x < $$3.b(); $$2x++) {
-               $$1x.accept($$3.a($$2x));
-            }
-         });
+   protected void a(eao $$0, arq $$1, iv $$2, azv $$3) {
+      if ($$0.c(b)) {
+         $$1.a($$2, $$0.b(b, Boolean.valueOf(false)), 3);
+         $$1.a($$2, dxo.M).ifPresent($$1x -> $$1x.a($$1));
       }
-
-      return super.a($$0, $$1);
    }
 
    @Override
-   protected void a(eah $$0, arq $$1, iu $$2, boolean $$3) {
-      btz.a($$0, $$1, $$2);
+   protected ffr b(eao $$0, din $$1, iv $$2, ffc $$3) {
+      return f;
    }
 
    @Override
-   protected ffk b_(eah $$0, dig $$1, iu $$2) {
-      if ($$1.c_($$2) instanceof dys $$4 && !$$4.t()) {
-         return b.get($$0.c(c).g());
-      }
-
-      return ffh.b();
+   protected ffr d_(eao $$0) {
+      return f;
    }
 
    @Override
-   protected ffk a(eah $$0, dig $$1, iu $$2, fev $$3) {
-      return $$1.c_($$2) instanceof dys $$5 ? ffh.a($$5.a($$0)) : ffh.b();
-   }
-
-   @Override
-   protected boolean e_(eah $$0) {
-      return false;
-   }
-
-   @Override
-   protected boolean c_(eah $$0) {
+   protected boolean g_(eao $$0) {
       return true;
    }
 
+   @Nullable
    @Override
-   protected int a(eah $$0, dja $$1, iu $$2) {
-      return cuv.a($$1.c_($$2));
+   public dxm a(iv $$0, eao $$1) {
+      return new dyy($$0, $$1);
    }
 
-   public static dmf a(@Nullable cyb $$0) {
-      if ($$0 == null) {
-         return dmh.lv;
-      } else {
-         return switch ($$0) {
-            case a -> dmh.lw;
-            case b -> dmh.lx;
-            case c -> dmh.ly;
-            case d -> dmh.lz;
-            case e -> dmh.lA;
-            case f -> dmh.lB;
-            case g -> dmh.lC;
-            case h -> dmh.lD;
-            case i -> dmh.lE;
-            case j -> dmh.lF;
-            case l -> dmh.lH;
-            case m -> dmh.lI;
-            case n -> dmh.lJ;
-            case o -> dmh.lK;
-            case p -> dmh.lL;
-            case k -> dmh.lG;
-         };
+   @Override
+   protected eao a(eao $$0, djk $$1, djw $$2, iv $$3, jb $$4, iv $$5, eao $$6, azv $$7) {
+      if ($$0.c(c)) {
+         $$2.a($$3, eww.c, eww.c.a($$1));
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   @Nullable
+   @Override
+   public eao a(ddd $$0) {
+      return this.m().b(c, Boolean.valueOf($$0.q().b_($$0.a()).a() == eww.c));
+   }
+
+   @Override
+   protected ewv b_(eao $$0) {
+      return $$0.c(c) ? eww.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected void a(eao $$0, arq $$1, iv $$2, czk $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         this.a($$1, $$2, $$3, bti.a(5));
       }
    }
 
    @Nullable
-   public cyb b() {
-      return this.e;
-   }
-
-   public static czd b(@Nullable cyb $$0) {
-      return new czd(a($$0));
-   }
-
    @Override
-   protected eah a(eah $$0, dsz $$1) {
-      return $$0.b(c, $$1.a($$0.c(c)));
-   }
-
-   @Override
-   protected eah a(eah $$0, dri $$1) {
-      return $$0.a($$1.a($$0.c(c)));
+   public <T extends dxm> dxn<T> a(djh $$0, eao $$1, dxo<T> $$2) {
+      return !$$0.C ? dly.a($$2, dxo.M, ($$0x, $$1x, $$2x, $$3) -> efx.c.a($$0x, $$3.x(), $$3.gt())) : null;
    }
 }

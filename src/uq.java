@@ -1,5 +1,5 @@
-public class uq extends z {
-   public uq(o $$0) {
+public class uq extends aa {
+   public uq(p $$0) {
       super($$0);
    }
 }

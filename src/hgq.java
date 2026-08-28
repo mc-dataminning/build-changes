@@ -1,12 +1,12 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public record hgq() implements hgx {
+public record hgq() implements hgn {
    public static final MapCodec<hgq> a = MapCodec.unit(new hgq());
 
    @Override
-   public float a(czd $$0, @Nullable gjz $$1, @Nullable bxe $$2, int $$3) {
-      return $$2 instanceof crc $$4 ? $$4.gF().a($$0, 0.0F) : 0.0F;
+   public boolean get(czk $$0, @Nullable gkl $$1, @Nullable bxj $$2, int $$3, czi $$4) {
+      return $$4 == czi.g && fyn.t();
    }
 
    @Override

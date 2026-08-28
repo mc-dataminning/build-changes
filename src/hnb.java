@@ -1,35 +1,45 @@
-import com.google.common.collect.AbstractIterator;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.PeekingIterator;
-import java.util.Comparator;
-import java.util.Iterator;
+public class hnb extends hmq {
+   private static final float n = 0.0F;
+   private static final float o = 0.75F;
+   private final crj p;
+   private final ctw q;
+   private final boolean r;
 
-public class hnb<T> extends AbstractIterator<T> {
-   private final PeekingIterator<T> a;
-   private final PeekingIterator<T> b;
-   private final Comparator<T> c;
-
-   public hnb(Iterator<T> $$0, Iterator<T> $$1, Comparator<T> $$2) {
-      this.a = Iterators.peekingIterator($$0);
-      this.b = Iterators.peekingIterator($$1);
-      this.c = $$2;
+   public hnb(crj $$0, ctw $$1, boolean $$2) {
+      super($$2 ? awn.px : awn.py, awo.g, hnh.t());
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      this.k = hnh.a.a;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
    }
 
-   protected T computeNext() {
-      while (this.a.hasNext() && this.b.hasNext()) {
-         int $$0 = this.c.compare((T)this.a.peek(), (T)this.b.peek());
-         if ($$0 == 0) {
-            this.b.next();
-            return (T)this.a.next();
-         }
+   @Override
+   public boolean s() {
+      return !this.q.aZ();
+   }
 
-         if ($$0 < 0) {
-            this.a.next();
+   @Override
+   public boolean r() {
+      return true;
+   }
+
+   @Override
+   public void q() {
+      if (this.q.dP() || !this.p.bX() || this.p.dj() != this.q) {
+         this.n();
+      } else if (this.r != this.p.bl()) {
+         this.d = 0.0F;
+      } else {
+         float $$0 = (float)this.q.dx().i();
+         boolean $$1 = !this.q.co() && this.q.f() instanceof cul;
+         if ($$0 >= 0.01F && !$$1) {
+            this.d = azm.b(0.0F, 0.75F, $$0);
          } else {
-            this.b.next();
+            this.d = 0.0F;
          }
       }
-
-      return (T)this.endOfData();
    }
 }

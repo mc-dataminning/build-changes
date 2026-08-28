@@ -1,8 +1,8 @@
-public record acy(int b, bxr c, boolean d) implements zf<abu> {
-   public static final yw<vu, acy> a = yw.a(yu.h, acy::b, bxr.a, acy::e, yu.b, acy::f, acy::new);
+public record acy(int b, bxw c, boolean d) implements zf<abu> {
+   public static final yw<vu, acy> a = yw.a(yu.h, acy::b, bxw.a, acy::e, yu.b, acy::f, acy::new);
 
-   public static acy a(bwf $$0) {
-      return new acy($$0.ar(), new bxr($$0.du(), $$0.dy(), $$0.dL(), $$0.dN()), $$0.aJ());
+   public static acy a(bwi $$0) {
+      return new acy($$0.ao(), new bxw($$0.dt(), $$0.dx(), $$0.dK(), $$0.dM()), $$0.aH());
    }
 
    @Override
@@ -14,7 +14,7 @@ public record acy(int b, bxr c, boolean d) implements zf<abu> {
       $$0.a(this);
    }
 
-   public bxr e() {
+   public bxw e() {
       return this.c;
    }
 

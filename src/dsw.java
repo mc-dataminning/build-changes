@@ -1,34 +1,49 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dsw extends dmf implements dmi {
+public class dsw extends dmm {
    public static final MapCodec<dsw> a = b(dsw::new);
+   public static final ebf b = dsx.b;
 
    @Override
    public MapCodec<dsw> a() {
       return a;
    }
 
-   public dsw(eag.d $$0) {
+   public dsw(ean.d $$0) {
       super($$0);
+      this.l(this.m().b(b, Boolean.valueOf(false)));
+   }
+
+   @Nullable
+   @Override
+   public eao a(ddd $$0) {
+      return this.m().b(b, Boolean.valueOf($$0.q().D($$0.a())));
    }
 
    @Override
-   public boolean a(djd $$0, iu $$1, eah $$2) {
-      return $$0.a_($$1.e()).l();
+   protected void a(eao $$0, djh $$1, iv $$2, dmm $$3, @Nullable eyd $$4, boolean $$5) {
+      if (!$$1.C) {
+         boolean $$6 = $$0.c(b);
+         if ($$6 != $$1.D($$2)) {
+            if ($$6) {
+               $$1.a($$2, this, 4);
+            } else {
+               $$1.a($$2, $$0.a(b), 2);
+            }
+         }
+      }
    }
 
    @Override
-   public boolean a(dja $$0, azv $$1, iu $$2, eah $$3) {
-      return true;
+   protected void a(eao $$0, arq $$1, iv $$2, azv $$3) {
+      if ($$0.c(b) && !$$1.D($$2)) {
+         $$1.a($$2, $$0.a(b), 2);
+      }
    }
 
    @Override
-   public void a(arq $$0, azv $$1, iu $$2, eah $$3) {
-      $$0.b($$2.e(), dmh.tq.m());
-   }
-
-   @Override
-   public iu a(iu $$0) {
-      return $$0.e();
+   protected void a(eap.a<dmm, eao> $$0) {
+      $$0.a(b);
    }
 }

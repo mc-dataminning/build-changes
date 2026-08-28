@@ -1,22 +1,30 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
 import java.util.Set;
 
-public class chf<T extends bxe> extends chm<T> {
+public class chf extends chr<bxj> {
    @Override
-   protected void a(arq $$0, T $$1) {
-      double $$2 = $$1.h(byk.m);
-      fel $$3 = $$1.cR().c($$2, $$2, $$2);
-      List<bxe> $$4 = $$0.a(bxe.class, $$3, $$1x -> $$1x != $$1 && $$1x.bK());
-      $$4.sort(Comparator.comparingDouble($$1::g));
-      bye<?> $$5 = $$1.ec();
-      $$5.a(cgg.g, $$4);
-      $$5.a(cgg.h, new cgi($$0, $$1, $$4));
+   public Set<cgl<?>> a() {
+      return ImmutableSet.of(cgl.y, cgl.z);
    }
 
    @Override
-   public Set<cgg<?>> a() {
-      return ImmutableSet.of(cgg.g, cgg.h);
+   protected void a(arq $$0, bxj $$1) {
+      byj<?> $$2 = $$1.eb();
+      bux $$3 = $$1.eH();
+      if ($$3 != null) {
+         $$2.a(cgl.y, $$1.eH());
+         bwi $$4 = $$3.d();
+         if ($$4 instanceof bxj) {
+            $$2.a(cgl.z, (bxj)$$4);
+         }
+      } else {
+         $$2.b(cgl.y);
+      }
+
+      $$2.c(cgl.z).ifPresent($$2x -> {
+         if (!$$2x.bI() || $$2x.dU() != $$0) {
+            $$2.b(cgl.z);
+         }
+      });
    }
 }
