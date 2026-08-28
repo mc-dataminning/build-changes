@@ -1,29 +1,56 @@
 import com.mojang.datafixers.kinds.App;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
+@Deprecated
 public class byc {
-   private static final int a = 1;
-
-   public static bvy<buh> a(float $$0) {
-      return a($$1 -> $$0);
+   public static bwd<buk> a(float $$0, bra $$1) {
+      return a($$0, $$1, $$0x -> true);
    }
 
-   public static bvy<buh> a(Function<buf, Float> $$0) {
-      return bzk.a(
-         (Function<bzk.b<buh>, ? extends App<bzk.c<buh>, bzn<buh>>>)($$1 -> $$1.group($$1.a(cdi.m), $$1.a(cdi.n), $$1.b(cdi.o), $$1.a(cdi.h))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     buf $$9 = $$1.b($$4);
-                     Optional<cdk> $$10 = $$1.a($$5);
-                     if ($$10.isPresent() && $$10.get().a($$9) && bvz.a($$7, $$9, 1)) {
-                        $$2.b();
-                     } else {
-                        $$3.a(new bwi($$9, true));
-                        $$2.a(new cdl(new bwi($$9, false), $$0.apply($$7), 0));
-                     }
+   public static bwd<buk> a(btv<?> $$0, float $$1, bra $$2) {
+      return a($$1, $$2, $$1x -> $$0.equals($$1x.ao()));
+   }
 
-                     return true;
+   private static bwd<buk> a(float $$0, bra $$1, Predicate<buk> $$2) {
+      float $$3 = $$0 * $$0;
+      byc.a $$4 = new byc.a($$1);
+      return bzp.a(
+         (Function<bzp.b<buk>, ? extends App<bzp.c<buk>, bzs<buk>>>)($$3x -> $$3x.group($$3x.c(cdn.n), $$3x.b(cdn.h))
+               .apply($$3x, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<buk> $$9 = $$3x.<cdp>b($$5).a($$2.and($$2xxxx -> $$2xxxx.g((bto)$$7) <= (double)$$3));
+                     if ($$9.isEmpty()) {
+                        return false;
+                     } else if (!$$4.a($$6.z)) {
+                        return false;
+                     } else {
+                        $$4x.a(new bwn($$9.get(), true));
+                        return true;
+                     }
                   }))
       );
+   }
+
+   public static final class a {
+      private final bra a;
+      private int b;
+
+      public a(bra $$0) {
+         if ($$0.a() <= 1) {
+            throw new IllegalArgumentException();
+         } else {
+            this.a = $$0;
+         }
+      }
+
+      public boolean a(azl $$0) {
+         if (this.b == 0) {
+            this.b = this.a.a($$0) - 1;
+            return false;
+         } else {
+            return --this.b == 0;
+         }
+      }
    }
 }

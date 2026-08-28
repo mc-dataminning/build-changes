@@ -1,48 +1,132 @@
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.EnumMap;
 import java.util.EnumSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
-public class cbi extends cbc {
-   private final buh a;
-   private buf b;
-   private final float c;
+public class cbi {
+   private static final ccv a = new ccv(Integer.MAX_VALUE, new cbh() {
+      @Override
+      public boolean b() {
+         return false;
+      }
+   }) {
+      @Override
+      public boolean h() {
+         return false;
+      }
+   };
+   private final Map<cbh.a, ccv> b = new EnumMap<>(cbh.a.class);
+   private final Set<ccv> c = new ObjectLinkedOpenHashSet();
+   private final Supplier<bod> d;
+   private final EnumSet<cbh.a> e = EnumSet.noneOf(cbh.a.class);
 
-   public cbi(buh $$0, float $$1) {
-      this.a = $$0;
-      this.c = $$1;
-      this.a(EnumSet.of(cbc.a.c, cbc.a.a));
+   public cbi(Supplier<bod> $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   public boolean b() {
-      if (this.a.cV()) {
-         return false;
-      } else {
-         this.b = this.a.m();
-         if (this.b == null) {
-            return false;
-         } else {
-            double $$0 = this.a.g(this.b);
-            if ($$0 < 4.0 || $$0 > 16.0) {
-               return false;
-            } else {
-               return !this.a.aH() ? false : this.a.dV().a(b(5)) == 0;
-            }
+   public void a(int $$0, cbh $$1) {
+      this.c.add(new ccv($$0, $$1));
+   }
+
+   @VisibleForTesting
+   public void a(Predicate<cbh> $$0) {
+      this.c.removeIf($$1 -> $$0.test($$1.k()));
+   }
+
+   public void a(cbh $$0) {
+      for (ccv $$1 : this.c) {
+         if ($$1.k() == $$0 && $$1.h()) {
+            $$1.e();
          }
       }
+
+      this.c.removeIf($$1x -> $$1x.k() == $$0);
    }
 
-   @Override
-   public boolean c() {
-      return !this.a.aH();
-   }
-
-   @Override
-   public void d() {
-      eye $$0 = this.a.dv();
-      eye $$1 = new eye(this.b.dx() - this.a.dx(), 0.0, this.b.dD() - this.a.dD());
-      if ($$1.h() > 1.0E-7) {
-         $$1 = $$1.d().c(0.4).e($$0.c(0.2));
+   private static boolean a(ccv $$0, EnumSet<cbh.a> $$1) {
+      for (cbh.a $$2 : $$0.j()) {
+         if ($$1.contains($$2)) {
+            return true;
+         }
       }
 
-      this.a.n($$1.d, (double)this.c, $$1.f);
+      return false;
+   }
+
+   private static boolean a(ccv $$0, Map<cbh.a, ccv> $$1) {
+      for (cbh.a $$2 : $$0.j()) {
+         if (!$$1.getOrDefault($$2, a).a($$0)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public void a() {
+      bod $$0 = this.d.get();
+      $$0.a("goalCleanup");
+
+      for (ccv $$1 : this.c) {
+         if ($$1.h() && (a($$1, this.e) || !$$1.c())) {
+            $$1.e();
+         }
+      }
+
+      this.b.entrySet().removeIf($$0x -> !((ccv)$$0x.getValue()).h());
+      $$0.c();
+      $$0.a("goalUpdate");
+
+      for (ccv $$2 : this.c) {
+         if (!$$2.h() && !a($$2, this.e) && a($$2, this.b) && $$2.b()) {
+            for (cbh.a $$3 : $$2.j()) {
+               ccv $$4 = this.b.getOrDefault($$3, a);
+               $$4.e();
+               this.b.put($$3, $$2);
+            }
+
+            $$2.d();
+         }
+      }
+
+      $$0.c();
+      this.a(true);
+   }
+
+   public void a(boolean $$0) {
+      bod $$1 = this.d.get();
+      $$1.a("goalTick");
+
+      for (ccv $$2 : this.c) {
+         if ($$2.h() && ($$0 || $$2.T_())) {
+            $$2.a();
+         }
+      }
+
+      $$1.c();
+   }
+
+   public Set<ccv> b() {
+      return this.c;
+   }
+
+   public void a(cbh.a $$0) {
+      this.e.add($$0);
+   }
+
+   public void b(cbh.a $$0) {
+      this.e.remove($$0);
+   }
+
+   public void a(cbh.a $$0, boolean $$1) {
+      if ($$1) {
+         this.b($$0);
+      } else {
+         this.a($$0);
+      }
    }
 }

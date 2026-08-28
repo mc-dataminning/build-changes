@@ -1,14 +1,17 @@
-import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class gyj implements atr<gyi> {
-   public gyi b(JsonObject $$0) {
-      boolean $$1 = ays.a($$0, "blur", false);
-      boolean $$2 = ays.a($$0, "clamp", false);
-      return new gyi($$1, $$2);
-   }
+public record gyj(String b, String c, boolean d) {
+   public static final Codec<gyj> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               aym.z.fieldOf("region").forGetter(gyj::b),
+               aym.z.fieldOf("name").forGetter(gyj::c),
+               Codec.BOOL.optionalFieldOf("bidirectional", false).forGetter(gyj::d)
+            )
+            .apply($$0, gyj::new)
+   );
 
-   @Override
-   public String a() {
-      return "texture";
+   public xd a() {
+      return xd.b(this.c + " (" + this.b + ")");
    }
 }

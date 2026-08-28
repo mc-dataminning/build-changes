@@ -3,10 +3,10 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record adr(ert b, byte c, boolean d, Optional<List<erp>> e, Optional<erv.c> f) implements zk<abz> {
-   public static final zb<wo, adr> a = zb.a(ert.b, adr::b, yz.c, adr::e, yz.b, adr::f, erp.a.a(yz.a()).a(yz::a), adr::g, erv.c.a, adr::h, adr::new);
+public record adr(esh b, byte c, boolean d, Optional<List<esd>> e, Optional<esj.c> f) implements zk<abz> {
+   public static final zb<wo, adr> a = zb.a(esh.b, adr::b, yz.c, adr::e, yz.b, adr::f, esd.a.a(yz.a()).a(yz::a), adr::g, esj.c.a, adr::h, adr::new);
 
-   public adr(ert $$0, byte $$1, boolean $$2, @Nullable Collection<erp> $$3, @Nullable erv.c $$4) {
+   public adr(esh $$0, byte $$1, boolean $$2, @Nullable Collection<esd> $$3, @Nullable esj.c $$4) {
       this($$0, $$1, $$2, $$3 != null ? Optional.of(List.copyOf($$3)) : Optional.empty(), Optional.ofNullable($$4));
    }
 
@@ -19,7 +19,7 @@ public record adr(ert b, byte c, boolean d, Optional<List<erp>> e, Optional<erv.
       $$0.a(this);
    }
 
-   public void a(erv $$0) {
+   public void a(esj $$0) {
       this.e.ifPresent($$0::a);
       this.f.ifPresent($$1 -> $$1.a($$0));
    }
@@ -32,11 +32,11 @@ public record adr(ert b, byte c, boolean d, Optional<List<erp>> e, Optional<erv.
       return this.d;
    }
 
-   public Optional<List<erp>> g() {
+   public Optional<List<esd>> g() {
       return this.e;
    }
 
-   public Optional<erv.c> h() {
+   public Optional<esj.c> h() {
       return this.f;
    }
 }

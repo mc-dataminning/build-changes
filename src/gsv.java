@@ -1,8 +1,5 @@
-public class gsv extends gts {
-   public boolean b;
-   public boolean c;
-   public boolean d;
-   public float e;
-   public float f;
-   public float g;
+public class gsv extends guj {
+   public boolean a;
+   public final bti b = new bti();
+   public final bti c = new bti();
 }

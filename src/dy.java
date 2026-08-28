@@ -12,8 +12,8 @@ public record dy(dh.d c) implements bw {
    }
 
    @Override
-   public boolean a(btj $$0, arg $$1, @Nullable eye $$2) {
-      return $$0 instanceof cle $$3 ? this.c.d($$3.gp()) : false;
+   public boolean a(bto $$0, arh $$1, @Nullable eys $$2) {
+      return $$0 instanceof clj $$3 ? this.c.d($$3.gq()) : false;
    }
 
    @Override

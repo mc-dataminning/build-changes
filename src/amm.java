@@ -1,33 +1,59 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
+import com.google.common.net.InetAddresses;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import java.util.Collection;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.List;
+import javax.annotation.Nullable;
 
 public class amm {
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xd.c("commands.banip.invalid"));
+   private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(xd.c("commands.banip.failed"));
+
    public static void a(CommandDispatcher<et> $$0) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("banlist").requires($$0x -> $$0x.c(3)))
-                  .executes($$0x -> {
-                     avg $$1 = ((et)$$0x.getSource()).l().ag();
-                     return a((et)$$0x.getSource(), Lists.newArrayList(Iterables.concat($$1.f().d(), $$1.g().d())));
-                  }))
-               .then(eu.a("ips").executes($$0x -> a((et)$$0x.getSource(), ((et)$$0x.getSource()).l().ag().g().d()))))
-            .then(eu.a("players").executes($$0x -> a((et)$$0x.getSource(), ((et)$$0x.getSource()).l().ag().f().d())))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("ban-ip").requires($$0x -> $$0x.c(3)))
+            .then(
+               ((RequiredArgumentBuilder)eu.a("target", StringArgumentType.word())
+                     .executes($$0x -> a((et)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), null)))
+                  .then(eu.a("reason", fk.a()).executes($$0x -> a((et)$$0x.getSource(), StringArgumentType.getString($$0x, "target"), fk.a($$0x, "reason"))))
+            )
       );
    }
 
-   private static int a(et $$0, Collection<? extends avb<?>> $$1) {
-      if ($$1.isEmpty()) {
-         $$0.a(() -> xd.c("commands.banlist.none"), false);
+   private static int a(et $$0, String $$1, @Nullable xd $$2) throws CommandSyntaxException {
+      if (InetAddresses.isInetAddress($$1)) {
+         return b($$0, $$1, $$2);
       } else {
-         $$0.a(() -> xd.a("commands.banlist.list", $$1.size()), false);
-
-         for (avb<?> $$2 : $$1) {
-            $$0.a(() -> xd.a("commands.banlist.entry", $$2.e(), $$2.b(), $$2.d()), false);
+         ari $$3 = $$0.l().ag().a($$1);
+         if ($$3 != null) {
+            return b($$0, $$3.C(), $$2);
+         } else {
+            throw a.create();
          }
       }
+   }
 
-      return $$1.size();
+   private static int b(et $$0, String $$1, @Nullable xd $$2) throws CommandSyntaxException {
+      ave $$3 = $$0.l().ag().g();
+      if ($$3.a($$1)) {
+         throw b.create();
+      } else {
+         List<ari> $$4 = $$0.l().ag().b($$1);
+         avf $$5 = new avf($$1, null, $$0.c(), null, $$2 == null ? null : $$2.getString());
+         $$3.a($$5);
+         $$0.a(() -> xd.a("commands.banip.success", $$1, $$5.d()), true);
+         if (!$$4.isEmpty()) {
+            $$0.a(() -> xd.a("commands.banip.info", $$4.size(), hi.a($$4)), true);
+         }
+
+         for (ari $$6 : $$4) {
+            $$6.c.a(xd.c("multiplayer.disconnect.ip_banned"));
+         }
+
+         return $$4.size();
+      }
    }
 }

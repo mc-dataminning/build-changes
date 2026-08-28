@@ -1,30 +1,30 @@
-public class goi extends gnj<cme, gue, fyc> {
-   private static final alb b = alb.b("textures/entity/piglin/piglin.png");
-   private static final alb k = alb.b("textures/entity/piglin/piglin_brute.png");
-   public static final gqk.a a = new gqk.a(0.0F, 0.0F, 1.0019531F);
+public class goi extends gni<cjy, gtl> {
+   private static final alc a = alc.b("textures/entity/lead_knot.png");
+   private final fyb b;
 
-   public goi(gms.a $$0, fzz $$1, fzz $$2, fzz $$3, fzz $$4, fzz $$5, fzz $$6) {
-      super($$0, new fyc($$0.a($$1)), new fyc($$0.a($$2)), 0.5F, a);
-      this.a(new gqv<>(this, new fxm($$0.a($$3)), new fxm($$0.a($$4)), new fxm($$0.a($$5)), new fxm($$0.a($$5)), $$0.g()));
+   public goi(gnj.a $$0) {
+      super($$0);
+      this.b = new fyb($$0.a(gak.bb));
    }
 
-   public alb a(gue $$0) {
-      return $$0.a ? k : b;
+   @Override
+   public void a(gtl $$0, fde $$1, ghg $$2, int $$3) {
+      $$1.a();
+      $$1.b(-1.0F, -1.0F, 1.0F);
+      this.b.a($$0);
+      fdi $$4 = $$2.getBuffer(this.b.a(a));
+      this.b.a($$1, $$4, $$3, gws.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public gue c() {
-      return new gue();
+   @Override
+   public alc a(gtl $$0) {
+      return a;
    }
 
-   public void a(cme $$0, gue $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.ao() == btq.aB;
-      $$1.d = $$0.gq();
-      $$1.c = (float)cty.b($$0.fx(), $$0);
-      $$1.b = $$0.go();
-   }
-
-   protected boolean b(gue $$0) {
-      return super.a($$0) || $$0.b;
+   @Override
+   public gtl b() {
+      return new gtl();
    }
 }

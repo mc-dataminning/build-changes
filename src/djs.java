@@ -1,109 +1,68 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class djs extends dgv {
+public class djs extends dkf {
    public static final MapCodec<djs> a = b(djs::new);
-   public static final dva b = duq.aQ;
-   protected static final eyx c = dgv.a(0.0, 0.0, 0.0, 16.0, 15.0, 16.0);
-   public static final int d = 7;
+   protected static final ezm b = dhj.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
 
    @Override
    public MapCodec<djs> a() {
       return a;
    }
 
-   protected djs(dtz.d $$0) {
+   public djs(dun.d $$0) {
       super($$0);
-      this.l(this.E.b().b(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
-      if ($$1 == jj.b && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
+      return b;
    }
 
    @Override
-   protected boolean a(dua $$0, ddv $$1, je $$2) {
-      dua $$3 = $$1.a_($$2.d());
-      return !$$3.e() || $$3.b() instanceof dju || $$3.b() instanceof dts;
+   protected brp a(duo $$0, deg $$1, je $$2, cnu $$3, eyo $$4) {
+      this.d($$0, $$1, $$2);
+      return brp.a;
    }
 
    @Override
-   public dua a(cyw $$0) {
-      return !this.o().a((ddv)$$0.q(), $$0.a()) ? dgx.j.o() : super.a($$0);
+   protected void a_(duo $$0, deg $$1, je $$2, cnu $$3) {
+      this.d($$0, $$1, $$2);
    }
 
-   @Override
-   protected boolean g_(dua $$0) {
-      return true;
-   }
+   private void d(duo $$0, deg $$1, je $$2) {
+      dwf $$3 = $$1.A_();
 
-   @Override
-   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
-      return c;
-   }
+      for (int $$4 = 0; $$4 < 1000; $$4++) {
+         je $$5 = $$2.b($$1.z.a(16) - $$1.z.a(16), $$1.z.a(8) - $$1.z.a(8), $$1.z.a(16) - $$1.z.a(16));
+         if ($$1.a_($$5).l() && $$3.a($$5)) {
+            if ($$1.B) {
+               for (int $$6 = 0; $$6 < 128; $$6++) {
+                  double $$7 = $$1.z.j();
+                  float $$8 = ($$1.z.i() - 0.5F) * 0.2F;
+                  float $$9 = ($$1.z.i() - 0.5F) * 0.2F;
+                  float $$10 = ($$1.z.i() - 0.5F) * 0.2F;
+                  double $$11 = azd.d($$7, (double)$$5.u(), (double)$$2.u()) + ($$1.z.j() - 0.5) + 0.5;
+                  double $$12 = azd.d($$7, (double)$$5.v(), (double)$$2.v()) + $$1.z.j() - 0.5;
+                  double $$13 = azd.d($$7, (double)$$5.w(), (double)$$2.w()) + ($$1.z.j() - 0.5) + 0.5;
+                  $$1.a(ln.ac, $$11, $$12, $$13, (double)$$8, (double)$$9, (double)$$10);
+               }
+            } else {
+               $$1.a($$5, $$0, 2);
+               $$1.a($$2, false);
+            }
 
-   @Override
-   protected void a(dua $$0, arg $$1, je $$2, azk $$3) {
-      if (!$$0.a($$1, $$2)) {
-         a(null, $$0, $$1, $$2);
-      }
-   }
-
-   @Override
-   protected void b(dua $$0, arg $$1, je $$2, azk $$3) {
-      int $$4 = $$0.c(b);
-      if (!a((ddv)$$1, $$2) && !$$1.r($$2.d())) {
-         if ($$4 > 0) {
-            $$1.a($$2, $$0.b(b, Integer.valueOf($$4 - 1)), 2);
-         } else if (!a((dcx)$$1, $$2)) {
-            a(null, $$0, $$1, $$2);
-         }
-      } else if ($$4 < 7) {
-         $$1.a($$2, $$0.b(b, Integer.valueOf(7)), 2);
-      }
-   }
-
-   @Override
-   public void a(dds $$0, dua $$1, je $$2, btj $$3, float $$4) {
-      if (!$$0.B && $$0.z.i() < $$4 - 0.5F && $$3 instanceof buf && ($$3 instanceof cnp || $$0.ac().b(ddo.c)) && $$3.dn() * $$3.dn() * $$3.do() > 0.512F) {
-         a($$3, $$1, $$0, $$2);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   public static void a(@Nullable btj $$0, dua $$1, dds $$2, je $$3) {
-      dua $$4 = a($$1, dgx.j.o(), $$2, $$3);
-      $$2.b($$3, $$4);
-      $$2.a(dyx.c, $$3, dyx.a.a($$0, $$4));
-   }
-
-   private static boolean a(dcx $$0, je $$1) {
-      return $$0.a_($$1.d()).a(aws.cy);
-   }
-
-   private static boolean a(ddv $$0, je $$1) {
-      for (je $$2 : je.c($$1.b(-4, 0, -4), $$1.b(4, 1, 4))) {
-         if ($$0.b_($$2).a(awy.a)) {
-            return true;
+            return;
          }
       }
-
-      return false;
    }
 
    @Override
-   protected void a(dub.a<dgv, dua> $$0) {
-      $$0.a(b);
+   protected int b() {
+      return 5;
    }
 
    @Override
-   protected boolean a(dua $$0, eqq $$1) {
+   protected boolean a(duo $$0, ere $$1) {
       return false;
    }
 }

@@ -11,7 +11,7 @@ public class aea implements zk<abz> {
    private final float j;
    private final float k;
 
-   public aea(cnm $$0) {
+   public aea(cnr $$0) {
       this.f = $$0.a;
       this.g = $$0.b;
       this.h = $$0.c;

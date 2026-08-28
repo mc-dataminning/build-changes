@@ -1,119 +1,86 @@
-import java.util.EnumSet;
 import java.util.List;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class cbj extends cbc {
-   public final cic a;
-   private double b;
-   private static final int c = 8;
-   private int d;
+public class cbj extends cce {
+   private static final int i = 2;
+   private static final int j = 32;
+   private static final int k = 10;
+   private static final int l = 7;
 
-   public cbj(cic $$0, double $$1) {
-      this.a = $$0;
-      this.b = $$1;
-      this.a(EnumSet.of(cbc.a.a));
+   public cbj(bus $$0, double $$1) {
+      super($$0, $$1, 240, false);
    }
 
+   @Nullable
    @Override
-   public boolean b() {
-      if (!this.a.K_() && !this.a.hc()) {
-         List<btj> $$0 = this.a.dS().a(this.a, this.a.cO().c(9.0, 4.0, 9.0), $$0x -> {
-            btq<?> $$1x = $$0x.ao();
-            return $$1x == btq.an || $$1x == btq.be;
-         });
-         cic $$1 = null;
-         double $$2 = Double.MAX_VALUE;
-
-         for (btj $$3 : $$0) {
-            cic $$4 = (cic)$$3;
-            if ($$4.hc() && !$$4.hb()) {
-               double $$5 = this.a.g($$4);
-               if (!($$5 > $$2)) {
-                  $$2 = $$5;
-                  $$1 = $$4;
-               }
+   protected eys h() {
+      float $$0 = this.b.dS().z.i();
+      if (this.b.dS().z.i() < 0.3F) {
+         return this.k();
+      } else {
+         eys $$1;
+         if ($$0 < 0.7F) {
+            $$1 = this.l();
+            if ($$1 == null) {
+               $$1 = this.m();
             }
-         }
-
-         if ($$1 == null) {
-            for (btj $$6 : $$0) {
-               cic $$7 = (cic)$$6;
-               if ($$7.K_() && !$$7.hb()) {
-                  double $$8 = this.a.g($$7);
-                  if (!($$8 > $$2)) {
-                     $$2 = $$8;
-                     $$1 = $$7;
-                  }
-               }
-            }
-         }
-
-         if ($$1 == null) {
-            return false;
-         } else if ($$2 < 4.0) {
-            return false;
-         } else if (!$$1.K_() && !this.a($$1, 1)) {
-            return false;
          } else {
-            this.a.a($$1);
-            return true;
-         }
-      } else {
-         return false;
-      }
-   }
-
-   @Override
-   public boolean c() {
-      if (this.a.hc() && this.a.hd().bI() && this.a(this.a, 0)) {
-         double $$0 = this.a.g(this.a.hd());
-         if ($$0 > 676.0) {
-            if (this.b <= 3.0) {
-               this.b *= 1.2;
-               this.d = b(40);
-               return true;
-            }
-
-            if (this.d == 0) {
-               return false;
+            $$1 = this.m();
+            if ($$1 == null) {
+               $$1 = this.l();
             }
          }
 
-         if (this.d > 0) {
-            this.d--;
-         }
+         return $$1 == null ? this.k() : $$1;
+      }
+   }
 
-         return true;
+   @Nullable
+   private eys k() {
+      return cfh.a(this.b, 10, 7);
+   }
+
+   @Nullable
+   private eys l() {
+      arh $$0 = (arh)this.b.dS();
+      List<cnh> $$1 = $$0.a(btv.bj, this.b.cO().g(32.0), this::a);
+      if ($$1.isEmpty()) {
+         return null;
       } else {
-         return false;
+         cnh $$2 = $$1.get(this.b.dS().z.a($$1.size()));
+         eys $$3 = $$2.dq();
+         return cfh.a(this.b, 10, 7, $$3);
       }
    }
 
-   @Override
-   public void e() {
-      this.a.gE();
-      this.b = 2.1;
-   }
-
-   @Override
-   public void a() {
-      if (this.a.hc()) {
-         if (!(this.a.C() instanceof cjt)) {
-            cic $$0 = this.a.hd();
-            double $$1 = (double)this.a.f($$0);
-            float $$2 = 2.0F;
-            eye $$3 = new eye($$0.dx() - this.a.dx(), $$0.dz() - this.a.dz(), $$0.dD() - this.a.dD()).d().c(Math.max($$1 - 2.0, 0.0));
-            this.a.P().a(this.a.dx() + $$3.d, this.a.dz() + $$3.e, this.a.dD() + $$3.f, this.b);
-         }
-      }
-   }
-
-   private boolean a(cic $$0, int $$1) {
-      if ($$1 > 8) {
-         return false;
-      } else if ($$0.hc()) {
-         return $$0.hd().K_() ? true : this.a($$0.hd(), ++$$1);
+   @Nullable
+   private eys m() {
+      kg $$0 = this.n();
+      if ($$0 == null) {
+         return null;
       } else {
-         return false;
+         je $$1 = this.a($$0);
+         return $$1 == null ? null : cfh.a(this.b, 10, 7, eys.c($$1));
       }
+   }
+
+   @Nullable
+   private kg n() {
+      arh $$0 = (arh)this.b.dS();
+      List<kg> $$1 = kg.a(kg.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
+      return $$1.isEmpty() ? null : $$1.get($$0.z.a($$1.size()));
+   }
+
+   @Nullable
+   private je a(kg $$0) {
+      arh $$1 = (arh)this.b.dS();
+      cfn $$2 = $$1.y();
+      List<je> $$3 = $$2.c($$0x -> true, $$0.k(), 8, cfn.b.b).map(cfo::g).collect(Collectors.toList());
+      return $$3.isEmpty() ? null : $$3.get($$1.z.a($$3.size()));
+   }
+
+   private boolean a(cnh $$0) {
+      return $$0.a(this.b.dS().aa());
    }
 }

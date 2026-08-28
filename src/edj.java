@@ -1,47 +1,54 @@
 import com.mojang.serialization.Codec;
 
-public class edj extends edc<efn> {
-   public edj(Codec<efn> $$0) {
+public class edj extends edq<efr> {
+   public edj(Codec<efr> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ede<efn> $$0) {
-      dep $$1 = $$0.b();
+   public boolean a(eds<efr> $$0) {
+      efr $$1 = $$0.f();
       je $$2 = $$0.e();
-      azk $$3 = $$0.d();
-      if (!$$1.u($$2)) {
-         return false;
-      } else {
-         dua $$4 = $$1.a_($$2.d());
-         if (!$$4.a(dgx.dV) && !$$4.a(dgx.dY) && !$$4.a(dgx.pr)) {
-            return false;
-         } else {
-            $$1.a($$2, dgx.ec.o(), 2);
+      dfd $$3 = $$0.b();
+      azl $$4 = $$0.d();
+      boolean $$5 = false;
+      int $$6 = $$2.v();
+      int $$7 = $$6 + $$1.d();
+      int $$8 = $$6 - $$1.d() - 1;
+      int $$9 = $$1.c().a($$4);
+      je.a $$10 = new je.a();
 
-            for (int $$5 = 0; $$5 < 1500; $$5++) {
-               je $$6 = $$2.b($$3.a(8) - $$3.a(8), -$$3.a(12), $$3.a(8) - $$3.a(8));
-               if ($$1.a_($$6).l()) {
-                  int $$7 = 0;
-
-                  for (jj $$8 : jj.values()) {
-                     if ($$1.a_($$6.a($$8)).a(dgx.ec)) {
-                        $$7++;
-                     }
-
-                     if ($$7 > 1) {
-                        break;
-                     }
-                  }
-
-                  if ($$7 == 1) {
-                     $$1.a($$6, dgx.ec.o(), 2);
-                  }
-               }
-            }
-
-            return true;
+      for (je $$11 : je.c($$2.b(-$$9, 0, -$$9), $$2.b($$9, 0, $$9))) {
+         int $$12 = $$11.u() - $$2.u();
+         int $$13 = $$11.w() - $$2.w();
+         if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+            $$5 |= this.a($$1, $$3, $$4, $$7, $$8, $$10.g($$11));
          }
       }
+
+      return $$5;
+   }
+
+   protected boolean a(efr $$0, dfd $$1, azl $$2, int $$3, int $$4, je.a $$5) {
+      boolean $$6 = false;
+      boolean $$7 = false;
+
+      for (int $$8 = $$3; $$8 > $$4; $$8--) {
+         $$5.q($$8);
+         if ($$0.b().test($$1, $$5)) {
+            duo $$9 = $$0.a().a($$1, $$2, $$5);
+            $$1.a($$5, $$9, 2);
+            if (!$$7) {
+               this.a($$1, $$5);
+            }
+
+            $$6 = true;
+            $$7 = true;
+         } else {
+            $$7 = false;
+         }
+      }
+
+      return $$6;
    }
 }

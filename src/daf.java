@@ -1,61 +1,54 @@
-public class daf extends czk {
-   public daf(czh $$0) {
-      super($$0);
+import java.util.Map;
+
+public class daf extends dap {
+   public daf(czv $$0) {
+      super("", $$0, daq.a(Map.of('#', dad.a(cvt.qP), 'x', dad.a(cvt.rV)), "###", "#x#", "###"), new cvp(cvt.ul));
    }
 
-   public boolean a(czi $$0, dds $$1) {
-      int $$2 = 0;
-      int $$3 = 0;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cvl $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if (dgv.a($$5.h()) instanceof dnv) {
-               $$2++;
-            } else {
-               if (!($$5.h() instanceof cuf)) {
-                  return false;
-               }
-
-               $$3++;
-            }
-
-            if ($$3 > 1 || $$2 > 1) {
+   @Override
+   public boolean a(czw $$0, deg $$1) {
+      if (!super.a($$0, $$1)) {
+         return false;
+      } else {
+         cvp $$2 = a($$0);
+         if ($$2.f()) {
+            return false;
+         } else {
+            esj $$3 = cwc.b($$2, $$1);
+            if ($$3 == null) {
                return false;
+            } else {
+               return $$3.g() ? false : $$3.f < 4;
             }
          }
       }
-
-      return $$2 == 1 && $$3 == 1;
    }
 
-   public cvl a(czi $$0, jp.a $$1) {
-      cvl $$2 = cvl.k;
-      cuf $$3 = (cuf)cvo.rj;
+   @Override
+   public cvp a(czw $$0, jp.a $$1) {
+      cvp $$2 = a($$0).c(1);
+      $$2.b(kr.I, cyq.b);
+      return $$2;
+   }
 
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cvl $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            cvg $$6 = $$5.h();
-            if (dgv.a($$6) instanceof dnv) {
-               $$2 = $$5;
-            } else if ($$6 instanceof cuf) {
-               $$3 = (cuf)$$6;
-            }
+   private static cvp a(czw $$0) {
+      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
+         cvp $$2 = $$0.a($$1);
+         if ($$2.a(cvt.rV)) {
+            return $$2;
          }
       }
 
-      dgv $$7 = dnv.a($$3.c());
-      return $$2.a($$7, 1);
+      return cvp.k;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public boolean ap_() {
+      return true;
    }
 
    @Override
-   public czy<?> as_() {
-      return czy.m;
+   public dam<?> aq_() {
+      return dam.f;
    }
 }

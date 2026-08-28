@@ -1,9 +1,7 @@
-public class gvd extends gts implements gvc {
-   public boolean a;
-   public cnd b = new cnd(cnh.c, cnf.b, 1);
-
-   @Override
-   public cnd a() {
-      return this.b;
-   }
+public class gvd extends guj {
+   public float a;
+   public float b;
+   public boolean c;
+   public cuj d = cuj.a;
+   public int e;
 }

@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class gc implements ArgumentType<cso> {
+public class gc implements ArgumentType<csu> {
    private static final Collection<String> a = List.of("container.*", "container.5", "weapon");
    private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xd.b("slot.unknown", $$0));
 
@@ -17,13 +17,13 @@ public class gc implements ArgumentType<cso> {
       return new gc();
    }
 
-   public static cso a(CommandContext<et> $$0, String $$1) {
-      return (cso)$$0.getArgument($$1, cso.class);
+   public static csu a(CommandContext<et> $$0, String $$1) {
+      return (csu)$$0.getArgument($$1, csu.class);
    }
 
-   public cso a(StringReader $$0) throws CommandSyntaxException {
+   public csu a(StringReader $$0) throws CommandSyntaxException {
       String $$1 = ex.a($$0, $$0x -> $$0x != ' ');
-      cso $$2 = csp.a($$1);
+      csu $$2 = csv.a($$1);
       if ($$2 == null) {
          throw b.createWithContext($$0, $$1);
       } else {
@@ -32,7 +32,7 @@ public class gc implements ArgumentType<cso> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return ey.b(csp.a(), $$1);
+      return ey.b(csv.a(), $$1);
    }
 
    public Collection<String> getExamples() {

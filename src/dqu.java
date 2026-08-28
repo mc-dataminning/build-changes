@@ -1,19 +1,33 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dqu(alb e, String f) {
-   public static final Codec<dqu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(alb.a.fieldOf("asset_id").forGetter(dqu::a), Codec.STRING.fieldOf("translation_key").forGetter(dqu::b)).apply($$0, dqu::new)
+public class dqu extends don implements dqp {
+   public static final MapCodec<dqu> f = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dqp.a.e.fieldOf("weathering_state").forGetter(dik::c), u()).apply($$0, dqu::new)
    );
-   public static final zb<wo, dqu> b = zb.a(alb.b, dqu::a, yz.l, dqu::b, dqu::new);
-   public static final Codec<jn<dqu>> c = akx.a(lv.d, a);
-   public static final zb<wo, jn<dqu>> d = yz.a(lv.d, b);
+   private final dqp.a g;
 
-   public alb a() {
-      return this.e;
+   @Override
+   public MapCodec<dqu> a() {
+      return f;
    }
 
-   public String b() {
-      return this.f;
+   public dqu(dqp.a $$0, dun.d $$1) {
+      super($$1);
+      this.g = $$0;
+   }
+
+   @Override
+   protected void b(duo $$0, arh $$1, je $$2, azl $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected boolean f(duo $$0) {
+      return dqp.c($$0.b()).isPresent();
+   }
+
+   public dqp.a l() {
+      return this.g;
    }
 }

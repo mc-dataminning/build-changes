@@ -1,82 +1,150 @@
 import com.google.common.annotations.VisibleForTesting;
-import java.util.concurrent.atomic.AtomicLong;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
 
-public class dzx implements dzl {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private final AtomicLong h = new AtomicLong();
-   private final dzy i = new dzy(this);
+public class dzx implements eae.c {
+   public static final int a = 12;
+   private static final int f = 24;
+   private static final float[] g = ad.a(new float[13824], $$0 -> {
+      for (int $$1 = 0; $$1 < 24; $$1++) {
+         for (int $$2 = 0; $$2 < 24; $$2++) {
+            for (int $$3 = 0; $$3 < 24; $$3++) {
+               $$0[$$1 * 24 * 24 + $$2 * 24 + $$3] = (float)a($$2 - 12, $$3 - 12, $$1 - 12);
+            }
+         }
+      }
+   });
+   private final ObjectListIterator<dzx.a> h;
+   private final ObjectListIterator<emf> i;
 
-   public dzx(long $$0) {
-      this.b($$0);
+   public static dzx a(dfb $$0, ddm $$1) {
+      int $$2 = $$1.d();
+      int $$3 = $$1.e();
+      ObjectList<dzx.a> $$4 = new ObjectArrayList(10);
+      ObjectList<emf> $$5 = new ObjectArrayList(32);
+      $$0.a($$1, $$0x -> $$0x.d() != eln.a).forEach($$5x -> {
+         eln $$6 = $$5x.h().d();
+
+         for (elg $$7 : $$5x.i()) {
+            if ($$7.a($$1, 12)) {
+               if ($$7 instanceof eky) {
+                  eky $$8 = (eky)$$7;
+                  emm.a $$9 = $$8.b().f();
+                  if ($$9 == emm.a.b) {
+                     $$4.add(new dzx.a($$8.f(), $$6, $$8.d()));
+                  }
+
+                  for (emf $$10 : $$8.e()) {
+                     int $$11 = $$10.a();
+                     int $$12 = $$10.c();
+                     if ($$11 > $$2 - 12 && $$12 > $$3 - 12 && $$11 < $$2 + 15 + 12 && $$12 < $$3 + 15 + 12) {
+                        $$5.add($$10);
+                     }
+                  }
+               } else {
+                  $$4.add(new dzx.a($$7.f(), $$6, 0));
+               }
+            }
+         }
+      });
+      return new dzx($$4.iterator(), $$5.iterator());
+   }
+
+   @VisibleForTesting
+   public dzx(ObjectListIterator<dzx.a> $$0, ObjectListIterator<emf> $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    @Override
-   public azk d() {
-      return new dzx(this.g());
+   public double a(ead.b $$0) {
+      int $$1 = $$0.a();
+      int $$2 = $$0.b();
+      int $$3 = $$0.c();
+      double $$4 = 0.0;
+
+      while (this.h.hasNext()) {
+         dzx.a $$5 = (dzx.a)this.h.next();
+         eku $$6 = $$5.a();
+         int $$7 = $$5.c();
+         int $$8 = Math.max(0, Math.max($$6.h() - $$1, $$1 - $$6.k()));
+         int $$9 = Math.max(0, Math.max($$6.j() - $$3, $$3 - $$6.m()));
+         int $$10 = $$6.i() + $$7;
+         int $$11 = $$2 - $$10;
+
+         int $$12 = switch ($$5.b()) {
+            case a -> 0;
+            case b, c -> $$11;
+            case d -> Math.max(0, Math.max($$10 - $$2, $$2 - $$6.l()));
+            case e -> Math.max(0, Math.max($$6.i() - $$2, $$2 - $$6.l()));
+         };
+
+         $$4 += switch ($$5.b()) {
+            case a -> 0.0;
+            case b -> a((double)$$8, (double)$$12 / 2.0, (double)$$9);
+            case c, d -> a($$8, $$12, $$9, $$11) * 0.8;
+            case e -> a((double)$$8 / 2.0, (double)$$12 / 2.0, (double)$$9 / 2.0) * 0.8;
+         };
+      }
+
+      this.h.back(Integer.MAX_VALUE);
+
+      while (this.i.hasNext()) {
+         emf $$13 = (emf)this.i.next();
+         int $$14 = $$1 - $$13.a();
+         int $$15 = $$2 - $$13.b();
+         int $$16 = $$3 - $$13.c();
+         $$4 += a($$14, $$15, $$16, $$15) * 0.4;
+      }
+
+      this.i.back(Integer.MAX_VALUE);
+      return $$4;
    }
 
    @Override
-   public eaj e() {
-      return new dzx.a(this.g());
+   public double a() {
+      return Double.NEGATIVE_INFINITY;
    }
 
    @Override
-   public void b(long $$0) {
-      if (!this.h.compareAndSet(this.h.get(), ($$0 ^ 25214903917L) & 281474976710655L)) {
-         throw bab.a("LegacyRandomSource", null);
+   public double b() {
+      return Double.POSITIVE_INFINITY;
+   }
+
+   private static double a(double $$0, double $$1, double $$2) {
+      double $$3 = azd.g($$0, $$1, $$2);
+      return azd.a($$3, 0.0, 6.0, 1.0, 0.0);
+   }
+
+   private static double a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$0 + 12;
+      int $$5 = $$1 + 12;
+      int $$6 = $$2 + 12;
+      if (a($$4) && a($$5) && a($$6)) {
+         double $$7 = (double)$$3 + 0.5;
+         double $$8 = azd.f((double)$$0, $$7, (double)$$2);
+         double $$9 = -$$7 * azd.g($$8 / 2.0) / 2.0;
+         return $$9 * (double)g[$$6 * 24 * 24 + $$4 * 24 + $$5];
       } else {
-         this.i.a();
+         return 0.0;
       }
    }
 
-   @Override
-   public int c(int $$0) {
-      long $$1 = this.h.get();
-      long $$2 = $$1 * 25214903917L + 11L & 281474976710655L;
-      if (!this.h.compareAndSet($$1, $$2)) {
-         throw bab.a("LegacyRandomSource", null);
-      } else {
-         return (int)($$2 >> 48 - $$0);
-      }
+   private static boolean a(int $$0) {
+      return $$0 >= 0 && $$0 < 24;
    }
 
-   @Override
-   public double k() {
-      return this.i.b();
+   private static double a(int $$0, int $$1, int $$2) {
+      return a($$0, (double)$$1 + 0.5, $$2);
    }
 
-   public static class a implements eaj {
-      private final long a;
+   private static double a(int $$0, double $$1, int $$2) {
+      double $$3 = azd.f((double)$$0, $$1, (double)$$2);
+      return Math.pow(Math.E, -$$3 / 16.0);
+   }
 
-      public a(long $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public azk a(int $$0, int $$1, int $$2) {
-         long $$3 = azc.b($$0, $$1, $$2);
-         long $$4 = $$3 ^ this.a;
-         return new dzx($$4);
-      }
-
-      @Override
-      public azk a(String $$0) {
-         int $$1 = $$0.hashCode();
-         return new dzx((long)$$1 ^ this.a);
-      }
-
-      @Override
-      public azk a(long $$0) {
-         return new dzx($$0);
-      }
-
-      @VisibleForTesting
-      @Override
-      public void a(StringBuilder $$0) {
-         $$0.append("LegacyPositionalRandomFactory{").append(this.a).append("}");
-      }
+   @VisibleForTesting
+   public static record a(eku a, eln b, int c) {
    }
 }

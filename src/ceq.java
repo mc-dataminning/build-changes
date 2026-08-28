@@ -1,47 +1,33 @@
 import com.google.common.collect.ImmutableSet;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class ceq extends ceo<bun> {
-   private static final cev a = cev.b().d();
-   private final Predicate<cvl> b;
-
-   public ceq(Predicate<cvl> $$0) {
-      this.b = $$0;
-   }
-
-   protected void a(arg $$0, bun $$1) {
-      bvg<?> $$2 = $$1.dX();
-      cev $$3 = a.c().a((double)((float)$$1.h(bvm.E)));
-      List<cnp> $$4 = $$0.x()
-         .stream()
-         .filter(bto.f)
-         .filter($$2x -> $$3.a($$1, $$2x))
-         .filter(this::a)
-         .filter($$1x -> !$$1.y($$1x))
-         .sorted(Comparator.comparingDouble($$1::g))
-         .collect(Collectors.toList());
-      if (!$$4.isEmpty()) {
-         cnp $$5 = $$4.get(0);
-         $$2.a(cdi.O, $$5);
-      } else {
-         $$2.b(cdi.O);
-      }
-   }
-
-   private boolean a(cnp $$0) {
-      return this.a($$0.eW()) || this.a($$0.eX());
-   }
-
-   private boolean a(cvl $$0) {
-      return this.b.test($$0);
+public class ceq extends cet<buk> {
+   @Override
+   public Set<cdn<?>> a() {
+      return ImmutableSet.of(cdn.j, cdn.k, cdn.l);
    }
 
    @Override
-   public Set<cdi<?>> a() {
-      return ImmutableSet.of(cdi.O);
+   protected void a(arh $$0, buk $$1) {
+      List<cnu> $$2 = $$0.x()
+         .stream()
+         .filter(btt.f)
+         .filter($$1x -> $$1.a($$1x, this.a($$1)))
+         .sorted(Comparator.comparingDouble($$1::g))
+         .collect(Collectors.toList());
+      bvl<?> $$3 = $$1.dX();
+      $$3.a(cdn.j, $$2);
+      List<cnu> $$4 = $$2.stream().filter($$1x -> b($$1, $$1x)).collect(Collectors.toList());
+      $$3.a(cdn.k, $$4.isEmpty() ? null : $$4.get(0));
+      Optional<cnu> $$5 = $$4.stream().filter($$1x -> c($$1, $$1x)).findFirst();
+      $$3.a(cdn.l, $$5);
+   }
+
+   protected double a(buk $$0) {
+      return $$0.h(bvr.m);
    }
 }

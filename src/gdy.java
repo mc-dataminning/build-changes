@@ -1,76 +1,304 @@
-public class gdy extends gee {
-   private static final int a = 3;
-   private final ghc b;
-   private final btj D;
-   private final btj E;
-   private int F;
-   private final gmq G;
-   private double H;
-   private double I;
-   private double J;
-   private double K;
-   private double L;
-   private double M;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.List;
 
-   public gdy(gmq $$0, ghc $$1, gax $$2, btj $$3, btj $$4) {
-      this($$0, $$1, $$2, $$3, $$4, $$3.dv());
-   }
+public class gdy {
+   public static class a implements ger<lr> {
+      private final gfj a;
 
-   private gdy(gmq $$0, ghc $$1, gax $$2, btj $$3, btj $$4, eye $$5) {
-      super($$2, $$3.dx(), $$3.dz(), $$3.dD(), $$5.d, $$5.e, $$5.f);
-      this.b = $$1;
-      this.D = this.a($$3);
-      this.E = $$4;
-      this.G = $$0;
-      this.c();
-      this.d();
-   }
-
-   private btj a(btj $$0) {
-      return (btj)(!($$0 instanceof cjz) ? $$0 : ((cjz)$$0).A());
-   }
-
-   @Override
-   public gei b() {
-      return gei.d;
-   }
-
-   @Override
-   public void a(fcy $$0, fhk $$1, float $$2) {
-      float $$3 = ((float)this.F + $$2) / 3.0F;
-      $$3 *= $$3;
-      double $$4 = azc.d((double)$$2, this.K, this.H);
-      double $$5 = azc.d((double)$$2, this.L, this.I);
-      double $$6 = azc.d((double)$$2, this.M, this.J);
-      double $$7 = azc.d((double)$$3, this.D.dx(), $$4);
-      double $$8 = azc.d((double)$$3, this.D.dz(), $$5);
-      double $$9 = azc.d((double)$$3, this.D.dD(), $$6);
-      ggv.a $$10 = this.b.c();
-      eye $$11 = $$1.b();
-      this.G.a(this.D, $$7 - $$11.a(), $$8 - $$11.b(), $$9 - $$11.c(), $$2, new fcu(), $$10, this.G.a(this.D, $$2));
-      $$10.b();
-   }
-
-   @Override
-   public void a() {
-      this.F++;
-      if (this.F == 3) {
-         this.k();
+      public a(gfj $$0) {
+         this.a = $$0;
       }
 
-      this.d();
-      this.c();
+      public geo a(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gdy.b $$8 = new gdy.b($$1, $$2, $$3, $$4);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 
-   private void c() {
-      this.H = this.E.dx();
-      this.I = (this.E.dz() + this.E.dB()) / 2.0;
-      this.J = this.E.dD();
+   public static class b extends gfo {
+      b(gbh $$0, double $$1, double $$2, double $$3) {
+         super($$0, $$1, $$2, $$3);
+         this.t = 4;
+      }
+
+      @Override
+      public ges b() {
+         return ges.c;
+      }
+
+      @Override
+      public void a(fdi $$0, fhu $$1, float $$2) {
+         this.e(0.6F - ((float)this.s + $$2 - 1.0F) * 0.25F * 0.5F);
+         super.a($$0, $$1, $$2);
+      }
+
+      @Override
+      public float b(float $$0) {
+         return 7.1F * azd.a(((float)this.s + $$0 - 1.0F) * 0.25F * (float) Math.PI);
+      }
    }
 
-   private void d() {
-      this.K = this.H;
-      this.L = this.I;
-      this.M = this.J;
+   static class c extends gfa {
+      private boolean b;
+      private boolean F;
+      private final geq G;
+      private float H;
+      private float I;
+      private float J;
+      private boolean K;
+
+      c(gbh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, geq $$7, gfj $$8) {
+         super($$0, $$1, $$2, $$3, $$8, 0.1F);
+         this.j = $$4;
+         this.k = $$5;
+         this.l = $$6;
+         this.G = $$7;
+         this.D *= 0.75F;
+         this.t = 48 + this.r.a(12);
+         this.b($$8);
+      }
+
+      public void a(boolean $$0) {
+         this.b = $$0;
+      }
+
+      public void b(boolean $$0) {
+         this.F = $$0;
+      }
+
+      @Override
+      public void a(fdi $$0, fhu $$1, float $$2) {
+         if (!this.F || this.s < this.t / 3 || (this.s + this.t) / 3 % 2 == 0) {
+            super.a($$0, $$1, $$2);
+         }
+      }
+
+      @Override
+      public void a() {
+         super.a();
+         if (this.b && this.s < this.t / 2 && (this.s + this.t) % 2 == 0) {
+            gdy.c $$0 = new gdy.c(this.c, this.g, this.h, this.i, 0.0, 0.0, 0.0, this.G, this.a);
+            $$0.e(0.99F);
+            $$0.a(this.v, this.w, this.x);
+            $$0.s = $$0.t / 2;
+            if (this.K) {
+               $$0.K = true;
+               $$0.H = this.H;
+               $$0.I = this.I;
+               $$0.J = this.J;
+            }
+
+            $$0.F = this.F;
+            this.G.a($$0);
+         }
+      }
+   }
+
+   public static class d implements ger<lr> {
+      private final gfj a;
+
+      public d(gfj $$0) {
+         this.a = $$0;
+      }
+
+      public geo a(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gdy.c $$8 = new gdy.c($$1, $$2, $$3, $$4, $$5, $$6, $$7, fil.Q().g, this.a);
+         $$8.e(0.99F);
+         return $$8;
+      }
+   }
+
+   public static class e extends gem {
+      private static final double[][] a = new double[][]{
+         {0.0, 0.2}, {0.2, 0.2}, {0.2, 0.6}, {0.6, 0.6}, {0.6, 0.2}, {0.2, 0.2}, {0.2, 0.0}, {0.4, 0.0}, {0.4, -0.6}, {0.2, -0.6}, {0.2, -0.4}, {0.0, -0.4}
+      };
+      private static final double[][] b = new double[][]{
+         {0.0, 1.0},
+         {0.3455, 0.309},
+         {0.9511, 0.309},
+         {0.3795918367346939, -0.12653061224489795},
+         {0.6122448979591837, -0.8040816326530612},
+         {0.0, -0.35918367346938773}
+      };
+      private int D;
+      private final geq E;
+      private final List<cyi> F;
+      private boolean G;
+
+      public e(gbh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, geq $$7, List<cyi> $$8) {
+         super($$0, $$1, $$2, $$3);
+         this.j = $$4;
+         this.k = $$5;
+         this.l = $$6;
+         this.E = $$7;
+         if ($$8.isEmpty()) {
+            throw new IllegalArgumentException("Cannot create firework starter with no explosions");
+         } else {
+            this.F = $$8;
+            this.t = $$8.size() * 2 - 1;
+
+            for (cyi $$9 : $$8) {
+               if ($$9.e()) {
+                  this.G = true;
+                  this.t += 15;
+                  break;
+               }
+            }
+         }
+      }
+
+      @Override
+      public void a() {
+         if (this.D == 0) {
+            boolean $$0 = this.c();
+            boolean $$1 = false;
+            if (this.F.size() >= 3) {
+               $$1 = true;
+            } else {
+               for (cyi $$2 : this.F) {
+                  if ($$2.a() == cyi.a.b) {
+                     $$1 = true;
+                     break;
+                  }
+               }
+            }
+
+            awd $$3;
+            if ($$1) {
+               $$3 = $$0 ? awe.iP : awe.iO;
+            } else {
+               $$3 = $$0 ? awe.iN : awe.iM;
+            }
+
+            this.c.a(this.g, this.h, this.i, $$3, awf.i, 20.0F, 0.95F + this.r.i() * 0.1F, true);
+         }
+
+         if (this.D % 2 == 0 && this.D / 2 < this.F.size()) {
+            int $$5 = this.D / 2;
+            cyi $$6 = this.F.get($$5);
+            boolean $$7 = $$6.d();
+            boolean $$8 = $$6.e();
+            IntList $$9 = $$6.b();
+            IntList $$10 = $$6.c();
+            if ($$9.isEmpty()) {
+               $$9 = IntList.of(cuj.p.f());
+            }
+
+            switch ($$6.a()) {
+               case a:
+                  this.a(0.25, 2, $$9, $$10, $$7, $$8);
+                  break;
+               case b:
+                  this.a(0.5, 4, $$9, $$10, $$7, $$8);
+                  break;
+               case c:
+                  this.a(0.5, b, $$9, $$10, $$7, $$8, false);
+                  break;
+               case d:
+                  this.a(0.5, a, $$9, $$10, $$7, $$8, true);
+                  break;
+               case e:
+                  this.a($$9, $$10, $$7, $$8);
+            }
+
+            int $$11 = $$9.getInt(0);
+            geo $$12 = this.E.a(ln.N, this.g, this.h, this.i, 0.0, 0.0, 0.0);
+            $$12.a((float)axo.b($$11) / 255.0F, (float)axo.c($$11) / 255.0F, (float)axo.d($$11) / 255.0F);
+         }
+
+         this.D++;
+         if (this.D > this.t) {
+            if (this.G) {
+               boolean $$13 = this.c();
+               awd $$14 = $$13 ? awe.iT : awe.iS;
+               this.c.a(this.g, this.h, this.i, $$14, awf.i, 20.0F, 0.9F + this.r.i() * 0.15F, true);
+            }
+
+            this.k();
+         }
+      }
+
+      private boolean c() {
+         fil $$0 = fil.Q();
+         return $$0.j.k().b().c(this.g, this.h, this.i) >= 256.0;
+      }
+
+      private void a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, IntList $$6, IntList $$7, boolean $$8, boolean $$9) {
+         gdy.c $$10 = (gdy.c)this.E.a(ln.D, $$0, $$1, $$2, $$3, $$4, $$5);
+         $$10.a($$8);
+         $$10.b($$9);
+         $$10.e(0.99F);
+         $$10.b(ad.<Integer>a($$6, this.r));
+         if (!$$7.isEmpty()) {
+            $$10.c(ad.<Integer>a($$7, this.r));
+         }
+      }
+
+      private void a(double $$0, int $$1, IntList $$2, IntList $$3, boolean $$4, boolean $$5) {
+         double $$6 = this.g;
+         double $$7 = this.h;
+         double $$8 = this.i;
+
+         for (int $$9 = -$$1; $$9 <= $$1; $$9++) {
+            for (int $$10 = -$$1; $$10 <= $$1; $$10++) {
+               for (int $$11 = -$$1; $$11 <= $$1; $$11++) {
+                  double $$12 = (double)$$10 + (this.r.j() - this.r.j()) * 0.5;
+                  double $$13 = (double)$$9 + (this.r.j() - this.r.j()) * 0.5;
+                  double $$14 = (double)$$11 + (this.r.j() - this.r.j()) * 0.5;
+                  double $$15 = Math.sqrt($$12 * $$12 + $$13 * $$13 + $$14 * $$14) / $$0 + this.r.k() * 0.05;
+                  this.a($$6, $$7, $$8, $$12 / $$15, $$13 / $$15, $$14 / $$15, $$2, $$3, $$4, $$5);
+                  if ($$9 != -$$1 && $$9 != $$1 && $$10 != -$$1 && $$10 != $$1) {
+                     $$11 += $$1 * 2 - 1;
+                  }
+               }
+            }
+         }
+      }
+
+      private void a(double $$0, double[][] $$1, IntList $$2, IntList $$3, boolean $$4, boolean $$5, boolean $$6) {
+         double $$7 = $$1[0][0];
+         double $$8 = $$1[0][1];
+         this.a(this.g, this.h, this.i, $$7 * $$0, $$8 * $$0, 0.0, $$2, $$3, $$4, $$5);
+         float $$9 = this.r.i() * (float) Math.PI;
+         double $$10 = $$6 ? 0.034 : 0.34;
+
+         for (int $$11 = 0; $$11 < 3; $$11++) {
+            double $$12 = (double)$$9 + (double)((float)$$11 * (float) Math.PI) * $$10;
+            double $$13 = $$7;
+            double $$14 = $$8;
+
+            for (int $$15 = 1; $$15 < $$1.length; $$15++) {
+               double $$16 = $$1[$$15][0];
+               double $$17 = $$1[$$15][1];
+
+               for (double $$18 = 0.25; $$18 <= 1.0; $$18 += 0.25) {
+                  double $$19 = azd.d($$18, $$13, $$16) * $$0;
+                  double $$20 = azd.d($$18, $$14, $$17) * $$0;
+                  double $$21 = $$19 * Math.sin($$12);
+                  $$19 *= Math.cos($$12);
+
+                  for (double $$22 = -1.0; $$22 <= 1.0; $$22 += 2.0) {
+                     this.a(this.g, this.h, this.i, $$19 * $$22, $$20, $$21 * $$22, $$2, $$3, $$4, $$5);
+                  }
+               }
+
+               $$13 = $$16;
+               $$14 = $$17;
+            }
+         }
+      }
+
+      private void a(IntList $$0, IntList $$1, boolean $$2, boolean $$3) {
+         double $$4 = this.r.k() * 0.05;
+         double $$5 = this.r.k() * 0.05;
+
+         for (int $$6 = 0; $$6 < 70; $$6++) {
+            double $$7 = this.j * 0.5 + this.r.k() * 0.15 + $$4;
+            double $$8 = this.l * 0.5 + this.r.k() * 0.15 + $$5;
+            double $$9 = this.k * 0.5 + this.r.j() * 0.5;
+            this.a(this.g, this.h, this.i, $$7, $$9, $$8, $$0, $$1, $$2, $$3);
+         }
+      }
    }
 }

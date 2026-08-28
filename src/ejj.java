@@ -1,78 +1,13 @@
-import com.mojang.serialization.MapCodec;
-import java.util.stream.Stream;
-import java.util.stream.Stream.Builder;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 
-@Deprecated
-public class ejj extends ejv {
-   public static final MapCodec<ejj> a = bqp.b(0, 256).fieldOf("count").xmap(ejj::new, $$0 -> $$0.c);
-   private final bqp c;
+public abstract class ejj {
+   private static final Codec<Either<ebe, ejj>> a = Codec.either(ebe.a, lu.L.q().dispatch(ejj::a, ejk::codec));
+   public static final Codec<ejj> c = a.xmap(
+      $$0 -> (ejj)$$0.map(eji::a, $$0x -> $$0x), $$0 -> $$0.a() == ejk.a ? Either.left(((eji)$$0).b()) : Either.right($$0)
+   );
 
-   private ejj(bqp $$0) {
-      this.c = $$0;
-   }
+   public abstract int a(azl var1, ebh var2);
 
-   public static ejj a(bqp $$0) {
-      return new ejj($$0);
-   }
-
-   public static ejj a(int $$0) {
-      return a(bqm.a($$0));
-   }
-
-   @Override
-   public Stream<je> a_(ejt $$0, azk $$1, je $$2) {
-      Builder<je> $$3 = Stream.builder();
-      int $$4 = 0;
-
-      boolean $$5;
-      do {
-         $$5 = false;
-
-         for (int $$6 = 0; $$6 < this.c.a($$1); $$6++) {
-            int $$7 = $$1.a(16) + $$2.u();
-            int $$8 = $$1.a(16) + $$2.w();
-            int $$9 = $$0.a(dzw.a.e, $$7, $$8);
-            int $$10 = a($$0, $$7, $$9, $$8, $$4);
-            if ($$10 != Integer.MAX_VALUE) {
-               $$3.add(new je($$7, $$10, $$8));
-               $$5 = true;
-            }
-         }
-
-         $$4++;
-      } while ($$5);
-
-      return $$3.build();
-   }
-
-   @Override
-   public ejw<?> b() {
-      return ejw.i;
-   }
-
-   private static int a(ejt $$0, int $$1, int $$2, int $$3, int $$4) {
-      je.a $$5 = new je.a($$1, $$2, $$3);
-      int $$6 = 0;
-      dua $$7 = $$0.a($$5);
-
-      for (int $$8 = $$2; $$8 >= $$0.c() + 1; $$8--) {
-         $$5.q($$8 - 1);
-         dua $$9 = $$0.a($$5);
-         if (!a($$9) && a($$7) && !$$9.a(dgx.F)) {
-            if ($$6 == $$4) {
-               return $$5.v() + 1;
-            }
-
-            $$6++;
-         }
-
-         $$7 = $$9;
-      }
-
-      return Integer.MAX_VALUE;
-   }
-
-   private static boolean a(dua $$0) {
-      return $$0.l() || $$0.a(dgx.G) || $$0.a(dgx.H);
-   }
+   public abstract ejk<?> a();
 }

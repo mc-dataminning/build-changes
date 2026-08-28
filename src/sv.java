@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class sv {
    private static final int a = 50;
 
-   public static Collection<su> a(Collection<tu> $$0, arg $$1) {
+   public static Collection<su> a(Collection<tu> $$0, arh $$1) {
       Map<String, List<tu>> $$2 = $$0.stream().collect(Collectors.groupingBy(tu::b));
       return $$2.entrySet()
          .stream()
@@ -26,7 +26,7 @@ public class sv {
          .toList();
    }
 
-   public static ta a(tu $$0, int $$1, arg $$2) {
+   public static ta a(tu $$0, int $$1, arh $$2) {
       return new ta($$0, tq.a($$1), $$2, tn.a());
    }
 
@@ -46,8 +46,8 @@ public class sv {
    }
 
    public static su a(Collection<ta> $$0, String $$1, long $$2) {
-      Consumer<arg> $$3 = tc.c($$1);
-      Consumer<arg> $$4 = tc.d($$1);
+      Consumer<arh> $$3 = tc.c($$1);
+      Consumer<arh> $$4 = tc.d($$1);
       return new su($$1 + ":" + $$2, $$0, $$3, $$4);
    }
 }

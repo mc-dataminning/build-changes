@@ -1,12 +1,12 @@
 public class akr {
-   public static final ala<dgv> a = a("pumpkin");
-   public static final ala<dgv> b = a("pumpkin_stem");
-   public static final ala<dgv> c = a("attached_pumpkin_stem");
-   public static final ala<dgv> d = a("melon");
-   public static final ala<dgv> e = a("melon_stem");
-   public static final ala<dgv> f = a("attached_melon_stem");
+   public static final alb<dhj> a = a("pumpkin");
+   public static final alb<dhj> b = a("pumpkin_stem");
+   public static final alb<dhj> c = a("attached_pumpkin_stem");
+   public static final alb<dhj> d = a("melon");
+   public static final alb<dhj> e = a("melon_stem");
+   public static final alb<dhj> f = a("attached_melon_stem");
 
-   private static ala<dgv> a(String $$0) {
-      return ala.a(lv.f, alb.b($$0));
+   private static alb<dhj> a(String $$0) {
+      return alb.a(lv.f, alc.b($$0));
    }
 }

@@ -1,43 +1,39 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-
-public record cjv(int e, int f, alb g, Optional<xd> h, Optional<xd> i) {
-   public static final Codec<cjv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayl.a(1, 16).fieldOf("width").forGetter(cjv::b),
-               ayl.a(1, 16).fieldOf("height").forGetter(cjv::c),
-               alb.a.fieldOf("asset_id").forGetter(cjv::d),
-               xf.a.optionalFieldOf("title").forGetter(cjv::e),
-               xf.a.optionalFieldOf("author").forGetter(cjv::f)
-            )
-            .apply($$0, cjv::new)
-   );
-   public static final zb<wo, cjv> b = zb.a(yz.g, cjv::b, yz.g, cjv::c, alb.b, cjv::d, xf.e, cjv::e, xf.e, cjv::f, cjv::new);
-   public static final Codec<jn<cjv>> c = akx.a(lv.X, a);
-   public static final zb<wo, jn<cjv>> d = yz.a(lv.X, b);
-
-   public int a() {
-      return this.b() * this.c();
+public class cjv extends cjx {
+   public cjv(btv<? extends cjx> $$0, deg $$1) {
+      super($$0, $$1);
    }
 
-   public int b() {
-      return this.e;
+   public cjv(deg $$0, je $$1, jj $$2) {
+      super(btv.V, $$0, $$1, $$2);
    }
 
-   public int c() {
-      return this.f;
+   @Override
+   public awd t() {
+      return awe.kF;
    }
 
-   public alb d() {
-      return this.g;
+   @Override
+   public awd v() {
+      return awe.kD;
    }
 
-   public Optional<xd> e() {
-      return this.h;
+   @Override
+   public awd w() {
+      return awe.kE;
    }
 
-   public Optional<xd> f() {
-      return this.i;
+   @Override
+   public awd x() {
+      return awe.kC;
+   }
+
+   @Override
+   public awd y() {
+      return awe.kG;
+   }
+
+   @Override
+   protected cvp z() {
+      return new cvp(cvt.uf);
    }
 }

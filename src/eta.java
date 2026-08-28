@@ -1,81 +1,67 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.MapCodec;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Function;
+import java.util.Locale;
+import java.util.UUID;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public class eta extends etc {
-   public static final MapCodec<eta> a = a(eta::new);
+public interface eta extends etc {
+   @Override
+   String e();
 
-   eta(List<etj> $$0, List<ewe> $$1) {
-      super($$0, $$1);
-   }
+   void a(boolean var1);
+
+   int j();
+
+   void c(int var1);
+
+   void b(int var1);
+
+   int h();
 
    @Override
-   public etk a() {
-      return eth.g;
+   default void a(p $$0, dei $$1) {
+      etc.super.a($$0, $$1);
+      $$0.a("Level name", this::e);
+      $$0.a(
+         "Level game mode",
+         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
+      );
+      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
    }
 
-   @Override
-   protected etb a(List<? extends etb> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> b;
-         case 1 -> (etb)$$0.get(0);
-         case 2 -> $$0.get(0).or($$0.get(1));
-         default -> ($$1, $$2) -> {
-         for (etb $$3 : $$0) {
-            if ($$3.expand($$1, $$2)) {
-               return true;
-            }
-         }
+   int f();
 
-         return false;
-      };
-      };
-   }
+   void a(int var1);
 
-   @Override
-   public void a(esz $$0) {
-      super.a($$0);
+   int t();
 
-      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
-         if (this.d.get($$1).e.isEmpty()) {
-            $$0.b("Unreachable entry!");
-         }
-      }
-   }
+   void d(int var1);
 
-   public static eta.a a(etj.a<?>... $$0) {
-      return new eta.a($$0);
-   }
+   int u();
 
-   public static <E> eta.a a(Collection<E> $$0, Function<E, etj.a<?>> $$1) {
-      return new eta.a($$0.stream().map($$1::apply).toArray(etj.a[]::new));
-   }
+   void e(int var1);
 
-   public static class a extends etj.a<eta.a> {
-      private final Builder<etj> a = ImmutableList.builder();
+   @Nullable
+   UUID v();
 
-      public a(etj.a<?>... $$0) {
-         for (etj.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
+   void a(UUID var1);
 
-      protected eta.a a() {
-         return this;
-      }
+   ded k();
 
-      @Override
-      public eta.a a(etj.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
+   void a(dwf.c var1);
 
-      @Override
-      public etj b() {
-         return new eta(this.a.build(), this.f());
-      }
-   }
+   dwf.c p();
+
+   boolean n();
+
+   void c(boolean var1);
+
+   boolean m();
+
+   void a(ded var1);
+
+   eyf<MinecraftServer> s();
+
+   void a(long var1);
+
+   void b(long var1);
 }

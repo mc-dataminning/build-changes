@@ -1,14 +1,20 @@
-public abstract class gny<T extends buh, S extends gts, M extends fxa<? super S>> extends gnt<T, S, M> {
-   public gny(gms.a $$0, M $$1, float $$2) {
-      super($$0, $$1, $$2);
+public class gny extends glz<cme> {
+   private static final alc a = alc.b("textures/entity/hoglin/hoglin.png");
+
+   public gny(gnj.a $$0) {
+      super($$0, gak.aM, gak.aN, 0.7F);
    }
 
-   protected boolean a(T $$0, double $$1) {
-      return super.a($$0, $$1) && ($$0.cJ() || $$0.ak() && $$0 == this.e.c);
+   public alc a(gtz $$0) {
+      return a;
    }
 
-   @Override
-   protected float f(S $$0) {
-      return super.f($$0) * $$0.ab;
+   public void a(cme $$0, gtz $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b = $$0.y();
+   }
+
+   protected boolean b(gtz $$0) {
+      return super.a($$0) || $$0.b;
    }
 }

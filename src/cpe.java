@@ -1,160 +1,139 @@
-import com.google.common.collect.Maps;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class cpe extends ern {
-   private static final String a = "raids";
-   private final Map<Integer, cpc> b = Maps.newHashMap();
-   private final arg c;
-   private int d;
-   private int e;
+public abstract class cpe extends coc implements cok {
+   public static final ddz e = new dey(true, false, Optional.empty(), lu.e.a(awt.cz).map(Function.identity()));
+   public static final double f = 0.25;
 
-   public static ern.a<cpe> a(arg $$0) {
-      return new ern.a<>(() -> new cpe($$0), ($$1, $$2) -> a($$0, $$1), bal.l);
+   public cpe(btv<? extends cpe> $$0, deg $$1) {
+      super($$0, $$1);
+      this.d = 0.0;
    }
 
-   public cpe(arg $$0) {
-      this.c = $$0;
-      this.d = 1;
-      this.c();
+   public cpe(btv<? extends cpe> $$0, deg $$1, bto $$2, double $$3, double $$4, double $$5) {
+      super($$0, $$3, $$4, $$5, $$1);
+      this.c($$2);
+      this.d = 0.0;
    }
 
-   public cpc a(int $$0) {
-      return this.b.get($$0);
-   }
-
-   public void a() {
-      this.e++;
-      Iterator<cpc> $$0 = this.b.values().iterator();
-
-      while ($$0.hasNext()) {
-         cpc $$1 = $$0.next();
-         if (this.c.ac().b(ddo.B)) {
-            $$1.n();
-         }
-
-         if ($$1.d()) {
-            $$0.remove();
-            this.c();
-         } else {
-            $$1.o();
-         }
-      }
-
-      if (this.e % 200 == 0) {
-         this.c();
-      }
-
-      agn.a(this.c, this.b.values());
-   }
-
-   public static boolean a(cpd $$0, cpc $$1) {
-      return $$0 != null && $$1 != null && $$1.i() != null ? $$0.bI() && $$0.gB() && $$0.eq() <= 2400 && $$0.dS().B_() == $$1.i().B_() : false;
-   }
-
-   @Nullable
-   public cpc a(arh $$0, je $$1) {
-      if ($$0.P_()) {
-         return null;
-      } else if (this.c.ac().b(ddo.B)) {
-         return null;
-      } else {
-         dxw $$2 = $$0.dS().B_();
-         if (!$$2.c()) {
-            return null;
-         } else {
-            List<cfj> $$3 = this.c.y().c($$0x -> $$0x.a(axd.b), $$1, 64, cfi.b.b).toList();
-            int $$4 = 0;
-            eye $$5 = eye.c;
-
-            for (cfj $$6 : $$3) {
-               je $$7 = $$6.g();
-               $$5 = $$5.b((double)$$7.u(), (double)$$7.v(), (double)$$7.w());
-               $$4++;
-            }
-
-            je $$8;
-            if ($$4 > 0) {
-               $$5 = $$5.c(1.0 / (double)$$4);
-               $$8 = je.a((jx)$$5);
-            } else {
-               $$8 = $$1;
-            }
-
-            cpc $$10 = this.a($$0.B(), $$8);
-            if (!$$10.j() && !this.b.containsKey($$10.t())) {
-               this.b.put($$10.t(), $$10);
-            }
-
-            if (!$$10.j() || $$10.m() < $$10.l()) {
-               $$10.a($$0);
-            }
-
-            this.c();
-            return $$10;
-         }
-      }
-   }
-
-   private cpc a(arg $$0, je $$1) {
-      cpc $$2 = $$0.d($$1);
-      return $$2 != null ? $$2 : new cpc(this.b(), $$0, $$1);
-   }
-
-   public static cpe a(arg $$0, uf $$1) {
-      cpe $$2 = new cpe($$0);
-      $$2.d = $$1.h("NextAvailableID");
-      $$2.e = $$1.h("Tick");
-      ul $$3 = $$1.c("Raids", 10);
-
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         uf $$5 = $$3.a($$4);
-         cpc $$6 = new cpc($$0, $$5);
-         $$2.b.put($$6.t(), $$6);
-      }
-
-      return $$2;
+   cpe(btv<? extends cpe> $$0, double $$1, double $$2, double $$3, eys $$4, deg $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.d = 0.0;
    }
 
    @Override
-   public uf a(uf $$0, jp.a $$1) {
-      $$0.a("NextAvailableID", this.d);
-      $$0.a("Tick", this.e);
-      ul $$2 = new ul();
+   protected eyn aw() {
+      float $$0 = this.ao().n().a() / 2.0F;
+      float $$1 = this.ao().n().b();
+      float $$2 = 0.15F;
+      return new eyn(
+         this.dq().d - (double)$$0,
+         this.dq().e - 0.15F,
+         this.dq().f - (double)$$0,
+         this.dq().d + (double)$$0,
+         this.dq().e - 0.15F + (double)$$1,
+         this.dq().f + (double)$$0
+      );
+   }
 
-      for (cpc $$3 : this.b.values()) {
-         uf $$4 = new uf();
-         $$3.a($$4);
-         $$2.add($$4);
+   @Override
+   public boolean i(bto $$0) {
+      return $$0 instanceof cpe ? false : super.i($$0);
+   }
+
+   @Override
+   protected boolean b(bto $$0) {
+      if ($$0 instanceof cpe) {
+         return false;
+      } else {
+         return $$0.ao() == btv.E ? false : super.b($$0);
       }
-
-      $$0.a("Raids", $$2);
-      return $$0;
    }
 
-   public static String a(jn<dxw> $$0) {
-      return $$0.a(dxu.c) ? "raids_end" : "raids";
+   @Override
+   protected void a(eyp $$0) {
+      super.a($$0);
+      if (!this.dS().B) {
+         buk $$2 = this.s() instanceof buk $$1 ? $$1 : null;
+         bto $$3 = $$0.a();
+         if ($$2 != null) {
+            $$2.B($$3);
+         }
+
+         bsg $$4 = this.dT().c(this, $$2);
+         if ($$3.a($$4, 1.0F) && $$3 instanceof buk $$5) {
+            dbm.a((arh)this.dS(), (bto)$$5, $$4);
+         }
+
+         this.a(this.dq());
+      }
    }
 
-   private int b() {
-      return ++this.d;
+   @Override
+   public void j(double $$0, double $$1, double $$2) {
+   }
+
+   protected abstract void a(eys var1);
+
+   @Override
+   protected void a(eyo $$0) {
+      super.a($$0);
+      if (!this.dS().B) {
+         ki $$1 = $$0.c().q();
+         eys $$2 = eys.a($$1).d(0.25, 0.25, 0.25);
+         eys $$3 = $$0.g().e($$2);
+         this.a($$3);
+         this.as();
+      }
+   }
+
+   @Override
+   protected void a(eyq $$0) {
+      super.a($$0);
+      if (!this.dS().B) {
+         this.as();
+      }
+   }
+
+   @Override
+   protected boolean o() {
+      return false;
+   }
+
+   @Override
+   public cvp m() {
+      return cvp.k;
+   }
+
+   @Override
+   protected float t() {
+      return 1.0F;
+   }
+
+   @Override
+   protected float v() {
+      return this.t();
    }
 
    @Nullable
-   public cpc a(je $$0, int $$1) {
-      cpc $$2 = null;
-      double $$3 = (double)$$1;
+   @Override
+   protected ll q() {
+      return null;
+   }
 
-      for (cpc $$4 : this.b.values()) {
-         double $$5 = $$4.s().j($$0);
-         if ($$4.u() && $$5 < $$3) {
-            $$2 = $$4;
-            $$3 = $$5;
-         }
+   @Override
+   public void l() {
+      if (!this.dS().B && this.dy() > this.dS().an() + 30) {
+         this.a(this.dq());
+         this.as();
+      } else {
+         super.l();
       }
+   }
 
-      return $$2;
+   @Override
+   public boolean a(bsg $$0, float $$1) {
+      return false;
    }
 }

@@ -1,219 +1,410 @@
-public abstract class eyn {
-   private static final jj.a[] d = jj.a.values();
-   protected final int a;
-   protected final int b;
-   protected final int c;
+import java.util.Optional;
+import javax.annotation.Nullable;
+import org.joml.Vector3f;
 
-   protected eyn(int $$0, int $$1, int $$2) {
-      if ($$0 >= 0 && $$1 >= 0 && $$2 >= 0) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      } else {
-         throw new IllegalArgumentException("Need all positive sizes: x: " + $$0 + ", y: " + $$1 + ", z: " + $$2);
-      }
+public class eyn {
+   private static final double g = 1.0E-7;
+   public final double a;
+   public final double b;
+   public final double c;
+   public final double d;
+   public final double e;
+   public final double f;
+
+   public eyn(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      this.a = Math.min($$0, $$3);
+      this.b = Math.min($$1, $$4);
+      this.c = Math.min($$2, $$5);
+      this.d = Math.max($$0, $$3);
+      this.e = Math.max($$1, $$4);
+      this.f = Math.max($$2, $$5);
    }
 
-   public boolean a(jb $$0, int $$1, int $$2, int $$3) {
-      return this.e($$0.a($$1, $$2, $$3, jj.a.a), $$0.a($$1, $$2, $$3, jj.a.b), $$0.a($$1, $$2, $$3, jj.a.c));
+   public eyn(je $$0) {
+      this((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), (double)($$0.u() + 1), (double)($$0.v() + 1), (double)($$0.w() + 1));
    }
 
-   public boolean e(int $$0, int $$1, int $$2) {
-      if ($$0 < 0 || $$1 < 0 || $$2 < 0) {
-         return false;
-      } else {
-         return $$0 < this.a && $$1 < this.b && $$2 < this.c ? this.b($$0, $$1, $$2) : false;
-      }
+   public eyn(eys $$0, eys $$1) {
+      this($$0.d, $$0.e, $$0.f, $$1.d, $$1.e, $$1.f);
    }
 
-   public boolean b(jb $$0, int $$1, int $$2, int $$3) {
-      return this.b($$0.a($$1, $$2, $$3, jj.a.a), $$0.a($$1, $$2, $$3, jj.a.b), $$0.a($$1, $$2, $$3, jj.a.c));
+   public static eyn a(eku $$0) {
+      return new eyn((double)$$0.h(), (double)$$0.i(), (double)$$0.j(), (double)($$0.k() + 1), (double)($$0.l() + 1), (double)($$0.m() + 1));
    }
 
-   public abstract boolean b(int var1, int var2, int var3);
-
-   public abstract void c(int var1, int var2, int var3);
-
-   public boolean a() {
-      for (jj.a $$0 : d) {
-         if (this.a($$0) >= this.b($$0)) {
-            return true;
-         }
-      }
-
-      return false;
+   public static eyn a(eys $$0) {
+      return new eyn($$0.d, $$0.e, $$0.f, $$0.d + 1.0, $$0.e + 1.0, $$0.f + 1.0);
    }
 
-   public abstract int a(jj.a var1);
-
-   public abstract int b(jj.a var1);
-
-   public int a(jj.a $$0, int $$1, int $$2) {
-      int $$3 = this.c($$0);
-      if ($$1 >= 0 && $$2 >= 0) {
-         jj.a $$4 = jb.b.a($$0);
-         jj.a $$5 = jb.c.a($$0);
-         if ($$1 < this.c($$4) && $$2 < this.c($$5)) {
-            jb $$6 = jb.a(jj.a.a, $$0);
-
-            for (int $$7 = 0; $$7 < $$3; $$7++) {
-               if (this.b($$6, $$7, $$1, $$2)) {
-                  return $$7;
-               }
-            }
-
-            return $$3;
-         } else {
-            return $$3;
-         }
-      } else {
-         return $$3;
-      }
+   public static eyn a(je $$0, je $$1) {
+      return new eyn(
+         (double)Math.min($$0.u(), $$1.u()),
+         (double)Math.min($$0.v(), $$1.v()),
+         (double)Math.min($$0.w(), $$1.w()),
+         (double)(Math.max($$0.u(), $$1.u()) + 1),
+         (double)(Math.max($$0.v(), $$1.v()) + 1),
+         (double)(Math.max($$0.w(), $$1.w()) + 1)
+      );
    }
 
-   public int b(jj.a $$0, int $$1, int $$2) {
-      if ($$1 >= 0 && $$2 >= 0) {
-         jj.a $$3 = jb.b.a($$0);
-         jj.a $$4 = jb.c.a($$0);
-         if ($$1 < this.c($$3) && $$2 < this.c($$4)) {
-            int $$5 = this.c($$0);
-            jb $$6 = jb.a(jj.a.a, $$0);
-
-            for (int $$7 = $$5 - 1; $$7 >= 0; $$7--) {
-               if (this.b($$6, $$7, $$1, $$2)) {
-                  return $$7 + 1;
-               }
-            }
-
-            return 0;
-         } else {
-            return 0;
-         }
-      } else {
-         return 0;
-      }
+   public eyn a(double $$0) {
+      return new eyn($$0, this.b, this.c, this.d, this.e, this.f);
    }
 
-   public int c(jj.a $$0) {
+   public eyn b(double $$0) {
+      return new eyn(this.a, $$0, this.c, this.d, this.e, this.f);
+   }
+
+   public eyn c(double $$0) {
+      return new eyn(this.a, this.b, $$0, this.d, this.e, this.f);
+   }
+
+   public eyn d(double $$0) {
+      return new eyn(this.a, this.b, this.c, $$0, this.e, this.f);
+   }
+
+   public eyn e(double $$0) {
+      return new eyn(this.a, this.b, this.c, this.d, $$0, this.f);
+   }
+
+   public eyn f(double $$0) {
+      return new eyn(this.a, this.b, this.c, this.d, this.e, $$0);
+   }
+
+   public double a(jj.a $$0) {
       return $$0.a(this.a, this.b, this.c);
    }
 
-   public int b() {
-      return this.c(jj.a.a);
+   public double b(jj.a $$0) {
+      return $$0.a(this.d, this.e, this.f);
    }
 
-   public int c() {
-      return this.c(jj.a.b);
-   }
-
-   public int d() {
-      return this.c(jj.a.c);
-   }
-
-   public void a(eyn.b $$0, boolean $$1) {
-      this.a($$0, jb.a, $$1);
-      this.a($$0, jb.b, $$1);
-      this.a($$0, jb.c, $$1);
-   }
-
-   private void a(eyn.b $$0, jb $$1, boolean $$2) {
-      jb $$3 = $$1.a();
-      int $$4 = this.c($$3.a(jj.a.a));
-      int $$5 = this.c($$3.a(jj.a.b));
-      int $$6 = this.c($$3.a(jj.a.c));
-
-      for (int $$7 = 0; $$7 <= $$4; $$7++) {
-         for (int $$8 = 0; $$8 <= $$5; $$8++) {
-            int $$9 = -1;
-
-            for (int $$10 = 0; $$10 <= $$6; $$10++) {
-               int $$11 = 0;
-               int $$12 = 0;
-
-               for (int $$13 = 0; $$13 <= 1; $$13++) {
-                  for (int $$14 = 0; $$14 <= 1; $$14++) {
-                     if (this.a($$3, $$7 + $$13 - 1, $$8 + $$14 - 1, $$10)) {
-                        $$11++;
-                        $$12 ^= $$13 ^ $$14;
-                     }
-                  }
-               }
-
-               if ($$11 == 1 || $$11 == 3 || $$11 == 2 && ($$12 & 1) == 0) {
-                  if ($$2) {
-                     if ($$9 == -1) {
-                        $$9 = $$10;
-                     }
-                  } else {
-                     $$0.consume(
-                        $$3.a($$7, $$8, $$10, jj.a.a),
-                        $$3.a($$7, $$8, $$10, jj.a.b),
-                        $$3.a($$7, $$8, $$10, jj.a.c),
-                        $$3.a($$7, $$8, $$10 + 1, jj.a.a),
-                        $$3.a($$7, $$8, $$10 + 1, jj.a.b),
-                        $$3.a($$7, $$8, $$10 + 1, jj.a.c)
-                     );
-                  }
-               } else if ($$9 != -1) {
-                  $$0.consume(
-                     $$3.a($$7, $$8, $$9, jj.a.a),
-                     $$3.a($$7, $$8, $$9, jj.a.b),
-                     $$3.a($$7, $$8, $$9, jj.a.c),
-                     $$3.a($$7, $$8, $$10, jj.a.a),
-                     $$3.a($$7, $$8, $$10, jj.a.b),
-                     $$3.a($$7, $$8, $$10, jj.a.c)
-                  );
-                  $$9 = -1;
-               }
-            }
-         }
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if (!($$0 instanceof eyn $$1)) {
+         return false;
+      } else if (Double.compare($$1.a, this.a) != 0) {
+         return false;
+      } else if (Double.compare($$1.b, this.b) != 0) {
+         return false;
+      } else if (Double.compare($$1.c, this.c) != 0) {
+         return false;
+      } else if (Double.compare($$1.d, this.d) != 0) {
+         return false;
+      } else {
+         return Double.compare($$1.e, this.e) != 0 ? false : Double.compare($$1.f, this.f) == 0;
       }
    }
 
-   public void b(eyn.b $$0, boolean $$1) {
-      eyh.a(this, $$0, $$1);
+   @Override
+   public int hashCode() {
+      long $$0 = Double.doubleToLongBits(this.a);
+      int $$1 = (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.b);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.c);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.d);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.e);
+      $$1 = 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
+      $$0 = Double.doubleToLongBits(this.f);
+      return 31 * $$1 + (int)($$0 ^ $$0 >>> 32);
    }
 
-   public void a(eyn.a $$0) {
-      this.a($$0, jb.a);
-      this.a($$0, jb.b);
-      this.a($$0, jb.c);
+   public eyn a(double $$0, double $$1, double $$2) {
+      double $$3 = this.a;
+      double $$4 = this.b;
+      double $$5 = this.c;
+      double $$6 = this.d;
+      double $$7 = this.e;
+      double $$8 = this.f;
+      if ($$0 < 0.0) {
+         $$3 -= $$0;
+      } else if ($$0 > 0.0) {
+         $$6 -= $$0;
+      }
+
+      if ($$1 < 0.0) {
+         $$4 -= $$1;
+      } else if ($$1 > 0.0) {
+         $$7 -= $$1;
+      }
+
+      if ($$2 < 0.0) {
+         $$5 -= $$2;
+      } else if ($$2 > 0.0) {
+         $$8 -= $$2;
+      }
+
+      return new eyn($$3, $$4, $$5, $$6, $$7, $$8);
    }
 
-   private void a(eyn.a $$0, jb $$1) {
-      jb $$2 = $$1.a();
-      jj.a $$3 = $$2.a(jj.a.c);
-      int $$4 = this.c($$2.a(jj.a.a));
-      int $$5 = this.c($$2.a(jj.a.b));
-      int $$6 = this.c($$3);
-      jj $$7 = jj.a($$3, jj.b.b);
-      jj $$8 = jj.a($$3, jj.b.a);
+   public eyn b(eys $$0) {
+      return this.b($$0.d, $$0.e, $$0.f);
+   }
 
-      for (int $$9 = 0; $$9 < $$4; $$9++) {
-         for (int $$10 = 0; $$10 < $$5; $$10++) {
-            boolean $$11 = false;
+   public eyn b(double $$0, double $$1, double $$2) {
+      double $$3 = this.a;
+      double $$4 = this.b;
+      double $$5 = this.c;
+      double $$6 = this.d;
+      double $$7 = this.e;
+      double $$8 = this.f;
+      if ($$0 < 0.0) {
+         $$3 += $$0;
+      } else if ($$0 > 0.0) {
+         $$6 += $$0;
+      }
 
-            for (int $$12 = 0; $$12 <= $$6; $$12++) {
-               boolean $$13 = $$12 != $$6 && this.b($$2, $$9, $$10, $$12);
-               if (!$$11 && $$13) {
-                  $$0.consume($$7, $$2.a($$9, $$10, $$12, jj.a.a), $$2.a($$9, $$10, $$12, jj.a.b), $$2.a($$9, $$10, $$12, jj.a.c));
-               }
+      if ($$1 < 0.0) {
+         $$4 += $$1;
+      } else if ($$1 > 0.0) {
+         $$7 += $$1;
+      }
 
-               if ($$11 && !$$13) {
-                  $$0.consume($$8, $$2.a($$9, $$10, $$12 - 1, jj.a.a), $$2.a($$9, $$10, $$12 - 1, jj.a.b), $$2.a($$9, $$10, $$12 - 1, jj.a.c));
-               }
+      if ($$2 < 0.0) {
+         $$5 += $$2;
+      } else if ($$2 > 0.0) {
+         $$8 += $$2;
+      }
 
-               $$11 = $$13;
-            }
-         }
+      return new eyn($$3, $$4, $$5, $$6, $$7, $$8);
+   }
+
+   public eyn c(double $$0, double $$1, double $$2) {
+      double $$3 = this.a - $$0;
+      double $$4 = this.b - $$1;
+      double $$5 = this.c - $$2;
+      double $$6 = this.d + $$0;
+      double $$7 = this.e + $$1;
+      double $$8 = this.f + $$2;
+      return new eyn($$3, $$4, $$5, $$6, $$7, $$8);
+   }
+
+   public eyn g(double $$0) {
+      return this.c($$0, $$0, $$0);
+   }
+
+   public eyn a(eyn $$0) {
+      double $$1 = Math.max(this.a, $$0.a);
+      double $$2 = Math.max(this.b, $$0.b);
+      double $$3 = Math.max(this.c, $$0.c);
+      double $$4 = Math.min(this.d, $$0.d);
+      double $$5 = Math.min(this.e, $$0.e);
+      double $$6 = Math.min(this.f, $$0.f);
+      return new eyn($$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   public eyn b(eyn $$0) {
+      double $$1 = Math.min(this.a, $$0.a);
+      double $$2 = Math.min(this.b, $$0.b);
+      double $$3 = Math.min(this.c, $$0.c);
+      double $$4 = Math.max(this.d, $$0.d);
+      double $$5 = Math.max(this.e, $$0.e);
+      double $$6 = Math.max(this.f, $$0.f);
+      return new eyn($$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   public eyn d(double $$0, double $$1, double $$2) {
+      return new eyn(this.a + $$0, this.b + $$1, this.c + $$2, this.d + $$0, this.e + $$1, this.f + $$2);
+   }
+
+   public eyn a(je $$0) {
+      return new eyn(
+         this.a + (double)$$0.u(),
+         this.b + (double)$$0.v(),
+         this.c + (double)$$0.w(),
+         this.d + (double)$$0.u(),
+         this.e + (double)$$0.v(),
+         this.f + (double)$$0.w()
+      );
+   }
+
+   public eyn c(eys $$0) {
+      return this.d($$0.d, $$0.e, $$0.f);
+   }
+
+   public eyn a(Vector3f $$0) {
+      return this.d((double)$$0.x, (double)$$0.y, (double)$$0.z);
+   }
+
+   public boolean c(eyn $$0) {
+      return this.a($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f);
+   }
+
+   public boolean a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      return this.a < $$3 && this.d > $$0 && this.b < $$4 && this.e > $$1 && this.c < $$5 && this.f > $$2;
+   }
+
+   public boolean a(eys $$0, eys $$1) {
+      return this.a(
+         Math.min($$0.d, $$1.d), Math.min($$0.e, $$1.e), Math.min($$0.f, $$1.f), Math.max($$0.d, $$1.d), Math.max($$0.e, $$1.e), Math.max($$0.f, $$1.f)
+      );
+   }
+
+   public boolean d(eys $$0) {
+      return this.e($$0.d, $$0.e, $$0.f);
+   }
+
+   public boolean e(double $$0, double $$1, double $$2) {
+      return $$0 >= this.a && $$0 < this.d && $$1 >= this.b && $$1 < this.e && $$2 >= this.c && $$2 < this.f;
+   }
+
+   public double a() {
+      double $$0 = this.b();
+      double $$1 = this.c();
+      double $$2 = this.d();
+      return ($$0 + $$1 + $$2) / 3.0;
+   }
+
+   public double b() {
+      return this.d - this.a;
+   }
+
+   public double c() {
+      return this.e - this.b;
+   }
+
+   public double d() {
+      return this.f - this.c;
+   }
+
+   public eyn f(double $$0, double $$1, double $$2) {
+      return this.c(-$$0, -$$1, -$$2);
+   }
+
+   public eyn h(double $$0) {
+      return this.g(-$$0);
+   }
+
+   public Optional<eys> b(eys $$0, eys $$1) {
+      return a(this.a, this.b, this.c, this.d, this.e, this.f, $$0, $$1);
+   }
+
+   public static Optional<eys> a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, eys $$6, eys $$7) {
+      double[] $$8 = new double[]{1.0};
+      double $$9 = $$7.d - $$6.d;
+      double $$10 = $$7.e - $$6.e;
+      double $$11 = $$7.f - $$6.f;
+      jj $$12 = a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$8, null, $$9, $$10, $$11);
+      if ($$12 == null) {
+         return Optional.empty();
+      } else {
+         double $$13 = $$8[0];
+         return Optional.of($$6.b($$13 * $$9, $$13 * $$10, $$13 * $$11));
       }
    }
 
-   public interface a {
-      void consume(jj var1, int var2, int var3, int var4);
+   @Nullable
+   public static eyo a(Iterable<eyn> $$0, eys $$1, eys $$2, je $$3) {
+      double[] $$4 = new double[]{1.0};
+      jj $$5 = null;
+      double $$6 = $$2.d - $$1.d;
+      double $$7 = $$2.e - $$1.e;
+      double $$8 = $$2.f - $$1.f;
+
+      for (eyn $$9 : $$0) {
+         $$5 = a($$9.a($$3), $$1, $$4, $$5, $$6, $$7, $$8);
+      }
+
+      if ($$5 == null) {
+         return null;
+      } else {
+         double $$10 = $$4[0];
+         return new eyo($$1.b($$10 * $$6, $$10 * $$7, $$10 * $$8), $$5, $$3, false);
+      }
    }
 
-   public interface b {
-      void consume(int var1, int var2, int var3, int var4, int var5, int var6);
+   @Nullable
+   private static jj a(eyn $$0, eys $$1, double[] $$2, @Nullable jj $$3, double $$4, double $$5, double $$6) {
+      return a($$0.a, $$0.b, $$0.c, $$0.d, $$0.e, $$0.f, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   @Nullable
+   private static jj a(
+      double $$0, double $$1, double $$2, double $$3, double $$4, double $$5, eys $$6, double[] $$7, @Nullable jj $$8, double $$9, double $$10, double $$11
+   ) {
+      if ($$9 > 1.0E-7) {
+         $$8 = a($$7, $$8, $$9, $$10, $$11, $$0, $$1, $$4, $$2, $$5, jj.e, $$6.d, $$6.e, $$6.f);
+      } else if ($$9 < -1.0E-7) {
+         $$8 = a($$7, $$8, $$9, $$10, $$11, $$3, $$1, $$4, $$2, $$5, jj.f, $$6.d, $$6.e, $$6.f);
+      }
+
+      if ($$10 > 1.0E-7) {
+         $$8 = a($$7, $$8, $$10, $$11, $$9, $$1, $$2, $$5, $$0, $$3, jj.a, $$6.e, $$6.f, $$6.d);
+      } else if ($$10 < -1.0E-7) {
+         $$8 = a($$7, $$8, $$10, $$11, $$9, $$4, $$2, $$5, $$0, $$3, jj.b, $$6.e, $$6.f, $$6.d);
+      }
+
+      if ($$11 > 1.0E-7) {
+         $$8 = a($$7, $$8, $$11, $$9, $$10, $$2, $$0, $$3, $$1, $$4, jj.c, $$6.f, $$6.d, $$6.e);
+      } else if ($$11 < -1.0E-7) {
+         $$8 = a($$7, $$8, $$11, $$9, $$10, $$5, $$0, $$3, $$1, $$4, jj.d, $$6.f, $$6.d, $$6.e);
+      }
+
+      return $$8;
+   }
+
+   @Nullable
+   private static jj a(
+      double[] $$0,
+      @Nullable jj $$1,
+      double $$2,
+      double $$3,
+      double $$4,
+      double $$5,
+      double $$6,
+      double $$7,
+      double $$8,
+      double $$9,
+      jj $$10,
+      double $$11,
+      double $$12,
+      double $$13
+   ) {
+      double $$14 = ($$5 - $$11) / $$2;
+      double $$15 = $$12 + $$14 * $$3;
+      double $$16 = $$13 + $$14 * $$4;
+      if (0.0 < $$14 && $$14 < $$0[0] && $$6 - 1.0E-7 < $$15 && $$15 < $$7 + 1.0E-7 && $$8 - 1.0E-7 < $$16 && $$16 < $$9 + 1.0E-7) {
+         $$0[0] = $$14;
+         return $$10;
+      } else {
+         return $$1;
+      }
+   }
+
+   public double e(eys $$0) {
+      double $$1 = Math.max(Math.max(this.a - $$0.d, $$0.d - this.d), 0.0);
+      double $$2 = Math.max(Math.max(this.b - $$0.e, $$0.e - this.e), 0.0);
+      double $$3 = Math.max(Math.max(this.c - $$0.f, $$0.f - this.f), 0.0);
+      return azd.f($$1, $$2, $$3);
+   }
+
+   @Override
+   public String toString() {
+      return "AABB[" + this.a + ", " + this.b + ", " + this.c + "] -> [" + this.d + ", " + this.e + ", " + this.f + "]";
+   }
+
+   public boolean e() {
+      return Double.isNaN(this.a) || Double.isNaN(this.b) || Double.isNaN(this.c) || Double.isNaN(this.d) || Double.isNaN(this.e) || Double.isNaN(this.f);
+   }
+
+   public eys f() {
+      return new eys(azd.d(0.5, this.a, this.d), azd.d(0.5, this.b, this.e), azd.d(0.5, this.c, this.f));
+   }
+
+   public eys g() {
+      return new eys(this.a, this.b, this.c);
+   }
+
+   public eys h() {
+      return new eys(this.d, this.e, this.f);
+   }
+
+   public static eyn a(eys $$0, double $$1, double $$2, double $$3) {
+      return new eyn($$0.d - $$1 / 2.0, $$0.e - $$2 / 2.0, $$0.f - $$3 / 2.0, $$0.d + $$1 / 2.0, $$0.e + $$2 / 2.0, $$0.f + $$3 / 2.0);
    }
 }

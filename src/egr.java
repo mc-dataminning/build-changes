@@ -1,28 +1,23 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class egr extends egn {
-   public static final MapCodec<egr> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, egr::new));
+public record egr(int b, int c, int d) implements efu {
+   public static final Codec<egr> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               aym.l.fieldOf("spread_width").forGetter(egr::a), aym.l.fieldOf("spread_height").forGetter(egr::b), aym.l.fieldOf("max_height").forGetter(egr::c)
+            )
+            .apply($$0, egr::new)
+   );
 
-   public egr(bqp $$0, bqp $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public int a() {
+      return this.b;
    }
 
-   @Override
-   protected egt<?> a() {
-      return egt.f;
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   protected void a(ddy $$0, egs.b $$1, azk $$2, egc $$3, int $$4, egs.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + ($$9 != $$8 && $$9 != $$8 - $$6 ? 1 : 0);
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
-   }
-
-   @Override
-   protected boolean a(azk $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return azc.k((float)$$1 + 0.5F) + azc.k((float)$$3 + 0.5F) > (float)($$4 * $$4);
+   public int c() {
+      return this.d;
    }
 }

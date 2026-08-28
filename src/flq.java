@@ -1,62 +1,36 @@
-import java.util.Locale;
+import javax.annotation.Nullable;
 
-public class flq extends flp {
-   private static final int f = -16711681;
-   private static final int g = -6250241;
-   private static final int h = -65536;
-   private static final int i = 1024;
-   private static final int j = 1048576;
-   private static final int k = 1048576;
+public class flq extends fki {
+   @Nullable
+   protected flx a;
+   protected boolean b;
 
-   public flq(fjl $$0, bmo $$1) {
-      super($$0, $$1);
+   public flq(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
+      super($$0, $$1, $$2, $$3, xc.a);
+      this.b = $$4;
+   }
+
+   public void a(flx $$0) {
+      this.a = $$0;
+   }
+
+   public void b(boolean $$0) {
+      this.b = $$0;
+   }
+
+   public boolean a() {
+      return this.b;
    }
 
    @Override
-   protected void d(fjn $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, $$1, $$2, $$3, 64);
-      this.a($$0, $$1, $$2, $$3, 1024);
-      this.a($$0, $$1, $$2, $$3, 16384);
-      this.a($$0, c(1048576.0), $$1 + 1, $$3 - d(1048576.0) + 1);
-   }
-
-   private void a(fjn $$0, int $$1, int $$2, int $$3, int $$4) {
-      this.a($$0, $$1, $$2, $$3 - d((double)$$4), c((double)$$4));
-   }
-
-   private void a(fjn $$0, int $$1, int $$2, int $$3, String $$4) {
-      this.a($$0, $$4, $$1 + 1, $$3 + 1);
-      $$0.a(ghe.H(), $$1, $$1 + $$2 - 1, $$3, -1);
+   public void a(foh $$0) {
+      this.c($$0);
    }
 
    @Override
-   protected String a(double $$0) {
-      return c(e($$0));
-   }
-
-   private static String c(double $$0) {
-      if ($$0 >= 1048576.0) {
-         return String.format(Locale.ROOT, "%.1f MiB/s", $$0 / 1048576.0);
-      } else {
-         return $$0 >= 1024.0 ? String.format(Locale.ROOT, "%.1f KiB/s", $$0 / 1024.0) : String.format(Locale.ROOT, "%d B/s", azc.a($$0));
+   public void b(fjx $$0, int $$1, int $$2, float $$3) {
+      if (this.a != null) {
+         $$0.a(ghq::B, this.a.a(this.b, this.B()), this.D(), this.E(), this.g, this.h);
       }
-   }
-
-   @Override
-   protected int b(double $$0) {
-      return d(e($$0));
-   }
-
-   private static int d(double $$0) {
-      return (int)Math.round(Math.log($$0 + 1.0) * 60.0 / Math.log(1048576.0));
-   }
-
-   @Override
-   protected int a(long $$0) {
-      return this.a(e((double)$$0), 0.0, -16711681, 8192.0, -6250241, 1.048576E7, -65536);
-   }
-
-   private static double e(double $$0) {
-      return $$0 * 20.0;
    }
 }

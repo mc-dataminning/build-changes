@@ -6,23 +6,23 @@ public class afi implements zk<abz> {
    public static final zb<wo, afi> a = zk.a(afi::a, afi::new);
    private static final byte b = -128;
    private final int c;
-   private final List<Pair<btr, cvl>> d;
+   private final List<Pair<btw, cvp>> d;
 
-   public afi(int $$0, List<Pair<btr, cvl>> $$1) {
+   public afi(int $$0, List<Pair<btw, cvp>> $$1) {
       this.c = $$0;
       this.d = $$1;
    }
 
    private afi(wo $$0) {
       this.c = $$0.l();
-      btr[] $$1 = btr.values();
+      btw[] $$1 = btw.values();
       this.d = Lists.newArrayList();
 
       int $$2;
       do {
          $$2 = $$0.readByte();
-         btr $$3 = $$1[$$2 & 127];
-         cvl $$4 = cvl.h.decode($$0);
+         btw $$3 = $$1[$$2 & 127];
+         cvp $$4 = cvp.h.decode($$0);
          this.d.add(Pair.of($$3, $$4));
       } while (($$2 & -128) != 0);
    }
@@ -32,12 +32,12 @@ public class afi implements zk<abz> {
       int $$1 = this.d.size();
 
       for (int $$2 = 0; $$2 < $$1; $$2++) {
-         Pair<btr, cvl> $$3 = this.d.get($$2);
-         btr $$4 = (btr)$$3.getFirst();
+         Pair<btw, cvp> $$3 = this.d.get($$2);
+         btw $$4 = (btw)$$3.getFirst();
          boolean $$5 = $$2 != $$1 - 1;
          int $$6 = $$4.ordinal();
          $$0.l($$5 ? $$6 | -128 : $$6);
-         cvl.h.encode($$0, (cvl)$$3.getSecond());
+         cvp.h.encode($$0, (cvp)$$3.getSecond());
       }
    }
 
@@ -54,7 +54,7 @@ public class afi implements zk<abz> {
       return this.c;
    }
 
-   public List<Pair<btr, cvl>> e() {
+   public List<Pair<btw, cvp>> e() {
       return this.d;
    }
 }

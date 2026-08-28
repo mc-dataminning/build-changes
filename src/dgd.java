@@ -1,20 +1,16 @@
 import com.mojang.serialization.MapCodec;
+import java.util.function.Supplier;
 
-public class dgd extends dgf {
-   public static final MapCodec<dgd> a = b(dgd::new);
-   private static final eyx b = dgv.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
+public abstract class dgd<E extends drs> extends dgv {
+   protected final Supplier<dru<? extends E>> a;
 
-   @Override
-   public MapCodec<? extends dgd> a() {
-      return a;
-   }
-
-   protected dgd(dtz.d $$0) {
+   protected dgd(dun.d $$0, Supplier<dru<? extends E>> $$1) {
       super($$0);
+      this.a = $$1;
    }
 
    @Override
-   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
-      return b;
-   }
+   protected abstract MapCodec<? extends dgd<E>> a();
+
+   public abstract djq.c<? extends drz> a(duo var1, deg var2, je var3, boolean var4);
 }

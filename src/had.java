@@ -1,66 +1,107 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import java.util.List;
-import org.apache.commons.lang3.Validate;
+public abstract class had implements hav {
+   protected has a;
+   protected final awf b;
+   protected final alc c;
+   protected float d = 1.0F;
+   protected float e = 1.0F;
+   protected double f;
+   protected double g;
+   protected double h;
+   protected boolean i;
+   protected int j;
+   protected hav.a k = hav.a.b;
+   protected boolean l;
+   protected azl m;
 
-public class had implements JsonDeserializer<hac> {
-   private static final bqn a = bql.a(1.0F);
-
-   public hac a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-      JsonObject $$3 = ays.m($$0, "entry");
-      boolean $$4 = ays.a($$3, "replace", false);
-      String $$5 = ays.a($$3, "subtitle", null);
-      List<hab> $$6 = this.a($$3);
-      return new hac($$6, $$4, $$5);
+   protected had(awd $$0, awf $$1, azl $$2) {
+      this($$0.a(), $$1, $$2);
    }
 
-   private List<hab> a(JsonObject $$0) {
-      List<hab> $$1 = Lists.newArrayList();
-      if ($$0.has("sounds")) {
-         JsonArray $$2 = ays.v($$0, "sounds");
+   protected had(alc $$0, awf $$1, azl $$2) {
+      this.c = $$0;
+      this.b = $$1;
+      this.m = $$2;
+   }
 
-         for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
-            JsonElement $$4 = $$2.get($$3);
-            if (ays.a($$4)) {
-               alb $$5 = alb.a(ays.a($$4, "sound"));
-               $$1.add(new hab($$5, a, a, 1, hab.a.a, false, false, 16));
-            } else {
-               $$1.add(this.b(ays.m($$4, "sound")));
-            }
+   @Override
+   public alc a() {
+      return this.c;
+   }
+
+   @Override
+   public hcb a(hca $$0) {
+      if (this.c.equals(hca.c)) {
+         this.a = hca.e;
+         return hca.d;
+      } else {
+         hcb $$1 = $$0.a(this.c);
+         if ($$1 == null) {
+            this.a = hca.b;
+         } else {
+            this.a = $$1.a(this.m);
          }
-      }
 
-      return $$1;
+         return $$1;
+      }
    }
 
-   private hab b(JsonObject $$0) {
-      alb $$1 = alb.a(ays.i($$0, "name"));
-      hab.a $$2 = this.a($$0, hab.a.a);
-      float $$3 = ays.a($$0, "volume", 1.0F);
-      Validate.isTrue($$3 > 0.0F, "Invalid volume", new Object[0]);
-      float $$4 = ays.a($$0, "pitch", 1.0F);
-      Validate.isTrue($$4 > 0.0F, "Invalid pitch", new Object[0]);
-      int $$5 = ays.a($$0, "weight", 1);
-      Validate.isTrue($$5 > 0, "Invalid weight", new Object[0]);
-      boolean $$6 = ays.a($$0, "preload", false);
-      boolean $$7 = ays.a($$0, "stream", false);
-      int $$8 = ays.a($$0, "attenuation_distance", 16);
-      return new hab($$1, bql.a($$3), bql.a($$4), $$5, $$2, $$7, $$6, $$8);
+   @Override
+   public has b() {
+      return this.a;
    }
 
-   private hab.a a(JsonObject $$0, hab.a $$1) {
-      hab.a $$2 = $$1;
-      if ($$0.has("type")) {
-         $$2 = hab.a.a(ays.i($$0, "type"));
-         Validate.notNull($$2, "Invalid type", new Object[0]);
-      }
+   @Override
+   public awf c() {
+      return this.b;
+   }
 
-      return $$2;
+   @Override
+   public boolean d() {
+      return this.i;
+   }
+
+   @Override
+   public int e() {
+      return this.j;
+   }
+
+   @Override
+   public float f() {
+      return this.d * this.a.c().a(this.m);
+   }
+
+   @Override
+   public float g() {
+      return this.e * this.a.d().a(this.m);
+   }
+
+   @Override
+   public double h() {
+      return this.f;
+   }
+
+   @Override
+   public double i() {
+      return this.g;
+   }
+
+   @Override
+   public double j() {
+      return this.h;
+   }
+
+   @Override
+   public hav.a k() {
+      return this.k;
+   }
+
+   @Override
+   public boolean l() {
+      return this.l;
+   }
+
+   @Override
+   public String toString() {
+      return "SoundInstance[" + this.c + "]";
    }
 }

@@ -1,63 +1,29 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public class eix extends eiv {
-   public static final MapCodec<eix> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               eaq.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               eaq.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.INT.optionalFieldOf("plateau", 0).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, eix::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final eaq d;
-   private final eaq e;
-   private final int f;
+public class eix extends eiy {
+   public static final MapCodec<eix> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eix::new));
 
-   private eix(eaq $$0, eaq $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   public static eix a(eaq $$0, eaq $$1, int $$2) {
-      return new eix($$0, $$1, $$2);
-   }
-
-   public static eix a(eaq $$0, eaq $$1) {
-      return a($$0, $$1, 0);
+   public eix(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public int a(azk $$0, eat $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$2 > $$3) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = $$3 - $$2;
-         if (this.f >= $$4) {
-            return azc.b($$0, $$2, $$3);
-         } else {
-            int $$5 = ($$4 - this.f) / 2;
-            int $$6 = $$4 - $$5;
-            return $$2 + azc.b($$0, 0, $$6) + azc.b($$0, 0, $$5);
-         }
+   protected eiz<?> a() {
+      return eiz.a;
+   }
+
+   @Override
+   public List<ehg.a> a(dem $$0, BiConsumer<je, duo> $$1, azl $$2, int $$3, je $$4, egq $$5) {
+      a($$0, $$1, $$2, $$4.e(), $$5);
+
+      for (int $$6 = 0; $$6 < $$3; $$6++) {
+         this.b($$0, $$1, $$2, $$4.b($$6), $$5);
       }
-   }
 
-   @Override
-   public eiw<?> a() {
-      return eiw.e;
-   }
-
-   @Override
-   public String toString() {
-      return this.f == 0 ? "triangle (" + this.d + "-" + this.e + ")" : "trapezoid(" + this.f + ") in [" + this.d + "-" + this.e + "]";
+      return ImmutableList.of(new ehg.a($$4.b($$3), 0, false));
    }
 }

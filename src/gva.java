@@ -1,5 +1,5 @@
-public class gva extends gts {
-   public boolean a;
-   public boolean b;
-   public boolean c;
+public class gva extends guj {
+   public float a;
+   public float b;
+   public float c;
 }

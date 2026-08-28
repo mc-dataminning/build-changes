@@ -1,37 +1,46 @@
-import javax.annotation.Nullable;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 
-public record gxl(alb a, @Nullable String b, @Nullable alb c, @Nullable alb d, gxl.a e, boolean f) {
-   public static enum a {
-      a("slim"),
-      b("default");
+public class gxl {
+   private final alc a;
+   private final aur b;
+   private final AtomicReference<fce> c = new AtomicReference<>();
+   private final AtomicInteger d;
 
-      private final String c;
+   public gxl(alc $$0, aur $$1, int $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = new AtomicInteger($$2);
+   }
 
-      private a(final String $$0) {
-         this.c = $$0;
-      }
-
-      public static gxl.a a(@Nullable String $$0) {
-         if ($$0 == null) {
-            return b;
-         } else {
-            byte var2 = -1;
-            switch ($$0.hashCode()) {
-               case 3533117:
-                  if ($$0.equals("slim")) {
-                     var2 = 0;
-                  }
-               default:
-                  return switch (var2) {
-                     case 0 -> a;
-                     default -> b;
-                  };
+   public fce a() throws IOException {
+      fce $$0 = this.c.get();
+      if ($$0 == null) {
+         synchronized (this) {
+            $$0 = this.c.get();
+            if ($$0 == null) {
+               try (InputStream $$1 = this.b.d()) {
+                  $$0 = fce.a($$1);
+                  this.c.set($$0);
+               } catch (IOException var9) {
+                  throw new IOException("Failed to load image " + this.a, var9);
+               }
             }
          }
       }
 
-      public String a() {
-         return this.c;
+      return $$0;
+   }
+
+   public void b() {
+      int $$0 = this.d.decrementAndGet();
+      if ($$0 <= 0) {
+         fce $$1 = this.c.getAndSet(null);
+         if ($$1 != null) {
+            $$1.close();
+         }
       }
    }
 }

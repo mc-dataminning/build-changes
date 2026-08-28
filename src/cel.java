@@ -3,31 +3,22 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-public class cel extends ceo<buf> {
-   @Override
-   public Set<cdi<?>> a() {
-      return ImmutableSet.of(cdi.j, cdi.k, cdi.l);
-   }
+public class cel extends cet<bum> {
+   private static final long b = 32L;
+   private static final long c = 16L;
+   public static final int a = 32;
 
    @Override
-   protected void a(arg $$0, buf $$1) {
-      List<cnp> $$2 = $$0.x()
-         .stream()
-         .filter(bto.f)
-         .filter($$1x -> $$1.a($$1x, this.a($$1)))
-         .sorted(Comparator.comparingDouble($$1::g))
-         .collect(Collectors.toList());
-      bvg<?> $$3 = $$1.dX();
-      $$3.a(cdi.j, $$2);
-      List<cnp> $$4 = $$2.stream().filter($$1x -> b($$1, $$1x)).collect(Collectors.toList());
-      $$3.a(cdi.k, $$4.isEmpty() ? null : $$4.get(0));
-      Optional<cnp> $$5 = $$4.stream().filter($$1x -> c($$1, $$1x)).findFirst();
-      $$3.a(cdi.l, $$5);
+   public Set<cdn<?>> a() {
+      return ImmutableSet.of(cdn.L);
    }
 
-   protected double a(buf $$0) {
-      return $$0.h(bvm.m);
+   protected void a(arh $$0, bum $$1) {
+      bvl<?> $$2 = $$1.dX();
+      List<cke> $$3 = $$0.a(cke.class, $$1.cO().c(32.0, 16.0, 32.0), $$0x -> true);
+      $$3.sort(Comparator.comparingDouble($$1::g));
+      Optional<cke> $$4 = $$3.stream().filter($$1x -> $$1.j($$1x.m())).filter($$1x -> $$1x.a($$1, 32.0)).filter($$1::G).findFirst();
+      $$2.a(cdn.L, $$4);
    }
 }

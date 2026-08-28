@@ -1,61 +1,49 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.util.Map;
-import java.util.UUID;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.serialization.Dynamic;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dyg<T extends dye> {
-   private static final Logger a = LogUtils.getLogger();
-   private final Int2ObjectMap<T> b = new Int2ObjectLinkedOpenHashMap();
-   private final Map<UUID, T> c = Maps.newHashMap();
+public class dyg implements AutoCloseable {
+   private final dxw a;
+   private final DataFixer b;
+   private final bam c;
 
-   public <U extends T> void a(dyl<T, U> $$0, axo<U> $$1) {
-      ObjectIterator var3 = this.b.values().iterator();
-
-      while (var3.hasNext()) {
-         T $$2 = (T)var3.next();
-         U $$3 = (U)$$0.a($$2);
-         if ($$3 != null && $$1.accept($$3).a()) {
-            return;
-         }
-      }
+   public dyg(dyd $$0, Path $$1, DataFixer $$2, boolean $$3, bam $$4) {
+      this.b = $$2;
+      this.c = $$4;
+      this.a = new dxw($$0, $$1, $$3);
    }
 
-   public Iterable<T> a() {
-      return Iterables.unmodifiableIterable(this.b.values());
+   public CompletableFuture<Optional<uf>> a(ddm $$0) {
+      return this.a.a($$0);
    }
 
-   public void a(T $$0) {
-      UUID $$1 = $$0.cD();
-      if (this.c.containsKey($$1)) {
-         a.warn("Duplicate entity UUID {}: {}", $$1, $$0);
-      } else {
-         this.c.put($$1, $$0);
-         this.b.put($$0.ap(), $$0);
-      }
+   public CompletableFuture<Void> a(ddm $$0, @Nullable uf $$1) {
+      return this.a.a($$0, $$1);
    }
 
-   public void b(T $$0) {
-      this.c.remove($$0.cD());
-      this.b.remove($$0.ap());
+   public uf a(uf $$0, int $$1) {
+      int $$2 = uu.b($$0, $$1);
+      return this.c.a(this.b, $$0, $$2);
    }
 
-   @Nullable
-   public T a(int $$0) {
-      return (T)this.b.get($$0);
+   public Dynamic<vc> a(Dynamic<vc> $$0, int $$1) {
+      return this.c.a(this.b, $$0, $$1);
    }
 
-   @Nullable
-   public T a(UUID $$0) {
-      return this.c.get($$0);
+   public CompletableFuture<Void> a(boolean $$0) {
+      return this.a.a($$0);
    }
 
-   public int b() {
-      return this.c.size();
+   @Override
+   public void close() throws IOException {
+      this.a.close();
+   }
+
+   public dyd a() {
+      return this.a.a();
    }
 }

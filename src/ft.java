@@ -11,51 +11,51 @@ import java.util.Collection;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
-public class ft<T> implements ArgumentType<ala<T>> {
+public class ft<T> implements ArgumentType<alb<T>> {
    private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012");
    private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xd.b("commands.place.feature.invalid", $$0));
    private static final DynamicCommandExceptionType c = new DynamicCommandExceptionType($$0 -> xd.b("commands.place.structure.invalid", $$0));
    private static final DynamicCommandExceptionType d = new DynamicCommandExceptionType($$0 -> xd.b("commands.place.jigsaw.invalid", $$0));
-   final ala<? extends ka<T>> e;
+   final alb<? extends ka<T>> e;
 
-   public ft(ala<? extends ka<T>> $$0) {
+   public ft(alb<? extends ka<T>> $$0) {
       this.e = $$0;
    }
 
-   public static <T> ft<T> a(ala<? extends ka<T>> $$0) {
+   public static <T> ft<T> a(alb<? extends ka<T>> $$0) {
       return new ft<>($$0);
    }
 
-   private static <T> ala<T> a(CommandContext<et> $$0, String $$1, ala<ka<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
-      ala<?> $$4 = (ala<?>)$$0.getArgument($$1, ala.class);
-      Optional<ala<T>> $$5 = $$4.d($$2);
+   private static <T> alb<T> a(CommandContext<et> $$0, String $$1, alb<ka<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
+      alb<?> $$4 = (alb<?>)$$0.getArgument($$1, alb.class);
+      Optional<alb<T>> $$5 = $$4.d($$2);
       return $$5.orElseThrow(() -> $$3.create($$4));
    }
 
-   private static <T> ka<T> a(CommandContext<et> $$0, ala<? extends ka<T>> $$1) {
+   private static <T> ka<T> a(CommandContext<et> $$0, alb<? extends ka<T>> $$1) {
       return ((et)$$0.getSource()).l().bb().d($$1);
    }
 
-   private static <T> jn.c<T> b(CommandContext<et> $$0, String $$1, ala<ka<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
-      ala<T> $$4 = a($$0, $$1, $$2, $$3);
+   private static <T> jn.c<T> b(CommandContext<et> $$0, String $$1, alb<ka<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
+      alb<T> $$4 = a($$0, $$1, $$2, $$3);
       return a($$0, $$2).b($$4).orElseThrow(() -> $$3.create($$4.a()));
    }
 
-   public static jn.c<eco<?, ?>> a(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1, lv.aI, b);
+   public static jn.c<edc<?, ?>> a(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
+      return b($$0, $$1, lv.aJ, b);
    }
 
-   public static jn.c<eko> b(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1, lv.aR, c);
+   public static jn.c<elc> b(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
+      return b($$0, $$1, lv.aS, c);
    }
 
-   public static jn.c<ely> c(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
-      return b($$0, $$1, lv.aU, d);
+   public static jn.c<emm> c(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
+      return b($$0, $$1, lv.aV, d);
    }
 
-   public ala<T> a(StringReader $$0) throws CommandSyntaxException {
-      alb $$1 = alb.a($$0);
-      return ala.a(this.e, $$1);
+   public alb<T> a(StringReader $$0) throws CommandSyntaxException {
+      alc $$1 = alc.a($$0);
+      return alb.a(this.e, $$1);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
@@ -84,9 +84,9 @@ public class ft<T> implements ArgumentType<ala<T>> {
       }
 
       public final class a implements ip.a<ft<T>> {
-         final ala<? extends ka<T>> b;
+         final alb<? extends ka<T>> b;
 
-         a(final ala<? extends ka<T>> $$1) {
+         a(final alb<? extends ka<T>> $$1) {
             this.b = $$1;
          }
 

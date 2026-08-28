@@ -1,42 +1,53 @@
-import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-
-public class emv extends eko {
-   public static final bpy<dff.c> d = bpy.a(
-      new dff.c(btq.i, 10, 2, 3), new dff.c(btq.bx, 5, 4, 4), new dff.c(btq.bq, 8, 5, 5), new dff.c(btq.aN, 2, 5, 5), new dff.c(btq.ap, 3, 4, 4)
-   );
-   public static final MapCodec<emv> e = a(emv::new);
-
-   public emv(eko.c $$0) {
-      super($$0);
-   }
-
-   @Override
-   public Optional<eko.b> a(eko.a $$0) {
-      dcy $$1 = $$0.h();
-      je $$2 = new je($$1.d(), 64, $$1.e());
-      return Optional.of(new eko.b($$2, (Consumer<elg>)($$1x -> a($$1x, $$0))));
-   }
-
-   private static void a(elg $$0, eko.a $$1) {
-      emu.q $$2 = new emu.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
-      $$0.a($$2);
-      $$2.a($$2, $$0, $$1.f());
-      List<eks> $$3 = $$2.d;
-
-      while (!$$3.isEmpty()) {
-         int $$4 = $$1.f().a($$3.size());
-         eks $$5 = $$3.remove($$4);
-         $$5.a($$2, $$0, $$1.f());
+public class emv {
+   public static class a extends elg {
+      public a(je $$0) {
+         super(elt.aa, 0, new eku($$0));
       }
 
-      $$0.a($$1.f(), 48, 70);
-   }
+      public a(uf $$0) {
+         super(elt.aa, $$0);
+      }
 
-   @Override
-   public ekx<?> e() {
-      return ekx.d;
+      @Override
+      protected void a(els $$0, uf $$1) {
+      }
+
+      @Override
+      public void a(dfd $$0, dfb $$1, dwl $$2, azl $$3, eku $$4, ddm $$5, je $$6) {
+         int $$7 = $$0.a(eak.a.c, this.f.h(), this.f.j());
+         je.a $$8 = new je.a(this.f.h(), $$7, this.f.j());
+
+         while ($$8.v() > $$0.G_()) {
+            duo $$9 = $$0.a_($$8);
+            duo $$10 = $$0.a_($$8.e());
+            if ($$10 == dhl.aV.o() || $$10 == dhl.b.o() || $$10 == dhl.g.o() || $$10 == dhl.c.o() || $$10 == dhl.e.o()) {
+               duo $$11 = !$$9.l() && !this.b($$9) ? $$9 : dhl.I.o();
+
+               for (jj $$12 : jj.values()) {
+                  je $$13 = $$8.a($$12);
+                  duo $$14 = $$0.a_($$13);
+                  if ($$14.l() || this.b($$14)) {
+                     je $$15 = $$13.e();
+                     duo $$16 = $$0.a_($$15);
+                     if (($$16.l() || this.b($$16)) && $$12 != jj.b) {
+                        $$0.a($$13, $$10, 3);
+                     } else {
+                        $$0.a($$13, $$11, 3);
+                     }
+                  }
+               }
+
+               this.f = new eku($$8);
+               this.a($$0, $$4, $$3, $$8, etd.G, null);
+               return;
+            }
+
+            $$8.e(0, -1, 0);
+         }
+      }
+
+      private boolean b(duo $$0) {
+         return $$0 == dhl.G.o() || $$0 == dhl.H.o();
+      }
    }
 }

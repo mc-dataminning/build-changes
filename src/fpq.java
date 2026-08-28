@@ -1,71 +1,64 @@
-import javax.annotation.Nullable;
+public class fpq extends foz {
+   private fkk c;
 
-public class fpq extends fpt implements azj {
-   @Nullable
-   private xd a;
-   @Nullable
-   private xd b;
-   private int c;
-   private boolean d;
-   private final boolean s;
-
-   public fpq(boolean $$0) {
-      super(fhs.a);
-      this.s = $$0;
+   public fpq() {
+      super("");
    }
 
    @Override
-   public boolean aJ_() {
-      return false;
+   protected void aR_() {
+      super.aR_();
+      this.c = fkk.a(xd.c("multiplayer.stopSleeping"), $$0 -> this.D()).a(this.n / 2 - 100, this.o - 40, 200, 20).a();
+      this.c(this.c);
    }
 
    @Override
-   protected boolean aS_() {
-      return false;
-   }
-
-   @Override
-   public void a(xd $$0) {
-      this.b($$0);
-   }
-
-   @Override
-   public void b(xd $$0) {
-      this.a = $$0;
-      this.c(xd.c("menu.working"));
-   }
-
-   @Override
-   public void c(xd $$0) {
-      this.b = $$0;
-      this.a(0);
-   }
-
-   @Override
-   public void a(int $$0) {
-      this.c = $$0;
-   }
-
-   @Override
-   public void a() {
-      this.d = true;
-   }
-
-   @Override
-   public void a(fjn $$0, int $$1, int $$2, float $$3) {
-      if (this.d) {
-         if (this.s) {
-            this.m.a(null);
-         }
+   public void a(fjx $$0, int $$1, int $$2, float $$3) {
+      if (!this.m.J().a(this.m.T())) {
+         this.c.a($$0, $$1, $$2, $$3);
       } else {
          super.a($$0, $$1, $$2, $$3);
-         if (this.a != null) {
-            $$0.a(this.p, this.a, this.n / 2, 70, 16777215);
-         }
+      }
+   }
 
-         if (this.b != null && this.c != 0) {
-            $$0.a(this.p, xd.i().b(this.b).f(" " + this.c + "%"), this.n / 2, 90, 16777215);
-         }
+   @Override
+   public void d() {
+      this.D();
+   }
+
+   @Override
+   public boolean a(char $$0, int $$1) {
+      return !this.m.J().a(this.m.T()) ? true : super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if ($$0 == 256) {
+         this.D();
+      }
+
+      if (!this.m.J().a(this.m.T())) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return super.a($$0, $$1, $$2);
+      } else {
+         this.b(this.b.a(), true);
+         this.b.a("");
+         this.m.m.d().d();
+         return true;
+      }
+   }
+
+   private void D() {
+      gbi $$0 = this.m.t.cw;
+      $$0.b(new ahw(this.m.t, ahw.a.c));
+   }
+
+   public void m() {
+      if (this.b.a().isEmpty()) {
+         this.m.a(null);
+      } else {
+         this.m.a(new foz(this.b.a()));
       }
    }
 }

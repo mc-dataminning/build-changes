@@ -9,7 +9,7 @@ public interface yf {
 
    yf.a<?> a();
 
-   public static record a<T extends yf>(MapCodec<T> a, String b) implements azy {
+   public static record a<T extends yf>(MapCodec<T> a, String b) implements azz {
       @Override
       public String c() {
          return this.b;

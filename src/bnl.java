@@ -1,11 +1,9 @@
-import com.mojang.brigadier.StringReader;
 import java.util.stream.Stream;
 
-public interface bnl extends bng<StringReader> {
-   Stream<alb> a();
+public interface bnl<S> {
+   Stream<String> possibleValues(bni<S> var1);
 
-   @Override
-   default Stream<String> possibleValues(bnd<StringReader> $$0) {
-      return this.a().map(alb::toString);
+   static <S> bnl<S> b() {
+      return $$0 -> Stream.empty();
    }
 }

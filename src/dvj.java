@@ -1,23 +1,14 @@
-public enum dvj implements azy {
-   a("straight"),
-   b("inner_left"),
-   c("inner_right"),
-   d("outer_left"),
-   e("outer_right");
-
-   private final String f;
-
-   private dvj(final String $$0) {
-      this.f = $$0;
-   }
+public enum dvj implements azz {
+   a,
+   b;
 
    @Override
    public String toString() {
-      return this.f;
+      return this.c();
    }
 
    @Override
    public String c() {
-      return this.f;
+      return this == a ? "left" : "right";
    }
 }

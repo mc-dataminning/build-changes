@@ -3,35 +3,35 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public record ch(Optional<bd<cyg.b, ch.a>> c) implements dw<cyg> {
+public record ch(Optional<bd<cyk.b, ch.a>> c) implements dw<cyk> {
    public static final Codec<ch> a = RecordCodecBuilder.create($$0 -> $$0.group(bd.a(ch.a.a).optionalFieldOf("modifiers").forGetter(ch::b)).apply($$0, ch::new));
 
    @Override
-   public kq<cyg> a() {
+   public kq<cyk> a() {
       return kr.n;
    }
 
-   public boolean a(cvl $$0, cyg $$1) {
+   public boolean a(cvp $$0, cyk $$1) {
       return !this.c.isPresent() || this.c.get().a($$1.b());
    }
 
-   public Optional<bd<cyg.b, ch.a>> b() {
+   public Optional<bd<cyk.b, ch.a>> b() {
       return this.c;
    }
 
-   public static record a(Optional<jr<bvh>> b, Optional<alb> c, dh.c d, Optional<bvk.a> e, Optional<bts> f) implements Predicate<cyg.b> {
+   public static record a(Optional<jr<bvm>> b, Optional<alc> c, dh.c d, Optional<bvp.a> e, Optional<btx> f) implements Predicate<cyk.b> {
       public static final Codec<ch.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   kc.a(lv.c).optionalFieldOf("attribute").forGetter(ch.a::a),
-                  alb.a.optionalFieldOf("id").forGetter(ch.a::b),
+                  alc.a.optionalFieldOf("id").forGetter(ch.a::b),
                   dh.c.d.optionalFieldOf("amount", dh.c.c).forGetter(ch.a::c),
-                  bvk.a.f.optionalFieldOf("operation").forGetter(ch.a::d),
-                  bts.l.optionalFieldOf("slot").forGetter(ch.a::e)
+                  bvp.a.f.optionalFieldOf("operation").forGetter(ch.a::d),
+                  btx.l.optionalFieldOf("slot").forGetter(ch.a::e)
                )
                .apply($$0, ch.a::new)
       );
 
-      public boolean a(cyg.b $$0) {
+      public boolean a(cyk.b $$0) {
          if (this.b.isPresent() && !this.b.get().a($$0.a())) {
             return false;
          } else if (this.c.isPresent() && !this.c.get().equals($$0.b().b())) {
@@ -43,11 +43,11 @@ public record ch(Optional<bd<cyg.b, ch.a>> c) implements dw<cyg> {
          }
       }
 
-      public Optional<jr<bvh>> a() {
+      public Optional<jr<bvm>> a() {
          return this.b;
       }
 
-      public Optional<alb> b() {
+      public Optional<alc> b() {
          return this.c;
       }
 
@@ -55,11 +55,11 @@ public record ch(Optional<bd<cyg.b, ch.a>> c) implements dw<cyg> {
          return this.d;
       }
 
-      public Optional<bvk.a> d() {
+      public Optional<bvp.a> d() {
          return this.e;
       }
 
-      public Optional<bts> e() {
+      public Optional<btx> e() {
          return this.f;
       }
    }

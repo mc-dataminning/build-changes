@@ -1,53 +1,80 @@
-import com.mojang.datafixers.kinds.Const;
-import com.mojang.datafixers.kinds.IdF;
-import com.mojang.datafixers.kinds.K1;
-import com.mojang.datafixers.kinds.OptionalBox;
-import com.mojang.datafixers.kinds.Const.Mu;
-import com.mojang.datafixers.util.Unit;
+import com.google.common.collect.ImmutableList;
+import java.util.List;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public interface bzm<F extends K1, Value> {
-   cdi<Value> a();
+public class bzm extends bzn {
+   private static final List<cvk> c = ImmutableList.of(cvt.pw, cvt.vn);
 
-   cdj b();
-
-   @Nullable
-   bzl<F, Value> a(bvg<?> var1, Optional<Value> var2);
-
-   public static record a<Value>(cdi<Value> a) implements bzm<Mu<Unit>, Value> {
-      @Override
-      public cdj b() {
-         return cdj.b;
-      }
-
-      @Override
-      public bzl<Mu<Unit>, Value> a(bvg<?> $$0, Optional<Value> $$1) {
-         return $$1.isPresent() ? null : new bzl<>($$0, this.a, Const.create(Unit.INSTANCE));
+   @Override
+   protected void a(arh $$0, cnh $$1) {
+      Optional<jm> $$2 = $$1.dX().c(cdn.c);
+      if (!$$2.isEmpty()) {
+         jm $$3 = $$2.get();
+         duo $$4 = $$0.a_($$3.b());
+         if ($$4.a(dhl.pc)) {
+            this.a($$1);
+            this.a($$0, $$1, $$3, $$4);
+         }
       }
    }
 
-   public static record b<Value>(cdi<Value> a) implements bzm<com.mojang.datafixers.kinds.IdF.Mu, Value> {
-      @Override
-      public cdj b() {
-         return cdj.a;
+   private void a(arh $$0, cnh $$1, jm $$2, duo $$3) {
+      je $$4 = $$2.b();
+      if ($$3.c(diu.e) == 8) {
+         $$3 = diu.a($$1, $$3, (deg)$$0, $$4);
       }
 
-      @Override
-      public bzl<com.mojang.datafixers.kinds.IdF.Mu, Value> a(bvg<?> $$0, Optional<Value> $$1) {
-         return $$1.isEmpty() ? null : new bzl<>($$0, this.a, IdF.create($$1.get()));
+      int $$5 = 20;
+      int $$6 = 10;
+      int[] $$7 = new int[c.size()];
+      brw $$8 = $$1.y();
+      int $$9 = $$8.b();
+      duo $$10 = $$3;
+
+      for (int $$11 = $$9 - 1; $$11 >= 0 && $$5 > 0; $$11--) {
+         cvp $$12 = $$8.a($$11);
+         int $$13 = c.indexOf($$12.h());
+         if ($$13 != -1) {
+            int $$14 = $$12.J();
+            int $$15 = $$7[$$13] + $$14;
+            $$7[$$13] = $$15;
+            int $$16 = Math.min(Math.min($$15 - 10, $$5), $$14);
+            if ($$16 > 0) {
+               $$5 -= $$16;
+
+               for (int $$17 = 0; $$17 < $$16; $$17++) {
+                  $$10 = diu.a($$1, $$10, $$0, $$12, $$4);
+                  if ($$10.c(diu.e) == 7) {
+                     this.a($$0, $$3, $$4, $$10);
+                     return;
+                  }
+               }
+            }
+         }
       }
+
+      this.a($$0, $$3, $$4, $$10);
    }
 
-   public static record c<Value>(cdi<Value> a) implements bzm<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> {
-      @Override
-      public cdj b() {
-         return cdj.c;
-      }
+   private void a(arh $$0, duo $$1, je $$2, duo $$3) {
+      $$0.c(1500, $$2, $$3 != $$1 ? 1 : 0);
+   }
 
-      @Override
-      public bzl<com.mojang.datafixers.kinds.OptionalBox.Mu, Value> a(bvg<?> $$0, Optional<Value> $$1) {
-         return new bzl<>($$0, this.a, OptionalBox.create($$1));
+   private void a(cnh $$0) {
+      brw $$1 = $$0.y();
+      if ($$1.a_(cvt.py) <= 36) {
+         int $$2 = $$1.a_(cvt.px);
+         int $$3 = 3;
+         int $$4 = 3;
+         int $$5 = Math.min(3, $$2 / 3);
+         if ($$5 != 0) {
+            int $$6 = $$5 * 3;
+            $$1.a(cvt.px, $$6);
+            cvp $$7 = $$1.b(new cvp(cvt.py, $$5));
+            if (!$$7.f()) {
+               $$0.a($$7, 0.5F);
+            }
+         }
       }
    }
 }

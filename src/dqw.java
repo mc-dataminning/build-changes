@@ -1,99 +1,33 @@
-public class dqw {
-   public static final ala<dqu> a = a("base");
-   public static final ala<dqu> b = a("square_bottom_left");
-   public static final ala<dqu> c = a("square_bottom_right");
-   public static final ala<dqu> d = a("square_top_left");
-   public static final ala<dqu> e = a("square_top_right");
-   public static final ala<dqu> f = a("stripe_bottom");
-   public static final ala<dqu> g = a("stripe_top");
-   public static final ala<dqu> h = a("stripe_left");
-   public static final ala<dqu> i = a("stripe_right");
-   public static final ala<dqu> j = a("stripe_center");
-   public static final ala<dqu> k = a("stripe_middle");
-   public static final ala<dqu> l = a("stripe_downright");
-   public static final ala<dqu> m = a("stripe_downleft");
-   public static final ala<dqu> n = a("small_stripes");
-   public static final ala<dqu> o = a("cross");
-   public static final ala<dqu> p = a("straight_cross");
-   public static final ala<dqu> q = a("triangle_bottom");
-   public static final ala<dqu> r = a("triangle_top");
-   public static final ala<dqu> s = a("triangles_bottom");
-   public static final ala<dqu> t = a("triangles_top");
-   public static final ala<dqu> u = a("diagonal_left");
-   public static final ala<dqu> v = a("diagonal_up_right");
-   public static final ala<dqu> w = a("diagonal_up_left");
-   public static final ala<dqu> x = a("diagonal_right");
-   public static final ala<dqu> y = a("circle");
-   public static final ala<dqu> z = a("rhombus");
-   public static final ala<dqu> A = a("half_vertical");
-   public static final ala<dqu> B = a("half_horizontal");
-   public static final ala<dqu> C = a("half_vertical_right");
-   public static final ala<dqu> D = a("half_horizontal_bottom");
-   public static final ala<dqu> E = a("border");
-   public static final ala<dqu> F = a("curly_border");
-   public static final ala<dqu> G = a("gradient");
-   public static final ala<dqu> H = a("gradient_up");
-   public static final ala<dqu> I = a("bricks");
-   public static final ala<dqu> J = a("globe");
-   public static final ala<dqu> K = a("creeper");
-   public static final ala<dqu> L = a("skull");
-   public static final ala<dqu> M = a("flower");
-   public static final ala<dqu> N = a("mojang");
-   public static final ala<dqu> O = a("piglin");
-   public static final ala<dqu> P = a("flow");
-   public static final ala<dqu> Q = a("guster");
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   private static ala<dqu> a(String $$0) {
-      return ala.a(lv.d, alb.b($$0));
+public class dqw extends dpx implements dqp {
+   public static final MapCodec<dqw> m = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dvd.a.fieldOf("block_set_type").forGetter(dpx::l), dqp.a.e.fieldOf("weathering_state").forGetter(dqw::m), u()).apply($$0, dqw::new)
+   );
+   private final dqp.a n;
+
+   @Override
+   public MapCodec<dqw> a() {
+      return m;
    }
 
-   public static void a(qt<dqu> $$0) {
-      a($$0, a);
-      a($$0, b);
-      a($$0, c);
-      a($$0, d);
-      a($$0, e);
-      a($$0, f);
-      a($$0, g);
-      a($$0, h);
-      a($$0, i);
-      a($$0, j);
-      a($$0, k);
-      a($$0, l);
-      a($$0, m);
-      a($$0, n);
-      a($$0, o);
-      a($$0, p);
-      a($$0, q);
-      a($$0, r);
-      a($$0, s);
-      a($$0, t);
-      a($$0, u);
-      a($$0, v);
-      a($$0, w);
-      a($$0, x);
-      a($$0, y);
-      a($$0, z);
-      a($$0, A);
-      a($$0, B);
-      a($$0, C);
-      a($$0, D);
-      a($$0, E);
-      a($$0, G);
-      a($$0, H);
-      a($$0, I);
-      a($$0, F);
-      a($$0, J);
-      a($$0, K);
-      a($$0, L);
-      a($$0, M);
-      a($$0, N);
-      a($$0, O);
-      a($$0, P);
-      a($$0, Q);
+   protected dqw(dvd $$0, dqp.a $$1, dun.d $$2) {
+      super($$0, $$2);
+      this.n = $$1;
    }
 
-   public static void a(qt<dqu> $$0, ala<dqu> $$1) {
-      $$0.a($$1, new dqu($$1.a(), "block.minecraft.banner." + $$1.a().e()));
+   @Override
+   protected void b(duo $$0, arh $$1, je $$2, azl $$3) {
+      this.a_($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   protected boolean f(duo $$0) {
+      return dqp.c($$0.b()).isPresent();
+   }
+
+   public dqp.a m() {
+      return this.n;
    }
 }

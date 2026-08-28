@@ -1,37 +1,28 @@
-public class grk extends grf<gts, fza> {
-   private final ghu a;
-   private final gnq b;
+public class grk extends grw<gua, fxv> {
+   private final fxv a;
+   private final fxv b;
 
-   public grk(goo<gts, fza> $$0, ghu $$1, gnq $$2) {
+   public grk(gpf<gua, fxv> $$0, gah $$1) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
+      this.a = new fxv($$1.a(gak.aR));
+      this.b = new fxv($$1.a(gak.aS));
    }
 
-   public void a(fcu $$0, ggv $$1, int $$2, gts $$3, float $$4, float $$5) {
-      gym $$6 = $$3.an;
-      if ($$6 != null) {
-         boolean $$7 = $$3.aj && $$3.u;
-         if (!$$3.u || $$7) {
-            $$0.a();
-            this.d().c().a($$0);
-            float $$8 = 0.625F;
-            $$0.a(0.0F, -0.34375F, 0.0F);
-            $$0.a(a.d.rotationDegrees(180.0F));
-            $$0.b(0.625F, -0.625F, -0.625F);
-            cvl $$9 = $$3.ao;
-            if ($$7 && $$9.h() instanceof ctl $$10) {
-               dua $$11 = $$10.d().o();
-               gym $$12 = this.a.a($$11);
-               int $$13 = gnt.a($$3, 0.0F);
-               $$0.a(-0.5F, -0.5F, -0.5F);
-               this.a.b().a($$0.c(), $$1.getBuffer(ghe.s(gwj.d)), $$11, $$12, 0.0F, 0.0F, 0.0F, $$2, $$13);
-            } else {
-               this.b.a($$9, cvi.f, false, $$0, $$1, $$2, gnt.a($$3, 0.0F), $$6);
-            }
-
-            $$0.b();
+   public void a(fde $$0, ghg $$1, int $$2, gua $$3, float $$4, float $$5) {
+      cvp $$6 = $$3.i;
+      if ($$6.h() instanceof cth $$7 && $$7.d() == cth.a.a) {
+         fxv $$9 = $$3.ae ? this.b : this.a;
+         $$9.a($$3);
+         int $$10;
+         if ($$6.a(axc.bD)) {
+            $$10 = axo.f(cyh.a($$6, -6265536));
+         } else {
+            $$10 = -1;
          }
+
+         fdi $$12 = $$1.getBuffer(ghq.f($$7.b()));
+         $$9.a($$0, $$12, $$2, gws.d, $$10);
+         return;
       }
    }
 }

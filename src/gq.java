@@ -18,9 +18,9 @@ public class gq implements ArgumentType<gr> {
       return new gq();
    }
 
-   public static aqt a(CommandContext<et> $$0, String $$1) {
+   public static aqu a(CommandContext<et> $$0, String $$1) {
       je $$2 = ((gr)$$0.getArgument($$1, gr.class)).c((et)$$0.getSource());
-      return new aqt($$2.u(), $$2.w());
+      return new aqu($$2.u(), $$2.w());
    }
 
    public gr a(StringReader $$0) throws CommandSyntaxException {

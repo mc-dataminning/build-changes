@@ -1,69 +1,30 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Locale;
 
 public interface esr {
-   esq<cyh> a = new esq<cyh>() {
-      @Override
-      public kq<cyh> a() {
-         return kr.ad;
-      }
+   je a();
 
-      public Stream<cvl> a(cyh $$0) {
-         return $$0.b();
-      }
+   float b();
 
-      public cyh c() {
-         return cyh.a;
-      }
+   long c();
 
-      public cyh a(cyh $$0, Stream<cvl> $$1) {
-         return cyh.a($$1.toList());
-      }
-   };
-   esq<cxy> b = new esq<cxy>() {
-      @Override
-      public kq<cxy> a() {
-         return kr.H;
-      }
+   long d();
 
-      public cxy c() {
-         return cxy.a;
-      }
+   boolean g();
 
-      public Stream<cvl> a(cxy $$0) {
-         return $$0.b();
-      }
+   boolean i();
 
-      public cxy a(cxy $$0, Stream<cvl> $$1) {
-         cxy.a $$2 = new cxy.a($$0).a();
-         $$1.forEach($$2::a);
-         return $$2.d();
-      }
-   };
-   esq<cxz> c = new esq<cxz>() {
-      @Override
-      public kq<cxz> a() {
-         return kr.G;
-      }
+   void b(boolean var1);
 
-      public cxz c() {
-         return cxz.a;
-      }
+   boolean l();
 
-      public Stream<cvl> a(cxz $$0) {
-         return $$0.a().stream();
-      }
+   dec o();
 
-      public cxz a(cxz $$0, Stream<cvl> $$1) {
-         return cxz.a($$1.toList());
-      }
-   };
-   Map<kq<?>, esq<?>> d = Stream.of(a, b, c).collect(Collectors.toMap(esq::a, $$0 -> (esq<?>)$$0));
-   Codec<esq<?>> e = lu.ap.q().comapFlatMap($$0 -> {
-      esq<?> $$1 = d.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "No items in component");
-   }, esq::a);
+   brm q();
+
+   boolean r();
+
+   default void a(p $$0, dei $$1) {
+      $$0.a("Level spawn location", () -> p.a($$1, this.a()));
+      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.c(), this.d()));
+   }
 }

@@ -1,27 +1,44 @@
-public class cxc extends cwg implements cwh {
-   public cxc(cvg.a $$0) {
-      super($$0);
+import java.util.Map;
+import javax.annotation.Nullable;
+
+public class cxc extends ctr {
+   protected final dhj a;
+   private final jj b;
+
+   public cxc(dhj $$0, dhj $$1, cvk.a $$2, jj $$3) {
+      super($$0, $$2);
+      this.a = $$1;
+      this.b = $$3;
    }
 
+   protected boolean a(dej $$0, duo $$1, je $$2) {
+      return $$1.a($$0, $$2);
+   }
+
+   @Nullable
    @Override
-   public brk a(dds $$0, cnp $$1, brj $$2) {
-      cvl $$3 = $$1.b($$2);
-      if ($$0 instanceof arg $$4) {
-         coi.a(cov::new, $$4, $$3, $$1, -20.0F, 0.5F, 1.0F);
+   protected duo c(czk $$0) {
+      duo $$1 = this.a.a($$0);
+      duo $$2 = null;
+      dej $$3 = $$0.q();
+      je $$4 = $$0.a();
+
+      for (jj $$5 : $$0.f()) {
+         if ($$5 != this.b.g()) {
+            duo $$6 = $$5 == this.b ? this.d().a($$0) : $$1;
+            if ($$6 != null && this.a($$3, $$6, $$4)) {
+               $$2 = $$6;
+               break;
+            }
+         }
       }
 
-      $$1.b(awn.c.b(this));
-      $$3.a(1, $$1);
-      return brk.a;
+      return $$2 != null && $$3.a($$2, $$4, eyx.a()) ? $$2 : null;
    }
 
    @Override
-   public coi a(dds $$0, jx $$1, cvl $$2, jj $$3) {
-      return new cov($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
-   }
-
-   @Override
-   public cwh.a c() {
-      return cwh.a.a().a(cwh.a.a.c() * 0.5F).b(cwh.a.a.d() * 1.25F).a();
+   public void a(Map<dhj, cvk> $$0, cvk $$1) {
+      super.a($$0, $$1);
+      $$0.put(this.a, $$1);
    }
 }

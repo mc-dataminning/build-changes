@@ -1,62 +1,54 @@
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Locale;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class hbe {
-   private static final int a = 100;
-   private final azk b = azk.a();
-   private final fib c;
-   @Nullable
-   private hae d;
-   private int e = 100;
-
-   public hbe(fib $$0) {
-      this.c = $$0;
-   }
-
-   public void a() {
-      awa $$0 = this.c.ak();
-      if (this.d != null) {
-         if (!$$0.a().a().a().equals(this.d.a()) && $$0.d()) {
-            this.c.aj().b(this.d);
-            this.e = azc.a(this.b, 0, $$0.b() / 2);
+public interface hbe<T> {
+   static <T> hbe<T> a() {
+      return new hbe<T>() {
+         @Override
+         public List<T> a(String $$0) {
+            return List.of();
          }
 
-         if (!this.c.aj().c(this.d)) {
-            this.d = null;
-            this.e = Math.min(this.e, azc.a(this.b, $$0.b(), $$0.c()));
+         @Override
+         public List<T> b(String $$0) {
+            return List.of();
          }
-      }
+      };
+   }
 
-      this.e = Math.min(this.e, $$0.c());
-      if (this.d == null && this.e-- <= 0) {
-         this.a($$0);
+   static <T> hbe<T> a(List<T> $$0, Function<T, Stream<alc>> $$1) {
+      if ($$0.isEmpty()) {
+         return a();
+      } else {
+         final hbg<T> $$2 = new hbg<>();
+         final hbg<T> $$3 = new hbg<>();
+
+         for (T $$4 : $$0) {
+            $$1.apply($$4).forEach($$3x -> {
+               $$2.a($$4, $$3x.b().toLowerCase(Locale.ROOT));
+               $$3.a($$4, $$3x.a().toLowerCase(Locale.ROOT));
+            });
+         }
+
+         $$2.a();
+         $$3.a();
+         return new hbe<T>() {
+            @Override
+            public List<T> a(String $$0) {
+               return $$2.a($$0);
+            }
+
+            @Override
+            public List<T> b(String $$0) {
+               return $$3.a($$0);
+            }
+         };
       }
    }
 
-   public void a(awa $$0) {
-      this.d = gzz.a($$0.a().a());
-      if (this.d.b() != hbj.b) {
-         this.c.aj().a(this.d);
-      }
+   List<T> a(String var1);
 
-      this.e = Integer.MAX_VALUE;
-   }
-
-   public void b(awa $$0) {
-      if (this.c($$0)) {
-         this.b();
-      }
-   }
-
-   public void b() {
-      if (this.d != null) {
-         this.c.aj().b(this.d);
-         this.d = null;
-      }
-
-      this.e += 100;
-   }
-
-   public boolean c(awa $$0) {
-      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
-   }
+   List<T> b(String var1);
 }

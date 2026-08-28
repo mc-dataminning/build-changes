@@ -1,23 +1,23 @@
-public enum dvl implements azy {
-   a("none", true),
-   b("unstable", false),
-   c("partial", true),
-   d("full", true);
+public enum dvl implements azz {
+   a("tip_merge"),
+   b("tip"),
+   c("frustum"),
+   d("middle"),
+   e("base");
 
-   private final String e;
-   private final boolean f;
+   private final String f;
 
-   private dvl(final String $$0, final boolean $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   private dvl(final String $$0) {
+      this.f = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.f;
    }
 
    @Override
    public String c() {
-      return this.e;
-   }
-
-   public boolean a() {
       return this.f;
    }
 }

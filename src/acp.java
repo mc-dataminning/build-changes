@@ -10,7 +10,7 @@ public record acp(List<acp.a> b) implements zk<abz> {
       this($$0.a(acp.a::new));
    }
 
-   public static acp a(List<dwg> $$0) {
+   public static acp a(List<dwu> $$0) {
       return new acp($$0.stream().map(acp.a::new).toList());
    }
 
@@ -27,8 +27,8 @@ public record acp(List<acp.a> b) implements zk<abz> {
       $$0.a(this);
    }
 
-   public static record a(dcy a, byte[] b) {
-      public a(dwg $$0) {
+   public static record a(ddm a, byte[] b) {
+      public a(dwu $$0) {
          this($$0.f(), new byte[a($$0)]);
          a(new wa(this.d()), $$0);
       }
@@ -37,10 +37,10 @@ public record acp(List<acp.a> b) implements zk<abz> {
          this($$0.f(), $$0.a(2097152));
       }
 
-      private static int a(dwg $$0) {
+      private static int a(dwu $$0) {
          int $$1 = 0;
 
-         for (dwh $$2 : $$0.d()) {
+         for (dwv $$2 : $$0.d()) {
             $$1 += $$2.i().c();
          }
 
@@ -57,8 +57,8 @@ public record acp(List<acp.a> b) implements zk<abz> {
          return $$0;
       }
 
-      public static void a(wa $$0, dwg $$1) {
-         for (dwh $$2 : $$1.d()) {
+      public static void a(wa $$0, dwu $$1) {
+         for (dwv $$2 : $$1.d()) {
             $$2.i().b($$0);
          }
       }
@@ -68,7 +68,7 @@ public record acp(List<acp.a> b) implements zk<abz> {
          $$0.a(this.b);
       }
 
-      public dcy b() {
+      public ddm b() {
          return this.a;
       }
 

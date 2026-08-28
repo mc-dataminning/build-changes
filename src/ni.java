@@ -2,63 +2,63 @@ import java.util.function.BiConsumer;
 
 public record ni(jp.a a) implements mz {
    @Override
-   public void generate(BiConsumer<ala<esy>, esy.a> $$0) {
-      jp.b<cxt> $$1 = this.a.a(lv.aX).orElseThrow();
-      jp.b<cxr> $$2 = this.a.a(lv.aW).orElseThrow();
-      jp.b<daw> $$3 = this.a.b(lv.aL);
-      cxq $$4 = new cxq($$2.a(cxs.e).orElseThrow(), $$1.a(cxu.q).orElseThrow());
-      cxq $$5 = new cxq($$2.a(cxs.e).orElseThrow(), $$1.a(cxu.r).orElseThrow());
+   public void generate(BiConsumer<alb<etm>, etm.a> $$0) {
+      jp.b<cxu> $$1 = this.a.a(lv.aY).orElseThrow();
+      jp.b<cxs> $$2 = this.a.a(lv.aX).orElseThrow();
+      jp.b<dbk> $$3 = this.a.b(lv.aM);
+      cxr $$4 = new cxr($$2.a(cxt.e).orElseThrow(), $$1.a(cxv.q).orElseThrow());
+      cxr $$5 = new cxr($$2.a(cxt.e).orElseThrow(), $$1.a(cxv.r).orElseThrow());
       $$0.accept(
-         esp.aj,
-         esy.b()
+         etd.aj,
+         etm.b()
             .a(
-               esx.a()
-                  .a(ewx.a(1.0F))
-                  .a(etm.a(a(cvo.pD, cvo.pE, $$5, $$3).b()).a(4))
-                  .a(etm.a(a(cvo.pH, cvo.pI, $$4, $$3).b()).a(2))
-                  .a(etm.a(a(cvo.pL, cvo.pM, $$4, $$3).b()).a(1))
+               etl.a()
+                  .a(exl.a(1.0F))
+                  .a(eua.a(a(cvt.pD, cvt.pE, $$5, $$3).b()).a(4))
+                  .a(eua.a(a(cvt.pH, cvt.pI, $$4, $$3).b()).a(2))
+                  .a(eua.a(a(cvt.pL, cvt.pM, $$4, $$3).b()).a(1))
             )
       );
       $$0.accept(
-         esp.al,
-         esy.b()
-            .a(esx.a().a(ewx.a(1.0F)).a(etm.a(esp.aj)))
+         etd.al,
+         etm.b()
+            .a(etl.a().a(exl.a(1.0F)).a(eua.a(etd.aj)))
             .a(
-               esx.a()
-                  .a(ewx.a(1.0F))
-                  .a(etg.a(cvo.pc).a(4))
-                  .a(etg.a(cvo.pc).a(new euu.a().a($$3.b(dbb.n), ewx.a(1.0F))))
-                  .a(etg.a(cvo.pc).a(new euu.a().a($$3.b(dbb.q), ewx.a(1.0F))))
-                  .a(etg.a(cvo.ph))
+               etl.a()
+                  .a(exl.a(1.0F))
+                  .a(etu.a(cvt.pc).a(4))
+                  .a(etu.a(cvt.pc).a(new evi.a().a($$3.b(dbp.n), exl.a(1.0F))))
+                  .a(etu.a(cvt.pc).a(new evi.a().a($$3.b(dbp.q), exl.a(1.0F))))
+                  .a(etu.a(cvt.ph))
             )
       );
       $$0.accept(
-         esp.ak,
-         esy.b()
-            .a(esx.a().a(ewx.a(1.0F)).a(etm.a(esp.aj)))
+         etd.ak,
+         etm.b()
+            .a(etl.a().a(exl.a(1.0F)).a(eua.a(etd.aj)))
             .a(
-               esx.a()
-                  .a(ewx.a(1.0F))
-                  .a(etg.a(cvo.ow).a(2))
-                  .a(etg.a(cvo.ow).a(new euu.a().a($$3.b(dbb.y), ewx.a(1.0F))))
-                  .a(etg.a(cvo.ow).a(new euu.a().a($$3.b(dbb.z), ewx.a(1.0F))))
+               etl.a()
+                  .a(exl.a(1.0F))
+                  .a(etu.a(cvt.ow).a(2))
+                  .a(etu.a(cvt.ow).a(new evi.a().a($$3.b(dbp.y), exl.a(1.0F))))
+                  .a(etu.a(cvt.ow).a(new evi.a().a($$3.b(dbp.z), exl.a(1.0F))))
             )
       );
    }
 
-   public static esy.a a(cvg $$0, cvg $$1, cxq $$2, jp.b<daw> $$3) {
-      return esy.b()
+   public static etm.a a(cvk $$0, cvk $$1, cxr $$2, jp.b<dbk> $$3) {
+      return etm.b()
          .a(
-            esx.a()
-               .a(ewx.a(1.0F))
-               .a(ewj.a(0.5F))
-               .a(etg.a($$0).a(eup.a(kr.M, $$2)).a(new euu.a().a($$3.b(dbb.a), ewx.a(4.0F)).a($$3.b(dbb.e), ewx.a(4.0F)).a($$3.b(dbb.b), ewx.a(4.0F))))
+            etl.a()
+               .a(exl.a(1.0F))
+               .a(ewx.a(0.5F))
+               .a(etu.a($$0).a(evd.a(kr.P, $$2)).a(new evi.a().a($$3.b(dbp.a), exl.a(4.0F)).a($$3.b(dbp.e), exl.a(4.0F)).a($$3.b(dbp.b), exl.a(4.0F))))
          )
          .a(
-            esx.a()
-               .a(ewx.a(1.0F))
-               .a(ewj.a(0.5F))
-               .a(etg.a($$1).a(eup.a(kr.M, $$2)).a(new euu.a().a($$3.b(dbb.a), ewx.a(4.0F)).a($$3.b(dbb.e), ewx.a(4.0F)).a($$3.b(dbb.b), ewx.a(4.0F))))
+            etl.a()
+               .a(exl.a(1.0F))
+               .a(ewx.a(0.5F))
+               .a(etu.a($$1).a(evd.a(kr.P, $$2)).a(new evi.a().a($$3.b(dbp.a), exl.a(4.0F)).a($$3.b(dbp.e), exl.a(4.0F)).a($$3.b(dbp.b), exl.a(4.0F))))
          );
    }
 }

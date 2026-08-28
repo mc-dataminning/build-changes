@@ -1,26 +1,37 @@
-public class gon extends gny<cla, guj, fyn> {
-   private static final alb a = alb.b("textures/entity/illager/ravager.png");
+public class gon extends gop<ckz, gvh, fya> {
+   private static final alc a = alc.b("textures/entity/slime/magmacube.png");
 
-   public gon(gms.a $$0) {
-      super($$0, new fyn($$0.a(gaa.bY)), 1.1F);
+   public gon(gnj.a $$0) {
+      super($$0, new fya($$0.a(gak.bh)), 0.25F);
    }
 
-   public alb a(guj $$0) {
+   protected int a(ckz $$0, je $$1) {
+      return 15;
+   }
+
+   public alc a(gvh $$0) {
       return a;
    }
 
-   public guj c() {
-      return new guj();
+   public gvh c() {
+      return new gvh();
    }
 
-   public void a(cla $$0, guj $$1, float $$2) {
+   public void a(ckz $$0, gvh $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = (float)$$0.go() > 0.0F ? (float)$$0.go() - $$2 : 0.0F;
-      $$1.b = (float)$$0.t() > 0.0F ? (float)$$0.t() - $$2 : 0.0F;
-      if ($$0.gy() > 0) {
-         $$1.c = ((float)(20 - $$0.gy()) + $$2) / 20.0F;
-      } else {
-         $$1.c = 0.0F;
-      }
+      $$1.a = azd.h($$2, $$0.bY, $$0.bX);
+      $$1.b = $$0.gq();
+   }
+
+   public void a(gvh $$0, fde $$1, ghg $$2, int $$3) {
+      this.f = 0.25F * (float)$$0.b;
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected void a(gvh $$0, fde $$1) {
+      int $$2 = $$0.b;
+      float $$3 = $$0.a / ((float)$$2 * 0.5F + 1.0F);
+      float $$4 = 1.0F / ($$3 + 1.0F);
+      $$1.b($$4 * (float)$$2, 1.0F / $$4 * (float)$$2, $$4 * (float)$$2);
    }
 }

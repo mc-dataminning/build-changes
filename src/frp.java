@@ -1,30 +1,30 @@
-public class frp extends fqh {
-   private final dcs u;
+import org.joml.Vector3f;
 
-   public frp(dcs $$0) {
-      this.u = $$0;
+public class frp extends fqu {
+   public static final float c = 4.5F;
+   private static final Vector3f d = new Vector3f(1.0F, 1.0F, 1.0F);
+   private static final int s = 16;
+   private static final int u = 16;
+   private final alc v = alc.b("textures/gui/hanging_signs/" + this.b.b() + ".png");
+
+   public frp(dte $$0, boolean $$1, boolean $$2) {
+      super($$0, $$1, $$2, xd.c("hanging_sign.edit"));
    }
 
    @Override
-   public dcs m() {
-      return this.u;
+   protected void a(fjx $$0, duo $$1) {
+      $$0.c().a((float)this.n / 2.0F, 125.0F, 50.0F);
    }
 
    @Override
-   int D() {
-      return 150;
+   protected void c(fjx $$0) {
+      $$0.c().a(0.0F, -13.0F, 0.0F);
+      $$0.c().b(4.5F, 4.5F, 1.0F);
+      $$0.a(ghq::B, this.v, -8, -8, 0.0F, 0.0F, 16, 16, 16, 16);
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
-      this.a.a(this.m().m());
-   }
-
-   @Override
-   protected void a(dcs $$0) {
-      if ($$0 instanceof cpv.a $$1) {
-         this.m.L().b(new aih($$1.h().ap(), this.a.a(), $$0.p()));
-      }
+   protected Vector3f m() {
+      return d;
    }
 }

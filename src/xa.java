@@ -61,13 +61,13 @@ public record xa(String c, List<xa.a> d, ya e) {
       return this.e;
    }
 
-   public static enum a implements azy {
+   public static enum a implements azz {
       a(0, "sender", ($$0, $$1) -> $$1.b()),
       b(1, "target", ($$0, $$1) -> $$1.c().orElse(xc.a)),
       c(2, "content", ($$0, $$1) -> $$0);
 
-      private static final IntFunction<xa.a> f = axt.a($$0 -> $$0.g, values(), axt.a.a);
-      public static final Codec<xa.a> d = azy.a(xa.a::values);
+      private static final IntFunction<xa.a> f = axu.a($$0 -> $$0.g, values(), axu.a.a);
+      public static final Codec<xa.a> d = azz.a(xa.a::values);
       public static final zb<ByteBuf, xa.a> e = yz.a(f, $$0 -> $$0.g);
       private final int g;
       private final String h;

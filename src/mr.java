@@ -14,11 +14,11 @@ public class mr implements mb {
    private static final mr.b f = new mr.b(true, true, true);
    private static final mr.b g = new mr.b(true, true, false);
    private static final mr.b h = new mr.b(false, true, true);
-   private static final Map<ala<? extends ka<?>>, mr.b> i = Map.of(lv.bg, e, lv.bf, e, lv.bc, f, lv.bd, f, lv.be, f);
+   private static final Map<alb<? extends ka<?>>, mr.b> i = Map.of(lv.bh, e, lv.bg, e, lv.bd, f, lv.be, f, lv.bf, f);
    private static final Map<String, mr.a> j = Map.of(
       "structure", new mr.a(mr.c.a, new mr.b(true, false, true)), "function", new mr.a(mr.c.b, new mr.b(true, true, true))
    );
-   static final Codec<ala<? extends ka<?>>> k = alb.a.xmap(ala::a, ala::a);
+   static final Codec<alb<? extends ka<?>>> k = alc.a.xmap(alb::a, alb::a);
 
    public mr(md $$0) {
       this.d = $$0;
@@ -36,19 +36,19 @@ public class mr implements mb {
       return "Datapack Structure";
    }
 
-   private void a(Map<ala<? extends ka<?>>, mr.b> $$0, ala<? extends ka<?>> $$1, mr.b $$2) {
+   private void a(Map<alb<? extends ka<?>>, mr.b> $$0, alb<? extends ka<?>> $$1, mr.b $$2) {
       mr.b $$3 = $$0.putIfAbsent($$1, $$2);
       if ($$3 != null) {
          throw new IllegalStateException("Duplicate entry for key " + $$1.a());
       }
    }
 
-   private Map<ala<? extends ka<?>>, mr.b> b() {
-      Map<ala<? extends ka<?>>, mr.b> $$0 = new HashMap<>();
-      lu.az.forEach($$1 -> this.a($$0, $$1.d(), h));
-      akw.a.forEach($$1 -> this.a($$0, $$1.a(), g));
-      akw.b.forEach($$1 -> this.a($$0, $$1.a(), g));
-      i.forEach(($$1, $$2) -> this.a($$0, (ala<? extends ka<?>>)$$1, $$2));
+   private Map<alb<? extends ka<?>>, mr.b> b() {
+      Map<alb<? extends ka<?>>, mr.b> $$0 = new HashMap<>();
+      lu.aA.forEach($$1 -> this.a($$0, $$1.d(), h));
+      akx.a.forEach($$1 -> this.a($$0, $$1.a(), g));
+      akx.b.forEach($$1 -> this.a($$0, $$1.a(), g));
+      i.forEach(($$1, $$2) -> this.a($$0, (alb<? extends ka<?>>)$$1, $$2));
       return $$0;
    }
 
@@ -90,11 +90,11 @@ public class mr implements mb {
       }
    }
 
-   static enum c implements azy {
+   static enum c implements azz {
       a("structure"),
       b("mcfunction");
 
-      public static final Codec<mr.c> c = azy.a(mr.c::values);
+      public static final Codec<mr.c> c = azz.a(mr.c::values);
       private final String d;
 
       private c(final String $$0) {
@@ -107,7 +107,7 @@ public class mr implements mb {
       }
    }
 
-   static record d(Map<ala<? extends ka<?>>, mr.b> b, Map<String, mr.a> c) {
+   static record d(Map<alb<? extends ka<?>>, mr.b> b, Map<String, mr.a> c) {
       public static final Codec<mr.d> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   Codec.unboundedMap(mr.k, mr.b.b).fieldOf("registries").forGetter(mr.d::a),
@@ -116,7 +116,7 @@ public class mr implements mb {
                .apply($$0, mr.d::new)
       );
 
-      public Map<ala<? extends ka<?>>, mr.b> a() {
+      public Map<alb<? extends ka<?>>, mr.b> a() {
          return this.b;
       }
 

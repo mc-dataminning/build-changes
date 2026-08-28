@@ -1,45 +1,33 @@
-import net.minecraft.server.MinecraftServer;
+import java.nio.charset.StandardCharsets;
 
-public class avt implements es {
-   private static final String b = "Rcon";
-   private static final xd c = xd.b("Rcon");
-   private final StringBuffer d = new StringBuffer();
-   private final MinecraftServer e;
+public class avt {
+   public static final int a = 1460;
+   public static final char[] b = new char[]{'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
 
-   public avt(MinecraftServer $$0) {
-      this.e = $$0;
+   public static String a(byte[] $$0, int $$1, int $$2) {
+      int $$3 = $$2 - 1;
+      int $$4 = $$1 > $$3 ? $$3 : $$1;
+
+      while (0 != $$0[$$4] && $$4 < $$3) {
+         $$4++;
+      }
+
+      return new String($$0, $$1, $$4 - $$1, StandardCharsets.UTF_8);
    }
 
-   public void e() {
-      this.d.setLength(0);
+   public static int a(byte[] $$0, int $$1) {
+      return b($$0, $$1, $$0.length);
    }
 
-   public String f() {
-      return this.d.toString();
+   public static int b(byte[] $$0, int $$1, int $$2) {
+      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1 + 3] << 24 | ($$0[$$1 + 2] & 0xFF) << 16 | ($$0[$$1 + 1] & 0xFF) << 8 | $$0[$$1] & 0xFF;
    }
 
-   public et g() {
-      arg $$0 = this.e.J();
-      return new et(this, eye.a($$0.W()), eyd.a, $$0, 4, "Rcon", c, this.e, null);
+   public static int c(byte[] $$0, int $$1, int $$2) {
+      return 0 > $$2 - $$1 - 4 ? 0 : $$0[$$1] << 24 | ($$0[$$1 + 1] & 0xFF) << 16 | ($$0[$$1 + 2] & 0xFF) << 8 | $$0[$$1 + 3] & 0xFF;
    }
 
-   @Override
-   public void a(xd $$0) {
-      this.d.append($$0.getString());
-   }
-
-   @Override
-   public boolean k_() {
-      return true;
-   }
-
-   @Override
-   public boolean v_() {
-      return true;
-   }
-
-   @Override
-   public boolean J_() {
-      return this.e.m();
+   public static String a(byte $$0) {
+      return "" + b[($$0 & 240) >>> 4] + b[$$0 & 15];
    }
 }

@@ -1,36 +1,96 @@
-public class fvy extends fxn<gsb> {
-   public fvy(gab $$0) {
-      super($$0);
+import com.mojang.authlib.properties.PropertyMap;
+import java.io.File;
+import java.net.Proxy;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
+
+public class fvy {
+   public final fvy.d a;
+   public final fbu b;
+   public final fvy.a c;
+   public final fvy.b d;
+   public final fvy.c e;
+
+   public fvy(fvy.d $$0, fbu $$1, fvy.a $$2, fvy.b $$3, fvy.c $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   public static gah a(gaf $$0) {
-      gaj $$1 = fxn.a($$0, 0.0F);
-      gal $$2 = $$1.a();
-      $$2.a("head", gag.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0), gad.a(0.0F, 1.0F, 0.0F));
-      $$2.a("hat", gag.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, $$0.a(0.5F)), gad.a(0.0F, 1.0F, 0.0F));
-      $$2.a("right_leg", gag.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), gad.a(-1.9F, 11.0F, 0.0F));
-      $$2.a("left_leg", gag.c().a(0, 16).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, $$0.a(-0.1F)), gad.a(1.9F, 11.0F, 0.0F));
-      return gah.a($$1, 64, 32);
+   public static class a {
+      public final File a;
+      public final File b;
+      public final File c;
+      @Nullable
+      public final String d;
+
+      public a(File $$0, File $$1, File $$2, @Nullable String $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public Path a() {
+         return this.d == null ? this.c.toPath() : gxw.a(this.c.toPath(), this.d);
+      }
    }
 
-   public void a(gsb $$0) {
-      this.o.e = (float) (Math.PI / 180.0) * $$0.g.b();
-      this.o.f = (float) (Math.PI / 180.0) * $$0.g.c();
-      this.o.g = (float) (Math.PI / 180.0) * $$0.g.d();
-      this.q.e = (float) (Math.PI / 180.0) * $$0.h.b();
-      this.q.f = (float) (Math.PI / 180.0) * $$0.h.c();
-      this.q.g = (float) (Math.PI / 180.0) * $$0.h.d();
-      this.s.e = (float) (Math.PI / 180.0) * $$0.i.b();
-      this.s.f = (float) (Math.PI / 180.0) * $$0.i.c();
-      this.s.g = (float) (Math.PI / 180.0) * $$0.i.d();
-      this.r.e = (float) (Math.PI / 180.0) * $$0.j.b();
-      this.r.f = (float) (Math.PI / 180.0) * $$0.j.c();
-      this.r.g = (float) (Math.PI / 180.0) * $$0.j.d();
-      this.u.e = (float) (Math.PI / 180.0) * $$0.k.b();
-      this.u.f = (float) (Math.PI / 180.0) * $$0.k.c();
-      this.u.g = (float) (Math.PI / 180.0) * $$0.k.d();
-      this.t.e = (float) (Math.PI / 180.0) * $$0.l.b();
-      this.t.f = (float) (Math.PI / 180.0) * $$0.l.c();
-      this.t.g = (float) (Math.PI / 180.0) * $$0.l.d();
+   public static class b {
+      public final boolean a;
+      public final String b;
+      public final String c;
+      public final boolean d;
+      public final boolean e;
+
+      public b(boolean $$0, String $$1, String $$2, boolean $$3, boolean $$4) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+      }
+   }
+
+   public static record c(@Nullable String a, @Nullable String b, @Nullable String c, @Nullable String d) {
+      public boolean a() {
+         return !baa.h(this.b) || !baa.h(this.c) || !baa.h(this.d);
+      }
+
+      @Nullable
+      public String b() {
+         return this.a;
+      }
+
+      @Nullable
+      public String c() {
+         return this.b;
+      }
+
+      @Nullable
+      public String d() {
+         return this.c;
+      }
+
+      @Nullable
+      public String e() {
+         return this.d;
+      }
+   }
+
+   public static class d {
+      public final fiy a;
+      public final PropertyMap b;
+      public final PropertyMap c;
+      public final Proxy d;
+
+      public d(fiy $$0, PropertyMap $$1, PropertyMap $$2, Proxy $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
    }
 }

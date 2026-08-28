@@ -1,25 +1,18 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
 
-public record dbx(alb d) implements dbn {
-   private static final Logger e = LogUtils.getLogger();
-   public static final MapCodec<dbx> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alb.a.fieldOf("function").forGetter(dbx::b)).apply($$0, dbx::new));
+public record dbx(dbr d, dbr e, jn<bsi> f) implements dcb {
+   public static final MapCodec<dbx> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               dbr.b.fieldOf("min_damage").forGetter(dbx::b), dbr.b.fieldOf("max_damage").forGetter(dbx::c), bsi.b.fieldOf("damage_type").forGetter(dbx::d)
+            )
+            .apply($$0, dbx::new)
+   );
 
    @Override
-   public void a(arg $$0, int $$1, dav $$2, btj $$3, eye $$4) {
-      MinecraftServer $$5 = $$0.o();
-      alq $$6 = $$5.aE();
-      Optional<ih<et>> $$7 = $$6.a(this.d);
-      if ($$7.isPresent()) {
-         et $$8 = $$5.aH().a(2).a().a($$3).a($$0).a($$4).a($$3.bR());
-         $$6.a($$7.get(), $$8);
-      } else {
-         e.error("Enchantment run_function effect failed for non-existent function {}", this.d);
-      }
+   public void a(arh $$0, int $$1, dbj $$2, bto $$3, eys $$4) {
+      float $$5 = azd.b($$3.dV(), this.d.a($$1), this.e.a($$1));
+      $$3.a(new bsg(this.f, $$2.c()), $$5);
    }
 
    @Override
@@ -27,7 +20,15 @@ public record dbx(alb d) implements dbn {
       return a;
    }
 
-   public alb b() {
+   public dbr b() {
       return this.d;
+   }
+
+   public dbr c() {
+      return this.e;
+   }
+
+   public jn<bsi> d() {
+      return this.f;
    }
 }

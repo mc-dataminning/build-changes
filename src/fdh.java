@@ -1,392 +1,207 @@
-import com.google.common.hash.Hashing;
-import com.google.common.io.Files;
-import com.mojang.logging.LogUtils;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.Locale;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.nio.ByteBuffer;
 import javax.annotation.Nullable;
-import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
-import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
-import org.apache.commons.compress.compressors.gzip.GzipCompressorInputStream;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.io.output.CountingOutputStream;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.slf4j.Logger;
+import org.joml.Matrix4f;
 
-public class fdh {
-   static final Logger a = LogUtils.getLogger();
-   volatile boolean b;
-   volatile boolean c;
-   volatile boolean d;
-   volatile boolean e;
+public class fdh implements AutoCloseable {
+   private final fdh.a a;
+   private int b;
+   private int c;
+   private int d;
    @Nullable
-   private volatile File f;
-   volatile File g;
+   private fdj e;
    @Nullable
-   private volatile HttpGet h;
-   @Nullable
-   private Thread i;
-   private final RequestConfig j = RequestConfig.custom().setSocketTimeout(120000).setConnectTimeout(120000).build();
-   private static final String[] k = new String[]{
-      "CON",
-      "COM",
-      "PRN",
-      "AUX",
-      "CLOCK$",
-      "NUL",
-      "COM1",
-      "COM2",
-      "COM3",
-      "COM4",
-      "COM5",
-      "COM6",
-      "COM7",
-      "COM8",
-      "COM9",
-      "LPT1",
-      "LPT2",
-      "LPT3",
-      "LPT4",
-      "LPT5",
-      "LPT6",
-      "LPT7",
-      "LPT8",
-      "LPT9"
-   };
+   private RenderSystem.a f;
+   private fdj.b g;
+   private int h;
+   private fdj.c i;
 
-   public long a(String $$0) {
-      CloseableHttpClient $$1 = null;
-      HttpGet $$2 = null;
-
-      long var5;
-      try {
-         $$2 = new HttpGet($$0);
-         $$1 = HttpClientBuilder.create().setDefaultRequestConfig(this.j).build();
-         CloseableHttpResponse $$3 = $$1.execute($$2);
-         return Long.parseLong($$3.getFirstHeader("Content-Length").getValue());
-      } catch (Throwable var16) {
-         a.error("Unable to get content length for download");
-         var5 = 0L;
-      } finally {
-         if ($$2 != null) {
-            $$2.releaseConnection();
-         }
-
-         if ($$1 != null) {
-            try {
-               $$1.close();
-            } catch (IOException var15) {
-               a.error("Could not close http client", var15);
-            }
-         }
-      }
-
-      return var5;
+   public fdh(fdh.a $$0) {
+      this.a = $$0;
+      RenderSystem.assertOnRenderThread();
+      this.b = GlStateManager._glGenBuffers();
+      this.c = GlStateManager._glGenBuffers();
+      this.d = GlStateManager._glGenVertexArrays();
    }
 
-   public void a(fep $$0, String $$1, ffm.a $$2, esh $$3) {
-      if (this.i == null) {
-         this.i = new Thread(() -> {
-            CloseableHttpClient $$4 = null;
+   public void a(fdd $$0) {
+      fdd var2 = $$0;
 
-            try {
-               this.f = File.createTempFile("backup", ".tar.gz");
-               this.h = new HttpGet($$0.a);
-               $$4 = HttpClientBuilder.create().setDefaultRequestConfig(this.j).build();
-               HttpResponse $$5 = $$4.execute(this.h);
-               $$2.b = Long.parseLong($$5.getFirstHeader("Content-Length").getValue());
-               if ($$5.getStatusLine().getStatusCode() == 200) {
-                  OutputStream $$12 = new FileOutputStream(this.f);
-                  fdh.b $$13 = new fdh.b($$1.trim(), this.f, $$3, $$2);
-                  fdh.a $$14 = new fdh.a($$12);
-                  $$14.a($$13);
-                  IOUtils.copy($$5.getEntity().getContent(), $$14);
-                  return;
-               }
+      label40: {
+         try {
+            if (this.e()) {
+               break label40;
+            }
 
-               this.d = true;
-               this.h.abort();
-            } catch (Exception var93) {
-               a.error("Caught exception while downloading: {}", var93.getMessage());
-               this.d = true;
-               return;
-            } finally {
-               this.h.releaseConnection();
-               if (this.f != null) {
-                  this.f.delete();
-               }
-
-               if (!this.d) {
-                  if (!$$0.b.isEmpty() && !$$0.c.isEmpty()) {
-                     try {
-                        this.f = File.createTempFile("resources", ".tar.gz");
-                        this.h = new HttpGet($$0.b);
-                        HttpResponse $$28 = $$4.execute(this.h);
-                        $$2.b = Long.parseLong($$28.getFirstHeader("Content-Length").getValue());
-                        if ($$28.getStatusLine().getStatusCode() != 200) {
-                           this.d = true;
-                           this.h.abort();
-                           return;
-                        }
-
-                        OutputStream $$29 = new FileOutputStream(this.f);
-                        fdh.c $$30 = new fdh.c(this.f, $$2, $$0);
-                        fdh.a $$31 = new fdh.a($$29);
-                        $$31.a($$30);
-                        IOUtils.copy($$28.getEntity().getContent(), $$31);
-                     } catch (Exception var91) {
-                        a.error("Caught exception while downloading: {}", var91.getMessage());
-                        this.d = true;
-                     } finally {
-                        this.h.releaseConnection();
-                        if (this.f != null) {
-                           this.f.delete();
-                        }
-                     }
-                  } else {
-                     this.c = true;
-                  }
-               }
-
-               if ($$4 != null) {
-                  try {
-                     $$4.close();
-                  } catch (IOException var90) {
-                     a.error("Failed to close Realms download client");
-                  }
+            RenderSystem.assertOnRenderThread();
+            fdd.a $$1 = $$0.c();
+            this.e = this.a($$1, $$0.a());
+            this.f = this.b($$1, $$0.b());
+            this.h = $$1.c();
+            this.g = $$1.e();
+            this.i = $$1.d();
+         } catch (Throwable var6) {
+            if ($$0 != null) {
+               try {
+                  var2.close();
+               } catch (Throwable var5) {
+                  var6.addSuppressed(var5);
                }
             }
-         });
-         this.i.setUncaughtExceptionHandler(new fet(a));
-         this.i.start();
+
+            throw var6;
+         }
+
+         if ($$0 != null) {
+            $$0.close();
+         }
+
+         return;
+      }
+
+      if ($$0 != null) {
+         $$0.close();
+      }
+   }
+
+   public void a(fdb.a $$0) {
+      fdb.a var2 = $$0;
+
+      label40: {
+         try {
+            if (this.e()) {
+               break label40;
+            }
+
+            RenderSystem.assertOnRenderThread();
+            GlStateManager._glBindBuffer(34963, this.c);
+            RenderSystem.glBufferData(34963, $$0.a(), this.a.c);
+            this.f = null;
+         } catch (Throwable var6) {
+            if ($$0 != null) {
+               try {
+                  var2.close();
+               } catch (Throwable var5) {
+                  var6.addSuppressed(var5);
+               }
+            }
+
+            throw var6;
+         }
+
+         if ($$0 != null) {
+            $$0.close();
+         }
+
+         return;
+      }
+
+      if ($$0 != null) {
+         $$0.close();
+      }
+   }
+
+   private fdj a(fdd.a $$0, @Nullable ByteBuffer $$1) {
+      boolean $$2 = false;
+      if (!$$0.a().equals(this.e)) {
+         if (this.e != null) {
+            this.e.h();
+         }
+
+         GlStateManager._glBindBuffer(34962, this.b);
+         $$0.a().g();
+         $$2 = true;
+      }
+
+      if ($$1 != null) {
+         if (!$$2) {
+            GlStateManager._glBindBuffer(34962, this.b);
+         }
+
+         RenderSystem.glBufferData(34962, $$1, this.a.c);
+      }
+
+      return $$0.a();
+   }
+
+   @Nullable
+   private RenderSystem.a b(fdd.a $$0, @Nullable ByteBuffer $$1) {
+      if ($$1 != null) {
+         GlStateManager._glBindBuffer(34963, this.c);
+         RenderSystem.glBufferData(34963, $$1, this.a.c);
+         return null;
+      } else {
+         RenderSystem.a $$2 = RenderSystem.getSequentialBuffer($$0.d());
+         if ($$2 != this.f || !$$2.a($$0.c())) {
+            $$2.b($$0.c());
+         }
+
+         return $$2;
       }
    }
 
    public void a() {
-      if (this.h != null) {
-         this.h.abort();
+      fda.b();
+      GlStateManager._glBindVertexArray(this.d);
+   }
+
+   public static void b() {
+      fda.b();
+      GlStateManager._glBindVertexArray(0);
+   }
+
+   public void c() {
+      RenderSystem.drawElements(this.i.i, this.h, this.f().c);
+   }
+
+   private fdj.b f() {
+      RenderSystem.a $$0 = this.f;
+      return $$0 != null ? $$0.a() : this.g;
+   }
+
+   public void a(Matrix4f $$0, Matrix4f $$1, ggp $$2) {
+      RenderSystem.assertOnRenderThread();
+      $$2.a(this.i, $$0, $$1, fil.Q().aP());
+      $$2.b();
+      this.c();
+      $$2.a();
+   }
+
+   @Override
+   public void close() {
+      if (this.b >= 0) {
+         RenderSystem.glDeleteBuffers(this.b);
+         this.b = -1;
       }
 
-      if (this.f != null) {
-         this.f.delete();
+      if (this.c >= 0) {
+         RenderSystem.glDeleteBuffers(this.c);
+         this.c = -1;
       }
 
-      this.b = true;
+      if (this.d >= 0) {
+         RenderSystem.glDeleteVertexArrays(this.d);
+         this.d = -1;
+      }
    }
 
-   public boolean b() {
-      return this.c;
-   }
-
-   public boolean c() {
-      return this.d;
-   }
-
-   public boolean d() {
+   public fdj d() {
       return this.e;
    }
 
-   public static String b(String $$0) {
-      $$0 = $$0.replaceAll("[\\./\"]", "_");
-
-      for (String $$1 : k) {
-         if ($$0.equalsIgnoreCase($$1)) {
-            $$0 = "_" + $$0 + "_";
-         }
-      }
-
-      return $$0;
+   public boolean e() {
+      return this.d == -1;
    }
 
-   void a(String $$0, @Nullable File $$1, esh $$2) throws IOException {
-      Pattern $$3 = Pattern.compile(".*-([0-9]+)$");
-      int $$4 = 1;
+   public static enum a {
+      a(35044),
+      b(35048);
 
-      for (char $$5 : ab.be) {
-         $$0 = $$0.replace($$5, '_');
-      }
+      final int c;
 
-      if (StringUtils.isEmpty($$0)) {
-         $$0 = "Realm";
-      }
-
-      $$0 = b($$0);
-
-      try {
-         for (esh.b $$6 : $$2.b()) {
-            String $$7 = $$6.a();
-            if ($$7.toLowerCase(Locale.ROOT).startsWith($$0.toLowerCase(Locale.ROOT))) {
-               Matcher $$8 = $$3.matcher($$7);
-               if ($$8.matches()) {
-                  int $$9 = Integer.parseInt($$8.group(1));
-                  if ($$9 > $$4) {
-                     $$4 = $$9;
-                  }
-               } else {
-                  $$4++;
-               }
-            }
-         }
-      } catch (Exception var43) {
-         a.error("Error getting level list", var43);
-         this.d = true;
-         return;
-      }
-
-      String $$13;
-      if ($$2.a($$0) && $$4 <= 1) {
-         $$13 = $$0;
-      } else {
-         $$13 = $$0 + ($$4 == 1 ? "" : "-" + $$4);
-         if (!$$2.a($$13)) {
-            boolean $$12 = false;
-
-            while (!$$12) {
-               $$4++;
-               $$13 = $$0 + ($$4 == 1 ? "" : "-" + $$4);
-               if ($$2.a($$13)) {
-                  $$12 = true;
-               }
-            }
-         }
-      }
-
-      TarArchiveInputStream $$14 = null;
-      File $$15 = new File(fib.Q().q.getAbsolutePath(), "saves");
-
-      try {
-         $$15.mkdir();
-         $$14 = new TarArchiveInputStream(new GzipCompressorInputStream(new BufferedInputStream(new FileInputStream($$1))));
-
-         for (TarArchiveEntry $$16 = $$14.getNextTarEntry(); $$16 != null; $$16 = $$14.getNextTarEntry()) {
-            File $$17 = new File($$15, $$16.getName().replace("world", $$13));
-            if ($$16.isDirectory()) {
-               $$17.mkdirs();
-            } else {
-               $$17.createNewFile();
-
-               try (FileOutputStream $$18 = new FileOutputStream($$17)) {
-                  IOUtils.copy($$14, $$18);
-               }
-            }
-         }
-      } catch (Exception var41) {
-         a.error("Error extracting world", var41);
-         this.d = true;
-      } finally {
-         if ($$14 != null) {
-            $$14.close();
-         }
-
-         if ($$1 != null) {
-            $$1.delete();
-         }
-
-         try (esh.c $$26 = $$2.d($$13)) {
-            $$26.b($$13);
-         } catch (uq | uw | IOException var39) {
-            a.error("Failed to modify unpacked realms level {}", $$13, var39);
-         } catch (ext var40) {
-            a.warn("{}", var40.getMessage());
-         }
-
-         this.g = new File($$15, $$13 + File.separator + "resources.zip");
-      }
-   }
-
-   static class a extends CountingOutputStream {
-      @Nullable
-      private ActionListener a;
-
-      public a(OutputStream $$0) {
-         super($$0);
-      }
-
-      public void a(ActionListener $$0) {
-         this.a = $$0;
-      }
-
-      protected void afterWrite(int $$0) throws IOException {
-         super.afterWrite($$0);
-         if (this.a != null) {
-            this.a.actionPerformed(new ActionEvent(this, 0, null));
-         }
-      }
-   }
-
-   class b implements ActionListener {
-      private final String b;
-      private final File c;
-      private final esh d;
-      private final ffm.a e;
-
-      b(final String $$0, final File $$1, final esh $$2, final ffm.a $$3) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-      }
-
-      @Override
-      public void actionPerformed(ActionEvent $$0) {
-         this.e.a = ((fdh.a)$$0.getSource()).getByteCount();
-         if (this.e.a >= this.e.b && !fdh.this.b && !fdh.this.d) {
-            try {
-               fdh.this.e = true;
-               fdh.this.a(this.b, this.c, this.d);
-            } catch (IOException var3) {
-               fdh.a.error("Error extracting archive", var3);
-               fdh.this.d = true;
-            }
-         }
-      }
-   }
-
-   class c implements ActionListener {
-      private final File b;
-      private final ffm.a c;
-      private final fep d;
-
-      c(final File $$0, final ffm.a $$1, final fep $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-      }
-
-      @Override
-      public void actionPerformed(ActionEvent $$0) {
-         this.c.a = ((fdh.a)$$0.getSource()).getByteCount();
-         if (this.c.a >= this.c.b && !fdh.this.b) {
-            try {
-               String $$1 = Hashing.sha1().hashBytes(Files.toByteArray(this.b)).toString();
-               if ($$1.equals(this.d.c)) {
-                  FileUtils.copyFile(this.b, fdh.this.g);
-                  fdh.this.c = true;
-               } else {
-                  fdh.a.error("Resourcepack had wrong hash (expected {}, found {}). Deleting it.", this.d.c, $$1);
-                  FileUtils.deleteQuietly(this.b);
-                  fdh.this.d = true;
-               }
-            } catch (IOException var3) {
-               fdh.a.error("Error copying resourcepack file: {}", var3.getMessage());
-               fdh.this.d = true;
-            }
-         }
+      private a(final int $$0) {
+         this.c = $$0;
       }
    }
 }

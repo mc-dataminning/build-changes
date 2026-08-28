@@ -1,50 +1,38 @@
-import javax.annotation.Nullable;
+public class ffs extends hdk {
+   private static final xd a = xd.c("mco.client.incompatible.title").b(-65536);
+   private static final xd b = xd.b(ab.b().c()).b(-65536);
+   private static final xd c = xd.a("mco.client.unsupported.snapshot.version", b);
+   private static final xd B = xd.a("mco.client.outdated.stable.version", b);
+   private final fqd C;
+   private final fny D = new fny(this);
 
-public class ffs extends hct {
-   private static final xd a = xd.c("mco.account.privacy.information");
-   private static final int b = 15;
-   private final fns c = fns.d();
-   private final fpt B;
-   @Nullable
-   private fku C;
-
-   public ffs(fpt $$0) {
-      super(fhs.a);
-      this.B = $$0;
+   public ffs(fqd $$0) {
+      super(a);
+      this.C = $$0;
    }
 
    @Override
-   public void aT_() {
-      this.c.a(15).c().b();
-      this.C = new fku(a, this.p).b(true);
-      this.c.a(this.C);
-      fns $$0 = this.c.a(fns.e().a(8));
-      xd $$1 = xd.c("mco.account.privacy.info.button");
-      $$0.a(fka.a($$1, fop.b(this, axy.a)).a());
-      $$0.a(fka.a(xc.k, $$0x -> this.d()).a());
-      this.c.a($$1x -> {
-         fjy var10000 = this.c($$1x);
+   public void aR_() {
+      this.D.a(a, this.p);
+      this.D.c(new fle(this.D(), this.p).b(true));
+      this.D.b(fkk.a(xc.k, $$0 -> this.d()).a(200).a());
+      this.D.a($$1 -> {
+         fki var10000 = this.c($$1);
       });
       this.c();
    }
 
    @Override
-   public void d() {
-      this.m.a(this.B);
-   }
-
-   @Override
    protected void c() {
-      if (this.C != null) {
-         this.C.d(this.n - 15);
-      }
-
-      this.c.a();
-      fnm.a(this.c, this.H());
+      this.D.a();
    }
 
    @Override
-   public xd i() {
-      return a;
+   public void d() {
+      this.m.a(this.C);
+   }
+
+   private xd D() {
+      return ab.b().g() ? B : c;
    }
 }

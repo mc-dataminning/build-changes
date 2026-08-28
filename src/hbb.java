@@ -1,29 +1,33 @@
-import it.unimi.dsi.fastutil.floats.FloatConsumer;
-import java.io.IOException;
-import java.nio.ByteBuffer;
+import com.google.common.collect.ImmutableList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.ToIntFunction;
+import java.util.stream.Stream;
 
-public interface hbb extends hba {
-   int a = 8192;
+public class hbb<T> implements hbf<T> {
+   protected final Comparator<T> a;
+   protected final hbe<T> b;
 
-   boolean a(FloatConsumer var1) throws IOException;
-
-   @Override
-   default ByteBuffer a(int $$0) throws IOException {
-      haz $$1 = new haz($$0 + 8192);
-
-      while (this.a($$1) && $$1.b() < $$0) {
-      }
-
-      return $$1.a();
+   public hbb(Function<T, Stream<alc>> $$0, List<T> $$1) {
+      ToIntFunction<T> $$2 = ad.g($$1);
+      this.a = Comparator.comparingInt($$2);
+      this.b = hbe.a($$1, $$0);
    }
 
    @Override
-   default ByteBuffer b() throws IOException {
-      haz $$0 = new haz(16384);
+   public List<T> search(String $$0) {
+      int $$1 = $$0.indexOf(58);
+      return $$1 == -1 ? this.a($$0) : this.a($$0.substring(0, $$1).trim(), $$0.substring($$1 + 1).trim());
+   }
 
-      while (this.a($$0)) {
-      }
+   protected List<T> a(String $$0) {
+      return this.b.b($$0);
+   }
 
-      return $$0.a();
+   protected List<T> a(String $$0, String $$1) {
+      List<T> $$2 = this.b.a($$0);
+      List<T> $$3 = this.b.b($$1);
+      return ImmutableList.copyOf(new hbc<T>($$2.iterator(), $$3.iterator(), this.a));
    }
 }

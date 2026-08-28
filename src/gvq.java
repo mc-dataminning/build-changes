@@ -1,6 +1,5 @@
-import javax.annotation.Nullable;
-
-@Deprecated
-public interface gvq {
-   float call(cvl var1, @Nullable gax var2, @Nullable buf var3, int var4);
+public class gvq extends guj {
+   public cha.b a = cha.b.g;
+   public int b = -1;
+   public int c = -1;
 }

@@ -1,24 +1,28 @@
-public abstract class gqq<S extends gsu, M extends fxa<S>> extends grf<S, M> {
-   public gqq(goo<S, M> $$0) {
-      super($$0);
+public class gqq extends goa<clu, gwb, gac<gwb>> {
+   private static final alc a = alc.b("textures/entity/zombie_villager/zombie_villager.png");
+
+   public gqq(gnj.a $$0) {
+      super($$0, new gac<>($$0.a(gak.dv)), new gac<>($$0.a(gak.dy)), 0.5F, gqe.a);
+      this.a(new grm<>(this, new gac($$0.a(gak.dw)), new gac($$0.a(gak.dx)), new gac($$0.a(gak.dz)), new gac($$0.a(gak.dA)), $$0.g()));
+      this.a(new gsg<>(this, $$0.e(), "zombie_villager"));
    }
 
-   @Override
-   public void a(fcu $$0, ggv $$1, int $$2, S $$3, float $$4, float $$5) {
-      if (this.a($$3)) {
-         float $$6 = $$3.p;
-         M $$7 = this.c();
-         fcy $$8 = $$1.getBuffer(ghe.b(this.a(), this.a($$6) % 1.0F, $$6 * 0.01F % 1.0F));
-         $$7.a($$3);
-         $$7.a($$0, $$8, $$2, gwb.d, -8355712);
-      }
+   public alc a(gwb $$0) {
+      return a;
    }
 
-   protected abstract boolean a(S var1);
+   public gwb c() {
+      return new gwb();
+   }
 
-   protected abstract float a(float var1);
+   public void a(clu $$0, gwb $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.b = $$0.gy();
+      $$1.c = $$0.gz();
+      $$1.a = $$0.gg();
+   }
 
-   protected abstract alb a();
-
-   protected abstract M c();
+   protected boolean b(gwb $$0) {
+      return super.a($$0) || $$0.b;
+   }
 }

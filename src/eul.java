@@ -1,41 +1,65 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.BiFunction;
+import java.util.Optional;
+import java.util.Set;
 
-public class eul implements euh {
+public class eul extends euu {
    public static final MapCodec<eul> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(euj.b.listOf().fieldOf("functions").forGetter($$0x -> $$0x.c)).apply($$0, eul::new)
+      $$0 -> a($$0)
+            .and($$0.group(exp.a.fieldOf("levels").forGetter($$0x -> $$0x.b), kc.a(lv.aM).optionalFieldOf("options").forGetter($$0x -> $$0x.c)))
+            .apply($$0, eul::new)
    );
-   public static final Codec<eul> b = euj.b.listOf().xmap(eul::new, $$0 -> $$0.c);
-   private final List<euh> c;
-   private final BiFunction<cvl, est, cvl> d;
+   private final exo b;
+   private final Optional<jr<dbk>> c;
 
-   private eul(List<euh> $$0) {
-      this.c = $$0;
-      this.d = euj.a($$0);
-   }
-
-   public static eul a(List<euh> $$0) {
-      return new eul(List.copyOf($$0));
-   }
-
-   public cvl a(cvl $$0, est $$1) {
-      return this.d.apply($$0, $$1);
+   eul(List<ews> $$0, exo $$1, Optional<jr<dbk>> $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public void a(esz $$0) {
-      euh.super.a($$0);
+   public euw<eul> b() {
+      return eux.g;
+   }
 
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".function[" + $$1 + "]"));
+   @Override
+   public Set<ewa<?>> a() {
+      return this.b.a();
+   }
+
+   @Override
+   public cvp a(cvp $$0, eth $$1) {
+      azl $$2 = $$1.b();
+      kb $$3 = $$1.d().F_();
+      return dbm.a($$2, $$0, this.b.a($$1), $$3, this.c);
+   }
+
+   public static eul.a a(jp.a $$0, exo $$1) {
+      return new eul.a($$1).a($$0.b(lv.aM).b(aww.n));
+   }
+
+   public static class a extends euu.a<eul.a> {
+      private final exo a;
+      private Optional<jr<dbk>> b = Optional.empty();
+
+      public a(exo $$0) {
+         this.a = $$0;
       }
-   }
 
-   @Override
-   public eui<eul> b() {
-      return euj.I;
+      protected eul.a a() {
+         return this;
+      }
+
+      public eul.a a(jr<dbk> $$0) {
+         this.b = Optional.of($$0);
+         return this;
+      }
+
+      @Override
+      public euv b() {
+         return new eul(this.g(), this.a, this.b);
+      }
    }
 }

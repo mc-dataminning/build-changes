@@ -1,35 +1,47 @@
-import java.net.InetSocketAddress;
+import java.util.List;
+import java.util.Locale;
 
-public interface gcn {
-   String a();
+public enum gcn {
+   a("i_want_to_report_them"),
+   b("hate_speech"),
+   c("harassment_or_bullying"),
+   d("self_harm_or_suicide"),
+   e("imminent_harm"),
+   f("defamation_impersonation_false_information"),
+   g("alcohol_tobacco_drugs"),
+   h("child_sexual_exploitation_or_abuse"),
+   i("terrorism_or_violent_extremism"),
+   j("non_consensual_intimate_imagery"),
+   k("sexually_inappropriate");
 
-   String b();
+   private final String l;
+   private final xd m;
+   private final xd n;
 
-   int c();
+   private gcn(final String $$0) {
+      this.l = $$0.toUpperCase(Locale.ROOT);
+      String $$1 = "gui.abuseReport.reason." + $$0;
+      this.m = xd.c($$1);
+      this.n = xd.c($$1 + ".description");
+   }
 
-   InetSocketAddress d();
+   public String a() {
+      return this.l;
+   }
 
-   static gcn a(final InetSocketAddress $$0) {
-      return new gcn() {
-         @Override
-         public String a() {
-            return $$0.getAddress().getHostName();
-         }
+   public xd b() {
+      return this.m;
+   }
 
-         @Override
-         public String b() {
-            return $$0.getAddress().getHostAddress();
-         }
+   public xd c() {
+      return this.n;
+   }
 
-         @Override
-         public int c() {
-            return $$0.getPort();
-         }
-
-         @Override
-         public InetSocketAddress d() {
-            return $$0;
-         }
+   public static List<gcn> a(gco $$0) {
+      return switch ($$0) {
+         case a -> List.of(k);
+         case b -> List.of(e, f);
+         default -> List.of();
       };
    }
 }

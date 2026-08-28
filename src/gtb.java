@@ -1,8 +1,10 @@
-import javax.annotation.Nullable;
-
-public class gtb extends gsu {
+public class gtb extends guj {
    public boolean a;
-   @Nullable
-   public gym b;
-   public cvl c = cvl.k;
+   public boolean b;
+   public float c;
+   public final bti d = new bti();
+   public final bti e = new bti();
+   public final bti f = new bti();
+   public final bti g = new bti();
+   public final bti h = new bti();
 }

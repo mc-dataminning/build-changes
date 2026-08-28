@@ -1,31 +1,63 @@
-import com.mojang.datafixers.DataFixer;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
-import org.apache.commons.io.FileUtils;
+import com.google.common.collect.ImmutableList;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.UnaryOperator;
 
-public class dxk extends dxs {
-   private final dxi a;
-   private final Path b;
+public record dxk(ImmutableList<dxo> c) {
+   public static final dxk a = new dxk.a()
+      .a(dxl.c, $$0 -> $$0)
+      .a(dxl.d, $$0 -> $$0.a(dxn::b))
+      .a(dxl.e, $$0 -> $$0.a(dxl.d, 8).a(dxn::d))
+      .a(dxl.f, $$0 -> $$0.a(dxl.d, 8).a(dxn::e))
+      .a(dxl.g, $$0 -> $$0.a(dxl.d, 8).a(dxl.f, 1).a(0).a(dxn::f))
+      .a(dxl.h, $$0 -> $$0.a(dxl.d, 8).a(dxl.f, 1).a(0).a(dxn::g))
+      .a(dxl.i, $$0 -> $$0.a(dxl.d, 8).a(0).a(dxn::h))
+      .a(dxl.j, $$0 -> $$0.a(dxl.d, 8).a(dxl.i, 1).a(1).a(dxn::i))
+      .a(dxl.k, $$0 -> $$0.a(dxn::j))
+      .a(dxl.l, $$0 -> $$0.a(dxl.k, 1).a(dxn::k))
+      .a(dxl.m, $$0 -> $$0.a(dxl.f, 1).a(dxn::l))
+      .a(dxl.n, $$0 -> $$0.a(dxn::m))
+      .a();
+   public static final dxk b = new dxk.a()
+      .a(dxl.c, $$0 -> $$0)
+      .a(dxl.d, $$0 -> $$0.a(dxn::c))
+      .a(dxl.e, $$0 -> $$0)
+      .a(dxl.f, $$0 -> $$0)
+      .a(dxl.g, $$0 -> $$0)
+      .a(dxl.h, $$0 -> $$0)
+      .a(dxl.i, $$0 -> $$0)
+      .a(dxl.j, $$0 -> $$0)
+      .a(dxl.k, $$0 -> $$0.a(dxn::j))
+      .a(dxl.l, $$0 -> $$0.a(dxl.k, 1).a(dxn::k))
+      .a(dxl.m, $$0 -> $$0)
+      .a(dxl.n, $$0 -> $$0.a(dxn::m))
+      .a();
 
-   public dxk(dxp $$0, Path $$1, dxp $$2, Path $$3, DataFixer $$4, boolean $$5, bal $$6) {
-      super($$0, $$1, $$4, $$5, $$6);
-      this.b = $$3;
-      this.a = new dxi($$2, $$3, $$5);
+   public dxo a(dxl $$0) {
+      return (dxo)this.c.get($$0.b());
    }
 
-   @Override
-   public CompletableFuture<Void> a(dcy $$0, @Nullable uf $$1) {
-      return this.a.a($$0, $$1);
+   public ImmutableList<dxo> a() {
+      return this.c;
    }
 
-   @Override
-   public void close() throws IOException {
-      super.close();
-      this.a.close();
-      if (this.b.toFile().exists()) {
-         FileUtils.deleteDirectory(this.b.toFile());
+   public static class a {
+      private final List<dxo> a = new ArrayList<>();
+
+      public dxk a() {
+         return new dxk(ImmutableList.copyOf(this.a));
+      }
+
+      public dxk.a a(dxl $$0, UnaryOperator<dxo.a> $$1) {
+         dxo.a $$2;
+         if (this.a.isEmpty()) {
+            $$2 = new dxo.a($$0);
+         } else {
+            $$2 = new dxo.a($$0, this.a.getLast());
+         }
+
+         this.a.add($$1.apply($$2).a());
+         return this;
       }
    }
 }

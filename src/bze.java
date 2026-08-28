@@ -1,97 +1,104 @@
 import com.google.common.collect.ImmutableMap;
 import java.util.Optional;
 
-public class bze extends bvx<cnc> {
-   private long c;
+public class bze extends bwc<cnh> {
+   private static final int c = 80;
+   private long d;
+   private long e;
+   private int f;
+   private Optional<je> g = Optional.empty();
 
    public bze() {
-      super(ImmutableMap.of(cdi.r, cdj.a, cdi.h, cdj.a), 350, 350);
+      super(ImmutableMap.of(cdn.n, cdo.b, cdn.m, cdo.b));
    }
 
-   protected boolean a(arg $$0, cnc $$1) {
-      return this.a($$1);
-   }
-
-   protected boolean a(arg $$0, cnc $$1, long $$2) {
-      return $$2 <= this.c && this.a($$1);
-   }
-
-   protected void b(arg $$0, cnc $$1, long $$2) {
-      btc $$3 = $$1.dX().c(cdi.r).get();
-      bvz.a($$1, $$3, 0.5F, 2);
-      $$0.a($$3, (byte)18);
-      $$0.a($$1, (byte)18);
-      int $$4 = 275 + $$1.dV().a(50);
-      this.c = $$2 + (long)$$4;
-   }
-
-   protected void c(arg $$0, cnc $$1, long $$2) {
-      cnc $$3 = (cnc)$$1.dX().c(cdi.r).get();
-      if (!($$1.g($$3) > 5.0)) {
-         bvz.a($$1, $$3, 0.5F, 2);
-         if ($$2 >= this.c) {
-            $$1.gF();
-            $$3.gF();
-            this.a($$0, $$1, $$3);
-         } else if ($$1.dV().a(35) == 0) {
-            $$0.a($$3, (byte)12);
-            $$0.a($$1, (byte)12);
-         }
-      }
-   }
-
-   private void a(arg $$0, cnc $$1, cnc $$2) {
-      Optional<je> $$3 = this.b($$0, $$1);
-      if ($$3.isEmpty()) {
-         $$0.a($$2, (byte)13);
-         $$0.a($$1, (byte)13);
-      } else {
-         Optional<cnc> $$4 = this.b($$0, $$1, $$2);
-         if ($$4.isPresent()) {
-            this.a($$0, $$4.get(), $$3.get());
+   protected boolean a(arh $$0, cnh $$1) {
+      if ($$1.ag % 10 == 0 && (this.e == 0L || this.e + 160L <= (long)$$1.ag)) {
+         if ($$1.y().a_(cvt.rz) <= 0) {
+            return false;
          } else {
-            $$0.y().b($$3.get());
-            agn.c($$0, $$3.get());
+            this.g = this.b($$0, $$1);
+            return this.g.isPresent();
+         }
+      } else {
+         return false;
+      }
+   }
+
+   protected boolean a(arh $$0, cnh $$1, long $$2) {
+      return this.f < 80 && this.g.isPresent();
+   }
+
+   private Optional<je> b(arh $$0, cnh $$1) {
+      je.a $$2 = new je.a();
+      Optional<je> $$3 = Optional.empty();
+      int $$4 = 0;
+
+      for (int $$5 = -1; $$5 <= 1; $$5++) {
+         for (int $$6 = -1; $$6 <= 1; $$6++) {
+            for (int $$7 = -1; $$7 <= 1; $$7++) {
+               $$2.a($$1.ds(), $$5, $$6, $$7);
+               if (this.a($$2, $$0)) {
+                  if ($$0.z.a(++$$4) == 0) {
+                     $$3 = Optional.of($$2.j());
+                  }
+               }
+            }
          }
       }
+
+      return $$3;
    }
 
-   protected void d(arg $$0, cnc $$1, long $$2) {
-      $$1.dX().b(cdi.r);
+   private boolean a(je $$0, arh $$1) {
+      duo $$2 = $$1.a_($$0);
+      dhj $$3 = $$2.b();
+      return $$3 instanceof dje && !((dje)$$3).i($$2);
    }
 
-   private boolean a(cnc $$0) {
-      bvg<cnc> $$1 = $$0.dX();
-      Optional<btc> $$2 = $$1.c(cdi.r).filter($$0x -> $$0x.ao() == btq.bj);
-      return $$2.isEmpty() ? false : bvz.a($$1, cdi.r, btq.bj) && $$0.aa_() && $$2.get().aa_();
+   protected void b(arh $$0, cnh $$1, long $$2) {
+      this.a($$1);
+      $$1.a(btw.a, new cvp(cvt.rz));
+      this.d = $$2;
+      this.f = 0;
    }
 
-   private Optional<je> b(arg $$0, cnc $$1) {
-      return $$0.y().a($$0x -> $$0x.a(cfm.n), ($$1x, $$2) -> this.a($$1, $$2, $$1x), $$1.ds(), 48);
+   private void a(cnh $$0) {
+      this.g.ifPresent($$1 -> {
+         bwf $$2 = new bwf($$1);
+         $$0.dX().a(cdn.n, $$2);
+         $$0.dX().a(cdn.m, new cdq($$2, 0.5F, 1));
+      });
    }
 
-   private boolean a(cnc $$0, je $$1, jn<cfl> $$2) {
-      eqp $$3 = $$0.P().a($$1, $$2.a().c());
-      return $$3 != null && $$3.j();
+   protected void c(arh $$0, cnh $$1, long $$2) {
+      $$1.a(btw.a, cvp.k);
+      this.e = (long)$$1.ag;
    }
 
-   private Optional<cnc> b(arg $$0, cnc $$1, cnc $$2) {
-      cnc $$3 = $$1.b($$0, $$2);
-      if ($$3 == null) {
-         return Optional.empty();
-      } else {
-         $$1.c_(6000);
-         $$2.c_(6000);
-         $$3.c_(-24000);
-         $$3.b($$1.dx(), $$1.dz(), $$1.dD(), 0.0F, 0.0F);
-         $$0.a_($$3);
-         $$0.a($$3, (byte)12);
-         return Optional.of($$3);
+   protected void d(arh $$0, cnh $$1, long $$2) {
+      je $$3 = this.g.get();
+      if ($$2 >= this.d && $$3.a($$1.dq(), 1.0)) {
+         cvp $$4 = cvp.k;
+         brw $$5 = $$1.y();
+         int $$6 = $$5.b();
+
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            cvp $$8 = $$5.a($$7);
+            if ($$8.a(cvt.rz)) {
+               $$4 = $$8;
+               break;
+            }
+         }
+
+         if (!$$4.f() && ctt.a($$4, $$0, $$3)) {
+            $$0.c(1505, $$3, 15);
+            this.g = this.b($$0, $$1);
+            this.a($$1);
+            this.d = $$2 + 40L;
+         }
+
+         this.f++;
       }
-   }
-
-   private void a(arg $$0, cnc $$1, je $$2) {
-      jm $$3 = jm.a($$0.ag(), $$2);
-      $$1.dX().a(cdi.b, $$3);
    }
 }

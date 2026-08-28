@@ -1,8 +1,8 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface elh {
+public interface elh {
+   void a(elg var1);
+
+   @Nullable
+   elg a(eku var1);
 }

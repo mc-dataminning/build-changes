@@ -1,27 +1,49 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Codec;
 
-public class dah<T extends czj> implements czy<T> {
-   private final MapCodec<T> w;
-   private final zb<wo, T> x;
+public interface dah<T extends dak> {
+   Codec<dah<?>> h = lu.r.q().dispatch(dah::aq_, dam::a);
+   zb<wo, dah<?>> i = yz.a(lv.ae).b(dah::aq_, dam::b);
 
-   public dah(dah.a<T> $$0) {
-      this.w = RecordCodecBuilder.mapCodec($$1 -> $$1.group(czh.e.fieldOf("category").orElse(czh.d).forGetter(czj::d)).apply($$1, $$0::create));
-      this.x = zb.a(czh.g, czj::d, $$0::create);
+   boolean a(T var1, deg var2);
+
+   cvp a(T var1, jp.a var2);
+
+   boolean a(int var1, int var2);
+
+   cvp a(jp.a var1);
+
+   default jw<cvp> a(T $$0) {
+      jw<cvp> $$1 = jw.a($$0.a(), cvp.k);
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         cvk $$3 = $$0.a($$2).h();
+         if ($$3.u()) {
+            $$1.set($$2, new cvp($$3.t()));
+         }
+      }
+
+      return $$1;
    }
 
-   @Override
-   public MapCodec<T> a() {
-      return this.w;
+   default boolean ap_() {
+      return false;
    }
 
-   @Override
-   public zb<wo, T> b() {
-      return this.x;
+   default boolean h() {
+      return true;
    }
 
-   @FunctionalInterface
-   public interface a<T extends czj> {
-      T create(czh var1);
+   default String c() {
+      return "";
    }
+
+   default cvp g() {
+      return new cvp(dhl.cA);
+   }
+
+   dam<?> aq_();
+
+   dan<?> e();
+
+   dag a();
 }

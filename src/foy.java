@@ -1,51 +1,92 @@
-public class foy extends fpt {
-   private static final alb a = alb.b("textures/gui/demo_background.png");
-   private static final int b = 256;
-   private static final int c = 256;
-   private fkt d = fkt.a;
-   private fkt s = fkt.a;
+import com.mojang.authlib.minecraft.BanDetails;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.net.URI;
+import java.time.Duration;
+import java.time.Instant;
+import org.apache.commons.lang3.StringUtils;
 
-   public foy() {
-      super(xd.c("demo.help.title"));
+public class foy {
+   private static final xd b = xd.c("gui.banned.title.temporary").a(n.r);
+   private static final xd c = xd.c("gui.banned.title.permanent").a(n.r);
+   public static final xd a = xd.c("gui.banned.name.title").a(n.r);
+   private static final xd d = xd.c("gui.banned.skin.title").a(n.r);
+   private static final xd e = xd.a("gui.banned.skin.description", xd.a(axz.n));
+
+   public static fpa a(BooleanConsumer $$0, BanDetails $$1) {
+      return new fpa($$0, a($$1), b($$1), axz.n, xc.m, true);
    }
 
-   @Override
-   protected void aT_() {
-      int $$0 = -16;
-      this.c(fka.a(xd.c("demo.help.buy"), $$0x -> {
-         $$0x.j = false;
-         ad.m().a(axy.f);
-      }).a(this.n / 2 - 116, this.o / 2 + 62 + -16, 114, 20).a());
-      this.c(fka.a(xd.c("demo.help.later"), $$0x -> {
-         this.m.a(null);
-         this.m.o.i();
-      }).a(this.n / 2 + 2, this.o / 2 + 62 + -16, 114, 20).a());
-      fif $$1 = this.m.n;
-      this.d = fkt.a(
-         this.p,
-         xd.a("demo.help.movementShort", $$1.v.k(), $$1.w.k(), $$1.x.k(), $$1.y.k()),
-         xd.c("demo.help.movementMouse"),
-         xd.a("demo.help.jump", $$1.z.k()),
-         xd.a("demo.help.inventory", $$1.C.k())
-      );
-      this.s = fkt.a(this.p, xd.c("demo.help.fullWrapped"), 218);
+   public static fpa a(Runnable $$0) {
+      URI $$1 = axz.n;
+      return new fpa($$2 -> {
+         if ($$2) {
+            ad.m().a($$1);
+         }
+
+         $$0.run();
+      }, d, e, $$1, xc.m, true);
    }
 
-   @Override
-   public void b(fjn $$0, int $$1, int $$2, float $$3) {
-      super.b($$0, $$1, $$2, $$3);
-      int $$4 = (this.n - 248) / 2;
-      int $$5 = (this.o - 166) / 2;
-      $$0.a(ghe::C, a, $$4, $$5, 0.0F, 0.0F, 248, 166, 256, 256);
+   public static fpa a(String $$0, Runnable $$1) {
+      URI $$2 = axz.n;
+      return new fpa($$2x -> {
+         if ($$2x) {
+            ad.m().a($$2);
+         }
+
+         $$1.run();
+      }, a, xd.a("gui.banned.name.description", xd.b($$0).a(n.o), xd.a(axz.n)), $$2, xc.m, true);
    }
 
-   @Override
-   public void a(fjn $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      int $$4 = (this.n - 248) / 2 + 10;
-      int $$5 = (this.o - 166) / 2 + 8;
-      $$0.a(this.p, this.l, $$4, $$5, 2039583, false);
-      $$5 = this.d.c($$0, $$4, $$5 + 12, 12, 5197647);
-      this.s.c($$0, $$4, $$5 + 20, 9, 2039583);
+   private static xd a(BanDetails $$0) {
+      return f($$0) ? b : c;
+   }
+
+   private static xd b(BanDetails $$0) {
+      return xd.a("gui.banned.description", c($$0), d($$0), xd.a(axz.n));
+   }
+
+   private static xd c(BanDetails $$0) {
+      String $$1 = $$0.reason();
+      String $$2 = $$0.reasonMessage();
+      if (StringUtils.isNumeric($$1)) {
+         int $$3 = Integer.parseInt($$1);
+         gch $$4 = gch.a($$3);
+         xd $$5;
+         if ($$4 != null) {
+            $$5 = xg.a($$4.a().f(), ya.a.a(true));
+         } else if ($$2 != null) {
+            $$5 = xd.a("gui.banned.description.reason_id_message", $$3, $$2).a(n.r);
+         } else {
+            $$5 = xd.a("gui.banned.description.reason_id", $$3).a(n.r);
+         }
+
+         return xd.a("gui.banned.description.reason", $$5);
+      } else {
+         return xd.c("gui.banned.description.unknownreason");
+      }
+   }
+
+   private static xd d(BanDetails $$0) {
+      if (f($$0)) {
+         xd $$1 = e($$0);
+         return xd.a("gui.banned.description.temporary", xd.a("gui.banned.description.temporary.duration", $$1).a(n.r));
+      } else {
+         return xd.c("gui.banned.description.permanent").a(n.r);
+      }
+   }
+
+   private static xd e(BanDetails $$0) {
+      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
+      long $$2 = $$1.toHours();
+      if ($$2 > 72L) {
+         return xc.a($$1.toDays());
+      } else {
+         return $$2 < 1L ? xc.c($$1.toMinutes()) : xc.b($$1.toHours());
+      }
+   }
+
+   private static boolean f(BanDetails $$0) {
+      return $$0.expires() != null;
    }
 }

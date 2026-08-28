@@ -1,28 +1,29 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.util.Pair;
-import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class byt {
-   public static <E extends buf> bxi<E> a(List<Pair<? extends bzn<? super E>, Integer>> $$0) {
-      return a($$0, bwl.a.b, bwl.b.a);
-   }
+   private static final int a = 180;
+   private static final int b = 8;
+   private static final int c = 6;
 
-   public static <E extends buf> bxi<E> a(List<Pair<? extends bzn<? super E>, Integer>> $$0, bwl.a $$1, bwl.b $$2) {
-      byg<bzn<? super E>> $$3 = new byg<>();
-      $$0.forEach($$1x -> $$3.a((bzn<? super E>)$$1x.getFirst(), (Integer)$$1x.getSecond()));
-      return bzk.a((Function<bzk.b<E>, ? extends App<bzk.c<E>, bzn<E>>>)($$3x -> $$3x.a((bzn<E>)(($$3xx, $$4, $$5) -> {
-            if ($$1 == bwl.a.b) {
-               $$3.a();
-            }
-
-            for (bzn<? super E> $$6 : $$3) {
-               if ($$6.trigger($$3xx, $$4, $$5) && $$2 == bwl.b.a) {
-                  break;
-               }
-            }
-
-            return true;
-         }))));
+   public static bxn<bus> a(cdn<jm> $$0, float $$1, int $$2) {
+      MutableLong $$3 = new MutableLong(0L);
+      return bzp.a(
+         (Function<bzp.b<bus>, ? extends App<bzp.c<bus>, bzs<bus>>>)($$4 -> $$4.group($$4.a(cdn.m), $$4.b($$0)).apply($$4, ($$4x, $$5) -> ($$6, $$7, $$8) -> {
+                  jm $$9 = $$4.b($$5);
+                  if ($$6.ag() != $$9.a() || !$$9.b().a($$7.dq(), (double)$$2)) {
+                     return false;
+                  } else if ($$8 <= $$3.getValue()) {
+                     return true;
+                  } else {
+                     Optional<eys> $$10 = Optional.ofNullable(cfh.a($$7, 8, 6));
+                     $$4x.a($$10.map($$1xxxx -> new cdq($$1xxxx, $$1, 1)));
+                     $$3.setValue($$8 + 180L);
+                     return true;
+                  }
+               }))
+      );
    }
 }

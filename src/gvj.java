@@ -1,4 +1,5 @@
-public class gvj extends gtk {
-   public boolean a;
-   public boolean b;
+public class gvj extends guj {
+   public float a;
+   public float b;
+   public float c;
 }

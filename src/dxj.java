@@ -1,32 +1,54 @@
-import com.mojang.datafixers.DataFixer;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
-import org.apache.commons.io.FileUtils;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import java.util.Locale;
 
-public class dxj extends dxg {
-   private final dxi a;
-   private final Path b;
+public final class dxj {
+   private final ImmutableList<dxl> a;
+   private final int[] b;
 
-   public dxj(dxp $$0, Path $$1, dxp $$2, Path $$3, DataFixer $$4, boolean $$5) {
-      super($$0, $$1, $$4, $$5);
-      this.b = $$3;
-      this.a = new dxi($$2, $$3, $$5);
-   }
+   public dxj(ImmutableList<dxl> $$0) {
+      this.a = $$0;
+      int $$1 = $$0.isEmpty() ? 0 : ((dxl)$$0.getFirst()).b() + 1;
+      this.b = new int[$$1];
 
-   @Override
-   public CompletableFuture<Void> a(dcy $$0, Supplier<uf> $$1) {
-      this.e($$0);
-      return this.a.a($$0, $$1);
-   }
+      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
+         dxl $$3 = (dxl)$$0.get($$2);
+         int $$4 = $$3.b();
 
-   @Override
-   public void close() throws IOException {
-      super.close();
-      this.a.close();
-      if (this.b.toFile().exists()) {
-         FileUtils.deleteDirectory(this.b.toFile());
+         for (int $$5 = 0; $$5 <= $$4; $$5++) {
+            this.b[$$5] = $$2;
+         }
       }
+   }
+
+   @VisibleForTesting
+   public ImmutableList<dxl> a() {
+      return this.a;
+   }
+
+   public int b() {
+      return this.a.size();
+   }
+
+   public int a(dxl $$0) {
+      int $$1 = $$0.b();
+      if ($$1 >= this.b.length) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "Requesting a ChunkStatus(%s) outside of dependency range(%s)", $$0, this.a));
+      } else {
+         return this.b[$$1];
+      }
+   }
+
+   public int c() {
+      return Math.max(0, this.a.size() - 1);
+   }
+
+   public dxl a(int $$0) {
+      return (dxl)this.a.get($$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.a.toString();
    }
 }

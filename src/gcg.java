@@ -1,76 +1,85 @@
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.exceptions.MinecraftClientHttpException;
+import com.mojang.authlib.minecraft.UserApiService;
 import com.mojang.authlib.minecraft.report.AbuseReport;
 import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.minecraft.report.ReportedEntity;
-import com.mojang.datafixers.util.Either;
-import java.time.Instant;
-import java.util.Objects;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
+import com.mojang.datafixers.util.Unit;
 import java.util.UUID;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
 
-public class gcg extends gcb {
-   final Supplier<gxl> g;
-
-   gcg(UUID $$0, Instant $$1, UUID $$2, Supplier<gxl> $$3) {
-      super($$0, $$1, $$2);
-      this.g = $$3;
+public interface gcg {
+   static gcg a(gcm $$0, UserApiService $$1) {
+      return new gcg.b($$0, $$1);
    }
 
-   public Supplier<gxl> a() {
-      return this.g;
+   CompletableFuture<Unit> a(UUID var1, gco var2, AbuseReport var3);
+
+   boolean a();
+
+   default AbuseReportLimits b() {
+      return AbuseReportLimits.DEFAULTS;
    }
 
-   public gcg c() {
-      gcg $$0 = new gcg(this.a, this.b, this.c, this.g);
-      $$0.d = this.d;
-      $$0.e = this.e;
-      $$0.f = this.f;
-      return $$0;
-   }
-
-   @Override
-   public fpt a(fpt $$0, gcf $$1) {
-      return new fuf($$0, $$1, this);
-   }
-
-   public static class a extends gcb.a<gcg> {
-      public a(gcg $$0, AbuseReportLimits $$1) {
+   public static class a extends yd {
+      public a(xd $$0, Throwable $$1) {
          super($$0, $$1);
       }
+   }
 
-      public a(UUID $$0, Supplier<gxl> $$1, AbuseReportLimits $$2) {
-         super(new gcg(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+   public static record b(gcm a, UserApiService b) implements gcg {
+      private static final xd c = xd.c("gui.abuseReport.send.service_unavailable");
+      private static final xd d = xd.c("gui.abuseReport.send.http_error");
+      private static final xd e = xd.c("gui.abuseReport.send.json_error");
+
+      @Override
+      public CompletableFuture<Unit> a(UUID $$0, gco $$1, AbuseReport $$2) {
+         return CompletableFuture.supplyAsync(() -> {
+            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
+
+            try {
+               this.b.reportAbuse($$3);
+               return Unit.INSTANCE;
+            } catch (MinecraftClientHttpException var7) {
+               xd $$5 = this.a(var7);
+               throw new CompletionException(new gcg.a($$5, var7));
+            } catch (MinecraftClientException var8) {
+               xd $$7 = this.a(var8);
+               throw new CompletionException(new gcg.a($$7, var8));
+            }
+         }, ad.h());
       }
 
       @Override
-      public boolean b() {
-         return StringUtils.isNotEmpty(this.g()) || this.i() != null;
+      public boolean a() {
+         return this.b.canSendReports();
       }
 
-      @Nullable
-      @Override
-      public gcb.b c() {
-         if (this.a.e == null) {
-            return gcb.b.a;
-         } else {
-            return this.a.d.length() > this.b.maxOpinionCommentsLength() ? gcb.b.d : super.c();
-         }
+      private xd a(MinecraftClientHttpException $$0) {
+         return xd.a("gui.abuseReport.send.error_message", $$0.getMessage());
+      }
+
+      private xd a(MinecraftClientException $$0) {
+         return switch ($$0.getType()) {
+            case SERVICE_UNAVAILABLE -> c;
+            case HTTP_ERROR -> d;
+            case JSON_ERROR -> e;
+            default -> throw new MatchException(null, null);
+         };
       }
 
       @Override
-      public Either<gcb.c, gcb.b> a(gcf $$0) {
-         gcb.b $$1 = this.c();
-         if ($$1 != null) {
-            return Either.right($$1);
-         } else {
-            String $$2 = Objects.requireNonNull(this.a.e).a();
-            ReportedEntity $$3 = new ReportedEntity(this.a.c);
-            gxl $$4 = this.a.g.get();
-            String $$5 = $$4.b();
-            AbuseReport $$6 = AbuseReport.skin(this.a.d, $$2, $$5, $$3, this.a.b);
-            return Either.left(new gcb.c(this.a.a, gce.b, $$6));
-         }
+      public AbuseReportLimits b() {
+         return this.b.getAbuseReportLimits();
+      }
+
+      public gcm c() {
+         return this.a;
+      }
+
+      public UserApiService d() {
+         return this.b;
       }
    }
 }

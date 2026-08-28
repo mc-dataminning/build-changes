@@ -1,28 +1,38 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.Optional;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class emo extends eko {
-   public static final MapCodec<emo> d = a(emo::new);
+public interface emo {
+   Codec<emo> b = lu.ah.q().dispatch(emo::b, Function.identity());
 
-   public emo(eko.c $$0) {
-      super($$0);
+   void a(azl var1, BiConsumer<alb<emm>, alb<emm>> var2);
+
+   Stream<alb<emm>> a();
+
+   static emn a(String $$0, String $$1) {
+      return a(ra.a($$0), ra.a($$1));
    }
 
-   @Override
-   public Optional<eko.b> a(eko.a $$0) {
-      return a($$0, dzw.a.a, $$1 -> this.a($$1, $$0));
+   static emn a(alb<emm> $$0, alb<emm> $$1) {
+      return new emn($$0, $$1);
    }
 
-   private void a(elg $$0, eko.a $$1) {
-      dcy $$2 = $$1.h();
-      eav $$3 = $$1.f();
-      je $$4 = new je($$2.d(), 90, $$2.e());
-      dnj $$5 = dnj.a($$3);
-      emn.a($$1.e(), $$4, $$5, $$0, $$3);
+   static emr a(String $$0, bpz<String> $$1) {
+      bpz.a<alb<emm>> $$2 = bpz.a();
+      $$1.e().forEach($$1x -> $$2.a(ra.a((String)$$1x.b()), $$1x.a().a()));
+      return a(ra.a($$0), $$2.a());
    }
 
-   @Override
-   public ekx<?> e() {
-      return ekx.e;
+   static emr a(alb<emm> $$0, bpz<alb<emm>> $$1) {
+      return new emr($$0, $$1);
    }
+
+   static ems a(bpz<List<emo>> $$0) {
+      return new ems($$0);
+   }
+
+   MapCodec<? extends emo> b();
 }

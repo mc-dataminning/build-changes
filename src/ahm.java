@@ -28,15 +28,15 @@ public class ahm implements zk<agq> {
       this.d = $$1;
    }
 
-   public static ahm a(btj $$0, boolean $$1) {
+   public static ahm a(bto $$0, boolean $$1) {
       return new ahm($$0.ap(), $$1, e);
    }
 
-   public static ahm a(btj $$0, boolean $$1, brj $$2) {
+   public static ahm a(bto $$0, boolean $$1, bro $$2) {
       return new ahm($$0.ap(), $$1, new ahm.d($$2));
    }
 
-   public static ahm a(btj $$0, boolean $$1, brj $$2, eye $$3) {
+   public static ahm a(bto $$0, boolean $$1, bro $$2, eys $$3) {
       return new ahm($$0.ap(), $$1, new ahm.e($$2, $$3));
    }
 
@@ -64,7 +64,7 @@ public class ahm implements zk<agq> {
    }
 
    @Nullable
-   public btj a(arg $$0) {
+   public bto a(arh $$0) {
       return $$0.b(this.b);
    }
 
@@ -97,22 +97,22 @@ public class ahm implements zk<agq> {
    }
 
    public interface c {
-      void a(brj var1);
+      void a(bro var1);
 
-      void a(brj var1, eye var2);
+      void a(bro var1, eys var2);
 
       void a();
    }
 
    static class d implements ahm.a {
-      private final brj a;
+      private final bro a;
 
-      d(brj $$0) {
+      d(bro $$0) {
          this.a = $$0;
       }
 
       private d(wa $$0) {
-         this.a = $$0.b(brj.class);
+         this.a = $$0.b(bro.class);
       }
 
       @Override
@@ -132,17 +132,17 @@ public class ahm implements zk<agq> {
    }
 
    static class e implements ahm.a {
-      private final brj a;
-      private final eye b;
+      private final bro a;
+      private final eys b;
 
-      e(brj $$0, eye $$1) {
+      e(bro $$0, eys $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       private e(wa $$0) {
-         this.b = new eye((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
-         this.a = $$0.b(brj.class);
+         this.b = new eys((double)$$0.readFloat(), (double)$$0.readFloat(), (double)$$0.readFloat());
+         this.a = $$0.b(bro.class);
       }
 
       @Override

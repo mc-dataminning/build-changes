@@ -1,72 +1,50 @@
 import java.util.EnumSet;
-import java.util.function.Predicate;
 
-public class cau extends cbc {
-   private static final int a = 40;
-   private static final Predicate<dua> b = duj.a(dgx.bt);
-   private final buh c;
-   private final dds d;
-   private int e;
+public class cau extends cbu {
+   private final cgd g;
 
-   public cau(buh $$0) {
-      this.c = $$0;
-      this.d = $$0.dS();
-      this.a(EnumSet.of(cbc.a.a, cbc.a.b, cbc.a.c));
+   public cau(cgd $$0, double $$1, int $$2) {
+      super($$0, $$1, $$2, 6);
+      this.g = $$0;
+      this.f = -2;
+      this.a(EnumSet.of(cbh.a.c, cbh.a.a));
    }
 
    @Override
    public boolean b() {
-      if (this.c.dV().a(this.c.o_() ? 50 : 1000) != 0) {
-         return false;
-      } else {
-         je $$0 = this.c.ds();
-         return b.test(this.d.a_($$0)) ? true : this.d.a_($$0.e()).a(dgx.i);
-      }
+      return this.g.q() && !this.g.gp() && !this.g.gC() && super.b();
    }
 
    @Override
    public void d() {
-      this.e = this.a(40);
-      this.d.a(this.c, (byte)10);
-      this.c.P().o();
+      super.d();
+      this.g.y(false);
+   }
+
+   @Override
+   protected int a(bus $$0) {
+      return 40;
    }
 
    @Override
    public void e() {
-      this.e = 0;
-   }
-
-   @Override
-   public boolean c() {
-      return this.e > 0;
-   }
-
-   public int h() {
-      return this.e;
+      super.e();
+      this.g.A(false);
    }
 
    @Override
    public void a() {
-      this.e = Math.max(0, this.e - 1);
-      if (this.e == this.a(4)) {
-         je $$0 = this.c.ds();
-         if (b.test(this.d.a_($$0))) {
-            if (this.d.ac().b(ddo.c)) {
-               this.d.b($$0, false);
-            }
-
-            this.c.S();
-         } else {
-            je $$1 = $$0.e();
-            if (this.d.a_($$1).a(dgx.i)) {
-               if (this.d.ac().b(ddo.c)) {
-                  this.d.c(2001, $$1, dgv.j(dgx.i.o()));
-                  this.d.a($$1, dgx.j.o(), 2);
-               }
-
-               this.c.S();
-            }
-         }
+      super.a();
+      this.g.y(false);
+      if (!this.m()) {
+         this.g.A(false);
+      } else if (!this.g.gC()) {
+         this.g.A(true);
       }
+   }
+
+   @Override
+   protected boolean a(dej $$0, je $$1) {
+      return $$0.u($$1.d()) && $$0.a_($$1).a(awt.S);
    }
 }

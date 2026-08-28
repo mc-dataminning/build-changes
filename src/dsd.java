@@ -1,23 +1,27 @@
-public class dsd extends dsq {
-   private static final int a = 60;
-   private static final int b = 9;
+public class dsd extends drs {
+   private int a;
 
-   public dsd(je $$0, dua $$1) {
-      super(drg.i, $$0, $$1);
+   public dsd(je $$0, duo $$1) {
+      super(dru.s, $$0, $$1);
    }
 
    @Override
+   protected void b(uf $$0, jp.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("OutputSignal", this.a);
+   }
+
+   @Override
+   protected void a(uf $$0, jp.a $$1) {
+      super.a($$0, $$1);
+      this.a = $$0.h("OutputSignal");
+   }
+
    public int b() {
-      return 9;
+      return this.a;
    }
 
-   @Override
-   public int c() {
-      return 60;
-   }
-
-   @Override
-   public awc d() {
-      return awd.Cg;
+   public void a(int $$0) {
+      this.a = $$0;
    }
 }

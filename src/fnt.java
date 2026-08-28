@@ -1,61 +1,83 @@
-import java.util.function.Consumer;
-
-public class fnt implements fnq {
-   private int a;
-   private int b;
-   private final int c;
-   private final int d;
-
-   public fnt(int $$0, int $$1) {
-      this(0, 0, $$0, $$1);
-   }
+public abstract class fnt implements fnz {
+   private int c;
+   private int d;
+   protected int a;
+   protected int b;
 
    public fnt(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
-
-   public static fnt a(int $$0) {
-      return new fnt($$0, 0);
-   }
-
-   public static fnt b(int $$0) {
-      return new fnt(0, $$0);
+      this.c = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = $$3;
    }
 
    @Override
    public void m(int $$0) {
-      this.a = $$0;
+      this.b($$1 -> {
+         int $$2 = $$1.D() + ($$0 - this.D());
+         $$1.m($$2);
+      });
+      this.c = $$0;
    }
 
    @Override
    public void n(int $$0) {
-      this.b = $$0;
+      this.b($$1 -> {
+         int $$2 = $$1.E() + ($$0 - this.E());
+         $$1.n($$2);
+      });
+      this.d = $$0;
    }
 
    @Override
    public int D() {
-      return this.a;
-   }
-
-   @Override
-   public int E() {
-      return this.b;
-   }
-
-   @Override
-   public int y() {
       return this.c;
    }
 
    @Override
-   public int w() {
+   public int E() {
       return this.d;
    }
 
    @Override
-   public void a(Consumer<fjy> $$0) {
+   public int y() {
+      return this.a;
+   }
+
+   @Override
+   public int w() {
+      return this.b;
+   }
+
+   protected abstract static class a {
+      public final foa a;
+      public final fob.a b;
+
+      protected a(foa $$0, fob $$1) {
+         this.a = $$0;
+         this.b = $$1.h();
+      }
+
+      public int a() {
+         return this.a.w() + this.b.b + this.b.d;
+      }
+
+      public int b() {
+         return this.a.y() + this.b.a + this.b.c;
+      }
+
+      public void a(int $$0, int $$1) {
+         float $$2 = (float)this.b.a;
+         float $$3 = (float)($$1 - this.a.y() - this.b.c);
+         int $$4 = (int)azd.h(this.b.e, $$2, $$3);
+         this.a.m($$4 + $$0);
+      }
+
+      public void b(int $$0, int $$1) {
+         float $$2 = (float)this.b.b;
+         float $$3 = (float)($$1 - this.a.w() - this.b.d);
+         int $$4 = Math.round(azd.h(this.b.f, $$2, $$3));
+         this.a.n($$4 + $$0);
+      }
    }
 }

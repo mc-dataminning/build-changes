@@ -1,26 +1,60 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 
-public class eil<P extends eik> {
-   public static final eil<eij> a = a("straight_trunk_placer", eij.a);
-   public static final eil<eig> b = a("forking_trunk_placer", eig.a);
-   public static final eil<eih> c = a("giant_trunk_placer", eih.a);
-   public static final eil<eii> d = a("mega_jungle_trunk_placer", eii.b);
-   public static final eil<eie> e = a("dark_oak_trunk_placer", eie.a);
-   public static final eil<eif> f = a("fancy_trunk_placer", eif.a);
-   public static final eil<eic> g = a("bending_trunk_placer", eic.a);
-   public static final eil<eim> h = a("upwards_branching_trunk_placer", eim.a);
-   public static final eil<eid> i = a("cherry_trunk_placer", eid.a);
-   private final MapCodec<P> j;
+public class eil extends eim {
+   public static final MapCodec<eil> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(eil::new, $$0 -> $$0.b);
+   private final float b;
 
-   private static <P extends eik> eil<P> a(String $$0, MapCodec<P> $$1) {
-      return ka.a(lu.V, $$0, new eil<>($$1));
+   @Override
+   protected ein<?> a() {
+      return ein.b;
    }
 
-   private eil(MapCodec<P> $$0) {
-      this.j = $$0;
+   public eil(float $$0) {
+      this.b = $$0;
    }
 
-   public MapCodec<P> a() {
-      return this.j;
+   @Override
+   public void a(eim.a $$0) {
+      azl $$1 = $$0.b();
+      $$0.d().forEach($$2 -> {
+         if ($$1.i() < this.b) {
+            je $$3 = $$2.h();
+            if ($$0.a($$3)) {
+               a($$3, dqg.d, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            je $$4 = $$2.i();
+            if ($$0.a($$4)) {
+               a($$4, dqg.f, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            je $$5 = $$2.f();
+            if ($$0.a($$5)) {
+               a($$5, dqg.e, $$0);
+            }
+         }
+
+         if ($$1.i() < this.b) {
+            je $$6 = $$2.g();
+            if ($$0.a($$6)) {
+               a($$6, dqg.c, $$0);
+            }
+         }
+      });
+   }
+
+   private static void a(je $$0, dvf $$1, eim.a $$2) {
+      $$2.a($$0, $$1);
+      int $$3 = 4;
+
+      for (je var4 = $$0.e(); $$2.a(var4) && $$3 > 0; $$3--) {
+         $$2.a(var4, $$1);
+         var4 = var4.e();
+      }
    }
 }

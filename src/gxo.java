@@ -1,42 +1,21 @@
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class gxo implements aum, AutoCloseable {
-   private final gwj a;
-   private final alb b;
-   private final Set<atr<?>> c;
+public class gxo implements gxf {
+   public static final MapCodec<gxo> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(azm.a.fieldOf("pattern").forGetter($$0x -> $$0x.c)).apply($$0, gxo::new));
+   private final azm c;
 
-   public gxo(gwl $$0, alb $$1, alb $$2) {
-      this($$0, $$1, $$2, gwf.a);
-   }
-
-   public gxo(gwl $$0, alb $$1, alb $$2, Set<atr<?>> $$3) {
-      this.b = $$2;
-      this.a = new gwj($$1);
-      $$0.a(this.a.h(), this.a);
-      this.c = $$3;
-   }
-
-   protected gwk a(alb $$0) {
-      return this.a.a($$0);
+   public gxo(azm $$0) {
+      this.c = $$0;
    }
 
    @Override
-   public final CompletableFuture<Void> a(aum.a $$0, aus $$1, bny $$2, bny $$3, Executor $$4, Executor $$5) {
-      return gwf.a(this.a).a($$1, this.b, 0, $$4, this.c).thenCompose(gwf.a::a).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$1x, $$3), $$5);
-   }
-
-   private void a(gwf.a $$0, bny $$1) {
-      $$1.a();
-      $$1.a("upload");
-      this.a.a($$0);
-      $$1.c();
-      $$1.b();
+   public void a(aut $$0, gxf.a $$1) {
+      $$1.a(this.c.c());
    }
 
    @Override
-   public void close() {
-      this.a.g();
+   public gxh a() {
+      return gxi.c;
    }
 }

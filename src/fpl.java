@@ -1,61 +1,80 @@
-import java.net.URI;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class fpl extends fpt {
-   private static final xd a = xd.c("symlink_warning.title.world").a(n.r);
-   private static final xd b = xd.a("symlink_warning.message.world", xd.a(axy.p));
-   private static final xd c = xd.c("symlink_warning.title.pack").a(n.r);
-   private static final xd d = xd.a("symlink_warning.message.pack", xd.a(axy.p));
-   private final xd s;
-   private final URI u;
-   private final Runnable v;
-   private final fnn w = new fnn().b(10);
+public class fpl extends fqd {
+   private static final xd a = xd.c("addServer.enterName");
+   private static final xd b = xd.c("addServer.enterIp");
+   private fkk c;
+   private final BooleanConsumer d;
+   private final gbv s;
+   private fkt u;
+   private fkt v;
+   private final fqd w;
 
-   public fpl(xd $$0, xd $$1, URI $$2, Runnable $$3) {
-      super($$0);
-      this.s = $$1;
-      this.u = $$2;
-      this.v = $$3;
-   }
-
-   public static fpt a(Runnable $$0) {
-      return new fpl(a, b, axy.p, $$0);
-   }
-
-   public static fpt b(Runnable $$0) {
-      return new fpl(c, d, axy.p, $$0);
+   public fpl(fqd $$0, BooleanConsumer $$1, gbv $$2) {
+      super(xd.c("addServer.title"));
+      this.w = $$0;
+      this.d = $$1;
+      this.s = $$2;
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
-      this.w.c().b();
-      fnn.b $$0 = this.w.d(1);
-      $$0.a(new flh(this.l, this.p));
-      $$0.a(new fku(this.s, this.p).d(this.n - 50).b(true));
-      int $$1 = 120;
-      fnn $$2 = new fnn().a(5);
-      fnn.b $$3 = $$2.d(3);
-      $$3.a(fka.a(xc.n, $$0x -> ad.m().a(this.u)).b(120, 20).a());
-      $$3.a(fka.a(xc.o, $$0x -> this.m.p.a(this.u.toString())).b(120, 20).a());
-      $$3.a(fka.a(xc.k, $$0x -> this.d()).b(120, 20).a());
-      $$0.a($$2);
-      this.c();
-      this.w.a(this::c);
+   protected void aR_() {
+      this.v = new fkt(this.p, this.n / 2 - 100, 66, 200, 20, xd.c("addServer.enterName"));
+      this.v.a(this.s.a);
+      this.v.b($$0 -> this.D());
+      this.d(this.v);
+      this.u = new fkt(this.p, this.n / 2 - 100, 106, 200, 20, xd.c("addServer.enterIp"));
+      this.u.f(128);
+      this.u.a(this.s.b);
+      this.u.b($$0 -> this.D());
+      this.d(this.u);
+      this.c(
+         fkr.a(gbv.a::a)
+            .a(gbv.a.values())
+            .a(this.s.b())
+            .a(this.n / 2 - 100, this.o / 4 + 72, 200, 20, xd.c("addServer.resourcePack"), ($$0, $$1) -> this.s.a($$1))
+      );
+      this.c = this.c(fkk.a(xd.c("addServer.add"), $$0 -> this.m()).a(this.n / 2 - 100, this.o / 4 + 96 + 18, 200, 20).a());
+      this.c(fkk.a(xc.e, $$0 -> this.d.accept(false)).a(this.n / 2 - 100, this.o / 4 + 120 + 18, 200, 20).a());
+      this.D();
    }
 
    @Override
-   protected void c() {
-      this.w.a();
-      fnm.a(this.w, this.H());
+   protected void aG_() {
+      this.b(this.v);
    }
 
    @Override
-   public xd i() {
-      return xc.a(super.i(), this.s);
+   public void a(fil $$0, int $$1, int $$2) {
+      String $$3 = this.u.a();
+      String $$4 = this.v.a();
+      this.b($$0, $$1, $$2);
+      this.u.a($$3);
+      this.v.a($$4);
+   }
+
+   private void m() {
+      this.s.a = this.v.a();
+      this.s.b = this.u.a();
+      this.d.accept(true);
    }
 
    @Override
    public void d() {
-      this.v.run();
+      this.m.a(this.w);
+   }
+
+   private void D() {
+      this.c.j = gcy.b(this.u.a()) && !this.v.a().isEmpty();
+   }
+
+   @Override
+   public void a(fjx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 17, 16777215);
+      $$0.b(this.p, a, this.n / 2 - 100 + 1, 53, 10526880);
+      $$0.b(this.p, b, this.n / 2 - 100 + 1, 94, 10526880);
+      this.v.a($$0, $$1, $$2, $$3);
+      this.u.a($$0, $$1, $$2, $$3);
    }
 }

@@ -6,9 +6,9 @@ public class acb implements zk<abz> {
    private final double e;
    private final int f;
 
-   public acb(btv $$0, arf $$1) {
+   public acb(bua $$0, arg $$1) {
       this.b = $$0.ap();
-      eye $$2 = $$1.b();
+      eys $$2 = $$1.b();
       this.c = $$2.a();
       this.d = $$2.b();
       this.e = $$2.c();

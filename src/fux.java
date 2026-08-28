@@ -1,173 +1,108 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BooleanSupplier;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-class fux {
-   private static final int a = 44;
-   private final List<fux.c> b;
+public class fux extends fqd {
+   private static final xd a = xd.c("telemetry_info.screen.title");
+   private static final xd b = xd.c("telemetry_info.screen.description").b(-4539718);
+   private static final xd c = xd.c("telemetry_info.button.privacy_statement");
+   private static final xd d = xd.c("telemetry_info.button.give_feedback");
+   private static final xd s = xd.c("telemetry_info.button.show_data");
+   private static final xd u = xd.c("telemetry_info.opt_in.description");
+   private static final int v = 8;
+   private static final boolean w = fil.Q().D();
+   private final fqd x;
+   private final fip y;
+   private final fny z = new fny(this, 16 + 9 * 5 + 20, w ? 33 + fkm.a(fil.Q().h) : 33);
+   @Nullable
+   private fuw A;
+   @Nullable
+   private fle B;
+   private double C;
 
-   fux(List<fux.c> $$0) {
-      this.b = $$0;
+   public fux(fqd $$0, fip $$1) {
+      super(a);
+      this.x = $$0;
+      this.y = $$1;
    }
 
-   public void a() {
-      this.b.forEach(fux.c::a);
+   @Override
+   public xd i() {
+      return xc.a(super.i(), b);
    }
 
-   public static fux.a a(int $$0) {
-      return new fux.a($$0);
+   @Override
+   protected void aR_() {
+      foc $$0 = this.z.a(foc.d().a(4));
+      $$0.c().b();
+      $$0.a(new flr(a, this.p));
+      this.B = $$0.a(new fle(b, this.p).b(true));
+      foc $$1 = $$0.a(foc.e().a(8));
+      $$1.a(fkk.a(c, this::a).a());
+      $$1.a(fkk.a(d, this::b).a());
+      foc $$2 = this.z.b(foc.d().a(4));
+      if (w) {
+         $$2.a(this.m());
+      }
+
+      foc $$3 = $$2.a(foc.e().a(8));
+      $$3.a(fkk.a(s, this::c).a());
+      $$3.a(fkk.a(xc.d, $$0x -> this.d()).a());
+      foc $$4 = this.z.c(foc.d().a(8));
+      this.A = $$4.a(new fuw(0, 0, this.n - 40, this.z.d(), this.p));
+      this.A.a($$0x -> this.C = $$0x);
+      this.z.a($$1x -> {
+         fki var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
-   public static class a {
-      final int a;
-      private final List<fux.d> b = new ArrayList<>();
-      int c;
-      int d = 4;
-      int e;
-      Optional<fux.b> f = Optional.empty();
-
-      public a(int $$0) {
-         this.a = $$0;
+   @Override
+   protected void c() {
+      if (this.A != null) {
+         this.A.a(this.C);
+         this.A.k(this.n - 40);
+         this.A.l(this.z.d());
+         this.A.j();
       }
 
-      void a() {
-         this.e++;
+      if (this.B != null) {
+         this.B.d(this.n - 16);
       }
 
-      public fux.d a(xd $$0, BooleanSupplier $$1, Consumer<Boolean> $$2) {
-         fux.d $$3 = new fux.d($$0, $$1, $$2, 44);
-         this.b.add($$3);
-         return $$3;
-      }
-
-      public fux.a a(int $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fux.a b(int $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public fux a(Consumer<fnq> $$0) {
-         fnn $$1 = new fnn().b(this.d);
-         $$1.a(fnt.a(this.a - 44), 0, 0);
-         $$1.a(fnt.a(44), 0, 1);
-         List<fux.c> $$2 = new ArrayList<>();
-         this.e = 0;
-
-         for (fux.d $$3 : this.b) {
-            $$2.add($$3.a(this, $$1, 0));
-         }
-
-         $$1.a();
-         $$0.accept($$1);
-         fux $$4 = new fux($$2);
-         $$4.a();
-         return $$4;
-      }
-
-      public fux.a a(int $$0, boolean $$1) {
-         this.f = Optional.of(new fux.b($$0, $$1));
-         return this;
-      }
+      this.z.a();
    }
 
-   static record b(int a, boolean b) {
-   }
-
-   static record c(fkh<Boolean> a, BooleanSupplier b, @Nullable BooleanSupplier c) {
-      public void a() {
-         this.a.a(this.b.getAsBoolean());
-         if (this.c != null) {
-            this.a.j = this.c.getAsBoolean();
-         }
-      }
-
-      public fkh<Boolean> b() {
-         return this.a;
-      }
-
-      public BooleanSupplier c() {
-         return this.b;
-      }
-
-      @Nullable
-      public BooleanSupplier d() {
-         return this.c;
+   @Override
+   protected void aG_() {
+      if (this.A != null) {
+         this.b(this.A);
       }
    }
 
-   public static class d {
-      private final xd a;
-      private final BooleanSupplier b;
-      private final Consumer<Boolean> c;
-      @Nullable
-      private xd d;
-      @Nullable
-      private BooleanSupplier e;
-      private final int f;
+   private fki m() {
+      fio<Boolean> $$0 = this.y.ak();
+      return fkm.a(u, this.p).a($$0).a(this::a).a();
+   }
 
-      d(xd $$0, BooleanSupplier $$1, Consumer<Boolean> $$2, int $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = $$3;
+   private void a(fki $$0, boolean $$1) {
+      if (this.A != null) {
+         this.A.b($$1);
       }
+   }
 
-      public fux.d a(BooleanSupplier $$0) {
-         this.e = $$0;
-         return this;
-      }
+   private void a(fkk $$0) {
+      fpa.a(this, axz.c);
+   }
 
-      public fux.d a(xd $$0) {
-         this.d = $$0;
-         return this;
-      }
+   private void b(fkk $$0) {
+      fpa.a(this, axz.i);
+   }
 
-      fux.c a(fux.a $$0, fnn $$1, int $$2) {
-         $$0.a();
-         flh $$3 = new flh(this.a, fib.Q().h).c();
-         $$1.a($$3, $$0.e, $$2, $$1.b().a(0.0F, 0.5F).b($$0.c));
-         Optional<fux.b> $$4 = $$0.f;
-         fkh.a<Boolean> $$5 = fkh.b(this.b.getAsBoolean());
-         $$5.a();
-         boolean $$6 = this.d != null && $$4.isEmpty();
-         if ($$6) {
-            fll $$7 = fll.a(this.d);
-            $$5.a($$1x -> $$7);
-         }
+   private void c(fkk $$0) {
+      ad.m().a(this.m.u().b());
+   }
 
-         if (this.d != null && !$$6) {
-            $$5.a($$0x -> xc.a(this.a, $$0x.c(), this.d));
-         } else {
-            $$5.a($$0x -> xc.a(this.a, $$0x.c()));
-         }
-
-         fkh<Boolean> $$8 = $$5.a(0, 0, this.f, 20, xd.i(), ($$0x, $$1x) -> this.c.accept($$1x));
-         if (this.e != null) {
-            $$8.j = this.e.getAsBoolean();
-         }
-
-         $$1.a($$8, $$0.e, $$2 + 1, $$1.b().c());
-         if (this.d != null) {
-            $$4.ifPresent($$3x -> {
-               xd $$4x = this.d.f().a(n.h);
-               fjl $$5x = fib.Q().h;
-               fku $$6x = new fku($$4x, $$5x);
-               $$6x.d($$0.a - $$0.c - this.f);
-               $$6x.e($$3x.a());
-               $$0.a();
-               int $$7 = $$3x.b ? 9 * $$3x.a - $$6x.w() : 0;
-               $$1.a($$6x, $$0.e, $$2, $$1.b().c(-$$0.d).e($$7));
-            });
-         }
-
-         return new fux.c($$8, this.b, this.e);
-      }
+   @Override
+   public void d() {
+      this.m.a(this.x);
    }
 }

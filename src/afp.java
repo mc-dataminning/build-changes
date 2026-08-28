@@ -24,15 +24,15 @@ public class afp implements zk<abz> {
       this.k = ImmutableList.copyOf($$3);
    }
 
-   public static afp a(ezd $$0, boolean $$1) {
+   public static afp a(ezs $$0, boolean $$1) {
       return new afp($$0.b(), $$1 ? 0 : 2, Optional.of(new afp.b($$0)), (Collection<String>)($$1 ? $$0.g() : ImmutableList.of()));
    }
 
-   public static afp a(ezd $$0) {
+   public static afp a(ezs $$0) {
       return new afp($$0.b(), 1, Optional.empty(), ImmutableList.of());
    }
 
-   public static afp a(ezd $$0, String $$1, afp.a $$2) {
+   public static afp a(ezs $$0, String $$1, afp.a $$2) {
       return new afp($$0.b(), $$2 == afp.a.a ? 3 : 4, Optional.empty(), ImmutableList.of($$1));
    }
 
@@ -125,7 +125,7 @@ public class afp implements zk<abz> {
       private final n f;
       private final int g;
 
-      public b(ezd $$0) {
+      public b(ezs $$0) {
          this.a = $$0.c();
          this.g = $$0.m();
          this.d = $$0.j().e;

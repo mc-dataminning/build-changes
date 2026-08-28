@@ -1,15 +1,30 @@
-public class gxk extends gxo {
-   private static final alb a = alb.b("back");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   public gxk(gwl $$0) {
-      super($$0, alb.b("textures/atlas/paintings.png"), alb.b("paintings"));
+public class gxk implements gxf {
+   public static final MapCodec<gxk> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, gxk::new)
+   );
+   private final String c;
+   private final String d;
+
+   public gxk(String $$0, String $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public gwk a(cjv $$0) {
-      return this.a($$0.d());
+   @Override
+   public void a(aut $$0, gxf.a $$1) {
+      akv $$2 = new akv("textures/" + this.c, ".png");
+      $$2.a($$0).forEach(($$2x, $$3) -> {
+         alc $$4 = $$2.b($$2x).f(this.d);
+         $$1.a($$4, $$3);
+      });
    }
 
-   public gwk a() {
-      return this.a(a);
+   @Override
+   public gxh a() {
+      return gxi.b;
    }
 }

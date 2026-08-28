@@ -1,55 +1,46 @@
-public interface ddu {
-   int H_();
+import javax.annotation.Nullable;
 
-   int G_();
+public enum ddu implements ddi {
+   a;
 
-   default int an() {
-      return this.G_() + this.H_();
+   @Override
+   public float a(jj $$0, boolean $$1) {
+      return 1.0F;
    }
 
-   default int ao() {
-      return this.aq() - this.ap();
+   @Override
+   public eqe x_() {
+      return eqe.c;
    }
 
-   default int ap() {
-      return kg.a(this.G_());
+   @Override
+   public int a(je $$0, ddq $$1) {
+      return -1;
    }
 
-   default int aq() {
-      return kg.a(this.an() - 1) + 1;
+   @Nullable
+   @Override
+   public drs c_(je $$0) {
+      return null;
    }
 
-   default boolean s(je $$0) {
-      return this.d($$0.v());
+   @Override
+   public duo a_(je $$0) {
+      return dhl.a.o();
    }
 
-   default boolean d(int $$0) {
-      return $$0 < this.G_() || $$0 >= this.an();
+   @Override
+   public eqp b_(je $$0) {
+      return eqq.a.g();
    }
 
-   default int e(int $$0) {
-      return this.f(kg.a($$0));
+   @Override
+   public int H_() {
+      return 0;
    }
 
-   default int f(int $$0) {
-      return $$0 - this.ap();
-   }
-
-   default int g(int $$0) {
-      return $$0 + this.ap();
-   }
-
-   static ddu e(final int $$0, final int $$1) {
-      return new ddu() {
-         @Override
-         public int H_() {
-            return $$1;
-         }
-
-         @Override
-         public int G_() {
-            return $$0;
-         }
-      };
+   @Override
+   public int G_() {
+      return 0;
    }
 }

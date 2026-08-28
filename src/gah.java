@@ -1,21 +1,20 @@
-public class gah {
-   private final gaj a;
-   private final gai b;
+import com.google.common.collect.ImmutableMap;
+import java.util.Map;
 
-   private gah(gaj $$0, gai $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class gah implements auu {
+   private Map<gaj, gar> a = ImmutableMap.of();
+
+   public gal a(gaj $$0) {
+      gar $$1 = this.a.get($$0);
+      if ($$1 == null) {
+         throw new IllegalArgumentException("No model for layer " + $$0);
+      } else {
+         return $$1.a();
+      }
    }
 
-   public gah a(gak $$0) {
-      return new gah($$0.apply(this.a), this.b);
-   }
-
-   public gab a() {
-      return this.a.a().a(this.b.a, this.b.b);
-   }
-
-   public static gah a(gaj $$0, int $$1, int $$2) {
-      return new gah($$0, new gai($$1, $$2));
+   @Override
+   public void a(aut $$0) {
+      this.a = ImmutableMap.copyOf(gai.a());
    }
 }

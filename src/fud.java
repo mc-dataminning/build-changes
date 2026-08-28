@@ -1,59 +1,115 @@
-public class fud extends fpt {
-   private static final xd a = xd.c("gui.abuseReport.title");
-   private static final xd b = xd.c("gui.abuseReport.message");
-   private static final xd c = xd.c("gui.abuseReport.type.chat");
-   private static final xd d = xd.c("gui.abuseReport.type.skin");
-   private static final xd s = xd.c("gui.abuseReport.type.name");
-   private static final int u = 6;
-   private final fpt v;
-   private final gcf w;
-   private final fuh x;
-   private final fns y = fns.d().a(6);
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Sets;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+import java.util.function.Predicate;
 
-   public fud(fpt $$0, gcf $$1, fuh $$2) {
-      super(a);
-      this.v = $$0;
-      this.w = $$1;
-      this.x = $$2;
+public class fud {
+   private final kb a;
+   private final List<daj<?>> b;
+   private final boolean c;
+   private final Set<daj<?>> d = Sets.newHashSet();
+   private final Set<daj<?>> e = Sets.newHashSet();
+   private final Set<daj<?>> f = Sets.newHashSet();
+
+   public fud(kb $$0, List<daj<?>> $$1) {
+      this.a = $$0;
+      this.b = ImmutableList.copyOf($$1);
+      if ($$1.size() <= 1) {
+         this.c = true;
+      } else {
+         this.c = a($$0, $$1);
+      }
    }
 
-   @Override
-   public xd i() {
-      return xc.a(super.i(), b);
-   }
+   private static boolean a(kb $$0, List<daj<?>> $$1) {
+      int $$2 = $$1.size();
+      cvp $$3 = $$1.get(0).b().a($$0);
 
-   @Override
-   protected void aT_() {
-      this.y.c().b();
-      this.y.a(new flh(this.l, this.p), this.y.b().e(6));
-      this.y.a(new fku(b, this.p).b(true), this.y.b().e(6));
-      fka $$0 = this.y.a(fka.a(c, $$0x -> this.m.a(new ftz(this.v, this.w, this.x.d()))).a());
-      if (!this.x.k()) {
-         $$0.j = false;
-         $$0.a(fll.a(xd.c("gui.socialInteractions.tooltip.report.not_reportable")));
-      } else if (!this.x.j()) {
-         $$0.j = false;
-         $$0.a(fll.a(xd.a("gui.socialInteractions.tooltip.report.no_messages", this.x.c())));
+      for (int $$4 = 1; $$4 < $$2; $$4++) {
+         cvp $$5 = $$1.get($$4).b().a($$0);
+         if (!cvp.c($$3, $$5)) {
+            return false;
+         }
       }
 
-      this.y.a(fka.a(d, $$0x -> this.m.a(new fuf(this.v, this.w, this.x.d(), this.x.h()))).a());
-      this.y.a(fka.a(s, $$0x -> this.m.a(new fuc(this.v, this.w, this.x.d(), this.x.c()))).a());
-      this.y.a(fnt.b(20));
-      this.y.a(fka.a(xc.e, $$0x -> this.d()).a());
-      this.y.a($$1 -> {
-         fjy var10000 = this.c($$1);
-      });
-      this.c();
+      return true;
    }
 
-   @Override
-   protected void c() {
-      this.y.a();
-      fnm.a(this.y, this.H());
+   public kb a() {
+      return this.a;
    }
 
-   @Override
-   public void d() {
-      this.m.a(this.v);
+   public boolean b() {
+      return !this.f.isEmpty();
+   }
+
+   public void a(awh $$0) {
+      for (daj<?> $$1 : this.b) {
+         if ($$0.b($$1)) {
+            this.f.add($$1);
+         }
+      }
+   }
+
+   public void a(cnz $$0, int $$1, int $$2, awh $$3) {
+      for (daj<?> $$4 : this.b) {
+         boolean $$5 = $$4.b().a($$1, $$2) && $$3.b($$4);
+         if ($$5) {
+            this.e.add($$4);
+         } else {
+            this.e.remove($$4);
+         }
+
+         if ($$5 && $$0.a($$4.b(), null)) {
+            this.d.add($$4);
+         } else {
+            this.d.remove($$4);
+         }
+      }
+   }
+
+   public boolean a(daj<?> $$0) {
+      return this.d.contains($$0);
+   }
+
+   public boolean c() {
+      return !this.d.isEmpty();
+   }
+
+   public boolean d() {
+      return !this.e.isEmpty();
+   }
+
+   public List<daj<?>> e() {
+      return this.b;
+   }
+
+   public List<daj<?>> a(fud.a $$0) {
+      Predicate<daj<?>> $$1 = switch ($$0) {
+         case a -> this.e::contains;
+         case b -> this.d::contains;
+         case c -> $$0x -> this.e.contains($$0x) && !this.d.contains($$0x);
+      };
+      List<daj<?>> $$2 = new ArrayList<>();
+
+      for (daj<?> $$3 : this.b) {
+         if ($$1.test($$3)) {
+            $$2.add($$3);
+         }
+      }
+
+      return $$2;
+   }
+
+   public boolean f() {
+      return this.c;
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

@@ -1,5 +1,9 @@
-public interface goo<S extends gsu, M extends fxa<? super S>> {
-   M e();
+public class goo extends gmb<cps, gum> {
+   public goo(gnj.a $$0, gaj $$1) {
+      super($$0, $$1);
+   }
 
-   alb a(S var1);
+   public gum a() {
+      return new gum();
+   }
 }

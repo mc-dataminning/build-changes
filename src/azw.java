@@ -1,67 +1,69 @@
-import java.util.Locale;
-import java.util.function.Consumer;
+import java.util.Optional;
 
-public class azw<T> {
-   private final int a;
-   private final int b;
-   private final int c;
-   private final int d;
-   private final Object[] e;
+public class azw {
+   public static <T extends bum> Optional<T> a(btv<T> $$0, btu $$1, arh $$2, je $$3, int $$4, int $$5, int $$6, azw.a $$7) {
+      je.a $$8 = $$3.k();
 
-   public static <T> azw<T> a(int $$0, int $$1, int $$2, azw.a<T> $$3) {
-      int $$4 = $$0 - $$2;
-      int $$5 = $$1 - $$2;
-      int $$6 = 2 * $$2 + 1;
-      return new azw<>($$4, $$5, $$6, $$6, $$3);
-   }
+      for (int $$9 = 0; $$9 < $$4; $$9++) {
+         int $$10 = azd.b($$2.z, -$$5, $$5);
+         int $$11 = azd.b($$2.z, -$$5, $$5);
+         $$8.a($$3, $$10, $$6, $$11);
+         if ($$2.A_().a($$8) && a($$2, $$6, $$8, $$7)) {
+            T $$12 = (T)$$0.b($$2, null, $$8, $$1, false, false);
+            if ($$12 != null) {
+               if ($$12.a($$2, $$1) && $$12.a($$2)) {
+                  $$2.a_($$12);
+                  return Optional.of($$12);
+               }
 
-   private azw(int $$0, int $$1, int $$2, int $$3, azw.a<T> $$4) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = new Object[this.c * this.d];
-
-      for (int $$5 = $$0; $$5 < $$0 + $$2; $$5++) {
-         for (int $$6 = $$1; $$6 < $$1 + $$3; $$6++) {
-            this.e[this.c($$5, $$6)] = $$4.get($$5, $$6);
+               $$12.as();
+            }
          }
       }
+
+      return Optional.empty();
    }
 
-   public void a(Consumer<T> $$0) {
-      for (Object $$1 : this.e) {
-         $$0.accept((T)$$1);
+   private static boolean a(arh $$0, int $$1, je.a $$2, azw.a $$3) {
+      je.a $$4 = new je.a().g($$2);
+      duo $$5 = $$0.a_($$4);
+
+      for (int $$6 = $$1; $$6 >= -$$1; $$6--) {
+         $$2.c(jj.a);
+         $$4.a($$2, jj.b);
+         duo $$7 = $$0.a_($$2);
+         if ($$3.canSpawnOn($$0, $$2, $$7, $$4, $$5)) {
+            $$2.c(jj.b);
+            return true;
+         }
+
+         $$5 = $$7;
       }
+
+      return false;
    }
 
-   public T a(int $$0, int $$1) {
-      if (!this.b($$0, $$1)) {
-         throw new IllegalArgumentException("Requested out of range value (" + $$0 + "," + $$1 + ") from " + this);
-      } else {
-         return (T)this.e[this.c($$0, $$1)];
-      }
-   }
+   public interface a {
+      @Deprecated
+      azw.a a = ($$0, $$1, $$2, $$3, $$4) -> !$$2.a(dhl.bs)
+               && !$$2.a(dhl.dQ)
+               && !$$2.a(dhl.eY)
+               && !($$2.b() instanceof dpd)
+               && !($$2.b() instanceof dpc)
+               && !($$2.b() instanceof dlt)
+               && !$$2.a(dhl.mX)
+               && !$$2.a(dhl.dO)
+               && !$$2.a(dhl.ck)
+               && !$$2.a(dhl.ec)
+               && !$$2.a(dhl.fO)
+               && !$$2.a(dhl.ii)
+               && !$$2.a(dhl.kI)
+               && !$$2.a(dhl.qO)
+               && !$$2.a(dhl.aQ)
+            ? ($$4.l() || $$4.n()) && ($$2.e() || $$2.a(dhl.qP))
+            : false;
+      azw.a b = ($$0, $$1, $$2, $$3, $$4) -> $$4.g($$0, $$3).c() && dhj.a($$2.g($$0, $$1), jj.b);
 
-   public boolean b(int $$0, int $$1) {
-      int $$2 = $$0 - this.a;
-      int $$3 = $$1 - this.b;
-      return $$2 >= 0 && $$2 < this.c && $$3 >= 0 && $$3 < this.d;
-   }
-
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "StaticCache2D[%d, %d, %d, %d]", this.a, this.b, this.a + this.c, this.b + this.d);
-   }
-
-   private int c(int $$0, int $$1) {
-      int $$2 = $$0 - this.a;
-      int $$3 = $$1 - this.b;
-      return $$2 * this.d + $$3;
-   }
-
-   @FunctionalInterface
-   public interface a<T> {
-      T get(int var1, int var2);
+      boolean canSpawnOn(arh var1, je var2, duo var3, je var4, duo var5);
    }
 }

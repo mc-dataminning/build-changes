@@ -12,13 +12,13 @@ public class cg extends dv<cg.a> {
       return cg.a.a;
    }
 
-   public void a(arh $$0, cno $$1, cvl $$2) {
+   public void a(ari $$0, cnt $$1, cvp $$2) {
       int $$3 = 0;
       int $$4 = 0;
       int $$5 = 0;
 
       for (int $$6 = 0; $$6 < $$1.b(); $$6++) {
-         cvl $$7 = $$1.a($$6);
+         cvp $$7 = $$1.a($$6);
          if ($$7.f()) {
             $$4++;
          } else {
@@ -32,7 +32,7 @@ public class cg extends dv<cg.a> {
       this.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   private void a(arh $$0, cno $$1, cvl $$2, int $$3, int $$4, int $$5) {
+   private void a(ari $$0, cnt $$1, cvp $$2, int $$3, int $$4, int $$5) {
       this.a($$0, $$5x -> $$5x.a($$1, $$2, $$3, $$4, $$5));
    }
 
@@ -54,17 +54,17 @@ public class cg extends dv<cg.a> {
          return an.f.a(new cg.a(Optional.empty(), cg.a.a.b, List.of($$0)));
       }
 
-      public static ao<cg.a> a(ddr... $$0) {
+      public static ao<cg.a> a(def... $$0) {
          cs[] $$1 = new cs[$$0.length];
 
          for (int $$2 = 0; $$2 < $$0.length; $$2++) {
-            $$1[$$2] = new cs(Optional.of(jr.a($$0[$$2].r().o())), dh.d.c, kp.c, Map.of());
+            $$1[$$2] = new cs(Optional.of(jr.a($$0[$$2].q().n())), dh.d.c, kp.c, Map.of());
          }
 
          return a($$1);
       }
 
-      public boolean a(cno $$0, cvl $$1, int $$2, int $$3, int $$4) {
+      public boolean a(cnt $$0, cvp $$1, int $$2, int $$3, int $$4) {
          if (!this.c.a($$2, $$3, $$4)) {
             return false;
          } else if (this.d.isEmpty()) {
@@ -78,7 +78,7 @@ public class cg extends dv<cg.a> {
                   return true;
                }
 
-               cvl $$8 = $$0.a($$7);
+               cvp $$8 = $$0.a($$7);
                if (!$$8.f()) {
                   $$5.removeIf($$1x -> $$1x.a($$8));
                }

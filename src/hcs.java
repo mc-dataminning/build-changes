@@ -1,57 +1,22 @@
-import java.util.Collection;
+import java.time.Duration;
+import javax.annotation.Nullable;
 
-public abstract class hcs<E extends fkw.a<E>> extends fkw<E> {
-   protected hcs(int $$0, int $$1, int $$2, int $$3) {
-      super(fib.Q(), $$0, $$1, $$2, $$3);
+public class hcs {
+   private final boolean a;
+   @Nullable
+   private final Duration b;
+
+   public hcs(boolean $$0, @Nullable Duration $$1) {
+      this.b = $$1;
+      this.a = $$0;
    }
 
-   public void p(int $$0) {
-      if ($$0 == -1) {
-         this.a(null);
-      } else if (super.l() != 0) {
-         this.a(this.d($$0));
+   public void a(hci $$0) {
+      if (this.b != null) {
+         $$0.send(hcj.d, $$0x -> {
+            $$0x.a(hcl.x, (int)this.b.toMillis());
+            $$0x.a(hcl.y, this.a);
+         });
       }
-   }
-
-   public void b(int $$0) {
-      this.p($$0);
-   }
-
-   @Override
-   public int a() {
-      return 0;
-   }
-
-   @Override
-   public int b() {
-      return (int)((double)this.g * 0.6);
-   }
-
-   @Override
-   public void a(Collection<E> $$0) {
-      super.a($$0);
-   }
-
-   @Override
-   public int l() {
-      return super.l();
-   }
-
-   @Override
-   public int g(int $$0) {
-      return super.g($$0);
-   }
-
-   @Override
-   public int s() {
-      return super.s();
-   }
-
-   public int a(E $$0) {
-      return super.b($$0);
-   }
-
-   public void J() {
-      this.k();
    }
 }

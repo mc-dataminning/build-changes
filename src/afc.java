@@ -1,5 +1,5 @@
-public record afc(cvl b) implements zk<abz> {
-   public static final zb<wo, afc> a = zb.a(cvl.h, afc::b, afc::new);
+public record afc(cvp b) implements zk<abz> {
+   public static final zb<wo, afc> a = zb.a(cvp.h, afc::b, afc::new);
 
    @Override
    public zm<afc> a() {

@@ -1,529 +1,262 @@
 import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.LinkOption;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Path;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.Date;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
+import java.util.Map;
 import java.util.Optional;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
 
-public class fvb extends fkw<fvb.a> {
-   public static final DateTimeFormatter a = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT).withZone(ZoneId.systemDefault());
-   static final alb m = alb.b("world_list/error_highlighted");
-   static final alb n = alb.b("world_list/error");
-   static final alb o = alb.b("world_list/marked_join_highlighted");
-   static final alb p = alb.b("world_list/marked_join");
-   static final alb q = alb.b("world_list/warning_highlighted");
-   static final alb r = alb.b("world_list/warning");
-   static final alb s = alb.b("world_list/join_highlighted");
-   static final alb u = alb.b("world_list/join");
-   static final Logger v = LogUtils.getLogger();
-   static final xd w = xd.c("selectWorld.tooltip.fromNewerVersion1").a(n.m);
-   static final xd x = xd.c("selectWorld.tooltip.fromNewerVersion2").a(n.m);
-   static final xd y = xd.c("selectWorld.tooltip.snapshot1").a(n.g);
-   static final xd z = xd.c("selectWorld.tooltip.snapshot2").a(n.g);
-   static final xd A = xd.c("selectWorld.locked").a(n.m);
-   static final xd B = xd.c("selectWorld.conversion.tooltip").a(n.m);
-   static final xd C = xd.c("selectWorld.incompatible.tooltip").a(n.m);
-   static final xd D = xd.c("selectWorld.experimental");
-   private final fuw E;
-   private CompletableFuture<List<esi>> F;
+public class fvb extends fqd {
+   private static final xd a = xd.c("editGamerule.title");
+   private static final int b = 8;
+   final fny c = new fny(this);
+   private final Consumer<Optional<dec>> d;
+   private final Set<fvb.f> s = Sets.newHashSet();
+   private final dec u;
    @Nullable
-   private List<esi> G;
-   private String H;
-   private final fvb.b I;
+   private fvb.g v;
+   @Nullable
+   private fkk w;
 
-   public fvb(fuw $$0, fib $$1, int $$2, int $$3, int $$4, int $$5, String $$6, @Nullable fvb $$7) {
-      super($$1, $$2, $$3, $$4, $$5);
-      this.E = $$0;
-      this.I = new fvb.b($$1);
-      this.H = $$6;
-      if ($$7 != null) {
-         this.F = $$7.F;
-      } else {
-         this.F = this.M();
-      }
-
-      this.a(this.K());
+   public fvb(dec $$0, Consumer<Optional<dec>> $$1) {
+      super(a);
+      this.u = $$0;
+      this.d = $$1;
    }
 
    @Override
-   protected void k() {
-      this.aK_().forEach(fvb.a::close);
-      super.k();
-   }
-
-   @Nullable
-   private List<esi> K() {
-      try {
-         return this.F.getNow(null);
-      } catch (CancellationException | CompletionException var2) {
-         return null;
-      }
-   }
-
-   void L() {
-      this.F = this.M();
+   protected void aR_() {
+      this.c.a(a, this.p);
+      this.v = this.c.c(new fvb.g(this.u));
+      foc $$0 = this.c.b(foc.e().a(8));
+      this.w = $$0.a(fkk.a(xc.d, $$0x -> this.d.accept(Optional.of(this.u))).a());
+      $$0.a(fkk.a(xc.e, $$0x -> this.d()).a());
+      this.c.a($$1 -> {
+         fki var10000 = this.c($$1);
+      });
+      this.c();
    }
 
    @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if (foc.a($$0)) {
-         Optional<fvb.c> $$3 = this.c();
-         if ($$3.isPresent()) {
-            if ($$3.get().b()) {
-               this.c.aj().a(gzz.a(awd.Ax, 1.0F));
-               $$3.get().c();
+   protected void c() {
+      this.c.a();
+      if (this.v != null) {
+         this.v.a(this.n, this.c);
+      }
+   }
+
+   @Override
+   public void d() {
+      this.d.accept(Optional.empty());
+   }
+
+   private void m() {
+      if (this.w != null) {
+         this.w.j = this.s.isEmpty();
+      }
+   }
+
+   void a(fvb.f $$0) {
+      this.s.add($$0);
+      this.m();
+   }
+
+   void b(fvb.f $$0) {
+      this.s.remove($$0);
+      this.m();
+   }
+
+   public class a extends fvb.d {
+      private final fkr<Boolean> c;
+
+      public a(final xd $$1, final List<ayp> $$2, final String $$3, final dec.a $$4) {
+         super($$2, $$1);
+         this.c = fkr.b($$4.a()).a().a($$1x -> $$1x.c().f("\n").f($$3)).a(10, 5, 44, 20, $$1, ($$1x, $$2x) -> $$4.a($$2x, null));
+         this.a.add(this.c);
+      }
+
+      @Override
+      public void a(fjx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, $$2, $$3);
+         this.c.m($$3 + $$4 - 45);
+         this.c.n($$2);
+         this.c.a($$0, $$6, $$7, $$9);
+      }
+   }
+
+   public class b extends fvb.f {
+      final xd b;
+
+      public b(final xd $$1) {
+         super(null);
+         this.b = $$1;
+      }
+
+      @Override
+      public void a(fjx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.a(fvb.this.m.h, this.b, $$3 + $$4 / 2, $$2 + 5, -1);
+      }
+
+      @Override
+      public List<? extends fmh> aI_() {
+         return ImmutableList.of();
+      }
+
+      @Override
+      public List<? extends fof> b() {
+         return ImmutableList.of(new fof() {
+            @Override
+            public fof.a u() {
+               return fof.a.b;
             }
 
-            return true;
-         }
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void b(fjn $$0, int $$1, int $$2, float $$3) {
-      List<esi> $$4 = this.K();
-      if ($$4 != this.G) {
-         this.a($$4);
-      }
-
-      super.b($$0, $$1, $$2, $$3);
-   }
-
-   private void a(@Nullable List<esi> $$0) {
-      if ($$0 == null) {
-         this.N();
-      } else {
-         this.a(this.H, $$0);
-      }
-
-      this.G = $$0;
-   }
-
-   public void a(String $$0) {
-      if (this.G != null && !$$0.equals(this.H)) {
-         this.a($$0, this.G);
-      }
-
-      this.H = $$0;
-   }
-
-   private CompletableFuture<List<esi>> M() {
-      esh.a $$0;
-      try {
-         $$0 = this.c.m().b();
-      } catch (esg var3) {
-         v.error("Couldn't load level list", var3);
-         this.c(var3.a());
-         return CompletableFuture.completedFuture(List.of());
-      }
-
-      if ($$0.a()) {
-         fuq.a(this.c, null);
-         return CompletableFuture.completedFuture(List.of());
-      } else {
-         return this.c.m().a($$0).exceptionally($$0x -> {
-            this.c.a(o.a($$0x, "Couldn't load level list"));
-            return List.of();
+            @Override
+            public void b(foh $$0) {
+               $$0.a(fog.a, b.this.b);
+            }
          });
       }
    }
 
-   private void a(String $$0, List<esi> $$1) {
-      this.k();
-      $$0 = $$0.toLowerCase(Locale.ROOT);
+   @FunctionalInterface
+   interface c<T extends dec.g<T>> {
+      fvb.f create(xd var1, List<ayp> var2, String var3, T var4);
+   }
 
-      for (esi $$2 : $$1) {
-         if (this.a($$0, $$2)) {
-            this.b(new fvb.c(this, $$2));
+   public abstract class d extends fvb.f {
+      private final List<ayp> c;
+      protected final List<fki> a = Lists.newArrayList();
+
+      public d(@Nullable final List<ayp> $$1, final xd $$2) {
+         super($$1);
+         this.c = fvb.this.m.h.c($$2, 175);
+      }
+
+      @Override
+      public List<? extends fmh> aI_() {
+         return this.a;
+      }
+
+      @Override
+      public List<? extends fof> b() {
+         return this.a;
+      }
+
+      protected void a(fjx $$0, int $$1, int $$2) {
+         if (this.c.size() == 1) {
+            $$0.a(fvb.this.m.h, this.c.get(0), $$2, $$1 + 5, -1, false);
+         } else if (this.c.size() >= 2) {
+            $$0.a(fvb.this.m.h, this.c.get(0), $$2, $$1, -1, false);
+            $$0.a(fvb.this.m.h, this.c.get(1), $$2, $$1 + 10, -1, false);
          }
       }
-
-      this.O();
    }
 
-   private boolean a(String $$0, esi $$1) {
-      return $$1.b().toLowerCase(Locale.ROOT).contains($$0) || $$1.a().toLowerCase(Locale.ROOT).contains($$0);
-   }
+   public class e extends fvb.d {
+      private final fkt d;
 
-   private void N() {
-      this.k();
-      this.b(this.I);
-      this.O();
-   }
-
-   private void O() {
-      this.o();
-      this.E.d(true);
-   }
-
-   private void c(xd $$0) {
-      this.c.a(new fpc(xd.c("selectWorld.unable_to_load"), $$0));
-   }
-
-   @Override
-   public int b() {
-      return 270;
-   }
-
-   public void a(@Nullable fvb.a $$0) {
-      super.a($$0);
-      this.E.a($$0 instanceof fvb.c $$1 ? $$1.f : null);
-   }
-
-   public Optional<fvb.c> c() {
-      fvb.a $$0 = this.h();
-      return $$0 instanceof fvb.c $$1 ? Optional.of($$1) : Optional.empty();
-   }
-
-   public fuw J() {
-      return this.E;
-   }
-
-   @Override
-   public void a(fnx $$0) {
-      if (this.aK_().contains(this.I)) {
-         this.I.b($$0);
-      } else {
-         super.a($$0);
-      }
-   }
-
-   public abstract static class a extends fkw.a<fvb.a> implements AutoCloseable {
-      @Override
-      public void close() {
-      }
-   }
-
-   public static class b extends fvb.a {
-      private static final xd a = xd.c("selectWorld.loading_list");
-      private final fib b;
-
-      public b(fib $$0) {
-         this.b = $$0;
+      public e(final xd $$1, final List<ayp> $$2, final String $$3, final dec.d $$4) {
+         super($$2, $$1);
+         this.d = new fkt(fvb.this.m.h, 10, 5, 44, 20, $$1.f().f("\n").f($$3).f("\n"));
+         this.d.a(Integer.toString($$4.a()));
+         this.d.b($$1x -> {
+            if ($$4.b($$1x)) {
+               this.d.g(14737632);
+               fvb.this.b(this);
+            } else {
+               this.d.g(-65536);
+               fvb.this.a(this);
+            }
+         });
+         this.a.add(this.d);
       }
 
       @Override
-      public void a(fjn $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10 = (this.b.z.n - this.b.h.a(a)) / 2;
-         int $$11 = $$2 + ($$5 - 9) / 2;
-         $$0.a(this.b.h, a, $$10, $$11, 16777215, false);
-         String $$12 = fpi.a(ad.c());
-         int $$13 = (this.b.z.n - this.b.h.b($$12)) / 2;
-         int $$14 = $$11 + 9;
-         $$0.a(this.b.h, $$12, $$13, $$14, -8355712, false);
-      }
-
-      @Override
-      public xd a() {
-         return a;
+      public void a(fjx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a($$0, $$2, $$3);
+         this.d.m($$3 + $$4 - 45);
+         this.d.n($$2);
+         this.d.a($$0, $$6, $$7, $$9);
       }
    }
 
-   public final class c extends fvb.a {
-      private static final int b = 32;
-      private static final int c = 32;
-      private final fib d;
-      private final fuw e;
-      final esi f;
-      private final fpd g;
+   public abstract static class f extends fkq.a<fvb.f> {
       @Nullable
-      private Path h;
-      private long i;
+      final List<ayp> a;
 
-      public c(final fvb $$1, final esi $$2) {
-         this.d = $$1.c;
-         this.e = $$1.J();
-         this.f = $$2;
-         this.g = fpd.a(this.d.aa(), $$2.a());
-         this.h = $$2.c();
-         this.j();
-         this.l();
+      public f(@Nullable List<ayp> $$0) {
+         this.a = $$0;
       }
+   }
 
-      private void j() {
-         if (this.h != null) {
-            try {
-               BasicFileAttributes $$0 = Files.readAttributes(this.h, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
-               if ($$0.isSymbolicLink()) {
-                  List<exv> $$1 = this.d.be().a(this.h);
-                  if (!$$1.isEmpty()) {
-                     fvb.v.warn("{}", ext.a(this.h, $$1));
-                     this.h = null;
-                  } else {
-                     $$0 = Files.readAttributes(this.h, BasicFileAttributes.class);
-                  }
-               }
+   public class g extends fkq<fvb.f> {
+      private static final int m = 24;
 
-               if (!$$0.isRegularFile()) {
-                  this.h = null;
-               }
-            } catch (NoSuchFileException var3) {
-               this.h = null;
-            } catch (IOException var4) {
-               fvb.v.error("could not validate symlink", var4);
-               this.h = null;
+      public g(final dec $$1) {
+         super(fil.Q(), fvb.this.n, fvb.this.c.d(), fvb.this.c.c(), 24);
+         final Map<dec.b, Map<dec.e<?>, fvb.f>> $$2 = Maps.newHashMap();
+         $$1.a(new dec.c() {
+            @Override
+            public void b(dec.e<dec.a> $$0, dec.f<dec.a> $$1x) {
+               this.a($$0, ($$0x, $$1xxx, $$2xx, $$3) -> fvb.this.new a($$0x, $$1xxx, $$2xx, $$3));
             }
-         }
+
+            @Override
+            public void c(dec.e<dec.d> $$0, dec.f<dec.d> $$1x) {
+               this.a($$0, ($$0x, $$1xxx, $$2xx, $$3) -> fvb.this.new e($$0x, $$1xxx, $$2xx, $$3));
+            }
+
+            private <T extends dec.g<T>> void a(dec.e<T> $$0, fvb.c<T> $$1x) {
+               xd $$2 = xd.c($$0.b());
+               xd $$3 = xd.b($$0.a()).a(n.o);
+               T $$4 = $$1.a($$0);
+               String $$5 = $$4.b();
+               xd $$6 = xd.a("editGamerule.default", xd.b($$5)).a(n.h);
+               String $$7 = $$0.b() + ".description";
+               List<ayp> $$10;
+               String $$11;
+               if (gyi.a($$7)) {
+                  Builder<ayp> $$8 = ImmutableList.builder().add($$3.g());
+                  xd $$9 = xd.c($$7);
+                  fvb.this.p.c($$9, 150).forEach($$8::add);
+                  $$10 = $$8.add($$6.g()).build();
+                  $$11 = $$9.getString() + "\n" + $$6.getString();
+               } else {
+                  $$10 = ImmutableList.of($$3.g(), $$6.g());
+                  $$11 = $$6.getString();
+               }
+
+               $$2.computeIfAbsent($$0.c(), $$0x -> Maps.newHashMap()).put($$0, $$1.create($$2, $$10, $$11, $$4));
+            }
+         });
+         $$2.entrySet()
+            .stream()
+            .sorted(Entry.comparingByKey())
+            .forEach(
+               $$0x -> {
+                  this.b(fvb.this.new b(xd.c(((dec.b)$$0x.getKey()).a()).a(n.r, n.o)));
+                  ((Map)$$0x.getValue())
+                     .entrySet()
+                     .stream()
+                     .sorted(Entry.comparingByKey(Comparator.comparing(dec.e::a)))
+                     .forEach($$0xx -> this.b((fvb.f)$$0xx.getValue()));
+               }
+            );
       }
 
       @Override
-      public xd a() {
-         xd $$0 = xd.a("narrator.select.world_info", this.f.b(), xd.a(new Date(this.f.f())), this.f.s());
-         if (this.f.p()) {
-            $$0 = xc.a($$0, fvb.A);
+      public void b(fjx $$0, int $$1, int $$2, float $$3) {
+         super.b($$0, $$1, $$2, $$3);
+         fvb.f $$4 = this.v();
+         if ($$4 != null && $$4.a != null) {
+            fvb.this.b($$4.a);
          }
-
-         if (this.f.e()) {
-            $$0 = xc.a($$0, fvb.D);
-         }
-
-         return xd.a("narrator.select", $$0);
-      }
-
-      @Override
-      public void a(fjn $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         String $$10 = this.f.b();
-         String $$11 = this.f.a();
-         long $$12 = this.f.f();
-         if ($$12 != -1L) {
-            $$11 = $$11 + " (" + fvb.a.format(Instant.ofEpochMilli($$12)) + ")";
-         }
-
-         if (StringUtils.isEmpty($$10)) {
-            $$10 = gxr.a("selectWorld.world") + " " + ($$1 + 1);
-         }
-
-         xd $$13 = this.f.s();
-         $$0.a(this.d.h, $$10, $$3 + 32 + 3, $$2 + 1, 16777215, false);
-         $$0.a(this.d.h, $$11, $$3 + 32 + 3, $$2 + 9 + 3, -8355712, false);
-         $$0.a(this.d.h, $$13, $$3 + 32 + 3, $$2 + 9 + 9 + 3, -8355712, false);
-         $$0.a(ghe::C, this.g.b(), $$3, $$2, 0.0F, 0.0F, 32, 32, 32, 32);
-         if (this.d.n.ab().c() || $$8) {
-            $$0.a($$3, $$2, $$3 + 32, $$2 + 32, -1601138544);
-            int $$14 = $$6 - $$3;
-            boolean $$15 = $$14 < 32;
-            alb $$16 = $$15 ? fvb.s : fvb.u;
-            alb $$17 = $$15 ? fvb.q : fvb.r;
-            alb $$18 = $$15 ? fvb.m : fvb.n;
-            alb $$19 = $$15 ? fvb.o : fvb.p;
-            if (this.f instanceof esi.c || this.f instanceof esi.b) {
-               $$0.a(ghe::C, $$18, $$3, $$2, 32, 32);
-               $$0.a(ghe::C, $$19, $$3, $$2, 32, 32);
-               return;
-            }
-
-            if (this.f.p()) {
-               $$0.a(ghe::C, $$18, $$3, $$2, 32, 32);
-               if ($$15) {
-                  this.e.b(this.d.h.c(fvb.A, 175));
-               }
-            } else if (this.f.d()) {
-               $$0.a(ghe::C, $$18, $$3, $$2, 32, 32);
-               if ($$15) {
-                  this.e.b(this.d.h.c(fvb.B, 175));
-               }
-            } else if (!this.f.r()) {
-               $$0.a(ghe::C, $$18, $$3, $$2, 32, 32);
-               if ($$15) {
-                  this.e.b(this.d.h.c(fvb.C, 175));
-               }
-            } else if (this.f.m()) {
-               $$0.a(ghe::C, $$19, $$3, $$2, 32, 32);
-               if (this.f.n()) {
-                  $$0.a(ghe::C, $$18, $$3, $$2, 32, 32);
-                  if ($$15) {
-                     this.e.b(ImmutableList.of(fvb.w.g(), fvb.x.g()));
-                  }
-               } else if (!ab.b().g()) {
-                  $$0.a(ghe::C, $$17, $$3, $$2, 32, 32);
-                  if ($$15) {
-                     this.e.b(ImmutableList.of(fvb.y.g(), fvb.z.g()));
-                  }
-               }
-            } else {
-               $$0.a(ghe::C, $$16, $$3, $$2, 32, 32);
-            }
-         }
-      }
-
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         if (!this.f.u()) {
-            return true;
-         } else {
-            fvb.this.a((fvb.a)this);
-            if (!($$0 - (double)fvb.this.s() <= 32.0) && ad.c() - this.i >= 250L) {
-               this.i = ad.c();
-               return super.a($$0, $$1, $$2);
-            } else {
-               if (this.b()) {
-                  this.d.aj().a(gzz.a(awd.Ax, 1.0F));
-                  this.c();
-               }
-
-               return true;
-            }
-         }
-      }
-
-      public boolean b() {
-         return this.f.u();
-      }
-
-      public void c() {
-         if (this.f.u()) {
-            if (this.f instanceof esi.c) {
-               this.d.a(fpl.a(() -> this.d.a(this.e)));
-            } else {
-               this.d.x().a(this.f.a(), () -> {
-                  fvb.this.L();
-                  this.d.a(this.e);
-               });
-            }
-         }
-      }
-
-      public void d() {
-         this.d.a(new foq($$0 -> {
-            if ($$0) {
-               this.d.a(new fpq(true));
-               this.e();
-            }
-
-            this.d.a(this.e);
-         }, xd.c("selectWorld.deleteQuestion"), xd.a("selectWorld.deleteWarning", this.f.b()), xd.c("selectWorld.deleteButton"), xc.e));
-      }
-
-      public void e() {
-         esh $$0 = this.d.m();
-         String $$1 = this.f.a();
-
-         try (esh.c $$2 = $$0.e($$1)) {
-            $$2.k();
-         } catch (IOException var8) {
-            fmj.b(this.d, $$1);
-            fvb.v.error("Failed to delete world {}", $$1, var8);
-         }
-
-         fvb.this.L();
-      }
-
-      public void f() {
-         this.k();
-         String $$0 = this.f.a();
-
-         esh.c $$1;
-         try {
-            $$1 = this.d.m().d($$0);
-         } catch (IOException var6) {
-            fmj.a(this.d, $$0);
-            fvb.v.error("Failed to access level {}", $$0, var6);
-            fvb.this.L();
-            return;
-         } catch (ext var7) {
-            fvb.v.warn("{}", var7.getMessage());
-            this.d.a(fpl.a(() -> this.d.a(this.e)));
-            return;
-         }
-
-         fus $$5;
-         try {
-            $$5 = fus.a(this.d, $$1, $$1x -> {
-               $$1.c();
-               if ($$1x) {
-                  fvb.this.L();
-               }
-
-               this.d.a(this.e);
-            });
-         } catch (uq | uw | IOException var5) {
-            $$1.c();
-            fmj.a(this.d, $$0);
-            fvb.v.error("Failed to load world data {}", $$0, var5);
-            fvb.this.L();
-            return;
-         }
-
-         this.d.a($$5);
-      }
-
-      public void h() {
-         this.k();
-
-         try (esh.c $$0 = this.d.m().d(this.f.a())) {
-            Pair<ddw, fuy> $$1 = this.d.x().a($$0);
-            ddw $$2 = (ddw)$$1.getFirst();
-            fuy $$3 = (fuy)$$1.getSecond();
-            Path $$4 = fuq.a($$0.a(esf.j), this.d);
-            $$3.b();
-            if ($$3.c().e()) {
-               this.d
-                  .a(
-                     new foq(
-                        $$3x -> this.d.a((fpt)($$3x ? fuq.a(this.d, this.e, $$2, $$3, $$4) : this.e)),
-                        xd.c("selectWorld.recreate.customized.title"),
-                        xd.c("selectWorld.recreate.customized.text"),
-                        xc.i,
-                        xc.e
-                     )
-                  );
-            } else {
-               this.d.a(fuq.a(this.d, this.e, $$2, $$3, $$4));
-            }
-         } catch (ext var8) {
-            fvb.v.warn("{}", var8.getMessage());
-            this.d.a(fpl.a(() -> this.d.a(this.e)));
-         } catch (Exception var9) {
-            fvb.v.error("Unable to recreate world", var9);
-            this.d.a(new fol(() -> this.d.a(this.e), xd.c("selectWorld.recreate.error.title"), xd.c("selectWorld.recreate.error.text")));
-         }
-      }
-
-      private void k() {
-         this.d.d(new fpe(xd.c("selectWorld.data_read")));
-      }
-
-      private void l() {
-         boolean $$0 = this.h != null && Files.isRegularFile(this.h);
-         if ($$0) {
-            try (InputStream $$1 = Files.newInputStream(this.h)) {
-               this.g.a(fbp.a($$1));
-            } catch (Throwable var7) {
-               fvb.v.error("Invalid icon for world {}", this.f.a(), var7);
-               this.h = null;
-            }
-         } else {
-            this.g.a();
-         }
-      }
-
-      @Override
-      public void close() {
-         this.g.close();
-      }
-
-      public String i() {
-         return this.f.b();
       }
    }
 }

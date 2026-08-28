@@ -1,26 +1,13 @@
-import com.mojang.authlib.minecraft.UserApiService;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
+import java.util.List;
 
-public interface gbj {
-   gbj a = new gbj() {
-      @Override
-      public CompletableFuture<Optional<cnr>> a() {
-         return CompletableFuture.completedFuture(Optional.empty());
-      }
+public enum gbj {
+   a,
+   b;
 
-      @Override
-      public boolean b() {
-         return false;
-      }
-   };
+   private static final List<gbj> c = List.of(values());
+   private static final kb.b d = kb.a(lu.aA);
 
-   static gbj a(UserApiService $$0, fio $$1, Path $$2) {
-      return (gbj)($$1.g() == fio.a.c ? new gaq($$0, $$1.b(), $$2) : a);
+   public static ju<gbj> a() {
+      return new ju<>(c).a(a, d);
    }
-
-   CompletableFuture<Optional<cnr>> a();
-
-   boolean b();
 }

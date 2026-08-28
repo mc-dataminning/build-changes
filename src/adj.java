@@ -20,7 +20,7 @@ public class adj implements zk<abz> {
       this.i = $$0.l();
    }
 
-   public adj(dvr $$0) {
+   public adj(dwf $$0) {
       this.b = $$0.a();
       this.c = $$0.b();
       this.d = $$0.i();

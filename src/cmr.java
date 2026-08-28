@@ -1,44 +1,27 @@
-import java.util.Arrays;
+import com.mojang.datafixers.kinds.App;
+import java.util.List;
+import java.util.function.Function;
 
-public enum cmr {
-   a(0, awd.BN, awd.BV),
-   b(40, awd.BM, awd.BW),
-   c(80, awd.BO, awd.BW);
-
-   private static final cmr[] d = ad.a(values(), $$0 -> Arrays.sort($$0, ($$0x, $$1) -> Integer.compare($$1.e, $$0x.e)));
-   private final int e;
-   private final awc f;
-   private final awc g;
-
-   private cmr(final int $$0, final awc $$1, final awc $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+public class cmr {
+   public static bxn<cmk> a() {
+      return bzp.a(
+         (Function<bzp.b<cmk>, ? extends App<bzp.c<cmk>, bzs<cmk>>>)($$0 -> $$0.group($$0.b(cdn.ak), $$0.c(cdn.ab), $$0.c(cdn.ah), $$0.a(cdn.ao))
+               .apply($$0, ($$1, $$2, $$3, $$4) -> ($$3x, $$4x, $$5) -> {
+                     if (!$$4x.o_() && !$$0.<List>a($$4).map($$0xxx -> $$0xxx.stream().anyMatch(cmr::a)).isPresent()) {
+                        cme $$6 = $$0.b($$1);
+                        cml.c($$4x, $$6);
+                        cml.c((cmj)$$4x);
+                        cml.b($$4x, $$6);
+                        $$0.<List>a($$4).ifPresent($$0xxx -> $$0xxx.forEach(cml::c));
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 
-   public int a() {
-      return this.e;
-   }
-
-   public awc b() {
-      return this.f;
-   }
-
-   public awc c() {
-      return this.g;
-   }
-
-   public static cmr a(int $$0) {
-      for (cmr $$1 : d) {
-         if ($$0 >= $$1.e) {
-            return $$1;
-         }
-      }
-
-      return a;
-   }
-
-   public boolean d() {
-      return this == c;
+   private static boolean a(cmj $$0) {
+      return $$0.dX().a(cdn.ah);
    }
 }

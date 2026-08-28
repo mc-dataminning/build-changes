@@ -96,17 +96,17 @@ public class ui extends uv {
 
    @Override
    public int g() {
-      return azc.d(this.w);
+      return azd.d(this.w);
    }
 
    @Override
    public short h() {
-      return (short)(azc.d(this.w) & 65535);
+      return (short)(azd.d(this.w) & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)(azc.d(this.w) & 0xFF);
+      return (byte)(azd.d(this.w) & 0xFF);
    }
 
    @Override

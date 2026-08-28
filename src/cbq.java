@@ -1,42 +1,18 @@
-import java.util.EnumSet;
+public class cbq extends cbp {
+   private final cnc h;
 
-public class cbq extends cbc {
-   private final bun a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
-
-   public cbq(bun $$0, double $$1) {
-      this.a = $$0;
-      this.e = $$1;
-      this.a(EnumSet.of(cbc.a.a));
+   public cbq(cnc $$0) {
+      super($$0, cnu.class, 8.0F);
+      this.h = $$0;
    }
 
    @Override
    public boolean b() {
-      if (this.a.fY()) {
-         return false;
+      if (this.h.gq()) {
+         this.c = this.h.gp();
+         return true;
       } else {
-         eye $$0 = cez.a(this.a, 16, 7, eye.c(this.a.fZ()), (float) (Math.PI / 2));
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.b = $$0.d;
-            this.c = $$0.e;
-            this.d = $$0.f;
-            return true;
-         }
+         return false;
       }
-   }
-
-   @Override
-   public boolean c() {
-      return !this.a.P().m();
-   }
-
-   @Override
-   public void d() {
-      this.a.P().a(this.b, this.c, this.d, this.e);
    }
 }

@@ -1,53 +1,29 @@
 import com.mojang.serialization.Codec;
 
-public class edn extends ece {
-   public edn(Codec<efi> $$0) {
+public class edn extends edq<egb> {
+   public edn(Codec<egb> $$0) {
       super($$0);
    }
 
    @Override
-   protected void a(ddt $$0, azk $$1, je $$2, int $$3, je.a $$4, efi $$5) {
-      for (int $$6 = $$3 - 3; $$6 <= $$3; $$6++) {
-         int $$7 = $$6 < $$3 ? $$5.d : $$5.d - 1;
-         int $$8 = $$5.d - 2;
+   public boolean a(eds<egb> $$0) {
+      dfd $$1 = $$0.b();
+      azl $$2 = $$0.d();
+      je $$3 = $$0.e();
+      float $$4 = (float)$$2.a(3) + 4.0F;
 
-         for (int $$9 = -$$7; $$9 <= $$7; $$9++) {
-            for (int $$10 = -$$7; $$10 <= $$7; $$10++) {
-               boolean $$11 = $$9 == -$$7;
-               boolean $$12 = $$9 == $$7;
-               boolean $$13 = $$10 == -$$7;
-               boolean $$14 = $$10 == $$7;
-               boolean $$15 = $$11 || $$12;
-               boolean $$16 = $$13 || $$14;
-               if ($$6 >= $$3 || $$15 != $$16) {
-                  $$4.a($$2, $$9, $$6, $$10);
-                  if (!$$0.a_($$4).s()) {
-                     dua $$17 = $$5.b.a($$1, $$2);
-                     if ($$17.b(dks.e) && $$17.b(dks.c) && $$17.b(dks.b) && $$17.b(dks.d) && $$17.b(dks.f)) {
-                        $$17 = $$17.b(dks.f, Boolean.valueOf($$6 >= $$3 - 1))
-                           .b(dks.e, Boolean.valueOf($$9 < -$$8))
-                           .b(dks.c, Boolean.valueOf($$9 > $$8))
-                           .b(dks.b, Boolean.valueOf($$10 < -$$8))
-                           .b(dks.d, Boolean.valueOf($$10 > $$8));
-                     }
-
-                     this.a($$0, $$4, $$17);
-                  }
+      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
+         for (int $$6 = azd.d(-$$4); $$6 <= azd.f($$4); $$6++) {
+            for (int $$7 = azd.d(-$$4); $$7 <= azd.f($$4); $$7++) {
+               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
+                  this.a($$1, $$3.b($$6, $$5, $$7), dhl.fz.o());
                }
             }
          }
-      }
-   }
 
-   @Override
-   protected int a(int $$0, int $$1, int $$2, int $$3) {
-      int $$4 = 0;
-      if ($$3 < $$1 && $$3 >= $$1 - 3) {
-         $$4 = $$2;
-      } else if ($$3 == $$1) {
-         $$4 = $$2;
+         $$4 -= (float)$$2.a(2) + 0.5F;
       }
 
-      return $$4;
+      return true;
    }
 }

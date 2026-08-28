@@ -1,44 +1,50 @@
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.stream.Stream;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import org.slf4j.Logger;
 
-public class ejm extends ejv {
+public class ejm extends ejj {
    public static final MapCodec<ejm> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(je.a.listOf().fieldOf("positions").forGetter($$0x -> $$0x.c)).apply($$0, ejm::new)
+      $$0 -> $$0.group(ebe.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d), ebe.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e)).apply($$0, ejm::new)
    );
-   private final List<je> c;
+   private static final Logger b = LogUtils.getLogger();
+   private final ebe d;
+   private final ebe e;
+   private final LongSet f = new LongOpenHashSet();
 
-   public static ejm a(je... $$0) {
-      return new ejm(List.of($$0));
+   private ejm(ebe $$0, ebe $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   private ejm(List<je> $$0) {
-      this.c = $$0;
+   public static ejm a(ebe $$0, ebe $$1) {
+      return new ejm($$0, $$1);
    }
 
    @Override
-   public Stream<je> a_(ejt $$0, azk $$1, je $$2) {
-      int $$3 = kg.a($$2.u());
-      int $$4 = kg.a($$2.w());
-      boolean $$5 = false;
-
-      for (je $$6 : this.c) {
-         if (a($$3, $$4, $$6)) {
-            $$5 = true;
-            break;
+   public int a(azl $$0, ebh $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$2 > $$3) {
+         if (this.f.add((long)$$2 << 32 | (long)$$3)) {
+            b.warn("Empty height range: {}", this);
          }
+
+         return $$2;
+      } else {
+         return azd.b($$0, $$2, $$3);
       }
-
-      return !$$5 ? Stream.empty() : this.c.stream().filter($$2x -> a($$3, $$4, $$2x));
-   }
-
-   private static boolean a(int $$0, int $$1, je $$2) {
-      return $$0 == kg.a($$2.u()) && $$1 == kg.a($$2.w());
    }
 
    @Override
-   public ejw<?> b() {
-      return ejw.o;
+   public ejk<?> a() {
+      return ejk.b;
+   }
+
+   @Override
+   public String toString() {
+      return "[" + this.d + "-" + this.e + "]";
    }
 }

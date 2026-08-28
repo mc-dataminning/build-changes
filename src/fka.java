@@ -1,100 +1,38 @@
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.BooleanSupplier;
 
-public class fka extends fjr {
-   public static final int f = 120;
-   public static final int m = 150;
-   public static final int n = 200;
-   public static final int o = 20;
-   public static final int p = 8;
-   protected static final fka.b q = $$0 -> $$0.get();
-   protected final fka.c r;
-   protected final fka.b s;
+public class fka {
+   public static final float a = 200.0F;
+   private final List<fka.a> b = new ArrayList<>();
 
-   public static fka.a a(xd $$0, fka.c $$1) {
-      return new fka.a($$0, $$1);
+   public fka a(fka.a $$0) {
+      this.b.add($$0);
+      return this;
    }
 
-   protected fka(int $$0, int $$1, int $$2, int $$3, xd $$4, fka.c $$5, fka.b $$6) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.r = $$5;
-      this.s = $$6;
+   public fka a(fka $$0, BooleanSupplier $$1) {
+      return this.a(($$2, $$3) -> {
+         if ($$1.getAsBoolean()) {
+            $$0.b($$2, $$3);
+         }
+      });
    }
 
-   @Override
-   public void b() {
-      this.r.onPress(this);
+   public void a(fjx $$0, fib $$1) {
+      $$0.c().a();
+      this.b($$0, $$1);
+      $$0.c().b();
    }
 
-   @Override
-   protected xr aQ_() {
-      return this.s.createNarrationMessage(() -> super.aQ_());
-   }
-
-   @Override
-   public void a(fnx $$0) {
-      this.c($$0);
-   }
-
-   public static class a {
-      private final xd a;
-      private final fka.c b;
-      @Nullable
-      private fll c;
-      private int d;
-      private int e;
-      private int f = 150;
-      private int g = 20;
-      private fka.b h = fka.q;
-
-      public a(xd $$0, fka.c $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      public fka.a a(int $$0, int $$1) {
-         this.d = $$0;
-         this.e = $$1;
-         return this;
-      }
-
-      public fka.a a(int $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public fka.a b(int $$0, int $$1) {
-         this.f = $$0;
-         this.g = $$1;
-         return this;
-      }
-
-      public fka.a a(int $$0, int $$1, int $$2, int $$3) {
-         return this.a($$0, $$1).b($$2, $$3);
-      }
-
-      public fka.a a(@Nullable fll $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public fka.a a(fka.b $$0) {
-         this.h = $$0;
-         return this;
-      }
-
-      public fka a() {
-         fka $$0 = new fka(this.d, this.e, this.f, this.g, this.a, this.b, this.h);
-         $$0.a(this.c);
-         return $$0;
+   private void b(fjx $$0, fib $$1) {
+      for (fka.a $$2 : this.b) {
+         $$2.render($$0, $$1);
+         $$0.c().a(0.0F, 0.0F, 200.0F);
       }
    }
 
-   public interface b {
-      xr createNarrationMessage(Supplier<xr> var1);
-   }
-
-   public interface c {
-      void onPress(fka var1);
+   public interface a {
+      void render(fjx var1, fib var2);
    }
 }

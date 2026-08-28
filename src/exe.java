@@ -1,42 +1,93 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
+import javax.annotation.Nullable;
 
-public record exe(exa b, exa c) implements exa {
-   public static final MapCodec<exe> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(exb.a.fieldOf("min").forGetter(exe::c), exb.a.fieldOf("max").forGetter(exe::d)).apply($$0, exe::new)
-   );
+public class exe implements exg {
+   private static final String d = "block_entity";
+   private static final exe.a e = new exe.a() {
+      @Override
+      public vc a(eth $$0) {
+         drs $$1 = $$0.c(ewd.h);
+         return $$1 != null ? $$1.b($$1.i().F_()) : null;
+      }
+
+      @Override
+      public String a() {
+         return "block_entity";
+      }
+
+      @Override
+      public Set<ewa<?>> b() {
+         return ImmutableSet.of(ewd.h);
+      }
+   };
+   public static final exe a = new exe(e);
+   private static final Codec<exe.a> f = Codec.STRING.xmap($$0 -> {
+      if ($$0.equals("block_entity")) {
+         return e;
+      } else {
+         eth.b $$1 = eth.b.a($$0);
+         return b($$1);
+      }
+   }, exe.a::a);
+   public static final MapCodec<exe> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(f.fieldOf("target").forGetter($$0x -> $$0x.g)).apply($$0, exe::new));
+   public static final Codec<exe> c = f.xmap(exe::new, $$0 -> $$0.g);
+   private final exe.a g;
+
+   private static exe.a b(final eth.b $$0) {
+      return new exe.a() {
+         @Nullable
+         @Override
+         public vc a(eth $$0x) {
+            bto $$1 = $$0.c($$0.a());
+            return $$1 != null ? dk.b($$1) : null;
+         }
+
+         @Override
+         public String a() {
+            return $$0.name();
+         }
+
+         @Override
+         public Set<ewa<?>> b() {
+            return ImmutableSet.of($$0.a());
+         }
+      };
+   }
+
+   private exe(exe.a $$0) {
+      this.g = $$0;
+   }
 
    @Override
-   public ewz b() {
-      return exb.c;
+   public exf a() {
+      return exh.c;
    }
 
-   public static exe a(float $$0, float $$1) {
-      return new exe(ewx.a($$0), ewx.a($$1));
+   @Nullable
+   @Override
+   public vc a(eth $$0) {
+      return this.g.a($$0);
    }
 
    @Override
-   public int a(est $$0) {
-      return azc.a($$0.b(), this.b.a($$0), this.c.a($$0));
+   public Set<ewa<?>> b() {
+      return this.g.b();
    }
 
-   @Override
-   public float b(est $$0) {
-      return azc.a($$0.b(), this.b.b($$0), this.c.b($$0));
+   public static exg a(eth.b $$0) {
+      return new exe(b($$0));
    }
 
-   @Override
-   public Set<evm<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
-   }
+   interface a {
+      @Nullable
+      vc a(eth var1);
 
-   public exa c() {
-      return this.b;
-   }
+      String a();
 
-   public exa d() {
-      return this.c;
+      Set<ewa<?>> b();
    }
 }

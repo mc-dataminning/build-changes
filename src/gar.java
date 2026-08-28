@@ -1,25 +1,21 @@
 public class gar {
-   private static final int a = 49;
-   private static final int b = 3;
-   private double c = 2000000.0;
-   private int d = 1;
-   private volatile long e = ad.d();
+   private final gat a;
+   private final gas b;
 
-   public void a() {
-      this.e = ad.d();
+   private gar(gat $$0, gas $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public void a(int $$0) {
-      if ($$0 > 0) {
-         double $$1 = (double)(ad.d() - this.e);
-         double $$2 = $$1 / (double)$$0;
-         double $$3 = azc.a($$2, this.c / 3.0, this.c * 3.0);
-         this.c = (this.c * (double)this.d + $$3) / (double)(this.d + 1);
-         this.d = Math.min(49, this.d + 1);
-      }
+   public gar a(gau $$0) {
+      return new gar($$0.apply(this.a), this.b);
    }
 
-   public float b() {
-      return (float)(7000000.0 / this.c);
+   public gal a() {
+      return this.a.a().a(this.b.a, this.b.b);
+   }
+
+   public static gar a(gat $$0, int $$1, int $$2) {
+      return new gar($$0, new gas($$1, $$2));
    }
 }

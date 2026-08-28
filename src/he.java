@@ -28,7 +28,7 @@ public class he {
    public static final char d = '=';
    public static final char e = '!';
    static final Function<SuggestionsBuilder, CompletableFuture<Suggestions>> l = SuggestionsBuilder::buildFuture;
-   final jp.b<cvg> m;
+   final jp.b<cvk> m;
    final DynamicOps<vc> n;
 
    public he(jp.a $$0) {
@@ -37,11 +37,11 @@ public class he {
    }
 
    public he.a a(StringReader $$0) throws CommandSyntaxException {
-      final MutableObject<jn<cvg>> $$1 = new MutableObject();
+      final MutableObject<jn<cvk>> $$1 = new MutableObject();
       final ko.a $$2 = ko.a();
       this.a($$0, new he.d() {
          @Override
-         public void a(jn<cvg> $$0) {
+         public void a(jn<cvk> $$0) {
             $$1.setValue($$0);
          }
 
@@ -55,15 +55,15 @@ public class he {
             $$2.a($$0);
          }
       });
-      jn<cvg> $$3 = Objects.requireNonNull((jn<cvg>)$$1.getValue(), "Parser gave no item");
+      jn<cvk> $$3 = Objects.requireNonNull((jn<cvk>)$$1.getValue(), "Parser gave no item");
       ko $$4 = $$2.a();
       a($$0, $$3, $$4);
       return new he.a($$3, $$4);
    }
 
-   private static void a(StringReader $$0, jn<cvg> $$1, ko $$2) throws CommandSyntaxException {
-      kn $$3 = ks.a($$1.a().p(), $$2);
-      DataResult<bah> $$4 = cvl.a($$3);
+   private static void a(StringReader $$0, jn<cvk> $$1, ko $$2) throws CommandSyntaxException {
+      kn $$3 = ks.a($$1.a().o(), $$2);
+      DataResult<bai> $$4 = cvp.a($$3);
       $$4.getOrThrow($$1x -> k.createWithContext($$0, $$1x));
    }
 
@@ -92,7 +92,7 @@ public class he {
       return $$2.a($$0, $$1);
    }
 
-   public static record a(jn<cvg> a, ko b) {
+   public static record a(jn<cvk> a, ko b) {
    }
 
    class b {
@@ -116,8 +116,8 @@ public class he {
 
       private void b() throws CommandSyntaxException {
          int $$0 = this.b.getCursor();
-         alb $$1 = alb.a(this.b);
-         this.c.a(he.this.m.a(ala.a(lv.K, $$1)).orElseThrow(() -> {
+         alc $$1 = alc.a(this.b);
+         this.c.a(he.this.m.a(alb.a(lv.K, $$1)).orElseThrow(() -> {
             this.b.setCursor($$0);
             return he.f.createWithContext(this.b, $$1);
          }));
@@ -178,7 +178,7 @@ public class he {
             throw he.i.createWithContext($$0);
          } else {
             int $$1 = $$0.getCursor();
-            alb $$2 = alb.a($$0);
+            alc $$2 = alc.a($$0);
             kq<?> $$3 = lu.ap.a($$2);
             if ($$3 != null && !$$3.d()) {
                return $$3;
@@ -225,7 +225,7 @@ public class he {
       }
 
       private CompletableFuture<Suggestions> d(SuggestionsBuilder $$0) {
-         return ey.a(he.this.m.c().map(ala::a), $$0);
+         return ey.a(he.this.m.c().map(alb::a), $$0);
       }
 
       private CompletableFuture<Suggestions> e(SuggestionsBuilder $$0) {
@@ -239,10 +239,10 @@ public class he {
 
       private CompletableFuture<Suggestions> a(SuggestionsBuilder $$0, String $$1) {
          String $$2 = $$0.getRemaining().toLowerCase(Locale.ROOT);
-         ey.a(lu.ap.h(), $$2, $$0x -> ((ala)$$0x.getKey()).a(), $$2x -> {
+         ey.a(lu.ap.h(), $$2, $$0x -> ((alb)$$0x.getKey()).a(), $$2x -> {
             kq<?> $$3 = (kq<?>)$$2x.getValue();
             if ($$3.b() != null) {
-               alb $$4 = ((ala)$$2x.getKey()).a();
+               alc $$4 = ((alb)$$2x.getKey()).a();
                $$0.suggest($$4 + $$1);
             }
          });
@@ -264,7 +264,7 @@ public class he {
    }
 
    public interface d {
-      default void a(jn<cvg> $$0) {
+      default void a(jn<cvk> $$0) {
       }
 
       default <T> void a(kq<T> $$0, T $$1) {

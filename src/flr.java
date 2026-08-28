@@ -1,40 +1,56 @@
-import java.util.Locale;
+public class flr extends fkh {
+   private float a = 0.5F;
 
-public class flr extends flp {
-   private static final int f = 30;
-   private static final double g = 33.333333333333336;
+   public flr(xd $$0, fjv $$1) {
+      this(0, 0, $$1.a($$0.g()), 9, $$0, $$1);
+   }
 
-   public flr(fjl $$0, bmo $$1) {
-      super($$0, $$1);
+   public flr(int $$0, int $$1, xd $$2, fjv $$3) {
+      this(0, 0, $$0, $$1, $$2, $$3);
+   }
+
+   public flr(int $$0, int $$1, int $$2, int $$3, xd $$4, fjv $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.j = false;
+   }
+
+   public flr b(int $$0) {
+      super.a($$0);
+      return this;
+   }
+
+   private flr b(float $$0) {
+      this.a = $$0;
+      return this;
+   }
+
+   public flr c() {
+      return this.b(0.0F);
+   }
+
+   public flr e() {
+      return this.b(0.5F);
+   }
+
+   public flr f() {
+      return this.b(1.0F);
    }
 
    @Override
-   protected void d(fjn $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, "30 FPS", $$1 + 1, $$3 - 60 + 1);
-      this.a($$0, "60 FPS", $$1 + 1, $$3 - 30 + 1);
-      $$0.a(ghe.H(), $$1, $$1 + $$2 - 1, $$3 - 30, -1);
-      int $$4 = fib.Q().n.h().c();
-      if ($$4 > 0 && $$4 <= 250) {
-         $$0.a(ghe.H(), $$1, $$1 + $$2 - 1, $$3 - this.b(1.0E9 / (double)$$4) - 1, -16711681);
-      }
+   public void b(fjx $$0, int $$1, int $$2, float $$3) {
+      xd $$4 = this.z();
+      fjv $$5 = this.a();
+      int $$6 = this.y();
+      int $$7 = $$5.a($$4);
+      int $$8 = this.D() + Math.round(this.a * (float)($$6 - $$7));
+      int $$9 = this.E() + (this.w() - 9) / 2;
+      ayp $$10 = $$7 > $$6 ? this.a($$4, $$6) : $$4.g();
+      $$0.b($$5, $$10, $$8, $$9, this.b());
    }
 
-   @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
-   }
-
-   @Override
-   protected int b(double $$0) {
-      return (int)Math.round(c($$0) * 60.0 / 33.333333333333336);
-   }
-
-   @Override
-   protected int a(long $$0) {
-      return this.a(c((double)$$0), 0.0, -16711936, 28.0, -256, 56.0, -65536);
-   }
-
-   private static double c(double $$0) {
-      return $$0 / 1000000.0;
+   private ayp a(xd $$0, int $$1) {
+      fjv $$2 = this.a();
+      xi $$3 = $$2.a($$0, $$1 - $$2.a(xc.u));
+      return ua.a().a(xi.a($$3, xc.u));
    }
 }

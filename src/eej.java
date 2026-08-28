@@ -1,30 +1,37 @@
 import com.mojang.serialization.Codec;
 
-public class eej extends edc<efy> {
-   public eej(Codec<efy> $$0) {
+public class eej extends edq<ega> {
+   public eej(Codec<ega> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ede<efy> $$0) {
-      efy $$1 = $$0.f();
-      dep $$2 = $$0.b();
-      je $$3 = $$0.e();
-      dua $$4 = $$1.a().a($$0.d(), $$3);
-      if ($$4.a($$2, $$3)) {
-         if ($$4.b() instanceof djd) {
-            if (!$$2.u($$3.d())) {
-               return false;
+   public boolean a(eds<ega> $$0) {
+      dfd $$1 = $$0.b();
+      je $$2 = $$0.e();
+      duo $$3 = $$1.a_($$2.e());
+      ega $$4 = $$0.f();
+      azl $$5 = $$0.d();
+      if (!$$3.a(awt.aM)) {
+         return false;
+      } else {
+         int $$6 = $$2.v();
+         if ($$6 >= $$1.G_() + 1 && $$6 + 1 <= $$1.an()) {
+            int $$7 = 0;
+
+            for (int $$8 = 0; $$8 < $$4.d * $$4.d; $$8++) {
+               je $$9 = $$2.b($$5.a($$4.d) - $$5.a($$4.d), $$5.a($$4.e) - $$5.a($$4.e), $$5.a($$4.d) - $$5.a($$4.d));
+               duo $$10 = $$4.b.a($$5, $$9);
+               if ($$1.u($$9) && $$9.v() > $$1.G_() && $$10.a($$1, $$9)) {
+                  $$1.a($$9, $$10, 2);
+                  $$7++;
+               }
             }
 
-            djd.a($$2, $$4, $$3, 2);
+            return $$7 > 0;
          } else {
-            $$2.a($$3, $$4, 2);
+            return false;
          }
-
-         return true;
-      } else {
-         return false;
       }
    }
 }

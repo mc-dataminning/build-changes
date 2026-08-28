@@ -1,45 +1,37 @@
-import java.util.IdentityHashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.util.Locale;
 
-public class awm<T> implements Iterable<awk<T>> {
-   private final ka<T> a;
-   private final Map<T, awk<T>> b = new IdentityHashMap<>();
-   private final xd c;
-   private final zb<wo, awk<T>> d;
+public interface awm {
+   DecimalFormat a = ad.a(new DecimalFormat("########0.00"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
+   awm b = NumberFormat.getIntegerInstance(Locale.US)::format;
+   awm c = $$0 -> a.format((double)$$0 * 0.1);
+   awm d = $$0 -> {
+      double $$1 = (double)$$0 / 100.0;
+      double $$2 = $$1 / 1000.0;
+      if ($$2 > 0.5) {
+         return a.format($$2) + " km";
+      } else {
+         return $$1 > 0.5 ? a.format($$1) + " m" : $$0 + " cm";
+      }
+   };
+   awm e = $$0 -> {
+      double $$1 = (double)$$0 / 20.0;
+      double $$2 = $$1 / 60.0;
+      double $$3 = $$2 / 60.0;
+      double $$4 = $$3 / 24.0;
+      double $$5 = $$4 / 365.0;
+      if ($$5 > 0.5) {
+         return a.format($$5) + " y";
+      } else if ($$4 > 0.5) {
+         return a.format($$4) + " d";
+      } else if ($$3 > 0.5) {
+         return a.format($$3) + " h";
+      } else {
+         return $$2 > 0.5 ? a.format($$2) + " min" : $$1 + " s";
+      }
+   };
 
-   public awm(ka<T> $$0, xd $$1) {
-      this.a = $$0;
-      this.c = $$1;
-      this.d = yz.a($$0.d()).a(this::b, awk::b);
-   }
-
-   public zb<wo, awk<T>> a() {
-      return this.d;
-   }
-
-   public boolean a(T $$0) {
-      return this.b.containsKey($$0);
-   }
-
-   public awk<T> a(T $$0, awl $$1) {
-      return this.b.computeIfAbsent($$0, $$1x -> new awk<>(this, (T)$$1x, $$1));
-   }
-
-   public ka<T> b() {
-      return this.a;
-   }
-
-   @Override
-   public Iterator<awk<T>> iterator() {
-      return this.b.values().iterator();
-   }
-
-   public awk<T> b(T $$0) {
-      return this.a($$0, awl.b);
-   }
-
-   public xd c() {
-      return this.c;
-   }
+   String format(int var1);
 }

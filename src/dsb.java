@@ -1,134 +1,139 @@
-import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2IntSortedMap;
-import java.util.Collections;
-import java.util.SequencedSet;
+import com.mojang.logging.LogUtils;
+import java.util.Objects;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public class dsb {
-   private final Object2IntSortedMap<cvg> a;
+public class dsb extends drs implements bri {
+   public static final int b = 6;
+   private static final Logger c = LogUtils.getLogger();
+   private final jw<cvp> d = jw.a(6, cvp.k);
+   private int e = -1;
 
-   dsb(Object2IntSortedMap<cvg> $$0) {
-      this.a = $$0;
+   public dsb(je $$0, duo $$1) {
+      super(dru.M, $$0, $$1);
    }
 
-   public boolean a(cvl $$0) {
-      return this.a.containsKey($$0.h());
-   }
+   private void c(int $$0) {
+      if ($$0 >= 0 && $$0 < 6) {
+         this.e = $$0;
+         duo $$1 = this.m();
 
-   public SequencedSet<cvg> a() {
-      return Collections.unmodifiableSequencedSet(this.a.keySet());
-   }
-
-   public int b(cvl $$0) {
-      return $$0.f() ? 0 : this.a.getInt($$0.h());
-   }
-
-   public static dsb a(jp.a $$0, cqh $$1) {
-      return a($$0, $$1, 200);
-   }
-
-   public static dsb a(jp.a $$0, cqh $$1, int $$2) {
-      return new dsb.a($$0, $$1)
-         .a(cvo.qB, $$2 * 100)
-         .a(dgx.iB, $$2 * 8 * 10)
-         .a(cvo.sh, $$2 * 12)
-         .a(cvo.oy, $$2 * 8)
-         .a(cvo.oz, $$2 * 8)
-         .a(axb.r, $$2 * 3 / 2)
-         .a(axb.C, $$2 * 3 / 2)
-         .a(axb.b, $$2 * 3 / 2)
-         .a(dgx.w, $$2 * 3 / 2)
-         .a(axb.i, $$2 * 3 / 2)
-         .a(dgx.hU, $$2 * 3 / 2)
-         .a(axb.j, $$2 * 3 / 4)
-         .a(dgx.jC, $$2 * 3 / 4)
-         .a(axb.n, $$2 * 3 / 2)
-         .a(axb.m, $$2 * 3 / 2)
-         .a(axb.k, $$2 * 3 / 2)
-         .a(axb.l, $$2 * 3 / 2)
-         .a(dgx.aY, $$2 * 3 / 2)
-         .a(dgx.cl, $$2 * 3 / 2)
-         .a(dgx.cm, $$2 * 3 / 2)
-         .a(dgx.oa, $$2 * 3 / 2)
-         .a(dgx.dT, $$2 * 3 / 2)
-         .a(dgx.cv, $$2 * 3 / 2)
-         .a(dgx.gV, $$2 * 3 / 2)
-         .a(dgx.cA, $$2 * 3 / 2)
-         .a(dgx.gZ, $$2 * 3 / 2)
-         .a(axb.E, $$2 * 3 / 2)
-         .a(cvo.ow, $$2 * 3 / 2)
-         .a(cvo.qW, $$2 * 3 / 2)
-         .a(dgx.cO, $$2 * 3 / 2)
-         .a(axb.aQ, $$2)
-         .a(axb.bi, $$2 * 4)
-         .a(cvo.oO, $$2)
-         .a(cvo.oN, $$2)
-         .a(cvo.oR, $$2)
-         .a(cvo.oQ, $$2)
-         .a(cvo.oP, $$2)
-         .a(axb.h, $$2)
-         .a(axb.aN, $$2 * 6)
-         .a(axb.a, $$2 / 2)
-         .a(axb.d, $$2 / 2)
-         .a(cvo.pr, $$2 / 2)
-         .a(axb.p, $$2 / 2)
-         .a(cvo.ou, $$2 / 2)
-         .a(axb.g, 1 + $$2 / 3)
-         .a(dgx.me, 1 + $$2 * 20)
-         .a(cvo.vX, $$2 * 3 / 2)
-         .a(dgx.mZ, $$2 / 4)
-         .a(dgx.bv, $$2 / 2)
-         .a(dgx.nS, $$2 / 4)
-         .a(dgx.nT, $$2 * 3 / 2)
-         .a(dgx.nU, $$2 * 3 / 2)
-         .a(dgx.nX, $$2 * 3 / 2)
-         .a(dgx.nY, $$2 * 3 / 2)
-         .a(dgx.ob, $$2 * 3 / 2)
-         .a(dgx.pc, $$2 * 3 / 2)
-         .a(dgx.sy, $$2 / 2)
-         .a(dgx.sz, $$2 / 2)
-         .a(dgx.ac, $$2 * 3 / 2)
-         .a(axb.aH)
-         .a();
-   }
-
-   public static class a {
-      private final jp<cvg> a;
-      private final cqh b;
-      private final Object2IntSortedMap<cvg> c = new Object2IntLinkedOpenHashMap();
-
-      public a(jp.a $$0, cqh $$1) {
-         this.a = $$0.b(lv.K);
-         this.b = $$1;
-      }
-
-      public dsb a() {
-         return new dsb(this.c);
-      }
-
-      public dsb.a a(axi<cvg> $$0) {
-         this.c.keySet().removeIf($$1 -> $$1.o().a($$0));
-         return this;
-      }
-
-      public dsb.a a(axi<cvg> $$0, int $$1) {
-         this.a.a($$0).ifPresent($$1x -> {
-            for (jn<cvg> $$2 : $$1x) {
-               this.a($$1, $$2.a());
-            }
-         });
-         return this;
-      }
-
-      public dsb.a a(ddr $$0, int $$1) {
-         cvg $$2 = $$0.r();
-         this.a($$1, $$2);
-         return this;
-      }
-
-      private void a(int $$0, cvg $$1) {
-         if ($$1.a(this.b)) {
-            this.c.put($$1, $$0);
+         for (int $$2 = 0; $$2 < din.c.size(); $$2++) {
+            boolean $$3 = !this.a($$2).f();
+            dvf $$4 = din.c.get($$2);
+            $$1 = $$1.b($$4, Boolean.valueOf($$3));
          }
+
+         Objects.requireNonNull(this.o).a(this.p, $$1, 3);
+         this.o.a(dzl.c, this.p, dzl.a.a($$1));
+      } else {
+         c.error("Expected slot 0-5, got {}", $$0);
       }
+   }
+
+   @Override
+   protected void a(uf $$0, jp.a $$1) {
+      super.a($$0, $$1);
+      this.d.clear();
+      brj.b($$0, this.d, $$1);
+      this.e = $$0.h("last_interacted_slot");
+   }
+
+   @Override
+   protected void b(uf $$0, jp.a $$1) {
+      super.b($$0, $$1);
+      brj.a($$0, this.d, true, $$1);
+      $$0.a("last_interacted_slot", this.e);
+   }
+
+   public int f() {
+      return (int)this.d.stream().filter(Predicate.not(cvp::f)).count();
+   }
+
+   @Override
+   public void a() {
+      this.d.clear();
+   }
+
+   @Override
+   public int b() {
+      return 6;
+   }
+
+   @Override
+   public boolean c() {
+      return this.d.stream().allMatch(cvp::f);
+   }
+
+   @Override
+   public cvp a(int $$0) {
+      return this.d.get($$0);
+   }
+
+   @Override
+   public cvp a(int $$0, int $$1) {
+      cvp $$2 = Objects.requireNonNullElse(this.d.get($$0), cvp.k);
+      this.d.set($$0, cvp.k);
+      if (!$$2.f()) {
+         this.c($$0);
+      }
+
+      return $$2;
+   }
+
+   @Override
+   public cvp b(int $$0) {
+      return this.a($$0, 1);
+   }
+
+   @Override
+   public void a(int $$0, cvp $$1) {
+      if ($$1.a(axc.aV)) {
+         this.d.set($$0, $$1);
+         this.c($$0);
+      } else if ($$1.f()) {
+         this.a($$0, 1);
+      }
+   }
+
+   @Override
+   public boolean a(bri $$0, int $$1, cvp $$2) {
+      return $$0.a_($$2x -> $$2x.f() ? true : cvp.c($$2, $$2x) && $$2x.J() + $$2.J() <= $$0.f_($$2x));
+   }
+
+   @Override
+   public int ak_() {
+      return 1;
+   }
+
+   @Override
+   public boolean a(cnu $$0) {
+      return bri.a(this, $$0);
+   }
+
+   @Override
+   public boolean b(int $$0, cvp $$1) {
+      return $$1.a(axc.aV) && this.a($$0).f() && $$1.J() == this.ak_();
+   }
+
+   public int j() {
+      return this.e;
+   }
+
+   @Override
+   protected void a(drs.b $$0) {
+      super.a($$0);
+      $$0.a(kr.ag, cyl.a).a(this.d);
+   }
+
+   @Override
+   protected void a(kn.a $$0) {
+      super.a($$0);
+      $$0.a(kr.ag, cyl.a(this.d));
+   }
+
+   @Override
+   public void a(uf $$0) {
+      $$0.r("Items");
    }
 }

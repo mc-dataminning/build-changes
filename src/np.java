@@ -14,7 +14,7 @@ public class np implements mb {
       this.d = $$0;
    }
 
-   public <T> np a(ats<T> $$0, T $$1) {
+   public <T> np a(att<T> $$0, T $$1) {
       this.e.put($$0.a(), () -> $$0.a($$1));
       return this;
    }
@@ -32,10 +32,10 @@ public class np implements mb {
    }
 
    public static np a(md $$0, xd $$1) {
-      return new np($$0).a(att.b, new att($$1, t.a.a(atg.b), Optional.empty()));
+      return new np($$0).a(atu.b, new atu($$1, t.a.a(ath.b), Optional.empty()));
    }
 
-   public static np a(md $$0, xd $$1, cqh $$2) {
-      return a($$0, $$1).a(ata.a, new ata($$2));
+   public static np a(md $$0, xd $$1, cqn $$2) {
+      return a($$0, $$1).a(atb.a, new atb($$2));
    }
 }

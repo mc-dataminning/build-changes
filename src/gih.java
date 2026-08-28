@@ -1,110 +1,115 @@
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.List;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
 
 public class gih {
-   public static final gih a = new gih();
-   public static final float b = Float.NEGATIVE_INFINITY;
-   private final gih.a[] c;
-   private final alb[] d;
+   private static final alc a = alc.b("textures/misc/forcefield.png");
 
-   private gih() {
-      this.c = new gih.a[0];
-      this.d = new alb[0];
-   }
+   public void a(dwf $$0, eys $$1, double $$2, double $$3) {
+      double $$4 = $$0.e();
+      double $$5 = $$0.g();
+      double $$6 = $$0.f();
+      double $$7 = $$0.h();
+      if (!($$1.d < $$5 - $$2) || !($$1.d > $$4 + $$2) || !($$1.f < $$7 - $$2) || !($$1.f > $$6 + $$2)) {
+         double $$8 = 1.0 - $$0.b($$1.d, $$1.f) / $$2;
+         $$8 = Math.pow($$8, 4.0);
+         $$8 = azd.a($$8, 0.0, 1.0);
+         double $$9 = $$1.d;
+         double $$10 = $$1.f;
+         float $$11 = (float)$$3;
+         RenderSystem.enableBlend();
+         RenderSystem.enableDepthTest();
+         RenderSystem.blendFuncSeparate(
+            GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO
+         );
+         RenderSystem.setShaderTexture(0, a);
+         RenderSystem.depthMask(fil.O());
+         int $$12 = $$0.d().a();
+         float $$13 = (float)axo.b($$12) / 255.0F;
+         float $$14 = (float)axo.c($$12) / 255.0F;
+         float $$15 = (float)axo.d($$12) / 255.0F;
+         RenderSystem.setShaderColor($$13, $$14, $$15, (float)$$8);
+         RenderSystem.setShader(ggq.h);
+         RenderSystem.polygonOffset(-3.0F, -3.0F);
+         RenderSystem.enablePolygonOffset();
+         RenderSystem.disableCull();
+         float $$16 = (float)(ad.c() % 3000L) / 3000.0F;
+         float $$17 = (float)(-azd.e($$1.e * 0.5));
+         float $$18 = $$17 + $$11;
+         fcz $$19 = fdg.b().a(fdj.c.h, fdc.i);
+         double $$20 = Math.max((double)azd.a($$10 - $$2), $$6);
+         double $$21 = Math.min((double)azd.c($$10 + $$2), $$7);
+         float $$22 = (float)(azd.a($$20) & 1) * 0.5F;
+         if ($$9 > $$5 - $$2) {
+            float $$23 = $$22;
 
-   public gih(gys $$0, gic $$1, List<gig> $$2) {
-      this.d = $$2.stream().flatMap(gig::b).map(gig.b::a).distinct().toArray(alb[]::new);
-      Object2IntMap<alb> $$3 = new Object2IntOpenHashMap();
-
-      for (int $$4 = 0; $$4 < this.d.length; $$4++) {
-         $$3.put(this.d[$$4], $$4);
-      }
-
-      List<gih.a> $$5 = Lists.newArrayList();
-
-      for (int $$6 = $$2.size() - 1; $$6 >= 0; $$6--) {
-         gig $$7 = $$2.get($$6);
-         gym $$8 = this.a($$0, $$1, $$7);
-         gih.b[] $$9 = $$7.b().map($$1x -> {
-            int $$2x = $$3.getInt($$1x.a());
-            return new gih.b($$2x, $$1x.b());
-         }).toArray(gih.b[]::new);
-         $$5.add(new gih.a($$9, $$8));
-      }
-
-      this.c = $$5.toArray(new gih.a[0]);
-   }
-
-   @Nullable
-   private gym a(gys $$0, gic $$1, gig $$2) {
-      gzc $$3 = $$0.a($$2.a());
-      return Objects.equals($$3, $$1) ? null : $$0.a($$2.a(), gyn.a);
-   }
-
-   @Nullable
-   public gym a(gym $$0, cvl $$1, @Nullable gax $$2, @Nullable buf $$3, int $$4) {
-      if (this.c.length != 0) {
-         int $$5 = this.d.length;
-         float[] $$6 = new float[$$5];
-
-         for (int $$7 = 0; $$7 < $$5; $$7++) {
-            alb $$8 = this.d[$$7];
-            gvq $$9 = gvp.a($$1, $$8);
-            if ($$9 != null) {
-               $$6[$$7] = $$9.call($$1, $$2, $$3, $$4);
-            } else {
-               $$6[$$7] = Float.NEGATIVE_INFINITY;
+            for (double $$24 = $$20; $$24 < $$21; $$23 += 0.5F) {
+               double $$25 = Math.min(1.0, $$21 - $$24);
+               float $$26 = (float)$$25 * 0.5F;
+               $$19.a((float)($$5 - $$9), -$$11, (float)($$24 - $$10)).a($$16 - $$23, $$16 + $$18);
+               $$19.a((float)($$5 - $$9), -$$11, (float)($$24 + $$25 - $$10)).a($$16 - ($$26 + $$23), $$16 + $$18);
+               $$19.a((float)($$5 - $$9), $$11, (float)($$24 + $$25 - $$10)).a($$16 - ($$26 + $$23), $$16 + $$17);
+               $$19.a((float)($$5 - $$9), $$11, (float)($$24 - $$10)).a($$16 - $$23, $$16 + $$17);
+               $$24++;
             }
          }
 
-         for (gih.a $$10 : this.c) {
-            if ($$10.a($$6)) {
-               gym $$11 = $$10.b;
-               if ($$11 == null) {
-                  return $$0;
-               }
+         if ($$9 < $$4 + $$2) {
+            float $$27 = $$22;
 
-               return $$11;
-            }
-         }
-      }
-
-      return $$0;
-   }
-
-   static class a {
-      private final gih.b[] a;
-      @Nullable
-      final gym b;
-
-      a(gih.b[] $$0, @Nullable gym $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      boolean a(float[] $$0) {
-         for (gih.b $$1 : this.a) {
-            float $$2 = $$0[$$1.a];
-            if ($$2 < $$1.b) {
-               return false;
+            for (double $$28 = $$20; $$28 < $$21; $$27 += 0.5F) {
+               double $$29 = Math.min(1.0, $$21 - $$28);
+               float $$30 = (float)$$29 * 0.5F;
+               $$19.a((float)($$4 - $$9), -$$11, (float)($$28 - $$10)).a($$16 + $$27, $$16 + $$18);
+               $$19.a((float)($$4 - $$9), -$$11, (float)($$28 + $$29 - $$10)).a($$16 + $$30 + $$27, $$16 + $$18);
+               $$19.a((float)($$4 - $$9), $$11, (float)($$28 + $$29 - $$10)).a($$16 + $$30 + $$27, $$16 + $$17);
+               $$19.a((float)($$4 - $$9), $$11, (float)($$28 - $$10)).a($$16 + $$27, $$16 + $$17);
+               $$28++;
             }
          }
 
-         return true;
-      }
-   }
+         $$20 = Math.max((double)azd.a($$9 - $$2), $$4);
+         $$21 = Math.min((double)azd.c($$9 + $$2), $$5);
+         $$22 = (float)(azd.a($$20) & 1) * 0.5F;
+         if ($$10 > $$7 - $$2) {
+            float $$31 = $$22;
 
-   static class b {
-      public final int a;
-      public final float b;
+            for (double $$32 = $$20; $$32 < $$21; $$31 += 0.5F) {
+               double $$33 = Math.min(1.0, $$21 - $$32);
+               float $$34 = (float)$$33 * 0.5F;
+               $$19.a((float)($$32 - $$9), -$$11, (float)($$7 - $$10)).a($$16 + $$31, $$16 + $$18);
+               $$19.a((float)($$32 + $$33 - $$9), -$$11, (float)($$7 - $$10)).a($$16 + $$34 + $$31, $$16 + $$18);
+               $$19.a((float)($$32 + $$33 - $$9), $$11, (float)($$7 - $$10)).a($$16 + $$34 + $$31, $$16 + $$17);
+               $$19.a((float)($$32 - $$9), $$11, (float)($$7 - $$10)).a($$16 + $$31, $$16 + $$17);
+               $$32++;
+            }
+         }
 
-      b(int $$0, float $$1) {
-         this.a = $$0;
-         this.b = $$1;
+         if ($$10 < $$6 + $$2) {
+            float $$35 = $$22;
+
+            for (double $$36 = $$20; $$36 < $$21; $$35 += 0.5F) {
+               double $$37 = Math.min(1.0, $$21 - $$36);
+               float $$38 = (float)$$37 * 0.5F;
+               $$19.a((float)($$36 - $$9), -$$11, (float)($$6 - $$10)).a($$16 - $$35, $$16 + $$18);
+               $$19.a((float)($$36 + $$37 - $$9), -$$11, (float)($$6 - $$10)).a($$16 - ($$38 + $$35), $$16 + $$18);
+               $$19.a((float)($$36 + $$37 - $$9), $$11, (float)($$6 - $$10)).a($$16 - ($$38 + $$35), $$16 + $$17);
+               $$19.a((float)($$36 - $$9), $$11, (float)($$6 - $$10)).a($$16 - $$35, $$16 + $$17);
+               $$36++;
+            }
+         }
+
+         fdd $$39 = $$19.a();
+         if ($$39 != null) {
+            fda.a($$39);
+         }
+
+         RenderSystem.enableCull();
+         RenderSystem.polygonOffset(0.0F, 0.0F);
+         RenderSystem.disablePolygonOffset();
+         RenderSystem.disableBlend();
+         RenderSystem.defaultBlendFunc();
+         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+         RenderSystem.depthMask(true);
       }
    }
 }

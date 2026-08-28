@@ -8,11 +8,11 @@ public class av extends dv<av.a> {
       return av.a.a;
    }
 
-   public void a(arh $$0, dua $$1, cvl $$2, int $$3) {
+   public void a(ari $$0, duo $$1, cvp $$2, int $$3) {
       this.a($$0, $$3x -> $$3x.a($$1, $$2, $$3));
    }
 
-   public static record a(Optional<bg> b, Optional<jn<dgv>> c, Optional<cs> d, dh.d e) implements dv.a {
+   public static record a(Optional<bg> b, Optional<jn<dhj>> c, Optional<cs> d, dh.d e) implements dv.a {
       public static final Codec<av.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bv.b.optionalFieldOf("player").forGetter(av.a::a),
@@ -23,11 +23,11 @@ public class av extends dv<av.a> {
                .apply($$0, av.a::new)
       );
 
-      public static ao<av.a> a(dgv $$0, cs.a $$1, dh.d $$2) {
+      public static ao<av.a> a(dhj $$0, cs.a $$1, dh.d $$2) {
          return an.L.a(new av.a(Optional.empty(), Optional.of($$0.s()), Optional.of($$1.b()), $$2));
       }
 
-      public boolean a(dua $$0, cvl $$1, int $$2) {
+      public boolean a(duo $$0, cvp $$1, int $$2) {
          if (this.c.isPresent() && !$$0.a(this.c.get())) {
             return false;
          } else {
@@ -40,7 +40,7 @@ public class av extends dv<av.a> {
          return this.b;
       }
 
-      public Optional<jn<dgv>> b() {
+      public Optional<jn<dhj>> b() {
          return this.c;
       }
 

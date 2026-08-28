@@ -5,7 +5,6 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
-import java.util.List;
 import java.util.function.Consumer;
 import java.util.stream.IntStream;
 import javax.annotation.Nullable;
@@ -23,7 +22,7 @@ import org.lwjgl.opengl.GL32C;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.system.MemoryUtil;
 
-@fad
+@fas
 public class GlStateManager {
    private static final boolean ON_LINUX = ad.m() == ad.a.a;
    public static final int TEXTURE_COUNT = 12;
@@ -136,44 +135,38 @@ public class GlStateManager {
       return GL20.glCreateShader($$0);
    }
 
-   public static void glShaderSource(int $$0, List<String> $$1) {
+   public static void glShaderSource(int $$0, String $$1) {
       RenderSystem.assertOnRenderThread();
-      StringBuilder $$2 = new StringBuilder();
-
-      for (String $$3 : $$1) {
-         $$2.append($$3);
-      }
-
-      byte[] $$4 = $$2.toString().getBytes(Charsets.UTF_8);
-      ByteBuffer $$5 = MemoryUtil.memAlloc($$4.length + 1);
-      $$5.put($$4);
-      $$5.put((byte)0);
-      $$5.flip();
+      byte[] $$2 = $$1.getBytes(Charsets.UTF_8);
+      ByteBuffer $$3 = MemoryUtil.memAlloc($$2.length + 1);
+      $$3.put($$2);
+      $$3.put((byte)0);
+      $$3.flip();
 
       try {
-         MemoryStack $$6 = MemoryStack.stackPush();
+         MemoryStack $$4 = MemoryStack.stackPush();
 
          try {
-            PointerBuffer $$7 = $$6.mallocPointer(1);
-            $$7.put($$5);
-            GL20C.nglShaderSource($$0, 1, $$7.address0(), 0L);
-         } catch (Throwable var13) {
-            if ($$6 != null) {
+            PointerBuffer $$5 = $$4.mallocPointer(1);
+            $$5.put($$3);
+            GL20C.nglShaderSource($$0, 1, $$5.address0(), 0L);
+         } catch (Throwable var12) {
+            if ($$4 != null) {
                try {
-                  $$6.close();
-               } catch (Throwable var12) {
-                  var13.addSuppressed(var12);
+                  $$4.close();
+               } catch (Throwable var11) {
+                  var12.addSuppressed(var11);
                }
             }
 
-            throw var13;
+            throw var12;
          }
 
-         if ($$6 != null) {
-            $$6.close();
+         if ($$4 != null) {
+            $$4.close();
          }
       } finally {
-         MemoryUtil.memFree($$5);
+         MemoryUtil.memFree($$3);
       }
    }
 
@@ -584,7 +577,7 @@ public class GlStateManager {
       GL11.glTexSubImage2D($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
    }
 
-   public static void upload(int $$0, int $$1, int $$2, int $$3, int $$4, fbp.a $$5, IntBuffer $$6, Consumer<IntBuffer> $$7) {
+   public static void upload(int $$0, int $$1, int $$2, int $$3, int $$4, fce.a $$5, IntBuffer $$6, Consumer<IntBuffer> $$7) {
       if (!RenderSystem.isOnRenderThreadOrInit()) {
          RenderSystem.recordRenderCall(() -> _upload($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
       } else {
@@ -592,7 +585,7 @@ public class GlStateManager {
       }
    }
 
-   private static void _upload(int $$0, int $$1, int $$2, int $$3, int $$4, fbp.a $$5, IntBuffer $$6, Consumer<IntBuffer> $$7) {
+   private static void _upload(int $$0, int $$1, int $$2, int $$3, int $$4, fce.a $$5, IntBuffer $$6, Consumer<IntBuffer> $$7) {
       try {
          RenderSystem.assertOnRenderThreadOrInit();
          _pixelStore(3314, $$3);
@@ -676,7 +669,7 @@ public class GlStateManager {
    public static void _clear(int $$0) {
       RenderSystem.assertOnRenderThreadOrInit();
       GL11.glClear($$0);
-      if (fbm.a) {
+      if (fcb.a) {
          _getError();
       }
    }
@@ -741,7 +734,7 @@ public class GlStateManager {
       return GL11.glGetInteger($$0);
    }
 
-   @fad
+   @fas
    public static enum DestFactor {
       CONSTANT_ALPHA(32771),
       CONSTANT_COLOR(32769),
@@ -765,7 +758,7 @@ public class GlStateManager {
       }
    }
 
-   @fad
+   @fas
    public static enum SourceFactor {
       CONSTANT_ALPHA(32771),
       CONSTANT_COLOR(32769),

@@ -1,103 +1,93 @@
-import javax.annotation.Nullable;
+public class dsl extends dsz {
+   public static final int d = 9;
+   private jw<cvp> e = jw.a(9, cvp.k);
 
-public abstract class dsl extends dqy implements brq {
-   @Nullable
-   protected ala<esy> l;
-   protected long m = 0L;
-
-   protected dsl(drg<?> $$0, je $$1, dua $$2) {
+   protected dsl(dru<?> $$0, je $$1, duo $$2) {
       super($$0, $$1, $$2);
    }
 
-   @Nullable
-   @Override
-   public ala<esy> az_() {
-      return this.l;
+   public dsl(je $$0, duo $$1) {
+      this(dru.f, $$0, $$1);
    }
 
    @Override
-   public void a(@Nullable ala<esy> $$0) {
-      this.l = $$0;
+   public int b() {
+      return 9;
    }
 
-   @Override
-   public long aC_() {
-      return this.m;
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.m = $$0;
-   }
-
-   @Override
-   public boolean c() {
+   public int a(azl $$0) {
       this.e_(null);
-      return super.c();
+      int $$1 = -1;
+      int $$2 = 1;
+
+      for (int $$3 = 0; $$3 < this.e.size(); $$3++) {
+         if (!this.e.get($$3).f() && $$0.a($$2++) == 0) {
+            $$1 = $$3;
+         }
+      }
+
+      return $$1;
+   }
+
+   public cvp b(cvp $$0) {
+      int $$1 = this.f_($$0);
+
+      for (int $$2 = 0; $$2 < this.e.size(); $$2++) {
+         cvp $$3 = this.e.get($$2);
+         if ($$3.f() || cvp.c($$0, $$3)) {
+            int $$4 = Math.min($$0.J(), $$1 - $$3.J());
+            if ($$4 > 0) {
+               if ($$3.f()) {
+                  this.a($$2, $$0.a($$4));
+               } else {
+                  $$0.h($$4);
+                  $$3.g($$4);
+               }
+            }
+
+            if ($$0.f()) {
+               break;
+            }
+         }
+      }
+
+      return $$0;
    }
 
    @Override
-   public cvl a(int $$0) {
-      this.e_(null);
-      return super.a($$0);
+   protected xd j() {
+      return xd.c("container.dispenser");
    }
 
    @Override
-   public cvl a(int $$0, int $$1) {
-      this.e_(null);
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   public cvl b(int $$0) {
-      this.e_(null);
-      return super.b($$0);
-   }
-
-   @Override
-   public void a(int $$0, cvl $$1) {
-      this.e_(null);
+   protected void a(uf $$0, jp.a $$1) {
       super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean d(cnp $$0) {
-      return super.d($$0) && (this.l == null || !$$0.P_());
-   }
-
-   @Nullable
-   @Override
-   public cqq createMenu(int $$0, cno $$1, cnp $$2) {
-      if (this.d($$2)) {
-         this.e_($$1.k);
-         return this.a($$0, $$1);
-      } else {
-         return null;
+      this.e = jw.a(this.b(), cvp.k);
+      if (!this.b_($$0)) {
+         brj.b($$0, this.e, $$1);
       }
    }
 
    @Override
-   protected void a(dre.b $$0) {
-      super.a($$0);
-      cyo $$1 = $$0.a(kr.ah);
-      if ($$1 != null) {
-         this.l = $$1.a();
-         this.m = $$1.b();
+   protected void b(uf $$0, jp.a $$1) {
+      super.b($$0, $$1);
+      if (!this.c_($$0)) {
+         brj.a($$0, this.e, $$1);
       }
    }
 
    @Override
-   protected void a(kn.a $$0) {
-      super.a($$0);
-      if (this.l != null) {
-         $$0.a(kr.ah, new cyo(this.l, this.m));
-      }
+   protected jw<cvp> f() {
+      return this.e;
    }
 
    @Override
-   public void a(uf $$0) {
-      super.a($$0);
-      $$0.r("LootTable");
-      $$0.r("LootTableSeed");
+   protected void a(jw<cvp> $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   protected cqw a(int $$0, cnt $$1) {
+      return new crr($$0, $$1, this);
    }
 }

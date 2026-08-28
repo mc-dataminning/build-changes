@@ -41,8 +41,8 @@ public class fq implements ArgumentType<ll> {
    }
 
    private static lm<?> a(StringReader $$0, jp<lm<?>> $$1) throws CommandSyntaxException {
-      alb $$2 = alb.a($$0);
-      ala<lm<?>> $$3 = ala.a(lv.Y, $$2);
+      alc $$2 = alc.a($$0);
+      alb<lm<?>> $$3 = alb.a(lv.Y, $$2);
       return $$1.a($$3).orElseThrow(() -> a.createWithContext($$0, $$2)).a();
    }
 
@@ -59,6 +59,6 @@ public class fq implements ArgumentType<ll> {
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
       jp.b<lm<?>> $$2 = this.d.b(lv.Y);
-      return ey.a($$2.c().map(ala::a), $$1);
+      return ey.a($$2.c().map(alb::a), $$1);
    }
 }

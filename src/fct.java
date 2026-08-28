@@ -1,111 +1,86 @@
-import it.unimi.dsi.fastutil.ints.IntConsumer;
-import java.nio.ByteBuffer;
-import java.nio.FloatBuffer;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableLong;
-import org.joml.Vector3f;
-import org.lwjgl.system.MemoryUtil;
+import org.apache.commons.lang3.StringUtils;
 
 public class fct implements AutoCloseable {
-   private final fcr.a a;
-   @Nullable
-   private fcr.a b;
-   private final fct.a c;
+   private static final int a = -1;
+   private final alc b;
+   private int c;
 
-   public fct(fcr.a $$0, fct.a $$1) {
-      this.a = $$0;
-      this.c = $$1;
+   private fct(int $$0, alc $$1) {
+      this.b = $$1;
+      this.c = $$0;
    }
 
-   private static Vector3f[] a(ByteBuffer $$0, int $$1, fcz $$2) {
-      int $$3 = $$2.a(fda.b);
-      if ($$3 == -1) {
-         throw new IllegalArgumentException("Cannot identify quad centers with no position element");
+   public static fct a(alc $$0, fct.a $$1, String $$2) throws ghx.a {
+      RenderSystem.assertOnRenderThread();
+      int $$3 = GlStateManager.glCreateShader($$1.b());
+      GlStateManager.glShaderSource($$3, $$2);
+      GlStateManager.glCompileShader($$3);
+      if (GlStateManager.glGetShaderi($$3, 35713) == 0) {
+         String $$4 = StringUtils.trim(GlStateManager.glGetShaderInfoLog($$3, 32768));
+         throw new ghx.a("Couldn't compile " + $$1.a() + " shader (" + $$0 + ") : " + $$4);
       } else {
-         FloatBuffer $$4 = $$0.asFloatBuffer();
-         int $$5 = $$2.b() / 4;
-         int $$6 = $$5 * 4;
-         int $$7 = $$1 / 4;
-         Vector3f[] $$8 = new Vector3f[$$7];
-
-         for (int $$9 = 0; $$9 < $$7; $$9++) {
-            int $$10 = $$9 * $$6 + $$3;
-            int $$11 = $$10 + $$5 * 2;
-            float $$12 = $$4.get($$10 + 0);
-            float $$13 = $$4.get($$10 + 1);
-            float $$14 = $$4.get($$10 + 2);
-            float $$15 = $$4.get($$11 + 0);
-            float $$16 = $$4.get($$11 + 1);
-            float $$17 = $$4.get($$11 + 2);
-            $$8[$$9] = new Vector3f(($$12 + $$15) / 2.0F, ($$13 + $$16) / 2.0F, ($$14 + $$17) / 2.0F);
-         }
-
-         return $$8;
-      }
-   }
-
-   public ByteBuffer a() {
-      return this.a.a();
-   }
-
-   @Nullable
-   public ByteBuffer b() {
-      return this.b != null ? this.b.a() : null;
-   }
-
-   public fct.a c() {
-      return this.c;
-   }
-
-   @Nullable
-   public fct.b a(fcr $$0, fdc $$1) {
-      if (this.c.d() != fcz.c.h) {
-         return null;
-      } else {
-         Vector3f[] $$2 = a(this.a.a(), this.c.b(), this.c.a());
-         fct.b $$3 = new fct.b($$2, this.c.e());
-         this.b = $$3.a($$0, $$1);
-         return $$3;
+         return new fct($$3, $$0);
       }
    }
 
    @Override
    public void close() {
-      this.a.close();
-      if (this.b != null) {
-         this.b.close();
+      if (this.c == -1) {
+         throw new IllegalStateException("Already closed");
+      } else {
+         RenderSystem.assertOnRenderThread();
+         GlStateManager.glDeleteShader(this.c);
+         this.c = -1;
       }
    }
 
-   public static record a(fcz a, int b, int c, fcz.c d, fcz.b e) {
+   public alc a() {
+      return this.b;
    }
 
-   public static record b(Vector3f[] a, fcz.b b) {
-      @Nullable
-      public fcr.a a(fcr $$0, fdc $$1) {
-         int[] $$2 = $$1.sort(this.a);
-         long $$3 = $$0.a($$2.length * 6 * this.b.d);
-         IntConsumer $$4 = this.a($$3, this.b);
+   public int b() {
+      return this.c;
+   }
 
-         for (int $$5 : $$2) {
-            $$4.accept($$5 * 4 + 0);
-            $$4.accept($$5 * 4 + 1);
-            $$4.accept($$5 * 4 + 2);
-            $$4.accept($$5 * 4 + 2);
-            $$4.accept($$5 * 4 + 3);
-            $$4.accept($$5 * 4 + 0);
+   public static enum a {
+      a("vertex", ".vsh", 35633),
+      b("fragment", ".fsh", 35632);
+
+      private static final fct.a[] c = values();
+      private final String d;
+      private final String e;
+      private final int f;
+
+      private a(final String $$0, final String $$1, final int $$2) {
+         this.d = $$0;
+         this.e = $$1;
+         this.f = $$2;
+      }
+
+      @Nullable
+      public static fct.a a(alc $$0) {
+         for (fct.a $$1 : c) {
+            if ($$0.a().endsWith($$1.e)) {
+               return $$1;
+            }
          }
 
-         return $$0.a();
+         return null;
       }
 
-      private IntConsumer a(long $$0, fcz.b $$1) {
-         MutableLong $$2 = new MutableLong($$0);
+      public String a() {
+         return this.d;
+      }
 
-         return switch ($$1) {
-            case a -> $$1x -> MemoryUtil.memPutShort($$2.getAndAdd(2L), (short)$$1x);
-            case b -> $$1x -> MemoryUtil.memPutInt($$2.getAndAdd(4L), $$1x);
-         };
+      public int b() {
+         return this.f;
+      }
+
+      public akv c() {
+         return new akv("shaders", this.e);
       }
    }
 }

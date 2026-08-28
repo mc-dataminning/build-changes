@@ -1,34 +1,21 @@
-public class bwa implements bxl {
-   private final je a;
-   private final eye b;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-   public bwa(je $$0) {
-      this.a = $$0.j();
-      this.b = eye.b($$0);
-   }
-
-   public bwa(eye $$0) {
-      this.a = je.a((jx)$$0);
-      this.b = $$0;
-   }
-
-   @Override
-   public eye a() {
-      return this.b;
-   }
-
-   @Override
-   public je b() {
-      return this.a;
-   }
-
-   @Override
-   public boolean a(buf $$0) {
-      return true;
-   }
-
-   @Override
-   public String toString() {
-      return "BlockPosTracker{blockPos=" + this.a + ", centerPosition=" + this.b + "}";
+public class bwa {
+   public static bxn<bum> a(int $$0, float $$1) {
+      return bzp.a(
+         (Function<bzp.b<bum>, ? extends App<bzp.c<bum>, bzs<bum>>>)($$2 -> $$2.group($$2.c(cdn.m), $$2.a(cdn.n), $$2.b(cdn.o), $$2.b(cdn.h))
+               .apply($$2, ($$3, $$4, $$5, $$6) -> ($$6x, $$7, $$8) -> {
+                     buk $$9 = $$2.b($$5);
+                     if ($$9.a($$7, (double)$$0) && $$2.<cdp>b($$6).a($$9)) {
+                        $$4.a(new bwn($$9, true));
+                        $$7.M().a(-$$1, 0.0F);
+                        $$7.v(azd.c($$7.dI(), $$7.aV, 0.0F));
+                        return true;
+                     } else {
+                        return false;
+                     }
+                  }))
+      );
    }
 }

@@ -1,10 +1,10 @@
 import java.util.Iterator;
 
 public interface ako {
-   static <T> void a(int $$0, int $$1, czv<?> $$2, Iterable<T> $$3, ako.a<T> $$4) {
+   static <T> void a(int $$0, int $$1, daj<?> $$2, Iterable<T> $$3, ako.a<T> $$4) {
       int $$5 = $$0;
       int $$6 = $$1;
-      if ($$2.b() instanceof dab $$8) {
+      if ($$2.b() instanceof dap $$8) {
          $$5 = $$8.j();
          $$6 = $$8.k();
       }
@@ -14,7 +14,7 @@ public interface ako {
 
       for (int $$11 = 0; $$11 < $$1; $$11++) {
          boolean $$12 = (float)$$6 < (float)$$1 / 2.0F;
-         int $$13 = azc.d((float)$$1 / 2.0F - (float)$$6 / 2.0F);
+         int $$13 = azd.d((float)$$1 / 2.0F - (float)$$6 / 2.0F);
          if ($$12 && $$13 > $$11) {
             $$10 += $$0;
             $$11++;
@@ -26,7 +26,7 @@ public interface ako {
             }
 
             $$12 = (float)$$5 < (float)$$0 / 2.0F;
-            $$13 = azc.d((float)$$0 / 2.0F - (float)$$5 / 2.0F);
+            $$13 = azd.d((float)$$0 / 2.0F - (float)$$5 / 2.0F);
             int $$15 = $$5;
             boolean $$16 = $$14 < $$5;
             if ($$12) {

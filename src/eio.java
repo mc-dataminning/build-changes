@@ -1,29 +1,45 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.MapCodec;
 
-public class eio {
-   public static final Codec<eio> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(Codec.intRange(0, dxw.c).fieldOf("height").forGetter(eio::a), lu.e.q().fieldOf("block").orElse(dgx.a).forGetter($$0x -> $$0x.b().b()))
-            .apply($$0, eio::new)
-   );
-   private final dgv b;
-   private final int c;
+public class eio extends eim {
+   public static final MapCodec<eio> a = MapCodec.unit(() -> eio.b);
+   public static final eio b = new eio();
 
-   public eio(int $$0, dgv $$1) {
-      this.c = $$0;
-      this.b = $$1;
-   }
-
-   public int a() {
-      return this.c;
-   }
-
-   public dua b() {
-      return this.b.o();
+   @Override
+   protected ein<?> a() {
+      return ein.a;
    }
 
    @Override
-   public String toString() {
-      return (this.c != 1 ? this.c + "*" : "") + lu.e.b(this.b);
+   public void a(eim.a $$0) {
+      azl $$1 = $$0.b();
+      $$0.c().forEach($$2 -> {
+         if ($$1.a(3) > 0) {
+            je $$3 = $$2.h();
+            if ($$0.a($$3)) {
+               $$0.a($$3, dqg.d);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            je $$4 = $$2.i();
+            if ($$0.a($$4)) {
+               $$0.a($$4, dqg.f);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            je $$5 = $$2.f();
+            if ($$0.a($$5)) {
+               $$0.a($$5, dqg.e);
+            }
+         }
+
+         if ($$1.a(3) > 0) {
+            je $$6 = $$2.g();
+            if ($$0.a($$6)) {
+               $$0.a($$6, dqg.c);
+            }
+         }
+      });
    }
 }

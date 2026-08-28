@@ -1,22 +1,19 @@
-public class crn extends csn {
-   private final cqs a;
+public class crn extends cst {
+   private final crm a;
 
-   public crn(cqs $$0, brd $$1, int $$2, int $$3, int $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.a = $$0;
+   public crn(bri $$0, int $$1, int $$2, int $$3, crm $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.a = $$4;
    }
 
    @Override
-   public boolean a(cvl $$0) {
-      return this.a.d($$0) || c($$0);
+   public boolean a(cvp $$0) {
+      return !this.a.e(this.d) && super.a($$0);
    }
 
    @Override
-   public int a_(cvl $$0) {
-      return c($$0) ? 1 : super.a_($$0);
-   }
-
-   public static boolean c(cvl $$0) {
-      return $$0.a(cvo.qz);
+   public void c() {
+      super.c();
+      this.a.a(this.c);
    }
 }

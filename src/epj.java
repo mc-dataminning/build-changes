@@ -1,113 +1,22 @@
-import com.google.common.annotations.VisibleForTesting;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public final class epj extends eps<epk.a, epk> {
-   private final je.a g = new je.a();
+public class epj implements epm {
+   public static final MapCodec<epj> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(uf.a.fieldOf("data").forGetter($$0x -> $$0x.b)).apply($$0, epj::new));
+   private final uf b;
 
-   public epj(dwj $$0) {
-      this($$0, new epk($$0));
-   }
-
-   @VisibleForTesting
-   public epj(dwj $$0, epk $$1) {
-      super($$0, $$1);
-   }
-
-   @Override
-   protected void a(long $$0) {
-      long $$1 = kg.e($$0);
-      if (this.f.b($$1)) {
-         dua $$2 = this.c(this.g.f($$0));
-         int $$3 = this.a($$0, $$2);
-         int $$4 = this.f.e($$0);
-         if ($$3 < $$4) {
-            this.f.a($$0, 0);
-            this.b($$0, eps.a.a($$4));
-         } else {
-            this.b($$0, c);
-         }
-
-         if ($$3 > 0) {
-            this.c($$0, eps.a.a($$3, a($$2)));
-         }
-      }
+   public epj(uf $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected void a(long $$0, long $$1, int $$2) {
-      dua $$3 = null;
-
-      for (jj $$4 : d) {
-         if (eps.a.a($$1, $$4)) {
-            long $$5 = je.a($$0, $$4);
-            if (this.f.b(kg.e($$5))) {
-               int $$6 = this.f.e($$5);
-               int $$7 = $$2 - 1;
-               if ($$7 > $$6) {
-                  this.g.f($$5);
-                  dua $$8 = this.c(this.g);
-                  int $$9 = $$2 - this.b($$8);
-                  if ($$9 > $$6) {
-                     if ($$3 == null) {
-                        $$3 = eps.a.b($$1) ? dgx.a.o() : this.c(this.g.f($$0));
-                     }
-
-                     if (!this.a($$3, $$8, $$4)) {
-                        this.f.a($$5, $$9);
-                        if ($$9 > 1) {
-                           this.c($$5, eps.a.a($$9, a($$8), $$4.g()));
-                        }
-                     }
-                  }
-               }
-            }
-         }
-      }
+   public uf a(azl $$0, @Nullable uf $$1) {
+      return $$1 == null ? this.b.i() : $$1.a(this.b);
    }
 
    @Override
-   protected void a(long $$0, long $$1) {
-      int $$2 = eps.a.a($$1);
-
-      for (jj $$3 : d) {
-         if (eps.a.a($$1, $$3)) {
-            long $$4 = je.a($$0, $$3);
-            if (this.f.b(kg.e($$4))) {
-               int $$5 = this.f.e($$4);
-               if ($$5 != 0) {
-                  if ($$5 <= $$2 - 1) {
-                     dua $$6 = this.c(this.g.f($$4));
-                     int $$7 = this.a($$4, $$6);
-                     this.f.a($$4, 0);
-                     if ($$7 < $$5) {
-                        this.b($$4, eps.a.a($$5, $$3.g()));
-                     }
-
-                     if ($$7 > 0) {
-                        this.c($$4, eps.a.a($$7, a($$6)));
-                     }
-                  } else {
-                     this.c($$4, eps.a.b($$5, false, $$3.g()));
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private int a(long $$0, dua $$1) {
-      int $$2 = $$1.k();
-      return $$2 > 0 && this.f.j(kg.e($$0)) ? $$2 : 0;
-   }
-
-   @Override
-   public void b(dcy $$0) {
-      this.a($$0, true);
-      dwi $$1 = this.e.c($$0.e, $$0.f);
-      if ($$1 != null) {
-         $$1.a(($$0x, $$1x) -> {
-            int $$2 = $$1x.k();
-            this.c($$0x.a(), eps.a.a($$2, a($$1x)));
-         });
-      }
+   public epn<?> a() {
+      return epn.c;
    }
 }

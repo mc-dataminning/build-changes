@@ -1,23 +1,32 @@
-import java.util.Arrays;
-import java.util.stream.Stream;
+public class fst extends fsx {
+   private static final xd b = xd.c("multiplayerWarning.header").a(n.r);
+   private static final xd c = xd.c("multiplayerWarning.message");
+   private static final xd d = xd.c("multiplayerWarning.check");
+   private static final xd s = b.f().f("\n").b(c);
+   private final fqd u;
 
-public class fst extends fsw {
-   private static final xd a = xd.c("options.mouse_settings.title");
-
-   private static fie<?>[] a(fif $$0) {
-      return new fie[]{$$0.d(), $$0.T(), $$0.G(), $$0.U(), $$0.ab()};
-   }
-
-   public fst(fpt $$0, fif $$1) {
-      super($$0, $$1, a);
+   public fst(fqd $$0) {
+      super(b, c, d, s);
+      this.u = $$0;
    }
 
    @Override
-   protected void m() {
-      if (fbk.a()) {
-         this.d.a(Stream.concat(Arrays.stream(a(this.c)), Stream.of(this.c.H())).toArray(fie[]::new));
-      } else {
-         this.d.a(a(this.c));
-      }
+   protected fnz m() {
+      foc $$0 = foc.e().a(8);
+      $$0.a(fkk.a(xc.i, $$0x -> {
+         if (this.a.a()) {
+            this.m.n.u = true;
+            this.m.n.ay();
+         }
+
+         this.m.a(new fss(this.u));
+      }).a());
+      $$0.a(fkk.a(xc.k, $$0x -> this.d()).a());
+      return $$0;
+   }
+
+   @Override
+   public void d() {
+      this.m.a(this.u);
    }
 }

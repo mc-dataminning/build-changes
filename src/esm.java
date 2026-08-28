@@ -1,67 +1,84 @@
-import java.util.Locale;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public interface esm extends eso {
-   @Override
-   String e();
+public class esm {
+   private static final String a = "command_storage_";
+   private final Map<String, esm.a> b = Maps.newHashMap();
+   private final esp c;
 
-   void a(boolean var1);
-
-   int j();
-
-   void c(int var1);
-
-   void b(int var1);
-
-   int h();
-
-   @Override
-   default void a(p $$0, ddu $$1) {
-      eso.super.a($$0, $$1);
-      $$0.a("Level name", this::e);
-      $$0.a(
-         "Level game mode",
-         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
-      );
-      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
+   public esm(esp $$0) {
+      this.c = $$0;
    }
 
-   int f();
+   private esm.a a(String $$0) {
+      esm.a $$1 = new esm.a();
+      this.b.put($$0, $$1);
+      return $$1;
+   }
 
-   void a(int var1);
+   private esb.a<esm.a> b(String $$0) {
+      return new esb.a<>(() -> this.a($$0), ($$1, $$2) -> this.a($$0).a($$1), bam.h);
+   }
 
-   int t();
+   public uf a(alc $$0) {
+      String $$1 = $$0.b();
+      esm.a $$2 = this.c.b(this.b($$1), c($$1));
+      return $$2 != null ? $$2.a($$0.a()) : new uf();
+   }
 
-   void d(int var1);
+   public void a(alc $$0, uf $$1) {
+      String $$2 = $$0.b();
+      this.c.a(this.b($$2), c($$2)).a($$0.a(), $$1);
+   }
 
-   int u();
+   public Stream<alc> a() {
+      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().b($$0.getKey()));
+   }
 
-   void e(int var1);
+   private static String c(String $$0) {
+      return "command_storage_" + $$0;
+   }
 
-   @Nullable
-   UUID v();
+   static class a extends esb {
+      private static final String a = "contents";
+      private final Map<String, uf> b = Maps.newHashMap();
 
-   void a(UUID var1);
+      esm.a a(uf $$0) {
+         uf $$1 = $$0.p("contents");
 
-   ddp k();
+         for (String $$2 : $$1.e()) {
+            this.b.put($$2, $$1.p($$2));
+         }
 
-   void a(dvr.c var1);
+         return this;
+      }
 
-   dvr.c p();
+      @Override
+      public uf a(uf $$0, jp.a $$1) {
+         uf $$2 = new uf();
+         this.b.forEach(($$1x, $$2x) -> $$2.a($$1x, $$2x.i()));
+         $$0.a("contents", $$2);
+         return $$0;
+      }
 
-   boolean n();
+      public uf a(String $$0) {
+         uf $$1 = this.b.get($$0);
+         return $$1 != null ? $$1 : new uf();
+      }
 
-   void c(boolean var1);
+      public void a(String $$0, uf $$1) {
+         if ($$1.g()) {
+            this.b.remove($$0);
+         } else {
+            this.b.put($$0, $$1);
+         }
 
-   boolean m();
+         this.c();
+      }
 
-   void a(ddp var1);
-
-   exr<MinecraftServer> s();
-
-   void a(long var1);
-
-   void b(long var1);
+      public Stream<alc> b(String $$0) {
+         return this.b.keySet().stream().map($$1 -> alc.a($$0, $$1));
+      }
+   }
 }

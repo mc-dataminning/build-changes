@@ -1,68 +1,67 @@
-public class fym extends fxa<gsh> {
-   private final gab a;
-   private final gab b;
-   private final gab c;
-
-   public fym(gab $$0) {
-      this.a = $$0;
-      this.b = $$0.b("left_paddle");
-      this.c = $$0.b("right_paddle");
+public class fym extends fwc<guv> {
+   public fym(gal $$0) {
+      super($$0);
    }
 
-   public static void a(gal $$0) {
-      $$0.a(
-         "bottom",
-         gag.c().a(0, 0).a(-14.0F, -11.0F, -4.0F, 28.0F, 20.0F, 4.0F).a(0, 0).a(-14.0F, -9.0F, -8.0F, 28.0F, 16.0F, 4.0F),
-         gad.a(0.0F, -2.1F, 1.0F, 1.5708F, 0.0F, 0.0F)
-      );
-      int $$1 = 20;
-      int $$2 = 7;
-      int $$3 = 6;
-      float $$4 = -5.0F;
-      $$0.a(
-         "left_paddle",
-         gag.c().a(0, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         gad.a(3.0F, -4.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
-      );
-      $$0.a(
-         "right_paddle",
-         gag.c().a(40, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
-         gad.a(3.0F, -4.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
-      );
+   public void a(guv $$0) {
+      super.a($$0);
+      float $$1 = (float) (Math.PI / 6);
+      float $$2 = $$0.C;
+      cmm $$3 = $$0.d;
+      if ($$3 == cmm.e) {
+         float $$4 = $$0.p / 60.0F;
+         this.f.g = (float) (Math.PI / 6) + (float) (Math.PI / 180.0) * azd.a($$4 * 30.0F) * 10.0F;
+         this.g.g = (float) (-Math.PI / 6) - (float) (Math.PI / 180.0) * azd.b($$4 * 30.0F) * 10.0F;
+         this.o.b = this.o.b + azd.a($$4 * 10.0F);
+         this.o.c = this.o.c + azd.a($$4 * 40.0F) + 0.4F;
+         this.r.g = (float) (Math.PI / 180.0) * (70.0F + azd.b($$4 * 40.0F) * 10.0F);
+         this.s.g = this.r.g * -1.0F;
+         this.r.c = this.r.c + (azd.a($$4 * 40.0F) * 0.5F - 0.5F);
+         this.s.c = this.s.c + azd.a($$4 * 40.0F) * 0.5F + 0.5F;
+         this.q.c = this.q.c + azd.a($$4 * 40.0F) * 0.35F;
+      } else if ($$3 == cmm.a && $$2 == 0.0F) {
+         this.b($$0);
+      } else if ($$3 == cmm.b) {
+         fwf.a(this.r, this.s, this.o, $$0.ap == bue.b);
+      } else if ($$3 == cmm.c) {
+         fwf.a(this.r, this.s, $$0.c, $$0.F, $$0.ap == bue.b);
+      } else if ($$3 == cmm.d) {
+         this.o.e = 0.5F;
+         this.o.f = 0.0F;
+         if ($$0.ap == bue.a) {
+            this.r.f = -0.5F;
+            this.r.e = -0.9F;
+         } else {
+            this.s.f = 0.5F;
+            this.s.e = -0.9F;
+         }
+      }
    }
 
-   public static gah b() {
-      gaj $$0 = new gaj();
-      gal $$1 = $$0.a();
-      a($$1);
-      return gah.a($$0, 128, 64);
+   protected void a(guv $$0, float $$1) {
+      float $$2 = $$0.C;
+      if ($$2 > 0.0F && $$0.d == cmm.a) {
+         fwf.a(this.r, this.s, $$0.ap, $$2, $$0.p);
+      } else {
+         super.a($$0, $$1);
+      }
    }
 
-   public static gah c() {
-      gaj $$0 = new gaj();
-      gal $$1 = $$0.a();
-      a($$1);
-      $$1.a("chest_bottom", gag.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), gad.a(-2.0F, -10.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("chest_lid", gag.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), gad.a(-2.0F, -14.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      $$1.a("chest_lock", gag.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), gad.a(-1.0F, -11.1F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
-      return gah.a($$0, 128, 128);
-   }
-
-   public void a(gsh $$0) {
-      a($$0.h, 0, this.b);
-      a($$0.i, 1, this.c);
+   private void b(guv $$0) {
+      if ($$0.ap == bue.a) {
+         this.s.e = -1.8F;
+      } else {
+         this.r.e = -1.8F;
+      }
    }
 
    @Override
-   public gab a() {
-      return this.a;
-   }
-
-   private static void a(float $$0, int $$1, gab $$2) {
-      $$2.e = azc.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (azc.a(-$$0) + 1.0F) / 2.0F);
-      $$2.f = azc.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (azc.a(-$$0 + 1.0F) + 1.0F) / 2.0F);
-      if ($$1 == 1) {
-         $$2.f = (float) Math.PI - $$2.f;
-      }
+   public void c_(boolean $$0) {
+      super.c_($$0);
+      this.a.k = $$0;
+      this.b.k = $$0;
+      this.c.k = $$0;
+      this.d.k = $$0;
+      this.e.k = $$0;
    }
 }

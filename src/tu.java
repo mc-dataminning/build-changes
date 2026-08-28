@@ -1,11 +1,11 @@
 import java.util.function.Consumer;
 
-public record tu(String a, String b, String c, dnj d, int e, long f, boolean g, boolean h, int i, int j, boolean k, Consumer<sz> l) {
+public record tu(String a, String b, String c, dnx d, int e, long f, boolean g, boolean h, int i, int j, boolean k, Consumer<sz> l) {
    public tu(String $$0, String $$1, String $$2, int $$3, long $$4, boolean $$5, Consumer<sz> $$6) {
-      this($$0, $$1, $$2, dnj.a, $$3, $$4, $$5, false, 1, 1, false, $$6);
+      this($$0, $$1, $$2, dnx.a, $$3, $$4, $$5, false, 1, 1, false, $$6);
    }
 
-   public tu(String $$0, String $$1, String $$2, dnj $$3, int $$4, long $$5, boolean $$6, Consumer<sz> $$7) {
+   public tu(String $$0, String $$1, String $$2, dnx $$3, int $$4, long $$5, boolean $$6, Consumer<sz> $$7) {
       this($$0, $$1, $$2, $$3, $$4, $$5, $$6, false, 1, 1, false, $$7);
    }
 
@@ -34,7 +34,7 @@ public record tu(String a, String b, String c, dnj d, int e, long f, boolean g, 
       return this.c;
    }
 
-   public dnj e() {
+   public dnx e() {
       return this.d;
    }
 

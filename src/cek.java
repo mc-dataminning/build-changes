@@ -1,98 +1,56 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2LongMap;
+import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class cek extends ceo<buf> {
-   @Override
-   public Set<cdi<?>> a() {
-      return ImmutableSet.of(cdi.h, cdi.g, cdi.M, cdi.am, cdi.au, cdi.ak, new cdi[]{cdi.al, cdi.ao, cdi.an, cdi.as, cdi.at, cdi.aw});
+public class cek extends cet<bum> {
+   private static final int a = 40;
+   private static final int b = 5;
+   private static final int c = 20;
+   private final Long2LongMap d = new Long2LongOpenHashMap();
+   private int e;
+   private long f;
+
+   public cek() {
+      super(20);
    }
 
    @Override
-   protected void a(arg $$0, buf $$1) {
-      bvg<?> $$2 = $$1.dX();
-      $$2.a(cdi.aw, c($$0, $$1));
-      Optional<buh> $$3 = Optional.empty();
-      Optional<clz> $$4 = Optional.empty();
-      Optional<clz> $$5 = Optional.empty();
-      Optional<cmf> $$6 = Optional.empty();
-      Optional<buf> $$7 = Optional.empty();
-      Optional<cnp> $$8 = Optional.empty();
-      Optional<cnp> $$9 = Optional.empty();
-      int $$10 = 0;
-      List<cme> $$11 = Lists.newArrayList();
-      List<cme> $$12 = Lists.newArrayList();
-      cdk $$13 = $$2.c(cdi.h).orElse(cdk.a());
-
-      for (buf $$14 : $$13.b($$0x -> true)) {
-         if ($$14 instanceof clz) {
-            clz $$15 = (clz)$$14;
-            if ($$15.o_() && $$5.isEmpty()) {
-               $$5 = Optional.of($$15);
-            } else if ($$15.t()) {
-               $$10++;
-               if ($$4.isEmpty() && $$15.gp()) {
-                  $$4 = Optional.of($$15);
-               }
-            }
-         } else if ($$14 instanceof cmi $$16) {
-            $$11.add($$16);
-         } else if ($$14 instanceof cmf) {
-            cmf $$17 = (cmf)$$14;
-            if ($$17.o_() && $$6.isEmpty()) {
-               $$6 = Optional.of($$17);
-            } else if ($$17.gp()) {
-               $$11.add($$17);
-            }
-         } else if ($$14 instanceof cnp) {
-            cnp $$18 = (cnp)$$14;
-            if ($$8.isEmpty() && !cmg.a($$18) && $$1.c($$14)) {
-               $$8 = Optional.of($$18);
-            }
-
-            if ($$9.isEmpty() && !$$18.P_() && cmg.b($$18)) {
-               $$9 = Optional.of($$18);
-            }
-         } else if (!$$3.isEmpty() || !($$14 instanceof clm) && !($$14 instanceof cjm)) {
-            if ($$7.isEmpty() && cmg.a($$14.ao())) {
-               $$7 = Optional.of($$14);
-            }
-         } else {
-            $$3 = Optional.of((buh)$$14);
-         }
-      }
-
-      for (buf $$20 : $$2.c(cdi.g).orElse(ImmutableList.of())) {
-         if ($$20 instanceof cme) {
-            cme $$21 = (cme)$$20;
-            if ($$21.gp()) {
-               $$12.add($$21);
-            }
-         }
-      }
-
-      $$2.a(cdi.M, $$3);
-      $$2.a(cdi.ak, $$4);
-      $$2.a(cdi.al, $$5);
-      $$2.a(cdi.ar, $$7);
-      $$2.a(cdi.am, $$8);
-      $$2.a(cdi.au, $$9);
-      $$2.a(cdi.an, $$12);
-      $$2.a(cdi.ao, $$11);
-      $$2.a(cdi.as, $$11.size());
-      $$2.a(cdi.at, $$10);
+   public Set<cdn<?>> a() {
+      return ImmutableSet.of(cdn.w);
    }
 
-   private static Optional<je> c(arg $$0, buf $$1) {
-      return je.a($$1.ds(), 8, 4, $$1x -> a($$0, $$1x));
-   }
-
-   private static boolean a(arg $$0, je $$1) {
-      dua $$2 = $$0.a_($$1);
-      boolean $$3 = $$2.a(aws.W);
-      return $$3 && $$2.a(dgx.oh) ? dhj.h($$2) : $$3;
+   protected void a(arh $$0, bum $$1) {
+      if ($$1.o_()) {
+         this.e = 0;
+         this.f = $$0.aa() + (long)$$0.C_().a(20);
+         cfn $$2 = $$0.y();
+         Predicate<je> $$3 = $$0x -> {
+            long $$1x = $$0x.a();
+            if (this.d.containsKey($$1x)) {
+               return false;
+            } else if (++this.e >= 5) {
+               return false;
+            } else {
+               this.d.put($$1x, this.f + 40L);
+               return true;
+            }
+         };
+         Set<Pair<jn<cfq>, je>> $$4 = $$2.b($$0x -> $$0x.a(cfr.n), $$3, $$1.ds(), 48, cfn.b.c).collect(Collectors.toSet());
+         erd $$5 = bvv.a($$1, $$4);
+         if ($$5 != null && $$5.j()) {
+            je $$6 = $$5.l();
+            Optional<jn<cfq>> $$7 = $$2.c($$6);
+            if ($$7.isPresent()) {
+               $$1.dX().a(cdn.w, $$6);
+            }
+         } else if (this.e < 5) {
+            this.d.long2LongEntrySet().removeIf($$0x -> $$0x.getLongValue() < this.f);
+         }
+      }
    }
 }

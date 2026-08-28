@@ -1,52 +1,16 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class bqv extends bqp {
-   public static final MapCodec<bqv> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.b), Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.f))
-               .apply($$0, bqv::new)
-      )
-      .validate(
-         $$0 -> $$0.f < $$0.b
-               ? DataResult.error(() -> "Max must be at least min, min_inclusive: " + $$0.b + ", max_inclusive: " + $$0.f)
-               : DataResult.success($$0)
-      );
-   private final int b;
-   private final int f;
+public interface bqv<P extends bqu> {
+   bqv<bqr> a = a("constant", bqr.b);
+   bqv<bra> b = a("uniform", bra.a);
+   bqv<bqm> c = a("biased_to_bottom", bqm.a);
+   bqv<bqn> d = a("clamped", bqn.a);
+   bqv<brb> e = a("weighted_list", brb.a);
+   bqv<bqp> f = a("clamped_normal", bqp.a);
 
-   private bqv(int $$0, int $$1) {
-      this.b = $$0;
-      this.f = $$1;
-   }
+   MapCodec<P> codec();
 
-   public static bqv a(int $$0, int $$1) {
-      return new bqv($$0, $$1);
-   }
-
-   @Override
-   public int a(azk $$0) {
-      return azc.b($$0, this.b, this.f);
-   }
-
-   @Override
-   public int a() {
-      return this.b;
-   }
-
-   @Override
-   public int b() {
-      return this.f;
-   }
-
-   @Override
-   public bqq<?> c() {
-      return bqq.b;
-   }
-
-   @Override
-   public String toString() {
-      return "[" + this.b + "-" + this.f + "]";
+   static <P extends bqu> bqv<P> a(String $$0, MapCodec<P> $$1) {
+      return ka.a(lu.K, $$0, () -> $$1);
    }
 }

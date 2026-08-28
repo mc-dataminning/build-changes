@@ -1,9 +1,4 @@
-import java.util.function.Predicate;
+import org.joml.Vector3f;
 
-@FunctionalInterface
-public interface gip {
-   gip b = $$0 -> $$0x -> true;
-   gip c = $$0 -> $$0x -> false;
-
-   Predicate<dua> getPredicate(dub<dgv, dua> var1);
+public record gip(Vector3f a, jj.a b, float c, boolean d) {
 }

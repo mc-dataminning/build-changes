@@ -97,17 +97,17 @@ public class ug extends uv {
 
    @Override
    public int g() {
-      return azc.a(this.w);
+      return azd.a(this.w);
    }
 
    @Override
    public short h() {
-      return (short)(azc.a(this.w) & 65535);
+      return (short)(azd.a(this.w) & 65535);
    }
 
    @Override
    public byte i() {
-      return (byte)(azc.a(this.w) & 0xFF);
+      return (byte)(azd.a(this.w) & 0xFF);
    }
 
    @Override

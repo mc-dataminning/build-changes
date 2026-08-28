@@ -1,205 +1,97 @@
-import com.google.common.base.MoreObjects;
+import com.google.common.collect.Streams;
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.Writer;
-import java.nio.charset.CharacterCodingException;
-import java.nio.charset.CharsetDecoder;
-import java.nio.charset.CodingErrorAction;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
+import java.lang.management.ManagementFactory;
+import java.lang.management.ThreadInfo;
+import java.lang.management.ThreadMXBean;
 import java.nio.file.Path;
-import java.util.Objects;
-import java.util.Properties;
-import java.util.function.Function;
-import java.util.function.IntFunction;
-import java.util.function.Supplier;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.stream.Collectors;
 import org.slf4j.Logger;
 
-public abstract class aqc<T extends aqc<T>> {
+public class aqc implements Runnable {
    private static final Logger a = LogUtils.getLogger();
-   protected final Properties ac;
+   private static final long b = 10000L;
+   private static final int c = 1;
+   private final apz d;
+   private final long e;
 
-   public aqc(Properties $$0) {
-      this.ac = $$0;
+   public aqc(apz $$0) {
+      this.d = $$0;
+      this.e = $$0.bw() * bae.b;
    }
 
-   public static Properties b(Path $$0) {
+   @Override
+   public void run() {
+      while (this.d.x()) {
+         long $$0 = this.d.aB();
+         long $$1 = ad.d();
+         long $$2 = $$1 - $$0;
+         if ($$2 > this.e) {
+            a.error(
+               LogUtils.FATAL_MARKER,
+               "A single server tick took {} seconds (should be max {})",
+               String.format(Locale.ROOT, "%.2f", (float)$$2 / (float)bae.a),
+               String.format(Locale.ROOT, "%.2f", this.d.aP().g() / (float)bae.c)
+            );
+            a.error(LogUtils.FATAL_MARKER, "Considering it to be crashed, server will forcibly shutdown.");
+            o $$3 = a("Watching Server", this.d.ay().threadId());
+            this.d.b($$3.f());
+            p $$4 = $$3.a("Performance stats");
+            $$4.a("Random tick rate", () -> this.d.ba().o().a(dec.o).toString());
+            $$4.a("Level stats", () -> Streams.stream(this.d.L()).map($$0x -> $$0x.ag() + ": " + $$0x.F()).collect(Collectors.joining(",\n")));
+            ale.a("Crash report:\n" + $$3.a(y.a));
+            Path $$5 = this.d.D().resolve("crash-reports").resolve("crash-" + ad.f() + "-server.txt");
+            if ($$3.a($$5, y.a)) {
+               a.error("This crash report has been saved to: {}", $$5.toAbsolutePath());
+            } else {
+               a.error("We were unable to save this crash report to disk.");
+            }
+
+            this.a();
+         }
+
+         try {
+            Thread.sleep(($$0 + this.e - $$1) / bae.b);
+         } catch (InterruptedException var10) {
+         }
+      }
+   }
+
+   public static o a(String $$0, long $$1) {
+      ThreadMXBean $$2 = ManagementFactory.getThreadMXBean();
+      ThreadInfo[] $$3 = $$2.dumpAllThreads(true, true);
+      StringBuilder $$4 = new StringBuilder();
+      Error $$5 = new Error("Watchdog");
+
+      for (ThreadInfo $$6 : $$3) {
+         if ($$6.getThreadId() == $$1) {
+            $$5.setStackTrace($$6.getStackTrace());
+         }
+
+         $$4.append($$6);
+         $$4.append("\n");
+      }
+
+      o $$7 = new o($$0, $$5);
+      p $$8 = $$7.a("Thread Dump");
+      $$8.a("Threads", $$4);
+      return $$7;
+   }
+
+   private void a() {
       try {
-         try {
-            Properties var13;
-            try (InputStream $$1 = Files.newInputStream($$0)) {
-               CharsetDecoder $$2 = StandardCharsets.UTF_8
-                  .newDecoder()
-                  .onMalformedInput(CodingErrorAction.REPORT)
-                  .onUnmappableCharacter(CodingErrorAction.REPORT);
-               Properties $$3 = new Properties();
-               $$3.load(new InputStreamReader($$1, $$2));
-               var13 = $$3;
+         Timer $$0 = new Timer();
+         $$0.schedule(new TimerTask() {
+            @Override
+            public void run() {
+               Runtime.getRuntime().halt(1);
             }
-
-            return var13;
-         } catch (CharacterCodingException var9) {
-            a.info("Failed to load properties as UTF-8 from file {}, trying ISO_8859_1", $$0);
-
-            Properties var4;
-            try (Reader $$5 = Files.newBufferedReader($$0, StandardCharsets.ISO_8859_1)) {
-               Properties $$6 = new Properties();
-               $$6.load($$5);
-               var4 = $$6;
-            }
-
-            return var4;
-         }
-      } catch (IOException var10) {
-         a.error("Failed to load properties from file: {}", $$0, var10);
-         return new Properties();
-      }
-   }
-
-   public void c(Path $$0) {
-      try (Writer $$1 = Files.newBufferedWriter($$0, StandardCharsets.UTF_8)) {
-         this.ac.store($$1, "Minecraft server properties");
-      } catch (IOException var7) {
-         a.error("Failed to store properties to file: {}", $$0);
-      }
-   }
-
-   private static <V extends Number> Function<String, V> a(Function<String, V> $$0) {
-      return $$1 -> {
-         try {
-            return $$0.apply($$1);
-         } catch (NumberFormatException var3) {
-            return null;
-         }
-      };
-   }
-
-   protected static <V> Function<String, V> a(IntFunction<V> $$0, Function<String, V> $$1) {
-      return $$2 -> {
-         try {
-            return $$0.apply(Integer.parseInt($$2));
-         } catch (NumberFormatException var4) {
-            return $$1.apply($$2);
-         }
-      };
-   }
-
-   @Nullable
-   private String c(String $$0) {
-      return (String)this.ac.get($$0);
-   }
-
-   @Nullable
-   protected <V> V a(String $$0, Function<String, V> $$1) {
-      String $$2 = this.c($$0);
-      if ($$2 == null) {
-         return null;
-      } else {
-         this.ac.remove($$0);
-         return $$1.apply($$2);
-      }
-   }
-
-   protected <V> V a(String $$0, Function<String, V> $$1, Function<V, String> $$2, V $$3) {
-      String $$4 = this.c($$0);
-      V $$5 = (V)MoreObjects.firstNonNull($$4 != null ? $$1.apply($$4) : null, $$3);
-      this.ac.put($$0, $$2.apply($$5));
-      return $$5;
-   }
-
-   protected <V> aqc<T>.a<V> b(String $$0, Function<String, V> $$1, Function<V, String> $$2, V $$3) {
-      String $$4 = this.c($$0);
-      V $$5 = (V)MoreObjects.firstNonNull($$4 != null ? $$1.apply($$4) : null, $$3);
-      this.ac.put($$0, $$2.apply($$5));
-      return new aqc.a<>($$0, $$5, $$2);
-   }
-
-   protected <V> V a(String $$0, Function<String, V> $$1, UnaryOperator<V> $$2, Function<V, String> $$3, V $$4) {
-      return this.a($$0, $$2x -> {
-         V $$3x = $$1.apply($$2x);
-         return $$3x != null ? $$2.apply($$3x) : null;
-      }, $$3, $$4);
-   }
-
-   protected <V> V a(String $$0, Function<String, V> $$1, V $$2) {
-      return this.a($$0, $$1, Objects::toString, $$2);
-   }
-
-   protected <V> aqc<T>.a<V> b(String $$0, Function<String, V> $$1, V $$2) {
-      return this.b($$0, $$1, Objects::toString, $$2);
-   }
-
-   protected String a(String $$0, String $$1) {
-      return this.a($$0, Function.identity(), Function.identity(), $$1);
-   }
-
-   @Nullable
-   protected String a(String $$0) {
-      return this.a($$0, Function.identity());
-   }
-
-   protected int a(String $$0, int $$1) {
-      return this.a($$0, a(Integer::parseInt), Integer.valueOf($$1));
-   }
-
-   protected aqc<T>.a<Integer> b(String $$0, int $$1) {
-      return this.b($$0, a(Integer::parseInt), $$1);
-   }
-
-   protected int a(String $$0, UnaryOperator<Integer> $$1, int $$2) {
-      return this.a($$0, a(Integer::parseInt), $$1, Objects::toString, $$2);
-   }
-
-   protected long a(String $$0, long $$1) {
-      return this.a($$0, a(Long::parseLong), $$1);
-   }
-
-   protected boolean a(String $$0, boolean $$1) {
-      return this.a($$0, Boolean::valueOf, $$1);
-   }
-
-   protected aqc<T>.a<Boolean> b(String $$0, boolean $$1) {
-      return this.b($$0, Boolean::valueOf, $$1);
-   }
-
-   @Nullable
-   protected Boolean b(String $$0) {
-      return this.a($$0, Boolean::valueOf);
-   }
-
-   protected Properties a() {
-      Properties $$0 = new Properties();
-      $$0.putAll(this.ac);
-      return $$0;
-   }
-
-   protected abstract T b(kb var1, Properties var2);
-
-   public class a<V> implements Supplier<V> {
-      private final String b;
-      private final V c;
-      private final Function<V, String> d;
-
-      a(final String $$1, final V $$2, final Function<V, String> $$3) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      @Override
-      public V get() {
-         return this.c;
-      }
-
-      public T a(kb $$0, V $$1) {
-         Properties $$2 = aqc.this.a();
-         $$2.put(this.b, this.d.apply($$1));
-         return aqc.this.b($$0, $$2);
+         }, 10000L);
+         System.exit(1);
+      } catch (Throwable var2) {
+         Runtime.getRuntime().halt(1);
       }
    }
 }

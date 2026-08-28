@@ -1,39 +1,68 @@
-public class fyw extends fyx {
-   private final gab b;
-   protected final gab a;
+public class fyw extends fxk<gsy> {
+   private final gal a;
+   private final gal b;
+   private final gal c;
 
-   public fyw(gab $$0) {
-      this.b = $$0;
-      this.a = $$0.b("head");
+   public fyw(gal $$0) {
+      this.a = $$0;
+      this.b = $$0.b("left_paddle");
+      this.c = $$0.b("right_paddle");
    }
 
-   public static gaj b() {
-      gaj $$0 = new gaj();
-      gal $$1 = $$0.a();
-      $$1.a("head", gag.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gad.a);
-      return $$0;
+   public static void a(gav $$0) {
+      $$0.a(
+         "bottom",
+         gaq.c().a(0, 0).a(-14.0F, -11.0F, -4.0F, 28.0F, 20.0F, 4.0F).a(0, 0).a(-14.0F, -9.0F, -8.0F, 28.0F, 16.0F, 4.0F),
+         gan.a(0.0F, -2.1F, 1.0F, 1.5708F, 0.0F, 0.0F)
+      );
+      int $$1 = 20;
+      int $$2 = 7;
+      int $$3 = 6;
+      float $$4 = -5.0F;
+      $$0.a(
+         "left_paddle",
+         gaq.c().a(0, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(-1.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         gan.a(3.0F, -4.0F, 9.0F, 0.0F, 0.0F, (float) (Math.PI / 16))
+      );
+      $$0.a(
+         "right_paddle",
+         gaq.c().a(40, 24).a(-1.0F, 0.0F, -5.0F, 2.0F, 2.0F, 18.0F).a(0.001F, -3.0F, 8.0F, 1.0F, 6.0F, 7.0F),
+         gan.a(3.0F, -4.0F, -9.0F, 0.0F, (float) Math.PI, (float) (Math.PI / 16))
+      );
    }
 
-   public static gah c() {
-      gaj $$0 = b();
-      gal $$1 = $$0.a();
-      $$1.b("head").a("hat", gag.c().a(32, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new gaf(0.25F)), gad.a);
-      return gah.a($$0, 64, 64);
+   public static gar b() {
+      gat $$0 = new gat();
+      gav $$1 = $$0.a();
+      a($$1);
+      return gar.a($$0, 128, 64);
    }
 
-   public static gah d() {
-      gaj $$0 = b();
-      return gah.a($$0, 64, 32);
+   public static gar c() {
+      gat $$0 = new gat();
+      gav $$1 = $$0.a();
+      a($$1);
+      $$1.a("chest_bottom", gaq.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 12.0F, 8.0F, 12.0F), gan.a(-2.0F, -10.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lid", gaq.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 12.0F, 4.0F, 12.0F), gan.a(-2.0F, -14.1F, -6.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      $$1.a("chest_lock", gaq.c().a(0, 59).a(0.0F, 0.0F, 0.0F, 2.0F, 4.0F, 1.0F), gan.a(-1.0F, -11.1F, -1.0F, 0.0F, (float) (-Math.PI / 2), 0.0F));
+      return gar.a($$0, 128, 128);
+   }
+
+   public void a(gsy $$0) {
+      a($$0.h, 0, this.b);
+      a($$0.i, 1, this.c);
    }
 
    @Override
-   public void a(float $$0, float $$1, float $$2) {
-      this.a.f = $$1 * (float) (Math.PI / 180.0);
-      this.a.e = $$2 * (float) (Math.PI / 180.0);
+   public gal a() {
+      return this.a;
    }
 
-   @Override
-   public gab a() {
-      return this.b;
+   private static void a(float $$0, int $$1, gal $$2) {
+      $$2.e = azd.b((float) (-Math.PI / 3), (float) (-Math.PI / 12), (azd.a(-$$0) + 1.0F) / 2.0F);
+      $$2.f = azd.b((float) (-Math.PI / 4), (float) (Math.PI / 4), (azd.a(-$$0 + 1.0F) + 1.0F) / 2.0F);
+      if ($$1 == 1) {
+         $$2.f = (float) Math.PI - $$2.f;
+      }
    }
 }

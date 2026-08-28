@@ -7,7 +7,7 @@ import javax.annotation.Nullable;
 
 public class ya {
    public static final ya a = new ya(null, null, null, null, null, null, null, null, null, null);
-   public static final alb b = alb.b("default");
+   public static final alc b = alc.b("default");
    @Nullable
    final yc c;
    @Nullable
@@ -27,7 +27,7 @@ public class ya {
    @Nullable
    final String k;
    @Nullable
-   final alb l;
+   final alc l;
 
    private static ya a(
       Optional<yc> $$0,
@@ -39,7 +39,7 @@ public class ya {
       Optional<xb> $$6,
       Optional<xj> $$7,
       Optional<String> $$8,
-      Optional<alb> $$9
+      Optional<alc> $$9
    ) {
       ya $$10 = new ya(
          $$0.orElse(null),
@@ -66,7 +66,7 @@ public class ya {
       @Nullable xb $$6,
       @Nullable xj $$7,
       @Nullable String $$8,
-      @Nullable alb $$9
+      @Nullable alc $$9
    ) {
       this.c = $$0;
       this.d = $$1;
@@ -124,7 +124,7 @@ public class ya {
       return this.k;
    }
 
-   public alb k() {
+   public alc k() {
       return this.l != null ? this.l : b;
    }
 
@@ -176,7 +176,7 @@ public class ya {
       return Objects.equals(this.k, $$0) ? this : a(new ya(this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, $$0, this.l), this.k, $$0);
    }
 
-   public ya a(@Nullable alb $$0) {
+   public ya a(@Nullable alc $$0) {
       return Objects.equals(this.l, $$0) ? this : a(new ya(this.c, this.d, this.e, this.f, this.g, this.h, this.i, this.j, this.k, $$0), this.l, $$0);
    }
 
@@ -393,7 +393,7 @@ public class ya {
                   xb.a.optionalFieldOf("clickEvent").forGetter($$0x -> Optional.ofNullable($$0x.i)),
                   xj.a.optionalFieldOf("hoverEvent").forGetter($$0x -> Optional.ofNullable($$0x.j)),
                   Codec.STRING.optionalFieldOf("insertion").forGetter($$0x -> Optional.ofNullable($$0x.k)),
-                  alb.a.optionalFieldOf("font").forGetter($$0x -> Optional.ofNullable($$0x.l))
+                  alc.a.optionalFieldOf("font").forGetter($$0x -> Optional.ofNullable($$0x.l))
                )
                .apply($$0, ya::a)
       );

@@ -1,32 +1,33 @@
 import com.mojang.serialization.Codec;
 
-public enum fhx implements azf, azy {
-   a(0, "minimized", "options.inactivityFpsLimit.minimized"),
-   b(1, "afk", "options.inactivityFpsLimit.afk");
+public enum fhx implements azg, azz {
+   a(0, "false", "options.off"),
+   b(1, "fast", "options.clouds.fast"),
+   c(2, "true", "options.clouds.fancy");
 
-   public static final Codec<fhx> c = azy.a(fhx::values);
-   private final int d;
-   private final String e;
+   public static final Codec<fhx> d = azz.a(fhx::values);
+   private final int e;
    private final String f;
+   private final String g;
 
    private fhx(final int $$0, final String $$1, final String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-   }
-
-   @Override
-   public int b() {
-      return this.d;
-   }
-
-   @Override
-   public String a() {
-      return this.f;
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
    @Override
    public String c() {
+      return this.f;
+   }
+
+   @Override
+   public int b() {
       return this.e;
+   }
+
+   @Override
+   public String a() {
+      return this.g;
    }
 }

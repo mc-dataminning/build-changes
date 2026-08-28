@@ -47,7 +47,7 @@ public class ff implements ArgumentType<ff.a> {
 
    public static enum a {
       a("feet", ($$0, $$1) -> $$0),
-      b("eyes", ($$0, $$1) -> new eye($$0.d, $$0.e + (double)$$1.cP(), $$0.f));
+      b("eyes", ($$0, $$1) -> new eys($$0.d, $$0.e + (double)$$1.cP(), $$0.f));
 
       static final Map<String, ff.a> c = ad.a(Maps.newHashMap(), $$0 -> {
          for (ff.a $$1 : values()) {
@@ -55,9 +55,9 @@ public class ff implements ArgumentType<ff.a> {
          }
       });
       private final String d;
-      private final BiFunction<eye, btj, eye> e;
+      private final BiFunction<eys, bto, eys> e;
 
-      private a(final String $$0, final BiFunction<eye, btj, eye> $$1) {
+      private a(final String $$0, final BiFunction<eys, bto, eys> $$1) {
          this.d = $$0;
          this.e = $$1;
       }
@@ -67,12 +67,12 @@ public class ff implements ArgumentType<ff.a> {
          return c.get($$0);
       }
 
-      public eye a(btj $$0) {
+      public eys a(bto $$0) {
          return this.e.apply($$0.dq(), $$0);
       }
 
-      public eye a(et $$0) {
-         btj $$1 = $$0.f();
+      public eys a(et $$0) {
+         bto $$1 = $$0.f();
          return $$1 == null ? $$0.d() : this.e.apply($$0.d(), $$1);
       }
    }

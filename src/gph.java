@@ -1,42 +1,25 @@
-public class gph extends glk<cpz, gtw> {
-   private final ghu b;
+public class gph extends gme<cgw, gvd, fza> {
+   private static final alc a = alc.b("textures/entity/sheep/sheep.png");
 
-   public gph(gms.a $$0) {
-      super($$0, gaa.cH);
-      this.b = $$0.d();
+   public gph(gnj.a $$0) {
+      super($$0, new fza($$0.a(gak.cd)), new fza($$0.a(gak.ce)), 0.7F);
+      this.a(new gry(this, $$0.f()));
    }
 
-   protected void a(gtw $$0, dua $$1, fcu $$2, ggv $$3, int $$4) {
-      float $$5 = $$0.C;
-      if ($$5 > -1.0F && $$5 < 10.0F) {
-         float $$6 = 1.0F - $$5 / 10.0F;
-         $$6 = azc.a($$6, 0.0F, 1.0F);
-         $$6 *= $$6;
-         $$6 *= $$6;
-         float $$7 = 1.0F + $$6 * 0.3F;
-         $$2.b($$7, $$7, $$7);
-      }
-
-      a(this.b, $$1, $$2, $$3, $$4, $$5 > -1.0F && (int)$$5 / 5 % 2 == 0);
+   public alc a(gvd $$0) {
+      return a;
    }
 
-   public static void a(ghu $$0, dua $$1, fcu $$2, ggv $$3, int $$4, boolean $$5) {
-      int $$6;
-      if ($$5) {
-         $$6 = gwb.a(gwb.a(1.0F), 10);
-      } else {
-         $$6 = gwb.d;
-      }
-
-      $$0.a($$1, $$2, $$3, $$4, $$6);
+   public gvd c() {
+      return new gvd();
    }
 
-   public gtw a() {
-      return new gtw();
-   }
-
-   public void a(cpz $$0, gtw $$1, float $$2) {
+   public void a(cgw $$0, gvd $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.C = $$0.F() > -1 ? (float)$$0.F() - $$2 + 1.0F : -1.0F;
+      $$1.b = $$0.K($$2);
+      $$1.a = $$0.J($$2);
+      $$1.c = $$0.y();
+      $$1.d = $$0.t();
+      $$1.e = $$0.ap();
    }
 }

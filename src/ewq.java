@@ -1,93 +1,51 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 import java.util.Set;
-import javax.annotation.Nullable;
 
-public class ewq implements ews {
-   private static final String d = "block_entity";
-   private static final ewq.a e = new ewq.a() {
-      @Override
-      public vc a(est $$0) {
-         dre $$1 = $$0.c(evp.h);
-         return $$1 != null ? $$1.b($$1.i().F_()) : null;
-      }
+public record ewq(Optional<df> b, je c) implements ews {
+   private static final MapCodec<je> g = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.INT.optionalFieldOf("offsetX", 0).forGetter(ki::u),
+               Codec.INT.optionalFieldOf("offsetY", 0).forGetter(ki::v),
+               Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(ki::w)
+            )
+            .apply($$0, je::new)
+   );
+   public static final MapCodec<ewq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(df.a.optionalFieldOf("predicate").forGetter(ewq::c), g.forGetter(ewq::d)).apply($$0, ewq::new)
+   );
 
-      @Override
-      public String a() {
-         return "block_entity";
-      }
-
-      @Override
-      public Set<evm<?>> b() {
-         return ImmutableSet.of(evp.h);
-      }
-   };
-   public static final ewq a = new ewq(e);
-   private static final Codec<ewq.a> f = Codec.STRING.xmap($$0 -> {
-      if ($$0.equals("block_entity")) {
-         return e;
-      } else {
-         est.b $$1 = est.b.a($$0);
-         return b($$1);
-      }
-   }, ewq.a::a);
-   public static final MapCodec<ewq> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(f.fieldOf("target").forGetter($$0x -> $$0x.g)).apply($$0, ewq::new));
-   public static final Codec<ewq> c = f.xmap(ewq::new, $$0 -> $$0.g);
-   private final ewq.a g;
-
-   private static ewq.a b(final est.b $$0) {
-      return new ewq.a() {
-         @Nullable
-         @Override
-         public vc a(est $$0x) {
-            btj $$1 = $$0.c($$0.a());
-            return $$1 != null ? dk.b($$1) : null;
-         }
-
-         @Override
-         public String a() {
-            return $$0.name();
-         }
-
-         @Override
-         public Set<evm<?>> b() {
-            return ImmutableSet.of($$0.a());
-         }
-      };
+   @Override
+   public ewt b() {
+      return ewu.n;
    }
 
-   private ewq(ewq.a $$0) {
-      this.g = $$0;
+   public boolean a(eth $$0) {
+      eys $$1 = $$0.c(ewd.f);
+      return $$1 != null
+         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
    }
 
    @Override
-   public ewr a() {
-      return ewt.c;
+   public Set<ewa<?>> a() {
+      return Set.of(ewd.f);
    }
 
-   @Nullable
-   @Override
-   public vc a(est $$0) {
-      return this.g.a($$0);
+   public static ews.a a(df.a $$0) {
+      return () -> new ewq(Optional.of($$0.b()), je.c);
    }
 
-   @Override
-   public Set<evm<?>> b() {
-      return this.g.b();
+   public static ews.a a(df.a $$0, je $$1) {
+      return () -> new ewq(Optional.of($$0.b()), $$1);
    }
 
-   public static ews a(est.b $$0) {
-      return new ewq(b($$0));
+   public Optional<df> c() {
+      return this.b;
    }
 
-   interface a {
-      @Nullable
-      vc a(est var1);
-
-      String a();
-
-      Set<evm<?>> b();
+   public je d() {
+      return this.c;
    }
 }

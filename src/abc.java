@@ -1,11 +1,11 @@
 import java.util.List;
 
-public record abc(ala<dds> c, ekg d, List<abc.a> e) implements aan {
+public record abc(alb<deg> c, eku d, List<abc.a> e) implements aan {
    public static final zb<wa, abc> a = aan.a(abc::a, abc::new);
    public static final aan.b<abc> b = aan.a("debug/structures");
 
    private abc(wa $$0) {
-      this($$0.a(lv.ba), b($$0), $$0.a(abc.a::new));
+      this($$0.a(lv.bb), b($$0), $$0.a(abc.a::new));
    }
 
    private void a(wa $$0) {
@@ -19,11 +19,11 @@ public record abc(ala<dds> c, ekg d, List<abc.a> e) implements aan {
       return b;
    }
 
-   static ekg b(wa $$0) {
-      return new ekg($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
+   static eku b(wa $$0) {
+      return new eku($$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt(), $$0.readInt());
    }
 
-   static void a(wa $$0, ekg $$1) {
+   static void a(wa $$0, eku $$1) {
       $$0.q($$1.h());
       $$0.q($$1.i());
       $$0.q($$1.j());
@@ -32,11 +32,11 @@ public record abc(ala<dds> c, ekg d, List<abc.a> e) implements aan {
       $$0.q($$1.m());
    }
 
-   public ala<dds> b() {
+   public alb<deg> b() {
       return this.c;
    }
 
-   public ekg c() {
+   public eku c() {
       return this.d;
    }
 
@@ -44,7 +44,7 @@ public record abc(ala<dds> c, ekg d, List<abc.a> e) implements aan {
       return this.e;
    }
 
-   public static record a(ekg a, boolean b) {
+   public static record a(eku a, boolean b) {
       public a(wa $$0) {
          this(abc.b($$0), $$0.readBoolean());
       }

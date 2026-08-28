@@ -1,66 +1,27 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import java.util.Objects;
+import java.util.HashMap;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public final class bnf {
-   private final Object2ObjectMap<bmy<?>, Object> a = new Object2ObjectArrayMap();
+public class bnf<S> {
+   private final Map<bnd<?>, bnj<S, ?>> a = new HashMap<>();
 
-   public <T> void a(bmy<T> $$0, @Nullable T $$1) {
-      this.a.put($$0, $$1);
-   }
-
-   @Nullable
-   public <T> T a(bmy<T> $$0) {
-      return (T)this.a.get($$0);
-   }
-
-   public <T> T b(bmy<T> $$0) {
-      return Objects.requireNonNull(this.a($$0));
-   }
-
-   public <T> T b(bmy<T> $$0, T $$1) {
-      return Objects.requireNonNullElse(this.a($$0), $$1);
-   }
-
-   @Nullable
-   @SafeVarargs
-   public final <T> T a(bmy<T>... $$0) {
-      for (bmy<T> $$1 : $$0) {
-         T $$2 = this.a($$1);
-         if ($$2 != null) {
-            return $$2;
-         }
-      }
-
-      return null;
-   }
-
-   @SafeVarargs
-   public final <T> T b(bmy<T>... $$0) {
-      return Objects.requireNonNull(this.a($$0));
-   }
-
-   @Override
-   public String toString() {
-      return this.a.toString();
-   }
-
-   public void a(bnf $$0) {
-      this.a.putAll($$0.a);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof bnf $$1 ? this.a.equals($$1.a) : false;
+   public <T> void a(bnd<T> $$0, bnj<S, T> $$1) {
+      bnj<S, ?> $$2 = this.a.putIfAbsent($$0, $$1);
+      if ($$2 != null) {
+         throw new IllegalArgumentException("Trying to override rule: " + $$0);
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
+   public <T> void a(bnd<T> $$0, bnm<S> $$1, bnj.a<S, T> $$2) {
+      this.a($$0, bnj.a($$1, $$2));
+   }
+
+   public <T> void a(bnd<T> $$0, bnm<S> $$1, bnj.b<T> $$2) {
+      this.a($$0, bnj.a($$1, $$2));
+   }
+
+   @Nullable
+   public <T> bnj<S, T> a(bnd<T> $$0) {
+      return (bnj<S, T>)this.a.get($$0);
    }
 }

@@ -1,3 +1,8 @@
-public enum bml {
-   a;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bml {
 }

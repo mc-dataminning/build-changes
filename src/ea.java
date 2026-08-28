@@ -8,7 +8,7 @@ public class ea extends dv<ea.a> {
       return ea.a.a;
    }
 
-   public void a(arh $$0) {
+   public void a(ari $$0) {
       this.a($$0, $$0x -> true);
    }
 

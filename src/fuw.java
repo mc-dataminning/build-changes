@@ -1,75 +1,149 @@
-import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.function.DoubleConsumer;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class fuw extends fpt {
-   private static final Logger d = LogUtils.getLogger();
-   public static final eau a = new eau((long)"test1".hashCode(), true, false);
-   protected final fpt b;
-   private fka s;
-   private fka u;
-   private fka v;
-   private fka w;
-   protected fkj c;
-   private fvb x;
+public class fuw extends fke {
+   private static final int a = 32;
+   private static final String b = "telemetry.event.required";
+   private static final String c = "telemetry.event.optional";
+   private static final String d = "telemetry.event.optional.disabled";
+   private static final xd e = xd.c("telemetry_info.property_title").a(n.t);
+   private final fjv f;
+   private fuw.a m;
+   @Nullable
+   private DoubleConsumer n;
 
-   public fuw(fpt $$0) {
-      super(xd.c("selectWorld.title"));
-      this.b = $$0;
+   public fuw(int $$0, int $$1, int $$2, int $$3, fjv $$4) {
+      super($$0, $$1, $$2, $$3, xd.i());
+      this.f = $$4;
+      this.m = this.c(fil.Q().C());
+   }
+
+   public void b(boolean $$0) {
+      this.m = this.c($$0);
+      this.a(this.c());
+   }
+
+   public void j() {
+      this.m = this.c(fil.Q().C());
+      this.a(this.c());
+   }
+
+   private fuw.a c(boolean $$0) {
+      fuw.b $$1 = new fuw.b(this.k());
+      List<hcj> $$2 = new ArrayList<>(hcj.g());
+      $$2.sort(Comparator.comparing(hcj::d));
+
+      for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+         hcj $$4 = $$2.get($$3);
+         boolean $$5 = $$4.d() && !$$0;
+         this.a($$1, $$4, $$5);
+         if ($$3 < $$2.size() - 1) {
+            $$1.a(9);
+         }
+      }
+
+      return $$1.a();
+   }
+
+   public void a(@Nullable DoubleConsumer $$0) {
+      this.n = $$0;
    }
 
    @Override
-   protected void aT_() {
-      this.c = new fkj(this.p, this.n / 2 - 100, 22, 200, 20, this.c, xd.c("selectWorld.search"));
-      this.c.b($$0 -> this.x.a($$0));
-      this.d(this.c);
-      this.x = this.c(new fvb(this, this.m, this.n, this.o - 112, 48, 36, this.c.a(), this.x));
-      this.u = this.c(fka.a(esi.a, $$0 -> this.x.c().ifPresent(fvb.c::c)).a(this.n / 2 - 154, this.o - 52, 150, 20).a());
-      this.c(fka.a(xd.c("selectWorld.create"), $$0 -> fuq.a(this.m, this)).a(this.n / 2 + 4, this.o - 52, 150, 20).a());
-      this.v = this.c(fka.a(xd.c("selectWorld.edit"), $$0 -> this.x.c().ifPresent(fvb.c::f)).a(this.n / 2 - 154, this.o - 28, 72, 20).a());
-      this.s = this.c(fka.a(xd.c("selectWorld.delete"), $$0 -> this.x.c().ifPresent(fvb.c::d)).a(this.n / 2 - 76, this.o - 28, 72, 20).a());
-      this.w = this.c(fka.a(xd.c("selectWorld.recreate"), $$0 -> this.x.c().ifPresent(fvb.c::h)).a(this.n / 2 + 4, this.o - 28, 72, 20).a());
-      this.c(fka.a(xc.k, $$0 -> this.m.a(this.b)).a(this.n / 2 + 82, this.o - 28, 72, 20).a());
-      this.a(null);
-   }
-
-   @Override
-   protected void aI_() {
-      this.b(this.c);
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.b);
-   }
-
-   @Override
-   public void a(fjn $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.c.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 8, 16777215);
-   }
-
-   public void a(@Nullable esi $$0) {
-      if ($$0 == null) {
-         this.u.b(esi.a);
-         this.u.j = false;
-         this.v.j = false;
-         this.w.j = false;
-         this.s.j = false;
-      } else {
-         this.u.b($$0.t());
-         this.u.j = $$0.u();
-         this.v.j = $$0.w();
-         this.w.j = $$0.x();
-         this.s.j = $$0.y();
+   protected void a(double $$0) {
+      super.a($$0);
+      if (this.n != null) {
+         this.n.accept(this.c());
       }
    }
 
    @Override
-   public void j() {
-      if (this.x != null) {
-         this.x.aK_().forEach(fvb.a::close);
+   protected int h() {
+      return this.m.a().w();
+   }
+
+   @Override
+   protected double i() {
+      return 9.0;
+   }
+
+   @Override
+   protected void c(fjx $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.E() + this.a();
+      int $$5 = this.D() + this.a();
+      $$0.c().a();
+      $$0.c().a((double)$$5, (double)$$4, 0.0);
+      this.m.a().a($$4x -> $$4x.a($$0, $$1, $$2, $$3));
+      $$0.c().b();
+   }
+
+   @Override
+   protected void a(foh $$0) {
+      $$0.a(fog.a, this.m.b());
+   }
+
+   private xd a(xd $$0, boolean $$1) {
+      return (xd)($$1 ? $$0.f().a(n.h) : $$0);
+   }
+
+   private void a(fuw.b $$0, hcj $$1, boolean $$2) {
+      String $$3 = $$1.d() ? ($$2 ? "telemetry.event.optional.disabled" : "telemetry.event.optional") : "telemetry.event.required";
+      $$0.b(this.f, this.a(xd.a($$3, $$1.e()), $$2));
+      $$0.b(this.f, $$1.f().a(n.h));
+      $$0.a(9 / 2);
+      $$0.a(this.f, this.a(e, $$2), 2);
+      this.a($$1, $$0, $$2);
+   }
+
+   private void a(hcj $$0, fuw.b $$1, boolean $$2) {
+      for (hcl<?> $$3 : $$0.b()) {
+         $$1.a(this.f, this.a($$3.a(), $$2));
+      }
+   }
+
+   private int k() {
+      return this.g - this.b();
+   }
+
+   static record a(fnz a, xd b) {
+   }
+
+   static class b {
+      private final int a;
+      private final foc b;
+      private final xr c = xd.i();
+
+      public b(int $$0) {
+         this.a = $$0;
+         this.b = foc.d();
+         this.b.c().a();
+         this.b.a(fod.a($$0));
+      }
+
+      public void a(fjv $$0, xd $$1) {
+         this.a($$0, $$1, 0);
+      }
+
+      public void a(fjv $$0, xd $$1, int $$2) {
+         this.b.a(new fle($$1, $$0).d(this.a), $$1x -> $$1x.e($$2));
+         this.c.b($$1).f("\n");
+      }
+
+      public void b(fjv $$0, xd $$1) {
+         this.b.a(new fle($$1, $$0).d(this.a - 64).b(true), $$0x -> $$0x.b().f(32));
+         this.c.b($$1).f("\n");
+      }
+
+      public void a(int $$0) {
+         this.b.a(fod.b($$0));
+      }
+
+      public fuw.a a() {
+         this.b.a();
+         return new fuw.a(this.b, this.c);
       }
    }
 }

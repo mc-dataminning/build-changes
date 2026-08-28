@@ -1,8 +1,5 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface haw extends hav {
+   boolean m();
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface haw {
+   void q();
 }

@@ -1,20 +1,32 @@
-import net.minecraft.server.MinecraftServer;
+import java.nio.file.Path;
+import java.util.List;
 
-public enum boc {
-   a("client"),
-   b("server");
+public interface boc {
+   char d = '\u001e';
 
-   private final String c;
+   List<bof> a(String var1);
 
-   private boc(final String $$0) {
-      this.c = $$0;
+   boolean a(Path var1);
+
+   long a();
+
+   int b();
+
+   long c();
+
+   int d();
+
+   default long g() {
+      return this.c() - this.a();
    }
 
-   public static boc a(MinecraftServer $$0) {
-      return $$0.n() ? b : a;
+   default int f() {
+      return this.d() - this.b();
    }
 
-   public String a() {
-      return this.c;
+   String e();
+
+   static String b(String $$0) {
+      return $$0.replace('\u001e', '.');
    }
 }

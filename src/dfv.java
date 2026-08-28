@@ -1,109 +1,89 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class dfv extends djr {
-   public static final MapCodec<dfv> a = b(dfv::new);
-   public static final duu b = dkr.aE;
-   private static final eyx c = dgv.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
-   private static final eyx d = dgv.a(3.0, 4.0, 4.0, 13.0, 5.0, 12.0);
-   private static final eyx e = dgv.a(4.0, 5.0, 6.0, 12.0, 10.0, 10.0);
-   private static final eyx f = dgv.a(0.0, 10.0, 3.0, 16.0, 16.0, 13.0);
-   private static final eyx g = dgv.a(4.0, 4.0, 3.0, 12.0, 5.0, 13.0);
-   private static final eyx h = dgv.a(6.0, 5.0, 4.0, 10.0, 10.0, 12.0);
-   private static final eyx i = dgv.a(3.0, 10.0, 0.0, 13.0, 16.0, 16.0);
-   private static final eyx j = eyu.a(c, d, e, f);
-   private static final eyx k = eyu.a(c, g, h, i);
-   private static final xd l = xd.c("container.repair");
-   private static final float m = 2.0F;
-   private static final int n = 40;
+public class dfv {
+   public static final Codec<dfv> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dfv.a.c.fieldOf("preset").forGetter($$0x -> $$0x.c), ala.c(lv.aG)).apply($$0, dfv::new)
+   );
+   public static final Codec<jn<dfv>> b = aky.a(lv.ba, a);
+   private final dfv.a c;
+   private final dfq.c<jn<dfh>> d;
 
-   @Override
-   public MapCodec<dfv> a() {
-      return a;
+   public dfv(dfv.a $$0, jo<dfh> $$1) {
+      this.c = $$0;
+      this.d = $$0.e.apply($$1::b);
    }
 
-   public dfv(dtz.d $$0) {
-      super($$0);
-      this.l(this.E.b().b(b, jj.c));
+   public dfq.c<jn<dfh>> a() {
+      return this.d;
    }
 
-   @Override
-   public dua a(cyw $$0) {
-      return this.o().b(b, $$0.g().h());
+   public static Map<dfv.a, dfq.c<alb<dfh>>> b() {
+      return dfv.a.f.values().stream().collect(Collectors.toMap($$0 -> (dfv.a)$$0, $$0 -> $$0.c().apply($$0x -> $$0x)));
    }
 
-   @Override
-   protected brk a(dua $$0, dds $$1, je $$2, cnp $$3, eya $$4) {
-      if (!$$1.B) {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(awn.aC);
+   public static record a(alc d, dfv.a.a e) {
+      public static final dfv.a a = new dfv.a(
+         alc.b("nether"),
+         new dfv.a.a() {
+            @Override
+            public <T> dfq.c<T> apply(Function<alb<dfh>, T> $$0) {
+               return new dfq.c<>(
+                  List.of(
+                     Pair.of(dfq.a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dfo.ac)),
+                     Pair.of(dfq.a(0.0F, -0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dfo.af)),
+                     Pair.of(dfq.a(0.4F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F), $$0.apply(dfo.ae)),
+                     Pair.of(dfq.a(0.0F, 0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.375F), $$0.apply(dfo.ad)),
+                     Pair.of(dfq.a(-0.5F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.175F), $$0.apply(dfo.ag))
+                  )
+               );
+            }
+         }
+      );
+      public static final dfv.a b = new dfv.a(alc.b("overworld"), new dfv.a.a() {
+         @Override
+         public <T> dfq.c<T> apply(Function<alb<dfh>, T> $$0) {
+            return dfv.a.a($$0);
+         }
+      });
+      static final Map<alc, dfv.a> f = Stream.of(a, b).collect(Collectors.toMap(dfv.a::b, $$0 -> (dfv.a)$$0));
+      public static final Codec<dfv.a> c = alc.a
+         .flatXmap(
+            $$0 -> Optional.ofNullable(f.get($$0)).<DataResult>map(DataResult::success).orElseGet(() -> DataResult.error(() -> "Unknown preset: " + $$0)),
+            $$0 -> DataResult.success($$0.d)
+         );
+
+      static <T> dfq.c<T> a(Function<alb<dfh>, T> $$0) {
+         Builder<Pair<dfq.d, T>> $$1 = ImmutableList.builder();
+         new dfx().a($$2 -> $$1.add($$2.mapSecond($$0)));
+         return new dfq.c<>($$1.build());
       }
 
-      return brk.a;
-   }
-
-   @Nullable
-   @Override
-   protected brm b(dua $$0, dds $$1, je $$2) {
-      return new brs(($$2x, $$3, $$4) -> new cqt($$2x, $$3, crd.a($$1, $$2)), l);
-   }
-
-   @Override
-   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
-      jj $$4 = $$0.c(b);
-      return $$4.o() == jj.a.a ? j : k;
-   }
-
-   @Override
-   protected void a(cjy $$0) {
-      $$0.b(2.0F, 40);
-   }
-
-   @Override
-   public void a(dds $$0, je $$1, dua $$2, dua $$3, cjy $$4) {
-      if (!$$4.ba()) {
-         $$0.c(1031, $$1, 0);
+      public Stream<alb<dfh>> a() {
+         return this.e.apply($$0 -> $$0).a().stream().<alb<dfh>>map(Pair::getSecond).distinct();
       }
-   }
 
-   @Override
-   public void a(dds $$0, je $$1, cjy $$2) {
-      if (!$$2.ba()) {
-         $$0.c(1029, $$1, 0);
+      public alc b() {
+         return this.d;
       }
-   }
 
-   @Override
-   public bsb a(btj $$0) {
-      return $$0.dT().b($$0);
-   }
-
-   @Nullable
-   public static dua e(dua $$0) {
-      if ($$0.a(dgx.gS)) {
-         return dgx.gT.o().b(b, $$0.c(b));
-      } else {
-         return $$0.a(dgx.gT) ? dgx.gU.o().b(b, $$0.c(b)) : null;
+      public dfv.a.a c() {
+         return this.e;
       }
-   }
 
-   @Override
-   protected dua a(dua $$0, dnj $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dub.a<dgv, dua> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   protected boolean a(dua $$0, eqq $$1) {
-      return false;
-   }
-
-   @Override
-   public int b(dua $$0, dcx $$1, je $$2) {
-      return $$0.a($$1, $$2).ak;
+      @FunctionalInterface
+      interface a {
+         <T> dfq.c<T> apply(Function<alb<dfh>, T> var1);
+      }
    }
 }

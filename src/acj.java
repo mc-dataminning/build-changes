@@ -34,7 +34,7 @@ public class acj implements zk<abz> {
       this.f = $$1.g.decode($$0);
    }
 
-   public static acj a(bra $$0) {
+   public static acj a(brf $$0) {
       return new acj($$0.h(), new acj.a($$0));
    }
 
@@ -42,19 +42,19 @@ public class acj implements zk<abz> {
       return new acj($$0, g);
    }
 
-   public static acj b(bra $$0) {
+   public static acj b(brf $$0) {
       return new acj($$0.h(), new acj.f($$0.j()));
    }
 
-   public static acj c(bra $$0) {
+   public static acj c(brf $$0) {
       return new acj($$0.h(), new acj.e($$0.i()));
    }
 
-   public static acj d(bra $$0) {
+   public static acj d(brf $$0) {
       return new acj($$0.h(), new acj.h($$0.k(), $$0.l()));
    }
 
-   public static acj e(bra $$0) {
+   public static acj e(brf $$0) {
       return new acj($$0.h(), new acj.g($$0.m(), $$0.n(), $$0.o()));
    }
 
@@ -97,13 +97,13 @@ public class acj implements zk<abz> {
    static class a implements acj.c {
       private final xd a;
       private final float b;
-      private final bra.a c;
-      private final bra.b d;
+      private final brf.a c;
+      private final brf.b d;
       private final boolean e;
       private final boolean f;
       private final boolean g;
 
-      a(bra $$0) {
+      a(brf $$0) {
          this.a = $$0.i();
          this.b = $$0.j();
          this.c = $$0.k();
@@ -116,8 +116,8 @@ public class acj implements zk<abz> {
       private a(wo $$0) {
          this.a = xf.d.decode($$0);
          this.b = $$0.readFloat();
-         this.c = $$0.b(bra.a.class);
-         this.d = $$0.b(bra.b.class);
+         this.c = $$0.b(brf.a.class);
+         this.d = $$0.b(brf.b.class);
          int $$1 = $$0.readUnsignedByte();
          this.e = ($$1 & 1) > 0;
          this.f = ($$1 & 2) > 0;
@@ -145,7 +145,7 @@ public class acj implements zk<abz> {
    }
 
    public interface b {
-      default void a(UUID $$0, xd $$1, float $$2, bra.a $$3, bra.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+      default void a(UUID $$0, xd $$1, float $$2, brf.a $$3, brf.b $$4, boolean $$5, boolean $$6, boolean $$7) {
       }
 
       default void a(UUID $$0) {
@@ -157,7 +157,7 @@ public class acj implements zk<abz> {
       default void a(UUID $$0, xd $$1) {
       }
 
-      default void a(UUID $$0, bra.a $$1, bra.b $$2) {
+      default void a(UUID $$0, brf.a $$1, brf.b $$2) {
       }
 
       default void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
@@ -272,17 +272,17 @@ public class acj implements zk<abz> {
    }
 
    static class h implements acj.c {
-      private final bra.a a;
-      private final bra.b b;
+      private final brf.a a;
+      private final brf.b b;
 
-      h(bra.a $$0, bra.b $$1) {
+      h(brf.a $$0, brf.b $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       private h(wo $$0) {
-         this.a = $$0.b(bra.a.class);
-         this.b = $$0.b(bra.b.class);
+         this.a = $$0.b(brf.a.class);
+         this.b = $$0.b(brf.b.class);
       }
 
       @Override

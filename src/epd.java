@@ -1,15 +1,26 @@
-import java.util.Locale;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public class epd {
-   public static double a(double $$0, double $$1) {
-      return $$0 + Math.sin(Math.PI * $$0) * $$1 / Math.PI;
-   }
+public interface epd<P extends epb> {
+   Codec<epb> a = lu.af.q().dispatch("processor_type", epb::a, epd::codec);
+   Codec<epc> b = a.listOf().xmap(epc::new, epc::a);
+   Codec<epc> c = Codec.withAlternative(b.fieldOf("processors").codec(), b);
+   Codec<jn<epc>> d = aky.a(lv.aT, c);
+   epd<eof> e = a("block_ignore", eof.a);
+   epd<eoh> f = a("block_rot", eoh.a);
+   epd<eok> g = a("gravity", eok.a);
+   epd<eol> h = a("jigsaw_replacement", eol.a);
+   epd<eox> i = a("rule", eox.a);
+   epd<eop> j = a("nop", eop.a);
+   epd<eoe> k = a("block_age", eoe.a);
+   epd<eod> l = a("blackstone_replace", eod.a);
+   epd<eom> m = a("lava_submerged_block", eom.a);
+   epd<eou> n = a("protected_blocks", eou.b);
+   epd<eoj> o = a("capped", eoj.a);
 
-   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, byte[] $$4) {
-      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
-   }
+   MapCodec<P> codec();
 
-   public static void a(StringBuilder $$0, double $$1, double $$2, double $$3, int[] $$4) {
-      $$0.append(String.format(Locale.ROOT, "xo=%.3f, yo=%.3f, zo=%.3f, p0=%d, p255=%d", (float)$$1, (float)$$2, (float)$$3, $$4[0], $$4[255]));
+   static <P extends epb> epd<P> a(String $$0, MapCodec<P> $$1) {
+      return ka.a(lu.af, $$0, () -> $$1);
    }
 }

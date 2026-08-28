@@ -1,41 +1,57 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.BitSet;
+import java.util.Set;
 
-public class gkv implements gkq.a {
-   private final fib a;
-   private static final int b = 10;
+public class gkv {
+   private static final int a = jj.values().length;
+   private final BitSet b = new BitSet(a * a);
 
-   public gkv(fib $$0) {
-      this.a = $$0;
+   public void a(Set<jj> $$0) {
+      for (jj $$1 : $$0) {
+         for (jj $$2 : $$0) {
+            this.a($$1, $$2, true);
+         }
+      }
+   }
+
+   public void a(jj $$0, jj $$1, boolean $$2) {
+      this.b.set($$0.ordinal() + $$1.ordinal() * a, $$2);
+      this.b.set($$1.ordinal() + $$0.ordinal() * a, $$2);
+   }
+
+   public void a(boolean $$0) {
+      this.b.set(0, this.b.size(), $$0);
+   }
+
+   public boolean a(jj $$0, jj $$1) {
+      return this.b.get($$0.ordinal() + $$1.ordinal() * a);
    }
 
    @Override
-   public void a(fcu $$0, ggv $$1, double $$2, double $$3, double $$4) {
-      dds $$5 = this.a.s;
-      je $$6 = je.a($$2, $$3, $$4);
-      LongSet $$7 = new LongOpenHashSet();
+   public String toString() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append(' ');
 
-      for (je $$8 : je.c($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
-         int $$9 = $$5.a(deb.a, $$8);
-         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
-         int $$11 = azc.g($$10, 0.9F, 0.9F);
-         long $$12 = kg.e($$8.a());
-         if ($$7.add($$12)) {
-            gkq.a(
-               $$0,
-               $$1,
-               $$5.P().p().a(deb.a, kg.a($$12)),
-               (double)kg.a(kg.b($$12), 8),
-               (double)kg.a(kg.c($$12), 8),
-               (double)kg.a(kg.d($$12), 8),
-               16711680,
-               0.3F
-            );
-         }
-
-         if ($$9 != 15) {
-            gkq.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
-         }
+      for (jj $$1 : jj.values()) {
+         $$0.append(' ').append($$1.toString().toUpperCase().charAt(0));
       }
+
+      $$0.append('\n');
+
+      for (jj $$2 : jj.values()) {
+         $$0.append($$2.toString().toUpperCase().charAt(0));
+
+         for (jj $$3 : jj.values()) {
+            if ($$2 == $$3) {
+               $$0.append("  ");
+            } else {
+               boolean $$4 = this.a($$2, $$3);
+               $$0.append(' ').append((char)($$4 ? 'Y' : 'n'));
+            }
+         }
+
+         $$0.append('\n');
+      }
+
+      return $$0.toString();
    }
 }

@@ -12,7 +12,7 @@ public record cl(dh.d c, dh.d d) implements dw<Integer> {
       return kr.e;
    }
 
-   public boolean a(cvl $$0, Integer $$1) {
+   public boolean a(cvp $$0, Integer $$1) {
       return !this.c.d($$0.p() - $$1) ? false : this.d.d($$1);
    }
 

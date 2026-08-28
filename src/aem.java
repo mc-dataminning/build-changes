@@ -1,7 +1,7 @@
 import javax.annotation.Nullable;
 
-public record aem(int b, jn<bso> c) implements zk<abz> {
-   public static final zb<wo, aem> a = zb.a(yz.g, aem::b, bso.b, aem::e, aem::new);
+public record aem(int b, jn<bst> c) implements zk<abz> {
+   public static final zb<wo, aem> a = zb.a(yz.g, aem::b, bst.b, aem::e, aem::new);
 
    @Override
    public zm<aem> a() {
@@ -13,11 +13,11 @@ public record aem(int b, jn<bso> c) implements zk<abz> {
    }
 
    @Nullable
-   public btj a(dds $$0) {
+   public bto a(deg $$0) {
       return $$0.a(this.b);
    }
 
-   public jn<bso> e() {
+   public jn<bst> e() {
       return this.c;
    }
 }

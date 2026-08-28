@@ -1,5 +1,4 @@
-public class gvh extends gsu {
-   public boolean a;
-   public float b;
-   public float c;
+public class gvh extends guj {
+   public float a;
+   public int b = 1;
 }

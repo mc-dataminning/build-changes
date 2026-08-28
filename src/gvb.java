@@ -1,3 +1,3 @@
-public class gvb extends gts {
-   public boolean a;
+public interface gvb {
+   boolean c();
 }

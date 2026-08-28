@@ -1,171 +1,160 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.annotations.VisibleForTesting;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class dmk extends djd implements dgy {
-   public static final MapCodec<dmk> c = b(dmk::new);
-   public static final dva d = duq.at;
-   public static final int e = 4;
-   private static final int f = 3;
-   private static final int g = 1;
-   private static final eyx h = dgv.a(3.0, 0.0, 3.0, 13.0, 15.0, 13.0);
-   private static final eyx i = dgv.a(3.0, -1.0, 3.0, 13.0, 16.0, 13.0);
-   private static final eyx j = dgv.a(5.0, -1.0, 5.0, 11.0, 3.0, 11.0);
-   private static final eyx k = dgv.a(3.0, -1.0, 3.0, 13.0, 5.0, 13.0);
-   private static final eyx[] l = new eyx[]{dgv.a(3.0, 0.0, 3.0, 13.0, 11.0, 13.0), h};
-   private static final eyx[] m = new eyx[]{j, dgv.a(3.0, -1.0, 3.0, 13.0, 14.0, 13.0), i, i, i};
+public class dmk {
+   public static final dmk.e[] a = new dmk.e[]{dmk.e.a, dmk.e.b, dmk.e.c};
+   private final dmk.b b;
 
-   @Override
-   public MapCodec<dmk> a() {
-      return c;
+   public dmk(dmj $$0) {
+      this(new dmk.a($$0));
    }
 
-   public dmk(dtz.d $$0) {
-      super($$0);
+   public dmk(dmk.b $$0) {
+      this.b = $$0;
    }
 
-   @Nullable
-   @Override
-   public dua a(cyw $$0) {
-      return this.o();
+   public boolean a(duo $$0, ddl $$1, je $$2, jj $$3) {
+      return jj.a().anyMatch($$4 -> this.a($$0, $$1, $$2, $$3, $$4, this.b::a).isPresent());
    }
 
-   @Override
-   public eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
-      return $$0.c(b) == duw.a ? l[Math.min(Math.abs(4 - ($$0.c(d) + 1)), l.length - 1)] : m[$$0.c(d)];
+   public Optional<dmk.c> a(duo $$0, deh $$1, je $$2, azl $$3) {
+      return jj.a($$3)
+         .stream()
+         .filter($$1x -> this.b.b($$0, $$1x))
+         .map($$4 -> this.a($$0, $$1, $$2, $$4, $$3, false))
+         .filter(Optional::isPresent)
+         .findFirst()
+         .orElse(Optional.empty());
    }
 
-   @Override
-   public eyx b(dua $$0, dcx $$1, je $$2, eyj $$3) {
-      if ($$0.c(d) == 0) {
-         return j;
+   public long a(duo $$0, deh $$1, je $$2, boolean $$3) {
+      return jj.a().filter($$1x -> this.b.b($$0, $$1x)).map($$4 -> this.a($$0, $$1, $$2, $$4, $$3)).reduce(0L, Long::sum);
+   }
+
+   public Optional<dmk.c> a(duo $$0, deh $$1, je $$2, jj $$3, azl $$4, boolean $$5) {
+      return jj.a($$4).stream().map($$5x -> this.a($$0, $$1, $$2, $$3, $$5x, $$5)).filter(Optional::isPresent).findFirst().orElse(Optional.empty());
+   }
+
+   private long a(duo $$0, deh $$1, je $$2, jj $$3, boolean $$4) {
+      return jj.a().map($$5 -> this.a($$0, $$1, $$2, $$3, $$5, $$4)).filter(Optional::isPresent).count();
+   }
+
+   @VisibleForTesting
+   public Optional<dmk.c> a(duo $$0, deh $$1, je $$2, jj $$3, jj $$4, boolean $$5) {
+      return this.a($$0, $$1, $$2, $$3, $$4, this.b::a).flatMap($$2x -> this.a($$1, $$2x, $$5));
+   }
+
+   public Optional<dmk.c> a(duo $$0, ddl $$1, je $$2, jj $$3, jj $$4, dmk.d $$5) {
+      if ($$4.o() == $$3.o()) {
+         return Optional.empty();
+      } else if (this.b.a($$0) || this.b.a($$0, $$3) && !this.b.a($$0, $$4)) {
+         for (dmk.e $$6 : this.b.a()) {
+            dmk.c $$7 = $$6.a($$2, $$4, $$3);
+            if ($$5.test($$1, $$2, $$7)) {
+               return Optional.of($$7);
+            }
+         }
+
+         return Optional.empty();
       } else {
-         return $$0.c(b) == duw.b ? k : super.b($$0, $$1, $$2, $$3);
+         return Optional.empty();
       }
    }
 
-   @Override
-   public dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
-      if (b($$0.c(d))) {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      } else {
-         return $$0.a($$3, $$4) ? $$0 : dgx.a.o();
+   public Optional<dmk.c> a(deh $$0, dmk.c $$1, boolean $$2) {
+      duo $$3 = $$0.a_($$1.a());
+      return this.b.a($$0, $$1, $$3, $$2) ? Optional.of($$1) : Optional.empty();
+   }
+
+   public static class a implements dmk.b {
+      protected dmj a;
+
+      public a(dmj $$0) {
+         this.a = $$0;
+      }
+
+      @Nullable
+      @Override
+      public duo a(duo $$0, ddl $$1, je $$2, jj $$3) {
+         return this.a.c($$0, $$1, $$2, $$3);
+      }
+
+      protected boolean a(ddl $$0, je $$1, je $$2, jj $$3, duo $$4) {
+         return $$4.l() || $$4.a(this.a) || $$4.a(dhl.G) && $$4.y().b();
+      }
+
+      @Override
+      public boolean a(ddl $$0, je $$1, dmk.c $$2) {
+         duo $$3 = $$0.a_($$2.a());
+         return this.a($$0, $$1, $$2.a(), $$2.b(), $$3) && this.a.a($$0, $$3, $$2.a(), $$2.b());
       }
    }
 
-   @Override
-   public boolean a(dua $$0, ddv $$1, je $$2) {
-      return o($$0) && !b($$1, $$2) ? false : super.a($$0, $$1, $$2);
-   }
+   public interface b {
+      @Nullable
+      duo a(duo var1, ddl var2, je var3, jj var4);
 
-   @Override
-   protected boolean b(dua $$0, dcx $$1, je $$2) {
-      return $$0.a(dgx.cC);
-   }
+      boolean a(ddl var1, je var2, dmk.c var3);
 
-   @Override
-   protected void a(dub.a<dgv, dua> $$0) {
-      $$0.a(d);
-      super.a($$0);
-   }
-
-   @Override
-   public void a(dua $$0, dds $$1, je $$2, btj $$3) {
-      if ($$3 instanceof cla && $$1.ac().b(ddo.c)) {
-         $$1.a($$2, true, $$3);
+      default dmk.e[] a() {
+         return dmk.a;
       }
 
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public boolean a(dua $$0, cyw $$1) {
-      return false;
-   }
-
-   @Override
-   public void a(dds $$0, je $$1, dua $$2, buf $$3, cvl $$4) {
-   }
-
-   @Override
-   public boolean f(dua $$0) {
-      return $$0.c(b) == duw.b && !this.q($$0);
-   }
-
-   @Override
-   public void b(dua $$0, arg $$1, je $$2, azk $$3) {
-      float $$4 = diq.a(this, $$1, $$2);
-      boolean $$5 = $$3.a((int)(25.0F / $$4) + 1) == 0;
-      if ($$5) {
-         this.a($$1, $$0, $$2, 1);
+      default boolean a(duo $$0, jj $$1) {
+         return dmj.a($$0, $$1);
       }
-   }
 
-   private void a(arg $$0, dua $$1, je $$2, int $$3) {
-      int $$4 = Math.min($$1.c(d) + $$3, 4);
-      if (this.a($$0, $$2, $$1, $$4)) {
-         dua $$5 = $$1.b(d, Integer.valueOf($$4));
-         $$0.a($$2, $$5, 2);
-         if (b($$4)) {
-            $$0.a($$2.d(), $$5.b(b, duw.a), 3);
+      default boolean a(duo $$0) {
+         return false;
+      }
+
+      default boolean b(duo $$0, jj $$1) {
+         return this.a($$0) || this.a($$0, $$1);
+      }
+
+      default boolean a(deh $$0, dmk.c $$1, duo $$2, boolean $$3) {
+         duo $$4 = this.a($$2, $$0, $$1.a(), $$1.b());
+         if ($$4 != null) {
+            if ($$3) {
+               $$0.y($$1.a()).e($$1.a());
+            }
+
+            return $$0.a($$1.a(), $$4, 2);
+         } else {
+            return false;
          }
       }
    }
 
-   private static boolean a(ddv $$0, je $$1) {
-      dua $$2 = $$0.a_($$1);
-      return $$2.l() || $$2.a(dgx.kB);
+   public static record c(je a, jj b) {
    }
 
-   private static boolean b(ddv $$0, je $$1) {
-      return diq.a($$0, $$1);
+   @FunctionalInterface
+   public interface d {
+      boolean test(ddl var1, je var2, dmk.c var3);
    }
 
-   private static boolean o(dua $$0) {
-      return $$0.a(dgx.kB) && $$0.c(b) == duw.b;
-   }
+   public static enum e {
+      a {
+         @Override
+         public dmk.c a(je $$0, jj $$1, jj $$2) {
+            return new dmk.c($$0, $$1);
+         }
+      },
+      b {
+         @Override
+         public dmk.c a(je $$0, jj $$1, jj $$2) {
+            return new dmk.c($$0.a($$1), $$2);
+         }
+      },
+      c {
+         @Override
+         public dmk.c a(je $$0, jj $$1, jj $$2) {
+            return new dmk.c($$0.a($$1).a($$2), $$1.g());
+         }
+      };
 
-   private static boolean b(int $$0) {
-      return $$0 >= 3;
-   }
-
-   private boolean a(ddv $$0, je $$1, dua $$2, int $$3) {
-      return !this.q($$2) && b($$0, $$1) && (!b($$3) || a($$0, $$1.d()));
-   }
-
-   private boolean q(dua $$0) {
-      return $$0.c(d) >= 4;
-   }
-
-   @Nullable
-   private dmk.a d(ddv $$0, je $$1, dua $$2) {
-      if (o($$2)) {
-         return new dmk.a($$1, $$2);
-      } else {
-         je $$3 = $$1.e();
-         dua $$4 = $$0.a_($$3);
-         return o($$4) ? new dmk.a($$3, $$4) : null;
-      }
-   }
-
-   @Override
-   public boolean b(ddv $$0, je $$1, dua $$2) {
-      dmk.a $$3 = this.d($$0, $$1, $$2);
-      return $$3 == null ? false : this.a($$0, $$3.a, $$3.b, $$3.b.c(d) + 1);
-   }
-
-   @Override
-   public boolean a(dds $$0, azk $$1, je $$2, dua $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arg $$0, azk $$1, je $$2, dua $$3) {
-      dmk.a $$4 = this.d($$0, $$2, $$3);
-      if ($$4 != null) {
-         this.a($$0, $$4.b, $$4.a, 1);
-      }
-   }
-
-   static record a(je a, dua b) {
+      public abstract dmk.c a(je var1, jj var2, jj var3);
    }
 }

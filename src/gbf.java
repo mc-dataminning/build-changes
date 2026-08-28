@@ -1,41 +1,107 @@
-public class gbf {
-   private final gfs a;
-   private final gax b;
-   private final ggr c;
-   private gbf.a d = gbf.a.a;
+import com.mojang.authlib.GameProfile;
+import com.mojang.logging.LogUtils;
+import java.util.List;
+import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public gbf(gfs $$0, gax $$1, ggr $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public class gbf extends gbe implements abh, wr {
+   private static final Logger m = LogUtils.getLogger();
+   private final GameProfile n;
+   private cqn o;
+   private final kb.b p;
+   private final gbu q = new gbu();
+   @Nullable
+   private gbn r;
+   @Nullable
+   protected fkl.b l;
+
+   public gbf(fil $$0, vx $$1, gbl $$2) {
+      super($$0, $$1, $$2);
+      this.n = $$2.a();
+      this.p = $$2.c();
+      this.o = $$2.d();
+      this.l = $$2.i();
    }
 
-   public void a() {
-      switch (this.d) {
-         case b:
-            je $$0 = this.a.ds();
-            boolean $$1 = this.b.d($$0.v());
-            if ($$1 || this.c.a($$0) || this.a.P_() || !this.a.bI()) {
-               this.d = gbf.a.c;
-            }
-         case a:
-         case c:
+   @Override
+   public boolean c() {
+      return this.b.i();
+   }
+
+   @Override
+   protected void a(aan $$0) {
+      this.b($$0);
+   }
+
+   private void b(aan $$0) {
+      m.warn("Unknown custom packet payload: {}", $$0.a().a());
+   }
+
+   @Override
+   public void a(abj $$0) {
+      zn.a($$0, this, this.a);
+      this.q.a($$0.b(), $$0.e());
+   }
+
+   @Override
+   public void a(aab $$0) {
+      zn.a($$0, this, this.a);
+      this.q.a($$0.b());
+   }
+
+   @Override
+   public void a(abm $$0) {
+      this.o = cqp.f.a($$0.b());
+   }
+
+   @Override
+   public void a(abl $$0) {
+      zn.a($$0, this, this.a);
+      if (this.r == null) {
+         this.r = new gbn();
+      }
+
+      List<aua> $$1 = this.r.a($$0.b());
+      this.b(new abr($$1));
+   }
+
+   @Override
+   public void a(abk $$0) {
+      this.l = null;
+   }
+
+   private <T> T a(Function<auw, T> $$0) {
+      if (this.r == null) {
+         return $$0.apply(auw.b);
+      } else {
+         Object var3;
+         try (auj $$1 = this.r.a()) {
+            var3 = $$0.apply($$1);
+         }
+
+         return (T)var3;
       }
    }
 
-   public boolean b() {
-      return this.d == gbf.a.c;
+   @Override
+   public void a(abi $$0) {
+      zn.a($$0, this, this.a);
+      kb.b $$1 = this.a($$0x -> this.q.a($$0x, this.p, this.b.e()));
+      this.b
+         .a(agp.b.a(wo.a($$1)), new gbi(this.a, this.b, new gbl(this.n, this.e, $$1, this.o, this.d, this.c, this.f, this.i, this.l, this.h, this.j, this.k)));
+      this.b.a(abq.a);
+      this.b.a(agp.a.a(wo.a($$1)));
    }
 
-   public void c() {
-      if (this.d == gbf.a.a) {
-         this.d = gbf.a.b;
-      }
+   @Override
+   public void d() {
+      this.e();
    }
 
-   static enum a {
-      a,
-      b,
-      c;
+   @Override
+   public void a(vz $$0) {
+      super.a($$0);
+      this.a.z();
    }
 }

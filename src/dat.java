@@ -1,30 +1,61 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+public class dat extends czy {
+   public dat(czv $$0) {
+      super($$0);
+   }
 
-public record dat<T>(T a, Optional<ewe> b) {
-   public static Codec<ewe> a(evn $$0) {
-      return ewe.e
-         .validate(
-            $$1 -> {
-               azi.a $$2 = new azi.a();
-               esz $$3 = new esz($$2, $$0);
-               $$1.a($$3);
-               return $$2.b()
-                  .map($$0xx -> DataResult.error(() -> "Validation error in enchantment effect condition: " + $$0xx))
-                  .orElseGet(() -> DataResult.success($$1));
+   public boolean a(czw $$0, deg $$1) {
+      int $$2 = 0;
+      int $$3 = 0;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cvp $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            if (dhj.a($$5.h()) instanceof doj) {
+               $$2++;
+            } else {
+               if (!($$5.h() instanceof cuk)) {
+                  return false;
+               }
+
+               $$3++;
             }
-         );
+
+            if ($$3 > 1 || $$2 > 1) {
+               return false;
+            }
+         }
+      }
+
+      return $$2 == 1 && $$3 == 1;
    }
 
-   public static <T> Codec<dat<T>> a(Codec<T> $$0, evn $$1) {
-      return RecordCodecBuilder.create(
-         $$2 -> $$2.group($$0.fieldOf("effect").forGetter(dat::a), a($$1).optionalFieldOf("requirements").forGetter(dat::b)).apply($$2, dat::new)
-      );
+   public cvp a(czw $$0, jp.a $$1) {
+      cvp $$2 = cvp.k;
+      cuk $$3 = (cuk)cvt.rj;
+
+      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
+         cvp $$5 = $$0.a($$4);
+         if (!$$5.f()) {
+            cvk $$6 = $$5.h();
+            if (dhj.a($$6) instanceof doj) {
+               $$2 = $$5;
+            } else if ($$6 instanceof cuk) {
+               $$3 = (cuk)$$6;
+            }
+         }
+      }
+
+      dhj $$7 = doj.a($$3.c());
+      return $$2.a($$7, 1);
    }
 
-   public boolean a(est $$0) {
-      return this.b.isEmpty() ? true : this.b.get().test($$0);
+   @Override
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
+   }
+
+   @Override
+   public dam<?> aq_() {
+      return dam.m;
    }
 }

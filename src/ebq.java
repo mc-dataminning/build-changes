@@ -1,19 +1,25 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-record ebq(ki e) implements ebd {
-   public static MapCodec<ebq> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ki.f.optionalFieldOf("offset", ki.g).forGetter(ebq::g)).apply($$0, ebq::new));
+class ebq extends ebt {
+   public static final MapCodec<ebq> a = a(ebq::new);
+
+   public ebq(List<ebr> $$0) {
+      super($$0);
+   }
+
+   public boolean a(dfd $$0, je $$1) {
+      for (ebr $$2 : this.e) {
+         if ($$2.test($$0, $$1)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
 
    @Override
-   public ebe<?> a() {
-      return ebe.m;
-   }
-
-   public boolean a(dep $$0, je $$1) {
-      return $$0.a(null, eyu.b().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w()));
-   }
-
-   public ki g() {
-      return this.e;
+   public ebs<?> a() {
+      return ebs.i;
    }
 }

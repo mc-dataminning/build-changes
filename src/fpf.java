@@ -1,82 +1,42 @@
-import javax.annotation.Nullable;
+public class fpf extends fqd {
+   private static final int a = 8;
+   private static final int b = 210;
+   private static final xd c = xd.c("credits_and_attribution.screen.title");
+   private static final xd d = xd.c("credits_and_attribution.button.credits");
+   private static final xd s = xd.c("credits_and_attribution.button.attribution");
+   private static final xd u = xd.c("credits_and_attribution.button.licenses");
+   private final fqd v;
+   private final fny w = new fny(this);
 
-public class fpf extends fpt {
-   private static final int a = 80;
-   private static final int b = 120;
-   private static final int c = 360;
-   @Nullable
-   private final xd d;
-   private final xd s;
-   private final Runnable u;
-   @Nullable
-   private fkt v;
-   private fka w;
-   private int x;
-
-   public static fpf a(xd $$0, xd $$1, Runnable $$2) {
-      return new fpf($$0, null, $$1, $$2, 0);
-   }
-
-   public static fpf a(xd $$0, xd $$1, xd $$2, Runnable $$3) {
-      return new fpf($$0, $$1, $$2, $$3, 20);
-   }
-
-   protected fpf(xd $$0, @Nullable xd $$1, xd $$2, Runnable $$3, int $$4) {
-      super($$0);
-      this.d = $$1;
-      this.s = $$2;
-      this.u = $$3;
-      this.x = $$4;
+   public fpf(fqd $$0) {
+      super(c);
+      this.v = $$0;
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
-      if (this.d != null) {
-         this.v = fkt.a(this.p, this.d, 360);
-      }
-
-      int $$0 = 150;
-      int $$1 = 20;
-      int $$2 = this.v != null ? this.v.a() : 1;
-      int $$3 = Math.max($$2, 5) * 9;
-      int $$4 = Math.min(120 + $$3, this.o - 40);
-      this.w = this.c(fka.a(this.s, $$0x -> this.d()).a((this.n - 150) / 2, $$4, 150, 20).a());
+   protected void aR_() {
+      this.w.a(c, this.p);
+      foc $$0 = this.w.c(foc.d()).a(8);
+      $$0.c().b();
+      $$0.a(fkk.a(d, $$0x -> this.m()).a(210).a());
+      $$0.a(fkk.a(s, fpa.b(this, axz.d)).a(210).a());
+      $$0.a(fkk.a(u, fpa.b(this, axz.e)).a(210).a());
+      this.w.b(fkk.a(xc.d, $$0x -> this.d()).a(200).a());
+      this.w.a();
+      this.w.a(this::c);
    }
 
    @Override
-   public void e() {
-      if (this.x > 0) {
-         this.x--;
-      }
-
-      this.w.j = this.x == 0;
+   protected void c() {
+      this.w.a();
    }
 
-   @Override
-   public void a(fjn $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 80, 16777215);
-      if (this.v == null) {
-         String $$4 = fpi.a(ad.c());
-         $$0.a(this.p, $$4, this.n / 2, 120, 10526880);
-      } else {
-         this.v.a($$0, this.n / 2, 120);
-      }
-   }
-
-   @Override
-   public boolean aJ_() {
-      return this.v != null && this.w.j;
+   private void m() {
+      this.m.a(new fqg(false, () -> this.m.a(this)));
    }
 
    @Override
    public void d() {
-      this.u.run();
-   }
-
-   @Override
-   public xd i() {
-      return xc.a(this.l, this.d != null ? this.d : xc.a);
+      this.m.a(this.v);
    }
 }

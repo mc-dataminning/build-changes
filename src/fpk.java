@@ -1,82 +1,65 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+public class fpk extends fqd {
+   private static final xd a = xd.c("gui.toMenu");
+   private static final xd b = xd.c("gui.toTitle");
+   private static final xd c = xd.c("gui.report_to_server");
+   private static final xd d = xd.c("gui.open_report_dir");
+   private final fqd s;
+   private final vz u;
+   private final xd v;
+   private final foc w = foc.d();
 
-public class fpk {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<crz<?>, fpk.a<?, ?>> b = Maps.newHashMap();
+   public fpk(fqd $$0, xd $$1, xd $$2) {
+      this($$0, $$1, new vz($$2));
+   }
 
-   public static <T extends cqq> void a(crz<T> $$0, fib $$1, int $$2, xd $$3) {
-      fpk.a<T, ?> $$4 = a($$0);
-      if ($$4 == null) {
-         a.warn("Failed to create screen for menu type: {}", lu.p.b($$0));
+   public fpk(fqd $$0, xd $$1, xd $$2, xd $$3) {
+      this($$0, $$1, new vz($$2), $$3);
+   }
+
+   public fpk(fqd $$0, xd $$1, vz $$2) {
+      this($$0, $$1, $$2, a);
+   }
+
+   public fpk(fqd $$0, xd $$1, vz $$2, xd $$3) {
+      super($$1);
+      this.s = $$0;
+      this.u = $$2;
+      this.v = $$3;
+   }
+
+   @Override
+   protected void aR_() {
+      this.w.c().b().a(10);
+      this.w.a(new flr(this.l, this.p));
+      this.w.a(new fle(this.u.a(), this.p).d(this.n - 50).b(true));
+      this.w.c().a(2);
+      this.u.c().ifPresent($$0 -> this.w.a(fkk.a(c, fpa.b(this, $$0, false)).a(200).a()));
+      this.u.b().ifPresent($$0 -> this.w.a(fkk.a(d, $$1x -> ad.m().a($$0.getParent())).a(200).a()));
+      fkk $$0;
+      if (this.m.F()) {
+         $$0 = fkk.a(this.v, $$0x -> this.m.a(this.s)).a(200).a();
       } else {
-         $$4.a($$3, $$0, $$1, $$2);
-      }
-   }
-
-   @Nullable
-   private static <T extends cqq> fpk.a<T, ?> a(crz<T> $$0) {
-      return (fpk.a<T, ?>)b.get($$0);
-   }
-
-   private static <M extends cqq, U extends fpt & frn<M>> void a(crz<? extends M> $$0, fpk.a<M, U> $$1) {
-      fpk.a<?, ?> $$2 = b.put($$0, $$1);
-      if ($$2 != null) {
-         throw new IllegalStateException("Duplicate registration for " + lu.p.b($$0));
-      }
-   }
-
-   public static boolean a() {
-      boolean $$0 = false;
-
-      for (crz<?> $$1 : lu.p) {
-         if (!b.containsKey($$1)) {
-            a.debug("Menu {} has no matching screen", lu.p.b($$1));
-            $$0 = true;
-         }
+         $$0 = fkk.a(b, $$0x -> this.m.a(new fqf())).a(200).a();
       }
 
-      return $$0;
+      this.w.a($$0);
+      this.w.a();
+      this.w.a(this::c);
+      this.c();
    }
 
-   static {
-      a(crz.a, fqt::new);
-      a(crz.b, fqt::new);
-      a(crz.c, fqt::new);
-      a(crz.d, fqt::new);
-      a(crz.e, fqt::new);
-      a(crz.f, fqt::new);
-      a(crz.g, fqz::new);
-      a(crz.h, fqu::new);
-      a(crz.i, fql::new);
-      a(crz.j, fqm::new);
-      a(crz.k, fqn::new);
-      a(crz.l, fqq::new);
-      a(crz.m, fqv::new);
-      a(crz.n, frc::new);
-      a(crz.o, frd::new);
-      a(crz.p, fre::new);
-      a(crz.q, frg::new);
-      a(crz.r, frl::new);
-      a(crz.s, frm::new);
-      a(crz.t, fro::new);
-      a(crz.u, frr::new);
-      a(crz.v, frt::new);
-      a(crz.w, fru::new);
-      a(crz.x, fqr::new);
-      a(crz.y, frv::new);
+   @Override
+   protected void c() {
+      fnw.a(this.w, this.H());
    }
 
-   interface a<T extends cqq, U extends fpt & frn<T>> {
-      default void a(xd $$0, crz<T> $$1, fib $$2, int $$3) {
-         U $$4 = this.create($$1.a($$3, $$2.t.gc()), $$2.t.gc(), $$0);
-         $$2.t.ca = $$4.E();
-         $$2.a($$4);
-      }
+   @Override
+   public xd i() {
+      return xc.a(this.l, this.u.a());
+   }
 
-      U create(T var1, cno var2, xd var3);
+   @Override
+   public boolean aH_() {
+      return false;
    }
 }

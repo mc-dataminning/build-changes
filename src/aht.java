@@ -1,10 +1,10 @@
 public class aht implements zk<agq> {
    public static final zb<wa, aht> a = zk.a(aht::a, aht::new);
    private final int b;
-   private final alb c;
+   private final alc c;
    private final boolean d;
 
-   public aht(int $$0, czv<?> $$1, boolean $$2) {
+   public aht(int $$0, daj<?> $$1, boolean $$2) {
       this.b = $$0;
       this.c = $$1.a();
       this.d = $$2;
@@ -35,7 +35,7 @@ public class aht implements zk<agq> {
       return this.b;
    }
 
-   public alb e() {
+   public alc e() {
       return this.c;
    }
 

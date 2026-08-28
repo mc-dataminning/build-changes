@@ -1,56 +1,89 @@
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class dgu extends dfq {
-   public static final MapCodec<dgu> c = b(dgu::new);
+public class dgu extends dgr {
+   public static final MapCodec<dgu> b = b(dgu::new);
+   public static final dvi c = dlf.aF;
+   private static final Map<jj, ezm> e = Maps.newEnumMap(
+      ImmutableMap.of(
+         jj.c,
+         dhj.a(0.0, 4.0, 5.0, 16.0, 12.0, 16.0),
+         jj.d,
+         dhj.a(0.0, 4.0, 0.0, 16.0, 12.0, 11.0),
+         jj.e,
+         dhj.a(5.0, 4.0, 0.0, 16.0, 12.0, 16.0),
+         jj.f,
+         dhj.a(0.0, 4.0, 0.0, 11.0, 12.0, 16.0)
+      )
+   );
 
    @Override
-   public MapCodec<dgu> a() {
-      return c;
+   public MapCodec<? extends dgu> a() {
+      return b;
    }
 
-   protected dgu(dtz.d $$0) {
+   protected dgu(dun.d $$0) {
       super($$0);
+      this.l(this.F.b().b(c, jj.c).b(d, Boolean.valueOf(true)));
    }
 
    @Override
-   public dre a(je $$0, dua $$1) {
-      return new drd($$0, $$1);
+   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
+      return e.get($$0.c(c));
+   }
+
+   @Override
+   protected duo a(duo $$0, dnx $$1) {
+      return $$0.b(c, $$1.a($$0.c(c)));
+   }
+
+   @Override
+   protected duo a(duo $$0, dmg $$1) {
+      return $$0.a($$1.a($$0.c(c)));
+   }
+
+   @Override
+   protected void a(dup.a<dhj, duo> $$0) {
+      $$0.a(c, d);
+   }
+
+   @Override
+   protected duo a(duo $$0, jj $$1, duo $$2, deh $$3, je $$4, je $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, eqq.c, eqq.c.a($$3));
+      }
+
+      return $$1.g() == $$0.c(c) && !$$0.a($$3, $$4) ? dhl.a.o() : $$0;
+   }
+
+   @Override
+   protected boolean a(duo $$0, dej $$1, je $$2) {
+      jj $$3 = $$0.c(c);
+      je $$4 = $$2.a($$3.g());
+      duo $$5 = $$1.a_($$4);
+      return $$5.c($$1, $$4, $$3);
    }
 
    @Nullable
    @Override
-   public <T extends dre> drf<T> a(dds $$0, dua $$1, drg<T> $$2) {
-      return a($$0, $$2, drg.C);
-   }
+   public duo a(czk $$0) {
+      duo $$1 = super.a($$0);
+      dej $$2 = $$0.q();
+      je $$3 = $$0.a();
+      jj[] $$4 = $$0.f();
 
-   @Override
-   protected void a(dds $$0, je $$1, cnp $$2) {
-      dre $$3 = $$0.c_($$1);
-      if ($$3 instanceof drd) {
-         $$2.a((brm)$$3);
-         $$2.a(awn.as);
-      }
-   }
-
-   @Override
-   public void a(dua $$0, dds $$1, je $$2, azk $$3) {
-      if ($$0.c(b)) {
-         double $$4 = (double)$$2.u() + 0.5;
-         double $$5 = (double)$$2.v();
-         double $$6 = (double)$$2.w() + 0.5;
-         if ($$3.j() < 0.1) {
-            $$1.a($$4, $$5, $$6, awd.cA, awe.e, 1.0F, 1.0F, false);
+      for (jj $$5 : $$4) {
+         if ($$5.o().d()) {
+            $$1 = $$1.b(c, $$5.g());
+            if ($$1.a($$2, $$3)) {
+               return $$1;
+            }
          }
-
-         jj $$7 = $$0.c(a);
-         jj.a $$8 = $$7.o();
-         double $$9 = 0.52;
-         double $$10 = $$3.j() * 0.6 - 0.3;
-         double $$11 = $$8 == jj.a.a ? (double)$$7.j() * 0.52 : $$10;
-         double $$12 = $$3.j() * 9.0 / 16.0;
-         double $$13 = $$8 == jj.a.c ? (double)$$7.l() * 0.52 : $$10;
-         $$1.a(ln.ae, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
       }
+
+      return null;
    }
 }

@@ -2,41 +2,44 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
-import javax.annotation.Nullable;
 
-public class ent extends eon {
-   public static final MapCodec<ent> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               kc.a(lv.f).optionalFieldOf("rottable_blocks").forGetter($$0x -> $$0x.b),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter($$0x -> $$0x.c)
-            )
-            .apply($$0, ent::new)
+public class ent extends elc {
+   public static final MapCodec<ent> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(a($$0), Codec.BOOL.fieldOf("is_beached").forGetter($$0x -> $$0x.e)).apply($$0, ent::new)
    );
-   private final Optional<jr<dgv>> b;
-   private final float c;
+   public final boolean e;
 
-   public ent(jr<dgv> $$0, float $$1) {
-      this(Optional.of($$0), $$1);
-   }
-
-   public ent(float $$0) {
-      this(Optional.empty(), $$0);
-   }
-
-   private ent(Optional<jr<dgv>> $$0, float $$1) {
-      this.c = $$1;
-      this.b = $$0;
-   }
-
-   @Nullable
-   @Override
-   public eoq.c a(ddv $$0, je $$1, je $$2, eoq.c $$3, eoq.c $$4, eom $$5) {
-      azk $$6 = $$5.b($$4.a());
-      return (!this.b.isPresent() || $$3.b().a(this.b.get())) && !($$6.i() <= this.c) ? null : $$4;
+   public ent(elc.c $$0, boolean $$1) {
+      super($$0);
+      this.e = $$1;
    }
 
    @Override
-   protected eop<?> a() {
-      return eop.f;
+   public Optional<elc.b> a(elc.a $$0) {
+      eak.a $$1 = this.e ? eak.a.a : eak.a.c;
+      return a($$0, $$1, $$1x -> this.a($$1x, $$0));
+   }
+
+   private void a(elu $$0, elc.a $$1) {
+      dnx $$2 = dnx.a($$1.f());
+      je $$3 = new je($$1.h().d(), 90, $$1.h().e());
+      ens.a $$4 = ens.a($$1.e(), $$3, $$2, $$0, $$1.f(), this.e);
+      if ($$4.l()) {
+         eku $$5 = $$4.f();
+         int $$7;
+         if (this.e) {
+            int $$6 = elc.b($$1, $$5.h(), $$5.d(), $$5.j(), $$5.f());
+            $$7 = $$4.a($$6, $$1.f());
+         } else {
+            $$7 = elc.a($$1, $$5.h(), $$5.d(), $$5.j(), $$5.f());
+         }
+
+         $$4.c($$7);
+      }
+   }
+
+   @Override
+   public ell<?> e() {
+      return ell.m;
    }
 }

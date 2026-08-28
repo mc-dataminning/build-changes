@@ -24,7 +24,7 @@ public class us {
       uf var4;
       try (
          InputStream $$2 = Files.newInputStream($$0);
-         InputStream $$3 = new aym($$2);
+         InputStream $$3 = new ayn($$2);
       ) {
          var4 = a($$3, $$1);
       }
@@ -33,7 +33,7 @@ public class us {
    }
 
    private static DataInputStream a(InputStream $$0) throws IOException {
-      return new DataInputStream(new aym(new GZIPInputStream($$0)));
+      return new DataInputStream(new ayn(new GZIPInputStream($$0)));
    }
 
    private static DataOutputStream a(OutputStream $$0) throws IOException {
@@ -52,7 +52,7 @@ public class us {
    public static void a(Path $$0, uz $$1, uo $$2) throws IOException {
       try (
          InputStream $$3 = Files.newInputStream($$0);
-         InputStream $$4 = new aym($$3);
+         InputStream $$4 = new ayn($$3);
       ) {
          a($$4, $$1, $$2);
       }
@@ -190,7 +190,7 @@ public class us {
       }
    }
 
-   public static class a extends ayg {
+   public static class a extends ayh {
       public a(DataOutput $$0) {
          super($$0);
       }

@@ -1,19 +1,13 @@
-import java.util.Objects;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public interface eze {
-   int a();
+interface eze {
+   DoubleList a();
 
-   boolean b();
+   boolean a(eze.a var1);
 
-   @Nullable
-   yt c();
+   int size();
 
-   default xr a(yt $$0) {
-      return Objects.requireNonNullElse(this.c(), $$0).a(this.a());
-   }
-
-   static xr a(@Nullable eze $$0, yt $$1) {
-      return $$0 != null ? $$0.a($$1) : $$1.a(0);
+   public interface a {
+      boolean merge(int var1, int var2, int var3);
    }
 }

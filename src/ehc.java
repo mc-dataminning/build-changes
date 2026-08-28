@@ -1,40 +1,28 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record ehc(jr<dgv> b, jr<dgv> c, ehh d, int e, int f, float g) {
-   public static final Codec<ehc> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               kc.a(lv.f).fieldOf("can_grow_through").forGetter($$0x -> $$0x.b),
-               kc.a(lv.f).fieldOf("muddy_roots_in").forGetter($$0x -> $$0x.c),
-               ehh.a.fieldOf("muddy_roots_provider").forGetter($$0x -> $$0x.d),
-               Codec.intRange(1, 12).fieldOf("max_root_width").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 64).fieldOf("max_root_length").forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("random_skew_chance").forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, ehc::new)
-   );
+public class ehc extends ehb {
+   public static final MapCodec<ehc> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ehc::new));
 
-   public jr<dgv> a() {
-      return this.b;
+   public ehc(bqu $$0, bqu $$1, int $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public jr<dgv> b() {
-      return this.c;
+   @Override
+   protected ehh<?> a() {
+      return ehh.e;
    }
 
-   public ehh c() {
-      return this.d;
+   @Override
+   protected void a(dem $$0, ehg.b $$1, azl $$2, egq $$3, int $$4, ehg.a $$5, int $$6, int $$7, int $$8) {
+      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
+         int $$10 = $$7 + $$5.b() - 1 - $$9;
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
+      }
    }
 
-   public int d() {
-      return this.e;
-   }
-
-   public int e() {
-      return this.f;
-   }
-
-   public float f() {
-      return this.g;
+   @Override
+   protected boolean a(azl $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
    }
 }

@@ -1,38 +1,60 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Optional;
+import org.apache.commons.lang3.tuple.Pair;
 
 public class dzt {
-   public final ehh a;
-   public final ehh b;
-   public final ehh c;
-   public final ehh d;
-   public final ehh e;
-   public final List<dua> f;
-   public final axi<dgv> g;
-   public final axi<dgv> h;
-   public static final Codec<dzt> i = RecordCodecBuilder.create(
+   public static final Codec<dzt> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               ehh.a.fieldOf("filling_provider").forGetter($$0x -> $$0x.a),
-               ehh.a.fieldOf("inner_layer_provider").forGetter($$0x -> $$0x.b),
-               ehh.a.fieldOf("alternate_inner_layer_provider").forGetter($$0x -> $$0x.c),
-               ehh.a.fieldOf("middle_layer_provider").forGetter($$0x -> $$0x.d),
-               ehh.a.fieldOf("outer_layer_provider").forGetter($$0x -> $$0x.e),
-               ayl.a(dua.a.listOf()).fieldOf("inner_placements").forGetter($$0x -> $$0x.f),
-               axi.b(lv.f).fieldOf("cannot_replace").forGetter($$0x -> $$0x.g),
-               axi.b(lv.f).fieldOf("invalid_blocks").forGetter($$0x -> $$0x.h)
+               dzs.a.lenientOptionalFieldOf("event").forGetter($$0x -> $$0x.b.map(Pair::getLeft)),
+               Codec.LONG.fieldOf("tick").forGetter($$0x -> $$0x.b.<Long>map(Pair::getRight).orElse(-1L))
             )
             .apply($$0, dzt::new)
    );
+   private Optional<Pair<dzs, Long>> b;
 
-   public dzt(ehh $$0, ehh $$1, ehh $$2, ehh $$3, ehh $$4, List<dua> $$5, axi<dgv> $$6, axi<dgv> $$7) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
+   public dzt(Optional<dzs> $$0, long $$1) {
+      this.b = $$0.map($$1x -> Pair.of($$1x, $$1));
+   }
+
+   public dzt() {
+      this.b = Optional.empty();
+   }
+
+   public void a(dzs $$0, long $$1) {
+      if (this.b($$0, $$1)) {
+         this.b = Optional.of(Pair.of($$0, $$1));
+      }
+   }
+
+   private boolean b(dzs $$0, long $$1) {
+      if (this.b.isEmpty()) {
+         return true;
+      } else {
+         Pair<dzs, Long> $$2 = this.b.get();
+         long $$3 = (Long)$$2.getRight();
+         if ($$1 != $$3) {
+            return false;
+         } else {
+            dzs $$4 = (dzs)$$2.getLeft();
+            if ($$0.b() < $$4.b()) {
+               return true;
+            } else {
+               return $$0.b() > $$4.b() ? false : dzu.a_($$0.a()) > dzu.a_($$4.a());
+            }
+         }
+      }
+   }
+
+   public Optional<dzs> a(long $$0) {
+      if (this.b.isEmpty()) {
+         return Optional.empty();
+      } else {
+         return this.b.get().getRight() < $$0 ? Optional.of((dzs)this.b.get().getLeft()) : Optional.empty();
+      }
+   }
+
+   public void a() {
+      this.b = Optional.empty();
    }
 }

@@ -1,41 +1,31 @@
-import com.mojang.authlib.yggdrasil.ProfileResult;
-import java.util.Date;
-import java.util.UUID;
+import javax.annotation.Nullable;
 
 public class fgp {
-   private static final xd a = xd.c("mco.util.time.now");
-   private static final int b = 60;
-   private static final int c = 3600;
-   private static final int d = 86400;
+   public final int a;
+   @Nullable
+   public final String b;
 
-   public static xd a(long $$0) {
-      if ($$0 < 0L) {
-         return a;
-      } else {
-         long $$1 = $$0 / 1000L;
-         if ($$1 < 60L) {
-            return xd.a("mco.time.secondsAgo", $$1);
-         } else if ($$1 < 3600L) {
-            long $$2 = $$1 / 60L;
-            return xd.a("mco.time.minutesAgo", $$2);
-         } else if ($$1 < 86400L) {
-            long $$3 = $$1 / 3600L;
-            return xd.a("mco.time.hoursAgo", $$3);
-         } else {
-            long $$4 = $$1 / 86400L;
-            return xd.a("mco.time.daysAgo", $$4);
-         }
+   fgp(int $$0, String $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   public static class a {
+      private int a = -1;
+      private String b;
+
+      public fgp.a a(int $$0) {
+         this.a = $$0;
+         return this;
       }
-   }
 
-   public static xd a(Date $$0) {
-      return a(System.currentTimeMillis() - $$0.getTime());
-   }
+      public fgp.a a(@Nullable String $$0) {
+         this.b = $$0;
+         return this;
+      }
 
-   public static void a(fjn $$0, int $$1, int $$2, int $$3, UUID $$4) {
-      fib $$5 = fib.Q();
-      ProfileResult $$6 = $$5.al().fetchProfile($$4, false);
-      gxl $$7 = $$6 != null ? $$5.am().b($$6.profile()) : gxc.a($$4);
-      fkz.a($$0, $$7, $$1, $$2, $$3);
+      public fgp a() {
+         return new fgp(this.a, this.b);
+      }
    }
 }

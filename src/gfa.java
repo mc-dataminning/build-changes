@@ -1,54 +1,53 @@
-public class gfa extends geq {
-   gfa(gax $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, gez $$8) {
-      super($$0, $$1, $$2, $$3, $$8, 0.0F);
-      this.B = 0.92F;
-      this.D = 0.5F;
-      this.e(1.0F);
-      this.a((float)axn.b($$7), (float)axn.c($$7), (float)axn.d($$7));
-      this.t = (int)((double)(this.D * 12.0F) / (Math.random() * 0.8F + 0.2F));
-      this.b($$8);
-      this.n = false;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
+public class gfa extends gfo {
+   protected final gfj a;
+   private float b;
+   private float F;
+   private float G;
+   private boolean H;
+
+   protected gfa(gbh $$0, double $$1, double $$2, double $$3, gfj $$4, float $$5) {
+      super($$0, $$1, $$2, $$3);
+      this.B = 0.91F;
+      this.u = $$5;
+      this.a = $$4;
+   }
+
+   public void b(int $$0) {
+      float $$1 = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
+      float $$2 = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
+      float $$3 = (float)(($$0 & 0xFF) >> 0) / 255.0F;
+      float $$4 = 1.0F;
+      this.a($$1 * 1.0F, $$2 * 1.0F, $$3 * 1.0F);
+   }
+
+   public void c(int $$0) {
+      this.b = (float)(($$0 & 0xFF0000) >> 16) / 255.0F;
+      this.F = (float)(($$0 & 0xFF00) >> 8) / 255.0F;
+      this.G = (float)(($$0 & 0xFF) >> 0) / 255.0F;
+      this.H = true;
+   }
+
+   @Override
+   public ges b() {
+      return ges.c;
    }
 
    @Override
    public void a() {
       super.a();
-      if (!this.o) {
-         this.b(this.a);
-         if (this.s > this.t / 2) {
-            this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
-         }
-
-         if (this.c.a_(je.a(this.g, this.h, this.i)).l()) {
-            this.k -= 0.0074F;
+      this.b(this.a);
+      if (this.s > this.t / 2) {
+         this.e(1.0F - ((float)this.s - (float)(this.t / 2)) / (float)this.t);
+         if (this.H) {
+            this.v = this.v + (this.b - this.v) * 0.2F;
+            this.w = this.w + (this.F - this.w) * 0.2F;
+            this.x = this.x + (this.G - this.x) * 0.2F;
          }
       }
    }
 
-   public static class a implements geh<lr> {
-      private final gez a;
-
-      public a(gez $$0) {
-         this.a = $$0;
-      }
-
-      public gee a(lr $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gfa($$1, $$2, $$3, $$4, $$5, $$6, $$7, axn.a(255, 204, 31, 102), this.a);
-      }
-   }
-
-   public static class b implements geh<lr> {
-      private final gez a;
-
-      public b(gez $$0) {
-         this.a = $$0;
-      }
-
-      public gee a(lr $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gfa($$1, $$2, $$3, $$4, $$5, $$6, $$7, axn.a(255, 255, 255, 255), this.a);
-      }
+   @Override
+   public int a(float $$0) {
+      return 15728880;
    }
 }

@@ -42,7 +42,7 @@ public final class ko {
             if ($$4.isPresent()) {
                $$1.put(new ko.b($$3, false), $$4.get());
             } else {
-               $$1.put(new ko.b($$3, true), bah.a);
+               $$1.put(new ko.b($$3, true), bai.a);
             }
          }
       }
@@ -261,7 +261,7 @@ public final class ko {
             $$0 = $$0.substring("!".length());
          }
 
-         alb $$2 = alb.c($$0);
+         alc $$2 = alc.c($$0);
          kq<?> $$3 = lu.ap.a($$2);
          if ($$3 == null) {
             return DataResult.error(() -> "No component with type: '" + $$2 + "'");
@@ -270,7 +270,7 @@ public final class ko {
          }
       }, $$0 -> {
          kq<?> $$1 = $$0.b();
-         alb $$2 = lu.ap.b($$1);
+         alc $$2 = lu.ap.b($$1);
          return $$2 == null ? DataResult.error(() -> "Unregistered component: " + $$1) : DataResult.success($$0.c() ? "!" + $$2 : $$2.toString());
       });
 

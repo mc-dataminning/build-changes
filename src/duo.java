@@ -1,17 +1,16 @@
-public enum duo implements azy {
-   a("floor"),
-   b("ceiling"),
-   c("single_wall"),
-   d("double_wall");
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
 
-   private final String e;
+public class duo extends dun.a {
+   public static final Codec<duo> a = a(lu.e.q(), dhj::o).stable();
 
-   private duo(final String $$0) {
-      this.e = $$0;
+   public duo(dhj $$0, Reference2ObjectArrayMap<dvr<?>, Comparable<?>> $$1, MapCodec<duo> $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
-   public String c() {
-      return this.e;
+   protected duo B() {
+      return this;
    }
 }

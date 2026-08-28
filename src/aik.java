@@ -4,13 +4,13 @@ public class aik implements zk<agq> {
    private static final int c = 2;
    private static final int d = 4;
    private final je e;
-   private final dsv.a f;
-   private final dvk g;
+   private final dtj.a f;
+   private final dvy g;
    private final String h;
    private final je i;
    private final ki j;
-   private final dls k;
-   private final dnj l;
+   private final dmg k;
+   private final dnx l;
    private final String m;
    private final boolean n;
    private final boolean o;
@@ -19,7 +19,7 @@ public class aik implements zk<agq> {
    private final long r;
 
    public aik(
-      je $$0, dsv.a $$1, dvk $$2, String $$3, je $$4, ki $$5, dls $$6, dnj $$7, String $$8, boolean $$9, boolean $$10, boolean $$11, float $$12, long $$13
+      je $$0, dtj.a $$1, dvy $$2, String $$3, je $$4, ki $$5, dmg $$6, dnx $$7, String $$8, boolean $$9, boolean $$10, boolean $$11, float $$12, long $$13
    ) {
       this.e = $$0;
       this.f = $$1;
@@ -39,17 +39,17 @@ public class aik implements zk<agq> {
 
    private aik(wa $$0) {
       this.e = $$0.e();
-      this.f = $$0.b(dsv.a.class);
-      this.g = $$0.b(dvk.class);
+      this.f = $$0.b(dtj.a.class);
+      this.g = $$0.b(dvy.class);
       this.h = $$0.p();
       int $$1 = 48;
-      this.i = new je(azc.a($$0.readByte(), -48, 48), azc.a($$0.readByte(), -48, 48), azc.a($$0.readByte(), -48, 48));
+      this.i = new je(azd.a($$0.readByte(), -48, 48), azd.a($$0.readByte(), -48, 48), azd.a($$0.readByte(), -48, 48));
       int $$2 = 48;
-      this.j = new ki(azc.a($$0.readByte(), 0, 48), azc.a($$0.readByte(), 0, 48), azc.a($$0.readByte(), 0, 48));
-      this.k = $$0.b(dls.class);
-      this.l = $$0.b(dnj.class);
+      this.j = new ki(azd.a($$0.readByte(), 0, 48), azd.a($$0.readByte(), 0, 48), azd.a($$0.readByte(), 0, 48));
+      this.k = $$0.b(dmg.class);
+      this.l = $$0.b(dnx.class);
       this.m = $$0.d(128);
-      this.q = azc.a($$0.readFloat(), 0.0F, 1.0F);
+      this.q = azd.a($$0.readFloat(), 0.0F, 1.0F);
       this.r = $$0.m();
       int $$3 = $$0.readByte();
       this.n = ($$3 & 1) != 0;
@@ -102,11 +102,11 @@ public class aik implements zk<agq> {
       return this.e;
    }
 
-   public dsv.a e() {
+   public dtj.a e() {
       return this.f;
    }
 
-   public dvk f() {
+   public dvy f() {
       return this.g;
    }
 
@@ -122,11 +122,11 @@ public class aik implements zk<agq> {
       return this.j;
    }
 
-   public dls j() {
+   public dmg j() {
       return this.k;
    }
 
-   public dnj k() {
+   public dnx k() {
       return this.l;
    }
 

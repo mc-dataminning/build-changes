@@ -1,59 +1,67 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dgq extends diq {
+public class dgq extends dhj implements dol {
    public static final MapCodec<dgq> a = b(dgq::new);
-   public static final int b = 3;
-   public static final dva c = duq.as;
-   private static final eyx[] g = new eyx[]{
-      dgv.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
-      dgv.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
-      dgv.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
-      dgv.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0)
-   };
+   public static final dvf b = dve.C;
 
    @Override
    public MapCodec<dgq> a() {
       return a;
    }
 
-   public dgq(dtz.d $$0) {
+   protected dgq(dun.d $$0) {
       super($$0);
+      this.l(this.o().b(b, Boolean.valueOf(false)));
    }
 
    @Override
-   protected dva b() {
-      return c;
+   protected boolean e_(duo $$0) {
+      return $$0.y().c();
    }
 
    @Override
-   public int c() {
-      return 3;
+   protected dnq a_(duo $$0) {
+      return dnq.a;
    }
 
    @Override
-   protected ddr d() {
-      return cvo.vn;
+   protected float c(duo $$0, ddl $$1, je $$2) {
+      return 1.0F;
    }
 
    @Override
-   protected void b(dua $$0, arg $$1, je $$2, azk $$3) {
-      if ($$3.a(3) != 0) {
-         super.b($$0, $$1, $$2, $$3);
+   protected duo a(duo $$0, jj $$1, duo $$2, deh $$3, je $$4, je $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, eqq.c, eqq.c.a($$3));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected int a(dds $$0) {
-      return super.a($$0) / 3;
+   protected eqp b_(duo $$0) {
+      return $$0.c(b) ? eqq.c.a(false) : super.b_($$0);
+   }
+
+   @Nullable
+   @Override
+   public duo a(czk $$0) {
+      return this.o().b(b, Boolean.valueOf($$0.q().b_($$0.a()).a() == eqq.c));
    }
 
    @Override
-   protected void a(dub.a<dgv, dua> $$0) {
-      $$0.a(c);
+   protected void a(dup.a<dhj, duo> $$0) {
+      $$0.a(b);
    }
 
    @Override
-   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
-      return g[this.h($$0)];
+   public cvp a(@Nullable cnu $$0, deh $$1, je $$2, duo $$3) {
+      return $$0 != null && $$0.f() ? dol.super.a($$0, $$1, $$2, $$3) : cvp.k;
+   }
+
+   @Override
+   public boolean a(@Nullable cnu $$0, ddl $$1, je $$2, duo $$3, eqo $$4) {
+      return $$0 != null && $$0.f() ? dol.super.a($$0, $$1, $$2, $$3, $$4) : false;
    }
 }

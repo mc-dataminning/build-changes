@@ -1,17 +1,20 @@
-public class gpb extends gll<clh, gup> {
-   private static final alb a = alb.b("textures/entity/skeleton/stray.png");
-   private static final alb b = alb.b("textures/entity/skeleton/stray_overlay.png");
+public class gpb extends gme<cgs, gux, fyq> {
+   private static final alc a = alc.b("textures/entity/bear/polarbear.png");
 
-   public gpb(gms.a $$0) {
-      super($$0, gaa.cA, gaa.cB, gaa.cC);
-      this.a(new gri<>(this, $$0.f(), gaa.cD, b));
+   public gpb(gnj.a $$0) {
+      super($$0, new fyq($$0.a(gak.bS)), new fyq($$0.a(gak.bT)), 0.9F);
    }
 
-   public alb b(gup $$0) {
+   public alc a(gux $$0) {
       return a;
    }
 
-   public gup c() {
-      return new gup();
+   public gux c() {
+      return new gux();
+   }
+
+   public void a(cgs $$0, gux $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.J($$2);
    }
 }

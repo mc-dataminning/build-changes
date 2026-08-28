@@ -1,56 +1,127 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.DynamicCommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import java.util.Collection;
+import java.util.List;
 import javax.annotation.Nullable;
 
 public class aod {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xd.c("commands.publish.failed"));
-   private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> xd.b("commands.publish.alreadyPublished", $$0));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xd.c("commands.playsound.failed"));
 
    public static void a(CommandDispatcher<et> $$0) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("publish").requires($$0x -> $$0x.c(4)))
-               .executes($$0x -> a((et)$$0x.getSource(), ayt.a(), false, null)))
-            .then(
-               ((RequiredArgumentBuilder)eu.a("allowCommands", BoolArgumentType.bool())
-                     .executes($$0x -> a((et)$$0x.getSource(), ayt.a(), BoolArgumentType.getBool($$0x, "allowCommands"), null)))
-                  .then(
-                     ((RequiredArgumentBuilder)eu.a("gamemode", fh.a())
-                           .executes($$0x -> a((et)$$0x.getSource(), ayt.a(), BoolArgumentType.getBool($$0x, "allowCommands"), fh.a($$0x, "gamemode"))))
-                        .then(
-                           eu.a("port", IntegerArgumentType.integer(0, 65535))
-                              .executes(
-                                 $$0x -> a(
-                                       (et)$$0x.getSource(),
-                                       IntegerArgumentType.getInteger($$0x, "port"),
-                                       BoolArgumentType.getBool($$0x, "allowCommands"),
-                                       fh.a($$0x, "gamemode")
-                                    )
-                              )
-                        )
-                  )
-            )
-      );
+      RequiredArgumentBuilder<et, alc> $$1 = (RequiredArgumentBuilder<et, alc>)eu.a("sound", fu.a())
+         .suggests(it.c)
+         .executes($$0x -> a((et)$$0x.getSource(), a(((et)$$0x.getSource()).i()), fu.c($$0x, "sound"), awf.a, ((et)$$0x.getSource()).d(), 1.0F, 1.0F, 0.0F));
+
+      for (awf $$2 : awf.values()) {
+         $$1.then(a($$2));
+      }
+
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("playsound").requires($$0x -> $$0x.c(2))).then($$1));
    }
 
-   private static int a(et $$0, int $$1, boolean $$2, @Nullable ddp $$3) throws CommandSyntaxException {
-      if ($$0.l().r()) {
-         throw b.create($$0.l().S());
-      } else if (!$$0.l().a($$3, $$2, $$1)) {
+   private static LiteralArgumentBuilder<et> a(awf $$0) {
+      return (LiteralArgumentBuilder<et>)((LiteralArgumentBuilder)eu.a($$0.a())
+            .executes($$1 -> a((et)$$1.getSource(), a(((et)$$1.getSource()).i()), fu.c($$1, "sound"), $$0, ((et)$$1.getSource()).d(), 1.0F, 1.0F, 0.0F)))
+         .then(
+            ((RequiredArgumentBuilder)eu.a("targets", fg.d())
+                  .executes($$1 -> a((et)$$1.getSource(), fg.f($$1, "targets"), fu.c($$1, "sound"), $$0, ((et)$$1.getSource()).d(), 1.0F, 1.0F, 0.0F)))
+               .then(
+                  ((RequiredArgumentBuilder)eu.a("pos", gw.a())
+                        .executes($$1 -> a((et)$$1.getSource(), fg.f($$1, "targets"), fu.c($$1, "sound"), $$0, gw.a($$1, "pos"), 1.0F, 1.0F, 0.0F)))
+                     .then(
+                        ((RequiredArgumentBuilder)eu.a("volume", FloatArgumentType.floatArg(0.0F))
+                              .executes(
+                                 $$1 -> a(
+                                       (et)$$1.getSource(),
+                                       fg.f($$1, "targets"),
+                                       fu.c($$1, "sound"),
+                                       $$0,
+                                       gw.a($$1, "pos"),
+                                       (Float)$$1.getArgument("volume", Float.class),
+                                       1.0F,
+                                       0.0F
+                                    )
+                              ))
+                           .then(
+                              ((RequiredArgumentBuilder)eu.a("pitch", FloatArgumentType.floatArg(0.0F, 2.0F))
+                                    .executes(
+                                       $$1 -> a(
+                                             (et)$$1.getSource(),
+                                             fg.f($$1, "targets"),
+                                             fu.c($$1, "sound"),
+                                             $$0,
+                                             gw.a($$1, "pos"),
+                                             (Float)$$1.getArgument("volume", Float.class),
+                                             (Float)$$1.getArgument("pitch", Float.class),
+                                             0.0F
+                                          )
+                                    ))
+                                 .then(
+                                    eu.a("minVolume", FloatArgumentType.floatArg(0.0F, 1.0F))
+                                       .executes(
+                                          $$1 -> a(
+                                                (et)$$1.getSource(),
+                                                fg.f($$1, "targets"),
+                                                fu.c($$1, "sound"),
+                                                $$0,
+                                                gw.a($$1, "pos"),
+                                                (Float)$$1.getArgument("volume", Float.class),
+                                                (Float)$$1.getArgument("pitch", Float.class),
+                                                (Float)$$1.getArgument("minVolume", Float.class)
+                                             )
+                                       )
+                                 )
+                           )
+                     )
+               )
+         );
+   }
+
+   private static Collection<ari> a(@Nullable ari $$0) {
+      return $$0 != null ? List.of($$0) : List.of();
+   }
+
+   private static int a(et $$0, Collection<ari> $$1, alc $$2, awf $$3, eys $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
+      jn<awd> $$8 = jn.a(awd.a($$2));
+      double $$9 = (double)azd.k($$8.a().a($$5));
+      int $$10 = 0;
+      long $$11 = $$0.e().C_().g();
+
+      for (ari $$12 : $$1) {
+         double $$13 = $$4.d - $$12.dx();
+         double $$14 = $$4.e - $$12.dz();
+         double $$15 = $$4.f - $$12.dD();
+         double $$16 = $$13 * $$13 + $$14 * $$14 + $$15 * $$15;
+         eys $$17 = $$4;
+         float $$18 = $$5;
+         if ($$16 > $$9) {
+            if ($$7 <= 0.0F) {
+               continue;
+            }
+
+            double $$19 = Math.sqrt($$16);
+            $$17 = new eys($$12.dx() + $$13 / $$19 * 2.0, $$12.dz() + $$14 / $$19 * 2.0, $$12.dD() + $$15 / $$19 * 2.0);
+            $$18 = $$7;
+         }
+
+         $$12.c.b(new afx($$8, $$3, $$17.a(), $$17.b(), $$17.c(), $$18, $$6, $$11));
+         $$10++;
+      }
+
+      if ($$10 == 0) {
          throw a.create();
       } else {
-         $$0.a(() -> a($$1), true);
-         return $$1;
-      }
-   }
+         if ($$1.size() == 1) {
+            $$0.a(() -> xd.a("commands.playsound.success.single", xd.a($$2), $$1.iterator().next().Q_()), true);
+         } else {
+            $$0.a(() -> xd.a("commands.playsound.success.multiple", xd.a($$2), $$1.size()), true);
+         }
 
-   public static xr a(int $$0) {
-      xd $$1 = xg.a(String.valueOf($$0));
-      return xd.a("commands.publish.started", $$1);
+         return $$10;
+      }
    }
 }

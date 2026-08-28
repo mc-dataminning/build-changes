@@ -151,7 +151,7 @@ public class vx extends SimpleChannelInboundHandler<zk<?>> {
             if ($$2.a($$1)) {
                try {
                   a($$1, $$2);
-               } catch (aln var5) {
+               } catch (alo var5) {
                } catch (RejectedExecutionException var6) {
                   this.a(xd.c("multiplayer.disconnect.server_shutdown"));
                } catch (ClassCastException var7) {
@@ -368,8 +368,8 @@ public class vx extends SimpleChannelInboundHandler<zk<?>> {
    }
 
    protected void c() {
-      this.x = azc.h(0.75F, (float)this.v, this.x);
-      this.w = azc.h(0.75F, (float)this.u, this.w);
+      this.x = azd.h(0.75F, (float)this.v, this.x);
+      this.w = azd.h(0.75F, (float)this.u, this.w);
       this.v = 0;
       this.u = 0;
    }
@@ -413,7 +413,7 @@ public class vx extends SimpleChannelInboundHandler<zk<?>> {
       return this.k.a();
    }
 
-   public static vx a(InetSocketAddress $$0, boolean $$1, @Nullable bmk $$2) {
+   public static vx a(InetSocketAddress $$0, boolean $$1, @Nullable bmo $$2) {
       vx $$3 = new vx(zl.b);
       if ($$2 != null) {
          $$3.a($$2);
@@ -586,7 +586,7 @@ public class vx extends SimpleChannelInboundHandler<zk<?>> {
       return this.x;
    }
 
-   public void a(bmk $$0) {
+   public void a(bmo $$0) {
       this.B = new vq($$0);
    }
 }

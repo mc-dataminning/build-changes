@@ -1,29 +1,37 @@
-public abstract class grf<S extends gsu, M extends fxa<? super S>> {
-   private final goo<S, M> a;
+public class grf<S extends gub, M extends fxk<S>> extends grw<S, M> {
+   private static final alc a = alc.b("textures/entity/elytra.png");
+   private final fxg b;
+   private final fxg c;
 
-   public grf(goo<S, M> $$0) {
-      this.a = $$0;
+   public grf(gpf<S, M> $$0, gah $$1) {
+      super($$0);
+      this.b = new fxg($$1.a(gak.ar));
+      this.c = new fxg($$1.a(gak.as));
    }
 
-   protected static <S extends gts> void a(fxa<S> $$0, alb $$1, fcu $$2, ggv $$3, int $$4, S $$5, int $$6) {
-      if (!$$5.u) {
-         $$0.a($$5);
-         b($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   public void a(fde $$0, ghg $$1, int $$2, S $$3, float $$4, float $$5) {
+      if ($$3.Q.a(cvt.nU)) {
+         alc $$8;
+         if ($$3 instanceof guw $$6) {
+            gyc $$7 = $$6.a;
+            if ($$7.d() != null) {
+               $$8 = $$7.d();
+            } else if ($$7.c() != null && $$6.aw) {
+               $$8 = $$7.c();
+            } else {
+               $$8 = a;
+            }
+         } else {
+            $$8 = a;
+         }
+
+         fxg $$12 = $$3.ae ? this.c : this.b;
+         $$0.a();
+         $$0.a(0.0F, 0.0F, 0.125F);
+         $$12.a($$3);
+         fdi $$13 = goh.a($$1, ghq.a($$8), $$3.Q.z());
+         $$12.a($$0, $$13, $$2, gws.d);
+         $$0.b();
       }
    }
-
-   protected static void b(fxa<?> $$0, alb $$1, fcu $$2, ggv $$3, int $$4, gts $$5, int $$6) {
-      fcy $$7 = $$3.getBuffer(ghe.f($$1));
-      $$0.a($$2, $$7, $$4, gnt.a($$5, 0.0F), $$6);
-   }
-
-   public M d() {
-      return this.a.e();
-   }
-
-   protected alb b(S $$0) {
-      return this.a.a($$0);
-   }
-
-   public abstract void a(fcu var1, ggv var2, int var3, S var4, float var5, float var6);
 }

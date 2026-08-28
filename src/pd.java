@@ -19,12 +19,12 @@ public class pd implements mb {
    public CompletableFuture<?> a(lz $$0) {
       return this.e.thenCompose($$1 -> {
          DynamicOps<JsonElement> $$2 = $$1.a(JsonOps.INSTANCE);
-         return CompletableFuture.allOf(akw.a.stream().flatMap($$3 -> this.a($$0, $$1, $$2, (akw.d<?>)$$3).stream()).toArray(CompletableFuture[]::new));
+         return CompletableFuture.allOf(akx.a.stream().flatMap($$3 -> this.a($$0, $$1, $$2, (akx.d<?>)$$3).stream()).toArray(CompletableFuture[]::new));
       });
    }
 
-   private <T> Optional<CompletableFuture<?>> a(lz $$0, jp.a $$1, DynamicOps<JsonElement> $$2, akw.d<T> $$3) {
-      ala<? extends ka<T>> $$4 = $$3.a();
+   private <T> Optional<CompletableFuture<?>> a(lz $$0, jp.a $$1, DynamicOps<JsonElement> $$2, akx.d<T> $$3) {
+      alb<? extends ka<T>> $$4 = $$3.a();
       return $$1.a($$4).map($$4x -> {
          md.a $$5 = this.d.a($$4);
          return CompletableFuture.allOf($$4x.b().map($$4xx -> a($$5.a($$4xx.h().a()), $$0, $$2, $$3.b(), $$4xx.a())).toArray(CompletableFuture[]::new));

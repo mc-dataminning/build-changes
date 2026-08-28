@@ -15,27 +15,27 @@ public class gs implements gr {
    }
 
    @Override
-   public eye a(et $$0) {
-      eyd $$1 = $$0.k();
-      eye $$2 = $$0.m().a($$0);
-      float $$3 = azc.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
-      float $$4 = azc.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
-      float $$5 = azc.b(-$$1.i * (float) (Math.PI / 180.0));
-      float $$6 = azc.a(-$$1.i * (float) (Math.PI / 180.0));
-      float $$7 = azc.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      float $$8 = azc.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      eye $$9 = new eye((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
-      eye $$10 = new eye((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
-      eye $$11 = $$9.c($$10).c(-1.0);
+   public eys a(et $$0) {
+      eyr $$1 = $$0.k();
+      eys $$2 = $$0.m().a($$0);
+      float $$3 = azd.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
+      float $$4 = azd.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
+      float $$5 = azd.b(-$$1.i * (float) (Math.PI / 180.0));
+      float $$6 = azd.a(-$$1.i * (float) (Math.PI / 180.0));
+      float $$7 = azd.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
+      float $$8 = azd.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
+      eys $$9 = new eys((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
+      eys $$10 = new eys((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
+      eys $$11 = $$9.c($$10).c(-1.0);
       double $$12 = $$9.d * this.d + $$10.d * this.c + $$11.d * this.b;
       double $$13 = $$9.e * this.d + $$10.e * this.c + $$11.e * this.b;
       double $$14 = $$9.f * this.d + $$10.f * this.c + $$11.f * this.b;
-      return new eye($$2.d + $$12, $$2.e + $$13, $$2.f + $$14);
+      return new eys($$2.d + $$12, $$2.e + $$13, $$2.f + $$14);
    }
 
    @Override
-   public eyd b(et $$0) {
-      return eyd.a;
+   public eyr b(et $$0) {
+      return eyr.a;
    }
 
    @Override

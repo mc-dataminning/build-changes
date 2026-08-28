@@ -1,27 +1,20 @@
-import javax.annotation.Nullable;
+public class fun extends fqd {
+   private static final xd a = xd.c("gui.abuseReport.title");
+   private static final xd b = xd.c("gui.abuseReport.message");
+   private static final xd c = xd.c("gui.abuseReport.type.chat");
+   private static final xd d = xd.c("gui.abuseReport.type.skin");
+   private static final xd s = xd.c("gui.abuseReport.type.name");
+   private static final int u = 6;
+   private final fqd v;
+   private final gcp w;
+   private final fur x;
+   private final foc y = foc.d().a(6);
 
-public class fun extends fpt {
-   private static final xd a = xd.c("telemetry_info.screen.title");
-   private static final xd b = xd.c("telemetry_info.screen.description").b(-4539718);
-   private static final xd c = xd.c("telemetry_info.button.privacy_statement");
-   private static final xd d = xd.c("telemetry_info.button.give_feedback");
-   private static final xd s = xd.c("telemetry_info.button.show_data");
-   private static final xd u = xd.c("telemetry_info.opt_in.description");
-   private static final int v = 8;
-   private static final boolean w = fib.Q().D();
-   private final fpt x;
-   private final fif y;
-   private final fno z = new fno(this, 16 + 9 * 5 + 20, w ? 33 + fkc.a(fib.Q().h) : 33);
-   @Nullable
-   private fum A;
-   @Nullable
-   private fku B;
-   private double C;
-
-   public fun(fpt $$0, fif $$1) {
+   public fun(fqd $$0, gcp $$1, fur $$2) {
       super(a);
-      this.x = $$0;
-      this.y = $$1;
+      this.v = $$0;
+      this.w = $$1;
+      this.x = $$2;
    }
 
    @Override
@@ -30,79 +23,37 @@ public class fun extends fpt {
    }
 
    @Override
-   protected void aT_() {
-      fns $$0 = this.z.a(fns.d().a(4));
-      $$0.c().b();
-      $$0.a(new flh(a, this.p));
-      this.B = $$0.a(new fku(b, this.p).b(true));
-      fns $$1 = $$0.a(fns.e().a(8));
-      $$1.a(fka.a(c, this::a).a());
-      $$1.a(fka.a(d, this::b).a());
-      fns $$2 = this.z.b(fns.d().a(4));
-      if (w) {
-         $$2.a(this.m());
+   protected void aR_() {
+      this.y.c().b();
+      this.y.a(new flr(this.l, this.p), this.y.b().e(6));
+      this.y.a(new fle(b, this.p).b(true), this.y.b().e(6));
+      fkk $$0 = this.y.a(fkk.a(c, $$0x -> this.m.a(new fuj(this.v, this.w, this.x.d()))).a());
+      if (!this.x.k()) {
+         $$0.j = false;
+         $$0.a(flv.a(xd.c("gui.socialInteractions.tooltip.report.not_reportable")));
+      } else if (!this.x.j()) {
+         $$0.j = false;
+         $$0.a(flv.a(xd.a("gui.socialInteractions.tooltip.report.no_messages", this.x.c())));
       }
 
-      fns $$3 = $$2.a(fns.e().a(8));
-      $$3.a(fka.a(s, this::c).a());
-      $$3.a(fka.a(xc.d, $$0x -> this.d()).a());
-      fns $$4 = this.z.c(fns.d().a(8));
-      this.A = $$4.a(new fum(0, 0, this.n - 40, this.z.d(), this.p));
-      this.A.a($$0x -> this.C = $$0x);
-      this.z.a($$1x -> {
-         fjy var10000 = this.c($$1x);
+      this.y.a(fkk.a(d, $$0x -> this.m.a(new fup(this.v, this.w, this.x.d(), this.x.h()))).a());
+      this.y.a(fkk.a(s, $$0x -> this.m.a(new fum(this.v, this.w, this.x.d(), this.x.c()))).a());
+      this.y.a(fod.b(20));
+      this.y.a(fkk.a(xc.e, $$0x -> this.d()).a());
+      this.y.a($$1 -> {
+         fki var10000 = this.c($$1);
       });
       this.c();
    }
 
    @Override
    protected void c() {
-      if (this.A != null) {
-         this.A.a(this.C);
-         this.A.k(this.n - 40);
-         this.A.l(this.z.d());
-         this.A.j();
-      }
-
-      if (this.B != null) {
-         this.B.d(this.n - 16);
-      }
-
-      this.z.a();
-   }
-
-   @Override
-   protected void aI_() {
-      if (this.A != null) {
-         this.b(this.A);
-      }
-   }
-
-   private fjy m() {
-      fie<Boolean> $$0 = this.y.ak();
-      return fkc.a(u, this.p).a($$0).a(this::a).a();
-   }
-
-   private void a(fjy $$0, boolean $$1) {
-      if (this.A != null) {
-         this.A.b($$1);
-      }
-   }
-
-   private void a(fka $$0) {
-      fop.a(this, axy.c);
-   }
-
-   private void b(fka $$0) {
-      fop.a(this, axy.i);
-   }
-
-   private void c(fka $$0) {
-      ad.m().a(this.m.u().b());
+      this.y.a();
+      fnw.a(this.y, this.H());
    }
 
    @Override
    public void d() {
-      this.m.a(this.x);
+      this.m.a(this.v);
    }
 }

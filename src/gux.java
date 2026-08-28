@@ -1,3 +1,3 @@
-public class gux extends gsc {
-   public boolean d;
+public class gux extends guj {
+   public float a;
 }

@@ -1,40 +1,56 @@
-public record cfz(alb m) {
-   public static final zb<wo, jn<cfz>> a = yz.b(lv.l);
-   public static final ala<cfz> b = a("tabby");
-   public static final ala<cfz> c = a("black");
-   public static final ala<cfz> d = a("red");
-   public static final ala<cfz> e = a("siamese");
-   public static final ala<cfz> f = a("british_shorthair");
-   public static final ala<cfz> g = a("calico");
-   public static final ala<cfz> h = a("persian");
-   public static final ala<cfz> i = a("ragdoll");
-   public static final ala<cfz> j = a("white");
-   public static final ala<cfz> k = a("jellie");
-   public static final ala<cfz> l = a("all_black");
-
-   private static ala<cfz> a(String $$0) {
-      return ala.a(lv.l, alb.b($$0));
+public abstract class cfz extends bth {
+   protected cfz(btv<? extends cfz> $$0, deg $$1) {
+      super($$0, $$1);
+      this.a(erg.j, 0.0F);
    }
 
-   public static cfz a(ka<cfz> $$0) {
-      a($$0, b, "textures/entity/cat/tabby.png");
-      a($$0, c, "textures/entity/cat/black.png");
-      a($$0, d, "textures/entity/cat/red.png");
-      a($$0, e, "textures/entity/cat/siamese.png");
-      a($$0, f, "textures/entity/cat/british_shorthair.png");
-      a($$0, g, "textures/entity/cat/calico.png");
-      a($$0, h, "textures/entity/cat/persian.png");
-      a($$0, i, "textures/entity/cat/ragdoll.png");
-      a($$0, j, "textures/entity/cat/white.png");
-      a($$0, k, "textures/entity/cat/jellie.png");
-      return a($$0, l, "textures/entity/cat/all_black.png");
+   @Override
+   public boolean a(dej $$0) {
+      return $$0.f(this);
    }
 
-   private static cfz a(ka<cfz> $$0, ala<cfz> $$1, String $$2) {
-      return ka.a($$0, $$1, new cfz(alb.b($$2)));
+   @Override
+   public int T() {
+      return 120;
    }
 
-   public alb a() {
-      return this.m;
+   @Override
+   public int ek() {
+      return 1 + this.dS().z.a(3);
+   }
+
+   protected void s(int $$0) {
+      if (this.bI() && !this.bl()) {
+         this.j($$0 - 1);
+         if (this.cq() == -20) {
+            this.j(0);
+            this.a(this.dT().i(), 2.0F);
+         }
+      } else {
+         this.j(300);
+      }
+   }
+
+   @Override
+   public void ay() {
+      int $$0 = this.cq();
+      super.ay();
+      this.s($$0);
+   }
+
+   @Override
+   public boolean cG() {
+      return false;
+   }
+
+   @Override
+   public boolean A() {
+      return false;
+   }
+
+   public static boolean b(btv<? extends cfz> $$0, deh $$1, btu $$2, je $$3, azl $$4) {
+      int $$5 = $$1.N();
+      int $$6 = $$5 - 13;
+      return $$3.v() >= $$6 && $$3.v() <= $$5 && $$1.b_($$3.e()).a(awz.a) && $$1.a_($$3.d()).a(dhl.G);
    }
 }

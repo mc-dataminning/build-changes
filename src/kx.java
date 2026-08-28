@@ -2,22 +2,22 @@ public class kx implements ky {
    private static final int c = 6;
 
    @Override
-   public final cvl dispense(kv $$0, cvl $$1) {
-      cvl $$2 = this.a($$0, $$1);
+   public final cvp dispense(kv $$0, cvp $$1) {
+      cvp $$2 = this.a($$0, $$1);
       this.a($$0);
-      this.a($$0, $$0.d().c(dja.b));
+      this.a($$0, $$0.d().c(djo.b));
       return $$2;
    }
 
-   protected cvl a(kv $$0, cvl $$1) {
-      jj $$2 = $$0.d().c(dja.b);
-      jx $$3 = dja.a($$0);
-      cvl $$4 = $$1.a(1);
+   protected cvp a(kv $$0, cvp $$1) {
+      jj $$2 = $$0.d().c(djo.b);
+      jx $$3 = djo.a($$0);
+      cvp $$4 = $$1.a(1);
       a($$0.b(), $$4, 6, $$2, $$3);
       return $$1;
    }
 
-   public static void a(dds $$0, cvl $$1, int $$2, jj $$3, jx $$4) {
+   public static void a(deg $$0, cvp $$1, int $$2, jj $$3, jx $$4) {
       double $$5 = $$4.a();
       double $$6 = $$4.b();
       double $$7 = $$4.c();
@@ -27,7 +27,7 @@ public class kx implements ky {
          $$6 -= 0.15625;
       }
 
-      cjz $$8 = new cjz($$0, $$5, $$6, $$7, $$1);
+      cke $$8 = new cke($$0, $$5, $$6, $$7, $$1);
       double $$9 = $$0.z.j() * 0.1 + 0.2;
       $$8.n(
          $$0.z.a((double)$$3.j() * $$9, 0.0172275 * (double)$$2),
@@ -53,7 +53,7 @@ public class kx implements ky {
       $$0.b().c(2000, $$0.c(), $$1.d());
    }
 
-   protected cvl a(kv $$0, cvl $$1, cvl $$2) {
+   protected cvp a(kv $$0, cvp $$1, cvp $$2) {
       $$1.h(1);
       if ($$1.f()) {
          return $$2;
@@ -63,11 +63,11 @@ public class kx implements ky {
       }
    }
 
-   private void b(kv $$0, cvl $$1) {
-      cvl $$2 = $$0.e().b($$1);
+   private void b(kv $$0, cvp $$1) {
+      cvp $$2 = $$0.e().b($$1);
       if (!$$2.f()) {
-         jj $$3 = $$0.d().c(dja.b);
-         a($$0.b(), $$2, 6, $$3, dja.a($$0));
+         jj $$3 = $$0.d().c(djo.b);
+         a($$0.b(), $$2, 6, $$3, djo.a($$0));
          b($$0);
          b($$0, $$3);
       }

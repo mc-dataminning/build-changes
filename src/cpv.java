@@ -1,118 +1,199 @@
-public class cpv extends cpm {
-   static final akg<String> c = akk.a(cpv.class, aki.e);
-   static final akg<xd> d = akk.a(cpv.class, aki.f);
-   private final dcs e = new cpv.a();
-   private static final int i = 4;
-   private int j;
+import javax.annotation.Nullable;
 
-   public cpv(btq<? extends cpv> $$0, dds $$1) {
+public class cpv extends cpu implements bud, cpw {
+   private static final int i = 27;
+   private jw<cvp> j = jw.a(27, cvp.k);
+   @Nullable
+   private alb<etm> k;
+   private long l;
+
+   public cpv(btv<? extends cpu> $$0, deg $$1) {
       super($$0, $$1);
    }
 
-   public cpv(dds $$0, double $$1, double $$2, double $$3) {
-      super(btq.v, $$0, $$1, $$2, $$3);
+   public cpv(deg $$0, double $$1, double $$2, double $$3) {
+      super(btv.r, $$0);
+      this.a_($$1, $$2, $$3);
+      this.L = $$1;
+      this.M = $$2;
+      this.N = $$3;
    }
 
    @Override
-   protected cvg aj_() {
-      return cvo.nM;
+   protected float v() {
+      return 0.15F;
    }
 
    @Override
-   protected void a(akk.a $$0) {
-      super.a($$0);
-      $$0.a(c, "");
-      $$0.a(d, xc.a);
-   }
-
-   @Override
-   protected void a(uf $$0) {
-      super.a($$0);
-      this.e.b($$0, this.dU());
-      this.at().a(c, this.E().m());
-      this.at().a(d, this.E().l());
+   protected int x() {
+      return 1;
    }
 
    @Override
    protected void b(uf $$0) {
       super.b($$0);
-      this.e.a($$0, this.dU());
+      this.a($$0, this.dU());
    }
 
    @Override
-   public cpm.a x() {
-      return cpm.a.g;
-   }
-
-   @Override
-   public dua z() {
-      return dgx.fN.o();
-   }
-
-   public dcs E() {
-      return this.e;
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3 && this.ag - this.j >= 4) {
-         this.E().a(this.dS());
-         this.j = this.ag;
-      }
-   }
-
-   @Override
-   public brk a(cnp $$0, brj $$1) {
-      return this.e.a($$0);
-   }
-
-   @Override
-   public void a(akg<?> $$0) {
+   protected void a(uf $$0) {
       super.a($$0);
-      if (d.equals($$0)) {
-         try {
-            this.e.c(this.at().a(d));
-         } catch (Throwable var3) {
+      this.b($$0, this.dU());
+   }
+
+   @Override
+   public void a(bsg $$0) {
+      this.b(this.aj_());
+      this.a($$0, this.dS(), this);
+   }
+
+   @Override
+   public void a(bto.c $$0) {
+      if (!this.dS().B && $$0.a()) {
+         brl.a(this.dS(), this, this);
+      }
+
+      super.a($$0);
+   }
+
+   @Override
+   public brp a(cnu $$0, bro $$1) {
+      if (!$$0.fS()) {
+         brp $$2 = super.a($$0, $$1);
+         if ($$2 != brp.e) {
+            return $$2;
          }
-      } else if (c.equals($$0)) {
-         this.e.a(this.at().a(c));
+      }
+
+      if (this.r($$0) && !$$0.fS()) {
+         return brp.e;
+      } else {
+         brp $$3 = this.c_($$0);
+         if ($$3.a()) {
+            this.a(dzl.k, $$0);
+            cml.a($$0, true);
+         }
+
+         return $$3;
       }
    }
 
    @Override
-   public boolean cT() {
-      return true;
+   public void b(cnu $$0) {
+      $$0.a(this);
+      if (!$$0.dS().B) {
+         this.a(dzl.k, $$0);
+         cml.a($$0, true);
+      }
    }
 
-   public class a extends dcs {
-      @Override
-      public arg e() {
-         return (arg)cpv.this.dS();
-      }
+   @Override
+   public cvk aj_() {
+      return switch (this.w()) {
+         case b -> cvt.nY;
+         case c -> cvt.oa;
+         case d -> cvt.oc;
+         case e -> cvt.oe;
+         case f -> cvt.og;
+         case g -> cvt.oi;
+         case h -> cvt.ok;
+         case i -> cvt.om;
+         default -> cvt.nW;
+      };
+   }
 
-      @Override
-      public void f() {
-         cpv.this.at().a(cpv.c, this.m());
-         cpv.this.at().a(cpv.d, this.l());
-      }
+   @Override
+   public void a() {
+      this.f();
+   }
 
-      @Override
-      public eye g() {
-         return cpv.this.dq();
-      }
+   @Override
+   public int b() {
+      return 27;
+   }
 
-      public cpv h() {
-         return cpv.this;
-      }
+   @Override
+   public cvp a(int $$0) {
+      return this.f_($$0);
+   }
 
-      @Override
-      public et i() {
-         return new et(this, cpv.this.dq(), cpv.this.bR(), this.e(), 2, this.n().getString(), cpv.this.Q_(), this.e().o(), cpv.this);
-      }
+   @Override
+   public cvp a(int $$0, int $$1) {
+      return this.b($$0, $$1);
+   }
 
-      @Override
-      public boolean j() {
-         return !cpv.this.dN();
+   @Override
+   public cvp b(int $$0) {
+      return this.e_($$0);
+   }
+
+   @Override
+   public void a(int $$0, cvp $$1) {
+      this.c($$0, $$1);
+   }
+
+   @Override
+   public bvb a_(int $$0) {
+      return this.g_($$0);
+   }
+
+   @Override
+   public void e() {
+   }
+
+   @Override
+   public boolean a(cnu $$0) {
+      return this.g($$0);
+   }
+
+   @Nullable
+   @Override
+   public cqw createMenu(int $$0, cnt $$1, cnu $$2) {
+      if (this.k != null && $$2.P_()) {
+         return null;
+      } else {
+         this.e($$1.k);
+         return crf.a($$0, $$1, this);
       }
+   }
+
+   public void e(@Nullable cnu $$0) {
+      this.f($$0);
+   }
+
+   @Nullable
+   @Override
+   public alb<etm> F() {
+      return this.k;
+   }
+
+   @Override
+   public void a(@Nullable alb<etm> $$0) {
+      this.k = $$0;
+   }
+
+   @Override
+   public long G() {
+      return this.l;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.l = $$0;
+   }
+
+   @Override
+   public jw<cvp> I() {
+      return this.j;
+   }
+
+   @Override
+   public void J() {
+      this.j = jw.a(this.b(), cvp.k);
+   }
+
+   @Override
+   public void c(cnu $$0) {
+      this.dS().a(dzl.j, this.dq(), dzl.a.a($$0));
    }
 }

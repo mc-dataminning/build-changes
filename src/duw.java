@@ -1,28 +1,18 @@
-public enum duw implements azy {
-   a(jj.a),
-   b(jj.b);
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   private final jj c;
+public class duw implements Predicate<duo> {
+   private final dhj a;
 
-   private duw(final jj $$0) {
-      this.c = $$0;
+   public duw(dhj $$0) {
+      this.a = $$0;
    }
 
-   public jj a() {
-      return this.c;
+   public static duw a(dhj $$0) {
+      return new duw($$0);
    }
 
-   @Override
-   public String toString() {
-      return this.c();
-   }
-
-   @Override
-   public String c() {
-      return this == a ? "upper" : "lower";
-   }
-
-   public duw b() {
-      return this == a ? b : a;
+   public boolean a(@Nullable duo $$0) {
+      return $$0 != null && $$0.a(this.a);
    }
 }

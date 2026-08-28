@@ -1,450 +1,332 @@
-import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.nio.file.InvalidPathException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.mutable.MutableFloat;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.apache.commons.lang3.mutable.MutableObject;
+import org.joml.Vector2i;
+import org.lwjgl.glfw.GLFWDropCallback;
+import org.slf4j.Logger;
 
 public class fim {
-   final fim.f a;
+   private static final Logger a = LogUtils.getLogger();
+   private final fil b;
+   private boolean c;
+   private boolean d;
+   private boolean e;
+   private double f;
+   private double g;
+   private int h;
+   private int i = -1;
+   private boolean j = true;
+   private int k;
+   private double l;
+   private final azu m = new azu();
+   private final azu n = new azu();
+   private double o;
+   private double p;
+   private final fiv q;
+   private double r = Double.MIN_VALUE;
+   private boolean s;
 
-   public fim(fim.f $$0) {
-      this.a = $$0;
+   public fim(fil $$0) {
+      this.b = $$0;
+      this.q = new fiv();
    }
 
-   public float a(@Nullable String $$0) {
-      if ($$0 == null) {
-         return 0.0F;
-      } else {
-         MutableFloat $$1 = new MutableFloat();
-         azx.c($$0, ya.a, ($$1x, $$2, $$3) -> {
-            $$1.add(this.a.getWidth($$3, $$2));
-            return true;
-         });
-         return $$1.floatValue();
-      }
-   }
-
-   public float a(xi $$0) {
-      MutableFloat $$1 = new MutableFloat();
-      azx.a($$0, ya.a, ($$1x, $$2, $$3) -> {
-         $$1.add(this.a.getWidth($$3, $$2));
-         return true;
-      });
-      return $$1.floatValue();
-   }
-
-   public float a(ayo $$0) {
-      MutableFloat $$1 = new MutableFloat();
-      $$0.accept(($$1x, $$2, $$3) -> {
-         $$1.add(this.a.getWidth($$3, $$2));
-         return true;
-      });
-      return $$1.floatValue();
-   }
-
-   public int a(String $$0, int $$1, ya $$2) {
-      fim.e $$3 = new fim.e((float)$$1);
-      azx.a($$0, $$2, $$3);
-      return $$3.a();
-   }
-
-   public String b(String $$0, int $$1, ya $$2) {
-      return $$0.substring(0, this.a($$0, $$1, $$2));
-   }
-
-   public String c(String $$0, int $$1, ya $$2) {
-      MutableFloat $$3 = new MutableFloat();
-      MutableInt $$4 = new MutableInt($$0.length());
-      azx.b($$0, $$2, ($$3x, $$4x, $$5) -> {
-         float $$6 = $$3.addAndGet(this.a.getWidth($$5, $$4x));
-         if ($$6 > (float)$$1) {
-            return false;
-         } else {
-            $$4.setValue($$3x);
-            return true;
+   private void a(long $$0, int $$1, int $$2, int $$3) {
+      if ($$0 == this.b.aP().i()) {
+         this.b.aQ().b();
+         if (this.b.z != null) {
+            this.b.a(fii.b);
          }
-      });
-      return $$0.substring($$4.intValue());
-   }
 
-   public int d(String $$0, int $$1, ya $$2) {
-      fim.e $$3 = new fim.e((float)$$1);
-      azx.c($$0, $$2, $$3);
-      return $$3.a();
-   }
-
-   @Nullable
-   public ya a(xi $$0, int $$1) {
-      fim.e $$2 = new fim.e((float)$$1);
-      return $$0.<ya>a(($$1x, $$2x) -> azx.c($$2x, $$1x, $$2) ? Optional.empty() : Optional.of($$1x), ya.a).orElse(null);
-   }
-
-   @Nullable
-   public ya a(ayo $$0, int $$1) {
-      fim.e $$2 = new fim.e((float)$$1);
-      MutableObject<ya> $$3 = new MutableObject();
-      $$0.accept(($$2x, $$3x, $$4) -> {
-         if (!$$2.accept($$2x, $$3x, $$4)) {
-            $$3.setValue($$3x);
-            return false;
-         } else {
-            return true;
-         }
-      });
-      return (ya)$$3.getValue();
-   }
-
-   public String e(String $$0, int $$1, ya $$2) {
-      return $$0.substring(0, this.d($$0, $$1, $$2));
-   }
-
-   public xi a(xi $$0, int $$1, ya $$2) {
-      final fim.e $$3 = new fim.e((float)$$1);
-      return $$0.a(new xi.b<xi>() {
-         private final fhp b = new fhp();
-
-         @Override
-         public Optional<xi> accept(ya $$0, String $$1) {
-            $$3.b();
-            if (!azx.c($$1, $$0, $$3)) {
-               String $$2 = $$1.substring(0, $$3.a());
-               if (!$$2.isEmpty()) {
-                  this.b.a(xi.a($$2, $$0));
+         boolean $$4 = $$2 == 1;
+         if (fil.a && $$1 == 0) {
+            if ($$4) {
+               if (($$3 & 2) == 2) {
+                  $$1 = 1;
+                  this.h++;
                }
+            } else if (this.h > 0) {
+               $$1 = 1;
+               this.h--;
+            }
+         }
 
-               return Optional.of(this.b.b());
-            } else {
-               if (!$$1.isEmpty()) {
-                  this.b.a(xi.a($$1, $$0));
+         int $$5 = $$1;
+         if ($$4) {
+            if (this.b.n.ab().c() && this.k++ > 0) {
+               return;
+            }
+
+            this.i = $$5;
+            this.l = far.b();
+         } else if (this.i != -1) {
+            if (this.b.n.ab().c() && --this.k > 0) {
+               return;
+            }
+
+            this.i = -1;
+         }
+
+         boolean[] $$6 = new boolean[]{false};
+         if (this.b.aN() == null) {
+            if (this.b.z == null) {
+               if (!this.s && $$4) {
+                  this.i();
                }
-
-               return Optional.empty();
-            }
-         }
-      }, $$2).orElse($$0);
-   }
-
-   public int f(String $$0, int $$1, ya $$2) {
-      fim.b $$3 = new fim.b((float)$$1);
-      azx.c($$0, $$2, $$3);
-      return $$3.a();
-   }
-
-   public static int a(String $$0, int $$1, int $$2, boolean $$3) {
-      int $$4 = $$2;
-      boolean $$5 = $$1 < 0;
-      int $$6 = Math.abs($$1);
-
-      for (int $$7 = 0; $$7 < $$6; $$7++) {
-         if ($$5) {
-            while ($$3 && $$4 > 0 && ($$0.charAt($$4 - 1) == ' ' || $$0.charAt($$4 - 1) == '\n')) {
-               $$4--;
-            }
-
-            while ($$4 > 0 && $$0.charAt($$4 - 1) != ' ' && $$0.charAt($$4 - 1) != '\n') {
-               $$4--;
-            }
-         } else {
-            int $$8 = $$0.length();
-            int $$9 = $$0.indexOf(32, $$4);
-            int $$10 = $$0.indexOf(10, $$4);
-            if ($$9 == -1 && $$10 == -1) {
-               $$4 = -1;
-            } else if ($$9 != -1 && $$10 != -1) {
-               $$4 = Math.min($$9, $$10);
-            } else if ($$9 != -1) {
-               $$4 = $$9;
             } else {
-               $$4 = $$10;
-            }
-
-            if ($$4 == -1) {
-               $$4 = $$8;
-            } else {
-               while ($$3 && $$4 < $$8 && ($$0.charAt($$4) == ' ' || $$0.charAt($$4) == '\n')) {
-                  $$4++;
-               }
-            }
-         }
-      }
-
-      return $$4;
-   }
-
-   public void a(String $$0, int $$1, ya $$2, boolean $$3, fim.d $$4) {
-      int $$5 = 0;
-      int $$6 = $$0.length();
-      ya $$7 = $$2;
-
-      while ($$5 < $$6) {
-         fim.b $$8 = new fim.b((float)$$1);
-         boolean $$9 = azx.a($$0, $$5, $$7, $$2, $$8);
-         if ($$9) {
-            $$4.accept($$7, $$5, $$6);
-            break;
-         }
-
-         int $$10 = $$8.a();
-         char $$11 = $$0.charAt($$10);
-         int $$12 = $$11 != '\n' && $$11 != ' ' ? $$10 : $$10 + 1;
-         $$4.accept($$7, $$5, $$3 ? $$12 : $$10);
-         $$5 = $$12;
-         $$7 = $$8.b();
-      }
-   }
-
-   public List<xi> g(String $$0, int $$1, ya $$2) {
-      List<xi> $$3 = Lists.newArrayList();
-      this.a($$0, $$1, $$2, false, ($$2x, $$3x, $$4) -> $$3.add(xi.a($$0.substring($$3x, $$4), $$2x)));
-      return $$3;
-   }
-
-   public List<xi> b(xi $$0, int $$1, ya $$2) {
-      List<xi> $$3 = Lists.newArrayList();
-      this.a($$0, $$1, $$2, ($$1x, $$2x) -> $$3.add($$1x));
-      return $$3;
-   }
-
-   public List<xi> a(xi $$0, int $$1, ya $$2, xi $$3) {
-      List<xi> $$4 = Lists.newArrayList();
-      this.a($$0, $$1, $$2, ($$2x, $$3x) -> $$4.add($$3x ? xi.a($$3, $$2x) : $$2x));
-      return $$4;
-   }
-
-   public void a(xi $$0, int $$1, ya $$2, BiConsumer<xi, Boolean> $$3) {
-      List<fim.c> $$4 = Lists.newArrayList();
-      $$0.a(($$1x, $$2x) -> {
-         if (!$$2x.isEmpty()) {
-            $$4.add(new fim.c($$2x, $$1x));
-         }
-
-         return Optional.empty();
-      }, $$2);
-      fim.a $$5 = new fim.a($$4);
-      boolean $$6 = true;
-      boolean $$7 = false;
-      boolean $$8 = false;
-
-      while ($$6) {
-         $$6 = false;
-         fim.b $$9 = new fim.b((float)$$1);
-
-         for (fim.c $$10 : $$5.a) {
-            boolean $$11 = azx.a($$10.c, 0, $$10.d, $$2, $$9);
-            if (!$$11) {
-               int $$12 = $$9.a();
-               ya $$13 = $$9.b();
-               char $$14 = $$5.a($$12);
-               boolean $$15 = $$14 == '\n';
-               boolean $$16 = $$15 || $$14 == ' ';
-               $$7 = $$15;
-               xi $$17 = $$5.a($$12, $$16 ? 1 : 0, $$13);
-               $$3.accept($$17, $$8);
-               $$8 = !$$15;
-               $$6 = true;
-               break;
-            }
-
-            $$9.a($$10.c.length());
-         }
-      }
-
-      xi $$18 = $$5.a();
-      if ($$18 != null) {
-         $$3.accept($$18, $$8);
-      } else if ($$7) {
-         $$3.accept(xi.b, false);
-      }
-   }
-
-   static class a {
-      final List<fim.c> a;
-      private String b;
-
-      public a(List<fim.c> $$0) {
-         this.a = $$0;
-         this.b = $$0.stream().map($$0x -> $$0x.c).collect(Collectors.joining());
-      }
-
-      public char a(int $$0) {
-         return this.b.charAt($$0);
-      }
-
-      public xi a(int $$0, int $$1, ya $$2) {
-         fhp $$3 = new fhp();
-         ListIterator<fim.c> $$4 = this.a.listIterator();
-         int $$5 = $$0;
-         boolean $$6 = false;
-
-         while ($$4.hasNext()) {
-            fim.c $$7 = $$4.next();
-            String $$8 = $$7.c;
-            int $$9 = $$8.length();
-            if (!$$6) {
-               if ($$5 > $$9) {
-                  $$3.a($$7);
-                  $$4.remove();
-                  $$5 -= $$9;
+               double $$7 = this.f * (double)this.b.aP().p() / (double)this.b.aP().n();
+               double $$8 = this.g * (double)this.b.aP().q() / (double)this.b.aP().o();
+               fqd $$9 = this.b.z;
+               if ($$4) {
+                  $$9.x();
+                  fqd.a(() -> $$6[0] = $$9.a($$7, $$8, $$5), "mouseClicked event handler", $$9.getClass().getCanonicalName());
                } else {
-                  String $$10 = $$8.substring(0, $$5);
-                  if (!$$10.isEmpty()) {
-                     $$3.a(xi.a($$10, $$7.d));
-                  }
-
-                  $$5 += $$1;
-                  $$6 = true;
+                  fqd.a(() -> $$6[0] = $$9.b($$7, $$8, $$5), "mouseReleased event handler", $$9.getClass().getCanonicalName());
                }
             }
+         }
 
-            if ($$6) {
-               if ($$5 <= $$9) {
-                  String $$11 = $$8.substring($$5);
-                  if ($$11.isEmpty()) {
-                     $$4.remove();
+         if (!$$6[0] && this.b.z == null && this.b.aN() == null) {
+            if ($$5 == 0) {
+               this.c = $$4;
+            } else if ($$5 == 2) {
+               this.d = $$4;
+            } else if ($$5 == 1) {
+               this.e = $$4;
+            }
+
+            fij.a(fbz.b.c.a($$5), $$4);
+            if ($$4) {
+               if (this.b.t.P_() && $$5 == 2) {
+                  this.b.m.g().b();
+               } else {
+                  fij.a(fbz.b.c.a($$5));
+               }
+            }
+         }
+      }
+   }
+
+   private void a(long $$0, double $$1, double $$2) {
+      if ($$0 == fil.Q().aP().i()) {
+         this.b.aQ().b();
+         boolean $$3 = this.b.n.U().c();
+         double $$4 = this.b.n.G().c();
+         double $$5 = ($$3 ? Math.signum($$1) : $$1) * $$4;
+         double $$6 = ($$3 ? Math.signum($$2) : $$2) * $$4;
+         if (this.b.aN() == null) {
+            if (this.b.z != null) {
+               double $$7 = this.f * (double)this.b.aP().p() / (double)this.b.aP().n();
+               double $$8 = this.g * (double)this.b.aP().q() / (double)this.b.aP().o();
+               this.b.z.a($$7, $$8, $$5, $$6);
+               this.b.z.x();
+            } else if (this.b.t != null) {
+               Vector2i $$9 = this.q.a($$5, $$6);
+               if ($$9.x == 0 && $$9.y == 0) {
+                  return;
+               }
+
+               int $$10 = $$9.y == 0 ? -$$9.x : $$9.y;
+               if (this.b.t.P_()) {
+                  if (this.b.m.g().a()) {
+                     this.b.m.g().b(-$$10);
                   } else {
-                     $$4.set(new fim.c($$11, $$2));
+                     float $$11 = azd.a(this.b.t.gd().a() + (float)$$9.y * 0.005F, 0.0F, 0.2F);
+                     this.b.t.gd().a($$11);
                   }
-                  break;
+               } else {
+                  cnt $$12 = this.b.t.gc();
+                  $$12.e(fiv.a((double)$$10, $$12.j, cnt.g()));
                }
-
-               $$4.remove();
-               $$5 -= $$9;
             }
          }
-
-         this.b = this.b.substring($$0 + $$1);
-         return $$3.b();
-      }
-
-      @Nullable
-      public xi a() {
-         fhp $$0 = new fhp();
-         this.a.forEach($$0::a);
-         this.a.clear();
-         return $$0.a();
       }
    }
 
-   class b implements ayp {
-      private final float b;
-      private int c = -1;
-      private ya d = ya.a;
-      private boolean e;
-      private float f;
-      private int g = -1;
-      private ya h = ya.a;
-      private int i;
-      private int j;
-
-      public b(final float $$0) {
-         this.b = Math.max($$0, 1.0F);
+   private void a(long $$0, List<Path> $$1, int $$2) {
+      this.b.aQ().b();
+      if (this.b.z != null) {
+         this.b.z.a($$1);
       }
 
-      @Override
-      public boolean accept(int $$0, ya $$1, int $$2) {
-         int $$3 = $$0 + this.j;
-         switch ($$2) {
-            case 10:
-               return this.a($$3, $$1);
-            case 32:
-               this.g = $$3;
-               this.h = $$1;
-            default:
-               float $$4 = fim.this.a.getWidth($$2, $$1);
-               this.f += $$4;
-               if (!this.e || !(this.f > this.b)) {
-                  this.e |= $$4 != 0.0F;
-                  this.i = $$3 + Character.charCount($$2);
-                  return true;
-               } else {
-                  return this.g != -1 ? this.a(this.g, this.h) : this.a($$3, $$1);
+      if ($$2 > 0) {
+         fmt.a(this.b, $$2);
+      }
+   }
+
+   public void a(long $$0) {
+      fbz.a(
+         $$0,
+         ($$0x, $$1, $$2) -> this.b.execute(() -> this.b($$0x, $$1, $$2)),
+         ($$0x, $$1, $$2, $$3) -> this.b.execute(() -> this.a($$0x, $$1, $$2, $$3)),
+         ($$0x, $$1, $$2) -> this.b.execute(() -> this.a($$0x, $$1, $$2)),
+         ($$0x, $$1, $$2) -> {
+            List<Path> $$3 = new ArrayList<>($$1);
+            int $$4 = 0;
+
+            for (int $$5 = 0; $$5 < $$1; $$5++) {
+               String $$6 = GLFWDropCallback.getName($$2, $$5);
+
+               try {
+                  $$3.add(Paths.get($$6));
+               } catch (InvalidPathException var11) {
+                  $$4++;
+                  a.error("Failed to parse path '{}'", $$6, var11);
                }
+            }
+
+            if (!$$3.isEmpty()) {
+               int $$8 = $$4;
+               this.b.execute(() -> this.a($$0x, $$3, $$8));
+            }
          }
-      }
-
-      private boolean a(int $$0, ya $$1) {
-         this.c = $$0;
-         this.d = $$1;
-         return false;
-      }
-
-      private boolean c() {
-         return this.c != -1;
-      }
-
-      public int a() {
-         return this.c() ? this.c : this.i;
-      }
-
-      public ya b() {
-         return this.d;
-      }
-
-      public void a(int $$0) {
-         this.j += $$0;
-      }
+      );
    }
 
-   static class c implements xi {
-      final String c;
-      final ya d;
-
-      public c(String $$0, ya $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
-
-      @Override
-      public <T> Optional<T> a(xi.a<T> $$0) {
-         return $$0.accept(this.c);
-      }
-
-      @Override
-      public <T> Optional<T> a(xi.b<T> $$0, ya $$1) {
-         return $$0.accept(this.d.a($$1), this.c);
-      }
-   }
-
-   @FunctionalInterface
-   public interface d {
-      void accept(ya var1, int var2, int var3);
-   }
-
-   class e implements ayp {
-      private float b;
-      private int c;
-
-      public e(final float $$0) {
-         this.b = $$0;
-      }
-
-      @Override
-      public boolean accept(int $$0, ya $$1, int $$2) {
-         this.b = this.b - fim.this.a.getWidth($$2, $$1);
-         if (this.b >= 0.0F) {
-            this.c = $$0 + Character.charCount($$2);
-            return true;
+   private void b(long $$0, double $$1, double $$2) {
+      if ($$0 == fil.Q().aP().i()) {
+         if (this.j) {
+            this.f = $$1;
+            this.g = $$2;
+            this.j = false;
          } else {
-            return false;
+            if (this.b.aC()) {
+               this.o = this.o + ($$1 - this.f);
+               this.p = this.p + ($$2 - this.g);
+            }
+
+            this.f = $$1;
+            this.g = $$2;
          }
-      }
-
-      public int a() {
-         return this.c;
-      }
-
-      public void b() {
-         this.c = 0;
       }
    }
 
-   @FunctionalInterface
-   public interface f {
-      float getWidth(int var1, ya var2);
+   public void a() {
+      double $$0 = far.b();
+      double $$1 = $$0 - this.r;
+      this.r = $$0;
+      if (this.b.aC()) {
+         fqd $$2 = this.b.z;
+         boolean $$3 = this.o != 0.0 || this.p != 0.0;
+         if ($$3) {
+            this.b.aQ().b();
+         }
+
+         if ($$2 != null && this.b.aN() == null && $$3) {
+            double $$4 = this.f * (double)this.b.aP().p() / (double)this.b.aP().n();
+            double $$5 = this.g * (double)this.b.aP().q() / (double)this.b.aP().o();
+            fqd.a(() -> $$2.f($$4, $$5), "mouseMoved event handler", $$2.getClass().getCanonicalName());
+            if (this.i != -1 && this.l > 0.0) {
+               double $$6 = this.o * (double)this.b.aP().p() / (double)this.b.aP().n();
+               double $$7 = this.p * (double)this.b.aP().q() / (double)this.b.aP().o();
+               fqd.a(() -> $$2.a($$4, $$5, this.i, $$6, $$7), "mouseDragged event handler", $$2.getClass().getCanonicalName());
+            }
+
+            $$2.v();
+         }
+
+         if (this.h() && this.b.t != null) {
+            this.a($$1);
+         }
+      }
+
+      this.o = 0.0;
+      this.p = 0.0;
+   }
+
+   private void a(double $$0) {
+      double $$1 = this.b.n.d().c() * 0.6F + 0.2F;
+      double $$2 = $$1 * $$1 * $$1;
+      double $$3 = $$2 * 8.0;
+      double $$6;
+      double $$7;
+      if (this.b.n.Z) {
+         double $$4 = this.m.a(this.o * $$3, $$0 * $$3);
+         double $$5 = this.n.a(this.p * $$3, $$0 * $$3);
+         $$6 = $$4;
+         $$7 = $$5;
+      } else if (this.b.n.aD().a() && this.b.t.gA()) {
+         this.m.a();
+         this.n.a();
+         $$6 = this.o * $$2;
+         $$7 = this.p * $$2;
+      } else {
+         this.m.a();
+         this.n.a();
+         $$6 = this.o * $$3;
+         $$7 = this.p * $$3;
+      }
+
+      int $$12 = 1;
+      if (this.b.n.T().c()) {
+         $$12 = -1;
+      }
+
+      this.b.aB().a($$6, $$7);
+      if (this.b.t != null) {
+         this.b.t.b($$6, $$7 * (double)$$12);
+      }
+   }
+
+   public boolean b() {
+      return this.c;
+   }
+
+   public boolean c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public double e() {
+      return this.f;
+   }
+
+   public double f() {
+      return this.g;
+   }
+
+   public void g() {
+      this.j = true;
+   }
+
+   public boolean h() {
+      return this.s;
+   }
+
+   public void i() {
+      if (this.b.aC()) {
+         if (!this.s) {
+            if (!fil.a) {
+               fij.a();
+            }
+
+            this.s = true;
+            this.f = (double)(this.b.aP().n() / 2);
+            this.g = (double)(this.b.aP().o() / 2);
+            fbz.a(this.b.aP().i(), 212995, this.f, this.g);
+            this.b.a(null);
+            this.b.x = 10000;
+            this.j = true;
+         }
+      }
+   }
+
+   public void j() {
+      if (this.s) {
+         this.s = false;
+         this.f = (double)(this.b.aP().n() / 2);
+         this.g = (double)(this.b.aP().o() / 2);
+         fbz.a(this.b.aP().i(), 212993, this.f, this.g);
+      }
+   }
+
+   public void k() {
+      this.j = true;
    }
 }

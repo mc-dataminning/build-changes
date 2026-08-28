@@ -1,340 +1,74 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+public class fzy extends fxk<gvw> implements fxt, fzu {
+   protected final gal a;
+   private final gal b;
+   private final gal c;
+   private final gal d;
+   private final gal e;
+   private final gal f;
+   private final gal g;
 
-public class fzy {
-   private static final gaf a = new gaf(0.008F);
-   private static final gaf b = new gaf(1.0F);
-   private static final gaf c = new gaf(0.5F);
+   public fzy(gal $$0) {
+      this.b = $$0;
+      this.c = $$0.b("head");
+      this.d = this.c.b("hat");
+      this.e = this.d.b("hat_rim");
+      this.a = this.c.b("nose");
+      this.f = $$0.b("right_leg");
+      this.g = $$0.b("left_leg");
+   }
 
-   public static Map<fzz, gah> a() {
-      Builder<fzz, gah> $$0 = ImmutableMap.builder();
-      gah $$1 = gah.a(fxn.a(gaf.a, 0.0F), 64, 64);
-      gah $$2 = gah.a(fxm.a(b), 64, 32);
-      gah $$3 = gah.a(fxm.a(new gaf(1.02F)), 64, 32);
-      gah $$4 = gah.a(fxm.a(c), 64, 32);
-      gah $$5 = fxu.b();
-      gah $$6 = fyw.d();
-      gah $$7 = gah.a(fvr.a(gaf.a), 64, 64);
-      gah $$8 = gah.a(fvr.b(gaf.a), 64, 64);
-      gak $$9 = gak.scaling(0.9375F);
-      gah $$10 = fxo.b().a($$9);
-      gah $$11 = fwb.b();
-      gah $$12 = fwe.b();
-      gah $$13 = fwr.b();
-      gah $$14 = fwr.b().a(fwr.a);
-      gah $$15 = fww.b();
-      gah $$16 = gah.a(fxw.a(gaf.a), 64, 32);
-      gah $$17 = $$16.a(fwn.a);
-      gah $$18 = gah.a(fxw.a(new gaf(0.01F)), 64, 32).a(fwn.a);
-      gah $$19 = gah.a(fyc.a(gaf.a), 64, 64);
-      gah $$20 = gah.a(fyb.b(), 64, 64);
-      gah $$21 = fyw.c();
-      gah $$22 = fxs.a(gaf.a);
-      gah $$23 = fxs.a(new gaf(0.5F));
-      gah $$24 = fzd.b();
-      gah $$25 = fxk.b();
-      gah $$26 = fxk.c();
-      gah $$27 = fyv.d();
-      gah $$28 = gah.a(fzl.b(), 64, 64).a($$9);
-      gah $$29 = fzb.b();
-      gah $$30 = fvw.b();
-      gah $$31 = fwm.b();
-      gah $$32 = fwp.b();
-      gah $$33 = fxh.b();
-      gah $$34 = fxx.b();
-      gah $$35 = fya.a(gaf.a);
-      gah $$36 = fya.a(new gaf(0.5F));
-      gah $$37 = fyg.b();
-      gah $$38 = fyq.b();
-      gah $$39 = fyp.b();
-      gah $$40 = fyz.b();
-      gah $$41 = fzi.b();
-      gah $$42 = gah.a(fzq.a(gaf.a), 64, 32);
-      gah $$43 = gah.a(fzq.a(new gaf(0.2F)), 64, 32);
-      gah $$44 = fzs.b();
-      gah $$45 = fvz.b();
-      gah $$46 = fvy.a(c);
-      gah $$47 = fvy.a(b);
-      gah $$48 = fwv.a(gaf.a);
-      gah $$49 = fwv.a(new gaf(0.25F));
-      gah $$50 = fzc.b();
-      gah $$51 = fwt.b();
-      gah $$52 = fyo.b();
-      $$0.put(gaa.a, fvu.b());
-      $$0.put(gaa.b, $$30);
-      $$0.put(gaa.c, $$30.a(fvw.a));
-      $$0.put(gaa.d, $$45);
-      $$0.put(gaa.e, $$46);
-      $$0.put(gaa.f, $$47);
-      $$0.put(gaa.g, $$45.a(fxn.i));
-      $$0.put(gaa.h, $$46.a(fxn.i));
-      $$0.put(gaa.i, $$47.a(fxn.i));
-      $$0.put(gaa.j, fwa.b());
-      $$0.put(gaa.k, $$11);
-      $$0.put(gaa.l, $$11.a(fwb.b));
-      $$0.put(gaa.m, gix.a());
-      $$0.put(gaa.n, fwd.b());
-      $$0.put(gaa.o, giz.c());
-      $$0.put(gaa.p, giz.b());
-      $$0.put(gaa.q, $$12);
-      $$0.put(gaa.r, $$12.a(fwe.a));
-      $$0.put(gaa.s, fwf.b());
-      $$0.put(gaa.t, fwg.b());
-      $$0.put(gaa.u, fwh.b());
-      $$0.put(gaa.v, fwi.d());
-      $$0.put(gaa.w, fwj.b());
-      $$0.put(gaa.x, $$4);
-      $$0.put(gaa.y, $$2);
-      $$0.put(gaa.z, gah.a(fxn.a(new gaf(0.2F), 0.0F), 64, 32));
-      $$0.put(gaa.A, fwk.b());
-      $$0.put(gaa.B, fwl.a(32, 32));
-      $$0.put(gaa.C, fwl.a(128, 128));
-      $$0.put(gaa.D, $$17);
-      $$0.put(gaa.E, $$17.a(fwn.b));
-      $$0.put(gaa.F, $$18);
-      $$0.put(gaa.G, $$18.a(fwn.b));
-      $$0.put(gaa.H, $$31);
-      $$0.put(gaa.I, $$31.a(fwm.a));
-      $$0.put(gaa.J, $$29.a(gak.scaling(0.7F)));
-      $$0.put(gaa.K, fwo.b());
-      $$0.put(gaa.L, $$5);
-      $$0.put(gaa.M, $$32);
-      $$0.put(gaa.N, $$32.a(fwp.b));
-      $$0.put(gaa.O, fwq.b());
-      $$0.put(gaa.P, $$5);
-      $$0.put(gaa.R, gjj.b());
-      $$0.put(gaa.T, gjj.c());
-      $$0.put(gaa.S, gjj.d());
-      $$0.put(gaa.Q, gjj.e());
-      $$0.put(gaa.U, $$13);
-      $$0.put(gaa.V, $$14);
-      $$0.put(gaa.W, fws.a(gaf.a));
-      $$0.put(gaa.X, fws.a(new gaf(2.0F)));
-      $$0.put(gaa.Y, $$6);
-      $$0.put(gaa.Z, gjk.b());
-      $$0.put(gaa.aa, gjk.c());
-      $$0.put(gaa.ab, $$51);
-      $$0.put(gaa.ac, $$51.a(fwt.a));
-      $$0.put(gaa.ad, fwu.b());
-      $$0.put(gaa.ae, fwu.c());
-      $$0.put(gaa.af, fwo.d());
-      $$0.put(gaa.ag, fwo.c());
-      $$0.put(gaa.ah, fzu.b());
-      $$0.put(gaa.ai, $$48);
-      $$0.put(gaa.aj, $$4);
-      $$0.put(gaa.ak, $$4);
-      $$0.put(gaa.al, $$49);
-      $$0.put(gaa.am, $$48.a(fxn.i));
-      $$0.put(gaa.an, $$4.a(fxn.i));
-      $$0.put(gaa.ao, $$4.a(fxn.i));
-      $$0.put(gaa.ap, $$49.a(fxn.i));
-      $$0.put(gaa.aq, fxi.c());
-      $$0.put(gaa.ar, $$15);
-      $$0.put(gaa.as, $$15.a(fww.a));
-      $$0.put(gaa.at, fwy.b());
-      $$0.put(gaa.au, fwz.b());
-      $$0.put(gaa.av, fzv.b());
-      $$0.put(gaa.aw, fwx.b());
-      $$0.put(gaa.ax, $$10);
-      $$0.put(gaa.ay, fxb.b());
-      $$0.put(gaa.az, fxd.b());
-      $$0.put(gaa.aA, fxd.b().a(fxd.a));
-      $$0.put(gaa.aB, fxe.b());
-      $$0.put(gaa.aC, $$5);
-      $$0.put(gaa.aD, fxf.b());
-      gak $$53 = gak.scaling(6.0F);
-      $$0.put(gaa.aE, $$1.a($$53));
-      $$0.put(gaa.aF, $$4.a($$53));
-      $$0.put(gaa.aG, $$2.a($$53));
-      $$0.put(gaa.aH, $$50);
-      $$0.put(gaa.aI, $$50.a(fzc.a));
-      $$0.put(gaa.aJ, $$33);
-      $$0.put(gaa.aK, $$33.a(fxh.a));
-      $$0.put(gaa.aL, fxi.b());
-      $$0.put(gaa.aM, $$25);
-      $$0.put(gaa.aN, $$26);
-      $$0.put(gaa.aO, $$5);
-      $$0.put(gaa.aP, $$7);
-      $$0.put(gaa.aQ, $$8);
-      $$0.put(gaa.aR, gah.a(fvr.a(new gaf(0.1F)), 64, 64));
-      $$0.put(gaa.aS, gah.a(fvr.b(new gaf(0.1F)), 64, 64));
-      gak $$54 = gak.scaling(1.0625F);
-      $$0.put(gaa.aT, $$1.a($$54));
-      $$0.put(gaa.aU, $$4.a($$54));
-      $$0.put(gaa.aV, $$2.a($$54));
-      $$0.put(gaa.aW, $$1.a(fxn.i).a($$54));
-      $$0.put(gaa.aX, $$4.a(fxn.i).a($$54));
-      $$0.put(gaa.aY, $$2.a(fxn.i).a($$54));
-      $$0.put(gaa.aZ, $$10);
-      $$0.put(gaa.ba, fxp.b());
-      $$0.put(gaa.bb, fxr.b());
-      $$0.put(gaa.bc, $$22);
-      $$0.put(gaa.bd, $$22.a(fxs.a));
-      $$0.put(gaa.be, $$23);
-      $$0.put(gaa.bf, $$23.a(fxs.a));
-      $$0.put(gaa.bg, fxt.b());
-      $$0.put(gaa.bh, fxq.b());
-      $$0.put(gaa.bi, $$5);
-      $$0.put(gaa.bj, $$13);
-      $$0.put(gaa.bk, fwu.b());
-      $$0.put(gaa.bl, fwu.c());
-      $$0.put(gaa.bm, $$16);
-      $$0.put(gaa.bn, $$16.a(fxw.b));
-      $$0.put(gaa.bo, $$34);
-      $$0.put(gaa.bp, $$34.a(fxx.a));
-      $$0.put(gaa.bq, fxy.b());
-      $$0.put(gaa.br, fxz.b());
-      $$0.put(gaa.bs, $$35);
-      $$0.put(gaa.bt, $$35.a(fya.a));
-      $$0.put(gaa.bu, $$36);
-      $$0.put(gaa.bv, $$36.a(fya.a));
-      $$0.put(gaa.bw, $$19);
-      $$0.put(gaa.bB, $$4);
-      $$0.put(gaa.bC, $$3);
-      $$0.put(gaa.bx, $$19);
-      $$0.put(gaa.by, $$4);
-      $$0.put(gaa.bz, $$3);
-      $$0.put(gaa.bD, $$19.a(fxn.i));
-      $$0.put(gaa.bE, $$4.a(fxn.i));
-      $$0.put(gaa.bF, $$3.a(fxn.i));
-      $$0.put(gaa.bA, $$20);
-      $$0.put(gaa.bG, $$10);
-      $$0.put(gaa.bH, gah.a(fyf.a(gaf.a, false), 64, 64));
-      $$0.put(gaa.bI, fye.b());
-      $$0.put(gaa.bJ, fyd.b());
-      $$0.put(gaa.bK, $$21);
-      $$0.put(gaa.bL, $$4);
-      $$0.put(gaa.bM, $$2);
-      $$0.put(gaa.bN, gah.a(fyf.a(gaf.a, true), 64, 64));
-      $$0.put(gaa.bO, $$4);
-      $$0.put(gaa.bP, $$2);
-      $$0.put(gaa.bQ, grm.a());
-      $$0.put(gaa.bR, $$37);
-      $$0.put(gaa.bS, $$37.a(fyg.a));
-      $$0.put(gaa.bT, fyh.b());
-      $$0.put(gaa.bU, fyi.b());
-      $$0.put(gaa.bV, fyj.b());
-      $$0.put(gaa.bW, fyl.a(false));
-      $$0.put(gaa.bX, fyl.a(true));
-      $$0.put(gaa.bY, fyn.b());
-      $$0.put(gaa.bZ, $$52);
-      $$0.put(gaa.ca, $$52.a(fyo.a));
-      $$0.put(gaa.cb, $$52.a(fyo.b));
-      $$0.put(gaa.cc, $$38);
-      $$0.put(gaa.cd, $$38.a(fyq.a));
-      $$0.put(gaa.ce, $$39);
-      $$0.put(gaa.cf, $$39.a(fyq.a));
-      $$0.put(gaa.cg, fyr.b());
-      $$0.put(gaa.ch, fyt.b());
-      $$0.put(gaa.ci, fyt.c());
-      $$0.put(gaa.cj, fys.b());
-      $$0.put(gaa.ck, fyu.b());
-      $$0.put(gaa.cl, $$27);
-      $$0.put(gaa.co, $$4);
-      $$0.put(gaa.cp, $$2);
-      $$0.put(gaa.cm, $$7);
-      $$0.put(gaa.cn, $$8);
-      $$0.put(gaa.cq, $$6);
-      $$0.put(gaa.cr, fyy.c());
-      $$0.put(gaa.cs, fyy.b());
-      $$0.put(gaa.ct, $$40);
-      $$0.put(gaa.cu, $$40.a(fyz.a));
-      $$0.put(gaa.cv, fza.b());
-      $$0.put(gaa.cw, $$5);
-      $$0.put(gaa.cx, $$29);
-      $$0.put(gaa.cy, $$50);
-      $$0.put(gaa.cz, $$50.a(fzc.a));
-      $$0.put(gaa.cA, $$27);
-      $$0.put(gaa.cB, $$4);
-      $$0.put(gaa.cC, $$2);
-      $$0.put(gaa.cD, gah.a(fxn.a(new gaf(0.25F), 0.0F), 64, 32));
-      $$0.put(gaa.cE, $$24);
-      $$0.put(gaa.cF, $$24);
-      $$0.put(gaa.cG, fze.b());
-      $$0.put(gaa.cH, $$5);
-      $$0.put(gaa.cI, $$22);
-      $$0.put(gaa.cJ, $$22.a(fxs.a));
-      $$0.put(gaa.cK, fzf.b());
-      $$0.put(gaa.cL, fzh.a(gaf.a));
-      $$0.put(gaa.cM, fzh.a(a));
-      $$0.put(gaa.cN, fzg.a(gaf.a));
-      $$0.put(gaa.cO, fzg.a(a));
-      $$0.put(gaa.cP, $$41);
-      $$0.put(gaa.cQ, $$41.a(fzi.a));
-      $$0.put(gaa.cR, fzj.b());
-      $$0.put(gaa.cS, $$28);
-      $$0.put(gaa.cT, $$10);
-      $$0.put(gaa.cU, fzm.b());
-      $$0.put(gaa.cV, $$28);
-      $$0.put(gaa.cW, fzn.b());
-      $$0.put(gaa.cX, fzo.b().a($$9));
-      $$0.put(gaa.cY, fzp.a(gaf.a));
-      $$0.put(gaa.cZ, fzp.a(c));
-      $$0.put(gaa.de, gpv.a());
-      gak $$55 = gak.scaling(1.2F);
-      $$0.put(gaa.da, $$27.a($$55));
-      $$0.put(gaa.db, $$4.a($$55));
-      $$0.put(gaa.dc, $$2.a($$55));
-      $$0.put(gaa.dd, $$6);
-      $$0.put(gaa.df, $$42);
-      $$0.put(gaa.dg, $$43);
-      $$0.put(gaa.dh, $$42.a(fzq.a));
-      $$0.put(gaa.di, $$43.a(fzq.a));
-      $$0.put(gaa.dj, $$25);
-      $$0.put(gaa.dk, $$26);
-      $$0.put(gaa.dl, $$1);
-      $$0.put(gaa.dp, $$4);
-      $$0.put(gaa.dq, $$2);
-      $$0.put(gaa.dr, $$1.a(fxn.i));
-      $$0.put(gaa.ds, $$4.a(fxn.i));
-      $$0.put(gaa.dt, $$2.a(fxn.i));
-      $$0.put(gaa.dm, $$21);
-      $$0.put(gaa.dn, $$7);
-      $$0.put(gaa.do, $$8);
-      $$0.put(gaa.du, $$44);
-      $$0.put(gaa.dv, fzs.a(c));
-      $$0.put(gaa.dw, fzs.a(b));
-      $$0.put(gaa.dx, $$44.a(fxn.i));
-      $$0.put(gaa.dy, fzs.a(c).a(fxn.i));
-      $$0.put(gaa.dz, fzs.a(b).a(fxn.i));
-      $$0.put(gaa.dA, $$19);
-      $$0.put(gaa.dB, $$4);
-      $$0.put(gaa.dC, $$3);
-      $$0.put(gaa.dD, $$19.a(fxn.i));
-      $$0.put(gaa.dE, $$4.a(fxn.i));
-      $$0.put(gaa.dF, $$3.a(fxn.i));
-      gah $$56 = fwi.b();
-      gah $$57 = fwi.c();
-      gah $$58 = fym.b();
-      gah $$59 = fym.c();
+   public static gar b() {
+      gat $$0 = fzv.b();
+      gav $$1 = $$0.a();
+      gav $$2 = $$1.a("head", gaq.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F), gan.a);
+      gav $$3 = $$2.a("hat", gaq.c().a(0, 64).a(0.0F, 0.0F, 0.0F, 10.0F, 2.0F, 10.0F), gan.a(-5.0F, -10.03125F, -5.0F));
+      gav $$4 = $$3.a("hat2", gaq.c().a(0, 76).a(0.0F, 0.0F, 0.0F, 7.0F, 4.0F, 7.0F), gan.a(1.75F, -4.0F, 2.0F, -0.05235988F, 0.0F, 0.02617994F));
+      gav $$5 = $$4.a("hat3", gaq.c().a(0, 87).a(0.0F, 0.0F, 0.0F, 4.0F, 4.0F, 4.0F), gan.a(1.75F, -4.0F, 2.0F, -0.10471976F, 0.0F, 0.05235988F));
+      $$5.a(
+         "hat4", gaq.c().a(0, 95).a(0.0F, 0.0F, 0.0F, 1.0F, 2.0F, 1.0F, new gap(0.25F)), gan.a(1.75F, -2.0F, 2.0F, (float) (-Math.PI / 15), 0.0F, 0.10471976F)
+      );
+      gav $$6 = $$2.b("nose");
+      $$6.a("mole", gaq.c().a(0, 0).a(0.0F, 3.0F, -6.75F, 1.0F, 1.0F, 1.0F, new gap(-0.25F)), gan.a(0.0F, -2.0F, 0.0F));
+      return gar.a($$0, 64, 128);
+   }
 
-      for (cpo.b $$60 : cpo.b.values()) {
-         if ($$60 == cpo.b.i) {
-            $$0.put(gaa.a($$60), $$58);
-            $$0.put(gaa.b($$60), $$59);
-         } else {
-            $$0.put(gaa.a($$60), $$56);
-            $$0.put(gaa.b($$60), $$57);
-         }
+   public void a(gvw $$0) {
+      this.c.f = $$0.U * (float) (Math.PI / 180.0);
+      this.c.e = $$0.V * (float) (Math.PI / 180.0);
+      this.c.g = 0.0F;
+      this.f.e = azd.b($$0.X * 0.6662F) * 1.4F * $$0.Y * 0.5F;
+      this.g.e = azd.b($$0.X * 0.6662F + (float) Math.PI) * 1.4F * $$0.Y * 0.5F;
+      this.f.f = 0.0F;
+      this.g.f = 0.0F;
+      this.a.a(0.0F, -2.0F, 0.0F);
+      float $$1 = 0.01F * (float)($$0.a % 10);
+      this.a.e = azd.a($$0.p * $$1) * 4.5F * (float) (Math.PI / 180.0);
+      this.a.f = 0.0F;
+      this.a.g = azd.b($$0.p * $$1) * 2.5F * (float) (Math.PI / 180.0);
+      if ($$0.b) {
+         this.a.a(0.0F, 1.0F, -1.5F);
+         this.a.e = -0.9F;
       }
+   }
 
-      gah $$61 = gjq.a(true);
-      gah $$62 = gjq.a(false);
-      gah $$63 = gjm.e();
-      dvn.a().forEach($$4x -> {
-         $$0.put(gaa.a($$4x), $$61);
-         $$0.put(gaa.b($$4x), $$62);
-         $$0.put(gaa.c($$4x), $$63);
-      });
-      ImmutableMap<fzz, gah> $$64 = $$0.build();
-      List<fzz> $$65 = gaa.a().filter($$1x -> !$$64.containsKey($$1x)).collect(Collectors.toList());
-      if (!$$65.isEmpty()) {
-         throw new IllegalStateException("Missing layer definitions: " + $$65);
-      } else {
-         return $$64;
-      }
+   public gal d() {
+      return this.a;
+   }
+
+   @Override
+   public gal a() {
+      return this.b;
+   }
+
+   @Override
+   public gal c() {
+      return this.c;
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      this.c.k = $$0;
+      this.d.k = $$0;
+      this.e.k = $$0;
    }
 }

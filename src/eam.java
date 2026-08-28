@@ -1,40 +1,34 @@
-public class eam implements dzl {
-   private static final int d = 48;
-   private static final long e = 281474976710655L;
-   private static final long f = 25214903917L;
-   private static final long g = 11L;
-   private long h;
-   private final dzy i = new dzy(this);
+public class eam {
+   public final azl a;
+   private double b;
+   private boolean c;
 
-   public eam(long $$0) {
-      this.b($$0);
+   public eam(azl $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public azk d() {
-      return new eam(this.g());
+   public void a() {
+      this.c = false;
    }
 
-   @Override
-   public eaj e() {
-      return new dzx.a(this.g());
-   }
+   public double b() {
+      if (this.c) {
+         this.c = false;
+         return this.b;
+      } else {
+         double $$0;
+         double $$1;
+         double $$2;
+         do {
+            $$0 = 2.0 * this.a.j() - 1.0;
+            $$1 = 2.0 * this.a.j() - 1.0;
+            $$2 = azd.k($$0) + azd.k($$1);
+         } while ($$2 >= 1.0 || $$2 == 0.0);
 
-   @Override
-   public void b(long $$0) {
-      this.h = ($$0 ^ 25214903917L) & 281474976710655L;
-      this.i.a();
-   }
-
-   @Override
-   public int c(int $$0) {
-      long $$1 = this.h * 25214903917L + 11L & 281474976710655L;
-      this.h = $$1;
-      return (int)($$1 >> 48 - $$0);
-   }
-
-   @Override
-   public double k() {
-      return this.i.b();
+         double $$3 = Math.sqrt(-2.0 * Math.log($$2) / $$2);
+         this.b = $$1 * $$3;
+         this.c = true;
+         return $$0 * $$3;
+      }
    }
 }

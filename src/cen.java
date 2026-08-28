@@ -1,37 +1,27 @@
-import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
-import it.unimi.dsi.fastutil.ints.IntSet;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
 
-public class cen {
-   private final buh a;
-   private final IntSet b = new IntOpenHashSet();
-   private final IntSet c = new IntOpenHashSet();
+public abstract class cen extends cet<buk> {
+   protected abstract boolean a(buk var1, buk var2);
 
-   public cen(buh $$0) {
-      this.a = $$0;
+   protected abstract cdn<buk> b();
+
+   @Override
+   public Set<cdn<?>> a() {
+      return ImmutableSet.of(this.b());
    }
 
-   public void a() {
-      this.b.clear();
-      this.c.clear();
+   @Override
+   protected void a(arh $$0, buk $$1) {
+      $$1.dX().a(this.b(), this.b($$1));
    }
 
-   public boolean a(btj $$0) {
-      int $$1 = $$0.ap();
-      if (this.b.contains($$1)) {
-         return true;
-      } else if (this.c.contains($$1)) {
-         return false;
-      } else {
-         this.a.dS().ah().a("hasLineOfSight");
-         boolean $$2 = this.a.G($$0);
-         this.a.dS().ah().c();
-         if ($$2) {
-            this.b.add($$1);
-         } else {
-            this.c.add($$1);
-         }
+   private Optional<buk> b(buk $$0) {
+      return this.a($$0).flatMap($$1 -> $$1.a($$1x -> this.a($$0, $$1x)));
+   }
 
-         return $$2;
-      }
+   protected Optional<cdp> a(buk $$0) {
+      return $$0.dX().c(cdn.h);
    }
 }

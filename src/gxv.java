@@ -1,22 +1,17 @@
-public class gxv {
-   public static final int a = -1;
-   private final int b;
-   private final int c;
+import java.io.IOException;
 
-   public gxv(int $$0) {
-      this($$0, -1);
+public class gxv extends auz<int[]> {
+   private static final alc a = alc.b("textures/colormap/grass.png");
+
+   protected int[] a(aut $$0, bod $$1) {
+      try {
+         return gxx.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load grass color texture", var4);
+      }
    }
 
-   public gxv(int $$0, int $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public int a(int $$0) {
-      return this.c == -1 ? $$0 : this.c;
-   }
-
-   public int a() {
-      return this.b;
+   protected void a(int[] $$0, aut $$1, bod $$2) {
+      dee.a($$0);
    }
 }

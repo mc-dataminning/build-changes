@@ -1,53 +1,30 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record eex(List<eex.a> b, jj c, ebd d, boolean e) implements efg {
-   public static final Codec<eex> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               eex.a.a.listOf().fieldOf("layers").forGetter(eex::a),
-               jj.g.fieldOf("direction").forGetter(eex::b),
-               ebd.b.fieldOf("allowed_placement").forGetter(eex::c),
-               Codec.BOOL.fieldOf("prioritize_tip").forGetter(eex::d)
-            )
-            .apply($$0, eex::new)
-   );
-
-   public static eex.a a(bqp $$0, ehh $$1) {
-      return new eex.a($$0, $$1);
+public class eex extends edq<egm> {
+   public eex(Codec<egm> $$0) {
+      super($$0);
    }
 
-   public static eex b(bqp $$0, ehh $$1) {
-      return new eex(List.of(a($$0, $$1)), jj.b, ebd.c, false);
-   }
+   @Override
+   public boolean a(eds<egm> $$0) {
+      egm $$1 = $$0.f();
+      dfd $$2 = $$0.b();
+      je $$3 = $$0.e();
+      duo $$4 = $$1.a().a($$0.d(), $$3);
+      if ($$4.a($$2, $$3)) {
+         if ($$4.b() instanceof djr) {
+            if (!$$2.u($$3.d())) {
+               return false;
+            }
 
-   public List<eex.a> a() {
-      return this.b;
-   }
+            djr.a($$2, $$4, $$3, 2);
+         } else {
+            $$2.a($$3, $$4, 2);
+         }
 
-   public jj b() {
-      return this.c;
-   }
-
-   public ebd c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public static record a(bqp b, ehh c) {
-      public static final Codec<eex.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bqp.d.fieldOf("height").forGetter(eex.a::a), ehh.a.fieldOf("provider").forGetter(eex.a::b)).apply($$0, eex.a::new)
-      );
-
-      public bqp a() {
-         return this.b;
-      }
-
-      public ehh b() {
-         return this.c;
+         return true;
+      } else {
+         return false;
       }
    }
 }

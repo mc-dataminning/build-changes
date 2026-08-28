@@ -1,65 +1,27 @@
-import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public class cbs extends cbc {
-   private final buh a;
-   private buf b;
-   private int c;
+public class cbs extends cce {
+   private static final int i = 10;
+   private static final int j = 7;
 
-   public cbs(buh $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(cbc.a.a, cbc.a.b));
+   public cbs(bus $$0, double $$1, boolean $$2) {
+      super($$0, $$1, 10, $$2);
    }
 
    @Override
    public boolean b() {
-      buf $$0 = this.a.m();
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.b = $$0;
-         return true;
-      }
+      arh $$0 = (arh)this.b.dS();
+      je $$1 = this.b.ds();
+      return $$0.c($$1) ? false : super.b();
    }
 
+   @Nullable
    @Override
-   public boolean c() {
-      if (!this.b.bI()) {
-         return false;
-      } else {
-         return this.a.g(this.b) > 225.0 ? false : !this.a.P().m() || this.b();
-      }
-   }
-
-   @Override
-   public void e() {
-      this.b = null;
-      this.a.P().o();
-   }
-
-   @Override
-   public boolean T_() {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      this.a.K().a(this.b, 30.0F, 30.0F);
-      double $$0 = (double)(this.a.dn() * 2.0F * this.a.dn() * 2.0F);
-      double $$1 = this.a.i(this.b.dx(), this.b.dz(), this.b.dD());
-      double $$2 = 0.8;
-      if ($$1 > $$0 && $$1 < 16.0) {
-         $$2 = 1.33;
-      } else if ($$1 < 225.0) {
-         $$2 = 0.6;
-      }
-
-      this.a.P().a(this.b, $$2);
-      this.c = Math.max(this.c - 1, 0);
-      if (!($$1 > $$0)) {
-         if (this.c <= 0) {
-            this.c = 20;
-            this.a.E(this.b);
-         }
-      }
+   protected eys h() {
+      arh $$0 = (arh)this.b.dS();
+      je $$1 = this.b.ds();
+      kg $$2 = kg.a($$1);
+      kg $$3 = bwe.a($$0, $$2, 2);
+      return $$3 != $$2 ? cfe.a(this.b, 10, 7, eys.c($$3.k()), (float) (Math.PI / 2)) : null;
    }
 }

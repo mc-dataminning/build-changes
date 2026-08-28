@@ -12,30 +12,30 @@ public interface kb extends jp.a {
    Logger a = LogUtils.getLogger();
    kb.b b = new kb.c(Map.of()).f();
 
-   <E> Optional<ka<E>> c(ala<? extends ka<? extends E>> var1);
+   <E> Optional<ka<E>> c(alb<? extends ka<? extends E>> var1);
 
    @Override
-   default <T> Optional<jp.b<T>> a(ala<? extends ka<? extends T>> $$0) {
+   default <T> Optional<jp.b<T>> a(alb<? extends ka<? extends T>> $$0) {
       return this.c($$0).map(ka::p);
    }
 
-   default <E> ka<E> d(ala<? extends ka<? extends E>> $$0) {
+   default <E> ka<E> d(alb<? extends ka<? extends E>> $$0) {
       return this.c($$0).orElseThrow(() -> new IllegalStateException("Missing registry: " + $$0));
    }
 
    Stream<kb.d<?>> e();
 
    @Override
-   default Stream<ala<? extends ka<?>>> a() {
+   default Stream<alb<? extends ka<?>>> a() {
       return this.e().map($$0 -> $$0.a);
    }
 
    static kb.b a(final ka<? extends ka<?>> $$0) {
       return new kb.b() {
          @Override
-         public <T> Optional<ka<T>> c(ala<? extends ka<? extends T>> $$0x) {
+         public <T> Optional<ka<T>> c(alb<? extends ka<? extends T>> $$0x) {
             ka<ka<T>> $$1 = (ka<ka<T>>)$$0;
-            return $$1.e((ala<ka<T>>)$$0);
+            return $$1.e((alb<ka<T>>)$$0);
          }
 
          @Override
@@ -64,13 +64,13 @@ public interface kb extends jp.a {
    }
 
    public static class c implements kb {
-      private final Map<? extends ala<? extends ka<?>>, ? extends ka<?>> c;
+      private final Map<? extends alb<? extends ka<?>>, ? extends ka<?>> c;
 
       public c(List<? extends ka<?>> $$0) {
          this.c = $$0.stream().collect(Collectors.toUnmodifiableMap(ka::d, $$0x -> $$0x));
       }
 
-      public c(Map<? extends ala<? extends ka<?>>, ? extends ka<?>> $$0) {
+      public c(Map<? extends alb<? extends ka<?>>, ? extends ka<?>> $$0) {
          this.c = Map.copyOf($$0);
       }
 
@@ -79,7 +79,7 @@ public interface kb extends jp.a {
       }
 
       @Override
-      public <E> Optional<ka<E>> c(ala<? extends ka<? extends E>> $$0) {
+      public <E> Optional<ka<E>> c(alb<? extends ka<? extends E>> $$0) {
          return Optional.ofNullable(this.c.get($$0)).map($$0x -> $$0x);
       }
 
@@ -89,14 +89,14 @@ public interface kb extends jp.a {
       }
    }
 
-   public static record d<T>(ala<? extends ka<T>> a, ka<T> b) {
+   public static record d<T>(alb<? extends ka<T>> a, ka<T> b) {
 
-      private static <T, R extends ka<? extends T>> kb.d<T> a(Entry<? extends ala<? extends ka<?>>, R> $$0) {
-         return a((ala<? extends ka<?>>)$$0.getKey(), $$0.getValue());
+      private static <T, R extends ka<? extends T>> kb.d<T> a(Entry<? extends alb<? extends ka<?>>, R> $$0) {
+         return a((alb<? extends ka<?>>)$$0.getKey(), $$0.getValue());
       }
 
-      private static <T> kb.d<T> a(ala<? extends ka<?>> $$0, ka<?> $$1) {
-         return new kb.d<>((ala<? extends ka<T>>)$$0, (ka<T>)$$1);
+      private static <T> kb.d<T> a(alb<? extends ka<?>> $$0, ka<?> $$1) {
+         return new kb.d<>((alb<? extends ka<T>>)$$0, (ka<T>)$$1);
       }
 
       private kb.d<T> c() {

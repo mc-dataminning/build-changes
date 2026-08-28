@@ -1,41 +1,73 @@
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableMap.Builder;
 import java.util.Optional;
+import java.util.function.Function;
 
-public class bwp extends bvx<cnc> {
-   private static final int d = 1200;
-   final float c;
+public class bwp extends bwc<bus> {
+   public static final int c = 100;
+   public static final double d = 2.5;
+   public static final double e = 3.5;
+   private final Function<buk, Float> f;
+   private final Function<buk, Double> g;
 
-   public bwp(float $$0) {
-      super(ImmutableMap.of(cdi.d, cdj.a), 1200);
-      this.c = $$0;
+   public bwp(Function<buk, Float> $$0) {
+      this($$0, $$0x -> 2.5);
    }
 
-   protected boolean a(arg $$0, cnc $$1) {
-      return $$1.dX().g().map($$0x -> $$0x == cpg.b || $$0x == cpg.c || $$0x == cpg.d).orElse(true);
+   public bwp(Function<buk, Float> $$0, Function<buk, Double> $$1) {
+      super(ad.a(() -> {
+         Builder<cdn<?>, cdo> $$0x = ImmutableMap.builder();
+         $$0x.put(cdn.n, cdo.c);
+         $$0x.put(cdn.m, cdo.c);
+         $$0x.put(cdn.P, cdo.b);
+         $$0x.put(cdn.R, cdo.c);
+         $$0x.put(cdn.O, cdo.a);
+         $$0x.put(cdn.r, cdo.b);
+         $$0x.put(cdn.Z, cdo.b);
+         return $$0x.build();
+      }));
+      this.f = $$0;
+      this.g = $$1;
    }
 
-   protected boolean a(arg $$0, cnc $$1, long $$2) {
-      return $$1.dX().a(cdi.d);
+   protected float a(bus $$0) {
+      return this.f.apply($$0);
    }
 
-   protected void b(arg $$0, cnc $$1, long $$2) {
-      bvz.a($$1, $$1.dX().c(cdi.d).get().b(), this.c, 1);
+   private Optional<cnu> b(bus $$0) {
+      return $$0.dX().c(cdn.O);
    }
 
-   protected void c(arg $$0, cnc $$1, long $$2) {
-      Optional<jm> $$3 = $$1.dX().c(cdi.d);
-      $$3.ifPresent($$1x -> {
-         je $$2x = $$1x.b();
-         arg $$3x = $$0.o().a($$1x.a());
-         if ($$3x != null) {
-            cfi $$4 = $$3x.y();
-            if ($$4.a($$2x, $$0xx -> true)) {
-               $$4.b($$2x);
-            }
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
 
-            agn.c($$0, $$2x);
-         }
-      });
-      $$1.dX().b(cdi.d);
+   protected boolean a(arh $$0, bus $$1, long $$2) {
+      return this.b($$1).isPresent() && !$$1.dX().a(cdn.r) && !$$1.dX().a(cdn.Z);
+   }
+
+   protected void b(arh $$0, bus $$1, long $$2) {
+      $$1.dX().a(cdn.R, true);
+   }
+
+   protected void c(arh $$0, bus $$1, long $$2) {
+      bvl<?> $$3 = $$1.dX();
+      $$3.a(cdn.P, 100);
+      $$3.a(cdn.R, false);
+      $$3.b(cdn.m);
+      $$3.b(cdn.n);
+   }
+
+   protected void d(arh $$0, bus $$1, long $$2) {
+      cnu $$3 = this.b($$1).get();
+      bvl<?> $$4 = $$1.dX();
+      $$4.a(cdn.n, new bwn($$3, true));
+      double $$5 = this.g.apply($$1);
+      if ($$1.g($$3) < azd.k($$5)) {
+         $$4.b(cdn.m);
+      } else {
+         $$4.a(cdn.m, new cdq(new bwn($$3, false), this.a($$1), 2));
+      }
    }
 }

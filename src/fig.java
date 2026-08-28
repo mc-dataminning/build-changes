@@ -1,158 +1,66 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.math.LongMath;
-import com.google.gson.JsonParser;
+import com.mojang.datafixers.DataFixer;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JsonOps;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.Object2BooleanFunction;
-import java.io.Reader;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.Map.Entry;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.mojang.serialization.DataResult;
+import java.nio.file.Path;
 import org.slf4j.Logger;
 
-public class fig extends auy<Map<String, List<fig.a>>> implements AutoCloseable {
-   private static final Codec<Map<String, List<fig.a>>> a = Codec.unboundedMap(
-      Codec.STRING,
-      RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     Codec.LONG.optionalFieldOf("delay", 0L).forGetter(fig.a::a),
-                     Codec.LONG.fieldOf("period").forGetter(fig.a::b),
-                     Codec.STRING.fieldOf("title").forGetter(fig.a::c),
-                     Codec.STRING.fieldOf("message").forGetter(fig.a::d)
-                  )
-                  .apply($$0, fig.a::new)
-         )
-         .listOf()
-   );
+public class fig {
    private static final Logger b = LogUtils.getLogger();
-   private final alb c;
-   private final Object2BooleanFunction<String> d;
-   @Nullable
-   private Timer e;
-   @Nullable
-   private fig.b f;
+   public static final int a = 9;
+   private final Path c;
+   private final DataFixer d;
+   private final gge[] e = new gge[9];
+   private boolean f;
 
-   public fig(alb $$0, Object2BooleanFunction<String> $$1) {
-      this.c = $$0;
+   public fig(Path $$0, DataFixer $$1) {
+      this.c = $$0.resolve("hotbar.nbt");
       this.d = $$1;
+
+      for (int $$2 = 0; $$2 < 9; $$2++) {
+         this.e[$$2] = new gge();
+      }
    }
 
-   protected Map<String, List<fig.a>> a(aus $$0, bny $$1) {
+   private void b() {
       try {
-         Map var4;
-         try (Reader $$2 = $$0.openAsReader(this.c)) {
-            var4 = (Map)a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$2)).result().orElseThrow();
+         uf $$0 = us.a(this.c);
+         if ($$0 == null) {
+            return;
          }
 
-         return var4;
-      } catch (Exception var8) {
-         b.warn("Failed to load {}", this.c, var8);
-         return ImmutableMap.of();
+         int $$1 = uu.b($$0, 1343);
+         $$0 = bam.d.a(this.d, $$0, $$1);
+
+         for (int $$2 = 0; $$2 < 9; $$2++) {
+            this.e[$$2] = gge.a.parse(ut.a, $$0.c(String.valueOf($$2))).resultOrPartial($$0x -> b.warn("Failed to parse hotbar: {}", $$0x)).orElseGet(gge::new);
+         }
+      } catch (Exception var4) {
+         b.error("Failed to load creative mode options", var4);
       }
    }
 
-   protected void a(Map<String, List<fig.a>> $$0, aus $$1, bny $$2) {
-      List<fig.a> $$3 = $$0.entrySet()
-         .stream()
-         .filter($$0x -> (Boolean)this.d.apply((String)$$0x.getKey()))
-         .map(Entry::getValue)
-         .flatMap(Collection::stream)
-         .collect(Collectors.toList());
-      if ($$3.isEmpty()) {
-         this.a();
-      } else if ($$3.stream().anyMatch($$0x -> $$0x.b == 0L)) {
-         ad.b("A periodic notification in " + this.c + " has a period of zero minutes");
-         this.a();
-      } else {
-         long $$4 = this.a($$3);
-         long $$5 = this.a($$3, $$4);
-         if (this.e == null) {
-            this.e = new Timer();
+   public void a() {
+      try {
+         uf $$0 = uu.e(new uf());
+
+         for (int $$1 = 0; $$1 < 9; $$1++) {
+            gge $$2 = this.a($$1);
+            DataResult<vc> $$3 = gge.a.encodeStart(ut.a, $$2);
+            $$0.a(String.valueOf($$1), (vc)$$3.getOrThrow());
          }
 
-         if (this.f == null) {
-            this.f = new fig.b($$3, $$4, $$5);
-         } else {
-            this.f = this.f.a($$3, $$5);
-         }
-
-         this.e.scheduleAtFixedRate(this.f, TimeUnit.MINUTES.toMillis($$4), TimeUnit.MINUTES.toMillis($$5));
+         us.b($$0, this.c);
+      } catch (Exception var5) {
+         b.error("Failed to save creative mode options", var5);
       }
    }
 
-   @Override
-   public void close() {
-      this.a();
-   }
-
-   private void a() {
-      if (this.e != null) {
-         this.e.cancel();
-      }
-   }
-
-   private long a(List<fig.a> $$0, long $$1) {
-      return $$0.stream().mapToLong($$1x -> {
-         long $$2 = $$1x.a - $$1;
-         return LongMath.gcd($$2, $$1x.b);
-      }).reduce(LongMath::gcd).orElseThrow(() -> new IllegalStateException("Empty notifications from: " + this.c));
-   }
-
-   private long a(List<fig.a> $$0) {
-      return $$0.stream().mapToLong($$0x -> $$0x.a).min().orElse(0L);
-   }
-
-   public static record a(long a, long b, String c, String d) {
-
-      public a(final long a, final long b, final String c, final String d) {
-         this.a = a != 0L ? a : b;
-         this.b = b;
-         this.c = c;
-         this.d = d;
-      }
-   }
-
-   static class b extends TimerTask {
-      private final fib a = fib.Q();
-      private final List<fig.a> b;
-      private final long c;
-      private final AtomicLong d;
-
-      public b(List<fig.a> $$0, long $$1, long $$2) {
-         this.b = $$0;
-         this.c = $$2;
-         this.d = new AtomicLong($$1);
+   public gge a(int $$0) {
+      if (!this.f) {
+         this.b();
+         this.f = true;
       }
 
-      public fig.b a(List<fig.a> $$0, long $$1) {
-         this.cancel();
-         return new fig.b($$0, this.d.get(), $$1);
-      }
-
-      @Override
-      public void run() {
-         long $$0 = this.d.getAndAdd(this.c);
-         long $$1 = this.d.get();
-
-         for (fig.a $$2 : this.b) {
-            if ($$0 >= $$2.a) {
-               long $$3 = $$0 / $$2.b;
-               long $$4 = $$1 / $$2.b;
-               if ($$3 != $$4) {
-                  this.a.execute(() -> fmj.a(fib.Q().az(), fmj.a.g, xd.a($$2.c, $$3), xd.a($$2.d, $$3)));
-                  return;
-               }
-            }
-         }
-      }
+      return this.e[$$0];
    }
 }

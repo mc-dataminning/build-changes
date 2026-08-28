@@ -1,13 +1,8 @@
-import javax.annotation.Nullable;
-
-public class guu extends gso {
-   @Nullable
-   public bth.l.e a;
-   @Nullable
-   public bth.l.b f;
+public class guu extends guj implements gvb {
+   public boolean a;
 
    @Override
-   public boolean a() {
-      return this.a != null;
+   public boolean c() {
+      return this.a;
    }
 }

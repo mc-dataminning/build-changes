@@ -1,50 +1,24 @@
-public class fsl extends fpt {
-   private static final int a = 600;
-   private final vx b;
-   private fka c;
-   private int d;
-   private final fns s = fns.d();
+import org.joml.Matrix4f;
 
-   public fsl(xd $$0, vx $$1) {
-      super($$0);
-      this.b = $$1;
+public class fsl implements fsm {
+   private final ayp a;
+
+   public fsl(ayp $$0) {
+      this.a = $$0;
    }
 
    @Override
-   public boolean aJ_() {
-      return false;
+   public int b(fjv $$0) {
+      return $$0.a(this.a);
    }
 
    @Override
-   protected void aT_() {
-      this.s.c().b().a(10);
-      this.s.a(new flh(this.l, this.p));
-      this.c = this.s.a(fka.a(xc.p, $$0 -> this.b.a(fos.a)).a());
-      this.c.j = false;
-      this.s.a();
-      this.s.a($$1 -> {
-         fjy var10000 = this.c($$1);
-      });
-      this.c();
+   public int a(fjv $$0) {
+      return 10;
    }
 
    @Override
-   protected void c() {
-      fnm.a(this.s, this.H());
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.d++;
-      if (this.d == 600) {
-         this.c.j = true;
-      }
-
-      if (this.b.i()) {
-         this.b.b();
-      } else {
-         this.b.n();
-      }
+   public void a(fjv $$0, int $$1, int $$2, Matrix4f $$3, ghg.a $$4) {
+      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, fjv.a.a, 0, 15728880);
    }
 }

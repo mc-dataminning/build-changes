@@ -1,37 +1,24 @@
-import java.util.Optional;
+public enum dvg implements azz {
+   a("single"),
+   b("left"),
+   c("right");
 
-public class dvg {
-   private static final azm a = new azm(4);
-   private static final int b = a.a();
-   private static final int c = 0;
-   private static final int d = 4;
-   private static final int e = 8;
-   private static final int f = 12;
+   private final String d;
 
-   public static int a() {
-      return b;
+   private dvg(final String $$0) {
+      this.d = $$0;
    }
 
-   public static int a(jj $$0) {
-      return a.a($$0);
+   @Override
+   public String c() {
+      return this.d;
    }
 
-   public static int a(float $$0) {
-      return a.b($$0);
-   }
-
-   public static Optional<jj> a(int $$0) {
-      jj $$1 = switch ($$0) {
-         case 0 -> jj.c;
-         case 4 -> jj.f;
-         case 8 -> jj.d;
-         case 12 -> jj.e;
-         default -> null;
+   public dvg a() {
+      return switch (this) {
+         case a -> a;
+         case b -> c;
+         case c -> b;
       };
-      return Optional.ofNullable($$1);
-   }
-
-   public static float b(int $$0) {
-      return a.b($$0);
    }
 }

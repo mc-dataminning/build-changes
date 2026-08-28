@@ -1,274 +1,112 @@
-import java.util.Collection;
-import java.util.Set;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public class ctw extends cvk {
+   public static final int a = 10;
+   private static final int b = 200;
 
-public class ctw {
-   static final alb a = a("items");
-   private final xd b;
-   alb c = a;
-   boolean d = true;
-   boolean e = true;
-   boolean f = false;
-   private final ctw.f g;
-   private final int h;
-   private final ctw.h i;
-   @Nullable
-   private cvl j;
-   private Collection<cvl> k = cvm.a();
-   private Set<cvl> l = cvm.a();
-   private final Supplier<cvl> m;
-   private final ctw.b n;
-
-   ctw(ctw.f $$0, int $$1, ctw.h $$2, xd $$3, Supplier<cvl> $$4, ctw.b $$5) {
-      this.g = $$0;
-      this.h = $$1;
-      this.b = $$3;
-      this.m = $$4;
-      this.n = $$5;
-      this.i = $$2;
+   public ctw(cvk.a $$0) {
+      super($$0);
    }
 
-   public static alb a(String $$0) {
-      return alb.b("textures/gui/container/creative_inventory/tab_" + $$0 + ".png");
-   }
-
-   public static ctw.a a(ctw.f $$0, int $$1) {
-      return new ctw.a($$0, $$1);
-   }
-
-   public xd a() {
-      return this.b;
-   }
-
-   public cvl b() {
-      if (this.j == null) {
-         this.j = this.m.get();
+   @Override
+   public brp a(czm $$0) {
+      cnu $$1 = $$0.o();
+      if ($$1 != null && this.a($$1).d() == eyq.a.b) {
+         $$1.c($$0.p());
       }
 
-      return this.j;
+      return brp.c;
    }
 
-   public alb c() {
-      return this.c;
+   @Override
+   public cvr a(cvp $$0) {
+      return cvr.j;
    }
 
-   public boolean d() {
-      return this.e;
+   @Override
+   public int a(cvp $$0, buk $$1) {
+      return 200;
    }
 
-   public boolean e() {
-      return this.d;
-   }
+   @Override
+   public void a(deg $$0, buk $$1, cvp $$2, int $$3) {
+      if ($$3 >= 0 && $$1 instanceof cnu $$4) {
+         eyq $$6 = this.a($$4);
+         if ($$6 instanceof eyo $$7 && $$6.d() == eyq.a.b) {
+            int $$9 = this.a($$2, $$1) - $$3 + 1;
+            boolean $$10 = $$9 % 10 == 5;
+            if ($$10) {
+               je $$11 = $$7.b();
+               duo $$12 = $$0.a_($$11);
+               bue $$13 = $$1.fw() == bro.a ? $$4.fu() : $$4.fu().e();
+               if ($$12.D() && $$12.o() != dnq.a) {
+                  this.a($$0, $$7, $$12, $$1.g(0.0F), $$13);
+               }
 
-   public int f() {
-      return this.h;
-   }
+               awd $$15;
+               if ($$12.b() instanceof dho $$14) {
+                  $$15 = $$14.c();
+               } else {
+                  $$15 = awe.cS;
+               }
 
-   public ctw.f g() {
-      return this.g;
-   }
-
-   public boolean h() {
-      return !this.k.isEmpty();
-   }
-
-   public boolean i() {
-      return this.i != ctw.h.a || this.h();
-   }
-
-   public boolean j() {
-      return this.f;
-   }
-
-   public ctw.h k() {
-      return this.i;
-   }
-
-   public void a(ctw.d $$0) {
-      ctw.c $$1 = new ctw.c(this, $$0.a);
-      ala<ctw> $$2 = lu.al.d(this).orElseThrow(() -> new IllegalStateException("Unregistered creative tab: " + this));
-      this.n.accept($$0, $$1);
-      this.k = $$1.a;
-      this.l = $$1.b;
-   }
-
-   public Collection<cvl> l() {
-      return this.k;
-   }
-
-   public Collection<cvl> m() {
-      return this.l;
-   }
-
-   public boolean a(cvl $$0) {
-      return this.l.contains($$0);
-   }
-
-   public static class a {
-      private static final ctw.b a = ($$0, $$1) -> {
-      };
-      private final ctw.f b;
-      private final int c;
-      private xd d = xd.i();
-      private Supplier<cvl> e = () -> cvl.k;
-      private ctw.b f = a;
-      private boolean g = true;
-      private boolean h = true;
-      private boolean i = false;
-      private ctw.h j = ctw.h.a;
-      private alb k = ctw.a;
-
-      public a(ctw.f $$0, int $$1) {
-         this.b = $$0;
-         this.c = $$1;
-      }
-
-      public ctw.a a(xd $$0) {
-         this.d = $$0;
-         return this;
-      }
-
-      public ctw.a a(Supplier<cvl> $$0) {
-         this.e = $$0;
-         return this;
-      }
-
-      public ctw.a a(ctw.b $$0) {
-         this.f = $$0;
-         return this;
-      }
-
-      public ctw.a a() {
-         this.i = true;
-         return this;
-      }
-
-      public ctw.a b() {
-         this.h = false;
-         return this;
-      }
-
-      public ctw.a c() {
-         this.g = false;
-         return this;
-      }
-
-      protected ctw.a a(ctw.h $$0) {
-         this.j = $$0;
-         return this;
-      }
-
-      public ctw.a a(alb $$0) {
-         this.k = $$0;
-         return this;
-      }
-
-      public ctw d() {
-         if ((this.j == ctw.h.c || this.j == ctw.h.b) && this.f != a) {
-            throw new IllegalStateException("Special tabs can't have display items");
-         } else {
-            ctw $$0 = new ctw(this.b, this.c, this.j, this.d, this.e, this.f);
-            $$0.f = this.i;
-            $$0.e = this.h;
-            $$0.d = this.g;
-            $$0.c = this.k;
-            return $$0;
-         }
-      }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      void accept(ctw.d var1, ctw.e var2);
-   }
-
-   static class c implements ctw.e {
-      public final Collection<cvl> a = cvm.a();
-      public final Set<cvl> b = cvm.a();
-      private final ctw c;
-      private final cqh d;
-
-      public c(ctw $$0, cqh $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
-
-      @Override
-      public void a(cvl $$0, ctw.g $$1) {
-         if ($$0.J() != 1) {
-            throw new IllegalArgumentException("Stack size must be exactly 1");
-         } else {
-            boolean $$2 = this.a.contains($$0) && $$1 != ctw.g.c;
-            if ($$2) {
-               throw new IllegalStateException(
-                  "Accidentally adding the same item stack twice " + $$0.H().getString() + " to a Creative Mode Tab: " + this.c.a().getString()
-               );
-            } else {
-               if ($$0.h().a(this.d)) {
-                  switch ($$1) {
-                     case a:
-                        this.a.add($$0);
-                        this.b.add($$0);
-                        break;
-                     case b:
-                        this.a.add($$0);
-                        break;
-                     case c:
-                        this.b.add($$0);
+               $$0.a($$4, $$11, $$15, awf.e);
+               if (!$$0.w_() && $$0.c_($$11) instanceof drw $$17) {
+                  boolean $$18 = $$17.a($$0.aa(), $$4, $$7.c());
+                  if ($$18) {
+                     btw $$19 = $$2.equals($$4.a(btw.b)) ? btw.b : btw.a;
+                     $$2.a(1, $$1, $$19);
                   }
                }
             }
+
+            return;
          }
+
+         $$1.fA();
+      } else {
+         $$1.fA();
       }
    }
 
-   public static record d(cqh a, boolean b, jp.a c) {
+   private eyq a(cnu $$0) {
+      return coq.a($$0, btt.h, $$0.gC());
+   }
 
-      public boolean a(cqh $$0, boolean $$1, jp.a $$2) {
-         return !this.a.equals($$0) || this.b != $$1 || this.c != $$2;
+   private void a(deg $$0, eyo $$1, duo $$2, eys $$3, bue $$4) {
+      double $$5 = 3.0;
+      int $$6 = $$4 == bue.b ? 1 : -1;
+      int $$7 = $$0.C_().b(7, 12);
+      lf $$8 = new lf(ln.b, $$2);
+      jj $$9 = $$1.c();
+      ctw.a $$10 = ctw.a.a($$3, $$9);
+      eys $$11 = $$1.g();
+
+      for (int $$12 = 0; $$12 < $$7; $$12++) {
+         $$0.a(
+            $$8,
+            $$11.d - (double)($$9 == jj.e ? 1.0E-6F : 0.0F),
+            $$11.e,
+            $$11.f - (double)($$9 == jj.c ? 1.0E-6F : 0.0F),
+            $$10.a() * (double)$$6 * 3.0 * $$0.C_().j(),
+            0.0,
+            $$10.c() * (double)$$6 * 3.0 * $$0.C_().j()
+         );
       }
    }
 
-   public interface e {
-      void a(cvl var1, ctw.g var2);
+   static record a(double a, double b, double c) {
+      private static final double d = 1.0;
+      private static final double e = 0.1;
 
-      default void a(cvl $$0) {
-         this.a($$0, ctw.g.a);
+      public static ctw.a a(eys $$0, jj $$1) {
+         double $$2 = 0.0;
+
+         return switch ($$1) {
+            case a, b -> new ctw.a($$0.c(), 0.0, -$$0.a());
+            case c -> new ctw.a(1.0, 0.0, -0.1);
+            case d -> new ctw.a(-1.0, 0.0, 0.1);
+            case e -> new ctw.a(-0.1, 0.0, -1.0);
+            case f -> new ctw.a(0.1, 0.0, 1.0);
+         };
       }
-
-      default void a(ddr $$0, ctw.g $$1) {
-         this.a(new cvl($$0), $$1);
-      }
-
-      default void a(ddr $$0) {
-         this.a(new cvl($$0), ctw.g.a);
-      }
-
-      default void a(Collection<cvl> $$0, ctw.g $$1) {
-         $$0.forEach($$1x -> this.a($$1x, $$1));
-      }
-
-      default void a(Collection<cvl> $$0) {
-         this.a($$0, ctw.g.a);
-      }
-   }
-
-   public static enum f {
-      a,
-      b;
-   }
-
-   protected static enum g {
-      a,
-      b,
-      c;
-   }
-
-   public static enum h {
-      a,
-      b,
-      c,
-      d;
    }
 }

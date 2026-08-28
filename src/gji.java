@@ -1,64 +1,66 @@
-import java.util.Calendar;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Streams;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.List;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-public class gji<T extends dre & dsj> implements gjc<T> {
-   private final fwo a;
-   private final fwo b;
-   private final fwo c;
-   private boolean d;
+public class gji {
+   private final gje a;
+   private final giz b;
 
-   public gji(gjd.a $$0) {
-      Calendar $$1 = Calendar.getInstance();
-      if ($$1.get(2) + 1 == 12 && $$1.get(5) >= 24 && $$1.get(5) <= 26) {
-         this.d = true;
-      }
-
-      this.a = new fwo($$0.a(gaa.K));
-      this.b = new fwo($$0.a(gaa.af));
-      this.c = new fwo($$0.a(gaa.ag));
+   public gji(gje $$0, giz $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public void a(T $$0, float $$1, fcu $$2, ggv $$3, int $$4, int $$5) {
-      dds $$6 = $$0.i();
-      boolean $$7 = $$6 != null;
-      dua $$8 = $$7 ? $$0.m() : dgx.cv.o().b(dhy.c, jj.d);
-      dus $$9 = $$8.b(dhy.d) ? $$8.c(dhy.d) : dus.a;
-      if ($$8.b() instanceof dfp<?> $$11) {
-         boolean $$12 = $$9 != dus.a;
-         $$2.a();
-         float $$13 = $$8.c(dhy.c).p();
-         $$2.a(0.5F, 0.5F, 0.5F);
-         $$2.a(a.d.rotationDegrees(-$$13));
-         $$2.a(-0.5F, -0.5F, -0.5F);
-         djc.c<? extends drl> $$14;
-         if ($$7) {
-            $$14 = $$11.a($$8, $$6, $$0.aD_(), true);
-         } else {
-            $$14 = djc.b::b;
-         }
+   public giz a() {
+      return this.b;
+   }
 
-         float $$16 = $$14.apply(dhy.a($$0)).get($$1);
-         $$16 = 1.0F - $$16;
-         $$16 = 1.0F - $$16 * $$16 * $$16;
-         int $$17 = $$14.apply(new gjf<>()).applyAsInt($$4);
-         gyq $$18 = ghm.a($$0, $$9, this.d);
-         fcy $$19 = $$18.a($$3, ghe::e);
-         if ($$12) {
-            if ($$9 == dus.b) {
-               this.a($$2, $$19, this.b, $$16, $$17, $$5);
+   public Predicate<duo> a(dup<dhj, duo> $$0) {
+      return this.a.getPredicate($$0);
+   }
+
+   public static class a implements JsonDeserializer<gji> {
+      public gji a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         return new gji(this.b($$3), (giz)$$2.deserialize($$3.get("apply"), giz.class));
+      }
+
+      private gje b(JsonObject $$0) {
+         return $$0.has("when") ? a(ayt.u($$0, "when")) : gje.b;
+      }
+
+      @VisibleForTesting
+      static gje a(JsonObject $$0) {
+         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
+         if ($$1.isEmpty()) {
+            throw new JsonParseException("No elements found in selector");
+         } else if ($$1.size() == 1) {
+            if ($$0.has("OR")) {
+               List<gje> $$2 = Streams.stream(ayt.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new gjh($$2);
+            } else if ($$0.has("AND")) {
+               List<gje> $$3 = Streams.stream(ayt.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
+               return new gjd($$3);
             } else {
-               this.a($$2, $$19, this.c, $$16, $$17, $$5);
+               return a($$1.iterator().next());
             }
          } else {
-            this.a($$2, $$19, this.a, $$16, $$17, $$5);
+            return new gjd($$1.stream().map(gji.a::a).collect(Collectors.toList()));
          }
-
-         $$2.b();
       }
-   }
 
-   private void a(fcu $$0, fcy $$1, fwo $$2, float $$3, int $$4, int $$5) {
-      $$2.a($$3);
-      $$2.a($$0, $$1, $$4, $$5);
+      private static gje a(Entry<String, JsonElement> $$0) {
+         return new gjf($$0.getKey(), $$0.getValue().getAsString());
+      }
    }
 }

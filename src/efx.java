@@ -1,33 +1,40 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record efx(int b, int c, int d, int e, int f, bqp g, float h) implements efg {
+public class efx implements efu {
    public static final Codec<efx> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               Codec.intRange(1, 32).fieldOf("charge_count").forGetter(efx::a),
-               Codec.intRange(1, 500).fieldOf("amount_per_charge").forGetter(efx::b),
-               Codec.intRange(1, 64).fieldOf("spread_attempts").forGetter(efx::c),
-               Codec.intRange(0, 8).fieldOf("growth_rounds").forGetter(efx::d),
-               Codec.intRange(0, 8).fieldOf("spread_rounds").forGetter(efx::f),
-               bqp.c.fieldOf("extra_rare_growths").forGetter(efx::g),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("catalyst_chance").forGetter(efx::h)
+               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").orElse(30).forGetter($$0x -> $$0x.b),
+               bqu.b(1, 60).fieldOf("column_radius").forGetter($$0x -> $$0x.c),
+               bqs.a(0.0F, 20.0F).fieldOf("height_scale").forGetter($$0x -> $$0x.d),
+               Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter($$0x -> $$0x.e),
+               bqs.a(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter($$0x -> $$0x.f),
+               bqs.a(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter($$0x -> $$0x.g),
+               bqs.a(0.0F, 2.0F).fieldOf("wind_speed").forGetter($$0x -> $$0x.h),
+               Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter($$0x -> $$0x.i),
+               Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter($$0x -> $$0x.j)
             )
             .apply($$0, efx::new)
    );
+   public final int b;
+   public final bqu c;
+   public final bqs d;
+   public final float e;
+   public final bqs f;
+   public final bqs g;
+   public final bqs h;
+   public final int i;
+   public final float j;
 
-   public int a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public int d() {
-      return this.e;
+   public efx(int $$0, bqu $$1, bqs $$2, float $$3, bqs $$4, bqs $$5, bqs $$6, int $$7, float $$8) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
    }
 }

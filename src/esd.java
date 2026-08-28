@@ -1,30 +1,42 @@
-import java.util.Locale;
+import java.util.Optional;
 
-public interface esd {
-   je a();
+public record esd(jn<ese> b, byte c, byte d, byte e, Optional<xd> f) {
+   public static final zb<wo, esd> a = zb.a(ese.c, esd::c, yz.c, esd::d, yz.c, esd::e, yz.c, esd::f, xf.c, esd::g, esd::new);
 
-   float b();
+   public esd(jn<ese> b, byte c, byte d, byte e, Optional<xd> f) {
+      e = (byte)(e & 15);
+      this.b = b;
+      this.c = c;
+      this.d = d;
+      this.e = e;
+      this.f = f;
+   }
 
-   long c();
+   public alc a() {
+      return this.b.a().b();
+   }
 
-   long d();
+   public boolean b() {
+      return this.b.a().c();
+   }
 
-   boolean g();
+   public jn<ese> c() {
+      return this.b;
+   }
 
-   boolean i();
+   public byte d() {
+      return this.c;
+   }
 
-   void b(boolean var1);
+   public byte e() {
+      return this.d;
+   }
 
-   boolean l();
+   public byte f() {
+      return this.e;
+   }
 
-   ddo o();
-
-   brh q();
-
-   boolean r();
-
-   default void a(p $$0, ddu $$1) {
-      $$0.a("Level spawn location", () -> p.a($$1, this.a()));
-      $$0.a("Level time", () -> String.format(Locale.ROOT, "%d game time, %d day time", this.c(), this.d()));
+   public Optional<xd> g() {
+      return this.f;
    }
 }

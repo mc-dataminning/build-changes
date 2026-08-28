@@ -1,45 +1,20 @@
-public abstract class gfe extends ger {
-   protected gwk E;
-
-   protected gfe(gax $$0, double $$1, double $$2, double $$3) {
-      super($$0, $$1, $$2, $$3);
+public class gfe extends geg {
+   protected gfe(gbh $$0, double $$1, double $$2, double $$3, double $$4, gfj $$5) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.t = 16;
+      this.D = 1.5F;
+      this.b($$5);
    }
 
-   protected gfe(gax $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-   }
+   public static class a implements ger<lr> {
+      private final gfj a;
 
-   protected void a(gwk $$0) {
-      this.E = $$0;
-   }
+      public a(gfj $$0) {
+         this.a = $$0;
+      }
 
-   @Override
-   protected float c() {
-      return this.E.c();
-   }
-
-   @Override
-   protected float d() {
-      return this.E.d();
-   }
-
-   @Override
-   protected float e() {
-      return this.E.g();
-   }
-
-   @Override
-   protected float f() {
-      return this.E.h();
-   }
-
-   public void a(gez $$0) {
-      this.a($$0.a(this.r));
-   }
-
-   public void b(gez $$0) {
-      if (!this.o) {
-         this.a($$0.a(this.s, this.t));
+      public geo a(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gfe($$1, $$2, $$3, $$4, $$5, this.a);
       }
    }
 }

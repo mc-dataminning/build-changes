@@ -1,96 +1,135 @@
-import java.util.Map.Entry;
-import java.util.function.UnaryOperator;
+public class fxs extends fxk<gty> {
+   public static final gau a = gau.scaling(2.35F);
+   private static final float[] b = new float[]{1.75F, 0.25F, 0.0F, 0.0F, 0.5F, 0.5F, 0.5F, 0.5F, 1.25F, 0.75F, 0.0F, 0.0F};
+   private static final float[] c = new float[]{0.0F, 0.0F, 0.0F, 0.0F, 0.25F, 1.75F, 1.25F, 0.75F, 0.0F, 0.0F, 0.0F, 0.0F};
+   private static final float[] d = new float[]{0.0F, 0.0F, 0.25F, 1.75F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.75F, 1.25F};
+   private static final float[] e = new float[]{0.0F, 0.0F, 8.0F, -8.0F, -8.0F, 8.0F, 8.0F, -8.0F, 0.0F, 0.0F, 8.0F, -8.0F};
+   private static final float[] f = new float[]{-8.0F, -8.0F, -8.0F, -8.0F, 0.0F, 0.0F, 0.0F, 0.0F, 8.0F, 8.0F, 8.0F, 8.0F};
+   private static final float[] g = new float[]{8.0F, -8.0F, 0.0F, 0.0F, -8.0F, -8.0F, 8.0F, 8.0F, 8.0F, -8.0F, 0.0F, 0.0F};
+   private static final String i = "eye";
+   private static final String j = "tail0";
+   private static final String k = "tail1";
+   private static final String l = "tail2";
+   private final gal m;
+   private final gal n;
+   private final gal o;
+   private final gal[] p;
+   private final gal[] q;
 
-public class fxs extends fxa<gtt> {
-   public static final gak a = fxs::a;
-   private final gab b;
-   private final gab c;
-   private final gab d;
-   private final gab e;
-   private final gab f;
-   private final gab g;
-   private final gab i;
-   private final gab j;
+   public fxs(gal $$0) {
+      this.m = $$0;
+      this.p = new gal[12];
+      this.n = $$0.b("head");
 
-   public fxs(gab $$0) {
-      this.b = $$0;
-      this.c = $$0.b("head");
-      this.i = $$0.b("right_chest");
-      this.j = $$0.b("left_chest");
-      this.d = $$0.b("right_hind_leg");
-      this.e = $$0.b("left_hind_leg");
-      this.f = $$0.b("right_front_leg");
-      this.g = $$0.b("left_front_leg");
-   }
-
-   public static gah a(gaf $$0) {
-      gaj $$1 = new gaj();
-      gal $$2 = $$1.a();
-      $$2.a(
-         "head",
-         gag.c()
-            .a(0, 0)
-            .a(-2.0F, -14.0F, -10.0F, 4.0F, 4.0F, 9.0F, $$0)
-            .a(0, 14)
-            .a("neck", -4.0F, -16.0F, -6.0F, 8.0F, 18.0F, 6.0F, $$0)
-            .a(17, 0)
-            .a("ear", -4.0F, -19.0F, -4.0F, 3.0F, 3.0F, 2.0F, $$0)
-            .a(17, 0)
-            .a("ear", 1.0F, -19.0F, -4.0F, 3.0F, 3.0F, 2.0F, $$0),
-         gad.a(0.0F, 7.0F, -6.0F)
-      );
-      $$2.a("body", gag.c().a(29, 0).a(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F, $$0), gad.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      $$2.a("right_chest", gag.c().a(45, 28).a(-3.0F, 0.0F, 0.0F, 8.0F, 8.0F, 3.0F, $$0), gad.a(-8.5F, 3.0F, 3.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      $$2.a("left_chest", gag.c().a(45, 41).a(-3.0F, 0.0F, 0.0F, 8.0F, 8.0F, 3.0F, $$0), gad.a(5.5F, 3.0F, 3.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
-      int $$3 = 4;
-      int $$4 = 14;
-      gag $$5 = gag.c().a(29, 29).a(-2.0F, 0.0F, -2.0F, 4.0F, 14.0F, 4.0F, $$0);
-      $$2.a("right_hind_leg", $$5, gad.a(-3.5F, 10.0F, 6.0F));
-      $$2.a("left_hind_leg", $$5, gad.a(3.5F, 10.0F, 6.0F));
-      $$2.a("right_front_leg", $$5, gad.a(-3.5F, 10.0F, -5.0F));
-      $$2.a("left_front_leg", $$5, gad.a(3.5F, 10.0F, -5.0F));
-      return gah.a($$1, 128, 64);
-   }
-
-   private static gaj a(gaj $$0) {
-      float $$1 = 2.0F;
-      float $$2 = 0.7F;
-      float $$3 = 1.1F;
-      UnaryOperator<gad> $$4 = $$0x -> $$0x.c(0.0F, 21.0F, 3.52F).d(0.71428573F, 0.64935064F, 0.7936508F);
-      UnaryOperator<gad> $$5 = $$0x -> $$0x.c(0.0F, 33.0F, 0.0F).d(0.625F, 0.45454544F, 0.45454544F);
-      UnaryOperator<gad> $$6 = $$0x -> $$0x.c(0.0F, 33.0F, 0.0F).d(0.45454544F, 0.41322312F, 0.45454544F);
-      gaj $$7 = new gaj();
-
-      for (Entry<String, gal> $$8 : $$0.a().a()) {
-         String $$9 = $$8.getKey();
-         gal $$10 = $$8.getValue();
-
-         UnaryOperator<gad> $$11 = switch ($$9) {
-            case "head" -> $$4;
-            case "body" -> $$5;
-            default -> $$6;
-         };
-         $$7.a().a($$9, $$10.a($$11));
+      for (int $$1 = 0; $$1 < this.p.length; $$1++) {
+         this.p[$$1] = this.n.b(a($$1));
       }
 
-      return $$7;
+      this.o = this.n.b("eye");
+      this.q = new gal[3];
+      this.q[0] = this.n.b("tail0");
+      this.q[1] = this.q[0].b("tail1");
+      this.q[2] = this.q[1].b("tail2");
    }
 
-   public void a(gtt $$0) {
-      this.c.e = $$0.V * (float) (Math.PI / 180.0);
-      this.c.f = $$0.U * (float) (Math.PI / 180.0);
-      float $$1 = $$0.Y;
-      float $$2 = $$0.X;
-      this.d.e = azc.b($$2 * 0.6662F) * 1.4F * $$1;
-      this.e.e = azc.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
-      this.f.e = azc.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1;
-      this.g.e = azc.b($$2 * 0.6662F) * 1.4F * $$1;
-      this.i.k = $$0.b;
-      this.j.k = $$0.b;
+   private static String a(int $$0) {
+      return "spike" + $$0;
+   }
+
+   public static gar b() {
+      gat $$0 = new gat();
+      gav $$1 = $$0.a();
+      gav $$2 = $$1.a(
+         "head",
+         gaq.c()
+            .a(0, 0)
+            .a(-6.0F, 10.0F, -8.0F, 12.0F, 12.0F, 16.0F)
+            .a(0, 28)
+            .a(-8.0F, 10.0F, -6.0F, 2.0F, 12.0F, 12.0F)
+            .a(0, 28)
+            .a(6.0F, 10.0F, -6.0F, 2.0F, 12.0F, 12.0F, true)
+            .a(16, 40)
+            .a(-6.0F, 8.0F, -6.0F, 12.0F, 2.0F, 12.0F)
+            .a(16, 40)
+            .a(-6.0F, 22.0F, -6.0F, 12.0F, 2.0F, 12.0F),
+         gan.a
+      );
+      gaq $$3 = gaq.c().a(0, 0).a(-1.0F, -4.5F, -1.0F, 2.0F, 9.0F, 2.0F);
+
+      for (int $$4 = 0; $$4 < 12; $$4++) {
+         float $$5 = b($$4, 0.0F, 0.0F);
+         float $$6 = c($$4, 0.0F, 0.0F);
+         float $$7 = d($$4, 0.0F, 0.0F);
+         float $$8 = (float) Math.PI * b[$$4];
+         float $$9 = (float) Math.PI * c[$$4];
+         float $$10 = (float) Math.PI * d[$$4];
+         $$2.a(a($$4), $$3, gan.a($$5, $$6, $$7, $$8, $$9, $$10));
+      }
+
+      $$2.a("eye", gaq.c().a(8, 0).a(-1.0F, 15.0F, 0.0F, 2.0F, 2.0F, 1.0F), gan.a(0.0F, 0.0F, -8.25F));
+      gav $$11 = $$2.a("tail0", gaq.c().a(40, 0).a(-2.0F, 14.0F, 7.0F, 4.0F, 4.0F, 8.0F), gan.a);
+      gav $$12 = $$11.a("tail1", gaq.c().a(0, 54).a(0.0F, 14.0F, 0.0F, 3.0F, 3.0F, 7.0F), gan.a(-1.5F, 0.5F, 14.0F));
+      $$12.a("tail2", gaq.c().a(41, 32).a(0.0F, 14.0F, 0.0F, 2.0F, 2.0F, 6.0F).a(25, 19).a(1.0F, 10.5F, 3.0F, 1.0F, 9.0F, 9.0F), gan.a(0.5F, 0.5F, 6.0F));
+      return gar.a($$0, 64, 64);
+   }
+
+   public static gar c() {
+      return b().a(a);
    }
 
    @Override
-   public gab a() {
-      return this.b;
+   public gal a() {
+      return this.m;
+   }
+
+   public void a(gty $$0) {
+      this.n.f = $$0.U * (float) (Math.PI / 180.0);
+      this.n.e = $$0.V * (float) (Math.PI / 180.0);
+      float $$1 = (1.0F - $$0.a) * 0.55F;
+      this.a($$0.p, $$1);
+      if ($$0.e != null && $$0.d != null) {
+         double $$2 = $$0.e.e - $$0.c.e;
+         if ($$2 > 0.0) {
+            this.o.c = 0.0F;
+         } else {
+            this.o.c = 1.0F;
+         }
+
+         eys $$3 = $$0.d;
+         $$3 = new eys($$3.d, 0.0, $$3.f);
+         eys $$4 = new eys($$0.c.d - $$0.e.d, 0.0, $$0.c.f - $$0.e.f).d().b((float) (Math.PI / 2));
+         double $$5 = $$3.b($$4);
+         this.o.b = azd.c((float)Math.abs($$5)) * 2.0F * (float)Math.signum($$5);
+      }
+
+      this.o.k = true;
+      float $$6 = $$0.b;
+      this.q[0].f = azd.a($$6) * (float) Math.PI * 0.05F;
+      this.q[1].f = azd.a($$6) * (float) Math.PI * 0.1F;
+      this.q[2].f = azd.a($$6) * (float) Math.PI * 0.15F;
+   }
+
+   private void a(float $$0, float $$1) {
+      for (int $$2 = 0; $$2 < 12; $$2++) {
+         this.p[$$2].b = b($$2, $$0, $$1);
+         this.p[$$2].c = c($$2, $$0, $$1);
+         this.p[$$2].d = d($$2, $$0, $$1);
+      }
+   }
+
+   private static float a(int $$0, float $$1, float $$2) {
+      return 1.0F + azd.b($$1 * 1.5F + (float)$$0) * 0.01F - $$2;
+   }
+
+   private static float b(int $$0, float $$1, float $$2) {
+      return e[$$0] * a($$0, $$1, $$2);
+   }
+
+   private static float c(int $$0, float $$1, float $$2) {
+      return 16.0F + f[$$0] * a($$0, $$1, $$2);
+   }
+
+   private static float d(int $$0, float $$1, float $$2) {
+      return g[$$0] * a($$0, $$1, $$2);
    }
 }

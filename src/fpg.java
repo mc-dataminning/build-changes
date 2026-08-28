@@ -1,64 +1,31 @@
-public class fpg extends foo {
-   private fka c;
+public class fpg extends fqd {
+   private fld a;
+   private final Runnable b;
+   private final Runnable c;
 
-   public fpg() {
-      super("");
+   public fpg(Runnable $$0, Runnable $$1) {
+      super(xd.c("datapackFailure.title"));
+      this.a = fld.a;
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
-      this.c = fka.a(xd.c("multiplayer.stopSleeping"), $$0 -> this.D()).a(this.n / 2 - 100, this.o - 40, 200, 20).a();
-      this.c(this.c);
+   protected void aR_() {
+      super.aR_();
+      this.a = fld.a(this.p, this.n(), this.n - 50);
+      this.c(fkk.a(xd.c("datapackFailure.safeMode"), $$0 -> this.c.run()).a(this.n / 2 - 155, this.o / 6 + 96, 150, 20).a());
+      this.c(fkk.a(xc.k, $$0 -> this.b.run()).a(this.n / 2 - 155 + 160, this.o / 6 + 96, 150, 20).a());
    }
 
    @Override
-   public void a(fjn $$0, int $$1, int $$2, float $$3) {
-      if (!this.m.J().a(this.m.T())) {
-         this.c.a($$0, $$1, $$2, $$3);
-      } else {
-         super.a($$0, $$1, $$2, $$3);
-      }
+   public void a(fjx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.a($$0, this.n / 2, 70);
    }
 
    @Override
-   public void d() {
-      this.D();
-   }
-
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return !this.m.J().a(this.m.T()) ? true : super.a($$0, $$1);
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      if ($$0 == 256) {
-         this.D();
-      }
-
-      if (!this.m.J().a(this.m.T())) {
-         return true;
-      } else if ($$0 != 257 && $$0 != 335) {
-         return super.a($$0, $$1, $$2);
-      } else {
-         this.b(this.b.a(), true);
-         this.b.a("");
-         this.m.m.d().d();
-         return true;
-      }
-   }
-
-   private void D() {
-      gay $$0 = this.m.t.cx;
-      $$0.b(new ahw(this.m.t, ahw.a.c));
-   }
-
-   public void m() {
-      if (this.b.a().isEmpty()) {
-         this.m.a(null);
-      } else {
-         this.m.a(new foo(this.b.a()));
-      }
+   public boolean aH_() {
+      return false;
    }
 }

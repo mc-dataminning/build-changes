@@ -27,9 +27,9 @@ public class gv implements ArgumentType<gr> {
       return new gv($$0);
    }
 
-   public static eyd a(CommandContext<et> $$0, String $$1) {
-      eye $$2 = ((gr)$$0.getArgument($$1, gr.class)).a((et)$$0.getSource());
-      return new eyd((float)$$2.d, (float)$$2.f);
+   public static eyr a(CommandContext<et> $$0, String $$1) {
+      eys $$2 = ((gr)$$0.getArgument($$1, gr.class)).a((et)$$0.getSource());
+      return new eyr((float)$$2.d, (float)$$2.f);
    }
 
    public gr a(StringReader $$0) throws CommandSyntaxException {

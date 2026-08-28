@@ -1,31 +1,32 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.DataFix;
+import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.DSL.TypeReference;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import java.util.Objects;
-import java.util.function.UnaryOperator;
 
-public class bgh extends DataFix {
+public abstract class bgh extends DataFix {
    private final String a;
-   private final TypeReference b;
-   private final UnaryOperator<String> c;
+   private final String b;
+   private final TypeReference c;
 
-   public bgh(Schema $$0, String $$1, TypeReference $$2, UnaryOperator<String> $$3) {
-      super($$0, false);
-      this.a = $$1;
-      this.b = $$2;
+   public bgh(Schema $$0, boolean $$1, String $$2, TypeReference $$3, String $$4) {
+      super($$0, $$1);
+      this.a = $$2;
       this.c = $$3;
+      this.b = $$4;
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<Pair<String, String>> $$0 = DSL.named(this.b.typeName(), biw.a());
-      if (!Objects.equals($$0, this.getInputSchema().getType(this.b))) {
-         throw new IllegalStateException("\"" + this.b.typeName() + "\" is not what was expected.");
-      } else {
-         return this.fixTypeEverywhere(this.a, $$0, $$0x -> $$0xx -> $$0xx.mapSecond(this.c));
-      }
+   public TypeRewriteRule makeRule() {
+      OpticFinder<?> $$0 = DSL.namedChoice(this.b, this.getInputSchema().getChoiceType(this.c, this.b));
+      return this.fixTypeEverywhereTyped(
+         this.a,
+         this.getInputSchema().getType(this.c),
+         this.getOutputSchema().getType(this.c),
+         $$1 -> $$1.updateTyped($$0, this.getOutputSchema().getChoiceType(this.c, this.b), this::a)
+      );
    }
+
+   protected abstract Typed<?> a(Typed<?> var1);
 }

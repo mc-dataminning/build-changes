@@ -1,80 +1,76 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+public class gei extends geo {
+   private static final int a = 3;
+   private final gho b;
+   private final bto D;
+   private final bto E;
+   private int F;
+   private final gnh G;
+   private double H;
+   private double I;
+   private double J;
+   private double K;
+   private double L;
+   private double M;
 
-public interface gei {
-   gei a = new gei() {
-      @Override
-      public fcp a(fcw $$0, gwl $$1) {
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShader(ggl::s);
-         RenderSystem.setShaderTexture(0, gwj.d);
-         return $$0.a(fcz.c.h, fcs.d);
-      }
+   public gei(gnh $$0, gho $$1, gbh $$2, bto $$3, bto $$4) {
+      this($$0, $$1, $$2, $$3, $$4, $$3.dv());
+   }
 
-      @Override
-      public String toString() {
-         return "TERRAIN_SHEET";
-      }
-   };
-   gei b = new gei() {
-      @Override
-      public fcp a(fcw $$0, gwl $$1) {
-         RenderSystem.disableBlend();
-         RenderSystem.depthMask(true);
-         RenderSystem.setShader(ggl::s);
-         RenderSystem.setShaderTexture(0, gwj.e);
-         return $$0.a(fcz.c.h, fcs.d);
-      }
+   private gei(gnh $$0, gho $$1, gbh $$2, bto $$3, bto $$4, eys $$5) {
+      super($$2, $$3.dx(), $$3.dz(), $$3.dD(), $$5.d, $$5.e, $$5.f);
+      this.b = $$1;
+      this.D = this.a($$3);
+      this.E = $$4;
+      this.G = $$0;
+      this.c();
+      this.d();
+   }
 
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_OPAQUE";
-      }
-   };
-   gei c = new gei() {
-      @Override
-      public fcp a(fcw $$0, gwl $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.setShader(ggl::s);
-         RenderSystem.setShaderTexture(0, gwj.e);
-         RenderSystem.enableBlend();
-         RenderSystem.defaultBlendFunc();
-         return $$0.a(fcz.c.h, fcs.d);
-      }
+   private bto a(bto $$0) {
+      return (bto)(!($$0 instanceof cke) ? $$0 : ((cke)$$0).A());
+   }
 
-      @Override
-      public String toString() {
-         return "PARTICLE_SHEET_TRANSLUCENT";
-      }
-   };
-   gei d = new gei() {
-      @Override
-      public fcp a(fcw $$0, gwl $$1) {
-         RenderSystem.depthMask(true);
-         RenderSystem.disableBlend();
-         return $$0.a(fcz.c.h, fcs.d);
-      }
+   @Override
+   public ges b() {
+      return ges.d;
+   }
 
-      @Override
-      public String toString() {
-         return "CUSTOM";
-      }
-   };
-   gei e = new gei() {
-      @Nullable
-      @Override
-      public fcp a(fcw $$0, gwl $$1) {
-         return null;
+   @Override
+   public void a(fdi $$0, fhu $$1, float $$2) {
+      float $$3 = ((float)this.F + $$2) / 3.0F;
+      $$3 *= $$3;
+      double $$4 = azd.d((double)$$2, this.K, this.H);
+      double $$5 = azd.d((double)$$2, this.L, this.I);
+      double $$6 = azd.d((double)$$2, this.M, this.J);
+      double $$7 = azd.d((double)$$3, this.D.dx(), $$4);
+      double $$8 = azd.d((double)$$3, this.D.dz(), $$5);
+      double $$9 = azd.d((double)$$3, this.D.dD(), $$6);
+      ghg.a $$10 = this.b.c();
+      eys $$11 = $$1.b();
+      this.G.a(this.D, $$7 - $$11.a(), $$8 - $$11.b(), $$9 - $$11.c(), $$2, new fde(), $$10, this.G.a(this.D, $$2));
+      $$10.b();
+   }
+
+   @Override
+   public void a() {
+      this.F++;
+      if (this.F == 3) {
+         this.k();
       }
 
-      @Override
-      public String toString() {
-         return "NO_RENDER";
-      }
-   };
+      this.d();
+      this.c();
+   }
 
-   @Nullable
-   fcp a(fcw var1, gwl var2);
+   private void c() {
+      this.H = this.E.dx();
+      this.I = (this.E.dz() + this.E.dB()) / 2.0;
+      this.J = this.E.dD();
+   }
+
+   private void d() {
+      this.K = this.H;
+      this.L = this.I;
+      this.M = this.J;
+   }
 }

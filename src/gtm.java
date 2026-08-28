@@ -1,4 +1,8 @@
-public class gtm extends gtl {
-   public eye[] a = new eye[0];
-   public boolean i;
+public class gtm extends guj {
+   public boolean b;
+   public boolean c;
+   public boolean d;
+   public float e;
+   public float f;
+   public float g;
 }

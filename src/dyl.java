@@ -1,38 +1,19 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public interface dyl<B, T extends B> {
-   static <B, T extends B> dyl<B, T> a(final Class<T> $$0) {
-      return new dyl<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.isInstance($$0) ? $$0 : null);
-         }
+public record dyl(jn<dyk> e, dwl f) {
+   public static final Codec<dyl> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(dyk.k.fieldOf("type").forGetter(dyl::a), dwl.a.fieldOf("generator").forGetter(dyl::b)).apply($$0, $$0.stable(dyl::new))
+   );
+   public static final alb<dyl> b = alb.a(lv.bc, alc.b("overworld"));
+   public static final alb<dyl> c = alb.a(lv.bc, alc.b("the_nether"));
+   public static final alb<dyl> d = alb.a(lv.bc, alc.b("the_end"));
 
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
+   public jn<dyk> a() {
+      return this.e;
    }
 
-   static <B, T extends B> dyl<B, T> b(final Class<T> $$0) {
-      return new dyl<B, T>() {
-         @Nullable
-         @Override
-         public T a(B $$0x) {
-            return (T)($$0.equals($$0.getClass()) ? $$0 : null);
-         }
-
-         @Override
-         public Class<? extends B> a() {
-            return $$0;
-         }
-      };
+   public dwl b() {
+      return this.f;
    }
-
-   @Nullable
-   T a(B var1);
-
-   Class<? extends B> a();
 }

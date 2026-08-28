@@ -22,17 +22,17 @@ public class mp implements mb {
          .thenCompose(
             $$2 -> {
                JsonObject $$3 = new JsonObject();
-               akz<JsonElement> $$4 = $$2.a(JsonOps.INSTANCE);
+               ala<JsonElement> $$4 = $$2.a(JsonOps.INSTANCE);
                $$2.b(lv.f)
                   .b()
                   .forEach(
                      $$2x -> {
                         JsonObject $$3x = new JsonObject();
-                        dub<dgv, dua> $$4x = ((dgv)$$2x.a()).l();
+                        dup<dhj, duo> $$4x = ((dhj)$$2x.a()).n();
                         if (!$$4x.d().isEmpty()) {
                            JsonObject $$5 = new JsonObject();
 
-                           for (dvd<?> $$6 : $$4x.d()) {
+                           for (dvr<?> $$6 : $$4x.d()) {
                               JsonArray $$7 = new JsonArray();
 
                               for (Comparable<?> $$8 : $$6.a()) {
@@ -49,11 +49,11 @@ public class mp implements mb {
                         UnmodifiableIterator var13 = $$4x.a().iterator();
 
                         while (var13.hasNext()) {
-                           dua $$10 = (dua)var13.next();
+                           duo $$10 = (duo)var13.next();
                            JsonObject $$11 = new JsonObject();
                            JsonObject $$12 = new JsonObject();
 
-                           for (dvd<?> $$13 : $$4x.d()) {
+                           for (dvr<?> $$13 : $$4x.d()) {
                               $$12.addProperty($$13.f(), ad.a($$13, $$10.c($$13)));
                            }
 
@@ -61,8 +61,8 @@ public class mp implements mb {
                               $$11.add("properties", $$12);
                            }
 
-                           $$11.addProperty("id", dgv.j($$10));
-                           if ($$10 == ((dgv)$$2x.a()).o()) {
+                           $$11.addProperty("id", dhj.j($$10));
+                           if ($$10 == ((dhj)$$2x.a()).o()) {
                               $$11.addProperty("default", true);
                            }
 
@@ -71,9 +71,9 @@ public class mp implements mb {
 
                         $$3x.add("states", $$9);
                         String $$14 = $$2x.g();
-                        JsonElement $$15 = (JsonElement)dgw.a
+                        JsonElement $$15 = (JsonElement)dhk.a
                            .codec()
-                           .encodeStart($$4, (dgv)$$2x.a())
+                           .encodeStart($$4, (dhj)$$2x.a())
                            .getOrThrow($$1xxx -> new AssertionError("Failed to serialize block " + $$14 + " (is type registered in BlockTypes?): " + $$1xxx));
                         $$3x.add("definition", $$15);
                         $$3.add($$14, $$3x);

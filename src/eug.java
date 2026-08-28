@@ -1,80 +1,93 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-public abstract class eug implements euh {
-   protected final List<ewe> g;
-   private final Predicate<est> a;
+public class eug extends euu {
+   public static final MapCodec<eug> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  lu.e.r().fieldOf("block").forGetter($$0x -> $$0x.b),
+                  Codec.STRING.listOf().fieldOf("properties").forGetter($$0x -> $$0x.c.stream().map(dvr::f).toList())
+               )
+            )
+            .apply($$0, eug::new)
+   );
+   private final jn<dhj> b;
+   private final Set<dvr<?>> c;
 
-   protected eug(List<ewe> $$0) {
-      this.g = $$0;
-      this.a = ad.a($$0);
+   eug(List<ews> $$0, jn<dhj> $$1, Set<dvr<?>> $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   private eug(List<ews> $$0, jn<dhj> $$1, List<String> $$2) {
+      this($$0, $$1, $$2.stream().map($$1.a().n()::a).filter(Objects::nonNull).collect(Collectors.toSet()));
    }
 
    @Override
-   public abstract eui<? extends eug> b();
-
-   protected static <T extends eug> P1<Mu<T>, List<ewe>> a(Instance<T> $$0) {
-      return $$0.group(ewe.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.g));
+   public euw<eug> b() {
+      return eux.D;
    }
-
-   public final cvl b(cvl $$0, est $$1) {
-      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
-   }
-
-   protected abstract cvl a(cvl var1, est var2);
 
    @Override
-   public void a(esz $$0) {
-      euh.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
-         this.g.get($$1).a($$0.a(".conditions[" + $$1 + "]"));
-      }
+   public Set<ewa<?>> a() {
+      return ImmutableSet.of(ewd.g);
    }
 
-   protected static eug.a<?> a(Function<List<ewe>, euh> $$0) {
-      return new eug.b($$0);
+   @Override
+   protected cvp a(cvp $$0, eth $$1) {
+      duo $$2 = $$1.c(ewd.g);
+      if ($$2 != null) {
+         $$0.a(kr.ah, cxx.a, $$1x -> {
+            for (dvr<?> $$2x : this.c) {
+               if ($$2.b($$2x)) {
+                  $$1x = $$1x.a($$2x, $$2);
+               }
+            }
+
+            return $$1x;
+         });
+      }
+
+      return $$0;
    }
 
-   public abstract static class a<T extends eug.a<T>> implements euh.a, evw<T> {
-      private final Builder<ewe> a = ImmutableList.builder();
-
-      public T a(ewe.a $$0) {
-         this.a.add($$0.build());
-         return this.c();
-      }
-
-      public final T f() {
-         return this.c();
-      }
-
-      protected abstract T c();
-
-      protected List<ewe> g() {
-         return this.a.build();
-      }
+   public static eug.a a(dhj $$0) {
+      return new eug.a($$0);
    }
 
-   static final class b extends eug.a<eug.b> {
-      private final Function<List<ewe>, euh> a;
+   public static class a extends euu.a<eug.a> {
+      private final jn<dhj> a;
+      private final Builder<dvr<?>> b = ImmutableSet.builder();
 
-      public b(Function<List<ewe>, euh> $$0) {
-         this.a = $$0;
+      a(dhj $$0) {
+         this.a = $$0.s();
       }
 
-      protected eug.b a() {
+      public eug.a a(dvr<?> $$0) {
+         if (!this.a.a().n().d().contains($$0)) {
+            throw new IllegalStateException("Property " + $$0 + " is not present on block " + this.a);
+         } else {
+            this.b.add($$0);
+            return this;
+         }
+      }
+
+      protected eug.a a() {
          return this;
       }
 
       @Override
-      public euh b() {
-         return this.a.apply(this.g());
+      public euv b() {
+         return new eug(this.g(), this.a, this.b.build());
       }
    }
 }

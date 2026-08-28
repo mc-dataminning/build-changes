@@ -66,7 +66,7 @@ public interface xd extends Message, xi {
       return new xr(this.b(), new ArrayList<>(this.c()), this.a());
    }
 
-   ayo g();
+   ayp g();
 
    @Override
    default <T> Optional<T> a(xi.b<T> $$0, ya $$1) {
@@ -200,11 +200,11 @@ public interface xd extends Message, xi {
       return b($$0.toString());
    }
 
-   static xd a(alb $$0) {
+   static xd a(alc $$0) {
       return b($$0.toString());
    }
 
-   static xd a(dcy $$0) {
+   static xd a(ddm $$0) {
       return b($$0.toString());
    }
 

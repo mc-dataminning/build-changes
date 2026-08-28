@@ -1,122 +1,79 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class bws extends bvx<cnc> {
-   private static final int d = 200;
-   public static final float c = 0.5F;
-   @Nullable
-   private je e;
-   private long f;
-   private int g;
-   private final List<je> h = Lists.newArrayList();
+public class bws<E extends buk & cnf> extends bwc<E> {
+   private static final int c = 3;
+   private static final int d = 60;
+   private final Function<buk, Optional<bxq>> e;
+   private final float f;
 
-   public bws() {
-      super(ImmutableMap.of(cdi.n, cdj.b, cdi.m, cdj.b, cdi.f, cdj.a));
+   public bws(Function<buk, Optional<bxq>> $$0, float $$1, int $$2) {
+      super(Map.of(cdn.n, cdo.c, cdn.m, cdo.c, cdn.aP, cdo.c), $$2);
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   protected boolean a(arg $$0, cnc $$1) {
-      if (!$$0.ac().b(ddo.c)) {
-         return false;
-      } else if ($$1.gy().b() != cnf.g) {
+   @Override
+   protected boolean a(arh $$0, E $$1) {
+      return this.b($$1);
+   }
+
+   @Override
+   protected boolean a(arh $$0, E $$1, long $$2) {
+      return this.b($$1);
+   }
+
+   @Override
+   protected void d(arh $$0, E $$1, long $$2) {
+      this.e.apply($$1).ifPresent($$1x -> bwe.a($$1, $$1x, this.f, 3));
+   }
+
+   @Override
+   protected void c(arh $$0, E $$1, long $$2) {
+      Optional<bxq> $$3 = this.e.apply($$1);
+      if (!$$3.isEmpty()) {
+         bxq $$4 = $$3.get();
+         double $$5 = $$4.a().f($$1.bC());
+         if ($$5 < 3.0) {
+            cvp $$6 = $$1.y().a(0, 1);
+            if (!$$6.f()) {
+               a($$1, $$6, a($$4));
+               if ($$1 instanceof chg $$7) {
+                  chh.a((buk)$$7).ifPresent($$2x -> this.a($$4, $$6, $$2x));
+               }
+
+               $$1.dX().a(cdn.aP, 60);
+            }
+         }
+      }
+   }
+
+   private void a(bxq $$0, cvp $$1, ari $$2) {
+      je $$3 = $$0.b().e();
+      an.aa.a($$2, $$3, $$1);
+   }
+
+   private boolean b(E $$0) {
+      if ($$0.y().c()) {
          return false;
       } else {
-         je.a $$2 = $$1.ds().k();
-         this.h.clear();
-
-         for (int $$3 = -1; $$3 <= 1; $$3++) {
-            for (int $$4 = -1; $$4 <= 1; $$4++) {
-               for (int $$5 = -1; $$5 <= 1; $$5++) {
-                  $$2.b($$1.dx() + (double)$$3, $$1.dz() + (double)$$4, $$1.dD() + (double)$$5);
-                  if (this.a($$2, $$0)) {
-                     this.h.add(new je($$2));
-                  }
-               }
-            }
-         }
-
-         this.e = this.a($$0);
-         return this.e != null;
+         Optional<bxq> $$1 = this.e.apply($$0);
+         return $$1.isPresent();
       }
    }
 
-   @Nullable
-   private je a(arg $$0) {
-      return this.h.isEmpty() ? null : this.h.get($$0.C_().a(this.h.size()));
+   private static eys a(bxq $$0) {
+      return $$0.a().b(0.0, 1.0, 0.0);
    }
 
-   private boolean a(je $$0, arg $$1) {
-      dua $$2 = $$1.a_($$0);
-      dgv $$3 = $$2.b();
-      dgv $$4 = $$1.a_($$0.e()).b();
-      return $$3 instanceof diq && ((diq)$$3).i($$2) || $$2.l() && $$4 instanceof djs;
-   }
-
-   protected void a(arg $$0, cnc $$1, long $$2) {
-      if ($$2 > this.f && this.e != null) {
-         $$1.dX().a(cdi.n, new bwa(this.e));
-         $$1.dX().a(cdi.m, new cdl(new bwa(this.e), 0.5F, 1));
+   public static void a(buk $$0, cvp $$1, eys $$2) {
+      eys $$3 = new eys(0.2F, 0.3F, 0.2F);
+      bwe.a($$0, $$1, $$2, $$3, 0.2F);
+      deg $$4 = $$0.dS();
+      if ($$4.aa() % 7L == 0L && $$4.z.j() < 0.9) {
+         float $$5 = ad.<Float>a(chg.d, $$4.C_());
+         $$4.a(null, $$0, awe.g, awf.g, 1.0F, $$5);
       }
-   }
-
-   protected void b(arg $$0, cnc $$1, long $$2) {
-      $$1.dX().b(cdi.n);
-      $$1.dX().b(cdi.m);
-      this.g = 0;
-      this.f = $$2 + 40L;
-   }
-
-   protected void c(arg $$0, cnc $$1, long $$2) {
-      if (this.e == null || this.e.a($$1.dq(), 1.0)) {
-         if (this.e != null && $$2 > this.f) {
-            dua $$3 = $$0.a_(this.e);
-            dgv $$4 = $$3.b();
-            dgv $$5 = $$0.a_(this.e.e()).b();
-            if ($$4 instanceof diq && ((diq)$$4).i($$3)) {
-               $$0.a(this.e, true, $$1);
-            }
-
-            if ($$3.l() && $$5 instanceof djs && $$1.gI()) {
-               brr $$6 = $$1.y();
-
-               for (int $$7 = 0; $$7 < $$6.b(); $$7++) {
-                  cvl $$8 = $$6.a($$7);
-                  boolean $$9 = false;
-                  if (!$$8.f() && $$8.a(axb.bB) && $$8.h() instanceof ctl $$10) {
-                     dua $$11 = $$10.d().o();
-                     $$0.b(this.e, $$11);
-                     $$0.a(dyx.i, this.e, dyx.a.a($$1, $$11));
-                     $$9 = true;
-                  }
-
-                  if ($$9) {
-                     $$0.a(null, (double)this.e.u(), (double)this.e.v(), (double)this.e.w(), awd.gn, awe.e, 1.0F, 1.0F);
-                     $$8.h(1);
-                     if ($$8.f()) {
-                        $$6.a($$7, cvl.k);
-                     }
-                     break;
-                  }
-               }
-            }
-
-            if ($$4 instanceof diq && !((diq)$$4).i($$3)) {
-               this.h.remove(this.e);
-               this.e = this.a($$0);
-               if (this.e != null) {
-                  this.f = $$2 + 20L;
-                  $$1.dX().a(cdi.m, new cdl(new bwa(this.e), 0.5F, 1));
-                  $$1.dX().a(cdi.n, new bwa(this.e));
-               }
-            }
-         }
-
-         this.g++;
-      }
-   }
-
-   protected boolean d(arg $$0, cnc $$1, long $$2) {
-      return this.g < 200;
    }
 }

@@ -1,28 +1,17 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-
-public enum fne implements azy {
-   a("bitmap", fnb.a.a),
-   b("ttf", fng.a),
-   c("space", faq.a.a),
-   d("unihex", fnh.b.a),
-   e("reference", fnf.a);
-
-   public static final Codec<fne> f = azy.a(fne::values);
-   private final String g;
-   private final MapCodec<? extends fnd> h;
-
-   private fne(final String $$0, final MapCodec<? extends fnd> $$1) {
-      this.g = $$0;
-      this.h = $$1;
+public record fne(ghq a, ghq b, ghq c) {
+   public static fne a(alc $$0) {
+      return new fne(ghq.u($$0), ghq.y($$0), ghq.w($$0));
    }
 
-   @Override
-   public String c() {
-      return this.g;
+   public static fne b(alc $$0) {
+      return new fne(ghq.t($$0), ghq.x($$0), ghq.v($$0));
    }
 
-   public MapCodec<? extends fnd> a() {
-      return this.h;
+   public ghq a(fjv.a $$0) {
+      return switch ($$0) {
+         case a -> this.a;
+         case b -> this.b;
+         case c -> this.c;
+      };
    }
 }

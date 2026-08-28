@@ -1,82 +1,35 @@
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-public interface buw {
-   buw a = new buw() {
-      @Override
-      public cvl a() {
-         return cvl.k;
-      }
+public enum buw {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4),
+   f(5),
+   g(6),
+   h(7),
+   i(8),
+   j(9),
+   k(10),
+   l(11),
+   m(12),
+   n(13),
+   o(14),
+   p(15),
+   q(16),
+   r(17);
 
-      @Override
-      public boolean a(cvl $$0) {
-         return false;
-      }
-   };
+   public static final IntFunction<buw> s = axu.a(buw::a, values(), axu.a.a);
+   public static final zb<ByteBuf, buw> t = yz.a(s, buw::a);
+   private final int u;
 
-   static buw a(final Supplier<cvl> $$0, final Consumer<cvl> $$1) {
-      return new buw() {
-         @Override
-         public cvl a() {
-            return $$0.get();
-         }
-
-         @Override
-         public boolean a(cvl $$0x) {
-            $$1.accept($$0);
-            return true;
-         }
-      };
+   private buw(final int $$0) {
+      this.u = $$0;
    }
 
-   static buw a(final brd $$0, final int $$1, final Predicate<cvl> $$2) {
-      return new buw() {
-         @Override
-         public cvl a() {
-            return $$0.a($$1);
-         }
-
-         @Override
-         public boolean a(cvl $$0x) {
-            if (!$$2.test($$0)) {
-               return false;
-            } else {
-               $$0.a($$1, $$0);
-               return true;
-            }
-         }
-      };
+   public int a() {
+      return this.u;
    }
-
-   static buw a(brd $$0, int $$1) {
-      return a($$0, $$1, $$0x -> true);
-   }
-
-   static buw a(final buf $$0, final btr $$1, final Predicate<cvl> $$2) {
-      return new buw() {
-         @Override
-         public cvl a() {
-            return $$0.a($$1);
-         }
-
-         @Override
-         public boolean a(cvl $$0x) {
-            if (!$$2.test($$0)) {
-               return false;
-            } else {
-               $$0.a($$1, $$0);
-               return true;
-            }
-         }
-      };
-   }
-
-   static buw a(buf $$0, btr $$1) {
-      return a($$0, $$1, $$0x -> true);
-   }
-
-   cvl a();
-
-   boolean a(cvl var1);
 }

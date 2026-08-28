@@ -1,76 +1,36 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
+import java.util.List;
+import java.util.stream.Stream;
 
-public abstract class cza implements czt<daj> {
-   protected final czz<?> a;
-   protected final czg b;
-   protected final String c;
-   protected final czp d;
-   protected final cvl e;
-   protected final float f;
-   protected final int g;
-   @Nullable
-   private czs j;
+public record cza(List<ary<String>> g) implements cxy<String, cza> {
+   public static final cza a = new cza(List.of());
+   public static final int b = 1024;
+   public static final int c = 100;
+   private static final Codec<ary<String>> h = ary.a(Codec.string(0, 1024));
+   public static final Codec<List<ary<String>>> d = h.sizeLimitedListOf(100);
+   public static final Codec<cza> e = RecordCodecBuilder.create($$0 -> $$0.group(d.optionalFieldOf("pages", List.of()).forGetter(cza::a)).apply($$0, cza::new));
+   public static final zb<ByteBuf, cza> f = ary.a(yz.b(1024)).a(yz.c(100)).a(cza::new, cza::a);
 
-   public cza(czz<?> $$0, String $$1, czg $$2, czp $$3, cvl $$4, float $$5, int $$6) {
-      this.a = $$0;
-      this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-   }
-
-   public boolean a(daj $$0, dds $$1) {
-      return this.d.a($$0.c());
-   }
-
-   public cvl a(daj $$0, jp.a $$1) {
-      return this.e.u();
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
-
-   @Override
-   public czs a() {
-      if (this.j == null) {
-         this.j = czs.a(this.d);
+   public cza(List<ary<String>> g) {
+      if (g.size() > 100) {
+         throw new IllegalArgumentException("Got " + g.size() + " pages, but maximum is 100");
+      } else {
+         this.g = g;
       }
-
-      return this.j;
    }
 
-   public float b() {
-      return this.f;
+   public Stream<String> a(boolean $$0) {
+      return this.g.stream().map($$1 -> $$1.a($$0));
    }
 
-   @Override
-   public cvl a(jp.a $$0) {
-      return this.e;
+   public cza b(List<ary<String>> $$0) {
+      return new cza($$0);
    }
 
    @Override
-   public String c() {
-      return this.c;
-   }
-
-   public int d() {
+   public List<ary<String>> a() {
       return this.g;
-   }
-
-   @Override
-   public czz<?> e() {
-      return this.a;
-   }
-
-   public czg f() {
-      return this.b;
-   }
-
-   public interface a<T extends cza> {
-      T create(String var1, czg var2, czp var3, cvl var4, float var5, int var6);
    }
 }

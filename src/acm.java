@@ -1,15 +1,15 @@
 public class acm implements zk<abz> {
    public static final zb<wa, acm> a = zk.a(acm::a, acm::new);
-   private final brh b;
+   private final brm b;
    private final boolean c;
 
-   public acm(brh $$0, boolean $$1) {
+   public acm(brm $$0, boolean $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
    private acm(wa $$0) {
-      this.b = brh.a($$0.readUnsignedByte());
+      this.b = brm.a($$0.readUnsignedByte());
       this.c = $$0.readBoolean();
    }
 
@@ -31,7 +31,7 @@ public class acm implements zk<abz> {
       return this.c;
    }
 
-   public brh e() {
+   public brm e() {
       return this.b;
    }
 }

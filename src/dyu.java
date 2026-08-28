@@ -1,43 +1,61 @@
-import java.util.function.Consumer;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.Map;
+import java.util.UUID;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dyu<T extends dyz> {
-   private final T a;
-   @Nullable
-   private kg b;
+public class dyu<T extends dys> {
+   private static final Logger a = LogUtils.getLogger();
+   private final Int2ObjectMap<T> b = new Int2ObjectLinkedOpenHashMap();
+   private final Map<UUID, T> c = Maps.newHashMap();
 
-   public dyu(T $$0) {
-      this.a = $$0;
-   }
+   public <U extends T> void a(dyz<T, U> $$0, axp<U> $$1) {
+      ObjectIterator var3 = this.b.values().iterator();
 
-   public void a(arg $$0) {
-      this.c($$0);
-   }
-
-   public T a() {
-      return this.a;
-   }
-
-   public void b(arg $$0) {
-      a($$0, this.b, $$0x -> $$0x.b(this.a));
-   }
-
-   public void c(arg $$0) {
-      this.a.a().a($$0).map(kg::a).ifPresent($$1 -> {
-         if (this.b == null || !this.b.equals($$1)) {
-            a($$0, this.b, $$0xx -> $$0xx.b(this.a));
-            this.b = $$1;
-            a($$0, this.b, $$0xx -> $$0xx.a(this.a));
-         }
-      });
-   }
-
-   private static void a(ddv $$0, @Nullable kg $$1, Consumer<dza> $$2) {
-      if ($$1 != null) {
-         dvw $$3 = $$0.a($$1.a(), $$1.c(), dwx.n, false);
-         if ($$3 != null) {
-            $$2.accept($$3.a($$1.b()));
+      while (var3.hasNext()) {
+         T $$2 = (T)var3.next();
+         U $$3 = (U)$$0.a($$2);
+         if ($$3 != null && $$1.accept($$3).a()) {
+            return;
          }
       }
+   }
+
+   public Iterable<T> a() {
+      return Iterables.unmodifiableIterable(this.b.values());
+   }
+
+   public void a(T $$0) {
+      UUID $$1 = $$0.cD();
+      if (this.c.containsKey($$1)) {
+         a.warn("Duplicate entity UUID {}: {}", $$1, $$0);
+      } else {
+         this.c.put($$1, $$0);
+         this.b.put($$0.ap(), $$0);
+      }
+   }
+
+   public void b(T $$0) {
+      this.c.remove($$0.cD());
+      this.b.remove($$0.ap());
+   }
+
+   @Nullable
+   public T a(int $$0) {
+      return (T)this.b.get($$0);
+   }
+
+   @Nullable
+   public T a(UUID $$0) {
+      return this.c.get($$0);
+   }
+
+   public int b() {
+      return this.c.size();
    }
 }

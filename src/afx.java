@@ -1,8 +1,8 @@
 public class afx implements zk<abz> {
    public static final zb<wo, afx> a = zk.a(afx::a, afx::new);
    public static final float b = 8.0F;
-   private final jn<awc> c;
-   private final awe d;
+   private final jn<awd> c;
+   private final awf d;
    private final int e;
    private final int f;
    private final int g;
@@ -10,7 +10,7 @@ public class afx implements zk<abz> {
    private final float i;
    private final long j;
 
-   public afx(jn<awc> $$0, awe $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
+   public afx(jn<awd> $$0, awf $$1, double $$2, double $$3, double $$4, float $$5, float $$6, long $$7) {
       this.c = $$0;
       this.d = $$1;
       this.e = (int)($$2 * 8.0);
@@ -22,8 +22,8 @@ public class afx implements zk<abz> {
    }
 
    private afx(wo $$0) {
-      this.c = awc.d.decode($$0);
-      this.d = $$0.b(awe.class);
+      this.c = awd.d.decode($$0);
+      this.d = $$0.b(awf.class);
       this.e = $$0.readInt();
       this.f = $$0.readInt();
       this.g = $$0.readInt();
@@ -33,7 +33,7 @@ public class afx implements zk<abz> {
    }
 
    private void a(wo $$0) {
-      awc.d.encode($$0, this.c);
+      awd.d.encode($$0, this.c);
       $$0.a(this.d);
       $$0.q(this.e);
       $$0.q(this.f);
@@ -52,11 +52,11 @@ public class afx implements zk<abz> {
       $$0.a(this);
    }
 
-   public jn<awc> b() {
+   public jn<awd> b() {
       return this.c;
    }
 
-   public awe e() {
+   public awf e() {
       return this.d;
    }
 

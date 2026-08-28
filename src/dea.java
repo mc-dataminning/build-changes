@@ -1,25 +1,31 @@
-import javax.annotation.Nullable;
+public class dea {
+   private static int[] a = new int[65536];
 
-public interface dea {
-   boolean a(je var1, dua var2, int var3, int var4);
-
-   default boolean a(je $$0, dua $$1, int $$2) {
-      return this.a($$0, $$1, $$2, 512);
+   public static void a(int[] $$0) {
+      a = $$0;
    }
 
-   boolean a(je var1, boolean var2);
-
-   default boolean b(je $$0, boolean $$1) {
-      return this.a($$0, $$1, null);
+   public static int a(double $$0, double $$1) {
+      $$1 *= $$0;
+      int $$2 = (int)((1.0 - $$0) * 255.0);
+      int $$3 = (int)((1.0 - $$1) * 255.0);
+      int $$4 = $$3 << 8 | $$2;
+      return $$4 >= a.length ? c() : a[$$4];
    }
 
-   default boolean a(je $$0, boolean $$1, @Nullable btj $$2) {
-      return this.a($$0, $$1, $$2, 512);
+   public static int a() {
+      return -10380959;
    }
 
-   boolean a(je var1, boolean var2, @Nullable btj var3, int var4);
+   public static int b() {
+      return -8345771;
+   }
 
-   default boolean b(btj $$0) {
-      return false;
+   public static int c() {
+      return -12012264;
+   }
+
+   public static int d() {
+      return -7158200;
    }
 }

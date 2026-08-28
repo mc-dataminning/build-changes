@@ -1,40 +1,96 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class efj implements efg {
-   public static final Codec<efj> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               Codec.intRange(1, 512).fieldOf("floor_to_ceiling_search_range").orElse(30).forGetter($$0x -> $$0x.b),
-               bqp.b(1, 60).fieldOf("column_radius").forGetter($$0x -> $$0x.c),
-               bqn.a(0.0F, 20.0F).fieldOf("height_scale").forGetter($$0x -> $$0x.d),
-               Codec.floatRange(0.1F, 1.0F).fieldOf("max_column_radius_to_cave_height_ratio").forGetter($$0x -> $$0x.e),
-               bqn.a(0.1F, 10.0F).fieldOf("stalactite_bluntness").forGetter($$0x -> $$0x.f),
-               bqn.a(0.1F, 10.0F).fieldOf("stalagmite_bluntness").forGetter($$0x -> $$0x.g),
-               bqn.a(0.0F, 2.0F).fieldOf("wind_speed").forGetter($$0x -> $$0x.h),
-               Codec.intRange(0, 100).fieldOf("min_radius_for_wind").forGetter($$0x -> $$0x.i),
-               Codec.floatRange(0.0F, 5.0F).fieldOf("min_bluntness_for_wind").forGetter($$0x -> $$0x.j)
-            )
-            .apply($$0, efj::new)
-   );
-   public final int b;
-   public final bqp c;
-   public final bqn d;
-   public final float e;
-   public final bqn f;
-   public final bqn g;
-   public final bqn h;
-   public final int i;
-   public final float j;
+public class efj extends edq<egb> {
+   private static final jj[] a = jj.values();
 
-   public efj(int $$0, bqp $$1, bqn $$2, float $$3, bqn $$4, bqn $$5, bqn $$6, int $$7, float $$8) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
-      this.j = $$8;
+   public efj(Codec<egb> $$0) {
+      super($$0);
+   }
+
+   @Override
+   public boolean a(eds<egb> $$0) {
+      dfd $$1 = $$0.b();
+      je $$2 = $$0.e();
+      azl $$3 = $$0.d();
+      if (!$$1.u($$2)) {
+         return false;
+      } else {
+         duo $$4 = $$1.a_($$2.d());
+         if (!$$4.a(dhl.dV) && !$$4.a(dhl.kK)) {
+            return false;
+         } else {
+            this.a($$1, $$3, $$2);
+            this.b($$1, $$3, $$2);
+            return true;
+         }
+      }
+   }
+
+   private void a(deh $$0, azl $$1, je $$2) {
+      $$0.a($$2, dhl.kK.o(), 2);
+      je.a $$3 = new je.a();
+      je.a $$4 = new je.a();
+
+      for (int $$5 = 0; $$5 < 200; $$5++) {
+         $$3.a($$2, $$1.a(6) - $$1.a(6), $$1.a(2) - $$1.a(5), $$1.a(6) - $$1.a(6));
+         if ($$0.u($$3)) {
+            int $$6 = 0;
+
+            for (jj $$7 : a) {
+               duo $$8 = $$0.a_($$4.a($$3, $$7));
+               if ($$8.a(dhl.dV) || $$8.a(dhl.kK)) {
+                  $$6++;
+               }
+
+               if ($$6 > 1) {
+                  break;
+               }
+            }
+
+            if ($$6 == 1) {
+               $$0.a($$3, dhl.kK.o(), 2);
+            }
+         }
+      }
+   }
+
+   private void b(deh $$0, azl $$1, je $$2) {
+      je.a $$3 = new je.a();
+
+      for (int $$4 = 0; $$4 < 100; $$4++) {
+         $$3.a($$2, $$1.a(8) - $$1.a(8), $$1.a(2) - $$1.a(7), $$1.a(8) - $$1.a(8));
+         if ($$0.u($$3)) {
+            duo $$5 = $$0.a_($$3.d());
+            if ($$5.a(dhl.dV) || $$5.a(dhl.kK)) {
+               int $$6 = azd.a($$1, 1, 8);
+               if ($$1.a(6) == 0) {
+                  $$6 *= 2;
+               }
+
+               if ($$1.a(5) == 0) {
+                  $$6 = 1;
+               }
+
+               int $$7 = 17;
+               int $$8 = 25;
+               a($$0, $$1, $$3, $$6, 17, 25);
+            }
+         }
+      }
+   }
+
+   public static void a(deh $$0, azl $$1, je.a $$2, int $$3, int $$4, int $$5) {
+      for (int $$6 = 0; $$6 <= $$3; $$6++) {
+         if ($$0.u($$2)) {
+            if ($$6 == $$3 || !$$0.u($$2.e())) {
+               $$0.a($$2, dhl.oz.o().b(dky.e, Integer.valueOf(azd.a($$1, $$4, $$5))), 2);
+               break;
+            }
+
+            $$0.a($$2, dhl.oA.o(), 2);
+         }
+
+         $$2.c(jj.a);
+      }
    }
 }

@@ -1,113 +1,68 @@
-import com.mojang.serialization.MapCodec;
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dts extends dgh {
-   public static final MapCodec<dts> a = b(dts::new);
-   public static final duu b = dtu.a;
-   public static final duy<dvc> c = dtu.c;
+public record dts(int c, float d, float e, float f, float g, int h, bpz<dez> i, bpz<alb<etm>> j, alb<etm> k) {
+   public static final dts a = new dts(4, 6.0F, 2.0F, 2.0F, 1.0F, 40, bpz.b(), bpz.<alb<etm>>a().a(etd.aK).a(etd.aJ).a(), etd.aN);
+   public static final Codec<dts> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.intRange(1, 128).lenientOptionalFieldOf("spawn_range", a.c).forGetter(dts::b),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).lenientOptionalFieldOf("total_mobs", a.d).forGetter(dts::c),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).lenientOptionalFieldOf("simultaneous_mobs", a.e).forGetter(dts::d),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).lenientOptionalFieldOf("total_mobs_added_per_player", a.f).forGetter(dts::e),
+               Codec.floatRange(0.0F, Float.MAX_VALUE).lenientOptionalFieldOf("simultaneous_mobs_added_per_player", a.g).forGetter(dts::f),
+               Codec.intRange(0, Integer.MAX_VALUE).lenientOptionalFieldOf("ticks_between_spawn", a.h).forGetter(dts::g),
+               dez.c.lenientOptionalFieldOf("spawn_potentials", bpz.b()).forGetter(dts::h),
+               bpz.a(alb.a(lv.bd)).lenientOptionalFieldOf("loot_tables_to_eject", a.j).forGetter(dts::i),
+               alb.a(lv.bd).lenientOptionalFieldOf("items_to_drop_when_ominous", a.k).forGetter(dts::j)
+            )
+            .apply($$0, dts::new)
+   );
 
-   @Override
-   public MapCodec<dts> a() {
-      return a;
+   public int a(int $$0) {
+      return (int)Math.floor((double)(this.d + this.f * (float)$$0));
    }
 
-   public dts(dtz.d $$0) {
-      super($$0);
-      this.l(this.E.b().b(b, jj.c).b(c, dvc.a));
+   public int b(int $$0) {
+      return (int)Math.floor((double)(this.e + this.g * (float)$$0));
    }
 
-   @Nullable
-   @Override
-   public dre a(je $$0, dua $$1) {
-      return null;
+   public long a() {
+      return 160L;
    }
 
-   public static dre a(je $$0, dua $$1, dua $$2, jj $$3, boolean $$4, boolean $$5) {
-      return new dtw($$0, $$1, $$2, $$3, $$4, $$5);
+   public int b() {
+      return this.c;
    }
 
-   @Nullable
-   @Override
-   public <T extends dre> drf<T> a(dds $$0, dua $$1, drg<T> $$2) {
-      return a($$2, drg.k, dtw::a);
+   public float c() {
+      return this.d;
    }
 
-   @Override
-   protected void a(dua $$0, dds $$1, je $$2, dua $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         dre $$5 = $$1.c_($$2);
-         if ($$5 instanceof dtw) {
-            ((dtw)$$5).k();
-         }
-      }
+   public float d() {
+      return this.e;
    }
 
-   @Override
-   public void a(ddt $$0, je $$1, dua $$2) {
-      je $$3 = $$1.a($$2.c(b).g());
-      dua $$4 = $$0.a_($$3);
-      if ($$4.b() instanceof dtt && $$4.c(dtt.c)) {
-         $$0.a($$3, false);
-      }
+   public float e() {
+      return this.f;
    }
 
-   @Override
-   protected brk a(dua $$0, dds $$1, je $$2, cnp $$3, eya $$4) {
-      if (!$$1.B && $$1.c_($$2) == null) {
-         $$1.a($$2, false);
-         return brk.c;
-      } else {
-         return brk.e;
-      }
+   public float f() {
+      return this.g;
    }
 
-   @Override
-   protected List<cvl> a(dua $$0, esw.a $$1) {
-      dtw $$2 = this.a($$1.a(), je.a($$1.a(evp.f)));
-      return $$2 == null ? Collections.emptyList() : $$2.j().a($$1);
+   public int g() {
+      return this.h;
    }
 
-   @Override
-   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
-      return eyu.a();
+   public bpz<dez> h() {
+      return this.i;
    }
 
-   @Override
-   protected eyx b(dua $$0, dcx $$1, je $$2, eyj $$3) {
-      dtw $$4 = this.a($$1, $$2);
-      return $$4 != null ? $$4.a($$1, $$2) : eyu.a();
+   public bpz<alb<etm>> i() {
+      return this.j;
    }
 
-   @Nullable
-   private dtw a(dcx $$0, je $$1) {
-      dre $$2 = $$0.c_($$1);
-      return $$2 instanceof dtw ? (dtw)$$2 : null;
-   }
-
-   @Override
-   public cvl a(ddv $$0, je $$1, dua $$2) {
-      return cvl.k;
-   }
-
-   @Override
-   protected dua a(dua $$0, dnj $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dua a(dua $$0, dls $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dub.a<dgv, dua> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected boolean a(dua $$0, eqq $$1) {
-      return false;
+   public alb<etm> j() {
+      return this.k;
    }
 }

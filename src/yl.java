@@ -21,29 +21,31 @@ public record yl(Either<hk, String> d, String e) implements xe {
       return c;
    }
 
-   private ezh a(et $$0) throws CommandSyntaxException {
+   private ezw a(et $$0) throws CommandSyntaxException {
       Optional<hk> $$1 = this.d.left();
       if ($$1.isPresent()) {
-         List<? extends btj> $$2 = $$1.get().b().b($$0);
+         List<? extends bto> $$2 = $$1.get().b().b($$0);
          if (!$$2.isEmpty()) {
             if ($$2.size() != 1) {
                throw fg.a.create();
+            } else {
+               return $$2.getFirst();
             }
-
-            return $$2.getFirst();
+         } else {
+            return ezw.c($$1.get().a());
          }
+      } else {
+         return ezw.c((String)this.d.right().orElseThrow());
       }
-
-      return ezh.c((String)this.d.right().orElseThrow());
    }
 
-   private xr a(ezh $$0, et $$1) {
+   private xr a(ezw $$0, et $$1) {
       MinecraftServer $$2 = $$1.l();
       if ($$2 != null) {
-         ezi $$3 = $$2.aJ();
-         eza $$4 = $$3.a(this.e);
+         ezx $$3 = $$2.aJ();
+         ezp $$4 = $$3.a(this.e);
          if ($$4 != null) {
-            eze $$5 = $$3.d($$0, $$4);
+            ezt $$5 = $$3.d($$0, $$4);
             if ($$5 != null) {
                return $$5.a($$4.a(yw.b));
             }
@@ -54,12 +56,12 @@ public record yl(Either<hk, String> d, String e) implements xe {
    }
 
    @Override
-   public xr a(@Nullable et $$0, @Nullable btj $$1, int $$2) throws CommandSyntaxException {
+   public xr a(@Nullable et $$0, @Nullable bto $$1, int $$2) throws CommandSyntaxException {
       if ($$0 == null) {
          return xd.i();
       } else {
-         ezh $$3 = this.a($$0);
-         ezh $$4 = (ezh)($$1 != null && $$3.equals(ezh.cA) ? $$1 : $$3);
+         ezw $$3 = this.a($$0);
+         ezw $$4 = (ezw)($$1 != null && $$3.equals(ezw.cz) ? $$1 : $$3);
          return this.a($$4, $$0);
       }
    }

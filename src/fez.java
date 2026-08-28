@@ -1,40 +1,27 @@
-public class fez {
-   private final fgn a;
-   private boolean b;
-   private String c;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-   public fez(fgn $$0) {
-      this.a = $$0;
-      fgn.a $$1 = $$0.a();
-      this.b = $$1.b;
-      this.c = $$1.a;
-   }
+public class fez extends fey {
+   private static final Logger d = LogUtils.getLogger();
+   public String a;
+   public String b;
+   public String c;
 
-   public boolean a() {
-      return this.b;
-   }
+   public static fez a(String $$0) {
+      JsonParser $$1 = new JsonParser();
+      JsonObject $$2 = $$1.parse($$0).getAsJsonObject();
+      fez $$3 = new fez();
 
-   public String b() {
-      return this.c;
-   }
-
-   public void a(fdz $$0) {
-      fgn.a $$1 = this.b($$0);
-      this.b = $$1.b;
-      this.c = $$1.a;
-   }
-
-   private fgn.a b(fdz $$0) {
-      fgn.a $$1 = new fgn.a();
-      $$1.a = $$0.a;
-      fgn.a $$2 = this.a.a();
-      boolean $$3 = $$1.a == null || $$1.a.equals($$2.a);
-      if ($$3) {
-         return $$2;
-      } else {
-         $$1.b = true;
-         this.a.a($$1);
-         return $$1;
+      try {
+         $$3.a = fgv.b("downloadLink", $$2, "");
+         $$3.b = fgv.b("resourcePackUrl", $$2, "");
+         $$3.c = fgv.b("resourcePackHash", $$2, "");
+      } catch (Exception var5) {
+         d.error("Could not parse WorldDownload: {}", var5.getMessage());
       }
+
+      return $$3;
    }
 }

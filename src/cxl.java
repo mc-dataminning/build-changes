@@ -1,58 +1,41 @@
-import com.mojang.serialization.Codec;
 import java.util.List;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class cxl implements cqe {
-   public static final Codec<jn<cxl>> a = lu.h.r();
-   public static final zb<wo, jn<cxl>> b = yz.b(lv.ad);
-   @Nullable
-   private final String c;
-   private final List<bsq> d;
-   private cqh e = cqj.h;
-
-   public cxl(bsq... $$0) {
-      this(null, $$0);
-   }
-
-   public cxl(@Nullable String $$0, bsq... $$1) {
-      this.c = $$0;
-      this.d = List.of($$1);
-   }
-
-   public cxl a(cqf... $$0) {
-      this.e = cqj.f.a($$0);
-      return this;
+public class cxl extends cvk {
+   public cxl(cvk.a $$0) {
+      super($$0);
    }
 
    @Override
-   public cqh i() {
-      return this.e;
-   }
-
-   public static String a(Optional<jn<cxl>> $$0, String $$1) {
-      if ($$0.isPresent()) {
-         String $$2 = $$0.get().a().c;
-         if ($$2 != null) {
-            return $$1 + $$2;
+   public void a(cvp $$0, cvk.b $$1, List<xd> $$2, cxh $$3) {
+      czb $$4 = $$0.a(kr.O);
+      if ($$4 != null) {
+         if (!baa.h($$4.e())) {
+            $$2.add(xd.a("book.byAuthor", $$4.e()).a(n.h));
          }
+
+         $$2.add(xd.c("book.generation." + $$4.f()).a(n.h));
       }
-
-      String $$3 = $$0.flatMap(jn::e).map($$0x -> $$0x.a().a()).orElse("empty");
-      return $$1 + $$3;
    }
 
-   public List<bsq> a() {
-      return this.d;
+   @Override
+   public brp a(deg $$0, cnu $$1, bro $$2) {
+      cvp $$3 = $$1.b($$2);
+      $$1.a($$3, $$2);
+      $$1.b(awo.c.b(this));
+      return brp.a;
    }
 
-   public boolean b() {
-      if (!this.d.isEmpty()) {
-         for (bsq $$0 : this.d) {
-            if ($$0.c().a().a()) {
-               return true;
-            }
+   public static boolean a(cvp $$0, et $$1, @Nullable cnu $$2) {
+      czb $$3 = $$0.a(kr.O);
+      if ($$3 != null && !$$3.g()) {
+         czb $$4 = $$3.a($$1, $$2);
+         if ($$4 != null) {
+            $$0.b(kr.O, $$4);
+            return true;
          }
+
+         $$0.b(kr.O, $$3.c());
       }
 
       return false;

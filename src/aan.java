@@ -11,13 +11,13 @@ public interface aan {
    }
 
    static <T extends aan> aan.b<T> a(String $$0) {
-      return new aan.b<>(alb.b($$0));
+      return new aan.b<>(alc.b($$0));
    }
 
    static <B extends wa> zb<B, aan> a(final aan.a<B> $$0, List<aan.c<? super B, ?>> $$1) {
-      final Map<alb, zb<? super B, ? extends aan>> $$2 = $$1.stream().collect(Collectors.toUnmodifiableMap($$0x -> $$0x.a().a(), aan.c::b));
+      final Map<alc, zb<? super B, ? extends aan>> $$2 = $$1.stream().collect(Collectors.toUnmodifiableMap($$0x -> $$0x.a().a(), aan.c::b));
       return new zb<B, aan>() {
-         private zb<? super B, ? extends aan> a(alb $$0x) {
+         private zb<? super B, ? extends aan> a(alc $$0x) {
             zb<? super B, ? extends aan> $$1 = $$2.get($$0);
             return $$1 != null ? $$1 : $$0.create($$0);
          }
@@ -33,17 +33,17 @@ public interface aan {
          }
 
          public aan a(B $$0x) {
-            alb $$1 = $$0.q();
+            alc $$1 = $$0.q();
             return (aan)this.a($$1).decode($$0);
          }
       };
    }
 
    public interface a<B extends wa> {
-      zb<B, ? extends aan> create(alb var1);
+      zb<B, ? extends aan> create(alc var1);
    }
 
-   public static record b<T extends aan>(alb a) {
+   public static record b<T extends aan>(alc a) {
    }
 
    public static record c<B extends wa, T extends aan>(aan.b<T> a, zb<B, T> b) {

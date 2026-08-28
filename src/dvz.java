@@ -1,9 +1,23 @@
-import com.mojang.serialization.MapCodec;
+public enum dvz implements azz {
+   a("none", true),
+   b("unstable", false),
+   c("partial", true),
+   d("full", true);
 
-public class dvz {
-   public static MapCodec<? extends dvx> a(ka<MapCodec<? extends dvx>> $$0) {
-      ka.a($$0, "noise", dzz.c);
-      ka.a($$0, "flat", dzr.c);
-      return ka.a($$0, "debug", dzn.c);
+   private final String e;
+   private final boolean f;
+
+   private dvz(final String $$0, final boolean $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   @Override
+   public String c() {
+      return this.e;
+   }
+
+   public boolean a() {
+      return this.f;
    }
 }

@@ -55,7 +55,7 @@ public class ma {
    }
 
    static {
-      ald.a();
+      ale.a();
    }
 
    public class a {

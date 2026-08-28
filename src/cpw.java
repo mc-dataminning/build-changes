@@ -1,138 +1,147 @@
-public class cpw extends cpm {
-   private static final akg<Boolean> e = akk.a(cpw.class, aki.k);
-   private static final int i = 3600;
-   private static final int j = 32000;
-   private int k;
-   public double c;
-   public double d;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-   public cpw(btq<? extends cpw> $$0, dds $$1) {
-      super($$0, $$1);
-   }
+public interface cpw extends bri, brr {
+   eys dq();
 
-   public cpw(dds $$0, double $$1, double $$2, double $$3) {
-      super(btq.S, $$0, $$1, $$2, $$3);
-   }
+   eyn cO();
 
-   @Override
-   public cpm.a x() {
-      return cpm.a.c;
-   }
+   @Nullable
+   alb<etm> F();
 
-   @Override
-   protected void a(akk.a $$0) {
-      super.a($$0);
-      $$0.a(e, false);
-   }
+   void a(@Nullable alb<etm> var1);
+
+   long G();
+
+   void a(long var1);
+
+   jw<cvp> I();
+
+   void J();
+
+   deg dS();
+
+   boolean dN();
 
    @Override
-   public void l() {
-      super.l();
-      if (!this.dS().w_()) {
-         if (this.k > 0) {
-            this.k--;
-         }
-
-         if (this.k <= 0) {
-            this.c = 0.0;
-            this.d = 0.0;
-         }
-
-         this.s(this.k > 0);
-      }
-
-      if (this.E() && this.af.a(4) == 0) {
-         this.dS().a(ln.X, this.dx(), this.dz() + 0.8, this.dD(), 0.0, 0.0, 0.0);
-      }
+   default boolean c() {
+      return this.g();
    }
 
-   @Override
-   protected double q() {
-      return this.bi() ? super.q() * 0.75 : super.q() * 0.5;
-   }
-
-   @Override
-   protected cvg aj_() {
-      return cvo.nO;
-   }
-
-   @Override
-   protected void t() {
-      double $$0 = 1.0E-4;
-      double $$1 = 0.001;
-      super.t();
-      eye $$2 = this.dv();
-      double $$3 = $$2.j();
-      double $$4 = this.c * this.c + this.d * this.d;
-      if ($$4 > 1.0E-4 && $$3 > 0.001) {
-         double $$5 = Math.sqrt($$3);
-         double $$6 = Math.sqrt($$4);
-         this.c = $$2.d / $$5 * $$6;
-         this.d = $$2.f / $$5 * $$6;
-      }
-   }
-
-   @Override
-   protected eye a(eye $$0) {
-      double $$1 = this.c * this.c + this.d * this.d;
-      eye $$2;
-      if ($$1 > 1.0E-7) {
-         $$1 = Math.sqrt($$1);
-         this.c /= $$1;
-         this.d /= $$1;
-         $$2 = $$0.d(0.8, 0.0, 0.8).b(this.c, 0.0, this.d);
-         if (this.bi()) {
-            $$2 = $$2.c(0.1);
+   default void a(uf $$0, jp.a $$1) {
+      if (this.F() != null) {
+         $$0.a("LootTable", this.F().a().toString());
+         if (this.G() != 0L) {
+            $$0.a("LootTableSeed", this.G());
          }
       } else {
-         $$2 = $$0.d(0.98, 0.0, 0.98);
+         brj.a($$0, this.I(), $$1);
+      }
+   }
+
+   default void b(uf $$0, jp.a $$1) {
+      this.J();
+      if ($$0.b("LootTable", 8)) {
+         this.a(alb.a(lv.bd, alc.a($$0.l("LootTable"))));
+         this.a($$0.i("LootTableSeed"));
+      } else {
+         brj.b($$0, this.I(), $$1);
+      }
+   }
+
+   default void a(bsg $$0, deg $$1, bto $$2) {
+      if ($$1.ac().b(dec.i)) {
+         brl.a($$1, $$2, this);
+         if (!$$1.B) {
+            bto $$3 = $$0.c();
+            if ($$3 != null && $$3.ao() == btv.by) {
+               cml.a((cnu)$$3, true);
+            }
+         }
+      }
+   }
+
+   default brp c_(cnu $$0) {
+      $$0.a(this);
+      return brp.a;
+   }
+
+   default void f(@Nullable cnu $$0) {
+      MinecraftServer $$1 = this.dS().o();
+      if (this.F() != null && $$1 != null) {
+         etm $$2 = $$1.bd().b(this.F());
+         if ($$0 != null) {
+            an.Q.a((ari)$$0, this.F());
+         }
+
+         this.a(null);
+         etk.a $$3 = new etk.a((arh)this.dS()).a(ewd.f, this.dq());
+         if ($$0 != null) {
+            $$3.a($$0.gy()).a(ewd.a, $$0);
+         }
+
+         $$2.a(this, $$3.a(ewc.c), this.G());
+      }
+   }
+
+   default void f() {
+      this.f(null);
+      this.I().clear();
+   }
+
+   default boolean g() {
+      for (cvp $$0 : this.I()) {
+         if (!$$0.f()) {
+            return false;
+         }
       }
 
-      return super.a($$2);
+      return true;
    }
 
-   @Override
-   public brk a(cnp $$0, brj $$1) {
-      cvl $$2 = $$0.b($$1);
-      if ($$2.a(axb.bE) && this.k + 3600 <= 32000) {
-         $$2.a(1, $$0);
-         this.k += 3600;
+   default cvp e_(int $$0) {
+      this.f(null);
+      cvp $$1 = this.I().get($$0);
+      if ($$1.f()) {
+         return cvp.k;
+      } else {
+         this.I().set($$0, cvp.k);
+         return $$1;
       }
-
-      if (this.k > 0) {
-         this.c = this.dx() - $$0.dx();
-         this.d = this.dD() - $$0.dD();
-      }
-
-      return brk.a;
    }
 
-   @Override
-   protected void b(uf $$0) {
-      super.b($$0);
-      $$0.a("PushX", this.c);
-      $$0.a("PushZ", this.d);
-      $$0.a("Fuel", (short)this.k);
+   default cvp f_(int $$0) {
+      this.f(null);
+      return this.I().get($$0);
    }
 
-   @Override
-   protected void a(uf $$0) {
-      super.a($$0);
-      this.c = $$0.k("PushX");
-      this.d = $$0.k("PushZ");
-      this.k = $$0.g("Fuel");
+   default cvp b(int $$0, int $$1) {
+      this.f(null);
+      return brj.a(this.I(), $$0, $$1);
    }
 
-   protected boolean E() {
-      return this.am.a(e);
+   default void c(int $$0, cvp $$1) {
+      this.f(null);
+      this.I().set($$0, $$1);
+      $$1.f(this.f_($$1));
    }
 
-   protected void s(boolean $$0) {
-      this.am.a(e, $$0);
+   default bvb g_(final int $$0) {
+      return $$0 >= 0 && $$0 < this.b() ? new bvb() {
+         @Override
+         public cvp a() {
+            return cpw.this.f_($$0);
+         }
+
+         @Override
+         public boolean a(cvp $$0x) {
+            cpw.this.c($$0, $$0);
+            return true;
+         }
+      } : bvb.a;
    }
 
-   @Override
-   public dua z() {
-      return dgx.cD.o().b(dkc.a, jj.c).b(dkc.b, Boolean.valueOf(this.E()));
+   default boolean g(cnu $$0) {
+      return !this.dN() && $$0.a(this.cO(), 4.0);
    }
 }

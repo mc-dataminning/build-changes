@@ -1,48 +1,32 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.stream.IntStream;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ecm extends edc<efn> {
-   public ecm(Codec<efn> $$0) {
-      super($$0);
+public class ecm extends ecj {
+   public static final Codec<ecm> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ecj.d.forGetter($$0x -> $$0x),
+               bqs.c.fieldOf("horizontal_radius_multiplier").forGetter($$0x -> $$0x.b),
+               bqs.c.fieldOf("vertical_radius_multiplier").forGetter($$0x -> $$0x.c),
+               bqs.a(-1.0F, 1.0F).fieldOf("floor_level").forGetter($$0x -> $$0x.j)
+            )
+            .apply($$0, ecm::new)
+   );
+   public final bqs b;
+   public final bqs c;
+   final bqs j;
+
+   public ecm(float $$0, ejj $$1, bqs $$2, ebe $$3, eck $$4, jr<dhj> $$5, bqs $$6, bqs $$7, bqs $$8) {
+      super($$0, $$1, $$2, $$3, $$4, $$5);
+      this.b = $$6;
+      this.c = $$7;
+      this.j = $$8;
    }
 
-   @Override
-   public boolean a(ede<efn> $$0) {
-      azk $$1 = $$0.d();
-      dep $$2 = $$0.b();
-      dcy $$3 = new dcy($$0.e());
-      IntArrayList $$4 = ad.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
-      IntArrayList $$5 = ad.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
-      je.a $$6 = new je.a();
-      IntListIterator var8 = $$4.iterator();
+   public ecm(float $$0, ejj $$1, bqs $$2, ebe $$3, jr<dhj> $$4, bqs $$5, bqs $$6, bqs $$7) {
+      this($$0, $$1, $$2, $$3, eck.a, $$4, $$5, $$6, $$7);
+   }
 
-      while (var8.hasNext()) {
-         Integer $$7 = (Integer)var8.next();
-         IntListIterator var10 = $$5.iterator();
-
-         while (var10.hasNext()) {
-            Integer $$8 = (Integer)var10.next();
-            $$6.d($$7, 0, $$8);
-            je $$9 = $$2.a(dzw.a.f, $$6);
-            if ($$2.u($$9) || $$2.a_($$9).g($$2, $$9).c()) {
-               $$2.a($$9, dgx.cv.o(), 2);
-               brq.a($$2, $$1, $$9, esp.b);
-               dua $$10 = dgx.cp.o();
-
-               for (jj $$11 : jj.c.a) {
-                  je $$12 = $$9.a($$11);
-                  if ($$10.a($$2, $$12)) {
-                     $$2.a($$12, $$10, 2);
-                  }
-               }
-
-               return true;
-            }
-         }
-      }
-
-      return false;
+   public ecm(ecj $$0, bqs $$1, bqs $$2, bqs $$3) {
+      this($$0.l, $$0.e, $$0.f, $$0.g, $$0.h, $$0.i, $$1, $$2, $$3);
    }
 }

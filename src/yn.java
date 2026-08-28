@@ -2,8 +2,8 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.stream.Stream;
 
-public record yn(alb d) implements yf {
-   public static final MapCodec<yn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alb.a.fieldOf("storage").forGetter(yn::b)).apply($$0, yn::new));
+public record yn(alc d) implements yf {
+   public static final MapCodec<yn> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(alc.a.fieldOf("storage").forGetter(yn::b)).apply($$0, yn::new));
    public static final yf.a<yn> b = new yf.a<>(a, "storage");
 
    @Override
@@ -22,7 +22,7 @@ public record yn(alb d) implements yf {
       return "storage=" + this.d;
    }
 
-   public alb b() {
+   public alc b() {
       return this.d;
    }
 }

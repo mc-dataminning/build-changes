@@ -1,40 +1,73 @@
 import com.mojang.serialization.Codec;
+import java.util.List;
 
-public class eei extends edc<efq> {
-   public eei(Codec<efq> $$0) {
+public class eei extends edq<efz> {
+   public eei(Codec<efz> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ede<efq> $$0) {
-      boolean $$1 = false;
-      azk $$2 = $$0.d();
-      dep $$3 = $$0.b();
-      je $$4 = $$0.e();
-      efq $$5 = $$0.f();
-      int $$6 = $$2.a(8) - $$2.a(8);
-      int $$7 = $$2.a(8) - $$2.a(8);
-      int $$8 = $$3.a(dzw.a.d, $$4.u() + $$6, $$4.w() + $$7);
-      je $$9 = new je($$4.u() + $$6, $$8, $$4.w() + $$7);
-      if ($$3.a_($$9).a(dgx.G)) {
-         boolean $$10 = $$2.j() < (double)$$5.l;
-         dua $$11 = $$10 ? dgx.bx.o() : dgx.bw.o();
-         if ($$11.a($$3, $$9)) {
-            if ($$10) {
-               dua $$12 = $$11.b(dpc.d, duw.a);
-               je $$13 = $$9.d();
-               if ($$3.a_($$13).a(dgx.G)) {
-                  $$3.a($$9, $$11, 2);
-                  $$3.a($$13, $$12, 2);
+   public boolean a(eds<efz> $$0) {
+      dfd $$1 = $$0.b();
+      je $$2 = $$0.e();
+      azl $$3 = $$0.d();
+      efz $$4 = $$0.f();
+      if (!c($$1.a_($$2))) {
+         return false;
+      } else {
+         List<jj> $$5 = $$4.a($$3);
+         if (a($$1, $$2, $$1.a_($$2), $$4, $$3, $$5)) {
+            return true;
+         } else {
+            je.a $$6 = $$2.k();
+
+            for (jj $$7 : $$5) {
+               $$6.g($$2);
+               List<jj> $$8 = $$4.a($$3, $$7.g());
+
+               for (int $$9 = 0; $$9 < $$4.c; $$9++) {
+                  $$6.a($$2, $$7);
+                  duo $$10 = $$1.a_($$6);
+                  if (!c($$10) && !$$10.a($$4.b)) {
+                     break;
+                  }
+
+                  if (a($$1, $$6, $$10, $$4, $$3, $$8)) {
+                     return true;
+                  }
                }
-            } else {
-               $$3.a($$9, $$11, 2);
             }
 
-            $$1 = true;
+            return false;
+         }
+      }
+   }
+
+   public static boolean a(dfd $$0, je $$1, duo $$2, efz $$3, azl $$4, List<jj> $$5) {
+      je.a $$6 = $$1.k();
+
+      for (jj $$7 : $$5) {
+         duo $$8 = $$0.a_($$6.a($$1, $$7));
+         if ($$8.a($$3.h)) {
+            duo $$9 = $$3.b.c($$2, $$0, $$1, $$7);
+            if ($$9 == null) {
+               return false;
+            }
+
+            $$0.a($$1, $$9, 3);
+            $$0.y($$1).e($$1);
+            if ($$4.i() < $$3.g) {
+               $$3.b.c().a($$9, $$0, $$1, $$7, $$4, true);
+            }
+
+            return true;
          }
       }
 
-      return $$1;
+      return false;
+   }
+
+   private static boolean c(duo $$0) {
+      return $$0.l() || $$0.a(dhl.G);
    }
 }

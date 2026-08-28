@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 
 public class gl implements ArgumentType<gl.b> {
    private static final Collection<String> a = Arrays.asList("stone", "minecraft:stone", "stone[foo=bar]", "#stone", "#stone[foo=bar]{baz=nbt}");
-   private final jp<dgv> b;
+   private final jp<dhj> b;
 
    public gl(ep $$0) {
       this.b = $$0.b(lv.f);
@@ -29,12 +29,12 @@ public class gl implements ArgumentType<gl.b> {
       return a(this.b, $$0);
    }
 
-   public static gl.b a(jp<dgv> $$0, StringReader $$1) throws CommandSyntaxException {
+   public static gl.b a(jp<dhj> $$0, StringReader $$1) throws CommandSyntaxException {
       return (gl.b)gn.b($$0, $$1, true).map($$0x -> new gl.a($$0x.a(), $$0x.b().keySet(), $$0x.c()), $$0x -> new gl.c($$0x.a(), $$0x.b(), $$0x.c()));
    }
 
-   public static Predicate<due> a(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
-      return (Predicate<due>)$$0.getArgument($$1, gl.b.class);
+   public static Predicate<dus> a(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
+      return (Predicate<dus>)$$0.getArgument($$1, gl.b.class);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
@@ -46,23 +46,23 @@ public class gl implements ArgumentType<gl.b> {
    }
 
    static class a implements gl.b {
-      private final dua a;
-      private final Set<dvd<?>> b;
+      private final duo a;
+      private final Set<dvr<?>> b;
       @Nullable
       private final uf c;
 
-      public a(dua $$0, Set<dvd<?>> $$1, @Nullable uf $$2) {
+      public a(duo $$0, Set<dvr<?>> $$1, @Nullable uf $$2) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
       }
 
-      public boolean a(due $$0) {
-         dua $$1 = $$0.a();
+      public boolean a(dus $$0) {
+         duo $$1 = $$0.a();
          if (!$$1.a(this.a.b())) {
             return false;
          } else {
-            for (dvd<?> $$2 : this.b) {
+            for (dvr<?> $$2 : this.b) {
                if ($$1.c($$2) != this.a.c($$2)) {
                   return false;
                }
@@ -71,7 +71,7 @@ public class gl implements ArgumentType<gl.b> {
             if (this.c == null) {
                return true;
             } else {
-               dre $$3 = $$0.b();
+               drs $$3 = $$0.b();
                return $$3 != null && uu.a(this.c, $$3.b($$0.c().F_()), true);
             }
          }
@@ -83,29 +83,29 @@ public class gl implements ArgumentType<gl.b> {
       }
    }
 
-   public interface b extends Predicate<due> {
+   public interface b extends Predicate<dus> {
       boolean a();
    }
 
    static class c implements gl.b {
-      private final jr<dgv> a;
+      private final jr<dhj> a;
       @Nullable
       private final uf b;
       private final Map<String, String> c;
 
-      c(jr<dgv> $$0, Map<String, String> $$1, @Nullable uf $$2) {
+      c(jr<dhj> $$0, Map<String, String> $$1, @Nullable uf $$2) {
          this.a = $$0;
          this.c = $$1;
          this.b = $$2;
       }
 
-      public boolean a(due $$0) {
-         dua $$1 = $$0.a();
+      public boolean a(dus $$0) {
+         duo $$1 = $$0.a();
          if (!$$1.a(this.a)) {
             return false;
          } else {
             for (Entry<String, String> $$2 : this.c.entrySet()) {
-               dvd<?> $$3 = $$1.b().l().a($$2.getKey());
+               dvr<?> $$3 = $$1.b().n().a($$2.getKey());
                if ($$3 == null) {
                   return false;
                }
@@ -123,7 +123,7 @@ public class gl implements ArgumentType<gl.b> {
             if (this.b == null) {
                return true;
             } else {
-               dre $$5 = $$0.b();
+               drs $$5 = $$0.b();
                return $$5 != null && uu.a(this.b, $$5.b($$0.c().F_()), true);
             }
          }

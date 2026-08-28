@@ -1,332 +1,104 @@
 import com.mojang.logging.LogUtils;
-import java.nio.file.InvalidPathException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import org.joml.Vector2i;
-import org.lwjgl.glfw.GLFWDropCallback;
+import com.mojang.text2speech.Narrator;
+import org.lwjgl.util.tinyfd.TinyFileDialogs;
 import org.slf4j.Logger;
 
 public class fic {
-   private static final Logger a = LogUtils.getLogger();
-   private final fib b;
-   private boolean c;
-   private boolean d;
-   private boolean e;
-   private double f;
-   private double g;
-   private int h;
-   private int i = -1;
-   private boolean j = true;
-   private int k;
-   private double l;
-   private final azt m = new azt();
-   private final azt n = new azt();
-   private double o;
-   private double p;
-   private final fil q;
-   private double r = Double.MIN_VALUE;
-   private boolean s;
+   public static final xd a = xc.a;
+   private static final Logger b = LogUtils.getLogger();
+   private final fil c;
+   private final Narrator d = Narrator.getNarrator();
 
-   public fic(fib $$0) {
-      this.b = $$0;
-      this.q = new fil();
+   public fic(fil $$0) {
+      this.c = $$0;
    }
 
-   private void a(long $$0, int $$1, int $$2, int $$3) {
-      if ($$0 == this.b.aO().i()) {
-         this.b.aP().b();
-         if (this.b.z != null) {
-            this.b.a(fhy.b);
-         }
+   public void a(xd $$0) {
+      if (this.d().c()) {
+         String $$1 = $$0.getString();
+         this.b($$1);
+         this.d.say($$1, false);
+      }
+   }
 
-         boolean $$4 = $$2 == 1;
-         if (fib.a && $$1 == 0) {
-            if ($$4) {
-               if (($$3 & 2) == 2) {
-                  $$1 = 1;
-                  this.h++;
-               }
-            } else if (this.h > 0) {
-               $$1 = 1;
-               this.h--;
-            }
-         }
+   public void b(xd $$0) {
+      String $$1 = $$0.getString();
+      if (this.d().d() && !$$1.isEmpty()) {
+         this.b($$1);
+         this.d.say($$1, false);
+      }
+   }
 
-         int $$5 = $$1;
-         if ($$4) {
-            if (this.b.n.ab().c() && this.k++ > 0) {
-               return;
-            }
+   public void c(xd $$0) {
+      this.a($$0.getString());
+   }
 
-            this.i = $$5;
-            this.l = fac.b();
-         } else if (this.i != -1) {
-            if (this.b.n.ab().c() && --this.k > 0) {
-               return;
-            }
-
-            this.i = -1;
-         }
-
-         boolean[] $$6 = new boolean[]{false};
-         if (this.b.aM() == null) {
-            if (this.b.z == null) {
-               if (!this.s && $$4) {
-                  this.i();
-               }
-            } else {
-               double $$7 = this.f * (double)this.b.aO().p() / (double)this.b.aO().n();
-               double $$8 = this.g * (double)this.b.aO().q() / (double)this.b.aO().o();
-               fpt $$9 = this.b.z;
-               if ($$4) {
-                  $$9.x();
-                  fpt.a(() -> $$6[0] = $$9.a($$7, $$8, $$5), "mouseClicked event handler", $$9.getClass().getCanonicalName());
-               } else {
-                  fpt.a(() -> $$6[0] = $$9.b($$7, $$8, $$5), "mouseReleased event handler", $$9.getClass().getCanonicalName());
-               }
-            }
-         }
-
-         if (!$$6[0] && this.b.z == null && this.b.aM() == null) {
-            if ($$5 == 0) {
-               this.c = $$4;
-            } else if ($$5 == 2) {
-               this.d = $$4;
-            } else if ($$5 == 1) {
-               this.e = $$4;
-            }
-
-            fhz.a(fbk.b.c.a($$5), $$4);
-            if ($$4) {
-               if (this.b.t.P_() && $$5 == 2) {
-                  this.b.m.g().b();
-               } else {
-                  fhz.a(fbk.b.c.a($$5));
-               }
-            }
+   public void a(String $$0) {
+      if (this.d().d() && !$$0.isEmpty()) {
+         this.b($$0);
+         if (this.d.active()) {
+            this.d.clear();
+            this.d.say($$0, true);
          }
       }
    }
 
-   private void a(long $$0, double $$1, double $$2) {
-      if ($$0 == fib.Q().aO().i()) {
-         this.b.aP().b();
-         boolean $$3 = this.b.n.U().c();
-         double $$4 = this.b.n.G().c();
-         double $$5 = ($$3 ? Math.signum($$1) : $$1) * $$4;
-         double $$6 = ($$3 ? Math.signum($$2) : $$2) * $$4;
-         if (this.b.aM() == null) {
-            if (this.b.z != null) {
-               double $$7 = this.f * (double)this.b.aO().p() / (double)this.b.aO().n();
-               double $$8 = this.g * (double)this.b.aO().q() / (double)this.b.aO().o();
-               this.b.z.a($$7, $$8, $$5, $$6);
-               this.b.z.x();
-            } else if (this.b.t != null) {
-               Vector2i $$9 = this.q.a($$5, $$6);
-               if ($$9.x == 0 && $$9.y == 0) {
-                  return;
-               }
+   private fin d() {
+      return this.c.n.au().c();
+   }
 
-               int $$10 = $$9.y == 0 ? -$$9.x : $$9.y;
-               if (this.b.t.P_()) {
-                  if (this.b.m.g().a()) {
-                     this.b.m.g().b(-$$10);
-                  } else {
-                     float $$11 = azc.a(this.b.t.gd().a() + (float)$$9.y * 0.005F, 0.0F, 0.2F);
-                     this.b.t.gd().a($$11);
-                  }
-               } else {
-                  cno $$12 = this.b.t.gc();
-                  $$12.e(fil.a((double)$$10, $$12.j, cno.g()));
-               }
-            }
-         }
+   private void b(String $$0) {
+      if (ab.aW) {
+         b.debug("Narrating: {}", $$0.replaceAll("\n", "\\\\n"));
       }
    }
 
-   private void a(long $$0, List<Path> $$1, int $$2) {
-      this.b.aP().b();
-      if (this.b.z != null) {
-         this.b.z.a($$1);
-      }
-
-      if ($$2 > 0) {
-         fmj.a(this.b, $$2);
-      }
-   }
-
-   public void a(long $$0) {
-      fbk.a(
-         $$0,
-         ($$0x, $$1, $$2) -> this.b.execute(() -> this.b($$0x, $$1, $$2)),
-         ($$0x, $$1, $$2, $$3) -> this.b.execute(() -> this.a($$0x, $$1, $$2, $$3)),
-         ($$0x, $$1, $$2) -> this.b.execute(() -> this.a($$0x, $$1, $$2)),
-         ($$0x, $$1, $$2) -> {
-            List<Path> $$3 = new ArrayList<>($$1);
-            int $$4 = 0;
-
-            for (int $$5 = 0; $$5 < $$1; $$5++) {
-               String $$6 = GLFWDropCallback.getName($$2, $$5);
-
-               try {
-                  $$3.add(Paths.get($$6));
-               } catch (InvalidPathException var11) {
-                  $$4++;
-                  a.error("Failed to parse path '{}'", $$6, var11);
-               }
-            }
-
-            if (!$$3.isEmpty()) {
-               int $$8 = $$4;
-               this.b.execute(() -> this.a($$0x, $$3, $$8));
-            }
-         }
-      );
-   }
-
-   private void b(long $$0, double $$1, double $$2) {
-      if ($$0 == fib.Q().aO().i()) {
-         if (this.j) {
-            this.f = $$1;
-            this.g = $$2;
-            this.j = false;
+   public void a(fin $$0) {
+      this.b();
+      this.d.say(xd.c("options.narrator").f(" : ").b($$0.b()).getString(), true);
+      fmv $$1 = fil.Q().aA();
+      if (this.d.active()) {
+         if ($$0 == fin.a) {
+            fmt.b($$1, fmt.a.a, xd.c("narrator.toast.disabled"), null);
          } else {
-            if (this.b.aB()) {
-               this.o = this.o + ($$1 - this.f);
-               this.p = this.p + ($$2 - this.g);
-            }
-
-            this.f = $$1;
-            this.g = $$2;
+            fmt.b($$1, fmt.a.a, xd.c("narrator.toast.enabled"), $$0.b());
          }
-      }
-   }
-
-   public void a() {
-      double $$0 = fac.b();
-      double $$1 = $$0 - this.r;
-      this.r = $$0;
-      if (this.b.aB()) {
-         fpt $$2 = this.b.z;
-         boolean $$3 = this.o != 0.0 || this.p != 0.0;
-         if ($$3) {
-            this.b.aP().b();
-         }
-
-         if ($$2 != null && this.b.aM() == null && $$3) {
-            double $$4 = this.f * (double)this.b.aO().p() / (double)this.b.aO().n();
-            double $$5 = this.g * (double)this.b.aO().q() / (double)this.b.aO().o();
-            fpt.a(() -> $$2.f($$4, $$5), "mouseMoved event handler", $$2.getClass().getCanonicalName());
-            if (this.i != -1 && this.l > 0.0) {
-               double $$6 = this.o * (double)this.b.aO().p() / (double)this.b.aO().n();
-               double $$7 = this.p * (double)this.b.aO().q() / (double)this.b.aO().o();
-               fpt.a(() -> $$2.a($$4, $$5, this.i, $$6, $$7), "mouseDragged event handler", $$2.getClass().getCanonicalName());
-            }
-
-            $$2.v();
-         }
-
-         if (this.h() && this.b.t != null) {
-            this.a($$1);
-         }
-      }
-
-      this.o = 0.0;
-      this.p = 0.0;
-   }
-
-   private void a(double $$0) {
-      double $$1 = this.b.n.d().c() * 0.6F + 0.2F;
-      double $$2 = $$1 * $$1 * $$1;
-      double $$3 = $$2 * 8.0;
-      double $$6;
-      double $$7;
-      if (this.b.n.Z) {
-         double $$4 = this.m.a(this.o * $$3, $$0 * $$3);
-         double $$5 = this.n.a(this.p * $$3, $$0 * $$3);
-         $$6 = $$4;
-         $$7 = $$5;
-      } else if (this.b.n.aD().a() && this.b.t.gA()) {
-         this.m.a();
-         this.n.a();
-         $$6 = this.o * $$2;
-         $$7 = this.p * $$2;
       } else {
-         this.m.a();
-         this.n.a();
-         $$6 = this.o * $$3;
-         $$7 = this.p * $$3;
-      }
-
-      int $$12 = 1;
-      if (this.b.n.T().c()) {
-         $$12 = -1;
-      }
-
-      this.b.aA().a($$6, $$7);
-      if (this.b.t != null) {
-         this.b.t.b($$6, $$7 * (double)$$12);
+         fmt.b($$1, fmt.a.a, xd.c("narrator.toast.disabled"), xd.c("options.narrator.notavailable"));
       }
    }
 
-   public boolean b() {
-      return this.c;
+   public boolean a() {
+      return this.d.active();
    }
 
-   public boolean c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public double e() {
-      return this.f;
-   }
-
-   public double f() {
-      return this.g;
-   }
-
-   public void g() {
-      this.j = true;
-   }
-
-   public boolean h() {
-      return this.s;
-   }
-
-   public void i() {
-      if (this.b.aB()) {
-         if (!this.s) {
-            if (!fib.a) {
-               fhz.a();
-            }
-
-            this.s = true;
-            this.f = (double)(this.b.aO().n() / 2);
-            this.g = (double)(this.b.aO().o() / 2);
-            fbk.a(this.b.aO().i(), 212995, this.f, this.g);
-            this.b.a(null);
-            this.b.x = 10000;
-            this.j = true;
-         }
+   public void b() {
+      if (this.d() != fin.a && this.d.active()) {
+         this.d.clear();
       }
    }
 
-   public void j() {
-      if (this.s) {
-         this.s = false;
-         this.f = (double)(this.b.aO().n() / 2);
-         this.g = (double)(this.b.aO().o() / 2);
-         fbk.a(this.b.aO().i(), 212993, this.f, this.g);
+   public void c() {
+      this.d.destroy();
+   }
+
+   public void a(boolean $$0) {
+      if ($$0
+         && !this.a()
+         && !TinyFileDialogs.tinyfd_messageBox(
+            "Minecraft",
+            "Failed to initialize text-to-speech library. Do you want to continue?\nIf this problem persists, please report it at bugs.mojang.com",
+            "yesno",
+            "error",
+            true
+         )) {
+         throw new fic.a("Narrator library is not active");
       }
    }
 
-   public void k() {
-      this.j = true;
+   public static class a extends fvz {
+      public a(String $$0) {
+         super($$0);
+      }
    }
 }

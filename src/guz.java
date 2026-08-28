@@ -1,5 +1,5 @@
-public class guz extends gts {
-   public cgv.b a = cgv.b.g;
-   public int b = -1;
-   public int c = -1;
+public class guz extends guj {
+   public float a;
+   public boolean b;
+   public cgu.g c = cgu.g.a;
 }

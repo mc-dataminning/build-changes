@@ -1,83 +1,63 @@
-import java.util.Collection;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class ctz extends cvg {
-   public ctz(cvg.a $$0) {
+public class ctz extends cvk {
+   public ctz(cvk.a $$0) {
       super($$0);
    }
 
-   @Override
-   public boolean a(dua $$0, dds $$1, je $$2, cnp $$3) {
-      if (!$$1.B) {
-         this.a($$3, $$0, $$1, $$2, false, $$3.b(brj.a));
-      }
-
-      return false;
+   @Nullable
+   public static jm a(deg $$0) {
+      return $$0.B_().j() ? jm.a($$0.ag(), $$0.W()) : null;
    }
 
    @Override
-   public brk a(cyy $$0) {
-      cnp $$1 = $$0.o();
-      dds $$2 = $$0.q();
-      if (!$$2.B && $$1 != null) {
-         je $$3 = $$0.a();
-         if (!this.a($$1, $$2.a_($$3), $$2, $$3, true, $$0.n())) {
-            return brk.d;
-         }
-      }
-
-      return brk.a;
+   public boolean e_(cvp $$0) {
+      return $$0.b(kr.Y) || super.e_($$0);
    }
 
-   private boolean a(cnp $$0, dua $$1, ddt $$2, je $$3, boolean $$4, cvl $$5) {
-      if (!$$0.gz()) {
-         return false;
-      } else {
-         jn<dgv> $$6 = $$1.c();
-         dub<dgv, dua> $$7 = $$6.a().l();
-         Collection<dvd<?>> $$8 = $$7.d();
-         if ($$8.isEmpty()) {
-            a($$0, xd.a(this.a() + ".empty", $$6.g()));
-            return false;
-         } else {
-            cyc $$9 = $$5.a(kr.N);
-            if ($$9 == null) {
-               return false;
-            } else {
-               dvd<?> $$10 = $$9.a().get($$6);
-               if ($$4) {
-                  if ($$10 == null) {
-                     $$10 = $$8.iterator().next();
-                  }
-
-                  dua $$11 = a($$1, $$10, $$0.fR());
-                  $$2.a($$3, $$11, 18);
-                  a($$0, xd.a(this.a() + ".update", $$10.f(), a($$11, $$10)));
-               } else {
-                  $$10 = a($$8, $$10, $$0.fR());
-                  $$5.b(kr.N, $$9.a($$6, $$10));
-                  a($$0, xd.a(this.a() + ".select", $$10.f(), a($$1, $$10)));
-               }
-
-               return true;
+   @Override
+   public void a(cvp $$0, deg $$1, bto $$2, int $$3, boolean $$4) {
+      if ($$1 instanceof arh $$5) {
+         cyn $$6 = $$0.a(kr.Y);
+         if ($$6 != null) {
+            cyn $$7 = $$6.a($$5);
+            if ($$7 != $$6) {
+               $$0.b(kr.Y, $$7);
             }
          }
       }
    }
 
-   private static <T extends Comparable<T>> dua a(dua $$0, dvd<T> $$1, boolean $$2) {
-      return $$0.b($$1, a($$1.a(), $$0.c($$1), $$2));
+   @Override
+   public brp a(czm $$0) {
+      je $$1 = $$0.a();
+      deg $$2 = $$0.q();
+      if (!$$2.a_($$1).a(dhl.pq)) {
+         return super.a($$0);
+      } else {
+         $$2.a(null, $$1, awe.oo, awf.h, 1.0F, 1.0F);
+         cnu $$3 = $$0.o();
+         cvp $$4 = $$0.n();
+         boolean $$5 = !$$3.fQ() && $$4.J() == 1;
+         cyn $$6 = new cyn(Optional.of(jm.a($$2.ag(), $$1)), true);
+         if ($$5) {
+            $$4.b(kr.Y, $$6);
+         } else {
+            cvp $$7 = $$4.a(cvt.qT, 1);
+            $$4.a(1, $$3);
+            $$7.b(kr.Y, $$6);
+            if (!$$3.gc().f($$7)) {
+               $$3.a($$7, false);
+            }
+         }
+
+         return brp.a;
+      }
    }
 
-   private static <T> T a(Iterable<T> $$0, @Nullable T $$1, boolean $$2) {
-      return $$2 ? ad.b($$0, $$1) : ad.a($$0, $$1);
-   }
-
-   private static void a(cnp $$0, xd $$1) {
-      ((arh)$$0).b($$1, true);
-   }
-
-   private static <T extends Comparable<T>> String a(dua $$0, dvd<T> $$1) {
-      return $$1.a($$0.c($$1));
+   @Override
+   public String d_(cvp $$0) {
+      return $$0.b(kr.Y) ? "item.minecraft.lodestone_compass" : super.d_($$0);
    }
 }

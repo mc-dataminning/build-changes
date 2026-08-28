@@ -8,7 +8,7 @@ public class ej extends dv<ej.a> {
       return ej.a.a;
    }
 
-   public void a(arh $$0, cvl $$1) {
+   public void a(ari $$0, cvp $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -21,7 +21,7 @@ public class ej extends dv<ej.a> {
          return an.W.a(new ej.a(Optional.of(bv.a($$0)), Optional.of($$1.b())));
       }
 
-      public boolean a(cvl $$0) {
+      public boolean a(cvp $$0) {
          return !this.c.isPresent() || this.c.get().a($$0);
       }
 

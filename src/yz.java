@@ -288,12 +288,12 @@ public interface yz {
       return new zb<wo, T>() {
          public T a(wo $$0x) {
             vc $$1 = $$2.decode($$0);
-            akz<vc> $$2 = $$0.H().a(ut.a);
+            ala<vc> $$2 = $$0.H().a(ut.a);
             return (T)$$0.parse($$2, $$1).getOrThrow($$1x -> new DecoderException("Failed to decode: " + $$1x + " " + $$1));
          }
 
          public void a(wo $$0x, T $$1) {
-            akz<vc> $$2 = $$0.H().a(ut.a);
+            ala<vc> $$2 = $$0.H().a(ut.a);
             vc $$3 = (vc)$$0.encodeStart($$2, $$1).getOrThrow($$1x -> new EncoderException("Failed to encode: " + $$1x + " " + $$1));
             $$2.encode($$0, $$3);
          }
@@ -440,7 +440,7 @@ public interface yz {
       return a($$0::b, $$0::c);
    }
 
-   private static <T, R> zb<wo, R> a(final ala<? extends ka<T>> $$0, final Function<ka<T>, js<R>> $$1) {
+   private static <T, R> zb<wo, R> a(final alb<? extends ka<T>> $$0, final Function<ka<T>, js<R>> $$1) {
       return new zb<wo, R>() {
          private js<R> b(wo $$0x) {
             return $$1.apply($$0.H().d($$0));
@@ -458,15 +458,15 @@ public interface yz {
       };
    }
 
-   static <T> zb<wo, T> a(ala<? extends ka<T>> $$0) {
+   static <T> zb<wo, T> a(alb<? extends ka<T>> $$0) {
       return a($$0, $$0x -> $$0x);
    }
 
-   static <T> zb<wo, jn<T>> b(ala<? extends ka<T>> $$0) {
+   static <T> zb<wo, jn<T>> b(alb<? extends ka<T>> $$0) {
       return a($$0, ka::t);
    }
 
-   static <T> zb<wo, jn<T>> a(final ala<? extends ka<T>> $$0, final zb<? super wo, T> $$1) {
+   static <T> zb<wo, jn<T>> a(final alb<? extends ka<T>> $$0, final zb<? super wo, T> $$1) {
       return new zb<wo, jn<T>>() {
          private static final int c = 0;
 
@@ -493,7 +493,7 @@ public interface yz {
       };
    }
 
-   static <T> zb<wo, jr<T>> c(final ala<? extends ka<T>> $$0) {
+   static <T> zb<wo, jr<T>> c(final alb<? extends ka<T>> $$0) {
       return new zb<wo, jr<T>>() {
          private static final int b = -1;
          private final zb<wo, jn<T>> c = yz.b($$0);
@@ -502,7 +502,7 @@ public interface yz {
             int $$1 = wu.a($$0) - 1;
             if ($$1 == -1) {
                ka<T> $$2 = $$0.H().d($$0);
-               return $$2.a(axi.a($$0, alb.b.decode($$0))).orElseThrow();
+               return $$2.a(axj.a($$0, alc.b.decode($$0))).orElseThrow();
             } else {
                List<jn<T>> $$3 = new ArrayList<>(Math.min($$1, 65536));
 
@@ -515,10 +515,10 @@ public interface yz {
          }
 
          public void a(wo $$0x, jr<T> $$1) {
-            Optional<axi<T>> $$2 = $$1.e();
+            Optional<axj<T>> $$2 = $$1.e();
             if ($$2.isPresent()) {
                wu.a($$0, 0);
-               alb.b.encode($$0, $$2.get().b());
+               alc.b.encode($$0, $$2.get().b());
             } else {
                wu.a($$0, $$1.b() + 1);
 

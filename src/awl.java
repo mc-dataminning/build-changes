@@ -1,37 +1,51 @@
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
-import java.util.Locale;
+import java.util.Objects;
+import javax.annotation.Nullable;
 
-public interface awl {
-   DecimalFormat a = ad.a(new DecimalFormat("########0.00"), $$0 -> $$0.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ROOT)));
-   awl b = NumberFormat.getIntegerInstance(Locale.US)::format;
-   awl c = $$0 -> a.format((double)$$0 * 0.1);
-   awl d = $$0 -> {
-      double $$1 = (double)$$0 / 100.0;
-      double $$2 = $$1 / 1000.0;
-      if ($$2 > 0.5) {
-         return a.format($$2) + " km";
-      } else {
-         return $$1 > 0.5 ? a.format($$1) + " m" : $$0 + " cm";
-      }
-   };
-   awl e = $$0 -> {
-      double $$1 = (double)$$0 / 20.0;
-      double $$2 = $$1 / 60.0;
-      double $$3 = $$2 / 60.0;
-      double $$4 = $$3 / 24.0;
-      double $$5 = $$4 / 365.0;
-      if ($$5 > 0.5) {
-         return a.format($$5) + " y";
-      } else if ($$4 > 0.5) {
-         return a.format($$4) + " d";
-      } else if ($$3 > 0.5) {
-         return a.format($$3) + " h";
-      } else {
-         return $$2 > 0.5 ? a.format($$2) + " min" : $$1 + " s";
-      }
-   };
+public class awl<T> extends faa {
+   public static final zb<wo, awl<?>> a = yz.a(lv.am).b(awl::a, awn::a);
+   private final awm o;
+   private final T p;
+   private final awn<T> q;
 
-   String format(int var1);
+   protected awl(awn<T> $$0, T $$1, awm $$2) {
+      super(a($$0, $$1));
+      this.q = $$0;
+      this.o = $$2;
+      this.p = $$1;
+   }
+
+   public static <T> String a(awn<T> $$0, T $$1) {
+      return a(lu.v.b($$0)) + ":" + a($$0.b().b($$1));
+   }
+
+   private static <T> String a(@Nullable alc $$0) {
+      return $$0.toString().replace(':', '.');
+   }
+
+   public awn<T> a() {
+      return this.q;
+   }
+
+   public T b() {
+      return this.p;
+   }
+
+   public String a(int $$0) {
+      return this.o.format($$0);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return this == $$0 || $$0 instanceof awl && Objects.equals(this.d(), ((awl)$$0).d());
+   }
+
+   @Override
+   public int hashCode() {
+      return this.d().hashCode();
+   }
+
+   @Override
+   public String toString() {
+      return "Stat{name=" + this.d() + ", formatter=" + this.o + "}";
+   }
 }

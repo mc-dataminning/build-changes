@@ -1,10 +1,26 @@
-import java.util.stream.Stream;
+import com.mojang.serialization.MapCodec;
 
-public abstract class eju extends ejv {
-   @Override
-   public final Stream<je> a_(ejt $$0, azk $$1, je $$2) {
-      return this.a($$0, $$1, $$2) ? Stream.of($$2) : Stream.of();
+public class eju extends eki {
+   private static final eju c = new eju();
+   public static MapCodec<eju> a = MapCodec.unit(() -> c);
+
+   private eju() {
    }
 
-   protected abstract boolean a(ejt var1, azk var2, je var3);
+   public static eju a() {
+      return c;
+   }
+
+   @Override
+   protected boolean a(ekh $$0, azl $$1, je $$2) {
+      ekg $$3 = $$0.e()
+         .orElseThrow(() -> new IllegalStateException("Tried to biome check an unregistered feature, or a feature that should not restrict the biome"));
+      jn<dfh> $$4 = $$0.d().t($$2);
+      return $$0.f().a($$4).a($$3);
+   }
+
+   @Override
+   public ekk<?> b() {
+      return ekk.e;
+   }
 }

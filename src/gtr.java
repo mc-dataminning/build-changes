@@ -1,3 +1,8 @@
-public class gtr extends gsu {
-   public long a;
+public class gtr extends guj {
+   public boolean d;
+   public boolean e;
+   public boolean f;
+   public float g;
+   public float h;
+   public float i;
 }

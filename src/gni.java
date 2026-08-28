@@ -1,35 +1,238 @@
-import com.google.common.collect.Maps;
-import java.util.Map;
+import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
-public final class gni extends glj<cib, gtj, fxl> {
-   private static final Map<cii, alb> a = ad.a(Maps.newEnumMap(cii.class), $$0 -> {
-      $$0.put(cii.a, alb.b("textures/entity/horse/horse_white.png"));
-      $$0.put(cii.b, alb.b("textures/entity/horse/horse_creamy.png"));
-      $$0.put(cii.c, alb.b("textures/entity/horse/horse_chestnut.png"));
-      $$0.put(cii.d, alb.b("textures/entity/horse/horse_brown.png"));
-      $$0.put(cii.e, alb.b("textures/entity/horse/horse_black.png"));
-      $$0.put(cii.f, alb.b("textures/entity/horse/horse_gray.png"));
-      $$0.put(cii.g, alb.b("textures/entity/horse/horse_darkbrown.png"));
-   });
+public abstract class gni<T extends bto, S extends gtl> {
+   protected static final float c = 0.025F;
+   public static final int d = 24;
+   protected final gnh e;
+   private final fjv a;
+   protected float f;
+   protected float g = 1.0F;
+   private final S b = this.b();
 
-   public gni(gms.a $$0) {
-      super($$0, new fxl($$0.a(gaa.aP)), new fxl($$0.a(gaa.aQ)), 1.1F);
-      this.a(new gqu(this));
-      this.a(new gqt(this, $$0.f()));
+   protected gni(gnj.a $$0) {
+      this.e = $$0.a();
+      this.a = $$0.h();
    }
 
-   public alb a(gtj $$0) {
-      return a.get($$0.a);
+   public final int a(T $$0, float $$1) {
+      je $$2 = je.a((jx)$$0.n($$1));
+      return ghe.a(this.a($$0, $$2), this.b($$0, $$2));
    }
 
-   public gtj c() {
-      return new gtj();
+   protected int b(T $$0, je $$1) {
+      return $$0.dS().a(dep.a, $$1);
    }
 
-   public void a(cib $$0, gtj $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.q();
-      $$1.h = $$0.t();
-      $$1.i = $$0.fS().u();
+   protected int a(T $$0, je $$1) {
+      return $$0.bV() ? 15 : $$0.dS().a(dep.b, $$1);
+   }
+
+   public boolean a(T $$0, gkx $$1, double $$2, double $$3, double $$4) {
+      if (!$$0.k($$2, $$3, $$4)) {
+         return false;
+      } else if (!this.b($$0)) {
+         return true;
+      } else {
+         eyn $$5 = this.a($$0).g(0.5);
+         if ($$5.e() || $$5.a() == 0.0) {
+            $$5 = new eyn($$0.dx() - 2.0, $$0.dz() - 2.0, $$0.dD() - 2.0, $$0.dx() + 2.0, $$0.dz() + 2.0, $$0.dD() + 2.0);
+         }
+
+         if ($$1.a($$5)) {
+            return true;
+         } else {
+            if ($$0 instanceof bui $$6) {
+               bto $$7 = $$6.C();
+               if ($$7 != null) {
+                  return $$1.a(this.e.a($$7).a($$7));
+               }
+            }
+
+            return false;
+         }
+      }
+   }
+
+   protected eyn a(T $$0) {
+      return $$0.cO();
+   }
+
+   protected boolean b(T $$0) {
+      return true;
+   }
+
+   public eys b(S $$0) {
+      return $$0.x != null ? $$0.x : eys.c;
+   }
+
+   public void a(S $$0, fde $$1, ghg $$2, int $$3) {
+      gtl.a $$4 = $$0.A;
+      if ($$4 != null) {
+         a($$1, $$2, $$4);
+      }
+
+      if ($$0.y != null) {
+         this.a($$0, $$0.y, $$1, $$2, $$3);
+      }
+   }
+
+   private static void a(fde $$0, ghg $$1, gtl.a $$2) {
+      float $$3 = 0.025F;
+      float $$4 = (float)($$2.c.d - $$2.b.d);
+      float $$5 = (float)($$2.c.e - $$2.b.e);
+      float $$6 = (float)($$2.c.f - $$2.b.f);
+      float $$7 = azd.i($$4 * $$4 + $$6 * $$6) * 0.025F / 2.0F;
+      float $$8 = $$6 * $$7;
+      float $$9 = $$4 * $$7;
+      $$0.a();
+      $$0.a($$2.a);
+      fdi $$10 = $$1.getBuffer(ghq.h());
+      Matrix4f $$11 = $$0.c().a();
+
+      for (int $$12 = 0; $$12 <= 24; $$12++) {
+         a($$10, $$11, $$4, $$5, $$6, $$2.d, $$2.e, $$2.f, $$2.g, 0.025F, 0.025F, $$8, $$9, $$12, false);
+      }
+
+      for (int $$13 = 24; $$13 >= 0; $$13--) {
+         a($$10, $$11, $$4, $$5, $$6, $$2.d, $$2.e, $$2.f, $$2.g, 0.025F, 0.0F, $$8, $$9, $$13, true);
+      }
+
+      $$0.b();
+   }
+
+   private static void a(
+      fdi $$0,
+      Matrix4f $$1,
+      float $$2,
+      float $$3,
+      float $$4,
+      int $$5,
+      int $$6,
+      int $$7,
+      int $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      float $$12,
+      int $$13,
+      boolean $$14
+   ) {
+      float $$15 = (float)$$13 / 24.0F;
+      int $$16 = (int)azd.h($$15, (float)$$5, (float)$$6);
+      int $$17 = (int)azd.h($$15, (float)$$7, (float)$$8);
+      int $$18 = ghe.a($$16, $$17);
+      float $$19 = $$13 % 2 == ($$14 ? 1 : 0) ? 0.7F : 1.0F;
+      float $$20 = 0.5F * $$19;
+      float $$21 = 0.4F * $$19;
+      float $$22 = 0.3F * $$19;
+      float $$23 = $$2 * $$15;
+      float $$24 = $$3 > 0.0F ? $$3 * $$15 * $$15 : $$3 - $$3 * (1.0F - $$15) * (1.0F - $$15);
+      float $$25 = $$4 * $$15;
+      $$0.a($$1, $$23 - $$11, $$24 + $$10, $$25 + $$12).a($$20, $$21, $$22, 1.0F).c($$18);
+      $$0.a($$1, $$23 + $$11, $$24 + $$9 - $$10, $$25 - $$12).a($$20, $$21, $$22, 1.0F).c($$18);
+   }
+
+   protected boolean a(T $$0, double $$1) {
+      return $$0.cJ() || $$0.ak() && $$0 == this.e.c;
+   }
+
+   public abstract alc a(S var1);
+
+   public fjv d() {
+      return this.a;
+   }
+
+   protected void a(S $$0, xd $$1, fde $$2, ghg $$3, int $$4) {
+      eys $$5 = $$0.z;
+      if ($$5 != null) {
+         boolean $$6 = !$$0.v;
+         int $$7 = "deadmau5".equals($$1.getString()) ? -10 : 0;
+         $$2.a();
+         $$2.a($$5.d, $$5.e + 0.5, $$5.f);
+         $$2.a(this.e.b());
+         $$2.b(0.025F, -0.025F, 0.025F);
+         Matrix4f $$8 = $$2.c().a();
+         float $$9 = fil.Q().n.a(0.25F);
+         int $$10 = (int)($$9 * 255.0F) << 24;
+         fjv $$11 = this.d();
+         float $$12 = (float)(-$$11.a($$1) / 2);
+         $$11.a($$1, $$12, (float)$$7, -2130706433, false, $$8, $$3, $$6 ? fjv.a.b : fjv.a.a, $$10, $$4);
+         if ($$6) {
+            $$11.a($$1, $$12, (float)$$7, -1, false, $$8, $$3, fjv.a.a, 0, $$4);
+         }
+
+         $$2.b();
+      }
+   }
+
+   @Nullable
+   protected xd c(T $$0) {
+      return $$0.Q_();
+   }
+
+   protected float c(S $$0) {
+      return this.f;
+   }
+
+   public abstract S b();
+
+   public final S b(T $$0, float $$1) {
+      S $$2 = this.b;
+      this.a($$0, $$2, $$1);
+      return $$2;
+   }
+
+   public void a(T $$0, S $$1, float $$2) {
+      $$1.m = azd.d((double)$$2, $$0.ab, $$0.dx());
+      $$1.n = azd.d((double)$$2, $$0.ac, $$0.dz());
+      $$1.o = azd.d((double)$$2, $$0.ad, $$0.dD());
+      $$1.u = $$0.cm();
+      $$1.p = (float)$$0.ag + $$2;
+      $$1.q = $$0.dn();
+      $$1.r = $$0.do();
+      $$1.s = $$0.cP();
+      if ($$0.bW() && $$0.dg() instanceof cps $$3 && $$3.m() instanceof cqg $$4 && $$4.u()) {
+         double $$5 = azd.d((double)$$2, $$3.ab, $$3.dx());
+         double $$6 = azd.d((double)$$2, $$3.ac, $$3.dz());
+         double $$7 = azd.d((double)$$2, $$3.ad, $$3.dD());
+         $$1.x = $$4.e($$2).d(new eys($$5, $$6, $$7));
+      } else {
+         $$1.x = null;
+      }
+
+      $$1.t = this.e.b($$0);
+      boolean $$8 = $$1.t < 4096.0 && this.a($$0, $$1.t);
+      if ($$8) {
+         $$1.y = this.c($$0);
+         $$1.z = $$0.dp().a(btp.c, 0, $$0.k($$2));
+      } else {
+         $$1.y = null;
+      }
+
+      $$1.v = $$0.cd();
+      bto $$10 = $$0 instanceof bui $$9 ? $$9.C() : null;
+      if ($$10 != null) {
+         float $$11 = $$0.t($$2) * (float) (Math.PI / 180.0);
+         eys $$12 = $$0.s($$2).b(-$$11);
+         je $$13 = je.a((jx)$$0.m($$2));
+         je $$14 = je.a((jx)$$10.m($$2));
+         if ($$1.A == null) {
+            $$1.A = new gtl.a();
+         }
+
+         gtl.a $$15 = $$1.A;
+         $$15.a = $$12;
+         $$15.b = $$0.o($$2).e($$12);
+         $$15.c = $$10.u($$2);
+         $$15.d = this.a($$0, $$13);
+         $$15.e = this.e.a($$10).a($$10, $$14);
+         $$15.f = $$0.dS().a(dep.a, $$13);
+         $$15.g = $$0.dS().a(dep.a, $$14);
+      } else {
+         $$1.A = null;
+      }
+
+      $$1.w = $$0.cC();
    }
 }

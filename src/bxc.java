@@ -1,44 +1,33 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import java.util.function.Function;
 
-public class bxc extends bvx<cnc> {
-   private final float c;
-
-   public bxc(float $$0) {
-      super(ImmutableMap.of(cdi.m, cdj.c, cdi.n, cdj.c), Integer.MAX_VALUE);
-      this.c = $$0;
-   }
-
-   protected boolean a(arg $$0, cnc $$1) {
-      cnp $$2 = $$1.go();
-      return $$1.bI() && $$2 != null && !$$1.bi() && !$$1.U && $$1.g($$2) <= 16.0 && $$2.ca != null;
-   }
-
-   protected boolean a(arg $$0, cnc $$1, long $$2) {
-      return this.a($$0, $$1);
-   }
-
-   protected void b(arg $$0, cnc $$1, long $$2) {
-      this.a($$1);
-   }
-
-   protected void c(arg $$0, cnc $$1, long $$2) {
-      bvg<?> $$3 = $$1.dX();
-      $$3.b(cdi.m);
-      $$3.b(cdi.n);
-   }
-
-   protected void d(arg $$0, cnc $$1, long $$2) {
-      this.a($$1);
-   }
-
-   @Override
-   protected boolean a(long $$0) {
-      return false;
-   }
-
-   private void a(cnc $$0) {
-      bvg<?> $$1 = $$0.dX();
-      $$1.a(cdi.m, new cdl(new bwi($$0.go(), false), this.c, 2));
-      $$1.a(cdi.n, new bwi($$0.go(), true));
+public class bxc {
+   public static bxn<buk> a(int $$0, float $$1, int $$2) {
+      return bzp.a(
+         (Function<bzp.b<buk>, ? extends App<bzp.c<buk>, bzs<buk>>>)($$3 -> $$3.group(
+                  $$3.c(cdn.m), $$3.a(cdn.b), $$3.a(cdn.C), $$3.a(cdn.t), $$3.a(cdn.n), $$3.a(cdn.r), $$3.a(cdn.q)
+               )
+               .apply(
+                  $$3,
+                  ($$4, $$5, $$6, $$7, $$8, $$9, $$10) -> ($$11, $$12, $$13) -> {
+                        $$11.y()
+                           .d($$0xxxx -> $$0xxxx.a(cfr.n), $$0xxxx -> true, $$12.ds(), $$2 + 1, cfn.b.c)
+                           .filter($$2xxxx -> $$2xxxx.a($$12.dq(), (double)$$2))
+                           .or(() -> $$11.y().a($$0xxxxx -> $$0xxxxx.a(cfr.n), $$0xxxxx -> true, cfn.b.c, $$12.ds(), $$0, $$12.dV()))
+                           .or(() -> $$3.<jm>a($$5).map(jm::b))
+                           .ifPresent($$10xx -> {
+                              $$7.b();
+                              $$8.b();
+                              $$9.b();
+                              $$10.b();
+                              $$6.a(jm.a($$11.ag(), $$10xx));
+                              if (!$$10xx.a($$12.dq(), (double)$$2)) {
+                                 $$4.a(new cdq($$10xx, $$1, $$2));
+                              }
+                           });
+                        return true;
+                     }
+               ))
+      );
    }
 }

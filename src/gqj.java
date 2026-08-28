@@ -1,20 +1,22 @@
-public class gqj<S extends gts, M extends fxa<S>> extends grf<S, M> {
-   private final gnq a;
+public class gqj extends gop<clq, gvw, fzy> {
+   private static final alc a = alc.b("textures/entity/witch.png");
 
-   public gqj(goo<S, M> $$0, gnq $$1) {
-      super($$0);
-      this.a = $$1;
+   public gqj(gnj.a $$0) {
+      super($$0, new fzy($$0.a(gak.cY)), 0.5F);
+      this.a(new gsi(this, $$0.b()));
    }
 
-   public void a(fcu $$0, ggv $$1, int $$2, S $$3, float $$4, float $$5) {
-      gym $$6 = $$3.b();
-      if ($$6 != null) {
-         $$0.a();
-         $$0.a(0.0F, 0.4F, -0.4F);
-         $$0.a(a.b.rotationDegrees(180.0F));
-         cvl $$7 = $$3.aY_();
-         this.a.a($$7, cvi.h, false, $$0, $$1, $$2, gwb.d, $$6);
-         $$0.b();
-      }
+   public alc a(gvw $$0) {
+      return a;
+   }
+
+   public gvw c() {
+      return new gvw();
+   }
+
+   public void a(clq $$0, gvw $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.ap();
+      $$1.b = !$$0.eW().f();
    }
 }

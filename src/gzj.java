@@ -1,18 +1,8 @@
-import java.nio.file.Path;
-import java.util.List;
-import java.util.UUID;
+import javax.annotation.Nullable;
 
 public interface gzj {
-   void scheduleReload(gzj.a var1);
+   gzt a(alc var1);
 
-   public interface a {
-      void a();
-
-      void a(boolean var1);
-
-      List<gzj.b> b();
-   }
-
-   public static record b(UUID a, Path b) {
-   }
+   @Nullable
+   gzd a(alc var1, gzp var2);
 }

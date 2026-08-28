@@ -1,9 +1,9 @@
-public record kv(arg a, je b, dua c, drx d) {
-   public eye a() {
+public record kv(arh a, je b, duo c, dsl d) {
+   public eys a() {
       return this.b.b();
    }
 
-   public arg b() {
+   public arh b() {
       return this.a;
    }
 
@@ -11,11 +11,11 @@ public record kv(arg a, je b, dua c, drx d) {
       return this.b;
    }
 
-   public dua d() {
+   public duo d() {
       return this.c;
    }
 
-   public drx e() {
+   public dsl e() {
       return this.d;
    }
 }

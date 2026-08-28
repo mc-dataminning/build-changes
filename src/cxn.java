@@ -1,167 +1,233 @@
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Consumer;
 
-public record cxn(Optional<jn<cxl>> d, Optional<Integer> e, List<bsq> f) {
-   public static final cxn a = new cxn(Optional.empty(), Optional.empty(), List.of());
-   private static final xd g = xd.c("effect.none").a(n.h);
-   private static final int h = -13083194;
-   private static final Codec<cxn> i = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               cxl.a.optionalFieldOf("potion").forGetter(cxn::e),
-               Codec.INT.optionalFieldOf("custom_color").forGetter(cxn::f),
-               bsq.d.listOf().optionalFieldOf("custom_effects", List.of()).forGetter(cxn::d)
-            )
-            .apply($$0, cxn::new)
-   );
-   public static final Codec<cxn> b = Codec.withAlternative(i, cxl.a, cxn::new);
-   public static final zb<wo, cxn> c = zb.a(cxl.b.a(yz::a), cxn::e, yz.f.a(yz::a), cxn::f, bsq.e.a(yz.a()), cxn::d, cxn::new);
+public class cxn {
+   public static final int a = 20;
+   public static final cxn b = new cxn(List.of(), List.of(), List.of());
+   private final List<dad> c;
+   private final List<cxn.b<cxm>> d;
+   private final List<cxn.b<cvk>> e;
 
-   public cxn(jn<cxl> $$0) {
-      this(Optional.of($$0), Optional.empty(), List.of());
+   cxn(List<dad> $$0, List<cxn.b<cxm>> $$1, List<cxn.b<cvk>> $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public static cvl a(cvg $$0, jn<cxl> $$1) {
-      cvl $$2 = new cvl($$0);
-      $$2.b(kr.I, new cxn($$1));
-      return $$2;
+   public boolean a(cvp $$0) {
+      return this.b($$0) || this.c($$0);
    }
 
-   public boolean a(jn<cxl> $$0) {
-      return this.d.isPresent() && this.d.get().a($$0) && this.f.isEmpty();
+   private boolean d(cvp $$0) {
+      for (dad $$1 : this.c) {
+         if ($$1.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   public Iterable<bsq> a() {
-      if (this.d.isEmpty()) {
-         return this.f;
+   public boolean b(cvp $$0) {
+      for (cxn.b<cvk> $$1 : this.e) {
+         if ($$1.b.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public boolean c(cvp $$0) {
+      for (cxn.b<cxm> $$1 : this.d) {
+         if ($$1.b.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public boolean a(jn<cxm> $$0) {
+      for (cxn.b<cxm> $$1 : this.d) {
+         if ($$1.c.a($$0)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public boolean a(cvp $$0, cvp $$1) {
+      return !this.d($$0) ? false : this.b($$0, $$1) || this.c($$0, $$1);
+   }
+
+   public boolean b(cvp $$0, cvp $$1) {
+      for (cxn.b<cvk> $$2 : this.e) {
+         if ($$0.a($$2.a) && $$2.b.a($$1)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   public boolean c(cvp $$0, cvp $$1) {
+      Optional<jn<cxm>> $$2 = $$0.a(kr.L, cxo.a).e();
+      if ($$2.isEmpty()) {
+         return false;
       } else {
-         return (Iterable<bsq>)(this.f.isEmpty() ? this.d.get().a().a() : Iterables.concat(this.d.get().a().a(), this.f));
-      }
-   }
-
-   public void a(Consumer<bsq> $$0) {
-      if (this.d.isPresent()) {
-         for (bsq $$1 : this.d.get().a().a()) {
-            $$0.accept(new bsq($$1));
-         }
-      }
-
-      for (bsq $$2 : this.f) {
-         $$0.accept(new bsq($$2));
-      }
-   }
-
-   public cxn b(jn<cxl> $$0) {
-      return new cxn(Optional.of($$0), this.e, this.f);
-   }
-
-   public cxn a(bsq $$0) {
-      return new cxn(this.d, this.e, ad.a(this.f, $$0));
-   }
-
-   public int b() {
-      return this.e.isPresent() ? this.e.get() : a(this.a());
-   }
-
-   public static int c(jn<cxl> $$0) {
-      return a($$0.a().a());
-   }
-
-   public static int a(Iterable<bsq> $$0) {
-      return b($$0).orElse(-13083194);
-   }
-
-   public static OptionalInt b(Iterable<bsq> $$0) {
-      int $$1 = 0;
-      int $$2 = 0;
-      int $$3 = 0;
-      int $$4 = 0;
-
-      for (bsq $$5 : $$0) {
-         if ($$5.g()) {
-            int $$6 = $$5.c().a().g();
-            int $$7 = $$5.e() + 1;
-            $$1 += $$7 * axn.b($$6);
-            $$2 += $$7 * axn.c($$6);
-            $$3 += $$7 * axn.d($$6);
-            $$4 += $$7;
-         }
-      }
-
-      return $$4 == 0 ? OptionalInt.empty() : OptionalInt.of(axn.a($$1 / $$4, $$2 / $$4, $$3 / $$4));
-   }
-
-   public boolean c() {
-      return !this.f.isEmpty() ? true : this.d.isPresent() && !this.d.get().a().a().isEmpty();
-   }
-
-   public List<bsq> d() {
-      return Lists.transform(this.f, bsq::new);
-   }
-
-   public void a(Consumer<xd> $$0, float $$1, float $$2) {
-      a(this.a(), $$0, $$1, $$2);
-   }
-
-   public static void a(Iterable<bsq> $$0, Consumer<xd> $$1, float $$2, float $$3) {
-      List<Pair<jn<bvh>, bvk>> $$4 = Lists.newArrayList();
-      boolean $$5 = true;
-
-      for (bsq $$6 : $$0) {
-         $$5 = false;
-         xr $$7 = xd.c($$6.i());
-         jn<bso> $$8 = $$6.c();
-         $$8.a().a($$6.e(), ($$1x, $$2x) -> $$4.add(new Pair($$1x, $$2x)));
-         if ($$6.e() > 0) {
-            $$7 = xd.a("potion.withAmplifier", $$7, xd.c("potion.potency." + $$6.e()));
-         }
-
-         if (!$$6.a(20)) {
-            $$7 = xd.a("potion.withDuration", $$7, bsr.a($$6, $$2, $$3));
-         }
-
-         $$1.accept($$7.a($$8.a().f().a()));
-      }
-
-      if ($$5) {
-         $$1.accept(g);
-      }
-
-      if (!$$4.isEmpty()) {
-         $$1.accept(xc.a);
-         $$1.accept(xd.c("potion.whenDrank").a(n.f));
-
-         for (Pair<jn<bvh>, bvk> $$9 : $$4) {
-            bvk $$10 = (bvk)$$9.getSecond();
-            double $$11 = $$10.c();
-            double $$13;
-            if ($$10.d() != bvk.a.b && $$10.d() != bvk.a.c) {
-               $$13 = $$10.c();
-            } else {
-               $$13 = $$10.c() * 100.0;
-            }
-
-            if ($$11 > 0.0) {
-               $$1.accept(xd.a("attribute.modifier.plus." + $$10.d().a(), cyg.d.format($$13), xd.c(((bvh)((jn)$$9.getFirst()).a()).c())).a(n.j));
-            } else if ($$11 < 0.0) {
-               $$13 *= -1.0;
-               $$1.accept(xd.a("attribute.modifier.take." + $$10.d().a(), cyg.d.format($$13), xd.c(((bvh)((jn)$$9.getFirst()).a()).c())).a(n.m));
+         for (cxn.b<cxm> $$3 : this.d) {
+            if ($$3.a.a($$2.get()) && $$3.b.a($$1)) {
+               return true;
             }
          }
+
+         return false;
       }
    }
 
-   public Optional<jn<cxl>> e() {
-      return this.d;
+   public cvp d(cvp $$0, cvp $$1) {
+      if ($$1.f()) {
+         return $$1;
+      } else {
+         Optional<jn<cxm>> $$2 = $$1.a(kr.L, cxo.a).e();
+         if ($$2.isEmpty()) {
+            return $$1;
+         } else {
+            for (cxn.b<cvk> $$3 : this.e) {
+               if ($$1.a($$3.a) && $$3.b.a($$0)) {
+                  return cxo.a($$3.c.a(), $$2.get());
+               }
+            }
+
+            for (cxn.b<cxm> $$4 : this.d) {
+               if ($$4.a.a($$2.get()) && $$4.b.a($$0)) {
+                  return cxo.a($$1.h(), $$4.c);
+               }
+            }
+
+            return $$1;
+         }
+      }
    }
 
-   public Optional<Integer> f() {
-      return this.e;
+   public static cxn a(cqn $$0) {
+      cxn.a $$1 = new cxn.a($$0);
+      a($$1);
+      return $$1.a();
+   }
+
+   public static void a(cxn.a $$0) {
+      $$0.a(cvt.sm);
+      $$0.a(cvt.vq);
+      $$0.a(cvt.vt);
+      $$0.a(cvt.sm, cvt.pv, cvt.vq);
+      $$0.a(cvt.vq, cvt.vp, cvt.vt);
+      $$0.a(cxp.a, cvt.qZ, cxp.c);
+      $$0.a(cxp.a, cvt.lH, cxp.b);
+      $$0.a(cxp.a, cvt.sk, cxp.d);
+      $$0.a(cvt.uc, cxp.Q);
+      $$0.a(cvt.lO, cxp.S);
+      $$0.a(cvt.b, cxp.T);
+      $$0.a(cvt.cM, cxp.R);
+      $$0.a(cxp.d, cvt.um, cxp.e);
+      $$0.a(cxp.e, cvt.lH, cxp.f);
+      $$0.a(cxp.e, cvt.so, cxp.g);
+      $$0.a(cxp.f, cvt.so, cxp.h);
+      $$0.a(cxp.g, cvt.lH, cxp.h);
+      $$0.a(cvt.sq, cxp.l);
+      $$0.a(cxp.l, cvt.lH, cxp.m);
+      $$0.a(cvt.uF, cxp.i);
+      $$0.a(cxp.i, cvt.lH, cxp.j);
+      $$0.a(cxp.i, cvt.qZ, cxp.k);
+      $$0.a(cxp.i, cvt.so, cxp.q);
+      $$0.a(cxp.j, cvt.so, cxp.r);
+      $$0.a(cxp.q, cvt.lH, cxp.r);
+      $$0.a(cxp.q, cvt.qZ, cxp.s);
+      $$0.a(cxp.d, cvt.op, cxp.t);
+      $$0.a(cxp.t, cvt.lH, cxp.u);
+      $$0.a(cxp.t, cvt.qZ, cxp.v);
+      $$0.a(cxp.n, cvt.so, cxp.q);
+      $$0.a(cxp.o, cvt.so, cxp.r);
+      $$0.a(cvt.rB, cxp.n);
+      $$0.a(cxp.n, cvt.lH, cxp.o);
+      $$0.a(cxp.n, cvt.qZ, cxp.p);
+      $$0.a(cxp.d, cvt.rd, cxp.w);
+      $$0.a(cxp.w, cvt.lH, cxp.x);
+      $$0.a(cvt.su, cxp.y);
+      $$0.a(cxp.y, cvt.qZ, cxp.z);
+      $$0.a(cxp.y, cvt.so, cxp.A);
+      $$0.a(cxp.z, cvt.so, cxp.B);
+      $$0.a(cxp.A, cvt.qZ, cxp.B);
+      $$0.a(cxp.C, cvt.so, cxp.A);
+      $$0.a(cxp.D, cvt.so, cxp.A);
+      $$0.a(cxp.E, cvt.so, cxp.B);
+      $$0.a(cvt.sn, cxp.C);
+      $$0.a(cxp.C, cvt.lH, cxp.D);
+      $$0.a(cxp.C, cvt.qZ, cxp.E);
+      $$0.a(cvt.si, cxp.F);
+      $$0.a(cxp.F, cvt.lH, cxp.G);
+      $$0.a(cxp.F, cvt.qZ, cxp.H);
+      $$0.a(cvt.sp, cxp.I);
+      $$0.a(cxp.I, cvt.lH, cxp.J);
+      $$0.a(cxp.I, cvt.qZ, cxp.K);
+      $$0.a(cxp.a, cvt.so, cxp.L);
+      $$0.a(cxp.L, cvt.lH, cxp.M);
+      $$0.a(cxp.d, cvt.nT, cxp.O);
+      $$0.a(cxp.O, cvt.lH, cxp.P);
+   }
+
+   public static class a {
+      private final List<dad> a = new ArrayList<>();
+      private final List<cxn.b<cxm>> b = new ArrayList<>();
+      private final List<cxn.b<cvk>> c = new ArrayList<>();
+      private final cqn d;
+
+      public a(cqn $$0) {
+         this.d = $$0;
+      }
+
+      private static void b(cvk $$0) {
+         if (!($$0 instanceof cwj)) {
+            throw new IllegalArgumentException("Expected a potion, got: " + lu.g.b($$0));
+         }
+      }
+
+      public void a(cvk $$0, cvk $$1, cvk $$2) {
+         if ($$0.a(this.d) && $$1.a(this.d) && $$2.a(this.d)) {
+            b($$0);
+            b($$2);
+            this.c.add(new cxn.b<>($$0.n(), dad.a($$1), $$2.n()));
+         }
+      }
+
+      public void a(cvk $$0) {
+         if ($$0.a(this.d)) {
+            b($$0);
+            this.a.add(dad.a($$0));
+         }
+      }
+
+      public void a(jn<cxm> $$0, cvk $$1, jn<cxm> $$2) {
+         if ($$0.a().a(this.d) && $$1.a(this.d) && $$2.a().a(this.d)) {
+            this.b.add(new cxn.b<>($$0, dad.a($$1), $$2));
+         }
+      }
+
+      public void a(cvk $$0, jn<cxm> $$1) {
+         if ($$1.a().a(this.d)) {
+            this.a(cxp.a, $$0, cxp.b);
+            this.a(cxp.d, $$0, $$1);
+         }
+      }
+
+      public cxn a() {
+         return new cxn(List.copyOf(this.a), List.copyOf(this.b), List.copyOf(this.c));
+      }
+   }
+
+   static record b<T>(jn<T> a, dad b, jn<T> c) {
    }
 }

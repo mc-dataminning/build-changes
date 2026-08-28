@@ -1,35 +1,15 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
-import java.util.Optional;
+import java.util.function.Function;
 
-public final class bzl<F extends K1, Value> {
-   private final bvg<?> a;
-   private final cdi<Value> b;
-   private final App<F, Value> c;
-
-   public bzl(bvg<?> $$0, cdi<Value> $$1, App<F, Value> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
-
-   public App<F, Value> a() {
-      return this.c;
-   }
-
-   public void a(Value $$0) {
-      this.a.a(this.b, Optional.of($$0));
-   }
-
-   public void a(Optional<Value> $$0) {
-      this.a.a(this.b, $$0);
-   }
-
-   public void a(Value $$0, long $$1) {
-      this.a.a(this.b, $$0, $$1);
-   }
-
-   public void b() {
-      this.a.b(this.b);
+public class bzl {
+   public static bwd<buk> a() {
+      return bzp.a((Function<bzp.b<buk>, ? extends App<bzp.c<buk>, bzs<buk>>>)($$0 -> $$0.a((bzs<buk>)(($$0x, $$1, $$2) -> {
+            if (!$$1.dX().c(cpm.e) && $$1.fM()) {
+               $$1.fN();
+               return true;
+            } else {
+               return false;
+            }
+         }))));
    }
 }

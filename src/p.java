@@ -12,15 +12,15 @@ public class p {
       this.a = $$0;
    }
 
-   public static String a(ddu $$0, double $$1, double $$2, double $$3) {
+   public static String a(dei $$0, double $$1, double $$2, double $$3) {
       return String.format(Locale.ROOT, "%.2f,%.2f,%.2f - %s", $$1, $$2, $$3, a($$0, je.a($$1, $$2, $$3)));
    }
 
-   public static String a(ddu $$0, je $$1) {
+   public static String a(dei $$0, je $$1) {
       return a($$0, $$1.u(), $$1.v(), $$1.w());
    }
 
-   public static String a(ddu $$0, int $$1, int $$2, int $$3) {
+   public static String a(dei $$0, int $$1, int $$2, int $$3) {
       StringBuilder $$4 = new StringBuilder();
 
       try {
@@ -42,7 +42,7 @@ public class p {
          int $$13 = $$0.G_();
          int $$14 = kg.c($$8);
          int $$15 = kg.c($$6 + 1) - 1;
-         int $$16 = $$0.an() - 1;
+         int $$16 = $$0.an();
          int $$17 = kg.c($$8 + 1) - 1;
          $$4.append(
             String.format(
@@ -79,7 +79,7 @@ public class p {
          int $$26 = $$0.G_();
          int $$27 = $$20 << 9;
          int $$28 = ($$19 + 1 << 9) - 1;
-         int $$29 = $$0.an() - 1;
+         int $$29 = $$0.an();
          int $$30 = ($$20 + 1 << 9) - 1;
          $$4.append(
             String.format(
@@ -190,7 +190,7 @@ public class p {
       return this.c;
    }
 
-   public static void a(p $$0, ddu $$1, je $$2, @Nullable dua $$3) {
+   public static void a(p $$0, dei $$1, je $$2, @Nullable duo $$3) {
       if ($$3 != null) {
          $$0.a("Block", $$3::toString);
       }

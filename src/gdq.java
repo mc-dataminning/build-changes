@@ -1,43 +1,26 @@
-public class gdq extends gfe {
-   private final double a;
-   private final double b;
-   private final double F;
-   private final int G;
-   private final int H;
+public class gdq extends gfo {
+   private final eqo b;
+   protected boolean a;
 
-   gdq(gax $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, int $$7, int $$8) {
+   gdq(gbh $$0, double $$1, double $$2, double $$3, eqo $$4) {
       super($$0, $$1, $$2, $$3);
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.a = $$1;
-      this.b = $$2;
-      this.F = $$3;
-      this.d = $$1 + $$4;
-      this.e = $$2 + $$5;
-      this.f = $$3 + $$6;
-      this.g = this.d;
-      this.h = this.e;
-      this.i = this.f;
-      this.D = 0.1F * (this.r.i() * 0.5F + 0.2F);
-      this.n = false;
-      this.t = (int)(Math.random() * 5.0) + 25;
-      this.G = $$7;
-      this.H = $$8;
+      this.b(0.01F, 0.01F);
+      this.u = 0.06F;
+      this.b = $$4;
+   }
+
+   protected eqo g() {
+      return this.b;
    }
 
    @Override
-   public gei b() {
-      return gei.b;
-   }
-
-   @Override
-   public void a(double $$0, double $$1, double $$2) {
+   public ges b() {
+      return ges.b;
    }
 
    @Override
    public int a(float $$0) {
-      return 240;
+      return this.a ? 240 : super.a($$0);
    }
 
    @Override
@@ -45,32 +28,260 @@ public class gdq extends gfe {
       this.d = this.g;
       this.e = this.h;
       this.f = this.i;
-      if (this.s++ >= this.t) {
-         this.k();
-      } else {
-         float $$0 = (float)this.s / (float)this.t;
-         float $$1 = 1.0F - $$0;
-         this.g = this.a + this.j * (double)$$1;
-         this.h = this.b + this.k * (double)$$1;
-         this.i = this.F + this.l * (double)$$1;
-         int $$2 = axn.a($$0, this.G, this.H);
-         this.a((float)axn.b($$2) / 255.0F, (float)axn.c($$2) / 255.0F, (float)axn.d($$2) / 255.0F);
-         this.e((float)axn.a($$2) / 255.0F);
+      this.h();
+      if (!this.o) {
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.i();
+         if (!this.o) {
+            this.j *= 0.98F;
+            this.k *= 0.98F;
+            this.l *= 0.98F;
+            if (this.b != eqq.a) {
+               je $$0 = je.a(this.g, this.h, this.i);
+               eqp $$1 = this.c.b_($$0);
+               if ($$1.a() == this.b && this.h < (double)((float)$$0.v() + $$1.a(this.c, $$0))) {
+                  this.k();
+               }
+            }
+         }
       }
    }
 
-   public static class a implements geh<lr> {
-      private final gez a;
+   protected void h() {
+      if (this.t-- <= 0) {
+         this.k();
+      }
+   }
 
-      public a(gez $$0) {
-         this.a = $$0;
+   protected void i() {
+   }
+
+   public static gfo a(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      gdq $$8 = new gdq.b($$1, $$2, $$3, $$4, eqq.c, ln.m);
+      $$8.a(0.2F, 0.3F, 1.0F);
+      return $$8;
+   }
+
+   public static gfo b(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      gdq $$8 = new gdq.e($$1, $$2, $$3, $$4, eqq.c, ln.am);
+      $$8.a(0.2F, 0.3F, 1.0F);
+      return $$8;
+   }
+
+   public static gfo c(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      return new gdq.a($$1, $$2, $$3, $$4, eqq.e, ln.j);
+   }
+
+   public static gfo d(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      gdq $$8 = new gdq.e($$1, $$2, $$3, $$4, eqq.e, ln.k);
+      $$8.a(1.0F, 0.2857143F, 0.083333336F);
+      return $$8;
+   }
+
+   public static gfo e(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      gdq $$8 = new gdq.c($$1, $$2, $$3, $$4, eqq.e);
+      $$8.a(1.0F, 0.2857143F, 0.083333336F);
+      return $$8;
+   }
+
+   public static gfo f(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      gdq.b $$8 = new gdq.b($$1, $$2, $$3, $$4, eqq.a, ln.aw);
+      $$8.u *= 0.01F;
+      $$8.t = 100;
+      $$8.a(0.622F, 0.508F, 0.082F);
+      return $$8;
+   }
+
+   public static gfo g(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      gdq $$8 = new gdq.g($$1, $$2, $$3, $$4, eqq.a, ln.ax);
+      $$8.u = 0.01F;
+      $$8.a(0.582F, 0.448F, 0.082F);
+      return $$8;
+   }
+
+   public static gfo h(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      gdq $$8 = new gdq.c($$1, $$2, $$3, $$4, eqq.a);
+      $$8.t = (int)(128.0 / (Math.random() * 0.8 + 0.2));
+      $$8.a(0.522F, 0.408F, 0.082F);
+      return $$8;
+   }
+
+   public static gfo i(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      gdq $$8 = new gdq.b($$1, $$2, $$3, $$4, eqq.c, ln.aO);
+      $$8.a(0.2F, 0.3F, 1.0F);
+      return $$8;
+   }
+
+   public static gfo j(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      gdq $$8 = new gdq.d($$1, $$2, $$3, $$4, eqq.c, ln.am);
+      $$8.a(0.2F, 0.3F, 1.0F);
+      return $$8;
+   }
+
+   public static gfo k(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      return new gdq.a($$1, $$2, $$3, $$4, eqq.e, ln.aM);
+   }
+
+   public static gfo l(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      gdq $$8 = new gdq.d($$1, $$2, $$3, $$4, eqq.e, ln.k);
+      $$8.a(1.0F, 0.2857143F, 0.083333336F);
+      return $$8;
+   }
+
+   public static gfo m(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      gdq $$8 = new gdq.f($$1, $$2, $$3, $$4, eqq.a);
+      $$8.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      $$8.u = 0.007F;
+      $$8.a(0.92F, 0.782F, 0.72F);
+      return $$8;
+   }
+
+   public static gfo n(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      int $$8 = (int)(64.0F / azd.b($$1.C_(), 0.1F, 0.9F));
+      gdq $$9 = new gdq.f($$1, $$2, $$3, $$4, eqq.a, $$8);
+      $$9.u = 0.005F;
+      $$9.a(0.32F, 0.5F, 0.22F);
+      return $$9;
+   }
+
+   public static gfo o(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      gdq.b $$8 = new gdq.b($$1, $$2, $$3, $$4, eqq.a, ln.aF);
+      $$8.a = true;
+      $$8.u *= 0.01F;
+      $$8.t = 100;
+      $$8.a(0.51171875F, 0.03125F, 0.890625F);
+      return $$8;
+   }
+
+   public static gfo p(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      gdq $$8 = new gdq.e($$1, $$2, $$3, $$4, eqq.a, ln.aG);
+      $$8.a = true;
+      $$8.u = 0.01F;
+      $$8.a(0.51171875F, 0.03125F, 0.890625F);
+      return $$8;
+   }
+
+   public static gfo q(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      gdq $$8 = new gdq.c($$1, $$2, $$3, $$4, eqq.a);
+      $$8.a = true;
+      $$8.t = (int)(28.0 / (Math.random() * 0.8 + 0.2));
+      $$8.a(0.51171875F, 0.03125F, 0.890625F);
+      return $$8;
+   }
+
+   static class a extends gdq.b {
+      a(gbh $$0, double $$1, double $$2, double $$3, eqo $$4, ll $$5) {
+         super($$0, $$1, $$2, $$3, $$4, $$5);
       }
 
-      public gee a(lr $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gdq $$8 = new gdq($$1, $$2, $$3, $$4, $$5, $$6, $$7, -12210434, -1);
-         $$8.d(azc.b($$1.C_(), 3.0F, 5.0F));
-         $$8.a(this.a);
-         return $$8;
+      @Override
+      protected void h() {
+         this.v = 1.0F;
+         this.w = 16.0F / (float)(40 - this.t + 16);
+         this.x = 4.0F / (float)(40 - this.t + 8);
+         super.h();
+      }
+   }
+
+   static class b extends gdq {
+      private final ll b;
+
+      b(gbh $$0, double $$1, double $$2, double $$3, eqo $$4, ll $$5) {
+         super($$0, $$1, $$2, $$3, $$4);
+         this.b = $$5;
+         this.u *= 0.02F;
+         this.t = 40;
+      }
+
+      @Override
+      protected void h() {
+         if (this.t-- <= 0) {
+            this.k();
+            this.c.a(this.b, this.g, this.h, this.i, this.j, this.k, this.l);
+         }
+      }
+
+      @Override
+      protected void i() {
+         this.j *= 0.02;
+         this.k *= 0.02;
+         this.l *= 0.02;
+      }
+   }
+
+   static class c extends gdq {
+      c(gbh $$0, double $$1, double $$2, double $$3, eqo $$4) {
+         super($$0, $$1, $$2, $$3, $$4);
+         this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      }
+   }
+
+   static class d extends gdq.e {
+      d(gbh $$0, double $$1, double $$2, double $$3, eqo $$4, ll $$5) {
+         super($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+
+      @Override
+      protected void i() {
+         if (this.m) {
+            this.k();
+            this.c.a(this.b, this.g, this.h, this.i, 0.0, 0.0, 0.0);
+            awd $$0 = this.g() == eqq.e ? awe.hy : awe.hz;
+            float $$1 = azd.b(this.r, 0.3F, 1.0F);
+            this.c.a(this.g, this.h, this.i, $$0, awf.e, $$1, 1.0F, false);
+         }
+      }
+   }
+
+   static class e extends gdq.f {
+      protected final ll b;
+
+      e(gbh $$0, double $$1, double $$2, double $$3, eqo $$4, ll $$5) {
+         super($$0, $$1, $$2, $$3, $$4);
+         this.b = $$5;
+      }
+
+      @Override
+      protected void i() {
+         if (this.m) {
+            this.k();
+            this.c.a(this.b, this.g, this.h, this.i, 0.0, 0.0, 0.0);
+         }
+      }
+   }
+
+   static class f extends gdq {
+      f(gbh $$0, double $$1, double $$2, double $$3, eqo $$4) {
+         this($$0, $$1, $$2, $$3, $$4, (int)(64.0 / (Math.random() * 0.8 + 0.2)));
+      }
+
+      f(gbh $$0, double $$1, double $$2, double $$3, eqo $$4, int $$5) {
+         super($$0, $$1, $$2, $$3, $$4);
+         this.t = $$5;
+      }
+
+      @Override
+      protected void i() {
+         if (this.m) {
+            this.k();
+         }
+      }
+   }
+
+   static class g extends gdq.e {
+      g(gbh $$0, double $$1, double $$2, double $$3, eqo $$4, ll $$5) {
+         super($$0, $$1, $$2, $$3, $$4, $$5);
+      }
+
+      @Override
+      protected void i() {
+         if (this.m) {
+            this.k();
+            this.c.a(this.b, this.g, this.h, this.i, 0.0, 0.0, 0.0);
+            float $$0 = azd.b(this.r, 0.3F, 1.0F);
+            this.c.a(this.g, this.h, this.i, awe.bU, awf.e, $$0, 1.0F, false);
+         }
       }
    }
 }

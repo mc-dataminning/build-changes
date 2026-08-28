@@ -1,20 +1,13 @@
 import com.mojang.serialization.MapCodec;
 
-public class eos extends eok {
-   public static final MapCodec<eos> a = axi.a(lv.f).fieldOf("tag").xmap(eos::new, $$0 -> $$0.b);
-   private final axi<dgv> b;
+public interface eos<P extends eor> {
+   eos<eoq> a = a("always_true", eoq.a);
+   eos<eon> b = a("linear_pos", eon.a);
+   eos<eoc> c = a("axis_aligned_linear_pos", eoc.a);
 
-   public eos(axi<dgv> $$0) {
-      this.b = $$0;
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public boolean a(dua $$0, azk $$1) {
-      return $$0.a(this.b);
-   }
-
-   @Override
-   protected eol<?> a() {
-      return eol.d;
+   static <P extends eor> eos<P> a(String $$0, MapCodec<P> $$1) {
+      return ka.a(lu.o, $$0, () -> $$1);
    }
 }

@@ -1,57 +1,35 @@
-public class fyt extends fxa<guo> {
-   public static final String a = "lid";
-   private static final String b = "base";
-   private final gab c;
-   private final gab d;
-   private final gab e;
+public class fyt extends fxk<gtl> {
+   private final gal a;
+   private final gal b;
+   private final gal c;
 
-   public fyt(gab $$0) {
-      super(ghe::g);
-      this.c = $$0;
-      this.d = $$0.b("lid");
-      this.e = $$0.b("head");
+   public fyt(gal $$0) {
+      this.a = $$0;
+      this.b = $$0.b("left_fin");
+      this.c = $$0.b("right_fin");
    }
 
-   private static gaj d() {
-      gaj $$0 = new gaj();
-      gal $$1 = $$0.a();
-      $$1.a("lid", gag.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), gad.a(0.0F, 24.0F, 0.0F));
-      $$1.a("base", gag.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), gad.a(0.0F, 24.0F, 0.0F));
-      return $$0;
-   }
-
-   public static gah b() {
-      gaj $$0 = d();
-      $$0.a().a("head", gag.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), gad.a(0.0F, 12.0F, 0.0F));
-      return gah.a($$0, 64, 64);
-   }
-
-   public static gah c() {
-      gaj $$0 = d();
-      return gah.a($$0, 64, 64);
-   }
-
-   public void a(guo $$0) {
-      float $$1 = (0.5F + $$0.c) * (float) Math.PI;
-      float $$2 = -1.0F + azc.a($$1);
-      float $$3 = 0.0F;
-      if ($$1 > (float) Math.PI) {
-         $$3 = azc.a($$0.p * 0.1F) * 0.7F;
-      }
-
-      this.d.a(0.0F, 16.0F + azc.a($$1) * 8.0F + $$3, 0.0F);
-      if ($$0.c > 0.3F) {
-         this.d.f = $$2 * $$2 * $$2 * $$2 * (float) Math.PI * 0.125F;
-      } else {
-         this.d.f = 0.0F;
-      }
-
-      this.e.e = $$0.V * (float) (Math.PI / 180.0);
-      this.e.f = ($$0.d - 180.0F - $$0.e) * (float) (Math.PI / 180.0);
+   public static gar b() {
+      gat $$0 = new gat();
+      gav $$1 = $$0.a();
+      int $$2 = 23;
+      $$1.a("body", gaq.c().a(0, 27).a(-1.5F, -2.0F, -1.5F, 3.0F, 2.0F, 3.0F), gan.a(0.0F, 23.0F, 0.0F));
+      $$1.a("right_eye", gaq.c().a(24, 6).a(-1.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), gan.a(0.0F, 20.0F, 0.0F));
+      $$1.a("left_eye", gaq.c().a(28, 6).a(0.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), gan.a(0.0F, 20.0F, 0.0F));
+      $$1.a("back_fin", gaq.c().a(-3, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 0.0F, 3.0F), gan.a(0.0F, 22.0F, 1.5F));
+      $$1.a("right_fin", gaq.c().a(25, 0).a(-1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), gan.a(-1.5F, 22.0F, -1.5F));
+      $$1.a("left_fin", gaq.c().a(25, 0).a(0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), gan.a(1.5F, 22.0F, -1.5F));
+      return gar.a($$0, 32, 32);
    }
 
    @Override
-   public gab a() {
-      return this.c;
+   public gal a() {
+      return this.a;
+   }
+
+   @Override
+   public void a(gtl $$0) {
+      this.c.g = -0.2F + 0.4F * azd.a($$0.p * 0.2F);
+      this.b.g = 0.2F - 0.4F * azd.a($$0.p * 0.2F);
    }
 }

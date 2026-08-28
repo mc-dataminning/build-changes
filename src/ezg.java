@@ -1,34 +1,37 @@
 import javax.annotation.Nullable;
 
-public interface ezg {
-   int a();
-
-   void a(int var1);
-
-   default int b(int $$0) {
-      int $$1 = this.a() + $$0;
-      this.a($$1);
-      return $$1;
-   }
-
-   default int b() {
-      return this.b(1);
-   }
-
-   default void c() {
-      this.a(0);
-   }
-
-   boolean d();
-
-   void e();
-
-   void f();
-
+public class ezg extends ezc {
    @Nullable
-   xd g();
+   private je b;
+   @Nullable
+   private je c;
 
-   void a(@Nullable xd var1);
+   protected ezg(cps $$0, boolean $$1) {
+      super($$0, $$1);
+      this.a($$0);
+   }
 
-   void a(@Nullable yt var1);
+   private void a(cps $$0) {
+      je $$1 = $$0.q();
+      duo $$2 = $$0.dS().a_($$1);
+      boolean $$3 = dgy.h($$2);
+      if ($$3) {
+         this.b = $$1.e();
+         dvs $$4 = $$2.c(((dgy)$$2.b()).c());
+         if ($$4.b()) {
+            this.c = switch ($$4) {
+               case c -> $$1.i();
+               case d -> $$1.h();
+               case e -> $$1.f();
+               case f -> $$1.g();
+               default -> null;
+            };
+         }
+      }
+   }
+
+   @Override
+   public ezm a(duo $$0, ddp $$1, je $$2) {
+      return !$$2.equals(this.b) && !$$2.equals(this.c) ? super.a($$0, $$1, $$2) : ezj.a();
+   }
 }

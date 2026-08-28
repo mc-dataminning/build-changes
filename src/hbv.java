@@ -1,109 +1,62 @@
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.MapLike;
-import com.mojang.serialization.RecordBuilder;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectOpenHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
 public class hbv {
-   final Map<hbu<?>, Object> a;
-
-   hbv(Map<hbu<?>, Object> $$0) {
-      this.a = $$0;
-   }
-
-   public static hbv.a a() {
-      return new hbv.a();
-   }
-
-   public static MapCodec<hbv> a(final List<hbu<?>> $$0) {
-      return new MapCodec<hbv>() {
-         public <T> RecordBuilder<T> a(hbv $$0x, DynamicOps<T> $$1, RecordBuilder<T> $$2) {
-            RecordBuilder<T> $$3 = $$2;
-
-            for (hbu<?> $$4 : $$0) {
-               $$3 = this.a($$0, $$3, $$4);
-            }
-
-            return $$3;
-         }
-
-         private <T, V> RecordBuilder<T> a(hbv $$0x, RecordBuilder<T> $$1, hbu<V> $$2) {
-            V $$3 = $$0.a($$2);
-            return $$3 != null ? $$1.add($$2.b(), $$3, $$2.d()) : $$1;
-         }
-
-         public <T> DataResult<hbv> decode(DynamicOps<T> $$0x, MapLike<T> $$1) {
-            DataResult<hbv.a> $$2 = DataResult.success(new hbv.a());
-
-            for (hbu<?> $$3 : $$0) {
-               $$2 = this.a($$2, $$0, $$1, $$3);
-            }
-
-            return $$2.map(hbv.a::a);
-         }
-
-         private <T, V> DataResult<hbv.a> a(DataResult<hbv.a> $$0x, DynamicOps<T> $$1, MapLike<T> $$2, hbu<V> $$3) {
-            T $$4 = (T)$$2.get($$3.b());
-            if ($$4 != null) {
-               DataResult<V> $$5 = $$3.d().parse($$1, $$4);
-               return $$0.apply2stable(($$1x, $$2x) -> $$1x.a($$3, (V)$$2x), $$5);
-            } else {
-               return $$0;
-            }
-         }
-
-         public <T> Stream<T> keys(DynamicOps<T> $$0x) {
-            return $$0.stream().map(hbu::b).map($$0::createString);
-         }
-      };
-   }
-
+   private static final int a = 100;
+   private final azl b = azl.a();
+   private final fil c;
    @Nullable
-   public <T> T a(hbu<T> $$0) {
-      return (T)this.a.get($$0);
+   private hav d;
+   private int e = 100;
+
+   public hbv(fil $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public String toString() {
-      return this.a.toString();
-   }
-
-   public Set<hbu<?>> b() {
-      return this.a.keySet();
-   }
-
-   public static class a {
-      private final Map<hbu<?>, Object> a = new Reference2ObjectOpenHashMap();
-
-      a() {
-      }
-
-      public <T> hbv.a a(hbu<T> $$0, T $$1) {
-         this.a.put($$0, $$1);
-         return this;
-      }
-
-      public <T> hbv.a b(hbu<T> $$0, @Nullable T $$1) {
-         if ($$1 != null) {
-            this.a.put($$0, $$1);
+   public void a() {
+      awb $$0 = this.c.al();
+      if (this.d != null) {
+         if (!$$0.a().a().a().equals(this.d.a()) && $$0.d()) {
+            this.c.ak().b(this.d);
+            this.e = azd.a(this.b, 0, $$0.b() / 2);
          }
 
-         return this;
+         if (!this.c.ak().c(this.d)) {
+            this.d = null;
+            this.e = Math.min(this.e, azd.a(this.b, $$0.b(), $$0.c()));
+         }
       }
 
-      public hbv.a a(hbv $$0) {
-         this.a.putAll($$0.a);
-         return this;
+      this.e = Math.min(this.e, $$0.c());
+      if (this.d == null && this.e-- <= 0) {
+         this.a($$0);
+      }
+   }
+
+   public void a(awb $$0) {
+      this.d = haq.a($$0.a().a());
+      if (this.d.b() != hca.b) {
+         this.c.ak().a(this.d);
       }
 
-      public hbv a() {
-         return new hbv(this.a);
+      this.e = Integer.MAX_VALUE;
+   }
+
+   public void b(awb $$0) {
+      if (this.c($$0)) {
+         this.b();
       }
+   }
+
+   public void b() {
+      if (this.d != null) {
+         this.c.ak().b(this.d);
+         this.d = null;
+      }
+
+      this.e += 100;
+   }
+
+   public boolean c(awb $$0) {
+      return this.d == null ? false : $$0.a().a().a().equals(this.d.a());
    }
 }

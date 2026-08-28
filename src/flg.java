@@ -1,36 +1,62 @@
 import javax.annotation.Nullable;
 
-public class flg extends fjy {
+public abstract class flg<E extends flg.a<E>> extends fkf<E> {
+   private static final xd a = xd.c("narration.selection.usage");
+
+   public flg(fil $$0, int $$1, int $$2, int $$3, int $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+   }
+
    @Nullable
-   protected fln a;
-   protected boolean b;
+   @Override
+   public fju a(fon $$0) {
+      if (this.l() == 0) {
+         return null;
+      } else if (this.aM_() && $$0 instanceof fon.a $$1) {
+         E $$2 = this.a($$1.b());
+         return $$2 != null ? fju.a(this, fju.a($$2)) : null;
+      } else if (!this.aM_()) {
+         E $$3 = this.h();
+         if ($$3 == null) {
+            $$3 = this.a($$0.a());
+         }
 
-   public flg(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
-      super($$0, $$1, $$2, $$3, xc.a);
-      this.b = $$4;
-   }
-
-   public void a(fln $$0) {
-      this.a = $$0;
-   }
-
-   public void b(boolean $$0) {
-      this.b = $$0;
-   }
-
-   public boolean a() {
-      return this.b;
+         return $$3 == null ? null : fju.a(this, fju.a($$3));
+      } else {
+         return null;
+      }
    }
 
    @Override
-   public void a(fnx $$0) {
-      this.c($$0);
+   public void a(foh $$0) {
+      E $$1 = this.v();
+      if ($$1 != null) {
+         this.a($$0.a(), $$1);
+         $$1.b($$0);
+      } else {
+         E $$2 = this.h();
+         if ($$2 != null) {
+            this.a($$0.a(), $$2);
+            $$2.b($$0);
+         }
+      }
+
+      if (this.aM_()) {
+         $$0.a(fog.d, a);
+      }
    }
 
-   @Override
-   public void b(fjn $$0, int $$1, int $$2, float $$3) {
-      if (this.a != null) {
-         $$0.a(ghe::C, this.a.a(this.b, this.B()), this.D(), this.E(), this.g, this.h);
+   public abstract static class a<E extends flg.a<E>> extends fkf.a<E> implements foi {
+      public abstract xd a();
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         return true;
+      }
+
+      @Override
+      public void b(foh $$0) {
+         $$0.a(fog.a, this.a());
       }
    }
 }

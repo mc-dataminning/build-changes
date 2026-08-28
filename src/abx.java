@@ -1,6 +1,6 @@
 import javax.annotation.Nullable;
 
-public record abx(alb b, @Nullable byte[] c) implements zk<abw> {
+public record abx(alc b, @Nullable byte[] c) implements zk<abw> {
    public static final zb<wa, abx> a = zk.a(abx::a, abx::new);
 
    private abx(wa $$0) {

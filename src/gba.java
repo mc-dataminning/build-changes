@@ -1,162 +1,138 @@
-import com.google.common.collect.Lists;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Set;
+import com.google.common.base.Strings;
+import com.google.gson.JsonParser;
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.minecraft.UserApiService;
+import com.mojang.authlib.minecraft.InsecurePublicKeyException.MissingException;
+import com.mojang.authlib.yggdrasil.response.KeyPairResponse;
+import com.mojang.authlib.yggdrasil.response.KeyPairResponse.KeyPair;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.security.PublicKey;
+import java.time.DateTimeException;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class gba implements ey {
-   private final gay a;
-   private final fib b;
-   private int c = -1;
+public class gba implements gbt {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Duration c = Duration.ofHours(1L);
+   private static final Path d = Path.of("profilekeys");
+   private final UserApiService e;
+   private final Path f;
+   private CompletableFuture<Optional<cnw>> g = CompletableFuture.completedFuture(Optional.empty());
+   private Instant h = Instant.EPOCH;
+
+   public gba(UserApiService $$0, UUID $$1, Path $$2) {
+      this.e = $$0;
+      this.f = $$2.resolve(d).resolve($$1 + ".json");
+   }
+
+   @Override
+   public CompletableFuture<Optional<cnw>> a() {
+      this.h = Instant.now().plus(c);
+      this.g = this.g.thenCompose(this::a);
+      return this.g;
+   }
+
+   @Override
+   public boolean b() {
+      return this.g.isDone() && Instant.now().isAfter(this.h) ? this.g.join().<Boolean>map(cnw::a).orElse(true) : false;
+   }
+
+   private CompletableFuture<Optional<cnw>> a(Optional<cnw> $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         if ($$0.isPresent() && !$$0.get().a()) {
+            if (!ab.aW) {
+               this.a(null);
+            }
+
+            return $$0;
+         } else {
+            try {
+               cnw $$1 = this.a(this.e);
+               this.a($$1);
+               return Optional.ofNullable($$1);
+            } catch (ayc | MinecraftClientException | IOException var3) {
+               b.error("Failed to retrieve profile key pair", var3);
+               this.a(null);
+               return $$0;
+            }
+         }
+      }, ad.i());
+   }
+
+   private Optional<cnw> c() {
+      if (Files.notExists(this.f)) {
+         return Optional.empty();
+      } else {
+         try {
+            Optional var2;
+            try (BufferedReader $$0 = Files.newBufferedReader(this.f)) {
+               var2 = cnw.a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$0)).result();
+            }
+
+            return var2;
+         } catch (Exception var6) {
+            b.error("Failed to read profile key pair file {}", this.f, var6);
+            return Optional.empty();
+         }
+      }
+   }
+
+   private void a(@Nullable cnw $$0) {
+      try {
+         Files.deleteIfExists(this.f);
+      } catch (IOException var3) {
+         b.error("Failed to delete profile key pair file {}", this.f, var3);
+      }
+
+      if ($$0 != null) {
+         if (ab.aW) {
+            cnw.a.encodeStart(JsonOps.INSTANCE, $$0).ifSuccess($$0x -> {
+               try {
+                  Files.createDirectories(this.f.getParent());
+                  Files.writeString(this.f, $$0x.toString());
+               } catch (Exception var3x) {
+                  b.error("Failed to write profile key pair file {}", this.f, var3x);
+               }
+            });
+         }
+      }
+   }
+
    @Nullable
-   private CompletableFuture<Suggestions> d;
-   private final Set<String> e = new HashSet<>();
-
-   public gba(gay $$0, fib $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   @Override
-   public Collection<String> q() {
-      List<String> $$0 = Lists.newArrayList();
-
-      for (gbi $$1 : this.a.m()) {
-         $$0.add($$1.a().getName());
-      }
-
-      return $$0;
-   }
-
-   @Override
-   public Collection<String> z() {
-      if (this.e.isEmpty()) {
-         return this.q();
+   private cnw a(UserApiService $$0) throws ayc, IOException {
+      KeyPairResponse $$1 = $$0.getKeyPair();
+      if ($$1 != null) {
+         cnx.a $$2 = a($$1);
+         return new cnw(ayb.a($$1.keyPair().privateKey()), new cnx($$2), Instant.parse($$1.refreshedAfter()));
       } else {
-         Set<String> $$0 = new HashSet<>(this.q());
-         $$0.addAll(this.e);
-         return $$0;
+         return null;
       }
    }
 
-   @Override
-   public Collection<String> A() {
-      return (Collection<String>)(this.b.w != null && this.b.w.c() == eyc.a.c ? Collections.singleton(((eyb)this.b.w).a().cE()) : Collections.emptyList());
-   }
-
-   @Override
-   public Collection<String> r() {
-      return this.a.z().f();
-   }
-
-   @Override
-   public Stream<alb> s() {
-      return this.b.aj().d().stream();
-   }
-
-   @Override
-   public Stream<alb> t() {
-      return this.a.j().g();
-   }
-
-   @Override
-   public boolean c(int $$0) {
-      gfs $$1 = this.b.t;
-      return $$1 != null ? $$1.l($$0) : $$0 == 0;
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> a(ala<? extends ka<?>> $$0, ey.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
-      return this.v().c($$0).map($$2x -> {
-         this.a($$2x, $$1, $$2);
-         return $$2.buildFuture();
-      }).orElseGet(() -> this.a($$3));
-   }
-
-   @Override
-   public CompletableFuture<Suggestions> a(CommandContext<?> $$0) {
-      if (this.d != null) {
-         this.d.cancel(false);
-      }
-
-      this.d = new CompletableFuture<>();
-      int $$1 = ++this.c;
-      this.a.b(new ahd($$1, $$0.getInput()));
-      return this.d;
-   }
-
-   private static String a(double $$0) {
-      return String.format(Locale.ROOT, "%.2f", $$0);
-   }
-
-   private static String a(int $$0) {
-      return Integer.toString($$0);
-   }
-
-   @Override
-   public Collection<ey.b> B() {
-      eyc $$0 = this.b.w;
-      if ($$0 != null && $$0.c() == eyc.a.b) {
-         je $$1 = ((eya)$$0).a();
-         return Collections.singleton(new ey.b(a($$1.u()), a($$1.v()), a($$1.w())));
+   private static cnx.a a(KeyPairResponse $$0) throws ayc {
+      KeyPair $$1 = $$0.keyPair();
+      if ($$1 != null && !Strings.isNullOrEmpty($$1.publicKey()) && $$0.publicKeySignature() != null && $$0.publicKeySignature().array().length != 0) {
+         try {
+            Instant $$2 = Instant.parse($$0.expiresAt());
+            PublicKey $$3 = ayb.b($$1.publicKey());
+            ByteBuffer $$4 = $$0.publicKeySignature();
+            return new cnx.a($$2, $$3, $$4.array());
+         } catch (IllegalArgumentException | DateTimeException var5) {
+            throw new ayc(var5);
+         }
       } else {
-         return ey.super.B();
-      }
-   }
-
-   @Override
-   public Collection<ey.b> C() {
-      eyc $$0 = this.b.w;
-      if ($$0 != null && $$0.c() == eyc.a.b) {
-         eye $$1 = $$0.e();
-         return Collections.singleton(new ey.b(a($$1.d), a($$1.e), a($$1.f)));
-      } else {
-         return ey.super.C();
-      }
-   }
-
-   @Override
-   public Set<ala<dds>> u() {
-      return this.a.u();
-   }
-
-   @Override
-   public kb v() {
-      return this.a.v();
-   }
-
-   @Override
-   public cqh w() {
-      return this.a.y();
-   }
-
-   public void a(int $$0, Suggestions $$1) {
-      if ($$0 == this.c) {
-         this.d.complete($$1);
-         this.d = null;
-         this.c = -1;
-      }
-   }
-
-   public void a(acy.a $$0, List<String> $$1) {
-      switch ($$0) {
-         case a:
-            this.e.addAll($$1);
-            break;
-         case b:
-            $$1.forEach(this.e::remove);
-            break;
-         case c:
-            this.e.clear();
-            this.e.addAll($$1);
+         throw new ayc(new MissingException("Missing public key"));
       }
    }
 }

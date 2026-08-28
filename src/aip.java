@@ -1,11 +1,11 @@
 public class aip implements zk<agq> {
    public static final zb<wa, aip> a = zk.a(aip::a, aip::new);
-   private final brj b;
+   private final bro b;
    private final int c;
    private final float d;
    private final float e;
 
-   public aip(brj $$0, int $$1, float $$2, float $$3) {
+   public aip(bro $$0, int $$1, float $$2, float $$3) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -13,7 +13,7 @@ public class aip implements zk<agq> {
    }
 
    private aip(wa $$0) {
-      this.b = $$0.b(brj.class);
+      this.b = $$0.b(bro.class);
       this.c = $$0.l();
       this.d = $$0.readFloat();
       this.e = $$0.readFloat();
@@ -35,7 +35,7 @@ public class aip implements zk<agq> {
       $$0.a(this);
    }
 
-   public brj b() {
+   public bro b() {
       return this.b;
    }
 

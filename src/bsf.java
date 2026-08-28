@@ -1,11 +1,11 @@
 import com.mojang.serialization.Codec;
 
-public enum bsf implements azy {
-   a("default"),
-   b("fall_variants"),
-   c("intentional_game_design");
+public enum bsf implements azz {
+   a("never"),
+   b("when_caused_by_living_non_player"),
+   c("always");
 
-   public static final Codec<bsf> d = azy.a(bsf::values);
+   public static final Codec<bsf> d = azz.a(bsf::values);
    private final String e;
 
    private bsf(final String $$0) {

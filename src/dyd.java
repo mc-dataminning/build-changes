@@ -1,4 +1,5 @@
-@FunctionalInterface
-public interface dyd {
-   void onChunkStatusChange(dcy var1, aqw var2);
+public record dyd(String a, alb<deg> b, String c) {
+   public dyd a(String $$0) {
+      return new dyd(this.a, this.b, this.c + $$0);
+   }
 }

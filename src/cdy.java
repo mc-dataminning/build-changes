@@ -1,13 +1,8 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Set;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class cdy extends ceo<buf> {
-   @Override
-   protected void a(arg $$0, buf $$1) {
-   }
-
-   @Override
-   public Set<cdi<?>> a() {
-      return ImmutableSet.of();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface cdy {
 }

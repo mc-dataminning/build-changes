@@ -6,7 +6,7 @@ public class ahq implements zk<agq> {
    private final float e;
    private final float f;
 
-   public ahq(btj $$0) {
+   public ahq(bto $$0) {
       this.b = $$0.dx();
       this.c = $$0.dz();
       this.d = $$0.dD();

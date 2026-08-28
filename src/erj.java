@@ -1,192 +1,122 @@
-import com.google.common.annotations.VisibleForTesting;
-import io.netty.buffer.ByteBuf;
-import java.util.EnumMap;
-import java.util.List;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import java.util.Map;
-import java.util.Objects;
+import javax.annotation.Nullable;
 
-public class erj {
-   public static final zb<ByteBuf, erj> a = yz.a(erj::a, erj::i);
-   private static final erj[] b = ad.a(() -> {
-      erj[] $$0 = new erj[48];
-      a(new erj(jj.b, jj.c, erj.a.a), $$0);
-      return $$0;
-   });
-   private final jj c;
-   private final jj d;
-   private final jj e;
-   private final erj.a f;
-   private final int g;
-   private final List<jj> h;
-   private final List<jj> i;
-   private final List<jj> j;
-   private final Map<jj, erj> k = new EnumMap<>(jj.class);
-   private final Map<jj, erj> l = new EnumMap<>(jj.class);
-   private final Map<erj.a, erj> m = new EnumMap<>(erj.a.class);
+public class erj extends erc {
+   private final boolean k;
+   private final Long2ObjectMap<erg> l = new Long2ObjectOpenHashMap();
 
-   private erj(jj $$0, jj $$1, erj.a $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.f = $$2;
-      this.g = b($$0, $$1, $$2);
-      ki $$3 = $$1.q().d($$0.q());
-      jj $$4 = jj.a($$3, null);
-      Objects.requireNonNull($$4);
-      if (this.f == erj.a.b) {
-         this.e = $$4;
-      } else {
-         this.e = $$4.g();
-      }
-
-      this.h = List.of(this.d.g(), this.d, this.e, this.e.g(), this.c.g(), this.c);
-      this.i = this.h.stream().filter($$0x -> $$0x.o() != this.c.o()).toList();
-      this.j = this.h.stream().filter($$0x -> $$0x.o() == this.c.o()).toList();
-   }
-
-   public static erj a(jj $$0, jj $$1, erj.a $$2) {
-      return b[b($$0, $$1, $$2)];
-   }
-
-   public erj a(jj $$0) {
-      return this.l.get($$0);
-   }
-
-   public erj b(jj $$0) {
-      return this.k.get($$0);
-   }
-
-   public erj c(jj $$0) {
-      erj $$1 = this.b($$0);
-      return this.d == $$1.e ? $$1.a() : $$1;
-   }
-
-   public erj a(erj.a $$0) {
-      return this.m.get($$0);
-   }
-
-   public erj a() {
-      return this.a(this.f.a());
-   }
-
-   public jj b() {
-      return this.d;
-   }
-
-   public jj c() {
-      return this.c;
-   }
-
-   public jj d() {
-      return this.e;
-   }
-
-   public erj.a e() {
-      return this.f;
-   }
-
-   public List<jj> f() {
-      return this.h;
-   }
-
-   public List<jj> g() {
-      return this.i;
-   }
-
-   public List<jj> h() {
-      return this.j;
+   public erj(boolean $$0) {
+      this.k = $$0;
    }
 
    @Override
-   public String toString() {
-      return "[up=" + this.c + ",front=" + this.d + ",sideBias=" + this.f + "]";
+   public void a(det $$0, bum $$1) {
+      super.a($$0, $$1);
+      this.l.clear();
    }
 
-   public int i() {
-      return this.g;
+   @Override
+   public void b() {
+      super.b();
+      this.l.clear();
    }
 
-   public static erj a(int $$0) {
-      return b[$$0];
+   @Override
+   public erb a() {
+      return this.c(azd.a(this.b.cO().a), azd.a(this.b.cO().b + 0.5), azd.a(this.b.cO().c));
    }
 
-   public static erj a(azk $$0) {
-      return ad.a(b, $$0);
+   @Override
+   public erk a(double $$0, double $$1, double $$2) {
+      return this.b($$0, $$1, $$2);
    }
 
-   private static erj a(erj $$0, erj[] $$1) {
-      if ($$1[$$0.i()] != null) {
-         return $$1[$$0.i()];
-      } else {
-         $$1[$$0.i()] = $$0;
+   @Override
+   public int a(erb[] $$0, erb $$1) {
+      int $$2 = 0;
+      Map<jj, erb> $$3 = Maps.newEnumMap(jj.class);
 
-         for (erj.a $$2 : erj.a.values()) {
-            $$0.m.put($$2, a(new erj($$0.c, $$0.d, $$2), $$1));
+      for (jj $$4 : jj.values()) {
+         erb $$5 = this.a($$1.a + $$4.j(), $$1.b + $$4.k(), $$1.c + $$4.l());
+         $$3.put($$4, $$5);
+         if (this.a($$5)) {
+            $$0[$$2++] = $$5;
          }
-
-         for (jj $$3 : jj.values()) {
-            jj $$4 = $$0.c;
-            if ($$3 == $$0.c) {
-               $$4 = $$0.d.g();
-            }
-
-            if ($$3 == $$0.c.g()) {
-               $$4 = $$0.d;
-            }
-
-            $$0.k.put($$3, a(new erj($$4, $$3, $$0.f), $$1));
-         }
-
-         for (jj $$5 : jj.values()) {
-            jj $$6 = $$0.d;
-            if ($$5 == $$0.d) {
-               $$6 = $$0.c.g();
-            }
-
-            if ($$5 == $$0.d.g()) {
-               $$6 = $$0.c;
-            }
-
-            $$0.l.put($$5, a(new erj($$5, $$6, $$0.f), $$1));
-         }
-
-         return $$0;
       }
+
+      for (jj $$6 : jj.c.a) {
+         jj $$7 = $$6.h();
+         if (b($$3.get($$6)) && b($$3.get($$7))) {
+            erb $$8 = this.a($$1.a + $$6.j() + $$7.j(), $$1.b, $$1.c + $$6.l() + $$7.l());
+            if (this.a($$8)) {
+               $$0[$$2++] = $$8;
+            }
+         }
+      }
+
+      return $$2;
    }
 
-   @VisibleForTesting
-   protected static int b(jj $$0, jj $$1, erj.a $$2) {
-      if ($$0.o() == $$1.o()) {
-         throw new IllegalStateException("Up-vector and front-vector can not be on the same axis");
-      } else {
-         int $$3;
-         if ($$0.o() == jj.a.b) {
-            $$3 = $$1.o() == jj.a.a ? 1 : 0;
-         } else {
-            $$3 = $$1.o() == jj.a.b ? 1 : 0;
-         }
-
-         int $$5 = $$3 << 1 | $$1.f().ordinal();
-         return (($$0.ordinal() << 2) + $$5 << 1) + $$2.ordinal();
-      }
+   protected boolean a(@Nullable erb $$0) {
+      return $$0 != null && !$$0.i;
    }
 
-   public static enum a {
-      a("left"),
-      b("right");
+   private static boolean b(@Nullable erb $$0) {
+      return $$0 != null && $$0.k >= 0.0F;
+   }
 
-      private final String c;
-
-      private a(final String $$0) {
-         this.c = $$0;
+   @Nullable
+   protected erb a(int $$0, int $$1, int $$2) {
+      erb $$3 = null;
+      erg $$4 = this.b($$0, $$1, $$2);
+      if (this.k && $$4 == erg.u || $$4 == erg.j) {
+         float $$5 = this.b.a($$4);
+         if ($$5 >= 0.0F) {
+            $$3 = this.c($$0, $$1, $$2);
+            $$3.l = $$4;
+            $$3.k = Math.max($$3.k, $$5);
+            if (this.a.a().b_(new je($$0, $$1, $$2)).c()) {
+               $$3.k += 8.0F;
+            }
+         }
       }
 
-      public erj.a a() {
-         return this == a ? b : a;
+      return $$3;
+   }
+
+   protected erg b(int $$0, int $$1, int $$2) {
+      return (erg)this.l.computeIfAbsent(je.a($$0, $$1, $$2), $$3 -> this.a(this.a, $$0, $$1, $$2));
+   }
+
+   @Override
+   public erg a(eri $$0, int $$1, int $$2, int $$3) {
+      return this.a($$0, $$1, $$2, $$3, this.b);
+   }
+
+   @Override
+   public erg a(eri $$0, int $$1, int $$2, int $$3, bum $$4) {
+      je.a $$5 = new je.a();
+
+      for (int $$6 = $$1; $$6 < $$1 + this.d; $$6++) {
+         for (int $$7 = $$2; $$7 < $$2 + this.e; $$7++) {
+            for (int $$8 = $$3; $$8 < $$3 + this.f; $$8++) {
+               duo $$9 = $$0.a($$5.d($$6, $$7, $$8));
+               eqp $$10 = $$9.y();
+               if ($$10.c() && $$9.a(ere.b) && $$9.l()) {
+                  return erg.u;
+               }
+
+               if (!$$10.a(awz.a)) {
+                  return erg.a;
+               }
+            }
+         }
       }
 
-      @Override
-      public String toString() {
-         return this.c;
-      }
+      duo $$11 = $$0.a($$5);
+      return $$11.a(ere.b) ? erg.j : erg.a;
    }
 }

@@ -1,43 +1,25 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+public class ceb extends cen {
+   public static final float a = 8.0F;
 
-public class ceb extends ceo<clz> {
    @Override
-   public Set<cdi<?>> a() {
-      return ImmutableSet.of(cdi.h, cdi.aw, cdi.aq, cdi.ap, cdi.as, cdi.at, new cdi[0]);
+   protected boolean a(buk $$0, buk $$1) {
+      return this.f($$0, $$1) && $$1.bl() && (this.b($$1) || this.e($$0, $$1)) && cet.c($$0, $$1);
    }
 
-   protected void a(arg $$0, clz $$1) {
-      bvg<?> $$2 = $$1.dX();
-      $$2.a(cdi.aw, this.b($$0, $$1));
-      Optional<cmf> $$3 = Optional.empty();
-      int $$4 = 0;
-      List<clz> $$5 = Lists.newArrayList();
-      cdk $$6 = $$2.c(cdi.h).orElse(cdk.a());
-
-      for (buf $$7 : $$6.b($$0x -> !$$0x.o_() && ($$0x instanceof cmf || $$0x instanceof clz))) {
-         if ($$7 instanceof cmf $$8) {
-            $$4++;
-            if ($$3.isEmpty()) {
-               $$3 = Optional.of($$8);
-            }
-         }
-
-         if ($$7 instanceof clz $$9) {
-            $$5.add($$9);
-         }
-      }
-
-      $$2.a(cdi.aq, $$3);
-      $$2.a(cdi.ap, $$5);
-      $$2.a(cdi.as, $$4);
-      $$2.a(cdi.at, $$5.size());
+   private boolean e(buk $$0, buk $$1) {
+      return !$$0.dX().a(cdn.U) && $$1.ao().a(awx.j);
    }
 
-   private Optional<je> b(arg $$0, clz $$1) {
-      return je.a($$1.ds(), 8, 4, $$1x -> $$0.a_($$1x).a(aws.aT));
+   private boolean b(buk $$0) {
+      return $$0.ao().a(awx.i);
+   }
+
+   private boolean f(buk $$0, buk $$1) {
+      return $$1.g((bto)$$0) <= 64.0;
+   }
+
+   @Override
+   protected cdn<buk> b() {
+      return cdn.B;
    }
 }

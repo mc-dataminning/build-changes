@@ -1,141 +1,209 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.nio.file.Path;
-import java.time.Instant;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.Executor;
-import java.util.concurrent.TimeUnit;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufAllocator;
+import it.unimi.dsi.fastutil.ints.Int2DoubleMap;
+import it.unimi.dsi.fastutil.ints.Int2DoubleOpenHashMap;
+import java.util.Locale;
 import java.util.function.Consumer;
-import java.util.function.LongSupplier;
+import java.util.function.DoubleSupplier;
+import java.util.function.ToDoubleFunction;
 import javax.annotation.Nullable;
 
-public class bpk implements bpm {
-   public static final int a = 10;
+public class bpk {
+   private final String b;
+   private final bpj c;
+   private final DoubleSupplier d;
+   private final ByteBuf e;
+   private final ByteBuf f;
+   private volatile boolean g;
    @Nullable
-   private static Consumer<Path> b = null;
-   private final Map<bpf, List<bpr>> c = new Object2ObjectOpenHashMap();
-   private final bns d;
-   private final Executor e;
-   private final bpq f;
-   private final Consumer<bnx> g;
-   private final Consumer<Path> h;
-   private final bph i;
-   private final LongSupplier j;
-   private final long k;
-   private int l;
-   private bnw m;
-   private volatile boolean n;
-   private Set<bpf> o = ImmutableSet.of();
+   private final Runnable h;
+   @Nullable
+   final bpk.c a;
+   private double i;
 
-   private bpk(bph $$0, LongSupplier $$1, Executor $$2, bpq $$3, Consumer<bnx> $$4, Consumer<Path> $$5) {
-      this.i = $$0;
-      this.j = $$1;
-      this.d = new bns($$1, () -> this.l);
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = b == null ? $$5 : $$5.andThen(b);
-      this.k = $$1.getAsLong() + TimeUnit.NANOSECONDS.convert(10L, TimeUnit.SECONDS);
-      this.m = new bnr(this.j, () -> this.l, false);
-      this.d.c();
+   protected bpk(String $$0, bpj $$1, DoubleSupplier $$2, @Nullable Runnable $$3, @Nullable bpk.c $$4) {
+      this.b = $$0;
+      this.c = $$1;
+      this.h = $$3;
+      this.d = $$2;
+      this.a = $$4;
+      this.f = ByteBufAllocator.DEFAULT.buffer();
+      this.e = ByteBufAllocator.DEFAULT.buffer();
+      this.g = true;
    }
 
-   public static bpk a(bph $$0, LongSupplier $$1, Executor $$2, bpq $$3, Consumer<bnx> $$4, Consumer<Path> $$5) {
-      return new bpk($$0, $$1, $$2, $$3, $$4, $$5);
+   public static bpk a(String $$0, bpj $$1, DoubleSupplier $$2) {
+      return new bpk($$0, $$1, $$2, null, null);
    }
 
-   @Override
-   public synchronized void a() {
-      if (this.e()) {
-         this.n = true;
+   public static <T> bpk a(String $$0, bpj $$1, T $$2, ToDoubleFunction<T> $$3) {
+      return a($$0, $$1, $$3, $$2).a();
+   }
+
+   public static <T> bpk.a<T> a(String $$0, bpj $$1, ToDoubleFunction<T> $$2, T $$3) {
+      return new bpk.a<>($$0, $$1, $$2, $$3);
+   }
+
+   public void a() {
+      if (!this.g) {
+         throw new IllegalStateException("Not running");
+      } else {
+         if (this.h != null) {
+            this.h.run();
+         }
       }
    }
 
-   @Override
-   public synchronized void b() {
-      if (this.e()) {
-         this.m = bnv.a;
-         this.g.accept(bnt.a);
-         this.a(this.o);
+   public void a(int $$0) {
+      this.h();
+      this.i = this.d.getAsDouble();
+      this.f.writeDouble(this.i);
+      this.e.writeInt($$0);
+   }
+
+   public void b() {
+      this.h();
+      this.f.release();
+      this.e.release();
+      this.g = false;
+   }
+
+   private void h() {
+      if (!this.g) {
+         throw new IllegalStateException(String.format(Locale.ROOT, "Sampler for metric %s not started!", this.b));
       }
    }
 
-   @Override
-   public void c() {
-      this.g();
-      this.o = this.i.a(() -> this.m);
-
-      for (bpf $$0 : this.o) {
-         $$0.a();
-      }
-
-      this.l++;
+   DoubleSupplier c() {
+      return this.d;
    }
 
-   @Override
-   public void d() {
-      this.g();
-      if (this.l != 0) {
-         for (bpf $$0 : this.o) {
-            $$0.a(this.l);
-            if ($$0.g()) {
-               bpr $$1 = new bpr(Instant.now(), this.l, this.m.d());
-               this.c.computeIfAbsent($$0, $$0x -> Lists.newArrayList()).add($$1);
-            }
+   public String d() {
+      return this.b;
+   }
+
+   public bpj e() {
+      return this.c;
+   }
+
+   public bpk.b f() {
+      Int2DoubleMap $$0 = new Int2DoubleOpenHashMap();
+      int $$1 = Integer.MIN_VALUE;
+      int $$2 = Integer.MIN_VALUE;
+
+      while (this.f.isReadable(8)) {
+         int $$3 = this.e.readInt();
+         if ($$1 == Integer.MIN_VALUE) {
+            $$1 = $$3;
          }
 
-         if (!this.n && this.j.getAsLong() <= this.k) {
-            this.m = new bnr(this.j, () -> this.l, false);
+         $$0.put($$3, this.f.readDouble());
+         $$2 = $$3;
+      }
+
+      return new bpk.b($$1, $$2, $$0);
+   }
+
+   public boolean g() {
+      return this.a != null && this.a.test(this.i);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
+         bpk $$1 = (bpk)$$0;
+         return this.b.equals($$1.b) && this.c.equals($$1.c);
+      } else {
+         return false;
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      return this.b.hashCode();
+   }
+
+   public static class a<T> {
+      private final String a;
+      private final bpj b;
+      private final DoubleSupplier c;
+      private final T d;
+      @Nullable
+      private Runnable e;
+      @Nullable
+      private bpk.c f;
+
+      public a(String $$0, bpj $$1, ToDoubleFunction<T> $$2, T $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = () -> $$2.applyAsDouble($$3);
+         this.d = $$3;
+      }
+
+      public bpk.a<T> a(Consumer<T> $$0) {
+         this.e = () -> $$0.accept(this.d);
+         return this;
+      }
+
+      public bpk.a<T> a(bpk.c $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public bpk a() {
+         return new bpk(this.a, this.b, this.c, this.e, this.f);
+      }
+   }
+
+   public static class b {
+      private final Int2DoubleMap a;
+      private final int b;
+      private final int c;
+
+      public b(int $$0, int $$1, Int2DoubleMap $$2) {
+         this.b = $$0;
+         this.c = $$1;
+         this.a = $$2;
+      }
+
+      public double a(int $$0) {
+         return this.a.get($$0);
+      }
+
+      public int a() {
+         return this.b;
+      }
+
+      public int b() {
+         return this.c;
+      }
+   }
+
+   public interface c {
+      boolean test(double var1);
+   }
+
+   public static class d implements bpk.c {
+      private final float a;
+      private double b = Double.MIN_VALUE;
+
+      public d(float $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public boolean test(double $$0) {
+         boolean $$2;
+         if (this.b != Double.MIN_VALUE && !($$0 <= this.b)) {
+            $$2 = ($$0 - this.b) / this.b >= (double)this.a;
          } else {
-            this.n = false;
-            bnx $$2 = this.d.e();
-            this.m = bnv.a;
-            this.g.accept($$2);
-            this.a($$2);
+            $$2 = false;
          }
+
+         this.b = $$0;
+         return $$2;
       }
-   }
-
-   @Override
-   public boolean e() {
-      return this.d.a();
-   }
-
-   @Override
-   public bny f() {
-      return bny.a(this.d.d(), this.m);
-   }
-
-   private void g() {
-      if (!this.e()) {
-         throw new IllegalStateException("Not started!");
-      }
-   }
-
-   private void a(bnx $$0) {
-      HashSet<bpf> $$1 = new HashSet<>(this.o);
-      this.e.execute(() -> {
-         Path $$2 = this.f.a($$1, this.c, $$0);
-         this.a($$1);
-         this.h.accept($$2);
-      });
-   }
-
-   private void a(Collection<bpf> $$0) {
-      for (bpf $$1 : $$0) {
-         $$1.b();
-      }
-
-      this.c.clear();
-      this.d.b();
-   }
-
-   public static void a(Consumer<Path> $$0) {
-      b = $$0;
    }
 }

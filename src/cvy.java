@@ -1,41 +1,43 @@
-public class cvy extends cvg {
-   private static final int a = 32;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-   public cvy(cvg.a $$0) {
+public class cvy extends cvk {
+   private static final Logger a = LogUtils.getLogger();
+
+   public cvy(cvk.a $$0) {
       super($$0);
    }
 
    @Override
-   public cvl a(cvl $$0, dds $$1, buf $$2) {
-      if ($$2 instanceof arh $$3) {
-         an.A.a($$3, $$0);
-         $$3.b(awn.c.b(this));
-      }
-
-      if (!$$1.B) {
-         $$2.ew();
-      }
-
-      if ($$2 instanceof cnp $$4) {
-         return cvn.a($$0, $$4, new cvl(cvo.qz), false);
+   public brp a(deg $$0, cnu $$1, bro $$2) {
+      cvp $$3 = $$1.b($$2);
+      List<alc> $$4 = $$3.a(kr.X, List.of());
+      $$3.a(1, $$1);
+      if ($$4.isEmpty()) {
+         return brp.d;
       } else {
-         $$0.a(1, $$2);
-         return $$0;
+         if (!$$0.B) {
+            dal $$5 = $$0.o().aI();
+            List<daj<?>> $$6 = new ArrayList<>($$4.size());
+
+            for (alc $$7 : $$4) {
+               Optional<daj<?>> $$8 = $$5.a($$7);
+               if (!$$8.isPresent()) {
+                  a.error("Invalid recipe: {}", $$7);
+                  return brp.d;
+               }
+
+               $$6.add($$8.get());
+            }
+
+            $$1.a($$6);
+            $$1.b(awo.c.b(this));
+         }
+
+         return brp.a;
       }
-   }
-
-   @Override
-   public int a(cvl $$0, buf $$1) {
-      return 32;
-   }
-
-   @Override
-   public cxh b(cvl $$0) {
-      return cxh.c;
-   }
-
-   @Override
-   public brk a(dds $$0, cnp $$1, brj $$2) {
-      return cvn.a($$0, $$1, $$2);
    }
 }

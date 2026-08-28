@@ -1,96 +1,113 @@
-import com.google.common.base.Joiner;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.lang.reflect.Array;
+import com.mojang.serialization.MapCodec;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
+import javax.annotation.Nullable;
 
-public class dug {
-   private static final Joiner a = Joiner.on(",");
-   private final List<String[]> b = Lists.newArrayList();
-   private final Map<Character, Predicate<due>> c = Maps.newHashMap();
-   private int d;
-   private int e;
+public class dug extends dgv {
+   public static final MapCodec<dug> a = b(dug::new);
+   public static final dvi b = dui.a;
+   public static final dvm<dvq> c = dui.c;
 
-   private dug() {
-      this.c.put(' ', $$0 -> true);
+   @Override
+   public MapCodec<dug> a() {
+      return a;
    }
 
-   public dug a(String... $$0) {
-      if (!ArrayUtils.isEmpty($$0) && !StringUtils.isEmpty($$0[0])) {
-         if (this.b.isEmpty()) {
-            this.d = $$0.length;
-            this.e = $$0[0].length();
+   public dug(dun.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b, jj.c).b(c, dvq.a));
+   }
+
+   @Nullable
+   @Override
+   public drs a(je $$0, duo $$1) {
+      return null;
+   }
+
+   public static drs a(je $$0, duo $$1, duo $$2, jj $$3, boolean $$4, boolean $$5) {
+      return new duk($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Nullable
+   @Override
+   public <T extends drs> drt<T> a(deg $$0, duo $$1, dru<T> $$2) {
+      return a($$2, dru.k, duk::a);
+   }
+
+   @Override
+   protected void a(duo $$0, deg $$1, je $$2, duo $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         drs $$5 = $$1.c_($$2);
+         if ($$5 instanceof duk) {
+            ((duk)$$5).k();
          }
+      }
+   }
 
-         if ($$0.length != this.d) {
-            throw new IllegalArgumentException("Expected aisle with height of " + this.d + ", but was given one with a height of " + $$0.length + ")");
-         } else {
-            for (String $$1 : $$0) {
-               if ($$1.length() != this.e) {
-                  throw new IllegalArgumentException(
-                     "Not all rows in the given aisle are the correct width (expected " + this.e + ", found one with " + $$1.length() + ")"
-                  );
-               }
+   @Override
+   public void a(deh $$0, je $$1, duo $$2) {
+      je $$3 = $$1.a($$2.c(b).g());
+      duo $$4 = $$0.a_($$3);
+      if ($$4.b() instanceof duh && $$4.c(duh.c)) {
+         $$0.a($$3, false);
+      }
+   }
 
-               for (char $$2 : $$1.toCharArray()) {
-                  if (!this.c.containsKey($$2)) {
-                     this.c.put($$2, null);
-                  }
-               }
-            }
-
-            this.b.add($$0);
-            return this;
-         }
+   @Override
+   protected brp a(duo $$0, deg $$1, je $$2, cnu $$3, eyo $$4) {
+      if (!$$1.B && $$1.c_($$2) == null) {
+         $$1.a($$2, false);
+         return brp.c;
       } else {
-         throw new IllegalArgumentException("Empty pattern for aisle");
+         return brp.e;
       }
    }
 
-   public static dug a() {
-      return new dug();
+   @Override
+   protected List<cvp> a(duo $$0, etk.a $$1) {
+      duk $$2 = this.a($$1.a(), je.a($$1.a(ewd.f)));
+      return $$2 == null ? Collections.emptyList() : $$2.j().a($$1);
    }
 
-   public dug a(char $$0, Predicate<due> $$1) {
-      this.c.put($$0, $$1);
-      return this;
+   @Override
+   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
+      return ezj.a();
    }
 
-   public duf b() {
-      return new duf(this.c());
+   @Override
+   protected ezm b(duo $$0, ddl $$1, je $$2, eyx $$3) {
+      duk $$4 = this.a($$1, $$2);
+      return $$4 != null ? $$4.a($$1, $$2) : ezj.a();
    }
 
-   private Predicate<due>[][][] c() {
-      this.d();
-      Predicate<due>[][][] $$0 = (Predicate<due>[][][])Array.newInstance(Predicate.class, this.b.size(), this.d, this.e);
-
-      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
-         for (int $$2 = 0; $$2 < this.d; $$2++) {
-            for (int $$3 = 0; $$3 < this.e; $$3++) {
-               $$0[$$1][$$2][$$3] = this.c.get(this.b.get($$1)[$$2].charAt($$3));
-            }
-         }
-      }
-
-      return $$0;
+   @Nullable
+   private duk a(ddl $$0, je $$1) {
+      drs $$2 = $$0.c_($$1);
+      return $$2 instanceof duk ? (duk)$$2 : null;
    }
 
-   private void d() {
-      List<Character> $$0 = Lists.newArrayList();
+   @Override
+   public cvp a(dej $$0, je $$1, duo $$2) {
+      return cvp.k;
+   }
 
-      for (Entry<Character, Predicate<due>> $$1 : this.c.entrySet()) {
-         if ($$1.getValue() == null) {
-            $$0.add($$1.getKey());
-         }
-      }
+   @Override
+   protected duo a(duo $$0, dnx $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
 
-      if (!$$0.isEmpty()) {
-         throw new IllegalStateException("Predicates for character(s) " + a.join($$0) + " are missing");
-      }
+   @Override
+   protected duo a(duo $$0, dmg $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dup.a<dhj, duo> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   protected boolean a(duo $$0, ere $$1) {
+      return false;
    }
 }

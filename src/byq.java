@@ -1,30 +1,26 @@
 import com.mojang.datafixers.kinds.App;
-import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
-import org.apache.commons.lang3.mutable.MutableLong;
+import java.util.function.Predicate;
 
 public class byq {
-   public static bvy<cnc> a(cdi<List<jm>> $$0, float $$1, int $$2, int $$3, cdi<jm> $$4) {
-      MutableLong $$5 = new MutableLong(0L);
-      return bzk.a(
-         (Function<bzk.b<cnc>, ? extends App<bzk.c<cnc>, bzn<cnc>>>)($$6 -> $$6.group($$6.a(cdi.m), $$6.b($$0), $$6.b($$4))
-               .apply($$6, ($$5xx, $$6x, $$7) -> ($$8, $$9, $$10) -> {
-                     List<jm> $$11 = $$6.b($$6x);
-                     jm $$12 = $$6.b($$7);
-                     if ($$11.isEmpty()) {
-                        return false;
-                     } else {
-                        jm $$13 = $$11.get($$8.C_().a($$11.size()));
-                        if ($$13 != null && $$8.ag() == $$13.a() && $$12.b().a($$9.dq(), (double)$$3)) {
-                           if ($$10 > $$5.getValue()) {
-                              $$5xx.a(new cdl($$13.b(), $$1, $$2));
-                              $$5.setValue($$10 + 100L);
-                           }
-
-                           return true;
-                        } else {
+   public static bwd<buk> a(Function<buk, Optional<bxq>> $$0, Predicate<buk> $$1, int $$2, int $$3, float $$4) {
+      return bzp.a(
+         (Function<bzp.b<buk>, ? extends App<bzp.c<buk>, bzs<buk>>>)($$5 -> $$5.group($$5.a(cdn.n), $$5.a(cdn.m))
+               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                     Optional<bxq> $$10 = $$0.apply($$8);
+                     if (!$$10.isEmpty() && $$1.test($$8)) {
+                        bxq $$11 = $$10.get();
+                        if ($$8.dq().a((jx)$$11.a(), (double)$$3)) {
                            return false;
+                        } else {
+                           bxq $$12 = $$10.get();
+                           $$5x.a($$12);
+                           $$6.a(new cdq($$12, $$4, $$2));
+                           return true;
                         }
+                     } else {
+                        return false;
                      }
                   }))
       );

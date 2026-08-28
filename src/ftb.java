@@ -1,21 +1,14 @@
-public class ftb extends fsw {
-   private static final xd a = xd.c("controls.title");
-
-   private static fie<?>[] a(fif $$0) {
-      return new fie[]{$$0.ae(), $$0.af(), $$0.I(), $$0.K()};
+public class ftb extends ftg {
+   private static fio<?>[] a(fip $$0) {
+      return new fio[]{$$0.R(), $$0.S()};
    }
 
-   public ftb(fpt $$0, fif $$1) {
-      super($$0, $$1, a);
+   public ftb(fqd $$0, fip $$1) {
+      super($$0, $$1, xd.c("options.font.title"));
    }
 
    @Override
    protected void m() {
-      this.d
-         .a(
-            fka.a(xd.c("options.mouse_settings"), $$0 -> this.m.a(new fst(this, this.c))).a(),
-            fka.a(xd.c("controls.keybinds"), $$0 -> this.m.a(new ftd(this, this.c))).a()
-         );
       this.d.a(a(this.c));
    }
 }

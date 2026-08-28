@@ -1,20 +1,38 @@
-public interface dyz {
-   dzb a();
+import javax.annotation.Nullable;
 
-   int b();
+public interface dyz<B, T extends B> {
+   static <B, T extends B> dyz<B, T> a(final Class<T> $$0) {
+      return new dyz<B, T>() {
+         @Nullable
+         @Override
+         public T a(B $$0x) {
+            return (T)($$0.isInstance($$0) ? $$0 : null);
+         }
 
-   boolean a(arg var1, jn<dyx> var2, dyx.a var3, eye var4);
-
-   default dyz.a c() {
-      return dyz.a.a;
+         @Override
+         public Class<? extends B> a() {
+            return $$0;
+         }
+      };
    }
 
-   public static enum a {
-      a,
-      b;
+   static <B, T extends B> dyz<B, T> b(final Class<T> $$0) {
+      return new dyz<B, T>() {
+         @Nullable
+         @Override
+         public T a(B $$0x) {
+            return (T)($$0.equals($$0.getClass()) ? $$0 : null);
+         }
+
+         @Override
+         public Class<? extends B> a() {
+            return $$0;
+         }
+      };
    }
 
-   public interface b<T extends dyz> {
-      T c();
-   }
+   @Nullable
+   T a(B var1);
+
+   Class<? extends B> a();
 }

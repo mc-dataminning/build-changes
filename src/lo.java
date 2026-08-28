@@ -9,7 +9,7 @@ public abstract class lo implements ll {
    private final float a;
 
    public lo(float $$0) {
-      this.a = azc.a($$0, 0.01F, 4.0F);
+      this.a = azd.a($$0, 0.01F, 4.0F);
    }
 
    public float d() {

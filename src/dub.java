@@ -1,159 +1,116 @@
-import com.google.common.base.MoreObjects;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSortedMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.UnmodifiableIterator;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Decoder;
-import com.mojang.serialization.Encoder;
-import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-
-public class dub<O, S extends duc<O, S>> {
-   static final Pattern a = Pattern.compile("^[a-z0-9_]+$");
-   private final O b;
-   private final ImmutableSortedMap<String, dvd<?>> c;
-   private final ImmutableList<S> d;
-
-   protected dub(Function<O, S> $$0, O $$1, dub.b<O, S> $$2, Map<String, dvd<?>> $$3) {
-      this.b = $$1;
-      this.c = ImmutableSortedMap.copyOf($$3);
-      Supplier<S> $$4 = () -> $$0.apply($$1);
-      MapCodec<S> $$5 = MapCodec.of(Encoder.empty(), Decoder.unit($$4));
-      UnmodifiableIterator $$7 = this.c.entrySet().iterator();
-
-      while ($$7.hasNext()) {
-         Entry<String, dvd<?>> $$6 = (Entry<String, dvd<?>>)$$7.next();
-         $$5 = a($$5, $$4, $$6.getKey(), $$6.getValue());
+public enum dub implements azz {
+   a("inactive", dub.a.a) {
+      @Override
+      protected void a(arh $$0, je $$1, dty $$2, dua $$3, boolean $$4) {
+         $$3.a(cvp.k);
+         $$0.c(3016, $$1, $$4 ? 1 : 0);
       }
-
-      MapCodec<S> $$7x = $$5;
-      Map<Map<dvd<?>, Comparable<?>>, S> $$8 = Maps.newLinkedHashMap();
-      List<S> $$9 = Lists.newArrayList();
-      Stream<List<Pair<dvd<?>, Comparable<?>>>> $$10 = Stream.of(Collections.emptyList());
-      UnmodifiableIterator var11 = this.c.values().iterator();
-
-      while (var11.hasNext()) {
-         dvd<?> $$11 = (dvd<?>)var11.next();
-         $$10 = $$10.flatMap($$1x -> $$11.a().stream().map($$2x -> {
-               List<Pair<dvd<?>, Comparable<?>>> $$3x = Lists.newArrayList($$1x);
-               $$3x.add(Pair.of($$11, $$2x));
-               return $$3x;
-            }));
-      }
-
-      $$10.forEach($$5x -> {
-         Reference2ObjectArrayMap<dvd<?>, Comparable<?>> $$6 = new Reference2ObjectArrayMap($$5x.size());
-
-         for (Pair<dvd<?>, Comparable<?>> $$7xx : $$5x) {
-            $$6.put((dvd)$$7xx.getFirst(), (Comparable)$$7xx.getSecond());
+   },
+   b("active", dub.a.b) {
+      @Override
+      protected void a(arh $$0, je $$1, dty $$2, dua $$3, boolean $$4) {
+         if (!$$3.b()) {
+            dtw.b.a($$0, this, $$2, $$3, $$1);
          }
 
-         S $$8x = $$2.create($$1, $$6, $$7);
-         $$8.put($$6, $$8x);
-         $$9.add($$8x);
-      });
-
-      for (S $$12 : $$9) {
-         $$12.a($$8);
+         $$0.c(3015, $$1, $$4 ? 1 : 0);
+      }
+   },
+   c("unlocking", dub.a.b) {
+      @Override
+      protected void a(arh $$0, je $$1, dty $$2, dua $$3, boolean $$4) {
+         $$0.a(null, $$1, awe.AP, awf.e);
+      }
+   },
+   d("ejecting", dub.a.b) {
+      @Override
+      protected void a(arh $$0, je $$1, dty $$2, dua $$3, boolean $$4) {
+         $$0.a(null, $$1, awe.AR, awf.e);
       }
 
-      this.d = ImmutableList.copyOf($$9);
-   }
+      @Override
+      protected void a(arh $$0, je $$1, dty $$2, dua $$3) {
+         $$0.a(null, $$1, awe.AJ, awf.e);
+      }
+   };
 
-   private static <S extends duc<?, S>, T extends Comparable<T>> MapCodec<S> a(MapCodec<S> $$0, Supplier<S> $$1, String $$2, dvd<T> $$3) {
-      return Codec.mapPair($$0, $$3.e().fieldOf($$2).orElseGet($$0x -> {
-      }, () -> $$3.a($$1.get()))).xmap($$1x -> (duc)((duc)$$1x.getFirst()).b($$3, ((dvd.a)$$1x.getSecond()).b()), $$1x -> Pair.of($$1x, $$3.a($$1x)));
-   }
+   private static final int e = 20;
+   private static final int f = 20;
+   private static final int g = 20;
+   private static final int h = 20;
+   private final String i;
+   private final dub.a j;
 
-   public ImmutableList<S> a() {
-      return this.d;
-   }
-
-   public S b() {
-      return (S)this.d.get(0);
-   }
-
-   public O c() {
-      return this.b;
-   }
-
-   public Collection<dvd<?>> d() {
-      return this.c.values();
+   dub(final String $$0, final dub.a $$1) {
+      this.i = $$0;
+      this.j = $$1;
    }
 
    @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this)
-         .add("block", this.b)
-         .add("properties", this.c.values().stream().map(dvd::f).collect(Collectors.toList()))
-         .toString();
+   public String c() {
+      return this.i;
    }
 
-   @Nullable
-   public dvd<?> a(String $$0) {
-      return (dvd<?>)this.c.get($$0);
+   public int a() {
+      return this.j.c;
    }
 
-   public static class a<O, S extends duc<O, S>> {
-      private final O a;
-      private final Map<String, dvd<?>> b = Maps.newHashMap();
-
-      public a(O $$0) {
-         this.a = $$0;
-      }
-
-      public dub.a<O, S> a(dvd<?>... $$0) {
-         for (dvd<?> $$1 : $$0) {
-            this.a($$1);
-            this.b.put($$1.f(), $$1);
+   public dub a(arh $$0, je $$1, dty $$2, dtz $$3, dua $$4) {
+      return switch (this) {
+         case a -> a($$0, $$1, $$2, $$3, $$4, $$2.c());
+         case b -> a($$0, $$1, $$2, $$3, $$4, $$2.d());
+         case c -> {
+            $$3.b($$0.aa() + 20L);
+            yield d;
          }
-
-         return this;
-      }
-
-      private <T extends Comparable<T>> void a(dvd<T> $$0) {
-         String $$1 = $$0.f();
-         if (!dub.a.matcher($$1).matches()) {
-            throw new IllegalArgumentException(this.a + " has invalidly named property: " + $$1);
-         } else {
-            Collection<T> $$2 = $$0.a();
-            if ($$2.size() <= 1) {
-               throw new IllegalArgumentException(this.a + " attempted use property " + $$1 + " with <= 1 possible values");
+         case d -> {
+            if ($$3.d().isEmpty()) {
+               $$3.e();
+               yield a($$0, $$1, $$2, $$3, $$4, $$2.d());
             } else {
-               for (T $$3 : $$2) {
-                  String $$4 = $$0.a($$3);
-                  if (!dub.a.matcher($$4).matches()) {
-                     throw new IllegalArgumentException(this.a + " has property: " + $$1 + " with invalidly named value: " + $$4);
-                  }
-               }
-
-               if (this.b.containsKey($$1)) {
-                  throw new IllegalArgumentException(this.a + " has duplicate property: " + $$1);
-               }
+               float $$5 = $$3.h();
+               this.a($$0, $$1, $$3.g(), $$5);
+               $$4.a($$3.f());
+               boolean $$6 = $$3.d().isEmpty();
+               int $$7 = $$6 ? 20 : 20;
+               $$3.b($$0.aa() + (long)$$7);
+               yield d;
             }
          }
-      }
-
-      public dub<O, S> a(Function<O, S> $$0, dub.b<O, S> $$1) {
-         return new dub<>($$0, this.a, $$1, this.b);
-      }
+      };
    }
 
-   public interface b<O, S> {
-      S create(O var1, Reference2ObjectArrayMap<dvd<?>, Comparable<?>> var2, MapCodec<S> var3);
+   private static dub a(arh $$0, je $$1, dty $$2, dtz $$3, dua $$4, double $$5) {
+      $$4.a($$0, $$1, $$3, $$2, $$5);
+      $$3.b($$0.aa() + 20L);
+      return $$4.c() ? b : a;
+   }
+
+   public void a(arh $$0, je $$1, dub $$2, dty $$3, dua $$4, boolean $$5) {
+      this.a($$0, $$1, $$3, $$4);
+      $$2.a($$0, $$1, $$3, $$4, $$5);
+   }
+
+   protected void a(arh $$0, je $$1, dty $$2, dua $$3, boolean $$4) {
+   }
+
+   protected void a(arh $$0, je $$1, dty $$2, dua $$3) {
+   }
+
+   private void a(arh $$0, je $$1, cvp $$2, float $$3) {
+      kx.a($$0, $$2, 2, jj.b, eys.c($$1).a(jj.b, 1.2));
+      $$0.c(3017, $$1, 0);
+      $$0.a(null, $$1, awe.AL, awf.e, 1.0F, 0.8F + 0.4F * $$3);
+   }
+
+   static enum a {
+      a(6),
+      b(12);
+
+      final int c;
+
+      private a(final int $$0) {
+         this.c = $$0;
+      }
    }
 }

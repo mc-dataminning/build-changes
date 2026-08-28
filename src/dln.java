@@ -1,40 +1,59 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dln extends dkr {
-   public static final MapCodec<dln> a = b(dln::new);
-   private static final xd b = xd.c("container.loom");
+public class dln extends dky implements dma {
+   public static final MapCodec<dln> c = b(dln::new);
+   protected static final ezm g = dhj.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+   private static final double h = 0.14;
 
    @Override
    public MapCodec<dln> a() {
-      return a;
+      return c;
    }
 
-   protected dln(dtz.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected brk a(dua $$0, dds $$1, je $$2, cnp $$3, eya $$4) {
-      if (!$$1.B) {
-         $$3.a($$0.b($$1, $$2));
-         $$3.a(awn.ax);
-      }
-
-      return brk.a;
+   protected dln(dun.d $$0) {
+      super($$0, jj.b, g, true, 0.14);
    }
 
    @Override
-   protected brm b(dua $$0, dds $$1, je $$2) {
-      return new brs(($$2x, $$3, $$4) -> new crx($$2x, $$3, crd.a($$1, $$2)), b);
+   protected boolean h(duo $$0) {
+      return $$0.a(dhl.G);
    }
 
    @Override
-   public dua a(cyw $$0) {
-      return this.o().b(aE, $$0.g().g());
+   protected dhj b() {
+      return dhl.md;
    }
 
    @Override
-   protected void a(dub.a<dgv, dua> $$0) {
-      $$0.a(aE);
+   protected boolean o(duo $$0) {
+      return !$$0.a(dhl.kJ);
+   }
+
+   @Override
+   public boolean a(@Nullable cnu $$0, ddl $$1, je $$2, duo $$3, eqo $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(deh $$0, je $$1, duo $$2, eqp $$3) {
+      return false;
+   }
+
+   @Override
+   protected int a(azl $$0) {
+      return 1;
+   }
+
+   @Nullable
+   @Override
+   public duo a(czk $$0) {
+      eqp $$1 = $$0.q().b_($$0.a());
+      return $$1.a(awz.a) && $$1.e() == 8 ? super.a($$0) : null;
+   }
+
+   @Override
+   protected eqp b_(duo $$0) {
+      return eqq.c.a(false);
    }
 }

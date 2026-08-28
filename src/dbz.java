@@ -1,12 +1,13 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dbz(dbd c) implements dbp {
-   public static final MapCodec<dbz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dbd.b.fieldOf("value").forGetter(dbz::b)).apply($$0, dbz::new));
+public record dbz(dbr d) implements dcb {
+   public static final MapCodec<dbz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dbr.b.fieldOf("amount").forGetter($$0x -> $$0x.d)).apply($$0, dbz::new));
 
    @Override
-   public float a(int $$0, azk $$1, float $$2) {
-      return this.c.a($$0);
+   public void a(arh $$0, int $$1, dbj $$2, bto $$3, eys $$4) {
+      ari $$6 = $$2.c() instanceof ari $$5 ? $$5 : null;
+      $$2.a().a((int)this.d.a($$1), $$0, $$6, $$2.d());
    }
 
    @Override
@@ -14,7 +15,7 @@ public record dbz(dbd c) implements dbp {
       return a;
    }
 
-   public dbd b() {
-      return this.c;
+   public dbr b() {
+      return this.d;
    }
 }

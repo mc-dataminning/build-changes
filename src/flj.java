@@ -1,66 +1,35 @@
-public class flj extends fjy {
-   private static final fln a = new fln(
-      alb.b("widget/tab_selected"), alb.b("widget/tab"), alb.b("widget/tab_selected_highlighted"), alb.b("widget/tab_highlighted")
-   );
-   private static final int b = 3;
-   private static final int c = 1;
-   private static final int d = 1;
-   private static final int e = 4;
-   private static final int f = 2;
-   private final fme m;
-   private final fmd n;
+public class flj {
+   public static final int a = 8;
+   public static final int b = 8;
+   public static final int c = 8;
+   public static final int d = 8;
+   public static final int e = 40;
+   public static final int f = 8;
+   public static final int g = 8;
+   public static final int h = 8;
+   public static final int i = 64;
+   public static final int j = 64;
 
-   public flj(fme $$0, fmd $$1, int $$2, int $$3) {
-      super(0, 0, $$2, $$3, $$1.a());
-      this.m = $$0;
-      this.n = $$1;
+   public static void a(fjx $$0, gyc $$1, int $$2, int $$3, int $$4) {
+      a($$0, $$1, $$2, $$3, $$4, -1);
    }
 
-   @Override
-   public void b(fjn $$0, int $$1, int $$2, float $$3) {
-      $$0.a(ghe::C, a.a(this.b(), this.B()), this.D(), this.E(), this.g, this.h);
-      fjl $$4 = fib.Q().h;
-      int $$5 = this.j ? -1 : -6250336;
-      this.a($$0, $$4, $$5);
-      if (this.b()) {
-         this.a($$0, this.D() + 2, this.E() + 2, this.F() - 2, this.G());
-         this.b($$0, $$4, $$5);
+   public static void a(fjx $$0, gyc $$1, int $$2, int $$3, int $$4, int $$5) {
+      a($$0, $$1.a(), $$2, $$3, $$4, true, false, $$5);
+   }
+
+   public static void a(fjx $$0, alc $$1, int $$2, int $$3, int $$4, boolean $$5, boolean $$6, int $$7) {
+      int $$8 = 8 + ($$6 ? 8 : 0);
+      int $$9 = 8 * ($$6 ? -1 : 1);
+      $$0.a(ghq::B, $$1, $$2, $$3, 8.0F, (float)$$8, $$4, $$4, 8, $$9, 64, 64, $$7);
+      if ($$5) {
+         a($$0, $$1, $$2, $$3, $$4, $$6, $$7);
       }
    }
 
-   protected void a(fjn $$0, int $$1, int $$2, int $$3, int $$4) {
-      fpt.a($$0, fpt.g, $$1, $$2, 0.0F, 0.0F, $$3 - $$1, $$4 - $$2);
-   }
-
-   public void a(fjn $$0, fjl $$1, int $$2) {
-      int $$3 = this.D() + 1;
-      int $$4 = this.E() + (this.b() ? 0 : 3);
-      int $$5 = this.D() + this.y() - 1;
-      int $$6 = this.E() + this.w();
-      a($$0, $$1, this.z(), $$3, $$4, $$5, $$6, $$2);
-   }
-
-   private void b(fjn $$0, fjl $$1, int $$2) {
-      int $$3 = Math.min($$1.a(this.z()), this.y() - 4);
-      int $$4 = this.D() + (this.y() - $$3) / 2;
-      int $$5 = this.E() + this.w() - 2;
-      $$0.a($$4, $$5, $$4 + $$3, $$5 + 1, $$2);
-   }
-
-   @Override
-   protected void a(fnx $$0) {
-      $$0.a(fnw.a, xd.a("gui.narrate.tab", this.n.a()));
-   }
-
-   @Override
-   public void a(hbj $$0) {
-   }
-
-   public fmd a() {
-      return this.n;
-   }
-
-   public boolean b() {
-      return this.m.a() == this.n;
+   private static void a(fjx $$0, alc $$1, int $$2, int $$3, int $$4, boolean $$5, int $$6) {
+      int $$7 = 8 + ($$5 ? 8 : 0);
+      int $$8 = 8 * ($$5 ? -1 : 1);
+      $$0.a(ghq::B, $$1, $$2, $$3, 40.0F, (float)$$7, $$4, $$4, 8, $$8, 64, 64, $$6);
    }
 }

@@ -1,24 +1,21 @@
-import org.joml.Matrix4f;
+public class fsb extends fqs<csq> {
+   private static final alc G = alc.b("textures/gui/container/shulker_box.png");
 
-public class fsb implements fsc {
-   private final ayo a;
-
-   public fsb(ayo $$0) {
-      this.a = $$0;
+   public fsb(csq $$0, cnt $$1, xd $$2) {
+      super($$0, $$1, $$2);
+      this.u++;
    }
 
    @Override
-   public int b(fjl $$0) {
-      return $$0.a(this.a);
+   public void a(fjx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   public int a(fjl $$0) {
-      return 10;
-   }
-
-   @Override
-   public void a(fjl $$0, int $$1, int $$2, Matrix4f $$3, ggv.a $$4) {
-      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, fjl.a.a, 0, 15728880);
+   protected void a(fjx $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(ghq::B, G, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
    }
 }

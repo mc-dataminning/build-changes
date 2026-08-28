@@ -1,69 +1,110 @@
-public class fvv {
-   public static void a(gab $$0, gab $$1, gab $$2, boolean $$3) {
-      gab $$4 = $$3 ? $$0 : $$1;
-      gab $$5 = $$3 ? $$1 : $$0;
-      $$4.f = ($$3 ? -0.3F : 0.3F) + $$2.f;
-      $$5.f = ($$3 ? 0.6F : -0.6F) + $$2.f;
-      $$4.e = (float) (-Math.PI / 2) + $$2.e + 0.1F;
-      $$5.e = -1.5F + $$2.e;
+import com.mojang.authlib.GameProfile;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Supplier;
+
+public class fvv implements fvq, fvr {
+   private static final alc a = alc.b("spectator/teleport_to_team");
+   private static final xd b = xd.c("spectatorMenu.team_teleport");
+   private static final xd c = xd.c("spectatorMenu.team_teleport.prompt");
+   private final List<fvr> d;
+
+   public fvv() {
+      fil $$0 = fil.Q();
+      this.d = a($$0, $$0.s.O());
    }
 
-   public static void a(gab $$0, gab $$1, float $$2, int $$3, boolean $$4) {
-      gab $$5 = $$4 ? $$0 : $$1;
-      gab $$6 = $$4 ? $$1 : $$0;
-      $$5.f = $$4 ? -0.8F : 0.8F;
-      $$5.e = -0.97079635F;
-      $$6.e = $$5.e;
-      float $$7 = azc.a((float)$$3, 0.0F, $$2);
-      float $$8 = $$7 / $$2;
-      $$6.f = azc.h($$8, 0.4F, 0.85F) * (float)($$4 ? 1 : -1);
-      $$6.e = azc.h($$8, $$6.e, (float) (-Math.PI / 2));
+   private static List<fvr> a(fil $$0, ezx $$1) {
+      return $$1.g().stream().flatMap($$1x -> fvv.a.a($$0, $$1x).stream()).toList();
    }
 
-   public static void a(gab $$0, gab $$1, btz $$2, float $$3, float $$4) {
-      float $$5 = azc.a($$3 * (float) Math.PI);
-      float $$6 = azc.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$0.g = 0.0F;
-      $$1.g = 0.0F;
-      $$0.f = (float) (Math.PI / 20);
-      $$1.f = (float) (-Math.PI / 20);
-      if ($$2 == btz.b) {
-         $$0.e = -1.8849558F + azc.b($$4 * 0.09F) * 0.15F;
-         $$1.e = -0.0F + azc.b($$4 * 0.19F) * 0.5F;
-         $$0.e += $$5 * 2.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 1.2F - $$6 * 0.4F;
-      } else {
-         $$0.e = -0.0F + azc.b($$4 * 0.19F) * 0.5F;
-         $$1.e = -1.8849558F + azc.b($$4 * 0.09F) * 0.15F;
-         $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-         $$1.e += $$5 * 2.2F - $$6 * 0.4F;
+   @Override
+   public List<fvr> a() {
+      return this.d;
+   }
+
+   @Override
+   public xd b() {
+      return c;
+   }
+
+   @Override
+   public void a(fvp $$0) {
+      $$0.a(this);
+   }
+
+   @Override
+   public xd aS_() {
+      return b;
+   }
+
+   @Override
+   public void a(fjx $$0, float $$1, float $$2) {
+      $$0.a(ghq::B, a, 0, 0, 16, 16, axo.a($$2, $$1, $$1, $$1));
+   }
+
+   @Override
+   public boolean aT_() {
+      return !this.d.isEmpty();
+   }
+
+   static class a implements fvr {
+      private final ezs a;
+      private final Supplier<gyc> b;
+      private final List<gbs> c;
+
+      private a(ezs $$0, List<gbs> $$1, Supplier<gyc> $$2) {
+         this.a = $$0;
+         this.c = $$1;
+         this.b = $$2;
       }
 
-      a($$0, $$1, $$4);
-   }
+      public static Optional<fvr> a(fil $$0, ezs $$1) {
+         List<gbs> $$2 = new ArrayList<>();
 
-   public static void a(gab $$0, float $$1, float $$2) {
-      $$0.g = $$0.g + $$2 * (azc.b($$1 * 0.09F) * 0.05F + 0.05F);
-      $$0.e = $$0.e + $$2 * azc.a($$1 * 0.067F) * 0.05F;
-   }
+         for (String $$3 : $$1.g()) {
+            gbs $$4 = $$0.L().a($$3);
+            if ($$4 != null && $$4.e() != ded.d) {
+               $$2.add($$4);
+            }
+         }
 
-   public static void a(gab $$0, gab $$1, float $$2) {
-      a($$0, $$2, 1.0F);
-      a($$1, $$2, -1.0F);
-   }
+         if ($$2.isEmpty()) {
+            return Optional.empty();
+         } else {
+            GameProfile $$5 = $$2.get(azl.a().a($$2.size())).a();
+            Supplier<gyc> $$6 = $$0.an().a($$5);
+            return Optional.of(new fvv.a($$1, $$2, $$6));
+         }
+      }
 
-   public static void a(gab $$0, gab $$1, boolean $$2, float $$3, float $$4) {
-      float $$5 = azc.a($$3 * (float) Math.PI);
-      float $$6 = azc.a((1.0F - (1.0F - $$3) * (1.0F - $$3)) * (float) Math.PI);
-      $$1.g = 0.0F;
-      $$0.g = 0.0F;
-      $$1.f = -(0.1F - $$5 * 0.6F);
-      $$0.f = 0.1F - $$5 * 0.6F;
-      float $$7 = (float) -Math.PI / ($$2 ? 1.5F : 2.25F);
-      $$1.e = $$7;
-      $$0.e = $$7;
-      $$1.e += $$5 * 1.2F - $$6 * 0.4F;
-      $$0.e += $$5 * 1.2F - $$6 * 0.4F;
-      a($$1, $$0, $$4);
+      @Override
+      public void a(fvp $$0) {
+         $$0.a(new fvu(this.c));
+      }
+
+      @Override
+      public xd aS_() {
+         return this.a.c();
+      }
+
+      @Override
+      public void a(fjx $$0, float $$1, float $$2) {
+         Integer $$3 = this.a.n().f();
+         if ($$3 != null) {
+            float $$4 = (float)($$3 >> 16 & 0xFF) / 255.0F;
+            float $$5 = (float)($$3 >> 8 & 0xFF) / 255.0F;
+            float $$6 = (float)($$3 & 0xFF) / 255.0F;
+            $$0.a(1, 1, 15, 15, axo.a($$2, $$4 * $$1, $$5 * $$1, $$6 * $$1));
+         }
+
+         flj.a($$0, this.b.get(), 2, 2, 12, axo.a($$2, $$1, $$1, $$1));
+      }
+
+      @Override
+      public boolean aT_() {
+         return true;
+      }
    }
 }

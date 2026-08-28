@@ -1,29 +1,38 @@
-public class gow extends gln<cim, gur, fyz> {
-   private static final alb a = alb.b("textures/entity/sniffer/sniffer.png");
+public class gow extends gop<cgq, gus, fyi> {
+   private static final alc a = alc.b("textures/entity/parrot/parrot_red_blue.png");
+   private static final alc b = alc.b("textures/entity/parrot/parrot_blue.png");
+   private static final alc k = alc.b("textures/entity/parrot/parrot_green.png");
+   private static final alc l = alc.b("textures/entity/parrot/parrot_yellow_blue.png");
+   private static final alc m = alc.b("textures/entity/parrot/parrot_grey.png");
 
-   public gow(gms.a $$0) {
-      super($$0, new fyz($$0.a(gaa.ct)), new fyz($$0.a(gaa.cu)), 1.1F);
+   public gow(gnj.a $$0) {
+      super($$0, new fyi($$0.a(gak.br)), 0.3F);
    }
 
-   public alb a(gur $$0) {
-      return a;
+   public alc a(gus $$0) {
+      return a($$0.a);
    }
 
-   public gur c() {
-      return new gur();
+   public gus c() {
+      return new gus();
    }
 
-   public void a(cim $$0, gur $$1, float $$2) {
+   public void a(cgq $$0, gus $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
-      $$1.b.a($$0.cd);
-      $$1.c.a($$0.cb);
-      $$1.d.a($$0.ce);
-      $$1.e.a($$0.bZ);
-      $$1.f.a($$0.ca);
+      $$1.a = $$0.gD();
+      float $$3 = azd.h($$2, $$0.cf, $$0.cc);
+      float $$4 = azd.h($$2, $$0.ce, $$0.cd);
+      $$1.b = (azd.a($$3) + 1.0F) * $$4;
+      $$1.c = fyi.a($$0);
    }
 
-   protected exz a(cim $$0) {
-      return super.a($$0).g(0.6F);
+   public static alc a(cgq.b $$0) {
+      return switch ($$0) {
+         case a -> a;
+         case b -> b;
+         case c -> k;
+         case d -> l;
+         case e -> m;
+      };
    }
 }

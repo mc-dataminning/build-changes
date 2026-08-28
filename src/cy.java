@@ -3,7 +3,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public record cy(Optional<bd<arx<xd>, cy.a>> c, Optional<String> d, Optional<String> e, dh.d f, Optional<Boolean> g) implements dw<cyu> {
+public record cy(Optional<bd<ary<xd>, cy.a>> c, Optional<String> d, Optional<String> e, dh.d f, Optional<Boolean> g) implements dw<czb> {
    public static final Codec<cy> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                bd.a(cy.a.a).optionalFieldOf("pages").forGetter(cy::b),
@@ -16,11 +16,11 @@ public record cy(Optional<bd<arx<xd>, cy.a>> c, Optional<String> d, Optional<Str
    );
 
    @Override
-   public kq<cyu> a() {
-      return kr.L;
+   public kq<czb> a() {
+      return kr.O;
    }
 
-   public boolean a(cvl $$0, cyu $$1) {
+   public boolean a(cvp $$0, czb $$1) {
       if (this.d.isPresent() && !this.d.get().equals($$1.e())) {
          return false;
       } else if (this.e.isPresent() && !this.e.get().equals($$1.d().a())) {
@@ -32,7 +32,7 @@ public record cy(Optional<bd<arx<xd>, cy.a>> c, Optional<String> d, Optional<Str
       }
    }
 
-   public Optional<bd<arx<xd>, cy.a>> b() {
+   public Optional<bd<ary<xd>, cy.a>> b() {
       return this.c;
    }
 
@@ -52,10 +52,10 @@ public record cy(Optional<bd<arx<xd>, cy.a>> c, Optional<String> d, Optional<Str
       return this.g;
    }
 
-   public static record a(xd b) implements Predicate<arx<xd>> {
+   public static record a(xd b) implements Predicate<ary<xd>> {
       public static final Codec<cy.a> a = xf.a.xmap(cy.a::new, cy.a::a);
 
-      public boolean a(arx<xd> $$0) {
+      public boolean a(ary<xd> $$0) {
          return $$0.a().equals(this.b);
       }
 

@@ -1,85 +1,82 @@
-import com.google.common.collect.Maps;
+import com.google.common.base.Predicates;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
 
-public class djy extends dgv {
-   public static final MapCodec<djy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(lu.e.q().fieldOf("potted").forGetter($$0x -> $$0x.e), u()).apply($$0, djy::new)
-   );
-   private static final Map<dgv, dgv> d = Maps.newHashMap();
-   public static final float b = 3.0F;
-   protected static final eyx c = dgv.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
-   private final dgv e;
+public class djy extends dhj {
+   public static final MapCodec<djy> a = b(djy::new);
+   public static final dvi b = dlf.aF;
+   public static final dvf c = dve.h;
+   protected static final ezm d = dhj.a(0.0, 0.0, 0.0, 16.0, 13.0, 16.0);
+   protected static final ezm e = dhj.a(4.0, 13.0, 4.0, 12.0, 16.0, 12.0);
+   protected static final ezm f = ezj.a(d, e);
+   private static dut g;
 
    @Override
    public MapCodec<djy> a() {
       return a;
    }
 
-   public djy(dgv $$0, dtz.d $$1) {
-      super($$1);
-      this.e = $$0;
-      d.put($$0, this);
+   public djy(dun.d $$0) {
+      super($$0);
+      this.l(this.F.b().b(b, jj.c).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
-      return c;
+   protected boolean g_(duo $$0) {
+      return true;
    }
 
    @Override
-   protected brk a(cvl $$0, dua $$1, dds $$2, je $$3, cnp $$4, brj $$5, eya $$6) {
-      dua $$8 = ($$0.h() instanceof ctl $$7 ? d.getOrDefault($$7.d(), dgx.a) : dgx.a).o();
-      if ($$8.l()) {
-         return brk.f;
-      } else if (!this.m()) {
-         return brk.c;
-      } else {
-         $$2.a($$3, $$8, 3);
-         $$2.a($$4, dyx.c, $$3);
-         $$4.a(awn.ah);
-         $$0.a(1, $$4);
-         return brk.a;
+   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
+      return $$0.c(c) ? f : d;
+   }
+
+   @Override
+   public duo a(czk $$0) {
+      return this.o().b(b, $$0.g().g()).b(c, Boolean.valueOf(false));
+   }
+
+   @Override
+   protected boolean c_(duo $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(duo $$0, deg $$1, je $$2) {
+      return $$0.c(c) ? 15 : 0;
+   }
+
+   @Override
+   protected duo a(duo $$0, dnx $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected duo a(duo $$0, dmg $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dup.a<dhj, duo> $$0) {
+      $$0.a(b, c);
+   }
+
+   public static dut b() {
+      if (g == null) {
+         g = duu.a()
+            .a("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
+            .a('?', dus.a(dux.a))
+            .a('^', dus.a(dux.a(dhl.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jj.d))))
+            .a('>', dus.a(dux.a(dhl.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jj.e))))
+            .a('v', dus.a(dux.a(dhl.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jj.c))))
+            .a('<', dus.a(dux.a(dhl.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jj.f))))
+            .b();
       }
+
+      return g;
    }
 
    @Override
-   protected brk a(dua $$0, dds $$1, je $$2, cnp $$3, eya $$4) {
-      if (this.m()) {
-         return brk.c;
-      } else {
-         cvl $$5 = new cvl(this.e);
-         if (!$$3.k($$5)) {
-            $$3.a($$5, false);
-         }
-
-         $$1.a($$2, dgx.fR.o(), 3);
-         $$1.a($$3, dyx.c, $$2);
-         return brk.a;
-      }
-   }
-
-   @Override
-   public cvl a(ddv $$0, je $$1, dua $$2) {
-      return this.m() ? super.a($$0, $$1, $$2) : new cvl(this.e);
-   }
-
-   private boolean m() {
-      return this.e == dgx.a;
-   }
-
-   @Override
-   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
-      return $$1 == jj.a && !$$0.a($$3, $$4) ? dgx.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public dgv b() {
-      return this.e;
-   }
-
-   @Override
-   protected boolean a(dua $$0, eqq $$1) {
+   protected boolean a(duo $$0, ere $$1) {
       return false;
    }
 }

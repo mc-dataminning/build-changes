@@ -1,21 +1,9 @@
-import javax.annotation.Nullable;
-
-public class gtv extends gsu {
-   public float a;
-   public float b;
-   public long c;
-   public int d;
-   public float e;
-   public float f;
-   public int g;
-   public dua h = dgx.a.o();
-   public boolean i;
-   @Nullable
-   public eye j;
-   @Nullable
-   public eye k;
-   @Nullable
-   public eye l;
-   @Nullable
-   public eye B;
+public class gtv extends guj {
+   private static final alc g = alc.b("textures/entity/frog/temperate_frog.png");
+   public boolean a;
+   public final bti b = new bti();
+   public final bti c = new bti();
+   public final bti d = new bti();
+   public final bti e = new bti();
+   public alc f = g;
 }

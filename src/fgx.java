@@ -1,70 +1,58 @@
+import com.google.gson.annotations.SerializedName;
 import com.mojang.logging.LogUtils;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
 import org.slf4j.Logger;
 
-public class fgx extends fgz {
-   private static final Logger b = LogUtils.getLogger();
-   private static final xd c = xd.c("mco.download.preparing");
-   private final long d;
-   private final int e;
-   private final fpt f;
-   private final String g;
+public class fgx {
+   private static final String a = "realms_persistence.json";
+   private static final fec b = new fec();
+   private static final Logger c = LogUtils.getLogger();
 
-   public fgx(long $$0, int $$1, String $$2, fpt $$3) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$3;
-      this.g = $$2;
+   public fgx.a a() {
+      return b();
    }
 
-   @Override
-   public void run() {
-      fdk $$0 = fdk.a();
-      int $$1 = 0;
+   public void a(fgx.a $$0) {
+      b($$0);
+   }
 
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
+   public static fgx.a b() {
+      Path $$0 = c();
 
-            fep $$2 = $$0.b(this.d, this.e);
-            a(1L);
-            if (this.d()) {
-               return;
-            }
-
-            a(new ffm(this.f, $$2, this.g, $$0x -> {
-            }));
-            return;
-         } catch (few var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (fev var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var5);
-            a(new ffn(var5, this.f));
-            return;
-         } catch (Exception var6) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't download world data", var6);
-            this.a(var6);
-            return;
+      try {
+         String $$1 = Files.readString($$0, StandardCharsets.UTF_8);
+         fgx.a $$2 = b.a($$1, fgx.a.class);
+         if ($$2 != null) {
+            return $$2;
          }
+      } catch (NoSuchFileException var3) {
+      } catch (Exception var4) {
+         c.warn("Failed to read Realms storage {}", $$0, var4);
+      }
+
+      return new fgx.a();
+   }
+
+   public static void b(fgx.a $$0) {
+      Path $$1 = c();
+
+      try {
+         Files.writeString($$1, b.a($$0), StandardCharsets.UTF_8);
+      } catch (Exception var3) {
       }
    }
 
-   @Override
-   public xd a() {
-      return c;
+   private static Path c() {
+      return fil.Q().q.toPath().resolve("realms_persistence.json");
+   }
+
+   public static class a implements fes {
+      @SerializedName("newsLink")
+      public String a;
+      @SerializedName("hasUnreadNews")
+      public boolean b;
    }
 }

@@ -1,153 +1,213 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.Consumer;
-import javax.annotation.Nullable;
 
-public class flc extends fpt {
-   private static final alb a = alb.b("popup/background");
-   private static final int b = 12;
-   private static final int c = 18;
-   private static final int d = 6;
-   private static final int s = 130;
-   private static final int u = 64;
-   private static final int v = 250;
-   private final fpt w;
-   @Nullable
-   private final alb x;
-   private final xd y;
-   private final List<flc.b> z;
-   @Nullable
-   private final Runnable A;
-   private final int B;
-   private final fns C = fns.d();
+public class flc extends fke {
+   private static final int a = 1;
+   private static final int b = -3092272;
+   private static final String c = "_";
+   private static final int d = -2039584;
+   private static final int e = -857677600;
+   private static final int f = 300;
+   private final fjv m;
+   private final xd n;
+   private final flf o;
+   private long p = ad.c();
 
-   flc(fpt $$0, int $$1, @Nullable alb $$2, xd $$3, xd $$4, List<flc.b> $$5, @Nullable Runnable $$6) {
-      super($$3);
-      this.w = $$0;
-      this.x = $$2;
-      this.y = $$4;
-      this.z = $$5;
-      this.A = $$6;
-      this.B = $$1 - 36;
+   public flc(fjv $$0, int $$1, int $$2, int $$3, int $$4, xd $$5, xd $$6) {
+      super($$1, $$2, $$3, $$4, $$6);
+      this.m = $$0;
+      this.n = $$5;
+      this.o = new flf($$0, $$3 - this.b());
+      this.o.a(this::k);
+   }
+
+   public void a(int $$0) {
+      this.o.a($$0);
+   }
+
+   public void b(Consumer<String> $$0) {
+      this.o.a($$0);
+   }
+
+   public void a(String $$0) {
+      this.o.a($$0);
+   }
+
+   public String j() {
+      return this.o.c();
    }
 
    @Override
-   public void aL_() {
-      super.aL_();
-      this.w.o();
+   public void a(foh $$0) {
+      $$0.a(fog.a, xd.a("gui.narrate.editBox", this.z(), this.j()));
    }
 
    @Override
-   protected void aT_() {
-      this.w.b(this.m, this.n, this.o);
-      this.C.a(12).c().b();
-      this.C.a(new fku(this.l.f().a(n.r), this.p).d(this.B).b(true));
-      if (this.x != null) {
-         this.C.a(fkn.a(130, 64, this.x, 130, 64));
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (this.b($$0, $$1) && $$2 == 0) {
+         this.o.a(fqd.t());
+         this.e($$0, $$1);
+         return true;
+      } else {
+         return super.a($$0, $$1, $$2);
       }
-
-      this.C.a(new fku(this.y, this.p).d(this.B).b(true));
-      this.C.a(this.m());
-      this.C.a($$1 -> {
-         fjy var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   private fns m() {
-      int $$0 = 6 * (this.z.size() - 1);
-      int $$1 = Math.min((this.B - $$0) / this.z.size(), 150);
-      fns $$2 = fns.e();
-      $$2.a(6);
-
-      for (flc.b $$3 : this.z) {
-         $$2.a(fka.a($$3.a(), $$1x -> $$3.b().accept(this)).a($$1).a());
-      }
-
-      return $$2;
    }
 
    @Override
-   protected void c() {
-      this.w.a(this.m, this.n, this.o);
-      this.C.a();
-      fnm.a(this.C, this.H());
+   public boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4)) {
+         return true;
+      } else if (this.b($$0, $$1) && $$2 == 0) {
+         this.o.a(true);
+         this.e($$0, $$1);
+         this.o.a(fqd.t());
+         return true;
+      } else {
+         return false;
+      }
    }
 
    @Override
-   public void b(fjn $$0, int $$1, int $$2, float $$3) {
-      this.w.a($$0, -1, -1, $$3);
-      $$0.e();
-      RenderSystem.clear(256);
-      this.b($$0);
-      $$0.a(ghe::C, a, this.C.D() - 18, this.C.E() - 18, this.C.y() + 36, this.C.w() + 36);
+   public boolean a(int $$0, int $$1, int $$2) {
+      return this.o.e($$0);
    }
 
    @Override
-   public xd i() {
-      return xc.a(this.l, this.y);
+   public boolean a(char $$0, int $$1) {
+      if (this.k && this.aM_() && baa.a($$0)) {
+         this.o.b(Character.toString($$0));
+         return true;
+      } else {
+         return false;
+      }
    }
 
    @Override
-   public void d() {
-      if (this.A != null) {
-         this.A.run();
-      }
+   protected void c(fjx $$0, int $$1, int $$2, float $$3) {
+      String $$4 = this.o.c();
+      if ($$4.isEmpty() && !this.aM_()) {
+         $$0.a(this.m, (xi)this.n, this.D() + this.a(), this.E() + this.a(), this.g - this.b(), -857677600);
+      } else {
+         int $$5 = this.o.d();
+         boolean $$6 = this.aM_() && (ad.c() - this.p) / 300L % 2L == 0L;
+         boolean $$7 = $$5 < $$4.length();
+         int $$8 = 0;
+         int $$9 = 0;
+         int $$10 = this.E() + this.a();
 
-      this.m.a(this.w);
-   }
+         for (flf.a $$11 : this.o.h()) {
+            boolean $$12 = this.a($$10, $$10 + 9);
+            if ($$6 && $$7 && $$5 >= $$11.a() && $$5 <= $$11.b()) {
+               if ($$12) {
+                  $$8 = $$0.b(this.m, $$4.substring($$11.a(), $$5), this.D() + this.a(), $$10, -2039584) - 1;
+                  $$0.a($$8, $$10 - 1, $$8 + 1, $$10 + 1 + 9, -3092272);
+                  $$0.b(this.m, $$4.substring($$5, $$11.b()), $$8, $$10, -2039584);
+               }
+            } else {
+               if ($$12) {
+                  $$8 = $$0.b(this.m, $$4.substring($$11.a(), $$11.b()), this.D() + this.a(), $$10, -2039584) - 1;
+               }
 
-   public static class a {
-      private final fpt a;
-      private final xd b;
-      private xd c = xc.a;
-      private int d = 250;
-      @Nullable
-      private alb e;
-      private final List<flc.b> f = new ArrayList<>();
-      @Nullable
-      private Runnable g = null;
+               $$9 = $$10;
+            }
 
-      public a(fpt $$0, xd $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+            $$10 += 9;
+         }
 
-      public flc.a a(int $$0) {
-         this.d = $$0;
-         return this;
-      }
+         if ($$6 && !$$7 && this.a($$9, $$9 + 9)) {
+            $$0.b(this.m, "_", $$8, $$9, -3092272);
+         }
 
-      public flc.a a(alb $$0) {
-         this.e = $$0;
-         return this;
-      }
+         if (this.o.i()) {
+            flf.a $$13 = this.o.e();
+            int $$14 = this.D() + this.a();
+            $$10 = this.E() + this.a();
 
-      public flc.a a(xd $$0) {
-         this.c = $$0;
-         return this;
-      }
+            for (flf.a $$15 : this.o.h()) {
+               if ($$13.a() > $$15.b()) {
+                  $$10 += 9;
+               } else {
+                  if ($$15.a() > $$13.b()) {
+                     break;
+                  }
 
-      public flc.a a(xd $$0, Consumer<flc> $$1) {
-         this.f.add(new flc.b($$0, $$1));
-         return this;
-      }
+                  if (this.a($$10, $$10 + 9)) {
+                     int $$16 = this.m.b($$4.substring($$15.a(), Math.max($$13.a(), $$15.a())));
+                     int $$17;
+                     if ($$13.b() > $$15.b()) {
+                        $$17 = this.g - this.a();
+                     } else {
+                        $$17 = this.m.b($$4.substring($$15.a(), $$13.b()));
+                     }
 
-      public flc.a a(Runnable $$0) {
-         this.g = $$0;
-         return this;
-      }
+                     this.b($$0, $$14 + $$16, $$10, $$14 + $$17, $$10 + 9);
+                  }
 
-      public flc a() {
-         if (this.f.isEmpty()) {
-            throw new IllegalStateException("Popup must have at least one button");
-         } else {
-            return new flc(this.a, this.d, this.e, this.b, this.c, List.copyOf(this.f), this.g);
+                  $$10 += 9;
+               }
+            }
          }
       }
    }
 
-   static record b(xd a, Consumer<flc> b) {
+   @Override
+   protected void a(fjx $$0) {
+      super.a($$0);
+      if (this.o.b()) {
+         int $$1 = this.o.a();
+         xd $$2 = xd.a("gui.multiLineEditBox.character_limit", this.o.c().length(), $$1);
+         $$0.b(this.m, $$2, this.D() + this.g - this.m.a($$2), this.E() + this.h + 4, 10526880);
+      }
+   }
+
+   @Override
+   public int h() {
+      return 9 * this.o.f();
+   }
+
+   @Override
+   protected boolean e() {
+      return (double)this.o.f() > this.l();
+   }
+
+   @Override
+   protected double i() {
+      return 9.0 / 2.0;
+   }
+
+   private void b(fjx $$0, int $$1, int $$2, int $$3, int $$4) {
+      $$0.a(ghq.I(), $$1, $$2, $$3, $$4, -16776961);
+   }
+
+   private void k() {
+      double $$0 = this.c();
+      flf.a $$1 = this.o.c((int)($$0 / 9.0));
+      if (this.o.d() <= $$1.a()) {
+         $$0 = (double)(this.o.g() * 9);
+      } else {
+         flf.a $$2 = this.o.c((int)(($$0 + (double)this.h) / 9.0) - 1);
+         if (this.o.d() > $$2.b()) {
+            $$0 = (double)(this.o.g() * 9 - this.h + 9 + this.b());
+         }
+      }
+
+      this.a($$0);
+   }
+
+   private double l() {
+      return (double)(this.h - this.b()) / 9.0;
+   }
+
+   private void e(double $$0, double $$1) {
+      double $$2 = $$0 - (double)this.D() - (double)this.a();
+      double $$3 = $$1 - (double)this.E() - (double)this.a() + this.c();
+      this.o.a($$2, $$3);
+   }
+
+   @Override
+   public void a(boolean $$0) {
+      super.a($$0);
+      if ($$0) {
+         this.p = ad.c();
+      }
    }
 }

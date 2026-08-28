@@ -1,21 +1,53 @@
-class bsi extends bso {
-   protected bsi(bsp $$0, int $$1) {
-      super($$0, $$1);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+
+public record bsi(String d, bsf e, float f, bse g, bsk h) {
+   public static final Codec<bsi> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("message_id").forGetter(bsi::a),
+               bsf.d.fieldOf("scaling").forGetter(bsi::b),
+               Codec.FLOAT.fieldOf("exhaustion").forGetter(bsi::c),
+               bse.g.optionalFieldOf("effects", bse.a).forGetter(bsi::d),
+               bsk.d.optionalFieldOf("death_message_type", bsk.a).forGetter(bsi::e)
+            )
+            .apply($$0, bsi::new)
+   );
+   public static final Codec<jn<bsi>> b = akz.a(lv.s);
+   public static final zb<wo, jn<bsi>> c = yz.b(lv.s);
+
+   public bsi(String $$0, bsf $$1, float $$2) {
+      this($$0, $$1, $$2, bse.a, bsk.a);
    }
 
-   @Override
-   public boolean a(buf $$0, int $$1) {
-      return $$0.fs() > 0.0F || $$0.dS().B;
+   public bsi(String $$0, bsf $$1, float $$2, bse $$3) {
+      this($$0, $$1, $$2, $$3, bsk.a);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
+   public bsi(String $$0, float $$1, bse $$2) {
+      this($$0, bsf.b, $$1, $$2);
    }
 
-   @Override
-   public void b(buf $$0, int $$1) {
-      super.b($$0, $$1);
-      $$0.E(Math.max($$0.fs(), (float)(4 * (1 + $$1))));
+   public bsi(String $$0, float $$1) {
+      this($$0, bsf.b, $$1);
+   }
+
+   public String a() {
+      return this.d;
+   }
+
+   public bsf b() {
+      return this.e;
+   }
+
+   public float c() {
+      return this.f;
+   }
+
+   public bse d() {
+      return this.g;
+   }
+
+   public bsk e() {
+      return this.h;
    }
 }

@@ -1,7 +1,6 @@
-import javax.annotation.Nullable;
-
-public class guv extends gsu {
-   @Nullable
-   public gym a;
-   public cvl b = cvl.k;
+public class guv extends gub {
+   public boolean a;
+   public boolean b;
+   public float c;
+   public cmm d = cmm.f;
 }

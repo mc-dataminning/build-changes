@@ -1,37 +1,74 @@
-public class hcp extends hct {
-   private final xd a;
-   private fkt b = fkt.a;
-   private final fpt c;
-   private int B;
+import com.google.common.base.Stopwatch;
+import com.google.common.base.Ticker;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.OptionalLong;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
-   public hcp(fpt $$0, xd $$1, xd $$2) {
-      super($$1);
+public class hcp {
+   public static final hcp a = new hcp(Ticker.systemTicker());
+   private static final Logger b = LogUtils.getLogger();
+   private final Ticker c;
+   private final Map<hcl<hcp.a>, Stopwatch> d = new HashMap<>();
+   private OptionalLong e = OptionalLong.empty();
+
+   protected hcp(Ticker $$0) {
       this.c = $$0;
-      this.a = $$2;
    }
 
-   @Override
-   public void aT_() {
-      this.m.ae().i();
-      this.b = fkt.a(this.p, this.a, this.n - 50);
-      this.B = this.b.a() * 9;
-      this.c(fka.a(xc.k, $$0 -> this.m.a(this.c)).a(this.n / 2 - 100, this.o / 2 + this.B / 2 + 9, 200, 20).a());
+   public synchronized void a(hcl<hcp.a> $$0) {
+      this.a($$0, (Function<hcl<hcp.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
    }
 
-   @Override
-   public xd i() {
-      return xd.i().b(this.l).f(": ").b(this.a);
+   public synchronized void a(hcl<hcp.a> $$0, Stopwatch $$1) {
+      this.a($$0, (Function<hcl<hcp.a>, Stopwatch>)($$1x -> $$1));
    }
 
-   @Override
-   public void d() {
-      fib.Q().a(this.c);
+   private synchronized void a(hcl<hcp.a> $$0, Function<hcl<hcp.a>, Stopwatch> $$1) {
+      this.d.computeIfAbsent($$0, $$1);
    }
 
-   @Override
-   public void a(fjn $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, this.o / 2 - this.B / 2 - 9 * 2, 11184810);
-      this.b.a($$0, this.n / 2, this.o / 2 - this.B / 2);
+   public synchronized void b(hcl<hcp.a> $$0) {
+      Stopwatch $$1 = this.d.get($$0);
+      if ($$1 == null) {
+         b.warn("Attempted to end step for {} before starting it", $$0.b());
+      } else {
+         if ($$1.isRunning()) {
+            $$1.stop();
+         }
+      }
+   }
+
+   public void a(hci $$0) {
+      $$0.send(hcj.g, $$0x -> {
+         synchronized (this) {
+            this.d.forEach(($$1, $$2) -> {
+               if (!$$2.isRunning()) {
+                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
+                  $$0x.a((hcl<hcp.a>)$$1, new hcp.a((int)$$3));
+               } else {
+                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), hcj.g.a());
+               }
+            });
+            this.e.ifPresent($$1 -> $$0x.a(hcl.B, new hcp.a((int)$$1)));
+            this.d.clear();
+         }
+      });
+   }
+
+   public synchronized void a(long $$0) {
+      this.e = OptionalLong.of($$0);
+   }
+
+   public static record a(int b) {
+      public static final Codec<hcp.a> a = Codec.INT.xmap(hcp.a::new, $$0 -> $$0.b);
+
+      public int a() {
+         return this.b;
+      }
    }
 }

@@ -1,17 +1,25 @@
 import java.util.EnumSet;
 
-public class caw extends cbc {
-   private final buh a;
+public class caw extends cbh {
+   private final bum a;
+   private final deg b;
 
-   public caw(buh $$0) {
+   public caw(bum $$0, deg $$1) {
       this.a = $$0;
-      this.a(EnumSet.of(cbc.a.c));
-      $$0.P().a(true);
+      this.b = $$1;
+      this.a(EnumSet.of(cbh.a.c));
    }
 
    @Override
    public boolean b() {
-      return this.a.bi() && this.a.b(awy.a) > this.a.dm() || this.a.bw();
+      boolean $$0 = this.a.ax || this.a.aw;
+      if ($$0 && this.a.ao().a(awx.h)) {
+         je $$1 = this.a.ds().d();
+         duo $$2 = this.b.a_($$1);
+         return $$2.a(dhl.qP) || $$2.g(this.b, $$1) == ezj.a();
+      } else {
+         return false;
+      }
    }
 
    @Override
@@ -21,8 +29,6 @@ public class caw extends cbc {
 
    @Override
    public void a() {
-      if (this.a.dV().i() < 0.8F) {
-         this.a.O().a();
-      }
+      this.a.O().a();
    }
 }

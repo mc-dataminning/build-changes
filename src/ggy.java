@@ -1,368 +1,373 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Sets;
-import com.google.common.collect.ImmutableList.Builder;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.serialization.JsonOps;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.HashMap;
-import java.util.List;
+import com.google.common.collect.Maps;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.UnaryOperator;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
-import org.joml.Matrix4f;
 
-public class ggy implements AutoCloseable {
-   public static final alb a = alb.b("main");
-   private final alb b;
-   private final List<gha> c;
-   private final Map<alb, ggz.d> d;
-   private final Set<alb> e;
-   private float f;
+public class ggy {
+   private static final Map<dhj, ghq> a = ad.a(Maps.newHashMap(), $$0 -> {
+      ghq $$1 = ghq.s();
+      $$0.put(dhl.fI, $$1);
+      ghq $$2 = ghq.d();
+      $$0.put(dhl.i, $$2);
+      $$0.put(dhl.eW, $$2);
+      $$0.put(dhl.eY, $$2);
+      $$0.put(dhl.fH, $$2);
+      $$0.put(dhl.hc, $$2);
+      $$0.put(dhl.eX, $$2);
+      $$0.put(dhl.aH, $$2);
+      $$0.put(dhl.aE, $$2);
+      $$0.put(dhl.aF, $$2);
+      $$0.put(dhl.aI, $$2);
+      $$0.put(dhl.aJ, $$2);
+      $$0.put(dhl.aG, $$2);
+      $$0.put(dhl.aK, $$2);
+      $$0.put(dhl.aM, $$2);
+      $$0.put(dhl.aN, $$2);
+      $$0.put(dhl.ac, $$2);
+      $$0.put(dhl.aL, $$2);
+      ghq $$3 = ghq.e();
+      $$0.put(dhl.x, $$3);
+      $$0.put(dhl.y, $$3);
+      $$0.put(dhl.z, $$3);
+      $$0.put(dhl.A, $$3);
+      $$0.put(dhl.B, $$3);
+      $$0.put(dhl.C, $$3);
+      $$0.put(dhl.D, $$3);
+      $$0.put(dhl.aQ, $$3);
+      $$0.put(dhl.aZ, $$3);
+      $$0.put(dhl.ba, $$3);
+      $$0.put(dhl.bb, $$3);
+      $$0.put(dhl.bc, $$3);
+      $$0.put(dhl.bd, $$3);
+      $$0.put(dhl.be, $$3);
+      $$0.put(dhl.bf, $$3);
+      $$0.put(dhl.bg, $$3);
+      $$0.put(dhl.bh, $$3);
+      $$0.put(dhl.bi, $$3);
+      $$0.put(dhl.bj, $$3);
+      $$0.put(dhl.bk, $$3);
+      $$0.put(dhl.bl, $$3);
+      $$0.put(dhl.bm, $$3);
+      $$0.put(dhl.bn, $$3);
+      $$0.put(dhl.bo, $$3);
+      $$0.put(dhl.bp, $$3);
+      $$0.put(dhl.bq, $$3);
+      $$0.put(dhl.bs, $$3);
+      $$0.put(dhl.bt, $$3);
+      $$0.put(dhl.bu, $$3);
+      $$0.put(dhl.bv, $$3);
+      $$0.put(dhl.bw, $$3);
+      $$0.put(dhl.bx, $$3);
+      $$0.put(dhl.bR, $$3);
+      $$0.put(dhl.bT, $$3);
+      $$0.put(dhl.bU, $$3);
+      $$0.put(dhl.bV, $$3);
+      $$0.put(dhl.bW, $$3);
+      $$0.put(dhl.bX, $$3);
+      $$0.put(dhl.bY, $$3);
+      $$0.put(dhl.bZ, $$3);
+      $$0.put(dhl.ca, $$3);
+      $$0.put(dhl.cb, $$3);
+      $$0.put(dhl.cc, $$3);
+      $$0.put(dhl.cd, $$3);
+      $$0.put(dhl.ce, $$3);
+      $$0.put(dhl.cf, $$3);
+      $$0.put(dhl.cg, $$3);
+      $$0.put(dhl.cp, $$3);
+      $$0.put(dhl.cq, $$3);
+      $$0.put(dhl.ea, $$3);
+      $$0.put(dhl.eb, $$3);
+      $$0.put(dhl.cr, $$3);
+      $$0.put(dhl.cs, $$3);
+      $$0.put(dhl.ct, $$3);
+      $$0.put(dhl.tr, $$3);
+      $$0.put(dhl.ts, $$3);
+      $$0.put(dhl.cw, $$3);
+      $$0.put(dhl.cB, $$3);
+      $$0.put(dhl.cN, $$3);
+      $$0.put(dhl.cO, $$3);
+      $$0.put(dhl.cP, $$3);
+      $$0.put(dhl.dy, $$3);
+      $$0.put(dhl.dK, $$3);
+      $$0.put(dhl.dL, $$3);
+      $$0.put(dhl.dQ, $$3);
+      $$0.put(dhl.dS, $$3);
+      $$0.put(dhl.eh, $$3);
+      $$0.put(dhl.ey, $$3);
+      $$0.put(dhl.ez, $$3);
+      $$0.put(dhl.eA, $$3);
+      $$0.put(dhl.eB, $$3);
+      $$0.put(dhl.eC, $$3);
+      $$0.put(dhl.eD, $$3);
+      $$0.put(dhl.eE, $$3);
+      $$0.put(dhl.oM, $$3);
+      $$0.put(dhl.oN, $$3);
+      $$0.put(dhl.eF, $$3);
+      $$0.put(dhl.eG, $$3);
+      $$0.put(dhl.rU, $$3);
+      $$0.put(dhl.rV, $$3);
+      $$0.put(dhl.rX, $$3);
+      $$0.put(dhl.rW, $$3);
+      $$0.put(dhl.rY, $$3);
+      $$0.put(dhl.rZ, $$3);
+      $$0.put(dhl.sb, $$3);
+      $$0.put(dhl.sa, $$3);
+      $$0.put(dhl.fb, $$3);
+      $$0.put(dhl.fc, $$3);
+      $$0.put(dhl.fd, $$3);
+      $$0.put(dhl.fe, $$3);
+      $$0.put(dhl.ff, $$3);
+      $$0.put(dhl.fg, $$3);
+      $$0.put(dhl.fm, $$3);
+      $$0.put(dhl.fq, $$3);
+      $$0.put(dhl.fs, $$3);
+      $$0.put(dhl.fC, $$3);
+      $$0.put(dhl.fO, $$3);
+      $$0.put(dhl.fR, $$3);
+      $$0.put(dhl.fT, $$3);
+      $$0.put(dhl.fU, $$3);
+      $$0.put(dhl.fV, $$3);
+      $$0.put(dhl.fW, $$3);
+      $$0.put(dhl.fX, $$3);
+      $$0.put(dhl.fY, $$3);
+      $$0.put(dhl.fZ, $$3);
+      $$0.put(dhl.ga, $$3);
+      $$0.put(dhl.gb, $$3);
+      $$0.put(dhl.gc, $$3);
+      $$0.put(dhl.gd, $$3);
+      $$0.put(dhl.ge, $$3);
+      $$0.put(dhl.gf, $$3);
+      $$0.put(dhl.gg, $$3);
+      $$0.put(dhl.gh, $$3);
+      $$0.put(dhl.gi, $$3);
+      $$0.put(dhl.gj, $$3);
+      $$0.put(dhl.gk, $$3);
+      $$0.put(dhl.gl, $$3);
+      $$0.put(dhl.gm, $$3);
+      $$0.put(dhl.gn, $$3);
+      $$0.put(dhl.go, $$3);
+      $$0.put(dhl.gp, $$3);
+      $$0.put(dhl.gq, $$3);
+      $$0.put(dhl.gr, $$3);
+      $$0.put(dhl.gs, $$3);
+      $$0.put(dhl.ti, $$3);
+      $$0.put(dhl.tj, $$3);
+      $$0.put(dhl.fS, $$3);
+      $$0.put(dhl.gt, $$3);
+      $$0.put(dhl.gu, $$3);
+      $$0.put(dhl.gY, $$3);
+      $$0.put(dhl.hh, $$3);
+      $$0.put(dhl.hY, $$3);
+      $$0.put(dhl.iD, $$3);
+      $$0.put(dhl.iE, $$3);
+      $$0.put(dhl.iF, $$3);
+      $$0.put(dhl.iG, $$3);
+      $$0.put(dhl.iH, $$3);
+      $$0.put(dhl.iI, $$3);
+      $$0.put(dhl.kl, $$3);
+      $$0.put(dhl.km, $$3);
+      $$0.put(dhl.kn, $$3);
+      $$0.put(dhl.ko, $$3);
+      $$0.put(dhl.kp, $$3);
+      $$0.put(dhl.kq, $$3);
+      $$0.put(dhl.kr, $$3);
+      $$0.put(dhl.ks, $$3);
+      $$0.put(dhl.rM, $$3);
+      $$0.put(dhl.rN, $$3);
+      $$0.put(dhl.rP, $$3);
+      $$0.put(dhl.rO, $$3);
+      $$0.put(dhl.rQ, $$3);
+      $$0.put(dhl.rR, $$3);
+      $$0.put(dhl.rT, $$3);
+      $$0.put(dhl.rS, $$3);
+      $$0.put(dhl.kt, $$3);
+      $$0.put(dhl.ku, $$3);
+      $$0.put(dhl.kv, $$3);
+      $$0.put(dhl.bS, $$3);
+      $$0.put(dhl.kA, $$3);
+      $$0.put(dhl.kC, $$3);
+      $$0.put(dhl.kB, $$3);
+      $$0.put(dhl.kD, $$3);
+      $$0.put(dhl.mc, $$3);
+      $$0.put(dhl.md, $$3);
+      $$0.put(dhl.mf, $$3);
+      $$0.put(dhl.mr, $$3);
+      $$0.put(dhl.ms, $$3);
+      $$0.put(dhl.mt, $$3);
+      $$0.put(dhl.mu, $$3);
+      $$0.put(dhl.mv, $$3);
+      $$0.put(dhl.mw, $$3);
+      $$0.put(dhl.mx, $$3);
+      $$0.put(dhl.my, $$3);
+      $$0.put(dhl.mz, $$3);
+      $$0.put(dhl.mA, $$3);
+      $$0.put(dhl.mB, $$3);
+      $$0.put(dhl.mC, $$3);
+      $$0.put(dhl.mD, $$3);
+      $$0.put(dhl.mE, $$3);
+      $$0.put(dhl.mF, $$3);
+      $$0.put(dhl.mG, $$3);
+      $$0.put(dhl.mH, $$3);
+      $$0.put(dhl.mI, $$3);
+      $$0.put(dhl.mJ, $$3);
+      $$0.put(dhl.mK, $$3);
+      $$0.put(dhl.mL, $$3);
+      $$0.put(dhl.mM, $$3);
+      $$0.put(dhl.mN, $$3);
+      $$0.put(dhl.mO, $$3);
+      $$0.put(dhl.mP, $$3);
+      $$0.put(dhl.mQ, $$3);
+      $$0.put(dhl.mR, $$3);
+      $$0.put(dhl.mS, $$3);
+      $$0.put(dhl.mT, $$3);
+      $$0.put(dhl.mU, $$3);
+      $$0.put(dhl.mV, $$3);
+      $$0.put(dhl.mX, $$3);
+      $$0.put(dhl.mY, $$3);
+      $$0.put(dhl.mZ, $$3);
+      $$0.put(dhl.na, $$3);
+      $$0.put(dhl.nS, $$3);
+      $$0.put(dhl.oc, $$3);
+      $$0.put(dhl.oe, $$3);
+      $$0.put(dhl.of, $$3);
+      $$0.put(dhl.og, $$3);
+      $$0.put(dhl.oh, $$3);
+      $$0.put(dhl.oi, $$3);
+      $$0.put(dhl.oz, $$3);
+      $$0.put(dhl.oA, $$3);
+      $$0.put(dhl.oB, $$3);
+      $$0.put(dhl.oC, $$3);
+      $$0.put(dhl.or, $$3);
+      $$0.put(dhl.ox, $$3);
+      $$0.put(dhl.oo, $$3);
+      $$0.put(dhl.oD, $$3);
+      $$0.put(dhl.oq, $$3);
+      $$0.put(dhl.pm, $$3);
+      $$0.put(dhl.pn, $$3);
+      $$0.put(dhl.po, $$3);
+      $$0.put(dhl.pp, $$3);
+      $$0.put(dhl.oU, $$3);
+      $$0.put(dhl.oV, $$3);
+      $$0.put(dhl.st, $$3);
+      $$0.put(dhl.qy, $$3);
+      $$0.put(dhl.qx, $$3);
+      $$0.put(dhl.qw, $$3);
+      $$0.put(dhl.qv, $$3);
+      $$0.put(dhl.ss, $$3);
+      $$0.put(dhl.sv, $$3);
+      $$0.put(dhl.sw, $$3);
+      $$0.put(dhl.sx, $$3);
+      $$0.put(dhl.sz, $$3);
+      $$0.put(dhl.sy, $$3);
+      $$0.put(dhl.sB, $$3);
+      $$0.put(dhl.sD, $$3);
+      $$0.put(dhl.sE, $$3);
+      $$0.put(dhl.sF, $$3);
+      $$0.put(dhl.sG, $$3);
+      $$0.put(dhl.qQ, $$3);
+      $$0.put(dhl.qR, $$3);
+      $$0.put(dhl.qT, $$3);
+      $$0.put(dhl.qV, $$3);
+      $$0.put(dhl.E, $$3);
+      $$0.put(dhl.tn, $$3);
+      $$0.put(dhl.sc, $$3);
+      $$0.put(dhl.sd, $$3);
+      $$0.put(dhl.se, $$3);
+      $$0.put(dhl.sf, $$3);
+      $$0.put(dhl.sg, $$3);
+      $$0.put(dhl.sh, $$3);
+      $$0.put(dhl.si, $$3);
+      $$0.put(dhl.sj, $$3);
+      ghq $$4 = ghq.f();
+      $$0.put(dhl.dO, $$4);
+      $$0.put(dhl.ed, $$4);
+      $$0.put(dhl.ei, $$4);
+      $$0.put(dhl.ej, $$4);
+      $$0.put(dhl.ek, $$4);
+      $$0.put(dhl.el, $$4);
+      $$0.put(dhl.em, $$4);
+      $$0.put(dhl.en, $$4);
+      $$0.put(dhl.eo, $$4);
+      $$0.put(dhl.ep, $$4);
+      $$0.put(dhl.eq, $$4);
+      $$0.put(dhl.er, $$4);
+      $$0.put(dhl.es, $$4);
+      $$0.put(dhl.et, $$4);
+      $$0.put(dhl.eu, $$4);
+      $$0.put(dhl.ev, $$4);
+      $$0.put(dhl.ew, $$4);
+      $$0.put(dhl.ex, $$4);
+      $$0.put(dhl.hz, $$4);
+      $$0.put(dhl.hA, $$4);
+      $$0.put(dhl.hB, $$4);
+      $$0.put(dhl.hC, $$4);
+      $$0.put(dhl.hD, $$4);
+      $$0.put(dhl.hE, $$4);
+      $$0.put(dhl.hF, $$4);
+      $$0.put(dhl.hG, $$4);
+      $$0.put(dhl.hH, $$4);
+      $$0.put(dhl.hI, $$4);
+      $$0.put(dhl.hJ, $$4);
+      $$0.put(dhl.hK, $$4);
+      $$0.put(dhl.hL, $$4);
+      $$0.put(dhl.hM, $$4);
+      $$0.put(dhl.hN, $$4);
+      $$0.put(dhl.hO, $$4);
+      $$0.put(dhl.hV, $$4);
+      $$0.put(dhl.pg, $$4);
+      $$0.put(dhl.kI, $$4);
+      $$0.put(dhl.nd, $$4);
+      $$0.put(dhl.qO, $$4);
+   });
+   private static final Map<eqo, ghq> b = ad.a(Maps.newHashMap(), $$0 -> {
+      ghq $$1 = ghq.f();
+      $$0.put(eqq.b, $$1);
+      $$0.put(eqq.c, $$1);
+   });
+   private static boolean c;
 
-   private ggy(alb $$0, List<gha> $$1, Map<alb, ggz.d> $$2, Set<alb> $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-   }
-
-   public static ggy a(auv $$0, gwl $$1, alb $$2, Set<alb> $$3) throws IOException, JsonSyntaxException {
-      auq $$4 = $$0.getResourceOrThrow($$2);
-
-      try {
-         ggy var18;
-         try (Reader $$5 = $$4.e()) {
-            JsonObject $$6 = ays.a($$5);
-            ggz $$7 = (ggz)ggz.a.parse(JsonOps.INSTANCE, $$6).getOrThrow(JsonSyntaxException::new);
-            Stream<alb> $$8 = $$7.b().stream().flatMap($$0x -> $$0x.b().stream()).flatMap($$0x -> $$0x.b().stream());
-            Set<alb> $$9 = $$8.filter($$1x -> !$$7.a().containsKey($$1x)).collect(Collectors.toSet());
-            Set<alb> $$10 = Sets.difference($$9, $$3);
-            if (!$$10.isEmpty()) {
-               throw new ale("Referenced external targets are not available in this context: " + $$10);
-            }
-
-            Builder<gha> $$11 = ImmutableList.builder();
-
-            for (ggz.e $$12 : $$7.b()) {
-               $$11.add(a($$0, $$1, $$12));
-            }
-
-            var18 = new ggy($$2, $$11.build(), $$7.a(), $$9);
-         }
-
-         return var18;
-      } catch (Exception var16) {
-         ale $$14 = ale.a(var16);
-         $$14.b($$2.a() + " (" + $$4.b() + ")");
-         throw $$14;
+   public static ghq a(duo $$0) {
+      dhj $$1 = $$0.b();
+      if ($$1 instanceof dlt) {
+         return c ? ghq.d() : ghq.c();
+      } else {
+         ghq $$2 = a.get($$1);
+         return $$2 != null ? $$2 : ghq.c();
       }
    }
 
-   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
-   private static gha a(auv $$0, gwl $$1, ggz.e $$2) throws IOException {
-      gha $$3 = new gha($$0, $$2.a(), $$2.c());
-
-      for (ggz.c $$4 : $$2.b()) {
-         Objects.requireNonNull($$4);
-         Throwable var43;
-         switch ($$4) {
-            case ggz.g var8:
-               ggz.g var51 = var8;
-
-               try {
-                  var52 = var51.a();
-               } catch (Throwable var28) {
-                  var43 = var28;
-                  boolean var64 = false;
-                  break;
-               }
-
-               String var33 = var52;
-               ggz.g var53 = var8;
-
-               try {
-                  var54 = var53.c();
-               } catch (Throwable var27) {
-                  var43 = var27;
-                  boolean var65 = false;
-                  break;
-               }
-
-               alb var34 = var54;
-               alb $$6 = var34;
-               ggz.g var55 = var8;
-
-               try {
-                  var56 = var55.d();
-               } catch (Throwable var26) {
-                  var43 = var26;
-                  boolean var66 = false;
-                  break;
-               }
-
-               int var35 = var56;
-               ggz.g var57 = var8;
-
-               try {
-                  var58 = var57.e();
-               } catch (Throwable var25) {
-                  var43 = var25;
-                  boolean var67 = false;
-                  break;
-               }
-
-               int var36 = var58;
-               ggz.g var59 = var8;
-
-               try {
-                  var60 = var59.f();
-               } catch (Throwable var24) {
-                  var43 = var24;
-                  boolean var68 = false;
-                  break;
-               }
-
-               boolean var37 = var60;
-               alb $$10x = $$6.a((UnaryOperator<String>)($$0x -> "textures/effect/" + $$0x + ".png"));
-               $$0.getResource($$10x).orElseThrow(() -> new ale("Texture '" + $$6 + "' does not exist"));
-               RenderSystem.setShaderTexture(0, $$10x);
-               $$1.a($$10x);
-               gvv $$11 = $$1.b($$10x);
-               if (var37) {
-                  RenderSystem.texParameter(3553, 10241, 9729);
-                  RenderSystem.texParameter(3553, 10240, 9729);
-               } else {
-                  RenderSystem.texParameter(3553, 10241, 9728);
-                  RenderSystem.texParameter(3553, 10240, 9728);
-               }
-
-               $$3.a(new gha.c(var33, $$11, var35, var36));
-               continue;
-            case ggz.f $$10:
-               ggz.f var10000 = $$10;
-
-               try {
-                  var44 = var10000.a();
-               } catch (Throwable var23) {
-                  var43 = var23;
-                  boolean var10001 = false;
-                  break;
-               }
-
-               String var19 = var44;
-               ggz.f var45 = $$10;
-
-               try {
-                  var46 = var45.c();
-               } catch (Throwable var22) {
-                  var43 = var22;
-                  boolean var61 = false;
-                  break;
-               }
-
-               alb var40 = var46;
-               ggz.f var47 = $$10;
-
-               try {
-                  var48 = var47.d();
-               } catch (Throwable var21) {
-                  var43 = var21;
-                  boolean var62 = false;
-                  break;
-               }
-
-               boolean var41 = var48;
-               ggz.f var49 = $$10;
-
-               try {
-                  var50 = var49.e();
-               } catch (Throwable var20) {
-                  var43 = var20;
-                  boolean var63 = false;
-                  break;
-               }
-
-               boolean var42 = var50;
-               $$3.a(new gha.b(var19, var40, var41, var42));
-               continue;
-            default:
-               throw new MatchException(null, null);
-         }
-
-         Throwable var29 = var43;
-         throw new MatchException(var29.toString(), var29);
-      }
-
-      for (ggz.h $$16 : $$2.d()) {
-         String $$17 = $$16.a();
-         fcl $$18 = $$3.b().a($$17);
-         if ($$18 == null) {
-            throw new ale("Uniform '" + $$17 + "' does not exist");
-         }
-
-         a($$18, $$16.b());
-      }
-
-      return $$3;
-   }
-
-   private static void a(fcl $$0, List<Float> $$1) {
-      switch ($$1.size()) {
-         case 0:
-         default:
-            break;
-         case 1:
-            $$0.a($$1.getFirst());
-            break;
-         case 2:
-            $$0.a($$1.get(0), $$1.get(1));
-            break;
-         case 3:
-            $$0.a($$1.get(0), $$1.get(1), $$1.get(2));
-            break;
-         case 4:
-            $$0.a($$1.get(0), $$1.get(1), $$1.get(2), $$1.get(3));
-      }
-   }
-
-   @Override
-   public void close() {
-      for (gha $$0 : this.c) {
-         $$0.close();
-      }
-   }
-
-   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
-   public void a(fat $$0, fhr $$1, int $$2, int $$3, ggy.a $$4) {
-      Matrix4f $$5 = new Matrix4f().setOrtho(0.0F, (float)$$2, 0.0F, (float)$$3, 0.1F, 1000.0F);
-      this.f = this.f + $$1.b();
-
-      while (this.f > 20.0F) {
-         this.f -= 20.0F;
-      }
-
-      Map<alb, fcb<faz>> $$6 = new HashMap<>(this.d.size() + this.e.size());
-
-      for (alb $$7 : this.e) {
-         $$6.put($$7, $$4.b($$7));
-      }
-
-      for (Entry<alb, ggz.d> $$8 : this.d.entrySet()) {
-         alb $$9 = $$8.getKey();
-         ggz.d var36;
-         Objects.requireNonNull(var36);
-         Object var12 = var36;
-
-         var36 = $$8.getValue();
-         fbz $$12 = switch (var12) {
-            case ggz.a var14 -> {
-               ggz.a var30 = var14;
-
-               int var27;
-               label59: {
-                  label85: {
-                     try {
-                        var32 = var30.a();
-                     } catch (Throwable var19) {
-                        var31 = var19;
-                        boolean var10001 = false;
-                        break label85;
-                     }
-
-                     var27 = var32;
-                     ggz.a var33 = var14;
-
-                     try {
-                        var34 = var33.b();
-                        break label59;
-                     } catch (Throwable var18) {
-                        var31 = var18;
-                        boolean var35 = false;
-                     }
-                  }
-
-                  Throwable var21 = var31;
-                  throw new MatchException(var21.toString(), var21);
-               }
-
-               int var28 = var34;
-               yield new fbz(var27, var28, true);
-            }
-            case ggz.b var17 -> new fbz($$2, $$3, true);
-            default -> throw new MatchException(null, null);
-         };
-         $$6.put($$9, $$0.a($$9.toString(), $$12));
-      }
-
-      for (gha $$13 : this.c) {
-         $$13.a($$0, $$6, $$5, this.f / 20.0F);
-      }
-
-      for (alb $$14 : this.e) {
-         $$4.a($$14, $$6.get($$14));
-      }
-   }
-
-   @Deprecated
-   public void a(faz $$0, fby $$1, fhr $$2) {
-      fat $$3 = new fat();
-      ggy.a $$4 = ggy.a.b(a, $$3.a("main", $$0));
-      this.a($$3, $$2, $$0.c, $$0.d, $$4);
-      $$3.a($$1);
-   }
-
-   public void a(String $$0, float $$1) {
-      for (gha $$2 : this.c) {
-         $$2.b().b($$0).a($$1);
-      }
-   }
-
-   public final alb a() {
-      return this.b;
-   }
-
-   public interface a {
-      static ggy.a b(final alb $$0, final fcb<faz> $$1) {
-         return new ggy.a() {
-            private fcb<faz> c = $$1;
-
-            @Override
-            public void a(alb $$0x, fcb<faz> $$1x) {
-               if ($$0.equals($$0)) {
-                  this.c = $$1;
-               } else {
-                  throw new IllegalArgumentException("No target with id " + $$0);
-               }
-            }
-
-            @Nullable
-            @Override
-            public fcb<faz> a(alb $$0x) {
-               return $$0.equals($$0) ? this.c : null;
-            }
-         };
-      }
-
-      void a(alb var1, fcb<faz> var2);
-
-      @Nullable
-      fcb<faz> a(alb var1);
-
-      default fcb<faz> b(alb $$0) {
-         fcb<faz> $$1 = this.a($$0);
-         if ($$1 == null) {
-            throw new IllegalArgumentException("Missing target with id " + $$0);
+   public static ghq b(duo $$0) {
+      dhj $$1 = $$0.b();
+      if ($$1 instanceof dlt) {
+         return c ? ghq.d() : ghq.c();
+      } else {
+         ghq $$2 = a.get($$1);
+         if ($$2 != null) {
+            return $$2 == ghq.f() ? ghq.g() : $$2;
          } else {
-            return $$1;
+            return ghq.c();
          }
       }
+   }
+
+   public static ghq c(duo $$0) {
+      ghq $$1 = a($$0);
+      return $$1 == ghq.f() ? gib.j() : gib.i();
+   }
+
+   public static ghq a(cvp $$0) {
+      if ($$0.h() instanceof ctr $$2) {
+         dhj $$3 = $$2.d();
+         return c($$3.o());
+      } else {
+         return gib.j();
+      }
+   }
+
+   public static ghq a(eqp $$0) {
+      ghq $$1 = b.get($$0.a());
+      return $$1 != null ? $$1 : ghq.c();
+   }
+
+   public static void a(boolean $$0) {
+      c = $$0;
    }
 }

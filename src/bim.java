@@ -1,30 +1,32 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.OpticFinder;
-import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
-import com.mojang.datafixers.util.Pair;
-import java.util.Objects;
-import java.util.function.Function;
+import com.mojang.serialization.Dynamic;
 
-public class bim extends DataFix {
+public class bim extends bgh {
+   private static final double a = 16.0;
+   private static final double b = 48.0;
+
    public bim(Schema $$0) {
-      super($$0, false);
+      super($$0, false, "Villager Follow Range Fix", bhm.B, "minecraft:villager");
    }
 
-   protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhk.x);
-      OpticFinder<?> $$1 = $$0.findField("buy");
-      OpticFinder<?> $$2 = $$0.findField("buyB");
-      OpticFinder<?> $$3 = $$0.findField("sell");
-      OpticFinder<Pair<String, String>> $$4 = DSL.fieldFinder("id", DSL.named(bhk.D.typeName(), biw.a()));
-      Function<Typed<?>, Typed<?>> $$5 = $$1x -> this.a($$4, $$1x);
-      return this.fixTypeEverywhereTyped("Villager trade fix", $$0, $$4x -> $$4x.updateTyped($$1, $$5).updateTyped($$2, $$5).updateTyped($$3, $$5));
+   @Override
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), bim::a);
    }
 
-   private Typed<?> a(OpticFinder<Pair<String, String>> $$0, Typed<?> $$1) {
-      return $$1.update($$0, $$0x -> $$0x.mapSecond($$0xx -> Objects.equals($$0xx, "minecraft:carved_pumpkin") ? "minecraft:pumpkin" : $$0xx));
+   private static Dynamic<?> a(Dynamic<?> $$0) {
+      return $$0.update(
+         "Attributes",
+         $$1 -> $$0.createList(
+               $$1.asStream()
+                  .map(
+                     $$0xx -> $$0xx.get("Name").asString("").equals("generic.follow_range") && $$0xx.get("Base").asDouble(0.0) == 16.0
+                           ? $$0xx.set("Base", $$0xx.createDouble(48.0))
+                           : $$0xx
+                  )
+            )
+      );
    }
 }

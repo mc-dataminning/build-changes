@@ -1,77 +1,83 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import java.util.AbstractCollection;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.Arrays;
+import java.util.Objects;
+import java.util.function.IntFunction;
+import java.util.function.ToIntFunction;
 
-public class axu<T> extends AbstractCollection<T> {
-   private final Map<Class<?>, List<T>> a = Maps.newHashMap();
-   private final Class<T> b;
-   private final List<T> c = Lists.newArrayList();
-
-   public axu(Class<T> $$0) {
-      this.b = $$0;
-      this.a.put($$0, this.c);
-   }
-
-   @Override
-   public boolean add(T $$0) {
-      boolean $$1 = false;
-
-      for (Entry<Class<?>, List<T>> $$2 : this.a.entrySet()) {
-         if ($$2.getKey().isInstance($$0)) {
-            $$1 |= $$2.getValue().add($$0);
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public boolean remove(Object $$0) {
-      boolean $$1 = false;
-
-      for (Entry<Class<?>, List<T>> $$2 : this.a.entrySet()) {
-         if ($$2.getKey().isInstance($$0)) {
-            List<T> $$3 = $$2.getValue();
-            $$1 |= $$3.remove($$0);
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public boolean contains(Object $$0) {
-      return this.a($$0.getClass()).contains($$0);
-   }
-
-   public <S> Collection<S> a(Class<S> $$0) {
-      if (!this.b.isAssignableFrom($$0)) {
-         throw new IllegalArgumentException("Don't know how to search for " + $$0);
+public class axu {
+   private static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1) {
+      if ($$1.length == 0) {
+         throw new IllegalArgumentException("Empty value list");
       } else {
-         List<? extends T> $$1 = this.a.computeIfAbsent($$0, $$0x -> this.c.stream().filter($$0x::isInstance).collect(ad.b()));
-         return (Collection<S>)Collections.unmodifiableCollection($$1);
+         Int2ObjectMap<T> $$2 = new Int2ObjectOpenHashMap();
+
+         for (T $$3 : $$1) {
+            int $$4 = $$0.applyAsInt($$3);
+            T $$5 = (T)$$2.put($$4, $$3);
+            if ($$5 != null) {
+               throw new IllegalArgumentException("Duplicate entry on id " + $$4 + ": current=" + $$3 + ", previous=" + $$5);
+            }
+         }
+
+         return $$2;
       }
    }
 
-   @Override
-   public Iterator<T> iterator() {
-      return (Iterator<T>)(this.c.isEmpty() ? Collections.emptyIterator() : Iterators.unmodifiableIterator(this.c.iterator()));
+   public static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1, T $$2) {
+      IntFunction<T> $$3 = a($$0, $$1);
+      return $$2x -> Objects.requireNonNullElse($$3.apply($$2x), $$2);
    }
 
-   public List<T> a() {
-      return ImmutableList.copyOf(this.c);
+   private static <T> T[] b(ToIntFunction<T> $$0, T[] $$1) {
+      int $$2 = $$1.length;
+      if ($$2 == 0) {
+         throw new IllegalArgumentException("Empty value list");
+      } else {
+         T[] $$3 = (T[])$$1.clone();
+         Arrays.fill($$3, null);
+
+         for (T $$4 : $$1) {
+            int $$5 = $$0.applyAsInt($$4);
+            if ($$5 < 0 || $$5 >= $$2) {
+               throw new IllegalArgumentException("Values are not continous, found index " + $$5 + " for value " + $$4);
+            }
+
+            T $$6 = $$3[$$5];
+            if ($$6 != null) {
+               throw new IllegalArgumentException("Duplicate entry on id " + $$5 + ": current=" + $$4 + ", previous=" + $$6);
+            }
+
+            $$3[$$5] = $$4;
+         }
+
+         for (int $$7 = 0; $$7 < $$2; $$7++) {
+            if ($$3[$$7] == null) {
+               throw new IllegalArgumentException("Missing value at index: " + $$7);
+            }
+         }
+
+         return $$3;
+      }
    }
 
-   @Override
-   public int size() {
-      return this.c.size();
+   public static <T> IntFunction<T> a(ToIntFunction<T> $$0, T[] $$1, axu.a $$2) {
+      T[] $$3 = b($$0, $$1);
+      int $$4 = $$3.length;
+
+      return switch ($$2) {
+         case a -> {
+            T $$5 = $$3[0];
+            yield $$3x -> $$3x >= 0 && $$3x < $$4 ? $$3[$$3x] : $$5;
+         }
+         case b -> $$2x -> $$3[azd.b($$2x, $$4)];
+         case c -> $$2x -> $$3[azd.a($$2x, 0, $$4 - 1)];
+      };
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

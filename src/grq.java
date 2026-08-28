@@ -1,43 +1,47 @@
-import java.util.List;
+public class grq extends grw<guk, fyc> {
+   private static final alc[] a = new alc[]{
+      alc.b("textures/entity/llama/decor/white.png"),
+      alc.b("textures/entity/llama/decor/orange.png"),
+      alc.b("textures/entity/llama/decor/magenta.png"),
+      alc.b("textures/entity/llama/decor/light_blue.png"),
+      alc.b("textures/entity/llama/decor/yellow.png"),
+      alc.b("textures/entity/llama/decor/lime.png"),
+      alc.b("textures/entity/llama/decor/pink.png"),
+      alc.b("textures/entity/llama/decor/gray.png"),
+      alc.b("textures/entity/llama/decor/light_gray.png"),
+      alc.b("textures/entity/llama/decor/cyan.png"),
+      alc.b("textures/entity/llama/decor/purple.png"),
+      alc.b("textures/entity/llama/decor/blue.png"),
+      alc.b("textures/entity/llama/decor/brown.png"),
+      alc.b("textures/entity/llama/decor/green.png"),
+      alc.b("textures/entity/llama/decor/red.png"),
+      alc.b("textures/entity/llama/decor/black.png")
+   };
+   private static final alc b = alc.b("textures/entity/llama/decor/trader_llama.png");
+   private final fyc c;
+   private final fyc d;
 
-public class grq extends grf<gve, fzm> {
-   private final alb a;
-   private final grq.a b;
-   private final grq.b c;
-
-   public grq(goo<gve, fzm> $$0, alb $$1, grq.a $$2, grq.b $$3) {
+   public grq(gpf<guk, fyc> $$0, gah $$1) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+      this.c = new fyc($$1.a(gak.be));
+      this.d = new fyc($$1.a(gak.bf));
    }
 
-   public void a(fcu $$0, ggv $$1, int $$2, gve $$3, float $$4, float $$5) {
-      if (!$$3.u) {
-         this.a();
-         fcy $$6 = $$1.getBuffer(ghe.k(this.a));
-         float $$7 = this.b.apply($$3, $$3.p);
-         int $$8 = axn.a(azc.d($$7 * 255.0F), 255, 255, 255);
-         this.d().a($$0, $$6, $$2, gnt.a($$3, 0.0F), $$8);
-         this.b();
+   public void a(fde $$0, ghg $$1, int $$2, guk $$3, float $$4, float $$5) {
+      alc $$6;
+      if ($$3.c != null) {
+         $$6 = a[$$3.c.a()];
+      } else {
+         if (!$$3.d) {
+            return;
+         }
+
+         $$6 = b;
       }
-   }
 
-   private void a() {
-      List<gab> $$0 = this.c.getPartsToDraw(this.d());
-      this.d().a().e().forEach($$0x -> $$0x.l = true);
-      $$0.forEach($$0x -> $$0x.l = false);
-   }
-
-   private void b() {
-      this.d().a().e().forEach($$0 -> $$0.l = false);
-   }
-
-   public interface a {
-      float apply(gve var1, float var2);
-   }
-
-   public interface b {
-      List<gab> getPartsToDraw(fzm var1);
+      fyc $$9 = $$3.ae ? this.d : this.c;
+      $$9.a($$3);
+      fdi $$10 = $$1.getBuffer(ghq.f($$6));
+      $$9.a($$0, $$10, $$2, gws.d);
    }
 }

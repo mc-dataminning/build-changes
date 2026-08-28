@@ -1,69 +1,39 @@
-public class fsp extends fsw {
-   public static final xd a = xd.c("options.accessibility.title");
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-   private static fie<?>[] a(fif $$0) {
-      return new fie[]{
-         $$0.au(),
-         $$0.Y(),
-         $$0.u(),
-         $$0.I(),
-         $$0.q(),
-         $$0.s(),
-         $$0.aa(),
-         $$0.o(),
-         $$0.p(),
-         $$0.B(),
-         $$0.C(),
-         $$0.ad(),
-         $$0.ae(),
-         $$0.af(),
-         $$0.al(),
-         $$0.am(),
-         $$0.an(),
-         $$0.aq(),
-         $$0.ao(),
-         $$0.ap(),
-         $$0.b(),
-         $$0.a(),
-         $$0.t(),
-         $$0.c(),
-         $$0.v(),
-         $$0.J()
-      };
-   }
+public class fsp implements fsn {
+   private static final int c = 5;
+   private static final int d = 12;
+   public static final int a = 3;
+   public static final int b = 5;
+   private final fos e;
 
-   public fsp(fpt $$0, fif $$1) {
-      super($$0, $$1, a);
+   public fsp(fos $$0) {
+      this.e = $$0;
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
-      fjy $$0 = this.d.b(this.c.u());
-      if ($$0 != null && !this.m.ac().b().contains("high_contrast")) {
-         $$0.j = false;
-         $$0.a(fll.a(xd.c("options.accessibility.high_contrast.error.tooltip")));
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i($$2 + 12, $$3);
+      if ($$6.x + $$4 > $$0 - 5) {
+         $$6.x = Math.max($$2 - 12 - $$4, 9);
       }
 
-      fjy $$1 = this.d.b(this.c.J());
-      if ($$1 != null) {
-         $$1.j = this.G();
+      $$6.y += 3;
+      int $$7 = $$5 + 3 + 3;
+      int $$8 = this.e.c() + 3 + a(0, 0, this.e.h());
+      int $$9 = $$1 - 5;
+      if ($$8 + $$7 <= $$9) {
+         $$6.y = $$6.y + a($$6.y, this.e.b(), this.e.h());
+      } else {
+         $$6.y = $$6.y - ($$7 + a($$6.y, this.e.c(), this.e.h()));
       }
+
+      return $$6;
    }
 
-   @Override
-   protected void m() {
-      this.d.a(a(this.c));
-   }
-
-   @Override
-   protected void D() {
-      fns $$0 = this.s.b(fns.e().a(8));
-      $$0.a(fka.a(xd.c("options.accessibility.link"), fop.b(this, axy.l)).a());
-      $$0.a(fka.a(xc.d, $$0x -> this.m.a(this.b)).a());
-   }
-
-   private boolean G() {
-      return this.m.s != null && this.m.s.J().b(cqj.e);
+   private static int a(int $$0, int $$1, int $$2) {
+      int $$3 = Math.min(Math.abs($$0 - $$1), $$2);
+      return Math.round(azd.h((float)$$3 / (float)$$2, (float)($$2 - 3), 5.0F));
    }
 }

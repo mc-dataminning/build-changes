@@ -1,82 +1,255 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import java.util.Collections;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class ftr extends flg {
-   private static final fln c = new fln(alb.b("recipe_book/tab"), alb.b("recipe_book/tab_selected"));
-   private final fii d;
-   private static final float e = 15.0F;
-   private float f;
+public class ftr {
+   private final aue a;
+   final List<aub> b;
+   final List<aub> c;
+   final Function<aub, alc> d;
+   final Runnable e;
+   private final Consumer<aue> f;
 
-   public ftr(fii $$0) {
-      super(0, 0, 35, 27, false);
-      this.d = $$0;
-      this.a(c);
+   public ftr(Runnable $$0, Function<aub, alc> $$1, aue $$2, Consumer<aue> $$3) {
+      this.e = $$0;
+      this.d = $$1;
+      this.a = $$2;
+      this.b = Lists.newArrayList($$2.f());
+      Collections.reverse(this.b);
+      this.c = Lists.newArrayList($$2.c());
+      this.c.removeAll(this.b);
+      this.f = $$3;
    }
 
-   public void a(fhm $$0, boolean $$1) {
-      ftt.a $$2 = $$1 ? ftt.a.b : ftt.a.a;
+   public Stream<ftr.a> a() {
+      return this.c.stream().map($$0 -> new ftr.d($$0));
+   }
 
-      for (ftt $$4 : $$0.a(this.d)) {
-         for (czv<?> $$5 : $$4.a($$2)) {
-            if ($$0.d($$5)) {
-               this.f = 15.0F;
-               return;
-            }
+   public Stream<ftr.a> b() {
+      return this.b.stream().map($$0 -> new ftr.c($$0));
+   }
+
+   void e() {
+      this.a.b(Lists.reverse(this.b).stream().map(aub::g).collect(ImmutableList.toImmutableList()));
+   }
+
+   public void c() {
+      this.e();
+      this.f.accept(this.a);
+   }
+
+   public void d() {
+      this.a.a();
+      this.b.retainAll(this.a.c());
+      this.c.clear();
+      this.c.addAll(this.a.c());
+      this.c.removeAll(this.b);
+   }
+
+   public interface a {
+      alc a();
+
+      auc b();
+
+      String c();
+
+      xd d();
+
+      xd e();
+
+      auf f();
+
+      default xd g() {
+         return this.f().a(this.e());
+      }
+
+      boolean h();
+
+      boolean i();
+
+      void j();
+
+      void k();
+
+      void l();
+
+      void m();
+
+      boolean n();
+
+      default boolean o() {
+         return !this.n();
+      }
+
+      default boolean p() {
+         return this.n() && !this.i();
+      }
+
+      boolean q();
+
+      boolean r();
+   }
+
+   abstract class b implements ftr.a {
+      private final aub b;
+
+      public b(final aub $$0) {
+         this.b = $$0;
+      }
+
+      protected abstract List<aub> s();
+
+      protected abstract List<aub> t();
+
+      @Override
+      public alc a() {
+         return ftr.this.d.apply(this.b);
+      }
+
+      @Override
+      public auc b() {
+         return this.b.d();
+      }
+
+      @Override
+      public String c() {
+         return this.b.g();
+      }
+
+      @Override
+      public xd d() {
+         return this.b.b();
+      }
+
+      @Override
+      public xd e() {
+         return this.b.c();
+      }
+
+      @Override
+      public auf f() {
+         return this.b.l();
+      }
+
+      @Override
+      public boolean h() {
+         return this.b.j();
+      }
+
+      @Override
+      public boolean i() {
+         return this.b.i();
+      }
+
+      protected void u() {
+         this.s().remove(this.b);
+         this.b.k().a(this.t(), this.b, aub::h, true);
+         ftr.this.e.run();
+         ftr.this.e();
+         this.v();
+      }
+
+      private void v() {
+         if (this.b.g().equals("high_contrast")) {
+            fio<Boolean> $$0 = fil.Q().n.u();
+            $$0.a(!$$0.c());
          }
+      }
+
+      protected void a(int $$0) {
+         List<aub> $$1 = this.s();
+         int $$2 = $$1.indexOf(this.b);
+         $$1.remove($$2);
+         $$1.add($$2 + $$0, this.b);
+         ftr.this.e.run();
+      }
+
+      @Override
+      public boolean q() {
+         List<aub> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 > 0 && !$$0.get($$1 - 1).j();
+      }
+
+      @Override
+      public void l() {
+         this.a(-1);
+      }
+
+      @Override
+      public boolean r() {
+         List<aub> $$0 = this.s();
+         int $$1 = $$0.indexOf(this.b);
+         return $$1 >= 0 && $$1 < $$0.size() - 1 && !$$0.get($$1 + 1).j();
+      }
+
+      @Override
+      public void m() {
+         this.a(1);
       }
    }
 
-   @Override
-   public void b(fjn $$0, int $$1, int $$2, float $$3) {
-      if (this.a != null) {
-         if (this.f > 0.0F) {
-            float $$4 = 1.0F + 0.1F * (float)Math.sin((double)(this.f / 15.0F * (float) Math.PI));
-            $$0.c().a();
-            $$0.c().a((float)(this.D() + 8), (float)(this.E() + 12), 0.0F);
-            $$0.c().b(1.0F, $$4, 1.0F);
-            $$0.c().a((float)(-(this.D() + 8)), (float)(-(this.E() + 12)), 0.0F);
-         }
+   class c extends ftr.b {
+      public c(final aub $$0) {
+         super($$0);
+      }
 
-         alb $$5 = this.a.a(true, this.b);
-         int $$6 = this.D();
-         if (this.b) {
-            $$6 -= 2;
-         }
+      @Override
+      protected List<aub> s() {
+         return ftr.this.b;
+      }
 
-         $$0.a(ghe::C, $$5, $$6, this.E(), this.g, this.h);
-         this.a($$0);
-         if (this.f > 0.0F) {
-            $$0.c().b();
-            this.f -= $$3;
-         }
+      @Override
+      protected List<aub> t() {
+         return ftr.this.c;
+      }
+
+      @Override
+      public boolean n() {
+         return true;
+      }
+
+      @Override
+      public void j() {
+      }
+
+      @Override
+      public void k() {
+         this.u();
       }
    }
 
-   private void a(fjn $$0) {
-      List<cvl> $$1 = this.d.a();
-      int $$2 = this.b ? -2 : 0;
-      if ($$1.size() == 1) {
-         $$0.b($$1.get(0), this.D() + 9 + $$2, this.E() + 5);
-      } else if ($$1.size() == 2) {
-         $$0.b($$1.get(0), this.D() + 3 + $$2, this.E() + 5);
-         $$0.b($$1.get(1), this.D() + 14 + $$2, this.E() + 5);
-      }
-   }
-
-   public fii b() {
-      return this.d;
-   }
-
-   public boolean a(fhm $$0) {
-      List<ftt> $$1 = $$0.a(this.d);
-      this.k = false;
-
-      for (ftt $$2 : $$1) {
-         if ($$2.b() && $$2.d()) {
-            this.k = true;
-            break;
-         }
+   class d extends ftr.b {
+      public d(final aub $$0) {
+         super($$0);
       }
 
-      return this.k;
+      @Override
+      protected List<aub> s() {
+         return ftr.this.c;
+      }
+
+      @Override
+      protected List<aub> t() {
+         return ftr.this.b;
+      }
+
+      @Override
+      public boolean n() {
+         return false;
+      }
+
+      @Override
+      public void j() {
+         this.u();
+      }
+
+      @Override
+      public void k() {
+      }
    }
 }

@@ -1,24 +1,11 @@
-import com.mojang.serialization.MapCodec;
-
-public class dke extends dkr {
-   public static final MapCodec<dke> a = b(dke::new);
-
-   @Override
-   public MapCodec<dke> a() {
-      return a;
+public interface dke {
+   default void a(deg $$0, je $$1, duo $$2, duo $$3, ckd $$4) {
    }
 
-   public dke(dtz.d $$0) {
-      super($$0);
+   default void a(deg $$0, je $$1, ckd $$2) {
    }
 
-   @Override
-   protected void a(dub.a<dgv, dua> $$0) {
-      $$0.a(aE);
-   }
-
-   @Override
-   public dua a(cyw $$0) {
-      return this.o().b(aE, $$0.g().g());
+   default bsg a(bto $$0) {
+      return $$0.dT().a($$0);
    }
 }

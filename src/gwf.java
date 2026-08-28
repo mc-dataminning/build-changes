@@ -1,138 +1,100 @@
-import com.mojang.logging.LogUtils;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
 
-public class gwf {
-   public static final Set<atr<?>> a = Set.of(gxw.a);
-   private static final Logger b = LogUtils.getLogger();
-   private final alb c;
-   private final int d;
-   private final int e;
-   private final int f;
+public class gwf implements gwe {
+   public static final int a = 0;
+   private final gwf.b c = new gwf.b();
+   private final gwf.b d = new gwf.b();
+   public final gwf.a b;
 
-   public gwf(alb $$0, int $$1, int $$2, int $$3) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
+   public gwf(gwf.a $$0) {
+      this.b = $$0;
    }
 
-   public static gwf a(gwj $$0) {
-      return new gwf($$0.h(), $$0.i(), $$0.j(), $$0.k());
+   @Override
+   public float unclampedCall(cvp $$0, @Nullable gbh $$1, @Nullable buk $$2, int $$3) {
+      bto $$4 = (bto)($$2 != null ? $$2 : $$0.G());
+      if ($$4 == null) {
+         return 0.0F;
+      } else {
+         $$1 = this.a($$4, $$1);
+         return $$1 == null ? 0.0F : this.a($$0, $$1, $$3, $$4);
+      }
    }
 
-   public gwf.a a(List<gwe> $$0, int $$1, Executor $$2) {
-      int $$3 = this.d;
-      gwh<gwe> $$4 = new gwh<>($$3, $$3, $$1);
-      int $$5 = Integer.MAX_VALUE;
-      int $$6 = 1 << $$1;
+   private float a(cvp $$0, gbh $$1, int $$2, bto $$3) {
+      jm $$4 = this.b.getPos($$1, $$0, $$3);
+      long $$5 = $$1.aa();
+      return !this.a($$3, $$4) ? this.a($$2, $$5) : this.a($$3, $$5, $$4.b());
+   }
 
-      for (gwe $$7 : $$0) {
-         $$5 = Math.min($$5, Math.min($$7.a(), $$7.b()));
-         int $$8 = Math.min(Integer.lowestOneBit($$7.a()), Integer.lowestOneBit($$7.b()));
-         if ($$8 < $$6) {
-            b.warn("Texture {} with size {}x{} limits mip level from {} to {}", new Object[]{$$7.c(), $$7.a(), $$7.b(), azc.f($$6), azc.f($$8)});
-            $$6 = $$8;
+   private float a(int $$0, long $$1) {
+      if (this.d.a($$1)) {
+         this.d.a($$1, Math.random());
+      }
+
+      double $$2 = this.d.a + (double)((float)this.a($$0) / 2.1474836E9F);
+      return azd.b((float)$$2, 1.0F);
+   }
+
+   private float a(bto $$0, long $$1, je $$2) {
+      double $$3 = this.a($$0, $$2);
+      double $$4 = this.a($$0);
+      if ($$0 instanceof cnu $$5 && $$5.g() && $$5.dS().s().i()) {
+         if (this.c.a($$1)) {
+            this.c.a($$1, 0.5 - ($$4 - 0.25));
          }
 
-         $$4.a($$7);
+         double $$6 = $$3 + this.c.a;
+         return azd.b((float)$$6, 1.0F);
       }
 
-      int $$9 = Math.min($$5, $$6);
-      int $$10 = azc.f($$9);
-      int $$11;
-      if ($$10 < $$1) {
-         b.warn("{}: dropping miplevel from {} to {}, because of minimum power of two: {}", new Object[]{this.c, $$1, $$10, $$9});
-         $$11 = $$10;
-      } else {
-         $$11 = $$1;
-      }
-
-      try {
-         $$4.c();
-      } catch (gwi var16) {
-         o $$14 = o.a(var16, "Stitching");
-         p $$15 = $$14.a("Stitcher");
-         $$15.a(
-            "Sprites", var16.a().stream().map($$0x -> String.format(Locale.ROOT, "%s[%dx%d]", $$0x.c(), $$0x.a(), $$0x.b())).collect(Collectors.joining(","))
-         );
-         $$15.a("Max Texture Size", $$3);
-         throw new z($$14);
-      }
-
-      int $$16 = Math.max($$4.a(), this.e);
-      int $$17 = Math.max($$4.b(), this.f);
-      Map<alb, gwk> $$18 = this.a($$4, $$16, $$17);
-      gwk $$19 = $$18.get(gwa.b());
-      CompletableFuture<Void> $$20;
-      if ($$11 > 0) {
-         $$20 = CompletableFuture.runAsync(() -> $$18.values().forEach($$1xx -> $$1xx.e().a($$11)), $$2);
-      } else {
-         $$20 = CompletableFuture.completedFuture(null);
-      }
-
-      return new gwf.a($$16, $$17, $$11, $$19, $$18, $$20);
+      double $$7 = 0.5 - ($$4 - 0.25 - $$3);
+      return azd.b((float)$$7, 1.0F);
    }
 
-   public static CompletableFuture<List<gwe>> a(gwn $$0, List<Function<gwn, gwe>> $$1, Executor $$2) {
-      List<CompletableFuture<gwe>> $$3 = $$1.stream().map($$2x -> CompletableFuture.supplyAsync(() -> (gwe)$$2x.apply($$0), $$2)).toList();
-      return ad.d($$3).thenApply($$0x -> $$0x.stream().filter(Objects::nonNull).toList());
+   @Nullable
+   private gbh a(bto $$0, @Nullable gbh $$1) {
+      return $$1 == null && $$0.dS() instanceof gbh ? (gbh)$$0.dS() : $$1;
    }
 
-   public CompletableFuture<gwf.a> a(aus $$0, alb $$1, int $$2, Executor $$3) {
-      return this.a($$0, $$1, $$2, $$3, a);
+   private boolean a(bto $$0, @Nullable jm $$1) {
+      return $$1 != null && $$1.a() == $$0.dS().ag() && !($$1.b().b($$0.dq()) < 1.0E-5F);
    }
 
-   public CompletableFuture<gwf.a> a(aus $$0, alb $$1, int $$2, Executor $$3, Collection<atr<?>> $$4) {
-      gwn $$5 = gwn.create($$4);
-      return CompletableFuture.<List<Function<gwn, gwe>>>supplyAsync(() -> gwp.a($$0, $$1).a($$0), $$3)
-         .thenCompose($$2x -> a($$5, $$2x, $$3))
-         .thenApply($$2x -> this.a($$2x, $$2, $$3));
+   private double a(bto $$0, je $$1) {
+      eys $$2 = eys.b($$1);
+      return Math.atan2($$2.c() - $$0.dD(), $$2.a() - $$0.dx()) / (float) (Math.PI * 2);
    }
 
-   private Map<alb, gwk> a(gwh<gwe> $$0, int $$1, int $$2) {
-      Map<alb, gwk> $$3 = new HashMap<>();
-      $$0.a(($$3x, $$4, $$5) -> $$3.put($$3x.c(), new gwk(this.c, $$3x, $$1, $$2, $$4, $$5)));
-      return $$3;
+   private double a(bto $$0) {
+      return azd.c((double)($$0.dJ() / 360.0F), 1.0);
    }
 
-   public static record a(int a, int b, int c, gwk d, Map<alb, gwk> e, CompletableFuture<Void> f) {
-      public CompletableFuture<gwf.a> a() {
-         return this.f.thenApply($$0 -> this);
+   private int a(int $$0) {
+      return $$0 * 1327217883;
+   }
+
+   public interface a {
+      @Nullable
+      jm getPos(gbh var1, cvp var2, bto var3);
+   }
+
+   static class b {
+      double a;
+      private double b;
+      private long c;
+
+      boolean a(long $$0) {
+         return this.c != $$0;
       }
 
-      public int b() {
-         return this.a;
-      }
-
-      public int c() {
-         return this.b;
-      }
-
-      public int d() {
-         return this.c;
-      }
-
-      public gwk e() {
-         return this.d;
-      }
-
-      public Map<alb, gwk> f() {
-         return this.e;
-      }
-
-      public CompletableFuture<Void> g() {
-         return this.f;
+      void a(long $$0, double $$1) {
+         this.c = $$0;
+         double $$2 = $$1 - this.a;
+         $$2 = azd.c($$2 + 0.5, 1.0) - 0.5;
+         this.b += $$2 * 0.1;
+         this.b *= 0.8;
+         this.a = azd.c(this.a + this.b, 1.0);
       }
    }
 }

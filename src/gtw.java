@@ -1,3 +1,3 @@
-public class gtw extends gtv {
-   public float C = -1.0F;
+public class gtw extends guj {
+   public boolean a;
 }

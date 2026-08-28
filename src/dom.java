@@ -1,53 +1,82 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
 
-public class dom extends dgv {
-   public static final MapCodec<dom> a = b(dom::new);
-   private static final eyx b = dgv.a(2.0, 13.0, 2.0, 14.0, 16.0, 14.0);
-   private static final int c = 14;
-   private static final int d = 10;
-   private static final int e = 10;
-
-   @Override
-   public MapCodec<dom> a() {
-      return a;
-   }
-
-   public dom(dtz.d $$0) {
-      super($$0);
-   }
+public class dom extends dgf {
+   public static final MapCodec<dom> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dom.a.b.fieldOf("kind").forGetter(dgf::b), u()).apply($$0, dom::new));
+   public static final int d = dvu.a();
+   private static final int b = d + 1;
+   public static final dvo e = dve.ba;
+   protected static final ezm f = dhj.a(4.0, 0.0, 4.0, 12.0, 8.0, 12.0);
+   protected static final ezm g = dhj.a(3.0, 0.0, 3.0, 13.0, 8.0, 13.0);
 
    @Override
-   protected boolean a(dua $$0, ddv $$1, je $$2) {
-      return dgv.a($$1, $$2.d(), jj.a) && !$$1.z($$2);
+   public MapCodec<? extends dom> a() {
+      return c;
    }
 
-   @Override
-   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
-      return $$1 == jj.b && !this.a($$0, $$3, $$4) ? dgx.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected dom(dom.a $$0, dun.d $$1) {
+      super($$0, $$1);
+      this.l(this.o().b(e, Integer.valueOf(0)));
    }
 
    @Override
-   public void a(dua $$0, dds $$1, je $$2, azk $$3) {
-      int $$4 = $$2.u();
-      int $$5 = $$2.v();
-      int $$6 = $$2.w();
-      double $$7 = (double)$$4 + $$3.j();
-      double $$8 = (double)$$5 + 0.7;
-      double $$9 = (double)$$6 + $$3.j();
-      $$1.a(ln.az, $$7, $$8, $$9, 0.0, 0.0, 0.0);
-      je.a $$10 = new je.a();
+   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
+      return this.b() == dom.b.h ? g : f;
+   }
 
-      for (int $$11 = 0; $$11 < 14; $$11++) {
-         $$10.d($$4 + azc.a($$3, -10, 10), $$5 - $$3.a(10), $$6 + azc.a($$3, -10, 10));
-         dua $$12 = $$1.a_($$10);
-         if (!$$12.m($$1, $$10)) {
-            $$1.a(ln.aD, (double)$$10.u() + $$3.j(), (double)$$10.v() + $$3.j(), (double)$$10.w() + $$3.j(), 0.0, 0.0, 0.0);
-         }
+   @Override
+   protected ezm d_(duo $$0) {
+      return ezj.a();
+   }
+
+   @Override
+   public duo a(czk $$0) {
+      return super.a($$0).b(e, Integer.valueOf(dvu.a($$0.i())));
+   }
+
+   @Override
+   protected duo a(duo $$0, dnx $$1) {
+      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   }
+
+   @Override
+   protected duo a(duo $$0, dmg $$1) {
+      return $$0.b(e, Integer.valueOf($$1.a($$0.c(e), b)));
+   }
+
+   @Override
+   protected void a(dup.a<dhj, duo> $$0) {
+      super.a($$0);
+      $$0.a(e);
+   }
+
+   public interface a extends azz {
+      Map<String, dom.a> a = new Object2ObjectArrayMap();
+      Codec<dom.a> b = Codec.stringResolver(azz::c, a::get);
+   }
+
+   public static enum b implements dom.a {
+      c("skeleton"),
+      d("wither_skeleton"),
+      e("player"),
+      f("zombie"),
+      g("creeper"),
+      h("piglin"),
+      i("dragon");
+
+      private final String j;
+
+      private b(final String $$0) {
+         this.j = $$0;
+         a.put($$0, this);
       }
-   }
 
-   @Override
-   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
-      return b;
+      @Override
+      public String c() {
+         return this.j;
+      }
    }
 }

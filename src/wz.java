@@ -7,18 +7,18 @@ public record wz(xa l, xa m) {
       $$0 -> $$0.group(xa.a.fieldOf("chat").forGetter(wz::a), xa.a.fieldOf("narration").forGetter(wz::b)).apply($$0, wz::new)
    );
    public static final zb<wo, wz> b = zb.a(xa.b, wz::a, xa.b, wz::b, wz::new);
-   public static final zb<wo, jn<wz>> c = yz.a(lv.aG, b);
+   public static final zb<wo, jn<wz>> c = yz.a(lv.aH, b);
    public static final xa d = xa.a("chat.type.text");
-   public static final ala<wz> e = a("chat");
-   public static final ala<wz> f = a("say_command");
-   public static final ala<wz> g = a("msg_command_incoming");
-   public static final ala<wz> h = a("msg_command_outgoing");
-   public static final ala<wz> i = a("team_msg_command_incoming");
-   public static final ala<wz> j = a("team_msg_command_outgoing");
-   public static final ala<wz> k = a("emote_command");
+   public static final alb<wz> e = a("chat");
+   public static final alb<wz> f = a("say_command");
+   public static final alb<wz> g = a("msg_command_incoming");
+   public static final alb<wz> h = a("msg_command_outgoing");
+   public static final alb<wz> i = a("team_msg_command_incoming");
+   public static final alb<wz> j = a("team_msg_command_outgoing");
+   public static final alb<wz> k = a("emote_command");
 
-   private static ala<wz> a(String $$0) {
-      return ala.a(lv.aG, alb.b($$0));
+   private static alb<wz> a(String $$0) {
+      return alb.a(lv.aH, alc.b($$0));
    }
 
    public static void a(qt<wz> $$0) {
@@ -31,16 +31,16 @@ public record wz(xa l, xa m) {
       $$0.a(k, new wz(xa.a("chat.type.emote"), xa.a("chat.type.emote")));
    }
 
-   public static wz.a a(ala<wz> $$0, btj $$1) {
+   public static wz.a a(alb<wz> $$0, bto $$1) {
       return a($$0, $$1.dS().F_(), $$1.Q_());
    }
 
-   public static wz.a a(ala<wz> $$0, et $$1) {
+   public static wz.a a(alb<wz> $$0, et $$1) {
       return a($$0, $$1.v(), $$1.b());
    }
 
-   public static wz.a a(ala<wz> $$0, kb $$1, xd $$2) {
-      ka<wz> $$3 = $$1.d(lv.aG);
+   public static wz.a a(alb<wz> $$0, kb $$1, xd $$2) {
+      ka<wz> $$3 = $$1.d(lv.aH);
       return new wz.a($$3.g($$0), $$2);
    }
 

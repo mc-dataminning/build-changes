@@ -1,141 +1,59 @@
 import javax.annotation.Nullable;
 
-public class cif extends chz {
-   private final cig bZ = new cig(this);
-   private static final int ca = 18000;
-   private static final btm cb = btq.aO.n().a(btl.a().a(btk.a, 0.0F, btq.aO.m() - 0.03125F, 0.0F)).a(0.5F);
-   private boolean cd;
-   private int ce;
-
-   public cif(btq<? extends cif> $$0, dds $$1) {
+public class cif extends cid {
+   public cif(btv<? extends cif> $$0, deg $$1) {
       super($$0, $$1);
    }
 
-   public static bvl.a q() {
-      return gQ().a(bvm.s, 15.0).a(bvm.v, 0.2F);
-   }
-
-   public static boolean c(btq<? extends cfv> $$0, ddt $$1, btp $$2, je $$3, azk $$4) {
-      return !btp.a($$2) ? cfv.b($$0, $$1, $$2, $$3, $$4) : btp.b($$2) || a($$1, $$3);
+   @Override
+   protected awd w() {
+      return awe.hg;
    }
 
    @Override
-   protected void a(azk $$0) {
-      this.g(bvm.o).a(a($$0::j));
+   protected awd gQ() {
+      return awe.hh;
    }
 
    @Override
-   protected void gG() {
-   }
-
-   @Override
-   protected awc w() {
-      return this.a(awy.a) ? awd.xj : awd.xf;
-   }
-
-   @Override
-   protected awc n_() {
-      return awd.xg;
-   }
-
-   @Override
-   protected awc d(bsb $$0) {
-      return awd.xh;
-   }
-
-   @Override
-   protected awc aT() {
-      if (this.aH()) {
-         if (!this.bX()) {
-            return awd.xm;
-         }
-
-         this.cz++;
-         if (this.cz > 5 && this.cz % 3 == 0) {
-            return awd.xk;
-         }
-
-         if (this.cz <= 5) {
-            return awd.xm;
-         }
-      }
-
-      return awd.xi;
-   }
-
-   @Override
-   protected void f(float $$0) {
-      if (this.aH()) {
-         super.f(0.3F);
-      } else {
-         super.f(Math.min(0.1F, $$0 * 25.0F));
-      }
-   }
-
-   @Override
-   protected void gX() {
-      if (this.bi()) {
-         this.a(awd.xl, 0.4F, 1.0F);
-      } else {
-         super.gX();
-      }
-   }
-
-   @Override
-   public btm e(bur $$0) {
-      return this.o_() ? cb : super.e($$0);
-   }
-
-   @Override
-   public void m_() {
-      super.m_();
-      if (this.t() && this.ce++ >= 18000) {
-         this.as();
-      }
-   }
-
-   @Override
-   public void b(uf $$0) {
-      super.b($$0);
-      $$0.a("SkeletonTrap", this.t());
-      $$0.a("SkeletonTrapTime", this.ce);
-   }
-
-   @Override
-   public void a(uf $$0) {
-      super.a($$0);
-      this.x($$0.q("SkeletonTrap"));
-      this.ce = $$0.h("SkeletonTrapTime");
-   }
-
-   @Override
-   protected float fj() {
-      return 0.96F;
-   }
-
-   public boolean t() {
-      return this.cd;
-   }
-
-   public void x(boolean $$0) {
-      if ($$0 != this.cd) {
-         this.cd = $$0;
-         if ($$0) {
-            this.bT.a(1, this.bZ);
-         } else {
-            this.bT.a(this.bZ);
-         }
-      }
+   protected awd n_() {
+      return awe.hj;
    }
 
    @Nullable
    @Override
-   public btc a(arg $$0, btc $$1) {
-      return btq.aO.a($$0, btp.e);
+   protected awd gr() {
+      return awe.hk;
    }
 
    @Override
-   public brk b(cnp $$0, brj $$1) {
-      return (brk)(!this.gF() ? brk.e : super.b($$0, $$1));
+   protected awd d(bsg $$0) {
+      return awe.hl;
+   }
+
+   @Override
+   public boolean a(cga $$0) {
+      if ($$0 == this) {
+         return false;
+      } else {
+         return !($$0 instanceof cif) && !($$0 instanceof cig) ? false : this.gZ() && ((cie)$$0).gZ();
+      }
+   }
+
+   @Override
+   protected void gY() {
+      this.a(awe.hm, 0.4F, 1.0F);
+   }
+
+   @Nullable
+   @Override
+   public bth a(arh $$0, bth $$1) {
+      btv<? extends cie> $$2 = $$1 instanceof cig ? btv.at : btv.z;
+      cie $$3 = $$2.a($$0, btu.e);
+      if ($$3 != null) {
+         this.a($$1, $$3);
+      }
+
+      return $$3;
    }
 }

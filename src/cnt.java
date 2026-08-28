@@ -1,399 +1,531 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ReferenceOpenHashSet;
-import java.util.BitSet;
+import com.google.common.collect.ImmutableList;
 import java.util.List;
-import java.util.Set;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public class cnt<T> {
-   public final Reference2IntOpenHashMap<T> a = new Reference2IntOpenHashMap();
+public class cnt implements bri, brs {
+   public static final int b = 5;
+   public static final int c = 36;
+   public static final int d = 9;
+   public static final int e = 40;
+   public static final int f = -1;
+   public final jw<cvp> g = jw.a(36, cvp.k);
+   public final jw<cvp> h = jw.a(4, cvp.k);
+   public final jw<cvp> i = jw.a(1, cvp.k);
+   private final List<jw<cvp>> l = ImmutableList.of(this.g, this.h, this.i);
+   public int j;
+   public final cnu k;
+   private int m;
 
-   boolean a(T $$0) {
-      return this.a.getInt($$0) > 0;
+   public cnt(cnu $$0) {
+      this.k = $$0;
    }
 
-   boolean b(T $$0, int $$1) {
-      return this.a.getInt($$0) >= $$1;
+   public cvp f() {
+      return d(this.j) ? this.g.get(this.j) : cvp.k;
    }
 
-   void c(T $$0, int $$1) {
-      int $$2 = this.a.addTo($$0, -$$1);
-      if ($$2 < $$1) {
-         throw new IllegalStateException("Took " + $$1 + " items, but only had " + $$2);
+   public static int g() {
+      return 9;
+   }
+
+   private boolean a(cvp $$0, cvp $$1) {
+      return !$$0.f() && cvp.c($$0, $$1) && $$0.l() && $$0.J() < this.f_($$0);
+   }
+
+   public int h() {
+      for (int $$0 = 0; $$0 < this.g.size(); $$0++) {
+         if (this.g.get($$0).f()) {
+            return $$0;
+         }
       }
+
+      return -1;
    }
 
-   void d(T $$0, int $$1) {
-      this.a.addTo($$0, $$1);
-   }
+   public void b(cvp $$0) {
+      int $$1 = this.c($$0);
+      if (d($$1)) {
+         this.j = $$1;
+      } else {
+         if ($$1 == -1) {
+            this.j = this.i();
+            if (!this.g.get(this.j).f()) {
+               int $$2 = this.h();
+               if ($$2 != -1) {
+                  this.g.set($$2, this.g.get(this.j));
+               }
+            }
 
-   public boolean a(List<cnt.a<T>> $$0, int $$1, @Nullable cnt.b<T> $$2) {
-      return new cnt.c($$0).a($$1, $$2);
-   }
-
-   public int b(List<cnt.a<T>> $$0, int $$1, @Nullable cnt.b<T> $$2) {
-      return new cnt.c($$0).b($$1, $$2);
-   }
-
-   public void a() {
-      this.a.clear();
-   }
-
-   public void a(T $$0, int $$1) {
-      this.d($$0, $$1);
-   }
-
-   public static record a<T>(List<T> a) {
-      public a(List<T> a) {
-         if (a.isEmpty()) {
-            throw new IllegalArgumentException("Ingredients can't be empty");
+            this.g.set(this.j, $$0);
          } else {
-            this.a = a;
+            this.c($$1);
          }
       }
    }
 
-   @FunctionalInterface
-   public interface b<T> {
-      void accept(T var1);
+   public void c(int $$0) {
+      this.j = this.i();
+      cvp $$1 = this.g.get(this.j);
+      this.g.set(this.j, this.g.get($$0));
+      this.g.set($$0, $$1);
    }
 
-   class c {
-      private final List<cnt.a<T>> c;
-      private final int d;
-      private final List<T> e;
-      private final int f;
-      private final BitSet g;
-      private final IntList h = new IntArrayList();
+   public static boolean d(int $$0) {
+      return $$0 >= 0 && $$0 < 9;
+   }
 
-      public c(final List<cnt.a<T>> $$0) {
-         this.c = $$0;
-         this.d = this.c.size();
-         this.e = this.b();
-         this.f = this.e.size();
-         this.g = new BitSet(this.d() + this.f() + this.h() + this.j() + this.l());
-         this.a();
+   public int c(cvp $$0) {
+      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
+         if (!this.g.get($$1).f() && cvp.c($$0, this.g.get($$1))) {
+            return $$1;
+         }
       }
 
-      private void a() {
-         for (int $$0 = 0; $$0 < this.d; $$0++) {
-            List<T> $$1 = this.c.get($$0).a();
+      return -1;
+   }
 
-            for (int $$2 = 0; $$2 < this.f; $$2++) {
-               if ($$1.contains(this.e.get($$2))) {
-                  this.a($$2, $$0);
-               }
+   public static boolean d(cvp $$0) {
+      return !$$0.n() && !$$0.C() && !$$0.b(kr.g);
+   }
+
+   public int a(jn<cvk> $$0) {
+      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
+         cvp $$2 = this.g.get($$1);
+         if (!$$2.f() && $$2.a($$0) && d($$2)) {
+            return $$1;
+         }
+      }
+
+      return -1;
+   }
+
+   public int i() {
+      for (int $$0 = 0; $$0 < 9; $$0++) {
+         int $$1 = (this.j + $$0) % 9;
+         if (this.g.get($$1).f()) {
+            return $$1;
+         }
+      }
+
+      for (int $$2 = 0; $$2 < 9; $$2++) {
+         int $$3 = (this.j + $$2) % 9;
+         if (!this.g.get($$3).C()) {
+            return $$3;
+         }
+      }
+
+      return this.j;
+   }
+
+   public void e(int $$0) {
+      this.j = $$0;
+   }
+
+   public int a(Predicate<cvp> $$0, int $$1, bri $$2) {
+      int $$3 = 0;
+      boolean $$4 = $$1 == 0;
+      $$3 += brj.a(this, $$0, $$1 - $$3, $$4);
+      $$3 += brj.a($$2, $$0, $$1 - $$3, $$4);
+      cvp $$5 = this.k.bZ.g();
+      $$3 += brj.a($$5, $$0, $$1 - $$3, $$4);
+      if ($$5.f()) {
+         this.k.bZ.b(cvp.k);
+      }
+
+      return $$3;
+   }
+
+   private int j(cvp $$0) {
+      int $$1 = this.e($$0);
+      if ($$1 == -1) {
+         $$1 = this.h();
+      }
+
+      return $$1 == -1 ? $$0.J() : this.d($$1, $$0);
+   }
+
+   private int d(int $$0, cvp $$1) {
+      int $$2 = $$1.J();
+      cvp $$3 = this.a($$0);
+      if ($$3.f()) {
+         $$3 = $$1.c(0);
+         this.a($$0, $$3);
+      }
+
+      int $$4 = this.f_($$3) - $$3.J();
+      int $$5 = Math.min($$2, $$4);
+      if ($$5 == 0) {
+         return $$2;
+      } else {
+         $$2 -= $$5;
+         $$3.g($$5);
+         $$3.d(5);
+         return $$2;
+      }
+   }
+
+   public int e(cvp $$0) {
+      if (this.a(this.a(this.j), $$0)) {
+         return this.j;
+      } else if (this.a(this.a(40), $$0)) {
+         return 40;
+      } else {
+         for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
+            if (this.a(this.g.get($$1), $$0)) {
+               return $$1;
+            }
+         }
+
+         return -1;
+      }
+   }
+
+   public void j() {
+      for (jw<cvp> $$0 : this.l) {
+         for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+            if (!$$0.get($$1).f()) {
+               $$0.get($$1).a(this.k.dS(), this.k, $$1, this.j == $$1);
             }
          }
       }
+   }
 
-      public boolean a(int $$0, @Nullable cnt.b<T> $$1) {
-         if ($$0 <= 0) {
-            return true;
-         } else {
-            int $$2 = 0;
+   public boolean f(cvp $$0) {
+      return this.c(-1, $$0);
+   }
 
-            while (true) {
-               IntList $$3 = this.b($$0);
-               if ($$3 == null) {
-                  boolean $$11 = $$2 == this.d;
-                  boolean $$12 = $$11 && $$1 != null;
-                  this.n();
-                  this.m();
-
-                  for (int $$13 = 0; $$13 < this.d; $$13++) {
-                     for (int $$14 = 0; $$14 < this.f; $$14++) {
-                        if (this.d($$14, $$13)) {
-                           this.f($$14, $$13);
-                           cnt.this.d(this.e.get($$14), $$0);
-                           if ($$12) {
-                              $$1.accept(this.e.get($$14));
-                           }
-                           break;
-                        }
-                     }
-                  }
-
-                  assert this.g.get(this.k(), this.k() + this.l()).isEmpty();
-
-                  return $$11;
+   public boolean c(int $$0, cvp $$1) {
+      if ($$1.f()) {
+         return false;
+      } else {
+         try {
+            if ($$1.n()) {
+               if ($$0 == -1) {
+                  $$0 = this.h();
                }
 
-               int $$4 = $$3.getInt(0);
-               cnt.this.c(this.e.get($$4), $$0);
-               int $$5 = $$3.size() - 1;
-               this.e($$3.getInt($$5));
-               $$2++;
-
-               for (int $$6 = 0; $$6 < $$3.size() - 1; $$6++) {
-                  if (a($$6)) {
-                     int $$7 = $$3.getInt($$6);
-                     int $$8 = $$3.getInt($$6 + 1);
-                     this.e($$7, $$8);
+               if ($$0 >= 0) {
+                  this.g.set($$0, $$1.g());
+                  this.g.get($$0).d(5);
+                  return true;
+               } else if (this.k.fQ()) {
+                  $$1.e(0);
+                  return true;
+               } else {
+                  return false;
+               }
+            } else {
+               int $$2;
+               do {
+                  $$2 = $$1.J();
+                  if ($$0 == -1) {
+                     $$1.e(this.j($$1));
                   } else {
-                     int $$9 = $$3.getInt($$6 + 1);
-                     int $$10 = $$3.getInt($$6);
-                     this.f($$9, $$10);
+                     $$1.e(this.d($$0, $$1));
                   }
+               } while (!$$1.f() && $$1.J() < $$2);
+
+               if ($$1.J() == $$2 && this.k.fQ()) {
+                  $$1.e(0);
+                  return true;
+               } else {
+                  return $$1.J() < $$2;
                }
+            }
+         } catch (Throwable var6) {
+            o $$4 = o.a(var6, "Adding item to inventory");
+            p $$5 = $$4.a("Item being added");
+            $$5.a("Item ID", cvk.a($$1.h()));
+            $$5.a("Item data", $$1.o());
+            $$5.a("Item name", () -> $$1.y().getString());
+            throw new z($$4);
+         }
+      }
+   }
+
+   public void g(cvp $$0) {
+      this.a($$0, true);
+   }
+
+   public void a(cvp $$0, boolean $$1) {
+      while (!$$0.f()) {
+         int $$2 = this.e($$0);
+         if ($$2 == -1) {
+            $$2 = this.h();
+         }
+
+         if ($$2 == -1) {
+            this.k.a($$0, false);
+            break;
+         }
+
+         int $$3 = $$0.k() - this.a($$2).J();
+         if (this.c($$2, $$0.a($$3)) && $$1 && this.k instanceof ari $$4) {
+            $$4.c.b(this.f($$2));
+         }
+      }
+   }
+
+   public afo f(int $$0) {
+      return new afo($$0, this.a($$0).u());
+   }
+
+   @Override
+   public cvp a(int $$0, int $$1) {
+      List<cvp> $$2 = null;
+
+      for (jw<cvp> $$3 : this.l) {
+         if ($$0 < $$3.size()) {
+            $$2 = $$3;
+            break;
+         }
+
+         $$0 -= $$3.size();
+      }
+
+      return $$2 != null && !$$2.get($$0).f() ? brj.a($$2, $$0, $$1) : cvp.k;
+   }
+
+   public void h(cvp $$0) {
+      for (jw<cvp> $$1 : this.l) {
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            if ($$1.get($$2) == $$0) {
+               $$1.set($$2, cvp.k);
+               break;
+            }
+         }
+      }
+   }
+
+   @Override
+   public cvp b(int $$0) {
+      jw<cvp> $$1 = null;
+
+      for (jw<cvp> $$2 : this.l) {
+         if ($$0 < $$2.size()) {
+            $$1 = $$2;
+            break;
+         }
+
+         $$0 -= $$2.size();
+      }
+
+      if ($$1 != null && !$$1.get($$0).f()) {
+         cvp $$3 = $$1.get($$0);
+         $$1.set($$0, cvp.k);
+         return $$3;
+      } else {
+         return cvp.k;
+      }
+   }
+
+   @Override
+   public void a(int $$0, cvp $$1) {
+      jw<cvp> $$2 = null;
+
+      for (jw<cvp> $$3 : this.l) {
+         if ($$0 < $$3.size()) {
+            $$2 = $$3;
+            break;
+         }
+
+         $$0 -= $$3.size();
+      }
+
+      if ($$2 != null) {
+         $$2.set($$0, $$1);
+      }
+   }
+
+   public float a(duo $$0) {
+      return this.g.get(this.j).a($$0);
+   }
+
+   public ul a(ul $$0) {
+      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
+         if (!this.g.get($$1).f()) {
+            uf $$2 = new uf();
+            $$2.a("Slot", (byte)$$1);
+            $$0.add(this.g.get($$1).b(this.k.dU(), $$2));
+         }
+      }
+
+      for (int $$3 = 0; $$3 < this.h.size(); $$3++) {
+         if (!this.h.get($$3).f()) {
+            uf $$4 = new uf();
+            $$4.a("Slot", (byte)($$3 + 100));
+            $$0.add(this.h.get($$3).b(this.k.dU(), $$4));
+         }
+      }
+
+      for (int $$5 = 0; $$5 < this.i.size(); $$5++) {
+         if (!this.i.get($$5).f()) {
+            uf $$6 = new uf();
+            $$6.a("Slot", (byte)($$5 + 150));
+            $$0.add(this.i.get($$5).b(this.k.dU(), $$6));
+         }
+      }
+
+      return $$0;
+   }
+
+   public void b(ul $$0) {
+      this.g.clear();
+      this.h.clear();
+      this.i.clear();
+
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         uf $$2 = $$0.a($$1);
+         int $$3 = $$2.f("Slot") & 255;
+         cvp $$4 = cvp.a(this.k.dU(), (vc)$$2).orElse(cvp.k);
+         if ($$3 >= 0 && $$3 < this.g.size()) {
+            this.g.set($$3, $$4);
+         } else if ($$3 >= 100 && $$3 < this.h.size() + 100) {
+            this.h.set($$3 - 100, $$4);
+         } else if ($$3 >= 150 && $$3 < this.i.size() + 150) {
+            this.i.set($$3 - 150, $$4);
+         }
+      }
+   }
+
+   @Override
+   public int b() {
+      return this.g.size() + this.h.size() + this.i.size();
+   }
+
+   @Override
+   public boolean c() {
+      for (cvp $$0 : this.g) {
+         if (!$$0.f()) {
+            return false;
+         }
+      }
+
+      for (cvp $$1 : this.h) {
+         if (!$$1.f()) {
+            return false;
+         }
+      }
+
+      for (cvp $$2 : this.i) {
+         if (!$$2.f()) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   @Override
+   public cvp a(int $$0) {
+      List<cvp> $$1 = null;
+
+      for (jw<cvp> $$2 : this.l) {
+         if ($$0 < $$2.size()) {
+            $$1 = $$2;
+            break;
+         }
+
+         $$0 -= $$2.size();
+      }
+
+      return $$1 == null ? cvp.k : $$1.get($$0);
+   }
+
+   @Override
+   public xd aj() {
+      return xd.c("container.inventory");
+   }
+
+   public cvp g(int $$0) {
+      return this.h.get($$0);
+   }
+
+   public void k() {
+      for (List<cvp> $$0 : this.l) {
+         for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+            cvp $$2 = $$0.get($$1);
+            if (!$$2.f()) {
+               this.k.a($$2, true, false);
+               $$0.set($$1, cvp.k);
+            }
+         }
+      }
+   }
+
+   @Override
+   public void e() {
+      this.m++;
+   }
+
+   public int l() {
+      return this.m;
+   }
+
+   @Override
+   public boolean a(cnu $$0) {
+      return $$0.b(this.k, 4.0);
+   }
+
+   public boolean i(cvp $$0) {
+      for (List<cvp> $$1 : this.l) {
+         for (cvp $$2 : $$1) {
+            if (!$$2.f() && cvp.c($$2, $$0)) {
+               return true;
             }
          }
       }
 
-      private static boolean a(int $$0) {
-         return ($$0 & 1) == 0;
-      }
+      return false;
+   }
 
-      private List<T> b() {
-         Set<T> $$0 = new ReferenceOpenHashSet();
-
-         for (cnt.a<T> $$1 : this.c) {
-            $$0.addAll($$1.a());
-         }
-
-         $$0.removeIf($$0x -> !cnt.this.a((T)$$0x));
-         return List.copyOf($$0);
-      }
-
-      @Nullable
-      private IntList b(int $$0) {
-         this.n();
-
-         for (int $$1 = 0; $$1 < this.f; $$1++) {
-            if (cnt.this.b(this.e.get($$1), $$0)) {
-               IntList $$2 = this.c($$1);
-               if ($$2 != null) {
-                  return $$2;
-               }
-            }
-         }
-
-         return null;
-      }
-
-      @Nullable
-      private IntList c(int $$0) {
-         this.h.clear();
-         this.j($$0);
-         this.h.add($$0);
-
-         while (!this.h.isEmpty()) {
-            int $$1 = this.h.size();
-            if (a($$1 - 1)) {
-               int $$2 = this.h.getInt($$1 - 1);
-
-               for (int $$3 = 0; $$3 < this.d; $$3++) {
-                  if (!this.h($$3) && this.b($$2, $$3) && !this.d($$2, $$3)) {
-                     this.g($$3);
-                     this.h.add($$3);
-                     break;
-                  }
-               }
-            } else {
-               int $$4 = this.h.getInt($$1 - 1);
-               if (!this.d($$4)) {
-                  return this.h;
-               }
-
-               for (int $$5 = 0; $$5 < this.f; $$5++) {
-                  if (!this.k($$5) && this.d($$5, $$4)) {
-                     assert this.b($$5, $$4);
-
-                     this.j($$5);
-                     this.h.add($$5);
-                     break;
-                  }
-               }
-            }
-
-            int $$6 = this.h.size();
-            if ($$6 == $$1) {
-               this.h.removeInt($$6 - 1);
-            }
-         }
-
-         return null;
-      }
-
-      private int c() {
-         return 0;
-      }
-
-      private int d() {
-         return this.d;
-      }
-
-      private int e() {
-         return this.c() + this.d();
-      }
-
-      private int f() {
-         return this.f;
-      }
-
-      private int g() {
-         return this.e() + this.f();
-      }
-
-      private int h() {
-         return this.d;
-      }
-
-      private int i() {
-         return this.g() + this.h();
-      }
-
-      private int j() {
-         return this.d * this.f;
-      }
-
-      private int k() {
-         return this.i() + this.j();
-      }
-
-      private int l() {
-         return this.d * this.f;
-      }
-
-      private boolean d(int $$0) {
-         return this.g.get(this.f($$0));
-      }
-
-      private void e(int $$0) {
-         this.g.set(this.f($$0));
-      }
-
-      private int f(int $$0) {
-         assert $$0 >= 0 && $$0 < this.d;
-
-         return this.g() + $$0;
-      }
-
-      private void m() {
-         this.h(this.g(), this.h());
-      }
-
-      private void a(int $$0, int $$1) {
-         this.g.set(this.c($$0, $$1));
-      }
-
-      private boolean b(int $$0, int $$1) {
-         return this.g.get(this.c($$0, $$1));
-      }
-
-      private int c(int $$0, int $$1) {
-         assert $$0 >= 0 && $$0 < this.f;
-
-         assert $$1 >= 0 && $$1 < this.d;
-
-         return this.i() + $$0 * this.d + $$1;
-      }
-
-      private boolean d(int $$0, int $$1) {
-         return this.g.get(this.g($$0, $$1));
-      }
-
-      private void e(int $$0, int $$1) {
-         int $$2 = this.g($$0, $$1);
-
-         assert !this.g.get($$2);
-
-         this.g.set($$2);
-      }
-
-      private void f(int $$0, int $$1) {
-         int $$2 = this.g($$0, $$1);
-
-         assert this.g.get($$2);
-
-         this.g.clear($$2);
-      }
-
-      private int g(int $$0, int $$1) {
-         assert $$0 >= 0 && $$0 < this.f;
-
-         assert $$1 >= 0 && $$1 < this.d;
-
-         return this.k() + $$0 * this.d + $$1;
-      }
-
-      private void g(int $$0) {
-         this.g.set(this.i($$0));
-      }
-
-      private boolean h(int $$0) {
-         return this.g.get(this.i($$0));
-      }
-
-      private int i(int $$0) {
-         assert $$0 >= 0 && $$0 < this.d;
-
-         return this.c() + $$0;
-      }
-
-      private void j(int $$0) {
-         this.g.set(this.l($$0));
-      }
-
-      private boolean k(int $$0) {
-         return this.g.get(this.l($$0));
-      }
-
-      private int l(int $$0) {
-         assert $$0 >= 0 && $$0 < this.f;
-
-         return this.e() + $$0;
-      }
-
-      private void n() {
-         this.h(this.c(), this.d());
-         this.h(this.e(), this.f());
-      }
-
-      private void h(int $$0, int $$1) {
-         this.g.clear($$0, $$0 + $$1);
-      }
-
-      public int b(int $$0, @Nullable cnt.b<T> $$1) {
-         int $$2 = 0;
-         int $$3 = Math.min($$0, this.o()) + 1;
-
-         while (true) {
-            int $$4 = ($$2 + $$3) / 2;
-            if (this.a($$4, null)) {
-               if ($$3 - $$2 <= 1) {
-                  if ($$4 > 0) {
-                     this.a($$4, $$1);
-                  }
-
-                  return $$4;
-               }
-
-               $$2 = $$4;
-            } else {
-               $$3 = $$4;
+   public boolean a(axj<cvk> $$0) {
+      for (List<cvp> $$1 : this.l) {
+         for (cvp $$2 : $$1) {
+            if (!$$2.f() && $$2.a($$0)) {
+               return true;
             }
          }
       }
 
-      private int o() {
-         int $$0 = Integer.MAX_VALUE;
+      return false;
+   }
 
-         for (cnt.a<T> $$1 : this.c) {
-            int $$2 = 0;
-
-            for (T $$3 : $$1.a()) {
-               $$2 = Math.max($$2, cnt.this.a.getInt($$3));
-            }
-
-            if ($$0 > 0) {
-               $$0 = Math.min($$0, $$2);
+   public boolean b(Predicate<cvp> $$0) {
+      for (List<cvp> $$1 : this.l) {
+         for (cvp $$2 : $$1) {
+            if ($$0.test($$2)) {
+               return true;
             }
          }
-
-         return $$0;
       }
+
+      return false;
+   }
+
+   public void a(cnt $$0) {
+      for (int $$1 = 0; $$1 < this.b(); $$1++) {
+         this.a($$1, $$0.a($$1));
+      }
+
+      this.j = $$0.j;
+   }
+
+   @Override
+   public void a() {
+      for (List<cvp> $$0 : this.l) {
+         $$0.clear();
+      }
+   }
+
+   public void a(cnz $$0) {
+      for (cvp $$1 : this.g) {
+         $$0.a($$1);
+      }
+   }
+
+   public cvp a(boolean $$0) {
+      cvp $$1 = this.f();
+      return $$1.f() ? cvp.k : this.a(this.j, $$0 ? $$1.J() : 1);
    }
 }

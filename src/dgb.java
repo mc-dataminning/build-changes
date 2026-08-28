@@ -1,84 +1,76 @@
 import com.mojang.serialization.MapCodec;
+import java.util.function.BiConsumer;
 import javax.annotation.Nullable;
 
-public class dgb extends dgh {
-   public static final MapCodec<dgb> a = b(dgb::new);
-   public static final duu b = duq.P;
-   public static final dur c = duq.u;
+public abstract class dgb extends dhj {
+   public static final int a = 3;
+   public static final dvf b = dve.r;
 
    @Override
-   public MapCodec<dgb> a() {
-      return a;
-   }
+   protected abstract MapCodec<? extends dgb> a();
 
-   public dgb(dtz.d $$0) {
+   protected dgb(dun.d $$0) {
       super($$0);
-      this.l(this.E.b().b(b, jj.c).b(c, Boolean.valueOf(false)));
+   }
+
+   protected abstract Iterable<eys> b(duo var1);
+
+   public static boolean c(duo $$0) {
+      return $$0.b(b) && ($$0.a(awt.af) || $$0.a(awt.bl)) && $$0.c(b);
    }
 
    @Override
-   protected brk a(dua $$0, dds $$1, je $$2, cnp $$3, eya $$4) {
-      if (!$$1.B && $$1.c_($$2) instanceof dqx $$5) {
-         $$3.a($$5);
-         $$3.a(awn.ar);
-         cmg.a($$3, true);
+   protected void a(deg $$0, duo $$1, eyo $$2, coo $$3) {
+      if (!$$0.B && $$3.bV() && this.d($$1)) {
+         a($$0, $$1, $$2.b(), true);
+      }
+   }
+
+   protected boolean d(duo $$0) {
+      return !$$0.c(b);
+   }
+
+   @Override
+   public void a(duo $$0, deg $$1, je $$2, azl $$3) {
+      if ($$0.c(b)) {
+         this.b($$0).forEach($$3x -> a($$1, $$3x.b((double)$$2.u(), (double)$$2.v(), (double)$$2.w()), $$3));
+      }
+   }
+
+   private static void a(deg $$0, eys $$1, azl $$2) {
+      float $$3 = $$2.i();
+      if ($$3 < 0.3F) {
+         $$0.a(ln.ae, $$1.d, $$1.e, $$1.f, 0.0, 0.0, 0.0);
+         if ($$3 < 0.17F) {
+            $$0.a($$1.d + 0.5, $$1.e + 0.5, $$1.f + 0.5, awe.dK, awf.e, 1.0F + $$2.i(), $$2.i() * 0.7F + 0.3F, false);
+         }
       }
 
-      return brk.a;
+      $$0.a(ln.aJ, $$1.d, $$1.e, $$1.f, 0.0, 0.0, 0.0);
+   }
+
+   public static void a(@Nullable cnu $$0, duo $$1, deh $$2, je $$3) {
+      a($$2, $$1, $$3, false);
+      if ($$1.b() instanceof dgb) {
+         ((dgb)$$1.b())
+            .b($$1)
+            .forEach($$2x -> $$2.a(ln.ae, (double)$$3.u() + $$2x.a(), (double)$$3.v() + $$2x.b(), (double)$$3.w() + $$2x.c(), 0.0, 0.1F, 0.0));
+      }
+
+      $$2.a(null, $$3, awe.dM, awf.e, 1.0F, 1.0F);
+      $$2.a($$0, dzl.c, $$3);
+   }
+
+   private static void a(deh $$0, duo $$1, je $$2, boolean $$3) {
+      $$0.a($$2, $$1.b(b, Boolean.valueOf($$3)), 11);
    }
 
    @Override
-   protected void a(dua $$0, dds $$1, je $$2, dua $$3, boolean $$4) {
-      brg.a($$0, $$3, $$1, $$2);
+   protected void a(duo $$0, arh $$1, je $$2, ddy $$3, BiConsumer<cvp, je> $$4) {
+      if ($$3.f() && $$0.c(b)) {
+         a(null, $$0, $$1, $$2);
+      }
+
       super.a($$0, $$1, $$2, $$3, $$4);
-   }
-
-   @Override
-   protected void a(dua $$0, arg $$1, je $$2, azk $$3) {
-      dre $$4 = $$1.c_($$2);
-      if ($$4 instanceof dqx) {
-         ((dqx)$$4).k();
-      }
-   }
-
-   @Nullable
-   @Override
-   public dre a(je $$0, dua $$1) {
-      return new dqx($$0, $$1);
-   }
-
-   @Override
-   protected dnc a_(dua $$0) {
-      return dnc.c;
-   }
-
-   @Override
-   protected boolean c_(dua $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dua $$0, dds $$1, je $$2) {
-      return cqq.a($$1.c_($$2));
-   }
-
-   @Override
-   protected dua a(dua $$0, dnj $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected dua a(dua $$0, dls $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dub.a<dgv, dua> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public dua a(cyw $$0) {
-      return this.o().b(b, $$0.d().g());
    }
 }

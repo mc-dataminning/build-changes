@@ -1,21 +1,31 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import java.util.Optional;
 
-public class bnj implements bne<StringReader, alb> {
-   public static final bne<StringReader, alb> a = new bnj();
+public interface bnj<S, T> {
+   Optional<T> a(bni<S> var1);
 
-   private bnj() {
+   static <S, T> bnj<S, T> a(bnm<S> $$0, bnj.a<S, T> $$1) {
+      return new bnj.c<>($$1, $$0);
    }
 
-   @Override
-   public Optional<alb> a(bnd<StringReader> $$0) {
-      $$0.b().skipWhitespace();
+   static <S, T> bnj<S, T> a(bnm<S> $$0, bnj.b<T> $$1) {
+      return new bnj.c<>(($$1x, $$2) -> Optional.of($$1.run($$2)), $$0);
+   }
 
-      try {
-         return Optional.of(alb.b($$0.b()));
-      } catch (CommandSyntaxException var3) {
-         return Optional.empty();
+   @FunctionalInterface
+   public interface a<S, T> {
+      Optional<T> run(bni<S> var1, bnk var2);
+   }
+
+   @FunctionalInterface
+   public interface b<T> {
+      T run(bnk var1);
+   }
+
+   public static record c<S, T>(bnj.a<S, T> a, bnm<S> b) implements bnj<S, T> {
+      @Override
+      public Optional<T> a(bni<S> $$0) {
+         bnk $$1 = new bnk();
+         return this.b.a($$0, $$1, bne.a) ? this.a.run($$0, $$1) : Optional.empty();
       }
    }
 }

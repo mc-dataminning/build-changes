@@ -1,31 +1,19 @@
-import javax.annotation.Nullable;
+import java.util.function.Consumer;
 
 public class fgf {
-   public final int a;
-   @Nullable
-   public final String b;
+   private static final int a = 8226750;
+   private static final xd b = xd.c("mco.info").b(8226750);
+   private static final xd c = xd.c("mco.warning").b(-65536);
 
-   fgf(int $$0, String $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public static flm a(fqd $$0, xd $$1, Consumer<flm> $$2) {
+      return new flm.a($$0, b).a($$1).a(xc.j, $$2).a(xc.e, flm::d).a();
    }
 
-   public static class a {
-      private int a = -1;
-      private String b;
+   public static flm b(fqd $$0, xd $$1, Consumer<flm> $$2) {
+      return new flm.a($$0, c).a($$1).a(xc.j, $$2).a(xc.e, flm::d).a();
+   }
 
-      public fgf.a a(int $$0) {
-         this.a = $$0;
-         return this;
-      }
-
-      public fgf.a a(@Nullable String $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public fgf a() {
-         return new fgf(this.a, this.b);
-      }
+   public static flm c(fqd $$0, xd $$1, Consumer<flm> $$2) {
+      return new flm.a($$0, c).a($$1).a(xc.h, $$2).a();
    }
 }

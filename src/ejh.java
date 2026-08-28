@@ -1,27 +1,53 @@
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import org.slf4j.Logger;
 
-public class ejh extends eju {
+public class ejh extends ejj {
    public static final MapCodec<ejh> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ebd.b.fieldOf("predicate").forGetter($$0x -> $$0x.c)).apply($$0, ejh::new)
+      $$0 -> $$0.group(
+               ebe.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
+               ebe.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
+               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
+            )
+            .apply($$0, ejh::new)
    );
-   private final ebd c;
+   private static final Logger b = LogUtils.getLogger();
+   private final ebe d;
+   private final ebe e;
+   private final int f;
 
-   private ejh(ebd $$0) {
-      this.c = $$0;
+   private ejh(ebe $$0, ebe $$1, int $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public static ejh a(ebd $$0) {
-      return new ejh($$0);
+   public static ejh a(ebe $$0, ebe $$1, int $$2) {
+      return new ejh($$0, $$1, $$2);
    }
 
    @Override
-   protected boolean a(ejt $$0, azk $$1, je $$2) {
-      return this.c.test($$0.d(), $$2);
+   public int a(azl $$0, ebh $$1) {
+      int $$2 = this.d.a($$1);
+      int $$3 = this.e.a($$1);
+      if ($$3 - $$2 - this.f + 1 <= 0) {
+         b.warn("Empty height range: {}", this);
+         return $$2;
+      } else {
+         int $$4 = $$0.a($$3 - $$2 - this.f + 1);
+         return $$0.a($$4 + this.f) + $$2;
+      }
    }
 
    @Override
-   public ejw<?> b() {
-      return ejw.a;
+   public ejk<?> a() {
+      return ejk.c;
+   }
+
+   @Override
+   public String toString() {
+      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
    }
 }

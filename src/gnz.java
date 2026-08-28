@@ -1,27 +1,35 @@
 import com.google.common.collect.Maps;
 import java.util.Map;
 
-public class gnz extends gny<cgi, gtx, fwr> {
-   private static final Map<cgi.a, alb> a = ad.a(Maps.newHashMap(), $$0 -> {
-      $$0.put(cgi.a.b, alb.b("textures/entity/cow/brown_mooshroom.png"));
-      $$0.put(cgi.a.a, alb.b("textures/entity/cow/red_mooshroom.png"));
+public final class gnz extends gma<cig, gua, fxv> {
+   private static final Map<cin, alc> a = ad.a(Maps.newEnumMap(cin.class), $$0 -> {
+      $$0.put(cin.a, alc.b("textures/entity/horse/horse_white.png"));
+      $$0.put(cin.b, alc.b("textures/entity/horse/horse_creamy.png"));
+      $$0.put(cin.c, alc.b("textures/entity/horse/horse_chestnut.png"));
+      $$0.put(cin.d, alc.b("textures/entity/horse/horse_brown.png"));
+      $$0.put(cin.e, alc.b("textures/entity/horse/horse_black.png"));
+      $$0.put(cin.f, alc.b("textures/entity/horse/horse_gray.png"));
+      $$0.put(cin.g, alc.b("textures/entity/horse/horse_darkbrown.png"));
    });
 
-   public gnz(gms.a $$0) {
-      super($$0, new fwr($$0.a(gaa.bj)), 0.7F);
-      this.a(new gra(this, $$0.d()));
+   public gnz(gnj.a $$0) {
+      super($$0, new fxv($$0.a(gak.aP)), new fxv($$0.a(gak.aQ)), 1.1F);
+      this.a(new grl(this));
+      this.a(new grk(this, $$0.f()));
    }
 
-   public alb a(gtx $$0) {
+   public alc a(gua $$0) {
       return a.get($$0.a);
    }
 
-   public gtx c() {
-      return new gtx();
+   public gua c() {
+      return new gua();
    }
 
-   public void a(cgi $$0, gtx $$1, float $$2) {
+   public void a(cig $$0, gua $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
+      $$1.a = $$0.q();
+      $$1.h = $$0.t();
+      $$1.i = $$0.fT().u();
    }
 }

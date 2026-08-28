@@ -1,20 +1,22 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class gym {
+   public static final int a = -1;
+   private final int b;
+   private final int c;
 
-public interface gym {
-   List<ghx> a(@Nullable dua var1, @Nullable jj var2, azk var3);
+   public gym(int $$0) {
+      this($$0, -1);
+   }
 
-   boolean a();
+   public gym(int $$0, int $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
 
-   boolean b();
+   public int a(int $$0) {
+      return this.c == -1 ? $$0 : this.c;
+   }
 
-   boolean c();
-
-   boolean d();
-
-   gwk e();
-
-   gij f();
-
-   gih g();
+   public int a() {
+      return this.b;
+   }
 }

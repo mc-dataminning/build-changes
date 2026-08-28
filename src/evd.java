@@ -1,39 +1,30 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
 
-public class evd extends eug {
-   static final MapCodec<evd> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(exb.a.fieldOf("amplifier").forGetter($$0x -> $$0x.b)).apply($$0, evd::new));
-   private final exa b;
+public class evd extends euu {
+   public static final MapCodec<evd> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(ko.b.fieldOf("components").forGetter($$0x -> $$0x.b)).apply($$0, evd::new)
+   );
+   private final ko b;
 
-   private evd(List<ewe> $$0, exa $$1) {
+   private evd(List<ews> $$0, ko $$1) {
       super($$0);
       this.b = $$1;
    }
 
    @Override
-   public Set<evm<?>> a() {
-      return this.b.a();
+   public euw<evd> b() {
+      return eux.k;
    }
 
    @Override
-   public eui<evd> b() {
-      return euj.Q;
-   }
-
-   @Override
-   public cvl a(cvl $$0, est $$1) {
-      int $$2 = azc.a(this.b.a($$1), 0, 4);
-      $$0.b(kr.S, $$2);
+   public cvp a(cvp $$0, eth $$1) {
+      $$0.a(this.b);
       return $$0;
    }
 
-   public exa c() {
-      return this.b;
-   }
-
-   public static eug.a<?> a(exa $$0) {
-      return a($$1 -> new evd($$1, $$0));
+   public static <T> euu.a<?> a(kq<T> $$0, T $$1) {
+      return a($$2 -> new evd($$2, ko.a().a($$0, $$1).a()));
    }
 }

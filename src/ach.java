@@ -3,9 +3,9 @@ public class ach implements zk<abz> {
    private final je b;
    private final int c;
    private final int d;
-   private final dgv e;
+   private final dhj e;
 
-   public ach(je $$0, dgv $$1, int $$2, int $$3) {
+   public ach(je $$0, dhj $$1, int $$2, int $$3) {
       this.b = $$0;
       this.e = $$1;
       this.c = $$2;
@@ -47,7 +47,7 @@ public class ach implements zk<abz> {
       return this.d;
    }
 
-   public dgv g() {
+   public dhj g() {
       return this.e;
    }
 }

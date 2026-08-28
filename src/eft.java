@@ -1,30 +1,32 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record eft(int b, int c, int d, jn<ejs> e) implements efg {
+public class eft implements efu {
    public static final Codec<eft> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayl.l.fieldOf("tries").orElse(128).forGetter(eft::a),
-               ayl.k.fieldOf("xz_spread").orElse(7).forGetter(eft::b),
-               ayl.k.fieldOf("y_spread").orElse(3).forGetter(eft::c),
-               ejs.b.fieldOf("feature").forGetter(eft::d)
-            )
-            .apply($$0, eft::new)
+      $$0 -> $$0.group(je.a.optionalFieldOf("exit").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("exact").forGetter($$0x -> $$0x.c)).apply($$0, eft::new)
    );
+   private final Optional<je> b;
+   private final boolean c;
 
-   public int a() {
+   private eft(Optional<je> $$0, boolean $$1) {
+      this.b = $$0;
+      this.c = $$1;
+   }
+
+   public static eft a(je $$0, boolean $$1) {
+      return new eft(Optional.of($$0), $$1);
+   }
+
+   public static eft a() {
+      return new eft(Optional.empty(), false);
+   }
+
+   public Optional<je> b() {
       return this.b;
    }
 
-   public int b() {
+   public boolean c() {
       return this.c;
-   }
-
-   public int c() {
-      return this.d;
-   }
-
-   public jn<ejs> d() {
-      return this.e;
    }
 }

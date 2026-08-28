@@ -1,208 +1,348 @@
-import com.mojang.logging.LogUtils;
-import java.util.Set;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import java.util.List;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class drg<T extends dre> {
-   private static final Logger S = LogUtils.getLogger();
-   public static final drg<dsc> a = a("furnace", dsc::new, dgx.cD);
-   public static final drg<drl> b = a("chest", drl::new, dgx.cv);
-   public static final drg<dsz> c = a("trapped_chest", dsz::new, dgx.gV);
-   public static final drg<dsa> d = a("ender_chest", dsa::new, dgx.fG);
-   public static final drg<dsh> e = a("jukebox", dsh::new, dgx.dT);
-   public static final drg<drx> f = a("dispenser", drx::new, dgx.aU);
-   public static final drg<dry> g = a("dropper", dry::new, dgx.hi);
-   public static final drg<dsq> h = a(
-      "sign",
-      dsq::new,
-      dgx.cE,
-      dgx.cF,
-      dgx.cG,
-      dgx.cH,
-      dgx.cI,
-      dgx.cJ,
-      dgx.cK,
-      dgx.cR,
-      dgx.cS,
-      dgx.cT,
-      dgx.cU,
-      dgx.cV,
-      dgx.cW,
-      dgx.cX,
-      dgx.oW,
-      dgx.oY,
-      dgx.oX,
-      dgx.oZ,
-      dgx.cL,
-      dgx.cY,
-      dgx.cM,
-      dgx.cZ
-   );
-   public static final drg<dsd> i = a(
-      "hanging_sign",
-      dsd::new,
-      dgx.da,
-      dgx.db,
-      dgx.dc,
-      dgx.dd,
-      dgx.de,
-      dgx.df,
-      dgx.dg,
-      dgx.dh,
-      dgx.di,
-      dgx.dj,
-      dgx.dk,
-      dgx.dl,
-      dgx.dm,
-      dgx.dn,
-      dgx.do,
-      dgx.dp,
-      dgx.dq,
-      dgx.dr,
-      dgx.dt,
-      dgx.du,
-      dgx.ds,
-      dgx.dv
-   );
-   public static final drg<dsu> j = a("mob_spawner", dsu::new, dgx.ct);
-   public static final drg<dtw> k = a("piston", dtw::new, dgx.bQ);
-   public static final drg<drh> l = a("brewing_stand", drh::new, dgx.fs);
-   public static final drg<drz> m = a("enchanting_table", drz::new, dgx.fr);
-   public static final drg<dsx> n = a("end_portal", dsx::new, dgx.fx);
-   public static final drg<dqz> o = a("beacon", dqz::new, dgx.fO);
-   public static final drg<dss> p = a(
-      "skull", dss::new, dgx.gE, dgx.gF, dgx.gM, dgx.gN, dgx.gO, dgx.gP, dgx.gI, dgx.gJ, dgx.gG, dgx.gH, dgx.gK, dgx.gL, dgx.gQ, dgx.gR
-   );
-   public static final drg<drt> q = a("daylight_detector", drt::new, dgx.gZ);
-   public static final drg<dsf> r = a("hopper", dsf::new, dgx.hc);
-   public static final drg<drp> s = a("comparator", drp::new, dgx.gY);
-   public static final drg<dqt> t = a(
-      "banner",
-      dqt::new,
-      dgx.iJ,
-      dgx.iK,
-      dgx.iL,
-      dgx.iM,
-      dgx.iN,
-      dgx.iO,
-      dgx.iP,
-      dgx.iQ,
-      dgx.iR,
-      dgx.iS,
-      dgx.iT,
-      dgx.iU,
-      dgx.iV,
-      dgx.iW,
-      dgx.iX,
-      dgx.iY,
-      dgx.iZ,
-      dgx.ja,
-      dgx.jb,
-      dgx.jc,
-      dgx.jd,
-      dgx.je,
-      dgx.jf,
-      dgx.jg,
-      dgx.jh,
-      dgx.ji,
-      dgx.jj,
-      dgx.jk,
-      dgx.jl,
-      dgx.jm,
-      dgx.jn,
-      dgx.jo
-   );
-   public static final drg<dsv> u = a("structure_block", dsv::new, dgx.pa);
-   public static final drg<dsw> v = a("end_gateway", dsw::new, dgx.kF);
-   public static final drg<dro> w = a("command_block", dro::new, dgx.fN, dgx.kH, dgx.kG);
-   public static final drg<dsp> x = a(
-      "shulker_box",
-      dsp::new,
-      dgx.kP,
-      dgx.lf,
-      dgx.lb,
-      dgx.lc,
-      dgx.kZ,
-      dgx.kX,
-      dgx.ld,
-      dgx.kT,
-      dgx.kY,
-      dgx.kV,
-      dgx.kS,
-      dgx.kR,
-      dgx.kW,
-      dgx.la,
-      dgx.le,
-      dgx.kQ,
-      dgx.kU
-   );
-   public static final drg<dra> y = a(
-      "bed", dra::new, dgx.bn, dgx.bo, dgx.bk, dgx.bl, dgx.bi, dgx.bg, dgx.bm, dgx.bc, dgx.bh, dgx.be, dgx.bb, dgx.ba, dgx.bf, dgx.bj, dgx.aZ, dgx.bd
-   );
-   public static final drg<drq> z = a("conduit", drq::new, dgx.mX);
-   public static final drg<dqx> A = a("barrel", dqx::new, dgx.nU);
-   public static final drg<dst> B = a("smoker", dst::new, dgx.nV);
-   public static final drg<drd> C = a("blast_furnace", drd::new, dgx.nW);
-   public static final drg<dsi> D = a("lectern", dsi::new, dgx.oa);
-   public static final drg<drc> E = a("bell", drc::new, dgx.od);
-   public static final drg<dsg> F = a("jigsaw", dsg::new, dgx.pb);
-   public static final drg<drk> G = a("campfire", drk::new, dgx.og, dgx.oh);
-   public static final drg<drb> H = a("beehive", drb::new, dgx.pe, dgx.pf);
-   public static final drg<dsn> I = a("sculk_sensor", dsn::new, dgx.qQ);
-   public static final drg<drj> J = a("calibrated_sculk_sensor", drj::new, dgx.qR);
-   public static final drg<dsm> K = a("sculk_catalyst", dsm::new, dgx.qU);
-   public static final drg<dso> L = a("sculk_shrieker", dso::new, dgx.qV);
-   public static final drg<drn> M = a("chiseled_bookshelf", drn::new, dgx.cm);
-   public static final drg<dri> N = a("brushable_block", dri::new, dgx.J, dgx.M);
-   public static final drg<dru> O = a("decorated_pot", dru::new, dgx.tp);
-   public static final drg<drs> P = a("crafter", drs::new, dgx.tq);
-   public static final drg<dta> Q = a("trial_spawner", dta::new, dgx.tr);
-   public static final drg<dti> R = a("vault", dti::new, dgx.ts);
-   private final drg.a<? extends T> T;
-   private final Set<dgv> U;
-   private final jn.c<drg<?>> V = lu.j.f(this);
-
-   @Nullable
-   public static alb a(drg<?> $$0) {
-      return lu.j.b($$0);
-   }
-
-   private static <T extends dre> drg<T> a(String $$0, drg.a<? extends T> $$1, dgv... $$2) {
-      if ($$2.length == 0) {
-         S.warn("Block entity type {} requires at least one valid block to be defined!", $$0);
+public abstract class drg extends drm implements brz, csn, csy {
+   protected static final int b = 0;
+   protected static final int c = 1;
+   protected static final int d = 2;
+   public static final int e = 0;
+   private static final int[] r = new int[]{0};
+   private static final int[] s = new int[]{2, 1};
+   private static final int[] t = new int[]{1};
+   public static final int f = 1;
+   public static final int g = 2;
+   public static final int h = 3;
+   public static final int i = 4;
+   public static final int j = 200;
+   public static final int k = 2;
+   public static final int l = 0;
+   protected jw<cvp> m = jw.a(3, cvp.k);
+   int u;
+   int v = 0;
+   int w;
+   int x;
+   protected final cri n = new cri() {
+      @Override
+      public int a(int $$0) {
+         switch ($$0) {
+            case 0:
+               return drg.this.u;
+            case 1:
+               return drg.this.v;
+            case 2:
+               return drg.this.w;
+            case 3:
+               return drg.this.x;
+            default:
+               return 0;
+         }
       }
 
-      ad.a(bhk.s, $$0);
-      return ka.a(lu.j, $$0, new drg<>($$1, Set.of($$2)));
+      @Override
+      public void a(int $$0, int $$1) {
+         switch ($$0) {
+            case 0:
+               drg.this.u = $$1;
+               break;
+            case 1:
+               drg.this.v = $$1;
+               break;
+            case 2:
+               drg.this.w = $$1;
+               break;
+            case 3:
+               drg.this.x = $$1;
+         }
+      }
+
+      @Override
+      public int a() {
+         return 4;
+      }
+   };
+   private final Object2IntOpenHashMap<alc> y = new Object2IntOpenHashMap();
+   private final dal.a<dax, ? extends czo> z;
+
+   protected drg(dru<?> $$0, je $$1, duo $$2, dan<? extends czo> $$3) {
+      super($$0, $$1, $$2);
+      this.z = dal.b($$3);
    }
 
-   private drg(drg.a<? extends T> $$0, Set<dgv> $$1) {
-      this.T = $$0;
-      this.U = $$1;
+   private boolean k() {
+      return this.u > 0;
+   }
+
+   @Override
+   protected void a(uf $$0, jp.a $$1) {
+      super.a($$0, $$1);
+      this.m = jw.a(this.b(), cvp.k);
+      brj.b($$0, this.m, $$1);
+      this.u = $$0.g("BurnTime");
+      this.w = $$0.g("CookTime");
+      this.x = $$0.g("CookTimeTotal");
+      this.v = 0;
+      uf $$2 = $$0.p("RecipesUsed");
+
+      for (String $$3 : $$2.e()) {
+         this.y.put(alc.a($$3), $$2.h($$3));
+      }
+   }
+
+   @Override
+   protected void b(uf $$0, jp.a $$1) {
+      super.b($$0, $$1);
+      $$0.a("BurnTime", (short)this.u);
+      $$0.a("CookTime", (short)this.w);
+      $$0.a("CookTimeTotal", (short)this.x);
+      brj.a($$0, this.m, $$1);
+      uf $$2 = new uf();
+      this.y.forEach(($$1x, $$2x) -> $$2.a($$1x.toString(), $$2x));
+      $$0.a("RecipesUsed", $$2);
+   }
+
+   public static void a(deg $$0, je $$1, duo $$2, drg $$3) {
+      boolean $$4 = $$3.k();
+      boolean $$5 = false;
+      if ($$3.k()) {
+         $$3.u--;
+      }
+
+      cvp $$6 = $$3.m.get(1);
+      cvp $$7 = $$3.m.get(0);
+      boolean $$8 = !$$7.f();
+      boolean $$9 = !$$6.f();
+      if ($$3.v == 0) {
+         $$3.v = $$3.a($$0.L(), $$6);
+      }
+
+      if ($$3.k() || $$9 && $$8) {
+         daj<?> $$10;
+         if ($$8) {
+            $$10 = $$3.z.a(new dax($$7), $$0).orElse(null);
+         } else {
+            $$10 = null;
+         }
+
+         int $$12 = $$3.ak_();
+         if (!$$3.k() && a($$0.F_(), $$10, $$3.m, $$12)) {
+            $$3.u = $$3.a($$0.L(), $$6);
+            $$3.v = $$3.u;
+            if ($$3.k()) {
+               $$5 = true;
+               if ($$9) {
+                  cvk $$13 = $$6.h();
+                  $$6.h(1);
+                  if ($$6.f()) {
+                     cvk $$14 = $$13.t();
+                     $$3.m.set(1, $$14 == null ? cvp.k : new cvp($$14));
+                  }
+               }
+            }
+         }
+
+         if ($$3.k() && a($$0.F_(), $$10, $$3.m, $$12)) {
+            $$3.w++;
+            if ($$3.w == $$3.x) {
+               $$3.w = 0;
+               $$3.x = a($$0, $$3);
+               if (b($$0.F_(), $$10, $$3.m, $$12)) {
+                  $$3.a($$10);
+               }
+
+               $$5 = true;
+            }
+         } else {
+            $$3.w = 0;
+         }
+      } else if (!$$3.k() && $$3.w > 0) {
+         $$3.w = azd.a($$3.w - 2, 0, $$3.x);
+      }
+
+      if ($$4 != $$3.k()) {
+         $$5 = true;
+         $$2 = $$2.b(dge.b, Boolean.valueOf($$3.k()));
+         $$0.a($$1, $$2, 3);
+      }
+
+      if ($$5) {
+         a($$0, $$1, $$2);
+      }
+   }
+
+   private static boolean a(kb $$0, @Nullable daj<?> $$1, jw<cvp> $$2, int $$3) {
+      if (!$$2.get(0).f() && $$1 != null) {
+         cvp $$4 = $$1.b().a($$0);
+         if ($$4.f()) {
+            return false;
+         } else {
+            cvp $$5 = $$2.get(2);
+            if ($$5.f()) {
+               return true;
+            } else if (!cvp.c($$5, $$4)) {
+               return false;
+            } else {
+               return $$5.J() < $$3 && $$5.J() < $$5.k() ? true : $$5.J() < $$4.k();
+            }
+         }
+      } else {
+         return false;
+      }
+   }
+
+   private static boolean b(kb $$0, @Nullable daj<?> $$1, jw<cvp> $$2, int $$3) {
+      if ($$1 != null && a($$0, $$1, $$2, $$3)) {
+         cvp $$4 = $$2.get(0);
+         cvp $$5 = $$1.b().a($$0);
+         cvp $$6 = $$2.get(2);
+         if ($$6.f()) {
+            $$2.set(2, $$5.u());
+         } else if (cvp.c($$6, $$5)) {
+            $$6.g(1);
+         }
+
+         if ($$4.a(dhl.aP.q()) && !$$2.get(1).f() && $$2.get(1).a(cvt.qz)) {
+            $$2.set(1, new cvp(cvt.qA));
+         }
+
+         $$4.h(1);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected int a(dsp $$0, cvp $$1) {
+      return $$0.b($$1);
+   }
+
+   private static int a(deg $$0, drg $$1) {
+      dax $$2 = new dax($$1.a(0));
+      return $$1.z.a($$2, $$0).map($$0x -> ((czo)$$0x.b()).d()).orElse(200);
+   }
+
+   @Override
+   public int[] a(jj $$0) {
+      if ($$0 == jj.a) {
+         return s;
+      } else {
+         return $$0 == jj.b ? r : t;
+      }
+   }
+
+   @Override
+   public boolean a(int $$0, cvp $$1, @Nullable jj $$2) {
+      return this.b($$0, $$1);
+   }
+
+   @Override
+   public boolean b(int $$0, cvp $$1, jj $$2) {
+      return $$2 == jj.a && $$0 == 1 ? $$1.a(cvt.qA) || $$1.a(cvt.qz) : true;
+   }
+
+   @Override
+   public int b() {
+      return this.m.size();
+   }
+
+   @Override
+   protected jw<cvp> f() {
+      return this.m;
+   }
+
+   @Override
+   protected void a(jw<cvp> $$0) {
+      this.m = $$0;
+   }
+
+   @Override
+   public void a(int $$0, cvp $$1) {
+      cvp $$2 = this.m.get($$0);
+      boolean $$3 = !$$1.f() && cvp.c($$2, $$1);
+      this.m.set($$0, $$1);
+      $$1.f(this.f_($$1));
+      if ($$0 == 0 && !$$3) {
+         this.x = a(this.o, this);
+         this.w = 0;
+         this.e();
+      }
+   }
+
+   @Override
+   public boolean b(int $$0, cvp $$1) {
+      if ($$0 == 2) {
+         return false;
+      } else if ($$0 != 1) {
+         return true;
+      } else {
+         cvp $$2 = this.m.get(1);
+         return this.o.L().a($$1) || $$1.a(cvt.qz) && !$$2.a(cvt.qz);
+      }
+   }
+
+   @Override
+   public void a(@Nullable daj<?> $$0) {
+      if ($$0 != null) {
+         alc $$1 = $$0.a();
+         this.y.addTo($$1, 1);
+      }
    }
 
    @Nullable
-   public T a(je $$0, dua $$1) {
-      return (T)this.T.create($$0, $$1);
+   @Override
+   public daj<?> d() {
+      return null;
    }
 
-   public boolean a(dua $$0) {
-      return this.U.contains($$0.b());
+   @Override
+   public void a(cnu $$0, List<cvp> $$1) {
    }
 
-   @Deprecated
-   public jn.c<drg<?>> a() {
-      return this.V;
+   public void a(ari $$0) {
+      List<daj<?>> $$1 = this.a($$0.B(), $$0.dq());
+      $$0.a($$1);
+
+      for (daj<?> $$2 : $$1) {
+         if ($$2 != null) {
+            $$0.a($$2, this.m);
+         }
+      }
+
+      this.y.clear();
    }
 
-   @Nullable
-   public T a(dcx $$0, je $$1) {
-      dre $$2 = $$0.c_($$1);
-      return (T)($$2 != null && $$2.q() == this ? $$2 : null);
+   public List<daj<?>> a(arh $$0, eys $$1) {
+      List<daj<?>> $$2 = Lists.newArrayList();
+      ObjectIterator var4 = this.y.object2IntEntrySet().iterator();
+
+      while (var4.hasNext()) {
+         Entry<alc> $$3 = (Entry<alc>)var4.next();
+         $$0.r().a((alc)$$3.getKey()).ifPresent($$4 -> {
+            $$2.add((daj<?>)$$4);
+            a($$0, $$1, $$3.getIntValue(), ((czo)$$4.b()).b());
+         });
+      }
+
+      return $$2;
    }
 
-   @FunctionalInterface
-   interface a<T extends dre> {
-      T create(je var1, dua var2);
+   private static void a(arh $$0, eys $$1, int $$2, float $$3) {
+      int $$4 = azd.d((float)$$2 * $$3);
+      float $$5 = azd.h((float)$$2 * $$3);
+      if ($$5 != 0.0F && Math.random() < (double)$$5) {
+         $$4++;
+      }
+
+      bua.a($$0, $$1, $$4);
+   }
+
+   @Override
+   public void fillStackedContents(cnz $$0) {
+      for (cvp $$1 : this.m) {
+         $$0.b($$1);
+      }
    }
 }

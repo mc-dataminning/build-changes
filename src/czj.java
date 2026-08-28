@@ -1,8 +1,8 @@
-public interface czj extends czt<czi> {
-   @Override
-   default czz<?> e() {
-      return czz.a;
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   czh d();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface czj {
 }

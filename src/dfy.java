@@ -1,76 +1,59 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class dfy extends dgv implements dgy {
-   public static final MapCodec<dfy> a = b(dfy::new);
-   protected static final float b = 4.0F;
-   protected static final eyx c = dgv.a(4.0, 0.0, 4.0, 12.0, 12.0, 12.0);
+public class dfy extends dfl {
+   public static final MapCodec<dfy> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ala.d(dfo.ah), ala.d(dfo.ai), ala.d(dfo.aj), ala.d(dfo.ak), ala.d(dfo.al)).apply($$0, $$0.stable(dfy::new))
+   );
+   private final jn<dfh> c;
+   private final jn<dfh> d;
+   private final jn<dfh> e;
+   private final jn<dfh> f;
+   private final jn<dfh> g;
 
-   @Override
-   public MapCodec<dfy> a() {
-      return a;
+   public static dfy a(jo<dfh> $$0) {
+      return new dfy($$0.b(dfo.ah), $$0.b(dfo.ai), $$0.b(dfo.aj), $$0.b(dfo.ak), $$0.b(dfo.al));
    }
 
-   public dfy(dtz.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
-      eye $$4 = $$0.a($$2);
-      return c.a($$4.d, $$4.e, $$4.f);
-   }
-
-   @Override
-   protected void b(dua $$0, arg $$1, je $$2, azk $$3) {
-      if ($$3.a(3) == 0 && $$1.u($$2.d()) && $$1.b($$2.d(), 0) >= 9) {
-         this.a($$1, $$2);
-      }
+   private dfy(jn<dfh> $$0, jn<dfh> $$1, jn<dfh> $$2, jn<dfh> $$3, jn<dfh> $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
    }
 
    @Override
-   protected boolean a(dua $$0, ddv $$1, je $$2) {
-      return $$1.a_($$2.e()).a(aws.av);
+   protected Stream<jn<dfh>> b() {
+      return Stream.of(this.c, this.d, this.e, this.f, this.g);
    }
 
    @Override
-   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
-      if (!$$0.a($$3, $$4)) {
-         return dgx.a.o();
+   protected MapCodec<? extends dfl> a() {
+      return b;
+   }
+
+   @Override
+   public jn<dfh> getNoiseBiome(int $$0, int $$1, int $$2, dfq.f $$3) {
+      int $$4 = jy.c($$0);
+      int $$5 = jy.c($$1);
+      int $$6 = jy.c($$2);
+      int $$7 = kg.a($$4);
+      int $$8 = kg.a($$6);
+      if ((long)$$7 * (long)$$7 + (long)$$8 * (long)$$8 <= 4096L) {
+         return this.c;
       } else {
-         if ($$1 == jj.b && $$2.a(dgx.mZ)) {
-            $$3.a($$4, dgx.mZ.o(), 2);
+         int $$9 = (kg.a($$4) * 2 + 1) * 8;
+         int $$10 = (kg.a($$6) * 2 + 1) * 8;
+         double $$11 = $$3.e().a(new ead.e($$9, $$5, $$10));
+         if ($$11 > 0.25) {
+            return this.d;
+         } else if ($$11 >= -0.0625) {
+            return this.e;
+         } else {
+            return $$11 < -0.21875 ? this.f : this.g;
          }
-
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
-   }
-
-   @Override
-   public cvl a(ddv $$0, je $$1, dua $$2) {
-      return new cvl(cvo.dR);
-   }
-
-   @Override
-   public boolean b(ddv $$0, je $$1, dua $$2) {
-      return $$0.a_($$1.d()).l();
-   }
-
-   @Override
-   public boolean a(dds $$0, azk $$1, je $$2, dua $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arg $$0, azk $$1, je $$2, dua $$3) {
-      this.a($$0, $$2);
-   }
-
-   @Override
-   protected float a(dua $$0, cnp $$1, dcx $$2, je $$3) {
-      return $$1.eW().h() instanceof cxb ? 1.0F : super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected void a(dds $$0, je $$1) {
-      $$0.a($$1.d(), dgx.mZ.o().b(dfz.i, dum.b), 3);
    }
 }

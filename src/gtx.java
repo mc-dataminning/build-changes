@@ -1,7 +1,5 @@
-public class gtx extends gts {
-   public cgi.a a;
-
-   public gtx() {
-      this.a = cgi.a.a;
-   }
+public class gtx extends guj {
+   public boolean a = true;
+   public boolean b = true;
+   public float c;
 }

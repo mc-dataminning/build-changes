@@ -1,61 +1,80 @@
-public class cjf extends civ {
-   private static final int b = 100;
-   private static final int c = 10;
-   private static final int d = 20;
-   private static final int e = 150;
-   private static final cev f = cev.a().a(150.0);
-   private final cev g;
-   private int h;
+import javax.annotation.Nullable;
 
-   public cjf(cis $$0) {
+public class cjf extends ciz {
+   private static final cfa b = cfa.a().d();
+   @Nullable
+   private erd c;
+   @Nullable
+   private eys d;
+
+   public cjf(cix $$0) {
       super($$0);
-      this.g = cev.a().a(20.0).a($$1 -> Math.abs($$1.dz() - $$0.dz()) <= 10.0);
    }
 
    @Override
-   public void c() {
-      this.h++;
-      buf $$0 = this.a.dS().a(this.g, this.a, this.a.dx(), this.a.dz(), this.a.dD());
-      if ($$0 != null) {
-         if (this.h > 25) {
-            this.a.gl().a(cji.h);
-         } else {
-            eye $$1 = new eye($$0.dx() - this.a.dx(), 0.0, $$0.dD() - this.a.dD()).d();
-            eye $$2 = new eye((double)azc.a(this.a.dI() * (float) (Math.PI / 180.0)), 0.0, (double)(-azc.b(this.a.dI() * (float) (Math.PI / 180.0)))).d();
-            float $$3 = (float)$$2.b($$1);
-            float $$4 = (float)(Math.acos((double)$$3) * 180.0F / (float)Math.PI) + 0.5F;
-            if ($$4 < 0.0F || $$4 > 10.0F) {
-               double $$5 = $$0.dx() - this.a.d.dx();
-               double $$6 = $$0.dD() - this.a.d.dD();
-               double $$7 = azc.a(azc.d(180.0 - azc.d($$5, $$6) * 180.0F / (float)Math.PI - (double)this.a.dI()), -100.0, 100.0);
-               this.a.cb *= 0.8F;
-               float $$8 = (float)Math.sqrt($$5 * $$5 + $$6 * $$6) + 1.0F;
-               float $$9 = $$8;
-               if ($$8 > 40.0F) {
-                  $$8 = 40.0F;
-               }
-
-               this.a.cb += (float)$$7 * (0.7F / $$8 / $$9);
-               this.a.v(this.a.dI() + this.a.cb);
-            }
-         }
-      } else if (this.h >= 100) {
-         $$0 = this.a.dS().a(f, this.a, this.a.dx(), this.a.dz(), this.a.dD());
-         this.a.gl().a(cji.e);
-         if ($$0 != null) {
-            this.a.gl().a(cji.i);
-            this.a.gl().b(cji.i).a(new eye($$0.dx(), $$0.dz(), $$0.dD()));
-         }
-      }
+   public cjn<cjf> i() {
+      return cjn.c;
    }
 
    @Override
    public void d() {
-      this.h = 0;
+      this.c = null;
+      this.d = null;
    }
 
    @Override
-   public cji<cjf> i() {
-      return cji.g;
+   public void c() {
+      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.dx(), this.a.dz(), this.a.dD());
+      if ($$0 < 100.0 || $$0 > 22500.0 || this.a.Q || this.a.R) {
+         this.j();
+      }
+   }
+
+   @Nullable
+   @Override
+   public eys g() {
+      return this.d;
+   }
+
+   private void j() {
+      if (this.c == null || this.c.c()) {
+         int $$0 = this.a.y();
+         je $$1 = this.a.dS().a(eak.a.f, edp.a(this.a.q()));
+         cnu $$2 = this.a.dS().a(b, this.a, (double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+         int $$4;
+         if ($$2 != null) {
+            eys $$3 = new eys($$2.dx(), 0.0, $$2.dD()).d();
+            $$4 = this.a.q(-$$3.d * 40.0, 105.0, -$$3.f * 40.0);
+         } else {
+            $$4 = this.a.q(40.0, (double)$$1.v(), 0.0);
+         }
+
+         erb $$6 = new erb($$1.u(), $$1.v(), $$1.w());
+         this.c = this.a.a($$0, $$4, $$6);
+         if (this.c != null) {
+            this.c.a();
+         }
+      }
+
+      this.k();
+      if (this.c != null && this.c.c()) {
+         this.a.gm().a(cjn.d);
+      }
+   }
+
+   private void k() {
+      if (this.c != null && !this.c.c()) {
+         ki $$0 = this.c.g();
+         this.c.a();
+         double $$1 = (double)$$0.u();
+         double $$2 = (double)$$0.w();
+
+         double $$3;
+         do {
+            $$3 = (double)((float)$$0.v() + this.a.dV().i() * 20.0F);
+         } while ($$3 < (double)$$0.v());
+
+         this.d = new eys($$1, $$3, $$2);
+      }
    }
 }

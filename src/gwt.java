@@ -1,30 +1,39 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import javax.annotation.Nullable;
 
-public class gwt implements gwo {
-   public static final MapCodec<gwt> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, gwt::new)
-   );
-   private final String c;
-   private final String d;
+public class gwt extends gwu {
+   @Nullable
+   private CompletableFuture<gwu.a> e;
 
-   public gwt(String $$0, String $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public gwt(aut $$0, alc $$1, Executor $$2) {
+      super($$1);
+      this.e = CompletableFuture.supplyAsync(() -> gwu.a.a($$0, $$1), $$2);
    }
 
    @Override
-   public void a(aus $$0, gwo.a $$1) {
-      aku $$2 = new aku("textures/" + this.c, ".png");
-      $$2.a($$0).forEach(($$2x, $$3) -> {
-         alb $$4 = $$2.b($$2x).f(this.d);
-         $$1.a($$4, $$3);
-      });
+   protected gwu.a b(aut $$0) {
+      if (this.e != null) {
+         gwu.a $$1 = this.e.join();
+         this.e = null;
+         return $$1;
+      } else {
+         return gwu.a.a($$0, this.d);
+      }
+   }
+
+   public CompletableFuture<Void> e() {
+      return this.e == null ? CompletableFuture.completedFuture(null) : this.e.thenApply($$0 -> null);
    }
 
    @Override
-   public gwq a() {
-      return gwr.b;
+   public void a(gxc $$0, aut $$1, alc $$2, Executor $$3) {
+      this.e = CompletableFuture.supplyAsync(() -> gwu.a.a($$1, this.d), ad.g());
+      this.e.thenRunAsync(() -> $$0.a(this.d, this), a($$3));
+   }
+
+   private static Executor a(Executor $$0) {
+      return $$1 -> $$0.execute(() -> RenderSystem.recordRenderCall($$1::run));
    }
 }

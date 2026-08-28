@@ -172,11 +172,11 @@ public class ki implements Comparable<ki> {
    }
 
    public boolean a(ki $$0, double $$1) {
-      return this.j($$0) < azc.k($$1);
+      return this.j($$0) < azd.k($$1);
    }
 
    public boolean a(jx $$0, double $$1) {
-      return this.b($$0) < azc.k($$1);
+      return this.b($$0) < azd.k($$1);
    }
 
    public double j(ki $$0) {

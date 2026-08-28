@@ -1,23 +1,55 @@
 import com.google.gson.annotations.SerializedName;
-import java.util.Set;
+import java.util.UUID;
 
-public class feh extends feo implements fei {
-   @SerializedName("seed")
-   private final String a;
-   @SerializedName("worldTemplateId")
-   private final long b;
-   @SerializedName("levelType")
-   private final int c;
-   @SerializedName("generateStructures")
-   private final boolean d;
-   @SerializedName("experiments")
-   private final Set<String> e;
+public class feh extends fey implements fes {
+   @SerializedName("name")
+   private String a;
+   @SerializedName("uuid")
+   private UUID b;
+   @SerializedName("operator")
+   private boolean c;
+   @SerializedName("accepted")
+   private boolean d;
+   @SerializedName("online")
+   private boolean e;
 
-   public feh(String $$0, long $$1, int $$2, boolean $$3, Set<String> $$4) {
+   public String a() {
+      return this.a;
+   }
+
+   public void a(String $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
+   }
+
+   public UUID b() {
+      return this.b;
+   }
+
+   public void a(UUID $$0) {
+      this.b = $$0;
+   }
+
+   public boolean c() {
+      return this.c;
+   }
+
+   public void a(boolean $$0) {
+      this.c = $$0;
+   }
+
+   public boolean d() {
+      return this.d;
+   }
+
+   public void b(boolean $$0) {
+      this.d = $$0;
+   }
+
+   public boolean e() {
+      return this.e;
+   }
+
+   public void c(boolean $$0) {
+      this.e = $$0;
    }
 }

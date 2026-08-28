@@ -1,8 +1,8 @@
 public class ahz implements zk<agq> {
    public static final zb<wa, ahz> a = zk.a(ahz::a, ahz::new);
-   private final alb b;
+   private final alc b;
 
-   public ahz(czv<?> $$0) {
+   public ahz(daj<?> $$0) {
       this.b = $$0.a();
    }
 
@@ -23,7 +23,7 @@ public class ahz implements zk<agq> {
       $$0.a(this);
    }
 
-   public alb b() {
+   public alc b() {
       return this.b;
    }
 }

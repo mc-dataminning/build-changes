@@ -1,21 +1,7 @@
-import com.mojang.serialization.Codec;
+@FunctionalInterface
+public interface ekz {
+   ekz a = ($$0, $$1, $$2, $$3, $$4, $$5, $$6) -> {
+   };
 
-public enum ekz implements azy {
-   a("none"),
-   b("bury"),
-   c("beard_thin"),
-   d("beard_box"),
-   e("encapsulate");
-
-   public static final Codec<ekz> f = azy.a(ekz::values);
-   private final String g;
-
-   private ekz(final String $$0) {
-      this.g = $$0;
-   }
-
-   @Override
-   public String c() {
-      return this.g;
-   }
+   void afterPlace(dfd var1, dfb var2, dwl var3, azl var4, eku var5, ddm var6, elr var7);
 }

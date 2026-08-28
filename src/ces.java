@@ -1,36 +1,37 @@
-import com.google.common.collect.ImmutableMap;
+import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
+import it.unimi.dsi.fastutil.ints.IntSet;
 
-public class ces extends cei {
-   private static final ImmutableMap<btq<?>, Float> a = ImmutableMap.builder()
-      .put(btq.B, 8.0F)
-      .put(btq.J, 12.0F)
-      .put(btq.ac, 8.0F)
-      .put(btq.ad, 12.0F)
-      .put(btq.aC, 15.0F)
-      .put(btq.aH, 12.0F)
-      .put(btq.bi, 8.0F)
-      .put(btq.bk, 10.0F)
-      .put(btq.bt, 10.0F)
-      .put(btq.bu, 8.0F)
-      .put(btq.bw, 8.0F)
-      .build();
+public class ces {
+   private final bum a;
+   private final IntSet b = new IntOpenHashSet();
+   private final IntSet c = new IntOpenHashSet();
 
-   @Override
-   protected boolean a(buf $$0, buf $$1) {
-      return this.b($$1) && this.e($$0, $$1);
+   public ces(bum $$0) {
+      this.a = $$0;
    }
 
-   private boolean e(buf $$0, buf $$1) {
-      float $$2 = (Float)a.get($$1.ao());
-      return $$1.g((btj)$$0) <= (double)($$2 * $$2);
+   public void a() {
+      this.b.clear();
+      this.c.clear();
    }
 
-   @Override
-   protected cdi<buf> b() {
-      return cdi.A;
-   }
+   public boolean a(bto $$0) {
+      int $$1 = $$0.ap();
+      if (this.b.contains($$1)) {
+         return true;
+      } else if (this.c.contains($$1)) {
+         return false;
+      } else {
+         this.a.dS().ah().a("hasLineOfSight");
+         boolean $$2 = this.a.G($$0);
+         this.a.dS().ah().c();
+         if ($$2) {
+            this.b.add($$1);
+         } else {
+            this.c.add($$1);
+         }
 
-   private boolean b(buf $$0) {
-      return a.containsKey($$0.ao());
+         return $$2;
+      }
    }
 }

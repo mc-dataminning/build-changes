@@ -1,15 +1,15 @@
-public class gpu extends gll<clm, gup> {
-   private static final alb a = alb.b("textures/entity/skeleton/wither_skeleton.png");
+public class gpu extends gop<chx, guj, fzo> {
+   private static final alc a = alc.b("textures/entity/tadpole/tadpole.png");
 
-   public gpu(gms.a $$0) {
-      super($$0, gaa.da, gaa.db, gaa.dc);
+   public gpu(gnj.a $$0) {
+      super($$0, new fzo($$0.a(gak.cH)), 0.14F);
    }
 
-   public alb b(gup $$0) {
+   public alc g(guj $$0) {
       return a;
    }
 
-   public gup c() {
-      return new gup();
+   public guj c() {
+      return new guj();
    }
 }

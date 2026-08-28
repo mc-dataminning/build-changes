@@ -1,36 +1,85 @@
-import com.google.common.collect.Sets;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableMap.Builder;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 import java.util.Set;
+import java.util.Map.Entry;
+import java.util.stream.Stream;
 
-public record ewn(exa b, ess c) implements ewe {
+public record ewn(Map<String, etg> b, eth.b c) implements ews {
    public static final MapCodec<ewn> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(exb.a.fieldOf("value").forGetter(ewn::c), ess.a.fieldOf("range").forGetter(ewn::d)).apply($$0, ewn::new)
+      $$0 -> $$0.group(Codec.unboundedMap(Codec.STRING, etg.a).fieldOf("scores").forGetter(ewn::c), eth.b.e.fieldOf("entity").forGetter(ewn::d))
+            .apply($$0, ewn::new)
    );
 
    @Override
-   public ewf b() {
-      return ewg.r;
+   public ewt b() {
+      return ewu.h;
    }
 
    @Override
-   public Set<evm<?>> a() {
-      return Sets.union(this.b.a(), this.c.a());
+   public Set<ewa<?>> a() {
+      return Stream.concat(Stream.of(this.c.a()), this.b.values().stream().flatMap($$0 -> $$0.a().stream())).collect(ImmutableSet.toImmutableSet());
    }
 
-   public boolean a(est $$0) {
-      return this.c.b($$0, this.b.a($$0));
+   public boolean a(eth $$0) {
+      bto $$1 = $$0.c(this.c.a());
+      if ($$1 == null) {
+         return false;
+      } else {
+         ezx $$2 = $$0.d().f();
+
+         for (Entry<String, etg> $$3 : this.b.entrySet()) {
+            if (!this.a($$0, $$1, $$2, $$3.getKey(), $$3.getValue())) {
+               return false;
+            }
+         }
+
+         return true;
+      }
    }
 
-   public static ewe.a a(exa $$0, ess $$1) {
-      return () -> new ewn($$0, $$1);
+   protected boolean a(eth $$0, bto $$1, ezx $$2, String $$3, etg $$4) {
+      ezp $$5 = $$2.a($$3);
+      if ($$5 == null) {
+         return false;
+      } else {
+         ezt $$6 = $$2.d($$1, $$5);
+         return $$6 == null ? false : $$4.b($$0, $$6.a());
+      }
    }
 
-   public exa c() {
+   public static ewn.a a(eth.b $$0) {
+      return new ewn.a($$0);
+   }
+
+   public Map<String, etg> c() {
       return this.b;
    }
 
-   public ess d() {
+   public eth.b d() {
       return this.c;
+   }
+
+   public static class a implements ews.a {
+      private final Builder<String, etg> a = ImmutableMap.builder();
+      private final eth.b b;
+
+      public a(eth.b $$0) {
+         this.b = $$0;
+      }
+
+      public ewn.a a(String $$0, etg $$1) {
+         this.a.put($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public ews build() {
+         return new ewn(this.a.build(), this.b);
+      }
    }
 }

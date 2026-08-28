@@ -1,180 +1,116 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.ArrayUtils;
+public class ftc extends ftg {
+   private static final xd a = xd.c("options.languageAccuracyWarning").b(-4539718);
+   private static final int u = 53;
+   private ftc.a v;
+   final gyk w;
 
-public class ftc extends fkg<ftc.b> {
-   private static final int a = 20;
-   final ftd m;
-   private int n;
-
-   public ftc(ftd $$0, fib $$1) {
-      super($$1, $$0.n, $$0.s.d(), $$0.s.c(), 20);
-      this.m = $$0;
-      fhz[] $$2 = (fhz[])ArrayUtils.clone($$1.n.V);
-      Arrays.sort((Object[])$$2);
-      String $$3 = null;
-
-      for (fhz $$4 : $$2) {
-         String $$5 = $$4.f();
-         if (!$$5.equals($$3)) {
-            $$3 = $$5;
-            this.b(new ftc.a(xd.c($$5)));
-         }
-
-         xd $$6 = xd.c($$4.h());
-         int $$7 = $$1.h.a($$6);
-         if ($$7 > this.n) {
-            this.n = $$7;
-         }
-
-         this.b(new ftc.c($$4, $$6));
-      }
-   }
-
-   public void c() {
-      fhz.d();
-      this.J();
-   }
-
-   public void J() {
-      this.aK_().forEach(ftc.b::c);
+   public ftc(fqd $$0, fip $$1, gyk $$2) {
+      super($$0, $$1, xd.c("options.language.title"));
+      this.w = $$2;
+      this.s.a(53);
    }
 
    @Override
-   public int b() {
-      return 340;
+   protected void E() {
+      this.v = this.s.c(new ftc.a(this.m));
    }
 
-   public class a extends ftc.b {
-      final xd b;
-      private final int c;
+   @Override
+   protected void m() {
+   }
 
-      public a(final xd $$1) {
-         this.b = $$1;
-         this.c = ftc.this.c.h.a(this.b);
+   @Override
+   protected void D() {
+      foc $$0 = this.s.b(foc.d()).a(8);
+      $$0.c().b();
+      $$0.a(new flr(a, this.p));
+      foc $$1 = $$0.a(foc.e().a(8));
+      $$1.a(fkk.a(xd.c("options.font"), $$0x -> this.m.a(new ftb(this, this.c))).a());
+      $$1.a(fkk.a(xc.d, $$0x -> this.G()).a());
+   }
+
+   @Override
+   protected void c() {
+      super.c();
+      this.v.a(this.n, this.s);
+   }
+
+   void G() {
+      ftc.a.a $$0 = this.v.h();
+      if ($$0 != null && !$$0.b.equals(this.w.a())) {
+         this.w.a($$0.b);
+         this.c.ab = $$0.b;
+         this.m.l();
       }
 
-      @Override
-      public void a(fjn $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.a(ftc.this.c.h, this.b, ftc.this.g / 2 - this.c / 2, $$2 + $$5 - 9 - 1, -1, false);
-      }
+      this.m.a(this.b);
+   }
 
-      @Nullable
-      @Override
-      public fjk a(fod $$0) {
-         return null;
-      }
-
-      @Override
-      public List<? extends flx> aK_() {
-         return Collections.emptyList();
-      }
-
-      @Override
-      public List<? extends fnv> b() {
-         return ImmutableList.of(new fnv() {
-            @Override
-            public fnv.a u() {
-               return fnv.a.b;
-            }
-
-            @Override
-            public void b(fnx $$0) {
-               $$0.a(fnw.a, a.this.b);
+   class a extends flg<ftc.a.a> {
+      public a(final fil $$0) {
+         super($$0, ftc.this.n, ftc.this.o - 33 - 53, 33, 18);
+         String $$1 = ftc.this.w.a();
+         ftc.this.w.b().forEach(($$1x, $$2) -> {
+            ftc.a.a $$3 = new ftc.a.a($$1x, $$2);
+            this.b($$3);
+            if ($$1.equals($$1x)) {
+               this.a($$3);
             }
          });
-      }
-
-      @Override
-      protected void c() {
-      }
-   }
-
-   public abstract static class b extends fkg.a<ftc.b> {
-      abstract void c();
-   }
-
-   public class c extends ftc.b {
-      private static final xd b = xd.c("controls.reset");
-      private static final int c = 10;
-      private final fhz d;
-      private final xd e;
-      private final fka f;
-      private final fka g;
-      private boolean h = false;
-
-      c(final fhz $$1, final xd $$2) {
-         this.d = $$1;
-         this.e = $$2;
-         this.f = fka.a($$2, $$1x -> {
-            ftc.this.m.a = $$1;
-            ftc.this.c();
-         }).a(0, 0, 75, 20).a($$2x -> $$1.j() ? xd.a("narrator.controls.unbound", $$2) : xd.a("narrator.controls.bound", $$2, $$2x.get())).a();
-         this.g = fka.a(b, $$1x -> {
-            $$1.b($$1.i());
-            ftc.this.c();
-         }).a(0, 0, 50, 20).a($$1x -> xd.a("narrator.controls.reset", $$2)).a();
-         this.c();
-      }
-
-      @Override
-      public void a(fjn $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10 = ftc.this.q() - this.g.y() - 10;
-         int $$11 = $$2 - 2;
-         this.g.c($$10, $$11);
-         this.g.a($$0, $$6, $$7, $$9);
-         int $$12 = $$10 - 5 - this.f.y();
-         this.f.c($$12, $$11);
-         this.f.a($$0, $$6, $$7, $$9);
-         $$0.b(ftc.this.c.h, this.e, $$3, $$2 + $$5 / 2 - 9 / 2, -1);
-         if (this.h) {
-            int $$13 = 3;
-            int $$14 = this.f.D() - 6;
-            $$0.a($$14, $$2 - 1, $$14 + 3, $$2 + $$5, -65536);
+         if (this.h() != null) {
+            this.e(this.h());
          }
       }
 
       @Override
-      public List<? extends flx> aK_() {
-         return ImmutableList.of(this.f, this.g);
+      public int b() {
+         return super.b() + 50;
       }
 
-      @Override
-      public List<? extends fnv> b() {
-         return ImmutableList.of(this.f, this.g);
-      }
+      public class a extends flg.a<ftc.a.a> {
+         final String b;
+         private final xd c;
+         private long d;
 
-      @Override
-      protected void c() {
-         this.f.b(this.d.k());
-         this.g.j = !this.d.l();
-         this.h = false;
-         xr $$0 = xd.i();
-         if (!this.d.j()) {
-            for (fhz $$1 : ftc.this.c.n.V) {
-               if ($$1 != this.d && this.d.b($$1)) {
-                  if (this.h) {
-                     $$0.f(", ");
-                  }
+         public a(final String $$1, final gyj $$2) {
+            this.b = $$1;
+            this.c = $$2.a();
+         }
 
-                  this.h = true;
-                  $$0.b(xd.c($$1.h()));
-               }
+         @Override
+         public void a(fjx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.a(ftc.this.p, this.c, a.this.g / 2, $$2 + $$5 / 2 - 9 / 2, -1);
+         }
+
+         @Override
+         public boolean a(int $$0, int $$1, int $$2) {
+            if (fom.a($$0)) {
+               this.b();
+               ftc.this.G();
+               return true;
+            } else {
+               return super.a($$0, $$1, $$2);
             }
          }
 
-         if (this.h) {
-            this.f.b(xd.b("[ ").b(this.f.z().f().a(n.p)).f(" ]").a(n.m));
-            this.f.a(fll.a(xd.a("controls.keybinds.duplicateKeybinds", $$0)));
-         } else {
-            this.f.a(null);
+         @Override
+         public boolean a(double $$0, double $$1, int $$2) {
+            this.b();
+            if (ad.c() - this.d < 250L) {
+               ftc.this.G();
+            }
+
+            this.d = ad.c();
+            return super.a($$0, $$1, $$2);
          }
 
-         if (ftc.this.m.a == this.d) {
-            this.f.b(xd.b("> ").b(this.f.z().f().a(n.p, n.t)).f(" <").a(n.o));
+         private void b() {
+            a.this.a(this);
+         }
+
+         @Override
+         public xd a() {
+            return xd.a("narrator.select", this.c);
          }
       }
    }

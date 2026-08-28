@@ -1,30 +1,44 @@
-import com.mojang.serialization.Codec;
+public class brl {
+   public static void a(deg $$0, je $$1, bri $$2) {
+      a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2);
+   }
 
-public record brl(String d) {
-   public static final brl a = new brl("");
-   public static final Codec<brl> b = Codec.STRING.xmap(brl::new, brl::a);
-   public static final String c = "Lock";
+   public static void a(deg $$0, bto $$1, bri $$2) {
+      a($$0, $$1.dx(), $$1.dz(), $$1.dD(), $$2);
+   }
 
-   public boolean a(cvl $$0) {
-      if (this.d.isEmpty()) {
-         return true;
-      } else {
-         xd $$1 = $$0.a(kr.g);
-         return $$1 != null && this.d.equals($$1.getString());
+   private static void a(deg $$0, double $$1, double $$2, double $$3, bri $$4) {
+      for (int $$5 = 0; $$5 < $$4.b(); $$5++) {
+         a($$0, $$1, $$2, $$3, $$4.a($$5));
       }
    }
 
-   public void a(uf $$0) {
-      if (!this.d.isEmpty()) {
-         $$0.a("Lock", this.d);
+   public static void a(deg $$0, je $$1, jw<cvp> $$2) {
+      $$2.forEach($$2x -> a($$0, (double)$$1.u(), (double)$$1.v(), (double)$$1.w(), $$2x));
+   }
+
+   public static void a(deg $$0, double $$1, double $$2, double $$3, cvp $$4) {
+      double $$5 = (double)btv.ag.l();
+      double $$6 = 1.0 - $$5;
+      double $$7 = $$5 / 2.0;
+      double $$8 = Math.floor($$1) + $$0.z.j() * $$6 + $$7;
+      double $$9 = Math.floor($$2) + $$0.z.j() * $$6;
+      double $$10 = Math.floor($$3) + $$0.z.j() * $$6 + $$7;
+
+      while (!$$4.f()) {
+         cke $$11 = new cke($$0, $$8, $$9, $$10, $$4.a($$0.z.a(21) + 10));
+         float $$12 = 0.05F;
+         $$11.n($$0.z.a(0.0, 0.11485000171139836), $$0.z.a(0.2, 0.11485000171139836), $$0.z.a(0.0, 0.11485000171139836));
+         $$0.b($$11);
       }
    }
 
-   public static brl b(uf $$0) {
-      return $$0.b("Lock", 8) ? new brl($$0.l("Lock")) : a;
-   }
-
-   public String a() {
-      return this.d;
+   public static void a(duo $$0, duo $$1, deg $$2, je $$3) {
+      if (!$$0.a($$1.b())) {
+         if ($$2.c_($$3) instanceof bri $$5) {
+            a($$2, $$3, $$5);
+            $$2.c($$3, $$0.b());
+         }
+      }
    }
 }

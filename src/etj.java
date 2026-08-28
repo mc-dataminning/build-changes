@@ -1,66 +1,53 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.datafixers.Products.P1;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
-import java.util.function.Predicate;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.DynamicOps;
+import java.util.Optional;
+import java.util.stream.Stream;
+import org.slf4j.Logger;
 
-public abstract class etj implements etb {
-   protected final List<ewe> e;
-   private final Predicate<est> a;
+public record etj<T>(alb<ka<T>> d, Codec<T> e, etj.a<T> f) {
+   private static final Logger g = LogUtils.getLogger();
+   public static final etj<ews> a = new etj<>(lv.bf, ews.e, e());
+   public static final etj<euv> b = new etj<>(lv.be, eux.c, e());
+   public static final etj<etm> c = new etj<>(lv.bd, etm.d, f());
 
-   protected etj(List<ewe> $$0) {
-      this.e = $$0;
-      this.a = ad.a($$0);
+   public void a(etn $$0, alb<T> $$1, T $$2) {
+      this.f.run($$0, $$1, $$2);
    }
 
-   protected static <T extends etj> P1<Mu<T>, List<ewe>> a(Instance<T> $$0) {
-      return $$0.group(ewe.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.e));
+   public <V> Optional<T> a(alc $$0, DynamicOps<V> $$1, V $$2) {
+      DataResult<T> $$3 = this.e.parse($$1, $$2);
+      $$3.error().ifPresent($$1x -> g.error("Couldn't parse element {}/{} - {}", new Object[]{this.d.a(), $$0, $$1x.message()}));
+      return $$3.result();
    }
 
-   public void a(esz $$0) {
-      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
-         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
-      }
+   public static Stream<etj<?>> a() {
+      return Stream.of(a, b, c);
    }
 
-   protected final boolean a(est $$0) {
-      return this.a.test($$0);
+   private static <T extends eti> etj.a<T> e() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
    }
 
-   public abstract etk a();
+   private static etj.a<etm> f() {
+      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
+   }
 
-   public abstract static class a<T extends etj.a<T>> implements evw<T> {
-      private final Builder<ewe> a = ImmutableList.builder();
+   public alb<ka<T>> b() {
+      return this.d;
+   }
 
-      protected abstract T aH_();
+   public Codec<T> c() {
+      return this.e;
+   }
 
-      public T a(ewe.a $$0) {
-         this.a.add($$0.build());
-         return this.aH_();
-      }
+   public etj.a<T> d() {
+      return this.f;
+   }
 
-      public final T e() {
-         return this.aH_();
-      }
-
-      protected List<ewe> f() {
-         return this.a.build();
-      }
-
-      public eta.a a(etj.a<?> $$0) {
-         return new eta.a(this, $$0);
-      }
-
-      public etf.a b(etj.a<?> $$0) {
-         return new etf.a(this, $$0);
-      }
-
-      public etn.a c(etj.a<?> $$0) {
-         return new etn.a(this, $$0);
-      }
-
-      public abstract etj b();
+   @FunctionalInterface
+   public interface a<T> {
+      void run(etn var1, alb<T> var2, T var3);
    }
 }

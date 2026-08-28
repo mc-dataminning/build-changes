@@ -1,40 +1,46 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import com.google.gson.JsonObject;
+import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class ffa implements Iterable<feb> {
-   private final fib a;
-   private final Set<feb> b = new HashSet<>();
-   private List<feb> c = List.of();
+public class ffa extends fey {
+   private static final Logger j = LogUtils.getLogger();
+   public String a = "";
+   public String b = "";
+   public String c = "";
+   public String d = "";
+   public String e = "";
+   @Nullable
+   public String f;
+   public String g = "";
+   public String h = "";
+   public ffa.a i = ffa.a.a;
 
-   public ffa(fib $$0) {
-      this.a = $$0;
-   }
+   public static ffa a(JsonObject $$0) {
+      ffa $$1 = new ffa();
 
-   public void a(List<feb> $$0) {
-      List<feb> $$1 = new ArrayList<>($$0);
-      $$1.sort(new feb.b(this.a.X().c()));
-      boolean $$2 = $$1.removeAll(this.b);
-      if (!$$2) {
-         this.b.clear();
+      try {
+         $$1.a = fgv.b("id", $$0, "");
+         $$1.b = fgv.b("name", $$0, "");
+         $$1.c = fgv.b("version", $$0, "");
+         $$1.d = fgv.b("author", $$0, "");
+         $$1.e = fgv.b("link", $$0, "");
+         $$1.f = fgv.b("image", $$0, null);
+         $$1.g = fgv.b("trailer", $$0, "");
+         $$1.h = fgv.b("recommendedPlayers", $$0, "");
+         $$1.i = ffa.a.valueOf(fgv.b("type", $$0, ffa.a.a.name()));
+      } catch (Exception var3) {
+         j.error("Could not parse WorldTemplate: {}", var3.getMessage());
       }
 
-      this.c = $$1;
+      return $$1;
    }
 
-   public void a(feb $$0) {
-      this.c.remove($$0);
-      this.b.add($$0);
-   }
-
-   @Override
-   public Iterator<feb> iterator() {
-      return this.c.iterator();
-   }
-
-   public boolean a() {
-      return this.c.isEmpty();
+   public static enum a {
+      a,
+      b,
+      c,
+      d,
+      e;
    }
 }

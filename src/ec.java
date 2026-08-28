@@ -8,8 +8,8 @@ public class ec extends dv<ec.a> {
       return ec.a.a;
    }
 
-   public void a(arh $$0, btj $$1) {
-      est $$2 = bv.b($$0, $$1);
+   public void a(ari $$0, bto $$1) {
+      eth $$2 = bv.b($$0, $$1);
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
@@ -22,7 +22,7 @@ public class ec extends dv<ec.a> {
          return an.o.a(new ec.a(Optional.empty(), Optional.of(bv.a($$0))));
       }
 
-      public boolean a(est $$0) {
+      public boolean a(eth $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 

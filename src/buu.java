@@ -1,13 +1,13 @@
-import javax.annotation.Nullable;
+public interface buu extends but {
+   void b(int var1);
 
-public interface buu {
-   boolean f();
+   boolean a();
 
-   void a(cvl var1, @Nullable awe var2);
+   void c(int var1);
 
-   default awc ab_() {
-      return awd.mR;
+   void b();
+
+   default int c() {
+      return 0;
    }
-
-   boolean i();
 }

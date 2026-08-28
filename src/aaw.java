@@ -1,9 +1,9 @@
-public record aaw(int c, eqp d, float e) implements aan {
+public record aaw(int c, erd d, float e) implements aan {
    public static final zb<wa, aaw> a = aan.a(aaw::a, aaw::new);
    public static final aan.b<aaw> b = aan.a("debug/path");
 
    private aaw(wa $$0) {
-      this($$0.readInt(), eqp.b($$0), $$0.readFloat());
+      this($$0.readInt(), erd.b($$0), $$0.readFloat());
    }
 
    private void a(wa $$0) {
@@ -21,7 +21,7 @@ public record aaw(int c, eqp d, float e) implements aan {
       return this.c;
    }
 
-   public eqp c() {
+   public erd c() {
       return this.d;
    }
 

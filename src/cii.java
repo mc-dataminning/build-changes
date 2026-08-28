@@ -1,35 +1,24 @@
-import com.mojang.serialization.Codec;
 import java.util.function.IntFunction;
 
-public enum cii implements azy {
-   a(0, "white"),
-   b(1, "creamy"),
-   c(2, "chestnut"),
-   d(3, "brown"),
-   e(4, "black"),
-   f(5, "gray"),
-   g(6, "dark_brown");
+public enum cii {
+   a(0),
+   b(1),
+   c(2),
+   d(3),
+   e(4);
 
-   public static final Codec<cii> h = azy.a(cii::values);
-   private static final IntFunction<cii> i = axt.a(cii::a, values(), axt.a.b);
-   private final int j;
-   private final String k;
+   private static final IntFunction<cii> f = axu.a(cii::a, values(), axu.a.b);
+   private final int g;
 
-   private cii(final int $$0, final String $$1) {
-      this.j = $$0;
-      this.k = $$1;
+   private cii(final int $$0) {
+      this.g = $$0;
    }
 
    public int a() {
-      return this.j;
+      return this.g;
    }
 
    public static cii a(int $$0) {
-      return i.apply($$0);
-   }
-
-   @Override
-   public String c() {
-      return this.k;
+      return f.apply($$0);
    }
 }

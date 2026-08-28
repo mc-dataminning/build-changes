@@ -1,101 +1,79 @@
 import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public abstract class bvx<E extends buf> implements bvy<E> {
-   public static final int a = 60;
-   protected final Map<cdi<?>, cdj> b;
-   private bvx.a c = bvx.a.a;
-   private long d;
-   private final int e;
-   private final int f;
+public class bvx<E extends bus> extends bwc<E> {
+   private static final int c = 100;
+   private static final int d = 120;
+   private static final int e = 5;
+   private static final int f = 4;
+   private final float g;
+   private final Function<bus, axj<bsi>> h;
 
-   public bvx(Map<cdi<?>, cdj> $$0) {
-      this($$0, 60);
+   public bvx(float $$0) {
+      this($$0, $$0x -> awv.F);
    }
 
-   public bvx(Map<cdi<?>, cdj> $$0, int $$1) {
-      this($$0, $$1, $$1);
+   public bvx(float $$0, Function<bus, axj<bsi>> $$1) {
+      super(Map.of(cdn.Z, cdo.c, cdn.x, cdo.c), 100, 120);
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   public bvx(Map<cdi<?>, cdj> $$0, int $$1, int $$2) {
-      this.e = $$1;
-      this.f = $$2;
-      this.b = $$0;
+   protected boolean a(arh $$0, E $$1) {
+      return $$1.dX().c(cdn.x).map($$1x -> $$1x.a(this.h.apply($$1))).orElse(false) || $$1.dX().a(cdn.Z);
    }
 
-   @Override
-   public bvx.a a() {
-      return this.c;
-   }
-
-   @Override
-   public final boolean e(arg $$0, E $$1, long $$2) {
-      if (this.a($$1) && this.a($$0, $$1)) {
-         this.c = bvx.a.b;
-         int $$3 = this.e + $$0.C_().a(this.f + 1 - this.e);
-         this.d = $$2 + (long)$$3;
-         this.d($$0, $$1, $$2);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   protected void d(arg $$0, E $$1, long $$2) {
-   }
-
-   @Override
-   public final void f(arg $$0, E $$1, long $$2) {
-      if (!this.a($$2) && this.a($$0, $$1, $$2)) {
-         this.c($$0, $$1, $$2);
-      } else {
-         this.g($$0, $$1, $$2);
-      }
-   }
-
-   protected void c(arg $$0, E $$1, long $$2) {
-   }
-
-   @Override
-   public final void g(arg $$0, E $$1, long $$2) {
-      this.c = bvx.a.a;
-      this.b($$0, $$1, $$2);
-   }
-
-   protected void b(arg $$0, E $$1, long $$2) {
-   }
-
-   protected boolean a(arg $$0, E $$1, long $$2) {
-      return false;
-   }
-
-   protected boolean a(long $$0) {
-      return $$0 > this.d;
-   }
-
-   protected boolean a(arg $$0, E $$1) {
+   protected boolean a(arh $$0, E $$1, long $$2) {
       return true;
    }
 
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+   protected void b(arh $$0, E $$1, long $$2) {
+      $$1.dX().a(cdn.Z, true);
+      $$1.dX().b(cdn.m);
    }
 
-   protected boolean a(E $$0) {
-      for (Entry<cdi<?>, cdj> $$1 : this.b.entrySet()) {
-         cdi<?> $$2 = $$1.getKey();
-         cdj $$3 = $$1.getValue();
-         if (!$$0.dX().a($$2, $$3)) {
-            return false;
+   protected void c(arh $$0, E $$1, long $$2) {
+      bvl<?> $$3 = $$1.dX();
+      $$3.b(cdn.Z);
+   }
+
+   protected void d(arh $$0, E $$1, long $$2) {
+      if ($$1.P().m()) {
+         eys $$3 = this.a($$1, $$0);
+         if ($$3 != null) {
+            $$1.dX().a(cdn.m, new cdq($$3, this.g, 0));
+         }
+      }
+   }
+
+   @Nullable
+   private eys a(E $$0, arh $$1) {
+      if ($$0.bV()) {
+         Optional<eys> $$2 = this.a((ddl)$$1, $$0).map(eys::c);
+         if ($$2.isPresent()) {
+            return $$2.get();
          }
       }
 
-      return true;
+      return cfh.a($$0, 5, 4);
    }
 
-   public static enum a {
-      a,
-      b;
+   private Optional<je> a(ddl $$0, bto $$1) {
+      je $$2 = $$1.ds();
+      if (!$$0.a_($$2).g($$0, $$2).c()) {
+         return Optional.empty();
+      } else {
+         Predicate<je> $$3;
+         if (azd.f($$1.dn()) == 2) {
+            $$3 = $$1x -> je.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(awz.a));
+         } else {
+            $$3 = $$1x -> $$0.b_($$1x).a(awz.a);
+         }
+
+         return je.a($$2, 5, 1, $$3);
+      }
    }
 }

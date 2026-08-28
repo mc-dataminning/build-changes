@@ -1,48 +1,64 @@
-import java.util.EnumSet;
-import java.util.Set;
+public abstract class bus extends bum {
+   protected static final float bX = 0.0F;
 
-public enum bus {
-   a(0),
-   b(1),
-   c(2),
-   d(3),
-   e(4);
-
-   public static final Set<bus> f = Set.of(values());
-   public static final Set<bus> g = Set.of(e, d);
-   private final int h;
-
-   private bus(final int $$0) {
-      this.h = $$0;
+   protected bus(btv<? extends bus> $$0, deg $$1) {
+      super($$0, $$1);
    }
 
-   private int a() {
-      return 1 << this.h;
+   public float c(je $$0) {
+      return this.a($$0, this.dS());
    }
 
-   private boolean b(int $$0) {
-      return ($$0 & this.a()) == this.a();
+   public float a(je $$0, dej $$1) {
+      return 0.0F;
    }
 
-   public static Set<bus> a(int $$0) {
-      Set<bus> $$1 = EnumSet.noneOf(bus.class);
+   @Override
+   public boolean a(deh $$0, btu $$1) {
+      return this.a(this.ds(), $$0) >= 0.0F;
+   }
 
-      for (bus $$2 : values()) {
-         if ($$2.b($$0)) {
-            $$1.add($$2);
+   public boolean gl() {
+      return !this.P().m();
+   }
+
+   public boolean gm() {
+      if (this.bB.a(cdn.Z)) {
+         return this.bB.c(cdn.Z).isPresent();
+      } else {
+         for (ccv $$0 : this.bS.b()) {
+            if ($$0.h() && $$0.k() instanceof cca) {
+               return true;
+            }
          }
-      }
 
-      return $$1;
+         return false;
+      }
    }
 
-   public static int a(Set<bus> $$0) {
-      int $$1 = 0;
+   protected boolean gn() {
+      return true;
+   }
 
-      for (bus $$2 : $$0) {
-         $$1 |= $$2.a();
+   @Override
+   public void b(bto $$0) {
+      super.b($$0);
+      if (this.gn() && !this.gm()) {
+         this.bS.b(cbh.a.a);
+         float $$1 = 2.0F;
+         float $$2 = this.f($$0);
+         eys $$3 = new eys($$0.dx() - this.dx(), $$0.dz() - this.dz(), $$0.dD() - this.dD()).d().c((double)Math.max($$2 - 2.0F, 0.0F));
+         this.P().a(this.dx() + $$3.d, this.dz() + $$3.e, this.dD() + $$3.f, this.go());
       }
+   }
 
-      return $$1;
+   @Override
+   public boolean a(bto $$0, float $$1) {
+      this.a($$0.ds(), 5);
+      return true;
+   }
+
+   protected double go() {
+      return 1.0;
    }
 }

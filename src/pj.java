@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 public class pj {
    public static void a(String[] $$0) throws IOException {
       ab.a(t.a);
-      ald.a();
+      ale.a();
 
       for (String $$1 : $$0) {
          a($$1);

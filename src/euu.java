@@ -1,84 +1,80 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-public class euu extends eug {
-   public static final MapCodec<euu> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  Codec.unboundedMap(daw.c, exb.a).optionalFieldOf("enchantments", Map.of()).forGetter($$0x -> $$0x.b),
-                  Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.c)
-               )
-            )
-            .apply($$0, euu::new)
-   );
-   private final Map<jn<daw>, exa> b;
-   private final boolean c;
+public abstract class euu implements euv {
+   protected final List<ews> g;
+   private final Predicate<eth> a;
 
-   euu(List<ewe> $$0, Map<jn<daw>, exa> $$1, boolean $$2) {
-      super($$0);
-      this.b = Map.copyOf($$1);
-      this.c = $$2;
+   protected euu(List<ews> $$0) {
+      this.g = $$0;
+      this.a = ad.a($$0);
    }
 
    @Override
-   public eui<euu> b() {
-      return euj.i;
+   public abstract euw<? extends euu> b();
+
+   protected static <T extends euu> P1<Mu<T>, List<ews>> a(Instance<T> $$0) {
+      return $$0.group(ews.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.g));
    }
+
+   public final cvp b(cvp $$0, eth $$1) {
+      return this.a.test($$1) ? this.a($$0, $$1) : $$0;
+   }
+
+   protected abstract cvp a(cvp var1, eth var2);
 
    @Override
-   public Set<evm<?>> a() {
-      return this.b.values().stream().flatMap($$0 -> $$0.a().stream()).collect(ImmutableSet.toImmutableSet());
+   public void a(etn $$0) {
+      euv.super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.g.size(); $$1++) {
+         this.g.get($$1).a($$0.a(".conditions[" + $$1 + "]"));
+      }
    }
 
-   @Override
-   public cvl a(cvl $$0, est $$1) {
-      if ($$0.a(cvo.qQ)) {
-         $$0 = $$0.a((ddr)cvo.uy);
-         $$0.b(kr.A, $$0.c(kr.k));
-      }
-
-      day.a($$0, $$1x -> {
-         if (this.c) {
-            this.b.forEach(($$2, $$3) -> $$1x.a((jn<daw>)$$2, azc.a($$1x.a((jn<daw>)$$2) + $$3.a($$1), 0, 255)));
-         } else {
-            this.b.forEach(($$2, $$3) -> $$1x.a((jn<daw>)$$2, azc.a($$3.a($$1), 0, 255)));
-         }
-      });
-      return $$0;
+   protected static euu.a<?> a(Function<List<ews>, euv> $$0) {
+      return new euu.b($$0);
    }
 
-   public static class a extends eug.a<euu.a> {
-      private final Builder<jn<daw>, exa> a = ImmutableMap.builder();
-      private final boolean b;
+   public abstract static class a<T extends euu.a<T>> implements euv.a, ewk<T> {
+      private final Builder<ews> a = ImmutableList.builder();
 
-      public a() {
-         this(false);
+      public T a(ews.a $$0) {
+         this.a.add($$0.build());
+         return this.c();
       }
 
-      public a(boolean $$0) {
-         this.b = $$0;
+      public final T f() {
+         return this.c();
       }
 
-      protected euu.a a() {
-         return this;
+      protected abstract T c();
+
+      protected List<ews> g() {
+         return this.a.build();
+      }
+   }
+
+   static final class b extends euu.a<euu.b> {
+      private final Function<List<ews>, euv> a;
+
+      public b(Function<List<ews>, euv> $$0) {
+         this.a = $$0;
       }
 
-      public euu.a a(jn<daw> $$0, exa $$1) {
-         this.a.put($$0, $$1);
+      protected euu.b a() {
          return this;
       }
 
       @Override
-      public euh b() {
-         return new euu(this.g(), this.a.build(), this.b);
+      public euv b() {
+         return this.a.apply(this.g());
       }
    }
 }

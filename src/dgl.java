@@ -1,28 +1,45 @@
 import com.mojang.serialization.MapCodec;
 
-public abstract class dgl extends dgv {
-   protected static final int a = 2;
-   protected static final eyx b = dgv.a(6.0, 0.0, 6.0, 10.0, 10.0, 10.0);
+public class dgl extends dhs implements dhm {
+   public static final MapCodec<dgl> a = b(dgl::new);
+   private static final ezm b = ezj.a(dhj.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0), dhj.a(6.0, 0.0, 6.0, 10.0, 8.0, 10.0));
 
-   protected dgl(dtz.d $$0) {
+   @Override
+   public MapCodec<dgl> a() {
+      return a;
+   }
+
+   protected dgl(dun.d $$0) {
       super($$0);
    }
 
    @Override
-   protected abstract MapCodec<? extends dgl> a();
-
-   @Override
-   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
+   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
       return b;
    }
 
    @Override
-   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
-      return $$1 == jj.a && !this.a($$0, $$3, $$4) ? dgx.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected boolean b(duo $$0, ddl $$1, je $$2) {
+      return $$0.a(dhl.dR) || super.b($$0, $$1, $$2);
    }
 
    @Override
-   protected boolean a(dua $$0, ddv $$1, je $$2) {
-      return a($$1, $$2.e(), jj.b);
+   public boolean b(dej $$0, je $$1, duo $$2) {
+      return $$0.b_($$1.d()).c();
+   }
+
+   @Override
+   public boolean a(deg $$0, azl $$1, je $$2, duo $$3) {
+      return (double)$$0.z.i() < 0.45;
+   }
+
+   @Override
+   public void a(arh $$0, azl $$1, je $$2, duo $$3) {
+      dud.e.a($$0, $$0.l().g(), $$2, $$3, $$1);
+   }
+
+   @Override
+   protected boolean a(duo $$0, ere $$1) {
+      return false;
    }
 }

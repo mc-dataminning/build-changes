@@ -1,46 +1,18 @@
-import java.util.List;
-import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
-public class fnz<T> {
-   private final T b;
-   private final BiConsumer<Consumer<String>, T> c;
-   public static final fnz<?> a = new fnz<>(bah.a, ($$0, $$1) -> {
-   });
-
-   private fnz(T $$0, BiConsumer<Consumer<String>, T> $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   public static fnz<?> a(String $$0) {
-      return new fnz<>($$0, Consumer::accept);
-   }
-
-   public static fnz<?> a(xd $$0) {
-      return new fnz<>($$0, ($$0x, $$1) -> $$0x.accept($$1.getString()));
-   }
-
-   public static fnz<?> a(List<xd> $$0) {
-      return new fnz<>($$0, ($$1, $$2) -> $$0.stream().map(xd::getString).forEach($$1));
-   }
-
-   public void a(Consumer<String> $$0) {
-      this.c.accept($$0, this.b);
-   }
+public interface fnz extends foa {
+   void b(Consumer<foa> var1);
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof fnz<?> $$1) ? false : $$1.c == this.c && $$1.b.equals(this.b);
-      }
+   default void a(Consumer<fki> $$0) {
+      this.b($$1 -> $$1.a($$0));
    }
 
-   @Override
-   public int hashCode() {
-      int $$0 = this.b.hashCode();
-      return 31 * $$0 + this.c.hashCode();
+   default void a() {
+      this.b($$0 -> {
+         if ($$0 instanceof fnz $$1) {
+            $$1.a();
+         }
+      });
    }
 }

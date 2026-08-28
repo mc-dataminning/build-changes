@@ -3,7 +3,7 @@ public class aep implements zk<abz> {
    private final int b;
    private final byte c;
 
-   public aep(btj $$0, byte $$1) {
+   public aep(bto $$0, byte $$1) {
       this.b = $$0.ap();
       this.c = $$1;
    }
@@ -27,7 +27,7 @@ public class aep implements zk<abz> {
       $$0.a(this);
    }
 
-   public btj a(dds $$0) {
+   public bto a(deg $$0) {
       return $$0.a(this.b);
    }
 

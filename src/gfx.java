@@ -1,36 +1,22 @@
-import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import java.util.Set;
-import java.util.function.LongSupplier;
-import java.util.function.Supplier;
+public class gfx extends gdg {
+   private static final int a = 12235202;
 
-public class gfx implements bph {
-   private final ggr a;
-   private final Set<bpf> b = new ObjectOpenHashSet();
-   private final bpn c = new bpn();
-
-   public gfx(LongSupplier $$0, ggr $$1) {
-      this.a = $$1;
-      this.b.add(bpo.a($$0));
-      this.a();
+   protected gfx(gbh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gfj $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
+      this.v = 0.7294118F;
+      this.w = 0.69411767F;
+      this.x = 0.7607843F;
    }
 
-   private void a() {
-      this.b.addAll(bpo.a());
-      this.b.add(bpf.a("totalChunks", bpe.f, this.a, ggr::i));
-      this.b.add(bpf.a("renderedChunks", bpe.f, this.a, ggr::k));
-      this.b.add(bpf.a("lastViewDistance", bpe.f, this.a, ggr::j));
-      gkd $$0 = this.a.h();
-      this.b.add(bpf.a("toUpload", bpe.g, $$0, gkd::c));
-      this.b.add(bpf.a("freeBufferCount", bpe.g, $$0, gkd::d));
-      this.b.add(bpf.a("toBatchCount", bpe.g, $$0, gkd::b));
-      if (fcn.a().isPresent()) {
-         this.b.add(bpf.a("gpuUtilization", bpe.i, fib.Q(), fib::v));
+   public static class a implements ger<lr> {
+      private final gfj a;
+
+      public a(gfj $$0) {
+         this.a = $$0;
       }
-   }
 
-   @Override
-   public Set<bpf> a(Supplier<bnw> $$0) {
-      this.b.addAll(this.c.a($$0));
-      return this.b;
+      public geo a(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gfx($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
+      }
    }
 }

@@ -1,95 +1,57 @@
-public class fzd extends fxa<gut> {
-   private static final String a = "right_bottom_bristle";
-   private static final String b = "right_middle_bristle";
-   private static final String c = "right_top_bristle";
-   private static final String d = "left_top_bristle";
-   private static final String e = "left_middle_bristle";
-   private static final String f = "left_bottom_bristle";
-   private final gab g;
-   private final gab i;
-   private final gab j;
-   private final gab k;
-   private final gab l;
-   private final gab m;
-   private final gab n;
-   private final gab o;
-   private final gab p;
-   private final gab q;
+public class fzd extends fxk<gvf> {
+   public static final String a = "lid";
+   private static final String b = "base";
+   private final gal c;
+   private final gal d;
+   private final gal e;
 
-   public fzd(gab $$0) {
-      this.g = $$0;
-      this.i = $$0.b("right_leg");
-      this.j = $$0.b("left_leg");
-      this.k = $$0.b("body");
-      this.l = this.k.b("right_bottom_bristle");
-      this.m = this.k.b("right_middle_bristle");
-      this.n = this.k.b("right_top_bristle");
-      this.o = this.k.b("left_top_bristle");
-      this.p = this.k.b("left_middle_bristle");
-      this.q = this.k.b("left_bottom_bristle");
+   public fzd(gal $$0) {
+      super(ghq::g);
+      this.c = $$0;
+      this.d = $$0.b("lid");
+      this.e = $$0.b("head");
    }
 
-   public static gah b() {
-      gaj $$0 = new gaj();
-      gal $$1 = $$0.a();
-      $$1.a("right_leg", gag.c().a(0, 32).a(-2.0F, 0.0F, -2.0F, 4.0F, 16.0F, 4.0F), gad.a(-4.0F, 8.0F, 0.0F));
-      $$1.a("left_leg", gag.c().a(0, 55).a(-2.0F, 0.0F, -2.0F, 4.0F, 16.0F, 4.0F), gad.a(4.0F, 8.0F, 0.0F));
-      gal $$2 = $$1.a("body", gag.c().a(0, 0).a(-8.0F, -6.0F, -8.0F, 16.0F, 14.0F, 16.0F), gad.a(0.0F, 1.0F, 0.0F));
-      $$2.a("right_bottom_bristle", gag.c().a(16, 65).a(-12.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F, true), gad.a(-8.0F, 4.0F, -8.0F, 0.0F, 0.0F, -1.2217305F));
-      $$2.a("right_middle_bristle", gag.c().a(16, 49).a(-12.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F, true), gad.a(-8.0F, -1.0F, -8.0F, 0.0F, 0.0F, -1.134464F));
-      $$2.a("right_top_bristle", gag.c().a(16, 33).a(-12.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F, true), gad.a(-8.0F, -5.0F, -8.0F, 0.0F, 0.0F, -0.87266463F));
-      $$2.a("left_top_bristle", gag.c().a(16, 33).a(0.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F), gad.a(8.0F, -6.0F, -8.0F, 0.0F, 0.0F, 0.87266463F));
-      $$2.a("left_middle_bristle", gag.c().a(16, 49).a(0.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F), gad.a(8.0F, -2.0F, -8.0F, 0.0F, 0.0F, 1.134464F));
-      $$2.a("left_bottom_bristle", gag.c().a(16, 65).a(0.0F, 0.0F, 0.0F, 12.0F, 0.0F, 16.0F), gad.a(8.0F, 3.0F, -8.0F, 0.0F, 0.0F, 1.2217305F));
-      return gah.a($$0, 64, 128);
+   private static gat d() {
+      gat $$0 = new gat();
+      gav $$1 = $$0.a();
+      $$1.a("lid", gaq.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 12.0F, 16.0F), gan.a(0.0F, 24.0F, 0.0F));
+      $$1.a("base", gaq.c().a(0, 28).a(-8.0F, -8.0F, -8.0F, 16.0F, 8.0F, 16.0F), gan.a(0.0F, 24.0F, 0.0F));
+      return $$0;
    }
 
-   public void a(gut $$0) {
-      float $$1 = $$0.X;
-      float $$2 = Math.min($$0.Y, 0.25F);
-      if (!$$0.c) {
-         this.k.e = $$0.V * (float) (Math.PI / 180.0);
-         this.k.f = $$0.U * (float) (Math.PI / 180.0);
-      } else {
-         this.k.e = 0.0F;
-         this.k.f = 0.0F;
+   public static gar b() {
+      gat $$0 = d();
+      $$0.a().a("head", gaq.c().a(0, 52).a(-3.0F, 0.0F, -3.0F, 6.0F, 6.0F, 6.0F), gan.a(0.0F, 12.0F, 0.0F));
+      return gar.a($$0, 64, 64);
+   }
+
+   public static gar c() {
+      gat $$0 = d();
+      return gar.a($$0, 64, 64);
+   }
+
+   public void a(gvf $$0) {
+      float $$1 = (0.5F + $$0.c) * (float) Math.PI;
+      float $$2 = -1.0F + azd.a($$1);
+      float $$3 = 0.0F;
+      if ($$1 > (float) Math.PI) {
+         $$3 = azd.a($$0.p * 0.1F) * 0.7F;
       }
 
-      float $$3 = 1.5F;
-      this.k.g = 0.1F * azc.a($$1 * 1.5F) * 4.0F * $$2;
-      this.k.c = 2.0F;
-      this.k.c = this.k.c - 2.0F * azc.b($$1 * 1.5F) * 2.0F * $$2;
-      this.j.e = azc.a($$1 * 1.5F * 0.5F) * 2.0F * $$2;
-      this.i.e = azc.a($$1 * 1.5F * 0.5F + (float) Math.PI) * 2.0F * $$2;
-      this.j.g = (float) (Math.PI / 18) * azc.b($$1 * 1.5F * 0.5F) * $$2;
-      this.i.g = (float) (Math.PI / 18) * azc.b($$1 * 1.5F * 0.5F + (float) Math.PI) * $$2;
-      this.j.c = 8.0F + 2.0F * azc.a($$1 * 1.5F * 0.5F + (float) Math.PI) * 2.0F * $$2;
-      this.i.c = 8.0F + 2.0F * azc.a($$1 * 1.5F * 0.5F) * 2.0F * $$2;
-      this.l.g = -1.2217305F;
-      this.m.g = -1.134464F;
-      this.n.g = -0.87266463F;
-      this.o.g = 0.87266463F;
-      this.p.g = 1.134464F;
-      this.q.g = 1.2217305F;
-      float $$4 = azc.b($$1 * 1.5F + (float) Math.PI) * $$2;
-      this.l.g += $$4 * 1.3F;
-      this.m.g += $$4 * 1.2F;
-      this.n.g += $$4 * 0.6F;
-      this.o.g += $$4 * 0.6F;
-      this.p.g += $$4 * 1.2F;
-      this.q.g += $$4 * 1.3F;
-      float $$5 = 1.0F;
-      float $$6 = 1.0F;
-      this.l.g = this.l.g + 0.05F * azc.a($$0.p * 1.0F * -0.4F);
-      this.m.g = this.m.g + 0.1F * azc.a($$0.p * 1.0F * 0.2F);
-      this.n.g = this.n.g + 0.1F * azc.a($$0.p * 1.0F * 0.4F);
-      this.o.g = this.o.g + 0.1F * azc.a($$0.p * 1.0F * 0.4F);
-      this.p.g = this.p.g + 0.1F * azc.a($$0.p * 1.0F * 0.2F);
-      this.q.g = this.q.g + 0.05F * azc.a($$0.p * 1.0F * -0.4F);
+      this.d.a(0.0F, 16.0F + azd.a($$1) * 8.0F + $$3, 0.0F);
+      if ($$0.c > 0.3F) {
+         this.d.f = $$2 * $$2 * $$2 * $$2 * (float) Math.PI * 0.125F;
+      } else {
+         this.d.f = 0.0F;
+      }
+
+      this.e.e = $$0.V * (float) (Math.PI / 180.0);
+      this.e.f = ($$0.d - 180.0F - $$0.e) * (float) (Math.PI / 180.0);
    }
 
    @Override
-   public gab a() {
-      return this.g;
+   public gal a() {
+      return this.c;
    }
 }

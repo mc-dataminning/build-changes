@@ -1,31 +1,48 @@
-import com.mojang.logging.LogUtils;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class bqb implements ThreadFactory {
-   private static final Logger a = LogUtils.getLogger();
-   private final ThreadGroup b;
-   private final AtomicInteger c = new AtomicInteger(1);
-   private final String d;
+public interface bqb {
+   bqa a();
 
-   public bqb(String $$0) {
-      SecurityManager $$1 = System.getSecurityManager();
-      this.b = $$1 != null ? $$1.getThreadGroup() : Thread.currentThread().getThreadGroup();
-      this.d = $$0 + "-";
+   static <T> bqb.b<T> a(T $$0, int $$1) {
+      return new bqb.b<>($$0, bqa.a($$1));
    }
 
-   @Override
-   public Thread newThread(Runnable $$0) {
-      Thread $$1 = new Thread(this.b, $$0, this.d + this.c.getAndIncrement(), 0L);
-      $$1.setUncaughtExceptionHandler(($$1x, $$2) -> {
-         a.error("Caught exception in thread {} from {}", $$1x, $$0);
-         a.error("", $$2);
-      });
-      if ($$1.getPriority() != 5) {
-         $$1.setPriority(5);
+   public static class a implements bqb {
+      private final bqa a;
+
+      public a(int $$0) {
+         this.a = bqa.a($$0);
       }
 
-      return $$1;
+      public a(bqa $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public bqa a() {
+         return this.a;
+      }
+   }
+
+   public static record b<T>(T a, bqa b) implements bqb {
+      @Override
+      public bqa a() {
+         return this.b;
+      }
+
+      public static <E> Codec<bqb.b<E>> a(Codec<E> $$0) {
+         return RecordCodecBuilder.create(
+            $$1 -> $$1.group($$0.fieldOf("data").forGetter(bqb.b::b), bqa.a.fieldOf("weight").forGetter(bqb.b::c)).apply($$1, bqb.b::new)
+         );
+      }
+
+      public T b() {
+         return this.a;
+      }
+
+      public bqa c() {
+         return this.b;
+      }
    }
 }

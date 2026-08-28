@@ -1,45 +1,22 @@
-import java.nio.file.Path;
-import java.util.Collections;
-import java.util.List;
+import com.mojang.brigadier.StringReader;
+import java.util.Optional;
 
-public class bnt implements bnx {
-   public static final bnt a = new bnt();
+public class bnt implements bnj<StringReader, vc> {
+   public static final bnj<StringReader, vc> a = new bnt();
 
    private bnt() {
    }
 
    @Override
-   public List<boa> a(String $$0) {
-      return Collections.emptyList();
-   }
+   public Optional<vc> a(bni<StringReader> $$0) {
+      $$0.b().skipWhitespace();
+      int $$1 = $$0.c();
 
-   @Override
-   public boolean a(Path $$0) {
-      return false;
-   }
-
-   @Override
-   public long a() {
-      return 0L;
-   }
-
-   @Override
-   public int b() {
-      return 0;
-   }
-
-   @Override
-   public long c() {
-      return 0L;
-   }
-
-   @Override
-   public int d() {
-      return 0;
-   }
-
-   @Override
-   public String e() {
-      return "";
+      try {
+         return Optional.of(new vd($$0.b()).d());
+      } catch (Exception var4) {
+         $$0.a().a($$1, var4);
+         return Optional.empty();
+      }
    }
 }

@@ -1,40 +1,46 @@
 import com.mojang.serialization.MapCodec;
 
-public class dpb extends dhe implements dgy {
-   public static final MapCodec<dpb> a = b(dpb::new);
-   protected static final float b = 6.0F;
-   protected static final eyx c = dgv.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
-
-   @Override
-   public MapCodec<dpb> a() {
-      return a;
-   }
-
-   protected dpb(dtz.d $$0) {
+public abstract class dpb extends dou {
+   protected dpb(dun.d $$0) {
       super($$0);
    }
 
-   @Override
-   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
-      return c;
+   private static boolean b(duo $$0, dej $$1, je $$2) {
+      je $$3 = $$2.d();
+      duo $$4 = $$1.a_($$3);
+      if ($$4.a(dhl.dN) && $$4.c(dot.c) == 1) {
+         return true;
+      } else if ($$4.y().e() == 8) {
+         return false;
+      } else {
+         int $$5 = eqg.a($$0, $$4, jj.b, $$4.g());
+         return $$5 < 15;
+      }
    }
 
    @Override
-   public boolean b(ddv $$0, je $$1, dua $$2) {
-      return o($$2).o().a($$0, $$1) && $$0.u($$1.d());
+   protected abstract MapCodec<? extends dpb> a();
+
+   private static boolean c(duo $$0, dej $$1, je $$2) {
+      je $$3 = $$2.d();
+      return b($$0, $$1, $$2) && !$$1.b_($$3).a(awz.a);
    }
 
    @Override
-   public boolean a(dds $$0, azk $$1, je $$2, dua $$3) {
-      return true;
-   }
+   protected void b(duo $$0, arh $$1, je $$2, azl $$3) {
+      if (!b($$0, $$1, $$2)) {
+         $$1.b($$2, dhl.j.o());
+      } else {
+         if ($$1.A($$2.d()) >= 9) {
+            duo $$4 = this.o();
 
-   @Override
-   public void a(arg $$0, azk $$1, je $$2, dua $$3) {
-      djd.a($$0, o($$3).o(), $$2, 2);
-   }
-
-   private static djd o(dua $$0) {
-      return (djd)($$0.a(dgx.bu) ? dgx.iI : dgx.iH);
+            for (int $$5 = 0; $$5 < 4; $$5++) {
+               je $$6 = $$2.b($$3.a(3) - 1, $$3.a(5) - 3, $$3.a(3) - 1);
+               if ($$1.a_($$6).a(dhl.j) && c($$4, $$1, $$6)) {
+                  $$1.b($$6, $$4.b(c, Boolean.valueOf($$1.a_($$6.d()).a(dhl.dN))));
+               }
+            }
+         }
+      }
    }
 }

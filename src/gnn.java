@@ -1,34 +1,60 @@
-public class gnn extends gny<cgh, gtn, fxp> {
-   private static final alb a = alb.b("textures/entity/iron_golem/iron_golem.png");
+public class gnn extends gni<bua, gtp> {
+   private static final alc a = alc.b("textures/entity/experience_orb.png");
+   private static final ghq b = ghq.h(a);
 
-   public gnn(gms.a $$0) {
-      super($$0, new fxp($$0.a(gaa.ba)), 0.7F);
-      this.a(new gqw(this));
-      this.a(new gqx(this, $$0.d()));
+   public gnn(gnj.a $$0) {
+      super($$0);
+      this.f = 0.15F;
+      this.g = 0.75F;
    }
 
-   public alb a(gtn $$0) {
+   protected int a(bua $$0, je $$1) {
+      return azd.a(super.a($$0, $$1) + 7, 0, 15);
+   }
+
+   public void a(gtp $$0, fde $$1, ghg $$2, int $$3) {
+      $$1.a();
+      int $$4 = $$0.a;
+      float $$5 = (float)($$4 % 4 * 16 + 0) / 64.0F;
+      float $$6 = (float)($$4 % 4 * 16 + 16) / 64.0F;
+      float $$7 = (float)($$4 / 4 * 16 + 0) / 64.0F;
+      float $$8 = (float)($$4 / 4 * 16 + 16) / 64.0F;
+      float $$9 = 1.0F;
+      float $$10 = 0.5F;
+      float $$11 = 0.25F;
+      float $$12 = 255.0F;
+      float $$13 = $$0.p / 2.0F;
+      int $$14 = (int)((azd.a($$13 + 0.0F) + 1.0F) * 0.5F * 255.0F);
+      int $$15 = 255;
+      int $$16 = (int)((azd.a($$13 + (float) (Math.PI * 4.0 / 3.0)) + 1.0F) * 0.1F * 255.0F);
+      $$1.a(0.0F, 0.1F, 0.0F);
+      $$1.a(this.e.b());
+      float $$17 = 0.3F;
+      $$1.b(0.3F, 0.3F, 0.3F);
+      fdi $$18 = $$2.getBuffer(b);
+      fde.a $$19 = $$1.c();
+      a($$18, $$19, -0.5F, -0.25F, $$14, 255, $$16, $$5, $$8, $$3);
+      a($$18, $$19, 0.5F, -0.25F, $$14, 255, $$16, $$6, $$8, $$3);
+      a($$18, $$19, 0.5F, 0.75F, $$14, 255, $$16, $$6, $$7, $$3);
+      a($$18, $$19, -0.5F, 0.75F, $$14, 255, $$16, $$5, $$7, $$3);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   private static void a(fdi $$0, fde.a $$1, float $$2, float $$3, int $$4, int $$5, int $$6, float $$7, float $$8, int $$9) {
+      $$0.a($$1, $$2, $$3, 0.0F).a($$4, $$5, $$6, 128).a($$7, $$8).b(gws.d).c($$9).b($$1, 0.0F, 1.0F, 0.0F);
+   }
+
+   public alc a(gtp $$0) {
       return a;
    }
 
-   public gtn c() {
-      return new gtn();
+   public gtp a() {
+      return new gtp();
    }
 
-   public void a(cgh $$0, gtn $$1, float $$2) {
+   public void a(bua $$0, gtp $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = (float)$$0.y() > 0.0F ? (float)$$0.y() - $$2 : 0.0F;
-      $$1.b = $$0.go();
-      $$1.c = $$0.t();
-   }
-
-   protected void a(gtn $$0, fcu $$1, float $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (!((double)$$0.Y < 0.01)) {
-         float $$4 = 13.0F;
-         float $$5 = $$0.X + 6.0F;
-         float $$6 = (Math.abs($$5 % 13.0F - 6.5F) - 3.25F) / 3.25F;
-         $$1.a(a.f.rotationDegrees(6.5F * $$6));
-      }
+      $$1.a = $$0.o();
    }
 }

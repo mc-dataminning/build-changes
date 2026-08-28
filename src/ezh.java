@@ -1,53 +1,53 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public interface ezh {
-   String a_ = "*";
-   ezh cA = new ezh() {
-      @Override
-      public String cF() {
-         return "*";
-      }
-   };
+public class ezh extends AbstractDoubleList implements eze {
+   private final DoubleList a;
+   private final DoubleList b;
+   private final boolean c;
 
-   String cF();
-
-   @Nullable
-   default xd Q_() {
-      return null;
+   protected ezh(DoubleList $$0, DoubleList $$1, boolean $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   default xd he() {
-      xd $$0 = this.Q_();
-      return $$0 != null ? $$0.f().a($$0x -> $$0x.a(new xj(xj.a.a, xd.b(this.cF())))) : xd.b(this.cF());
+   @Override
+   public int size() {
+      return this.a.size() + this.b.size();
    }
 
-   static ezh c(final String $$0) {
-      if ($$0.equals("*")) {
-         return cA;
-      } else {
-         final xd $$1 = xd.b($$0);
-         return new ezh() {
-            @Override
-            public String cF() {
-               return $$0;
-            }
-
-            @Override
-            public xd he() {
-               return $$1;
-            }
-         };
-      }
+   @Override
+   public boolean a(eze.a $$0) {
+      return this.c ? this.b(($$1, $$2, $$3) -> $$0.merge($$2, $$1, $$3)) : this.b($$0);
    }
 
-   static ezh a(GameProfile $$0) {
-      final String $$1 = $$0.getName();
-      return new ezh() {
-         @Override
-         public String cF() {
-            return $$1;
+   private boolean b(eze.a $$0) {
+      int $$1 = this.a.size();
+
+      for (int $$2 = 0; $$2 < $$1; $$2++) {
+         if (!$$0.merge($$2, -1, $$2)) {
+            return false;
          }
-      };
+      }
+
+      int $$3 = this.b.size() - 1;
+
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if (!$$0.merge($$1 - 1, $$4, $$1 + $$4)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public double getDouble(int $$0) {
+      return $$0 < this.a.size() ? this.a.getDouble($$0) : this.b.getDouble($$0 - this.a.size());
+   }
+
+   @Override
+   public DoubleList a() {
+      return this;
    }
 }

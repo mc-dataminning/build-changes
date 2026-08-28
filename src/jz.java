@@ -1,10 +1,10 @@
 import com.mojang.serialization.Lifecycle;
 import java.util.Optional;
 
-public record jz(Optional<atz> b, Lifecycle c) {
+public record jz(Optional<aua> b, Lifecycle c) {
    public static final jz a = new jz(Optional.empty(), Lifecycle.stable());
 
-   public Optional<atz> a() {
+   public Optional<aua> a() {
       return this.b;
    }
 

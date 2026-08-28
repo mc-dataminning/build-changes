@@ -1,31 +1,31 @@
-public class fpm extends fpt {
-   private static final xd a = xd.c("outOfMemory.title");
-   private static final xd b = xd.c("outOfMemory.message");
-   private static final int c = 300;
-   private final fno d = new fno(this);
+public class fpm extends fqd {
+   private final xd a;
 
-   public fpm() {
-      super(a);
+   public fpm(xd $$0, xd $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
    @Override
-   protected void aT_() {
-      this.d.a(a, this.p);
-      this.d.c(new fkl(300, b, this.p));
-      fns $$0 = this.d.b(fns.e().a(8));
-      $$0.a(fka.a(xc.l, $$0x -> this.m.a(new fpv())).a());
-      $$0.a(fka.a(xd.c("menu.quit"), $$0x -> this.m.q()).a());
-      this.d.a(this::c);
-      this.c();
+   protected void aR_() {
+      super.aR_();
+      this.c(fkk.a(xc.e, $$0 -> this.m.a(null)).a(this.n / 2 - 100, 140, 200, 20).a());
    }
 
    @Override
-   protected void c() {
-      this.d.a();
+   public void a(fjx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, this.l, this.n / 2, 90, 16777215);
+      $$0.a(this.p, this.a, this.n / 2, 110, 16777215);
    }
 
    @Override
-   public boolean aJ_() {
+   public void b(fjx $$0, int $$1, int $$2, float $$3) {
+      $$0.b(0, 0, this.n, this.o, -12574688, -11530224);
+   }
+
+   @Override
+   public boolean aH_() {
       return false;
    }
 }

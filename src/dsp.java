@@ -1,227 +1,134 @@
-import java.util.List;
-import java.util.stream.IntStream;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Object2IntLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.objects.Object2IntSortedMap;
+import java.util.Collections;
+import java.util.SequencedSet;
 
-public class dsp extends dsl implements bru {
-   public static final int d = 9;
-   public static final int e = 3;
-   public static final int f = 27;
-   public static final int g = 1;
-   public static final int h = 10;
-   public static final float i = 0.5F;
-   public static final float j = 270.0F;
-   private static final int[] k = IntStream.range(0, 27).toArray();
-   private jw<cvl> n = jw.a(27, cvl.k);
-   private int r;
-   private dsp.a s = dsp.a.a;
-   private float t;
-   private float u;
-   @Nullable
-   private final cue v;
+public class dsp {
+   private final Object2IntSortedMap<cvk> a;
 
-   public dsp(@Nullable cue $$0, je $$1, dua $$2) {
-      super(drg.x, $$1, $$2);
-      this.v = $$0;
+   dsp(Object2IntSortedMap<cvk> $$0) {
+      this.a = $$0;
    }
 
-   public dsp(je $$0, dua $$1) {
-      super(drg.x, $$0, $$1);
-      this.v = dnv.a($$1.b());
+   public boolean a(cvp $$0) {
+      return this.a.containsKey($$0.h());
    }
 
-   public static void a(dds $$0, je $$1, dua $$2, dsp $$3) {
-      $$3.b($$0, $$1, $$2);
+   public SequencedSet<cvk> a() {
+      return Collections.unmodifiableSequencedSet(this.a.keySet());
    }
 
-   private void b(dds $$0, je $$1, dua $$2) {
-      this.u = this.t;
-      switch (this.s) {
-         case a:
-            this.t = 0.0F;
-            break;
-         case b:
-            this.t += 0.1F;
-            if (this.u == 0.0F) {
-               d($$0, $$1, $$2);
+   public int b(cvp $$0) {
+      return $$0.f() ? 0 : this.a.getInt($$0.h());
+   }
+
+   public static dsp a(jp.a $$0, cqn $$1) {
+      return a($$0, $$1, 200);
+   }
+
+   public static dsp a(jp.a $$0, cqn $$1, int $$2) {
+      return new dsp.a($$0, $$1)
+         .a(cvt.qB, $$2 * 100)
+         .a(dhl.iB, $$2 * 8 * 10)
+         .a(cvt.sh, $$2 * 12)
+         .a(cvt.oy, $$2 * 8)
+         .a(cvt.oz, $$2 * 8)
+         .a(axc.r, $$2 * 3 / 2)
+         .a(axc.C, $$2 * 3 / 2)
+         .a(axc.b, $$2 * 3 / 2)
+         .a(dhl.w, $$2 * 3 / 2)
+         .a(axc.i, $$2 * 3 / 2)
+         .a(dhl.hU, $$2 * 3 / 2)
+         .a(axc.j, $$2 * 3 / 4)
+         .a(dhl.jC, $$2 * 3 / 4)
+         .a(axc.n, $$2 * 3 / 2)
+         .a(axc.m, $$2 * 3 / 2)
+         .a(axc.k, $$2 * 3 / 2)
+         .a(axc.l, $$2 * 3 / 2)
+         .a(dhl.aY, $$2 * 3 / 2)
+         .a(dhl.cl, $$2 * 3 / 2)
+         .a(dhl.cm, $$2 * 3 / 2)
+         .a(dhl.oa, $$2 * 3 / 2)
+         .a(dhl.dT, $$2 * 3 / 2)
+         .a(dhl.cv, $$2 * 3 / 2)
+         .a(dhl.gV, $$2 * 3 / 2)
+         .a(dhl.cA, $$2 * 3 / 2)
+         .a(dhl.gZ, $$2 * 3 / 2)
+         .a(axc.E, $$2 * 3 / 2)
+         .a(cvt.ow, $$2 * 3 / 2)
+         .a(cvt.qW, $$2 * 3 / 2)
+         .a(dhl.cO, $$2 * 3 / 2)
+         .a(axc.aQ, $$2)
+         .a(axc.bi, $$2 * 4)
+         .a(cvt.oO, $$2)
+         .a(cvt.oN, $$2)
+         .a(cvt.oR, $$2)
+         .a(cvt.oQ, $$2)
+         .a(cvt.oP, $$2)
+         .a(axc.h, $$2)
+         .a(axc.aN, $$2 * 6)
+         .a(axc.a, $$2 / 2)
+         .a(axc.d, $$2 / 2)
+         .a(cvt.pr, $$2 / 2)
+         .a(axc.p, $$2 / 2)
+         .a(cvt.ou, $$2 / 2)
+         .a(axc.g, 1 + $$2 / 3)
+         .a(dhl.me, 1 + $$2 * 20)
+         .a(cvt.vX, $$2 * 3 / 2)
+         .a(dhl.mZ, $$2 / 4)
+         .a(dhl.bv, $$2 / 2)
+         .a(dhl.nS, $$2 / 4)
+         .a(dhl.nT, $$2 * 3 / 2)
+         .a(dhl.nU, $$2 * 3 / 2)
+         .a(dhl.nX, $$2 * 3 / 2)
+         .a(dhl.nY, $$2 * 3 / 2)
+         .a(dhl.ob, $$2 * 3 / 2)
+         .a(dhl.pc, $$2 * 3 / 2)
+         .a(dhl.sy, $$2 / 2)
+         .a(dhl.sz, $$2 / 2)
+         .a(dhl.ac, $$2 * 3 / 2)
+         .a(axc.aH)
+         .a();
+   }
+
+   public static class a {
+      private final jp<cvk> a;
+      private final cqn b;
+      private final Object2IntSortedMap<cvk> c = new Object2IntLinkedOpenHashMap();
+
+      public a(jp.a $$0, cqn $$1) {
+         this.a = $$0.b(lv.K);
+         this.b = $$1;
+      }
+
+      public dsp a() {
+         return new dsp(this.c);
+      }
+
+      public dsp.a a(axj<cvk> $$0) {
+         this.c.keySet().removeIf($$1 -> $$1.n().a($$0));
+         return this;
+      }
+
+      public dsp.a a(axj<cvk> $$0, int $$1) {
+         this.a.a($$0).ifPresent($$1x -> {
+            for (jn<cvk> $$2 : $$1x) {
+               this.a($$1, $$2.a());
             }
-
-            if (this.t >= 1.0F) {
-               this.s = dsp.a.c;
-               this.t = 1.0F;
-               d($$0, $$1, $$2);
-            }
-
-            this.c($$0, $$1, $$2);
-            break;
-         case c:
-            this.t = 1.0F;
-            break;
-         case d:
-            this.t -= 0.1F;
-            if (this.u == 1.0F) {
-               d($$0, $$1, $$2);
-            }
-
-            if (this.t <= 0.0F) {
-               this.s = dsp.a.a;
-               this.t = 0.0F;
-               d($$0, $$1, $$2);
-            }
+         });
+         return this;
       }
-   }
 
-   public dsp.a k() {
-      return this.s;
-   }
+      public dsp.a a(def $$0, int $$1) {
+         cvk $$2 = $$0.q();
+         this.a($$1, $$2);
+         return this;
+      }
 
-   public exz a(dua $$0) {
-      return clb.a(1.0F, $$0.c(dnv.b), 0.5F * this.a(1.0F));
-   }
-
-   private void c(dds $$0, je $$1, dua $$2) {
-      if ($$2.b() instanceof dnv) {
-         jj $$3 = $$2.c(dnv.b);
-         exz $$4 = clb.a(1.0F, $$3, this.u, this.t).a($$1);
-         List<btj> $$5 = $$0.a_(null, $$4);
-         if (!$$5.isEmpty()) {
-            for (btj $$6 : $$5) {
-               if ($$6.j_() != eqg.d) {
-                  $$6.a(buj.d, new eye(($$4.b() + 0.01) * (double)$$3.j(), ($$4.c() + 0.01) * (double)$$3.k(), ($$4.d() + 0.01) * (double)$$3.l()));
-               }
-            }
+      private void a(int $$0, cvk $$1) {
+         if ($$1.a(this.b)) {
+            this.c.put($$1, $$0);
          }
       }
-   }
-
-   @Override
-   public int b() {
-      return this.n.size();
-   }
-
-   @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.r = $$1;
-         if ($$1 == 0) {
-            this.s = dsp.a.d;
-         }
-
-         if ($$1 == 1) {
-            this.s = dsp.a.b;
-         }
-
-         return true;
-      } else {
-         return super.a_($$0, $$1);
-      }
-   }
-
-   private static void d(dds $$0, je $$1, dua $$2) {
-      $$2.a($$0, $$1, 3);
-      $$0.a($$1, $$2.b());
-   }
-
-   @Override
-   public void d_(cnp $$0) {
-      if (!this.q && !$$0.P_()) {
-         if (this.r < 0) {
-            this.r = 0;
-         }
-
-         this.r++;
-         this.o.a(this.p, this.m().b(), 1, this.r);
-         if (this.r == 1) {
-            this.o.a($$0, dyx.k, this.p);
-            this.o.a(null, this.p, awd.wO, awe.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
-         }
-      }
-   }
-
-   @Override
-   public void c(cnp $$0) {
-      if (!this.q && !$$0.P_()) {
-         this.r--;
-         this.o.a(this.p, this.m().b(), 1, this.r);
-         if (this.r <= 0) {
-            this.o.a($$0, dyx.j, this.p);
-            this.o.a(null, this.p, awd.wN, awe.e, 0.5F, this.o.z.i() * 0.1F + 0.9F);
-         }
-      }
-   }
-
-   @Override
-   protected xd j() {
-      return xd.c("container.shulkerBox");
-   }
-
-   @Override
-   protected void a(uf $$0, jp.a $$1) {
-      super.a($$0, $$1);
-      this.e($$0, $$1);
-   }
-
-   @Override
-   protected void b(uf $$0, jp.a $$1) {
-      super.b($$0, $$1);
-      if (!this.c_($$0)) {
-         bre.a($$0, this.n, false, $$1);
-      }
-   }
-
-   public void e(uf $$0, jp.a $$1) {
-      this.n = jw.a(this.b(), cvl.k);
-      if (!this.b_($$0) && $$0.b("Items", 9)) {
-         bre.b($$0, this.n, $$1);
-      }
-   }
-
-   @Override
-   protected jw<cvl> f() {
-      return this.n;
-   }
-
-   @Override
-   protected void a(jw<cvl> $$0) {
-      this.n = $$0;
-   }
-
-   @Override
-   public int[] a(jj $$0) {
-      return k;
-   }
-
-   @Override
-   public boolean a(int $$0, cvl $$1, @Nullable jj $$2) {
-      return !(dgv.a($$1.h()) instanceof dnv);
-   }
-
-   @Override
-   public boolean b(int $$0, cvl $$1, jj $$2) {
-      return true;
-   }
-
-   public float a(float $$0) {
-      return azc.h($$0, this.u, this.t);
-   }
-
-   @Nullable
-   public cue t() {
-      return this.v;
-   }
-
-   @Override
-   protected cqq a(int $$0, cno $$1) {
-      return new csk($$0, $$1, this);
-   }
-
-   public boolean u() {
-      return this.s == dsp.a.a;
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d;
    }
 }

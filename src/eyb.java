@@ -1,21 +1,29 @@
-public class eyb extends eyc {
-   private final btj b;
+import net.minecraft.server.MinecraftServer;
 
-   public eyb(btj $$0) {
-      this($$0, $$0.dq());
+public class eyb implements eyd<MinecraftServer> {
+   final alc a;
+
+   public eyb(alc $$0) {
+      this.a = $$0;
    }
 
-   public eyb(btj $$0, eye $$1) {
-      super($$1);
-      this.b = $$0;
+   public void a(MinecraftServer $$0, eyf<MinecraftServer> $$1, long $$2) {
+      alr $$3 = $$0.aE();
+      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
    }
 
-   public btj a() {
-      return this.b;
-   }
+   public static class a extends eyd.a<MinecraftServer, eyb> {
+      public a() {
+         super(alc.b("function"), eyb.class);
+      }
 
-   @Override
-   public eyc.a c() {
-      return eyc.a.c;
+      public void a(uf $$0, eyb $$1) {
+         $$0.a("Name", $$1.a.toString());
+      }
+
+      public eyb a(uf $$0) {
+         alc $$1 = alc.a($$0.l("Name"));
+         return new eyb($$1);
+      }
    }
 }

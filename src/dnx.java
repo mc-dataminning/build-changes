@@ -1,42 +1,105 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import java.util.List;
 
-public interface dnx extends dhc, dlm {
-   @Override
-   default boolean a(@Nullable cnp $$0, dcx $$1, je $$2, dua $$3, eqa $$4) {
-      return $$4 == eqc.c;
+public enum dnx implements azz {
+   a("none", h.a),
+   b("clockwise_90", h.u),
+   c("180", h.c),
+   d("counterclockwise_90", h.v);
+
+   public static final Codec<dnx> e = azz.a(dnx::values);
+   private final String f;
+   private final h g;
+
+   private dnx(final String $$0, final h $$1) {
+      this.f = $$0;
+      this.g = $$1;
    }
 
-   @Override
-   default boolean a(ddt $$0, je $$1, dua $$2, eqb $$3) {
-      if (!$$2.c(duq.C) && $$3.a() == eqc.c) {
-         if (!$$0.w_()) {
-            $$0.a($$1, $$2.b(duq.C, Boolean.valueOf(true)), 3);
-            $$0.a($$1, $$3.a(), $$3.a().a($$0));
-         }
-
-         return true;
-      } else {
-         return false;
+   public dnx a(dnx $$0) {
+      switch ($$0) {
+         case c:
+            switch (this) {
+               case a:
+                  return c;
+               case b:
+                  return d;
+               case c:
+                  return a;
+               case d:
+                  return b;
+            }
+         case d:
+            switch (this) {
+               case a:
+                  return d;
+               case b:
+                  return a;
+               case c:
+                  return b;
+               case d:
+                  return c;
+            }
+         case b:
+            switch (this) {
+               case a:
+                  return b;
+               case b:
+                  return c;
+               case c:
+                  return d;
+               case d:
+                  return a;
+            }
+         default:
+            return this;
       }
    }
 
-   @Override
-   default cvl a(@Nullable cnp $$0, ddt $$1, je $$2, dua $$3) {
-      if ($$3.c(duq.C)) {
-         $$1.a($$2, $$3.b(duq.C, Boolean.valueOf(false)), 3);
-         if (!$$3.a($$1, $$2)) {
-            $$1.b($$2, true);
-         }
+   public h a() {
+      return this.g;
+   }
 
-         return new cvl(cvo.qA);
+   public jj a(jj $$0) {
+      if ($$0.o() == jj.a.b) {
+         return $$0;
       } else {
-         return cvl.k;
+         switch (this) {
+            case b:
+               return $$0.h();
+            case c:
+               return $$0.g();
+            case d:
+               return $$0.i();
+            default:
+               return $$0;
+         }
       }
    }
 
+   public int a(int $$0, int $$1) {
+      switch (this) {
+         case b:
+            return ($$0 + $$1 / 4) % $$1;
+         case c:
+            return ($$0 + $$1 / 2) % $$1;
+         case d:
+            return ($$0 + $$1 * 3 / 4) % $$1;
+         default:
+            return $$0;
+      }
+   }
+
+   public static dnx a(azl $$0) {
+      return ad.a(values(), $$0);
+   }
+
+   public static List<dnx> b(azl $$0) {
+      return ad.b(values(), $$0);
+   }
+
    @Override
-   default Optional<awc> av_() {
-      return eqc.c.j();
+   public String c() {
+      return this.f;
    }
 }

@@ -1,38 +1,110 @@
-public class gof extends gny<cgl, gub, fxy> {
-   private static final alb a = alb.b("textures/entity/parrot/parrot_red_blue.png");
-   private static final alb b = alb.b("textures/entity/parrot/parrot_blue.png");
-   private static final alb k = alb.b("textures/entity/parrot/parrot_green.png");
-   private static final alb l = alb.b("textures/entity/parrot/parrot_yellow_blue.png");
-   private static final alb m = alb.b("textures/entity/parrot/parrot_grey.png");
+import com.google.common.annotations.VisibleForTesting;
 
-   public gof(gms.a $$0) {
-      super($$0, new fxy($$0.a(gaa.bq)), 0.3F);
+public class gof extends gni<cke, gug> {
+   private static final float a = 0.15F;
+   private static final float b = 0.0F;
+   private static final float h = 0.0F;
+   private static final float i = 0.09375F;
+   private final goh j;
+   private final azl k = azl.a();
+
+   public gof(gnj.a $$0) {
+      super($$0);
+      this.j = $$0.b();
+      this.f = 0.15F;
+      this.g = 0.75F;
    }
 
-   public alb a(gub $$0) {
-      return a($$0.a);
+   public alc a(gug $$0) {
+      return gxa.d;
    }
 
-   public gub c() {
-      return new gub();
+   public gug a() {
+      return new gug();
    }
 
-   public void a(cgl $$0, gub $$1, float $$2) {
+   public void a(cke $$0, gug $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gC();
-      float $$3 = azc.h($$2, $$0.cg, $$0.cd);
-      float $$4 = azc.h($$2, $$0.cf, $$0.ce);
-      $$1.b = (azc.a($$3) + 1.0F) * $$4;
-      $$1.c = fxy.a($$0);
+      $$1.p = (float)$$0.o() + $$2;
+      $$1.a = $$0.c;
+      cvp $$3 = $$0.m();
+      $$1.c = $$3.u();
+      $$1.b = this.j.a($$3, $$0.dS(), null, $$0.ap());
    }
 
-   public static alb a(cgl.b $$0) {
-      return switch ($$0) {
-         case a -> a;
-         case b -> b;
-         case c -> k;
-         case d -> l;
-         case e -> m;
-      };
+   public void a(gug $$0, fde $$1, ghg $$2, int $$3) {
+      gzd $$4 = $$0.b;
+      if ($$4 != null) {
+         $$1.a();
+         cvp $$5 = $$0.c;
+         this.k.b((long)a($$5));
+         boolean $$6 = $$4.b();
+         float $$7 = 0.25F;
+         float $$8 = azd.a($$0.p / 10.0F + $$0.a) * 0.1F + 0.1F;
+         float $$9 = $$4.f().a(cvm.h).d.y();
+         $$1.a(0.0F, $$8 + 0.25F * $$9, 0.0F);
+         float $$10 = cke.e($$0.p, $$0.a);
+         $$1.a(a.d.rotation($$10));
+         a(this.j, $$1, $$2, $$3, $$5, $$4, $$6, this.k);
+         $$1.b();
+         super.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   public static int a(cvp $$0) {
+      return $$0.f() ? 187 : cvk.a($$0.h()) + $$0.o();
+   }
+
+   @VisibleForTesting
+   static int a(int $$0) {
+      if ($$0 <= 1) {
+         return 1;
+      } else if ($$0 <= 16) {
+         return 2;
+      } else if ($$0 <= 32) {
+         return 3;
+      } else {
+         return $$0 <= 48 ? 4 : 5;
+      }
+   }
+
+   public static void a(goh $$0, fde $$1, ghg $$2, int $$3, cvp $$4, azl $$5, deg $$6) {
+      gzd $$7 = $$0.a($$4, $$6, null, 0);
+      a($$0, $$1, $$2, $$3, $$4, $$7, $$7.b(), $$5);
+   }
+
+   public static void a(goh $$0, fde $$1, ghg $$2, int $$3, cvp $$4, gzd $$5, boolean $$6, azl $$7) {
+      int $$8 = a($$4.J());
+      float $$9 = $$5.f().h.d.x();
+      float $$10 = $$5.f().h.d.y();
+      float $$11 = $$5.f().h.d.z();
+      if (!$$6) {
+         float $$12 = -0.0F * (float)($$8 - 1) * 0.5F * $$9;
+         float $$13 = -0.0F * (float)($$8 - 1) * 0.5F * $$10;
+         float $$14 = -0.09375F * (float)($$8 - 1) * 0.5F * $$11;
+         $$1.a($$12, $$13, $$14);
+      }
+
+      for (int $$15 = 0; $$15 < $$8; $$15++) {
+         $$1.a();
+         if ($$15 > 0) {
+            if ($$6) {
+               float $$16 = ($$7.i() * 2.0F - 1.0F) * 0.15F;
+               float $$17 = ($$7.i() * 2.0F - 1.0F) * 0.15F;
+               float $$18 = ($$7.i() * 2.0F - 1.0F) * 0.15F;
+               $$1.a($$16, $$17, $$18);
+            } else {
+               float $$19 = ($$7.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
+               float $$20 = ($$7.i() * 2.0F - 1.0F) * 0.15F * 0.5F;
+               $$1.a($$19, $$20, 0.0F);
+            }
+         }
+
+         $$0.a($$4, cvm.h, false, $$1, $$2, $$3, gws.d, $$5);
+         $$1.b();
+         if (!$$6) {
+            $$1.a(0.0F * $$9, 0.0F * $$10, 0.09375F * $$11);
+         }
+      }
    }
 }

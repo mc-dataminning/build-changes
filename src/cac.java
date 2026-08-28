@@ -1,51 +1,63 @@
-public class cac extends caf {
-   private final int l;
-   private final boolean m;
+import com.google.common.collect.ImmutableMap;
 
-   public cac(buh $$0, int $$1, boolean $$2) {
-      super($$0);
-      this.l = $$1;
-      this.m = $$2;
+public class cac extends bwc<cmy> {
+   private static final int d = 15;
+   private static final int e = 20;
+   private static final double f = 0.5;
+   private static final double g = 2.5;
+   public static final int c = 40;
+   private static final int h = azd.c(34.0);
+   private static final int i = azd.f(60.0F);
+
+   public cac() {
+      super(ImmutableMap.of(cdn.o, cdo.a, cdn.aJ, cdo.b, cdn.aK, cdo.c, cdn.aL, cdo.c), i);
    }
 
-   @Override
-   public void a() {
-      if (this.k == caf.a.b) {
-         this.k = caf.a.a;
-         this.d.f(true);
-         double $$0 = this.e - this.d.dx();
-         double $$1 = this.f - this.d.dz();
-         double $$2 = this.g - this.d.dD();
-         double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
-         if ($$3 < 2.5000003E-7F) {
-            this.d.H(0.0F);
-            this.d.G(0.0F);
-            return;
-         }
+   protected boolean a(arh $$0, cmy $$1) {
+      return $$1.a($$1.dX().c(cdn.o).get(), 15.0, 20.0);
+   }
 
-         float $$4 = (float)(azc.d($$2, $$0) * 180.0F / (float)Math.PI) - 90.0F;
-         this.d.v(this.a(this.d.dI(), $$4, 90.0F));
-         float $$5;
-         if (this.d.aH()) {
-            $$5 = (float)(this.h * this.d.h(bvm.v));
-         } else {
-            $$5 = (float)(this.h * this.d.h(bvm.l));
-         }
+   protected boolean a(arh $$0, cmy $$1, long $$2) {
+      return true;
+   }
 
-         this.d.C($$5);
-         double $$7 = Math.sqrt($$0 * $$0 + $$2 * $$2);
-         if (Math.abs($$1) > 1.0E-5F || Math.abs($$7) > 1.0E-5F) {
-            float $$8 = (float)(-(azc.d($$1, $$7) * 180.0F / (float)Math.PI));
-            this.d.w(this.a(this.d.dK(), $$8, (float)this.l));
-            this.d.H($$1 > 0.0 ? $$5 : -$$5);
-         }
-      } else {
-         if (!this.m) {
-            this.d.f(false);
-         }
+   protected void b(arh $$0, cmy $$1, long $$2) {
+      $$1.dX().a(cdn.p, true, (long)i);
+      $$1.dX().a(cdn.aL, bai.a, (long)h);
+      $$0.a($$1, (byte)62);
+      $$1.a(awe.Cd, 3.0F, 1.0F);
+   }
 
-         this.d.H(0.0F);
-         this.d.G(0.0F);
+   protected void c(arh $$0, cmy $$1, long $$2) {
+      $$1.dX().c(cdn.o).ifPresent($$1x -> $$1.K().a($$1x.dq()));
+      if (!$$1.dX().a(cdn.aL) && !$$1.dX().a(cdn.aK)) {
+         $$1.dX().a(cdn.aK, bai.a, (long)(i - h));
+         $$1.dX().c(cdn.o).filter($$1::c).filter($$1x -> $$1.a($$1x, 15.0, 20.0)).ifPresent($$2x -> {
+            eys $$3 = $$1.dq().e($$1.dp().b(btp.d, 0, $$1.dI()));
+            eys $$4 = $$2x.bC().d($$3);
+            eys $$5 = $$4.d();
+            int $$6 = azd.a($$4.g()) + 7;
+
+            for (int $$7 = 1; $$7 < $$6; $$7++) {
+               eys $$8 = $$3.e($$5.c((double)$$7));
+               $$0.a(ln.B, $$8.d, $$8.e, $$8.f, 1, 0.0, 0.0, 0.0, 0.0);
+            }
+
+            $$1.a(awe.Cc, 3.0F, 1.0F);
+            if ($$2x.a($$0.ak().e($$1), 10.0F)) {
+               double $$9 = 0.5 * (1.0 - $$2x.h(bvr.p));
+               double $$10 = 2.5 * (1.0 - $$2x.h(bvr.p));
+               $$2x.j($$5.a() * $$10, $$5.b() * $$9, $$5.c() * $$10);
+            }
+         });
       }
+   }
+
+   protected void d(arh $$0, cmy $$1, long $$2) {
+      a($$1, 40);
+   }
+
+   public static void a(buk $$0, int $$1) {
+      $$0.dX().a(cdn.aJ, bai.a, (long)$$1);
    }
 }

@@ -1,61 +1,52 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Optional;
 
-public class evj extends eug {
-   private static final Map<kq<?>, evj.a<?>> b = Stream.of(
-         new evj.a<>(kr.M, cxq::a),
-         new evj.a<>(kr.B, cyd::a),
-         new evj.a<>(kr.k, dbc::a),
-         new evj.a<>(kr.A, dbc::a),
-         new evj.a<>(kr.f, cys::a),
-         new evj.a<>(kr.m, csz::a),
-         new evj.a<>(kr.l, csz::a),
-         new evj.a<>(kr.n, cyg::a),
-         new evj.a<>(kr.T, cvp::a)
-      )
-      .collect(Collectors.toMap(evj.a::a, $$0 -> (evj.a<?>)$$0));
-   private static final Codec<evj.a<?>> c = lu.ap.q().comapFlatMap($$0 -> {
-      evj.a<?> $$1 = b.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Can't toggle tooltip visiblity for " + lu.ap.b($$0));
-   }, evj.a::a);
+public class evj extends euu {
    public static final MapCodec<evj> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(Codec.unboundedMap(c, Codec.BOOL).fieldOf("toggles").forGetter($$0x -> $$0x.d)).apply($$0, evj::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  cyi.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
+                  cyi.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
+                  cyi.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
+                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
+                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
+               )
+            )
+            .apply($$0, evj::new)
    );
-   private final Map<evj.a<?>, Boolean> d;
+   public static final cyi b = new cyi(cyi.a.a, IntList.of(), IntList.of(), false, false);
+   final Optional<cyi.a> c;
+   final Optional<IntList> d;
+   final Optional<IntList> e;
+   final Optional<Boolean> f;
+   final Optional<Boolean> h;
 
-   private evj(List<ewe> $$0, Map<evj.a<?>, Boolean> $$1) {
+   public evj(List<ews> $$0, Optional<cyi.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
       super($$0);
-      this.d = $$1;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.h = $$5;
    }
 
    @Override
-   protected cvl a(cvl $$0, est $$1) {
-      this.d.forEach(($$1x, $$2) -> $$1x.a($$0, $$2));
+   protected cvp a(cvp $$0, eth $$1) {
+      $$0.a(kr.Z, b, this::a);
       return $$0;
    }
 
+   private cyi a(cyi $$0) {
+      return new cyi(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
+   }
+
    @Override
-   public eui<evj> b() {
-      return euj.P;
-   }
-
-   static record a<T>(kq<T> a, evj.b<T> b) {
-      public void a(cvl $$0, boolean $$1) {
-         T $$2 = $$0.a(this.a);
-         if ($$2 != null) {
-            $$0.b(this.a, this.b.withTooltip($$2, $$1));
-         }
-      }
-   }
-
-   @FunctionalInterface
-   interface b<T> {
-      T withTooltip(T var1, boolean var2);
+   public euw<evj> b() {
+      return eux.L;
    }
 }

@@ -1,36 +1,15 @@
-import com.google.common.primitives.Floats;
-import it.unimi.dsi.fastutil.ints.IntArrays;
-import org.joml.Vector3f;
-
-public interface fdc {
-   fdc a = a(0.0F, 0.0F, 0.0F);
-   fdc b = a((fdc.a)($$0 -> -$$0.z()));
-
-   static fdc a(float $$0, float $$1, float $$2) {
-      return a(new Vector3f($$0, $$1, $$2));
-   }
-
-   static fdc a(Vector3f $$0) {
-      return a($$0::distanceSquared);
-   }
-
-   static fdc a(fdc.a $$0) {
-      return $$1 -> {
-         float[] $$2 = new float[$$1.length];
-         int[] $$3 = new int[$$1.length];
-
-         for (int $$4 = 0; $$4 < $$1.length; $$3[$$4] = $$4++) {
-            $$2[$$4] = $$0.apply($$1[$$4]);
-         }
-
-         IntArrays.mergeSort($$3, ($$1x, $$2x) -> Floats.compare($$2[$$2x], $$2[$$1x]));
-         return $$3;
-      };
-   }
-
-   int[] sort(Vector3f[] var1);
-
-   public interface a {
-      float apply(Vector3f var1);
-   }
+public class fdc {
+   public static final fdj a = fdj.a().a("Position", fdk.b).a();
+   public static final fdj b = fdj.a().a("Position", fdk.b).a("Color", fdk.c).a("UV0", fdk.d).a("UV2", fdk.g).a("Normal", fdk.h).a(1).a();
+   public static final fdj c = fdj.a().a("Position", fdk.b).a("Color", fdk.c).a("UV0", fdk.d).a("UV1", fdk.f).a("UV2", fdk.g).a("Normal", fdk.h).a(1).a();
+   public static final fdj d = fdj.a().a("Position", fdk.b).a("UV0", fdk.d).a("Color", fdk.c).a("UV2", fdk.g).a();
+   public static final fdj e = fdj.a().a("Position", fdk.b).a();
+   public static final fdj f = fdj.a().a("Position", fdk.b).a("Color", fdk.c).a();
+   public static final fdj g = fdj.a().a("Position", fdk.b).a("Color", fdk.c).a("Normal", fdk.h).a(1).a();
+   public static final fdj h = fdj.a().a("Position", fdk.b).a("Color", fdk.c).a("UV2", fdk.g).a();
+   public static final fdj i = fdj.a().a("Position", fdk.b).a("UV0", fdk.d).a();
+   public static final fdj j = fdj.a().a("Position", fdk.b).a("UV0", fdk.d).a("Color", fdk.c).a();
+   public static final fdj k = fdj.a().a("Position", fdk.b).a("Color", fdk.c).a("UV0", fdk.d).a("UV2", fdk.g).a();
+   public static final fdj l = fdj.a().a("Position", fdk.b).a("UV0", fdk.d).a("UV2", fdk.g).a("Color", fdk.c).a();
+   public static final fdj m = fdj.a().a("Position", fdk.b).a("UV0", fdk.d).a("Color", fdk.c).a("Normal", fdk.h).a(1).a();
 }

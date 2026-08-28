@@ -1,44 +1,59 @@
-public class gho implements fcy {
-   private final fcy a;
-   private final gwk b;
+import it.unimi.dsi.fastutil.objects.Object2ObjectLinkedOpenHashMap;
+import java.util.SequencedMap;
 
-   public gho(fcy $$0, gwk $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public class gho {
+   private final ght a = new ght();
+   private final ghu b;
+   private final ghg.a c;
+   private final ghg.a d;
+   private final ghi e;
+
+   public gho(int $$0) {
+      this.b = ghu.a($$0);
+      SequencedMap<ghq, fdb> $$1 = ad.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> {
+         $$0x.put(gib.h(), this.a.a(ghq.c()));
+         $$0x.put(gib.i(), this.a.a(ghq.e()));
+         $$0x.put(gib.a(), this.a.a(ghq.d()));
+         $$0x.put(gib.j(), this.a.a(ghq.f()));
+         a($$0x, gib.b());
+         a($$0x, gib.c());
+         a($$0x, gib.d());
+         a($$0x, gib.e());
+         a($$0x, gib.f());
+         $$0x.put(gib.g(), new fdb(786432));
+         a($$0x, ghq.j());
+         a($$0x, ghq.l());
+         a($$0x, ghq.k());
+         a($$0x, ghq.m());
+         a($$0x, ghq.i());
+      });
+      this.c = ghg.a($$1, new fdb(786432));
+      this.e = new ghi(this.c);
+      SequencedMap<ghq, fdb> $$2 = ad.a(new Object2ObjectLinkedOpenHashMap(), $$0x -> gzk.l.forEach($$1x -> a($$0x, $$1x)));
+      this.d = ghg.a($$2, new fdb(0));
    }
 
-   @Override
-   public fcy a(float $$0, float $$1, float $$2) {
-      return this.a.a($$0, $$1, $$2);
+   private static void a(Object2ObjectLinkedOpenHashMap<ghq, fdb> $$0, ghq $$1) {
+      $$0.put($$1, new fdb($$1.M()));
    }
 
-   @Override
-   public fcy a(int $$0, int $$1, int $$2, int $$3) {
-      return this.a.a($$0, $$1, $$2, $$3);
+   public ght a() {
+      return this.a;
    }
 
-   @Override
-   public fcy a(float $$0, float $$1) {
-      return this.a.a(this.b.a($$0), this.b.c($$1));
+   public ghu b() {
+      return this.b;
    }
 
-   @Override
-   public fcy a(int $$0, int $$1) {
-      return this.a.a($$0, $$1);
+   public ghg.a c() {
+      return this.c;
    }
 
-   @Override
-   public fcy b(int $$0, int $$1) {
-      return this.a.b($$0, $$1);
+   public ghg.a d() {
+      return this.d;
    }
 
-   @Override
-   public fcy b(float $$0, float $$1, float $$2) {
-      return this.a.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-      this.a.a($$0, $$1, $$2, $$3, this.b.a($$4), this.b.c($$5), $$6, $$7, $$8, $$9, $$10);
+   public ghi e() {
+      return this.e;
    }
 }

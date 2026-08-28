@@ -1,37 +1,106 @@
 import com.mojang.serialization.MapCodec;
 
-public class dmu extends dgv {
-   public static final MapCodec<dmu> a = b(dmu::new);
+public class dmu extends djm {
+   public static final MapCodec<dmu> b = b(dmu::new);
+   public static final dvf c = dve.w;
 
    @Override
    public MapCodec<dmu> a() {
-      return a;
+      return b;
    }
 
-   protected dmu(dtz.d $$0) {
+   public dmu(dun.d $$0) {
       super($$0);
+      this.l(this.F.b().b(a, jj.d).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected brk a(cvl $$0, dua $$1, dds $$2, je $$3, cnp $$4, brj $$5, eya $$6) {
-      if (!$$0.a(cvo.rW)) {
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      } else if ($$2.B) {
-         return brk.a;
+   protected void a(dup.a<dhj, duo> $$0) {
+      $$0.a(a, c);
+   }
+
+   @Override
+   protected duo a(duo $$0, dnx $$1) {
+      return $$0.b(a, $$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected duo a(duo $$0, dmg $$1) {
+      return $$0.a($$1.a($$0.c(a)));
+   }
+
+   @Override
+   protected void a(duo $$0, arh $$1, je $$2, azl $$3) {
+      if ($$0.c(c)) {
+         $$1.a($$2, $$0.b(c, Boolean.valueOf(false)), 2);
       } else {
-         jj $$7 = $$6.b();
-         jj $$8 = $$7.o() == jj.a.b ? $$4.cL().g() : $$7;
-         $$2.a(null, $$3, awd.uX, awe.e, 1.0F, 1.0F);
-         $$2.a($$3, dgx.ee.o().b(dhp.b, $$8), 11);
-         cjz $$9 = new cjz(
-            $$2, (double)$$3.u() + 0.5 + (double)$$8.j() * 0.65, (double)$$3.v() + 0.1, (double)$$3.w() + 0.5 + (double)$$8.l() * 0.65, new cvl(cvo.rZ, 4)
-         );
-         $$9.n(0.05 * (double)$$8.j() + $$2.z.j() * 0.02, 0.05, 0.05 * (double)$$8.l() + $$2.z.j() * 0.02);
-         $$2.b($$9);
-         $$0.a(1, $$4, buf.d($$5));
-         $$2.a($$4, dyx.M, $$3);
-         $$4.b(awn.c.b(cvo.rW));
-         return brk.a;
+         $$1.a($$2, $$0.b(c, Boolean.valueOf(true)), 2);
+         $$1.a($$2, this, 2);
       }
+
+      this.a($$1, $$2, $$0);
+   }
+
+   @Override
+   protected duo a(duo $$0, jj $$1, duo $$2, deh $$3, je $$4, je $$5) {
+      if ($$0.c(a) == $$1 && !$$0.c(c)) {
+         this.a($$3, $$4);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   private void a(deh $$0, je $$1) {
+      if (!$$0.w_() && !$$0.R().a($$1, this)) {
+         $$0.a($$1, this, 2);
+      }
+   }
+
+   protected void a(deg $$0, je $$1, duo $$2) {
+      jj $$3 = $$2.c(a);
+      je $$4 = $$1.a($$3.g());
+      erx $$5 = ert.a($$0, $$3.g(), null);
+      $$0.b($$4, this, $$5);
+      $$0.a($$4, this, $$3, $$5);
+   }
+
+   @Override
+   protected boolean f_(duo $$0) {
+      return true;
+   }
+
+   @Override
+   protected int b(duo $$0, ddl $$1, je $$2, jj $$3) {
+      return $$0.a($$1, $$2, $$3);
+   }
+
+   @Override
+   protected int a(duo $$0, ddl $$1, je $$2, jj $$3) {
+      return $$0.c(c) && $$0.c(a) == $$3 ? 15 : 0;
+   }
+
+   @Override
+   protected void b(duo $$0, deg $$1, je $$2, duo $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if (!$$1.w_() && $$0.c(c) && !$$1.R().a($$2, this)) {
+            duo $$5 = $$0.b(c, Boolean.valueOf(false));
+            $$1.a($$2, $$5, 18);
+            this.a($$1, $$2, $$5);
+         }
+      }
+   }
+
+   @Override
+   protected void a(duo $$0, deg $$1, je $$2, duo $$3, boolean $$4) {
+      if (!$$0.a($$3.b())) {
+         if (!$$1.B && $$0.c(c) && $$1.R().a($$2, this)) {
+            this.a($$1, $$2, $$0.b(c, Boolean.valueOf(false)));
+         }
+      }
+   }
+
+   @Override
+   public duo a(czk $$0) {
+      return this.o().b(a, $$0.d().g().g());
    }
 }

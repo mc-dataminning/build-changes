@@ -1,35 +1,22 @@
-public class gmo extends gny<ckl, gst, fwy<gst>> {
-   private static final alb a = alb.b("textures/entity/enderman/enderman.png");
-   private final azk b = azk.a();
+public class gmo extends gmc<ckk, gsz> {
+   private static final alc a = alc.b("textures/entity/skeleton/bogged.png");
+   private static final alc b = alc.b("textures/entity/skeleton/bogged_overlay.png");
 
-   public gmo(gms.a $$0) {
-      super($$0, new fwy<>($$0.a(gaa.at)), 0.5F);
-      this.a(new gqp(this));
-      this.a(new gqg(this, $$0.d()));
+   public gmo(gnj.a $$0) {
+      super($$0, gak.x, gak.y, new fwt($$0.a(gak.w)));
+      this.a(new grz<>(this, $$0.f(), gak.z, b));
    }
 
-   public eye a(gst $$0) {
-      eye $$1 = super.b($$0);
-      if ($$0.a) {
-         double $$2 = 0.02 * (double)$$0.aa;
-         return $$1.b(this.b.k() * $$2, 0.0, this.b.k() * $$2);
-      } else {
-         return $$1;
-      }
-   }
-
-   public alb b(gst $$0) {
+   public alc a(gsz $$0) {
       return a;
    }
 
-   public gst a() {
-      return new gst();
+   public gsz a() {
+      return new gsz();
    }
 
-   public void a(ckl $$0, gst $$1, float $$2) {
+   public void a(ckk $$0, gsz $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      gnj.a($$0, $$1, $$2);
-      $$1.a = $$0.gp();
-      $$1.b = $$0.go();
+      $$1.a = $$0.gt();
    }
 }

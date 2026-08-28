@@ -1,22 +1,73 @@
-import com.mojang.logging.LogUtils;
-import java.net.InetAddress;
-import java.net.InetSocketAddress;
-import java.net.UnknownHostException;
-import java.util.Optional;
-import org.slf4j.Logger;
+import com.mojang.authlib.minecraft.UserApiService;
+import java.util.Objects;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-@FunctionalInterface
-public interface gcp {
-   Logger a = LogUtils.getLogger();
-   gcp b = $$0 -> {
-      try {
-         InetAddress $$1 = InetAddress.getByName($$0.a());
-         return Optional.of(gcn.a(new InetSocketAddress($$1, $$0.b())));
-      } catch (UnknownHostException var2) {
-         a.debug("Couldn't resolve server {} address", $$0.a(), var2);
-         return Optional.empty();
+public final class gcp {
+   private static final int a = 1024;
+   private final gcg b;
+   private final gcm c;
+   private final gcb d;
+   @Nullable
+   private gcl e;
+
+   public gcp(gcg $$0, gcm $$1, gcb $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+   }
+
+   public static gcp a(gcm $$0, UserApiService $$1) {
+      gcb $$2 = new gcb(1024);
+      gcg $$3 = gcg.a($$0, $$1);
+      return new gcp($$3, $$0, $$2);
+   }
+
+   public void a(fil $$0, fqd $$1, Runnable $$2, boolean $$3) {
+      if (this.e != null) {
+         gcl $$4 = this.e.b();
+         $$0.a(
+            new fpb(
+               $$4x -> {
+                  this.a(null);
+                  if ($$4x) {
+                     $$0.a($$4.a($$1, this));
+                  } else {
+                     $$2.run();
+                  }
+               },
+               xd.c($$3 ? "gui.abuseReport.draft.quittotitle.title" : "gui.abuseReport.draft.title"),
+               xd.c($$3 ? "gui.abuseReport.draft.quittotitle.content" : "gui.abuseReport.draft.content"),
+               xd.c("gui.abuseReport.draft.edit"),
+               xd.c("gui.abuseReport.draft.discard")
+            )
+         );
+      } else {
+         $$2.run();
       }
-   };
+   }
 
-   Optional<gcn> resolve(gco var1);
+   public gcg a() {
+      return this.b;
+   }
+
+   public gcb b() {
+      return this.d;
+   }
+
+   public boolean a(gcm $$0) {
+      return Objects.equals(this.c, $$0);
+   }
+
+   public void a(@Nullable gcl $$0) {
+      this.e = $$0;
+   }
+
+   public boolean c() {
+      return this.e != null;
+   }
+
+   public boolean a(UUID $$0) {
+      return this.c() && this.e.a($$0);
+   }
 }

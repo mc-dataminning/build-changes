@@ -1,38 +1,30 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.JavaOps;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Set;
 
-public class evh extends eug {
-   public static final Codec<xd> a = xf.a.validate($$0 -> cyu.g.encodeStart(JavaOps.INSTANCE, $$0).map($$1 -> $$0));
-   public static final MapCodec<evh> b = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and($$0.group(cyu.a(a).fieldOf("pages").forGetter($$0x -> $$0x.c), euf.a.forGetter($$0x -> $$0x.d))).apply($$0, evh::new)
-   );
-   private final List<arx<xd>> c;
-   private final euf d;
+public class evh extends euu {
+   static final MapCodec<evh> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(exp.a.fieldOf("value").forGetter($$0x -> $$0x.b)).apply($$0, evh::new));
+   private final exo b;
 
-   protected evh(List<ewe> $$0, List<arx<xd>> $$1, euf $$2) {
+   private evh(List<ews> $$0, exo $$1) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = $$1;
    }
 
    @Override
-   protected cvl a(cvl $$0, est $$1) {
-      $$0.a(kr.L, cyu.a, this::a);
+   public Set<ewa<?>> a() {
+      return this.b.a();
+   }
+
+   @Override
+   public euw<evh> b() {
+      return eux.R;
+   }
+
+   @Override
+   public cvp a(cvp $$0, eth $$1) {
+      $$0.b(kr.o, new cyf(this.b.a($$1)));
       return $$0;
-   }
-
-   @VisibleForTesting
-   public cyu a(cyu $$0) {
-      List<arx<xd>> $$1 = this.d.a($$0.a(), this.c);
-      return $$0.b($$1);
-   }
-
-   @Override
-   public eui<evh> b() {
-      return euj.N;
    }
 }

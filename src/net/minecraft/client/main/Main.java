@@ -73,24 +73,24 @@ public class Main {
       String $$33 = "Pre-bootstrap";
 
       Logger $$37;
-      fvo $$68;
+      fvy $$68;
       try {
          if ($$30.has($$2)) {
-            boe.f.a(boc.a);
+            boj.f.a(boh.a);
          }
 
          Stopwatch $$34 = Stopwatch.createStarted(Ticker.systemTicker());
          Stopwatch $$35 = Stopwatch.createStarted(Ticker.systemTicker());
-         hby.a.a(hbu.z, $$34);
-         hby.a.a(hbu.A, $$35);
+         hcp.a.a(hcl.z, $$34);
+         hcp.a.a(hcl.A, $$35);
          ab.a();
-         CompletableFuture<?> $$36 = bam.a(bal.t);
+         CompletableFuture<?> $$36 = ban.a(bam.t);
          o.g();
          $$37 = LogUtils.getLogger();
          $$33 = "Bootstrap";
-         ald.a();
-         hby.a.a(ald.b.get());
-         ald.c();
+         ale.a();
+         hcp.a.a(ale.b.get());
+         ale.c();
          $$33 = "Argument parsing";
          List<String> $$38 = $$30.valuesOf($$29);
          if (!$$38.isEmpty()) {
@@ -98,7 +98,7 @@ public class Main {
          }
 
          String $$39 = (String)$$27.value($$30);
-         fio.a $$40 = fio.a.a($$39);
+         fiy.a $$40 = fiy.a.a($$39);
          if ($$40 == null) {
             $$37.warn("Unrecognized user type: {}", $$39);
          }
@@ -132,8 +132,8 @@ public class Main {
          boolean $$51 = $$30.has("disableMultiplayer");
          boolean $$52 = $$30.has("disableChat");
          Gson $$53 = new GsonBuilder().registerTypeAdapter(PropertyMap.class, new Serializer()).create();
-         PropertyMap $$54 = ays.a($$53, a($$30, $$24), PropertyMap.class);
-         PropertyMap $$55 = ays.a($$53, a($$30, $$25), PropertyMap.class);
+         PropertyMap $$54 = ayt.a($$53, a($$30, $$24), PropertyMap.class);
+         PropertyMap $$55 = ayt.a($$53, a($$30, $$25), PropertyMap.class);
          String $$56 = a($$30, $$28);
          File $$57 = $$30.has($$8) ? a($$30, $$8) : new File($$31, "assets/");
          File $$58 = $$30.has($$9) ? a($$30, $$9) : new File($$31, "resourcepacks/");
@@ -145,31 +145,31 @@ public class Main {
          String $$64 = a(a($$30, $$4));
          String $$65 = a(a($$30, $$5));
          String $$66 = a(a($$30, $$6));
-         fio $$67 = new fio((String)$$14.value($$30), $$59, (String)$$18.value($$30), b($$61), b($$62), $$40);
-         $$68 = new fvo(
-            new fvo.d($$67, $$54, $$55, $$42),
-            new fbf($$45, $$46, $$47, $$48, $$49),
-            new fvo.a($$31, $$58, $$57, $$60),
-            new fvo.b($$50, $$32, $$56, $$51, $$52),
-            new fvo.c($$63, $$64, $$65, $$66)
+         fiy $$67 = new fiy((String)$$14.value($$30), $$59, (String)$$18.value($$30), b($$61), b($$62), $$40);
+         $$68 = new fvy(
+            new fvy.d($$67, $$54, $$55, $$42),
+            new fbu($$45, $$46, $$47, $$48, $$49),
+            new fvy.a($$31, $$58, $$57, $$60),
+            new fvy.b($$50, $$32, $$56, $$51, $$52),
+            new fvy.c($$63, $$64, $$65, $$66)
          );
          ad.o();
          $$36.join();
       } catch (Throwable var79) {
          o $$70 = o.a(var79, $$33);
          p $$71 = $$70.a("Initialization");
-         azd.a($$71);
-         fib.a(null, null, $$32, null, $$70);
-         fib.a(null, $$31, $$70);
+         aze.a($$71);
+         fil.a(null, null, $$32, null, $$70);
+         fil.a(null, $$31, $$70);
          return;
       }
 
       Thread $$74 = new Thread("Client Shutdown Thread") {
          @Override
          public void run() {
-            fib $$0 = fib.Q();
+            fil $$0 = fil.Q();
             if ($$0 != null) {
-               has $$1 = $$0.V();
+               hbj $$1 = $$0.V();
                if ($$1 != null) {
                   $$1.a(true);
                }
@@ -178,30 +178,30 @@ public class Main {
       };
       $$74.setUncaughtExceptionHandler(new r($$37));
       Runtime.getRuntime().addShutdownHook($$74);
-      fib $$75 = null;
+      fil $$75 = null;
 
       try {
          Thread.currentThread().setName("Render thread");
          RenderSystem.initRenderThread();
          RenderSystem.beginInitialization();
-         $$75 = new fib($$68);
+         $$75 = new fil($$68);
          RenderSystem.finishInitialization();
-      } catch (fvp var76) {
+      } catch (fvz var76) {
          ad.j();
          $$37.warn("Failed to create window: ", var76);
          return;
       } catch (Throwable var77) {
          o $$78 = o.a(var77, "Initializing game");
          p $$79 = $$78.a("Initialization");
-         azd.a($$79);
-         fib.a($$75, null, $$68.d.b, null, $$78);
-         fib.a($$75, $$68.c.a, $$78);
+         aze.a($$79);
+         fil.a($$75, null, $$68.d.b, null, $$78);
+         fil.a($$75, $$68.c.a, $$78);
          return;
       }
 
-      fib $$80 = $$75;
+      fil $$80 = $$75;
       $$75.f();
-      fcq.a();
+      fda.a();
 
       try {
          $$80.q();

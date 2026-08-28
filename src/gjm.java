@@ -1,105 +1,86 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+public class gjm implements gjr<drh> {
+   private static final int b = 20;
+   private static final int c = 40;
+   private static final int d = 16;
+   public static final String a = "flag";
+   private static final String e = "pole";
+   private static final String f = "bar";
+   private final gal g;
+   private final gal h;
+   private final gal i;
 
-public class gjm extends gjq {
-   private static final String a = "plank";
-   private static final String b = "vChains";
-   private static final String c = "normalChains";
-   private static final String d = "chainL1";
-   private static final String e = "chainL2";
-   private static final String f = "chainR1";
-   private static final String g = "chainR2";
-   private static final String h = "board";
-   private static final float i = 1.0F;
-   private static final float j = 0.9F;
-   private static final eye k = new eye(0.0, -0.32F, 0.073F);
-   private final Map<dvn, gjm.a> l;
-
-   public gjm(gjd.a $$0) {
-      super($$0);
-      this.l = dvn.a().collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$1 -> new gjm.a($$0.a(gaa.c($$1)))));
+   public gjm(gjs.a $$0) {
+      gal $$1 = $$0.a(gak.m);
+      this.g = $$1.b("flag");
+      this.h = $$1.b("pole");
+      this.i = $$1.b("bar");
    }
 
-   @Override
-   public float b() {
-      return 1.0F;
+   public static gar a() {
+      gat $$0 = new gat();
+      gav $$1 = $$0.a();
+      $$1.a("flag", gaq.c().a(0, 0).a(-10.0F, 0.0F, -2.0F, 20.0F, 40.0F, 1.0F), gan.a(0.0F, -32.0F, 0.0F));
+      $$1.a("pole", gaq.c().a(44, 0).a(-1.0F, -30.0F, -1.0F, 2.0F, 42.0F, 2.0F), gan.a);
+      $$1.a("bar", gaq.c().a(0, 42).a(-10.0F, -32.0F, -1.0F, 20.0F, 2.0F, 2.0F), gan.a);
+      return gar.a($$0, 64, 64);
    }
 
-   @Override
-   public float c() {
-      return 0.9F;
-   }
-
-   @Override
-   public void a(dsq $$0, float $$1, fcu $$2, ggv $$3, int $$4, int $$5) {
-      dua $$6 = $$0.m();
-      dnw $$7 = (dnw)$$6.b();
-      dvn $$8 = dnw.a($$7);
-      gjm.a $$9 = this.l.get($$8);
-      $$9.a($$6);
-      this.a($$0, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
-   }
-
-   @Override
-   void a(fcu $$0, float $$1, dua $$2) {
-      $$0.a(0.5, 0.9375, 0.5);
-      $$0.a(a.d.rotationDegrees($$1));
-      $$0.a(0.0F, -0.3125F, 0.0F);
-   }
-
-   @Override
-   gyq a(dvn $$0) {
-      return ghm.b($$0);
-   }
-
-   @Override
-   eye d() {
-      return k;
-   }
-
-   public static gah e() {
-      gaj $$0 = new gaj();
-      gal $$1 = $$0.a();
-      $$1.a("board", gag.c().a(0, 12).a(-7.0F, 0.0F, -1.0F, 14.0F, 10.0F, 2.0F), gad.a);
-      $$1.a("plank", gag.c().a(0, 0).a(-8.0F, -6.0F, -2.0F, 16.0F, 2.0F, 4.0F), gad.a);
-      gal $$2 = $$1.a("normalChains", gag.c(), gad.a);
-      $$2.a("chainL1", gag.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gad.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("chainL2", gag.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gad.a(-5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$2.a("chainR1", gag.c().a(0, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gad.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$2.a("chainR2", gag.c().a(6, 6).a(-1.5F, 0.0F, 0.0F, 3.0F, 6.0F, 0.0F), gad.a(5.0F, -6.0F, 0.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("vChains", gag.c().a(14, 6).a(-6.0F, -6.0F, 0.0F, 12.0F, 6.0F, 0.0F), gad.a);
-      return gah.a($$0, 64, 32);
-   }
-
-   public static final class a extends fxv {
-      public final gab a;
-      public final gab b;
-      public final gab c;
-      public final gab d;
-
-      public a(gab $$0) {
-         super(ghe::f);
-         this.a = $$0;
-         this.b = $$0.b("plank");
-         this.d = $$0.b("normalChains");
-         this.c = $$0.b("vChains");
-      }
-
-      public void a(dua $$0) {
-         boolean $$1 = !($$0.b() instanceof dhu);
-         this.b.k = $$1;
-         this.c.k = false;
-         this.d.k = true;
-         if (!$$1) {
-            boolean $$2 = $$0.c(duq.a);
-            this.d.k = !$$2;
-            this.c.k = $$2;
+   public void a(drh $$0, float $$1, fde $$2, ghg $$3, int $$4, int $$5) {
+      float $$6 = 0.6666667F;
+      boolean $$7 = $$0.i() == null;
+      $$2.a();
+      long $$8;
+      if ($$7) {
+         $$8 = 0L;
+         $$2.a(0.5F, 0.5F, 0.5F);
+         this.h.k = true;
+      } else {
+         $$8 = $$0.i().aa();
+         duo $$10 = $$0.m();
+         if ($$10.b() instanceof dgo) {
+            $$2.a(0.5F, 0.5F, 0.5F);
+            float $$11 = -dvu.b($$10.c(dgo.b));
+            $$2.a(a.d.rotationDegrees($$11));
+            this.h.k = true;
+         } else {
+            $$2.a(0.5F, -0.16666667F, 0.5F);
+            float $$12 = -$$10.c(dqh.b).p();
+            $$2.a(a.d.rotationDegrees($$12));
+            $$2.a(0.0F, -0.3125F, -0.4375F);
+            this.h.k = false;
          }
       }
 
-      @Override
-      public gab a() {
-         return this.a;
+      $$2.a();
+      $$2.b(0.6666667F, -0.6666667F, -0.6666667F);
+      fdi $$13 = gzk.f.a($$3, ghq::c);
+      this.h.a($$2, $$13, $$4, $$5);
+      this.i.a($$2, $$13, $$4, $$5);
+      je $$14 = $$0.aB_();
+      float $$15 = ((float)Math.floorMod((long)($$14.u() * 7 + $$14.v() * 9 + $$14.w() * 13) + $$8, 100L) + $$1) / 100.0F;
+      this.g.e = (-0.0125F + 0.01F * azd.b((float) (Math.PI * 2) * $$15)) * (float) Math.PI;
+      a($$2, $$3, $$4, $$5, this.g, gzk.f, true, $$0.f(), $$0.b());
+      $$2.b();
+      $$2.b();
+   }
+
+   public static void a(fde $$0, ghg $$1, int $$2, int $$3, gal $$4, gzh $$5, boolean $$6, cuj $$7, drj $$8) {
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, true);
+   }
+
+   public static void a(fde $$0, ghg $$1, int $$2, int $$3, gal $$4, gzh $$5, boolean $$6, cuj $$7, drj $$8, boolean $$9, boolean $$10) {
+      $$4.a($$0, $$5.a($$1, ghq::c, $$10, $$9), $$2, $$3);
+      a($$0, $$1, $$2, $$3, $$4, $$6 ? gib.m : gib.n, $$7);
+
+      for (int $$11 = 0; $$11 < 16 && $$11 < $$8.b().size(); $$11++) {
+         drj.b $$12 = $$8.b().get($$11);
+         gzh $$13 = $$6 ? gib.a($$12.b()) : gib.b($$12.b());
+         a($$0, $$1, $$2, $$3, $$4, $$13, $$12.c());
       }
+   }
+
+   private static void a(fde $$0, ghg $$1, int $$2, int $$3, gal $$4, gzh $$5, cuj $$6) {
+      int $$7 = $$6.d();
+      $$4.a($$0, $$5.a($$1, ghq::m), $$2, $$3, $$7);
    }
 }

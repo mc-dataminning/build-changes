@@ -1,22 +1,26 @@
-import java.io.File;
-import java.time.Duration;
+import java.util.function.Function;
 
-public class fbc {
-   private static final Duration a = Duration.ofSeconds(15L);
+public interface fbc {
+   float getAdvance();
 
-   public static void a(File $$0, long $$1) {
-      Thread $$2 = new Thread(() -> {
-         try {
-            Thread.sleep(a);
-         } catch (InterruptedException var4) {
-            return;
-         }
+   default float a(boolean $$0) {
+      return this.getAdvance() + ($$0 ? this.a() : 0.0F);
+   }
 
-         o $$3 = aqb.a("Client shutdown", $$1);
-         fib.a($$0, $$3);
-      });
-      $$2.setDaemon(true);
-      $$2.setName("Client shutdown watchdog");
-      $$2.start();
+   default float a() {
+      return 1.0F;
+   }
+
+   default float b() {
+      return 1.0F;
+   }
+
+   fng bake(Function<fbe, fng> var1);
+
+   public interface a extends fbc {
+      @Override
+      default fng bake(Function<fbe, fng> $$0) {
+         return fnh.a;
+      }
    }
 }

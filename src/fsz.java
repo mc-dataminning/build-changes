@@ -1,72 +1,69 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.UnmodifiableIterator;
-import java.util.List;
+public class fsz extends ftg {
+   public static final xd a = xd.c("options.accessibility.title");
 
-public class fsz extends fpt {
-   private static final int a = 20;
-   private static final int b = 5;
-   private static final int c = 20;
-   private final xd d;
-   private final List<xd> s;
-   private final ImmutableList<fsz.a> u;
-   private fkt v = fkt.a;
-   private int w;
-   private int x;
+   private static fio<?>[] a(fip $$0) {
+      return new fio[]{
+         $$0.au(),
+         $$0.Y(),
+         $$0.u(),
+         $$0.I(),
+         $$0.q(),
+         $$0.s(),
+         $$0.aa(),
+         $$0.o(),
+         $$0.p(),
+         $$0.B(),
+         $$0.C(),
+         $$0.ad(),
+         $$0.ae(),
+         $$0.af(),
+         $$0.al(),
+         $$0.am(),
+         $$0.an(),
+         $$0.aq(),
+         $$0.ao(),
+         $$0.ap(),
+         $$0.b(),
+         $$0.a(),
+         $$0.t(),
+         $$0.c(),
+         $$0.v(),
+         $$0.J()
+      };
+   }
 
-   protected fsz(xd $$0, List<xd> $$1, ImmutableList<fsz.a> $$2) {
-      super($$0);
-      this.s = $$1;
-      this.d = xc.a($$0, xg.a($$1, xc.a));
-      this.u = $$2;
+   public fsz(fqd $$0, fip $$1) {
+      super($$0, $$1, a);
    }
 
    @Override
-   public xd i() {
-      return this.d;
-   }
-
-   @Override
-   public void aT_() {
-      UnmodifiableIterator $$1 = this.u.iterator();
-
-      while ($$1.hasNext()) {
-         fsz.a $$0 = (fsz.a)$$1.next();
-         this.x = Math.max(this.x, 20 + this.p.a($$0.a) + 20);
+   protected void aR_() {
+      super.aR_();
+      fki $$0 = this.d.b(this.c.u());
+      if ($$0 != null && !this.m.ad().b().contains("high_contrast")) {
+         $$0.j = false;
+         $$0.a(flv.a(xd.c("options.accessibility.high_contrast.error.tooltip")));
       }
 
-      int $$1x = 5 + this.x + 5;
-      int $$2 = $$1x * this.u.size();
-      this.v = fkt.a(this.p, $$2, this.s.toArray(new xd[0]));
-      int $$3 = this.v.a() * 9;
-      this.w = (int)((double)this.o / 2.0 - (double)$$3 / 2.0);
-      int $$4 = this.w + $$3 + 9 * 2;
-      int $$5 = (int)((double)this.n / 2.0 - (double)$$2 / 2.0);
-
-      for (UnmodifiableIterator var6 = this.u.iterator(); var6.hasNext(); $$5 += $$1x) {
-         fsz.a $$6 = (fsz.a)var6.next();
-         this.c(fka.a($$6.a, $$6.b).a($$5, $$4, this.x, 20).a());
+      fki $$1 = this.d.b(this.c.J());
+      if ($$1 != null) {
+         $$1.j = this.G();
       }
    }
 
    @Override
-   public void a(fjn $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, this.w - 9 * 2, -1);
-      this.v.a($$0, this.n / 2, this.w);
+   protected void m() {
+      this.d.a(a(this.c));
    }
 
    @Override
-   public boolean aJ_() {
-      return false;
+   protected void D() {
+      foc $$0 = this.s.b(foc.e().a(8));
+      $$0.a(fkk.a(xd.c("options.accessibility.link"), fpa.b(this, axz.l)).a());
+      $$0.a(fkk.a(xc.d, $$0x -> this.m.a(this.b)).a());
    }
 
-   public static final class a {
-      final xd a;
-      final fka.c b;
-
-      public a(xd $$0, fka.c $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   private boolean G() {
+      return this.m.s != null && this.m.s.J().b(cqp.e);
    }
 }

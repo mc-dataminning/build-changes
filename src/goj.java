@@ -1,16 +1,116 @@
-public class goj extends gnl<cky, gtl> {
-   private static final alb a = alb.b("textures/entity/illager/pillager.png");
+import org.joml.Matrix4f;
 
-   public goj(gms.a $$0) {
-      super($$0, new fxo<>($$0.a(gaa.bG)), 0.5F);
-      this.a(new gqy<>(this, $$0.b()));
+public class goj extends gni<buj, gui> {
+   public goj(gnj.a $$0) {
+      super($$0);
    }
 
-   public alb a(gtl $$0) {
-      return a;
+   public void a(gui $$0, fde $$1, ghg $$2, int $$3) {
+      float[] $$4 = new float[8];
+      float[] $$5 = new float[8];
+      float $$6 = 0.0F;
+      float $$7 = 0.0F;
+      azl $$8 = azl.a($$0.a);
+
+      for (int $$9 = 7; $$9 >= 0; $$9--) {
+         $$4[$$9] = $$6;
+         $$5[$$9] = $$7;
+         $$6 += (float)($$8.a(11) - 5);
+         $$7 += (float)($$8.a(11) - 5);
+      }
+
+      fdi $$10 = $$2.getBuffer(ghq.p());
+      Matrix4f $$11 = $$1.c().a();
+
+      for (int $$12 = 0; $$12 < 4; $$12++) {
+         azl $$13 = azl.a($$0.a);
+
+         for (int $$14 = 0; $$14 < 3; $$14++) {
+            int $$15 = 7;
+            int $$16 = 0;
+            if ($$14 > 0) {
+               $$15 = 7 - $$14;
+            }
+
+            if ($$14 > 0) {
+               $$16 = $$15 - 2;
+            }
+
+            float $$17 = $$4[$$15] - $$6;
+            float $$18 = $$5[$$15] - $$7;
+
+            for (int $$19 = $$15; $$19 >= $$16; $$19--) {
+               float $$20 = $$17;
+               float $$21 = $$18;
+               if ($$14 == 0) {
+                  $$17 += (float)($$13.a(11) - 5);
+                  $$18 += (float)($$13.a(11) - 5);
+               } else {
+                  $$17 += (float)($$13.a(31) - 15);
+                  $$18 += (float)($$13.a(31) - 15);
+               }
+
+               float $$22 = 0.5F;
+               float $$23 = 0.45F;
+               float $$24 = 0.45F;
+               float $$25 = 0.5F;
+               float $$26 = 0.1F + (float)$$12 * 0.2F;
+               if ($$14 == 0) {
+                  $$26 *= (float)$$19 * 0.1F + 1.0F;
+               }
+
+               float $$27 = 0.1F + (float)$$12 * 0.2F;
+               if ($$14 == 0) {
+                  $$27 *= ((float)$$19 - 1.0F) * 0.1F + 1.0F;
+               }
+
+               a($$11, $$10, $$17, $$18, $$19, $$20, $$21, 0.45F, 0.45F, 0.5F, $$26, $$27, false, false, true, false);
+               a($$11, $$10, $$17, $$18, $$19, $$20, $$21, 0.45F, 0.45F, 0.5F, $$26, $$27, true, false, true, true);
+               a($$11, $$10, $$17, $$18, $$19, $$20, $$21, 0.45F, 0.45F, 0.5F, $$26, $$27, true, true, false, true);
+               a($$11, $$10, $$17, $$18, $$19, $$20, $$21, 0.45F, 0.45F, 0.5F, $$26, $$27, false, true, false, false);
+            }
+         }
+      }
    }
 
-   public gtl c() {
-      return new gtl();
+   private static void a(
+      Matrix4f $$0,
+      fdi $$1,
+      float $$2,
+      float $$3,
+      int $$4,
+      float $$5,
+      float $$6,
+      float $$7,
+      float $$8,
+      float $$9,
+      float $$10,
+      float $$11,
+      boolean $$12,
+      boolean $$13,
+      boolean $$14,
+      boolean $$15
+   ) {
+      $$1.a($$0, $$2 + ($$12 ? $$11 : -$$11), (float)($$4 * 16), $$3 + ($$13 ? $$11 : -$$11)).a($$7, $$8, $$9, 0.3F);
+      $$1.a($$0, $$5 + ($$12 ? $$10 : -$$10), (float)(($$4 + 1) * 16), $$6 + ($$13 ? $$10 : -$$10)).a($$7, $$8, $$9, 0.3F);
+      $$1.a($$0, $$5 + ($$14 ? $$10 : -$$10), (float)(($$4 + 1) * 16), $$6 + ($$15 ? $$10 : -$$10)).a($$7, $$8, $$9, 0.3F);
+      $$1.a($$0, $$2 + ($$14 ? $$11 : -$$11), (float)($$4 * 16), $$3 + ($$15 ? $$11 : -$$11)).a($$7, $$8, $$9, 0.3F);
+   }
+
+   public alc a(gui $$0) {
+      return gxa.d;
+   }
+
+   public gui a() {
+      return new gui();
+   }
+
+   public void a(buj $$0, gui $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.b;
+   }
+
+   protected boolean a(buj $$0) {
+      return false;
    }
 }

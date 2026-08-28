@@ -1,75 +1,639 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Set;
-import javax.annotation.Nullable;
-
 public class fjd {
-   private static final int a = -1;
-   private final jt<fjc> b = new jt<>(32);
-   private final Map<dgv, Set<dvd<?>>> c = Maps.newHashMap();
-
-   public static fjd a() {
-      fjd $$0 = new fjd();
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? ggc.a($$1, $$0x.c(djd.b) == duw.a ? $$2.e() : $$2) : ddq.a(), dgx.iI, dgx.iH);
-      $$0.a(djd.b, dgx.iI, dgx.iH);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? ggc.a($$1, $$2) : ddq.a(), dgx.i, dgx.bu, dgx.bt, dgx.gb);
-      $$0.a(($$0x, $$1, $$2, $$3) -> {
-         if ($$3 != 0) {
-            return $$1 != null && $$2 != null ? ggc.a($$1, $$2) : ddq.a();
-         } else {
-            return -1;
-         }
-      }, dgx.sB);
-      $$0.a(($$0x, $$1, $$2, $$3) -> ddm.a(), dgx.aF);
-      $$0.a(($$0x, $$1, $$2, $$3) -> ddm.b(), dgx.aG);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? ggc.b($$1, $$2) : ddm.c(), dgx.aE, dgx.aH, dgx.aI, dgx.aK, dgx.ff, dgx.aL);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? ggc.c($$1, $$2) : -1, dgx.G, dgx.nd, dgx.fu);
-      $$0.a(($$0x, $$1, $$2, $$3) -> dmy.b($$0x.c(dmy.f)), dgx.cw);
-      $$0.a(dmy.f, dgx.cw);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? ggc.a($$1, $$2) : -1, dgx.dS);
-      $$0.a(($$0x, $$1, $$2, $$3) -> -2046180, dgx.fc, dgx.fb);
-      $$0.a(($$0x, $$1, $$2, $$3) -> {
-         int $$4 = $$0x.c(dos.c);
-         return axn.a($$4 * 32, 255 - $$4 * 8, $$4 * 4);
-      }, dgx.fe, dgx.fd);
-      $$0.a(dos.c, dgx.fe, dgx.fd);
-      $$0.a(($$0x, $$1, $$2, $$3) -> $$1 != null && $$2 != null ? -14647248 : -9321636, dgx.fm);
-      return $$0;
-   }
-
-   public int a(dua $$0, dds $$1, je $$2) {
-      fjc $$3 = this.b.a(lu.e.a($$0.b()));
-      if ($$3 != null) {
-         return $$3.getColor($$0, null, null, 0);
-      } else {
-         eqf $$4 = $$0.a((dcx)$$1, $$2);
-         return $$4 != null ? $$4.ak : -1;
-      }
-   }
-
-   public int a(dua $$0, @Nullable dcu $$1, @Nullable je $$2, int $$3) {
-      fjc $$4 = this.b.a(lu.e.a($$0.b()));
-      return $$4 == null ? -1 : $$4.getColor($$0, $$1, $$2, $$3);
-   }
-
-   public void a(fjc $$0, dgv... $$1) {
-      for (dgv $$2 : $$1) {
-         this.b.a($$0, lu.e.a($$2));
-      }
-   }
-
-   private void a(Set<dvd<?>> $$0, dgv... $$1) {
-      for (dgv $$2 : $$1) {
-         this.c.put($$2, $$0);
-      }
-   }
-
-   private void a(dvd<?> $$0, dgv... $$1) {
-      this.a(ImmutableSet.of($$0), $$1);
-   }
-
-   public Set<dvd<?>> a(dgv $$0) {
-      return this.c.getOrDefault($$0, ImmutableSet.of());
-   }
+   public static final fja a = fja.a.a(0.5F)
+      .a("body", new fiz(fiz.d.b, new fjb(0.0F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a), new fjb(0.1667F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a)))
+      .a(
+         "body",
+         new fiz(
+            fiz.d.a,
+            new fjb(0.0F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.1667F, fjc.a(0.0F, 5.0F, 0.0F), fiz.b.a),
+            new fjb(0.2083F, fjc.a(0.0F, 6.0F, -1.0F), fiz.b.a),
+            new fjb(0.25F, fjc.a(0.0F, 6.0F, -1.0F), fiz.b.a),
+            new fjb(0.375F, fjc.a(0.0F, -1.0F, -1.0F), fiz.b.a)
+         )
+      )
+      .a("tail", new fiz(fiz.d.b, new fjb(0.0F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a), new fjb(0.1667F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a)))
+      .a(
+         "tail",
+         new fiz(
+            fiz.d.a,
+            new fjb(0.0F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.1667F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.2083F, fjc.a(0.0F, 0.0F, -2.0F), fiz.b.a),
+            new fjb(0.25F, fjc.a(0.0F, 0.0F, -2.0F), fiz.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fiz(
+            fiz.d.b,
+            new fjb(0.0F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.1667F, fjc.b(17.5F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.25F, fjc.b(-72.5F, 0.0F, 0.0F), fiz.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fiz(
+            fiz.d.a,
+            new fjb(0.0F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.1667F, fjc.a(0.0F, -1.0F, 0.0F), fiz.b.a),
+            new fjb(0.2083F, fjc.a(0.0F, 2.0F, 1.0F), fiz.b.a),
+            new fjb(0.25F, fjc.a(0.0F, 2.0F, 1.0F), fiz.b.a),
+            new fjb(0.2917F, fjc.a(0.0F, 2.0F, 6.0F), fiz.b.a),
+            new fjb(0.375F, fjc.a(0.0F, 2.0F, 7.0F), fiz.b.a)
+         )
+      )
+      .a("right_hind_leg", new fiz(fiz.d.b, new fjb(0.0F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a), new fjb(0.1667F, fjc.b(-35.0F, 0.0F, 0.0F), fiz.b.a)))
+      .a(
+         "right_hind_leg",
+         new fiz(
+            fiz.d.a,
+            new fjb(0.0F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.1667F, fjc.a(0.0F, 5.0F, -2.0F), fiz.b.a),
+            new fjb(0.1875F, fjc.a(0.0F, 8.0F, -3.0F), fiz.b.a),
+            new fjb(0.2083F, fjc.a(0.0F, 8.0F, -2.0F), fiz.b.a),
+            new fjb(0.25F, fjc.a(0.0F, 8.0F, -2.0F), fiz.b.a),
+            new fjb(0.375F, fjc.a(1.0F, 3.0F, -6.0F), fiz.b.a)
+         )
+      )
+      .a("left_hind_leg", new fiz(fiz.d.b, new fjb(0.0F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a), new fjb(0.1667F, fjc.b(-45.0F, 0.0F, 0.0F), fiz.b.a)))
+      .a(
+         "left_hind_leg",
+         new fiz(
+            fiz.d.a,
+            new fjb(0.0F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.1667F, fjc.a(0.0F, 5.0F, -2.0F), fiz.b.a),
+            new fjb(0.1875F, fjc.a(0.0F, 8.0F, -3.0F), fiz.b.a),
+            new fjb(0.2083F, fjc.a(0.0F, 8.0F, -2.0F), fiz.b.a),
+            new fjb(0.25F, fjc.a(0.0F, 8.0F, -2.0F), fiz.b.a),
+            new fjb(0.375F, fjc.a(-1.0F, 3.0F, -6.0F), fiz.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new fiz(
+            fiz.d.b,
+            new fjb(0.0F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.1667F, fjc.b(-27.5F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.2083F, fjc.b(-32.5F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.25F, fjc.b(-85.0F, 0.0F, 0.0F), fiz.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new fiz(
+            fiz.d.a,
+            new fjb(0.0F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.1667F, fjc.a(0.0F, 5.0F, 0.0F), fiz.b.a),
+            new fjb(0.1875F, fjc.a(-0.5F, 11.5F, 0.5F), fiz.b.a),
+            new fjb(0.2083F, fjc.a(-1.0F, 9.0F, -1.0F), fiz.b.a),
+            new fjb(0.25F, fjc.a(-1.0F, 9.0F, -1.0F), fiz.b.a),
+            new fjb(0.375F, fjc.a(-1.0F, 2.0F, 3.0F), fiz.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new fiz(
+            fiz.d.b,
+            new fjb(0.0F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.1667F, fjc.b(-12.5F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.2083F, fjc.b(-35.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.25F, fjc.b(-85.0F, 0.0F, 0.0F), fiz.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new fiz(
+            fiz.d.a,
+            new fjb(0.0F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.1667F, fjc.a(0.0F, 5.0F, 0.0F), fiz.b.a),
+            new fjb(0.1875F, fjc.a(0.5F, 11.5F, 0.5F), fiz.b.a),
+            new fjb(0.2083F, fjc.a(1.0F, 9.0F, -1.0F), fiz.b.a),
+            new fjb(0.25F, fjc.a(1.0F, 9.0F, -1.0F), fiz.b.a),
+            new fjb(0.375F, fjc.a(1.0F, 2.0F, 3.0F), fiz.b.a)
+         )
+      )
+      .a(
+         "cube",
+         new fiz(
+            fiz.d.b,
+            new fjb(0.0F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.1667F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.4167F, fjc.b(-2.5F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.4583F, fjc.b(5.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.5F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a)
+         )
+      )
+      .a(
+         "cube",
+         new fiz(
+            fiz.d.a,
+            new fjb(0.0F, fjc.a(0.0F, 3.0F, 0.0F), fiz.b.a),
+            new fjb(0.1667F, fjc.a(0.0F, 8.0F, 0.0F), fiz.b.a),
+            new fjb(0.2083F, fjc.a(0.0F, 7.0F, 0.0F), fiz.b.a),
+            new fjb(0.25F, fjc.a(0.0F, 7.0F, 0.0F), fiz.b.a),
+            new fjb(0.375F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.4167F, fjc.a(0.0F, 1.0F, 0.0F), fiz.b.a),
+            new fjb(0.4583F, fjc.a(0.0F, 0.6F, 0.0F), fiz.b.a),
+            new fjb(0.5F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a)
+         )
+      )
+      .b();
+   public static final fja b = fja.a.a(1.4583F)
+      .a()
+      .a(
+         "body",
+         new fiz(
+            fiz.d.b,
+            new fjb(0.0F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.b),
+            new fjb(0.25F, fjc.b(0.0F, 0.0F, 4.6F), fiz.b.b),
+            new fjb(0.2917F, fjc.b(0.0F, 0.0F, 6.81F), fiz.b.b),
+            new fjb(0.5F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.b),
+            new fjb(0.7083F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.b),
+            new fjb(0.9583F, fjc.b(0.0F, 0.0F, -4.6F), fiz.b.b),
+            new fjb(1.0F, fjc.b(0.0F, 0.0F, -6.89F), fiz.b.b),
+            new fjb(1.25F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.b),
+            new fjb(1.4583F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.b)
+         )
+      )
+      .a(
+         "body",
+         new fiz(
+            fiz.d.a,
+            new fjb(0.0F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.b),
+            new fjb(0.25F, fjc.a(0.0F, -0.2F, 0.0F), fiz.b.b),
+            new fjb(0.5F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.b),
+            new fjb(0.7083F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.b),
+            new fjb(0.9583F, fjc.a(0.0F, -0.2F, 0.0F), fiz.b.b),
+            new fjb(1.25F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.b),
+            new fjb(1.4583F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.b)
+         )
+      )
+      .a(
+         "tail",
+         new fiz(
+            fiz.d.b,
+            new fjb(0.0F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.5F, fjc.b(-9.17F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.75F, fjc.b(5.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.2083F, fjc.b(-8.24F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.4583F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new fiz(
+            fiz.d.b,
+            new fjb(0.0F, fjc.b(-50.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.25F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.5F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.75F, fjc.b(50.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.0F, fjc.b(50.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.2917F, fjc.b(-20.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.4583F, fjc.b(-50.0F, 0.0F, 0.0F), fiz.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new fiz(
+            fiz.d.a,
+            new fjb(0.0F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.25F, fjc.a(0.0F, 0.0F, -0.5F), fiz.b.a),
+            new fjb(0.5F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.0F, fjc.a(0.0F, 0.0F, -0.5F), fiz.b.a),
+            new fjb(1.2917F, fjc.a(0.0F, 1.0F, -0.18F), fiz.b.a),
+            new fjb(1.4583F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new fiz(
+            fiz.d.b,
+            new fjb(0.0F, fjc.b(50.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.25F, fjc.b(50.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.5417F, fjc.b(-20.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.7083F, fjc.b(-50.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.9583F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.2083F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.4583F, fjc.b(50.0F, 0.0F, 0.0F), fiz.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new fiz(
+            fiz.d.a,
+            new fjb(0.0F, fjc.a(0.0F, 0.0F, -0.25F), fiz.b.a),
+            new fjb(0.25F, fjc.a(0.0F, 0.0F, -0.5F), fiz.b.a),
+            new fjb(0.5417F, fjc.a(0.0F, 1.0F, -0.18F), fiz.b.a),
+            new fjb(0.7083F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.9583F, fjc.a(0.0F, 0.0F, -0.5F), fiz.b.a),
+            new fjb(1.2083F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.4583F, fjc.a(0.0F, 0.0F, -0.25F), fiz.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new fiz(
+            fiz.d.b,
+            new fjb(0.0F, fjc.b(50.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.2917F, fjc.b(50.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.5417F, fjc.b(-20.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.7083F, fjc.b(-50.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.9583F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.2083F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.4583F, fjc.b(50.0F, 0.0F, 0.0F), fiz.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new fiz(
+            fiz.d.a,
+            new fjb(0.0F, fjc.a(0.0F, 0.0F, -0.25F), fiz.b.a),
+            new fjb(0.25F, fjc.a(0.0F, 0.0F, -0.5F), fiz.b.a),
+            new fjb(0.5417F, fjc.a(0.0F, 1.0F, -0.18F), fiz.b.a),
+            new fjb(0.7083F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.9583F, fjc.a(0.0F, 0.0F, -0.5F), fiz.b.a),
+            new fjb(1.2083F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.4583F, fjc.a(0.0F, 0.0F, -0.25F), fiz.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new fiz(
+            fiz.d.b,
+            new fjb(0.0F, fjc.b(-50.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.25F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.5F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.75F, fjc.b(50.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.0F, fjc.b(50.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.2917F, fjc.b(-20.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.4583F, fjc.b(-50.0F, 0.0F, 0.0F), fiz.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new fiz(
+            fiz.d.a,
+            new fjb(0.0F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.25F, fjc.a(0.0F, 0.0F, -0.5F), fiz.b.a),
+            new fjb(0.5F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.0F, fjc.a(0.0F, 0.0F, -0.5F), fiz.b.a),
+            new fjb(1.2917F, fjc.a(0.0F, 1.0F, -0.18F), fiz.b.a),
+            new fjb(1.4583F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fiz(
+            fiz.d.b,
+            new fjb(0.0F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.25F, fjc.b(0.0F, 0.0F, -2.5F), fiz.b.a),
+            new fjb(0.5F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.7083F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.0F, fjc.b(0.0F, 0.0F, 2.5F), fiz.b.a),
+            new fjb(1.25F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.4583F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a)
+         )
+      )
+      .b();
+   public static final fja c = fja.a.a(2.5F)
+      .a(
+         "head",
+         new fiz(
+            fiz.d.b,
+            new fjb(0.0F, fjc.b(-70.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.15F, fjc.b(-65.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.4F, fjc.b(-50.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.5F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.7F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.9F, fjc.b(-7.5F, 0.0F, 45.0F), fiz.b.b),
+            new fjb(1.15F, fjc.b(-7.5F, 0.0F, 45.0F), fiz.b.a),
+            new fjb(1.3F, fjc.b(-0.8639F, -1.4959F, -39.1287F), fiz.b.b),
+            new fjb(1.6F, fjc.b(-0.8639F, -1.4959F, -39.1287F), fiz.b.a),
+            new fjb(1.75F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.8F, fjc.b(-25.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.85F, fjc.b(-70.0F, 0.0F, 0.0F), fiz.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fiz(
+            fiz.d.a,
+            new fjb(0.0F, fjc.a(0.0F, 1.0F, 7.0F), fiz.b.a),
+            new fjb(0.05F, fjc.a(0.0F, 1.0F, 4.0F), fiz.b.a),
+            new fjb(0.15F, fjc.a(0.0F, 1.0F, 4.0F), fiz.b.a),
+            new fjb(0.25F, fjc.a(0.0F, 1.0F, 5.0F), fiz.b.a),
+            new fjb(0.35F, fjc.a(0.0F, 1.0F, 0.2F), fiz.b.a),
+            new fjb(0.4F, fjc.a(0.0F, 1.0F, 0.2F), fiz.b.a),
+            new fjb(0.5F, fjc.a(0.0F, 2.1F, 1.2F), fiz.b.a),
+            new fjb(0.6F, fjc.a(0.0F, 1.1F, 0.2F), fiz.b.a),
+            new fjb(0.7F, fjc.a(0.0F, 1.1F, 0.2F), fiz.b.a),
+            new fjb(1.75F, fjc.a(0.0F, 1.1F, 0.2F), fiz.b.a),
+            new fjb(1.8F, fjc.a(0.0F, 0.1F, 0.2F), fiz.b.a),
+            new fjb(1.95F, fjc.a(0.0F, 0.1F, 5.2F), fiz.b.a),
+            new fjb(2.0F, fjc.a(0.0F, 0.1F, 7.2F), fiz.b.a),
+            new fjb(2.15F, fjc.a(0.0F, 0.1F, 8.2F), fiz.b.a),
+            new fjb(2.3F, fjc.a(0.0F, 0.1F, 5.2F), fiz.b.a)
+         )
+      )
+      .a("right_hind_leg", new fiz(fiz.d.a, new fjb(0.0F, fjc.a(0.0F, 3.0F, -2.0F), fiz.b.a)))
+      .a("left_hind_leg", new fiz(fiz.d.a, new fjb(0.0F, fjc.a(0.0F, 3.0F, -2.0F), fiz.b.a)))
+      .a(
+         "right_front_leg",
+         new fiz(
+            fiz.d.b,
+            new fjb(0.0F, fjc.b(-90.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.5833F, fjc.b(-90.0F, 0.0F, 0.0F), fiz.b.b),
+            new fjb(0.8333F, fjc.b(-45.0F, 0.0F, 0.0F), fiz.b.b),
+            new fjb(1.0F, fjc.b(-45.0F, 0.0F, 0.0F), fiz.b.b),
+            new fjb(1.75F, fjc.b(-45.0F, 0.0F, 0.0F), fiz.b.b),
+            new fjb(1.8F, fjc.b(-90.0F, 0.0F, 0.0F), fiz.b.b),
+            new fjb(1.95F, fjc.b(-90.0F, 0.0F, 0.0F), fiz.b.b)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new fiz(
+            fiz.d.a,
+            new fjb(0.0F, fjc.a(-1.0F, 2.0F, 2.0F), fiz.b.a),
+            new fjb(0.5833F, fjc.a(-1.0F, 2.0F, 2.0F), fiz.b.b),
+            new fjb(0.6667F, fjc.a(-1.0F, 2.0F, -2.0F), fiz.b.b),
+            new fjb(0.8333F, fjc.a(-1.0F, 2.0F, -1.0F), fiz.b.b),
+            new fjb(1.0F, fjc.a(-1.0F, 2.0F, -1.0F), fiz.b.b),
+            new fjb(1.75F, fjc.a(-1.0F, 2.0F, -1.0F), fiz.b.b),
+            new fjb(1.95F, fjc.a(-1.0F, 2.0F, -1.0F), fiz.b.b),
+            new fjb(2.0F, fjc.a(-1.0F, 2.0F, 3.0F), fiz.b.b),
+            new fjb(2.15F, fjc.a(-1.0F, 3.0F, 4.0F), fiz.b.b)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new fiz(
+            fiz.d.b,
+            new fjb(0.0F, fjc.b(-90.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.6667F, fjc.b(-90.0F, 0.0F, 0.0F), fiz.b.b),
+            new fjb(0.8333F, fjc.b(-45.0F, 0.0F, 0.0F), fiz.b.b),
+            new fjb(1.0F, fjc.b(-45.0F, 0.0F, 0.0F), fiz.b.b),
+            new fjb(1.75F, fjc.b(-45.0F, 0.0F, 0.0F), fiz.b.b),
+            new fjb(1.8F, fjc.b(-90.0F, 0.0F, 0.0F), fiz.b.b),
+            new fjb(1.95F, fjc.b(-90.0F, 0.0F, 0.0F), fiz.b.b)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new fiz(
+            fiz.d.a,
+            new fjb(0.0F, fjc.a(1.0F, 2.0F, 2.0F), fiz.b.a),
+            new fjb(0.6667F, fjc.a(1.0F, 2.0F, 2.0F), fiz.b.b),
+            new fjb(0.75F, fjc.a(1.0F, 2.0F, -2.0F), fiz.b.b),
+            new fjb(0.8333F, fjc.a(1.0F, 2.0F, -1.0F), fiz.b.b),
+            new fjb(1.0F, fjc.a(1.0F, 2.0F, -1.0F), fiz.b.b),
+            new fjb(1.75F, fjc.a(1.0F, 2.0F, -1.0F), fiz.b.b),
+            new fjb(1.95F, fjc.a(1.0F, 2.0F, -1.0F), fiz.b.b),
+            new fjb(2.0F, fjc.a(1.0F, 2.0F, 3.0F), fiz.b.b),
+            new fjb(2.15F, fjc.a(1.0F, 3.0F, 4.0F), fiz.b.b)
+         )
+      )
+      .a(
+         "cube",
+         new fiz(
+            fiz.d.b,
+            new fjb(0.0F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.25F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.35F, fjc.b(15.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.5F, fjc.b(-7.5F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.6F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(2.0F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(2.05F, fjc.b(-17.5F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(2.15F, fjc.b(-25.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(2.25F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(2.3F, fjc.b(12.5F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(2.5F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a)
+         )
+      )
+      .a(
+         "cube",
+         new fiz(
+            fiz.d.a,
+            new fjb(0.25F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.35F, fjc.a(0.0F, 1.6F, 0.0F), fiz.b.a),
+            new fjb(0.5F, fjc.a(0.0F, 0.5F, 0.0F), fiz.b.a),
+            new fjb(0.6F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(2.0F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(2.05F, fjc.a(0.0F, 1.2F, 0.0F), fiz.b.a),
+            new fjb(2.15F, fjc.a(0.0F, 1.7F, 0.0F), fiz.b.a),
+            new fjb(2.25F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(2.3F, fjc.a(0.0F, 1.3F, 0.0F), fiz.b.a),
+            new fjb(2.5F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a)
+         )
+      )
+      .b();
+   public static final fja d = fja.a.a(1.5F)
+      .a(
+         "head",
+         new fiz(
+            fiz.d.b,
+            new fjb(0.1F, fjc.b(-50.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.15F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.25F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.4F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.65F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.7F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.85F, fjc.b(-2.5F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.9F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.95F, fjc.b(-7.5F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.05F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.1F, fjc.b(7.5F, 0.0F, 0.0F), fiz.b.a)
+         )
+      )
+      .a(
+         "head",
+         new fiz(
+            fiz.d.a,
+            new fjb(0.0F, fjc.a(0.0F, 1.0F, 5.0F), fiz.b.a),
+            new fjb(0.05F, fjc.a(0.0F, 1.0F, 0.2F), fiz.b.a),
+            new fjb(0.1F, fjc.a(0.0F, 1.0F, 0.2F), fiz.b.a),
+            new fjb(0.15F, fjc.a(0.0F, 2.1F, 1.2F), fiz.b.a),
+            new fjb(0.25F, fjc.a(0.0F, 1.03F, 0.13F), fiz.b.a),
+            new fjb(0.4F, fjc.a(0.0F, 1.03F, 0.13F), fiz.b.a),
+            new fjb(0.65F, fjc.a(0.0F, 1.03F, 0.13F), fiz.b.a),
+            new fjb(0.7F, fjc.a(0.0F, 1.1F, 0.2F), fiz.b.a),
+            new fjb(0.75F, fjc.a(0.0F, 4.1F, 2.2F), fiz.b.a),
+            new fjb(0.85F, fjc.a(0.0F, 5.1F, 3.2F), fiz.b.a),
+            new fjb(0.9F, fjc.a(0.0F, 0.1F, 0.2F), fiz.b.a),
+            new fjb(0.95F, fjc.a(0.0F, 0.9F, -0.8F), fiz.b.a),
+            new fjb(1.05F, fjc.a(0.0F, 0.9F, 0.0F), fiz.b.a),
+            new fjb(1.1F, fjc.a(0.0F, 2.6F, 0.2F), fiz.b.a),
+            new fjb(1.15F, fjc.a(0.0F, 2.4F, 0.2F), fiz.b.a),
+            new fjb(1.2F, fjc.a(0.0F, 0.0F, 0.2F), fiz.b.a),
+            new fjb(1.25F, fjc.a(0.0F, 0.0F, 0.2F), fiz.b.a),
+            new fjb(1.3F, fjc.a(0.0F, 0.0F, 0.2F), fiz.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new fiz(
+            fiz.d.b,
+            new fjb(1.1F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.3F, fjc.b(0.0F, 0.0F, 30.0F), fiz.b.a),
+            new fjb(1.4F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.45F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.5F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a)
+         )
+      )
+      .a(
+         "right_hind_leg",
+         new fiz(
+            fiz.d.a,
+            new fjb(1.1F, fjc.a(0.0F, 3.0F, -2.0F), fiz.b.a),
+            new fjb(1.2F, fjc.a(0.0F, 8.0F, -2.0F), fiz.b.a),
+            new fjb(1.3F, fjc.a(-1.0F, 3.0F, 0.0F), fiz.b.a),
+            new fjb(1.4F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.45F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.5F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new fiz(
+            fiz.d.b,
+            new fjb(1.1F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.3F, fjc.b(0.0F, 0.0F, -30.0F), fiz.b.a),
+            new fjb(1.4F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.45F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.5F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a)
+         )
+      )
+      .a(
+         "left_hind_leg",
+         new fiz(
+            fiz.d.a,
+            new fjb(1.1F, fjc.a(0.0F, 3.0F, -2.0F), fiz.b.a),
+            new fjb(1.2F, fjc.a(0.0F, 8.0F, -2.0F), fiz.b.a),
+            new fjb(1.3F, fjc.a(1.0F, 3.0F, 0.0F), fiz.b.a),
+            new fjb(1.35F, fjc.a(1.0F, 3.0F, 0.0F), fiz.b.a),
+            new fjb(1.4F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.45F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.5F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new fiz(
+            fiz.d.b,
+            new fjb(0.0F, fjc.b(-90.0F, 0.0F, 0.0F), fiz.b.b),
+            new fjb(0.05F, fjc.b(-90.0F, 0.0F, 0.0F), fiz.b.b),
+            new fjb(0.25F, fjc.b(-45.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.55F, fjc.b(-45.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.6F, fjc.b(-92.5F, 0.0F, 0.0F), fiz.b.b),
+            new fjb(1.1F, fjc.b(-90.0F, 0.0F, 0.0F), fiz.b.b),
+            new fjb(1.3F, fjc.b(0.0F, 0.0F, 30.0F), fiz.b.b),
+            new fjb(1.4F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.b),
+            new fjb(1.45F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.5F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.b)
+         )
+      )
+      .a(
+         "right_front_leg",
+         new fiz(
+            fiz.d.a,
+            new fjb(0.0F, fjc.a(-1.0F, 2.0F, 2.0F), fiz.b.a),
+            new fjb(0.05F, fjc.a(-1.0F, 2.0F, 2.0F), fiz.b.b),
+            new fjb(0.25F, fjc.a(-1.0F, 2.0F, -1.0F), fiz.b.a),
+            new fjb(0.55F, fjc.a(-1.0F, 2.0F, -1.0F), fiz.b.a),
+            new fjb(0.7F, fjc.a(-1.0F, 2.0F, 2.63F), fiz.b.b),
+            new fjb(1.1F, fjc.a(-1.0F, 2.0F, 2.0F), fiz.b.a),
+            new fjb(1.2F, fjc.a(-1.0F, 7.0F, 2.0F), fiz.b.a),
+            new fjb(1.3F, fjc.a(-1.0F, 3.0F, 0.0F), fiz.b.a),
+            new fjb(1.4F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.45F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.5F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new fiz(
+            fiz.d.b,
+            new fjb(0.0F, fjc.b(-90.0F, 0.0F, 0.0F), fiz.b.b),
+            new fjb(0.05F, fjc.b(-90.0F, 0.0F, 0.0F), fiz.b.b),
+            new fjb(0.25F, fjc.b(-45.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.55F, fjc.b(-45.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.6F, fjc.b(-87.5F, 0.0F, 0.0F), fiz.b.b),
+            new fjb(1.1F, fjc.b(-90.0F, 0.0F, 0.0F), fiz.b.b),
+            new fjb(1.3F, fjc.b(0.0F, 0.0F, -30.0F), fiz.b.b),
+            new fjb(1.4F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.b),
+            new fjb(1.45F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.5F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.b)
+         )
+      )
+      .a(
+         "left_front_leg",
+         new fiz(
+            fiz.d.a,
+            new fjb(0.0F, fjc.a(1.0F, 2.0F, 2.0F), fiz.b.b),
+            new fjb(0.05F, fjc.a(1.0F, 2.0F, 2.0F), fiz.b.b),
+            new fjb(0.15F, fjc.a(1.0F, 2.0F, 0.0F), fiz.b.b),
+            new fjb(0.25F, fjc.a(1.0F, 2.0F, -1.0F), fiz.b.a),
+            new fjb(0.55F, fjc.a(1.0F, 2.0F, -1.0F), fiz.b.a),
+            new fjb(0.7F, fjc.a(1.0F, 2.0F, 1.88F), fiz.b.b),
+            new fjb(0.75F, fjc.a(1.0F, 2.0F, 2.67F), fiz.b.b),
+            new fjb(1.1F, fjc.a(1.0F, 2.0F, 2.0F), fiz.b.b),
+            new fjb(1.2F, fjc.a(1.0F, 8.0F, 2.0F), fiz.b.b),
+            new fjb(1.25F, fjc.a(1.06F, 5.06F, 1.0F), fiz.b.b),
+            new fjb(1.3F, fjc.a(1.0F, 3.0F, 0.0F), fiz.b.b),
+            new fjb(1.4F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.b),
+            new fjb(1.45F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.5F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.b)
+         )
+      )
+      .a(
+         "cube",
+         new fiz(
+            fiz.d.b,
+            new fjb(0.0F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.05F, fjc.b(15.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.15F, fjc.b(-7.5F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.25F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.7F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.75F, fjc.b(-17.5F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.85F, fjc.b(-25.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.9F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.95F, fjc.b(12.5F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.05F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.1F, fjc.b(0.0F, 0.0F, 0.0F), fiz.b.a)
+         )
+      )
+      .a(
+         "cube",
+         new fiz(
+            fiz.d.a,
+            new fjb(0.0F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.05F, fjc.a(0.0F, 1.6F, 0.0F), fiz.b.a),
+            new fjb(0.15F, fjc.a(0.0F, 0.5F, 0.0F), fiz.b.a),
+            new fjb(0.25F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.7F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.75F, fjc.a(0.0F, 1.2F, 0.0F), fiz.b.a),
+            new fjb(0.85F, fjc.a(0.0F, 1.7F, 0.0F), fiz.b.a),
+            new fjb(0.9F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(0.95F, fjc.a(0.0F, 1.3F, 0.0F), fiz.b.a),
+            new fjb(1.05F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.2F, fjc.a(0.0F, 5.0F, 0.0F), fiz.b.a),
+            new fjb(1.25F, fjc.a(0.0F, 8.0F, 0.0F), fiz.b.a),
+            new fjb(1.5F, fjc.a(0.0F, 1.0F, 0.0F), fiz.b.a)
+         )
+      )
+      .a(
+         "body",
+         new fiz(
+            fiz.d.a,
+            new fjb(1.1F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a),
+            new fjb(1.2F, fjc.a(0.0F, 4.0F, 0.0F), fiz.b.a),
+            new fjb(1.25F, fjc.a(0.0F, 5.0F, 0.0F), fiz.b.a),
+            new fjb(1.3F, fjc.a(0.0F, 4.0F, 0.0F), fiz.b.a),
+            new fjb(1.4F, fjc.a(0.0F, -1.0F, 0.0F), fiz.b.a),
+            new fjb(1.5F, fjc.a(0.0F, 0.0F, 0.0F), fiz.b.a)
+         )
+      )
+      .b();
 }

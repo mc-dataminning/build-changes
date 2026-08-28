@@ -1,7 +1,7 @@
-public record aii(short b, cvl c) implements zk<agq> {
-   public static final zb<wo, aii> a = zb.a(yz.d, aii::b, cvl.a(cvl.h), aii::e, aii::new);
+public record aii(short b, cvp c) implements zk<agq> {
+   public static final zb<wo, aii> a = zb.a(yz.d, aii::b, cvp.a(cvp.h), aii::e, aii::new);
 
-   public aii(int $$0, cvl $$1) {
+   public aii(int $$0, cvp $$1) {
       this((short)$$0, $$1);
    }
 
@@ -14,7 +14,7 @@ public record aii(short b, cvl c) implements zk<agq> {
       $$0.a(this);
    }
 
-   public cvl e() {
+   public cvp e() {
       return this.c;
    }
 }

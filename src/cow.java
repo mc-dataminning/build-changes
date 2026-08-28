@@ -1,181 +1,68 @@
-import javax.annotation.Nullable;
+public abstract class cow extends coo {
+   private static final float b = 12.25F;
 
-public class cow extends cnw {
-   private static final akg<Byte> g = akk.a(cow.class, aki.a);
-   private static final akg<Boolean> h = akk.a(cow.class, aki.k);
-   private boolean i;
-   public int f;
-
-   public cow(btq<? extends cow> $$0, dds $$1) {
+   protected cow(btv<? extends cow> $$0, deg $$1) {
       super($$0, $$1);
    }
 
-   public cow(dds $$0, buf $$1, cvl $$2) {
-      super(btq.bf, $$1, $$0, $$2, null);
-      this.am.a(g, this.c($$2));
-      this.am.a(h, $$2.z());
-   }
-
-   public cow(dds $$0, double $$1, double $$2, double $$3, cvl $$4) {
-      super(btq.bf, $$1, $$2, $$3, $$0, $$4, $$4);
-      this.am.a(g, this.c($$4));
-      this.am.a(h, $$4.z());
+   protected cow(btv<? extends cow> $$0, double $$1, double $$2, double $$3, deg $$4) {
+      this($$0, $$4);
+      this.a_($$1, $$2, $$3);
    }
 
    @Override
-   protected void a(akk.a $$0) {
-      super.a($$0);
-      $$0.a(g, (byte)0);
-      $$0.a(h, false);
+   public boolean a(double $$0) {
+      if (this.ag < 2 && $$0 < 12.25) {
+         return false;
+      } else {
+         double $$1 = this.cO().a() * 4.0;
+         if (Double.isNaN($$1)) {
+            $$1 = 4.0;
+         }
+
+         $$1 *= 64.0;
+         return $$0 < $$1 * $$1;
+      }
+   }
+
+   @Override
+   public boolean o(boolean $$0) {
+      return true;
    }
 
    @Override
    public void l() {
-      if (this.c > 4) {
-         this.i = true;
-      }
-
-      btj $$0 = this.s();
-      int $$1 = this.am.a(g);
-      if ($$1 > 0 && (this.i || this.C()) && $$0 != null) {
-         if (!this.G()) {
-            if (!this.dS().B && this.d == cnw.a.b) {
-               this.a(this.t(), 0.1F);
-            }
-
-            this.as();
-         } else {
-            this.b(true);
-            eye $$2 = $$0.bC().d(this.dq());
-            this.o(this.dx(), this.dz() + $$2.e * 0.015 * (double)$$1, this.dD());
-            if (this.dS().B) {
-               this.ac = this.dz();
-            }
-
-            double $$3 = 0.05 * (double)$$1;
-            this.h(this.dv().c(0.95).e($$2.d().c($$3)));
-            if (this.f == 0) {
-               this.a(awd.zI, 10.0F, 1.0F);
-            }
-
-            this.f++;
-         }
-      }
-
       super.l();
-   }
-
-   private boolean G() {
-      btj $$0 = this.s();
-      return $$0 == null || !$$0.bI() ? false : !($$0 instanceof arh) || !$$0.P_();
-   }
-
-   @Override
-   public boolean D() {
-      return this.am.a(h);
-   }
-
-   @Nullable
-   @Override
-   protected eyb a(eye $$0, eye $$1) {
-      return this.i ? null : super.a($$0, $$1);
-   }
-
-   @Override
-   protected void a(eyb $$0) {
-      btj $$1 = $$0.a();
-      float $$2 = 8.0F;
-      btj $$3 = this.s();
-      bsb $$4 = this.dT().a(this, (btj)($$3 == null ? this : $$3));
-      if (this.dS() instanceof arg $$5) {
-         $$2 = day.a($$5, this.dW(), $$1, $$4, $$2);
+      eyq $$0 = coq.a(this, this::b);
+      if ($$0.d() != eyq.a.a) {
+         this.b($$0);
       }
 
-      this.i = true;
-      if ($$1.a($$4, $$2)) {
-         if ($$1.ao() == btq.H) {
-            return;
+      eys $$1 = this.dv();
+      double $$2 = this.dx() + $$1.d;
+      double $$3 = this.dz() + $$1.e;
+      double $$4 = this.dD() + $$1.f;
+      this.G();
+      float $$7;
+      if (this.bi()) {
+         for (int $$5 = 0; $$5 < 4; $$5++) {
+            float $$6 = 0.25F;
+            this.dS().a(ln.d, $$2 - $$1.d * 0.25, $$3 - $$1.e * 0.25, $$4 - $$1.f * 0.25, $$1.d, $$1.e, $$1.f);
          }
 
-         if (this.dS() instanceof arg $$6) {
-            day.a($$6, $$1, $$4, this.dW());
-         }
-
-         if ($$1 instanceof buf $$7) {
-            this.a($$7, $$4);
-            this.a($$7);
-         }
+         $$7 = 0.8F;
+      } else {
+         $$7 = 0.99F;
       }
 
-      this.h(this.dv().d(-0.01, -0.1, -0.01));
-      this.a(awd.zG, 1.0F, 1.0F);
+      this.h($$1.c((double)$$7));
+      this.be();
+      this.a_($$2, $$3, $$4);
+      this.aW();
    }
 
    @Override
-   protected void a(arg $$0, eya $$1, cvl $$2) {
-      eye $$3 = $$1.a().a($$1.e());
-      day.a($$0, $$2, this.s() instanceof buf $$4 ? $$4 : null, this, null, $$3, $$0.a_($$1.a()), $$0x -> this.ar());
-   }
-
-   @Override
-   public cvl dW() {
-      return this.w();
-   }
-
-   @Override
-   protected boolean a(cnp $$0) {
-      return super.a($$0) || this.C() && this.e($$0) && $$0.gc().f(this.t());
-   }
-
-   @Override
-   protected cvl v() {
-      return new cvl(cvo.vU);
-   }
-
-   @Override
-   protected awc o() {
-      return awd.zH;
-   }
-
-   @Override
-   public void b_(cnp $$0) {
-      if (this.e($$0) || this.s() == null) {
-         super.b_($$0);
-      }
-   }
-
-   @Override
-   public void a(uf $$0) {
-      super.a($$0);
-      this.i = $$0.q("DealtDamage");
-      this.am.a(g, this.c(this.w()));
-   }
-
-   @Override
-   public void b(uf $$0) {
-      super.b($$0);
-      $$0.a("DealtDamage", this.i);
-   }
-
-   private byte c(cvl $$0) {
-      return this.dS() instanceof arg $$1 ? (byte)azc.a(day.c($$1, $$0, this), 0, 127) : 0;
-   }
-
-   @Override
-   public void m() {
-      int $$0 = this.am.a(g);
-      if (this.d != cnw.a.b || $$0 <= 0) {
-         super.m();
-      }
-   }
-
-   @Override
-   protected float B() {
-      return 0.99F;
-   }
-
-   @Override
-   public boolean k(double $$0, double $$1, double $$2) {
-      return true;
+   protected double bc() {
+      return 0.03;
    }
 }

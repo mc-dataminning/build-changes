@@ -1,150 +1,92 @@
-import com.google.common.collect.Iterables;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
+import io.netty.buffer.ByteBuf;
 import java.util.List;
-import java.util.OptionalInt;
-import java.util.stream.Stream;
+import java.util.Locale;
+import java.util.function.Consumer;
 
-public final class cyh {
-   private static final int d = -1;
-   private static final int e = 256;
-   public static final cyh a = new cyh(jw.a());
-   public static final Codec<cyh> b = cyh.a.a.sizeLimitedListOf(256).xmap(cyh::b, cyh::f);
-   public static final zb<wo, cyh> c = cvl.h.a(yz.c(256)).a(cyh::new, $$0 -> $$0.f);
-   private final jw<cvl> f;
-   private final int g;
+public record cyh(int d, boolean e) implements cyw {
+   private static final Codec<cyh> f = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.INT.fieldOf("rgb").forGetter(cyh::a), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cyh::b)).apply($$0, cyh::new)
+   );
+   public static final Codec<cyh> a = Codec.withAlternative(f, Codec.INT, $$0 -> new cyh($$0, true));
+   public static final zb<ByteBuf, cyh> b = zb.a(yz.f, cyh::a, yz.b, cyh::b, cyh::new);
+   public static final int c = -6265536;
 
-   private cyh(jw<cvl> $$0) {
-      if ($$0.size() > 256) {
-         throw new IllegalArgumentException("Got " + $$0.size() + " items, but maximum is 256");
+   public static int a(cvp $$0, int $$1) {
+      cyh $$2 = $$0.a(kr.E);
+      return $$2 != null ? axo.f($$2.a()) : $$1;
+   }
+
+   public static cvp a(cvp $$0, List<cuk> $$1) {
+      if (!$$0.a(axc.bD)) {
+         return cvp.k;
       } else {
-         this.f = $$0;
-         this.g = cvl.a($$0);
-      }
-   }
-
-   private cyh(int $$0) {
-      this(jw.a($$0, cvl.k));
-   }
-
-   private cyh(List<cvl> $$0) {
-      this($$0.size());
-
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         this.f.set($$1, $$0.get($$1));
-      }
-   }
-
-   private static cyh b(List<cyh.a> $$0) {
-      OptionalInt $$1 = $$0.stream().mapToInt(cyh.a::a).max();
-      if ($$1.isEmpty()) {
-         return a;
-      } else {
-         cyh $$2 = new cyh($$1.getAsInt() + 1);
-
-         for (cyh.a $$3 : $$0) {
-            $$2.f.set($$3.a(), $$3.b());
+         cvp $$2 = $$0.c(1);
+         int $$3 = 0;
+         int $$4 = 0;
+         int $$5 = 0;
+         int $$6 = 0;
+         int $$7 = 0;
+         cyh $$8 = $$2.a(kr.E);
+         if ($$8 != null) {
+            int $$9 = axo.b($$8.a());
+            int $$10 = axo.c($$8.a());
+            int $$11 = axo.d($$8.a());
+            $$6 += Math.max($$9, Math.max($$10, $$11));
+            $$3 += $$9;
+            $$4 += $$10;
+            $$5 += $$11;
+            $$7++;
          }
 
+         for (cuk $$12 : $$1) {
+            int $$13 = $$12.c().d();
+            int $$14 = axo.b($$13);
+            int $$15 = axo.c($$13);
+            int $$16 = axo.d($$13);
+            $$6 += Math.max($$14, Math.max($$15, $$16));
+            $$3 += $$14;
+            $$4 += $$15;
+            $$5 += $$16;
+            $$7++;
+         }
+
+         int $$17 = $$3 / $$7;
+         int $$18 = $$4 / $$7;
+         int $$19 = $$5 / $$7;
+         float $$20 = (float)$$6 / (float)$$7;
+         float $$21 = (float)Math.max($$17, Math.max($$18, $$19));
+         $$17 = (int)((float)$$17 * $$20 / $$21);
+         $$18 = (int)((float)$$18 * $$20 / $$21);
+         $$19 = (int)((float)$$19 * $$20 / $$21);
+         int $$22 = axo.a(0, $$17, $$18, $$19);
+         boolean $$23 = $$8 == null || $$8.b();
+         $$2.b(kr.E, new cyh($$22, $$23));
          return $$2;
       }
    }
 
-   public static cyh a(List<cvl> $$0) {
-      int $$1 = c($$0);
-      if ($$1 == -1) {
-         return a;
-      } else {
-         cyh $$2 = new cyh($$1 + 1);
-
-         for (int $$3 = 0; $$3 <= $$1; $$3++) {
-            $$2.f.set($$3, $$0.get($$3).u());
-         }
-
-         return $$2;
-      }
-   }
-
-   private static int c(List<cvl> $$0) {
-      for (int $$1 = $$0.size() - 1; $$1 >= 0; $$1--) {
-         if (!$$0.get($$1).f()) {
-            return $$1;
-         }
-      }
-
-      return -1;
-   }
-
-   private List<cyh.a> f() {
-      List<cyh.a> $$0 = new ArrayList<>();
-
-      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
-         cvl $$2 = this.f.get($$1);
-         if (!$$2.f()) {
-            $$0.add(new cyh.a($$1, $$2));
-         }
-      }
-
-      return $$0;
-   }
-
-   public void a(jw<cvl> $$0) {
-      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
-         cvl $$2 = $$1 < this.f.size() ? this.f.get($$1) : cvl.k;
-         $$0.set($$1, $$2.u());
-      }
-   }
-
-   public cvl a() {
-      return this.f.isEmpty() ? cvl.k : this.f.get(0).u();
-   }
-
-   public Stream<cvl> b() {
-      return this.f.stream().map(cvl::u);
-   }
-
-   public Stream<cvl> c() {
-      return this.f.stream().filter($$0 -> !$$0.f()).map(cvl::u);
-   }
-
-   public Iterable<cvl> d() {
-      return Iterables.filter(this.f, $$0 -> !$$0.f());
-   }
-
-   public Iterable<cvl> e() {
-      return Iterables.transform(this.d(), cvl::u);
-   }
-
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof cyh $$1 && cvl.a(this.f, $$1.f)) {
-            return true;
+   public void a(cvk.b $$0, Consumer<xd> $$1, cxh $$2) {
+      if (this.e) {
+         if ($$2.a()) {
+            $$1.accept(xd.a("item.color", String.format(Locale.ROOT, "#%06X", this.d)).a(n.h));
+         } else {
+            $$1.accept(xd.c("item.dyed").a(n.h, n.u));
          }
-
-         return false;
       }
    }
 
-   @Override
-   public int hashCode() {
-      return this.g;
+   public cyh a(boolean $$0) {
+      return new cyh(this.d, $$0);
    }
 
-   static record a(int b, cvl c) {
-      public static final Codec<cyh.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.intRange(0, 255).fieldOf("slot").forGetter(cyh.a::a), cvl.b.fieldOf("item").forGetter(cyh.a::b)).apply($$0, cyh.a::new)
-      );
+   public int a() {
+      return this.d;
+   }
 
-      public int a() {
-         return this.b;
-      }
-
-      public cvl b() {
-         return this.c;
-      }
+   public boolean b() {
+      return this.e;
    }
 }

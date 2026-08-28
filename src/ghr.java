@@ -1,197 +1,35 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.util.ArrayList;
-import java.util.List;
-
 public class ghr {
-   private static final int a = 10;
-   private static final int b = 21;
-   private static final alb c = alb.b("textures/environment/rain.png");
-   private static final alb d = alb.b("textures/environment/snow.png");
-   private static final int e = 32;
-   private static final int f = 16;
-   private int g;
-   private final float[] h = new float[1024];
-   private final float[] i = new float[1024];
+   private final long[] a;
+   private int b;
+   private int c;
 
-   public ghr() {
-      for (int $$0 = 0; $$0 < 32; $$0++) {
-         for (int $$1 = 0; $$1 < 32; $$1++) {
-            float $$2 = (float)($$1 - 16);
-            float $$3 = (float)($$0 - 16);
-            float $$4 = azc.f($$2, $$3);
-            this.h[$$0 * 32 + $$1] = -$$3 / $$4;
-            this.i[$$0 * 32 + $$1] = $$2 / $$4;
-         }
-      }
+   public ghr(int $$0) {
+      this.a = new long[$$0];
    }
 
-   public void a(dds $$0, ggt $$1, int $$2, float $$3, eye $$4) {
-      float $$5 = $$0.d($$3);
-      if (!($$5 <= 0.0F)) {
-         int $$6 = fib.N() ? 10 : 5;
-         List<ghr.a> $$7 = new ArrayList<>();
-         List<ghr.a> $$8 = new ArrayList<>();
-         this.a($$0, $$2, $$3, $$4, $$6, $$7, $$8);
-         if (!$$7.isEmpty() || !$$8.isEmpty()) {
-            this.a($$1, $$4, $$6, $$5, $$7, $$8);
-         }
-      }
-   }
-
-   private void a(dds $$0, int $$1, float $$2, eye $$3, int $$4, List<ghr.a> $$5, List<ghr.a> $$6) {
-      int $$7 = azc.a($$3.d);
-      int $$8 = azc.a($$3.e);
-      int $$9 = azc.a($$3.f);
-      je.a $$10 = new je.a();
-      azk $$11 = azk.a();
-
-      for (int $$12 = $$9 - $$4; $$12 <= $$9 + $$4; $$12++) {
-         for (int $$13 = $$7 - $$4; $$13 <= $$7 + $$4; $$13++) {
-            int $$14 = $$0.a(dzw.a.e, $$13, $$12);
-            int $$15 = Math.max($$8 - $$4, $$14);
-            int $$16 = Math.max($$8 + $$4, $$14);
-            if ($$16 - $$15 != 0) {
-               det.c $$17 = this.a($$0, $$10.d($$13, $$8, $$12));
-               if ($$17 != det.c.a) {
-                  int $$18 = $$13 * $$13 * 3121 + $$13 * 45238971 ^ $$12 * $$12 * 418711 + $$12 * 13761;
-                  $$11.b((long)$$18);
-                  int $$19 = Math.max($$8, $$14);
-                  int $$20 = ggr.a($$0, $$10.d($$13, $$19, $$12));
-                  if ($$17 == det.c.b) {
-                     $$5.add(this.a($$11, $$1, $$13, $$15, $$16, $$12, $$20, $$2));
-                  } else if ($$17 == det.c.c) {
-                     $$6.add(this.b($$11, $$1, $$13, $$15, $$16, $$12, $$20, $$2));
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private void a(ggt $$0, eye $$1, int $$2, float $$3, List<ghr.a> $$4, List<ghr.a> $$5) {
-      $$0.c();
-      fcw $$6 = fcw.b();
-      RenderSystem.disableCull();
-      RenderSystem.enableBlend();
-      RenderSystem.enableDepthTest();
-      RenderSystem.depthMask(fib.O());
-      RenderSystem.setShader(ggl::s);
-      if (!$$4.isEmpty()) {
-         RenderSystem.setShaderTexture(0, c);
-         this.a($$6, $$4, $$1, 1.0F, $$2, $$3);
+   public long a(long $$0) {
+      if (this.b < this.a.length) {
+         this.b++;
       }
 
-      if (!$$5.isEmpty()) {
-         RenderSystem.setShaderTexture(0, d);
-         this.a($$6, $$5, $$1, 0.8F, $$2, $$3);
+      this.a[this.c] = $$0;
+      this.c = (this.c + 1) % this.a.length;
+      long $$1 = Long.MAX_VALUE;
+      long $$2 = Long.MIN_VALUE;
+      long $$3 = 0L;
+
+      for (int $$4 = 0; $$4 < this.b; $$4++) {
+         long $$5 = this.a[$$4];
+         $$3 += $$5;
+         $$1 = Math.min($$1, $$5);
+         $$2 = Math.max($$2, $$5);
       }
 
-      RenderSystem.depthMask(true);
-      RenderSystem.enableCull();
-      RenderSystem.disableBlend();
-      $$0.b();
-   }
-
-   private ghr.a a(azk $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, float $$7) {
-      int $$8 = $$1 & 131071;
-      int $$9 = $$2 * $$2 * 3121 + $$2 * 45238971 + $$5 * $$5 * 418711 + $$5 * 13761 & 0xFF;
-      float $$10 = 3.0F + $$0.i();
-      float $$11 = -((float)($$8 + $$9) + $$7) / 32.0F * $$10;
-      float $$12 = $$11 % 32.0F;
-      return new ghr.a($$2, $$5, $$3, $$4, 0.0F, $$12, $$6);
-   }
-
-   private ghr.a b(azk $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, float $$7) {
-      float $$8 = (float)$$1 + $$7;
-      float $$9 = (float)($$0.j() + (double)($$8 * 0.01F * (float)$$0.k()));
-      float $$10 = (float)($$0.j() + (double)($$8 * (float)$$0.k() * 0.001F));
-      float $$11 = -((float)($$1 & 511) + $$7) / 512.0F;
-      int $$12 = ggt.a((ggt.a($$6) * 3 + 15) / 4, (ggt.b($$6) * 3 + 15) / 4);
-      return new ghr.a($$2, $$5, $$3, $$4, $$9, $$11 + $$10, $$12);
-   }
-
-   private void a(fcw $$0, List<ghr.a> $$1, eye $$2, float $$3, int $$4, float $$5) {
-      fcp $$6 = $$0.a(fcz.c.h, fcs.d);
-
-      for (ghr.a $$7 : $$1) {
-         float $$8 = (float)((double)$$7.a + 0.5 - $$2.d);
-         float $$9 = (float)((double)$$7.b + 0.5 - $$2.f);
-         float $$10 = (float)azc.e((double)$$8, (double)$$9);
-         float $$11 = azc.h($$10 / (float)($$4 * $$4), $$3, 0.5F) * $$5;
-         int $$12 = axn.a($$11);
-         int $$13 = ($$7.b - azc.a($$2.f) + 16) * 32 + $$7.a - azc.a($$2.d) + 16;
-         float $$14 = this.h[$$13] / 2.0F;
-         float $$15 = this.i[$$13] / 2.0F;
-         float $$16 = $$8 - $$14;
-         float $$17 = $$8 + $$14;
-         float $$18 = (float)((double)$$7.d - $$2.e);
-         float $$19 = (float)((double)$$7.c - $$2.e);
-         float $$20 = $$9 - $$15;
-         float $$21 = $$9 + $$15;
-         float $$22 = $$7.e + 0.0F;
-         float $$23 = $$7.e + 1.0F;
-         float $$24 = (float)$$7.c * 0.25F + $$7.f;
-         float $$25 = (float)$$7.d * 0.25F + $$7.f;
-         $$6.a($$16, $$18, $$20).a($$22, $$24).a($$12).c($$7.g);
-         $$6.a($$17, $$18, $$21).a($$23, $$24).a($$12).c($$7.g);
-         $$6.a($$17, $$19, $$21).a($$23, $$25).a($$12).c($$7.g);
-         $$6.a($$16, $$19, $$20).a($$22, $$25).a($$12).c($$7.g);
-      }
-
-      fcq.a($$6.b());
-   }
-
-   public void a(gax $$0, fhk $$1, int $$2, aqz $$3) {
-      float $$4 = $$0.d(1.0F) / (fib.N() ? 1.0F : 2.0F);
-      if (!($$4 <= 0.0F)) {
-         azk $$5 = azk.a((long)$$2 * 312987231L);
-         je $$6 = je.a((jx)$$1.b());
-         je $$7 = null;
-         int $$8 = (int)(100.0F * $$4 * $$4) / ($$3 == aqz.b ? 2 : 1);
-
-         for (int $$9 = 0; $$9 < $$8; $$9++) {
-            int $$10 = $$5.a(21) - 10;
-            int $$11 = $$5.a(21) - 10;
-            je $$12 = $$0.a(dzw.a.e, $$6.b($$10, 0, $$11));
-            if ($$12.v() > $$0.G_() && $$12.v() <= $$6.v() + 10 && $$12.v() >= $$6.v() - 10 && this.a($$0, $$12) == det.c.b) {
-               $$7 = $$12.e();
-               if ($$3 == aqz.c) {
-                  break;
-               }
-
-               double $$13 = $$5.j();
-               double $$14 = $$5.j();
-               dua $$15 = $$0.a_($$7);
-               eqb $$16 = $$0.b_($$7);
-               eyx $$17 = $$15.g($$0, $$7);
-               double $$18 = $$17.b(jj.a.b, $$13, $$14);
-               double $$19 = (double)$$16.a($$0, $$7);
-               double $$20 = Math.max($$18, $$19);
-               ll $$21 = !$$16.a(awy.b) && !$$15.a(dgx.kJ) && !dhj.h($$15) ? ln.ad : ln.ae;
-               $$0.a($$21, (double)$$7.u() + $$13, (double)$$7.v() + $$20, (double)$$7.w() + $$14, 0.0, 0.0, 0.0);
-            }
-         }
-
-         if ($$7 != null && $$5.a(3) < this.g++) {
-            this.g = 0;
-            if ($$7.v() > $$6.v() + 1 && $$0.a(dzw.a.e, $$6).v() > azc.d((float)$$6.v())) {
-               $$0.a($$7, awd.Ck, awe.d, 0.1F, 0.5F, false);
-            } else {
-               $$0.a($$7, awd.Cj, awe.d, 0.2F, 1.0F, false);
-            }
-         }
-      }
-   }
-
-   private det.c a(dds $$0, je $$1) {
-      if (!$$0.P().b(kg.a($$1.u()), kg.a($$1.w()))) {
-         return det.c.a;
+      if (this.b > 2) {
+         $$3 -= $$1 + $$2;
+         return $$3 / (long)(this.b - 2);
       } else {
-         det $$2 = $$0.t($$1).a();
-         return $$2.a($$1, $$0.N());
+         return $$3 > 0L ? (long)this.b / $$3 : 0L;
       }
-   }
-
-   static record a(int a, int b, int c, int d, float e, float f, int g) {
    }
 }

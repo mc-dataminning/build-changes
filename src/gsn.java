@@ -1,4 +1,8 @@
-public class gsn extends gts {
-   public float a;
-   public boolean b;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gsn {
 }

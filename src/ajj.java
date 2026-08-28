@@ -8,9 +8,9 @@ public class ajj implements zk<ajg> {
    private final byte[] b;
    private final byte[] c;
 
-   public ajj(SecretKey $$0, PublicKey $$1, byte[] $$2) throws ayb {
-      this.b = aya.a($$1, $$0.getEncoded());
-      this.c = aya.a($$1, $$2);
+   public ajj(SecretKey $$0, PublicKey $$1, byte[] $$2) throws ayc {
+      this.b = ayb.a($$1, $$0.getEncoded());
+      this.c = ayb.a($$1, $$2);
    }
 
    private ajj(wa $$0) {
@@ -32,14 +32,14 @@ public class ajj implements zk<ajg> {
       $$0.a(this);
    }
 
-   public SecretKey a(PrivateKey $$0) throws ayb {
-      return aya.a($$0, this.b);
+   public SecretKey a(PrivateKey $$0) throws ayc {
+      return ayb.a($$0, this.b);
    }
 
    public boolean a(byte[] $$0, PrivateKey $$1) {
       try {
-         return Arrays.equals($$0, aya.b($$1, this.c));
-      } catch (ayb var4) {
+         return Arrays.equals($$0, ayb.b($$1, this.c));
+      } catch (ayc var4) {
          return false;
       }
    }

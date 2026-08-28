@@ -1,32 +1,30 @@
-import javax.annotation.Nullable;
+public class gdn extends gfo {
+   private static final float a = 0.0025F;
+   private static final int b = 300;
+   private static final int F = 300;
+   private static final float G = 0.25F;
+   private static final float H = 2.0F;
+   private float I;
+   private final float J;
+   private final float K;
 
-public class gdn extends gfe {
-   private final float a;
-   private final gez b;
-
-   gdn(gax $$0, double $$1, double $$2, double $$3, float $$4, float $$5, float $$6, gez $$7) {
+   protected gdn(gbh $$0, double $$1, double $$2, double $$3, gfj $$4) {
       super($$0, $$1, $$2, $$3);
-      this.b = $$7;
-      this.v = $$4;
-      this.w = $$5;
-      this.x = $$6;
-      float $$8 = 0.9F;
-      this.D *= 0.67499995F;
-      int $$9 = (int)(32.0 / (Math.random() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$9 * 0.9F, 1.0F);
-      this.b($$7);
-      this.a = ((float)Math.random() - 0.5F) * 0.1F;
-      this.z = (float)Math.random() * (float) (Math.PI * 2);
+      this.a($$4.a(this.r.a(12), 12));
+      this.I = (float)Math.toRadians(this.r.h() ? -30.0 : 30.0);
+      this.J = this.r.i();
+      this.K = (float)Math.toRadians(this.r.h() ? -5.0 : 5.0);
+      this.t = 300;
+      this.u = 7.5E-4F;
+      float $$5 = this.r.h() ? 0.05F : 0.075F;
+      this.D = $$5;
+      this.b($$5, $$5);
+      this.B = 1.0F;
    }
 
    @Override
-   public gei b() {
-      return gei.b;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * azc.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   public ges b() {
+      return ges.b;
    }
 
    @Override
@@ -34,45 +32,30 @@ public class gdn extends gfe {
       this.d = this.g;
       this.e = this.h;
       this.f = this.i;
-      if (this.s++ >= this.t) {
+      if (this.t-- <= 0) {
          this.k();
-      } else {
-         this.b(this.b);
+      }
+
+      if (!this.o) {
+         float $$0 = (float)(300 - this.t);
+         float $$1 = Math.min($$0 / 300.0F, 1.0F);
+         double $$2 = Math.cos(Math.toRadians((double)(this.J * 60.0F))) * 2.0 * Math.pow((double)$$1, 1.25);
+         double $$3 = Math.sin(Math.toRadians((double)(this.J * 60.0F))) * 2.0 * Math.pow((double)$$1, 1.25);
+         this.j += $$2 * 0.0025F;
+         this.l += $$3 * 0.0025F;
+         this.k = this.k - (double)this.u;
+         this.I = this.I + this.K / 20.0F;
          this.A = this.z;
-         this.z = this.z + (float) Math.PI * this.a * 2.0F;
-         if (this.m) {
-            this.A = this.z = 0.0F;
+         this.z = this.z + this.I / 20.0F;
+         this.a(this.j, this.k, this.l);
+         if (this.m || this.t < 299 && (this.j == 0.0 || this.l == 0.0)) {
+            this.k();
          }
 
-         this.a(this.j, this.k, this.l);
-         this.k -= 0.003F;
-         this.k = Math.max(this.k, -0.14F);
-      }
-   }
-
-   public static class a implements geh<lf> {
-      private final gez a;
-
-      public a(gez $$0) {
-         this.a = $$0;
-      }
-
-      @Nullable
-      public gee a(lf $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         dua $$8 = $$0.b();
-         if (!$$8.l() && $$8.o() == dnc.a) {
-            return null;
-         } else {
-            je $$9 = je.a($$2, $$3, $$4);
-            int $$10 = fib.Q().av().a($$8, $$1, $$9);
-            if ($$8.b() instanceof djr) {
-               $$10 = ((djr)$$8.b()).b($$8, $$1, $$9);
-            }
-
-            float $$11 = (float)($$10 >> 16 & 0xFF) / 255.0F;
-            float $$12 = (float)($$10 >> 8 & 0xFF) / 255.0F;
-            float $$13 = (float)($$10 & 0xFF) / 255.0F;
-            return new gdn($$1, $$2, $$3, $$4, $$11, $$12, $$13, this.a);
+         if (!this.o) {
+            this.j = this.j * (double)this.B;
+            this.k = this.k * (double)this.B;
+            this.l = this.l * (double)this.B;
          }
       }
    }

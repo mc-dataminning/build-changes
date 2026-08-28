@@ -1,44 +1,40 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
+import java.util.Set;
 
-public class euo extends eug {
+public class euo extends euu {
    public static final MapCodec<euo> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  arx.a(Codec.string(0, 32)).optionalFieldOf("title").forGetter($$0x -> $$0x.c),
-                  Codec.STRING.optionalFieldOf("author").forGetter($$0x -> $$0x.b),
-                  ayl.a(0, 3).optionalFieldOf("generation").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, euo::new)
+      $$0 -> a($$0).and(eth.b.e.fieldOf("entity").forGetter($$0x -> $$0x.b)).apply($$0, euo::new)
    );
-   private final Optional<String> b;
-   private final Optional<arx<String>> c;
-   private final Optional<Integer> d;
+   private final eth.b b;
 
-   public euo(List<ewe> $$0, Optional<arx<String>> $$1, Optional<String> $$2, Optional<Integer> $$3) {
+   public euo(List<ews> $$0, eth.b $$1) {
       super($$0);
-      this.b = $$2;
-      this.c = $$1;
-      this.d = $$3;
+      this.b = $$1;
    }
 
    @Override
-   protected cvl a(cvl $$0, est $$1) {
-      $$0.a(kr.L, cyu.a, this::a);
+   public euw<euo> b() {
+      return eux.B;
+   }
+
+   @Override
+   public Set<ewa<?>> a() {
+      return ImmutableSet.of(this.b.a());
+   }
+
+   @Override
+   public cvp a(cvp $$0, eth $$1) {
+      if ($$0.a(cvt.up) && $$1.c(this.b.a()) instanceof cnu $$2) {
+         $$0.b(kr.ab, new cys($$2.gb()));
+      }
+
       return $$0;
    }
 
-   private cyu a(cyu $$0) {
-      return new cyu(this.c.orElseGet($$0::d), this.b.orElseGet($$0::e), this.d.orElseGet($$0::f), $$0.a(), $$0.g());
-   }
-
-   @Override
-   public eui<euo> b() {
-      return euj.M;
+   public static euu.a<?> a(eth.b $$0) {
+      return a($$1 -> new euo($$1, $$0));
    }
 }

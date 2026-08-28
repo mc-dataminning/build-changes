@@ -1,59 +1,59 @@
-import java.util.List;
-import java.util.function.Predicate;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Consumer;
 
-public class cvu extends cvg {
-   public cvu(cvg.a $$0) {
-      super($$0);
-   }
+public record cvu(cum<cvv> c, boolean d) implements cyw {
+   public static final Codec<cvu> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(cum.a(lv.L, cvv.c).fieldOf("song").forGetter(cvu::a), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter(cvu::b))
+            .apply($$0, cvu::new)
+   );
+   public static final zb<wo, cvu> b = zb.a(cum.a(lv.L, cvv.d), cvu::a, yz.b, cvu::b, cvu::new);
 
    @Override
-   public brk a(cyy $$0) {
-      dds $$1 = $$0.q();
-      je $$2 = $$0.a();
-      dua $$3 = $$1.a_($$2);
-      if ($$3.a(aws.T)) {
-         cnp $$4 = $$0.o();
-         if (!$$1.B && $$4 != null) {
-            return a($$4, $$1, $$2);
-         }
+   public void a(cvk.b $$0, Consumer<xd> $$1, cxh $$2) {
+      jp.a $$3 = $$0.a();
+      if (this.d && $$3 != null) {
+         this.c.a($$3).ifPresent($$1x -> {
+            xr $$2x = ((cvv)$$1x.a()).c().f();
+            xg.a($$2x, ya.a.a(n.h));
+            $$1.accept($$2x);
+         });
       }
-
-      return brk.e;
    }
 
-   public static brk a(cnp $$0, dds $$1, je $$2) {
-      cjt $$3 = null;
-      List<bud> $$4 = a($$1, $$2, $$1x -> $$1x.C() == $$0);
+   public cvu a(boolean $$0) {
+      return new cvu(this.c, $$0);
+   }
 
-      for (bud $$5 : $$4) {
-         if ($$3 == null) {
-            $$3 = cjt.b($$1, $$2);
-            $$3.t();
-         }
-
-         $$5.b($$3, true);
-      }
-
-      if (!$$4.isEmpty()) {
-         $$1.a(dyx.b, $$2, dyx.a.a($$0));
-         return brk.b;
+   public static brp a(deg $$0, je $$1, cvp $$2, cnu $$3) {
+      cvu $$4 = $$2.a(kr.W);
+      if ($$4 == null) {
+         return brp.f;
       } else {
-         return brk.e;
+         duo $$5 = $$0.a_($$1);
+         if ($$5.a(dhl.dT) && !$$5.c(dlm.b)) {
+            if (!$$0.B) {
+               cvp $$6 = $$2.b(1, $$3);
+               if ($$0.c_($$1) instanceof dsv $$7) {
+                  $$7.b($$6);
+                  $$0.a(dzl.c, $$1, dzl.a.a($$3, $$5));
+               }
+
+               $$3.a(awo.al);
+            }
+
+            return brp.a;
+         } else {
+            return brp.f;
+         }
       }
    }
 
-   public static List<bud> a(dds $$0, je $$1, Predicate<bud> $$2) {
-      double $$3 = 7.0;
-      int $$4 = $$1.u();
-      int $$5 = $$1.v();
-      int $$6 = $$1.w();
-      exz $$7 = new exz((double)$$4 - 7.0, (double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$4 + 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0);
-      return $$0.a(btj.class, $$7, $$1x -> {
-         if ($$1x instanceof bud $$2x && $$2.test($$2x)) {
-            return true;
-         }
+   public cum<cvv> a() {
+      return this.c;
+   }
 
-         return false;
-      }).stream().map(bud.class::cast).toList();
+   public boolean b() {
+      return this.d;
    }
 }

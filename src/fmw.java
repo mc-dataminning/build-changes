@@ -1,73 +1,103 @@
-import org.joml.Matrix4f;
+import javax.annotation.Nullable;
 
-public class fmw {
-   private final fmu a;
-   private final float b;
-   private final float c;
-   private final float d;
-   private final float e;
-   private final float f;
-   private final float g;
-   private final float h;
-   private final float i;
+public class fmw implements fmu {
+   private static final alc h = alc.b("toast/tutorial");
+   public static final int a = 154;
+   public static final int e = 1;
+   public static final int f = 3;
+   public static final int g = 28;
+   private final fmw.a i;
+   private final xd j;
+   @Nullable
+   private final xd k;
+   private fmu.a l = fmu.a.a;
+   private long m;
+   private float n;
+   private float o;
+   private final boolean p;
+   private final int q;
 
-   public fmw(fmu $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
-      this.h = $$7;
-      this.i = $$8;
+   public fmw(fmw.a $$0, xd $$1, @Nullable xd $$2, boolean $$3, int $$4) {
+      this.i = $$0;
+      this.j = $$1;
+      this.k = $$2;
+      this.p = $$3;
+      this.q = $$4;
    }
 
-   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, fcy $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
-      float $$10 = $$1 + this.f;
-      float $$11 = $$1 + this.g;
-      float $$12 = $$2 + this.h;
-      float $$13 = $$2 + this.i;
-      float $$14 = $$0 ? 1.0F - 0.25F * this.h : 0.0F;
-      float $$15 = $$0 ? 1.0F - 0.25F * this.i : 0.0F;
-      $$4.a($$3, $$10 + $$14, $$12, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.d).c($$9);
-      $$4.a($$3, $$10 + $$15, $$13, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.e).c($$9);
-      $$4.a($$3, $$11 + $$15, $$13, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.e).c($$9);
-      $$4.a($$3, $$11 + $$14, $$12, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.d).c($$9);
+   public fmw(fmw.a $$0, xd $$1, @Nullable xd $$2, boolean $$3) {
+      this($$0, $$1, $$2, $$3, 0);
    }
 
-   public void a(fmw.a $$0, Matrix4f $$1, fcy $$2, int $$3) {
-      $$2.a($$1, $$0.a, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.d).c($$3);
-      $$2.a($$1, $$0.c, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.e).c($$3);
-      $$2.a($$1, $$0.c, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.e).c($$3);
-      $$2.a($$1, $$0.a, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.d).c($$3);
+   @Override
+   public fmu.a a() {
+      return this.l;
    }
 
-   public ghe a(fjl.a $$0) {
-      return this.a.a($$0);
+   @Override
+   public void a(fmv $$0, long $$1) {
+      if (this.q > 0) {
+         this.o = Math.min((float)$$1 / (float)this.q, 1.0F);
+         this.n = this.o;
+         this.m = $$1;
+         if ($$1 > (long)this.q) {
+            this.d();
+         }
+      } else if (this.p) {
+         this.n = azd.b(this.n, this.o, (float)($$1 - this.m) / 100.0F);
+         this.m = $$1;
+      }
    }
 
-   public static class a {
-      protected final float a;
-      protected final float b;
-      protected final float c;
-      protected final float d;
-      protected final float e;
-      protected final float f;
-      protected final float g;
-      protected final float h;
-      protected final float i;
+   @Override
+   public void a(fjx $$0, fjv $$1, long $$2) {
+      $$0.a(ghq::B, h, 0, 0, this.b(), this.c());
+      this.i.a($$0, 6, 6);
+      if (this.k == null) {
+         $$0.a($$1, this.j, 30, 12, -11534256, false);
+      } else {
+         $$0.a($$1, this.j, 30, 7, -11534256, false);
+         $$0.a($$1, this.k, 30, 18, -16777216, false);
+      }
 
-      public a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$4;
-         this.f = $$5;
-         this.g = $$6;
-         this.h = $$7;
-         this.i = $$8;
+      if (this.p) {
+         $$0.a(3, 28, 157, 29, -1);
+         int $$3;
+         if (this.o >= this.n) {
+            $$3 = -16755456;
+         } else {
+            $$3 = -11206656;
+         }
+
+         $$0.a(3, 28, (int)(3.0F + 154.0F * this.n), 29, $$3);
+      }
+   }
+
+   public void d() {
+      this.l = fmu.a.b;
+   }
+
+   public void a(float $$0) {
+      this.o = $$0;
+   }
+
+   public static enum a {
+      a(alc.b("toast/movement_keys")),
+      b(alc.b("toast/mouse")),
+      c(alc.b("toast/tree")),
+      d(alc.b("toast/recipe_book")),
+      e(alc.b("toast/wooden_planks")),
+      f(alc.b("toast/social_interactions")),
+      g(alc.b("toast/right_click"));
+
+      private final alc h;
+
+      private a(final alc $$0) {
+         this.h = $$0;
+      }
+
+      public void a(fjx $$0, int $$1, int $$2) {
+         $$0.a(ghq::B, this.h, $$1, $$2, 20, 20);
       }
    }
 }

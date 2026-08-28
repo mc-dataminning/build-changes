@@ -1,23 +1,28 @@
-public class hat {
-   private final String a;
-   private final String b;
-   private long c;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public hat(String $$0, String $$1) {
+public class hat {
+   private final List<has> a;
+   private final boolean b;
+   @Nullable
+   private final String c;
+
+   public hat(List<has> $$0, boolean $$1, @Nullable String $$2) {
       this.a = $$0;
       this.b = $$1;
-      this.c = ad.c();
+      this.c = $$2;
    }
 
-   public String a() {
+   public List<has> a() {
       return this.a;
    }
 
-   public String b() {
+   public boolean b() {
       return this.b;
    }
 
-   public void c() {
-      this.c = ad.c();
+   @Nullable
+   public String c() {
+      return this.c;
    }
 }

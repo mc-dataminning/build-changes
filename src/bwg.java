@@ -1,28 +1,48 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class bwg {
-   public static <E extends buf> bvy<E> a(int $$0, BiPredicate<E, btj> $$1) {
-      return bzk.a((Function<bzk.b<E>, ? extends App<bzk.c<E>, bzn<E>>>)($$2 -> $$2.group($$2.a(cdi.s)).apply($$2, $$3 -> ($$4, $$5, $$6) -> {
-               btj $$7 = $$5.dg();
-               btj $$8 = $$2.<btj>a($$3).orElse(null);
-               if ($$7 == null && $$8 == null) {
-                  return false;
-               } else {
-                  btj $$9 = $$7 == null ? $$8 : $$7;
-                  if (a($$5, $$9, $$0) && !$$1.test((E)$$5, $$9)) {
-                     return false;
-                  } else {
-                     $$5.af();
-                     $$3.b();
-                     return true;
-                  }
-               }
-            })));
+public class bwg extends bwc<cnh> {
+   @Nullable
+   private cpi c;
+
+   public bwg(int $$0, int $$1) {
+      super(ImmutableMap.of(), $$0, $$1);
    }
 
-   private static boolean a(buf $$0, btj $$1, int $$2) {
-      return $$1.bI() && $$1.a($$0, (double)$$2) && $$1.dS() == $$0.dS();
+   protected boolean a(arh $$0, cnh $$1) {
+      je $$2 = $$1.ds();
+      this.c = $$0.d($$2);
+      return this.c != null && this.c.e() && bxl.a($$0, $$1, $$2);
+   }
+
+   protected boolean a(arh $$0, cnh $$1, long $$2) {
+      return this.c != null && !this.c.d();
+   }
+
+   protected void b(arh $$0, cnh $$1, long $$2) {
+      this.c = null;
+      $$1.dX().a($$0.ab(), $$0.aa());
+   }
+
+   protected void c(arh $$0, cnh $$1, long $$2) {
+      azl $$3 = $$1.dV();
+      if ($$3.a(100) == 0) {
+         $$1.gu();
+      }
+
+      if ($$3.a(200) == 0 && bxl.a($$0, $$1, $$1.ds())) {
+         cuj $$4 = ad.a(cuj.values(), $$3);
+         int $$5 = $$3.a(3);
+         cvp $$6 = this.a($$4, $$5);
+         coo.a(new coi($$1.dS(), $$1, $$1.dx(), $$1.dB(), $$1.dD(), $$6), $$0, $$6);
+      }
+   }
+
+   private cvp a(cuj $$0, int $$1) {
+      cvp $$2 = new cvp(cvt.uw);
+      $$2.b(kr.aa, new cyj((byte)$$1, List.of(new cyi(cyi.a.e, IntList.of($$0.f()), IntList.of(), false, false))));
+      return $$2;
    }
 }

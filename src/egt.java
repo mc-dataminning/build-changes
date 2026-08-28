@@ -1,28 +1,43 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class egt<P extends egs> {
-   public static final egt<egn> a = a("blob_foliage_placer", egn.a);
-   public static final egt<egy> b = a("spruce_foliage_placer", egy.a);
-   public static final egt<egw> c = a("pine_foliage_placer", egw.a);
-   public static final egt<egm> d = a("acacia_foliage_placer", egm.a);
-   public static final egt<ego> e = a("bush_foliage_placer", ego.c);
-   public static final egt<egr> f = a("fancy_foliage_placer", egr.c);
-   public static final egt<egu> g = a("jungle_foliage_placer", egu.a);
-   public static final egt<egv> h = a("mega_pine_foliage_placer", egv.a);
-   public static final egt<egq> i = a("dark_oak_foliage_placer", egq.a);
-   public static final egt<egx> j = a("random_spread_foliage_placer", egx.a);
-   public static final egt<egp> k = a("cherry_foliage_placer", egp.a);
-   private final MapCodec<P> l;
+public class egt implements efu {
+   public static final Codec<egt> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               axj.b(lv.f).fieldOf("replaceable").forGetter($$0x -> $$0x.b),
+               ehv.a.fieldOf("ground_state").forGetter($$0x -> $$0x.c),
+               ekg.b.fieldOf("vegetation_feature").forGetter($$0x -> $$0x.d),
+               ejw.c.fieldOf("surface").forGetter($$0x -> $$0x.e),
+               bqu.b(1, 128).fieldOf("depth").forGetter($$0x -> $$0x.f),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_bottom_block_chance").forGetter($$0x -> $$0x.g),
+               Codec.intRange(1, 256).fieldOf("vertical_range").forGetter($$0x -> $$0x.h),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("vegetation_chance").forGetter($$0x -> $$0x.i),
+               bqu.c.fieldOf("xz_radius").forGetter($$0x -> $$0x.j),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("extra_edge_column_chance").forGetter($$0x -> $$0x.k)
+            )
+            .apply($$0, egt::new)
+   );
+   public final axj<dhj> b;
+   public final ehv c;
+   public final jn<ekg> d;
+   public final ejw e;
+   public final bqu f;
+   public final float g;
+   public final int h;
+   public final float i;
+   public final bqu j;
+   public final float k;
 
-   private static <P extends egs> egt<P> a(String $$0, MapCodec<P> $$1) {
-      return ka.a(lu.U, $$0, new egt<>($$1));
-   }
-
-   private egt(MapCodec<P> $$0) {
-      this.l = $$0;
-   }
-
-   public MapCodec<P> a() {
-      return this.l;
+   public egt(axj<dhj> $$0, ehv $$1, jn<ekg> $$2, ejw $$3, bqu $$4, float $$5, int $$6, float $$7, bqu $$8, float $$9) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.i = $$7;
+      this.j = $$8;
+      this.k = $$9;
    }
 }

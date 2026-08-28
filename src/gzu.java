@@ -1,44 +1,79 @@
-public class gzu extends gzn {
-   public static final int n = 20;
-   private final gfs o;
-   private int p;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.Collections;
+import java.util.List;
+import javax.annotation.Nullable;
 
-   public gzu(gfs $$0) {
-      super(awd.hX, awe.h, hae.t());
-      this.o = $$0;
-      this.i = true;
-      this.j = 0;
-      this.d = 0.1F;
+public class gzu implements gzd {
+   private final int a;
+   private final List<bqb.b<gzd>> b;
+   private final gzd c;
+
+   public gzu(List<bqb.b<gzd>> $$0) {
+      this.b = $$0;
+      this.a = bqc.a($$0);
+      this.c = $$0.get(0).b();
    }
 
    @Override
-   public void q() {
-      this.p++;
-      if (!this.o.dN() && (this.p <= 20 || this.o.fE())) {
-         this.f = (double)((float)this.o.dx());
-         this.g = (double)((float)this.o.dz());
-         this.h = (double)((float)this.o.dD());
-         float $$0 = (float)this.o.dv().h();
-         if ((double)$$0 >= 1.0E-7) {
-            this.d = azc.a($$0 / 4.0F, 0.0F, 1.0F);
-         } else {
-            this.d = 0.0F;
+   public List<gim> a(@Nullable duo $$0, @Nullable jj $$1, azl $$2) {
+      return bqc.a(this.b, Math.abs((int)$$2.g()) % this.a).map($$3 -> $$3.b().a($$0, $$1, $$2)).orElse(Collections.emptyList());
+   }
+
+   @Override
+   public boolean a() {
+      return this.c.a();
+   }
+
+   @Override
+   public boolean b() {
+      return this.c.b();
+   }
+
+   @Override
+   public boolean c() {
+      return this.c.c();
+   }
+
+   @Override
+   public boolean d() {
+      return this.c.d();
+   }
+
+   @Override
+   public gxb e() {
+      return this.c.e();
+   }
+
+   @Override
+   public giy f() {
+      return this.c.f();
+   }
+
+   @Override
+   public giw g() {
+      return this.c.g();
+   }
+
+   public static class a {
+      private final Builder<bqb.b<gzd>> a = ImmutableList.builder();
+
+      public gzu.a a(@Nullable gzd $$0, int $$1) {
+         if ($$0 != null) {
+            this.a.add(bqb.a($$0, $$1));
          }
 
-         if (this.p < 20) {
-            this.d = 0.0F;
-         } else if (this.p < 40) {
-            this.d = this.d * ((float)(this.p - 20) / 20.0F);
-         }
+         return this;
+      }
 
-         float $$1 = 0.8F;
-         if (this.d > 0.8F) {
-            this.e = 1.0F + (this.d - 0.8F);
+      @Nullable
+      public gzd a() {
+         List<bqb.b<gzd>> $$0 = this.a.build();
+         if ($$0.isEmpty()) {
+            return null;
          } else {
-            this.e = 1.0F;
+            return (gzd)($$0.size() == 1 ? $$0.getFirst().b() : new gzu($$0));
          }
-      } else {
-         this.n();
       }
    }
 }

@@ -1,86 +1,47 @@
 import javax.annotation.Nullable;
 
-public class clm extends ckd {
-   public clm(btq<? extends clm> $$0, dds $$1) {
+public class clm extends cki {
+   public clm(btv<? extends clm> $$0, deg $$1) {
       super($$0, $$1);
-      this.a(eqs.i, 8.0F);
+   }
+
+   public static boolean a(btv<clm> $$0, dew $$1, btu $$2, je $$3, azl $$4) {
+      je $$5 = $$3;
+
+      do {
+         $$5 = $$5.d();
+      } while ($$1.a_($$5).a(dhl.qP));
+
+      return b($$0, $$1, $$2, $$3, $$4) && (btu.a($$2) || $$1.h($$5.e()));
    }
 
    @Override
-   protected void D() {
-      this.bU.a(3, new ccv<>(this, cme.class, true));
-      super.D();
+   protected awd w() {
+      return awe.zs;
    }
 
    @Override
-   protected awc w() {
-      return awd.CJ;
+   protected awd d(bsg $$0) {
+      return awe.zu;
    }
 
    @Override
-   protected awc d(bsb $$0) {
-      return awd.CL;
+   protected awd n_() {
+      return awe.zt;
    }
 
    @Override
-   protected awc n_() {
-      return awd.CK;
+   awd t() {
+      return awe.zv;
    }
 
    @Override
-   awc t() {
-      return awd.CM;
-   }
-
-   @Override
-   protected void a(arg $$0, bsb $$1, boolean $$2) {
-      super.a($$0, $$1, $$2);
-      if ($$1.d() instanceof ckh $$4 && $$4.gq()) {
-         $$4.gr();
-         this.a((ddr)cvo.uo);
+   protected cob a(cvp $$0, float $$1, @Nullable cvp $$2) {
+      cob $$3 = super.a($$0, $$1, $$2);
+      if ($$3 instanceof cod) {
+         ((cod)$$3).a(new bsv(bsx.b, 600));
       }
-   }
 
-   @Override
-   protected void a(azk $$0, bri $$1) {
-      this.a(btr.a, new cvl(cvo.oS));
-   }
-
-   @Override
-   protected void a(dei $$0, azk $$1, bri $$2) {
-   }
-
-   @Nullable
-   @Override
-   public bux a(dei $$0, bri $$1, btp $$2, @Nullable bux $$3) {
-      bux $$4 = super.a($$0, $$1, $$2, $$3);
-      this.g(bvm.c).a(4.0);
-      this.y();
-      return $$4;
-   }
-
-   @Override
-   public boolean E(btj $$0) {
-      if (!super.E($$0)) {
-         return false;
-      } else {
-         if ($$0 instanceof buf) {
-            ((buf)$$0).b(new bsq(bss.t, 200), this);
-         }
-
-         return true;
-      }
-   }
-
-   @Override
-   protected cnw a(cvl $$0, float $$1, @Nullable cvl $$2) {
-      cnw $$3 = super.a($$0, $$1, $$2);
-      $$3.d(100.0F);
       return $$3;
-   }
-
-   @Override
-   public boolean c(bsq $$0) {
-      return $$0.a(bss.t) ? false : super.c($$0);
    }
 }

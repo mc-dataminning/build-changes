@@ -1,18 +1,75 @@
 import com.mojang.serialization.Codec;
 
-public class efb implements efg {
-   public static final Codec<efb> a = bqp.b(0, 256).fieldOf("count").xmap(efb::new, efb::a).codec();
-   private final bqp b;
-
-   public efb(int $$0) {
-      this.b = bqm.a($$0);
+public class efb extends edq<egp> {
+   public efb(Codec<egp> $$0) {
+      super($$0);
    }
 
-   public efb(bqp $$0) {
-      this.b = $$0;
-   }
+   @Override
+   public boolean a(eds<egp> $$0) {
+      egp $$1 = $$0.f();
+      dfd $$2 = $$0.b();
+      je $$3 = $$0.e();
+      if (!$$2.a_($$3.d()).a($$1.f)) {
+         return false;
+      } else if ($$1.c && !$$2.a_($$3.e()).a($$1.f)) {
+         return false;
+      } else {
+         duo $$4 = $$2.a_($$3);
+         if (!$$4.l() && !$$4.a($$1.f)) {
+            return false;
+         } else {
+            int $$5 = 0;
+            int $$6 = 0;
+            if ($$2.a_($$3.h()).a($$1.f)) {
+               $$6++;
+            }
 
-   public bqp a() {
-      return this.b;
+            if ($$2.a_($$3.i()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.f()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.g()).a($$1.f)) {
+               $$6++;
+            }
+
+            if ($$2.a_($$3.e()).a($$1.f)) {
+               $$6++;
+            }
+
+            int $$7 = 0;
+            if ($$2.u($$3.h())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.i())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.f())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.g())) {
+               $$7++;
+            }
+
+            if ($$2.u($$3.e())) {
+               $$7++;
+            }
+
+            if ($$6 == $$1.d && $$7 == $$1.e) {
+               $$2.a($$3, $$1.b.g(), 2);
+               $$2.a($$3, $$1.b.a(), 0);
+               $$5++;
+            }
+
+            return $$5 > 0;
+         }
+      }
    }
 }

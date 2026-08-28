@@ -1,8 +1,10 @@
-public class gvk extends gvj implements gvc {
-   public cnd c = new cnd(cnh.c, cnf.b, 1);
+public class gvk extends guj implements gvb {
+   public boolean a;
+   public boolean b;
+   public boolean c;
 
    @Override
-   public cnd a() {
-      return this.c;
+   public boolean c() {
+      return this.a;
    }
 }

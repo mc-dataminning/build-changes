@@ -1,5 +1,5 @@
 public interface ajm {
-   alb a();
+   alc a();
 
    void a(wa var1);
 }

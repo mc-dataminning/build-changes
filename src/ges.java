@@ -1,17 +1,80 @@
-public class ges extends gcw {
-   protected ges(gax $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gez $$8) {
-      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
-   }
+import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-   public static class a implements geh<lr> {
-      private final gez a;
-
-      public a(gez $$0) {
-         this.a = $$0;
+public interface ges {
+   ges a = new ges() {
+      @Override
+      public fcz a(fdg $$0, gxc $$1) {
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShader(ggq.c);
+         RenderSystem.setShaderTexture(0, gxa.d);
+         return $$0.a(fdj.c.h, fdc.d);
       }
 
-      public gee a(lr $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new ges($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
+      @Override
+      public String toString() {
+         return "TERRAIN_SHEET";
       }
-   }
+   };
+   ges b = new ges() {
+      @Override
+      public fcz a(fdg $$0, gxc $$1) {
+         RenderSystem.disableBlend();
+         RenderSystem.depthMask(true);
+         RenderSystem.setShader(ggq.c);
+         RenderSystem.setShaderTexture(0, gxa.e);
+         return $$0.a(fdj.c.h, fdc.d);
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_OPAQUE";
+      }
+   };
+   ges c = new ges() {
+      @Override
+      public fcz a(fdg $$0, gxc $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.setShader(ggq.c);
+         RenderSystem.setShaderTexture(0, gxa.e);
+         RenderSystem.enableBlend();
+         RenderSystem.defaultBlendFunc();
+         return $$0.a(fdj.c.h, fdc.d);
+      }
+
+      @Override
+      public String toString() {
+         return "PARTICLE_SHEET_TRANSLUCENT";
+      }
+   };
+   ges d = new ges() {
+      @Override
+      public fcz a(fdg $$0, gxc $$1) {
+         RenderSystem.depthMask(true);
+         RenderSystem.disableBlend();
+         return $$0.a(fdj.c.h, fdc.d);
+      }
+
+      @Override
+      public String toString() {
+         return "CUSTOM";
+      }
+   };
+   ges e = new ges() {
+      @Nullable
+      @Override
+      public fcz a(fdg $$0, gxc $$1) {
+         return null;
+      }
+
+      @Override
+      public String toString() {
+         return "NO_RENDER";
+      }
+   };
+
+   @Nullable
+   fcz a(fdg var1, gxc var2);
 }

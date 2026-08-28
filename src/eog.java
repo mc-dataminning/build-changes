@@ -1,22 +1,20 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class eog extends eon {
-   public final axi<dgv> a;
-   public static final MapCodec<eog> b = axi.b(lv.f).xmap(eog::new, $$0 -> $$0.a).fieldOf("value");
+public class eog extends eoy {
+   public static final MapCodec<eog> a = lu.e.q().fieldOf("block").xmap(eog::new, $$0 -> $$0.b);
+   private final dhj b;
 
-   public eog(axi<dgv> $$0) {
-      this.a = $$0;
-   }
-
-   @Nullable
-   @Override
-   public eoq.c a(ddv $$0, je $$1, je $$2, eoq.c $$3, eoq.c $$4, eom $$5) {
-      return edc.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
+   public eog(dhj $$0) {
+      this.b = $$0;
    }
 
    @Override
-   protected eop<?> a() {
-      return eop.n;
+   public boolean a(duo $$0, azl $$1) {
+      return $$0.a(this.b);
+   }
+
+   @Override
+   protected eoz<?> a() {
+      return eoz.b;
    }
 }

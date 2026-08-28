@@ -1,51 +1,52 @@
-import com.mojang.serialization.MapCodec;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-public class doa extends dkl {
-   public static final MapCodec<doa> a = b(doa::new);
-
-   @Override
-   public MapCodec<doa> a() {
-      return a;
-   }
-
-   public doa(dtz.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public void a(dds $$0, dua $$1, je $$2, btj $$3, float $$4) {
-      if ($$3.cc()) {
-         super.a($$0, $$1, $$2, $$3, $$4);
-      } else {
-         $$3.a($$4, 0.0F, $$0.ak().l());
-      }
-   }
-
-   @Override
-   public void a(dcx $$0, btj $$1) {
-      if ($$1.cc()) {
-         super.a($$0, $$1);
-      } else {
-         this.a($$1);
-      }
-   }
-
-   private void a(btj $$0) {
-      eye $$1 = $$0.dv();
-      if ($$1.e < 0.0) {
-         double $$2 = $$0 instanceof buf ? 1.0 : 0.8;
-         $$0.n($$1.d, -$$1.e * $$2, $$1.f);
-      }
-   }
-
-   @Override
-   public void a(dds $$0, je $$1, dua $$2, btj $$3) {
-      double $$4 = Math.abs($$3.dv().e);
-      if ($$4 < 0.1 && !$$3.cb()) {
-         double $$5 = 0.4 + $$4 * 0.2;
-         $$3.h($$3.dv().d($$5, 1.0, $$5));
+public interface doa {
+   doa w_ = new doa() {
+      @Override
+      public boolean a(deh $$0, je $$1, duo $$2, @Nullable Collection<jj> $$3, boolean $$4) {
+         if ($$3 == null) {
+            return ((dog)dhl.qT).l().a($$0.a_($$1), $$0, $$1, $$4) > 0L;
+         } else if (!$$3.isEmpty()) {
+            return !$$2.l() && !$$2.y().b(eqq.c) ? false : dog.a($$0, $$1, $$2, $$3);
+         } else {
+            return doa.super.a($$0, $$1, $$2, $$3, $$4);
+         }
       }
 
-      super.a($$0, $$1, $$2, $$3);
+      @Override
+      public int a(dof.a $$0, deh $$1, je $$2, azl $$3, dof $$4, boolean $$5) {
+         return $$0.c() > 0 ? $$0.b() : 0;
+      }
+
+      @Override
+      public int j_(int $$0) {
+         return Math.max($$0 - 1, 0);
+      }
+   };
+
+   default byte b() {
+      return 1;
    }
+
+   default void a(deh $$0, duo $$1, je $$2, azl $$3) {
+   }
+
+   default boolean a(deh $$0, je $$1, azl $$2) {
+      return false;
+   }
+
+   default boolean a(deh $$0, je $$1, duo $$2, @Nullable Collection<jj> $$3, boolean $$4) {
+      return ((dmj)dhl.qT).c().a($$2, $$0, $$1, $$4) > 0L;
+   }
+
+   default boolean d() {
+      return true;
+   }
+
+   default int j_(int $$0) {
+      return 1;
+   }
+
+   int a(dof.a var1, deh var2, je var3, azl var4, dof var5, boolean var6);
 }

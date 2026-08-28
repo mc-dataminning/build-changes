@@ -1,127 +1,159 @@
-import javax.annotation.Nullable;
+public class drz extends dsz implements dsx {
+   private static final int d = 1;
+   private jw<cvp> e = jw.a(27, cvp.k);
+   private final dsf f = new dsf() {
+      @Override
+      protected void a(deg $$0, je $$1, duo $$2) {
+         drz.a($$0, $$1, $$2, awe.eR);
+      }
 
-public class drz extends dre implements brn {
-   public int a;
-   public float b;
-   public float c;
-   public float d;
-   public float e;
-   public float f;
-   public float g;
-   public float h;
-   public float i;
-   public float j;
-   private static final azk k = azk.a();
-   @Nullable
-   private xd l;
+      @Override
+      protected void b(deg $$0, je $$1, duo $$2) {
+         drz.a($$0, $$1, $$2, awe.eP);
+      }
 
-   public drz(je $$0, dua $$1) {
-      super(drg.m, $$0, $$1);
+      @Override
+      protected void a(deg $$0, je $$1, duo $$2, int $$3, int $$4) {
+         drz.this.a($$0, $$1, $$2, $$3, $$4);
+      }
+
+      @Override
+      protected boolean a(cnu $$0) {
+         if (!($$0.bZ instanceof crf)) {
+            return false;
+         } else {
+            bri $$1 = ((crf)$$0.bZ).l();
+            return $$1 == drz.this || $$1 instanceof brh && ((brh)$$1).a(drz.this);
+         }
+      }
+   };
+   private final dsa g = new dsa();
+
+   protected drz(dru<?> $$0, je $$1, duo $$2) {
+      super($$0, $$1, $$2);
+   }
+
+   public drz(je $$0, duo $$1) {
+      this(dru.b, $$0, $$1);
    }
 
    @Override
-   protected void b(uf $$0, jp.a $$1) {
-      super.b($$0, $$1);
-      if (this.ak()) {
-         $$0.a("CustomName", xd.a.a(this.l, $$1));
-      }
+   public int b() {
+      return 27;
+   }
+
+   @Override
+   protected xd j() {
+      return xd.c("container.chest");
    }
 
    @Override
    protected void a(uf $$0, jp.a $$1) {
       super.a($$0, $$1);
-      if ($$0.b("CustomName", 8)) {
-         this.l = a($$0.l("CustomName"), $$1);
+      this.e = jw.a(this.b(), cvp.k);
+      if (!this.b_($$0)) {
+         brj.b($$0, this.e, $$1);
       }
    }
 
-   public static void a(dds $$0, je $$1, dua $$2, drz $$3) {
-      $$3.g = $$3.f;
-      $$3.i = $$3.h;
-      cnp $$4 = $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 3.0, false);
-      if ($$4 != null) {
-         double $$5 = $$4.dx() - ((double)$$1.u() + 0.5);
-         double $$6 = $$4.dD() - ((double)$$1.w() + 0.5);
-         $$3.j = (float)azc.d($$6, $$5);
-         $$3.f += 0.1F;
-         if ($$3.f < 0.5F || k.a(40) == 0) {
-            float $$7 = $$3.d;
+   @Override
+   protected void b(uf $$0, jp.a $$1) {
+      super.b($$0, $$1);
+      if (!this.c_($$0)) {
+         brj.a($$0, this.e, $$1);
+      }
+   }
 
-            do {
-               $$3.d = $$3.d + (float)(k.a(4) - k.a(4));
-            } while ($$7 == $$3.d);
+   public static void a(deg $$0, je $$1, duo $$2, drz $$3) {
+      $$3.g.a();
+   }
+
+   static void a(deg $$0, je $$1, duo $$2, awd $$3) {
+      dvg $$4 = $$2.c(dim.d);
+      if ($$4 != dvg.b) {
+         double $$5 = (double)$$1.u() + 0.5;
+         double $$6 = (double)$$1.v() + 0.5;
+         double $$7 = (double)$$1.w() + 0.5;
+         if ($$4 == dvg.c) {
+            jj $$8 = dim.i($$2);
+            $$5 += (double)$$8.j() * 0.5;
+            $$7 += (double)$$8.l() * 0.5;
          }
+
+         $$0.a(null, $$5, $$6, $$7, $$3, awf.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
+      }
+   }
+
+   @Override
+   public boolean a_(int $$0, int $$1) {
+      if ($$0 == 1) {
+         this.g.a($$1 > 0);
+         return true;
       } else {
-         $$3.j += 0.02F;
-         $$3.f -= 0.1F;
+         return super.a_($$0, $$1);
       }
-
-      while ($$3.h >= (float) Math.PI) {
-         $$3.h -= (float) (Math.PI * 2);
-      }
-
-      while ($$3.h < (float) -Math.PI) {
-         $$3.h += (float) (Math.PI * 2);
-      }
-
-      while ($$3.j >= (float) Math.PI) {
-         $$3.j -= (float) (Math.PI * 2);
-      }
-
-      while ($$3.j < (float) -Math.PI) {
-         $$3.j += (float) (Math.PI * 2);
-      }
-
-      float $$8 = $$3.j - $$3.h;
-
-      while ($$8 >= (float) Math.PI) {
-         $$8 -= (float) (Math.PI * 2);
-      }
-
-      while ($$8 < (float) -Math.PI) {
-         $$8 += (float) (Math.PI * 2);
-      }
-
-      $$3.h += $$8 * 0.4F;
-      $$3.f = azc.a($$3.f, 0.0F, 1.0F);
-      $$3.a++;
-      $$3.c = $$3.b;
-      float $$9 = ($$3.d - $$3.b) * 0.4F;
-      float $$10 = 0.2F;
-      $$9 = azc.a($$9, -0.2F, 0.2F);
-      $$3.e = $$3.e + ($$9 - $$3.e) * 0.9F;
-      $$3.b = $$3.b + $$3.e;
    }
 
    @Override
-   public xd aj() {
-      return (xd)(this.l != null ? this.l : xd.c("container.enchant"));
-   }
-
-   public void a(@Nullable xd $$0) {
-      this.l = $$0;
-   }
-
-   @Nullable
-   @Override
-   public xd al() {
-      return this.l;
+   public void d_(cnu $$0) {
+      if (!this.q && !$$0.P_()) {
+         this.f.a($$0, this.i(), this.aB_(), this.m());
+      }
    }
 
    @Override
-   protected void a(dre.b $$0) {
-      super.a($$0);
-      this.l = $$0.a(kr.g);
+   public void c(cnu $$0) {
+      if (!this.q && !$$0.P_()) {
+         this.f.b($$0, this.i(), this.aB_(), this.m());
+      }
    }
 
    @Override
-   protected void a(kn.a $$0) {
-      super.a($$0);
-      $$0.a(kr.g, this.l);
+   protected jw<cvp> f() {
+      return this.e;
    }
 
    @Override
-   public void a(uf $$0) {
-      $$0.r("CustomName");
+   protected void a(jw<cvp> $$0) {
+      this.e = $$0;
+   }
+
+   @Override
+   public float a(float $$0) {
+      return this.g.a($$0);
+   }
+
+   public static int a(ddl $$0, je $$1) {
+      duo $$2 = $$0.a_($$1);
+      if ($$2.x()) {
+         drs $$3 = $$0.c_($$1);
+         if ($$3 instanceof drz) {
+            return ((drz)$$3).f.a();
+         }
+      }
+
+      return 0;
+   }
+
+   public static void a(drz $$0, drz $$1) {
+      jw<cvp> $$2 = $$0.f();
+      $$0.a($$1.f());
+      $$1.a($$2);
+   }
+
+   @Override
+   protected cqw a(int $$0, cnt $$1) {
+      return crf.a($$0, $$1, this);
+   }
+
+   public void k() {
+      if (!this.q) {
+         this.f.c(this.i(), this.aB_(), this.m());
+      }
+   }
+
+   protected void a(deg $$0, je $$1, duo $$2, int $$3, int $$4) {
+      dhj $$5 = $$2.b();
+      $$0.a($$1, $$5, 1, $$4);
    }
 }

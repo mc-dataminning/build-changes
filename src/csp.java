@@ -1,89 +1,87 @@
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import it.unimi.dsi.fastutil.ints.IntLists;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+public class csp extends cst {
+   private final cro a;
+   private final cnu b;
+   private int g;
 
-public class csp {
-   private static final List<cso> b = ad.a(new ArrayList<>(), $$0 -> {
-      a($$0, "contents", 0);
-      a($$0, "container.", 0, 54);
-      a($$0, "hotbar.", 0, 9);
-      a($$0, "inventory.", 9, 27);
-      a($$0, "enderchest.", 200, 27);
-      a($$0, "villager.", 300, 8);
-      a($$0, "horse.", 500, 15);
-      int $$1 = btr.a.a(98);
-      int $$2 = btr.b.a(98);
-      a($$0, "weapon", $$1);
-      a($$0, "weapon.mainhand", $$1);
-      a($$0, "weapon.offhand", $$2);
-      a($$0, "weapon.*", $$1, $$2);
-      $$1 = btr.f.a(100);
-      $$2 = btr.e.a(100);
-      int $$5 = btr.d.a(100);
-      int $$6 = btr.c.a(100);
-      int $$7 = btr.g.a(105);
-      a($$0, "armor.head", $$1);
-      a($$0, "armor.chest", $$2);
-      a($$0, "armor.legs", $$5);
-      a($$0, "armor.feet", $$6);
-      a($$0, "armor.body", $$7);
-      a($$0, "armor.*", $$1, $$2, $$5, $$6, $$7);
-      a($$0, "horse.saddle", 400);
-      a($$0, "horse.chest", 499);
-      a($$0, "player.cursor", 499);
-      a($$0, "player.crafting.", 500, 4);
-   });
-   public static final Codec<cso> a = azy.b(() -> b.toArray(new cso[0]));
-   private static final Function<String, cso> c = azy.a(b.toArray(new cso[0]), $$0 -> $$0);
-
-   private static cso a(String $$0, int $$1) {
-      return cso.a($$0, IntLists.singleton($$1));
+   public csp(cnu $$0, cro $$1, bri $$2, int $$3, int $$4, int $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.b = $$0;
+      this.a = $$1;
    }
 
-   private static cso a(String $$0, IntList $$1) {
-      return cso.a($$0, IntLists.unmodifiable($$1));
+   @Override
+   public boolean a(cvp $$0) {
+      return false;
    }
 
-   private static cso a(String $$0, int... $$1) {
-      return cso.a($$0, IntList.of($$1));
-   }
-
-   private static void a(List<cso> $$0, String $$1, int $$2) {
-      $$0.add(a($$1, $$2));
-   }
-
-   private static void a(List<cso> $$0, String $$1, int $$2, int $$3) {
-      IntList $$4 = new IntArrayList($$3);
-
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         int $$6 = $$2 + $$5;
-         $$0.add(a($$1 + $$5, $$6));
-         $$4.add($$6);
+   @Override
+   public cvp a(int $$0) {
+      if (this.h()) {
+         this.g = this.g + Math.min($$0, this.g().J());
       }
 
-      $$0.add(a($$1 + "*", $$4));
+      return super.a($$0);
    }
 
-   private static void a(List<cso> $$0, String $$1, int... $$2) {
-      $$0.add(a($$1, $$2));
+   @Override
+   protected void a(cvp $$0, int $$1) {
+      this.g += $$1;
+      this.b_($$0);
    }
 
-   @Nullable
-   public static cso a(String $$0) {
-      return c.apply($$0);
+   @Override
+   protected void b(int $$0) {
+      this.g += $$0;
    }
 
-   public static Stream<String> a() {
-      return b.stream().map(azy::c);
+   @Override
+   protected void b_(cvp $$0) {
+      if (this.g > 0) {
+         $$0.a(this.b.dS(), this.b, this.g);
+      }
+
+      if (this.c instanceof csn $$1) {
+         $$1.a(this.b, this.a.h());
+      }
+
+      this.g = 0;
    }
 
-   public static Stream<String> b() {
-      return b.stream().filter($$0 -> $$0.b() == 1).map(azy::c);
+   @Override
+   public void a(cnu $$0, cvp $$1) {
+      this.b_($$1);
+      czw.a $$2 = this.a.aD_();
+      czw $$3 = $$2.a();
+      int $$4 = $$2.b();
+      int $$5 = $$2.c();
+      jw<cvp> $$6 = $$0.dS().r().c(dan.a, $$3, $$0.dS());
+
+      for (int $$7 = 0; $$7 < $$3.g(); $$7++) {
+         for (int $$8 = 0; $$8 < $$3.f(); $$8++) {
+            int $$9 = $$8 + $$4 + ($$7 + $$5) * this.a.az_();
+            cvp $$10 = this.a.a($$9);
+            cvp $$11 = $$6.get($$8 + $$7 * $$3.f());
+            if (!$$10.f()) {
+               this.a.a($$9, 1);
+               $$10 = this.a.a($$9);
+            }
+
+            if (!$$11.f()) {
+               if ($$10.f()) {
+                  this.a.a($$9, $$11);
+               } else if (cvp.c($$10, $$11)) {
+                  $$11.g($$10.J());
+                  this.a.a($$9, $$11);
+               } else if (!this.b.gc().f($$11)) {
+                  this.b.a($$11, false);
+               }
+            }
+         }
+      }
+   }
+
+   @Override
+   public boolean f() {
+      return true;
    }
 }

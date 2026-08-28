@@ -1,75 +1,65 @@
-import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.stream.Stream;
-import java.util.stream.Stream.Builder;
+import org.slf4j.Logger;
 
-public class euq extends eug {
+public class euq extends euu {
+   private static final Logger b = LogUtils.getLogger();
    public static final MapCodec<euq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(esr.e.fieldOf("component").forGetter($$0x -> $$0x.b), eth.a.listOf().fieldOf("entries").forGetter($$0x -> $$0x.c)))
-            .apply($$0, euq::new)
+      $$0 -> a($$0).and(alb.a(lv.be).fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, euq::new)
    );
-   private final esq<?> b;
-   private final List<etj> c;
+   private final alb<euv> c;
 
-   euq(List<ewe> $$0, esq<?> $$1, List<etj> $$2) {
+   private euq(List<ews> $$0, alb<euv> $$1) {
       super($$0);
-      this.b = $$1;
-      this.c = List.copyOf($$2);
+      this.c = $$1;
    }
 
    @Override
-   public eui<euq> b() {
-      return euj.t;
+   public euw<euq> b() {
+      return eux.H;
    }
 
    @Override
-   public cvl a(cvl $$0, est $$1) {
-      if ($$0.f()) {
+   public void a(etn $$0) {
+      if (!$$0.b()) {
+         $$0.b("Uses reference to " + this.c.a() + ", but references are not allowed");
+      } else if ($$0.a(this.c)) {
+         $$0.b("Function " + this.c.a() + " is recursively called");
+      } else {
+         super.a($$0);
+         $$0.a()
+            .a(lv.be, this.c)
+            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.c.a() + "}", this.c)), () -> $$0.b("Unknown function table called " + this.c.a()));
+      }
+   }
+
+   @Override
+   protected cvp a(cvp $$0, eth $$1) {
+      euv $$2 = $$1.a().a(lv.be, this.c).map(jn::a).orElse(null);
+      if ($$2 == null) {
+         b.warn("Unknown function: {}", this.c.a());
          return $$0;
       } else {
-         Builder<cvl> $$2 = Stream.builder();
-         this.c.forEach($$2x -> $$2x.expand($$1, $$2xx -> $$2xx.a(esy.a($$1.d(), $$2::add), $$1)));
-         this.b.a($$0, $$2.build());
-         return $$0;
+         eth.c<?> $$3 = eth.a($$2);
+         if ($$1.b($$3)) {
+            cvp var5;
+            try {
+               var5 = $$2.apply($$0, $$1);
+            } finally {
+               $$1.c($$3);
+            }
+
+            return var5;
+         } else {
+            b.warn("Detected infinite loop in loot tables");
+            return $$0;
+         }
       }
    }
 
-   @Override
-   public void a(esz $$0) {
-      super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".entry[" + $$1 + "]"));
-      }
-   }
-
-   public static euq.a a(esq<?> $$0) {
-      return new euq.a($$0);
-   }
-
-   public static class a extends eug.a<euq.a> {
-      private final com.google.common.collect.ImmutableList.Builder<etj> a = ImmutableList.builder();
-      private final esq<?> b;
-
-      public a(esq<?> $$0) {
-         this.b = $$0;
-      }
-
-      protected euq.a a() {
-         return this;
-      }
-
-      public euq.a a(etj.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public euh b() {
-         return new euq(this.g(), this.b, this.a.build());
-      }
+   public static euu.a<?> a(alb<euv> $$0) {
+      return a($$1 -> new euq($$1, $$0));
    }
 }

@@ -1,54 +1,89 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public class eec extends edc<efv> {
-   public eec(Codec<efv> $$0) {
+public class eec extends edq<egb> {
+   public eec(Codec<egb> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ede<efv> $$0) {
-      efv $$1 = $$0.f();
-      dep $$2 = $$0.b();
-      azk $$3 = $$0.d();
-      dgv $$4 = $$1.b.b();
-      je $$5 = a($$2, $$0.e().k().a(jj.a.b, $$2.G_() + 1, $$2.an() - 1), $$4);
-      if ($$5 == null) {
+   public boolean a(eds<egb> $$0) {
+      je $$1 = $$0.e();
+      azl $$2 = $$0.d();
+      dfd $$3 = $$0.b();
+
+      while ($$3.u($$1) && $$1.v() > $$3.G_() + 2) {
+         $$1 = $$1.e();
+      }
+
+      if (!$$3.a_($$1).a(dhl.dP)) {
          return false;
       } else {
-         int $$6 = $$1.a().a($$3);
-         int $$7 = $$1.a().a($$3);
-         int $$8 = $$1.a().a($$3);
-         int $$9 = Math.max($$6, Math.max($$7, $$8));
-         boolean $$10 = false;
+         $$1 = $$1.b($$2.a(4));
+         int $$4 = $$2.a(4) + 7;
+         int $$5 = $$4 / 4 + $$2.a(2);
+         if ($$5 > 1 && $$2.a(60) == 0) {
+            $$1 = $$1.b(10 + $$2.a(30));
+         }
 
-         for (je $$11 : je.a($$5, $$6, $$7, $$8)) {
-            if ($$11.k($$5) > $$9) {
-               break;
-            }
+         for (int $$6 = 0; $$6 < $$4; $$6++) {
+            float $$7 = (1.0F - (float)$$6 / (float)$$4) * (float)$$5;
+            int $$8 = azd.f($$7);
 
-            dua $$12 = $$2.a_($$11);
-            if ($$12.a($$4)) {
-               this.a($$2, $$11, $$1.c);
-               $$10 = true;
+            for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+               float $$10 = (float)azd.a($$9) - 0.25F;
+
+               for (int $$11 = -$$8; $$11 <= $$8; $$11++) {
+                  float $$12 = (float)azd.a($$11) - 0.25F;
+                  if (($$9 == 0 && $$11 == 0 || !($$10 * $$10 + $$12 * $$12 > $$7 * $$7))
+                     && ($$9 != -$$8 && $$9 != $$8 && $$11 != -$$8 && $$11 != $$8 || !($$2.i() > 0.75F))) {
+                     duo $$13 = $$3.a_($$1.b($$9, $$6, $$11));
+                     if ($$13.l() || b($$13) || $$13.a(dhl.dP) || $$13.a(dhl.dO)) {
+                        this.a($$3, $$1.b($$9, $$6, $$11), dhl.iC.o());
+                     }
+
+                     if ($$6 != 0 && $$8 > 1) {
+                        $$13 = $$3.a_($$1.b($$9, -$$6, $$11));
+                        if ($$13.l() || b($$13) || $$13.a(dhl.dP) || $$13.a(dhl.dO)) {
+                           this.a($$3, $$1.b($$9, -$$6, $$11), dhl.iC.o());
+                        }
+                     }
+                  }
+               }
             }
          }
 
-         return $$10;
-      }
-   }
-
-   @Nullable
-   private static je a(ddt $$0, je.a $$1, dgv $$2) {
-      while ($$1.v() > $$0.G_() + 1) {
-         dua $$3 = $$0.a_($$1);
-         if ($$3.a($$2)) {
-            return $$1;
+         int $$14 = $$5 - 1;
+         if ($$14 < 0) {
+            $$14 = 0;
+         } else if ($$14 > 1) {
+            $$14 = 1;
          }
 
-         $$1.c(jj.a);
-      }
+         for (int $$15 = -$$14; $$15 <= $$14; $$15++) {
+            for (int $$16 = -$$14; $$16 <= $$14; $$16++) {
+               je $$17 = $$1.b($$15, -1, $$16);
+               int $$18 = 50;
+               if (Math.abs($$15) == 1 && Math.abs($$16) == 1) {
+                  $$18 = $$2.a(5);
+               }
 
-      return null;
+               while ($$17.v() > 50) {
+                  duo $$19 = $$3.a_($$17);
+                  if (!$$19.l() && !b($$19) && !$$19.a(dhl.dP) && !$$19.a(dhl.dO) && !$$19.a(dhl.iC)) {
+                     break;
+                  }
+
+                  this.a($$3, $$17, dhl.iC.o());
+                  $$17 = $$17.e();
+                  if (--$$18 <= 0) {
+                     $$17 = $$17.c($$2.a(5) + 1);
+                     $$18 = $$2.a(5);
+                  }
+               }
+            }
+         }
+
+         return true;
+      }
    }
 }

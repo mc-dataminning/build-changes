@@ -1,105 +1,75 @@
-public class cox extends cnx {
-   private static final akg<Boolean> e = akk.a(cox.class, aki.k);
+public class cox extends cov {
+   private static final btr b = btr.c(0.0F, 0.0F);
 
-   public cox(btq<? extends cox> $$0, dds $$1) {
+   public cox(btv<? extends cox> $$0, deg $$1) {
       super($$0, $$1);
    }
 
-   public cox(dds $$0, buf $$1, eye $$2) {
-      super(btq.br, $$1, $$2, $$0);
+   public cox(deg $$0, buk $$1, cvp $$2) {
+      super(btv.C, $$1, $$0, $$2);
+   }
+
+   public cox(deg $$0, double $$1, double $$2, double $$3, cvp $$4) {
+      super(btv.C, $$1, $$2, $$3, $$0, $$4);
    }
 
    @Override
-   protected float t() {
-      return this.w() ? 0.73F : super.t();
-   }
+   public void b(byte $$0) {
+      if ($$0 == 3) {
+         double $$1 = 0.08;
 
-   @Override
-   public boolean bV() {
-      return false;
-   }
-
-   @Override
-   public float a(ddk $$0, dcx $$1, je $$2, dua $$3, eqb $$4, float $$5) {
-      return this.w() && cjm.c($$3) ? Math.min(0.8F, $$5) : $$5;
-   }
-
-   @Override
-   protected void a(eyb $$0) {
-      super.a($$0);
-      if (this.dS() instanceof arg $$1) {
-         btj var8 = $$0.a();
-         boolean $$7;
-         if (this.s() instanceof buf $$5) {
-            bsb $$6 = this.dT().a(this, $$5);
-            $$7 = var8.a($$6, 8.0F);
-            if ($$7) {
-               if (var8.bI()) {
-                  day.a($$1, var8, $$6);
-               } else {
-                  $$5.c(5.0F);
-               }
-            }
-         } else {
-            $$7 = var8.a(this.dT().q(), 5.0F);
-         }
-
-         if ($$7 && var8 instanceof buf $$9) {
-            int $$10 = 0;
-            if (this.dS().am() == brh.c) {
-               $$10 = 10;
-            } else if (this.dS().am() == brh.d) {
-               $$10 = 40;
-            }
-
-            if ($$10 > 0) {
-               $$9.b(new bsq(bss.t, 20 * $$10, 1), this.E());
-            }
+         for (int $$2 = 0; $$2 < 8; $$2++) {
+            this.dS()
+               .a(
+                  new lj(ln.S, this.m()),
+                  this.dx(),
+                  this.dz(),
+                  this.dD(),
+                  ((double)this.af.i() - 0.5) * 0.08,
+                  ((double)this.af.i() - 0.5) * 0.08,
+                  ((double)this.af.i() - 0.5) * 0.08
+               );
          }
       }
    }
 
    @Override
-   protected void a(eyc $$0) {
+   protected void a(eyp $$0) {
+      super.a($$0);
+      $$0.a().a(this.dT().b(this, this.s()), 0.0F);
+   }
+
+   @Override
+   protected void a(eyq $$0) {
       super.a($$0);
       if (!this.dS().B) {
-         this.dS().a(this, this.dx(), this.dz(), this.dD(), 1.0F, false, dds.a.c);
+         if (this.af.a(8) == 0) {
+            int $$1 = 1;
+            if (this.af.a(32) == 0) {
+               $$1 = 4;
+            }
+
+            for (int $$2 = 0; $$2 < $$1; $$2++) {
+               cgf $$3 = btv.t.a(this.dS(), btu.k);
+               if ($$3 != null) {
+                  $$3.c_(-24000);
+                  $$3.b(this.dx(), this.dz(), this.dD(), this.dI(), 0.0F);
+                  if (!$$3.a(b)) {
+                     break;
+                  }
+
+                  this.dS().b($$3);
+               }
+            }
+         }
+
+         this.dS().a(this, (byte)3);
          this.as();
       }
    }
 
    @Override
-   public boolean a(bsb $$0, float $$1) {
-      return false;
-   }
-
-   @Override
-   protected void a(akk.a $$0) {
-      $$0.a(e, false);
-   }
-
-   public boolean w() {
-      return this.am.a(e);
-   }
-
-   public void a(boolean $$0) {
-      this.am.a(e, $$0);
-   }
-
-   @Override
-   protected boolean o() {
-      return false;
-   }
-
-   @Override
-   public void b(uf $$0) {
-      super.b($$0);
-      $$0.a("dangerous", this.w());
-   }
-
-   @Override
-   public void a(uf $$0) {
-      super.a($$0);
-      this.a($$0.q("dangerous"));
+   protected cvk o() {
+      return cvt.qS;
    }
 }

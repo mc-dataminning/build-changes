@@ -1,46 +1,24 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Optional;
 
-public class enx extends eon {
-   private static final Logger c = LogUtils.getLogger();
-   public static final MapCodec<enx> a = MapCodec.unit(() -> enx.b);
-   public static final enx b = new enx();
+public class enx extends elc {
+   public static final MapCodec<enx> d = a(enx::new);
 
-   private enx() {
-   }
-
-   @Nullable
-   @Override
-   public eoq.c a(ddv $$0, je $$1, je $$2, eoq.c $$3, eoq.c $$4, eom $$5) {
-      dua $$6 = $$4.b();
-      if ($$6.a(dgx.pb)) {
-         if ($$4.c() == null) {
-            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
-            return $$4;
-         } else {
-            String $$7 = $$4.c().l("final_state");
-
-            dua $$9;
-            try {
-               gn.a $$8 = gn.a($$0.a(lv.f), $$7, true);
-               $$9 = $$8.a();
-            } catch (CommandSyntaxException var11) {
-               c.error("Failed to parse jigsaw replacement state '{}' at {}: {}", new Object[]{$$7, $$1, var11.getMessage()});
-               return null;
-            }
-
-            return $$9.a(dgx.kN) ? null : new eoq.c($$4.a(), $$9, null);
-         }
-      } else {
-         return $$4;
-      }
+   public enx(elc.c $$0) {
+      super($$0);
    }
 
    @Override
-   protected eop<?> a() {
-      return eop.h;
+   public Optional<elc.b> a(elc.a $$0) {
+      return a($$0, eak.a.a, $$1 -> a($$1, $$0));
+   }
+
+   private static void a(elu $$0, elc.a $$1) {
+      $$0.a(new enw($$1.f(), $$1.h().d(), $$1.h().e()));
+   }
+
+   @Override
+   public ell<?> e() {
+      return ell.o;
    }
 }

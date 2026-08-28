@@ -1,46 +1,20 @@
-public final class eyw extends eyn {
-   private final eyn d;
-   private final int e;
-   private final int f;
-   private final int g;
-   private final int h;
-   private final int i;
-   private final int j;
+public interface eyw {
+   eyw a = ($$0, $$1) -> false;
+   eyw b = ($$0, $$1) -> !$$0 && !$$1;
+   eyw c = ($$0, $$1) -> $$1 && !$$0;
+   eyw d = ($$0, $$1) -> !$$0;
+   eyw e = ($$0, $$1) -> $$0 && !$$1;
+   eyw f = ($$0, $$1) -> !$$1;
+   eyw g = ($$0, $$1) -> $$0 != $$1;
+   eyw h = ($$0, $$1) -> !$$0 || !$$1;
+   eyw i = ($$0, $$1) -> $$0 && $$1;
+   eyw j = ($$0, $$1) -> $$0 == $$1;
+   eyw k = ($$0, $$1) -> $$1;
+   eyw l = ($$0, $$1) -> !$$0 || $$1;
+   eyw m = ($$0, $$1) -> $$0;
+   eyw n = ($$0, $$1) -> $$0 || !$$1;
+   eyw o = ($$0, $$1) -> $$0 || $$1;
+   eyw p = ($$0, $$1) -> true;
 
-   protected eyw(eyn $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      super($$4 - $$1, $$5 - $$2, $$6 - $$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
-   }
-
-   @Override
-   public boolean b(int $$0, int $$1, int $$2) {
-      return this.d.b(this.e + $$0, this.f + $$1, this.g + $$2);
-   }
-
-   @Override
-   public void c(int $$0, int $$1, int $$2) {
-      this.d.c(this.e + $$0, this.f + $$1, this.g + $$2);
-   }
-
-   @Override
-   public int a(jj.a $$0) {
-      return this.a($$0, this.d.a($$0));
-   }
-
-   @Override
-   public int b(jj.a $$0) {
-      return this.a($$0, this.d.b($$0));
-   }
-
-   private int a(jj.a $$0, int $$1) {
-      int $$2 = $$0.a(this.e, this.f, this.g);
-      int $$3 = $$0.a(this.h, this.i, this.j);
-      return azc.a($$1, $$2, $$3) - $$2;
-   }
+   boolean apply(boolean var1, boolean var2);
 }

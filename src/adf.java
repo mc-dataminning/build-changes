@@ -1,4 +1,4 @@
-public record adf(dcy b) implements zk<abz> {
+public record adf(ddm b) implements zk<abz> {
    public static final zb<wa, adf> a = zk.a(adf::a, adf::new);
 
    private adf(wa $$0) {

@@ -1,33 +1,50 @@
-import java.util.function.IntSupplier;
-import java.util.function.LongSupplier;
+import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import java.util.stream.Stream;
 
-public class bns {
-   private final LongSupplier a;
-   private final IntSupplier b;
-   private bnw c = bnv.a;
-
-   public bns(LongSupplier $$0, IntSupplier $$1) {
-      this.a = $$0;
-      this.b = $$1;
+public interface bns {
+   static bnm<StringReader> a(String $$0) {
+      return new bns.b($$0);
    }
 
-   public boolean a() {
-      return this.c != bnv.a;
+   static bnm<StringReader> a(char $$0) {
+      return new bns.a($$0);
    }
 
-   public void b() {
-      this.c = bnv.a;
+   public static record a(char a) implements bnm<StringReader> {
+      @Override
+      public boolean a(bni<StringReader> $$0, bnk $$1, bne $$2) {
+         $$0.b().skipWhitespace();
+         int $$3 = $$0.c();
+         if ($$0.b().canRead() && $$0.b().read() == this.a) {
+            return true;
+         } else {
+            $$0.a().a($$3, $$0x -> Stream.of(String.valueOf(this.a)), CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect().create(this.a));
+            return false;
+         }
+      }
+
+      public char c() {
+         return this.a;
+      }
    }
 
-   public void c() {
-      this.c = new bnr(this.a, this.b, true);
-   }
+   public static record b(String a) implements bnm<StringReader> {
+      @Override
+      public boolean a(bni<StringReader> $$0, bnk $$1, bne $$2) {
+         $$0.b().skipWhitespace();
+         int $$3 = $$0.c();
+         String $$4 = $$0.b().readUnquotedString();
+         if (!$$4.equals(this.a)) {
+            $$0.a().a($$3, $$0x -> Stream.of(this.a), CommandSyntaxException.BUILT_IN_EXCEPTIONS.literalIncorrect().create(this.a));
+            return false;
+         } else {
+            return true;
+         }
+      }
 
-   public bny d() {
-      return this.c;
-   }
-
-   public bnx e() {
-      return this.c.d();
+      public String c() {
+         return this.a;
+      }
    }
 }

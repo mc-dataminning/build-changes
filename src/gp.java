@@ -21,11 +21,11 @@ public class gp implements ArgumentType<gr> {
    }
 
    public static je a(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
-      arg $$2 = ((et)$$0.getSource()).e();
+      arh $$2 = ((et)$$0.getSource()).e();
       return a($$0, $$2, $$1);
    }
 
-   public static je a(CommandContext<et> $$0, arg $$1, String $$2) throws CommandSyntaxException {
+   public static je a(CommandContext<et> $$0, arh $$1, String $$2) throws CommandSyntaxException {
       je $$3 = b($$0, $$2);
       if (!$$1.B($$3)) {
          throw a.create();
@@ -42,7 +42,7 @@ public class gp implements ArgumentType<gr> {
 
    public static je c(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
       je $$2 = b($$0, $$1);
-      if (!dds.l($$2)) {
+      if (!deg.l($$2)) {
          throw c.create();
       } else {
          return $$2;

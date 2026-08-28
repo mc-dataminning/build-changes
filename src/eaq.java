@@ -1,93 +1,110 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.function.Function;
 
-public interface eaq {
-   Codec<eaq> a = Codec.xor(eaq.b.d, Codec.xor(eaq.a.d, eaq.c.d)).xmap(eaq::a, eaq::a);
-   eaq b = b(0);
-   eaq c = c(0);
+public record eaq(ead b, ead c, ead d, ead e, ead f, ead g, ead h, ead i, ead j, ead k, ead l, ead m, ead n, ead o, ead p) {
+   public static final Codec<eaq> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               a("barrier", eaq::a),
+               a("fluid_level_floodedness", eaq::b),
+               a("fluid_level_spread", eaq::c),
+               a("lava", eaq::d),
+               a("temperature", eaq::e),
+               a("vegetation", eaq::f),
+               a("continents", eaq::g),
+               a("erosion", eaq::h),
+               a("depth", eaq::i),
+               a("ridges", eaq::j),
+               a("initial_density_without_jaggedness", eaq::k),
+               a("final_density", eaq::l),
+               a("vein_toggle", eaq::m),
+               a("vein_ridged", eaq::n),
+               a("vein_gap", eaq::o)
+            )
+            .apply($$0, eaq::new)
+   );
 
-   static eaq a(int $$0) {
-      return new eaq.b($$0);
+   private static RecordCodecBuilder<eaq, ead> a(String $$0, Function<eaq, ead> $$1) {
+      return ead.d.fieldOf($$0).forGetter($$1);
    }
 
-   static eaq b(int $$0) {
-      return new eaq.a($$0);
+   public eaq a(ead.f $$0) {
+      return new eaq(
+         this.b.a($$0),
+         this.c.a($$0),
+         this.d.a($$0),
+         this.e.a($$0),
+         this.f.a($$0),
+         this.g.a($$0),
+         this.h.a($$0),
+         this.i.a($$0),
+         this.j.a($$0),
+         this.k.a($$0),
+         this.l.a($$0),
+         this.m.a($$0),
+         this.n.a($$0),
+         this.o.a($$0),
+         this.p.a($$0)
+      );
    }
 
-   static eaq c(int $$0) {
-      return new eaq.c($$0);
+   public ead a() {
+      return this.b;
    }
 
-   static eaq a() {
-      return b;
+   public ead b() {
+      return this.c;
    }
 
-   static eaq b() {
-      return c;
+   public ead c() {
+      return this.d;
    }
 
-   private static eaq a(Either<eaq.b, Either<eaq.a, eaq.c>> $$0) {
-      return (eaq)$$0.map(Function.identity(), Either::unwrap);
+   public ead d() {
+      return this.e;
    }
 
-   private static Either<eaq.b, Either<eaq.a, eaq.c>> a(eaq $$0) {
-      return $$0 instanceof eaq.b ? Either.left((eaq.b)$$0) : Either.right($$0 instanceof eaq.a ? Either.left((eaq.a)$$0) : Either.right((eaq.c)$$0));
+   public ead e() {
+      return this.f;
    }
 
-   int a(eat var1);
-
-   public static record a(int e) implements eaq {
-      public static final Codec<eaq.a> d = Codec.intRange(dxw.e, dxw.d).fieldOf("above_bottom").xmap(eaq.a::new, eaq.a::c).codec();
-
-      @Override
-      public int a(eat $$0) {
-         return $$0.a() + this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " above bottom";
-      }
-
-      public int c() {
-         return this.e;
-      }
+   public ead f() {
+      return this.g;
    }
 
-   public static record b(int e) implements eaq {
-      public static final Codec<eaq.b> d = Codec.intRange(dxw.e, dxw.d).fieldOf("absolute").xmap(eaq.b::new, eaq.b::c).codec();
-
-      @Override
-      public int a(eat $$0) {
-         return this.e;
-      }
-
-      @Override
-      public String toString() {
-         return this.e + " absolute";
-      }
-
-      public int c() {
-         return this.e;
-      }
+   public ead g() {
+      return this.h;
    }
 
-   public static record c(int e) implements eaq {
-      public static final Codec<eaq.c> d = Codec.intRange(dxw.e, dxw.d).fieldOf("below_top").xmap(eaq.c::new, eaq.c::c).codec();
+   public ead h() {
+      return this.i;
+   }
 
-      @Override
-      public int a(eat $$0) {
-         return $$0.b() - 1 + $$0.a() - this.e;
-      }
+   public ead i() {
+      return this.j;
+   }
 
-      @Override
-      public String toString() {
-         return this.e + " below top";
-      }
+   public ead j() {
+      return this.k;
+   }
 
-      public int c() {
-         return this.e;
-      }
+   public ead k() {
+      return this.l;
+   }
+
+   public ead l() {
+      return this.m;
+   }
+
+   public ead m() {
+      return this.n;
+   }
+
+   public ead n() {
+      return this.o;
+   }
+
+   public ead o() {
+      return this.p;
    }
 }

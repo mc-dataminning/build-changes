@@ -19,7 +19,7 @@ public interface wl<T extends wj> {
 
       zl b();
 
-      @bai
+      @baj
       void a(wl.a.a var1);
 
       @FunctionalInterface

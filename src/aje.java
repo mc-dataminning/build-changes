@@ -10,10 +10,10 @@ public class aje {
    public static final zm<ajk> i = b("login_acknowledged");
 
    private static <T extends zk<aiy>> zm<T> a(String $$0) {
-      return new zm<>(zl.b, alb.b($$0));
+      return new zm<>(zl.b, alc.b($$0));
    }
 
    private static <T extends zk<ajg>> zm<T> b(String $$0) {
-      return new zm<>(zl.a, alb.b($$0));
+      return new zm<>(zl.a, alc.b($$0));
    }
 }

@@ -25,10 +25,10 @@ public abstract class ny {
    }
 
    private void c() {
-      List<dvd<?>> $$0 = this.b();
+      List<dvr<?>> $$0 = this.b();
       Stream<nz> $$1 = Stream.of(nz.a());
 
-      for (dvd<?> $$2 : $$0) {
+      for (dvr<?> $$2 : $$0) {
          $$1 = $$1.flatMap($$1x -> $$2.c().map($$1x::a));
       }
 
@@ -38,41 +38,41 @@ public abstract class ny {
       }
    }
 
-   abstract List<dvd<?>> b();
+   abstract List<dvr<?>> b();
 
-   public static <T1 extends Comparable<T1>> ny.a<T1> a(dvd<T1> $$0) {
+   public static <T1 extends Comparable<T1>> ny.a<T1> a(dvr<T1> $$0) {
       return new ny.a<>($$0);
    }
 
-   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>> ny.b<T1, T2> a(dvd<T1> $$0, dvd<T2> $$1) {
+   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>> ny.b<T1, T2> a(dvr<T1> $$0, dvr<T2> $$1) {
       return new ny.b<>($$0, $$1);
    }
 
-   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>> ny.c<T1, T2, T3> a(dvd<T1> $$0, dvd<T2> $$1, dvd<T3> $$2) {
+   public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>> ny.c<T1, T2, T3> a(dvr<T1> $$0, dvr<T2> $$1, dvr<T3> $$2) {
       return new ny.c<>($$0, $$1, $$2);
    }
 
    public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>> ny.d<T1, T2, T3, T4> a(
-      dvd<T1> $$0, dvd<T2> $$1, dvd<T3> $$2, dvd<T4> $$3
+      dvr<T1> $$0, dvr<T2> $$1, dvr<T3> $$2, dvr<T4> $$3
    ) {
       return new ny.d<>($$0, $$1, $$2, $$3);
    }
 
    public static <T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>, T5 extends Comparable<T5>> ny.e<T1, T2, T3, T4, T5> a(
-      dvd<T1> $$0, dvd<T2> $$1, dvd<T3> $$2, dvd<T4> $$3, dvd<T5> $$4
+      dvr<T1> $$0, dvr<T2> $$1, dvr<T3> $$2, dvr<T4> $$3, dvr<T5> $$4
    ) {
       return new ny.e<>($$0, $$1, $$2, $$3, $$4);
    }
 
    public static class a<T1 extends Comparable<T1>> extends ny {
-      private final dvd<T1> a;
+      private final dvr<T1> a;
 
-      a(dvd<T1> $$0) {
+      a(dvr<T1> $$0) {
          this.a = $$0;
       }
 
       @Override
-      public List<dvd<?>> b() {
+      public List<dvr<?>> b() {
          return ImmutableList.of(this.a);
       }
 
@@ -98,16 +98,16 @@ public abstract class ny {
    }
 
    public static class b<T1 extends Comparable<T1>, T2 extends Comparable<T2>> extends ny {
-      private final dvd<T1> a;
-      private final dvd<T2> b;
+      private final dvr<T1> a;
+      private final dvr<T2> b;
 
-      b(dvd<T1> $$0, dvd<T2> $$1) {
+      b(dvr<T1> $$0, dvr<T2> $$1) {
          this.a = $$0;
          this.b = $$1;
       }
 
       @Override
-      public List<dvd<?>> b() {
+      public List<dvr<?>> b() {
          return ImmutableList.of(this.a, this.b);
       }
 
@@ -133,18 +133,18 @@ public abstract class ny {
    }
 
    public static class c<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>> extends ny {
-      private final dvd<T1> a;
-      private final dvd<T2> b;
-      private final dvd<T3> c;
+      private final dvr<T1> a;
+      private final dvr<T2> b;
+      private final dvr<T3> c;
 
-      c(dvd<T1> $$0, dvd<T2> $$1, dvd<T3> $$2) {
+      c(dvr<T1> $$0, dvr<T2> $$1, dvr<T3> $$2) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
       }
 
       @Override
-      public List<dvd<?>> b() {
+      public List<dvr<?>> b() {
          return ImmutableList.of(this.a, this.b, this.c);
       }
 
@@ -174,12 +174,12 @@ public abstract class ny {
    }
 
    public static class d<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>> extends ny {
-      private final dvd<T1> a;
-      private final dvd<T2> b;
-      private final dvd<T3> c;
-      private final dvd<T4> d;
+      private final dvr<T1> a;
+      private final dvr<T2> b;
+      private final dvr<T3> c;
+      private final dvr<T4> d;
 
-      d(dvd<T1> $$0, dvd<T2> $$1, dvd<T3> $$2, dvd<T4> $$3) {
+      d(dvr<T1> $$0, dvr<T2> $$1, dvr<T3> $$2, dvr<T4> $$3) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
@@ -187,7 +187,7 @@ public abstract class ny {
       }
 
       @Override
-      public List<dvd<?>> b() {
+      public List<dvr<?>> b() {
          return ImmutableList.of(this.a, this.b, this.c, this.d);
       }
 
@@ -238,13 +238,13 @@ public abstract class ny {
 
    public static class e<T1 extends Comparable<T1>, T2 extends Comparable<T2>, T3 extends Comparable<T3>, T4 extends Comparable<T4>, T5 extends Comparable<T5>>
       extends ny {
-      private final dvd<T1> a;
-      private final dvd<T2> b;
-      private final dvd<T3> c;
-      private final dvd<T4> d;
-      private final dvd<T5> e;
+      private final dvr<T1> a;
+      private final dvr<T2> b;
+      private final dvr<T3> c;
+      private final dvr<T4> d;
+      private final dvr<T5> e;
 
-      e(dvd<T1> $$0, dvd<T2> $$1, dvd<T3> $$2, dvd<T4> $$3, dvd<T5> $$4) {
+      e(dvr<T1> $$0, dvr<T2> $$1, dvr<T3> $$2, dvr<T4> $$3, dvr<T5> $$4) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
@@ -253,7 +253,7 @@ public abstract class ny {
       }
 
       @Override
-      public List<dvd<?>> b() {
+      public List<dvr<?>> b() {
          return ImmutableList.of(this.a, this.b, this.c, this.d, this.e);
       }
 

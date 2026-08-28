@@ -1,40 +1,59 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
-import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import java.util.Collection;
-import java.util.List;
+import java.util.function.Function;
 
 public class apk {
-   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xd.c("commands.transfer.error.no_players"));
-
-   public static void a(CommandDispatcher<et> $$0) {
+   public static void a(CommandDispatcher<et> $$0, ep $$1) {
       $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("transfer").requires($$0x -> $$0x.c(3)))
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("title").requires($$0x -> $$0x.c(2)))
             .then(
-               ((RequiredArgumentBuilder)eu.a("hostname", StringArgumentType.string())
-                     .executes($$0x -> a((et)$$0x.getSource(), StringArgumentType.getString($$0x, "hostname"), 25565, List.of(((et)$$0x.getSource()).h()))))
-                  .then(
-                     ((RequiredArgumentBuilder)eu.a("port", IntegerArgumentType.integer(1, 65535))
-                           .executes(
-                              $$0x -> a(
-                                    (et)$$0x.getSource(),
-                                    StringArgumentType.getString($$0x, "hostname"),
-                                    IntegerArgumentType.getInteger($$0x, "port"),
-                                    List.of(((et)$$0x.getSource()).h())
+               ((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)((RequiredArgumentBuilder)eu.a(
+                                    "targets", fg.d()
+                                 )
+                                 .then(eu.a("clear").executes($$0x -> a((et)$$0x.getSource(), fg.f($$0x, "targets")))))
+                              .then(eu.a("reset").executes($$0x -> b((et)$$0x.getSource(), fg.f($$0x, "targets")))))
+                           .then(
+                              eu.a("title")
+                                 .then(
+                                    eu.a("title", fc.a($$1))
+                                       .executes($$0x -> a((et)$$0x.getSource(), fg.f($$0x, "targets"), fc.a($$0x, "title"), "title", afu::new))
                                  )
                            ))
                         .then(
-                           eu.a("players", fg.d())
-                              .executes(
-                                 $$0x -> a(
-                                       (et)$$0x.getSource(),
-                                       StringArgumentType.getString($$0x, "hostname"),
-                                       IntegerArgumentType.getInteger($$0x, "port"),
-                                       fg.f($$0x, "players")
+                           eu.a("subtitle")
+                              .then(
+                                 eu.a("title", fc.a($$1))
+                                    .executes($$0x -> a((et)$$0x.getSource(), fg.f($$0x, "targets"), fc.a($$0x, "title"), "subtitle", afs::new))
+                              )
+                        ))
+                     .then(
+                        eu.a("actionbar")
+                           .then(
+                              eu.a("title", fc.a($$1))
+                                 .executes($$0x -> a((et)$$0x.getSource(), fg.f($$0x, "targets"), fc.a($$0x, "title"), "actionbar", aet::new))
+                           )
+                     ))
+                  .then(
+                     eu.a("times")
+                        .then(
+                           eu.a("fadeIn", gi.a())
+                              .then(
+                                 eu.a("stay", gi.a())
+                                    .then(
+                                       eu.a("fadeOut", gi.a())
+                                          .executes(
+                                             $$0x -> a(
+                                                   (et)$$0x.getSource(),
+                                                   fg.f($$0x, "targets"),
+                                                   IntegerArgumentType.getInteger($$0x, "fadeIn"),
+                                                   IntegerArgumentType.getInteger($$0x, "stay"),
+                                                   IntegerArgumentType.getInteger($$0x, "fadeOut")
+                                                )
+                                          )
                                     )
                               )
                         )
@@ -43,21 +62,65 @@ public class apk {
       );
    }
 
-   private static int a(et $$0, String $$1, int $$2, Collection<arh> $$3) throws CommandSyntaxException {
-      if ($$3.isEmpty()) {
-         throw a.create();
-      } else {
-         for (arh $$4 : $$3) {
-            $$4.c.b(new aaa($$1, $$2));
-         }
+   private static int a(et $$0, Collection<ari> $$1) {
+      acq $$2 = new acq(false);
 
-         if ($$3.size() == 1) {
-            $$0.a(() -> xd.a("commands.transfer.success.single", $$3.iterator().next().Q_(), $$1, $$2), true);
-         } else {
-            $$0.a(() -> xd.a("commands.transfer.success.multiple", $$3.size(), $$1, $$2), true);
-         }
-
-         return $$3.size();
+      for (ari $$3 : $$1) {
+         $$3.c.b($$2);
       }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> xd.a("commands.title.cleared.single", $$1.iterator().next().Q_()), true);
+      } else {
+         $$0.a(() -> xd.a("commands.title.cleared.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
+   }
+
+   private static int b(et $$0, Collection<ari> $$1) {
+      acq $$2 = new acq(true);
+
+      for (ari $$3 : $$1) {
+         $$3.c.b($$2);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> xd.a("commands.title.reset.single", $$1.iterator().next().Q_()), true);
+      } else {
+         $$0.a(() -> xd.a("commands.title.reset.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
+   }
+
+   private static int a(et $$0, Collection<ari> $$1, xd $$2, String $$3, Function<xd, zk<?>> $$4) throws CommandSyntaxException {
+      for (ari $$5 : $$1) {
+         $$5.c.b($$4.apply(xg.a($$0, $$2, $$5, 0)));
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> xd.a("commands.title.show." + $$3 + ".single", $$1.iterator().next().Q_()), true);
+      } else {
+         $$0.a(() -> xd.a("commands.title.show." + $$3 + ".multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
+   }
+
+   private static int a(et $$0, Collection<ari> $$1, int $$2, int $$3, int $$4) {
+      afv $$5 = new afv($$2, $$3, $$4);
+
+      for (ari $$6 : $$1) {
+         $$6.c.b($$5);
+      }
+
+      if ($$1.size() == 1) {
+         $$0.a(() -> xd.a("commands.title.times.single", $$1.iterator().next().Q_()), true);
+      } else {
+         $$0.a(() -> xd.a("commands.title.times.multiple", $$1.size()), true);
+      }
+
+      return $$1.size();
    }
 }

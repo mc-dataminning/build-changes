@@ -1,30 +1,48 @@
-import com.mojang.datafixers.Products.P3;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class ehk extends ehh {
-   protected final long c;
-   protected final epe.a d;
-   protected final float e;
-   protected final epe f;
+public class ehk extends ehg {
+   public static final MapCodec<ehk> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(bqu.b(0, 24).fieldOf("height").forGetter($$0x -> $$0x.b)).apply($$0, ehk::new)
+   );
+   private final bqu b;
 
-   protected static <P extends ehk> P3<Mu<P>, Long, epe.a, Float> a(Instance<P> $$0) {
-      return $$0.group(
-         Codec.LONG.fieldOf("seed").forGetter($$0x -> $$0x.c),
-         epe.a.a.fieldOf("noise").forGetter($$0x -> $$0x.d),
-         ayl.m.fieldOf("scale").forGetter($$0x -> $$0x.e)
-      );
+   public ehk(bqu $$0, bqu $$1, bqu $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
-   protected ehk(long $$0, epe.a $$1, float $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = epe.b(new eav(new dzx($$0)), $$1);
+   @Override
+   protected ehh<?> a() {
+      return ehh.c;
    }
 
-   protected double a(je $$0, double $$1) {
-      return this.f.a((double)$$0.u() * $$1, (double)$$0.v() * $$1, (double)$$0.w() * $$1);
+   @Override
+   protected void a(dem $$0, ehg.b $$1, azl $$2, egq $$3, int $$4, ehg.a $$5, int $$6, int $$7, int $$8) {
+      int $$9 = 0;
+
+      for (int $$10 = $$8; $$10 >= $$8 - $$6; $$10--) {
+         this.a($$0, $$1, $$2, $$3, $$5.a(), $$9, $$10, $$5.c());
+         if ($$9 >= 1 && $$10 == $$8 - $$6 + 1) {
+            $$9--;
+         } else if ($$9 < $$7 + $$5.b()) {
+            $$9++;
+         }
+      }
+   }
+
+   @Override
+   public int a(azl $$0, int $$1) {
+      return super.a($$0, $$1) + $$0.a(Math.max($$1 + 1, 1));
+   }
+
+   @Override
+   public int a(azl $$0, int $$1, egq $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(azl $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

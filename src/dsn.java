@@ -1,124 +1,127 @@
-import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dsn extends dre implements dyz.b<dzg.b>, dzg {
-   private static final Logger b = LogUtils.getLogger();
-   private dzg.a c;
-   private final dzg.b d;
-   private final dzg.d e = this.b();
-   private int h;
+public class dsn extends drs implements brs {
+   public int a;
+   public float b;
+   public float c;
+   public float d;
+   public float e;
+   public float f;
+   public float g;
+   public float h;
+   public float i;
+   public float j;
+   private static final azl k = azl.a();
+   @Nullable
+   private xd l;
 
-   protected dsn(drg<?> $$0, je $$1, dua $$2) {
-      super($$0, $$1, $$2);
-      this.c = new dzg.a();
-      this.d = new dzg.b(this);
-   }
-
-   public dsn(je $$0, dua $$1) {
-      this(drg.I, $$0, $$1);
-   }
-
-   public dzg.d b() {
-      return new dsn.a(this.aD_());
-   }
-
-   @Override
-   protected void a(uf $$0, jp.a $$1) {
-      super.a($$0, $$1);
-      this.h = $$0.h("last_vibration_frequency");
-      akz<vc> $$2 = $$1.a(ut.a);
-      if ($$0.b("listener", 10)) {
-         dzg.a.a
-            .parse($$2, $$0.p("listener"))
-            .resultOrPartial($$0x -> b.error("Failed to parse vibration listener for Sculk Sensor: '{}'", $$0x))
-            .ifPresent($$0x -> this.c = $$0x);
-      }
+   public dsn(je $$0, duo $$1) {
+      super(dru.m, $$0, $$1);
    }
 
    @Override
    protected void b(uf $$0, jp.a $$1) {
       super.b($$0, $$1);
-      $$0.a("last_vibration_frequency", this.h);
-      akz<vc> $$2 = $$1.a(ut.a);
-      dzg.a.a
-         .encodeStart($$2, this.c)
-         .resultOrPartial($$0x -> b.error("Failed to encode vibration listener for Sculk Sensor: '{}'", $$0x))
-         .ifPresent($$1x -> $$0.a("listener", $$1x));
+      if (this.ak()) {
+         $$0.a("CustomName", xd.a.a(this.l, $$1));
+      }
    }
 
    @Override
-   public dzg.a gq() {
-      return this.c;
+   protected void a(uf $$0, jp.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.b("CustomName", 8)) {
+         this.l = a($$0.l("CustomName"), $$1);
+      }
    }
 
-   @Override
-   public dzg.d gr() {
-      return this.e;
-   }
+   public static void a(deg $$0, je $$1, duo $$2, dsn $$3) {
+      $$3.g = $$3.f;
+      $$3.i = $$3.h;
+      cnu $$4 = $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 3.0, false);
+      if ($$4 != null) {
+         double $$5 = $$4.dx() - ((double)$$1.u() + 0.5);
+         double $$6 = $$4.dD() - ((double)$$1.w() + 0.5);
+         $$3.j = (float)azd.d($$6, $$5);
+         $$3.f += 0.1F;
+         if ($$3.f < 0.5F || k.a(40) == 0) {
+            float $$7 = $$3.d;
 
-   public int d() {
-      return this.h;
-   }
-
-   public void a(int $$0) {
-      this.h = $$0;
-   }
-
-   public dzg.b f() {
-      return this.d;
-   }
-
-   protected class a implements dzg.d {
-      public static final int b = 8;
-      protected final je c;
-      private final dzb a;
-
-      public a(final je $$1) {
-         this.c = $$1;
-         this.a = new dyt($$1);
-      }
-
-      @Override
-      public int a() {
-         return 8;
-      }
-
-      @Override
-      public dzb b() {
-         return this.a;
-      }
-
-      @Override
-      public boolean d() {
-         return true;
-      }
-
-      @Override
-      public boolean a(arg $$0, je $$1, jn<dyx> $$2, @Nullable dyx.a $$3) {
-         return !$$1.equals(this.c) || !$$2.a(dyx.f) && !$$2.a(dyx.i) ? dnp.q(dsn.this.m()) : false;
-      }
-
-      @Override
-      public void a(arg $$0, je $$1, jn<dyx> $$2, @Nullable btj $$3, @Nullable btj $$4, float $$5) {
-         dua $$6 = dsn.this.m();
-         if (dnp.q($$6)) {
-            dsn.this.a(dzg.a_($$2));
-            int $$7 = dzg.a_($$5, this.a());
-            if ($$6.b() instanceof dnp $$8) {
-               $$8.a($$3, $$0, this.c, $$6, $$7, dsn.this.d());
-            }
+            do {
+               $$3.d = $$3.d + (float)(k.a(4) - k.a(4));
+            } while ($$7 == $$3.d);
          }
+      } else {
+         $$3.j += 0.02F;
+         $$3.f -= 0.1F;
       }
 
-      @Override
-      public void e() {
-         dsn.this.e();
+      while ($$3.h >= (float) Math.PI) {
+         $$3.h -= (float) (Math.PI * 2);
       }
 
-      @Override
-      public boolean f() {
-         return true;
+      while ($$3.h < (float) -Math.PI) {
+         $$3.h += (float) (Math.PI * 2);
       }
+
+      while ($$3.j >= (float) Math.PI) {
+         $$3.j -= (float) (Math.PI * 2);
+      }
+
+      while ($$3.j < (float) -Math.PI) {
+         $$3.j += (float) (Math.PI * 2);
+      }
+
+      float $$8 = $$3.j - $$3.h;
+
+      while ($$8 >= (float) Math.PI) {
+         $$8 -= (float) (Math.PI * 2);
+      }
+
+      while ($$8 < (float) -Math.PI) {
+         $$8 += (float) (Math.PI * 2);
+      }
+
+      $$3.h += $$8 * 0.4F;
+      $$3.f = azd.a($$3.f, 0.0F, 1.0F);
+      $$3.a++;
+      $$3.c = $$3.b;
+      float $$9 = ($$3.d - $$3.b) * 0.4F;
+      float $$10 = 0.2F;
+      $$9 = azd.a($$9, -0.2F, 0.2F);
+      $$3.e = $$3.e + ($$9 - $$3.e) * 0.9F;
+      $$3.b = $$3.b + $$3.e;
+   }
+
+   @Override
+   public xd aj() {
+      return (xd)(this.l != null ? this.l : xd.c("container.enchant"));
+   }
+
+   public void a(@Nullable xd $$0) {
+      this.l = $$0;
+   }
+
+   @Nullable
+   @Override
+   public xd al() {
+      return this.l;
+   }
+
+   @Override
+   protected void a(drs.b $$0) {
+      super.a($$0);
+      this.l = $$0.a(kr.g);
+   }
+
+   @Override
+   protected void a(kn.a $$0) {
+      super.a($$0);
+      $$0.a(kr.g, this.l);
+   }
+
+   @Override
+   public void a(uf $$0) {
+      $$0.r("CustomName");
    }
 }

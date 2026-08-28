@@ -1,47 +1,17 @@
-import javax.annotation.Nullable;
+public abstract class hae extends had implements haw {
+   private boolean n;
 
-public interface hae {
-   alb a();
-
-   @Nullable
-   hbk a(hbj var1);
-
-   hab b();
-
-   awe c();
-
-   boolean d();
-
-   boolean l();
-
-   int e();
-
-   float f();
-
-   float g();
-
-   double h();
-
-   double i();
-
-   double j();
-
-   hae.a k();
-
-   default boolean r() {
-      return false;
+   protected hae(awd $$0, awf $$1, azl $$2) {
+      super($$0, $$1, $$2);
    }
 
-   default boolean s() {
-      return true;
+   @Override
+   public boolean m() {
+      return this.n;
    }
 
-   static azk t() {
-      return azk.a();
-   }
-
-   public static enum a {
-      a,
-      b;
+   protected final void n() {
+      this.n = true;
+      this.i = false;
    }
 }

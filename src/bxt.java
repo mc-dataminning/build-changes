@@ -1,26 +1,29 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bxt {
-   private static final float b = 0.95F;
-   public static final int a = 3;
+public class bxt extends bwc<bum> {
+   private final bqu c;
+   private final float d;
+   private final float e;
+   private final float f;
 
-   public static bvy<buf> a() {
-      return bzk.a((Function<bzk.b<buf>, ? extends App<bzk.c<buf>, bzn<buf>>>)($$0 -> $$0.group($$0.b(cdi.e)).apply($$0, $$1 -> ($$2, $$3, $$4) -> {
-               if ($$2.z.i() <= 0.95F) {
-                  return false;
-               } else {
-                  je $$5 = $$0.<jm>b($$1).b();
-                  if ($$5.a($$3.ds(), 3.0)) {
-                     dua $$6 = $$2.a_($$5);
-                     if ($$6.a(dgx.od)) {
-                        dgr $$7 = (dgr)$$6.b();
-                        $$7.a($$3, $$2, $$5, null);
-                     }
-                  }
+   public bxt(bqu $$0, float $$1, float $$2, float $$3) {
+      super(ImmutableMap.of(cdn.n, cdo.b, cdn.Q, cdo.b));
+      if ($$2 > $$3) {
+         throw new IllegalArgumentException("Minimum pitch is larger than maximum pitch! " + $$2 + " > " + $$3);
+      } else {
+         this.c = $$0;
+         this.d = $$1;
+         this.e = $$2;
+         this.f = $$3 - $$2;
+      }
+   }
 
-                  return true;
-               }
-            })));
+   protected void a(arh $$0, bum $$1, long $$2) {
+      azl $$3 = $$1.dV();
+      float $$4 = azd.a($$3.i() * this.f + this.e, -90.0F, 90.0F);
+      float $$5 = azd.g($$1.dI() + 2.0F * $$3.i() * this.d - this.d);
+      eys $$6 = eys.a($$4, $$5);
+      $$1.dX().a(cdn.n, new bwf($$1.bC().e($$6)));
+      $$1.dX().a(cdn.Q, this.c.a($$3));
    }
 }

@@ -1,88 +1,55 @@
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
 
-public class ett extends eug {
-   public static final MapCodec<ett> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  ett.b.b.fieldOf("source").forGetter($$0x -> $$0x.b),
-                  kq.a.listOf().optionalFieldOf("include").forGetter($$0x -> $$0x.c),
-                  kq.a.listOf().optionalFieldOf("exclude").forGetter($$0x -> $$0x.d)
-               )
-            )
-            .apply($$0, ett::new)
-   );
-   private final ett.b b;
-   private final Optional<List<kq<?>>> c;
-   private final Optional<List<kq<?>>> d;
-   private final Predicate<kq<?>> e;
+public class ett extends etq {
+   public static final MapCodec<ett> a = a(ett::new);
 
-   ett(List<ewe> $$0, ett.b $$1, Optional<List<kq<?>>> $$2, Optional<List<kq<?>>> $$3) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2.map(List::copyOf);
-      this.d = $$3.map(List::copyOf);
-      List<Predicate<kq<?>>> $$4 = new ArrayList<>(2);
-      $$3.ifPresent($$1x -> $$4.add($$1xx -> !$$1x.contains($$1xx)));
-      $$2.ifPresent($$1x -> $$4.add($$1x::contains));
-      this.e = ad.a($$4);
+   ett(List<etx> $$0, List<ews> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public eui<ett> b() {
-      return euj.J;
+   public ety a() {
+      return etv.i;
    }
 
    @Override
-   public Set<evm<?>> a() {
-      return this.b.a();
+   protected etp a(List<? extends etp> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (etp)$$0.get(0);
+         case 2 -> {
+            etp $$1 = $$0.get(0);
+            etp $$2 = $$0.get(1);
+            yield ($$2x, $$3) -> {
+               $$1.expand($$2x, $$3);
+               $$2.expand($$2x, $$3);
+               return true;
+            };
+         }
+         default -> ($$1x, $$2x) -> {
+         for (etp $$3 : $$0) {
+            $$3.expand($$1x, $$2x);
+         }
+
+         return true;
+      };
+      };
    }
 
-   @Override
-   public cvl a(cvl $$0, est $$1) {
-      kn $$2 = this.b.a($$1);
-      $$0.b($$2.a(this.e));
-      return $$0;
-   }
-
-   public static ett.a a(ett.b $$0) {
+   public static ett.a a(etx.a<?>... $$0) {
       return new ett.a($$0);
    }
 
-   public static class a extends eug.a<ett.a> {
-      private final ett.b a;
-      private Optional<Builder<kq<?>>> b = Optional.empty();
-      private Optional<Builder<kq<?>>> c = Optional.empty();
+   public static class a extends etx.a<ett.a> {
+      private final Builder<etx> a = ImmutableList.builder();
 
-      a(ett.b $$0) {
-         this.a = $$0;
-      }
-
-      public ett.a a(kq<?> $$0) {
-         if (this.b.isEmpty()) {
-            this.b = Optional.of(ImmutableList.builder());
+      public a(etx.a<?>... $$0) {
+         for (etx.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
          }
-
-         this.b.get().add($$0);
-         return this;
-      }
-
-      public ett.a b(kq<?> $$0) {
-         if (this.c.isEmpty()) {
-            this.c = Optional.of(ImmutableList.builder());
-         }
-
-         this.c.get().add($$0);
-         return this;
       }
 
       protected ett.a a() {
@@ -90,43 +57,14 @@ public class ett extends eug {
       }
 
       @Override
-      public euh b() {
-         return new ett(this.g(), this.a, this.b.map(Builder::build), this.c.map(Builder::build));
-      }
-   }
-
-   public static enum b implements azy {
-      a("block_entity");
-
-      public static final Codec<ett.b> b = azy.b(ett.b::values);
-      private final String c;
-
-      private b(final String $$0) {
-         this.c = $$0;
-      }
-
-      public kn a(est $$0) {
-         switch (this) {
-            case a:
-               dre $$1 = $$0.c(evp.h);
-               return $$1 != null ? $$1.r() : kn.a;
-            default:
-               throw new MatchException(null, null);
-         }
-      }
-
-      public Set<evm<?>> a() {
-         switch (this) {
-            case a:
-               return Set.of(evp.h);
-            default:
-               throw new MatchException(null, null);
-         }
+      public ett.a b(etx.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
       }
 
       @Override
-      public String c() {
-         return this.c;
+      public etx b() {
+         return new ett(this.a.build(), this.f());
       }
    }
 }

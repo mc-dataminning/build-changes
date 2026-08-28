@@ -1,17 +1,9 @@
-public interface als extends alr {
-   apz a();
+public interface als {
+   String ae();
 
-   String b();
+   String M();
 
-   int d();
+   int N();
 
-   String h();
-
-   String[] P();
-
-   String s();
-
-   String u();
-
-   String a(String var1);
+   int O();
 }

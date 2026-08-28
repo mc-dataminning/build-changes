@@ -1,95 +1,110 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
+import java.util.Objects;
 
-public class gjb implements aut {
-   private Map<drg<?>, gjc<?>> d = ImmutableMap.of();
-   private final fjl e;
-   private final fzx f;
-   public dds a;
-   public fhk b;
-   public eyc c;
-   private final Supplier<ghu> g;
-   private final Supplier<gnq> h;
-   private final Supplier<gmq> i;
+public class gjb implements gzp {
+   private final alc a;
+   private final j b;
+   private final boolean c;
+   private final int d;
 
-   public gjb(fjl $$0, fzx $$1, Supplier<ghu> $$2, Supplier<gnq> $$3, Supplier<gmq> $$4) {
-      this.h = $$3;
-      this.i = $$4;
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-   }
-
-   @Nullable
-   public <E extends dre> gjc<E> a(E $$0) {
-      return (gjc<E>)this.d.get($$0.q());
-   }
-
-   public void a(dds $$0, fhk $$1, eyc $$2) {
-      if (this.a != $$0) {
-         this.a($$0);
-      }
-
+   public gjb(alc $$0, j $$1, boolean $$2, int $$3) {
+      this.a = $$0;
       this.b = $$1;
       this.c = $$2;
+      this.d = $$3;
    }
 
-   public <E extends dre> void a(E $$0, float $$1, fcu $$2, ggv $$3) {
-      gjc<E> $$4 = this.a($$0);
-      if ($$4 != null) {
-         if ($$0.l() && $$0.q().a($$0.m())) {
-            if ($$4.a($$0, this.b.b())) {
-               a($$0, () -> a($$4, $$0, $$1, $$2, $$3));
-            }
-         }
-      }
+   public alc a() {
+      return this.a;
    }
 
-   private static <T extends dre> void a(gjc<T> $$0, T $$1, float $$2, fcu $$3, ggv $$4) {
-      dds $$5 = $$1.i();
-      int $$6;
-      if ($$5 != null) {
-         $$6 = ggr.a($$5, $$1.aD_());
-      } else {
-         $$6 = 15728880;
-      }
-
-      $$0.a($$1, $$2, $$3, $$4, $$6, gwb.d);
+   @Override
+   public j b() {
+      return this.b;
    }
 
-   public <E extends dre> boolean a(E $$0, fcu $$1, ggv $$2, int $$3, int $$4) {
-      gjc<E> $$5 = this.a($$0);
-      if ($$5 == null) {
+   @Override
+   public boolean c() {
+      return this.c;
+   }
+
+   public int d() {
+      return this.d;
+   }
+
+   @Override
+   public String toString() {
+      return "Variant{modelLocation=" + this.a + ", rotation=" + this.b + ", uvLock=" + this.c + ", weight=" + this.d + "}";
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
          return true;
       } else {
-         a($$0, () -> $$5.a($$0, 0.0F, $$1, $$2, $$3, $$4));
-         return false;
-      }
-   }
-
-   private static void a(dre $$0, Runnable $$1) {
-      try {
-         $$1.run();
-      } catch (Throwable var5) {
-         o $$3 = o.a(var5, "Rendering Block Entity");
-         p $$4 = $$3.a("Block Entity Details");
-         $$0.a($$4);
-         throw new z($$3);
-      }
-   }
-
-   public void a(@Nullable dds $$0) {
-      this.a = $$0;
-      if ($$0 == null) {
-         this.b = null;
+         return !($$0 instanceof gjb $$1) ? false : this.a.equals($$1.a) && Objects.equals(this.b, $$1.b) && this.c == $$1.c && this.d == $$1.d;
       }
    }
 
    @Override
-   public void a(aus $$0) {
-      gjd.a $$1 = new gjd.a(this, this.g.get(), this.h.get(), this.i.get(), this.f, this.e);
-      this.d = gje.a($$1);
+   public int hashCode() {
+      int $$0 = this.a.hashCode();
+      $$0 = 31 * $$0 + this.b.hashCode();
+      $$0 = 31 * $$0 + Boolean.valueOf(this.c).hashCode();
+      return 31 * $$0 + this.d;
+   }
+
+   public static class a implements JsonDeserializer<gjb> {
+      @VisibleForTesting
+      static final boolean a = false;
+      @VisibleForTesting
+      static final int b = 1;
+      @VisibleForTesting
+      static final int c = 0;
+      @VisibleForTesting
+      static final int d = 0;
+
+      public gjb a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         JsonObject $$3 = $$0.getAsJsonObject();
+         alc $$4 = this.b($$3);
+         gze $$5 = this.a($$3);
+         boolean $$6 = this.d($$3);
+         int $$7 = this.c($$3);
+         return new gjb($$4, $$5.b(), $$6, $$7);
+      }
+
+      private boolean d(JsonObject $$0) {
+         return ayt.a($$0, "uvlock", false);
+      }
+
+      protected gze a(JsonObject $$0) {
+         int $$1 = ayt.a($$0, "x", 0);
+         int $$2 = ayt.a($$0, "y", 0);
+         gze $$3 = gze.a($$1, $$2);
+         if ($$3 == null) {
+            throw new JsonParseException("Invalid BlockModelRotation x: " + $$1 + ", y: " + $$2);
+         } else {
+            return $$3;
+         }
+      }
+
+      protected alc b(JsonObject $$0) {
+         return alc.a(ayt.i($$0, "model"));
+      }
+
+      protected int c(JsonObject $$0) {
+         int $$1 = ayt.a($$0, "weight", 1);
+         if ($$1 < 1) {
+            throw new JsonParseException("Invalid weight " + $$1 + " found, expected integer >= 1");
+         } else {
+            return $$1;
+         }
+      }
    }
 }

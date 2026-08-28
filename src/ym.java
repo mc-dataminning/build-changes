@@ -16,12 +16,12 @@ public record ym(hk c, Optional<xd> d) implements xe {
    }
 
    @Override
-   public xr a(@Nullable et $$0, @Nullable btj $$1, int $$2) throws CommandSyntaxException {
+   public xr a(@Nullable et $$0, @Nullable bto $$1, int $$2) throws CommandSyntaxException {
       if ($$0 == null) {
          return xd.i();
       } else {
          Optional<? extends xd> $$3 = xg.a($$0, this.d, $$1, $$2);
-         return xg.a(this.c.b().b($$0), $$3, btj::Q_);
+         return xg.a(this.c.b().b($$0), $$3, bto::Q_);
       }
    }
 

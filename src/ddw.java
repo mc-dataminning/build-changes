@@ -1,78 +1,19 @@
-import com.mojang.serialization.Dynamic;
+import java.util.Optional;
 
-public final class ddw {
-   private final String a;
-   private final ddp b;
-   private final boolean c;
-   private final brh d;
-   private final boolean e;
-   private final ddo f;
-   private final deo g;
+public class ddw extends ddz {
+   private final bto a;
 
-   public ddw(String $$0, ddp $$1, boolean $$2, brh $$3, boolean $$4, ddo $$5, deo $$6) {
+   public ddw(bto $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-      this.e = $$4;
-      this.f = $$5;
-      this.g = $$6;
    }
 
-   public static ddw a(Dynamic<?> $$0, deo $$1) {
-      ddp $$2 = ddp.a($$0.get("GameType").asInt(0));
-      return new ddw(
-         $$0.get("LevelName").asString(""),
-         $$2,
-         $$0.get("hardcore").asBoolean(false),
-         $$0.get("Difficulty").asNumber().map($$0x -> brh.a($$0x.byteValue())).result().orElse(brh.c),
-         $$0.get("allowCommands").asBoolean($$2 == ddp.b),
-         new ddo($$1.b(), $$0.get("GameRules")),
-         $$1
-      );
+   @Override
+   public Optional<Float> a(ddy $$0, ddl $$1, je $$2, duo $$3, eqp $$4) {
+      return super.a($$0, $$1, $$2, $$3, $$4).map($$5 -> this.a.a($$0, $$1, $$2, $$3, $$4, $$5));
    }
 
-   public String a() {
-      return this.a;
-   }
-
-   public ddp b() {
-      return this.b;
-   }
-
-   public boolean c() {
-      return this.c;
-   }
-
-   public brh d() {
-      return this.d;
-   }
-
-   public boolean e() {
-      return this.e;
-   }
-
-   public ddo f() {
-      return this.f;
-   }
-
-   public deo g() {
-      return this.g;
-   }
-
-   public ddw a(ddp $$0) {
-      return new ddw(this.a, $$0, this.c, this.d, this.e, this.f, this.g);
-   }
-
-   public ddw a(brh $$0) {
-      return new ddw(this.a, this.b, this.c, $$0, this.e, this.f, this.g);
-   }
-
-   public ddw a(deo $$0) {
-      return new ddw(this.a, this.b, this.c, this.d, this.e, this.f, $$0);
-   }
-
-   public ddw h() {
-      return new ddw(this.a, this.b, this.c, this.d, this.e, this.f.a(this.g.b()), this.g);
+   @Override
+   public boolean a(ddy $$0, ddl $$1, je $$2, duo $$3, float $$4) {
+      return this.a.a($$0, $$1, $$2, $$3, $$4);
    }
 }

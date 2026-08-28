@@ -2,57 +2,57 @@ import java.util.function.BiConsumer;
 
 public record nj(jp.a a) implements mz {
    @Override
-   public void generate(BiConsumer<ala<esy>, esy.a> $$0) {
-      jp.b<det> $$1 = this.a.b(lv.aF);
+   public void generate(BiConsumer<alb<etm>, etm.a> $$0) {
+      jp.b<dfh> $$1 = this.a.b(lv.aG);
       $$0.accept(
-         esp.ao,
-         esy.b()
+         etd.ao,
+         etm.b()
             .a(
-               esx.a()
-                  .a(ewx.a(1.0F))
-                  .a(etm.a(esp.ap).a(10).b(-2))
-                  .a(etm.a(esp.aq).a(5).b(2).a(ewh.a(est.b.a, bv.a.a().a(cb.a(true)))))
-                  .a(etm.a(esp.ar).a(85).b(-1))
+               etl.a()
+                  .a(exl.a(1.0F))
+                  .a(eua.a(etd.ap).a(10).b(-2))
+                  .a(eua.a(etd.aq).a(5).b(2).a(ewv.a(eth.b.a, bv.a.a().a(cb.a(true)))))
+                  .a(eua.a(etd.ar).a(85).b(-1))
             )
       );
-      $$0.accept(esp.ar, a());
+      $$0.accept(etd.ar, a());
       $$0.accept(
-         esp.ap,
-         esy.b()
+         etd.ap,
+         etm.b()
             .a(
-               esx.a()
-                  .a(etg.a(dgx.fm).a(17))
-                  .a(etg.a(cvo.pC).a(10).a(euz.a(exe.a(0.0F, 0.9F))))
-                  .a(etg.a(cvo.qE).a(10))
-                  .a(etg.a(cvo.rA).a(10))
-                  .a(etg.a(cvo.sl).a(10).a(eve.a(cxo.a)))
-                  .a(etg.a(cvo.pt).a(5))
-                  .a(etg.a(cvo.qW).a(2).a(euz.a(exe.a(0.0F, 0.9F))))
-                  .a(etg.a(cvo.ou).a(10))
-                  .a(etg.a(cvo.pr).a(5))
-                  .a(etg.a(cvo.rg).a(1).a(euy.a(ewx.a(10.0F))))
-                  .a(etg.a(dgx.fH).a(10))
-                  .a(etg.a(cvo.sf).a(10))
-                  .a(etg.a(dgx.mZ).a(ewc.a(df.a.a().a(jr.a($$1.b(dfa.x), $$1.b(dfa.y), $$1.b(dfa.z))))).a(10))
+               etl.a()
+                  .a(etu.a(dhl.fm).a(17))
+                  .a(etu.a(cvt.pC).a(10).a(evn.a(exs.a(0.0F, 0.9F))))
+                  .a(etu.a(cvt.qE).a(10))
+                  .a(etu.a(cvt.rA).a(10))
+                  .a(etu.a(cvt.sm).a(10).a(evs.a(cxp.a)))
+                  .a(etu.a(cvt.pt).a(5))
+                  .a(etu.a(cvt.qW).a(2).a(evn.a(exs.a(0.0F, 0.9F))))
+                  .a(etu.a(cvt.ou).a(10))
+                  .a(etu.a(cvt.pr).a(5))
+                  .a(etu.a(cvt.rg).a(1).a(evm.a(exl.a(10.0F))))
+                  .a(etu.a(dhl.fH).a(10))
+                  .a(etu.a(cvt.sf).a(10))
+                  .a(etu.a(dhl.mZ).a(ewq.a(df.a.a().a(jr.a($$1.b(dfo.x), $$1.b(dfo.y), $$1.b(dfo.z))))).a(10))
             )
       );
       $$0.accept(
-         esp.aq,
-         esy.b()
+         etd.aq,
+         etm.b()
             .a(
-               esx.a()
-                  .a(etg.a(cvo.uN))
-                  .a(etg.a(cvo.nL))
-                  .a(etg.a(cvo.ow).a(euz.a(exe.a(0.0F, 0.25F))).a(etx.a(this.a, ewx.a(30.0F))))
-                  .a(etg.a(cvo.qW).a(euz.a(exe.a(0.0F, 0.25F))).a(etx.a(this.a, ewx.a(30.0F))))
-                  .a(etg.a(cvo.qQ).a(etx.a(this.a, ewx.a(30.0F))))
-                  .a(etg.a(cvo.vV))
+               etl.a()
+                  .a(etu.a(cvt.uN))
+                  .a(etu.a(cvt.nL))
+                  .a(etu.a(cvt.ow).a(evn.a(exs.a(0.0F, 0.25F))).a(eul.a(this.a, exl.a(30.0F))))
+                  .a(etu.a(cvt.qW).a(evn.a(exs.a(0.0F, 0.25F))).a(eul.a(this.a, exl.a(30.0F))))
+                  .a(etu.a(cvt.qQ).a(eul.a(this.a, exl.a(30.0F))))
+                  .a(etu.a(cvt.vV))
             )
       );
    }
 
-   public static esy.a a() {
-      return esy.b().a(esx.a().a(etg.a(cvo.ra).a(60)).a(etg.a(cvo.rb).a(25)).a(etg.a(cvo.rc).a(2)).a(etg.a(cvo.rd).a(13)));
+   public static etm.a a() {
+      return etm.b().a(etl.a().a(etu.a(cvt.ra).a(60)).a(etu.a(cvt.rb).a(25)).a(etu.a(cvt.rc).a(2)).a(etu.a(cvt.rd).a(13)));
    }
 
    public jp.a b() {

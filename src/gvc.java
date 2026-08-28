@@ -1,3 +1,3 @@
-public interface gvc {
-   cnd a();
+public class gvc extends guj {
+   public cgv.a a = cgv.a.b;
 }

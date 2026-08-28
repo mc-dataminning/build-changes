@@ -1,76 +1,70 @@
-import com.mojang.serialization.MapCodec;
+public abstract class dfo {
+   public static final alb<dfh> a = a("the_void");
+   public static final alb<dfh> b = a("plains");
+   public static final alb<dfh> c = a("sunflower_plains");
+   public static final alb<dfh> d = a("snowy_plains");
+   public static final alb<dfh> e = a("ice_spikes");
+   public static final alb<dfh> f = a("desert");
+   public static final alb<dfh> g = a("swamp");
+   public static final alb<dfh> h = a("mangrove_swamp");
+   public static final alb<dfh> i = a("forest");
+   public static final alb<dfh> j = a("flower_forest");
+   public static final alb<dfh> k = a("birch_forest");
+   public static final alb<dfh> l = a("dark_forest");
+   public static final alb<dfh> m = a("old_growth_birch_forest");
+   public static final alb<dfh> n = a("old_growth_pine_taiga");
+   public static final alb<dfh> o = a("old_growth_spruce_taiga");
+   public static final alb<dfh> p = a("taiga");
+   public static final alb<dfh> q = a("snowy_taiga");
+   public static final alb<dfh> r = a("savanna");
+   public static final alb<dfh> s = a("savanna_plateau");
+   public static final alb<dfh> t = a("windswept_hills");
+   public static final alb<dfh> u = a("windswept_gravelly_hills");
+   public static final alb<dfh> v = a("windswept_forest");
+   public static final alb<dfh> w = a("windswept_savanna");
+   public static final alb<dfh> x = a("jungle");
+   public static final alb<dfh> y = a("sparse_jungle");
+   public static final alb<dfh> z = a("bamboo_jungle");
+   public static final alb<dfh> A = a("badlands");
+   public static final alb<dfh> B = a("eroded_badlands");
+   public static final alb<dfh> C = a("wooded_badlands");
+   public static final alb<dfh> D = a("meadow");
+   public static final alb<dfh> E = a("cherry_grove");
+   public static final alb<dfh> F = a("grove");
+   public static final alb<dfh> G = a("snowy_slopes");
+   public static final alb<dfh> H = a("frozen_peaks");
+   public static final alb<dfh> I = a("jagged_peaks");
+   public static final alb<dfh> J = a("stony_peaks");
+   public static final alb<dfh> K = a("river");
+   public static final alb<dfh> L = a("frozen_river");
+   public static final alb<dfh> M = a("beach");
+   public static final alb<dfh> N = a("snowy_beach");
+   public static final alb<dfh> O = a("stony_shore");
+   public static final alb<dfh> P = a("warm_ocean");
+   public static final alb<dfh> Q = a("lukewarm_ocean");
+   public static final alb<dfh> R = a("deep_lukewarm_ocean");
+   public static final alb<dfh> S = a("ocean");
+   public static final alb<dfh> T = a("deep_ocean");
+   public static final alb<dfh> U = a("cold_ocean");
+   public static final alb<dfh> V = a("deep_cold_ocean");
+   public static final alb<dfh> W = a("frozen_ocean");
+   public static final alb<dfh> X = a("deep_frozen_ocean");
+   public static final alb<dfh> Y = a("mushroom_fields");
+   public static final alb<dfh> Z = a("dripstone_caves");
+   public static final alb<dfh> aa = a("lush_caves");
+   public static final alb<dfh> ab = a("deep_dark");
+   public static final alb<dfh> ac = a("nether_wastes");
+   public static final alb<dfh> ad = a("warped_forest");
+   public static final alb<dfh> ae = a("crimson_forest");
+   public static final alb<dfh> af = a("soul_sand_valley");
+   public static final alb<dfh> ag = a("basalt_deltas");
+   public static final alb<dfh> ah = a("the_end");
+   public static final alb<dfh> ai = a("end_highlands");
+   public static final alb<dfh> aj = a("end_midlands");
+   public static final alb<dfh> ak = a("small_end_islands");
+   public static final alb<dfh> al = a("end_barrens");
 
-public abstract class dfo extends dgv {
-   private static final int d = 2;
-   private static final int e = 4;
-   private static final int f = 3;
-   private static final int g = 2;
-   protected static final int a = 4;
-   private static final eyx h = a(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
-   protected static final eyx b = eyu.a(
-      eyu.b(), eyu.a(a(0.0, 0.0, 4.0, 16.0, 3.0, 12.0), a(4.0, 0.0, 0.0, 12.0, 3.0, 16.0), a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0), h), eyi.e
-   );
-   protected final kk.a c;
-
-   @Override
-   protected abstract MapCodec<? extends dfo> a();
-
-   public dfo(dtz.d $$0, kk.a $$1) {
-      super($$0);
-      this.c = $$1;
-   }
-
-   protected double b(dua $$0) {
-      return 0.0;
-   }
-
-   protected boolean a(dua $$0, je $$1, btj $$2) {
-      return $$2.dz() < (double)$$1.v() + this.b($$0) && $$2.cO().e > (double)$$1.v() + 0.25;
-   }
-
-   @Override
-   protected brk a(cvl $$0, dua $$1, dds $$2, je $$3, cnp $$4, brj $$5, eya $$6) {
-      kk $$7 = this.c.b().get($$0.h());
-      return $$7.interact($$1, $$2, $$3, $$4, $$5, $$0);
-   }
-
-   @Override
-   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
-      return b;
-   }
-
-   @Override
-   protected eyx a(dua $$0, dcx $$1, je $$2) {
-      return h;
-   }
-
-   @Override
-   protected boolean c_(dua $$0) {
-      return true;
-   }
-
-   @Override
-   protected boolean a(dua $$0, eqq $$1) {
-      return false;
-   }
-
-   public abstract boolean d(dua var1);
-
-   @Override
-   protected void a(dua $$0, arg $$1, je $$2, azk $$3) {
-      je $$4 = dmn.a((dds)$$1, $$2);
-      if ($$4 != null) {
-         eqa $$5 = dmn.a($$1, $$4);
-         if ($$5 != eqc.a && this.a($$5)) {
-            this.a($$0, $$1, $$2, $$5);
-         }
-      }
-   }
-
-   protected boolean a(eqa $$0) {
-      return false;
-   }
-
-   protected void a(dua $$0, dds $$1, je $$2, eqa $$3) {
+   private static alb<dfh> a(String $$0) {
+      return alb.a(lv.aG, alc.b($$0));
    }
 }

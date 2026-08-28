@@ -55,11 +55,11 @@ public class xj {
       return this.b.hashCode();
    }
 
-   public static class a<T> implements azy {
+   public static class a<T> implements azz {
       public static final xj.a<xd> a = new xj.a<>("show_text", true, xf.a, ($$0, $$1) -> DataResult.success($$0));
       public static final xj.a<xj.c> b = new xj.a<>("show_item", true, xj.c.b, xj.c::a);
       public static final xj.a<xj.b> c = new xj.a<>("show_entity", true, xj.b.a, xj.b::a);
-      public static final Codec<xj.a<?>> d = azy.b(() -> new xj.a[]{a, b, c});
+      public static final Codec<xj.a<?>> d = azz.b(() -> new xj.a[]{a, b, c});
       public static final Codec<xj.a<?>> e = d.validate(xj.a::a);
       private final String f;
       private final boolean g;
@@ -74,7 +74,7 @@ public class xj {
             public <D> DataResult<Pair<xj.e<T>, D>> decode(DynamicOps<D> $$0, D $$1) {
                return xf.a.decode($$0, $$1).flatMap($$2 -> {
                   DataResult<T> $$4;
-                  if ($$0 instanceof akz<D> $$3xx) {
+                  if ($$0 instanceof ala<D> $$3xx) {
                      $$4 = $$3.parse((xd)$$2.getFirst(), $$3xx);
                   } else {
                      $$4 = $$3.parse((xd)$$2.getFirst(), null);
@@ -126,28 +126,28 @@ public class xj {
                )
                .apply($$0, xj.b::new)
       );
-      public final btq<?> b;
+      public final btv<?> b;
       public final UUID c;
       public final Optional<xd> d;
       @Nullable
       private List<xd> e;
 
-      public b(btq<?> $$0, UUID $$1, @Nullable xd $$2) {
+      public b(btv<?> $$0, UUID $$1, @Nullable xd $$2) {
          this($$0, $$1, Optional.ofNullable($$2));
       }
 
-      public b(btq<?> $$0, UUID $$1, Optional<xd> $$2) {
+      public b(btv<?> $$0, UUID $$1, Optional<xd> $$2) {
          this.b = $$0;
          this.c = $$1;
          this.d = $$2;
       }
 
-      public static DataResult<xj.b> a(xd $$0, @Nullable akz<?> $$1) {
+      public static DataResult<xj.b> a(xd $$0, @Nullable ala<?> $$1) {
          try {
             uf $$2 = vd.a($$0.getString());
             DynamicOps<JsonElement> $$3 = (DynamicOps<JsonElement>)($$1 != null ? $$1.a(JsonOps.INSTANCE) : JsonOps.INSTANCE);
             DataResult<xd> $$4 = xf.a.parse($$3, JsonParser.parseString($$2.l("name")));
-            btq<?> $$5 = lu.f.a(alb.a($$2.l("type")));
+            btv<?> $$5 = lu.f.a(alc.a($$2.l("type")));
             UUID $$6 = UUID.fromString($$2.l("id"));
             return $$4.map($$2x -> new xj.b($$5, $$6, $$2x));
          } catch (Exception var7) {
@@ -187,22 +187,22 @@ public class xj {
    }
 
    public static class c {
-      public static final Codec<xj.c> a = cvl.b.xmap(xj.c::new, xj.c::a);
-      private static final Codec<xj.c> c = cvl.g.xmap(xj.c::new, xj.c::a);
+      public static final Codec<xj.c> a = cvp.b.xmap(xj.c::new, xj.c::a);
+      private static final Codec<xj.c> c = cvp.g.xmap(xj.c::new, xj.c::a);
       public static final Codec<xj.c> b = Codec.withAlternative(a, c);
-      private final jn<cvg> d;
+      private final jn<cvk> d;
       private final int e;
       private final ko f;
       @Nullable
-      private cvl g;
+      private cvp g;
 
-      c(jn<cvg> $$0, int $$1, ko $$2) {
+      c(jn<cvk> $$0, int $$1, ko $$2) {
          this.d = $$0;
          this.e = $$1;
          this.f = $$2;
       }
 
-      public c(cvl $$0) {
+      public c(cvp $$0) {
          this($$0.i(), $$0.J(), $$0.e());
       }
 
@@ -225,19 +225,19 @@ public class xj {
          return 31 * $$0 + this.f.hashCode();
       }
 
-      public cvl a() {
+      public cvp a() {
          if (this.g == null) {
-            this.g = new cvl(this.d, this.e, this.f);
+            this.g = new cvp(this.d, this.e, this.f);
          }
 
          return this.g;
       }
 
-      private static DataResult<xj.c> a(xd $$0, @Nullable akz<?> $$1) {
+      private static DataResult<xj.c> a(xd $$0, @Nullable ala<?> $$1) {
          try {
             uf $$2 = vd.a($$0.getString());
             DynamicOps<vc> $$3 = (DynamicOps<vc>)($$1 != null ? $$1.a(ut.a) : ut.a);
-            return cvl.b.parse($$3, $$2).map(xj.c::new);
+            return cvp.b.parse($$3, $$2).map(xj.c::new);
          } catch (CommandSyntaxException var4) {
             return DataResult.error(() -> "Failed to parse item tag: " + var4.getMessage());
          }
@@ -245,7 +245,7 @@ public class xj {
    }
 
    public interface d<T> {
-      DataResult<T> parse(xd var1, @Nullable akz<?> var2);
+      DataResult<T> parse(xd var1, @Nullable ala<?> var2);
    }
 
    static record e<T>(xj.a<T> c, T d) {

@@ -1,51 +1,90 @@
-public class dar extends czk {
-   public dar(czh $$0) {
-      super($$0);
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import javax.annotation.Nullable;
+
+public class dar implements czx {
+   final String a;
+   final czv b;
+   final cvp c;
+   final List<dad> d;
+   @Nullable
+   private dag e;
+
+   public dar(String $$0, czv $$1, cvp $$2, List<dad> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public boolean a(czi $$0, dds $$1) {
-      if ($$0.f() == 3 && $$0.g() == 3) {
-         for (int $$2 = 0; $$2 < $$0.g(); $$2++) {
-            for (int $$3 = 0; $$3 < $$0.f(); $$3++) {
-               cvl $$4 = $$0.a($$3, $$2);
-               if ($$4.f()) {
-                  return false;
-               }
+   @Override
+   public dam<?> aq_() {
+      return dam.b;
+   }
 
-               if ($$3 == 1 && $$2 == 1) {
-                  if (!$$4.a(cvo.vt)) {
-                     return false;
-                  }
-               } else if (!$$4.a(cvo.ox)) {
-                  return false;
-               }
-            }
-         }
+   @Override
+   public String c() {
+      return this.a;
+   }
 
-         return true;
-      } else {
+   @Override
+   public czv d() {
+      return this.b;
+   }
+
+   @Override
+   public cvp a(jp.a $$0) {
+      return this.c;
+   }
+
+   @Override
+   public dag a() {
+      if (this.e == null) {
+         this.e = dag.b(this.d);
+      }
+
+      return this.e;
+   }
+
+   public boolean a(czw $$0, deg $$1) {
+      if ($$0.e() != this.d.size()) {
          return false;
+      } else {
+         return $$0.a() == 1 && this.d.size() == 1 ? this.d.getFirst().a($$0.a(0)) : $$0.c().a(this, null);
       }
    }
 
-   public cvl a(czi $$0, jp.a $$1) {
-      cvl $$2 = $$0.a(1, 1);
-      if (!$$2.a(cvo.vt)) {
-         return cvl.k;
-      } else {
-         cvl $$3 = new cvl(cvo.vs, 8);
-         $$3.b(kr.I, $$2.a(kr.I));
-         return $$3;
-      }
+   public cvp a(czw $$0, jp.a $$1) {
+      return this.c.u();
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+      return $$0 * $$1 >= this.d.size();
    }
 
-   @Override
-   public czy<?> as_() {
-      return czy.j;
+   public static class a implements dam<dar> {
+      private static final MapCodec<dar> x = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.a),
+                  czv.e.fieldOf("category").orElse(czv.d).forGetter($$0x -> $$0x.b),
+                  cvp.d.fieldOf("result").forGetter($$0x -> $$0x.c),
+                  dad.d.listOf(1, 9).fieldOf("ingredients").forGetter($$0x -> $$0x.d)
+               )
+               .apply($$0, dar::new)
+      );
+      public static final zb<wo, dar> w = zb.a(yz.l, $$0 -> $$0.a, czv.g, $$0 -> $$0.b, cvp.i, $$0 -> $$0.c, dad.a.a(yz.a()), $$0 -> $$0.d, dar::new);
+
+      @Override
+      public MapCodec<dar> a() {
+         return x;
+      }
+
+      @Override
+      public zb<wo, dar> b() {
+         return w;
+      }
    }
 }

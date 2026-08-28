@@ -1,7 +1,7 @@
 import java.util.Optional;
 
-public record ade(eye b, Optional<eye> c, ll d, jn<awc> e) implements zk<abz> {
-   public static final zb<wo, ade> a = zb.a(eye.b, ade::b, eye.b.a(yz::a), ade::e, ln.bg, ade::f, awc.d, ade::g, ade::new);
+public record ade(eys b, Optional<eys> c, ll d, jn<awd> e) implements zk<abz> {
+   public static final zb<wo, ade> a = zb.a(eys.b, ade::b, eys.b.a(yz::a), ade::e, ln.bg, ade::f, awd.d, ade::g, ade::new);
 
    @Override
    public zm<ade> a() {
@@ -12,7 +12,7 @@ public record ade(eye b, Optional<eye> c, ll d, jn<awc> e) implements zk<abz> {
       $$0.a(this);
    }
 
-   public Optional<eye> e() {
+   public Optional<eys> e() {
       return this.c;
    }
 
@@ -20,7 +20,7 @@ public record ade(eye b, Optional<eye> c, ll d, jn<awc> e) implements zk<abz> {
       return this.d;
    }
 
-   public jn<awc> g() {
+   public jn<awd> g() {
       return this.e;
    }
 }

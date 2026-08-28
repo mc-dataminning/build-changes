@@ -1,108 +1,70 @@
-import com.google.common.collect.Lists;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiConsumer;
 
-public class ehd extends ehe {
-   public static final int a = 8;
-   public static final int b = 15;
-   public static final MapCodec<ehd> c = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(ehc.a.fieldOf("mangrove_root_placement").forGetter($$0x -> $$0x.h)).apply($$0, ehd::new)
+public class ehd extends ehg {
+   public static final MapCodec<ehd> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0)
+            .and(
+               $$0.group(
+                  bqu.b(4, 16).fieldOf("height").forGetter($$0x -> $$0x.b),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("wide_bottom_layer_hole_chance").forGetter($$0x -> $$0x.c),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("corner_hole_chance").forGetter($$0x -> $$0x.c),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_chance").forGetter($$0x -> $$0x.h),
+                  Codec.floatRange(0.0F, 1.0F).fieldOf("hanging_leaves_extension_chance").forGetter($$0x -> $$0x.i)
+               )
+            )
+            .apply($$0, ehd::new)
    );
-   private final ehc h;
+   private final bqu b;
+   private final float c;
+   private final float g;
+   private final float h;
+   private final float i;
 
-   public ehd(bqp $$0, ehh $$1, Optional<ehb> $$2, ehc $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
+   public ehd(bqu $$0, bqu $$1, bqu $$2, float $$3, float $$4, float $$5, float $$6) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
+      this.g = $$4;
+      this.h = $$5;
+      this.i = $$6;
    }
 
    @Override
-   public boolean a(ddy $$0, BiConsumer<je, dua> $$1, azk $$2, je $$3, je $$4, egc $$5) {
-      List<je> $$6 = Lists.newArrayList();
-      je.a $$7 = $$3.k();
-
-      while ($$7.v() < $$4.v()) {
-         if (!this.a($$0, $$7)) {
-            return false;
-         }
-
-         $$7.c(jj.b);
-      }
-
-      $$6.add($$4.e());
-
-      for (jj $$8 : jj.c.a) {
-         je $$9 = $$4.a($$8);
-         List<je> $$10 = Lists.newArrayList();
-         if (!this.a($$0, $$2, $$9, $$8, $$4, $$10, 0)) {
-            return false;
-         }
-
-         $$6.addAll($$10);
-         $$6.add($$4.a($$8));
-      }
-
-      for (je $$11 : $$6) {
-         this.a($$0, $$1, $$2, $$11, $$5);
-      }
-
-      return true;
+   protected ehh<?> a() {
+      return ehh.k;
    }
 
-   private boolean a(ddy $$0, azk $$1, je $$2, jj $$3, je $$4, List<je> $$5, int $$6) {
-      int $$7 = this.h.e();
-      if ($$6 != $$7 && $$5.size() <= $$7) {
-         for (je $$9 : this.a($$2, $$3, $$1, $$4)) {
-            if (this.a($$0, $$9)) {
-               $$5.add($$9);
-               if (!this.a($$0, $$1, $$9, $$3, $$4, $$5, $$6 + 1)) {
-                  return false;
-               }
-            }
-         }
+   @Override
+   protected void a(dem $$0, ehg.b $$1, azl $$2, egq $$3, int $$4, ehg.a $$5, int $$6, int $$7, int $$8) {
+      boolean $$9 = $$5.c();
+      je $$10 = $$5.a().b($$8);
+      int $$11 = $$7 + $$5.b() - 1;
+      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 2, $$6 - 3, $$9);
+      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, $$6 - 4, $$9);
 
+      for (int $$12 = $$6 - 5; $$12 >= 0; $$12--) {
+         this.a($$0, $$1, $$2, $$3, $$10, $$11, $$12, $$9);
+      }
+
+      this.a($$0, $$1, $$2, $$3, $$10, $$11, -1, $$9, this.h, this.i);
+      this.a($$0, $$1, $$2, $$3, $$10, $$11 - 1, -2, $$9, this.h, this.i);
+   }
+
+   @Override
+   public int a(azl $$0, int $$1, egq $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(azl $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      if ($$2 == -1 && ($$1 == $$4 || $$3 == $$4) && $$0.i() < this.c) {
          return true;
       } else {
-         return false;
+         boolean $$6 = $$1 == $$4 && $$3 == $$4;
+         boolean $$7 = $$4 > 2;
+         return $$7 ? $$6 || $$1 + $$3 > $$4 * 2 - 2 && $$0.i() < this.g : $$6 && $$0.i() < this.g;
       }
-   }
-
-   protected List<je> a(je $$0, jj $$1, azk $$2, je $$3) {
-      je $$4 = $$0.e();
-      je $$5 = $$0.a($$1);
-      int $$6 = $$0.k($$3);
-      int $$7 = this.h.d();
-      float $$8 = this.h.f();
-      if ($$6 > $$7 - 3 && $$6 <= $$7) {
-         return $$2.i() < $$8 ? List.of($$4, $$5.e()) : List.of($$4);
-      } else if ($$6 > $$7) {
-         return List.of($$4);
-      } else if ($$2.i() < $$8) {
-         return List.of($$4);
-      } else {
-         return $$2.h() ? List.of($$5) : List.of($$4);
-      }
-   }
-
-   @Override
-   protected boolean a(ddy $$0, je $$1) {
-      return super.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(this.h.a()));
-   }
-
-   @Override
-   protected void a(ddy $$0, BiConsumer<je, dua> $$1, azk $$2, je $$3, egc $$4) {
-      if ($$0.a($$3, $$0x -> $$0x.a(this.h.b()))) {
-         dua $$5 = this.h.c().a($$2, $$3);
-         $$1.accept($$3, this.a($$0, $$3, $$5));
-      } else {
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   protected ehf<?> a() {
-      return ehf.a;
    }
 }

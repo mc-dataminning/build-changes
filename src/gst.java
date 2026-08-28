@@ -1,7 +1,5 @@
-import javax.annotation.Nullable;
-
-public class gst extends gtk {
-   public boolean a;
-   @Nullable
-   public dua b;
+public class gst extends gtl {
+   public float a;
+   public float b;
+   public float c;
 }

@@ -15,17 +15,17 @@ import java.util.function.Predicate;
 
 public class fx<T> implements ArgumentType<fx.c<T>> {
    private static final Collection<String> a = Arrays.asList("foo", "foo:bar", "012", "#skeletons", "#minecraft:skeletons");
-   final ala<? extends ka<T>> b;
+   final alb<? extends ka<T>> b;
 
-   public fx(ala<? extends ka<T>> $$0) {
+   public fx(alb<? extends ka<T>> $$0) {
       this.b = $$0;
    }
 
-   public static <T> fx<T> a(ala<? extends ka<T>> $$0) {
+   public static <T> fx<T> a(alb<? extends ka<T>> $$0) {
       return new fx<>($$0);
    }
 
-   public static <T> fx.c<T> a(CommandContext<et> $$0, String $$1, ala<ka<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
+   public static <T> fx.c<T> a(CommandContext<et> $$0, String $$1, alb<ka<T>> $$2, DynamicCommandExceptionType $$3) throws CommandSyntaxException {
       fx.c<?> $$4 = (fx.c<?>)$$0.getArgument($$1, fx.c.class);
       Optional<fx.c<T>> $$5 = $$4.a($$2);
       return $$5.orElseThrow(() -> $$3.create($$4));
@@ -37,15 +37,15 @@ public class fx<T> implements ArgumentType<fx.c<T>> {
 
          try {
             $$0.skip();
-            alb $$2 = alb.a($$0);
-            return new fx.d<>(axi.a(this.b, $$2));
+            alc $$2 = alc.a($$0);
+            return new fx.d<>(axj.a(this.b, $$2));
          } catch (CommandSyntaxException var4) {
             $$0.setCursor($$1);
             throw var4;
          }
       } else {
-         alb $$4 = alb.a($$0);
-         return new fx.b<>(ala.a(this.b, $$4));
+         alc $$4 = alc.a($$0);
+         return new fx.b<>(alb.a(this.b, $$4));
       }
    }
 
@@ -75,9 +75,9 @@ public class fx<T> implements ArgumentType<fx.c<T>> {
       }
 
       public final class a implements ip.a<fx<T>> {
-         final ala<? extends ka<T>> b;
+         final alb<? extends ka<T>> b;
 
-         a(final ala<? extends ka<T>> $$1) {
+         a(final alb<? extends ka<T>> $$1) {
             this.b = $$1;
          }
 
@@ -92,14 +92,14 @@ public class fx<T> implements ArgumentType<fx.c<T>> {
       }
    }
 
-   static record b<T>(ala<T> a) implements fx.c<T> {
+   static record b<T>(alb<T> a) implements fx.c<T> {
       @Override
-      public Either<ala<T>, axi<T>> a() {
+      public Either<alb<T>, axj<T>> a() {
          return Either.left(this.a);
       }
 
       @Override
-      public <E> Optional<fx.c<E>> a(ala<? extends ka<E>> $$0) {
+      public <E> Optional<fx.c<E>> a(alb<? extends ka<E>> $$0) {
          return this.a.d($$0).map(fx.b::new);
       }
 
@@ -112,27 +112,27 @@ public class fx<T> implements ArgumentType<fx.c<T>> {
          return this.a.a().toString();
       }
 
-      public ala<T> c() {
+      public alb<T> c() {
          return this.a;
       }
    }
 
    public interface c<T> extends Predicate<jn<T>> {
-      Either<ala<T>, axi<T>> a();
+      Either<alb<T>, axj<T>> a();
 
-      <E> Optional<fx.c<E>> a(ala<? extends ka<E>> var1);
+      <E> Optional<fx.c<E>> a(alb<? extends ka<E>> var1);
 
       String b();
    }
 
-   static record d<T>(axi<T> a) implements fx.c<T> {
+   static record d<T>(axj<T> a) implements fx.c<T> {
       @Override
-      public Either<ala<T>, axi<T>> a() {
+      public Either<alb<T>, axj<T>> a() {
          return Either.right(this.a);
       }
 
       @Override
-      public <E> Optional<fx.c<E>> a(ala<? extends ka<E>> $$0) {
+      public <E> Optional<fx.c<E>> a(alb<? extends ka<E>> $$0) {
          return this.a.d($$0).map(fx.d::new);
       }
 
@@ -145,7 +145,7 @@ public class fx<T> implements ArgumentType<fx.c<T>> {
          return "#" + this.a.b();
       }
 
-      public axi<T> c() {
+      public axj<T> c() {
          return this.a;
       }
    }

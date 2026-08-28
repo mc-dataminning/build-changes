@@ -1,61 +1,95 @@
-import com.mojang.datafixers.DataFixUtils;
-import java.util.List;
-import java.util.function.Predicate;
+public abstract class cay extends cbh {
+   protected bum d;
+   protected je e = je.c;
+   protected boolean f;
+   private boolean a;
+   private float b;
+   private float c;
 
-public class cay extends cbc {
-   private static final int a = 200;
-   private final cft b;
-   private int c;
-   private int d;
-
-   public cay(cft $$0) {
-      this.b = $$0;
-      this.d = this.a($$0);
+   public cay(bum $$0) {
+      this.d = $$0;
+      if (!cff.a($$0)) {
+         throw new IllegalArgumentException("Unsupported mob type for DoorInteractGoal");
+      }
    }
 
-   protected int a(cft $$0) {
-      return b(200 + $$0.dV().a(200) % 20);
+   protected boolean h() {
+      if (!this.f) {
+         return false;
+      } else {
+         duo $$0 = this.d.dS().a_(this.e);
+         if (!($$0.b() instanceof djp)) {
+            this.f = false;
+            return false;
+         } else {
+            return $$0.c(djp.c);
+         }
+      }
+   }
+
+   protected void a(boolean $$0) {
+      if (this.f) {
+         duo $$1 = this.d.dS().a_(this.e);
+         if ($$1.b() instanceof djp) {
+            ((djp)$$1.b()).a(this.d, this.d.dS(), $$1, this.e, $$0);
+         }
+      }
    }
 
    @Override
    public boolean b() {
-      if (this.b.gu()) {
+      if (!cff.a(this.d)) {
          return false;
-      } else if (this.b.gr()) {
-         return true;
-      } else if (this.d > 0) {
-         this.d--;
+      } else if (!this.d.Q) {
          return false;
       } else {
-         this.d = this.a(this.b);
-         Predicate<cft> $$0 = $$0x -> $$0x.gt() || !$$0x.gr();
-         List<? extends cft> $$1 = this.b.dS().a((Class<? extends cft>)this.b.getClass(), this.b.cO().c(8.0, 8.0, 8.0), $$0);
-         cft $$2 = (cft)DataFixUtils.orElse($$1.stream().filter(cft::gt).findAny(), this.b);
-         $$2.a($$1.stream().filter($$0x -> !$$0x.gr()));
-         return this.b.gr();
+         cdu $$0 = (cdu)this.d.P();
+         erd $$1 = $$0.k();
+         if ($$1 != null && !$$1.c() && $$0.f()) {
+            for (int $$2 = 0; $$2 < Math.min($$1.f() + 2, $$1.e()); $$2++) {
+               erb $$3 = $$1.a($$2);
+               this.e = new je($$3.a, $$3.b + 1, $$3.c);
+               if (!(this.d.i((double)this.e.u(), this.d.dz(), (double)this.e.w()) > 2.25)) {
+                  this.f = djp.a(this.d.dS(), this.e);
+                  if (this.f) {
+                     return true;
+                  }
+               }
+            }
+
+            this.e = this.d.ds().d();
+            this.f = djp.a(this.d.dS(), this.e);
+            return this.f;
+         } else {
+            return false;
+         }
       }
    }
 
    @Override
    public boolean c() {
-      return this.b.gr() && this.b.gv();
+      return !this.a;
    }
 
    @Override
    public void d() {
-      this.c = 0;
+      this.a = false;
+      this.b = (float)((double)this.e.u() + 0.5 - this.d.dx());
+      this.c = (float)((double)this.e.w() + 0.5 - this.d.dD());
    }
 
    @Override
-   public void e() {
-      this.b.gs();
+   public boolean T_() {
+      return true;
    }
 
    @Override
    public void a() {
-      if (--this.c <= 0) {
-         this.c = this.a(10);
-         this.b.gw();
+      float $$0 = (float)((double)this.e.u() + 0.5 - this.d.dx());
+      float $$1 = (float)((double)this.e.w() + 0.5 - this.d.dD());
+      float $$2 = this.b * $$0 + this.c * $$1;
+      if ($$2 < 0.0F) {
+         this.a = true;
       }
    }
 }

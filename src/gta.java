@@ -1,8 +1,7 @@
-public class gta extends gts {
-   public boolean d;
-   public boolean e;
-   public boolean f;
-   public float g;
-   public float h;
-   public float i;
+public class gta extends guj {
+   public final bti a = new bti();
+   public final bti b = new bti();
+   public final bti c = new bti();
+   public final bti d = new bti();
+   public final bti e = new bti();
 }

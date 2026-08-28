@@ -1,38 +1,35 @@
-public class ffi extends hct {
-   private static final xd a = xd.c("mco.client.incompatible.title").b(-65536);
-   private static final xd b = xd.b(ab.b().c()).b(-65536);
-   private static final xd c = xd.a("mco.client.unsupported.snapshot.version", b);
-   private static final xd B = xd.a("mco.client.outdated.stable.version", b);
-   private final fpt C;
-   private final fno D = new fno(this);
+import java.time.Duration;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-   public ffi(fpt $$0) {
-      super(a);
-      this.C = $$0;
+public class ffi {
+   public final fgr a = new fgr(ad.h(), TimeUnit.MILLISECONDS, ad.c);
+   private final List<fgr.e<?>> i;
+   public final fgr.e<List<fek>> b;
+   public final fgr.e<ffi.a> c;
+   public final fgr.e<Integer> d;
+   public final fgr.e<Boolean> e;
+   public final fgr.e<fej> f;
+   public final fgr.e<feo> g;
+   public final ffj h = new ffj(new fgx());
+
+   public ffi(fdu $$0) {
+      this.c = this.a.a("server list", () -> {
+         fen $$1 = $$0.b();
+         return fdp.b() ? new ffi.a($$1.a, $$0.c()) : new ffi.a($$1.a, List.of());
+      }, Duration.ofSeconds(60L), fgs.a);
+      this.d = this.a.a("pending invite count", $$0::h, Duration.ofSeconds(10L), fgs.a(360));
+      this.e = this.a.a("trial availablity", $$0::l, Duration.ofSeconds(60L), fgs.a(60));
+      this.f = this.a.a("unread news", $$0::k, Duration.ofMinutes(5L), fgs.a);
+      this.b = this.a.a("notifications", $$0::d, Duration.ofMinutes(5L), fgs.a);
+      this.g = this.a.a("online players", $$0::e, Duration.ofSeconds(10L), fgs.a);
+      this.i = List.of(this.b, this.c, this.d, this.e, this.f, this.g);
    }
 
-   @Override
-   public void aT_() {
-      this.D.a(a, this.p);
-      this.D.c(new fku(this.D(), this.p).b(true));
-      this.D.b(fka.a(xc.k, $$0 -> this.d()).a(200).a());
-      this.D.a($$1 -> {
-         fjy var10000 = this.c($$1);
-      });
-      this.c();
+   public List<fgr.e<?>> a() {
+      return this.i;
    }
 
-   @Override
-   protected void c() {
-      this.D.a();
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.C);
-   }
-
-   private xd D() {
-      return ab.b().g() ? B : c;
+   public static record a(List<fel> a, List<fel> b) {
    }
 }

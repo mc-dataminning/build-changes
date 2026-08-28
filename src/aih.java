@@ -34,9 +34,9 @@ public class aih implements zk<agq> {
    }
 
    @Nullable
-   public dcs a(dds $$0) {
-      btj $$1 = $$0.a(this.b);
-      return $$1 instanceof cpv ? ((cpv)$$1).E() : null;
+   public ddg a(deg $$0) {
+      bto $$1 = $$0.a(this.b);
+      return $$1 instanceof cqb ? ((cqb)$$1).F() : null;
    }
 
    public String b() {

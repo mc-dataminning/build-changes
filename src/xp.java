@@ -7,7 +7,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 public record xp(byte[] c) {
-   public static final Codec<xp> a = ayl.p.xmap(xp::new, xp::b);
+   public static final Codec<xp> a = aym.q.xmap(xp::new, xp::b);
    public static final int b = 256;
 
    public xp(byte[] c) {
@@ -25,7 +25,7 @@ public record xp(byte[] c) {
       $$0.c($$1.c);
    }
 
-   public boolean a(azp $$0, azo $$1) {
+   public boolean a(azq $$0, azp $$1) {
       return $$0.validate($$1, this.c);
    }
 

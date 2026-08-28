@@ -1,98 +1,165 @@
-import javax.annotation.Nullable;
+import com.mojang.authlib.minecraft.TelemetryPropertyContainer;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.util.UUID;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
-public class hcl {
-   private final fib a;
-   @Nullable
-   private hcm b;
+public record hcl<T>(String F, String G, Codec<T> H, hcl.a<T> I) {
+   private static final DateTimeFormatter J = DateTimeFormatter.ISO_OFFSET_DATE_TIME.withZone(ZoneId.from(ZoneOffset.UTC));
+   public static final hcl<String> a = b("user_id", "userId");
+   public static final hcl<String> b = b("client_id", "clientId");
+   public static final hcl<UUID> c = e("minecraft_session_id", "deviceSessionId");
+   public static final hcl<String> d = b("game_version", "buildDisplayName");
+   public static final hcl<String> e = b("operating_system", "buildPlatform");
+   public static final hcl<String> f = b("platform", "platform");
+   public static final hcl<Boolean> g = a("client_modded", "clientModded");
+   public static final hcl<String> h = b("launcher_name", "launcherName");
+   public static final hcl<UUID> i = e("world_session_id", "worldSessionId");
+   public static final hcl<Boolean> j = a("server_modded", "serverModded");
+   public static final hcl<hcl.c> k = a("server_type", "serverType", hcl.c.d, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.c()));
+   public static final hcl<Boolean> l = a("opt_in", "isOptional");
+   public static final hcl<Instant> m = a("event_timestamp_utc", "eventTimestampUtc", aym.p, ($$0, $$1, $$2) -> $$0.addProperty($$1, J.format($$2)));
+   public static final hcl<hcl.b> n = a("game_mode", "playerGameMode", hcl.b.f, ($$0, $$1, $$2) -> $$0.addProperty($$1, $$2.a()));
+   public static final hcl<String> o = b("realms_map_content", "realmsMapContent");
+   public static final hcl<Integer> p = c("seconds_since_load", "secondsSinceLoad");
+   public static final hcl<Integer> q = c("ticks_since_load", "ticksSinceLoad");
+   public static final hcl<LongList> r = g("frame_rate_samples", "serializedFpsSamples");
+   public static final hcl<LongList> s = g("render_time_samples", "serializedRenderTimeSamples");
+   public static final hcl<LongList> t = g("used_memory_samples", "serializedUsedMemoryKbSamples");
+   public static final hcl<Integer> u = c("number_of_samples", "numSamples");
+   public static final hcl<Integer> v = c("render_distance", "renderDistance");
+   public static final hcl<Integer> w = c("dedicated_memory_kb", "dedicatedMemoryKb");
+   public static final hcl<Integer> x = c("world_load_time_ms", "worldLoadTimeMs");
+   public static final hcl<Boolean> y = a("new_world", "newWorld");
+   public static final hcl<hcp.a> z = f("load_time_total_time_ms", "loadTimeTotalTimeMs");
+   public static final hcl<hcp.a> A = f("load_time_pre_window_ms", "loadTimePreWindowMs");
+   public static final hcl<hcp.a> B = f("load_time_bootstrap_ms", "loadTimeBootstrapMs");
+   public static final hcl<hcp.a> C = f("load_time_loading_overlay_ms", "loadTimeLoadingOverlayMs");
+   public static final hcl<String> D = b("advancement_id", "advancementId");
+   public static final hcl<Long> E = d("advancement_game_time", "advancementGameTime");
 
-   public hcl(fib $$0, fif $$1) {
-      this.a = $$0;
+   public static <T> hcl<T> a(String $$0, String $$1, Codec<T> $$2, hcl.a<T> $$3) {
+      return new hcl<>($$0, $$1, $$2, $$3);
    }
 
-   public void a(gfq $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
+   public static hcl<Boolean> a(String $$0, String $$1) {
+      return a($$0, $$1, Codec.BOOL, TelemetryPropertyContainer::addProperty);
+   }
+
+   public static hcl<String> b(String $$0, String $$1) {
+      return a($$0, $$1, Codec.STRING, TelemetryPropertyContainer::addProperty);
+   }
+
+   public static hcl<Integer> c(String $$0, String $$1) {
+      return a($$0, $$1, Codec.INT, TelemetryPropertyContainer::addProperty);
+   }
+
+   public static hcl<Long> d(String $$0, String $$1) {
+      return a($$0, $$1, Codec.LONG, TelemetryPropertyContainer::addProperty);
+   }
+
+   public static hcl<UUID> e(String $$0, String $$1) {
+      return a($$0, $$1, kh.d, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.toString()));
+   }
+
+   public static hcl<hcp.a> f(String $$0, String $$1) {
+      return a($$0, $$1, hcp.a.a, ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.a()));
+   }
+
+   public static hcl<LongList> g(String $$0, String $$1) {
+      return a(
+         $$0,
+         $$1,
+         Codec.LONG.listOf().xmap(LongArrayList::new, Function.identity()),
+         ($$0x, $$1x, $$2) -> $$0x.addProperty($$1x, $$2.longStream().mapToObj(String::valueOf).collect(Collectors.joining(";")))
+      );
+   }
+
+   public void a(hcm $$0, TelemetryPropertyContainer $$1) {
+      T $$2 = $$0.a(this);
+      if ($$2 != null) {
+         this.I.apply($$1, this.G, $$2);
+      } else {
+         $$1.addNullProperty(this.G);
       }
    }
 
-   public void a(double $$0, double $$1) {
-      if (this.b != null) {
-         this.b.a($$0, $$1);
+   public xr a() {
+      return xd.c("telemetry.property." + this.F + ".title");
+   }
+
+   @Override
+   public String toString() {
+      return "TelemetryProperty[" + this.F + "]";
+   }
+
+   public String b() {
+      return this.F;
+   }
+
+   public String c() {
+      return this.G;
+   }
+
+   public Codec<T> d() {
+      return this.H;
+   }
+
+   public hcl.a<T> e() {
+      return this.I;
+   }
+
+   public interface a<T> {
+      void apply(TelemetryPropertyContainer var1, String var2, T var3);
+   }
+
+   public static enum b implements azz {
+      a("survival", 0),
+      b("creative", 1),
+      c("adventure", 2),
+      d("spectator", 6),
+      e("hardcore", 99);
+
+      public static final Codec<hcl.b> f = azz.a(hcl.b::values);
+      private final String g;
+      private final int h;
+
+      private b(final String $$0, final int $$1) {
+         this.g = $$0;
+         this.h = $$1;
+      }
+
+      public int a() {
+         return this.h;
+      }
+
+      @Override
+      public String c() {
+         return this.g;
       }
    }
 
-   public void a(@Nullable gax $$0, @Nullable eyc $$1) {
-      if (this.b != null && $$1 != null && $$0 != null) {
-         this.b.a($$0, $$1);
-      }
-   }
+   public static enum c implements azz {
+      a("realm"),
+      b("local"),
+      c("server");
 
-   public void a(gax $$0, je $$1, dua $$2, float $$3) {
-      if (this.b != null) {
-         this.b.a($$0, $$1, $$2, $$3);
-      }
-   }
+      public static final Codec<hcl.c> d = azz.a(hcl.c::values);
+      private final String e;
 
-   public void a() {
-      if (this.b != null) {
-         this.b.c();
-      }
-   }
-
-   public void a(cvl $$0) {
-      if (this.b != null) {
-         this.b.a($$0);
-      }
-   }
-
-   public void b() {
-      if (this.b != null) {
-         this.b.b();
-         this.b = null;
-      }
-   }
-
-   public void c() {
-      if (this.b != null) {
-         this.b();
+      private c(final String $$0) {
+         this.e = $$0;
       }
 
-      this.b = this.a.n.r.a(this);
-   }
-
-   public void d() {
-      if (this.b != null) {
-         if (this.a.s != null) {
-            this.b.a();
-         } else {
-            this.b();
-         }
-      } else if (this.a.s != null) {
-         this.c();
+      @Override
+      public String c() {
+         return this.e;
       }
-   }
-
-   public void a(hcn $$0) {
-      this.a.n.r = $$0;
-      this.a.n.ay();
-      if (this.b != null) {
-         this.b.b();
-         this.b = $$0.a(this);
-      }
-   }
-
-   public fib e() {
-      return this.a;
-   }
-
-   public boolean f() {
-      return this.a.r == null ? false : this.a.r.j() == ddp.a;
-   }
-
-   public static xd a(String $$0) {
-      return xd.d("key." + $$0).a(n.r);
-   }
-
-   public void a(cvl $$0, cvl $$1, cra $$2) {
    }
 }

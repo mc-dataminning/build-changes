@@ -1,94 +1,30 @@
-import com.mojang.serialization.Lifecycle;
-import java.util.Locale;
-import java.util.Set;
-import javax.annotation.Nullable;
+public class esn {
+   private final int b;
+   private final String c;
+   public static String a = "main";
 
-public interface esn {
-   int d = 19133;
-   int e = 19132;
-
-   deo D();
-
-   void a(deo var1);
-
-   boolean F();
-
-   Set<String> G();
-
-   Set<String> H();
-
-   void a(String var1, boolean var2);
-
-   default void a(p $$0) {
-      $$0.a("Known server brands", () -> String.join(", ", this.G()));
-      $$0.a("Removed feature flags", () -> String.join(", ", this.H()));
-      $$0.a("Level was modded", () -> Boolean.toString(this.F()));
-      $$0.a("Level storage version", () -> {
-         int $$0x = this.x();
-         return String.format(Locale.ROOT, "0x%05X - %s", $$0x, this.f($$0x));
-      });
+   public esn(int $$0) {
+      this($$0, a);
    }
 
-   default String f(int $$0) {
-      switch ($$0) {
-         case 19132:
-            return "McRegion";
-         case 19133:
-            return "Anvil";
-         default:
-            return "Unknown?";
-      }
+   public esn(int $$0, String $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   @Nullable
-   uf E();
+   public boolean a() {
+      return !this.c.equals(a);
+   }
 
-   void a(@Nullable uf var1);
+   public String b() {
+      return this.c;
+   }
 
-   esm I();
+   public int c() {
+      return this.b;
+   }
 
-   ddw J();
-
-   uf a(kb var1, @Nullable uf var2);
-
-   boolean l();
-
-   int x();
-
-   String e();
-
-   ddp k();
-
-   void a(ddp var1);
-
-   boolean m();
-
-   brh q();
-
-   void a(brh var1);
-
-   boolean r();
-
-   void d(boolean var1);
-
-   ddo o();
-
-   @Nullable
-   uf w();
-
-   dxz.a C();
-
-   void a(dxz.a var1);
-
-   eau y();
-
-   boolean z();
-
-   boolean A();
-
-   Lifecycle B();
-
-   default cqh K() {
-      return this.D().b();
+   public boolean a(esn $$0) {
+      return this.b().equals($$0.b());
    }
 }

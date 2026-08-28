@@ -1,54 +1,59 @@
-import com.google.common.base.Charsets;
 import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Collection;
 import org.slf4j.Logger;
 
-public class fho {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 50;
-   private static final String c = "command_history.txt";
-   private final Path d;
-   private final axp<String> e = new axp<>(50);
+public abstract class fho extends fhj {
+   private static final Logger b = LogUtils.getLogger();
+   private final long c;
+   private final xd d;
+   private final Runnable e;
 
-   public fho(Path $$0) {
-      this.d = $$0.resolve("command_history.txt");
-      if (Files.exists(this.d)) {
-         try (BufferedReader $$1 = Files.newBufferedReader(this.d, Charsets.UTF_8)) {
-            this.e.addAll($$1.lines().toList());
-         } catch (Exception var7) {
-            a.error("Failed to read {}, command history will be missing", "command_history.txt", var7);
+   public fho(long $$0, xd $$1, Runnable $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+   }
+
+   protected abstract void a(fdu var1, long var2) throws fff;
+
+   @Override
+   public void run() {
+      fdu $$0 = fdu.a();
+      int $$1 = 0;
+
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            this.a($$0, this.c);
+            if (this.d()) {
+               return;
+            }
+
+            this.e.run();
+            return;
+         } catch (ffg var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't reset world");
+            this.a(var5);
+            return;
          }
       }
    }
 
-   public void a(String $$0) {
-      if (!$$0.equals(this.e.peekLast())) {
-         if (this.e.size() >= 50) {
-            this.e.removeFirst();
-         }
-
-         this.e.addLast($$0);
-         this.b();
-      }
-   }
-
-   private void b() {
-      try (BufferedWriter $$0 = Files.newBufferedWriter(this.d, Charsets.UTF_8)) {
-         for (String $$1 : this.e) {
-            $$0.write($$1);
-            $$0.newLine();
-         }
-      } catch (IOException var6) {
-         a.error("Failed to write {}, command history will be missing", "command_history.txt", var6);
-      }
-   }
-
-   public Collection<String> a() {
-      return this.e;
+   @Override
+   public xd a() {
+      return this.d;
    }
 }

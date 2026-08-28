@@ -1,112 +1,69 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Collectors;
+import com.google.common.collect.Lists;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public class eiq {
-   public static final ala<eip> a = a("classic_flat");
-   public static final ala<eip> b = a("tunnelers_dream");
-   public static final ala<eip> c = a("water_world");
-   public static final ala<eip> d = a("overworld");
-   public static final ala<eip> e = a("snowy_kingdom");
-   public static final ala<eip> f = a("bottomless_pit");
-   public static final ala<eip> g = a("desert");
-   public static final ala<eip> h = a("redstone_ready");
-   public static final ala<eip> i = a("the_void");
+public class eiq extends eiy {
+   public static final MapCodec<eiq> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  aym.l.optionalFieldOf("min_height_for_leaves", 1).forGetter($$0x -> $$0x.b), bqu.b(1, 64).fieldOf("bend_length").forGetter($$0x -> $$0x.h)
+               )
+            )
+            .apply($$0, eiq::new)
+   );
+   private final int b;
+   private final bqu h;
 
-   public static void a(qt<eip> $$0) {
-      new eiq.a($$0).a();
+   public eiq(int $$0, int $$1, int $$2, int $$3, bqu $$4) {
+      super($$0, $$1, $$2);
+      this.b = $$3;
+      this.h = $$4;
    }
 
-   private static ala<eip> a(String $$0) {
-      return ala.a(lv.aN, alb.b($$0));
+   @Override
+   protected eiz<?> a() {
+      return eiz.g;
    }
 
-   static class a {
-      private final qt<eip> a;
+   @Override
+   public List<ehg.a> a(dem $$0, BiConsumer<je, duo> $$1, azl $$2, int $$3, je $$4, egq $$5) {
+      jj $$6 = jj.c.a.a($$2);
+      int $$7 = $$3 - 1;
+      je.a $$8 = $$4.k();
+      je $$9 = $$8.e();
+      a($$0, $$1, $$2, $$9, $$5);
+      List<ehg.a> $$10 = Lists.newArrayList();
 
-      a(qt<eip> $$0) {
-         this.a = $$0;
-      }
-
-      private void a(ala<eip> $$0, ddr $$1, ala<det> $$2, Set<ala<eku>> $$3, boolean $$4, boolean $$5, eio... $$6) {
-         jo<eku> $$7 = this.a.a(lv.aT);
-         jo<ejs> $$8 = this.a.a(lv.aQ);
-         jo<det> $$9 = this.a.a(lv.aF);
-         jr.a<eku> $$10 = jr.a($$3.stream().map($$7::b).collect(Collectors.toList()));
-         eir $$11 = new eir(Optional.of($$10), $$9.b($$2), eir.b($$8));
-         if ($$4) {
-            $$11.a();
+      for (int $$11 = 0; $$11 <= $$7; $$11++) {
+         if ($$11 + 1 >= $$7 + $$2.a(2)) {
+            $$8.c($$6);
          }
 
-         if ($$5) {
-            $$11.b();
+         if (efc.c($$0, $$8)) {
+            this.b($$0, $$1, $$2, $$8, $$5);
          }
 
-         for (int $$12 = $$6.length - 1; $$12 >= 0; $$12--) {
-            $$11.e().add($$6[$$12]);
+         if ($$11 >= this.b) {
+            $$10.add(new ehg.a($$8.j(), 0, false));
          }
 
-         this.a.a($$0, new eip($$1.r().o(), $$11));
+         $$8.c(jj.b);
       }
 
-      public void a() {
-         this.a(eiq.a, dgx.i, dfa.b, ImmutableSet.of(ekh.a), false, false, new eio(1, dgx.i), new eio(2, dgx.j), new eio(1, dgx.F));
-         this.a(eiq.b, dgx.b, dfa.t, ImmutableSet.of(ekh.j, ekh.r), true, false, new eio(1, dgx.i), new eio(5, dgx.j), new eio(230, dgx.b), new eio(1, dgx.F));
-         this.a(
-            eiq.c,
-            cvo.qA,
-            dfa.T,
-            ImmutableSet.of(ekh.m, ekh.l, ekh.g),
-            false,
-            false,
-            new eio(90, dgx.G),
-            new eio(5, dgx.L),
-            new eio(5, dgx.j),
-            new eio(5, dgx.b),
-            new eio(64, dgx.sJ),
-            new eio(1, dgx.F)
-         );
-         this.a(
-            eiq.d,
-            dgx.bt,
-            dfa.b,
-            ImmutableSet.of(ekh.a, ekh.j, ekh.f, ekh.k, ekh.r),
-            true,
-            true,
-            new eio(1, dgx.i),
-            new eio(3, dgx.j),
-            new eio(59, dgx.b),
-            new eio(1, dgx.F)
-         );
-         this.a(
-            eiq.e,
-            dgx.dN,
-            dfa.d,
-            ImmutableSet.of(ekh.a, ekh.c),
-            false,
-            false,
-            new eio(1, dgx.dN),
-            new eio(1, dgx.i),
-            new eio(3, dgx.j),
-            new eio(59, dgx.b),
-            new eio(1, dgx.F)
-         );
-         this.a(eiq.f, cvo.pu, dfa.b, ImmutableSet.of(ekh.a), false, false, new eio(1, dgx.i), new eio(3, dgx.j), new eio(2, dgx.m));
-         this.a(
-            eiq.g,
-            dgx.I,
-            dfa.f,
-            ImmutableSet.of(ekh.a, ekh.b, ekh.j, ekh.r),
-            true,
-            false,
-            new eio(8, dgx.I),
-            new eio(52, dgx.aV),
-            new eio(3, dgx.b),
-            new eio(1, dgx.F)
-         );
-         this.a(eiq.h, cvo.lH, dfa.f, ImmutableSet.of(), false, false, new eio(116, dgx.aV), new eio(3, dgx.b), new eio(1, dgx.F));
-         this.a(eiq.i, dgx.hW, dfa.a, ImmutableSet.of(), true, false, new eio(1, dgx.a));
+      int $$12 = this.h.a($$2);
+
+      for (int $$13 = 0; $$13 <= $$12; $$13++) {
+         if (efc.c($$0, $$8)) {
+            this.b($$0, $$1, $$2, $$8, $$5);
+         }
+
+         $$10.add(new ehg.a($$8.j(), 0, false));
+         $$8.c($$6);
       }
+
+      return $$10;
    }
 }

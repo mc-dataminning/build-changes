@@ -1,42 +1,22 @@
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
-public class cem extends ceo<cnc> {
-   private static final int a = 40;
-
-   public cem() {
-      super(40);
-   }
-
-   protected void a(arg $$0, cnc $$1) {
-      ala<dds> $$2 = $$0.ag();
-      je $$3 = $$1.ds();
-      List<jm> $$4 = Lists.newArrayList();
-      int $$5 = 4;
-
-      for (int $$6 = -4; $$6 <= 4; $$6++) {
-         for (int $$7 = -2; $$7 <= 2; $$7++) {
-            for (int $$8 = -4; $$8 <= 4; $$8++) {
-               je $$9 = $$3.b($$6, $$7, $$8);
-               if ($$1.gy().b().e().contains($$0.a_($$9).b())) {
-                  $$4.add(jm.a($$2, $$9));
-               }
-            }
-         }
-      }
-
-      bvg<?> $$10 = $$1.dX();
-      if (!$$4.isEmpty()) {
-         $$10.a(cdi.f, $$4);
-      } else {
-         $$10.b(cdi.f);
-      }
+public class cem<T extends buk> extends cet<T> {
+   @Override
+   protected void a(arh $$0, T $$1) {
+      double $$2 = $$1.h(bvr.m);
+      eyn $$3 = $$1.cO().c($$2, $$2, $$2);
+      List<buk> $$4 = $$0.a(buk.class, $$3, $$1x -> $$1x != $$1 && $$1x.bI());
+      $$4.sort(Comparator.comparingDouble($$1::g));
+      bvl<?> $$5 = $$1.dX();
+      $$5.a(cdn.g, $$4);
+      $$5.a(cdn.h, new cdp($$1, $$4));
    }
 
    @Override
-   public Set<cdi<?>> a() {
-      return ImmutableSet.of(cdi.f);
+   public Set<cdn<?>> a() {
+      return ImmutableSet.of(cdn.g, cdn.h);
    }
 }

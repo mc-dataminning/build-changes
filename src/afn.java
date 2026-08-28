@@ -5,9 +5,9 @@ public class afn implements zk<abz> {
    private final int b;
    private final int[] c;
 
-   public afn(btj $$0) {
+   public afn(bto $$0) {
       this.b = $$0.ap();
-      List<btj> $$1 = $$0.cW();
+      List<bto> $$1 = $$0.cW();
       this.c = new int[$$1.size()];
 
       for (int $$2 = 0; $$2 < $$1.size(); $$2++) {

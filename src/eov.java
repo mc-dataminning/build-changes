@@ -1,22 +1,26 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
 
-public class eov implements eoy {
-   public static final MapCodec<eov> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(uf.a.fieldOf("data").forGetter($$0x -> $$0x.b)).apply($$0, eov::new));
-   private final uf b;
+public class eov extends eoy {
+   public static final MapCodec<eov> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(lu.e.q().fieldOf("block").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d)).apply($$0, eov::new)
+   );
+   private final dhj b;
+   private final float d;
 
-   public eov(uf $$0) {
+   public eov(dhj $$0, float $$1) {
       this.b = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public uf a(azk $$0, @Nullable uf $$1) {
-      return $$1 == null ? this.b.i() : $$1.a(this.b);
+   public boolean a(duo $$0, azl $$1) {
+      return $$0.a(this.b) && $$1.i() < this.d;
    }
 
    @Override
-   public eoz<?> a() {
-      return eoz.c;
+   protected eoz<?> a() {
+      return eoz.e;
    }
 }

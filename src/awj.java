@@ -1,196 +1,106 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.internal.Streams;
-import com.google.gson.stream.JsonReader;
-import com.mojang.datafixers.DataFixer;
+import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import java.io.File;
-import java.io.IOException;
-import java.io.StringReader;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
-import java.util.Map.Entry;
-import net.minecraft.server.MinecraftServer;
-import org.apache.commons.io.FileUtils;
+import java.util.function.Consumer;
 import org.slf4j.Logger;
 
-public class awj extends awo {
-   private static final Logger b = LogUtils.getLogger();
-   private final MinecraftServer c;
-   private final File d;
-   private final Set<awk<?>> e = Sets.newHashSet();
+public class awj extends awh {
+   public static final String c = "recipeBook";
+   private static final Logger d = LogUtils.getLogger();
 
-   public awj(MinecraftServer $$0, File $$1) {
-      this.c = $$0;
-      this.d = $$1;
-      if ($$1.isFile()) {
-         try {
-            this.a($$0.aC(), FileUtils.readFileToString($$1));
-         } catch (IOException var4) {
-            b.error("Couldn't read statistics file {}", $$1, var4);
-         } catch (JsonParseException var5) {
-            b.error("Couldn't parse statistics file {}", $$1, var5);
+   public int a(Collection<daj<?>> $$0, ari $$1) {
+      List<alc> $$2 = Lists.newArrayList();
+      int $$3 = 0;
+
+      for (daj<?> $$4 : $$0) {
+         alc $$5 = $$4.a();
+         if (!this.a.contains($$5) && !$$4.b().ap_()) {
+            this.a($$5);
+            this.d($$5);
+            $$2.add($$5);
+            an.g.a($$1, $$4);
+            $$3++;
          }
       }
-   }
 
-   public void a() {
-      try {
-         FileUtils.writeStringToFile(this.d, this.b());
-      } catch (IOException var2) {
-         b.error("Couldn't save stats", var2);
+      if ($$2.size() > 0) {
+         this.a(aek.a.b, $$1, $$2);
       }
+
+      return $$3;
    }
 
-   @Override
-   public void a(cnp $$0, awk<?> $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.e.add($$1);
+   public int b(Collection<daj<?>> $$0, ari $$1) {
+      List<alc> $$2 = Lists.newArrayList();
+      int $$3 = 0;
+
+      for (daj<?> $$4 : $$0) {
+         alc $$5 = $$4.a();
+         if (this.a.contains($$5)) {
+            this.c($$5);
+            $$2.add($$5);
+            $$3++;
+         }
+      }
+
+      this.a(aek.a.c, $$1, $$2);
+      return $$3;
    }
 
-   private Set<awk<?>> d() {
-      Set<awk<?>> $$0 = Sets.newHashSet(this.e);
-      this.e.clear();
+   private void a(aek.a $$0, ari $$1, List<alc> $$2) {
+      $$1.c.b(new aek($$0, $$2, Collections.emptyList(), this.a()));
+   }
+
+   public uf b() {
+      uf $$0 = new uf();
+      this.a().b($$0);
+      ul $$1 = new ul();
+
+      for (alc $$2 : this.a) {
+         $$1.add(va.a($$2.toString()));
+      }
+
+      $$0.a("recipes", $$1);
+      ul $$3 = new ul();
+
+      for (alc $$4 : this.b) {
+         $$3.add(va.a($$4.toString()));
+      }
+
+      $$0.a("toBeDisplayed", $$3);
       return $$0;
    }
 
-   public void a(DataFixer $$0, String $$1) {
-      try {
-         JsonReader $$2 = new JsonReader(new StringReader($$1));
-
-         label47: {
-            try {
-               $$2.setLenient(false);
-               JsonElement $$3 = Streams.parse($$2);
-               if (!$$3.isJsonNull()) {
-                  uf $$4 = a($$3.getAsJsonObject());
-                  $$4 = bal.g.a($$0, $$4, uu.b($$4, 1343));
-                  if (!$$4.b("stats", 10)) {
-                     break label47;
-                  }
-
-                  uf $$5 = $$4.p("stats");
-                  Iterator var7 = $$5.e().iterator();
-
-                  while (true) {
-                     if (!var7.hasNext()) {
-                        break label47;
-                     }
-
-                     String $$6 = (String)var7.next();
-                     if ($$5.b($$6, 10)) {
-                        ad.a(
-                           lu.v.b(alb.a($$6)),
-                           $$2x -> {
-                              uf $$3x = $$5.p($$6);
-
-                              for (String $$4x : $$3x.e()) {
-                                 if ($$3x.b($$4x, 99)) {
-                                    ad.a(
-                                       this.a($$2x, $$4x),
-                                       $$2xx -> this.a.put($$2xx, $$3x.h($$4x)),
-                                       () -> b.warn("Invalid statistic in {}: Don't know what {} is", this.d, $$4x)
-                                    );
-                                 } else {
-                                    b.warn("Invalid statistic value in {}: Don't know what {} is for key {}", new Object[]{this.d, $$3x.c($$4x), $$4x});
-                                 }
-                              }
-                           },
-                           () -> b.warn("Invalid statistic type in {}: Don't know what {} is", this.d, $$6)
-                        );
-                     }
-                  }
-               }
-
-               b.error("Unable to parse Stat data from {}", this.d);
-            } catch (Throwable var10) {
-               try {
-                  $$2.close();
-               } catch (Throwable var9) {
-                  var10.addSuppressed(var9);
-               }
-
-               throw var10;
-            }
-
-            $$2.close();
-            return;
-         }
-
-         $$2.close();
-      } catch (IOException | JsonParseException var11) {
-         b.error("Unable to parse Stat data from {}", this.d, var11);
-      }
+   public void a(uf $$0, dal $$1) {
+      this.a(awi.a($$0));
+      ul $$2 = $$0.c("recipes", 8);
+      this.a($$2, this::a, $$1);
+      ul $$3 = $$0.c("toBeDisplayed", 8);
+      this.a($$3, this::f, $$1);
    }
 
-   private <T> Optional<awk<T>> a(awm<T> $$0, String $$1) {
-      return Optional.ofNullable(alb.c($$1)).flatMap($$0.b()::b).map($$0::b);
-   }
+   private void a(ul $$0, Consumer<daj<?>> $$1, dal $$2) {
+      for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
+         String $$4 = $$0.j($$3);
 
-   private static uf a(JsonObject $$0) {
-      uf $$1 = new uf();
-
-      for (Entry<String, JsonElement> $$2 : $$0.entrySet()) {
-         JsonElement $$3 = $$2.getValue();
-         if ($$3.isJsonObject()) {
-            $$1.a($$2.getKey(), a($$3.getAsJsonObject()));
-         } else if ($$3.isJsonPrimitive()) {
-            JsonPrimitive $$4 = $$3.getAsJsonPrimitive();
-            if ($$4.isNumber()) {
-               $$1.a($$2.getKey(), $$4.getAsInt());
+         try {
+            alc $$5 = alc.a($$4);
+            Optional<daj<?>> $$6 = $$2.a($$5);
+            if ($$6.isEmpty()) {
+               d.error("Tried to load unrecognized recipe: {} removed now.", $$5);
+            } else {
+               $$1.accept($$6.get());
             }
+         } catch (aa var8) {
+            d.error("Tried to load improperly formatted recipe: {} removed now.", $$4);
          }
       }
-
-      return $$1;
    }
 
-   protected String b() {
-      Map<awm<?>, JsonObject> $$0 = Maps.newHashMap();
-      ObjectIterator $$3 = this.a.object2IntEntrySet().iterator();
-
-      while ($$3.hasNext()) {
-         it.unimi.dsi.fastutil.objects.Object2IntMap.Entry<awk<?>> $$1 = (it.unimi.dsi.fastutil.objects.Object2IntMap.Entry<awk<?>>)$$3.next();
-         awk<?> $$2 = (awk<?>)$$1.getKey();
-         $$0.computeIfAbsent($$2.a(), $$0x -> new JsonObject()).addProperty(b($$2).toString(), $$1.getIntValue());
-      }
-
-      JsonObject $$3x = new JsonObject();
-
-      for (Entry<awm<?>, JsonObject> $$4 : $$0.entrySet()) {
-         $$3x.add(lu.v.b($$4.getKey()).toString(), (JsonElement)$$4.getValue());
-      }
-
-      JsonObject $$5 = new JsonObject();
-      $$5.add("stats", $$3x);
-      $$5.addProperty("DataVersion", ab.b().d().c());
-      return $$5.toString();
-   }
-
-   private static <T> alb b(awk<T> $$0) {
-      return $$0.a().b().b($$0.b());
-   }
-
-   public void c() {
-      this.e.addAll(this.a.keySet());
-   }
-
-   public void a(arh $$0) {
-      Object2IntMap<awk<?>> $$1 = new Object2IntOpenHashMap();
-
-      for (awk<?> $$2 : this.d()) {
-         $$1.put($$2, this.a($$2));
-      }
-
-      $$0.c.b(new acd($$1));
+   public void a(ari $$0) {
+      $$0.c.b(new aek(aek.a.a, this.a, this.b, this.a()));
    }
 }

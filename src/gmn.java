@@ -1,165 +1,81 @@
+import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.util.Pair;
+import java.util.Map;
+import java.util.stream.Stream;
 import org.joml.Quaternionf;
-import org.joml.Vector3f;
 
-public class gmn extends gmr<cis, gss> {
-   public static final alb a = alb.b("textures/entity/end_crystal/end_crystal_beam.png");
-   private static final alb b = alb.b("textures/entity/enderdragon/dragon_exploding.png");
-   private static final alb h = alb.b("textures/entity/enderdragon/dragon.png");
-   private static final alb i = alb.b("textures/entity/enderdragon/dragon_eyes.png");
-   private static final ghe j = ghe.f(h);
-   private static final ghe k = ghe.m(h);
-   private static final ghe l = ghe.q(i);
-   private static final ghe m = ghe.l(a);
-   private static final float n = (float)(Math.sqrt(3.0) / 2.0);
-   private final fzv o;
+public class gmn extends gni<cpu, gsy> {
+   private final Map<cpu.b, Pair<alc, fxk<gsy>>> a;
+   private final fyf b;
 
-   public gmn(gms.a $$0) {
+   public gmn(gnj.a $$0, boolean $$1) {
       super($$0);
-      this.f = 0.5F;
-      this.o = new fzv($$0.a(gaa.av));
+      this.f = 0.8F;
+      this.a = Stream.of(cpu.b.values()).collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$2 -> Pair.of(a($$2, $$1), this.a($$0, $$2, $$1))));
+      this.b = new fyf.a($$0.a(gak.v), $$0x -> ghq.i());
    }
 
-   public void a(gss $$0, fcu $$1, ggv $$2, int $$3) {
+   private fxk<gsy> a(gnj.a $$0, cpu.b $$1, boolean $$2) {
+      gaj $$3 = $$2 ? gak.b($$1) : gak.a($$1);
+      gal $$4 = $$0.a($$3);
+
+      return (fxk<gsy>)(switch ($$1) {
+         case i -> new fyw($$4);
+         default -> new fws($$4);
+      });
+   }
+
+   private static alc a(cpu.b $$0, boolean $$1) {
+      return $$1 ? alc.b("textures/entity/chest_boat/" + $$0.a() + ".png") : alc.b("textures/entity/boat/" + $$0.a() + ".png");
+   }
+
+   public void a(gsy $$0, fde $$1, ghg $$2, int $$3) {
       $$1.a();
-      float $$4 = $$0.a(7).b();
-      float $$5 = (float)($$0.a(5).a() - $$0.a(10).a());
-      $$1.a(a.d.rotationDegrees(-$$4));
-      $$1.a(a.b.rotationDegrees($$5 * 10.0F));
-      $$1.a(0.0F, 0.0F, 1.0F);
-      $$1.b(-1.0F, -1.0F, 1.0F);
-      $$1.a(0.0F, -1.501F, 0.0F);
-      this.o.a($$0);
-      if ($$0.b > 0.0F) {
-         float $$6 = $$0.b / 200.0F;
-         int $$7 = axn.c(azc.d($$6 * 255.0F), -1);
-         fcy $$8 = $$2.getBuffer(ghe.p(b));
-         this.o.a($$1, $$8, $$3, gwb.d, $$7);
-         fcy $$9 = $$2.getBuffer(k);
-         this.o.a($$1, $$9, $$3, gwb.a(0.0F, $$0.c));
-      } else {
-         fcy $$10 = $$2.getBuffer(j);
-         this.o.a($$1, $$10, $$3, gwb.a(0.0F, $$0.c));
+      $$1.a(0.0F, 0.375F, 0.0F);
+      $$1.a(a.d.rotationDegrees(180.0F - $$0.a));
+      float $$4 = $$0.c;
+      if ($$4 > 0.0F) {
+         $$1.a(a.b.rotationDegrees(azd.a($$4) * $$4 * $$0.d / 10.0F * (float)$$0.b));
       }
 
-      fcy $$11 = $$2.getBuffer(l);
-      this.o.a($$1, $$11, $$3, gwb.d);
-      if ($$0.b > 0.0F) {
-         float $$12 = $$0.b / 200.0F;
-         $$1.a();
-         $$1.a(0.0F, -1.0F, -2.0F);
-         a($$1, $$12, $$2.getBuffer(ghe.r()));
-         a($$1, $$12, $$2.getBuffer(ghe.s()));
-         $$1.b();
+      if (!azd.a($$0.e, 0.0F)) {
+         $$1.a(new Quaternionf().setAngleAxis($$0.e * (float) (Math.PI / 180.0), 1.0F, 0.0F, 1.0F));
+      }
+
+      Pair<alc, fxk<gsy>> $$5 = this.a.get($$0.g);
+      alc $$6 = (alc)$$5.getFirst();
+      fxk<gsy> $$7 = (fxk<gsy>)$$5.getSecond();
+      $$1.b(-1.0F, -1.0F, 1.0F);
+      $$1.a(a.d.rotationDegrees(90.0F));
+      $$7.a($$0);
+      fdi $$8 = $$2.getBuffer($$7.a($$6));
+      $$7.a($$1, $$8, $$3, gws.d);
+      if (!$$0.f && $$0.g != cpu.b.i) {
+         this.b.a($$1, $$2.getBuffer(this.b.a($$6)), $$3, gws.d);
       }
 
       $$1.b();
-      if ($$0.d != null) {
-         a((float)$$0.d.d, (float)$$0.d.e, (float)$$0.d.f, $$0.p, $$1, $$2, $$3);
-      }
-
       super.a($$0, $$1, $$2, $$3);
    }
 
-   private static void a(fcu $$0, float $$1, fcy $$2) {
-      $$0.a();
-      float $$3 = Math.min($$1 > 0.8F ? ($$1 - 0.8F) / 0.2F : 0.0F, 1.0F);
-      int $$4 = axn.a(1.0F - $$3, 1.0F, 1.0F, 1.0F);
-      int $$5 = 16711935;
-      azk $$6 = azk.a(432L);
-      Vector3f $$7 = new Vector3f();
-      Vector3f $$8 = new Vector3f();
-      Vector3f $$9 = new Vector3f();
-      Vector3f $$10 = new Vector3f();
-      Quaternionf $$11 = new Quaternionf();
-      int $$12 = azc.d(($$1 + $$1 * $$1) / 2.0F * 60.0F);
-
-      for (int $$13 = 0; $$13 < $$12; $$13++) {
-         $$11.rotationXYZ($$6.i() * (float) (Math.PI * 2), $$6.i() * (float) (Math.PI * 2), $$6.i() * (float) (Math.PI * 2))
-            .rotateXYZ($$6.i() * (float) (Math.PI * 2), $$6.i() * (float) (Math.PI * 2), $$6.i() * (float) (Math.PI * 2) + $$1 * (float) (Math.PI / 2));
-         $$0.a($$11);
-         float $$14 = $$6.i() * 20.0F + 5.0F + $$3 * 10.0F;
-         float $$15 = $$6.i() * 2.0F + 1.0F + $$3 * 2.0F;
-         $$8.set(-n * $$15, $$14, -0.5F * $$15);
-         $$9.set(n * $$15, $$14, -0.5F * $$15);
-         $$10.set(0.0F, $$14, $$15);
-         fcu.a $$16 = $$0.c();
-         $$2.a($$16, $$7).a($$4);
-         $$2.a($$16, $$8).a(16711935);
-         $$2.a($$16, $$9).a(16711935);
-         $$2.a($$16, $$7).a($$4);
-         $$2.a($$16, $$9).a(16711935);
-         $$2.a($$16, $$10).a(16711935);
-         $$2.a($$16, $$7).a($$4);
-         $$2.a($$16, $$10).a(16711935);
-         $$2.a($$16, $$8).a(16711935);
-      }
-
-      $$0.b();
+   public alc a(gsy $$0) {
+      return (alc)this.a.get($$0.g).getFirst();
    }
 
-   public static void a(float $$0, float $$1, float $$2, float $$3, fcu $$4, ggv $$5, int $$6) {
-      float $$7 = azc.c($$0 * $$0 + $$2 * $$2);
-      float $$8 = azc.c($$0 * $$0 + $$1 * $$1 + $$2 * $$2);
-      $$4.a();
-      $$4.a(0.0F, 2.0F, 0.0F);
-      $$4.a(a.d.rotation((float)(-Math.atan2((double)$$2, (double)$$0)) - (float) (Math.PI / 2)));
-      $$4.a(a.b.rotation((float)(-Math.atan2((double)$$7, (double)$$1)) - (float) (Math.PI / 2)));
-      fcy $$9 = $$5.getBuffer(m);
-      float $$10 = 0.0F - $$3 * 0.01F;
-      float $$11 = $$8 / 32.0F - $$3 * 0.01F;
-      int $$12 = 8;
-      float $$13 = 0.0F;
-      float $$14 = 0.75F;
-      float $$15 = 0.0F;
-      fcu.a $$16 = $$4.c();
-
-      for (int $$17 = 1; $$17 <= 8; $$17++) {
-         float $$18 = azc.a((float)$$17 * (float) (Math.PI * 2) / 8.0F) * 0.75F;
-         float $$19 = azc.b((float)$$17 * (float) (Math.PI * 2) / 8.0F) * 0.75F;
-         float $$20 = (float)$$17 / 8.0F;
-         $$9.a($$16, $$13 * 0.2F, $$14 * 0.2F, 0.0F).a(-16777216).a($$15, $$10).b(gwb.d).c($$6).b($$16, 0.0F, -1.0F, 0.0F);
-         $$9.a($$16, $$13, $$14, $$8).a(-1).a($$15, $$11).b(gwb.d).c($$6).b($$16, 0.0F, -1.0F, 0.0F);
-         $$9.a($$16, $$18, $$19, $$8).a(-1).a($$20, $$11).b(gwb.d).c($$6).b($$16, 0.0F, -1.0F, 0.0F);
-         $$9.a($$16, $$18 * 0.2F, $$19 * 0.2F, 0.0F).a(-16777216).a($$20, $$10).b(gwb.d).c($$6).b($$16, 0.0F, -1.0F, 0.0F);
-         $$13 = $$18;
-         $$14 = $$19;
-         $$15 = $$20;
-      }
-
-      $$4.b();
+   public gsy a() {
+      return new gsy();
    }
 
-   public alb a(gss $$0) {
-      return h;
-   }
-
-   public gss a() {
-      return new gss();
-   }
-
-   public void a(cis $$0, gss $$1, float $$2) {
+   public void a(cpu $$0, gsy $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = azc.h($$2, $$0.e, $$0.bY);
-      $$1.b = $$0.ca > 0 ? (float)$$0.ca + $$2 : 0.0F;
-      $$1.c = $$0.aK > 0;
-      cir $$3 = $$0.cc;
-      if ($$3 != null) {
-         eye $$4 = $$3.o($$2).b(0.0, (double)gmm.a((float)$$3.b + $$2), 0.0);
-         $$1.d = $$4.d($$0.o($$2));
-      } else {
-         $$1.d = null;
-      }
-
-      cjc $$5 = $$0.gl().a();
-      $$1.e = $$5 == cji.d || $$5 == cji.e;
-      $$1.f = $$5.a();
-      je $$6 = $$0.dS().a(dzw.a.f, edb.a($$0.q()));
-      $$1.g = $$6.b($$0.dq());
-      $$1.h = $$0.eB() ? 0.0F : $$2;
-      $$1.i.a($$0.c);
-   }
-
-   protected boolean a(cis $$0) {
-      return false;
+      $$1.a = $$0.k($$2);
+      $$1.c = (float)$$0.S() - $$2;
+      $$1.b = $$0.T();
+      $$1.d = Math.max($$0.R() - $$2, 0.0F);
+      $$1.e = $$0.a($$2);
+      $$1.f = $$0.bn();
+      $$1.g = $$0.w();
+      $$1.h = $$0.a(0, $$2);
+      $$1.i = $$0.a(1, $$2);
    }
 }

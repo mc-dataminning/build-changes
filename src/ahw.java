@@ -4,11 +4,11 @@ public class ahw implements zk<agq> {
    private final ahw.a c;
    private final int d;
 
-   public ahw(btj $$0, ahw.a $$1) {
+   public ahw(bto $$0, ahw.a $$1) {
       this($$0, $$1, 0);
    }
 
-   public ahw(btj $$0, ahw.a $$1, int $$2) {
+   public ahw(bto $$0, ahw.a $$1, int $$2) {
       this.b = $$0.ap();
       this.c = $$1;
       this.d = $$2;

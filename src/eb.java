@@ -17,7 +17,7 @@ public record eb(List<eb.c> c) {
    public static final Codec<eb> a = d.xmap(eb::new, eb::a);
    public static final zb<ByteBuf, eb> b = eb.c.a.a(yz.a()).a(eb::new, eb::a);
 
-   public <S extends duc<?, S>> boolean a(dub<?, S> $$0, S $$1) {
+   public <S extends duq<?, S>> boolean a(dup<?, S> $$0, S $$1) {
       for (eb.c $$2 : this.c) {
          if (!$$2.a($$0, $$1)) {
             return false;
@@ -27,15 +27,15 @@ public record eb(List<eb.c> c) {
       return true;
    }
 
-   public boolean a(dua $$0) {
-      return this.a($$0.b().l(), $$0);
+   public boolean a(duo $$0) {
+      return this.a($$0.b().n(), $$0);
    }
 
-   public boolean a(eqb $$0) {
+   public boolean a(eqp $$0) {
       return this.a($$0.a().f(), $$0);
    }
 
-   public Optional<String> a(dub<?, ?> $$0) {
+   public Optional<String> a(dup<?, ?> $$0) {
       for (eb.c $$1 : this.c) {
          Optional<String> $$2 = $$1.a($$0);
          if ($$2.isPresent()) {
@@ -60,20 +60,20 @@ public record eb(List<eb.c> c) {
          return new eb.a();
       }
 
-      public eb.a a(dvd<?> $$0, String $$1) {
+      public eb.a a(dvr<?> $$0, String $$1) {
          this.a.add(new eb.c($$0.f(), new eb.b($$1)));
          return this;
       }
 
-      public eb.a a(dvd<Integer> $$0, int $$1) {
+      public eb.a a(dvr<Integer> $$0, int $$1) {
          return this.a($$0, Integer.toString($$1));
       }
 
-      public eb.a a(dvd<Boolean> $$0, boolean $$1) {
+      public eb.a a(dvr<Boolean> $$0, boolean $$1) {
          return this.a($$0, Boolean.toString($$1));
       }
 
-      public <T extends Comparable<T> & azy> eb.a a(dvd<T> $$0, T $$1) {
+      public <T extends Comparable<T> & azz> eb.a a(dvr<T> $$0, T $$1) {
          return this.a($$0, $$1.c());
       }
 
@@ -87,7 +87,7 @@ public record eb(List<eb.c> c) {
       public static final zb<ByteBuf, eb.b> b = yz.l.a(eb.b::new, eb.b::a);
 
       @Override
-      public <T extends Comparable<T>> boolean a(duc<?, ?> $$0, dvd<T> $$1) {
+      public <T extends Comparable<T>> boolean a(duq<?, ?> $$0, dvr<T> $$1) {
          T $$2 = $$0.c($$1);
          Optional<T> $$3 = $$1.b(this.e);
          return $$3.isPresent() && $$2.compareTo($$3.get()) == 0;
@@ -101,13 +101,13 @@ public record eb(List<eb.c> c) {
    static record c(String b, eb.e c) {
       public static final zb<ByteBuf, eb.c> a = zb.a(yz.l, eb.c::a, eb.e.d, eb.c::b, eb.c::new);
 
-      public <S extends duc<?, S>> boolean a(dub<?, S> $$0, S $$1) {
-         dvd<?> $$2 = $$0.a(this.b);
+      public <S extends duq<?, S>> boolean a(dup<?, S> $$0, S $$1) {
+         dvr<?> $$2 = $$0.a(this.b);
          return $$2 != null && this.c.a($$1, $$2);
       }
 
-      public Optional<String> a(dub<?, ?> $$0) {
-         dvd<?> $$1 = $$0.a(this.b);
+      public Optional<String> a(dup<?, ?> $$0) {
+         dvr<?> $$1 = $$0.a(this.b);
          return $$1 != null ? Optional.empty() : Optional.of(this.b);
       }
 
@@ -127,7 +127,7 @@ public record eb(List<eb.c> c) {
       public static final zb<ByteBuf, eb.d> b = zb.a(yz.a(yz.l), eb.d::a, yz.a(yz.l), eb.d::b, eb.d::new);
 
       @Override
-      public <T extends Comparable<T>> boolean a(duc<?, ?> $$0, dvd<T> $$1) {
+      public <T extends Comparable<T>> boolean a(duq<?, ?> $$0, dvr<T> $$1) {
          T $$2 = $$0.c($$1);
          if (this.e.isPresent()) {
             Optional<T> $$3 = $$1.b(this.e.get());
@@ -175,6 +175,6 @@ public record eb(List<eb.c> c) {
          }
       });
 
-      <T extends Comparable<T>> boolean a(duc<?, ?> var1, dvd<T> var2);
+      <T extends Comparable<T>> boolean a(duq<?, ?> var1, dvr<T> var2);
    }
 }

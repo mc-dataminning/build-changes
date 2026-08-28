@@ -15,7 +15,7 @@ public class xx {
       this.b = xy.a($$0, $$1);
    }
 
-   public xx.c a(azq $$0) {
+   public xx.c a(azr $$0) {
       return $$1 -> {
          xy $$2 = this.b;
          if ($$2 == null) {
@@ -27,8 +27,8 @@ public class xx {
       };
    }
 
-   public xx.b a(final cns $$0) {
-      final azp $$1 = $$0.a();
+   public xx.b a(final cnx $$0) {
+      final azq $$1 = $$0.a();
       return new xx.b() {
          @Override
          public xt unpack(@Nullable xp $$0x, xw $$1x) throws xx.a {

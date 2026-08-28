@@ -1,26 +1,37 @@
-public class gpm extends gny<clj, gvb, fzj> {
-   private static final alb a = alb.b("textures/entity/illager/vex.png");
-   private static final alb b = alb.b("textures/entity/illager/vex_charging.png");
+public class gpm extends gop<clj, gvh, fzi> {
+   private static final alc a = alc.b("textures/entity/slime/slime.png");
 
-   public gpm(gms.a $$0) {
-      super($$0, new fzj($$0.a(gaa.cR)), 0.3F);
-      this.a(new gqy<>(this, $$0.b()));
+   public gpm(gnj.a $$0) {
+      super($$0, new fzi($$0.a(gak.cs)), 0.25F);
+      this.a(new gsa(this, $$0.f()));
    }
 
-   protected int a(clj $$0, je $$1) {
-      return 15;
+   public void a(gvh $$0, fde $$1, ghg $$2, int $$3) {
+      this.f = 0.25F * (float)$$0.b;
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public alb a(gvb $$0) {
-      return $$0.a ? b : a;
+   protected void a(gvh $$0, fde $$1) {
+      float $$2 = 0.999F;
+      $$1.b(0.999F, 0.999F, 0.999F);
+      $$1.a(0.0F, 0.001F, 0.0F);
+      float $$3 = (float)$$0.b;
+      float $$4 = $$0.a / ($$3 * 0.5F + 1.0F);
+      float $$5 = 1.0F / ($$4 + 1.0F);
+      $$1.b($$5 * $$3, 1.0F / $$5 * $$3, $$5 * $$3);
    }
 
-   public gvb c() {
-      return new gvb();
+   public alc a(gvh $$0) {
+      return a;
    }
 
-   public void a(clj $$0, gvb $$1, float $$2) {
+   public gvh c() {
+      return new gvh();
+   }
+
+   public void a(clj $$0, gvh $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.go();
+      $$1.a = azd.h($$2, $$0.bY, $$0.bX);
+      $$1.b = $$0.gq();
    }
 }

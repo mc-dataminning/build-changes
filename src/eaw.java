@@ -1,32 +1,60 @@
-import com.mojang.serialization.Codec;
-import java.util.stream.LongStream;
+public class eaw implements dds {
+   private int a;
 
-public class eaw {
-   private long b;
-   private long c;
-   public static final Codec<eaw> a = Codec.LONG_STREAM
-      .comapFlatMap($$0 -> ad.a($$0, 2).map($$0x -> new eaw($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
+   @Override
+   public int a(arh $$0, boolean $$1, boolean $$2) {
+      if (!$$1) {
+         return 0;
+      } else if (!$$0.ac().b(dec.C)) {
+         return 0;
+      } else {
+         azl $$3 = $$0.z;
+         this.a--;
+         if (this.a > 0) {
+            return 0;
+         } else {
+            this.a = this.a + (60 + $$3.a(60)) * 20;
+            if ($$0.z_() < 5 && $$0.B_().g()) {
+               return 0;
+            } else {
+               int $$4 = 0;
 
-   public eaw(eal.a $$0) {
-      this($$0.b(), $$0.c());
-   }
+               for (ari $$5 : $$0.x()) {
+                  if (!$$5.P_()) {
+                     je $$6 = $$5.ds();
+                     if (!$$0.B_().g() || $$6.v() >= $$0.N() && $$0.h($$6)) {
+                        brn $$7 = $$0.d_($$6);
+                        if ($$7.a($$3.i() * 3.0F)) {
+                           awk $$8 = $$5.J();
+                           int $$9 = azd.a($$8.a(awo.i.b(awo.n)), 1, Integer.MAX_VALUE);
+                           int $$10 = 24000;
+                           if ($$3.a($$9) >= 72000) {
+                              je $$11 = $$6.b(20 + $$3.a(15)).g(-10 + $$3.a(21)).e(-10 + $$3.a(21));
+                              duo $$12 = $$0.a_($$11);
+                              eqp $$13 = $$0.b_($$11);
+                              if (der.a($$0, $$11, $$12, $$13, btv.ay)) {
+                                 bvc $$14 = null;
+                                 int $$15 = 1 + $$3.a($$7.a().a() + 1);
 
-   public eaw(long $$0, long $$1) {
-      this.b = $$0;
-      this.c = $$1;
-      if ((this.b | this.c) == 0L) {
-         this.b = -7046029254386353131L;
-         this.c = 7640891576956012809L;
+                                 for (int $$16 = 0; $$16 < $$15; $$16++) {
+                                    clc $$17 = btv.ay.a($$0, btu.a);
+                                    if ($$17 != null) {
+                                       $$17.a($$11, 0.0F, 0.0F);
+                                       $$14 = $$17.a($$0, $$7, btu.a, $$14);
+                                       $$0.a_($$17);
+                                       $$4++;
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+
+               return $$4;
+            }
+         }
       }
-   }
-
-   public long a() {
-      long $$0 = this.b;
-      long $$1 = this.c;
-      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
-      $$1 ^= $$0;
-      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
-      this.c = Long.rotateLeft($$1, 28);
-      return $$2;
    }
 }

@@ -1,245 +1,302 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import java.util.HashSet;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class drs extends dsl implements cri {
-   public static final int d = 3;
-   public static final int e = 3;
-   public static final int f = 9;
-   public static final int g = 1;
-   public static final int h = 0;
-   public static final int i = 9;
-   public static final int j = 10;
-   private jw<cvl> n = jw.a(9, cvl.k);
-   private int r = 0;
-   protected final crc k = new crc() {
-      private final int[] a = new int[9];
-      private int b = 0;
+public abstract class drs {
+   private static final Logger d = LogUtils.getLogger();
+   private final dru<?> e;
+   @Nullable
+   protected deg o;
+   protected final je p;
+   protected boolean q;
+   private duo f;
+   private kn g = kn.a;
 
-      @Override
-      public int a(int $$0) {
-         return $$0 == 9 ? this.b : this.a[$$0];
-      }
-
-      @Override
-      public void a(int $$0, int $$1) {
-         if ($$0 == 9) {
-            this.b = $$1;
-         } else {
-            this.a[$$0] = $$1;
-         }
-      }
-
-      @Override
-      public int a() {
-         return 10;
-      }
-   };
-
-   public drs(je $$0, dua $$1) {
-      super(drg.P, $$0, $$1);
+   public drs(dru<?> $$0, je $$1, duo $$2) {
+      this.e = $$0;
+      this.p = $$1.j();
+      this.a($$2);
+      this.f = $$2;
    }
 
-   @Override
-   protected xd j() {
-      return xd.c("container.crafter");
-   }
-
-   @Override
-   protected cqq a(int $$0, cno $$1) {
-      return new crg($$0, $$1, this, this.k);
-   }
-
-   public void a(int $$0, boolean $$1) {
-      if (this.e($$0)) {
-         this.k.a($$0, $$1 ? 0 : 1);
-         this.e();
+   private void a(duo $$0) {
+      if (!this.b($$0)) {
+         throw new IllegalStateException("Invalid block entity " + this.k() + " state at " + this.p + ", got " + $$0);
       }
    }
 
-   public boolean c(int $$0) {
-      return $$0 >= 0 && $$0 < 9 ? this.k.a($$0) == 1 : false;
+   public boolean b(duo $$0) {
+      return this.e.a($$0);
    }
 
-   @Override
-   public boolean b(int $$0, cvl $$1) {
-      if (this.k.a($$0) == 1) {
-         return false;
-      } else {
-         cvl $$2 = this.n.get($$0);
-         int $$3 = $$2.J();
-         if ($$3 >= $$2.k()) {
-            return false;
-         } else {
-            return $$2.f() ? true : !this.a($$3, $$2, $$0);
-         }
-      }
+   public static je b(uf $$0) {
+      return new je($$0.h("x"), $$0.h("y"), $$0.h("z"));
    }
 
-   private boolean a(int $$0, cvl $$1, int $$2) {
-      for (int $$3 = $$2 + 1; $$3 < 9; $$3++) {
-         if (!this.c($$3)) {
-            cvl $$4 = this.a($$3);
-            if ($$4.f() || $$4.J() < $$0 && cvl.c($$4, $$1)) {
-               return true;
-            }
-         }
-      }
-
-      return false;
+   @Nullable
+   public deg i() {
+      return this.o;
    }
 
-   @Override
+   public void a(deg $$0) {
+      this.o = $$0;
+   }
+
+   public boolean l() {
+      return this.o != null;
+   }
+
    protected void a(uf $$0, jp.a $$1) {
-      super.a($$0, $$1);
-      this.r = $$0.h("crafting_ticks_remaining");
-      this.n = jw.a(this.b(), cvl.k);
-      if (!this.b_($$0)) {
-         bre.b($$0, this.n, $$1);
-      }
-
-      int[] $$2 = $$0.n("disabled_slots");
-
-      for (int $$3 = 0; $$3 < 9; $$3++) {
-         this.k.a($$3, 0);
-      }
-
-      for (int $$4 : $$2) {
-         if (this.e($$4)) {
-            this.k.a($$4, 1);
-         }
-      }
-
-      this.k.a(9, $$0.h("triggered"));
    }
 
-   @Override
+   public final void c(uf $$0, jp.a $$1) {
+      this.a($$0, $$1);
+      drs.a.a.parse($$1.a(ut.a), $$0).resultOrPartial($$0x -> d.warn("Failed to load components: {}", $$0x)).ifPresent($$0x -> this.g = $$0x);
+   }
+
+   public final void d(uf $$0, jp.a $$1) {
+      this.a($$0, $$1);
+   }
+
    protected void b(uf $$0, jp.a $$1) {
-      super.b($$0, $$1);
-      $$0.a("crafting_ticks_remaining", this.r);
-      if (!this.c_($$0)) {
-         bre.a($$0, this.n, $$1);
-      }
-
-      this.c($$0);
-      this.d($$0);
    }
 
-   @Override
-   public int b() {
-      return 9;
+   public final uf b(jp.a $$0) {
+      uf $$1 = this.d($$0);
+      this.d($$1);
+      return $$1;
    }
 
-   @Override
-   public boolean c() {
-      for (cvl $$0 : this.n) {
-         if (!$$0.f()) {
-            return false;
-         }
-      }
-
-      return true;
+   public final uf c(jp.a $$0) {
+      uf $$1 = this.d($$0);
+      this.c($$1);
+      return $$1;
    }
 
-   @Override
-   public cvl a(int $$0) {
-      return this.n.get($$0);
+   public final uf d(jp.a $$0) {
+      uf $$1 = new uf();
+      this.b($$1, $$0);
+      drs.a.a.encodeStart($$0.a(ut.a), this.g).resultOrPartial($$0x -> d.warn("Failed to save components: {}", $$0x)).ifPresent($$1x -> $$1.a((uf)$$1x));
+      return $$1;
    }
 
-   @Override
-   public void a(int $$0, cvl $$1) {
-      if (this.c($$0)) {
-         this.a($$0, true);
-      }
-
-      super.a($$0, $$1);
+   public final uf e(jp.a $$0) {
+      uf $$1 = new uf();
+      this.b($$1, $$0);
+      return $$1;
    }
 
-   @Override
-   public boolean a(cnp $$0) {
-      return brd.a(this, $$0);
-   }
-
-   @Override
-   public jw<cvl> f() {
-      return this.n;
-   }
-
-   @Override
-   protected void a(jw<cvl> $$0) {
-      this.n = $$0;
-   }
-
-   @Override
-   public int aB_() {
-      return 3;
-   }
-
-   @Override
-   public int g() {
-      return 3;
-   }
-
-   @Override
-   public void fillStackedContents(cnu $$0) {
-      for (cvl $$1 : this.n) {
-         $$0.a($$1);
-      }
+   public final uf f(jp.a $$0) {
+      uf $$1 = this.e($$0);
+      this.d($$1);
+      return $$1;
    }
 
    private void c(uf $$0) {
-      IntList $$1 = new IntArrayList();
-
-      for (int $$2 = 0; $$2 < 9; $$2++) {
-         if (this.c($$2)) {
-            $$1.add($$2);
-         }
+      alc $$1 = dru.a(this.q());
+      if ($$1 == null) {
+         throw new RuntimeException(this.getClass() + " is missing a mapping! This is a bug!");
+      } else {
+         $$0.a("id", $$1.toString());
       }
+   }
 
-      $$0.b("disabled_slots", $$1);
+   public static void a(uf $$0, dru<?> $$1) {
+      $$0.a("id", dru.a($$1).toString());
+   }
+
+   public void a(cvp $$0, jp.a $$1) {
+      uf $$2 = this.e($$1);
+      this.a($$2);
+      $$0.c();
+      ctr.a($$0, this.q(), $$2);
+      $$0.b(this.r());
    }
 
    private void d(uf $$0) {
-      $$0.a("triggered", this.k.a(9));
+      this.c($$0);
+      $$0.a("x", this.p.u());
+      $$0.a("y", this.p.v());
+      $$0.a("z", this.p.w());
    }
 
-   public void a(boolean $$0) {
-      this.k.a(9, $$0 ? 1 : 0);
-   }
-
-   @VisibleForTesting
-   public boolean k() {
-      return this.k.a(9) == 1;
-   }
-
-   public static void a(dds $$0, je $$1, dua $$2, drs $$3) {
-      int $$4 = $$3.r - 1;
-      if ($$4 >= 0) {
-         $$3.r = $$4;
-         if ($$4 == 0) {
-            $$0.a($$1, $$2.b(dio.b, Boolean.valueOf(false)), 3);
-         }
+   @Nullable
+   public static drs a(je $$0, duo $$1, uf $$2, jp.a $$3) {
+      String $$4 = $$2.l("id");
+      alc $$5 = alc.c($$4);
+      if ($$5 == null) {
+         d.error("Block entity has invalid type: {}", $$4);
+         return null;
+      } else {
+         return lu.j.b($$5).map($$3x -> {
+            try {
+               return $$3x.a($$0, $$1);
+            } catch (Throwable var5x) {
+               d.error("Failed to create block entity {}", $$4, var5x);
+               return null;
+            }
+         }).map($$3x -> {
+            try {
+               $$3x.c($$2, $$3);
+               return $$3x;
+            } catch (Throwable var5x) {
+               d.error("Failed to load data for block entity {}", $$4, var5x);
+               return null;
+            }
+         }).orElseGet(() -> {
+            d.warn("Skipping BlockEntity with id {}", $$4);
+            return null;
+         });
       }
    }
 
-   public void d(int $$0) {
-      this.r = $$0;
-   }
-
-   public int t() {
-      int $$0 = 0;
-
-      for (int $$1 = 0; $$1 < this.b(); $$1++) {
-         cvl $$2 = this.a($$1);
-         if (!$$2.f() || this.c($$1)) {
-            $$0++;
-         }
+   public void e() {
+      if (this.o != null) {
+         a(this.o, this.p, this.f);
       }
-
-      return $$0;
    }
 
-   private boolean e(int $$0) {
-      return $$0 > -1 && $$0 < 9 && this.n.get($$0).f();
+   protected static void a(deg $$0, je $$1, duo $$2) {
+      $$0.q($$1);
+      if (!$$2.l()) {
+         $$0.c($$1, $$2.b());
+      }
+   }
+
+   public je aB_() {
+      return this.p;
+   }
+
+   public duo m() {
+      return this.f;
+   }
+
+   @Nullable
+   public zk<abz> ay_() {
+      return null;
+   }
+
+   public uf a(jp.a $$0) {
+      return new uf();
+   }
+
+   public boolean n() {
+      return this.q;
+   }
+
+   public void aw_() {
+      this.q = true;
+   }
+
+   public void o() {
+      this.q = false;
+   }
+
+   public boolean a_(int $$0, int $$1) {
+      return false;
+   }
+
+   public void a(p $$0) {
+      $$0.a("Name", this::k);
+      if (this.o != null) {
+         p.a($$0, this.o, this.p, this.m());
+         p.a($$0, this.o, this.p, this.o.a_(this.p));
+      }
+   }
+
+   private String k() {
+      return lu.j.b(this.q()) + " // " + this.getClass().getCanonicalName();
+   }
+
+   public boolean p() {
+      return false;
+   }
+
+   public dru<?> q() {
+      return this.e;
+   }
+
+   @Deprecated
+   public void c(duo $$0) {
+      this.a($$0);
+      this.f = $$0;
+   }
+
+   protected void a(drs.b $$0) {
+   }
+
+   public final void a(cvp $$0) {
+      this.a($$0.d(), $$0.e());
+   }
+
+   public final void a(kn $$0, ko $$1) {
+      final Set<kq<?>> $$2 = new HashSet<>();
+      $$2.add(kr.T);
+      final kn $$3 = ks.a($$0, $$1);
+      this.a(new drs.b() {
+         @Nullable
+         @Override
+         public <T> T a(kq<T> $$0) {
+            $$2.add($$0);
+            return $$3.a($$0);
+         }
+
+         @Override
+         public <T> T a(kq<? extends T> $$0, T $$1) {
+            $$2.add($$0);
+            return $$3.a($$0, $$1);
+         }
+      });
+      ko $$4 = $$1.a($$2::contains);
+      this.g = $$4.e().a();
+   }
+
+   protected void a(kn.a $$0) {
+   }
+
+   @Deprecated
+   public void a(uf $$0) {
+   }
+
+   public final kn r() {
+      kn.a $$0 = kn.a();
+      $$0.a(this.g);
+      this.a($$0);
+      return $$0.a();
+   }
+
+   public kn s() {
+      return this.g;
+   }
+
+   public void a(kn $$0) {
+      this.g = $$0;
+   }
+
+   @Nullable
+   public static xd a(String $$0, jp.a $$1) {
+      try {
+         return xd.a.a($$0, $$1);
+      } catch (Exception var3) {
+         d.warn("Failed to parse custom name from string '{}', discarding", $$0, var3);
+         return null;
+      }
+   }
+
+   static class a {
+      public static final Codec<kn> a = kn.b.optionalFieldOf("components", kn.a).codec();
+
+      private a() {
+      }
+   }
+
+   protected interface b {
+      @Nullable
+      <T> T a(kq<T> var1);
+
+      <T> T a(kq<? extends T> var1, T var2);
    }
 }

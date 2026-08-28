@@ -1,56 +1,68 @@
-import com.google.common.collect.Maps;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.util.Collection;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+import java.util.List;
+import java.util.Locale;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class hbf {
-   private final auv a;
-   private final Map<alb, CompletableFuture<fal>> b = Maps.newHashMap();
-
-   public hbf(auv $$0) {
-      this.a = $$0;
+@FunctionalInterface
+public interface hbf<T> {
+   static <T> hbf<T> empty() {
+      return $$0 -> List.of();
    }
 
-   public CompletableFuture<fal> a(alb $$0) {
-      return this.b.computeIfAbsent($$0, $$0x -> CompletableFuture.supplyAsync(() -> {
-            try {
-               fal var5;
-               try (
-                  InputStream $$1 = this.a.open($$0x);
-                  hba $$2 = new hbc($$1);
-               ) {
-                  ByteBuffer $$3 = $$2.b();
-                  var5 = new fal($$3, $$2.a());
-               }
-
-               return var5;
-            } catch (IOException var10) {
-               throw new CompletionException(var10);
-            }
-         }, ad.i()));
+   static <T> hbf<T> plainText(List<T> $$0, Function<T, Stream<String>> $$1) {
+      // $VF: Couldn't be decompiled
+      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
+      // java.lang.NullPointerException: Cannot invoke "org.jetbrains.java.decompiler.struct.gen.VarType.equals(Object)" because "curType" is null
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.setLambdaGenericTypes(NewExprent.java:668)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.toJava(NewExprent.java:401)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.getCastedExprent(ExprProcessor.java:1018)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.ExitExprent.toJava(ExitExprent.java:86)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.listToJava(ExprProcessor.java:895)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.BasicBlockStatement.toJava(BasicBlockStatement.java:90)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.SequenceStatement.toJava(SequenceStatement.java:107)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.jmpWrapper(ExprProcessor.java:833)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.IfStatement.toJava(IfStatement.java:261)
+      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.RootStatement.toJava(RootStatement.java:36)
+      //   at org.jetbrains.java.decompiler.main.ClassWriter.writeMethod(ClassWriter.java:1283)
+      //
+      // Bytecode:
+      // 00: aload 0
+      // 01: invokeinterface java/util/List.isEmpty ()Z 1
+      // 06: ifeq 0d
+      // 09: invokestatic hbf.empty ()Lhbf;
+      // 0c: areturn
+      // 0d: new hbg
+      // 10: dup
+      // 11: invokespecial hbg.<init> ()V
+      // 14: astore 2
+      // 15: aload 0
+      // 16: invokeinterface java/util/List.iterator ()Ljava/util/Iterator; 1
+      // 1b: astore 3
+      // 1c: aload 3
+      // 1d: invokeinterface java/util/Iterator.hasNext ()Z 1
+      // 22: ifeq 48
+      // 25: aload 3
+      // 26: invokeinterface java/util/Iterator.next ()Ljava/lang/Object; 1
+      // 2b: astore 4
+      // 2d: aload 1
+      // 2e: aload 4
+      // 30: invokeinterface java/util/function/Function.apply (Ljava/lang/Object;)Ljava/lang/Object; 2
+      // 35: checkcast java/util/stream/Stream
+      // 38: aload 2
+      // 39: aload 4
+      // 3b: invokedynamic accept (Lhbg;Ljava/lang/Object;)Ljava/util/function/Consumer; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)V, hbf.a (Lhbg;Ljava/lang/Object;Ljava/lang/String;)V, (Ljava/lang/String;)V ]
+      // 40: invokeinterface java/util/stream/Stream.forEach (Ljava/util/function/Consumer;)V 2
+      // 45: goto 1c
+      // 48: aload 2
+      // 49: invokevirtual hbg.a ()V
+      // 4c: aload 2
+      // 4d: dup
+      // 4e: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
+      // 51: pop
+      // 52: invokedynamic search (Lhbg;)Lhbf; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/String;)Ljava/util/List;, hbg.a (Ljava/lang/String;)Ljava/util/List;, (Ljava/lang/String;)Ljava/util/List; ]
+      // 57: areturn
    }
 
-   public CompletableFuture<hax> a(alb $$0, boolean $$1) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            InputStream $$2 = this.a.open($$0);
-            return (hax)($$1 ? new hbd(hbc::new, $$2) : new hbc($$2));
-         } catch (IOException var4) {
-            throw new CompletionException(var4);
-         }
-      }, ad.i());
-   }
-
-   public void a() {
-      this.b.values().forEach($$0 -> $$0.thenAccept(fal::b));
-      this.b.clear();
-   }
-
-   public CompletableFuture<?> a(Collection<hab> $$0) {
-      return CompletableFuture.allOf($$0.stream().map($$0x -> this.a($$0x.b())).toArray(CompletableFuture[]::new));
-   }
+   List<T> search(String var1);
 }

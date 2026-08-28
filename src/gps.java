@@ -1,22 +1,17 @@
-public class gps extends gny<cll, gvf, fzo> {
-   private static final alb a = alb.b("textures/entity/witch.png");
+public class gps extends gmc<clm, gvg> {
+   private static final alc a = alc.b("textures/entity/skeleton/stray.png");
+   private static final alc b = alc.b("textures/entity/skeleton/stray_overlay.png");
 
-   public gps(gms.a $$0) {
-      super($$0, new fzo($$0.a(gaa.cX)), 0.5F);
-      this.a(new grr(this, $$0.b()));
+   public gps(gnj.a $$0) {
+      super($$0, gak.cB, gak.cC, gak.cD);
+      this.a(new grz<>(this, $$0.f(), gak.cE, b));
    }
 
-   public alb a(gvf $$0) {
+   public alc b(gvg $$0) {
       return a;
    }
 
-   public gvf c() {
-      return new gvf();
-   }
-
-   public void a(cll $$0, gvf $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.ap();
-      $$1.b = !$$0.eW().f();
+   public gvg c() {
+      return new gvg();
    }
 }

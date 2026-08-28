@@ -1,76 +1,181 @@
+import com.google.common.collect.ImmutableList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
-import java.util.SequencedSet;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.ArrayUtils;
 
-public class ftm extends ftp<cqs> {
-   private static final fln h = new fln(
-      alb.b("recipe_book/furnace_filter_enabled"),
-      alb.b("recipe_book/furnace_filter_disabled"),
-      alb.b("recipe_book/furnace_filter_enabled_highlighted"),
-      alb.b("recipe_book/furnace_filter_disabled_highlighted")
-   );
-   private final xd i;
-   @Nullable
-   private List<cvl> j;
+public class ftm extends fkq<ftm.b> {
+   private static final int a = 20;
+   final ftn m;
+   private int n;
 
-   public ftm(cqs $$0, xd $$1) {
-      super($$0);
-      this.i = $$1;
+   public ftm(ftn $$0, fil $$1) {
+      super($$1, $$0.n, $$0.s.d(), $$0.s.c(), 20);
+      this.m = $$0;
+      fij[] $$2 = (fij[])ArrayUtils.clone($$1.n.V);
+      Arrays.sort((Object[])$$2);
+      String $$3 = null;
+
+      for (fij $$4 : $$2) {
+         String $$5 = $$4.f();
+         if (!$$5.equals($$3)) {
+            $$3 = $$5;
+            this.b(new ftm.a(xd.c($$5)));
+         }
+
+         xd $$6 = xd.c($$4.h());
+         int $$7 = $$1.h.a($$6);
+         if ($$7 > this.n) {
+            this.n = $$7;
+         }
+
+         this.b(new ftm.c($$4, $$6));
+      }
+   }
+
+   public void c() {
+      fij.d();
+      this.J();
+   }
+
+   public void J() {
+      this.aI_().forEach(ftm.b::c);
    }
 
    @Override
-   protected void a() {
-      this.e.a(h);
+   public int b() {
+      return 340;
    }
 
-   @Override
-   protected boolean a(csn $$0) {
-      return switch ($$0.d) {
-         case 0, 1, 2 -> true;
-         default -> false;
-      };
-   }
+   public class a extends ftm.b {
+      final xd b;
+      private final int c;
 
-   @Override
-   protected void a(ftn $$0, czv<?> $$1) {
-      gax $$2 = this.g.s;
-      cvl $$3 = $$1.b().a($$2.F_());
-      csn $$4 = this.f.l();
-      $$0.a($$3, $$4);
-      List<Optional<czs.a>> $$5 = $$1.b().a().a();
-      if (!$$5.isEmpty()) {
-         $$5.getFirst().ifPresent($$1x -> {
-            csn $$2x = this.f.k.get(0);
-            $$0.a($$1x.a(), $$2x);
+      public a(final xd $$1) {
+         this.b = $$1;
+         this.c = ftm.this.c.h.a(this.b);
+      }
+
+      @Override
+      public void a(fjx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.a(ftm.this.c.h, this.b, ftm.this.g / 2 - this.c / 2, $$2 + $$5 - 9 - 1, -1, false);
+      }
+
+      @Nullable
+      @Override
+      public fju a(fon $$0) {
+         return null;
+      }
+
+      @Override
+      public List<? extends fmh> aI_() {
+         return Collections.emptyList();
+      }
+
+      @Override
+      public List<? extends fof> b() {
+         return ImmutableList.of(new fof() {
+            @Override
+            public fof.a u() {
+               return fof.a.b;
+            }
+
+            @Override
+            public void b(foh $$0) {
+               $$0.a(fog.a, a.this.b);
+            }
          });
       }
 
-      csn $$6 = this.f.k.get(1);
-      if ($$6.g().f()) {
-         if ($$5.size() > 1) {
-            $$5.get(1).ifPresent($$2x -> $$0.a($$2x.a(), $$6));
-         } else {
-            if (this.j == null) {
-               this.j = this.a($$2.L()).stream().map(cvl::new).toList();
-            }
-
-            $$0.a(this.j, $$6);
-         }
+      @Override
+      protected void c() {
       }
    }
 
-   private SequencedSet<cvg> a(dsb $$0) {
-      return $$0.a();
+   public abstract static class b extends fkq.a<ftm.b> {
+      abstract void c();
    }
 
-   @Override
-   protected xd b() {
-      return this.i;
-   }
+   public class c extends ftm.b {
+      private static final xd b = xd.c("controls.reset");
+      private static final int c = 10;
+      private final fij d;
+      private final xd e;
+      private final fkk f;
+      private final fkk g;
+      private boolean h = false;
 
-   @Override
-   protected void a(ftt $$0, cnu $$1, awg $$2) {
-      $$0.a($$1, 1, 1, $$2);
+      c(final fij $$1, final xd $$2) {
+         this.d = $$1;
+         this.e = $$2;
+         this.f = fkk.a($$2, $$1x -> {
+            ftm.this.m.a = $$1;
+            ftm.this.c();
+         }).a(0, 0, 75, 20).a($$2x -> $$1.j() ? xd.a("narrator.controls.unbound", $$2) : xd.a("narrator.controls.bound", $$2, $$2x.get())).a();
+         this.g = fkk.a(b, $$1x -> {
+            $$1.b($$1.i());
+            ftm.this.c();
+         }).a(0, 0, 50, 20).a($$1x -> xd.a("narrator.controls.reset", $$2)).a();
+         this.c();
+      }
+
+      @Override
+      public void a(fjx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         int $$10 = ftm.this.q() - this.g.y() - 10;
+         int $$11 = $$2 - 2;
+         this.g.c($$10, $$11);
+         this.g.a($$0, $$6, $$7, $$9);
+         int $$12 = $$10 - 5 - this.f.y();
+         this.f.c($$12, $$11);
+         this.f.a($$0, $$6, $$7, $$9);
+         $$0.b(ftm.this.c.h, this.e, $$3, $$2 + $$5 / 2 - 9 / 2, -1);
+         if (this.h) {
+            int $$13 = 3;
+            int $$14 = this.f.D() - 6;
+            $$0.a($$14, $$2 - 1, $$14 + 3, $$2 + $$5, -65536);
+         }
+      }
+
+      @Override
+      public List<? extends fmh> aI_() {
+         return ImmutableList.of(this.f, this.g);
+      }
+
+      @Override
+      public List<? extends fof> b() {
+         return ImmutableList.of(this.f, this.g);
+      }
+
+      @Override
+      protected void c() {
+         this.f.b(this.d.k());
+         this.g.j = !this.d.l();
+         this.h = false;
+         xr $$0 = xd.i();
+         if (!this.d.j()) {
+            for (fij $$1 : ftm.this.c.n.V) {
+               if ($$1 != this.d && this.d.b($$1)) {
+                  if (this.h) {
+                     $$0.f(", ");
+                  }
+
+                  this.h = true;
+                  $$0.b(xd.c($$1.h()));
+               }
+            }
+         }
+
+         if (this.h) {
+            this.f.b(xd.b("[ ").b(this.f.z().f().a(n.p)).f(" ]").a(n.m));
+            this.f.a(flv.a(xd.a("controls.keybinds.duplicateKeybinds", $$0)));
+         } else {
+            this.f.a(null);
+         }
+
+         if (ftm.this.m.a == this.d) {
+            this.f.b(xd.b("> ").b(this.f.z().f().a(n.p, n.t)).f(" <").a(n.o));
+         }
+      }
    }
 }

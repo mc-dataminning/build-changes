@@ -1,38 +1,36 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record dbt(jn<awc> d, bqn e, bqn f) implements dbn {
-   public static final MapCodec<dbt> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               awc.b.fieldOf("sound").forGetter(dbt::b),
-               bqn.a(1.0E-5F, 10.0F).fieldOf("volume").forGetter(dbt::c),
-               bqn.a(1.0E-5F, 2.0F).fieldOf("pitch").forGetter(dbt::d)
-            )
-            .apply($$0, dbt::new)
-   );
-
-   @Override
-   public void a(arg $$0, int $$1, dav $$2, btj $$3, eye $$4) {
-      azk $$5 = $$3.dV();
-      if (!$$3.ba()) {
-         $$0.a(null, $$4.a(), $$4.b(), $$4.c(), this.d, $$3.di(), this.e.a($$5), this.f.a($$5));
-      }
+public record dbt<T>(dbo a, dbo b, T c, Optional<ews> d) {
+   public static <S> Codec<dbt<S>> a(Codec<S> $$0, ewb $$1) {
+      return RecordCodecBuilder.create(
+         $$2 -> $$2.group(
+                  dbo.d.fieldOf("enchanted").forGetter(dbt::a),
+                  dbo.d.fieldOf("affected").forGetter(dbt::b),
+                  $$0.fieldOf("effect").forGetter(dbt::c),
+                  dbh.a($$1).optionalFieldOf("requirements").forGetter(dbt::d)
+               )
+               .apply($$2, dbt::new)
+      );
    }
 
-   @Override
-   public MapCodec<dbt> a() {
-      return a;
+   public static <S> Codec<dbt<S>> b(Codec<S> $$0, ewb $$1) {
+      return RecordCodecBuilder.create(
+         $$2 -> $$2.group(
+                  dbo.d
+                     .validate($$0xx -> $$0xx != dbo.b ? DataResult.success($$0xx) : DataResult.error(() -> "enchanted must be attacker or victim"))
+                     .fieldOf("enchanted")
+                     .forGetter(dbt::a),
+                  $$0.fieldOf("effect").forGetter(dbt::c),
+                  dbh.a($$1).optionalFieldOf("requirements").forGetter(dbt::d)
+               )
+               .apply($$2, ($$0xx, $$1xx, $$2x) -> new dbt<>($$0xx, dbo.c, $$1xx, $$2x))
+      );
    }
 
-   public jn<awc> b() {
-      return this.d;
-   }
-
-   public bqn c() {
-      return this.e;
-   }
-
-   public bqn d() {
-      return this.f;
+   public boolean a(eth $$0) {
+      return this.d.isEmpty() ? true : this.d.get().test($$0);
    }
 }

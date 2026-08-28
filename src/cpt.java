@@ -1,111 +1,151 @@
-public abstract class cpt {
-   protected final cpm a;
+import javax.annotation.Nullable;
 
-   protected cpt(cpm $$0) {
-      this.a = $$0;
+public abstract class cpt extends cps implements cpw {
+   private jw<cvp> c = jw.a(36, cvp.k);
+   @Nullable
+   private alb<etm> d;
+   private long e;
+
+   protected cpt(btv<?> $$0, deg $$1) {
+      super($$0, $$1);
    }
 
-   public void a(double $$0, double $$1, double $$2, float $$3, float $$4, int $$5) {
-      this.c($$0, $$1, $$2);
-      this.b($$3 % 360.0F);
-      this.a($$4 % 360.0F);
+   protected cpt(btv<?> $$0, double $$1, double $$2, double $$3, deg $$4) {
+      super($$0, $$4, $$1, $$2, $$3);
    }
 
-   public double a() {
-      return this.k();
+   @Override
+   public void a(bsg $$0) {
+      super.a($$0);
+      this.a($$0, this.dS(), this);
    }
 
-   public double b() {
-      return this.l();
+   @Override
+   public cvp a(int $$0) {
+      return this.f_($$0);
    }
 
-   public double c() {
-      return this.m();
+   @Override
+   public cvp a(int $$0, int $$1) {
+      return this.b($$0, $$1);
    }
 
-   public float d() {
-      return this.n();
+   @Override
+   public cvp b(int $$0) {
+      return this.e_($$0);
    }
 
-   public float e() {
-      return this.o();
+   @Override
+   public void a(int $$0, cvp $$1) {
+      this.c($$0, $$1);
    }
 
-   public void a(double $$0, double $$1, double $$2) {
-      this.b($$0, $$1, $$2);
+   @Override
+   public bvb a_(int $$0) {
+      return this.g_($$0);
    }
 
-   public abstract void f();
-
-   public dds g() {
-      return this.a.dS();
+   @Override
+   public void e() {
    }
 
-   public abstract void h();
-
-   public abstract double a(je var1, dve var2, double var3);
-
-   public eye i() {
-      return this.a.dv();
+   @Override
+   public boolean a(cnu $$0) {
+      return this.g($$0);
    }
 
-   public void a(eye $$0) {
-      this.a.h($$0);
+   @Override
+   public void a(bto.c $$0) {
+      if (!this.dS().B && $$0.a()) {
+         brl.a(this.dS(), this, this);
+      }
+
+      super.a($$0);
    }
 
-   public void b(double $$0, double $$1, double $$2) {
-      this.a.n($$0, $$1, $$2);
+   @Override
+   protected void b(uf $$0) {
+      super.b($$0);
+      this.a($$0, this.dU());
    }
 
-   public eye j() {
-      return this.a.dq();
+   @Override
+   protected void a(uf $$0) {
+      super.a($$0);
+      this.b($$0, this.dU());
    }
 
-   public double k() {
-      return this.a.dx();
+   @Override
+   public brp a(cnu $$0, bro $$1) {
+      return this.c_($$0);
    }
 
-   public double l() {
-      return this.a.dz();
+   @Override
+   protected eys a(eys $$0) {
+      float $$1 = 0.98F;
+      if (this.d == null) {
+         int $$2 = 15 - cqw.b(this);
+         $$1 += (float)$$2 * 0.001F;
+      }
+
+      if (this.bi()) {
+         $$1 *= 0.95F;
+      }
+
+      return $$0.d((double)$$1, 0.0, (double)$$1);
    }
 
-   public double m() {
-      return this.a.dD();
+   @Override
+   public void a() {
+      this.f();
    }
 
-   public void b(eye $$0) {
-      this.a.b($$0);
+   public void a(alb<etm> $$0, long $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   public void c(double $$0, double $$1, double $$2) {
-      this.a.a_($$0, $$1, $$2);
+   @Nullable
+   @Override
+   public cqw createMenu(int $$0, cnt $$1, cnu $$2) {
+      if (this.d != null && $$2.P_()) {
+         return null;
+      } else {
+         this.f($$1.k);
+         return this.a($$0, $$1);
+      }
    }
 
-   public float n() {
-      return this.a.dK();
+   protected abstract cqw a(int var1, cnt var2);
+
+   @Nullable
+   @Override
+   public alb<etm> F() {
+      return this.d;
    }
 
-   public void a(float $$0) {
-      this.a.w($$0);
+   @Override
+   public void a(@Nullable alb<etm> $$0) {
+      this.d = $$0;
    }
 
-   public float o() {
-      return this.a.dI();
+   @Override
+   public long G() {
+      return this.e;
    }
 
-   public void b(float $$0) {
-      this.a.v($$0);
+   @Override
+   public void a(long $$0) {
+      this.e = $$0;
    }
 
-   public jj p() {
-      return this.a.cL();
+   @Override
+   public jw<cvp> I() {
+      return this.c;
    }
 
-   public eye c(eye $$0) {
-      return $$0;
+   @Override
+   public void J() {
+      this.c = jw.a(this.b(), cvp.k);
    }
-
-   public abstract double q();
-
-   public abstract double r();
 }

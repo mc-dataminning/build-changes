@@ -1,56 +1,14 @@
-import com.mojang.datafixers.util.Pair;
 import java.time.Duration;
-import java.util.Comparator;
-import java.util.List;
+import jdk.jfr.consumer.RecordedEvent;
 
-public final class box<T> {
-   private final box.a a;
-   private final List<Pair<T, box.a>> b;
-   private final Duration c;
-
-   public box(Duration $$0, List<Pair<T, box.a>> $$1) {
-      this.c = $$0;
-      this.a = $$1.stream().<box.a>map(Pair::getSecond).reduce(new box.a(0L, 0L), box.a::a);
-      this.b = $$1.stream().sorted(Comparator.comparing(Pair::getSecond, box.a.c)).limit(10L).toList();
-   }
-
-   public double a() {
-      return (double)this.a.a / (double)this.c.getSeconds();
-   }
-
-   public double b() {
-      return (double)this.a.b / (double)this.c.getSeconds();
-   }
-
-   public long c() {
-      return this.a.a;
-   }
-
-   public long d() {
-      return this.a.b;
-   }
-
-   public List<Pair<T, box.a>> e() {
-      return this.b;
-   }
-
-   public static record a(long a, long b) {
-      static final Comparator<box.a> c = Comparator.comparing(box.a::c).thenComparing(box.a::b).reversed();
-
-      box.a a(box.a $$0) {
-         return new box.a(this.a + $$0.a, this.b + $$0.b);
-      }
-
-      public float a() {
-         return (float)this.b / (float)this.a;
-      }
-
-      public long b() {
-         return this.a;
-      }
-
-      public long c() {
-         return this.b;
-      }
+public record box(Duration a, ddm b, aqu c, dxl d, String e) implements bpg {
+   public static box a(RecordedEvent $$0) {
+      return new box(
+         $$0.getDuration(),
+         new ddm($$0.getInt("chunkPosX"), $$0.getInt("chunkPosX")),
+         new aqu($$0.getInt("worldPosX"), $$0.getInt("worldPosZ")),
+         dxl.a($$0.getString("status")),
+         $$0.getString("level")
+      );
    }
 }

@@ -1,5 +1,25 @@
-public interface dvt {
-   dua a(int var1);
+public enum dvt implements azz {
+   a("up"),
+   b("side"),
+   c("none");
 
-   void a(int var1, dua var2);
+   private final String d;
+
+   private dvt(final String $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c();
+   }
+
+   @Override
+   public String c() {
+      return this.d;
+   }
+
+   public boolean a() {
+      return this != c;
+   }
 }

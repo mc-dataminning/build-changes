@@ -1,66 +1,58 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class fmh implements fmk {
-   private static final alb e = alb.b("toast/advancement");
-   public static final int a = 5000;
-   private final ag f;
-   private boolean g;
-   private fmk.a h = fmk.a.b;
+public interface fmh extends flu {
+   long t = 250L;
 
-   public fmh(ag $$0) {
-      this.f = $$0;
+   default void f(double $$0, double $$1) {
    }
 
-   @Override
-   public fmk.a a() {
-      return this.h;
+   default boolean a(double $$0, double $$1, int $$2) {
+      return false;
    }
 
-   @Override
-   public void a(fml $$0, long $$1) {
-      as $$2 = this.f.b().c().orElse(null);
-      if ($$2 == null) {
-         this.h = fmk.a.b;
-      } else {
-         if (!this.g && $$1 > 0L) {
-            this.g = true;
-            if ($$2.e() == am.b) {
-               $$0.c().aj().a(gzz.a(awd.AD, 1.0F, 1.0F));
-            }
-         }
-
-         this.h = (double)$$1 >= 5000.0 * $$0.d() ? fmk.a.b : fmk.a.a;
-      }
+   default boolean b(double $$0, double $$1, int $$2) {
+      return false;
    }
 
-   @Override
-   public void a(fjn $$0, fjl $$1, long $$2) {
-      as $$3 = this.f.b().c().orElse(null);
-      $$0.a(ghe::C, e, 0, 0, this.b(), this.c());
-      if ($$3 != null) {
-         List<ayo> $$4 = $$1.c($$3.a(), 125);
-         int $$5 = $$3.e() == am.b ? -30465 : -256;
-         if ($$4.size() == 1) {
-            $$0.a($$1, $$3.e().b(), 30, 7, $$5, false);
-            $$0.a($$1, $$4.get(0), 30, 18, -1, false);
-         } else {
-            int $$6 = 1500;
-            float $$7 = 300.0F;
-            if ($$2 < 1500L) {
-               int $$8 = azc.d(azc.a((float)(1500L - $$2) / 300.0F, 0.0F, 1.0F) * 255.0F) << 24 | 67108864;
-               $$0.a($$1, $$3.e().b(), 30, 11, $$5 | $$8, false);
-            } else {
-               int $$9 = azc.d(azc.a((float)($$2 - 1500L) / 300.0F, 0.0F, 1.0F) * 252.0F) << 24 | 67108864;
-               int $$10 = this.c() / 2 - $$4.size() * 9 / 2;
+   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
+      return false;
+   }
 
-               for (ayo $$11 : $$4) {
-                  $$0.a($$1, $$11, 30, $$10, 16777215 | $$9, false);
-                  $$10 += 9;
-               }
-            }
-         }
+   default boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return false;
+   }
 
-         $$0.b($$3.c(), 8, 8);
-      }
+   default boolean a(int $$0, int $$1, int $$2) {
+      return false;
+   }
+
+   default boolean c(int $$0, int $$1, int $$2) {
+      return false;
+   }
+
+   default boolean a(char $$0, int $$1) {
+      return false;
+   }
+
+   @Nullable
+   default fju a(fon $$0) {
+      return null;
+   }
+
+   default boolean c(double $$0, double $$1) {
+      return false;
+   }
+
+   void a(boolean var1);
+
+   boolean aM_();
+
+   @Nullable
+   default fju aN_() {
+      return this.aM_() ? fju.a(this) : null;
+   }
+
+   default fos H() {
+      return fos.a();
    }
 }

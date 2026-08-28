@@ -1,35 +1,29 @@
-public interface fap {
-   int a();
+import java.util.function.Function;
 
-   int b();
+public class fap<T> implements fag<T> {
+   private final Function<je, fan<T>> a;
 
-   void a(int var1, int var2);
-
-   boolean c();
-
-   float d();
-
-   default float e() {
-      return this.i();
+   public fap(Function<je, fan<T>> $$0) {
+      this.a = $$0;
    }
 
-   default float f() {
-      return this.e() + (float)this.a() / this.d();
+   @Override
+   public boolean a(je $$0, T $$1) {
+      return this.a.apply($$0).a($$0, $$1);
    }
 
-   default float g() {
-      return 7.0F - this.j();
+   @Override
+   public void a(fak<T> $$0) {
+      this.a.apply($$0.b()).a($$0);
    }
 
-   default float h() {
-      return this.g() + (float)this.b() / this.d();
+   @Override
+   public boolean b(je $$0, T $$1) {
+      return false;
    }
 
-   default float i() {
-      return 0.0F;
-   }
-
-   default float j() {
-      return 7.0F;
+   @Override
+   public int a() {
+      return 0;
    }
 }

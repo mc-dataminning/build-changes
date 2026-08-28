@@ -1,37 +1,40 @@
-public class gdj<T extends lo> extends gfe {
-   private final gez a;
-
-   protected gdj(gax $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, T $$7, gez $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.B = 0.96F;
-      this.C = true;
-      this.a = $$8;
-      this.j *= 0.1F;
-      this.k *= 0.1F;
-      this.l *= 0.1F;
-      this.D = this.D * 0.75F * $$7.d();
-      int $$9 = (int)(8.0 / (this.r.j() * 0.8 + 0.2));
-      this.t = (int)Math.max((float)$$9 * $$7.d(), 1.0F);
-      this.b($$8);
-   }
-
-   protected float a(float $$0, float $$1) {
-      return (this.r.i() * 0.2F + 0.8F) * $$0 * $$1;
-   }
-
-   @Override
-   public gei b() {
-      return gei.b;
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * azc.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+public class gdj extends gfo {
+   gdj(gbh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3);
+      this.u = -0.125F;
+      this.B = 0.85F;
+      this.b(0.02F, 0.02F);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
+      this.t = (int)(40.0 / (Math.random() * 0.8 + 0.2));
    }
 
    @Override
    public void a() {
       super.a();
-      this.b(this.a);
+      if (!this.o && !this.c.b_(je.a(this.g, this.h, this.i)).a(awz.a)) {
+         this.k();
+      }
+   }
+
+   @Override
+   public ges b() {
+      return ges.b;
+   }
+
+   public static class a implements ger<lr> {
+      private final gfj a;
+
+      public a(gfj $$0) {
+         this.a = $$0;
+      }
+
+      public geo a(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gdj $$8 = new gdj($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
+         return $$8;
+      }
    }
 }

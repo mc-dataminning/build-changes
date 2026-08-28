@@ -1,124 +1,140 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.OptionalInt;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.google.common.hash.Hashing;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.SignatureState;
+import com.mojang.authlib.minecraft.MinecraftProfileTexture;
+import com.mojang.authlib.minecraft.MinecraftProfileTextures;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.authlib.minecraft.MinecraftProfileTexture.Type;
+import com.mojang.authlib.properties.Property;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.nio.file.Path;
+import java.time.Duration;
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface gyd {
-   Codec<gyd> a = gyd.d.d.dispatch(gyd::a, gyd.d::a);
-   gyd b = new gyd.b();
+public class gyd {
+   static final Logger a = LogUtils.getLogger();
+   private final MinecraftSessionService b;
+   private final LoadingCache<gyd.a, CompletableFuture<gyc>> c;
+   private final gyd.b d;
+   private final gyd.b e;
+   private final gyd.b f;
 
-   gyd.d a();
+   public gyd(gxc $$0, Path $$1, final MinecraftSessionService $$2, final Executor $$3) {
+      this.b = $$2;
+      this.d = new gyd.b($$0, $$1, Type.SKIN);
+      this.e = new gyd.b($$0, $$1, Type.CAPE);
+      this.f = new gyd.b($$0, $$1, Type.ELYTRA);
+      this.c = CacheBuilder.newBuilder().expireAfterAccess(Duration.ofSeconds(15L)).build(new CacheLoader<gyd.a, CompletableFuture<gyc>>() {
+         public CompletableFuture<gyc> a(gyd.a $$0) {
+            return CompletableFuture.<MinecraftProfileTextures>supplyAsync(() -> {
+               Property $$2xx = $$0.b();
+               if ($$2xx == null) {
+                  return MinecraftProfileTextures.EMPTY;
+               } else {
+                  MinecraftProfileTextures $$3xx = $$2.unpackTextures($$2xx);
+                  if ($$3xx.signatureState() == SignatureState.INVALID) {
+                     gyd.a.warn("Profile contained invalid signature for textures property (profile id: {})", $$0.a());
+                  }
 
-   public static record a(int d, int e, gyd.a.a f) implements gyd {
-      public static final MapCodec<gyd.a> c = RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     ayl.l.fieldOf("width").forGetter(gyd.a::b), ayl.l.fieldOf("height").forGetter(gyd.a::c), gyd.a.a.g.fieldOf("border").forGetter(gyd.a::d)
-                  )
-                  .apply($$0, gyd.a::new)
-         )
-         .validate(gyd.a::a);
-
-      private static DataResult<gyd.a> a(gyd.a $$0) {
-         gyd.a.a $$1 = $$0.d();
-         if ($$1.a() + $$1.c() >= $$0.b()) {
-            return DataResult.error(() -> "Nine-sliced texture has no horizontal center slice: " + $$1.a() + " + " + $$1.c() + " >= " + $$0.b());
-         } else {
-            return $$1.b() + $$1.d() >= $$0.c()
-               ? DataResult.error(() -> "Nine-sliced texture has no vertical center slice: " + $$1.b() + " + " + $$1.d() + " >= " + $$0.c())
-               : DataResult.success($$0);
+                  return $$3xx;
+               }
+            }, ad.g()).thenComposeAsync($$1 -> gyd.this.a($$0.a(), $$1), $$3);
          }
+      });
+   }
+
+   public Supplier<gyc> a(GameProfile $$0) {
+      CompletableFuture<gyc> $$1 = this.c($$0);
+      gyc $$2 = gxt.a($$0);
+      return () -> $$1.getNow($$2);
+   }
+
+   public gyc b(GameProfile $$0) {
+      gyc $$1 = this.c($$0).getNow(null);
+      return $$1 != null ? $$1 : gxt.a($$0);
+   }
+
+   public CompletableFuture<gyc> c(GameProfile $$0) {
+      Property $$1 = this.b.getPackedTextures($$0);
+      return (CompletableFuture<gyc>)this.c.getUnchecked(new gyd.a($$0.getId(), $$1));
+   }
+
+   CompletableFuture<gyc> a(UUID $$0, MinecraftProfileTextures $$1) {
+      MinecraftProfileTexture $$2 = $$1.skin();
+      CompletableFuture<alc> $$3;
+      gyc.a $$4;
+      if ($$2 != null) {
+         $$3 = this.d.a($$2);
+         $$4 = gyc.a.a($$2.getMetadata("model"));
+      } else {
+         gyc $$5 = gxt.a($$0);
+         $$3 = CompletableFuture.completedFuture($$5.a());
+         $$4 = $$5.e();
       }
 
-      @Override
-      public gyd.d a() {
-         return gyd.d.c;
+      String $$8 = x.a($$2, MinecraftProfileTexture::getUrl);
+      MinecraftProfileTexture $$9 = $$1.cape();
+      CompletableFuture<alc> $$10 = $$9 != null ? this.e.a($$9) : CompletableFuture.completedFuture(null);
+      MinecraftProfileTexture $$11 = $$1.elytra();
+      CompletableFuture<alc> $$12 = $$11 != null ? this.f.a($$11) : CompletableFuture.completedFuture(null);
+      return CompletableFuture.allOf($$3, $$10, $$12)
+         .thenApply($$6x -> new gyc($$3.join(), $$8, $$10.join(), $$12.join(), $$4, $$1.signatureState() == SignatureState.SIGNED));
+   }
+
+   static record a(UUID a, @Nullable Property b) {
+   }
+
+   static class b {
+      private final gxc a;
+      private final Path b;
+      private final Type c;
+      private final Map<String, CompletableFuture<alc>> d = new Object2ObjectOpenHashMap();
+
+      b(gxc $$0, Path $$1, Type $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
       }
 
-      public int b() {
-         return this.d;
-      }
-
-      public int c() {
-         return this.e;
-      }
-
-      public gyd.a.a d() {
-         return this.f;
-      }
-
-      public static record a(int a, int b, int c, int d) {
-         private static final Codec<gyd.a.a> e = ayl.l.flatComapMap($$0 -> new gyd.a.a($$0, $$0, $$0, $$0), $$0 -> {
-            OptionalInt $$1 = $$0.e();
-            return $$1.isPresent() ? DataResult.success($$1.getAsInt()) : DataResult.error(() -> "Border has different side sizes");
-         });
-         private static final Codec<gyd.a.a> f = RecordCodecBuilder.create(
-            $$0 -> $$0.group(
-                     ayl.k.fieldOf("left").forGetter(gyd.a.a::a),
-                     ayl.k.fieldOf("top").forGetter(gyd.a.a::b),
-                     ayl.k.fieldOf("right").forGetter(gyd.a.a::c),
-                     ayl.k.fieldOf("bottom").forGetter(gyd.a.a::d)
-                  )
-                  .apply($$0, gyd.a.a::new)
-         );
-         static final Codec<gyd.a.a> g = Codec.either(e, f).xmap(Either::unwrap, $$0 -> $$0.e().isPresent() ? Either.left($$0) : Either.right($$0));
-
-         private OptionalInt e() {
-            return this.a() == this.b() && this.b() == this.c() && this.c() == this.d() ? OptionalInt.of(this.a()) : OptionalInt.empty();
+      public CompletableFuture<alc> a(MinecraftProfileTexture $$0) {
+         String $$1 = $$0.getHash();
+         CompletableFuture<alc> $$2 = this.d.get($$1);
+         if ($$2 == null) {
+            $$2 = this.b($$0);
+            this.d.put($$1, $$2);
          }
-      }
-   }
 
-   public static record b() implements gyd {
-      public static final MapCodec<gyd.b> c = MapCodec.unit(gyd.b::new);
-
-      @Override
-      public gyd.d a() {
-         return gyd.d.a;
-      }
-   }
-
-   public static record c(int d, int e) implements gyd {
-      public static final MapCodec<gyd.c> c = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(ayl.l.fieldOf("width").forGetter(gyd.c::b), ayl.l.fieldOf("height").forGetter(gyd.c::c)).apply($$0, gyd.c::new)
-      );
-
-      @Override
-      public gyd.d a() {
-         return gyd.d.b;
+         return $$2;
       }
 
-      public int b() {
-         return this.d;
+      private CompletableFuture<alc> b(MinecraftProfileTexture $$0) {
+         String $$1 = Hashing.sha1().hashUnencodedChars($$0.getHash()).toString();
+         alc $$2 = this.a($$1);
+         Path $$3 = this.b.resolve($$1.length() > 2 ? $$1.substring(0, 2) : "xx").resolve($$1);
+         CompletableFuture<alc> $$4 = new CompletableFuture<>();
+         gwp $$5 = new gwp($$3.toFile(), $$0.getUrl(), gxt.a(), this.c == Type.SKIN, () -> $$4.complete($$2));
+         this.a.a($$2, $$5);
+         return $$4;
       }
 
-      public int c() {
-         return this.e;
-      }
-   }
-
-   public static enum d implements azy {
-      a("stretch", gyd.b.c),
-      b("tile", gyd.c.c),
-      c("nine_slice", gyd.a.c);
-
-      public static final Codec<gyd.d> d = azy.a(gyd.d::values);
-      private final String e;
-      private final MapCodec<? extends gyd> f;
-
-      private d(final String $$0, final MapCodec<? extends gyd> $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      @Override
-      public String c() {
-         return this.e;
-      }
-
-      public MapCodec<? extends gyd> a() {
-         return this.f;
+      private alc a(String $$0) {
+         String $$1 = switch (this.c) {
+            case SKIN -> "skins";
+            case CAPE -> "capes";
+            case ELYTRA -> "elytra";
+            default -> throw new MatchException(null, null);
+         };
+         return alc.b($$1 + "/" + $$0);
       }
    }
 }

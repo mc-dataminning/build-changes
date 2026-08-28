@@ -1,58 +1,30 @@
-public abstract class cgx extends bun {
-   public static final int e = 120;
+public abstract class cgx extends bvg {
+   private static final int cc = 100;
+   private int cd;
 
-   protected cgx(btq<? extends cgx> $$0, dds $$1) {
+   protected cgx(btv<? extends cgx> $$0, deg $$1) {
       super($$0, $$1);
-      this.a(eqs.j, 0.0F);
    }
 
-   @Override
-   public boolean a(ddv $$0) {
-      return $$0.f(this);
-   }
-
-   @Override
-   public int T() {
-      return 120;
-   }
-
-   @Override
-   protected int ek() {
-      return 1 + this.dS().z.a(3);
-   }
-
-   protected void u(int $$0) {
-      if (this.bI() && !this.bl()) {
-         this.j($$0 - 1);
-         if (this.cq() == -20) {
-            this.j(0);
-            this.a(this.dT().i(), 2.0F);
-         }
+   public boolean b(ari $$0) {
+      uf $$1 = new uf();
+      $$1.a("id", this.bH());
+      this.f($$1);
+      if ($$0.h($$1)) {
+         this.as();
+         return true;
       } else {
-         this.j(300);
+         return false;
       }
    }
 
    @Override
-   public void ay() {
-      int $$0 = this.cq();
-      super.ay();
-      this.u($$0);
+   public void l() {
+      this.cd++;
+      super.l();
    }
 
-   @Override
-   public boolean cG() {
-      return false;
-   }
-
-   @Override
-   public boolean A() {
-      return false;
-   }
-
-   public static boolean c(btq<? extends cgx> $$0, ddt $$1, btp $$2, je $$3, azk $$4) {
-      int $$5 = $$1.N();
-      int $$6 = $$5 - 13;
-      return $$3.v() >= $$6 && $$3.v() <= $$5 && $$1.b_($$3.e()).a(awy.a) && $$1.a_($$3.d()).a(dgx.G);
+   public boolean gF() {
+      return this.cd > 100;
    }
 }

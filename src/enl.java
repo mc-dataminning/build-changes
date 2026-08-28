@@ -1,55 +1,48 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-public class enl extends eko {
-   public static final MapCodec<enl> d = a(enl::new);
+public class enl extends elc {
+   public static final MapCodec<enl> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(a($$0), ejj.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, enl::new)
+   );
+   public final ejj e;
 
-   public enl(eko.c $$0) {
+   public enl(elc.c $$0, ejj $$1) {
       super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public Optional<eko.b> a(eko.a $$0) {
-      dnj $$1 = dnj.a($$0.f());
-      je $$2 = this.a($$0, $$1);
-      return $$2.v() < 60 ? Optional.empty() : Optional.of(new eko.b($$2, (Consumer<elg>)($$3 -> this.a($$3, $$0, $$2, $$1))));
-   }
+   public Optional<elc.b> a(elc.a $$0) {
+      ebj $$1 = $$0.f();
+      int $$2 = $$0.h().d() + $$1.a(16);
+      int $$3 = $$0.h().e() + $$1.a(16);
+      int $$4 = $$0.b().f();
+      ebh $$5 = new ebh($$0.b(), $$0.i());
+      int $$6 = this.e.a($$1, $$5);
+      des $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
+      je.a $$8 = new je.a($$2, $$6, $$3);
 
-   private void a(elg $$0, eko.a $$1, je $$2, dnj $$3) {
-      List<enk.i> $$4 = Lists.newLinkedList();
-      enk.a($$1.e(), $$2, $$3, $$4, $$1.f());
-      $$4.forEach($$0::a);
-   }
-
-   @Override
-   public void a(dep $$0, den $$1, dvx $$2, azk $$3, ekg $$4, dcy $$5, eld $$6) {
-      je.a $$7 = new je.a();
-      int $$8 = $$0.G_();
-      ekg $$9 = $$6.b();
-      int $$10 = $$9.i();
-
-      for (int $$11 = $$4.h(); $$11 <= $$4.k(); $$11++) {
-         for (int $$12 = $$4.j(); $$12 <= $$4.m(); $$12++) {
-            $$7.d($$11, $$10, $$12);
-            if (!$$0.u($$7) && $$9.b($$7) && $$6.a($$7)) {
-               for (int $$13 = $$10 - 1; $$13 > $$8; $$13--) {
-                  $$7.q($$13);
-                  if (!$$0.u($$7) && !$$0.a_($$7).n()) {
-                     break;
-                  }
-
-                  $$0.a($$7, dgx.m.o(), 2);
-               }
-            }
+      while ($$6 > $$4) {
+         duo $$9 = $$7.a($$6);
+         duo $$10 = $$7.a(--$$6);
+         if ($$9.l() && ($$10.a(dhl.dW) || $$10.c(ddv.a, $$8.q($$6), jj.b))) {
+            break;
          }
+      }
+
+      if ($$6 <= $$4) {
+         return Optional.empty();
+      } else {
+         je $$11 = new je($$2, $$6, $$3);
+         return Optional.of(new elc.b($$11, (Consumer<elu>)($$3x -> enk.a($$0.e(), $$3x, $$1, $$11))));
       }
    }
 
    @Override
-   public ekx<?> e() {
-      return ekx.p;
+   public ell<?> e() {
+      return ell.i;
    }
 }

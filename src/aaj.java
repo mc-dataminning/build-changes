@@ -26,9 +26,9 @@ public record aaj(aaj.a c) implements aan {
       return this.c;
    }
 
-   public static record a(UUID a, int b, eye c, @Nullable eqp d, @Nullable je e, @Nullable je f, int g, Set<String> h, List<je> i) {
+   public static record a(UUID a, int b, eys c, @Nullable erd d, @Nullable je e, @Nullable je f, int g, Set<String> h, List<je> i) {
       public a(wa $$0) {
-         this($$0.n(), $$0.readInt(), $$0.k(), $$0.c(eqp::b), $$0.c(je.b), $$0.c(je.b), $$0.readInt(), $$0.a(HashSet::new, wa::p), $$0.a(je.b));
+         this($$0.n(), $$0.readInt(), $$0.k(), $$0.c(erd::b), $$0.c(je.b), $$0.c(je.b), $$0.readInt(), $$0.a(HashSet::new, wa::p), $$0.a(je.b));
       }
 
       public void a(wa $$0) {
@@ -64,12 +64,12 @@ public record aaj(aaj.a c) implements aan {
          return this.b;
       }
 
-      public eye d() {
+      public eys d() {
          return this.c;
       }
 
       @Nullable
-      public eqp e() {
+      public erd e() {
          return this.d;
       }
 

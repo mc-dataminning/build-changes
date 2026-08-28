@@ -3,7 +3,7 @@ public class aeu implements zk<abz> {
    private final double b;
    private final double c;
 
-   public aeu(dvr $$0) {
+   public aeu(dwf $$0) {
       this.b = $$0.a();
       this.c = $$0.b();
    }

@@ -1,57 +1,88 @@
-public class csc extends csn {
-   private final csa a;
-   private final cnp b;
-   private int g;
-   private final dco h;
+public class csc extends cqw {
+   private static final int q = 1;
+   private static final int r = 1;
+   public static final int m = 1;
+   public static final int n = 2;
+   public static final int o = 3;
+   public static final int p = 100;
+   private final bri s;
+   private final cri t;
 
-   public csc(cnp $$0, dco $$1, csa $$2, int $$3, int $$4, int $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.b = $$0;
-      this.h = $$1;
-      this.a = $$2;
+   public csc(int $$0) {
+      this($$0, new brw(1), new css(1));
    }
 
-   @Override
-   public boolean a(cvl $$0) {
-      return false;
-   }
-
-   @Override
-   public cvl a(int $$0) {
-      if (this.h()) {
-         this.g = this.g + Math.min($$0, this.g().J());
-      }
-
-      return super.a($$0);
-   }
-
-   @Override
-   protected void a(cvl $$0, int $$1) {
-      this.g += $$1;
-      this.b_($$0);
-   }
-
-   @Override
-   protected void b_(cvl $$0) {
-      $$0.a(this.b.dS(), this.b, this.g);
-      this.g = 0;
-   }
-
-   @Override
-   public void a(cnp $$0, cvl $$1) {
-      this.b_($$1);
-      dcp $$2 = this.a.g();
-      if ($$2 != null) {
-         cvl $$3 = this.a.a(0);
-         cvl $$4 = this.a.a(1);
-         if ($$2.b($$3, $$4) || $$2.b($$4, $$3)) {
-            this.h.a($$2);
-            $$0.a(awn.T);
-            this.a.a(0, $$3);
-            this.a.a(1, $$4);
+   public csc(int $$0, bri $$1, cri $$2) {
+      super(csf.r, $$0);
+      a($$1, 1);
+      a($$2, 1);
+      this.s = $$1;
+      this.t = $$2;
+      this.a(new cst($$1, 0, 0, 0) {
+         @Override
+         public void c() {
+            super.c();
+            csc.this.a(this.c);
          }
+      });
+      this.a($$2);
+   }
 
-         this.h.t(this.h.t() + $$2.q());
+   @Override
+   public boolean a(cnu $$0, int $$1) {
+      if ($$1 >= 100) {
+         int $$2 = $$1 - 100;
+         this.b(0, $$2);
+         return true;
+      } else {
+         switch ($$1) {
+            case 1:
+               int $$4 = this.t.a(0);
+               this.b(0, $$4 - 1);
+               return true;
+            case 2:
+               int $$3 = this.t.a(0);
+               this.b(0, $$3 + 1);
+               return true;
+            case 3:
+               if (!$$0.go()) {
+                  return false;
+               }
+
+               cvp $$5 = this.s.b(0);
+               this.s.e();
+               if (!$$0.gc().f($$5)) {
+                  $$0.a($$5, false);
+               }
+
+               return true;
+            default:
+               return false;
+         }
       }
+   }
+
+   @Override
+   public cvp b(cnu $$0, int $$1) {
+      return cvp.k;
+   }
+
+   @Override
+   public void b(int $$0, int $$1) {
+      super.b($$0, $$1);
+      this.d();
+   }
+
+   @Override
+   public boolean b(cnu $$0) {
+      return this.s.a($$0);
+   }
+
+   public cvp l() {
+      return this.s.a(0);
+   }
+
+   public int m() {
+      return this.t.a(0);
    }
 }

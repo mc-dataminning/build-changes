@@ -2,9 +2,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class vq {
    private final AtomicInteger a = new AtomicInteger();
-   private final bmk b;
+   private final bmo b;
 
-   public vq(bmk $$0) {
+   public vq(bmo $$0) {
       this.b = $$0;
    }
 

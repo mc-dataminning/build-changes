@@ -1,65 +1,61 @@
-import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
-public class euc extends eug {
-   private static final Logger b = LogUtils.getLogger();
+public class euc extends etz {
    public static final MapCodec<euc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(ala.a(lv.bd).fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, euc::new)
+      $$0 -> $$0.group(axj.a(lv.K).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
+            .and(b($$0))
+            .apply($$0, euc::new)
    );
-   private final ala<euh> c;
+   private final axj<cvk> j;
+   private final boolean k;
 
-   private euc(List<ewe> $$0, ala<euh> $$1) {
-      super($$0);
-      this.c = $$1;
+   private euc(axj<cvk> $$0, boolean $$1, int $$2, int $$3, List<ews> $$4, List<euv> $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.j = $$0;
+      this.k = $$1;
    }
 
    @Override
-   public eui<euc> b() {
-      return euj.H;
+   public ety a() {
+      return etv.f;
    }
 
    @Override
-   public void a(esz $$0) {
-      if (!$$0.b()) {
-         $$0.b("Uses reference to " + this.c.a() + ", but references are not allowed");
-      } else if ($$0.a(this.c)) {
-         $$0.b("Function " + this.c.a() + " is recursively called");
+   public void a(Consumer<cvp> $$0, eth $$1) {
+      lu.g.b(this.j).forEach($$1x -> $$0.accept(new cvp($$1x)));
+   }
+
+   private boolean a(eth $$0, Consumer<etw> $$1) {
+      if (!this.a($$0)) {
+         return false;
       } else {
-         super.a($$0);
-         $$0.a()
-            .a(lv.bd, this.c)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.c.a() + "}", this.c)), () -> $$0.b("Unknown function table called " + this.c.a()));
-      }
-   }
-
-   @Override
-   protected cvl a(cvl $$0, est $$1) {
-      euh $$2 = $$1.a().a(lv.bd, this.c).map(jn::a).orElse(null);
-      if ($$2 == null) {
-         b.warn("Unknown function: {}", this.c.a());
-         return $$0;
-      } else {
-         est.c<?> $$3 = est.a($$2);
-         if ($$1.b($$3)) {
-            cvl var5;
-            try {
-               var5 = $$2.apply($$0, $$1);
-            } finally {
-               $$1.c($$3);
-            }
-
-            return var5;
-         } else {
-            b.warn("Detected infinite loop in loot tables");
-            return $$0;
+         for (final jn<cvk> $$2 : lu.g.b(this.j)) {
+            $$1.accept(new etz.c() {
+               @Override
+               public void a(Consumer<cvp> $$0, eth $$1) {
+                  $$0.accept(new cvp($$2));
+               }
+            });
          }
+
+         return true;
       }
    }
 
-   public static eug.a<?> a(ala<euh> $$0) {
-      return a($$1 -> new euc($$1, $$0));
+   @Override
+   public boolean expand(eth $$0, Consumer<etw> $$1) {
+      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
+   }
+
+   public static etz.a<?> a(axj<cvk> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new euc($$0, false, $$1, $$2, $$3, $$4));
+   }
+
+   public static etz.a<?> b(axj<cvk> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new euc($$0, true, $$1, $$2, $$3, $$4));
    }
 }

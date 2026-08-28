@@ -1,108 +1,73 @@
-import com.mojang.blaze3d.platform.TextureUtil;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.ByteBuffer;
-import java.util.List;
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.system.MemoryUtil;
-import org.lwjgl.util.freetype.FT_Face;
-import org.lwjgl.util.freetype.FreeType;
+import org.joml.Matrix4f;
 
-public record fng(alb c, float d, float e, fng.a f, String g) implements fnd {
-   private static final Codec<String> h = Codec.withAlternative(Codec.STRING, Codec.STRING.listOf(), $$0 -> String.join("", $$0));
-   public static final MapCodec<fng> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               alb.a.fieldOf("file").forGetter(fng::c),
-               Codec.FLOAT.optionalFieldOf("size", 11.0F).forGetter(fng::d),
-               Codec.FLOAT.optionalFieldOf("oversample", 1.0F).forGetter(fng::e),
-               fng.a.b.optionalFieldOf("shift", fng.a.a).forGetter(fng::f),
-               h.optionalFieldOf("skip", "").forGetter(fng::g)
-            )
-            .apply($$0, fng::new)
-   );
+public class fng {
+   private final fne a;
+   private final float b;
+   private final float c;
+   private final float d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final float h;
+   private final float i;
 
-   @Override
-   public fne a() {
-      return fne.b;
+   public fng(fne $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
+      this.i = $$8;
    }
 
-   @Override
-   public Either<fnd.b, fnd.c> b() {
-      return Either.left(this::a);
+   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, fdi $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
+      float $$10 = $$1 + this.f;
+      float $$11 = $$1 + this.g;
+      float $$12 = $$2 + this.h;
+      float $$13 = $$2 + this.i;
+      float $$14 = $$0 ? 1.0F - 0.25F * this.h : 0.0F;
+      float $$15 = $$0 ? 1.0F - 0.25F * this.i : 0.0F;
+      $$4.a($$3, $$10 + $$14, $$12, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.d).c($$9);
+      $$4.a($$3, $$10 + $$15, $$13, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.e).c($$9);
+      $$4.a($$3, $$11 + $$15, $$13, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.e).c($$9);
+      $$4.a($$3, $$11 + $$14, $$12, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.d).c($$9);
    }
 
-   private fao a(aus $$0) throws IOException {
-      FT_Face $$1 = null;
-      ByteBuffer $$2 = null;
-
-      try {
-         far var20;
-         try (InputStream $$3 = $$0.open(this.c.f("font/"))) {
-            $$2 = TextureUtil.readResource($$3);
-            $$2.flip();
-            synchronized (fnc.a) {
-               MemoryStack $$4 = MemoryStack.stackPush();
-
-               try {
-                  PointerBuffer $$5 = $$4.mallocPointer(1);
-                  fnc.a(FreeType.FT_New_Memory_Face(fnc.a(), $$2, 0L, $$5), "Initializing font face");
-                  $$1 = FT_Face.create($$5.get());
-               } catch (Throwable var14) {
-                  if ($$4 != null) {
-                     try {
-                        $$4.close();
-                     } catch (Throwable var12) {
-                        var14.addSuppressed(var12);
-                     }
-                  }
-
-                  throw var14;
-               }
-
-               if ($$4 != null) {
-                  $$4.close();
-               }
-
-               String $$6 = FreeType.FT_Get_Font_Format($$1);
-               if (!"TrueType".equals($$6)) {
-                  throw new IOException("Font is not in TTF format, was " + $$6);
-               }
-
-               fnc.a(FreeType.FT_Select_Charmap($$1, FreeType.FT_ENCODING_UNICODE), "Find unicode charmap");
-               var20 = new far($$2, $$1, this.d, this.e, this.f.c, this.f.d, this.g);
-            }
-         }
-
-         return var20;
-      } catch (Exception var17) {
-         synchronized (fnc.a) {
-            if ($$1 != null) {
-               FreeType.FT_Done_Face($$1);
-            }
-         }
-
-         MemoryUtil.memFree($$2);
-         throw var17;
-      }
+   public void a(fng.a $$0, Matrix4f $$1, fdi $$2, int $$3) {
+      $$2.a($$1, $$0.a, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.d).c($$3);
+      $$2.a($$1, $$0.c, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.e).c($$3);
+      $$2.a($$1, $$0.c, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.e).c($$3);
+      $$2.a($$1, $$0.a, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.d).c($$3);
    }
 
-   public static record a(float c, float d) {
-      public static final fng.a a = new fng.a(0.0F, 0.0F);
-      public static final Codec<fng.a> b = Codec.floatRange(-512.0F, 512.0F)
-         .listOf()
-         .comapFlatMap($$0 -> ad.a($$0, 2).map($$0x -> new fng.a((Float)$$0x.get(0), (Float)$$0x.get(1))), $$0 -> List.of($$0.c, $$0.d));
+   public ghq a(fjv.a $$0) {
+      return this.a.a($$0);
+   }
 
-      public float a() {
-         return this.c;
-      }
+   public static class a {
+      protected final float a;
+      protected final float b;
+      protected final float c;
+      protected final float d;
+      protected final float e;
+      protected final float f;
+      protected final float g;
+      protected final float h;
+      protected final float i;
 
-      public float b() {
-         return this.d;
+      public a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = $$8;
       }
    }
 }

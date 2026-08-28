@@ -7,7 +7,7 @@ public class ado implements zk<abz> {
    private final int c;
    private final adp d;
 
-   public ado(dcy $$0, epq $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+   public ado(ddm $$0, eqe $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
       this.b = $$0.e;
       this.c = $$0.f;
       this.d = new adp($$0, $$1, $$2, $$3);

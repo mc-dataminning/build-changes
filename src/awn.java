@@ -1,98 +1,45 @@
-public class awn {
-   public static final awm<dgv> a = a("mined", lu.e);
-   public static final awm<cvg> b = a("crafted", lu.g);
-   public static final awm<cvg> c = a("used", lu.g);
-   public static final awm<cvg> d = a("broken", lu.g);
-   public static final awm<cvg> e = a("picked_up", lu.g);
-   public static final awm<cvg> f = a("dropped", lu.g);
-   public static final awm<btq<?>> g = a("killed", lu.f);
-   public static final awm<btq<?>> h = a("killed_by", lu.f);
-   public static final awm<alb> i = a("custom", lu.k);
-   public static final alb j = a("leave_game", awl.b);
-   public static final alb k = a("play_time", awl.e);
-   public static final alb l = a("total_world_time", awl.e);
-   public static final alb m = a("time_since_death", awl.e);
-   public static final alb n = a("time_since_rest", awl.e);
-   public static final alb o = a("sneak_time", awl.e);
-   public static final alb p = a("walk_one_cm", awl.d);
-   public static final alb q = a("crouch_one_cm", awl.d);
-   public static final alb r = a("sprint_one_cm", awl.d);
-   public static final alb s = a("walk_on_water_one_cm", awl.d);
-   public static final alb t = a("fall_one_cm", awl.d);
-   public static final alb u = a("climb_one_cm", awl.d);
-   public static final alb v = a("fly_one_cm", awl.d);
-   public static final alb w = a("walk_under_water_one_cm", awl.d);
-   public static final alb x = a("minecart_one_cm", awl.d);
-   public static final alb y = a("boat_one_cm", awl.d);
-   public static final alb z = a("pig_one_cm", awl.d);
-   public static final alb A = a("horse_one_cm", awl.d);
-   public static final alb B = a("aviate_one_cm", awl.d);
-   public static final alb C = a("swim_one_cm", awl.d);
-   public static final alb D = a("strider_one_cm", awl.d);
-   public static final alb E = a("jump", awl.b);
-   public static final alb F = a("drop", awl.b);
-   public static final alb G = a("damage_dealt", awl.c);
-   public static final alb H = a("damage_dealt_absorbed", awl.c);
-   public static final alb I = a("damage_dealt_resisted", awl.c);
-   public static final alb J = a("damage_taken", awl.c);
-   public static final alb K = a("damage_blocked_by_shield", awl.c);
-   public static final alb L = a("damage_absorbed", awl.c);
-   public static final alb M = a("damage_resisted", awl.c);
-   public static final alb N = a("deaths", awl.b);
-   public static final alb O = a("mob_kills", awl.b);
-   public static final alb P = a("animals_bred", awl.b);
-   public static final alb Q = a("player_kills", awl.b);
-   public static final alb R = a("fish_caught", awl.b);
-   public static final alb S = a("talked_to_villager", awl.b);
-   public static final alb T = a("traded_with_villager", awl.b);
-   public static final alb U = a("eat_cake_slice", awl.b);
-   public static final alb V = a("fill_cauldron", awl.b);
-   public static final alb W = a("use_cauldron", awl.b);
-   public static final alb X = a("clean_armor", awl.b);
-   public static final alb Y = a("clean_banner", awl.b);
-   public static final alb Z = a("clean_shulker_box", awl.b);
-   public static final alb aa = a("interact_with_brewingstand", awl.b);
-   public static final alb ab = a("interact_with_beacon", awl.b);
-   public static final alb ac = a("inspect_dropper", awl.b);
-   public static final alb ad = a("inspect_hopper", awl.b);
-   public static final alb ae = a("inspect_dispenser", awl.b);
-   public static final alb af = a("play_noteblock", awl.b);
-   public static final alb ag = a("tune_noteblock", awl.b);
-   public static final alb ah = a("pot_flower", awl.b);
-   public static final alb ai = a("trigger_trapped_chest", awl.b);
-   public static final alb aj = a("open_enderchest", awl.b);
-   public static final alb ak = a("enchant_item", awl.b);
-   public static final alb al = a("play_record", awl.b);
-   public static final alb am = a("interact_with_furnace", awl.b);
-   public static final alb an = a("interact_with_crafting_table", awl.b);
-   public static final alb ao = a("open_chest", awl.b);
-   public static final alb ap = a("sleep_in_bed", awl.b);
-   public static final alb aq = a("open_shulker_box", awl.b);
-   public static final alb ar = a("open_barrel", awl.b);
-   public static final alb as = a("interact_with_blast_furnace", awl.b);
-   public static final alb at = a("interact_with_smoker", awl.b);
-   public static final alb au = a("interact_with_lectern", awl.b);
-   public static final alb av = a("interact_with_campfire", awl.b);
-   public static final alb aw = a("interact_with_cartography_table", awl.b);
-   public static final alb ax = a("interact_with_loom", awl.b);
-   public static final alb ay = a("interact_with_stonecutter", awl.b);
-   public static final alb az = a("bell_ring", awl.b);
-   public static final alb aA = a("raid_trigger", awl.b);
-   public static final alb aB = a("raid_win", awl.b);
-   public static final alb aC = a("interact_with_anvil", awl.b);
-   public static final alb aD = a("interact_with_grindstone", awl.b);
-   public static final alb aE = a("target_hit", awl.b);
-   public static final alb aF = a("interact_with_smithing_table", awl.b);
+import java.util.IdentityHashMap;
+import java.util.Iterator;
+import java.util.Map;
 
-   private static alb a(String $$0, awl $$1) {
-      alb $$2 = alb.b($$0);
-      ka.a(lu.k, $$0, $$2);
-      i.a($$2, $$1);
-      return $$2;
+public class awn<T> implements Iterable<awl<T>> {
+   private final ka<T> a;
+   private final Map<T, awl<T>> b = new IdentityHashMap<>();
+   private final xd c;
+   private final zb<wo, awl<T>> d;
+
+   public awn(ka<T> $$0, xd $$1) {
+      this.a = $$0;
+      this.c = $$1;
+      this.d = yz.a($$0.d()).a(this::b, awl::b);
    }
 
-   private static <T> awm<T> a(String $$0, ka<T> $$1) {
-      xd $$2 = xd.c("stat_type.minecraft." + $$0);
-      return ka.a(lu.v, $$0, new awm<>($$1, $$2));
+   public zb<wo, awl<T>> a() {
+      return this.d;
+   }
+
+   public boolean a(T $$0) {
+      return this.b.containsKey($$0);
+   }
+
+   public awl<T> a(T $$0, awm $$1) {
+      return this.b.computeIfAbsent($$0, $$1x -> new awl<>(this, (T)$$1x, $$1));
+   }
+
+   public ka<T> b() {
+      return this.a;
+   }
+
+   @Override
+   public Iterator<awl<T>> iterator() {
+      return this.b.values().iterator();
+   }
+
+   public awl<T> b(T $$0) {
+      return this.a($$0, awm.b);
+   }
+
+   public xd c() {
+      return this.c;
    }
 }

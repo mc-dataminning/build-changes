@@ -1,101 +1,109 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
-import java.util.function.Function;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.List;
+import java.util.Locale;
 import org.slf4j.Logger;
 
-public abstract class eky extends eks {
-   private static final Logger h = LogUtils.getLogger();
-   protected final String a;
-   protected eoq b;
-   protected eom c;
-   protected je d;
+public class eky extends elg {
+   private static final Logger d = LogUtils.getLogger();
+   protected final emk a;
+   protected je b;
+   private final int h;
+   protected final dnx c;
+   private final List<emf> i = Lists.newArrayList();
+   private final epf j;
+   private final eoo k;
 
-   public eky(elf $$0, int $$1, eor $$2, alb $$3, String $$4, eom $$5, je $$6) {
-      super($$0, $$1, $$2.a($$3).b($$5, $$6));
-      this.a(jj.c);
-      this.a = $$4;
-      this.d = $$6;
-      this.b = $$2.a($$3);
-      this.c = $$5;
+   public eky(epf $$0, emk $$1, je $$2, int $$3, dnx $$4, eku $$5, eoo $$6) {
+      super(elt.ad, 0, $$5);
+      this.j = $$0;
+      this.a = $$1;
+      this.b = $$2;
+      this.h = $$3;
+      this.c = $$4;
+      this.k = $$6;
    }
 
-   public eky(elf $$0, uf $$1, eor $$2, Function<alb, eom> $$3) {
-      super($$0, $$1);
-      this.a(jj.c);
-      this.a = $$1.l("Template");
-      this.d = new je($$1.h("TPX"), $$1.h("TPY"), $$1.h("TPZ"));
-      alb $$4 = this.b();
-      this.b = $$2.a($$4);
-      this.c = $$3.apply($$4);
-      this.f = this.b.b(this.c, this.d);
-   }
-
-   protected alb b() {
-      return alb.a(this.a);
-   }
-
-   @Override
-   protected void a(ele $$0, uf $$1) {
-      $$1.a("TPX", this.d.u());
-      $$1.a("TPY", this.d.v());
-      $$1.a("TPZ", this.d.w());
-      $$1.a("Template", this.a);
+   public eky(els $$0, uf $$1) {
+      super(elt.ad, $$1);
+      this.j = $$0.c();
+      this.b = new je($$1.h("PosX"), $$1.h("PosY"), $$1.h("PosZ"));
+      this.h = $$1.h("ground_level_delta");
+      DynamicOps<vc> $$2 = $$0.b().a(ut.a);
+      this.a = (emk)emk.f.parse($$2, $$1.p("pool_element")).getPartialOrThrow($$0x -> new IllegalStateException("Invalid pool element found: " + $$0x));
+      this.c = dnx.valueOf($$1.l("rotation"));
+      this.f = this.a.a(this.j, this.b, this.c);
+      ul $$3 = $$1.c("junctions", 10);
+      this.i.clear();
+      $$3.forEach($$1x -> this.i.add(emf.a(new Dynamic($$2, $$1x))));
+      this.k = eoo.c.parse(ut.a, $$1.c("liquid_settings")).result().orElse(end.e);
    }
 
    @Override
-   public void a(dep $$0, den $$1, dvx $$2, azk $$3, ekg $$4, dcy $$5, je $$6) {
-      this.c.a($$4);
-      this.f = this.b.b(this.c, this.d);
-      if (this.b.a($$0, this.d, $$6, this.c, $$3, 2)) {
-         for (eoq.c $$8 : this.b.a(this.d, this.c, dgx.pa)) {
-            if ($$8.c() != null) {
-               dvk $$9 = dvk.valueOf($$8.c().l("mode"));
-               if ($$9 == dvk.d) {
-                  this.a($$8.c().l("metadata"), $$8.a(), $$0, $$3, $$4);
-               }
-            }
-         }
+   protected void a(els $$0, uf $$1) {
+      $$1.a("PosX", this.b.u());
+      $$1.a("PosY", this.b.v());
+      $$1.a("PosZ", this.b.w());
+      $$1.a("ground_level_delta", this.h);
+      DynamicOps<vc> $$2 = $$0.b().a(ut.a);
+      emk.f.encodeStart($$2, this.a).resultOrPartial(d::error).ifPresent($$1x -> $$1.a("pool_element", $$1x));
+      $$1.a("rotation", this.c.name());
+      ul $$3 = new ul();
 
-         for (eoq.c $$11 : this.b.a(this.d, this.c, dgx.pb)) {
-            if ($$11.c() != null) {
-               String $$12 = $$11.c().l("final_state");
-               dua $$13 = dgx.a.o();
+      for (emf $$4 : this.i) {
+         $$3.add((vc)$$4.a($$2).getValue());
+      }
 
-               try {
-                  $$13 = gn.a($$0.a(lv.f), $$12, true).a();
-               } catch (CommandSyntaxException var15) {
-                  h.error("Error while parsing blockstate {} in jigsaw block @ {}", $$12, $$11.a());
-               }
-
-               $$0.a($$11.a(), $$13, 3);
-            }
-         }
+      $$1.a("junctions", $$3);
+      if (this.k != end.e) {
+         $$1.a("liquid_settings", (vc)eoo.c.encodeStart(ut.a, this.k).getOrThrow());
       }
    }
 
-   protected abstract void a(String var1, je var2, dei var3, azk var4, ekg var5);
+   @Override
+   public void a(dfd $$0, dfb $$1, dwl $$2, azl $$3, eku $$4, ddm $$5, je $$6) {
+      this.a($$0, $$1, $$2, $$3, $$4, $$6, false);
+   }
 
-   @Deprecated
+   public void a(dfd $$0, dfb $$1, dwl $$2, azl $$3, eku $$4, je $$5, boolean $$6) {
+      this.a.a(this.j, $$0, $$1, $$2, this.b, $$5, this.c, $$4, $$3, this.k, $$6);
+   }
+
    @Override
    public void a(int $$0, int $$1, int $$2) {
       super.a($$0, $$1, $$2);
-      this.d = this.d.b($$0, $$1, $$2);
+      this.b = this.b.b($$0, $$1, $$2);
    }
 
    @Override
-   public dnj a() {
-      return this.c.d();
+   public dnx a() {
+      return this.c;
    }
 
-   public eoq c() {
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "<%s | %s | %s | %s>", this.getClass().getSimpleName(), this.b, this.c, this.a);
+   }
+
+   public emk b() {
+      return this.a;
+   }
+
+   public je c() {
       return this.b;
    }
 
-   public je d() {
-      return this.d;
+   public int d() {
+      return this.h;
    }
 
-   public eom e() {
-      return this.c;
+   public void a(emf $$0) {
+      this.i.add($$0);
+   }
+
+   public List<emf> e() {
+      return this.i;
    }
 }

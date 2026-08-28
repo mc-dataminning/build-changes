@@ -1,12 +1,18 @@
-public class gqc<M extends fyf> extends grn<M> {
-   private static final alb a = alb.b("textures/entity/bee/bee_stinger.png");
+public class gqc extends gma<cie, gtm, fwb<gtm>> {
+   private static final alc a = alc.b("textures/entity/horse/horse_zombie.png");
+   private static final alc b = alc.b("textures/entity/horse/horse_skeleton.png");
+   private final alc k;
 
-   public gqc(gnt<?, guf, M> $$0, gms.a $$1) {
-      super($$0, new fwf($$1.a(gaa.s)), a, grn.a.b);
+   public gqc(gnj.a $$0, gaj $$1, gaj $$2, boolean $$3) {
+      super($$0, new fxv($$0.a($$1)), new fxv($$0.a($$2)), 1.0F);
+      this.k = $$3 ? b : a;
    }
 
-   @Override
-   protected int a(guf $$0) {
-      return $$0.f;
+   public alc a(gtm $$0) {
+      return this.k;
+   }
+
+   public gtm c() {
+      return new gtm();
    }
 }

@@ -36,7 +36,7 @@ public abstract class adt implements zk<abz> {
    }
 
    @Nullable
-   public btj a(dds $$0) {
+   public bto a(deg $$0) {
       return $$0.a(this.a);
    }
 

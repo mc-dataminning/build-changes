@@ -1,13 +1,13 @@
-import java.time.Instant;
+public interface bpr {
+   void a();
 
-public final class bpr {
-   public final Instant a;
-   public final int b;
-   public final bnx c;
+   void b();
 
-   public bpr(Instant $$0, int $$1, bnx $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-   }
+   void c();
+
+   boolean e();
+
+   bod f();
+
+   void d();
 }

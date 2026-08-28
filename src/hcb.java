@@ -1,22 +1,58 @@
-import java.time.Duration;
+import com.google.common.collect.Lists;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class hcb {
-   private final boolean a;
+public class hcb implements hcc<has> {
+   private final List<hcc<has>> a = Lists.newArrayList();
    @Nullable
-   private final Duration b;
+   private final xd b;
 
-   public hcb(boolean $$0, @Nullable Duration $$1) {
-      this.b = $$1;
-      this.a = $$0;
+   public hcb(alc $$0, @Nullable String $$1) {
+      this.b = $$1 == null ? null : xd.c($$1);
    }
 
-   public void a(hbr $$0) {
-      if (this.b != null) {
-         $$0.send(hbs.d, $$0x -> {
-            $$0x.a(hbu.x, (int)this.b.toMillis());
-            $$0x.a(hbu.y, this.a);
-         });
+   @Override
+   public int e() {
+      int $$0 = 0;
+
+      for (hcc<has> $$1 : this.a) {
+         $$0 += $$1.e();
+      }
+
+      return $$0;
+   }
+
+   public has a(azl $$0) {
+      int $$1 = this.e();
+      if (!this.a.isEmpty() && $$1 != 0) {
+         int $$2 = $$0.a($$1);
+
+         for (hcc<has> $$3 : this.a) {
+            $$2 -= $$3.e();
+            if ($$2 < 0) {
+               return $$3.b($$0);
+            }
+         }
+
+         return hca.b;
+      } else {
+         return hca.b;
+      }
+   }
+
+   public void a(hcc<has> $$0) {
+      this.a.add($$0);
+   }
+
+   @Nullable
+   public xd a() {
+      return this.b;
+   }
+
+   @Override
+   public void a(hbx $$0) {
+      for (hcc<has> $$1 : this.a) {
+         $$1.a($$0);
       }
    }
 }

@@ -1,98 +1,48 @@
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Pair;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Stream;
+import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class byg<U> implements Iterable<U> {
-   protected final List<byg.a<U>> a;
-   private final azk b = azk.a();
-
-   public byg() {
-      this.a = Lists.newArrayList();
+public class byg {
+   public static bwd<bus> a(cdn<je> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, eys::c);
    }
 
-   private byg(List<byg.a<U>> $$0) {
-      this.a = Lists.newArrayList($$0);
+   public static bxn<bus> b(cdn<? extends bto> $$0, float $$1, int $$2, boolean $$3) {
+      return a($$0, $$1, $$2, $$3, bto::dq);
    }
 
-   public static <U> Codec<byg<U>> a(Codec<U> $$0) {
-      return byg.a.a($$0).listOf().xmap(byg::new, $$0x -> $$0x.a);
-   }
+   private static <T> bxn<bus> a(cdn<T> $$0, float $$1, int $$2, boolean $$3, Function<T, eys> $$4) {
+      return bzp.a(
+         (Function<bzp.b<bus>, ? extends App<bzp.c<bus>, bzs<bus>>>)($$5 -> $$5.group($$5.a(cdn.m), $$5.b($$0)).apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
+                  Optional<cdq> $$10 = $$5.a($$5x);
+                  if ($$10.isPresent() && !$$3) {
+                     return false;
+                  } else {
+                     eys $$11 = $$8.dq();
+                     eys $$12 = $$4.apply($$5.b($$6));
+                     if (!$$11.a((jx)$$12, (double)$$2)) {
+                        return false;
+                     } else {
+                        if ($$10.isPresent() && $$10.get().b() == $$1) {
+                           eys $$13 = $$10.get().a().a().d($$11);
+                           eys $$14 = $$12.d($$11);
+                           if ($$13.b($$14) < 0.0) {
+                              return false;
+                           }
+                        }
 
-   public byg<U> a(U $$0, int $$1) {
-      this.a.add(new byg.a<>($$0, $$1));
-      return this;
-   }
+                        for (int $$15 = 0; $$15 < 10; $$15++) {
+                           eys $$16 = cfh.b($$8, 16, 7, $$12);
+                           if ($$16 != null) {
+                              $$5x.a(new cdq($$16, $$1, 0));
+                              break;
+                           }
+                        }
 
-   public byg<U> a() {
-      this.a.forEach($$0 -> $$0.a(this.b.i()));
-      this.a.sort(Comparator.comparingDouble(byg.a::c));
-      return this;
-   }
-
-   public Stream<U> b() {
-      return this.a.stream().map(byg.a::a);
-   }
-
-   @Override
-   public Iterator<U> iterator() {
-      return Iterators.transform(this.a.iterator(), byg.a::a);
-   }
-
-   @Override
-   public String toString() {
-      return "ShufflingList[" + this.a + "]";
-   }
-
-   public static class a<T> {
-      final T a;
-      final int b;
-      private double c;
-
-      a(T $$0, int $$1) {
-         this.b = $$1;
-         this.a = $$0;
-      }
-
-      private double c() {
-         return this.c;
-      }
-
-      void a(float $$0) {
-         this.c = -Math.pow((double)$$0, (double)(1.0F / (float)this.b));
-      }
-
-      public T a() {
-         return this.a;
-      }
-
-      public int b() {
-         return this.b;
-      }
-
-      @Override
-      public String toString() {
-         return this.b + ":" + this.a;
-      }
-
-      public static <E> Codec<byg.a<E>> a(final Codec<E> $$0) {
-         return new Codec<byg.a<E>>() {
-            public <T> DataResult<Pair<byg.a<E>, T>> decode(DynamicOps<T> $$0x, T $$1) {
-               Dynamic<T> $$2 = new Dynamic($$0, $$1);
-               return $$2.get("data").flatMap($$0::parse).map($$1x -> new byg.a<>($$1x, $$2.get("weight").asInt(1))).map($$1x -> Pair.of($$1x, $$0.empty()));
-            }
-
-            public <T> DataResult<T> a(byg.a<E> $$0x, DynamicOps<T> $$1, T $$2) {
-               return $$1.mapBuilder().add("weight", $$1.createInt($$0.b)).add("data", $$0.encodeStart($$1, $$0.a)).build($$2);
-            }
-         };
-      }
+                        return true;
+                     }
+                  }
+               }))
+      );
    }
 }

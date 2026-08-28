@@ -1,17 +1,7 @@
-import java.util.List;
+public interface cri {
+   int a(int var1);
 
-public interface cri extends brd, css {
-   int aB_();
+   void a(int var1, int var2);
 
-   int g();
-
-   List<cvl> h();
-
-   default czi aE_() {
-      return this.aF_().a();
-   }
-
-   default czi.a aF_() {
-      return czi.b(this.aB_(), this.g(), this.h());
-   }
+   int a();
 }

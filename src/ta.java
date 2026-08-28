@@ -16,7 +16,7 @@ public class ta {
    private je b;
    @Nullable
    private je c;
-   private final arg d;
+   private final arh d;
    private final Collection<tb> e = Lists.newArrayList();
    private final int f;
    private final Collection<te> g = Lists.newCopyOnWriteArrayList();
@@ -30,13 +30,13 @@ public class ta {
    private final tn o;
    private final Stopwatch p = Stopwatch.createUnstarted();
    private boolean q;
-   private final dnj r;
+   private final dnx r;
    @Nullable
    private Throwable s;
    @Nullable
-   private dsv t;
+   private dtj t;
 
-   public ta(tu $$0, dnj $$1, arg $$2, tn $$3) {
+   public ta(tu $$0, dnx $$1, arh $$2, tn $$3) {
       this.a = $$0;
       this.d = $$2;
       this.o = $$3;
@@ -60,9 +60,9 @@ public class ta {
       } else {
          this.j = 0;
          this.k = true;
-         dsv $$0 = this.e();
+         dtj $$0 = this.e();
          $$0.c(this.d);
-         ekg $$1 = tq.b($$0);
+         eku $$1 = tq.b($$0);
          this.d.m().a($$1);
          this.d.a($$1);
          return this;
@@ -165,18 +165,18 @@ public class ta {
       return this.b;
    }
 
-   public exz d() {
-      dsv $$0 = this.e();
+   public eyn d() {
+      dtj $$0 = this.e();
       return tq.a($$0);
    }
 
-   public dsv e() {
+   public dtj e() {
       if (this.t == null) {
          if (this.b == null) {
             throw new IllegalStateException("Could not find a structureBlockEntity for this GameTestInfo");
          }
 
-         this.t = (dsv)this.d.c_(this.b);
+         this.t = (dtj)this.d.c_(this.b);
          if (this.t == null) {
             throw new IllegalStateException("Could not find a structureBlockEntity at the given coordinate " + this.b);
          }
@@ -185,7 +185,7 @@ public class ta {
       return this.t;
    }
 
-   public arg f() {
+   public arh f() {
       return this.d;
    }
 
@@ -221,9 +221,9 @@ public class ta {
    public void l() {
       if (this.s == null) {
          this.G();
-         exz $$0 = this.d();
-         List<btj> $$1 = this.f().a(btj.class, $$0.g(1.0), $$0x -> !($$0x instanceof cnp));
-         $$1.forEach($$0x -> $$0x.a(btj.c.b));
+         eyn $$0 = this.d();
+         List<bto> $$1 = this.f().a(bto.class, $$0.g(1.0), $$0x -> !($$0x instanceof cnu));
+         $$1.forEach($$0x -> $$0x.a(bto.c.b));
       }
    }
 
@@ -249,7 +249,7 @@ public class ta {
    public ta n() {
       je $$0 = this.C();
       this.t = tq.b(this, $$0, this.t(), this.d);
-      this.b = this.t.aD_();
+      this.b = this.t.aB_();
       tq.a(this.b, new je(1, 0, -1), this.t(), this.d);
       tq.a(this.d(), this.d, !this.a.l());
       this.e.forEach($$0x -> $$0x.a(this));
@@ -278,7 +278,7 @@ public class ta {
       return this.a.d();
    }
 
-   public dnj t() {
+   public dnx t() {
       return this.r;
    }
 
@@ -325,7 +325,7 @@ public class ta {
 
    public je C() {
       if (this.c == null) {
-         ekg $$0 = tq.b(this.e());
+         eku $$0 = tq.b(this.e());
          this.c = new je($$0.h(), $$0.i(), $$0.j());
       }
 

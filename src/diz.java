@@ -1,55 +1,43 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class diz extends dgv {
-   public static final MapCodec<diz> a = b(diz::new);
-   protected static final eyx b = djs.c;
+public class diz extends dgr {
+   public static final MapCodec<diz> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(diy.a.forGetter($$0x -> $$0x.c), u()).apply($$0, diz::new));
+   private final dhj c;
 
    @Override
    public MapCodec<diz> a() {
-      return a;
-   }
-
-   protected diz(dtz.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected boolean g_(dua $$0) {
-      return true;
-   }
-
-   @Override
-   public dua a(cyw $$0) {
-      return !this.o().a((ddv)$$0.q(), $$0.a()) ? dgv.a(this.o(), dgx.j.o(), $$0.q(), $$0.a()) : super.a($$0);
-   }
-
-   @Override
-   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
-      if ($$1 == jj.b && !$$0.a($$3, $$4)) {
-         $$3.a($$4, this, 1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void a(dua $$0, arg $$1, je $$2, azk $$3) {
-      djs.a(null, $$0, $$1, $$2);
-   }
-
-   @Override
-   protected boolean a(dua $$0, ddv $$1, je $$2) {
-      dua $$3 = $$1.a_($$2.d());
-      return !$$3.e() || $$3.b() instanceof dju;
-   }
-
-   @Override
-   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
       return b;
    }
 
+   protected diz(dhj $$0, dun.d $$1) {
+      super($$1);
+      this.c = $$0;
+   }
+
    @Override
-   protected boolean a(dua $$0, eqq $$1) {
-      return false;
+   protected void b(duo $$0, deg $$1, je $$2, duo $$3, boolean $$4) {
+      this.a($$0, (deh)$$1, $$2);
+   }
+
+   @Override
+   protected void a(duo $$0, arh $$1, je $$2, azl $$3) {
+      if (!d($$0, $$1, $$2)) {
+         $$1.a($$2, this.c.o().b(d, Boolean.valueOf(false)), 2);
+      }
+   }
+
+   @Override
+   protected duo a(duo $$0, jj $$1, duo $$2, deh $$3, je $$4, je $$5) {
+      if ($$1 == jj.a && !$$0.a($$3, $$4)) {
+         return dhl.a.o();
+      } else {
+         this.a($$0, $$3, $$4);
+         if ($$0.c(d)) {
+            $$3.a($$4, eqq.c, eqq.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 }

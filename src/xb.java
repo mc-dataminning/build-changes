@@ -47,7 +47,7 @@ public class xb {
       return 31 * $$0 + this.c.hashCode();
    }
 
-   public static enum a implements azy {
+   public static enum a implements azz {
       a("open_url", true),
       b("open_file", false),
       c("run_command", true),
@@ -55,7 +55,7 @@ public class xb {
       e("change_page", true),
       f("copy_to_clipboard", true);
 
-      public static final MapCodec<xb.a> g = azy.a(xb.a::values).fieldOf("action");
+      public static final MapCodec<xb.a> g = azz.a(xb.a::values).fieldOf("action");
       public static final MapCodec<xb.a> h = g.validate(xb.a::a);
       private final boolean i;
       private final String j;

@@ -1,22 +1,23 @@
 import com.mojang.datafixers.kinds.App;
+import java.util.Optional;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bye {
-   public static bxi<buf> a(float $$0, int $$1) {
-      return a($$0x -> true, $$1x -> $$0, $$1);
-   }
-
-   public static bxi<buf> a(Predicate<buf> $$0, Function<buf, Float> $$1, int $$2) {
-      return bzk.a(
-         (Function<bzk.b<buf>, ? extends App<bzk.c<buf>, bzn<buf>>>)($$3 -> $$3.group($$3.c(cdi.m), $$3.b(cdi.n)).apply($$3, ($$4, $$5) -> ($$6, $$7, $$8) -> {
-                  if (!$$0.test($$7)) {
-                     return false;
-                  } else {
-                     $$4.a(new cdl($$3.b($$5), $$1.apply($$7), $$2));
-                     return true;
-                  }
-               }))
+   public static bwd<buk> a(btv<?> $$0, int $$1) {
+      int $$2 = $$1 * $$1;
+      return bzp.a(
+         (Function<bzp.b<buk>, ? extends App<bzp.c<buk>, bzs<buk>>>)($$2x -> $$2x.group($$2x.a(cdn.n), $$2x.c(cdn.q), $$2x.b(cdn.h))
+               .apply($$2x, ($$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
+                     Optional<buk> $$9 = $$2x.<cdp>b($$5).a($$3xx -> $$3xx.g((bto)$$7) <= (double)$$2 && $$0.equals($$3xx.ao()));
+                     if ($$9.isEmpty()) {
+                        return false;
+                     } else {
+                        buk $$10 = $$9.get();
+                        $$4.a($$10);
+                        $$3.a(new bwn($$10, true));
+                        return true;
+                     }
+                  }))
       );
    }
 }

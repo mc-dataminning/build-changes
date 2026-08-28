@@ -19,21 +19,21 @@ public class fs<T> implements ArgumentType<jn.c<T>> {
    public static final Dynamic3CommandExceptionType b = new Dynamic3CommandExceptionType(
       ($$0, $$1, $$2) -> xd.b("argument.resource.invalid_type", $$0, $$1, $$2)
    );
-   final ala<? extends ka<T>> e;
+   final alb<? extends ka<T>> e;
    private final jp<T> f;
 
-   public fs(ep $$0, ala<? extends ka<T>> $$1) {
+   public fs(ep $$0, alb<? extends ka<T>> $$1) {
       this.e = $$1;
       this.f = $$0.b($$1);
    }
 
-   public static <T> fs<T> a(ep $$0, ala<? extends ka<T>> $$1) {
+   public static <T> fs<T> a(ep $$0, alb<? extends ka<T>> $$1) {
       return new fs<>($$0, $$1);
    }
 
-   public static <T> jn.c<T> a(CommandContext<et> $$0, String $$1, ala<ka<T>> $$2) throws CommandSyntaxException {
+   public static <T> jn.c<T> a(CommandContext<et> $$0, String $$1, alb<ka<T>> $$2) throws CommandSyntaxException {
       jn.c<T> $$3 = (jn.c<T>)$$0.getArgument($$1, jn.c.class);
-      ala<?> $$4 = $$3.h();
+      alb<?> $$4 = $$3.h();
       if ($$4.c($$2)) {
          return $$3;
       } else {
@@ -41,24 +41,24 @@ public class fs<T> implements ArgumentType<jn.c<T>> {
       }
    }
 
-   public static jn.c<bvh> a(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
+   public static jn.c<bvm> a(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, lv.c);
    }
 
-   public static jn.c<eco<?, ?>> b(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, lv.aI);
+   public static jn.c<edc<?, ?>> b(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, lv.aJ);
    }
 
-   public static jn.c<eko> c(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, lv.aR);
+   public static jn.c<elc> c(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, lv.aS);
    }
 
-   public static jn.c<btq<?>> d(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
+   public static jn.c<btv<?>> d(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, lv.z);
    }
 
-   public static jn.c<btq<?>> e(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
-      jn.c<btq<?>> $$2 = a($$0, $$1, lv.z);
+   public static jn.c<btv<?>> e(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
+      jn.c<btv<?>> $$2 = a($$0, $$1, lv.z);
       if (!$$2.a().c()) {
          throw d.create($$2.h().a().toString());
       } else {
@@ -66,22 +66,22 @@ public class fs<T> implements ArgumentType<jn.c<T>> {
       }
    }
 
-   public static jn.c<bso> f(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
+   public static jn.c<bst> f(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, lv.W);
    }
 
-   public static jn.c<daw> g(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
-      return a($$0, $$1, lv.aL);
+   public static jn.c<dbk> g(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
+      return a($$0, $$1, lv.aM);
    }
 
    public jn.c<T> a(StringReader $$0) throws CommandSyntaxException {
-      alb $$1 = alb.a($$0);
-      ala<T> $$2 = ala.a(this.e, $$1);
+      alc $$1 = alc.a($$0);
+      alb<T> $$2 = alb.a(this.e, $$1);
       return this.f.a($$2).orElseThrow(() -> a.createWithContext($$0, $$1, this.e.a()));
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return ey.a(this.f.c().map(ala::a), $$1);
+      return ey.a(this.f.c().map(alb::a), $$1);
    }
 
    public Collection<String> getExamples() {
@@ -106,9 +106,9 @@ public class fs<T> implements ArgumentType<jn.c<T>> {
       }
 
       public final class a implements ip.a<fs<T>> {
-         final ala<? extends ka<T>> b;
+         final alb<? extends ka<T>> b;
 
-         a(final ala<? extends ka<T>> $$1) {
+         a(final alb<? extends ka<T>> $$1) {
             this.b = $$1;
          }
 

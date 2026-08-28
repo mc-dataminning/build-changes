@@ -1,173 +1,438 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectList;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import java.util.EnumSet;
-import java.util.Set;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import java.util.Arrays;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableDouble;
 
-public class dzw {
-   private static final Logger a = LogUtils.getLogger();
-   static final Predicate<dua> b = $$0 -> !$$0.l();
-   static final Predicate<dua> c = dtz.a::d;
-   private final axr d;
-   private final Predicate<dua> e;
-   private final dvw f;
-
-   public dzw(dvw $$0, dzw.a $$1) {
-      this.e = $$1.e();
-      this.f = $$0;
-      int $$2 = azc.e($$0.H_() + 1);
-      this.d = new azr($$2, 256);
+public interface dzw {
+   static dzw a(eao $$0, ddm $$1, eaq $$2, eax $$3, int $$4, int $$5, dzw.a $$6) {
+      return new dzw.c($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   public static void a(dvw $$0, Set<dzw.a> $$1) {
-      if (!$$1.isEmpty()) {
-         int $$2 = $$1.size();
-         ObjectList<dzw> $$3 = new ObjectArrayList($$2);
-         ObjectListIterator<dzw> $$4 = $$3.iterator();
-         int $$5 = $$0.b() + 16;
-         je.a $$6 = new je.a();
+   static dzw a(final dzw.a $$0) {
+      return new dzw() {
+         @Nullable
+         @Override
+         public duo a(ead.b $$0x, double $$1) {
+            return $$1 > 0.0 ? null : $$0.computeFluid($$0.a(), $$0.b(), $$0.c()).a($$0.b());
+         }
 
-         for (int $$7 = 0; $$7 < 16; $$7++) {
-            for (int $$8 = 0; $$8 < 16; $$8++) {
-               for (dzw.a $$9 : $$1) {
-                  $$3.add($$0.a($$9));
+         @Override
+         public boolean a() {
+            return false;
+         }
+      };
+   }
+
+   @Nullable
+   duo a(ead.b var1, double var2);
+
+   boolean a();
+
+   public interface a {
+      dzw.b computeFluid(int var1, int var2, int var3);
+   }
+
+   public static record b(int a, duo b) {
+
+      public duo a(int $$0) {
+         return $$0 < this.a ? this.b : dhl.a.o();
+      }
+   }
+
+   public static class c implements dzw {
+      private static final int a = 10;
+      private static final int b = 9;
+      private static final int c = 10;
+      private static final int d = 6;
+      private static final int e = 3;
+      private static final int f = 6;
+      private static final int g = 16;
+      private static final int h = 12;
+      private static final int i = 16;
+      private static final int j = 11;
+      private static final double k = a(azd.h(10), azd.h(12));
+      private final eao l;
+      private final ead m;
+      private final ead n;
+      private final ead o;
+      private final ead p;
+      private final eax q;
+      private final dzw.b[] r;
+      private final long[] s;
+      private final dzw.a t;
+      private final ead u;
+      private final ead v;
+      private boolean w;
+      private final int x;
+      private final int y;
+      private final int z;
+      private final int A;
+      private final int B;
+      private static final int[][] C = new int[][]{
+         {0, 0}, {-2, -1}, {-1, -1}, {0, -1}, {1, -1}, {-3, 0}, {-2, 0}, {-1, 0}, {1, 0}, {-2, 1}, {-1, 1}, {0, 1}, {1, 1}
+      };
+
+      c(eao $$0, ddm $$1, eaq $$2, eax $$3, int $$4, int $$5, dzw.a $$6) {
+         this.l = $$0;
+         this.m = $$2.a();
+         this.n = $$2.b();
+         this.o = $$2.c();
+         this.p = $$2.d();
+         this.u = $$2.h();
+         this.v = $$2.i();
+         this.q = $$3;
+         this.x = this.a($$1.d()) - 1;
+         this.t = $$6;
+         int $$7 = this.a($$1.f()) + 1;
+         this.A = $$7 - this.x + 1;
+         this.y = this.b($$4) - 1;
+         int $$8 = this.b($$4 + $$5) + 1;
+         int $$9 = $$8 - this.y + 1;
+         this.z = this.c($$1.e()) - 1;
+         int $$10 = this.c($$1.g()) + 1;
+         this.B = $$10 - this.z + 1;
+         int $$11 = this.A * $$9 * this.B;
+         this.r = new dzw.b[$$11];
+         this.s = new long[$$11];
+         Arrays.fill(this.s, Long.MAX_VALUE);
+      }
+
+      private int a(int $$0, int $$1, int $$2) {
+         int $$3 = $$0 - this.x;
+         int $$4 = $$1 - this.y;
+         int $$5 = $$2 - this.z;
+         return ($$4 * this.B + $$5) * this.A + $$3;
+      }
+
+      @Nullable
+      @Override
+      public duo a(ead.b $$0, double $$1) {
+         int $$2 = $$0.a();
+         int $$3 = $$0.b();
+         int $$4 = $$0.c();
+         if ($$1 > 0.0) {
+            this.w = false;
+            return null;
+         } else {
+            dzw.b $$5 = this.t.computeFluid($$2, $$3, $$4);
+            if ($$5.a($$3).a(dhl.H)) {
+               this.w = false;
+               return dhl.H.o();
+            } else {
+               int $$6 = Math.floorDiv($$2 - 5, 16);
+               int $$7 = Math.floorDiv($$3 + 1, 12);
+               int $$8 = Math.floorDiv($$4 - 5, 16);
+               int $$9 = Integer.MAX_VALUE;
+               int $$10 = Integer.MAX_VALUE;
+               int $$11 = Integer.MAX_VALUE;
+               int $$12 = Integer.MAX_VALUE;
+               long $$13 = 0L;
+               long $$14 = 0L;
+               long $$15 = 0L;
+               long $$16 = 0L;
+
+               for (int $$17 = 0; $$17 <= 1; $$17++) {
+                  for (int $$18 = -1; $$18 <= 1; $$18++) {
+                     for (int $$19 = 0; $$19 <= 1; $$19++) {
+                        int $$20 = $$6 + $$17;
+                        int $$21 = $$7 + $$18;
+                        int $$22 = $$8 + $$19;
+                        int $$23 = this.a($$20, $$21, $$22);
+                        long $$24 = this.s[$$23];
+                        long $$25;
+                        if ($$24 != Long.MAX_VALUE) {
+                           $$25 = $$24;
+                        } else {
+                           azl $$26 = this.q.a($$20, $$21, $$22);
+                           $$25 = je.a($$20 * 16 + $$26.a(10), $$21 * 12 + $$26.a(9), $$22 * 16 + $$26.a(10));
+                           this.s[$$23] = $$25;
+                        }
+
+                        int $$28 = je.a($$25) - $$2;
+                        int $$29 = je.b($$25) - $$3;
+                        int $$30 = je.c($$25) - $$4;
+                        int $$31 = $$28 * $$28 + $$29 * $$29 + $$30 * $$30;
+                        if ($$9 >= $$31) {
+                           $$16 = $$15;
+                           $$15 = $$14;
+                           $$14 = $$13;
+                           $$13 = $$25;
+                           $$12 = $$11;
+                           $$11 = $$10;
+                           $$10 = $$9;
+                           $$9 = $$31;
+                        } else if ($$10 >= $$31) {
+                           $$16 = $$15;
+                           $$15 = $$14;
+                           $$14 = $$25;
+                           $$12 = $$11;
+                           $$11 = $$10;
+                           $$10 = $$31;
+                        } else if ($$11 >= $$31) {
+                           $$16 = $$15;
+                           $$15 = $$25;
+                           $$12 = $$11;
+                           $$11 = $$31;
+                        } else if ($$12 >= $$31) {
+                           $$16 = $$25;
+                           $$12 = $$31;
+                        }
+                     }
+                  }
                }
 
-               for (int $$10 = $$5 - 1; $$10 >= $$0.G_(); $$10--) {
-                  $$6.d($$7, $$10, $$8);
-                  dua $$11 = $$0.a_($$6);
-                  if (!$$11.a(dgx.a)) {
-                     while ($$4.hasNext()) {
-                        dzw $$12 = (dzw)$$4.next();
-                        if ($$12.e.test($$11)) {
-                           $$12.a($$7, $$8, $$10 + 1);
-                           $$4.remove();
+               dzw.b $$32 = this.a($$13);
+               double $$33 = a($$9, $$10);
+               duo $$34 = $$32.a($$3);
+               if ($$33 <= 0.0) {
+                  if ($$33 >= k) {
+                     dzw.b $$36 = this.a($$14);
+                     this.w = !$$32.equals($$36);
+                  } else {
+                     this.w = false;
+                  }
+
+                  return $$34;
+               } else if ($$34.a(dhl.G) && this.t.computeFluid($$2, $$3 - 1, $$4).a($$3 - 1).a(dhl.H)) {
+                  this.w = true;
+                  return $$34;
+               } else {
+                  MutableDouble $$37 = new MutableDouble(Double.NaN);
+                  dzw.b $$38 = this.a($$14);
+                  double $$39 = $$33 * this.a($$0, $$37, $$32, $$38);
+                  if ($$1 + $$39 > 0.0) {
+                     this.w = false;
+                     return null;
+                  } else {
+                     dzw.b $$40 = this.a($$15);
+                     double $$41 = a($$9, $$11);
+                     if ($$41 > 0.0) {
+                        double $$42 = $$33 * $$41 * this.a($$0, $$37, $$32, $$40);
+                        if ($$1 + $$42 > 0.0) {
+                           this.w = false;
+                           return null;
                         }
                      }
 
-                     if ($$3.isEmpty()) {
-                        break;
+                     double $$43 = a($$10, $$11);
+                     if ($$43 > 0.0) {
+                        double $$44 = $$33 * $$43 * this.a($$0, $$37, $$38, $$40);
+                        if ($$1 + $$44 > 0.0) {
+                           this.w = false;
+                           return null;
+                        }
                      }
 
-                     $$4.back($$2);
+                     boolean $$45 = !$$32.equals($$38);
+                     boolean $$46 = $$43 >= k && !$$38.equals($$40);
+                     boolean $$47 = $$41 >= k && !$$32.equals($$40);
+                     if (!$$45 && !$$46 && !$$47) {
+                        this.w = $$41 >= k && a($$9, $$12) >= k && !$$32.equals(this.a($$16));
+                     } else {
+                        this.w = true;
+                     }
+
+                     return $$34;
                   }
                }
             }
          }
       }
-   }
 
-   public boolean a(int $$0, int $$1, int $$2, dua $$3) {
-      int $$4 = this.a($$0, $$2);
-      if ($$1 <= $$4 - 2) {
-         return false;
-      } else {
-         if (this.e.test($$3)) {
-            if ($$1 >= $$4) {
-               this.a($$0, $$2, $$1 + 1);
-               return true;
+      @Override
+      public boolean a() {
+         return this.w;
+      }
+
+      private static double a(int $$0, int $$1) {
+         double $$2 = 25.0;
+         return 1.0 - (double)Math.abs($$1 - $$0) / 25.0;
+      }
+
+      private double a(ead.b $$0, MutableDouble $$1, dzw.b $$2, dzw.b $$3) {
+         int $$4 = $$0.b();
+         duo $$5 = $$2.a($$4);
+         duo $$6 = $$3.a($$4);
+         if ((!$$5.a(dhl.H) || !$$6.a(dhl.G)) && (!$$5.a(dhl.G) || !$$6.a(dhl.H))) {
+            int $$7 = Math.abs($$2.a - $$3.a);
+            if ($$7 == 0) {
+               return 0.0;
+            } else {
+               double $$8 = 0.5 * (double)($$2.a + $$3.a);
+               double $$9 = (double)$$4 + 0.5 - $$8;
+               double $$10 = (double)$$7 / 2.0;
+               double $$11 = 0.0;
+               double $$12 = 2.5;
+               double $$13 = 1.5;
+               double $$14 = 3.0;
+               double $$15 = 10.0;
+               double $$16 = 3.0;
+               double $$17 = $$10 - Math.abs($$9);
+               double $$19;
+               if ($$9 > 0.0) {
+                  double $$18 = 0.0 + $$17;
+                  if ($$18 > 0.0) {
+                     $$19 = $$18 / 1.5;
+                  } else {
+                     $$19 = $$18 / 2.5;
+                  }
+               } else {
+                  double $$21 = 3.0 + $$17;
+                  if ($$21 > 0.0) {
+                     $$19 = $$21 / 3.0;
+                  } else {
+                     $$19 = $$21 / 10.0;
+                  }
+               }
+
+               double $$24 = 2.0;
+               double $$28;
+               if (!($$19 < -2.0) && !($$19 > 2.0)) {
+                  double $$26 = $$1.getValue();
+                  if (Double.isNaN($$26)) {
+                     double $$27 = this.m.a($$0);
+                     $$1.setValue($$27);
+                     $$28 = $$27;
+                  } else {
+                     $$28 = $$26;
+                  }
+               } else {
+                  $$28 = 0.0;
+               }
+
+               return 2.0 * ($$28 + $$19);
             }
-         } else if ($$4 - 1 == $$1) {
-            je.a $$5 = new je.a();
+         } else {
+            return 2.0;
+         }
+      }
 
-            for (int $$6 = $$1 - 1; $$6 >= this.f.G_(); $$6--) {
-               $$5.d($$0, $$6, $$2);
-               if (this.e.test(this.f.a_($$5))) {
-                  this.a($$0, $$2, $$6 + 1);
-                  return true;
+      private int a(int $$0) {
+         return Math.floorDiv($$0, 16);
+      }
+
+      private int b(int $$0) {
+         return Math.floorDiv($$0, 12);
+      }
+
+      private int c(int $$0) {
+         return Math.floorDiv($$0, 16);
+      }
+
+      private dzw.b a(long $$0) {
+         int $$1 = je.a($$0);
+         int $$2 = je.b($$0);
+         int $$3 = je.c($$0);
+         int $$4 = this.a($$1);
+         int $$5 = this.b($$2);
+         int $$6 = this.c($$3);
+         int $$7 = this.a($$4, $$5, $$6);
+         dzw.b $$8 = this.r[$$7];
+         if ($$8 != null) {
+            return $$8;
+         } else {
+            dzw.b $$9 = this.b($$1, $$2, $$3);
+            this.r[$$7] = $$9;
+            return $$9;
+         }
+      }
+
+      private dzw.b b(int $$0, int $$1, int $$2) {
+         dzw.b $$3 = this.t.computeFluid($$0, $$1, $$2);
+         int $$4 = Integer.MAX_VALUE;
+         int $$5 = $$1 + 12;
+         int $$6 = $$1 - 12;
+         boolean $$7 = false;
+
+         for (int[] $$8 : C) {
+            int $$9 = $$0 + kg.c($$8[0]);
+            int $$10 = $$2 + kg.c($$8[1]);
+            int $$11 = this.l.a($$9, $$10);
+            int $$12 = $$11 + 8;
+            boolean $$13 = $$8[0] == 0 && $$8[1] == 0;
+            if ($$13 && $$6 > $$12) {
+               return $$3;
+            }
+
+            boolean $$14 = $$5 > $$12;
+            if ($$14 || $$13) {
+               dzw.b $$15 = this.t.computeFluid($$9, $$12, $$10);
+               if (!$$15.a($$12).l()) {
+                  if ($$13) {
+                     $$7 = true;
+                  }
+
+                  if ($$14) {
+                     return $$15;
+                  }
                }
             }
 
-            this.a($$0, $$2, this.f.G_());
-            return true;
+            $$4 = Math.min($$4, $$11);
          }
 
-         return false;
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      return this.a(c($$0, $$1));
-   }
-
-   public int b(int $$0, int $$1) {
-      return this.a(c($$0, $$1)) - 1;
-   }
-
-   private int a(int $$0) {
-      return this.d.a($$0) + this.f.G_();
-   }
-
-   private void a(int $$0, int $$1, int $$2) {
-      this.d.b(c($$0, $$1), $$2 - this.f.G_());
-   }
-
-   public void a(dvw $$0, dzw.a $$1, long[] $$2) {
-      long[] $$3 = this.d.a();
-      if ($$3.length == $$2.length) {
-         System.arraycopy($$2, 0, $$3, 0, $$2.length);
-      } else {
-         a.warn("Ignoring heightmap data for chunk " + $$0.f() + ", size does not match; expected: " + $$3.length + ", got: " + $$2.length);
-         a($$0, EnumSet.of($$1));
-      }
-   }
-
-   public long[] a() {
-      return this.d.a();
-   }
-
-   private static int c(int $$0, int $$1) {
-      return $$0 + $$1 * 16;
-   }
-
-   public static enum a implements azy {
-      a("WORLD_SURFACE_WG", dzw.b.a, dzw.b),
-      b("WORLD_SURFACE", dzw.b.c, dzw.b),
-      c("OCEAN_FLOOR_WG", dzw.b.a, dzw.c),
-      d("OCEAN_FLOOR", dzw.b.b, dzw.c),
-      e("MOTION_BLOCKING", dzw.b.c, $$0 -> $$0.d() || !$$0.y().c()),
-      f("MOTION_BLOCKING_NO_LEAVES", dzw.b.b, $$0 -> ($$0.d() || !$$0.y().c()) && !($$0.b() instanceof dlf));
-
-      public static final Codec<dzw.a> g = azy.a(dzw.a::values);
-      private final String h;
-      private final dzw.b i;
-      private final Predicate<dua> j;
-
-      private a(final String $$0, final dzw.b $$1, final Predicate<dua> $$2) {
-         this.h = $$0;
-         this.i = $$1;
-         this.j = $$2;
+         int $$16 = this.a($$0, $$1, $$2, $$3, $$4, $$7);
+         return new dzw.b($$16, this.a($$0, $$1, $$2, $$3, $$16));
       }
 
-      public String a() {
-         return this.h;
+      private int a(int $$0, int $$1, int $$2, dzw.b $$3, int $$4, boolean $$5) {
+         ead.e $$6 = new ead.e($$0, $$1, $$2);
+         double $$7;
+         double $$8;
+         if (dfx.a(this.u, this.v, $$6)) {
+            $$7 = -1.0;
+            $$8 = -1.0;
+         } else {
+            int $$9 = $$4 + 8 - $$1;
+            int $$10 = 64;
+            double $$11 = $$5 ? azd.a((double)$$9, 0.0, 64.0, 1.0, 0.0) : 0.0;
+            double $$12 = azd.a(this.n.a($$6), -1.0, 1.0);
+            double $$13 = azd.b($$11, 1.0, 0.0, -0.3, 0.8);
+            double $$14 = azd.b($$11, 1.0, 0.0, -0.8, 0.4);
+            $$7 = $$12 - $$14;
+            $$8 = $$12 - $$13;
+         }
+
+         int $$17;
+         if ($$8 > 0.0) {
+            $$17 = $$3.a;
+         } else if ($$7 > 0.0) {
+            $$17 = this.a($$0, $$1, $$2, $$4);
+         } else {
+            $$17 = dyk.g;
+         }
+
+         return $$17;
       }
 
-      public boolean b() {
-         return this.i == dzw.b.c;
+      private int a(int $$0, int $$1, int $$2, int $$3) {
+         int $$4 = 16;
+         int $$5 = 40;
+         int $$6 = Math.floorDiv($$0, 16);
+         int $$7 = Math.floorDiv($$1, 40);
+         int $$8 = Math.floorDiv($$2, 16);
+         int $$9 = $$7 * 40 + 20;
+         int $$10 = 10;
+         double $$11 = this.o.a(new ead.e($$6, $$7, $$8)) * 10.0;
+         int $$12 = azd.a($$11, 3);
+         int $$13 = $$9 + $$12;
+         return Math.min($$3, $$13);
       }
 
-      public boolean d() {
-         return this.i != dzw.b.a;
-      }
+      private duo a(int $$0, int $$1, int $$2, dzw.b $$3, int $$4) {
+         duo $$5 = $$3.b;
+         if ($$4 <= -10 && $$4 != dyk.g && $$3.b != dhl.H.o()) {
+            int $$6 = 64;
+            int $$7 = 40;
+            int $$8 = Math.floorDiv($$0, 64);
+            int $$9 = Math.floorDiv($$1, 40);
+            int $$10 = Math.floorDiv($$2, 64);
+            double $$11 = this.p.a(new ead.e($$8, $$9, $$10));
+            if (Math.abs($$11) > 0.3) {
+               $$5 = dhl.H.o();
+            }
+         }
 
-      public Predicate<dua> e() {
-         return this.j;
+         return $$5;
       }
-
-      @Override
-      public String c() {
-         return this.h;
-      }
-   }
-
-   public static enum b {
-      a,
-      b,
-      c;
    }
 }

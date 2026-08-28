@@ -1,23 +1,23 @@
-import com.google.gson.annotations.SerializedName;
-import java.util.Locale;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class fej extends feo implements fei {
-   @SerializedName("regionName")
-   private final String a;
-   @SerializedName("ping")
-   private final int b;
+public class fej extends fey {
+   private static final Logger b = LogUtils.getLogger();
+   public String a;
 
-   public fej(String $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
+   public static fej a(String $$0) {
+      fej $$1 = new fej();
 
-   public int a() {
-      return this.b;
-   }
+      try {
+         JsonParser $$2 = new JsonParser();
+         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
+         $$1.a = fgv.b("newsLink", $$3, null);
+      } catch (Exception var4) {
+         b.error("Could not parse RealmsNews: {}", var4.getMessage());
+      }
 
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "%s --> %.2f ms", this.a, (float)this.b);
+      return $$1;
    }
 }

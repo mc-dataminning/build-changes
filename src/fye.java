@@ -1,21 +1,30 @@
-public class fye extends fxn<guf> {
-   public fye(gab $$0) {
-      super($$0);
+public class fye extends fxk<gum> {
+   private final gal a;
+
+   public fye(gal $$0) {
+      this.a = $$0;
    }
 
-   public static gah b() {
-      gaj $$0 = fxn.a(gaf.a, 0.0F);
-      gal $$1 = $$0.a();
-      gal $$2 = $$1.a("head");
-      $$2.a("hat");
-      $$1.a("body");
-      $$1.a("left_arm");
-      $$1.a("right_arm");
-      $$1.a("left_leg");
-      $$1.a("right_leg");
-      gag $$3 = gag.c().a(24, 0).a(-3.0F, -6.0F, -1.0F, 6.0F, 6.0F, 1.0F, new gaf(1.0F));
-      $$2.a("left_ear", $$3, gad.a(-6.0F, -6.0F, 0.0F));
-      $$2.a("right_ear", $$3, gad.a(6.0F, -6.0F, 0.0F));
-      return gah.a($$0, 64, 64);
+   public static gar b() {
+      gat $$0 = new gat();
+      gav $$1 = $$0.a();
+      int $$2 = 20;
+      int $$3 = 8;
+      int $$4 = 16;
+      int $$5 = 4;
+      $$1.a("bottom", gaq.c().a(0, 10).a(-10.0F, -8.0F, -1.0F, 20.0F, 16.0F, 2.0F), gan.a(0.0F, 4.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("front", gaq.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), gan.a(-9.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI * 3.0 / 2.0), 0.0F));
+      $$1.a("back", gaq.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), gan.a(9.0F, 4.0F, 0.0F, 0.0F, (float) (Math.PI / 2), 0.0F));
+      $$1.a("left", gaq.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), gan.a(0.0F, 4.0F, -7.0F, 0.0F, (float) Math.PI, 0.0F));
+      $$1.a("right", gaq.c().a(0, 0).a(-8.0F, -9.0F, -1.0F, 16.0F, 8.0F, 2.0F), gan.a(0.0F, 4.0F, 7.0F));
+      return gar.a($$0, 64, 32);
+   }
+
+   public void a(gum $$0) {
+   }
+
+   @Override
+   public gal a() {
+      return this.a;
    }
 }

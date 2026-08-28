@@ -1,15 +1,51 @@
-public interface gjc<T extends dre> {
-   void a(T var1, float var2, fcu var3, ggv var4, int var5, int var6);
+import com.google.common.base.Splitter;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Map.Entry;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-   default boolean a(T $$0) {
-      return false;
+public class gjc {
+   private static final Splitter a = Splitter.on(',');
+   private static final Splitter b = Splitter.on('=').limit(2);
+
+   public static <O, S extends duq<O, S>> Predicate<duq<O, S>> a(dup<O, S> $$0, String $$1) {
+      Map<dvr<?>, Comparable<?>> $$2 = new HashMap<>();
+
+      for (String $$3 : a.split($$1)) {
+         Iterator<String> $$4 = b.split($$3).iterator();
+         if ($$4.hasNext()) {
+            String $$5 = $$4.next();
+            dvr<?> $$6 = $$0.a($$5);
+            if ($$6 != null && $$4.hasNext()) {
+               String $$7 = $$4.next();
+               Comparable<?> $$8 = a((dvr<Comparable<?>>)$$6, $$7);
+               if ($$8 == null) {
+                  throw new RuntimeException("Unknown value: '" + $$7 + "' for blockstate property: '" + $$5 + "' " + $$6.a());
+               }
+
+               $$2.put($$6, $$8);
+            } else if (!$$5.isEmpty()) {
+               throw new RuntimeException("Unknown blockstate property: '" + $$5 + "'");
+            }
+         }
+      }
+
+      return $$1x -> {
+         for (Entry<dvr<?>, Comparable<?>> $$2x : $$2.entrySet()) {
+            if (!Objects.equals($$1x.c($$2x.getKey()), $$2x.getValue())) {
+               return false;
+            }
+         }
+
+         return true;
+      };
    }
 
-   default int aW_() {
-      return 64;
-   }
-
-   default boolean a(T $$0, eye $$1) {
-      return eye.b($$0.aD_()).a((jx)$$1, (double)this.aW_());
+   @Nullable
+   private static <T extends Comparable<T>> T a(dvr<T> $$0, String $$1) {
+      return $$0.b($$1).orElse(null);
    }
 }

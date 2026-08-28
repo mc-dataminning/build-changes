@@ -1,16 +1,33 @@
-public class gqn extends grf<gvj, fwv> {
-   private static final alb a = alb.b("textures/entity/zombie/drowned_outer_layer.png");
-   private final fwv b;
-   private final fwv c;
-
-   public gqn(goo<gvj, fwv> $$0, fzx $$1) {
-      super($$0);
-      this.b = new fwv($$1.a(gaa.al));
-      this.c = new fwv($$1.a(gaa.ap));
+public class gqn extends gme<chd, gvz, gaa> {
+   public gqn(gnj.a $$0) {
+      super($$0, new gaa($$0.a(gak.dg)), new gaa($$0.a(gak.di)), 0.5F);
+      this.a(new gsk(this, $$0.f()));
+      this.a(new gsl(this));
    }
 
-   public void a(fcu $$0, ggv $$1, int $$2, gvj $$3, float $$4, float $$5) {
-      fwv $$6 = $$3.ae ? this.c : this.b;
-      a($$6, a, $$0, $$1, $$2, $$3, -1);
+   protected int a(gvz $$0) {
+      float $$1 = $$0.f;
+      return $$1 == 1.0F ? -1 : axo.a(1.0F, $$1, $$1, $$1);
+   }
+
+   public alc b(gvz $$0) {
+      return $$0.g;
+   }
+
+   public gvz c() {
+      return new gvz();
+   }
+
+   public void a(chd $$0, gvz $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.ac_();
+      $$1.b = $$0.y();
+      $$1.c = $$0.gE();
+      $$1.d = $$0.L($$2);
+      $$1.e = $$0.K($$2);
+      $$1.g = $$0.gB();
+      $$1.f = $$0.J($$2);
+      $$1.h = $$0.q() ? $$0.gF() : null;
+      $$1.i = $$0.fT().u();
    }
 }

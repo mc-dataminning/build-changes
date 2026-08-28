@@ -1,30 +1,34 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class ekb extends eju {
-   public static final MapCodec<ekb> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.INT.fieldOf("max_water_depth").forGetter($$0x -> $$0x.c)).apply($$0, ekb::new)
-   );
-   private final int c;
+public class ekb extends ekj {
+   public static final MapCodec<ekb> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(ejj.c.fieldOf("height").forGetter($$0x -> $$0x.c)).apply($$0, ekb::new));
+   private final ejj c;
 
-   private ekb(int $$0) {
+   private ekb(ejj $$0) {
       this.c = $$0;
    }
 
-   public static ekb a(int $$0) {
+   public static ekb a(ejj $$0) {
       return new ekb($$0);
    }
 
-   @Override
-   protected boolean a(ejt $$0, azk $$1, je $$2) {
-      int $$3 = $$0.a(dzw.a.d, $$2.u(), $$2.w());
-      int $$4 = $$0.a(dzw.a.b, $$2.u(), $$2.w());
-      return $$4 - $$3 <= this.c;
+   public static ekb a(ebe $$0, ebe $$1) {
+      return a(ejm.a($$0, $$1));
+   }
+
+   public static ekb b(ebe $$0, ebe $$1) {
+      return a(ejl.a($$0, $$1));
    }
 
    @Override
-   public ejw<?> b() {
-      return ejw.d;
+   public Stream<je> a_(ekh $$0, azl $$1, je $$2) {
+      return Stream.of($$2.h(this.c.a($$1, $$0)));
+   }
+
+   @Override
+   public ekk<?> b() {
+      return ekk.l;
    }
 }

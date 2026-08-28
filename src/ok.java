@@ -52,31 +52,31 @@ public class ok {
       return this;
    }
 
-   public alb a(dgv $$0, BiConsumer<alb, Supplier<JsonElement>> $$1) {
+   public alc a(dhj $$0, BiConsumer<alc, Supplier<JsonElement>> $$1) {
       return this.B.a($$0, this.A, $$1);
    }
 
-   public alb a(dgv $$0, String $$1, BiConsumer<alb, Supplier<JsonElement>> $$2) {
+   public alc a(dhj $$0, String $$1, BiConsumer<alc, Supplier<JsonElement>> $$2) {
       return this.B.a($$0, $$1, this.A, $$2);
    }
 
-   private static ok.a a(Function<dgv, oi> $$0, og $$1) {
+   private static ok.a a(Function<dhj, oi> $$0, og $$1) {
       return $$2 -> new ok($$0.apply($$2), $$1);
    }
 
-   public static ok a(alb $$0) {
+   public static ok a(alc $$0) {
       return new ok(oi.b($$0), oh.c);
    }
 
    @FunctionalInterface
    public interface a {
-      ok get(dgv var1);
+      ok get(dhj var1);
 
-      default alb create(dgv $$0, BiConsumer<alb, Supplier<JsonElement>> $$1) {
+      default alc create(dhj $$0, BiConsumer<alc, Supplier<JsonElement>> $$1) {
          return this.get($$0).a($$0, $$1);
       }
 
-      default alb createWithSuffix(dgv $$0, String $$1, BiConsumer<alb, Supplier<JsonElement>> $$2) {
+      default alc createWithSuffix(dhj $$0, String $$1, BiConsumer<alc, Supplier<JsonElement>> $$2) {
          return this.get($$0).a($$0, $$1, $$2);
       }
 

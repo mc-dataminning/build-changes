@@ -1,7 +1,7 @@
 import java.util.HashSet;
 import java.util.Set;
 
-public record abm(Set<alb> b) implements zk<abh> {
+public record abm(Set<alc> b) implements zk<abh> {
    public static final zb<wa, abm> a = zk.a(abm::a, abm::new);
 
    private abm(wa $$0) {

@@ -1,127 +1,173 @@
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.EnumSet;
+import java.util.Set;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
-public final class eak {
-   final eaj a;
-   private final jo<epe.a> b;
-   private final eac c;
-   private final dfc.f d;
-   private final eao e;
-   private final eaj f;
-   private final eaj g;
-   private final Map<ala<epe.a>, epe> h;
-   private final Map<alb, eaj> i;
+public class eak {
+   private static final Logger a = LogUtils.getLogger();
+   static final Predicate<duo> b = $$0 -> !$$0.l();
+   static final Predicate<duo> c = dun.a::d;
+   private final axs d;
+   private final Predicate<duo> e;
+   private final dwk f;
 
-   public static eak a(jo.a $$0, ala<eab> $$1, long $$2) {
-      return a($$0.b(lv.aO).b($$1).a(), $$0.b(lv.aP), $$2);
+   public eak(dwk $$0, eak.a $$1) {
+      this.e = $$1.e();
+      this.f = $$0;
+      int $$2 = azd.e($$0.H_() + 1);
+      this.d = new azs($$2, 256);
    }
 
-   public static eak a(eab $$0, jo<epe.a> $$1, long $$2) {
-      return new eak($$0, $$1, $$2);
-   }
+   public static void a(dwk $$0, Set<eak.a> $$1) {
+      if (!$$1.isEmpty()) {
+         int $$2 = $$1.size();
+         ObjectList<eak> $$3 = new ObjectArrayList($$2);
+         ObjectListIterator<eak> $$4 = $$3.iterator();
+         int $$5 = $$0.b() + 16;
+         je.a $$6 = new je.a();
 
-   private eak(eab $$0, jo<epe.a> $$1, final long $$2) {
-      this.a = $$0.d().a($$2).e();
-      this.b = $$1;
-      this.f = this.a.a(alb.b("aquifer")).e();
-      this.g = this.a.a(alb.b("ore")).e();
-      this.h = new ConcurrentHashMap<>();
-      this.i = new ConcurrentHashMap<>();
-      this.e = new eao(this, $$0.g(), $$0.l(), this.a);
-      final boolean $$3 = $$0.n();
-
-      class a implements dzp.f {
-         private final Map<dzp, dzp> d = new HashMap<>();
-
-         private azk a(long $$0) {
-            return new dzx($$2 + $$0);
-         }
-
-         @Override
-         public dzp.c a(dzp.c $$0) {
-            jn<epe.a> $$1 = $$0.b();
-            if ($$3) {
-               if ($$1.a(eaf.a)) {
-                  epe $$2 = epe.a(this.a(0L), new epe.a(-7, 1.0, 1.0));
-                  return new dzp.c($$1, $$2);
+         for (int $$7 = 0; $$7 < 16; $$7++) {
+            for (int $$8 = 0; $$8 < 16; $$8++) {
+               for (eak.a $$9 : $$1) {
+                  $$3.add($$0.a($$9));
                }
 
-               if ($$1.a(eaf.b)) {
-                  epe $$3 = epe.a(this.a(1L), new epe.a(-7, 1.0, 1.0));
-                  return new dzp.c($$1, $$3);
-               }
+               for (int $$10 = $$5 - 1; $$10 >= $$0.G_(); $$10--) {
+                  $$6.d($$7, $$10, $$8);
+                  duo $$11 = $$0.a_($$6);
+                  if (!$$11.a(dhl.a)) {
+                     while ($$4.hasNext()) {
+                        eak $$12 = (eak)$$4.next();
+                        if ($$12.e.test($$11)) {
+                           $$12.a($$7, $$8, $$10 + 1);
+                           $$4.remove();
+                        }
+                     }
 
-               if ($$1.a(eaf.j)) {
-                  epe $$4 = epe.b(eak.this.a.a(eaf.j.a()), new epe.a(0, 0.0));
-                  return new dzp.c($$1, $$4);
+                     if ($$3.isEmpty()) {
+                        break;
+                     }
+
+                     $$4.back($$2);
+                  }
                }
             }
-
-            epe $$5 = eak.this.a($$1.e().orElseThrow());
-            return new dzp.c($$1, $$5);
-         }
-
-         private dzp a(dzp $$0) {
-            if ($$0 instanceof epb $$1) {
-               azk $$2 = $$3 ? this.a(0L) : eak.this.a.a(alb.b("terrain"));
-               return $$1.a($$2);
-            } else {
-               return (dzp)($$0 instanceof dzq.i ? new dzq.i($$2) : $$0);
-            }
-         }
-
-         @Override
-         public dzp apply(dzp $$0) {
-            return this.d.computeIfAbsent($$0, this::a);
          }
       }
+   }
 
-      this.c = $$0.i().a(new a());
-      dzp.f $$4 = new dzp.f() {
-         private final Map<dzp, dzp> a = new HashMap<>();
-
-         private dzp a(dzp $$0) {
-            if ($$0 instanceof dzq.j $$1) {
-               return $$1.j().a();
-            } else {
-               return $$0 instanceof dzq.l $$2 ? $$2.k() : $$0;
+   public boolean a(int $$0, int $$1, int $$2, duo $$3) {
+      int $$4 = this.a($$0, $$2);
+      if ($$1 <= $$4 - 2) {
+         return false;
+      } else {
+         if (this.e.test($$3)) {
+            if ($$1 >= $$4) {
+               this.a($$0, $$2, $$1 + 1);
+               return true;
             }
+         } else if ($$4 - 1 == $$1) {
+            je.a $$5 = new je.a();
+
+            for (int $$6 = $$1 - 1; $$6 >= this.f.G_(); $$6--) {
+               $$5.d($$0, $$6, $$2);
+               if (this.e.test(this.f.a_($$5))) {
+                  this.a($$0, $$2, $$6 + 1);
+                  return true;
+               }
+            }
+
+            this.a($$0, $$2, this.f.G_());
+            return true;
          }
 
-         @Override
-         public dzp apply(dzp $$0) {
-            return this.a.computeIfAbsent($$0, this::a);
-         }
-      };
-      this.d = new dfc.f(this.c.e().a($$4), this.c.f().a($$4), this.c.g().a($$4), this.c.h().a($$4), this.c.i().a($$4), this.c.j().a($$4), $$0.k());
+         return false;
+      }
    }
 
-   public epe a(ala<epe.a> $$0) {
-      return this.h.computeIfAbsent($$0, $$1 -> eaf.a(this.b, this.a, $$0));
+   public int a(int $$0, int $$1) {
+      return this.a(c($$0, $$1));
    }
 
-   public eaj a(alb $$0) {
-      return this.i.computeIfAbsent($$0, $$1 -> this.a.a($$0).e());
+   public int b(int $$0, int $$1) {
+      return this.a(c($$0, $$1)) - 1;
    }
 
-   public eac a() {
-      return this.c;
+   private int a(int $$0) {
+      return this.d.a($$0) + this.f.G_();
    }
 
-   public dfc.f b() {
-      return this.d;
+   private void a(int $$0, int $$1, int $$2) {
+      this.d.b(c($$0, $$1), $$2 - this.f.G_());
    }
 
-   public eao c() {
-      return this.e;
+   public void a(dwk $$0, eak.a $$1, long[] $$2) {
+      long[] $$3 = this.d.a();
+      if ($$3.length == $$2.length) {
+         System.arraycopy($$2, 0, $$3, 0, $$2.length);
+      } else {
+         a.warn("Ignoring heightmap data for chunk " + $$0.f() + ", size does not match; expected: " + $$3.length + ", got: " + $$2.length);
+         a($$0, EnumSet.of($$1));
+      }
    }
 
-   public eaj d() {
-      return this.f;
+   public long[] a() {
+      return this.d.a();
    }
 
-   public eaj e() {
-      return this.g;
+   private static int c(int $$0, int $$1) {
+      return $$0 + $$1 * 16;
+   }
+
+   public static enum a implements azz {
+      a("WORLD_SURFACE_WG", eak.b.a, eak.b),
+      b("WORLD_SURFACE", eak.b.c, eak.b),
+      c("OCEAN_FLOOR_WG", eak.b.a, eak.c),
+      d("OCEAN_FLOOR", eak.b.b, eak.c),
+      e("MOTION_BLOCKING", eak.b.c, $$0 -> $$0.d() || !$$0.y().c()),
+      f("MOTION_BLOCKING_NO_LEAVES", eak.b.b, $$0 -> ($$0.d() || !$$0.y().c()) && !($$0.b() instanceof dlt));
+
+      public static final Codec<eak.a> g = azz.a(eak.a::values);
+      private final String h;
+      private final eak.b i;
+      private final Predicate<duo> j;
+
+      private a(final String $$0, final eak.b $$1, final Predicate<duo> $$2) {
+         this.h = $$0;
+         this.i = $$1;
+         this.j = $$2;
+      }
+
+      public String a() {
+         return this.h;
+      }
+
+      public boolean b() {
+         return this.i == eak.b.c;
+      }
+
+      public boolean d() {
+         return this.i != eak.b.a;
+      }
+
+      public Predicate<duo> e() {
+         return this.j;
+      }
+
+      @Override
+      public String c() {
+         return this.h;
+      }
+   }
+
+   public static enum b {
+      a,
+      b,
+      c;
    }
 }

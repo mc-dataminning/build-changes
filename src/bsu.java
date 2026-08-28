@@ -1,20 +1,15 @@
-class bsu extends bso {
-   protected bsu(bsp $$0, int $$1) {
-      super($$0, $$1);
+public enum bsu {
+   a(n.j),
+   b(n.m),
+   c(n.j);
+
+   private final n d;
+
+   private bsu(final n $$0) {
+      this.d = $$0;
    }
 
-   @Override
-   public boolean a(buf $$0, int $$1) {
-      if ($$0.eA() > 1.0F) {
-         $$0.a($$0.dT().q(), 1.0F);
-      }
-
-      return true;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      int $$2 = 25 >> $$1;
-      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+   public n a() {
+      return this.d;
    }
 }

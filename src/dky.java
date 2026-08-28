@@ -1,103 +1,106 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dky extends dgh {
-   public static final MapCodec<dky> a = b(dky::new);
-   public static final dur b = duq.n;
+public abstract class dky extends dkw implements dhm {
+   public static final dvo e = dve.ax;
+   public static final int f = 25;
+   private final double c;
 
-   @Override
-   public MapCodec<dky> a() {
-      return a;
-   }
-
-   protected dky(dtz.d $$0) {
-      super($$0);
-      this.l(this.E.b().b(b, Boolean.valueOf(false)));
+   protected dky(dun.d $$0, jj $$1, ezm $$2, boolean $$3, double $$4) {
+      super($$0, $$1, $$2, $$3);
+      this.c = $$4;
+      this.l(this.F.b().b(e, Integer.valueOf(0)));
    }
 
    @Override
-   public void a(dds $$0, je $$1, dua $$2, @Nullable buf $$3, cvl $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      cya $$5 = $$4.a(kr.Q, cya.a);
-      if ($$5.a("RecordItem")) {
-         $$0.a($$1, $$2.b(b, Boolean.valueOf(true)), 2);
+   protected abstract MapCodec<? extends dky> a();
+
+   @Override
+   public duo a(deh $$0) {
+      return this.o().b(e, Integer.valueOf($$0.C_().a(25)));
+   }
+
+   @Override
+   protected boolean f(duo $$0) {
+      return $$0.c(e) < 25;
+   }
+
+   @Override
+   protected void b(duo $$0, arh $$1, je $$2, azl $$3) {
+      if ($$0.c(e) < 25 && $$3.j() < this.c) {
+         je $$4 = $$2.a(this.a);
+         if (this.h($$1.a_($$4))) {
+            $$1.b($$4, this.a($$0, $$1.z));
+         }
       }
    }
 
-   @Override
-   protected brk a(dua $$0, dds $$1, je $$2, cnp $$3, eya $$4) {
-      if ($$0.c(b) && $$1.c_($$2) instanceof dsh $$5) {
-         $$5.t();
-         return brk.a;
-      } else {
-         return brk.e;
-      }
+   protected duo a(duo $$0, azl $$1) {
+      return $$0.a(e);
+   }
+
+   public duo p(duo $$0) {
+      return $$0.b(e, Integer.valueOf(25));
+   }
+
+   public boolean q(duo $$0) {
+      return $$0.c(e) == 25;
+   }
+
+   protected duo a(duo $$0, duo $$1) {
+      return $$1;
    }
 
    @Override
-   protected brk a(cvl $$0, dua $$1, dds $$2, je $$3, cnp $$4, brj $$5, eya $$6) {
-      if ($$1.c(b)) {
-         return brk.f;
-      } else {
-         cvl $$7 = $$4.b($$5);
-         brk $$8 = cvp.a($$2, $$3, $$7, $$4);
-         return (brk)(!$$8.a() ? brk.f : $$8);
+   protected duo a(duo $$0, jj $$1, duo $$2, deh $$3, je $$4, je $$5) {
+      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
       }
-   }
 
-   @Override
-   protected void a(dua $$0, dds $$1, je $$2, dua $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$1.c_($$2) instanceof dsh $$5) {
-            $$5.t();
+      if ($$1 != this.a || !$$2.a(this) && !$$2.a(this.b())) {
+         if (this.b) {
+            $$3.a($$4, eqq.c, eqq.c.a($$3));
          }
 
-         super.a($$0, $$1, $$2, $$3, $$4);
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      } else {
+         return this.a($$0, this.b().o());
       }
    }
 
    @Override
-   public dre a(je $$0, dua $$1) {
-      return new dsh($$0, $$1);
+   protected void a(dup.a<dhj, duo> $$0) {
+      $$0.a(e);
    }
 
    @Override
-   public boolean f_(dua $$0) {
+   public boolean b(dej $$0, je $$1, duo $$2) {
+      return this.h($$0.a_($$1.a(this.a)));
+   }
+
+   @Override
+   public boolean a(deg $$0, azl $$1, je $$2, duo $$3) {
       return true;
    }
 
    @Override
-   public int a(dua $$0, dcx $$1, je $$2, jj $$3) {
-      if ($$1.c_($$2) instanceof dsh $$4 && $$4.j().a()) {
-         return 15;
+   public void a(arh $$0, azl $$1, je $$2, duo $$3) {
+      je $$4 = $$2.a(this.a);
+      int $$5 = Math.min($$3.c(e) + 1, 25);
+      int $$6 = this.a($$1);
+
+      for (int $$7 = 0; $$7 < $$6 && this.h($$0.a_($$4)); $$7++) {
+         $$0.b($$4, $$3.b(e, Integer.valueOf($$5)));
+         $$4 = $$4.a(this.a);
+         $$5 = Math.min($$5 + 1, 25);
       }
-
-      return 0;
    }
 
-   @Override
-   protected boolean c_(dua $$0) {
-      return true;
-   }
+   protected abstract int a(azl var1);
+
+   protected abstract boolean h(duo var1);
 
    @Override
-   protected int a(dua $$0, dds $$1, je $$2) {
-      return $$1.c_($$2) instanceof dsh $$3 ? $$3.u() : 0;
-   }
-
-   @Override
-   protected dnc a_(dua $$0) {
-      return dnc.c;
-   }
-
-   @Override
-   protected void a(dub.a<dgv, dua> $$0) {
-      $$0.a(b);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dre> drf<T> a(dds $$0, dua $$1, drg<T> $$2) {
-      return $$1.c(b) ? a($$2, drg.e, dsh::a) : null;
+   protected dky c() {
+      return this;
    }
 }

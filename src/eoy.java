@@ -1,11 +1,9 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public interface eoy {
-   Codec<eoy> c = lu.n.q().dispatch(eoy::a, eoz::codec);
+public abstract class eoy {
+   public static final Codec<eoy> c = lu.m.q().dispatch("predicate_type", eoy::a, eoz::codec);
 
-   @Nullable
-   uf a(azk var1, @Nullable uf var2);
+   public abstract boolean a(duo var1, azl var2);
 
-   eoz<?> a();
+   protected abstract eoz<?> a();
 }

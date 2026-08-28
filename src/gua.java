@@ -1,17 +1,11 @@
-public class gua extends gts {
-   public cgk.a a;
-   public boolean b;
-   public boolean c;
-   public int d;
-   public boolean e;
-   public boolean f;
-   public boolean g;
-   public float h;
-   public float i;
-   public float j;
-   public float k;
+public class gua extends gtm {
+   public cin a;
+   public cii h;
+   public cvp i;
 
    public gua() {
-      this.a = cgk.a.a;
+      this.a = cin.a;
+      this.h = cii.a;
+      this.i = cvp.k;
    }
 }

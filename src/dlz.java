@@ -1,209 +1,166 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.UnmodifiableIterator;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class dlz extends dgv implements dmo {
-   public static final MapCodec<dlz> a = b(dlz::new);
-   public static final duy<jj.a> b = duq.H;
-   private static final Logger f = LogUtils.getLogger();
-   protected static final int c = 2;
-   protected static final eyx d = dgv.a(0.0, 0.0, 6.0, 16.0, 16.0, 10.0);
-   protected static final eyx e = dgv.a(6.0, 0.0, 0.0, 10.0, 16.0, 16.0);
+public class dlz extends dhj implements dhq {
+   private static final Codec<eqn> f = lu.c
+      .q()
+      .comapFlatMap($$0 -> $$0 instanceof eqn $$1 ? DataResult.success($$1) : DataResult.error(() -> "Not a flowing fluid: " + $$0), $$0 -> $$0);
+   public static final MapCodec<dlz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(f.fieldOf("fluid").forGetter($$0x -> $$0x.c), u()).apply($$0, dlz::new));
+   public static final dvo b = dve.aP;
+   protected final eqn c;
+   private final List<eqp> g;
+   public static final ezm d = dhj.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
+   public static final ImmutableList<jj> e = ImmutableList.of(jj.a, jj.d, jj.c, jj.f, jj.e);
 
    @Override
    public MapCodec<dlz> a() {
       return a;
    }
 
-   public dlz(dtz.d $$0) {
-      super($$0);
-      this.l(this.E.b().b(b, jj.a.a));
+   protected dlz(eqn $$0, dun.d $$1) {
+      super($$1);
+      this.c = $$0;
+      this.g = Lists.newArrayList();
+      this.g.add($$0.a(false));
+
+      for (int $$2 = 1; $$2 < 8; $$2++) {
+         this.g.add($$0.a(8 - $$2, false));
+      }
+
+      this.g.add($$0.a(8, true));
+      this.l(this.F.b().b(b, Integer.valueOf(0)));
    }
 
    @Override
-   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
-      switch ((jj.a)$$0.c(b)) {
-         case c:
-            return e;
-         case a:
-         default:
-            return d;
+   protected ezm b(duo $$0, ddl $$1, je $$2, eyx $$3) {
+      return $$3.a(d, $$2, true) && $$0.c(b) == 0 && $$3.a($$1.b_($$2.d()), $$0.y()) ? d : ezj.a();
+   }
+
+   @Override
+   protected boolean f(duo $$0) {
+      return $$0.y().f();
+   }
+
+   @Override
+   protected void b(duo $$0, arh $$1, je $$2, azl $$3) {
+      $$0.y().b($$1, $$2, $$3);
+   }
+
+   @Override
+   protected boolean e_(duo $$0) {
+      return false;
+   }
+
+   @Override
+   protected boolean a(duo $$0, ere $$1) {
+      return !this.c.a(awz.b);
+   }
+
+   @Override
+   protected eqp b_(duo $$0) {
+      int $$1 = $$0.c(b);
+      return this.g.get(Math.min($$1, 8));
+   }
+
+   @Override
+   protected boolean b(duo $$0, duo $$1, jj $$2) {
+      return $$1.y().a().a(this.c);
+   }
+
+   @Override
+   protected dnq a_(duo $$0) {
+      return dnq.a;
+   }
+
+   @Override
+   protected List<cvp> a(duo $$0, etk.a $$1) {
+      return Collections.emptyList();
+   }
+
+   @Override
+   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
+      return ezj.a();
+   }
+
+   @Override
+   protected void b(duo $$0, deg $$1, je $$2, duo $$3, boolean $$4) {
+      if (this.a($$1, $$2, $$0)) {
+         $$1.a($$2, $$0.y().a(), this.c.a((dej)$$1));
       }
    }
 
    @Override
-   protected void b(dua $$0, arg $$1, je $$2, azk $$3) {
-      if ($$1.B_().j() && $$1.ac().b(ddo.e) && $$3.a(2000) < $$1.am().a()) {
-         while ($$1.a_($$2).a(this)) {
-            $$2 = $$2.e();
-         }
+   protected duo a(duo $$0, jj $$1, duo $$2, deh $$3, je $$4, je $$5) {
+      if ($$0.y().b() || $$2.y().b()) {
+         $$3.a($$4, $$0.y().a(), this.c.a($$3));
+      }
 
-         if ($$1.a_($$2).a($$1, $$2, btq.bx)) {
-            btj $$4 = btq.bx.a($$1, $$2.d(), btp.d);
-            if ($$4 != null) {
-               $$4.aA();
-               btj $$5 = $$4.dg();
-               if ($$5 != null) {
-                  $$5.aA();
-               }
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected void a(duo $$0, deg $$1, je $$2, dhj $$3, @Nullable erx $$4, boolean $$5) {
+      if (this.a($$1, $$2, $$0)) {
+         $$1.a($$2, $$0.y().a(), this.c.a((dej)$$1));
+      }
+   }
+
+   private boolean a(deg $$0, je $$1, duo $$2) {
+      if (this.c.a(awz.b)) {
+         boolean $$3 = $$0.a_($$1.e()).a(dhl.dX);
+         UnmodifiableIterator var5 = e.iterator();
+
+         while (var5.hasNext()) {
+            jj $$4 = (jj)var5.next();
+            je $$5 = $$1.a($$4.g());
+            if ($$0.b_($$5).a(awz.a)) {
+               dhj $$6 = $$0.b_($$1).b() ? dhl.co : dhl.m;
+               $$0.b($$1, $$6.o());
+               this.a($$0, $$1);
+               return false;
+            }
+
+            if ($$3 && $$0.a_($$5).a(dhl.mW)) {
+               $$0.b($$1, dhl.dY.o());
+               this.a($$0, $$1);
+               return false;
             }
          }
       }
+
+      return true;
+   }
+
+   private void a(deh $$0, je $$1) {
+      $$0.c(1501, $$1, 0);
    }
 
    @Override
-   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
-      jj.a $$6 = $$1.o();
-      jj.a $$7 = $$0.c(b);
-      boolean $$8 = $$7 != $$6 && $$6.d();
-      return !$$8 && !$$2.a(this) && !new erb($$3, $$4, $$7).c() ? dgx.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void a(dua $$0, dds $$1, je $$2, btj $$3) {
-      if ($$3.o(false)) {
-         $$3.a(this, $$2);
-      }
-   }
-
-   @Override
-   public int a(arg $$0, btj $$1) {
-      return $$1 instanceof cnp $$2 ? Math.max(0, $$0.ac().c($$2.gd().a ? ddo.F : ddo.E)) : 0;
-   }
-
-   @Nullable
-   @Override
-   public eqz a(arg $$0, btj $$1, je $$2) {
-      ala<dds> $$3 = $$0.ag() == dds.i ? dds.h : dds.i;
-      arg $$4 = $$0.o().a($$3);
-      if ($$4 == null) {
-         return null;
-      } else {
-         boolean $$5 = $$4.ag() == dds.i;
-         dvr $$6 = $$4.A_();
-         double $$7 = dxw.a($$0.B_(), $$4.B_());
-         je $$8 = $$6.b($$1.dx() * $$7, $$1.dz(), $$1.dD() * $$7);
-         return this.a($$4, $$1, $$2, $$8, $$5, $$6);
-      }
-   }
-
-   @Nullable
-   private eqz a(arg $$0, btj $$1, je $$2, je $$3, boolean $$4, dvr $$5) {
-      Optional<je> $$6 = $$0.p().a($$3, $$4, $$5);
-      l.a $$9;
-      eqz.a $$10;
-      if ($$6.isPresent()) {
-         je $$7 = $$6.get();
-         dua $$8 = $$0.a_($$7);
-         $$9 = l.a($$7, $$8.c(duq.H), 21, jj.a.b, 21, $$2x -> $$0.a_($$2x) == $$8);
-         $$10 = eqz.b.then($$1x -> $$1x.f($$7));
-      } else {
-         jj.a $$11 = $$1.dS().a_($$2).d(b).orElse(jj.a.a);
-         Optional<l.a> $$12 = $$0.p().a($$3, $$11);
-         if ($$12.isEmpty()) {
-            f.error("Unable to create a portal, likely target out of worldborder");
-            return null;
-         }
-
-         $$9 = $$12.get();
-         $$10 = eqz.b.then(eqz.c);
-      }
-
-      return a($$1, $$2, $$9, $$0, $$10);
-   }
-
-   private static eqz a(btj $$0, je $$1, l.a $$2, arg $$3, eqz.a $$4) {
-      dua $$5 = $$0.dS().a_($$1);
-      jj.a $$6;
-      eye $$8;
-      if ($$5.b(duq.H)) {
-         $$6 = $$5.c(duq.H);
-         l.a $$7 = l.a($$1, $$6, 21, jj.a.b, 21, $$2x -> $$0.dS().a_($$2x) == $$5);
-         $$8 = $$0.a($$6, $$7);
-      } else {
-         $$6 = jj.a.a;
-         $$8 = new eye(0.5, 0.0, 0.0);
-      }
-
-      return a($$3, $$2, $$6, $$8, $$0, $$0.dv(), $$0.dI(), $$0.dK(), $$4);
-   }
-
-   private static eqz a(arg $$0, l.a $$1, jj.a $$2, eye $$3, btj $$4, eye $$5, float $$6, float $$7, eqz.a $$8) {
-      je $$9 = $$1.a;
-      dua $$10 = $$0.a_($$9);
-      jj.a $$11 = $$10.d(duq.H).orElse(jj.a.a);
-      double $$12 = (double)$$1.b;
-      double $$13 = (double)$$1.c;
-      btm $$14 = $$4.a($$4.av());
-      int $$15 = $$2 == $$11 ? 0 : 90;
-      eye $$16 = $$2 == $$11 ? $$5 : new eye($$5.f, $$5.e, -$$5.d);
-      double $$17 = (double)$$14.a() / 2.0 + ($$12 - (double)$$14.a()) * $$3.a();
-      double $$18 = ($$13 - (double)$$14.b()) * $$3.b();
-      double $$19 = 0.5 + $$3.c();
-      boolean $$20 = $$11 == jj.a.a;
-      eye $$21 = new eye((double)$$9.u() + ($$20 ? $$17 : $$19), (double)$$9.v() + $$18, (double)$$9.w() + ($$20 ? $$19 : $$17));
-      eye $$22 = erb.a($$21, $$0, $$4, $$14);
-      return new eqz($$0, $$22, $$16, $$6 + (float)$$15, $$7, $$8);
-   }
-
-   @Override
-   public dmo.a b() {
-      return dmo.a.a;
-   }
-
-   @Override
-   public void a(dua $$0, dds $$1, je $$2, azk $$3) {
-      if ($$3.a(100) == 0) {
-         $$1.a((double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, awd.uI, awe.e, 0.5F, $$3.i() * 0.4F + 0.8F, false);
-      }
-
-      for (int $$4 = 0; $$4 < 4; $$4++) {
-         double $$5 = (double)$$2.u() + $$3.j();
-         double $$6 = (double)$$2.v() + $$3.j();
-         double $$7 = (double)$$2.w() + $$3.j();
-         double $$8 = ((double)$$3.i() - 0.5) * 0.5;
-         double $$9 = ((double)$$3.i() - 0.5) * 0.5;
-         double $$10 = ((double)$$3.i() - 0.5) * 0.5;
-         int $$11 = $$3.a(2) * 2 - 1;
-         if (!$$1.a_($$2.h()).a(this) && !$$1.a_($$2.i()).a(this)) {
-            $$5 = (double)$$2.u() + 0.5 + 0.25 * (double)$$11;
-            $$8 = (double)($$3.i() * 2.0F * (float)$$11);
-         } else {
-            $$7 = (double)$$2.w() + 0.5 + 0.25 * (double)$$11;
-            $$10 = (double)($$3.i() * 2.0F * (float)$$11);
-         }
-
-         $$1.a(ln.ac, $$5, $$6, $$7, $$8, $$9, $$10);
-      }
-   }
-
-   @Override
-   public cvl a(ddv $$0, je $$1, dua $$2) {
-      return cvl.k;
-   }
-
-   @Override
-   protected dua a(dua $$0, dnj $$1) {
-      switch ($$1) {
-         case d:
-         case b:
-            switch ((jj.a)$$0.c(b)) {
-               case c:
-                  return $$0.b(b, jj.a.a);
-               case a:
-                  return $$0.b(b, jj.a.c);
-               default:
-                  return $$0;
-            }
-         default:
-            return $$0;
-      }
-   }
-
-   @Override
-   protected void a(dub.a<dgv, dua> $$0) {
+   protected void a(dup.a<dhj, duo> $$0) {
       $$0.a(b);
+   }
+
+   @Override
+   public cvp a(@Nullable cnu $$0, deh $$1, je $$2, duo $$3) {
+      if ($$3.c(b) == 0) {
+         $$1.a($$2, dhl.a.o(), 11);
+         return new cvp(this.c.a());
+      } else {
+         return cvp.k;
+      }
+   }
+
+   @Override
+   public Optional<awd> at_() {
+      return this.c.j();
    }
 }

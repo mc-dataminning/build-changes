@@ -1,20 +1,15 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dbs(dbd c) implements dbp {
-   public static final MapCodec<dbs> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dbd.b.fieldOf("factor").forGetter(dbs::b)).apply($$0, dbs::new));
+public record dbs(jr<cvk> c) {
+   public static final Codec<dbs> a = RecordCodecBuilder.create($$0 -> $$0.group(kc.a(lv.K).fieldOf("items").forGetter(dbs::a)).apply($$0, dbs::new));
+   public static final zb<wo, dbs> b = zb.a(yz.c(lv.K), dbs::a, dbs::new);
 
-   @Override
-   public float a(int $$0, azk $$1, float $$2) {
-      return $$2 * this.c.a($$0);
+   public boolean a(cvp $$0) {
+      return $$0.a(this.c);
    }
 
-   @Override
-   public MapCodec<dbs> a() {
-      return a;
-   }
-
-   public dbd b() {
+   public jr<cvk> a() {
       return this.c;
    }
 }

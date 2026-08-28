@@ -1,71 +1,44 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.Collection;
 
-public class glq extends gnt<cjo, gsb, fvy> {
-   public static final alb a = alb.b("textures/entity/armorstand/wood.png");
-   private final fvy b = this.e();
-   private final fvy k;
+public class glq implements glg.a {
+   private static final int a = 160;
+   private static final float b = 0.04F;
+   private final fil c;
+   private Collection<je> d = Lists.newArrayList();
 
-   public glq(gms.a $$0) {
-      super($$0, new fvz($$0.a(gaa.d)), 0.0F);
-      this.k = new fvz($$0.a(gaa.g));
-      this.a(new gqv<>(this, new fvy($$0.a(gaa.e)), new fvy($$0.a(gaa.f)), new fvy($$0.a(gaa.h)), new fvy($$0.a(gaa.i)), $$0.g()));
-      this.a(new gqy<>(this, $$0.b()));
-      this.a(new gqo<>(this, $$0.f()));
-      this.a(new gqk<>(this, $$0.f(), $$0.b()));
+   public glq(fil $$0) {
+      this.c = $$0;
    }
 
-   public alb a(gsb $$0) {
-      return a;
+   public void a(Collection<je> $$0) {
+      this.d = $$0;
    }
 
-   public gsb a() {
-      return new gsb();
-   }
+   @Override
+   public void a(fde $$0, ghg $$1, double $$2, double $$3, double $$4) {
+      je $$5 = this.b().c();
 
-   public void a(cjo $$0, gsb $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      gnj.a((buf)$$0, (gtk)$$1, $$2);
-      $$1.a = azc.i($$2, $$0.O, $$0.dI());
-      $$1.c = $$0.A();
-      $$1.d = $$0.t();
-      $$1.e = $$0.w();
-      $$1.f = $$0.y();
-      $$1.h = $$0.C();
-      $$1.g = $$0.B();
-      $$1.i = $$0.D();
-      $$1.j = $$0.E();
-      $$1.k = $$0.F();
-      $$1.l = $$0.G();
-      $$1.b = (float)($$0.dS().aa() - $$0.bR) + $$2;
-   }
-
-   public void a(gsb $$0, fcu $$1, ggv $$2, int $$3) {
-      this.h = $$0.d ? this.k : this.b;
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   protected void a(gsb $$0, fcu $$1, float $$2, float $$3) {
-      $$1.a(a.d.rotationDegrees(180.0F - $$2));
-      if ($$0.b < 5.0F) {
-         $$1.a(a.d.rotationDegrees(azc.a($$0.b / 1.5F * (float) Math.PI) * 3.0F));
-      }
-   }
-
-   protected boolean a(cjo $$0, double $$1) {
-      return $$0.cI();
-   }
-
-   @Nullable
-   protected ghe a(gsb $$0, boolean $$1, boolean $$2, boolean $$3) {
-      if (!$$0.c) {
-         return super.a($$0, $$1, $$2, $$3);
-      } else {
-         alb $$4 = this.a($$0);
-         if ($$2) {
-            return ghe.c($$4, false);
-         } else {
-            return $$1 ? ghe.a($$4, false) : null;
+      for (je $$6 : this.d) {
+         if ($$5.a($$6, 160.0)) {
+            a($$0, $$1, $$6);
          }
       }
+   }
+
+   private static void a(fde $$0, ghg $$1, je $$2) {
+      glg.a($$0, $$1, $$2, 1.0F, 0.0F, 0.0F, 0.15F);
+      a($$0, $$1, "Raid center", $$2, -65536);
+   }
+
+   private static void a(fde $$0, ghg $$1, String $$2, je $$3, int $$4) {
+      double $$5 = (double)$$3.u() + 0.5;
+      double $$6 = (double)$$3.v() + 1.3;
+      double $$7 = (double)$$3.w() + 0.5;
+      glg.a($$0, $$1, $$2, $$5, $$6, $$7, $$4, 0.04F, true, 0.0F, true);
+   }
+
+   private fhu b() {
+      return this.c.j.k();
    }
 }

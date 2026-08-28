@@ -1,46 +1,21 @@
 import javax.annotation.Nullable;
 
-public class cwu extends ctl implements cuc {
-   private final awc a;
+public class cwu extends cxc {
+   public cwu(cvk.a $$0, dhj $$1, dhj $$2) {
+      super($$1, $$2, $$0, jj.a);
+   }
 
-   public cwu(dgv $$0, awc $$1, cvg.a $$2) {
-      super($$0, $$2);
-      this.a = $$1;
+   public cwu(cvk.a $$0, dhj $$1, dhj $$2, jj $$3) {
+      super($$1, $$2, $$0, $$3);
    }
 
    @Override
-   public brk a(cyy $$0) {
-      brk $$1 = super.a($$0);
-      cnp $$2 = $$0.o();
-      if ($$1.a() && $$2 != null) {
-         $$2.a($$0.p(), ctr.a($$0.n(), $$2));
+   protected boolean a(je $$0, deg $$1, @Nullable cnu $$2, cvp $$3, duo $$4) {
+      boolean $$5 = super.a($$0, $$1, $$2, $$3, $$4);
+      if (!$$1.B && !$$5 && $$2 != null && $$1.c_($$0) instanceof dte $$6 && $$1.a_($$0).b() instanceof dok $$7) {
+         $$7.a($$2, $$6, true);
       }
 
-      return $$1;
-   }
-
-   @Override
-   public String a() {
-      return this.t();
-   }
-
-   @Override
-   protected awc a(dua $$0) {
-      return this.a;
-   }
-
-   @Override
-   public boolean a(@Nullable cnp $$0, dds $$1, je $$2, @Nullable eya $$3) {
-      if ($$1.k($$2) && $$1.u($$2)) {
-         if (!$$1.B) {
-            $$1.a($$2, this.d().o(), 3);
-         }
-
-         $$1.a($$0, dyx.z, $$2);
-         $$1.a($$0, $$2, this.a, awe.e, 1.0F, 1.0F);
-         return true;
-      } else {
-         return false;
-      }
+      return $$5;
    }
 }

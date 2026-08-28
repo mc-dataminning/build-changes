@@ -1,21 +1,27 @@
-public enum dvi implements azy {
-   a("top"),
-   b("bottom"),
-   c("double");
+import com.google.common.collect.Lists;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   private final String d;
-
-   private dvi(final String $$0) {
-      this.d = $$0;
+public class dvi extends dvm<jj> {
+   protected dvi(String $$0, Collection<jj> $$1) {
+      super($$0, jj.class, $$1);
    }
 
-   @Override
-   public String toString() {
-      return this.d;
+   public static dvi a(String $$0) {
+      return a($$0, $$0x -> true);
    }
 
-   @Override
-   public String c() {
-      return this.d;
+   public static dvi a(String $$0, Predicate<jj> $$1) {
+      return a($$0, Arrays.stream(jj.values()).filter($$1).collect(Collectors.toList()));
+   }
+
+   public static dvi a(String $$0, jj... $$1) {
+      return a($$0, Lists.newArrayList($$1));
+   }
+
+   public static dvi a(String $$0, Collection<jj> $$1) {
+      return new dvi($$0, $$1);
    }
 }

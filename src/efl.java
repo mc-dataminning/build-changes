@@ -1,62 +1,53 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import java.util.List;
 
-public class efl implements efg {
+public record efl(List<efl.a> b, jj c, ebr d, boolean e) implements efu {
    public static final Codec<efl> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               lu.e.q().fieldOf("block").flatXmap(efl::a, DataResult::success).orElse((dlv)dgx.fg).forGetter($$0x -> $$0x.b),
-               Codec.intRange(1, 64).fieldOf("search_range").orElse(10).forGetter($$0x -> $$0x.c),
-               Codec.BOOL.fieldOf("can_place_on_floor").orElse(false).forGetter($$0x -> $$0x.d),
-               Codec.BOOL.fieldOf("can_place_on_ceiling").orElse(false).forGetter($$0x -> $$0x.e),
-               Codec.BOOL.fieldOf("can_place_on_wall").orElse(false).forGetter($$0x -> $$0x.f),
-               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spreading").orElse(0.5F).forGetter($$0x -> $$0x.g),
-               kc.a(lv.f).fieldOf("can_be_placed_on").forGetter($$0x -> $$0x.h)
+               efl.a.a.listOf().fieldOf("layers").forGetter(efl::a),
+               jj.g.fieldOf("direction").forGetter(efl::b),
+               ebr.b.fieldOf("allowed_placement").forGetter(efl::c),
+               Codec.BOOL.fieldOf("prioritize_tip").forGetter(efl::d)
             )
             .apply($$0, efl::new)
    );
-   public final dlv b;
-   public final int c;
-   public final boolean d;
-   public final boolean e;
-   public final boolean f;
-   public final float g;
-   public final jr<dgv> h;
-   private final ObjectArrayList<jj> i;
 
-   private static DataResult<dlv> a(dgv $$0) {
-      return $$0 instanceof dlv $$1 ? DataResult.success($$1) : DataResult.error(() -> "Growth block should be a multiface block");
+   public static efl.a a(bqu $$0, ehv $$1) {
+      return new efl.a($$0, $$1);
    }
 
-   public efl(dlv $$0, int $$1, boolean $$2, boolean $$3, boolean $$4, float $$5, jr<dgv> $$6) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = new ObjectArrayList(6);
-      if ($$3) {
-         this.i.add(jj.b);
-      }
-
-      if ($$2) {
-         this.i.add(jj.a);
-      }
-
-      if ($$4) {
-         jj.c.a.forEach(this.i::add);
-      }
+   public static efl b(bqu $$0, ehv $$1) {
+      return new efl(List.of(a($$0, $$1)), jj.b, ebr.c, false);
    }
 
-   public List<jj> a(azk $$0, jj $$1) {
-      return ad.a(this.i.stream().filter($$1x -> $$1x != $$1), $$0);
+   public List<efl.a> a() {
+      return this.b;
    }
 
-   public List<jj> a(azk $$0) {
-      return ad.a(this.i, $$0);
+   public jj b() {
+      return this.c;
+   }
+
+   public ebr c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public static record a(bqu b, ehv c) {
+      public static final Codec<efl.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bqu.d.fieldOf("height").forGetter(efl.a::a), ehv.a.fieldOf("provider").forGetter(efl.a::b)).apply($$0, efl.a::new)
+      );
+
+      public bqu a() {
+         return this.b;
+      }
+
+      public ehv b() {
+         return this.c;
+      }
    }
 }

@@ -1,29 +1,67 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class fhp {
-   private final List<xi> a = Lists.newArrayList();
+public class fhp extends fhj {
+   private static final Logger b = LogUtils.getLogger();
+   private static final xd c = xd.c("mco.backup.restoring");
+   private final fea d;
+   private final long e;
+   private final fft f;
 
-   public void a(xi $$0) {
-      this.a.add($$0);
+   public fhp(fea $$0, long $$1, fft $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   @Nullable
-   public xi a() {
-      if (this.a.isEmpty()) {
-         return null;
-      } else {
-         return this.a.size() == 1 ? this.a.get(0) : xi.a(this.a);
+   @Override
+   public void run() {
+      fdu $$0 = fdu.a();
+      int $$1 = 0;
+
+      while ($$1 < 25) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            $$0.b(this.e, this.d.a);
+            a(1L);
+            if (this.d()) {
+               return;
+            }
+
+            a(this.f.g());
+            return;
+         } catch (ffg var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+            $$1++;
+         } catch (fff var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't restore backup", var5);
+            a(new ffx(var5, this.f));
+            return;
+         } catch (Exception var6) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't restore backup", var6);
+            this.a(var6);
+            return;
+         }
       }
    }
 
-   public xi b() {
-      xi $$0 = this.a();
-      return $$0 != null ? $$0 : xi.b;
-   }
-
-   public void c() {
-      this.a.clear();
+   @Override
+   public xd a() {
+      return c;
    }
 }

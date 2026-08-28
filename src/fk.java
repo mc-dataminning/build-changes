@@ -39,7 +39,7 @@ public class fk implements ga<fk.a> {
 
    private static void a(Consumer<xt> $$0, et $$1, xt $$2) {
       MinecraftServer $$3 = $$1.l();
-      CompletableFuture<ary> $$4 = a($$1, $$2);
+      CompletableFuture<arz> $$4 = a($$1, $$2);
       xd $$5 = $$3.bl().decorate($$1.i(), $$2.d());
       $$1.o().append($$4, $$3x -> {
          xt $$4x = $$2.a($$5).a($$3x.e());
@@ -53,9 +53,9 @@ public class fk implements ga<fk.a> {
       $$0.accept($$2.a($$4));
    }
 
-   private static CompletableFuture<ary> a(et $$0, xt $$1) {
-      arh $$2 = $$0.i();
-      return $$2 != null && $$1.a($$2.cD()) ? $$2.aa().a($$1.c()) : CompletableFuture.completedFuture(ary.a($$1.c()));
+   private static CompletableFuture<arz> a(et $$0, xt $$1) {
+      ari $$2 = $$0.i();
+      return $$2 != null && $$1.a($$2.cD()) ? $$2.aa().a($$1.c()) : CompletableFuture.completedFuture(arz.a($$1.c()));
    }
 
    public fk.a a(StringReader $$0) throws CommandSyntaxException {

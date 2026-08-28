@@ -1,56 +1,51 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class dik extends dgv {
-   public static final MapCodec<dgv> a = lu.e.q().fieldOf("dead");
-   public static final MapCodec<dik> b = RecordCodecBuilder.mapCodec($$0 -> $$0.group(a.forGetter($$0x -> $$0x.c), u()).apply($$0, dik::new));
-   private final dgv c;
+public interface dik<T extends Enum<T>> {
+   int z_ = 4;
 
-   public dik(dgv $$0, dtz.d $$1) {
-      super($$1);
-      this.c = $$0;
-   }
+   Optional<duo> k_(duo var1);
 
-   @Override
-   public MapCodec<dik> a() {
-      return b;
-   }
+   float av_();
 
-   @Override
-   protected void a(dua $$0, arg $$1, je $$2, azk $$3) {
-      if (!this.a($$1, $$2)) {
-         $$1.a($$2, this.c.o(), 2);
+   default void a_(duo $$0, arh $$1, je $$2, azl $$3) {
+      float $$4 = 0.05688889F;
+      if ($$3.i() < 0.05688889F) {
+         this.c($$0, $$1, $$2, $$3).ifPresent($$2x -> $$1.b($$2, $$2x));
       }
    }
 
-   @Override
-   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
-      if (!this.a($$3, $$4)) {
-         $$3.a($$4, this, 60 + $$3.C_().a(40));
-      }
+   T c();
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
+   default Optional<duo> c(duo $$0, arh $$1, je $$2, azl $$3) {
+      int $$4 = this.c().ordinal();
+      int $$5 = 0;
+      int $$6 = 0;
 
-   protected boolean a(dcx $$0, je $$1) {
-      for (jj $$2 : jj.values()) {
-         eqb $$3 = $$0.b_($$1.a($$2));
-         if ($$3.a(awy.a)) {
-            return true;
+      for (je $$7 : je.a($$2, 4, 4, 4)) {
+         int $$8 = $$7.k($$2);
+         if ($$8 > 4) {
+            break;
+         }
+
+         if (!$$7.equals($$2) && $$1.a_($$7).b() instanceof dik<?> $$9) {
+            Enum<?> $$10 = $$9.c();
+            if (this.c().getClass() == $$10.getClass()) {
+               int $$11 = $$10.ordinal();
+               if ($$11 < $$4) {
+                  return Optional.empty();
+               }
+
+               if ($$11 > $$4) {
+                  $$6++;
+               } else {
+                  $$5++;
+               }
+            }
          }
       }
 
-      return false;
-   }
-
-   @Nullable
-   @Override
-   public dua a(cyw $$0) {
-      if (!this.a($$0.q(), $$0.a())) {
-         $$0.q().a($$0.a(), this, 60 + $$0.q().C_().a(40));
-      }
-
-      return this.o();
+      float $$12 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
+      float $$13 = $$12 * $$12 * this.av_();
+      return $$3.i() < $$13 ? this.k_($$0) : Optional.empty();
    }
 }

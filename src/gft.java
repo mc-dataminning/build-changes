@@ -1,87 +1,55 @@
-import com.mojang.authlib.GameProfile;
+public class gft extends gfo {
+   private final gfj a;
 
-public class gft extends gfp {
-   private eye cw = eye.c;
-   private int cx;
-
-   public gft(gax $$0, GameProfile $$1) {
-      super($$0, $$1);
-      this.ae = true;
+   gft(gbh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gfj $$7) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a = $$7;
+      this.j *= 0.3F;
+      this.k = Math.random() * 0.2F + 0.1F;
+      this.l *= 0.3F;
+      this.b(0.01F, 0.01F);
+      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+      this.b($$7);
+      this.u = 0.0F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
    }
 
    @Override
-   public boolean a(double $$0) {
-      double $$1 = this.cO().a() * 10.0;
-      if (Double.isNaN($$1)) {
-         $$1 = 1.0;
-      }
-
-      $$1 *= 64.0 * cH();
-      return $$0 < $$1 * $$1;
+   public ges b() {
+      return ges.b;
    }
 
    @Override
-   public boolean a(bsb $$0, float $$1) {
-      return true;
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      this.s(false);
-   }
-
-   @Override
-   public void m_() {
-      if (this.bo > 0) {
-         this.a(this.bo, this.bp, this.bq, this.br, this.bs, this.bt);
-         this.bo--;
-      }
-
-      if (this.bv > 0) {
-         this.a(this.bv, this.bu);
-         this.bv--;
-      }
-
-      if (this.cx > 0) {
-         this.i(new eye((this.cw.d - this.dv().d) / (double)this.cx, (this.cw.e - this.dv().e) / (double)this.cx, (this.cw.f - this.dv().f) / (double)this.cx));
-         this.cx--;
-      }
-
-      this.cd = this.ce;
-      this.eU();
-      float $$1;
-      if (this.aH() && !this.eB()) {
-         $$1 = (float)Math.min(0.1, this.dv().i());
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      int $$0 = 60 - this.t;
+      if (this.t-- <= 0) {
+         this.k();
       } else {
-         $$1 = 0.0F;
+         this.k = this.k - (double)this.u;
+         this.a(this.j, this.k, this.l);
+         this.j *= 0.98F;
+         this.k *= 0.98F;
+         this.l *= 0.98F;
+         float $$1 = (float)$$0 * 0.001F;
+         this.b($$1, $$1);
+         this.a(this.a.a($$0 % 4, 4));
+      }
+   }
+
+   public static class a implements ger<lr> {
+      private final gfj a;
+
+      public a(gfj $$0) {
+         this.a = $$0;
       }
 
-      this.ce = this.ce + ($$1 - this.ce) * 0.4F;
-      this.dS().ah().a("push");
-      this.r();
-      this.dS().ah().c();
-   }
-
-   @Override
-   public void l(double $$0, double $$1, double $$2) {
-      this.cw = new eye($$0, $$1, $$2);
-      this.cx = this.ao().p() + 1;
-   }
-
-   @Override
-   protected void fV() {
-   }
-
-   @Override
-   public void a(xd $$0) {
-      fib $$1 = fib.Q();
-      $$1.m.d().a($$0);
-   }
-
-   @Override
-   public void a(aca $$0) {
-      super.a($$0);
-      this.by();
+      public geo a(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gft($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      }
    }
 }

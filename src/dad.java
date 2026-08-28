@@ -1,90 +1,76 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class dad implements czj {
-   final String a;
-   final czh b;
-   final cvl c;
-   final List<czp> d;
+public final class dad implements Predicate<cvp> {
+   public static final zb<wo, dad> a = yz.c(lv.K).a(dad::new, $$0 -> $$0.e);
+   public static final zb<wo, Optional<dad>> b = yz.c(lv.K)
+      .a($$0 -> $$0.b() == 0 ? Optional.empty() : Optional.of(new dad((jr<cvk>)$$0)), $$0 -> $$0.<jr.a<cvk>>map($$0x -> $$0x.e).orElse(jr.a()));
+   public static final Codec<jr<cvk>> c = akw.a(lv.K, cvp.a, false);
+   public static final Codec<dad> d = aym.b(c).xmap(dad::new, $$0 -> $$0.e);
+   private final jr<cvk> e;
    @Nullable
-   private czs e;
+   private List<jn<cvk>> f;
 
-   public dad(String $$0, czh $$1, cvl $$2, List<czp> $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   private dad(jr<cvk> $$0) {
+      $$0.d().ifRight($$0x -> {
+         if ($$0x.isEmpty()) {
+            throw new UnsupportedOperationException("Ingredients can't be empty");
+         } else if ($$0x.contains(cvt.a.n())) {
+            throw new UnsupportedOperationException("Ingredient can't contain air");
+         }
+      });
+      this.e = $$0;
    }
 
-   @Override
-   public czy<?> as_() {
-      return czy.b;
+   public static boolean a(Optional<dad> $$0, cvp $$1) {
+      return $$0.<Boolean>map($$1x -> $$1x.a($$1)).orElseGet($$1::f);
    }
 
-   @Override
-   public String c() {
-      return this.a;
-   }
-
-   @Override
-   public czh d() {
-      return this.b;
-   }
-
-   @Override
-   public cvl a(jp.a $$0) {
-      return this.c;
-   }
-
-   @Override
-   public czs a() {
-      if (this.e == null) {
-         this.e = czs.b(this.d);
+   public List<jn<cvk>> a() {
+      if (this.f == null) {
+         this.f = ImmutableList.copyOf(this.e);
       }
 
-      return this.e;
+      return this.f;
    }
 
-   public boolean a(czi $$0, dds $$1) {
-      if ($$0.e() != this.d.size()) {
-         return false;
-      } else {
-         return $$0.a() == 1 && this.d.size() == 1 ? this.d.getFirst().a($$0.a(0)) : $$0.c().a(this, null);
+   public boolean a(cvp $$0) {
+      List<jn<cvk>> $$1 = this.a();
+
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         if ($$0.a($$1.get($$2))) {
+            return true;
+         }
       }
-   }
 
-   public cvl a(czi $$0, jp.a $$1) {
-      return this.c.u();
+      return false;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= this.d.size();
+   public boolean equals(Object $$0) {
+      return $$0 instanceof dad $$1 ? Objects.equals(this.e, $$1.e) : false;
    }
 
-   public static class a implements czy<dad> {
-      private static final MapCodec<dad> x = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.STRING.optionalFieldOf("group", "").forGetter($$0x -> $$0x.a),
-                  czh.e.fieldOf("category").orElse(czh.d).forGetter($$0x -> $$0x.b),
-                  cvl.d.fieldOf("result").forGetter($$0x -> $$0x.c),
-                  czp.d.listOf(1, 9).fieldOf("ingredients").forGetter($$0x -> $$0x.d)
-               )
-               .apply($$0, dad::new)
-      );
-      public static final zb<wo, dad> w = zb.a(yz.l, $$0 -> $$0.a, czh.g, $$0 -> $$0.b, cvl.i, $$0 -> $$0.c, czp.a.a(yz.a()), $$0 -> $$0.d, dad::new);
+   public static dad a(def $$0) {
+      return new dad(jr.a($$0.q().n()));
+   }
 
-      @Override
-      public MapCodec<dad> a() {
-         return x;
-      }
+   public static dad a(def... $$0) {
+      return a(Arrays.stream($$0));
+   }
 
-      @Override
-      public zb<wo, dad> b() {
-         return w;
-      }
+   public static dad a(Stream<? extends def> $$0) {
+      return new dad(jr.a($$0.map($$0x -> $$0x.q().n()).toList()));
+   }
+
+   public static dad a(jr<cvk> $$0) {
+      return new dad($$0);
    }
 }

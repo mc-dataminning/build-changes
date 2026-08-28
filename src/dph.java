@@ -1,61 +1,75 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dph extends diq {
+public class dph extends dhj {
    public static final MapCodec<dph> a = b(dph::new);
-   public static final int b = 2;
-   public static final dva c = duq.aq;
-   private static final float g = 3.0F;
-   private static final eyx[] h = new eyx[]{dgv.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0), dgv.a(5.0, 0.0, 5.0, 11.0, 10.0, 11.0)};
-   private static final int i = 1;
+   private static final xd d = xd.c("container.stonecutter");
+   public static final dvi b = dlf.aF;
+   protected static final ezm c = dhj.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
 
    @Override
    public MapCodec<dph> a() {
       return a;
    }
 
-   public dph(dtz.d $$0) {
+   public dph(dun.d $$0) {
       super($$0);
+      this.l(this.F.b().b(b, jj.c));
    }
 
    @Override
-   protected void a(dub.a<dgv, dua> $$0) {
-      $$0.a(c);
+   public duo a(czk $$0) {
+      return this.o().b(b, $$0.g().g());
    }
 
    @Override
-   public eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
-      return h[this.h($$0)];
+   protected brp a(duo $$0, deg $$1, je $$2, cnu $$3, eyo $$4) {
+      if (!$$1.B) {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(awo.ay);
+      }
+
+      return brp.a;
+   }
+
+   @Nullable
+   @Override
+   protected brr b(duo $$0, deg $$1, je $$2) {
+      return new brx(($$2x, $$3, $$4) -> new csz($$2x, $$3, crj.a($$1, $$2)), d);
    }
 
    @Override
-   protected dva b() {
+   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
       return c;
    }
 
    @Override
-   public int c() {
-      return 2;
+   protected boolean g_(duo $$0) {
+      return true;
    }
 
    @Override
-   protected ddr d() {
-      return cvo.vk;
+   protected dnq a_(duo $$0) {
+      return dnq.c;
    }
 
    @Override
-   public dua b(int $$0) {
-      return $$0 == 2 ? dgx.bS.o() : super.b($$0);
+   protected duo a(duo $$0, dnx $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
    }
 
    @Override
-   public void b(dua $$0, arg $$1, je $$2, azk $$3) {
-      if ($$3.a(3) != 0) {
-         super.b($$0, $$1, $$2, $$3);
-      }
+   protected duo a(duo $$0, dmg $$1) {
+      return $$0.a($$1.a($$0.c(b)));
    }
 
    @Override
-   protected int a(dds $$0) {
-      return 1;
+   protected void a(dup.a<dhj, duo> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected boolean a(duo $$0, ere $$1) {
+      return false;
    }
 }

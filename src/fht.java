@@ -1,11 +1,11 @@
 import java.util.function.IntFunction;
 
-public enum fht implements azf {
-   a(0, "options.graphics.fast"),
-   b(1, "options.graphics.fancy"),
-   c(2, "options.graphics.fabulous");
+public enum fht implements azg {
+   a(0, "options.off"),
+   b(1, "options.attack.crosshair"),
+   c(2, "options.attack.hotbar");
 
-   private static final IntFunction<fht> d = axt.a(fht::b, values(), axt.a.b);
+   private static final IntFunction<fht> d = axu.a(fht::b, values(), axu.a.b);
    private final int e;
    private final String f;
 
@@ -22,15 +22,6 @@ public enum fht implements azf {
    @Override
    public String a() {
       return this.f;
-   }
-
-   @Override
-   public String toString() {
-      return switch (this) {
-         case a -> "fast";
-         case b -> "fancy";
-         case c -> "fabulous";
-      };
    }
 
    public static fht a(int $$0) {

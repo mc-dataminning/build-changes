@@ -1,93 +1,80 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.lang.ref.WeakReference;
+import java.util.Arrays;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public abstract class dai implements czt<daj> {
-   protected final czp a;
-   protected final cvl b;
-   private final czz<?> d;
-   private final czy<?> e;
-   protected final String c;
-   @Nullable
-   private czs f;
+public class dai {
+   private final dai.a[] a;
+   private WeakReference<dal> b = new WeakReference<>(null);
 
-   public dai(czz<?> $$0, czy<?> $$1, String $$2, czp $$3, cvl $$4) {
-      this.d = $$0;
-      this.e = $$1;
-      this.c = $$2;
-      this.a = $$3;
-      this.b = $$4;
+   public dai(int $$0) {
+      this.a = new dai.a[$$0];
    }
 
-   @Override
-   public czz<?> e() {
-      return this.d;
+   public Optional<daj<czx>> a(deg $$0, czw $$1) {
+      if ($$1.b()) {
+         return Optional.empty();
+      } else {
+         this.a($$0);
+
+         for (int $$2 = 0; $$2 < this.a.length; $$2++) {
+            dai.a $$3 = this.a[$$2];
+            if ($$3 != null && $$3.a($$1)) {
+               this.a($$2);
+               return Optional.ofNullable($$3.d());
+            }
+         }
+
+         return this.a($$1, $$0);
+      }
    }
 
-   @Override
-   public czy<?> as_() {
-      return this.e;
+   private void a(deg $$0) {
+      dal $$1 = $$0.r();
+      if ($$1 != this.b.get()) {
+         this.b = new WeakReference<>($$1);
+         Arrays.fill(this.a, null);
+      }
    }
 
-   @Override
-   public String c() {
-      return this.c;
+   private Optional<daj<czx>> a(czw $$0, deg $$1) {
+      Optional<daj<czx>> $$2 = $$1.r().a(dan.a, $$0, $$1);
+      this.a($$0, $$2.orElse(null));
+      return $$2;
    }
 
-   @Override
-   public cvl a(jp.a $$0) {
-      return this.b;
+   private void a(int $$0) {
+      if ($$0 > 0) {
+         dai.a $$1 = this.a[$$0];
+         System.arraycopy(this.a, 0, this.a, 1, $$0);
+         this.a[0] = $$1;
+      }
    }
 
-   @Override
-   public czs a() {
-      if (this.f == null) {
-         this.f = czs.a(this.a);
+   private void a(czw $$0, @Nullable daj<czx> $$1) {
+      jw<cvp> $$2 = jw.a($$0.a(), cvp.k);
+
+      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
+         $$2.set($$3, $$0.a($$3).c(1));
       }
 
-      return this.f;
+      System.arraycopy(this.a, 0, this.a, 1, this.a.length - 1);
+      this.a[0] = new dai.a($$2, $$0.f(), $$0.g(), $$1);
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return true;
-   }
+   static record a(jw<cvp> a, int b, int c, @Nullable daj<czx> d) {
+      public boolean a(czw $$0) {
+         if (this.b == $$0.f() && this.c == $$0.g()) {
+            for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+               if (!cvp.c(this.a.get($$1), $$0.a($$1))) {
+                  return false;
+               }
+            }
 
-   public cvl a(daj $$0, jp.a $$1) {
-      return this.b.u();
-   }
-
-   public interface a<T extends dai> {
-      T create(String var1, czp var2, cvl var3);
-   }
-
-   public static class b<T extends dai> implements czy<T> {
-      final dai.a<T> w;
-      private final MapCodec<T> x;
-      private final zb<wo, T> y;
-
-      protected b(dai.a<T> $$0) {
-         this.w = $$0;
-         this.x = RecordCodecBuilder.mapCodec(
-            $$1 -> $$1.group(
-                     Codec.STRING.optionalFieldOf("group", "").forGetter($$0xx -> $$0xx.c),
-                     czp.d.fieldOf("ingredient").forGetter($$0xx -> $$0xx.a),
-                     cvl.d.fieldOf("result").forGetter($$0xx -> $$0xx.b)
-                  )
-                  .apply($$1, $$0::create)
-         );
-         this.y = zb.a(yz.l, $$0x -> $$0x.c, czp.a, $$0x -> $$0x.a, cvl.i, $$0x -> $$0x.b, $$0::create);
-      }
-
-      @Override
-      public MapCodec<T> a() {
-         return this.x;
-      }
-
-      @Override
-      public zb<wo, T> b() {
-         return this.y;
+            return true;
+         } else {
+            return false;
+         }
       }
    }
 }

@@ -7,13 +7,13 @@ public class aeq implements zk<abz> {
    private static final int b = 12;
    private final kg c;
    private final short[] d;
-   private final dua[] e;
+   private final duo[] e;
 
-   public aeq(kg $$0, ShortSet $$1, dwh $$2) {
+   public aeq(kg $$0, ShortSet $$1, dwv $$2) {
       this.c = $$0;
       int $$3 = $$1.size();
       this.d = new short[$$3];
-      this.e = new dua[$$3];
+      this.e = new duo[$$3];
       int $$4 = 0;
 
       for (ShortIterator var6 = $$1.iterator(); var6.hasNext(); $$4++) {
@@ -27,12 +27,12 @@ public class aeq implements zk<abz> {
       this.c = kg.a($$0.readLong());
       int $$1 = $$0.l();
       this.d = new short[$$1];
-      this.e = new dua[$$1];
+      this.e = new duo[$$1];
 
       for (int $$2 = 0; $$2 < $$1; $$2++) {
          long $$3 = $$0.m();
          this.d[$$2] = (short)((int)($$3 & 4095L));
-         this.e[$$2] = dgv.q.a((int)($$3 >>> 12));
+         this.e[$$2] = dhj.q.a((int)($$3 >>> 12));
       }
    }
 
@@ -41,7 +41,7 @@ public class aeq implements zk<abz> {
       $$0.c(this.d.length);
 
       for (int $$1 = 0; $$1 < this.d.length; $$1++) {
-         $$0.a((long)dgv.j(this.e[$$1]) << 12 | (long)this.d[$$1]);
+         $$0.a((long)dhj.j(this.e[$$1]) << 12 | (long)this.d[$$1]);
       }
    }
 
@@ -54,7 +54,7 @@ public class aeq implements zk<abz> {
       $$0.a(this);
    }
 
-   public void a(BiConsumer<je, dua> $$0) {
+   public void a(BiConsumer<je, duo> $$0) {
       je.a $$1 = new je.a();
 
       for (int $$2 = 0; $$2 < this.d.length; $$2++) {

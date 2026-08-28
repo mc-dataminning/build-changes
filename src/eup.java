@@ -2,29 +2,34 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class eup extends eug {
+public class eup extends euu {
    public static final MapCodec<eup> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(ko.b.fieldOf("components").forGetter($$0x -> $$0x.b)).apply($$0, eup::new)
+      $$0 -> a($$0)
+            .and($$0.group(cs.a.fieldOf("item_filter").forGetter($$0x -> $$0x.b), eux.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
+            .apply($$0, eup::new)
    );
-   private final ko b;
+   private final cs b;
+   private final euv c;
 
-   private eup(List<ewe> $$0, ko $$1) {
+   private eup(List<ews> $$0, cs $$1, euv $$2) {
       super($$0);
       this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public eui<eup> b() {
-      return euj.k;
+   public euw<eup> b() {
+      return eux.v;
    }
 
    @Override
-   public cvl a(cvl $$0, est $$1) {
-      $$0.a(this.b);
-      return $$0;
+   public cvp a(cvp $$0, eth $$1) {
+      return this.b.a($$0) ? this.c.apply($$0, $$1) : $$0;
    }
 
-   public static <T> eug.a<?> a(kq<T> $$0, T $$1) {
-      return a($$2 -> new eup($$2, ko.a().a($$0, $$1).a()));
+   @Override
+   public void a(etn $$0) {
+      super.a($$0);
+      this.c.a($$0.a(".modifier"));
    }
 }

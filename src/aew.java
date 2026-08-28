@@ -2,7 +2,7 @@ public class aew implements zk<abz> {
    public static final zb<wa, aew> a = zk.a(aew::a, aew::new);
    private final double b;
 
-   public aew(dvr $$0) {
+   public aew(dwf $$0) {
       this.b = $$0.k();
    }
 

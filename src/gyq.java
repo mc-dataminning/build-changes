@@ -1,67 +1,38 @@
-import java.util.Comparator;
-import java.util.Objects;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class gyq {
-   public static final Comparator<gyq> a = Comparator.<gyq, alb>comparing(gyq::a).thenComparing(gyq::b);
-   private final alb b;
-   private final alb c;
-   @Nullable
-   private ghe d;
+   public static final gyr a = new gyr();
+   public static final String b = "villager";
+   private final gyq.a c;
 
-   public gyq(alb $$0, alb $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public gyq(gyq.a $$0) {
+      this.c = $$0;
    }
 
-   public alb a() {
-      return this.b;
-   }
-
-   public alb b() {
+   public gyq.a a() {
       return this.c;
    }
 
-   public gwk c() {
-      return fib.Q().a(this.a()).apply(this.b());
-   }
+   public static enum a {
+      a("none"),
+      b("partial"),
+      c("full");
 
-   public ghe a(Function<alb, ghe> $$0) {
-      if (this.d == null) {
-         this.d = $$0.apply(this.b);
+      private static final Map<String, gyq.a> d = Arrays.stream(values()).collect(Collectors.toMap(gyq.a::a, $$0 -> (gyq.a)$$0));
+      private final String e;
+
+      private a(final String $$0) {
+         this.e = $$0;
       }
 
-      return this.d;
-   }
-
-   public fcy a(ggv $$0, Function<alb, ghe> $$1) {
-      return this.c().a($$0.getBuffer(this.a($$1)));
-   }
-
-   public fcy a(ggv $$0, Function<alb, ghe> $$1, boolean $$2, boolean $$3) {
-      return this.c().a(gnq.b($$0, this.a($$1), $$2, $$3));
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         gyq $$1 = (gyq)$$0;
-         return this.b.equals($$1.b) && this.c.equals($$1.c);
-      } else {
-         return false;
+      public String a() {
+         return this.e;
       }
-   }
 
-   @Override
-   public int hashCode() {
-      return Objects.hash(this.b, this.c);
-   }
-
-   @Override
-   public String toString() {
-      return "Material{atlasLocation=" + this.b + ", texture=" + this.c + "}";
+      public static gyq.a a(String $$0) {
+         return d.getOrDefault($$0, a);
+      }
    }
 }

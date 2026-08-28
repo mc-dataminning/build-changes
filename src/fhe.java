@@ -1,59 +1,53 @@
 import com.mojang.logging.LogUtils;
 import org.slf4j.Logger;
 
-public abstract class fhe extends fgz {
+public class fhe extends fhj {
    private static final Logger b = LogUtils.getLogger();
-   private final long c;
-   private final xd d;
-   private final Runnable e;
+   private static final xd c = xd.c("mco.configure.world.closing");
+   private final fel d;
+   private final fft e;
 
-   public fhe(long $$0, xd $$1, Runnable $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
+   public fhe(fel $$0, fft $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
-
-   protected abstract void a(fdk var1, long var2) throws fev;
 
    @Override
    public void run() {
-      fdk $$0 = fdk.a();
-      int $$1 = 0;
+      fdu $$0 = fdu.a();
 
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            this.a($$0, this.c);
-            if (this.d()) {
-               return;
-            }
-
-            this.e.run();
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         if (this.d()) {
             return;
-         } catch (few var4) {
+         }
+
+         try {
+            boolean $$2 = $$0.g(this.d.a);
+            if ($$2) {
+               this.e.f();
+               this.d.e = fel.c.a;
+               a(this.e);
+               break;
+            }
+         } catch (ffg var4) {
             if (this.d()) {
                return;
             }
 
             a((long)var4.c);
-            $$1++;
          } catch (Exception var5) {
             if (this.d()) {
                return;
             }
 
-            b.error("Couldn't reset world");
+            b.error("Failed to close server", var5);
             this.a(var5);
-            return;
          }
       }
    }
 
    @Override
    public xd a() {
-      return this.d;
+      return c;
    }
 }

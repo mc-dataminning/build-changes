@@ -1,26 +1,32 @@
-public abstract class eyc {
-   protected final eye a;
+import net.minecraft.server.MinecraftServer;
 
-   protected eyc(eye $$0) {
+public class eyc implements eyd<MinecraftServer> {
+   final alc a;
+
+   public eyc(alc $$0) {
       this.a = $$0;
    }
 
-   public double a(btj $$0) {
-      double $$1 = this.a.d - $$0.dx();
-      double $$2 = this.a.e - $$0.dz();
-      double $$3 = this.a.f - $$0.dD();
-      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   public void a(MinecraftServer $$0, eyf<MinecraftServer> $$1, long $$2) {
+      alr $$3 = $$0.aE();
+
+      for (ih<et> $$5 : $$3.b(this.a)) {
+         $$3.a($$5, $$3.c());
+      }
    }
 
-   public abstract eyc.a c();
+   public static class a extends eyd.a<MinecraftServer, eyc> {
+      public a() {
+         super(alc.b("function_tag"), eyc.class);
+      }
 
-   public eye e() {
-      return this.a;
-   }
+      public void a(uf $$0, eyc $$1) {
+         $$0.a("Name", $$1.a.toString());
+      }
 
-   public static enum a {
-      a,
-      b,
-      c;
+      public eyc a(uf $$0) {
+         alc $$1 = alc.a($$0.l("Name"));
+         return new eyc($$1);
+      }
    }
 }

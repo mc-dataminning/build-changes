@@ -3,10 +3,10 @@ import javax.annotation.Nullable;
 
 public class afe implements zk<abz> {
    public static final zb<wa, afe> a = zk.a(afe::a, afe::new);
-   private final eyz b;
+   private final ezo b;
    private final String c;
 
-   public afe(eyz $$0, @Nullable eza $$1) {
+   public afe(ezo $$0, @Nullable ezp $$1) {
       this.b = $$0;
       if ($$1 == null) {
          this.c = "";
@@ -16,12 +16,12 @@ public class afe implements zk<abz> {
    }
 
    private afe(wa $$0) {
-      this.b = $$0.a(eyz.u);
+      this.b = $$0.a(ezo.u);
       this.c = $$0.p();
    }
 
    private void a(wa $$0) {
-      $$0.a(eyz::a, this.b);
+      $$0.a(ezo::a, this.b);
       $$0.a(this.c);
    }
 
@@ -34,7 +34,7 @@ public class afe implements zk<abz> {
       $$0.a(this);
    }
 
-   public eyz b() {
+   public ezo b() {
       return this.b;
    }
 

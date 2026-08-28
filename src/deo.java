@@ -1,25 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public record deo(ddf d, cqh e) {
-   public static final String a = "enabled_features";
-   public static final Codec<deo> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ddf.b.lenientOptionalFieldOf("DataPacks", ddf.a).forGetter(deo::a), cqj.g.lenientOptionalFieldOf("enabled_features", cqj.i).forGetter(deo::b)
-            )
-            .apply($$0, deo::new)
-   );
-   public static final deo c = new deo(ddf.a, cqj.i);
+public interface deo {
+   boolean a(je var1, duo var2, int var3, int var4);
 
-   public deo a(cqh $$0) {
-      return new deo(this.d, this.e.c($$0));
+   default boolean a(je $$0, duo $$1, int $$2) {
+      return this.a($$0, $$1, $$2, 512);
    }
 
-   public ddf a() {
-      return this.d;
+   boolean a(je var1, boolean var2);
+
+   default boolean b(je $$0, boolean $$1) {
+      return this.a($$0, $$1, null);
    }
 
-   public cqh b() {
-      return this.e;
+   default boolean a(je $$0, boolean $$1, @Nullable bto $$2) {
+      return this.a($$0, $$1, $$2, 512);
+   }
+
+   boolean a(je var1, boolean var2, @Nullable bto var3, int var4);
+
+   default boolean b(bto $$0) {
+      return false;
    }
 }

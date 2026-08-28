@@ -1,37 +1,19 @@
-public abstract class bxi<E extends buf> implements bvy<E>, bzn<E> {
-   private bvx.a a;
+import com.google.common.collect.ImmutableMap;
 
-   public bxi() {
-      this.a = bvx.a.a;
+public class bxi extends bwc<bum> {
+   public bxi(int $$0, int $$1) {
+      super(ImmutableMap.of(cdn.n, cdo.a), $$0, $$1);
    }
 
-   @Override
-   public final bvx.a a() {
-      return this.a;
+   protected boolean a(arh $$0, bum $$1, long $$2) {
+      return $$1.dX().c(cdn.n).filter($$1x -> $$1x.a($$1)).isPresent();
    }
 
-   @Override
-   public final boolean e(arg $$0, E $$1, long $$2) {
-      if (this.trigger($$0, $$1, $$2)) {
-         this.a = bvx.a.b;
-         return true;
-      } else {
-         return false;
-      }
+   protected void b(arh $$0, bum $$1, long $$2) {
+      $$1.dX().b(cdn.n);
    }
 
-   @Override
-   public final void f(arg $$0, E $$1, long $$2) {
-      this.g($$0, $$1, $$2);
-   }
-
-   @Override
-   public final void g(arg $$0, E $$1, long $$2) {
-      this.a = bvx.a.a;
-   }
-
-   @Override
-   public String b() {
-      return this.getClass().getSimpleName();
+   protected void c(arh $$0, bum $$1, long $$2) {
+      $$1.dX().c(cdn.n).ifPresent($$1x -> $$1.K().a($$1x.a()));
    }
 }

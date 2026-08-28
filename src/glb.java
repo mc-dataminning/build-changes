@@ -1,81 +1,66 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 import org.joml.Matrix4f;
 
-public class glb implements gkq.a {
-   private final fib a;
+public class glb {
+   private static final int a = axo.a(255, 255, 100, 255);
+   private static final int b = axo.a(255, 100, 255, 255);
+   private static final int c = axo.a(255, 0, 255, 0);
+   private static final int d = axo.a(255, 255, 165, 0);
+   private static final int e = axo.a(255, 255, 0, 0);
+   private static final int f = 20;
+   private static final float g = (float) (Math.PI / 10);
+   private final fil h;
+   private final Map<Integer, aam.a> i = new HashMap<>();
 
-   public glb(fib $$0) {
-      this.a = $$0;
+   public glb(fil $$0) {
+      this.h = $$0;
    }
 
-   @Override
-   public void a(fcu $$0, ggv $$1, double $$2, double $$3, double $$4) {
-      Matrix4f $$5 = $$0.c().a();
-      dcx $$6 = this.a.t.dS();
-      je $$7 = je.a($$2, $$3, $$4);
+   public void a(fde $$0, ghg $$1, double $$2, double $$3, double $$4) {
+      ggc $$5 = this.h.t;
+      $$5.dS().a(btv.m, $$5.cO().g(100.0), $$0x -> true).forEach($$6 -> {
+         Optional<aam.a> $$7 = Optional.ofNullable(this.i.get($$6.ap()));
+         $$7.map(aam.a::d).map($$1xx -> $$5.dS().a($$1xx)).map($$0xx -> $$0xx.o(this.h.av().a(true))).ifPresent($$6x -> {
+            a($$0, $$1, $$2, $$3, $$4, $$6.dq(), $$6x, b);
+            eys $$7x = $$6x.b(0.0, 0.01F, 0.0);
+            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(ghq.a(2.0)), $$7x, 4.0F, c);
+            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(ghq.a(2.0)), $$7x, 8.0F, d);
+            a($$0.c().a(), $$2, $$3, $$4, $$1.getBuffer(ghq.a(2.0)), $$7x, 24.0F, e);
+         });
+         $$7.map(aam.a::e).ifPresent($$6x -> {
+            a($$0, $$1, $$2, $$3, $$4, $$6.dq(), $$6x.b(), a);
+            glg.a($$0, $$1, eyn.a(eys.a($$6x)).d(-$$2, -$$3, -$$4), 1.0F, 0.0F, 0.0F, 1.0F);
+         });
+      });
+   }
 
-      for (je $$8 : je.c($$7.b(-6, -6, -6), $$7.b(6, 6, 6))) {
-         dua $$9 = $$6.a_($$8);
-         if (!$$9.a(dgx.a)) {
-            eyx $$10 = $$9.f($$6, $$8);
+   private static void a(fde $$0, ghg $$1, double $$2, double $$3, double $$4, eys $$5, eys $$6, int $$7) {
+      fdi $$8 = $$1.getBuffer(ghq.a(2.0));
+      $$8.a($$0.c(), (float)($$5.d - $$2), (float)($$5.e - $$3), (float)($$5.f - $$4)).a($$7);
+      $$8.a($$0.c(), (float)($$6.d - $$2), (float)($$6.e - $$3), (float)($$6.f - $$4)).a($$7);
+   }
 
-            for (exz $$11 : $$10.e()) {
-               exz $$12 = $$11.a($$8).g(0.002);
-               float $$13 = (float)($$12.a - $$2);
-               float $$14 = (float)($$12.b - $$3);
-               float $$15 = (float)($$12.c - $$4);
-               float $$16 = (float)($$12.d - $$2);
-               float $$17 = (float)($$12.e - $$3);
-               float $$18 = (float)($$12.f - $$4);
-               int $$19 = -2130771968;
-               if ($$9.c($$6, $$8, jj.e)) {
-                  fcy $$20 = $$1.getBuffer(ghe.B());
-                  $$20.a($$5, $$13, $$14, $$15).a(-2130771968);
-                  $$20.a($$5, $$13, $$14, $$18).a(-2130771968);
-                  $$20.a($$5, $$13, $$17, $$15).a(-2130771968);
-                  $$20.a($$5, $$13, $$17, $$18).a(-2130771968);
-               }
-
-               if ($$9.c($$6, $$8, jj.d)) {
-                  fcy $$21 = $$1.getBuffer(ghe.B());
-                  $$21.a($$5, $$13, $$17, $$18).a(-2130771968);
-                  $$21.a($$5, $$13, $$14, $$18).a(-2130771968);
-                  $$21.a($$5, $$16, $$17, $$18).a(-2130771968);
-                  $$21.a($$5, $$16, $$14, $$18).a(-2130771968);
-               }
-
-               if ($$9.c($$6, $$8, jj.f)) {
-                  fcy $$22 = $$1.getBuffer(ghe.B());
-                  $$22.a($$5, $$16, $$14, $$18).a(-2130771968);
-                  $$22.a($$5, $$16, $$14, $$15).a(-2130771968);
-                  $$22.a($$5, $$16, $$17, $$18).a(-2130771968);
-                  $$22.a($$5, $$16, $$17, $$15).a(-2130771968);
-               }
-
-               if ($$9.c($$6, $$8, jj.c)) {
-                  fcy $$23 = $$1.getBuffer(ghe.B());
-                  $$23.a($$5, $$16, $$17, $$15).a(-2130771968);
-                  $$23.a($$5, $$16, $$14, $$15).a(-2130771968);
-                  $$23.a($$5, $$13, $$17, $$15).a(-2130771968);
-                  $$23.a($$5, $$13, $$14, $$15).a(-2130771968);
-               }
-
-               if ($$9.c($$6, $$8, jj.a)) {
-                  fcy $$24 = $$1.getBuffer(ghe.B());
-                  $$24.a($$5, $$13, $$14, $$15).a(-2130771968);
-                  $$24.a($$5, $$16, $$14, $$15).a(-2130771968);
-                  $$24.a($$5, $$13, $$14, $$18).a(-2130771968);
-                  $$24.a($$5, $$16, $$14, $$18).a(-2130771968);
-               }
-
-               if ($$9.c($$6, $$8, jj.b)) {
-                  fcy $$25 = $$1.getBuffer(ghe.B());
-                  $$25.a($$5, $$13, $$17, $$15).a(-2130771968);
-                  $$25.a($$5, $$13, $$17, $$18).a(-2130771968);
-                  $$25.a($$5, $$16, $$17, $$15).a(-2130771968);
-                  $$25.a($$5, $$16, $$17, $$18).a(-2130771968);
-               }
-            }
-         }
+   private static void a(Matrix4f $$0, double $$1, double $$2, double $$3, fdi $$4, eys $$5, float $$6, int $$7) {
+      for (int $$8 = 0; $$8 < 20; $$8++) {
+         a($$8, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
       }
+
+      a(0, $$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
+
+   private static void a(int $$0, Matrix4f $$1, double $$2, double $$3, double $$4, fdi $$5, eys $$6, float $$7, int $$8) {
+      float $$9 = (float)$$0 * (float) (Math.PI / 10);
+      eys $$10 = $$6.b((double)$$7 * Math.cos((double)$$9), 0.0, (double)$$7 * Math.sin((double)$$9));
+      $$5.a($$1, (float)($$10.d - $$2), (float)($$10.e - $$3), (float)($$10.f - $$4)).a($$8);
+   }
+
+   public void a() {
+      this.i.clear();
+   }
+
+   public void a(aam.a $$0) {
+      this.i.put($$0.c(), $$0);
    }
 }

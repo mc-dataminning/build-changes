@@ -1,56 +1,23 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import com.mojang.logging.LogUtils;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import org.slf4j.Logger;
+import com.google.gson.annotations.SerializedName;
+import java.util.Set;
 
-public class fer extends feo {
-   private static final Logger e = LogUtils.getLogger();
-   public List<feq> a;
-   public int b;
-   public int c;
-   public int d;
+public class fer extends fey implements fes {
+   @SerializedName("seed")
+   private final String a;
+   @SerializedName("worldTemplateId")
+   private final long b;
+   @SerializedName("levelType")
+   private final int c;
+   @SerializedName("generateStructures")
+   private final boolean d;
+   @SerializedName("experiments")
+   private final Set<String> e;
 
-   public fer() {
-   }
-
-   public fer(int $$0) {
-      this.a = Collections.emptyList();
-      this.b = 0;
-      this.c = $$0;
-      this.d = -1;
-   }
-
-   public boolean a() {
-      return this.b * this.c >= this.d && this.b > 0 && this.d > 0 && this.c > 0;
-   }
-
-   public static fer a(String $$0) {
-      fer $$1 = new fer();
-      $$1.a = Lists.newArrayList();
-
-      try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         if ($$3.get("templates").isJsonArray()) {
-            Iterator<JsonElement> $$4 = $$3.get("templates").getAsJsonArray().iterator();
-
-            while ($$4.hasNext()) {
-               $$1.a.add(feq.a($$4.next().getAsJsonObject()));
-            }
-         }
-
-         $$1.b = fgl.a("page", $$3, 0);
-         $$1.c = fgl.a("size", $$3, 0);
-         $$1.d = fgl.a("total", $$3, 0);
-      } catch (Exception var5) {
-         e.error("Could not parse WorldTemplatePaginatedList: {}", var5.getMessage());
-      }
-
-      return $$1;
+   public fer(String $$0, long $$1, int $$2, boolean $$3, Set<String> $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 }

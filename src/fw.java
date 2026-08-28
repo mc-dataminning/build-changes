@@ -21,25 +21,25 @@ public class fw<T> implements ArgumentType<fw.c<T>> {
       ($$0, $$1, $$2) -> xd.b("argument.resource_tag.invalid_type", $$0, $$1, $$2)
    );
    private final jp<T> d;
-   final ala<? extends ka<T>> e;
+   final alb<? extends ka<T>> e;
 
-   public fw(ep $$0, ala<? extends ka<T>> $$1) {
+   public fw(ep $$0, alb<? extends ka<T>> $$1) {
       this.e = $$1;
       this.d = $$0.b($$1);
    }
 
-   public static <T> fw<T> a(ep $$0, ala<? extends ka<T>> $$1) {
+   public static <T> fw<T> a(ep $$0, alb<? extends ka<T>> $$1) {
       return new fw<>($$0, $$1);
    }
 
-   public static <T> fw.c<T> a(CommandContext<et> $$0, String $$1, ala<ka<T>> $$2) throws CommandSyntaxException {
+   public static <T> fw.c<T> a(CommandContext<et> $$0, String $$1, alb<ka<T>> $$2) throws CommandSyntaxException {
       fw.c<?> $$3 = (fw.c<?>)$$0.getArgument($$1, fw.c.class);
       Optional<fw.c<T>> $$4 = $$3.a($$2);
       return $$4.orElseThrow(() -> (CommandSyntaxException)$$3.a().map($$1xx -> {
-            ala<?> $$2x = $$1xx.h();
+            alb<?> $$2x = $$1xx.h();
             return fs.b.create($$2x.a(), $$2x.b(), $$2.a());
          }, $$1xx -> {
-            axi<?> $$2x = $$1xx.h();
+            axj<?> $$2x = $$1xx.h();
             return c.create($$2x.b(), $$2x.a(), $$2.a());
          }));
    }
@@ -50,8 +50,8 @@ public class fw<T> implements ArgumentType<fw.c<T>> {
 
          try {
             $$0.skip();
-            alb $$2 = alb.a($$0);
-            axi<T> $$3 = axi.a(this.e, $$2);
+            alc $$2 = alc.a($$0);
+            axj<T> $$3 = axj.a(this.e, $$2);
             jr.c<T> $$4 = this.d.a($$3).orElseThrow(() -> b.createWithContext($$0, $$2, this.e.a()));
             return new fw.d<>($$4);
          } catch (CommandSyntaxException var6) {
@@ -59,16 +59,16 @@ public class fw<T> implements ArgumentType<fw.c<T>> {
             throw var6;
          }
       } else {
-         alb $$6 = alb.a($$0);
-         ala<T> $$7 = ala.a(this.e, $$6);
+         alc $$6 = alc.a($$0);
+         alb<T> $$7 = alb.a(this.e, $$6);
          jn.c<T> $$8 = this.d.a($$7).orElseThrow(() -> fs.a.createWithContext($$0, $$6, this.e.a()));
          return new fw.b<>($$8);
       }
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      ey.a(this.d.e().map(axi::b), $$1, "#");
-      return ey.a(this.d.c().map(ala::a), $$1);
+      ey.a(this.d.e().map(axj::b), $$1, "#");
+      return ey.a(this.d.c().map(alb::a), $$1);
    }
 
    public Collection<String> getExamples() {
@@ -93,9 +93,9 @@ public class fw<T> implements ArgumentType<fw.c<T>> {
       }
 
       public final class a implements ip.a<fw<T>> {
-         final ala<? extends ka<T>> b;
+         final alb<? extends ka<T>> b;
 
-         a(final ala<? extends ka<T>> $$1) {
+         a(final alb<? extends ka<T>> $$1) {
             this.b = $$1;
          }
 
@@ -117,7 +117,7 @@ public class fw<T> implements ArgumentType<fw.c<T>> {
       }
 
       @Override
-      public <E> Optional<fw.c<E>> a(ala<? extends ka<E>> $$0) {
+      public <E> Optional<fw.c<E>> a(alb<? extends ka<E>> $$0) {
          return this.a.h().c($$0) ? Optional.of((fw.c<E>)this) : Optional.empty();
       }
 
@@ -138,7 +138,7 @@ public class fw<T> implements ArgumentType<fw.c<T>> {
    public interface c<T> extends Predicate<jn<T>> {
       Either<jn.c<T>, jr.c<T>> a();
 
-      <E> Optional<fw.c<E>> a(ala<? extends ka<E>> var1);
+      <E> Optional<fw.c<E>> a(alb<? extends ka<E>> var1);
 
       String b();
    }
@@ -150,7 +150,7 @@ public class fw<T> implements ArgumentType<fw.c<T>> {
       }
 
       @Override
-      public <E> Optional<fw.c<E>> a(ala<? extends ka<E>> $$0) {
+      public <E> Optional<fw.c<E>> a(alb<? extends ka<E>> $$0) {
          return this.a.h().c($$0) ? Optional.of((fw.c<E>)this) : Optional.empty();
       }
 

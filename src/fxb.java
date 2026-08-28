@@ -1,50 +1,41 @@
-public class fxb extends fxa<gsw> {
-   private static final String a = "base";
-   private static final String b = "upper_jaw";
-   private static final String c = "lower_jaw";
-   private final gab d;
-   private final gab e;
-   private final gab f;
-   private final gab g;
+import java.util.Set;
 
-   public fxb(gab $$0) {
-      this.d = $$0;
-      this.e = $$0.b("base");
-      this.f = this.e.b("upper_jaw");
-      this.g = this.e.b("lower_jaw");
+public class fxb extends fyu<guj> {
+   public static final gau a = new fwm(false, 10.0F, 4.0F, Set.of("head"));
+
+   public fxb(gal $$0) {
+      super($$0);
    }
 
-   public static gah b() {
-      gaj $$0 = new gaj();
-      gal $$1 = $$0.a();
-      gal $$2 = $$1.a("base", gag.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 10.0F, 12.0F, 10.0F), gad.a(-5.0F, 24.0F, -5.0F));
-      gag $$3 = gag.c().a(40, 0).a(0.0F, 0.0F, 0.0F, 4.0F, 14.0F, 8.0F);
-      $$2.a("upper_jaw", $$3, gad.a(6.5F, 0.0F, 1.0F, 0.0F, 0.0F, 2.042035F));
-      $$2.a("lower_jaw", $$3, gad.a(3.5F, 0.0F, 9.0F, 0.0F, (float) Math.PI, 4.2411504F));
-      return gah.a($$0, 64, 32);
+   public static gar b() {
+      gat $$0 = new gat();
+      gav $$1 = $$0.a();
+      int $$2 = 12;
+      $$1.a(
+         "head",
+         gaq.c()
+            .a(0, 0)
+            .a(-4.0F, -4.0F, -6.0F, 8.0F, 8.0F, 6.0F)
+            .a(22, 0)
+            .a("right_horn", -5.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F)
+            .a(22, 0)
+            .a("left_horn", 4.0F, -5.0F, -4.0F, 1.0F, 3.0F, 1.0F),
+         gan.a(0.0F, 4.0F, -8.0F)
+      );
+      $$1.a(
+         "body",
+         gaq.c().a(18, 4).a(-6.0F, -10.0F, -7.0F, 12.0F, 18.0F, 10.0F).a(52, 0).a(-2.0F, 2.0F, -8.0F, 4.0F, 6.0F, 1.0F),
+         gan.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F)
+      );
+      gaq $$3 = gaq.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F);
+      $$1.a("right_hind_leg", $$3, gan.a(-4.0F, 12.0F, 7.0F));
+      $$1.a("left_hind_leg", $$3, gan.a(4.0F, 12.0F, 7.0F));
+      $$1.a("right_front_leg", $$3, gan.a(-4.0F, 12.0F, -6.0F));
+      $$1.a("left_front_leg", $$3, gan.a(4.0F, 12.0F, -6.0F));
+      return gar.a($$0, 64, 32);
    }
 
-   public void a(gsw $$0) {
-      this.d.e().forEach(gab::c);
-      float $$1 = $$0.b;
-      float $$2 = Math.min($$1 * 2.0F, 1.0F);
-      $$2 = 1.0F - $$2 * $$2 * $$2;
-      this.f.g = (float) Math.PI - $$2 * 0.35F * (float) Math.PI;
-      this.g.g = (float) Math.PI + $$2 * 0.35F * (float) Math.PI;
-      this.e.c = this.e.c - ($$1 + azc.a($$1 * 2.7F)) * 7.2F;
-      float $$3 = 1.0F;
-      if ($$1 > 0.9F) {
-         $$3 *= (1.0F - $$1) / 0.1F;
-      }
-
-      this.d.c = 24.0F - 20.0F * $$3;
-      this.d.h = $$3;
-      this.d.i = $$3;
-      this.d.j = $$3;
-   }
-
-   @Override
-   public gab a() {
-      return this.d;
+   public gal c() {
+      return this.c;
    }
 }

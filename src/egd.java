@@ -1,23 +1,25 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record egd(int b, int c, int d) implements efg {
+public class egd implements efu {
    public static final Codec<egd> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               ayl.l.fieldOf("spread_width").forGetter(egd::a), ayl.l.fieldOf("spread_height").forGetter(egd::b), ayl.l.fieldOf("max_height").forGetter(egd::c)
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_taller_dripstone").orElse(0.2F).forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_directional_spread").orElse(0.7F).forGetter($$0x -> $$0x.c),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius2").orElse(0.5F).forGetter($$0x -> $$0x.d),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("chance_of_spread_radius3").orElse(0.5F).forGetter($$0x -> $$0x.e)
             )
             .apply($$0, egd::new)
    );
+   public final float b;
+   public final float c;
+   public final float d;
+   public final float e;
 
-   public int a() {
-      return this.b;
-   }
-
-   public int b() {
-      return this.c;
-   }
-
-   public int c() {
-      return this.d;
+   public egd(float $$0, float $$1, float $$2, float $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 }

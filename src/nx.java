@@ -12,19 +12,19 @@ import java.util.TreeMap;
 import java.util.stream.Stream;
 
 public class nx implements nu {
-   private final dgv a;
+   private final dhj a;
    private final List<oa> b;
-   private final Set<dvd<?>> c = Sets.newHashSet();
+   private final Set<dvr<?>> c = Sets.newHashSet();
    private final List<ny> d = Lists.newArrayList();
 
-   private nx(dgv $$0, List<oa> $$1) {
+   private nx(dhj $$0, List<oa> $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
    public nx a(ny $$0) {
       $$0.b().forEach($$0x -> {
-         if (this.a.l().a($$0x.f()) != $$0x) {
+         if (this.a.n().a($$0x.f()) != $$0x) {
             throw new IllegalStateException("Property " + $$0x + " is not defined for block " + this.a);
          } else if (!this.c.add($$0x)) {
             throw new IllegalStateException("Values of property " + $$0x + " already defined for block " + this.a);
@@ -60,19 +60,19 @@ public class nx implements nu {
    }
 
    @Override
-   public dgv a() {
+   public dhj a() {
       return this.a;
    }
 
-   public static nx a(dgv $$0) {
+   public static nx a(dhj $$0) {
       return new nx($$0, ImmutableList.of(oa.a()));
    }
 
-   public static nx a(dgv $$0, oa $$1) {
+   public static nx a(dhj $$0, oa $$1) {
       return new nx($$0, ImmutableList.of($$1));
    }
 
-   public static nx a(dgv $$0, oa... $$1) {
+   public static nx a(dhj $$0, oa... $$1) {
       return new nx($$0, ImmutableList.copyOf($$1));
    }
 }

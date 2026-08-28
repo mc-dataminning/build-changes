@@ -1,8 +1,8 @@
 import java.util.List;
 import javax.annotation.Nullable;
 
-public record adu(int b, List<cqa.a> c) implements zk<abz> {
-   public static final zb<wa, adu> a = zb.a(yz.g, adu::b, cqa.a.b.a(yz.a()), adu::e, adu::new);
+public record adu(int b, List<cqg.a> c) implements zk<abz> {
+   public static final zb<wa, adu> a = zb.a(yz.g, adu::b, cqg.a.b.a(yz.a()), adu::e, adu::new);
 
    @Override
    public zm<adu> a() {
@@ -14,11 +14,11 @@ public record adu(int b, List<cqa.a> c) implements zk<abz> {
    }
 
    @Nullable
-   public btj a(dds $$0) {
+   public bto a(deg $$0) {
       return $$0.a(this.b);
    }
 
-   public List<cqa.a> e() {
+   public List<cqg.a> e() {
       return this.c;
    }
 }

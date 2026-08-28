@@ -1,20 +1,41 @@
-public abstract class gll<T extends ckd, S extends gup> extends gnj<T, S, fyv<S>> {
-   public gll(gms.a $$0, fzz $$1, fzz $$2, fzz $$3) {
-      this($$0, $$2, $$3, new fyv<>($$0.a($$1)));
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+
+public class gll implements glg.a {
+   private final fil a;
+   private static final int b = 10;
+
+   public gll(fil $$0) {
+      this.a = $$0;
    }
 
-   public gll(gms.a $$0, fzz $$1, fzz $$2, fyv<S> $$3) {
-      super($$0, $$3, 0.5F);
-      this.a(new gqv<>(this, new fyv($$0.a($$1)), new fyv($$0.a($$2)), $$0.g()));
-   }
+   @Override
+   public void a(fde $$0, ghg $$1, double $$2, double $$3, double $$4) {
+      deg $$5 = this.a.s;
+      je $$6 = je.a($$2, $$3, $$4);
+      LongSet $$7 = new LongOpenHashSet();
 
-   public void a(T $$0, S $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.b = $$0.gf();
-      $$1.c = $$0.gq();
-   }
+      for (je $$8 : je.c($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
+         int $$9 = $$5.a(dep.a, $$8);
+         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
+         int $$11 = azd.g($$10, 0.9F, 0.9F);
+         long $$12 = kg.e($$8.a());
+         if ($$7.add($$12)) {
+            glg.a(
+               $$0,
+               $$1,
+               $$5.P().p().a(dep.a, kg.a($$12)),
+               (double)kg.a(kg.b($$12), 8),
+               (double)kg.a(kg.c($$12), 8),
+               (double)kg.a(kg.d($$12), 8),
+               16711680,
+               0.3F
+            );
+         }
 
-   protected boolean a(S $$0) {
-      return $$0.c;
+         if ($$9 != 15) {
+            glg.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
+         }
+      }
    }
 }

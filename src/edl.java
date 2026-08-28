@@ -1,31 +1,111 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.Consumer;
 
-public class edl implements efg {
-   public static final Codec<edl> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dua.a.fieldOf("valid_base_block").forGetter($$0x -> $$0x.b),
-               dua.a.fieldOf("stem_state").forGetter($$0x -> $$0x.c),
-               dua.a.fieldOf("hat_state").forGetter($$0x -> $$0x.d),
-               dua.a.fieldOf("decor_state").forGetter($$0x -> $$0x.e),
-               ebd.b.fieldOf("replaceable_blocks").forGetter($$0x -> $$0x.f),
-               Codec.BOOL.fieldOf("planted").orElse(false).forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, edl::new)
-   );
-   public final dua b;
-   public final dua c;
-   public final dua d;
-   public final dua e;
-   public final ebd f;
-   public final boolean g;
+public class edl {
+   protected static double a(double $$0, double $$1, double $$2, double $$3) {
+      if ($$0 < $$3) {
+         $$0 = $$3;
+      }
 
-   public edl(dua $$0, dua $$1, dua $$2, dua $$3, ebd $$4, boolean $$5) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
+      double $$4 = 0.384;
+      double $$5 = $$0 / $$1 * 0.384;
+      double $$6 = 0.75 * Math.pow($$5, 1.3333333333333333);
+      double $$7 = Math.pow($$5, 0.6666666666666666);
+      double $$8 = 0.3333333333333333 * Math.log($$5);
+      double $$9 = $$2 * ($$6 - $$7 - $$8);
+      $$9 = Math.max($$9, 0.0);
+      return $$9 / 0.384 * $$1;
+   }
+
+   protected static boolean a(dfd $$0, je $$1, int $$2) {
+      if (b($$0, $$1)) {
+         return false;
+      } else {
+         float $$3 = 6.0F;
+         float $$4 = 6.0F / (float)$$2;
+
+         for (float $$5 = 0.0F; $$5 < (float) (Math.PI * 2); $$5 += $$4) {
+            int $$6 = (int)(azd.b($$5) * (float)$$2);
+            int $$7 = (int)(azd.a($$5) * (float)$$2);
+            if (b($$0, $$1.b($$6, 0, $$7))) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   protected static boolean a(deh $$0, je $$1) {
+      return $$0.a($$1, edl::c);
+   }
+
+   protected static boolean b(deh $$0, je $$1) {
+      return $$0.a($$1, edl::e);
+   }
+
+   protected static void a(jj $$0, int $$1, boolean $$2, Consumer<duo> $$3) {
+      if ($$1 >= 3) {
+         $$3.accept(a($$0, dvl.e));
+
+         for (int $$4 = 0; $$4 < $$1 - 3; $$4++) {
+            $$3.accept(a($$0, dvl.d));
+         }
+      }
+
+      if ($$1 >= 2) {
+         $$3.accept(a($$0, dvl.c));
+      }
+
+      if ($$1 >= 1) {
+         $$3.accept(a($$0, $$2 ? dvl.a : dvl.b));
+      }
+   }
+
+   protected static void a(deh $$0, je $$1, jj $$2, int $$3, boolean $$4) {
+      if (b($$0.a_($$1.a($$2.g())))) {
+         je.a $$5 = $$1.k();
+         a($$2, $$3, $$4, $$3x -> {
+            if ($$3x.a(dhl.st)) {
+               $$3x = $$3x.b(dnb.d, Boolean.valueOf($$0.z($$5)));
+            }
+
+            $$0.a($$5, $$3x, 2);
+            $$5.c($$2);
+         });
+      }
+   }
+
+   protected static boolean c(deh $$0, je $$1) {
+      duo $$2 = $$0.a_($$1);
+      if ($$2.a(awt.bt)) {
+         $$0.a($$1, dhl.su.o(), 2);
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   private static duo a(jj $$0, dvl $$1) {
+      return dhl.st.o().b(dnb.b, $$0).b(dnb.c, $$1);
+   }
+
+   public static boolean a(duo $$0) {
+      return b($$0) || $$0.a(dhl.H);
+   }
+
+   public static boolean b(duo $$0) {
+      return $$0.a(dhl.su) || $$0.a(awt.bt);
+   }
+
+   public static boolean c(duo $$0) {
+      return $$0.l() || $$0.a(dhl.G);
+   }
+
+   public static boolean d(duo $$0) {
+      return !$$0.l() && !$$0.a(dhl.G);
+   }
+
+   public static boolean e(duo $$0) {
+      return $$0.l() || $$0.a(dhl.G) || $$0.a(dhl.H);
    }
 }

@@ -1,7 +1,11 @@
-import java.util.function.Consumer;
+import java.util.Set;
 
 public interface eti {
-   int a(float var1);
+   default Set<ewa<?>> a() {
+      return Set.of();
+   }
 
-   void a(Consumer<cvl> var1, est var2);
+   default void a(etn $$0) {
+      $$0.a(this);
+   }
 }

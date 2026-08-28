@@ -1,28 +1,98 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.DynamicOps;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class byl {
-   public static bvy<buf> a(Function<buf, Optional<bxl>> $$0, Predicate<buf> $$1, int $$2, int $$3, float $$4) {
-      return bzk.a(
-         (Function<bzk.b<buf>, ? extends App<bzk.c<buf>, bzn<buf>>>)($$5 -> $$5.group($$5.a(cdi.n), $$5.a(cdi.m))
-               .apply($$5, ($$5x, $$6) -> ($$7, $$8, $$9) -> {
-                     Optional<bxl> $$10 = $$0.apply($$8);
-                     if (!$$10.isEmpty() && $$1.test($$8)) {
-                        bxl $$11 = $$10.get();
-                        if ($$8.dq().a((jx)$$11.a(), (double)$$3)) {
-                           return false;
-                        } else {
-                           bxl $$12 = $$10.get();
-                           $$5x.a($$12);
-                           $$6.a(new cdl($$12, $$4, $$2));
-                           return true;
-                        }
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+public class byl<U> implements Iterable<U> {
+   protected final List<byl.a<U>> a;
+   private final azl b = azl.a();
+
+   public byl() {
+      this.a = Lists.newArrayList();
+   }
+
+   private byl(List<byl.a<U>> $$0) {
+      this.a = Lists.newArrayList($$0);
+   }
+
+   public static <U> Codec<byl<U>> a(Codec<U> $$0) {
+      return byl.a.a($$0).listOf().xmap(byl::new, $$0x -> $$0x.a);
+   }
+
+   public byl<U> a(U $$0, int $$1) {
+      this.a.add(new byl.a<>($$0, $$1));
+      return this;
+   }
+
+   public byl<U> a() {
+      this.a.forEach($$0 -> $$0.a(this.b.i()));
+      this.a.sort(Comparator.comparingDouble(byl.a::c));
+      return this;
+   }
+
+   public Stream<U> b() {
+      return this.a.stream().map(byl.a::a);
+   }
+
+   @Override
+   public Iterator<U> iterator() {
+      return Iterators.transform(this.a.iterator(), byl.a::a);
+   }
+
+   @Override
+   public String toString() {
+      return "ShufflingList[" + this.a + "]";
+   }
+
+   public static class a<T> {
+      final T a;
+      final int b;
+      private double c;
+
+      a(T $$0, int $$1) {
+         this.b = $$1;
+         this.a = $$0;
+      }
+
+      private double c() {
+         return this.c;
+      }
+
+      void a(float $$0) {
+         this.c = -Math.pow((double)$$0, (double)(1.0F / (float)this.b));
+      }
+
+      public T a() {
+         return this.a;
+      }
+
+      public int b() {
+         return this.b;
+      }
+
+      @Override
+      public String toString() {
+         return this.b + ":" + this.a;
+      }
+
+      public static <E> Codec<byl.a<E>> a(final Codec<E> $$0) {
+         return new Codec<byl.a<E>>() {
+            public <T> DataResult<Pair<byl.a<E>, T>> decode(DynamicOps<T> $$0x, T $$1) {
+               Dynamic<T> $$2 = new Dynamic($$0, $$1);
+               return $$2.get("data").flatMap($$0::parse).map($$1x -> new byl.a<>($$1x, $$2.get("weight").asInt(1))).map($$1x -> Pair.of($$1x, $$0.empty()));
+            }
+
+            public <T> DataResult<T> a(byl.a<E> $$0x, DynamicOps<T> $$1, T $$2) {
+               return $$1.mapBuilder().add("weight", $$1.createInt($$0.b)).add("data", $$0.encodeStart($$1, $$0.a)).build($$2);
+            }
+         };
+      }
    }
 }

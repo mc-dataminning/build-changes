@@ -1,8 +1,8 @@
 import io.netty.buffer.ByteBuf;
 import java.util.List;
 
-public record abr(List<atz> b) implements zk<abp> {
-   public static final zb<ByteBuf, abr> a = zb.a(atz.a.a(yz.c(64)), abr::b, abr::new);
+public record abr(List<aua> b) implements zk<abp> {
+   public static final zb<ByteBuf, abr> a = zb.a(aua.a.a(yz.c(64)), abr::b, abr::new);
 
    @Override
    public zm<abr> a() {

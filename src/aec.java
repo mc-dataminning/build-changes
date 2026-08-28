@@ -2,7 +2,7 @@ public class aec implements zk<abz> {
    public static final zb<wa, aec> a = zk.a(aec::a, aec::new);
    private final int b;
 
-   public aec(bry $$0) {
+   public aec(bsd $$0) {
       this($$0.b());
    }
 

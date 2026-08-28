@@ -1,49 +1,16 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.serialization.Dynamic;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import javax.annotation.Nullable;
+public interface dxs {
+   void a(Throwable var1, dyd var2, ddm var3);
 
-public class dxs implements AutoCloseable {
-   private final dxi a;
-   private final DataFixer b;
-   private final bal c;
+   void b(Throwable var1, dyd var2, ddm var3);
 
-   public dxs(dxp $$0, Path $$1, DataFixer $$2, boolean $$3, bal $$4) {
-      this.b = $$2;
-      this.c = $$4;
-      this.a = new dxi($$0, $$1, $$3);
+   static z a(ddm $$0, ddm $$1) {
+      o $$2 = o.a(new IllegalStateException("Retrieved chunk position " + $$0 + " does not match requested " + $$1), "Chunk found in invalid location");
+      p $$3 = $$2.a("Misplaced Chunk");
+      $$3.a("Stored Position", $$0::toString);
+      return new z($$2);
    }
 
-   public CompletableFuture<Optional<uf>> a(dcy $$0) {
-      return this.a.a($$0);
-   }
-
-   public CompletableFuture<Void> a(dcy $$0, @Nullable uf $$1) {
-      return this.a.a($$0, $$1);
-   }
-
-   public uf a(uf $$0, int $$1) {
-      int $$2 = uu.b($$0, $$1);
-      return this.c.a(this.b, $$0, $$2);
-   }
-
-   public Dynamic<vc> a(Dynamic<vc> $$0, int $$1) {
-      return this.c.a(this.b, $$0, $$1);
-   }
-
-   public CompletableFuture<Void> a(boolean $$0) {
-      return this.a.a($$0);
-   }
-
-   @Override
-   public void close() throws IOException {
-      this.a.close();
-   }
-
-   public dxp a() {
-      return this.a.a();
+   default void a(ddm $$0, ddm $$1, dyd $$2) {
+      this.a(a($$0, $$1), $$2, $$1);
    }
 }

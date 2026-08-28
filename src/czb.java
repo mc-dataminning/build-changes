@@ -1,70 +1,123 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class czb extends czk {
-   public czb(czh $$0) {
-      super($$0);
+public record czb(ary<String> k, String l, int m, List<ary<xd>> n, boolean o) implements cxy<xd, czb> {
+   public static final czb a = new czb(ary.a(""), "", 0, List.of(), true);
+   public static final int b = 32767;
+   public static final int c = 16;
+   public static final int d = 32;
+   public static final int e = 3;
+   public static final int f = 2;
+   public static final Codec<xd> g = xf.a(32767);
+   public static final Codec<List<ary<xd>>> h = a(g);
+   public static final Codec<czb> i = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               ary.a(Codec.string(0, 32)).fieldOf("title").forGetter(czb::d),
+               Codec.STRING.fieldOf("author").forGetter(czb::e),
+               aym.a(0, 3).optionalFieldOf("generation", 0).forGetter(czb::f),
+               h.optionalFieldOf("pages", List.of()).forGetter(czb::a),
+               Codec.BOOL.optionalFieldOf("resolved", false).forGetter(czb::g)
+            )
+            .apply($$0, czb::new)
+   );
+   public static final zb<wo, czb> j = zb.a(ary.a(yz.b(32)), czb::d, yz.l, czb::e, yz.g, czb::f, ary.a(xf.b).a(yz.a()), czb::a, yz.b, czb::g, czb::new);
+
+   public czb(ary<String> k, String l, int m, List<ary<xd>> n, boolean o) {
+      if (m >= 0 && m <= 3) {
+         this.k = k;
+         this.l = l;
+         this.m = m;
+         this.n = n;
+         this.o = o;
+      } else {
+         throw new IllegalArgumentException("Generation was " + m + ", but must be between 0 and 3");
+      }
    }
 
-   public boolean a(czi $$0, dds $$1) {
-      cvl $$2 = cvl.k;
-      List<cvl> $$3 = Lists.newArrayList();
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cvl $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.a(axb.bD)) {
-               if (!$$2.f()) {
-                  return false;
-               }
-
-               $$2 = $$5;
-            } else {
-               if (!($$5.h() instanceof cuf)) {
-                  return false;
-               }
-
-               $$3.add($$5);
-            }
-         }
-      }
-
-      return !$$2.f() && !$$3.isEmpty();
+   private static Codec<ary<xd>> b(Codec<xd> $$0) {
+      return ary.a($$0);
    }
 
-   public cvl a(czi $$0, jp.a $$1) {
-      List<cuf> $$2 = Lists.newArrayList();
-      cvl $$3 = cvl.k;
+   public static Codec<List<ary<xd>>> a(Codec<xd> $$0) {
+      return b($$0).listOf();
+   }
 
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cvl $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if ($$5.a(axb.bD)) {
-               if (!$$3.f()) {
-                  return cvl.k;
-               }
+   @Nullable
+   public czb b() {
+      return this.m >= 2 ? null : new czb(this.k, this.l, this.m + 1, this.n, this.o);
+   }
 
-               $$3 = $$5.u();
-            } else {
-               if (!($$5.h() instanceof cuf $$6)) {
-                  return cvl.k;
-               }
+   @Nullable
+   public czb a(et $$0, @Nullable cnu $$1) {
+      if (this.o) {
+         return null;
+      } else {
+         Builder<ary<xd>> $$2 = ImmutableList.builderWithExpectedSize(this.n.size());
 
-               $$2.add($$6);
+         for (ary<xd> $$3 : this.n) {
+            Optional<ary<xd>> $$4 = a($$0, $$1, $$3);
+            if ($$4.isEmpty()) {
+               return null;
             }
-         }
-      }
 
-      return !$$3.f() && !$$2.isEmpty() ? cyd.a($$3, $$2) : cvl.k;
+            $$2.add($$4.get());
+         }
+
+         return new czb(this.k, this.l, this.m, $$2.build(), true);
+      }
+   }
+
+   public czb c() {
+      return new czb(this.k, this.l, this.m, this.n, true);
+   }
+
+   private static Optional<ary<xd>> a(et $$0, @Nullable cnu $$1, ary<xd> $$2) {
+      return $$2.b($$2x -> {
+         try {
+            xd $$3 = xg.a($$0, $$2x, $$1, 0);
+            return a($$3, $$0.v()) ? Optional.empty() : Optional.of($$3);
+         } catch (Exception var4) {
+            return Optional.of($$2x);
+         }
+      });
+   }
+
+   private static boolean a(xd $$0, jp.a $$1) {
+      return xd.a.a($$0, $$1).length() > 32767;
+   }
+
+   public List<xd> a(boolean $$0) {
+      return Lists.transform(this.n, $$1 -> (xd)$$1.a($$0));
+   }
+
+   public czb b(List<ary<xd>> $$0) {
+      return new czb(this.k, this.l, this.m, $$0, false);
+   }
+
+   public ary<String> d() {
+      return this.k;
+   }
+
+   public String e() {
+      return this.l;
+   }
+
+   public int f() {
+      return this.m;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public List<ary<xd>> a() {
+      return this.n;
    }
 
-   @Override
-   public czy<?> as_() {
-      return czy.c;
+   public boolean g() {
+      return this.o;
    }
 }

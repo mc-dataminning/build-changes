@@ -1,99 +1,118 @@
+import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class ecu extends edc<efn> {
-   private static final duj a = duj.a(dgx.I);
-   private final dua b = dgx.I.o();
-   private final dua c = dgx.jF.o();
-   private final dua d = dgx.aV.o();
-   private final dua ao = dgx.G.o();
+public class ecu extends edq<efo> {
+   private static final ImmutableList<dhj> a = ImmutableList.of(dhl.H, dhl.F, dhl.kJ, dhl.dW, dhl.fn, dhl.fo, dhl.fp, dhl.fq, dhl.cv, dhl.ct);
+   private static final int b = 5;
+   private static final int c = 50;
+   private static final int d = 8;
+   private static final int ao = 15;
 
-   public ecu(Codec<efn> $$0) {
+   public ecu(Codec<efo> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ede<efn> $$0) {
-      dep $$1 = $$0.b();
+   public boolean a(eds<efo> $$0) {
+      int $$1 = $$0.c().f();
       je $$2 = $$0.e();
-      $$2 = $$2.d();
-
-      while ($$1.u($$2) && $$2.v() > $$1.G_() + 2) {
-         $$2 = $$2.e();
-      }
-
-      if (!a.a($$1.a_($$2))) {
+      dfd $$3 = $$0.b();
+      azl $$4 = $$0.d();
+      efo $$5 = $$0.f();
+      if (!a($$3, $$1, $$2.k())) {
          return false;
       } else {
-         for (int $$3 = -2; $$3 <= 2; $$3++) {
-            for (int $$4 = -2; $$4 <= 2; $$4++) {
-               if ($$1.u($$2.b($$3, -1, $$4)) && $$1.u($$2.b($$3, -2, $$4))) {
-                  return false;
-               }
+         int $$6 = $$5.b().a($$4);
+         boolean $$7 = $$4.i() < 0.9F;
+         int $$8 = Math.min($$6, $$7 ? 5 : 8);
+         int $$9 = $$7 ? 50 : 15;
+         boolean $$10 = false;
+
+         for (je $$11 : je.a($$4, $$9, $$2.u() - $$8, $$2.v(), $$2.w() - $$8, $$2.u() + $$8, $$2.v(), $$2.w() + $$8)) {
+            int $$12 = $$6 - $$11.k($$2);
+            if ($$12 >= 0) {
+               $$10 |= this.a($$3, $$1, $$11, $$12, $$5.a().a($$4));
             }
          }
 
-         for (int $$5 = -2; $$5 <= 0; $$5++) {
-            for (int $$6 = -2; $$6 <= 2; $$6++) {
-               for (int $$7 = -2; $$7 <= 2; $$7++) {
-                  $$1.a($$2.b($$6, $$5, $$7), this.d, 2);
-               }
-            }
-         }
-
-         $$1.a($$2, this.ao, 2);
-
-         for (jj $$8 : jj.c.a) {
-            $$1.a($$2.a($$8), this.ao, 2);
-         }
-
-         je $$9 = $$2.e();
-         $$1.a($$9, this.b, 2);
-
-         for (jj $$10 : jj.c.a) {
-            $$1.a($$9.a($$10), this.b, 2);
-         }
-
-         for (int $$11 = -2; $$11 <= 2; $$11++) {
-            for (int $$12 = -2; $$12 <= 2; $$12++) {
-               if ($$11 == -2 || $$11 == 2 || $$12 == -2 || $$12 == 2) {
-                  $$1.a($$2.b($$11, 1, $$12), this.d, 2);
-               }
-            }
-         }
-
-         $$1.a($$2.b(2, 1, 0), this.c, 2);
-         $$1.a($$2.b(-2, 1, 0), this.c, 2);
-         $$1.a($$2.b(0, 1, 2), this.c, 2);
-         $$1.a($$2.b(0, 1, -2), this.c, 2);
-
-         for (int $$13 = -1; $$13 <= 1; $$13++) {
-            for (int $$14 = -1; $$14 <= 1; $$14++) {
-               if ($$13 == 0 && $$14 == 0) {
-                  $$1.a($$2.b($$13, 4, $$14), this.d, 2);
-               } else {
-                  $$1.a($$2.b($$13, 4, $$14), this.c, 2);
-               }
-            }
-         }
-
-         for (int $$15 = 1; $$15 <= 3; $$15++) {
-            $$1.a($$2.b(-1, $$15, -1), this.d, 2);
-            $$1.a($$2.b(-1, $$15, 1), this.d, 2);
-            $$1.a($$2.b(1, $$15, -1), this.d, 2);
-            $$1.a($$2.b(1, $$15, 1), this.d, 2);
-         }
-
-         List<je> $$17 = List.of($$2, $$2.i(), $$2.g(), $$2.h(), $$2.f());
-         azk $$18 = $$0.d();
-         b($$1, ad.a($$17, $$18).c(1));
-         b($$1, ad.a($$17, $$18).c(2));
-         return true;
+         return $$10;
       }
    }
 
-   private static void b(dep $$0, je $$1) {
-      $$0.a($$1, dgx.J.o(), 3);
-      $$0.a($$1, drg.N).ifPresent($$1x -> $$1x.a(esp.aS, $$1.a()));
+   private boolean a(deh $$0, int $$1, je $$2, int $$3, int $$4) {
+      boolean $$5 = false;
+
+      for (je $$6 : je.b($$2.u() - $$4, $$2.v(), $$2.w() - $$4, $$2.u() + $$4, $$2.v(), $$2.w() + $$4)) {
+         int $$7 = $$6.k($$2);
+         je $$8 = a($$0, $$1, $$6) ? a($$0, $$1, $$6.k(), $$7) : a($$0, $$6.k(), $$7);
+         if ($$8 != null) {
+            int $$9 = $$3 - $$7 / 2;
+
+            for (je.a $$10 = $$8.k(); $$9 >= 0; $$9--) {
+               if (a($$0, $$1, (je)$$10)) {
+                  this.a($$0, $$10, dhl.dY.o());
+                  $$10.c(jj.b);
+                  $$5 = true;
+               } else {
+                  if (!$$0.a_($$10).a(dhl.dY)) {
+                     break;
+                  }
+
+                  $$10.c(jj.b);
+               }
+            }
+         }
+      }
+
+      return $$5;
+   }
+
+   @Nullable
+   private static je a(deh $$0, int $$1, je.a $$2, int $$3) {
+      while ($$2.v() > $$0.G_() + 1 && $$3 > 0) {
+         $$3--;
+         if (a($$0, $$1, $$2)) {
+            return $$2;
+         }
+
+         $$2.c(jj.a);
+      }
+
+      return null;
+   }
+
+   private static boolean a(deh $$0, int $$1, je.a $$2) {
+      if (!a($$0, $$1, (je)$$2)) {
+         return false;
+      } else {
+         duo $$3 = $$0.a_($$2.c(jj.a));
+         $$2.c(jj.b);
+         return !$$3.l() && !a.contains($$3.b());
+      }
+   }
+
+   @Nullable
+   private static je a(deh $$0, je.a $$1, int $$2) {
+      while ($$1.v() <= $$0.an() && $$2 > 0) {
+         $$2--;
+         duo $$3 = $$0.a_($$1);
+         if (a.contains($$3.b())) {
+            return null;
+         }
+
+         if ($$3.l()) {
+            return $$1;
+         }
+
+         $$1.c(jj.b);
+      }
+
+      return null;
+   }
+
+   private static boolean a(deh $$0, int $$1, je $$2) {
+      duo $$3 = $$0.a_($$2);
+      return $$3.l() || $$3.a(dhl.H) && $$2.v() <= $$1;
    }
 }

@@ -8,9 +8,9 @@ public class aig implements zk<agq> {
    private final boolean g;
    private final boolean h;
    private final boolean i;
-   private final dro.a j;
+   private final dsc.a j;
 
-   public aig(je $$0, String $$1, dro.a $$2, boolean $$3, boolean $$4, boolean $$5) {
+   public aig(je $$0, String $$1, dsc.a $$2, boolean $$3, boolean $$4, boolean $$5) {
       this.e = $$0;
       this.f = $$1;
       this.g = $$3;
@@ -22,7 +22,7 @@ public class aig implements zk<agq> {
    private aig(wa $$0) {
       this.e = $$0.e();
       this.f = $$0.p();
-      this.j = $$0.b(dro.a.class);
+      this.j = $$0.b(dsc.a.class);
       int $$1 = $$0.readByte();
       this.g = ($$1 & 1) != 0;
       this.h = ($$1 & 2) != 0;
@@ -78,7 +78,7 @@ public class aig implements zk<agq> {
       return this.i;
    }
 
-   public dro.a i() {
+   public dsc.a i() {
       return this.j;
    }
 }

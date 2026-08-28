@@ -1,109 +1,25 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.DynamicOps;
-import java.util.List;
-import java.util.Locale;
-import org.slf4j.Logger;
+import com.mojang.serialization.MapCodec;
 
-public class ekk extends eks {
-   private static final Logger d = LogUtils.getLogger();
-   protected final elw a;
-   protected je b;
-   private final int h;
-   protected final dnj c;
-   private final List<elr> i = Lists.newArrayList();
-   private final eor j;
-   private final eoa k;
+public interface ekk<P extends ekj> {
+   ekk<ejv> a = a("block_predicate_filter", ejv.a);
+   ekk<ekm> b = a("rarity_filter", ekm.a);
+   ekk<eko> c = a("surface_relative_threshold_filter", eko.a);
+   ekk<ekp> d = a("surface_water_depth_filter", ekp.a);
+   ekk<eju> e = a("biome", eju.a);
+   ekk<ejy> f = a("count", ejy.a);
+   ekk<eke> g = a("noise_based_count", eke.a);
+   ekk<ekf> h = a("noise_threshold_count", ekf.a);
+   ekk<ejx> i = a("count_on_every_layer", ejx.a);
+   ekk<ejz> j = a("environment_scan", ejz.a);
+   ekk<ekc> k = a("heightmap", ekc.a);
+   ekk<ekb> l = a("height_range", ekb.a);
+   ekk<ekd> m = a("in_square", ekd.a);
+   ekk<ekl> n = a("random_offset", ekl.a);
+   ekk<eka> o = a("fixed_placement", eka.a);
 
-   public ekk(eor $$0, elw $$1, je $$2, int $$3, dnj $$4, ekg $$5, eoa $$6) {
-      super(elf.ad, 0, $$5);
-      this.j = $$0;
-      this.a = $$1;
-      this.b = $$2;
-      this.h = $$3;
-      this.c = $$4;
-      this.k = $$6;
-   }
+   MapCodec<P> codec();
 
-   public ekk(ele $$0, uf $$1) {
-      super(elf.ad, $$1);
-      this.j = $$0.c();
-      this.b = new je($$1.h("PosX"), $$1.h("PosY"), $$1.h("PosZ"));
-      this.h = $$1.h("ground_level_delta");
-      DynamicOps<vc> $$2 = $$0.b().a(ut.a);
-      this.a = (elw)elw.f.parse($$2, $$1.p("pool_element")).getPartialOrThrow($$0x -> new IllegalStateException("Invalid pool element found: " + $$0x));
-      this.c = dnj.valueOf($$1.l("rotation"));
-      this.f = this.a.a(this.j, this.b, this.c);
-      ul $$3 = $$1.c("junctions", 10);
-      this.i.clear();
-      $$3.forEach($$1x -> this.i.add(elr.a(new Dynamic($$2, $$1x))));
-      this.k = eoa.c.parse(ut.a, $$1.c("liquid_settings")).result().orElse(emp.e);
-   }
-
-   @Override
-   protected void a(ele $$0, uf $$1) {
-      $$1.a("PosX", this.b.u());
-      $$1.a("PosY", this.b.v());
-      $$1.a("PosZ", this.b.w());
-      $$1.a("ground_level_delta", this.h);
-      DynamicOps<vc> $$2 = $$0.b().a(ut.a);
-      elw.f.encodeStart($$2, this.a).resultOrPartial(d::error).ifPresent($$1x -> $$1.a("pool_element", $$1x));
-      $$1.a("rotation", this.c.name());
-      ul $$3 = new ul();
-
-      for (elr $$4 : this.i) {
-         $$3.add((vc)$$4.a($$2).getValue());
-      }
-
-      $$1.a("junctions", $$3);
-      if (this.k != emp.e) {
-         $$1.a("liquid_settings", (vc)eoa.c.encodeStart(ut.a, this.k).getOrThrow());
-      }
-   }
-
-   @Override
-   public void a(dep $$0, den $$1, dvx $$2, azk $$3, ekg $$4, dcy $$5, je $$6) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$6, false);
-   }
-
-   public void a(dep $$0, den $$1, dvx $$2, azk $$3, ekg $$4, je $$5, boolean $$6) {
-      this.a.a(this.j, $$0, $$1, $$2, this.b, $$5, this.c, $$4, $$3, this.k, $$6);
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.b = this.b.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public dnj a() {
-      return this.c;
-   }
-
-   @Override
-   public String toString() {
-      return String.format(Locale.ROOT, "<%s | %s | %s | %s>", this.getClass().getSimpleName(), this.b, this.c, this.a);
-   }
-
-   public elw b() {
-      return this.a;
-   }
-
-   public je c() {
-      return this.b;
-   }
-
-   public int d() {
-      return this.h;
-   }
-
-   public void a(elr $$0) {
-      this.i.add($$0);
-   }
-
-   public List<elr> e() {
-      return this.i;
+   private static <P extends ekj> ekk<P> a(String $$0, MapCodec<P> $$1) {
+      return ka.a(lu.S, $$0, () -> $$1);
    }
 }

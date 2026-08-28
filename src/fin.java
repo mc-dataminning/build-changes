@@ -1,26 +1,37 @@
-import java.util.function.BooleanSupplier;
+import java.util.function.IntFunction;
 
-public class fin extends fhz {
-   private final BooleanSupplier h;
+public enum fin {
+   a(0, "options.narrator.off"),
+   b(1, "options.narrator.all"),
+   c(2, "options.narrator.chat"),
+   d(3, "options.narrator.system");
 
-   public fin(String $$0, int $$1, String $$2, BooleanSupplier $$3) {
-      super($$0, fbk.b.a, $$1, $$2);
-      this.h = $$3;
+   private static final IntFunction<fin> e = axu.a(fin::a, values(), axu.a.b);
+   private final int f;
+   private final xd g;
+
+   private fin(final int $$0, final String $$1) {
+      this.f = $$0;
+      this.g = xd.c($$1);
    }
 
-   @Override
-   public void a(boolean $$0) {
-      if (this.h.getAsBoolean()) {
-         if ($$0) {
-            super.a(!this.e());
-         }
-      } else {
-         super.a($$0);
-      }
+   public int a() {
+      return this.f;
    }
 
-   @Override
-   protected void n() {
-      super.a(false);
+   public xd b() {
+      return this.g;
+   }
+
+   public static fin a(int $$0) {
+      return e.apply($$0);
+   }
+
+   public boolean c() {
+      return this == b || this == c;
+   }
+
+   public boolean d() {
+      return this == b || this == d;
    }
 }

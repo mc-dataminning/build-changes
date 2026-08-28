@@ -6,7 +6,7 @@ public class adv implements zk<abz> {
    private final float e;
    private final float f;
 
-   public adv(btj $$0) {
+   public adv(bto $$0) {
       this.b = $$0.dx();
       this.c = $$0.dz();
       this.d = $$0.dD();

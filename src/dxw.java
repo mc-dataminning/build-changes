@@ -1,233 +1,243 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
+import java.io.IOException;
 import java.nio.file.Path;
+import java.util.BitSet;
+import java.util.LinkedHashMap;
 import java.util.Optional;
-import java.util.OptionalLong;
+import java.util.SequencedMap;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Function;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public record dxw(
-   OptionalLong l, boolean m, boolean n, boolean o, boolean p, double q, boolean r, boolean s, int t, int u, int v, axi<dgv> w, alb x, float y, dxw.a z
-) {
-   public static final int a = je.d;
-   public static final int b = 16;
-   public static final int c = (1 << a) - 32;
-   public static final int d = (c >> 1) - 1;
-   public static final int e = d - c + 1;
-   public static final int f = d << 4;
-   public static final int g = e << 4;
-   public static final Codec<dxw> h = ayl.c(
-      RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  ayl.a(Codec.LONG.lenientOptionalFieldOf("fixed_time")).forGetter(dxw::f),
-                  Codec.BOOL.fieldOf("has_skylight").forGetter(dxw::g),
-                  Codec.BOOL.fieldOf("has_ceiling").forGetter(dxw::h),
-                  Codec.BOOL.fieldOf("ultrawarm").forGetter(dxw::i),
-                  Codec.BOOL.fieldOf("natural").forGetter(dxw::j),
-                  Codec.doubleRange(1.0E-5F, 3.0E7).fieldOf("coordinate_scale").forGetter(dxw::k),
-                  Codec.BOOL.fieldOf("bed_works").forGetter(dxw::l),
-                  Codec.BOOL.fieldOf("respawn_anchor_works").forGetter(dxw::m),
-                  Codec.intRange(e, d).fieldOf("min_y").forGetter(dxw::n),
-                  Codec.intRange(16, c).fieldOf("height").forGetter(dxw::o),
-                  Codec.intRange(0, c).fieldOf("logical_height").forGetter(dxw::p),
-                  axi.b(lv.f).fieldOf("infiniburn").forGetter(dxw::q),
-                  alb.a.fieldOf("effects").orElse(dxu.e).forGetter(dxw::r),
-                  Codec.FLOAT.fieldOf("ambient_light").forGetter(dxw::s),
-                  dxw.a.a.forGetter(dxw::t)
-               )
-               .apply($$0, dxw::new)
-      )
-   );
-   public static final zb<wo, jn<dxw>> i = yz.b(lv.aK);
-   private static final int A = 8;
-   public static final float[] j = new float[]{1.0F, 0.75F, 0.5F, 0.25F, 0.0F, 0.25F, 0.5F, 0.75F};
-   public static final Codec<jn<dxw>> k = akx.a(lv.aK, h);
+public class dxw implements dxt, AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private final AtomicBoolean b = new AtomicBoolean();
+   private final bqi<bqk.b> c;
+   private final dyb d;
+   private final SequencedMap<ddm, dxw.a> e = new LinkedHashMap<>();
+   private final Long2ObjectLinkedOpenHashMap<CompletableFuture<BitSet>> f = new Long2ObjectLinkedOpenHashMap();
+   private static final int g = 1024;
 
-   public dxw(
-      OptionalLong l, boolean m, boolean n, boolean o, boolean p, double q, boolean r, boolean s, int t, int u, int v, axi<dgv> w, alb x, float y, dxw.a z
-   ) {
-      if (u < 16) {
-         throw new IllegalStateException("height has to be at least 16");
-      } else if (t + u > d + 1) {
-         throw new IllegalStateException("min_y + height cannot be higher than: " + (d + 1));
-      } else if (v > u) {
-         throw new IllegalStateException("logical_height cannot be higher than height");
-      } else if (u % 16 != 0) {
-         throw new IllegalStateException("height has to be multiple of 16");
-      } else if (t % 16 != 0) {
-         throw new IllegalStateException("min_y has to be a multiple of 16");
-      } else {
-         this.l = l;
-         this.m = m;
-         this.n = n;
-         this.o = o;
-         this.p = p;
-         this.q = q;
-         this.r = r;
-         this.s = s;
-         this.t = t;
-         this.u = u;
-         this.v = v;
-         this.w = w;
-         this.x = x;
-         this.y = y;
-         this.z = z;
-      }
+   protected dxw(dyd $$0, Path $$1, boolean $$2) {
+      this.d = new dyb($$0, $$1, $$2);
+      this.c = new bqi<>(new bqk.a(dxw.b.values().length), ad.h(), "IOWorker-" + $$0.c());
    }
 
-   @Deprecated
-   public static DataResult<ala<dds>> a(Dynamic<?> $$0) {
-      Optional<Number> $$1 = $$0.asNumber().result();
-      if ($$1.isPresent()) {
-         int $$2 = $$1.get().intValue();
-         if ($$2 == -1) {
-            return DataResult.success(dds.i);
-         }
+   public boolean a(ddm $$0, int $$1) {
+      ddm $$2 = new ddm($$0.e - $$1, $$0.f - $$1);
+      ddm $$3 = new ddm($$0.e + $$1, $$0.f + $$1);
 
-         if ($$2 == 0) {
-            return DataResult.success(dds.h);
-         }
+      for (int $$4 = $$2.h(); $$4 <= $$3.h(); $$4++) {
+         for (int $$5 = $$2.i(); $$5 <= $$3.i(); $$5++) {
+            BitSet $$6 = this.a($$4, $$5).join();
+            if (!$$6.isEmpty()) {
+               ddm $$7 = ddm.a($$4, $$5);
+               int $$8 = Math.max($$2.e - $$7.e, 0);
+               int $$9 = Math.max($$2.f - $$7.f, 0);
+               int $$10 = Math.min($$3.e - $$7.e, 31);
+               int $$11 = Math.min($$3.f - $$7.f, 31);
 
-         if ($$2 == 1) {
-            return DataResult.success(dds.j);
+               for (int $$12 = $$8; $$12 <= $$10; $$12++) {
+                  for (int $$13 = $$9; $$13 <= $$11; $$13++) {
+                     int $$14 = $$13 * 32 + $$12;
+                     if ($$6.get($$14)) {
+                        return true;
+                     }
+                  }
+               }
+            }
          }
       }
 
-      return dds.g.parse($$0);
+      return false;
    }
 
-   public static double a(dxw $$0, dxw $$1) {
-      double $$2 = $$0.k();
-      double $$3 = $$1.k();
-      return $$2 / $$3;
-   }
+   private CompletableFuture<BitSet> a(int $$0, int $$1) {
+      long $$2 = ddm.c($$0, $$1);
+      synchronized (this.f) {
+         CompletableFuture<BitSet> $$3 = (CompletableFuture<BitSet>)this.f.getAndMoveToFirst($$2);
+         if ($$3 == null) {
+            $$3 = this.b($$0, $$1);
+            this.f.putAndMoveToFirst($$2, $$3);
+            if (this.f.size() > 1024) {
+               this.f.removeLast();
+            }
+         }
 
-   public static Path a(ala<dds> $$0, Path $$1) {
-      if ($$0 == dds.h) {
-         return $$1;
-      } else if ($$0 == dds.j) {
-         return $$1.resolve("DIM1");
-      } else {
-         return $$0 == dds.i ? $$1.resolve("DIM-1") : $$1.resolve("dimensions").resolve($$0.a().b()).resolve($$0.a().a());
+         return $$3;
       }
    }
 
-   public boolean a() {
-      return this.l.isPresent();
+   private CompletableFuture<BitSet> b(int $$0, int $$1) {
+      return CompletableFuture.supplyAsync(() -> {
+         ddm $$2 = ddm.a($$0, $$1);
+         ddm $$3 = ddm.b($$0, $$1);
+         BitSet $$4 = new BitSet();
+         ddm.a($$2, $$3).forEach($$1xx -> {
+            vj $$2x = new vj(new vl(uk.a, "DataVersion"), new vl(uf.b, "blending_data"));
+
+            try {
+               this.a($$1xx, $$2x).join();
+            } catch (Exception var7) {
+               a.warn("Failed to scan chunk {}", $$1xx, var7);
+               return;
+            }
+
+            if ($$2x.d() instanceof uf $$5 && this.a($$5)) {
+               int $$6 = $$1xx.k() * 32 + $$1xx.j();
+               $$4.set($$6);
+            }
+         });
+         return $$4;
+      }, ad.g());
    }
 
-   public float a(long $$0) {
-      double $$1 = azc.e((double)this.l.orElse($$0) / 24000.0 - 0.25);
-      double $$2 = 0.5 - Math.cos($$1 * Math.PI) / 2.0;
-      return (float)($$1 * 2.0 + $$2) / 3.0F;
+   private boolean a(uf $$0) {
+      return $$0.b("DataVersion", 99) && $$0.h("DataVersion") >= 3441 ? $$0.b("blending_data", 10) : true;
    }
 
-   public int b(long $$0) {
-      return (int)($$0 / 24000L % 8L + 8L) % 8;
+   public CompletableFuture<Void> a(ddm $$0, @Nullable uf $$1) {
+      return this.a($$0, () -> $$1);
    }
 
-   public boolean b() {
-      return this.z.a();
+   public CompletableFuture<Void> a(ddm $$0, Supplier<uf> $$1) {
+      return this.a(() -> {
+         uf $$2 = $$1.get();
+         dxw.a $$3 = this.e.computeIfAbsent($$0, $$1xx -> new dxw.a($$2));
+         $$3.a = $$2;
+         return Either.left($$3.b);
+      }).thenCompose(Function.identity());
    }
 
-   public boolean c() {
-      return this.z.b();
+   public CompletableFuture<Optional<uf>> a(ddm $$0) {
+      return this.a(() -> {
+         dxw.a $$1 = this.e.get($$0);
+         if ($$1 != null) {
+            return Either.left(Optional.ofNullable($$1.a()));
+         } else {
+            try {
+               uf $$2 = this.d.a($$0);
+               return Either.left(Optional.ofNullable($$2));
+            } catch (Exception var4) {
+               a.warn("Failed to read chunk {}", $$0, var4);
+               return Either.right(var4);
+            }
+         }
+      });
    }
 
-   public bqp d() {
-      return this.z.c();
+   public CompletableFuture<Void> a(boolean $$0) {
+      CompletableFuture<Void> $$1 = this.a(
+            () -> Either.left(CompletableFuture.allOf(this.e.values().stream().map($$0x -> $$0x.b).toArray(CompletableFuture[]::new)))
+         )
+         .thenCompose(Function.identity());
+      return $$0 ? $$1.thenCompose($$0x -> this.a(() -> {
+            try {
+               this.d.a();
+               return Either.left(null);
+            } catch (Exception var2x) {
+               a.warn("Failed to synchronize chunks", var2x);
+               return Either.right(var2x);
+            }
+         })) : $$1.thenCompose($$0x -> this.a(() -> Either.left(null)));
    }
 
-   public int e() {
-      return this.z.d();
+   @Override
+   public CompletableFuture<Void> a(ddm $$0, uz $$1) {
+      return this.a(() -> {
+         try {
+            dxw.a $$2 = this.e.get($$0);
+            if ($$2 != null) {
+               if ($$2.a != null) {
+                  $$2.a.b($$1);
+               }
+            } else {
+               this.d.a($$0, $$1);
+            }
+
+            return Either.left(null);
+         } catch (Exception var4) {
+            a.warn("Failed to bulk scan chunk {}", $$0, var4);
+            return Either.right(var4);
+         }
+      });
    }
 
-   public OptionalLong f() {
-      return this.l;
+   private <T> CompletableFuture<T> a(Supplier<Either<T, Exception>> $$0) {
+      return this.c.c($$1 -> new bqk.b(dxw.b.a.ordinal(), () -> {
+            if (!this.b.get()) {
+               $$1.a($$0.get());
+            }
+
+            this.c();
+         }));
    }
 
-   public boolean g() {
-      return this.m;
+   private void b() {
+      Entry<ddm, dxw.a> $$0 = this.e.pollFirstEntry();
+      if ($$0 != null) {
+         this.a($$0.getKey(), $$0.getValue());
+         this.c();
+      }
    }
 
-   public boolean h() {
-      return this.n;
+   private void c() {
+      this.c.a(new bqk.b(dxw.b.b.ordinal(), this::b));
    }
 
-   public boolean i() {
-      return this.o;
+   private void a(ddm $$0, dxw.a $$1) {
+      try {
+         this.d.a($$0, $$1.a);
+         $$1.b.complete(null);
+      } catch (Exception var4) {
+         a.error("Failed to store chunk {}", $$0, var4);
+         $$1.b.completeExceptionally(var4);
+      }
    }
 
-   public boolean j() {
-      return this.p;
+   @Override
+   public void close() throws IOException {
+      if (this.b.compareAndSet(false, true)) {
+         this.c.b($$0 -> new bqk.b(dxw.b.c.ordinal(), () -> $$0.a(bai.a))).join();
+         this.c.close();
+
+         try {
+            this.d.close();
+         } catch (Exception var2) {
+            a.error("Failed to close storage", var2);
+         }
+      }
    }
 
-   public double k() {
-      return this.q;
+   public dyd a() {
+      return this.d.b();
    }
 
-   public boolean l() {
-      return this.r;
-   }
+   static class a {
+      @Nullable
+      uf a;
+      final CompletableFuture<Void> b = new CompletableFuture<>();
 
-   public boolean m() {
-      return this.s;
-   }
-
-   public int n() {
-      return this.t;
-   }
-
-   public int o() {
-      return this.u;
-   }
-
-   public int p() {
-      return this.v;
-   }
-
-   public axi<dgv> q() {
-      return this.w;
-   }
-
-   public alb r() {
-      return this.x;
-   }
-
-   public float s() {
-      return this.y;
-   }
-
-   public dxw.a t() {
-      return this.z;
-   }
-
-   public static record a(boolean b, boolean c, bqp d, int e) {
-      public static final MapCodec<dxw.a> a = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  Codec.BOOL.fieldOf("piglin_safe").forGetter(dxw.a::a),
-                  Codec.BOOL.fieldOf("has_raids").forGetter(dxw.a::b),
-                  bqp.b(0, 15).fieldOf("monster_spawn_light_level").forGetter(dxw.a::c),
-                  Codec.intRange(0, 15).fieldOf("monster_spawn_block_light_limit").forGetter(dxw.a::d)
-               )
-               .apply($$0, dxw.a::new)
-      );
-
-      public boolean a() {
-         return this.b;
+      public a(@Nullable uf $$0) {
+         this.a = $$0;
       }
 
-      public boolean b() {
-         return this.c;
+      @Nullable
+      uf a() {
+         uf $$0 = this.a;
+         return $$0 == null ? null : $$0.i();
       }
+   }
 
-      public bqp c() {
-         return this.d;
-      }
-
-      public int d() {
-         return this.e;
-      }
+   static enum b {
+      a,
+      b,
+      c;
    }
 }

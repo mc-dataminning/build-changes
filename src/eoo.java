@@ -1,18 +1,18 @@
-import java.util.List;
+import com.mojang.serialization.Codec;
 
-public class eoo {
-   private final List<eon> a;
+public enum eoo implements azz {
+   a("ignore_waterlogging"),
+   b("apply_waterlogging");
 
-   public eoo(List<eon> $$0) {
-      this.a = $$0;
-   }
+   public static Codec<eoo> c = azz.b(eoo::values);
+   private final String d;
 
-   public List<eon> a() {
-      return this.a;
+   private eoo(final String $$0) {
+      this.d = $$0;
    }
 
    @Override
-   public String toString() {
-      return "ProcessorList[" + this.a + "]";
+   public String c() {
+      return this.d;
    }
 }

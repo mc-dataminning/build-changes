@@ -1,93 +1,100 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
 import javax.annotation.Nullable;
 
-public class djh extends dgh {
+public class djh extends dgv {
    public static final MapCodec<djh> a = b(djh::new);
-   protected static final eyx b = dgv.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0);
-   public static final List<je> c = je.a(-2, 0, -2, 2, 1, 2).filter($$0 -> Math.abs($$0.u()) == 2 || Math.abs($$0.w()) == 2).map(je::j).toList();
+   public static final dvo b = dve.aT;
+   public static final dvf c = dve.p;
+   protected static final ezm d = dhj.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0);
 
    @Override
    public MapCodec<djh> a() {
       return a;
    }
 
-   protected djh(dtz.d $$0) {
+   public djh(dun.d $$0) {
       super($$0);
-   }
-
-   public static boolean a(dds $$0, je $$1, je $$2) {
-      return $$0.a_($$1.a((ki)$$2)).a(aws.cw) && $$0.a_($$1.b($$2.u() / 2, $$2.v(), $$2.w() / 2)).a(aws.cx);
+      this.l(this.F.b().b(b, Integer.valueOf(0)).b(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean g_(dua $$0) {
+   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
+      return d;
+   }
+
+   @Override
+   protected boolean g_(duo $$0) {
       return true;
    }
 
    @Override
-   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
-      return b;
+   protected int a(duo $$0, ddl $$1, je $$2, jj $$3) {
+      return $$0.c(b);
    }
 
-   @Override
-   public void a(dua $$0, dds $$1, je $$2, azk $$3) {
-      super.a($$0, $$1, $$2, $$3);
+   private static void d(duo $$0, deg $$1, je $$2) {
+      int $$3 = $$1.a(dep.a, $$2) - $$1.z_();
+      float $$4 = $$1.a(1.0F);
+      boolean $$5 = $$0.c(c);
+      if ($$5) {
+         $$3 = 15 - $$3;
+      } else if ($$3 > 0) {
+         float $$6 = $$4 < (float) Math.PI ? 0.0F : (float) (Math.PI * 2);
+         $$4 += ($$6 - $$4) * 0.2F;
+         $$3 = Math.round((float)$$3 * azd.b($$4));
+      }
 
-      for (je $$4 : c) {
-         if ($$3.a(16) == 0 && a($$1, $$2, $$4)) {
-            $$1.a(
-               ln.s,
-               (double)$$2.u() + 0.5,
-               (double)$$2.v() + 2.0,
-               (double)$$2.w() + 0.5,
-               (double)((float)$$4.u() + $$3.i()) - 0.5,
-               (double)((float)$$4.v() - $$3.i() - 1.0F),
-               (double)((float)$$4.w() + $$3.i()) - 0.5
-            );
-         }
+      $$3 = azd.a($$3, 0, 15);
+      if ($$0.c(b) != $$3) {
+         $$1.a($$2, $$0.b(b, Integer.valueOf($$3)), 3);
       }
    }
 
    @Override
-   protected dnc a_(dua $$0) {
-      return dnc.c;
-   }
-
-   @Override
-   public dre a(je $$0, dua $$1) {
-      return new drz($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dre> drf<T> a(dds $$0, dua $$1, drg<T> $$2) {
-      return $$0.B ? a($$2, drg.m, drz::a) : null;
-   }
-
-   @Override
-   protected brk a(dua $$0, dds $$1, je $$2, cnp $$3, eya $$4) {
-      if (!$$1.B) {
-         $$3.a($$0.b($$1, $$2));
-      }
-
-      return brk.a;
-   }
-
-   @Nullable
-   @Override
-   protected brm b(dua $$0, dds $$1, je $$2) {
-      dre $$3 = $$1.c_($$2);
-      if ($$3 instanceof drz) {
-         xd $$4 = ((brn)$$3).Q_();
-         return new brs(($$2x, $$3x, $$4x) -> new crm($$2x, $$3x, crd.a($$1, $$2)), $$4);
+   protected brp a(duo $$0, deg $$1, je $$2, cnu $$3, eyo $$4) {
+      if (!$$3.go()) {
+         return super.a($$0, $$1, $$2, $$3, $$4);
       } else {
-         return null;
+         if (!$$1.B) {
+            duo $$5 = $$0.a(c);
+            $$1.a($$2, $$5, 2);
+            $$1.a(dzl.c, $$2, dzl.a.a($$3, $$5));
+            d($$5, $$1, $$2);
+         }
+
+         return brp.a;
       }
    }
 
    @Override
-   protected boolean a(dua $$0, eqq $$1) {
-      return false;
+   protected dnq a_(duo $$0) {
+      return dnq.c;
+   }
+
+   @Override
+   protected boolean f_(duo $$0) {
+      return true;
+   }
+
+   @Override
+   public drs a(je $$0, duo $$1) {
+      return new dsh($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends drs> drt<T> a(deg $$0, duo $$1, dru<T> $$2) {
+      return !$$0.B && $$0.B_().g() ? a($$2, dru.q, djh::a) : null;
+   }
+
+   private static void a(deg $$0, je $$1, duo $$2, dsh $$3) {
+      if ($$0.aa() % 20L == 0L) {
+         d($$2, $$0, $$1);
+      }
+   }
+
+   @Override
+   protected void a(dup.a<dhj, duo> $$0) {
+      $$0.a(b, c);
    }
 }

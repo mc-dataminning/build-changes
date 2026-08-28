@@ -1,7 +1,7 @@
 public record adi(int b, float c) implements zk<abz> {
    public static final zb<wa, adi> a = zk.a(adi::a, adi::new);
 
-   public adi(buf $$0) {
+   public adi(buk $$0) {
       this($$0.ap(), $$0.eI());
    }
 

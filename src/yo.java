@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 
 public class yo implements xe {
    public static final Object[] a = new Object[0];
-   private static final Codec<Object> d = ayl.b.validate(yo::b);
+   private static final Codec<Object> d = aym.b.validate(yo::b);
    private static final Codec<Object> e = Codec.either(d, xf.a)
       .xmap(
          $$0 -> $$0.map($$0x -> $$0x, $$0x -> Objects.requireNonNullElse($$0x.d(), $$0x)), $$0 -> $$0 instanceof xd $$1 ? Either.right($$1) : Either.left($$0)
@@ -180,7 +180,7 @@ public class yo implements xe {
    }
 
    @Override
-   public xr a(@Nullable et $$0, @Nullable btj $$1, int $$2) throws CommandSyntaxException {
+   public xr a(@Nullable et $$0, @Nullable bto $$1, int $$2) throws CommandSyntaxException {
       Object[] $$3 = new Object[this.j.length];
 
       for (int $$4 = 0; $$4 < $$3.length; $$4++) {

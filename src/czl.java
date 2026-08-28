@@ -1,49 +1,62 @@
 public class czl extends czk {
-   public czl(czh $$0) {
-      super($$0);
+   private final jj b;
+
+   public czl(deg $$0, je $$1, jj $$2, cvp $$3, jj $$4) {
+      super($$0, null, bro.a, $$3, new eyo(eys.c($$1), $$4, $$1, false));
+      this.b = $$2;
    }
 
-   public boolean a(czi $$0, dds $$1) {
-      if (!this.a($$0.f(), $$0.g())) {
-         return false;
-      } else {
-         for (int $$2 = 0; $$2 < $$0.a(); $$2++) {
-            cvl $$3 = $$0.a($$2);
-            switch ($$2) {
-               case 1:
-               case 3:
-               case 5:
-               case 7:
-                  if (!$$3.a(axb.bu)) {
-                     return false;
-                  }
-                  break;
-               case 2:
-               case 4:
-               case 6:
-               default:
-                  if (!$$3.a(cvo.a)) {
-                     return false;
-                  }
-            }
-         }
+   @Override
+   public je a() {
+      return this.j().b();
+   }
 
-         return true;
+   @Override
+   public boolean b() {
+      return this.q().a_(this.j().b()).a(this);
+   }
+
+   @Override
+   public boolean c() {
+      return this.b();
+   }
+
+   @Override
+   public jj d() {
+      return jj.a;
+   }
+
+   @Override
+   public jj[] f() {
+      switch (this.b) {
+         case a:
+         default:
+            return new jj[]{jj.a, jj.c, jj.f, jj.d, jj.e, jj.b};
+         case b:
+            return new jj[]{jj.a, jj.b, jj.c, jj.f, jj.d, jj.e};
+         case c:
+            return new jj[]{jj.a, jj.c, jj.f, jj.e, jj.b, jj.d};
+         case d:
+            return new jj[]{jj.a, jj.d, jj.f, jj.e, jj.b, jj.c};
+         case e:
+            return new jj[]{jj.a, jj.e, jj.d, jj.b, jj.c, jj.f};
+         case f:
+            return new jj[]{jj.a, jj.f, jj.d, jj.b, jj.c, jj.e};
       }
    }
 
-   public cvl a(czi $$0, jp.a $$1) {
-      dsk $$2 = new dsk($$0.a(1).h(), $$0.a(3).h(), $$0.a(5).h(), $$0.a(7).h());
-      return dru.a($$2);
+   @Override
+   public jj g() {
+      return this.b.o() == jj.a.b ? jj.c : this.b;
    }
 
    @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 == 3 && $$1 == 3;
+   public boolean h() {
+      return false;
    }
 
    @Override
-   public czy<?> as_() {
-      return czy.v;
+   public float i() {
+      return (float)(this.b.e() * 90);
    }
 }

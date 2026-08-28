@@ -1,19 +1,32 @@
-public class cwm extends cvh {
-   private final arh a;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-   public cwm(arh $$0) {
-      this.a = $$0;
+public enum cwm implements azz {
+   a(0, "common", n.p),
+   b(1, "uncommon", n.o),
+   c(2, "rare", n.l),
+   d(3, "epic", n.n);
+
+   public static final Codec<cwm> e = azz.b(cwm::values);
+   public static final IntFunction<cwm> f = axu.a($$0 -> $$0.h, values(), axu.a.a);
+   public static final zb<ByteBuf, cwm> g = yz.a(f, $$0 -> $$0.h);
+   private final int h;
+   private final String i;
+   private final n j;
+
+   private cwm(final int $$0, final String $$1, final n $$2) {
+      this.h = $$0;
+      this.i = $$1;
+      this.j = $$2;
+   }
+
+   public n a() {
+      return this.j;
    }
 
    @Override
-   protected void b(cvg $$0, int $$1) {
-      super.b($$0, $$1);
-      this.a.c.b(new acx($$0, $$1));
-   }
-
-   @Override
-   protected void c(cvg $$0) {
-      super.c($$0);
-      this.a.c.b(new acx($$0, 0));
+   public String c() {
+      return this.i;
    }
 }

@@ -1,157 +1,150 @@
-public class fxy extends fxa<gub> {
-   private static final String a = "feather";
-   private final gab b;
-   private final gab c;
-   private final gab d;
-   private final gab e;
-   private final gab f;
-   private final gab g;
-   private final gab i;
-   private final gab j;
+public class fxy<S extends guc> extends fxk<S> implements fwh, fxt {
+   private final gal a;
+   private final gal b;
+   private final gal c;
+   private final gal d;
+   private final gal e;
+   private final gal f;
+   private final gal g;
+   private final gal i;
 
-   public fxy(gab $$0) {
-      this.b = $$0;
-      this.c = $$0.b("body");
-      this.d = $$0.b("tail");
-      this.e = $$0.b("left_wing");
-      this.f = $$0.b("right_wing");
-      this.g = $$0.b("head");
-      this.i = $$0.b("left_leg");
-      this.j = $$0.b("right_leg");
+   public fxy(gal $$0) {
+      this.a = $$0;
+      this.b = $$0.b("head");
+      this.c = this.b.b("hat");
+      this.c.k = false;
+      this.d = $$0.b("arms");
+      this.e = $$0.b("left_leg");
+      this.f = $$0.b("right_leg");
+      this.i = $$0.b("left_arm");
+      this.g = $$0.b("right_arm");
    }
 
-   public static gah b() {
-      gaj $$0 = new gaj();
-      gal $$1 = $$0.a();
-      $$1.a("body", gag.c().a(2, 8).a(-1.5F, 0.0F, -1.5F, 3.0F, 6.0F, 3.0F), gad.a(0.0F, 16.5F, -3.0F, 0.4937F, 0.0F, 0.0F));
-      $$1.a("tail", gag.c().a(22, 1).a(-1.5F, -1.0F, -1.0F, 3.0F, 4.0F, 1.0F), gad.a(0.0F, 21.07F, 1.16F, 1.015F, 0.0F, 0.0F));
-      $$1.a("left_wing", gag.c().a(19, 8).a(-0.5F, 0.0F, -1.5F, 1.0F, 5.0F, 3.0F), gad.a(1.5F, 16.94F, -2.76F, -0.6981F, (float) -Math.PI, 0.0F));
-      $$1.a("right_wing", gag.c().a(19, 8).a(-0.5F, 0.0F, -1.5F, 1.0F, 5.0F, 3.0F), gad.a(-1.5F, 16.94F, -2.76F, -0.6981F, (float) -Math.PI, 0.0F));
-      gal $$2 = $$1.a("head", gag.c().a(2, 2).a(-1.0F, -1.5F, -1.0F, 2.0F, 3.0F, 2.0F), gad.a(0.0F, 15.69F, -2.76F));
-      $$2.a("head2", gag.c().a(10, 0).a(-1.0F, -0.5F, -2.0F, 2.0F, 1.0F, 4.0F), gad.a(0.0F, -2.0F, -1.0F));
-      $$2.a("beak1", gag.c().a(11, 7).a(-0.5F, -1.0F, -0.5F, 1.0F, 2.0F, 1.0F), gad.a(0.0F, -0.5F, -1.5F));
-      $$2.a("beak2", gag.c().a(16, 7).a(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F), gad.a(0.0F, -1.75F, -2.45F));
-      $$2.a("feather", gag.c().a(2, 18).a(0.0F, -4.0F, -2.0F, 0.0F, 5.0F, 4.0F), gad.a(0.0F, -2.15F, 0.15F, -0.2214F, 0.0F, 0.0F));
-      gag $$3 = gag.c().a(14, 18).a(-0.5F, 0.0F, -0.5F, 1.0F, 2.0F, 1.0F);
-      $$1.a("left_leg", $$3, gad.a(1.0F, 22.0F, -1.05F, -0.0299F, 0.0F, 0.0F));
-      $$1.a("right_leg", $$3, gad.a(-1.0F, 22.0F, -1.05F, -0.0299F, 0.0F, 0.0F));
-      return gah.a($$0, 32, 32);
+   public static gar b() {
+      gat $$0 = new gat();
+      gav $$1 = $$0.a();
+      gav $$2 = $$1.a("head", gaq.c().a(0, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 10.0F, 8.0F), gan.a(0.0F, 0.0F, 0.0F));
+      $$2.a("hat", gaq.c().a(32, 0).a(-4.0F, -10.0F, -4.0F, 8.0F, 12.0F, 8.0F, new gap(0.45F)), gan.a);
+      $$2.a("nose", gaq.c().a(24, 0).a(-1.0F, -1.0F, -6.0F, 2.0F, 4.0F, 2.0F), gan.a(0.0F, -2.0F, 0.0F));
+      $$1.a(
+         "body",
+         gaq.c().a(16, 20).a(-4.0F, 0.0F, -3.0F, 8.0F, 12.0F, 6.0F).a(0, 38).a(-4.0F, 0.0F, -3.0F, 8.0F, 20.0F, 6.0F, new gap(0.5F)),
+         gan.a(0.0F, 0.0F, 0.0F)
+      );
+      gav $$3 = $$1.a(
+         "arms",
+         gaq.c().a(44, 22).a(-8.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F).a(40, 38).a(-4.0F, 2.0F, -2.0F, 8.0F, 4.0F, 4.0F),
+         gan.a(0.0F, 3.0F, -1.0F, -0.75F, 0.0F, 0.0F)
+      );
+      $$3.a("left_shoulder", gaq.c().a(44, 22).a().a(4.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F), gan.a);
+      $$1.a("right_leg", gaq.c().a(0, 22).a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), gan.a(-2.0F, 12.0F, 0.0F));
+      $$1.a("left_leg", gaq.c().a(0, 22).a().a(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F), gan.a(2.0F, 12.0F, 0.0F));
+      $$1.a("right_arm", gaq.c().a(40, 46).a(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), gan.a(-5.0F, 2.0F, 0.0F));
+      $$1.a("left_arm", gaq.c().a(40, 46).a().a(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F), gan.a(5.0F, 2.0F, 0.0F));
+      return gar.a($$0, 64, 64);
    }
 
    @Override
-   public gab a() {
+   public gal a() {
+      return this.a;
+   }
+
+   public void a(S $$0) {
+      this.b.f = $$0.U * (float) (Math.PI / 180.0);
+      this.b.e = $$0.V * (float) (Math.PI / 180.0);
+      if ($$0.b) {
+         this.g.e = (float) (-Math.PI / 5);
+         this.g.f = 0.0F;
+         this.g.g = 0.0F;
+         this.i.e = (float) (-Math.PI / 5);
+         this.i.f = 0.0F;
+         this.i.g = 0.0F;
+         this.f.e = -1.4137167F;
+         this.f.f = (float) (Math.PI / 10);
+         this.f.g = 0.07853982F;
+         this.e.e = -1.4137167F;
+         this.e.f = (float) (-Math.PI / 10);
+         this.e.g = -0.07853982F;
+      } else {
+         float $$1 = $$0.Y;
+         float $$2 = $$0.X;
+         this.g.e = azd.b($$2 * 0.6662F + (float) Math.PI) * 2.0F * $$1 * 0.5F;
+         this.g.f = 0.0F;
+         this.g.g = 0.0F;
+         this.i.e = azd.b($$2 * 0.6662F) * 2.0F * $$1 * 0.5F;
+         this.i.f = 0.0F;
+         this.i.g = 0.0F;
+         this.f.e = azd.b($$2 * 0.6662F) * 1.4F * $$1 * 0.5F;
+         this.f.f = 0.0F;
+         this.f.g = 0.0F;
+         this.e.e = azd.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$1 * 0.5F;
+         this.e.f = 0.0F;
+         this.e.g = 0.0F;
+      }
+
+      ckh.a $$3 = $$0.e;
+      if ($$3 == ckh.a.b) {
+         if ($$0.aW_().f()) {
+            fwf.a(this.i, this.g, true, $$0.h, $$0.p);
+         } else {
+            fwf.a(this.g, this.i, $$0.d, $$0.h, $$0.p);
+         }
+      } else if ($$3 == ckh.a.c) {
+         this.g.d = 0.0F;
+         this.g.b = -5.0F;
+         this.i.d = 0.0F;
+         this.i.b = 5.0F;
+         this.g.e = azd.b($$0.p * 0.6662F) * 0.25F;
+         this.i.e = azd.b($$0.p * 0.6662F) * 0.25F;
+         this.g.g = (float) (Math.PI * 3.0 / 4.0);
+         this.i.g = (float) (-Math.PI * 3.0 / 4.0);
+         this.g.f = 0.0F;
+         this.i.f = 0.0F;
+      } else if ($$3 == ckh.a.d) {
+         this.g.f = -0.1F + this.b.f;
+         this.g.e = (float) (-Math.PI / 2) + this.b.e;
+         this.i.e = -0.9424779F + this.b.e;
+         this.i.f = this.b.f - 0.4F;
+         this.i.g = (float) (Math.PI / 2);
+      } else if ($$3 == ckh.a.e) {
+         fwf.a(this.g, this.i, this.b, true);
+      } else if ($$3 == ckh.a.f) {
+         fwf.a(this.g, this.i, (float)$$0.f, $$0.g, true);
+      } else if ($$3 == ckh.a.g) {
+         this.g.d = 0.0F;
+         this.g.b = -5.0F;
+         this.g.e = azd.b($$0.p * 0.6662F) * 0.05F;
+         this.g.g = 2.670354F;
+         this.g.f = 0.0F;
+         this.i.d = 0.0F;
+         this.i.b = 5.0F;
+         this.i.e = azd.b($$0.p * 0.6662F) * 0.05F;
+         this.i.g = (float) (-Math.PI * 3.0 / 4.0);
+         this.i.f = 0.0F;
+      }
+
+      boolean $$4 = $$3 == ckh.a.a;
+      this.d.k = $$4;
+      this.i.k = !$$4;
+      this.g.k = !$$4;
+   }
+
+   private gal a(bue $$0) {
+      return $$0 == bue.a ? this.i : this.g;
+   }
+
+   public gal d() {
+      return this.c;
+   }
+
+   @Override
+   public gal c() {
       return this.b;
    }
 
-   public void a(gub $$0) {
-      this.a($$0.c);
-      float $$1 = $$0.X;
-      float $$2 = $$0.Y;
-      this.a($$0.c, $$0.p, $$1, $$2, $$0.b, $$0.U, $$0.V);
-   }
-
-   public void a(fcu $$0, fcy $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
-      this.a(fxy.a.e);
-      this.a(fxy.a.e, $$8, $$4, $$5, 0.0F, $$6, $$7);
-      this.b.a($$0, $$1, $$2, $$3);
-   }
-
-   private void a(fxy.a $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6) {
-      this.g.e = $$6 * (float) (Math.PI / 180.0);
-      this.g.f = $$5 * (float) (Math.PI / 180.0);
-      switch ($$0) {
-         case b:
-            this.i.e = this.i.e + azc.b($$2 * 0.6662F) * 1.4F * $$3;
-            this.j.e = this.j.e + azc.b($$2 * 0.6662F + (float) Math.PI) * 1.4F * $$3;
-         case a:
-         case e:
-         default:
-            float $$9 = $$4 * 0.3F;
-            this.g.c += $$9;
-            this.d.e = this.d.e + azc.b($$2 * 0.6662F) * 0.3F * $$3;
-            this.d.c += $$9;
-            this.c.c += $$9;
-            this.e.g = -0.0873F - $$4;
-            this.e.c += $$9;
-            this.f.g = 0.0873F + $$4;
-            this.f.c += $$9;
-            this.i.c += $$9;
-            this.j.c += $$9;
-         case c:
-            break;
-         case d:
-            float $$7 = azc.b($$1);
-            float $$8 = azc.a($$1);
-            this.g.b += $$7;
-            this.g.c += $$8;
-            this.g.e = 0.0F;
-            this.g.f = 0.0F;
-            this.g.g = azc.a($$1) * 0.4F;
-            this.c.b += $$7;
-            this.c.c += $$8;
-            this.e.g = -0.0873F - $$4;
-            this.e.b += $$7;
-            this.e.c += $$8;
-            this.f.g = 0.0873F + $$4;
-            this.f.b += $$7;
-            this.f.c += $$8;
-            this.d.b += $$7;
-            this.d.c += $$8;
-      }
-   }
-
-   private void a(fxy.a $$0) {
-      this.c.c();
-      this.g.c();
-      this.d.c();
-      this.f.c();
-      this.e.c();
-      this.i.c();
-      this.j.c();
-      switch ($$0) {
-         case a:
-            this.i.e += (float) (Math.PI * 2.0 / 9.0);
-            this.j.e += (float) (Math.PI * 2.0 / 9.0);
-         case b:
-         case e:
-         default:
-            break;
-         case c:
-            float $$1 = 1.9F;
-            this.g.c++;
-            this.d.e += (float) (Math.PI / 6);
-            this.d.c++;
-            this.c.c++;
-            this.e.g = -0.0873F;
-            this.e.c++;
-            this.f.g = 0.0873F;
-            this.f.c++;
-            this.i.c++;
-            this.j.c++;
-            this.i.e++;
-            this.j.e++;
-            break;
-         case d:
-            this.i.g = (float) (-Math.PI / 9);
-            this.j.g = (float) (Math.PI / 9);
-      }
-   }
-
-   public static fxy.a a(cgl $$0) {
-      if ($$0.gB()) {
-         return fxy.a.d;
-      } else if ($$0.y()) {
-         return fxy.a.c;
-      } else {
-         return $$0.gD() ? fxy.a.a : fxy.a.b;
-      }
-   }
-
-   public static enum a {
-      a,
-      b,
-      c,
-      d,
-      e;
+   @Override
+   public void a(bue $$0, fde $$1) {
+      this.a.a($$1);
+      this.a($$0).a($$1);
    }
 }

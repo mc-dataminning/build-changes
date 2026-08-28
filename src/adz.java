@@ -1,9 +1,9 @@
 public class adz implements zk<abz> {
    public static final zb<wa, adz> a = zk.a(adz::a, adz::new);
    private final int b;
-   private final alb c;
+   private final alc c;
 
-   public adz(int $$0, czv<?> $$1) {
+   public adz(int $$0, daj<?> $$1) {
       this.b = $$0;
       this.c = $$1.a();
    }
@@ -27,7 +27,7 @@ public class adz implements zk<abz> {
       $$0.a(this);
    }
 
-   public alb b() {
+   public alc b() {
       return this.c;
    }
 

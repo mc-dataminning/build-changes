@@ -4,9 +4,9 @@ public class aib implements zk<agq> {
    public static final zb<wa, aib> a = zk.a(aib::a, aib::new);
    private final aib.a b;
    @Nullable
-   private final alb c;
+   private final alc c;
 
-   public aib(aib.a $$0, @Nullable alb $$1) {
+   public aib(aib.a $$0, @Nullable alc $$1) {
       this.b = $$0;
       this.c = $$1;
    }
@@ -49,7 +49,7 @@ public class aib implements zk<agq> {
    }
 
    @Nullable
-   public alb f() {
+   public alc f() {
       return this.c;
    }
 

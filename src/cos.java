@@ -1,75 +1,57 @@
-public class cos extends coq {
-   private static final btm b = btm.c(0.0F, 0.0F);
-
-   public cos(btq<? extends cos> $$0, dds $$1) {
+public class cos extends coh {
+   public cos(btv<? extends cos> $$0, deg $$1) {
       super($$0, $$1);
    }
 
-   public cos(dds $$0, buf $$1, cvl $$2) {
-      super(btq.C, $$1, $$0, $$2);
+   public cos(deg $$0, buk $$1, eys $$2) {
+      super(btv.aQ, $$1, $$2, $$0);
    }
 
-   public cos(dds $$0, double $$1, double $$2, double $$3, cvl $$4) {
-      super(btq.C, $$1, $$2, $$3, $$0, $$4);
+   public cos(deg $$0, double $$1, double $$2, double $$3, eys $$4) {
+      super(btv.aQ, $$1, $$2, $$3, $$4, $$0);
    }
 
    @Override
-   public void b(byte $$0) {
-      if ($$0 == 3) {
-         double $$1 = 0.08;
-
-         for (int $$2 = 0; $$2 < 8; $$2++) {
-            this.dS()
-               .a(
-                  new lj(ln.S, this.m()),
-                  this.dx(),
-                  this.dz(),
-                  this.dD(),
-                  ((double)this.af.i() - 0.5) * 0.08,
-                  ((double)this.af.i() - 0.5) * 0.08,
-                  ((double)this.af.i() - 0.5) * 0.08
-               );
+   protected void a(eyp $$0) {
+      super.a($$0);
+      if (this.dS() instanceof arh $$1) {
+         bto var7 = $$0.a();
+         bto $$4 = this.s();
+         int $$5 = var7.aE();
+         var7.d(5.0F);
+         bsg $$6 = this.dT().a((coh)this, $$4);
+         if (!var7.a($$6, 5.0F)) {
+            var7.h($$5);
+         } else {
+            dbm.a($$1, var7, $$6);
          }
       }
    }
 
    @Override
-   protected void a(eyb $$0) {
+   protected void a(eyo $$0) {
       super.a($$0);
-      $$0.a().a(this.dT().b(this, this.s()), 0.0F);
+      if (!this.dS().B) {
+         bto $$1 = this.s();
+         if (!($$1 instanceof bum) || this.dS().ac().b(dec.c)) {
+            je $$2 = $$0.b().a($$0.c());
+            if (this.dS().u($$2)) {
+               this.dS().b($$2, dgw.a(this.dS(), $$2));
+            }
+         }
+      }
    }
 
    @Override
-   protected void a(eyc $$0) {
+   protected void a(eyq $$0) {
       super.a($$0);
       if (!this.dS().B) {
-         if (this.af.a(8) == 0) {
-            int $$1 = 1;
-            if (this.af.a(32) == 0) {
-               $$1 = 4;
-            }
-
-            for (int $$2 = 0; $$2 < $$1; $$2++) {
-               cga $$3 = btq.t.a(this.dS(), btp.k);
-               if ($$3 != null) {
-                  $$3.c_(-24000);
-                  $$3.b(this.dx(), this.dz(), this.dD(), this.dI(), 0.0F);
-                  if (!$$3.a(b)) {
-                     break;
-                  }
-
-                  this.dS().b($$3);
-               }
-            }
-         }
-
-         this.dS().a(this, (byte)3);
          this.as();
       }
    }
 
    @Override
-   protected cvg o() {
-      return cvo.qS;
+   public boolean a(bsg $$0, float $$1) {
+      return false;
    }
 }

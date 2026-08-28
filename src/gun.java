@@ -1,4 +1,3 @@
-public class gun extends gsu {
-   public float a;
-   public float b;
+public class gun extends gum {
+   public float C = -1.0F;
 }

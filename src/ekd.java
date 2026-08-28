@@ -1,44 +1,23 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.Lifecycle;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
+import java.util.stream.Stream;
 
-public class ekd {
-   public static final Codec<ekd> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(Codec.unboundedMap(ala.a(lv.bb), dxx.a).fieldOf("dimensions").forGetter($$0x -> $$0x.c)).apply($$0, ekd::new)
-      )
-      .validate(ekd::a);
-   public static final Codec<jn<ekd>> b = akx.a(lv.aY, a);
-   private final Map<ala<dxx>, dxx> c;
+public class ekd extends ekj {
+   private static final ekd c = new ekd();
+   public static final MapCodec<ekd> a = MapCodec.unit(() -> c);
 
-   public ekd(Map<ala<dxx>, dxx> $$0) {
-      this.c = $$0;
+   public static ekd a() {
+      return c;
    }
 
-   private ImmutableMap<ala<dxx>, dxx> c() {
-      Builder<ala<dxx>, dxx> $$0 = ImmutableMap.builder();
-      ear.a(this.c.keySet().stream()).forEach($$1 -> {
-         dxx $$2 = this.c.get($$1);
-         if ($$2 != null) {
-            $$0.put($$1, $$2);
-         }
-      });
-      return $$0.build();
+   @Override
+   public Stream<je> a_(ekh $$0, azl $$1, je $$2) {
+      int $$3 = $$1.a(16) + $$2.u();
+      int $$4 = $$1.a(16) + $$2.w();
+      return Stream.of(new je($$3, $$2.v(), $$4));
    }
 
-   public ear a() {
-      return new ear(this.c());
-   }
-
-   public Optional<dxx> b() {
-      return Optional.ofNullable(this.c.get(dxx.b));
-   }
-
-   private static DataResult<ekd> a(ekd $$0) {
-      return $$0.b().isEmpty() ? DataResult.error(() -> "Missing overworld dimension") : DataResult.success($$0, Lifecycle.stable());
+   @Override
+   public ekk<?> b() {
+      return ekk.m;
    }
 }

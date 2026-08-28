@@ -1,122 +1,117 @@
-import com.google.common.collect.Maps;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import java.util.Map;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class eqv extends eqo {
-   private final boolean k;
-   private final Long2ObjectMap<eqs> l = new Long2ObjectOpenHashMap();
-
-   public eqv(boolean $$0) {
-      this.k = $$0;
+public abstract class eqv extends eqn {
+   @Override
+   public eqo d() {
+      return eqq.b;
    }
 
    @Override
-   public void a(def $$0, buh $$1) {
-      super.a($$0, $$1);
-      this.l.clear();
+   public eqo e() {
+      return eqq.c;
    }
 
    @Override
-   public void b() {
-      super.b();
-      this.l.clear();
+   public cvk a() {
+      return cvt.qA;
    }
 
    @Override
-   public eqn a() {
-      return this.c(azc.a(this.b.cO().a), azc.a(this.b.cO().b + 0.5), azc.a(this.b.cO().c));
-   }
-
-   @Override
-   public eqw a(double $$0, double $$1, double $$2) {
-      return this.b($$0, $$1, $$2);
-   }
-
-   @Override
-   public int a(eqn[] $$0, eqn $$1) {
-      int $$2 = 0;
-      Map<jj, eqn> $$3 = Maps.newEnumMap(jj.class);
-
-      for (jj $$4 : jj.values()) {
-         eqn $$5 = this.a($$1.a + $$4.j(), $$1.b + $$4.k(), $$1.c + $$4.l());
-         $$3.put($$4, $$5);
-         if (this.a($$5)) {
-            $$0[$$2++] = $$5;
+   public void a(deg $$0, je $$1, eqp $$2, azl $$3) {
+      if (!$$2.b() && !$$2.c(a)) {
+         if ($$3.a(64) == 0) {
+            $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, awe.Ci, awf.e, $$3.i() * 0.25F + 0.75F, $$3.i() + 0.5F, false);
          }
+      } else if ($$3.a(10) == 0) {
+         $$0.a(ln.al, (double)$$1.u() + $$3.j(), (double)$$1.v() + $$3.j(), (double)$$1.w() + $$3.j(), 0.0, 0.0, 0.0);
       }
-
-      for (jj $$6 : jj.c.a) {
-         jj $$7 = $$6.h();
-         if (b($$3.get($$6)) && b($$3.get($$7))) {
-            eqn $$8 = this.a($$1.a + $$6.j() + $$7.j(), $$1.b, $$1.c + $$6.l() + $$7.l());
-            if (this.a($$8)) {
-               $$0[$$2++] = $$8;
-            }
-         }
-      }
-
-      return $$2;
-   }
-
-   protected boolean a(@Nullable eqn $$0) {
-      return $$0 != null && !$$0.i;
-   }
-
-   private static boolean b(@Nullable eqn $$0) {
-      return $$0 != null && $$0.k >= 0.0F;
    }
 
    @Nullable
-   protected eqn a(int $$0, int $$1, int $$2) {
-      eqn $$3 = null;
-      eqs $$4 = this.b($$0, $$1, $$2);
-      if (this.k && $$4 == eqs.u || $$4 == eqs.j) {
-         float $$5 = this.b.a($$4);
-         if ($$5 >= 0.0F) {
-            $$3 = this.c($$0, $$1, $$2);
-            $$3.l = $$4;
-            $$3.k = Math.max($$3.k, $$5);
-            if (this.a.a().b_(new je($$0, $$1, $$2)).c()) {
-               $$3.k += 8.0F;
-            }
-         }
-      }
-
-      return $$3;
-   }
-
-   protected eqs b(int $$0, int $$1, int $$2) {
-      return (eqs)this.l.computeIfAbsent(je.a($$0, $$1, $$2), $$3 -> this.a(this.a, $$0, $$1, $$2));
+   @Override
+   public ll h() {
+      return ln.l;
    }
 
    @Override
-   public eqs a(equ $$0, int $$1, int $$2, int $$3) {
-      return this.a($$0, $$1, $$2, $$3, this.b);
+   protected boolean a(deg $$0) {
+      return $$0.ac().b(dec.U);
    }
 
    @Override
-   public eqs a(equ $$0, int $$1, int $$2, int $$3, buh $$4) {
-      je.a $$5 = new je.a();
+   protected void a(deh $$0, je $$1, duo $$2) {
+      drs $$3 = $$2.x() ? $$0.c_($$1) : null;
+      dhj.a($$2, $$0, $$1, $$3);
+   }
 
-      for (int $$6 = $$1; $$6 < $$1 + this.d; $$6++) {
-         for (int $$7 = $$2; $$7 < $$2 + this.e; $$7++) {
-            for (int $$8 = $$3; $$8 < $$3 + this.f; $$8++) {
-               dua $$9 = $$0.a($$5.d($$6, $$7, $$8));
-               eqb $$10 = $$9.y();
-               if ($$10.c() && $$9.a(eqq.b) && $$9.l()) {
-                  return eqs.u;
-               }
+   @Override
+   public int b(dej $$0) {
+      return 4;
+   }
 
-               if (!$$10.a(awy.a)) {
-                  return eqs.a;
-               }
-            }
-         }
+   @Override
+   public duo b(eqp $$0) {
+      return dhl.G.o().b(dlz.b, Integer.valueOf(e($$0)));
+   }
+
+   @Override
+   public boolean a(eqo $$0) {
+      return $$0 == eqq.c || $$0 == eqq.b;
+   }
+
+   @Override
+   public int c(dej $$0) {
+      return 1;
+   }
+
+   @Override
+   public int a(dej $$0) {
+      return 5;
+   }
+
+   @Override
+   public boolean a(eqp $$0, ddl $$1, je $$2, eqo $$3, jj $$4) {
+      return $$4 == jj.a && !$$3.a(awz.a);
+   }
+
+   @Override
+   protected float c() {
+      return 100.0F;
+   }
+
+   @Override
+   public Optional<awd> j() {
+      return Optional.of(awe.di);
+   }
+
+   public static class a extends eqv {
+      @Override
+      protected void a(dup.a<eqo, eqp> $$0) {
+         super.a($$0);
+         $$0.a(b);
       }
 
-      dua $$11 = $$0.a($$5);
-      return $$11.a(eqq.b) ? eqs.j : eqs.a;
+      @Override
+      public int d(eqp $$0) {
+         return $$0.c(b);
+      }
+
+      @Override
+      public boolean c(eqp $$0) {
+         return false;
+      }
+   }
+
+   public static class b extends eqv {
+      @Override
+      public int d(eqp $$0) {
+         return 8;
+      }
+
+      @Override
+      public boolean c(eqp $$0) {
+         return true;
+      }
    }
 }

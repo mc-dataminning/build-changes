@@ -93,13 +93,13 @@ public class fi implements ArgumentType<fi.a> {
 
       @Override
       public Collection<GameProfile> getNames(et $$0) throws CommandSyntaxException {
-         List<arh> $$1 = this.a.d($$0);
+         List<ari> $$1 = this.a.d($$0);
          if ($$1.isEmpty()) {
             throw fg.e.create();
          } else {
             List<GameProfile> $$2 = Lists.newArrayList();
 
-            for (arh $$3 : $$1) {
+            for (ari $$3 : $$1) {
                $$2.add($$3.gb());
             }
 

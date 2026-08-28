@@ -1,58 +1,62 @@
-public interface dvp {
-   void a(dvr var1, double var2);
+public enum dvp implements azz {
+   a("harp", awe.rZ, dvp.a.a),
+   b("basedrum", awe.rT, dvp.a.a),
+   c("snare", awe.sc, dvp.a.a),
+   d("hat", awe.sa, dvp.a.a),
+   e("bass", awe.rU, dvp.a.a),
+   f("flute", awe.rX, dvp.a.a),
+   g("bell", awe.rV, dvp.a.a),
+   h("guitar", awe.rY, dvp.a.a),
+   i("chime", awe.rW, dvp.a.a),
+   j("xylophone", awe.sd, dvp.a.a),
+   k("iron_xylophone", awe.se, dvp.a.a),
+   l("cow_bell", awe.sf, dvp.a.a),
+   m("didgeridoo", awe.sg, dvp.a.a),
+   n("bit", awe.sh, dvp.a.a),
+   o("banjo", awe.si, dvp.a.a),
+   p("pling", awe.sb, dvp.a.a),
+   q("zombie", awe.sj, dvp.a.b),
+   r("skeleton", awe.sk, dvp.a.b),
+   s("creeper", awe.sl, dvp.a.b),
+   t("dragon", awe.sm, dvp.a.b),
+   u("wither_skeleton", awe.sn, dvp.a.b),
+   v("piglin", awe.so, dvp.a.b),
+   w("custom_head", awe.Ax, dvp.a.c);
 
-   void a(dvr var1, double var2, double var4, long var6);
+   private final String x;
+   private final jn<awd> y;
+   private final dvp.a z;
 
-   void a(dvr var1, double var2, double var4);
+   private dvp(final String $$0, final jn<awd> $$1, final dvp.a $$2) {
+      this.x = $$0;
+      this.y = $$1;
+      this.z = $$2;
+   }
 
-   void a(dvr var1, int var2);
+   @Override
+   public String c() {
+      return this.x;
+   }
 
-   void b(dvr var1, int var2);
+   public jn<awd> a() {
+      return this.y;
+   }
 
-   void b(dvr var1, double var2);
+   public boolean b() {
+      return this.z == dvp.a.a;
+   }
 
-   void c(dvr var1, double var2);
+   public boolean d() {
+      return this.z == dvp.a.c;
+   }
 
-   public static class a implements dvp {
-      private final dvr a;
+   public boolean e() {
+      return this.z != dvp.a.a;
+   }
 
-      public a(dvr $$0) {
-         this.a = $$0;
-      }
-
-      @Override
-      public void a(dvr $$0, double $$1) {
-         this.a.a($$1);
-      }
-
-      @Override
-      public void a(dvr $$0, double $$1, double $$2, long $$3) {
-         this.a.a($$1, $$2, $$3);
-      }
-
-      @Override
-      public void a(dvr $$0, double $$1, double $$2) {
-         this.a.c($$1, $$2);
-      }
-
-      @Override
-      public void a(dvr $$0, int $$1) {
-         this.a.b($$1);
-      }
-
-      @Override
-      public void b(dvr $$0, int $$1) {
-         this.a.c($$1);
-      }
-
-      @Override
-      public void b(dvr $$0, double $$1) {
-         this.a.c($$1);
-      }
-
-      @Override
-      public void c(dvr $$0, double $$1) {
-         this.a.b($$1);
-      }
+   static enum a {
+      a,
+      b,
+      c;
    }
 }

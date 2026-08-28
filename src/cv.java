@@ -2,25 +2,25 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record cv(Optional<jr<cxr>> c, Optional<jr<cxt>> d) implements dw<cxq> {
+public record cv(Optional<jr<cxs>> c, Optional<jr<cxu>> d) implements dw<cxr> {
    public static final Codec<cv> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(kc.a(lv.aW).optionalFieldOf("material").forGetter(cv::b), kc.a(lv.aX).optionalFieldOf("pattern").forGetter(cv::c)).apply($$0, cv::new)
+      $$0 -> $$0.group(kc.a(lv.aX).optionalFieldOf("material").forGetter(cv::b), kc.a(lv.aY).optionalFieldOf("pattern").forGetter(cv::c)).apply($$0, cv::new)
    );
 
    @Override
-   public kq<cxq> a() {
-      return kr.M;
+   public kq<cxr> a() {
+      return kr.P;
    }
 
-   public boolean a(cvl $$0, cxq $$1) {
+   public boolean a(cvp $$0, cxr $$1) {
       return this.c.isPresent() && !this.c.get().a($$1.b()) ? false : !this.d.isPresent() || this.d.get().a($$1.a());
    }
 
-   public Optional<jr<cxr>> b() {
+   public Optional<jr<cxs>> b() {
       return this.c;
    }
 
-   public Optional<jr<cxt>> c() {
+   public Optional<jr<cxu>> c() {
       return this.d;
    }
 }

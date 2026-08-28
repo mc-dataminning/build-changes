@@ -1,97 +1,96 @@
-import java.util.Objects;
-
-public class frl extends fqp implements frn<crw> {
-   private final crw y;
-   private final cre z = new cre() {
-      @Override
-      public void a(cqq $$0, int $$1, cvl $$2) {
-         frl.this.L();
-      }
-
-      @Override
-      public void a(cqq $$0, int $$1, int $$2) {
-         if ($$1 == 0) {
-            frl.this.M();
-         }
-      }
+public class frl {
+   private static final alc a = alc.b("alt");
+   private static final ya b = ya.a.a(a);
+   private static final frl c = new frl();
+   private final azl d = azl.a();
+   private final String[] e = new String[]{
+      "the",
+      "elder",
+      "scrolls",
+      "klaatu",
+      "berata",
+      "niktu",
+      "xyzzy",
+      "bless",
+      "curse",
+      "light",
+      "darkness",
+      "fire",
+      "air",
+      "earth",
+      "water",
+      "hot",
+      "dry",
+      "cold",
+      "wet",
+      "ignite",
+      "snuff",
+      "embiggen",
+      "twist",
+      "shorten",
+      "stretch",
+      "fiddle",
+      "destroy",
+      "imbue",
+      "galvanize",
+      "enchant",
+      "free",
+      "limited",
+      "range",
+      "of",
+      "towards",
+      "inside",
+      "sphere",
+      "cube",
+      "self",
+      "other",
+      "ball",
+      "mental",
+      "physical",
+      "grow",
+      "shrink",
+      "demon",
+      "elemental",
+      "spirit",
+      "animal",
+      "creature",
+      "beast",
+      "humanoid",
+      "undead",
+      "fresh",
+      "stale",
+      "phnglui",
+      "mglwnafh",
+      "cthulhu",
+      "rlyeh",
+      "wgahnagl",
+      "fhtagn",
+      "baguette"
    };
 
-   public frl(crw $$0, cno $$1, xd $$2) {
-      this.y = $$0;
+   private frl() {
    }
 
-   public crw K() {
-      return this.y;
+   public static frl a() {
+      return c;
    }
 
-   @Override
-   protected void aT_() {
-      super.aT_();
-      this.y.a(this.z);
-   }
+   public xi a(fjv $$0, int $$1) {
+      StringBuilder $$2 = new StringBuilder();
+      int $$3 = this.d.a(2) + 3;
 
-   @Override
-   public void d() {
-      this.m.t.s();
-      super.d();
-   }
+      for (int $$4 = 0; $$4 < $$3; $$4++) {
+         if ($$4 != 0) {
+            $$2.append(" ");
+         }
 
-   @Override
-   public void j() {
-      super.j();
-      this.y.b(this.z);
-   }
-
-   @Override
-   protected void m() {
-      if (this.m.t.go()) {
-         this.c(fka.a(xc.d, $$0 -> this.d()).a(this.n / 2 - 100, 196, 98, 20).a());
-         this.c(fka.a(xd.c("lectern.take_book"), $$0 -> this.g(3)).a(this.n / 2 + 2, 196, 98, 20).a());
-      } else {
-         super.m();
+         $$2.append(ad.a(this.e, this.d));
       }
+
+      return $$0.b().a(xd.b($$2.toString()).c(b), $$1, ya.a);
    }
 
-   @Override
-   protected void F() {
-      this.g(1);
-   }
-
-   @Override
-   protected void G() {
-      this.g(2);
-   }
-
-   @Override
-   protected boolean b(int $$0) {
-      if ($$0 != this.y.m()) {
-         this.g(100 + $$0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private void g(int $$0) {
-      this.m.r.a(this.y.l, $$0);
-   }
-
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   void L() {
-      cvl $$0 = this.y.l();
-      this.a(Objects.requireNonNullElse(fqp.a.a($$0), fqp.d));
-   }
-
-   void M() {
-      this.a(this.y.m());
-   }
-
-   @Override
-   protected void J() {
-      this.m.t.s();
+   public void a(long $$0) {
+      this.d.b($$0);
    }
 }

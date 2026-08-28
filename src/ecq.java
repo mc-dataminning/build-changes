@@ -1,52 +1,174 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
+import java.util.Set;
+import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public abstract class ecq extends edc<efn> {
-   public ecq(Codec<efn> $$0) {
-      super($$0);
+public abstract class ecq<C extends ecj> {
+   public static final ecq<ecm> a = a("cave", new ecn(ecm.a));
+   public static final ecq<ecm> b = a("nether_cave", new ecp(ecm.a));
+   public static final ecq<ech> c = a("canyon", new eci(ech.a));
+   protected static final duo d = dhl.a.o();
+   protected static final duo e = dhl.nc.o();
+   protected static final eqp f = eqq.c.g();
+   protected static final eqp g = eqq.e.g();
+   protected Set<eqo> h = ImmutableSet.of(eqq.c);
+   private final MapCodec<eco<C>> i;
+
+   private static <C extends ecj, F extends ecq<C>> F a(String $$0, F $$1) {
+      return ka.a(lu.N, $$0, $$1);
    }
 
-   @Override
-   public boolean a(ede<efn> $$0) {
-      azk $$1 = $$0.d();
-      dep $$2 = $$0.b();
-      je $$3 = $$0.e();
-      Optional<dgv> $$4 = lu.e.a(aws.ar, $$1).map(jn::a);
-      return $$4.isEmpty() ? false : this.a($$2, $$1, $$3, $$4.get().o());
+   public ecq(Codec<C> $$0) {
+      this.i = $$0.fieldOf("config").xmap(this::a, eco::b);
    }
 
-   protected abstract boolean a(ddt var1, azk var2, je var3, dua var4);
+   public eco<C> a(C $$0) {
+      return new eco<>(this, $$0);
+   }
 
-   protected boolean b(ddt $$0, azk $$1, je $$2, dua $$3) {
-      je $$4 = $$2.d();
-      dua $$5 = $$0.a_($$2);
-      if (($$5.a(dgx.G) || $$5.a(aws.au)) && $$0.a_($$4).a(dgx.G)) {
-         $$0.a($$2, $$3, 3);
-         if ($$1.i() < 0.25F) {
-            lu.e.a(aws.au, $$1).map(jn::a).ifPresent($$2x -> $$0.a($$4, $$2x.o(), 2));
-         } else if ($$1.i() < 0.05F) {
-            $$0.a($$4, dgx.mV.o().b(dnt.c, Integer.valueOf($$1.a(4) + 1)), 2);
-         }
+   public MapCodec<eco<C>> c() {
+      return this.i;
+   }
 
-         for (jj $$6 : jj.c.a) {
-            if ($$1.i() < 0.2F) {
-               je $$7 = $$2.a($$6);
-               if ($$0.a_($$7).a(dgx.G)) {
-                  lu.e.a(aws.as, $$1).map(jn::a).ifPresent($$3x -> {
-                     dua $$4x = $$3x.o();
-                     if ($$4x.b(dgg.c)) {
-                        $$4x = $$4x.b(dgg.c, $$6);
+   public int d() {
+      return 4;
+   }
+
+   protected boolean a(
+      ecl $$0, C $$1, dwk $$2, Function<je, jn<dfh>> $$3, dzw $$4, double $$5, double $$6, double $$7, double $$8, double $$9, dwj $$10, ecq.a $$11
+   ) {
+      ddm $$12 = $$2.f();
+      double $$13 = (double)$$12.b();
+      double $$14 = (double)$$12.c();
+      double $$15 = 16.0 + $$8 * 2.0;
+      if (!(Math.abs($$5 - $$13) > $$15) && !(Math.abs($$7 - $$14) > $$15)) {
+         int $$16 = $$12.d();
+         int $$17 = $$12.e();
+         int $$18 = Math.max(azd.a($$5 - $$8) - $$16 - 1, 0);
+         int $$19 = Math.min(azd.a($$5 + $$8) - $$16, 15);
+         int $$20 = Math.max(azd.a($$6 - $$9) - 1, $$0.a() + 1);
+         int $$21 = $$2.x() ? 0 : 7;
+         int $$22 = Math.min(azd.a($$6 + $$9) + 1, $$0.a() + $$0.b() - 1 - $$21);
+         int $$23 = Math.max(azd.a($$7 - $$8) - $$17 - 1, 0);
+         int $$24 = Math.min(azd.a($$7 + $$8) - $$17, 15);
+         boolean $$25 = false;
+         je.a $$26 = new je.a();
+         je.a $$27 = new je.a();
+
+         for (int $$28 = $$18; $$28 <= $$19; $$28++) {
+            int $$29 = $$12.a($$28);
+            double $$30 = ((double)$$29 + 0.5 - $$5) / $$8;
+
+            for (int $$31 = $$23; $$31 <= $$24; $$31++) {
+               int $$32 = $$12.b($$31);
+               double $$33 = ((double)$$32 + 0.5 - $$7) / $$8;
+               if (!($$30 * $$30 + $$33 * $$33 >= 1.0)) {
+                  MutableBoolean $$34 = new MutableBoolean(false);
+
+                  for (int $$35 = $$22; $$35 > $$20; $$35--) {
+                     double $$36 = ((double)$$35 - 0.5 - $$6) / $$9;
+                     if (!$$11.shouldSkip($$0, $$30, $$36, $$33, $$35) && (!$$10.b($$28, $$35, $$31) || b($$1))) {
+                        $$10.a($$28, $$35, $$31);
+                        $$26.d($$29, $$35, $$32);
+                        $$25 |= this.a($$0, $$1, $$2, $$3, $$10, $$26, $$27, $$4, $$34);
                      }
-
-                     $$0.a($$7, $$4x, 2);
-                  });
+                  }
                }
             }
          }
 
-         return true;
+         return $$25;
       } else {
          return false;
       }
+   }
+
+   protected boolean a(ecl $$0, C $$1, dwk $$2, Function<je, jn<dfh>> $$3, dwj $$4, je.a $$5, je.a $$6, dzw $$7, MutableBoolean $$8) {
+      duo $$9 = $$2.a_($$5);
+      if ($$9.a(dhl.i) || $$9.a(dhl.fl)) {
+         $$8.setTrue();
+      }
+
+      if (!this.a($$1, $$9) && !b($$1)) {
+         return false;
+      } else {
+         duo $$10 = this.a($$0, $$1, $$5, $$7);
+         if ($$10 == null) {
+            return false;
+         } else {
+            $$2.a($$5, $$10, false);
+            if ($$7.a() && !$$10.y().c()) {
+               $$2.e($$5);
+            }
+
+            if ($$8.isTrue()) {
+               $$6.a($$5, jj.a);
+               if ($$2.a_($$6).a(dhl.j)) {
+                  $$0.a($$3, $$2, $$6, !$$10.y().c()).ifPresent($$2x -> {
+                     $$2.a($$6, $$2x, false);
+                     if (!$$2x.y().c()) {
+                        $$2.e($$6);
+                     }
+                  });
+               }
+            }
+
+            return true;
+         }
+      }
+   }
+
+   @Nullable
+   private duo a(ecl $$0, C $$1, je $$2, dzw $$3) {
+      if ($$2.v() <= $$1.g.a($$0)) {
+         return g.g();
+      } else {
+         duo $$4 = $$3.a(new ead.e($$2.u(), $$2.v(), $$2.w()), 0.0);
+         if ($$4 == null) {
+            return b($$1) ? $$1.h.e() : null;
+         } else {
+            return b($$1) ? b($$1, $$4) : $$4;
+         }
+      }
+   }
+
+   private static duo b(ecj $$0, duo $$1) {
+      if ($$1.a(dhl.a)) {
+         return $$0.h.b();
+      } else if ($$1.a(dhl.G)) {
+         duo $$2 = $$0.h.c();
+         return $$2.b(dve.C) ? $$2.b(dve.C, Boolean.valueOf(true)) : $$2;
+      } else {
+         return $$1.a(dhl.H) ? $$0.h.d() : $$1;
+      }
+   }
+
+   public abstract boolean a(ecl var1, C var2, dwk var3, Function<je, jn<dfh>> var4, azl var5, dzw var6, ddm var7, dwj var8);
+
+   public abstract boolean a(C var1, azl var2);
+
+   protected boolean a(C $$0, duo $$1) {
+      return $$1.a($$0.i);
+   }
+
+   protected static boolean a(ddm $$0, double $$1, double $$2, int $$3, int $$4, float $$5) {
+      double $$6 = (double)$$0.b();
+      double $$7 = (double)$$0.c();
+      double $$8 = $$1 - $$6;
+      double $$9 = $$2 - $$7;
+      double $$10 = (double)($$4 - $$3);
+      double $$11 = (double)($$5 + 2.0F + 16.0F);
+      return $$8 * $$8 + $$9 * $$9 - $$10 * $$10 <= $$11 * $$11;
+   }
+
+   private static boolean b(ecj $$0) {
+      return $$0.h.a();
+   }
+
+   public interface a {
+      boolean shouldSkip(ecl var1, double var2, double var4, double var6, int var8);
    }
 }

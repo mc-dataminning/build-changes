@@ -1,41 +1,47 @@
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
+import java.util.Collection;
+import java.util.Collections;
 
 public class anl {
+   public static final int a = 2;
+
    public static void a(CommandDispatcher<et> $$0) {
-      final LiteralArgumentBuilder<et> $$1 = (LiteralArgumentBuilder<et>)eu.a("gamerule").requires($$0x -> $$0x.c(2));
-      new ddo(cqj.f.a())
-         .a(
-            new ddo.c() {
-               @Override
-               public <T extends ddo.g<T>> void a(ddo.e<T> $$0, ddo.f<T> $$1x) {
-                  LiteralArgumentBuilder<et> $$2 = eu.a($$0.a());
-                  if (!$$1.b().b()) {
-                     $$2.requires($$1xxx -> $$1.b().a($$1xxx.w()));
-                  }
-
-                  $$1.then(
-                     ((LiteralArgumentBuilder)$$2.executes($$1xxx -> anl.a((et)$$1xxx.getSource(), $$0)))
-                        .then($$1.a("value").executes($$1xxx -> anl.a($$1xxx, $$0)))
-                  );
-               }
-            }
-         );
-      $$0.register($$1);
+      $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("gamemode").requires($$0x -> $$0x.c(2)))
+            .then(
+               ((RequiredArgumentBuilder)eu.a("gamemode", fh.a())
+                     .executes($$0x -> a($$0x, Collections.singleton(((et)$$0x.getSource()).h()), fh.a($$0x, "gamemode"))))
+                  .then(eu.a("target", fg.d()).executes($$0x -> a($$0x, fg.f($$0x, "target"), fh.a($$0x, "gamemode"))))
+            )
+      );
    }
 
-   static <T extends ddo.g<T>> int a(CommandContext<et> $$0, ddo.e<T> $$1) {
-      et $$2 = (et)$$0.getSource();
-      T $$3 = $$2.l().aL().a($$1);
-      $$3.b($$0, "value");
-      $$2.a(() -> xd.a("commands.gamerule.set", $$1.a(), $$3.toString()), true);
-      return $$3.c();
+   private static void a(et $$0, ari $$1, ded $$2) {
+      xd $$3 = xd.c("gameMode." + $$2.b());
+      if ($$0.f() == $$1) {
+         $$0.a(() -> xd.a("commands.gamemode.success.self", $$3), true);
+      } else {
+         if ($$0.e().ac().b(dec.p)) {
+            $$1.a(xd.a("gameMode.changed", $$3));
+         }
+
+         $$0.a(() -> xd.a("commands.gamemode.success.other", $$1.Q_(), $$3), true);
+      }
    }
 
-   static <T extends ddo.g<T>> int a(et $$0, ddo.e<T> $$1) {
-      T $$2 = $$0.l().aL().a($$1);
-      $$0.a(() -> xd.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
-      return $$2.c();
+   private static int a(CommandContext<et> $$0, Collection<ari> $$1, ded $$2) {
+      int $$3 = 0;
+
+      for (ari $$4 : $$1) {
+         if ($$4.a($$2)) {
+            a((et)$$0.getSource(), $$4, $$2);
+            $$3++;
+         }
+      }
+
+      return $$3;
    }
 }

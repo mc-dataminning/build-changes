@@ -1,4 +1,7 @@
-public class gsw extends gsu {
+public class gsw extends guj {
    public float a;
-   public float b;
+   public boolean b = true;
+   public boolean c;
+   public boolean d;
+   public boolean e;
 }

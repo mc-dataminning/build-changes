@@ -7,11 +7,11 @@ public class afm implements zk<abz> {
    public static final int d = 2;
    private final String e;
    private final xd f;
-   private final ezl.a g;
+   private final faa.a g;
    private final Optional<yt> h;
    private final int i;
 
-   public afm(eza $$0, int $$1) {
+   public afm(ezp $$0, int $$1) {
       this.e = $$0.b();
       this.f = $$0.d();
       this.g = $$0.h();
@@ -24,11 +24,11 @@ public class afm implements zk<abz> {
       this.i = $$0.readByte();
       if (this.i != 0 && this.i != 2) {
          this.f = xc.a;
-         this.g = ezl.a.a;
+         this.g = faa.a.a;
          this.h = Optional.empty();
       } else {
          this.f = xf.d.decode($$0);
-         this.g = $$0.b(ezl.a.class);
+         this.g = $$0.b(faa.a.class);
          this.h = yv.d.decode($$0);
       }
    }
@@ -64,7 +64,7 @@ public class afm implements zk<abz> {
       return this.i;
    }
 
-   public ezl.a g() {
+   public faa.a g() {
       return this.g;
    }
 

@@ -1,99 +1,80 @@
-import java.util.Optional;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class gfb extends gfe {
-   gfb(gax $$0, gez $$1, double $$2, double $$3, double $$4) {
-      super($$0, $$2, $$3 - 0.125, $$4);
-      this.b(0.01F, 0.01F);
-      this.a($$1);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
-      this.n = false;
-      this.B = 1.0F;
-      this.u = 0.0F;
+public abstract class gfb extends geo {
+   protected float D = 0.1F * (this.r.i() * 0.5F + 0.5F) * 2.0F;
+
+   protected gfb(gbh $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   gfb(gax $$0, gez $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      super($$0, $$2, $$3 - 0.125, $$4, $$5, $$6, $$7);
-      this.b(0.01F, 0.01F);
-      this.a($$1);
-      this.D = this.D * (this.r.i() * 0.6F + 0.6F);
-      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
-      this.n = false;
-      this.B = 1.0F;
-      this.u = 0.0F;
+   protected gfb(gbh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+   }
+
+   public gfb.a p() {
+      return gfb.a.a;
    }
 
    @Override
-   public gei b() {
-      return gei.b;
+   public void a(fdi $$0, fhu $$1, float $$2) {
+      Quaternionf $$3 = new Quaternionf();
+      this.p().setRotation($$3, $$1, $$2);
+      if (this.z != 0.0F) {
+         $$3.rotateZ(azd.h($$2, this.A, this.z));
+      }
+
+      this.a($$0, $$1, $$3, $$2);
    }
 
-   public static class a implements geh<lr> {
-      private final gez a;
-
-      public a(gez $$0) {
-         this.a = $$0;
-      }
-
-      public gee a(lr $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         azk $$8 = $$1.z;
-         double $$9 = $$8.k() * 1.0E-6F;
-         double $$10 = $$8.k() * 1.0E-4F;
-         double $$11 = $$8.k() * 1.0E-6F;
-         gfb $$12 = new gfb($$1, this.a, $$2, $$3, $$4, $$9, $$10, $$11);
-         $$12.a(0.9F, 0.4F, 0.5F);
-         return $$12;
-      }
+   protected void a(fdi $$0, fhu $$1, Quaternionf $$2, float $$3) {
+      eys $$4 = $$1.b();
+      float $$5 = (float)(azd.d((double)$$3, this.d, this.g) - $$4.a());
+      float $$6 = (float)(azd.d((double)$$3, this.e, this.h) - $$4.b());
+      float $$7 = (float)(azd.d((double)$$3, this.f, this.i) - $$4.c());
+      this.a($$0, $$2, $$5, $$6, $$7, $$3);
    }
 
-   public static class b implements geh<lr> {
-      private final gez a;
-
-      public b(gez $$0) {
-         this.a = $$0;
-      }
-
-      public gee a(lr $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gfb $$8 = new gfb($$1, this.a, $$2, $$3, $$4, 0.0, -0.8F, 0.0) {
-            @Override
-            public Optional<lk> o() {
-               return Optional.of(lk.a);
-            }
-         };
-         $$8.t = azc.b($$1.z, 500, 1000);
-         $$8.u = 0.01F;
-         $$8.a(0.32F, 0.5F, 0.22F);
-         return $$8;
-      }
+   protected void a(fdi $$0, Quaternionf $$1, float $$2, float $$3, float $$4, float $$5) {
+      float $$6 = this.b($$5);
+      float $$7 = this.c();
+      float $$8 = this.d();
+      float $$9 = this.e();
+      float $$10 = this.f();
+      int $$11 = this.a($$5);
+      this.a($$0, $$1, $$2, $$3, $$4, 1.0F, -1.0F, $$6, $$8, $$10, $$11);
+      this.a($$0, $$1, $$2, $$3, $$4, 1.0F, 1.0F, $$6, $$8, $$9, $$11);
+      this.a($$0, $$1, $$2, $$3, $$4, -1.0F, 1.0F, $$6, $$7, $$9, $$11);
+      this.a($$0, $$1, $$2, $$3, $$4, -1.0F, -1.0F, $$6, $$7, $$10, $$11);
    }
 
-   public static class c implements geh<lr> {
-      private final gez a;
-
-      public c(gez $$0) {
-         this.a = $$0;
-      }
-
-      public gee a(lr $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gfb $$8 = new gfb($$1, this.a, $$2, $$3, $$4);
-         $$8.a(0.4F, 0.4F, 0.7F);
-         return $$8;
-      }
+   private void a(fdi $$0, Quaternionf $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, int $$10) {
+      Vector3f $$11 = new Vector3f($$5, $$6, 0.0F).rotate($$1).mul($$7).add($$2, $$3, $$4);
+      $$0.a($$11.x(), $$11.y(), $$11.z()).a($$8, $$9).a(this.v, this.w, this.x, this.y).c($$10);
    }
 
-   public static class d implements geh<lr> {
-      private final gez a;
+   public float b(float $$0) {
+      return this.D;
+   }
 
-      public d(gez $$0) {
-         this.a = $$0;
-      }
+   @Override
+   public geo d(float $$0) {
+      this.D *= $$0;
+      return super.d($$0);
+   }
 
-      public gee a(lr $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         double $$8 = (double)$$1.z.i() * -1.9 * (double)$$1.z.i() * 0.1;
-         gfb $$9 = new gfb($$1, this.a, $$2, $$3, $$4, 0.0, $$8, 0.0);
-         $$9.a(0.1F, 0.1F, 0.3F);
-         $$9.b(0.001F, 0.001F);
-         return $$9;
-      }
+   protected abstract float c();
+
+   protected abstract float d();
+
+   protected abstract float e();
+
+   protected abstract float f();
+
+   public interface a {
+      gfb.a a = ($$0, $$1, $$2) -> $$0.set($$1.f());
+      gfb.a b = ($$0, $$1, $$2) -> $$0.set(0.0F, $$1.f().y, 0.0F, $$1.f().w);
+
+      void setRotation(Quaternionf var1, fhu var2, float var3);
    }
 }

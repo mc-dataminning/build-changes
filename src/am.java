@@ -1,11 +1,11 @@
 import com.mojang.serialization.Codec;
 
-public enum am implements azy {
+public enum am implements azz {
    a("task", n.k),
    b("challenge", n.f),
    c("goal", n.k);
 
-   public static final Codec<am> d = azy.a(am::values);
+   public static final Codec<am> d = azz.a(am::values);
    private final String e;
    private final n f;
    private final xd g;
@@ -29,7 +29,7 @@ public enum am implements azy {
       return this.e;
    }
 
-   public xr a(ag $$0, arh $$1) {
+   public xr a(ag $$0, ari $$1) {
       return xd.a("chat.type.advancement." + this.e, $$1.Q_(), af.a($$0));
    }
 }

@@ -1,86 +1,89 @@
+import java.util.EnumSet;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cbe extends cbz {
-   private static final int i = 2;
-   private static final int j = 32;
-   private static final int k = 10;
-   private static final int l = 7;
+public class cbe extends cbh {
+   private final bum a;
+   private final Predicate<bum> b;
+   @Nullable
+   private bum c;
+   private final double d;
+   private final cdv e;
+   private int f;
+   private final float g;
+   private float h;
+   private final float i;
 
-   public cbe(bun $$0, double $$1) {
-      super($$0, $$1, 240, false);
+   public cbe(bum $$0, double $$1, float $$2, float $$3) {
+      this.a = $$0;
+      this.b = $$1x -> $$1x != null && $$0.getClass() != $$1x.getClass();
+      this.d = $$1;
+      this.e = $$0.P();
+      this.g = $$2;
+      this.i = $$3;
+      this.a(EnumSet.of(cbh.a.a, cbh.a.b));
+      if (!($$0.P() instanceof cdu) && !($$0.P() instanceof cdt)) {
+         throw new IllegalArgumentException("Unsupported mob type for FollowMobGoal");
+      }
    }
 
-   @Nullable
    @Override
-   protected eye h() {
-      float $$0 = this.b.dS().z.i();
-      if (this.b.dS().z.i() < 0.3F) {
-         return this.k();
-      } else {
-         eye $$1;
-         if ($$0 < 0.7F) {
-            $$1 = this.l();
-            if ($$1 == null) {
-               $$1 = this.m();
-            }
-         } else {
-            $$1 = this.m();
-            if ($$1 == null) {
-               $$1 = this.l();
+   public boolean b() {
+      List<bum> $$0 = this.a.dS().a(bum.class, this.a.cO().g((double)this.i), this.b);
+      if (!$$0.isEmpty()) {
+         for (bum $$1 : $$0) {
+            if (!$$1.cm()) {
+               this.c = $$1;
+               return true;
             }
          }
-
-         return $$1 == null ? this.k() : $$1;
       }
+
+      return false;
    }
 
-   @Nullable
-   private eye k() {
-      return cfc.a(this.b, 10, 7);
+   @Override
+   public boolean c() {
+      return this.c != null && !this.e.m() && this.a.g(this.c) > (double)(this.g * this.g);
    }
 
-   @Nullable
-   private eye l() {
-      arg $$0 = (arg)this.b.dS();
-      List<cnc> $$1 = $$0.a(btq.bj, this.b.cO().g(32.0), this::a);
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         cnc $$2 = $$1.get(this.b.dS().z.a($$1.size()));
-         eye $$3 = $$2.dq();
-         return cfc.a(this.b, 10, 7, $$3);
+   @Override
+   public void d() {
+      this.f = 0;
+      this.h = this.a.a(erg.j);
+      this.a.a(erg.j, 0.0F);
+   }
+
+   @Override
+   public void e() {
+      this.c = null;
+      this.e.o();
+      this.a.a(erg.j, this.h);
+   }
+
+   @Override
+   public void a() {
+      if (this.c != null && !this.a.K_()) {
+         this.a.K().a(this.c, 10.0F, (float)this.a.ae());
+         if (--this.f <= 0) {
+            this.f = this.a(10);
+            double $$0 = this.a.dx() - this.c.dx();
+            double $$1 = this.a.dz() - this.c.dz();
+            double $$2 = this.a.dD() - this.c.dD();
+            double $$3 = $$0 * $$0 + $$1 * $$1 + $$2 * $$2;
+            if (!($$3 <= (double)(this.g * this.g))) {
+               this.e.a(this.c, this.d);
+            } else {
+               this.e.o();
+               caj $$4 = this.c.K();
+               if ($$3 <= (double)this.g || $$4.e() == this.a.dx() && $$4.f() == this.a.dz() && $$4.g() == this.a.dD()) {
+                  double $$5 = this.c.dx() - this.a.dx();
+                  double $$6 = this.c.dD() - this.a.dD();
+                  this.e.a(this.a.dx() - $$5, this.a.dz(), this.a.dD() - $$6, this.d);
+               }
+            }
+         }
       }
-   }
-
-   @Nullable
-   private eye m() {
-      kg $$0 = this.n();
-      if ($$0 == null) {
-         return null;
-      } else {
-         je $$1 = this.a($$0);
-         return $$1 == null ? null : cfc.a(this.b, 10, 7, eye.c($$1));
-      }
-   }
-
-   @Nullable
-   private kg n() {
-      arg $$0 = (arg)this.b.dS();
-      List<kg> $$1 = kg.a(kg.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
-      return $$1.isEmpty() ? null : $$1.get($$0.z.a($$1.size()));
-   }
-
-   @Nullable
-   private je a(kg $$0) {
-      arg $$1 = (arg)this.b.dS();
-      cfi $$2 = $$1.y();
-      List<je> $$3 = $$2.c($$0x -> true, $$0.k(), 8, cfi.b.b).map(cfj::g).collect(Collectors.toList());
-      return $$3.isEmpty() ? null : $$3.get($$1.z.a($$3.size()));
-   }
-
-   private boolean a(cnc $$0) {
-      return $$0.a(this.b.dS().aa());
    }
 }

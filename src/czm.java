@@ -1,76 +1,71 @@
-import java.util.ArrayList;
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class czm extends czk {
-   private static final czp a = czp.a(cvo.qP);
-   private static final czp b = czp.a(cvo.pv);
-   private static final czp c = czp.a(cvo.ux);
+public class czm {
+   @Nullable
+   private final cnu a;
+   private final bro b;
+   private final eyo c;
+   private final deg d;
+   private final cvp e;
 
-   public czm(czh $$0) {
-      super($$0);
+   public czm(cnu $$0, bro $$1, eyo $$2) {
+      this($$0.dS(), $$0, $$1, $$0.b($$1), $$2);
    }
 
-   public boolean a(czi $$0, dds $$1) {
-      boolean $$2 = false;
-      int $$3 = 0;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cvl $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if (a.a($$5)) {
-               if ($$2) {
-                  return false;
-               }
-
-               $$2 = true;
-            } else if (b.a($$5)) {
-               if (++$$3 > 3) {
-                  return false;
-               }
-            } else if (!c.a($$5)) {
-               return false;
-            }
-         }
-      }
-
-      return $$2 && $$3 >= 1;
+   protected czm(deg $$0, @Nullable cnu $$1, bro $$2, cvp $$3, eyo $$4) {
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$4;
+      this.e = $$3;
+      this.d = $$0;
    }
 
-   public cvl a(czi $$0, jp.a $$1) {
-      List<cye> $$2 = new ArrayList<>();
-      int $$3 = 0;
-
-      for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cvl $$5 = $$0.a($$4);
-         if (!$$5.f()) {
-            if (b.a($$5)) {
-               $$3++;
-            } else if (c.a($$5)) {
-               cye $$6 = $$5.a(kr.W);
-               if ($$6 != null) {
-                  $$2.add($$6);
-               }
-            }
-         }
-      }
-
-      cvl $$7 = new cvl(cvo.uw, 3);
-      $$7.b(kr.X, new cyf($$3, $$2));
-      return $$7;
+   protected final eyo j() {
+      return this.c;
    }
 
-   @Override
-   public boolean a(int $$0, int $$1) {
-      return $$0 * $$1 >= 2;
+   public je a() {
+      return this.c.b();
    }
 
-   @Override
-   public cvl a(jp.a $$0) {
-      return new cvl(cvo.uw);
+   public jj k() {
+      return this.c.c();
    }
 
-   @Override
-   public czy<?> as_() {
-      return czy.g;
+   public eys l() {
+      return this.c.g();
+   }
+
+   public boolean m() {
+      return this.c.e();
+   }
+
+   public cvp n() {
+      return this.e;
+   }
+
+   @Nullable
+   public cnu o() {
+      return this.a;
+   }
+
+   public bro p() {
+      return this.b;
+   }
+
+   public deg q() {
+      return this.d;
+   }
+
+   public jj g() {
+      return this.a == null ? jj.c : this.a.cL();
+   }
+
+   public boolean h() {
+      return this.a != null && this.a.fS();
+   }
+
+   public float i() {
+      return this.a == null ? 0.0F : this.a.dI();
    }
 }

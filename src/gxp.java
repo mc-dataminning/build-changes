@@ -1,69 +1,124 @@
 import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.HashMap;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.Optional;
 import org.slf4j.Logger;
 
-public class gxp extends ua {
-   private static final Logger b = LogUtils.getLogger();
-   private final Map<String, String> c;
-   private final boolean d;
+public class gxp implements gxf {
+   static final Logger c = LogUtils.getLogger();
+   public static final MapCodec<gxp> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               alc.a.fieldOf("resource").forGetter($$0x -> $$0x.d),
+               aym.a(gxp.a.a.listOf()).fieldOf("regions").forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.optionalFieldOf("divisor_x", 1.0).forGetter($$0x -> $$0x.f),
+               Codec.DOUBLE.optionalFieldOf("divisor_y", 1.0).forGetter($$0x -> $$0x.g)
+            )
+            .apply($$0, gxp::new)
+   );
+   private final alc d;
+   private final List<gxp.a> e;
+   private final double f;
+   private final double g;
 
-   private gxp(Map<String, String> $$0, boolean $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public gxp(alc $$0, List<gxp.a> $$1, double $$2, double $$3) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
+      this.g = $$3;
    }
 
-   public static gxp a(aus $$0, List<String> $$1, boolean $$2) {
-      Map<String, String> $$3 = new HashMap<>();
+   @Override
+   public void a(aut $$0, gxf.a $$1) {
+      alc $$2 = a.a(this.d);
+      Optional<aur> $$3 = $$0.getResource($$2);
+      if ($$3.isPresent()) {
+         gxl $$4 = new gxl($$2, $$3.get(), this.e.size());
 
-      for (String $$4 : $$1) {
-         String $$5 = String.format(Locale.ROOT, "lang/%s.json", $$4);
-
-         for (String $$6 : $$0.a()) {
-            try {
-               alb $$7 = alb.a($$6, $$5);
-               a($$4, $$0.a($$7), $$3);
-            } catch (Exception var10) {
-               b.warn("Skipped language file: {}:{} ({})", new Object[]{$$6, $$5, var10.toString()});
-            }
+         for (gxp.a $$5 : this.e) {
+            $$1.a($$5.b, new gxp.b($$4, $$5, this.f, this.g));
          }
-      }
-
-      tz.a().a($$3);
-      return new gxp(Map.copyOf($$3), $$2);
-   }
-
-   private static void a(String $$0, List<auq> $$1, Map<String, String> $$2) {
-      for (auq $$3 : $$1) {
-         try (InputStream $$4 = $$3.d()) {
-            ua.a($$4, $$2::put);
-         } catch (IOException var10) {
-            b.warn("Failed to load translations for {} from pack {}", new Object[]{$$0, $$3.b(), var10});
-         }
+      } else {
+         c.warn("Missing sprite: {}", $$2);
       }
    }
 
    @Override
-   public String a(String $$0, String $$1) {
-      return this.c.getOrDefault($$0, $$1);
+   public gxh a() {
+      return gxi.d;
    }
 
-   @Override
-   public boolean b(String $$0) {
-      return this.c.containsKey($$0);
+   static record a(alc b, double c, double d, double e, double f) {
+      public static final Codec<gxp.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  alc.a.fieldOf("sprite").forGetter(gxp.a::a),
+                  Codec.DOUBLE.fieldOf("x").forGetter(gxp.a::b),
+                  Codec.DOUBLE.fieldOf("y").forGetter(gxp.a::c),
+                  Codec.DOUBLE.fieldOf("width").forGetter(gxp.a::d),
+                  Codec.DOUBLE.fieldOf("height").forGetter(gxp.a::e)
+               )
+               .apply($$0, gxp.a::new)
+      );
+
+      public alc a() {
+         return this.b;
+      }
+
+      public double b() {
+         return this.c;
+      }
+
+      public double c() {
+         return this.d;
+      }
+
+      public double d() {
+         return this.e;
+      }
+
+      public double e() {
+         return this.f;
+      }
    }
 
-   @Override
-   public boolean b() {
-      return this.d;
-   }
+   static class b implements gxf.b {
+      private final gxl a;
+      private final gxp.a b;
+      private final double c;
+      private final double d;
 
-   @Override
-   public ayo a(xi $$0) {
-      return gxq.a($$0, this.d);
+      b(gxl $$0, gxp.a $$1, double $$2, double $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public gwv a(gxe $$0) {
+         try {
+            fce $$1 = this.a.a();
+            double $$2 = (double)$$1.a() / this.c;
+            double $$3 = (double)$$1.b() / this.d;
+            int $$4 = azd.a(this.b.c * $$2);
+            int $$5 = azd.a(this.b.d * $$3);
+            int $$6 = azd.a(this.b.e * $$2);
+            int $$7 = azd.a(this.b.f * $$3);
+            fce $$8 = new fce(fce.a.a, $$6, $$7, false);
+            $$1.a($$8, $$4, $$5, 0, 0, $$6, $$7, false, false);
+            return new gwv(this.b.b, new gyp($$6, $$7), $$8, auv.a);
+         } catch (Exception var16) {
+            gxp.c.error("Failed to unstitch region {}", this.b.b, var16);
+         } finally {
+            this.a.b();
+         }
+
+         return gwr.a();
+      }
+
+      @Override
+      public void a() {
+         this.a.b();
+      }
    }
 }

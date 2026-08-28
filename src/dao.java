@@ -1,102 +1,75 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
+import com.mojang.datafixers.util.Pair;
 import javax.annotation.Nullable;
 
-public class dao implements dal {
-   final Optional<czp> a;
-   final Optional<czp> b;
-   final Optional<czp> c;
-   @Nullable
-   private czs d;
-
-   public dao(Optional<czp> $$0, Optional<czp> $$1, Optional<czp> $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public class dao extends czy {
+   public dao(czv $$0) {
+      super($$0);
    }
 
-   public cvl a(dam $$0, jp.a $$1) {
-      cvl $$2 = $$0.d();
-      if (czp.a(this.b, $$2)) {
-         Optional<jn.c<cxr>> $$3 = cxs.a($$1, $$0.e());
-         Optional<jn.c<cxt>> $$4 = cxu.a($$1, $$0.c());
-         if ($$3.isPresent() && $$4.isPresent()) {
-            cxq $$5 = $$2.a(kr.M);
-            if ($$5 != null && $$5.a($$4.get(), $$3.get())) {
-               return cvl.k;
-            }
+   @Nullable
+   private Pair<cvp, cvp> a(czw $$0) {
+      cvp $$1 = null;
+      cvp $$2 = null;
 
-            cvl $$6 = $$2.c(1);
-            $$6.b(kr.M, new cxq($$3.get(), $$4.get()));
-            return $$6;
+      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
+         cvp $$4 = $$0.a($$3);
+         if (!$$4.f()) {
+            if ($$1 == null) {
+               $$1 = $$4;
+            } else {
+               if ($$2 != null) {
+                  return null;
+               }
+
+               $$2 = $$4;
+            }
          }
       }
 
-      return cvl.k;
+      return $$1 != null && $$2 != null && a($$1, $$2) ? Pair.of($$1, $$2) : null;
    }
 
-   @Override
-   public cvl a(jp.a $$0) {
-      cvl $$1 = new cvl(cvo.pI);
-      Optional<jn.c<cxt>> $$2 = $$0.b(lv.aX).b().findFirst();
-      Optional<jn.c<cxr>> $$3 = $$0.b(lv.aW).a(cxs.d);
-      if ($$2.isPresent() && $$3.isPresent()) {
-         $$1.b(kr.M, new cxq($$3.get(), $$2.get()));
+   private static boolean a(cvp $$0, cvp $$1) {
+      return $$1.a($$0.h()) && $$0.J() == 1 && $$1.J() == 1 && $$0.b(kr.d) && $$1.b(kr.d) && $$0.b(kr.e) && $$1.b(kr.e);
+   }
+
+   public boolean a(czw $$0, deg $$1) {
+      return this.a($$0) != null;
+   }
+
+   public cvp a(czw $$0, jp.a $$1) {
+      Pair<cvp, cvp> $$2 = this.a($$0);
+      if ($$2 == null) {
+         return cvp.k;
+      } else {
+         cvp $$3 = (cvp)$$2.getFirst();
+         cvp $$4 = (cvp)$$2.getSecond();
+         int $$5 = Math.max($$3.p(), $$4.p());
+         int $$6 = $$3.p() - $$3.o();
+         int $$7 = $$4.p() - $$4.o();
+         int $$8 = $$6 + $$7 + $$5 * 5 / 100;
+         cvp $$9 = new cvp($$3.h());
+         $$9.b(kr.d, $$5);
+         $$9.b(Math.max($$5 - $$8, 0));
+         dbq $$10 = dbm.b($$3);
+         dbq $$11 = dbm.b($$4);
+         dbm.a($$9, $$3x -> $$1.b(lv.aM).b().filter($$0xx -> $$0xx.a(aww.o)).forEach($$3xx -> {
+               int $$4x = Math.max($$10.a($$3xx), $$11.a($$3xx));
+               if ($$4x > 0) {
+                  $$3x.b($$3xx, $$4x);
+               }
+            }));
+         return $$9;
       }
-
-      return $$1;
    }
 
    @Override
-   public boolean a(cvl $$0) {
-      return czp.a(this.a, $$0);
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
    }
 
    @Override
-   public boolean b(cvl $$0) {
-      return czp.a(this.b, $$0);
-   }
-
-   @Override
-   public boolean c(cvl $$0) {
-      return czp.a(this.c, $$0);
-   }
-
-   @Override
-   public czy<?> as_() {
-      return czy.u;
-   }
-
-   @Override
-   public czs a() {
-      if (this.d == null) {
-         this.d = czs.a(List.of(this.a, this.b, this.c));
-      }
-
-      return this.d;
-   }
-
-   public static class a implements czy<dao> {
-      private static final MapCodec<dao> x = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  czp.d.optionalFieldOf("template").forGetter($$0x -> $$0x.a),
-                  czp.d.optionalFieldOf("base").forGetter($$0x -> $$0x.b),
-                  czp.d.optionalFieldOf("addition").forGetter($$0x -> $$0x.c)
-               )
-               .apply($$0, dao::new)
-      );
-      public static final zb<wo, dao> w = zb.a(czp.b, $$0 -> $$0.a, czp.b, $$0 -> $$0.b, czp.b, $$0 -> $$0.c, dao::new);
-
-      @Override
-      public MapCodec<dao> a() {
-         return x;
-      }
-
-      @Override
-      public zb<wo, dao> b() {
-         return w;
-      }
+   public dam<?> aq_() {
+      return dam.n;
    }
 }

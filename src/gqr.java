@@ -1,13 +1,21 @@
-public abstract class gqr<S extends gsu, M extends fxa<S>> extends grf<S, M> {
-   public gqr(goo<S, M> $$0) {
-      super($$0);
+public class gqr extends goa<clv, gwc, gad> {
+   private static final alc a = alc.b("textures/entity/piglin/zombified_piglin.png");
+
+   public gqr(gnj.a $$0, gaj $$1, gaj $$2, gaj $$3, gaj $$4, gaj $$5, gaj $$6) {
+      super($$0, new gad($$0.a($$1)), new gad($$0.a($$2)), 0.5F, goz.a);
+      this.a(new grm<>(this, new fxw($$0.a($$3)), new fxw($$0.a($$4)), new fxw($$0.a($$5)), new fxw($$0.a($$5)), $$0.g()));
    }
 
-   @Override
-   public void a(fcu $$0, ggv $$1, int $$2, S $$3, float $$4, float $$5) {
-      fcy $$6 = $$1.getBuffer(this.a());
-      this.d().a($$0, $$6, 15728640, gwb.d);
+   public alc a(gwc $$0) {
+      return a;
    }
 
-   public abstract ghe a();
+   public gwc c() {
+      return new gwc();
+   }
+
+   public void a(clv $$0, gwc $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gg();
+   }
 }

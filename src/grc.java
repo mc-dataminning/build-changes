@@ -1,28 +1,18 @@
-public class grc extends grf<guf, fyf> {
-   private final fxy a;
+public class grc extends grw<guw, fyp> {
+   private final fxx<guw> a;
 
-   public grc(goo<guf, fyf> $$0, fzx $$1) {
+   public grc(gpf<guw, fyp> $$0, gah $$1) {
       super($$0);
-      this.a = new fxy($$1.a(gaa.bq));
+      this.a = new fyo($$1.a(gak.bJ));
    }
 
-   public void a(fcu $$0, ggv $$1, int $$2, guf $$3, float $$4, float $$5) {
-      cgl.b $$6 = $$3.aF;
-      if ($$6 != null) {
-         this.a($$0, $$1, $$2, $$3, $$6, $$4, $$5, true);
+   public void a(fde $$0, ghg $$1, int $$2, guw $$3, float $$4, float $$5) {
+      if ("deadmau5".equals($$3.aH) && !$$3.u) {
+         fdi $$6 = $$1.getBuffer(ghq.c($$3.a.a()));
+         int $$7 = gok.a($$3, 0.0F);
+         this.d().a(this.a);
+         this.a.a($$3);
+         this.a.a($$0, $$6, $$2, $$7);
       }
-
-      cgl.b $$7 = $$3.aG;
-      if ($$7 != null) {
-         this.a($$0, $$1, $$2, $$3, $$7, $$4, $$5, false);
-      }
-   }
-
-   private void a(fcu $$0, ggv $$1, int $$2, guf $$3, cgl.b $$4, float $$5, float $$6, boolean $$7) {
-      $$0.a();
-      $$0.a($$7 ? 0.4F : -0.4F, $$3.I ? -1.3F : -1.5F, 0.0F);
-      fcy $$8 = $$1.getBuffer(this.a.a(gof.a($$4)));
-      this.a.a($$0, $$8, $$2, gwb.d, $$3.X, $$3.Y, $$5, $$6, $$3.p);
-      $$0.b();
    }
 }

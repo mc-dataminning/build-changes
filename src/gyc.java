@@ -1,14 +1,37 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public record gyc(gyd d) {
-   public static final gyc a = new gyc(gyd.b);
-   public static final Codec<gyc> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(gyd.a.optionalFieldOf("scaling", gyd.b).forGetter(gyc::a)).apply($$0, gyc::new)
-   );
-   public static final ats<gyc> c = ats.a("gui", b);
+public record gyc(alc a, @Nullable String b, @Nullable alc c, @Nullable alc d, gyc.a e, boolean f) {
+   public static enum a {
+      a("slim"),
+      b("default");
 
-   public gyd a() {
-      return this.d;
+      private final String c;
+
+      private a(final String $$0) {
+         this.c = $$0;
+      }
+
+      public static gyc.a a(@Nullable String $$0) {
+         if ($$0 == null) {
+            return b;
+         } else {
+            byte var2 = -1;
+            switch ($$0.hashCode()) {
+               case 3533117:
+                  if ($$0.equals("slim")) {
+                     var2 = 0;
+                  }
+               default:
+                  return switch (var2) {
+                     case 0 -> a;
+                     default -> b;
+                  };
+            }
+         }
+      }
+
+      public String a() {
+         return this.c;
+      }
    }
 }

@@ -1,2 +1,8 @@
-public record bnc<S>(int a, bng<S> b, Object c) {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bnc {
 }

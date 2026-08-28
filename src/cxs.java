@@ -1,45 +1,46 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import java.util.Map;
-import java.util.Optional;
 
-public class cxs {
-   public static final ala<cxr> a = a("quartz");
-   public static final ala<cxr> b = a("iron");
-   public static final ala<cxr> c = a("netherite");
-   public static final ala<cxr> d = a("redstone");
-   public static final ala<cxr> e = a("copper");
-   public static final ala<cxr> f = a("gold");
-   public static final ala<cxr> g = a("emerald");
-   public static final ala<cxr> h = a("diamond");
-   public static final ala<cxr> i = a("lapis");
-   public static final ala<cxr> j = a("amethyst");
+public record cxs(String e, jn<cvk> f, float g, Map<jn<ctj>, String> h, xd i) {
+   public static final Codec<cxs> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               aym.B.fieldOf("asset_name").forGetter(cxs::a),
+               akz.a(lv.K).fieldOf("ingredient").forGetter(cxs::b),
+               Codec.FLOAT.fieldOf("item_model_index").forGetter(cxs::c),
+               Codec.unboundedMap(ctj.a, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(cxs::d),
+               xf.a.fieldOf("description").forGetter(cxs::e)
+            )
+            .apply($$0, cxs::new)
+   );
+   public static final zb<wo, cxs> b = zb.a(
+      yz.l, cxs::a, yz.b(lv.K), cxs::b, yz.i, cxs::c, yz.a(Object2ObjectOpenHashMap::new, yz.b(lv.az), yz.l), cxs::d, xf.b, cxs::e, cxs::new
+   );
+   public static final Codec<jn<cxs>> c = aky.a(lv.aX, a);
+   public static final zb<wo, jn<cxs>> d = yz.a(lv.aX, b);
 
-   public static void a(qt<cxr> $$0) {
-      a($$0, a, cvo.oD, ya.a.a(14931140), 0.1F);
-      a($$0, b, cvo.oG, ya.a.a(15527148), 0.2F, Map.of(cte.c, "iron_darker"));
-      a($$0, c, cvo.oL, ya.a.a(6445145), 0.3F, Map.of(cte.g, "netherite_darker"));
-      a($$0, d, cvo.lH, ya.a.a(9901575), 0.4F);
-      a($$0, e, cvo.oI, ya.a.a(11823181), 0.5F);
-      a($$0, f, cvo.oK, ya.a.a(14594349), 0.6F, Map.of(cte.d, "gold_darker"));
-      a($$0, g, cvo.oB, ya.a.a(1155126), 0.7F);
-      a($$0, h, cvo.oA, ya.a.a(7269586), 0.8F, Map.of(cte.e, "diamond_darker"));
-      a($$0, i, cvo.oC, ya.a.a(4288151), 0.9F);
-      a($$0, j, cvo.oE, ya.a.a(10116294), 1.0F);
+   public static cxs a(String $$0, cvk $$1, float $$2, xd $$3, Map<jn<ctj>, String> $$4) {
+      return new cxs($$0, lu.g.e($$1), $$2, $$4, $$3);
    }
 
-   public static Optional<jn.c<cxr>> a(jp.a $$0, cvl $$1) {
-      return $$0.b(lv.aW).b().filter($$1x -> $$1.a(((cxr)$$1x.a()).b())).findFirst();
+   public String a() {
+      return this.e;
    }
 
-   private static void a(qt<cxr> $$0, ala<cxr> $$1, cvg $$2, ya $$3, float $$4) {
-      a($$0, $$1, $$2, $$3, $$4, Map.of());
+   public jn<cvk> b() {
+      return this.f;
    }
 
-   private static void a(qt<cxr> $$0, ala<cxr> $$1, cvg $$2, ya $$3, float $$4, Map<jn<ctd>, String> $$5) {
-      cxr $$6 = cxr.a($$1.a().a(), $$2, $$4, xd.c(ad.a("trim_material", $$1.a())).c($$3), $$5);
-      $$0.a($$1, $$6);
+   public float c() {
+      return this.g;
    }
 
-   private static ala<cxr> a(String $$0) {
-      return ala.a(lv.aW, alb.b($$0));
+   public Map<jn<ctj>, String> d() {
+      return this.h;
+   }
+
+   public xd e() {
+      return this.i;
    }
 }

@@ -1,96 +1,82 @@
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
+import java.util.Map;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fpu extends fpt {
-   private static final int a = 1024;
-   private static final int b = 65535;
-   private static final xd c = xd.c("selectWorld.allowCommands");
-   private static final xd d = xd.c("selectWorld.gameMode");
-   private static final xd s = xd.c("lanServer.otherPlayers");
-   private static final xd u = xd.c("lanServer.port");
-   private static final xd v = xd.a("lanServer.port.unavailable", 1024, 65535);
-   private static final xd w = xd.a("lanServer.port.invalid", 1024, 65535);
-   private static final int x = 16733525;
-   private final fpt y;
-   private ddp z = ddp.a;
-   private boolean A;
-   private int B = ayt.a();
-   @Nullable
-   private fkj C;
+public class fpu {
+   private static final Logger a = LogUtils.getLogger();
+   private static final Map<csf<?>, fpu.a<?, ?>> b = Maps.newHashMap();
 
-   public fpu(fpt $$0) {
-      super(xd.c("lanServer.title"));
-      this.y = $$0;
-   }
-
-   @Override
-   protected void aT_() {
-      has $$0 = this.m.V();
-      this.z = $$0.t_();
-      this.A = $$0.ba().m();
-      this.c(fkh.a(ddp::e).a(ddp.a, ddp.d, ddp.b, ddp.c).a(this.z).a(this.n / 2 - 155, 100, 150, 20, d, ($$0x, $$1x) -> this.z = $$1x));
-      this.c(fkh.b(this.A).a(this.n / 2 + 5, 100, 150, 20, c, ($$0x, $$1x) -> this.A = $$1x));
-      fka $$1 = fka.a(xd.c("lanServer.start"), $$1x -> {
-         this.m.a(null);
-         xd $$2;
-         if ($$0.a(this.z, this.A, this.B)) {
-            $$2 = aod.a(this.B);
-         } else {
-            $$2 = xd.c("commands.publish.failed");
-         }
-
-         this.m.m.d().a($$2);
-         this.m.d();
-      }).a(this.n / 2 - 155, this.o - 28, 150, 20).a();
-      this.C = new fkj(this.p, this.n / 2 - 75, 160, 150, 20, xd.c("lanServer.port"));
-      this.C.b($$1x -> {
-         xd $$2 = this.a($$1x);
-         this.C.c(xd.b(this.B + "").a(n.i));
-         if ($$2 == null) {
-            this.C.g(14737632);
-            this.C.a(null);
-            $$1.j = true;
-         } else {
-            this.C.g(16733525);
-            this.C.a(fll.a($$2));
-            $$1.j = false;
-         }
-      });
-      this.C.c(xd.b(this.B + "").a(n.i));
-      this.c(this.C);
-      this.c($$1);
-      this.c(fka.a(xc.e, $$0x -> this.d()).a(this.n / 2 + 5, this.o - 28, 150, 20).a());
-   }
-
-   @Override
-   public void d() {
-      this.m.a(this.y);
-   }
-
-   @Nullable
-   private xd a(String $$0) {
-      if ($$0.isBlank()) {
-         this.B = ayt.a();
-         return null;
+   public static <T extends cqw> void a(csf<T> $$0, fil $$1, int $$2, xd $$3) {
+      fpu.a<T, ?> $$4 = a($$0);
+      if ($$4 == null) {
+         a.warn("Failed to create screen for menu type: {}", lu.p.b($$0));
       } else {
-         try {
-            this.B = Integer.parseInt($$0);
-            if (this.B < 1024 || this.B > 65535) {
-               return w;
-            } else {
-               return !ayt.a(this.B) ? v : null;
-            }
-         } catch (NumberFormatException var3) {
-            this.B = ayt.a();
-            return w;
-         }
+         $$4.a($$3, $$0, $$1, $$2);
       }
    }
 
-   @Override
-   public void a(fjn $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.l, this.n / 2, 50, 16777215);
-      $$0.a(this.p, s, this.n / 2, 82, 16777215);
-      $$0.a(this.p, u, this.n / 2, 142, 16777215);
+   @Nullable
+   private static <T extends cqw> fpu.a<T, ?> a(csf<T> $$0) {
+      return (fpu.a<T, ?>)b.get($$0);
+   }
+
+   private static <M extends cqw, U extends fqd & frx<M>> void a(csf<? extends M> $$0, fpu.a<M, U> $$1) {
+      fpu.a<?, ?> $$2 = b.put($$0, $$1);
+      if ($$2 != null) {
+         throw new IllegalStateException("Duplicate registration for " + lu.p.b($$0));
+      }
+   }
+
+   public static boolean a() {
+      boolean $$0 = false;
+
+      for (csf<?> $$1 : lu.p) {
+         if (!b.containsKey($$1)) {
+            a.debug("Menu {} has no matching screen", lu.p.b($$1));
+            $$0 = true;
+         }
+      }
+
+      return $$0;
+   }
+
+   static {
+      a(csf.a, frd::new);
+      a(csf.b, frd::new);
+      a(csf.c, frd::new);
+      a(csf.d, frd::new);
+      a(csf.e, frd::new);
+      a(csf.f, frd::new);
+      a(csf.g, frj::new);
+      a(csf.h, fre::new);
+      a(csf.i, fqv::new);
+      a(csf.j, fqw::new);
+      a(csf.k, fqx::new);
+      a(csf.l, fra::new);
+      a(csf.m, frf::new);
+      a(csf.n, frm::new);
+      a(csf.o, frn::new);
+      a(csf.p, fro::new);
+      a(csf.q, frq::new);
+      a(csf.r, frv::new);
+      a(csf.s, frw::new);
+      a(csf.t, fry::new);
+      a(csf.u, fsb::new);
+      a(csf.v, fsd::new);
+      a(csf.w, fse::new);
+      a(csf.x, frb::new);
+      a(csf.y, fsf::new);
+   }
+
+   interface a<T extends cqw, U extends fqd & frx<T>> {
+      default void a(xd $$0, csf<T> $$1, fil $$2, int $$3) {
+         U $$4 = this.create($$1.a($$3, $$2.t.gc()), $$2.t.gc(), $$0);
+         $$2.t.bZ = $$4.E();
+         $$2.a($$4);
+      }
+
+      U create(T var1, cnt var2, xd var3);
    }
 }

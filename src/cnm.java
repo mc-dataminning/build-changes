@@ -1,55 +1,61 @@
-public class cnm {
-   public boolean a;
-   public boolean b;
-   public boolean c;
-   public boolean d;
-   public boolean e = true;
-   private float f = 0.05F;
-   private float g = 0.1F;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public void a(uf $$0) {
-      uf $$1 = new uf();
-      $$1.a("invulnerable", this.a);
-      $$1.a("flying", this.b);
-      $$1.a("mayfly", this.c);
-      $$1.a("instabuild", this.d);
-      $$1.a("mayBuild", this.e);
-      $$1.a("flySpeed", this.f);
-      $$1.a("walkSpeed", this.g);
-      $$0.a("abilities", $$1);
+public final class cnm {
+   public static final cnm a = a("desert");
+   public static final cnm b = a("jungle");
+   public static final cnm c = a("plains");
+   public static final cnm d = a("savanna");
+   public static final cnm e = a("snow");
+   public static final cnm f = a("swamp");
+   public static final cnm g = a("taiga");
+   private final String h;
+   private static final Map<alb<dfh>, cnm> i = ad.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(dfo.A, a);
+      $$0.put(dfo.f, a);
+      $$0.put(dfo.B, a);
+      $$0.put(dfo.C, a);
+      $$0.put(dfo.z, b);
+      $$0.put(dfo.x, b);
+      $$0.put(dfo.y, b);
+      $$0.put(dfo.s, d);
+      $$0.put(dfo.r, d);
+      $$0.put(dfo.w, d);
+      $$0.put(dfo.X, e);
+      $$0.put(dfo.W, e);
+      $$0.put(dfo.L, e);
+      $$0.put(dfo.e, e);
+      $$0.put(dfo.N, e);
+      $$0.put(dfo.q, e);
+      $$0.put(dfo.d, e);
+      $$0.put(dfo.F, e);
+      $$0.put(dfo.G, e);
+      $$0.put(dfo.H, e);
+      $$0.put(dfo.I, e);
+      $$0.put(dfo.g, f);
+      $$0.put(dfo.h, f);
+      $$0.put(dfo.o, g);
+      $$0.put(dfo.n, g);
+      $$0.put(dfo.u, g);
+      $$0.put(dfo.t, g);
+      $$0.put(dfo.p, g);
+      $$0.put(dfo.v, g);
+   });
+
+   private cnm(String $$0) {
+      this.h = $$0;
    }
 
-   public void b(uf $$0) {
-      if ($$0.b("abilities", 10)) {
-         uf $$1 = $$0.p("abilities");
-         this.a = $$1.q("invulnerable");
-         this.b = $$1.q("flying");
-         this.c = $$1.q("mayfly");
-         this.d = $$1.q("instabuild");
-         if ($$1.b("flySpeed", 99)) {
-            this.f = $$1.j("flySpeed");
-            this.g = $$1.j("walkSpeed");
-         }
-
-         if ($$1.b("mayBuild", 1)) {
-            this.e = $$1.q("mayBuild");
-         }
-      }
+   @Override
+   public String toString() {
+      return this.h;
    }
 
-   public float a() {
-      return this.f;
+   private static cnm a(String $$0) {
+      return ka.a(lu.w, alc.b($$0), new cnm($$0));
    }
 
-   public void a(float $$0) {
-      this.f = $$0;
-   }
-
-   public float b() {
-      return this.g;
-   }
-
-   public void b(float $$0) {
-      this.g = $$0;
+   public static cnm a(jn<dfh> $$0) {
+      return $$0.e().map(i::get).orElse(c);
    }
 }

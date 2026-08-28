@@ -48,7 +48,7 @@ public class xf {
             DynamicOps<JsonElement> $$3 = a($$1);
             return xf.a.encodeStart($$3, $$0).flatMap($$2x -> {
                try {
-                  return $$1.encodeStart($$1, ays.e($$2x));
+                  return $$1.encodeStart($$1, ayt.e($$2x));
                } catch (IllegalArgumentException var4x) {
                   return DataResult.error(var4x::getMessage);
                }
@@ -56,7 +56,7 @@ public class xf {
          }
 
          private static <T> DynamicOps<JsonElement> a(DynamicOps<T> $$0) {
-            return (DynamicOps<JsonElement>)($$0 instanceof akz<T> $$1 ? $$1.a(JsonOps.INSTANCE) : JsonOps.INSTANCE);
+            return (DynamicOps<JsonElement>)($$0 instanceof ala<T> $$1 ? $$1.a(JsonOps.INSTANCE) : JsonOps.INSTANCE);
          }
       };
    }
@@ -71,22 +71,22 @@ public class xf {
       return $$1;
    }
 
-   public static <T extends azy, E> MapCodec<E> a(T[] $$0, Function<T, MapCodec<? extends E>> $$1, Function<E, T> $$2, String $$3) {
+   public static <T extends azz, E> MapCodec<E> a(T[] $$0, Function<T, MapCodec<? extends E>> $$1, Function<E, T> $$2, String $$3) {
       MapCodec<E> $$4 = new xf.a<>(Stream.<T>of($$0).map($$1).toList(), $$2x -> (MapEncoder<? extends E>)$$1.apply($$2.apply((E)$$2x)));
-      Codec<T> $$5 = azy.b((Supplier<T[]>)(() -> $$0));
+      Codec<T> $$5 = azz.b((Supplier<T[]>)(() -> $$0));
       MapCodec<E> $$6 = $$5.dispatchMap($$3, $$2, $$1);
       MapCodec<E> $$7 = new xf.b($$3, $$6, $$4);
-      return ayl.a($$7, $$6);
+      return aym.a($$7, $$6);
    }
 
    private static Codec<xd> a(Codec<xd> $$0) {
       xe.a<?>[] $$1 = new xe.a[]{yk.b, yo.c, yh.b, yl.c, ym.b, yj.b};
       MapCodec<xe> $$2 = a($$1, xe.a::a, xe::a, "type");
       Codec<xd> $$3 = RecordCodecBuilder.create(
-         $$2x -> $$2x.group($$2.forGetter(xd::b), ayl.a($$0.listOf()).optionalFieldOf("extra", List.of()).forGetter(xd::c), ya.b.a.forGetter(xd::a))
+         $$2x -> $$2x.group($$2.forGetter(xd::b), aym.a($$0.listOf()).optionalFieldOf("extra", List.of()).forGetter(xd::c), ya.b.a.forGetter(xd::a))
                .apply($$2x, xr::new)
       );
-      return Codec.either(Codec.either(Codec.STRING, ayl.a($$0.listOf())), $$3)
+      return Codec.either(Codec.either(Codec.STRING, aym.a($$0.listOf())), $$3)
          .xmap($$0x -> (xd)$$0x.map($$0xx -> (xd)$$0xx.map(xd::b, xf::a), $$0xx -> $$0xx), $$0x -> {
             String $$1x = $$0x.d();
             return $$1x != null ? Either.left(Either.left($$1x)) : Either.right($$0x);

@@ -1,69 +1,72 @@
-import java.util.OptionalInt;
+public class fku extends fke {
+   private final fjv a;
+   private final fle b;
 
-public class fku extends fjx {
-   private OptionalInt a = OptionalInt.empty();
-   private OptionalInt b = OptionalInt.empty();
-   private final azs<fku.a, fkt> c;
-   private boolean d = false;
-
-   public fku(xd $$0, fjl $$1) {
-      this(0, 0, $$0, $$1);
+   public fku(int $$0, int $$1, int $$2, int $$3, xd $$4, fjv $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a = $$5;
+      this.b = new fle($$4, $$5).d(this.y() - this.b());
    }
 
-   public fku(int $$0, int $$1, xd $$2, fjl $$3) {
-      super($$0, $$1, 0, 0, $$2, $$3);
-      this.c = ad.a($$1x -> $$1x.c.isPresent() ? fkt.a($$3, $$1x.b, $$1x.c.getAsInt(), $$1x.a) : fkt.a($$3, $$1x.a, $$1x.b));
-      this.j = false;
-   }
-
-   public fku c(int $$0) {
-      super.a($$0);
-      return this;
-   }
-
-   public fku d(int $$0) {
-      this.a = OptionalInt.of($$0);
-      return this;
-   }
-
-   public fku e(int $$0) {
-      this.b = OptionalInt.of($$0);
-      return this;
-   }
-
-   public fku b(boolean $$0) {
-      this.d = $$0;
+   public fku a(int $$0) {
+      this.b.c($$0);
       return this;
    }
 
    @Override
-   public int y() {
-      return this.c.a(this.c()).b();
+   public void k(int $$0) {
+      super.k($$0);
+      this.b.d(this.y() - this.b());
    }
 
    @Override
-   public int w() {
-      return this.c.a(this.c()).a() * 9;
+   protected int h() {
+      return this.b.w();
    }
 
    @Override
-   public void b(fjn $$0, int $$1, int $$2, float $$3) {
-      fkt $$4 = this.c.a(this.c());
-      int $$5 = this.D();
-      int $$6 = this.E();
-      int $$7 = 9;
-      int $$8 = this.b();
-      if (this.d) {
-         $$4.a($$0, $$5 + this.y() / 2, $$6, $$7, $$8);
-      } else {
-         $$4.b($$0, $$5, $$6, $$7, $$8);
+   protected double i() {
+      return 9.0;
+   }
+
+   @Override
+   protected void b(fjx $$0) {
+      if (this.e()) {
+         super.b($$0);
+      } else if (this.aM_()) {
+         this.a($$0, this.D() - this.a(), this.E() - this.a(), this.y() + this.b(), this.w() + this.b());
       }
    }
 
-   private fku.a c() {
-      return new fku.a(this.z(), this.a.orElse(Integer.MAX_VALUE), this.b);
+   @Override
+   public void b(fjx $$0, int $$1, int $$2, float $$3) {
+      if (this.k) {
+         if (!this.e()) {
+            this.b($$0);
+            $$0.c().a();
+            $$0.c().a((float)this.D(), (float)this.E(), 0.0F);
+            this.b.a($$0, $$1, $$2, $$3);
+            $$0.c().b();
+         } else {
+            super.b($$0, $$1, $$2, $$3);
+         }
+      }
    }
 
-   static record a(xd a, int b, OptionalInt c) {
+   public boolean j() {
+      return super.e();
+   }
+
+   @Override
+   protected void c(fjx $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)(this.D() + this.a()), (float)(this.E() + this.a()), 0.0F);
+      this.b.a($$0, $$1, $$2, $$3);
+      $$0.c().b();
+   }
+
+   @Override
+   protected void a(foh $$0) {
+      $$0.a(fog.a, this.z());
    }
 }

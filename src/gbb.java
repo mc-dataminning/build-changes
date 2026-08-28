@@ -1,19 +1,25 @@
-import com.mojang.authlib.GameProfile;
-import java.util.Map;
-import javax.annotation.Nullable;
+public class gbb {
+   private static final int a = 49;
+   private static final int b = 3;
+   private double c = 2000000.0;
+   private int d = 1;
+   private volatile long e = ad.d();
 
-public record gbb(
-   GameProfile a,
-   hbw b,
-   kb.b c,
-   cqh d,
-   @Nullable String e,
-   @Nullable gbl f,
-   @Nullable fpt g,
-   Map<alb, byte[]> h,
-   @Nullable fkb.b i,
-   @Deprecated(forRemoval = true) boolean j,
-   Map<String, String> k,
-   alt l
-) {
+   public void a() {
+      this.e = ad.d();
+   }
+
+   public void a(int $$0) {
+      if ($$0 > 0) {
+         double $$1 = (double)(ad.d() - this.e);
+         double $$2 = $$1 / (double)$$0;
+         double $$3 = azd.a($$2, this.c / 3.0, this.c * 3.0);
+         this.c = (this.c * (double)this.d + $$3) / (double)(this.d + 1);
+         this.d = Math.min(49, this.d + 1);
+      }
+   }
+
+   public float b() {
+      return (float)(7000000.0 / this.c);
+   }
 }

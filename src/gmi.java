@@ -1,23 +1,26 @@
-public class gmi<T extends chy> extends glj<T, gsq, fwu> {
-   public static final alb a = alb.b("textures/entity/horse/donkey.png");
-   public static final alb b = alb.b("textures/entity/horse/mule.png");
-   private final alb k;
+public abstract class gmi<T extends cob, S extends gst> extends gni<T, S> {
+   private final fwk a;
 
-   public gmi(gms.a $$0, float $$1, fzz $$2, fzz $$3, boolean $$4) {
-      super($$0, new fwu($$0.a($$2)), new fwu($$0.a($$3)), $$1);
-      this.k = $$4 ? b : a;
+   public gmi(gnj.a $$0) {
+      super($$0);
+      this.a = new fwk($$0.a(gak.j));
    }
 
-   public alb a(gsq $$0) {
-      return this.k;
+   public void a(S $$0, fde $$1, ghg $$2, int $$3) {
+      $$1.a();
+      $$1.a(a.d.rotationDegrees($$0.b - 90.0F));
+      $$1.a(a.f.rotationDegrees($$0.a));
+      fdi $$4 = $$2.getBuffer(ghq.e(this.a($$0)));
+      this.a.a($$0);
+      this.a.a($$1, $$4, $$3, gws.d);
+      $$1.b();
+      super.a($$0, $$1, $$2, $$3);
    }
 
-   public gsq a() {
-      return new gsq();
-   }
-
-   public void a(T $$0, gsq $$1, float $$2) {
+   public void a(T $$0, S $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
+      $$1.a = $$0.j($$2);
+      $$1.b = $$0.k($$2);
+      $$1.c = (float)$$0.e - $$2;
    }
 }

@@ -5,7 +5,7 @@ public record agg(int b) implements zk<abz> {
       this($$0.l());
    }
 
-   public static agg a(brt $$0) {
+   public static agg a(bry $$0) {
       return new agg($$0.k());
    }
 

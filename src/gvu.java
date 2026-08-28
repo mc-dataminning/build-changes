@@ -1,8 +1,9 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class gvu extends guj implements gvt {
+   public boolean a;
+   public cni b = new cni(cnm.c, cnk.b, 1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface gvu {
+   @Override
+   public cni a() {
+      return this.b;
+   }
 }

@@ -1,52 +1,154 @@
-public class err {
-   private static final int J = 12741452;
-   public static final jn<erq> a = a("player", "player", false, true);
-   public static final jn<erq> b = a("frame", "frame", true, true);
-   public static final jn<erq> c = a("red_marker", "red_marker", false, true);
-   public static final jn<erq> d = a("blue_marker", "blue_marker", false, true);
-   public static final jn<erq> e = a("target_x", "target_x", true, false);
-   public static final jn<erq> f = a("target_point", "target_point", true, false);
-   public static final jn<erq> g = a("player_off_map", "player_off_map", false, true);
-   public static final jn<erq> h = a("player_off_limits", "player_off_limits", false, true);
-   public static final jn<erq> i = a("mansion", "woodland_mansion", true, 5393476, false, true);
-   public static final jn<erq> j = a("monument", "ocean_monument", true, 3830373, false, true);
-   public static final jn<erq> k = a("banner_white", "white_banner", true, true);
-   public static final jn<erq> l = a("banner_orange", "orange_banner", true, true);
-   public static final jn<erq> m = a("banner_magenta", "magenta_banner", true, true);
-   public static final jn<erq> n = a("banner_light_blue", "light_blue_banner", true, true);
-   public static final jn<erq> o = a("banner_yellow", "yellow_banner", true, true);
-   public static final jn<erq> p = a("banner_lime", "lime_banner", true, true);
-   public static final jn<erq> q = a("banner_pink", "pink_banner", true, true);
-   public static final jn<erq> r = a("banner_gray", "gray_banner", true, true);
-   public static final jn<erq> s = a("banner_light_gray", "light_gray_banner", true, true);
-   public static final jn<erq> t = a("banner_cyan", "cyan_banner", true, true);
-   public static final jn<erq> u = a("banner_purple", "purple_banner", true, true);
-   public static final jn<erq> v = a("banner_blue", "blue_banner", true, true);
-   public static final jn<erq> w = a("banner_brown", "brown_banner", true, true);
-   public static final jn<erq> x = a("banner_green", "green_banner", true, true);
-   public static final jn<erq> y = a("banner_red", "red_banner", true, true);
-   public static final jn<erq> z = a("banner_black", "black_banner", true, true);
-   public static final jn<erq> A = a("red_x", "red_x", true, false);
-   public static final jn<erq> B = a("village_desert", "desert_village", true, eqf.w.ak, false, true);
-   public static final jn<erq> C = a("village_plains", "plains_village", true, eqf.w.ak, false, true);
-   public static final jn<erq> D = a("village_savanna", "savanna_village", true, eqf.w.ak, false, true);
-   public static final jn<erq> E = a("village_snowy", "snowy_village", true, eqf.w.ak, false, true);
-   public static final jn<erq> F = a("village_taiga", "taiga_village", true, eqf.w.ak, false, true);
-   public static final jn<erq> G = a("jungle_temple", "jungle_temple", true, eqf.w.ak, false, true);
-   public static final jn<erq> H = a("swamp_hut", "swamp_hut", true, eqf.w.ak, false, true);
-   public static final jn<erq> I = a("trial_chambers", "trial_chambers", true, 12741452, false, true);
+import com.mojang.logging.LogUtils;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-   public static jn<erq> a(ka<erq> $$0) {
-      return a;
+public class err implements erw {
+   private static final Logger b = LogUtils.getLogger();
+   private final deg c;
+   private final int d;
+   private final ArrayDeque<err.c> e = new ArrayDeque<>();
+   private final List<err.c> f = new ArrayList<>();
+   private int g = 0;
+
+   public err(deg $$0, int $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   private static jn<erq> a(String $$0, String $$1, boolean $$2, boolean $$3) {
-      return a($$0, $$1, $$2, -1, $$3, false);
+   @Override
+   public void a(jj $$0, duo $$1, je $$2, je $$3, int $$4, int $$5) {
+      this.a($$2, new err.d($$0, $$1, $$2.j(), $$3.j(), $$4, $$5));
    }
 
-   private static jn<erq> a(String $$0, String $$1, boolean $$2, int $$3, boolean $$4, boolean $$5) {
-      ala<erq> $$6 = ala.a(lv.aD, alb.b($$0));
-      erq $$7 = new erq(alb.b($$1), $$2, $$3, $$5, $$4);
-      return ka.b(lu.as, $$6, $$7);
+   @Override
+   public void a(je $$0, dhj $$1, @Nullable erx $$2) {
+      this.a($$0, new err.e($$0, $$1, $$2));
+   }
+
+   @Override
+   public void a(duo $$0, je $$1, dhj $$2, @Nullable erx $$3, boolean $$4) {
+      this.a($$1, new err.a($$0, $$1.j(), $$2, $$3, $$4));
+   }
+
+   @Override
+   public void a(je $$0, dhj $$1, @Nullable jj $$2, @Nullable erx $$3) {
+      this.a($$0, new err.b($$0.j(), $$1, $$3, $$2));
+   }
+
+   private void a(je $$0, err.c $$1) {
+      boolean $$2 = this.g > 0;
+      boolean $$3 = this.d >= 0 && this.g >= this.d;
+      this.g++;
+      if (!$$3) {
+         if ($$2) {
+            this.f.add($$1);
+         } else {
+            this.e.push($$1);
+         }
+      } else if (this.g - 1 == this.d) {
+         b.error("Too many chained neighbor updates. Skipping the rest. First skipped position: " + $$0.x());
+      }
+
+      if (!$$2) {
+         this.a();
+      }
+   }
+
+   private void a() {
+      try {
+         while (!this.e.isEmpty() || !this.f.isEmpty()) {
+            for (int $$0 = this.f.size() - 1; $$0 >= 0; $$0--) {
+               this.e.push(this.f.get($$0));
+            }
+
+            this.f.clear();
+            err.c $$1 = this.e.peek();
+
+            while (this.f.isEmpty()) {
+               if (!$$1.a(this.c)) {
+                  this.e.pop();
+                  break;
+               }
+            }
+         }
+      } finally {
+         this.e.clear();
+         this.f.clear();
+         this.g = 0;
+      }
+   }
+
+   static record a(duo a, je b, dhj c, @Nullable erx d, boolean e) implements err.c {
+      @Override
+      public boolean a(deg $$0) {
+         erw.a($$0, this.a, this.b, this.c, this.d, this.e);
+         return false;
+      }
+   }
+
+   static final class b implements err.c {
+      private final je a;
+      private final dhj b;
+      @Nullable
+      private erx c;
+      @Nullable
+      private final jj d;
+      private int e = 0;
+
+      b(je $$0, dhj $$1, @Nullable erx $$2, @Nullable jj $$3) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         if (erw.a[this.e] == $$3) {
+            this.e++;
+         }
+      }
+
+      @Override
+      public boolean a(deg $$0) {
+         jj $$1 = erw.a[this.e++];
+         je $$2 = this.a.a($$1);
+         duo $$3 = $$0.a_($$2);
+         erx $$4 = null;
+         if ($$0.J().b(cqp.d)) {
+            if (this.c == null) {
+               this.c = ert.a($$0, this.d == null ? null : this.d.g(), null);
+            }
+
+            $$4 = this.c.b($$1);
+         }
+
+         erw.a($$0, $$3, $$2, this.b, $$4, false);
+         if (this.e < erw.a.length && erw.a[this.e] == this.d) {
+            this.e++;
+         }
+
+         return this.e < erw.a.length;
+      }
+   }
+
+   interface c {
+      boolean a(deg var1);
+   }
+
+   static record d(jj a, duo b, je c, je d, int e, int f) implements err.c {
+      @Override
+      public boolean a(deg $$0) {
+         erw.a($$0, this.a, this.b, this.c, this.d, this.e, this.f);
+         return false;
+      }
+   }
+
+   static record e(je a, dhj b, @Nullable erx c) implements err.c {
+      @Override
+      public boolean a(deg $$0) {
+         duo $$1 = $$0.a_(this.a);
+         erw.a($$0, $$1, this.a, this.b, this.c, false);
+         return false;
+      }
    }
 }

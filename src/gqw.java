@@ -1,26 +1,21 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+public class gqw extends grw<guw, fyp> {
+   private final fxx<guw> a;
 
-public class gqw extends grf<gtn, fxp> {
-   private static final Map<btg.a, alb> a = ImmutableMap.of(
-      btg.a.b,
-      alb.b("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
-      btg.a.c,
-      alb.b("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
-      btg.a.d,
-      alb.b("textures/entity/iron_golem/iron_golem_crackiness_high.png")
-   );
-
-   public gqw(goo<gtn, fxp> $$0) {
+   public gqw(gpf<guw, fyp> $$0, gah $$1) {
       super($$0);
+      this.a = new fyn<>($$1.a(gak.bK));
    }
 
-   public void a(fcu $$0, ggv $$1, int $$2, gtn $$3, float $$4, float $$5) {
-      if (!$$3.u) {
-         btg.a $$6 = $$3.c;
-         if ($$6 != btg.a.a) {
-            alb $$7 = a.get($$6);
-            b(this.d(), $$7, $$0, $$1, $$2, $$3, -1);
+   public void a(fde $$0, ghg $$1, int $$2, guw $$3, float $$4, float $$5) {
+      if (!$$3.u && $$3.aw) {
+         gyc $$6 = $$3.a;
+         if ($$6.c() != null) {
+            if (!$$3.Q.a(cvt.nU)) {
+               fdi $$7 = $$1.getBuffer(ghq.c($$6.c()));
+               this.d().a(this.a);
+               this.a.a($$3);
+               this.a.a($$0, $$7, $$2, gws.d);
+            }
          }
       }
    }

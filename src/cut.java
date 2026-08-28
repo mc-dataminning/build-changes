@@ -1,40 +1,28 @@
-public class cut extends cvg {
-   public cut(cvg.a $$0) {
+public class cut extends cvk implements cwk {
+   public cut(cvk.a $$0) {
       super($$0);
    }
 
    @Override
-   public brk a(cyy $$0) {
-      cnp $$1 = $$0.o();
-      dds $$2 = $$0.q();
-      je $$3 = $$0.a();
-      dua $$4 = $$2.a_($$3);
-      if (!dhj.i($$4) && !dhk.h($$4) && !dhl.h($$4)) {
-         je $$5 = $$3.a($$0.k());
-         if (dgi.a($$2, $$5, $$0.g())) {
-            $$2.a($$1, $$5, awd.ja, awe.e, 1.0F, $$2.C_().i() * 0.4F + 0.8F);
-            dua $$6 = dgi.a($$2, $$5);
-            $$2.a($$5, $$6, 11);
-            $$2.a($$1, dyx.i, $$3);
-            cvl $$7 = $$0.n();
-            if ($$1 instanceof arh) {
-               an.z.a((arh)$$1, $$5, $$7);
-               $$7.a(1, $$1, buf.d($$0.p()));
-            }
-
-            return brk.a;
-         } else {
-            return brk.d;
-         }
-      } else {
-         $$2.a($$1, $$3, awd.ja, awe.e, 1.0F, $$2.C_().i() * 0.4F + 0.8F);
-         $$2.a($$3, $$4.b(duq.r, Boolean.valueOf(true)), 11);
-         $$2.a($$1, dyx.c, $$3);
-         if ($$1 != null) {
-            $$0.n().a(1, $$1, buf.d($$0.p()));
-         }
-
-         return brk.a;
+   public brp a(deg $$0, cnu $$1, bro $$2) {
+      cvp $$3 = $$1.b($$2);
+      $$0.a(null, $$1.dx(), $$1.dz(), $$1.dD(), awe.iH, awf.g, 0.5F, 0.4F / ($$0.C_().i() * 0.4F + 0.8F));
+      if ($$0 instanceof arh $$4) {
+         coo.a(coz::new, $$4, $$3, $$1, -20.0F, 0.7F, 1.0F);
       }
+
+      $$1.b(awo.c.b(this));
+      $$3.a(1, $$1);
+      return brp.a;
+   }
+
+   @Override
+   public coo a(deg $$0, jx $$1, cvp $$2, jj $$3) {
+      return new coz($$0, $$1.a(), $$1.b(), $$1.c(), $$2);
+   }
+
+   @Override
+   public cwk.a c() {
+      return cwk.a.a().a(cwk.a.a.c() * 0.5F).b(cwk.a.a.d() * 1.25F).a();
    }
 }

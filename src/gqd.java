@@ -1,13 +1,26 @@
-public class gqd extends grf<gsj, fwl> {
-   private static final ghe a = ghe.r(alb.b("textures/entity/breeze/breeze_eyes.png"));
+public class gqd extends gop<clo, gvs, fzt> {
+   private static final alc a = alc.b("textures/entity/illager/vex.png");
+   private static final alc b = alc.b("textures/entity/illager/vex_charging.png");
 
-   public gqd(goo<gsj, fwl> $$0) {
-      super($$0);
+   public gqd(gnj.a $$0) {
+      super($$0, new fzt($$0.a(gak.cS)), 0.3F);
+      this.a(new grp<>(this, $$0.b()));
    }
 
-   public void a(fcu $$0, ggv $$1, int $$2, gsj $$3, float $$4, float $$5) {
-      fcy $$6 = $$1.getBuffer(a);
-      fwl $$7 = this.d();
-      gly.a($$7, $$7.b(), $$7.c()).a($$0, $$6, $$2, gwb.d);
+   protected int a(clo $$0, je $$1) {
+      return 15;
+   }
+
+   public alc a(gvs $$0) {
+      return $$0.a ? b : a;
+   }
+
+   public gvs c() {
+      return new gvs();
+   }
+
+   public void a(clo $$0, gvs $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.gp();
    }
 }

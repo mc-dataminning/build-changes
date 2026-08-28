@@ -1,33 +1,37 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Optional;
 
-public abstract class hct extends fpt {
-   protected static final int d = 17;
-   protected static final int s = 7;
-   protected static final long u = 5368709120L;
-   protected static final int v = 5000268;
-   protected static final int w = 7105644;
-   protected static final int x = 8388479;
-   protected static final int y = 3368635;
-   protected static final int z = 7107012;
-   protected static final int A = 32;
-   private final List<hcr> a = Lists.newArrayList();
+public class hct {
+   private static final int a = -1;
+   private Optional<Instant> b = Optional.empty();
+   private long c;
+   private long d;
 
-   public hct(xd $$0) {
-      super($$0);
+   public void a() {
+      this.d = -1L;
+      if (this.b.isEmpty()) {
+         this.b = Optional.of(Instant.now());
+      }
    }
 
-   protected static int g(int $$0) {
-      return 40 + $$0 * 13;
+   public void a(long $$0) {
+      if (this.d != -1L) {
+         this.c = this.c + Math.max(0L, $$0 - this.d);
+      }
+
+      this.d = $$0;
    }
 
-   protected hcr a(hcr $$0) {
-      this.a.add($$0);
-      return this.a($$0);
+   private int a(Instant $$0) {
+      Duration $$1 = Duration.between($$0, Instant.now());
+      return (int)$$1.toSeconds();
    }
 
-   public xd m() {
-      return xc.a(this.a.stream().map(hcr::a).collect(Collectors.toList()));
+   public void a(hci $$0) {
+      this.b.ifPresent($$1 -> $$0.send(hcj.e, $$1x -> {
+            $$1x.a(hcl.p, this.a($$1));
+            $$1x.a(hcl.q, (int)this.c);
+         }));
    }
 }

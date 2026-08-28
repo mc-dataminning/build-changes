@@ -1,28 +1,52 @@
 import com.google.gson.JsonObject;
 import com.mojang.authlib.GameProfile;
-import java.io.File;
-import java.util.Objects;
+import java.util.Date;
+import java.util.UUID;
+import javax.annotation.Nullable;
 
-public class avo extends avl<GameProfile, avp> {
-   public avo(File $$0) {
-      super($$0);
+public class avo extends avc<GameProfile> {
+   public avo(@Nullable GameProfile $$0) {
+      this($$0, null, null, null, null);
+   }
+
+   public avo(@Nullable GameProfile $$0, @Nullable Date $$1, @Nullable String $$2, @Nullable Date $$3, @Nullable String $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public avo(JsonObject $$0) {
+      super(b($$0), $$0);
    }
 
    @Override
-   protected avk<GameProfile> a(JsonObject $$0) {
-      return new avp($$0);
-   }
-
-   public boolean a(GameProfile $$0) {
-      return this.d($$0);
+   protected void a(JsonObject $$0) {
+      if (this.g() != null) {
+         $$0.addProperty("uuid", this.g().getId().toString());
+         $$0.addProperty("name", this.g().getName());
+         super.a($$0);
+      }
    }
 
    @Override
-   public String[] a() {
-      return this.d().stream().map(avk::g).filter(Objects::nonNull).map(GameProfile::getName).toArray(String[]::new);
+   public xd e() {
+      GameProfile $$0 = this.g();
+      return $$0 != null ? xd.b($$0.getName()) : xd.c("commands.banlist.entry.unknown");
    }
 
-   protected String b(GameProfile $$0) {
-      return $$0.getId().toString();
+   @Nullable
+   private static GameProfile b(JsonObject $$0) {
+      if ($$0.has("uuid") && $$0.has("name")) {
+         String $$1 = $$0.get("uuid").getAsString();
+
+         UUID $$2;
+         try {
+            $$2 = UUID.fromString($$1);
+         } catch (Throwable var4) {
+            return null;
+         }
+
+         return new GameProfile($$2, $$0.get("name").getAsString());
+      } else {
+         return null;
+      }
    }
 }

@@ -1,75 +1,121 @@
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.Function;
 import javax.annotation.Nullable;
 
-public class gxb extends atx {
-   private static final att d = new att(xd.c("resourcePack.vanilla.description"), ab.b().a(atg.a), Optional.empty());
-   private static final asw e = asw.a(att.b, d);
-   public static final String c = "high_contrast";
-   private static final Map<String, xd> f = Map.of(
-      "programmer_art", xd.c("resourcePack.programmer_art.name"), "high_contrast", xd.c("resourcePack.high_contrast.name")
-   );
-   private static final atd g = new atd("vanilla", xd.c("resourcePack.vanilla.name"), aue.c, Optional.of(b));
-   private static final atf h = new atf(true, aua.b.b, false);
-   private static final atf i = new atf(false, aua.b.a, false);
-   private static final alb j = alb.b("resourcepacks");
-   @Nullable
-   private final Path k;
+public class gxb {
+   private final alc a;
+   private final gwv b;
+   final int c;
+   final int d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final float h;
 
-   public gxb(Path $$0, exu $$1) {
-      super(atg.a, b($$0), j, $$1);
-      this.k = this.a($$0);
+   protected gxb(alc $$0, gwv $$1, int $$2, int $$3, int $$4, int $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$4;
+      this.d = $$5;
+      this.e = (float)$$4 / (float)$$2;
+      this.f = (float)($$4 + $$1.a()) / (float)$$2;
+      this.g = (float)$$5 / (float)$$3;
+      this.h = (float)($$5 + $$1.b()) / (float)$$3;
    }
 
-   private static atd a(String $$0, xd $$1) {
-      return new atd($$0, $$1, aue.c, Optional.of(atz.a($$0)));
+   public int a() {
+      return this.c;
+   }
+
+   public int b() {
+      return this.d;
+   }
+
+   public float c() {
+      return this.e;
+   }
+
+   public float d() {
+      return this.f;
+   }
+
+   public gwv e() {
+      return this.b;
    }
 
    @Nullable
-   private Path a(Path $$0) {
-      if (ab.aW && $$0.getFileSystem() == FileSystems.getDefault()) {
-         Path $$1 = $$0.getParent().resolve("resourcepacks");
-         if (Files.isDirectory($$1)) {
-            return $$1;
+   public gxb.a f() {
+      final gwx $$0 = this.b.e();
+      return $$0 != null ? new gxb.a() {
+         @Override
+         public void a() {
+            $$0.a(gxb.this.c, gxb.this.d);
          }
-      }
 
-      return null;
+         @Override
+         public void close() {
+            $$0.close();
+         }
+      } : null;
    }
 
-   private static ati b(Path $$0) {
-      atj $$1 = new atj().a(e).a("minecraft", "realms");
-      return $$1.b().a().a(atg.a, $$0).a(g);
+   public float a(float $$0) {
+      float $$1 = this.f - this.e;
+      return this.e + $$1 * $$0;
+   }
+
+   public float b(float $$0) {
+      float $$1 = this.f - this.e;
+      return ($$0 - this.e) / $$1;
+   }
+
+   public float g() {
+      return this.g;
+   }
+
+   public float h() {
+      return this.h;
+   }
+
+   public float c(float $$0) {
+      float $$1 = this.h - this.g;
+      return this.g + $$1 * $$0;
+   }
+
+   public float d(float $$0) {
+      float $$1 = this.h - this.g;
+      return ($$0 - this.g) / $$1;
+   }
+
+   public alc i() {
+      return this.a;
    }
 
    @Override
-   protected xd a(String $$0) {
-      xd $$1 = f.get($$0);
-      return (xd)($$1 != null ? $$1 : xd.b($$0));
+   public String toString() {
+      return "TextureAtlasSprite{contents='" + this.b + "', u0=" + this.e + ", u1=" + this.f + ", v0=" + this.g + ", v1=" + this.h + "}";
    }
 
-   @Nullable
-   @Override
-   protected aua a(ate $$0) {
-      return aua.a(g, b($$0), atg.a, h);
+   public void j() {
+      this.b.a(this.c, this.d);
    }
 
-   @Nullable
-   @Override
-   protected aua a(String $$0, aua.c $$1, xd $$2) {
-      return aua.a(a($$0, $$2), $$1, atg.a, i);
+   private float l() {
+      float $$0 = (float)this.b.a() / (this.f - this.e);
+      float $$1 = (float)this.b.b() / (this.h - this.g);
+      return Math.max($$1, $$0);
    }
 
-   @Override
-   protected void a(BiConsumer<String, Function<String, aua>> $$0) {
-      super.a($$0);
-      if (this.k != null) {
-         this.a(this.k, $$0);
-      }
+   public float k() {
+      return 4.0F / this.l();
+   }
+
+   public fdi a(fdi $$0) {
+      return new gid($$0, this);
+   }
+
+   public interface a extends AutoCloseable {
+      void a();
+
+      @Override
+      void close();
    }
 }

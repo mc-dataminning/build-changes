@@ -1,25 +1,47 @@
+import com.mojang.serialization.MapCodec;
 import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public interface doy {
-   cyp b();
+public class doy extends dgv {
+   public static final MapCodec<doy> a = b(doy::new);
 
-   static List<doy> c() {
-      return lu.g.s().map(doy::a).filter(Objects::nonNull).collect(Collectors.toList());
+   @Override
+   public MapCodec<doy> a() {
+      return a;
+   }
+
+   protected doy(dun.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   public drs a(je $$0, duo $$1) {
+      return new dti($$0, $$1);
    }
 
    @Nullable
-   static doy a(ddr $$0) {
-      if ($$0.r() instanceof ctl $$1) {
-         dgv var6 = $$1.d();
-         if (var6 instanceof doy) {
-            return (doy)var6;
-         }
-      }
+   @Override
+   public <T extends drs> drt<T> a(deg $$0, duo $$1, dru<T> $$2) {
+      return a($$2, dru.j, $$0.B ? dti::a : dti::b);
+   }
 
-      cvg $$2 = $$0.r();
-      return $$2 instanceof doy ? (doy)$$2 : null;
+   @Override
+   protected void a(duo $$0, arh $$1, je $$2, cvp $$3, boolean $$4) {
+      super.a($$0, $$1, $$2, $$3, $$4);
+      if ($$4) {
+         int $$5 = 15 + $$1.z.a(15) + $$1.z.a(15);
+         this.a($$1, $$2, $$5);
+      }
+   }
+
+   @Override
+   protected dnq a_(duo $$0) {
+      return dnq.c;
+   }
+
+   @Override
+   public void a(cvp $$0, cvk.b $$1, List<xd> $$2, cxh $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      dfa.a($$0, $$2, "SpawnData");
    }
 }

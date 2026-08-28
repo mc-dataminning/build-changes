@@ -2,14 +2,14 @@ import java.util.Map;
 
 public class aab implements zk<zq> {
    public static final zb<wa, aab> a = zk.a(aab::a, aab::new);
-   private final Map<ala<? extends ka<?>>, axk.a> b;
+   private final Map<alb<? extends ka<?>>, axl.a> b;
 
-   public aab(Map<ala<? extends ka<?>>, axk.a> $$0) {
+   public aab(Map<alb<? extends ka<?>>, axl.a> $$0) {
       this.b = $$0;
    }
 
    private aab(wa $$0) {
-      this.b = $$0.a(wa::r, axk.a::b);
+      this.b = $$0.a(wa::r, axl.a::b);
    }
 
    private void a(wa $$0) {
@@ -25,7 +25,7 @@ public class aab implements zk<zq> {
       $$0.a(this);
    }
 
-   public Map<ala<? extends ka<?>>, axk.a> b() {
+   public Map<alb<? extends ka<?>>, axl.a> b() {
       return this.b;
    }
 }

@@ -1,32 +1,46 @@
-import org.lwjgl.openal.AL10;
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
+import java.util.List;
+import java.util.Set;
 
-public class fai {
-   private float a = 1.0F;
-   private faj b = faj.a;
+public class fai<T> implements fal<T>, fan<T> {
+   private final List<faj<T>> a = Lists.newArrayList();
+   private final Set<faj<?>> b = new ObjectOpenCustomHashSet(faj.a);
 
-   public void a(faj $$0) {
-      this.b = $$0;
-      eye $$1 = $$0.b();
-      eye $$2 = $$0.c();
-      eye $$3 = $$0.d();
-      AL10.alListener3f(4100, (float)$$1.d, (float)$$1.e, (float)$$1.f);
-      AL10.alListenerfv(4111, new float[]{(float)$$2.d, (float)$$2.e, (float)$$2.f, (float)$$3.a(), (float)$$3.b(), (float)$$3.c()});
+   @Override
+   public void a(fak<T> $$0) {
+      faj<T> $$1 = new faj<>($$0.a(), $$0.b(), 0, $$0.d());
+      this.a($$1);
    }
 
-   public void a(float $$0) {
-      AL10.alListenerf(4106, $$0);
-      this.a = $$0;
+   private void a(faj<T> $$0) {
+      if (this.b.add($$0)) {
+         this.a.add($$0);
+      }
    }
 
-   public float a() {
+   @Override
+   public boolean a(je $$0, T $$1) {
+      return this.b.contains(faj.a($$1, $$0));
+   }
+
+   @Override
+   public int a() {
+      return this.a.size();
+   }
+
+   @Override
+   public List<faj<T>> a(long $$0) {
       return this.a;
    }
 
-   public void b() {
-      this.a(faj.a);
+   public List<faj<T>> b() {
+      return List.copyOf(this.a);
    }
 
-   public faj c() {
-      return this.b;
+   public static <T> fai<T> a(List<faj<T>> $$0) {
+      fai<T> $$1 = new fai<>();
+      $$0.forEach($$1::a);
+      return $$1;
    }
 }

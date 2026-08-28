@@ -1,32 +1,16 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
 
-public record exh(String b) implements exj {
-   public static final MapCodec<exh> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(exh::c)).apply($$0, exh::new));
+public class exh {
+   private static final Codec<exg> d = lu.H.q().dispatch(exg::a, exf::a);
+   public static final Codec<exg> a = Codec.lazyInitialized(
+      () -> Codec.either(exe.c, d).xmap(Either::unwrap, $$0 -> $$0 instanceof exe $$1 ? Either.left($$1) : Either.right($$0))
+   );
+   public static final exf b = a("storage", exi.a);
+   public static final exf c = a("context", exe.b);
 
-   public static exj a(String $$0) {
-      return new exh($$0);
-   }
-
-   @Override
-   public exi a() {
-      return exk.b;
-   }
-
-   @Override
-   public ezh a(est $$0) {
-      return ezh.c(this.b);
-   }
-
-   @Override
-   public Set<evm<?>> b() {
-      return ImmutableSet.of();
-   }
-
-   public String c() {
-      return this.b;
+   private static exf a(String $$0, MapCodec<? extends exg> $$1) {
+      return ka.a(lu.H, alc.b($$0), new exf($$1));
    }
 }

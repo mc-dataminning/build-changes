@@ -1,105 +1,162 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.google.common.collect.Lists;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.suggestion.Suggestions;
+import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.function.BiConsumer;
+import java.util.Locale;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
-public class gbk {
+public class gbk implements ey {
+   private final gbi a;
+   private final fil b;
+   private int c = -1;
    @Nullable
-   private gbk.a a;
-   @Nullable
-   private gbk.b b;
+   private CompletableFuture<Suggestions> d;
+   private final Set<String> e = new HashSet<>();
 
-   public void a(ala<? extends ka<?>> $$0, List<ke.a> $$1) {
-      if (this.a == null) {
-         this.a = new gbk.a();
+   public gbk(gbi $$0, fil $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
+
+   @Override
+   public Collection<String> q() {
+      List<String> $$0 = Lists.newArrayList();
+
+      for (gbs $$1 : this.a.m()) {
+         $$0.add($$1.a().getName());
       }
 
-      this.a.a($$0, $$1);
+      return $$0;
    }
 
-   public void a(Map<ala<? extends ka<?>>, axk.a> $$0) {
-      if (this.b == null) {
-         this.b = new gbk.b();
-      }
-
-      $$0.forEach(this.b::a);
-   }
-
-   private static <T> ka.a<T> a(kb.b $$0, ala<? extends ka<? extends T>> $$1, axk.a $$2) {
-      ka<T> $$3 = $$0.d($$1);
-      return $$3.a($$2.a($$3));
-   }
-
-   private kb a(auv $$0, gbk.a $$1, boolean $$2) {
-      ju<gaz> $$3 = gaz.a();
-      kb.b $$4 = $$3.b(gaz.b);
-      Map<ala<? extends ka<?>>, akw.c> $$5 = new HashMap<>();
-      $$1.a.forEach(($$1x, $$2x) -> $$5.put($$1x, new akw.c($$2x, axk.a.a)));
-      List<ka.a<?>> $$6 = new ArrayList<>();
-      if (this.b != null) {
-         this.b.a(($$4x, $$5x) -> {
-            if (!$$5x.a()) {
-               if (ke.a($$4x)) {
-                  $$5.compute($$4x, ($$1xx, $$2xx) -> {
-                     List<ke.a> $$3xx = $$2xx != null ? $$2xx.a() : List.of();
-                     return new akw.c($$3xx, $$5x);
-                  });
-               } else if (!$$2) {
-                  $$6.add(a($$4, $$4x, $$5x));
-               }
-            }
-         });
-      }
-
-      List<jp.b<?>> $$7 = axj.a($$4, $$6);
-      kb.b $$8 = akw.a($$5, $$0, $$7, akw.c).f();
-      kb $$9 = $$3.a(gaz.b, $$8).a();
-      $$6.forEach(ka.a::c);
-      return $$9;
-   }
-
-   private void a(gbk.b $$0, kb.b $$1, boolean $$2) {
-      $$0.a(($$2x, $$3) -> {
-         if ($$2 || ke.a($$2x)) {
-            a($$1, $$2x, $$3).c();
-         }
-      });
-   }
-
-   public kb.b a(auv $$0, kb.b $$1, boolean $$2) {
-      kb $$3;
-      if (this.a != null) {
-         $$3 = this.a($$0, this.a, $$2);
+   @Override
+   public Collection<String> z() {
+      if (this.e.isEmpty()) {
+         return this.q();
       } else {
-         if (this.b != null) {
-            this.a(this.b, $$1, !$$2);
-         }
-
-         $$3 = $$1;
-      }
-
-      return $$3.f();
-   }
-
-   static class a {
-      final Map<ala<? extends ka<?>>, List<ke.a>> a = new HashMap<>();
-
-      public void a(ala<? extends ka<?>> $$0, List<ke.a> $$1) {
-         this.a.computeIfAbsent($$0, $$0x -> new ArrayList<>()).addAll($$1);
+         Set<String> $$0 = new HashSet<>(this.q());
+         $$0.addAll(this.e);
+         return $$0;
       }
    }
 
-   static class b {
-      private final Map<ala<? extends ka<?>>, axk.a> a = new HashMap<>();
+   @Override
+   public Collection<String> A() {
+      return (Collection<String>)(this.b.w != null && this.b.w.d() == eyq.a.c ? Collections.singleton(((eyp)this.b.w).a().cE()) : Collections.emptyList());
+   }
 
-      public void a(ala<? extends ka<?>> $$0, axk.a $$1) {
-         this.a.put($$0, $$1);
+   @Override
+   public Collection<String> r() {
+      return this.a.z().f();
+   }
+
+   @Override
+   public Stream<alc> s() {
+      return this.b.ak().d().stream();
+   }
+
+   @Override
+   public Stream<alc> t() {
+      return this.a.j().g();
+   }
+
+   @Override
+   public boolean c(int $$0) {
+      ggc $$1 = this.b.t;
+      return $$1 != null ? $$1.l($$0) : $$0 == 0;
+   }
+
+   @Override
+   public CompletableFuture<Suggestions> a(alb<? extends ka<?>> $$0, ey.a $$1, SuggestionsBuilder $$2, CommandContext<?> $$3) {
+      return this.v().c($$0).map($$2x -> {
+         this.a($$2x, $$1, $$2);
+         return $$2.buildFuture();
+      }).orElseGet(() -> this.a($$3));
+   }
+
+   @Override
+   public CompletableFuture<Suggestions> a(CommandContext<?> $$0) {
+      if (this.d != null) {
+         this.d.cancel(false);
       }
 
-      public void a(BiConsumer<? super ala<? extends ka<?>>, ? super axk.a> $$0) {
-         this.a.forEach($$0);
+      this.d = new CompletableFuture<>();
+      int $$1 = ++this.c;
+      this.a.b(new ahd($$1, $$0.getInput()));
+      return this.d;
+   }
+
+   private static String a(double $$0) {
+      return String.format(Locale.ROOT, "%.2f", $$0);
+   }
+
+   private static String a(int $$0) {
+      return Integer.toString($$0);
+   }
+
+   @Override
+   public Collection<ey.b> B() {
+      eyq $$0 = this.b.w;
+      if ($$0 != null && $$0.d() == eyq.a.b) {
+         je $$1 = ((eyo)$$0).b();
+         return Collections.singleton(new ey.b(a($$1.u()), a($$1.v()), a($$1.w())));
+      } else {
+         return ey.super.B();
+      }
+   }
+
+   @Override
+   public Collection<ey.b> C() {
+      eyq $$0 = this.b.w;
+      if ($$0 != null && $$0.d() == eyq.a.b) {
+         eys $$1 = $$0.g();
+         return Collections.singleton(new ey.b(a($$1.d), a($$1.e), a($$1.f)));
+      } else {
+         return ey.super.C();
+      }
+   }
+
+   @Override
+   public Set<alb<deg>> u() {
+      return this.a.u();
+   }
+
+   @Override
+   public kb v() {
+      return this.a.v();
+   }
+
+   @Override
+   public cqn w() {
+      return this.a.y();
+   }
+
+   public void a(int $$0, Suggestions $$1) {
+      if ($$0 == this.c) {
+         this.d.complete($$1);
+         this.d = null;
+         this.c = -1;
+      }
+   }
+
+   public void a(acy.a $$0, List<String> $$1) {
+      switch ($$0) {
+         case a:
+            this.e.addAll($$1);
+            break;
+         case b:
+            $$1.forEach(this.e::remove);
+            break;
+         case c:
+            this.e.clear();
+            this.e.addAll($$1);
       }
    }
 }

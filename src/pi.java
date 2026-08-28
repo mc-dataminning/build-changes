@@ -75,7 +75,7 @@ public class pi implements mb {
          Path var7;
          try (
             InputStream $$4 = Files.newInputStream($$1);
-            InputStream $$5 = new aym($$4);
+            InputStream $$5 = new ayn($$4);
          ) {
             Path $$6 = $$3.resolve($$2 + ".snbt");
             a($$0, $$6, uu.a(us.a($$5, uo.a())));

@@ -1,84 +1,95 @@
-import java.util.function.LongFunction;
-
-public class eav extends dzx {
-   private final azk d;
-   private int e;
-
-   public eav(azk $$0) {
-      super(0L);
-      this.d = $$0;
-   }
-
-   public int l() {
-      return this.e;
-   }
+public class eav implements dds {
+   private int a;
 
    @Override
-   public azk d() {
-      return this.d.d();
-   }
+   public int a(arh $$0, boolean $$1, boolean $$2) {
+      if (!$$1) {
+         return 0;
+      } else if (!$$0.ac().b(dec.K)) {
+         return 0;
+      } else {
+         azl $$3 = $$0.z;
+         this.a--;
+         if (this.a > 0) {
+            return 0;
+         } else {
+            this.a = this.a + 12000 + $$3.a(1200);
+            long $$4 = $$0.ab() / 24000L;
+            if ($$4 < 5L || !$$0.S()) {
+               return 0;
+            } else if ($$3.a(5) != 0) {
+               return 0;
+            } else {
+               int $$5 = $$0.x().size();
+               if ($$5 < 1) {
+                  return 0;
+               } else {
+                  cnu $$6 = $$0.x().get($$3.a($$5));
+                  if ($$6.P_()) {
+                     return 0;
+                  } else if ($$0.a($$6.ds(), 2)) {
+                     return 0;
+                  } else {
+                     int $$7 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                     int $$8 = (24 + $$3.a(24)) * ($$3.h() ? -1 : 1);
+                     je.a $$9 = $$6.ds().k().e($$7, 0, $$8);
+                     int $$10 = 10;
+                     if (!$$0.b($$9.u() - 10, $$9.w() - 10, $$9.u() + 10, $$9.w() + 10)) {
+                        return 0;
+                     } else {
+                        jn<dfh> $$11 = $$0.t($$9);
+                        if ($$11.a(aws.ag)) {
+                           return 0;
+                        } else {
+                           int $$12 = 0;
+                           int $$13 = (int)Math.ceil((double)$$0.d_($$9).b()) + 1;
 
-   @Override
-   public eaj e() {
-      return this.d.e();
-   }
+                           for (int $$14 = 0; $$14 < $$13; $$14++) {
+                              $$12++;
+                              $$9.q($$0.a(eak.a.f, $$9).v());
+                              if ($$14 == 0) {
+                                 if (!this.a($$0, $$9, $$3, true)) {
+                                    break;
+                                 }
+                              } else {
+                                 this.a($$0, $$9, $$3, false);
+                              }
 
-   @Override
-   public int c(int $$0) {
-      this.e++;
-      return this.d instanceof dzx $$1 ? $$1.c($$0) : (int)(this.d.g() >>> 64 - $$0);
-   }
+                              $$9.p($$9.u() + $$3.a(5) - $$3.a(5));
+                              $$9.r($$9.w() + $$3.a(5) - $$3.a(5));
+                           }
 
-   @Override
-   public synchronized void b(long $$0) {
-      if (this.d != null) {
-         this.d.b($$0);
+                           return $$12;
+                        }
+                     }
+                  }
+               }
+            }
+         }
       }
    }
 
-   public long a(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g() | 1L;
-      long $$4 = this.g() | 1L;
-      long $$5 = (long)$$1 * $$3 + (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-      return $$5;
-   }
+   private boolean a(arh $$0, je $$1, azl $$2, boolean $$3) {
+      duo $$4 = $$0.a_($$1);
+      if (!der.a($$0, $$1, $$4, $$4.y(), btv.aC)) {
+         return false;
+      } else if (!clb.b(btv.aC, $$0, btu.p, $$1, $$2)) {
+         return false;
+      } else {
+         clb $$5 = btv.aC.a($$0, btu.p);
+         if ($$5 != null) {
+            if ($$3) {
+               $$5.x(true);
+               $$5.gx();
+            }
 
-   public void b(long $$0, int $$1, int $$2) {
-      long $$3 = $$0 + (long)$$1 + (long)(10000 * $$2);
-      this.b($$3);
-   }
-
-   public void c(long $$0, int $$1, int $$2) {
-      this.b($$0);
-      long $$3 = this.g();
-      long $$4 = this.g();
-      long $$5 = (long)$$1 * $$3 ^ (long)$$2 * $$4 ^ $$0;
-      this.b($$5);
-   }
-
-   public void a(long $$0, int $$1, int $$2, int $$3) {
-      long $$4 = (long)$$1 * 341873128712L + (long)$$2 * 132897987541L + $$0 + (long)$$3;
-      this.b($$4);
-   }
-
-   public static azk a(int $$0, int $$1, long $$2, long $$3) {
-      return azk.a($$2 + (long)($$0 * $$0 * 4987142) + (long)($$0 * 5947611) + (long)($$1 * $$1) * 4392871L + (long)($$1 * 389711) ^ $$3);
-   }
-
-   public static enum a {
-      a(dzx::new),
-      b(eax::new);
-
-      private final LongFunction<azk> c;
-
-      private a(final LongFunction<azk> $$0) {
-         this.c = $$0;
-      }
-
-      public azk a(long $$0) {
-         return this.c.apply($$0);
+            $$5.a_((double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+            $$5.a($$0, $$0.d_($$1), btu.p, null);
+            $$0.a_($$5);
+            return true;
+         } else {
+            return false;
+         }
       }
    }
 }

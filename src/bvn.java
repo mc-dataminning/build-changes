@@ -1,106 +1,213 @@
-import com.google.common.collect.ImmutableMap;
-import com.mojang.logging.LogUtils;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.util.Collection;
 import java.util.Map;
-import org.slf4j.Logger;
+import java.util.Set;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
 public class bvn {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<btq<? extends buf>, bvl> b = ImmutableMap.builder()
-      .put(btq.a, chb.q().a())
-      .put(btq.c, che.q().a())
-      .put(btq.d, cjo.q().a())
-      .put(btq.f, chh.gq().a())
-      .put(btq.g, cfp.q().a())
-      .put(btq.h, cfw.gC().a())
-      .put(btq.i, cke.q().a())
-      .put(btq.l, ckf.gr().a())
-      .put(btq.p, cfy.gE().a())
-      .put(btq.o, chm.q().a())
-      .put(btq.q, ckg.q().a())
-      .put(btq.t, cga.q().a())
-      .put(btq.u, cfr.q().a())
-      .put(btq.w, cgc.q().a())
-      .put(btq.x, ckh.q().a())
-      .put(btq.y, cgd.go().a())
-      .put(btq.z, chy.q().a())
-      .put(btq.B, ckj.q().a())
-      .put(btq.D, ckk.q().a())
-      .put(btq.H, ckl.q().a())
-      .put(btq.I, ckm.q().a())
-      .put(btq.F, cis.t().a())
-      .put(btq.J, cko.t().a())
-      .put(btq.m, clr.q().a())
-      .put(btq.Q, cgf.q().a())
-      .put(btq.R, chp.go().a())
-      .put(btq.T, ckp.y().a())
-      .put(btq.U, ckq.q().a())
-      .put(btq.W, btx.go().a())
-      .put(btq.X, chv.t().a())
-      .put(btq.Y, ckr.go().a())
-      .put(btq.Z, clz.q().a())
-      .put(btq.ab, chz.gQ().a())
-      .put(btq.ac, clo.gr().a())
-      .put(btq.ad, ckt.t().a())
-      .put(btq.af, cgh.q().a())
-      .put(btq.an, cic.gA().a())
-      .put(btq.ap, cku.q().a())
-      .put(btq.as, cgc.q().a())
-      .put(btq.at, chy.q().a())
-      .put(btq.au, cgj.q().a())
-      .put(btq.aw, cgk.gB().a())
-      .put(btq.ax, cgl.gA().a())
-      .put(btq.ay, ckv.gu().a())
-      .put(btq.az, cgm.q().a())
-      .put(btq.aA, cmf.gv().a())
-      .put(btq.aB, cmi.y().a())
-      .put(btq.aC, cky.t().a())
-      .put(btq.by, cnp.fQ().a())
-      .put(btq.aD, cgn.q().a())
-      .put(btq.aF, cfr.q().a())
-      .put(btq.aG, cgp.t().a())
-      .put(btq.aH, cla.q().a())
-      .put(btq.aI, cfr.q().a())
-      .put(btq.aJ, cgr.q().a())
-      .put(btq.aK, clb.q().a())
-      .put(btq.aM, clc.q().a())
-      .put(btq.aN, ckd.q().a())
-      .put(btq.aO, cif.q().a())
-      .put(btq.aP, ckv.gu().a())
-      .put(btq.aR, cim.q().a())
-      .put(btq.aS, cgt.q().a())
-      .put(btq.aW, clg.t().a())
-      .put(btq.aX, cgu.go().a())
-      .put(btq.aY, ckd.q().a())
-      .put(btq.aZ, cli.t().a())
-      .put(btq.ba, chs.gq().a())
-      .put(btq.be, cic.gA().a())
-      .put(btq.bg, cfr.q().a())
-      .put(btq.bh, cgw.y().a())
-      .put(btq.bi, clj.q().a())
-      .put(btq.bj, cnc.gx().a())
-      .put(btq.bk, clk.t().a())
-      .put(btq.bm, cmt.q().a())
-      .put(btq.bl, buh.E().a())
-      .put(btq.bo, cll.t().a())
-      .put(btq.bp, cjm.t().a())
-      .put(btq.bq, ckd.q().a())
-      .put(btq.bs, cgy.gC().a())
-      .put(btq.bt, cln.q().a())
-      .put(btq.bu, clo.gr().a())
-      .put(btq.bv, cij.q().a())
-      .put(btq.bw, clo.gr().a())
-      .put(btq.bx, clq.gx().a())
-      .build();
+   private static final String b = "base";
+   private static final String c = "modifiers";
+   public static final String a = "id";
+   private final jn<bvm> d;
+   private final Map<bvp.a, Map<alc, bvp>> e = Maps.newEnumMap(bvp.a.class);
+   private final Map<alc, bvp> f = new Object2ObjectArrayMap();
+   private final Map<alc, bvp> g = new Object2ObjectArrayMap();
+   private double h;
+   private boolean i = true;
+   private double j;
+   private final Consumer<bvn> k;
 
-   public static bvl a(btq<? extends buf> $$0) {
-      return b.get($$0);
+   public bvn(jn<bvm> $$0, Consumer<bvn> $$1) {
+      this.d = $$0;
+      this.k = $$1;
+      this.h = $$0.a().a();
    }
 
-   public static boolean b(btq<?> $$0) {
-      return b.containsKey($$0);
+   public jn<bvm> a() {
+      return this.d;
    }
 
-   public static void a() {
-      lu.f.s().filter($$0 -> $$0.f() != bui.h).filter($$0 -> !b((btq<?>)$$0)).map(lu.f::b).forEach($$0 -> ad.b("Entity " + $$0 + " has no attributes"));
+   public double b() {
+      return this.h;
+   }
+
+   public void a(double $$0) {
+      if ($$0 != this.h) {
+         this.h = $$0;
+         this.e();
+      }
+   }
+
+   @VisibleForTesting
+   Map<alc, bvp> a(bvp.a $$0) {
+      return this.e.computeIfAbsent($$0, $$0x -> new Object2ObjectOpenHashMap());
+   }
+
+   public Set<bvp> c() {
+      return ImmutableSet.copyOf(this.f.values());
+   }
+
+   public Set<bvp> d() {
+      return ImmutableSet.copyOf(this.g.values());
+   }
+
+   @Nullable
+   public bvp a(alc $$0) {
+      return this.f.get($$0);
+   }
+
+   public boolean b(alc $$0) {
+      return this.f.get($$0) != null;
+   }
+
+   private void f(bvp $$0) {
+      bvp $$1 = this.f.putIfAbsent($$0.b(), $$0);
+      if ($$1 != null) {
+         throw new IllegalArgumentException("Modifier is already applied on this attribute!");
+      } else {
+         this.a($$0.d()).put($$0.b(), $$0);
+         this.e();
+      }
+   }
+
+   public void a(bvp $$0) {
+      bvp $$1 = this.f.put($$0.b(), $$0);
+      if ($$0 != $$1) {
+         this.a($$0.d()).put($$0.b(), $$0);
+         this.e();
+      }
+   }
+
+   public void b(bvp $$0) {
+      this.f($$0);
+   }
+
+   public void c(bvp $$0) {
+      this.c($$0.b());
+      this.f($$0);
+      this.g.put($$0.b(), $$0);
+   }
+
+   public void d(bvp $$0) {
+      this.f($$0);
+      this.g.put($$0.b(), $$0);
+   }
+
+   public void a(Collection<bvp> $$0) {
+      for (bvp $$1 : $$0) {
+         this.d($$1);
+      }
+   }
+
+   protected void e() {
+      this.i = true;
+      this.k.accept(this);
+   }
+
+   public void e(bvp $$0) {
+      this.c($$0.b());
+   }
+
+   public boolean c(alc $$0) {
+      bvp $$1 = this.f.remove($$0);
+      if ($$1 == null) {
+         return false;
+      } else {
+         this.a($$1.d()).remove($$0);
+         this.g.remove($$0);
+         this.e();
+         return true;
+      }
+   }
+
+   public void f() {
+      for (bvp $$0 : this.c()) {
+         this.e($$0);
+      }
+   }
+
+   public double g() {
+      if (this.i) {
+         this.j = this.i();
+         this.i = false;
+      }
+
+      return this.j;
+   }
+
+   private double i() {
+      double $$0 = this.b();
+
+      for (bvp $$1 : this.b(bvp.a.a)) {
+         $$0 += $$1.c();
+      }
+
+      double $$2 = $$0;
+
+      for (bvp $$3 : this.b(bvp.a.b)) {
+         $$2 += $$0 * $$3.c();
+      }
+
+      for (bvp $$4 : this.b(bvp.a.c)) {
+         $$2 *= 1.0 + $$4.c();
+      }
+
+      return this.d.a().a($$2);
+   }
+
+   private Collection<bvp> b(bvp.a $$0) {
+      return this.e.getOrDefault($$0, Map.of()).values();
+   }
+
+   public void a(bvn $$0) {
+      this.h = $$0.h;
+      this.f.clear();
+      this.f.putAll($$0.f);
+      this.g.clear();
+      this.g.putAll($$0.g);
+      this.e.clear();
+      $$0.e.forEach(($$0x, $$1) -> this.a($$0x).putAll((Map<? extends alc, ? extends bvp>)$$1));
+      this.e();
+   }
+
+   public uf h() {
+      uf $$0 = new uf();
+      alb<bvm> $$1 = this.d.e().orElseThrow(() -> new IllegalStateException("Tried to serialize unregistered attribute"));
+      $$0.a("id", $$1.a().toString());
+      $$0.a("base", this.h);
+      if (!this.g.isEmpty()) {
+         ul $$2 = new ul();
+
+         for (bvp $$3 : this.g.values()) {
+            $$2.add($$3.a());
+         }
+
+         $$0.a("modifiers", $$2);
+      }
+
+      return $$0;
+   }
+
+   public void a(uf $$0) {
+      this.h = $$0.k("base");
+      if ($$0.b("modifiers", 9)) {
+         ul $$1 = $$0.c("modifiers", 10);
+
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            bvp $$3 = bvp.a($$1.a($$2));
+            if ($$3 != null) {
+               this.f.put($$3.b(), $$3);
+               this.a($$3.d()).put($$3.b(), $$3);
+               this.g.put($$3.b(), $$3);
+            }
+         }
+      }
+
+      this.e();
    }
 }

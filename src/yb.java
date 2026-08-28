@@ -20,11 +20,11 @@ public class yb {
       return this.a;
    }
 
-   public List<ayo> a(int $$0, int $$1, boolean $$2) {
+   public List<ayp> a(int $$0, int $$1, boolean $$2) {
       if ($$1 == 0) {
          return ImmutableList.of();
       } else {
-         List<ayo> $$3 = Lists.newArrayList();
+         List<ayp> $$3 = Lists.newArrayList();
          ya $$4 = this.b.get($$0);
          int $$5 = $$0;
 
@@ -33,7 +33,7 @@ public class yb {
             ya $$8 = this.b.get($$7);
             if (!$$8.equals($$4)) {
                String $$9 = this.a.substring($$5, $$7);
-               $$3.add($$2 ? ayo.backward($$9, $$4, this.c) : ayo.forward($$9, $$4));
+               $$3.add($$2 ? ayp.backward($$9, $$4, this.c) : ayp.forward($$9, $$4));
                $$4 = $$8;
                $$5 = $$7;
             }
@@ -41,7 +41,7 @@ public class yb {
 
          if ($$5 < $$0 + $$1) {
             String $$10 = this.a.substring($$5, $$0 + $$1);
-            $$3.add($$2 ? ayo.backward($$10, $$4, this.c) : ayo.forward($$10, $$4));
+            $$3.add($$2 ? ayp.backward($$10, $$4, this.c) : ayp.forward($$10, $$4));
          }
 
          return $$2 ? Lists.reverse($$3) : $$3;
@@ -56,7 +56,7 @@ public class yb {
       StringBuilder $$3 = new StringBuilder();
       List<ya> $$4 = Lists.newArrayList();
       $$0.a(($$2x, $$3x) -> {
-         azx.c($$3x, $$2x, ($$2xx, $$3xx, $$4x) -> {
+         azy.c($$3x, $$2x, ($$2xx, $$3xx, $$4x) -> {
             $$3.appendCodePoint($$4x);
             int $$5 = Character.charCount($$4x);
 

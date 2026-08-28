@@ -1,82 +1,20 @@
-import java.util.List;
-
-public abstract class drr {
-   private static final int a = 5;
-   private int b;
-   private double c;
-
-   protected abstract void a(dds var1, je var2, dua var3);
-
-   protected abstract void b(dds var1, je var2, dua var3);
-
-   protected abstract void a(dds var1, je var2, dua var3, int var4, int var5);
-
-   protected abstract boolean a(cnp var1);
-
-   public void a(cnp $$0, dds $$1, je $$2, dua $$3) {
-      int $$4 = this.b++;
-      if ($$4 == 0) {
-         this.a($$1, $$2, $$3);
-         $$1.a($$0, dyx.k, $$2);
-         d($$1, $$2, $$3);
-      }
-
-      this.a($$1, $$2, $$3, $$4, this.b);
-      this.c = Math.max($$0.gC(), this.c);
+public class drr extends drg {
+   public drr(je $$0, duo $$1) {
+      super(dru.C, $$0, $$1, dan.c);
    }
 
-   public void b(cnp $$0, dds $$1, je $$2, dua $$3) {
-      int $$4 = this.b--;
-      if (this.b == 0) {
-         this.b($$1, $$2, $$3);
-         $$1.a($$0, dyx.j, $$2);
-         this.c = 0.0;
-      }
-
-      this.a($$1, $$2, $$3, $$4, this.b);
+   @Override
+   protected xd j() {
+      return xd.c("container.blast_furnace");
    }
 
-   private List<cnp> a(dds $$0, je $$1) {
-      double $$2 = this.c + 4.0;
-      exz $$3 = new exz($$1).g($$2);
-      return $$0.a(dyl.a(cnp.class), $$3, this::a);
+   @Override
+   protected int a(dsp $$0, cvp $$1) {
+      return super.a($$0, $$1) / 2;
    }
 
-   public void c(dds $$0, je $$1, dua $$2) {
-      List<cnp> $$3 = this.a($$0, $$1);
-      this.c = 0.0;
-
-      for (cnp $$4 : $$3) {
-         this.c = Math.max($$4.gC(), this.c);
-      }
-
-      int $$5 = $$3.size();
-      int $$6 = this.b;
-      if ($$6 != $$5) {
-         boolean $$7 = $$5 != 0;
-         boolean $$8 = $$6 != 0;
-         if ($$7 && !$$8) {
-            this.a($$0, $$1, $$2);
-            $$0.a(null, dyx.k, $$1);
-         } else if (!$$7) {
-            this.b($$0, $$1, $$2);
-            $$0.a(null, dyx.j, $$1);
-         }
-
-         this.b = $$5;
-      }
-
-      this.a($$0, $$1, $$2, $$6, $$5);
-      if ($$5 > 0) {
-         d($$0, $$1, $$2);
-      }
-   }
-
-   public int a() {
-      return this.b;
-   }
-
-   private static void d(dds $$0, je $$1, dua $$2) {
-      $$0.a($$1, $$2.b(), 5);
+   @Override
+   protected cqw a(int $$0, cnt $$1) {
+      return new crc($$0, $$1, this, this.n);
    }
 }

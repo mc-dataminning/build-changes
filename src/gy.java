@@ -13,15 +13,15 @@ public class gy implements gr {
    }
 
    @Override
-   public eye a(et $$0) {
-      eye $$1 = $$0.d();
-      return new eye(this.a.a($$1.d), this.b.a($$1.e), this.c.a($$1.f));
+   public eys a(et $$0) {
+      eys $$1 = $$0.d();
+      return new eys(this.a.a($$1.d), this.b.a($$1.e), this.c.a($$1.f));
    }
 
    @Override
-   public eyd b(et $$0) {
-      eyd $$1 = $$0.k();
-      return new eyd((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
+   public eyr b(et $$0) {
+      eyr $$1 = $$0.k();
+      return new eyr((float)this.a.a((double)$$1.i), (float)this.b.a((double)$$1.j));
    }
 
    @Override
@@ -96,7 +96,7 @@ public class gy implements gr {
       return new gy(new gx(false, $$0), new gx(false, $$1), new gx(false, $$2));
    }
 
-   public static gy a(eyd $$0) {
+   public static gy a(eyr $$0) {
       return new gy(new gx(false, (double)$$0.i), new gx(false, (double)$$0.j), new gx(true, 0.0));
    }
 

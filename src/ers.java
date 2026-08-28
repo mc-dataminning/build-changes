@@ -1,54 +1,35 @@
-import java.util.Optional;
+import com.google.common.collect.Sets;
+import java.util.Set;
 import javax.annotation.Nullable;
 
-public class ers {
-   private final je a;
-   private final int b;
-   private final int c;
-
-   public ers(je $$0, int $$1, int $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+public class ers extends erz {
+   public ers(dnm $$0) {
+      super($$0);
    }
 
-   @Nullable
-   public static ers a(uf $$0) {
-      Optional<je> $$1 = uu.a($$0, "pos");
-      if ($$1.isEmpty()) {
-         return null;
-      } else {
-         int $$2 = $$0.h("rotation");
-         int $$3 = $$0.h("entity_id");
-         return new ers($$1.get(), $$2, $$3);
+   @Override
+   public void a(deg $$0, je $$1, duo $$2, @Nullable erx $$3, boolean $$4) {
+      int $$5 = this.c($$0, $$1);
+      if ($$2.c(dnm.f) != $$5) {
+         if ($$0.a_($$1) == $$2) {
+            $$0.a($$1, $$2.b(dnm.f, Integer.valueOf($$5)), 2);
+         }
+
+         Set<je> $$6 = Sets.newHashSet();
+         $$6.add($$1);
+
+         for (jj $$7 : jj.values()) {
+            $$6.add($$1.a($$7));
+         }
+
+         for (je $$8 : $$6) {
+            $$0.a($$8, this.a);
+         }
       }
    }
 
-   public uf a() {
-      uf $$0 = new uf();
-      $$0.a("pos", uu.a(this.a));
-      $$0.a("rotation", this.b);
-      $$0.a("entity_id", this.c);
-      return $$0;
-   }
-
-   public je b() {
-      return this.a;
-   }
-
-   public int c() {
-      return this.b;
-   }
-
-   public int d() {
-      return this.c;
-   }
-
-   public String e() {
-      return a(this.a);
-   }
-
-   public static String a(je $$0) {
-      return "frame-" + $$0.u() + "," + $$0.v() + "," + $$0.w();
+   private int c(deg $$0, je $$1) {
+      int $$2 = this.a($$0, $$1);
+      return $$2 == 15 ? $$2 : Math.max($$2, this.b($$0, $$1));
    }
 }

@@ -1,37 +1,39 @@
 import java.util.function.IntFunction;
 
-public enum fid {
-   a(0, "options.narrator.off"),
-   b(1, "options.narrator.all"),
-   c(2, "options.narrator.chat"),
-   d(3, "options.narrator.system");
+public enum fid implements azg {
+   a(0, "options.graphics.fast"),
+   b(1, "options.graphics.fancy"),
+   c(2, "options.graphics.fabulous");
 
-   private static final IntFunction<fid> e = axt.a(fid::a, values(), axt.a.b);
-   private final int f;
-   private final xd g;
+   private static final IntFunction<fid> d = axu.a(fid::b, values(), axu.a.b);
+   private final int e;
+   private final String f;
 
    private fid(final int $$0, final String $$1) {
-      this.f = $$0;
-      this.g = xd.c($$1);
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public int a() {
+   @Override
+   public int b() {
+      return this.e;
+   }
+
+   @Override
+   public String a() {
       return this.f;
    }
 
-   public xd b() {
-      return this.g;
+   @Override
+   public String toString() {
+      return switch (this) {
+         case a -> "fast";
+         case b -> "fancy";
+         case c -> "fabulous";
+      };
    }
 
    public static fid a(int $$0) {
-      return e.apply($$0);
-   }
-
-   public boolean c() {
-      return this == b || this == c;
-   }
-
-   public boolean d() {
-      return this == b || this == d;
+      return d.apply($$0);
    }
 }

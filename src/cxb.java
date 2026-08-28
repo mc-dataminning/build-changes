@@ -1,20 +1,40 @@
-public class cxb extends cvg {
-   public cxb(cxe $$0, float $$1, float $$2, cvg.a $$3) {
-      super($$0.a($$3, $$1, $$2));
+public class cxb extends cvk {
+   public static final int a = 1200;
+   public static final float b = 0.1F;
+
+   public cxb(cvk.a $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(dua $$0, dds $$1, je $$2, cnp $$3) {
-      return !$$3.f();
+   public int a(cvp $$0, buk $$1) {
+      return 1200;
    }
 
    @Override
-   public boolean a(cvl $$0, buf $$1, buf $$2) {
-      return true;
+   public cvr a(cvp $$0) {
+      return cvr.h;
    }
 
    @Override
-   public void b(cvl $$0, buf $$1, buf $$2) {
-      $$0.a(1, $$2, btr.a);
+   public brp a(deg $$0, cnu $$1, bro $$2) {
+      $$1.a(awe.zd, 1.0F, 1.0F);
+      $$1.b(awo.c.b(this));
+      return cvs.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public cvp a(cvp $$0, deg $$1, buk $$2) {
+      this.a($$2);
+      return $$0;
+   }
+
+   @Override
+   public void a(cvp $$0, deg $$1, buk $$2, int $$3) {
+      this.a($$2);
+   }
+
+   private void a(buk $$0) {
+      $$0.a(awe.ze, 1.0F, 1.0F);
    }
 }

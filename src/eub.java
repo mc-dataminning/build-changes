@@ -1,35 +1,64 @@
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class eub extends eug {
-   public static final MapCodec<eub> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(cs.a.fieldOf("item_filter").forGetter($$0x -> $$0x.b), euj.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
-            .apply($$0, eub::new)
-   );
-   private final cs b;
-   private final euh c;
+public class eub extends etq {
+   public static final MapCodec<eub> a = a(eub::new);
 
-   private eub(List<ewe> $$0, cs $$1, euh $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   eub(List<etx> $$0, List<ews> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public eui<eub> b() {
-      return euj.v;
+   public ety a() {
+      return etv.h;
    }
 
    @Override
-   public cvl a(cvl $$0, est $$1) {
-      return this.b.a($$0) ? this.c.apply($$0, $$1) : $$0;
+   protected etp a(List<? extends etp> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> c;
+         case 1 -> (etp)$$0.get(0);
+         case 2 -> $$0.get(0).and($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (etp $$3 : $$0) {
+            if (!$$3.expand($$1, $$2)) {
+               return false;
+            }
+         }
+
+         return true;
+      };
+      };
    }
 
-   @Override
-   public void a(esz $$0) {
-      super.a($$0);
-      this.c.a($$0.a(".modifier"));
+   public static eub.a a(etx.a<?>... $$0) {
+      return new eub.a($$0);
+   }
+
+   public static class a extends etx.a<eub.a> {
+      private final Builder<etx> a = ImmutableList.builder();
+
+      public a(etx.a<?>... $$0) {
+         for (etx.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
+      }
+
+      protected eub.a a() {
+         return this;
+      }
+
+      @Override
+      public eub.a c(etx.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public etx b() {
+         return new eub(this.a.build(), this.f());
+      }
    }
 }

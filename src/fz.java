@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 
-public class fz implements ArgumentType<eyz> {
+public class fz implements ArgumentType<ezo> {
    private static final Collection<String> b = Arrays.asList("sidebar", "foo.bar");
    public static final DynamicCommandExceptionType a = new DynamicCommandExceptionType($$0 -> xd.b("argument.scoreboardDisplaySlot.invalid", $$0));
 
@@ -20,13 +20,13 @@ public class fz implements ArgumentType<eyz> {
       return new fz();
    }
 
-   public static eyz a(CommandContext<et> $$0, String $$1) {
-      return (eyz)$$0.getArgument($$1, eyz.class);
+   public static ezo a(CommandContext<et> $$0, String $$1) {
+      return (ezo)$$0.getArgument($$1, ezo.class);
    }
 
-   public eyz a(StringReader $$0) throws CommandSyntaxException {
+   public ezo a(StringReader $$0) throws CommandSyntaxException {
       String $$1 = $$0.readUnquotedString();
-      eyz $$2 = eyz.t.a($$1);
+      ezo $$2 = ezo.t.a($$1);
       if ($$2 == null) {
          throw a.createWithContext($$0, $$1);
       } else {
@@ -35,7 +35,7 @@ public class fz implements ArgumentType<eyz> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return ey.b(Arrays.stream(eyz.values()).map(eyz::c), $$1);
+      return ey.b(Arrays.stream(ezo.values()).map(ezo::c), $$1);
    }
 
    public Collection<String> getExamples() {

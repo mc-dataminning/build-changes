@@ -1,25 +1,50 @@
-public class cdw extends cei {
-   public static final float a = 8.0F;
+import javax.annotation.Nullable;
 
-   @Override
-   protected boolean a(buf $$0, buf $$1) {
-      return this.f($$0, $$1) && $$1.bl() && (this.b($$1) || this.e($$0, $$1)) && ceo.c($$0, $$1);
-   }
+public class cdw extends cdu {
+   @Nullable
+   private je p;
 
-   private boolean e(buf $$0, buf $$1) {
-      return !$$0.dX().a(cdi.U) && $$1.ao().a(aww.j);
-   }
-
-   private boolean b(buf $$0) {
-      return $$0.ao().a(aww.i);
-   }
-
-   private boolean f(buf $$0, buf $$1) {
-      return $$1.g((btj)$$0) <= 64.0;
+   public cdw(bum $$0, deg $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   protected cdi<buf> b() {
-      return cdi.B;
+   public erd a(je $$0, int $$1) {
+      this.p = $$0;
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public erd a(bto $$0, int $$1) {
+      this.p = $$0.ds();
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public boolean a(bto $$0, double $$1) {
+      erd $$2 = this.a($$0, 0);
+      if ($$2 != null) {
+         return this.a($$2, $$1);
+      } else {
+         this.p = $$0.ds();
+         this.d = $$1;
+         return true;
+      }
+   }
+
+   @Override
+   public void c() {
+      if (!this.m()) {
+         super.c();
+      } else {
+         if (this.p != null) {
+            if (!this.p.a(this.a.dq(), (double)this.a.dn())
+               && (!(this.a.dz() > (double)this.p.v()) || !je.a((double)this.p.u(), this.a.dz(), (double)this.p.w()).a(this.a.dq(), (double)this.a.dn()))) {
+               this.a.M().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
+            } else {
+               this.p = null;
+            }
+         }
+      }
    }
 }

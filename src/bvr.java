@@ -1,84 +1,42 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Optional;
+public class bvr {
+   public static final jn<bvm> a = a("armor", new bvt("attribute.name.armor", 0.0, 0.0, 30.0).a(true));
+   public static final jn<bvm> b = a("armor_toughness", new bvt("attribute.name.armor_toughness", 0.0, 0.0, 20.0).a(true));
+   public static final jn<bvm> c = a("attack_damage", new bvt("attribute.name.attack_damage", 2.0, 0.0, 2048.0));
+   public static final jn<bvm> d = a("attack_knockback", new bvt("attribute.name.attack_knockback", 0.0, 0.0, 5.0));
+   public static final jn<bvm> e = a("attack_speed", new bvt("attribute.name.attack_speed", 4.0, 0.0, 1024.0).a(true));
+   public static final jn<bvm> f = a("block_break_speed", new bvt("attribute.name.block_break_speed", 1.0, 0.0, 1024.0).a(true));
+   public static final jn<bvm> g = a("block_interaction_range", new bvt("attribute.name.block_interaction_range", 4.5, 0.0, 64.0).a(true));
+   public static final jn<bvm> h = a("burning_time", new bvt("attribute.name.burning_time", 1.0, 0.0, 1024.0).a(true).a(bvm.a.c));
+   public static final jn<bvm> i = a("explosion_knockback_resistance", new bvt("attribute.name.explosion_knockback_resistance", 0.0, 0.0, 1.0).a(true));
+   public static final jn<bvm> j = a("entity_interaction_range", new bvt("attribute.name.entity_interaction_range", 3.0, 0.0, 64.0).a(true));
+   public static final jn<bvm> k = a("fall_damage_multiplier", new bvt("attribute.name.fall_damage_multiplier", 1.0, 0.0, 100.0).a(true).a(bvm.a.c));
+   public static final jn<bvm> l = a("flying_speed", new bvt("attribute.name.flying_speed", 0.4, 0.0, 1024.0).a(true));
+   public static final jn<bvm> m = a("follow_range", new bvt("attribute.name.follow_range", 32.0, 0.0, 2048.0));
+   public static final jn<bvm> n = a("gravity", new bvt("attribute.name.gravity", 0.08, -1.0, 1.0).a(true).a(bvm.a.b));
+   public static final jn<bvm> o = a("jump_strength", new bvt("attribute.name.jump_strength", 0.42F, 0.0, 32.0).a(true));
+   public static final jn<bvm> p = a("knockback_resistance", new bvt("attribute.name.knockback_resistance", 0.0, 0.0, 1.0));
+   public static final jn<bvm> q = a("luck", new bvt("attribute.name.luck", 0.0, -1024.0, 1024.0).a(true));
+   public static final jn<bvm> r = a("max_absorption", new bvt("attribute.name.max_absorption", 0.0, 0.0, 2048.0).a(true));
+   public static final jn<bvm> s = a("max_health", new bvt("attribute.name.max_health", 20.0, 1.0, 1024.0).a(true));
+   public static final jn<bvm> t = a("mining_efficiency", new bvt("attribute.name.mining_efficiency", 0.0, 0.0, 1024.0).a(true));
+   public static final jn<bvm> u = a("movement_efficiency", new bvt("attribute.name.movement_efficiency", 0.0, 0.0, 1.0).a(true));
+   public static final jn<bvm> v = a("movement_speed", new bvt("attribute.name.movement_speed", 0.7, 0.0, 1024.0).a(true));
+   public static final jn<bvm> w = a("oxygen_bonus", new bvt("attribute.name.oxygen_bonus", 0.0, 0.0, 1024.0).a(true));
+   public static final jn<bvm> x = a("safe_fall_distance", new bvt("attribute.name.safe_fall_distance", 3.0, -1024.0, 1024.0).a(true));
+   public static final jn<bvm> y = a("scale", new bvt("attribute.name.scale", 1.0, 0.0625, 16.0).a(true).a(bvm.a.b));
+   public static final jn<bvm> z = a("sneaking_speed", new bvt("attribute.name.sneaking_speed", 0.3, 0.0, 1.0).a(true));
+   public static final jn<bvm> A = a("spawn_reinforcements", new bvt("attribute.name.spawn_reinforcements", 0.0, 0.0, 1.0));
+   public static final jn<bvm> B = a("step_height", new bvt("attribute.name.step_height", 0.6, 0.0, 10.0).a(true));
+   public static final jn<bvm> C = a("submerged_mining_speed", new bvt("attribute.name.submerged_mining_speed", 0.2, 0.0, 20.0).a(true));
+   public static final jn<bvm> D = a("sweeping_damage_ratio", new bvt("attribute.name.sweeping_damage_ratio", 0.0, 0.0, 1.0).a(true));
+   public static final jn<bvm> E = a("tempt_range", new bvt("attribute.name.tempt_range", 10.0, 0.0, 2048.0));
+   public static final jn<bvm> F = a("water_movement_efficiency", new bvt("attribute.name.water_movement_efficiency", 0.0, 0.0, 1.0).a(true));
 
-public class bvr extends bvx<cfv> {
-   private static final int c = 3;
-   private static final int d = 60;
-   private static final int e = 110;
-   private final btq<? extends cfv> f;
-   private final float g;
-   private final int h;
-   private static final int i = 2;
-   private long j;
-
-   public bvr(btq<? extends cfv> $$0) {
-      this($$0, 1.0F, 2);
+   private static jn<bvm> a(String $$0, bvm $$1) {
+      return ka.b(lu.s, alc.b($$0), $$1);
    }
 
-   public bvr(btq<? extends cfv> $$0, float $$1, int $$2) {
-      super(ImmutableMap.of(cdi.h, cdj.a, cdi.r, cdj.b, cdi.m, cdj.c, cdi.n, cdj.c, cdi.Z, cdj.b), 110);
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
-   }
-
-   protected boolean a(arg $$0, cfv $$1) {
-      return $$1.gy() && this.c($$1).isPresent();
-   }
-
-   protected void a(arg $$0, cfv $$1, long $$2) {
-      cfv $$3 = this.c($$1).get();
-      $$1.dX().a(cdi.r, $$3);
-      $$3.dX().a(cdi.r, $$1);
-      bvz.a($$1, (buf)$$3, this.g, this.h);
-      int $$4 = 60 + $$1.dV().a(50);
-      this.j = $$2 + (long)$$4;
-   }
-
-   protected boolean b(arg $$0, cfv $$1, long $$2) {
-      if (!this.b($$1)) {
-         return false;
-      } else {
-         cfv $$3 = this.a($$1);
-         return $$3.bI() && $$1.a($$3) && bvz.a($$1.dX(), $$3) && $$2 <= this.j && !$$1.gl() && !$$3.gl();
-      }
-   }
-
-   protected void c(arg $$0, cfv $$1, long $$2) {
-      cfv $$3 = this.a($$1);
-      bvz.a($$1, (buf)$$3, this.g, this.h);
-      if ($$1.a($$3, 3.0)) {
-         if ($$2 >= this.j) {
-            $$1.a($$0, $$3);
-            $$1.dX().b(cdi.r);
-            $$3.dX().b(cdi.r);
-         }
-      }
-   }
-
-   protected void d(arg $$0, cfv $$1, long $$2) {
-      $$1.dX().b(cdi.r);
-      $$1.dX().b(cdi.m);
-      $$1.dX().b(cdi.n);
-      this.j = 0L;
-   }
-
-   private cfv a(cfv $$0) {
-      return (cfv)$$0.dX().c(cdi.r).get();
-   }
-
-   private boolean b(cfv $$0) {
-      bvg<?> $$1 = $$0.dX();
-      return $$1.a(cdi.r) && $$1.c(cdi.r).get().ao() == this.f;
-   }
-
-   private Optional<? extends cfv> c(cfv $$0) {
-      return $$0.dX().c(cdi.h).get().a($$1 -> {
-         if ($$1.ao() == this.f && $$1 instanceof cfv $$2 && $$0.a($$2) && !$$2.gl()) {
-            return true;
-         }
-
-         return false;
-      }).map(cfv.class::cast);
+   public static jn<bvm> a(ka<bvm> $$0) {
+      return s;
    }
 }

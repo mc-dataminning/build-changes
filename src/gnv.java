@@ -1,35 +1,17 @@
-public class gnv extends gmr<coh, gtu> {
-   private static final alb a = alb.b("textures/entity/llama/spit.png");
-   private final fxt b;
+public class gnv extends gpr<buc> {
+   private static final alc a = alc.b("textures/entity/squid/glow_squid.png");
 
-   public gnv(gms.a $$0) {
-      super($$0);
-      this.b = new fxt($$0.a(gaa.bg));
+   public gnv(gnj.a $$0, fzm $$1, fzm $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public void a(gtu $$0, fcu $$1, ggv $$2, int $$3) {
-      $$1.a();
-      $$1.a(0.0F, 0.15F, 0.0F);
-      $$1.a(a.d.rotationDegrees($$0.a - 90.0F));
-      $$1.a(a.f.rotationDegrees($$0.b));
-      this.b.a($$0);
-      fcy $$4 = $$2.getBuffer(this.b.a(a));
-      this.b.a($$1, $$4, $$3, gwb.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
-   }
-
-   public alb a(gtu $$0) {
+   @Override
+   public alc a(gvj $$0) {
       return a;
    }
 
-   public gtu a() {
-      return new gtu();
-   }
-
-   public void a(coh $$0, gtu $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.b = $$0.j($$2);
-      $$1.a = $$0.k($$2);
+   protected int a(buc $$0, je $$1) {
+      int $$2 = (int)azd.b(0.0F, 15.0F, 1.0F - (float)$$0.y() / 10.0F);
+      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
    }
 }

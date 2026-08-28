@@ -1,49 +1,15 @@
-import com.mojang.serialization.Codec;
-
-public interface czt<T extends czw> {
-   Codec<czt<?>> h = lu.r.q().dispatch(czt::as_, czy::a);
-   zb<wo, czt<?>> i = yz.a(lv.ae).b(czt::as_, czy::b);
-
-   boolean a(T var1, dds var2);
-
-   cvl a(T var1, jp.a var2);
-
-   boolean a(int var1, int var2);
-
-   cvl a(jp.a var1);
-
-   default jw<cvl> a(T $$0) {
-      jw<cvl> $$1 = jw.a($$0.a(), cvl.k);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         cvg $$3 = $$0.a($$2).h();
-         if ($$3.v()) {
-            $$1.set($$2, new cvl($$3.u()));
-         }
-      }
-
-      return $$1;
+public class czt extends czo {
+   public czt(String $$0, czu $$1, dad $$2, cvp $$3, float $$4, int $$5) {
+      super(dan.e, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   default boolean ar_() {
-      return false;
+   @Override
+   public cvp g() {
+      return new cvp(dhl.og);
    }
 
-   default boolean h() {
-      return true;
+   @Override
+   public dam<?> aq_() {
+      return dam.r;
    }
-
-   default String c() {
-      return "";
-   }
-
-   default cvl g() {
-      return new cvl(dgx.cA);
-   }
-
-   czy<?> as_();
-
-   czz<?> e();
-
-   czs a();
 }

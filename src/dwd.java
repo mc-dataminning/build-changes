@@ -1,58 +1,58 @@
-import java.util.List;
-import java.util.function.Predicate;
+public interface dwd {
+   void a(dwf var1, double var2);
 
-public class dwd<T> implements dwm<T> {
-   private final js<T> a;
+   void a(dwf var1, double var2, double var4, long var6);
 
-   public dwd(js<T> $$0) {
-      this.a = $$0;
-   }
+   void a(dwf var1, double var2, double var4);
 
-   public static <A> dwm<A> a(int $$0, js<A> $$1, dwn<A> $$2, List<A> $$3) {
-      return new dwd<>($$1);
-   }
+   void a(dwf var1, int var2);
 
-   @Override
-   public int a(T $$0) {
-      int $$1 = this.a.a($$0);
-      return $$1 == -1 ? 0 : $$1;
-   }
+   void b(dwf var1, int var2);
 
-   @Override
-   public boolean a(Predicate<T> $$0) {
-      return true;
-   }
+   void b(dwf var1, double var2);
 
-   @Override
-   public T a(int $$0) {
-      T $$1 = this.a.a($$0);
-      if ($$1 == null) {
-         throw new dwl($$0);
-      } else {
-         return $$1;
+   void c(dwf var1, double var2);
+
+   public static class a implements dwd {
+      private final dwf a;
+
+      public a(dwf $$0) {
+         this.a = $$0;
       }
-   }
 
-   @Override
-   public void a(wa $$0) {
-   }
+      @Override
+      public void a(dwf $$0, double $$1) {
+         this.a.a($$1);
+      }
 
-   @Override
-   public void b(wa $$0) {
-   }
+      @Override
+      public void a(dwf $$0, double $$1, double $$2, long $$3) {
+         this.a.a($$1, $$2, $$3);
+      }
 
-   @Override
-   public int a() {
-      return 0;
-   }
+      @Override
+      public void a(dwf $$0, double $$1, double $$2) {
+         this.a.c($$1, $$2);
+      }
 
-   @Override
-   public int b() {
-      return this.a.c();
-   }
+      @Override
+      public void a(dwf $$0, int $$1) {
+         this.a.b($$1);
+      }
 
-   @Override
-   public dwm<T> a(dwn<T> $$0) {
-      return this;
+      @Override
+      public void b(dwf $$0, int $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void b(dwf $$0, double $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void c(dwf $$0, double $$1) {
+         this.a.b($$1);
+      }
    }
 }

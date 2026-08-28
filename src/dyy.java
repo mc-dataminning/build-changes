@@ -1,59 +1,63 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import it.unimi.dsi.fastutil.ints.Int2ObjectLinkedOpenHashMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
 public class dyy {
-   private final arg a;
+   private Int2ObjectMap<bto> a = new Int2ObjectLinkedOpenHashMap();
+   private Int2ObjectMap<bto> b = new Int2ObjectLinkedOpenHashMap();
+   @Nullable
+   private Int2ObjectMap<bto> c;
 
-   public dyy(arg $$0) {
-      this.a = $$0;
+   private void a() {
+      if (this.c == this.a) {
+         this.b.clear();
+         ObjectIterator $$1 = Int2ObjectMaps.fastIterable(this.a).iterator();
+
+         while ($$1.hasNext()) {
+            Entry<bto> $$0 = (Entry<bto>)$$1.next();
+            this.b.put($$0.getIntKey(), (bto)$$0.getValue());
+         }
+
+         Int2ObjectMap<bto> $$1x = this.a;
+         this.a = this.b;
+         this.b = $$1x;
+      }
    }
 
-   public void a(jn<dyx> $$0, eye $$1, dyx.a $$2) {
-      int $$3 = $$0.a().a();
-      je $$4 = je.a((jx)$$1);
-      int $$5 = kg.a($$4.u() - $$3);
-      int $$6 = kg.a($$4.v() - $$3);
-      int $$7 = kg.a($$4.w() - $$3);
-      int $$8 = kg.a($$4.u() + $$3);
-      int $$9 = kg.a($$4.v() + $$3);
-      int $$10 = kg.a($$4.w() + $$3);
-      List<dyx.b> $$11 = new ArrayList<>();
-      dza.a $$12 = ($$4x, $$5x) -> {
-         if ($$4x.c() == dyz.a.b) {
-            $$11.add(new dyx.b($$0, $$1, $$2, $$4x, $$5x));
-         } else {
-            $$4x.a(this.a, $$0, $$2, $$1);
-         }
-      };
-      boolean $$13 = false;
+   public void a(bto $$0) {
+      this.a();
+      this.a.put($$0.ap(), $$0);
+   }
 
-      for (int $$14 = $$5; $$14 <= $$8; $$14++) {
-         for (int $$15 = $$7; $$15 <= $$10; $$15++) {
-            dvw $$16 = this.a.l().a($$14, $$15);
-            if ($$16 != null) {
-               for (int $$17 = $$6; $$17 <= $$9; $$17++) {
-                  $$13 |= $$16.a($$17).a($$0, $$1, $$2, $$12);
-               }
+   public void b(bto $$0) {
+      this.a();
+      this.a.remove($$0.ap());
+   }
+
+   public boolean c(bto $$0) {
+      return this.a.containsKey($$0.ap());
+   }
+
+   public void a(Consumer<bto> $$0) {
+      if (this.c != null) {
+         throw new UnsupportedOperationException("Only one concurrent iteration supported");
+      } else {
+         this.c = this.a;
+
+         try {
+            ObjectIterator var2 = this.a.values().iterator();
+
+            while (var2.hasNext()) {
+               bto $$1 = (bto)var2.next();
+               $$0.accept($$1);
             }
+         } finally {
+            this.c = null;
          }
-      }
-
-      if (!$$11.isEmpty()) {
-         this.a($$11);
-      }
-
-      if ($$13) {
-         agn.a(this.a, $$0, $$1);
-      }
-   }
-
-   private void a(List<dyx.b> $$0) {
-      Collections.sort($$0);
-
-      for (dyx.b $$1 : $$0) {
-         dyz $$2 = $$1.d();
-         $$2.a(this.a, $$1.a(), $$1.c(), $$1.b());
       }
    }
 }

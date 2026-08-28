@@ -1,22 +1,22 @@
-public class gqf extends grf<guf, fyf> {
-   private final fxn<guf> a;
+public class gqf extends goc<clp, guc> {
+   private static final alc a = alc.b("textures/entity/illager/vindicator.png");
 
-   public gqf(goo<guf, fyf> $$0, fzx $$1) {
-      super($$0);
-      this.a = new fyd<>($$1.a(gaa.bJ));
-   }
-
-   public void a(fcu $$0, ggv $$1, int $$2, guf $$3, float $$4, float $$5) {
-      if (!$$3.u && $$3.aw) {
-         gxl $$6 = $$3.a;
-         if ($$6.c() != null) {
-            if (!$$3.Q.a(cvo.nU)) {
-               fcy $$7 = $$1.getBuffer(ghe.c($$6.c()));
-               this.d().a(this.a);
-               this.a.a($$3);
-               this.a.a($$0, $$7, $$2, gwb.d);
+   public gqf(gnj.a $$0) {
+      super($$0, new fxy<>($$0.a(gak.cU)), 0.5F);
+      this.a(new grp<guc, fxy<guc>>(this, $$0.b()) {
+         public void a(fde $$0, ghg $$1, int $$2, guc $$3, float $$4, float $$5) {
+            if ($$3.c) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5);
             }
          }
-      }
+      });
+   }
+
+   public alc a(guc $$0) {
+      return a;
+   }
+
+   public guc c() {
+      return new guc();
    }
 }

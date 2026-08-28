@@ -23,37 +23,37 @@ public class nt implements mb {
 
    @Override
    public CompletableFuture<?> a(lz $$0) {
-      Map<dgv, nu> $$1 = Maps.newHashMap();
+      Map<dhj, nu> $$1 = Maps.newHashMap();
       Consumer<nu> $$2 = $$1x -> {
-         dgv $$2x = $$1x.a();
+         dhj $$2x = $$1x.a();
          nu $$3x = $$1.put($$2x, $$1x);
          if ($$3x != null) {
             throw new IllegalStateException("Duplicate blockstate definition for " + $$2x);
          }
       };
-      Map<alb, Supplier<JsonElement>> $$3 = Maps.newHashMap();
-      Set<cvg> $$4 = Sets.newHashSet();
-      BiConsumer<alb, Supplier<JsonElement>> $$5 = ($$1x, $$2x) -> {
+      Map<alc, Supplier<JsonElement>> $$3 = Maps.newHashMap();
+      Set<cvk> $$4 = Sets.newHashSet();
+      BiConsumer<alc, Supplier<JsonElement>> $$5 = ($$1x, $$2x) -> {
          Supplier<JsonElement> $$3x = $$3.put($$1x, $$2x);
          if ($$3x != null) {
             throw new IllegalStateException("Duplicate model definition for " + $$1x);
          }
       };
-      Consumer<cvg> $$6 = $$4::add;
+      Consumer<cvk> $$6 = $$4::add;
       new nr($$2, $$5, $$6).a();
       new ns($$5).a();
-      List<dgv> $$7 = lu.e.h().stream().filter($$0x -> true).map(Entry::getValue).filter($$1x -> !$$1.containsKey($$1x)).toList();
+      List<dhj> $$7 = lu.e.h().stream().filter($$0x -> true).map(Entry::getValue).filter($$1x -> !$$1.containsKey($$1x)).toList();
       if (!$$7.isEmpty()) {
          throw new IllegalStateException("Missing blockstate definitions for: " + $$7);
       } else {
          lu.e.forEach($$2x -> {
-            cvg $$3x = cvg.e.get($$2x);
+            cvk $$3x = cvk.e.get($$2x);
             if ($$3x != null) {
                if ($$4.contains($$3x)) {
                   return;
                }
 
-               alb $$4x = of.a($$3x);
+               alc $$4x = of.a($$3x);
                if (!$$3.containsKey($$4x)) {
                   $$3.put($$4x, new oe(of.a($$2x)));
                }

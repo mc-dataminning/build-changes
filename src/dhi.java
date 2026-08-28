@@ -1,61 +1,56 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dhi extends dnp {
-   public static final MapCodec<dhi> a = b(dhi::new);
-   public static final duu b = duq.R;
+public class dhi extends dge {
+   public static final MapCodec<dhi> c = b(dhi::new);
 
    @Override
    public MapCodec<dhi> a() {
-      return a;
+      return c;
    }
 
-   public dhi(dtz.d $$0) {
+   protected dhi(dun.d $$0) {
       super($$0);
-      this.l(this.o().b(b, jj.c));
+   }
+
+   @Override
+   public drs a(je $$0, duo $$1) {
+      return new drr($$0, $$1);
    }
 
    @Nullable
    @Override
-   public dre a(je $$0, dua $$1) {
-      return new drj($$0, $$1);
-   }
-
-   @Nullable
-   @Override
-   public <T extends dre> drf<T> a(dds $$0, dua $$1, drg<T> $$2) {
-      return !$$0.B ? a($$2, drg.J, ($$0x, $$1x, $$2x, $$3) -> dzg.c.a($$0x, $$3.gq(), $$3.gr())) : null;
-   }
-
-   @Nullable
-   @Override
-   public dua a(cyw $$0) {
-      return super.a($$0).b(b, $$0.g());
+   public <T extends drs> drt<T> a(deg $$0, duo $$1, dru<T> $$2) {
+      return a($$0, $$2, dru.C);
    }
 
    @Override
-   public int a(dua $$0, dcx $$1, je $$2, jj $$3) {
-      return $$3 != $$0.c(b) ? super.a($$0, $$1, $$2, $$3) : 0;
+   protected void a(deg $$0, je $$1, cnu $$2) {
+      drs $$3 = $$0.c_($$1);
+      if ($$3 instanceof drr) {
+         $$2.a((brr)$$3);
+         $$2.a(awo.as);
+      }
    }
 
    @Override
-   protected void a(dub.a<dgv, dua> $$0) {
-      super.a($$0);
-      $$0.a(b);
-   }
+   public void a(duo $$0, deg $$1, je $$2, azl $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, awe.cA, awf.e, 1.0F, 1.0F, false);
+         }
 
-   @Override
-   public dua a(dua $$0, dnj $$1) {
-      return $$0.b(b, $$1.a($$0.c(b)));
-   }
-
-   @Override
-   public dua a(dua $$0, dls $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   public int c() {
-      return 10;
+         jj $$7 = $$0.c(a);
+         jj.a $$8 = $$7.o();
+         double $$9 = 0.52;
+         double $$10 = $$3.j() * 0.6 - 0.3;
+         double $$11 = $$8 == jj.a.a ? (double)$$7.j() * 0.52 : $$10;
+         double $$12 = $$3.j() * 9.0 / 16.0;
+         double $$13 = $$8 == jj.a.c ? (double)$$7.l() * 0.52 : $$10;
+         $$1.a(ln.ae, $$4 + $$11, $$5 + $$12, $$6 + $$13, 0.0, 0.0, 0.0);
+      }
    }
 }

@@ -1,29 +1,24 @@
 import com.mojang.serialization.Codec;
-import java.util.stream.Stream;
+import java.util.function.Function;
 
-public record eco<FC extends efg, F extends edc<FC>>(F d, FC e) {
-   public static final Codec<eco<?, ?>> a = lu.O.q().dispatch($$0 -> $$0.d, edc::a);
-   public static final Codec<jn<eco<?, ?>>> b = akx.a(lv.aI, a);
-   public static final Codec<jr<eco<?, ?>>> c = kc.a(lv.aI, a);
+public record eco<WC extends ecj>(ecq<WC> d, WC e) {
+   public static final Codec<eco<?>> a = lu.N.q().dispatch($$0 -> $$0.d, ecq::c);
+   public static final Codec<jn<eco<?>>> b = aky.a(lv.aI, a);
+   public static final Codec<jr<eco<?>>> c = kc.a(lv.aI, a);
 
-   public boolean a(dep $$0, dvx $$1, azk $$2, je $$3) {
-      return this.d.a(this.e, $$0, $$1, $$2, $$3);
+   public boolean a(azl $$0) {
+      return this.d.a(this.e, $$0);
    }
 
-   public Stream<eco<?, ?>> a() {
-      return Stream.concat(Stream.of(this), this.e.e());
+   public boolean a(ecl $$0, dwk $$1, Function<je, jn<dfh>> $$2, azl $$3, dzw $$4, ddm $$5, dwj $$6) {
+      return ab.a($$1.f()) ? false : this.d.a($$0, this.e, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   @Override
-   public String toString() {
-      return "Configured: " + this.d + ": " + this.e;
-   }
-
-   public F b() {
+   public ecq<WC> a() {
       return this.d;
    }
 
-   public FC c() {
+   public WC b() {
       return this.e;
    }
 }

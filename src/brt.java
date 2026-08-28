@@ -1,60 +1,37 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+
 public class brt {
-   public static final float a = 1.0F;
-   protected float b = 20.0F;
-   protected long c = bad.a / 20L;
-   protected int d = 0;
-   protected boolean e = true;
-   protected boolean f = false;
+   public static final Codec<brt> a = RecordCodecBuilder.create($$0 -> $$0.group(ebl.b.fieldOf("source").forGetter($$0x -> $$0x.b)).apply($$0, brt::new));
+   private final ebl b;
 
-   public void a(float $$0) {
-      this.b = Math.max($$0, 1.0F);
-      this.c = (long)((double)bad.a / (double)this.b);
+   public brt(ebl $$0) {
+      this.b = $$0;
    }
 
-   public float f() {
-      return this.b;
+   public brt(long $$0, alc $$1) {
+      this(a($$0, Optional.of($$1)));
    }
 
-   public float g() {
-      return (float)this.c / (float)bad.b;
+   public brt(long $$0, Optional<alc> $$1) {
+      this(a($$0, $$1));
    }
 
-   public long h() {
-      return this.c;
-   }
-
-   public boolean i() {
-      return this.e;
-   }
-
-   public boolean j() {
-      return this.d > 0;
-   }
-
-   public void c(int $$0) {
-      this.d = $$0;
-   }
-
-   public int k() {
-      return this.d;
-   }
-
-   public void a(boolean $$0) {
-      this.f = $$0;
-   }
-
-   public boolean l() {
-      return this.f;
-   }
-
-   public void m() {
-      this.e = !this.f || this.d > 0;
-      if (this.d > 0) {
-         this.d--;
+   private static ebl a(long $$0, Optional<alc> $$1) {
+      eaz.a $$2 = eaz.b($$0);
+      if ($$1.isPresent()) {
+         $$2 = $$2.a(a($$1.get()));
       }
+
+      return new ebl($$2.a());
    }
 
-   public boolean a(btj $$0) {
-      return !this.i() && !($$0 instanceof cnp) && $$0.db() <= 0;
+   public static eaz.a a(alc $$0) {
+      return eaz.a($$0.toString());
+   }
+
+   public azl a() {
+      return this.b;
    }
 }

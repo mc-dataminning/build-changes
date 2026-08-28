@@ -1,76 +1,145 @@
-public record eqz(arg d, eye e, eye f, float g, float h, boolean i, eqz.a j) {
-   public static final eqz.a a = $$0 -> {
-   };
-   public static final eqz.a b = eqz::a;
-   public static final eqz.a c = eqz::b;
+import java.util.Arrays;
 
-   public eqz(arg $$0, eye $$1, eye $$2, float $$3, float $$4, eqz.a $$5) {
-      this($$0, $$1, $$2, $$3, $$4, false, $$5);
-   }
+public class eqz {
+   private erb[] a = new erb[128];
+   private int b;
 
-   public eqz(arg $$0, btj $$1, eqz.a $$2) {
-      this($$0, a($$0, $$1), eye.c, 0.0F, 0.0F, false, $$2);
-   }
+   public erb a(erb $$0) {
+      if ($$0.d >= 0) {
+         throw new IllegalStateException("OW KNOWS!");
+      } else {
+         if (this.b == this.a.length) {
+            erb[] $$1 = new erb[this.b << 1];
+            System.arraycopy(this.a, 0, $$1, 0, this.b);
+            this.a = $$1;
+         }
 
-   private static void a(btj $$0) {
-      if ($$0 instanceof arh $$1) {
-         $$1.c.b(new adm(1032, je.c, 0, false));
+         this.a[this.b] = $$0;
+         $$0.d = this.b;
+         this.a(this.b++);
+         return $$0;
       }
    }
 
-   private static void b(btj $$0) {
-      $$0.f(je.a((jx)$$0.dq()));
+   public void a() {
+      this.b = 0;
    }
 
-   public static eqz a(arg $$0, btj $$1, eqz.a $$2) {
-      return new eqz($$0, a($$0, $$1), eye.c, 0.0F, 0.0F, true, $$2);
+   public erb b() {
+      return this.a[0];
    }
 
-   private static eye a(arg $$0, btj $$1) {
-      return $$1.a($$0, $$0.W()).c();
-   }
-
-   public eqz a(float $$0, float $$1) {
-      return new eqz(this.a(), this.b(), this.c(), $$0, $$1, this.f(), this.g());
-   }
-
-   public arg a() {
-      return this.d;
-   }
-
-   public eye b() {
-      return this.e;
-   }
-
-   public eye c() {
-      return this.f;
-   }
-
-   public float d() {
-      return this.g;
-   }
-
-   public float e() {
-      return this.h;
-   }
-
-   public boolean f() {
-      return this.i;
-   }
-
-   public eqz.a g() {
-      return this.j;
-   }
-
-   @FunctionalInterface
-   public interface a {
-      void onTransition(btj var1);
-
-      default eqz.a then(eqz.a $$0) {
-         return $$1 -> {
-            this.onTransition($$1);
-            $$0.onTransition($$1);
-         };
+   public erb c() {
+      erb $$0 = this.a[0];
+      this.a[0] = this.a[--this.b];
+      this.a[this.b] = null;
+      if (this.b > 0) {
+         this.b(0);
       }
+
+      $$0.d = -1;
+      return $$0;
+   }
+
+   public void b(erb $$0) {
+      this.a[$$0.d] = this.a[--this.b];
+      this.a[this.b] = null;
+      if (this.b > $$0.d) {
+         if (this.a[$$0.d].g < $$0.g) {
+            this.a($$0.d);
+         } else {
+            this.b($$0.d);
+         }
+      }
+
+      $$0.d = -1;
+   }
+
+   public void a(erb $$0, float $$1) {
+      float $$2 = $$0.g;
+      $$0.g = $$1;
+      if ($$1 < $$2) {
+         this.a($$0.d);
+      } else {
+         this.b($$0.d);
+      }
+   }
+
+   public int d() {
+      return this.b;
+   }
+
+   private void a(int $$0) {
+      erb $$1 = this.a[$$0];
+      float $$2 = $$1.g;
+
+      while ($$0 > 0) {
+         int $$3 = $$0 - 1 >> 1;
+         erb $$4 = this.a[$$3];
+         if (!($$2 < $$4.g)) {
+            break;
+         }
+
+         this.a[$$0] = $$4;
+         $$4.d = $$0;
+         $$0 = $$3;
+      }
+
+      this.a[$$0] = $$1;
+      $$1.d = $$0;
+   }
+
+   private void b(int $$0) {
+      erb $$1 = this.a[$$0];
+      float $$2 = $$1.g;
+
+      while (true) {
+         int $$3 = 1 + ($$0 << 1);
+         int $$4 = $$3 + 1;
+         if ($$3 >= this.b) {
+            break;
+         }
+
+         erb $$5 = this.a[$$3];
+         float $$6 = $$5.g;
+         erb $$7;
+         float $$8;
+         if ($$4 >= this.b) {
+            $$7 = null;
+            $$8 = Float.POSITIVE_INFINITY;
+         } else {
+            $$7 = this.a[$$4];
+            $$8 = $$7.g;
+         }
+
+         if ($$6 < $$8) {
+            if (!($$6 < $$2)) {
+               break;
+            }
+
+            this.a[$$0] = $$5;
+            $$5.d = $$0;
+            $$0 = $$3;
+         } else {
+            if (!($$8 < $$2)) {
+               break;
+            }
+
+            this.a[$$0] = $$7;
+            $$7.d = $$0;
+            $$0 = $$4;
+         }
+      }
+
+      this.a[$$0] = $$1;
+      $$1.d = $$0;
+   }
+
+   public boolean e() {
+      return this.b == 0;
+   }
+
+   public erb[] f() {
+      return Arrays.copyOf(this.a, this.b);
    }
 }

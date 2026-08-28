@@ -1,33 +1,67 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.Streams;
-import com.mojang.blocklist.BlockListSupplier;
-import java.util.Objects;
-import java.util.ServiceLoader;
-import java.util.function.Predicate;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
+import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
+import java.util.Locale;
+import javax.annotation.Nullable;
 
-public interface gcm {
-   boolean a(gcn var1);
+public record gcm(String a, @Nullable gcm.a b) {
+   public static gcm a() {
+      return a(null);
+   }
 
-   boolean a(gco var1);
+   public static gcm a(String $$0) {
+      return a(new gcm.a.b($$0));
+   }
 
-   static gcm a() {
-      final ImmutableList<Predicate<String>> $$0 = Streams.stream(ServiceLoader.load(BlockListSupplier.class))
-         .<Predicate>map(BlockListSupplier::createBlockList)
-         .filter(Objects::nonNull)
-         .collect(ImmutableList.toImmutableList());
-      return new gcm() {
-         @Override
-         public boolean a(gcn $$0x) {
-            String $$1 = $$0.a();
-            String $$2 = $$0.b();
-            return $$0.stream().noneMatch($$2x -> $$2x.test($$1) || $$2x.test($$2));
+   public static gcm a(fel $$0) {
+      return a(new gcm.a.a($$0));
+   }
+
+   public static gcm a(@Nullable gcm.a $$0) {
+      return new gcm(g(), $$0);
+   }
+
+   public ClientInfo b() {
+      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
+   }
+
+   @Nullable
+   public ThirdPartyServerInfo c() {
+      return this.b instanceof gcm.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
+   }
+
+   @Nullable
+   public RealmInfo d() {
+      return this.b instanceof gcm.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
+   }
+
+   private static String g() {
+      StringBuilder $$0 = new StringBuilder();
+      $$0.append("24w34a");
+      if (fil.e().a()) {
+         $$0.append(" (modded)");
+      }
+
+      return $$0.toString();
+   }
+
+   public String e() {
+      return this.a;
+   }
+
+   @Nullable
+   public gcm.a f() {
+      return this.b;
+   }
+
+   public interface a {
+      public static record a(long a, int b) implements gcm.a {
+         public a(fel $$0) {
+            this($$0.a, $$0.n);
          }
+      }
 
-         @Override
-         public boolean a(gco $$0x) {
-            String $$1 = $$0.a();
-            return $$0.stream().noneMatch($$1x -> $$1x.test($$1));
-         }
-      };
+      public static record b(String a) implements gcm.a {
+      }
    }
 }

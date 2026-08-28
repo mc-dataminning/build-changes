@@ -1,57 +1,63 @@
 import javax.annotation.Nullable;
 
-public abstract class ciu implements cjc {
-   protected final cis a;
+public class ciu extends bto {
+   public final cix b;
+   public final String c;
+   private final btr d;
 
-   public ciu(cis $$0) {
-      this.a = $$0;
+   public ciu(cix $$0, String $$1, float $$2, float $$3) {
+      super($$0.ao(), $$0.dS());
+      this.d = btr.b($$2, $$3);
+      this.i_();
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   public boolean a() {
-      return false;
+   protected void a(akk.a $$0) {
    }
 
    @Override
-   public void b() {
+   protected void a(uf $$0) {
    }
 
    @Override
-   public void c() {
+   protected void b(uf $$0) {
    }
 
    @Override
-   public void a(cir $$0, je $$1, bsb $$2, @Nullable cnp $$3) {
-   }
-
-   @Override
-   public void d() {
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public float f() {
-      return 0.6F;
+   public boolean bE() {
+      return true;
    }
 
    @Nullable
    @Override
-   public eye g() {
-      return null;
+   public cvp dF() {
+      return this.b.dF();
    }
 
    @Override
-   public float a(bsb $$0, float $$1) {
-      return $$1;
+   public boolean a(bsg $$0, float $$1) {
+      return this.b($$0) ? false : this.b.a(this, $$0, $$1);
    }
 
    @Override
-   public float h() {
-      float $$0 = (float)this.a.dv().i() + 1.0F;
-      float $$1 = Math.min($$0, 40.0F);
-      return 0.7F / $$1 / $$0;
+   public boolean u(bto $$0) {
+      return this == $$0 || this.b == $$0;
+   }
+
+   @Override
+   public zk<abz> a(arg $$0) {
+      throw new UnsupportedOperationException();
+   }
+
+   @Override
+   public btr a(buw $$0) {
+      return this.d;
+   }
+
+   @Override
+   public boolean dQ() {
+      return false;
    }
 }

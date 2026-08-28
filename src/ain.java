@@ -27,7 +27,7 @@ public class ain implements zk<agq> {
    }
 
    @Nullable
-   public btj a(arg $$0) {
+   public bto a(arh $$0) {
       return $$0.a(this.b);
    }
 }

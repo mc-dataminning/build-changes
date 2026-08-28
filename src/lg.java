@@ -6,7 +6,7 @@ public class lg implements ll {
    private final int b;
 
    public static MapCodec<lg> a(lm<lg> $$0) {
-      return ayl.i.xmap($$1 -> new lg($$0, $$1), $$0x -> $$0x.b).fieldOf("color");
+      return aym.i.xmap($$1 -> new lg($$0, $$1), $$0x -> $$0x.b).fieldOf("color");
    }
 
    public static zb<? super ByteBuf, lg> b(lm<lg> $$0) {
@@ -24,19 +24,19 @@ public class lg implements ll {
    }
 
    public float b() {
-      return (float)axn.b(this.b) / 255.0F;
+      return (float)axo.b(this.b) / 255.0F;
    }
 
    public float c() {
-      return (float)axn.c(this.b) / 255.0F;
+      return (float)axo.c(this.b) / 255.0F;
    }
 
    public float d() {
-      return (float)axn.d(this.b) / 255.0F;
+      return (float)axo.d(this.b) / 255.0F;
    }
 
    public float e() {
-      return (float)axn.a(this.b) / 255.0F;
+      return (float)axo.a(this.b) / 255.0F;
    }
 
    public static lg a(lm<lg> $$0, int $$1) {
@@ -44,6 +44,6 @@ public class lg implements ll {
    }
 
    public static lg a(lm<lg> $$0, float $$1, float $$2, float $$3) {
-      return a($$0, axn.a(1.0F, $$1, $$2, $$3));
+      return a($$0, axo.a(1.0F, $$1, $$2, $$3));
    }
 }

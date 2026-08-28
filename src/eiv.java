@@ -1,13 +1,44 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.function.BiConsumer;
 
-public abstract class eiv {
-   private static final Codec<Either<eaq, eiv>> a = Codec.either(eaq.a, lu.L.q().dispatch(eiv::a, eiw::codec));
-   public static final Codec<eiv> c = a.xmap(
-      $$0 -> (eiv)$$0.map(eiu::a, $$0x -> $$0x), $$0 -> $$0.a() == eiw.a ? Either.left(((eiu)$$0).b()) : Either.right($$0)
-   );
+public class eiv extends eiy {
+   public static final MapCodec<eiv> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, eiv::new));
 
-   public abstract int a(azk var1, eat var2);
+   public eiv(int $$0, int $$1, int $$2) {
+      super($$0, $$1, $$2);
+   }
 
-   public abstract eiw<?> a();
+   @Override
+   protected eiz<?> a() {
+      return eiz.c;
+   }
+
+   @Override
+   public List<ehg.a> a(dem $$0, BiConsumer<je, duo> $$1, azl $$2, int $$3, je $$4, egq $$5) {
+      je $$6 = $$4.e();
+      a($$0, $$1, $$2, $$6, $$5);
+      a($$0, $$1, $$2, $$6.i(), $$5);
+      a($$0, $$1, $$2, $$6.g(), $$5);
+      a($$0, $$1, $$2, $$6.g().i(), $$5);
+      je.a $$7 = new je.a();
+
+      for (int $$8 = 0; $$8 < $$3; $$8++) {
+         this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 0);
+         if ($$8 < $$3 - 1) {
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 0);
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 1, $$8, 1);
+            this.a($$0, $$1, $$2, $$7, $$5, $$4, 0, $$8, 1);
+         }
+      }
+
+      return ImmutableList.of(new ehg.a($$4.b($$3), 0, true));
+   }
+
+   private void a(dem $$0, BiConsumer<je, duo> $$1, azl $$2, je.a $$3, egq $$4, je $$5, int $$6, int $$7, int $$8) {
+      $$3.a($$5, $$6, $$7, $$8);
+      this.a($$0, $$1, $$2, $$3, $$4);
+   }
 }

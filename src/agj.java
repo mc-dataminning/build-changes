@@ -5,12 +5,12 @@ public class agj implements zk<abz> {
    private static final int d = 4;
    private static final int e = 8;
    private final int f;
-   private final jn<bso> g;
+   private final jn<bst> g;
    private final int h;
    private final int i;
    private final byte j;
 
-   public agj(int $$0, bsq $$1, boolean $$2) {
+   public agj(int $$0, bsv $$1, boolean $$2) {
       this.f = $$0;
       this.g = $$1.c();
       this.h = $$1.e();
@@ -37,7 +37,7 @@ public class agj implements zk<abz> {
 
    private agj(wo $$0) {
       this.f = $$0.l();
-      this.g = bso.b.decode($$0);
+      this.g = bst.b.decode($$0);
       this.h = $$0.l();
       this.i = $$0.l();
       this.j = $$0.readByte();
@@ -45,7 +45,7 @@ public class agj implements zk<abz> {
 
    private void a(wo $$0) {
       $$0.c(this.f);
-      bso.b.encode($$0, this.g);
+      bst.b.encode($$0, this.g);
       $$0.c(this.h);
       $$0.c(this.i);
       $$0.l(this.j);
@@ -64,7 +64,7 @@ public class agj implements zk<abz> {
       return this.f;
    }
 
-   public jn<bso> e() {
+   public jn<bst> e() {
       return this.g;
    }
 

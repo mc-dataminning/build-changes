@@ -1,8 +1,339 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import com.google.common.collect.Lists;
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface fgj {
+public class fgj extends hdk {
+   static final Logger a = LogUtils.getLogger();
+   static final alc b = alc.b("widget/slot_frame");
+   private static final xd c = xd.c("mco.template.button.select");
+   private static final xd B = xd.c("mco.template.button.trailer");
+   private static final xd C = xd.c("mco.template.button.publisher");
+   private static final int D = 100;
+   private static final int E = 10;
+   private final fny F = new fny(this);
+   final Consumer<ffa> G;
+   fgj.b H;
+   private final fel.d I;
+   private fkk J;
+   private fkk K;
+   private fkk L;
+   @Nullable
+   ffa M = null;
+   @Nullable
+   String N;
+   @Nullable
+   private xd[] O;
+   @Nullable
+   List<fha.a> P;
+
+   public fgj(xd $$0, Consumer<ffa> $$1, fel.d $$2) {
+      this($$0, $$1, $$2, null);
+   }
+
+   public fgj(xd $$0, Consumer<ffa> $$1, fel.d $$2, @Nullable ffb $$3) {
+      super($$0);
+      this.G = $$1;
+      this.I = $$2;
+      if ($$3 == null) {
+         this.H = new fgj.b(this);
+         this.a(new ffb(10));
+      } else {
+         this.H = new fgj.b(this, Lists.newArrayList($$3.a));
+         this.a($$3);
+      }
+   }
+
+   public void a(xd... $$0) {
+      this.O = $$0;
+   }
+
+   @Override
+   public void aR_() {
+      this.F.a(this.l, this.p);
+      this.H = this.F.c(new fgj.b(this, this.H.d()));
+      foc $$0 = this.F.b(foc.e().a(10));
+      $$0.c().b();
+      this.K = $$0.a(fkk.a(B, $$0x -> this.F()).a(100).a());
+      this.J = $$0.a(fkk.a(c, $$0x -> this.E()).a(100).a());
+      $$0.a(fkk.a(xc.e, $$0x -> this.d()).a(100).a());
+      this.L = $$0.a(fkk.a(C, $$0x -> this.G()).a(100).a());
+      this.D();
+      this.F.a($$1 -> {
+         fki var10000 = this.c($$1);
+      });
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      this.H.b(this.n, this.o - this.F.b() - this.J());
+      this.F.a();
+   }
+
+   @Override
+   public xd i() {
+      List<xd> $$0 = Lists.newArrayListWithCapacity(2);
+      $$0.add(this.l);
+      if (this.O != null) {
+         $$0.addAll(Arrays.asList(this.O));
+      }
+
+      return xc.a($$0);
+   }
+
+   void D() {
+      this.L.k = this.M != null && !this.M.e.isEmpty();
+      this.K.k = this.M != null && !this.M.g.isEmpty();
+      this.J.j = this.M != null;
+   }
+
+   @Override
+   public void d() {
+      this.G.accept(null);
+   }
+
+   private void E() {
+      if (this.M != null) {
+         this.G.accept(this.M);
+      }
+   }
+
+   private void F() {
+      if (this.M != null && !this.M.g.isBlank()) {
+         fpa.a(this, this.M.g);
+      }
+   }
+
+   private void G() {
+      if (this.M != null && !this.M.e.isBlank()) {
+         fpa.a(this, this.M.e);
+      }
+   }
+
+   private void a(final ffb $$0) {
+      (new Thread("realms-template-fetcher") {
+         @Override
+         public void run() {
+            ffb $$0 = $$0;
+            fdu $$1 = fdu.a();
+
+            while ($$0 != null) {
+               Either<ffb, Exception> $$2 = fgj.this.a($$0, $$1);
+               $$0 = fgj.this.m.a(() -> {
+                  if ($$2.right().isPresent()) {
+                     fgj.a.error("Couldn't fetch templates", (Throwable)$$2.right().get());
+                     if (fgj.this.H.c()) {
+                        fgj.this.P = fha.a(gyi.a("mco.template.select.failure"));
+                     }
+
+                     return null;
+                  } else {
+                     ffb $$1x = (ffb)$$2.left().get();
+
+                     for (ffa $$2x : $$1x.a) {
+                        fgj.this.H.a($$2x);
+                     }
+
+                     if ($$1x.a.isEmpty()) {
+                        if (fgj.this.H.c()) {
+                           String $$3 = gyi.a("mco.template.select.none", "%link");
+                           fha.b $$4 = fha.b.a(gyi.a("mco.template.select.none.linkTitle"), axz.t.toString());
+                           fgj.this.P = fha.a($$3, $$4);
+                        }
+
+                        return null;
+                     } else {
+                        return $$1x;
+                     }
+                  }
+               }).join();
+            }
+         }
+      }).start();
+   }
+
+   Either<ffb, Exception> a(ffb $$0, fdu $$1) {
+      try {
+         return Either.left($$1.a($$0.b + 1, $$0.c, this.I));
+      } catch (fff var4) {
+         return Either.right(var4);
+      }
+   }
+
+   @Override
+   public void a(fjx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.N = null;
+      if (this.P != null) {
+         this.a($$0, $$1, $$2, this.P);
+      }
+
+      if (this.O != null) {
+         for (int $$4 = 0; $$4 < this.O.length; $$4++) {
+            xd $$5 = this.O[$$4];
+            $$0.a(this.p, $$5, this.n / 2, g(-1 + $$4), -6250336);
+         }
+      }
+   }
+
+   private void a(fjx $$0, int $$1, int $$2, List<fha.a> $$3) {
+      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
+         fha.a $$5 = $$3.get($$4);
+         int $$6 = g(4 + $$4);
+         int $$7 = $$5.a.stream().mapToInt($$0x -> this.p.b($$0x.a())).sum();
+         int $$8 = this.n / 2 - $$7 / 2;
+
+         for (fha.b $$9 : $$5.a) {
+            int $$10 = $$9.b() ? 3368635 : -1;
+            int $$11 = $$0.b(this.p, $$9.a(), $$8, $$6, $$10);
+            if ($$9.b() && $$1 > $$8 && $$1 < $$11 && $$2 > $$6 - 3 && $$2 < $$6 + 8) {
+               this.d(xd.b($$9.c()));
+               this.N = $$9.c();
+            }
+
+            $$8 = $$11;
+         }
+      }
+   }
+
+   int J() {
+      return this.O != null ? g(1) : 33;
+   }
+
+   class a extends flg.a<fgj.a> {
+      private static final flx c = new flx(alc.b("icon/link"), alc.b("icon/link_highlighted"));
+      private static final flx d = new flx(alc.b("icon/video_link"), alc.b("icon/video_link_highlighted"));
+      private static final xd e = xd.c("mco.template.info.tooltip");
+      private static final xd f = xd.c("mco.template.trailer.tooltip");
+      public final ffa a;
+      private long g;
+      @Nullable
+      private fkw h;
+      @Nullable
+      private fkw i;
+
+      public a(final ffa $$0) {
+         this.a = $$0;
+         if (!$$0.e.isBlank()) {
+            this.h = new fkw(15, 15, c, fpa.b(fgj.this, $$0.e), e);
+            this.h.a(flv.a(e));
+         }
+
+         if (!$$0.g.isBlank()) {
+            this.i = new fkw(15, 15, d, fpa.b(fgj.this, $$0.g), f);
+            this.i.a(flv.a(f));
+         }
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         fgj.this.M = this.a;
+         fgj.this.D();
+         if (ad.c() - this.g < 250L && this.aM_()) {
+            fgj.this.G.accept(this.a);
+         }
+
+         this.g = ad.c();
+         if (this.h != null) {
+            this.h.a($$0, $$1, $$2);
+         }
+
+         if (this.i != null) {
+            this.i.a($$0, $$1, $$2);
+         }
+
+         return super.a($$0, $$1, $$2);
+      }
+
+      @Override
+      public void a(fjx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         $$0.a(ghq::B, fgy.a(this.a.a, this.a.f), $$3 + 1, $$2 + 1 + 1, 0.0F, 0.0F, 38, 38, 38, 38);
+         $$0.a(ghq::B, fgj.b, $$3, $$2 + 1, 40, 40);
+         int $$10 = 5;
+         int $$11 = fgj.this.p.b(this.a.c);
+         if (this.h != null) {
+            this.h.c($$3 + $$4 - $$11 - this.h.y() - 10, $$2);
+            this.h.a($$0, $$6, $$7, $$9);
+         }
+
+         if (this.i != null) {
+            this.i.c($$3 + $$4 - $$11 - this.i.y() * 2 - 15, $$2);
+            this.i.a($$0, $$6, $$7, $$9);
+         }
+
+         int $$12 = $$3 + 45 + 20;
+         int $$13 = $$2 + 5;
+         $$0.a(fgj.this.p, this.a.b, $$12, $$13, -1, false);
+         $$0.a(fgj.this.p, this.a.c, $$3 + $$4 - $$11 - 5, $$13, 7105644, false);
+         $$0.a(fgj.this.p, this.a.d, $$12, $$13 + 9 + 5, -6250336, false);
+         if (!this.a.h.isBlank()) {
+            $$0.a(fgj.this.p, this.a.h, $$12, $$2 + $$5 - 9 / 2 - 5, 5000268, false);
+         }
+      }
+
+      @Override
+      public xd a() {
+         xd $$0 = xc.b(
+            xd.b(this.a.b), xd.a("mco.template.select.narrate.authors", this.a.d), xd.b(this.a.h), xd.a("mco.template.select.narrate.version", this.a.c)
+         );
+         return xd.a("narrator.select", $$0);
+      }
+   }
+
+   class b extends hdj<fgj.a> {
+      public b(final fgj param1) {
+         this(var1, Collections.emptyList());
+      }
+
+      public b(final Iterable<ffa> param1, final Iterable $$0) {
+         super(var1.n, var1.o - 33 - var1.J(), var1.J(), 46);
+         this.a = var1;
+         $$0.forEach(this::a);
+      }
+
+      public void a(ffa $$0) {
+         this.a((fgj.a)(this.a.new a($$0)));
+      }
+
+      @Override
+      public boolean a(double $$0, double $$1, int $$2) {
+         if (this.a.N != null) {
+            fpa.a(this.a, this.a.N);
+            return true;
+         } else {
+            return super.a($$0, $$1, $$2);
+         }
+      }
+
+      public void a(@Nullable fgj.a $$0) {
+         super.a($$0);
+         this.a.M = $$0 == null ? null : $$0.a;
+         this.a.D();
+      }
+
+      @Override
+      public int a() {
+         return this.l() * 46;
+      }
+
+      @Override
+      public int b() {
+         return 300;
+      }
+
+      public boolean c() {
+         return this.l() == 0;
+      }
+
+      public List<ffa> d() {
+         return this.aI_().stream().map($$0 -> $$0.a).collect(Collectors.toList());
+      }
+   }
 }

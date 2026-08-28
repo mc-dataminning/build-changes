@@ -1,63 +1,345 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Lists;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class dnk extends dhe implements dgy {
-   public static final MapCodec<dnk> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dtp.a.fieldOf("tree").forGetter($$0x -> $$0x.i), u()).apply($$0, dnk::new)
-   );
-   public static final dva f = duq.aU;
-   protected static final float g = 6.0F;
-   protected static final eyx h = dgv.a(2.0, 0.0, 2.0, 14.0, 12.0, 14.0);
-   protected final dtp i;
+public class dnk {
+   private final deg a;
+   private final je b;
+   private final dgy c;
+   private duo d;
+   private final boolean e;
+   private final List<je> f = Lists.newArrayList();
 
-   @Override
-   public MapCodec<? extends dnk> a() {
-      return e;
+   public dnk(deg $$0, je $$1, duo $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.d = $$2;
+      this.c = (dgy)$$2.b();
+      dvs $$3 = $$2.c(this.c.c());
+      this.e = this.c.b();
+      this.a($$3);
    }
 
-   protected dnk(dtp $$0, dtz.d $$1) {
-      super($$1);
-      this.i = $$0;
-      this.l(this.E.b().b(f, Integer.valueOf(0)));
+   public List<je> a() {
+      return this.f;
    }
 
-   @Override
-   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
-      return h;
-   }
-
-   @Override
-   protected void b(dua $$0, arg $$1, je $$2, azk $$3) {
-      if ($$1.A($$2.d()) >= 9 && $$3.a(7) == 0) {
-         this.a($$1, $$2, $$0, $$3);
+   private void a(dvs $$0) {
+      this.f.clear();
+      switch ($$0) {
+         case a:
+            this.f.add(this.b.f());
+            this.f.add(this.b.g());
+            break;
+         case b:
+            this.f.add(this.b.h());
+            this.f.add(this.b.i());
+            break;
+         case c:
+            this.f.add(this.b.h());
+            this.f.add(this.b.i().d());
+            break;
+         case d:
+            this.f.add(this.b.h().d());
+            this.f.add(this.b.i());
+            break;
+         case e:
+            this.f.add(this.b.f().d());
+            this.f.add(this.b.g());
+            break;
+         case f:
+            this.f.add(this.b.f());
+            this.f.add(this.b.g().d());
+            break;
+         case g:
+            this.f.add(this.b.i());
+            this.f.add(this.b.g());
+            break;
+         case h:
+            this.f.add(this.b.h());
+            this.f.add(this.b.g());
+            break;
+         case i:
+            this.f.add(this.b.h());
+            this.f.add(this.b.f());
+            break;
+         case j:
+            this.f.add(this.b.i());
+            this.f.add(this.b.f());
       }
    }
 
-   public void a(arg $$0, je $$1, dua $$2, azk $$3) {
-      if ($$2.c(f) == 0) {
-         $$0.a($$1, $$2.a(f), 4);
+   private void d() {
+      for (int $$0 = 0; $$0 < this.f.size(); $$0++) {
+         dnk $$1 = this.b(this.f.get($$0));
+         if ($$1 != null && $$1.a(this)) {
+            this.f.set($$0, $$1.b);
+         } else {
+            this.f.remove($$0--);
+         }
+      }
+   }
+
+   private boolean a(je $$0) {
+      return dgy.a(this.a, $$0) || dgy.a(this.a, $$0.d()) || dgy.a(this.a, $$0.e());
+   }
+
+   @Nullable
+   private dnk b(je $$0) {
+      duo $$2 = this.a.a_($$0);
+      if (dgy.h($$2)) {
+         return new dnk(this.a, $$0, $$2);
       } else {
-         this.i.a($$0, $$0.l().g(), $$1, $$2, $$3);
+         je $$1 = $$0.d();
+         $$2 = this.a.a_($$1);
+         if (dgy.h($$2)) {
+            return new dnk(this.a, $$1, $$2);
+         } else {
+            $$1 = $$0.e();
+            $$2 = this.a.a_($$1);
+            return dgy.h($$2) ? new dnk(this.a, $$1, $$2) : null;
+         }
       }
    }
 
-   @Override
-   public boolean b(ddv $$0, je $$1, dua $$2) {
-      return true;
+   private boolean a(dnk $$0) {
+      return this.c($$0.b);
    }
 
-   @Override
-   public boolean a(dds $$0, azk $$1, je $$2, dua $$3) {
-      return (double)$$0.z.i() < 0.45;
+   private boolean c(je $$0) {
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         je $$2 = this.f.get($$1);
+         if ($$2.u() == $$0.u() && $$2.w() == $$0.w()) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   @Override
-   public void a(arg $$0, azk $$1, je $$2, dua $$3) {
-      this.a($$0, $$2, $$3, $$1);
+   protected int b() {
+      int $$0 = 0;
+
+      for (jj $$1 : jj.c.a) {
+         if (this.a(this.b.a($$1))) {
+            $$0++;
+         }
+      }
+
+      return $$0;
    }
 
-   @Override
-   protected void a(dub.a<dgv, dua> $$0) {
-      $$0.a(f);
+   private boolean b(dnk $$0) {
+      return this.a($$0) || this.f.size() != 2;
+   }
+
+   private void c(dnk $$0) {
+      this.f.add($$0.b);
+      je $$1 = this.b.f();
+      je $$2 = this.b.g();
+      je $$3 = this.b.h();
+      je $$4 = this.b.i();
+      boolean $$5 = this.c($$1);
+      boolean $$6 = this.c($$2);
+      boolean $$7 = this.c($$3);
+      boolean $$8 = this.c($$4);
+      dvs $$9 = null;
+      if ($$5 || $$6) {
+         $$9 = dvs.a;
+      }
+
+      if ($$7 || $$8) {
+         $$9 = dvs.b;
+      }
+
+      if (!this.e) {
+         if ($$6 && $$8 && !$$5 && !$$7) {
+            $$9 = dvs.g;
+         }
+
+         if ($$6 && $$7 && !$$5 && !$$8) {
+            $$9 = dvs.h;
+         }
+
+         if ($$5 && $$7 && !$$6 && !$$8) {
+            $$9 = dvs.i;
+         }
+
+         if ($$5 && $$8 && !$$6 && !$$7) {
+            $$9 = dvs.j;
+         }
+      }
+
+      if ($$9 == dvs.a) {
+         if (dgy.a(this.a, $$1.d())) {
+            $$9 = dvs.e;
+         }
+
+         if (dgy.a(this.a, $$2.d())) {
+            $$9 = dvs.f;
+         }
+      }
+
+      if ($$9 == dvs.b) {
+         if (dgy.a(this.a, $$4.d())) {
+            $$9 = dvs.c;
+         }
+
+         if (dgy.a(this.a, $$3.d())) {
+            $$9 = dvs.d;
+         }
+      }
+
+      if ($$9 == null) {
+         $$9 = dvs.a;
+      }
+
+      this.d = this.d.b(this.c.c(), $$9);
+      this.a.a(this.b, this.d, 3);
+   }
+
+   private boolean d(je $$0) {
+      dnk $$1 = this.b($$0);
+      if ($$1 == null) {
+         return false;
+      } else {
+         $$1.d();
+         return $$1.b(this);
+      }
+   }
+
+   public dnk a(boolean $$0, boolean $$1, dvs $$2) {
+      je $$3 = this.b.f();
+      je $$4 = this.b.g();
+      je $$5 = this.b.h();
+      je $$6 = this.b.i();
+      boolean $$7 = this.d($$3);
+      boolean $$8 = this.d($$4);
+      boolean $$9 = this.d($$5);
+      boolean $$10 = this.d($$6);
+      dvs $$11 = null;
+      boolean $$12 = $$7 || $$8;
+      boolean $$13 = $$9 || $$10;
+      if ($$12 && !$$13) {
+         $$11 = dvs.a;
+      }
+
+      if ($$13 && !$$12) {
+         $$11 = dvs.b;
+      }
+
+      boolean $$14 = $$8 && $$10;
+      boolean $$15 = $$8 && $$9;
+      boolean $$16 = $$7 && $$10;
+      boolean $$17 = $$7 && $$9;
+      if (!this.e) {
+         if ($$14 && !$$7 && !$$9) {
+            $$11 = dvs.g;
+         }
+
+         if ($$15 && !$$7 && !$$10) {
+            $$11 = dvs.h;
+         }
+
+         if ($$17 && !$$8 && !$$10) {
+            $$11 = dvs.i;
+         }
+
+         if ($$16 && !$$8 && !$$9) {
+            $$11 = dvs.j;
+         }
+      }
+
+      if ($$11 == null) {
+         if ($$12 && $$13) {
+            $$11 = $$2;
+         } else if ($$12) {
+            $$11 = dvs.a;
+         } else if ($$13) {
+            $$11 = dvs.b;
+         }
+
+         if (!this.e) {
+            if ($$0) {
+               if ($$14) {
+                  $$11 = dvs.g;
+               }
+
+               if ($$15) {
+                  $$11 = dvs.h;
+               }
+
+               if ($$16) {
+                  $$11 = dvs.j;
+               }
+
+               if ($$17) {
+                  $$11 = dvs.i;
+               }
+            } else {
+               if ($$17) {
+                  $$11 = dvs.i;
+               }
+
+               if ($$16) {
+                  $$11 = dvs.j;
+               }
+
+               if ($$15) {
+                  $$11 = dvs.h;
+               }
+
+               if ($$14) {
+                  $$11 = dvs.g;
+               }
+            }
+         }
+      }
+
+      if ($$11 == dvs.a) {
+         if (dgy.a(this.a, $$3.d())) {
+            $$11 = dvs.e;
+         }
+
+         if (dgy.a(this.a, $$4.d())) {
+            $$11 = dvs.f;
+         }
+      }
+
+      if ($$11 == dvs.b) {
+         if (dgy.a(this.a, $$6.d())) {
+            $$11 = dvs.c;
+         }
+
+         if (dgy.a(this.a, $$5.d())) {
+            $$11 = dvs.d;
+         }
+      }
+
+      if ($$11 == null) {
+         $$11 = $$2;
+      }
+
+      this.a($$11);
+      this.d = this.d.b(this.c.c(), $$11);
+      if ($$1 || this.a.a_(this.b) != this.d) {
+         this.a.a(this.b, this.d, 3);
+
+         for (int $$18 = 0; $$18 < this.f.size(); $$18++) {
+            dnk $$19 = this.b(this.f.get($$18));
+            if ($$19 != null) {
+               $$19.d();
+               if ($$19.b(this)) {
+                  $$19.c(this);
+               }
+            }
+         }
+      }
+
+      return this;
+   }
+
+   public duo c() {
+      return this.d;
    }
 }

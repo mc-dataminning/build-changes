@@ -1,28 +1,16 @@
 import com.mojang.serialization.MapCodec;
 
-public class ejk extends ejz {
-   public static final MapCodec<ejk> a = bqp.b(0, 256).fieldOf("count").xmap(ejk::new, $$0 -> $$0.c);
-   private final bqp c;
+public interface ejk<P extends ejj> {
+   ejk<eji> a = a("constant", eji.b);
+   ejk<ejm> b = a("uniform", ejm.a);
+   ejk<ejh> c = a("biased_to_bottom", ejh.a);
+   ejk<ejn> d = a("very_biased_to_bottom", ejn.a);
+   ejk<ejl> e = a("trapezoid", ejl.a);
+   ejk<ejo> f = a("weighted_list", ejo.a);
 
-   private ejk(bqp $$0) {
-      this.c = $$0;
-   }
+   MapCodec<P> codec();
 
-   public static ejk a(bqp $$0) {
-      return new ejk($$0);
-   }
-
-   public static ejk a(int $$0) {
-      return a(bqm.a($$0));
-   }
-
-   @Override
-   protected int a(azk $$0, je $$1) {
-      return this.c.a($$0);
-   }
-
-   @Override
-   public ejw<?> b() {
-      return ejw.f;
+   private static <P extends ejj> ejk<P> a(String $$0, MapCodec<P> $$1) {
+      return ka.a(lu.L, $$0, () -> $$1);
    }
 }

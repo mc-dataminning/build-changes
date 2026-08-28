@@ -1,275 +1,132 @@
-import java.io.IOException;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalLong;
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.Collection;
 import javax.annotation.Nullable;
 
-public class fuz {
-   private static final xd a = xd.c("selectWorld.newWorld");
-   private final List<Consumer<fuz>> b = new ArrayList<>();
-   private String c = a.getString();
-   private fuz.a d = fuz.a.a;
-   private brh e = brh.c;
-   @Nullable
-   private Boolean f;
-   private String g;
-   private boolean h;
-   private boolean i;
-   private final Path j;
-   private String k;
-   private fuy l;
-   private fuz.b m;
-   private final List<fuz.b> n = new ArrayList<>();
-   private final List<fuz.b> o = new ArrayList<>();
-   private ddo p;
+public class fuz extends fqd {
+   private static final xd a = xd.c("selectWorld.experimental.title");
+   private static final xd b = xd.c("selectWorld.experimental.message");
+   private static final xd c = xd.c("selectWorld.experimental.details");
+   private static final int d = 10;
+   private static final int s = 100;
+   private final BooleanConsumer u;
+   final Collection<aub> v;
+   private final fnx w = new fnx().a(10).b(20);
 
-   public fuz(Path $$0, fuy $$1, Optional<ala<ekd>> $$2, OptionalLong $$3) {
-      this.j = $$0;
-      this.l = $$1;
-      this.m = new fuz.b(a($$1, $$2).orElse(null));
-      this.r();
-      this.g = $$3.isPresent() ? Long.toString($$3.getAsLong()) : "";
-      this.h = $$1.c().c();
-      this.i = $$1.c().d();
-      this.k = this.c(this.c);
-      this.p = new ddo($$1.h().b());
+   public fuz(Collection<aub> $$0, BooleanConsumer $$1) {
+      super(a);
+      this.v = $$0;
+      this.u = $$1;
    }
 
-   public void a(Consumer<fuz> $$0) {
-      this.b.add($$0);
+   @Override
+   public xd i() {
+      return xc.a(super.i(), b);
    }
 
-   public void a() {
-      boolean $$0 = this.j();
-      if ($$0 != this.l.c().d()) {
-         this.l = this.l.a($$1x -> $$1x.a($$0));
+   @Override
+   protected void aR_() {
+      super.aR_();
+      fnx.b $$0 = this.w.d(2);
+      fob $$1 = $$0.b().b();
+      $$0.a(new flr(this.l, this.p), 2, $$1);
+      fle $$2 = $$0.a(new fle(b, this.p).b(true), 2, $$1);
+      $$2.d(310);
+      $$0.a(fkk.a(c, $$0x -> this.m.a(new fuz.a())).a(100).a(), 2, $$1);
+      $$0.a(fkk.a(xc.i, $$0x -> this.u.accept(true)).a());
+      $$0.a(fkk.a(xc.k, $$0x -> this.u.accept(false)).a());
+      this.w.a($$1x -> {
+         fki var10000 = this.c($$1x);
+      });
+      this.w.a();
+      this.c();
+   }
+
+   @Override
+   protected void c() {
+      fnw.a(this.w, 0, 0, this.n, this.o, 0.5F, 0.5F);
+   }
+
+   @Override
+   public void d() {
+      this.u.accept(false);
+   }
+
+   class a extends fqd {
+      private static final xd b = xd.c("selectWorld.experimental.details.title");
+      final fny c = new fny(this);
+      @Nullable
+      private fuz.a.a d;
+
+      a() {
+         super(b);
       }
 
-      boolean $$1 = this.i();
-      if ($$1 != this.l.c().c()) {
-         this.l = this.l.a($$1x -> $$1x.b($$1));
+      @Override
+      protected void aR_() {
+         this.c.a(b, this.p);
+         this.d = this.c.c(new fuz.a.a(this.m, fuz.this.v));
+         this.c.b(fkk.a(xc.k, $$0 -> this.d()).a());
+         this.c.a($$1 -> {
+            fki var10000 = this.c($$1);
+         });
+         this.c();
       }
 
-      for (Consumer<fuz> $$2 : this.b) {
-         $$2.accept(this);
+      @Override
+      protected void c() {
+         if (this.d != null) {
+            this.d.a(this.n, this.c);
+         }
+
+         this.c.a();
       }
-   }
 
-   public void a(String $$0) {
-      this.c = $$0;
-      this.k = this.c($$0);
-      this.a();
-   }
+      @Override
+      public void d() {
+         this.m.a(fuz.this);
+      }
 
-   private String c(String $$0) {
-      String $$1 = $$0.trim();
+      class a extends flg<fuz.a.b> {
+         public a(final fil $$0, final Collection<aub> $$1) {
+            super($$0, a.this.n, a.this.c.d(), a.this.c.c(), (9 + 2) * 3);
 
-      try {
-         return v.a(this.j, !$$1.isEmpty() ? $$1 : a.getString(), "");
-      } catch (Exception var5) {
-         try {
-            return v.a(this.j, "World", "");
-         } catch (IOException var4) {
-            throw new RuntimeException("Could not create save folder", var4);
+            for (aub $$2 : $$1) {
+               String $$3 = cqp.a(cqp.h, $$2.e());
+               if (!$$3.isEmpty()) {
+                  xd $$4 = xg.a($$2.b().f(), ya.a.a(true));
+                  xd $$5 = xd.a("selectWorld.experimental.details.entry", $$3);
+                  this.b(a.this.new b($$4, $$5, fld.a(a.this.p, $$5, this.b())));
+               }
+            }
+         }
+
+         @Override
+         public int b() {
+            return this.g * 3 / 4;
          }
       }
-   }
 
-   public String b() {
-      return this.c;
-   }
+      class b extends flg.a<fuz.a.b> {
+         private final xd b;
+         private final xd c;
+         private final fld d;
 
-   public String c() {
-      return this.k;
-   }
+         b(final xd $$0, final xd $$1, final fld $$2) {
+            this.b = $$0;
+            this.c = $$1;
+            this.d = $$2;
+         }
 
-   public void a(fuz.a $$0) {
-      this.d = $$0;
-      this.a();
-   }
+         @Override
+         public void a(fjx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+            $$0.b(a.this.m.h, this.b, $$3, $$2, -1);
+            this.d.b($$0, $$3, $$2 + 12, 9, -1);
+         }
 
-   public fuz.a d() {
-      return this.l() ? fuz.a.d : this.d;
-   }
-
-   public void a(brh $$0) {
-      this.e = $$0;
-      this.a();
-   }
-
-   public brh e() {
-      return this.f() ? brh.d : this.e;
-   }
-
-   public boolean f() {
-      return this.d() == fuz.a.b;
-   }
-
-   public void a(boolean $$0) {
-      this.f = $$0;
-      this.a();
-   }
-
-   public boolean g() {
-      if (this.l()) {
-         return true;
-      } else if (this.f()) {
-         return false;
-      } else {
-         return this.f == null ? this.d() == fuz.a.c : this.f;
-      }
-   }
-
-   public void b(String $$0) {
-      this.g = $$0;
-      this.l = this.l.a($$0x -> $$0x.a(eau.a(this.h())));
-      this.a();
-   }
-
-   public String h() {
-      return this.g;
-   }
-
-   public void b(boolean $$0) {
-      this.h = $$0;
-      this.a();
-   }
-
-   public boolean i() {
-      return this.l() ? false : this.h;
-   }
-
-   public void c(boolean $$0) {
-      this.i = $$0;
-      this.a();
-   }
-
-   public boolean j() {
-      return !this.l() && !this.f() ? this.i : false;
-   }
-
-   public void a(fuy $$0) {
-      this.l = $$0;
-      this.r();
-      this.a();
-   }
-
-   public fuy k() {
-      return this.l;
-   }
-
-   public void a(fuy.a $$0) {
-      this.l = this.l.a($$0);
-      this.a();
-   }
-
-   protected boolean a(deo $$0) {
-      deo $$1 = this.l.h();
-      if ($$1.a().a().equals($$0.a().a()) && $$1.b().equals($$0.b())) {
-         this.l = new fuy(this.l.c(), this.l.d(), this.l.e(), this.l.f(), this.l.g(), $$0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public boolean l() {
-      return this.l.e().c();
-   }
-
-   public void a(fuz.b $$0) {
-      this.m = $$0;
-      jn<ekd> $$1 = $$0.c();
-      if ($$1 != null) {
-         this.a(($$1x, $$2) -> $$1.a().a());
-      }
-   }
-
-   public fuz.b m() {
-      return this.m;
-   }
-
-   @Nullable
-   public fuv n() {
-      jn<ekd> $$0 = this.m().c();
-      return $$0 != null ? fuv.a.get($$0.e()) : null;
-   }
-
-   public List<fuz.b> o() {
-      return this.n;
-   }
-
-   public List<fuz.b> p() {
-      return this.o;
-   }
-
-   private void r() {
-      ka<ekd> $$0 = this.k().a().d(lv.aY);
-      this.n.clear();
-      this.n.addAll(a($$0, axl.a).orElseGet(() -> $$0.i().map(fuz.b::new).toList()));
-      this.o.clear();
-      this.o.addAll(a($$0, axl.b).orElse(this.n));
-      jn<ekd> $$1 = this.m.c();
-      if ($$1 != null) {
-         this.m = a(this.k(), $$1.e()).map(fuz.b::new).orElse(this.n.get(0));
-      }
-   }
-
-   private static Optional<jn<ekd>> a(fuy $$0, Optional<ala<ekd>> $$1) {
-      return $$1.flatMap($$1x -> $$0.a().d(lv.aY).b($$1x));
-   }
-
-   private static Optional<List<fuz.b>> a(ka<ekd> $$0, axi<ekd> $$1) {
-      return $$0.a($$1).map($$0x -> $$0x.a().map(fuz.b::new).toList()).filter($$0x -> !$$0x.isEmpty());
-   }
-
-   public void a(ddo $$0) {
-      this.p = $$0;
-      this.a();
-   }
-
-   public ddo q() {
-      return this.p;
-   }
-
-   public static enum a {
-      a("survival", ddp.a),
-      b("hardcore", ddp.a),
-      c("creative", ddp.b),
-      d("spectator", ddp.d);
-
-      public final ddp e;
-      public final xd f;
-      private final xd g;
-
-      private a(final String $$0, final ddp $$1) {
-         this.e = $$1;
-         this.f = xd.c("selectWorld.gameMode." + $$0);
-         this.g = xd.c("selectWorld.gameMode." + $$0 + ".info");
-      }
-
-      public xd a() {
-         return this.g;
-      }
-   }
-
-   public static record b(@Nullable jn<ekd> a) {
-      private static final xd b = xd.c("generator.custom");
-
-      public xd a() {
-         return Optional.ofNullable(this.a).flatMap(jn::e).map($$0 -> xd.c($$0.a().h("generator"))).orElse(b);
-      }
-
-      public boolean b() {
-         return Optional.ofNullable(this.a).flatMap(jn::e).filter($$0 -> $$0.equals(eke.d)).isPresent();
-      }
-
-      @Nullable
-      public jn<ekd> c() {
-         return this.a;
+         @Override
+         public xd a() {
+            return xd.a("narrator.select", xc.a(this.b, this.c));
+         }
       }
    }
 }

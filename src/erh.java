@@ -1,25 +1,40 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.HashCommon;
+import org.jetbrains.annotations.Nullable;
 
-public class erh implements eri {
-   private final dds b;
+public class erh {
+   private static final int a = 4096;
+   private static final int b = 4095;
+   private final long[] c = new long[4096];
+   private final erg[] d = new erg[4096];
 
-   public erh(dds $$0) {
-      this.b = $$0;
+   public erg a(ddl $$0, je $$1) {
+      long $$2 = $$1.a();
+      int $$3 = a($$2);
+      erg $$4 = this.a($$3, $$2);
+      return $$4 != null ? $$4 : this.a($$0, $$1, $$3, $$2);
    }
 
-   @Override
-   public void a(jj $$0, dua $$1, je $$2, je $$3, int $$4, int $$5) {
-      eri.a(this.b, $$0, $$1, $$2, $$3, $$4, $$5 - 1);
+   @Nullable
+   private erg a(int $$0, long $$1) {
+      return this.c[$$0] == $$1 ? this.d[$$0] : null;
    }
 
-   @Override
-   public void a(je $$0, dgv $$1, @Nullable erj $$2) {
-      dua $$3 = this.b.a_($$0);
-      this.a($$3, $$0, $$1, $$2, false);
+   private erg a(ddl $$0, je $$1, int $$2, long $$3) {
+      erg $$4 = erl.b($$0, $$1);
+      this.c[$$2] = $$3;
+      this.d[$$2] = $$4;
+      return $$4;
    }
 
-   @Override
-   public void a(dua $$0, je $$1, dgv $$2, @Nullable erj $$3, boolean $$4) {
-      eri.a(this.b, $$0, $$1, $$2, $$3, $$4);
+   public void a(je $$0) {
+      long $$1 = $$0.a();
+      int $$2 = a($$1);
+      if (this.c[$$2] == $$1) {
+         this.d[$$2] = null;
+      }
+   }
+
+   private static int a(long $$0) {
+      return (int)HashCommon.mix($$0) & 4095;
    }
 }

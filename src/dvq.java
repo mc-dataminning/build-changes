@@ -1,15 +1,20 @@
-public enum dvq {
-   a(4259712),
-   b(16724016),
-   c(2138367);
+public enum dvq implements azz {
+   a("normal"),
+   b("sticky");
 
-   private final int d;
+   private final String c;
 
-   private dvq(final int $$0) {
-      this.d = $$0;
+   private dvq(final String $$0) {
+      this.c = $$0;
    }
 
-   public int a() {
-      return this.d;
+   @Override
+   public String toString() {
+      return this.c;
+   }
+
+   @Override
+   public String c() {
+      return this.c;
    }
 }

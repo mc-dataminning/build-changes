@@ -1,9 +1,17 @@
-public class cro extends cqs {
-   public cro(int $$0, cno $$1) {
-      super(crz.o, czz.b, csg.b, $$0, $$1);
+import java.util.List;
+
+public interface cro extends bri, csy {
+   int az_();
+
+   int g();
+
+   List<cvp> h();
+
+   default czw aC_() {
+      return this.aD_().a();
    }
 
-   public cro(int $$0, cno $$1, brd $$2, crc $$3) {
-      super(crz.o, czz.b, csg.b, $$0, $$1, $$2, $$3);
+   default czw.a aD_() {
+      return czw.b(this.az_(), this.g(), this.h());
    }
 }

@@ -1,30 +1,34 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public enum eji implements azy {
-   a(jj.b, 1, "ceiling"),
-   b(jj.a, -1, "floor");
+public class eji extends ejj {
+   public static final eji a = new eji(ebe.a(0));
+   public static final MapCodec<eji> b = ebe.a.fieldOf("value").xmap(eji::new, eji::b);
+   private final ebe d;
 
-   public static final Codec<eji> c = azy.a(eji::values);
-   private final jj d;
-   private final int e;
-   private final String f;
-
-   private eji(final jj $$0, final int $$1, final String $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   public static eji a(ebe $$0) {
+      return new eji($$0);
    }
 
-   public jj a() {
+   private eji(ebe $$0) {
+      this.d = $$0;
+   }
+
+   public ebe b() {
       return this.d;
    }
 
-   public int b() {
-      return this.e;
+   @Override
+   public int a(azl $$0, ebh $$1) {
+      return this.d.a($$1);
    }
 
    @Override
-   public String c() {
-      return this.f;
+   public ejk<?> a() {
+      return ejk.a;
+   }
+
+   @Override
+   public String toString() {
+      return this.d.toString();
    }
 }

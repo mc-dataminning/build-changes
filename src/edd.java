@@ -1,80 +1,57 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntMaps;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.concurrent.TimeUnit;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.slf4j.Logger;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class edd {
-   private static final Logger a = LogUtils.getLogger();
-   private static final LoadingCache<arg, edd.b> b = CacheBuilder.newBuilder()
-      .weakKeys()
-      .expireAfterAccess(5L, TimeUnit.MINUTES)
-      .build(new CacheLoader<arg, edd.b>() {
-         public edd.b a(arg $$0) {
-            return new edd.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
-         }
-      });
-
-   public static void a(arg $$0) {
-      try {
-         ((edd.b)b.get($$0)).b().increment();
-      } catch (Exception var2) {
-         a.error("Failed to increment chunk count", var2);
-      }
+public class edd extends ede {
+   public edd(Codec<egb> $$0) {
+      super($$0);
    }
 
-   public static void a(arg $$0, eco<?, ?> $$1, Optional<ejs> $$2) {
-      try {
-         ((edd.b)b.get($$0)).a().computeInt(new edd.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
-      } catch (Exception var4) {
-         a.error("Failed to increment feature count", var4);
-      }
-   }
+   @Override
+   protected boolean a(deh $$0, azl $$1, je $$2, duo $$3) {
+      if (!this.b($$0, $$1, $$2, $$3)) {
+         return false;
+      } else {
+         jj $$4 = jj.c.a.a($$1);
+         int $$5 = $$1.a(2) + 2;
+         List<jj> $$6 = ad.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
 
-   public static void a() {
-      b.invalidateAll();
-      a.debug("Cleared feature counts");
-   }
-
-   public static void b() {
-      a.debug("Logging feature counts:");
-      b.asMap()
-         .forEach(
-            ($$0, $$1) -> {
-               String $$2 = $$0.ag().a().toString();
-               boolean $$3 = $$0.o().x();
-               ka<ejs> $$4 = $$0.F_().d(lv.aQ);
-               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
-               Integer $$6 = $$1.b().getValue();
-               a.debug($$5 + " total_chunks: " + $$6);
-               $$1.a()
-                  .forEach(
-                     ($$3x, $$4x) -> a.debug(
-                           $$5
-                              + " "
-                              + String.format(Locale.ROOT, "%10d ", $$4x)
-                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
-                              + $$3x.b().flatMap($$4::d).<alb>map(ala::a)
-                              + " "
-                              + $$3x.a().b()
-                              + " "
-                              + $$3x.a()
-                        )
-                  );
+         for (jj $$8 : $$6.subList(0, $$5)) {
+            je.a $$9 = $$2.k();
+            int $$10 = $$1.a(2) + 1;
+            $$9.c($$8);
+            int $$12;
+            jj $$11;
+            if ($$8 == $$4) {
+               $$11 = $$4;
+               $$12 = $$1.a(3) + 2;
+            } else {
+               $$9.c(jj.b);
+               jj[] $$13 = new jj[]{$$8, jj.b};
+               $$11 = ad.a($$13, $$1);
+               $$12 = $$1.a(3) + 3;
             }
-         );
-   }
 
-   static record a(eco<?, ?> a, Optional<ejs> b) {
-   }
+            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
+               $$9.c($$11);
+            }
 
-   static record b(Object2IntMap<edd.a> a, MutableInt b) {
+            $$9.c($$11.g());
+            $$9.c(jj.b);
+
+            for (int $$17 = 0; $$17 < $$12; $$17++) {
+               $$9.c($$4);
+               if (!this.b($$0, $$1, $$9, $$3)) {
+                  break;
+               }
+
+               if ($$1.i() < 0.25F) {
+                  $$9.c(jj.b);
+               }
+            }
+         }
+
+         return true;
+      }
    }
 }

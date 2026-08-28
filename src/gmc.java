@@ -1,21 +1,20 @@
-public class gmc extends gln<cga, gsm, fwp> {
-   private static final alb a = alb.b("textures/entity/chicken.png");
-
-   public gmc(gms.a $$0) {
-      super($$0, new fwp($$0.a(gaa.M)), new fwp($$0.a(gaa.N)), 0.3F);
+public abstract class gmc<T extends cki, S extends gvg> extends goa<T, S, fzf<S>> {
+   public gmc(gnj.a $$0, gaj $$1, gaj $$2, gaj $$3) {
+      this($$0, $$2, $$3, new fzf<>($$0.a($$1)));
    }
 
-   public alb a(gsm $$0) {
-      return a;
+   public gmc(gnj.a $$0, gaj $$1, gaj $$2, fzf<S> $$3) {
+      super($$0, $$3, 0.5F);
+      this.a(new grm<>(this, new fzf($$0.a($$1)), new fzf($$0.a($$2)), $$0.g()));
    }
 
-   public gsm a() {
-      return new gsm();
-   }
-
-   public void a(cga $$0, gsm $$1, float $$2) {
+   public void a(T $$0, S $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = azc.h($$2, $$0.cd, $$0.bZ);
-      $$1.b = azc.h($$2, $$0.cb, $$0.ca);
+      $$1.b = $$0.gg();
+      $$1.c = $$0.gr();
+   }
+
+   protected boolean a(S $$0) {
+      return $$0.c;
    }
 }

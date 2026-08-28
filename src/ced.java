@@ -1,18 +1,13 @@
 import com.google.common.collect.ImmutableSet;
 import java.util.Set;
 
-public class ced extends ceo<buf> {
+public class ced extends cet<buk> {
    @Override
-   public Set<cdi<?>> a() {
-      return ImmutableSet.of(cdi.X);
+   protected void a(arh $$0, buk $$1) {
    }
 
    @Override
-   protected void a(arg $$0, buf $$1) {
-      if ($$1.bi()) {
-         $$1.dX().a(cdi.X, bah.a);
-      } else {
-         $$1.dX().b(cdi.X);
-      }
+   public Set<cdn<?>> a() {
+      return ImmutableSet.of();
    }
 }

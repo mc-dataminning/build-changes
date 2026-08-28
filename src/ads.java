@@ -1,13 +1,13 @@
 public class ads implements zk<abz> {
    public static final zb<wo, ads> a = zk.a(ads::a, ads::new);
    private final int b;
-   private final dcq c;
+   private final dde c;
    private final int d;
    private final int e;
    private final boolean f;
    private final boolean g;
 
-   public ads(int $$0, dcq $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
+   public ads(int $$0, dde $$1, int $$2, int $$3, boolean $$4, boolean $$5) {
       this.b = $$0;
       this.c = $$1.a();
       this.d = $$2;
@@ -18,7 +18,7 @@ public class ads implements zk<abz> {
 
    private ads(wo $$0) {
       this.b = $$0.x();
-      this.c = dcq.b.decode($$0);
+      this.c = dde.b.decode($$0);
       this.d = $$0.l();
       this.e = $$0.l();
       this.f = $$0.readBoolean();
@@ -27,7 +27,7 @@ public class ads implements zk<abz> {
 
    private void a(wo $$0) {
       $$0.f(this.b);
-      dcq.b.encode($$0, this.c);
+      dde.b.encode($$0, this.c);
       $$0.c(this.d);
       $$0.c(this.e);
       $$0.a(this.f);
@@ -47,7 +47,7 @@ public class ads implements zk<abz> {
       return this.b;
    }
 
-   public dcq e() {
+   public dde e() {
       return this.c;
    }
 

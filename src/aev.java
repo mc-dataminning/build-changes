@@ -4,7 +4,7 @@ public class aev implements zk<abz> {
    private final double c;
    private final long d;
 
-   public aev(dvr $$0) {
+   public aev(dwf $$0) {
       this.b = $$0.i();
       this.c = $$0.k();
       this.d = $$0.j();

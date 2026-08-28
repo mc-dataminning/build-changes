@@ -1,78 +1,44 @@
-public interface dcj {
-   ala<dce> a = dck.a("trades/desert_armorer_boots_4");
-   ala<dce> b = dck.a("trades/desert_armorer_leggings_4");
-   ala<dce> c = dck.a("trades/desert_armorer_chestplate_4");
-   ala<dce> d = dck.a("trades/desert_armorer_helmet_4");
-   ala<dce> e = dck.a("trades/desert_armorer_leggings_5");
-   ala<dce> f = dck.a("trades/desert_armorer_chestplate_5");
-   ala<dce> g = dck.a("trades/plains_armorer_boots_4");
-   ala<dce> h = dck.a("trades/plains_armorer_leggings_4");
-   ala<dce> i = dck.a("trades/plains_armorer_chestplate_4");
-   ala<dce> j = dck.a("trades/plains_armorer_helmet_4");
-   ala<dce> k = dck.a("trades/plains_armorer_boots_5");
-   ala<dce> l = dck.a("trades/plains_armorer_leggings_5");
-   ala<dce> m = dck.a("trades/savanna_armorer_boots_4");
-   ala<dce> n = dck.a("trades/savanna_armorer_leggings_4");
-   ala<dce> o = dck.a("trades/savanna_armorer_chestplate_4");
-   ala<dce> p = dck.a("trades/savanna_armorer_helmet_4");
-   ala<dce> q = dck.a("trades/savanna_armorer_chestplate_5");
-   ala<dce> r = dck.a("trades/savanna_armorer_helmet_5");
-   ala<dce> s = dck.a("trades/snow_armorer_boots_4");
-   ala<dce> t = dck.a("trades/snow_armorer_helmet_4");
-   ala<dce> u = dck.a("trades/snow_armorer_boots_5");
-   ala<dce> v = dck.a("trades/snow_armorer_helmet_5");
-   ala<dce> w = dck.a("trades/jungle_armorer_boots_4");
-   ala<dce> x = dck.a("trades/jungle_armorer_leggings_4");
-   ala<dce> y = dck.a("trades/jungle_armorer_chestplate_4");
-   ala<dce> z = dck.a("trades/jungle_armorer_helmet_4");
-   ala<dce> A = dck.a("trades/jungle_armorer_boots_5");
-   ala<dce> B = dck.a("trades/jungle_armorer_helmet_5");
-   ala<dce> C = dck.a("trades/swamp_armorer_boots_4");
-   ala<dce> D = dck.a("trades/swamp_armorer_leggings_4");
-   ala<dce> E = dck.a("trades/swamp_armorer_chestplate_4");
-   ala<dce> F = dck.a("trades/swamp_armorer_helmet_4");
-   ala<dce> G = dck.a("trades/swamp_armorer_boots_5");
-   ala<dce> H = dck.a("trades/swamp_armorer_helmet_5");
-   ala<dce> I = dck.a("trades/taiga_armorer_leggings_5");
-   ala<dce> J = dck.a("trades/taiga_armorer_chestplate_5");
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-   static void a(qt<dce> $$0) {
-      jo<daw> $$1 = $$0.a(lv.aL);
-      $$0.a(a, new dci($$1.b(dbb.h), bqm.a(1)));
-      $$0.a(b, new dci($$1.b(dbb.h), bqm.a(1)));
-      $$0.a(c, new dci($$1.b(dbb.h), bqm.a(1)));
-      $$0.a(d, new dci($$1.b(dbb.h), bqm.a(1)));
-      $$0.a(e, new dci($$1.b(dbb.h), bqm.a(1)));
-      $$0.a(f, new dci($$1.b(dbb.h), bqm.a(1)));
-      $$0.a(g, new dci($$1.b(dbb.a), bqm.a(1)));
-      $$0.a(h, new dci($$1.b(dbb.a), bqm.a(1)));
-      $$0.a(i, new dci($$1.b(dbb.a), bqm.a(1)));
-      $$0.a(j, new dci($$1.b(dbb.a), bqm.a(1)));
-      $$0.a(k, new dci($$1.b(dbb.a), bqm.a(1)));
-      $$0.a(l, new dci($$1.b(dbb.a), bqm.a(1)));
-      $$0.a(m, new dci($$1.b(dbb.k), bqm.a(1)));
-      $$0.a(n, new dci($$1.b(dbb.k), bqm.a(1)));
-      $$0.a(o, new dci($$1.b(dbb.k), bqm.a(1)));
-      $$0.a(p, new dci($$1.b(dbb.k), bqm.a(1)));
-      $$0.a(q, new dci($$1.b(dbb.k), bqm.a(1)));
-      $$0.a(r, new dci($$1.b(dbb.k), bqm.a(1)));
-      $$0.a(s, new dci($$1.b(dbb.j), bqm.a(1)));
-      $$0.a(t, new dci($$1.b(dbb.g), bqm.a(1)));
-      $$0.a(u, new dci($$1.b(dbb.j), bqm.a(1)));
-      $$0.a(v, new dci($$1.b(dbb.g), bqm.a(1)));
-      $$0.a(w, new dci($$1.b(dbb.w), bqm.a(1)));
-      $$0.a(x, new dci($$1.b(dbb.w), bqm.a(1)));
-      $$0.a(y, new dci($$1.b(dbb.w), bqm.a(1)));
-      $$0.a(z, new dci($$1.b(dbb.w), bqm.a(1)));
-      $$0.a(A, new dci($$1.b(dbb.c), bqm.a(1)));
-      $$0.a(B, new dci($$1.b(dbb.e), bqm.a(1)));
-      $$0.a(C, new dci($$1.b(dbb.O), bqm.a(1)));
-      $$0.a(D, new dci($$1.b(dbb.O), bqm.a(1)));
-      $$0.a(E, new dci($$1.b(dbb.O), bqm.a(1)));
-      $$0.a(F, new dci($$1.b(dbb.O), bqm.a(1)));
-      $$0.a(G, new dci($$1.b(dbb.i), bqm.a(1)));
-      $$0.a(H, new dci($$1.b(dbb.f), bqm.a(1)));
-      $$0.a(I, new dci($$1.b(dbb.d), bqm.a(1)));
-      $$0.a(J, new dci($$1.b(dbb.d), bqm.a(1)));
+public record dcj(ki d, Optional<ebr> e, ehv f, Optional<jn<dzl>> g) implements dcb {
+   public static final MapCodec<dcj> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               ki.f.optionalFieldOf("offset", ki.g).forGetter(dcj::b),
+               ebr.b.optionalFieldOf("predicate").forGetter(dcj::c),
+               ehv.a.fieldOf("block_state").forGetter(dcj::d),
+               dzl.aj.optionalFieldOf("trigger_game_event").forGetter(dcj::e)
+            )
+            .apply($$0, dcj::new)
+   );
+
+   @Override
+   public void a(arh $$0, int $$1, dbj $$2, bto $$3, eys $$4) {
+      je $$5 = je.a((jx)$$4).a(this.d);
+      if (this.e.map($$2x -> $$2x.test($$0, $$5)).orElse(true) && $$0.b($$5, this.f.a($$3.dV(), $$5))) {
+         this.g.ifPresent($$3x -> $$0.a($$3, $$3x, $$5));
+      }
+   }
+
+   @Override
+   public MapCodec<dcj> a() {
+      return a;
+   }
+
+   public ki b() {
+      return this.d;
+   }
+
+   public Optional<ebr> c() {
+      return this.e;
+   }
+
+   public ehv d() {
+      return this.f;
+   }
+
+   public Optional<jn<dzl>> e() {
+      return this.g;
    }
 }

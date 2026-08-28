@@ -1,128 +1,128 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class dme extends dgv {
-   public static final MapCodec<dme> a = b(dme::new);
-   public static final duy<dvb> b = duq.bf;
-   public static final dur c = duq.w;
-   public static final dva d = duq.aR;
-   public static final int e = 3;
+public class dme extends dny implements dol {
+   public static final MapCodec<dme> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dud.a.fieldOf("tree").forGetter($$0x -> $$0x.i), u()).apply($$0, dme::new)
+   );
+   public static final dvo b = dve.at;
+   public static final int c = 4;
+   private static final ezm[] j = new ezm[]{
+      dhj.a(7.0, 13.0, 7.0, 9.0, 16.0, 9.0),
+      dhj.a(7.0, 10.0, 7.0, 9.0, 16.0, 9.0),
+      dhj.a(7.0, 7.0, 7.0, 9.0, 16.0, 9.0),
+      dhj.a(7.0, 3.0, 7.0, 9.0, 16.0, 9.0),
+      dhj.a(7.0, 0.0, 7.0, 9.0, 16.0, 9.0)
+   };
+   private static final dvf k = dve.C;
+   public static final dvf d = dve.j;
 
    @Override
    public MapCodec<dme> a() {
       return a;
    }
 
-   public dme(dtz.d $$0) {
-      super($$0);
-      this.l(this.E.b().b(b, dvb.a).b(d, Integer.valueOf(0)).b(c, Boolean.valueOf(false)));
-   }
-
-   private dua b(ddt $$0, je $$1, dua $$2) {
-      dvb $$3 = $$0.a_($$1.d()).E();
-      if ($$3.e()) {
-         return $$2.b(b, $$3);
-      } else {
-         dvb $$4 = $$0.a_($$1.e()).E();
-         dvb $$5 = $$4.e() ? dvb.a : $$4;
-         return $$2.b(b, $$5);
-      }
+   public dme(dud $$0, dun.d $$1) {
+      super($$0, $$1);
+      this.l(this.F.b().b(f, Integer.valueOf(0)).b(b, Integer.valueOf(0)).b(k, Boolean.valueOf(false)).b(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public dua a(cyw $$0) {
-      return this.b($$0.q(), $$0.a(), this.o());
+   protected void a(dup.a<dhj, duo> $$0) {
+      $$0.a(f).a(b).a(k).a(d);
    }
 
    @Override
-   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
-      boolean $$6 = $$1.o() == jj.a.b;
-      return $$6 ? this.b($$3, $$4, $$0) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void a(dua $$0, dds $$1, je $$2, dgv $$3, @Nullable erj $$4, boolean $$5) {
-      boolean $$6 = $$1.C($$2);
-      if ($$6 != $$0.c(c)) {
-         if ($$6) {
-            this.a(null, $$0, $$1, $$2);
-         }
-
-         $$1.a($$2, $$0.b(c, Boolean.valueOf($$6)), 3);
-      }
-   }
-
-   private void a(@Nullable btj $$0, dua $$1, dds $$2, je $$3) {
-      if ($$1.c(b).e() || $$2.a_($$3.d()).l()) {
-         $$2.a($$3, this, 0, 0);
-         $$2.a($$0, dyx.H, $$3);
-      }
-   }
-
-   @Override
-   protected brk a(cvl $$0, dua $$1, dds $$2, je $$3, cnp $$4, brj $$5, eya $$6) {
-      return (brk)($$0.a(axb.bk) && $$6.b() == jj.b ? brk.e : super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6));
-   }
-
-   @Override
-   protected brk a(dua $$0, dds $$1, je $$2, cnp $$3, eya $$4) {
-      if (!$$1.B) {
-         $$0 = $$0.a(d);
-         $$1.a($$2, $$0, 3);
-         this.a($$3, $$0, $$1, $$2);
-         $$3.a(awn.ag);
-      }
-
-      return brk.a;
-   }
-
-   @Override
-   protected void a_(dua $$0, dds $$1, je $$2, cnp $$3) {
-      if (!$$1.B) {
-         this.a($$3, $$0, $$1, $$2);
-         $$3.a(awn.af);
-      }
-   }
-
-   public static float b(int $$0) {
-      return (float)Math.pow(2.0, (double)($$0 - 12) / 12.0);
-   }
-
-   @Override
-   protected boolean a(dua $$0, dds $$1, je $$2, int $$3, int $$4) {
-      dvb $$5 = $$0.c(b);
-      float $$7;
-      if ($$5.b()) {
-         int $$6 = $$0.c(d);
-         $$7 = b($$6);
-         $$1.a(ln.aa, (double)$$2.u() + 0.5, (double)$$2.v() + 1.2, (double)$$2.w() + 0.5, (double)$$6 / 24.0, 0.0, 0.0);
-      } else {
-         $$7 = 1.0F;
-      }
-
-      jn<awc> $$10;
-      if ($$5.d()) {
-         alb $$9 = this.a($$1, $$2);
-         if ($$9 == null) {
-            return false;
-         }
-
-         $$10 = jn.a(awc.a($$9));
-      } else {
-         $$10 = $$5.a();
-      }
-
-      $$1.a(null, (double)$$2.u() + 0.5, (double)$$2.v() + 0.5, (double)$$2.w() + 0.5, $$10, awe.c, 3.0F, $$7, $$1.z.g());
-      return true;
+   protected boolean b(duo $$0, ddl $$1, je $$2) {
+      return super.b($$0, $$1, $$2) || $$0.a(dhl.dR);
    }
 
    @Nullable
-   private alb a(dds $$0, je $$1) {
-      return $$0.c_($$1.d()) instanceof dss $$2 ? $$2.d() : null;
+   @Override
+   public duo a(czk $$0) {
+      eqp $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == eqq.c;
+      return super.a($$0).b(k, Boolean.valueOf($$2)).b(b, Integer.valueOf(4));
    }
 
    @Override
-   protected void a(dub.a<dgv, dua> $$0) {
-      $$0.a(b, c, d);
+   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
+      eys $$4 = $$0.a($$2);
+      ezm $$5;
+      if (!$$0.c(d)) {
+         $$5 = j[4];
+      } else {
+         $$5 = j[$$0.c(b)];
+      }
+
+      return $$5.a($$4.d, $$4.e, $$4.f);
+   }
+
+   @Override
+   protected boolean a(duo $$0, dej $$1, je $$2) {
+      return o($$0) ? $$1.a_($$2.d()).a(dhl.aL) : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   protected duo a(duo $$0, jj $$1, duo $$2, deh $$3, je $$4, je $$5) {
+      if ($$0.c(k)) {
+         $$3.a($$4, eqq.c, eqq.c.a($$3));
+      }
+
+      return $$1 == jj.b && !$$0.a($$3, $$4) ? dhl.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   @Override
+   protected eqp b_(duo $$0) {
+      return $$0.c(k) ? eqq.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected void b(duo $$0, arh $$1, je $$2, azl $$3) {
+      if (!o($$0)) {
+         if ($$3.a(7) == 0) {
+            this.a($$1, $$2, $$0, $$3);
+         }
+      } else {
+         if (!q($$0)) {
+            $$1.a($$2, $$0.a(b), 2);
+         }
+      }
+   }
+
+   @Override
+   public boolean b(dej $$0, je $$1, duo $$2) {
+      return !o($$2) || !q($$2);
+   }
+
+   @Override
+   public boolean a(deg $$0, azl $$1, je $$2, duo $$3) {
+      return o($$3) ? !q($$3) : super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public void a(arh $$0, azl $$1, je $$2, duo $$3) {
+      if (o($$3) && !q($$3)) {
+         $$0.a($$2, $$3.a(b), 2);
+      } else {
+         super.a($$0, $$1, $$2, $$3);
+      }
+   }
+
+   private static boolean o(duo $$0) {
+      return $$0.c(d);
+   }
+
+   private static boolean q(duo $$0) {
+      return $$0.c(b) == 4;
+   }
+
+   public static duo c() {
+      return b(0);
+   }
+
+   public static duo b(int $$0) {
+      return dhl.E.o().b(d, Boolean.valueOf(true)).b(b, Integer.valueOf($$0));
    }
 }

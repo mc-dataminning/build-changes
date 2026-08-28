@@ -1,5 +1,8 @@
-import java.util.List;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface bpi {
-   List<bpf> bx();
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface bpi {
 }

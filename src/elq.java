@@ -1,61 +1,26 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Optional;
+import java.util.function.Predicate;
 
-public class elq extends elw {
-   public static final MapCodec<elq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ejs.b.fieldOf("feature").forGetter($$0x -> $$0x.b), e()).apply($$0, elq::new)
-   );
-   private final jn<ejs> b;
-   private final uf c;
+@FunctionalInterface
+public interface elq<C extends efu> {
+   Optional<elp<C>> createGenerator(elq.a<C> var1);
 
-   protected elq(jn<ejs> $$0, ely.a $$1) {
-      super($$1);
-      this.b = $$0;
-      this.c = this.b();
+   static <C extends efu> elq<C> simple(Predicate<elq.a<C>> $$0, elp<C> $$1) {
+      Optional<elp<C>> $$2 = Optional.of($$1);
+      return $$2x -> $$0.test($$2x) ? $$2 : Optional.empty();
    }
 
-   private uf b() {
-      uf $$0 = new uf();
-      $$0.a("name", "minecraft:bottom");
-      $$0.a("final_state", "minecraft:air");
-      $$0.a("pool", "minecraft:empty");
-      $$0.a("target", "minecraft:empty");
-      $$0.a("joint", dsg.a.a.c());
-      return $$0;
+   static <C extends efu> Predicate<elq.a<C>> checkForBiomeOnTop(eak.a $$0) {
+      return $$1 -> $$1.a($$0);
    }
 
-   @Override
-   public ki a(eor $$0, dnj $$1) {
-      return ki.g;
-   }
-
-   @Override
-   public List<eoq.c> a(eor $$0, je $$1, dnj $$2, azk $$3) {
-      List<eoq.c> $$4 = Lists.newArrayList();
-      $$4.add(new eoq.c($$1, dgx.pb.o().b(dkx.b, jl.a(jj.a, jj.d)), this.c));
-      return $$4;
-   }
-
-   @Override
-   public ekg a(eor $$0, je $$1, dnj $$2) {
-      ki $$3 = this.a($$0, $$2);
-      return new ekg($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
-   }
-
-   @Override
-   public boolean a(eor $$0, dep $$1, den $$2, dvx $$3, je $$4, je $$5, dnj $$6, ekg $$7, azk $$8, eoa $$9, boolean $$10) {
-      return this.b.a().a($$1, $$3, $$8, $$4);
-   }
-
-   @Override
-   public elx<?> a() {
-      return elx.c;
-   }
-
-   @Override
-   public String toString() {
-      return "Feature[" + this.b + "]";
+   public static record a<C extends efu>(dwl a, dfl b, eay c, long d, ddm e, C f, dei g, Predicate<jn<dfh>> h, epf i, kb j) {
+      public boolean a(eak.a $$0) {
+         int $$1 = this.e.b();
+         int $$2 = this.e.c();
+         int $$3 = this.a.c($$1, $$2, $$0, this.g, this.c);
+         jn<dfh> $$4 = this.a.d().getNoiseBiome(jy.a($$1), jy.a($$3), jy.a($$2), this.c.b());
+         return this.h.test($$4);
+      }
    }
 }

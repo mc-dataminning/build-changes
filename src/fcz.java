@@ -1,209 +1,261 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.Arrays;
-import java.util.List;
+import java.nio.ByteOrder;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
+import org.lwjgl.system.MemoryUtil;
 
-public class fcz {
-   public static final int a = -1;
-   private final List<fda> b;
-   private final List<String> c;
-   private final int d;
-   private final int e;
-   private final int[] f = new int[32];
+public class fcz implements fdi {
+   private static final long a = -1L;
+   private static final long b = -1L;
+   private static final boolean c = ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN;
+   private final fdb d;
+   private long e = -1L;
+   private int f;
+   private final fdj g;
+   private final fdj.c h;
+   private final boolean i;
+   private final boolean j;
+   private final int k;
+   private final int l;
+   private final int[] m;
+   private int n;
+   private boolean o = true;
+
+   public fcz(fdb $$0, fdj.c $$1, fdj $$2) {
+      if (!$$2.b(fdk.b)) {
+         throw new IllegalArgumentException("Cannot build mesh with no position element");
+      } else {
+         this.d = $$0;
+         this.h = $$1;
+         this.g = $$2;
+         this.k = $$2.b();
+         this.l = $$2.f() & ~fdk.b.a();
+         this.m = $$2.e();
+         boolean $$3 = $$2 == fdc.c;
+         boolean $$4 = $$2 == fdc.b;
+         this.i = $$3 || $$4;
+         this.j = $$3;
+      }
+   }
+
    @Nullable
-   private fcx g;
-
-   fcz(List<fda> $$0, List<String> $$1, IntList $$2, int $$3) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$3;
-      this.e = $$0.stream().mapToInt(fda::a).reduce(0, ($$0x, $$1x) -> $$0x | $$1x);
-
-      for (int $$4 = 0; $$4 < this.f.length; $$4++) {
-         fda $$5 = fda.a($$4);
-         int $$6 = $$5 != null ? $$0.indexOf($$5) : -1;
-         this.f[$$4] = $$6 != -1 ? $$2.getInt($$6) : -1;
-      }
-   }
-
-   public static fcz.a a() {
-      return new fcz.a();
-   }
-
-   @Override
-   public String toString() {
-      StringBuilder $$0 = new StringBuilder("Vertex format (").append(this.d).append(" bytes):\n");
-
-      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
-         fda $$2 = this.b.get($$1);
-         $$0.append($$1).append(". ").append(this.c.get($$1)).append(": ").append($$2).append(" @ ").append(this.a($$2)).append('\n');
-      }
-
-      return $$0.toString();
-   }
-
-   public int b() {
-      return this.d;
-   }
-
-   public List<fda> c() {
-      return this.b;
-   }
-
-   public List<String> d() {
-      return this.c;
-   }
-
-   public int[] e() {
-      return this.f;
-   }
-
-   public int a(fda $$0) {
-      return this.f[$$0.c()];
-   }
-
-   public boolean b(fda $$0) {
-      return (this.e & $$0.a()) != 0;
-   }
-
-   public int f() {
-      return this.e;
-   }
-
-   public String c(fda $$0) {
-      int $$1 = this.b.indexOf($$0);
-      if ($$1 == -1) {
-         throw new IllegalArgumentException($$0 + " is not contained in format");
-      } else {
-         return this.c.get($$1);
-      }
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof fcz $$1 && this.e == $$1.e && this.d == $$1.d && this.c.equals($$1.c) && Arrays.equals(this.f, $$1.f)) {
-            return true;
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.e * 31 + Arrays.hashCode(this.f);
-   }
-
-   public void g() {
-      RenderSystem.assertOnRenderThread();
-      int $$0 = this.b();
-
-      for (int $$1 = 0; $$1 < this.b.size(); $$1++) {
-         GlStateManager._enableVertexAttribArray($$1);
-         fda $$2 = this.b.get($$1);
-         $$2.a($$1, (long)this.a($$2), $$0);
-      }
-   }
-
-   public void h() {
-      RenderSystem.assertOnRenderThread();
-
-      for (int $$0 = 0; $$0 < this.b.size(); $$0++) {
-         GlStateManager._disableVertexAttribArray($$0);
-      }
-   }
-
-   public fcx i() {
-      fcx $$0 = this.g;
-      if ($$0 == null) {
-         this.g = $$0 = new fcx(fcx.a.b);
-      }
-
+   public fdd a() {
+      this.c();
+      this.f();
+      fdd $$0 = this.d();
+      this.o = false;
+      this.e = -1L;
       return $$0;
    }
 
-   public static class a {
-      private final Builder<String, fda> a = ImmutableMap.builder();
-      private final IntList b = new IntArrayList();
-      private int c;
-
-      a() {
-      }
-
-      public fcz.a a(String $$0, fda $$1) {
-         this.a.put($$0, $$1);
-         this.b.add(this.c);
-         this.c = this.c + $$1.b();
-         return this;
-      }
-
-      public fcz.a a(int $$0) {
-         this.c += $$0;
-         return this;
-      }
-
-      public fcz a() {
-         ImmutableMap<String, fda> $$0 = this.a.buildOrThrow();
-         ImmutableList<fda> $$1 = $$0.values().asList();
-         ImmutableList<String> $$2 = $$0.keySet().asList();
-         return new fcz($$1, $$2, this.b, this.c);
+   public fdd b() {
+      fdd $$0 = this.a();
+      if ($$0 == null) {
+         throw new IllegalStateException("BufferBuilder was empty");
+      } else {
+         return $$0;
       }
    }
 
-   public static enum b {
-      a(5123, 2),
-      b(5125, 4);
-
-      public final int c;
-      public final int d;
-
-      private b(final int $$0, final int $$1) {
-         this.c = $$0;
-         this.d = $$1;
-      }
-
-      public static fcz.b a(int $$0) {
-         return ($$0 & -65536) != 0 ? b : a;
+   private void c() {
+      if (!this.o) {
+         throw new IllegalStateException("Not building!");
       }
    }
 
-   public static enum c {
-      a(4, 2, 2, false),
-      b(5, 2, 1, true),
-      c(1, 2, 2, false),
-      d(3, 2, 1, true),
-      e(4, 3, 3, false),
-      f(5, 3, 1, true),
-      g(6, 3, 1, true),
-      h(4, 4, 4, false);
+   @Nullable
+   private fdd d() {
+      if (this.f == 0) {
+         return null;
+      } else {
+         fdb.a $$0 = this.d.a();
+         if ($$0 == null) {
+            return null;
+         } else {
+            int $$1 = this.h.a(this.f);
+            fdj.b $$2 = fdj.b.a(this.f);
+            return new fdd($$0, new fdd.a(this.g, this.f, $$1, this.h, $$2));
+         }
+      }
+   }
 
-      public final int i;
-      public final int j;
-      public final int k;
-      public final boolean l;
+   private long e() {
+      this.c();
+      this.f();
+      this.f++;
+      long $$0 = this.d.a(this.k);
+      this.e = $$0;
+      return $$0;
+   }
 
-      private c(final int $$0, final int $$1, final int $$2, final boolean $$3) {
-         this.i = $$0;
-         this.j = $$1;
-         this.k = $$2;
-         this.l = $$3;
+   private long a(fdk $$0) {
+      int $$1 = this.n;
+      int $$2 = $$1 & ~$$0.a();
+      if ($$2 == $$1) {
+         return -1L;
+      } else {
+         this.n = $$2;
+         long $$3 = this.e;
+         if ($$3 == -1L) {
+            throw new IllegalArgumentException("Not currently building vertex");
+         } else {
+            return $$3 + (long)this.m[$$0.c()];
+         }
+      }
+   }
+
+   private void f() {
+      if (this.f != 0) {
+         if (this.n != 0) {
+            String $$0 = fdk.b(this.n).map(this.g::c).collect(Collectors.joining(", "));
+            throw new IllegalStateException("Missing elements in vertex: " + $$0);
+         } else {
+            if (this.h == fdj.c.a || this.h == fdj.c.b) {
+               long $$1 = this.d.a(this.k);
+               MemoryUtil.memCopy($$1 - (long)this.k, $$1, (long)this.k);
+               this.f++;
+            }
+         }
+      }
+   }
+
+   private static void a(long $$0, int $$1) {
+      int $$2 = axo.i($$1);
+      MemoryUtil.memPutInt($$0, c ? $$2 : Integer.reverseBytes($$2));
+   }
+
+   private static void b(long $$0, int $$1) {
+      if (c) {
+         MemoryUtil.memPutInt($$0, $$1);
+      } else {
+         MemoryUtil.memPutShort($$0, (short)($$1 & 65535));
+         MemoryUtil.memPutShort($$0 + 2L, (short)($$1 >> 16 & 65535));
+      }
+   }
+
+   @Override
+   public fdi a(float $$0, float $$1, float $$2) {
+      long $$3 = this.e() + (long)this.m[fdk.b.c()];
+      this.n = this.l;
+      MemoryUtil.memPutFloat($$3, $$0);
+      MemoryUtil.memPutFloat($$3 + 4L, $$1);
+      MemoryUtil.memPutFloat($$3 + 8L, $$2);
+      return this;
+   }
+
+   @Override
+   public fdi a(int $$0, int $$1, int $$2, int $$3) {
+      long $$4 = this.a(fdk.c);
+      if ($$4 != -1L) {
+         MemoryUtil.memPutByte($$4, (byte)$$0);
+         MemoryUtil.memPutByte($$4 + 1L, (byte)$$1);
+         MemoryUtil.memPutByte($$4 + 2L, (byte)$$2);
+         MemoryUtil.memPutByte($$4 + 3L, (byte)$$3);
       }
 
-      public int a(int $$0) {
-         return switch (this) {
-            case a, h -> $$0 / 4 * 6;
-            case b, c, d, e, f, g -> $$0;
-            default -> 0;
-         };
+      return this;
+   }
+
+   @Override
+   public fdi a(int $$0) {
+      long $$1 = this.a(fdk.c);
+      if ($$1 != -1L) {
+         a($$1, $$0);
+      }
+
+      return this;
+   }
+
+   @Override
+   public fdi a(float $$0, float $$1) {
+      long $$2 = this.a(fdk.d);
+      if ($$2 != -1L) {
+         MemoryUtil.memPutFloat($$2, $$0);
+         MemoryUtil.memPutFloat($$2 + 4L, $$1);
+      }
+
+      return this;
+   }
+
+   @Override
+   public fdi a(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, fdk.f);
+   }
+
+   @Override
+   public fdi b(int $$0) {
+      long $$1 = this.a(fdk.f);
+      if ($$1 != -1L) {
+         b($$1, $$0);
+      }
+
+      return this;
+   }
+
+   @Override
+   public fdi b(int $$0, int $$1) {
+      return this.a((short)$$0, (short)$$1, fdk.g);
+   }
+
+   @Override
+   public fdi c(int $$0) {
+      long $$1 = this.a(fdk.g);
+      if ($$1 != -1L) {
+         b($$1, $$0);
+      }
+
+      return this;
+   }
+
+   private fdi a(short $$0, short $$1, fdk $$2) {
+      long $$3 = this.a($$2);
+      if ($$3 != -1L) {
+         MemoryUtil.memPutShort($$3, $$0);
+         MemoryUtil.memPutShort($$3 + 2L, $$1);
+      }
+
+      return this;
+   }
+
+   @Override
+   public fdi b(float $$0, float $$1, float $$2) {
+      long $$3 = this.a(fdk.h);
+      if ($$3 != -1L) {
+         MemoryUtil.memPutByte($$3, a($$0));
+         MemoryUtil.memPutByte($$3 + 1L, a($$1));
+         MemoryUtil.memPutByte($$3 + 2L, a($$2));
+      }
+
+      return this;
+   }
+
+   private static byte a(float $$0) {
+      return (byte)((int)(azd.a($$0, -1.0F, 1.0F) * 127.0F) & 0xFF);
+   }
+
+   @Override
+   public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
+      if (this.i) {
+         long $$11 = this.e();
+         MemoryUtil.memPutFloat($$11 + 0L, $$0);
+         MemoryUtil.memPutFloat($$11 + 4L, $$1);
+         MemoryUtil.memPutFloat($$11 + 8L, $$2);
+         a($$11 + 12L, $$3);
+         MemoryUtil.memPutFloat($$11 + 16L, $$4);
+         MemoryUtil.memPutFloat($$11 + 20L, $$5);
+         long $$12;
+         if (this.j) {
+            b($$11 + 24L, $$6);
+            $$12 = $$11 + 28L;
+         } else {
+            $$12 = $$11 + 24L;
+         }
+
+         b($$12 + 0L, $$7);
+         MemoryUtil.memPutByte($$12 + 4L, a($$8));
+         MemoryUtil.memPutByte($$12 + 5L, a($$9));
+         MemoryUtil.memPutByte($$12 + 6L, a($$10));
+      } else {
+         fdi.super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
       }
    }
 }

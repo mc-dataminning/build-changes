@@ -1,34 +1,25 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.function.Predicate;
 
-public class ddn extends ern {
-   public static final String a = "chunks";
-   private static final String b = "Forced";
-   private final LongSet c;
+public class ddn {
+   private final eys a;
+   private final eys b;
+   private final Predicate<duo> c;
 
-   public static ern.a<ddn> a() {
-      return new ern.a<>(ddn::new, ddn::b, bal.i);
+   public ddn(eys $$0, eys $$1, Predicate<duo> $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   private ddn(LongSet $$0) {
-      this.c = $$0;
+   public eys a() {
+      return this.b;
    }
 
-   public ddn() {
-      this(new LongOpenHashSet());
+   public eys b() {
+      return this.a;
    }
 
-   public static ddn b(uf $$0, jp.a $$1) {
-      return new ddn(new LongOpenHashSet($$0.o("Forced")));
-   }
-
-   @Override
-   public uf a(uf $$0, jp.a $$1) {
-      $$0.a("Forced", this.c.toLongArray());
-      return $$0;
-   }
-
-   public LongSet b() {
+   public Predicate<duo> c() {
       return this.c;
    }
 }

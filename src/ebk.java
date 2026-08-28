@@ -1,24 +1,32 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Codec;
+import java.util.stream.LongStream;
 
-class ebk extends ebo {
-   private final jr<eqa> e;
-   public static final MapCodec<ebk> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(kc.a(lv.D).fieldOf("fluids").forGetter($$0x -> $$0x.e)).apply($$0, ebk::new)
-   );
+public class ebk {
+   private long b;
+   private long c;
+   public static final Codec<ebk> a = Codec.LONG_STREAM
+      .comapFlatMap($$0 -> ad.a($$0, 2).map($$0x -> new ebk($$0x[0], $$0x[1])), $$0 -> LongStream.of($$0.b, $$0.c));
 
-   public ebk(ki $$0, jr<eqa> $$1) {
-      super($$0);
-      this.e = $$1;
+   public ebk(eaz.a $$0) {
+      this($$0.b(), $$0.c());
    }
 
-   @Override
-   protected boolean a(dua $$0) {
-      return $$0.y().a(this.e);
+   public ebk(long $$0, long $$1) {
+      this.b = $$0;
+      this.c = $$1;
+      if ((this.b | this.c) == 0L) {
+         this.b = -7046029254386353131L;
+         this.c = 7640891576956012809L;
+      }
    }
 
-   @Override
-   public ebe<?> a() {
-      return ebe.c;
+   public long a() {
+      long $$0 = this.b;
+      long $$1 = this.c;
+      long $$2 = Long.rotateLeft($$0 + $$1, 17) + $$0;
+      $$1 ^= $$0;
+      this.b = Long.rotateLeft($$0, 49) ^ $$1 ^ $$1 << 21;
+      this.c = Long.rotateLeft($$1, 28);
+      return $$2;
    }
 }

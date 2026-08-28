@@ -1,67 +1,127 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class cci extends cbc {
-   private static final int a = 10;
-   private final bun b;
-   private final int c;
-   @Nullable
-   private je d;
+public class cci<T extends cla & cle & ckn> extends cbh {
+   public static final bra a = bae.a(1, 2);
+   private final T b;
+   private cci.a c = cci.a.a;
+   private final double d;
+   private final float e;
+   private int f;
+   private int g;
+   private int h;
 
-   public cci(bun $$0, int $$1) {
+   public cci(T $$0, double $$1, float $$2) {
       this.b = $$0;
-      this.c = b($$1);
-      this.a(EnumSet.of(cbc.a.a));
+      this.d = $$1;
+      this.e = $$2 * $$2;
+      this.a(EnumSet.of(cbh.a.a, cbh.a.b));
    }
 
    @Override
    public boolean b() {
-      if (this.b.cV()) {
-         return false;
-      } else if (this.b.dS().S()) {
-         return false;
-      } else if (this.b.dV().a(this.c) != 0) {
-         return false;
-      } else {
-         arg $$0 = (arg)this.b.dS();
-         je $$1 = this.b.ds();
-         if (!$$0.a($$1, 6)) {
-            return false;
-         } else {
-            eye $$2 = cfc.a(this.b, 15, 7, $$1x -> (double)(-$$0.b(kg.a($$1x))));
-            this.d = $$2 == null ? null : je.a((jx)$$2);
-            return this.d != null;
-         }
-      }
+      return this.i() && this.h();
+   }
+
+   private boolean h() {
+      return this.b.b(cvt.vX);
    }
 
    @Override
    public boolean c() {
-      return this.d != null && !this.b.P().m() && this.b.P().i().equals(this.d);
+      return this.i() && (this.b() || !this.b.P().m()) && this.h();
+   }
+
+   private boolean i() {
+      return this.b.m() != null && this.b.m().bI();
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.b.w(false);
+      this.b.h(null);
+      this.f = 0;
+      if (this.b.fv()) {
+         this.b.fB();
+         this.b.b(false);
+         this.b.fx().b(kr.J, cya.a);
+      }
+   }
+
+   @Override
+   public boolean T_() {
+      return true;
    }
 
    @Override
    public void a() {
-      if (this.d != null) {
-         cdq $$0 = this.b.P();
-         if ($$0.m() && !this.d.a(this.b.dq(), 10.0)) {
-            eye $$1 = eye.c(this.d);
-            eye $$2 = this.b.dq();
-            eye $$3 = $$2.d($$1);
-            $$1 = $$3.c(0.4).e($$1);
-            eye $$4 = $$1.d($$2).d().c(10.0).e($$2);
-            je $$5 = je.a((jx)$$4);
-            $$5 = this.b.dS().a(dzw.a.f, $$5);
-            if (!$$0.a((double)$$5.u(), (double)$$5.v(), (double)$$5.w(), 1.0)) {
-               this.h();
+      buk $$0 = this.b.m();
+      if ($$0 != null) {
+         boolean $$1 = this.b.Q().a($$0);
+         boolean $$2 = this.f > 0;
+         if ($$1 != $$2) {
+            this.f = 0;
+         }
+
+         if ($$1) {
+            this.f++;
+         } else {
+            this.f--;
+         }
+
+         double $$3 = this.b.g((bto)$$0);
+         boolean $$4 = ($$3 > (double)this.e || this.f < 5) && this.g == 0;
+         if ($$4) {
+            this.h--;
+            if (this.h <= 0) {
+               this.b.P().a($$0, this.k() ? this.d : this.d * 0.5);
+               this.h = a.a(this.b.dV());
             }
+         } else {
+            this.h = 0;
+            this.b.P().o();
+         }
+
+         this.b.K().a($$0, 30.0F, 30.0F);
+         if (this.c == cci.a.a) {
+            if (!$$4) {
+               this.b.c(coq.a(this.b, cvt.vX));
+               this.c = cci.a.b;
+               this.b.b(true);
+            }
+         } else if (this.c == cci.a.b) {
+            if (!this.b.fv()) {
+               this.c = cci.a.a;
+            }
+
+            int $$5 = this.b.fz();
+            cvp $$6 = this.b.fx();
+            if ($$5 >= cud.b($$6, this.b)) {
+               this.b.fA();
+               this.c = cci.a.c;
+               this.g = 20 + this.b.dV().a(20);
+               this.b.b(false);
+            }
+         } else if (this.c == cci.a.c) {
+            this.g--;
+            if (this.g == 0) {
+               this.c = cci.a.d;
+            }
+         } else if (this.c == cci.a.d && $$1) {
+            this.b.a($$0, 1.0F);
+            this.c = cci.a.a;
          }
       }
    }
 
-   private void h() {
-      azk $$0 = this.b.dV();
-      je $$1 = this.b.dS().a(dzw.a.f, this.b.ds().b(-8 + $$0.a(16), 0, -8 + $$0.a(16)));
-      this.b.P().a((double)$$1.u(), (double)$$1.v(), (double)$$1.w(), 1.0);
+   private boolean k() {
+      return this.c == cci.a.a;
+   }
+
+   static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

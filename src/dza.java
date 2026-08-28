@@ -1,34 +1,15 @@
-public interface dza {
-   dza a = new dza() {
-      @Override
-      public boolean a() {
-         return true;
-      }
+public interface dza<T> {
+   void g(T var1);
 
-      @Override
-      public void a(dyz $$0) {
-      }
+   void f(T var1);
 
-      @Override
-      public void b(dyz $$0) {
-      }
+   void e(T var1);
 
-      @Override
-      public boolean a(jn<dyx> $$0, eye $$1, dyx.a $$2, dza.a $$3) {
-         return false;
-      }
-   };
+   void d(T var1);
 
-   boolean a();
+   void c(T var1);
 
-   void a(dyz var1);
+   void b(T var1);
 
-   void b(dyz var1);
-
-   boolean a(jn<dyx> var1, eye var2, dyx.a var3, dza.a var4);
-
-   @FunctionalInterface
-   public interface a {
-      void visit(dyz var1, eye var2);
-   }
+   void a(T var1);
 }

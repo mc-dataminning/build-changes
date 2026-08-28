@@ -1,323 +1,417 @@
+import com.google.common.collect.Lists;
+import com.google.common.collect.Queues;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Queue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Future;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
+
 public class ghv {
-   private static final float a = 0.8888889F;
-   private final gwk[] b = new gwk[2];
-   private final gwk[] c = new gwk[2];
-   private gwk d;
+   private static final Logger a = LogUtils.getLogger();
+   private static final jj[] b = jj.values();
+   private static final int c = 60;
+   private static final double d = Math.ceil(Math.sqrt(3.0) * 16.0);
+   private boolean e = true;
+   @Nullable
+   private Future<?> f;
+   @Nullable
+   private gie g;
+   private final AtomicReference<ghv.b> h = new AtomicReference<>();
+   private final AtomicReference<ghv.a> i = new AtomicReference<>();
+   private final AtomicBoolean j = new AtomicBoolean(false);
 
-   protected void a() {
-      this.b[0] = fib.Q().aD().b().b(dgx.H.o()).e();
-      this.b[1] = gyt.c.c();
-      this.c[0] = fib.Q().aD().b().b(dgx.G.o()).e();
-      this.c[1] = gyt.d.c();
-      this.d = gyt.e.c();
-   }
+   public void a(@Nullable gie $$0) {
+      if (this.f != null) {
+         try {
+            this.f.get();
+            this.f = null;
+         } catch (Exception var3) {
+            a.warn("Full update failed", var3);
+         }
+      }
 
-   private static boolean a(eqb $$0, eqb $$1) {
-      return $$1.a().a($$0.a());
-   }
-
-   private static boolean a(jj $$0, float $$1, dua $$2) {
-      eyx $$3 = $$2.a($$0.g());
-      if ($$3 == eyu.a()) {
-         return false;
-      } else if ($$3 == eyu.b()) {
-         boolean $$4 = $$1 == 1.0F;
-         return $$0 != jj.b || $$4;
+      this.g = $$0;
+      if ($$0 != null) {
+         this.h.set(new ghv.b($$0));
+         this.a();
       } else {
-         eyx $$5 = eyu.a(0.0, 0.0, 0.0, 1.0, (double)$$1, 1.0);
-         return eyu.a($$5, $$3, $$0);
+         this.h.set(null);
       }
    }
 
-   private static boolean b(jj $$0, float $$1, dua $$2) {
-      return a($$0, $$1, $$2);
+   public void a() {
+      this.e = true;
    }
 
-   private static boolean a(dua $$0, jj $$1) {
-      return a($$1.g(), 1.0F, $$0);
+   public void a(gkx $$0, List<gkt.b> $$1) {
+      this.h.get().a().b.a(($$1x, $$2, $$3) -> {
+         gkt.b $$4 = $$1x.a();
+         if ($$4 != null) {
+            $$1.add($$4);
+         }
+      }, $$0);
    }
 
-   public static boolean a(eqb $$0, dua $$1, jj $$2, eqb $$3) {
-      return !a($$1, $$2) && !a($$0, $$3);
+   public boolean b() {
+      return this.j.compareAndSet(true, false);
    }
 
-   public void a(dcu $$0, je $$1, fcy $$2, dua $$3, eqb $$4) {
-      boolean $$5 = $$4.a(awy.b);
-      gwk[] $$6 = $$5 ? this.b : this.c;
-      int $$7 = $$5 ? 16777215 : ggc.c($$0, $$1);
-      float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
-      float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
-      float $$10 = (float)($$7 & 0xFF) / 255.0F;
-      dua $$11 = $$0.a_($$1.a(jj.a));
-      eqb $$12 = $$11.y();
-      dua $$13 = $$0.a_($$1.a(jj.b));
-      eqb $$14 = $$13.y();
-      dua $$15 = $$0.a_($$1.a(jj.c));
-      eqb $$16 = $$15.y();
-      dua $$17 = $$0.a_($$1.a(jj.d));
-      eqb $$18 = $$17.y();
-      dua $$19 = $$0.a_($$1.a(jj.e));
-      eqb $$20 = $$19.y();
-      dua $$21 = $$0.a_($$1.a(jj.f));
-      eqb $$22 = $$21.y();
-      boolean $$23 = !a($$4, $$14);
-      boolean $$24 = a($$4, $$3, jj.a, $$12) && !b(jj.a, 0.8888889F, $$11);
-      boolean $$25 = a($$4, $$3, jj.c, $$16);
-      boolean $$26 = a($$4, $$3, jj.d, $$18);
-      boolean $$27 = a($$4, $$3, jj.e, $$20);
-      boolean $$28 = a($$4, $$3, jj.f, $$22);
-      if ($$23 || $$24 || $$28 || $$27 || $$25 || $$26) {
-         float $$29 = $$0.a(jj.a, true);
-         float $$30 = $$0.a(jj.b, true);
-         float $$31 = $$0.a(jj.c, true);
-         float $$32 = $$0.a(jj.e, true);
-         eqa $$33 = $$4.a();
-         float $$34 = this.a($$0, $$33, $$1, $$3, $$4);
-         float $$35;
-         float $$36;
-         float $$37;
-         float $$38;
-         if ($$34 >= 1.0F) {
-            $$35 = 1.0F;
-            $$36 = 1.0F;
-            $$37 = 1.0F;
-            $$38 = 1.0F;
+   public void a(ddm $$0) {
+      ghv.a $$1 = this.i.get();
+      if ($$1 != null) {
+         this.a($$1, $$0);
+      }
+
+      ghv.a $$2 = this.h.get().b;
+      if ($$2 != $$1) {
+         this.a($$2, $$0);
+      }
+   }
+
+   public void a(gkt.b $$0) {
+      ghv.a $$1 = this.i.get();
+      if ($$1 != null) {
+         $$1.b.add($$0);
+      }
+
+      ghv.a $$2 = this.h.get().b;
+      if ($$2 != $$1) {
+         $$2.b.add($$0);
+      }
+   }
+
+   public void a(boolean $$0, fhu $$1, gkx $$2, List<gkt.b> $$3, LongOpenHashSet $$4) {
+      eys $$5 = $$1.b();
+      if (this.e && (this.f == null || this.f.isDone())) {
+         this.a($$0, $$1, $$5, $$4);
+      }
+
+      this.a($$0, $$2, $$3, $$5, $$4);
+   }
+
+   private void a(boolean $$0, fhu $$1, eys $$2, LongOpenHashSet $$3) {
+      this.e = false;
+      LongOpenHashSet $$4 = $$3.clone();
+      this.f = ad.g().submit(() -> {
+         ghv.b $$4x = new ghv.b(this.g);
+         this.i.set($$4x.b);
+         Queue<ghv.d> $$5 = Queues.newArrayDeque();
+         this.a($$1, $$5);
+         $$5.forEach($$1xx -> $$4x.a.a.a($$1xx.a, $$1xx));
+         this.a($$4x.a, $$2, $$5, $$0, $$0xx -> {
+         }, $$4);
+         this.h.set($$4x);
+         this.i.set(null);
+         this.j.set(true);
+      });
+   }
+
+   private void a(boolean $$0, gkx $$1, List<gkt.b> $$2, eys $$3, LongOpenHashSet $$4) {
+      ghv.b $$5 = this.h.get();
+      this.a($$5);
+      if (!$$5.b.b.isEmpty()) {
+         Queue<ghv.d> $$6 = Queues.newArrayDeque();
+
+         while (!$$5.b.b.isEmpty()) {
+            gkt.b $$7 = $$5.b.b.poll();
+            ghv.d $$8 = $$5.a.a.a($$7);
+            if ($$8 != null && $$8.a == $$7) {
+               $$6.add($$8);
+            }
+         }
+
+         gkx $$9 = ghc.a($$1);
+         Consumer<gkt.b> $$10 = $$2x -> {
+            if ($$9.a($$2x.b())) {
+               $$2.add($$2x);
+            }
+         };
+         this.a($$5.a, $$3, $$6, $$0, $$10, $$4);
+      }
+   }
+
+   private void a(ghv.b $$0) {
+      LongIterator $$1 = $$0.b.a.iterator();
+
+      while ($$1.hasNext()) {
+         long $$2 = $$1.nextLong();
+         List<gkt.b> $$3 = (List<gkt.b>)$$0.a.c.get($$2);
+         if ($$3 != null && $$3.get(0).a()) {
+            $$0.b.b.addAll($$3);
+            $$0.a.c.remove($$2);
+         }
+      }
+
+      $$0.b.a.clear();
+   }
+
+   private void a(ghv.a $$0, ddm $$1) {
+      $$0.a.add(ddm.c($$1.e - 1, $$1.f));
+      $$0.a.add(ddm.c($$1.e, $$1.f - 1));
+      $$0.a.add(ddm.c($$1.e + 1, $$1.f));
+      $$0.a.add(ddm.c($$1.e, $$1.f + 1));
+   }
+
+   private void a(fhu $$0, Queue<ghv.d> $$1) {
+      je $$2 = $$0.c();
+      long $$3 = kg.c($$2);
+      int $$4 = kg.c($$3);
+      gkt.b $$5 = this.g.a($$3);
+      if ($$5 == null) {
+         dei $$6 = this.g.c();
+         boolean $$7 = $$4 < $$6.ap();
+         int $$8 = $$7 ? $$6.ap() : $$6.aq();
+         int $$9 = this.g.b();
+         List<ghv.d> $$10 = Lists.newArrayList();
+         int $$11 = kg.b($$3);
+         int $$12 = kg.d($$3);
+
+         for (int $$13 = -$$9; $$13 <= $$9; $$13++) {
+            for (int $$14 = -$$9; $$14 <= $$9; $$14++) {
+               gkt.b $$15 = this.g.a(kg.b($$13 + $$11, $$8, $$14 + $$12));
+               if ($$15 != null && this.a($$3, $$15.g())) {
+                  jj $$16 = $$7 ? jj.b : jj.a;
+                  ghv.d $$17 = new ghv.d($$15, $$16, 0);
+                  $$17.a($$17.d, $$16);
+                  if ($$13 > 0) {
+                     $$17.a($$17.d, jj.f);
+                  } else if ($$13 < 0) {
+                     $$17.a($$17.d, jj.e);
+                  }
+
+                  if ($$14 > 0) {
+                     $$17.a($$17.d, jj.d);
+                  } else if ($$14 < 0) {
+                     $$17.a($$17.d, jj.c);
+                  }
+
+                  $$10.add($$17);
+               }
+            }
+         }
+
+         $$10.sort(Comparator.comparingDouble($$1x -> $$2.j($$1x.a.f().b(8, 8, 8))));
+         $$1.addAll($$10);
+      } else {
+         $$1.add(new ghv.d($$5, null, 0));
+      }
+   }
+
+   private void a(ghv.c $$0, eys $$1, Queue<ghv.d> $$2, boolean $$3, Consumer<gkt.b> $$4, LongOpenHashSet $$5) {
+      int $$6 = 16;
+      je $$7 = new je(azd.a($$1.d / 16.0) * 16, azd.a($$1.e / 16.0) * 16, azd.a($$1.f / 16.0) * 16);
+      long $$8 = kg.c($$7);
+      je $$9 = $$7.b(8, 8, 8);
+
+      while (!$$2.isEmpty()) {
+         ghv.d $$10 = $$2.poll();
+         gkt.b $$11 = $$10.a;
+         if (!$$5.contains($$10.a.g())) {
+            if ($$0.b.a($$10.a)) {
+               $$4.accept($$10.a);
+            }
          } else {
-            float $$39 = this.a($$0, $$33, $$1.f(), $$15, $$16);
-            float $$40 = this.a($$0, $$33, $$1.g(), $$17, $$18);
-            float $$41 = this.a($$0, $$33, $$1.i(), $$21, $$22);
-            float $$42 = this.a($$0, $$33, $$1.h(), $$19, $$20);
-            $$35 = this.a($$0, $$33, $$34, $$39, $$41, $$1.a(jj.c).a(jj.f));
-            $$36 = this.a($$0, $$33, $$34, $$39, $$42, $$1.a(jj.c).a(jj.e));
-            $$37 = this.a($$0, $$33, $$34, $$40, $$41, $$1.a(jj.d).a(jj.f));
-            $$38 = this.a($$0, $$33, $$34, $$40, $$42, $$1.a(jj.d).a(jj.e));
+            $$10.a.c.compareAndSet(gkt.a.a, gkt.a.b);
          }
 
-         float $$47 = (float)($$1.u() & 15);
-         float $$48 = (float)($$1.v() & 15);
-         float $$49 = (float)($$1.w() & 15);
-         float $$50 = 0.001F;
-         float $$51 = $$24 ? 0.001F : 0.0F;
-         if ($$23 && !b(jj.b, Math.min(Math.min($$36, $$38), Math.min($$37, $$35)), $$13)) {
-            $$36 -= 0.001F;
-            $$38 -= 0.001F;
-            $$37 -= 0.001F;
-            $$35 -= 0.001F;
-            eye $$52 = $$4.c($$0, $$1);
-            float $$54;
-            float $$56;
-            float $$58;
-            float $$60;
-            float $$55;
-            float $$57;
-            float $$59;
-            float $$61;
-            if ($$52.d == 0.0 && $$52.f == 0.0) {
-               gwk $$53 = $$6[0];
-               $$54 = $$53.a(0.0F);
-               $$55 = $$53.c(0.0F);
-               $$56 = $$54;
-               $$57 = $$53.c(1.0F);
-               $$58 = $$53.a(1.0F);
-               $$59 = $$57;
-               $$60 = $$58;
-               $$61 = $$55;
-            } else {
-               gwk $$62 = $$6[1];
-               float $$63 = (float)azc.d($$52.f, $$52.d) - (float) (Math.PI / 2);
-               float $$64 = azc.a($$63) * 0.25F;
-               float $$65 = azc.b($$63) * 0.25F;
-               float $$66 = 0.5F;
-               $$54 = $$62.a(0.5F + (-$$65 - $$64));
-               $$55 = $$62.c(0.5F + -$$65 + $$64);
-               $$56 = $$62.a(0.5F + -$$65 + $$64);
-               $$57 = $$62.c(0.5F + $$65 + $$64);
-               $$58 = $$62.a(0.5F + $$65 + $$64);
-               $$59 = $$62.c(0.5F + ($$65 - $$64));
-               $$60 = $$62.a(0.5F + ($$65 - $$64));
-               $$61 = $$62.c(0.5F + (-$$65 - $$64));
-            }
+         boolean $$12 = Math.abs($$11.f().u() - $$7.u()) > 60 || Math.abs($$11.f().v() - $$7.v()) > 60 || Math.abs($$11.f().w() - $$7.w()) > 60;
 
-            float $$75 = ($$54 + $$56 + $$58 + $$60) / 4.0F;
-            float $$76 = ($$55 + $$57 + $$59 + $$61) / 4.0F;
-            float $$77 = $$6[0].k();
-            $$54 = azc.h($$77, $$54, $$75);
-            $$56 = azc.h($$77, $$56, $$75);
-            $$58 = azc.h($$77, $$58, $$75);
-            $$60 = azc.h($$77, $$60, $$75);
-            $$55 = azc.h($$77, $$55, $$76);
-            $$57 = azc.h($$77, $$57, $$76);
-            $$59 = azc.h($$77, $$59, $$76);
-            $$61 = azc.h($$77, $$61, $$76);
-            int $$78 = this.a($$0, $$1);
-            float $$79 = $$30 * $$8;
-            float $$80 = $$30 * $$9;
-            float $$81 = $$30 * $$10;
-            this.a($$2, $$47 + 0.0F, $$48 + $$36, $$49 + 0.0F, $$79, $$80, $$81, $$54, $$55, $$78);
-            this.a($$2, $$47 + 0.0F, $$48 + $$38, $$49 + 1.0F, $$79, $$80, $$81, $$56, $$57, $$78);
-            this.a($$2, $$47 + 1.0F, $$48 + $$37, $$49 + 1.0F, $$79, $$80, $$81, $$58, $$59, $$78);
-            this.a($$2, $$47 + 1.0F, $$48 + $$35, $$49 + 0.0F, $$79, $$80, $$81, $$60, $$61, $$78);
-            if ($$4.b($$0, $$1.d())) {
-               this.a($$2, $$47 + 0.0F, $$48 + $$36, $$49 + 0.0F, $$79, $$80, $$81, $$54, $$55, $$78);
-               this.a($$2, $$47 + 1.0F, $$48 + $$35, $$49 + 0.0F, $$79, $$80, $$81, $$60, $$61, $$78);
-               this.a($$2, $$47 + 1.0F, $$48 + $$37, $$49 + 1.0F, $$79, $$80, $$81, $$58, $$59, $$78);
-               this.a($$2, $$47 + 0.0F, $$48 + $$38, $$49 + 1.0F, $$79, $$80, $$81, $$56, $$57, $$78);
-            }
-         }
+         for (jj $$13 : b) {
+            gkt.b $$14 = this.a($$8, $$11, $$13);
+            if ($$14 != null && (!$$3 || !$$10.a($$13.g()))) {
+               if ($$3 && $$10.a()) {
+                  gkt.a $$15 = $$11.d();
+                  boolean $$16 = false;
 
-         if ($$24) {
-            float $$82 = $$6[0].c();
-            float $$83 = $$6[0].d();
-            float $$84 = $$6[0].g();
-            float $$85 = $$6[0].h();
-            int $$86 = this.a($$0, $$1.e());
-            float $$87 = $$29 * $$8;
-            float $$88 = $$29 * $$9;
-            float $$89 = $$29 * $$10;
-            this.a($$2, $$47, $$48 + $$51, $$49 + 1.0F, $$87, $$88, $$89, $$82, $$85, $$86);
-            this.a($$2, $$47, $$48 + $$51, $$49, $$87, $$88, $$89, $$82, $$84, $$86);
-            this.a($$2, $$47 + 1.0F, $$48 + $$51, $$49, $$87, $$88, $$89, $$83, $$84, $$86);
-            this.a($$2, $$47 + 1.0F, $$48 + $$51, $$49 + 1.0F, $$87, $$88, $$89, $$83, $$85, $$86);
-         }
+                  for (int $$17 = 0; $$17 < b.length; $$17++) {
+                     if ($$10.a($$17) && $$15.a(b[$$17].g(), $$13)) {
+                        $$16 = true;
+                        break;
+                     }
+                  }
 
-         int $$90 = this.a($$0, $$1);
-
-         for (jj $$91 : jj.c.a) {
-            float $$92;
-            float $$93;
-            float $$94;
-            float $$96;
-            float $$95;
-            float $$97;
-            boolean $$98;
-            switch ($$91) {
-               case c:
-                  $$92 = $$36;
-                  $$93 = $$35;
-                  $$94 = $$47;
-                  $$95 = $$47 + 1.0F;
-                  $$96 = $$49 + 0.001F;
-                  $$97 = $$49 + 0.001F;
-                  $$98 = $$25;
-                  break;
-               case d:
-                  $$92 = $$37;
-                  $$93 = $$38;
-                  $$94 = $$47 + 1.0F;
-                  $$95 = $$47;
-                  $$96 = $$49 + 1.0F - 0.001F;
-                  $$97 = $$49 + 1.0F - 0.001F;
-                  $$98 = $$26;
-                  break;
-               case e:
-                  $$92 = $$38;
-                  $$93 = $$36;
-                  $$94 = $$47 + 0.001F;
-                  $$95 = $$47 + 0.001F;
-                  $$96 = $$49 + 1.0F;
-                  $$97 = $$49;
-                  $$98 = $$27;
-                  break;
-               default:
-                  $$92 = $$35;
-                  $$93 = $$37;
-                  $$94 = $$47 + 1.0F - 0.001F;
-                  $$95 = $$47 + 1.0F - 0.001F;
-                  $$96 = $$49;
-                  $$97 = $$49 + 1.0F;
-                  $$98 = $$28;
-            }
-
-            if ($$98 && !b($$91, Math.max($$92, $$93), $$0.a_($$1.a($$91)))) {
-               je $$120 = $$1.a($$91);
-               gwk $$121 = $$6[1];
-               if (!$$5) {
-                  dgv $$122 = $$0.a_($$120).b();
-                  if ($$122 instanceof dkl || $$122 instanceof dlf) {
-                     $$121 = this.d;
+                  if (!$$16) {
+                     continue;
                   }
                }
 
-               float $$123 = $$121.a(0.0F);
-               float $$124 = $$121.a(0.5F);
-               float $$125 = $$121.c((1.0F - $$92) * 0.5F);
-               float $$126 = $$121.c((1.0F - $$93) * 0.5F);
-               float $$127 = $$121.c(0.5F);
-               float $$128 = $$91.o() == jj.a.c ? $$31 : $$32;
-               float $$129 = $$30 * $$128 * $$8;
-               float $$130 = $$30 * $$128 * $$9;
-               float $$131 = $$30 * $$128 * $$10;
-               this.a($$2, $$94, $$48 + $$92, $$96, $$129, $$130, $$131, $$123, $$125, $$90);
-               this.a($$2, $$95, $$48 + $$93, $$97, $$129, $$130, $$131, $$124, $$126, $$90);
-               this.a($$2, $$95, $$48 + $$51, $$97, $$129, $$130, $$131, $$124, $$127, $$90);
-               this.a($$2, $$94, $$48 + $$51, $$96, $$129, $$130, $$131, $$123, $$127, $$90);
-               if ($$121 != this.d) {
-                  this.a($$2, $$94, $$48 + $$51, $$96, $$129, $$130, $$131, $$123, $$127, $$90);
-                  this.a($$2, $$95, $$48 + $$51, $$97, $$129, $$130, $$131, $$124, $$127, $$90);
-                  this.a($$2, $$95, $$48 + $$93, $$97, $$129, $$130, $$131, $$124, $$126, $$90);
-                  this.a($$2, $$94, $$48 + $$92, $$96, $$129, $$130, $$131, $$123, $$125, $$90);
+               if ($$3 && $$12) {
+                  je $$18 = $$14.f();
+                  je $$19 = $$18.b(
+                     ($$13.o() == jj.a.a ? $$9.u() <= $$18.u() : $$9.u() >= $$18.u()) ? 0 : 16,
+                     ($$13.o() == jj.a.b ? $$9.v() <= $$18.v() : $$9.v() >= $$18.v()) ? 0 : 16,
+                     ($$13.o() == jj.a.c ? $$9.w() <= $$18.w() : $$9.w() >= $$18.w()) ? 0 : 16
+                  );
+                  eys $$20 = new eys((double)$$19.u(), (double)$$19.v(), (double)$$19.w());
+                  eys $$21 = $$1.d($$20).d().c(d);
+                  boolean $$22 = true;
+
+                  while ($$1.d($$20).h() > 3600.0) {
+                     $$20 = $$20.e($$21);
+                     dei $$23 = this.g.c();
+                     if ($$20.e > (double)$$23.an() || $$20.e < (double)$$23.G_()) {
+                        break;
+                     }
+
+                     gkt.b $$24 = this.g.a(je.a($$20.d, $$20.e, $$20.f));
+                     if ($$24 == null || $$0.a.a($$24) == null) {
+                        $$22 = false;
+                        break;
+                     }
+                  }
+
+                  if (!$$22) {
+                     continue;
+                  }
+               }
+
+               ghv.d $$25 = $$0.a.a($$14);
+               if ($$25 != null) {
+                  $$25.b($$13);
+               } else {
+                  ghv.d $$26 = new ghv.d($$14, $$13, $$10.b + 1);
+                  $$26.a($$10.d, $$13);
+                  if ($$14.a()) {
+                     $$2.add($$26);
+                     $$0.a.a($$14, $$26);
+                  } else if (this.a($$8, $$14.g())) {
+                     $$0.a.a($$14, $$26);
+                     ((List)$$0.c.computeIfAbsent(ddm.a($$14.f()), $$0x -> new ArrayList())).add($$14);
+                  }
                }
             }
          }
       }
    }
 
-   private float a(dcu $$0, eqa $$1, float $$2, float $$3, float $$4, je $$5) {
-      if (!($$4 >= 1.0F) && !($$3 >= 1.0F)) {
-         float[] $$6 = new float[2];
-         if ($$4 > 0.0F || $$3 > 0.0F) {
-            float $$7 = this.a($$0, $$1, $$5);
-            if ($$7 >= 1.0F) {
-               return 1.0F;
-            }
+   private boolean a(long $$0, long $$1) {
+      return aqs.a(kg.b($$0), kg.d($$0), this.g.b(), kg.b($$1), kg.d($$1));
+   }
 
-            this.a($$6, $$7);
+   @Nullable
+   private gkt.b a(long $$0, gkt.b $$1, jj $$2) {
+      long $$3 = $$1.a($$2);
+      if (!this.a($$0, $$3)) {
+         return null;
+      } else {
+         return azd.a(kg.c($$0) - kg.c($$3)) > this.g.b() ? null : this.g.a($$3);
+      }
+   }
+
+   @Nullable
+   @baj
+   public ghv.d b(gkt.b $$0) {
+      return this.h.get().a.a.a($$0);
+   }
+
+   public ghh c() {
+      return this.h.get().a.b;
+   }
+
+   static record a(LongSet a, BlockingQueue<gkt.b> b) {
+
+      a() {
+         this(new LongOpenHashSet(), new LinkedBlockingQueue<>());
+      }
+   }
+
+   static record b(ghv.c a, ghv.a b) {
+
+      b(gie $$0) {
+         this(new ghv.c($$0), new ghv.a());
+      }
+   }
+
+   static class c {
+      public final ghv.e a;
+      public final ghh b;
+      public final Long2ObjectMap<List<gkt.b>> c;
+
+      public c(gie $$0) {
+         this.a = new ghv.e($$0.f.length);
+         this.b = new ghh($$0.d(), $$0.b(), $$0.c, $$0.b.G_());
+         this.c = new Long2ObjectOpenHashMap();
+      }
+   }
+
+   @baj
+   public static class d {
+      @baj
+      protected final gkt.b a;
+      private byte c;
+      byte d;
+      @baj
+      public final int b;
+
+      d(gkt.b $$0, @Nullable jj $$1, int $$2) {
+         this.a = $$0;
+         if ($$1 != null) {
+            this.b($$1);
          }
 
-         this.a($$6, $$2);
-         this.a($$6, $$4);
-         this.a($$6, $$3);
-         return $$6[0] / $$6[1];
-      } else {
-         return 1.0F;
+         this.b = $$2;
+      }
+
+      void a(byte $$0, jj $$1) {
+         this.d = (byte)(this.d | $$0 | 1 << $$1.ordinal());
+      }
+
+      boolean a(jj $$0) {
+         return (this.d & 1 << $$0.ordinal()) > 0;
+      }
+
+      void b(jj $$0) {
+         this.c = (byte)(this.c | this.c | 1 << $$0.ordinal());
+      }
+
+      @baj
+      public boolean a(int $$0) {
+         return (this.c & 1 << $$0) > 0;
+      }
+
+      boolean a() {
+         return this.c != 0;
+      }
+
+      @Override
+      public int hashCode() {
+         return Long.hashCode(this.a.g());
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         return !($$0 instanceof ghv.d $$1) ? false : this.a.g() == $$1.a.g();
       }
    }
 
-   private void a(float[] $$0, float $$1) {
-      if ($$1 >= 0.8F) {
-         $$0[0] += $$1 * 10.0F;
-         $$0[1] += 10.0F;
-      } else if ($$1 >= 0.0F) {
-         $$0[0] += $$1;
-         $$0[1]++;
+   static class e {
+      private final ghv.d[] a;
+
+      e(int $$0) {
+         this.a = new ghv.d[$$0];
       }
-   }
 
-   private float a(dcu $$0, eqa $$1, je $$2) {
-      dua $$3 = $$0.a_($$2);
-      return this.a($$0, $$1, $$2, $$3, $$3.y());
-   }
-
-   private float a(dcu $$0, eqa $$1, je $$2, dua $$3, eqb $$4) {
-      if ($$1.a($$4.a())) {
-         dua $$5 = $$0.a_($$2.d());
-         return $$1.a($$5.y().a()) ? 1.0F : $$4.d();
-      } else {
-         return !$$3.e() ? 0.0F : -1.0F;
+      public void a(gkt.b $$0, ghv.d $$1) {
+         this.a[$$0.b] = $$1;
       }
-   }
 
-   private void a(fcy $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
-      $$0.a($$1, $$2, $$3).a($$4, $$5, $$6, 1.0F).a($$7, $$8).c($$9).b(0.0F, 1.0F, 0.0F);
-   }
-
-   private int a(dcu $$0, je $$1) {
-      int $$2 = ggr.a($$0, $$1);
-      int $$3 = ggr.a($$0, $$1.d());
-      int $$4 = $$2 & 0xFF;
-      int $$5 = $$3 & 0xFF;
-      int $$6 = $$2 >> 16 & 0xFF;
-      int $$7 = $$3 >> 16 & 0xFF;
-      return ($$4 > $$5 ? $$4 : $$5) | ($$6 > $$7 ? $$6 : $$7) << 16;
+      @Nullable
+      public ghv.d a(gkt.b $$0) {
+         int $$1 = $$0.b;
+         return $$1 >= 0 && $$1 < this.a.length ? this.a[$$1] : null;
+      }
    }
 }

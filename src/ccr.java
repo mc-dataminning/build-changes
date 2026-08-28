@@ -1,32 +1,30 @@
-public class ccr extends cbm {
-   private final clo b;
-   private int c;
+public class ccr extends cbh {
+   private final bus a;
 
-   public ccr(clo $$0, double $$1, boolean $$2) {
-      super($$0, $$1, $$2);
-      this.b = $$0;
+   public ccr(bus $$0) {
+      this.a = $$0;
+   }
+
+   @Override
+   public boolean b() {
+      return this.a.aH() && !this.a.dS().b_(this.a.ds()).a(awz.a);
    }
 
    @Override
    public void d() {
-      super.d();
-      this.c = 0;
-   }
+      je $$0 = null;
 
-   @Override
-   public void e() {
-      super.e();
-      this.b.w(false);
-   }
+      for (je $$2 : je.b(
+         azd.a(this.a.dx() - 2.0), azd.a(this.a.dz() - 2.0), azd.a(this.a.dD() - 2.0), azd.a(this.a.dx() + 2.0), this.a.dy(), azd.a(this.a.dD() + 2.0)
+      )) {
+         if (this.a.dS().b_($$2).a(awz.a)) {
+            $$0 = $$2;
+            break;
+         }
+      }
 
-   @Override
-   public void a() {
-      super.a();
-      this.c++;
-      if (this.c >= 5 && this.k() < this.l() / 2) {
-         this.b.w(true);
-      } else {
-         this.b.w(false);
+      if ($$0 != null) {
+         this.a.M().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
       }
    }
 }

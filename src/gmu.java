@@ -1,38 +1,26 @@
-public class gmu extends gmr<coa, gsw> {
-   private static final alb a = alb.b("textures/entity/illager/evoker_fangs.png");
-   private final fxb b;
+public class gmu extends gop<cgg, guj, fxa> {
+   private static final alc a = alc.b("textures/entity/fish/cod.png");
 
-   public gmu(gms.a $$0) {
-      super($$0);
-      this.b = new fxb($$0.a(gaa.ay));
+   public gmu(gnj.a $$0) {
+      super($$0, new fxa($$0.a(gak.O)), 0.3F);
    }
 
-   public void a(gsw $$0, fcu $$1, ggv $$2, int $$3) {
-      float $$4 = $$0.b;
-      if ($$4 != 0.0F) {
-         $$1.a();
-         $$1.a(a.d.rotationDegrees(90.0F - $$0.a));
-         $$1.b(-1.0F, -1.0F, 1.0F);
-         $$1.a(0.0F, -1.501F, 0.0F);
-         this.b.a($$0);
-         fcy $$5 = $$2.getBuffer(this.b.a(a));
-         this.b.a($$1, $$5, $$3, gwb.d);
-         $$1.b();
-         super.a($$0, $$1, $$2, $$3);
-      }
-   }
-
-   public alb a(gsw $$0) {
+   public alc b(guj $$0) {
       return a;
    }
 
-   public gsw a() {
-      return new gsw();
+   public guj a() {
+      return new guj();
    }
 
-   public void a(coa $$0, gsw $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.dI();
-      $$1.b = $$0.a($$2);
+   @Override
+   protected void a(guj $$0, fde $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      float $$4 = 4.3F * azd.a(0.6F * $$0.p);
+      $$1.a(a.d.rotationDegrees($$4));
+      if (!$$0.af) {
+         $$1.a(0.1F, 0.1F, -0.1F);
+         $$1.a(a.f.rotationDegrees(90.0F));
+      }
    }
 }

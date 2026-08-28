@@ -1,9 +1,10 @@
-public class csr extends cqs {
-   public csr(int $$0, cno $$1) {
-      super(crz.w, czz.d, csg.d, $$0, $$1);
+public class csr extends cst {
+   public csr(bri $$0, int $$1, int $$2, int $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   public csr(int $$0, cno $$1, brd $$2, crc $$3) {
-      super(crz.w, czz.d, csg.d, $$0, $$1, $$2, $$3);
+   @Override
+   public boolean a(cvp $$0) {
+      return $$0.h().ao_();
    }
 }

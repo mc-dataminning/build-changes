@@ -1,27 +1,25 @@
-import com.google.common.math.Quantiles;
-import com.google.common.math.Quantiles.ScaleAndIndexes;
-import it.unimi.dsi.fastutil.ints.Int2DoubleRBTreeMap;
-import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMap;
-import it.unimi.dsi.fastutil.ints.Int2DoubleSortedMaps;
-import java.util.Comparator;
-import java.util.Map;
+public final class bof implements Comparable<bof> {
+   public final double a;
+   public final double b;
+   public final long c;
+   public final String d;
 
-public class bof {
-   public static final ScaleAndIndexes a = Quantiles.scale(100).indexes(new int[]{50, 75, 90, 99});
-
-   private bof() {
+   public bof(String $$0, double $$1, double $$2, long $$3) {
+      this.d = $$0;
+      this.a = $$1;
+      this.b = $$2;
+      this.c = $$3;
    }
 
-   public static Map<Integer, Double> a(long[] $$0) {
-      return $$0.length == 0 ? Map.of() : a(a.compute($$0));
+   public int a(bof $$0) {
+      if ($$0.a < this.a) {
+         return -1;
+      } else {
+         return $$0.a > this.a ? 1 : $$0.d.compareTo(this.d);
+      }
    }
 
-   public static Map<Integer, Double> a(double[] $$0) {
-      return $$0.length == 0 ? Map.of() : a(a.compute($$0));
-   }
-
-   private static Map<Integer, Double> a(Map<Integer, Double> $$0) {
-      Int2DoubleSortedMap $$1 = ad.a(new Int2DoubleRBTreeMap(Comparator.reverseOrder()), $$1x -> $$1x.putAll($$0));
-      return Int2DoubleSortedMaps.unmodifiable($$1);
+   public int a() {
+      return (this.d.hashCode() & 11184810) + 4473924;
    }
 }

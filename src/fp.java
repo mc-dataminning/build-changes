@@ -62,14 +62,14 @@ public class fp implements ArgumentType<fp.a> {
          if ($$1 == 0) {
             throw c.create();
          } else {
-            return azc.a($$0x, $$1);
+            return azd.a($$0x, $$1);
          }
       };
          case "%=" -> ($$0x, $$1) -> {
          if ($$1 == 0) {
             throw c.create();
          } else {
-            return azc.b($$0x, $$1);
+            return azd.b($$0x, $$1);
          }
       };
          case "<" -> Math::min;
@@ -80,7 +80,7 @@ public class fp implements ArgumentType<fp.a> {
 
    @FunctionalInterface
    public interface a {
-      void apply(ezg var1, ezg var2) throws CommandSyntaxException;
+      void apply(ezv var1, ezv var2) throws CommandSyntaxException;
    }
 
    @FunctionalInterface
@@ -88,7 +88,7 @@ public class fp implements ArgumentType<fp.a> {
       int apply(int var1, int var2) throws CommandSyntaxException;
 
       @Override
-      default void apply(ezg $$0, ezg $$1) throws CommandSyntaxException {
+      default void apply(ezv $$0, ezv $$1) throws CommandSyntaxException {
          $$0.a(this.apply($$0.a(), $$1.a()));
       }
    }

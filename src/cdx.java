@@ -1,24 +1,43 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+public class cdx extends cdv {
+   private boolean p;
 
-public class cdx extends ceh<clr> {
-   @Override
-   public Set<cdi<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cdi.B)));
+   public cdx(bum $$0, deg $$1) {
+      super($$0, $$1);
    }
 
-   protected void a(arg $$0, clr $$1) {
-      super.a($$0, $$1);
-      $$1.dX()
-         .c(cdi.g)
-         .stream()
-         .flatMap(Collection::stream)
-         .filter(bto.e)
-         .filter($$1x -> ceo.c($$1, $$1x))
-         .findFirst()
-         .ifPresentOrElse($$1x -> $$1.dX().a(cdi.B, $$1x), () -> $$1.dX().b(cdi.B));
+   @Override
+   protected erf a(int $$0) {
+      this.p = this.a.ao() == btv.y;
+      this.o = new erj(this.p);
+      return new erf(this.o, $$0);
+   }
+
+   @Override
+   protected boolean a() {
+      return this.p || this.a.bm();
+   }
+
+   @Override
+   protected eys b() {
+      return new eys(this.a.dx(), this.a.e(0.5), this.a.dD());
+   }
+
+   @Override
+   protected double a(eys $$0) {
+      return $$0.e;
+   }
+
+   @Override
+   protected boolean a(eys $$0, eys $$1) {
+      return a(this.a, $$0, $$1, false);
+   }
+
+   @Override
+   public boolean a(je $$0) {
+      return !this.b.a_($$0).s();
+   }
+
+   @Override
+   public void a(boolean $$0) {
    }
 }

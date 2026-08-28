@@ -1,19 +1,33 @@
-import com.mojang.serialization.Codec;
-
-public enum dba implements azy {
-   a("attacker"),
-   b("damaging_entity"),
-   c("victim");
-
-   public static final Codec<dba> d = azy.a(dba::values);
-   private final String e;
-
-   private dba(final String $$0) {
-      this.e = $$0;
+public record dba(cvp a, cvp b, cvp c) implements dak {
+   @Override
+   public cvp a(int $$0) {
+      return switch ($$0) {
+         case 0 -> this.a;
+         case 1 -> this.b;
+         case 2 -> this.c;
+         default -> throw new IllegalArgumentException("Recipe does not contain slot " + $$0);
+      };
    }
 
    @Override
-   public String c() {
-      return this.e;
+   public int a() {
+      return 3;
+   }
+
+   @Override
+   public boolean b() {
+      return this.a.f() && this.b.f() && this.c.f();
+   }
+
+   public cvp c() {
+      return this.a;
+   }
+
+   public cvp d() {
+      return this.b;
+   }
+
+   public cvp e() {
+      return this.c;
    }
 }

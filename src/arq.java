@@ -1,3 +1,15 @@
+import javax.annotation.Nullable;
+
 public interface arq {
-   arp create(int var1);
+   void a(ddm var1);
+
+   void a(ddm var1, @Nullable dxl var2);
+
+   void a();
+
+   void b();
+
+   static int a(int $$0) {
+      return 2 * $$0 + 1;
+   }
 }

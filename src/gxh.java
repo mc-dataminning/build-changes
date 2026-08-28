@@ -1,9 +1,4 @@
-public class gxh extends gxo {
-   public gxh(gwl $$0) {
-      super($$0, alb.b("textures/atlas/map_decorations.png"), alb.b("map_decorations"));
-   }
+import com.mojang.serialization.MapCodec;
 
-   public gwk a(erp $$0) {
-      return this.a($$0.a());
-   }
+public record gxh(MapCodec<? extends gxf> a) {
 }

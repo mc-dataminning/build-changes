@@ -1,21 +1,52 @@
-public class gqa extends gnj<clq, gvl, fzt> {
-   private static final alb a = alb.b("textures/entity/piglin/zombified_piglin.png");
+public class gqa extends gop<cha, gvq, fxk<gvq>> {
+   private final fxk<gvq> a = this.e();
+   private final fxk<gvq> b;
+   private static final alc k = alc.b("textures/entity/fish/tropical_a.png");
+   private static final alc l = alc.b("textures/entity/fish/tropical_b.png");
 
-   public gqa(gms.a $$0, fzz $$1, fzz $$2, fzz $$3, fzz $$4, fzz $$5, fzz $$6) {
-      super($$0, new fzt($$0.a($$1)), new fzt($$0.a($$2)), 0.5F, goi.a);
-      this.a(new gqv<>(this, new fxm($$0.a($$3)), new fxm($$0.a($$4)), new fxm($$0.a($$5)), new fxm($$0.a($$5)), $$0.g()));
+   public gqa(gnj.a $$0) {
+      super($$0, new fzq($$0.a(gak.cO)), 0.15F);
+      this.b = new fzr($$0.a(gak.cM));
+      this.a(new gsf(this, $$0.f()));
    }
 
-   public alb a(gvl $$0) {
-      return a;
+   public alc a(gvq $$0) {
+      return switch ($$0.a.a()) {
+         case a -> k;
+         case b -> l;
+      };
    }
 
-   public gvl c() {
-      return new gvl();
+   public gvq c() {
+      return new gvq();
    }
 
-   public void a(clq $$0, gvl $$1, float $$2) {
+   public void a(cha $$0, gvq $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gf();
+      $$1.a = $$0.gA();
+      $$1.b = $$0.gy().d();
+      $$1.c = $$0.gz().d();
+   }
+
+   public void a(gvq $$0, fde $$1, ghg $$2, int $$3) {
+      this.h = switch ($$0.a.a()) {
+         case a -> this.a;
+         case b -> this.b;
+      };
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected int b(gvq $$0) {
+      return $$0.b;
+   }
+
+   protected void a(gvq $$0, fde $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      float $$4 = 4.3F * azd.a(0.6F * $$0.p);
+      $$1.a(a.d.rotationDegrees($$4));
+      if (!$$0.af) {
+         $$1.a(0.2F, 0.1F, 0.0F);
+         $$1.a(a.f.rotationDegrees(90.0F));
+      }
    }
 }

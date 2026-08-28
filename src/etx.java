@@ -1,65 +1,66 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.datafixers.Products.P1;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.function.Predicate;
 
-public class etx extends eug {
-   public static final MapCodec<etx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(exb.a.fieldOf("levels").forGetter($$0x -> $$0x.b), kc.a(lv.aL).optionalFieldOf("options").forGetter($$0x -> $$0x.c)))
-            .apply($$0, etx::new)
-   );
-   private final exa b;
-   private final Optional<jr<daw>> c;
+public abstract class etx implements etp {
+   protected final List<ews> e;
+   private final Predicate<eth> a;
 
-   etx(List<ewe> $$0, exa $$1, Optional<jr<daw>> $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   protected etx(List<ews> $$0) {
+      this.e = $$0;
+      this.a = ad.a($$0);
    }
 
-   @Override
-   public eui<etx> b() {
-      return euj.g;
+   protected static <T extends etx> P1<Mu<T>, List<ews>> a(Instance<T> $$0) {
+      return $$0.group(ews.e.listOf().optionalFieldOf("conditions", List.of()).forGetter($$0x -> $$0x.e));
    }
 
-   @Override
-   public Set<evm<?>> a() {
-      return this.b.a();
+   public void a(etn $$0) {
+      for (int $$1 = 0; $$1 < this.e.size(); $$1++) {
+         this.e.get($$1).a($$0.a(".condition[" + $$1 + "]"));
+      }
    }
 
-   @Override
-   public cvl a(cvl $$0, est $$1) {
-      azk $$2 = $$1.b();
-      kb $$3 = $$1.d().F_();
-      return day.a($$2, $$0, this.b.a($$1), $$3, this.c);
+   protected final boolean a(eth $$0) {
+      return this.a.test($$0);
    }
 
-   public static etx.a a(jp.a $$0, exa $$1) {
-      return new etx.a($$1).a($$0.b(lv.aL).b(awv.n));
-   }
+   public abstract ety a();
 
-   public static class a extends eug.a<etx.a> {
-      private final exa a;
-      private Optional<jr<daw>> b = Optional.empty();
+   public abstract static class a<T extends etx.a<T>> implements ewk<T> {
+      private final Builder<ews> a = ImmutableList.builder();
 
-      public a(exa $$0) {
-         this.a = $$0;
+      protected abstract T aF_();
+
+      public T a(ews.a $$0) {
+         this.a.add($$0.build());
+         return this.aF_();
       }
 
-      protected etx.a a() {
-         return this;
+      public final T e() {
+         return this.aF_();
       }
 
-      public etx.a a(jr<daw> $$0) {
-         this.b = Optional.of($$0);
-         return this;
+      protected List<ews> f() {
+         return this.a.build();
       }
 
-      @Override
-      public euh b() {
-         return new etx(this.g(), this.a, this.b);
+      public eto.a a(etx.a<?> $$0) {
+         return new eto.a(this, $$0);
       }
+
+      public ett.a b(etx.a<?> $$0) {
+         return new ett.a(this, $$0);
+      }
+
+      public eub.a c(etx.a<?> $$0) {
+         return new eub.a(this, $$0);
+      }
+
+      public abstract etx b();
    }
 }

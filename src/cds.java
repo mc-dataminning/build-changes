@@ -1,40 +1,38 @@
-public class cds extends cdq {
-   private boolean p;
-
-   public cds(buh $$0, dds $$1) {
+public class cds extends cdv {
+   public cds(bum $$0, deg $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected eqr a(int $$0) {
-      this.p = this.a.ao() == btq.y;
-      this.o = new eqv(this.p);
-      return new eqr(this.o, $$0);
+   protected erf a(int $$0) {
+      this.o = new eqy(false);
+      this.o.a(true);
+      return new erf(this.o, $$0);
    }
 
    @Override
    protected boolean a() {
-      return this.p || this.a.bm();
+      return true;
    }
 
    @Override
-   protected eye b() {
-      return new eye(this.a.dx(), this.a.e(0.5), this.a.dD());
+   protected eys b() {
+      return new eys(this.a.dx(), this.a.e(0.5), this.a.dD());
    }
 
    @Override
-   protected double a(eye $$0) {
+   protected double a(eys $$0) {
       return $$0.e;
    }
 
    @Override
-   protected boolean a(eye $$0, eye $$1) {
-      return a(this.a, $$0, $$1, false);
+   protected boolean a(eys $$0, eys $$1) {
+      return this.a.bm() ? a(this.a, $$0, $$1, false) : false;
    }
 
    @Override
    public boolean a(je $$0) {
-      return !this.b.a_($$0).s();
+      return !this.b.a_($$0.e()).l();
    }
 
    @Override

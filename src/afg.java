@@ -5,7 +5,7 @@ public class afg implements zk<abz> {
    private final int b;
    private final int c;
 
-   public afg(btj $$0, @Nullable btj $$1) {
+   public afg(bto $$0, @Nullable bto $$1) {
       this.b = $$0.ap();
       this.c = $$1 != null ? $$1.ap() : 0;
    }

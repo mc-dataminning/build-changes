@@ -8,16 +8,16 @@ public class az extends dv<az.a> {
       return az.a.a;
    }
 
-   public void a(arh $$0, ala<dds> $$1, ala<dds> $$2) {
+   public void a(ari $$0, alb<deg> $$1, alb<deg> $$2) {
       this.a($$0, $$2x -> $$2x.b($$1, $$2));
    }
 
-   public static record a(Optional<bg> b, Optional<ala<dds>> c, Optional<ala<dds>> d) implements dv.a {
+   public static record a(Optional<bg> b, Optional<alb<deg>> c, Optional<alb<deg>> d) implements dv.a {
       public static final Codec<az.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bv.b.optionalFieldOf("player").forGetter(az.a::a),
-                  ala.a(lv.ba).optionalFieldOf("from").forGetter(az.a::c),
-                  ala.a(lv.ba).optionalFieldOf("to").forGetter(az.a::d)
+                  alb.a(lv.bb).optionalFieldOf("from").forGetter(az.a::c),
+                  alb.a(lv.bb).optionalFieldOf("to").forGetter(az.a::d)
                )
                .apply($$0, az.a::new)
       );
@@ -26,19 +26,19 @@ public class az extends dv<az.a> {
          return an.w.a(new az.a(Optional.empty(), Optional.empty(), Optional.empty()));
       }
 
-      public static ao<az.a> a(ala<dds> $$0, ala<dds> $$1) {
+      public static ao<az.a> a(alb<deg> $$0, alb<deg> $$1) {
          return an.w.a(new az.a(Optional.empty(), Optional.of($$0), Optional.of($$1)));
       }
 
-      public static ao<az.a> a(ala<dds> $$0) {
+      public static ao<az.a> a(alb<deg> $$0) {
          return an.w.a(new az.a(Optional.empty(), Optional.empty(), Optional.of($$0)));
       }
 
-      public static ao<az.a> b(ala<dds> $$0) {
+      public static ao<az.a> b(alb<deg> $$0) {
          return an.w.a(new az.a(Optional.empty(), Optional.of($$0), Optional.empty()));
       }
 
-      public boolean b(ala<dds> $$0, ala<dds> $$1) {
+      public boolean b(alb<deg> $$0, alb<deg> $$1) {
          return this.c.isPresent() && this.c.get() != $$0 ? false : !this.d.isPresent() || this.d.get() == $$1;
       }
 

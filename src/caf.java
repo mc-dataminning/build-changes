@@ -1,152 +1,59 @@
-public class caf implements cab {
-   public static final float a = 5.0E-4F;
-   public static final float b = 2.5000003E-7F;
-   protected static final int c = 90;
-   protected final buh d;
-   protected double e;
-   protected double f;
-   protected double g;
-   protected double h;
-   protected float i;
-   protected float j;
-   protected caf.a k = caf.a.a;
+public class caf implements cag {
+   private final bum a;
+   private static final int b = 15;
+   private static final int c = 10;
+   private static final int d = 10;
+   private int e;
+   private float f;
 
-   public caf(buh $$0) {
-      this.d = $$0;
-   }
-
-   public boolean b() {
-      return this.k == caf.a.b;
-   }
-
-   public double c() {
-      return this.h;
-   }
-
-   public void a(double $$0, double $$1, double $$2, double $$3) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.h = $$3;
-      if (this.k != caf.a.d) {
-         this.k = caf.a.b;
-      }
-   }
-
-   public void a(float $$0, float $$1) {
-      this.k = caf.a.c;
-      this.i = $$0;
-      this.j = $$1;
-      this.h = 0.25;
+   public caf(bum $$0) {
+      this.a = $$0;
    }
 
    public void a() {
-      if (this.k == caf.a.c) {
-         float $$0 = (float)this.d.h(bvm.v);
-         float $$1 = (float)this.h * $$0;
-         float $$2 = this.i;
-         float $$3 = this.j;
-         float $$4 = azc.c($$2 * $$2 + $$3 * $$3);
-         if ($$4 < 1.0F) {
-            $$4 = 1.0F;
-         }
-
-         $$4 = $$1 / $$4;
-         $$2 *= $$4;
-         $$3 *= $$4;
-         float $$5 = azc.a(this.d.dI() * (float) (Math.PI / 180.0));
-         float $$6 = azc.b(this.d.dI() * (float) (Math.PI / 180.0));
-         float $$7 = $$2 * $$6 - $$3 * $$5;
-         float $$8 = $$3 * $$6 + $$2 * $$5;
-         if (!this.b($$7, $$8)) {
-            this.i = 1.0F;
-            this.j = 0.0F;
-         }
-
-         this.d.C($$1);
-         this.d.G(this.i);
-         this.d.I(this.j);
-         this.k = caf.a.a;
-      } else if (this.k == caf.a.b) {
-         this.k = caf.a.a;
-         double $$9 = this.e - this.d.dx();
-         double $$10 = this.g - this.d.dD();
-         double $$11 = this.f - this.d.dz();
-         double $$12 = $$9 * $$9 + $$11 * $$11 + $$10 * $$10;
-         if ($$12 < 2.5000003E-7F) {
-            this.d.G(0.0F);
-            return;
-         }
-
-         float $$13 = (float)(azc.d($$10, $$9) * 180.0F / (float)Math.PI) - 90.0F;
-         this.d.v(this.a(this.d.dI(), $$13, 90.0F));
-         this.d.C((float)(this.h * this.d.h(bvm.v)));
-         je $$14 = this.d.ds();
-         dua $$15 = this.d.dS().a_($$14);
-         eyx $$16 = $$15.g(this.d.dS(), $$14);
-         if ($$11 > (double)this.d.dM() && $$9 * $$9 + $$10 * $$10 < (double)Math.max(1.0F, this.d.dn())
-            || !$$16.c() && this.d.dz() < $$16.c(jj.a.b) + (double)$$14.v() && !$$15.a(aws.q) && !$$15.a(aws.T)) {
-            this.d.O().a();
-            this.k = caf.a.d;
-         }
-      } else if (this.k == caf.a.d) {
-         this.d.C((float)(this.h * this.d.h(bvm.v)));
-         if (this.d.aH()) {
-            this.k = caf.a.a;
-         }
+      if (this.f()) {
+         this.a.aT = this.a.dI();
+         this.c();
+         this.f = this.a.aV;
+         this.e = 0;
       } else {
-         this.d.G(0.0F);
-      }
-   }
-
-   private boolean b(float $$0, float $$1) {
-      cdq $$2 = this.d.P();
-      if ($$2 != null) {
-         eqo $$3 = $$2.p();
-         if ($$3 != null && $$3.a(this.d, je.a(this.d.dx() + (double)$$0, (double)this.d.dy(), this.d.dD() + (double)$$1)) != eqs.c) {
-            return false;
+         if (this.e()) {
+            if (Math.abs(this.a.aV - this.f) > 15.0F) {
+               this.e = 0;
+               this.f = this.a.aV;
+               this.b();
+            } else {
+               this.e++;
+               if (this.e > 10) {
+                  this.d();
+               }
+            }
          }
       }
-
-      return true;
    }
 
-   protected float a(float $$0, float $$1, float $$2) {
-      float $$3 = azc.g($$1 - $$0);
-      if ($$3 > $$2) {
-         $$3 = $$2;
-      }
-
-      if ($$3 < -$$2) {
-         $$3 = -$$2;
-      }
-
-      float $$4 = $$0 + $$3;
-      if ($$4 < 0.0F) {
-         $$4 += 360.0F;
-      } else if ($$4 > 360.0F) {
-         $$4 -= 360.0F;
-      }
-
-      return $$4;
+   private void b() {
+      this.a.aT = azd.c(this.a.aT, this.a.aV, (float)this.a.ag());
    }
 
-   public double d() {
-      return this.e;
+   private void c() {
+      this.a.aV = azd.c(this.a.aV, this.a.aT, (float)this.a.ag());
    }
 
-   public double e() {
-      return this.f;
+   private void d() {
+      int $$0 = this.e - 10;
+      float $$1 = azd.a((float)$$0 / 10.0F, 0.0F, 1.0F);
+      float $$2 = (float)this.a.ag() * (1.0F - $$1);
+      this.a.aT = azd.c(this.a.aT, this.a.aV, $$2);
    }
 
-   public double f() {
-      return this.g;
+   private boolean e() {
+      return !(this.a.cX() instanceof bum);
    }
 
-   protected static enum a {
-      a,
-      b,
-      c,
-      d;
+   private boolean f() {
+      double $$0 = this.a.dx() - this.a.L;
+      double $$1 = this.a.dD() - this.a.N;
+      return $$0 * $$0 + $$1 * $$1 > 2.5000003E-7F;
    }
 }

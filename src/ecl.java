@@ -1,58 +1,31 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
+import java.util.function.Function;
 
-public class ecl extends edc<efn> {
-   public ecl(Codec<efn> $$0) {
-      super($$0);
+public class ecl extends ebh {
+   private final kb a;
+   private final eao b;
+   private final eay c;
+   private final ebb.o d;
+
+   public ecl(ean $$0, kb $$1, dei $$2, eao $$3, eay $$4, ebb.o $$5) {
+      super($$0, $$2);
+      this.a = $$1;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = $$5;
    }
 
-   @Override
-   public boolean a(ede<efn> $$0) {
-      je $$1 = $$0.e();
-      dep $$2 = $$0.b();
-      azk $$3 = $$0.d();
-      if ($$1.v() > $$2.N() - 1) {
-         return false;
-      } else if (!$$2.a_($$1).a(dgx.G) && !$$2.a_($$1.e()).a(dgx.G)) {
-         return false;
-      } else {
-         boolean $$4 = false;
+   @Deprecated
+   public Optional<duo> a(Function<je, jn<dfh>> $$0, dwk $$1, je $$2, boolean $$3) {
+      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   }
 
-         for (jj $$5 : jj.values()) {
-            if ($$5 != jj.a && $$2.a_($$1.a($$5)).a(dgx.iC)) {
-               $$4 = true;
-               break;
-            }
-         }
+   @Deprecated
+   public kb c() {
+      return this.a;
+   }
 
-         if (!$$4) {
-            return false;
-         } else {
-            $$2.a($$1, dgx.mW.o(), 2);
-
-            for (int $$6 = 0; $$6 < 200; $$6++) {
-               int $$7 = $$3.a(5) - $$3.a(6);
-               int $$8 = 3;
-               if ($$7 < 2) {
-                  $$8 += $$7 / 2;
-               }
-
-               if ($$8 >= 1) {
-                  je $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
-                  dua $$10 = $$2.a_($$9);
-                  if ($$10.l() || $$10.a(dgx.G) || $$10.a(dgx.iC) || $$10.a(dgx.dO)) {
-                     for (jj $$11 : jj.values()) {
-                        dua $$12 = $$2.a_($$9.a($$11));
-                        if ($$12.a(dgx.mW)) {
-                           $$2.a($$9, dgx.mW.o(), 2);
-                           break;
-                        }
-                     }
-                  }
-               }
-            }
-
-            return true;
-         }
-      }
+   public eay d() {
+      return this.c;
    }
 }

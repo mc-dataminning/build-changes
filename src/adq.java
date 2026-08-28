@@ -1,14 +1,14 @@
 import com.google.common.collect.Sets;
 import java.util.Set;
 
-public record adq(int b, boolean c, Set<ala<dds>> d, int e, int f, int g, boolean h, boolean i, boolean j, agl k, boolean l) implements zk<abz> {
+public record adq(int b, boolean c, Set<alb<deg>> d, int e, int f, int g, boolean h, boolean i, boolean j, agl k, boolean l) implements zk<abz> {
    public static final zb<wo, adq> a = zk.a(adq::a, adq::new);
 
    private adq(wo $$0) {
       this(
          $$0.readInt(),
          $$0.readBoolean(),
-         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(lv.ba)),
+         $$0.a(Sets::newHashSetWithExpectedSize, $$0x -> $$0x.a(lv.bb)),
          $$0.l(),
          $$0.l(),
          $$0.l(),
@@ -47,7 +47,7 @@ public record adq(int b, boolean c, Set<ala<dds>> d, int e, int f, int g, boolea
       return this.c;
    }
 
-   public Set<ala<dds>> f() {
+   public Set<alb<deg>> f() {
       return this.d;
    }
 

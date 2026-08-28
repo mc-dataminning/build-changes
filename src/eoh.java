@@ -1,26 +1,42 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class eoh extends eok {
+public class eoh extends epb {
    public static final MapCodec<eoh> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(lu.e.q().fieldOf("block").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d)).apply($$0, eoh::new)
+      $$0 -> $$0.group(
+               kc.a(lv.f).optionalFieldOf("rottable_blocks").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, eoh::new)
    );
-   private final dgv b;
-   private final float d;
+   private final Optional<jr<dhj>> b;
+   private final float c;
 
-   public eoh(dgv $$0, float $$1) {
+   public eoh(jr<dhj> $$0, float $$1) {
+      this(Optional.of($$0), $$1);
+   }
+
+   public eoh(float $$0) {
+      this(Optional.empty(), $$0);
+   }
+
+   private eoh(Optional<jr<dhj>> $$0, float $$1) {
+      this.c = $$1;
       this.b = $$0;
-      this.d = $$1;
+   }
+
+   @Nullable
+   @Override
+   public epe.c a(dej $$0, je $$1, je $$2, epe.c $$3, epe.c $$4, epa $$5) {
+      azl $$6 = $$5.b($$4.a());
+      return (!this.b.isPresent() || $$3.b().a(this.b.get())) && !($$6.i() <= this.c) ? null : $$4;
    }
 
    @Override
-   public boolean a(dua $$0, azk $$1) {
-      return $$0.a(this.b) && $$1.i() < this.d;
-   }
-
-   @Override
-   protected eol<?> a() {
-      return eol.e;
+   protected epd<?> a() {
+      return epd.f;
    }
 }

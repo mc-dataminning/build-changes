@@ -1,72 +1,54 @@
 import com.mojang.serialization.MapCodec;
-import java.util.function.ToIntFunction;
 
-public class dkf extends dlv implements dgy, dnx {
-   public static final MapCodec<dkf> a = b(dkf::new);
-   private static final dur c = duq.C;
-   private final dlw d = new dlw(this);
-
-   @Override
-   public MapCodec<dkf> a() {
-      return a;
-   }
-
-   public dkf(dtz.d $$0) {
+public abstract class dkf extends dhj implements dke {
+   public dkf(dun.d $$0) {
       super($$0);
-      this.l(this.o().b(c, Boolean.valueOf(false)));
-   }
-
-   public static ToIntFunction<dua> b(int $$0) {
-      return $$1 -> dlv.q($$1) ? $$0 : 0;
    }
 
    @Override
-   protected void a(dub.a<dgv, dua> $$0) {
-      super.a($$0);
-      $$0.a(c);
+   protected abstract MapCodec<? extends dkf> a();
+
+   @Override
+   protected void b(duo $$0, deg $$1, je $$2, duo $$3, boolean $$4) {
+      $$1.a($$2, this, this.b());
    }
 
    @Override
-   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, eqc.c, eqc.c.a($$3));
-      }
-
+   protected duo a(duo $$0, jj $$1, duo $$2, deh $$3, je $$4, je $$5) {
+      $$3.a($$4, this, this.b());
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean a(dua $$0, cyw $$1) {
-      return !$$1.n().a(cvo.fW) || super.a($$0, $$1);
+   protected void a(duo $$0, arh $$1, je $$2, azl $$3) {
+      if (n($$1.a_($$2.e())) && $$2.v() >= $$1.G_()) {
+         ckd $$4 = ckd.a($$1, $$2, $$0);
+         this.a($$4);
+      }
+   }
+
+   protected void a(ckd $$0) {
+   }
+
+   protected int b() {
+      return 2;
+   }
+
+   public static boolean n(duo $$0) {
+      return $$0.l() || $$0.a(awt.aL) || $$0.n() || $$0.v();
    }
 
    @Override
-   public boolean b(ddv $$0, je $$1, dua $$2) {
-      return jj.a().anyMatch($$3 -> this.d.a($$2, $$0, $$1, $$3.g()));
+   public void a(duo $$0, deg $$1, je $$2, azl $$3) {
+      if ($$3.a(16) == 0) {
+         je $$4 = $$2.e();
+         if (n($$1.a_($$4))) {
+            azh.a($$1, $$2, $$3, new lf(ln.C, $$0));
+         }
+      }
    }
 
-   @Override
-   public boolean a(dds $$0, azk $$1, je $$2, dua $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(arg $$0, azk $$1, je $$2, dua $$3) {
-      this.d.a($$3, $$0, $$2, $$1);
-   }
-
-   @Override
-   protected eqb b_(dua $$0) {
-      return $$0.c(c) ? eqc.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean e_(dua $$0) {
-      return $$0.y().c();
-   }
-
-   @Override
-   public dlw c() {
-      return this.d;
+   public int b(duo $$0, ddl $$1, je $$2) {
+      return -16777216;
    }
 }

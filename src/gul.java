@@ -1,3 +1,4 @@
-public class gul extends gts {
-   public cgq.a a = cgq.a.b;
+public class gul extends gtl {
+   public float a;
+   public float b;
 }

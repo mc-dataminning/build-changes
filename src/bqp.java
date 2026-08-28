@@ -1,36 +1,61 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public abstract class bqp {
-   private static final Codec<Either<Integer, bqp>> a = Codec.either(Codec.INT, lu.K.q().dispatch(bqp::c, bqq::codec));
-   public static final Codec<bqp> c = a.xmap(
-      $$0 -> (bqp)$$0.map(bqm::a, $$0x -> $$0x), $$0 -> $$0.c() == bqq.a ? Either.left(((bqm)$$0).d()) : Either.right($$0)
-   );
-   public static final Codec<bqp> d = b(0, Integer.MAX_VALUE);
-   public static final Codec<bqp> e = b(1, Integer.MAX_VALUE);
+public class bqp extends bqu {
+   public static final MapCodec<bqp> a = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  Codec.FLOAT.fieldOf("mean").forGetter($$0x -> $$0x.b),
+                  Codec.FLOAT.fieldOf("deviation").forGetter($$0x -> $$0x.f),
+                  Codec.INT.fieldOf("min_inclusive").forGetter($$0x -> $$0x.g),
+                  Codec.INT.fieldOf("max_inclusive").forGetter($$0x -> $$0x.h)
+               )
+               .apply($$0, bqp::new)
+      )
+      .validate($$0 -> $$0.h < $$0.g ? DataResult.error(() -> "Max must be larger than min: [" + $$0.g + ", " + $$0.h + "]") : DataResult.success($$0));
+   private final float b;
+   private final float f;
+   private final int g;
+   private final int h;
 
-   public static Codec<bqp> b(int $$0, int $$1) {
-      return a($$0, $$1, c);
+   public static bqp a(float $$0, float $$1, int $$2, int $$3) {
+      return new bqp($$0, $$1, $$2, $$3);
    }
 
-   public static <T extends bqp> Codec<T> a(int $$0, int $$1, Codec<T> $$2) {
-      return $$2.validate($$2x -> a($$0, $$1, $$2x));
+   private bqp(float $$0, float $$1, int $$2, int $$3) {
+      this.b = $$0;
+      this.f = $$1;
+      this.g = $$2;
+      this.h = $$3;
    }
 
-   private static <T extends bqp> DataResult<T> a(int $$0, int $$1, T $$2) {
-      if ($$2.a() < $$0) {
-         return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
-      } else {
-         return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
-      }
+   @Override
+   public int a(azl $$0) {
+      return a($$0, this.b, this.f, (float)this.g, (float)this.h);
    }
 
-   public abstract int a(azk var1);
+   public static int a(azl $$0, float $$1, float $$2, float $$3, float $$4) {
+      return (int)azd.a(azd.c($$0, $$1, $$2), $$3, $$4);
+   }
 
-   public abstract int a();
+   @Override
+   public int a() {
+      return this.g;
+   }
 
-   public abstract int b();
+   @Override
+   public int b() {
+      return this.h;
+   }
 
-   public abstract bqq<?> c();
+   @Override
+   public bqv<?> c() {
+      return bqv.f;
+   }
+
+   @Override
+   public String toString() {
+      return "normal(" + this.b + ", " + this.f + ") in [" + this.g + "-" + this.h + "]";
+   }
 }

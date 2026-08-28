@@ -13,17 +13,17 @@ public class aeg implements zk<abz> {
    private final EnumSet<aeg.a> b;
    private final List<aeg.b> c;
 
-   public aeg(EnumSet<aeg.a> $$0, Collection<arh> $$1) {
+   public aeg(EnumSet<aeg.a> $$0, Collection<ari> $$1) {
       this.b = $$0;
       this.c = $$1.stream().map(aeg.b::new).toList();
    }
 
-   public aeg(aeg.a $$0, arh $$1) {
+   public aeg(aeg.a $$0, ari $$1) {
       this.b = EnumSet.of($$0);
       this.c = List.of(new aeg.b($$1));
    }
 
-   public static aeg a(Collection<arh> $$0) {
+   public static aeg a(Collection<ari> $$0) {
       EnumSet<aeg.a> $$1 = EnumSet.of(aeg.a.a, aeg.a.b, aeg.a.c, aeg.a.d, aeg.a.e, aeg.a.f, aeg.a.g);
       return new aeg($$1, $$0);
    }
@@ -89,7 +89,7 @@ public class aeg implements zk<abz> {
          yz.u.encode($$0, $$2.getProperties());
       }),
       b(($$0, $$1) -> $$0.h = $$1.c(xu.a::a), ($$0, $$1) -> $$0.a($$1.h, xu.a::a)),
-      c(($$0, $$1) -> $$0.e = ddp.a($$1.l()), ($$0, $$1) -> $$0.c($$1.e().a())),
+      c(($$0, $$1) -> $$0.e = ded.a($$1.l()), ($$0, $$1) -> $$0.c($$1.e().a())),
       d(($$0, $$1) -> $$0.c = $$1.readBoolean(), ($$0, $$1) -> $$0.a($$1.c())),
       e(($$0, $$1) -> $$0.d = $$1.l(), ($$0, $$1) -> $$0.c($$1.d())),
       f(($$0, $$1) -> $$0.f = wa.a($$1, xf.d), ($$0, $$1) -> wa.a($$0, $$1.f(), xf.d)),
@@ -112,9 +112,9 @@ public class aeg implements zk<abz> {
       }
    }
 
-   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, ddp e, @Nullable xd f, int g, @Nullable xu.a h) {
+   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, ded e, @Nullable xd f, int g, @Nullable xu.a h) {
 
-      b(arh $$0) {
+      b(ari $$0) {
          this($$0.cD(), $$0.gb(), true, $$0.c.k(), $$0.e.b(), $$0.P(), $$0.Q(), x.a($$0.ae(), xu::a));
       }
    }
@@ -125,7 +125,7 @@ public class aeg implements zk<abz> {
       GameProfile b;
       boolean c;
       int d;
-      ddp e;
+      ded e;
       @Nullable
       xd f;
       int g;
@@ -133,7 +133,7 @@ public class aeg implements zk<abz> {
       xu.a h;
 
       c(UUID $$0) {
-         this.e = ddp.e;
+         this.e = ded.e;
          this.a = $$0;
       }
 

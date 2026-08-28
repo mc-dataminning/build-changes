@@ -1,22 +1,30 @@
 import com.google.common.collect.ImmutableSet;
-import java.util.Comparator;
-import java.util.List;
 import java.util.Set;
 
-public class ceh<T extends buf> extends ceo<T> {
+public class ceh extends cet<buk> {
    @Override
-   protected void a(arg $$0, T $$1) {
-      double $$2 = $$1.h(bvm.m);
-      exz $$3 = $$1.cO().c($$2, $$2, $$2);
-      List<buf> $$4 = $$0.a(buf.class, $$3, $$1x -> $$1x != $$1 && $$1x.bI());
-      $$4.sort(Comparator.comparingDouble($$1::g));
-      bvg<?> $$5 = $$1.dX();
-      $$5.a(cdi.g, $$4);
-      $$5.a(cdi.h, new cdk($$1, $$4));
+   public Set<cdn<?>> a() {
+      return ImmutableSet.of(cdn.x, cdn.y);
    }
 
    @Override
-   public Set<cdi<?>> a() {
-      return ImmutableSet.of(cdi.g, cdi.h);
+   protected void a(arh $$0, buk $$1) {
+      bvl<?> $$2 = $$1.dX();
+      bsg $$3 = $$1.eC();
+      if ($$3 != null) {
+         $$2.a(cdn.x, $$1.eC());
+         bto $$4 = $$3.d();
+         if ($$4 instanceof buk) {
+            $$2.a(cdn.y, (buk)$$4);
+         }
+      } else {
+         $$2.b(cdn.x);
+      }
+
+      $$2.c(cdn.y).ifPresent($$2x -> {
+         if (!$$2x.bI() || $$2x.dS() != $$0) {
+            $$2.b(cdn.y);
+         }
+      });
    }
 }

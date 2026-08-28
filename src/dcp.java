@@ -1,221 +1,45 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public class dcp {
-   public static final Codec<dcp> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               dcn.a.fieldOf("buy").forGetter($$0x -> $$0x.c),
-               dcn.a.lenientOptionalFieldOf("buyB").forGetter($$0x -> $$0x.d),
-               cvl.b.fieldOf("sell").forGetter($$0x -> $$0x.e),
-               Codec.INT.lenientOptionalFieldOf("uses", 0).forGetter($$0x -> $$0x.f),
-               Codec.INT.lenientOptionalFieldOf("maxUses", 4).forGetter($$0x -> $$0x.g),
-               Codec.BOOL.lenientOptionalFieldOf("rewardExp", true).forGetter($$0x -> $$0x.h),
-               Codec.INT.lenientOptionalFieldOf("specialPrice", 0).forGetter($$0x -> $$0x.i),
-               Codec.INT.lenientOptionalFieldOf("demand", 0).forGetter($$0x -> $$0x.j),
-               Codec.FLOAT.lenientOptionalFieldOf("priceMultiplier", 0.0F).forGetter($$0x -> $$0x.k),
-               Codec.INT.lenientOptionalFieldOf("xp", 1).forGetter($$0x -> $$0x.l)
-            )
-            .apply($$0, dcp::new)
+public record dcp(jr<btv<?>> d, boolean e) implements dcb {
+   public static final MapCodec<dcp> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(kc.a(lv.z).fieldOf("entity").forGetter(dcp::b), Codec.BOOL.optionalFieldOf("join_team", false).forGetter(dcp::c)).apply($$0, dcp::new)
    );
-   public static final zb<wo, dcp> b = zb.a(dcp::a, dcp::a);
-   private final dcn c;
-   private final Optional<dcn> d;
-   private final cvl e;
-   private int f;
-   private final int g;
-   private final boolean h;
-   private int i;
-   private int j;
-   private final float k;
-   private final int l;
 
-   private dcp(dcn $$0, Optional<dcn> $$1, cvl $$2, int $$3, int $$4, boolean $$5, int $$6, int $$7, float $$8, int $$9) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
-      this.h = $$5;
-      this.i = $$6;
-      this.j = $$7;
-      this.k = $$8;
-      this.l = $$9;
+   @Override
+   public void a(arh $$0, int $$1, dbj $$2, bto $$3, eys $$4) {
+      je $$5 = je.a((jx)$$4);
+      if (deg.l($$5)) {
+         Optional<jn<btv<?>>> $$6 = this.b().a($$0.C_());
+         if (!$$6.isEmpty()) {
+            bto $$7 = $$6.get().a().a($$0, $$5, btu.k);
+            if ($$7 != null) {
+               if ($$7 instanceof buj $$8 && $$2.c() instanceof ari $$9) {
+                  $$8.b($$9);
+               }
+
+               if (this.e && $$3.co() != null) {
+                  $$0.f().a($$7.cF(), $$3.co());
+               }
+
+               $$7.b($$4.d, $$4.e, $$4.f, $$7.dI(), $$7.dK());
+            }
+         }
+      }
    }
 
-   public dcp(dcn $$0, cvl $$1, int $$2, int $$3, float $$4) {
-      this($$0, Optional.empty(), $$1, $$2, $$3, $$4);
+   @Override
+   public MapCodec<dcp> a() {
+      return a;
    }
 
-   public dcp(dcn $$0, Optional<dcn> $$1, cvl $$2, int $$3, int $$4, float $$5) {
-      this($$0, $$1, $$2, 0, $$3, $$4, $$5);
-   }
-
-   public dcp(dcn $$0, Optional<dcn> $$1, cvl $$2, int $$3, int $$4, int $$5, float $$6) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, 0);
-   }
-
-   public dcp(dcn $$0, Optional<dcn> $$1, cvl $$2, int $$3, int $$4, int $$5, float $$6, int $$7) {
-      this($$0, $$1, $$2, $$3, $$4, true, 0, $$7, $$6, $$5);
-   }
-
-   private dcp(dcp $$0) {
-      this($$0.c, $$0.d, $$0.e.u(), $$0.f, $$0.g, $$0.h, $$0.i, $$0.j, $$0.k, $$0.l);
-   }
-
-   public cvl a() {
-      return this.c.d();
-   }
-
-   public cvl b() {
-      return this.c.d().c(this.a(this.c));
-   }
-
-   private int a(dcn $$0) {
-      int $$1 = $$0.b();
-      int $$2 = Math.max(0, azc.d((float)($$1 * this.j) * this.k));
-      return azc.a($$1 + $$2 + this.i, 1, $$0.d().k());
-   }
-
-   public cvl c() {
-      return this.d.map(dcn::d).orElse(cvl.k);
-   }
-
-   public dcn d() {
-      return this.c;
-   }
-
-   public Optional<dcn> e() {
+   public jr<btv<?>> b() {
       return this.d;
    }
 
-   public cvl f() {
+   public boolean c() {
       return this.e;
-   }
-
-   public void g() {
-      this.j = this.j + this.f - (this.g - this.f);
-   }
-
-   public cvl h() {
-      return this.e.u();
-   }
-
-   public int i() {
-      return this.f;
-   }
-
-   public void j() {
-      this.f = 0;
-   }
-
-   public int k() {
-      return this.g;
-   }
-
-   public void l() {
-      this.f++;
-   }
-
-   public int m() {
-      return this.j;
-   }
-
-   public void a(int $$0) {
-      this.i += $$0;
-   }
-
-   public void n() {
-      this.i = 0;
-   }
-
-   public int o() {
-      return this.i;
-   }
-
-   public void b(int $$0) {
-      this.i = $$0;
-   }
-
-   public float p() {
-      return this.k;
-   }
-
-   public int q() {
-      return this.l;
-   }
-
-   public boolean r() {
-      return this.f >= this.g;
-   }
-
-   public void s() {
-      this.f = this.g;
-   }
-
-   public boolean t() {
-      return this.f > 0;
-   }
-
-   public boolean u() {
-      return this.h;
-   }
-
-   public boolean a(cvl $$0, cvl $$1) {
-      if (!this.c.a($$0) || $$0.J() < this.a(this.c)) {
-         return false;
-      } else {
-         return !this.d.isPresent() ? $$1.f() : this.d.get().a($$1) && $$1.J() >= this.d.get().b();
-      }
-   }
-
-   public boolean b(cvl $$0, cvl $$1) {
-      if (!this.a($$0, $$1)) {
-         return false;
-      } else {
-         $$0.h(this.b().J());
-         if (!this.c().f()) {
-            $$1.h(this.c().J());
-         }
-
-         return true;
-      }
-   }
-
-   public dcp v() {
-      return new dcp(this);
-   }
-
-   private static void a(wo $$0, dcp $$1) {
-      dcn.b.encode($$0, $$1.d());
-      cvl.i.encode($$0, $$1.f());
-      dcn.c.encode($$0, $$1.e());
-      $$0.a($$1.r());
-      $$0.q($$1.i());
-      $$0.q($$1.k());
-      $$0.q($$1.q());
-      $$0.q($$1.o());
-      $$0.a($$1.p());
-      $$0.q($$1.m());
-   }
-
-   public static dcp a(wo $$0) {
-      dcn $$1 = dcn.b.decode($$0);
-      cvl $$2 = cvl.i.decode($$0);
-      Optional<dcn> $$3 = dcn.c.decode($$0);
-      boolean $$4 = $$0.readBoolean();
-      int $$5 = $$0.readInt();
-      int $$6 = $$0.readInt();
-      int $$7 = $$0.readInt();
-      int $$8 = $$0.readInt();
-      float $$9 = $$0.readFloat();
-      int $$10 = $$0.readInt();
-      dcp $$11 = new dcp($$1, $$3, $$2, $$5, $$6, $$7, $$9, $$10);
-      if ($$4) {
-         $$11.s();
-      }
-
-      $$11.b($$8);
-      return $$11;
    }
 }

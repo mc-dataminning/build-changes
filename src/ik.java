@@ -20,17 +20,17 @@ public class ik<T extends ev<T>> implements ih<T> {
    private static final int b = 8;
    private final List<String> c;
    private final Object2ObjectLinkedOpenHashMap<List<String>, ij<T>> d = new Object2ObjectLinkedOpenHashMap(8, 0.25F);
-   private final alb e;
+   private final alc e;
    private final List<ik.a<T>> f;
 
-   public ik(alb $$0, List<ik.a<T>> $$1, List<String> $$2) {
+   public ik(alc $$0, List<ik.a<T>> $$1, List<String> $$2) {
       this.e = $$0;
       this.f = $$1;
       this.c = $$2;
    }
 
    @Override
-   public alb a() {
+   public alc a() {
       return this.e;
    }
 
@@ -99,7 +99,7 @@ public class ik<T extends ev<T>> implements ih<T> {
    interface a<T> {
       IntList a();
 
-      hx<T> a(List<String> var1, CommandDispatcher<T> var2, alb var3) throws ew;
+      hx<T> a(List<String> var1, CommandDispatcher<T> var2, alc var3) throws ew;
    }
 
    static class b<T extends ev<T>> implements ik.a<T> {
@@ -119,7 +119,7 @@ public class ik<T extends ev<T>> implements ih<T> {
       }
 
       @Override
-      public hx<T> a(List<String> $$0, CommandDispatcher<T> $$1, alb $$2) throws ew {
+      public hx<T> a(List<String> $$0, CommandDispatcher<T> $$1, alc $$2) throws ew {
          String $$3 = this.a.a($$0);
 
          try {
@@ -143,7 +143,7 @@ public class ik<T extends ev<T>> implements ih<T> {
       }
 
       @Override
-      public hx<T> a(List<String> $$0, CommandDispatcher<T> $$1, alb $$2) {
+      public hx<T> a(List<String> $$0, CommandDispatcher<T> $$1, alc $$2) {
          return this.a;
       }
    }

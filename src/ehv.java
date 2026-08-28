@@ -1,48 +1,17 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class ehv extends ehy {
-   public static final MapCodec<ehv> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(ehv::new, $$0 -> $$0.d);
-   private static final jj b = jj.d;
-   private static final jj[] c = jj.c.a.a().filter($$0 -> $$0 != b.g()).toArray(jj[]::new);
-   private final float d;
+public abstract class ehv {
+   public static final Codec<ehv> a = lu.T.q().dispatch(ehv::a, ehw::a);
 
-   public ehv(float $$0) {
-      this.d = $$0;
+   public static eie a(duo $$0) {
+      return new eie($$0);
    }
 
-   @Override
-   protected ehz<?> a() {
-      return ehz.d;
+   public static eie a(dhj $$0) {
+      return new eie($$0.o());
    }
 
-   @Override
-   public void a(ehy.a $$0) {
-      azk $$1 = $$0.b();
-      if (!($$1.i() >= this.d)) {
-         List<je> $$2 = $$0.d();
-         List<je> $$3 = $$0.c();
-         int $$4 = !$$2.isEmpty() ? Math.max($$2.get(0).v() - 1, $$3.get(0).v() + 1) : Math.min($$3.get(0).v() + 1 + $$1.a(3), $$3.get($$3.size() - 1).v());
-         List<je> $$5 = $$3.stream().filter($$1x -> $$1x.v() == $$4).flatMap($$0x -> Stream.of(c).map($$0x::a)).collect(Collectors.toList());
-         if (!$$5.isEmpty()) {
-            Collections.shuffle($$5);
-            Optional<je> $$6 = $$5.stream().filter($$1x -> $$0.a($$1x) && $$0.a($$1x.a(b))).findFirst();
-            if (!$$6.isEmpty()) {
-               $$0.a($$6.get(), dgx.pe.o().b(dgp.b, b));
-               $$0.a().a($$6.get(), drg.H).ifPresent($$1x -> {
-                  int $$2x = 2 + $$1.a(2);
+   protected abstract ehw<?> a();
 
-                  for (int $$3x = 0; $$3x < $$2x; $$3x++) {
-                     $$1x.a(drb.c.a($$1.a(599)));
-                  }
-               });
-            }
-         }
-      }
-   }
+   public abstract duo a(azl var1, je var2);
 }

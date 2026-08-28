@@ -1,23 +1,25 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+public final class des implements dwh {
+   private final int a;
+   private final duo[] b;
 
-public class des {
-   public static final Codec<des> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ln.bf.fieldOf("options").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.c)).apply($$0, des::new)
-   );
-   private final ll b;
-   private final float c;
-
-   public des(ll $$0, float $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public des(int $$0, duo[] $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public ll a() {
-      return this.b;
+   @Override
+   public duo a(int $$0) {
+      int $$1 = $$0 - this.a;
+      return $$1 >= 0 && $$1 < this.b.length ? this.b[$$1] : dhl.a.o();
    }
 
-   public boolean a(azk $$0) {
-      return $$0.i() <= this.c;
+   @Override
+   public void a(int $$0, duo $$1) {
+      int $$2 = $$0 - this.a;
+      if ($$2 >= 0 && $$2 < this.b.length) {
+         this.b[$$2] = $$1;
+      } else {
+         throw new IllegalArgumentException("Outside of column height: " + $$0);
+      }
    }
 }

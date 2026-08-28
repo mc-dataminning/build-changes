@@ -8,7 +8,7 @@ public class be extends dv<be.a> {
       return be.a.a;
    }
 
-   public void a(arh $$0, int $$1) {
+   public void a(ari $$0, int $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 

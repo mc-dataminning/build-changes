@@ -9,10 +9,10 @@ public class ax extends dv<ax.a> {
       return ax.a.a;
    }
 
-   public void a(arh $$0, cfv $$1, cfv $$2, @Nullable btc $$3) {
-      est $$4 = bv.b($$0, $$1);
-      est $$5 = bv.b($$0, $$2);
-      est $$6 = $$3 != null ? bv.b($$0, $$3) : null;
+   public void a(ari $$0, cga $$1, cga $$2, @Nullable bth $$3) {
+      eth $$4 = bv.b($$0, $$1);
+      eth $$5 = bv.b($$0, $$2);
+      eth $$6 = $$3 != null ? bv.b($$0, $$3) : null;
       this.a($$0, $$3x -> $$3x.a($$4, $$5, $$6));
    }
 
@@ -39,11 +39,11 @@ public class ax extends dv<ax.a> {
          return an.p.a(new ax.a(Optional.empty(), bv.a($$0), bv.a($$1), bv.a($$2)));
       }
 
-      public boolean a(est $$0, est $$1, @Nullable est $$2) {
+      public boolean a(eth $$0, eth $$1, @Nullable eth $$2) {
          return !this.e.isPresent() || $$2 != null && this.e.get().a($$2) ? a(this.c, $$0) && a(this.d, $$1) || a(this.c, $$1) && a(this.d, $$0) : false;
       }
 
-      private static boolean a(Optional<bg> $$0, est $$1) {
+      private static boolean a(Optional<bg> $$0, eth $$1) {
          return $$0.isEmpty() || $$0.get().a($$1);
       }
 

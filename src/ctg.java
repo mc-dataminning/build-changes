@@ -1,18 +1,21 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class ctg extends cvg implements cwh {
-   public ctg(cvg.a $$0) {
-      super($$0);
-   }
+public class ctg extends cvk {
+   private final dhj a;
 
-   public cnw a(dds $$0, cvl $$1, buf $$2, @Nullable cvl $$3) {
-      return new cny($$0, $$2, $$1.c(1), $$3);
+   public ctg(dhj $$0, cvk.a $$1) {
+      super($$1);
+      this.a = $$0;
    }
 
    @Override
-   public coi a(dds $$0, jx $$1, cvl $$2, jj $$3) {
-      cny $$4 = new cny($$0, $$1.a(), $$1.b(), $$1.c(), $$2.c(1), null);
-      $$4.d = cnw.a.b;
-      return $$4;
+   public String a() {
+      return this.a.g();
+   }
+
+   @Override
+   public void a(cvp $$0, cvk.b $$1, List<xd> $$2, cxh $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.a($$0, $$1, $$2, $$3);
    }
 }

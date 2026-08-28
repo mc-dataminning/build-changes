@@ -1,70 +1,34 @@
-public abstract class dfa {
-   public static final ala<det> a = a("the_void");
-   public static final ala<det> b = a("plains");
-   public static final ala<det> c = a("sunflower_plains");
-   public static final ala<det> d = a("snowy_plains");
-   public static final ala<det> e = a("ice_spikes");
-   public static final ala<det> f = a("desert");
-   public static final ala<det> g = a("swamp");
-   public static final ala<det> h = a("mangrove_swamp");
-   public static final ala<det> i = a("forest");
-   public static final ala<det> j = a("flower_forest");
-   public static final ala<det> k = a("birch_forest");
-   public static final ala<det> l = a("dark_forest");
-   public static final ala<det> m = a("old_growth_birch_forest");
-   public static final ala<det> n = a("old_growth_pine_taiga");
-   public static final ala<det> o = a("old_growth_spruce_taiga");
-   public static final ala<det> p = a("taiga");
-   public static final ala<det> q = a("snowy_taiga");
-   public static final ala<det> r = a("savanna");
-   public static final ala<det> s = a("savanna_plateau");
-   public static final ala<det> t = a("windswept_hills");
-   public static final ala<det> u = a("windswept_gravelly_hills");
-   public static final ala<det> v = a("windswept_forest");
-   public static final ala<det> w = a("windswept_savanna");
-   public static final ala<det> x = a("jungle");
-   public static final ala<det> y = a("sparse_jungle");
-   public static final ala<det> z = a("bamboo_jungle");
-   public static final ala<det> A = a("badlands");
-   public static final ala<det> B = a("eroded_badlands");
-   public static final ala<det> C = a("wooded_badlands");
-   public static final ala<det> D = a("meadow");
-   public static final ala<det> E = a("cherry_grove");
-   public static final ala<det> F = a("grove");
-   public static final ala<det> G = a("snowy_slopes");
-   public static final ala<det> H = a("frozen_peaks");
-   public static final ala<det> I = a("jagged_peaks");
-   public static final ala<det> J = a("stony_peaks");
-   public static final ala<det> K = a("river");
-   public static final ala<det> L = a("frozen_river");
-   public static final ala<det> M = a("beach");
-   public static final ala<det> N = a("snowy_beach");
-   public static final ala<det> O = a("stony_shore");
-   public static final ala<det> P = a("warm_ocean");
-   public static final ala<det> Q = a("lukewarm_ocean");
-   public static final ala<det> R = a("deep_lukewarm_ocean");
-   public static final ala<det> S = a("ocean");
-   public static final ala<det> T = a("deep_ocean");
-   public static final ala<det> U = a("cold_ocean");
-   public static final ala<det> V = a("deep_cold_ocean");
-   public static final ala<det> W = a("frozen_ocean");
-   public static final ala<det> X = a("deep_frozen_ocean");
-   public static final ala<det> Y = a("mushroom_fields");
-   public static final ala<det> Z = a("dripstone_caves");
-   public static final ala<det> aa = a("lush_caves");
-   public static final ala<det> ab = a("deep_dark");
-   public static final ala<det> ac = a("nether_wastes");
-   public static final ala<det> ad = a("warped_forest");
-   public static final ala<det> ae = a("crimson_forest");
-   public static final ala<det> af = a("soul_sand_valley");
-   public static final ala<det> ag = a("basalt_deltas");
-   public static final ala<det> ah = a("the_end");
-   public static final ala<det> ai = a("end_highlands");
-   public static final ala<det> aj = a("end_midlands");
-   public static final ala<det> ak = a("small_end_islands");
-   public static final ala<det> al = a("end_barrens");
+import java.util.List;
+import javax.annotation.Nullable;
 
-   private static ala<det> a(String $$0) {
-      return ala.a(lv.aF, alb.b($$0));
+public interface dfa {
+   void a(btv<?> var1, azl var2);
+
+   static void a(cvp $$0, List<xd> $$1, String $$2) {
+      xd $$3 = a($$0, $$2);
+      if ($$3 != null) {
+         $$1.add($$3);
+      } else {
+         $$1.add(xc.a);
+         $$1.add(xd.c("block.minecraft.spawner.desc1").a(n.h));
+         $$1.add(xc.a().b(xd.c("block.minecraft.spawner.desc2").a(n.j)));
+      }
+   }
+
+   @Nullable
+   static xd a(cvp $$0, String $$1) {
+      uf $$2 = $$0.a(kr.T, cye.a).d();
+      alc $$3 = a($$2, $$1);
+      return $$3 != null ? lu.f.b($$3).map($$0x -> xd.c($$0x.g()).a(n.h)).orElse(null) : null;
+   }
+
+   @Nullable
+   private static alc a(uf $$0, String $$1) {
+      if ($$0.b($$1, 10)) {
+         String $$2 = $$0.p($$1).p("entity").l("id");
+         return alc.c($$2);
+      } else {
+         return null;
+      }
    }
 }

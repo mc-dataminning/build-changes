@@ -1,27 +1,20 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eoi extends eok {
-   public static final MapCodec<eoi> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dua.a.fieldOf("block_state").forGetter($$0x -> $$0x.b), Codec.FLOAT.fieldOf("probability").forGetter($$0x -> $$0x.d))
-            .apply($$0, eoi::new)
-   );
-   private final dua b;
-   private final float d;
+public class eoi extends eoy {
+   public static final MapCodec<eoi> a = duo.a.fieldOf("block_state").xmap(eoi::new, $$0 -> $$0.b);
+   private final duo b;
 
-   public eoi(dua $$0, float $$1) {
+   public eoi(duo $$0) {
       this.b = $$0;
-      this.d = $$1;
    }
 
    @Override
-   public boolean a(dua $$0, azk $$1) {
-      return $$0 == this.b && $$1.i() < this.d;
+   public boolean a(duo $$0, azl $$1) {
+      return $$0 == this.b;
    }
 
    @Override
-   protected eol<?> a() {
-      return eol.f;
+   protected eoz<?> a() {
+      return eoz.c;
    }
 }

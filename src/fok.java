@@ -1,107 +1,88 @@
-import com.mojang.text2speech.Narrator;
-import javax.annotation.Nullable;
+import com.google.common.collect.Maps;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.function.Consumer;
 
-public class fok extends fpt {
-   private static final xd a = xd.c("accessibility.onboarding.screen.title");
-   private static final xd b = xd.c("accessibility.onboarding.screen.narrator");
-   private static final int c = 4;
-   private static final int d = 16;
-   private final fkr s;
-   private final fif u;
-   private final boolean v;
-   private boolean w;
-   private float x;
-   private final Runnable y;
-   @Nullable
-   private fkl z;
-   private final fno A = new fno(this, this.m(), 33);
+public class fok {
+   int a;
+   final Map<fok.a, fok.b> b = Maps.newTreeMap(Comparator.<fok.a, fog>comparing($$0 -> $$0.a).thenComparing($$0 -> $$0.b));
 
-   public fok(fif $$0, Runnable $$1) {
-      super(a);
-      this.u = $$0;
-      this.y = $$1;
-      this.s = new fkr(true);
-      this.v = fib.Q().aY().a();
+   public void a(Consumer<foh> $$0) {
+      this.a++;
+      $$0.accept(new fok.c(0));
    }
 
-   @Override
-   public void aT_() {
-      fns $$0 = this.A.c(fns.d());
-      $$0.c().b().a(4);
-      this.z = $$0.a(new fkl(this.n, this.l, this.p), $$0x -> $$0x.a(8));
-      if (this.u.au().a(this.u) instanceof fkh $$1) {
-         this.q = $$1;
-         this.q.j = this.v;
-         $$0.a(this.q);
-      }
+   public String a(boolean $$0) {
+      final StringBuilder $$1 = new StringBuilder();
+      Consumer<String> $$2 = new Consumer<String>() {
+         private boolean b = true;
 
-      $$0.a(fke.b(150, $$0x -> this.a(new fsp(this, this.m.n)), false));
-      $$0.a(fke.a(150, $$0x -> this.a(new fss(this, this.m.n, this.m.ag())), false));
-      this.A.b(fka.a(xc.j, $$0x -> this.d()).a());
-      this.A.a(this::c);
-      this.c();
-   }
+         public void a(String $$0) {
+            if (!this.b) {
+               $$1.append(". ");
+            }
 
-   @Override
-   protected void c() {
-      if (this.z != null) {
-         this.z.b(this.n);
-      }
-
-      this.A.a();
-   }
-
-   @Override
-   protected void aI_() {
-      if (this.v && this.q != null) {
-         this.b(this.q);
-      } else {
-         super.aI_();
-      }
-   }
-
-   private int m() {
-      return 90;
-   }
-
-   @Override
-   public void d() {
-      this.a(true, this.y);
-   }
-
-   private void a(fpt $$0) {
-      this.a(false, () -> this.m.a($$0));
-   }
-
-   private void a(boolean $$0, Runnable $$1) {
-      if ($$0) {
-         this.u.aw();
-      }
-
-      Narrator.getNarrator().clear();
-      $$1.run();
-   }
-
-   @Override
-   public void a(fjn $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.D();
-      this.s.a($$0, this.n, 1.0F);
-   }
-
-   @Override
-   protected void a(fjn $$0, float $$1) {
-      f.a($$0, this.n, this.o, 1.0F, 0.0F);
-   }
-
-   private void D() {
-      if (!this.w && this.v) {
-         if (this.x < 40.0F) {
-            this.x++;
-         } else if (this.m.aB()) {
-            Narrator.getNarrator().say(b.getString(), true);
-            this.w = true;
+            this.b = false;
+            $$1.append($$0);
          }
+      };
+      this.b.forEach(($$2x, $$3) -> {
+         if ($$3.b == this.a && ($$0 || !$$3.c)) {
+            $$3.a.a($$2);
+            $$3.c = true;
+         }
+      });
+      return $$1.toString();
+   }
+
+   static class a {
+      final fog a;
+      final int b;
+
+      a(fog $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+   }
+
+   static class b {
+      foj<?> a;
+      int b;
+      boolean c;
+
+      b() {
+         this.a = foj.a;
+         this.b = -1;
+      }
+
+      public fok.b a(int $$0, foj<?> $$1) {
+         if (!this.a.equals($$1)) {
+            this.a = $$1;
+            this.c = false;
+         } else if (this.b + 1 != $$0) {
+            this.c = false;
+         }
+
+         this.b = $$0;
+         return this;
+      }
+   }
+
+   class c implements foh {
+      private final int b;
+
+      c(final int $$0) {
+         this.b = $$0;
+      }
+
+      @Override
+      public void a(fog $$0, foj<?> $$1) {
+         fok.this.b.computeIfAbsent(new fok.a($$0, this.b), $$0x -> new fok.b()).a(fok.this.a, $$1);
+      }
+
+      @Override
+      public foh a() {
+         return fok.this.new c(this.b + 1);
       }
    }
 }

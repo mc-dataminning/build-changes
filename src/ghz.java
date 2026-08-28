@@ -1,55 +1,82 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record ghz(@Nullable jj b, int c, String d, gib e) {
-   public static final int a = -1;
+public record ghz(alc b, alc c, List<ghz.a> d, List<ghz.b> e, ghw f) {
+   public static final Codec<ghz> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               alc.a.fieldOf("vertex").forGetter(ghz::a),
+               alc.a.fieldOf("fragment").forGetter(ghz::b),
+               ghz.a.a.listOf().optionalFieldOf("samplers", List.of()).forGetter(ghz::c),
+               ghz.b.a.listOf().optionalFieldOf("uniforms", List.of()).forGetter(ghz::d),
+               ghw.b.optionalFieldOf("defines", ghw.a).forGetter(ghz::e)
+            )
+            .apply($$0, ghz::new)
+   );
 
-   @Nullable
-   public jj a() {
+   public alc a() {
       return this.b;
    }
 
-   public int b() {
+   public alc b() {
       return this.c;
    }
 
-   public String c() {
+   public List<ghz.a> c() {
       return this.d;
    }
 
-   public gib d() {
+   public List<ghz.b> d() {
       return this.e;
    }
 
-   protected static class a implements JsonDeserializer<ghz> {
-      private static final int a = -1;
+   public ghw e() {
+      return this.f;
+   }
 
-      public ghz a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         jj $$4 = this.c($$3);
-         int $$5 = this.a($$3);
-         String $$6 = this.b($$3);
-         gib $$7 = (gib)$$2.deserialize($$3, gib.class);
-         return new ghz($$4, $$5, $$6, $$7);
+   public static record a(String b) {
+      public static final Codec<ghz.a> a = RecordCodecBuilder.create($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(ghz.a::a)).apply($$0, ghz.a::new));
+
+      public String a() {
+         return this.b;
+      }
+   }
+
+   public static record b(String b, String c, int d, List<Float> e) {
+      public static final Codec<ghz.b> a = RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     Codec.STRING.fieldOf("name").forGetter(ghz.b::a),
+                     Codec.STRING.fieldOf("type").forGetter(ghz.b::b),
+                     Codec.INT.fieldOf("count").forGetter(ghz.b::c),
+                     Codec.FLOAT.listOf().fieldOf("values").forGetter(ghz.b::d)
+                  )
+                  .apply($$0, ghz.b::new)
+         )
+         .validate(ghz.b::a);
+
+      private static DataResult<ghz.b> a(ghz.b $$0) {
+         int $$1 = $$0.d;
+         int $$2 = $$0.e.size();
+         return $$2 != $$1 && $$2 > 1
+            ? DataResult.error(() -> "Invalid amount of uniform values specified (expected " + $$1 + ", found " + $$2 + ")")
+            : DataResult.success($$0);
       }
 
-      protected int a(JsonObject $$0) {
-         return ays.a($$0, "tintindex", -1);
+      public String a() {
+         return this.b;
       }
 
-      private String b(JsonObject $$0) {
-         return ays.i($$0, "texture");
+      public String b() {
+         return this.c;
       }
 
-      @Nullable
-      private jj c(JsonObject $$0) {
-         String $$1 = ays.a($$0, "cullface", "");
-         return jj.a($$1);
+      public int c() {
+         return this.d;
+      }
+
+      public List<Float> d() {
+         return this.e;
       }
    }
 }

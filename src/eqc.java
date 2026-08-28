@@ -1,24 +1,49 @@
-import com.google.common.collect.UnmodifiableIterator;
+import javax.annotation.Nullable;
 
-public class eqc {
-   public static final eqa a = a("empty", new epy());
-   public static final epz b = a("flowing_water", new eqh.a());
-   public static final epz c = a("water", new eqh.b());
-   public static final epz d = a("flowing_lava", new eqe.a());
-   public static final epz e = a("lava", new eqe.b());
+public interface eqc extends eqh {
+   @Nullable
+   dwp a(kg var1);
 
-   private static <T extends eqa> T a(String $$0, T $$1) {
-      return ka.a(lu.c, $$0, $$1);
-   }
+   int b(je var1);
 
-   static {
-      for (eqa $$0 : lu.c) {
-         UnmodifiableIterator var2 = $$0.f().a().iterator();
+   public static enum a implements eqc {
+      a;
 
-         while (var2.hasNext()) {
-            eqb $$1 = (eqb)var2.next();
-            eqa.c.b($$1);
-         }
+      @Nullable
+      @Override
+      public dwp a(kg $$0) {
+         return null;
+      }
+
+      @Override
+      public int b(je $$0) {
+         return 0;
+      }
+
+      @Override
+      public void a(je $$0) {
+      }
+
+      @Override
+      public boolean I_() {
+         return false;
+      }
+
+      @Override
+      public int a() {
+         return 0;
+      }
+
+      @Override
+      public void a(kg $$0, boolean $$1) {
+      }
+
+      @Override
+      public void a(ddm $$0, boolean $$1) {
+      }
+
+      @Override
+      public void b(ddm $$0) {
       }
    }
 }

@@ -1,111 +1,151 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dnz extends dgv implements dnx {
+public class dnz extends dhj implements dol {
    public static final MapCodec<dnz> a = b(dnz::new);
-   public static final duy<dvi> b = duq.bh;
-   public static final dur c = duq.C;
-   protected static final eyx d = dgv.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   protected static final eyx e = dgv.a(0.0, 8.0, 0.0, 16.0, 16.0, 16.0);
+   private static final int f = 1;
+   private static final ezm g;
+   private static final ezm h;
+   private static final ezm i = dhj.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0);
+   private static final ezm j = ezj.b().a(0.0, -1.0, 0.0);
+   public static final int b = 7;
+   public static final dvo c = dve.aW;
+   public static final dvf d = dve.C;
+   public static final dvf e = dve.b;
 
    @Override
-   public MapCodec<? extends dnz> a() {
+   public MapCodec<dnz> a() {
       return a;
    }
 
-   public dnz(dtz.d $$0) {
+   protected dnz(dun.d $$0) {
       super($$0);
-      this.l(this.o().b(b, dvi.b).b(c, Boolean.valueOf(false)));
+      this.l(this.F.b().b(c, Integer.valueOf(7)).b(d, Boolean.valueOf(false)).b(e, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean g_(dua $$0) {
-      return $$0.c(b) != dvi.c;
+   protected void a(dup.a<dhj, duo> $$0) {
+      $$0.a(c, d, e);
    }
 
    @Override
-   protected void a(dub.a<dgv, dua> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
-      dvi $$4 = $$0.c(b);
-      switch ($$4) {
-         case c:
-            return eyu.b();
-         case a:
-            return e;
-         default:
-            return d;
+   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
+      if (!$$3.a($$0.b().q())) {
+         return $$0.c(e) ? h : g;
+      } else {
+         return ezj.b();
       }
    }
 
-   @Nullable
    @Override
-   public dua a(cyw $$0) {
+   protected ezm a(duo $$0, ddl $$1, je $$2) {
+      return ezj.b();
+   }
+
+   @Override
+   protected boolean a(duo $$0, czk $$1) {
+      return $$1.n().a(this.q());
+   }
+
+   @Override
+   public duo a(czk $$0) {
       je $$1 = $$0.a();
-      dua $$2 = $$0.q().a_($$1);
-      if ($$2.a(this)) {
-         return $$2.b(b, dvi.c).b(c, Boolean.valueOf(false));
+      deg $$2 = $$0.q();
+      int $$3 = a($$2, $$1);
+      return this.o().b(d, Boolean.valueOf($$2.b_($$1).a() == eqq.c)).b(c, Integer.valueOf($$3)).b(e, Boolean.valueOf(this.a($$2, $$1, $$3)));
+   }
+
+   @Override
+   protected void b(duo $$0, deg $$1, je $$2, duo $$3, boolean $$4) {
+      if (!$$1.B) {
+         $$1.a($$2, this, 1);
+      }
+   }
+
+   @Override
+   protected duo a(duo $$0, jj $$1, duo $$2, deh $$3, je $$4, je $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, eqq.c, eqq.c.a($$3));
+      }
+
+      if (!$$3.w_()) {
+         $$3.a($$4, this, 1);
+      }
+
+      return $$0;
+   }
+
+   @Override
+   protected void a(duo $$0, arh $$1, je $$2, azl $$3) {
+      int $$4 = a($$1, $$2);
+      duo $$5 = $$0.b(c, Integer.valueOf($$4)).b(e, Boolean.valueOf(this.a($$1, $$2, $$4)));
+      if ($$5.c(c) == 7) {
+         if ($$0.c(c) == 7) {
+            ckd.a($$1, $$2, $$5);
+         } else {
+            $$1.b($$2, true);
+         }
+      } else if ($$0 != $$5) {
+         $$1.a($$2, $$5, 3);
+      }
+   }
+
+   @Override
+   protected boolean a(duo $$0, dej $$1, je $$2) {
+      return a($$1, $$2) < 7;
+   }
+
+   @Override
+   protected ezm b(duo $$0, ddl $$1, je $$2, eyx $$3) {
+      if ($$3.a(ezj.b(), $$2, true) && !$$3.b()) {
+         return g;
       } else {
-         eqb $$3 = $$0.q().b_($$1);
-         dua $$4 = this.o().b(b, dvi.b).b(c, Boolean.valueOf($$3.a() == eqc.c));
-         jj $$5 = $$0.k();
-         return $$5 != jj.a && ($$5 == jj.b || !($$0.l().e - (double)$$1.v() > 0.5)) ? $$4 : $$4.b(b, dvi.a);
+         return $$0.c(c) != 0 && $$0.c(e) && $$3.a(j, $$2, true) ? i : ezj.a();
       }
    }
 
    @Override
-   protected boolean a(dua $$0, cyw $$1) {
-      cvl $$2 = $$1.n();
-      dvi $$3 = $$0.c(b);
-      if ($$3 == dvi.c || !$$2.a(this.r())) {
-         return false;
-      } else if ($$1.c()) {
-         boolean $$4 = $$1.l().e - (double)$$1.a().v() > 0.5;
-         jj $$5 = $$1.k();
-         return $$3 == dvi.b ? $$5 == jj.b || $$4 && $$5.o().d() : $$5 == jj.a || !$$4 && $$5.o().d();
-      } else {
-         return true;
-      }
+   protected eqp b_(duo $$0) {
+      return $$0.c(d) ? eqq.c.a(false) : super.b_($$0);
    }
 
-   @Override
-   protected eqb b_(dua $$0) {
-      return $$0.c(c) ? eqc.c.a(false) : super.b_($$0);
+   private boolean a(ddl $$0, je $$1, int $$2) {
+      return $$2 > 0 && !$$0.a_($$1.e()).a(this);
    }
 
-   @Override
-   public boolean a(ddt $$0, je $$1, dua $$2, eqb $$3) {
-      return $$2.c(b) != dvi.c ? dnx.super.a($$0, $$1, $$2, $$3) : false;
-   }
-
-   @Override
-   public boolean a(@Nullable cnp $$0, dcx $$1, je $$2, dua $$3, eqa $$4) {
-      return $$3.c(b) != dvi.c ? dnx.super.a($$0, $$1, $$2, $$3, $$4) : false;
-   }
-
-   @Override
-   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, eqc.c, eqc.c.a($$3));
+   public static int a(ddl $$0, je $$1) {
+      je.a $$2 = $$1.k().c(jj.a);
+      duo $$3 = $$0.a_($$2);
+      int $$4 = 7;
+      if ($$3.a(dhl.nS)) {
+         $$4 = $$3.c(c);
+      } else if ($$3.c($$0, $$2, jj.b)) {
+         return 0;
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      for (jj $$5 : jj.c.a) {
+         duo $$6 = $$0.a_($$2.a($$1, $$5));
+         if ($$6.a(dhl.nS)) {
+            $$4 = Math.min($$4, $$6.c(c) + 1);
+            if ($$4 == 1) {
+               break;
+            }
+         }
+      }
+
+      return $$4;
    }
 
-   @Override
-   protected boolean a(dua $$0, eqq $$1) {
-      switch ($$1) {
-         case a:
-            return false;
-         case b:
-            return $$0.y().a(awy.a);
-         case c:
-            return false;
-         default:
-            return false;
-      }
+   static {
+      ezm $$0 = dhj.a(0.0, 14.0, 0.0, 16.0, 16.0, 16.0);
+      ezm $$1 = dhj.a(0.0, 0.0, 0.0, 2.0, 16.0, 2.0);
+      ezm $$2 = dhj.a(14.0, 0.0, 0.0, 16.0, 16.0, 2.0);
+      ezm $$3 = dhj.a(0.0, 0.0, 14.0, 2.0, 16.0, 16.0);
+      ezm $$4 = dhj.a(14.0, 0.0, 14.0, 16.0, 16.0, 16.0);
+      g = ezj.a($$0, $$1, $$2, $$3, $$4);
+      ezm $$5 = dhj.a(0.0, 0.0, 0.0, 2.0, 2.0, 16.0);
+      ezm $$6 = dhj.a(14.0, 0.0, 0.0, 16.0, 2.0, 16.0);
+      ezm $$7 = dhj.a(0.0, 0.0, 14.0, 16.0, 2.0, 16.0);
+      ezm $$8 = dhj.a(0.0, 0.0, 0.0, 16.0, 2.0, 2.0);
+      h = ezj.a(dnz.i, g, $$6, $$5, $$8, $$7);
    }
 }

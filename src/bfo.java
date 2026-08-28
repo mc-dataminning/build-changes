@@ -1,28 +1,35 @@
 import com.mojang.datafixers.DSL;
-import com.mojang.datafixers.DataFix;
-import com.mojang.datafixers.DataFixUtils;
 import com.mojang.datafixers.OpticFinder;
 import com.mojang.datafixers.TypeRewriteRule;
 import com.mojang.datafixers.schemas.Schema;
-import com.mojang.datafixers.types.Type;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 
-public class bfo extends DataFix {
-   public bfo(Schema $$0, boolean $$1) {
-      super($$0, $$1);
-   }
-
-   public Dynamic<?> a(Dynamic<?> $$0) {
-      return $$0.update(
-         "pages", $$1 -> (Dynamic)DataFixUtils.orElse($$1.asStreamOpt().map($$0xx -> $$0xx.map(bak::b)).map($$0::createList).result(), $$0.emptyList())
-      );
+public class bfo extends bat {
+   public bfo(Schema $$0) {
+      super($$0, bhm.t);
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bhk.t);
-      OpticFinder<?> $$1 = $$0.findField("tag");
-      return this.fixTypeEverywhereTyped(
-         "ItemWrittenBookPagesStrictJsonFix", $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), this::a))
-      );
+      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(bhm.D.typeName(), biz.a()));
+      return this.fixTypeEverywhereTyped("ItemStackUUIDFix", this.getInputSchema().getType(this.a), $$1 -> {
+         OpticFinder<?> $$2 = $$1.getType().findField("tag");
+         return $$1.updateTyped($$2, $$2x -> $$2x.update(DSL.remainderFinder(), $$2xx -> {
+               $$2xx = this.b($$2xx);
+               if ($$1.getOptional($$0).map($$0xxxx -> "minecraft:player_head".equals($$0xxxx.getSecond())).orElse(false)) {
+                  $$2xx = this.c($$2xx);
+               }
+
+               return $$2xx;
+            }));
+      });
+   }
+
+   private Dynamic<?> b(Dynamic<?> $$0) {
+      return $$0.update("AttributeModifiers", $$1 -> $$0.createList($$1.asStream().map($$0xx -> (Dynamic)c($$0xx, "UUID", "UUID").orElse($$0xx))));
+   }
+
+   private Dynamic<?> c(Dynamic<?> $$0) {
+      return $$0.update("SkullOwner", $$0x -> a($$0x, "Id", "Id").orElse($$0x));
    }
 }

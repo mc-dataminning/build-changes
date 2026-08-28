@@ -1,72 +1,41 @@
 import com.mojang.brigadier.CommandDispatcher;
-import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import java.util.Collection;
+import com.mojang.brigadier.context.CommandContext;
 
 public class anm {
-   public static final int a = 100;
-
-   public static void a(CommandDispatcher<et> $$0, ep $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("give").requires($$0x -> $$0x.c(2)))
-            .then(
-               eu.a("targets", fg.d())
-                  .then(
-                     ((RequiredArgumentBuilder)eu.a("item", hc.a($$1)).executes($$0x -> a((et)$$0x.getSource(), hc.a($$0x, "item"), fg.f($$0x, "targets"), 1)))
-                        .then(
-                           eu.a("count", IntegerArgumentType.integer(1))
-                              .executes(
-                                 $$0x -> a((et)$$0x.getSource(), hc.a($$0x, "item"), fg.f($$0x, "targets"), IntegerArgumentType.getInteger($$0x, "count"))
-                              )
-                        )
-                  )
-            )
-      );
-   }
-
-   private static int a(et $$0, hd $$1, Collection<arh> $$2, int $$3) throws CommandSyntaxException {
-      cvl $$4 = $$1.a(1, false);
-      int $$5 = $$4.k();
-      int $$6 = $$5 * 100;
-      if ($$3 > $$6) {
-         $$0.b(xd.a("commands.give.failed.toomanyitems", $$6, $$4.H()));
-         return 0;
-      } else {
-         for (arh $$7 : $$2) {
-            int $$8 = $$3;
-
-            while ($$8 > 0) {
-               int $$9 = Math.min($$5, $$8);
-               $$8 -= $$9;
-               cvl $$10 = $$1.a($$9, false);
-               boolean $$11 = $$7.gc().f($$10);
-               if ($$11 && $$10.f()) {
-                  cjz $$13 = $$7.a($$4, false);
-                  if ($$13 != null) {
-                     $$13.z();
+   public static void a(CommandDispatcher<et> $$0) {
+      final LiteralArgumentBuilder<et> $$1 = (LiteralArgumentBuilder<et>)eu.a("gamerule").requires($$0x -> $$0x.c(2));
+      new dec(cqp.f.a())
+         .a(
+            new dec.c() {
+               @Override
+               public <T extends dec.g<T>> void a(dec.e<T> $$0, dec.f<T> $$1x) {
+                  LiteralArgumentBuilder<et> $$2 = eu.a($$0.a());
+                  if (!$$1.b().b()) {
+                     $$2.requires($$1xxx -> $$1.b().a($$1xxx.w()));
                   }
 
-                  $$7.dS().a(null, $$7.dx(), $$7.dz(), $$7.dD(), awd.nD, awe.h, 0.2F, (($$7.dV().i() - $$7.dV().i()) * 0.7F + 1.0F) * 2.0F);
-                  $$7.ca.d();
-               } else {
-                  cjz $$12 = $$7.a($$10, false);
-                  if ($$12 != null) {
-                     $$12.t();
-                     $$12.b($$7.cD());
-                  }
+                  $$1.then(
+                     ((LiteralArgumentBuilder)$$2.executes($$1xxx -> anm.a((et)$$1xxx.getSource(), $$0)))
+                        .then($$1.a("value").executes($$1xxx -> anm.a($$1xxx, $$0)))
+                  );
                }
             }
-         }
+         );
+      $$0.register($$1);
+   }
 
-         if ($$2.size() == 1) {
-            $$0.a(() -> xd.a("commands.give.success.single", $$3, $$4.H(), $$2.iterator().next().Q_()), true);
-         } else {
-            $$0.a(() -> xd.a("commands.give.success.single", $$3, $$4.H(), $$2.size()), true);
-         }
+   static <T extends dec.g<T>> int a(CommandContext<et> $$0, dec.e<T> $$1) {
+      et $$2 = (et)$$0.getSource();
+      T $$3 = $$2.l().aL().a($$1);
+      $$3.b($$0, "value");
+      $$2.a(() -> xd.a("commands.gamerule.set", $$1.a(), $$3.toString()), true);
+      return $$3.c();
+   }
 
-         return $$2.size();
-      }
+   static <T extends dec.g<T>> int a(et $$0, dec.e<T> $$1) {
+      T $$2 = $$0.l().aL().a($$1);
+      $$0.a(() -> xd.a("commands.gamerule.query", $$1.a(), $$2.toString()), false);
+      return $$2.c();
    }
 }

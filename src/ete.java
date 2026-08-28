@@ -1,25 +1,38 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.function.Consumer;
+import java.util.function.UnaryOperator;
+import java.util.stream.Stream;
 
-public class ete extends etl {
-   public static final MapCodec<ete> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, ete::new));
+public interface ete<T> {
+   kq<T> a();
 
-   private ete(int $$0, int $$1, List<ewe> $$2, List<euh> $$3) {
-      super($$0, $$1, $$2, $$3);
+   T b();
+
+   T a(T var1, Stream<cvp> var2);
+
+   Stream<cvp> a(T var1);
+
+   default void a(cvp $$0, T $$1, Stream<cvp> $$2) {
+      T $$3 = $$0.a(this.a(), $$1);
+      T $$4 = this.a($$3, $$2);
+      $$0.b(this.a(), $$4);
    }
 
-   @Override
-   public etk a() {
-      return eth.b;
+   default void a(cvp $$0, Stream<cvp> $$1) {
+      this.a($$0, this.b(), $$1);
    }
 
-   @Override
-   public void a(Consumer<cvl> $$0, est $$1) {
-   }
-
-   public static etl.a<?> b() {
-      return a(ete::new);
+   default void a(cvp $$0, UnaryOperator<cvp> $$1) {
+      T $$2 = $$0.a(this.a());
+      if ($$2 != null) {
+         UnaryOperator<cvp> $$3 = $$1x -> {
+            if ($$1x.f()) {
+               return $$1x;
+            } else {
+               cvp $$2x = $$1.apply($$1x);
+               $$2x.f($$2x.k());
+               return $$2x;
+            }
+         };
+         this.a($$0, this.a($$2).map($$3));
+      }
    }
 }

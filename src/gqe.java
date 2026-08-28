@@ -1,19 +1,36 @@
-public class gqe extends grf<gsj, fwl> {
-   private static final alb a = alb.b("textures/entity/breeze/breeze_wind.png");
-   private final fwl b;
+public class gqe extends gop<cnh, gvu, fzv> {
+   private static final alc b = alc.b("textures/entity/villager/villager.png");
+   public static final grb.a a = new grb.a(-0.1171875F, -0.07421875F, 1.0F);
 
-   public gqe(gms.a $$0, goo<gsj, fwl> $$1) {
-      super($$1);
-      this.b = new fwl($$0.a(gaa.C));
+   public gqe(gnj.a $$0) {
+      super($$0, new fzv($$0.a(gak.cT)), 0.5F);
+      this.a(new grb<>(this, $$0.f(), a, $$0.b()));
+      this.a(new gsg<>(this, $$0.e(), "villager"));
+      this.a(new gra<>(this, $$0.b()));
    }
 
-   public void a(fcu $$0, ggv $$1, int $$2, gsj $$3, float $$4, float $$5) {
-      fcy $$6 = $$1.getBuffer(ghe.a(a, this.a($$3.p) % 1.0F, 0.0F));
-      this.b.a($$3);
-      gly.a(this.b, this.b.e()).a($$0, $$6, $$2, gwb.d);
+   protected void a(gvu $$0, fde $$1) {
+      super.a($$0, $$1);
+      float $$2 = $$0.ab;
+      $$1.b($$2, $$2, $$2);
    }
 
-   private float a(float $$0) {
-      return $$0 * 0.02F;
+   public alc a(gvu $$0) {
+      return b;
+   }
+
+   protected float b(gvu $$0) {
+      float $$1 = super.f($$0);
+      return $$0.ae ? $$1 * 0.5F : $$1;
+   }
+
+   public gvu c() {
+      return new gvu();
+   }
+
+   public void a(cnh $$0, gvu $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.a = $$0.q() > 0;
+      $$1.b = $$0.gz();
    }
 }

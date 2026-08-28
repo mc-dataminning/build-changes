@@ -5,11 +5,11 @@ public class afz implements zk<abz> {
    private static final int b = 1;
    private static final int c = 2;
    @Nullable
-   private final alb d;
+   private final alc d;
    @Nullable
-   private final awe e;
+   private final awf e;
 
-   public afz(@Nullable alb $$0, @Nullable awe $$1) {
+   public afz(@Nullable alc $$0, @Nullable awf $$1) {
       this.d = $$0;
       this.e = $$1;
    }
@@ -17,7 +17,7 @@ public class afz implements zk<abz> {
    private afz(wa $$0) {
       int $$1 = $$0.readByte();
       if (($$1 & 1) > 0) {
-         this.e = $$0.b(awe.class);
+         this.e = $$0.b(awf.class);
       } else {
          this.e = null;
       }
@@ -57,12 +57,12 @@ public class afz implements zk<abz> {
    }
 
    @Nullable
-   public alb b() {
+   public alc b() {
       return this.d;
    }
 
    @Nullable
-   public awe e() {
+   public awf e() {
       return this.e;
    }
 }

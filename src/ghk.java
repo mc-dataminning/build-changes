@@ -1,460 +1,300 @@
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Sets;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Reader;
-import java.util.Arrays;
+import com.google.common.collect.ImmutableList.Builder;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
-import org.apache.commons.io.IOUtils;
 import org.joml.Matrix4f;
-import org.slf4j.Logger;
 
-public class ghk implements fck, AutoCloseable {
-   public static final String a = "shaders";
-   private static final String q = "shaders/core/";
-   private static final String r = "shaders/include/";
-   static final Logger s = LogUtils.getLogger();
-   private static final fcd t = new fcd();
-   private static final boolean u = true;
-   private static ghk v;
-   private static int w = -1;
-   private final Map<String, Object> x = Maps.newHashMap();
-   private final List<String> y = Lists.newArrayList();
-   private final List<Integer> z = Lists.newArrayList();
-   private final List<fcl> A = Lists.newArrayList();
-   private final List<Integer> B = Lists.newArrayList();
-   private final Map<String, fcl> C = Maps.newHashMap();
-   private final int D;
-   private final String E;
-   private boolean F;
-   private final fci G;
-   private final fci H;
-   private final fcz I;
-   @Nullable
-   public final fcl b;
-   @Nullable
-   public final fcl c;
-   @Nullable
-   public final fcl d;
-   @Nullable
-   public final fcl e;
-   @Nullable
-   public final fcl f;
-   @Nullable
-   public final fcl g;
-   @Nullable
-   public final fcl h;
-   @Nullable
-   public final fcl i;
-   @Nullable
-   public final fcl j;
-   @Nullable
-   public final fcl k;
-   @Nullable
-   public final fcl l;
-   @Nullable
-   public final fcl m;
-   @Nullable
-   public final fcl n;
-   @Nullable
-   public final fcl o;
-   @Nullable
-   public final fcl p;
+public class ghk {
+   public static final alc a = alc.b("main");
+   private final List<ghm> b;
+   private final Map<alc, ghl.d> c;
+   private final Set<alc> d;
 
-   public ghk(auv $$0, String $$1, fcz $$2) throws IOException {
-      this.E = $$1;
-      this.I = $$2;
-      alb $$3 = alb.b("shaders/core/" + $$1 + ".json");
-
-      try (Reader $$4 = $$0.openAsReader($$3)) {
-         JsonObject $$5 = ays.a($$4);
-         String $$6 = ays.i($$5, "vertex");
-         String $$7 = ays.i($$5, "fragment");
-         JsonArray $$8 = ays.a($$5, "samplers", null);
-         if ($$8 != null) {
-            int $$9 = 0;
-
-            for (JsonElement $$10 : $$8) {
-               try {
-                  this.a($$10);
-               } catch (Exception var18) {
-                  ale $$12 = ale.a(var18);
-                  $$12.a("samplers[" + $$9 + "]");
-                  throw $$12;
-               }
-
-               $$9++;
-            }
-         }
-
-         JsonArray $$13 = ays.a($$5, "uniforms", null);
-         if ($$13 != null) {
-            int $$14 = 0;
-
-            for (JsonElement $$15 : $$13) {
-               try {
-                  this.b($$15);
-               } catch (Exception var17) {
-                  ale $$17 = ale.a(var17);
-                  $$17.a("uniforms[" + $$14 + "]");
-                  throw $$17;
-               }
-
-               $$14++;
-            }
-         }
-
-         this.G = a($$0, fci.a.a, $$6);
-         this.H = a($$0, fci.a.b, $$7);
-         this.D = fcj.a();
-         int $$18 = 0;
-
-         for (String $$19 : $$2.d()) {
-            fcl.a(this.D, $$18, $$19);
-            $$18++;
-         }
-
-         fcj.b(this);
-         this.j();
-      } catch (Exception var20) {
-         ale $$22 = ale.a(var20);
-         $$22.b($$3.a());
-         throw $$22;
-      }
-
-      this.b();
-      this.b = this.a("ModelViewMat");
-      this.c = this.a("ProjMat");
-      this.d = this.a("TextureMat");
-      this.e = this.a("ScreenSize");
-      this.f = this.a("ColorModulator");
-      this.g = this.a("Light0_Direction");
-      this.h = this.a("Light1_Direction");
-      this.i = this.a("GlintAlpha");
-      this.j = this.a("FogStart");
-      this.k = this.a("FogEnd");
-      this.l = this.a("FogColor");
-      this.m = this.a("FogShape");
-      this.n = this.a("LineWidth");
-      this.o = this.a("GameTime");
-      this.p = this.a("ModelOffset");
+   private ghk(List<ghm> $$0, Map<alc, ghl.d> $$1, Set<alc> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   private static fci a(final auv $$0, fci.a $$1, String $$2) throws IOException {
-      fci $$3 = $$1.c().get($$2);
-      fci $$8;
-      if ($$3 == null) {
-         String $$4 = "shaders/core/" + $$2 + $$1.b();
-         auq $$5 = $$0.getResourceOrThrow(alb.b($$4));
+   public static ghk a(ghl $$0, gxc $$1, ghx $$2, Set<alc> $$3) throws ghx.a {
+      Stream<alc> $$4 = $$0.b().stream().flatMap($$0x -> $$0x.b().stream()).flatMap($$0x -> $$0x.b().stream());
+      Set<alc> $$5 = $$4.filter($$1x -> !$$0.a().containsKey($$1x)).collect(Collectors.toSet());
+      Set<alc> $$6 = Sets.difference($$5, $$3);
+      if (!$$6.isEmpty()) {
+         throw new ghx.a("Referenced external targets are not available in this context: " + $$6);
+      } else {
+         Builder<ghm> $$7 = ImmutableList.builder();
 
-         try (InputStream $$6 = $$5.d()) {
-            final String $$7 = v.b($$4);
-            $$8 = fci.a($$1, $$2, $$6, $$5.b(), new fbv() {
-               private final Set<String> c = Sets.newHashSet();
+         for (ghl.e $$8 : $$0.b()) {
+            $$7.add(a($$1, $$2, $$8));
+         }
 
-               @Override
-               public String a(boolean $$0x, String $$1) {
-                  $$1 = v.c(($$0 ? $$7 : "shaders/include/") + $$1);
-                  if (!this.c.add($$1)) {
-                     return null;
-                  } else {
-                     alb $$2 = alb.a($$1);
+         return new ghk($$7.build(), $$0.a(), $$5);
+      }
+   }
+
+   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
+   private static ghm a(gxc $$0, ghx $$1, ghl.e $$2) throws ghx.a {
+      alc $$3 = $$2.a();
+      ggp $$4 = $$1.a(new ghy($$3, fdc.e, ghw.a));
+      if ($$4 == null) {
+         throw new ghx.a("Shader '" + $$3 + "' could not be loaded");
+      } else {
+         for (ghl.h $$5 : $$2.d()) {
+            String $$6 = $$5.a();
+            if ($$4.a($$6) == null) {
+               throw new ghx.a("Uniform '" + $$6 + "' does not exist for " + $$3);
+            }
+         }
+
+         String $$7 = $$3.toString();
+         ghm $$8 = new ghm($$7, $$4, $$2.c(), $$2.d());
+
+         for (ghl.c $$9 : $$2.b()) {
+            Objects.requireNonNull($$9);
+            Throwable var45;
+            switch ($$9) {
+               case ghl.g var11:
+                  ghl.g var53 = var11;
+
+                  try {
+                     var54 = var53.a();
+                  } catch (Throwable var31) {
+                     var45 = var31;
+                     boolean var66 = false;
+                     break;
+                  }
+
+                  String var36 = var54;
+                  ghl.g var55 = var11;
+
+                  try {
+                     var56 = var55.c();
+                  } catch (Throwable var30) {
+                     var45 = var30;
+                     boolean var67 = false;
+                     break;
+                  }
+
+                  alc var37 = var56;
+                  ghl.g var57 = var11;
+
+                  try {
+                     var58 = var57.d();
+                  } catch (Throwable var29) {
+                     var45 = var29;
+                     boolean var68 = false;
+                     break;
+                  }
+
+                  int var38 = var58;
+                  ghl.g var59 = var11;
+
+                  try {
+                     var60 = var59.e();
+                  } catch (Throwable var28) {
+                     var45 = var28;
+                     boolean var69 = false;
+                     break;
+                  }
+
+                  int var39 = var60;
+                  ghl.g var61 = var11;
+
+                  try {
+                     var62 = var61.f();
+                  } catch (Throwable var27) {
+                     var45 = var27;
+                     boolean var70 = false;
+                     break;
+                  }
+
+                  boolean var40 = var62;
+                  gwm $$15x = $$0.a(var37.a((UnaryOperator<String>)($$0x -> "textures/effect/" + $$0x + ".png")));
+                  $$15x.a(var40, false);
+                  $$8.a(new ghm.c(var36, $$15x, var38, var39));
+                  continue;
+               case ghl.f $$15:
+                  ghl.f var10000 = $$15;
+
+                  try {
+                     var46 = var10000.a();
+                  } catch (Throwable var26) {
+                     var45 = var26;
+                     boolean var10001 = false;
+                     break;
+                  }
+
+                  String var22 = var46;
+                  ghl.f var47 = $$15;
+
+                  try {
+                     var48 = var47.c();
+                  } catch (Throwable var25) {
+                     var45 = var25;
+                     boolean var63 = false;
+                     break;
+                  }
+
+                  alc var42 = var48;
+                  ghl.f var49 = $$15;
+
+                  try {
+                     var50 = var49.d();
+                  } catch (Throwable var24) {
+                     var45 = var24;
+                     boolean var64 = false;
+                     break;
+                  }
+
+                  boolean var43 = var50;
+                  ghl.f var51 = $$15;
+
+                  try {
+                     var52 = var51.e();
+                  } catch (Throwable var23) {
+                     var45 = var23;
+                     boolean var65 = false;
+                     break;
+                  }
+
+                  boolean var44 = var52;
+                  $$8.a(new ghm.b(var22, var42, var43, var44));
+                  continue;
+               default:
+                  throw new MatchException(null, null);
+            }
+
+            Throwable var35 = var45;
+            throw new MatchException(var35.toString(), var35);
+         }
+
+         return $$8;
+      }
+   }
+
+   // $VF: Inserted dummy exception handlers to handle obfuscated exceptions
+   public void a(fbi $$0, int $$1, int $$2, ghk.a $$3) {
+      Matrix4f $$4 = new Matrix4f().setOrtho(0.0F, (float)$$1, 0.0F, (float)$$2, 0.1F, 1000.0F);
+      Map<alc, fcq<fbo>> $$5 = new HashMap<>(this.c.size() + this.d.size());
+
+      for (alc $$6 : this.d) {
+         $$5.put($$6, $$3.b($$6));
+      }
+
+      for (Entry<alc, ghl.d> $$7 : this.c.entrySet()) {
+         alc $$8 = $$7.getKey();
+         ghl.d var35;
+         Objects.requireNonNull(var35);
+         Object var11 = var35;
+
+         var35 = $$7.getValue();
+         fco $$11 = switch (var11) {
+            case ghl.a var13 -> {
+               ghl.a var29 = var13;
+
+               int var26;
+               label56: {
+                  label76: {
+                     try {
+                        var31 = var29.a();
+                     } catch (Throwable var18) {
+                        var30 = var18;
+                        boolean var10001 = false;
+                        break label76;
+                     }
+
+                     var26 = var31;
+                     ghl.a var32 = var13;
 
                      try {
-                        String var5;
-                        try (Reader $$3 = $$0.openAsReader($$2)) {
-                           var5 = IOUtils.toString($$3);
-                        }
-
-                        return var5;
-                     } catch (IOException var9) {
-                        ghk.s.error("Could not open GLSL import {}: {}", $$1, var9.getMessage());
-                        return "#error " + var9.getMessage();
+                        var33 = var32.b();
+                        break label56;
+                     } catch (Throwable var17) {
+                        var30 = var17;
+                        boolean var34 = false;
                      }
                   }
+
+                  Throwable var20 = var30;
+                  throw new MatchException(var20.toString(), var20);
                }
-            });
-         }
-      } else {
-         $$8 = $$3;
+
+               int var27 = var33;
+               yield new fco(var26, var27, true);
+            }
+            case ghl.b var16 -> new fco($$1, $$2, true);
+            default -> throw new MatchException(null, null);
+         };
+         $$5.put($$8, $$0.a($$8.toString(), $$11));
       }
 
-      return $$8;
+      for (ghm $$12 : this.b) {
+         $$12.a($$0, $$5, $$4);
+      }
+
+      for (alc $$13 : this.d) {
+         $$3.a($$13, $$5.get($$13));
+      }
    }
 
-   @Override
-   public void close() {
-      for (fcl $$0 : this.A) {
-         $$0.close();
-      }
-
-      fcj.a(this);
+   @Deprecated
+   public void a(fbo $$0, fcn $$1) {
+      fbi $$2 = new fbi();
+      ghk.a $$3 = ghk.a.b(a, $$2.a("main", $$0));
+      this.a($$2, $$0.c, $$0.d, $$3);
+      $$2.a($$1);
    }
 
-   public void f() {
-      RenderSystem.assertOnRenderThread();
-      fcj.a(0);
-      w = -1;
-      v = null;
-      int $$0 = GlStateManager._getActiveTexture();
-
-      for (int $$1 = 0; $$1 < this.z.size(); $$1++) {
-         if (this.x.get(this.y.get($$1)) != null) {
-            GlStateManager._activeTexture(33984 + $$1);
-            GlStateManager._bindTexture(0);
-         }
+   public void a(String $$0, float $$1) {
+      for (ghm $$2 : this.b) {
+         $$2.a().b($$0).a($$1);
       }
-
-      GlStateManager._activeTexture($$0);
    }
 
-   public void g() {
-      RenderSystem.assertOnRenderThread();
-      this.F = false;
-      v = this;
-      if (this.D != w) {
-         fcj.a(this.D);
-         w = this.D;
-      }
+   public interface a {
+      static ghk.a b(final alc $$0, final fcq<fbo> $$1) {
+         return new ghk.a() {
+            private fcq<fbo> c = $$1;
 
-      int $$0 = GlStateManager._getActiveTexture();
-
-      for (int $$1 = 0; $$1 < this.z.size(); $$1++) {
-         String $$2 = this.y.get($$1);
-         if (this.x.get($$2) != null) {
-            int $$3 = fcl.a(this.D, $$2);
-            fcl.b($$3, $$1);
-            RenderSystem.activeTexture(33984 + $$1);
-            Object $$4 = this.x.get($$2);
-            int $$5 = -1;
-            if ($$4 instanceof faz) {
-               $$5 = ((faz)$$4).g();
-            } else if ($$4 instanceof gvv) {
-               $$5 = ((gvv)$$4).a();
-            } else if ($$4 instanceof Integer) {
-               $$5 = (Integer)$$4;
+            @Override
+            public void a(alc $$0x, fcq<fbo> $$1x) {
+               if ($$0.equals($$0)) {
+                  this.c = $$1;
+               } else {
+                  throw new IllegalArgumentException("No target with id " + $$0);
+               }
             }
 
-            if ($$5 != -1) {
-               RenderSystem.bindTexture($$5);
+            @Nullable
+            @Override
+            public fcq<fbo> a(alc $$0x) {
+               return $$0.equals($$0) ? this.c : null;
             }
-         }
+         };
       }
 
-      GlStateManager._activeTexture($$0);
+      void a(alc var1, fcq<fbo> var2);
 
-      for (fcl $$6 : this.A) {
-         $$6.b();
-      }
-   }
+      @Nullable
+      fcq<fbo> a(alc var1);
 
-   @Override
-   public void b() {
-      this.F = true;
-   }
-
-   @Nullable
-   public fcl a(String $$0) {
-      RenderSystem.assertOnRenderThread();
-      return this.C.get($$0);
-   }
-
-   public fcd b(String $$0) {
-      fcl $$1 = this.a($$0);
-      return (fcd)($$1 == null ? t : $$1);
-   }
-
-   private void j() {
-      RenderSystem.assertOnRenderThread();
-      IntList $$0 = new IntArrayList();
-
-      for (int $$1 = 0; $$1 < this.y.size(); $$1++) {
-         String $$2 = this.y.get($$1);
-         int $$3 = fcl.a(this.D, $$2);
-         if ($$3 == -1) {
-            s.warn("Shader {} could not find sampler named {} in the specified shader program.", this.E, $$2);
-            this.x.remove($$2);
-            $$0.add($$1);
+      default fcq<fbo> b(alc $$0) {
+         fcq<fbo> $$1 = this.a($$0);
+         if ($$1 == null) {
+            throw new IllegalArgumentException("Missing target with id " + $$0);
          } else {
-            this.z.add($$3);
+            return $$1;
          }
       }
-
-      for (int $$4 = $$0.size() - 1; $$4 >= 0; $$4--) {
-         int $$5 = $$0.getInt($$4);
-         this.y.remove($$5);
-      }
-
-      for (fcl $$6 : this.A) {
-         String $$7 = $$6.a();
-         int $$8 = fcl.a(this.D, $$7);
-         if ($$8 == -1) {
-            s.warn("Shader {} could not find uniform named {} in the specified shader program.", this.E, $$7);
-         } else {
-            this.B.add($$8);
-            $$6.b($$8);
-            this.C.put($$7, $$6);
-         }
-      }
-   }
-
-   private void a(JsonElement $$0) {
-      JsonObject $$1 = ays.m($$0, "sampler");
-      String $$2 = ays.i($$1, "name");
-      if (!ays.a($$1, "file")) {
-         this.x.put($$2, null);
-         this.y.add($$2);
-      } else {
-         this.y.add($$2);
-      }
-   }
-
-   public void a(String $$0, Object $$1) {
-      this.x.put($$0, $$1);
-      this.b();
-   }
-
-   private void b(JsonElement $$0) throws ale {
-      JsonObject $$1 = ays.m($$0, "uniform");
-      String $$2 = ays.i($$1, "name");
-      int $$3 = fcl.a(ays.i($$1, "type"));
-      int $$4 = ays.o($$1, "count");
-      float[] $$5 = new float[Math.max($$4, 16)];
-      JsonArray $$6 = ays.v($$1, "values");
-      if ($$6.size() != $$4 && $$6.size() > 1) {
-         throw new ale("Invalid amount of values specified (expected " + $$4 + ", found " + $$6.size() + ")");
-      } else {
-         int $$7 = 0;
-
-         for (JsonElement $$8 : $$6) {
-            try {
-               $$5[$$7] = ays.e($$8, "value");
-            } catch (Exception var13) {
-               ale $$10 = ale.a(var13);
-               $$10.a("values[" + $$7 + "]");
-               throw $$10;
-            }
-
-            $$7++;
-         }
-
-         if ($$4 > 1 && $$6.size() == 1) {
-            while ($$7 < $$4) {
-               $$5[$$7] = $$5[0];
-               $$7++;
-            }
-         }
-
-         int $$11 = $$4 > 1 && $$4 <= 4 && $$3 < 8 ? $$4 - 1 : 0;
-         fcl $$12 = new fcl($$2, $$3 + $$11, $$4, this);
-         if ($$3 <= 3) {
-            $$12.a((int)$$5[0], (int)$$5[1], (int)$$5[2], (int)$$5[3]);
-         } else if ($$3 <= 7) {
-            $$12.b($$5[0], $$5[1], $$5[2], $$5[3]);
-         } else {
-            $$12.a(Arrays.copyOfRange($$5, 0, $$4));
-         }
-
-         this.A.add($$12);
-      }
-   }
-
-   @Override
-   public fci c() {
-      return this.G;
-   }
-
-   @Override
-   public fci d() {
-      return this.H;
-   }
-
-   @Override
-   public void e() {
-      this.H.a(this);
-      this.G.a(this);
-   }
-
-   public fcz h() {
-      return this.I;
-   }
-
-   public String i() {
-      return this.E;
-   }
-
-   @Override
-   public int a() {
-      return this.D;
-   }
-
-   public void a(fcz.c $$0, Matrix4f $$1, Matrix4f $$2, fbs $$3) {
-      for (int $$4 = 0; $$4 < 12; $$4++) {
-         int $$5 = RenderSystem.getShaderTexture($$4);
-         this.a("Sampler" + $$4, $$5);
-      }
-
-      if (this.b != null) {
-         this.b.a($$1);
-      }
-
-      if (this.c != null) {
-         this.c.a($$2);
-      }
-
-      if (this.f != null) {
-         this.f.a(RenderSystem.getShaderColor());
-      }
-
-      if (this.i != null) {
-         this.i.a(RenderSystem.getShaderGlintAlpha());
-      }
-
-      ggj $$6 = RenderSystem.getShaderFog();
-      if (this.j != null) {
-         this.j.a($$6.a());
-      }
-
-      if (this.k != null) {
-         this.k.a($$6.b());
-      }
-
-      if (this.l != null) {
-         this.l.a($$6.d(), $$6.e(), $$6.f(), $$6.g());
-      }
-
-      if (this.m != null) {
-         this.m.a($$6.c().a());
-      }
-
-      if (this.d != null) {
-         this.d.a(RenderSystem.getTextureMatrix());
-      }
-
-      if (this.o != null) {
-         this.o.a(RenderSystem.getShaderGameTime());
-      }
-
-      if (this.e != null) {
-         this.e.a((float)$$3.l(), (float)$$3.m());
-      }
-
-      if (this.n != null && ($$0 == fcz.c.a || $$0 == fcz.c.b)) {
-         this.n.a(RenderSystem.getShaderLineWidth());
-      }
-
-      RenderSystem.setupShaderLights(this);
    }
 }

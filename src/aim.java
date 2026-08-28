@@ -1,13 +1,13 @@
 public class aim implements zk<agq> {
    public static final zb<wa, aim> a = zk.a(aim::a, aim::new);
-   private final brj b;
+   private final bro b;
 
-   public aim(brj $$0) {
+   public aim(bro $$0) {
       this.b = $$0;
    }
 
    private aim(wa $$0) {
-      this.b = $$0.b(brj.class);
+      this.b = $$0.b(bro.class);
    }
 
    private void a(wa $$0) {
@@ -23,7 +23,7 @@ public class aim implements zk<agq> {
       $$0.a(this);
    }
 
-   public brj b() {
+   public bro b() {
       return this.b;
    }
 }

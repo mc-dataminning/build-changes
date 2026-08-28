@@ -1,16 +1,48 @@
+import java.util.EnumSet;
 import javax.annotation.Nullable;
 
-public class cco extends ccp {
-   public cco(bun $$0, double $$1) {
-      super($$0, $$1);
+public class cco extends cbh {
+   private final ckm a;
+   @Nullable
+   private buk b;
+
+   public cco(ckm $$0) {
+      this.a = $$0;
+      this.a(EnumSet.of(cbh.a.a));
    }
 
-   @Nullable
    @Override
-   protected eye h() {
-      eye $$0 = this.b.g(0.0F);
-      int $$1 = 8;
-      eye $$2 = cfb.a(this.b, 8, 7, $$0.d, $$0.f, (float) (Math.PI / 2), 3, 1);
-      return $$2 != null ? $$2 : cex.a(this.b, 8, 4, -2, $$0.d, $$0.f, (float) (Math.PI / 2));
+   public boolean b() {
+      buk $$0 = this.a.m();
+      return this.a.y() > 0 || $$0 != null && this.a.g((bto)$$0) < 9.0;
+   }
+
+   @Override
+   public void d() {
+      this.a.P().o();
+      this.b = this.a.m();
+   }
+
+   @Override
+   public void e() {
+      this.b = null;
+   }
+
+   @Override
+   public boolean T_() {
+      return true;
+   }
+
+   @Override
+   public void a() {
+      if (this.b == null) {
+         this.a.b(-1);
+      } else if (this.a.g((bto)this.b) > 49.0) {
+         this.a.b(-1);
+      } else if (!this.a.Q().a(this.b)) {
+         this.a.b(-1);
+      } else {
+         this.a.b(1);
+      }
    }
 }

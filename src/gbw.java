@@ -1,85 +1,166 @@
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.exceptions.MinecraftClientHttpException;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
-import com.mojang.datafixers.util.Unit;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+import com.google.common.collect.Lists;
+import com.mojang.logging.LogUtils;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface gbw {
-   static gbw a(gcc $$0, UserApiService $$1) {
-      return new gbw.b($$0, $$1);
+public class gbw {
+   private static final Logger a = LogUtils.getLogger();
+   private static final bqi<Runnable> b = bqi.a(ad.g(), "server-list-io");
+   private static final int c = 16;
+   private final fil d;
+   private final List<gbv> e = Lists.newArrayList();
+   private final List<gbv> f = Lists.newArrayList();
+
+   public gbw(fil $$0) {
+      this.d = $$0;
    }
 
-   CompletableFuture<Unit> a(UUID var1, gce var2, AbuseReport var3);
+   public void a() {
+      try {
+         this.e.clear();
+         this.f.clear();
+         uf $$0 = us.a(this.d.q.toPath().resolve("servers.dat"));
+         if ($$0 == null) {
+            return;
+         }
 
-   boolean a();
+         ul $$1 = $$0.c("servers", 10);
 
-   default AbuseReportLimits b() {
-      return AbuseReportLimits.DEFAULTS;
-   }
-
-   public static class a extends yd {
-      public a(xd $$0, Throwable $$1) {
-         super($$0, $$1);
-      }
-   }
-
-   public static record b(gcc a, UserApiService b) implements gbw {
-      private static final xd c = xd.c("gui.abuseReport.send.service_unavailable");
-      private static final xd d = xd.c("gui.abuseReport.send.http_error");
-      private static final xd e = xd.c("gui.abuseReport.send.json_error");
-
-      @Override
-      public CompletableFuture<Unit> a(UUID $$0, gce $$1, AbuseReport $$2) {
-         return CompletableFuture.supplyAsync(() -> {
-            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
-
-            try {
-               this.b.reportAbuse($$3);
-               return Unit.INSTANCE;
-            } catch (MinecraftClientHttpException var7) {
-               xd $$5 = this.a(var7);
-               throw new CompletionException(new gbw.a($$5, var7));
-            } catch (MinecraftClientException var8) {
-               xd $$7 = this.a(var8);
-               throw new CompletionException(new gbw.a($$7, var8));
+         for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+            uf $$3 = $$1.a($$2);
+            gbv $$4 = gbv.a($$3);
+            if ($$3.q("hidden")) {
+               this.f.add($$4);
+            } else {
+               this.e.add($$4);
             }
-         }, ad.h());
+         }
+      } catch (Exception var6) {
+         a.error("Couldn't load server list", var6);
+      }
+   }
+
+   public void b() {
+      try {
+         ul $$0 = new ul();
+
+         for (gbv $$1 : this.e) {
+            uf $$2 = $$1.a();
+            $$2.a("hidden", false);
+            $$0.add($$2);
+         }
+
+         for (gbv $$3 : this.f) {
+            uf $$4 = $$3.a();
+            $$4.a("hidden", true);
+            $$0.add($$4);
+         }
+
+         uf $$5 = new uf();
+         $$5.a("servers", $$0);
+         Path $$6 = this.d.q.toPath();
+         Path $$7 = Files.createTempFile($$6, "servers", ".dat");
+         us.b($$5, $$7);
+         Path $$8 = $$6.resolve("servers.dat_old");
+         Path $$9 = $$6.resolve("servers.dat");
+         ad.a($$9, $$7, $$8);
+      } catch (Exception var7) {
+         a.error("Couldn't save server list", var7);
+      }
+   }
+
+   public gbv a(int $$0) {
+      return this.e.get($$0);
+   }
+
+   @Nullable
+   public gbv a(String $$0) {
+      for (gbv $$1 : this.e) {
+         if ($$1.b.equals($$0)) {
+            return $$1;
+         }
       }
 
-      @Override
-      public boolean a() {
-         return this.b.canSendReports();
+      for (gbv $$2 : this.f) {
+         if ($$2.b.equals($$0)) {
+            return $$2;
+         }
       }
 
-      private xd a(MinecraftClientHttpException $$0) {
-         return xd.a("gui.abuseReport.send.error_message", $$0.getMessage());
+      return null;
+   }
+
+   @Nullable
+   public gbv b(String $$0) {
+      for (int $$1 = 0; $$1 < this.f.size(); $$1++) {
+         gbv $$2 = this.f.get($$1);
+         if ($$2.b.equals($$0)) {
+            this.f.remove($$1);
+            this.e.add($$2);
+            return $$2;
+         }
       }
 
-      private xd a(MinecraftClientException $$0) {
-         return switch ($$0.getType()) {
-            case SERVICE_UNAVAILABLE -> c;
-            case HTTP_ERROR -> d;
-            case JSON_ERROR -> e;
-            default -> throw new MatchException(null, null);
-         };
+      return null;
+   }
+
+   public void a(gbv $$0) {
+      if (!this.e.remove($$0)) {
+         this.f.remove($$0);
+      }
+   }
+
+   public void a(gbv $$0, boolean $$1) {
+      if ($$1) {
+         this.f.add(0, $$0);
+
+         while (this.f.size() > 16) {
+            this.f.remove(this.f.size() - 1);
+         }
+      } else {
+         this.e.add($$0);
+      }
+   }
+
+   public int c() {
+      return this.e.size();
+   }
+
+   public void a(int $$0, int $$1) {
+      gbv $$2 = this.a($$0);
+      this.e.set($$0, this.a($$1));
+      this.e.set($$1, $$2);
+      this.b();
+   }
+
+   public void a(int $$0, gbv $$1) {
+      this.e.set($$0, $$1);
+   }
+
+   private static boolean a(gbv $$0, List<gbv> $$1) {
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         gbv $$3 = $$1.get($$2);
+         if ($$3.a.equals($$0.a) && $$3.b.equals($$0.b)) {
+            $$1.set($$2, $$0);
+            return true;
+         }
       }
 
-      @Override
-      public AbuseReportLimits b() {
-         return this.b.getAbuseReportLimits();
-      }
+      return false;
+   }
 
-      public gcc c() {
-         return this.a;
-      }
+   public static void b(gbv $$0) {
+      b.a(() -> {
+         gbw $$1 = new gbw(fil.Q());
+         $$1.a();
+         if (!a($$0, $$1.e)) {
+            a($$0, $$1.f);
+         }
 
-      public UserApiService d() {
-         return this.b;
-      }
+         $$1.b();
+      });
    }
 }

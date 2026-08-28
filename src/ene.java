@@ -1,124 +1,218 @@
-import java.util.Map;
+public class ene extends ela {
+   public static final int h = 12;
+   public static final int i = 15;
+   private boolean j;
+   private boolean k;
+   private boolean l;
+   private boolean m;
+   private static final ene.a n = new ene.a();
 
-public class ene {
-   private static final int a = 32;
-   static final je b = new je(4, 0, 15);
-   private static final alb[] c = new alb[]{
-      alb.b("shipwreck/with_mast"),
-      alb.b("shipwreck/sideways_full"),
-      alb.b("shipwreck/sideways_fronthalf"),
-      alb.b("shipwreck/sideways_backhalf"),
-      alb.b("shipwreck/rightsideup_full"),
-      alb.b("shipwreck/rightsideup_fronthalf"),
-      alb.b("shipwreck/rightsideup_backhalf"),
-      alb.b("shipwreck/with_mast_degraded"),
-      alb.b("shipwreck/rightsideup_full_degraded"),
-      alb.b("shipwreck/rightsideup_fronthalf_degraded"),
-      alb.b("shipwreck/rightsideup_backhalf_degraded")
-   };
-   private static final alb[] d = new alb[]{
-      alb.b("shipwreck/with_mast"),
-      alb.b("shipwreck/upsidedown_full"),
-      alb.b("shipwreck/upsidedown_fronthalf"),
-      alb.b("shipwreck/upsidedown_backhalf"),
-      alb.b("shipwreck/sideways_full"),
-      alb.b("shipwreck/sideways_fronthalf"),
-      alb.b("shipwreck/sideways_backhalf"),
-      alb.b("shipwreck/rightsideup_full"),
-      alb.b("shipwreck/rightsideup_fronthalf"),
-      alb.b("shipwreck/rightsideup_backhalf"),
-      alb.b("shipwreck/with_mast_degraded"),
-      alb.b("shipwreck/upsidedown_full_degraded"),
-      alb.b("shipwreck/upsidedown_fronthalf_degraded"),
-      alb.b("shipwreck/upsidedown_backhalf_degraded"),
-      alb.b("shipwreck/sideways_full_degraded"),
-      alb.b("shipwreck/sideways_fronthalf_degraded"),
-      alb.b("shipwreck/sideways_backhalf_degraded"),
-      alb.b("shipwreck/rightsideup_full_degraded"),
-      alb.b("shipwreck/rightsideup_fronthalf_degraded"),
-      alb.b("shipwreck/rightsideup_backhalf_degraded")
-   };
-   static final Map<String, ala<esy>> e = Map.of("map_chest", esp.H, "treasure_chest", esp.J, "supply_chest", esp.I);
-
-   public static ene.a a(eor $$0, je $$1, dnj $$2, ekt $$3, azk $$4, boolean $$5) {
-      alb $$6 = ad.a($$5 ? c : d, $$4);
-      ene.a $$7 = new ene.a($$0, $$6, $$1, $$2, $$5);
-      $$3.a($$7);
-      return $$7;
+   public ene(azl $$0, int $$1, int $$2) {
+      super(elt.G, $$1, 64, $$2, 12, 10, 15, a($$0));
    }
 
-   public static class a extends eky {
-      private final boolean h;
+   public ene(uf $$0) {
+      super(elt.G, $$0);
+      this.j = $$0.q("placedMainChest");
+      this.k = $$0.q("placedHiddenChest");
+      this.l = $$0.q("placedTrap1");
+      this.m = $$0.q("placedTrap2");
+   }
 
-      public a(eor $$0, alb $$1, je $$2, dnj $$3, boolean $$4) {
-         super(elf.ab, 0, $$0, $$1, $$1.toString(), a($$3), $$2);
-         this.h = $$4;
-      }
+   @Override
+   protected void a(els $$0, uf $$1) {
+      super.a($$0, $$1);
+      $$1.a("placedMainChest", this.j);
+      $$1.a("placedHiddenChest", this.k);
+      $$1.a("placedTrap1", this.l);
+      $$1.a("placedTrap2", this.m);
+   }
 
-      public a(eor $$0, uf $$1) {
-         super(elf.ab, $$1, $$0, $$1x -> a(dnj.valueOf($$1.l("Rot"))));
-         this.h = $$1.q("isBeached");
-      }
+   @Override
+   public void a(dfd $$0, dfb $$1, dwl $$2, azl $$3, eku $$4, ddm $$5, je $$6) {
+      if (this.a($$0, $$4, 0)) {
+         this.a($$0, $$4, 0, -4, 0, this.a - 1, 0, this.c - 1, false, $$3, n);
+         this.a($$0, $$4, 2, 1, 2, 9, 2, 2, false, $$3, n);
+         this.a($$0, $$4, 2, 1, 12, 9, 2, 12, false, $$3, n);
+         this.a($$0, $$4, 2, 1, 3, 2, 2, 11, false, $$3, n);
+         this.a($$0, $$4, 9, 1, 3, 9, 2, 11, false, $$3, n);
+         this.a($$0, $$4, 1, 3, 1, 10, 6, 1, false, $$3, n);
+         this.a($$0, $$4, 1, 3, 13, 10, 6, 13, false, $$3, n);
+         this.a($$0, $$4, 1, 3, 2, 1, 6, 12, false, $$3, n);
+         this.a($$0, $$4, 10, 3, 2, 10, 6, 12, false, $$3, n);
+         this.a($$0, $$4, 2, 3, 2, 9, 3, 12, false, $$3, n);
+         this.a($$0, $$4, 2, 6, 2, 9, 6, 12, false, $$3, n);
+         this.a($$0, $$4, 3, 7, 3, 8, 7, 11, false, $$3, n);
+         this.a($$0, $$4, 4, 8, 4, 7, 8, 10, false, $$3, n);
+         this.a($$0, $$4, 3, 1, 3, 8, 2, 11);
+         this.a($$0, $$4, 4, 3, 6, 7, 3, 9);
+         this.a($$0, $$4, 2, 4, 2, 9, 5, 12);
+         this.a($$0, $$4, 4, 6, 5, 7, 6, 9);
+         this.a($$0, $$4, 5, 7, 6, 6, 7, 8);
+         this.a($$0, $$4, 5, 1, 2, 6, 2, 2);
+         this.a($$0, $$4, 5, 2, 12, 6, 2, 12);
+         this.a($$0, $$4, 5, 5, 1, 6, 5, 1);
+         this.a($$0, $$4, 5, 5, 13, 6, 5, 13);
+         this.a($$0, dhl.a.o(), 1, 5, 5, $$4);
+         this.a($$0, dhl.a.o(), 10, 5, 5, $$4);
+         this.a($$0, dhl.a.o(), 1, 5, 9, $$4);
+         this.a($$0, dhl.a.o(), 10, 5, 9, $$4);
 
-      @Override
-      protected void a(ele $$0, uf $$1) {
-         super.a($$0, $$1);
-         $$1.a("isBeached", this.h);
-         $$1.a("Rot", this.c.d().name());
-      }
-
-      private static eom a(dnj $$0) {
-         return new eom().a($$0).a(dls.a).a(ene.b).a(enr.d);
-      }
-
-      @Override
-      protected void a(String $$0, je $$1, dei $$2, azk $$3, ekg $$4) {
-         ala<esy> $$5 = ene.e.get($$0);
-         if ($$5 != null) {
-            brq.a($$2, $$3, $$1.e(), $$5);
+         for (int $$7 = 0; $$7 <= 14; $$7 += 14) {
+            this.a($$0, $$4, 2, 4, $$7, 2, 5, $$7, false, $$3, n);
+            this.a($$0, $$4, 4, 4, $$7, 4, 5, $$7, false, $$3, n);
+            this.a($$0, $$4, 7, 4, $$7, 7, 5, $$7, false, $$3, n);
+            this.a($$0, $$4, 9, 4, $$7, 9, 5, $$7, false, $$3, n);
          }
-      }
 
-      @Override
-      public void a(dep $$0, den $$1, dvx $$2, azk $$3, ekg $$4, dcy $$5, je $$6) {
-         if (this.l()) {
-            super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-         } else {
-            int $$7 = $$0.an();
-            int $$8 = 0;
-            ki $$9 = this.b.a();
-            dzw.a $$10 = this.h ? dzw.a.a : dzw.a.c;
-            int $$11 = $$9.u() * $$9.w();
-            if ($$11 == 0) {
-               $$8 = $$0.a($$10, this.d.u(), this.d.w());
-            } else {
-               je $$12 = this.d.b($$9.u() - 1, 0, $$9.w() - 1);
+         this.a($$0, $$4, 5, 6, 0, 6, 6, 0, false, $$3, n);
 
-               for (je $$13 : je.c(this.d, $$12)) {
-                  int $$14 = $$0.a($$10, $$13.u(), $$13.w());
-                  $$8 += $$14;
-                  $$7 = Math.min($$7, $$14);
-               }
-
-               $$8 /= $$11;
+         for (int $$8 = 0; $$8 <= 11; $$8 += 11) {
+            for (int $$9 = 2; $$9 <= 12; $$9 += 2) {
+               this.a($$0, $$4, $$8, 4, $$9, $$8, 5, $$9, false, $$3, n);
             }
 
-            this.c(this.h ? this.a($$7, $$3) : $$8);
-            super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+            this.a($$0, $$4, $$8, 6, 5, $$8, 6, 5, false, $$3, n);
+            this.a($$0, $$4, $$8, 6, 9, $$8, 6, 9, false, $$3, n);
+         }
+
+         this.a($$0, $$4, 2, 7, 2, 2, 9, 2, false, $$3, n);
+         this.a($$0, $$4, 9, 7, 2, 9, 9, 2, false, $$3, n);
+         this.a($$0, $$4, 2, 7, 12, 2, 9, 12, false, $$3, n);
+         this.a($$0, $$4, 9, 7, 12, 9, 9, 12, false, $$3, n);
+         this.a($$0, $$4, 4, 9, 4, 4, 9, 4, false, $$3, n);
+         this.a($$0, $$4, 7, 9, 4, 7, 9, 4, false, $$3, n);
+         this.a($$0, $$4, 4, 9, 10, 4, 9, 10, false, $$3, n);
+         this.a($$0, $$4, 7, 9, 10, 7, 9, 10, false, $$3, n);
+         this.a($$0, $$4, 5, 9, 7, 6, 9, 7, false, $$3, n);
+         duo $$10 = dhl.cQ.o().b(dpe.b, jj.f);
+         duo $$11 = dhl.cQ.o().b(dpe.b, jj.e);
+         duo $$12 = dhl.cQ.o().b(dpe.b, jj.d);
+         duo $$13 = dhl.cQ.o().b(dpe.b, jj.c);
+         this.a($$0, $$13, 5, 9, 6, $$4);
+         this.a($$0, $$13, 6, 9, 6, $$4);
+         this.a($$0, $$12, 5, 9, 8, $$4);
+         this.a($$0, $$12, 6, 9, 8, $$4);
+         this.a($$0, $$13, 4, 0, 0, $$4);
+         this.a($$0, $$13, 5, 0, 0, $$4);
+         this.a($$0, $$13, 6, 0, 0, $$4);
+         this.a($$0, $$13, 7, 0, 0, $$4);
+         this.a($$0, $$13, 4, 1, 8, $$4);
+         this.a($$0, $$13, 4, 2, 9, $$4);
+         this.a($$0, $$13, 4, 3, 10, $$4);
+         this.a($$0, $$13, 7, 1, 8, $$4);
+         this.a($$0, $$13, 7, 2, 9, $$4);
+         this.a($$0, $$13, 7, 3, 10, $$4);
+         this.a($$0, $$4, 4, 1, 9, 4, 1, 9, false, $$3, n);
+         this.a($$0, $$4, 7, 1, 9, 7, 1, 9, false, $$3, n);
+         this.a($$0, $$4, 4, 1, 10, 7, 2, 10, false, $$3, n);
+         this.a($$0, $$4, 5, 4, 5, 6, 4, 5, false, $$3, n);
+         this.a($$0, $$10, 4, 4, 5, $$4);
+         this.a($$0, $$11, 7, 4, 5, $$4);
+
+         for (int $$14 = 0; $$14 < 4; $$14++) {
+            this.a($$0, $$12, 5, 0 - $$14, 6 + $$14, $$4);
+            this.a($$0, $$12, 6, 0 - $$14, 6 + $$14, $$4);
+            this.a($$0, $$4, 5, 0 - $$14, 7 + $$14, 6, 0 - $$14, 9 + $$14);
+         }
+
+         this.a($$0, $$4, 1, -3, 12, 10, -1, 13);
+         this.a($$0, $$4, 1, -3, 1, 3, -1, 13);
+         this.a($$0, $$4, 1, -3, 1, 9, -1, 5);
+
+         for (int $$15 = 1; $$15 <= 13; $$15 += 2) {
+            this.a($$0, $$4, 1, -3, $$15, 1, -2, $$15, false, $$3, n);
+         }
+
+         for (int $$16 = 2; $$16 <= 12; $$16 += 2) {
+            this.a($$0, $$4, 1, -1, $$16, 3, -1, $$16, false, $$3, n);
+         }
+
+         this.a($$0, $$4, 2, -2, 1, 5, -2, 1, false, $$3, n);
+         this.a($$0, $$4, 7, -2, 1, 9, -2, 1, false, $$3, n);
+         this.a($$0, $$4, 6, -3, 1, 6, -3, 1, false, $$3, n);
+         this.a($$0, $$4, 6, -1, 1, 6, -1, 1, false, $$3, n);
+         this.a($$0, dhl.fH.o().b(dqb.b, jj.f).b(dqb.d, Boolean.valueOf(true)), 1, -3, 8, $$4);
+         this.a($$0, dhl.fH.o().b(dqb.b, jj.e).b(dqb.d, Boolean.valueOf(true)), 4, -3, 8, $$4);
+         this.a($$0, dhl.fI.o().b(dqa.f, Boolean.valueOf(true)).b(dqa.h, Boolean.valueOf(true)).b(dqa.c, Boolean.valueOf(true)), 2, -3, 8, $$4);
+         this.a($$0, dhl.fI.o().b(dqa.f, Boolean.valueOf(true)).b(dqa.h, Boolean.valueOf(true)).b(dqa.c, Boolean.valueOf(true)), 3, -3, 8, $$4);
+         duo $$17 = dhl.cw.o().b(dnm.b, dvt.b).b(dnm.d, dvt.b);
+         this.a($$0, $$17, 5, -3, 7, $$4);
+         this.a($$0, $$17, 5, -3, 6, $$4);
+         this.a($$0, $$17, 5, -3, 5, $$4);
+         this.a($$0, $$17, 5, -3, 4, $$4);
+         this.a($$0, $$17, 5, -3, 3, $$4);
+         this.a($$0, $$17, 5, -3, 2, $$4);
+         this.a($$0, dhl.cw.o().b(dnm.b, dvt.b).b(dnm.e, dvt.b), 5, -3, 1, $$4);
+         this.a($$0, dhl.cw.o().b(dnm.c, dvt.b).b(dnm.e, dvt.b), 4, -3, 1, $$4);
+         this.a($$0, dhl.cn.o(), 3, -3, 1, $$4);
+         if (!this.l) {
+            this.l = this.a($$0, $$4, $$3, 3, -2, 1, jj.c, etd.B);
+         }
+
+         this.a($$0, dhl.ff.o().b(dqg.e, Boolean.valueOf(true)), 3, -2, 2, $$4);
+         this.a($$0, dhl.fH.o().b(dqb.b, jj.c).b(dqb.d, Boolean.valueOf(true)), 7, -3, 1, $$4);
+         this.a($$0, dhl.fH.o().b(dqb.b, jj.d).b(dqb.d, Boolean.valueOf(true)), 7, -3, 5, $$4);
+         this.a($$0, dhl.fI.o().b(dqa.e, Boolean.valueOf(true)).b(dqa.g, Boolean.valueOf(true)).b(dqa.c, Boolean.valueOf(true)), 7, -3, 2, $$4);
+         this.a($$0, dhl.fI.o().b(dqa.e, Boolean.valueOf(true)).b(dqa.g, Boolean.valueOf(true)).b(dqa.c, Boolean.valueOf(true)), 7, -3, 3, $$4);
+         this.a($$0, dhl.fI.o().b(dqa.e, Boolean.valueOf(true)).b(dqa.g, Boolean.valueOf(true)).b(dqa.c, Boolean.valueOf(true)), 7, -3, 4, $$4);
+         this.a($$0, dhl.cw.o().b(dnm.c, dvt.b).b(dnm.e, dvt.b), 8, -3, 6, $$4);
+         this.a($$0, dhl.cw.o().b(dnm.e, dvt.b).b(dnm.d, dvt.b), 9, -3, 6, $$4);
+         this.a($$0, dhl.cw.o().b(dnm.b, dvt.b).b(dnm.d, dvt.a), 9, -3, 5, $$4);
+         this.a($$0, dhl.cn.o(), 9, -3, 4, $$4);
+         this.a($$0, $$17, 9, -2, 4, $$4);
+         if (!this.m) {
+            this.m = this.a($$0, $$4, $$3, 9, -2, 3, jj.e, etd.B);
+         }
+
+         this.a($$0, dhl.ff.o().b(dqg.d, Boolean.valueOf(true)), 8, -1, 3, $$4);
+         this.a($$0, dhl.ff.o().b(dqg.d, Boolean.valueOf(true)), 8, -2, 3, $$4);
+         if (!this.j) {
+            this.j = this.a($$0, $$4, $$3, 8, -3, 3, etd.A);
+         }
+
+         this.a($$0, dhl.cn.o(), 9, -3, 2, $$4);
+         this.a($$0, dhl.cn.o(), 8, -3, 1, $$4);
+         this.a($$0, dhl.cn.o(), 4, -3, 5, $$4);
+         this.a($$0, dhl.cn.o(), 5, -2, 5, $$4);
+         this.a($$0, dhl.cn.o(), 5, -1, 5, $$4);
+         this.a($$0, dhl.cn.o(), 6, -3, 5, $$4);
+         this.a($$0, dhl.cn.o(), 7, -2, 5, $$4);
+         this.a($$0, dhl.cn.o(), 7, -1, 5, $$4);
+         this.a($$0, dhl.cn.o(), 8, -3, 5, $$4);
+         this.a($$0, $$4, 9, -1, 1, 9, -1, 5, false, $$3, n);
+         this.a($$0, $$4, 8, -3, 8, 10, -1, 10);
+         this.a($$0, dhl.eK.o(), 8, -2, 11, $$4);
+         this.a($$0, dhl.eK.o(), 9, -2, 11, $$4);
+         this.a($$0, dhl.eK.o(), 10, -2, 11, $$4);
+         duo $$18 = dhl.dw.o().b(dlw.aF, jj.c).b(dlw.L, duz.b);
+         this.a($$0, $$18, 8, -2, 12, $$4);
+         this.a($$0, $$18, 9, -2, 12, $$4);
+         this.a($$0, $$18, 10, -2, 12, $$4);
+         this.a($$0, $$4, 8, -3, 8, 8, -3, 10, false, $$3, n);
+         this.a($$0, $$4, 10, -3, 8, 10, -3, 10, false, $$3, n);
+         this.a($$0, dhl.cn.o(), 10, -2, 9, $$4);
+         this.a($$0, $$17, 8, -2, 9, $$4);
+         this.a($$0, $$17, 8, -2, 10, $$4);
+         this.a($$0, dhl.cw.o().b(dnm.b, dvt.b).b(dnm.d, dvt.b).b(dnm.c, dvt.b).b(dnm.e, dvt.b), 10, -1, 9, $$4);
+         this.a($$0, dhl.br.o().b(duh.a, jj.b), 9, -2, 8, $$4);
+         this.a($$0, dhl.br.o().b(duh.a, jj.e), 10, -2, 8, $$4);
+         this.a($$0, dhl.br.o().b(duh.a, jj.e), 10, -1, 8, $$4);
+         this.a($$0, dhl.eh.o().b(dnr.aF, jj.c), 10, -2, 10, $$4);
+         if (!this.k) {
+            this.k = this.a($$0, $$4, $$3, 9, -3, 10, etd.A);
          }
       }
+   }
 
-      public boolean l() {
-         ki $$0 = this.b.a();
-         return $$0.u() > 32 || $$0.v() > 32;
-      }
-
-      public int a(int $$0, azk $$1) {
-         return $$0 - this.b.a().v() / 2 - $$1.a(3);
-      }
-
-      public void c(int $$0) {
-         this.d = new je(this.d.u(), $$0, this.d.w());
+   static class a extends elg.a {
+      @Override
+      public void a(azl $$0, int $$1, int $$2, int $$3, boolean $$4) {
+         if ($$0.i() < 0.4F) {
+            this.a = dhl.m.o();
+         } else {
+            this.a = dhl.cn.o();
+         }
       }
    }
 }

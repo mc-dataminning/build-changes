@@ -1,43 +1,64 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dmt extends dgj {
-   public static final MapCodec<dmt> e = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dup.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), u()).apply($$0, dmt::new)
-   );
-   public static final dur f = duq.w;
+public class dmt extends dhj implements dhm {
+   public static final MapCodec<dmt> a = b(dmt::new);
 
    @Override
    public MapCodec<dmt> a() {
-      return e;
+      return a;
    }
 
-   protected dmt(dup $$0, dtz.d $$1) {
-      super($$1, $$0);
-      this.l(this.E.b().b(f, Boolean.valueOf(false)));
+   protected dmt(dun.d $$0) {
+      super($$0);
    }
 
-   @Override
-   protected int h(dua $$0) {
-      return $$0.c(f) ? 15 : 0;
-   }
-
-   @Override
-   protected dua a(dua $$0, int $$1) {
-      return $$0.b(f, Boolean.valueOf($$1 > 0));
+   private static boolean b(duo $$0, dej $$1, je $$2) {
+      je $$3 = $$2.d();
+      duo $$4 = $$1.a_($$3);
+      int $$5 = eqg.a($$0, $$4, jj.b, $$4.g());
+      return $$5 < 15;
    }
 
    @Override
-   protected int b(dds $$0, je $$1) {
-      Class<? extends btj> $$2 = switch (this.d.f()) {
-         case a -> btj.class;
-         case b -> buf.class;
-      };
-      return a($$0, c.a($$1), $$2) > 0 ? 15 : 0;
+   protected void b(duo $$0, arh $$1, je $$2, azl $$3) {
+      if (!b($$0, $$1, $$2)) {
+         $$1.b($$2, dhl.dV.o());
+      }
    }
 
    @Override
-   protected void a(dub.a<dgv, dua> $$0) {
-      $$0.a(f);
+   public boolean b(dej $$0, je $$1, duo $$2) {
+      return $$0.a_($$1.d()).l();
+   }
+
+   @Override
+   public boolean a(deg $$0, azl $$1, je $$2, duo $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arh $$0, azl $$1, je $$2, duo $$3) {
+      duo $$4 = $$0.a_($$2);
+      je $$5 = $$2.d();
+      dwl $$6 = $$0.l().g();
+      ka<edc<?, ?>> $$7 = $$0.F_().d(lv.aJ);
+      if ($$4.a(dhl.ow)) {
+         this.a($$7, rw.h, $$0, $$6, $$1, $$5);
+      } else if ($$4.a(dhl.on)) {
+         this.a($$7, rw.j, $$0, $$6, $$1, $$5);
+         this.a($$7, rw.l, $$0, $$6, $$1, $$5);
+         if ($$1.a(8) == 0) {
+            this.a($$7, rw.n, $$0, $$6, $$1, $$5);
+         }
+      }
+   }
+
+   private void a(ka<edc<?, ?>> $$0, alb<edc<?, ?>> $$1, arh $$2, dwl $$3, azl $$4, je $$5) {
+      $$0.b($$1).ifPresent($$4x -> ((edc)$$4x.a()).a($$2, $$3, $$4, $$5));
+   }
+
+   @Override
+   public dhm.a ar_() {
+      return dhm.a.a;
    }
 }

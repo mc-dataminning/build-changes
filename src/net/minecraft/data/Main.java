@@ -58,11 +58,11 @@ public class Main {
       $$13.a(a(mh::a, $$11));
       $$13.a(a(nl::a, $$11));
       $$13.a(a(pb.a::new, $$11));
-      qc<dgv> $$14 = $$13.a(a(qf::new, $$11));
-      qc<cvg> $$15 = $$13.a($$2x -> new qh($$2x, $$11, $$14.c()));
-      qc<det> $$16 = $$13.a(a(po::new, $$11));
-      qc<dqu> $$17 = $$13.a(a(pn::new, $$11));
-      qc<eko> $$18 = $$13.a(a(qb::new, $$11));
+      qc<dhj> $$14 = $$13.a(a(qf::new, $$11));
+      qc<cvk> $$15 = $$13.a($$2x -> new qh($$2x, $$11, $$14.c()));
+      qc<dfh> $$16 = $$13.a(a(po::new, $$11));
+      qc<dri> $$17 = $$13.a(a(pn::new, $$11));
+      qc<elc> $$18 = $$13.a(a(qb::new, $$11));
       $$13.a(a(pp::new, $$11));
       $$13.a(a(pq::new, $$11));
       $$13.a(a(ps::new, $$11));
@@ -86,19 +86,19 @@ public class Main {
       $$13.a(mr::new);
       $$13 = $$9.a($$3, "bundle");
       $$13.a(a(pa.a::new, $$11));
-      $$13.a($$0x -> np.a($$0x, xd.c("dataPack.bundle.description"), cqh.a(cqj.b)));
+      $$13.a($$0x -> np.a($$0x, xd.c("dataPack.bundle.description"), cqn.a(cqp.b)));
       CompletableFuture<kd.g> $$22 = pf.a($$11);
       CompletableFuture<jp.a> $$23 = $$22.thenApply(kd.g::b);
       ma.a $$24 = $$9.a($$3, "trade_rebalance");
       $$24.a(a(pd::new, $$23));
-      $$24.a($$0x -> np.a($$0x, xd.c("dataPack.trade_rebalance.description"), cqh.a(cqj.c)));
+      $$24.a($$0x -> np.a($$0x, xd.c("dataPack.trade_rebalance.description"), cqn.a(cqp.c)));
       $$24.a(a(nd::a, $$11));
       $$24.a(a(qe::new, $$11));
       $$24.a(a(qd::new, $$11));
       $$13 = $$9.a($$3, "redstone_experiments");
-      $$13.a($$0x -> np.a($$0x, xd.c("dataPack.redstone_experiments.description"), cqh.a(cqj.d)));
+      $$13.a($$0x -> np.a($$0x, xd.c("dataPack.redstone_experiments.description"), cqn.a(cqp.d)));
       $$13 = $$9.a($$3, "minecart_improvements");
-      $$13.a($$0x -> np.a($$0x, xd.c("dataPack.minecart_improvements.description"), cqh.a(cqj.e)));
+      $$13.a($$0x -> np.a($$0x, xd.c("dataPack.minecart_improvements.description"), cqn.a(cqp.e)));
       return $$9;
    }
 }

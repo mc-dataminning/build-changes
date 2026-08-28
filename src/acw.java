@@ -3,9 +3,9 @@ public class acw implements zk<abz> {
    private final int b;
    private final int c;
    private final int d;
-   private final cvl e;
+   private final cvp e;
 
-   public acw(int $$0, int $$1, int $$2, cvl $$3) {
+   public acw(int $$0, int $$1, int $$2, cvp $$3) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -16,14 +16,14 @@ public class acw implements zk<abz> {
       this.b = $$0.x();
       this.c = $$0.l();
       this.d = $$0.readShort();
-      this.e = cvl.h.decode($$0);
+      this.e = cvp.h.decode($$0);
    }
 
    private void a(wo $$0) {
       $$0.f(this.b);
       $$0.c(this.c);
       $$0.m(this.d);
-      cvl.h.encode($$0, this.e);
+      cvp.h.encode($$0, this.e);
    }
 
    @Override
@@ -43,7 +43,7 @@ public class acw implements zk<abz> {
       return this.d;
    }
 
-   public cvl f() {
+   public cvp f() {
       return this.e;
    }
 

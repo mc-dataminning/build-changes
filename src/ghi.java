@@ -1,63 +1,81 @@
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Optional;
 
-public class ghi {
-   private static final Logger a = LogUtils.getLogger();
-   private final Queue<ghh> b;
-   private volatile int c;
+public class ghi implements ghg {
+   private final ghg.a a;
+   private final ghg.a b = ghg.a(new fdb(1536));
+   private int c = 255;
+   private int d = 255;
+   private int e = 255;
+   private int f = 255;
 
-   private ghi(List<ghh> $$0) {
-      this.b = Queues.newArrayDeque($$0);
-      this.c = this.b.size();
+   public ghi(ghg.a $$0) {
+      this.a = $$0;
    }
 
-   public static ghi a(int $$0) {
-      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / ghh.a);
-      int $$2 = Math.max(1, Math.min($$0, $$1));
-      List<ghh> $$3 = new ArrayList<>($$2);
-
-      try {
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3.add(new ghh());
-         }
-      } catch (OutOfMemoryError var7) {
-         a.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
-         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            $$3.remove($$3.size() - 1).close();
-         }
-      }
-
-      return new ghi($$3);
-   }
-
-   @Nullable
-   public ghh a() {
-      ghh $$0 = this.b.poll();
-      if ($$0 != null) {
-         this.c = this.b.size();
-         return $$0;
+   @Override
+   public fdi getBuffer(ghq $$0) {
+      if ($$0.Q()) {
+         fdi $$1 = this.b.getBuffer($$0);
+         return new ghi.a($$1, this.c, this.d, this.e, this.f);
       } else {
-         return null;
+         fdi $$2 = this.a.getBuffer($$0);
+         Optional<ghq> $$3 = $$0.P();
+         if ($$3.isPresent()) {
+            fdi $$4 = this.b.getBuffer($$3.get());
+            ghi.a $$5 = new ghi.a($$4, this.c, this.d, this.e, this.f);
+            return fdl.a($$5, $$2);
+         } else {
+            return $$2;
+         }
       }
    }
 
-   public void a(ghh $$0) {
-      this.b.add($$0);
-      this.c = this.b.size();
+   public void a(int $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
    }
 
-   public boolean b() {
-      return this.b.isEmpty();
+   public void a() {
+      this.b.b();
    }
 
-   public int c() {
-      return this.c;
+   static record a(fdi a, int b) implements fdi {
+      public a(fdi $$0, int $$1, int $$2, int $$3, int $$4) {
+         this($$0, axo.a($$4, $$1, $$2, $$3));
+      }
+
+      @Override
+      public fdi a(float $$0, float $$1, float $$2) {
+         this.a.a($$0, $$1, $$2).a(this.b);
+         return this;
+      }
+
+      @Override
+      public fdi a(int $$0, int $$1, int $$2, int $$3) {
+         return this;
+      }
+
+      @Override
+      public fdi a(float $$0, float $$1) {
+         this.a.a($$0, $$1);
+         return this;
+      }
+
+      @Override
+      public fdi a(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public fdi b(int $$0, int $$1) {
+         return this;
+      }
+
+      @Override
+      public fdi b(float $$0, float $$1, float $$2) {
+         return this;
+      }
    }
 }

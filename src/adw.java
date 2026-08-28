@@ -1,13 +1,13 @@
 public class adw implements zk<abz> {
    public static final zb<wa, adw> a = zk.a(adw::a, adw::new);
-   private final brj b;
+   private final bro b;
 
-   public adw(brj $$0) {
+   public adw(bro $$0) {
       this.b = $$0;
    }
 
    private adw(wa $$0) {
-      this.b = $$0.b(brj.class);
+      this.b = $$0.b(bro.class);
    }
 
    private void a(wa $$0) {
@@ -23,7 +23,7 @@ public class adw implements zk<abz> {
       $$0.a(this);
    }
 
-   public brj b() {
+   public bro b() {
       return this.b;
    }
 }

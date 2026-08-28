@@ -1,61 +1,30 @@
+import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
-public class ght {
-   private Map<dua, gym> a = Map.of();
-   private final gyw b;
-
-   public ght(gyw $$0) {
-      this.b = $$0;
-   }
-
-   public gwk a(dua $$0) {
-      return this.b($$0).e();
-   }
-
-   public gym b(dua $$0) {
-      gym $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         $$1 = this.b.a();
+public class ght implements AutoCloseable {
+   private static final List<ghq> b = ghq.L();
+   public static final int a = b.stream().mapToInt(ghq::M).sum();
+   private final Map<ghq, fdb> c = ad.a(new Reference2ObjectArrayMap(b.size()), $$0 -> {
+      for (ghq $$1 : b) {
+         $$0.put($$1, new fdb($$1.M()));
       }
+   });
 
-      return $$1;
+   public fdb a(ghq $$0) {
+      return this.c.get($$0);
    }
 
-   public gyw a() {
-      return this.b;
+   public void a() {
+      this.c.values().forEach(fdb::b);
    }
 
-   public void a(Map<dua, gym> $$0) {
-      this.a = $$0;
+   public void b() {
+      this.c.values().forEach(fdb::c);
    }
 
-   public static gyx c(dua $$0) {
-      return a(lu.e.b($$0.b()), $$0);
-   }
-
-   public static gyx a(alb $$0, dua $$1) {
-      return new gyx($$0, b($$1.G()));
-   }
-
-   public static String b(Map<dvd<?>, Comparable<?>> $$0) {
-      StringBuilder $$1 = new StringBuilder();
-
-      for (Entry<dvd<?>, Comparable<?>> $$2 : $$0.entrySet()) {
-         if ($$1.length() != 0) {
-            $$1.append(',');
-         }
-
-         dvd<?> $$3 = $$2.getKey();
-         $$1.append($$3.f());
-         $$1.append('=');
-         $$1.append(a($$3, $$2.getValue()));
-      }
-
-      return $$1.toString();
-   }
-
-   private static <T extends Comparable<T>> String a(dvd<T> $$0, Comparable<?> $$1) {
-      return $$0.a((T)$$1);
+   @Override
+   public void close() {
+      this.c.values().forEach(fdb::close);
    }
 }

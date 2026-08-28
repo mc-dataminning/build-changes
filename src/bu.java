@@ -8,7 +8,7 @@ public class bu extends dv<bu.a> {
       return bu.a.a;
    }
 
-   public void a(arh $$0, bsb $$1, float $$2, float $$3, boolean $$4) {
+   public void a(ari $$0, bsg $$1, float $$2, float $$3, boolean $$4) {
       this.a($$0, $$5 -> $$5.a($$0, $$1, $$2, $$3, $$4));
    }
 
@@ -29,7 +29,7 @@ public class bu extends dv<bu.a> {
          return an.i.a(new bu.a(Optional.empty(), Optional.of($$0.b())));
       }
 
-      public boolean a(arh $$0, bsb $$1, float $$2, float $$3, boolean $$4) {
+      public boolean a(ari $$0, bsg $$1, float $$2, float $$3, boolean $$4) {
          return !this.c.isPresent() || this.c.get().a($$0, $$1, $$2, $$3, $$4);
       }
 

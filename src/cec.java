@@ -1,30 +1,24 @@
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Iterables;
+import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
-public class cec extends ceo<buf> {
+public class cec extends cem<clw> {
    @Override
-   public Set<cdi<?>> a() {
-      return ImmutableSet.of(cdi.x, cdi.y);
+   public Set<cdn<?>> a() {
+      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(cdn.B)));
    }
 
-   @Override
-   protected void a(arg $$0, buf $$1) {
-      bvg<?> $$2 = $$1.dX();
-      bsb $$3 = $$1.eC();
-      if ($$3 != null) {
-         $$2.a(cdi.x, $$1.eC());
-         btj $$4 = $$3.d();
-         if ($$4 instanceof buf) {
-            $$2.a(cdi.y, (buf)$$4);
-         }
-      } else {
-         $$2.b(cdi.x);
-      }
-
-      $$2.c(cdi.y).ifPresent($$2x -> {
-         if (!$$2x.bI() || $$2x.dS() != $$0) {
-            $$2.b(cdi.y);
-         }
-      });
+   protected void a(arh $$0, clw $$1) {
+      super.a($$0, $$1);
+      $$1.dX()
+         .c(cdn.g)
+         .stream()
+         .flatMap(Collection::stream)
+         .filter(btt.e)
+         .filter($$1x -> cet.c($$1, $$1x))
+         .findFirst()
+         .ifPresentOrElse($$1x -> $$1.dX().a(cdn.B, $$1x), () -> $$1.dX().b(cdn.B));
    }
 }

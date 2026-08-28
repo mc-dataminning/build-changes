@@ -1,91 +1,93 @@
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 public abstract class eqo {
-   protected equ a;
-   protected buh b;
-   protected final Int2ObjectMap<eqn> c = new Int2ObjectOpenHashMap();
-   protected int d;
-   protected int e;
-   protected int f;
-   protected boolean g;
-   protected boolean h;
-   protected boolean i;
-   protected boolean j;
+   public static final jt<eqp> c = new jt<>();
+   protected final dup<eqo, eqp> d;
+   private eqp a;
+   private final jn.c<eqo> b = lu.c.f(this);
 
-   public void a(def $$0, buh $$1) {
-      this.a = new equ($$0, $$1);
-      this.b = $$1;
-      this.c.clear();
-      this.d = azc.d($$1.dn() + 1.0F);
-      this.e = azc.d($$1.do() + 1.0F);
-      this.f = azc.d($$1.dn() + 1.0F);
+   protected eqo() {
+      dup.a<eqo, eqp> $$0 = new dup.a<>(this);
+      this.a($$0);
+      this.d = $$0.a(eqo::g, eqp::new);
+      this.f(this.d.b());
    }
 
-   public void b() {
-      this.a = null;
-      this.b = null;
+   protected void a(dup.a<eqo, eqp> $$0) {
    }
 
-   protected eqn b(je $$0) {
-      return this.c($$0.u(), $$0.v(), $$0.w());
+   public dup<eqo, eqp> f() {
+      return this.d;
    }
 
-   protected eqn c(int $$0, int $$1, int $$2) {
-      return (eqn)this.c.computeIfAbsent(eqn.b($$0, $$1, $$2), $$3 -> new eqn($$0, $$1, $$2));
+   protected final void f(eqp $$0) {
+      this.a = $$0;
    }
 
-   public abstract eqn a();
-
-   public abstract eqw a(double var1, double var3, double var5);
-
-   protected eqw b(double $$0, double $$1, double $$2) {
-      return new eqw(this.c(azc.a($$0), azc.a($$1), azc.a($$2)));
+   public final eqp g() {
+      return this.a;
    }
 
-   public abstract int a(eqn[] var1, eqn var2);
+   public abstract cvk a();
 
-   public abstract eqs a(equ var1, int var2, int var3, int var4, buh var5);
-
-   public abstract eqs a(equ var1, int var2, int var3, int var4);
-
-   public eqs a(buh $$0, je $$1) {
-      return this.a(new equ($$0.dS(), $$0), $$1.u(), $$1.v(), $$1.w());
+   protected void a(deg $$0, je $$1, eqp $$2, azl $$3) {
    }
 
-   public void a(boolean $$0) {
-      this.g = $$0;
+   protected void b(deg $$0, je $$1, duo $$2, eqp $$3) {
    }
 
-   public void b(boolean $$0) {
-      this.h = $$0;
+   protected void b(deg $$0, je $$1, eqp $$2, azl $$3) {
    }
 
-   public void c(boolean $$0) {
-      this.i = $$0;
+   @Nullable
+   protected ll h() {
+      return null;
    }
 
-   public void d(boolean $$0) {
-      this.j = $$0;
+   protected abstract boolean a(eqp var1, ddl var2, je var3, eqo var4, jj var5);
+
+   protected abstract eys a(ddl var1, je var2, eqp var3);
+
+   public abstract int a(dej var1);
+
+   protected boolean i() {
+      return false;
    }
 
-   public boolean d() {
-      return this.g;
+   protected boolean b() {
+      return false;
    }
 
-   public boolean e() {
-      return this.h;
+   protected abstract float c();
+
+   public abstract float a(eqp var1, ddl var2, je var3);
+
+   public abstract float a(eqp var1);
+
+   protected abstract duo b(eqp var1);
+
+   public abstract boolean c(eqp var1);
+
+   public abstract int d(eqp var1);
+
+   public boolean a(eqo $$0) {
+      return $$0 == this;
    }
 
-   public boolean f() {
-      return this.i;
+   @Deprecated
+   public boolean a(axj<eqo> $$0) {
+      return this.b.a($$0);
    }
 
-   public boolean g() {
-      return this.j;
+   public abstract ezm b(eqp var1, ddl var2, je var3);
+
+   public Optional<awd> j() {
+      return Optional.empty();
    }
 
-   public static boolean a(dua $$0) {
-      return $$0.a(aws.aL) || $$0.a(dgx.H) || $$0.a(dgx.kJ) || dhj.h($$0) || $$0.a(dgx.fv);
+   @Deprecated
+   public jn.c<eqo> k() {
+      return this.b;
    }
 }

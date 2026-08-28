@@ -1,30 +1,214 @@
-import java.util.Collections;
-import java.util.List;
-import javax.annotation.Nullable;
+public class csh extends cqw {
+   protected static final int m = 0;
+   protected static final int n = 1;
+   protected static final int o = 2;
+   private static final int p = 3;
+   private static final int q = 30;
+   private static final int r = 30;
+   private static final int s = 39;
+   private static final int t = 136;
+   private static final int u = 162;
+   private static final int v = 220;
+   private static final int w = 37;
+   private final ddc x;
+   private final csg y;
+   private int z;
+   private boolean A;
+   private boolean B;
 
-public interface csh {
-   void a(@Nullable czv<?> var1);
+   public csh(int $$0, cnt $$1) {
+      this($$0, $$1, new cne($$1.k));
+   }
 
-   @Nullable
-   czv<?> d();
+   public csh(int $$0, cnt $$1, ddc $$2) {
+      super(csf.t, $$0);
+      this.x = $$2;
+      this.y = new csg($$2);
+      this.a(new cst(this.y, 0, 136, 37));
+      this.a(new cst(this.y, 1, 162, 37));
+      this.a(new csi($$1.k, $$2, this.y, 2, 220, 37));
+      this.c($$1, 108, 84);
+   }
 
-   default void a(cnp $$0, List<cvl> $$1) {
-      czv<?> $$2 = this.d();
-      if ($$2 != null) {
-         $$0.a($$2, $$1);
-         if (!$$2.b().ar_()) {
-            $$0.a(Collections.singleton($$2));
-            this.a(null);
+   public void a(boolean $$0) {
+      this.A = $$0;
+   }
+
+   @Override
+   public void a(bri $$0) {
+      this.y.f();
+      super.a($$0);
+   }
+
+   public void e(int $$0) {
+      this.y.c($$0);
+   }
+
+   @Override
+   public boolean b(cnu $$0) {
+      return this.x.gp() == $$0;
+   }
+
+   public int l() {
+      return this.x.t();
+   }
+
+   public int m() {
+      return this.y.h();
+   }
+
+   public void f(int $$0) {
+      this.x.t($$0);
+   }
+
+   public int n() {
+      return this.z;
+   }
+
+   public void g(int $$0) {
+      this.z = $$0;
+   }
+
+   public void b(boolean $$0) {
+      this.B = $$0;
+   }
+
+   public boolean o() {
+      return this.B;
+   }
+
+   @Override
+   public boolean a(cvp $$0, cst $$1) {
+      return false;
+   }
+
+   @Override
+   public cvp b(cnu $$0, int $$1) {
+      cvp $$2 = cvp.k;
+      cst $$3 = this.k.get($$1);
+      if ($$3 != null && $$3.h()) {
+         cvp $$4 = $$3.g();
+         $$2 = $$4.u();
+         if ($$1 == 2) {
+            if (!this.a($$4, 3, 39, true)) {
+               return cvp.k;
+            }
+
+            $$3.b($$4, $$2);
+            this.r();
+         } else if ($$1 != 0 && $$1 != 1) {
+            if ($$1 >= 3 && $$1 < 30) {
+               if (!this.a($$4, 30, 39, false)) {
+                  return cvp.k;
+               }
+            } else if ($$1 >= 30 && $$1 < 39 && !this.a($$4, 3, 30, false)) {
+               return cvp.k;
+            }
+         } else if (!this.a($$4, 3, 39, false)) {
+            return cvp.k;
+         }
+
+         if ($$4.f()) {
+            $$3.e(cvp.k);
+         } else {
+            $$3.c();
+         }
+
+         if ($$4.J() == $$2.J()) {
+            return cvp.k;
+         }
+
+         $$3.a($$0, $$4);
+      }
+
+      return $$2;
+   }
+
+   private void r() {
+      if (!this.x.gx()) {
+         bto $$0 = (bto)this.x;
+         $$0.dS().a($$0.dx(), $$0.dz(), $$0.dD(), this.x.gt(), awf.g, 1.0F, 1.0F, false);
+      }
+   }
+
+   @Override
+   public void a(cnu $$0) {
+      super.a($$0);
+      this.x.a(null);
+      if (!this.x.gx()) {
+         if (!$$0.bI() || $$0 instanceof ari && ((ari)$$0).x()) {
+            cvp $$1 = this.y.b(0);
+            if (!$$1.f()) {
+               $$0.a($$1, false);
+            }
+
+            $$1 = this.y.b(1);
+            if (!$$1.f()) {
+               $$0.a($$1, false);
+            }
+         } else if ($$0 instanceof ari) {
+            $$0.gc().g(this.y.b(0));
+            $$0.gc().g(this.y.b(1));
          }
       }
    }
 
-   default boolean a(dds $$0, arh $$1, czv<?> $$2) {
-      if (!$$2.b().ar_() && $$0.ac().b(ddo.w) && !$$1.K().b($$2)) {
-         return false;
-      } else {
-         this.a($$2);
-         return true;
+   public void h(int $$0) {
+      if ($$0 >= 0 && this.p().size() > $$0) {
+         cvp $$1 = this.y.a(0);
+         if (!$$1.f()) {
+            if (!this.a($$1, 3, 39, true)) {
+               return;
+            }
+
+            this.y.a(0, $$1);
+         }
+
+         cvp $$2 = this.y.a(1);
+         if (!$$2.f()) {
+            if (!this.a($$2, 3, 39, true)) {
+               return;
+            }
+
+            this.y.a(1, $$2);
+         }
+
+         if (this.y.a(0).f() && this.y.a(1).f()) {
+            ddd $$3 = this.p().get($$0);
+            this.a(0, $$3.d());
+            $$3.e().ifPresent($$0x -> this.a(1, $$0x));
+         }
       }
+   }
+
+   private void a(int $$0, ddb $$1) {
+      for (int $$2 = 3; $$2 < 39; $$2++) {
+         cvp $$3 = this.k.get($$2).g();
+         if (!$$3.f() && $$1.a($$3)) {
+            cvp $$4 = this.y.a($$0);
+            if ($$4.f() || cvp.c($$3, $$4)) {
+               int $$5 = $$3.k();
+               int $$6 = Math.min($$5 - $$4.J(), $$3.J());
+               cvp $$7 = $$3.c($$4.J() + $$6);
+               $$3.h($$6);
+               this.y.a($$0, $$7);
+               if ($$7.J() >= $$5) {
+                  break;
+               }
+            }
+         }
+      }
+   }
+
+   public void a(dde $$0) {
+      this.x.a($$0);
+   }
+
+   public dde p() {
+      return this.x.gr();
+   }
+
+   public boolean q() {
+      return this.A;
    }
 }

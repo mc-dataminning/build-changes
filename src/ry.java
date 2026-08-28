@@ -1,15 +1,15 @@
 public class ry {
-   public static final ala<eco<?, ?>> a = ru.a("pile_hay");
-   public static final ala<eco<?, ?>> b = ru.a("pile_melon");
-   public static final ala<eco<?, ?>> c = ru.a("pile_snow");
-   public static final ala<eco<?, ?>> d = ru.a("pile_ice");
-   public static final ala<eco<?, ?>> e = ru.a("pile_pumpkin");
+   public static final alb<edc<?, ?>> a = ru.a("pile_hay");
+   public static final alb<edc<?, ?>> b = ru.a("pile_melon");
+   public static final alb<edc<?, ?>> c = ru.a("pile_snow");
+   public static final alb<edc<?, ?>> d = ru.a("pile_ice");
+   public static final alb<edc<?, ?>> e = ru.a("pile_pumpkin");
 
-   public static void a(qt<eco<?, ?>> $$0) {
-      ru.a($$0, a, edc.j, new eey(new eho(dgx.ij)));
-      ru.a($$0, b, edc.j, new eey(ehh.a(dgx.fa)));
-      ru.a($$0, c, edc.j, new eey(ehh.a(dgx.dN)));
-      ru.a($$0, d, edc.j, new eey(new ehr(bpu.<dua>a().a(dgx.mW.o(), 1).a(dgx.iC.o(), 5))));
-      ru.a($$0, e, edc.j, new eey(new ehr(bpu.<dua>a().a(dgx.eZ.o(), 19).a(dgx.ef.o(), 1))));
+   public static void a(qt<edc<?, ?>> $$0) {
+      ru.a($$0, a, edq.j, new efm(new eic(dhl.ij)));
+      ru.a($$0, b, edq.j, new efm(ehv.a(dhl.fa)));
+      ru.a($$0, c, edq.j, new efm(ehv.a(dhl.dN)));
+      ru.a($$0, d, edq.j, new efm(new eif(bpz.<duo>a().a(dhl.mW.o(), 1).a(dhl.iC.o(), 5))));
+      ru.a($$0, e, edq.j, new efm(new eif(bpz.<duo>a().a(dhl.eZ.o(), 19).a(dhl.ef.o(), 1))));
    }
 }

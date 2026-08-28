@@ -1,55 +1,41 @@
-public class gev extends gem {
-   private final gez b;
-   protected boolean a;
-
-   gev(gax $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gez $$7) {
+public class gev extends geu {
+   gev(gbh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
       super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.b = $$7;
-      this.d(1.5F);
-      this.b($$7);
+      this.D *= 1.5F;
+      this.t = (int)(Math.random() * 2.0) + 60;
    }
 
    @Override
-   public int a(float $$0) {
-      return this.a ? 240 : super.a($$0);
-   }
-
-   @Override
-   public gei b() {
-      return gei.c;
+   public float b(float $$0) {
+      float $$1 = 1.0F - ((float)this.s + $$0) / ((float)this.t * 1.5F);
+      return this.D * $$1;
    }
 
    @Override
    public void a() {
-      super.a();
-      this.b(this.b);
-   }
-
-   public static class a implements geh<lr> {
-      private final gez a;
-
-      public a(gez $$0) {
-         this.a = $$0;
-      }
-
-      public gee a(lr $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gev $$8 = new gev($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.a = true;
-         return $$8;
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         float $$0 = (float)this.s / (float)this.t;
+         this.g = this.g + this.j * (double)$$0;
+         this.h = this.h + this.k * (double)$$0;
+         this.i = this.i + this.l * (double)$$0;
       }
    }
 
-   public static class b implements geh<lr> {
-      private final gez a;
+   public static class a implements ger<lr> {
+      private final gfj a;
 
-      public b(gez $$0) {
+      public a(gfj $$0) {
          this.a = $$0;
       }
 
-      public gee a(lr $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gev $$8 = new gev($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
+      public geo a(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gev $$8 = new gev($$1, $$2, $$3, $$4, $$5, $$6, $$7);
+         $$8.a(this.a);
          return $$8;
       }
    }

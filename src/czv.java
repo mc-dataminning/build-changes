@@ -1,34 +1,30 @@
-public record czv<T extends czt<?>>(alb b, T c) {
-   public static final zb<wo, czv<?>> a = zb.a(alb.b, czv::a, czt.i, czv::b, czv::new);
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof czv<?> $$1 && this.b.equals($$1.b)) {
-            return true;
-         }
+public enum czv implements azz {
+   a("building", 0),
+   b("redstone", 1),
+   c("equipment", 2),
+   d("misc", 3);
 
-         return false;
-      }
+   public static final Codec<czv> e = azz.a(czv::values);
+   public static final IntFunction<czv> f = axu.a(czv::a, values(), axu.a.a);
+   public static final zb<ByteBuf, czv> g = yz.a(f, czv::a);
+   private final String h;
+   private final int i;
+
+   private czv(final String $$0, final int $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    @Override
-   public int hashCode() {
-      return this.b.hashCode();
+   public String c() {
+      return this.h;
    }
 
-   @Override
-   public String toString() {
-      return this.b.toString();
-   }
-
-   public alb a() {
-      return this.b;
-   }
-
-   public T b() {
-      return this.c;
+   private int a() {
+      return this.i;
    }
 }

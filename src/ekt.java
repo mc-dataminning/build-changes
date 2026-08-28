@@ -1,8 +1,8 @@
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface ekt {
-   void a(eks var1);
-
-   @Nullable
-   eks a(ekg var1);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface ekt {
 }

@@ -1,37 +1,31 @@
-import com.mojang.authlib.GameProfile;
-import java.net.SocketAddress;
-import javax.annotation.Nullable;
+public class har extends hae {
+   private static final float n = 1.0F;
+   private static final float o = 1.0F;
+   private final cir p;
 
-public class har extends avg {
-   @Nullable
-   private uf h;
-
-   public har(has $$0, ju<alk> $$1, esk $$2) {
-      super($$0, $$1, $$2, 8);
-      this.a(10);
+   public har(cir $$0) {
+      super(awe.yA, awf.g, hav.t());
+      this.p = $$0;
+      this.k = hav.a.b;
+      this.i = false;
+      this.j = 0;
    }
 
    @Override
-   protected void b(arh $$0) {
-      if (this.b().a($$0.gb())) {
-         this.h = $$0.f(new uf());
+   public boolean s() {
+      return !this.p.ba();
+   }
+
+   @Override
+   public void q() {
+      if (!this.p.dN() && this.p.m() == null && this.p.gq()) {
+         this.f = (double)((float)this.p.dx());
+         this.g = (double)((float)this.p.dz());
+         this.h = (double)((float)this.p.dD());
+         this.d = 1.0F;
+         this.e = 1.0F;
+      } else {
+         this.n();
       }
-
-      super.b($$0);
-   }
-
-   @Override
-   public xd a(SocketAddress $$0, GameProfile $$1) {
-      return (xd)(this.b().a($$1) && this.a($$1.getName()) != null ? xd.c("multiplayer.disconnect.name_taken") : super.a($$0, $$1));
-   }
-
-   public has b() {
-      return (has)super.c();
-   }
-
-   @Nullable
-   @Override
-   public uf r() {
-      return this.h;
    }
 }

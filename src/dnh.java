@@ -1,26 +1,43 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dnh extends dhe {
-   public static final MapCodec<dnh> a = b(dnh::new);
-   protected static final float b = 6.0F;
-   protected static final eyx c = dgv.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+public class dnh extends dgx {
+   public static final MapCodec<dnh> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dvd.a.fieldOf("block_set_type").forGetter($$0x -> $$0x.d), u()).apply($$0, dnh::new)
+   );
+   public static final dvf f = dve.w;
 
    @Override
    public MapCodec<dnh> a() {
-      return a;
+      return e;
    }
 
-   protected dnh(dtz.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
-      return c;
+   protected dnh(dvd $$0, dun.d $$1) {
+      super($$1, $$0);
+      this.l(this.F.b().b(f, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean b(dua $$0, dcx $$1, je $$2) {
-      return $$0.a(aws.aM) || $$0.a(dgx.dX) || super.b($$0, $$1, $$2);
+   protected int h(duo $$0) {
+      return $$0.c(f) ? 15 : 0;
+   }
+
+   @Override
+   protected duo a(duo $$0, int $$1) {
+      return $$0.b(f, Boolean.valueOf($$1 > 0));
+   }
+
+   @Override
+   protected int b(deg $$0, je $$1) {
+      Class<? extends bto> $$2 = switch (this.d.f()) {
+         case a -> bto.class;
+         case b -> buk.class;
+      };
+      return a($$0, c.a($$1), $$2) > 0 ? 15 : 0;
+   }
+
+   @Override
+   protected void a(dup.a<dhj, duo> $$0) {
+      $$0.a(f);
    }
 }

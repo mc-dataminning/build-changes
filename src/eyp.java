@@ -1,32 +1,21 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
+public class eyp extends eyq {
+   private final bto b;
 
-public class eyp implements eyq {
-   private final DoubleList a;
+   public eyp(bto $$0) {
+      this($$0, $$0.dq());
+   }
 
-   public eyp(DoubleList $$0) {
-      this.a = $$0;
+   public eyp(bto $$0, eys $$1) {
+      super($$1);
+      this.b = $$0;
+   }
+
+   public bto a() {
+      return this.b;
    }
 
    @Override
-   public boolean a(eyq.a $$0) {
-      int $$1 = this.a.size() - 1;
-
-      for (int $$2 = 0; $$2 < $$1; $$2++) {
-         if (!$$0.merge($$2, $$2, $$2)) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public int size() {
-      return this.a.size();
-   }
-
-   @Override
-   public DoubleList a() {
-      return this.a;
+   public eyq.a d() {
+      return eyq.a.c;
    }
 }

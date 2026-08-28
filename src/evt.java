@@ -1,48 +1,97 @@
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.ArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import java.util.List;
 import java.util.Set;
 
-public record evt(jn<daw> b, List<Float> c) implements ewe {
-   public static final MapCodec<evt> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(daw.c.fieldOf("enchantment").forGetter(evt::c), ayl.a(Codec.FLOAT.listOf()).fieldOf("chances").forGetter(evt::d)).apply($$0, evt::new)
-   );
+public class evt extends euu {
+   private static final Codec<List<evt.b>> b = evt.b.a.listOf().validate($$0 -> {
+      Set<jn<bst>> $$1 = new ObjectOpenHashSet();
 
-   @Override
-   public ewf b() {
-      return ewg.k;
-   }
-
-   @Override
-   public Set<evm<?>> a() {
-      return ImmutableSet.of(evp.i);
-   }
-
-   public boolean a(est $$0) {
-      cvl $$1 = $$0.c(evp.i);
-      int $$2 = $$1 != null ? day.a(this.b, $$1) : 0;
-      float $$3 = this.c.get(Math.min($$2, this.c.size() - 1));
-      return $$0.b().i() < $$3;
-   }
-
-   public static ewe.a a(jn<daw> $$0, float... $$1) {
-      List<Float> $$2 = new ArrayList<>($$1.length);
-
-      for (float $$3 : $$1) {
-         $$2.add($$3);
+      for (evt.b $$2 : $$0) {
+         if (!$$1.add($$2.a())) {
+            return DataResult.error(() -> "Encountered duplicate mob effect: '" + $$2.a() + "'");
+         }
       }
 
-      return () -> new evt($$0, $$2);
+      return DataResult.success($$0);
+   });
+   public static final MapCodec<evt> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and(b.optionalFieldOf("effects", List.of()).forGetter($$0x -> $$0x.c)).apply($$0, evt::new)
+   );
+   private final List<evt.b> c;
+
+   evt(List<ews> $$0, List<evt.b> $$1) {
+      super($$0);
+      this.c = $$1;
    }
 
-   public jn<daw> c() {
-      return this.b;
+   @Override
+   public euw<evt> b() {
+      return eux.r;
    }
 
-   public List<Float> d() {
-      return this.c;
+   @Override
+   public Set<ewa<?>> a() {
+      return this.c.stream().flatMap($$0 -> $$0.b().a().stream()).collect(ImmutableSet.toImmutableSet());
+   }
+
+   @Override
+   public cvp a(cvp $$0, eth $$1) {
+      if ($$0.a(cvt.vY) && !this.c.isEmpty()) {
+         evt.b $$2 = ad.a(this.c, $$1.b());
+         jn<bst> $$3 = $$2.a();
+         int $$4 = $$2.b().a($$1);
+         if (!$$3.a().a()) {
+            $$4 *= 20;
+         }
+
+         cyu.a $$5 = new cyu.a($$3, $$4);
+         $$0.a(kr.M, cyu.a, $$5, cyu::a);
+         return $$0;
+      } else {
+         return $$0;
+      }
+   }
+
+   public static evt.a c() {
+      return new evt.a();
+   }
+
+   public static class a extends euu.a<evt.a> {
+      private final Builder<evt.b> a = ImmutableList.builder();
+
+      protected evt.a a() {
+         return this;
+      }
+
+      public evt.a a(jn<bst> $$0, exo $$1) {
+         this.a.add(new evt.b($$0, $$1));
+         return this;
+      }
+
+      @Override
+      public euv b() {
+         return new evt(this.g(), this.a.build());
+      }
+   }
+
+   static record b(jn<bst> b, exo c) {
+      public static final Codec<evt.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(bst.a.fieldOf("type").forGetter(evt.b::a), exp.a.fieldOf("duration").forGetter(evt.b::b)).apply($$0, evt.b::new)
+      );
+
+      public jn<bst> a() {
+         return this.b;
+      }
+
+      public exo b() {
+         return this.c;
+      }
    }
 }

@@ -1,11 +1,12 @@
-import java.util.Set;
+public class esu extends RuntimeException {
+   private final xd a;
 
-public interface esu {
-   default Set<evm<?>> a() {
-      return Set.of();
+   public esu(xd $$0) {
+      super($$0.getString());
+      this.a = $$0;
    }
 
-   default void a(esz $$0) {
-      $$0.a(this);
+   public xd a() {
+      return this.a;
    }
 }

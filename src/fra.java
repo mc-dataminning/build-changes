@@ -1,108 +1,48 @@
-import com.google.common.collect.Ordering;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+public class fra extends fqs<crd> {
+   private static final alc G = alc.b("container/brewing_stand/fuel_length");
+   private static final alc H = alc.b("container/brewing_stand/brew_progress");
+   private static final alc I = alc.b("container/brewing_stand/bubbles");
+   private static final alc J = alc.b("textures/gui/container/brewing_stand.png");
+   private static final int[] K = new int[]{29, 24, 20, 16, 11, 6, 0};
 
-public abstract class fra<T extends cqq> extends fqi<T> {
-   private static final alb G = alb.b("container/inventory/effect_background_large");
-   private static final alb H = alb.b("container/inventory/effect_background_small");
-
-   public fra(T $$0, cno $$1, xd $$2) {
+   public fra(crd $$0, cnt $$1, xd $$2) {
       super($$0, $$1, $$2);
    }
 
    @Override
-   public void a(fjn $$0, int $$1, int $$2, float $$3) {
+   protected void aR_() {
+      super.aR_();
+      this.v = (this.s - this.p.a(this.l)) / 2;
+   }
+
+   @Override
+   public void a(fjx $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.c($$0, $$1, $$2);
+      this.a($$0, $$1, $$2);
    }
 
-   public boolean J() {
-      int $$0 = this.C + this.s + 2;
-      int $$1 = this.n - $$0;
-      return $$1 >= 32;
-   }
+   @Override
+   protected void a(fjx $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.n - this.s) / 2;
+      int $$5 = (this.o - this.u) / 2;
+      $$0.a(ghq::B, J, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
+      int $$6 = this.z.l();
+      int $$7 = azd.a((18 * $$6 + 20 - 1) / 20, 0, 18);
+      if ($$7 > 0) {
+         $$0.a(ghq::B, G, 18, 4, 0, 0, $$4 + 60, $$5 + 44, $$7, 4);
+      }
 
-   private void c(fjn $$0, int $$1, int $$2) {
-      int $$3 = this.C + this.s + 2;
-      int $$4 = this.n - $$3;
-      Collection<bsq> $$5 = this.m.t.ex();
-      if (!$$5.isEmpty() && $$4 >= 32) {
-         boolean $$6 = $$4 >= 120;
-         int $$7 = 33;
-         if ($$5.size() > 5) {
-            $$7 = 132 / ($$5.size() - 1);
+      int $$8 = this.z.m();
+      if ($$8 > 0) {
+         int $$9 = (int)(28.0F * (1.0F - (float)$$8 / 400.0F));
+         if ($$9 > 0) {
+            $$0.a(ghq::B, H, 9, 28, 0, 0, $$4 + 97, $$5 + 16, 9, $$9);
          }
 
-         Iterable<bsq> $$8 = Ordering.natural().sortedCopy($$5);
-         this.a($$0, $$3, $$7, $$8, $$6);
-         this.b($$0, $$3, $$7, $$8, $$6);
-         if ($$6) {
-            this.a($$0, $$3, $$7, $$8);
-         } else if ($$1 >= $$3 && $$1 <= $$3 + 33) {
-            int $$9 = this.D;
-            bsq $$10 = null;
-
-            for (bsq $$11 : $$8) {
-               if ($$2 >= $$9 && $$2 <= $$9 + $$7) {
-                  $$10 = $$11;
-               }
-
-               $$9 += $$7;
-            }
-
-            if ($$10 != null) {
-               List<xd> $$12 = List.of(this.a($$10), bsr.a($$10, 1.0F, this.m.s.s().f()));
-               $$0.a(this.p, $$12, Optional.empty(), $$1, $$2);
-            }
+         $$9 = K[$$8 / 2 % 7];
+         if ($$9 > 0) {
+            $$0.a(ghq::B, I, 12, 29, 0, 29 - $$9, $$4 + 63, $$5 + 14 + 29 - $$9, 12, $$9);
          }
       }
-   }
-
-   private void a(fjn $$0, int $$1, int $$2, Iterable<bsq> $$3, boolean $$4) {
-      int $$5 = this.D;
-
-      for (bsq $$6 : $$3) {
-         if ($$4) {
-            $$0.a(ghe::C, G, $$1, $$5, 120, 32);
-         } else {
-            $$0.a(ghe::C, H, $$1, $$5, 32, 32);
-         }
-
-         $$5 += $$2;
-      }
-   }
-
-   private void b(fjn $$0, int $$1, int $$2, Iterable<bsq> $$3, boolean $$4) {
-      gxj $$5 = this.m.aF();
-      int $$6 = this.D;
-
-      for (bsq $$7 : $$3) {
-         jn<bso> $$8 = $$7.c();
-         gwk $$9 = $$5.a($$8);
-         $$0.a(ghe::C, $$9, $$1 + ($$4 ? 6 : 7), $$6 + 7, 18, 18);
-         $$6 += $$2;
-      }
-   }
-
-   private void a(fjn $$0, int $$1, int $$2, Iterable<bsq> $$3) {
-      int $$4 = this.D;
-
-      for (bsq $$5 : $$3) {
-         xd $$6 = this.a($$5);
-         $$0.b(this.p, $$6, $$1 + 10 + 18, $$4 + 6, 16777215);
-         xd $$7 = bsr.a($$5, 1.0F, this.m.s.s().f());
-         $$0.b(this.p, $$7, $$1 + 10 + 18, $$4 + 6 + 10, 8355711);
-         $$4 += $$2;
-      }
-   }
-
-   private xd a(bsq $$0) {
-      xr $$1 = $$0.c().a().e().f();
-      if ($$0.e() >= 1 && $$0.e() <= 9) {
-         $$1.b(xc.v).b(xd.c("enchantment.level." + ($$0.e() + 1)));
-      }
-
-      return $$1;
    }
 }

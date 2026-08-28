@@ -1,67 +1,48 @@
-import java.util.Arrays;
+public class fyu<T extends guj> extends fxk<T> {
+   protected final gal b;
+   protected final gal c;
+   protected final gal d;
+   protected final gal e;
+   protected final gal f;
+   protected final gal g;
+   protected final gal i;
 
-public class fyu extends fxa<gsu> {
-   private static final int a = 7;
-   private final gab b;
-   private final gab[] c = new gab[7];
-   private final gab[] d = new gab[3];
-   private static final int[][] e = new int[][]{{3, 2, 2}, {4, 3, 2}, {6, 4, 3}, {3, 3, 3}, {2, 2, 3}, {2, 1, 2}, {1, 1, 2}};
-   private static final int[][] f = new int[][]{{0, 0}, {0, 4}, {0, 9}, {0, 16}, {0, 22}, {11, 0}, {13, 4}};
-
-   public fyu(gab $$0) {
+   protected fyu(gal $$0) {
       this.b = $$0;
-      Arrays.setAll(this.c, $$1 -> $$0.b(b($$1)));
-      Arrays.setAll(this.d, $$1 -> $$0.b(a($$1)));
+      this.c = $$0.b("head");
+      this.d = $$0.b("body");
+      this.e = $$0.b("right_hind_leg");
+      this.f = $$0.b("left_hind_leg");
+      this.g = $$0.b("right_front_leg");
+      this.i = $$0.b("left_front_leg");
    }
 
-   private static String a(int $$0) {
-      return "layer" + $$0;
+   public static gat a(int $$0, gap $$1) {
+      gat $$2 = new gat();
+      gav $$3 = $$2.a();
+      $$3.a("head", gaq.c().a(0, 0).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, $$1), gan.a(0.0F, (float)(18 - $$0), -6.0F));
+      $$3.a("body", gaq.c().a(28, 8).a(-5.0F, -10.0F, -7.0F, 10.0F, 16.0F, 8.0F, $$1), gan.a(0.0F, (float)(17 - $$0), 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      gaq $$4 = gaq.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, (float)$$0, 4.0F, $$1);
+      $$3.a("right_hind_leg", $$4, gan.a(-3.0F, (float)(24 - $$0), 7.0F));
+      $$3.a("left_hind_leg", $$4, gan.a(3.0F, (float)(24 - $$0), 7.0F));
+      $$3.a("right_front_leg", $$4, gan.a(-3.0F, (float)(24 - $$0), -5.0F));
+      $$3.a("left_front_leg", $$4, gan.a(3.0F, (float)(24 - $$0), -5.0F));
+      return $$2;
    }
 
-   private static String b(int $$0) {
-      return "segment" + $$0;
-   }
-
-   public static gah b() {
-      gaj $$0 = new gaj();
-      gal $$1 = $$0.a();
-      float[] $$2 = new float[7];
-      float $$3 = -3.5F;
-
-      for (int $$4 = 0; $$4 < 7; $$4++) {
-         $$1.a(
-            b($$4),
-            gag.c().a(f[$$4][0], f[$$4][1]).a((float)e[$$4][0] * -0.5F, 0.0F, (float)e[$$4][2] * -0.5F, (float)e[$$4][0], (float)e[$$4][1], (float)e[$$4][2]),
-            gad.a(0.0F, (float)(24 - e[$$4][1]), $$3)
-         );
-         $$2[$$4] = $$3;
-         if ($$4 < 6) {
-            $$3 += (float)(e[$$4][2] + e[$$4 + 1][2]) * 0.5F;
-         }
-      }
-
-      $$1.a(a(0), gag.c().a(20, 0).a(-5.0F, 0.0F, (float)e[2][2] * -0.5F, 10.0F, 8.0F, (float)e[2][2]), gad.a(0.0F, 16.0F, $$2[2]));
-      $$1.a(a(1), gag.c().a(20, 11).a(-3.0F, 0.0F, (float)e[4][2] * -0.5F, 6.0F, 4.0F, (float)e[4][2]), gad.a(0.0F, 20.0F, $$2[4]));
-      $$1.a(a(2), gag.c().a(20, 18).a(-3.0F, 0.0F, (float)e[4][2] * -0.5F, 6.0F, 5.0F, (float)e[1][2]), gad.a(0.0F, 19.0F, $$2[1]));
-      return gah.a($$0, 64, 32);
+   public void a(T $$0) {
+      this.c.e = $$0.V * (float) (Math.PI / 180.0);
+      this.c.f = $$0.U * (float) (Math.PI / 180.0);
+      float $$1 = $$0.X;
+      float $$2 = $$0.Y;
+      this.e.e = azd.b($$1 * 0.6662F) * 1.4F * $$2;
+      this.f.e = azd.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.g.e = azd.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
+      this.i.e = azd.b($$1 * 0.6662F) * 1.4F * $$2;
    }
 
    @Override
-   public gab a() {
+   public gal a() {
       return this.b;
-   }
-
-   @Override
-   public void a(gsu $$0) {
-      for (int $$1 = 0; $$1 < this.c.length; $$1++) {
-         this.c[$$1].f = azc.b($$0.p * 0.9F + (float)$$1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.05F * (float)(1 + Math.abs($$1 - 2));
-         this.c[$$1].b = azc.a($$0.p * 0.9F + (float)$$1 * 0.15F * (float) Math.PI) * (float) Math.PI * 0.2F * (float)Math.abs($$1 - 2);
-      }
-
-      this.d[0].f = this.c[2].f;
-      this.d[1].f = this.c[4].f;
-      this.d[1].b = this.c[4].b;
-      this.d[2].f = this.c[1].f;
-      this.d[2].b = this.c[1].b;
    }
 }

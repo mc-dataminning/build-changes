@@ -1,199 +1,45 @@
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class cpp extends cpo implements bty, cpq {
-   private static final int i = 27;
-   private jw<cvl> j = jw.a(27, cvl.k);
-   @Nullable
-   private ala<esy> k;
-   private long l;
+public class cpp {
+   private final cpo a;
+   private final List<cpp.a> b = Lists.newArrayList();
 
-   public cpp(btq<? extends cpo> $$0, dds $$1) {
-      super($$0, $$1);
+   public cpp(cpo $$0) {
+      this.a = $$0;
    }
 
-   public cpp(dds $$0, double $$1, double $$2, double $$3) {
-      super(btq.r, $$0);
-      this.a_($$1, $$2, $$3);
-      this.L = $$1;
-      this.M = $$2;
-      this.N = $$3;
+   public cpp a(int $$0, cpm $$1) {
+      this.b.add(new cpp.a($$0, $$1));
+      return this;
    }
 
-   @Override
-   protected float v() {
-      return 0.15F;
+   public cpo a() {
+      this.b.stream().map(cpp.a::b).collect(Collectors.toSet()).forEach(this.a::a);
+      this.b.forEach($$0 -> {
+         cpm $$1 = $$0.b();
+         this.a.c($$1).forEach($$1x -> $$1x.a($$0.a(), 0.0F));
+         this.a.b($$1).a($$0.a(), 1.0F);
+      });
+      return this.a;
    }
 
-   @Override
-   protected int x() {
-      return 1;
-   }
+   static class a {
+      private final int a;
+      private final cpm b;
 
-   @Override
-   protected void b(uf $$0) {
-      super.b($$0);
-      this.a($$0, this.dU());
-   }
-
-   @Override
-   protected void a(uf $$0) {
-      super.a($$0);
-      this.b($$0, this.dU());
-   }
-
-   @Override
-   public void a(bsb $$0) {
-      this.b(this.aj_());
-      this.a($$0, this.dS(), this);
-   }
-
-   @Override
-   public void a(btj.c $$0) {
-      if (!this.dS().B && $$0.a()) {
-         brg.a(this.dS(), this, this);
+      public a(int $$0, cpm $$1) {
+         this.a = $$0;
+         this.b = $$1;
       }
 
-      super.a($$0);
-   }
-
-   @Override
-   public brk a(cnp $$0, brj $$1) {
-      if (!$$0.fR()) {
-         brk $$2 = super.a($$0, $$1);
-         if ($$2 != brk.e) {
-            return $$2;
-         }
+      public int a() {
+         return this.a;
       }
 
-      if (this.r($$0) && !$$0.fR()) {
-         return brk.e;
-      } else {
-         brk $$3 = this.c_($$0);
-         if ($$3.a()) {
-            this.a(dyx.k, $$0);
-            cmg.a($$0, true);
-         }
-
-         return $$3;
+      public cpm b() {
+         return this.b;
       }
-   }
-
-   @Override
-   public void b(cnp $$0) {
-      $$0.a(this);
-      if (!$$0.dS().B) {
-         this.a(dyx.k, $$0);
-         cmg.a($$0, true);
-      }
-   }
-
-   @Override
-   public cvg aj_() {
-      return switch (this.w()) {
-         case b -> cvo.nY;
-         case c -> cvo.oa;
-         case d -> cvo.oc;
-         case e -> cvo.oe;
-         case f -> cvo.og;
-         case g -> cvo.oi;
-         case h -> cvo.ok;
-         case i -> cvo.om;
-         default -> cvo.nW;
-      };
-   }
-
-   @Override
-   public void a() {
-      this.f();
-   }
-
-   @Override
-   public int b() {
-      return 27;
-   }
-
-   @Override
-   public cvl a(int $$0) {
-      return this.f_($$0);
-   }
-
-   @Override
-   public cvl a(int $$0, int $$1) {
-      return this.b($$0, $$1);
-   }
-
-   @Override
-   public cvl b(int $$0) {
-      return this.e_($$0);
-   }
-
-   @Override
-   public void a(int $$0, cvl $$1) {
-      this.c($$0, $$1);
-   }
-
-   @Override
-   public buw a_(int $$0) {
-      return this.g_($$0);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cnp $$0) {
-      return this.g($$0);
-   }
-
-   @Nullable
-   @Override
-   public cqq createMenu(int $$0, cno $$1, cnp $$2) {
-      if (this.k != null && $$2.P_()) {
-         return null;
-      } else {
-         this.e($$1.k);
-         return cqz.a($$0, $$1, this);
-      }
-   }
-
-   public void e(@Nullable cnp $$0) {
-      this.f($$0);
-   }
-
-   @Nullable
-   @Override
-   public ala<esy> E() {
-      return this.k;
-   }
-
-   @Override
-   public void a(@Nullable ala<esy> $$0) {
-      this.k = $$0;
-   }
-
-   @Override
-   public long F() {
-      return this.l;
-   }
-
-   @Override
-   public void a(long $$0) {
-      this.l = $$0;
-   }
-
-   @Override
-   public jw<cvl> G() {
-      return this.j;
-   }
-
-   @Override
-   public void I() {
-      this.j = jw.a(this.b(), cvl.k);
-   }
-
-   @Override
-   public void c(cnp $$0) {
-      this.dS().a(dyx.j, this.dq(), dyx.a.a($$0));
    }
 }

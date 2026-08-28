@@ -1,25 +1,42 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
+import java.util.Collections;
+import java.util.List;
 
-record emd(ala<ely> c, bpu<ala<ely>> d) implements ema {
-   static MapCodec<emd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ala.a(lv.aU).fieldOf("alias").forGetter(emd::c), bpu.b(ala.a(lv.aU)).fieldOf("targets").forGetter(emd::d)).apply($$0, emd::new)
-   );
+public class emd extends emk {
+   public static final MapCodec<emd> a = MapCodec.unit(() -> emd.b);
+   public static final emd b = new emd();
 
-   @Override
-   public void a(azk $$0, BiConsumer<ala<ely>, ala<ely>> $$1) {
-      this.d.b($$0).ifPresent($$1x -> $$1.accept(this.c, (ala<ely>)$$1x.b()));
+   private emd() {
+      super(emm.a.a);
    }
 
    @Override
-   public Stream<ala<ely>> a() {
-      return this.d.e().stream().map(bpw.b::b);
+   public ki a(epf $$0, dnx $$1) {
+      return ki.g;
    }
 
    @Override
-   public MapCodec<emd> b() {
-      return a;
+   public List<epe.c> a(epf $$0, je $$1, dnx $$2, azl $$3) {
+      return Collections.emptyList();
+   }
+
+   @Override
+   public eku a(epf $$0, je $$1, dnx $$2) {
+      throw new IllegalStateException("Invalid call to EmtyPoolElement.getBoundingBox, filter me!");
+   }
+
+   @Override
+   public boolean a(epf $$0, dfd $$1, dfb $$2, dwl $$3, je $$4, je $$5, dnx $$6, eku $$7, azl $$8, eoo $$9, boolean $$10) {
+      return true;
+   }
+
+   @Override
+   public eml<?> a() {
+      return eml.d;
+   }
+
+   @Override
+   public String toString() {
+      return "Empty";
    }
 }

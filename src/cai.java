@@ -1,8 +1,17 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public class cai implements cag {
+   private final bum b;
+   protected boolean a;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface cai {
+   public cai(bum $$0) {
+      this.b = $$0;
+   }
+
+   public void a() {
+      this.a = true;
+   }
+
+   public void b() {
+      this.b.t(this.a);
+      this.a = false;
+   }
 }

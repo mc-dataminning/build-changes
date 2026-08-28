@@ -1,43 +1,40 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dlo extends dgv {
-   public static final MapCodec<dlo> a = b(dlo::new);
-   private static final int b = 20;
+public class dlo extends dkx implements dma {
+   public static final MapCodec<dlo> c = b(dlo::new);
 
    @Override
    public MapCodec<dlo> a() {
-      return a;
+      return c;
    }
 
-   public dlo(dtz.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public void a(dds $$0, je $$1, dua $$2, btj $$3) {
-      if (!$$3.cb() && $$3 instanceof buf) {
-         $$3.a($$0.ak().f(), 1.0F);
-      }
-
-      super.a($$0, $$1, $$2, $$3);
+   protected dlo(dun.d $$0) {
+      super($$0, jj.b, ezj.b(), true);
    }
 
    @Override
-   protected void a(dua $$0, arg $$1, je $$2, azk $$3) {
-      dhb.b($$1, $$2.d(), $$0);
+   protected dky c() {
+      return (dky)dhl.mc;
    }
 
    @Override
-   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
-      if ($$1 == jj.b && $$2.a(dgx.G)) {
-         $$3.a($$4, this, 20);
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected eqp b_(duo $$0) {
+      return eqq.c.a(false);
    }
 
    @Override
-   protected void b(dua $$0, dds $$1, je $$2, dua $$3, boolean $$4) {
-      $$1.a($$2, this, 20);
+   protected boolean o(duo $$0) {
+      return this.c().o($$0);
+   }
+
+   @Override
+   public boolean a(@Nullable cnu $$0, ddl $$1, je $$2, duo $$3, eqo $$4) {
+      return false;
+   }
+
+   @Override
+   public boolean a(deh $$0, je $$1, duo $$2, eqp $$3) {
+      return false;
    }
 }

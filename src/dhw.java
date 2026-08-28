@@ -1,51 +1,61 @@
-import java.util.Optional;
+import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public interface dhw<T extends Enum<T>> {
-   int z_ = 4;
+public class dhw extends dod {
+   public static final MapCodec<dhw> a = b(dhw::new);
+   public static final dvi b = dve.R;
 
-   Optional<dua> k_(dua var1);
-
-   float ax_();
-
-   default void a_(dua $$0, arg $$1, je $$2, azk $$3) {
-      float $$4 = 0.05688889F;
-      if ($$3.i() < 0.05688889F) {
-         this.c($$0, $$1, $$2, $$3).ifPresent($$2x -> $$1.b($$2, $$2x));
-      }
+   @Override
+   public MapCodec<dhw> a() {
+      return a;
    }
 
-   T c();
+   public dhw(dun.d $$0) {
+      super($$0);
+      this.l(this.o().b(b, jj.c));
+   }
 
-   default Optional<dua> c(dua $$0, arg $$1, je $$2, azk $$3) {
-      int $$4 = this.c().ordinal();
-      int $$5 = 0;
-      int $$6 = 0;
+   @Nullable
+   @Override
+   public drs a(je $$0, duo $$1) {
+      return new drx($$0, $$1);
+   }
 
-      for (je $$7 : je.a($$2, 4, 4, 4)) {
-         int $$8 = $$7.k($$2);
-         if ($$8 > 4) {
-            break;
-         }
+   @Nullable
+   @Override
+   public <T extends drs> drt<T> a(deg $$0, duo $$1, dru<T> $$2) {
+      return !$$0.B ? a($$2, dru.J, ($$0x, $$1x, $$2x, $$3) -> dzu.c.a($$0x, $$3.gr(), $$3.gs())) : null;
+   }
 
-         if (!$$7.equals($$2) && $$1.a_($$7).b() instanceof dhw<?> $$9) {
-            Enum<?> $$10 = $$9.c();
-            if (this.c().getClass() == $$10.getClass()) {
-               int $$11 = $$10.ordinal();
-               if ($$11 < $$4) {
-                  return Optional.empty();
-               }
+   @Nullable
+   @Override
+   public duo a(czk $$0) {
+      return super.a($$0).b(b, $$0.g());
+   }
 
-               if ($$11 > $$4) {
-                  $$6++;
-               } else {
-                  $$5++;
-               }
-            }
-         }
-      }
+   @Override
+   public int a(duo $$0, ddl $$1, je $$2, jj $$3) {
+      return $$3 != $$0.c(b) ? super.a($$0, $$1, $$2, $$3) : 0;
+   }
 
-      float $$12 = (float)($$6 + 1) / (float)($$6 + $$5 + 1);
-      float $$13 = $$12 * $$12 * this.ax_();
-      return $$3.i() < $$13 ? this.k_($$0) : Optional.empty();
+   @Override
+   protected void a(dup.a<dhj, duo> $$0) {
+      super.a($$0);
+      $$0.a(b);
+   }
+
+   @Override
+   public duo a(duo $$0, dnx $$1) {
+      return $$0.b(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   public duo a(duo $$0, dmg $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   public int c() {
+      return 10;
    }
 }

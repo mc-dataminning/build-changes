@@ -1,80 +1,26 @@
 import javax.annotation.Nullable;
 
-public class cjh extends ciu {
-   private boolean b;
-   @Nullable
-   private eqp c;
-   @Nullable
-   private eye d;
+public interface cjh {
+   boolean a();
 
-   public cjh(cis $$0) {
-      super($$0);
-   }
+   void b();
 
-   @Override
-   public void c() {
-      if (!this.b && this.c != null) {
-         je $$0 = this.a.dS().a(dzw.a.f, edb.a(this.a.q()));
-         if (!$$0.a(this.a.dq(), 10.0)) {
-            this.a.gl().a(cji.a);
-         }
-      } else {
-         this.b = false;
-         this.j();
-      }
-   }
+   void c();
 
-   @Override
-   public void d() {
-      this.b = true;
-      this.c = null;
-      this.d = null;
-   }
+   void a(ciw var1, je var2, bsg var3, @Nullable cnu var4);
 
-   private void j() {
-      int $$0 = this.a.y();
-      eye $$1 = this.a.J(1.0F);
-      int $$2 = this.a.q(-$$1.d * 40.0, 105.0, -$$1.f * 40.0);
-      if (this.a.gm() != null && this.a.gm().e() > 0) {
-         $$2 %= 12;
-         if ($$2 < 0) {
-            $$2 += 12;
-         }
-      } else {
-         $$2 -= 12;
-         $$2 &= 7;
-         $$2 += 12;
-      }
+   void d();
 
-      this.c = this.a.a($$0, $$2, null);
-      this.k();
-   }
+   void e();
 
-   private void k() {
-      if (this.c != null) {
-         this.c.a();
-         if (!this.c.c()) {
-            ki $$0 = this.c.g();
-            this.c.a();
+   float f();
 
-            double $$1;
-            do {
-               $$1 = (double)((float)$$0.v() + this.a.dV().i() * 20.0F);
-            } while ($$1 < (double)$$0.v());
+   float h();
 
-            this.d = new eye((double)$$0.u(), $$1, (double)$$0.w());
-         }
-      }
-   }
+   cjn<? extends cjh> i();
 
    @Nullable
-   @Override
-   public eye g() {
-      return this.d;
-   }
+   eys g();
 
-   @Override
-   public cji<cjh> i() {
-      return cji.e;
-   }
+   float a(bsg var1, float var2);
 }

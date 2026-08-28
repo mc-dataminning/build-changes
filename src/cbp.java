@@ -1,122 +1,86 @@
 import java.util.EnumSet;
+import javax.annotation.Nullable;
 
-public abstract class cbp extends cbc {
-   private static final int g = 1200;
-   private static final int h = 1200;
-   private static final int i = 200;
-   protected final bun a;
-   public final double b;
-   protected int c;
-   protected int d;
-   private int j;
-   protected je e = je.c;
-   private boolean k;
-   private final int l;
-   private final int m;
-   protected int f;
+public class cbp extends cbh {
+   public static final float a = 0.02F;
+   protected final bum b;
+   @Nullable
+   protected bto c;
+   protected final float d;
+   private int h;
+   protected final float e;
+   private final boolean i;
+   protected final Class<? extends buk> f;
+   protected final cfa g;
 
-   public cbp(bun $$0, double $$1, int $$2) {
-      this($$0, $$1, $$2, 1);
+   public cbp(bum $$0, Class<? extends buk> $$1, float $$2) {
+      this($$0, $$1, $$2, 0.02F);
    }
 
-   public cbp(bun $$0, double $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.l = $$2;
-      this.f = 0;
-      this.m = $$3;
-      this.a(EnumSet.of(cbc.a.a, cbc.a.c));
+   public cbp(bum $$0, Class<? extends buk> $$1, float $$2, float $$3) {
+      this($$0, $$1, $$2, $$3, false);
+   }
+
+   public cbp(bum $$0, Class<? extends buk> $$1, float $$2, float $$3, boolean $$4) {
+      this.b = $$0;
+      this.f = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.i = $$4;
+      this.a(EnumSet.of(cbh.a.b));
+      if ($$1 == cnu.class) {
+         this.g = cfa.b().a((double)$$2).a($$1x -> btt.b($$0).test($$1x));
+      } else {
+         this.g = cfa.b().a((double)$$2);
+      }
    }
 
    @Override
    public boolean b() {
-      if (this.c > 0) {
-         this.c--;
+      if (this.b.dV().i() >= this.e) {
          return false;
       } else {
-         this.c = this.a(this.a);
-         return this.n();
-      }
-   }
+         if (this.b.m() != null) {
+            this.c = this.b.m();
+         }
 
-   protected int a(bun $$0) {
-      return b(200 + $$0.dV().a(200));
+         if (this.f == cnu.class) {
+            this.c = this.b.dS().a(this.g, this.b, this.b.dx(), this.b.dB(), this.b.dD());
+         } else {
+            this.c = this.b
+               .dS()
+               .a(this.b.dS().a(this.f, this.b.cO().c((double)this.d, 3.0, (double)this.d), $$0 -> true), this.g, this.b, this.b.dx(), this.b.dB(), this.b.dD());
+         }
+
+         return this.c != null;
+      }
    }
 
    @Override
    public boolean c() {
-      return this.d >= -this.j && this.d <= 1200 && this.a(this.a.dS(), this.e);
+      if (!this.c.bI()) {
+         return false;
+      } else {
+         return this.b.g(this.c) > (double)(this.d * this.d) ? false : this.h > 0;
+      }
    }
 
    @Override
    public void d() {
-      this.h();
-      this.d = 0;
-      this.j = this.a.dV().a(this.a.dV().a(1200) + 1200) + 1200;
-   }
-
-   protected void h() {
-      this.a.P().a((double)this.e.u() + 0.5, (double)(this.e.v() + 1), (double)this.e.w() + 0.5, this.b);
-   }
-
-   public double i() {
-      return 1.0;
-   }
-
-   protected je k() {
-      return this.e.d();
+      this.h = this.a(40 + this.b.dV().a(40));
    }
 
    @Override
-   public boolean T_() {
-      return true;
+   public void e() {
+      this.c = null;
    }
 
    @Override
    public void a() {
-      je $$0 = this.k();
-      if (!$$0.a(this.a.dq(), this.i())) {
-         this.k = false;
-         this.d++;
-         if (this.l()) {
-            this.a.P().a((double)$$0.u() + 0.5, (double)$$0.v(), (double)$$0.w() + 0.5, this.b);
-         }
-      } else {
-         this.k = true;
-         this.d--;
+      if (this.c.bI()) {
+         double $$0 = this.i ? this.b.dB() : this.c.dB();
+         this.b.K().a(this.c.dx(), $$0, this.c.dD());
+         this.h--;
       }
    }
-
-   public boolean l() {
-      return this.d % 40 == 0;
-   }
-
-   protected boolean m() {
-      return this.k;
-   }
-
-   protected boolean n() {
-      int $$0 = this.l;
-      int $$1 = this.m;
-      je $$2 = this.a.ds();
-      je.a $$3 = new je.a();
-
-      for (int $$4 = this.f; $$4 <= $$1; $$4 = $$4 > 0 ? -$$4 : 1 - $$4) {
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            for (int $$6 = 0; $$6 <= $$5; $$6 = $$6 > 0 ? -$$6 : 1 - $$6) {
-               for (int $$7 = $$6 < $$5 && $$6 > -$$5 ? $$5 : 0; $$7 <= $$5; $$7 = $$7 > 0 ? -$$7 : 1 - $$7) {
-                  $$3.a($$2, $$6, $$4 - 1, $$7);
-                  if (this.a.a($$3) && this.a(this.a.dS(), $$3)) {
-                     this.e = $$3;
-                     return true;
-                  }
-               }
-            }
-         }
-      }
-
-      return false;
-   }
-
-   protected abstract boolean a(ddv var1, je var2);
 }

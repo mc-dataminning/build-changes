@@ -1,60 +1,67 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class dij extends dgv {
+public class dij extends dnw implements dol {
    public static final MapCodec<dij> a = b(dij::new);
-   public static final dur b = duq.w;
-   public static final dur c = duq.r;
+   public static final dvf b = dve.C;
+   protected static final float c = 6.5F;
+   protected static final float d = 9.5F;
+   protected static final ezm e = dhj.a(6.5, 0.0, 6.5, 9.5, 16.0, 9.5);
+   protected static final ezm f = dhj.a(6.5, 6.5, 0.0, 9.5, 9.5, 16.0);
+   protected static final ezm g = dhj.a(0.0, 6.5, 6.5, 16.0, 9.5, 9.5);
 
    @Override
-   protected MapCodec<? extends dij> a() {
+   public MapCodec<dij> a() {
       return a;
    }
 
-   public dij(dtz.d $$0) {
+   public dij(dun.d $$0) {
       super($$0);
-      this.l(this.o().b(c, Boolean.valueOf(false)).b(b, Boolean.valueOf(false)));
+      this.l(this.F.b().b(b, Boolean.valueOf(false)).b(i, jj.a.b));
    }
 
    @Override
-   protected void b(dua $$0, dds $$1, je $$2, dua $$3, boolean $$4) {
-      if ($$3.b() != $$0.b() && $$1 instanceof arg $$5) {
-         this.a($$0, $$5, $$2);
+   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
+      switch ((jj.a)$$0.c(i)) {
+         case a:
+         default:
+            return g;
+         case c:
+            return f;
+         case b:
+            return e;
       }
    }
 
+   @Nullable
    @Override
-   protected void a(dua $$0, dds $$1, je $$2, dgv $$3, @Nullable erj $$4, boolean $$5) {
-      if ($$1 instanceof arg $$6) {
-         this.a($$0, $$6, $$2);
+   public duo a(czk $$0) {
+      eqp $$1 = $$0.q().b_($$0.a());
+      boolean $$2 = $$1.a() == eqq.c;
+      return super.a($$0).b(b, Boolean.valueOf($$2));
+   }
+
+   @Override
+   protected duo a(duo $$0, jj $$1, duo $$2, deh $$3, je $$4, je $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, eqq.c, eqq.c.a($$3));
       }
-   }
 
-   public void a(dua $$0, arg $$1, je $$2) {
-      boolean $$3 = $$1.C($$2);
-      if ($$3 != $$0.c(b)) {
-         dua $$4 = $$0;
-         if (!$$0.c(b)) {
-            $$4 = $$0.a(c);
-            $$1.a(null, $$2, $$4.c(c) ? awd.fH : awd.fI, awe.e);
-         }
-
-         $$1.a($$2, $$4.b(b, Boolean.valueOf($$3)), 3);
-      }
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(dub.a<dgv, dua> $$0) {
-      $$0.a(c, b);
+   protected void a(dup.a<dhj, duo> $$0) {
+      $$0.a(b).a(i);
    }
 
    @Override
-   protected boolean c_(dua $$0) {
-      return true;
+   protected eqp b_(duo $$0) {
+      return $$0.c(b) ? eqq.c.a(false) : super.b_($$0);
    }
 
    @Override
-   protected int a(dua $$0, dds $$1, je $$2) {
-      return $$1.a_($$2).c(c) ? 15 : 0;
+   protected boolean a(duo $$0, ere $$1) {
+      return false;
    }
 }

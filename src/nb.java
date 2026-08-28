@@ -2,22 +2,22 @@ import com.google.common.collect.Maps;
 import java.util.Map;
 
 public interface nb {
-   Map<cue, ddr> a = ad.a(Maps.newEnumMap(cue.class), $$0 -> {
-      $$0.put(cue.a, dgx.bA);
-      $$0.put(cue.b, dgx.bB);
-      $$0.put(cue.c, dgx.bC);
-      $$0.put(cue.d, dgx.bD);
-      $$0.put(cue.e, dgx.bE);
-      $$0.put(cue.f, dgx.bF);
-      $$0.put(cue.g, dgx.bG);
-      $$0.put(cue.h, dgx.bH);
-      $$0.put(cue.i, dgx.bI);
-      $$0.put(cue.j, dgx.bJ);
-      $$0.put(cue.k, dgx.bK);
-      $$0.put(cue.l, dgx.bL);
-      $$0.put(cue.m, dgx.bM);
-      $$0.put(cue.n, dgx.bN);
-      $$0.put(cue.o, dgx.bO);
-      $$0.put(cue.p, dgx.bP);
+   Map<cuj, def> a = ad.a(Maps.newEnumMap(cuj.class), $$0 -> {
+      $$0.put(cuj.a, dhl.bA);
+      $$0.put(cuj.b, dhl.bB);
+      $$0.put(cuj.c, dhl.bC);
+      $$0.put(cuj.d, dhl.bD);
+      $$0.put(cuj.e, dhl.bE);
+      $$0.put(cuj.f, dhl.bF);
+      $$0.put(cuj.g, dhl.bG);
+      $$0.put(cuj.h, dhl.bH);
+      $$0.put(cuj.i, dhl.bI);
+      $$0.put(cuj.j, dhl.bJ);
+      $$0.put(cuj.k, dhl.bK);
+      $$0.put(cuj.l, dhl.bL);
+      $$0.put(cuj.m, dhl.bM);
+      $$0.put(cuj.n, dhl.bN);
+      $$0.put(cuj.o, dhl.bO);
+      $$0.put(cuj.p, dhl.bP);
    });
 }

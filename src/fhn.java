@@ -1,33 +1,13 @@
-import com.mojang.serialization.Codec;
+public class fhn extends fho {
+   private final ffa b;
 
-public enum fhn implements azf, azy {
-   a(0, "false", "options.off"),
-   b(1, "fast", "options.clouds.fast"),
-   c(2, "true", "options.clouds.fancy");
-
-   public static final Codec<fhn> d = azy.a(fhn::values);
-   private final int e;
-   private final String f;
-   private final String g;
-
-   private fhn(final int $$0, final String $$1, final String $$2) {
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public fhn(ffa $$0, long $$1, xd $$2, Runnable $$3) {
+      super($$1, $$2, $$3);
+      this.b = $$0;
    }
 
    @Override
-   public String c() {
-      return this.f;
-   }
-
-   @Override
-   public int b() {
-      return this.e;
-   }
-
-   @Override
-   public String a() {
-      return this.g;
+   protected void a(fdu $$0, long $$1) throws fff {
+      $$0.d($$1, this.b.a);
    }
 }

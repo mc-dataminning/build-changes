@@ -1,47 +1,38 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import java.util.function.ToIntFunction;
+import org.joml.Vector3f;
 
-public final class bsr {
-   public static xd a(bsq $$0, float $$1, float $$2) {
-      if ($$0.b()) {
-         return xd.c("effect.duration.infinite");
-      } else {
-         int $$3 = azc.d((float)$$0.d() * $$1);
-         return xd.b(azz.a($$3, $$2));
+class bsr extends bst {
+   private final float c;
+   private final ToIntFunction<azl> d;
+
+   protected bsr(bsu $$0, int $$1, float $$2, ToIntFunction<azl> $$3) {
+      super($$0, $$1, ln.G);
+      this.c = $$2;
+      this.d = $$3;
+   }
+
+   @Override
+   public void a(buk $$0, int $$1, bsg $$2, float $$3) {
+      if ($$0.dV().i() <= this.c) {
+         int $$4 = this.d.applyAsInt($$0.dV());
+
+         for (int $$5 = 0; $$5 < $$4; $$5++) {
+            this.a($$0.dS(), $$0, $$0.dx(), $$0.dz() + (double)$$0.do() / 2.0, $$0.dD());
+         }
       }
    }
 
-   public static boolean a(buf $$0) {
-      return $$0.b(bss.c) || $$0.b(bss.C);
-   }
-
-   public static int b(buf $$0) {
-      int $$1 = 0;
-      int $$2 = 0;
-      if ($$0.b(bss.c)) {
-         $$1 = $$0.c(bss.c).e();
+   private void a(deg $$0, buk $$1, double $$2, double $$3, double $$4) {
+      clh $$5 = btv.aM.a($$0, btu.k);
+      if ($$5 != null) {
+         azl $$6 = $$1.dV();
+         float $$7 = (float) (Math.PI / 2);
+         float $$8 = azd.b($$6, (float) (-Math.PI / 2), (float) (Math.PI / 2));
+         Vector3f $$9 = $$1.bQ().k().mul(0.3F).mul(1.0F, 1.5F, 1.0F).rotateY($$8);
+         $$5.b($$2, $$3, $$4, $$0.C_().i() * 360.0F, 0.0F);
+         $$5.h(new eys($$9));
+         $$0.b($$5);
+         $$5.a(awe.xa);
       }
-
-      if ($$0.b(bss.C)) {
-         $$2 = $$0.c(bss.C).e();
-      }
-
-      return Math.max($$1, $$2);
-   }
-
-   public static boolean c(buf $$0) {
-      return $$0.b(bss.m) || $$0.b(bss.C);
-   }
-
-   public static List<arh> a(arg $$0, @Nullable btj $$1, eye $$2, double $$3, bsq $$4, int $$5) {
-      jn<bso> $$6 = $$4.c();
-      List<arh> $$7 = $$0.a(
-         $$6x -> $$6x.e.d()
-               && ($$1 == null || !$$1.s($$6x))
-               && $$2.a((jx)$$6x.dq(), $$3)
-               && (!$$6x.b($$6) || $$6x.c($$6).e() < $$4.e() || $$6x.c($$6).a($$5 - 1))
-      );
-      $$7.forEach($$2x -> $$2x.b(new bsq($$4), $$1));
-      return $$7;
    }
 }

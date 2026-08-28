@@ -1,29 +1,10 @@
-import com.mojang.authlib.minecraft.TelemetryEvent;
-import com.mojang.authlib.minecraft.TelemetrySession;
-import com.mojang.serialization.Codec;
+import java.io.Closeable;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import javax.sound.sampled.AudioFormat;
 
-public record hbo(hbs b, hbv c) {
-   public static final Codec<hbo> a = hbs.a.dispatchStable(hbo::a, hbs::c);
+public interface hbo extends Closeable {
+   AudioFormat a();
 
-   public hbo(hbs b, hbv c) {
-      c.b().forEach($$1x -> {
-         if (!$$0.a($$1x)) {
-            throw new IllegalArgumentException("Property '" + $$1x.b() + "' not expected for event: '" + $$0.a() + "'");
-         }
-      });
-      this.b = b;
-      this.c = c;
-   }
-
-   public TelemetryEvent a(TelemetrySession $$0) {
-      return this.b.a($$0, this.c);
-   }
-
-   public hbs a() {
-      return this.b;
-   }
-
-   public hbv b() {
-      return this.c;
-   }
+   ByteBuffer a(int var1) throws IOException;
 }

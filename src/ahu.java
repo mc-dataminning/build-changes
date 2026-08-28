@@ -3,7 +3,7 @@ public class ahu implements zk<agq> {
    private static final int b = 2;
    private final boolean c;
 
-   public ahu(cnm $$0) {
+   public ahu(cnr $$0) {
       this.c = $$0.b;
    }
 

@@ -1,4 +1,41 @@
-import java.util.Set;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public record fgs(String a, fgm b, boolean c, Set<String> d) {
+public interface fgs {
+   fgs a = new fgs() {
+      @Override
+      public long a() {
+         return 1L;
+      }
+
+      @Override
+      public long b() {
+         return 1L;
+      }
+   };
+
+   long a();
+
+   long b();
+
+   static fgs a(final int $$0) {
+      return new fgs() {
+         private static final Logger c = LogUtils.getLogger();
+         private int d;
+
+         @Override
+         public long a() {
+            this.d = 0;
+            return 1L;
+         }
+
+         @Override
+         public long b() {
+            this.d++;
+            long $$0 = Math.min(1L << this.d, (long)$$0);
+            c.debug("Skipping for {} extra cycles", $$0);
+            return $$0;
+         }
+      };
+   }
 }

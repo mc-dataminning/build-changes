@@ -1,7 +1,7 @@
 import java.util.List;
 
-public record ag(alb c, af d) {
-   public static final zb<wo, ag> a = zb.a(alb.b, ag::a, af.b, ag::b, ag::new);
+public record ag(alc c, af d) {
+   public static final zb<wo, ag> a = zb.a(alc.b, ag::a, af.b, ag::b, ag::new);
    public static final zb<wo, List<ag>> b = a.a(yz.a());
 
    @Override
@@ -27,7 +27,7 @@ public record ag(alb c, af d) {
       return this.c.toString();
    }
 
-   public alb a() {
+   public alc a() {
       return this.c;
    }
 

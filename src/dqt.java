@@ -1,109 +1,33 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dqt extends dre implements brn {
-   private static final Logger b = LogUtils.getLogger();
-   public static final int a = 6;
-   private static final String c = "patterns";
-   @Nullable
-   private xd d;
-   private cue e;
-   private dqv f = dqv.a;
+public class dqt extends dqo implements dqp {
+   public static final MapCodec<dqt> e = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(dqp.a.e.fieldOf("weathering_state").forGetter(dqt::l), u()).apply($$0, dqt::new)
+   );
+   private final dqp.a f;
 
-   public dqt(je $$0, dua $$1) {
-      super(drg.t, $$0, $$1);
-      this.e = ((dfm)$$1.b()).b();
+   @Override
+   protected MapCodec<dqt> a() {
+      return e;
    }
 
-   public dqt(je $$0, dua $$1, cue $$2) {
-      this($$0, $$1);
-      this.e = $$2;
-   }
-
-   public void a(cvl $$0, cue $$1) {
-      this.e = $$1;
-      this.a($$0);
+   protected dqt(dqp.a $$0, dun.d $$1) {
+      super($$1);
+      this.f = $$0;
    }
 
    @Override
-   public xd aj() {
-      return (xd)(this.d != null ? this.d : xd.c("block.minecraft.banner"));
-   }
-
-   @Nullable
-   @Override
-   public xd al() {
-      return this.d;
+   protected void b(duo $$0, arh $$1, je $$2, azl $$3) {
+      this.a_($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected void b(uf $$0, jp.a $$1) {
-      super.b($$0, $$1);
-      if (!this.f.equals(dqv.a)) {
-         $$0.a("patterns", (vc)dqv.b.encodeStart($$1.a(ut.a), this.f).getOrThrow());
-      }
-
-      if (this.d != null) {
-         $$0.a("CustomName", xd.a.a(this.d, $$1));
-      }
+   protected boolean f(duo $$0) {
+      return dqp.c($$0.b()).isPresent();
    }
 
-   @Override
-   protected void a(uf $$0, jp.a $$1) {
-      super.a($$0, $$1);
-      if ($$0.b("CustomName", 8)) {
-         this.d = a($$0.l("CustomName"), $$1);
-      }
-
-      if ($$0.e("patterns")) {
-         dqv.b
-            .parse($$1.a(ut.a), $$0.c("patterns"))
-            .resultOrPartial($$0x -> b.error("Failed to parse banner patterns: '{}'", $$0x))
-            .ifPresent($$0x -> this.f = $$0x);
-      }
-   }
-
-   public acg a() {
-      return acg.a(this);
-   }
-
-   @Override
-   public uf a(jp.a $$0) {
-      return this.d($$0);
-   }
-
-   public dqv b() {
+   public dqp.a l() {
       return this.f;
-   }
-
-   public cvl c() {
-      cvl $$0 = new cvl(dga.a(this.e));
-      $$0.b(this.r());
-      return $$0;
-   }
-
-   public cue f() {
-      return this.e;
-   }
-
-   @Override
-   protected void a(dre.b $$0) {
-      super.a($$0);
-      this.f = $$0.a(kr.aa, dqv.a);
-      this.d = $$0.a(kr.g);
-   }
-
-   @Override
-   protected void a(kn.a $$0) {
-      super.a($$0);
-      $$0.a(kr.aa, this.f);
-      $$0.a(kr.g, this.d);
-   }
-
-   @Override
-   public void a(uf $$0) {
-      $$0.r("patterns");
-      $$0.r("CustomName");
    }
 }

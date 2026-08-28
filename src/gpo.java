@@ -1,22 +1,22 @@
-public class gpo extends gnl<clk, gtl> {
-   private static final alb a = alb.b("textures/entity/illager/vindicator.png");
+public class gpo extends gop<cgy, guj, fzk> {
+   private static final alc a = alc.b("textures/entity/snow_golem.png");
 
-   public gpo(gms.a $$0) {
-      super($$0, new fxo<>($$0.a(gaa.cT)), 0.5F);
-      this.a(new gqy<gtl, fxo<gtl>>(this, $$0.b()) {
-         public void a(fcu $$0, ggv $$1, int $$2, gtl $$3, float $$4, float $$5) {
-            if ($$3.c) {
-               super.a($$0, $$1, $$2, $$3, $$4, $$5);
-            }
-         }
-      });
+   public gpo(gnj.a $$0) {
+      super($$0, new fzk($$0.a(gak.cw)), 0.5F);
+      this.a(new gsb(this, $$0.d(), $$0.b()));
    }
 
-   public alb a(gtl $$0) {
+   public alc g(guj $$0) {
       return a;
    }
 
-   public gtl c() {
-      return new gtl();
+   public guj c() {
+      return new guj();
+   }
+
+   public void a(cgy $$0, guj $$1, float $$2) {
+      super.a($$0, $$1, $$2);
+      $$1.ao = $$0.t() ? new cvp(cvt.fl) : cvp.k;
+      $$1.an = this.i.a($$1.ao, $$0, cvm.f);
    }
 }

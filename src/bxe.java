@@ -1,29 +1,48 @@
-import com.mojang.datafixers.kinds.App;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BiPredicate;
 import java.util.function.Function;
 
-public class bxe {
-   public static bxi<buh> a(int $$0) {
-      return bzk.a(
-         (Function<bzk.b<buh>, ? extends App<bzk.c<buh>, bzn<buh>>>)($$1 -> $$1.group($$1.a(cdi.n), $$1.b(cdi.o), $$1.c(cdi.p), $$1.b(cdi.h))
-               .apply($$1, ($$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     buf $$9 = $$1.b($$3);
-                     if (!a($$7) && $$7.i($$9) && $$1.<cdk>b($$5).a($$9)) {
-                        $$2.a(new bwi($$9, true));
-                        $$7.a(brj.a);
-                        $$7.E($$9);
-                        $$4.a(true, (long)$$0);
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+public class bxe<E extends bum> extends bxf<E> {
+   private final axj<dhj> m;
+   private final float n;
+   private final List<bxf.a> o = new ArrayList<>();
+   private boolean p;
+
+   public bxe(bra $$0, int $$1, int $$2, float $$3, Function<E, awd> $$4, axj<dhj> $$5, float $$6, BiPredicate<E, je> $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$7);
+      this.m = $$5;
+      this.n = $$6;
    }
 
-   private static boolean a(buh $$0) {
-      return $$0.b($$1 -> {
-         cvg $$2 = $$1.h();
-         return $$2 instanceof cwi && $$0.a((cwi)$$2);
-      });
+   @Override
+   protected void a(arh $$0, E $$1, long $$2) {
+      super.a($$0, $$1, $$2);
+      this.o.clear();
+      this.p = $$1.dV().i() < this.n;
+   }
+
+   @Override
+   protected Optional<bxf.a> a(arh $$0) {
+      if (!this.p) {
+         return super.a($$0);
+      } else {
+         je.a $$1 = new je.a();
+
+         while (!this.h.isEmpty()) {
+            Optional<bxf.a> $$2 = super.a($$0);
+            if ($$2.isPresent()) {
+               bxf.a $$3 = $$2.get();
+               if ($$0.a_($$1.a($$3.b(), jj.a)).a(this.m)) {
+                  return $$2;
+               }
+
+               this.o.add($$3);
+            }
+         }
+
+         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
+      }
    }
 }

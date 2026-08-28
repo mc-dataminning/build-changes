@@ -1,29 +1,56 @@
-public class gff extends geq {
-   gff(gax $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gez $$7) {
-      super($$0, $$1, $$2, $$3, $$7, 1.25F);
-      this.B = 0.6F;
-      this.j = $$4;
-      this.k = $$5;
-      this.l = $$6;
-      this.D *= 0.75F;
-      this.t = 60 + this.r.a(12);
+public class gff extends gew {
+   private final gfj b;
+   protected boolean a;
+
+   gff(gbh $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gfj $$7) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      this.b = $$7;
+      this.d(1.5F);
       this.b($$7);
-      if (this.r.a(4) == 0) {
-         this.a(0.6F + this.r.i() * 0.2F, 0.6F + this.r.i() * 0.3F, this.r.i() * 0.2F);
-      } else {
-         this.a(0.1F + this.r.i() * 0.2F, 0.4F + this.r.i() * 0.3F, this.r.i() * 0.2F);
-      }
    }
 
-   public static class a implements geh<lr> {
-      private final gez a;
+   @Override
+   public int a(float $$0) {
+      return this.a ? 240 : super.a($$0);
+   }
 
-      public a(gez $$0) {
+   @Override
+   public ges b() {
+      return ges.c;
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      this.b(this.b);
+   }
+
+   public static class a implements ger<lr> {
+      private final gfj a;
+
+      public a(gfj $$0) {
          this.a = $$0;
       }
 
-      public gee a(lr $$0, gax $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gff($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+      public geo a(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gff $$8 = new gff($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         $$8.a = true;
+         return $$8;
+      }
+   }
+
+   public static class b implements ger<lr> {
+      private final gfj a;
+
+      public b(gfj $$0) {
+         this.a = $$0;
+      }
+
+      public geo a(lr $$0, gbh $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gff $$8 = new gff($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
+         $$8.e(1.0F);
+         return $$8;
       }
    }
 }

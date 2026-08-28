@@ -1,101 +1,160 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import java.util.Collections;
 import java.util.Optional;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public record dbq(boolean d, Optional<jn<bsd>> e, Optional<dbd> f, Optional<jr<dgv>> g, eye h, dbd i, boolean j, dds.a k, ll l, ll m, jn<awc> n) implements dbn {
-   public static final MapCodec<dbq> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.BOOL.optionalFieldOf("attribute_to_user", false).forGetter(dbq::b),
-               bsd.b.optionalFieldOf("damage_type").forGetter(dbq::c),
-               dbd.b.optionalFieldOf("knockback_multiplier").forGetter(dbq::d),
-               kc.a(lv.f).optionalFieldOf("immune_blocks").forGetter(dbq::e),
-               eye.a.optionalFieldOf("offset", eye.c).forGetter(dbq::f),
-               dbd.b.fieldOf("radius").forGetter(dbq::g),
-               Codec.BOOL.optionalFieldOf("create_fire", false).forGetter(dbq::h),
-               dds.a.f.fieldOf("block_interaction").forGetter(dbq::i),
-               ln.bf.fieldOf("small_particle").forGetter(dbq::j),
-               ln.bf.fieldOf("large_particle").forGetter(dbq::k),
-               awc.b.fieldOf("sound").forGetter(dbq::l)
-            )
+public class dbq implements cyw {
+   public static final dbq a = new dbq(new Object2IntOpenHashMap(), true);
+   private static final Codec<Integer> d = Codec.intRange(1, 255);
+   private static final Codec<Object2IntOpenHashMap<jn<dbk>>> e = Codec.unboundedMap(dbk.c, d).xmap(Object2IntOpenHashMap::new, Function.identity());
+   private static final Codec<dbq> f = RecordCodecBuilder.create(
+      $$0 -> $$0.group(e.fieldOf("levels").forGetter($$0x -> $$0x.g), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter($$0x -> $$0x.h))
             .apply($$0, dbq::new)
    );
+   public static final Codec<dbq> b = Codec.withAlternative(f, e, $$0 -> new dbq($$0, true));
+   public static final zb<wo, dbq> c = zb.a(yz.a(Object2IntOpenHashMap::new, dbk.d, yz.g), $$0 -> $$0.g, yz.b, $$0 -> $$0.h, dbq::new);
+   final Object2IntOpenHashMap<jn<dbk>> g;
+   final boolean h;
 
-   @Override
-   public void a(arg $$0, int $$1, dav $$2, btj $$3, eye $$4) {
-      eye $$5 = $$4.e(this.h);
-      $$0.a(
-         this.d ? $$3 : null,
-         this.a($$3, $$5),
-         new dek(this.k != dds.a.a, this.e.isPresent(), this.f.map($$1x -> $$1x.a($$1)), this.g),
-         $$5.a(),
-         $$5.b(),
-         $$5.c(),
-         Math.max(this.i.a($$1), 0.0F),
-         this.j,
-         this.k,
-         this.l,
-         this.m,
-         this.n
-      );
+   dbq(Object2IntOpenHashMap<jn<dbk>> $$0, boolean $$1) {
+      this.g = $$0;
+      this.h = $$1;
+      ObjectIterator var3 = $$0.object2IntEntrySet().iterator();
+
+      while (var3.hasNext()) {
+         Entry<jn<dbk>> $$2 = (Entry<jn<dbk>>)var3.next();
+         int $$3 = $$2.getIntValue();
+         if ($$3 < 0 || $$3 > 255) {
+            throw new IllegalArgumentException("Enchantment " + $$2.getKey() + " has invalid level " + $$3);
+         }
+      }
    }
 
-   @Nullable
-   private bsb a(btj $$0, eye $$1) {
-      if (this.e.isEmpty()) {
-         return null;
+   public int a(jn<dbk> $$0) {
+      return this.g.getInt($$0);
+   }
+
+   @Override
+   public void a(cvk.b $$0, Consumer<xd> $$1, cxh $$2) {
+      if (this.h) {
+         jp.a $$3 = $$0.a();
+         jr<dbk> $$4 = a($$3, lv.aM, aww.a);
+
+         for (jn<dbk> $$5 : $$4) {
+            int $$6 = this.g.getInt($$5);
+            if ($$6 > 0) {
+               $$1.accept(dbk.a($$5, $$6));
+            }
+         }
+
+         ObjectIterator var9 = this.g.object2IntEntrySet().iterator();
+
+         while (var9.hasNext()) {
+            Entry<jn<dbk>> $$7 = (Entry<jn<dbk>>)var9.next();
+            jn<dbk> $$8 = (jn<dbk>)$$7.getKey();
+            if (!$$4.a($$8)) {
+               $$1.accept(dbk.a((jn<dbk>)$$7.getKey(), $$7.getIntValue()));
+            }
+         }
+      }
+   }
+
+   private static <T> jr<T> a(@Nullable jp.a $$0, alb<ka<T>> $$1, axj<T> $$2) {
+      if ($$0 != null) {
+         Optional<jr.c<T>> $$3 = $$0.b($$1).a($$2);
+         if ($$3.isPresent()) {
+            return $$3.get();
+         }
+      }
+
+      return jr.a();
+   }
+
+   public dbq a(boolean $$0) {
+      return new dbq(this.g, $$0);
+   }
+
+   public Set<jn<dbk>> a() {
+      return Collections.unmodifiableSet(this.g.keySet());
+   }
+
+   public Set<Entry<jn<dbk>>> b() {
+      return Collections.unmodifiableSet(this.g.object2IntEntrySet());
+   }
+
+   public int c() {
+      return this.g.size();
+   }
+
+   public boolean d() {
+      return this.g.isEmpty();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
       } else {
-         return this.d ? new bsb(this.e.get(), $$0) : new bsb(this.e.get(), $$1);
+         return !($$0 instanceof dbq $$1) ? false : this.h == $$1.h && this.g.equals($$1.g);
       }
    }
 
    @Override
-   public MapCodec<dbq> a() {
-      return a;
+   public int hashCode() {
+      int $$0 = this.g.hashCode();
+      return 31 * $$0 + (this.h ? 1 : 0);
    }
 
-   public boolean b() {
-      return this.d;
+   @Override
+   public String toString() {
+      return "ItemEnchantments{enchantments=" + this.g + ", showInTooltip=" + this.h + "}";
    }
 
-   public Optional<jn<bsd>> c() {
-      return this.e;
-   }
+   public static class a {
+      private final Object2IntOpenHashMap<jn<dbk>> a = new Object2IntOpenHashMap();
+      private final boolean b;
 
-   public Optional<dbd> d() {
-      return this.f;
-   }
+      public a(dbq $$0) {
+         this.a.putAll($$0.g);
+         this.b = $$0.h;
+      }
 
-   public Optional<jr<dgv>> e() {
-      return this.g;
-   }
+      public void a(jn<dbk> $$0, int $$1) {
+         if ($$1 <= 0) {
+            this.a.removeInt($$0);
+         } else {
+            this.a.put($$0, Math.min($$1, 255));
+         }
+      }
 
-   public eye f() {
-      return this.h;
-   }
+      public void b(jn<dbk> $$0, int $$1) {
+         if ($$1 > 0) {
+            this.a.merge($$0, Math.min($$1, 255), Integer::max);
+         }
+      }
 
-   public dbd g() {
-      return this.i;
-   }
+      public void a(Predicate<jn<dbk>> $$0) {
+         this.a.keySet().removeIf($$0);
+      }
 
-   public boolean h() {
-      return this.j;
-   }
+      public int a(jn<dbk> $$0) {
+         return this.a.getOrDefault($$0, 0);
+      }
 
-   public dds.a i() {
-      return this.k;
-   }
+      public Set<jn<dbk>> a() {
+         return this.a.keySet();
+      }
 
-   public ll j() {
-      return this.l;
-   }
-
-   public ll k() {
-      return this.m;
-   }
-
-   public jn<awc> l() {
-      return this.n;
+      public dbq b() {
+         return new dbq(this.a, this.b);
+      }
    }
 }

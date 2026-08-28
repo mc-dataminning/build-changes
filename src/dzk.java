@@ -1,97 +1,104 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.BitSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.LongStream;
-import javax.annotation.Nullable;
 
-public final class dzk {
-   private static final BitSet c = new BitSet(0);
-   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
-   private static final Codec<dwx> e = lu.l
-      .q()
-      .comapFlatMap($$0 -> $$0 == dwx.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
-   public static final Codec<dzk> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               e.fieldOf("target_status").forGetter(dzk::a),
-               d.lenientOptionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
-            )
-            .apply($$0, dzk::new)
-   );
-   private static final Set<ala<det>> f = Set.of(dfa.aa, dfa.Z, dfa.ab);
-   public static final ddu b = new ddu() {
-      @Override
-      public int H_() {
-         return 64;
+public class dzk implements dzo {
+   private final List<dzn> b = Lists.newArrayList();
+   private final Set<dzn> c = Sets.newHashSet();
+   private final List<dzn> d = Lists.newArrayList();
+   private boolean e;
+   private final arh f;
+   private final int g;
+   private final dzk.a h;
+
+   public dzk(arh $$0, int $$1, dzk.a $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+   }
+
+   @Override
+   public boolean a() {
+      return this.b.isEmpty();
+   }
+
+   @Override
+   public void a(dzn $$0) {
+      if (this.e) {
+         this.d.add($$0);
+      } else {
+         this.b.add($$0);
       }
 
-      @Override
-      public int G_() {
-         return -64;
+      agn.a(this.f, $$0);
+   }
+
+   @Override
+   public void b(dzn $$0) {
+      if (this.e) {
+         this.c.add($$0);
+      } else {
+         this.b.remove($$0);
       }
-   };
-   private final dwx g;
-   private final BitSet h;
 
-   private dzk(dwx $$0, Optional<BitSet> $$1) {
-      this.g = $$0;
-      this.h = $$1.orElse(c);
+      if (this.b.isEmpty()) {
+         this.h.apply(this.g);
+      }
    }
 
-   @Nullable
-   public static dzk a(uf $$0) {
-      dwx $$1 = dwx.a($$0.l("target_status"));
-      return $$1 == dwx.c ? null : new dzk($$1, Optional.of(BitSet.valueOf($$0.o("missing_bedrock"))));
-   }
+   @Override
+   public boolean a(jn<dzl> $$0, eys $$1, dzl.a $$2, dzo.a $$3) {
+      this.e = true;
+      boolean $$4 = false;
 
-   public static void a(dwq $$0) {
-      int $$1 = 4;
-      je.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
-         if ($$0.a_($$1x).a(dgx.F)) {
-            $$0.a($$1x, dgx.sJ.o(), false);
-         }
-      });
-   }
+      try {
+         Iterator<dzn> $$5 = this.b.iterator();
 
-   public void b(dwq $$0) {
-      ddu $$1 = $$0.y();
-      int $$2 = $$1.G_();
-      int $$3 = $$1.an() - 1;
-
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            if (this.a($$4, $$5)) {
-               je.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, dgx.a.o(), false));
+         while ($$5.hasNext()) {
+            dzn $$6 = $$5.next();
+            if (this.c.remove($$6)) {
+               $$5.remove();
+            } else {
+               Optional<eys> $$7 = a(this.f, $$1, $$6);
+               if ($$7.isPresent()) {
+                  $$3.visit($$6, $$7.get());
+                  $$4 = true;
+               }
             }
          }
+      } finally {
+         this.e = false;
       }
+
+      if (!this.d.isEmpty()) {
+         this.b.addAll(this.d);
+         this.d.clear();
+      }
+
+      if (!this.c.isEmpty()) {
+         this.b.removeAll(this.c);
+         this.c.clear();
+      }
+
+      return $$4;
    }
 
-   public dwx a() {
-      return this.g;
-   }
-
-   public boolean b() {
-      return !this.h.isEmpty();
-   }
-
-   public boolean a(int $$0, int $$1) {
-      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
-   }
-
-   public static dew a(dew $$0, dvw $$1) {
-      if (!$$1.x()) {
-         return $$0;
+   private static Optional<eys> a(arh $$0, eys $$1, dzn $$2) {
+      Optional<eys> $$3 = $$2.a().a($$0);
+      if ($$3.isEmpty()) {
+         return Optional.empty();
       } else {
-         Predicate<ala<det>> $$2 = f::contains;
-         return ($$3, $$4, $$5, $$6) -> {
-            jn<det> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
-            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
-         };
+         double $$4 = je.a($$3.get()).j(je.a((jx)$$1));
+         int $$5 = $$2.b() * $$2.b();
+         return $$4 > (double)$$5 ? Optional.empty() : $$3;
       }
+   }
+
+   @FunctionalInterface
+   public interface a {
+      void apply(int var1);
    }
 }

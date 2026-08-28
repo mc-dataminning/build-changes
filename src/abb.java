@@ -18,14 +18,14 @@ public record abb(long c, List<abb.a> d) implements aan {
       return this.d;
    }
 
-   public static record a(je b, erj c) {
-      public static final zb<ByteBuf, abb.a> a = zb.a(je.b, abb.a::a, erj.a, abb.a::b, abb.a::new);
+   public static record a(je b, erx c) {
+      public static final zb<ByteBuf, abb.a> a = zb.a(je.b, abb.a::a, erx.a, abb.a::b, abb.a::new);
 
       public je a() {
          return this.b;
       }
 
-      public erj b() {
+      public erx b() {
          return this.c;
       }
    }

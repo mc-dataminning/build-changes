@@ -1,25 +1,127 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Codec;
+import java.util.List;
+import java.util.function.BiPredicate;
 
-public class ebr implements ebd {
-   public static final MapCodec<ebr> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ki.v(16).optionalFieldOf("offset", ki.g).forGetter($$0x -> $$0x.e), dua.a.fieldOf("state").forGetter($$0x -> $$0x.f))
-            .apply($$0, ebr::new)
-   );
-   private final ki e;
-   private final dua f;
+public interface ebr extends BiPredicate<dfd, je> {
+   Codec<ebr> b = lu.M.q().dispatch(ebr::a, ebs::codec);
+   ebr c = a(dhl.a);
+   ebr d = a(dhl.a, dhl.G);
 
-   protected ebr(ki $$0, dua $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   ebs<?> a();
+
+   static ebr a(List<ebr> $$0) {
+      return new ebp($$0);
    }
 
-   public boolean a(dep $$0, je $$1) {
-      return this.f.a($$0, $$1.a(this.e));
+   static ebr a(ebr... $$0) {
+      return a(List.of($$0));
    }
 
-   @Override
-   public ebe<?> a() {
-      return ebe.g;
+   static ebr a(ebr $$0, ebr $$1) {
+      return a(List.of($$0, $$1));
+   }
+
+   static ebr b(List<ebr> $$0) {
+      return new ebq($$0);
+   }
+
+   static ebr b(ebr... $$0) {
+      return b(List.of($$0));
+   }
+
+   static ebr b(ebr $$0, ebr $$1) {
+      return b(List.of($$0, $$1));
+   }
+
+   static ebr a(ki $$0, List<dhj> $$1) {
+      return new ebx($$0, jr.a(dhj::s, $$1));
+   }
+
+   static ebr c(List<dhj> $$0) {
+      return a(ki.g, $$0);
+   }
+
+   static ebr a(ki $$0, dhj... $$1) {
+      return a($$0, List.of($$1));
+   }
+
+   static ebr a(dhj... $$0) {
+      return a(ki.g, $$0);
+   }
+
+   static ebr a(ki $$0, axj<dhj> $$1) {
+      return new ebw($$0, $$1);
+   }
+
+   static ebr a(axj<dhj> $$0) {
+      return a(ki.g, $$0);
+   }
+
+   static ebr b(ki $$0, List<eqo> $$1) {
+      return new eby($$0, jr.a(eqo::k, $$1));
+   }
+
+   static ebr a(ki $$0, eqo... $$1) {
+      return b($$0, List.of($$1));
+   }
+
+   static ebr a(eqo... $$0) {
+      return a(ki.g, $$0);
+   }
+
+   static ebr a(ebr $$0) {
+      return new ebz($$0);
+   }
+
+   static ebr a(ki $$0) {
+      return new eca($$0);
+   }
+
+   static ebr b() {
+      return a(ki.g);
+   }
+
+   static ebr a(duo $$0, ki $$1) {
+      return new ecf($$1, $$0);
+   }
+
+   static ebr a(ki $$0, jj $$1) {
+      return new ebu($$0, $$1);
+   }
+
+   static ebr a(jj $$0) {
+      return a(ki.g, $$0);
+   }
+
+   static ebr b(ki $$0) {
+      return new ecb($$0);
+   }
+
+   static ebr c() {
+      return b(ki.g);
+   }
+
+   static ebr d() {
+      return c(ki.g);
+   }
+
+   static ebr c(ki $$0) {
+      return a($$0, eqq.a);
+   }
+
+   static ebr d(ki $$0) {
+      return new ebv($$0);
+   }
+
+   static ebr e() {
+      return ecd.a;
+   }
+
+   static ebr e(ki $$0) {
+      return new ece($$0);
+   }
+
+   static ebr f() {
+      return e(ki.g);
    }
 }

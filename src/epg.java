@@ -1,74 +1,20 @@
-import it.unimi.dsi.fastutil.ints.IntRBTreeSet;
-import it.unimi.dsi.fastutil.ints.IntSortedSet;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 
-public class epg {
-   private final eph[] a;
-   private final double b;
-   private final double c;
+public class epg extends eoy {
+   public static final MapCodec<epg> a = axj.a(lv.f).fieldOf("tag").xmap(epg::new, $$0 -> $$0.b);
+   private final axj<dhj> b;
 
-   public epg(azk $$0, List<Integer> $$1) {
-      this($$0, new IntRBTreeSet($$1));
+   public epg(axj<dhj> $$0) {
+      this.b = $$0;
    }
 
-   private epg(azk $$0, IntSortedSet $$1) {
-      if ($$1.isEmpty()) {
-         throw new IllegalArgumentException("Need some octaves!");
-      } else {
-         int $$2 = -$$1.firstInt();
-         int $$3 = $$1.lastInt();
-         int $$4 = $$2 + $$3 + 1;
-         if ($$4 < 1) {
-            throw new IllegalArgumentException("Total number of octaves needs to be >= 1");
-         } else {
-            eph $$5 = new eph($$0);
-            int $$6 = $$3;
-            this.a = new eph[$$4];
-            if ($$3 >= 0 && $$3 < $$4 && $$1.contains(0)) {
-               this.a[$$3] = $$5;
-            }
-
-            for (int $$7 = $$3 + 1; $$7 < $$4; $$7++) {
-               if ($$7 >= 0 && $$1.contains($$6 - $$7)) {
-                  this.a[$$7] = new eph($$0);
-               } else {
-                  $$0.b(262);
-               }
-            }
-
-            if ($$3 > 0) {
-               long $$8 = (long)($$5.a($$5.b, $$5.c, $$5.d) * 9.223372E18F);
-               azk $$9 = new eav(new dzx($$8));
-
-               for (int $$10 = $$6 - 1; $$10 >= 0; $$10--) {
-                  if ($$10 < $$4 && $$1.contains($$6 - $$10)) {
-                     this.a[$$10] = new eph($$9);
-                  } else {
-                     $$9.b(262);
-                  }
-               }
-            }
-
-            this.c = Math.pow(2.0, (double)$$3);
-            this.b = 1.0 / (Math.pow(2.0, (double)$$4) - 1.0);
-         }
-      }
+   @Override
+   public boolean a(duo $$0, azl $$1) {
+      return $$0.a(this.b);
    }
 
-   public double a(double $$0, double $$1, boolean $$2) {
-      double $$3 = 0.0;
-      double $$4 = this.c;
-      double $$5 = this.b;
-
-      for (eph $$6 : this.a) {
-         if ($$6 != null) {
-            $$3 += $$6.a($$0 * $$4 + ($$2 ? $$6.b : 0.0), $$1 * $$4 + ($$2 ? $$6.c : 0.0)) * $$5;
-         }
-
-         $$4 /= 2.0;
-         $$5 *= 2.0;
-      }
-
-      return $$3;
+   @Override
+   protected eoz<?> a() {
+      return eoz.d;
    }
 }

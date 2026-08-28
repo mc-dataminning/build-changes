@@ -1,107 +1,185 @@
-public abstract class fqj<T extends cqs> extends fqi<T> implements ftv {
-   private final ftp<?> G;
-   private boolean H;
-   private final alb I;
-   private final alb J;
-   private final alb K;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-   public fqj(T $$0, cno $$1, xd $$2, xd $$3, alb $$4, alb $$5, alb $$6) {
-      super($$0, $$1, $$2);
-      this.G = new ftm($$0, $$3);
-      this.I = $$4;
-      this.J = $$5;
-      this.K = $$6;
+public class fqj {
+   private final fil a;
+   private final fqn b;
+   private final fqk c;
+   private final int d;
+   private final ah e;
+   private final as f;
+   private final cvp g;
+   private final xd h;
+   private final fql i;
+   private final Map<ag, fql> j = Maps.newLinkedHashMap();
+   private double k;
+   private double l;
+   private int m = Integer.MAX_VALUE;
+   private int n = Integer.MAX_VALUE;
+   private int o = Integer.MIN_VALUE;
+   private int p = Integer.MIN_VALUE;
+   private float q;
+   private boolean r;
+
+   public fqj(fil $$0, fqn $$1, fqk $$2, int $$3, ah $$4, as $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$5.c();
+      this.h = $$5.a();
+      this.i = new fql(this, $$0, $$4, $$5);
+      this.a(this.i, $$4.b());
    }
 
-   @Override
-   public void aT_() {
-      super.aT_();
-      this.H = this.n < 379;
-      this.G.a(this.n, this.o, this.m, this.H);
-      this.C = this.G.a(this.n, this.s);
-      this.c(new fkm(this.C + 20, this.o / 2 - 49, 20, 18, ftp.a, $$0 -> {
-         this.G.c();
-         this.C = this.G.a(this.n, this.s);
-         $$0.c(this.C + 20, this.o / 2 - 49);
-      }));
-      this.v = (this.s - this.p.a(this.l)) / 2;
+   public fqk a() {
+      return this.c;
    }
 
-   @Override
-   public void D() {
-      super.D();
-      this.G.e();
+   public int b() {
+      return this.d;
    }
 
-   @Override
-   public void a(fjn $$0, int $$1, int $$2, float $$3) {
-      if (this.G.d() && this.H) {
-         this.b($$0, $$1, $$2, $$3);
-         this.G.a($$0, $$1, $$2, $$3);
+   public ah c() {
+      return this.e;
+   }
+
+   public xd d() {
+      return this.h;
+   }
+
+   public as e() {
+      return this.f;
+   }
+
+   public void a(fjx $$0, int $$1, int $$2, boolean $$3) {
+      this.c.a($$0, $$1, $$2, $$3, this.d);
+   }
+
+   public void a(fjx $$0, int $$1, int $$2) {
+      this.c.a($$0, $$1, $$2, this.d, this.g);
+   }
+
+   public void b(fjx $$0, int $$1, int $$2) {
+      if (!this.r) {
+         this.k = (double)(117 - (this.o + this.m) / 2);
+         this.l = (double)(56 - (this.p + this.n) / 2);
+         this.r = true;
+      }
+
+      $$0.c($$1, $$2, $$1 + 234, $$2 + 113);
+      $$0.c().a();
+      $$0.c().a((float)$$1, (float)$$2, 0.0F);
+      alc $$3 = this.f.d().orElse(gxc.a);
+      int $$4 = azd.a(this.k);
+      int $$5 = azd.a(this.l);
+      int $$6 = $$4 % 16;
+      int $$7 = $$5 % 16;
+
+      for (int $$8 = -1; $$8 <= 15; $$8++) {
+         for (int $$9 = -1; $$9 <= 8; $$9++) {
+            $$0.a(ghq::B, $$3, $$6 + 16 * $$8, $$7 + 16 * $$9, 0.0F, 0.0F, 16, 16, 16, 16);
+         }
+      }
+
+      this.i.a($$0, $$4, $$5, true);
+      this.i.a($$0, $$4, $$5, false);
+      this.i.a($$0, $$4, $$5);
+      $$0.c().b();
+      $$0.f();
+   }
+
+   public void a(fjx $$0, int $$1, int $$2, int $$3, int $$4) {
+      $$0.c().a();
+      $$0.c().a(0.0F, 0.0F, -200.0F);
+      $$0.a(0, 0, 234, 113, azd.d(this.q * 255.0F) << 24);
+      boolean $$5 = false;
+      int $$6 = azd.a(this.k);
+      int $$7 = azd.a(this.l);
+      if ($$1 > 0 && $$1 < 234 && $$2 > 0 && $$2 < 113) {
+         for (fql $$8 : this.j.values()) {
+            if ($$8.a($$6, $$7, $$1, $$2)) {
+               $$5 = true;
+               $$8.a($$0, $$6, $$7, this.q, $$3, $$4);
+               break;
+            }
+         }
+      }
+
+      $$0.c().b();
+      if ($$5) {
+         this.q = azd.a(this.q + 0.02F, 0.0F, 0.3F);
       } else {
-         super.a($$0, $$1, $$2, $$3);
-         this.G.a($$0, $$1, $$2, $$3);
-         this.G.a($$0, this.C, this.D, true);
+         this.q = azd.a(this.q - 0.04F, 0.0F, 1.0F);
       }
-
-      this.a($$0, $$1, $$2);
-      this.G.a($$0, $$1, $$2, this.B);
    }
 
-   @Override
-   protected void a(fjn $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.C;
-      int $$5 = this.D;
-      $$0.a(ghe::C, this.I, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      if (this.z.o()) {
-         int $$6 = 14;
-         int $$7 = azc.f(this.z.n() * 13.0F) + 1;
-         $$0.a(ghe::C, this.J, 14, 14, 0, 14 - $$7, $$4 + 56, $$5 + 36 + 14 - $$7, 14, $$7);
-      }
-
-      int $$8 = 24;
-      int $$9 = azc.f(this.z.m() * 24.0F);
-      $$0.a(ghe::C, this.K, 24, 16, 0, 0, $$4 + 79, $$5 + 34, $$9, 16);
+   public boolean a(int $$0, int $$1, double $$2, double $$3) {
+      return this.c.a($$0, $$1, this.d, $$2, $$3);
    }
 
-   @Override
-   public boolean a(double $$0, double $$1, int $$2) {
-      if (this.G.a($$0, $$1, $$2)) {
-         return true;
+   @Nullable
+   public static fqj a(fil $$0, fqn $$1, int $$2, ah $$3) {
+      Optional<as> $$4 = $$3.a().c();
+      if ($$4.isEmpty()) {
+         return null;
       } else {
-         return this.H && this.G.d() ? true : super.a($$0, $$1, $$2);
+         for (fqk $$5 : fqk.values()) {
+            if ($$2 < $$5.a()) {
+               return new fqj($$0, $$1, $$5, $$2, $$3, $$4.get());
+            }
+
+            $$2 -= $$5.a();
+         }
+
+         return null;
       }
    }
 
-   @Override
-   protected void a(csn $$0, int $$1, int $$2, crb $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.G.b($$0);
+   public void a(double $$0, double $$1) {
+      if (this.o - this.m > 234) {
+         this.k = azd.a(this.k + $$0, (double)(-(this.o - 234)), 0.0);
+      }
+
+      if (this.p - this.n > 113) {
+         this.l = azd.a(this.l + $$1, (double)(-(this.p - 113)), 0.0);
+      }
    }
 
-   @Override
-   public boolean a(int $$0, int $$1, int $$2) {
-      return this.G.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+   public void a(ah $$0) {
+      Optional<as> $$1 = $$0.a().c();
+      if (!$$1.isEmpty()) {
+         fql $$2 = new fql(this, this.a, $$0, $$1.get());
+         this.a($$2, $$0.b());
+      }
    }
 
-   @Override
-   protected boolean a(double $$0, double $$1, int $$2, int $$3, int $$4) {
-      boolean $$5 = $$0 < (double)$$2 || $$1 < (double)$$3 || $$0 >= (double)($$2 + this.s) || $$1 >= (double)($$3 + this.u);
-      return this.G.a($$0, $$1, this.C, this.D, this.s, this.u, $$4) && $$5;
+   private void a(fql $$0, ag $$1) {
+      this.j.put($$1, $$0);
+      int $$2 = $$0.d();
+      int $$3 = $$2 + 28;
+      int $$4 = $$0.c();
+      int $$5 = $$4 + 27;
+      this.m = Math.min(this.m, $$2);
+      this.o = Math.max(this.o, $$3);
+      this.n = Math.min(this.n, $$4);
+      this.p = Math.max(this.p, $$5);
+
+      for (fql $$6 : this.j.values()) {
+         $$6.b();
+      }
    }
 
-   @Override
-   public boolean a(char $$0, int $$1) {
-      return this.G.a($$0, $$1) ? true : super.a($$0, $$1);
+   @Nullable
+   public fql a(ag $$0) {
+      return this.j.get($$0);
    }
 
-   @Override
-   public void F() {
-      this.G.f();
-   }
-
-   @Override
-   public ftp G() {
-      return this.G;
+   public fqn f() {
+      return this.b;
    }
 }

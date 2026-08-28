@@ -1,18 +1,25 @@
 import com.mojang.serialization.MapCodec;
+import java.util.List;
 
-class ebp implements ebd {
-   public static ebp a = new ebp();
-   public static final MapCodec<ebp> e = MapCodec.unit(() -> a);
+class ebp extends ebt {
+   public static final MapCodec<ebp> a = a(ebp::new);
 
-   private ebp() {
+   public ebp(List<ebr> $$0) {
+      super($$0);
    }
 
-   public boolean a(dep $$0, je $$1) {
+   public boolean a(dfd $$0, je $$1) {
+      for (ebr $$2 : this.e) {
+         if (!$$2.test($$0, $$1)) {
+            return false;
+         }
+      }
+
       return true;
    }
 
    @Override
-   public ebe<?> a() {
-      return ebe.l;
+   public ebs<?> a() {
+      return ebs.j;
    }
 }

@@ -12,13 +12,13 @@ public interface xe {
       return Optional.empty();
    }
 
-   default xr a(@Nullable et $$0, @Nullable btj $$1, int $$2) throws CommandSyntaxException {
+   default xr a(@Nullable et $$0, @Nullable bto $$1, int $$2) throws CommandSyntaxException {
       return xr.a(this);
    }
 
    xe.a<?> a();
 
-   public static record a<T extends xe>(MapCodec<T> a, String b) implements azy {
+   public static record a<T extends xe>(MapCodec<T> a, String b) implements azz {
       @Override
       public String c() {
          return this.b;

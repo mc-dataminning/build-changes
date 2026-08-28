@@ -1,4 +1,4 @@
-public record aap(ala<dyx> c, eye d) implements aan {
+public record aap(alb<dzl> c, eys d) implements aan {
    public static final zb<wa, aap> a = aan.a(aap::a, aap::new);
    public static final aan.b<aap> b = aan.a("debug/game_event");
 
@@ -16,11 +16,11 @@ public record aap(ala<dyx> c, eye d) implements aan {
       return b;
    }
 
-   public ala<dyx> b() {
+   public alb<dzl> b() {
       return this.c;
    }
 
-   public eye c() {
+   public eys c() {
       return this.d;
    }
 }

@@ -1,33 +1,45 @@
-public class fwq extends fxa<gts> {
-   private final gab a;
-   private final gab b;
+public class fwq extends fyf {
+   private static final String a = "bell_body";
+   private final gal b;
+   private final gal c;
 
-   public fwq(gab $$0) {
-      this.a = $$0;
-      this.b = $$0.b("tail_fin");
+   public fwq(gal $$0) {
+      super(ghq::c);
+      this.b = $$0;
+      this.c = $$0.b("bell_body");
    }
 
-   public static gah b() {
-      gaj $$0 = new gaj();
-      gal $$1 = $$0.a();
-      int $$2 = 22;
-      $$1.a("body", gag.c().a(0, 0).a(-1.0F, -2.0F, 0.0F, 2.0F, 4.0F, 7.0F), gad.a(0.0F, 22.0F, 0.0F));
-      $$1.a("head", gag.c().a(11, 0).a(-1.0F, -2.0F, -3.0F, 2.0F, 4.0F, 3.0F), gad.a(0.0F, 22.0F, 0.0F));
-      $$1.a("nose", gag.c().a(0, 0).a(-1.0F, -2.0F, -1.0F, 2.0F, 3.0F, 1.0F), gad.a(0.0F, 22.0F, -3.0F));
-      $$1.a("right_fin", gag.c().a(22, 1).a(-2.0F, 0.0F, -1.0F, 2.0F, 0.0F, 2.0F), gad.a(-1.0F, 23.0F, 0.0F, 0.0F, 0.0F, (float) (-Math.PI / 4)));
-      $$1.a("left_fin", gag.c().a(22, 4).a(0.0F, 0.0F, -1.0F, 2.0F, 0.0F, 2.0F), gad.a(1.0F, 23.0F, 0.0F, 0.0F, 0.0F, (float) (Math.PI / 4)));
-      $$1.a("tail_fin", gag.c().a(22, 3).a(0.0F, -2.0F, 0.0F, 0.0F, 4.0F, 4.0F), gad.a(0.0F, 22.0F, 7.0F));
-      $$1.a("top_fin", gag.c().a(20, -6).a(0.0F, -1.0F, -1.0F, 0.0F, 1.0F, 6.0F), gad.a(0.0F, 20.0F, 0.0F));
-      return gah.a($$0, 32, 32);
+   public static gar b() {
+      gat $$0 = new gat();
+      gav $$1 = $$0.a();
+      gav $$2 = $$1.a("bell_body", gaq.c().a(0, 0).a(-3.0F, -6.0F, -3.0F, 6.0F, 7.0F, 6.0F), gan.a(8.0F, 12.0F, 8.0F));
+      $$2.a("bell_base", gaq.c().a(0, 13).a(4.0F, 4.0F, 4.0F, 8.0F, 2.0F, 8.0F), gan.a(-8.0F, -12.0F, -8.0F));
+      return gar.a($$0, 32, 32);
+   }
+
+   public void a(drq $$0, float $$1) {
+      float $$2 = (float)$$0.a + $$1;
+      float $$3 = 0.0F;
+      float $$4 = 0.0F;
+      if ($$0.b) {
+         float $$5 = azd.a($$2 / (float) Math.PI) / (4.0F + $$2 / 3.0F);
+         if ($$0.c == jj.c) {
+            $$3 = -$$5;
+         } else if ($$0.c == jj.d) {
+            $$3 = $$5;
+         } else if ($$0.c == jj.f) {
+            $$4 = -$$5;
+         } else if ($$0.c == jj.e) {
+            $$4 = $$5;
+         }
+      }
+
+      this.c.e = $$3;
+      this.c.g = $$4;
    }
 
    @Override
-   public gab a() {
-      return this.a;
-   }
-
-   public void a(gts $$0) {
-      float $$1 = $$0.af ? 1.0F : 1.5F;
-      this.b.f = -$$1 * 0.45F * azc.a(0.6F * $$0.p);
+   public gal a() {
+      return this.b;
    }
 }

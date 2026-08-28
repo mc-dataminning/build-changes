@@ -1,25 +1,76 @@
-import java.util.function.Function;
-import java.util.function.Predicate;
+import com.mojang.blaze3d.platform.TextureUtil;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.logging.LogUtils;
+import java.io.IOException;
+import java.nio.file.Path;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface gwo {
-   aku a = new aku("textures", ".png");
+public class gwo extends gwm implements gwn {
+   private static final Logger d = LogUtils.getLogger();
+   @Nullable
+   private fce e;
 
-   void a(aus var1, gwo.a var2);
-
-   gwq a();
-
-   public interface a {
-      default void a(alb $$0, auq $$1) {
-         this.a($$0, $$2 -> $$2.loadSprite($$0, $$1));
+   public gwo(fce $$0) {
+      this.e = $$0;
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> {
+            TextureUtil.prepareImage(this.a(), this.e.a(), this.e.b());
+            this.e();
+         });
+      } else {
+         TextureUtil.prepareImage(this.a(), this.e.a(), this.e.b());
+         this.e();
       }
-
-      void a(alb var1, gwo.b var2);
-
-      void a(Predicate<alb> var1);
    }
 
-   public interface b extends Function<gwn, gwe> {
-      default void a() {
+   public gwo(int $$0, int $$1, boolean $$2) {
+      this.e = new fce($$0, $$1, $$2);
+      TextureUtil.prepareImage(this.a(), this.e.a(), this.e.b());
+   }
+
+   @Override
+   public void a(aut $$0) {
+   }
+
+   @Override
+   public void e() {
+      if (this.e != null) {
+         this.d();
+         this.e.a(0, 0, 0, false);
+      } else {
+         d.warn("Trying to upload disposed texture {}", this.a());
+      }
+   }
+
+   @Nullable
+   public fce f() {
+      return this.e;
+   }
+
+   public void a(fce $$0) {
+      if (this.e != null) {
+         this.e.close();
+      }
+
+      this.e = $$0;
+   }
+
+   @Override
+   public void close() {
+      if (this.e != null) {
+         this.e.close();
+         this.b();
+         this.e = null;
+      }
+   }
+
+   @Override
+   public void a(alc $$0, Path $$1) throws IOException {
+      if (this.e != null) {
+         String $$2 = $$0.c() + ".png";
+         Path $$3 = $$1.resolve($$2);
+         this.e.a($$3);
       }
    }
 }

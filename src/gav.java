@@ -1,107 +1,64 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import java.util.List;
-import java.util.function.Function;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 
-public class gav extends gau implements abh, wr {
-   private static final Logger m = LogUtils.getLogger();
-   private final GameProfile n;
-   private cqh o;
-   private final kb.b p;
-   private final gbk q = new gbk();
-   @Nullable
-   private gbd r;
-   @Nullable
-   protected fkb.b l;
+public class gav {
+   private final List<gao> a;
+   private final gan b;
+   private final Map<String, gav> c = Maps.newHashMap();
 
-   public gav(fib $$0, vx $$1, gbb $$2) {
-      super($$0, $$1, $$2);
-      this.n = $$2.a();
-      this.p = $$2.c();
-      this.o = $$2.d();
-      this.l = $$2.i();
+   gav(List<gao> $$0, gan $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public boolean c() {
-      return this.b.i();
+   public gav a(String $$0, gaq $$1, gan $$2) {
+      gav $$3 = new gav($$1.b(), $$2);
+      return this.a($$0, $$3);
    }
 
-   @Override
-   protected void a(aan $$0) {
-      this.b($$0);
-   }
-
-   private void b(aan $$0) {
-      m.warn("Unknown custom packet payload: {}", $$0.a().a());
-   }
-
-   @Override
-   public void a(abj $$0) {
-      zn.a($$0, this, this.a);
-      this.q.a($$0.b(), $$0.e());
-   }
-
-   @Override
-   public void a(aab $$0) {
-      zn.a($$0, this, this.a);
-      this.q.a($$0.b());
-   }
-
-   @Override
-   public void a(abm $$0) {
-      this.o = cqj.f.a($$0.b());
-   }
-
-   @Override
-   public void a(abl $$0) {
-      zn.a($$0, this, this.a);
-      if (this.r == null) {
-         this.r = new gbd();
+   public gav a(String $$0, gav $$1) {
+      gav $$2 = this.c.put($$0, $$1);
+      if ($$2 != null) {
+         $$1.c.putAll($$2.c);
       }
 
-      List<atz> $$1 = this.r.a($$0.b());
-      this.b(new abr($$1));
+      return $$1;
    }
 
-   @Override
-   public void a(abk $$0) {
-      this.l = null;
+   public gav a(String $$0) {
+      return this.a($$0, gaq.c(), gan.a);
    }
 
-   private <T> T a(Function<auv, T> $$0) {
-      if (this.r == null) {
-         return $$0.apply(auv.b);
-      } else {
-         Object var3;
-         try (aui $$1 = this.r.a()) {
-            var3 = $$0.apply($$1);
-         }
-
-         return (T)var3;
-      }
+   public gal a(int $$0, int $$1) {
+      Object2ObjectArrayMap<String, gal> $$2 = this.c
+         .entrySet()
+         .stream()
+         .collect(Collectors.toMap(Entry::getKey, $$2x -> ((gav)$$2x.getValue()).a($$0, $$1), ($$0x, $$1x) -> $$0x, Object2ObjectArrayMap::new));
+      List<gal.a> $$3 = this.a.stream().map($$2x -> $$2x.a($$0, $$1)).collect(ImmutableList.toImmutableList());
+      gal $$4 = new gal($$3, $$2);
+      $$4.a(this.b);
+      $$4.b(this.b);
+      return $$4;
    }
 
-   @Override
-   public void a(abi $$0) {
-      zn.a($$0, this, this.a);
-      kb.b $$1 = this.a($$0x -> this.q.a($$0x, this.p, this.b.e()));
-      this.b
-         .a(agp.b.a(wo.a($$1)), new gay(this.a, this.b, new gbb(this.n, this.e, $$1, this.o, this.d, this.c, this.f, this.i, this.l, this.h, this.j, this.k)));
-      this.b.a(abq.a);
-      this.b.a(agp.a.a(wo.a($$1)));
+   public gav b(String $$0) {
+      return this.c.get($$0);
    }
 
-   @Override
-   public void d() {
-      this.e();
+   public Set<Entry<String, gav>> a() {
+      return this.c.entrySet();
    }
 
-   @Override
-   public void a(vz $$0) {
-      super.a($$0);
-      this.a.z();
+   public gav a(UnaryOperator<gan> $$0) {
+      gav $$1 = new gav(this.a, $$0.apply(this.b));
+      $$1.c.putAll(this.c);
+      return $$1;
    }
 }

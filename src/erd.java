@@ -1,154 +1,201 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayDeque;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class erd implements eri {
-   private static final Logger b = LogUtils.getLogger();
-   private final dds c;
-   private final int d;
-   private final ArrayDeque<erd.c> e = new ArrayDeque<>();
-   private final List<erd.c> f = new ArrayList<>();
-   private int g = 0;
+public class erd {
+   private final List<erb> a;
+   @Nullable
+   private erd.a b;
+   private int c;
+   private final je d;
+   private final float e;
+   private final boolean f;
 
-   public erd(dds $$0, int $$1) {
-      this.c = $$0;
+   public erd(List<erb> $$0, je $$1, boolean $$2) {
+      this.a = $$0;
       this.d = $$1;
+      this.e = $$0.isEmpty() ? Float.MAX_VALUE : this.a.get(this.a.size() - 1).c(this.d);
+      this.f = $$2;
    }
 
-   @Override
-   public void a(jj $$0, dua $$1, je $$2, je $$3, int $$4, int $$5) {
-      this.a($$2, new erd.d($$0, $$1, $$2.j(), $$3.j(), $$4, $$5));
+   public void a() {
+      this.c++;
    }
 
-   @Override
-   public void a(je $$0, dgv $$1, @Nullable erj $$2) {
-      this.a($$0, new erd.e($$0, $$1, $$2));
+   public boolean b() {
+      return this.c <= 0;
    }
 
-   @Override
-   public void a(dua $$0, je $$1, dgv $$2, @Nullable erj $$3, boolean $$4) {
-      this.a($$1, new erd.a($$0, $$1.j(), $$2, $$3, $$4));
+   public boolean c() {
+      return this.c >= this.a.size();
    }
 
-   @Override
-   public void a(je $$0, dgv $$1, @Nullable jj $$2, @Nullable erj $$3) {
-      this.a($$0, new erd.b($$0.j(), $$1, $$3, $$2));
+   @Nullable
+   public erb d() {
+      return !this.a.isEmpty() ? this.a.get(this.a.size() - 1) : null;
    }
 
-   private void a(je $$0, erd.c $$1) {
-      boolean $$2 = this.g > 0;
-      boolean $$3 = this.d >= 0 && this.g >= this.d;
-      this.g++;
-      if (!$$3) {
-         if ($$2) {
-            this.f.add($$1);
-         } else {
-            this.e.push($$1);
-         }
-      } else if (this.g - 1 == this.d) {
-         b.error("Too many chained neighbor updates. Skipping the rest. First skipped position: " + $$0.x());
-      }
+   public erb a(int $$0) {
+      return this.a.get($$0);
+   }
 
-      if (!$$2) {
-         this.a();
+   public void b(int $$0) {
+      if (this.a.size() > $$0) {
+         this.a.subList($$0, this.a.size()).clear();
       }
    }
 
-   private void a() {
-      try {
-         while (!this.e.isEmpty() || !this.f.isEmpty()) {
-            for (int $$0 = this.f.size() - 1; $$0 >= 0; $$0--) {
-               this.e.push(this.f.get($$0));
-            }
-
-            this.f.clear();
-            erd.c $$1 = this.e.peek();
-
-            while (this.f.isEmpty()) {
-               if (!$$1.a(this.c)) {
-                  this.e.pop();
-                  break;
-               }
-            }
-         }
-      } finally {
-         this.e.clear();
-         this.f.clear();
-         this.g = 0;
-      }
+   public void a(int $$0, erb $$1) {
+      this.a.set($$0, $$1);
    }
 
-   static record a(dua a, je b, dgv c, @Nullable erj d, boolean e) implements erd.c {
-      @Override
-      public boolean a(dds $$0) {
-         eri.a($$0, this.a, this.b, this.c, this.d, this.e);
+   public int e() {
+      return this.a.size();
+   }
+
+   public int f() {
+      return this.c;
+   }
+
+   public void c(int $$0) {
+      this.c = $$0;
+   }
+
+   public eys a(bto $$0, int $$1) {
+      erb $$2 = this.a.get($$1);
+      double $$3 = (double)$$2.a + (double)((int)($$0.dn() + 1.0F)) * 0.5;
+      double $$4 = (double)$$2.b;
+      double $$5 = (double)$$2.c + (double)((int)($$0.dn() + 1.0F)) * 0.5;
+      return new eys($$3, $$4, $$5);
+   }
+
+   public je d(int $$0) {
+      return this.a.get($$0).a();
+   }
+
+   public eys a(bto $$0) {
+      return this.a($$0, this.c);
+   }
+
+   public je g() {
+      return this.a.get(this.c).a();
+   }
+
+   public erb h() {
+      return this.a.get(this.c);
+   }
+
+   @Nullable
+   public erb i() {
+      return this.c > 0 ? this.a.get(this.c - 1) : null;
+   }
+
+   public boolean a(@Nullable erd $$0) {
+      if ($$0 == null) {
          return false;
-      }
-   }
-
-   static final class b implements erd.c {
-      private final je a;
-      private final dgv b;
-      @Nullable
-      private erj c;
-      @Nullable
-      private final jj d;
-      private int e = 0;
-
-      b(je $$0, dgv $$1, @Nullable erj $$2, @Nullable jj $$3) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         if (eri.a[this.e] == $$3) {
-            this.e++;
-         }
-      }
-
-      @Override
-      public boolean a(dds $$0) {
-         jj $$1 = eri.a[this.e++];
-         je $$2 = this.a.a($$1);
-         dua $$3 = $$0.a_($$2);
-         erj $$4 = null;
-         if ($$0.J().b(cqj.d)) {
-            if (this.c == null) {
-               this.c = erf.a($$0, this.d == null ? null : this.d.g(), null);
+      } else if ($$0.a.size() != this.a.size()) {
+         return false;
+      } else {
+         for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
+            erb $$2 = this.a.get($$1);
+            erb $$3 = $$0.a.get($$1);
+            if ($$2.a != $$3.a || $$2.b != $$3.b || $$2.c != $$3.c) {
+               return false;
             }
-
-            $$4 = this.c.b($$1);
          }
 
-         eri.a($$0, $$3, $$2, this.b, $$4, false);
-         if (this.e < eri.a.length && eri.a[this.e] == this.d) {
-            this.e++;
-         }
-
-         return this.e < eri.a.length;
+         return true;
       }
    }
 
-   interface c {
-      boolean a(dds var1);
+   public boolean j() {
+      return this.f;
    }
 
-   static record d(jj a, dua b, je c, je d, int e, int f) implements erd.c {
-      @Override
-      public boolean a(dds $$0) {
-         eri.a($$0, this.a, this.b, this.c, this.d, this.e, this.f);
-         return false;
+   @baj
+   void a(erb[] $$0, erb[] $$1, Set<erk> $$2) {
+      this.b = new erd.a($$0, $$1, $$2);
+   }
+
+   @Nullable
+   public erd.a k() {
+      return this.b;
+   }
+
+   public void a(wa $$0) {
+      if (this.b != null && !this.b.c.isEmpty()) {
+         $$0.a(this.f);
+         $$0.q(this.c);
+         $$0.a(this.d);
+         $$0.a(this.a, ($$0x, $$1) -> $$1.a($$0x));
+         this.b.a($$0);
       }
    }
 
-   static record e(je a, dgv b, @Nullable erj c) implements erd.c {
-      @Override
-      public boolean a(dds $$0) {
-         dua $$1 = $$0.a_(this.a);
-         eri.a($$0, $$1, this.a, this.b, this.c, false);
-         return false;
+   public static erd b(wa $$0) {
+      boolean $$1 = $$0.readBoolean();
+      int $$2 = $$0.readInt();
+      je $$3 = $$0.e();
+      List<erb> $$4 = $$0.a(erb::b);
+      erd.a $$5 = erd.a.b($$0);
+      erd $$6 = new erd($$4, $$3, $$1);
+      $$6.b = $$5;
+      $$6.c = $$2;
+      return $$6;
+   }
+
+   @Override
+   public String toString() {
+      return "Path(length=" + this.a.size() + ")";
+   }
+
+   public je l() {
+      return this.d;
+   }
+
+   public float m() {
+      return this.e;
+   }
+
+   static erb[] c(wa $$0) {
+      erb[] $$1 = new erb[$$0.l()];
+
+      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
+         $$1[$$2] = erb.b($$0);
+      }
+
+      return $$1;
+   }
+
+   static void a(wa $$0, erb[] $$1) {
+      $$0.c($$1.length);
+
+      for (erb $$2 : $$1) {
+         $$2.a($$0);
+      }
+   }
+
+   public erd n() {
+      erd $$0 = new erd(this.a, this.d, this.f);
+      $$0.b = this.b;
+      $$0.c = this.c;
+      return $$0;
+   }
+
+   public static record a(erb[] a, erb[] b, Set<erk> c) {
+
+      public void a(wa $$0) {
+         $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
+         erd.a($$0, this.a);
+         erd.a($$0, this.b);
+      }
+
+      public static erd.a b(wa $$0) {
+         HashSet<erk> $$1 = $$0.a(HashSet::new, erk::c);
+         erb[] $$2 = erd.c($$0);
+         erb[] $$3 = erd.c($$0);
+         return new erd.a($$2, $$3, $$1);
       }
    }
 }

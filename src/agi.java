@@ -9,11 +9,11 @@ public class agi implements zk<abz> {
    private final int b;
    private final List<agi.a> c;
 
-   public agi(int $$0, Collection<bvi> $$1) {
+   public agi(int $$0, Collection<bvn> $$1) {
       this.b = $$0;
       this.c = Lists.newArrayList();
 
-      for (bvi $$2 : $$1) {
+      for (bvn $$2 : $$1) {
          this.c.add(new agi.a($$2.a(), $$2.b(), $$2.c()));
       }
    }
@@ -40,11 +40,11 @@ public class agi implements zk<abz> {
       return this.c;
    }
 
-   public static record a(jn<bvh> c, double d, Collection<bvk> e) {
-      public static final zb<ByteBuf, bvk> a = zb.a(alb.b, bvk::b, yz.j, bvk::c, bvk.a.e, bvk::d, bvk::new);
-      public static final zb<wo, agi.a> b = zb.a(bvh.b, agi.a::a, yz.j, agi.a::b, a.a(yz.a(ArrayList::new)), agi.a::c, agi.a::new);
+   public static record a(jn<bvm> c, double d, Collection<bvp> e) {
+      public static final zb<ByteBuf, bvp> a = zb.a(alc.b, bvp::b, yz.j, bvp::c, bvp.a.e, bvp::d, bvp::new);
+      public static final zb<wo, agi.a> b = zb.a(bvm.b, agi.a::a, yz.j, agi.a::b, a.a(yz.a(ArrayList::new)), agi.a::c, agi.a::new);
 
-      public jn<bvh> a() {
+      public jn<bvm> a() {
          return this.c;
       }
 
@@ -52,7 +52,7 @@ public class agi implements zk<abz> {
          return this.d;
       }
 
-      public Collection<bvk> c() {
+      public Collection<bvp> c() {
          return this.e;
       }
    }

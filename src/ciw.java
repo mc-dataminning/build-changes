@@ -1,56 +1,128 @@
-import com.mojang.logging.LogUtils;
+import java.util.Optional;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class ciw extends ciu {
-   private static final Logger b = LogUtils.getLogger();
-   private static final int c = 10;
-   @Nullable
-   private eye d;
-   private int e;
+public class ciw extends bto {
+   private static final akg<Optional<je>> c = akk.a(ciw.class, aki.p);
+   private static final akg<Boolean> d = akk.a(ciw.class, aki.k);
+   public int b;
 
-   public ciw(cis $$0) {
-      super($$0);
+   public ciw(btv<? extends ciw> $$0, deg $$1) {
+      super($$0, $$1);
+      this.J = true;
+      this.b = this.af.a(100000);
+   }
+
+   public ciw(deg $$0, double $$1, double $$2, double $$3) {
+      this(btv.E, $$0);
+      this.a_($$1, $$2, $$3);
    }
 
    @Override
-   public void c() {
-      if (this.d == null) {
-         b.warn("Aborting charge player as no target was set.");
-         this.a.gl().a(cji.a);
-      } else if (this.e > 0 && this.e++ >= 10) {
-         this.a.gl().a(cji.a);
-      } else {
-         double $$0 = this.d.c(this.a.dx(), this.a.dz(), this.a.dD());
-         if ($$0 < 100.0 || $$0 > 22500.0 || this.a.Q || this.a.R) {
-            this.e++;
+   protected bto.b bf() {
+      return bto.b.a;
+   }
+
+   @Override
+   protected void a(akk.a $$0) {
+      $$0.a(c, Optional.empty());
+      $$0.a(d, true);
+   }
+
+   @Override
+   public void l() {
+      this.b++;
+      this.aW();
+      this.bT();
+      if (this.dS() instanceof arh) {
+         je $$0 = this.ds();
+         if (((arh)this.dS()).D() != null && this.dS().a_($$0).l()) {
+            this.dS().b($$0, dgw.a(this.dS(), $$0));
          }
       }
    }
 
    @Override
-   public void d() {
-      this.d = null;
-      this.e = 0;
-   }
+   protected void b(uf $$0) {
+      if (this.m() != null) {
+         $$0.a("beam_target", uu.a(this.m()));
+      }
 
-   public void a(eye $$0) {
-      this.d = $$0;
+      $$0.a("ShowBottom", this.o());
    }
 
    @Override
-   public float f() {
-      return 3.0F;
+   protected void a(uf $$0) {
+      uu.a($$0, "beam_target").ifPresent(this::a);
+      if ($$0.b("ShowBottom", 1)) {
+         this.a($$0.q("ShowBottom"));
+      }
+   }
+
+   @Override
+   public boolean bE() {
+      return true;
+   }
+
+   @Override
+   public boolean a(bsg $$0, float $$1) {
+      if (this.b($$0)) {
+         return false;
+      } else if ($$0.d() instanceof cix) {
+         return false;
+      } else {
+         if (!this.dN() && !this.dS().B) {
+            this.a(bto.c.a);
+            if (!$$0.a(awv.l)) {
+               bsg $$2 = $$0.d() != null ? this.dT().d(this, $$0.d()) : null;
+               this.dS().a(this, $$2, null, this.dx(), this.dz(), this.dD(), 6.0F, false, deg.a.b);
+            }
+
+            this.a($$0);
+         }
+
+         return true;
+      }
+   }
+
+   @Override
+   public void ar() {
+      this.a(this.dT().p());
+      super.ar();
+   }
+
+   private void a(bsg $$0) {
+      if (this.dS() instanceof arh) {
+         dyn $$1 = ((arh)this.dS()).D();
+         if ($$1 != null) {
+            $$1.a(this, $$0);
+         }
+      }
+   }
+
+   public void a(@Nullable je $$0) {
+      this.at().a(c, Optional.ofNullable($$0));
    }
 
    @Nullable
-   @Override
-   public eye g() {
-      return this.d;
+   public je m() {
+      return this.at().a(c).orElse(null);
+   }
+
+   public void a(boolean $$0) {
+      this.at().a(d, $$0);
+   }
+
+   public boolean o() {
+      return this.at().a(d);
    }
 
    @Override
-   public cji<ciw> i() {
-      return cji.i;
+   public boolean a(double $$0) {
+      return super.a($$0) || this.m() != null;
+   }
+
+   @Override
+   public cvp dF() {
+      return new cvp(cvt.vh);
    }
 }

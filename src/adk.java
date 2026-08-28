@@ -12,10 +12,10 @@ public class adk {
    private final byte[] c;
    private final List<adk.a> d;
 
-   public adk(dwg $$0) {
+   public adk(dwu $$0) {
       this.b = new uf();
 
-      for (Entry<dzw.a, dzw> $$1 : $$0.e()) {
+      for (Entry<eak.a, eak> $$1 : $$0.e()) {
          if ($$1.getKey().b()) {
             this.b.a($$1.getKey().a(), new um($$1.getValue().a()));
          }
@@ -25,7 +25,7 @@ public class adk {
       a(new wa(this.c()), $$0);
       this.d = Lists.newArrayList();
 
-      for (Entry<je, dre> $$2 : $$0.F().entrySet()) {
+      for (Entry<je, drs> $$2 : $$0.F().entrySet()) {
          this.d.add(adk.a.a($$2.getValue()));
       }
    }
@@ -53,10 +53,10 @@ public class adk {
       adk.a.b.encode($$0, this.d);
    }
 
-   private static int a(dwg $$0) {
+   private static int a(dwu $$0) {
       int $$1 = 0;
 
-      for (dwh $$2 : $$0.d()) {
+      for (dwv $$2 : $$0.d()) {
          $$1 += $$2.j();
       }
 
@@ -69,8 +69,8 @@ public class adk {
       return $$0;
    }
 
-   public static void a(wa $$0, dwg $$1) {
-      for (dwh $$2 : $$1.d()) {
+   public static void a(wa $$0, dwu $$1) {
+      for (dwv $$2 : $$1.d()) {
          $$2.c($$0);
       }
    }
@@ -105,11 +105,11 @@ public class adk {
       public static final zb<wo, List<adk.a>> b = a.a(yz.a());
       final int c;
       final int d;
-      final drg<?> e;
+      final dru<?> e;
       @Nullable
       final uf f;
 
-      private a(int $$0, int $$1, drg<?> $$2, @Nullable uf $$3) {
+      private a(int $$0, int $$1, dru<?> $$2, @Nullable uf $$3) {
          this.c = $$0;
          this.d = $$1;
          this.e = $$2;
@@ -130,9 +130,9 @@ public class adk {
          $$0.a(this.f);
       }
 
-      static adk.a a(dre $$0) {
+      static adk.a a(drs $$0) {
          uf $$1 = $$0.a($$0.i().F_());
-         je $$2 = $$0.aD_();
+         je $$2 = $$0.aB_();
          int $$3 = kg.b($$2.u()) << 4 | kg.b($$2.w());
          return new adk.a($$3, $$2.v(), $$0.q(), $$1.g() ? null : $$1);
       }
@@ -140,6 +140,6 @@ public class adk {
 
    @FunctionalInterface
    public interface b {
-      void accept(je var1, drg<?> var2, @Nullable uf var3);
+      void accept(je var1, dru<?> var2, @Nullable uf var3);
    }
 }

@@ -1,175 +1,149 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.HashMap;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import org.joml.Matrix4f;
 
 public class ghm {
-   public static final alb a = alb.b("textures/atlas/shulker_boxes.png");
-   public static final alb b = alb.b("textures/atlas/beds.png");
-   public static final alb c = alb.b("textures/atlas/banner_patterns.png");
-   public static final alb d = alb.b("textures/atlas/shield_patterns.png");
-   public static final alb e = alb.b("textures/atlas/signs.png");
-   public static final alb f = alb.b("textures/atlas/chest.png");
-   public static final alb g = alb.b("textures/atlas/armor_trims.png");
-   public static final alb h = alb.b("textures/atlas/decorated_pot.png");
-   private static final ghe C = ghe.f(a);
-   private static final ghe D = ghe.c(b);
-   private static final ghe E = ghe.n(c);
-   private static final ghe F = ghe.n(d);
-   private static final ghe G = ghe.f(e);
-   private static final ghe H = ghe.e(f);
-   private static final ghe I = ghe.a(g);
-   private static final ghe J = ghe.b(g);
-   private static final ghe K = ghe.c(gwj.d);
-   private static final ghe L = ghe.e(gwj.d);
-   private static final ghe M = ghe.h(gwj.d);
-   private static final ghe N = ghe.i(gwj.d);
-   public static final gyq i = new gyq(a, alb.b("entity/shulker/shulker"));
-   public static final List<gyq> j = Stream.of(
-         "white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"
-      )
-      .map($$0 -> new gyq(a, alb.b("entity/shulker/shulker_" + $$0)))
-      .collect(ImmutableList.toImmutableList());
-   public static final Map<dvn, gyq> k = dvn.a().collect(Collectors.toMap(Function.identity(), ghm::c));
-   public static final Map<dvn, gyq> l = dvn.a().collect(Collectors.toMap(Function.identity(), ghm::d));
-   public static final gyq m = new gyq(c, alb.b("entity/banner/base"));
-   public static final gyq n = new gyq(d, alb.b("entity/shield/base"));
-   private static final Map<alb, gyq> O = new HashMap<>();
-   private static final Map<alb, gyq> P = new HashMap<>();
-   public static final Map<ala<drv>, gyq> o = lu.ak.i().collect(Collectors.toMap(jn.c::h, $$0 -> a($$0.a().a())));
-   public static final gyq p = a(alb.b("decorated_pot_base"));
-   public static final gyq q = a(alb.b("decorated_pot_side"));
-   public static final gyq[] r = Arrays.stream(cue.values())
-      .sorted(Comparator.comparingInt(cue::a))
-      .map($$0 -> new gyq(b, alb.b("entity/bed/" + $$0.b())))
-      .toArray(gyq[]::new);
-   public static final gyq s = a("trapped");
-   public static final gyq t = a("trapped_left");
-   public static final gyq u = a("trapped_right");
-   public static final gyq v = a("christmas");
-   public static final gyq w = a("christmas_left");
-   public static final gyq x = a("christmas_right");
-   public static final gyq y = a("normal");
-   public static final gyq z = a("normal_left");
-   public static final gyq A = a("normal_right");
-   public static final gyq B = a("ender");
+   private final String a;
+   private final ggp b;
+   private final alc c;
+   private final List<ghl.h> d;
+   private final List<ghm.a> e = new ArrayList<>();
 
-   public static ghe a() {
-      return E;
+   public ghm(String $$0, ggp $$1, alc $$2, List<ghl.h> $$3) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
    }
 
-   public static ghe b() {
-      return F;
+   public void a(ghm.a $$0) {
+      this.e.add($$0);
    }
 
-   public static ghe c() {
-      return D;
-   }
+   public void a(fbi $$0, Map<alc, fcq<fbo>> $$1, Matrix4f $$2) {
+      fbj $$3 = $$0.a(this.a);
 
-   public static ghe d() {
-      return C;
-   }
+      for (ghm.a $$4 : this.e) {
+         $$4.a($$3, $$1);
+      }
 
-   public static ghe e() {
-      return G;
-   }
-
-   public static ghe f() {
-      return G;
-   }
-
-   public static ghe g() {
-      return H;
-   }
-
-   public static ghe a(boolean $$0) {
-      return $$0 ? J : I;
-   }
-
-   public static ghe h() {
-      return K;
-   }
-
-   public static ghe i() {
-      return L;
-   }
-
-   public static ghe j() {
-      return M;
-   }
-
-   public static ghe k() {
-      return N;
-   }
-
-   private static gyq c(dvn $$0) {
-      return new gyq(e, alb.b("entity/signs/" + $$0.b()));
-   }
-
-   private static gyq d(dvn $$0) {
-      return new gyq(e, alb.b("entity/signs/hanging/" + $$0.b()));
-   }
-
-   public static gyq a(dvn $$0) {
-      return k.get($$0);
-   }
-
-   public static gyq b(dvn $$0) {
-      return l.get($$0);
-   }
-
-   public static gyq a(jn<dqu> $$0) {
-      return O.computeIfAbsent($$0.a().a(), $$0x -> {
-         alb $$1 = $$0x.f("entity/banner/");
-         return new gyq(c, $$1);
-      });
-   }
-
-   public static gyq b(jn<dqu> $$0) {
-      return P.computeIfAbsent($$0.a().a(), $$0x -> {
-         alb $$1 = $$0x.f("entity/shield/");
-         return new gyq(d, $$1);
-      });
-   }
-
-   private static gyq a(String $$0) {
-      return new gyq(f, alb.b("entity/chest/" + $$0));
-   }
-
-   private static gyq a(alb $$0) {
-      return new gyq(h, $$0.f("entity/decorated_pot/"));
-   }
-
-   @Nullable
-   public static gyq a(@Nullable ala<drv> $$0) {
-      return $$0 == null ? null : o.get($$0);
-   }
-
-   public static gyq a(dre $$0, dus $$1, boolean $$2) {
-      if ($$0 instanceof dsa) {
-         return B;
-      } else if ($$2) {
-         return a($$1, v, w, x);
+      fcq<fbo> $$5 = $$1.computeIfPresent(this.c, ($$1x, $$2x) -> $$3.b($$2x));
+      if ($$5 == null) {
+         throw new IllegalStateException("Missing handle for target " + this.c);
       } else {
-         return $$0 instanceof dsz ? a($$1, s, t, u) : a($$1, y, z, A);
+         $$3.a(() -> {
+            fbo $$3x = $$5.get();
+            RenderSystem.viewport(0, 0, $$3x.c, $$3x.d);
+
+            for (ghm.a $$4x : this.e) {
+               $$4x.a(this.b, $$1);
+            }
+
+            this.b.b("OutSize").a((float)$$3x.c, (float)$$3x.d);
+
+            for (ghl.h $$5x : this.d) {
+               fcv $$6 = this.b.a($$5x.a());
+               if ($$6 != null) {
+                  a($$6, $$5x.b());
+               }
+            }
+
+            $$3x.a(0.0F, 0.0F, 0.0F, 0.0F);
+            $$3x.f();
+            $$3x.a(false);
+            RenderSystem.depthFunc(519);
+            RenderSystem.setShader(this.b);
+            RenderSystem.backupProjectionMatrix();
+            RenderSystem.setProjectionMatrix($$2, fdm.b);
+            fcz $$7 = fdg.b().a(fdj.c.h, fdc.e);
+            $$7.a(0.0F, 0.0F, 500.0F);
+            $$7.a((float)$$3x.c, 0.0F, 500.0F);
+            $$7.a((float)$$3x.c, (float)$$3x.d, 500.0F);
+            $$7.a(0.0F, (float)$$3x.d, 500.0F);
+            fda.a($$7.b());
+            RenderSystem.depthFunc(515);
+            RenderSystem.restoreProjectionMatrix();
+            $$3x.e();
+
+            for (ghm.a $$8 : this.e) {
+               $$8.a($$1);
+            }
+         });
       }
    }
 
-   private static gyq a(dus $$0, gyq $$1, gyq $$2, gyq $$3) {
-      switch ($$0) {
-         case b:
-            return $$2;
-         case c:
-            return $$3;
-         case a:
-         default:
+   private static void a(fcv $$0, List<Float> $$1) {
+      switch ($$1.size()) {
+         case 1:
+            $$0.a($$1.getFirst());
+            break;
+         case 2:
+            $$0.a($$1.get(0), $$1.get(1));
+            break;
+         case 3:
+            $$0.a($$1.get(0), $$1.get(1), $$1.get(2));
+            break;
+         case 4:
+            $$0.a($$1.get(0), $$1.get(1), $$1.get(2), $$1.get(3));
+      }
+   }
+
+   public ggp a() {
+      return this.b;
+   }
+
+   public interface a {
+      void a(fbj var1, Map<alc, fcq<fbo>> var2);
+
+      void a(ggp var1, Map<alc, fcq<fbo>> var2);
+
+      default void a(Map<alc, fcq<fbo>> $$0) {
+      }
+   }
+
+   public static record b(String a, alc b, boolean c, boolean d) implements ghm.a {
+      private fcq<fbo> b(Map<alc, fcq<fbo>> $$0) {
+         fcq<fbo> $$1 = $$0.get(this.b);
+         if ($$1 == null) {
+            throw new IllegalStateException("Missing handle for target " + this.b);
+         } else {
             return $$1;
+         }
+      }
+
+      @Override
+      public void a(fbj $$0, Map<alc, fcq<fbo>> $$1) {
+         $$0.a(this.b($$1));
+      }
+
+      @Override
+      public void a(ggp $$0, Map<alc, fcq<fbo>> $$1) {
+         fcq<fbo> $$2 = this.b($$1);
+         fbo $$3 = $$2.get();
+         $$3.a(this.d ? 9729 : 9728);
+         $$0.a(this.a + "Sampler", this.c ? $$3.h() : $$3.g());
+         $$0.b(this.a + "Size").a((float)$$3.c, (float)$$3.d);
+      }
+
+      @Override
+      public void a(Map<alc, fcq<fbo>> $$0) {
+         if (this.d) {
+            this.b($$0).get().a(9728);
+         }
+      }
+   }
+
+   public static record c(String a, gwm b, int c, int d) implements ghm.a {
+      @Override
+      public void a(fbj $$0, Map<alc, fcq<fbo>> $$1) {
+      }
+
+      @Override
+      public void a(ggp $$0, Map<alc, fcq<fbo>> $$1) {
+         $$0.a(this.a + "Sampler", this.b.a());
+         $$0.b(this.a + "Size").a((float)this.c, (float)this.d);
       }
    }
 }

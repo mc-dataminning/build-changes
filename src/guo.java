@@ -1,11 +1,7 @@
-import javax.annotation.Nullable;
+public class guo extends guj {
+   public cgn.a a;
 
-public class guo extends gts {
-   public eye a = eye.c;
-   @Nullable
-   public cue b;
-   public float c;
-   public float d;
-   public float e;
-   public jj f = jj.a;
+   public guo() {
+      this.a = cgn.a.a;
+   }
 }

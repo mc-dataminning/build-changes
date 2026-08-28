@@ -1,44 +1,29 @@
-public class glf implements gkq.a {
-   private final fib a;
+import com.google.common.collect.ImmutableList;
+import java.util.Collections;
+import java.util.List;
 
-   public glf(fib $$0) {
+public class glf implements glg.a {
+   private final fil a;
+   private double b = Double.MIN_VALUE;
+   private List<ezm> c = Collections.emptyList();
+
+   public glf(fil $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void a(fcu $$0, ggv $$1, double $$2, double $$3, double $$4) {
-      je $$5 = this.a.t.ds();
-      ddv $$6 = this.a.t.dS();
-
-      for (je $$7 : je.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
-         eqb $$8 = $$6.b_($$7);
-         if ($$8.a(awy.a)) {
-            double $$9 = (double)((float)$$7.v() + $$8.a($$6, $$7));
-            gkq.a(
-               $$0,
-               $$1,
-               new exz(
-                     (double)((float)$$7.u() + 0.01F),
-                     (double)((float)$$7.v() + 0.01F),
-                     (double)((float)$$7.w() + 0.01F),
-                     (double)((float)$$7.u() + 0.99F),
-                     $$9,
-                     (double)((float)$$7.w() + 0.99F)
-                  )
-                  .d(-$$2, -$$3, -$$4),
-               0.0F,
-               1.0F,
-               0.0F,
-               0.15F
-            );
-         }
+   public void a(fde $$0, ghg $$1, double $$2, double $$3, double $$4) {
+      double $$5 = (double)ad.d();
+      if ($$5 - this.b > 1.0E8) {
+         this.b = $$5;
+         bto $$6 = this.a.j.k().g();
+         this.c = ImmutableList.copyOf($$6.dS().d($$6, $$6.cO().g(6.0)));
       }
 
-      for (je $$10 : je.c($$5.b(-10, -10, -10), $$5.b(10, 10, 10))) {
-         eqb $$11 = $$6.b_($$10);
-         if ($$11.a(awy.a)) {
-            gkq.a($$0, $$1, String.valueOf($$11.e()), (double)$$10.u() + 0.5, (double)((float)$$10.v() + $$11.a($$6, $$10)), (double)$$10.w() + 0.5, -16777216);
-         }
+      fdi $$7 = $$1.getBuffer(ghq.y());
+
+      for (ezm $$8 : this.c) {
+         glg.a($$0, $$7, $$8, -$$2, -$$3, -$$4, 1.0F, 1.0F, 1.0F, 1.0F, true);
       }
    }
 }

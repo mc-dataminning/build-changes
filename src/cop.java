@@ -1,51 +1,30 @@
 import javax.annotation.Nullable;
 
-public class cop extends cnw {
-   private int f = 200;
-
-   public cop(btq<? extends cop> $$0, dds $$1) {
-      super($$0, $$1);
-   }
-
-   public cop(dds $$0, buf $$1, cvl $$2, @Nullable cvl $$3) {
-      super(btq.aV, $$1, $$0, $$2, $$3);
-   }
-
-   public cop(dds $$0, double $$1, double $$2, double $$3, cvl $$4, @Nullable cvl $$5) {
-      super(btq.aV, $$1, $$2, $$3, $$0, $$4, $$5);
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (this.dS().B && !this.b) {
-         this.dS().a(ln.R, this.dx(), this.dz(), this.dD(), 0.0, 0.0, 0.0);
+@FunctionalInterface
+public interface cop {
+   cop a = ($$0, $$1, $$2) -> {
+   };
+   cop b = ($$0, $$1, $$2) -> {
+      float $$3 = 170.0F + $$2.i() * 20.0F;
+      $$0.h($$0.dv().c(-0.5));
+      $$0.v($$0.dI() + $$3);
+      $$0.O += $$3;
+      $$0.as = true;
+   };
+   cop c = ($$0, $$1, $$2) -> {
+      if ($$1 != null) {
+         eys $$3 = $$1.bQ().d();
+         $$0.h($$3);
+         $$0.as = true;
       }
-   }
-
-   @Override
-   protected void a(buf $$0) {
-      super.a($$0);
-      bsq $$1 = new bsq(bss.x, this.f, 0);
-      $$0.b($$1, this.E());
-   }
-
-   @Override
-   public void a(uf $$0) {
-      super.a($$0);
-      if ($$0.e("Duration")) {
-         this.f = $$0.h("Duration");
+   };
+   cop d = ($$0, $$1, $$2) -> {
+      if ($$1 != null) {
+         eys $$3 = $$1.dv().d();
+         $$0.h($$3);
+         $$0.as = true;
       }
-   }
+   };
 
-   @Override
-   public void b(uf $$0) {
-      super.b($$0);
-      $$0.a("Duration", this.f);
-   }
-
-   @Override
-   protected cvl v() {
-      return new cvl(cvo.vr);
-   }
+   void deflect(coo var1, @Nullable bto var2, azl var3);
 }

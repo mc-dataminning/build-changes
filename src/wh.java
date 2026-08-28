@@ -19,7 +19,7 @@ public class wh<T extends wj> extends ByteToMessageDecoder implements wm {
       if ($$3 != 0) {
          zk<? super T> $$4 = this.b.c().decode($$1);
          zm<? extends zk<? super T>> $$5 = $$4.a();
-         boe.f.a(this.b.a(), $$5, $$0.channel().remoteAddress(), $$3);
+         boj.f.a(this.b.a(), $$5, $$0.channel().remoteAddress(), $$3);
          if ($$1.readableBytes() > 0) {
             throw new IOException(
                "Packet "

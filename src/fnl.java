@@ -1,163 +1,240 @@
+import com.mojang.datafixers.util.Either;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntSet;
+import it.unimi.dsi.fastutil.ints.IntSets;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.function.Function;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fnl extends fnj {
-   private final fnl.b c;
-   private final List<fnl.a> d = new ArrayList<>();
-   private final fnr e = fnr.i();
+public class fnl implements fbd {
+   static final Logger b = LogUtils.getLogger();
+   private final fce c;
+   private final fmz<fnl.b> d;
 
-   public fnl(int $$0, int $$1, fnl.b $$2) {
-      this(0, 0, $$0, $$1, $$2);
-   }
-
-   public fnl(int $$0, int $$1, int $$2, int $$3, fnl.b $$4) {
-      super($$0, $$1, $$2, $$3);
-      this.c = $$4;
+   fnl(fce $$0, fmz<fnl.b> $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
    @Override
-   public void a() {
-      super.a();
-      if (!this.d.isEmpty()) {
-         int $$0 = 0;
-         int $$1 = this.c.b(this);
+   public void close() {
+      this.c.close();
+   }
 
-         for (fnl.a $$2 : this.d) {
-            $$0 += this.c.a($$2);
-            $$1 = Math.max($$1, this.c.b($$2));
+   @Nullable
+   @Override
+   public fbc a(int $$0) {
+      return this.d.a($$0);
+   }
+
+   @Override
+   public IntSet a() {
+      return IntSets.unmodifiable(this.d.b());
+   }
+
+   public static record a(alc c, int d, int e, int[][] f) implements fnn {
+      private static final Codec<int[][]> g = Codec.STRING.listOf().xmap($$0 -> {
+         int $$1 = $$0.size();
+         int[][] $$2 = new int[$$1][];
+
+         for (int $$3 = 0; $$3 < $$1; $$3++) {
+            $$2[$$3] = ((String)$$0.get($$3)).codePoints().toArray();
          }
 
-         int $$3 = this.c.a(this) - $$0;
-         int $$4 = this.c.c(this);
-         Iterator<fnl.a> $$5 = this.d.iterator();
-         fnl.a $$6 = $$5.next();
-         this.c.a($$6, $$4);
-         $$4 += this.c.a($$6);
-         if (this.d.size() >= 2) {
-            c $$7 = new c($$3, this.d.size() - 1);
+         return $$2;
+      }, $$0 -> {
+         List<String> $$1 = new ArrayList<>($$0.length);
 
-            while ($$7.hasNext()) {
-               $$4 += $$7.nextInt();
-               fnl.a $$8 = $$5.next();
-               this.c.a($$8, $$4);
-               $$4 += this.c.a($$8);
+         for (int[] $$2 : $$0) {
+            $$1.add(new String($$2, 0, $$2.length));
+         }
+
+         return $$1;
+      }).validate(fnl.a::a);
+      public static final MapCodec<fnl.a> a = RecordCodecBuilder.mapCodec(
+            $$0 -> $$0.group(
+                     alc.a.fieldOf("file").forGetter(fnl.a::c),
+                     Codec.INT.optionalFieldOf("height", 8).forGetter(fnl.a::d),
+                     Codec.INT.fieldOf("ascent").forGetter(fnl.a::e),
+                     g.fieldOf("chars").forGetter(fnl.a::f)
+                  )
+                  .apply($$0, fnl.a::new)
+         )
+         .validate(fnl.a::a);
+
+      private static DataResult<int[][]> a(int[][] $$0) {
+         int $$1 = $$0.length;
+         if ($$1 == 0) {
+            return DataResult.error(() -> "Expected to find data in codepoint grid");
+         } else {
+            int[] $$2 = $$0[0];
+            int $$3 = $$2.length;
+            if ($$3 == 0) {
+               return DataResult.error(() -> "Expected to find data in codepoint grid");
+            } else {
+               for (int $$4 = 1; $$4 < $$1; $$4++) {
+                  int[] $$5 = $$0[$$4];
+                  if ($$5.length != $$3) {
+                     return DataResult.error(
+                        () -> "Lines in codepoint grid have to be the same length (found: "
+                              + $$5.length
+                              + " codepoints, expected: "
+                              + $$3
+                              + "), pad with \\u0000"
+                     );
+                  }
+               }
+
+               return DataResult.success($$0);
+            }
+         }
+      }
+
+      private static DataResult<fnl.a> a(fnl.a $$0) {
+         return $$0.e > $$0.d ? DataResult.error(() -> "Ascent " + $$0.e + " higher than height " + $$0.d) : DataResult.success($$0);
+      }
+
+      @Override
+      public fno a() {
+         return fno.a;
+      }
+
+      @Override
+      public Either<fnn.b, fnn.c> b() {
+         return Either.left(this::a);
+      }
+
+      private fbd a(aut $$0) throws IOException {
+         alc $$1 = this.c.f("textures/");
+
+         fnl var22;
+         try (InputStream $$2 = $$0.open($$1)) {
+            fce $$3 = fce.a(fce.a.a, $$2);
+            int $$4 = $$3.a();
+            int $$5 = $$3.b();
+            int $$6 = $$4 / this.f[0].length;
+            int $$7 = $$5 / this.f.length;
+            float $$8 = (float)this.d / (float)$$7;
+            fmz<fnl.b> $$9 = new fmz<>(fnl.b[]::new, fnl.b[][]::new);
+
+            for (int $$10 = 0; $$10 < this.f.length; $$10++) {
+               int $$11 = 0;
+
+               for (int $$12 : this.f[$$10]) {
+                  int $$13 = $$11++;
+                  if ($$12 != 0) {
+                     int $$14 = this.a($$3, $$6, $$7, $$13, $$10);
+                     fnl.b $$15 = $$9.a($$12, new fnl.b($$8, $$3, $$13 * $$6, $$10 * $$7, $$6, $$7, (int)(0.5 + (double)((float)$$14 * $$8)) + 1, this.e));
+                     if ($$15 != null) {
+                        fnl.b.warn("Codepoint '{}' declared multiple times in {}", Integer.toHexString($$12), $$1);
+                     }
+                  }
+               }
+            }
+
+            var22 = new fnl($$3, $$9);
+         }
+
+         return var22;
+      }
+
+      private int a(fce $$0, int $$1, int $$2, int $$3, int $$4) {
+         int $$5;
+         for ($$5 = $$1 - 1; $$5 >= 0; $$5--) {
+            int $$6 = $$3 * $$1 + $$5;
+
+            for (int $$7 = 0; $$7 < $$2; $$7++) {
+               int $$8 = $$4 * $$2 + $$7;
+               if ($$0.b($$6, $$8) != 0) {
+                  return $$5 + 1;
+               }
             }
          }
 
-         int $$9 = this.c.d(this);
-
-         for (fnl.a $$10 : this.d) {
-            this.c.a($$10, $$9, $$1);
-         }
-
-         switch (this.c) {
-            case a:
-               this.b = $$1;
-               break;
-            case b:
-               this.a = $$1;
-         }
+         return $$5 + 1;
       }
    }
 
-   @Override
-   public void b(Consumer<fnq> $$0) {
-      this.d.forEach($$1 -> $$0.accept($$1.a));
-   }
+   static record b(float a, fce b, int c, int d, int e, int f, int g, int h) implements fbc {
 
-   public fnr b() {
-      return this.e.g();
-   }
-
-   public fnr c() {
-      return this.e;
-   }
-
-   public <T extends fnq> T a(T $$0) {
-      return this.a($$0, this.b());
-   }
-
-   public <T extends fnq> T a(T $$0, fnr $$1) {
-      this.d.add(new fnl.a($$0, $$1));
-      return $$0;
-   }
-
-   public <T extends fnq> T a(T $$0, Consumer<fnr> $$1) {
-      return this.a($$0, ad.a(this.b(), $$1));
-   }
-
-   static class a extends fnj.a {
-      protected a(fnq $$0, fnr $$1) {
-         super($$0, $$1);
-      }
-   }
-
-   public static enum b {
-      a,
-      b;
-
-      int a(fnq $$0) {
-         return switch (this) {
-            case a -> $$0.y();
-            case b -> $$0.w();
-         };
+      @Override
+      public float getAdvance() {
+         return (float)this.g;
       }
 
-      int a(fnl.a $$0) {
-         return switch (this) {
-            case a -> $$0.b();
-            case b -> $$0.a();
-         };
+      @Override
+      public fng bake(Function<fbe, fng> $$0) {
+         return $$0.apply(new fbe() {
+            @Override
+            public float d() {
+               return 1.0F / b.this.a;
+            }
+
+            @Override
+            public int a() {
+               return b.this.e;
+            }
+
+            @Override
+            public int b() {
+               return b.this.f;
+            }
+
+            @Override
+            public float j() {
+               return (float)b.this.h;
+            }
+
+            @Override
+            public void a(int $$0, int $$1) {
+               b.this.b.a(0, $$0, $$1, b.this.c, b.this.d, b.this.e, b.this.f, false, false);
+            }
+
+            @Override
+            public boolean c() {
+               return b.this.b.c().a() > 1;
+            }
+         });
       }
 
-      int b(fnq $$0) {
-         return switch (this) {
-            case a -> $$0.w();
-            case b -> $$0.y();
-         };
+      public float c() {
+         return this.a;
       }
 
-      int b(fnl.a $$0) {
-         return switch (this) {
-            case a -> $$0.a();
-            case b -> $$0.b();
-         };
+      public fce d() {
+         return this.b;
       }
 
-      void a(fnl.a $$0, int $$1) {
-         switch (this) {
-            case a:
-               $$0.a($$1, $$0.b());
-               break;
-            case b:
-               $$0.b($$1, $$0.a());
-         }
+      public int e() {
+         return this.c;
       }
 
-      void a(fnl.a $$0, int $$1, int $$2) {
-         switch (this) {
-            case a:
-               $$0.b($$1, $$2);
-               break;
-            case b:
-               $$0.a($$1, $$2);
-         }
+      public int f() {
+         return this.d;
       }
 
-      int c(fnq $$0) {
-         return switch (this) {
-            case a -> $$0.D();
-            case b -> $$0.E();
-         };
+      public int g() {
+         return this.e;
       }
 
-      int d(fnq $$0) {
-         return switch (this) {
-            case a -> $$0.E();
-            case b -> $$0.D();
-         };
+      public int h() {
+         return this.f;
+      }
+
+      public int i() {
+         return this.g;
+      }
+
+      public int j() {
+         return this.h;
       }
    }
 }

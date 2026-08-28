@@ -1,61 +1,42 @@
-import java.util.Set;
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+public class gae extends fzh {
+   private final gal a;
+   private final gal b;
 
-public final class gae {
-   @Nullable
-   private final String a;
-   private final Vector3f b;
-   private final Vector3f c;
-   private final gaf d;
-   private final boolean e;
-   private final gam f;
-   private final gam g;
-   private final Set<jj> h;
-
-   protected gae(
-      @Nullable String $$0,
-      float $$1,
-      float $$2,
-      float $$3,
-      float $$4,
-      float $$5,
-      float $$6,
-      float $$7,
-      float $$8,
-      gaf $$9,
-      boolean $$10,
-      float $$11,
-      float $$12,
-      Set<jj> $$13
-   ) {
-      this.a = $$0;
-      this.f = new gam($$1, $$2);
-      this.b = new Vector3f($$3, $$4, $$5);
-      this.c = new Vector3f($$6, $$7, $$8);
-      this.d = $$9;
-      this.e = $$10;
-      this.g = new gam($$11, $$12);
-      this.h = $$13;
+   public gae(gal $$0) {
+      this.a = $$0.b("head");
+      this.b = this.a.b("jaw");
    }
 
-   public gab.a a(int $$0, int $$1) {
-      return new gab.a(
-         (int)this.f.a(),
-         (int)this.f.b(),
-         this.b.x(),
-         this.b.y(),
-         this.b.z(),
-         this.c.x(),
-         this.c.y(),
-         this.c.z(),
-         this.d.b,
-         this.d.c,
-         this.d.d,
-         this.e,
-         (float)$$0 * this.g.a(),
-         (float)$$1 * this.g.b(),
-         this.h
+   public static gar b() {
+      gat $$0 = new gat();
+      gav $$1 = $$0.a();
+      float $$2 = -16.0F;
+      gav $$3 = $$1.a(
+         "head",
+         gaq.c()
+            .a("upper_lip", -6.0F, -1.0F, -24.0F, 12, 5, 16, 176, 44)
+            .a("upper_head", -8.0F, -8.0F, -10.0F, 16, 16, 16, 112, 30)
+            .a(true)
+            .a("scale", -5.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
+            .a("nostril", -5.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0)
+            .a(false)
+            .a("scale", 3.0F, -12.0F, -4.0F, 2, 4, 6, 0, 0)
+            .a("nostril", 3.0F, -3.0F, -22.0F, 2, 2, 4, 112, 0),
+         gan.a(0.0F, -7.986666F, 0.0F).b(0.75F)
       );
+      $$3.a("jaw", gaq.c().a(176, 65).a("jaw", -6.0F, 0.0F, -16.0F, 12.0F, 4.0F, 16.0F), gan.a(0.0F, 4.0F, -8.0F));
+      return gar.a($$0, 256, 256);
+   }
+
+   @Override
+   public void a(float $$0, float $$1, float $$2) {
+      this.b.e = (float)(Math.sin((double)($$0 * (float) Math.PI * 0.2F)) + 1.0) * 0.2F;
+      this.a.f = $$1 * (float) (Math.PI / 180.0);
+      this.a.e = $$2 * (float) (Math.PI / 180.0);
+   }
+
+   @Override
+   public gal a() {
+      return this.a;
    }
 }

@@ -1,15 +1,26 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
+import javax.annotation.Nullable;
 
-public record ert(int c) {
-   public static final Codec<ert> a = Codec.INT.xmap(ert::new, ert::b);
-   public static final zb<ByteBuf, ert> b = yz.g.a(ert::new, ert::b);
+public class ert {
+   @Nullable
+   public static erx a(deg $$0, @Nullable jj $$1, @Nullable jj $$2) {
+      if ($$0.J().b(cqp.d)) {
+         erx $$3 = erx.a($$0.z).a(erx.a.a);
+         if ($$2 != null) {
+            $$3 = $$3.a($$2);
+         }
 
-   public String a() {
-      return "map_" + this.c;
+         if ($$1 != null) {
+            $$3 = $$3.b($$1);
+         }
+
+         return $$3;
+      } else {
+         return null;
+      }
    }
 
-   public int b() {
-      return this.c;
+   @Nullable
+   public static erx a(@Nullable erx $$0, jj $$1) {
+      return $$0 == null ? null : $$0.b($$1);
    }
 }

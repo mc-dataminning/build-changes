@@ -1,8 +1,4 @@
-public class gud extends gts implements guk {
-   public boolean a;
-
-   @Override
-   public boolean c() {
-      return this.a;
-   }
+public class gud extends guc {
+   public eys[] a = new eys[0];
+   public boolean i;
 }

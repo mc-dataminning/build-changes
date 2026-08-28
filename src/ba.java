@@ -11,8 +11,8 @@ public class ba extends dv<ba.a> {
       return ba.a.a;
    }
 
-   public void a(arh $$0, Collection<? extends btj> $$1) {
-      List<est> $$2 = $$1.stream().map($$1x -> bv.b($$0, $$1x)).collect(Collectors.toList());
+   public void a(ari $$0, Collection<? extends bto> $$1) {
+      List<eth> $$2 = $$1.stream().map($$1x -> bv.b($$0, $$1x)).collect(Collectors.toList());
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
@@ -26,11 +26,11 @@ public class ba extends dv<ba.a> {
          return an.F.a(new ba.a(Optional.empty(), bv.a($$0)));
       }
 
-      public boolean a(Collection<? extends est> $$0) {
+      public boolean a(Collection<? extends eth> $$0) {
          for (bg $$1 : this.c) {
             boolean $$2 = false;
 
-            for (est $$3 : $$0) {
+            for (eth $$3 : $$0) {
                if ($$1.a($$3)) {
                   $$2 = true;
                   break;

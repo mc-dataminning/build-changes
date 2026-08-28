@@ -1,41 +1,37 @@
-import org.joml.Quaternionf;
+public class fyd extends fxk<gtl> {
+   private static final String a = "main";
+   private final gal b;
 
-public class fyd<T extends guf> extends fxn<T> {
-   private static final String a = "cape";
-   private final gab b = this.q.b("cape");
-
-   public fyd(gab $$0) {
-      super($$0);
+   public fyd(gal $$0) {
+      this.b = $$0;
    }
 
-   public static gah b() {
-      gaj $$0 = fxn.a(gaf.a, 0.0F);
-      gal $$1 = $$0.a();
-      gal $$2 = $$1.a("head");
-      $$2.a("hat");
-      gal $$3 = $$1.a("body");
-      $$1.a("left_arm");
-      $$1.a("right_arm");
-      $$1.a("left_leg");
-      $$1.a("right_leg");
-      $$3.a("cape", gag.c().a(0, 0).a(-5.0F, 0.0F, 0.0F, 10.0F, 16.0F, 1.0F, gaf.a, 1.0F, 0.5F), gad.a(0.0F, 0.0F, 3.0F, 0.0F, (float) Math.PI, 0.0F));
-      return gah.a($$0, 64, 64);
+   public static gar b() {
+      gat $$0 = new gat();
+      gav $$1 = $$0.a();
+      int $$2 = 2;
+      $$1.a(
+         "main",
+         gaq.c()
+            .a(0, 0)
+            .a(-4.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, -4.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 0.0F, -4.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 2.0F, 0.0F, 2.0F, 2.0F, 2.0F)
+            .a(0.0F, 0.0F, 2.0F, 2.0F, 2.0F, 2.0F),
+         gan.a
+      );
+      return gar.a($$0, 64, 32);
    }
 
-   public void a(T $$0) {
-      super.a($$0);
-      this.b.c();
-      if (!$$0.Q.f()) {
-         this.b.d++;
-         this.b.c -= 0.85F;
-      }
+   @Override
+   public void a(gtl $$0) {
+   }
 
-      this.b
-         .a(
-            new Quaternionf()
-               .rotationX((6.0F + $$0.c / 2.0F + $$0.b) * (float) (Math.PI / 180.0))
-               .rotateZ($$0.d / 2.0F * (float) (Math.PI / 180.0))
-               .rotateY(-$$0.d / 2.0F * (float) (Math.PI / 180.0))
-         );
+   @Override
+   public gal a() {
+      return this.b;
    }
 }

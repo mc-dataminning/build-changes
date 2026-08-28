@@ -169,10 +169,10 @@ public class ago {
    public static final zm<afo> cl = a("set_player_inventory");
 
    private static <T extends zk<abz>> zm<T> a(String $$0) {
-      return new zm<>(zl.b, alb.b($$0));
+      return new zm<>(zl.b, alc.b($$0));
    }
 
    private static <T extends zk<agq>> zm<T> b(String $$0) {
-      return new zm<>(zl.a, alb.b($$0));
+      return new zm<>(zl.a, alc.b($$0));
    }
 }

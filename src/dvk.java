@@ -1,23 +1,28 @@
-public enum dvk implements azy {
-   a("save"),
-   b("load"),
-   c("corner"),
-   d("data");
+public enum dvk implements azz {
+   a(jj.a),
+   b(jj.b);
 
-   private final String e;
-   private final xd f;
+   private final jj c;
 
-   private dvk(final String $$0) {
-      this.e = $$0;
-      this.f = xd.c("structure_block.mode_info." + $$0);
+   private dvk(final jj $$0) {
+      this.c = $$0;
+   }
+
+   public jj a() {
+      return this.c;
+   }
+
+   @Override
+   public String toString() {
+      return this.c();
    }
 
    @Override
    public String c() {
-      return this.e;
+      return this == a ? "upper" : "lower";
    }
 
-   public xd a() {
-      return this.f;
+   public dvk b() {
+      return this == a ? b : a;
    }
 }

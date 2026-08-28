@@ -1,33 +1,34 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import java.util.Map;
 
-public class dmh extends dpx {
-   public static final MapCodec<dmh> b = b(dmh::new);
-   private static final Map<jj, eyx> e = Maps.immutableEnumMap(
-      Map.of(
-         jj.c,
-         dgv.a(3.0, 4.0, 8.0, 13.0, 12.0, 16.0),
-         jj.d,
-         dgv.a(3.0, 4.0, 0.0, 13.0, 12.0, 8.0),
-         jj.f,
-         dgv.a(0.0, 4.0, 3.0, 8.0, 12.0, 13.0),
-         jj.e,
-         dgv.a(8.0, 4.0, 3.0, 16.0, 12.0, 13.0)
-      )
-   );
+public class dmh extends dhj implements dhm {
+   public static final MapCodec<dmh> a = b(dmh::new);
 
    @Override
    public MapCodec<dmh> a() {
-      return b;
+      return a;
    }
 
-   public dmh(dtz.d $$0) {
-      super(dny.b.h, $$0);
+   public dmh(dun.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
-      return e.get($$0.c(d));
+   public boolean b(dej $$0, je $$1, duo $$2) {
+      return $$0.a_($$1.d()).l();
+   }
+
+   @Override
+   public boolean a(deg $$0, azl $$1, je $$2, duo $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arh $$0, azl $$1, je $$2, duo $$3) {
+      $$0.F_().c(lv.aJ).flatMap($$0x -> $$0x.b(rs.n)).ifPresent($$3x -> ((edc)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2.d()));
+   }
+
+   @Override
+   public dhm.a ar_() {
+      return dhm.a.a;
    }
 }

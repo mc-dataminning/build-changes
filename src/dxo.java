@@ -1,98 +1,127 @@
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.io.BufferedOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.zip.DeflaterOutputStream;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
-import java.util.zip.InflaterInputStream;
+import com.google.common.collect.ImmutableList;
+import java.util.Arrays;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
-import net.jpountz.lz4.LZ4BlockInputStream;
-import net.jpountz.lz4.LZ4BlockOutputStream;
-import org.slf4j.Logger;
 
-public class dxo {
-   private static final Logger g = LogUtils.getLogger();
-   private static final Int2ObjectMap<dxo> h = new Int2ObjectOpenHashMap();
-   private static final Object2ObjectMap<String, dxo> i = new Object2ObjectOpenHashMap();
-   public static final dxo a = a(new dxo(1, null, $$0 -> new aym(new GZIPInputStream($$0)), $$0 -> new BufferedOutputStream(new GZIPOutputStream($$0))));
-   public static final dxo b = a(
-      new dxo(2, "deflate", $$0 -> new aym(new InflaterInputStream($$0)), $$0 -> new BufferedOutputStream(new DeflaterOutputStream($$0)))
-   );
-   public static final dxo c = a(new dxo(3, "none", aym::new, BufferedOutputStream::new));
-   public static final dxo d = a(
-      new dxo(4, "lz4", $$0 -> new aym(new LZ4BlockInputStream($$0)), $$0 -> new BufferedOutputStream(new LZ4BlockOutputStream($$0)))
-   );
-   public static final dxo e = a(new dxo(127, null, $$0 -> {
-      throw new UnsupportedOperationException();
-   }, $$0 -> {
-      throw new UnsupportedOperationException();
-   }));
-   public static final dxo f = b;
-   private static volatile dxo j = f;
-   private final int k;
-   @Nullable
-   private final String l;
-   private final dxo.a<InputStream> m;
-   private final dxo.a<OutputStream> n;
+public record dxo(dxl a, dxj b, dxj c, int d, dxm e) {
 
-   private dxo(int $$0, @Nullable String $$1, dxo.a<InputStream> $$2, dxo.a<OutputStream> $$3) {
-      this.k = $$0;
-      this.l = $$1;
-      this.m = $$2;
-      this.n = $$3;
+   public int a(dxl $$0) {
+      return $$0 == this.a ? 0 : this.c.a($$0);
    }
 
-   private static dxo a(dxo $$0) {
-      h.put($$0.k, $$0);
-      if ($$0.l != null) {
-         i.put($$0.l, $$0);
+   public CompletableFuture<dwk> a(dxq $$0, azx<aqz> $$1, dwk $$2) {
+      if ($$2.j().d(this.a)) {
+         bom $$3 = boj.f.a($$2.f(), $$0.a().ag(), this.a.f());
+         return this.e.doWork($$0, this, $$1, $$2).thenApply($$1x -> this.a($$1x, $$3));
+      } else {
+         return this.e.doWork($$0, this, $$1, $$2);
+      }
+   }
+
+   private dwk a(dwk $$0, @Nullable bom $$1) {
+      if ($$0 instanceof dxe $$2 && $$2.j().d(this.a)) {
+         $$2.a(this.a);
+      }
+
+      if ($$1 != null) {
+         $$1.finish();
       }
 
       return $$0;
    }
 
-   @Nullable
-   public static dxo a(int $$0) {
-      return (dxo)h.get($$0);
-   }
+   public static class a {
+      private final dxl a;
+      @Nullable
+      private final dxo b;
+      private dxl[] c;
+      private int d = -1;
+      private dxm e = dxn::a;
 
-   public static void a(String $$0) {
-      dxo $$1 = (dxo)i.get($$0);
-      if ($$1 != null) {
-         j = $$1;
-      } else {
-         g.error("Invalid `region-file-compression` value `{}` in server.properties. Please use one of: {}", $$0, String.join(", ", i.keySet()));
+      protected a(dxl $$0) {
+         if ($$0.c() != $$0) {
+            throw new IllegalArgumentException("Not starting with the first status: " + $$0);
+         } else {
+            this.a = $$0;
+            this.b = null;
+            this.c = new dxl[0];
+         }
       }
-   }
 
-   public static dxo a() {
-      return j;
-   }
+      protected a(dxl $$0, dxo $$1) {
+         if ($$1.a.b() != $$0.b() - 1) {
+            throw new IllegalArgumentException("Out of order status: " + $$0);
+         } else {
+            this.a = $$0;
+            this.b = $$1;
+            this.c = new dxl[]{$$1.a};
+         }
+      }
 
-   public static boolean b(int $$0) {
-      return h.containsKey($$0);
-   }
+      public dxo.a a(dxl $$0, int $$1) {
+         if ($$0.a(this.a)) {
+            throw new IllegalArgumentException("Status " + $$0 + " can not be required by " + this.a);
+         } else {
+            dxl[] $$2 = this.c;
+            int $$3 = $$1 + 1;
+            if ($$3 > $$2.length) {
+               this.c = new dxl[$$3];
+               Arrays.fill(this.c, $$0);
+            }
 
-   public int b() {
-      return this.k;
-   }
+            for (int $$4 = 0; $$4 < Math.min($$3, $$2.length); $$4++) {
+               this.c[$$4] = dxl.a($$2[$$4], $$0);
+            }
 
-   public OutputStream a(OutputStream $$0) throws IOException {
-      return this.n.wrap($$0);
-   }
+            return this;
+         }
+      }
 
-   public InputStream a(InputStream $$0) throws IOException {
-      return this.m.wrap($$0);
-   }
+      public dxo.a a(int $$0) {
+         this.d = $$0;
+         return this;
+      }
 
-   @FunctionalInterface
-   interface a<O> {
-      O wrap(O var1) throws IOException;
+      public dxo.a a(dxm $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public dxo a() {
+         return new dxo(this.a, new dxj(ImmutableList.copyOf(this.c)), new dxj(ImmutableList.copyOf(this.b())), this.d, this.e);
+      }
+
+      private dxl[] b() {
+         if (this.b == null) {
+            return this.c;
+         } else {
+            int $$0 = this.a(this.b.a);
+            dxj $$1 = this.b.c;
+            dxl[] $$2 = new dxl[Math.max($$0 + $$1.b(), this.c.length)];
+
+            for (int $$3 = 0; $$3 < $$2.length; $$3++) {
+               int $$4 = $$3 - $$0;
+               if ($$4 < 0 || $$4 >= $$1.b()) {
+                  $$2[$$3] = this.c[$$3];
+               } else if ($$3 >= this.c.length) {
+                  $$2[$$3] = $$1.a($$4);
+               } else {
+                  $$2[$$3] = dxl.a(this.c[$$3], $$1.a($$4));
+               }
+            }
+
+            return $$2;
+         }
+      }
+
+      private int a(dxl $$0) {
+         for (int $$1 = this.c.length - 1; $$1 >= 0; $$1--) {
+            if (this.c[$$1].a($$0)) {
+               return $$1;
+            }
+         }
+
+         return 0;
+      }
    }
 }

@@ -1,154 +1,276 @@
-import java.util.Comparator;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class era {
-   public static final int a = 3;
-   private static final int b = 16;
-   private static final int c = 128;
-   private static final int d = 5;
-   private static final int e = 4;
-   private static final int f = 3;
-   private static final int g = -1;
-   private static final int h = 4;
-   private static final int i = -1;
-   private static final int j = 3;
-   private static final int k = -1;
-   private static final int l = 2;
-   private static final int m = -1;
-   private final arg n;
+public class era extends erl {
+   private final Long2ObjectMap<erg> l = new Long2ObjectOpenHashMap();
+   private static final float m = 1.0F;
+   private static final float n = 1.1F;
+   private static final int o = 10;
 
-   public era(arg $$0) {
-      this.n = $$0;
+   @Override
+   public void a(det $$0, bum $$1) {
+      super.a($$0, $$1);
+      this.l.clear();
+      $$1.G();
    }
 
-   public Optional<je> a(je $$0, boolean $$1, dvr $$2) {
-      cfi $$3 = this.n.y();
-      int $$4 = $$1 ? 16 : 128;
-      $$3.a(this.n, $$0, $$4);
-      return $$3.b($$0x -> $$0x.a(cfm.r), $$0, $$4, cfi.b.c)
-         .map(cfj::g)
-         .filter($$2::a)
-         .filter($$0x -> this.n.a_($$0x).b(duq.H))
-         .min(Comparator.<je>comparingDouble($$1x -> $$1x.j($$0)).thenComparingInt(ki::v));
+   @Override
+   public void b() {
+      this.b.I();
+      this.l.clear();
+      super.b();
    }
 
-   public Optional<l.a> a(je $$0, jj.a $$1) {
-      jj $$2 = jj.a(jj.b.a, $$1);
-      double $$3 = -1.0;
-      je $$4 = null;
-      double $$5 = -1.0;
-      je $$6 = null;
-      dvr $$7 = this.n.A_();
-      int $$8 = Math.min(this.n.an(), this.n.G_() + this.n.k()) - 1;
-      int $$9 = 1;
-      je.a $$10 = $$0.k();
+   @Override
+   public erb a() {
+      int $$0;
+      if (this.f() && this.b.bi()) {
+         $$0 = this.b.dy();
+         je.a $$1 = new je.a(this.b.dx(), (double)$$0, this.b.dD());
 
-      for (je.a $$11 : je.a($$0, 16, jj.f, jj.d)) {
-         int $$12 = Math.min($$8, this.n.a(dzw.a.e, $$11.u(), $$11.w()));
-         if ($$7.a($$11) && $$7.a($$11.c($$2, 1))) {
-            $$11.c($$2.g(), 1);
+         for (duo $$2 = this.a.a($$1); $$2.a(dhl.G); $$2 = this.a.a($$1)) {
+            $$1.b(this.b.dx(), (double)(++$$0), this.b.dD());
+         }
+      } else {
+         $$0 = azd.a(this.b.dz() + 0.5);
+      }
 
-            for (int $$13 = $$12; $$13 >= this.n.G_(); $$13--) {
-               $$11.q($$13);
-               if (this.a($$11)) {
-                  int $$14 = $$13;
-
-                  while ($$13 > this.n.G_() && this.a($$11.c(jj.a))) {
-                     $$13--;
-                  }
-
-                  if ($$13 + 4 <= $$8) {
-                     int $$15 = $$14 - $$13;
-                     if ($$15 <= 0 || $$15 >= 3) {
-                        $$11.q($$13);
-                        if (this.a($$11, $$10, $$2, 0)) {
-                           double $$16 = $$0.j($$11);
-                           if (this.a($$11, $$10, $$2, -1) && this.a($$11, $$10, $$2, 1) && ($$3 == -1.0 || $$3 > $$16)) {
-                              $$3 = $$16;
-                              $$4 = $$11.j();
-                           }
-
-                           if ($$3 == -1.0 && ($$5 == -1.0 || $$5 > $$16)) {
-                              $$5 = $$16;
-                              $$6 = $$11.j();
-                           }
-                        }
-                     }
-                  }
-               }
+      je $$4 = je.a(this.b.dx(), (double)$$0, this.b.dD());
+      if (!this.a($$4)) {
+         for (je $$5 : this.a(this.b)) {
+            if (this.a($$5)) {
+               return super.c($$5);
             }
          }
       }
 
-      if ($$3 == -1.0 && $$5 != -1.0) {
-         $$4 = $$6;
-         $$3 = $$5;
-      }
-
-      if ($$3 == -1.0) {
-         int $$17 = Math.max(this.n.G_() - -1, 70);
-         int $$18 = $$8 - 9;
-         if ($$18 < $$17) {
-            return Optional.empty();
-         }
-
-         $$4 = new je($$0.u() - $$2.j() * 1, azc.a($$0.v(), $$17, $$18), $$0.w() - $$2.l() * 1).j();
-         $$4 = $$7.b($$4);
-         jj $$19 = $$2.h();
-
-         for (int $$20 = -1; $$20 < 2; $$20++) {
-            for (int $$21 = 0; $$21 < 2; $$21++) {
-               for (int $$22 = -1; $$22 < 3; $$22++) {
-                  dua $$23 = $$22 < 0 ? dgx.co.o() : dgx.a.o();
-                  $$10.a($$4, $$21 * $$2.j() + $$20 * $$19.j(), $$22, $$21 * $$2.l() + $$20 * $$19.l());
-                  this.n.b($$10, $$23);
-               }
-            }
-         }
-      }
-
-      for (int $$24 = -1; $$24 < 3; $$24++) {
-         for (int $$25 = -1; $$25 < 4; $$25++) {
-            if ($$24 == -1 || $$24 == 2 || $$25 == -1 || $$25 == 3) {
-               $$10.a($$4, $$24 * $$2.j(), $$25, $$24 * $$2.l());
-               this.n.a($$10, dgx.co.o(), 3);
-            }
-         }
-      }
-
-      dua $$26 = dgx.ed.o().b(dlz.b, $$1);
-
-      for (int $$27 = 0; $$27 < 2; $$27++) {
-         for (int $$28 = 0; $$28 < 3; $$28++) {
-            $$10.a($$4, $$27 * $$2.j(), $$28, $$27 * $$2.l());
-            this.n.a($$10, $$26, 18);
-         }
-      }
-
-      return Optional.of(new l.a($$4.j(), 2, 3));
+      return super.c($$4);
    }
 
-   private boolean a(je.a $$0) {
-      dua $$1 = this.n.a_($$0);
-      return $$1.v() && $$1.y().c();
+   @Override
+   protected boolean a(je $$0) {
+      erg $$1 = this.b($$0.u(), $$0.v(), $$0.w());
+      return this.b.a($$1) >= 0.0F;
    }
 
-   private boolean a(je $$0, je.a $$1, jj $$2, int $$3) {
-      jj $$4 = $$2.h();
+   @Override
+   public erk a(double $$0, double $$1, double $$2) {
+      return this.b($$0, $$1, $$2);
+   }
 
-      for (int $$5 = -1; $$5 < 3; $$5++) {
-         for (int $$6 = -1; $$6 < 4; $$6++) {
-            $$1.a($$0, $$2.j() * $$5 + $$4.j() * $$3, $$6, $$2.l() * $$5 + $$4.l() * $$3);
-            if ($$6 < 0 && !this.n.a_($$1).e()) {
-               return false;
-            }
+   @Override
+   public int a(erb[] $$0, erb $$1) {
+      int $$2 = 0;
+      erb $$3 = this.a($$1.a, $$1.b, $$1.c + 1);
+      if (this.c($$3)) {
+         $$0[$$2++] = $$3;
+      }
 
-            if ($$6 >= 0 && !this.a($$1)) {
-               return false;
-            }
+      erb $$4 = this.a($$1.a - 1, $$1.b, $$1.c);
+      if (this.c($$4)) {
+         $$0[$$2++] = $$4;
+      }
+
+      erb $$5 = this.a($$1.a + 1, $$1.b, $$1.c);
+      if (this.c($$5)) {
+         $$0[$$2++] = $$5;
+      }
+
+      erb $$6 = this.a($$1.a, $$1.b, $$1.c - 1);
+      if (this.c($$6)) {
+         $$0[$$2++] = $$6;
+      }
+
+      erb $$7 = this.a($$1.a, $$1.b + 1, $$1.c);
+      if (this.c($$7)) {
+         $$0[$$2++] = $$7;
+      }
+
+      erb $$8 = this.a($$1.a, $$1.b - 1, $$1.c);
+      if (this.c($$8)) {
+         $$0[$$2++] = $$8;
+      }
+
+      erb $$9 = this.a($$1.a, $$1.b + 1, $$1.c + 1);
+      if (this.c($$9) && this.b($$3) && this.b($$7)) {
+         $$0[$$2++] = $$9;
+      }
+
+      erb $$10 = this.a($$1.a - 1, $$1.b + 1, $$1.c);
+      if (this.c($$10) && this.b($$4) && this.b($$7)) {
+         $$0[$$2++] = $$10;
+      }
+
+      erb $$11 = this.a($$1.a + 1, $$1.b + 1, $$1.c);
+      if (this.c($$11) && this.b($$5) && this.b($$7)) {
+         $$0[$$2++] = $$11;
+      }
+
+      erb $$12 = this.a($$1.a, $$1.b + 1, $$1.c - 1);
+      if (this.c($$12) && this.b($$6) && this.b($$7)) {
+         $$0[$$2++] = $$12;
+      }
+
+      erb $$13 = this.a($$1.a, $$1.b - 1, $$1.c + 1);
+      if (this.c($$13) && this.b($$3) && this.b($$8)) {
+         $$0[$$2++] = $$13;
+      }
+
+      erb $$14 = this.a($$1.a - 1, $$1.b - 1, $$1.c);
+      if (this.c($$14) && this.b($$4) && this.b($$8)) {
+         $$0[$$2++] = $$14;
+      }
+
+      erb $$15 = this.a($$1.a + 1, $$1.b - 1, $$1.c);
+      if (this.c($$15) && this.b($$5) && this.b($$8)) {
+         $$0[$$2++] = $$15;
+      }
+
+      erb $$16 = this.a($$1.a, $$1.b - 1, $$1.c - 1);
+      if (this.c($$16) && this.b($$6) && this.b($$8)) {
+         $$0[$$2++] = $$16;
+      }
+
+      erb $$17 = this.a($$1.a + 1, $$1.b, $$1.c - 1);
+      if (this.c($$17) && this.b($$6) && this.b($$5)) {
+         $$0[$$2++] = $$17;
+      }
+
+      erb $$18 = this.a($$1.a + 1, $$1.b, $$1.c + 1);
+      if (this.c($$18) && this.b($$3) && this.b($$5)) {
+         $$0[$$2++] = $$18;
+      }
+
+      erb $$19 = this.a($$1.a - 1, $$1.b, $$1.c - 1);
+      if (this.c($$19) && this.b($$6) && this.b($$4)) {
+         $$0[$$2++] = $$19;
+      }
+
+      erb $$20 = this.a($$1.a - 1, $$1.b, $$1.c + 1);
+      if (this.c($$20) && this.b($$3) && this.b($$4)) {
+         $$0[$$2++] = $$20;
+      }
+
+      erb $$21 = this.a($$1.a + 1, $$1.b + 1, $$1.c - 1);
+      if (this.c($$21) && this.b($$17) && this.b($$6) && this.b($$5) && this.b($$7) && this.b($$12) && this.b($$11)) {
+         $$0[$$2++] = $$21;
+      }
+
+      erb $$22 = this.a($$1.a + 1, $$1.b + 1, $$1.c + 1);
+      if (this.c($$22) && this.b($$18) && this.b($$3) && this.b($$5) && this.b($$7) && this.b($$9) && this.b($$11)) {
+         $$0[$$2++] = $$22;
+      }
+
+      erb $$23 = this.a($$1.a - 1, $$1.b + 1, $$1.c - 1);
+      if (this.c($$23) && this.b($$19) && this.b($$6) && this.b($$4) && this.b($$7) && this.b($$12) && this.b($$10)) {
+         $$0[$$2++] = $$23;
+      }
+
+      erb $$24 = this.a($$1.a - 1, $$1.b + 1, $$1.c + 1);
+      if (this.c($$24) && this.b($$20) && this.b($$3) && this.b($$4) && this.b($$7) && this.b($$9) && this.b($$10)) {
+         $$0[$$2++] = $$24;
+      }
+
+      erb $$25 = this.a($$1.a + 1, $$1.b - 1, $$1.c - 1);
+      if (this.c($$25) && this.b($$17) && this.b($$6) && this.b($$5) && this.b($$8) && this.b($$16) && this.b($$15)) {
+         $$0[$$2++] = $$25;
+      }
+
+      erb $$26 = this.a($$1.a + 1, $$1.b - 1, $$1.c + 1);
+      if (this.c($$26) && this.b($$18) && this.b($$3) && this.b($$5) && this.b($$8) && this.b($$13) && this.b($$15)) {
+         $$0[$$2++] = $$26;
+      }
+
+      erb $$27 = this.a($$1.a - 1, $$1.b - 1, $$1.c - 1);
+      if (this.c($$27) && this.b($$19) && this.b($$6) && this.b($$4) && this.b($$8) && this.b($$16) && this.b($$14)) {
+         $$0[$$2++] = $$27;
+      }
+
+      erb $$28 = this.a($$1.a - 1, $$1.b - 1, $$1.c + 1);
+      if (this.c($$28) && this.b($$20) && this.b($$3) && this.b($$4) && this.b($$8) && this.b($$13) && this.b($$14)) {
+         $$0[$$2++] = $$28;
+      }
+
+      return $$2;
+   }
+
+   private boolean b(@Nullable erb $$0) {
+      return $$0 != null && $$0.k >= 0.0F;
+   }
+
+   private boolean c(@Nullable erb $$0) {
+      return $$0 != null && !$$0.i;
+   }
+
+   @Nullable
+   @Override
+   protected erb a(int $$0, int $$1, int $$2) {
+      erb $$3 = null;
+      erg $$4 = this.b($$0, $$1, $$2);
+      float $$5 = this.b.a($$4);
+      if ($$5 >= 0.0F) {
+         $$3 = this.c($$0, $$1, $$2);
+         $$3.l = $$4;
+         $$3.k = Math.max($$3.k, $$5);
+         if ($$4 == erg.c) {
+            $$3.k++;
          }
       }
 
-      return true;
+      return $$3;
+   }
+
+   @Override
+   protected erg b(int $$0, int $$1, int $$2) {
+      return (erg)this.l.computeIfAbsent(je.a($$0, $$1, $$2), $$3 -> this.a(this.a, $$0, $$1, $$2, this.b));
+   }
+
+   @Override
+   public erg a(eri $$0, int $$1, int $$2, int $$3) {
+      erg $$4 = $$0.a($$1, $$2, $$3);
+      if ($$4 == erg.b && $$2 >= $$0.a().G_() + 1) {
+         je $$5 = new je($$1, $$2 - 1, $$3);
+         erg $$6 = $$0.a($$5.u(), $$5.v(), $$5.w());
+         if ($$6 == erg.o || $$6 == erg.i) {
+            $$4 = erg.o;
+         } else if ($$6 == erg.q) {
+            $$4 = erg.q;
+         } else if ($$6 == erg.x) {
+            $$4 = erg.x;
+         } else if ($$6 == erg.h) {
+            if (!$$5.equals($$0.b())) {
+               $$4 = erg.h;
+            }
+         } else {
+            $$4 = $$6 != erg.c && $$6 != erg.b && $$6 != erg.j ? erg.c : erg.b;
+         }
+      }
+
+      if ($$4 == erg.c || $$4 == erg.b) {
+         $$4 = a($$0, $$1, $$2, $$3, $$4);
+      }
+
+      return $$4;
+   }
+
+   private Iterable<je> a(bum $$0) {
+      eyn $$1 = $$0.cO();
+      boolean $$2 = $$1.a() < 1.0;
+      if (!$$2) {
+         return List.of(
+            je.a($$1.a, (double)$$0.dy(), $$1.c),
+            je.a($$1.a, (double)$$0.dy(), $$1.f),
+            je.a($$1.d, (double)$$0.dy(), $$1.c),
+            je.a($$1.d, (double)$$0.dy(), $$1.f)
+         );
+      } else {
+         double $$3 = Math.max(0.0, 1.1F - $$1.d());
+         double $$4 = Math.max(0.0, 1.1F - $$1.b());
+         double $$5 = Math.max(0.0, 1.1F - $$1.c());
+         eyn $$6 = $$1.c($$4, $$5, $$3);
+         return je.a($$0.dV(), 10, azd.a($$6.a), azd.a($$6.b), azd.a($$6.c), azd.a($$6.d), azd.a($$6.e), azd.a($$6.f));
+      }
    }
 }

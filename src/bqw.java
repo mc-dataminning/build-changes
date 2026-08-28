@@ -1,49 +1,25 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Arrays;
 
-public class bqw extends bqp {
-   public static final MapCodec<bqw> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bpu.b(bqp.c).fieldOf("distribution").forGetter($$0x -> $$0x.b)).apply($$0, bqw::new)
-   );
-   private final bpu<bqp> b;
-   private final int f;
-   private final int g;
+public class bqw implements bqx {
+   private final bqx[] a;
 
-   public bqw(bpu<bqp> $$0) {
-      this.b = $$0;
-      List<bpw.b<bqp>> $$1 = $$0.e();
-      int $$2 = Integer.MAX_VALUE;
-      int $$3 = Integer.MIN_VALUE;
+   public bqw(bqx... $$0) {
+      this.a = $$0;
+   }
 
-      for (bpw.b<bqp> $$4 : $$1) {
-         int $$5 = $$4.b().a();
-         int $$6 = $$4.b().b();
-         $$2 = Math.min($$2, $$5);
-         $$3 = Math.max($$3, $$6);
+   @Override
+   public float a(azl $$0) {
+      float $$1 = 1.0F;
+
+      for (bqx $$2 : this.a) {
+         $$1 *= $$2.a($$0);
       }
 
-      this.f = $$2;
-      this.g = $$3;
+      return $$1;
    }
 
    @Override
-   public int a(azk $$0) {
-      return this.b.a($$0).orElseThrow(IllegalStateException::new).a($$0);
-   }
-
-   @Override
-   public int a() {
-      return this.f;
-   }
-
-   @Override
-   public int b() {
-      return this.g;
-   }
-
-   @Override
-   public bqq<?> c() {
-      return bqq.e;
+   public String toString() {
+      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
    }
 }

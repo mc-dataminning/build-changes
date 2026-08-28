@@ -1,72 +1,80 @@
-public class gfz {
-   public static final xd a = xd.c("quickplay.error.title");
-   private static final xd b = xd.c("quickplay.error.invalid_identifier");
-   private static final xd c = xd.c("quickplay.error.realm_connect");
-   private static final xd d = xd.c("quickplay.error.realm_permission");
-   private static final xd e = xd.c("gui.toTitle");
-   private static final xd f = xd.c("gui.toWorld");
-   private static final xd g = xd.c("gui.toRealms");
+import com.mojang.authlib.GameProfile;
+import javax.annotation.Nullable;
 
-   public static void a(fib $$0, fvo.c $$1, fdk $$2) {
-      String $$3 = $$1.c();
-      String $$4 = $$1.d();
-      String $$5 = $$1.e();
-      if (!azz.h($$3)) {
-         a($$0, $$3);
-      } else if (!azz.h($$4)) {
-         b($$0, $$4);
-      } else if (!azz.h($$5)) {
-         a($$0, $$2, $$5);
-      }
+public abstract class gfz extends cnu {
+   @Nullable
+   private gbs cv;
+   protected eys b = eys.c;
+   public float c;
+   public float d;
+   public float e;
+   public final gbh f;
+   public float g;
+   public float h;
+
+   public gfz(gbh $$0, GameProfile $$1) {
+      super($$0, $$0.W(), $$0.X(), $$1);
+      this.f = $$0;
    }
 
-   private static void a(fib $$0, String $$1) {
-      if (!$$0.m().b($$1)) {
-         fpt $$2 = new fuw(new fpv());
-         $$0.a(new fpa($$2, a, b, f));
-      } else {
-         $$0.x().a($$1, () -> $$0.a(new fpv()));
-      }
+   @Override
+   public boolean P_() {
+      gbs $$0 = this.a();
+      return $$0 != null && $$0.e() == ded.d;
    }
 
-   private static void b(fib $$0, String $$1) {
-      gbm $$2 = new gbm($$0);
-      $$2.a();
-      gbl $$3 = $$2.a($$1);
-      if ($$3 == null) {
-         $$3 = new gbl(gxr.a("selectServer.defaultName"), $$1, gbl.c.c);
-         $$2.a($$3, true);
-         $$2.b();
-      }
-
-      gco $$4 = gco.a($$1);
-      fos.a(new fsi(new fpv()), $$0, $$4, $$3, true, null);
+   @Override
+   public boolean f() {
+      gbs $$0 = this.a();
+      return $$0 != null && $$0.e() == ded.b;
    }
 
-   private static void a(fib $$0, fdk $$1, String $$2) {
-      long $$3;
-      fed $$4;
-      try {
-         $$3 = Long.parseLong($$2);
-         $$4 = $$1.b();
-      } catch (NumberFormatException var9) {
-         fpt $$6 = new fdf(new fpv());
-         $$0.a(new fpa($$6, a, b, g));
-         return;
-      } catch (fev var10) {
-         fpt $$8 = new fpv();
-         $$0.a(new fpa($$8, a, c, e));
-         return;
+   @Nullable
+   protected gbs a() {
+      if (this.cv == null) {
+         this.cv = fil.Q().L().a(this.cD());
       }
 
-      feb $$11 = $$4.a.stream().filter($$1x -> $$1x.a == $$3).findFirst().orElse(null);
-      if ($$11 == null) {
-         fpt $$12 = new fdf(new fpv());
-         $$0.a(new fpa($$12, a, d, g));
-      } else {
-         fpv $$13 = new fpv();
-         fgy $$14 = new fgy($$13, $$11);
-         $$0.a(new ffp($$13, $$14));
+      return this.cv;
+   }
+
+   @Override
+   public void l() {
+      this.g = this.h;
+      this.b = this.dv();
+      super.l();
+   }
+
+   public eys I(float $$0) {
+      return this.b.a(this.dv(), (double)$$0);
+   }
+
+   public gyc b() {
+      gbs $$0 = this.a();
+      return $$0 == null ? gxt.a(this.cD()) : $$0.g();
+   }
+
+   public float a(boolean $$0, float $$1) {
+      float $$2 = 1.0F;
+      if (this.gd().b) {
+         $$2 *= 1.1F;
       }
+
+      float $$3 = this.gd().b();
+      if ($$3 != 0.0F) {
+         float $$4 = (float)this.h(bvr.v) / $$3;
+         $$2 *= ($$4 + 1.0F) / 2.0F;
+      }
+
+      if (this.fv()) {
+         if (this.fx().a(cvt.ow)) {
+            float $$5 = Math.min((float)this.fz() / 20.0F, 1.0F);
+            $$2 *= 1.0F - azd.k($$5) * 0.15F;
+         } else if ($$0 && this.gA()) {
+            return 0.1F;
+         }
+      }
+
+      return azd.h($$1, 1.0F, $$2);
    }
 }

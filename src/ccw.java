@@ -1,19 +1,32 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class ccw extends cbr {
+   private final clt b;
+   private int c;
 
-public class ccw<T extends buf> extends ccv<T> {
-   private boolean i = true;
-
-   public ccw(cpd $$0, Class<T> $$1, int $$2, boolean $$3, boolean $$4, @Nullable Predicate<buf> $$5) {
-      super($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   public void a(boolean $$0) {
-      this.i = $$0;
+   public ccw(clt $$0, double $$1, boolean $$2) {
+      super($$0, $$1, $$2);
+      this.b = $$0;
    }
 
    @Override
-   public boolean b() {
-      return this.i && super.b();
+   public void d() {
+      super.d();
+      this.c = 0;
+   }
+
+   @Override
+   public void e() {
+      super.e();
+      this.b.w(false);
+   }
+
+   @Override
+   public void a() {
+      super.a();
+      this.c++;
+      if (this.c >= 5 && this.k() < this.l() / 2) {
+         this.b.w(true);
+      } else {
+         this.b.w(false);
+      }
    }
 }

@@ -1,67 +1,59 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 
-public class ect extends edc<efc> {
-   private static final ImmutableList<dgv> a = ImmutableList.of(dgx.F, dgx.fn, dgx.fo, dgx.fp, dgx.fq, dgx.cv, dgx.ct);
-   private static final jj[] b = jj.values();
-   private static final double c = 0.9;
+public class ect extends edq<ege> {
+   private static final duo a = dhl.mZ.o().b(dgn.h, Integer.valueOf(1)).b(dgn.i, dva.a).b(dgn.j, Integer.valueOf(0));
+   private static final duo b = a.b(dgn.i, dva.c).b(dgn.j, Integer.valueOf(1));
+   private static final duo c = a.b(dgn.i, dva.c);
+   private static final duo d = a.b(dgn.i, dva.b);
 
-   public ect(Codec<efc> $$0) {
+   public ect(Codec<ege> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ede<efc> $$0) {
-      boolean $$1 = false;
-      azk $$2 = $$0.d();
-      dep $$3 = $$0.b();
-      efc $$4 = $$0.f();
-      je $$5 = $$0.e();
-      boolean $$6 = $$2.j() < 0.9;
-      int $$7 = $$6 ? $$4.d().a($$2) : 0;
-      int $$8 = $$6 ? $$4.d().a($$2) : 0;
-      boolean $$9 = $$6 && $$7 != 0 && $$8 != 0;
-      int $$10 = $$4.c().a($$2);
-      int $$11 = $$4.c().a($$2);
-      int $$12 = Math.max($$10, $$11);
+   public boolean a(eds<ege> $$0) {
+      int $$1 = 0;
+      je $$2 = $$0.e();
+      dfd $$3 = $$0.b();
+      azl $$4 = $$0.d();
+      ege $$5 = $$0.f();
+      je.a $$6 = $$2.k();
+      je.a $$7 = $$2.k();
+      if ($$3.u($$6)) {
+         if (dhl.mZ.o().a($$3, $$6)) {
+            int $$8 = $$4.a(12) + 5;
+            if ($$4.i() < $$5.l) {
+               int $$9 = $$4.a(4) + 1;
 
-      for (je $$13 : je.a($$5, $$10, 0, $$11)) {
-         if ($$13.k($$5) > $$12) {
-            break;
-         }
-
-         if (a($$3, $$13, $$4)) {
-            if ($$9) {
-               $$1 = true;
-               this.a($$3, $$13, $$4.b());
+               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
+                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
+                     int $$12 = $$10 - $$2.u();
+                     int $$13 = $$11 - $$2.w();
+                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+                        $$7.d($$10, $$3.a(eak.a.b, $$10, $$11) - 1, $$11);
+                        if (b($$3.a_($$7))) {
+                           $$3.a($$7, dhl.l.o(), 2);
+                        }
+                     }
+                  }
+               }
             }
 
-            je $$14 = $$13.b($$7, 0, $$8);
-            if (a($$3, $$14, $$4)) {
-               $$1 = true;
-               this.a($$3, $$14, $$4.a());
+            for (int $$14 = 0; $$14 < $$8 && $$3.u($$6); $$14++) {
+               $$3.a($$6, a, 2);
+               $$6.c(jj.b, 1);
+            }
+
+            if ($$6.v() - $$2.v() >= 3) {
+               $$3.a($$6, b, 2);
+               $$3.a($$6.c(jj.a, 1), c, 2);
+               $$3.a($$6.c(jj.a, 1), d, 2);
             }
          }
+
+         $$1++;
       }
 
-      return $$1;
-   }
-
-   private static boolean a(ddt $$0, je $$1, efc $$2) {
-      dua $$3 = $$0.a_($$1);
-      if ($$3.a($$2.a().b())) {
-         return false;
-      } else if (a.contains($$3.b())) {
-         return false;
-      } else {
-         for (jj $$4 : b) {
-            boolean $$5 = $$0.a_($$1.a($$4)).l();
-            if ($$5 && $$4 != jj.b || !$$5 && $$4 == jj.b) {
-               return false;
-            }
-         }
-
-         return true;
-      }
+      return $$1 > 0;
    }
 }

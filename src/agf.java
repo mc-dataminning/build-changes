@@ -5,7 +5,7 @@ public record agf(float b, boolean c) implements zk<abz> {
       this($$0.readFloat(), $$0.readBoolean());
    }
 
-   public static agf a(brt $$0) {
+   public static agf a(bry $$0) {
       return new agf($$0.f(), $$0.l());
    }
 

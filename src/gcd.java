@@ -1,47 +1,31 @@
-import java.util.List;
-import java.util.Locale;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import java.util.function.Supplier;
 
-public enum gcd {
-   a("i_want_to_report_them"),
-   b("hate_speech"),
-   c("harassment_or_bullying"),
-   d("self_harm_or_suicide"),
-   e("imminent_harm"),
-   f("defamation_impersonation_false_information"),
-   g("alcohol_tobacco_drugs"),
-   h("child_sexual_exploitation_or_abuse"),
-   i("terrorism_or_violent_extremism"),
-   j("non_consensual_intimate_imagery"),
-   k("sexually_inappropriate");
+public interface gcd {
+   Codec<gcd> a = azz.a(gcd.a::values).dispatch(gcd::a, gcd.a::a);
 
-   private final String l;
-   private final xd m;
-   private final xd n;
+   gcd.a a();
 
-   private gcd(final String $$0) {
-      this.l = $$0.toUpperCase(Locale.ROOT);
-      String $$1 = "gui.abuseReport.reason." + $$0;
-      this.m = xd.c($$1);
-      this.n = xd.c($$1 + ".description");
-   }
+   public static enum a implements azz {
+      a("player", () -> gce.a.b),
+      b("system", () -> gce.b.b);
 
-   public String a() {
-      return this.l;
-   }
+      private final String c;
+      private final Supplier<MapCodec<? extends gcd>> d;
 
-   public xd b() {
-      return this.m;
-   }
+      private a(final String $$0, final Supplier<MapCodec<? extends gcd>> $$1) {
+         this.c = $$0;
+         this.d = $$1;
+      }
 
-   public xd c() {
-      return this.n;
-   }
+      private MapCodec<? extends gcd> a() {
+         return this.d.get();
+      }
 
-   public static List<gcd> a(gce $$0) {
-      return switch ($$0) {
-         case a -> List.of(k);
-         case b -> List.of(e, f);
-         default -> List.of();
-      };
+      @Override
+      public String c() {
+         return this.c;
+      }
    }
 }

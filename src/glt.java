@@ -1,22 +1,107 @@
-public class glt extends gny<cfp, gse, fwd> {
-   private static final alb a = alb.b("textures/entity/bat.png");
+import com.google.common.collect.Maps;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-   public glt(gms.a $$0) {
-      super($$0, new fwd($$0.a(gaa.n)), 0.25F);
+public class glt implements glg.a {
+   private final fil a;
+   private final Map<alb<deg>, Map<String, eku>> b = Maps.newIdentityHashMap();
+   private final Map<alb<deg>, Map<String, abc.a>> c = Maps.newIdentityHashMap();
+   private static final int d = 500;
+
+   public glt(fil $$0) {
+      this.a = $$0;
    }
 
-   public alb a(gse $$0) {
-      return a;
+   @Override
+   public void a(fde $$0, ghg $$1, double $$2, double $$3, double $$4) {
+      fhu $$5 = this.a.j.k();
+      alb<deg> $$6 = this.a.s.ag();
+      je $$7 = je.a($$5.b().d, 0.0, $$5.b().f);
+      fdi $$8 = $$1.getBuffer(ghq.y());
+      if (this.b.containsKey($$6)) {
+         for (eku $$9 : this.b.get($$6).values()) {
+            if ($$7.a($$9.g(), 500.0)) {
+               gia.a(
+                  $$0,
+                  $$8,
+                  (double)$$9.h() - $$2,
+                  (double)$$9.i() - $$3,
+                  (double)$$9.j() - $$4,
+                  (double)($$9.k() + 1) - $$2,
+                  (double)($$9.l() + 1) - $$3,
+                  (double)($$9.m() + 1) - $$4,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F,
+                  1.0F
+               );
+            }
+         }
+      }
+
+      Map<String, abc.a> $$10 = this.c.get($$6);
+      if ($$10 != null) {
+         for (abc.a $$11 : $$10.values()) {
+            eku $$12 = $$11.a();
+            if ($$7.a($$12.g(), 500.0)) {
+               if ($$11.b()) {
+                  gia.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.h() - $$2,
+                     (double)$$12.i() - $$3,
+                     (double)$$12.j() - $$4,
+                     (double)($$12.k() + 1) - $$2,
+                     (double)($$12.l() + 1) - $$3,
+                     (double)($$12.m() + 1) - $$4,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F,
+                     1.0F,
+                     0.0F
+                  );
+               } else {
+                  gia.a(
+                     $$0,
+                     $$8,
+                     (double)$$12.h() - $$2,
+                     (double)$$12.i() - $$3,
+                     (double)$$12.j() - $$4,
+                     (double)($$12.k() + 1) - $$2,
+                     (double)($$12.l() + 1) - $$3,
+                     (double)($$12.m() + 1) - $$4,
+                     0.0F,
+                     0.0F,
+                     1.0F,
+                     1.0F,
+                     0.0F,
+                     0.0F,
+                     1.0F
+                  );
+               }
+            }
+         }
+      }
    }
 
-   public gse a() {
-      return new gse();
+   public void a(eku $$0, List<abc.a> $$1, alb<deg> $$2) {
+      this.b.computeIfAbsent($$2, $$0x -> new HashMap<>()).put($$0.toString(), $$0);
+      Map<String, abc.a> $$3 = this.c.computeIfAbsent($$2, $$0x -> new HashMap<>());
+
+      for (abc.a $$4 : $$1) {
+         $$3.put($$4.a().toString(), $$4);
+      }
    }
 
-   public void a(cfp $$0, gse $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.t();
-      $$1.b.a($$0.d);
-      $$1.c.a($$0.e);
+   @Override
+   public void a() {
+      this.b.clear();
+      this.c.clear();
    }
 }

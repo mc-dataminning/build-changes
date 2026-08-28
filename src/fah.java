@@ -1,376 +1,268 @@
-import com.google.common.collect.Sets;
-import com.mojang.logging.LogUtils;
-import java.nio.IntBuffer;
-import java.util.Collections;
+import it.unimi.dsi.fastutil.longs.Long2LongMap;
+import it.unimi.dsi.fastutil.longs.Long2LongMaps;
+import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.Long2LongMap.Entry;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.ObjectOpenCustomHashSet;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.OptionalLong;
+import java.util.LongSummaryStatistics;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Set;
-import javax.annotation.Nullable;
-import org.lwjgl.openal.AL;
-import org.lwjgl.openal.AL10;
-import org.lwjgl.openal.ALC;
-import org.lwjgl.openal.ALC10;
-import org.lwjgl.openal.ALC11;
-import org.lwjgl.openal.ALCCapabilities;
-import org.lwjgl.openal.ALCapabilities;
-import org.lwjgl.openal.ALUtil;
-import org.lwjgl.openal.SOFTHRTF;
-import org.lwjgl.system.MemoryStack;
-import org.slf4j.Logger;
+import java.util.function.BiConsumer;
+import java.util.function.LongPredicate;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
-public class fah {
-   static final Logger a = LogUtils.getLogger();
-   private static final int b = 0;
-   private static final int c = 30;
-   private long d;
-   private long e;
-   private boolean f;
-   @Nullable
-   private String g;
-   private static final fah.a h = new fah.a() {
-      @Nullable
-      @Override
-      public fag a() {
-         return null;
-      }
-
-      @Override
-      public boolean a(fag $$0) {
-         return false;
-      }
-
-      @Override
-      public void b() {
-      }
-
-      @Override
-      public int c() {
-         return 0;
-      }
-
-      @Override
-      public int d() {
-         return 0;
+public class fah<T> implements fag<T> {
+   private static final Comparator<faf<?>> a = ($$0, $$1) -> fak.b.compare($$0.b(), $$1.b());
+   private final LongPredicate b;
+   private final Supplier<bod> c;
+   private final Long2ObjectMap<faf<T>> d = new Long2ObjectOpenHashMap();
+   private final Long2LongMap e = ad.a(new Long2LongOpenHashMap(), $$0x -> $$0x.defaultReturnValue(Long.MAX_VALUE));
+   private final Queue<faf<T>> f = new PriorityQueue<>(a);
+   private final Queue<fak<T>> g = new ArrayDeque<>();
+   private final List<fak<T>> h = new ArrayList<>();
+   private final Set<fak<?>> i = new ObjectOpenCustomHashSet(fak.c);
+   private final BiConsumer<faf<T>, fak<T>> j = ($$0x, $$1x) -> {
+      if ($$1x.equals($$0x.b())) {
+         this.b($$1x);
       }
    };
-   private fah.a i = h;
-   private fah.a j = h;
-   private final fai k = new fai();
 
-   public fah() {
-      this.g = a();
+   public fah(LongPredicate $$0, Supplier<bod> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public void a(@Nullable String $$0, boolean $$1) {
-      this.d = a($$0);
-      this.f = false;
-      ALCCapabilities $$2 = ALC.createCapabilities(this.d);
-      if (fak.a(this.d, "Get capabilities")) {
-         throw new IllegalStateException("Failed to get OpenAL capabilities");
-      } else if (!$$2.OpenALC11) {
-         throw new IllegalStateException("OpenAL 1.1 not supported");
+   public void a(ddm $$0, faf<T> $$1) {
+      long $$2 = $$0.a();
+      this.d.put($$2, $$1);
+      fak<T> $$3 = $$1.b();
+      if ($$3 != null) {
+         this.e.put($$2, $$3.c());
+      }
+
+      $$1.a(this.j);
+   }
+
+   public void a(ddm $$0) {
+      long $$1 = $$0.a();
+      faf<T> $$2 = (faf<T>)this.d.remove($$1);
+      this.e.remove($$1);
+      if ($$2 != null) {
+         $$2.a(null);
+      }
+   }
+
+   @Override
+   public void a(fak<T> $$0) {
+      long $$1 = ddm.a($$0.b());
+      faf<T> $$2 = (faf<T>)this.d.get($$1);
+      if ($$2 == null) {
+         ad.b("Trying to schedule tick in not loaded position " + $$0.b());
       } else {
-         this.a($$2.ALC_SOFT_HRTF && $$1);
-         MemoryStack $$3 = MemoryStack.stackPush();
+         $$2.a($$0);
+      }
+   }
 
-         try {
-            IntBuffer $$4 = $$3.callocInt(3).put(6554).put(1).put(0).flip();
-            this.e = ALC10.alcCreateContext(this.d, $$4);
-         } catch (Throwable var9) {
-            if ($$3 != null) {
-               try {
-                  $$3.close();
-               } catch (Throwable var8) {
-                  var9.addSuppressed(var8);
-               }
-            }
+   public void a(long $$0, int $$1, BiConsumer<je, T> $$2) {
+      bod $$3 = this.c.get();
+      $$3.a("collect");
+      this.a($$0, $$1, $$3);
+      $$3.b("run");
+      $$3.a("ticksToRun", this.g.size());
+      this.a($$2);
+      $$3.b("cleanup");
+      this.c();
+      $$3.c();
+   }
 
-            throw var9;
-         }
+   private void a(long $$0, int $$1, bod $$2) {
+      this.a($$0);
+      $$2.a("containersToTick", this.f.size());
+      this.a($$0, $$1);
+      this.b();
+   }
 
-         if ($$3 != null) {
-            $$3.close();
-         }
+   private void a(long $$0) {
+      ObjectIterator<Entry> $$1 = Long2LongMaps.fastIterator(this.e);
 
-         if (fak.a(this.d, "Create context")) {
-            throw new IllegalStateException("Unable to create OpenAL context");
-         } else {
-            ALC10.alcMakeContextCurrent(this.e);
-            int $$5 = this.i();
-            int $$6 = azc.a((int)azc.c((float)$$5), 2, 8);
-            int $$7 = azc.a($$5 - $$6, 8, 255);
-            this.i = new fah.b($$7);
-            this.j = new fah.b($$6);
-            ALCapabilities $$8 = AL.createCapabilities($$2);
-            fak.a("Initialization");
-            if (!$$8.AL_EXT_source_distance_model) {
-               throw new IllegalStateException("AL_EXT_source_distance_model is not supported");
+      while ($$1.hasNext()) {
+         Entry $$2 = (Entry)$$1.next();
+         long $$3 = $$2.getLongKey();
+         long $$4 = $$2.getLongValue();
+         if ($$4 <= $$0) {
+            faf<T> $$5 = (faf<T>)this.d.get($$3);
+            if ($$5 == null) {
+               $$1.remove();
             } else {
-               AL10.alEnable(512);
-               if (!$$8.AL_EXT_LINEAR_DISTANCE) {
-                  throw new IllegalStateException("AL_EXT_LINEAR_DISTANCE is not supported");
-               } else {
-                  fak.a("Enable per-source distance models");
-                  a.info("OpenAL initialized on device {}", this.b());
-                  this.f = ALC10.alcIsExtensionPresent(this.d, "ALC_EXT_disconnect");
+               fak<T> $$6 = $$5.b();
+               if ($$6 == null) {
+                  $$1.remove();
+               } else if ($$6.c() > $$0) {
+                  $$2.setValue($$6.c());
+               } else if (this.b.test($$3)) {
+                  $$1.remove();
+                  this.f.add($$5);
                }
             }
          }
       }
    }
 
-   private void a(boolean $$0) {
-      int $$1 = ALC10.alcGetInteger(this.d, 6548);
-      if ($$1 > 0) {
-         MemoryStack $$2 = MemoryStack.stackPush();
-
-         try {
-            IntBuffer $$3 = $$2.callocInt(10).put(6546).put($$0 ? 1 : 0).put(6550).put(0).put(0).flip();
-            if (!SOFTHRTF.alcResetDeviceSOFT(this.d, $$3)) {
-               a.warn("Failed to reset device: {}", ALC10.alcGetString(this.d, ALC10.alcGetError(this.d)));
+   private void a(long $$0, int $$1) {
+      faf<T> $$2;
+      while (this.a($$1) && ($$2 = this.f.poll()) != null) {
+         fak<T> $$3 = $$2.c();
+         this.c($$3);
+         this.a(this.f, $$2, $$0, $$1);
+         fak<T> $$4 = $$2.b();
+         if ($$4 != null) {
+            if ($$4.c() <= $$0 && this.a($$1)) {
+               this.f.add($$2);
+            } else {
+               this.b($$4);
             }
-         } catch (Throwable var7) {
-            if ($$2 != null) {
-               try {
-                  $$2.close();
-               } catch (Throwable var6) {
-                  var7.addSuppressed(var6);
-               }
-            }
-
-            throw var7;
-         }
-
-         if ($$2 != null) {
-            $$2.close();
          }
       }
    }
 
-   private int i() {
-      MemoryStack $$0 = MemoryStack.stackPush();
+   private void b() {
+      for (faf<T> $$0 : this.f) {
+         this.b($$0.b());
+      }
+   }
 
-      int var7;
-      label58: {
-         try {
-            int $$1 = ALC10.alcGetInteger(this.d, 4098);
-            if (fak.a(this.d, "Get attributes size")) {
-               throw new IllegalStateException("Failed to get OpenAL attributes");
+   private void b(fak<T> $$0) {
+      this.e.put(ddm.a($$0.b()), $$0.c());
+   }
+
+   private void a(Queue<faf<T>> $$0, faf<T> $$1, long $$2, int $$3) {
+      if (this.a($$3)) {
+         faf<T> $$4 = $$0.peek();
+         fak<T> $$5 = $$4 != null ? $$4.b() : null;
+
+         while (this.a($$3)) {
+            fak<T> $$6 = $$1.b();
+            if ($$6 == null || $$6.c() > $$2 || $$5 != null && fak.b.compare($$6, $$5) > 0) {
+               break;
             }
 
-            IntBuffer $$2 = $$0.mallocInt($$1);
-            ALC10.alcGetIntegerv(this.d, 4099, $$2);
-            if (fak.a(this.d, "Get attributes")) {
-               throw new IllegalStateException("Failed to get OpenAL attributes");
-            }
-
-            int $$3 = 0;
-
-            while ($$3 < $$1) {
-               int $$4 = $$2.get($$3++);
-               if ($$4 == 0) {
-                  break;
-               }
-
-               int $$5 = $$2.get($$3++);
-               if ($$4 == 4112) {
-                  var7 = $$5;
-                  break label58;
-               }
-            }
-         } catch (Throwable var9) {
-            if ($$0 != null) {
-               try {
-                  $$0.close();
-               } catch (Throwable var8) {
-                  var9.addSuppressed(var8);
-               }
-            }
-
-            throw var9;
-         }
-
-         if ($$0 != null) {
-            $$0.close();
-         }
-
-         return 30;
-      }
-
-      if ($$0 != null) {
-         $$0.close();
-      }
-
-      return var7;
-   }
-
-   @Nullable
-   public static String a() {
-      if (!ALC10.alcIsExtensionPresent(0L, "ALC_ENUMERATE_ALL_EXT")) {
-         return null;
-      } else {
-         ALUtil.getStringList(0L, 4115);
-         return ALC10.alcGetString(0L, 4114);
-      }
-   }
-
-   public String b() {
-      String $$0 = ALC10.alcGetString(this.d, 4115);
-      if ($$0 == null) {
-         $$0 = ALC10.alcGetString(this.d, 4101);
-      }
-
-      if ($$0 == null) {
-         $$0 = "Unknown";
-      }
-
-      return $$0;
-   }
-
-   public synchronized boolean c() {
-      String $$0 = a();
-      if (Objects.equals(this.g, $$0)) {
-         return false;
-      } else {
-         this.g = $$0;
-         return true;
-      }
-   }
-
-   private static long a(@Nullable String $$0) {
-      OptionalLong $$1 = OptionalLong.empty();
-      if ($$0 != null) {
-         $$1 = b($$0);
-      }
-
-      if ($$1.isEmpty()) {
-         $$1 = b(a());
-      }
-
-      if ($$1.isEmpty()) {
-         $$1 = b(null);
-      }
-
-      if ($$1.isEmpty()) {
-         throw new IllegalStateException("Failed to open OpenAL device");
-      } else {
-         return $$1.getAsLong();
-      }
-   }
-
-   private static OptionalLong b(@Nullable String $$0) {
-      long $$1 = ALC10.alcOpenDevice($$0);
-      return $$1 != 0L && !fak.a($$1, "Open device") ? OptionalLong.of($$1) : OptionalLong.empty();
-   }
-
-   public void d() {
-      this.i.b();
-      this.j.b();
-      ALC10.alcDestroyContext(this.e);
-      if (this.d != 0L) {
-         ALC10.alcCloseDevice(this.d);
-      }
-   }
-
-   public fai e() {
-      return this.k;
-   }
-
-   @Nullable
-   public fag a(fah.c $$0) {
-      return ($$0 == fah.c.b ? this.j : this.i).a();
-   }
-
-   public void a(fag $$0) {
-      if (!this.i.a($$0) && !this.j.a($$0)) {
-         throw new IllegalStateException("Tried to release unknown channel");
-      }
-   }
-
-   public String f() {
-      return String.format(Locale.ROOT, "Sounds: %d/%d + %d/%d", this.i.d(), this.i.c(), this.j.d(), this.j.c());
-   }
-
-   public List<String> g() {
-      List<String> $$0 = ALUtil.getStringList(0L, 4115);
-      return $$0 == null ? Collections.emptyList() : $$0;
-   }
-
-   public boolean h() {
-      return this.f && ALC11.alcGetInteger(this.d, 787) == 0;
-   }
-
-   interface a {
-      @Nullable
-      fag a();
-
-      boolean a(fag var1);
-
-      void b();
-
-      int c();
-
-      int d();
-   }
-
-   static class b implements fah.a {
-      private final int a;
-      private final Set<fag> b = Sets.newIdentityHashSet();
-
-      public b(int $$0) {
-         this.a = $$0;
-      }
-
-      @Nullable
-      @Override
-      public fag a() {
-         if (this.b.size() >= this.a) {
-            if (ab.aW) {
-               fah.a.warn("Maximum sound pool size {} reached", this.a);
-            }
-
-            return null;
-         } else {
-            fag $$0 = fag.a();
-            if ($$0 != null) {
-               this.b.add($$0);
-            }
-
-            return $$0;
+            $$1.c();
+            this.c($$6);
          }
       }
+   }
 
-      @Override
-      public boolean a(fag $$0) {
-         if (!this.b.remove($$0)) {
-            return false;
-         } else {
-            $$0.b();
-            return true;
+   private void c(fak<T> $$0) {
+      this.g.add($$0);
+   }
+
+   private boolean a(int $$0) {
+      return this.g.size() < $$0;
+   }
+
+   private void a(BiConsumer<je, T> $$0) {
+      while (!this.g.isEmpty()) {
+         fak<T> $$1 = this.g.poll();
+         if (!this.i.isEmpty()) {
+            this.i.remove($$1);
          }
-      }
 
-      @Override
-      public void b() {
-         this.b.forEach(fag::b);
-         this.b.clear();
-      }
-
-      @Override
-      public int c() {
-         return this.a;
-      }
-
-      @Override
-      public int d() {
-         return this.b.size();
+         this.h.add($$1);
+         $$0.accept($$1.b(), $$1.a());
       }
    }
 
-   public static enum c {
-      a,
-      b;
+   private void c() {
+      this.g.clear();
+      this.f.clear();
+      this.h.clear();
+      this.i.clear();
+   }
+
+   @Override
+   public boolean a(je $$0, T $$1) {
+      faf<T> $$2 = (faf<T>)this.d.get(ddm.a($$0));
+      return $$2 != null && $$2.a($$0, $$1);
+   }
+
+   @Override
+   public boolean b(je $$0, T $$1) {
+      this.d();
+      return this.i.contains(fak.a($$1, $$0));
+   }
+
+   private void d() {
+      if (this.i.isEmpty() && !this.g.isEmpty()) {
+         this.i.addAll(this.g);
+      }
+   }
+
+   private void a(eku $$0, fah.a<T> $$1) {
+      int $$2 = kg.a((double)$$0.h());
+      int $$3 = kg.a((double)$$0.j());
+      int $$4 = kg.a((double)$$0.k());
+      int $$5 = kg.a((double)$$0.m());
+
+      for (int $$6 = $$2; $$6 <= $$4; $$6++) {
+         for (int $$7 = $$3; $$7 <= $$5; $$7++) {
+            long $$8 = ddm.c($$6, $$7);
+            faf<T> $$9 = (faf<T>)this.d.get($$8);
+            if ($$9 != null) {
+               $$1.accept($$8, $$9);
+            }
+         }
+      }
+   }
+
+   public void a(eku $$0) {
+      Predicate<fak<T>> $$1 = $$1x -> $$0.b($$1x.b());
+      this.a($$0, ($$1x, $$2) -> {
+         fak<T> $$3 = $$2.b();
+         $$2.a($$1);
+         fak<T> $$4 = $$2.b();
+         if ($$4 != $$3) {
+            if ($$4 != null) {
+               this.b($$4);
+            } else {
+               this.e.remove($$1x);
+            }
+         }
+      });
+      this.h.removeIf($$1);
+      this.g.removeIf($$1);
+   }
+
+   public void a(eku $$0, ki $$1) {
+      this.a(this, $$0, $$1);
+   }
+
+   public void a(fah<T> $$0, eku $$1, ki $$2) {
+      List<fak<T>> $$3 = new ArrayList<>();
+      Predicate<fak<T>> $$4 = $$1x -> $$1.b($$1x.b());
+      $$0.h.stream().filter($$4).forEach($$3::add);
+      $$0.g.stream().filter($$4).forEach($$3::add);
+      $$0.a($$1, ($$2x, $$3x) -> $$3x.d().filter($$4).forEach($$3::add));
+      LongSummaryStatistics $$5 = $$3.stream().mapToLong(fak::e).summaryStatistics();
+      long $$6 = $$5.getMin();
+      long $$7 = $$5.getMax();
+      $$3.forEach($$3x -> this.a(new fak<>((T)$$3x.a(), $$3x.b().a($$2), $$3x.c(), $$3x.d(), $$3x.e() - $$6 + $$7 + 1L)));
+   }
+
+   @Override
+   public int a() {
+      return this.d.values().stream().mapToInt(fam::a).sum();
+   }
+
+   @FunctionalInterface
+   interface a<T> {
+      void accept(long var1, faf<T> var3);
    }
 }

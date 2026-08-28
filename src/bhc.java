@@ -1,22 +1,28 @@
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.Typed;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.serialization.Dynamic;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
+import java.util.Optional;
 
-public class bhc extends bar {
-   private final Predicate<String> a;
-
-   public bhc(Schema $$0, String $$1, Predicate<String> $$2) {
-      super($$0, $$1);
-      this.a = $$2.negate();
+public class bhc extends bgh {
+   public bhc(Schema $$0) {
+      super($$0, false, "PlayerHeadBlockProfileFix", bhm.s, "minecraft:skull");
    }
 
    @Override
-   protected <T> Stream<Dynamic<T>> a(Stream<Dynamic<T>> $$0) {
-      return $$0.filter(this::a);
+   protected Typed<?> a(Typed<?> $$0) {
+      return $$0.update(DSL.remainderFinder(), this::a);
    }
 
-   private <T> boolean a(Dynamic<T> $$0) {
-      return $$0.get("type").asString().result().filter(this.a).isPresent();
+   private <T> Dynamic<T> a(Dynamic<T> $$0) {
+      Optional<Dynamic<T>> $$1 = $$0.get("SkullOwner").result();
+      Optional<Dynamic<T>> $$2 = $$0.get("ExtraType").result();
+      Optional<Dynamic<T>> $$3 = $$1.or(() -> $$2);
+      if ($$3.isEmpty()) {
+         return $$0;
+      } else {
+         $$0 = $$0.remove("SkullOwner").remove("ExtraType");
+         return $$0.set("profile", bfh.a($$3.get()));
+      }
    }
 }

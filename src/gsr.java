@@ -1,7 +1,6 @@
-import javax.annotation.Nullable;
-
-public class gsr extends gsu {
-   public boolean a = true;
-   @Nullable
-   public eye b;
+public class gsr extends guj {
+   public boolean a;
+   public final bti b = new bti();
+   public final bti c = new bti();
+   public final bti d = new bti();
 }

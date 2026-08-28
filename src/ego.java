@@ -1,28 +1,43 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class ego extends egn {
-   public static final MapCodec<ego> c = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, ego::new));
+public class ego implements efu {
+   public static final Codec<ego> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.fieldOf("crystal_invulnerable").orElse(false).forGetter($$0x -> $$0x.b),
+               efa.a.a.listOf().fieldOf("spikes").forGetter($$0x -> $$0x.c),
+               je.a.optionalFieldOf("crystal_beam_target").forGetter($$0x -> Optional.ofNullable($$0x.d))
+            )
+            .apply($$0, ego::new)
+   );
+   private final boolean b;
+   private final List<efa.a> c;
+   @Nullable
+   private final je d;
 
-   public ego(bqp $$0, bqp $$1, int $$2) {
-      super($$0, $$1, $$2);
+   public ego(boolean $$0, List<efa.a> $$1, @Nullable je $$2) {
+      this($$0, $$1, Optional.ofNullable($$2));
    }
 
-   @Override
-   protected egt<?> a() {
-      return egt.e;
+   private ego(boolean $$0, List<efa.a> $$1, Optional<je> $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2.orElse(null);
    }
 
-   @Override
-   protected void a(ddy $$0, egs.b $$1, azk $$2, egc $$3, int $$4, egs.a $$5, int $$6, int $$7, int $$8) {
-      for (int $$9 = $$8; $$9 >= $$8 - $$6; $$9--) {
-         int $$10 = $$7 + $$5.b() - 1 - $$9;
-         this.a($$0, $$1, $$2, $$3, $$5.a(), $$10, $$9, $$5.c());
-      }
+   public boolean a() {
+      return this.b;
    }
 
-   @Override
-   protected boolean a(azk $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
-      return $$1 == $$4 && $$3 == $$4 && $$0.a(2) == 0;
+   public List<efa.a> b() {
+      return this.c;
+   }
+
+   @Nullable
+   public je c() {
+      return this.d;
    }
 }

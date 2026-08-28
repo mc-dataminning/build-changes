@@ -1,38 +1,28 @@
-public class gmf extends gny<ckh, gsn, fws> {
-   private static final alb a = alb.b("textures/entity/creeper/creeper.png");
+public class gmf extends gop<chg, gsq, fwe> {
+   private static final alc a = alc.b("textures/entity/allay/allay.png");
 
-   public gmf(gms.a $$0) {
-      super($$0, new fws($$0.a(gaa.W)), 0.5F);
-      this.a(new gqi(this, $$0.f()));
+   public gmf(gnj.a $$0) {
+      super($$0, new fwe($$0.a(gak.a)), 0.4F);
+      this.a(new grp<>(this, $$0.b()));
    }
 
-   protected void a(gsn $$0, fcu $$1) {
-      float $$2 = $$0.a;
-      float $$3 = 1.0F + azc.a($$2 * 100.0F) * $$2 * 0.01F;
-      $$2 = azc.a($$2, 0.0F, 1.0F);
-      $$2 *= $$2;
-      $$2 *= $$2;
-      float $$4 = (1.0F + $$2 * 0.4F) * $$3;
-      float $$5 = (1.0F + $$2 * 0.1F) / $$3;
-      $$1.b($$4, $$5, $$4);
-   }
-
-   protected float a(gsn $$0) {
-      float $$1 = $$0.a;
-      return (int)($$1 * 10.0F) % 2 == 0 ? 0.0F : azc.a($$1, 0.5F, 1.0F);
-   }
-
-   public alb b(gsn $$0) {
+   public alc a(gsq $$0) {
       return a;
    }
 
-   public gsn a() {
-      return new gsn();
+   public gsq a() {
+      return new gsq();
    }
 
-   public void a(ckh $$0, gsn $$1, float $$2) {
+   public void a(chg $$0, gsq $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.J($$2);
-      $$1.b = $$0.t();
+      $$1.a = $$0.gp();
+      $$1.b = $$0.gq();
+      $$1.c = $$0.K($$2);
+      $$1.d = $$0.J($$2);
+   }
+
+   protected int a(chg $$0, je $$1) {
+      return 15;
    }
 }

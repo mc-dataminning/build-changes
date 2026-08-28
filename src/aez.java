@@ -4,7 +4,7 @@ public class aez implements zk<abz> {
    public static final zb<wa, aez> a = zk.a(aez::a, aez::new);
    private final int b;
 
-   public aez(btj $$0) {
+   public aez(bto $$0) {
       this.b = $$0.ap();
    }
 
@@ -26,7 +26,7 @@ public class aez implements zk<abz> {
    }
 
    @Nullable
-   public btj a(dds $$0) {
+   public bto a(deg $$0) {
       return $$0.a(this.b);
    }
 }

@@ -11,7 +11,7 @@ public record xk(List<xp> d) {
    public static xk b = new xk(List.of());
    public static final int c = 20;
 
-   public void a(azo.a $$0) throws SignatureException {
+   public void a(azp.a $$0) throws SignatureException {
       $$0.update(Ints.toByteArray(this.d.size()));
 
       for (xp $$1 : this.d) {

@@ -1,65 +1,45 @@
-public class cpg {
-   public static final cpg a = a("core");
-   public static final cpg b = a("idle");
-   public static final cpg c = a("work");
-   public static final cpg d = a("play");
-   public static final cpg e = a("rest");
-   public static final cpg f = a("meet");
-   public static final cpg g = a("panic");
-   public static final cpg h = a("raid");
-   public static final cpg i = a("pre_raid");
-   public static final cpg j = a("hide");
-   public static final cpg k = a("fight");
-   public static final cpg l = a("celebrate");
-   public static final cpg m = a("admire_item");
-   public static final cpg n = a("avoid");
-   public static final cpg o = a("ride");
-   public static final cpg p = a("play_dead");
-   public static final cpg q = a("long_jump");
-   public static final cpg r = a("ram");
-   public static final cpg s = a("tongue");
-   public static final cpg t = a("swim");
-   public static final cpg u = a("lay_spawn");
-   public static final cpg v = a("sniff");
-   public static final cpg w = a("investigate");
-   public static final cpg x = a("roar");
-   public static final cpg y = a("emerge");
-   public static final cpg z = a("dig");
-   private final String A;
-   private final int B;
+import java.util.Optional;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-   private cpg(String $$0) {
-      this.A = $$0;
-      this.B = $$0.hashCode();
+public class cpg extends cpe {
+   private static final ddz g = new dey(true, false, Optional.of(1.22F), lu.e.a(awt.cz).map(Function.identity()));
+   private static final float h = 1.2F;
+   private static final float i = azd.k(3.5F);
+   private int j = 5;
+
+   public cpg(btv<? extends cpe> $$0, deg $$1) {
+      super($$0, $$1);
    }
 
-   public String a() {
-      return this.A;
+   public cpg(cnu $$0, deg $$1, double $$2, double $$3, double $$4) {
+      super(btv.bn, $$1, $$0, $$2, $$3, $$4);
    }
 
-   private static cpg a(String $$0) {
-      return ka.a(lu.C, $$0, new cpg($$0));
+   public cpg(deg $$0, double $$1, double $$2, double $$3, eys $$4) {
+      super(btv.bn, $$1, $$2, $$3, $$4, $$0);
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         cpg $$1 = (cpg)$$0;
-         return this.A.equals($$1.A);
-      } else {
-         return false;
+   public void l() {
+      super.l();
+      if (this.j > 0) {
+         this.j--;
       }
    }
 
    @Override
-   public int hashCode() {
-      return this.B;
+   public boolean a(cop $$0, @Nullable bto $$1, @Nullable bto $$2, boolean $$3) {
+      return this.j > 0 ? false : super.a($$0, $$1, $$2, $$3);
    }
 
    @Override
-   public String toString() {
-      return this.a();
+   protected void a(eys $$0) {
+      this.dS().a(this, null, g, $$0.a(), $$0.b(), $$0.c(), 1.2F, false, deg.a.e, ln.A, ln.z, awe.Cw);
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      return this.ag < 2 && $$0 < (double)i ? false : super.a($$0);
    }
 }

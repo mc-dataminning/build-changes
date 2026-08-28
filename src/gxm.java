@@ -1,140 +1,152 @@
-import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.CacheLoader;
-import com.google.common.cache.LoadingCache;
-import com.google.common.hash.Hashing;
-import com.mojang.authlib.GameProfile;
-import com.mojang.authlib.SignatureState;
-import com.mojang.authlib.minecraft.MinecraftProfileTexture;
-import com.mojang.authlib.minecraft.MinecraftProfileTextures;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.minecraft.MinecraftProfileTexture.Type;
-import com.mojang.authlib.properties.Property;
+import com.google.common.base.Suppliers;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.nio.file.Path;
-import java.time.Duration;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.Int2IntMap;
+import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.util.Optional;
+import java.util.Map.Entry;
+import java.util.function.IntUnaryOperator;
 import java.util.function.Supplier;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class gxm {
-   static final Logger a = LogUtils.getLogger();
-   private final MinecraftSessionService b;
-   private final LoadingCache<gxm.a, CompletableFuture<gxl>> c;
-   private final gxm.b d;
-   private final gxm.b e;
-   private final gxm.b f;
+public class gxm implements gxf {
+   static final Logger c = LogUtils.getLogger();
+   public static final MapCodec<gxm> b = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.list(alc.a).fieldOf("textures").forGetter($$0x -> $$0x.d),
+               alc.a.fieldOf("palette_key").forGetter($$0x -> $$0x.f),
+               Codec.unboundedMap(Codec.STRING, alc.a).fieldOf("permutations").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, gxm::new)
+   );
+   private final List<alc> d;
+   private final Map<String, alc> e;
+   private final alc f;
 
-   public gxm(gwl $$0, Path $$1, final MinecraftSessionService $$2, final Executor $$3) {
-      this.b = $$2;
-      this.d = new gxm.b($$0, $$1, Type.SKIN);
-      this.e = new gxm.b($$0, $$1, Type.CAPE);
-      this.f = new gxm.b($$0, $$1, Type.ELYTRA);
-      this.c = CacheBuilder.newBuilder().expireAfterAccess(Duration.ofSeconds(15L)).build(new CacheLoader<gxm.a, CompletableFuture<gxl>>() {
-         public CompletableFuture<gxl> a(gxm.a $$0) {
-            return CompletableFuture.<MinecraftProfileTextures>supplyAsync(() -> {
-               Property $$2xx = $$0.b();
-               if ($$2xx == null) {
-                  return MinecraftProfileTextures.EMPTY;
-               } else {
-                  MinecraftProfileTextures $$3xx = $$2.unpackTextures($$2xx);
-                  if ($$3xx.signatureState() == SignatureState.INVALID) {
-                     gxm.a.warn("Profile contained invalid signature for textures property (profile id: {})", $$0.a());
-                  }
+   private gxm(List<alc> $$0, alc $$1, Map<String, alc> $$2) {
+      this.d = $$0;
+      this.e = $$2;
+      this.f = $$1;
+   }
 
-                  return $$3xx;
-               }
-            }, ad.g()).thenComposeAsync($$1 -> gxm.this.a($$0.a(), $$1), $$3);
+   @Override
+   public void a(aut $$0, gxf.a $$1) {
+      Supplier<int[]> $$2 = Suppliers.memoize(() -> a($$0, this.f));
+      Map<String, Supplier<IntUnaryOperator>> $$3 = new HashMap<>();
+      this.e.forEach(($$3x, $$4x) -> $$3.put($$3x, Suppliers.memoize(() -> a($$2.get(), a($$0, $$4x)))));
+
+      for (alc $$4 : this.d) {
+         alc $$5 = a.a($$4);
+         Optional<aur> $$6 = $$0.getResource($$5);
+         if ($$6.isEmpty()) {
+            c.warn("Unable to find texture {}", $$5);
+         } else {
+            gxl $$7 = new gxl($$5, $$6.get(), $$3.size());
+
+            for (Entry<String, Supplier<IntUnaryOperator>> $$8 : $$3.entrySet()) {
+               alc $$9 = $$4.g("_" + $$8.getKey());
+               $$1.a($$9, new gxm.a($$7, $$8.getValue(), $$9));
+            }
          }
-      });
+      }
    }
 
-   public Supplier<gxl> a(GameProfile $$0) {
-      CompletableFuture<gxl> $$1 = this.c($$0);
-      gxl $$2 = gxc.a($$0);
-      return () -> $$1.getNow($$2);
-   }
-
-   public gxl b(GameProfile $$0) {
-      gxl $$1 = this.c($$0).getNow(null);
-      return $$1 != null ? $$1 : gxc.a($$0);
-   }
-
-   public CompletableFuture<gxl> c(GameProfile $$0) {
-      Property $$1 = this.b.getPackedTextures($$0);
-      return (CompletableFuture<gxl>)this.c.getUnchecked(new gxm.a($$0.getId(), $$1));
-   }
-
-   CompletableFuture<gxl> a(UUID $$0, MinecraftProfileTextures $$1) {
-      MinecraftProfileTexture $$2 = $$1.skin();
-      CompletableFuture<alb> $$3;
-      gxl.a $$4;
-      if ($$2 != null) {
-         $$3 = this.d.a($$2);
-         $$4 = gxl.a.a($$2.getMetadata("model"));
+   private static IntUnaryOperator a(int[] $$0, int[] $$1) {
+      if ($$1.length != $$0.length) {
+         c.warn("Palette mapping has different sizes: {} and {}", $$0.length, $$1.length);
+         throw new IllegalArgumentException();
       } else {
-         gxl $$5 = gxc.a($$0);
-         $$3 = CompletableFuture.completedFuture($$5.a());
-         $$4 = $$5.e();
-      }
+         Int2IntMap $$2 = new Int2IntOpenHashMap($$1.length);
 
-      String $$8 = x.a($$2, MinecraftProfileTexture::getUrl);
-      MinecraftProfileTexture $$9 = $$1.cape();
-      CompletableFuture<alb> $$10 = $$9 != null ? this.e.a($$9) : CompletableFuture.completedFuture(null);
-      MinecraftProfileTexture $$11 = $$1.elytra();
-      CompletableFuture<alb> $$12 = $$11 != null ? this.f.a($$11) : CompletableFuture.completedFuture(null);
-      return CompletableFuture.allOf($$3, $$10, $$12)
-         .thenApply($$6x -> new gxl($$3.join(), $$8, $$10.join(), $$12.join(), $$4, $$1.signatureState() == SignatureState.SIGNED));
-   }
-
-   static record a(UUID a, @Nullable Property b) {
-   }
-
-   static class b {
-      private final gwl a;
-      private final Path b;
-      private final Type c;
-      private final Map<String, CompletableFuture<alb>> d = new Object2ObjectOpenHashMap();
-
-      b(gwl $$0, Path $$1, Type $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
-
-      public CompletableFuture<alb> a(MinecraftProfileTexture $$0) {
-         String $$1 = $$0.getHash();
-         CompletableFuture<alb> $$2 = this.d.get($$1);
-         if ($$2 == null) {
-            $$2 = this.b($$0);
-            this.d.put($$1, $$2);
+         for (int $$3 = 0; $$3 < $$0.length; $$3++) {
+            int $$4 = $$0[$$3];
+            if (axo.a($$4) != 0) {
+               $$2.put(axo.g($$4), $$1[$$3]);
+            }
          }
 
-         return $$2;
-      }
-
-      private CompletableFuture<alb> b(MinecraftProfileTexture $$0) {
-         String $$1 = Hashing.sha1().hashUnencodedChars($$0.getHash()).toString();
-         alb $$2 = this.a($$1);
-         Path $$3 = this.b.resolve($$1.length() > 2 ? $$1.substring(0, 2) : "xx").resolve($$1);
-         CompletableFuture<alb> $$4 = new CompletableFuture<>();
-         gvy $$5 = new gvy($$3.toFile(), $$0.getUrl(), gxc.a(), this.c == Type.SKIN, () -> $$4.complete($$2));
-         this.a.a($$2, $$5);
-         return $$4;
-      }
-
-      private alb a(String $$0) {
-         String $$1 = switch (this.c) {
-            case SKIN -> "skins";
-            case CAPE -> "capes";
-            case ELYTRA -> "elytra";
-            default -> throw new MatchException(null, null);
+         return $$1x -> {
+            int $$2x = axo.a($$1x);
+            if ($$2x == 0) {
+               return $$1x;
+            } else {
+               int $$3x = axo.g($$1x);
+               int $$4x = $$2.getOrDefault($$3x, axo.f($$3x));
+               int $$5 = axo.a($$4x);
+               return axo.c($$2x * $$5 / 255, $$4x);
+            }
          };
-         return alb.b($$1 + "/" + $$0);
+      }
+   }
+
+   private static int[] a(aut $$0, alc $$1) {
+      Optional<aur> $$2 = $$0.getResource(a.a($$1));
+      if ($$2.isEmpty()) {
+         c.error("Failed to load palette image {}", $$1);
+         throw new IllegalArgumentException();
+      } else {
+         try {
+            int[] var5;
+            try (
+               InputStream $$3 = $$2.get().d();
+               fce $$4 = fce.a($$3);
+            ) {
+               var5 = $$4.e();
+            }
+
+            return var5;
+         } catch (Exception var11) {
+            c.error("Couldn't load texture {}", $$1, var11);
+            throw new IllegalArgumentException();
+         }
+      }
+   }
+
+   @Override
+   public gxh a() {
+      return gxi.e;
+   }
+
+   static record a(gxl a, Supplier<IntUnaryOperator> b, alc c) implements gxf.b {
+      @Nullable
+      public gwv a(gxe $$0) {
+         Object var3;
+         try {
+            fce $$1 = this.a.a().a(this.b.get());
+            return new gwv(this.c, new gyp($$1.a(), $$1.b()), $$1, auv.a);
+         } catch (IllegalArgumentException | IOException var7) {
+            gxm.c.error("unable to apply palette to {}", this.c, var7);
+            var3 = null;
+         } finally {
+            this.a.b();
+         }
+
+         return (gwv)var3;
+      }
+
+      @Override
+      public void a() {
+         this.a.b();
+      }
+
+      public gxl b() {
+         return this.a;
+      }
+
+      public Supplier<IntUnaryOperator> c() {
+         return this.b;
+      }
+
+      public alc d() {
+         return this.c;
       }
    }
 }

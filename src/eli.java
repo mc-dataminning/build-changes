@@ -1,68 +1,44 @@
-import com.mojang.datafixers.Products.P4;
-import com.mojang.datafixers.Products.P5;
-import com.mojang.datafixers.Products.P9;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
 import java.util.List;
-import java.util.Optional;
 
-public class eli extends ell {
-   public static final MapCodec<eli> a = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, eli::new));
-   private final int c;
-   private final int d;
-   private final int e;
-   private final jr<det> f;
+public record eli(List<eli.a> c, elz d) {
+   public static final Codec<eli> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(eli.a.a.listOf().fieldOf("structures").forGetter(eli::a), elz.b.fieldOf("placement").forGetter(eli::b)).apply($$0, eli::new)
+   );
+   public static final Codec<jn<eli>> b = aky.a(lv.aU, a);
 
-   private static P9<Mu<eli>, ki, ell.c, Float, Integer, Optional<ell.a>, Integer, Integer, Integer, jr<det>> b(Instance<eli> $$0) {
-      P5<Mu<eli>, ki, ell.c, Float, Integer, Optional<ell.a>> $$1 = a($$0);
-      P4<Mu<eli>, Integer, Integer, Integer, jr<det>> $$2 = $$0.group(
-         Codec.intRange(0, 1023).fieldOf("distance").forGetter(eli::a),
-         Codec.intRange(0, 1023).fieldOf("spread").forGetter(eli::b),
-         Codec.intRange(1, 4095).fieldOf("count").forGetter(eli::c),
-         kc.a(lv.aF).fieldOf("preferred_biomes").forGetter(eli::d)
-      );
-      return new P9($$1.t1(), $$1.t2(), $$1.t3(), $$1.t4(), $$1.t5(), $$2.t1(), $$2.t2(), $$2.t3(), $$2.t4());
+   public eli(jn<elc> $$0, elz $$1) {
+      this(List.of(new eli.a($$0, 1)), $$1);
    }
 
-   public eli(ki $$0, ell.c $$1, float $$2, int $$3, Optional<ell.a> $$4, int $$5, int $$6, int $$7, jr<det> $$8) {
-      super($$0, $$1, $$2, $$3, $$4);
-      this.c = $$5;
-      this.d = $$6;
-      this.e = $$7;
-      this.f = $$8;
+   public static eli.a a(jn<elc> $$0, int $$1) {
+      return new eli.a($$0, $$1);
    }
 
-   public eli(int $$0, int $$1, int $$2, jr<det> $$3) {
-      this(ki.g, ell.c.a, 1.0F, 0, Optional.empty(), $$0, $$1, $$2, $$3);
+   public static eli.a a(jn<elc> $$0) {
+      return new eli.a($$0, 1);
    }
 
-   public int a() {
+   public List<eli.a> a() {
       return this.c;
    }
 
-   public int b() {
+   public elz b() {
       return this.d;
    }
 
-   public int c() {
-      return this.e;
-   }
+   public static record a(jn<elc> b, int c) {
+      public static final Codec<eli.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(elc.b.fieldOf("structure").forGetter(eli.a::a), aym.l.fieldOf("weight").forGetter(eli.a::b)).apply($$0, eli.a::new)
+      );
 
-   public jr<det> d() {
-      return this.f;
-   }
+      public jn<elc> a() {
+         return this.b;
+      }
 
-   @Override
-   protected boolean a(dvy $$0, int $$1, int $$2) {
-      List<dcy> $$3 = $$0.a(this);
-      return $$3 == null ? false : $$3.contains(new dcy($$1, $$2));
-   }
-
-   @Override
-   public elm<?> e() {
-      return elm.b;
+      public int b() {
+         return this.c;
+      }
    }
 }

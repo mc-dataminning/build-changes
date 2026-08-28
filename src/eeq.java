@@ -1,56 +1,54 @@
 import com.mojang.serialization.Codec;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class eeq extends edc<ege> {
-   public eeq(Codec<ege> $$0) {
+public class eeq extends edq<egj> {
+   public eeq(Codec<egj> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ede<ege> $$0) {
-      dep $$1 = $$0.b();
-      je $$2 = $$0.e();
-      ege $$3 = $$0.f();
-      azk $$4 = $$0.d();
-      OptionalInt $$5 = a($$1, $$2, $$3);
-      if ($$5.isEmpty()) {
+   public boolean a(eds<egj> $$0) {
+      egj $$1 = $$0.f();
+      dfd $$2 = $$0.b();
+      azl $$3 = $$0.d();
+      dhj $$4 = $$1.b.b();
+      je $$5 = a($$2, $$0.e().k().a(jj.a.b, $$2.G_() + 1, $$2.an()), $$4);
+      if ($$5 == null) {
          return false;
       } else {
-         je $$6 = $$2.h($$5.getAsInt());
-         ki $$7 = new ki($$3.c, $$3.c, $$3.c);
-         ekg $$8 = ekg.a($$6.b($$7), $$6.a($$7));
-         return je.a($$8).filter($$2x -> $$4.i() < $$3.d).filter($$1x -> this.b($$1, $$1x)).mapToInt($$1x -> {
-            $$1.a($$1x, dgx.kJ.o(), 2);
-            return 1;
-         }).sum() > 0;
-      }
-   }
+         int $$6 = $$1.a().a($$3);
+         int $$7 = $$1.a().a($$3);
+         int $$8 = $$1.a().a($$3);
+         int $$9 = Math.max($$6, Math.max($$7, $$8));
+         boolean $$10 = false;
 
-   private static OptionalInt a(dep $$0, je $$1, ege $$2) {
-      Predicate<dua> $$3 = $$0x -> $$0x.a(dgx.G);
-      Predicate<dua> $$4 = $$0x -> !$$0x.a(dgx.G);
-      Optional<dzm> $$5 = dzm.a($$0, $$1, $$2.b, $$3, $$4);
-      return $$5.<OptionalInt>map(dzm::c).orElseGet(OptionalInt::empty);
-   }
+         for (je $$11 : je.a($$5, $$6, $$7, $$8)) {
+            if ($$11.k($$5) > $$9) {
+               break;
+            }
 
-   private boolean b(dep $$0, je $$1) {
-      if (!this.a($$0, $$1) && !this.a($$0, $$1.e())) {
-         for (jj $$2 : jj.c.a) {
-            if (this.a($$0, $$1.a($$2))) {
-               return false;
+            duo $$12 = $$2.a_($$11);
+            if ($$12.a($$4)) {
+               this.a($$2, $$11, $$1.c);
+               $$10 = true;
             }
          }
 
-         return true;
-      } else {
-         return false;
+         return $$10;
       }
    }
 
-   private boolean a(ddt $$0, je $$1) {
-      dua $$2 = $$0.a_($$1);
-      return $$2.a(dgx.G) || $$2.l();
+   @Nullable
+   private static je a(deh $$0, je.a $$1, dhj $$2) {
+      while ($$1.v() > $$0.G_() + 1) {
+         duo $$3 = $$0.a_($$1);
+         if ($$3.a($$2)) {
+            return $$1;
+         }
+
+         $$1.c(jj.a);
+      }
+
+      return null;
    }
 }

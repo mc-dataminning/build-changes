@@ -1,110 +1,101 @@
-import com.google.common.base.MoreObjects;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import java.util.Collection;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import java.util.Map;
 import java.util.stream.Stream;
-import javax.annotation.Nullable;
 
-public abstract class dvd<T extends Comparable<T>> {
-   private final Class<T> a;
-   private final String b;
-   @Nullable
-   private Integer c;
-   private final Codec<T> d = Codec.STRING
-      .comapFlatMap(
-         $$0x -> this.b($$0x)
-               .<DataResult>map(DataResult::success)
-               .orElseGet(() -> DataResult.error(() -> "Unable to read property: " + this + " with value: " + $$0x)),
-         this::a
-      );
-   private final Codec<dvd.a<T>> e = this.d.xmap(this::b, dvd.a::b);
+public record dvd(String r, boolean s, boolean t, boolean u, dvd.a v, dox w, awd x, awd y, awd z, awd A, awd B, awd C, awd D, awd E) {
+   private static final Map<String, dvd> F = new Object2ObjectArrayMap();
+   public static final Codec<dvd> a = Codec.stringResolver(dvd::b, F::get);
+   public static final dvd b = a(new dvd("iron", false, false, false, dvd.a.a, dox.g, awe.nn, awe.no, awe.nv, awe.nw, awe.oJ, awe.oK, awe.zk, awe.zl));
+   public static final dvd c = a(new dvd("copper", true, true, false, dvd.a.a, dox.aj, awe.fO, awe.fP, awe.fV, awe.fW, awe.oJ, awe.oK, awe.zk, awe.zl));
+   public static final dvd d = a(new dvd("gold", false, true, false, dvd.a.a, dox.g, awe.nn, awe.no, awe.nv, awe.nw, awe.oJ, awe.oK, awe.zk, awe.zl));
+   public static final dvd e = a(new dvd("stone", true, true, false, dvd.a.b, dox.f, awe.nn, awe.no, awe.nv, awe.nw, awe.zp, awe.zq, awe.zk, awe.zl));
+   public static final dvd f = a(
+      new dvd("polished_blackstone", true, true, false, dvd.a.b, dox.f, awe.nn, awe.no, awe.nv, awe.nw, awe.zp, awe.zq, awe.zk, awe.zl)
+   );
+   public static final dvd g = a(new dvd("oak"));
+   public static final dvd h = a(new dvd("spruce"));
+   public static final dvd i = a(new dvd("birch"));
+   public static final dvd j = a(new dvd("acacia"));
+   public static final dvd k = a(new dvd("cherry", true, true, true, dvd.a.a, dox.aU, awe.eF, awe.eG, awe.eH, awe.eI, awe.eL, awe.eM, awe.eJ, awe.eK));
+   public static final dvd l = a(new dvd("jungle"));
+   public static final dvd m = a(new dvd("dark_oak"));
+   public static final dvd n = a(new dvd("crimson", true, true, true, dvd.a.a, dox.aT, awe.qP, awe.qQ, awe.qR, awe.qS, awe.qV, awe.qW, awe.qT, awe.qU));
+   public static final dvd o = a(new dvd("warped", true, true, true, dvd.a.a, dox.aT, awe.qP, awe.qQ, awe.qR, awe.qS, awe.qV, awe.qW, awe.qT, awe.qU));
+   public static final dvd p = a(new dvd("mangrove"));
+   public static final dvd q = a(new dvd("bamboo", true, true, true, dvd.a.a, dox.aS, awe.bo, awe.bp, awe.bq, awe.br, awe.bu, awe.bv, awe.bs, awe.bt));
 
-   protected dvd(String $$0, Class<T> $$1) {
-      this.a = $$1;
-      this.b = $$0;
+   public dvd(String $$0) {
+      this($$0, true, true, true, dvd.a.a, dox.b, awe.Db, awe.Dc, awe.Dd, awe.De, awe.Dh, awe.Di, awe.Df, awe.Dg);
    }
 
-   public dvd.a<T> b(T $$0) {
-      return new dvd.a<>(this, $$0);
+   private static dvd a(dvd $$0) {
+      F.put($$0.r, $$0);
+      return $$0;
    }
 
-   public dvd.a<T> a(duc<?, ?> $$0) {
-      return new dvd.a<>(this, $$0.c(this));
+   public static Stream<dvd> a() {
+      return F.values().stream();
    }
 
-   public Stream<dvd.a<T>> c() {
-      return this.a().stream().map(this::b);
+   public String b() {
+      return this.r;
    }
 
-   public Codec<T> d() {
-      return this.d;
+   public boolean c() {
+      return this.s;
    }
 
-   public Codec<dvd.a<T>> e() {
-      return this.e;
+   public boolean d() {
+      return this.t;
    }
 
-   public String f() {
-      return this.b;
+   public boolean e() {
+      return this.u;
    }
 
-   public Class<T> g() {
-      return this.a;
+   public dvd.a f() {
+      return this.v;
    }
 
-   public abstract Collection<T> a();
-
-   public abstract String a(T var1);
-
-   public abstract Optional<T> b(String var1);
-
-   @Override
-   public String toString() {
-      return MoreObjects.toStringHelper(this).add("name", this.b).add("clazz", this.a).add("values", this.a()).toString();
+   public dox g() {
+      return this.w;
    }
 
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return !($$0 instanceof dvd<?> $$1) ? false : this.a.equals($$1.a) && this.b.equals($$1.b);
-      }
+   public awd h() {
+      return this.x;
    }
 
-   @Override
-   public final int hashCode() {
-      if (this.c == null) {
-         this.c = this.b();
-      }
-
-      return this.c;
+   public awd i() {
+      return this.y;
    }
 
-   public int b() {
-      return 31 * this.a.hashCode() + this.b.hashCode();
+   public awd j() {
+      return this.z;
    }
 
-   public <U, S extends duc<?, S>> DataResult<S> a(DynamicOps<U> $$0, S $$1, U $$2) {
-      DataResult<T> $$3 = this.d.parse($$0, $$2);
-      return $$3.map($$1x -> $$1.b(this, $$1x)).setPartial($$1);
+   public awd k() {
+      return this.A;
    }
 
-   public static record a<T extends Comparable<T>>(dvd<T> a, T b) {
-      public a(dvd<T> a, T b) {
-         if (!a.a().contains(b)) {
-            throw new IllegalArgumentException("Value " + b + " does not belong to property " + a);
-         } else {
-            this.a = a;
-            this.b = b;
-         }
-      }
+   public awd l() {
+      return this.B;
+   }
 
-      @Override
-      public String toString() {
-         return this.a.f() + "=" + this.a.a(this.b);
-      }
+   public awd m() {
+      return this.C;
+   }
+
+   public awd n() {
+      return this.D;
+   }
+
+   public awd o() {
+      return this.E;
+   }
+
+   public static enum a {
+      a,
+      b;
    }
 }

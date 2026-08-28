@@ -47,7 +47,7 @@ public class ez implements ArgumentType<ez.a> {
       }
 
       public float a(et $$0) {
-         return azc.g(this.b ? this.a + $$0.k().j : this.a);
+         return azd.g(this.b ? this.a + $$0.k().j : this.a);
       }
    }
 }

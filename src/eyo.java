@@ -1,105 +1,61 @@
-import java.util.function.Predicate;
-import javax.annotation.Nullable;
+public class eyo extends eyq {
+   private final jj b;
+   private final je c;
+   private final boolean d;
+   private final boolean e;
+   private final boolean f;
 
-public class eyo implements eyj {
-   protected static final eyj a = new eyo(false, -Double.MAX_VALUE, cvl.k, $$0 -> false, null) {
-      @Override
-      public boolean a(eyx $$0, je $$1, boolean $$2) {
-         return $$2;
-      }
-   };
-   private final boolean b;
-   private final double c;
-   private final cvl d;
-   private final Predicate<eqb> e;
-   @Nullable
-   private final btj f;
-
-   protected eyo(boolean $$0, double $$1, cvl $$2, Predicate<eqb> $$3, @Nullable btj $$4) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
+   public static eyo a(eys $$0, jj $$1, je $$2) {
+      return new eyo(true, $$0, $$1, $$2, false, false);
    }
 
-   @Deprecated
-   protected eyo(btj $$0, boolean $$1) {
-      // $VF: Couldn't be decompiled
-      // Please report this to the Vineflower issue tracker, at https://github.com/Vineflower/vineflower/issues with a copy of the class file (if you have the rights to distribute it!)
-      // java.lang.NullPointerException: Cannot invoke "org.jetbrains.java.decompiler.struct.gen.VarType.equals(Object)" because "curType" is null
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.setLambdaGenericTypes(NewExprent.java:668)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.NewExprent.toJava(NewExprent.java:401)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:745)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:714)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.toJava(FunctionExprent.java:625)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:745)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.wrapOperandString(FunctionExprent.java:714)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.FunctionExprent.toJava(FunctionExprent.java:627)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.getCastedExprent(ExprProcessor.java:1018)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.appendParamList(InvocationExprent.java:1153)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.exps.InvocationExprent.toJava(InvocationExprent.java:902)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.ExprProcessor.listToJava(ExprProcessor.java:895)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.BasicBlockStatement.toJava(BasicBlockStatement.java:90)
-      //   at org.jetbrains.java.decompiler.modules.decompiler.stats.RootStatement.toJava(RootStatement.java:36)
-      //   at org.jetbrains.java.decompiler.main.ClassWriter.writeMethod(ClassWriter.java:1283)
-      //
-      // Bytecode:
-      // 00: aload 0
-      // 01: aload 1
-      // 02: invokevirtual btj.ce ()Z
-      // 05: aload 1
-      // 06: invokevirtual btj.dz ()D
-      // 09: aload 1
-      // 0a: instanceof buf
-      // 0d: ifeq 1a
-      // 10: aload 1
-      // 11: checkcast buf
-      // 14: invokevirtual buf.eW ()Lcvl;
-      // 17: goto 1d
-      // 1a: getstatic cvl.k Lcvl;
-      // 1d: iload 2
-      // 1e: ifeq 29
-      // 21: invokedynamic test ()Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, eyo.b (Leqb;)Z, (Leqb;)Z ]
-      // 26: goto 46
-      // 29: aload 1
-      // 2a: instanceof buf
-      // 2d: ifeq 41
-      // 30: aload 1
-      // 31: checkcast buf
-      // 34: dup
-      // 35: invokestatic java/util/Objects.requireNonNull (Ljava/lang/Object;)Ljava/lang/Object;
-      // 38: pop
-      // 39: invokedynamic test (Lbuf;)Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, buf.a (Leqb;)Z, (Leqb;)Z ]
-      // 3e: goto 46
-      // 41: invokedynamic test ()Ljava/util/function/Predicate; bsm=java/lang/invoke/LambdaMetafactory.metafactory (Ljava/lang/invoke/MethodHandles$Lookup;Ljava/lang/String;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodType;Ljava/lang/invoke/MethodHandle;Ljava/lang/invoke/MethodType;)Ljava/lang/invoke/CallSite; args=[ (Ljava/lang/Object;)Z, eyo.a (Leqb;)Z, (Leqb;)Z ]
-      // 46: aload 1
-      // 47: invokespecial eyo.<init> (ZDLcvl;Ljava/util/function/Predicate;Lbtj;)V
-      // 4a: return
+   public eyo(eys $$0, jj $$1, je $$2, boolean $$3) {
+      this(false, $$0, $$1, $$2, $$3, false);
    }
 
-   @Override
-   public boolean a(cvg $$0) {
-      return this.d.a($$0);
+   public eyo(eys $$0, jj $$1, je $$2, boolean $$3, boolean $$4) {
+      this(false, $$0, $$1, $$2, $$3, $$4);
    }
 
-   @Override
-   public boolean a(eqb $$0, eqb $$1) {
-      return this.e.test($$1) && !$$0.a().a($$1.a());
+   private eyo(boolean $$0, eys $$1, jj $$2, je $$3, boolean $$4, boolean $$5) {
+      super($$1);
+      this.d = $$0;
+      this.b = $$2;
+      this.c = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   @Override
-   public boolean b() {
+   public eyo a(jj $$0) {
+      return new eyo(this.d, this.a, $$0, this.c, this.e, this.f);
+   }
+
+   public eyo a(je $$0) {
+      return new eyo(this.d, this.a, this.b, $$0, this.e, this.f);
+   }
+
+   public eyo a() {
+      return new eyo(this.d, this.a, this.b, this.c, this.e, true);
+   }
+
+   public je b() {
+      return this.c;
+   }
+
+   public jj c() {
       return this.b;
    }
 
    @Override
-   public boolean a(eyx $$0, je $$1, boolean $$2) {
-      return this.c > (double)$$1.v() + $$0.c(jj.a.b) - 1.0E-5F;
+   public eyq.a d() {
+      return this.d ? eyq.a.a : eyq.a.b;
    }
 
-   @Nullable
-   public btj c() {
+   public boolean e() {
+      return this.e;
+   }
+
+   public boolean f() {
       return this.f;
    }
 }

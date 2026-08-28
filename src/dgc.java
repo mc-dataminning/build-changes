@@ -1,67 +1,76 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dgc extends dgv implements dnx {
-   public static final MapCodec<dgc> a = b(dgc::new);
-   public static final dur b = duq.C;
+public abstract class dgc extends dhj {
+   private static final int d = 2;
+   private static final int e = 4;
+   private static final int f = 3;
+   private static final int g = 2;
+   protected static final int a = 4;
+   private static final ezm h = a(2.0, 4.0, 2.0, 14.0, 16.0, 14.0);
+   protected static final ezm b = ezj.a(
+      ezj.b(), ezj.a(a(0.0, 0.0, 4.0, 16.0, 3.0, 12.0), a(4.0, 0.0, 0.0, 12.0, 3.0, 16.0), a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0), h), eyw.e
+   );
+   protected final kk.a c;
 
    @Override
-   public MapCodec<dgc> a() {
-      return a;
-   }
+   protected abstract MapCodec<? extends dgc> a();
 
-   protected dgc(dtz.d $$0) {
+   public dgc(dun.d $$0, kk.a $$1) {
       super($$0);
-      this.l(this.o().b(b, Boolean.valueOf(false)));
+      this.c = $$1;
+   }
+
+   protected double b(duo $$0) {
+      return 0.0;
+   }
+
+   protected boolean a(duo $$0, je $$1, bto $$2) {
+      return $$2.dz() < (double)$$1.v() + this.b($$0) && $$2.cO().e > (double)$$1.v() + 0.25;
    }
 
    @Override
-   protected boolean e_(dua $$0) {
-      return $$0.y().c();
+   protected brp a(cvp $$0, duo $$1, deg $$2, je $$3, cnu $$4, bro $$5, eyo $$6) {
+      kk $$7 = this.c.b().get($$0.h());
+      return $$7.interact($$1, $$2, $$3, $$4, $$5, $$0);
    }
 
    @Override
-   protected dnc a_(dua $$0) {
-      return dnc.a;
+   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
+      return b;
    }
 
    @Override
-   protected float c(dua $$0, dcx $$1, je $$2) {
-      return 1.0F;
+   protected ezm a(duo $$0, ddl $$1, je $$2) {
+      return h;
    }
 
    @Override
-   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, eqc.c, eqc.c.a($$3));
+   protected boolean c_(duo $$0) {
+      return true;
+   }
+
+   @Override
+   protected boolean a(duo $$0, ere $$1) {
+      return false;
+   }
+
+   public abstract boolean d(duo var1);
+
+   @Override
+   protected void a(duo $$0, arh $$1, je $$2, azl $$3) {
+      je $$4 = dnb.a((deg)$$1, $$2);
+      if ($$4 != null) {
+         eqo $$5 = dnb.a($$1, $$4);
+         if ($$5 != eqq.a && this.a($$5)) {
+            this.a($$0, $$1, $$2, $$5);
+         }
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   @Override
-   protected eqb b_(dua $$0) {
-      return $$0.c(b) ? eqc.c.a(false) : super.b_($$0);
+   protected boolean a(eqo $$0) {
+      return false;
    }
 
-   @Nullable
-   @Override
-   public dua a(cyw $$0) {
-      return this.o().b(b, Boolean.valueOf($$0.q().b_($$0.a()).a() == eqc.c));
-   }
-
-   @Override
-   protected void a(dub.a<dgv, dua> $$0) {
-      $$0.a(b);
-   }
-
-   @Override
-   public cvl a(@Nullable cnp $$0, ddt $$1, je $$2, dua $$3) {
-      return $$0 != null && $$0.f() ? dnx.super.a($$0, $$1, $$2, $$3) : cvl.k;
-   }
-
-   @Override
-   public boolean a(@Nullable cnp $$0, dcx $$1, je $$2, dua $$3, eqa $$4) {
-      return $$0 != null && $$0.f() ? dnx.super.a($$0, $$1, $$2, $$3, $$4) : false;
+   protected void a(duo $$0, deg $$1, je $$2, eqo $$3) {
    }
 }

@@ -3,9 +3,9 @@ import javax.annotation.Nullable;
 public class aer implements zk<abz> {
    public static final zb<wa, aer> a = zk.a(aer::a, aer::new);
    @Nullable
-   private final alb b;
+   private final alc b;
 
-   public aer(@Nullable alb $$0) {
+   public aer(@Nullable alc $$0) {
       this.b = $$0;
    }
 
@@ -27,7 +27,7 @@ public class aer implements zk<abz> {
    }
 
    @Nullable
-   public alb b() {
+   public alc b() {
       return this.b;
    }
 }

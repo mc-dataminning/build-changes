@@ -1,123 +1,143 @@
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.exceptions.Dynamic2CommandExceptionType;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-import com.mojang.datafixers.util.Either;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
-import org.apache.commons.lang3.mutable.MutableInt;
+import com.mojang.brigadier.tree.LiteralCommandNode;
+import java.util.Collection;
+import java.util.function.BiConsumer;
+import java.util.function.BiPredicate;
+import java.util.function.ToIntFunction;
 
 public class ang {
-   public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xd.c("argument.pos.unloaded"));
-   private static final Dynamic2CommandExceptionType b = new Dynamic2CommandExceptionType(($$0, $$1) -> xd.b("commands.fillbiome.toobig", $$0, $$1));
+   private static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(xd.c("commands.experience.set.points.invalid"));
 
-   public static void a(CommandDispatcher<et> $$0, ep $$1) {
-      $$0.register(
-         (LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("fillbiome").requires($$0x -> $$0x.c(2)))
-            .then(
-               eu.a("from", gp.a())
+   public static void a(CommandDispatcher<et> $$0) {
+      LiteralCommandNode<et> $$1 = $$0.register(
+         (LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("experience").requires($$0x -> $$0x.c(2)))
                   .then(
-                     eu.a("to", gp.a())
+                     eu.a("add")
                         .then(
-                           ((RequiredArgumentBuilder)eu.a("biome", fs.a($$1, lv.aF))
-                                 .executes($$0x -> a((et)$$0x.getSource(), gp.a($$0x, "from"), gp.a($$0x, "to"), fs.a($$0x, "biome", lv.aF), $$0xx -> true)))
+                           eu.a("target", fg.d())
                               .then(
-                                 eu.a("replace")
-                                    .then(
-                                       eu.a("filter", fw.a($$1, lv.aF))
+                                 ((RequiredArgumentBuilder)((RequiredArgumentBuilder)eu.a("amount", IntegerArgumentType.integer())
                                           .executes(
-                                             $$0x -> a(
-                                                   (et)$$0x.getSource(),
-                                                   gp.a($$0x, "from"),
-                                                   gp.a($$0x, "to"),
-                                                   fs.a($$0x, "biome", lv.aF),
-                                                   fw.a($$0x, "filter", lv.aF)::test
-                                                )
+                                             $$0x -> a((et)$$0x.getSource(), fg.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), ang.a.a)
+                                          ))
+                                       .then(
+                                          eu.a("points")
+                                             .executes(
+                                                $$0x -> a((et)$$0x.getSource(), fg.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), ang.a.a)
+                                             )
+                                       ))
+                                    .then(
+                                       eu.a("levels")
+                                          .executes(
+                                             $$0x -> a((et)$$0x.getSource(), fg.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), ang.a.b)
                                           )
                                     )
                               )
                         )
+                  ))
+               .then(
+                  eu.a("set")
+                     .then(
+                        eu.a("target", fg.d())
+                           .then(
+                              ((RequiredArgumentBuilder)((RequiredArgumentBuilder)eu.a("amount", IntegerArgumentType.integer(0))
+                                       .executes($$0x -> b((et)$$0x.getSource(), fg.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), ang.a.a)))
+                                    .then(
+                                       eu.a("points")
+                                          .executes(
+                                             $$0x -> b((et)$$0x.getSource(), fg.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), ang.a.a)
+                                          )
+                                    ))
+                                 .then(
+                                    eu.a("levels")
+                                       .executes($$0x -> b((et)$$0x.getSource(), fg.f($$0x, "target"), IntegerArgumentType.getInteger($$0x, "amount"), ang.a.b))
+                                 )
+                           )
+                     )
+               ))
+            .then(
+               eu.a("query")
+                  .then(
+                     ((RequiredArgumentBuilder)eu.a("target", fg.c())
+                           .then(eu.a("points").executes($$0x -> a((et)$$0x.getSource(), fg.e($$0x, "target"), ang.a.a))))
+                        .then(eu.a("levels").executes($$0x -> a((et)$$0x.getSource(), fg.e($$0x, "target"), ang.a.b)))
                   )
             )
       );
+      $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)eu.a("xp").requires($$0x -> $$0x.c(2))).redirect($$1));
    }
 
-   private static int a(int $$0) {
-      return jy.c(jy.a($$0));
+   private static int a(et $$0, ari $$1, ang.a $$2) {
+      int $$3 = $$2.f.applyAsInt($$1);
+      $$0.a(() -> xd.a("commands.experience.query." + $$2.e, $$1.Q_(), $$3), false);
+      return $$3;
    }
 
-   private static je a(je $$0) {
-      return new je(a($$0.u()), a($$0.v()), a($$0.w()));
-   }
+   private static int a(et $$0, Collection<? extends ari> $$1, int $$2, ang.a $$3) {
+      for (ari $$4 : $$1) {
+         $$3.c.accept($$4, $$2);
+      }
 
-   private static dew a(MutableInt $$0, dvw $$1, ekg $$2, jn<det> $$3, Predicate<jn<det>> $$4) {
-      return ($$5, $$6, $$7, $$8) -> {
-         int $$9 = jy.c($$5);
-         int $$10 = jy.c($$6);
-         int $$11 = jy.c($$7);
-         jn<det> $$12 = $$1.getNoiseBiome($$5, $$6, $$7);
-         if ($$2.d($$9, $$10, $$11) && $$4.test($$12)) {
-            $$0.increment();
-            return $$3;
-         } else {
-            return $$12;
-         }
-      };
-   }
-
-   public static Either<Integer, CommandSyntaxException> a(arg $$0, je $$1, je $$2, jn<det> $$3) {
-      return a($$0, $$1, $$2, $$3, $$0x -> true, $$0x -> {
-      });
-   }
-
-   public static Either<Integer, CommandSyntaxException> a(arg $$0, je $$1, je $$2, jn<det> $$3, Predicate<jn<det>> $$4, Consumer<Supplier<xd>> $$5) {
-      je $$6 = a($$1);
-      je $$7 = a($$2);
-      ekg $$8 = ekg.a($$6, $$7);
-      int $$9 = $$8.d() * $$8.e() * $$8.f();
-      int $$10 = $$0.ac().c(ddo.z);
-      if ($$9 > $$10) {
-         return Either.right(b.create($$10, $$9));
+      if ($$1.size() == 1) {
+         $$0.a(() -> xd.a("commands.experience.add." + $$3.e + ".success.single", $$2, $$1.iterator().next().Q_()), true);
       } else {
-         List<dvw> $$11 = new ArrayList<>();
+         $$0.a(() -> xd.a("commands.experience.add." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
+      }
 
-         for (int $$12 = kg.a($$8.j()); $$12 <= kg.a($$8.m()); $$12++) {
-            for (int $$13 = kg.a($$8.h()); $$13 <= kg.a($$8.k()); $$13++) {
-               dvw $$14 = $$0.a($$13, $$12, dwx.n, false);
-               if ($$14 == null) {
-                  return Either.right(a.create());
-               }
+      return $$1.size();
+   }
 
-               $$11.add($$14);
-            }
+   private static int b(et $$0, Collection<? extends ari> $$1, int $$2, ang.a $$3) throws CommandSyntaxException {
+      int $$4 = 0;
+
+      for (ari $$5 : $$1) {
+         if ($$3.d.test($$5, $$2)) {
+            $$4++;
+         }
+      }
+
+      if ($$4 == 0) {
+         throw a.create();
+      } else {
+         if ($$1.size() == 1) {
+            $$0.a(() -> xd.a("commands.experience.set." + $$3.e + ".success.single", $$2, $$1.iterator().next().Q_()), true);
+         } else {
+            $$0.a(() -> xd.a("commands.experience.set." + $$3.e + ".success.multiple", $$2, $$1.size()), true);
          }
 
-         MutableInt $$15 = new MutableInt(0);
-
-         for (dvw $$16 : $$11) {
-            $$16.a(a($$15, $$16, $$8, $$3, $$4), $$0.l().i().b());
-            $$16.a(true);
-         }
-
-         $$0.l().a.a($$11);
-         $$5.accept(() -> xd.a("commands.fillbiome.success.count", $$15.getValue(), $$8.h(), $$8.i(), $$8.j(), $$8.k(), $$8.l(), $$8.m()));
-         return Either.left($$15.getValue());
+         return $$1.size();
       }
    }
 
-   private static int a(et $$0, je $$1, je $$2, jn.c<det> $$3, Predicate<jn<det>> $$4) throws CommandSyntaxException {
-      Either<Integer, CommandSyntaxException> $$5 = a($$0.e(), $$1, $$2, $$3, $$4, $$1x -> $$0.a($$1x, true));
-      Optional<CommandSyntaxException> $$6 = $$5.right();
-      if ($$6.isPresent()) {
-         throw (CommandSyntaxException)$$6.get();
-      } else {
-         return (Integer)$$5.left().get();
+   static enum a {
+      a("points", cnu::d, ($$0, $$1) -> {
+         if ($$1 >= $$0.gl()) {
+            return false;
+         } else {
+            $$0.a($$1);
+            return true;
+         }
+      }, $$0 -> azd.d($$0.co * (float)$$0.gl())),
+      b("levels", ari::c, ($$0, $$1) -> {
+         $$0.b($$1);
+         return true;
+      }, $$0 -> $$0.cm);
+
+      public final BiConsumer<ari, Integer> c;
+      public final BiPredicate<ari, Integer> d;
+      public final String e;
+      final ToIntFunction<ari> f;
+
+      private a(final String $$0, final BiConsumer<ari, Integer> $$1, final BiPredicate<ari, Integer> $$2, final ToIntFunction<ari> $$3) {
+         this.c = $$1;
+         this.e = $$0;
+         this.d = $$2;
+         this.f = $$3;
       }
    }
 }

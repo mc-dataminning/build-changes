@@ -1,32 +1,27 @@
-public interface cxf {
-   cxf.a a = new cxf.a(false, false);
-   cxf.a b = new cxf.a(true, false);
+import java.util.List;
 
-   boolean a();
+public class cxf extends ctm {
+   public cxf(cvk.a $$0) {
+      super($$0);
+   }
 
-   boolean b();
+   @Override
+   public cvp v() {
+      cvp $$0 = super.v();
+      $$0.b(kr.L, new cxo(cxp.C));
+      return $$0;
+   }
 
-   public static record a(boolean c, boolean d) implements cxf {
-      @Override
-      public boolean a() {
-         return this.c;
+   @Override
+   public void a(cvp $$0, cvk.b $$1, List<xd> $$2, cxh $$3) {
+      cxo $$4 = $$0.a(kr.L);
+      if ($$4 != null) {
+         $$4.a($$2::add, 0.125F, $$1.b());
       }
+   }
 
-      @Override
-      public boolean b() {
-         return this.d;
-      }
-
-      public cxf.a c() {
-         return new cxf.a(this.c, true);
-      }
-
-      public boolean d() {
-         return this.c;
-      }
-
-      public boolean e() {
-         return this.d;
-      }
+   @Override
+   public String d_(cvp $$0) {
+      return cxm.a($$0.a(kr.L, cxo.a).e(), this.a() + ".effect.");
    }
 }

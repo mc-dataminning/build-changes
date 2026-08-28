@@ -1,30 +1,56 @@
-import java.util.function.IntFunction;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public enum fhj implements azf {
-   a(0, "options.off"),
-   b(1, "options.attack.crosshair"),
-   c(2, "options.attack.hotbar");
+public abstract class fhj implements Runnable {
+   protected static final int a = 25;
+   private static final Logger b = LogUtils.getLogger();
+   private boolean c = false;
 
-   private static final IntFunction<fhj> d = axt.a(fhj::b, values(), axt.a.b);
-   private final int e;
-   private final String f;
-
-   private fhj(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   protected static void a(long $$0) {
+      try {
+         Thread.sleep($$0 * 1000L);
+      } catch (InterruptedException var3) {
+         Thread.currentThread().interrupt();
+         b.error("", var3);
+      }
    }
 
-   @Override
-   public int b() {
-      return this.e;
+   public static void a(fqd $$0) {
+      fil $$1 = fil.Q();
+      $$1.execute(() -> $$1.a($$0));
    }
 
-   @Override
-   public String a() {
-      return this.f;
+   protected void a(xd $$0) {
+      this.b();
+      fil $$1 = fil.Q();
+      $$1.execute(() -> $$1.a(new ffx($$0, new fdp(new fqf()))));
    }
 
-   public static fhj a(int $$0) {
-      return d.apply($$0);
+   protected void a(Exception $$0) {
+      if ($$0 instanceof fff $$1) {
+         this.a($$1.a.b());
+      } else {
+         this.a(xd.b($$0.getMessage()));
+      }
+   }
+
+   protected void a(fff $$0) {
+      this.a($$0.a.b());
+   }
+
+   public abstract xd a();
+
+   public boolean d() {
+      return this.c;
+   }
+
+   public void c() {
+   }
+
+   public void e() {
+   }
+
+   public void b() {
+      this.c = true;
    }
 }

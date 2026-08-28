@@ -1,29 +1,44 @@
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dhr {
-   eyx u_ = dgv.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
-   dur v_ = duq.D;
+public class dhr extends dgh {
+   public static final MapCodec<dhr> b = b(dhr::new);
+   public static final int c = 5;
+   private static final jj[] d = jj.values();
 
-   static brk a(@Nullable btj $$0, dua $$1, dds $$2, je $$3) {
-      if ($$1.c(v_)) {
-         dgv.a($$2, $$3, new cvl(cvo.wy, 1));
-         float $$4 = azc.b($$2.z, 0.8F, 1.2F);
-         $$2.a(null, $$3, awd.ef, awe.e, 1.0F, $$4);
-         dua $$5 = $$1.b(v_, Boolean.valueOf(false));
-         $$2.a($$3, $$5, 2);
-         $$2.a(dyx.c, $$3, dyx.a.a($$0, $$5));
-         return brk.a;
-      } else {
-         return brk.e;
+   @Override
+   public MapCodec<dhr> a() {
+      return b;
+   }
+
+   public dhr(dun.d $$0) {
+      super($$0);
+   }
+
+   @Override
+   protected void b(duo $$0, arh $$1, je $$2, azl $$3) {
+      if ($$3.a(5) == 0) {
+         jj $$4 = d[$$3.a(d.length)];
+         je $$5 = $$2.a($$4);
+         duo $$6 = $$1.a_($$5);
+         dhj $$7 = null;
+         if (h($$6)) {
+            $$7 = dhl.qy;
+         } else if ($$6.a(dhl.qy) && $$6.c(dgi.d) == $$4) {
+            $$7 = dhl.qx;
+         } else if ($$6.a(dhl.qx) && $$6.c(dgi.d) == $$4) {
+            $$7 = dhl.qw;
+         } else if ($$6.a(dhl.qw) && $$6.c(dgi.d) == $$4) {
+            $$7 = dhl.qv;
+         }
+
+         if ($$7 != null) {
+            duo $$8 = $$7.o().b(dgi.d, $$4).b(dgi.c, Boolean.valueOf($$6.y().a() == eqq.c));
+            $$1.b($$5, $$8);
+         }
       }
    }
 
-   static boolean j_(dua $$0) {
-      return $$0.b(v_) && $$0.c(v_);
-   }
-
-   static ToIntFunction<dua> i_(int $$0) {
-      return $$1 -> $$1.c(duq.D) ? $$0 : 0;
+   public static boolean h(duo $$0) {
+      return $$0.l() || $$0.a(dhl.G) && $$0.y().e() == 8;
    }
 }

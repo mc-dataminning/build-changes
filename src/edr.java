@@ -1,154 +1,80 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntMaps;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.concurrent.TimeUnit;
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.slf4j.Logger;
 
-@Deprecated
-public class edr extends edc<edr.a> {
-   private static final dua a = dgx.nc.o();
-
-   public edr(Codec<edr.a> $$0) {
-      super($$0);
-   }
-
-   @Override
-   public boolean a(ede<edr.a> $$0) {
-      je $$1 = $$0.e();
-      dep $$2 = $$0.b();
-      azk $$3 = $$0.d();
-      edr.a $$4 = $$0.f();
-      if ($$1.v() <= $$2.G_() + 4) {
-         return false;
-      } else {
-         $$1 = $$1.c(4);
-         boolean[] $$5 = new boolean[2048];
-         int $$6 = $$3.a(4) + 4;
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            double $$8 = $$3.j() * 6.0 + 3.0;
-            double $$9 = $$3.j() * 4.0 + 2.0;
-            double $$10 = $$3.j() * 6.0 + 3.0;
-            double $$11 = $$3.j() * (16.0 - $$8 - 2.0) + 1.0 + $$8 / 2.0;
-            double $$12 = $$3.j() * (8.0 - $$9 - 4.0) + 2.0 + $$9 / 2.0;
-            double $$13 = $$3.j() * (16.0 - $$10 - 2.0) + 1.0 + $$10 / 2.0;
-
-            for (int $$14 = 1; $$14 < 15; $$14++) {
-               for (int $$15 = 1; $$15 < 15; $$15++) {
-                  for (int $$16 = 1; $$16 < 7; $$16++) {
-                     double $$17 = ((double)$$14 - $$11) / ($$8 / 2.0);
-                     double $$18 = ((double)$$16 - $$12) / ($$9 / 2.0);
-                     double $$19 = ((double)$$15 - $$13) / ($$10 / 2.0);
-                     double $$20 = $$17 * $$17 + $$18 * $$18 + $$19 * $$19;
-                     if ($$20 < 1.0) {
-                        $$5[($$14 * 16 + $$15) * 8 + $$16] = true;
-                     }
-                  }
-               }
-            }
+public class edr {
+   private static final Logger a = LogUtils.getLogger();
+   private static final LoadingCache<arh, edr.b> b = CacheBuilder.newBuilder()
+      .weakKeys()
+      .expireAfterAccess(5L, TimeUnit.MINUTES)
+      .build(new CacheLoader<arh, edr.b>() {
+         public edr.b a(arh $$0) {
+            return new edr.b(Object2IntMaps.synchronize(new Object2IntOpenHashMap()), new MutableInt(0));
          }
+      });
 
-         dua $$21 = $$4.a().a($$3, $$1);
-
-         for (int $$22 = 0; $$22 < 16; $$22++) {
-            for (int $$23 = 0; $$23 < 16; $$23++) {
-               for (int $$24 = 0; $$24 < 8; $$24++) {
-                  boolean $$25 = !$$5[($$22 * 16 + $$23) * 8 + $$24]
-                     && (
-                        $$22 < 15 && $$5[(($$22 + 1) * 16 + $$23) * 8 + $$24]
-                           || $$22 > 0 && $$5[(($$22 - 1) * 16 + $$23) * 8 + $$24]
-                           || $$23 < 15 && $$5[($$22 * 16 + $$23 + 1) * 8 + $$24]
-                           || $$23 > 0 && $$5[($$22 * 16 + ($$23 - 1)) * 8 + $$24]
-                           || $$24 < 7 && $$5[($$22 * 16 + $$23) * 8 + $$24 + 1]
-                           || $$24 > 0 && $$5[($$22 * 16 + $$23) * 8 + ($$24 - 1)]
-                     );
-                  if ($$25) {
-                     dua $$26 = $$2.a_($$1.b($$22, $$24, $$23));
-                     if ($$24 >= 4 && $$26.n()) {
-                        return false;
-                     }
-
-                     if ($$24 < 4 && !$$26.e() && $$2.a_($$1.b($$22, $$24, $$23)) != $$21) {
-                        return false;
-                     }
-                  }
-               }
-            }
-         }
-
-         for (int $$27 = 0; $$27 < 16; $$27++) {
-            for (int $$28 = 0; $$28 < 16; $$28++) {
-               for (int $$29 = 0; $$29 < 8; $$29++) {
-                  if ($$5[($$27 * 16 + $$28) * 8 + $$29]) {
-                     je $$30 = $$1.b($$27, $$29, $$28);
-                     if (this.c($$2.a_($$30))) {
-                        boolean $$31 = $$29 >= 4;
-                        $$2.a($$30, $$31 ? a : $$21, 2);
-                        if ($$31) {
-                           $$2.a($$30, a.b(), 0);
-                           this.a($$2, $$30);
-                        }
-                     }
-                  }
-               }
-            }
-         }
-
-         dua $$32 = $$4.b().a($$3, $$1);
-         if (!$$32.l()) {
-            for (int $$33 = 0; $$33 < 16; $$33++) {
-               for (int $$34 = 0; $$34 < 16; $$34++) {
-                  for (int $$35 = 0; $$35 < 8; $$35++) {
-                     boolean $$36 = !$$5[($$33 * 16 + $$34) * 8 + $$35]
-                        && (
-                           $$33 < 15 && $$5[(($$33 + 1) * 16 + $$34) * 8 + $$35]
-                              || $$33 > 0 && $$5[(($$33 - 1) * 16 + $$34) * 8 + $$35]
-                              || $$34 < 15 && $$5[($$33 * 16 + $$34 + 1) * 8 + $$35]
-                              || $$34 > 0 && $$5[($$33 * 16 + ($$34 - 1)) * 8 + $$35]
-                              || $$35 < 7 && $$5[($$33 * 16 + $$34) * 8 + $$35 + 1]
-                              || $$35 > 0 && $$5[($$33 * 16 + $$34) * 8 + ($$35 - 1)]
-                        );
-                     if ($$36 && ($$35 < 4 || $$3.a(2) != 0)) {
-                        dua $$37 = $$2.a_($$1.b($$33, $$35, $$34));
-                        if ($$37.e() && !$$37.a(aws.bQ)) {
-                           je $$38 = $$1.b($$33, $$35, $$34);
-                           $$2.a($$38, $$32, 2);
-                           this.a($$2, $$38);
-                        }
-                     }
-                  }
-               }
-            }
-         }
-
-         if ($$21.y().a(awy.a)) {
-            for (int $$39 = 0; $$39 < 16; $$39++) {
-               for (int $$40 = 0; $$40 < 16; $$40++) {
-                  int $$41 = 4;
-                  je $$42 = $$1.b($$39, 4, $$40);
-                  if ($$2.t($$42).a().a($$2, $$42, false) && this.c($$2.a_($$42))) {
-                     $$2.a($$42, dgx.dO.o(), 2);
-                  }
-               }
-            }
-         }
-
-         return true;
+   public static void a(arh $$0) {
+      try {
+         ((edr.b)b.get($$0)).b().increment();
+      } catch (Exception var2) {
+         a.error("Failed to increment chunk count", var2);
       }
    }
 
-   private boolean c(dua $$0) {
-      return !$$0.a(aws.bP);
+   public static void a(arh $$0, edc<?, ?> $$1, Optional<ekg> $$2) {
+      try {
+         ((edr.b)b.get($$0)).a().computeInt(new edr.a($$1, $$2), ($$0x, $$1x) -> $$1x == null ? 1 : $$1x + 1);
+      } catch (Exception var4) {
+         a.error("Failed to increment feature count", var4);
+      }
    }
 
-   public static record a(ehh b, ehh c) implements efg {
-      public static final Codec<edr.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(ehh.a.fieldOf("fluid").forGetter(edr.a::a), ehh.a.fieldOf("barrier").forGetter(edr.a::b)).apply($$0, edr.a::new)
-      );
+   public static void a() {
+      b.invalidateAll();
+      a.debug("Cleared feature counts");
+   }
 
-      public ehh a() {
-         return this.b;
-      }
+   public static void b() {
+      a.debug("Logging feature counts:");
+      b.asMap()
+         .forEach(
+            ($$0, $$1) -> {
+               String $$2 = $$0.ag().a().toString();
+               boolean $$3 = $$0.o().x();
+               ka<ekg> $$4 = $$0.F_().d(lv.aR);
+               String $$5 = ($$3 ? "running" : "dead") + " " + $$2;
+               Integer $$6 = $$1.b().getValue();
+               a.debug($$5 + " total_chunks: " + $$6);
+               $$1.a()
+                  .forEach(
+                     ($$3x, $$4x) -> a.debug(
+                           $$5
+                              + " "
+                              + String.format(Locale.ROOT, "%10d ", $$4x)
+                              + String.format(Locale.ROOT, "%10f ", (double)$$4x.intValue() / (double)$$6.intValue())
+                              + $$3x.b().flatMap($$4::d).<alc>map(alb::a)
+                              + " "
+                              + $$3x.a().b()
+                              + " "
+                              + $$3x.a()
+                        )
+                  );
+            }
+         );
+   }
 
-      public ehh b() {
-         return this.c;
-      }
+   static record a(edc<?, ?> a, Optional<ekg> b) {
+   }
+
+   static record b(Object2IntMap<edr.a> a, MutableInt b) {
    }
 }

@@ -1,20 +1,26 @@
+import java.util.IllegalFormatException;
+
 public class gyi {
-   public static final gyj a = new gyj();
-   public static final boolean b = false;
-   public static final boolean c = false;
-   private final boolean d;
-   private final boolean e;
+   private static volatile ua a = ua.a();
 
-   public gyi(boolean $$0, boolean $$1) {
-      this.d = $$0;
-      this.e = $$1;
+   private gyi() {
    }
 
-   public boolean a() {
-      return this.d;
+   static void a(ua $$0) {
+      a = $$0;
    }
 
-   public boolean b() {
-      return this.e;
+   public static String a(String $$0, Object... $$1) {
+      String $$2 = a.a($$0);
+
+      try {
+         return String.format($$2, $$1);
+      } catch (IllegalFormatException var4) {
+         return "Format error: " + $$2;
+      }
+   }
+
+   public static boolean a(String $$0) {
+      return a.b($$0);
    }
 }

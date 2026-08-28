@@ -1,26 +1,29 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dci(jn<daw> c, bqp d) implements dce {
-   public static final MapCodec<dci> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(daw.c.fieldOf("enchantment").forGetter(dci::b), bqp.c.fieldOf("level").forGetter(dci::c)).apply($$0, dci::new)
-   );
+public record dci(dbr c) implements dcd {
+   public static final MapCodec<dci> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dbr.b.fieldOf("chance").forGetter(dci::b)).apply($$0, dci::new));
 
    @Override
-   public void a(cvl $$0, dbc.a $$1, azk $$2, bri $$3) {
-      $$1.b(this.c, azc.a(this.d.a($$2), this.c.a().d(), this.c.a().e()));
+   public float a(int $$0, azl $$1, float $$2) {
+      float $$3 = this.c.a($$0);
+      int $$4 = 0;
+
+      for (int $$5 = 0; (float)$$5 < $$2; $$5++) {
+         if ($$1.i() < $$3) {
+            $$4++;
+         }
+      }
+
+      return $$2 - (float)$$4;
    }
 
    @Override
    public MapCodec<dci> a() {
-      return b;
+      return a;
    }
 
-   public jn<daw> b() {
+   public dbr b() {
       return this.c;
-   }
-
-   public bqp c() {
-      return this.d;
    }
 }

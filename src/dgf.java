@@ -1,72 +1,68 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public abstract class dgf extends dgv implements dnx {
-   public static final dur d = duq.C;
-   private static final eyx a = dgv.a(2.0, 0.0, 2.0, 14.0, 4.0, 14.0);
+public abstract class dgf extends dgv implements cus {
+   public static final dvf a = dve.w;
+   private final dom.a b;
 
-   protected dgf(dtz.d $$0) {
-      super($$0);
-      this.l(this.E.b().b(d, Boolean.valueOf(true)));
+   public dgf(dom.a $$0, dun.d $$1) {
+      super($$1);
+      this.b = $$0;
+      this.l(this.F.b().b(a, Boolean.valueOf(false)));
    }
 
    @Override
    protected abstract MapCodec<? extends dgf> a();
 
-   protected void a(dua $$0, ddt $$1, je $$2) {
-      if (!d($$0, $$1, $$2)) {
-         $$1.a($$2, this, 60 + $$1.C_().a(40));
-      }
-   }
-
-   protected static boolean d(dua $$0, dcx $$1, je $$2) {
-      if ($$0.c(d)) {
-         return true;
-      } else {
-         for (jj $$3 : jj.values()) {
-            if ($$1.b_($$2.a($$3)).a(awy.a)) {
-               return true;
-            }
-         }
-
-         return false;
-      }
+   @Override
+   public drs a(je $$0, duo $$1) {
+      return new dtg($$0, $$1);
    }
 
    @Nullable
    @Override
-   public dua a(cyw $$0) {
-      eqb $$1 = $$0.q().b_($$0.a());
-      return this.o().b(d, Boolean.valueOf($$1.a(awy.a) && $$1.e() == 8));
-   }
-
-   @Override
-   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
-      return a;
-   }
-
-   @Override
-   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, eqc.c, eqc.c.a($$3));
+   public <T extends drs> drt<T> a(deg $$0, duo $$1, dru<T> $$2) {
+      if ($$0.B) {
+         boolean $$3 = $$1.a(dhl.gO) || $$1.a(dhl.gP) || $$1.a(dhl.gQ) || $$1.a(dhl.gR);
+         if ($$3) {
+            return a($$2, dru.p, dtg::a);
+         }
       }
 
-      return $$1 == jj.a && !this.a($$0, (ddv)$$3, $$4) ? dgx.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return null;
+   }
+
+   public dom.a b() {
+      return this.b;
    }
 
    @Override
-   protected boolean a(dua $$0, ddv $$1, je $$2) {
-      je $$3 = $$2.e();
-      return $$1.a_($$3).c($$1, $$3, jj.b);
+   protected boolean a(duo $$0, ere $$1) {
+      return false;
    }
 
    @Override
-   protected void a(dub.a<dgv, dua> $$0) {
-      $$0.a(d);
+   public btw l() {
+      return btw.f;
    }
 
    @Override
-   protected eqb b_(dua $$0) {
-      return $$0.c(d) ? eqc.c.a(false) : super.b_($$0);
+   protected void a(dup.a<dhj, duo> $$0) {
+      $$0.a(a);
+   }
+
+   @Override
+   public duo a(czk $$0) {
+      return this.o().b(a, Boolean.valueOf($$0.q().C($$0.a())));
+   }
+
+   @Override
+   protected void a(duo $$0, deg $$1, je $$2, dhj $$3, @Nullable erx $$4, boolean $$5) {
+      if (!$$1.B) {
+         boolean $$6 = $$1.C($$2);
+         if ($$6 != $$0.c(a)) {
+            $$1.a($$2, $$0.b(a, Boolean.valueOf($$6)), 2);
+         }
+      }
    }
 }

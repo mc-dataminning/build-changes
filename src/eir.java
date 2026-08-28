@@ -1,183 +1,117 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+import java.util.function.BiConsumer;
 import java.util.function.Function;
-import org.slf4j.Logger;
 
-public class eir {
-   private static final Logger b = LogUtils.getLogger();
-   public static final Codec<eir> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  kc.a(lv.aT).lenientOptionalFieldOf("structure_overrides").forGetter($$0x -> $$0x.c),
-                  eio.a.listOf().fieldOf("layers").forGetter(eir::e),
-                  Codec.BOOL.fieldOf("lakes").orElse(false).forGetter($$0x -> $$0x.i),
-                  Codec.BOOL.fieldOf("features").orElse(false).forGetter($$0x -> $$0x.h),
-                  det.c.lenientOptionalFieldOf("biome").orElseGet(Optional::empty).forGetter($$0x -> Optional.of($$0x.e)),
-                  akz.d(dfa.b),
-                  akz.d(sg.g),
-                  akz.d(sg.h)
+public class eir extends eiy {
+   private static final Codec<bra> b = bra.a
+      .codec()
+      .validate(
+         $$0 -> $$0.b() - $$0.a() < 1
+               ? DataResult.error(() -> "Need at least 2 blocks variation for the branch starts to fit both branches")
+               : DataResult.success($$0)
+      );
+   public static final MapCodec<eir> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  bqu.b(1, 3).fieldOf("branch_count").forGetter($$0x -> $$0x.h),
+                  bqu.b(2, 16).fieldOf("branch_horizontal_length").forGetter($$0x -> $$0x.i),
+                  bqu.a(-16, 0, b).fieldOf("branch_start_offset_from_top").forGetter($$0x -> $$0x.j),
+                  bqu.b(-16, 16).fieldOf("branch_end_offset_from_top").forGetter($$0x -> $$0x.l)
                )
-               .apply($$0, eir::new)
-      )
-      .comapFlatMap(eir::a, Function.identity())
-      .stable();
-   private final Optional<jr<eku>> c;
-   private final List<eio> d = Lists.newArrayList();
-   private final jn<det> e;
-   private final List<dua> f;
-   private boolean g;
-   private boolean h;
-   private boolean i;
-   private final List<jn<ejs>> j;
+            )
+            .apply($$0, eir::new)
+   );
+   private final bqu h;
+   private final bqu i;
+   private final bra j;
+   private final bra k;
+   private final bqu l;
 
-   private static DataResult<eir> a(eir $$0) {
-      int $$1 = $$0.d.stream().mapToInt(eio::a).sum();
-      return $$1 > dxw.c ? DataResult.error(() -> "Sum of layer heights is > " + dxw.c, $$0) : DataResult.success($$0);
+   public eir(int $$0, int $$1, int $$2, bqu $$3, bqu $$4, bra $$5, bqu $$6) {
+      super($$0, $$1, $$2);
+      this.h = $$3;
+      this.i = $$4;
+      this.j = $$5;
+      this.k = bra.a($$5.a(), $$5.b() - 1);
+      this.l = $$6;
    }
 
-   private eir(Optional<jr<eku>> $$0, List<eio> $$1, boolean $$2, boolean $$3, Optional<jn<det>> $$4, jn.c<det> $$5, jn<ejs> $$6, jn<ejs> $$7) {
-      this($$0, a($$4, $$5), List.of($$6, $$7));
-      if ($$2) {
-         this.b();
-      }
-
-      if ($$3) {
-         this.a();
-      }
-
-      this.d.addAll($$1);
-      this.g();
+   @Override
+   protected eiz<?> a() {
+      return eiz.i;
    }
 
-   private static jn<det> a(Optional<? extends jn<det>> $$0, jn<det> $$1) {
-      if ($$0.isEmpty()) {
-         b.error("Unknown biome, defaulting to plains");
-         return $$1;
+   @Override
+   public List<ehg.a> a(dem $$0, BiConsumer<je, duo> $$1, azl $$2, int $$3, je $$4, egq $$5) {
+      a($$0, $$1, $$2, $$4.e(), $$5);
+      int $$6 = Math.max(0, $$3 - 1 + this.j.a($$2));
+      int $$7 = Math.max(0, $$3 - 1 + this.k.a($$2));
+      if ($$7 >= $$6) {
+         $$7++;
+      }
+
+      int $$8 = this.h.a($$2);
+      boolean $$9 = $$8 == 3;
+      boolean $$10 = $$8 >= 2;
+      int $$11;
+      if ($$9) {
+         $$11 = $$3;
+      } else if ($$10) {
+         $$11 = Math.max($$6, $$7) + 1;
       } else {
-         return (jn<det>)$$0.get();
-      }
-   }
-
-   public eir(Optional<jr<eku>> $$0, jn<det> $$1, List<jn<ejs>> $$2) {
-      this.c = $$0;
-      this.e = $$1;
-      this.f = Lists.newArrayList();
-      this.j = $$2;
-   }
-
-   public eir a(List<eio> $$0, Optional<jr<eku>> $$1, jn<det> $$2) {
-      eir $$3 = new eir($$1, $$2, this.j);
-
-      for (eio $$4 : $$0) {
-         $$3.d.add(new eio($$4.a(), $$4.b().b()));
-         $$3.g();
+         $$11 = $$6 + 1;
       }
 
-      if (this.h) {
-         $$3.a();
+      for (int $$14 = 0; $$14 < $$11; $$14++) {
+         this.b($$0, $$1, $$2, $$4.b($$14), $$5);
       }
 
-      if (this.i) {
-         $$3.b();
+      List<ehg.a> $$15 = new ArrayList<>();
+      if ($$9) {
+         $$15.add(new ehg.a($$4.b($$11), 0, false));
       }
 
-      return $$3;
+      je.a $$16 = new je.a();
+      jj $$17 = jj.c.a.a($$2);
+      Function<duo, duo> $$18 = $$1x -> $$1x.c(dnw.i, $$17.o());
+      $$15.add(this.a($$0, $$1, $$2, $$3, $$4, $$5, $$18, $$17, $$6, $$6 < $$11 - 1, $$16));
+      if ($$10) {
+         $$15.add(this.a($$0, $$1, $$2, $$3, $$4, $$5, $$18, $$17.g(), $$7, $$7 < $$11 - 1, $$16));
+      }
+
+      return $$15;
    }
 
-   public void a() {
-      this.h = true;
-   }
+   private ehg.a a(dem $$0, BiConsumer<je, duo> $$1, azl $$2, int $$3, je $$4, egq $$5, Function<duo, duo> $$6, jj $$7, int $$8, boolean $$9, je.a $$10) {
+      $$10.g($$4).c(jj.b, $$8);
+      int $$11 = $$3 - 1 + this.l.a($$2);
+      boolean $$12 = $$9 || $$11 < $$8;
+      int $$13 = this.i.a($$2) + ($$12 ? 1 : 0);
+      je $$14 = $$4.a($$7, $$13).b($$11);
+      int $$15 = $$12 ? 2 : 1;
 
-   public void b() {
-      this.i = true;
-   }
+      for (int $$16 = 0; $$16 < $$15; $$16++) {
+         this.a($$0, $$1, $$2, $$10.c($$7), $$5, $$6);
+      }
 
-   public deu a(jn<det> $$0) {
-      if (!$$0.equals(this.e)) {
-         return $$0.a().d();
-      } else {
-         deu $$1 = this.d().a().d();
-         deu.b $$2 = new deu.b();
-         if (this.i) {
-            for (jn<ejs> $$3 : this.j) {
-               $$2.a(dzs.a.b, $$3);
-            }
+      jj $$17 = $$14.v() > $$10.v() ? jj.b : jj.a;
+
+      while (true) {
+         int $$18 = $$10.k($$14);
+         if ($$18 == 0) {
+            return new ehg.a($$14.d(), 0, false);
          }
 
-         boolean $$4 = (!this.g || $$0.a(dfa.a)) && this.h;
-         if ($$4) {
-            List<jr<ejs>> $$5 = $$1.c();
-
-            for (int $$6 = 0; $$6 < $$5.size(); $$6++) {
-               if ($$6 != dzs.a.d.ordinal() && $$6 != dzs.a.e.ordinal() && (!this.i || $$6 != dzs.a.b.ordinal())) {
-                  for (jn<ejs> $$8 : $$5.get($$6)) {
-                     $$2.a($$6, $$8);
-                  }
-               }
-            }
-         }
-
-         List<dua> $$9 = this.f();
-
-         for (int $$10 = 0; $$10 < $$9.size(); $$10++) {
-            dua $$11 = $$9.get($$10);
-            if (!dzw.a.e.e().test($$11)) {
-               $$9.set($$10, null);
-               $$2.a(dzs.a.k, sj.a(edc.ac, new efk($$10, $$11)));
-            }
-         }
-
-         return $$2.a();
+         float $$19 = (float)Math.abs($$14.v() - $$10.v()) / (float)$$18;
+         boolean $$20 = $$2.i() < $$19;
+         $$10.c($$20 ? $$17 : $$7);
+         this.a($$0, $$1, $$2, $$10, $$5, $$20 ? Function.identity() : $$6);
       }
-   }
-
-   public Optional<jr<eku>> c() {
-      return this.c;
-   }
-
-   public jn<det> d() {
-      return this.e;
-   }
-
-   public List<eio> e() {
-      return this.d;
-   }
-
-   public List<dua> f() {
-      return this.f;
-   }
-
-   public void g() {
-      this.f.clear();
-
-      for (eio $$0 : this.d) {
-         for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
-            this.f.add($$0.b());
-         }
-      }
-
-      this.g = this.f.stream().allMatch($$0x -> $$0x.a(dgx.a));
-   }
-
-   public static eir a(jo<det> $$0, jo<eku> $$1, jo<ejs> $$2) {
-      jr<eku> $$3 = jr.a($$1.b(ekh.r), $$1.b(ekh.a));
-      eir $$4 = new eir(Optional.of($$3), a($$0), b($$2));
-      $$4.e().add(new eio(1, dgx.F));
-      $$4.e().add(new eio(2, dgx.j));
-      $$4.e().add(new eio(1, dgx.i));
-      $$4.g();
-      return $$4;
-   }
-
-   public static jn<det> a(jo<det> $$0) {
-      return $$0.b(dfa.b);
-   }
-
-   public static List<jn<ejs>> b(jo<ejs> $$0) {
-      return List.of($$0.b(sg.g), $$0.b(sg.h));
    }
 }

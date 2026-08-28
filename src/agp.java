@@ -23,7 +23,7 @@ public class agp {
             .a(abv.b, abx.a)
             .a(aac.m, aaf.a)
             .a(ago.by, ahj.a)
-            .a(ago.bz, ahk.b)
+            .a(ago.bz, ahk.a)
             .a(ago.bA, ahl.a)
             .a(ago.bB, ahm.a)
             .a(ago.bC, ahn.a)

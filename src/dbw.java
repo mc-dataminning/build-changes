@@ -2,31 +2,27 @@ import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record dbw(dbd d, dbd e, ki f, Optional<ebd> g, ehh h, Optional<jn<dyx>> i) implements dbn {
+public record dbw(jr<bst> d, dbr e, dbr f, dbr g, dbr h) implements dcb {
    public static final MapCodec<dbw> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               dbd.b.fieldOf("radius").forGetter(dbw::b),
-               dbd.b.fieldOf("height").forGetter(dbw::c),
-               ki.f.optionalFieldOf("offset", ki.g).forGetter(dbw::d),
-               ebd.b.optionalFieldOf("predicate").forGetter(dbw::e),
-               ehh.a.fieldOf("block_state").forGetter(dbw::f),
-               dyx.aj.optionalFieldOf("trigger_game_event").forGetter(dbw::g)
+               kc.a(lv.W).fieldOf("to_apply").forGetter(dbw::b),
+               dbr.b.fieldOf("min_duration").forGetter(dbw::c),
+               dbr.b.fieldOf("max_duration").forGetter(dbw::d),
+               dbr.b.fieldOf("min_amplifier").forGetter(dbw::e),
+               dbr.b.fieldOf("max_amplifier").forGetter(dbw::f)
             )
             .apply($$0, dbw::new)
    );
 
    @Override
-   public void a(arg $$0, int $$1, dav $$2, btj $$3, eye $$4) {
-      je $$5 = je.a((jx)$$4).a(this.f);
-      azk $$6 = $$3.dV();
-      int $$7 = (int)this.d.a($$1);
-      int $$8 = (int)this.e.a($$1);
-
-      for (je $$9 : je.c($$5.b(-$$7, 0, -$$7), $$5.b($$7, Math.min($$8 - 1, 0), $$7))) {
-         if ($$9.c($$4.a(), (double)$$9.v() + 0.5, $$4.c()) < (double)azc.h($$7)
-            && this.g.map($$2x -> $$2x.test($$0, $$9)).orElse(true)
-            && $$0.b($$9, this.h.a($$6, $$9))) {
-            this.i.ifPresent($$3x -> $$0.a($$3, $$3x, $$9));
+   public void a(arh $$0, int $$1, dbj $$2, bto $$3, eys $$4) {
+      if ($$3 instanceof buk $$5) {
+         azl $$6 = $$5.dV();
+         Optional<jn<bst>> $$7 = this.d.a($$6);
+         if ($$7.isPresent()) {
+            int $$8 = Math.round(azd.b($$6, this.e.a($$1), this.f.a($$1)) * 20.0F);
+            int $$9 = Math.max(0, Math.round(azd.b($$6, this.g.a($$1), this.h.a($$1))));
+            $$5.a(new bsv($$7.get(), $$8, $$9));
          }
       }
    }
@@ -36,27 +32,23 @@ public record dbw(dbd d, dbd e, ki f, Optional<ebd> g, ehh h, Optional<jn<dyx>> 
       return a;
    }
 
-   public dbd b() {
+   public jr<bst> b() {
       return this.d;
    }
 
-   public dbd c() {
+   public dbr c() {
       return this.e;
    }
 
-   public ki d() {
+   public dbr d() {
       return this.f;
    }
 
-   public Optional<ebd> e() {
+   public dbr e() {
       return this.g;
    }
 
-   public ehh f() {
+   public dbr f() {
       return this.h;
-   }
-
-   public Optional<jn<dyx>> g() {
-      return this.i;
    }
 }

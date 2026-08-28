@@ -1,78 +1,73 @@
 import com.mojang.serialization.MapCodec;
+import java.util.Optional;
 
-public class dkx extends dgv implements djn, dkd {
-   public static final MapCodec<dkx> a = b(dkx::new);
-   public static final duy<jl> b = duq.T;
-
-   @Override
-   public MapCodec<dkx> a() {
-      return a;
-   }
-
-   protected dkx(dtz.d $$0) {
-      super($$0);
-      this.l(this.E.b().b(b, jl.k));
+public abstract class dkx extends dkw implements dhm {
+   protected dkx(dun.d $$0, jj $$1, ezm $$2, boolean $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
    @Override
-   protected void a(dub.a<dgv, dua> $$0) {
-      $$0.a(b);
+   protected abstract MapCodec<? extends dkx> a();
+
+   protected duo a(duo $$0, duo $$1) {
+      return $$1;
    }
 
    @Override
-   protected dua a(dua $$0, dnj $$1) {
-      return $$0.b(b, $$1.a().a($$0.c(b)));
-   }
-
-   @Override
-   protected dua a(dua $$0, dls $$1) {
-      return $$0.b(b, $$1.a().a($$0.c(b)));
-   }
-
-   @Override
-   public dua a(cyw $$0) {
-      jj $$1 = $$0.k();
-      jj $$2;
-      if ($$1.o() == jj.a.b) {
-         $$2 = $$0.g().g();
-      } else {
-         $$2 = jj.b;
+   protected duo a(duo $$0, jj $$1, duo $$2, deh $$3, je $$4, je $$5) {
+      if ($$1 == this.a.g() && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
       }
 
-      return this.o().b(b, jl.a($$1, $$2));
-   }
-
-   @Override
-   public dre a(je $$0, dua $$1) {
-      return new dsg($$0, $$1);
-   }
-
-   @Override
-   protected brk a(dua $$0, dds $$1, je $$2, cnp $$3, eya $$4) {
-      dre $$5 = $$1.c_($$2);
-      if ($$5 instanceof dsg && $$3.gz()) {
-         $$3.a((dsg)$$5);
-         return brk.a;
+      dky $$6 = this.c();
+      if ($$1 == this.a && !$$2.a(this) && !$$2.a($$6)) {
+         return this.a($$0, $$6.a($$3));
       } else {
-         return brk.e;
+         if (this.b) {
+            $$3.a($$4, eqq.c, eqq.c.a($$3));
+         }
+
+         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
    }
 
-   public static boolean a(eoq.c $$0, eoq.c $$1) {
-      jj $$2 = o($$0.b());
-      jj $$3 = o($$1.b());
-      jj $$4 = p($$0.b());
-      jj $$5 = p($$1.b());
-      dsg.a $$6 = dsg.a.a($$0.c().l("joint")).orElseGet(() -> $$2.o().d() ? dsg.a.b : dsg.a.a);
-      boolean $$7 = $$6 == dsg.a.a;
-      return $$2 == $$3.g() && ($$7 || $$4 == $$5) && $$0.c().l("target").equals($$1.c().l("name"));
+   @Override
+   public cvp a(dej $$0, je $$1, duo $$2) {
+      return new cvp(this.c());
    }
 
-   public static jj o(dua $$0) {
-      return $$0.c(b).a();
+   @Override
+   public boolean b(dej $$0, je $$1, duo $$2) {
+      Optional<je> $$3 = this.a($$0, $$1, $$2.b());
+      return $$3.isPresent() && this.c().h($$0.a_($$3.get().a(this.a)));
    }
 
-   public static jj p(dua $$0) {
-      return $$0.c(b).b();
+   @Override
+   public boolean a(deg $$0, azl $$1, je $$2, duo $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(arh $$0, azl $$1, je $$2, duo $$3) {
+      Optional<je> $$4 = this.a($$0, $$2, $$3.b());
+      if ($$4.isPresent()) {
+         duo $$5 = $$0.a_($$4.get());
+         ((dky)$$5.b()).a($$0, $$1, $$4.get(), $$5);
+      }
+   }
+
+   private Optional<je> a(ddl $$0, je $$1, dhj $$2) {
+      return l.a($$0, $$1, $$2, this.a, this.c());
+   }
+
+   @Override
+   protected boolean a(duo $$0, czk $$1) {
+      boolean $$2 = super.a($$0, $$1);
+      return $$2 && $$1.n().a(this.c().q()) ? false : $$2;
+   }
+
+   @Override
+   protected dhj b() {
+      return this;
    }
 }

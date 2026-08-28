@@ -1,61 +1,114 @@
-import java.util.List;
+import javax.annotation.Nullable;
 
-public class ckk extends ckr {
-   public static final float b = btq.D.l() / btq.Y.l();
-   private static final int e = 1200;
-   private static final int bZ = 50;
-   private static final int ca = 6000;
-   private static final int cb = 2;
-   private static final int cc = 1200;
+public class ckk extends cki implements bva {
+   private static final int c = 50;
+   private static final int d = 70;
+   private static final akg<Boolean> e = akk.a(ckk.class, aki.k);
+   public static final String b = "sheared";
 
-   public ckk(btq<? extends ckk> $$0, dds $$1) {
+   public static bvq.a gs() {
+      return cki.q().a(bvr.s, 16.0);
+   }
+
+   public ckk(btv<? extends ckk> $$0, deg $$1) {
       super($$0, $$1);
-      this.fV();
-      if (this.d != null) {
-         this.d.c(400);
+   }
+
+   @Override
+   protected void a(akk.a $$0) {
+      super.a($$0);
+      $$0.a(e, false);
+   }
+
+   @Override
+   public void b(uf $$0) {
+      super.b($$0);
+      $$0.a("sheared", this.gt());
+   }
+
+   @Override
+   public void a(uf $$0) {
+      super.a($$0);
+      this.x($$0.q("sheared"));
+   }
+
+   public boolean gt() {
+      return this.am.a(e);
+   }
+
+   public void x(boolean $$0) {
+      this.am.a(e, $$0);
+   }
+
+   @Override
+   protected brp b(cnu $$0, bro $$1) {
+      cvp $$2 = $$0.b($$1);
+      if ($$2.a(cvt.rW) && this.a()) {
+         this.a(awf.h);
+         this.a(dzl.M, $$0);
+         if (!this.dS().B) {
+            $$2.a(1, $$0, d($$1));
+         }
+
+         return brp.a;
+      } else {
+         return super.b($$0, $$1);
       }
    }
 
-   public static bvl.a q() {
-      return ckr.go().a(bvm.v, 0.3F).a(bvm.c, 8.0).a(bvm.s, 80.0);
+   @Override
+   protected awd w() {
+      return awe.cn;
    }
 
    @Override
-   public int t() {
-      return 60;
+   protected awd d(bsg $$0) {
+      return awe.cp;
    }
 
    @Override
-   protected awc w() {
-      return this.bl() ? awd.hP : awd.hQ;
+   protected awd n_() {
+      return awe.co;
    }
 
    @Override
-   protected awc d(bsb $$0) {
-      return this.bl() ? awd.hV : awd.hW;
+   protected awd t() {
+      return awe.cr;
    }
 
    @Override
-   protected awc n_() {
-      return this.bl() ? awd.hS : awd.hT;
-   }
-
-   @Override
-   protected awc y() {
-      return awd.hU;
-   }
-
-   @Override
-   protected void ad() {
-      super.ad();
-      if ((this.ag + this.ap()) % 1200 == 0) {
-         bsq $$0 = new bsq(bss.d, 6000, 2);
-         List<arh> $$1 = bsr.a((arg)this.dS(), this, this.dq(), 50.0, $$0, 1200);
-         $$1.forEach($$0x -> $$0x.c.b(new adg(adg.l, this.ba() ? 0.0F : 1.0F)));
+   protected cob a(cvp $$0, float $$1, @Nullable cvp $$2) {
+      cob $$3 = super.a($$0, $$1, $$2);
+      if ($$3 instanceof cod $$4) {
+         $$4.a(new bsv(bsx.s, 100));
       }
 
-      if (!this.gc()) {
-         this.a(this.ds(), 16);
-      }
+      return $$3;
+   }
+
+   @Override
+   protected int gp() {
+      return 50;
+   }
+
+   @Override
+   protected int gq() {
+      return 70;
+   }
+
+   @Override
+   public void a(awf $$0) {
+      this.dS().a(null, this, awe.cq, $$0, 1.0F, 1.0F);
+      this.gw();
+      this.x(true);
+   }
+
+   private void gw() {
+      this.a(etd.aO, $$0 -> this.a($$0, this.do()));
+   }
+
+   @Override
+   public boolean a() {
+      return !this.gt() && this.bI();
    }
 }

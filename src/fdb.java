@@ -1,142 +1,150 @@
-import java.util.function.Consumer;
+import com.mojang.logging.LogUtils;
+import java.nio.ByteBuffer;
+import javax.annotation.Nullable;
+import org.lwjgl.system.MemoryUtil;
+import org.lwjgl.system.MemoryUtil.MemoryAllocator;
+import org.slf4j.Logger;
 
-public class fdb {
-   public static fcy a() {
-      throw new IllegalArgumentException();
+public class fdb implements AutoCloseable {
+   private static final Logger a = LogUtils.getLogger();
+   private static final MemoryAllocator b = MemoryUtil.getAllocator(false);
+   private static final int c = 2097152;
+   private static final int d = -1;
+   long e;
+   private int f;
+   private int g;
+   private int h;
+   private int i;
+   private int j;
+
+   public fdb(int $$0) {
+      this.f = $$0;
+      this.e = b.malloc((long)$$0);
+      if (this.e == 0L) {
+         throw new OutOfMemoryError("Failed to allocate " + $$0 + " bytes");
+      }
    }
 
-   public static fcy a(fcy $$0) {
-      return $$0;
+   public long a(int $$0) {
+      int $$1 = this.g;
+      int $$2 = $$1 + $$0;
+      this.b($$2);
+      this.g = $$2;
+      return this.e + (long)$$1;
    }
 
-   public static fcy a(fcy $$0, fcy $$1) {
-      return new fdb.a($$0, $$1);
+   private void b(int $$0) {
+      if ($$0 > this.f) {
+         int $$1 = Math.min(this.f, 2097152);
+         int $$2 = Math.max(this.f + $$1, $$0);
+         this.c($$2);
+      }
    }
 
-   public static fcy a(fcy... $$0) {
-      return new fdb.b($$0);
+   private void c(int $$0) {
+      this.e = b.realloc(this.e, (long)$$0);
+      a.debug("Needed to grow BufferBuilder buffer: Old size {} bytes, new size {} bytes.", this.f, $$0);
+      if (this.e == 0L) {
+         throw new OutOfMemoryError("Failed to resize buffer from " + this.f + " bytes to " + $$0 + " bytes");
+      } else {
+         this.f = $$0;
+      }
    }
 
-   static class a implements fcy {
-      private final fcy a;
-      private final fcy b;
+   @Nullable
+   public fdb.a a() {
+      this.f();
+      int $$0 = this.h;
+      int $$1 = this.g - $$0;
+      if ($$1 == 0) {
+         return null;
+      } else {
+         this.h = this.g;
+         this.i++;
+         return new fdb.a($$0, $$1, this.j);
+      }
+   }
 
-      public a(fcy $$0, fcy $$1) {
-         if ($$0 == $$1) {
-            throw new IllegalArgumentException("Duplicate delegates");
+   public void b() {
+      if (this.i > 0) {
+         a.warn("Clearing BufferBuilder with unused batches");
+      }
+
+      this.c();
+   }
+
+   public void c() {
+      this.f();
+      if (this.i > 0) {
+         this.e();
+         this.i = 0;
+      }
+   }
+
+   boolean d(int $$0) {
+      return $$0 == this.j;
+   }
+
+   void d() {
+      if (--this.i <= 0) {
+         this.e();
+      }
+   }
+
+   private void e() {
+      int $$0 = this.g - this.h;
+      if ($$0 > 0) {
+         MemoryUtil.memCopy(this.e + (long)this.h, this.e, (long)$$0);
+      }
+
+      this.g = $$0;
+      this.h = 0;
+      this.j++;
+   }
+
+   @Override
+   public void close() {
+      if (this.e != 0L) {
+         b.free(this.e);
+         this.e = 0L;
+         this.j = -1;
+      }
+   }
+
+   private void f() {
+      if (this.e == 0L) {
+         throw new IllegalStateException("Buffer has been freed");
+      }
+   }
+
+   public class a implements AutoCloseable {
+      private final int b;
+      private final int c;
+      private final int d;
+      private boolean e;
+
+      a(final int $$1, final int $$2, final int $$3) {
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      public ByteBuffer a() {
+         if (!fdb.this.d(this.d)) {
+            throw new IllegalStateException("Buffer is no longer valid");
          } else {
-            this.a = $$0;
-            this.b = $$1;
+            return MemoryUtil.memByteBuffer(fdb.this.e + (long)this.b, this.c);
          }
       }
 
       @Override
-      public fcy a(float $$0, float $$1, float $$2) {
-         this.a.a($$0, $$1, $$2);
-         this.b.a($$0, $$1, $$2);
-         return this;
-      }
-
-      @Override
-      public fcy a(int $$0, int $$1, int $$2, int $$3) {
-         this.a.a($$0, $$1, $$2, $$3);
-         this.b.a($$0, $$1, $$2, $$3);
-         return this;
-      }
-
-      @Override
-      public fcy a(float $$0, float $$1) {
-         this.a.a($$0, $$1);
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fcy a(int $$0, int $$1) {
-         this.a.a($$0, $$1);
-         this.b.a($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fcy b(int $$0, int $$1) {
-         this.a.b($$0, $$1);
-         this.b.b($$0, $$1);
-         return this;
-      }
-
-      @Override
-      public fcy b(float $$0, float $$1, float $$2) {
-         this.a.b($$0, $$1, $$2);
-         this.b.b($$0, $$1, $$2);
-         return this;
-      }
-
-      @Override
-      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-         this.a.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
-         this.b.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10);
-      }
-   }
-
-   static record b(fcy[] a) implements fcy {
-      b(fcy[] a) {
-         for (int $$1 = 0; $$1 < a.length; $$1++) {
-            for (int $$2 = $$1 + 1; $$2 < a.length; $$2++) {
-               if (a[$$1] == a[$$2]) {
-                  throw new IllegalArgumentException("Duplicate delegates");
-               }
+      public void close() {
+         if (!this.e) {
+            this.e = true;
+            if (fdb.this.d(this.d)) {
+               fdb.this.d();
             }
          }
-
-         this.a = a;
-      }
-
-      private void a(Consumer<fcy> $$0) {
-         for (fcy $$1 : this.a) {
-            $$0.accept($$1);
-         }
-      }
-
-      @Override
-      public fcy a(float $$0, float $$1, float $$2) {
-         this.a($$3 -> $$3.a($$0, $$1, $$2));
-         return this;
-      }
-
-      @Override
-      public fcy a(int $$0, int $$1, int $$2, int $$3) {
-         this.a($$4 -> $$4.a($$0, $$1, $$2, $$3));
-         return this;
-      }
-
-      @Override
-      public fcy a(float $$0, float $$1) {
-         this.a($$2 -> $$2.a($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public fcy a(int $$0, int $$1) {
-         this.a($$2 -> $$2.a($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public fcy b(int $$0, int $$1) {
-         this.a($$2 -> $$2.b($$0, $$1));
-         return this;
-      }
-
-      @Override
-      public fcy b(float $$0, float $$1, float $$2) {
-         this.a($$3 -> $$3.b($$0, $$1, $$2));
-         return this;
-      }
-
-      @Override
-      public void a(float $$0, float $$1, float $$2, int $$3, float $$4, float $$5, int $$6, int $$7, float $$8, float $$9, float $$10) {
-         this.a($$11 -> $$11.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10));
       }
    }
 }

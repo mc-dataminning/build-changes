@@ -1,6 +1,6 @@
 import io.netty.buffer.ByteBuf;
 
-public record zz(alb c, byte[] d) implements zk<zq> {
+public record zz(alc c, byte[] d) implements zk<zq> {
    public static final zb<wa, zz> a = zk.a(zz::a, zz::new);
    private static final int e = 5120;
    public static final zb<ByteBuf, byte[]> b = yz.a(5120);
@@ -23,7 +23,7 @@ public record zz(alb c, byte[] d) implements zk<zq> {
       $$0.a(this);
    }
 
-   public alb b() {
+   public alc b() {
       return this.c;
    }
 

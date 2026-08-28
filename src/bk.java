@@ -5,7 +5,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
 
-public record bk(List<ed<bsd>> b, Optional<bv> c, Optional<bv> d, Optional<Boolean> e) {
+public record bk(List<ed<bsi>> b, Optional<bv> c, Optional<bv> d, Optional<Boolean> e) {
    public static final Codec<bk> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                ed.a(lv.s).listOf().optionalFieldOf("tags", List.of()).forGetter(bk::a),
@@ -16,12 +16,12 @@ public record bk(List<ed<bsd>> b, Optional<bv> c, Optional<bv> d, Optional<Boole
             .apply($$0, bk::new)
    );
 
-   public boolean a(arh $$0, bsb $$1) {
+   public boolean a(ari $$0, bsg $$1) {
       return this.a($$0.B(), $$0.dq(), $$1);
    }
 
-   public boolean a(arg $$0, eye $$1, bsb $$2) {
-      for (ed<bsd> $$3 : this.b) {
+   public boolean a(arh $$0, eys $$1, bsg $$2) {
+      for (ed<bsi> $$3 : this.b) {
          if (!$$3.a($$2.l())) {
             return false;
          }
@@ -34,7 +34,7 @@ public record bk(List<ed<bsd>> b, Optional<bv> c, Optional<bv> d, Optional<Boole
       }
    }
 
-   public List<ed<bsd>> a() {
+   public List<ed<bsi>> a() {
       return this.b;
    }
 
@@ -51,7 +51,7 @@ public record bk(List<ed<bsd>> b, Optional<bv> c, Optional<bv> d, Optional<Boole
    }
 
    public static class a {
-      private final Builder<ed<bsd>> a = ImmutableList.builder();
+      private final Builder<ed<bsi>> a = ImmutableList.builder();
       private Optional<bv> b = Optional.empty();
       private Optional<bv> c = Optional.empty();
       private Optional<Boolean> d = Optional.empty();
@@ -60,7 +60,7 @@ public record bk(List<ed<bsd>> b, Optional<bv> c, Optional<bv> d, Optional<Boole
          return new bk.a();
       }
 
-      public bk.a a(ed<bsd> $$0) {
+      public bk.a a(ed<bsi> $$0) {
          this.a.add($$0);
          return this;
       }

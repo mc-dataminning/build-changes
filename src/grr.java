@@ -1,22 +1,51 @@
-public class grr extends gqj<gvf, fzo> {
-   public grr(goo<gvf, fzo> $$0, gnq $$1) {
-      super($$0, $$1);
+public class grr extends grw<guo, fxb> {
+   private final gij a;
+
+   public grr(gpf<guo, fxb> $$0, gij $$1) {
+      super($$0);
+      this.a = $$1;
    }
 
-   public void a(fcu $$0, ggv $$1, int $$2, gvf $$3, float $$4, float $$5) {
-      $$0.a();
-      if ($$3.ar.a(cvo.sl)) {
-         this.d().a().a($$0);
-         this.d().c().a($$0);
-         this.d().d().a($$0);
-         $$0.a(0.0625F, 0.25F, 0.0F);
-         $$0.a(a.f.rotationDegrees(180.0F));
-         $$0.a(a.b.rotationDegrees(140.0F));
-         $$0.a(a.f.rotationDegrees(10.0F));
-         $$0.a(0.0F, -0.4F, 0.4F);
+   public void a(fde $$0, ghg $$1, int $$2, guo $$3, float $$4, float $$5) {
+      if (!$$3.ae) {
+         boolean $$6 = $$3.aj && $$3.u;
+         if (!$$3.u || $$6) {
+            duo $$7 = $$3.a.a();
+            int $$8 = gok.a($$3, 0.0F);
+            gzd $$9 = this.a.a($$7);
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
+            $$0.b();
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(42.0F));
+            $$0.a(0.1F, 0.0F, -0.6F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
+            $$0.b();
+            $$0.a();
+            this.d().c().a($$0);
+            $$0.a(0.0F, -0.7F, -0.2F);
+            $$0.a(a.d.rotationDegrees(-78.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$6, $$7, $$8, $$9);
+            $$0.b();
+         }
       }
+   }
 
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      $$0.b();
+   private void a(fde $$0, ghg $$1, int $$2, boolean $$3, duo $$4, int $$5, gzd $$6) {
+      if ($$3) {
+         this.a.b().a($$0.c(), $$1.getBuffer(ghq.r(gxa.d)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
+      } else {
+         this.a.a($$4, $$0, $$1, $$2, $$5);
+      }
    }
 }

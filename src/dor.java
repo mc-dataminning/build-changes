@@ -1,53 +1,49 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dor extends dnw {
-   public static final MapCodec<dor> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(dvn.a.fieldOf("wood_type").forGetter(dnw::d), u()).apply($$0, dor::new));
-   public static final dva b = duq.ba;
+public class dor extends dge {
+   public static final MapCodec<dor> c = b(dor::new);
 
    @Override
    public MapCodec<dor> a() {
-      return a;
+      return c;
    }
 
-   public dor(dvn $$0, dtz.d $$1) {
-      super($$0, $$1.a($$0.d()));
-      this.l(this.E.b().b(b, Integer.valueOf(0)).b(f, Boolean.valueOf(false)));
-   }
-
-   @Override
-   protected boolean a(dua $$0, ddv $$1, je $$2) {
-      return $$1.a_($$2.e()).e();
+   protected dor(dun.d $$0) {
+      super($$0);
    }
 
    @Override
-   public dua a(cyw $$0) {
-      eqb $$1 = $$0.q().b_($$0.a());
-      return this.o().b(b, Integer.valueOf(dvg.a($$0.i() + 180.0F))).b(f, Boolean.valueOf($$1.a() == eqc.c));
+   public drs a(je $$0, duo $$1) {
+      return new dth($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends drs> drt<T> a(deg $$0, duo $$1, dru<T> $$2) {
+      return a($$0, $$2, dru.B);
    }
 
    @Override
-   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
-      return $$1 == jj.a && !this.a($$0, $$3, $$4) ? dgx.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   protected void a(deg $$0, je $$1, cnu $$2) {
+      drs $$3 = $$0.c_($$1);
+      if ($$3 instanceof dth) {
+         $$2.a((brr)$$3);
+         $$2.a(awo.at);
+      }
    }
 
    @Override
-   public float h(dua $$0) {
-      return dvg.b($$0.c(b));
-   }
+   public void a(duo $$0, deg $$1, je $$2, azl $$3) {
+      if ($$0.c(b)) {
+         double $$4 = (double)$$2.u() + 0.5;
+         double $$5 = (double)$$2.v();
+         double $$6 = (double)$$2.w() + 0.5;
+         if ($$3.j() < 0.1) {
+            $$1.a($$4, $$5, $$6, awe.yq, awf.e, 1.0F, 1.0F, false);
+         }
 
-   @Override
-   protected dua a(dua $$0, dnj $$1) {
-      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
-
-   @Override
-   protected dua a(dua $$0, dls $$1) {
-      return $$0.b(b, Integer.valueOf($$1.a($$0.c(b), 16)));
-   }
-
-   @Override
-   protected void a(dub.a<dgv, dua> $$0) {
-      $$0.a(b, f);
+         $$1.a(ln.ae, $$4, $$5 + 1.1, $$6, 0.0, 0.0, 0.0);
+      }
    }
 }

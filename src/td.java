@@ -13,7 +13,7 @@ import org.slf4j.Logger;
 public class td {
    public static final int a = 8;
    private static final Logger b = LogUtils.getLogger();
-   final arg c;
+   final arh c;
    private final tg d;
    private final List<ta> e;
    private ImmutableList<su> f;
@@ -27,7 +27,7 @@ public class td {
    private final td.c m;
    final boolean n;
 
-   protected td(td.b $$0, Collection<su> $$1, arg $$2, tg $$3, td.c $$4, td.c $$5, boolean $$6) {
+   protected td(td.b $$0, Collection<su> $$1, arh $$2, tg $$3, td.c $$4, td.c $$5, boolean $$6) {
       this.c = $$2;
       this.d = $$3;
       this.i = $$0;
@@ -86,7 +86,7 @@ public class td {
                   td.this.k.d().accept(td.this.c);
                   td.this.g.forEach($$0xxx -> $$0xxx.b(td.this.k));
                   LongSet $$0 = new LongArraySet(td.this.c.w());
-                  $$0.forEach($$0xxx -> td.this.c.a(dcy.a($$0xxx), dcy.b($$0xxx), false));
+                  $$0.forEach($$0xxx -> td.this.c.a(ddm.a($$0xxx), ddm.b($$0xxx), false));
                   td.this.a($$0 + 1);
                }
             }
@@ -105,7 +105,7 @@ public class td {
                if (td.this.n) {
                   td.this.k.d().accept(td.this.c);
                   LongSet $$2 = new LongArraySet(td.this.c.w());
-                  $$2.forEach($$0xxx -> td.this.c.a(dcy.a($$0xxx), dcy.b($$0xxx), false));
+                  $$2.forEach($$0xxx -> td.this.c.a(ddm.a($$0xxx), ddm.b($$0xxx), false));
                   tg.a.a();
                } else {
                   this.a();
@@ -145,12 +145,12 @@ public class td {
       return $$0.c() == null ? this.m.spawnStructure($$0) : this.l.spawnStructure($$0);
    }
 
-   public static void a(arg $$0) {
+   public static void a(arh $$0) {
       agn.a($$0);
    }
 
    public static class a {
-      private final arg a;
+      private final arh a;
       private final tg b = tg.a;
       private td.b c = sv.a();
       private td.c d = td.c.a;
@@ -158,16 +158,16 @@ public class td {
       private final Collection<su> f;
       private boolean g = false;
 
-      private a(Collection<su> $$0, arg $$1) {
+      private a(Collection<su> $$0, arh $$1) {
          this.f = $$0;
          this.a = $$1;
       }
 
-      public static td.a a(Collection<su> $$0, arg $$1) {
+      public static td.a a(Collection<su> $$0, arh $$1) {
          return new td.a($$0, $$1);
       }
 
-      public static td.a b(Collection<ta> $$0, arg $$1) {
+      public static td.a b(Collection<ta> $$0, arh $$1) {
          return a(sv.a().batch($$0), $$1);
       }
 
@@ -206,7 +206,7 @@ public class td {
 
       Optional<ta> spawnStructure(ta var1);
 
-      default void a(arg $$0) {
+      default void a(arh $$0) {
       }
    }
 }

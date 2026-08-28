@@ -1,27 +1,40 @@
-import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
 
-public class ffk extends hct {
-   protected BooleanConsumer a;
-   private final xd b;
-   private final xd c;
+public class ffk implements Iterable<fel> {
+   private final fil a;
+   private final Set<fel> b = new HashSet<>();
+   private List<fel> c = List.of();
 
-   public ffk(BooleanConsumer $$0, xd $$1, xd $$2) {
-      super(fhs.a);
+   public ffk(fil $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   }
+
+   public void a(List<fel> $$0) {
+      List<fel> $$1 = new ArrayList<>($$0);
+      $$1.sort(new fel.b(this.a.X().c()));
+      boolean $$2 = $$1.removeAll(this.b);
+      if (!$$2) {
+         this.b.clear();
+      }
+
+      this.c = $$1;
+   }
+
+   public void a(fel $$0) {
+      this.c.remove($$0);
+      this.b.add($$0);
    }
 
    @Override
-   public void aT_() {
-      this.c(fka.a(xc.f, $$0 -> this.a.accept(true)).a(this.n / 2 - 105, g(9), 100, 20).a());
-      this.c(fka.a(xc.g, $$0 -> this.a.accept(false)).a(this.n / 2 + 5, g(9), 100, 20).a());
+   public Iterator<fel> iterator() {
+      return this.c.iterator();
    }
 
-   @Override
-   public void a(fjn $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.p, this.b, this.n / 2, g(3), -1);
-      $$0.a(this.p, this.c, this.n / 2, g(5), -1);
+   public boolean a() {
+      return this.c.isEmpty();
    }
 }

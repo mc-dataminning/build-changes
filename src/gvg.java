@@ -1,6 +1,4 @@
-public class gvg extends gts {
-   public float[] a = new float[2];
-   public float[] b = new float[2];
-   public float c;
-   public boolean d;
+public class gvg extends gub {
+   public boolean b;
+   public boolean c;
 }

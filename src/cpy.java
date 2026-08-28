@@ -1,70 +1,74 @@
-public class cpy extends cpm {
-   private final dct c = new dct() {
-      @Override
-      public void a(dds $$0, je $$1, int $$2) {
-         $$0.a(cpy.this, (byte)$$2);
-      }
-   };
-   private final Runnable d;
+public class cpy extends cps {
+   private float c;
+   private float d;
 
-   public cpy(btq<? extends cpy> $$0, dds $$1) {
+   public cpy(btv<?> $$0, deg $$1) {
       super($$0, $$1);
-      this.d = this.c($$1);
    }
 
-   public cpy(dds $$0, double $$1, double $$2, double $$3) {
-      super(btq.aU, $$0, $$1, $$2, $$3);
-      this.d = this.c($$0);
-   }
-
-   @Override
-   protected cvg aj_() {
-      return cvo.nM;
-   }
-
-   private Runnable c(dds $$0) {
-      return $$0 instanceof arg ? () -> this.c.a((arg)$$0, this.ds()) : () -> this.c.a($$0, this.ds());
+   public cpy(deg $$0, double $$1, double $$2, double $$3) {
+      super(btv.ar, $$0, $$1, $$2, $$3);
    }
 
    @Override
-   public cpm.a x() {
-      return cpm.a.e;
+   public brp a(cnu $$0, bro $$1) {
+      if (!$$0.fS() && !this.bX() && (this.dS().B || $$0.n(this))) {
+         this.d = this.c;
+         if (!this.dS().B) {
+            return (brp)($$0.n(this) ? brp.c : brp.e);
+         } else {
+            return brp.a;
+         }
+      } else {
+         return brp.e;
+      }
    }
 
    @Override
-   public dua z() {
-      return dgx.ct.o();
+   protected cvk aj_() {
+      return cvt.nM;
    }
 
    @Override
-   protected void a(uf $$0) {
-      super.a($$0);
-      this.c.a(this.dS(), this.ds(), $$0);
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3) {
+         if (this.bX()) {
+            this.bM();
+         }
+
+         if (this.S() == 0) {
+            this.m(-this.T());
+            this.d(10);
+            this.b(50.0F);
+            this.bA();
+         }
+      }
    }
 
    @Override
-   protected void b(uf $$0) {
-      super.b($$0);
-      this.c.a($$0);
-   }
-
-   @Override
-   public void b(byte $$0) {
-      this.c.a(this.dS(), $$0);
+   public cps.a y() {
+      return cps.a.a;
    }
 
    @Override
    public void l() {
+      double $$0 = (double)this.dI();
+      eys $$1 = this.dq();
       super.l();
-      this.d.run();
-   }
-
-   public dct E() {
-      return this.c;
+      double $$2 = ((double)this.dI() - $$0) % 360.0;
+      if (this.dS().B && $$1.f(this.dq()) > 0.01) {
+         this.c += (float)$$2;
+         this.c %= 360.0F;
+      }
    }
 
    @Override
-   public boolean cT() {
-      return true;
+   protected void a(bto $$0, bto.a $$1) {
+      super.a($$0, $$1);
+      if (this.dS().B && $$0 instanceof cnu $$2 && $$2.gH() && b(this.dS())) {
+         float $$3 = (float)azd.e(0.5, (double)this.d, (double)this.c);
+         $$2.v($$2.dI() - ($$3 - this.d));
+         this.d = $$3;
+      }
    }
 }

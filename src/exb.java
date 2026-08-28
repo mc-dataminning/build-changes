@@ -1,21 +1,36 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public class exb {
-   private static final Codec<exa> h = lu.G.q().dispatch(exa::b, ewz::a);
-   public static final Codec<exa> a = Codec.lazyInitialized(() -> {
-      Codec<exa> $$0 = Codec.withAlternative(h, exe.a.codec());
-      return Codec.either(ewx.b, $$0).xmap(Either::unwrap, $$0x -> $$0x instanceof ewx $$1 ? Either.left($$1) : Either.right($$0x));
-   });
-   public static final ewz b = a("constant", ewx.a);
-   public static final ewz c = a("uniform", exe.a);
-   public static final ewz d = a("binomial", eww.a);
-   public static final ewz e = a("score", exc.a);
-   public static final ewz f = a("storage", exd.a);
-   public static final ewz g = a("enchantment_level", ewy.a);
+public record exb(exo b, etg c) implements ews {
+   public static final MapCodec<exb> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(exp.a.fieldOf("value").forGetter(exb::c), etg.a.fieldOf("range").forGetter(exb::d)).apply($$0, exb::new)
+   );
 
-   private static ewz a(String $$0, MapCodec<? extends exa> $$1) {
-      return ka.a(lu.G, alb.b($$0), new ewz($$1));
+   @Override
+   public ewt b() {
+      return ewu.r;
+   }
+
+   @Override
+   public Set<ewa<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public boolean a(eth $$0) {
+      return this.c.b($$0, this.b.a($$0));
+   }
+
+   public static ews.a a(exo $$0, etg $$1) {
+      return () -> new exb($$0, $$1);
+   }
+
+   public exo c() {
+      return this.b;
+   }
+
+   public etg d() {
+      return this.c;
    }
 }

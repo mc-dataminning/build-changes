@@ -8,11 +8,11 @@ public class bl extends dv<bl.a> {
       return bl.a.a;
    }
 
-   public void a(arh $$0, je $$1) {
-      arg $$2 = $$0.B();
-      dua $$3 = $$2.a_($$1);
-      esw $$4 = new esw.a($$2).a(evp.f, $$1.b()).a(evp.a, $$0).a(evp.g, $$3).a(evo.p);
-      est $$5 = new est.a($$4).a(Optional.empty());
+   public void a(ari $$0, je $$1) {
+      arh $$2 = $$0.B();
+      duo $$3 = $$2.a_($$1);
+      etk $$4 = new etk.a($$2).a(ewd.f, $$1.b()).a(ewd.a, $$0).a(ewd.g, $$3).a(ewc.p);
+      eth $$5 = new eth.a($$4).a(Optional.empty());
       this.a($$0, $$1x -> $$1x.a($$5));
    }
 
@@ -21,14 +21,14 @@ public class bl extends dv<bl.a> {
          $$0 -> $$0.group(bv.b.optionalFieldOf("player").forGetter(bl.a::a), bg.a.optionalFieldOf("location").forGetter(bl.a::b)).apply($$0, bl.a::new)
       );
 
-      public boolean a(est $$0) {
+      public boolean a(eth $$0) {
          return this.c.isEmpty() || this.c.get().a($$0);
       }
 
       @Override
       public void a(bh $$0) {
          dv.a.super.a($$0);
-         this.c.ifPresent($$1 -> $$0.a($$1, evo.p, ".location"));
+         this.c.ifPresent($$1 -> $$0.a($$1, ewc.p, ".location"));
       }
 
       @Override

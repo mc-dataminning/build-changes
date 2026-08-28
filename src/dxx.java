@@ -1,19 +1,32 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.datafixers.DataFixer;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.concurrent.CompletableFuture;
+import java.util.function.Supplier;
+import org.apache.commons.io.FileUtils;
 
-public record dxx(jn<dxw> e, dvx f) {
-   public static final Codec<dxx> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(dxw.k.fieldOf("type").forGetter(dxx::a), dvx.a.fieldOf("generator").forGetter(dxx::b)).apply($$0, $$0.stable(dxx::new))
-   );
-   public static final ala<dxx> b = ala.a(lv.bb, alb.b("overworld"));
-   public static final ala<dxx> c = ala.a(lv.bb, alb.b("the_nether"));
-   public static final ala<dxx> d = ala.a(lv.bb, alb.b("the_end"));
+public class dxx extends dxu {
+   private final dxw a;
+   private final Path b;
 
-   public jn<dxw> a() {
-      return this.e;
+   public dxx(dyd $$0, Path $$1, dyd $$2, Path $$3, DataFixer $$4, boolean $$5) {
+      super($$0, $$1, $$4, $$5);
+      this.b = $$3;
+      this.a = new dxw($$2, $$3, $$5);
    }
 
-   public dvx b() {
-      return this.f;
+   @Override
+   public CompletableFuture<Void> a(ddm $$0, Supplier<uf> $$1) {
+      this.e($$0);
+      return this.a.a($$0, $$1);
+   }
+
+   @Override
+   public void close() throws IOException {
+      super.close();
+      this.a.close();
+      if (this.b.toFile().exists()) {
+         FileUtils.deleteDirectory(this.b.toFile());
+      }
    }
 }

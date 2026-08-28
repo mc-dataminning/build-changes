@@ -1,19 +1,40 @@
-public class dmb {
-   private static final double b = 0.826;
-   public static final double a = 0.1;
+import com.mojang.serialization.MapCodec;
 
-   public static boolean a(dua $$0) {
-      return $$0.l();
+public class dmb extends dlf {
+   public static final MapCodec<dmb> a = b(dmb::new);
+   private static final xd b = xd.c("container.loom");
+
+   @Override
+   public MapCodec<dmb> a() {
+      return a;
    }
 
-   public static int a(azk $$0) {
-      double $$1 = 1.0;
+   protected dmb(dun.d $$0) {
+      super($$0);
+   }
 
-      int $$2;
-      for ($$2 = 0; $$0.j() < $$1; $$2++) {
-         $$1 *= 0.826;
+   @Override
+   protected brp a(duo $$0, deg $$1, je $$2, cnu $$3, eyo $$4) {
+      if (!$$1.B) {
+         $$3.a($$0.b($$1, $$2));
+         $$3.a(awo.ax);
       }
 
-      return $$2;
+      return brp.a;
+   }
+
+   @Override
+   protected brr b(duo $$0, deg $$1, je $$2) {
+      return new brx(($$2x, $$3, $$4) -> new csd($$2x, $$3, crj.a($$1, $$2)), b);
+   }
+
+   @Override
+   public duo a(czk $$0) {
+      return this.o().b(aF, $$0.g().g());
+   }
+
+   @Override
+   protected void a(dup.a<dhj, duo> $$0) {
+      $$0.a(aF);
    }
 }

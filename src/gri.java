@@ -1,14 +1,13 @@
-public class gri<S extends gup, M extends fxa<S>> extends grf<S, M> {
-   private final fyv<S> a;
-   private final alb b;
-
-   public gri(goo<S, M> $$0, fzx $$1, fzz $$2, alb $$3) {
+public abstract class gri<S extends gtl, M extends fxk<S>> extends grw<S, M> {
+   public gri(gpf<S, M> $$0) {
       super($$0);
-      this.b = $$3;
-      this.a = new fyv<>($$1.a($$2));
    }
 
-   public void a(fcu $$0, ggv $$1, int $$2, S $$3, float $$4, float $$5) {
-      a(this.a, this.b, $$0, $$1, $$2, $$3, -1);
+   @Override
+   public void a(fde $$0, ghg $$1, int $$2, S $$3, float $$4, float $$5) {
+      fdi $$6 = $$1.getBuffer(this.a());
+      this.d().a($$0, $$6, 15728640, gws.d);
    }
+
+   public abstract ghq a();
 }

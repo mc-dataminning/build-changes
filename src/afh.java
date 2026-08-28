@@ -5,16 +5,16 @@ public class afh implements zk<abz> {
    private final int d;
    private final int e;
 
-   public afh(btj $$0) {
+   public afh(bto $$0) {
       this($$0.ap(), $$0.dv());
    }
 
-   public afh(int $$0, eye $$1) {
+   public afh(int $$0, eys $$1) {
       this.b = $$0;
       double $$2 = 3.9;
-      double $$3 = azc.a($$1.d, -3.9, 3.9);
-      double $$4 = azc.a($$1.e, -3.9, 3.9);
-      double $$5 = azc.a($$1.f, -3.9, 3.9);
+      double $$3 = azd.a($$1.d, -3.9, 3.9);
+      double $$4 = azd.a($$1.e, -3.9, 3.9);
+      double $$5 = azd.a($$1.f, -3.9, 3.9);
       this.c = (int)($$3 * 8000.0);
       this.d = (int)($$4 * 8000.0);
       this.e = (int)($$5 * 8000.0);

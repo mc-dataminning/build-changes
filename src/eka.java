@@ -1,40 +1,44 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.stream.Stream;
 
-public class eka extends eju {
+public class eka extends ekj {
    public static final MapCodec<eka> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               dzw.a.g.fieldOf("heightmap").forGetter($$0x -> $$0x.c),
-               Codec.INT.optionalFieldOf("min_inclusive", Integer.MIN_VALUE).forGetter($$0x -> $$0x.d),
-               Codec.INT.optionalFieldOf("max_inclusive", Integer.MAX_VALUE).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, eka::new)
+      $$0 -> $$0.group(je.a.listOf().fieldOf("positions").forGetter($$0x -> $$0x.c)).apply($$0, eka::new)
    );
-   private final dzw.a c;
-   private final int d;
-   private final int e;
+   private final List<je> c;
 
-   private eka(dzw.a $$0, int $$1, int $$2) {
+   public static eka a(je... $$0) {
+      return new eka(List.of($$0));
+   }
+
+   private eka(List<je> $$0) {
       this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   public static eka a(dzw.a $$0, int $$1, int $$2) {
-      return new eka($$0, $$1, $$2);
    }
 
    @Override
-   protected boolean a(ejt $$0, azk $$1, je $$2) {
-      long $$3 = (long)$$0.a(this.c, $$2.u(), $$2.w());
-      long $$4 = $$3 + (long)this.d;
-      long $$5 = $$3 + (long)this.e;
-      return $$4 <= (long)$$2.v() && (long)$$2.v() <= $$5;
+   public Stream<je> a_(ekh $$0, azl $$1, je $$2) {
+      int $$3 = kg.a($$2.u());
+      int $$4 = kg.a($$2.w());
+      boolean $$5 = false;
+
+      for (je $$6 : this.c) {
+         if (a($$3, $$4, $$6)) {
+            $$5 = true;
+            break;
+         }
+      }
+
+      return !$$5 ? Stream.empty() : this.c.stream().filter($$2x -> a($$3, $$4, $$2x));
+   }
+
+   private static boolean a(int $$0, int $$1, je $$2) {
+      return $$0 == kg.a($$2.u()) && $$1 == kg.a($$2.w());
    }
 
    @Override
-   public ejw<?> b() {
-      return ejw.c;
+   public ekk<?> b() {
+      return ekk.o;
    }
 }

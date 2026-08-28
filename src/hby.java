@@ -1,74 +1,59 @@
-import com.google.common.base.Stopwatch;
-import com.google.common.base.Ticker;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.OptionalLong;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
-import org.slf4j.Logger;
+import java.util.concurrent.locks.LockSupport;
 
-public class hby {
-   public static final hby a = new hby(Ticker.systemTicker());
-   private static final Logger b = LogUtils.getLogger();
-   private final Ticker c;
-   private final Map<hbu<hby.a>, Stopwatch> d = new HashMap<>();
-   private OptionalLong e = OptionalLong.empty();
+public class hby extends bqf<Runnable> {
+   private Thread a = this.b();
+   private volatile boolean b;
 
-   protected hby(Ticker $$0) {
-      this.c = $$0;
+   public hby() {
+      super("Sound executor");
    }
 
-   public synchronized void a(hbu<hby.a> $$0) {
-      this.a($$0, (Function<hbu<hby.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
+   private Thread b() {
+      Thread $$0 = new Thread(this::c);
+      $$0.setDaemon(true);
+      $$0.setName("Sound engine");
+      $$0.start();
+      return $$0;
    }
 
-   public synchronized void a(hbu<hby.a> $$0, Stopwatch $$1) {
-      this.a($$0, (Function<hbu<hby.a>, Stopwatch>)($$1x -> $$1));
+   @Override
+   protected Runnable f(Runnable $$0) {
+      return $$0;
    }
 
-   private synchronized void a(hbu<hby.a> $$0, Function<hbu<hby.a>, Stopwatch> $$1) {
-      this.d.computeIfAbsent($$0, $$1);
+   @Override
+   protected boolean e(Runnable $$0) {
+      return !this.b;
    }
 
-   public synchronized void b(hbu<hby.a> $$0) {
-      Stopwatch $$1 = this.d.get($$0);
-      if ($$1 == null) {
-         b.warn("Attempted to end step for {} before starting it", $$0.b());
-      } else {
-         if ($$1.isRunning()) {
-            $$1.stop();
-         }
+   @Override
+   protected Thread ay() {
+      return this.a;
+   }
+
+   private void c() {
+      while (!this.b) {
+         this.b(() -> this.b);
       }
    }
 
-   public void a(hbr $$0) {
-      $$0.send(hbs.g, $$0x -> {
-         synchronized (this) {
-            this.d.forEach(($$1, $$2) -> {
-               if (!$$2.isRunning()) {
-                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
-                  $$0x.a((hbu<hby.a>)$$1, new hby.a((int)$$3));
-               } else {
-                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), hbs.g.a());
-               }
-            });
-            this.e.ifPresent($$1 -> $$0x.a(hbu.B, new hby.a((int)$$1)));
-            this.d.clear();
-         }
-      });
+   @Override
+   protected void A() {
+      LockSupport.park("waiting for tasks");
    }
 
-   public synchronized void a(long $$0) {
-      this.e = OptionalLong.of($$0);
-   }
+   public void a() {
+      this.b = true;
+      this.a.interrupt();
 
-   public static record a(int b) {
-      public static final Codec<hby.a> a = Codec.INT.xmap(hby.a::new, $$0 -> $$0.b);
-
-      public int a() {
-         return this.b;
+      try {
+         this.a.join();
+      } catch (InterruptedException var2) {
+         Thread.currentThread().interrupt();
       }
+
+      this.bB();
+      this.b = false;
+      this.a = this.b();
    }
 }

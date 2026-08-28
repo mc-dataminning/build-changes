@@ -1,31 +1,47 @@
-public class fow extends fpt {
-   private fkt a;
-   private final Runnable b;
-   private final Runnable c;
+public class fow extends fqd {
+   private static final int a = 90;
+   private final xd b;
+   private fld c = fld.a;
+   private final Runnable d;
+   private final xd s;
+   private final boolean u;
 
-   public fow(Runnable $$0, Runnable $$1) {
-      super(xd.c("datapackFailure.title"));
-      this.a = fkt.a;
-      this.b = $$0;
-      this.c = $$1;
+   public fow(Runnable $$0, xd $$1, xd $$2) {
+      this($$0, $$1, $$2, xc.k, true);
+   }
+
+   public fow(Runnable $$0, xd $$1, xd $$2, xd $$3, boolean $$4) {
+      super($$1);
+      this.d = $$0;
+      this.b = $$2;
+      this.s = $$3;
+      this.u = $$4;
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
-      this.a = fkt.a(this.p, this.n(), this.n - 50);
-      this.c(fka.a(xd.c("datapackFailure.safeMode"), $$0 -> this.c.run()).a(this.n / 2 - 155, this.o / 6 + 96, 150, 20).a());
-      this.c(fka.a(xc.k, $$0 -> this.b.run()).a(this.n / 2 - 155 + 160, this.o / 6 + 96, 150, 20).a());
+   public xd i() {
+      return xc.a(super.i(), this.b);
    }
 
    @Override
-   public void a(fjn $$0, int $$1, int $$2, float $$3) {
+   protected void aR_() {
+      super.aR_();
+      this.c = fld.a(this.p, this.b, this.n - 50);
+      int $$0 = this.c.a() * 9;
+      int $$1 = azd.a(90 + $$0 + 12, this.o / 6 + 96, this.o - 24);
+      int $$2 = 150;
+      this.c(fkk.a(this.s, $$0x -> this.d.run()).a((this.n - 150) / 2, $$1, 150, 20).a());
+   }
+
+   @Override
+   public void a(fjx $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      this.a.a($$0, this.n / 2, 70);
+      $$0.a(this.p, this.l, this.n / 2, 70, 16777215);
+      this.c.a($$0, this.n / 2, 90);
    }
 
    @Override
-   public boolean aJ_() {
-      return false;
+   public boolean aH_() {
+      return this.u;
    }
 }

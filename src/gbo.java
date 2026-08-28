@@ -1,90 +1,68 @@
-import java.util.IdentityHashMap;
+import com.google.common.base.Splitter;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.SimpleChannelInboundHandler;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Stream;
 
-public class gbo {
-   private static final gbo.a a = new gbo.a();
-   private static final gbo.a b = new gbo.a();
-   private static final gbo.a c = new gbo.a();
-   private CompletableFuture<hao<cvl>> d = CompletableFuture.completedFuture(hao.empty());
-   private CompletableFuture<hao<cvl>> e = CompletableFuture.completedFuture(hao.empty());
-   private CompletableFuture<hao<ftt>> f = CompletableFuture.completedFuture(hao.empty());
-   private final Map<gbo.a, Runnable> g = new IdentityHashMap<>();
+public class gbo extends SimpleChannelInboundHandler<ByteBuf> {
+   private static final Splitter a = Splitter.on('\u0000').limit(6);
+   private final gcy b;
+   private final gbo.a c;
 
-   private void a(gbo.a $$0, Runnable $$1) {
-      $$1.run();
-      this.g.put($$0, $$1);
+   public gbo(gcy $$0, gbo.a $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public void a() {
-      for (Runnable $$0 : this.g.values()) {
-         $$0.run();
+   public void channelActive(ChannelHandlerContext $$0) throws Exception {
+      super.channelActive($$0);
+      ByteBuf $$1 = $$0.alloc().buffer();
+
+      try {
+         $$1.writeByte(254);
+         $$1.writeByte(1);
+         $$1.writeByte(250);
+         asa.a($$1, "MC|PingHost");
+         int $$2 = $$1.writerIndex();
+         $$1.writeShort(0);
+         int $$3 = $$1.writerIndex();
+         $$1.writeByte(127);
+         asa.a($$1, this.b.a());
+         $$1.writeInt(this.b.b());
+         int $$4 = $$1.writerIndex() - $$3;
+         $$1.setShort($$2, $$4);
+         $$0.channel().writeAndFlush($$1).addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
+      } catch (Exception var6) {
+         $$1.release();
+         throw var6;
       }
    }
 
-   private static Stream<String> a(Stream<cvl> $$0, cvg.b $$1, cxf $$2) {
-      return $$0.<xd>flatMap($$2x -> $$2x.a($$1, null, $$2).stream()).map($$0x -> n.a($$0x.getString()).trim()).filter($$0x -> !$$0x.isEmpty());
-   }
-
-   public void a(fhm $$0, kb.b $$1) {
-      this.a(
-         a,
-         () -> {
-            List<ftt> $$2 = $$0.b();
-            ka<cvg> $$3 = $$1.d(lv.K);
-            cvg.b $$4 = cvg.b.a($$1);
-            cxf $$5 = cxf.a.a;
-            CompletableFuture<?> $$6 = this.f;
-            this.f = CompletableFuture.supplyAsync(
-               () -> new haj<>(
-                     $$3xx -> a($$3xx.e().stream().map($$1xxxx -> $$1xxxx.b().a($$1)), $$4, $$5),
-                     $$2xx -> $$2xx.e().stream().map($$2xxx -> $$3.b($$2xxx.b().a($$1).h())),
-                     $$2
-                  ),
-               ad.g()
-            );
-            $$6.cancel(true);
+   protected void a(ChannelHandlerContext $$0, ByteBuf $$1) {
+      short $$2 = $$1.readUnsignedByte();
+      if ($$2 == 255) {
+         String $$3 = asa.a($$1);
+         List<String> $$4 = a.splitToList($$3);
+         if ("§1".equals($$4.get(0))) {
+            int $$5 = azd.a($$4.get(1), 0);
+            String $$6 = $$4.get(2);
+            String $$7 = $$4.get(3);
+            int $$8 = azd.a($$4.get(4), -1);
+            int $$9 = azd.a($$4.get(5), -1);
+            this.c.handleResponse($$5, $$6, $$7, $$8, $$9);
          }
-      );
+      }
+
+      $$0.close();
    }
 
-   public hao<ftt> b() {
-      return this.f.join();
+   public void exceptionCaught(ChannelHandlerContext $$0, Throwable $$1) {
+      $$0.close();
    }
 
-   public void a(List<cvl> $$0) {
-      this.a(c, () -> {
-         CompletableFuture<?> $$1 = this.e;
-         this.e = CompletableFuture.supplyAsync(() -> new hak<>($$0xxx -> $$0xxx.j().map(axi::b), $$0), ad.g());
-         $$1.cancel(true);
-      });
-   }
-
-   public hao<cvl> c() {
-      return this.e.join();
-   }
-
-   public void a(jp.a $$0, List<cvl> $$1) {
-      this.a(
-         b,
-         () -> {
-            cvg.b $$2 = cvg.b.a($$0);
-            cxf $$3 = cxf.a.a.c();
-            CompletableFuture<?> $$4 = this.d;
-            this.d = CompletableFuture.supplyAsync(
-               () -> new haj<>($$2xx -> a(Stream.of($$2xx), $$2, $$3), $$0xxx -> $$0xxx.i().e().map(ala::a).stream(), $$1), ad.g()
-            );
-            $$4.cancel(true);
-         }
-      );
-   }
-
-   public hao<cvl> d() {
-      return this.d.join();
-   }
-
-   static class a {
+   @FunctionalInterface
+   public interface a {
+      void handleResponse(int var1, String var2, String var3, int var4, int var5);
    }
 }

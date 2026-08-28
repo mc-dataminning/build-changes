@@ -1,30 +1,33 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public enum czh implements azy {
-   a("building", 0),
-   b("redstone", 1),
-   c("equipment", 2),
-   d("misc", 3);
+public record czh(jr<bst> c) implements czf {
+   public static final MapCodec<czh> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(kc.a(lv.W).fieldOf("effects").forGetter(czh::b)).apply($$0, czh::new));
+   public static final zb<wo, czh> b = zb.a(yz.c(lv.W), czh::b, czh::new);
 
-   public static final Codec<czh> e = azy.a(czh::values);
-   public static final IntFunction<czh> f = axt.a(czh::a, values(), axt.a.a);
-   public static final zb<ByteBuf, czh> g = yz.a(f, czh::a);
-   private final String h;
-   private final int i;
-
-   private czh(final String $$0, final int $$1) {
-      this.h = $$0;
-      this.i = $$1;
+   public czh(jn<bst> $$0) {
+      this(jr.a($$0));
    }
 
    @Override
-   public String c() {
-      return this.h;
+   public czf.a<czh> a() {
+      return czf.a.b;
    }
 
-   private int a() {
-      return this.i;
+   @Override
+   public boolean a(deg $$0, cvp $$1, buk $$2) {
+      boolean $$3 = false;
+
+      for (jn<bst> $$4 : this.c) {
+         if ($$2.e($$4)) {
+            $$3 = true;
+         }
+      }
+
+      return $$3;
+   }
+
+   public jr<bst> b() {
+      return this.c;
    }
 }

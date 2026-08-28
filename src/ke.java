@@ -9,13 +9,13 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ke {
-   private static final Set<ala<? extends ka<?>>> a = akw.c.stream().map(akw.d::a).collect(Collectors.toUnmodifiableSet());
+   private static final Set<alb<? extends ka<?>>> a = akx.c.stream().map(akx.d::a).collect(Collectors.toUnmodifiableSet());
 
-   public static void a(DynamicOps<vc> $$0, kb $$1, Set<atz> $$2, BiConsumer<ala<? extends ka<?>>, List<ke.a>> $$3) {
-      akw.c.forEach($$4 -> a($$0, (akw.d<?>)$$4, $$1, $$2, $$3));
+   public static void a(DynamicOps<vc> $$0, kb $$1, Set<aua> $$2, BiConsumer<alb<? extends ka<?>>, List<ke.a>> $$3) {
+      akx.c.forEach($$4 -> a($$0, (akx.d<?>)$$4, $$1, $$2, $$3));
    }
 
-   private static <T> void a(DynamicOps<vc> $$0, akw.d<T> $$1, kb $$2, Set<atz> $$3, BiConsumer<ala<? extends ka<?>>, List<ke.a>> $$4) {
+   private static <T> void a(DynamicOps<vc> $$0, akx.d<T> $$1, kb $$2, Set<aua> $$3, BiConsumer<alb<? extends ka<?>>, List<ke.a>> $$4) {
       $$2.c($$1.a())
          .ifPresent(
             $$4x -> {
@@ -46,24 +46,24 @@ public class ke {
       return $$0.e().filter($$0x -> a($$0x.a()));
    }
 
-   public static Stream<kb.d<?>> a(ju<alk> $$0) {
-      return a($$0.c(alk.b));
+   public static Stream<kb.d<?>> a(ju<all> $$0) {
+      return a($$0.c(all.b));
    }
 
-   public static Stream<kb.d<?>> b(ju<alk> $$0) {
-      Stream<kb.d<?>> $$1 = $$0.a(alk.a).e();
+   public static Stream<kb.d<?>> b(ju<all> $$0) {
+      Stream<kb.d<?>> $$1 = $$0.a(all.a).e();
       Stream<kb.d<?>> $$2 = a($$0);
       return Stream.concat($$2, $$1);
    }
 
-   public static boolean a(ala<? extends ka<?>> $$0) {
+   public static boolean a(alb<? extends ka<?>> $$0) {
       return a.contains($$0);
    }
 
-   public static record a(alb b, Optional<vc> c) {
-      public static final zb<ByteBuf, ke.a> a = zb.a(alb.b, ke.a::a, yz.m.a(yz::a), ke.a::b, ke.a::new);
+   public static record a(alc b, Optional<vc> c) {
+      public static final zb<ByteBuf, ke.a> a = zb.a(alc.b, ke.a::a, yz.m.a(yz::a), ke.a::b, ke.a::new);
 
-      public alb a() {
+      public alc a() {
          return this.b;
       }
 

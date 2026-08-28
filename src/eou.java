@@ -1,30 +1,22 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
 
-public class eou implements eoy {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<eou> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ala.a(lv.bc).fieldOf("loot_table").forGetter($$0x -> $$0x.d)).apply($$0, eou::new)
-   );
-   private final ala<esy> d;
+public class eou extends epb {
+   public final axj<dhj> a;
+   public static final MapCodec<eou> b = axj.b(lv.f).xmap(eou::new, $$0 -> $$0.a).fieldOf("value");
 
-   public eou(ala<esy> $$0) {
-      this.d = $$0;
+   public eou(axj<dhj> $$0) {
+      this.a = $$0;
+   }
+
+   @Nullable
+   @Override
+   public epe.c a(dej $$0, je $$1, je $$2, epe.c $$3, epe.c $$4, epa $$5) {
+      return edq.a(this.a).test($$0.a_($$4.a())) ? $$4 : null;
    }
 
    @Override
-   public uf a(azk $$0, @Nullable uf $$1) {
-      uf $$2 = $$1 == null ? new uf() : $$1.i();
-      ala.a(lv.bc).encodeStart(ut.a, this.d).resultOrPartial(b::error).ifPresent($$1x -> $$2.a("LootTable", $$1x));
-      $$2.a("LootTableSeed", $$0.g());
-      return $$2;
-   }
-
-   @Override
-   public eoz<?> a() {
-      return eoz.d;
+   protected epd<?> a() {
+      return epd.n;
    }
 }

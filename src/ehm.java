@@ -1,49 +1,48 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class ehm extends ehk {
-   public static final MapCodec<ehm> b = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  Codec.floatRange(-1.0F, 1.0F).fieldOf("threshold").forGetter($$0x -> $$0x.g),
-                  Codec.floatRange(0.0F, 1.0F).fieldOf("high_chance").forGetter($$0x -> $$0x.h),
-                  dua.a.fieldOf("default_state").forGetter($$0x -> $$0x.i),
-                  Codec.list(dua.a).fieldOf("low_states").forGetter($$0x -> $$0x.j),
-                  Codec.list(dua.a).fieldOf("high_states").forGetter($$0x -> $$0x.k)
-               )
-            )
-            .apply($$0, ehm::new)
+public class ehm extends ehg {
+   public static final MapCodec<ehm> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(bqu.b(0, 24).fieldOf("trunk_height").forGetter($$0x -> $$0x.b)).apply($$0, ehm::new)
    );
-   private final float g;
-   private final float h;
-   private final dua i;
-   private final List<dua> j;
-   private final List<dua> k;
+   private final bqu b;
 
-   public ehm(long $$0, epe.a $$1, float $$2, float $$3, float $$4, dua $$5, List<dua> $$6, List<dua> $$7) {
-      super($$0, $$1, $$2);
-      this.g = $$3;
-      this.h = $$4;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
+   public ehm(bqu $$0, bqu $$1, bqu $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   protected ehi<?> a() {
-      return ehi.c;
+   protected ehh<?> a() {
+      return ehh.b;
    }
 
    @Override
-   public dua a(azk $$0, je $$1) {
-      double $$2 = this.a($$1, (double)this.e);
-      if ($$2 < (double)this.g) {
-         return ad.a(this.j, $$0);
-      } else {
-         return $$0.i() < this.h ? ad.a(this.k, $$0) : this.i;
+   protected void a(dem $$0, ehg.b $$1, azl $$2, egq $$3, int $$4, ehg.a $$5, int $$6, int $$7, int $$8) {
+      je $$9 = $$5.a();
+      int $$10 = $$2.a(2);
+      int $$11 = 1;
+      int $$12 = 0;
+
+      for (int $$13 = $$8; $$13 >= -$$6; $$13--) {
+         this.a($$0, $$1, $$2, $$3, $$9, $$10, $$13, $$5.c());
+         if ($$10 >= $$11) {
+            $$10 = $$12;
+            $$12 = 1;
+            $$11 = Math.min($$11 + 1, $$7 + $$5.b());
+         } else {
+            $$10++;
+         }
       }
+   }
+
+   @Override
+   public int a(azl $$0, int $$1, egq $$2) {
+      return Math.max(4, $$1 - this.b.a($$0));
+   }
+
+   @Override
+   protected boolean a(azl $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 == $$4 && $$3 == $$4 && $$4 > 0;
    }
 }

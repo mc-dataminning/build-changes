@@ -1,26 +1,41 @@
-public abstract class glr<T extends cnw, S extends gsc> extends gmr<T, S> {
-   private final fwa a;
+import com.google.common.collect.Lists;
+import java.util.Iterator;
+import java.util.List;
+import org.joml.Vector3f;
 
-   public glr(gms.a $$0) {
-      super($$0);
-      this.a = new fwa($$0.a(gaa.j));
+public class glr implements glg.a {
+   public static final int a = 200;
+   private final fil b;
+   private final List<abb> c = Lists.newArrayList();
+
+   glr(fil $$0) {
+      this.b = $$0;
    }
 
-   public void a(S $$0, fcu $$1, ggv $$2, int $$3) {
-      $$1.a();
-      $$1.a(a.d.rotationDegrees($$0.b - 90.0F));
-      $$1.a(a.f.rotationDegrees($$0.a));
-      fcy $$4 = $$2.getBuffer(ghe.e(this.a($$0)));
-      this.a.a($$0);
-      this.a.a($$1, $$4, $$3, gwb.d);
-      $$1.b();
-      super.a($$0, $$1, $$2, $$3);
+   public void a(abb $$0) {
+      this.c.add($$0);
    }
 
-   public void a(T $$0, S $$1, float $$2) {
-      super.a($$0, $$1, $$2);
-      $$1.a = $$0.j($$2);
-      $$1.b = $$0.k($$2);
-      $$1.c = (float)$$0.e - $$2;
+   @Override
+   public void a(fde $$0, ghg $$1, double $$2, double $$3, double $$4) {
+      fdi $$5 = $$1.getBuffer(ghq.y());
+      long $$6 = this.b.s.aa();
+      Iterator<abb> $$7 = this.c.iterator();
+
+      while ($$7.hasNext()) {
+         abb $$8 = $$7.next();
+         long $$9 = $$6 - $$8.b();
+         if ($$9 > 200L) {
+            $$7.remove();
+         } else {
+            for (abb.a $$10 : $$8.c()) {
+               Vector3f $$11 = $$10.a().c().a($$2, $$3 - 0.1, $$4).k();
+               erx $$12 = $$10.b();
+               gia.a($$0, $$5, $$11, $$12.b().r().c(0.5), -16776961);
+               gia.a($$0, $$5, $$11, $$12.c().r().c(0.4), -65536);
+               gia.a($$0, $$5, $$11, $$12.d().r().c(0.3), -256);
+            }
+         }
+      }
    }
 }

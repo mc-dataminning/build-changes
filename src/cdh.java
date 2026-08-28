@@ -1,59 +1,127 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cdh<T> {
-   private final T a;
-   private long b;
+public abstract class cdh extends cbh {
+   private static final int a = 0;
+   private static final int b = 1;
+   private static final int c = 2;
+   protected final bum e;
+   protected final boolean f;
+   private final boolean d;
+   private int i;
+   private int j;
+   private int k;
+   @Nullable
+   protected buk g;
+   protected int h = 60;
 
-   public cdh(T $$0, long $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public cdh(bum $$0, boolean $$1) {
+      this($$0, $$1, false);
    }
 
-   public void a() {
-      if (this.e()) {
-         this.b--;
-      }
-   }
-
-   public static <T> cdh<T> a(T $$0) {
-      return new cdh<>($$0, Long.MAX_VALUE);
-   }
-
-   public static <T> cdh<T> a(T $$0, long $$1) {
-      return new cdh<>($$0, $$1);
-   }
-
-   public long b() {
-      return this.b;
-   }
-
-   public T c() {
-      return this.a;
-   }
-
-   public boolean d() {
-      return this.b <= 0L;
+   public cdh(bum $$0, boolean $$1, boolean $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public String toString() {
-      return this.a + (this.e() ? " (ttl: " + this.b + ")" : "");
+   public boolean c() {
+      buk $$0 = this.e.m();
+      if ($$0 == null) {
+         $$0 = this.g;
+      }
+
+      if ($$0 == null) {
+         return false;
+      } else if (!this.e.c($$0)) {
+         return false;
+      } else {
+         ezz $$1 = this.e.co();
+         ezz $$2 = $$0.co();
+         if ($$1 != null && $$2 == $$1) {
+            return false;
+         } else {
+            double $$3 = this.l();
+            if (this.e.g($$0) > $$3 * $$3) {
+               return false;
+            } else {
+               if (this.f) {
+                  if (this.e.Q().a($$0)) {
+                     this.k = 0;
+                  } else if (++this.k > b(this.h)) {
+                     return false;
+                  }
+               }
+
+               this.e.h($$0);
+               return true;
+            }
+         }
+      }
    }
 
-   @bai
-   public boolean e() {
-      return this.b != Long.MAX_VALUE;
+   protected double l() {
+      return this.e.h(bvr.m);
    }
 
-   public static <T> Codec<cdh<T>> a(Codec<T> $$0) {
-      return RecordCodecBuilder.create(
-         $$1 -> $$1.group(
-                  $$0.fieldOf("value").forGetter($$0xx -> $$0xx.a),
-                  Codec.LONG.lenientOptionalFieldOf("ttl").forGetter($$0xx -> $$0xx.e() ? Optional.of($$0xx.b) : Optional.empty())
-               )
-               .apply($$1, ($$0xx, $$1x) -> new cdh<>($$0xx, $$1x.orElse(Long.MAX_VALUE)))
-      );
+   @Override
+   public void d() {
+      this.i = 0;
+      this.j = 0;
+      this.k = 0;
+   }
+
+   @Override
+   public void e() {
+      this.e.h(null);
+      this.g = null;
+   }
+
+   protected boolean a(@Nullable buk $$0, cfa $$1) {
+      if ($$0 == null) {
+         return false;
+      } else if (!$$1.a(this.e, $$0)) {
+         return false;
+      } else if (!this.e.a($$0.ds())) {
+         return false;
+      } else {
+         if (this.d) {
+            if (--this.j <= 0) {
+               this.i = 0;
+            }
+
+            if (this.i == 0) {
+               this.i = this.a($$0) ? 1 : 2;
+            }
+
+            if (this.i == 2) {
+               return false;
+            }
+         }
+
+         return true;
+      }
+   }
+
+   private boolean a(buk $$0) {
+      this.j = b(10 + this.e.dV().a(5));
+      erd $$1 = this.e.P().a($$0, 0);
+      if ($$1 == null) {
+         return false;
+      } else {
+         erb $$2 = $$1.d();
+         if ($$2 == null) {
+            return false;
+         } else {
+            int $$3 = $$2.a - $$0.dw();
+            int $$4 = $$2.c - $$0.dC();
+            return (double)($$3 * $$3 + $$4 * $$4) <= 2.25;
+         }
+      }
+   }
+
+   public cdh c(int $$0) {
+      this.h = $$0;
+      return this;
    }
 }

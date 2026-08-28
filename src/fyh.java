@@ -1,42 +1,98 @@
-public class fyh extends fxa<gsu> {
-   private final gab a;
-   private final gab b;
-   private final gab c;
+import java.util.Set;
 
-   public fyh(gab $$0) {
-      this.a = $$0;
-      this.b = $$0.b("left_blue_fin");
-      this.c = $$0.b("right_blue_fin");
+public class fyh extends fyu<gur> {
+   public static final gau a = new fwm(true, 23.0F, 4.8F, 2.7F, 3.0F, 49.0F, Set.of("head"));
+
+   public fyh(gal $$0) {
+      super($$0);
    }
 
-   public static gah b() {
-      gaj $$0 = new gaj();
-      gal $$1 = $$0.a();
-      int $$2 = 22;
-      $$1.a("body", gag.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), gad.a(0.0F, 22.0F, 0.0F));
-      $$1.a("right_blue_fin", gag.c().a(24, 0).a(-2.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), gad.a(-4.0F, 15.0F, -2.0F));
-      $$1.a("left_blue_fin", gag.c().a(24, 3).a(0.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), gad.a(4.0F, 15.0F, -2.0F));
-      $$1.a("top_front_fin", gag.c().a(15, 17).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), gad.a(0.0F, 14.0F, -4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("top_middle_fin", gag.c().a(14, 16).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 1.0F), gad.a(0.0F, 14.0F, 0.0F));
-      $$1.a("top_back_fin", gag.c().a(23, 18).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), gad.a(0.0F, 14.0F, 4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("right_front_fin", gag.c().a(5, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gad.a(-4.0F, 22.0F, -4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      $$1.a("left_front_fin", gag.c().a(1, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gad.a(4.0F, 22.0F, -4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("bottom_front_fin", gag.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gad.a(0.0F, 22.0F, -4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("bottom_middle_fin", gag.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gad.a(0.0F, 22.0F, 0.0F));
-      $$1.a("bottom_back_fin", gag.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), gad.a(0.0F, 22.0F, 4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
-      $$1.a("right_back_fin", gag.c().a(9, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gad.a(-4.0F, 22.0F, 4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
-      $$1.a("left_back_fin", gag.c().a(9, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), gad.a(4.0F, 22.0F, 4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
-      return gah.a($$0, 32, 32);
+   public static gar b() {
+      gat $$0 = new gat();
+      gav $$1 = $$0.a();
+      $$1.a(
+         "head",
+         gaq.c()
+            .a(0, 6)
+            .a(-6.5F, -5.0F, -4.0F, 13.0F, 10.0F, 9.0F)
+            .a(45, 16)
+            .a("nose", -3.5F, 0.0F, -6.0F, 7.0F, 5.0F, 2.0F)
+            .a(52, 25)
+            .a("left_ear", 3.5F, -8.0F, -1.0F, 5.0F, 4.0F, 1.0F)
+            .a(52, 25)
+            .a("right_ear", -8.5F, -8.0F, -1.0F, 5.0F, 4.0F, 1.0F),
+         gan.a(0.0F, 11.5F, -17.0F)
+      );
+      $$1.a("body", gaq.c().a(0, 25).a(-9.5F, -13.0F, -6.5F, 19.0F, 26.0F, 13.0F), gan.a(0.0F, 10.0F, 0.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      int $$2 = 9;
+      int $$3 = 6;
+      gaq $$4 = gaq.c().a(40, 0).a(-3.0F, 0.0F, -3.0F, 6.0F, 9.0F, 6.0F);
+      $$1.a("right_hind_leg", $$4, gan.a(-5.5F, 15.0F, 9.0F));
+      $$1.a("left_hind_leg", $$4, gan.a(5.5F, 15.0F, 9.0F));
+      $$1.a("right_front_leg", $$4, gan.a(-5.5F, 15.0F, -9.0F));
+      $$1.a("left_front_leg", $$4, gan.a(5.5F, 15.0F, -9.0F));
+      return gar.a($$0, 64, 64);
    }
 
-   @Override
-   public gab a() {
-      return this.a;
-   }
+   public void a(gur $$0) {
+      super.a($$0);
+      if ($$0.b) {
+         this.c.f = 0.35F * azd.a(0.6F * $$0.p);
+         this.c.g = 0.35F * azd.a(0.6F * $$0.p);
+         this.g.e = -0.75F * azd.a(0.3F * $$0.p);
+         this.i.e = 0.75F * azd.a(0.3F * $$0.p);
+      } else {
+         this.c.g = 0.0F;
+      }
 
-   @Override
-   public void a(gsu $$0) {
-      this.c.g = -0.2F + 0.4F * azc.a($$0.p * 0.2F);
-      this.b.g = 0.2F - 0.4F * azc.a($$0.p * 0.2F);
+      if ($$0.c) {
+         if ($$0.d < 15) {
+            this.c.e = (float) (-Math.PI / 4) * (float)$$0.d / 14.0F;
+         } else if ($$0.d < 20) {
+            float $$1 = (float)(($$0.d - 15) / 5);
+            this.c.e = (float) (-Math.PI / 4) + (float) (Math.PI / 4) * $$1;
+         }
+      }
+
+      if ($$0.h > 0.0F) {
+         this.d.e = azd.j($$0.h, this.d.e, 1.7407963F);
+         this.c.e = azd.j($$0.h, this.c.e, (float) (Math.PI / 2));
+         this.g.g = -0.27079642F;
+         this.i.g = 0.27079642F;
+         this.e.g = 0.5707964F;
+         this.f.g = -0.5707964F;
+         if ($$0.e) {
+            this.c.e = (float) (Math.PI / 2) + 0.2F * azd.a($$0.p * 0.6F);
+            this.g.e = -0.4F - 0.2F * azd.a($$0.p * 0.6F);
+            this.i.e = -0.4F - 0.2F * azd.a($$0.p * 0.6F);
+         }
+
+         if ($$0.f) {
+            this.c.e = 2.1707964F;
+            this.g.e = -0.9F;
+            this.i.e = -0.9F;
+         }
+      } else {
+         this.e.g = 0.0F;
+         this.f.g = 0.0F;
+         this.g.g = 0.0F;
+         this.i.g = 0.0F;
+      }
+
+      if ($$0.i > 0.0F) {
+         this.e.e = -0.6F * azd.a($$0.p * 0.15F);
+         this.f.e = 0.6F * azd.a($$0.p * 0.15F);
+         this.g.e = 0.3F * azd.a($$0.p * 0.25F);
+         this.i.e = -0.3F * azd.a($$0.p * 0.25F);
+         this.c.e = azd.j($$0.i, this.c.e, (float) (Math.PI / 2));
+      }
+
+      if ($$0.j > 0.0F) {
+         this.c.e = azd.j($$0.j, this.c.e, 2.0561945F);
+         this.e.e = -0.5F * azd.a($$0.p * 0.5F);
+         this.f.e = 0.5F * azd.a($$0.p * 0.5F);
+         this.g.e = 0.5F * azd.a($$0.p * 0.5F);
+         this.i.e = -0.5F * azd.a($$0.p * 0.5F);
+      }
    }
 }

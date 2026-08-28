@@ -1,5 +1,3 @@
-public interface haf extends hae {
-   boolean m();
-
-   void q();
+public interface haf {
+   void a();
 }

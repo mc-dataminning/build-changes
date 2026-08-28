@@ -1,65 +1,67 @@
-import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import com.mojang.brigadier.suggestion.Suggestions;
-import com.mojang.brigadier.suggestion.SuggestionsBuilder;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public record bni<T>(bna<StringReader> a, bmy<T> b) {
-   public Optional<T> a(bnd<StringReader> $$0) {
-      return $$0.a(this.b);
+public abstract class bni<S> {
+   private final Map<bni.b<?>, bni.a<?>> a = new HashMap<>();
+   private final bnf<S> b;
+   private final bng<S> c;
+
+   protected bni(bnf<S> $$0, bng<S> $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public T a(StringReader $$0) throws CommandSyntaxException {
-      bnb.a<StringReader> $$1 = new bnb.a<>();
-      bnm $$2 = new bnm(this.a(), $$1, $$0);
-      Optional<T> $$3 = this.a($$2);
-      if ($$3.isPresent()) {
-         return $$3.get();
+   public bng<S> a() {
+      return this.c;
+   }
+
+   public <T> Optional<T> a(bnd<T> $$0) {
+      Optional<T> $$1 = this.b($$0);
+      if ($$1.isPresent()) {
+         this.c.a(this.c());
+      }
+
+      return $$1;
+   }
+
+   public <T> Optional<T> b(bnd<T> $$0) {
+      bni.b<T> $$1 = new bni.b<>($$0, this.c());
+      bni.a<T> $$2 = this.a($$1);
+      if ($$2 != null) {
+         this.a($$2.b());
+         return $$2.a;
       } else {
-         List<Exception> $$4 = $$1.a().stream().<Exception>mapMulti(($$0x, $$1x) -> {
-            if ($$0x.c() instanceof Exception $$3x) {
-               $$1x.accept($$3x);
-            }
-         }).toList();
-
-         for (Exception $$5 : $$4) {
-            if ($$5 instanceof CommandSyntaxException $$6) {
-               throw $$6;
-            }
-         }
-
-         if ($$4.size() == 1 && $$4.get(0) instanceof RuntimeException $$7) {
-            throw $$7;
+         bnj<S, T> $$3 = this.b.a($$0);
+         if ($$3 == null) {
+            throw new IllegalStateException("No symbol " + $$0);
          } else {
-            throw new IllegalStateException("Failed to parse: " + $$1.a().stream().map(bnc::toString).collect(Collectors.joining(", ")));
+            Optional<T> $$4 = $$3.a(this);
+            this.a($$1, $$4);
+            return $$4;
          }
       }
    }
 
-   public CompletableFuture<Suggestions> a(SuggestionsBuilder $$0) {
-      StringReader $$1 = new StringReader($$0.getInput());
-      $$1.setCursor($$0.getStart());
-      bnb.a<StringReader> $$2 = new bnb.a<>();
-      bnm $$3 = new bnm(this.a(), $$2, $$1);
-      this.a($$3);
-      List<bnc<StringReader>> $$4 = $$2.a();
-      if ($$4.isEmpty()) {
-         return $$0.buildFuture();
-      } else {
-         SuggestionsBuilder $$5 = $$0.createOffset($$2.b());
+   @Nullable
+   private <T> bni.a<T> a(bni.b<T> $$0) {
+      return (bni.a<T>)this.a.get($$0);
+   }
 
-         for (bnc<StringReader> $$6 : $$4) {
-            if ($$6.b() instanceof bnl $$7) {
-               ey.a($$7.a(), $$5);
-            } else {
-               ey.b($$6.b().possibleValues($$3), $$5);
-            }
-         }
+   private <T> void a(bni.b<T> $$0, Optional<T> $$1) {
+      this.a.put($$0, new bni.a<>($$1, this.c()));
+   }
 
-         return $$5.buildFuture();
-      }
+   public abstract S b();
+
+   public abstract int c();
+
+   public abstract void a(int var1);
+
+   static record a<T>(Optional<T> a, int b) {
+   }
+
+   static record b<T>(bnd<T> a, int b) {
    }
 }

@@ -1,59 +1,25 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class ecf extends edc<efq> {
-   private static final dua a = dgx.mZ.o().b(dfz.h, Integer.valueOf(1)).b(dfz.i, dum.a).b(dfz.j, Integer.valueOf(0));
-   private static final dua b = a.b(dfz.i, dum.c).b(dfz.j, Integer.valueOf(1));
-   private static final dua c = a.b(dfz.i, dum.c);
-   private static final dua d = a.b(dfz.i, dum.b);
+public class ecf implements ebr {
+   public static final MapCodec<ecf> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ki.v(16).optionalFieldOf("offset", ki.g).forGetter($$0x -> $$0x.e), duo.a.fieldOf("state").forGetter($$0x -> $$0x.f))
+            .apply($$0, ecf::new)
+   );
+   private final ki e;
+   private final duo f;
 
-   public ecf(Codec<efq> $$0) {
-      super($$0);
+   protected ecf(ki $$0, duo $$1) {
+      this.e = $$0;
+      this.f = $$1;
+   }
+
+   public boolean a(dfd $$0, je $$1) {
+      return this.f.a($$0, $$1.a(this.e));
    }
 
    @Override
-   public boolean a(ede<efq> $$0) {
-      int $$1 = 0;
-      je $$2 = $$0.e();
-      dep $$3 = $$0.b();
-      azk $$4 = $$0.d();
-      efq $$5 = $$0.f();
-      je.a $$6 = $$2.k();
-      je.a $$7 = $$2.k();
-      if ($$3.u($$6)) {
-         if (dgx.mZ.o().a($$3, $$6)) {
-            int $$8 = $$4.a(12) + 5;
-            if ($$4.i() < $$5.l) {
-               int $$9 = $$4.a(4) + 1;
-
-               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
-                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
-                     int $$12 = $$10 - $$2.u();
-                     int $$13 = $$11 - $$2.w();
-                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-                        $$7.d($$10, $$3.a(dzw.a.b, $$10, $$11) - 1, $$11);
-                        if (b($$3.a_($$7))) {
-                           $$3.a($$7, dgx.l.o(), 2);
-                        }
-                     }
-                  }
-               }
-            }
-
-            for (int $$14 = 0; $$14 < $$8 && $$3.u($$6); $$14++) {
-               $$3.a($$6, a, 2);
-               $$6.c(jj.b, 1);
-            }
-
-            if ($$6.v() - $$2.v() >= 3) {
-               $$3.a($$6, b, 2);
-               $$3.a($$6.c(jj.a, 1), c, 2);
-               $$3.a($$6.c(jj.a, 1), d, 2);
-            }
-         }
-
-         $$1++;
-      }
-
-      return $$1 > 0;
+   public ebs<?> a() {
+      return ebs.g;
    }
 }

@@ -1,214 +1,160 @@
-import com.google.common.collect.Lists;
-import java.util.List;
+import com.mojang.datafixers.util.Pair;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class cst extends cqq {
-   public static final int m = 0;
-   public static final int n = 1;
-   private static final int r = 2;
-   private static final int s = 29;
-   private static final int t = 29;
-   private static final int u = 38;
-   private final crd v;
-   private final crk w = crk.a();
-   private final dds x;
-   private List<czv<daq>> y = Lists.newArrayList();
-   private cvl z = cvl.k;
-   long A;
-   final csn o;
-   final csn p;
-   Runnable B = () -> {
-   };
-   public final brd q = new brr(1) {
-      @Override
-      public void e() {
-         super.e();
-         cst.this.a(this);
-         cst.this.B.run();
+public class cst {
+   private final int a;
+   public final bri c;
+   public int d;
+   public final int e;
+   public final int f;
+
+   public cst(bri $$0, int $$1, int $$2, int $$3) {
+      this.c = $$0;
+      this.a = $$1;
+      this.e = $$2;
+      this.f = $$3;
+   }
+
+   public void b(cvp $$0, cvp $$1) {
+      int $$2 = $$1.J() - $$0.J();
+      if ($$2 > 0) {
+         this.a($$1, $$2);
       }
-   };
-   final csi C = new csi();
-
-   public cst(int $$0, cno $$1) {
-      this($$0, $$1, crd.a);
    }
 
-   public cst(int $$0, cno $$1, final crd $$2) {
-      super(crz.y, $$0);
-      this.v = $$2;
-      this.x = $$1.k.dS();
-      this.o = this.a(new csn(this.q, 0, 20, 33));
-      this.p = this.a(new csn(this.C, 1, 143, 33) {
-         @Override
-         public boolean a(cvl $$0) {
-            return false;
-         }
-
-         @Override
-         public void a(cnp $$0, cvl $$1) {
-            $$1.a($$0.dS(), $$0, $$1.J());
-            cst.this.C.a($$0, this.j());
-            cvl $$2 = cst.this.o.a(1);
-            if (!$$2.f()) {
-               cst.this.p();
-            }
-
-            $$2.a(($$0x, $$1x) -> {
-               long $$2xxx = $$0x.aa();
-               if (cst.this.A != $$2xxx) {
-                  $$0x.a(null, $$1x, awd.AB, awe.e, 1.0F, 1.0F);
-                  cst.this.A = $$2xxx;
-               }
-            });
-            super.a($$0, $$1);
-         }
-
-         private List<cvl> j() {
-            return List.of(cst.this.o.g());
-         }
-      });
-      this.c($$1, 8, 84);
-      this.a(this.w);
+   protected void a(cvp $$0, int $$1) {
    }
 
-   public int l() {
-      return this.w.b();
+   protected void b(int $$0) {
    }
 
-   public List<czv<daq>> m() {
-      return this.y;
+   protected void b_(cvp $$0) {
    }
 
-   public int n() {
-      return this.y.size();
+   public void a(cnu $$0, cvp $$1) {
+      this.c();
    }
 
-   public boolean o() {
-      return this.o.h() && !this.y.isEmpty();
-   }
-
-   @Override
-   public boolean b(cnp $$0) {
-      return a(this.v, $$0, dgx.oc);
-   }
-
-   @Override
-   public boolean a(cnp $$0, int $$1) {
-      if (this.e($$1)) {
-         this.w.a($$1);
-         this.p();
-      }
-
+   public boolean a(cvp $$0) {
       return true;
    }
 
-   private boolean e(int $$0) {
-      return $$0 >= 0 && $$0 < this.y.size();
+   public cvp g() {
+      return this.c.a(this.a);
    }
 
-   @Override
-   public void a(brd $$0) {
-      cvl $$1 = this.o.g();
-      if (!$$1.a(this.z.h())) {
-         this.z = $$1.u();
-         this.a($$0, $$1);
-      }
+   public boolean h() {
+      return !this.g().f();
    }
 
-   private static daj c(brd $$0) {
-      return new daj($$0.a(0));
+   public void e(cvp $$0) {
+      this.a($$0, this.g());
    }
 
-   private void a(brd $$0, cvl $$1) {
-      this.y.clear();
-      this.w.a(-1);
-      this.p.f(cvl.k);
-      if (!$$1.f()) {
-         this.y = this.x.r().b(czz.f, c($$0), this.x);
-      }
+   public void a(cvp $$0, cvp $$1) {
+      this.f($$0);
    }
 
-   void p() {
-      if (!this.y.isEmpty() && this.e(this.w.b())) {
-         czv<daq> $$0 = this.y.get(this.w.b());
-         cvl $$1 = $$0.b().a(c(this.q), this.x.F_());
-         if ($$1.a(this.x.J())) {
-            this.C.a($$0);
-            this.p.f($$1);
+   public void f(cvp $$0) {
+      this.c.a(this.a, $$0);
+      this.c();
+   }
+
+   public void c() {
+      this.c.e();
+   }
+
+   public int a() {
+      return this.c.ak_();
+   }
+
+   public int a_(cvp $$0) {
+      return Math.min(this.a(), $$0.k());
+   }
+
+   @Nullable
+   public Pair<alc, alc> b() {
+      return null;
+   }
+
+   public cvp a(int $$0) {
+      return this.c.a(this.a, $$0);
+   }
+
+   public boolean a(cnu $$0) {
+      return true;
+   }
+
+   public boolean d() {
+      return true;
+   }
+
+   public Optional<cvp> a(int $$0, int $$1, cnu $$2) {
+      if (!this.a($$2)) {
+         return Optional.empty();
+      } else if (!this.b($$2) && $$1 < this.g().J()) {
+         return Optional.empty();
+      } else {
+         $$0 = Math.min($$0, $$1);
+         cvp $$3 = this.a($$0);
+         if ($$3.f()) {
+            return Optional.empty();
          } else {
-            this.p.f(cvl.k);
+            if (this.g().f()) {
+               this.a(cvp.k, $$3);
+            }
+
+            return Optional.of($$3);
+         }
+      }
+   }
+
+   public cvp b(int $$0, int $$1, cnu $$2) {
+      Optional<cvp> $$3 = this.a($$0, $$1, $$2);
+      $$3.ifPresent($$1x -> this.a($$2, $$1x));
+      return $$3.orElse(cvp.k);
+   }
+
+   public cvp d(cvp $$0) {
+      return this.b($$0, $$0.J());
+   }
+
+   public cvp b(cvp $$0, int $$1) {
+      if (!$$0.f() && this.a($$0)) {
+         cvp $$2 = this.g();
+         int $$3 = Math.min(Math.min($$1, $$0.J()), this.a_($$0) - $$2.J());
+         if ($$3 <= 0) {
+            return $$0;
+         } else {
+            if ($$2.f()) {
+               this.e($$0.a($$3));
+            } else if (cvp.c($$2, $$0)) {
+               $$0.h($$3);
+               $$2.g($$3);
+               this.e($$2);
+            }
+
+            return $$0;
          }
       } else {
-         this.p.f(cvl.k);
+         return $$0;
       }
-
-      this.d();
    }
 
-   @Override
-   public crz<?> a() {
-      return crz.y;
+   public boolean b(cnu $$0) {
+      return this.a($$0) && this.a(this.g());
    }
 
-   public void a(Runnable $$0) {
-      this.B = $$0;
+   public int i() {
+      return this.a;
    }
 
-   @Override
-   public boolean a(cvl $$0, csn $$1) {
-      return $$1.c != this.C && super.a($$0, $$1);
+   public boolean e() {
+      return true;
    }
 
-   @Override
-   public cvl b(cnp $$0, int $$1) {
-      cvl $$2 = cvl.k;
-      csn $$3 = this.k.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cvl $$4 = $$3.g();
-         cvg $$5 = $$4.h();
-         $$2 = $$4.u();
-         if ($$1 == 1) {
-            $$5.b($$4, $$0.dS(), $$0);
-            if (!this.a($$4, 2, 38, true)) {
-               return cvl.k;
-            }
-
-            $$3.b($$4, $$2);
-         } else if ($$1 == 0) {
-            if (!this.a($$4, 2, 38, false)) {
-               return cvl.k;
-            }
-         } else if (this.x.r().a(czz.f, new daj($$4), this.x).isPresent()) {
-            if (!this.a($$4, 0, 1, false)) {
-               return cvl.k;
-            }
-         } else if ($$1 >= 2 && $$1 < 29) {
-            if (!this.a($$4, 29, 38, false)) {
-               return cvl.k;
-            }
-         } else if ($$1 >= 29 && $$1 < 38 && !this.a($$4, 2, 29, false)) {
-            return cvl.k;
-         }
-
-         if ($$4.f()) {
-            $$3.e(cvl.k);
-         }
-
-         $$3.c();
-         if ($$4.J() == $$2.J()) {
-            return cvl.k;
-         }
-
-         $$3.a($$0, $$4);
-         this.d();
-      }
-
-      return $$2;
-   }
-
-   @Override
-   public void a(cnp $$0) {
-      super.a($$0);
-      this.C.b(1);
-      this.v.a(($$1, $$2) -> this.a($$0, this.q));
+   public boolean f() {
+      return false;
    }
 }

@@ -1,77 +1,84 @@
 import java.util.EnumSet;
-import java.util.List;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cao extends cbc {
-   private static final cev d = cev.b().a(8.0).d();
-   protected final cfv a;
-   private final Class<? extends cfv> e;
-   protected final dds b;
+public class cao<T extends buk> extends cbh {
+   protected final bus a;
+   private final double i;
+   private final double j;
    @Nullable
-   protected cfv c;
-   private int f;
-   private final double g;
+   protected T b;
+   protected final float c;
+   @Nullable
+   protected erd d;
+   protected final cdv e;
+   protected final Class<T> f;
+   protected final Predicate<buk> g;
+   protected final Predicate<buk> h;
+   private final cfa k;
 
-   public cao(cfv $$0, double $$1) {
-      this($$0, $$1, (Class<? extends cfv>)$$0.getClass());
+   public cao(bus $$0, Class<T> $$1, float $$2, double $$3, double $$4) {
+      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, btt.e::test);
    }
 
-   public cao(cfv $$0, double $$1, Class<? extends cfv> $$2) {
+   public cao(bus $$0, Class<T> $$1, Predicate<buk> $$2, float $$3, double $$4, double $$5, Predicate<buk> $$6) {
       this.a = $$0;
-      this.b = $$0.dS();
-      this.e = $$2;
-      this.g = $$1;
-      this.a(EnumSet.of(cbc.a.a, cbc.a.b));
+      this.f = $$1;
+      this.g = $$2;
+      this.c = $$3;
+      this.i = $$4;
+      this.j = $$5;
+      this.h = $$6;
+      this.e = $$0.P();
+      this.a(EnumSet.of(cbh.a.a));
+      this.k = cfa.a().a((double)$$3).a($$6.and($$2));
+   }
+
+   public cao(bus $$0, Class<T> $$1, float $$2, double $$3, double $$4, Predicate<buk> $$5) {
+      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, $$5);
    }
 
    @Override
    public boolean b() {
-      if (!this.a.gy()) {
+      this.b = this.a
+         .dS()
+         .a(this.a.dS().a(this.f, this.a.cO().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.dx(), this.a.dz(), this.a.dD());
+      if (this.b == null) {
          return false;
       } else {
-         this.c = this.h();
-         return this.c != null;
+         eys $$0 = cfe.a(this.a, 16, 7, this.b.dq());
+         if ($$0 == null) {
+            return false;
+         } else if (this.b.i($$0.d, $$0.e, $$0.f) < this.b.g(this.a)) {
+            return false;
+         } else {
+            this.d = this.e.a($$0.d, $$0.e, $$0.f, 0);
+            return this.d != null;
+         }
       }
    }
 
    @Override
    public boolean c() {
-      return this.c.bI() && this.c.gy() && this.f < 60 && !this.c.gl();
+      return !this.e.m();
+   }
+
+   @Override
+   public void d() {
+      this.e.a(this.d, this.i);
    }
 
    @Override
    public void e() {
-      this.c = null;
-      this.f = 0;
+      this.b = null;
    }
 
    @Override
    public void a() {
-      this.a.K().a(this.c, 10.0F, (float)this.a.ae());
-      this.a.P().a(this.c, this.g);
-      this.f++;
-      if (this.f >= this.a(60) && this.a.g(this.c) < 9.0) {
-         this.g();
+      if (this.a.g((bto)this.b) < 49.0) {
+         this.a.P().a(this.j);
+      } else {
+         this.a.P().a(this.i);
       }
-   }
-
-   @Nullable
-   private cfv h() {
-      List<? extends cfv> $$0 = this.b.a(this.e, d, this.a, this.a.cO().g(8.0));
-      double $$1 = Double.MAX_VALUE;
-      cfv $$2 = null;
-
-      for (cfv $$3 : $$0) {
-         if (this.a.a($$3) && !$$3.gl() && this.a.g($$3) < $$1) {
-            $$2 = $$3;
-            $$1 = this.a.g($$3);
-         }
-      }
-
-      return $$2;
-   }
-
-   protected void g() {
-      this.a.a((arg)this.b, this.c);
    }
 }

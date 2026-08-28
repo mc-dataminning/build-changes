@@ -8,8 +8,8 @@ public class da extends dv<da.a> {
       return da.a.a;
    }
 
-   public void a(arh $$0, btj $$1, bsb $$2) {
-      est $$3 = bv.b($$0, $$1);
+   public void a(ari $$0, bto $$1, bsg $$2) {
+      eth $$3 = bv.b($$0, $$1);
       this.a($$0, $$3x -> $$3x.a($$0, $$3, $$2));
    }
 
@@ -83,7 +83,7 @@ public class da extends dv<da.a> {
          return an.d.a(new da.a(Optional.empty(), Optional.of(bv.a($$0)), Optional.of($$1.b())));
       }
 
-      public boolean a(arh $$0, est $$1, bsb $$2) {
+      public boolean a(ari $$0, eth $$1, bsg $$2) {
          return this.d.isPresent() && !this.d.get().a($$0, $$2) ? false : this.c.isEmpty() || this.c.get().a($$1);
       }
 

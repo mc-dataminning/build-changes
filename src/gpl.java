@@ -1,18 +1,15 @@
-public class gpl extends glj<chz, gsv, fvr<gsv>> {
-   private static final alb a = alb.b("textures/entity/horse/horse_zombie.png");
-   private static final alb b = alb.b("textures/entity/horse/horse_skeleton.png");
-   private final alb k;
+public class gpl extends gmc<cli, gvg> {
+   private static final alc a = alc.b("textures/entity/skeleton/skeleton.png");
 
-   public gpl(gms.a $$0, fzz $$1, fzz $$2, boolean $$3) {
-      super($$0, new fxl($$0.a($$1)), new fxl($$0.a($$2)), 1.0F);
-      this.k = $$3 ? b : a;
+   public gpl(gnj.a $$0) {
+      super($$0, gak.cm, gak.cp, gak.cq);
    }
 
-   public alb a(gsv $$0) {
-      return this.k;
+   public alc b(gvg $$0) {
+      return a;
    }
 
-   public gsv c() {
-      return new gsv();
+   public gvg c() {
+      return new gvg();
    }
 }

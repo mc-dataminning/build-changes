@@ -1,75 +1,109 @@
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class dkg extends don implements dgy {
+public class dkg extends dhj {
    public static final MapCodec<dkg> a = b(dkg::new);
+   public static final dvo b = dve.aQ;
+   protected static final ezm c = dhj.a(0.0, 0.0, 0.0, 16.0, 15.0, 16.0);
+   public static final int d = 7;
 
    @Override
    public MapCodec<dkg> a() {
       return a;
    }
 
-   public dkg(dtz.d $$0) {
+   protected dkg(dun.d $$0) {
       super($$0);
+      this.l(this.F.b().b(b, Integer.valueOf(0)));
    }
 
    @Override
-   public boolean b(ddv $$0, je $$1, dua $$2) {
-      return $$0.a_($$1.d()).l();
+   protected duo a(duo $$0, jj $$1, duo $$2, deh $$3, je $$4, je $$5) {
+      if ($$1 == jj.b && !$$0.a($$3, $$4)) {
+         $$3.a($$4, this, 1);
+      }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public boolean a(dds $$0, azk $$1, je $$2, dua $$3) {
+   protected boolean a(duo $$0, dej $$1, je $$2) {
+      duo $$3 = $$1.a_($$2.d());
+      return !$$3.e() || $$3.b() instanceof dki || $$3.b() instanceof dug;
+   }
+
+   @Override
+   public duo a(czk $$0) {
+      return !this.o().a((dej)$$0.q(), $$0.a()) ? dhl.j.o() : super.a($$0);
+   }
+
+   @Override
+   protected boolean g_(duo $$0) {
       return true;
    }
 
    @Override
-   public void a(arg $$0, azk $$1, je $$2, dua $$3) {
-      je $$4 = $$2.d();
-      dua $$5 = dgx.bt.o();
-      Optional<jn.c<ejs>> $$6 = $$0.F_().d(lv.aQ).b(sl.n);
+   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
+      return c;
+   }
 
-      label49:
-      for (int $$7 = 0; $$7 < 128; $$7++) {
-         je $$8 = $$4;
-
-         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
-            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
-            if (!$$0.a_($$8.e()).a(this) || $$0.a_($$8).m($$0, $$8)) {
-               continue label49;
-            }
-         }
-
-         dua $$10 = $$0.a_($$8);
-         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
-            ((dgy)$$5.b()).a($$0, $$1, $$8, $$10);
-         }
-
-         if ($$10.l()) {
-            jn<ejs> $$12;
-            if ($$1.a(8) == 0) {
-               List<eco<?, ?>> $$11 = $$0.t($$8).a().d().b();
-               if ($$11.isEmpty()) {
-                  continue;
-               }
-
-               $$12 = ((eft)$$11.get(0).c()).d();
-            } else {
-               if (!$$6.isPresent()) {
-                  continue;
-               }
-
-               $$12 = $$6.get();
-            }
-
-            $$12.a().a($$0, $$0.l().g(), $$1, $$8);
-         }
+   @Override
+   protected void a(duo $$0, arh $$1, je $$2, azl $$3) {
+      if (!$$0.a($$1, $$2)) {
+         a(null, $$0, $$1, $$2);
       }
    }
 
    @Override
-   public dgy.a at_() {
-      return dgy.a.a;
+   protected void b(duo $$0, arh $$1, je $$2, azl $$3) {
+      int $$4 = $$0.c(b);
+      if (!a((dej)$$1, $$2) && !$$1.r($$2.d())) {
+         if ($$4 > 0) {
+            $$1.a($$2, $$0.b(b, Integer.valueOf($$4 - 1)), 2);
+         } else if (!a((ddl)$$1, $$2)) {
+            a(null, $$0, $$1, $$2);
+         }
+      } else if ($$4 < 7) {
+         $$1.a($$2, $$0.b(b, Integer.valueOf(7)), 2);
+      }
+   }
+
+   @Override
+   public void a(deg $$0, duo $$1, je $$2, bto $$3, float $$4) {
+      if (!$$0.B && $$0.z.i() < $$4 - 0.5F && $$3 instanceof buk && ($$3 instanceof cnu || $$0.ac().b(dec.c)) && $$3.dn() * $$3.dn() * $$3.do() > 0.512F) {
+         a($$3, $$1, $$0, $$2);
+      }
+
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   public static void a(@Nullable bto $$0, duo $$1, deg $$2, je $$3) {
+      duo $$4 = a($$1, dhl.j.o(), $$2, $$3);
+      $$2.b($$3, $$4);
+      $$2.a(dzl.c, $$3, dzl.a.a($$0, $$4));
+   }
+
+   private static boolean a(ddl $$0, je $$1) {
+      return $$0.a_($$1.d()).a(awt.cy);
+   }
+
+   private static boolean a(dej $$0, je $$1) {
+      for (je $$2 : je.c($$1.b(-4, 0, -4), $$1.b(4, 1, 4))) {
+         if ($$0.b_($$2).a(awz.a)) {
+            return true;
+         }
+      }
+
+      return false;
+   }
+
+   @Override
+   protected void a(dup.a<dhj, duo> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   protected boolean a(duo $$0, ere $$1) {
+      return false;
    }
 }

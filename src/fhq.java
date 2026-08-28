@@ -1,38 +1,52 @@
-import java.util.function.Consumer;
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class fhq {
-   private final gay a;
-   private int b = -1;
-   @Nullable
-   private Consumer<uf> c;
+public class fhq extends fhj {
+   private static final Logger b = LogUtils.getLogger();
+   private static final xd c = xd.c("mco.minigame.world.starting.screen.title");
+   private final long d;
+   private final ffa e;
+   private final fft f;
 
-   public fhq(gay $$0) {
-      this.a = $$0;
+   public fhq(long $$0, ffa $$1, fft $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
-   public boolean a(int $$0, @Nullable uf $$1) {
-      if (this.b == $$0 && this.c != null) {
-         this.c.accept($$1);
-         this.c = null;
-         return true;
-      } else {
-         return false;
+   @Override
+   public void run() {
+      fdu $$0 = fdu.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            if ($$0.c(this.d, this.e.a)) {
+               a(this.f);
+               break;
+            }
+         } catch (ffg var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't start mini game!");
+            this.a(var5);
+         }
       }
    }
 
-   private int a(Consumer<uf> $$0) {
-      this.c = $$0;
-      return ++this.b;
-   }
-
-   public void a(int $$0, Consumer<uf> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new ahl($$2, $$0));
-   }
-
-   public void a(je $$0, Consumer<uf> $$1) {
-      int $$2 = this.a($$1);
-      this.a.b(new agt($$2, $$0));
+   @Override
+   public xd a() {
+      return c;
    }
 }

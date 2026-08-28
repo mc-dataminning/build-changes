@@ -1,58 +1,86 @@
-import com.mojang.datafixers.util.Unit;
-import com.mojang.serialization.Codec;
-import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class fsu extends fsw {
-   private static final xd a = xd.c("options.online.title");
+public class fsu extends fqd {
+   private static final int a = 310;
+   private static final int b = 25;
+   private static final xd c = xd.c("menu.server_links.title");
+   private final fqd d;
    @Nullable
-   private fie<Unit> u;
+   private fsu.a s;
+   final fny u = new fny(this);
+   final alu v;
 
-   public fsu(fpt $$0, fif $$1) {
-      super($$0, $$1, a);
+   public fsu(fqd $$0, alu $$1) {
+      super(c);
+      this.d = $$0;
+      this.v = $$1;
    }
 
    @Override
-   protected void aT_() {
-      super.aT_();
-      if (this.u != null) {
-         fjy $$0 = this.d.b(this.u);
-         if ($$0 != null) {
-            $$0.j = false;
-         }
-      }
-   }
-
-   private fie<?>[] a(fif $$0, fib $$1) {
-      List<fie<?>> $$2 = new ArrayList<>();
-      $$2.add($$0.V());
-      $$2.add($$0.W());
-      fie<Unit> $$3 = x.a(
-         $$1.s,
-         $$0x -> {
-            brh $$1x = $$0x.am();
-            return new fie<>(
-               "options.difficulty.online",
-               fie.a(),
-               ($$1xx, $$2x) -> $$1x.b(),
-               new fie.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
-               Unit.INSTANCE,
-               $$0xx -> {
-               }
-            );
-         }
-      );
-      if ($$3 != null) {
-         this.u = $$3;
-         $$2.add($$3);
-      }
-
-      return $$2.toArray(new fie[0]);
+   protected void aR_() {
+      this.u.a(this.l, this.p);
+      this.s = this.u.c(new fsu.a(this.m, this.n, this));
+      this.u.b(fkk.a(xc.k, $$0 -> this.d()).a(200).a());
+      this.u.a($$1 -> {
+         fki var10000 = this.c($$1);
+      });
+      this.c();
    }
 
    @Override
-   protected void m() {
-      this.d.a(this.a(this.c, this.m));
+   protected void c() {
+      this.u.a();
+      if (this.s != null) {
+         this.s.a(this.n, this.u);
+      }
+   }
+
+   @Override
+   public void d() {
+      this.m.a(this.d);
+   }
+
+   static class a extends fkq<fsu.b> {
+      public a(fil $$0, int $$1, fsu $$2) {
+         super($$0, $$1, $$2.u.d(), $$2.u.c(), 25);
+         $$2.v.c().forEach($$1x -> this.b(new fsu.b($$2, $$1x)));
+      }
+
+      @Override
+      public int b() {
+         return 310;
+      }
+
+      @Override
+      public void a(int $$0, fny $$1) {
+         super.a($$0, $$1);
+         int $$2 = $$0 / 2 - 155;
+         this.aI_().forEach($$1x -> $$1x.a.m($$2));
+      }
+   }
+
+   static class b extends fkq.a<fsu.b> {
+      final fki a;
+
+      b(fqd $$0, alu.a $$1) {
+         this.a = fkk.a($$1.a(), fpa.b($$0, $$1.c(), false)).a(310).a();
+      }
+
+      @Override
+      public void a(fjx $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
+         this.a.n($$2);
+         this.a.a($$0, $$6, $$7, $$9);
+      }
+
+      @Override
+      public List<? extends fmh> aI_() {
+         return List.of(this.a);
+      }
+
+      @Override
+      public List<? extends fof> b() {
+         return List.of(this.a);
+      }
    }
 }

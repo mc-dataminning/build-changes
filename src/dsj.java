@@ -1,3 +1,2 @@
-public interface dsj {
-   float a(float var1);
+public record dsj(alc a) {
 }

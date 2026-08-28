@@ -1,46 +1,58 @@
-import org.joml.Matrix4f;
+public class gjv implements gjr<drw> {
+   private final goh a;
 
-public class gjv<T extends dsx> implements gjc<T> {
-   public static final alb a = alb.b("textures/environment/end_sky.png");
-   public static final alb b = alb.b("textures/entity/end_portal.png");
-
-   public gjv(gjd.a $$0) {
+   public gjv(gjs.a $$0) {
+      this.a = $$0.d();
    }
 
-   public void a(T $$0, float $$1, fcu $$2, ggv $$3, int $$4, int $$5) {
-      Matrix4f $$6 = $$2.c().a();
-      this.a($$0, $$6, $$3.getBuffer(this.d()));
-   }
-
-   private void a(T $$0, Matrix4f $$1, fcy $$2) {
-      float $$3 = this.c();
-      float $$4 = this.b();
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, jj.d);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, jj.c);
-      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, jj.f);
-      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, jj.e);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, jj.a);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, jj.b);
-   }
-
-   private void a(T $$0, Matrix4f $$1, fcy $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, jj $$11) {
-      if ($$0.a($$11)) {
-         $$2.a($$1, $$3, $$5, $$7);
-         $$2.a($$1, $$4, $$5, $$8);
-         $$2.a($$1, $$4, $$6, $$9);
-         $$2.a($$1, $$3, $$6, $$10);
+   public void a(drw $$0, float $$1, fde $$2, ghg $$3, int $$4, int $$5) {
+      if ($$0.i() != null) {
+         int $$6 = $$0.m().c(dve.bv);
+         if ($$6 > 0) {
+            jj $$7 = $$0.d();
+            if ($$7 != null) {
+               cvp $$8 = $$0.f();
+               if (!$$8.f()) {
+                  $$2.a();
+                  $$2.a(0.0F, 0.5F, 0.0F);
+                  float[] $$9 = this.a($$7, $$6);
+                  $$2.a($$9[0], $$9[1], $$9[2]);
+                  $$2.a(a.d.rotationDegrees(75.0F));
+                  boolean $$10 = $$7 == jj.f || $$7 == jj.e;
+                  $$2.a(a.d.rotationDegrees((float)(($$10 ? 90 : 0) + 11)));
+                  $$2.b(0.5F, 0.5F, 0.5F);
+                  int $$11 = ghc.a($$0.i(), $$0.m(), $$0.aB_().a($$7));
+                  this.a.a($$8, cvm.i, $$11, gws.d, $$2, $$3, $$0.i(), 0);
+                  $$2.b();
+               }
+            }
+         }
       }
    }
 
-   protected float b() {
-      return 0.75F;
-   }
+   private float[] a(jj $$0, int $$1) {
+      float[] $$2 = new float[]{0.5F, 0.0F, 0.5F};
+      float $$3 = (float)$$1 / 10.0F * 0.75F;
+      switch ($$0) {
+         case f:
+            $$2[0] = 0.73F + $$3;
+            break;
+         case e:
+            $$2[0] = 0.25F - $$3;
+            break;
+         case b:
+            $$2[1] = 0.25F + $$3;
+            break;
+         case a:
+            $$2[1] = -0.23F - $$3;
+            break;
+         case c:
+            $$2[2] = 0.25F - $$3;
+            break;
+         case d:
+            $$2[2] = 0.73F + $$3;
+      }
 
-   protected float c() {
-      return 0.375F;
-   }
-
-   protected ghe d() {
-      return ghe.u();
+      return $$2;
    }
 }

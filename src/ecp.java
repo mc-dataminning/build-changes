@@ -1,57 +1,42 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.Codec;
-import java.util.List;
-import java.util.stream.Stream;
+import java.util.function.Function;
+import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public class ecp extends ecq {
-   public ecp(Codec<efn> $$0) {
+public class ecp extends ecn {
+   public ecp(Codec<ecm> $$0) {
       super($$0);
+      this.h = ImmutableSet.of(eqq.e, eqq.c);
    }
 
    @Override
-   protected boolean a(ddt $$0, azk $$1, je $$2, dua $$3) {
-      if (!this.b($$0, $$1, $$2, $$3)) {
-         return false;
-      } else {
-         jj $$4 = jj.c.a.a($$1);
-         int $$5 = $$1.a(2) + 2;
-         List<jj> $$6 = ad.a(Stream.of($$4, $$4.h(), $$4.i()), $$1);
+   protected int a() {
+      return 10;
+   }
 
-         for (jj $$8 : $$6.subList(0, $$5)) {
-            je.a $$9 = $$2.k();
-            int $$10 = $$1.a(2) + 1;
-            $$9.c($$8);
-            int $$12;
-            jj $$11;
-            if ($$8 == $$4) {
-               $$11 = $$4;
-               $$12 = $$1.a(3) + 2;
-            } else {
-               $$9.c(jj.b);
-               jj[] $$13 = new jj[]{$$8, jj.b};
-               $$11 = ad.a($$13, $$1);
-               $$12 = $$1.a(3) + 3;
-            }
+   @Override
+   protected float a(azl $$0) {
+      return ($$0.i() * 2.0F + $$0.i()) * 2.0F;
+   }
 
-            for (int $$16 = 0; $$16 < $$10 && this.b($$0, $$1, $$9, $$3); $$16++) {
-               $$9.c($$11);
-            }
+   @Override
+   protected double b() {
+      return 5.0;
+   }
 
-            $$9.c($$11.g());
-            $$9.c(jj.b);
-
-            for (int $$17 = 0; $$17 < $$12; $$17++) {
-               $$9.c($$4);
-               if (!this.b($$0, $$1, $$9, $$3)) {
-                  break;
-               }
-
-               if ($$1.i() < 0.25F) {
-                  $$9.c(jj.b);
-               }
-            }
+   protected boolean a(ecl $$0, ecm $$1, dwk $$2, Function<je, jn<dfh>> $$3, dwj $$4, je.a $$5, je.a $$6, dzw $$7, MutableBoolean $$8) {
+      if (this.a($$1, $$2.a_($$5))) {
+         duo $$9;
+         if ($$5.v() <= $$0.a() + 31) {
+            $$9 = g.g();
+         } else {
+            $$9 = e;
          }
 
+         $$2.a($$5, $$9, false);
          return true;
+      } else {
+         return false;
       }
    }
 }

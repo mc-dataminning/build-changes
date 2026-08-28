@@ -155,14 +155,14 @@ public class oh {
    }
 
    private static og a(String $$0, oj... $$1) {
-      return new og(Optional.of(alb.b("block/" + $$0)), Optional.empty(), $$1);
+      return new og(Optional.of(alc.b("block/" + $$0)), Optional.empty(), $$1);
    }
 
    private static og b(String $$0, oj... $$1) {
-      return new og(Optional.of(alb.b("item/" + $$0)), Optional.empty(), $$1);
+      return new og(Optional.of(alc.b("item/" + $$0)), Optional.empty(), $$1);
    }
 
    private static og a(String $$0, String $$1, oj... $$2) {
-      return new og(Optional.of(alb.b("block/" + $$0)), Optional.of($$1), $$2);
+      return new og(Optional.of(alc.b("block/" + $$0)), Optional.of($$1), $$2);
    }
 }

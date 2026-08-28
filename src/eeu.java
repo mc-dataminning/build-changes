@@ -1,52 +1,60 @@
 import com.mojang.serialization.Codec;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.function.Predicate;
 
-public class eeu extends eer {
-   public eeu(Codec<egf> $$0) {
+public class eeu extends edq<egl> {
+   public eeu(Codec<egl> $$0) {
       super($$0);
    }
 
    @Override
-   protected Set<je> a(dep $$0, egf $$1, azk $$2, je $$3, Predicate<dua> $$4, int $$5, int $$6) {
-      Set<je> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      Set<je> $$8 = new HashSet<>();
-      je.a $$9 = new je.a();
+   public boolean a(eds<egl> $$0) {
+      dfd $$1 = $$0.b();
+      je $$2 = $$0.e();
+      if (!this.a($$1, $$2)) {
+         return false;
+      } else {
+         egl $$3 = $$0.f();
+         azl $$4 = $$0.d();
+         dof $$5 = dof.b();
+         int $$6 = $$3.f() + $$3.d();
 
-      for (je $$10 : $$7) {
-         if (!a($$0, $$7, $$10, $$9)) {
-            $$8.add($$10);
+         for (int $$7 = 0; $$7 < $$6; $$7++) {
+            for (int $$8 = 0; $$8 < $$3.a(); $$8++) {
+               $$5.a($$2, $$3.b());
+            }
+
+            boolean $$9 = $$7 < $$3.f();
+
+            for (int $$10 = 0; $$10 < $$3.c(); $$10++) {
+               $$5.a($$1, $$2, $$4, $$9);
+            }
+
+            $$5.j();
          }
-      }
 
-      for (je $$11 : $$8) {
-         $$0.a($$11, dgx.G.o(), 2);
-      }
+         je $$11 = $$2.e();
+         if ($$4.i() <= $$3.h() && $$1.a_($$11).m($$1, $$11)) {
+            $$1.a($$2, dhl.qU.o(), 3);
+         }
 
-      return $$8;
-   }
+         int $$12 = $$3.g().a($$4);
 
-   private static boolean a(dep $$0, Set<je> $$1, je $$2, je.a $$3) {
-      return a($$0, $$2, $$3, jj.c) || a($$0, $$2, $$3, jj.f) || a($$0, $$2, $$3, jj.d) || a($$0, $$2, $$3, jj.e) || a($$0, $$2, $$3, jj.a);
-   }
-
-   private static boolean a(dep $$0, je $$1, je.a $$2, jj $$3) {
-      $$2.a($$1, $$3);
-      return !$$0.a_($$2).c($$0, $$2, $$3.g());
-   }
-
-   @Override
-   protected boolean a(dep $$0, egf $$1, dvx $$2, azk $$3, je $$4) {
-      if (super.a($$0, $$1, $$2, $$3, $$4.e())) {
-         dua $$5 = $$0.a_($$4);
-         if ($$5.b(duq.C) && !$$5.c(duq.C)) {
-            $$0.a($$4, $$5.b(duq.C, Boolean.valueOf(true)), 2);
+         for (int $$13 = 0; $$13 < $$12; $$13++) {
+            je $$14 = $$2.b($$4.a(5) - 2, 0, $$4.a(5) - 2);
+            if ($$1.a_($$14).l() && $$1.a_($$14.e()).c($$1, $$14.e(), jj.b)) {
+               $$1.a($$14, dhl.qV.o().b(doe.d, Boolean.valueOf(true)), 3);
+            }
          }
 
          return true;
+      }
+   }
+
+   private boolean a(deh $$0, je $$1) {
+      duo $$2 = $$0.a_($$1);
+      if ($$2.b() instanceof doa) {
+         return true;
       } else {
-         return false;
+         return !$$2.l() && (!$$2.a(dhl.G) || !$$2.y().b()) ? false : jj.a().map($$1::a).anyMatch($$1x -> $$0.a_($$1x).m($$0, $$1x));
       }
    }
 }

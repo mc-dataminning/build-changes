@@ -1,22 +1,52 @@
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Predicate;
 
-public class efi implements efg {
-   public static final Codec<efi> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ehh.a.fieldOf("cap_provider").forGetter($$0x -> $$0x.b),
-               ehh.a.fieldOf("stem_provider").forGetter($$0x -> $$0x.c),
-               Codec.INT.fieldOf("foliage_radius").orElse(2).forGetter($$0x -> $$0x.d)
-            )
-            .apply($$0, efi::new)
-   );
-   public final ehh b;
-   public final ehh c;
-   public final int d;
+public class efi extends eff {
+   public efi(Codec<egt> $$0) {
+      super($$0);
+   }
 
-   public efi(ehh $$0, ehh $$1, int $$2) {
-      this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
+   @Override
+   protected Set<je> a(dfd $$0, egt $$1, azl $$2, je $$3, Predicate<duo> $$4, int $$5, int $$6) {
+      Set<je> $$7 = super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      Set<je> $$8 = new HashSet<>();
+      je.a $$9 = new je.a();
+
+      for (je $$10 : $$7) {
+         if (!a($$0, $$7, $$10, $$9)) {
+            $$8.add($$10);
+         }
+      }
+
+      for (je $$11 : $$8) {
+         $$0.a($$11, dhl.G.o(), 2);
+      }
+
+      return $$8;
+   }
+
+   private static boolean a(dfd $$0, Set<je> $$1, je $$2, je.a $$3) {
+      return a($$0, $$2, $$3, jj.c) || a($$0, $$2, $$3, jj.f) || a($$0, $$2, $$3, jj.d) || a($$0, $$2, $$3, jj.e) || a($$0, $$2, $$3, jj.a);
+   }
+
+   private static boolean a(dfd $$0, je $$1, je.a $$2, jj $$3) {
+      $$2.a($$1, $$3);
+      return !$$0.a_($$2).c($$0, $$2, $$3.g());
+   }
+
+   @Override
+   protected boolean a(dfd $$0, egt $$1, dwl $$2, azl $$3, je $$4) {
+      if (super.a($$0, $$1, $$2, $$3, $$4.e())) {
+         duo $$5 = $$0.a_($$4);
+         if ($$5.b(dve.C) && !$$5.c(dve.C)) {
+            $$0.a($$4, $$5.b(dve.C, Boolean.valueOf(true)), 2);
+         }
+
+         return true;
+      } else {
+         return false;
+      }
    }
 }

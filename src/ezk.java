@@ -1,83 +1,24 @@
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Map;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.doubles.DoubleList;
 
-public abstract class ezk {
-   public boolean a(@Nullable ezk $$0) {
-      return $$0 == null ? false : this == $$0;
+public class ezk extends ezm {
+   private final ezm b;
+   private final jj.a c;
+   private static final DoubleList d = new eyy(1);
+
+   public ezk(ezm $$0, jj.a $$1, int $$2) {
+      super(a($$0.a, $$1, $$2));
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public abstract String b();
-
-   public abstract xr d(xd var1);
-
-   public abstract boolean i();
-
-   public abstract boolean h();
-
-   public abstract ezk.b j();
-
-   public abstract n n();
-
-   public abstract Collection<String> g();
-
-   public abstract ezk.b k();
-
-   public abstract ezk.a l();
-
-   public static enum a {
-      a("always", 0),
-      b("never", 1),
-      c("pushOtherTeams", 2),
-      d("pushOwnTeam", 3);
-
-      private static final Map<String, ezk.a> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (ezk.a)$$0));
-      public final String e;
-      public final int f;
-
-      @Nullable
-      public static ezk.a a(String $$0) {
-         return g.get($$0);
-      }
-
-      private a(final String $$0, final int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      public xd a() {
-         return xd.c("team.collision." + this.e);
-      }
+   private static ezb a(ezb $$0, jj.a $$1, int $$2) {
+      return new ezl(
+         $$0, $$1.a($$2, 0, 0), $$1.a(0, $$2, 0), $$1.a(0, 0, $$2), $$1.a($$2 + 1, $$0.a, $$0.a), $$1.a($$0.b, $$2 + 1, $$0.b), $$1.a($$0.c, $$0.c, $$2 + 1)
+      );
    }
 
-   public static enum b {
-      a("always", 0),
-      b("never", 1),
-      c("hideForOtherTeams", 2),
-      d("hideForOwnTeam", 3);
-
-      private static final Map<String, ezk.b> g = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.e, $$0 -> (ezk.b)$$0));
-      public final String e;
-      public final int f;
-
-      public static String[] a() {
-         return g.keySet().toArray(new String[0]);
-      }
-
-      @Nullable
-      public static ezk.b a(String $$0) {
-         return g.get($$0);
-      }
-
-      private b(final String $$0, final int $$1) {
-         this.e = $$0;
-         this.f = $$1;
-      }
-
-      public xd b() {
-         return xd.c("team.visibility." + this.e);
-      }
+   @Override
+   public DoubleList a(jj.a $$0) {
+      return $$0 == this.c ? d : this.b.a($$0);
    }
 }

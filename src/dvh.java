@@ -1,21 +1,20 @@
-public enum dvh implements azy {
-   a("inactive"),
-   b("active"),
-   c("cooldown");
+public enum dvh implements azz {
+   a("compare"),
+   b("subtract");
 
-   private final String d;
+   private final String c;
 
    private dvh(final String $$0) {
-      this.d = $$0;
+      this.c = $$0;
    }
 
    @Override
    public String toString() {
-      return this.d;
+      return this.c;
    }
 
    @Override
    public String c() {
-      return this.d;
+      return this.c;
    }
 }

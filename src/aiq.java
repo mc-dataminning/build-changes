@@ -2,7 +2,7 @@ import org.jetbrains.annotations.VisibleForTesting;
 
 public class aiq {
    private static final double a = 4096.0;
-   private eye b = eye.c;
+   private eys b = eys.c;
 
    @VisibleForTesting
    static long a(double $$0) {
@@ -14,38 +14,38 @@ public class aiq {
       return (double)$$0 / 4096.0;
    }
 
-   public eye a(long $$0, long $$1, long $$2) {
+   public eys a(long $$0, long $$1, long $$2) {
       if ($$0 == 0L && $$1 == 0L && $$2 == 0L) {
          return this.b;
       } else {
          double $$3 = $$0 == 0L ? this.b.d : a(a(this.b.d) + $$0);
          double $$4 = $$1 == 0L ? this.b.e : a(a(this.b.e) + $$1);
          double $$5 = $$2 == 0L ? this.b.f : a(a(this.b.f) + $$2);
-         return new eye($$3, $$4, $$5);
+         return new eys($$3, $$4, $$5);
       }
    }
 
-   public long a(eye $$0) {
+   public long a(eys $$0) {
       return a($$0.d) - a(this.b.d);
    }
 
-   public long b(eye $$0) {
+   public long b(eys $$0) {
       return a($$0.e) - a(this.b.e);
    }
 
-   public long c(eye $$0) {
+   public long c(eys $$0) {
       return a($$0.f) - a(this.b.f);
    }
 
-   public eye d(eye $$0) {
+   public eys d(eys $$0) {
       return $$0.d(this.b);
    }
 
-   public void e(eye $$0) {
+   public void e(eys $$0) {
       this.b = $$0;
    }
 
-   public eye a() {
+   public eys a() {
       return this.b;
    }
 }

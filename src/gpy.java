@@ -1,19 +1,42 @@
-public class gpy extends glm<clo, gvj, fzr<gvj>> {
-   public gpy(gms.a $$0) {
-      this($$0, gaa.dl, gaa.dr, gaa.dp, gaa.dq, gaa.ds, gaa.dt);
+public class gpy extends gmb<cqf, gun> {
+   private final gij b;
+
+   public gpy(gnj.a $$0) {
+      super($$0, gak.cI);
+      this.b = $$0.d();
    }
 
-   public gvj c() {
-      return new gvj();
+   protected void a(gun $$0, duo $$1, fde $$2, ghg $$3, int $$4) {
+      float $$5 = $$0.C;
+      if ($$5 > -1.0F && $$5 < 10.0F) {
+         float $$6 = 1.0F - $$5 / 10.0F;
+         $$6 = azd.a($$6, 0.0F, 1.0F);
+         $$6 *= $$6;
+         $$6 *= $$6;
+         float $$7 = 1.0F + $$6 * 0.3F;
+         $$2.b($$7, $$7, $$7);
+      }
+
+      a(this.b, $$1, $$2, $$3, $$4, $$5 > -1.0F && (int)$$5 / 5 % 2 == 0);
    }
 
-   @Override
-   public void a(clo $$0, gvj $$1, float $$2) {
+   public static void a(gij $$0, duo $$1, fde $$2, ghg $$3, int $$4, boolean $$5) {
+      int $$6;
+      if ($$5) {
+         $$6 = gws.a(gws.a(1.0F), 10);
+      } else {
+         $$6 = gws.d;
+      }
+
+      $$0.a($$1, $$2, $$3, $$4, $$6);
+   }
+
+   public gun a() {
+      return new gun();
+   }
+
+   public void a(cqf $$0, gun $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gf();
-   }
-
-   public gpy(gms.a $$0, fzz $$1, fzz $$2, fzz $$3, fzz $$4, fzz $$5, fzz $$6) {
-      super($$0, new fzr<>($$0.a($$1)), new fzr<>($$0.a($$2)), new fzr<>($$0.a($$3)), new fzr<>($$0.a($$4)), new fzr<>($$0.a($$5)), new fzr<>($$0.a($$6)));
+      $$1.C = $$0.G() > -1 ? (float)$$0.G() - $$2 + 1.0F : -1.0F;
    }
 }

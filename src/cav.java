@@ -1,70 +1,45 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+public class cav extends cbu {
+   private final cgd g;
 
-public class cav extends cbc {
-   protected final bun a;
-   private double b;
-   private double c;
-   private double d;
-   private final double e;
-   private final dds f;
-
-   public cav(bun $$0, double $$1) {
-      this.a = $$0;
-      this.e = $$1;
-      this.f = $$0.dS();
-      this.a(EnumSet.of(cbc.a.a));
+   public cav(cgd $$0, double $$1) {
+      super($$0, $$1, 8);
+      this.g = $$0;
    }
 
    @Override
    public boolean b() {
-      if (this.a.m() != null) {
-         return false;
-      } else if (!this.f.S()) {
-         return false;
-      } else if (!this.a.bV()) {
-         return false;
-      } else if (!this.f.h(this.a.ds())) {
-         return false;
-      } else {
-         return !this.a.a(btr.f).f() ? false : this.h();
-      }
-   }
-
-   protected boolean h() {
-      eye $$0 = this.i();
-      if ($$0 == null) {
-         return false;
-      } else {
-         this.b = $$0.d;
-         this.c = $$0.e;
-         this.d = $$0.f;
-         return true;
-      }
-   }
-
-   @Override
-   public boolean c() {
-      return !this.a.P().m();
+      return this.g.q() && !this.g.gp() && super.b();
    }
 
    @Override
    public void d() {
-      this.a.P().a(this.b, this.c, this.d, this.e);
+      super.d();
+      this.g.y(false);
    }
 
-   @Nullable
-   protected eye i() {
-      azk $$0 = this.a.dV();
-      je $$1 = this.a.ds();
+   @Override
+   public void e() {
+      super.e();
+      this.g.y(false);
+   }
 
-      for (int $$2 = 0; $$2 < 10; $$2++) {
-         je $$3 = $$1.b($$0.a(20) - 10, $$0.a(6) - 3, $$0.a(20) - 10);
-         if (!this.f.h($$3) && this.a.c($$3) < 0.0F) {
-            return eye.c($$3);
+   @Override
+   public void a() {
+      super.a();
+      this.g.y(this.m());
+   }
+
+   @Override
+   protected boolean a(dej $$0, je $$1) {
+      if (!$$0.u($$1.d())) {
+         return false;
+      } else {
+         duo $$2 = $$0.a_($$1);
+         if ($$2.a(dhl.cv)) {
+            return drz.a($$0, $$1) < 1;
+         } else {
+            return $$2.a(dhl.cD) && $$2.c(dkq.b) ? true : $$2.a(awt.S, $$0x -> $$0x.d(dhc.b).map($$0xx -> $$0xx != dvb.a).orElse(true));
          }
       }
-
-      return null;
    }
 }

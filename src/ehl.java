@@ -1,41 +1,50 @@
-import com.mojang.datafixers.Products.P4;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
-import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
-import java.util.List;
 
-public class ehl extends ehk {
-   public static final MapCodec<ehl> g = RecordCodecBuilder.mapCodec($$0 -> b($$0).apply($$0, ehl::new));
-   protected final List<dua> h;
+public class ehl extends ehg {
+   public static final MapCodec<ehl> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0)
+            .and(
+               $$0.group(
+                  bqu.b(1, 512).fieldOf("foliage_height").forGetter($$0x -> $$0x.b),
+                  Codec.intRange(0, 256).fieldOf("leaf_placement_attempts").forGetter($$0x -> $$0x.c)
+               )
+            )
+            .apply($$0, ehl::new)
+   );
+   private final bqu b;
+   private final int c;
 
-   protected static <P extends ehl> P4<Mu<P>, Long, epe.a, Float, List<dua>> b(Instance<P> $$0) {
-      return a($$0).and(Codec.list(dua.a).fieldOf("states").forGetter($$0x -> $$0x.h));
-   }
-
-   public ehl(long $$0, epe.a $$1, float $$2, List<dua> $$3) {
-      super($$0, $$1, $$2);
-      this.h = $$3;
+   public ehl(bqu $$0, bqu $$1, bqu $$2, int $$3) {
+      super($$0, $$1);
+      this.b = $$2;
+      this.c = $$3;
    }
 
    @Override
-   protected ehi<?> a() {
-      return ehi.d;
+   protected ehh<?> a() {
+      return ehh.j;
    }
 
    @Override
-   public dua a(azk $$0, je $$1) {
-      return this.a(this.h, $$1, (double)this.e);
+   protected void a(dem $$0, ehg.b $$1, azl $$2, egq $$3, int $$4, ehg.a $$5, int $$6, int $$7, int $$8) {
+      je $$9 = $$5.a();
+      je.a $$10 = $$9.k();
+
+      for (int $$11 = 0; $$11 < this.c; $$11++) {
+         $$10.a($$9, $$2.a($$7) - $$2.a($$7), $$2.a($$6) - $$2.a($$6), $$2.a($$7) - $$2.a($$7));
+         a($$0, $$1, $$2, $$3, $$10);
+      }
    }
 
-   protected dua a(List<dua> $$0, je $$1, double $$2) {
-      double $$3 = this.a($$1, $$2);
-      return this.a($$0, $$3);
+   @Override
+   public int a(azl $$0, int $$1, egq $$2) {
+      return this.b.a($$0);
    }
 
-   protected dua a(List<dua> $$0, double $$1) {
-      double $$2 = azc.a((1.0 + $$1) / 2.0, 0.0, 0.9999);
-      return $$0.get((int)($$2 * (double)$$0.size()));
+   @Override
+   protected boolean a(azl $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return false;
    }
 }

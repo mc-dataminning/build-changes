@@ -1,4 +1,4 @@
-public record abu(alb b) implements zk<abt> {
+public record abu(alc b) implements zk<abt> {
    public static final zb<wa, abu> a = zk.a(abu::a, abu::new);
 
    private abu(wa $$0) {

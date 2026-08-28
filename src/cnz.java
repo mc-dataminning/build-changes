@@ -1,62 +1,50 @@
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
 
-public class cnz extends cnx {
-   public static final float e = 4.0F;
+public class cnz {
+   private final cny<jn<cvk>> a = new cny<>();
 
-   public cnz(btq<? extends cnz> $$0, dds $$1) {
-      super($$0, $$1);
-   }
-
-   public cnz(dds $$0, buf $$1, eye $$2) {
-      super(btq.A, $$1, $$2, $$0);
-   }
-
-   @Override
-   protected void a(eyc $$0) {
-      super.a($$0);
-      if ($$0.c() != eyc.a.c || !this.e(((eyb)$$0).a())) {
-         if (!this.dS().B) {
-            List<buf> $$1 = this.dS().a(buf.class, this.cO().c(4.0, 2.0, 4.0));
-            bte $$2 = new bte(this.dS(), this.dx(), this.dz(), this.dD());
-            btj $$3 = this.s();
-            if ($$3 instanceof buf) {
-               $$2.a((buf)$$3);
-            }
-
-            $$2.a(ln.h);
-            $$2.a(3.0F);
-            $$2.a(600);
-            $$2.c((7.0F - $$2.g()) / (float)$$2.j());
-            $$2.a(new bsq(bss.g, 1, 1));
-            if (!$$1.isEmpty()) {
-               for (buf $$4 : $$1) {
-                  double $$5 = this.g($$4);
-                  if ($$5 < 16.0) {
-                     $$2.a_($$4.dx(), $$4.dz(), $$4.dD());
-                     break;
-                  }
-               }
-            }
-
-            this.dS().c(2006, this.ds(), this.ba() ? -1 : 1);
-            this.dS().b($$2);
-            this.as();
-         }
+   public void a(cvp $$0) {
+      if (cnt.d($$0)) {
+         this.b($$0);
       }
    }
 
-   @Override
-   public boolean a(bsb $$0, float $$1) {
-      return false;
+   public void b(cvp $$0) {
+      this.a($$0, $$0.k());
    }
 
-   @Override
-   protected ll q() {
-      return ln.h;
+   public void a(cvp $$0, int $$1) {
+      if (!$$0.f()) {
+         int $$2 = Math.min($$1, $$0.J());
+         this.a.a($$0.i(), $$2);
+      }
    }
 
-   @Override
-   protected boolean o() {
-      return false;
+   public static cny.a<jn<cvk>> a(Stream<jn<cvk>> $$0) {
+      List<jn<cvk>> $$1 = $$0.sorted(Comparator.comparingInt($$0x -> lu.g.a((cvk)$$0x.a()))).toList();
+      return new cny.a<>($$1);
+   }
+
+   public boolean a(dah<?> $$0, @Nullable cny.b<jn<cvk>> $$1) {
+      return this.a($$0, 1, $$1);
+   }
+
+   public boolean a(dah<?> $$0, int $$1, @Nullable cny.b<jn<cvk>> $$2) {
+      return this.a.a($$0.a().b(), $$1, $$2);
+   }
+
+   public int b(dah<?> $$0, @Nullable cny.b<jn<cvk>> $$1) {
+      return this.b($$0, Integer.MAX_VALUE, $$1);
+   }
+
+   public int b(dah<?> $$0, int $$1, @Nullable cny.b<jn<cvk>> $$2) {
+      return this.a.b($$0.a().b(), $$1, $$2);
+   }
+
+   public void a() {
+      this.a.a();
    }
 }

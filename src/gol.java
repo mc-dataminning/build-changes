@@ -1,40 +1,32 @@
-public class gol extends gny<cgo, guh, fxa<gsu>> {
-   private static final alb a = alb.b("textures/entity/fish/pufferfish.png");
-   private final fxa<gsu> b;
-   private final fxa<gsu> k;
-   private final fxa<gsu> l = this.e();
+public class gol extends gme<cih, guk, fyc> {
+   private static final alc a = alc.b("textures/entity/llama/creamy.png");
+   private static final alc b = alc.b("textures/entity/llama/white.png");
+   private static final alc k = alc.b("textures/entity/llama/brown.png");
+   private static final alc l = alc.b("textures/entity/llama/gray.png");
 
-   public gol(gms.a $$0) {
-      super($$0, new fyh($$0.a(gaa.bT)), 0.2F);
-      this.k = new fyi($$0.a(gaa.bU));
-      this.b = new fyj($$0.a(gaa.bV));
+   public gol(gnj.a $$0, gaj $$1, gaj $$2) {
+      super($$0, new fyc($$0.a($$1)), new fyc($$0.a($$2)), 0.7F);
+      this.a(new grq(this, $$0.f()));
    }
 
-   public alb a(guh $$0) {
-      return a;
-   }
-
-   public guh c() {
-      return new guh();
-   }
-
-   public void a(guh $$0, fcu $$1, ggv $$2, int $$3) {
-      this.h = switch ($$0.a) {
-         case 0 -> this.b;
-         case 1 -> this.k;
-         default -> this.l;
+   public alc a(guk $$0) {
+      return switch ($$0.a) {
+         case a -> a;
+         case b -> b;
+         case c -> k;
+         case d -> l;
       };
-      this.f = 0.1F + 0.1F * (float)$$0.a;
-      super.a($$0, $$1, $$2, $$3);
    }
 
-   public void a(cgo $$0, guh $$1, float $$2) {
+   public guk c() {
+      return new guk();
+   }
+
+   public void a(cih $$0, guk $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.a = $$0.gq();
-   }
-
-   protected void a(guh $$0, fcu $$1, float $$2, float $$3) {
-      $$1.a(0.0F, azc.b($$0.p * 0.05F) * 0.08F, 0.0F);
-      super.a($$0, $$1, $$2, $$3);
+      $$1.a = $$0.gC();
+      $$1.b = !$$0.o_() && $$0.t();
+      $$1.c = $$0.gD();
+      $$1.d = $$0.gs();
    }
 }

@@ -1,96 +1,140 @@
-import javax.annotation.Nullable;
+public abstract class fqr extends fqd {
+   private static final xd u = xd.c("advMode.setCommand");
+   private static final xd v = xd.c("advMode.command");
+   private static final xd w = xd.c("advMode.previousOutput");
+   protected fkt a;
+   protected fkt b;
+   protected fkk c;
+   protected fkk d;
+   protected fkr<Boolean> s;
+   fkn x;
 
-public class fqr extends fqi<cqy> {
-   private static final alb G = alb.b("container/cartography_table/error");
-   private static final alb H = alb.b("container/cartography_table/scaled_map");
-   private static final alb I = alb.b("container/cartography_table/duplicated_map");
-   private static final alb J = alb.b("container/cartography_table/map");
-   private static final alb K = alb.b("container/cartography_table/locked");
-   private static final alb L = alb.b("textures/gui/container/cartography_table.png");
-   private final gvt M = new gvt();
-
-   public fqr(cqy $$0, cno $$1, xd $$2) {
-      super($$0, $$1, $$2);
-      this.w -= 2;
+   public fqr() {
+      super(fic.a);
    }
 
    @Override
-   public void a(fjn $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   public void e() {
+      if (!this.m().j()) {
+         this.d();
+      }
    }
 
-   @Override
-   protected void a(fjn $$0, float $$1, int $$2, int $$3) {
-      int $$4 = this.C;
-      int $$5 = this.D;
-      $$0.a(ghe::C, L, $$4, $$5, 0.0F, 0.0F, this.s, this.u, 256, 256);
-      cvl $$6 = this.z.b(1).g();
-      boolean $$7 = $$6.a(cvo.ul);
-      boolean $$8 = $$6.a(cvo.qP);
-      boolean $$9 = $$6.a(cvo.fT);
-      cvl $$10 = this.z.b(0).g();
-      ert $$11 = $$10.a(kr.D);
-      boolean $$12 = false;
-      erv $$13;
-      if ($$11 != null) {
-         $$13 = cvx.a($$11, this.m.s);
-         if ($$13 != null) {
-            if ($$13.h) {
-               $$12 = true;
-               if ($$8 || $$9) {
-                  $$0.a(ghe::C, G, $$4 + 35, $$5 + 31, 28, 21);
-               }
-            }
+   abstract ddg m();
 
-            if ($$8 && $$13.f >= 4) {
-               $$12 = true;
-               $$0.a(ghe::C, G, $$4 + 35, $$5 + 31, 28, 21);
-            }
+   abstract int D();
+
+   @Override
+   protected void aR_() {
+      this.c = this.c(fkk.a(xc.d, $$0x -> this.E()).a(this.n / 2 - 4 - 150, this.o / 4 + 120 + 12, 150, 20).a());
+      this.d = this.c(fkk.a(xc.e, $$0x -> this.d()).a(this.n / 2 + 4, this.o / 4 + 120 + 12, 150, 20).a());
+      boolean $$0 = this.m().p();
+      this.s = this.c(fkr.a(xd.b("O"), xd.b("X")).a($$0).a().a(this.n / 2 + 150 - 20, this.D(), 20, 20, xd.c("advMode.trackOutput"), ($$0x, $$1) -> {
+         ddg $$2 = this.m();
+         $$2.a($$1);
+         this.c($$1);
+      }));
+      this.a = new fkt(this.p, this.n / 2 - 150, 50, 300, 20, xd.c("advMode.command")) {
+         @Override
+         protected xr aO_() {
+            return super.aO_().b(fqr.this.x.e());
          }
-      } else {
-         $$13 = null;
-      }
-
-      this.a($$0, $$11, $$13, $$7, $$8, $$9, $$12);
+      };
+      this.a.f(32500);
+      this.a.b(this::a);
+      this.d(this.a);
+      this.b = new fkt(this.p, this.n / 2 - 150, this.D(), 276, 20, xd.c("advMode.previousOutput"));
+      this.b.f(32500);
+      this.b.e(false);
+      this.b.a("-");
+      this.d(this.b);
+      this.x = new fkn(this.m, this, this.a, this.p, true, true, 0, 7, false, Integer.MIN_VALUE);
+      this.x.a(true);
+      this.x.d();
+      this.c($$0);
    }
 
-   private void a(fjn $$0, @Nullable ert $$1, @Nullable erv $$2, boolean $$3, boolean $$4, boolean $$5, boolean $$6) {
-      int $$7 = this.C;
-      int $$8 = this.D;
-      if ($$4 && !$$6) {
-         $$0.a(ghe::C, H, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 85, $$8 + 31, 0.226F);
-      } else if ($$3) {
-         $$0.a(ghe::C, I, $$7 + 67 + 16, $$8 + 13, 50, 66);
-         this.a($$0, $$1, $$2, $$7 + 86, $$8 + 16, 0.34F);
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 1.0F);
-         $$0.a(ghe::C, I, $$7 + 67, $$8 + 13 + 16, 50, 66);
-         this.a($$0, $$1, $$2, $$7 + 70, $$8 + 32, 0.34F);
-         $$0.c().b();
-      } else if ($$5) {
-         $$0.a(ghe::C, J, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
-         $$0.c().a();
-         $$0.c().a(0.0F, 0.0F, 1.0F);
-         $$0.a(ghe::C, K, $$7 + 118, $$8 + 60, 10, 14);
-         $$0.c().b();
+   @Override
+   protected void aG_() {
+      this.b(this.a);
+   }
+
+   @Override
+   protected xd A() {
+      return this.x.a() ? this.x.b() : super.A();
+   }
+
+   @Override
+   public void a(fil $$0, int $$1, int $$2) {
+      String $$3 = this.a.a();
+      this.b($$0, $$1, $$2);
+      this.a.a($$3);
+      this.x.d();
+   }
+
+   @Override
+   protected void c(boolean $$0) {
+      this.b.a($$0 ? this.m().l().getString() : "-");
+   }
+
+   protected void E() {
+      ddg $$0 = this.m();
+      this.a($$0);
+      if (!$$0.p()) {
+         $$0.c(null);
+      }
+
+      this.m.a(null);
+   }
+
+   protected abstract void a(ddg var1);
+
+   private void a(String $$0) {
+      this.x.d();
+   }
+
+   @Override
+   public boolean a(int $$0, int $$1, int $$2) {
+      if (this.x.a($$0, $$1, $$2)) {
+         return true;
+      } else if (super.a($$0, $$1, $$2)) {
+         return true;
+      } else if ($$0 != 257 && $$0 != 335) {
+         return false;
       } else {
-         $$0.a(ghe::C, J, $$7 + 67, $$8 + 13, 66, 66);
-         this.a($$0, $$1, $$2, $$7 + 71, $$8 + 17, 0.45F);
+         this.E();
+         return true;
       }
    }
 
-   private void a(fjn $$0, @Nullable ert $$1, @Nullable erv $$2, int $$3, int $$4, float $$5) {
-      if ($$1 != null && $$2 != null) {
-         $$0.c().a();
-         $$0.c().a((float)$$3, (float)$$4, 1.0F);
-         $$0.c().b($$5, $$5, 1.0F);
-         ggu $$6 = this.m.as();
-         $$6.a($$1, $$2, this.M);
-         $$6.a(this.M, $$0.c(), $$0.d(), true, 15728880);
-         $$0.c().b();
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      return this.x.a($$3) ? true : super.a($$0, $$1, $$2, $$3);
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      return this.x.a($$0, $$1, $$2) ? true : super.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void a(fjx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.p, u, this.n / 2, 20, 16777215);
+      $$0.b(this.p, v, this.n / 2 - 150 + 1, 40, 10526880);
+      this.a.a($$0, $$1, $$2, $$3);
+      int $$4 = 75;
+      if (!this.b.a().isEmpty()) {
+         $$4 += 5 * 9 + 1 + this.D() - 135;
+         $$0.b(this.p, w, this.n / 2 - 150 + 1, $$4 + 4, 10526880);
+         this.b.a($$0, $$1, $$2, $$3);
       }
+
+      this.x.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public void b(fjx $$0, int $$1, int $$2, float $$3) {
+      this.b($$0);
    }
 }

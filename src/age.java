@@ -8,9 +8,9 @@ public class age implements zk<abz> {
    private final byte g;
    private final boolean h;
 
-   public age(btj $$0) {
+   public age(bto $$0) {
       this.b = $$0.ap();
-      eye $$1 = $$0.dr();
+      eys $$1 = $$0.dr();
       this.c = $$1.d;
       this.d = $$1.e;
       this.e = $$1.f;

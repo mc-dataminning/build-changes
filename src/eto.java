@@ -1,61 +1,81 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Collection;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.function.Function;
 
-public class eto extends etl {
-   public static final MapCodec<eto> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(axi.a(lv.K).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
-            .and(b($$0))
-            .apply($$0, eto::new)
-   );
-   private final axi<cvg> j;
-   private final boolean k;
+public class eto extends etq {
+   public static final MapCodec<eto> a = a(eto::new);
 
-   private eto(axi<cvg> $$0, boolean $$1, int $$2, int $$3, List<ewe> $$4, List<euh> $$5) {
-      super($$2, $$3, $$4, $$5);
-      this.j = $$0;
-      this.k = $$1;
+   eto(List<etx> $$0, List<ews> $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public etk a() {
-      return eth.f;
+   public ety a() {
+      return etv.g;
    }
 
    @Override
-   public void a(Consumer<cvl> $$0, est $$1) {
-      lu.g.b(this.j).forEach($$1x -> $$0.accept(new cvl($$1x)));
-   }
-
-   private boolean a(est $$0, Consumer<eti> $$1) {
-      if (!this.a($$0)) {
-         return false;
-      } else {
-         for (final jn<cvg> $$2 : lu.g.b(this.j)) {
-            $$1.accept(new etl.c() {
-               @Override
-               public void a(Consumer<cvl> $$0, est $$1) {
-                  $$0.accept(new cvl($$2));
-               }
-            });
+   protected etp a(List<? extends etp> $$0) {
+      return switch ($$0.size()) {
+         case 0 -> b;
+         case 1 -> (etp)$$0.get(0);
+         case 2 -> $$0.get(0).or($$0.get(1));
+         default -> ($$1, $$2) -> {
+         for (etp $$3 : $$0) {
+            if ($$3.expand($$1, $$2)) {
+               return true;
+            }
          }
 
-         return true;
+         return false;
+      };
+      };
+   }
+
+   @Override
+   public void a(etn $$0) {
+      super.a($$0);
+
+      for (int $$1 = 0; $$1 < this.d.size() - 1; $$1++) {
+         if (this.d.get($$1).e.isEmpty()) {
+            $$0.b("Unreachable entry!");
+         }
       }
    }
 
-   @Override
-   public boolean expand(est $$0, Consumer<eti> $$1) {
-      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
+   public static eto.a a(etx.a<?>... $$0) {
+      return new eto.a($$0);
    }
 
-   public static etl.a<?> a(axi<cvg> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new eto($$0, false, $$1, $$2, $$3, $$4));
+   public static <E> eto.a a(Collection<E> $$0, Function<E, etx.a<?>> $$1) {
+      return new eto.a($$0.stream().map($$1::apply).toArray(etx.a[]::new));
    }
 
-   public static etl.a<?> b(axi<cvg> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new eto($$0, true, $$1, $$2, $$3, $$4));
+   public static class a extends etx.a<eto.a> {
+      private final Builder<etx> a = ImmutableList.builder();
+
+      public a(etx.a<?>... $$0) {
+         for (etx.a<?> $$1 : $$0) {
+            this.a.add($$1.b());
+         }
+      }
+
+      protected eto.a a() {
+         return this;
+      }
+
+      @Override
+      public eto.a a(etx.a<?> $$0) {
+         this.a.add($$0.b());
+         return this;
+      }
+
+      @Override
+      public etx b() {
+         return new eto(this.a.build(), this.f());
+      }
    }
 }

@@ -26,11 +26,11 @@ public class xg {
       }
    }
 
-   public static Optional<xr> a(@Nullable et $$0, Optional<xd> $$1, @Nullable btj $$2, int $$3) throws CommandSyntaxException {
+   public static Optional<xr> a(@Nullable et $$0, Optional<xd> $$1, @Nullable bto $$2, int $$3) throws CommandSyntaxException {
       return $$1.isPresent() ? Optional.of(a($$0, $$1.get(), $$2, $$3)) : Optional.empty();
    }
 
-   public static xr a(@Nullable et $$0, xd $$1, @Nullable btj $$2, int $$3) throws CommandSyntaxException {
+   public static xr a(@Nullable et $$0, xd $$1, @Nullable bto $$2, int $$3) throws CommandSyntaxException {
       if ($$3 > 100) {
          return $$1.f();
       } else {
@@ -44,7 +44,7 @@ public class xg {
       }
    }
 
-   private static ya a(@Nullable et $$0, ya $$1, @Nullable btj $$2, int $$3) throws CommandSyntaxException {
+   private static ya a(@Nullable et $$0, ya $$1, @Nullable bto $$2, int $$3) throws CommandSyntaxException {
       xj $$4 = $$1.i();
       if ($$4 != null) {
          xd $$5 = $$4.a(xj.a.a);

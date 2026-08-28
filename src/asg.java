@@ -1,148 +1,173 @@
 import com.mojang.authlib.GameProfile;
 import com.mojang.logging.LogUtils;
-import java.util.List;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
 import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class asg extends asf implements abp, wr {
+public abstract class asg implements aad {
    private static final Logger f = LogUtils.getLogger();
-   private static final xd g = xd.c("multiplayer.disconnect.invalid_player_data");
-   private final GameProfile h;
-   private final Queue<arw> i = new ConcurrentLinkedQueue<>();
-   @Nullable
-   private arw j;
-   private aqs k;
-   @Nullable
-   private asr l;
+   public static final int b = 15000;
+   private static final int g = 15000;
+   private static final xd h = xd.c("disconnect.timeout");
+   static final xd c = xd.c("multiplayer.disconnect.unexpected_query_response");
+   protected final MinecraftServer d;
+   protected final vx e;
+   private final boolean i;
+   private long j;
+   private boolean k;
+   private long l;
+   private long m;
+   private boolean n = false;
+   private int o;
+   private volatile boolean p = false;
 
-   public asg(MinecraftServer $$0, vx $$1, arv $$2) {
-      super($$0, $$1, $$2);
-      this.h = $$2.a();
-      this.k = $$2.c();
+   public asg(MinecraftServer $$0, vx $$1, arw $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.j = ad.c();
+      this.o = $$2.b();
+      this.i = $$2.d();
    }
 
-   @Override
-   protected GameProfile i() {
-      return this.h;
+   private void l() {
+      if (!this.n) {
+         this.m = ad.c();
+         this.n = true;
+      }
    }
 
    @Override
    public void a(vz $$0) {
-      f.info("{} lost connection: {}", this.h, $$0.a().getString());
-      super.a($$0);
-   }
-
-   @Override
-   public boolean c() {
-      return this.e.i();
-   }
-
-   @Override
-   public void l() {
-      this.b(new zr(new aal(this.d.getServerModName())));
-      alt $$0 = this.d.bq();
-      if (!$$0.a()) {
-         this.b(new zy($$0.b()));
+      if (this.h()) {
+         f.info("Stopping singleplayer server as player logged out");
+         this.d.a(false);
       }
-
-      ju<alk> $$1 = this.d.bc();
-      List<atz> $$2 = this.d.bf().b().flatMap($$0x -> $$0x.a().d().stream()).toList();
-      this.b(new abm(cqj.f.b(this.d.ba().K())));
-      this.l = new asr($$2, $$1);
-      this.i.add(this.l);
-      this.n();
-      this.i.add(new asp());
-      this.o();
-   }
-
-   public void m() {
-      this.i.add(new asp());
-      this.o();
-   }
-
-   private void n() {
-      this.d.Y().ifPresent($$0 -> this.i.add(new asq($$0)));
    }
 
    @Override
-   public void a(aae $$0) {
-      this.k = $$0.b();
+   public void a(zk $$0, Exception $$1) throws z {
+      aad.super.a($$0, $$1);
+      this.d.a($$1, $$0.a());
+   }
+
+   @Override
+   public void a(aag $$0) {
+      if (this.k && $$0.b() == this.l) {
+         int $$1 = (int)(ad.c() - this.j);
+         this.o = (this.o * 3 + $$1) / 4;
+         this.k = false;
+      } else if (!this.h()) {
+         this.a(h);
+      }
+   }
+
+   @Override
+   public void a(aah $$0) {
+   }
+
+   @Override
+   public void a(aaf $$0) {
    }
 
    @Override
    public void a(aai $$0) {
-      super.a($$0);
-      if ($$0.e().a()) {
-         this.a(asq.a);
+      zn.a($$0, this, this.d);
+      if ($$0.e() == aai.a.b && this.d.Z()) {
+         f.info("Disconnecting {} due to resource pack {} rejection", this.i().getName(), $$0.b());
+         this.a(xd.c("multiplayer.requiredTexturePrompt.disconnect"));
       }
    }
 
    @Override
-   public void a(abr $$0) {
-      zn.a($$0, this, this.d);
-      if (this.l == null) {
-         throw new IllegalStateException("Unexpected response from client: received pack selection, but no negotiation ongoing");
+   public void a(abx $$0) {
+      this.a(c);
+   }
+
+   protected void e() {
+      this.d.aS().a("keepAlive");
+      long $$0 = ad.c();
+      if (!this.h() && $$0 - this.j >= 15000L) {
+         if (this.k) {
+            this.a(h);
+         } else if (this.a($$0)) {
+            this.k = true;
+            this.j = $$0;
+            this.l = $$0;
+            this.b(new zu(this.l));
+         }
+      }
+
+      this.d.aS().c();
+   }
+
+   private boolean a(long $$0) {
+      if (this.n) {
+         if ($$0 - this.m >= 15000L) {
+            this.a(h);
+         }
+
+         return false;
       } else {
-         this.l.a($$0.b(), this::b);
-         this.a(asr.a);
+         return true;
       }
    }
 
-   @Override
-   public void a(abq $$0) {
-      zn.a($$0, this, this.d);
-      this.a(asp.a);
-      this.e.a(agp.b.a(wo.a(this.d.bb())));
+   public void f() {
+      this.p = true;
+   }
+
+   public void g() {
+      this.p = false;
+      this.e.a();
+   }
+
+   public void b(zk<?> $$0) {
+      this.a($$0, null);
+   }
+
+   public void a(zk<?> $$0, @Nullable wk $$1) {
+      if ($$0.d()) {
+         this.l();
+      }
+
+      boolean $$2 = !this.p || !this.d.by();
 
       try {
-         avg $$1 = this.d.ag();
-         if ($$1.a(this.h.getId()) != null) {
-            this.a(avg.f);
-            return;
-         }
-
-         xd $$2 = $$1.a(this.e.d(), this.h);
-         if ($$2 != null) {
-            this.a($$2);
-            return;
-         }
-
-         arh $$3 = $$1.a(this.h, this.k);
-         $$1.a(this.e, $$3, this.a(this.k));
-      } catch (Exception var5) {
-         f.error("Couldn't place player in world", var5);
-         this.e.a(new zt(g));
-         this.e.a(g);
+         this.e.a($$0, $$1, $$2);
+      } catch (Throwable var7) {
+         o $$4 = o.a(var7, "Sending packet");
+         p $$5 = $$4.a("Packet being sent");
+         $$5.a("Packet class", () -> $$0.getClass().getCanonicalName());
+         throw new z($$4);
       }
    }
 
-   @Override
-   public void d() {
-      this.e();
+   public void a(xd $$0) {
+      this.b(new vz($$0));
    }
 
-   private void o() {
-      if (this.j != null) {
-         throw new IllegalStateException("Task " + this.j.a().a() + " has not finished yet");
-      } else if (this.c()) {
-         arw $$0 = this.i.poll();
-         if ($$0 != null) {
-            this.j = $$0;
-            $$0.a(this::b);
-         }
-      }
+   public void b(vz $$0) {
+      this.e.a(new zt($$0.a()), wk.a(() -> this.e.a($$0)));
+      this.e.m();
+      this.d.h(this.e::n);
    }
 
-   private void a(arw.a $$0) {
-      arw.a $$1 = this.j != null ? this.j.a() : null;
-      if (!$$0.equals($$1)) {
-         throw new IllegalStateException("Unexpected request for task finish, current task: " + $$1 + ", requested: " + $$0);
-      } else {
-         this.j = null;
-         this.o();
-      }
+   protected boolean h() {
+      return this.d.a(this.i());
+   }
+
+   protected abstract GameProfile i();
+
+   @baj
+   public GameProfile j() {
+      return this.i();
+   }
+
+   public int k() {
+      return this.o;
+   }
+
+   protected arw a(aqt $$0) {
+      return new arw(this.i(), this.o, $$0, this.i);
    }
 }

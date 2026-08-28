@@ -1,9 +1,11 @@
-public interface axa {
-   axi<cvd> a = a("regular_goat_horns");
-   axi<cvd> b = a("screaming_goat_horns");
-   axi<cvd> c = a("goat_horns");
+public class axa {
+   public static final axj<dzl> a = a("vibrations");
+   public static final axj<dzl> b = a("warden_can_listen");
+   public static final axj<dzl> c = a("shrieker_can_listen");
+   public static final axj<dzl> d = a("ignore_vibrations_sneaking");
+   public static final axj<dzl> e = a("allay_can_listen");
 
-   private static axi<cvd> a(String $$0) {
-      return axi.a(lv.I, alb.b($$0));
+   private static axj<dzl> a(String $$0) {
+      return axj.a(lv.G, alc.b($$0));
    }
 }

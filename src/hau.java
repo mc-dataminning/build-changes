@@ -1,101 +1,66 @@
 import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.InetAddress;
-import java.net.MulticastSocket;
-import java.net.SocketTimeoutException;
-import java.nio.charset.StandardCharsets;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.apache.commons.lang3.Validate;
 
-public class hau {
-   static final AtomicInteger a = new AtomicInteger(0);
-   static final Logger b = LogUtils.getLogger();
+public class hau implements JsonDeserializer<hat> {
+   private static final bqs a = bqq.a(1.0F);
 
-   public static class a extends Thread {
-      private final hau.b a;
-      private final InetAddress b;
-      private final MulticastSocket c;
-
-      public a(hau.b $$0) throws IOException {
-         super("LanServerDetector #" + hau.a.incrementAndGet());
-         this.a = $$0;
-         this.setDaemon(true);
-         this.setUncaughtExceptionHandler(new r(hau.b));
-         this.c = new MulticastSocket(4445);
-         this.b = InetAddress.getByName("224.0.2.60");
-         this.c.setSoTimeout(5000);
-         this.c.joinGroup(this.b);
-      }
-
-      @Override
-      public void run() {
-         byte[] $$0 = new byte[1024];
-
-         while (!this.isInterrupted()) {
-            DatagramPacket $$1 = new DatagramPacket($$0, $$0.length);
-
-            try {
-               this.c.receive($$1);
-            } catch (SocketTimeoutException var5) {
-               continue;
-            } catch (IOException var6) {
-               hau.b.error("Couldn't ping server", var6);
-               break;
-            }
-
-            String $$4 = new String($$1.getData(), $$1.getOffset(), $$1.getLength(), StandardCharsets.UTF_8);
-            hau.b.debug("{}: {}", $$1.getAddress(), $$4);
-            this.a.a($$4, $$1.getAddress());
-         }
-
-         try {
-            this.c.leaveGroup(this.b);
-         } catch (IOException var4) {
-         }
-
-         this.c.close();
-      }
+   public hat a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+      JsonObject $$3 = ayt.m($$0, "entry");
+      boolean $$4 = ayt.a($$3, "replace", false);
+      String $$5 = ayt.a($$3, "subtitle", null);
+      List<has> $$6 = this.a($$3);
+      return new hat($$6, $$4, $$5);
    }
 
-   public static class b {
-      private final List<hat> a = Lists.newArrayList();
-      private boolean b;
+   private List<has> a(JsonObject $$0) {
+      List<has> $$1 = Lists.newArrayList();
+      if ($$0.has("sounds")) {
+         JsonArray $$2 = ayt.v($$0, "sounds");
 
-      @Nullable
-      public synchronized List<hat> a() {
-         if (this.b) {
-            List<hat> $$0 = List.copyOf(this.a);
-            this.b = false;
-            return $$0;
-         } else {
-            return null;
-         }
-      }
-
-      public synchronized void a(String $$0, InetAddress $$1) {
-         String $$2 = hav.a($$0);
-         String $$3 = hav.b($$0);
-         if ($$3 != null) {
-            $$3 = $$1.getHostAddress() + ":" + $$3;
-            boolean $$4 = false;
-
-            for (hat $$5 : this.a) {
-               if ($$5.b().equals($$3)) {
-                  $$5.c();
-                  $$4 = true;
-                  break;
-               }
-            }
-
-            if (!$$4) {
-               this.a.add(new hat($$2, $$3));
-               this.b = true;
+         for (int $$3 = 0; $$3 < $$2.size(); $$3++) {
+            JsonElement $$4 = $$2.get($$3);
+            if (ayt.a($$4)) {
+               alc $$5 = alc.a(ayt.a($$4, "sound"));
+               $$1.add(new has($$5, a, a, 1, has.a.a, false, false, 16));
+            } else {
+               $$1.add(this.b(ayt.m($$4, "sound")));
             }
          }
       }
+
+      return $$1;
+   }
+
+   private has b(JsonObject $$0) {
+      alc $$1 = alc.a(ayt.i($$0, "name"));
+      has.a $$2 = this.a($$0, has.a.a);
+      float $$3 = ayt.a($$0, "volume", 1.0F);
+      Validate.isTrue($$3 > 0.0F, "Invalid volume", new Object[0]);
+      float $$4 = ayt.a($$0, "pitch", 1.0F);
+      Validate.isTrue($$4 > 0.0F, "Invalid pitch", new Object[0]);
+      int $$5 = ayt.a($$0, "weight", 1);
+      Validate.isTrue($$5 > 0, "Invalid weight", new Object[0]);
+      boolean $$6 = ayt.a($$0, "preload", false);
+      boolean $$7 = ayt.a($$0, "stream", false);
+      int $$8 = ayt.a($$0, "attenuation_distance", 16);
+      return new has($$1, bqq.a($$3), bqq.a($$4), $$5, $$2, $$7, $$6, $$8);
+   }
+
+   private has.a a(JsonObject $$0, has.a $$1) {
+      has.a $$2 = $$1;
+      if ($$0.has("type")) {
+         $$2 = has.a.a(ayt.i($$0, "type"));
+         Validate.notNull($$2, "Invalid type", new Object[0]);
+      }
+
+      return $$2;
    }
 }

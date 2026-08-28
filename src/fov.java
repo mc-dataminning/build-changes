@@ -1,42 +1,107 @@
-public class fov extends fpt {
-   private static final int a = 8;
-   private static final int b = 210;
-   private static final xd c = xd.c("credits_and_attribution.screen.title");
-   private static final xd d = xd.c("credits_and_attribution.button.credits");
-   private static final xd s = xd.c("credits_and_attribution.button.attribution");
-   private static final xd u = xd.c("credits_and_attribution.button.licenses");
-   private final fpt v;
-   private final fno w = new fno(this);
+import com.mojang.text2speech.Narrator;
+import javax.annotation.Nullable;
 
-   public fov(fpt $$0) {
-      super(c);
-      this.v = $$0;
+public class fov extends fqd {
+   private static final xd a = xd.c("accessibility.onboarding.screen.title");
+   private static final xd b = xd.c("accessibility.onboarding.screen.narrator");
+   private static final int c = 4;
+   private static final int d = 16;
+   private final flb s;
+   private final fip u;
+   private final boolean v;
+   private boolean w;
+   private float x;
+   private final Runnable y;
+   @Nullable
+   private fkv z;
+   private final fny A = new fny(this, this.m(), 33);
+
+   public fov(fip $$0, Runnable $$1) {
+      super(a);
+      this.u = $$0;
+      this.y = $$1;
+      this.s = new flb(true);
+      this.v = fil.Q().aZ().a();
    }
 
    @Override
-   protected void aT_() {
-      this.w.a(c, this.p);
-      fns $$0 = this.w.c(fns.d()).a(8);
-      $$0.c().b();
-      $$0.a(fka.a(d, $$0x -> this.m()).a(210).a());
-      $$0.a(fka.a(s, fop.b(this, axy.d)).a(210).a());
-      $$0.a(fka.a(u, fop.b(this, axy.e)).a(210).a());
-      this.w.b(fka.a(xc.d, $$0x -> this.d()).a(200).a());
-      this.w.a();
-      this.w.a(this::c);
+   public void aR_() {
+      foc $$0 = this.A.c(foc.d());
+      $$0.c().b().a(4);
+      this.z = $$0.a(new fkv(this.n, this.l, this.p), $$0x -> $$0x.a(8));
+      if (this.u.au().a(this.u) instanceof fkr $$1) {
+         this.q = $$1;
+         this.q.j = this.v;
+         $$0.a(this.q);
+      }
+
+      $$0.a(fko.b(150, $$0x -> this.a(new fsz(this, this.m.n)), false));
+      $$0.a(fko.a(150, $$0x -> this.a(new ftc(this, this.m.n, this.m.ah())), false));
+      this.A.b(fkk.a(xc.j, $$0x -> this.d()).a());
+      this.A.a(this::c);
+      this.c();
    }
 
    @Override
    protected void c() {
-      this.w.a();
+      if (this.z != null) {
+         this.z.b(this.n);
+      }
+
+      this.A.a();
    }
 
-   private void m() {
-      this.m.a(new fpw(false, () -> this.m.a(this)));
+   @Override
+   protected void aG_() {
+      if (this.v && this.q != null) {
+         this.b(this.q);
+      } else {
+         super.aG_();
+      }
+   }
+
+   private int m() {
+      return 90;
    }
 
    @Override
    public void d() {
-      this.m.a(this.v);
+      this.a(true, this.y);
+   }
+
+   private void a(fqd $$0) {
+      this.a(false, () -> this.m.a($$0));
+   }
+
+   private void a(boolean $$0, Runnable $$1) {
+      if ($$0) {
+         this.u.aw();
+      }
+
+      Narrator.getNarrator().clear();
+      $$1.run();
+   }
+
+   @Override
+   public void a(fjx $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.D();
+      this.s.a($$0, this.n, 1.0F);
+   }
+
+   @Override
+   protected void a(fjx $$0, float $$1) {
+      f.a($$0, this.n, this.o, 1.0F, 0.0F);
+   }
+
+   private void D() {
+      if (!this.w && this.v) {
+         if (this.x < 40.0F) {
+            this.x++;
+         } else if (this.m.aC()) {
+            Narrator.getNarrator().say(b.getString(), true);
+            this.w = true;
+         }
+      }
    }
 }

@@ -1,16 +1,9 @@
-public class gzp extends gzr {
-   public gzp(cfw $$0) {
-      super($$0, awd.bQ, awe.g);
-      this.j = 0;
+public interface gzp {
+   default j b() {
+      return j.a();
    }
 
-   @Override
-   protected gzn o() {
-      return new gzq(this.n);
-   }
-
-   @Override
-   protected boolean p() {
-      return !this.n.ac_();
+   default boolean c() {
+      return false;
    }
 }

@@ -1,110 +1,112 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
+import it.unimi.dsi.fastutil.HashCommon;
+import java.util.Arrays;
+import java.util.Collection;
+import javax.annotation.Nullable;
 
-public record cqn(int c, float d, boolean e, float f, Optional<cvl> g, List<cqn.b> h) {
-   private static final float i = 1.6F;
-   public static final Codec<cqn> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               ayl.k.fieldOf("nutrition").forGetter(cqn::b),
-               Codec.FLOAT.fieldOf("saturation").forGetter(cqn::c),
-               Codec.BOOL.optionalFieldOf("can_always_eat", false).forGetter(cqn::d),
-               ayl.m.optionalFieldOf("eat_seconds", 1.6F).forGetter(cqn::e),
-               cvl.c.optionalFieldOf("using_converts_to").forGetter(cqn::f),
-               cqn.b.a.listOf().optionalFieldOf("effects", List.of()).forGetter(cqn::g)
-            )
-            .apply($$0, cqn::new)
-   );
-   public static final zb<wo, cqn> b = zb.a(yz.g, cqn::b, yz.i, cqn::c, yz.b, cqn::d, yz.i, cqn::e, cvl.i.a(yz::a), cqn::f, cqn.b.b.a(yz.a()), cqn::g, cqn::new);
+public final class cqn {
+   private static final cqn b = new cqn(null, 0L);
+   public static final int a = 64;
+   @Nullable
+   private final cqo c;
+   private final long d;
 
-   public int a() {
-      return (int)(this.f * 20.0F);
+   private cqn(@Nullable cqo $$0, long $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public int b() {
-      return this.c;
+   static cqn a(cqo $$0, Collection<cql> $$1) {
+      if ($$1.isEmpty()) {
+         return b;
+      } else {
+         long $$2 = a($$0, 0L, $$1);
+         return new cqn($$0, $$2);
+      }
    }
 
-   public float c() {
-      return this.d;
+   public static cqn a() {
+      return b;
    }
 
-   public boolean d() {
-      return this.e;
+   public static cqn a(cql $$0) {
+      return new cqn($$0.a, $$0.b);
    }
 
-   public float e() {
-      return this.f;
+   public static cqn a(cql $$0, cql... $$1) {
+      long $$2 = $$1.length == 0 ? $$0.b : a($$0.a, $$0.b, Arrays.asList($$1));
+      return new cqn($$0.a, $$2);
    }
 
-   public Optional<cvl> f() {
-      return this.g;
+   private static long a(cqo $$0, long $$1, Iterable<cql> $$2) {
+      for (cql $$3 : $$2) {
+         if ($$0 != $$3.a) {
+            throw new IllegalStateException("Mismatched feature universe, expected '" + $$0 + "', but got '" + $$3.a + "'");
+         }
+
+         $$1 |= $$3.b;
+      }
+
+      return $$1;
    }
 
-   public List<cqn.b> g() {
-      return this.h;
+   public boolean b(cql $$0) {
+      return this.c != $$0.a ? false : (this.d & $$0.b) != 0L;
    }
 
-   public static class a {
-      private int a;
-      private float b;
-      private boolean c;
-      private float d = 1.6F;
-      private Optional<cvl> e = Optional.empty();
-      private final Builder<cqn.b> f = ImmutableList.builder();
+   public boolean b() {
+      return this.equals(b);
+   }
 
-      public cqn.a a(int $$0) {
-         this.a = $$0;
+   public boolean a(cqn $$0) {
+      if (this.c == null) {
+         return true;
+      } else {
+         return this.c != $$0.c ? false : (this.d & ~$$0.d) == 0L;
+      }
+   }
+
+   public boolean b(cqn $$0) {
+      return this.c != null && $$0.c != null && this.c == $$0.c ? (this.d & $$0.d) != 0L : false;
+   }
+
+   public cqn c(cqn $$0) {
+      if (this.c == null) {
+         return $$0;
+      } else if ($$0.c == null) {
          return this;
-      }
-
-      public cqn.a a(float $$0) {
-         this.b = $$0;
-         return this;
-      }
-
-      public cqn.a a() {
-         this.c = true;
-         return this;
-      }
-
-      public cqn.a b() {
-         this.d = 0.8F;
-         return this;
-      }
-
-      public cqn.a a(bsq $$0, float $$1) {
-         this.f.add(new cqn.b($$0, $$1));
-         return this;
-      }
-
-      public cqn.a a(ddr $$0) {
-         this.e = Optional.of(new cvl($$0));
-         return this;
-      }
-
-      public cqn c() {
-         float $$0 = cql.a(this.a, this.b);
-         return new cqn(this.a, $$0, this.c, this.d, this.e, this.f.build());
+      } else if (this.c != $$0.c) {
+         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
+      } else {
+         return new cqn(this.c, this.d | $$0.d);
       }
    }
 
-   public static record b(bsq c, float d) {
-      public static final Codec<cqn.b> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bsq.d.fieldOf("effect").forGetter(cqn.b::a), Codec.floatRange(0.0F, 1.0F).optionalFieldOf("probability", 1.0F).forGetter(cqn.b::b))
-               .apply($$0, cqn.b::new)
-      );
-      public static final zb<wo, cqn.b> b = zb.a(bsq.e, cqn.b::a, yz.i, cqn.b::b, cqn.b::new);
-
-      public bsq a() {
-         return new bsq(this.c);
+   public cqn d(cqn $$0) {
+      if (this.c == null || $$0.c == null) {
+         return this;
+      } else if (this.c != $$0.c) {
+         throw new IllegalArgumentException("Mismatched set elements: '" + this.c + "' != '" + $$0.c + "'");
+      } else {
+         long $$1 = this.d & ~$$0.d;
+         return $$1 == 0L ? b : new cqn(this.c, $$1);
       }
+   }
 
-      public float b() {
-         return this.d;
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         if ($$0 instanceof cqn $$1 && this.c == $$1.c && this.d == $$1.d) {
+            return true;
+         }
+
+         return false;
       }
+   }
+
+   @Override
+   public int hashCode() {
+      return (int)HashCommon.mix(this.d);
    }
 }

@@ -18,41 +18,41 @@ public class tf extends MinecraftServer {
    private static final Logger l = LogUtils.getLogger();
    private static final int m = 20;
    private static final int n = 14999992;
-   private static final alw o = new alw(null, ServicesKeySet.EMPTY, null, null);
-   private static final cqh p = cqj.f.a().d(cqh.a(cqj.d));
-   private final bmk q = new bmk(4);
+   private static final alx o = new alx(null, ServicesKeySet.EMPTY, null, null);
+   private static final cqn p = cqp.f.a().d(cqn.a(cqp.d));
+   private final bmo q = new bmo(4);
    private List<su> r = new ArrayList<>();
    private final List<tu> s;
    private final je t;
    private final Stopwatch u = Stopwatch.createUnstarted();
-   private static final ddo v = ad.a(new ddo(p), $$0 -> {
-      $$0.a(ddo.e).a(false, null);
-      $$0.a(ddo.v).a(false, null);
-      $$0.a(ddo.o).a(0, null);
-      $$0.a(ddo.b).a(false, null);
+   private static final dec v = ad.a(new dec(p), $$0 -> {
+      $$0.a(dec.e).a(false, null);
+      $$0.a(dec.v).a(false, null);
+      $$0.a(dec.o).a(0, null);
+      $$0.a(dec.b).a(false, null);
    });
-   private static final eau w = new eau(0L, false, false);
+   private static final ebi w = new ebi(0L, false, false);
    @Nullable
    private tl x;
 
-   public static tf a(Thread $$0, esh.c $$1, aud $$2, Collection<tu> $$3, je $$4) {
+   public static tf a(Thread $$0, esv.c $$1, aue $$2, Collection<tu> $$3, je $$4) {
       if ($$3.isEmpty()) {
          throw new IllegalArgumentException("No test functions were given!");
       } else {
          $$2.a();
-         deo $$5 = new deo(new ddf(new ArrayList<>($$2.b()), List.of()), p);
-         ddw $$6 = new ddw("Test Level", ddp.b, false, brh.c, true, v, $$5);
-         alz.d $$7 = new alz.d($$2, $$5, false, true);
-         alz.c $$8 = new alz.c($$7, eu.a.b, 4);
+         dfc $$5 = new dfc(new ddt(new ArrayList<>($$2.b()), List.of()), p);
+         dek $$6 = new dek("Test Level", ded.b, false, brm.c, true, v, $$5);
+         ama.d $$7 = new ama.d($$2, $$5, false, true);
+         ama.c $$8 = new ama.c($$7, eu.a.b, 4);
 
          try {
             l.debug("Starting resource loading");
             Stopwatch $$9 = Stopwatch.createStarted();
-            ama $$10 = ad.<ama>c($$2x -> alz.a($$8, $$1xx -> {
-                  ka<dxx> $$2xx = new jv<>(lv.bb, Lifecycle.stable()).l();
-                  ear.b $$3x = $$1xx.c().b(lv.aY).b(eke.b).a().a().a($$2xx);
-                  return new alz.b<>(new esl($$6, w, $$3x.d(), $$3x.a()), $$3x.b());
-               }, ama::new, ad.g(), $$2x)).get();
+            amb $$10 = ad.<amb>c($$2x -> ama.a($$8, $$1xx -> {
+                  ka<dyl> $$2xx = new jv<>(lv.bc, Lifecycle.stable()).l();
+                  ebf.b $$3x = $$1xx.c().b(lv.aZ).b(eks.b).a().a().a($$2xx);
+                  return new ama.b<>(new esz($$6, w, $$3x.d(), $$3x.a()), $$3x.b());
+               }, amb::new, ad.g(), $$2x)).get();
             $$9.stop();
             l.debug("Finished resource loading after {} ms", $$9.elapsed(TimeUnit.MILLISECONDS));
             return new tf($$0, $$1, $$2, $$10, $$3, $$4);
@@ -64,18 +64,18 @@ public class tf extends MinecraftServer {
       }
    }
 
-   private tf(Thread $$0, esh.c $$1, aud $$2, ama $$3, Collection<tu> $$4, je $$5) {
-      super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, bam.a(), o, arr::b);
+   private tf(Thread $$0, esv.c $$1, aue $$2, amb $$3, Collection<tu> $$4, je $$5) {
+      super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, ban.a(), o, ars::b);
       this.s = Lists.newArrayList($$4);
       this.t = $$5;
    }
 
    @Override
    public boolean e() {
-      this.a(new avg(this, this.bc(), this.g, 1) {
+      this.a(new avh(this, this.bc(), this.g, 1) {
       });
       this.s_();
-      arg $$0 = this.J();
+      arh $$0 = this.J();
       this.r = Lists.newArrayList(sv.a(this.s, $$0));
       $$0.a(this.t, 0.0F);
       int $$1 = 20000000;
@@ -87,7 +87,7 @@ public class tf extends MinecraftServer {
    @Override
    public void a(BooleanSupplier $$0) {
       super.a($$0);
-      arg $$1 = this.J();
+      arh $$1 = this.J();
       if (!this.bs()) {
          this.b($$1);
       }
@@ -118,7 +118,7 @@ public class tf extends MinecraftServer {
    }
 
    @Override
-   public bmn f() {
+   public bmr f() {
       return this.q;
    }
 
@@ -152,7 +152,7 @@ public class tf extends MinecraftServer {
       System.exit(1);
    }
 
-   private void b(arg $$0) {
+   private void b(arh $$0) {
       je $$1 = new je($$0.z.a(-14999992, 14999992), -59, $$0.z.a(-14999992, 14999992));
       td $$2 = td.a.a(this.r, $$0).a((td.c)(new tp($$1, 8, false))).a();
       Collection<ta> $$3 = $$2.a();

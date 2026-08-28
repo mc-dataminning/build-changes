@@ -16,13 +16,13 @@ public interface xz {
    xt updateAndValidate(xt var1);
 
    public static class a implements xz {
-      private final azp d;
+      private final azq d;
       private final BooleanSupplier e;
       @Nullable
       private xt f;
       private boolean g = true;
 
-      public a(azp $$0, BooleanSupplier $$1) {
+      public a(azq $$0, BooleanSupplier $$1) {
          this.d = $$0;
          this.e = $$1;
       }

@@ -1,95 +1,97 @@
-import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.logging.LogUtils;
-import java.util.Collection;
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
-import net.minecraft.server.MinecraftServer;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import java.util.concurrent.Executor;
 import org.slf4j.Logger;
 
-public class alq {
-   private static final Logger a = LogUtils.getLogger();
-   private static final alb b = alb.b("tick");
-   private static final alb c = alb.b("load");
-   private final MinecraftServer d;
-   private List<ih<et>> e = ImmutableList.of();
-   private boolean f;
-   private alp g;
+public class alq implements aun {
+   private static final Logger b = LogUtils.getLogger();
+   public static final alb<ka<ih<et>>> a = alb.a(alc.b("function"));
+   private static final akv c = new akv(lv.c(a), ".mcfunction");
+   private volatile Map<alc, ih<et>> d = ImmutableMap.of();
+   private final axk<ih<et>> e = new axk<>(this::a, lv.d(a));
+   private volatile Map<alc, List<ih<et>>> f = Map.of();
+   private final int g;
+   private final CommandDispatcher<et> h;
 
-   public alq(MinecraftServer $$0, alp $$1) {
-      this.d = $$0;
-      this.g = $$1;
-      this.b($$1);
+   public Optional<ih<et>> a(alc $$0) {
+      return Optional.ofNullable(this.d.get($$0));
    }
 
-   public CommandDispatcher<et> a() {
-      return this.d.aG().a();
+   public Map<alc, ih<et>> a() {
+      return this.d;
    }
 
-   public void b() {
-      if (this.d.aP().i()) {
-         if (this.f) {
-            this.f = false;
-            Collection<ih<et>> $$0 = this.g.b(c);
-            this.a($$0, c);
+   public List<ih<et>> b(alc $$0) {
+      return this.f.getOrDefault($$0, List.of());
+   }
+
+   public Iterable<alc> b() {
+      return this.f.keySet();
+   }
+
+   public alq(int $$0, CommandDispatcher<et> $$1) {
+      this.g = $$0;
+      this.h = $$1;
+   }
+
+   @Override
+   public CompletableFuture<Void> a(aun.a $$0, aut $$1, bod $$2, bod $$3, Executor $$4, Executor $$5) {
+      CompletableFuture<Map<alc, List<axk.a>>> $$6 = CompletableFuture.supplyAsync(() -> this.e.a($$1), $$4);
+      CompletableFuture<Map<alc, CompletableFuture<ih<et>>>> $$7 = CompletableFuture.<Map<alc, aur>>supplyAsync(() -> c.a($$1), $$4).thenCompose($$1x -> {
+         Map<alc, CompletableFuture<ih<et>>> $$2x = Maps.newHashMap();
+         et $$3x = new et(es.a, eys.c, eyr.a, null, this.g, "", xc.a, null, null);
+
+         for (Entry<alc, aur> $$4x : $$1x.entrySet()) {
+            alc $$5x = $$4x.getKey();
+            alc $$6x = c.b($$5x);
+            $$2x.put($$6x, CompletableFuture.supplyAsync(() -> {
+               List<String> $$3xx = a($$4x.getValue());
+               return ih.a($$6x, this.h, $$3x, $$3xx);
+            }, $$4));
          }
 
-         this.a(this.e, b);
-      }
+         CompletableFuture<?>[] $$7x = $$2x.values().toArray(new CompletableFuture[0]);
+         return CompletableFuture.allOf($$7x).handle(($$1xx, $$2xx) -> $$2x);
+      });
+      return $$6.thenCombine($$7, Pair::of).thenCompose($$0::a).thenAcceptAsync($$0x -> {
+         Map<alc, CompletableFuture<ih<et>>> $$1x = (Map<alc, CompletableFuture<ih<et>>>)$$0x.getSecond();
+         Builder<alc, ih<et>> $$2x = ImmutableMap.builder();
+         $$1x.forEach(($$1xx, $$2xx) -> $$2xx.handle(($$2xxx, $$3x) -> {
+               if ($$3x != null) {
+                  b.error("Failed to load function {}", $$1xx, $$3x);
+               } else {
+                  $$2x.put($$1xx, $$2xxx);
+               }
+
+               return null;
+            }).join());
+         this.d = $$2x.build();
+         this.f = this.e.a((Map<alc, List<axk.a>>)$$0x.getFirst());
+      }, $$5);
    }
 
-   private void a(Collection<ih<et>> $$0, alb $$1) {
-      this.d.aS().a($$1::toString);
-
-      for (ih<et> $$2 : $$0) {
-         this.a($$2, this.c());
-      }
-
-      this.d.aS().c();
-   }
-
-   public void a(ih<et> $$0, et $$1) {
-      bny $$2 = this.d.aS();
-      $$2.a(() -> "function " + $$0.a());
-
+   private static List<String> a(aur $$0) {
       try {
-         ij<et> $$3 = $$0.a(null, this.a());
-         eu.a($$1, $$2x -> ht.a($$2x, $$3, $$1, eq.a));
-      } catch (ew var9) {
-      } catch (Exception var10) {
-         a.warn("Failed to execute function {}", $$0.a(), var10);
-      } finally {
-         $$2.c();
+         List var2;
+         try (BufferedReader $$1 = $$0.e()) {
+            var2 = $$1.lines().toList();
+         }
+
+         return var2;
+      } catch (IOException var6) {
+         throw new CompletionException(var6);
       }
-   }
-
-   public void a(alp $$0) {
-      this.g = $$0;
-      this.b($$0);
-   }
-
-   private void b(alp $$0) {
-      this.e = List.copyOf($$0.b(b));
-      this.f = true;
-   }
-
-   public et c() {
-      return this.d.aH().a(2).a();
-   }
-
-   public Optional<ih<et>> a(alb $$0) {
-      return this.g.a($$0);
-   }
-
-   public List<ih<et>> b(alb $$0) {
-      return this.g.b($$0);
-   }
-
-   public Iterable<alb> d() {
-      return this.g.a().keySet();
-   }
-
-   public Iterable<alb> e() {
-      return this.g.b();
    }
 }

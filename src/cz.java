@@ -14,11 +14,11 @@ public class cz extends dv<cz.a> {
       return cz.a.a;
    }
 
-   public void a(arh $$0, Collection<btj> $$1) {
-      List<est> $$2 = Lists.newArrayList();
-      Set<btq<?>> $$3 = Sets.newHashSet();
+   public void a(ari $$0, Collection<bto> $$1) {
+      List<eth> $$2 = Lists.newArrayList();
+      Set<btv<?>> $$3 = Sets.newHashSet();
 
-      for (btj $$4 : $$1) {
+      for (bto $$4 : $$1) {
          $$3.add($$4.ao());
          $$2.add(bv.b($$0, $$4));
       }
@@ -44,16 +44,16 @@ public class cz extends dv<cz.a> {
          return an.H.a(new cz.a(Optional.empty(), List.of(), $$0));
       }
 
-      public boolean a(Collection<est> $$0, int $$1) {
+      public boolean a(Collection<eth> $$0, int $$1) {
          if (!this.c.isEmpty()) {
-            List<est> $$2 = Lists.newArrayList($$0);
+            List<eth> $$2 = Lists.newArrayList($$0);
 
             for (bg $$3 : this.c) {
                boolean $$4 = false;
-               Iterator<est> $$5 = $$2.iterator();
+               Iterator<eth> $$5 = $$2.iterator();
 
                while ($$5.hasNext()) {
-                  est $$6 = $$5.next();
+                  eth $$6 = $$5.next();
                   if ($$3.a($$6)) {
                      $$5.remove();
                      $$4 = true;

@@ -1,52 +1,35 @@
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.objects.Object2BooleanMap;
+import it.unimi.dsi.fastutil.objects.Object2BooleanOpenHashMap;
+import java.util.Set;
 
-public class arb {
-   @Nullable
-   protected static je a(arg $$0, int $$1, int $$2) {
-      boolean $$3 = $$0.B_().h();
-      dwg $$4 = $$0.d(kg.a($$1), kg.a($$2));
-      int $$5 = $$3 ? $$0.l().g().a($$0) : $$4.a(dzw.a.e, $$1 & 15, $$2 & 15);
-      if ($$5 < $$0.G_()) {
-         return null;
-      } else {
-         int $$6 = $$4.a(dzw.a.b, $$1 & 15, $$2 & 15);
-         if ($$6 <= $$5 && $$6 > $$4.a(dzw.a.d, $$1 & 15, $$2 & 15)) {
-            return null;
-         } else {
-            je.a $$7 = new je.a();
+public final class arb {
+   private final Object2BooleanMap<ari> a = new Object2BooleanOpenHashMap();
 
-            for (int $$8 = $$5 + 1; $$8 >= $$0.G_(); $$8--) {
-               $$7.d($$1, $$8, $$2);
-               dua $$9 = $$0.a_($$7);
-               if (!$$9.y().c()) {
-                  break;
-               }
-
-               if (dgv.a($$9.g($$0, $$7), jj.b)) {
-                  return $$7.d().j();
-               }
-            }
-
-            return null;
-         }
-      }
+   public Set<ari> a() {
+      return this.a.keySet();
    }
 
-   @Nullable
-   public static je a(arg $$0, dcy $$1) {
-      if (ab.a($$1)) {
-         return null;
-      } else {
-         for (int $$2 = $$1.d(); $$2 <= $$1.f(); $$2++) {
-            for (int $$3 = $$1.e(); $$3 <= $$1.g(); $$3++) {
-               je $$4 = a($$0, $$2, $$3);
-               if ($$4 != null) {
-                  return $$4;
-               }
-            }
-         }
+   public void a(ari $$0, boolean $$1) {
+      this.a.put($$0, $$1);
+   }
 
-         return null;
-      }
+   public void a(ari $$0) {
+      this.a.removeBoolean($$0);
+   }
+
+   public void b(ari $$0) {
+      this.a.replace($$0, true);
+   }
+
+   public void c(ari $$0) {
+      this.a.replace($$0, false);
+   }
+
+   public boolean d(ari $$0) {
+      return this.a.getOrDefault($$0, true);
+   }
+
+   public boolean e(ari $$0) {
+      return this.a.getBoolean($$0);
    }
 }

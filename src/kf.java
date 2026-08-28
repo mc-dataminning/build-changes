@@ -52,14 +52,14 @@ public class kf {
    }
 
    public float e() {
-      return azc.g(this.b);
+      return azd.g(this.b);
    }
 
    public float f() {
-      return azc.g(this.c);
+      return azd.g(this.c);
    }
 
    public float g() {
-      return azc.g(this.d);
+      return azd.g(this.d);
    }
 }

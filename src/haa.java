@@ -1,31 +1,18 @@
-public class haa extends gzn {
-   private static final float n = 1.0F;
-   private static final float o = 1.0F;
-   private final cim p;
+import java.nio.file.Path;
+import java.util.List;
+import java.util.UUID;
 
-   public haa(cim $$0) {
-      super(awd.yA, awe.g, hae.t());
-      this.p = $$0;
-      this.k = hae.a.b;
-      this.i = false;
-      this.j = 0;
+public interface haa {
+   void scheduleReload(haa.a var1);
+
+   public interface a {
+      void a();
+
+      void a(boolean var1);
+
+      List<haa.b> b();
    }
 
-   @Override
-   public boolean s() {
-      return !this.p.ba();
-   }
-
-   @Override
-   public void q() {
-      if (!this.p.dN() && this.p.m() == null && this.p.gp()) {
-         this.f = (double)((float)this.p.dx());
-         this.g = (double)((float)this.p.dz());
-         this.h = (double)((float)this.p.dD());
-         this.d = 1.0F;
-         this.e = 1.0F;
-      } else {
-         this.n();
-      }
+   public static record b(UUID a, Path b) {
    }
 }

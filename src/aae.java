@@ -1,8 +1,8 @@
-public record aae(aqs b) implements zk<aad> {
+public record aae(aqt b) implements zk<aad> {
    public static final zb<wa, aae> a = zk.a(aae::a, aae::new);
 
    private aae(wa $$0) {
-      this(new aqs($$0));
+      this(new aqt($$0));
    }
 
    private void a(wa $$0) {

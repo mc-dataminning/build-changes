@@ -41,8 +41,8 @@ public class ajb implements zk<aiy> {
       return this.b;
    }
 
-   public PublicKey e() throws ayb {
-      return aya.a(this.c);
+   public PublicKey e() throws ayc {
+      return ayb.a(this.c);
    }
 
    public byte[] f() {

@@ -1,60 +1,33 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
-import java.util.function.Predicate;
 
-public abstract class evu implements ewe {
-   protected final List<ewe> c;
-   private final Predicate<est> a;
+public class evu extends euu {
+   public static final MapCodec<evu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and($$0.group(cza.d.fieldOf("pages").forGetter($$0x -> $$0x.b), eut.a(100).forGetter($$0x -> $$0x.c))).apply($$0, evu::new)
+   );
+   private final List<ary<String>> b;
+   private final eut c;
 
-   protected evu(List<ewe> $$0, Predicate<est> $$1) {
-      this.c = $$0;
-      this.a = $$1;
-   }
-
-   protected static <T extends evu> MapCodec<T> a(Function<List<ewe>, T> $$0) {
-      return RecordCodecBuilder.mapCodec($$1 -> $$1.group(ewe.e.listOf().fieldOf("terms").forGetter($$0xx -> $$0xx.c)).apply($$1, $$0));
-   }
-
-   protected static <T extends evu> Codec<T> b(Function<List<ewe>, T> $$0) {
-      return ewe.e.listOf().xmap($$0, $$0x -> $$0x.c);
-   }
-
-   public final boolean a(est $$0) {
-      return this.a.test($$0);
+   protected evu(List<ews> $$0, List<ary<String>> $$1, eut $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public void a(esz $$0) {
-      ewe.super.a($$0);
-
-      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
-         this.c.get($$1).a($$0.a(".term[" + $$1 + "]"));
-      }
+   protected cvp a(cvp $$0, eth $$1) {
+      $$0.a(kr.N, cza.a, this::a);
+      return $$0;
    }
 
-   public abstract static class a implements ewe.a {
-      private final Builder<ewe> a = ImmutableList.builder();
+   public cza a(cza $$0) {
+      List<ary<String>> $$1 = this.c.a($$0.a(), this.b, 100);
+      return $$0.b($$1);
+   }
 
-      protected a(ewe.a... $$0) {
-         for (ewe.a $$1 : $$0) {
-            this.a.add($$1.build());
-         }
-      }
-
-      public void a(ewe.a $$0) {
-         this.a.add($$0.build());
-      }
-
-      @Override
-      public ewe build() {
-         return this.a(this.a.build());
-      }
-
-      protected abstract ewe a(List<ewe> var1);
+   @Override
+   public euw<evu> b() {
+      return eux.O;
    }
 }

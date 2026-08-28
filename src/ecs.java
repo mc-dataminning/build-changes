@@ -1,44 +1,73 @@
 import com.mojang.serialization.Codec;
-import java.util.List;
 
-public class ecs extends ecq {
-   public ecs(Codec<efn> $$0) {
+public abstract class ecs extends edq<efw> {
+   public ecs(Codec<efw> $$0) {
       super($$0);
    }
 
-   @Override
-   protected boolean a(ddt $$0, azk $$1, je $$2, dua $$3) {
-      je.a $$4 = $$2.k();
-      int $$5 = $$1.a(3) + 1;
+   protected void a(deh $$0, azl $$1, je $$2, efw $$3, int $$4, je.a $$5) {
+      for (int $$6 = 0; $$6 < $$4; $$6++) {
+         $$5.g($$2).c(jj.b, $$6);
+         if (!$$0.a_($$5).s()) {
+            this.a($$0, $$5, $$3.c.a($$1, $$2));
+         }
+      }
+   }
 
-      for (int $$6 = 0; $$6 < $$5; $$6++) {
-         if (!this.b($$0, $$1, $$4, $$3)) {
+   protected int a(azl $$0) {
+      int $$1 = $$0.a(3) + 4;
+      if ($$0.a(12) == 0) {
+         $$1 *= 2;
+      }
+
+      return $$1;
+   }
+
+   protected boolean a(deh $$0, je $$1, int $$2, je.a $$3, efw $$4) {
+      int $$5 = $$1.v();
+      if ($$5 >= $$0.G_() + 1 && $$5 + $$2 + 1 <= $$0.an()) {
+         duo $$6 = $$0.a_($$1.e());
+         if (!b($$6) && !$$6.a(awt.bb)) {
+            return false;
+         } else {
+            for (int $$7 = 0; $$7 <= $$2; $$7++) {
+               int $$8 = this.a(-1, -1, $$4.d, $$7);
+
+               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+                     duo $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
+                     if (!$$11.l() && !$$11.a(awt.P)) {
+                        return false;
+                     }
+                  }
+               }
+            }
+
             return true;
          }
-
-         $$4.c(jj.b);
+      } else {
+         return false;
       }
-
-      je $$7 = $$4.j();
-      int $$8 = $$1.a(3) + 2;
-      List<jj> $$9 = jj.c.a.c($$1);
-
-      for (jj $$11 : $$9.subList(0, $$8)) {
-         $$4.g($$7);
-         $$4.c($$11);
-         int $$12 = $$1.a(5) + 2;
-         int $$13 = 0;
-
-         for (int $$14 = 0; $$14 < $$12 && this.b($$0, $$1, $$4, $$3); $$14++) {
-            $$13++;
-            $$4.c(jj.b);
-            if ($$14 == 0 || $$13 >= 2 && $$1.i() < 0.25F) {
-               $$4.c($$11);
-               $$13 = 0;
-            }
-         }
-      }
-
-      return true;
    }
+
+   @Override
+   public boolean a(eds<efw> $$0) {
+      dfd $$1 = $$0.b();
+      je $$2 = $$0.e();
+      azl $$3 = $$0.d();
+      efw $$4 = $$0.f();
+      int $$5 = this.a($$3);
+      je.a $$6 = new je.a();
+      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
+         return false;
+      } else {
+         this.a($$1, $$3, $$2, $$5, $$6, $$4);
+         this.a($$1, $$3, $$2, $$4, $$5, $$6);
+         return true;
+      }
+   }
+
+   protected abstract int a(int var1, int var2, int var3, int var4);
+
+   protected abstract void a(deh var1, azl var2, je var3, int var4, je.a var5, efw var6);
 }

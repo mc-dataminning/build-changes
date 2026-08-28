@@ -1,19 +1,18 @@
-public final class brs implements brm {
-   private final xd a;
-   private final cry b;
+import javax.annotation.Nullable;
 
-   public brs(cry $$0, xd $$1) {
-      this.b = $$0;
-      this.a = $$1;
+public interface brs {
+   xd aj();
+
+   default boolean ak() {
+      return this.al() != null;
    }
 
-   @Override
-   public xd Q_() {
-      return this.a;
+   default xd Q_() {
+      return this.aj();
    }
 
-   @Override
-   public cqq createMenu(int $$0, cno $$1, cnp $$2) {
-      return this.b.createMenu($$0, $$1, $$2);
+   @Nullable
+   default xd al() {
+      return null;
    }
 }

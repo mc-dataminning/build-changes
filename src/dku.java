@@ -1,69 +1,75 @@
-import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Map;
-import java.util.function.Supplier;
+import java.util.List;
+import java.util.Optional;
 
-public class dku extends dgv {
-   public static final MapCodec<dku> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(lu.e.q().fieldOf("host").forGetter(dku::b), u()).apply($$0, dku::new));
-   private final dgv b;
-   private static final Map<dgv, dgv> c = Maps.newIdentityHashMap();
-   private static final Map<dua, dua> d = Maps.newIdentityHashMap();
-   private static final Map<dua, dua> e = Maps.newIdentityHashMap();
+public class dku extends dpb implements dhm {
+   public static final MapCodec<dku> a = b(dku::new);
 
    @Override
-   public MapCodec<? extends dku> a() {
+   public MapCodec<dku> a() {
       return a;
    }
 
-   public dku(dgv $$0, dtz.d $$1) {
-      super($$1.e($$0.x() / 2.0F).f(0.75F));
-      this.b = $$0;
-      c.put($$0, this);
+   public dku(dun.d $$0) {
+      super($$0);
    }
 
-   public dgv b() {
-      return this.b;
+   @Override
+   public boolean b(dej $$0, je $$1, duo $$2) {
+      return $$0.a_($$1.d()).l();
    }
 
-   public static boolean o(dua $$0) {
-      return c.containsKey($$0.b());
+   @Override
+   public boolean a(deg $$0, azl $$1, je $$2, duo $$3) {
+      return true;
    }
 
-   private void a(arg $$0, je $$1) {
-      clc $$2 = btq.aM.a($$0, btp.k);
-      if ($$2 != null) {
-         $$2.b((double)$$1.u() + 0.5, (double)$$1.v(), (double)$$1.w() + 0.5, 0.0F, 0.0F);
-         $$0.b($$2);
-         $$2.V();
+   @Override
+   public void a(arh $$0, azl $$1, je $$2, duo $$3) {
+      je $$4 = $$2.d();
+      duo $$5 = dhl.bt.o();
+      Optional<jn.c<ekg>> $$6 = $$0.F_().d(lv.aR).b(sl.n);
+
+      label49:
+      for (int $$7 = 0; $$7 < 128; $$7++) {
+         je $$8 = $$4;
+
+         for (int $$9 = 0; $$9 < $$7 / 16; $$9++) {
+            $$8 = $$8.b($$1.a(3) - 1, ($$1.a(3) - 1) * $$1.a(3) / 2, $$1.a(3) - 1);
+            if (!$$0.a_($$8.e()).a(this) || $$0.a_($$8).m($$0, $$8)) {
+               continue label49;
+            }
+         }
+
+         duo $$10 = $$0.a_($$8);
+         if ($$10.a($$5.b()) && $$1.a(10) == 0) {
+            ((dhm)$$5.b()).a($$0, $$1, $$8, $$10);
+         }
+
+         if ($$10.l()) {
+            jn<ekg> $$12;
+            if ($$1.a(8) == 0) {
+               List<edc<?, ?>> $$11 = $$0.t($$8).a().d().b();
+               if ($$11.isEmpty()) {
+                  continue;
+               }
+
+               $$12 = ((egh)$$11.get(0).c()).d();
+            } else {
+               if (!$$6.isPresent()) {
+                  continue;
+               }
+
+               $$12 = $$6.get();
+            }
+
+            $$12.a().a($$0, $$0.l().g(), $$1, $$8);
+         }
       }
    }
 
    @Override
-   protected void a(dua $$0, arg $$1, je $$2, cvl $$3, boolean $$4) {
-      super.a($$0, $$1, $$2, $$3, $$4);
-      if ($$1.ac().b(ddo.h) && !day.a($$3, awv.t)) {
-         this.a($$1, $$2);
-      }
-   }
-
-   public static dua p(dua $$0) {
-      return a(d, $$0, () -> c.get($$0.b()).o());
-   }
-
-   public dua q(dua $$0) {
-      return a(e, $$0, () -> this.b().o());
-   }
-
-   private static dua a(Map<dua, dua> $$0, dua $$1, Supplier<dua> $$2) {
-      return $$0.computeIfAbsent($$1, $$1x -> {
-         dua $$2x = $$2.get();
-
-         for (dvd $$3 : $$1x.F()) {
-            $$2x = $$2x.b($$3) ? $$2x.b($$3, $$1x.c($$3)) : $$2x;
-         }
-
-         return $$2x;
-      });
+   public dhm.a ar_() {
+      return dhm.a.a;
    }
 }

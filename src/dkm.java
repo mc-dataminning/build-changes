@@ -1,65 +1,85 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class dkm extends dgv implements dnx {
-   public static final MapCodec<dkm> a = b(dkm::new);
-   private static final dur c = duq.C;
-   protected static final eyx b = dgv.a(2.0, 10.0, 2.0, 14.0, 16.0, 14.0);
+public class dkm extends dhj {
+   public static final MapCodec<dkm> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(lu.e.q().fieldOf("potted").forGetter($$0x -> $$0x.e), u()).apply($$0, dkm::new)
+   );
+   private static final Map<dhj, dhj> d = Maps.newHashMap();
+   public static final float b = 3.0F;
+   protected static final ezm c = dhj.a(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
+   private final dhj e;
 
    @Override
    public MapCodec<dkm> a() {
       return a;
    }
 
-   protected dkm(dtz.d $$0) {
-      super($$0);
-      this.l(this.E.b().b(c, Boolean.valueOf(false)));
+   public dkm(dhj $$0, dun.d $$1) {
+      super($$1);
+      this.e = $$0;
+      d.put($$0, this);
    }
 
    @Override
-   protected void a(dub.a<dgv, dua> $$0) {
-      $$0.a(c);
+   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
+      return c;
    }
 
    @Override
-   protected eqb b_(dua $$0) {
-      return $$0.c(c) ? eqc.c.a(false) : super.b_($$0);
-   }
-
-   @Nullable
-   @Override
-   public dua a(cyw $$0) {
-      dua $$1 = super.a($$0);
-      if ($$1 != null) {
-         eqb $$2 = $$0.q().b_($$0.a());
-         return $$1.b(c, Boolean.valueOf($$2.a() == eqc.c));
+   protected brp a(cvp $$0, duo $$1, deg $$2, je $$3, cnu $$4, bro $$5, eyo $$6) {
+      duo $$8 = ($$0.h() instanceof ctr $$7 ? d.getOrDefault($$7.d(), dhl.a) : dhl.a).o();
+      if ($$8.l()) {
+         return brp.f;
+      } else if (!this.l()) {
+         return brp.c;
       } else {
-         return null;
+         $$2.a($$3, $$8, 3);
+         $$2.a($$4, dzl.c, $$3);
+         $$4.a(awo.ah);
+         $$0.a(1, $$4);
+         return brp.a;
       }
    }
 
    @Override
-   protected boolean a(dua $$0, ddv $$1, je $$2) {
-      je $$3 = $$2.d();
-      dua $$4 = $$1.a_($$3);
-      return $$4.c($$1, $$3, jj.a);
-   }
-
-   @Override
-   protected eyx a(dua $$0, dcx $$1, je $$2, eyj $$3) {
-      return b;
-   }
-
-   @Override
-   protected dua a(dua $$0, jj $$1, dua $$2, ddt $$3, je $$4, je $$5) {
-      if ($$1 == jj.b && !this.a($$0, $$3, $$4)) {
-         return dgx.a.o();
+   protected brp a(duo $$0, deg $$1, je $$2, cnu $$3, eyo $$4) {
+      if (this.l()) {
+         return brp.c;
       } else {
-         if ($$0.c(c)) {
-            $$3.a($$4, eqc.c, eqc.c.a($$3));
+         cvp $$5 = new cvp(this.e);
+         if (!$$3.j($$5)) {
+            $$3.a($$5, false);
          }
 
-         return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+         $$1.a($$2, dhl.fR.o(), 3);
+         $$1.a($$3, dzl.c, $$2);
+         return brp.a;
       }
+   }
+
+   @Override
+   public cvp a(dej $$0, je $$1, duo $$2) {
+      return this.l() ? super.a($$0, $$1, $$2) : new cvp(this.e);
+   }
+
+   private boolean l() {
+      return this.e == dhl.a;
+   }
+
+   @Override
+   protected duo a(duo $$0, jj $$1, duo $$2, deh $$3, je $$4, je $$5) {
+      return $$1 == jj.a && !$$0.a($$3, $$4) ? dhl.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
+   }
+
+   public dhj b() {
+      return this.e;
+   }
+
+   @Override
+   protected boolean a(duo $$0, ere $$1) {
+      return false;
    }
 }

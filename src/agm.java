@@ -69,8 +69,8 @@ public class agm {
       "Fist"
    };
 
-   public static String a(btj $$0) {
-      if ($$0 instanceof cnp) {
+   public static String a(bto $$0) {
+      if ($$0 instanceof cnu) {
          return $$0.aj().getString();
       } else {
          xd $$1 = $$0.al();
@@ -79,15 +79,15 @@ public class agm {
    }
 
    public static String a(UUID $$0) {
-      azk $$1 = b($$0);
+      azl $$1 = b($$0);
       return a($$1, a) + a($$1, b);
    }
 
-   private static String a(azk $$0, String[] $$1) {
+   private static String a(azl $$0, String[] $$1) {
       return ad.a($$1, $$0);
    }
 
-   private static azk b(UUID $$0) {
-      return azk.a((long)($$0.hashCode() >> 2));
+   private static azl b(UUID $$0) {
+      return azl.a((long)($$0.hashCode() >> 2));
    }
 }

@@ -1,19 +1,19 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableList;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class egi<P extends egh> {
-   public static final egi<egk> a = a("two_layers_feature_size", egk.d);
-   public static final egi<egj> b = a("three_layers_feature_size", egj.d);
-   private final MapCodec<P> c;
+public class egi implements efu {
+   public static final Codec<egi> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.list(egc.a.a).fieldOf("targets").forGetter($$0x -> $$0x.b)).apply($$0, egi::new)
+   );
+   public final List<egc.a> b;
 
-   private static <P extends egh> egi<P> a(String $$0, MapCodec<P> $$1) {
-      return ka.a(lu.Y, $$0, new egi<>($$1));
+   public egi(duo $$0, duo $$1) {
+      this(ImmutableList.of(egc.a(new eoi($$0), $$1)));
    }
 
-   private egi(MapCodec<P> $$0) {
-      this.c = $$0;
-   }
-
-   public MapCodec<P> a() {
-      return this.c;
+   public egi(List<egc.a> $$0) {
+      this.b = $$0;
    }
 }

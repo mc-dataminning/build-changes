@@ -1,51 +1,49 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public class ehj extends ehl {
-   public static final MapCodec<ehj> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               ayu.a(Codec.INT, 1, 64).fieldOf("variety").forGetter($$0x -> $$0x.i),
-               epe.a.a.fieldOf("slow_noise").forGetter($$0x -> $$0x.j),
-               ayl.m.fieldOf("slow_scale").forGetter($$0x -> $$0x.k)
-            )
-            .and(b($$0))
-            .apply($$0, ehj::new)
+public class ehj extends ehg {
+   public static final MapCodec<ehj> a = RecordCodecBuilder.mapCodec(
+      $$0 -> b($$0).and(bqu.b(0, 24).fieldOf("crown_height").forGetter($$0x -> $$0x.b)).apply($$0, ehj::new)
    );
-   private final ayu<Integer> i;
-   private final epe.a j;
-   private final float k;
-   private final epe l;
+   private final bqu b;
 
-   public ehj(ayu<Integer> $$0, epe.a $$1, float $$2, long $$3, epe.a $$4, float $$5, List<dua> $$6) {
-      super($$3, $$4, $$5, $$6);
-      this.i = $$0;
-      this.j = $$1;
-      this.k = $$2;
-      this.l = epe.b(new eav(new dzx($$3)), $$1);
+   public ehj(bqu $$0, bqu $$1, bqu $$2) {
+      super($$0, $$1);
+      this.b = $$2;
    }
 
    @Override
-   protected ehi<?> a() {
-      return ehi.e;
+   protected ehh<?> a() {
+      return ehh.h;
    }
 
    @Override
-   public dua a(azk $$0, je $$1) {
-      double $$2 = this.a($$1);
-      int $$3 = (int)azc.a($$2, -1.0, 1.0, (double)this.i.a().intValue(), (double)(this.i.b() + 1));
-      List<dua> $$4 = Lists.newArrayListWithCapacity($$3);
+   protected void a(dem $$0, ehg.b $$1, azl $$2, egq $$3, int $$4, ehg.a $$5, int $$6, int $$7, int $$8) {
+      je $$9 = $$5.a();
+      int $$10 = 0;
 
-      for (int $$5 = 0; $$5 < $$3; $$5++) {
-         $$4.add(this.a(this.h, this.a($$1.b($$5 * 54545, 0, $$5 * 34234))));
+      for (int $$11 = $$9.v() - $$6 + $$8; $$11 <= $$9.v() + $$8; $$11++) {
+         int $$12 = $$9.v() - $$11;
+         int $$13 = $$7 + $$5.b() + azd.d((float)$$12 / (float)$$6 * 3.5F);
+         int $$14;
+         if ($$12 > 0 && $$13 == $$10 && ($$11 & 1) == 0) {
+            $$14 = $$13 + 1;
+         } else {
+            $$14 = $$13;
+         }
+
+         this.a($$0, $$1, $$2, $$3, new je($$9.u(), $$11, $$9.w()), $$14, 0, $$5.c());
+         $$10 = $$13;
       }
-
-      return this.a($$4, $$1, (double)this.e);
    }
 
-   protected double a(je $$0) {
-      return this.l.a((double)((float)$$0.u() * this.k), (double)((float)$$0.v() * this.k), (double)((float)$$0.w() * this.k));
+   @Override
+   public int a(azl $$0, int $$1, egq $$2) {
+      return this.b.a($$0);
+   }
+
+   @Override
+   protected boolean a(azl $$0, int $$1, int $$2, int $$3, int $$4, boolean $$5) {
+      return $$1 + $$3 >= 7 ? true : $$1 * $$1 + $$3 * $$3 > $$4 * $$4;
    }
 }

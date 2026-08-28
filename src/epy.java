@@ -1,61 +1,24 @@
-public class epy extends eqa {
-   @Override
-   public cvg a() {
-      return cvo.a;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+
+public class epy extends eqd<epy.a> {
+   protected epy(dwx $$0) {
+      super(dep.b, $$0, new epy.a(new Long2ObjectOpenHashMap()));
    }
 
    @Override
-   public boolean a(eqb $$0, dcx $$1, je $$2, eqa $$3, jj $$4) {
-      return true;
+   protected int a(long $$0) {
+      long $$1 = kg.e($$0);
+      dwp $$2 = this.a($$1, false);
+      return $$2 == null ? 0 : $$2.a(kg.b(je.a($$0)), kg.b(je.b($$0)), kg.b(je.c($$0)));
    }
 
-   @Override
-   public eye a(dcx $$0, je $$1, eqb $$2) {
-      return eye.c;
-   }
+   protected static final class a extends eqa<epy.a> {
+      public a(Long2ObjectOpenHashMap<dwp> $$0) {
+         super($$0);
+      }
 
-   @Override
-   public int a(ddv $$0) {
-      return 0;
-   }
-
-   @Override
-   protected boolean b() {
-      return true;
-   }
-
-   @Override
-   protected float c() {
-      return 0.0F;
-   }
-
-   @Override
-   public float a(eqb $$0, dcx $$1, je $$2) {
-      return 0.0F;
-   }
-
-   @Override
-   public float a(eqb $$0) {
-      return 0.0F;
-   }
-
-   @Override
-   protected dua b(eqb $$0) {
-      return dgx.a.o();
-   }
-
-   @Override
-   public boolean c(eqb $$0) {
-      return false;
-   }
-
-   @Override
-   public int d(eqb $$0) {
-      return 0;
-   }
-
-   @Override
-   public eyx b(eqb $$0, dcx $$1, je $$2) {
-      return eyu.a();
+      public epy.a a() {
+         return new epy.a(this.a.clone());
+      }
    }
 }

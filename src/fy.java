@@ -35,20 +35,20 @@ public class fy implements ArgumentType<fy.b> {
       this.d = $$0;
    }
 
-   public static ezh a(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
+   public static ezw a(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1).iterator().next();
    }
 
-   public static Collection<ezh> b(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
+   public static Collection<ezw> b(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, Collections::emptyList);
    }
 
-   public static Collection<ezh> c(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
+   public static Collection<ezw> c(CommandContext<et> $$0, String $$1) throws CommandSyntaxException {
       return a($$0, $$1, ((et)$$0.getSource()).l().aJ()::e);
    }
 
-   public static Collection<ezh> a(CommandContext<et> $$0, String $$1, Supplier<Collection<ezh>> $$2) throws CommandSyntaxException {
-      Collection<ezh> $$3 = ((fy.b)$$0.getArgument($$1, fy.b.class)).getNames((et)$$0.getSource(), $$2);
+   public static Collection<ezw> a(CommandContext<et> $$0, String $$1, Supplier<Collection<ezw>> $$2) throws CommandSyntaxException {
+      Collection<ezw> $$3 = ((fy.b)$$0.getArgument($$1, fy.b.class)).getNames((et)$$0.getSource(), $$2);
       if ($$3.isEmpty()) {
          throw fg.d.create();
       } else {
@@ -91,7 +91,7 @@ public class fy implements ArgumentType<fy.b> {
          String $$5 = $$0.getString().substring($$4, $$0.getCursor());
          if ($$5.equals("*")) {
             return ($$0x, $$1x) -> {
-               Collection<ezh> $$2 = (Collection<ezh>)$$1x.get();
+               Collection<ezw> $$2 = (Collection<ezw>)$$1x.get();
                if ($$2.isEmpty()) {
                   throw c.create();
                } else {
@@ -99,7 +99,7 @@ public class fy implements ArgumentType<fy.b> {
                }
             };
          } else {
-            List<ezh> $$6 = List.of(ezh.c($$5));
+            List<ezw> $$6 = List.of(ezw.c($$5));
             if ($$5.startsWith("#")) {
                return ($$1x, $$2) -> $$6;
             } else {
@@ -107,11 +107,11 @@ public class fy implements ArgumentType<fy.b> {
                   UUID $$7 = UUID.fromString($$5);
                   return ($$2, $$3) -> {
                      MinecraftServer $$4x = $$2.l();
-                     ezh $$5x = null;
-                     List<ezh> $$6x = null;
+                     ezw $$5x = null;
+                     List<ezw> $$6x = null;
 
-                     for (arg $$7x : $$4x.L()) {
-                        btj $$8 = $$7x.a($$7);
+                     for (arh $$7x : $$4x.L()) {
+                        bto $$8 = $$7x.a($$7);
                         if ($$8 != null) {
                            if ($$5x == null) {
                               $$5x = $$8;
@@ -135,7 +135,7 @@ public class fy implements ArgumentType<fy.b> {
                } catch (IllegalArgumentException var7) {
                   return ($$2, $$3) -> {
                      MinecraftServer $$4x = $$2.l();
-                     arh $$5x = $$4x.ag().a($$5);
+                     ari $$5x = $$4x.ag().a($$5);
                      return $$5x != null ? List.of($$5x) : $$6;
                   };
                }
@@ -194,7 +194,7 @@ public class fy implements ArgumentType<fy.b> {
 
    @FunctionalInterface
    public interface b {
-      Collection<ezh> getNames(et var1, Supplier<Collection<ezh>> var2) throws CommandSyntaxException;
+      Collection<ezw> getNames(et var1, Supplier<Collection<ezw>> var2) throws CommandSyntaxException;
    }
 
    public static class c implements fy.b {
@@ -205,8 +205,8 @@ public class fy implements ArgumentType<fy.b> {
       }
 
       @Override
-      public Collection<ezh> getNames(et $$0, Supplier<Collection<ezh>> $$1) throws CommandSyntaxException {
-         List<? extends btj> $$2 = this.a.b($$0);
+      public Collection<ezw> getNames(et $$0, Supplier<Collection<ezw>> $$1) throws CommandSyntaxException {
+         List<? extends bto> $$2 = this.a.b($$0);
          if ($$2.isEmpty()) {
             throw fg.d.create();
          } else {

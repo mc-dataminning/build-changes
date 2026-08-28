@@ -1,43 +1,40 @@
-import java.util.Locale;
+import javax.annotation.Nullable;
 
-public enum fdg {
-   a,
-   b,
-   c,
-   d;
+public class fdg {
+   private static final int a = 786432;
+   private final fdb b;
+   @Nullable
+   private static fdg c;
 
-   private static final int e = 1024;
-
-   public static fdg a(long $$0) {
-      if ($$0 < 1024L) {
-         return a;
+   public static void a() {
+      if (c != null) {
+         throw new IllegalStateException("Tesselator has already been initialized");
       } else {
-         try {
-            int $$1 = (int)(Math.log((double)$$0) / Math.log(1024.0));
-            String $$2 = String.valueOf("KMGTPE".charAt($$1 - 1));
-            return valueOf($$2 + "B");
-         } catch (Exception var4) {
-            return d;
-         }
+         c = new fdg();
       }
    }
 
-   public static double a(long $$0, fdg $$1) {
-      return $$1 == a ? (double)$$0 : (double)$$0 / Math.pow(1024.0, (double)$$1.ordinal());
-   }
-
-   public static String b(long $$0) {
-      int $$1 = 1024;
-      if ($$0 < 1024L) {
-         return $$0 + " B";
+   public static fdg b() {
+      if (c == null) {
+         throw new IllegalStateException("Tesselator has not been initialized");
       } else {
-         int $$2 = (int)(Math.log((double)$$0) / Math.log(1024.0));
-         String $$3 = "KMGTPE".charAt($$2 - 1) + "";
-         return String.format(Locale.ROOT, "%.1f %sB", (double)$$0 / Math.pow(1024.0, (double)$$2), $$3);
+         return c;
       }
    }
 
-   public static String b(long $$0, fdg $$1) {
-      return String.format(Locale.ROOT, "%." + ($$1 == d ? "1" : "0") + "f %s", a($$0, $$1), $$1.name());
+   public fdg(int $$0) {
+      this.b = new fdb($$0);
+   }
+
+   public fdg() {
+      this(786432);
+   }
+
+   public fcz a(fdj.c $$0, fdj $$1) {
+      return new fcz(this.b, $$0, $$1);
+   }
+
+   public void c() {
+      this.b.b();
    }
 }

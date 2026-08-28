@@ -1,114 +1,163 @@
+import java.util.Optional;
 import javax.annotation.Nullable;
 
-public class ckf extends ckd implements buv {
-   private static final int c = 50;
-   private static final int d = 70;
-   private static final akg<Boolean> e = akk.a(ckf.class, aki.k);
-   public static final String b = "sheared";
+public class ckf extends bto implements bvi {
+   private static final akg<Integer> b = akk.a(ckf.class, aki.b);
+   private static final akg<duo> c = akk.a(ckf.class, aki.i);
+   private static final int d = 80;
+   private static final float e = 4.0F;
+   private static final String f = "block_state";
+   private static final String g = "fuse";
+   private static final String h = "explosion_power";
+   private static final ddz i = new ddz() {
+      @Override
+      public boolean a(ddy $$0, ddl $$1, je $$2, duo $$3, float $$4) {
+         return $$3.a(dhl.ed) ? false : super.a($$0, $$1, $$2, $$3, $$4);
+      }
 
-   public static bvl.a gr() {
-      return ckd.q().a(bvm.s, 16.0);
+      @Override
+      public Optional<Float> a(ddy $$0, ddl $$1, je $$2, duo $$3, eqp $$4) {
+         return $$3.a(dhl.ed) ? Optional.empty() : super.a($$0, $$1, $$2, $$3, $$4);
+      }
+   };
+   @Nullable
+   private buk j;
+   private boolean k;
+   private float l = 4.0F;
+
+   public ckf(btv<? extends ckf> $$0, deg $$1) {
+      super($$0, $$1);
+      this.J = true;
    }
 
-   public ckf(btq<? extends ckf> $$0, dds $$1) {
-      super($$0, $$1);
+   public ckf(deg $$0, double $$1, double $$2, double $$3, @Nullable buk $$4) {
+      this(btv.bc, $$0);
+      this.a_($$1, $$2, $$3);
+      double $$5 = $$0.z.j() * (float) (Math.PI * 2);
+      this.n(-Math.sin($$5) * 0.02, 0.2F, -Math.cos($$5) * 0.02);
+      this.b(80);
+      this.L = $$1;
+      this.M = $$2;
+      this.N = $$3;
+      this.j = $$4;
    }
 
    @Override
    protected void a(akk.a $$0) {
-      super.a($$0);
-      $$0.a(e, false);
+      $$0.a(b, 80);
+      $$0.a(c, dhl.ck.o());
    }
 
    @Override
-   public void b(uf $$0) {
-      super.b($$0);
-      $$0.a("sheared", this.gs());
+   protected bto.b bf() {
+      return bto.b.a;
    }
 
    @Override
-   public void a(uf $$0) {
-      super.a($$0);
-      this.x($$0.q("sheared"));
-   }
-
-   public boolean gs() {
-      return this.am.a(e);
-   }
-
-   public void x(boolean $$0) {
-      this.am.a(e, $$0);
+   public boolean bE() {
+      return !this.dN();
    }
 
    @Override
-   protected brk b(cnp $$0, brj $$1) {
-      cvl $$2 = $$0.b($$1);
-      if ($$2.a(cvo.rW) && this.a()) {
-         this.a(awe.h);
-         this.a(dyx.M, $$0);
+   protected double bc() {
+      return 0.04;
+   }
+
+   @Override
+   public void l() {
+      this.bT();
+      this.be();
+      this.a(buo.a, this.dv());
+      if (!this.dS().w_()) {
+         this.aI();
+      }
+
+      this.h(this.dv().c(0.98));
+      if (this.aH()) {
+         this.h(this.dv().d(0.7, -0.5, 0.7));
+      }
+
+      int $$0 = this.o() - 1;
+      this.b($$0);
+      if ($$0 <= 0) {
+         this.as();
          if (!this.dS().B) {
-            $$2.a(1, $$0, d($$1));
+            this.t();
          }
-
-         return brk.a;
       } else {
-         return super.b($$0, $$1);
+         this.bp();
+         if (this.dS().B) {
+            this.dS().a(ln.ae, this.dx(), this.dz() + 0.5, this.dD(), 0.0, 0.0, 0.0);
+         }
+      }
+   }
+
+   private void t() {
+      this.dS().a(this, ddy.a(this.dS(), this), this.k ? i : null, this.dx(), this.e(0.0625), this.dD(), this.l, false, deg.a.d);
+   }
+
+   @Override
+   protected void b(uf $$0) {
+      $$0.a("fuse", (short)this.o());
+      $$0.a("block_state", uu.a(this.q()));
+      if (this.l != 4.0F) {
+         $$0.a("explosion_power", this.l);
       }
    }
 
    @Override
-   protected awc w() {
-      return awd.cn;
-   }
-
-   @Override
-   protected awc d(bsb $$0) {
-      return awd.cp;
-   }
-
-   @Override
-   protected awc n_() {
-      return awd.co;
-   }
-
-   @Override
-   protected awc t() {
-      return awd.cr;
-   }
-
-   @Override
-   protected cnw a(cvl $$0, float $$1, @Nullable cvl $$2) {
-      cnw $$3 = super.a($$0, $$1, $$2);
-      if ($$3 instanceof cny $$4) {
-         $$4.a(new bsq(bss.s, 100));
+   protected void a(uf $$0) {
+      this.b($$0.g("fuse"));
+      if ($$0.b("block_state", 10)) {
+         this.c(uu.a(this.dS().a(lv.f), $$0.p("block_state")));
       }
 
-      return $$3;
+      if ($$0.b("explosion_power", 99)) {
+         this.l = azd.a($$0.j("explosion_power"), 0.0F, 128.0F);
+      }
+   }
+
+   @Nullable
+   public buk m() {
+      return this.j;
    }
 
    @Override
-   protected int go() {
-      return 50;
+   public void x(bto $$0) {
+      super.x($$0);
+      if ($$0 instanceof ckf $$1) {
+         this.j = $$1.j;
+      }
    }
 
+   public void b(int $$0) {
+      this.am.a(b, $$0);
+   }
+
+   public int o() {
+      return this.am.a(b);
+   }
+
+   public void c(duo $$0) {
+      this.am.a(c, $$0);
+   }
+
+   public duo q() {
+      return this.am.a(c);
+   }
+
+   private void a(boolean $$0) {
+      this.k = $$0;
+   }
+
+   @Nullable
    @Override
-   protected int gp() {
-      return 70;
-   }
+   public bto b(ern $$0) {
+      bto $$1 = super.b($$0);
+      if ($$1 instanceof ckf $$2) {
+         $$2.a(true);
+      }
 
-   @Override
-   public void a(awe $$0) {
-      this.dS().a(null, this, awd.cq, $$0, 1.0F, 1.0F);
-      this.gv();
-      this.x(true);
-   }
-
-   private void gv() {
-      this.a(esp.aO, $$0 -> this.a($$0, this.do()));
-   }
-
-   @Override
-   public boolean a() {
-      return !this.gs() && this.bI();
+      return $$1;
    }
 }

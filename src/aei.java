@@ -7,10 +7,10 @@ public class aei implements zk<abz> {
    private final double d;
    private final float e;
    private final float f;
-   private final Set<bus> g;
+   private final Set<bux> g;
    private final int h;
 
-   public aei(double $$0, double $$1, double $$2, float $$3, float $$4, Set<bus> $$5, int $$6) {
+   public aei(double $$0, double $$1, double $$2, float $$3, float $$4, Set<bux> $$5, int $$6) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -26,7 +26,7 @@ public class aei implements zk<abz> {
       this.d = $$0.readDouble();
       this.e = $$0.readFloat();
       this.f = $$0.readFloat();
-      this.g = bus.a($$0.readUnsignedByte());
+      this.g = bux.a($$0.readUnsignedByte());
       this.h = $$0.l();
    }
 
@@ -36,7 +36,7 @@ public class aei implements zk<abz> {
       $$0.a(this.d);
       $$0.a(this.e);
       $$0.a(this.f);
-      $$0.l(bus.a(this.g));
+      $$0.l(bux.a(this.g));
       $$0.c(this.h);
    }
 
@@ -73,7 +73,7 @@ public class aei implements zk<abz> {
       return this.h;
    }
 
-   public Set<bus> j() {
+   public Set<bux> j() {
       return this.g;
    }
 }

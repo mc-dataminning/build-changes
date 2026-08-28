@@ -1,8 +1,7 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+public interface fam<T> {
+   void a(fak<T> var1);
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@faf
-@fae
-interface fam {
+   boolean a(je var1, T var2);
+
+   int a();
 }

@@ -1,15 +1,15 @@
-public class dak extends cza {
-   public dak(String $$0, czg $$1, czp $$2, cvl $$3, float $$4, int $$5) {
-      super(czz.b, $$0, $$1, $$2, $$3, $$4, $$5);
-   }
+public interface dak {
+   cvp a(int var1);
 
-   @Override
-   public cvl g() {
-      return new cvl(dgx.cD);
-   }
+   int a();
 
-   @Override
-   public czy<?> as_() {
-      return czy.o;
+   default boolean b() {
+      for (int $$0 = 0; $$0 < this.a(); $$0++) {
+         if (!this.a($$0).f()) {
+            return false;
+         }
+      }
+
+      return true;
    }
 }

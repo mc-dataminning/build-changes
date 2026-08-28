@@ -1,68 +1,108 @@
-import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableList.Builder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
+import java.util.function.Function;
+import java.util.function.ToIntFunction;
+import java.util.stream.Collectors;
+import org.apache.commons.lang3.mutable.MutableInt;
 
-public abstract class dfr extends dgh implements cun {
-   public static final dur a = duq.w;
-   private final dny.a b;
+public class dfr {
+   public static <T> List<dfr.b> a(List<T> $$0, Function<T, List<jr<ekg>>> $$1, boolean $$2) {
+      Object2IntMap<ekg> $$3 = new Object2IntOpenHashMap();
+      MutableInt $$4 = new MutableInt(0);
 
-   public dfr(dny.a $$0, dtz.d $$1) {
-      super($$1);
-      this.b = $$0;
-      this.l(this.E.b().b(a, Boolean.valueOf(false)));
-   }
+      record a(int a, int b, ekg c) {
+      }
 
-   @Override
-   protected abstract MapCodec<? extends dfr> a();
+      Comparator<a> $$5 = Comparator.comparingInt(a::b).thenComparingInt(a::a);
+      Map<a, Set<a>> $$6 = new TreeMap<>($$5);
+      int $$7 = 0;
 
-   @Override
-   public dre a(je $$0, dua $$1) {
-      return new dss($$0, $$1);
-   }
+      for (T $$8 : $$0) {
+         List<a> $$9 = Lists.newArrayList();
+         List<jr<ekg>> $$10 = $$1.apply($$8);
+         $$7 = Math.max($$7, $$10.size());
 
-   @Nullable
-   @Override
-   public <T extends dre> drf<T> a(dds $$0, dua $$1, drg<T> $$2) {
-      if ($$0.B) {
-         boolean $$3 = $$1.a(dgx.gO) || $$1.a(dgx.gP) || $$1.a(dgx.gQ) || $$1.a(dgx.gR);
-         if ($$3) {
-            return a($$2, drg.p, dss::a);
+         for (int $$11 = 0; $$11 < $$10.size(); $$11++) {
+            for (jn<ekg> $$12 : $$10.get($$11)) {
+               ekg $$13 = $$12.a();
+               $$9.add(new a($$3.computeIfAbsent($$13, $$1x -> $$4.getAndIncrement()), $$11, $$13));
+            }
+         }
+
+         for (int $$14 = 0; $$14 < $$9.size(); $$14++) {
+            Set<a> $$15 = $$6.computeIfAbsent($$9.get($$14), $$1x -> new TreeSet<>($$5));
+            if ($$14 < $$9.size() - 1) {
+               $$15.add($$9.get($$14 + 1));
+            }
          }
       }
 
-      return null;
-   }
+      Set<a> $$16 = new TreeSet<>($$5);
+      Set<a> $$17 = new TreeSet<>($$5);
+      List<a> $$18 = Lists.newArrayList();
 
-   public dny.a b() {
-      return this.b;
-   }
-
-   @Override
-   protected boolean a(dua $$0, eqq $$1) {
-      return false;
-   }
-
-   @Override
-   public btr m() {
-      return btr.f;
-   }
-
-   @Override
-   protected void a(dub.a<dgv, dua> $$0) {
-      $$0.a(a);
-   }
-
-   @Override
-   public dua a(cyw $$0) {
-      return this.o().b(a, Boolean.valueOf($$0.q().C($$0.a())));
-   }
-
-   @Override
-   protected void a(dua $$0, dds $$1, je $$2, dgv $$3, @Nullable erj $$4, boolean $$5) {
-      if (!$$1.B) {
-         boolean $$6 = $$1.C($$2);
-         if ($$6 != $$0.c(a)) {
-            $$1.a($$2, $$0.b(a, Boolean.valueOf($$6)), 2);
+      for (a $$19 : $$6.keySet()) {
+         if (!$$17.isEmpty()) {
+            throw new IllegalStateException("You somehow broke the universe; DFS bork (iteration finished with non-empty in-progress vertex set");
          }
+
+         if (!$$16.contains($$19) && ays.a($$6, $$16, $$17, $$18::add, $$19)) {
+            if (!$$2) {
+               throw new IllegalStateException("Feature order cycle found");
+            }
+
+            List<T> $$20 = new ArrayList<>($$0);
+
+            int $$21;
+            do {
+               $$21 = $$20.size();
+               ListIterator<T> $$22 = $$20.listIterator();
+
+               while ($$22.hasNext()) {
+                  T $$23 = $$22.next();
+                  $$22.remove();
+
+                  try {
+                     a($$20, $$1, false);
+                  } catch (IllegalStateException var18) {
+                     continue;
+                  }
+
+                  $$22.add($$23);
+               }
+            } while ($$21 != $$20.size());
+
+            throw new IllegalStateException("Feature order cycle found, involved sources: " + $$20);
+         }
+      }
+
+      Collections.reverse($$18);
+      Builder<dfr.b> $$25 = ImmutableList.builder();
+
+      for (int $$26 = 0; $$26 < $$7; $$26++) {
+         int $$27 = $$26;
+         List<ekg> $$28 = $$18.stream().filter($$1x -> $$1x.b() == $$27).map(a::c).collect(Collectors.toList());
+         $$25.add(new dfr.b($$28));
+      }
+
+      return $$25.build();
+   }
+
+   public static record b(List<ekg> a, ToIntFunction<ekg> b) {
+      b(List<ekg> $$0) {
+         this($$0, ad.h($$0));
       }
    }
 }

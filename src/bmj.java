@@ -1,66 +1,21 @@
-import com.google.common.collect.Maps;
-import java.util.EnumMap;
-import java.util.LinkedList;
+import com.mojang.datafixers.DSL;
+import com.mojang.datafixers.schemas.Schema;
+import com.mojang.datafixers.types.templates.TypeTemplate;
 import java.util.Map;
-import java.util.Queue;
+import java.util.function.Supplier;
 
-public class bmj {
-   public static final int a = 200;
-   public static final int b = 10000;
-   private final avg c;
-   private final EnumMap<bml, Map<arh, bmj.b>> d;
-   private final Queue<bmj.a> e = new LinkedList<>();
-
-   public bmj(avg $$0) {
-      this.c = $$0;
-      this.d = new EnumMap<>(bml.class);
-
-      for (bml $$1 : bml.values()) {
-         this.d.put($$1, Maps.newHashMap());
-      }
+public class bmj extends biz {
+   public bmj(int $$0, Schema $$1) {
+      super($$0, $$1);
    }
 
-   public boolean a(bml $$0) {
-      return !this.d.get($$0).isEmpty();
+   protected static void a(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, String $$2) {
+      $$0.register($$1, $$2, () -> DSL.optionalFields("Items", DSL.list(bhm.t.in($$0))));
    }
 
-   public void a(ada $$0) {
-      for (arh $$2 : this.d.get($$0.e()).keySet()) {
-         $$2.c.b($$0);
-      }
-   }
-
-   public void a(arh $$0, bml $$1) {
-      if (this.c.f($$0.gb())) {
-         this.e.add(new bmj.a($$0, $$1));
-      }
-   }
-
-   public void a(int $$0) {
-      long $$1 = ad.c();
-      this.a($$1, $$0);
-      this.b($$1, $$0);
-   }
-
-   private void a(long $$0, int $$1) {
-      for (bmj.a $$2 : this.e) {
-         this.d.get($$2.b()).put($$2.a(), new bmj.b($$0, $$1));
-      }
-   }
-
-   private void b(long $$0, int $$1) {
-      for (Map<arh, bmj.b> $$2 : this.d.values()) {
-         $$2.entrySet().removeIf($$2x -> {
-            boolean $$3 = !this.c.f(((arh)$$2x.getKey()).gb());
-            bmj.b $$4 = (bmj.b)$$2x.getValue();
-            return $$3 || $$1 > $$4.b() + 200 && $$0 > $$4.a() + 10000L;
-         });
-      }
-   }
-
-   static record a(arh a, bml b) {
-   }
-
-   static record b(long a, int b) {
+   public Map<String, Supplier<TypeTemplate>> registerBlockEntities(Schema $$0) {
+      Map<String, Supplier<TypeTemplate>> $$1 = super.registerBlockEntities($$0);
+      a($$0, $$1, "minecraft:shulker_box");
+      return $$1;
    }
 }

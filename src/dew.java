@@ -1,3 +1,7 @@
-public interface dew {
-   jn<det> getNoiseBiome(int var1, int var2, int var3, dfc.f var4);
+public interface dew extends deh {
+   arh E();
+
+   default void a_(bto $$0) {
+      $$0.cY().forEach(this::b);
+   }
 }

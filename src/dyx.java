@@ -1,133 +1,122 @@
-import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.longs.Long2ObjectFunction;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongAVLTreeSet;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.longs.LongSortedSet;
+import java.util.Objects;
+import java.util.Spliterators;
+import java.util.PrimitiveIterator.OfLong;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 import javax.annotation.Nullable;
 
-public record dyx(int ak) {
-   public static final jn.c<dyx> a = a("block_activate");
-   public static final jn.c<dyx> b = a("block_attach");
-   public static final jn.c<dyx> c = a("block_change");
-   public static final jn.c<dyx> d = a("block_close");
-   public static final jn.c<dyx> e = a("block_deactivate");
-   public static final jn.c<dyx> f = a("block_destroy");
-   public static final jn.c<dyx> g = a("block_detach");
-   public static final jn.c<dyx> h = a("block_open");
-   public static final jn.c<dyx> i = a("block_place");
-   public static final jn.c<dyx> j = a("container_close");
-   public static final jn.c<dyx> k = a("container_open");
-   public static final jn.c<dyx> l = a("drink");
-   public static final jn.c<dyx> m = a("eat");
-   public static final jn.c<dyx> n = a("elytra_glide");
-   public static final jn.c<dyx> o = a("entity_damage");
-   public static final jn.c<dyx> p = a("entity_die");
-   public static final jn.c<dyx> q = a("entity_dismount");
-   public static final jn.c<dyx> r = a("entity_interact");
-   public static final jn.c<dyx> s = a("entity_mount");
-   public static final jn.c<dyx> t = a("entity_place");
-   public static final jn.c<dyx> u = a("entity_action");
-   public static final jn.c<dyx> v = a("equip");
-   public static final jn.c<dyx> w = a("explode");
-   public static final jn.c<dyx> x = a("flap");
-   public static final jn.c<dyx> y = a("fluid_pickup");
-   public static final jn.c<dyx> z = a("fluid_place");
-   public static final jn.c<dyx> A = a("hit_ground");
-   public static final jn.c<dyx> B = a("instrument_play");
-   public static final jn.c<dyx> C = a("item_interact_finish");
-   public static final jn.c<dyx> D = a("item_interact_start");
-   public static final jn.c<dyx> E = a("jukebox_play", 10);
-   public static final jn.c<dyx> F = a("jukebox_stop_play", 10);
-   public static final jn.c<dyx> G = a("lightning_strike");
-   public static final jn.c<dyx> H = a("note_block_play");
-   public static final jn.c<dyx> I = a("prime_fuse");
-   public static final jn.c<dyx> J = a("projectile_land");
-   public static final jn.c<dyx> K = a("projectile_shoot");
-   public static final jn.c<dyx> L = a("sculk_sensor_tendrils_clicking");
-   public static final jn.c<dyx> M = a("shear");
-   public static final jn.c<dyx> N = a("shriek", 32);
-   public static final jn.c<dyx> O = a("splash");
-   public static final jn.c<dyx> P = a("step");
-   public static final jn.c<dyx> Q = a("swim");
-   public static final jn.c<dyx> R = a("teleport");
-   public static final jn.c<dyx> S = a("unequip");
-   public static final jn.c<dyx> T = a("resonate_1");
-   public static final jn.c<dyx> U = a("resonate_2");
-   public static final jn.c<dyx> V = a("resonate_3");
-   public static final jn.c<dyx> W = a("resonate_4");
-   public static final jn.c<dyx> X = a("resonate_5");
-   public static final jn.c<dyx> Y = a("resonate_6");
-   public static final jn.c<dyx> Z = a("resonate_7");
-   public static final jn.c<dyx> aa = a("resonate_8");
-   public static final jn.c<dyx> ab = a("resonate_9");
-   public static final jn.c<dyx> ac = a("resonate_10");
-   public static final jn.c<dyx> ad = a("resonate_11");
-   public static final jn.c<dyx> ae = a("resonate_12");
-   public static final jn.c<dyx> af = a("resonate_13");
-   public static final jn.c<dyx> ag = a("resonate_14");
-   public static final jn.c<dyx> ah = a("resonate_15");
-   public static final int ai = 16;
-   public static final Codec<jn<dyx>> aj = aky.a(lv.G);
+public class dyx<T extends dys> {
+   public static final int a = 2;
+   public static final int b = 4;
+   private final Class<T> c;
+   private final Long2ObjectFunction<dzf> d;
+   private final Long2ObjectMap<dyw<T>> e = new Long2ObjectOpenHashMap();
+   private final LongSortedSet f = new LongAVLTreeSet();
 
-   public static jn<dyx> a(ka<dyx> $$0) {
-      return a;
+   public dyx(Class<T> $$0, Long2ObjectFunction<dzf> $$1) {
+      this.c = $$0;
+      this.d = $$1;
    }
 
-   public int a() {
-      return this.ak;
-   }
+   public void a(eyn $$0, axp<dyw<T>> $$1) {
+      int $$2 = kg.a($$0.a - 2.0);
+      int $$3 = kg.a($$0.b - 4.0);
+      int $$4 = kg.a($$0.c - 2.0);
+      int $$5 = kg.a($$0.d + 2.0);
+      int $$6 = kg.a($$0.e + 0.0);
+      int $$7 = kg.a($$0.f + 2.0);
 
-   private static jn.c<dyx> a(String $$0) {
-      return a($$0, 16);
-   }
+      for (int $$8 = $$2; $$8 <= $$5; $$8++) {
+         long $$9 = kg.b($$8, 0, 0);
+         long $$10 = kg.b($$8, -1, -1);
+         LongIterator $$11 = this.f.subSet($$9, $$10 + 1L).iterator();
 
-   private static jn.c<dyx> a(String $$0, int $$1) {
-      return ka.b(lu.a, alb.b($$0), new dyx($$1));
-   }
-
-   public static record a(@Nullable btj a, @Nullable dua b) {
-      public static dyx.a a(@Nullable btj $$0) {
-         return new dyx.a($$0, null);
-      }
-
-      public static dyx.a a(@Nullable dua $$0) {
-         return new dyx.a(null, $$0);
-      }
-
-      public static dyx.a a(@Nullable btj $$0, @Nullable dua $$1) {
-         return new dyx.a($$0, $$1);
+         while ($$11.hasNext()) {
+            long $$12 = $$11.nextLong();
+            int $$13 = kg.c($$12);
+            int $$14 = kg.d($$12);
+            if ($$13 >= $$3 && $$13 <= $$6 && $$14 >= $$4 && $$14 <= $$7) {
+               dyw<T> $$15 = (dyw<T>)this.e.get($$12);
+               if ($$15 != null && !$$15.a() && $$15.c().b() && $$1.accept($$15).a()) {
+                  return;
+               }
+            }
+         }
       }
    }
 
-   public static final class b implements Comparable<dyx.b> {
-      private final jn<dyx> a;
-      private final eye b;
-      private final dyx.a c;
-      private final dyz d;
-      private final double e;
-
-      public b(jn<dyx> $$0, eye $$1, dyx.a $$2, dyz $$3, eye $$4) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$1.g($$4);
+   public LongStream a(long $$0) {
+      int $$1 = ddm.a($$0);
+      int $$2 = ddm.b($$0);
+      LongSortedSet $$3 = this.a($$1, $$2);
+      if ($$3.isEmpty()) {
+         return LongStream.empty();
+      } else {
+         OfLong $$4 = $$3.iterator();
+         return StreamSupport.longStream(Spliterators.spliteratorUnknownSize($$4, 1301), false);
       }
+   }
 
-      public int a(dyx.b $$0) {
-         return Double.compare(this.e, $$0.e);
-      }
+   private LongSortedSet a(int $$0, int $$1) {
+      long $$2 = kg.b($$0, 0, $$1);
+      long $$3 = kg.b($$0, -1, $$1);
+      return this.f.subSet($$2, $$3 + 1L);
+   }
 
-      public jn<dyx> a() {
-         return this.a;
-      }
+   public Stream<dyw<T>> b(long $$0) {
+      return this.a($$0).<dyw<T>>mapToObj(this.e::get).filter(Objects::nonNull);
+   }
 
-      public eye b() {
-         return this.b;
-      }
+   private static long f(long $$0) {
+      return ddm.c(kg.b($$0), kg.d($$0));
+   }
 
-      public dyx.a c() {
-         return this.c;
-      }
+   public dyw<T> c(long $$0) {
+      return (dyw<T>)this.e.computeIfAbsent($$0, this::g);
+   }
 
-      public dyz d() {
-         return this.d;
-      }
+   @Nullable
+   public dyw<T> d(long $$0) {
+      return (dyw<T>)this.e.get($$0);
+   }
+
+   private dyw<T> g(long $$0) {
+      long $$1 = f($$0);
+      dzf $$2 = (dzf)this.d.get($$1);
+      this.f.add($$0);
+      return new dyw<>(this.c, $$2);
+   }
+
+   public LongSet a() {
+      LongSet $$0 = new LongOpenHashSet();
+      this.e.keySet().forEach($$1 -> $$0.add(f($$1)));
+      return $$0;
+   }
+
+   public void b(eyn $$0, axp<T> $$1) {
+      this.a($$0, $$2 -> $$2.a($$0, $$1));
+   }
+
+   public <U extends T> void a(dyz<T, U> $$0, eyn $$1, axp<U> $$2) {
+      this.a($$1, $$3 -> $$3.a($$0, $$1, $$2));
+   }
+
+   public void e(long $$0) {
+      this.e.remove($$0);
+      this.f.remove($$0);
+   }
+
+   @baj
+   public int b() {
+      return this.f.size();
    }
 }

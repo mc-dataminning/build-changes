@@ -1,91 +1,55 @@
-import org.jetbrains.annotations.Nullable;
+import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
+import java.util.function.Predicate;
 
-public class btx extends cgu {
-   private static final akg<Integer> ch = akk.a(btx.class, aki.b);
+public enum btx implements azz {
+   a(0, "any", $$0 -> true),
+   b(1, "mainhand", btw.a),
+   c(2, "offhand", btw.b),
+   d(3, "hand", $$0 -> $$0.a() == btw.a.a),
+   e(4, "feet", btw.c),
+   f(5, "legs", btw.d),
+   g(6, "chest", btw.e),
+   h(7, "head", btw.f),
+   i(8, "armor", btw::f),
+   j(9, "body", btw.g);
 
-   public btx(btq<? extends btx> $$0, dds $$1) {
-      super($$0, $$1);
+   public static final IntFunction<btx> k = axu.a($$0 -> $$0.n, values(), axu.a.a);
+   public static final Codec<btx> l = azz.a(btx::values);
+   public static final zb<ByteBuf, btx> m = yz.a(k, $$0 -> $$0.n);
+   private final int n;
+   private final String o;
+   private final Predicate<btw> p;
+
+   private btx(final int $$0, final String $$1, final Predicate<btw> $$2) {
+      this.n = $$0;
+      this.o = $$1;
+      this.p = $$2;
+   }
+
+   private btx(final int $$0, final String $$1, final btw $$2) {
+      this($$0, $$1, $$1x -> $$1x == $$2);
+   }
+
+   public static btx a(btw $$0) {
+      return switch ($$0) {
+         case a -> b;
+         case b -> c;
+         case c -> e;
+         case d -> f;
+         case e -> g;
+         case f -> h;
+         case g -> j;
+      };
    }
 
    @Override
-   protected ll q() {
-      return ln.aP;
+   public String c() {
+      return this.o;
    }
 
-   @Override
-   protected void a(akk.a $$0) {
-      super.a($$0);
-      $$0.a(ch, 0);
-   }
-
-   @Nullable
-   @Override
-   public btc a(arg $$0, btc $$1) {
-      return btq.W.a($$0, btp.e);
-   }
-
-   @Override
-   protected awc t() {
-      return awd.kK;
-   }
-
-   @Override
-   protected awc w() {
-      return awd.kH;
-   }
-
-   @Override
-   protected awc d(bsb $$0) {
-      return awd.kJ;
-   }
-
-   @Override
-   protected awc n_() {
-      return awd.kI;
-   }
-
-   @Override
-   public void b(uf $$0) {
-      super.b($$0);
-      $$0.a("DarkTicksRemaining", this.y());
-   }
-
-   @Override
-   public void a(uf $$0) {
-      super.a($$0);
-      this.t($$0.h("DarkTicksRemaining"));
-   }
-
-   @Override
-   public void m_() {
-      super.m_();
-      int $$0 = this.y();
-      if ($$0 > 0) {
-         this.t($$0 - 1);
-      }
-
-      this.dS().a(ln.aQ, this.d(0.6), this.dA(), this.g(0.6), 0.0, 0.0, 0.0);
-   }
-
-   @Override
-   public boolean a(bsb $$0, float $$1) {
-      boolean $$2 = super.a($$0, $$1);
-      if ($$2) {
-         this.t(100);
-      }
-
-      return $$2;
-   }
-
-   private void t(int $$0) {
-      this.am.a(ch, $$0);
-   }
-
-   public int y() {
-      return this.am.a(ch);
-   }
-
-   public static boolean a(btq<? extends buf> $$0, dei $$1, btp $$2, je $$3, azk $$4) {
-      return $$3.v() <= $$1.N() - 33 && $$1.b($$3, 0) == 0 && $$1.a_($$3).a(dgx.G);
+   public boolean b(btw $$0) {
+      return this.p.test($$0);
    }
 }

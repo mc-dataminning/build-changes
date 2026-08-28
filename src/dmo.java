@@ -1,19 +1,25 @@
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dmo {
-   default int a(arg $$0, btj $$1) {
-      return 0;
+public class dmo extends dhs {
+   public static final MapCodec<dmo> a = b(dmo::new);
+   protected static final ezm b = dhj.a(2.0, 0.0, 2.0, 14.0, 3.0, 14.0);
+
+   @Override
+   public MapCodec<dmo> a() {
+      return a;
    }
 
-   @Nullable
-   eqz a(arg var1, btj var2, je var3);
-
-   default dmo.a b() {
-      return dmo.a.b;
+   public dmo(dun.d $$0) {
+      super($$0);
    }
 
-   public static enum a {
-      a,
-      b;
+   @Override
+   protected ezm a(duo $$0, ddl $$1, je $$2, eyx $$3) {
+      return b;
+   }
+
+   @Override
+   protected boolean b(duo $$0, ddl $$1, je $$2) {
+      return $$0.a(awt.aM) || $$0.a(dhl.dX) || super.b($$0, $$1, $$2);
    }
 }

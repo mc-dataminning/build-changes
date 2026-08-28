@@ -2,7 +2,7 @@ public class aex implements zk<abz> {
    public static final zb<wa, aex> a = zk.a(aex::a, aex::new);
    private final int b;
 
-   public aex(dvr $$0) {
+   public aex(dwf $$0) {
       this.b = $$0.q();
    }
 

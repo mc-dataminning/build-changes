@@ -1,69 +1,56 @@
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class cjb extends ciu {
+public class cjb extends ciz {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 10;
    @Nullable
-   private eye b;
+   private eys d;
+   private int e;
 
-   public cjb(cis $$0) {
+   public cjb(cix $$0) {
       super($$0);
    }
 
    @Override
-   public void b() {
-      eye $$0 = this.a.J(1.0F).d();
-      $$0.b((float) (-Math.PI / 4));
-      double $$1 = this.a.d.dx();
-      double $$2 = this.a.d.e(0.5);
-      double $$3 = this.a.d.dD();
-
-      for (int $$4 = 0; $$4 < 8; $$4++) {
-         azk $$5 = this.a.dV();
-         double $$6 = $$1 + $$5.k() / 2.0;
-         double $$7 = $$2 + $$5.k() / 2.0;
-         double $$8 = $$3 + $$5.k() / 2.0;
-         eye $$9 = this.a.dv();
-         this.a.dS().a(ln.h, $$6, $$7, $$8, -$$0.d * 0.08F + $$9.d, -$$0.e * 0.3F + $$9.e, -$$0.f * 0.08F + $$9.f);
-         $$0.b((float) (Math.PI / 16));
-      }
-   }
-
-   @Override
    public void c() {
-      if (this.b == null) {
-         this.b = eye.c(this.a.dS().a(dzw.a.f, edb.a(this.a.q())));
+      if (this.d == null) {
+         b.warn("Aborting charge player as no target was set.");
+         this.a.gm().a(cjn.a);
+      } else if (this.e > 0 && this.e++ >= 10) {
+         this.a.gm().a(cjn.a);
+      } else {
+         double $$0 = this.d.c(this.a.dx(), this.a.dz(), this.a.dD());
+         if ($$0 < 100.0 || $$0 > 22500.0 || this.a.Q || this.a.R) {
+            this.e++;
+         }
       }
-
-      if (this.b.c(this.a.dx(), this.a.dz(), this.a.dD()) < 1.0) {
-         this.a.gl().b(cji.f).j();
-         this.a.gl().a(cji.g);
-      }
-   }
-
-   @Override
-   public float f() {
-      return 1.5F;
-   }
-
-   @Override
-   public float h() {
-      float $$0 = (float)this.a.dv().i() + 1.0F;
-      float $$1 = Math.min($$0, 40.0F);
-      return $$1 / $$0;
    }
 
    @Override
    public void d() {
-      this.b = null;
+      this.d = null;
+      this.e = 0;
+   }
+
+   public void a(eys $$0) {
+      this.d = $$0;
+   }
+
+   @Override
+   public float f() {
+      return 3.0F;
    }
 
    @Nullable
    @Override
-   public eye g() {
-      return this.b;
+   public eys g() {
+      return this.d;
    }
 
    @Override
-   public cji<cjb> i() {
-      return cji.d;
+   public cjn<cjb> i() {
+      return cjn.i;
    }
 }

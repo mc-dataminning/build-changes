@@ -1,5 +1,5 @@
-public record acx(cvg b, int c) implements zk<abz> {
-   public static final zb<wo, acx> a = zb.a(yz.a(lv.K), acx::b, yz.g, acx::e, acx::new);
+public record acx(alc b, int c) implements zk<abz> {
+   public static final zb<wo, acx> a = zb.a(alc.b, acx::b, yz.g, acx::e, acx::new);
 
    @Override
    public zm<acx> a() {

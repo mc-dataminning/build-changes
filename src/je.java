@@ -34,7 +34,7 @@ public class je extends ki {
    };
    private static final Logger e = LogUtils.getLogger();
    public static final je c = new je(0, 0, 0);
-   private static final int h = 1 + azc.f(azc.c(30000000));
+   private static final int h = 1 + azd.f(azd.c(30000000));
    private static final int i = h;
    public static final int d = 64 - h - i;
    private static final long j = (1L << h) - 1L;
@@ -77,7 +77,7 @@ public class je extends ki {
    }
 
    public static je a(double $$0, double $$1, double $$2) {
-      return new je(azc.a($$0), azc.a($$1), azc.a($$2));
+      return new je(azd.a($$0), azd.a($$1), azd.a($$2));
    }
 
    public static je a(jx $$0) {
@@ -111,12 +111,12 @@ public class je extends ki {
       return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new je(this.u() + $$0, this.v() + $$1, this.w() + $$2);
    }
 
-   public eye b() {
-      return eye.b(this);
+   public eys b() {
+      return eys.b(this);
    }
 
-   public eye c() {
-      return eye.c(this);
+   public eys c() {
+      return eys.c(this);
    }
 
    public je a(ki $$0) {
@@ -202,7 +202,7 @@ public class je extends ki {
       }
    }
 
-   public je a(dnj $$0) {
+   public je a(dnx $$0) {
       switch ($$0) {
          case a:
          default:
@@ -232,15 +232,15 @@ public class je extends ki {
       return new je.a(this.u(), this.v(), this.w());
    }
 
-   public eye a(eye $$0) {
-      return new eye(
-         azc.a($$0.d, (double)((float)this.u() + 1.0E-5F), (double)this.u() + 1.0 - 1.0E-5F),
-         azc.a($$0.e, (double)((float)this.v() + 1.0E-5F), (double)this.v() + 1.0 - 1.0E-5F),
-         azc.a($$0.f, (double)((float)this.w() + 1.0E-5F), (double)this.w() + 1.0 - 1.0E-5F)
+   public eys a(eys $$0) {
+      return new eys(
+         azd.a($$0.d, (double)((float)this.u() + 1.0E-5F), (double)this.u() + 1.0 - 1.0E-5F),
+         azd.a($$0.e, (double)((float)this.v() + 1.0E-5F), (double)this.v() + 1.0 - 1.0E-5F),
+         azd.a($$0.f, (double)((float)this.w() + 1.0E-5F), (double)this.w() + 1.0 - 1.0E-5F)
       );
    }
 
-   public static Iterable<je> a(azk $$0, int $$1, je $$2, int $$3) {
+   public static Iterable<je> a(azl $$0, int $$1, je $$2, int $$3) {
       return a($$0, $$1, $$2.u() - $$3, $$2.v() - $$3, $$2.w() - $$3, $$2.u() + $$3, $$2.v() + $$3, $$2.w() + $$3);
    }
 
@@ -249,7 +249,7 @@ public class je extends ki {
       return Stream.of($$0, $$0.g(), $$0.i(), $$0.g().i());
    }
 
-   public static Iterable<je> a(azk $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
+   public static Iterable<je> a(azl $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7) {
       int $$8 = $$5 - $$2 + 1;
       int $$9 = $$6 - $$3 + 1;
       int $$10 = $$7 - $$4 + 1;
@@ -336,7 +336,7 @@ public class je extends ki {
       return StreamSupport.stream(a($$0, $$1, $$2, $$3).spliterator(), false);
    }
 
-   public static Iterable<je> a(exz $$0) {
+   public static Iterable<je> a(eyn $$0) {
       je $$1 = a($$0.a, $$0.b, $$0.c);
       je $$2 = a($$0.d, $$0.e, $$0.f);
       return c($$1, $$2);
@@ -357,7 +357,7 @@ public class je extends ki {
       return StreamSupport.stream(c($$0, $$1).spliterator(), false);
    }
 
-   public static Stream<je> a(ekg $$0) {
+   public static Stream<je> a(eku $$0) {
       return a(
          Math.min($$0.h(), $$0.k()),
          Math.min($$0.i(), $$0.l()),
@@ -368,8 +368,8 @@ public class je extends ki {
       );
    }
 
-   public static Stream<je> b(exz $$0) {
-      return a(azc.a($$0.a), azc.a($$0.b), azc.a($$0.c), azc.a($$0.d), azc.a($$0.e), azc.a($$0.f));
+   public static Stream<je> b(eyn $$0) {
+      return a(azd.a($$0.a), azd.a($$0.b), azd.a($$0.c), azd.a($$0.d), azd.a($$0.e), azd.a($$0.f));
    }
 
    public static Stream<je> a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
@@ -469,7 +469,7 @@ public class je extends ki {
       }
 
       public a(double $$0, double $$1, double $$2) {
-         this(azc.a($$0), azc.a($$1), azc.a($$2));
+         this(azd.a($$0), azd.a($$1), azd.a($$2));
       }
 
       @Override
@@ -493,7 +493,7 @@ public class je extends ki {
       }
 
       @Override
-      public je a(dnj $$0) {
+      public je a(dnx $$0) {
          return super.a($$0).j();
       }
 
@@ -505,7 +505,7 @@ public class je extends ki {
       }
 
       public je.a b(double $$0, double $$1, double $$2) {
-         return this.d(azc.a($$0), azc.a($$1), azc.a($$2));
+         return this.d(azd.a($$0), azd.a($$1), azd.a($$2));
       }
 
       public je.a g(ki $$0) {
@@ -551,11 +551,11 @@ public class je extends ki {
       public je.a a(jj.a $$0, int $$1, int $$2) {
          switch ($$0) {
             case a:
-               return this.d(azc.a(this.u(), $$1, $$2), this.v(), this.w());
+               return this.d(azd.a(this.u(), $$1, $$2), this.v(), this.w());
             case b:
-               return this.d(this.u(), azc.a(this.v(), $$1, $$2), this.w());
+               return this.d(this.u(), azd.a(this.v(), $$1, $$2), this.w());
             case c:
-               return this.d(this.u(), this.v(), azc.a(this.w(), $$1, $$2));
+               return this.d(this.u(), this.v(), azd.a(this.w(), $$1, $$2));
             default:
                throw new IllegalStateException("Unable to clamp axis " + $$0);
          }

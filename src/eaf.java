@@ -1,71 +1,112 @@
-public class eaf {
-   public static final ala<epe.a> a = a("temperature");
-   public static final ala<epe.a> b = a("vegetation");
-   public static final ala<epe.a> c = a("continentalness");
-   public static final ala<epe.a> d = a("erosion");
-   public static final ala<epe.a> e = a("temperature_large");
-   public static final ala<epe.a> f = a("vegetation_large");
-   public static final ala<epe.a> g = a("continentalness_large");
-   public static final ala<epe.a> h = a("erosion_large");
-   public static final ala<epe.a> i = a("ridge");
-   public static final ala<epe.a> j = a("offset");
-   public static final ala<epe.a> k = a("aquifer_barrier");
-   public static final ala<epe.a> l = a("aquifer_fluid_level_floodedness");
-   public static final ala<epe.a> m = a("aquifer_lava");
-   public static final ala<epe.a> n = a("aquifer_fluid_level_spread");
-   public static final ala<epe.a> o = a("pillar");
-   public static final ala<epe.a> p = a("pillar_rareness");
-   public static final ala<epe.a> q = a("pillar_thickness");
-   public static final ala<epe.a> r = a("spaghetti_2d");
-   public static final ala<epe.a> s = a("spaghetti_2d_elevation");
-   public static final ala<epe.a> t = a("spaghetti_2d_modulator");
-   public static final ala<epe.a> u = a("spaghetti_2d_thickness");
-   public static final ala<epe.a> v = a("spaghetti_3d_1");
-   public static final ala<epe.a> w = a("spaghetti_3d_2");
-   public static final ala<epe.a> x = a("spaghetti_3d_rarity");
-   public static final ala<epe.a> y = a("spaghetti_3d_thickness");
-   public static final ala<epe.a> z = a("spaghetti_roughness");
-   public static final ala<epe.a> A = a("spaghetti_roughness_modulator");
-   public static final ala<epe.a> B = a("cave_entrance");
-   public static final ala<epe.a> C = a("cave_layer");
-   public static final ala<epe.a> D = a("cave_cheese");
-   public static final ala<epe.a> E = a("ore_veininess");
-   public static final ala<epe.a> F = a("ore_vein_a");
-   public static final ala<epe.a> G = a("ore_vein_b");
-   public static final ala<epe.a> H = a("ore_gap");
-   public static final ala<epe.a> I = a("noodle");
-   public static final ala<epe.a> J = a("noodle_thickness");
-   public static final ala<epe.a> K = a("noodle_ridge_a");
-   public static final ala<epe.a> L = a("noodle_ridge_b");
-   public static final ala<epe.a> M = a("jagged");
-   public static final ala<epe.a> N = a("surface");
-   public static final ala<epe.a> O = a("surface_secondary");
-   public static final ala<epe.a> P = a("clay_bands_offset");
-   public static final ala<epe.a> Q = a("badlands_pillar");
-   public static final ala<epe.a> R = a("badlands_pillar_roof");
-   public static final ala<epe.a> S = a("badlands_surface");
-   public static final ala<epe.a> T = a("iceberg_pillar");
-   public static final ala<epe.a> U = a("iceberg_pillar_roof");
-   public static final ala<epe.a> V = a("iceberg_surface");
-   public static final ala<epe.a> W = a("surface_swamp");
-   public static final ala<epe.a> X = a("calcite");
-   public static final ala<epe.a> Y = a("gravel");
-   public static final ala<epe.a> Z = a("powder_snow");
-   public static final ala<epe.a> aa = a("packed_ice");
-   public static final ala<epe.a> ab = a("ice");
-   public static final ala<epe.a> ac = a("soul_sand_layer");
-   public static final ala<epe.a> ad = a("gravel_layer");
-   public static final ala<epe.a> ae = a("patch");
-   public static final ala<epe.a> af = a("netherrack");
-   public static final ala<epe.a> ag = a("nether_wart");
-   public static final ala<epe.a> ah = a("nether_state_selector");
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 
-   private static ala<epe.a> a(String $$0) {
-      return ala.a(lv.aP, alb.b($$0));
+public class eaf extends dwl {
+   public static final MapCodec<eaf> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ejf.a.fieldOf("settings").forGetter(eaf::h)).apply($$0, $$0.stable(eaf::new))
+   );
+   private final ejf d;
+
+   public eaf(ejf $$0) {
+      super(new dfs($$0.d()), ad.b($$0::a));
+      this.d = $$0;
    }
 
-   public static epe a(jo<epe.a> $$0, eaj $$1, ala<epe.a> $$2) {
-      jn<epe.a> $$3 = $$0.b($$2);
-      return epe.b($$1.a($$3.e().orElseThrow().a()), $$3.a());
+   @Override
+   public dwm a(jp<eli> $$0, eay $$1, long $$2) {
+      Stream<jn<eli>> $$3 = this.d.c().map(jr::a).orElseGet(() -> $$0.b().map($$0xx -> $$0xx));
+      return dwm.a($$1, $$2, this.b, $$3);
+   }
+
+   @Override
+   protected MapCodec<? extends dwl> b() {
+      return c;
+   }
+
+   public ejf h() {
+      return this.d;
+   }
+
+   @Override
+   public void a(aro $$0, dfb $$1, eay $$2, dwk $$3) {
+   }
+
+   @Override
+   public int a(dei $$0) {
+      return $$0.G_() + Math.min($$0.H_(), this.d.f().size());
+   }
+
+   @Override
+   public CompletableFuture<dwk> a(ebm $$0, eay $$1, dfb $$2, dwk $$3) {
+      List<duo> $$4 = this.d.f();
+      je.a $$5 = new je.a();
+      eak $$6 = $$3.a(eak.a.c);
+      eak $$7 = $$3.a(eak.a.a);
+
+      for (int $$8 = 0; $$8 < Math.min($$3.H_(), $$4.size()); $$8++) {
+         duo $$9 = $$4.get($$8);
+         if ($$9 != null) {
+            int $$10 = $$3.G_() + $$8;
+
+            for (int $$11 = 0; $$11 < 16; $$11++) {
+               for (int $$12 = 0; $$12 < 16; $$12++) {
+                  $$3.a($$5.d($$11, $$10, $$12), $$9, false);
+                  $$6.a($$11, $$10, $$12, $$9);
+                  $$7.a($$11, $$10, $$12, $$9);
+               }
+            }
+         }
+      }
+
+      return CompletableFuture.completedFuture($$3);
+   }
+
+   @Override
+   public int a(int $$0, int $$1, eak.a $$2, dei $$3, eay $$4) {
+      List<duo> $$5 = this.d.f();
+
+      for (int $$6 = Math.min($$5.size() - 1, $$3.an()); $$6 >= 0; $$6--) {
+         duo $$7 = $$5.get($$6);
+         if ($$7 != null && $$2.e().test($$7)) {
+            return $$3.G_() + $$6 + 1;
+         }
+      }
+
+      return $$3.G_();
+   }
+
+   @Override
+   public des a(int $$0, int $$1, dei $$2, eay $$3) {
+      return new des($$2.G_(), this.d.f().stream().limit((long)$$2.H_()).map($$0x -> $$0x == null ? dhl.a.o() : $$0x).toArray(duo[]::new));
+   }
+
+   @Override
+   public void a(List<String> $$0, eay $$1, je $$2) {
+   }
+
+   @Override
+   public void a(aro $$0, long $$1, eay $$2, dfj $$3, dfb $$4, dwk $$5) {
+   }
+
+   @Override
+   public void a(aro $$0) {
+   }
+
+   @Override
+   public int g() {
+      return 0;
+   }
+
+   @Override
+   public int e() {
+      return 384;
+   }
+
+   @Override
+   public int f() {
+      return -63;
    }
 }

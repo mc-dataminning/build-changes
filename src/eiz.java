@@ -1,54 +1,26 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import org.slf4j.Logger;
 
-public class eiz extends eiv {
-   public static final MapCodec<eiz> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               eaq.a.fieldOf("min_inclusive").forGetter($$0x -> $$0x.d),
-               eaq.a.fieldOf("max_inclusive").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, Integer.MAX_VALUE).optionalFieldOf("inner", 1).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, eiz::new)
-   );
-   private static final Logger b = LogUtils.getLogger();
-   private final eaq d;
-   private final eaq e;
-   private final int f;
+public class eiz<P extends eiy> {
+   public static final eiz<eix> a = a("straight_trunk_placer", eix.a);
+   public static final eiz<eiu> b = a("forking_trunk_placer", eiu.a);
+   public static final eiz<eiv> c = a("giant_trunk_placer", eiv.a);
+   public static final eiz<eiw> d = a("mega_jungle_trunk_placer", eiw.b);
+   public static final eiz<eis> e = a("dark_oak_trunk_placer", eis.a);
+   public static final eiz<eit> f = a("fancy_trunk_placer", eit.a);
+   public static final eiz<eiq> g = a("bending_trunk_placer", eiq.a);
+   public static final eiz<eja> h = a("upwards_branching_trunk_placer", eja.a);
+   public static final eiz<eir> i = a("cherry_trunk_placer", eir.a);
+   private final MapCodec<P> j;
 
-   private eiz(eaq $$0, eaq $$1, int $$2) {
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
+   private static <P extends eiy> eiz<P> a(String $$0, MapCodec<P> $$1) {
+      return ka.a(lu.V, $$0, new eiz<>($$1));
    }
 
-   public static eiz a(eaq $$0, eaq $$1, int $$2) {
-      return new eiz($$0, $$1, $$2);
+   private eiz(MapCodec<P> $$0) {
+      this.j = $$0;
    }
 
-   @Override
-   public int a(azk $$0, eat $$1) {
-      int $$2 = this.d.a($$1);
-      int $$3 = this.e.a($$1);
-      if ($$3 - $$2 - this.f + 1 <= 0) {
-         b.warn("Empty height range: {}", this);
-         return $$2;
-      } else {
-         int $$4 = azc.a($$0, $$2 + this.f, $$3);
-         int $$5 = azc.a($$0, $$2, $$4 - 1);
-         return azc.a($$0, $$2, $$5 - 1 + this.f);
-      }
-   }
-
-   @Override
-   public eiw<?> a() {
-      return eiw.d;
-   }
-
-   @Override
-   public String toString() {
-      return "biased[" + this.d + "-" + this.e + " inner: " + this.f + "]";
+   public MapCodec<P> a() {
+      return this.j;
    }
 }

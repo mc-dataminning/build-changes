@@ -1,90 +1,81 @@
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
-import java.lang.reflect.Type;
+public class gij implements auu {
+   private final gii a;
+   private final gil b;
+   private final ggn c;
+   private final gik d;
+   private final azl e = azl.a();
+   private final fjn f;
 
-public class gij {
-   public static final gij a = new gij();
-   public final gii b;
-   public final gii c;
-   public final gii d;
-   public final gii e;
-   public final gii f;
-   public final gii g;
-   public final gii h;
-   public final gii i;
-
-   private gij() {
-      this(gii.a, gii.a, gii.a, gii.a, gii.a, gii.a, gii.a, gii.a);
-   }
-
-   public gij(gij $$0) {
-      this.b = $$0.b;
-      this.c = $$0.c;
-      this.d = $$0.d;
-      this.e = $$0.e;
-      this.f = $$0.f;
-      this.g = $$0.g;
-      this.h = $$0.h;
-      this.i = $$0.i;
-   }
-
-   public gij(gii $$0, gii $$1, gii $$2, gii $$3, gii $$4, gii $$5, gii $$6, gii $$7) {
-      this.b = $$0;
+   public gij(gii $$0, ggn $$1, fjn $$2) {
+      this.a = $$0;
       this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
-      this.h = $$6;
-      this.i = $$7;
+      this.f = $$2;
+      this.b = new gil(this.f);
+      this.d = new gik();
    }
 
-   public gii a(cvi $$0) {
-      return switch ($$0) {
-         case b -> this.b;
-         case c -> this.c;
-         case d -> this.d;
-         case e -> this.e;
-         case f -> this.f;
-         case g -> this.g;
-         case h -> this.h;
-         case i -> this.i;
-         default -> gii.a;
-      };
+   public gii a() {
+      return this.a;
    }
 
-   public boolean b(cvi $$0) {
-      return this.a($$0) != gii.a;
-   }
-
-   protected static class a implements JsonDeserializer<gij> {
-      public gij a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         gii $$4 = this.a($$2, $$3, cvi.c);
-         gii $$5 = this.a($$2, $$3, cvi.b);
-         if ($$5 == gii.a) {
-            $$5 = $$4;
-         }
-
-         gii $$6 = this.a($$2, $$3, cvi.e);
-         gii $$7 = this.a($$2, $$3, cvi.d);
-         if ($$7 == gii.a) {
-            $$7 = $$6;
-         }
-
-         gii $$8 = this.a($$2, $$3, cvi.f);
-         gii $$9 = this.a($$2, $$3, cvi.g);
-         gii $$10 = this.a($$2, $$3, cvi.h);
-         gii $$11 = this.a($$2, $$3, cvi.i);
-         return new gij($$5, $$4, $$7, $$6, $$8, $$9, $$10, $$11);
+   public void a(duo $$0, je $$1, ddi $$2, fde $$3, fdi $$4) {
+      if ($$0.o() == dnq.c) {
+         gzd $$5 = this.a.b($$0);
+         long $$6 = $$0.b($$1);
+         this.b.a($$2, $$5, $$0, $$1, $$3, $$4, true, this.e, $$6, gws.d);
       }
+   }
 
-      private gii a(JsonDeserializationContext $$0, JsonObject $$1, cvi $$2) {
-         String $$3 = $$2.c();
-         return $$1.has($$3) ? (gii)$$0.deserialize($$1.get($$3), gii.class) : gii.a;
+   public void a(duo $$0, je $$1, ddi $$2, fde $$3, fdi $$4, boolean $$5, azl $$6) {
+      try {
+         this.b.a($$2, this.a($$0), $$0, $$1, $$3, $$4, $$5, $$6, $$0.b($$1), gws.d);
+      } catch (Throwable var11) {
+         o $$8 = o.a(var11, "Tesselating block in world");
+         p $$9 = $$8.a("Block being tesselated");
+         p.a($$9, $$2, $$1, $$0);
+         throw new z($$8);
       }
+   }
+
+   public void a(je $$0, ddi $$1, fdi $$2, duo $$3, eqp $$4) {
+      try {
+         this.d.a($$1, $$0, $$2, $$3, $$4);
+      } catch (Throwable var9) {
+         o $$6 = o.a(var9, "Tesselating liquid in world");
+         p $$7 = $$6.a("Block being tesselated");
+         p.a($$7, $$1, $$0, null);
+         throw new z($$6);
+      }
+   }
+
+   public gil b() {
+      return this.b;
+   }
+
+   public gzd a(duo $$0) {
+      return this.a.b($$0);
+   }
+
+   public void a(duo $$0, fde $$1, ghg $$2, int $$3, int $$4) {
+      dnq $$5 = $$0.o();
+      if ($$5 != dnq.a) {
+         switch ($$5) {
+            case c:
+               gzd $$6 = this.a($$0);
+               int $$7 = this.f.a($$0, null, null, 0);
+               float $$8 = (float)($$7 >> 16 & 0xFF) / 255.0F;
+               float $$9 = (float)($$7 >> 8 & 0xFF) / 255.0F;
+               float $$10 = (float)($$7 & 0xFF) / 255.0F;
+               this.b.a($$1.c(), $$2.getBuffer(ggy.c($$0)), $$0, $$6, $$8, $$9, $$10, $$3, $$4);
+               break;
+            case b:
+               this.c.a(new cvp($$0.b()), cvm.a, $$1, $$2, $$3, $$4);
+         }
+      }
+   }
+
+   @Override
+   public void a(aut $$0) {
+      this.d.a();
    }
 }

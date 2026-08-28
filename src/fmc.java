@@ -1,26 +1,29 @@
-import java.util.function.Consumer;
+import java.util.Locale;
 
-public class fmc implements fmd {
-   private final xd b;
-   protected final fnn a = new fnn();
+public class fmc extends flz {
+   private static final int f = 500;
 
-   public fmc(xd $$0) {
-      this.b = $$0;
+   public fmc(fjv $$0, bms $$1) {
+      super($$0, $$1);
    }
 
    @Override
-   public xd a() {
-      return this.b;
+   protected void d(fjx $$0, int $$1, int $$2, int $$3) {
+      this.a($$0, "500 ms", $$1 + 1, $$3 - 60 + 1);
    }
 
    @Override
-   public void a(Consumer<fjy> $$0) {
-      this.a.a($$0);
+   protected String a(double $$0) {
+      return String.format(Locale.ROOT, "%d ms", (int)Math.round($$0));
    }
 
    @Override
-   public void a(foh $$0) {
-      this.a.a();
-      fnm.a(this.a, $$0, 0.5F, 0.16666667F);
+   protected int b(double $$0) {
+      return (int)Math.round($$0 * 60.0 / 500.0);
+   }
+
+   @Override
+   protected int a(long $$0) {
+      return this.a((double)$$0, 0.0, -16711936, 250.0, -256, 500.0, -65536);
    }
 }

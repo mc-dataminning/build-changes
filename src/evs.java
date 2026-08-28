@@ -1,36 +1,28 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 
-public class evs extends evu {
-   public static final MapCodec<evs> a = a(evs::new);
+public class evs extends euu {
+   public static final MapCodec<evs> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).and(cxm.a.fieldOf("id").forGetter($$0x -> $$0x.b)).apply($$0, evs::new));
+   private final jn<cxm> b;
 
-   evs(List<ewe> $$0) {
-      super($$0, ad.b($$0));
+   private evs(List<ews> $$0, jn<cxm> $$1) {
+      super($$0);
+      this.b = $$1;
    }
 
    @Override
-   public ewf b() {
-      return ewg.b;
+   public euw<evs> b() {
+      return eux.F;
    }
 
-   public static evs.a a(ewe.a... $$0) {
-      return new evs.a($$0);
+   @Override
+   public cvp a(cvp $$0, eth $$1) {
+      $$0.a(kr.L, cxo.a, this.b, cxo::b);
+      return $$0;
    }
 
-   public static class a extends evu.a {
-      public a(ewe.a... $$0) {
-         super($$0);
-      }
-
-      @Override
-      public evs.a or(ewe.a $$0) {
-         this.a($$0);
-         return this;
-      }
-
-      @Override
-      protected ewe a(List<ewe> $$0) {
-         return new evs($$0);
-      }
+   public static euu.a<?> a(jn<cxm> $$0) {
+      return a($$1 -> new evs($$1, $$0));
    }
 }

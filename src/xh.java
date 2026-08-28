@@ -6,13 +6,13 @@ import javax.annotation.Nullable;
 import org.apache.commons.lang3.StringUtils;
 
 public class xh {
-   public static final Codec<xh> a = azy.a(xh.a::values).dispatch(xh::c, xh.a::a);
+   public static final Codec<xh> a = azz.a(xh.a::values).dispatch(xh::c, xh.a::a);
    public static final xh b = new xh(new BitSet(0), xh.a.b);
    public static final xh c = new xh(new BitSet(0), xh.a.a);
    public static final ya d = ya.a.a(n.i).a(new xj(xj.a.a, xd.c("chat.filtered")));
    static final MapCodec<xh> e = MapCodec.unit(c);
    static final MapCodec<xh> f = MapCodec.unit(b);
-   static final MapCodec<xh> g = ayl.u.xmap(xh::new, xh::d).fieldOf("value");
+   static final MapCodec<xh> g = aym.v.xmap(xh::new, xh::d).fieldOf("value");
    private static final char h = '#';
    private final BitSet i;
    private final xh.a j;
@@ -135,7 +135,7 @@ public class xh {
       return 31 * $$0 + this.j.hashCode();
    }
 
-   static enum a implements azy {
+   static enum a implements azz {
       a("pass_through", () -> xh.e),
       b("fully_filtered", () -> xh.f),
       c("partially_filtered", () -> xh.g);
