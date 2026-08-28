@@ -16,6 +16,6 @@ public class gue extends gqn<cqf, gzx> {
 
    public void a(cqf $$0, gzx $$1, float $$2) {
       super.a($$0, $$1, $$2);
-      $$1.d = $$0.C() > 0;
+      $$1.d = $$0.D() > 0;
    }
 }

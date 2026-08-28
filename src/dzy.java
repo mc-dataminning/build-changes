@@ -5,66 +5,66 @@ import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
 public class dzy extends eaj {
-   private final dzz o;
-   private final boolean p;
+   private final dzz n;
+   private final boolean o;
 
    public dzy(dzz $$0, boolean $$1) {
-      super($$0.f(), eam.a, $$0.m, $$0.E().K_().e(mb.aI), $$0.s());
-      this.o = $$0;
-      this.p = $$1;
+      super($$0.f(), eam.a, $$0.l, $$0.G().K_().e(mb.aI), $$0.u());
+      this.n = $$0;
+      this.o = $$1;
    }
 
    @Nullable
    @Override
    public duw c_(jh $$0) {
-      return this.o.c_($$0);
+      return this.n.c_($$0);
    }
 
    @Override
    public dxu a_(jh $$0) {
-      return this.o.a_($$0);
+      return this.n.a_($$0);
    }
 
    @Override
    public etw b_(jh $$0) {
-      return this.o.b_($$0);
+      return this.n.b_($$0);
    }
 
    @Override
    public eaa b(int $$0) {
-      return this.p ? this.o.b($$0) : super.b($$0);
+      return this.o ? this.n.b($$0) : super.b($$0);
    }
 
    @Nullable
    @Override
    public dxu a(jh $$0, dxu $$1, boolean $$2) {
-      return this.p ? this.o.a($$0, $$1, $$2) : null;
+      return this.o ? this.n.a($$0, $$1, $$2) : null;
    }
 
    @Override
    public void a(duw $$0) {
-      if (this.p) {
-         this.o.a($$0);
+      if (this.o) {
+         this.n.a($$0);
       }
    }
 
    @Override
    public void a(bvj $$0) {
-      if (this.p) {
-         this.o.a($$0);
+      if (this.o) {
+         this.n.a($$0);
       }
    }
 
    @Override
    public void a(eaq $$0) {
-      if (this.p) {
+      if (this.o) {
          super.a($$0);
       }
    }
 
    @Override
    public eaa[] d() {
-      return this.o.d();
+      return this.n.d();
    }
 
    @Override
@@ -81,28 +81,28 @@ public class dzy extends eaj {
 
    @Override
    public edp a(edp.a $$0) {
-      return this.o.a($$0);
+      return this.n.a($$0);
    }
 
    @Override
    public int a(edp.a $$0, int $$1, int $$2) {
-      return this.o.a(this.c($$0), $$1, $$2);
+      return this.n.a(this.c($$0), $$1, $$2);
    }
 
    @Override
    public jq<dij> getNoiseBiome(int $$0, int $$1, int $$2) {
-      return this.o.getNoiseBiome($$0, $$1, $$2);
+      return this.n.getNoiseBiome($$0, $$1, $$2);
    }
 
    @Override
    public dgn f() {
-      return this.o.f();
+      return this.n.f();
    }
 
    @Nullable
    @Override
    public eor a(eoj $$0) {
-      return this.o.a($$0);
+      return this.n.a($$0);
    }
 
    @Override
@@ -111,7 +111,7 @@ public class dzy extends eaj {
 
    @Override
    public Map<eoj, eor> g() {
-      return this.o.g();
+      return this.n.g();
    }
 
    @Override
@@ -120,7 +120,7 @@ public class dzy extends eaj {
 
    @Override
    public LongSet b(eoj $$0) {
-      return this.o.b($$0);
+      return this.n.b($$0);
    }
 
    @Override
@@ -129,7 +129,7 @@ public class dzy extends eaj {
 
    @Override
    public Map<eoj, LongSet> h() {
-      return this.o.h();
+      return this.n.h();
    }
 
    @Override
@@ -137,18 +137,23 @@ public class dzy extends eaj {
    }
 
    @Override
-   public void a(boolean $$0) {
-      this.o.a($$0);
+   public void i() {
+      this.n.i();
    }
 
    @Override
-   public boolean i() {
+   public boolean j() {
+      return this.n.j();
+   }
+
+   @Override
+   public boolean k() {
       return false;
    }
 
    @Override
-   public eaq j() {
-      return this.o.j();
+   public eaq n() {
+      return this.n.n();
    }
 
    @Override
@@ -166,87 +171,87 @@ public class dzy extends eaj {
    @Nullable
    @Override
    public ux f(jh $$0) {
-      return this.o.f($$0);
+      return this.n.f($$0);
    }
 
    @Nullable
    @Override
    public ux a(jh $$0, js.a $$1) {
-      return this.o.a($$0, $$1);
+      return this.n.a($$0, $$1);
    }
 
    @Override
    public void a(Predicate<dxu> $$0, BiConsumer<jh, dxu> $$1) {
-      this.o.a($$0, $$1);
+      this.n.a($$0, $$1);
    }
 
    @Override
-   public fds<dkl> o() {
-      return this.p ? this.o.o() : fdi.a();
+   public fds<dkl> q() {
+      return this.o ? this.n.q() : fdi.a();
    }
 
    @Override
-   public fds<etv> p() {
-      return this.p ? this.o.p() : fdi.a();
+   public fds<etv> r() {
+      return this.o ? this.n.r() : fdi.a();
    }
 
    @Override
    public dzp.a a(long $$0) {
-      return this.o.a($$0);
+      return this.n.a($$0);
    }
 
    @Nullable
    @Override
-   public ees s() {
-      return this.o.s();
+   public ees u() {
+      return this.n.u();
    }
 
    @Override
-   public dzo B() {
-      if (this.p) {
-         return super.B();
+   public dzo D() {
+      if (this.o) {
+         return super.D();
       } else {
          throw (UnsupportedOperationException)ae.b(new UnsupportedOperationException("Meaningless in this context"));
       }
    }
 
    @Override
-   public dzo C() {
-      if (this.p) {
-         return super.C();
+   public dzo E() {
+      if (this.o) {
+         return super.E();
       } else {
          throw (UnsupportedOperationException)ae.b(new UnsupportedOperationException("Meaningless in this context"));
       }
    }
 
-   public dzz D() {
-      return this.o;
+   public dzz F() {
+      return this.n;
    }
 
    @Override
-   public boolean u() {
-      return this.o.u();
+   public boolean w() {
+      return this.n.w();
    }
 
    @Override
-   public void b(boolean $$0) {
-      this.o.b($$0);
+   public void a(boolean $$0) {
+      this.n.a($$0);
    }
 
    @Override
    public void a(dim $$0, dis.f $$1) {
-      if (this.p) {
-         this.o.a($$0, $$1);
+      if (this.o) {
+         this.n.a($$0, $$1);
       }
    }
 
    @Override
-   public void z() {
-      this.o.z();
+   public void B() {
+      this.n.B();
    }
 
    @Override
-   public etg A() {
-      return this.o.A();
+   public etg C() {
+      return this.n.C();
    }
 }

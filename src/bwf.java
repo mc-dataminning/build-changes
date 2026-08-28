@@ -1173,7 +1173,7 @@ public abstract class bwf extends bvj implements bvd {
    public boolean g(btz $$0) {
       bvj $$1 = $$0.c();
       boolean $$2 = false;
-      if ($$1 instanceof cqd $$3 && $$3.y() > 0) {
+      if ($$1 instanceof cqd $$3 && $$3.z() > 0) {
          $$2 = true;
       }
 

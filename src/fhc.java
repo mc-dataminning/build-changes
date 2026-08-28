@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
@@ -611,7 +612,7 @@ public class fhc extends hhv {
          $$0.a(glu::C, fhc.c, $$3 - 5, $$2 + $$5 / 2 - 10, 40, 20);
          int $$10 = $$2 + $$5 / 2 - 9 / 2;
          $$0.b(fhc.this.p, f, $$3 + 40 - 2, $$10 - 5, 8388479);
-         $$0.b(fhc.this.p, xv.a("mco.snapshot.description", this.i.c), $$3 + 40 - 2, $$10 + 5, -8355712);
+         $$0.b(fhc.this.p, xv.a("mco.snapshot.description", Objects.requireNonNullElse(this.i.c, "unknown server")), $$3 + 40 - 2, $$10 + 5, -8355712);
          this.h.a($$8, this.aN_(), new fsm($$3, $$2, $$4, $$5));
       }
 
@@ -645,7 +646,7 @@ public class fhc extends hhv {
 
       @Override
       public xv a() {
-         return xv.a("gui.narrate.button", xu.a(f, xv.a("mco.snapshot.description", this.i.c)));
+         return xv.a("gui.narrate.button", xu.a(f, xv.a("mco.snapshot.description", Objects.requireNonNullElse(this.i.c, "unknown server"))));
       }
    }
 
@@ -750,13 +751,15 @@ public class fhc extends hhv {
          }
       }
 
-      protected void a(fnr $$0, String $$1, int $$2, int $$3, int $$4, int $$5) {
-         int $$6 = $$4 - $$2;
-         if (fhc.this.p.b($$1) > $$6) {
-            String $$7 = fhc.this.p.a($$1, $$6 - fhc.this.p.b("... "));
-            $$0.a(fhc.this.p, $$7 + "...", $$2, $$3, $$5, false);
-         } else {
-            $$0.a(fhc.this.p, $$1, $$2, $$3, $$5, false);
+      protected void a(fnr $$0, @Nullable String $$1, int $$2, int $$3, int $$4, int $$5) {
+         if ($$1 != null) {
+            int $$6 = $$4 - $$2;
+            if (fhc.this.p.b($$1) > $$6) {
+               String $$7 = fhc.this.p.a($$1, $$6 - fhc.this.p.b("... "));
+               $$0.a(fhc.this.p, $$7 + "...", $$2, $$3, $$5, false);
+            } else {
+               $$0.a(fhc.this.p, $$1, $$2, $$3, $$5, false);
+            }
          }
       }
 
@@ -967,7 +970,7 @@ public class fhc extends hhv {
 
       @Override
       public xv a() {
-         return xv.b(this.f.c);
+         return xv.b(Objects.requireNonNullElse(this.f.c, "unknown server"));
       }
    }
 
@@ -1171,7 +1174,7 @@ public class fhc extends hhv {
 
       @Override
       public xv a() {
-         return (xv)(this.i.e == fii.c.c ? fhc.Z : xv.a("narrator.select", this.i.c));
+         return (xv)(this.i.e == fii.c.c ? fhc.Z : xv.a("narrator.select", Objects.requireNonNullElse(this.i.c, "unknown server")));
       }
 
       public fii c() {

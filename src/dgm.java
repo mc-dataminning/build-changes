@@ -155,15 +155,15 @@ public interface dgm extends dhj {
          return $$4;
       } else {
          Set<jh> $$5 = new ObjectLinkedOpenHashSet();
+         fbx $$6 = $$3.d().c(1.0E-7);
+         fbx $$7 = $$2.h().e($$6);
+         fbx $$8 = $$2.h().d($$3).d($$6);
+         a($$5, $$8, $$7, $$2);
 
-         for (jh $$6 : $$4) {
-            $$5.add($$6.j());
+         for (jh $$9 : $$4) {
+            $$5.add($$9.j());
          }
 
-         fbx $$7 = $$3.d().c(1.0E-7);
-         fbx $$8 = $$2.h().e($$7);
-         fbx $$9 = $$2.h().d($$3).d($$7);
-         a($$5, $$9, $$8, $$2);
          return $$5;
       }
    }

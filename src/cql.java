@@ -64,7 +64,7 @@ public class cql extends cqp {
    }
 
    @Override
-   protected boolean B() {
+   protected boolean C() {
       return true;
    }
 
@@ -184,7 +184,7 @@ public class cql extends cqp {
 
          this.a(bwj.a, this.dz());
          this.aK();
-         this.E();
+         this.F();
          if (this.o == cql.a.a && (this.aJ() || this.P)) {
             this.h(fbx.c);
          }

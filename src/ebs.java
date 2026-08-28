@@ -202,7 +202,7 @@ public class ebs {
          for (int $$1 = -8; $$1 <= 8; $$1++) {
             dzz $$2 = this.l.d($$0, $$1);
 
-            for (duw $$3 : $$2.F().values()) {
+            for (duw $$3 : $$2.H().values()) {
                if ($$3 instanceof dwq) {
                   return true;
                }
@@ -221,7 +221,7 @@ public class ebs {
          for (int $$2 = -8 + $$0.h; $$2 <= 8 + $$0.h; $$2++) {
             dzz $$3 = this.l.d($$1, $$2);
 
-            for (duw $$4 : $$3.F().values()) {
+            for (duw $$4 : $$3.H().values()) {
                if ($$4 instanceof dwq) {
                   dxz.b $$5 = this.o.a(this.l, $$4.aB_());
                   if ($$5 != null) {
@@ -267,7 +267,7 @@ public class ebs {
                   return false;
                }
 
-               arw $$4 = ((dzz)$$3).C();
+               arw $$4 = ((dzz)$$3).E();
                if (!$$4.a(arw.c)) {
                   return false;
                }

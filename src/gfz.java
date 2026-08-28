@@ -3,6 +3,7 @@ import com.mojang.logging.LogUtils;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.Objects;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
@@ -143,7 +144,7 @@ public class gfz {
    private static boolean a(gfy $$0, List<gfy> $$1) {
       for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
          gfy $$3 = $$1.get($$2);
-         if ($$3.a.equals($$0.a) && $$3.b.equals($$0.b)) {
+         if (Objects.equals($$3.a, $$0.a) && $$3.b.equals($$0.b)) {
             $$1.set($$2, $$0);
             return true;
          }

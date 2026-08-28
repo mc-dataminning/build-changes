@@ -8,15 +8,15 @@ import javax.annotation.Nullable;
 
 public class eaj extends dzp {
    @Nullable
-   private volatile etl o;
-   private volatile eaq p = eaq.c;
-   private final List<ux> q = Lists.newArrayList();
+   private volatile etl n;
+   private volatile eaq o = eaq.c;
+   private final List<ux> p = Lists.newArrayList();
    @Nullable
-   private dzo r;
+   private dzo q;
    @Nullable
-   private edd s;
-   private final fdn<dkl> t;
-   private final fdn<etv> u;
+   private edd r;
+   private final fdn<dkl> s;
+   private final fdn<etv> t;
 
    public eaj(dgn $$0, eam $$1, dhj $$2, kd<dij> $$3, @Nullable ees $$4) {
       this($$0, $$1, null, new fdn<>(), new fdn<>(), $$2, $$3, $$4);
@@ -24,23 +24,23 @@ public class eaj extends dzp {
 
    public eaj(dgn $$0, eam $$1, @Nullable eaa[] $$2, fdn<dkl> $$3, fdn<etv> $$4, dhj $$5, kd<dij> $$6, @Nullable ees $$7) {
       super($$0, $$1, $$5, $$6, 0L, $$2, $$7);
-      this.t = $$3;
-      this.u = $$4;
+      this.s = $$3;
+      this.t = $$4;
    }
 
    @Override
-   public fds<dkl> o() {
+   public fds<dkl> q() {
+      return this.s;
+   }
+
+   @Override
+   public fds<etv> r() {
       return this.t;
    }
 
    @Override
-   public fds<etv> p() {
-      return this.u;
-   }
-
-   @Override
    public dzp.a a(long $$0) {
-      return new dzp.a(this.t.a($$0), this.u.a($$0));
+      return new dzp.a(this.s.a($$0), this.t.a($$0));
    }
 
    @Override
@@ -84,23 +84,23 @@ public class eaj extends dzp {
             int $$10 = kj.b($$4);
             int $$11 = kj.b($$5);
             dxu $$12 = $$7.a($$9, $$10, $$11, $$1);
-            if (this.p.a(eaq.k)) {
+            if (this.o.a(eaq.k)) {
                boolean $$13 = $$7.c();
                if ($$13 != $$8) {
-                  this.o.a($$0, $$13);
+                  this.n.a($$0, $$13);
                }
 
                if (etn.a($$12, $$1)) {
-                  this.j.a(this, $$9, $$4, $$11);
-                  this.o.a($$0);
+                  this.i.a(this, $$9, $$4, $$11);
+                  this.n.a($$0);
                }
             }
 
-            EnumSet<edp.a> $$14 = this.j().e();
+            EnumSet<edp.a> $$14 = this.n().e();
             EnumSet<edp.a> $$15 = null;
 
             for (edp.a $$16 : $$14) {
-               edp $$17 = this.i.get($$16);
+               edp $$17 = this.h.get($$16);
                if ($$17 == null) {
                   if ($$15 == null) {
                      $$15 = EnumSet.noneOf(edp.a.class);
@@ -115,7 +115,7 @@ public class eaj extends dzp {
             }
 
             for (edp.a $$18 : $$14) {
-               this.i.get($$18).a($$9, $$4, $$11, $$1);
+               this.h.get($$18).a($$9, $$4, $$11, $$1);
             }
 
             return $$12;
@@ -125,21 +125,21 @@ public class eaj extends dzp {
 
    @Override
    public void a(duw $$0) {
-      this.l.put($$0.aB_(), $$0);
+      this.k.put($$0.aB_(), $$0);
    }
 
    @Nullable
    @Override
    public duw c_(jh $$0) {
-      return this.l.get($$0);
+      return this.k.get($$0);
    }
 
-   public Map<jh, duw> E() {
-      return this.l;
+   public Map<jh, duw> G() {
+      return this.k;
    }
 
    public void b(ux $$0) {
-      this.q.add($$0);
+      this.p.add($$0);
    }
 
    @Override
@@ -153,10 +153,10 @@ public class eaj extends dzp {
 
    @Override
    public void a(eoj $$0, eor $$1) {
-      edd $$2 = this.w();
+      edd $$2 = this.y();
       if ($$2 != null && $$1.b()) {
          eob $$3 = $$1.a();
-         dhj $$4 = this.y();
+         dhj $$4 = this.A();
          if ($$3.i() < $$4.L_() || $$3.l() > $$4.am()) {
             return;
          }
@@ -165,27 +165,27 @@ public class eaj extends dzp {
       super.a($$0, $$1);
    }
 
-   public List<ux> F() {
-      return this.q;
-   }
-
-   @Override
-   public eaq j() {
+   public List<ux> H() {
       return this.p;
    }
 
+   @Override
+   public eaq n() {
+      return this.o;
+   }
+
    public void a(eaq $$0) {
-      this.p = $$0;
-      if (this.s != null && $$0.a(this.s.a())) {
+      this.o = $$0;
+      if (this.r != null && $$0.a(this.r.a())) {
          this.a(null);
       }
 
-      this.a(true);
+      this.i();
    }
 
    @Override
    public jq<dij> getNoiseBiome(int $$0, int $$1, int $$2) {
-      if (this.k().a(eaq.f)) {
+      if (this.o().a(eaq.f)) {
          return super.getNoiseBiome($$0, $$1, $$2);
       } else {
          throw new IllegalStateException("Asking for biomes before we have biomes");
@@ -221,68 +221,68 @@ public class eaj extends dzp {
       dzp.a(this.b, $$1).addAll($$0);
    }
 
-   public Map<jh, ux> G() {
-      return Collections.unmodifiableMap(this.k);
+   public Map<jh, ux> I() {
+      return Collections.unmodifiableMap(this.j);
    }
 
    @Nullable
    @Override
    public ux a(jh $$0, js.a $$1) {
       duw $$2 = this.c_($$0);
-      return $$2 != null ? $$2.b($$1) : this.k.get($$0);
+      return $$2 != null ? $$2.b($$1) : this.j.get($$0);
    }
 
    @Override
    public void d(jh $$0) {
-      this.l.remove($$0);
       this.k.remove($$0);
+      this.j.remove($$0);
    }
 
    @Nullable
-   public dzo B() {
-      return this.r;
+   public dzo D() {
+      return this.q;
    }
 
-   public dzo C() {
-      if (this.r == null) {
-         this.r = new dzo(this.M_(), this.L_());
+   public dzo E() {
+      if (this.q == null) {
+         this.q = new dzo(this.M_(), this.L_());
       }
 
-      return this.r;
+      return this.q;
    }
 
    public void a(dzo $$0) {
-      this.r = $$0;
+      this.q = $$0;
    }
 
    public void a(etl $$0) {
-      this.o = $$0;
+      this.n = $$0;
    }
 
    public void a(@Nullable edd $$0) {
-      this.s = $$0;
+      this.r = $$0;
    }
 
    @Nullable
    @Override
-   public edd w() {
-      return this.s;
+   public edd y() {
+      return this.r;
    }
 
    private static <T> fdk<T> a(fdn<T> $$0) {
       return new fdk<>($$0.b());
    }
 
-   public fdk<dkl> H() {
+   public fdk<dkl> J() {
+      return a(this.s);
+   }
+
+   public fdk<etv> K() {
       return a(this.t);
    }
 
-   public fdk<etv> I() {
-      return a(this.u);
-   }
-
    @Override
-   public dhj y() {
-      return (dhj)(this.x() ? edd.b : this);
+   public dhj A() {
+      return (dhj)(this.z() ? edd.b : this);
    }
 }

@@ -12,7 +12,11 @@ public class flb extends fle {
 
    @Override
    public void run() {
-      this.c.a(this.d, ghb.a(this.e.a));
+      if (this.e.a != null) {
+         this.c.a(this.d, ghb.a(this.e.a));
+      } else {
+         this.b();
+      }
    }
 
    @Override

@@ -21,10 +21,13 @@ public class fii extends fiw {
    private static final Logger x = LogUtils.getLogger();
    private static final int y = -1;
    public long a;
+   @Nullable
    public String b;
+   @Nullable
    public String c;
    public String d;
    public fii.c e;
+   @Nullable
    public String f;
    public UUID g = ae.e;
    public List<fie> h;
@@ -39,6 +42,7 @@ public class fii extends fiw {
    @Nullable
    public String q;
    public int r;
+   @Nullable
    public String s;
    public long t = -1L;
    @Nullable
@@ -50,6 +54,7 @@ public class fii extends fiw {
       return this.d;
    }
 
+   @Nullable
    public String b() {
       return this.c;
    }
@@ -74,7 +79,7 @@ public class fii extends fiw {
          $$1.a = fks.a("id", $$0, -1L);
          $$1.b = fks.b("remoteSubscriptionId", $$0, null);
          $$1.c = fks.b("name", $$0, null);
-         $$1.d = fks.b("motd", $$0, null);
+         $$1.d = fks.b("motd", $$0, "");
          $$1.e = f(fks.b("state", $$0, fii.c.a.name()));
          $$1.f = fks.b("owner", $$0, null);
          if ($$0.get("players") != null && $$0.get("players").isJsonArray()) {
@@ -316,11 +321,11 @@ public class fii extends fiw {
    }
 
    public String a(int $$0) {
-      return this.c + " (" + this.i.get($$0).a($$0) + ")";
+      return this.c == null ? this.i.get($$0).a($$0) : this.c + " (" + this.i.get($$0).a($$0) + ")";
    }
 
    public gfy e(String $$0) {
-      return new gfy(this.c, $$0, gfy.c.b);
+      return new gfy(Objects.requireNonNullElse(this.c, "unknown server"), $$0, gfy.c.b);
    }
 
    public static enum a {
@@ -356,7 +361,7 @@ public class fii extends fiw {
             .compareTrueFirst($$0.h(), $$1.h())
             .compareTrueFirst($$0.e == fii.c.c, $$1.e == fii.c.c)
             .compareTrueFirst($$0.k, $$1.k)
-            .compareTrueFirst($$0.f.equals(this.a), $$1.f.equals(this.a))
+            .compareTrueFirst(Objects.equals($$0.f, this.a), Objects.equals($$1.f, this.a))
             .compareFalseFirst($$0.j, $$1.j)
             .compareTrueFirst($$0.e == fii.c.b, $$1.e == fii.c.b)
             .compare($$0.a, $$1.a)

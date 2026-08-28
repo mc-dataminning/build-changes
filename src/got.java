@@ -13,8 +13,8 @@ class got {
 
    got(dzz $$0) {
       this.d = $$0;
-      this.c = $$0.E().ai();
-      this.a = ImmutableMap.copyOf($$0.F());
+      this.c = $$0.G().ai();
+      this.a = ImmutableMap.copyOf($$0.H());
       if ($$0 instanceof dzv) {
          this.b = null;
       } else {

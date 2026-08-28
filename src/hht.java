@@ -1,5 +1,6 @@
 import com.mojang.logging.LogUtils;
 import java.net.InetSocketAddress;
+import java.util.Objects;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
@@ -53,7 +54,7 @@ public class hht {
 
                hht.this.d.a(new ake($$2.X().c(), $$2.X().b()));
                $$2.a(ggp.a($$0));
-               $$2.bd().a(gko.c.c, String.valueOf($$0.a), $$0.c);
+               $$2.bd().a(gko.c.c, String.valueOf($$0.a), Objects.requireNonNullElse($$0.c, "unknown"));
                $$2.af().a(hht.this.d, hen.c.b);
             } catch (Exception var5) {
                $$2.af().i();

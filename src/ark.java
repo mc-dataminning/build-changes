@@ -117,7 +117,7 @@ public class ark extends ary {
       if ($$2 == null) {
          return false;
       } else {
-         $$2.a(true);
+         $$2.i();
          dzz $$3 = this.d();
          if ($$3 == null) {
             return false;
@@ -142,7 +142,7 @@ public class ark extends ary {
 
    public void a(dzz $$0) {
       if (this.m || !this.p.isEmpty() || !this.o.isEmpty()) {
-         dhh $$1 = $$0.E();
+         dhh $$1 = $$0.G();
          if (!this.p.isEmpty() || !this.o.isEmpty()) {
             List<asi> $$2 = this.s.a(this.d, true);
             if (!$$2.isEmpty()) {

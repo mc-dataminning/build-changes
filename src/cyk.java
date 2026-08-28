@@ -58,7 +58,7 @@ public abstract class cyk extends cxk {
       cvp $$6 = $$3.h() instanceof cvp $$5 ? $$5 : (cvp)cxs.oS;
       cqd $$7 = $$6.a($$0, $$3, $$1, $$2);
       if ($$4) {
-         $$7.a(true);
+         $$7.b(true);
       }
 
       return $$7;

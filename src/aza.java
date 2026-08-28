@@ -1,6 +1,7 @@
 import com.mojang.util.UndashedUuid;
 import java.net.URI;
 import java.util.UUID;
+import javax.annotation.Nullable;
 
 public class aza {
    public static final URI a = URI.create("https://aka.ms/MinecraftGDPR");
@@ -23,12 +24,15 @@ public class aza {
    public static final URI r = URI.create("https://aka.ms/BuyJavaRealms");
    public static final URI s = URI.create("https://aka.ms/MinecraftRealmsTerms");
    public static final URI t = URI.create("https://aka.ms/MinecraftRealmsContentCreator");
+   public static final String u = "https://aka.ms/ExtendJavaRealms";
 
-   public static String a(String $$0, UUID $$1, boolean $$2) {
-      return a($$0, $$1) + "&ref=" + ($$2 ? "expiredTrial" : "expiredRealm");
+   public static String a(@Nullable String $$0, UUID $$1, boolean $$2) {
+      return $$0 == null ? "https://aka.ms/ExtendJavaRealms" : a($$0, $$1) + "&ref=" + ($$2 ? "expiredTrial" : "expiredRealm");
    }
 
-   public static String a(String $$0, UUID $$1) {
-      return "https://aka.ms/ExtendJavaRealms?subscriptionId=" + $$0 + "&profileId=" + UndashedUuid.toString($$1);
+   public static String a(@Nullable String $$0, UUID $$1) {
+      return $$0 == null
+         ? "https://aka.ms/ExtendJavaRealms"
+         : "https://aka.ms/ExtendJavaRealms?subscriptionId=" + $$0 + "&profileId=" + UndashedUuid.toString($$1);
    }
 }

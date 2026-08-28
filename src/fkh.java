@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class fkh extends hhv {
    private static final int a = 212;
    private static final xv b = xv.c("mco.configure.world.name");
@@ -27,7 +29,7 @@ public class fkh extends hhv {
       this.c($$2);
       this.F = new fon(this.m.h, $$0, g(4), 212, 20, xv.c("mco.configure.world.name"));
       this.F.f(32);
-      this.F.a(this.D.b());
+      this.F.a(Objects.requireNonNullElse(this.D.b(), ""));
       this.c(this.F);
       this.E = new fon(this.m.h, $$0, g(8), 212, 20, xv.c("mco.configure.world.description"));
       this.E.f(32);

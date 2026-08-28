@@ -1,5 +1,6 @@
 import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
@@ -8,7 +9,7 @@ import org.apache.commons.lang3.math.Fraction;
 
 public final class czs implements cvi {
    public static final czs a = new czs(List.of());
-   public static final Codec<czs> b = cxo.a.listOf().xmap(czs::new, $$0 -> $$0.g);
+   public static final Codec<czs> b = cxo.a.listOf().flatXmap(czs::a, $$0 -> DataResult.success($$0.g));
    public static final zt<xg, czs> c = cxo.h.a(zr.a()).a(czs::new, $$0 -> $$0.g);
    private static final Fraction e = Fraction.getFraction(1, 16);
    private static final int f = -1;
@@ -23,11 +24,20 @@ public final class czs implements cvi {
       this.i = $$2;
    }
 
-   public czs(List<cxo> $$0) {
-      this($$0, a($$0), -1);
+   private static DataResult<czs> a(List<cxo> $$0) {
+      try {
+         Fraction $$1 = b($$0);
+         return DataResult.success(new czs($$0, $$1, -1));
+      } catch (ArithmeticException var2) {
+         return DataResult.error(() -> "Excessive total bundle weight");
+      }
    }
 
-   private static Fraction a(List<cxo> $$0) {
+   public czs(List<cxo> $$0) {
+      this($$0, b($$0), -1);
+   }
+
+   private static Fraction b(List<cxo> $$0) {
       Fraction $$1 = Fraction.ZERO;
 
       for (cxo $$2 : $$0) {

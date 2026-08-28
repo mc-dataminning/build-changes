@@ -119,7 +119,7 @@ public class cqk extends cqp implements cqm {
          this.ar = true;
       }
 
-      this.E();
+      this.F();
       if (this.d == 0 && !this.bb()) {
          this.dW().a(null, this.dB(), this.dD(), this.dH(), axf.jj, axg.i, 3.0F, 1.0F);
       }

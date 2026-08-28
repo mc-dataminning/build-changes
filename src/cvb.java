@@ -15,6 +15,7 @@ public class cvb extends cuf {
    private final dcm A;
    private final dcm B;
    private final dcm C;
+   private final ctv D = ctv.a();
 
    public cvb(int $$0, cpv $$1) {
       this($$0, $$1, cto.a);
@@ -30,6 +31,7 @@ public class cvb extends cuf {
       this.A = $$3.P().a(dcm.b);
       this.B = $$3.P().a(dcm.c);
       this.C = $$3.P().a(dcm.d);
+      this.a(this.D).a(0);
    }
 
    private static cug a(dce $$0) {
@@ -47,18 +49,18 @@ public class cvb extends cuf {
    @Override
    protected void a(cpw $$0, cxo $$1) {
       $$1.a($$0.dW(), $$0, $$1.L());
-      this.t.a($$0, this.m());
+      this.t.a($$0, this.o());
       this.e(0);
       this.e(1);
       this.e(2);
       this.q.a(($$0x, $$1x) -> $$0x.c(1044, $$1x, 0));
    }
 
-   private List<cxo> m() {
+   private List<cxo> o() {
       return List.of(this.s.a(0), this.s.a(1), this.s.a(2));
    }
 
-   private dcz o() {
+   private dcz p() {
       return new dcz(this.s.a(0), this.s.a(1), this.s.a(2));
    }
 
@@ -71,8 +73,17 @@ public class cvb extends cuf {
    }
 
    @Override
+   public void a(btb $$0) {
+      super.a($$0);
+      if (this.z instanceof ash) {
+         boolean $$1 = this.b(0).h() && this.b(1).h() && this.b(2).h() && !this.b(this.n()).h();
+         this.D.a($$1 ? 1 : 0);
+      }
+   }
+
+   @Override
    public void l() {
-      dcz $$0 = this.o();
+      dcz $$0 = this.p();
       Optional<dci<dcy>> $$2;
       if (this.z instanceof ash $$1) {
          $$2 = $$1.s().a(dco.g, $$0, $$1);
@@ -102,5 +113,9 @@ public class cvb extends cuf {
       } else {
          return this.A.a($$0) && !this.b(1).h() ? true : this.C.a($$0) && !this.b(2).h();
       }
+   }
+
+   public boolean m() {
+      return this.D.b() > 0;
    }
 }

@@ -18,7 +18,7 @@ public class cqv extends cqd {
    @Override
    public void h() {
       super.h();
-      if (this.dW().C && !this.a) {
+      if (this.dW().C && !this.l()) {
          this.dW().a(ls.R, this.dB(), this.dD(), this.dH(), 0.0, 0.0, 0.0);
       }
    }
@@ -27,7 +27,7 @@ public class cqv extends cqd {
    protected void a(bwf $$0) {
       super.a($$0);
       buo $$1 = new buo(buq.x, this.e, 0);
-      $$0.b($$1, this.D());
+      $$0.b($$1, this.E());
    }
 
    @Override
@@ -45,7 +45,7 @@ public class cqv extends cqd {
    }
 
    @Override
-   protected cxo u() {
+   protected cxo v() {
       return new cxo(cxs.wf);
    }
 }

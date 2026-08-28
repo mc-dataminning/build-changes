@@ -43,7 +43,7 @@ public abstract class cqp extends bvj implements bxe {
       return this.dW() instanceof ash $$1 ? $$1.a($$0) : null;
    }
 
-   public bvj D() {
+   public bvj E() {
       return (bvj)MoreObjects.firstNonNull(this.p(), this);
    }
 
@@ -188,7 +188,7 @@ public abstract class cqp extends bvj implements bxe {
 
             return $$3;
          }
-      } else if (this.B() && $$0 instanceof fbt $$4 && $$4.f()) {
+      } else if (this.C() && $$0 instanceof fbt $$4 && $$4.f()) {
          cqq $$5 = cqq.b;
          if (this.a($$5, null, this.p(), false)) {
             this.h(this.dz().c(0.2));
@@ -200,7 +200,7 @@ public abstract class cqp extends bvj implements bxe {
       return cqq.a;
    }
 
-   protected boolean B() {
+   protected boolean C() {
       return false;
    }
 
@@ -269,8 +269,7 @@ public abstract class cqp extends bvj implements bxe {
       }
    }
 
-   @Override
-   protected void E() {
+   protected void F() {
       fbx $$0 = this.dz();
       double $$1 = $$0.i();
       this.w(f(this.O, (float)(bae.d($$0.e, $$1) * 180.0F / (float)Math.PI)));

@@ -50,7 +50,7 @@ public abstract class efv<C extends efo> {
          int $$18 = Math.max(bae.a($$5 - $$8) - $$16 - 1, 0);
          int $$19 = Math.min(bae.a($$5 + $$8) - $$16, 15);
          int $$20 = Math.max(bae.a($$6 - $$9) - 1, $$0.a() + 1);
-         int $$21 = $$2.x() ? 0 : 7;
+         int $$21 = $$2.z() ? 0 : 7;
          int $$22 = Math.min(bae.a($$6 + $$9) + 1, $$0.a() + $$0.b() - 1 - $$21);
          int $$23 = Math.max(bae.a($$7 - $$8) - $$17 - 1, 0);
          int $$24 = Math.min(bae.a($$7 + $$8) - $$17, 15);

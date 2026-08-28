@@ -732,7 +732,7 @@ public class ash extends dhh implements asg, dif {
    }
 
    public void a(dzz $$0) {
-      $$0.G();
+      $$0.I();
       $$0.c(this);
    }
 
@@ -767,7 +767,22 @@ public class ash extends dhh implements asg, dif {
    @Override
    public void b(int $$0, jh $$1, int $$2) {
       if (this.N().b(dhd.X)) {
-         this.K.ag().a(new aef($$0, $$1, $$2, true));
+         this.K.ag().t().forEach($$3 -> {
+            fbx $$5;
+            if ($$3.dW() == this) {
+               fbx $$4 = fbx.b($$1);
+               if ($$3.f($$4) < (double)bae.h(32)) {
+                  $$5 = $$4;
+               } else {
+                  fbx $$6 = $$4.d($$3.du()).d();
+                  $$5 = $$3.du().e($$6.c(32.0));
+               }
+            } else {
+               $$5 = $$3.du();
+            }
+
+            $$3.f.b(new aef($$0, jh.a((ka)$$5), $$2, true));
+         });
       } else {
          this.a(null, $$0, $$1, $$2);
       }

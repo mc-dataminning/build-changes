@@ -8,26 +8,27 @@ public class fwf implements fwh {
    private static final alz c = alz.b("container/bundle/bundle_progressbar_full");
    private static final alz d = alz.b("container/bundle/slot_highlight_back");
    private static final alz e = alz.b("container/bundle/slot_highlight_front");
-   private static final int f = 4;
-   private static final int g = 24;
-   private static final int h = 96;
-   private static final int i = 13;
-   private static final int j = 96;
-   private static final int k = 1;
-   private static final int l = 94;
-   private static final int m = 4;
-   private static final xv n = xv.c("item.minecraft.bundle.full");
-   private static final xv o = xv.c("item.minecraft.bundle.empty");
-   private static final xv p = xv.c("item.minecraft.bundle.empty.description");
-   private final czs q;
+   private static final alz f = alz.b("container/bundle/slot_background");
+   private static final int g = 4;
+   private static final int h = 24;
+   private static final int i = 96;
+   private static final int j = 13;
+   private static final int k = 96;
+   private static final int l = 1;
+   private static final int m = 94;
+   private static final int n = 4;
+   private static final xv o = xv.c("item.minecraft.bundle.full");
+   private static final xv p = xv.c("item.minecraft.bundle.empty");
+   private static final xv q = xv.c("item.minecraft.bundle.empty.description");
+   private final czs r;
 
    public fwf(czs $$0) {
-      this.q = $$0;
+      this.r = $$0;
    }
 
    @Override
    public int a(fnp $$0) {
-      return this.q.g() ? c($$0) : this.b();
+      return this.r.g() ? c($$0) : this.b();
    }
 
    @Override
@@ -61,12 +62,12 @@ public class fwf implements fwh {
    }
 
    private int e() {
-      return Math.min(12, this.q.e());
+      return Math.min(12, this.r.e());
    }
 
    @Override
    public void a(fnp $$0, int $$1, int $$2, int $$3, int $$4, fnr $$5) {
-      if (this.q.g()) {
+      if (this.r.g()) {
          this.b($$0, $$1, $$2, $$3, $$4, $$5);
       } else {
          this.c($$0, $$1, $$2, $$3, $$4, $$5);
@@ -79,8 +80,8 @@ public class fwf implements fwh {
    }
 
    private void c(fnp $$0, int $$1, int $$2, int $$3, int $$4, fnr $$5) {
-      boolean $$6 = this.q.e() > 12;
-      List<cxo> $$7 = this.b(this.q.a());
+      boolean $$6 = this.r.e() > 12;
+      List<cxo> $$7 = this.b(this.r.a());
       int $$8 = $$1 + this.a($$3) + 96;
       int $$9 = $$2 + this.d() * 24;
       int $$10 = 1;
@@ -103,8 +104,8 @@ public class fwf implements fwh {
    }
 
    private List<cxo> b(int $$0) {
-      int $$1 = Math.min(this.q.e(), $$0);
-      return this.q.b().toList().subList(0, $$1);
+      int $$1 = Math.min(this.r.e(), $$0);
+      return this.r.b().toList().subList(0, $$1);
    }
 
    private static boolean a(boolean $$0, int $$1, int $$2) {
@@ -116,15 +117,17 @@ public class fwf implements fwh {
    }
 
    private int a(List<cxo> $$0) {
-      return this.q.b().skip((long)$$0.size()).mapToInt(cxo::L).sum();
+      return this.r.b().skip((long)$$0.size()).mapToInt(cxo::L).sum();
    }
 
    private void a(int $$0, int $$1, int $$2, List<cxo> $$3, int $$4, fnp $$5, fnr $$6) {
       int $$7 = $$3.size() - $$0;
-      boolean $$8 = $$7 == this.q.h();
+      boolean $$8 = $$7 == this.r.h();
       cxo $$9 = $$3.get($$7);
       if ($$8) {
          $$6.a(glu::C, d, $$1, $$2, 24, 24);
+      } else {
+         $$6.a(glu::C, f, $$1, $$2, 24, 24);
       }
 
       $$6.a($$9, $$1 + 4, $$2 + 4, $$4);
@@ -139,8 +142,8 @@ public class fwf implements fwh {
    }
 
    private void a(fnp $$0, fnr $$1, int $$2, int $$3, int $$4) {
-      if (this.q.i()) {
-         cxo $$5 = this.q.a(this.q.h());
+      if (this.r.i()) {
+         cxo $$5 = this.r.a(this.r.h());
          xv $$6 = $$5.A();
          int $$7 = $$0.a($$6.g());
          int $$8 = $$2 + $$4 / 2 - 12;
@@ -158,27 +161,27 @@ public class fwf implements fwh {
    }
 
    private static void b(int $$0, int $$1, fnp $$2, fnr $$3) {
-      $$3.a($$2, p, $$0, $$1, 96, 11184810);
+      $$3.a($$2, q, $$0, $$1, 96, 11184810);
    }
 
    private static int d(fnp $$0) {
-      return $$0.c(p, 96).size() * 9;
+      return $$0.c(q, 96).size() * 9;
    }
 
    private int f() {
-      return bae.a(bae.a(this.q.f(), 94), 0, 94);
+      return bae.a(bae.a(this.r.f(), 94), 0, 94);
    }
 
    private alz g() {
-      return this.q.f().compareTo(Fraction.ONE) >= 0 ? c : b;
+      return this.r.f().compareTo(Fraction.ONE) >= 0 ? c : b;
    }
 
    @Nullable
    private xv h() {
-      if (this.q.g()) {
-         return o;
+      if (this.r.g()) {
+         return p;
       } else {
-         return this.q.f().compareTo(Fraction.ONE) >= 0 ? n : null;
+         return this.r.f().compareTo(Fraction.ONE) >= 0 ? o : null;
       }
    }
 }

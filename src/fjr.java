@@ -1,6 +1,7 @@
 import com.google.common.collect.Lists;
 import com.mojang.logging.LogUtils;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Supplier;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
@@ -146,7 +147,7 @@ public class fjr extends hhv {
       if (this.P == null) {
          $$0.a(this.p, this.l, this.n / 2, 17, -1);
       } else {
-         String $$4 = this.P.b();
+         String $$4 = Objects.requireNonNullElse(this.P.b(), "");
          int $$5 = this.p.b($$4);
          int $$6 = this.P.e == fii.c.a ? -6250336 : 8388479;
          int $$7 = this.p.a(this.l);
@@ -313,7 +314,7 @@ public class fjr extends hhv {
    }
 
    public void a(String $$0, String $$1) {
-      String $$2 = bbb.h($$1) ? null : $$1;
+      String $$2 = bbb.h($$1) ? "" : $$1;
       fhh $$3 = fhh.a();
 
       try {

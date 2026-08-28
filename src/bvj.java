@@ -644,7 +644,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
          boolean $$4 = Iterables.any(this.bj, $$0x -> $$0x.a(axu.aN) || $$0x.a(dkn.K));
          this.bi.clear();
          this.bj.clear();
-         if (!$$4) {
+         if (!$$4 && this.bL()) {
             if (this.aH <= 0) {
                this.h(-this.do());
             }
@@ -3313,9 +3313,7 @@ public abstract class bvj implements alf, btl, ebx, fdb {
       double $$3 = $$0.h();
       double $$4 = $$0.i();
       this.f($$2, $$3, $$4);
-      this.e($$2, $$3, $$4);
-      this.w($$0.m());
-      this.v($$0.n());
+      this.b($$2, $$3, $$4, $$0.n(), $$0.m());
       this.e($$1);
       this.a_($$0.e());
    }

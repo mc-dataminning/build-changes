@@ -251,7 +251,7 @@ public class gff extends dzt {
                   dzz $$5 = gff.this.d.b.get(gff.this.d.a($$4, $$3));
                   if ($$5 != null) {
                      dgn $$6 = $$5.f();
-                     $$1.write(($$6.g + "\t" + $$6.h + "\t" + $$5.B() + "\n").getBytes(StandardCharsets.UTF_8));
+                     $$1.write(($$6.g + "\t" + $$6.h + "\t" + $$5.D() + "\n").getBytes(StandardCharsets.UTF_8));
                   }
                }
             }

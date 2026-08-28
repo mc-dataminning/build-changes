@@ -13,8 +13,8 @@ import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public class dzz extends dzp {
-   static final Logger o = LogUtils.getLogger();
-   private static final dwr p = new dwr() {
+   static final Logger n = LogUtils.getLogger();
+   private static final dwr o = new dwr() {
       @Override
       public void a() {
       }
@@ -34,16 +34,18 @@ public class dzz extends dzp {
          return "<null>";
       }
    };
-   private final Map<jh, dzz.d> q = Maps.newHashMap();
-   private boolean r;
-   final dhh s;
+   private final Map<jh, dzz.d> p = Maps.newHashMap();
+   private boolean q;
+   final dhh r;
    @Nullable
-   private Supplier<arw> t;
+   private Supplier<arw> s;
    @Nullable
-   private dzz.c u;
-   private final Int2ObjectMap<ect> v;
-   private final fdk<dkl> w;
-   private final fdk<etv> x;
+   private dzz.c t;
+   private final Int2ObjectMap<ect> u;
+   private final fdk<dkl> v;
+   private final fdk<etv> w;
+   private dzz.e x = $$0x -> {
+   };
 
    public dzz(dhh $$0, dgn $$1) {
       this($$0, $$1, eam.a, new fdk<>(), new fdk<>(), 0L, null, null, null);
@@ -51,31 +53,31 @@ public class dzz extends dzp {
 
    public dzz(dhh $$0, dgn $$1, eam $$2, fdk<dkl> $$3, fdk<etv> $$4, long $$5, @Nullable eaa[] $$6, @Nullable dzz.c $$7, @Nullable ees $$8) {
       super($$1, $$2, $$0, $$0.K_().e(mb.aI), $$5, $$6, $$8);
-      this.s = $$0;
-      this.v = new Int2ObjectOpenHashMap();
+      this.r = $$0;
+      this.u = new Int2ObjectOpenHashMap();
 
       for (edp.a $$9 : edp.a.values()) {
          if (eaq.n.e().contains($$9)) {
-            this.i.put($$9, new edp(this, $$9));
+            this.h.put($$9, new edp(this, $$9));
          }
       }
 
-      this.u = $$7;
-      this.w = $$3;
-      this.x = $$4;
+      this.t = $$7;
+      this.v = $$3;
+      this.w = $$4;
    }
 
    public dzz(ash $$0, eaj $$1, @Nullable dzz.c $$2) {
-      this($$0, $$1.f(), $$1.q(), $$1.H(), $$1.I(), $$1.t(), $$1.d(), $$2, $$1.s());
+      this($$0, $$1.f(), $$1.s(), $$1.J(), $$1.K(), $$1.v(), $$1.d(), $$2, $$1.u());
 
-      for (duw $$3 : $$1.E().values()) {
+      for (duw $$3 : $$1.G().values()) {
          this.a($$3);
       }
 
-      this.k.putAll($$1.G());
+      this.j.putAll($$1.I());
 
-      for (int $$4 = 0; $$4 < $$1.n().length; $$4++) {
-         this.b[$$4] = $$1.n()[$$4];
+      for (int $$4 = 0; $$4 < $$1.p().length; $$4++) {
+         this.b[$$4] = $$1.p()[$$4];
       }
 
       this.a($$1.g());
@@ -87,29 +89,45 @@ public class dzz extends dzp {
          }
       }
 
-      this.j = $$1.j;
-      this.b($$1.u());
-      this.c = true;
+      this.i = $$1.i;
+      this.a($$1.w());
+      this.i();
+   }
+
+   public void a(dzz.e $$0) {
+      this.x = $$0;
+      if (this.k()) {
+         $$0.setUnsaved(this.c);
+      }
    }
 
    @Override
-   public fds<dkl> o() {
+   public void i() {
+      boolean $$0 = this.k();
+      super.i();
+      if (!$$0) {
+         this.x.setUnsaved(this.c);
+      }
+   }
+
+   @Override
+   public fds<dkl> q() {
+      return this.v;
+   }
+
+   @Override
+   public fds<etv> r() {
       return this.w;
    }
 
    @Override
-   public fds<etv> p() {
-      return this.x;
-   }
-
-   @Override
    public dzp.a a(long $$0) {
-      return new dzp.a(this.w.a($$0), this.x.a($$0));
+      return new dzp.a(this.v.a($$0), this.w.a($$0));
    }
 
    @Override
    public ect a(int $$0) {
-      return this.s instanceof ash $$1 ? (ect)this.v.computeIfAbsent($$0, $$2 -> new ecp($$1, $$0, this::i)) : super.a($$0);
+      return this.r instanceof ash $$1 ? (ect)this.u.computeIfAbsent($$0, $$2 -> new ecp($$1, $$0, this::i)) : super.a($$0);
    }
 
    @Override
@@ -117,7 +135,7 @@ public class dzz extends dzp {
       int $$1 = $$0.u();
       int $$2 = $$0.v();
       int $$3 = $$0.w();
-      if (this.s.ai()) {
+      if (this.r.ai()) {
          dxu $$4 = null;
          if ($$2 == 60) {
             $$4 = dkn.in.m();
@@ -131,8 +149,8 @@ public class dzz extends dzp {
       } else {
          try {
             int $$5 = this.f($$2);
-            if ($$5 >= 0 && $$5 < this.n.length) {
-               eaa $$6 = this.n[$$5];
+            if ($$5 >= 0 && $$5 < this.m.length) {
+               eaa $$6 = this.m[$$5];
                if (!$$6.c()) {
                   return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
                }
@@ -156,8 +174,8 @@ public class dzz extends dzp {
    public etw a(int $$0, int $$1, int $$2) {
       try {
          int $$3 = this.f($$1);
-         if ($$3 >= 0 && $$3 < this.n.length) {
-            eaa $$4 = this.n[$$3];
+         if ($$3 >= 0 && $$3 < this.m.length) {
+            eaa $$4 = this.m[$$3];
             if (!$$4.c()) {
                return $$4.b($$0 & 15, $$1 & 15, $$2 & 15);
             }
@@ -189,28 +207,28 @@ public class dzz extends dzp {
             return null;
          } else {
             dkl $$10 = $$1.b();
-            this.i.get(edp.a.e).a($$6, $$3, $$8, $$1);
-            this.i.get(edp.a.f).a($$6, $$3, $$8, $$1);
-            this.i.get(edp.a.d).a($$6, $$3, $$8, $$1);
-            this.i.get(edp.a.b).a($$6, $$3, $$8, $$1);
+            this.h.get(edp.a.e).a($$6, $$3, $$8, $$1);
+            this.h.get(edp.a.f).a($$6, $$3, $$8, $$1);
+            this.h.get(edp.a.d).a($$6, $$3, $$8, $$1);
+            this.h.get(edp.a.b).a($$6, $$3, $$8, $$1);
             boolean $$11 = $$4.c();
             if ($$5 != $$11) {
-               this.s.R().p().a($$0, $$11);
-               this.s.R().a(this.d.g, kj.a($$3), this.d.h, $$11);
+               this.r.R().p().a($$0, $$11);
+               this.r.R().a(this.c.g, kj.a($$3), this.c.h, $$11);
             }
 
             if (etn.a($$9, $$1)) {
                bps $$12 = bpr.a();
                $$12.a("updateSkyLightSources");
-               this.j.a(this, $$6, $$3, $$8);
+               this.i.a(this, $$6, $$3, $$8);
                $$12.b("queueCheckLight");
-               this.s.R().p().a($$0);
+               this.r.R().p().a($$0);
                $$12.c();
             }
 
             boolean $$13 = $$9.x();
-            if (!this.s.C) {
-               $$9.b(this.s, $$0, $$1, $$2);
+            if (!this.r.C) {
+               $$9.b(this.r, $$0, $$1, $$2);
             } else if (!$$9.a($$10) && $$13) {
                this.d($$0);
             }
@@ -218,14 +236,14 @@ public class dzz extends dzp {
             if (!$$4.a($$6, $$7, $$8).a($$10)) {
                return null;
             } else {
-               if (!this.s.C) {
-                  $$1.a(this.s, $$0, $$9, $$2);
+               if (!this.r.C) {
+                  $$1.a(this.r, $$0, $$9, $$2);
                }
 
                if ($$1.x()) {
                   duw $$14 = this.a($$0, dzz.b.c);
                   if ($$14 != null && !$$14.b($$1)) {
-                     o.warn("Found mismatched block entity @ {}: type = {}, state = {}", new Object[]{$$0, $$14.q().a().h().a(), $$1});
+                     n.warn("Found mismatched block entity @ {}: type = {}, state = {}", new Object[]{$$0, $$14.q().a().h().a(), $$1});
                      this.d($$0);
                      $$14 = null;
                   }
@@ -241,7 +259,7 @@ public class dzz extends dzp {
                   }
                }
 
-               this.c = true;
+               this.i();
                return $$9;
             }
          }
@@ -267,9 +285,9 @@ public class dzz extends dzp {
 
    @Nullable
    public duw a(jh $$0, dzz.b $$1) {
-      duw $$2 = this.l.get($$0);
+      duw $$2 = this.k.get($$0);
       if ($$2 == null) {
-         ux $$3 = this.k.remove($$0);
+         ux $$3 = this.j.remove($$0);
          if ($$3 != null) {
             duw $$4 = this.a($$0, $$3);
             if ($$4 != null) {
@@ -286,7 +304,7 @@ public class dzz extends dzp {
             }
          }
       } else if ($$2.n()) {
-         this.l.remove($$0);
+         this.k.remove($$0);
          return null;
       }
 
@@ -295,8 +313,8 @@ public class dzz extends dzp {
 
    public void b(duw $$0) {
       this.a($$0);
-      if (this.I()) {
-         if (this.s instanceof ash $$1) {
+      if (this.K()) {
+         if (this.r instanceof ash $$1) {
             this.b($$0, $$1);
          }
 
@@ -304,15 +322,15 @@ public class dzz extends dzp {
       }
    }
 
-   private boolean I() {
-      return this.r || this.s.B_();
+   private boolean K() {
+      return this.q || this.r.B_();
    }
 
    boolean h(jh $$0) {
-      if (!this.s.F_().a($$0)) {
+      if (!this.r.F_().a($$0)) {
          return false;
       } else {
-         return !(this.s instanceof ash $$1) ? true : this.C().a(arw.c) && $$1.c(dgn.a($$0));
+         return !(this.r instanceof ash $$1) ? true : this.E().a(arw.c) && $$1.c(dgn.a($$0));
       }
    }
 
@@ -321,25 +339,25 @@ public class dzz extends dzp {
       jh $$1 = $$0.aB_();
       dxu $$2 = this.a_($$1);
       if (!$$2.x()) {
-         o.warn("Trying to set block entity {} at position {}, but state {} does not allow it", new Object[]{$$0, $$1, $$2});
+         n.warn("Trying to set block entity {} at position {}, but state {} does not allow it", new Object[]{$$0, $$1, $$2});
       } else {
          dxu $$3 = $$0.m();
          if ($$2 != $$3) {
             if (!$$0.q().a($$2)) {
-               o.warn("Trying to set block entity {} at position {}, but state {} does not allow it", new Object[]{$$0, $$1, $$2});
+               n.warn("Trying to set block entity {} at position {}, but state {} does not allow it", new Object[]{$$0, $$1, $$2});
                return;
             }
 
             if ($$2.b() != $$3.b()) {
-               o.warn("Block state mismatch on block entity {} in position {}, {} != {}, updating", new Object[]{$$0, $$1, $$2, $$3});
+               n.warn("Block state mismatch on block entity {} in position {}, {} != {}, updating", new Object[]{$$0, $$1, $$2, $$3});
             }
 
             $$0.c($$2);
          }
 
-         $$0.a(this.s);
+         $$0.a(this.r);
          $$0.o();
-         duw $$4 = this.l.put($$1.j(), $$0);
+         duw $$4 = this.k.put($$1.j(), $$0);
          if ($$4 != null && $$4 != $$0) {
             $$4.aw_();
          }
@@ -351,11 +369,11 @@ public class dzz extends dzp {
    public ux a(jh $$0, js.a $$1) {
       duw $$2 = this.c_($$0);
       if ($$2 != null && !$$2.n()) {
-         ux $$3 = $$2.b(this.s.K_());
+         ux $$3 = $$2.b(this.r.K_());
          $$3.a("keepPacked", false);
          return $$3;
       } else {
-         ux $$4 = this.k.get($$0);
+         ux $$4 = this.j.get($$0);
          if ($$4 != null) {
             $$4 = $$4.i();
             $$4.a("keepPacked", true);
@@ -367,10 +385,10 @@ public class dzz extends dzp {
 
    @Override
    public void d(jh $$0) {
-      if (this.I()) {
-         duw $$1 = this.l.remove($$0);
+      if (this.K()) {
+         duw $$1 = this.k.remove($$0);
          if ($$1 != null) {
-            if (this.s instanceof ash $$2) {
+            if (this.r instanceof ash $$2) {
                this.a($$1, $$2);
             }
 
@@ -394,31 +412,31 @@ public class dzz extends dzp {
    }
 
    private void i(int $$0) {
-      this.v.remove($$0);
+      this.u.remove($$0);
    }
 
    private void k(jh $$0) {
-      dzz.d $$1 = this.q.remove($$0);
+      dzz.d $$1 = this.p.remove($$0);
       if ($$1 != null) {
-         $$1.a(p);
+         $$1.a(o);
       }
    }
 
-   public void D() {
-      if (this.u != null) {
-         this.u.run(this);
-         this.u = null;
+   public void F() {
+      if (this.t != null) {
+         this.t.run(this);
+         this.t = null;
       }
    }
 
-   public boolean B() {
+   public boolean D() {
       return false;
    }
 
    public void a(ws $$0, ux $$1, Consumer<aed.b> $$2) {
-      this.G();
+      this.I();
 
-      for (eaa $$3 : this.n) {
+      for (eaa $$3 : this.m) {
          $$3.a($$0);
       }
 
@@ -429,31 +447,31 @@ public class dzz extends dzp {
          }
       }
 
-      this.z();
+      this.B();
       $$2.accept(($$0x, $$1x, $$2x) -> {
          duw $$3 = this.a($$0x, dzz.b.a);
          if ($$3 != null && $$2x != null && $$3.q() == $$1x) {
-            $$3.c($$2x, this.s.K_());
+            $$3.c($$2x, this.r.K_());
          }
       });
    }
 
    public void a(ws $$0) {
-      for (eaa $$1 : this.n) {
+      for (eaa $$1 : this.m) {
          $$1.b($$0);
       }
    }
 
-   public void c(boolean $$0) {
-      this.r = $$0;
+   public void b(boolean $$0) {
+      this.q = $$0;
    }
 
-   public dhh E() {
-      return this.s;
+   public dhh G() {
+      return this.r;
    }
 
-   public Map<jh, duw> F() {
-      return this.l;
+   public Map<jh, duw> H() {
+      return this.k;
    }
 
    public void a(ash $$0) {
@@ -484,15 +502,15 @@ public class dzz extends dzp {
          }
       }
 
-      UnmodifiableIterator var10 = ImmutableList.copyOf(this.k.keySet()).iterator();
+      UnmodifiableIterator var10 = ImmutableList.copyOf(this.j.keySet()).iterator();
 
       while (var10.hasNext()) {
          jh $$8 = (jh)var10.next();
          this.c_($$8);
       }
 
-      this.k.clear();
-      this.f.a(this);
+      this.j.clear();
+      this.e.a(this);
    }
 
    @Nullable
@@ -504,60 +522,60 @@ public class dzz extends dzp {
             $$3 = ((dnf)$$2.b()).a($$0, $$2);
          } else {
             $$3 = null;
-            o.warn("Tried to load a DUMMY block entity @ {} but found not block entity block {} at location", $$0, $$2);
+            n.warn("Tried to load a DUMMY block entity @ {} but found not block entity block {} at location", $$0, $$2);
          }
       } else {
-         $$3 = duw.a($$0, $$2, $$1, this.s.K_());
+         $$3 = duw.a($$0, $$2, $$1, this.r.K_());
       }
 
       if ($$3 != null) {
-         $$3.a(this.s);
+         $$3.a(this.r);
          this.b($$3);
       } else {
-         o.warn("Tried to load a block entity for block {} but failed at location {}", $$2, $$0);
+         n.warn("Tried to load a block entity for block {} but failed at location {}", $$2, $$0);
       }
 
       return $$3;
    }
 
    public void d(long $$0) {
+      this.v.b($$0);
       this.w.b($$0);
-      this.x.b($$0);
    }
 
    public void b(ash $$0) {
-      $$0.n().a(this.d, this.w);
-      $$0.o().a(this.d, this.x);
+      $$0.n().a(this.c, this.v);
+      $$0.o().a(this.c, this.w);
    }
 
    public void c(ash $$0) {
-      $$0.n().a(this.d);
-      $$0.o().a(this.d);
+      $$0.n().a(this.c);
+      $$0.o().a(this.c);
    }
 
    @Override
-   public eaq j() {
+   public eaq n() {
       return eaq.n;
    }
 
-   public arw C() {
-      return this.t == null ? arw.b : this.t.get();
+   public arw E() {
+      return this.s == null ? arw.b : this.s.get();
    }
 
    public void b(Supplier<arw> $$0) {
-      this.t = $$0;
+      this.s = $$0;
    }
 
-   public void G() {
-      this.l.values().forEach(duw::aw_);
-      this.l.clear();
-      this.q.values().forEach($$0 -> $$0.a(p));
-      this.q.clear();
+   public void I() {
+      this.k.values().forEach(duw::aw_);
+      this.k.clear();
+      this.p.values().forEach($$0 -> $$0.a(o));
+      this.p.clear();
    }
 
-   public void H() {
-      this.l.values().forEach($$0 -> {
-         if (this.s instanceof ash $$2) {
+   public void J() {
+      this.k.values().forEach($$0 -> {
+         if (this.r instanceof ash $$2) {
             this.b($$0, $$2);
          }
 
@@ -577,18 +595,18 @@ public class dzz extends dzp {
 
    private <T extends duw> void c(T $$0) {
       dxu $$1 = $$0.m();
-      dux<T> $$2 = $$1.a(this.s, (duy<T>)$$0.q());
+      dux<T> $$2 = $$1.a(this.r, (duy<T>)$$0.q());
       if ($$2 == null) {
          this.k($$0.aB_());
       } else {
-         this.q.compute($$0.aB_(), ($$2x, $$3) -> {
+         this.p.compute($$0.aB_(), ($$2x, $$3) -> {
             dwr $$4 = this.a($$0, $$2);
             if ($$3 != null) {
                $$3.a($$4);
                return (dzz.d)$$3;
-            } else if (this.I()) {
+            } else if (this.K()) {
                dzz.d $$5 = new dzz.d($$4);
-               this.s.a($$5);
+               this.r.a($$5);
                return $$5;
             } else {
                return null;
@@ -621,11 +639,11 @@ public class dzz extends dzp {
                   $$1.a(this::d);
                   dxu $$2 = dzz.this.a_($$0);
                   if (this.b.q().a($$2)) {
-                     this.c.tick(dzz.this.s, this.b.aB_(), $$2, this.b);
+                     this.c.tick(dzz.this.r, this.b.aB_(), $$2, this.b);
                      this.d = false;
                   } else if (!this.d) {
                      this.d = true;
-                     dzz.o.warn("Block entity {} @ {} state {} invalid for ticking:", new Object[]{LogUtils.defer(this::d), LogUtils.defer(this::c), $$2});
+                     dzz.n.warn("Block entity {} @ {} state {} invalid for ticking:", new Object[]{LogUtils.defer(this::d), LogUtils.defer(this::c), $$2});
                   }
 
                   $$1.c();
@@ -706,5 +724,10 @@ public class dzz extends dzp {
       public String toString() {
          return this.a + " <wrapped>";
       }
+   }
+
+   @FunctionalInterface
+   public interface e {
+      void setUnsaved(dgn var1);
    }
 }

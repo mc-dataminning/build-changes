@@ -1,11 +1,11 @@
 import javax.annotation.Nullable;
 
 public class dzv extends dzz {
-   private final jq<dij> o;
+   private final jq<dij> n;
 
    public dzv(dhh $$0, dgn $$1, jq<dij> $$2) {
       super($$0, $$1);
-      this.o = $$2;
+      this.n = $$2;
    }
 
    @Override
@@ -48,7 +48,7 @@ public class dzv extends dzz {
    }
 
    @Override
-   public boolean B() {
+   public boolean D() {
       return true;
    }
 
@@ -63,12 +63,12 @@ public class dzv extends dzz {
    }
 
    @Override
-   public arw C() {
+   public arw E() {
       return arw.b;
    }
 
    @Override
    public jq<dij> getNoiseBiome(int $$0, int $$1, int $$2) {
-      return this.o;
+      return this.n;
    }
 }

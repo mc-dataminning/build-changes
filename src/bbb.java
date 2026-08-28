@@ -88,6 +88,6 @@ public class bbb {
    }
 
    public static boolean h(@Nullable String $$0) {
-      return $$0 != null && $$0.length() != 0 ? $$0.chars().allMatch(bbb::a) : true;
+      return $$0 != null && !$$0.isEmpty() ? $$0.chars().allMatch(bbb::a) : true;
    }
 }

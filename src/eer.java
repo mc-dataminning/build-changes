@@ -210,10 +210,10 @@ public class eer {
 
    public static void a(asp $$0, dzp $$1) {
       dgn $$2 = $$1.f();
-      boolean $$3 = $$1.r();
+      boolean $$3 = $$1.t();
       jh.a $$4 = new jh.a();
       jh $$5 = new jh($$2.d(), 0, $$2.e());
-      ees $$6 = $$1.s();
+      ees $$6 = $$1.u();
       if ($$6 != null) {
          int $$7 = $$6.b().L_();
          int $$8 = $$6.b().am();
@@ -229,7 +229,7 @@ public class eer {
          }
 
          for (jm $$11 : jm.c.a) {
-            if ($$0.a($$2.g + $$11.j(), $$2.h + $$11.l()).r() != $$3) {
+            if ($$0.a($$2.g + $$11.j(), $$2.h + $$11.l()).t() != $$3) {
                int $$12 = $$11 == jm.f ? 15 : 0;
                int $$13 = $$11 == jm.e ? 0 : 15;
                int $$14 = $$11 == jm.d ? 15 : 0;
@@ -268,22 +268,22 @@ public class eer {
       for (jn $$4 : jn.values()) {
          int $$5 = $$2.g + $$4.b();
          int $$6 = $$2.h + $$4.c();
-         ees $$7 = $$0.a($$5, $$6).s();
+         ees $$7 = $$0.a($$5, $$6).u();
          if ($$7 != null) {
             $$3.put($$4, $$7);
          }
       }
 
       ImmutableMap<jn, ees> $$8 = $$3.build();
-      if ($$1.r() || !$$8.isEmpty()) {
-         eer.c $$9 = a($$1.s(), $$8);
+      if ($$1.t() || !$$8.isEmpty()) {
+         eer.c $$9 = a($$1.u(), $$8);
          dzo.a $$10 = ($$1x, $$2x, $$3x) -> {
             double $$4x = (double)$$1x + 0.5 + b.a((double)$$1x, (double)$$2x, (double)$$3x) * 4.0;
             double $$5x = (double)$$2x + 0.5 + b.a((double)$$2x, (double)$$3x, (double)$$1x) * 4.0;
             double $$6x = (double)$$3x + 0.5 + b.a((double)$$3x, (double)$$1x, (double)$$2x) * 4.0;
             return $$9.getDistance($$4x, $$5x, $$6x) < 4.0;
          };
-         $$1.C().a($$10);
+         $$1.E().a($$10);
       }
    }
 

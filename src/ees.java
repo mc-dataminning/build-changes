@@ -65,8 +65,8 @@ public class ees {
    @Nullable
    public static ees a(asp $$0, int $$1, int $$2) {
       dzp $$3 = $$0.a($$1, $$2);
-      ees $$4 = $$3.s();
-      if ($$4 != null && !$$3.k().d(eaq.f)) {
+      ees $$4 = $$3.u();
+      if ($$4 != null && !$$3.o().d(eaq.f)) {
          $$4.a($$3, a($$0, $$1, $$2, false));
          return $$4;
       } else {
@@ -80,7 +80,7 @@ public class ees {
       for (jn $$5 : jn.values()) {
          int $$6 = $$1 + $$5.b();
          int $$7 = $$2 + $$5.c();
-         if ($$0.a($$6, $$7).r() == $$3) {
+         if ($$0.a($$6, $$7).t() == $$3) {
             $$4.add($$5);
          }
       }

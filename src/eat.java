@@ -10,7 +10,7 @@ public record eat(eaq a, eao b, eao c, int d, ear e) {
    }
 
    public CompletableFuture<dzp> a(eav $$0, bay<ary> $$1, dzp $$2) {
-      if ($$2.j().d(this.a)) {
+      if ($$2.n().d(this.a)) {
          bqd $$3 = bqa.f.a($$2.f(), $$0.a().ah(), this.a.f());
          return this.e.doWork($$0, this, $$1, $$2).thenApply($$1x -> this.a($$1x, $$3));
       } else {
@@ -19,7 +19,7 @@ public record eat(eaq a, eao b, eao c, int d, ear e) {
    }
 
    private dzp a(dzp $$0, @Nullable bqd $$1) {
-      if ($$0 instanceof eaj $$2 && $$2.j().d(this.a)) {
+      if ($$0 instanceof eaj $$2 && $$2.n().d(this.a)) {
          $$2.a(this.a);
       }
 

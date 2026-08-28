@@ -1,6 +1,8 @@
 import com.google.gson.JsonObject;
+import javax.annotation.Nullable;
 
 public class fis extends fiw {
+   @Nullable
    public String a;
    public long b;
    public long c;

@@ -211,10 +211,10 @@ public record ebk(
          }
       }
 
-      $$18.b(this.u);
+      $$18.a(this.u);
       EnumSet<edp.a> $$23 = EnumSet.noneOf(edp.a.class);
 
-      for (edp.a $$24 : $$18.j().e()) {
+      for (edp.a $$24 : $$18.n().e()) {
          long[] $$25 = this.r.get($$24);
          if ($$25 != null) {
             $$18.a($$24, $$25);
@@ -290,10 +290,10 @@ public record ebk(
 
       List<ux> $$17 = new ArrayList<>();
       long[] $$18 = null;
-      if ($$1.j().d() == eau.a) {
+      if ($$1.n().d() == eau.a) {
          eaj $$19 = (eaj)$$1;
-         $$17.addAll($$19.F());
-         dzo $$20 = $$19.B();
+         $$17.addAll($$19.H());
+         dzo $$20 = $$19.D();
          if ($$20 != null) {
             $$18 = $$20.a();
          }
@@ -302,30 +302,30 @@ public record ebk(
       Map<edp.a, long[]> $$21 = new EnumMap<>(edp.a.class);
 
       for (Entry<edp.a, edp> $$22 : $$1.e()) {
-         if ($$1.j().e().contains($$22.getKey())) {
+         if ($$1.n().e().contains($$22.getKey())) {
             long[] $$23 = $$22.getValue().a();
             $$21.put($$22.getKey(), (long[])$$23.clone());
          }
       }
 
       dzp.a $$24 = $$1.a($$0.ac());
-      ShortList[] $$25 = Arrays.stream($$1.n()).map($$0x -> $$0x != null ? new ShortArrayList($$0x) : null).toArray(ShortList[]::new);
+      ShortList[] $$25 = Arrays.stream($$1.p()).map($$0x -> $$0x != null ? new ShortArrayList($$0x) : null).toArray(ShortList[]::new);
       ux $$26 = a(eoz.a($$0), $$2, $$1.g(), $$1.h());
       return new ebk(
          $$0.K_().e(mb.aI),
          $$2,
          $$1.ao(),
          $$0.ac(),
-         $$1.t(),
-         $$1.j(),
-         x.a($$1.s(), ees::a),
-         $$1.w(),
-         $$1.q().c(),
+         $$1.v(),
+         $$1.n(),
+         x.a($$1.u(), ees::a),
+         $$1.y(),
+         $$1.s().c(),
          $$18,
          $$21,
          $$24,
          $$25,
-         $$1.u(),
+         $$1.w(),
          $$3,
          $$17,
          $$14,

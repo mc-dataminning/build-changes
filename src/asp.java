@@ -18,8 +18,8 @@ public class asp implements dif {
    private final evy f;
    private final bam h;
    private final ebp i;
-   private final fdu<dkl> j = new fdu<>($$0x -> this.y($$0x).o());
-   private final fdu<etv> k = new fdu<>($$0x -> this.y($$0x).p());
+   private final fdu<dkl> j = new fdu<>($$0x -> this.y($$0x).q());
+   private final fdu<etv> k = new fdu<>($$0x -> this.y($$0x).r());
    private final dil l;
    private final eat m;
    @Nullable
@@ -193,8 +193,8 @@ public class asp implements dif {
       int $$4 = Math.abs($$3.g - $$1);
       int $$5 = Math.abs($$3.h - $$2);
       if ($$4 <= this.m.d() && $$5 <= this.m.d()) {
-         if (this.c.x()) {
-            dhj $$6 = this.c.y();
+         if (this.c.z()) {
+            dhj $$6 = this.c.A();
             if ($$6.e($$0.v())) {
                return false;
             }
@@ -229,7 +229,7 @@ public class asp implements dif {
          }
 
          if ($$1.x()) {
-            if ($$4.j().d() == eau.b) {
+            if ($$4.n().d() == eau.b) {
                duw $$6 = ((dnf)$$1.b()).a($$0, $$1);
                if ($$6 != null) {
                   $$4.a($$6);

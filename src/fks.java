@@ -40,12 +40,7 @@ public class fks {
    }
 
    public static String a(String $$0, JsonObject $$1, String $$2) {
-      JsonElement $$3 = $$1.get($$0);
-      if ($$3 != null) {
-         return $$3.isJsonNull() ? $$2 : $$3.getAsString();
-      } else {
-         return $$2;
-      }
+      return b($$0, $$1, $$2);
    }
 
    @Nullable

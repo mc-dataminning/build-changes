@@ -14,6 +14,7 @@ import it.unimi.dsi.fastutil.longs.Long2LongMap;
 import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectLinkedOpenHashMap;
 import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
 import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import it.unimi.dsi.fastutil.longs.LongSet;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap.Entry;
@@ -57,36 +58,39 @@ public class arm extends eaz implements ark.b, arx {
    private static final int l = 200;
    private static final int m = 20;
    private static final int n = 10000;
+   private static final int o = 128;
    public static final int a = 2;
    public static final int b = 32;
    public static final int c = arl.a(arw.d);
-   private final Long2ObjectLinkedOpenHashMap<ark> o = new Long2ObjectLinkedOpenHashMap();
-   private volatile Long2ObjectLinkedOpenHashMap<ark> p = this.o.clone();
-   private final Long2ObjectLinkedOpenHashMap<ark> q = new Long2ObjectLinkedOpenHashMap();
-   private final List<arj> r = new ArrayList<>();
-   final ash s;
-   private final ask t;
-   private final brx<Runnable> u;
-   private final eed v;
-   private final dzr w;
-   private final Supplier<evw> x;
-   private final chj y;
-   final LongSet z = new LongOpenHashSet();
-   private boolean A;
-   private final aro B;
+   private final Long2ObjectLinkedOpenHashMap<ark> p = new Long2ObjectLinkedOpenHashMap();
+   private volatile Long2ObjectLinkedOpenHashMap<ark> q = this.p.clone();
+   private final Long2ObjectLinkedOpenHashMap<ark> r = new Long2ObjectLinkedOpenHashMap();
+   private final List<arj> s = new ArrayList<>();
+   final ash t;
+   private final ask u;
+   private final brx<Runnable> v;
+   private final eed w;
+   private final dzr x;
+   private final Supplier<evw> y;
+   private final chj z;
+   final LongSet A = new LongOpenHashSet();
+   private boolean B;
    private final aro C;
-   private final asr D;
-   private final ebw E;
-   private final arm.a F;
-   private final AtomicInteger G = new AtomicInteger();
-   private final String H;
-   private final asa I = new asa();
-   private final Int2ObjectMap<arm.b> J = new Int2ObjectOpenHashMap();
-   private final Long2ByteMap K = new Long2ByteOpenHashMap();
-   private final Long2LongMap L = new Long2LongOpenHashMap();
-   private final Queue<Runnable> M = Queues.newConcurrentLinkedQueue();
-   private int N;
-   private final eav O;
+   private final aro D;
+   private final asr E;
+   private final ebw F;
+   private final arm.a G;
+   private final AtomicInteger H = new AtomicInteger();
+   private final String I;
+   private final asa J = new asa();
+   private final Int2ObjectMap<arm.b> K = new Int2ObjectOpenHashMap();
+   private final Long2ByteMap L = new Long2ByteOpenHashMap();
+   private final Long2LongMap M = new Long2LongOpenHashMap();
+   private final LongSet N = new LongLinkedOpenHashSet();
+   private final Queue<Runnable> O = Queues.newConcurrentLinkedQueue();
+   private final AtomicInteger P = new AtomicInteger();
+   private int Q;
+   private final eav R;
 
    public arm(
       ash $$0,
@@ -105,42 +109,46 @@ public class arm extends eaz implements ark.b, arx {
    ) {
       super(new ebi($$1.f(), $$0.ah(), "chunk"), $$1.a($$0.ah()).resolve("region"), $$2, $$12);
       Path $$13 = $$1.a($$0.ah());
-      this.H = $$13.getFileName().toString();
-      this.s = $$0;
+      this.I = $$13.getFileName().toString();
+      this.t = $$0;
       ke $$14 = $$0.K_();
       long $$15 = $$0.D();
       if ($$7 instanceof eds $$16) {
-         this.v = eed.a($$16.h().a(), $$14.e(mb.aS), $$15);
+         this.w = eed.a($$16.h().a(), $$14.e(mb.aS), $$15);
       } else {
-         this.v = eed.a(edu.e(), $$14.e(mb.aS), $$15);
+         this.w = eed.a(edu.e(), $$14.e(mb.aS), $$15);
       }
 
-      this.w = $$7.a($$14.e(mb.aW), this.v, $$15);
-      this.u = $$5;
+      this.x = $$7.a($$14.e(mb.aW), this.w, $$15);
+      this.v = $$5;
       bry $$17 = new bry($$4, "worldgen");
-      this.D = $$8;
-      this.E = $$9;
+      this.E = $$8;
+      this.F = $$9;
       bry $$18 = new bry($$4, "light");
-      this.B = new aro($$17, $$4);
-      this.C = new aro($$18, $$4);
-      this.t = new ask($$6, this, this.s.G_().g(), $$18, this.C);
-      this.F = new arm.a($$4, $$5);
-      this.x = $$10;
-      this.y = new chj(new ebi($$1.f(), $$0.ah(), "poi"), $$13.resolve("poi"), $$2, $$12, $$14, $$0.p(), $$0);
+      this.C = new aro($$17, $$4);
+      this.D = new aro($$18, $$4);
+      this.u = new ask($$6, this, this.t.G_().g(), $$18, this.D);
+      this.G = new arm.a($$4, $$5);
+      this.y = $$10;
+      this.z = new chj(new ebi($$1.f(), $$0.ah(), "poi"), $$13.resolve("poi"), $$2, $$12, $$14, $$0.p(), $$0);
       this.a($$11);
-      this.O = new eav($$0, $$7, $$3, this.t, $$5);
+      this.R = new eav($$0, $$7, $$3, this.u, $$5, this::f);
+   }
+
+   private void f(dgn $$0) {
+      this.N.add($$0.a());
    }
 
    protected dzq a() {
-      return this.O.b();
+      return this.R.b();
    }
 
    protected dzr b() {
-      return this.w;
+      return this.x;
    }
 
    protected eed c() {
-      return this.v;
+      return this.w;
    }
 
    private static double a(dgn $$0, bvj $$1) {
@@ -172,17 +180,17 @@ public class arm extends eaz implements ark.b, arx {
    }
 
    protected ask d() {
-      return this.t;
+      return this.u;
    }
 
    @Nullable
    protected ark a(long $$0) {
-      return (ark)this.o.get($$0);
+      return (ark)this.p.get($$0);
    }
 
    @Nullable
    protected ark b(long $$0) {
-      return (ark)this.p.get($$0);
+      return (ark)this.q.get($$0);
    }
 
    protected IntSupplier c(long $$0) {
@@ -205,7 +213,7 @@ public class arm extends eaz implements ark.b, arx {
          }
 
          if ($$4 != null) {
-            $$2 = $$2 + "Ch: §" + $$4.j().b() + $$4.j() + "§r\n";
+            $$2 = $$2 + "Ch: §" + $$4.n().b() + $$4.n() + "§r\n";
          }
 
          arw $$5 = $$1.r();
@@ -268,9 +276,9 @@ public class arm extends eaz implements ark.b, arx {
             }
          });
       $$2.append("Updating:").append(System.lineSeparator());
-      this.o.values().forEach($$3);
-      $$2.append("Visible:").append(System.lineSeparator());
       this.p.values().forEach($$3);
+      $$2.append("Visible:").append(System.lineSeparator());
+      this.q.values().forEach($$3);
       o $$4 = o.a($$0, "Chunk loading");
       p $$5 = $$4.a("Chunk loading");
       $$5.a("Details", $$1);
@@ -293,22 +301,22 @@ public class arm extends eaz implements ark.b, arx {
 
          if ($$2 != null) {
             if (!arl.f($$1)) {
-               this.z.add($$0);
+               this.A.add($$0);
             } else {
-               this.z.remove($$0);
+               this.A.remove($$0);
             }
          }
 
          if (arl.f($$1) && $$2 == null) {
-            $$2 = (ark)this.q.remove($$0);
+            $$2 = (ark)this.r.remove($$0);
             if ($$2 != null) {
                $$2.a($$1);
             } else {
-               $$2 = new ark(new dgn($$0), $$1, this.s, this.t, this::a, this);
+               $$2 = new ark(new dgn($$0), $$1, this.t, this.u, this::a, this);
             }
 
-            this.o.put($$0, $$2);
-            this.A = true;
+            this.p.put($$0, $$2);
+            this.B = true;
          }
 
          return $$2;
@@ -316,16 +324,16 @@ public class arm extends eaz implements ark.b, arx {
    }
 
    private void a(dgn $$0, IntSupplier $$1, int $$2, IntConsumer $$3) {
-      this.B.onLevelChange($$0, $$1, $$2, $$3);
       this.C.onLevelChange($$0, $$1, $$2, $$3);
+      this.D.onLevelChange($$0, $$1, $$2, $$3);
    }
 
    @Override
    public void close() throws IOException {
       try {
-         this.B.close();
          this.C.close();
-         this.y.close();
+         this.D.close();
+         this.z.close();
       } finally {
          super.close();
       }
@@ -333,23 +341,24 @@ public class arm extends eaz implements ark.b, arx {
 
    protected void a(boolean $$0) {
       if ($$0) {
-         List<ark> $$1 = this.p.values().stream().filter(ark::k).peek(ark::l).toList();
+         List<ark> $$1 = this.q.values().stream().filter(ark::k).peek(ark::l).toList();
          MutableBoolean $$2 = new MutableBoolean();
 
          do {
             $$2.setFalse();
             $$1.stream().map($$0x -> {
-               this.u.b($$0x::h);
+               this.v.b($$0x::h);
                return $$0x.o();
             }).filter($$0x -> $$0x instanceof dzy || $$0x instanceof dzz).filter(this::a).forEach($$1x -> $$2.setTrue());
          } while ($$2.isTrue());
 
-         this.y.a();
+         this.z.a();
          this.b(() -> true);
          this.o();
       } else {
+         this.M.clear();
          long $$3 = ae.c();
-         ObjectIterator var4 = this.p.values().iterator();
+         ObjectIterator var4 = this.q.values().iterator();
 
          while (var4.hasNext()) {
             ark $$4 = (ark)var4.next();
@@ -361,9 +370,9 @@ public class arm extends eaz implements ark.b, arx {
    protected void a(BooleanSupplier $$0) {
       bps $$1 = bpr.a();
       $$1.a("poi");
-      this.y.a($$0);
+      this.z.a($$0);
       $$1.b("chunk_unload");
-      if (!this.s.u()) {
+      if (!this.t.u()) {
          this.b($$0);
       }
 
@@ -371,46 +380,54 @@ public class arm extends eaz implements ark.b, arx {
    }
 
    public boolean e() {
-      return this.t.N_()
-         || !this.q.isEmpty()
-         || !this.o.isEmpty()
-         || this.y.b()
-         || !this.z.isEmpty()
-         || !this.M.isEmpty()
-         || this.B.a()
+      return this.u.N_()
+         || !this.r.isEmpty()
+         || !this.p.isEmpty()
+         || this.z.b()
+         || !this.A.isEmpty()
+         || !this.O.isEmpty()
          || this.C.a()
-         || this.F.h();
+         || this.D.a()
+         || this.G.h();
    }
 
    private void b(BooleanSupplier $$0) {
-      for (LongIterator $$1 = this.z.iterator(); $$1.hasNext(); $$1.remove()) {
+      for (LongIterator $$1 = this.A.iterator(); $$1.hasNext(); $$1.remove()) {
          long $$2 = $$1.nextLong();
-         ark $$3 = (ark)this.o.get($$2);
+         ark $$3 = (ark)this.p.get($$2);
          if ($$3 != null) {
-            this.o.remove($$2);
-            this.q.put($$2, $$3);
-            this.A = true;
+            this.p.remove($$2);
+            this.r.put($$2, $$3);
+            this.B = true;
             this.a($$2, $$3);
          }
       }
 
-      int $$4 = Math.max(0, this.M.size() - 2000);
+      int $$4 = Math.max(0, this.O.size() - 2000);
 
       Runnable $$5;
-      while (($$4 > 0 || $$0.getAsBoolean()) && ($$5 = this.M.poll()) != null) {
+      while (($$4 > 0 || $$0.getAsBoolean()) && ($$5 = this.O.poll()) != null) {
          $$4--;
          $$5.run();
       }
 
-      long $$6 = ae.c();
-      int $$7 = 0;
-      LongIterator $$8 = this.F.f().iterator();
+      this.c($$0);
+   }
 
-      while ($$7 < 20 && $$0.getAsBoolean() && $$8.hasNext()) {
-         long $$9 = $$8.nextLong();
-         ark $$10 = (ark)this.p.get($$9);
-         if ($$10 != null && this.a($$10, $$6)) {
-            $$7++;
+   private void c(BooleanSupplier $$0) {
+      long $$1 = ae.c();
+      int $$2 = 0;
+      LongIterator $$3 = this.N.iterator();
+
+      while ($$2 < 20 && this.P.get() < 128 && $$0.getAsBoolean() && $$3.hasNext()) {
+         long $$4 = $$3.nextLong();
+         ark $$5 = (ark)this.q.get($$4);
+         dzp $$6 = $$5 != null ? $$5.o() : null;
+         if ($$6 == null || !$$6.k()) {
+            $$3.remove();
+         } else if (this.a($$5, $$1)) {
+            $$2++;
+            $$3.remove();
          }
       }
    }
@@ -423,23 +440,23 @@ public class arm extends eaz implements ark.b, arx {
             this.a($$0, $$1);
          } else {
             dzp $$4 = $$1.o();
-            if (this.q.remove($$0, $$1) && $$4 != null) {
+            if (this.r.remove($$0, $$1) && $$4 != null) {
                if ($$4 instanceof dzz $$5) {
-                  $$5.c(false);
+                  $$5.b(false);
                }
 
                this.a($$4);
                if ($$4 instanceof dzz $$6) {
-                  this.s.a($$6);
+                  this.t.a($$6);
                }
 
-               this.t.a($$4.f());
-               this.t.b();
-               this.D.a($$4.f(), null);
-               this.L.remove($$4.f().a());
+               this.u.a($$4.f());
+               this.u.b();
+               this.E.a($$4.f(), null);
+               this.M.remove($$4.f().a());
             }
          }
-      }, this.M::add).whenComplete(($$1x, $$2x) -> {
+      }, this.O::add).whenComplete(($$1x, $$2x) -> {
          if ($$2x != null) {
             k.error("Failed to save chunk {}", $$1.q(), $$2x);
          }
@@ -447,35 +464,35 @@ public class arm extends eaz implements ark.b, arx {
    }
 
    protected boolean f() {
-      if (!this.A) {
+      if (!this.B) {
          return false;
       } else {
-         this.p = this.o.clone();
-         this.A = false;
+         this.q = this.p.clone();
+         this.B = false;
          return true;
       }
    }
 
-   private CompletableFuture<dzp> f(dgn $$0) {
-      CompletableFuture<Optional<ebk>> $$1 = this.j($$0).thenApplyAsync($$1x -> $$1x.map($$1xx -> {
-            ebk $$2x = ebk.a(this.s, this.s.K_(), $$1xx);
+   private CompletableFuture<dzp> g(dgn $$0) {
+      CompletableFuture<Optional<ebk>> $$1 = this.k($$0).thenApplyAsync($$1x -> $$1x.map($$1xx -> {
+            ebk $$2x = ebk.a(this.t, this.t.K_(), $$1xx);
             if ($$2x == null) {
                k.error("Chunk file at {} is missing level data, skipping", $$0);
             }
 
             return $$2x;
          }), ae.g().a("parseChunk"));
-      CompletableFuture<?> $$2 = this.y.a($$0);
+      CompletableFuture<?> $$2 = this.z.a($$0);
       return $$1.<Object, Optional>thenCombine((CompletionStage<? extends Object>)$$2, ($$0x, $$1x) -> $$0x).thenApplyAsync($$1x -> {
          bpr.a().f("chunkLoad");
          if ($$1x.isPresent()) {
-            dzp $$2x = ((ebk)$$1x.get()).a(this.s, this.y, this.q(), $$0);
-            this.a($$0, $$2x.j().d());
+            dzp $$2x = ((ebk)$$1x.get()).a(this.t, this.z, this.q(), $$0);
+            this.a($$0, $$2x.n().d());
             return $$2x;
          } else {
-            return this.g($$0);
+            return this.h($$0);
          }
-      }, this.u).exceptionallyAsync($$1x -> this.a($$1x, $$0), this.u);
+      }, this.v).exceptionallyAsync($$1x -> this.a($$1x, $$0), this.v);
    }
 
    private dzp a(Throwable $$0, dgn $$1) {
@@ -484,33 +501,33 @@ public class arm extends eaz implements ark.b, arx {
       boolean $$6 = $$5 instanceof Error;
       boolean $$7 = $$5 instanceof IOException || $$5 instanceof vi;
       if (!$$6 && $$7) {
-         this.s.p().a($$5, this.q(), $$1);
-         return this.g($$1);
+         this.t.p().a($$5, this.q(), $$1);
+         return this.h($$1);
       } else {
          o $$8 = o.a($$0, "Exception loading chunk");
          p $$9 = $$8.a("Chunk being loaded");
          $$9.a("pos", $$1);
-         this.h($$1);
+         this.i($$1);
          throw new z($$8);
       }
    }
 
-   private dzp g(dgn $$0) {
-      this.h($$0);
-      return new eaj($$0, eam.a, this.s, this.s.K_().e(mb.aI), null);
+   private dzp h(dgn $$0) {
+      this.i($$0);
+      return new eaj($$0, eam.a, this.t, this.t.K_().e(mb.aI), null);
    }
 
-   private void h(dgn $$0) {
-      this.K.put($$0.a(), (byte)-1);
+   private void i(dgn $$0) {
+      this.L.put($$0.a(), (byte)-1);
    }
 
    private byte a(dgn $$0, eau $$1) {
-      return this.K.put($$0.a(), (byte)($$1 == eau.a ? -1 : 1));
+      return this.L.put($$0.a(), (byte)($$1 == eau.a ? -1 : 1));
    }
 
    @Override
    public ary d(long $$0) {
-      ark $$1 = (ark)this.o.get($$0);
+      ark $$1 = (ark)this.p.get($$0);
       $$1.m();
       return $$1;
    }
@@ -524,7 +541,7 @@ public class arm extends eaz implements ark.b, arx {
    public CompletableFuture<dzp> a(ary $$0, eat $$1, bay<ary> $$2) {
       dgn $$3 = $$0.q();
       if ($$1.a() == eaq.c) {
-         return this.f($$3);
+         return this.g($$3);
       } else {
          try {
             ary $$4 = $$2.a($$3.g, $$3.h);
@@ -532,8 +549,8 @@ public class arm extends eaz implements ark.b, arx {
             if ($$5 == null) {
                throw new IllegalStateException("Parent chunk missing");
             } else {
-               CompletableFuture<dzp> $$6 = $$1.a(this.O, $$2, $$5);
-               this.D.a($$3, $$1.a());
+               CompletableFuture<dzp> $$6 = $$1.a(this.R, $$2, $$5);
+               this.E.a($$3, $$1.a());
                return $$6;
             }
          } catch (Exception var8) {
@@ -544,7 +561,7 @@ public class arm extends eaz implements ark.b, arx {
             $$9.a("Location", String.format(Locale.ROOT, "%d,%d", $$3.g, $$3.h));
             $$9.a("Position hash", dgn.c($$3.g, $$3.h));
             $$9.a("Generator", this.a());
-            this.u.execute(() -> {
+            this.v.execute(() -> {
                throw new z($$8);
             });
             throw new z($$8);
@@ -555,13 +572,13 @@ public class arm extends eaz implements ark.b, arx {
    @Override
    public arj a(eaq $$0, dgn $$1) {
       arj $$2 = arj.a(this, $$0, $$1);
-      this.r.add($$2);
+      this.s.add($$2);
       return $$2;
    }
 
    private void a(arj $$0) {
       ary $$1 = $$0.c();
-      this.B.a(() -> {
+      this.C.a(() -> {
          CompletableFuture<?> $$1x = $$0.a();
          if ($$1x != null) {
             $$1x.thenRun(() -> this.a($$0));
@@ -571,27 +588,27 @@ public class arm extends eaz implements ark.b, arx {
 
    @Override
    public void g() {
-      this.r.forEach(this::a);
-      this.r.clear();
+      this.s.forEach(this::a);
+      this.s.clear();
    }
 
    public CompletableFuture<arn<dzz>> b(ark $$0) {
       CompletableFuture<arn<List<dzp>>> $$1 = this.a($$0, 1, $$0x -> eaq.n);
       CompletableFuture<arn<dzz>> $$2 = $$1.thenApplyAsync($$1x -> $$1x.a($$1xx -> {
             dzz $$2x = (dzz)$$1xx.get($$1xx.size() / 2);
-            $$2x.a(this.s);
-            this.s.b($$2x);
+            $$2x.a(this.t);
+            this.t.b($$2x);
             CompletableFuture<?> $$3 = $$0.f();
             if ($$3.isDone()) {
                this.a($$2x);
             } else {
-               $$3.thenAcceptAsync($$1xxx -> this.a($$2x), this.u);
+               $$3.thenAcceptAsync($$1xxx -> this.a($$2x), this.v);
             }
 
             return $$2x;
-         }), this.u);
+         }), this.v);
       $$2.handle(($$0x, $$1x) -> {
-         this.G.getAndIncrement();
+         this.H.getAndIncrement();
          return null;
       });
       return $$2;
@@ -600,7 +617,7 @@ public class arm extends eaz implements ark.b, arx {
    private void a(dzz $$0) {
       dgn $$1 = $$0.f();
 
-      for (asi $$2 : this.I.a()) {
+      for (asi $$2 : this.J.a()) {
          if ($$2.Y().a($$1)) {
             a($$2, $$0);
          }
@@ -612,7 +629,7 @@ public class arm extends eaz implements ark.b, arx {
    }
 
    public int h() {
-      return this.G.get();
+      return this.H.get();
    }
 
    private boolean a(ark $$0, long $$1) {
@@ -620,18 +637,18 @@ public class arm extends eaz implements ark.b, arx {
          dzp $$2 = $$0.o();
          if (!($$2 instanceof dzy) && !($$2 instanceof dzz)) {
             return false;
-         } else if (!$$2.i()) {
+         } else if (!$$2.k()) {
             return false;
          } else {
             long $$3 = $$2.f().a();
-            long $$4 = this.L.getOrDefault($$3, -1L);
+            long $$4 = this.M.getOrDefault($$3, -1L);
             if ($$1 < $$4) {
                return false;
             } else {
                boolean $$5 = this.a($$2);
                $$0.l();
                if ($$5) {
-                  this.L.put($$3, $$1 + 10000L);
+                  this.M.put($$3, $$1 + 10000L);
                }
 
                return $$5;
@@ -643,17 +660,16 @@ public class arm extends eaz implements ark.b, arx {
    }
 
    private boolean a(dzp $$0) {
-      this.y.b($$0.f());
-      if (!$$0.i()) {
+      this.z.b($$0.f());
+      if (!$$0.j()) {
          return false;
       } else {
-         $$0.a(false);
          dgn $$1 = $$0.f();
 
          try {
-            eaq $$2 = $$0.j();
+            eaq $$2 = $$0.n();
             if ($$2.d() != eau.b) {
-               if (this.i($$1)) {
+               if (this.j($$1)) {
                   return false;
                }
 
@@ -663,36 +679,41 @@ public class arm extends eaz implements ark.b, arx {
             }
 
             bpr.a().f("chunkSave");
-            ebk $$3 = ebk.a(this.s, $$0);
+            this.P.incrementAndGet();
+            ebk $$3 = ebk.a(this.t, $$0);
             CompletableFuture<ux> $$4 = CompletableFuture.supplyAsync($$3::a, ae.g());
-            this.a($$1, $$4::join).exceptionally($$1x -> {
-               this.s.p().b($$1x, this.q(), $$1);
+            this.a($$1, $$4::join).handle(($$1x, $$2x) -> {
+               if ($$2x != null) {
+                  this.t.p().b($$2x, this.q(), $$1);
+               }
+
+               this.P.decrementAndGet();
                return null;
             });
             this.a($$1, $$2.d());
             return true;
          } catch (Exception var6) {
-            this.s.p().b(var6, this.q(), $$1);
+            this.t.p().b(var6, this.q(), $$1);
             return false;
          }
       }
    }
 
-   private boolean i(dgn $$0) {
-      byte $$1 = this.K.get($$0.a());
+   private boolean j(dgn $$0) {
+      byte $$1 = this.L.get($$0.a());
       if ($$1 != 0) {
          return $$1 == 1;
       } else {
          ux $$2;
          try {
-            $$2 = this.j($$0).join().orElse(null);
+            $$2 = this.k($$0).join().orElse(null);
             if ($$2 == null) {
-               this.h($$0);
+               this.i($$0);
                return false;
             }
          } catch (Exception var5) {
             k.error("Failed to read chunk {}", $$0, var5);
-            this.h($$0);
+            this.i($$0);
             return false;
          }
 
@@ -703,18 +724,18 @@ public class arm extends eaz implements ark.b, arx {
 
    protected void a(int $$0) {
       int $$1 = bae.a($$0, 2, 32);
-      if ($$1 != this.N) {
-         this.N = $$1;
-         this.F.a(this.N);
+      if ($$1 != this.Q) {
+         this.Q = $$1;
+         this.G.a(this.Q);
 
-         for (asi $$2 : this.I.a()) {
+         for (asi $$2 : this.J.a()) {
             this.e($$2);
          }
       }
    }
 
    int b(asi $$0) {
-      return bae.a($$0.F(), 2, this.N);
+      return bae.a($$0.F(), 2, this.Q);
    }
 
    private void a(asi $$0, dgn $$1) {
@@ -739,15 +760,15 @@ public class arm extends eaz implements ark.b, arx {
    }
 
    public int i() {
-      return this.p.size();
+      return this.q.size();
    }
 
    public arv j() {
-      return this.F;
+      return this.G;
    }
 
    protected Iterable<ark> k() {
-      return Iterables.unmodifiableIterable(this.p.values());
+      return Iterables.unmodifiableIterable(this.q.values());
    }
 
    void a(Writer $$0) throws IOException {
@@ -769,8 +790,8 @@ public class arm extends eaz implements ark.b, arx {
          .a("block_ticks")
          .a("fluid_ticks")
          .a($$0);
-      aso $$2 = this.F.e();
-      ObjectBidirectionalIterator var4 = this.p.long2ObjectEntrySet().iterator();
+      aso $$2 = this.G.e();
+      ObjectBidirectionalIterator var4 = this.q.long2ObjectEntrySet().iterator();
 
       while (var4.hasNext()) {
          Entry<ark> $$3 = (Entry<ark>)var4.next();
@@ -784,18 +805,18 @@ public class arm extends eaz implements ark.b, arx {
             $$5.h,
             $$6.i(),
             $$7.isPresent(),
-            $$7.map(dzp::j).orElse(null),
-            $$8.map(dzz::C).orElse(null),
+            $$7.map(dzp::n).orElse(null),
+            $$8.map(dzz::E).orElse(null),
             a($$6.c()),
             a($$6.a()),
             a($$6.b()),
-            this.F.e($$4),
+            this.G.e($$4),
             this.b($$5),
-            $$8.<Integer>map($$0x -> $$0x.F().size()).orElse(0),
+            $$8.<Integer>map($$0x -> $$0x.H().size()).orElse(0),
             $$2.d($$4),
             $$2.c($$4),
-            $$8.<Integer>map($$0x -> $$0x.o().a()).orElse(0),
-            $$8.<Integer>map($$0x -> $$0x.p().a()).orElse(0)
+            $$8.<Integer>map($$0x -> $$0x.q().a()).orElse(0),
+            $$8.<Integer>map($$0x -> $$0x.r().a()).orElse(0)
          );
       }
    }
@@ -815,32 +836,32 @@ public class arm extends eaz implements ark.b, arx {
       }
    }
 
-   private CompletableFuture<Optional<ux>> j(dgn $$0) {
+   private CompletableFuture<Optional<ux>> k(dgn $$0) {
       return this.d($$0).thenApplyAsync($$0x -> $$0x.map(this::b), ae.g().a("upgradeChunk"));
    }
 
    private ux b(ux $$0) {
-      return this.a(this.s.ah(), this.x, $$0, this.a().c());
+      return this.a(this.t.ah(), this.y, $$0, this.a().c());
    }
 
    void a(Consumer<ark> $$0) {
-      LongIterator $$1 = this.F.c();
+      LongIterator $$1 = this.G.c();
 
       while ($$1.hasNext()) {
          long $$2 = $$1.nextLong();
-         ark $$3 = (ark)this.p.get($$2);
-         if ($$3 != null && this.k($$3.q())) {
+         ark $$3 = (ark)this.q.get($$2);
+         if ($$3 != null && this.l($$3.q())) {
             $$0.accept($$3);
          }
       }
    }
 
    boolean b(dgn $$0) {
-      return !this.F.f($$0.a()) ? false : this.k($$0);
+      return !this.G.f($$0.a()) ? false : this.l($$0);
    }
 
-   private boolean k(dgn $$0) {
-      for (asi $$1 : this.I.a()) {
+   private boolean l(dgn $$0) {
+      for (asi $$1 : this.J.a()) {
          if (this.c($$1, $$0)) {
             return true;
          }
@@ -851,12 +872,12 @@ public class arm extends eaz implements ark.b, arx {
 
    public List<asi> c(dgn $$0) {
       long $$1 = $$0.a();
-      if (!this.F.f($$1)) {
+      if (!this.G.f($$1)) {
          return List.of();
       } else {
          Builder<asi> $$2 = ImmutableList.builder();
 
-         for (asi $$3 : this.I.a()) {
+         for (asi $$3 : this.J.a()) {
             if (this.c($$3, $$0)) {
                $$2.add($$3);
             }
@@ -876,26 +897,26 @@ public class arm extends eaz implements ark.b, arx {
    }
 
    private boolean c(asi $$0) {
-      return $$0.aa_() && !this.s.N().b(dhd.r);
+      return $$0.aa_() && !this.t.N().b(dhd.r);
    }
 
    void a(asi $$0, boolean $$1) {
       boolean $$2 = this.c($$0);
-      boolean $$3 = this.I.d($$0);
+      boolean $$3 = this.J.d($$0);
       if ($$1) {
-         this.I.a($$0, $$2);
+         this.J.a($$0, $$2);
          this.d($$0);
          if (!$$2) {
-            this.F.a(kj.a($$0), $$0);
+            this.G.a(kj.a($$0), $$0);
          }
 
          $$0.a(arr.a);
          this.e($$0);
       } else {
          kj $$4 = $$0.X();
-         this.I.a($$0);
+         this.J.a($$0);
          if (!$$3) {
-            this.F.b($$4, $$0);
+            this.G.b($$4, $$0);
          }
 
          this.a($$0, arr.a);
@@ -908,12 +929,12 @@ public class arm extends eaz implements ark.b, arx {
    }
 
    public void a(asi $$0) {
-      ObjectIterator $$2 = this.J.values().iterator();
+      ObjectIterator $$2 = this.K.values().iterator();
 
       while ($$2.hasNext()) {
          arm.b $$1 = (arm.b)$$2.next();
          if ($$1.c == $$0) {
-            $$1.a(this.s.y());
+            $$1.a(this.t.y());
          } else {
             $$1.b($$0);
          }
@@ -921,25 +942,25 @@ public class arm extends eaz implements ark.b, arx {
 
       kj $$2x = $$0.X();
       kj $$3 = kj.a($$0);
-      boolean $$4 = this.I.e($$0);
+      boolean $$4 = this.J.e($$0);
       boolean $$5 = this.c($$0);
       boolean $$6 = $$2x.s() != $$3.s();
       if ($$6 || $$4 != $$5) {
          this.d($$0);
          if (!$$4) {
-            this.F.b($$2x, $$0);
+            this.G.b($$2x, $$0);
          }
 
          if (!$$5) {
-            this.F.a($$3, $$0);
+            this.G.a($$3, $$0);
          }
 
          if (!$$4 && $$5) {
-            this.I.b($$0);
+            this.J.b($$0);
          }
 
          if ($$4 && !$$5) {
-            this.I.c($$0);
+            this.J.c($$0);
          }
 
          this.e($$0);
@@ -957,7 +978,7 @@ public class arm extends eaz implements ark.b, arx {
    }
 
    private void a(asi $$0, arr $$1) {
-      if ($$0.dW() == this.s) {
+      if ($$0.dW() == this.t) {
          arr $$2 = $$0.Y();
          if ($$1 instanceof arr.a $$3 && (!($$2 instanceof arr.a $$4) || !$$4.a().equals($$3.a()))) {
             $$0.f.b(new afw($$3.a().g, $$3.a().h));
@@ -970,7 +991,7 @@ public class arm extends eaz implements ark.b, arx {
 
    @Override
    public List<asi> a(dgn $$0, boolean $$1) {
-      Set<asi> $$2 = this.I.a();
+      Set<asi> $$2 = this.J.a();
       Builder<asi> $$3 = ImmutableList.builder();
 
       for (asi $$4 : $$2) {
@@ -988,15 +1009,15 @@ public class arm extends eaz implements ark.b, arx {
          int $$2 = $$1.o() * 16;
          if ($$2 != 0) {
             int $$3 = $$1.p();
-            if (this.J.containsKey($$0.ar())) {
+            if (this.K.containsKey($$0.ar())) {
                throw (IllegalStateException)ae.b(new IllegalStateException("Entity is already tracked!"));
             } else {
                arm.b $$4 = new arm.b($$0, $$2, $$3, $$1.q());
-               this.J.put($$0.ar(), $$4);
-               $$4.a(this.s.y());
+               this.K.put($$0.ar(), $$4);
+               $$4.a(this.t.y());
                if ($$0 instanceof asi $$5) {
                   this.a($$5, true);
-                  ObjectIterator var7 = this.J.values().iterator();
+                  ObjectIterator var7 = this.K.values().iterator();
 
                   while (var7.hasNext()) {
                      arm.b $$6 = (arm.b)var7.next();
@@ -1013,7 +1034,7 @@ public class arm extends eaz implements ark.b, arx {
    protected void b(bvj $$0) {
       if ($$0 instanceof asi $$1) {
          this.a($$1, false);
-         ObjectIterator var3 = this.J.values().iterator();
+         ObjectIterator var3 = this.K.values().iterator();
 
          while (var3.hasNext()) {
             arm.b $$2 = (arm.b)var3.next();
@@ -1021,20 +1042,20 @@ public class arm extends eaz implements ark.b, arx {
          }
       }
 
-      arm.b $$3 = (arm.b)this.J.remove($$0.ar());
+      arm.b $$3 = (arm.b)this.K.remove($$0.ar());
       if ($$3 != null) {
          $$3.a();
       }
    }
 
    protected void l() {
-      for (asi $$0 : this.I.a()) {
+      for (asi $$0 : this.J.a()) {
          this.e($$0);
       }
 
       List<asi> $$1 = Lists.newArrayList();
-      List<asi> $$2 = this.s.y();
-      ObjectIterator var3 = this.J.values().iterator();
+      List<asi> $$2 = this.t.y();
+      ObjectIterator var3 = this.K.values().iterator();
 
       while (var3.hasNext()) {
          arm.b $$3 = (arm.b)var3.next();
@@ -1051,13 +1072,13 @@ public class arm extends eaz implements ark.b, arx {
             $$3.e = $$5;
          }
 
-         if ($$6 || this.F.c($$5.r().a())) {
+         if ($$6 || this.G.c($$5.r().a())) {
             $$3.b.a();
          }
       }
 
       if (!$$1.isEmpty()) {
-         var3 = this.J.values().iterator();
+         var3 = this.K.values().iterator();
 
          while (var3.hasNext()) {
             arm.b $$8 = (arm.b)var3.next();
@@ -1067,14 +1088,14 @@ public class arm extends eaz implements ark.b, arx {
    }
 
    public void a(bvj $$0, aac<?> $$1) {
-      arm.b $$2 = (arm.b)this.J.get($$0.ar());
+      arm.b $$2 = (arm.b)this.K.get($$0.ar());
       if ($$2 != null) {
          $$2.a($$1);
       }
    }
 
    protected void b(bvj $$0, aac<?> $$1) {
-      arm.b $$2 = (arm.b)this.J.get($$0.ar());
+      arm.b $$2 = (arm.b)this.K.get($$0.ar());
       if ($$2 != null) {
          $$2.b($$1);
       }
@@ -1089,7 +1110,7 @@ public class arm extends eaz implements ark.b, arx {
          if ($$2 instanceof dzz $$4) {
             $$5 = $$4;
          } else {
-            $$5 = this.s.d($$3.g, $$3.h);
+            $$5 = this.t.d($$3.g, $$3.h);
          }
 
          for (asi $$7 : this.a($$3, false)) {
@@ -1101,15 +1122,15 @@ public class arm extends eaz implements ark.b, arx {
    }
 
    protected chj m() {
-      return this.y;
+      return this.z;
    }
 
    public String n() {
-      return this.H;
+      return this.I;
    }
 
    void a(dgn $$0, arw $$1) {
-      this.E.onChunkStatusChange($$0, $$1);
+      this.F.onChunkStatusChange($$0, $$1);
    }
 
    public void a(dgn $$0, int $$1) {
@@ -1117,7 +1138,7 @@ public class arm extends eaz implements ark.b, arx {
       dgn.a($$0, $$2).forEach($$0x -> {
          ark $$1x = this.b($$0x.a());
          if ($$1x != null) {
-            $$1x.a(this.t.a($$0x.g, $$0x.h));
+            $$1x.a(this.u.a($$0x.g, $$0x.h));
          }
       });
    }
@@ -1129,7 +1150,7 @@ public class arm extends eaz implements ark.b, arx {
 
       @Override
       protected boolean a(long $$0) {
-         return arm.this.z.contains($$0);
+         return arm.this.A.contains($$0);
       }
 
       @Nullable
@@ -1153,7 +1174,7 @@ public class arm extends eaz implements ark.b, arx {
       private final Set<atn> f = Sets.newIdentityHashSet();
 
       public b(final bvj $$0, final int $$1, final int $$2, final boolean $$3) {
-         this.b = new asf(arm.this.s, $$0, $$2, $$3, this::a);
+         this.b = new asf(arm.this.t, $$0, $$2, $$3, this::a);
          this.c = $$0;
          this.d = $$1;
          this.e = kj.a($$0);
@@ -1213,7 +1234,7 @@ public class arm extends eaz implements ark.b, arx {
       }
 
       private int a(int $$0) {
-         return arm.this.s.p().b($$0);
+         return arm.this.t.p().b($$0);
       }
 
       private int b() {

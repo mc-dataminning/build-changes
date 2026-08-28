@@ -1,21 +1,22 @@
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mojang.logging.LogUtils;
+import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
 public class fig extends fiw {
    private static final Logger b = LogUtils.getLogger();
+   @Nullable
    public String a;
 
    public static fig a(String $$0) {
       fig $$1 = new fig();
 
       try {
-         JsonParser $$2 = new JsonParser();
-         JsonObject $$3 = $$2.parse($$0).getAsJsonObject();
-         $$1.a = fks.b("newsLink", $$3, null);
-      } catch (Exception var4) {
-         b.error("Could not parse RealmsNews: {}", var4.getMessage());
+         JsonObject $$2 = JsonParser.parseString($$0).getAsJsonObject();
+         $$1.a = fks.b("newsLink", $$2, null);
+      } catch (Exception var3) {
+         b.error("Could not parse RealmsNews: {}", var3.getMessage());
       }
 
       return $$1;

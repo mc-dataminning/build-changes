@@ -1,8 +1,10 @@
 import com.google.gson.annotations.SerializedName;
 import java.util.UUID;
+import javax.annotation.Nullable;
 
 public class fie extends fiw implements fiq {
    @SerializedName("name")
+   @Nullable
    private String a;
    @SerializedName("uuid")
    private UUID b;
@@ -14,7 +16,7 @@ public class fie extends fiw implements fiq {
    private boolean e;
 
    public String a() {
-      return this.a;
+      return this.a == null ? "" : this.a;
    }
 
    public void a(String $$0) {

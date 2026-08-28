@@ -132,6 +132,6 @@ public class fvy extends fvo<cvb> {
    }
 
    private boolean K() {
-      return this.z.b(0).h() && this.z.b(1).h() && this.z.b(2).h() && !this.z.b(this.z.n()).h();
+      return this.z.m();
    }
 }

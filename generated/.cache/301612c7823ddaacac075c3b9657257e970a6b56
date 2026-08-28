@@ -1,4 +1,4 @@
-// 1.21.2 Pre-Release 2	2026-08-28T02:41:55.099617814	vanilla/Model Definitions
+// 1.21.2 Pre-Release 3	2026-08-28T02:44:25.442434566	vanilla/Model Definitions
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/minecraft/models/item/husk_spawn_egg.json
 032d5086adbdc64098925cfc465a7030434bf9cd assets/minecraft/models/block/stripped_bamboo_block.json
 1992ec8533ec64e4e699df945406934594b00abc assets/minecraft/models/item/stripped_spruce_log.json
@@ -183,8 +183,8 @@ eb2de7b7f4c8b8300c64dbb99a0bcf2b79736689 assets/minecraft/models/item/lantern.js
 1ce30245837181608e7fb1077b66f244dcd76288 assets/minecraft/models/block/prismarine_wall_side_tall.json
 da6a1ad93e53f481e45497bcac98fe6f5cc7b351 assets/minecraft/models/item/bamboo_planks.json
 9d2097b7e74ef422fcf665a9537cdba01714ad92 assets/minecraft/models/block/sniffer_egg_not_cracked.json
-0561750f3646b5f77bfb0b4bfe0d38f8d66e804e assets/minecraft/models/block/cherry_fence_gate_open.json
 c6f0f5d202137980ca9aef32078e7c4130793ad9 assets/minecraft/models/item/stone_brick_wall.json
+0561750f3646b5f77bfb0b4bfe0d38f8d66e804e assets/minecraft/models/block/cherry_fence_gate_open.json
 de34a0c7935af80b79f3a6cc8e435d1c52fbb038 assets/minecraft/models/item/purple_concrete.json
 53856e122b424d4a45c3453ae2f87f353f179848 assets/minecraft/models/block/heavy_weighted_pressure_plate_down.json
 72ac39773cb2ef603f1aa01ed4cf329b5595b74c assets/minecraft/models/item/cornflower.json

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
@@ -102,7 +103,13 @@ public class fjo extends hhv {
             fkd.a(
                this,
                xv.c("mco.configure.world.restore.download.question.line1"),
-               $$0 -> this.m.a(new fjx(this.H.g(), new flc(this.N.a, this.L, this.N.c + " (" + this.N.i.get(this.N.p).a(this.N.p) + ")", this)))
+               $$0 -> this.m
+                     .a(
+                        new fjx(
+                           this.H.g(),
+                           new flc(this.N.a, this.L, Objects.requireNonNullElse(this.N.c, "") + " (" + this.N.i.get(this.N.p).a(this.N.p) + ")", this)
+                        )
+                     )
             )
          );
    }

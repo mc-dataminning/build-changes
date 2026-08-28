@@ -22,48 +22,48 @@ import org.slf4j.Logger;
 
 public abstract class dzp implements dil.a, eab, eal {
    public static final int a = -1;
-   private static final Logger o = LogUtils.getLogger();
-   private static final LongSet p = new LongOpenHashSet();
+   private static final Logger n = LogUtils.getLogger();
+   private static final LongSet o = new LongOpenHashSet();
    protected final ShortList[] b;
-   protected volatile boolean c;
+   private volatile boolean p;
    private volatile boolean q;
-   protected final dgn d;
+   protected final dgn c;
    private long r;
    @Nullable
    @Deprecated
    private dik s;
    @Nullable
-   protected edt e;
-   protected final eam f;
+   protected edt d;
+   protected final eam e;
    @Nullable
-   protected ees h;
-   protected final Map<edp.a, edp> i = Maps.newEnumMap(edp.a.class);
-   protected etg j;
+   protected ees f;
+   protected final Map<edp.a, edp> h = Maps.newEnumMap(edp.a.class);
+   protected etg i;
    private final Map<eoj, eor> t = Maps.newHashMap();
    private final Map<eoj, LongSet> u = Maps.newHashMap();
-   protected final Map<jh, ux> k = Maps.newHashMap();
-   protected final Map<jh, duw> l = new Object2ObjectOpenHashMap();
-   protected final dhj m;
-   protected final eaa[] n;
+   protected final Map<jh, ux> j = Maps.newHashMap();
+   protected final Map<jh, duw> k = new Object2ObjectOpenHashMap();
+   protected final dhj l;
+   protected final eaa[] m;
 
    public dzp(dgn $$0, eam $$1, dhj $$2, kd<dij> $$3, long $$4, @Nullable eaa[] $$5, @Nullable ees $$6) {
-      this.d = $$0;
-      this.f = $$1;
-      this.m = $$2;
-      this.n = new eaa[$$2.an()];
+      this.c = $$0;
+      this.e = $$1;
+      this.l = $$2;
+      this.m = new eaa[$$2.an()];
       this.r = $$4;
       this.b = new ShortList[$$2.an()];
-      this.h = $$6;
-      this.j = new etg($$2);
+      this.f = $$6;
+      this.i = new etg($$2);
       if ($$5 != null) {
-         if (this.n.length == $$5.length) {
-            System.arraycopy($$5, 0, this.n, 0, this.n.length);
+         if (this.m.length == $$5.length) {
+            System.arraycopy($$5, 0, this.m, 0, this.m.length);
          } else {
-            o.warn("Could not set level chunk sections, array length is {} instead of {}", $$5.length, this.n.length);
+            n.warn("Could not set level chunk sections, array length is {} instead of {}", $$5.length, this.m.length);
          }
       }
 
-      a($$3, this.n);
+      a($$3, this.m);
    }
 
    private static void a(kd<dij> $$0, eaa[] $$1) {
@@ -107,13 +107,13 @@ public abstract class dzp implements dil.a, eab, eal {
    }
 
    public Set<jh> c() {
-      Set<jh> $$0 = Sets.newHashSet(this.k.keySet());
-      $$0.addAll(this.l.keySet());
+      Set<jh> $$0 = Sets.newHashSet(this.j.keySet());
+      $$0.addAll(this.k.keySet());
       return $$0;
    }
 
    public eaa[] d() {
-      return this.n;
+      return this.m;
    }
 
    public eaa b(int $$0) {
@@ -121,7 +121,7 @@ public abstract class dzp implements dil.a, eab, eal {
    }
 
    public Collection<Entry<edp.a, edp>> e() {
-      return Collections.unmodifiableSet(this.i.entrySet());
+      return Collections.unmodifiableSet(this.h.entrySet());
    }
 
    public void a(edp.a $$0, long[] $$1) {
@@ -129,29 +129,29 @@ public abstract class dzp implements dil.a, eab, eal {
    }
 
    public edp a(edp.a $$0) {
-      return this.i.computeIfAbsent($$0, $$0x -> new edp(this, $$0x));
+      return this.h.computeIfAbsent($$0, $$0x -> new edp(this, $$0x));
    }
 
    public boolean b(edp.a $$0) {
-      return this.i.get($$0) != null;
+      return this.h.get($$0) != null;
    }
 
    public int a(edp.a $$0, int $$1, int $$2) {
-      edp $$3 = this.i.get($$0);
+      edp $$3 = this.h.get($$0);
       if ($$3 == null) {
          if (ab.aU && this instanceof dzz) {
-            o.error("Unprimed heightmap: " + $$0 + " " + $$1 + " " + $$2);
+            n.error("Unprimed heightmap: " + $$0 + " " + $$1 + " " + $$2);
          }
 
          edp.a(this, EnumSet.of($$0));
-         $$3 = this.i.get($$0);
+         $$3 = this.h.get($$0);
       }
 
       return $$3.a($$1 & 15, $$2 & 15) - 1;
    }
 
    public dgn f() {
-      return this.d;
+      return this.c;
    }
 
    @Nullable
@@ -163,7 +163,7 @@ public abstract class dzp implements dil.a, eab, eal {
    @Override
    public void a(eoj $$0, eor $$1) {
       this.t.put($$0, $$1);
-      this.c = true;
+      this.i();
    }
 
    public Map<eoj, eor> g() {
@@ -173,18 +173,18 @@ public abstract class dzp implements dil.a, eab, eal {
    public void a(Map<eoj, eor> $$0) {
       this.t.clear();
       this.t.putAll($$0);
-      this.c = true;
+      this.i();
    }
 
    @Override
    public LongSet b(eoj $$0) {
-      return this.u.getOrDefault($$0, p);
+      return this.u.getOrDefault($$0, o);
    }
 
    @Override
    public void a(eoj $$0, long $$1) {
       this.u.computeIfAbsent($$0, $$0x -> new LongOpenHashSet()).add($$1);
-      this.c = true;
+      this.i();
    }
 
    @Override
@@ -196,7 +196,7 @@ public abstract class dzp implements dil.a, eab, eal {
    public void b(Map<eoj, LongSet> $$0) {
       this.u.clear();
       this.u.putAll($$0);
-      this.c = true;
+      this.i();
    }
 
    public boolean a(int $$0, int $$1) {
@@ -221,19 +221,28 @@ public abstract class dzp implements dil.a, eab, eal {
       return this.b(this.g($$0)).c();
    }
 
-   public void a(boolean $$0) {
-      this.c = $$0;
+   public void i() {
+      this.p = true;
    }
 
-   public boolean i() {
-      return this.c;
+   public boolean j() {
+      if (this.p) {
+         this.p = false;
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   public abstract eaq j();
+   public boolean k() {
+      return this.p;
+   }
 
-   public eaq k() {
-      eaq $$0 = this.j();
-      edd $$1 = this.w();
+   public abstract eaq n();
+
+   public eaq o() {
+      eaq $$0 = this.n();
+      edd $$1 = this.y();
       if ($$1 != null) {
          eaq $$2 = $$1.a();
          return eaq.a($$2, $$0);
@@ -245,24 +254,24 @@ public abstract class dzp implements dil.a, eab, eal {
    public abstract void d(jh var1);
 
    public void e(jh $$0) {
-      o.warn("Trying to mark a block for PostProcessing @ {}, but this operation is not supported.", $$0);
+      n.warn("Trying to mark a block for PostProcessing @ {}, but this operation is not supported.", $$0);
    }
 
-   public ShortList[] n() {
+   public ShortList[] p() {
       return this.b;
    }
 
    public void a(ShortList $$0, int $$1) {
-      a(this.n(), $$1).addAll($$0);
+      a(this.p(), $$1).addAll($$0);
    }
 
    public void a(ux $$0) {
-      this.k.put(duw.b($$0), $$0);
+      this.j.put(duw.b($$0), $$0);
    }
 
    @Nullable
    public ux f(jh $$0) {
-      return this.k.get($$0);
+      return this.j.get($$0);
    }
 
    @Nullable
@@ -279,7 +288,7 @@ public abstract class dzp implements dil.a, eab, eal {
       for (int $$3 = this.ao(); $$3 <= this.ap(); $$3++) {
          eaa $$4 = this.b(this.g($$3));
          if ($$4.a($$0)) {
-            jh $$5 = kj.a(this.d, $$3).j();
+            jh $$5 = kj.a(this.c, $$3).j();
 
             for (int $$6 = 0; $$6 < 16; $$6++) {
                for (int $$7 = 0; $$7 < 16; $$7++) {
@@ -295,26 +304,26 @@ public abstract class dzp implements dil.a, eab, eal {
       }
    }
 
-   public abstract fds<dkl> o();
+   public abstract fds<dkl> q();
 
-   public abstract fds<etv> p();
+   public abstract fds<etv> r();
 
    public abstract dzp.a a(long var1);
 
-   public eam q() {
-      return this.f;
+   public eam s() {
+      return this.e;
    }
 
-   public boolean r() {
-      return this.h != null;
+   public boolean t() {
+      return this.f != null;
    }
 
    @Nullable
-   public ees s() {
-      return this.h;
+   public ees u() {
+      return this.f;
    }
 
-   public long t() {
+   public long v() {
       return this.r;
    }
 
@@ -334,31 +343,31 @@ public abstract class dzp implements dil.a, eab, eal {
       return $$0[$$1];
    }
 
-   public boolean u() {
+   public boolean w() {
       return this.q;
    }
 
-   public void b(boolean $$0) {
+   public void a(boolean $$0) {
       this.q = $$0;
-      this.a(true);
+      this.i();
    }
 
    @Override
    public int L_() {
-      return this.m.L_();
+      return this.l.L_();
    }
 
    @Override
    public int M_() {
-      return this.m.M_();
+      return this.l.M_();
    }
 
    public edt a(Function<dzp, edt> $$0) {
-      if (this.e == null) {
-         this.e = $$0.apply(this);
+      if (this.d == null) {
+         this.d = $$0.apply(this);
       }
 
-      return this.e;
+      return this.d;
    }
 
    @Deprecated
@@ -377,7 +386,7 @@ public abstract class dzp implements dil.a, eab, eal {
          int $$4 = $$3 + kb.a(this.M_()) - 1;
          int $$5 = bae.a($$1, $$3, $$4);
          int $$6 = this.f(kb.c($$5));
-         return this.n[$$6].c($$0 & 3, $$5 & 3, $$2 & 3);
+         return this.m[$$6].c($$0 & 3, $$5 & 3, $$2 & 3);
       } catch (Throwable var8) {
          o $$8 = o.a(var8, "Getting biome");
          p $$9 = $$8.a("Biome being got");
@@ -390,7 +399,7 @@ public abstract class dzp implements dil.a, eab, eal {
       dgn $$2 = this.f();
       int $$3 = kb.a($$2.d());
       int $$4 = kb.a($$2.e());
-      dhj $$5 = this.y();
+      dhj $$5 = this.A();
 
       for (int $$6 = $$5.ao(); $$6 <= $$5.ap(); $$6++) {
          eaa $$7 = this.b(this.g($$6));
@@ -399,30 +408,30 @@ public abstract class dzp implements dil.a, eab, eal {
       }
    }
 
-   public boolean v() {
+   public boolean x() {
       return !this.h().isEmpty();
    }
 
    @Nullable
-   public edd w() {
+   public edd y() {
       return null;
    }
 
-   public boolean x() {
-      return this.w() != null;
+   public boolean z() {
+      return this.y() != null;
    }
 
-   public dhj y() {
+   public dhj A() {
       return this;
    }
 
-   public void z() {
-      this.j.a(this);
+   public void B() {
+      this.i.a(this);
    }
 
    @Override
-   public etg A() {
-      return this.j;
+   public etg C() {
+      return this.i;
    }
 
    public static record a(List<fdo<dkl>> a, List<fdo<etv>> b) {

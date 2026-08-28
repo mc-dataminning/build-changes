@@ -146,7 +146,7 @@ public abstract class dhh implements dhi, AutoCloseable {
                   this.b($$0, $$6, $$7);
                }
 
-               if (($$2 & 2) != 0 && (!this.C || ($$2 & 4) == 0) && (this.C || $$4.C() != null && $$4.C().a(arw.c))) {
+               if (($$2 & 2) != 0 && (!this.C || ($$2 & 4) == 0) && (this.C || $$4.E() != null && $$4.E().a(arw.c))) {
                   this.a($$0, $$6, $$1, $$2);
                }
 
@@ -579,7 +579,7 @@ public abstract class dhh implements dhi, AutoCloseable {
 
    public void q(jh $$0) {
       if (this.B($$0)) {
-         this.m($$0).a(true);
+         this.m($$0).i();
       }
    }
 
@@ -716,7 +716,7 @@ public abstract class dhh implements dhi, AutoCloseable {
       float $$2 = 0.0F;
       if (this.B($$0)) {
          $$2 = this.aq();
-         $$1 = this.m($$0).t();
+         $$1 = this.m($$0).v();
       }
 
       return new btg(this.al(), this.ad(), $$1, $$2);

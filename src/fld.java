@@ -1,6 +1,7 @@
 import com.mojang.logging.LogUtils;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
@@ -55,15 +56,19 @@ public class fld extends fle {
          return;
       }
 
-      boolean $$7 = $$0.b != null && $$0.c != null;
-      ftx $$8 = (ftx)($$7 ? this.a($$0, a(this.e), this::a) : this.a($$0));
-      a($$8);
+      if ($$0.a == null) {
+         this.a(xv.c("mco.errorMessage.connectionFailure"));
+      } else {
+         boolean $$7 = $$0.b != null && $$0.c != null;
+         ftx $$8 = (ftx)($$7 ? this.a($$0, a(this.e), this::a) : this.a($$0));
+         a($$8);
+      }
    }
 
    private static UUID a(fii $$0) {
       return $$0.q != null
          ? UUID.nameUUIDFromBytes(("minigame:" + $$0.q).getBytes(StandardCharsets.UTF_8))
-         : UUID.nameUUIDFromBytes(("realms:" + $$0.c + ":" + $$0.p).getBytes(StandardCharsets.UTF_8));
+         : UUID.nameUUIDFromBytes(("realms:" + Objects.requireNonNullElse($$0.c, "") + ":" + $$0.p).getBytes(StandardCharsets.UTF_8));
    }
 
    @Override
@@ -108,15 +113,19 @@ public class fld extends fle {
 
    private CompletableFuture<?> a(fij $$0, UUID $$1) {
       try {
-         hej $$2 = fmf.Q().af();
-         CompletableFuture<Void> $$3 = $$2.b($$1);
-         $$2.g();
-         $$2.a($$1, new URL($$0.b), $$0.c);
-         return $$3;
+         if ($$0.b != null) {
+            return CompletableFuture.failedFuture(new IllegalStateException("resourcePackUrl was null"));
+         } else if ($$0.c != null) {
+            return CompletableFuture.failedFuture(new IllegalStateException("resourcePackHash was null"));
+         } else {
+            hej $$2 = fmf.Q().af();
+            CompletableFuture<Void> $$3 = $$2.b($$1);
+            $$2.g();
+            $$2.a($$1, new URL($$0.b), $$0.c);
+            return $$3;
+         }
       } catch (Exception var5) {
-         CompletableFuture<Void> $$5 = new CompletableFuture<>();
-         $$5.completeExceptionally(var5);
-         return $$5;
+         return CompletableFuture.failedFuture(var5);
       }
    }
 }

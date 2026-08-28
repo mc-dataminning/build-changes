@@ -37,10 +37,10 @@ public class crc extends cqd {
 
       bvj $$0 = this.p();
       int $$1 = this.al.a(f);
-      if ($$1 > 0 && (this.h || this.A()) && $$0 != null) {
-         if (!this.F()) {
+      if ($$1 > 0 && (this.h || this.B()) && $$0 != null) {
+         if (!this.G()) {
             if (this.dW() instanceof ash $$2 && this.c == cqd.a.b) {
-               this.a($$2, this.t(), 0.1F);
+               this.a($$2, this.u(), 0.1F);
             }
 
             this.at();
@@ -50,7 +50,7 @@ public class crc extends cqd {
                return;
             }
 
-            this.b(true);
+            this.r(true);
             fbx $$3 = $$0.bF().d(this.du());
             this.o(this.dB(), this.dD() + $$3.e * 0.015 * (double)$$1, this.dH());
             double $$4 = 0.05 * (double)$$1;
@@ -66,12 +66,12 @@ public class crc extends cqd {
       super.h();
    }
 
-   private boolean F() {
+   private boolean G() {
       bvj $$0 = this.p();
       return $$0 == null || !$$0.bL() ? false : !($$0 instanceof asi) || !$$0.aa_();
    }
 
-   public boolean C() {
+   public boolean D() {
       return this.al.a(g);
    }
 
@@ -120,21 +120,21 @@ public class crc extends cqd {
 
    @Override
    public cxo ea() {
-      return this.v();
+      return this.w();
    }
 
    @Override
    protected boolean a(cpw $$0) {
-      return super.a($$0) || this.A() && this.e($$0) && $$0.gi().f(this.t());
+      return super.a($$0) || this.B() && this.e($$0) && $$0.gi().f(this.u());
    }
 
    @Override
-   protected cxo u() {
+   protected cxo v() {
       return new cxo(cxs.wI);
    }
 
    @Override
-   protected axe m() {
+   protected axe s() {
       return axf.Aa;
    }
 
@@ -149,7 +149,7 @@ public class crc extends cqd {
    public void a(ux $$0) {
       super.a($$0);
       this.h = $$0.q("DealtDamage");
-      this.al.a(f, this.b(this.v()));
+      this.al.a(f, this.b(this.w()));
    }
 
    @Override
@@ -163,15 +163,15 @@ public class crc extends cqd {
    }
 
    @Override
-   public void l() {
+   public void m() {
       int $$0 = this.al.a(f);
       if (this.c != cqd.a.b || $$0 <= 0) {
-         super.l();
+         super.m();
       }
    }
 
    @Override
-   protected float z() {
+   protected float A() {
       return 0.99F;
    }
 

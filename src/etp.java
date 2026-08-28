@@ -31,7 +31,7 @@ public final class etp extends etn<etq.a, etq> {
    @Nullable
    private etg b(int $$0, int $$1) {
       eab $$2 = this.e.c($$0, $$1);
-      return $$2 != null ? $$2.A() : null;
+      return $$2 != null ? $$2.C() : null;
    }
 
    @Override
