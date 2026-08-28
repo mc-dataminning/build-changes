@@ -1,4 +1,4 @@
-// 1.20.5 Release Candidate 1	2026-08-28T02:10:24.7161296	vanilla/Model Definitions
+// 1.20.5 Release Candidate 2	2026-08-28T02:12:50.8389027	vanilla/Model Definitions
 85eef47cc497a4ed9c6f57929bcaa6fbf0137caa assets\minecraft\models\block\cherry_trapdoor_open.json
 7f8c744a8192c2170705d5883fb064210e3d2c93 assets\minecraft\models\item\shulker_shell.json
 8c796e9df7e05371423917450a3dea834bdaa2fe assets\minecraft\models\block\light_07.json
@@ -1031,8 +1031,8 @@ d8685757cf3d42fd0891e37590c98597da80c58c assets\minecraft\models\item\recovery_c
 067e40e3af78f1e580678a95cb9b30149d07b390 assets\minecraft\blockstates\quartz_block.json
 4e642ca9a4aae1eeeeafef738cfbec458fcc37dc assets\minecraft\models\item\clock_62.json
 bed24a67fb30fc566f9c07713a7fe765e83aebca assets\minecraft\models\item\light_blue_candle.json
-cf54ce411833eef1fd3b4b9ae197eda63c52548b assets\minecraft\blockstates\pumpkin_stem.json
 fef8dfa4ba8a3bd98ef19916cb1c6537d666a638 assets\minecraft\blockstates\stripped_spruce_log.json
+cf54ce411833eef1fd3b4b9ae197eda63c52548b assets\minecraft\blockstates\pumpkin_stem.json
 128fd3520da2f7d917198ae90cc7bdb76f1b60a7 assets\minecraft\models\block\polished_diorite_slab.json
 1b1c1d8d2dae7451a5054099c687fda521a47b42 assets\minecraft\models\item\oxidized_copper_trapdoor.json
 af4c6391db6370db36ef186f92365e5e4dc5a621 assets\minecraft\models\block\cracked_deepslate_bricks.json

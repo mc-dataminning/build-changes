@@ -266,7 +266,7 @@ public class fnm extends fne {
 
    @Override
    public boolean k() {
-      return false;
+      return !this.v;
    }
 
    @Override

@@ -37,7 +37,7 @@ public record fzb(String a, @Nullable fzb.a b) {
 
    private static String g() {
       StringBuilder $$0 = new StringBuilder();
-      $$0.append("1.20.5-rc1");
+      $$0.append("1.20.5-rc2");
       if (ffg.e().a()) {
          $$0.append(" (modded)");
       }

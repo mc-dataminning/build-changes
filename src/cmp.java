@@ -956,9 +956,14 @@ public class cmp {
          this.b = Arrays.asList($$3);
       }
 
+      private dab a(azh $$0, cpm $$1) {
+         List<dab> $$2 = this.b.stream().filter($$1x -> $$1x.a($$1)).toList();
+         return $$2.get($$0.a($$2.size()));
+      }
+
       @Override
       public dax a(bsv $$0, azh $$1) {
-         dab $$2 = this.b.get($$1.a(this.b.size()));
+         dab $$2 = this.a($$1, $$0.dP().J());
          int $$3 = Math.max($$2.f(), this.c);
          int $$4 = Math.min($$2.g(), this.d);
          int $$5 = ayz.a($$1, $$3, $$4);
