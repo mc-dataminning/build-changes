@@ -1,4 +1,4 @@
-// 1.21 Pre-Release 4	2026-08-28T02:08:15.679274365	vanilla/Recipes
+// 1.21 Release Candidate 1	2026-08-28T02:10:47.689644198	vanilla/Recipes
 6bfca1504a486901fc06d6d1e38a64458c36a3d8 data/minecraft/recipe/light_blue_dye_from_blue_orchid.json
 ee8b6458601fff7f67b745741b57b390a2320cc3 data/minecraft/recipe/spruce_planks.json
 d394d82650eafc27d893ab038ee7b419b920c597 data/minecraft/recipe/dye_magenta_bed.json
@@ -2214,8 +2214,8 @@ bcfeb39d6be214ab7db22109f209ff4e4dd27b89 data/minecraft/recipe/grindstone.json
 02f7a58a785e1b08961501b86448332194f3254f data/minecraft/recipe/black_bed.json
 50baee3fa5907e5ac3bcf8def91c5a52c85be045 data/minecraft/recipe/light_gray_banner.json
 ef4eaffa1a59fd4bf0684148376d4556ef834e00 data/minecraft/recipe/dark_prismarine_stairs.json
-331b42dd9d37b7aaa779ca29adf4ac9f486f75f5 data/minecraft/recipe/nether_brick_stairs.json
 bda0ae239ae1c35608215c6834869fbebf72c590 data/minecraft/recipe/red_nether_brick_slab.json
+331b42dd9d37b7aaa779ca29adf4ac9f486f75f5 data/minecraft/recipe/nether_brick_stairs.json
 8bd853900b68061aa6d44b042a4ed210075734a2 data/minecraft/recipe/deepslate_tile_wall_from_polished_deepslate_stonecutting.json
 643ef1c55fcb756405a2c6952b4e75eb0786b46c data/minecraft/advancement/recipes/redstone/lightning_rod.json
 c288586db1e1982110f748989753ba9cc517ed7d data/minecraft/advancement/recipes/building_blocks/smooth_stone_slab.json

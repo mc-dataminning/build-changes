@@ -1,4 +1,4 @@
-// 1.21 Pre-Release 4	2026-08-28T02:08:15.642373711	vanilla/Model Definitions
+// 1.21 Release Candidate 1	2026-08-28T02:10:47.650223768	vanilla/Model Definitions
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/minecraft/models/item/husk_spawn_egg.json
 032d5086adbdc64098925cfc465a7030434bf9cd assets/minecraft/models/block/stripped_bamboo_block.json
 1992ec8533ec64e4e699df945406934594b00abc assets/minecraft/models/item/stripped_spruce_log.json
@@ -1288,8 +1288,8 @@ b105b4d15f6c1a825d72860273e7eda5fa3c9744 assets/minecraft/blockstates/oak_wall_s
 b4fa68c1fa4d9f92caa3c10b5ee3f7ae1a0f5fa4 assets/minecraft/models/block/dark_oak_door_top_right_open.json
 d4bf309cff8eb5c2fe74a7cea60d23aaba2f97f6 assets/minecraft/models/item/iron_boots_iron_darker_trim.json
 9a090aefc86ceed70a204d41cee5e01f2a05d3bc assets/minecraft/models/item/red_wool.json
-c12d7567fdfa06ce3cd78a13a224d6794375ac1b assets/minecraft/blockstates/cauldron.json
 94ee00eebd82061338b6db439a84b3fdf98f3942 assets/minecraft/blockstates/skeleton_wall_skull.json
+c12d7567fdfa06ce3cd78a13a224d6794375ac1b assets/minecraft/blockstates/cauldron.json
 557f7f59afc8cdf4d219393ca641f24b55f76312 assets/minecraft/models/block/yellow_candle_cake.json
 c15225a7d893dc02f420c95dea1964bb963a796c assets/minecraft/models/item/golden_leggings_redstone_trim.json
 1fb9b84d3c55d40ce1a5f5598f44c85d938c2b25 assets/minecraft/models/item/blue_concrete.json
@@ -3231,8 +3231,8 @@ a6a14af5a084330eb99c5f19fda5d247e5010d93 assets/minecraft/models/block/polished_
 0d236100a7b734f06cab5020a4a5823abcbc9e64 assets/minecraft/models/block/spruce_fence_gate.json
 4486133fca6bfb53b21b03894d015dce1e323d72 assets/minecraft/models/item/light_blue_concrete_powder.json
 ff8dc802158e7cb0bad1a12f68c79c26a7c31d0f assets/minecraft/models/item/birch_fence_gate.json
-bbecaa7629473fa7615403878dd276e8a63251f7 assets/minecraft/blockstates/white_bed.json
 16265cd4a8ac965f2ad26130e502180d7976d3a2 assets/minecraft/blockstates/cocoa.json
+bbecaa7629473fa7615403878dd276e8a63251f7 assets/minecraft/blockstates/white_bed.json
 ce97a9393b8bb513593f079bc7b263025995ae5d assets/minecraft/blockstates/diorite.json
 80bed0f13a463dab158965f51cb3c357f65296b5 assets/minecraft/models/item/lime_candle.json
 2e995cba5eb056ca82ceddaacecb0f00462ddb99 assets/minecraft/models/item/dark_oak_leaves.json

@@ -1772,14 +1772,20 @@ public abstract class bsr implements ajz, bqw, dxg, es, eyf {
    public bqr a(cmx $$0, bqq $$1) {
       if (this.bE() && this instanceof btk $$2) {
          if ($$2.A() == $$0) {
-            $$2.a(true, !$$0.fL());
-            this.a(dxz.r, $$0);
+            if (!this.dO().x_()) {
+               $$2.a(true, !$$0.fL());
+               this.a(dxz.r, $$0);
+            }
+
             return bqr.a(this.dO().B);
          }
 
          cuq $$3 = $$0.b($$1);
          if ($$3.a(cut.uK) && $$2.q()) {
-            $$2.b($$0, true);
+            if (!this.dO().x_()) {
+               $$2.b($$0, true);
+            }
+
             $$3.h(1);
             return bqr.a(this.dO().B);
          }

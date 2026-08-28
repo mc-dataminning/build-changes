@@ -1653,6 +1653,7 @@ public class aqv extends cmx {
    @Override
    public boolean a(bsr $$0, boolean $$1) {
       if (super.a($$0, $$1)) {
+         this.b(exc.b);
          $$0.j(this);
          this.c.a(this.dt(), this.dv(), this.dz(), this.dE(), this.dG());
          if ($$0 instanceof btn $$2) {
@@ -1696,7 +1697,8 @@ public class aqv extends cmx {
 
    @Override
    public exc ag() {
-      return this.dt;
+      bsr $$0 = this.dc();
+      return $$0 != null && $$0.cQ() != this ? $$0.ag() : this.dt;
    }
 
    @Override

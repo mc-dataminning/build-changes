@@ -137,7 +137,6 @@ public abstract class bph<R extends Runnable> implements bop, bpj<R>, Executor {
          $$0.run();
       } catch (Exception var3) {
          c.error(LogUtils.FATAL_MARKER, "Error executing task on {}", this.bz(), var3);
-         throw var3;
       }
    }
 

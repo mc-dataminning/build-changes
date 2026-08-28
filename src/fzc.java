@@ -56,7 +56,6 @@ public abstract class fzc implements zm {
    @Override
    public void a(zg $$0, Exception $$1) {
       m.error("Failed to handle packet {}", $$0, $$1);
-      zm.super.a($$0, $$1);
       Optional<Path> $$2 = this.a($$0, (Throwable)$$1);
       Optional<URI> $$3 = this.k.a(alj.b.a).map(alj.a::c);
       if (this.h) {

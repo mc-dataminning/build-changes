@@ -469,7 +469,10 @@ public class aqb extends dwj implements apz.b, aqm {
       Throwable $$5 = $$3 instanceof z $$4 ? $$4.getCause() : $$3;
       boolean $$6 = $$5 instanceof Error;
       boolean $$7 = $$5 instanceof IOException || $$5 instanceof um;
-      if (!$$6 && $$7) {
+      if (!$$6) {
+         if (!$$7) {
+         }
+
          this.s.o().a($$5, this.q(), $$1);
          return this.g($$1);
       } else {

@@ -1,4 +1,4 @@
-// 1.21 Pre-Release 4	2026-08-28T02:08:15.669824106	vanilla/Loot Tables
+// 1.21 Release Candidate 1	2026-08-28T02:10:47.676576193	vanilla/Loot Tables
 0f905afcf3733f9f7ce32d8b48e4a2041b7aefdd data/minecraft/loot_table/blocks/waxed_oxidized_copper.json
 c4dbb75007d3c56c0793952d0e1581a79319e798 data/minecraft/loot_table/blocks/birch_wood.json
 bf2ee99f956011096a90610e6c8abc0f8ff658d7 data/minecraft/loot_table/blocks/birch_stairs.json
@@ -771,8 +771,8 @@ f819921e2aa8c4ce06119201a4ea9a4c08fae504 data/minecraft/loot_table/blocks/oak_le
 86d4021036700248fa67532902b8b7f51e92962d data/minecraft/loot_table/blocks/oak_sapling.json
 4dc97f13a67eeded15d4493ee3dc187300a685f2 data/minecraft/loot_table/blocks/jungle_trapdoor.json
 9441a7872f047c0eb8731cd87d53aa46115b716f data/minecraft/loot_table/blocks/polished_deepslate_wall.json
-3aa300e1000fac8d55e972d42aa3d9f4dfc17759 data/minecraft/loot_table/blocks/dark_oak_slab.json
 fd03af95a7d804c7120403c3df3395fd97bba65c data/minecraft/loot_table/blocks/brown_stained_glass.json
+3aa300e1000fac8d55e972d42aa3d9f4dfc17759 data/minecraft/loot_table/blocks/dark_oak_slab.json
 768392dda3eaedfcacc668b4b5740f7e44ae3682 data/minecraft/loot_table/blocks/soul_campfire.json
 78182b7e4c2e75c3131a14225c7638075f80e234 data/minecraft/loot_table/blocks/smooth_quartz.json
 21f5b03d03cb1877ebc14c73709eda20bd3ced1b data/minecraft/loot_table/entities/sheep/pink.json

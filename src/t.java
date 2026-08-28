@@ -23,9 +23,9 @@ public class t implements ae {
 
    private t() {
       this.c = UUID.randomUUID().toString().replaceAll("-", "");
-      this.d = "1.21-pre4";
+      this.d = "1.21-rc1";
       this.e = false;
-      this.f = new eqx(3951, "main");
+      this.f = new eqx(3952, "main");
       this.g = ab.c();
       this.h = 34;
       this.i = 48;

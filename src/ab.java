@@ -8,18 +8,18 @@ public class ab {
    @Deprecated
    public static final boolean a = true;
    @Deprecated
-   public static final int b = 3951;
+   public static final int b = 3952;
    @Deprecated
    public static final String c = "main";
    @Deprecated
-   public static final String d = "1.21-pre4";
+   public static final String d = "1.21-rc1";
    @Deprecated
    public static final int e = 767;
    @Deprecated
-   public static final int f = 202;
+   public static final int f = 203;
    public static final int g = 3937;
    private static final int bm = 30;
-   public static final boolean h = true;
+   public static final boolean h = false;
    @Deprecated
    public static final int i = 34;
    @Deprecated
@@ -157,7 +157,7 @@ public class ab {
    }
 
    public static int c() {
-      return 1073742026;
+      return 1073742027;
    }
 
    public static boolean a(dcd $$0) {
