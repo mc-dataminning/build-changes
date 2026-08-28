@@ -1,28 +1,31 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
+import java.util.List;
 import java.util.Optional;
+import java.util.function.Consumer;
 
-public class ekv extends eiw {
+public class ekv extends eix {
    public static final MapCodec<ekv> d = a(ekv::new);
 
-   public ekv(eiw.c $$0) {
+   public ekv(eix.c $$0) {
       super($$0);
    }
 
    @Override
-   public Optional<eiw.b> a(eiw.a $$0) {
-      return a($$0, dyf.a.a, $$1 -> this.a($$1, $$0));
+   public Optional<eix.b> a(eix.a $$0) {
+      dlv $$1 = dlv.a($$0.f());
+      ja $$2 = this.a($$0, $$1);
+      return $$2.v() < 60 ? Optional.empty() : Optional.of(new eix.b($$2, (Consumer<ejp>)($$3 -> this.a($$3, $$2, $$1, $$0))));
    }
 
-   private void a(ejo $$0, eiw.a $$1) {
-      dbm $$2 = $$1.h();
-      dze $$3 = $$1.f();
-      ja $$4 = new ja($$2.d(), 90, $$2.e());
-      dlu $$5 = dlu.a($$3);
-      eku.a($$1.e(), $$4, $$5, $$0, $$3);
+   private void a(ejp $$0, ja $$1, dlv $$2, eix.a $$3) {
+      List<ejb> $$4 = Lists.newArrayList();
+      eku.a($$3.e(), $$1, $$2, $$4, $$3.f());
+      $$4.forEach($$0::a);
    }
 
    @Override
-   public ejf<?> e() {
-      return ejf.e;
+   public ejg<?> e() {
+      return ejg.c;
    }
 }

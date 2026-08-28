@@ -4,25 +4,25 @@ public class aqh {
    @Nullable
    protected static ja a(aqm $$0, int $$1, int $$2) {
       boolean $$3 = $$0.D_().h();
-      duq $$4 = $$0.d(kc.a($$1), kc.a($$2));
-      int $$5 = $$3 ? $$0.l().g().a($$0) : $$4.a(dyf.a.e, $$1 & 15, $$2 & 15);
+      dur $$4 = $$0.d(kc.a($$1), kc.a($$2));
+      int $$5 = $$3 ? $$0.l().g().a($$0) : $$4.a(dyg.a.e, $$1 & 15, $$2 & 15);
       if ($$5 < $$0.I_()) {
          return null;
       } else {
-         int $$6 = $$4.a(dyf.a.b, $$1 & 15, $$2 & 15);
-         if ($$6 <= $$5 && $$6 > $$4.a(dyf.a.d, $$1 & 15, $$2 & 15)) {
+         int $$6 = $$4.a(dyg.a.b, $$1 & 15, $$2 & 15);
+         if ($$6 <= $$5 && $$6 > $$4.a(dyg.a.d, $$1 & 15, $$2 & 15)) {
             return null;
          } else {
             ja.a $$7 = new ja.a();
 
             for (int $$8 = $$5 + 1; $$8 >= $$0.I_(); $$8--) {
                $$7.d($$1, $$8, $$2);
-               dsk $$9 = $$0.a_($$7);
+               dsl $$9 = $$0.a_($$7);
                if (!$$9.u().c()) {
                   break;
                }
 
-               if (dfh.a($$9.k($$0, $$7), jf.b)) {
+               if (dfi.a($$9.k($$0, $$7), jf.b)) {
                   return $$7.c().i();
                }
             }
@@ -33,7 +33,7 @@ public class aqh {
    }
 
    @Nullable
-   public static ja a(aqm $$0, dbm $$1) {
+   public static ja a(aqm $$0, dbn $$1) {
       if (aa.a($$1)) {
          return null;
       } else {

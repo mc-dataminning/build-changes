@@ -1,32 +1,27 @@
-public interface cvv {
-   cvv.a a = new cvv.a(false, false);
-   cvv.a b = new cvv.a(true, false);
+import java.util.List;
 
-   boolean a();
+public class cvv extends crx {
+   public cvv(cty.a $$0) {
+      super($$0);
+   }
 
-   boolean b();
+   @Override
+   public cud w() {
+      cud $$0 = super.w();
+      $$0.b(kn.G, new cwe(cwf.C));
+      return $$0;
+   }
 
-   public static record a(boolean c, boolean d) implements cvv {
-      @Override
-      public boolean a() {
-         return this.c;
+   @Override
+   public void a(cud $$0, cty.b $$1, List<wu> $$2, cvw $$3) {
+      cwe $$4 = $$0.a(kn.G);
+      if ($$4 != null) {
+         $$4.a($$2::add, 0.125F, $$1.b());
       }
+   }
 
-      @Override
-      public boolean b() {
-         return this.d;
-      }
-
-      public cvv.a c() {
-         return new cvv.a(this.c, true);
-      }
-
-      public boolean d() {
-         return this.c;
-      }
-
-      public boolean e() {
-         return this.d;
-      }
+   @Override
+   public String h(cud $$0) {
+      return cwc.a($$0.a(kn.G, cwe.a).e(), this.a() + ".effect.");
    }
 }

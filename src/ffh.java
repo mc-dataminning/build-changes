@@ -1,33 +1,26 @@
-import com.mojang.serialization.Codec;
+public enum ffh {
+   a(true, false),
+   b(false, false),
+   c(false, true);
 
-public enum ffh implements ayj, azc {
-   a(0, "false", "options.off"),
-   b(1, "fast", "options.clouds.fast"),
-   c(2, "true", "options.clouds.fancy");
+   private static final ffh[] d = values();
+   private final boolean e;
+   private final boolean f;
 
-   public static final Codec<ffh> d = azc.a(ffh::values);
-   private final int e;
-   private final String f;
-   private final String g;
-
-   private ffh(final int $$0, final String $$1, final String $$2) {
+   private ffh(final boolean $$0, final boolean $$1) {
       this.e = $$0;
       this.f = $$1;
-      this.g = $$2;
    }
 
-   @Override
-   public String c() {
-      return this.f;
-   }
-
-   @Override
-   public int a() {
+   public boolean a() {
       return this.e;
    }
 
-   @Override
-   public String b() {
-      return this.g;
+   public boolean b() {
+      return this.f;
+   }
+
+   public ffh c() {
+      return d[(this.ordinal() + 1) % d.length];
    }
 }

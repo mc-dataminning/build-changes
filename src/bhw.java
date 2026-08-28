@@ -1,6 +1,7 @@
 import com.mojang.datafixers.DSL;
 import com.mojang.datafixers.schemas.Schema;
 import com.mojang.datafixers.types.templates.TypeTemplate;
+import com.mojang.datafixers.util.Pair;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -11,6 +12,21 @@ public class bhw extends Schema {
 
    public void registerTypes(Schema $$0, Map<String, Supplier<TypeTemplate>> $$1, Map<String, Supplier<TypeTemplate>> $$2) {
       super.registerTypes($$0, $$1, $$2);
-      $$0.registerType(true, bgg.F, () -> DSL.optionalFields("SpawnPotentials", DSL.list(DSL.fields("Entity", bgg.A.in($$0))), "SpawnData", bgg.A.in($$0)));
+      $$0.registerType(false, bgh.J, () -> DSL.constType(bht.a()));
+      $$0.registerType(
+         false,
+         bgh.b,
+         () -> DSL.optionalFields(
+               new Pair[]{
+                  Pair.of("RootVehicle", DSL.optionalFields("Entity", bgh.A.in($$0))),
+                  Pair.of("Inventory", DSL.list(bgh.t.in($$0))),
+                  Pair.of("EnderItems", DSL.list(bgh.t.in($$0))),
+                  Pair.of("ShoulderEntityLeft", bgh.A.in($$0)),
+                  Pair.of("ShoulderEntityRight", bgh.A.in($$0)),
+                  Pair.of("recipeBook", DSL.optionalFields("recipes", DSL.list(bgh.J.in($$0)), "toBeDisplayed", DSL.list(bgh.J.in($$0))))
+               }
+            )
+      );
+      $$0.registerType(false, bgh.d, () -> DSL.compoundList(DSL.list(bgh.t.in($$0))));
    }
 }

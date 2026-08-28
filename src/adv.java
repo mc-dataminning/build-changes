@@ -7,10 +7,10 @@ public class adv implements zb<abn> {
    private final double d;
    private final float e;
    private final float f;
-   private final Set<btp> g;
+   private final Set<btq> g;
    private final int h;
 
-   public adv(double $$0, double $$1, double $$2, float $$3, float $$4, Set<btp> $$5, int $$6) {
+   public adv(double $$0, double $$1, double $$2, float $$3, float $$4, Set<btq> $$5, int $$6) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -26,7 +26,7 @@ public class adv implements zb<abn> {
       this.d = $$0.readDouble();
       this.e = $$0.readFloat();
       this.f = $$0.readFloat();
-      this.g = btp.a($$0.readUnsignedByte());
+      this.g = btq.a($$0.readUnsignedByte());
       this.h = $$0.l();
    }
 
@@ -36,7 +36,7 @@ public class adv implements zb<abn> {
       $$0.a(this.d);
       $$0.a(this.e);
       $$0.a(this.f);
-      $$0.k(btp.a(this.g));
+      $$0.k(btq.a(this.g));
       $$0.c(this.h);
    }
 
@@ -73,7 +73,7 @@ public class adv implements zb<abn> {
       return this.h;
    }
 
-   public Set<btp> j() {
+   public Set<btq> j() {
       return this.g;
    }
 }

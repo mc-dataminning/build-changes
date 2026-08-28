@@ -1,12 +1,12 @@
 public class avr {
-   public static final avq<dfh> a = a("mined", lq.e);
-   public static final avq<ctx> b = a("crafted", lq.g);
-   public static final avq<ctx> c = a("used", lq.g);
-   public static final avq<ctx> d = a("broken", lq.g);
-   public static final avq<ctx> e = a("picked_up", lq.g);
-   public static final avq<ctx> f = a("dropped", lq.g);
-   public static final avq<bsm<?>> g = a("killed", lq.f);
-   public static final avq<bsm<?>> h = a("killed_by", lq.f);
+   public static final avq<dfi> a = a("mined", lq.e);
+   public static final avq<cty> b = a("crafted", lq.g);
+   public static final avq<cty> c = a("used", lq.g);
+   public static final avq<cty> d = a("broken", lq.g);
+   public static final avq<cty> e = a("picked_up", lq.g);
+   public static final avq<cty> f = a("dropped", lq.g);
+   public static final avq<bsn<?>> g = a("killed", lq.f);
+   public static final avq<bsn<?>> h = a("killed_by", lq.f);
    public static final avq<akk> i = a("custom", lq.k);
    public static final akk j = a("leave_game", avp.b);
    public static final akk k = a("play_time", avp.e);

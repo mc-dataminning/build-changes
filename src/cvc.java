@@ -1,49 +1,54 @@
 import java.util.List;
 
-public class cvc extends ctx implements cte {
-   public static final int a = 5;
-   public static final float b = 3.0F;
-
-   public cvc(ctx.a $$0) {
+public class cvc extends cty {
+   public cvc(cty.a $$0) {
       super($$0);
-      dhm.a(this, crs.a);
+   }
+
+   public static cxh h() {
+      return new cxh(List.of(cxh.a.a(List.of(dfk.bs), 15.0F), cxh.a.b(avw.O, 15.0F), cxh.a.b(avw.a, 5.0F), cxh.a.b(List.of(dfk.ff, dfk.fg), 2.0F)), 1.0F, 1);
    }
 
    @Override
-   public String h(cuc $$0) {
-      csv $$1 = $$0.a(kn.Y);
-      return $$1 != null ? this.a() + "." + $$1.b() : super.h($$0);
+   public boolean a(cud $$0, dcg $$1, dsl $$2, ja $$3, btc $$4) {
+      if (!$$1.B && !$$2.a(avw.aK)) {
+         $$0.a(1, $$4, bso.a);
+      }
+
+      return $$2.a(avw.O)
+         || $$2.a(dfk.bs)
+         || $$2.a(dfk.bt)
+         || $$2.a(dfk.bu)
+         || $$2.a(dfk.bv)
+         || $$2.a(dfk.sG)
+         || $$2.a(dfk.ff)
+         || $$2.a(dfk.fI)
+         || $$2.a(avw.a);
    }
 
    @Override
-   public void a(cuc $$0, ctx.b $$1, List<wu> $$2, cvv $$3) {
-      cry.a($$0, $$2);
-   }
+   public bqh a(cxp $$0) {
+      dcg $$1 = $$0.q();
+      ja $$2 = $$0.a();
+      dsl $$3 = $$1.a_($$2);
+      if ($$3.b() instanceof dix $$5 && !$$5.o($$3)) {
+         cml $$6 = $$0.o();
+         cud $$7 = $$0.n();
+         if ($$6 instanceof aqn) {
+            am.N.a((aqn)$$6, $$2, $$7);
+         }
 
-   @Override
-   public cvx b(cuc $$0) {
-      return cvx.d;
-   }
+         $$1.a($$6, $$2, avh.lp, avi.e, 1.0F, 1.0F);
+         dsl $$8 = $$5.n($$3);
+         $$1.b($$2, $$8);
+         $$1.a(dxh.c, $$2, dxh.a.a($$0.o(), $$8));
+         if ($$6 != null) {
+            $$7.a(1, $$6, btc.d($$0.p()));
+         }
 
-   @Override
-   public int a(cuc $$0, btb $$1) {
-      return 72000;
-   }
+         return bqh.a($$1.B);
+      }
 
-   @Override
-   public bqh<cuc> a(dcf $$0, cmk $$1, bqf $$2) {
-      cuc $$3 = $$1.b($$2);
-      $$1.c($$2);
-      return bqh.b($$3);
-   }
-
-   @Override
-   public boolean a(cuc $$0, cuc $$1) {
-      return $$1.a(awf.b) || super.a($$0, $$1);
-   }
-
-   @Override
-   public bsn m() {
-      return bsn.b;
+      return super.a($$0);
    }
 }

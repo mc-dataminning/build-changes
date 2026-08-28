@@ -9,7 +9,7 @@ public class aum {
    }
 
    public boolean a(int $$0, List<aqn> $$1) {
-      int $$2 = (int)$$1.stream().filter(cmk::gc).count();
+      int $$2 = (int)$$1.stream().filter(cml::gd).count();
       return $$2 >= this.b($$0);
    }
 
@@ -34,7 +34,7 @@ public class aum {
       for (aqn $$3 : $$0) {
          if (!$$3.N_()) {
             this.a++;
-            if ($$3.fI()) {
+            if ($$3.fJ()) {
                this.b++;
             }
          }

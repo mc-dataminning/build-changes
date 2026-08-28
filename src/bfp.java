@@ -133,7 +133,7 @@ public class bfp extends DataFix {
    public TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
          "OptionsKeyLwjgl3Fix",
-         this.getInputSchema().getType(bgg.e),
+         this.getInputSchema().getType(bgh.e),
          $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.getMapValues().map($$1 -> $$0x.createMap($$1.entrySet().stream().map($$0xxx -> {
                      if (((Dynamic)$$0xxx.getKey()).asString("").startsWith("key_")) {
                         int $$1x = Integer.parseInt(((Dynamic)$$0xxx.getValue()).asString(""));

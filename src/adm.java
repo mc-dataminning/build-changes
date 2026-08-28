@@ -3,7 +3,7 @@ public class adm implements zb<abn> {
    private final int b;
    private final akk c;
 
-   public adm(int $$0, cyk<?> $$1) {
+   public adm(int $$0, cyl<?> $$1) {
       this.b = $$0;
       this.c = $$1.a();
    }

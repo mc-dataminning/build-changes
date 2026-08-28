@@ -1,27 +1,25 @@
-import org.joml.Vector2i;
-import org.joml.Vector2ic;
+import org.joml.Matrix4f;
 
-public class fpu implements fpt {
-   public static final fpt a = new fpu();
-
-   private fpu() {
+public interface fpu {
+   static fpu a(axs $$0) {
+      return new fpt($$0);
    }
 
-   @Override
-   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      Vector2i $$6 = new Vector2i($$2, $$3).add(12, -12);
-      this.a($$0, $$1, $$6, $$4, $$5);
-      return $$6;
+   static fpu a(cro $$0) {
+      if ($$0 instanceof crn $$1) {
+         return new fps($$1.a());
+      } else {
+         throw new IllegalArgumentException("Unknown TooltipComponent");
+      }
    }
 
-   private void a(int $$0, int $$1, Vector2i $$2, int $$3, int $$4) {
-      if ($$2.x + $$3 > $$0) {
-         $$2.x = Math.max($$2.x - 24 - $$3, 4);
-      }
+   int a();
 
-      int $$5 = $$4 + 3;
-      if ($$2.y + $$5 > $$1) {
-         $$2.y = $$1 - $$5;
-      }
+   int a(fhf var1);
+
+   default void a(fhf $$0, int $$1, int $$2, Matrix4f $$3, gef.a $$4) {
+   }
+
+   default void a(fhf $$0, int $$1, int $$2, fhh $$3) {
    }
 }

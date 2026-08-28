@@ -1,33 +1,63 @@
+import com.google.common.collect.HashMultimap;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import java.util.function.Function;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.UUID;
 
-public interface dab extends dac {
-   Codec<dab> b = lq.aw.r().dispatch(dab::a, Function.identity());
+public record dab(String b, jj<buf> d, czt e, bui.a f, UUID g) implements dad {
+   public static final MapCodec<dab> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("name").forGetter(dab::b),
+               buf.a.fieldOf("attribute").forGetter(dab::c),
+               czt.b.fieldOf("amount").forGetter(dab::d),
+               bui.a.f.fieldOf("operation").forGetter(dab::e),
+               kd.d.fieldOf("uuid").forGetter(dab::f)
+            )
+            .apply($$0, dab::new)
+   );
 
-   static MapCodec<? extends dab> a(jw<MapCodec<? extends dab>> $$0) {
-      jw.a($$0, "all_of", czv.a.a);
-      jw.a($$0, "apply_mob_effect", czw.a);
-      jw.a($$0, "damage_entity", czx.a);
-      jw.a($$0, "damage_item", czz.a);
-      jw.a($$0, "explode", dae.a);
-      jw.a($$0, "ignite", daf.a);
-      jw.a($$0, "play_sound", dah.a);
-      jw.a($$0, "replace_block", daj.a);
-      jw.a($$0, "replace_disc", dak.a);
-      jw.a($$0, "run_function", dal.a);
-      jw.a($$0, "set_block_properties", dam.a);
-      jw.a($$0, "spawn_particles", dao.a);
-      return jw.a($$0, "summon_entity", dap.a);
-   }
-
-   void a(aqm var1, int var2, czk var3, bsg var4, ewf var5);
-
-   @Override
-   default void a(aqm $$0, int $$1, czk $$2, bsg $$3, ewf $$4, boolean $$5) {
-      this.a($$0, $$1, $$2, $$3, $$4);
+   public bui a(int $$0) {
+      return new bui(this.f(), this.b(), (double)this.d().a($$0), this.e());
    }
 
    @Override
-   MapCodec<? extends dab> a();
+   public void a(aqm $$0, int $$1, czl $$2, bsh $$3, ewh $$4, boolean $$5) {
+      if ($$5 && $$3 instanceof btc $$6) {
+         $$6.eU().a(this.b($$1));
+      }
+   }
+
+   @Override
+   public void a(czl $$0, bsh $$1, ewh $$2, int $$3) {
+      if ($$1 instanceof btc $$4) {
+         $$4.eU().b(this.b($$3));
+      }
+   }
+
+   private HashMultimap<jj<buf>, bui> b(int $$0) {
+      HashMultimap<jj<buf>, bui> $$1 = HashMultimap.create();
+      $$1.put(this.d, this.a($$0));
+      return $$1;
+   }
+
+   @Override
+   public MapCodec<dab> a() {
+      return a;
+   }
+
+   public jj<buf> c() {
+      return this.d;
+   }
+
+   public czt d() {
+      return this.e;
+   }
+
+   public bui.a e() {
+      return this.f;
+   }
+
+   public UUID f() {
+      return this.g;
+   }
 }

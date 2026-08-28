@@ -1,69 +1,80 @@
 import javax.annotation.Nullable;
 
-public class chw extends chp {
+public class chw extends chq {
+   private static final cdt b = cdt.a().d();
    @Nullable
-   private ewf b;
+   private eox c;
+   @Nullable
+   private ewh d;
 
-   public chw(chn $$0) {
+   public chw(cho $$0) {
       super($$0);
    }
 
    @Override
-   public void b() {
-      ewf $$0 = this.a.G(1.0F).d();
-      $$0.b((float) (-Math.PI / 4));
-      double $$1 = this.a.e.dv();
-      double $$2 = this.a.e.e(0.5);
-      double $$3 = this.a.e.dB();
-
-      for (int $$4 = 0; $$4 < 8; $$4++) {
-         ayo $$5 = this.a.dT();
-         double $$6 = $$1 + $$5.k() / 2.0;
-         double $$7 = $$2 + $$5.k() / 2.0;
-         double $$8 = $$3 + $$5.k() / 2.0;
-         ewf $$9 = this.a.dt();
-         this.a.dQ().a(lj.h, $$6, $$7, $$8, -$$0.c * 0.08F + $$9.c, -$$0.d * 0.3F + $$9.d, -$$0.e * 0.08F + $$9.e);
-         $$0.b((float) (Math.PI / 16));
-      }
-   }
-
-   @Override
-   public void c() {
-      if (this.b == null) {
-         this.b = ewf.c(this.a.dQ().a(dyf.a.f, ebj.a(this.a.s())));
-      }
-
-      if (this.b.c(this.a.dv(), this.a.dx(), this.a.dB()) < 1.0) {
-         this.a.gl().b(cid.f).j();
-         this.a.gl().a(cid.g);
-      }
-   }
-
-   @Override
-   public float f() {
-      return 1.5F;
-   }
-
-   @Override
-   public float h() {
-      float $$0 = (float)this.a.dt().h() + 1.0F;
-      float $$1 = Math.min($$0, 40.0F);
-      return $$1 / $$0;
+   public cie<chw> i() {
+      return cie.c;
    }
 
    @Override
    public void d() {
-      this.b = null;
+      this.c = null;
+      this.d = null;
+   }
+
+   @Override
+   public void c() {
+      double $$0 = this.d == null ? 0.0 : this.d.c(this.a.dw(), this.a.dy(), this.a.dC());
+      if ($$0 < 100.0 || $$0 > 22500.0 || this.a.Q || this.a.R) {
+         this.j();
+      }
    }
 
    @Nullable
    @Override
-   public ewf g() {
-      return this.b;
+   public ewh g() {
+      return this.d;
    }
 
-   @Override
-   public cid<chw> i() {
-      return cid.d;
+   private void j() {
+      if (this.c == null || this.c.c()) {
+         int $$0 = this.a.x();
+         ja $$1 = this.a.dR().a(dyg.a.f, ebk.a(this.a.s()));
+         cml $$2 = this.a.dR().a(b, this.a, (double)$$1.u(), (double)$$1.v(), (double)$$1.w());
+         int $$4;
+         if ($$2 != null) {
+            ewh $$3 = new ewh($$2.dw(), 0.0, $$2.dC()).d();
+            $$4 = this.a.r(-$$3.c * 40.0, 105.0, -$$3.e * 40.0);
+         } else {
+            $$4 = this.a.r(40.0, (double)$$1.v(), 0.0);
+         }
+
+         eov $$6 = new eov($$1.u(), $$1.v(), $$1.w());
+         this.c = this.a.a($$0, $$4, $$6);
+         if (this.c != null) {
+            this.c.a();
+         }
+      }
+
+      this.k();
+      if (this.c != null && this.c.c()) {
+         this.a.gk().a(cie.d);
+      }
+   }
+
+   private void k() {
+      if (this.c != null && !this.c.c()) {
+         ke $$0 = this.c.g();
+         this.c.a();
+         double $$1 = (double)$$0.u();
+         double $$2 = (double)$$0.w();
+
+         double $$3;
+         do {
+            $$3 = (double)((float)$$0.v() + this.a.dU().i() * 20.0F);
+         } while ($$3 < (double)$$0.v());
+
+         this.d = new ewh($$1, $$3, $$2);
+      }
    }
 }

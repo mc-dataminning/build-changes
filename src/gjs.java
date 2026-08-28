@@ -1,27 +1,52 @@
-public class gjs extends gjl<cmx> {
-   private final gkk a;
+public class gjs extends gjn<bss> {
+   private static final akk a = new akk("textures/entity/experience_orb.png");
+   private static final gen f = gen.g(a);
 
-   public gjs(gjm.a $$0) {
+   public gjs(gjo.a $$0) {
       super($$0);
-      this.a = $$0.b();
+      this.d = 0.15F;
+      this.e = 0.75F;
    }
 
-   public void a(cmx $$0, float $$1, float $$2, fam $$3, ged $$4, int $$5) {
+   protected int a(bss $$0, ja $$1) {
+      return ayg.a(super.a($$0, $$1) + 7, 0, 15);
+   }
+
+   public void a(bss $$0, float $$1, float $$2, fao $$3, gef $$4, int $$5) {
       $$3.a();
+      int $$6 = $$0.s();
+      float $$7 = (float)($$6 % 4 * 16 + 0) / 64.0F;
+      float $$8 = (float)($$6 % 4 * 16 + 16) / 64.0F;
+      float $$9 = (float)($$6 / 4 * 16 + 0) / 64.0F;
+      float $$10 = (float)($$6 / 4 * 16 + 16) / 64.0F;
+      float $$11 = 1.0F;
+      float $$12 = 0.5F;
+      float $$13 = 0.25F;
+      float $$14 = 255.0F;
+      float $$15 = ((float)$$0.ai + $$2) / 2.0F;
+      int $$16 = (int)((ayg.a($$15 + 0.0F) + 1.0F) * 0.5F * 255.0F);
+      int $$17 = 255;
+      int $$18 = (int)((ayg.a($$15 + (float) (Math.PI * 4.0 / 3.0)) + 1.0F) * 0.1F * 255.0F);
+      $$3.a(0.0F, 0.1F, 0.0F);
       $$3.a(this.c.b());
       $$3.a(a.d.rotationDegrees(180.0F));
-      if ($$0.u()) {
-         $$3.a(a.f.rotationDegrees(180.0F));
-         $$3.a(a.d.rotationDegrees(180.0F));
-         $$3.a(a.b.rotationDegrees(90.0F));
-      }
-
-      this.a.a($$0.p(), ctz.h, $$5, gpf.d, $$3, $$4, $$0.dQ(), $$0.am());
+      float $$19 = 0.3F;
+      $$3.b(0.3F, 0.3F, 0.3F);
+      fas $$20 = $$4.getBuffer(f);
+      fao.a $$21 = $$3.c();
+      a($$20, $$21, -0.5F, -0.25F, $$16, 255, $$18, $$7, $$10, $$5);
+      a($$20, $$21, 0.5F, -0.25F, $$16, 255, $$18, $$8, $$10, $$5);
+      a($$20, $$21, 0.5F, 0.75F, $$16, 255, $$18, $$8, $$9, $$5);
+      a($$20, $$21, -0.5F, 0.75F, $$16, 255, $$18, $$7, $$9, $$5);
       $$3.b();
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public akk a(cmx $$0) {
-      return gpn.e;
+   private static void a(fas $$0, fao.a $$1, float $$2, float $$3, int $$4, int $$5, int $$6, float $$7, float $$8, int $$9) {
+      $$0.a($$1, $$2, $$3, 0.0F).a($$4, $$5, $$6, 128).a($$7, $$8).c(gph.d).b($$9).b($$1, 0.0F, 1.0F, 0.0F).e();
+   }
+
+   public akk a(bss $$0) {
+      return a;
    }
 }

@@ -1,84 +1,125 @@
-import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableLong;
 
-public class buo extends buu<cer> {
-   private static final int c = 3;
-   private static final int d = 60;
-   private static final int e = 110;
-   private final bsm<? extends cer> f;
-   private final float g;
-   private final int h;
-   private static final int i = 2;
-   private long j;
+public class buo {
+   public static final int a = 48;
 
-   public buo(bsm<? extends cer> $$0) {
-      this($$0, 1.0F, 2);
+   public static buw<btl> a(Predicate<jj<cej>> $$0, ccg<ji> $$1, boolean $$2, Optional<Byte> $$3) {
+      return a($$0, $$1, $$1, $$2, $$3);
    }
 
-   public buo(bsm<? extends cer> $$0, float $$1, int $$2) {
-      super(ImmutableMap.of(ccf.h, ccg.a, ccf.r, ccg.b, ccf.m, ccg.c, ccf.n, ccg.c, ccf.Z, ccg.b), 110);
-      this.f = $$0;
-      this.g = $$1;
-      this.h = $$2;
+   public static buw<btl> a(Predicate<jj<cej>> $$0, ccg<ji> $$1, ccg<ji> $$2, boolean $$3, Optional<Byte> $$4) {
+      int $$5 = 5;
+      int $$6 = 20;
+      MutableLong $$7 = new MutableLong(0L);
+      Long2ObjectMap<buo.a> $$8 = new Long2ObjectOpenHashMap();
+      bwg<btl> $$9 = byi.a(
+         (Function<byi.b<btl>, ? extends App<byi.c<btl>, byl<btl>>>)($$6x -> $$6x.group($$6x.c($$2)).apply($$6x, $$5xx -> ($$6xx, $$7x, $$8x) -> {
+                  if ($$3 && $$7x.o_()) {
+                     return false;
+                  } else if ($$7.getValue() == 0L) {
+                     $$7.setValue($$6xx.Z() + (long)$$6xx.z.a(20));
+                     return false;
+                  } else if ($$6xx.Z() < $$7.getValue()) {
+                     return false;
+                  } else {
+                     $$7.setValue($$8x + 20L + (long)$$6xx.E_().a(20));
+                     ceg $$9x = $$6xx.y();
+                     $$8.long2ObjectEntrySet().removeIf($$1xxxx -> !((buo.a)$$1xxxx.getValue()).b($$8x));
+                     Predicate<ja> $$10 = $$2xxxx -> {
+                        buo.a $$3xxxx = (buo.a)$$8.get($$2xxxx.a());
+                        if ($$3xxxx == null) {
+                           return true;
+                        } else if (!$$3xxxx.c($$8x)) {
+                           return false;
+                        } else {
+                           $$3xxxx.a($$8x);
+                           return true;
+                        }
+                     };
+                     Set<Pair<jj<cej>, ja>> $$11 = $$9x.c($$0, $$10, $$7x.dr(), 48, ceg.b.a).limit(5L).collect(Collectors.toSet());
+                     eox $$12 = a($$7x, $$11);
+                     if ($$12 != null && $$12.j()) {
+                        ja $$13 = $$12.l();
+                        $$9x.c($$13).ifPresent($$8xx -> {
+                           $$9x.a($$0, ($$1xxxxx, $$2xxxxx) -> $$2xxxxx.equals($$13), $$13, 1);
+                           $$5xx.a(ji.a($$6xx.af(), $$13));
+                           $$4.ifPresent($$2xxxxx -> $$6xx.a($$7x, $$2xxxxx));
+                           $$8.clear();
+                           afy.c($$6xx, $$13);
+                        });
+                     } else {
+                        for (Pair<jj<cej>, ja> $$14 : $$11) {
+                           $$8.computeIfAbsent(((ja)$$14.getSecond()).a(), $$2xxxx -> new buo.a($$6xx.z, $$8x));
+                        }
+                     }
+
+                     return true;
+                  }
+               }))
+      );
+      return $$2 == $$1 ? $$9 : byi.a((Function<byi.b<btl>, ? extends App<byi.c<btl>, byl<btl>>>)($$2x -> $$2x.group($$2x.c($$1)).apply($$2x, $$1xx -> $$9)));
    }
 
-   protected boolean a(aqm $$0, cer $$1) {
-      return $$1.gs() && this.c($$1).isPresent();
-   }
-
-   protected void a(aqm $$0, cer $$1, long $$2) {
-      cer $$3 = this.c($$1).get();
-      $$1.dU().a(ccf.r, $$3);
-      $$3.dU().a(ccf.r, $$1);
-      buw.a($$1, (btb)$$3, this.g, this.h);
-      int $$4 = 60 + $$1.dT().a(50);
-      this.j = $$2 + (long)$$4;
-   }
-
-   protected boolean b(aqm $$0, cer $$1, long $$2) {
-      if (!this.b($$1)) {
-         return false;
+   @Nullable
+   public static eox a(bte $$0, Set<Pair<jj<cej>, ja>> $$1) {
+      if ($$1.isEmpty()) {
+         return null;
       } else {
-         cer $$3 = this.a($$1);
-         return $$3.bE() && $$1.a($$3) && buw.a($$1.dU(), $$3) && $$2 <= this.j && !$$1.gl() && !$$3.gl();
+         Set<ja> $$2 = new HashSet<>();
+         int $$3 = 1;
+
+         for (Pair<jj<cej>, ja> $$4 : $$1) {
+            $$3 = Math.max($$3, ((cej)((jj)$$4.getFirst()).a()).c());
+            $$2.add((ja)$$4.getSecond());
+         }
+
+         return $$0.J().a($$2, $$3);
       }
    }
 
-   protected void c(aqm $$0, cer $$1, long $$2) {
-      cer $$3 = this.a($$1);
-      buw.a($$1, (btb)$$3, this.g, this.h);
-      if ($$1.a($$3, 3.0)) {
-         if ($$2 >= this.j) {
-            $$1.a($$0, $$3);
-            $$1.dU().b(ccf.r);
-            $$3.dU().b(ccf.r);
-         }
+   static class a {
+      private static final int a = 40;
+      private static final int b = 80;
+      private static final int c = 400;
+      private final ayo d;
+      private long e;
+      private long f;
+      private int g;
+
+      a(ayo $$0, long $$1) {
+         this.d = $$0;
+         this.a($$1);
       }
-   }
 
-   protected void d(aqm $$0, cer $$1, long $$2) {
-      $$1.dU().b(ccf.r);
-      $$1.dU().b(ccf.m);
-      $$1.dU().b(ccf.n);
-      this.j = 0L;
-   }
+      public void a(long $$0) {
+         this.e = $$0;
+         int $$1 = this.g + this.d.a(40) + 40;
+         this.g = Math.min($$1, 400);
+         this.f = $$0 + (long)this.g;
+      }
 
-   private cer a(cer $$0) {
-      return (cer)$$0.dU().c(ccf.r).get();
-   }
+      public boolean b(long $$0) {
+         return $$0 - this.e < 400L;
+      }
 
-   private boolean b(cer $$0) {
-      bud<?> $$1 = $$0.dU();
-      return $$1.a(ccf.r) && $$1.c(ccf.r).get().al() == this.f;
-   }
+      public boolean c(long $$0) {
+         return $$0 >= this.f;
+      }
 
-   private Optional<? extends cer> c(cer $$0) {
-      return $$0.dU().c(ccf.h).get().a($$1 -> {
-         if ($$1.al() == this.f && $$1 instanceof cer $$2 && $$0.a($$2) && !$$2.gl()) {
-            return true;
-         }
-
-         return false;
-      }).map(cer.class::cast);
+      @Override
+      public String toString() {
+         return "RetryMarker{, previousAttemptAt=" + this.e + ", nextScheduledAttemptAt=" + this.f + ", currentDelay=" + this.g + "}";
+      }
    }
 }

@@ -1,42 +1,46 @@
-import com.mojang.serialization.Codec;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class emg extends emj {
-   public static final MapCodec<emg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.FLOAT.fieldOf("min_chance").orElse(0.0F).forGetter($$0x -> $$0x.b),
-               Codec.FLOAT.fieldOf("max_chance").orElse(0.0F).forGetter($$0x -> $$0x.d),
-               Codec.INT.fieldOf("min_dist").orElse(0).forGetter($$0x -> $$0x.e),
-               Codec.INT.fieldOf("max_dist").orElse(0).forGetter($$0x -> $$0x.f)
-            )
-            .apply($$0, emg::new)
-   );
-   private final float b;
-   private final float d;
-   private final int e;
-   private final int f;
+public class emg extends emv {
+   private static final Logger c = LogUtils.getLogger();
+   public static final MapCodec<emg> a = MapCodec.unit(() -> emg.b);
+   public static final emg b = new emg();
 
-   public emg(float $$0, float $$1, int $$2, int $$3) {
-      if ($$2 >= $$3) {
-         throw new IllegalArgumentException("Invalid range: [" + $$2 + "," + $$3 + "]");
+   private emg() {
+   }
+
+   @Nullable
+   @Override
+   public emy.c a(dcj $$0, ja $$1, ja $$2, emy.c $$3, emy.c $$4, emu $$5) {
+      dsl $$6 = $$4.b();
+      if ($$6.a(dfk.pb)) {
+         if ($$4.c() == null) {
+            c.warn("Jigsaw block at {} is missing nbt, will not replace", $$1);
+            return $$4;
+         } else {
+            String $$7 = $$4.c().l("final_state");
+
+            dsl $$9;
+            try {
+               gk.a $$8 = gk.a($$0.a(lr.f), $$7, true);
+               $$9 = $$8.a();
+            } catch (CommandSyntaxException var11) {
+               c.error("Failed to parse jigsaw replacement state '{}' at {}: {}", new Object[]{$$7, $$1, var11.getMessage()});
+               return null;
+            }
+
+            return $$9.a(dfk.kN) ? null : new emy.c($$4.a(), $$9, null);
+         }
       } else {
-         this.b = $$0;
-         this.d = $$1;
-         this.e = $$2;
-         this.f = $$3;
+         return $$4;
       }
    }
 
    @Override
-   public boolean a(ja $$0, ja $$1, ja $$2, ayo $$3) {
-      int $$4 = $$1.k($$2);
-      float $$5 = $$3.i();
-      return $$5 <= ayg.b(this.b, this.d, ayg.g((float)$$4, (float)this.e, (float)this.f));
-   }
-
-   @Override
-   protected emk<?> a() {
-      return emk.b;
+   protected emx<?> a() {
+      return emx.h;
    }
 }

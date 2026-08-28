@@ -1,12 +1,109 @@
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.ImmutableSet.Builder;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.Set;
+import java.util.function.Function;
+import javax.annotation.Nullable;
 
-public interface eqv {
-   default Set<etn<?>> a() {
-      return ImmutableSet.of();
+public class eqv {
+   private static final Codec<eqv> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               eve.a.optionalFieldOf("min").forGetter($$0x -> Optional.ofNullable($$0x.c)),
+               eve.a.optionalFieldOf("max").forGetter($$0x -> Optional.ofNullable($$0x.d))
+            )
+            .apply($$0, eqv::new)
+   );
+   public static final Codec<eqv> a = Codec.either(Codec.INT, b).xmap($$0 -> (eqv)$$0.map(eqv::a, Function.identity()), $$0 -> {
+      OptionalInt $$1 = $$0.b();
+      return $$1.isPresent() ? Either.left($$1.getAsInt()) : Either.right($$0);
+   });
+   @Nullable
+   private final evd c;
+   @Nullable
+   private final evd d;
+   private final eqv.b e;
+   private final eqv.a f;
+
+   public Set<etp<?>> a() {
+      Builder<etp<?>> $$0 = ImmutableSet.builder();
+      if (this.c != null) {
+         $$0.addAll(this.c.a());
+      }
+
+      if (this.d != null) {
+         $$0.addAll(this.d.a());
+      }
+
+      return $$0.build();
    }
 
-   default void a(era $$0) {
-      $$0.a(this);
+   private eqv(Optional<evd> $$0, Optional<evd> $$1) {
+      this($$0.orElse(null), $$1.orElse(null));
+   }
+
+   private eqv(@Nullable evd $$0, @Nullable evd $$1) {
+      this.c = $$0;
+      this.d = $$1;
+      if ($$0 == null) {
+         if ($$1 == null) {
+            this.e = ($$0x, $$1x) -> $$1x;
+            this.f = ($$0x, $$1x) -> true;
+         } else {
+            this.e = ($$1x, $$2) -> Math.min($$1.a($$1x), $$2);
+            this.f = ($$1x, $$2) -> $$2 <= $$1.a($$1x);
+         }
+      } else if ($$1 == null) {
+         this.e = ($$1x, $$2) -> Math.max($$0.a($$1x), $$2);
+         this.f = ($$1x, $$2) -> $$2 >= $$0.a($$1x);
+      } else {
+         this.e = ($$2, $$3) -> ayg.a($$3, $$0.a($$2), $$1.a($$2));
+         this.f = ($$2, $$3) -> $$3 >= $$0.a($$2) && $$3 <= $$1.a($$2);
+      }
+   }
+
+   public static eqv a(int $$0) {
+      eva $$1 = eva.a((float)$$0);
+      return new eqv(Optional.of($$1), Optional.of($$1));
+   }
+
+   public static eqv a(int $$0, int $$1) {
+      return new eqv(Optional.of(eva.a((float)$$0)), Optional.of(eva.a((float)$$1)));
+   }
+
+   public static eqv b(int $$0) {
+      return new eqv(Optional.of(eva.a((float)$$0)), Optional.empty());
+   }
+
+   public static eqv c(int $$0) {
+      return new eqv(Optional.empty(), Optional.of(eva.a((float)$$0)));
+   }
+
+   public int a(eqw $$0, int $$1) {
+      return this.e.apply($$0, $$1);
+   }
+
+   public boolean b(eqw $$0, int $$1) {
+      return this.f.test($$0, $$1);
+   }
+
+   private OptionalInt b() {
+      return Objects.equals(this.c, this.d) && this.c instanceof eva $$0 && Math.floor((double)$$0.c()) == (double)$$0.c()
+         ? OptionalInt.of((int)$$0.c())
+         : OptionalInt.empty();
+   }
+
+   @FunctionalInterface
+   interface a {
+      boolean test(eqw var1, int var2);
+   }
+
+   @FunctionalInterface
+   interface b {
+      int apply(eqw var1, int var2);
    }
 }

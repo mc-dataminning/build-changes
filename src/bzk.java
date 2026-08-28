@@ -1,62 +1,77 @@
-import java.util.EnumSet;
+import java.util.function.Predicate;
 
-public class bzk extends bzz {
-   private final btk a;
+public class bzk extends bzr {
+   private static final int g = 240;
+   private final Predicate<bqe> h;
+   protected int a;
+   protected int b = -1;
+   protected int c = -1;
 
-   public bzk(btk $$0) {
-      this.a = $$0;
-      this.a(EnumSet.of(bzz.a.a, bzz.a.b));
+   public bzk(bte $$0, Predicate<bqe> $$1) {
+      super($$0);
+      this.h = $$1;
+   }
+
+   public bzk(bte $$0, int $$1, Predicate<bqe> $$2) {
+      this($$0, $$2);
+      this.c = $$1;
+   }
+
+   protected int f() {
+      return Math.max(240, this.c);
    }
 
    @Override
    public boolean a() {
-      return this.a.cm() < 140;
-   }
-
-   @Override
-   public boolean b() {
-      return this.a();
-   }
-
-   @Override
-   public boolean Q_() {
-      return false;
+      if (!super.a()) {
+         return false;
+      } else {
+         return !this.d.dR().ab().b(dcc.c) ? false : this.a(this.d.dR().al()) && !this.h();
+      }
    }
 
    @Override
    public void c() {
-      this.h();
+      super.c();
+      this.a = 0;
    }
 
-   private void h() {
-      Iterable<ja> $$0 = ja.b(
-         ayg.a(this.a.dv() - 1.0), this.a.dw(), ayg.a(this.a.dB() - 1.0), ayg.a(this.a.dv() + 1.0), ayg.a(this.a.dx() + 8.0), ayg.a(this.a.dB() + 1.0)
-      );
-      ja $$1 = null;
+   @Override
+   public boolean b() {
+      return this.a <= this.f() && !this.h() && this.e.a(this.d.dp(), 2.0) && this.a(this.d.dR().al());
+   }
 
-      for (ja $$2 : $$0) {
-         if (this.a(this.a.dQ(), $$2)) {
-            $$1 = $$2;
-            break;
-         }
-      }
-
-      if ($$1 == null) {
-         $$1 = ja.a(this.a.dv(), this.a.dx() + 8.0, this.a.dB());
-      }
-
-      this.a.K().a((double)$$1.u(), (double)($$1.v() + 1), (double)$$1.w(), 1.0);
+   @Override
+   public void d() {
+      super.d();
+      this.d.dR().a(this.d.an(), this.e, -1);
    }
 
    @Override
    public void e() {
-      this.h();
-      this.a.a(0.02F, new ewf((double)this.a.bo, (double)this.a.bp, (double)this.a.bq));
-      this.a.a(btg.a, this.a.dt());
+      super.e();
+      if (this.d.dU().a(20) == 0) {
+         this.d.dR().c(1019, this.e, 0);
+         if (!this.d.aK) {
+            this.d.a(this.d.fu());
+         }
+      }
+
+      this.a++;
+      int $$0 = (int)((float)this.a / (float)this.f() * 10.0F);
+      if ($$0 != this.b) {
+         this.d.dR().a(this.d.an(), this.e, $$0);
+         this.b = $$0;
+      }
+
+      if (this.a == this.f() && this.a(this.d.dR().al())) {
+         this.d.dR().a(this.e, false);
+         this.d.dR().c(1021, this.e, 0);
+         this.d.dR().c(2001, this.e, dfi.i(this.d.dR().a_(this.e)));
+      }
    }
 
-   private boolean a(dci $$0, ja $$1) {
-      dsk $$2 = $$0.a_($$1);
-      return ($$0.b_($$1).c() || $$2.a(dfj.nd)) && $$2.a(eow.a);
+   private boolean a(bqe $$0) {
+      return this.h.test($$0);
    }
 }

@@ -5,25 +5,25 @@ public interface ayo {
    double a = 2.297;
 
    static ayo a() {
-      return a(dyu.a());
+      return a(dyv.a());
    }
 
    @Deprecated
    static ayo b() {
-      return new dyy(dyu.a());
+      return new dyz(dyv.a());
    }
 
    static ayo a(long $$0) {
-      return new dyg($$0);
+      return new dyh($$0);
    }
 
    static ayo c() {
-      return new dyv(ThreadLocalRandom.current().nextLong());
+      return new dyw(ThreadLocalRandom.current().nextLong());
    }
 
    ayo d();
 
-   dys e();
+   dyt e();
 
    void b(long var1);
 

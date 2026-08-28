@@ -1,118 +1,55 @@
-public class coo extends cof {
-   static final ajp<String> c = ajt.a(coo.class, ajr.e);
-   static final ajp<wu> d = ajt.a(coo.class, ajr.f);
-   private final dbg e = new coo.a();
-   private static final int i = 4;
-   private int j;
-
-   public coo(bsm<? extends coo> $$0, dcf $$1) {
+public class coo extends coh {
+   public coo(bsn<? extends coo> $$0, dcg $$1) {
       super($$0, $$1);
    }
 
-   public coo(dcf $$0, double $$1, double $$2, double $$3) {
-      super(bsm.v, $$0, $$1, $$2, $$3);
+   public coo(dcg $$0, double $$1, double $$2, double $$3) {
+      super(bsn.s, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   protected ctx ag_() {
-      return cuf.nM;
+   protected cty ag_() {
+      return cug.nN;
    }
 
    @Override
-   protected void a(ajt.a $$0) {
-      super.a($$0);
-      $$0.a(c, "");
-      $$0.a(d, wt.a);
+   public int b() {
+      return 27;
    }
 
    @Override
-   protected void a(tx $$0) {
-      super.a($$0);
-      this.e.b($$0, this.dS());
-      this.aq().a(c, this.B().m());
-      this.aq().a(d, this.B().l());
+   public cog.a v() {
+      return cog.a.b;
    }
 
    @Override
-   protected void b(tx $$0) {
-      super.b($$0);
-      this.e.a($$0, this.dS());
+   public dsl x() {
+      return dfk.cv.o().a(dgl.c, jf.c);
    }
 
    @Override
-   public cof.a v() {
-      return cof.a.g;
+   public int z() {
+      return 8;
    }
 
    @Override
-   public dsk x() {
-      return dfj.fN.o();
-   }
-
-   public dbg B() {
-      return this.e;
+   public cpi a(int $$0, cmk $$1) {
+      return cpq.a($$0, $$1, this);
    }
 
    @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3 && this.ai - this.j >= 4) {
-         this.B().a(this.dQ());
-         this.j = this.ai;
-      }
+   public void c(cml $$0) {
+      this.dR().a(dxh.j, this.dp(), dxh.a.a($$0));
    }
 
    @Override
-   public bqg a(cmk $$0, bqf $$1) {
-      return this.e.a($$0);
-   }
-
-   @Override
-   public void a(ajp<?> $$0) {
-      super.a($$0);
-      if (d.equals($$0)) {
-         try {
-            this.e.c(this.aq().a(d));
-         } catch (Throwable var3) {
-         }
-      } else if (c.equals($$0)) {
-         this.e.a(this.aq().a(c));
-      }
-   }
-
-   @Override
-   public boolean cQ() {
-      return true;
-   }
-
-   public class a extends dbg {
-      @Override
-      public aqm e() {
-         return (aqm)coo.this.dQ();
+   public bqh a(cml $$0, bqg $$1) {
+      bqh $$2 = this.c_($$0);
+      if ($$2.a()) {
+         this.a(dxh.k, $$0);
+         clc.a($$0, true);
       }
 
-      @Override
-      public void f() {
-         coo.this.aq().a(coo.c, this.m());
-         coo.this.aq().a(coo.d, this.l());
-      }
-
-      @Override
-      public ewf g() {
-         return coo.this.do();
-      }
-
-      public coo h() {
-         return coo.this;
-      }
-
-      @Override
-      public eq i() {
-         return new eq(this, coo.this.do(), coo.this.bN(), this.e(), 2, this.n().getString(), coo.this.O_(), this.e().o(), coo.this);
-      }
-
-      @Override
-      public boolean j() {
-         return !coo.this.dL();
-      }
+      return $$2;
    }
 }

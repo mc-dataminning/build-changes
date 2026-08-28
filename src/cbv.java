@@ -1,21 +1,37 @@
 import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class cbv<T extends btb> extends cbs<T> {
-   private final bty i;
+public class cbv<T extends btc> extends cbt<T> {
+   private static final int i = 200;
+   private int j = 0;
 
-   public cbv(bty $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<btb> $$3) {
-      super($$0, $$1, 10, $$2, false, $$3);
-      this.i = $$0;
+   public cbv(cnx $$0, Class<T> $$1, boolean $$2, @Nullable Predicate<btc> $$3) {
+      super($$0, $$1, 500, $$2, false, $$3);
+   }
+
+   public int i() {
+      return this.j;
+   }
+
+   public void k() {
+      this.j--;
    }
 
    @Override
    public boolean a() {
-      return !this.i.s() && super.a();
+      if (this.j > 0 || !this.e.dU().h()) {
+         return false;
+      } else if (!((cnx)this.e).gE()) {
+         return false;
+      } else {
+         this.h();
+         return this.c != null;
+      }
    }
 
    @Override
-   public boolean b() {
-      return this.d != null ? this.d.a(this.e, this.c) : super.b();
+   public void c() {
+      this.j = b(200);
+      super.c();
    }
 }

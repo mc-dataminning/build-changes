@@ -1,10 +1,10 @@
 import java.util.Iterator;
 
 public interface ajx<T> {
-   default void a(int $$0, int $$1, int $$2, cyk<?> $$3, Iterator<T> $$4, int $$5) {
+   default void a(int $$0, int $$1, int $$2, cyl<?> $$3, Iterator<T> $$4, int $$5) {
       int $$6 = $$0;
       int $$7 = $$1;
-      if ($$3.b() instanceof cyq $$9) {
+      if ($$3.b() instanceof cyr $$9) {
          $$6 = $$9.j();
          $$7 = $$9.k();
       }

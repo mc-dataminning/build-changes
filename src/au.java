@@ -8,11 +8,11 @@ public class au extends ds<au.a> {
       return au.a.a;
    }
 
-   public void a(aqn $$0, dsk $$1, cuc $$2, int $$3) {
+   public void a(aqn $$0, dsl $$1, cud $$2, int $$3) {
       this.a($$0, $$3x -> $$3x.a($$1, $$2, $$3));
    }
 
-   public static record a(Optional<bf> b, Optional<jj<dfh>> c, Optional<cp> d, de.d e) implements ds.a {
+   public static record a(Optional<bf> b, Optional<jj<dfi>> c, Optional<cp> d, de.d e) implements ds.a {
       public static final Codec<au.a> a = RecordCodecBuilder.create(
          $$0 -> $$0.group(
                   bu.b.optionalFieldOf("player").forGetter(au.a::a),
@@ -23,11 +23,11 @@ public class au extends ds<au.a> {
                .apply($$0, au.a::new)
       );
 
-      public static an<au.a> a(dfh $$0, cp.a $$1, de.d $$2) {
+      public static an<au.a> a(dfi $$0, cp.a $$1, de.d $$2) {
          return am.L.a(new au.a(Optional.empty(), Optional.of($$0.s()), Optional.of($$1.b()), $$2));
       }
 
-      public boolean a(dsk $$0, cuc $$1, int $$2) {
+      public boolean a(dsl $$0, cud $$1, int $$2) {
          if (this.c.isPresent() && !$$0.a(this.c.get())) {
             return false;
          } else {
@@ -40,7 +40,7 @@ public class au extends ds<au.a> {
          return this.b;
       }
 
-      public Optional<jj<dfh>> b() {
+      public Optional<jj<dfi>> b() {
          return this.c;
       }
 

@@ -7,10 +7,10 @@ public class afh implements zb<abn> {
    private final float f;
    private final long g;
 
-   public afh(jj<avg> $$0, avi $$1, bsg $$2, float $$3, float $$4, long $$5) {
+   public afh(jj<avg> $$0, avi $$1, bsh $$2, float $$3, float $$4, long $$5) {
       this.b = $$0;
       this.c = $$1;
-      this.d = $$2.am();
+      this.d = $$2.an();
       this.e = $$3;
       this.f = $$4;
       this.g = $$5;

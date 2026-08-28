@@ -1,34 +1,20 @@
 public interface dxj {
-   dxj a = new dxj() {
-      @Override
-      public boolean a() {
-         return true;
-      }
+   dxl a();
 
-      @Override
-      public void a(dxi $$0) {
-      }
+   int b();
 
-      @Override
-      public void b(dxi $$0) {
-      }
+   boolean a(aqm var1, jj<dxh> var2, dxh.a var3, ewh var4);
 
-      @Override
-      public boolean a(jj<dxg> $$0, ewf $$1, dxg.a $$2, dxj.a $$3) {
-         return false;
-      }
-   };
+   default dxj.a c() {
+      return dxj.a.a;
+   }
 
-   boolean a();
+   public static enum a {
+      a,
+      b;
+   }
 
-   void a(dxi var1);
-
-   void b(dxi var1);
-
-   boolean a(jj<dxg> var1, ewf var2, dxg.a var3, dxj.a var4);
-
-   @FunctionalInterface
-   public interface a {
-      void visit(dxi var1, ewf var2);
+   public interface b<T extends dxj> {
+      T c();
    }
 }

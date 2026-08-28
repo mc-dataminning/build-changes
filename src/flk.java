@@ -1,61 +1,143 @@
-import java.util.function.Consumer;
+public interface flk {
+   flk a(int var1);
 
-public class flk implements flh {
-   private int a;
-   private int b;
-   private final int c;
-   private final int d;
+   flk a(int var1, int var2);
 
-   public flk(int $$0, int $$1) {
-      this(0, 0, $$0, $$1);
+   flk a(int var1, int var2, int var3, int var4);
+
+   flk b(int var1);
+
+   flk c(int var1);
+
+   flk d(int var1);
+
+   flk e(int var1);
+
+   flk f(int var1);
+
+   flk g(int var1);
+
+   flk a(float var1, float var2);
+
+   flk a(float var1);
+
+   flk b(float var1);
+
+   default flk a() {
+      return this.a(0.0F);
    }
 
-   public flk(int $$0, int $$1, int $$2, int $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
+   default flk b() {
+      return this.a(0.5F);
    }
 
-   public static flk a(int $$0) {
-      return new flk($$0, 0);
+   default flk c() {
+      return this.a(1.0F);
    }
 
-   public static flk b(int $$0) {
-      return new flk(0, $$0);
+   default flk d() {
+      return this.b(0.0F);
    }
 
-   @Override
-   public void m(int $$0) {
-      this.a = $$0;
+   default flk e() {
+      return this.b(0.5F);
    }
 
-   @Override
-   public void n(int $$0) {
-      this.b = $$0;
+   default flk f() {
+      return this.b(1.0F);
    }
 
-   @Override
-   public int D() {
-      return this.a;
+   flk g();
+
+   flk.a h();
+
+   static flk i() {
+      return new flk.a();
    }
 
-   @Override
-   public int E() {
-      return this.b;
-   }
+   public static class a implements flk {
+      public int a;
+      public int b;
+      public int c;
+      public int d;
+      public float e;
+      public float f;
 
-   @Override
-   public int y() {
-      return this.c;
-   }
+      public a() {
+      }
 
-   @Override
-   public int w() {
-      return this.d;
-   }
+      public a(flk.a $$0) {
+         this.a = $$0.a;
+         this.b = $$0.b;
+         this.c = $$0.c;
+         this.d = $$0.d;
+         this.e = $$0.e;
+         this.f = $$0.f;
+      }
 
-   @Override
-   public void a(Consumer<fhq> $$0) {
+      public flk.a h(int $$0) {
+         return this.b($$0, $$0);
+      }
+
+      public flk.a b(int $$0, int $$1) {
+         return this.m($$0).n($$1);
+      }
+
+      public flk.a b(int $$0, int $$1, int $$2, int $$3) {
+         return this.i($$0).k($$2).j($$1).l($$3);
+      }
+
+      public flk.a i(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public flk.a j(int $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public flk.a k(int $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public flk.a l(int $$0) {
+         this.d = $$0;
+         return this;
+      }
+
+      public flk.a m(int $$0) {
+         return this.i($$0).k($$0);
+      }
+
+      public flk.a n(int $$0) {
+         return this.j($$0).l($$0);
+      }
+
+      public flk.a b(float $$0, float $$1) {
+         this.e = $$0;
+         this.f = $$1;
+         return this;
+      }
+
+      public flk.a c(float $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public flk.a d(float $$0) {
+         this.f = $$0;
+         return this;
+      }
+
+      public flk.a j() {
+         return new flk.a(this);
+      }
+
+      @Override
+      public flk.a h() {
+         return this;
+      }
    }
 }

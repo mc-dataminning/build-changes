@@ -1,15 +1,15 @@
 public class aca implements zb<abn> {
    public static final ys<vr, aca> a = zb.a(aca::a, aca::new);
-   private final bqd b;
+   private final bqe b;
    private final boolean c;
 
-   public aca(bqd $$0, boolean $$1) {
+   public aca(bqe $$0, boolean $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
    private aca(vr $$0) {
-      this.b = bqd.a($$0.readUnsignedByte());
+      this.b = bqe.a($$0.readUnsignedByte());
       this.c = $$0.readBoolean();
    }
 
@@ -31,7 +31,7 @@ public class aca implements zb<abn> {
       return this.c;
    }
 
-   public bqd e() {
+   public bqe e() {
       return this.b;
    }
 }

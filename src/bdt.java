@@ -11,7 +11,7 @@ public class bdt extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgg.G);
+      Type<?> $$0 = this.getInputSchema().getType(bgh.G);
       return this.fixTypeEverywhereTyped("IglooMetadataRemovalFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), bdt::a));
    }
 

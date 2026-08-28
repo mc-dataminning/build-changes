@@ -1,9 +1,22 @@
-public class cqe extends cpi {
-   public cqe(int $$0, cmj $$1) {
-      super(cqp.o, cyo.b, cqw.b, $$0, $$1);
+public class cqe extends cre {
+   private final cpj a;
+
+   public cqe(cpj $$0, bqa $$1, int $$2, int $$3, int $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.a = $$0;
    }
 
-   public cqe(int $$0, cmj $$1, bpz $$2, cps $$3) {
-      super(cqp.o, cyo.b, cqw.b, $$0, $$1, $$2, $$3);
+   @Override
+   public boolean a(cud $$0) {
+      return this.a.d($$0) || c($$0);
+   }
+
+   @Override
+   public int a_(cud $$0) {
+      return c($$0) ? 1 : super.a_($$0);
+   }
+
+   public static boolean c(cud $$0) {
+      return $$0.a(cug.qy);
    }
 }

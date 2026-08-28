@@ -30,6 +30,6 @@ public class bep extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("jigsaw_rotation_fix", this.getInputSchema().getType(bgg.u), $$0 -> $$0.update(DSL.remainderFinder(), bep::a));
+      return this.fixTypeEverywhereTyped("jigsaw_rotation_fix", this.getInputSchema().getType(bgh.u), $$0 -> $$0.update(DSL.remainderFinder(), bep::a));
    }
 }

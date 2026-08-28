@@ -1,208 +1,93 @@
-import com.mojang.blaze3d.platform.GlStateManager;
-import com.mojang.blaze3d.systems.RenderSystem;
-import java.nio.ByteBuffer;
-import javax.annotation.Nullable;
+import org.joml.Matrix3f;
 import org.joml.Matrix4f;
+import org.joml.Vector3f;
+import org.joml.Vector4f;
 
-public class fap implements AutoCloseable {
-   private final fap.a a;
-   private int b;
-   private int c;
-   private int d;
-   @Nullable
-   private far e;
-   @Nullable
-   private RenderSystem.a f;
-   private far.a g;
-   private int h;
-   private far.b i;
+public class fap extends fan {
+   private final fas f;
+   private final Matrix4f g;
+   private final Matrix3f h;
+   private final float i;
+   private float j;
+   private float k;
+   private float l;
+   private int m;
+   private int n;
+   private int o;
+   private float p;
+   private float q;
+   private float r;
 
-   public fap(fap.a $$0) {
-      this.a = $$0;
-      RenderSystem.assertOnRenderThread();
-      this.b = GlStateManager._glGenBuffers();
-      this.c = GlStateManager._glGenBuffers();
-      this.d = GlStateManager._glGenVertexArrays();
+   public fap(fas $$0, fao.a $$1, float $$2) {
+      this.f = $$0;
+      this.g = new Matrix4f($$1.a()).invert();
+      this.h = new Matrix3f($$1.b()).invert();
+      this.i = $$2;
+      this.a();
    }
 
-   public void a(fah.b $$0) {
-      try {
-         if (!this.e()) {
-            RenderSystem.assertOnRenderThread();
-            fah.a $$1 = $$0.c();
-            this.e = this.a($$1, $$0.a());
-            this.f = this.b($$1, $$0.b());
-            this.h = $$1.i();
-            this.g = $$1.k();
-            this.i = $$1.j();
-            return;
-         }
-      } finally {
-         $$0.e();
-      }
-   }
-
-   private far a(fah.a $$0, @Nullable ByteBuffer $$1) {
-      boolean $$2 = false;
-      if (!$$0.g().equals(this.e)) {
-         if (this.e != null) {
-            this.e.f();
-         }
-
-         GlStateManager._glBindBuffer(34962, this.b);
-         $$0.g().e();
-         $$2 = true;
-      }
-
-      if ($$1 != null) {
-         if (!$$2) {
-            GlStateManager._glBindBuffer(34962, this.b);
-         }
-
-         RenderSystem.glBufferData(34962, $$1, this.a.c);
-      }
-
-      return $$0.g();
-   }
-
-   @Nullable
-   private RenderSystem.a b(fah.a $$0, @Nullable ByteBuffer $$1) {
-      if ($$1 != null) {
-         GlStateManager._glBindBuffer(34963, this.c);
-         RenderSystem.glBufferData(34963, $$1, this.a.c);
-         return null;
-      } else {
-         RenderSystem.a $$2 = RenderSystem.getSequentialBuffer($$0.j());
-         if ($$2 != this.f || !$$2.a($$0.i())) {
-            $$2.b($$0.i());
-         }
-
-         return $$2;
-      }
-   }
-
-   public void a() {
-      fai.b();
-      GlStateManager._glBindVertexArray(this.d);
-   }
-
-   public static void b() {
-      fai.b();
-      GlStateManager._glBindVertexArray(0);
-   }
-
-   public void c() {
-      RenderSystem.drawElements(this.i.i, this.h, this.f().c);
-   }
-
-   private far.a f() {
-      RenderSystem.a $$0 = this.f;
-      return $$0 != null ? $$0.a() : this.g;
-   }
-
-   public void a(Matrix4f $$0, Matrix4f $$1, ger $$2) {
-      if (!RenderSystem.isOnRenderThread()) {
-         RenderSystem.recordRenderCall(() -> this.b(new Matrix4f($$0), new Matrix4f($$1), $$2));
-      } else {
-         this.b($$0, $$1, $$2);
-      }
-   }
-
-   private void b(Matrix4f $$0, Matrix4f $$1, ger $$2) {
-      for (int $$3 = 0; $$3 < 12; $$3++) {
-         int $$4 = RenderSystem.getShaderTexture($$3);
-         $$2.a("Sampler" + $$3, $$4);
-      }
-
-      if ($$2.b != null) {
-         $$2.b.a($$0);
-      }
-
-      if ($$2.c != null) {
-         $$2.c.a($$1);
-      }
-
-      if ($$2.f != null) {
-         $$2.f.a(RenderSystem.getShaderColor());
-      }
-
-      if ($$2.i != null) {
-         $$2.i.a(RenderSystem.getShaderGlintAlpha());
-      }
-
-      if ($$2.j != null) {
-         $$2.j.a(RenderSystem.getShaderFogStart());
-      }
-
-      if ($$2.k != null) {
-         $$2.k.a(RenderSystem.getShaderFogEnd());
-      }
-
-      if ($$2.l != null) {
-         $$2.l.a(RenderSystem.getShaderFogColor());
-      }
-
-      if ($$2.m != null) {
-         $$2.m.a(RenderSystem.getShaderFogShape().a());
-      }
-
-      if ($$2.d != null) {
-         $$2.d.a(RenderSystem.getTextureMatrix());
-      }
-
-      if ($$2.o != null) {
-         $$2.o.a(RenderSystem.getShaderGameTime());
-      }
-
-      if ($$2.e != null) {
-         ezq $$5 = fft.Q().aO();
-         $$2.e.a((float)$$5.k(), (float)$$5.l());
-      }
-
-      if ($$2.n != null && (this.i == far.b.a || this.i == far.b.b)) {
-         $$2.n.a(RenderSystem.getShaderLineWidth());
-      }
-
-      RenderSystem.setupShaderLights($$2);
-      $$2.g();
-      this.c();
-      $$2.f();
+   private void a() {
+      this.j = 0.0F;
+      this.k = 0.0F;
+      this.l = 0.0F;
+      this.m = 0;
+      this.n = 10;
+      this.o = 15728880;
+      this.p = 0.0F;
+      this.q = 1.0F;
+      this.r = 0.0F;
    }
 
    @Override
-   public void close() {
-      if (this.b >= 0) {
-         RenderSystem.glDeleteBuffers(this.b);
-         this.b = -1;
-      }
-
-      if (this.c >= 0) {
-         RenderSystem.glDeleteBuffers(this.c);
-         this.c = -1;
-      }
-
-      if (this.d >= 0) {
-         RenderSystem.glDeleteVertexArrays(this.d);
-         this.d = -1;
-      }
+   public void e() {
+      Vector3f $$0 = this.h.transform(new Vector3f(this.p, this.q, this.r));
+      jf $$1 = jf.a($$0.x(), $$0.y(), $$0.z());
+      Vector4f $$2 = this.g.transform(new Vector4f(this.j, this.k, this.l, 1.0F));
+      $$2.rotateY((float) Math.PI);
+      $$2.rotateX((float) (-Math.PI / 2));
+      $$2.rotate($$1.b());
+      float $$3 = -$$2.x() * this.i;
+      float $$4 = -$$2.y() * this.i;
+      this.f.a((double)this.j, (double)this.k, (double)this.l).a(1.0F, 1.0F, 1.0F, 1.0F).a($$3, $$4).a(this.m, this.n).b(this.o).a(this.p, this.q, this.r).e();
+      this.a();
    }
 
-   public far d() {
-      return this.e;
+   @Override
+   public fas a(double $$0, double $$1, double $$2) {
+      this.j = (float)$$0;
+      this.k = (float)$$1;
+      this.l = (float)$$2;
+      return this;
    }
 
-   public boolean e() {
-      return this.d == -1;
+   @Override
+   public fas a(int $$0, int $$1, int $$2, int $$3) {
+      return this;
    }
 
-   public static enum a {
-      a(35044),
-      b(35048);
+   @Override
+   public fas a(float $$0, float $$1) {
+      return this;
+   }
 
-      final int c;
+   @Override
+   public fas a(int $$0, int $$1) {
+      this.m = $$0;
+      this.n = $$1;
+      return this;
+   }
 
-      private a(final int $$0) {
-         this.c = $$0;
-      }
+   @Override
+   public fas b(int $$0, int $$1) {
+      this.o = $$0 | $$1 << 16;
+      return this;
+   }
+
+   @Override
+   public fas a(float $$0, float $$1, float $$2) {
+      this.p = $$0;
+      this.q = $$1;
+      this.r = $$2;
+      return this;
    }
 }

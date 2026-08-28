@@ -1,30 +1,24 @@
 import com.mojang.serialization.MapCodec;
 
-public class dov extends diw {
-   public static final MapCodec<dov> c = b(dov::new);
-   protected static final ewy g = dfh.a(4.0, 9.0, 4.0, 12.0, 16.0, 12.0);
+public class dov extends dfi {
+   public static final MapCodec<dov> a = b(dov::new);
 
    @Override
    public MapCodec<dov> a() {
-      return c;
+      return a;
    }
 
-   public dov(dsj.d $$0) {
-      super($$0, jf.a, g, false, 0.1);
-   }
-
-   @Override
-   protected int a(ayo $$0) {
-      return dkn.a($$0);
+   public dov(dsk.d $$0) {
+      super($$0);
    }
 
    @Override
-   protected dfh b() {
-      return dfj.oA;
-   }
+   protected void a(dsl $$0, dcg $$1, ja $$2, bsh $$3) {
+      ewh $$4 = new ewh(0.25, 0.05F, 0.25);
+      if ($$3 instanceof btc $$5 && $$5.b(brr.K)) {
+         $$4 = new ewh(0.5, 0.25, 0.5);
+      }
 
-   @Override
-   protected boolean g(dsk $$0) {
-      return dkn.a($$0);
+      $$3.a($$0, $$4);
    }
 }

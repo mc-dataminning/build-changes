@@ -1,11 +1,17 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public interface ene {
-   Codec<ene> c = lq.n.r().dispatch(ene::a, enf::codec);
+public class ene implements eng {
+   private static final ene b = new ene();
+   public static final MapCodec<ene> a = MapCodec.unit(b);
 
-   @Nullable
-   tx a(ayo var1, @Nullable tx var2);
+   @Override
+   public tx a(ayo $$0, @Nullable tx $$1) {
+      return new tx();
+   }
 
-   enf<?> a();
+   @Override
+   public enh<?> a() {
+      return enh.a;
+   }
 }

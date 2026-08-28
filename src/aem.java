@@ -4,8 +4,8 @@ public class aem implements zb<abn> {
    public static final ys<vr, aem> a = zb.a(aem::a, aem::new);
    private final int b;
 
-   public aem(bsg $$0) {
-      this.b = $$0.am();
+   public aem(bsh $$0) {
+      this.b = $$0.an();
    }
 
    private aem(vr $$0) {
@@ -26,7 +26,7 @@ public class aem implements zb<abn> {
    }
 
    @Nullable
-   public bsg a(dcf $$0) {
+   public bsh a(dcg $$0) {
       return $$0.a(this.b);
    }
 }

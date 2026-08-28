@@ -1,15 +1,23 @@
-public interface dqo extends bpz {
-   ewa p_ = dfh.a(0.0, 11.0, 0.0, 16.0, 32.0, 16.0).e().get(0);
+public class dqo extends drb {
+   private static final int a = 60;
+   private static final int b = 9;
 
-   default ewa ai_() {
-      return p_;
+   public dqo(ja $$0, dsl $$1) {
+      super(dps.i, $$0, $$1);
    }
 
-   double H();
+   @Override
+   public int b() {
+      return 9;
+   }
 
-   double I();
+   @Override
+   public int c() {
+      return 60;
+   }
 
-   double J();
-
-   boolean K();
+   @Override
+   public avg d() {
+      return avh.BZ;
+   }
 }

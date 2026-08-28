@@ -1,4 +1,8 @@
-public class gve implements gvl {
-   public gve(gvk $$0) {
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gve {
 }

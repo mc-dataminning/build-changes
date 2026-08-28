@@ -1,7 +1,7 @@
 import javax.annotation.Nullable;
 
-public record adz(int b, jj<brm> c) implements zb<abn> {
-   public static final ys<wf, adz> a = ys.a(yq.g, $$0 -> $$0.b, yq.b(lr.V), adz::e, adz::new);
+public record adz(int b, jj<brn> c) implements zb<abn> {
+   public static final ys<wf, adz> a = ys.a(yq.g, adz::b, brn.b, adz::e, adz::new);
 
    @Override
    public zd<adz> a() {
@@ -13,11 +13,11 @@ public record adz(int b, jj<brm> c) implements zb<abn> {
    }
 
    @Nullable
-   public bsg a(dcf $$0) {
+   public bsh a(dcg $$0) {
       return $$0.a(this.b);
    }
 
-   public jj<brm> e() {
+   public jj<brn> e() {
       return this.c;
    }
 }

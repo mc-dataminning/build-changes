@@ -1,63 +1,40 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import org.slf4j.Logger;
+import java.util.Set;
 
-public class esd extends esh {
-   private static final Logger b = LogUtils.getLogger();
+public class esd extends esj {
    public static final MapCodec<esd> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(akj.a(lr.bc).fieldOf("name").forGetter($$0x -> $$0x.c)).apply($$0, esd::new)
+      $$0 -> a($$0).and(eqw.b.e.fieldOf("entity").forGetter($$0x -> $$0x.b)).apply($$0, esd::new)
    );
-   private final akj<esi> c;
+   private final eqw.b b;
 
-   private esd(List<euf> $$0, akj<esi> $$1) {
+   public esd(List<euh> $$0, eqw.b $$1) {
       super($$0);
-      this.c = $$1;
+      this.b = $$1;
    }
 
    @Override
-   public esj<esd> b() {
-      return esk.H;
+   public esl<esd> b() {
+      return esm.B;
    }
 
    @Override
-   public void a(era $$0) {
-      if ($$0.a(this.c)) {
-         $$0.b("Function " + this.c.a() + " is recursively called");
-      } else {
-         super.a($$0);
-         $$0.a()
-            .a(lr.bc, this.c)
-            .ifPresentOrElse($$1 -> $$1.a().a($$0.a(".{" + this.c.a() + "}", this.c)), () -> $$0.b("Unknown function table called " + this.c.a()));
+   public Set<etp<?>> a() {
+      return ImmutableSet.of(this.b.a());
+   }
+
+   @Override
+   public cud a(cud $$0, eqw $$1) {
+      if ($$0.a(cug.un) && $$1.c(this.b.a()) instanceof cml $$2) {
+         $$0.b(kn.V, new cxe($$2.fZ()));
       }
+
+      return $$0;
    }
 
-   @Override
-   protected cuc a(cuc $$0, equ $$1) {
-      esi $$2 = $$1.a().a(lr.bc, this.c).map(jj::a).orElse(null);
-      if ($$2 == null) {
-         b.warn("Unknown function: {}", this.c.a());
-         return $$0;
-      } else {
-         equ.c<?> $$3 = equ.a($$2);
-         if ($$1.b($$3)) {
-            cuc var5;
-            try {
-               var5 = $$2.apply($$0, $$1);
-            } finally {
-               $$1.c($$3);
-            }
-
-            return var5;
-         } else {
-            b.warn("Detected infinite loop in loot tables");
-            return $$0;
-         }
-      }
-   }
-
-   public static esh.a<?> a(akj<esi> $$0) {
+   public static esj.a<?> a(eqw.b $$0) {
       return a($$1 -> new esd($$1, $$0));
    }
 }

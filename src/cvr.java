@@ -1,19 +1,32 @@
-import java.util.List;
+public class cvr extends cuu implements cuv {
+   public cvr(cty.a $$0) {
+      super($$0);
+   }
 
-public interface cvr {
-   int a();
+   @Override
+   public bqi<cud> a(dcg $$0, cml $$1, bqg $$2) {
+      cud $$3 = $$1.b($$2);
+      if (!$$0.B) {
+         cnp $$4 = new cnp($$0, $$1);
+         $$4.a($$3);
+         $$4.a($$1, $$1.dJ(), $$1.dH(), -20.0F, 0.5F, 1.0F);
+         $$0.b($$4);
+      }
 
-   float b();
+      $$1.b(avr.c.b(this));
+      $$3.a(1, $$1);
+      return bqi.a($$3, $$0.x_());
+   }
 
-   float c();
+   @Override
+   public cnd a(dcg $$0, jt $$1, cud $$2, jf $$3) {
+      cnp $$4 = new cnp($$0, $$1.a(), $$1.b(), $$1.c());
+      $$4.a($$2);
+      return $$4;
+   }
 
-   awm<dfh> d();
-
-   int e();
-
-   cyf f();
-
-   default cxg a(awm<dfh> $$0) {
-      return new cxg(List.of(cxg.a.a(this.d()), cxg.a.a($$0, this.b())), 1.0F, 1);
+   @Override
+   public cuv.a c() {
+      return cuv.a.a().a(cuv.a.a.c() * 0.5F).b(cuv.a.a.d() * 1.25F).a();
    }
 }

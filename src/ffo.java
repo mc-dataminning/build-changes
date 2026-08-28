@@ -1,74 +1,104 @@
-import javax.annotation.Nullable;
+import com.mojang.logging.LogUtils;
+import com.mojang.text2speech.Narrator;
+import org.lwjgl.util.tinyfd.TinyFileDialogs;
+import org.slf4j.Logger;
 
-public record ffo(int a, @Nullable ffo.a b, @Nullable wu c, @Nullable String d) {
-   private static final wu e = wu.c("chat.tag.system");
-   private static final wu f = wu.c("chat.tag.system_single_player");
-   private static final wu g = wu.c("chat.tag.not_secure");
-   private static final wu h = wu.c("chat.tag.modified");
-   private static final wu i = wu.c("chat.tag.error");
-   private static final int j = 13684944;
-   private static final int k = 6316128;
-   private static final ffo l = new ffo(13684944, null, e, "System");
-   private static final ffo m = new ffo(13684944, null, f, "System");
-   private static final ffo n = new ffo(13684944, null, g, "Not Secure");
-   private static final ffo o = new ffo(16733525, null, i, "Chat Error");
+public class ffo {
+   public static final wu a = wt.a;
+   private static final Logger b = LogUtils.getLogger();
+   private final ffw c;
+   private final Narrator d = Narrator.getNarrator();
 
-   public static ffo a() {
-      return l;
+   public ffo(ffw $$0) {
+      this.c = $$0;
    }
 
-   public static ffo b() {
-      return m;
-   }
-
-   public static ffo c() {
-      return n;
-   }
-
-   public static ffo a(String $$0) {
-      wu $$1 = wu.b($$0).a(n.h);
-      wu $$2 = wu.i().b(h).b(wt.s).b($$1);
-      return new ffo(6316128, ffo.a.a, $$2, "Modified");
-   }
-
-   public static ffo d() {
-      return o;
-   }
-
-   public int e() {
-      return this.a;
-   }
-
-   @Nullable
-   public ffo.a f() {
-      return this.b;
-   }
-
-   @Nullable
-   public wu g() {
-      return this.c;
-   }
-
-   @Nullable
-   public String h() {
-      return this.d;
-   }
-
-   public static enum a {
-      a(new akk("icon/chat_modified"), 9, 9);
-
-      public final akk b;
-      public final int c;
-      public final int d;
-
-      private a(final akk $$0, final int $$1, final int $$2) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
+   public void a(wu $$0) {
+      if (this.d().c()) {
+         String $$1 = $$0.getString();
+         this.b($$1);
+         this.d.say($$1, false);
       }
+   }
 
-      public void a(fhf $$0, int $$1, int $$2) {
-         $$0.a(this.b, $$1, $$2, this.c, this.d);
+   public void b(wu $$0) {
+      String $$1 = $$0.getString();
+      if (this.d().d() && !$$1.isEmpty()) {
+         this.b($$1);
+         this.d.say($$1, false);
+      }
+   }
+
+   public void c(wu $$0) {
+      this.a($$0.getString());
+   }
+
+   public void a(String $$0) {
+      if (this.d().d() && !$$0.isEmpty()) {
+         this.b($$0);
+         if (this.d.active()) {
+            this.d.clear();
+            this.d.say($$0, true);
+         }
+      }
+   }
+
+   private ffy d() {
+      return this.c.m.as().c();
+   }
+
+   private void b(String $$0) {
+      if (aa.aU) {
+         b.debug("Narrating: {}", $$0.replaceAll("\n", "\\\\n"));
+      }
+   }
+
+   public void a(ffy $$0) {
+      this.b();
+      this.d.say(wu.c("options.narrator").f(" : ").b($$0.b()).getString(), true);
+      fke $$1 = ffw.Q().aw();
+      if (this.d.active()) {
+         if ($$0 == ffy.a) {
+            fkc.b($$1, fkc.a.a, wu.c("narrator.toast.disabled"), null);
+         } else {
+            fkc.b($$1, fkc.a.a, wu.c("narrator.toast.enabled"), $$0.b());
+         }
+      } else {
+         fkc.b($$1, fkc.a.a, wu.c("narrator.toast.disabled"), wu.c("options.narrator.notavailable"));
+      }
+   }
+
+   public boolean a() {
+      return this.d.active();
+   }
+
+   public void b() {
+      if (this.d() != ffy.a && this.d.active()) {
+         this.d.clear();
+      }
+   }
+
+   public void c() {
+      this.d.destroy();
+   }
+
+   public void a(boolean $$0) {
+      if ($$0
+         && !this.a()
+         && !TinyFileDialogs.tinyfd_messageBox(
+            "Minecraft",
+            "Failed to initialize text-to-speech library. Do you want to continue?\nIf this problem persists, please report it at bugs.mojang.com",
+            "yesno",
+            "error",
+            true
+         )) {
+         throw new ffo.a("Narrator library is not active");
+      }
+   }
+
+   public static class a extends fth {
+      public a(String $$0) {
+         super($$0);
       }
    }
 }

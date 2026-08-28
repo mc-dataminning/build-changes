@@ -1,39 +1,40 @@
-import java.util.List;
+import java.util.EnumSet;
 
-public class cby<T extends btd & bth> extends bzz {
-   private static final int a = 10;
-   private final T b;
-   private final boolean c;
-   private int d;
+public class cby extends cca {
+   private final btz a;
+   private btc b;
+   private int c;
 
-   public cby(T $$0, boolean $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public cby(btz $$0) {
+      super($$0, false);
+      this.a = $$0;
+      this.a(EnumSet.of(caa.a.d));
    }
 
    @Override
    public boolean a() {
-      return this.b.dQ().ab().b(dcb.O) && this.h();
-   }
-
-   private boolean h() {
-      return this.b.ej() != null && this.b.ej().al() == bsm.by && this.b.ek() > this.d;
+      if (this.a.s() && !this.a.gn()) {
+         btc $$0 = this.a.P_();
+         if ($$0 == null) {
+            return false;
+         } else {
+            this.b = $$0.em();
+            int $$1 = $$0.en();
+            return $$1 != this.c && this.a(this.b, cdt.a) && this.a.a(this.b, $$0);
+         }
+      } else {
+         return false;
+      }
    }
 
    @Override
    public void c() {
-      this.d = this.b.ek();
-      this.b.aa_();
-      if (this.c) {
-         this.i().stream().filter($$0 -> $$0 != this.b).map($$0 -> (bth)$$0).forEach(bth::aa_);
+      this.e.h(this.b);
+      btc $$0 = this.a.P_();
+      if ($$0 != null) {
+         this.c = $$0.en();
       }
 
       super.c();
-   }
-
-   private List<? extends btd> i() {
-      double $$0 = this.b.g(buj.m);
-      ewa $$1 = ewa.a(this.b.do()).c($$0, 10.0, $$0);
-      return this.b.dQ().a((Class<? extends btd>)this.b.getClass(), $$1, bsl.f);
    }
 }

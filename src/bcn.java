@@ -22,7 +22,7 @@ public class bcn extends bcv {
             case 2 -> "MinecartFurnace";
             default -> "MinecartRideable";
          };
-         Type<?> $$4 = (Type<?>)this.getOutputSchema().findChoiceType(bgg.B).types().get($$3);
+         Type<?> $$4 = (Type<?>)this.getOutputSchema().findChoiceType(bgh.B).types().get($$3);
          return Pair.of($$3, ac.a($$1, $$4, $$0x -> $$0x.remove("Type")));
       }
    }

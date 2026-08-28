@@ -1,9 +1,11 @@
-public class cow {
-   final coz a;
-   final long b;
+import java.util.Set;
 
-   cow(coz $$0, int $$1) {
-      this.a = $$0;
-      this.b = 1L << $$1;
+public interface cow {
+   Set<akj<? extends jw<? extends cow>>> bA = Set.of(lr.K, lr.f, lr.z, lr.U, lr.ac, lr.V);
+
+   coz i();
+
+   default boolean a(coz $$0) {
+      return this.i().a($$0);
    }
 }

@@ -7,7 +7,7 @@ public interface oh {
 
    oh a(@Nullable String var1);
 
-   ctx a();
+   cty a();
 
    void a(oj var1, akk var2);
 
@@ -25,16 +25,16 @@ public interface oh {
       }
    }
 
-   static akk a(dce $$0) {
+   static akk a(dcf $$0) {
       return lq.g.b($$0.r());
    }
 
-   static cxx a(oi $$0) {
+   static cxy a(oi $$0) {
       return switch ($$0) {
-         case a -> cxx.a;
-         case e, f -> cxx.c;
-         case c -> cxx.b;
-         default -> cxx.d;
+         case a -> cxy.a;
+         case e, f -> cxy.c;
+         case c -> cxy.b;
+         default -> cxy.d;
       };
    }
 }

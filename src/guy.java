@@ -1,60 +1,74 @@
-import javax.annotation.Nullable;
+import com.google.common.base.Stopwatch;
+import com.google.common.base.Ticker;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.OptionalLong;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
+import org.slf4j.Logger;
 
 public class guy {
-   private boolean a;
-   @Nullable
-   private gus.b b;
-   @Nullable
-   private String c;
-   @Nullable
-   private final String d;
+   public static final guy a = new guy(Ticker.systemTicker());
+   private static final Logger b = LogUtils.getLogger();
+   private final Ticker c;
+   private final Map<guu<guy.a>, Stopwatch> d = new HashMap<>();
+   private OptionalLong e = OptionalLong.empty();
 
-   public guy(@Nullable String $$0) {
-      this.d = $$0;
-   }
-
-   public void a(gut.a $$0) {
-      if (this.c != null) {
-         $$0.a(gus.j, !this.c.equals("vanilla"));
-      }
-
-      $$0.a(gus.k, this.a());
-   }
-
-   private gus.c a() {
-      fyx $$0 = fft.Q().S();
-      if ($$0 != null && $$0.e()) {
-         return gus.c.a;
-      } else {
-         return fft.Q().U() ? gus.c.b : gus.c.c;
-      }
-   }
-
-   public boolean a(gup $$0) {
-      if (!this.a && this.b != null && this.c != null) {
-         this.a = true;
-         $$0.send(guq.b, $$0x -> {
-            $$0x.a(gus.n, this.b);
-            if (this.d != null) {
-               $$0x.a(gus.o, this.d);
-            }
-         });
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   public void a(dcc $$0, boolean $$1) {
-      this.b = switch ($$0) {
-         case a -> $$1 ? gus.b.e : gus.b.a;
-         case b -> gus.b.b;
-         case c -> gus.b.c;
-         case d -> gus.b.d;
-      };
-   }
-
-   public void a(String $$0) {
+   protected guy(Ticker $$0) {
       this.c = $$0;
+   }
+
+   public synchronized void a(guu<guy.a> $$0) {
+      this.a($$0, (Function<guu<guy.a>, Stopwatch>)($$0x -> Stopwatch.createStarted(this.c)));
+   }
+
+   public synchronized void a(guu<guy.a> $$0, Stopwatch $$1) {
+      this.a($$0, (Function<guu<guy.a>, Stopwatch>)($$1x -> $$1));
+   }
+
+   private synchronized void a(guu<guy.a> $$0, Function<guu<guy.a>, Stopwatch> $$1) {
+      this.d.computeIfAbsent($$0, $$1);
+   }
+
+   public synchronized void b(guu<guy.a> $$0) {
+      Stopwatch $$1 = this.d.get($$0);
+      if ($$1 == null) {
+         b.warn("Attempted to end step for {} before starting it", $$0.b());
+      } else {
+         if ($$1.isRunning()) {
+            $$1.stop();
+         }
+      }
+   }
+
+   public void a(gur $$0) {
+      $$0.send(gus.g, $$0x -> {
+         synchronized (this) {
+            this.d.forEach(($$1, $$2) -> {
+               if (!$$2.isRunning()) {
+                  long $$3 = $$2.elapsed(TimeUnit.MILLISECONDS);
+                  $$0x.a((guu<guy.a>)$$1, new guy.a((int)$$3));
+               } else {
+                  b.warn("Measurement {} was discarded since it was still ongoing when the event {} was sent.", $$1.b(), gus.g.a());
+               }
+            });
+            this.e.ifPresent($$1 -> $$0x.a(guu.B, new guy.a((int)$$1)));
+            this.d.clear();
+         }
+      });
+   }
+
+   public synchronized void a(long $$0) {
+      this.e = OptionalLong.of($$0);
+   }
+
+   public static record a(int b) {
+      public static final Codec<guy.a> a = Codec.INT.xmap(guy.a::new, $$0 -> $$0.b);
+
+      public int a() {
+         return this.b;
+      }
    }
 }

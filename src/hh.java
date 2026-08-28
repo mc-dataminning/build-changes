@@ -43,7 +43,7 @@ public class hh {
                   $$0.b(true);
                }
 
-               $$0.a($$2x -> $$2x.ag().getString().equals($$3) != $$2);
+               $$0.a($$2x -> $$2x.ah().getString().equals($$3) != $$2);
             }
          }, $$0 -> !$$0.v(), wu.c("argument.entity.options.name.description"));
          a("distance", $$0 -> {
@@ -136,7 +136,7 @@ public class hh {
                   }
                }
 
-               for (dcc $$6 : dcc.values()) {
+               for (dcd $$6 : dcd.values()) {
                   if ($$6.b().toLowerCase(Locale.ROOT).startsWith($$3x)) {
                      if ($$5) {
                         $$1x.suggest("!" + $$6.b());
@@ -157,7 +157,7 @@ public class hh {
                throw b.createWithContext($$0.g(), "gamemode");
             } else {
                String $$3 = $$0.g().readUnquotedString();
-               dcc $$4 = dcc.a($$3, null);
+               dcd $$4 = dcd.a($$3, null);
                if ($$4 == null) {
                   $$0.g().setCursor($$1);
                   throw g.createWithContext($$0.g(), $$3);
@@ -167,7 +167,7 @@ public class hh {
                      if (!($$2x instanceof aqn)) {
                         return false;
                      } else {
-                        dcc $$3x = ((aqn)$$2x).e.b();
+                        dcd $$3x = ((aqn)$$2x).e.b();
                         return $$2 ? $$3x != $$4 : $$3x == $$4;
                      }
                   });
@@ -183,10 +183,10 @@ public class hh {
             boolean $$1 = $$0.e();
             String $$2 = $$0.g().readUnquotedString();
             $$0.a($$2x -> {
-               if (!($$2x instanceof btb)) {
+               if (!($$2x instanceof btc)) {
                   return false;
                } else {
-                  exl $$3 = $$2x.ck();
+                  exn $$3 = $$2x.cl();
                   String $$4 = $$3 == null ? "" : $$3.b();
                   return $$4.equals($$2) != $$1;
                }
@@ -219,19 +219,19 @@ public class hh {
                }
 
                if ($$0.f()) {
-                  awm<bsm<?>> $$3 = awm.a(lr.z, akk.a($$0.g()));
-                  $$0.a($$2x -> $$2x.al().a($$3) != $$2);
+                  awm<bsn<?>> $$3 = awm.a(lr.z, akk.a($$0.g()));
+                  $$0.a($$2x -> $$2x.am().a($$3) != $$2);
                } else {
                   akk $$4 = akk.a($$0.g());
-                  bsm<?> $$5 = lq.f.b($$4).orElseThrow(() -> {
+                  bsn<?> $$5 = lq.f.b($$4).orElseThrow(() -> {
                      $$0.g().setCursor($$1);
                      return h.createWithContext($$0.g(), $$4.toString());
                   });
-                  if (Objects.equals(bsm.by, $$5) && !$$2) {
+                  if (Objects.equals(bsn.by, $$5) && !$$2) {
                      $$0.a(false);
                   }
 
-                  $$0.a($$2x -> Objects.equals($$5, $$2x.al()) != $$2);
+                  $$0.a($$2x -> Objects.equals($$5, $$2x.am()) != $$2);
                   if (!$$2) {
                      $$0.a($$5);
                   }
@@ -241,7 +241,7 @@ public class hh {
          a("tag", $$0 -> {
             boolean $$1 = $$0.e();
             String $$2 = $$0.g().readUnquotedString();
-            $$0.a($$2x -> "".equals($$2) ? $$2x.an().isEmpty() != $$1 : $$2x.an().contains($$2) != $$1);
+            $$0.a($$2x -> "".equals($$2) ? $$2x.ao().isEmpty() != $$1 : $$2x.ao().contains($$2) != $$1);
          }, $$0 -> true, wu.c("argument.entity.options.tag.description"));
          a("nbt", $$0 -> {
             boolean $$1 = $$0.e();
@@ -249,9 +249,9 @@ public class hh {
             $$0.a($$2x -> {
                tx $$3 = $$2x.f(new tx());
                if ($$2x instanceof aqn $$4) {
-                  cuc $$5 = $$4.fZ().f();
+                  cud $$5 = $$4.ga().f();
                   if (!$$5.e()) {
-                     $$3.a("SelectedItem", $$5.a($$4.dS()));
+                     $$3.a("SelectedItem", $$5.a($$4.dT()));
                   }
                }
 
@@ -281,15 +281,15 @@ public class hh {
             $$1.expect('}');
             if (!$$2.isEmpty()) {
                $$0.a($$1x -> {
-                  exj $$2x = $$1x.cP().aL();
+                  exl $$2x = $$1x.cQ().aL();
 
                   for (Entry<String, de.d> $$3x : $$2.entrySet()) {
-                     exb $$4x = $$2x.a($$3x.getKey());
+                     exd $$4x = $$2x.a($$3x.getKey());
                      if ($$4x == null) {
                         return false;
                      }
 
-                     exf $$5 = $$2x.d($$1x, $$4x);
+                     exh $$5 = $$2x.d($$1x, $$4x);
                      if ($$5 == null) {
                         return false;
                      }
@@ -367,8 +367,8 @@ public class hh {
                   if (!($$1x instanceof aqn $$2x)) {
                      return false;
                   } else {
-                     aks $$4 = $$2x.Q();
-                     akx $$5x = $$2x.cP().aF();
+                     aks $$4 = $$2x.R();
+                     akx $$5x = $$2x.cQ().aF();
 
                      for (Entry<akk, Predicate<ah>> $$6x : $$2.entrySet()) {
                         af $$7x = $$5x.a($$6x.getKey());
@@ -387,19 +387,19 @@ public class hh {
          }, $$0 -> !$$0.H(), wu.c("argument.entity.options.advancements.description"));
          a("predicate", $$0 -> {
             boolean $$1 = $$0.e();
-            akj<euf> $$2 = akj.a(lr.bd, akk.a($$0.g()));
+            akj<euh> $$2 = akj.a(lr.bd, akk.a($$0.g()));
             $$0.a($$2x -> {
-               if (!($$2x.dQ() instanceof aqm)) {
+               if (!($$2x.dR() instanceof aqm)) {
                   return false;
                } else {
-                  aqm $$3 = (aqm)$$2x.dQ();
-                  Optional<euf> $$4 = $$3.o().bf().b().a(lr.bd, $$2).map(jj::a);
+                  aqm $$3 = (aqm)$$2x.dR();
+                  Optional<euh> $$4 = $$3.o().bf().b().a(lr.bd, $$2).map(jj::a);
                   if ($$4.isEmpty()) {
                      return false;
                   } else {
-                     eqx $$5 = new eqx.a($$3).a(etq.a, $$2x).a(etq.f, $$2x.do()).a(etp.e);
-                     equ $$6 = new equ.a($$5).a(Optional.empty());
-                     $$6.b(equ.a($$4.get()));
+                     eqz $$5 = new eqz.a($$3).a(ets.a, $$2x).a(ets.f, $$2x.dp()).a(etr.e);
+                     eqw $$6 = new eqw.a($$5).a(Optional.empty());
+                     $$6.b(eqw.a($$4.get()));
                      return $$1 ^ $$4.get().test($$6);
                   }
                }

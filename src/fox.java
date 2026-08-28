@@ -1,22 +1,24 @@
-public class fox extends fny<cqh> {
-   private static final akk D = new akk("textures/gui/container/hopper.png");
+public class fox extends foa<cqh> {
+   private static final akk D = new akk("container/grindstone/error");
+   private static final akk E = new akk("textures/gui/container/grindstone.png");
 
-   public fox(cqh $$0, cmj $$1, wu $$2) {
+   public fox(cqh $$0, cmk $$1, wu $$2) {
       super($$0, $$1, $$2);
-      this.q = 133;
-      this.v = this.q - 94;
    }
 
    @Override
-   public void a(fhf $$0, int $$1, int $$2, float $$3) {
+   public void a(fhh $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
       this.a($$0, $$1, $$2);
    }
 
    @Override
-   protected void a(fhf $$0, float $$1, int $$2, int $$3) {
+   protected void a(fhh $$0, float $$1, int $$2, int $$3) {
       int $$4 = (this.m - this.c) / 2;
       int $$5 = (this.n - this.q) / 2;
-      $$0.a(D, $$4, $$5, 0, 0, this.c, this.q);
+      $$0.a(E, $$4, $$5, 0, 0, this.c, this.q);
+      if ((this.w.b(0).h() || this.w.b(1).h()) && !this.w.b(2).h()) {
+         $$0.a(D, $$4 + 92, $$5 + 31, 28, 21);
+      }
    }
 }

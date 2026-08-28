@@ -1,68 +1,84 @@
 import java.util.EnumSet;
+import java.util.function.Predicate;
 import javax.annotation.Nullable;
 
-public class bzh extends bzz {
-   private final cfu a;
+public class bzh<T extends btc> extends caa {
+   protected final btl a;
+   private final double i;
+   private final double j;
    @Nullable
-   private cmk b;
-   private final dcf c;
-   private final float d;
-   private int e;
-   private final cds f;
+   protected T b;
+   protected final float c;
+   @Nullable
+   protected eox d;
+   protected final cco e;
+   protected final Class<T> f;
+   protected final Predicate<btc> g;
+   protected final Predicate<btc> h;
+   private final cdt k;
 
-   public bzh(cfu $$0, float $$1) {
+   public bzh(btl $$0, Class<T> $$1, float $$2, double $$3, double $$4) {
+      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, bsm.e::test);
+   }
+
+   public bzh(btl $$0, Class<T> $$1, Predicate<btc> $$2, float $$3, double $$4, double $$5, Predicate<btc> $$6) {
       this.a = $$0;
-      this.c = $$0.dQ();
-      this.d = $$1;
-      this.f = cds.b().a((double)$$1);
-      this.a(EnumSet.of(bzz.a.b));
+      this.f = $$1;
+      this.g = $$2;
+      this.c = $$3;
+      this.i = $$4;
+      this.j = $$5;
+      this.h = $$6;
+      this.e = $$0.J();
+      this.a(EnumSet.of(caa.a.a));
+      this.k = cdt.a().a((double)$$3).a($$6.and($$2));
+   }
+
+   public bzh(btl $$0, Class<T> $$1, float $$2, double $$3, double $$4, Predicate<btc> $$5) {
+      this($$0, $$1, $$0x -> true, $$2, $$3, $$4, $$5);
    }
 
    @Override
    public boolean a() {
-      this.b = this.c.a(this.f, this.a);
-      return this.b == null ? false : this.a(this.b);
-   }
-
-   @Override
-   public boolean b() {
-      if (!this.b.bE()) {
+      this.b = this.a
+         .dR()
+         .a(this.a.dR().a(this.f, this.a.cM().c((double)this.c, 3.0, (double)this.c), $$0x -> true), this.k, this.a, this.a.dw(), this.a.dy(), this.a.dC());
+      if (this.b == null) {
          return false;
       } else {
-         return this.a.g((bsg)this.b) > (double)(this.d * this.d) ? false : this.e > 0 && this.a(this.b);
+         ewh $$0 = cdx.a(this.a, 16, 7, this.b.dp());
+         if ($$0 == null) {
+            return false;
+         } else if (this.b.i($$0.c, $$0.d, $$0.e) < this.b.g(this.a)) {
+            return false;
+         } else {
+            this.d = this.e.a($$0.c, $$0.d, $$0.e, 0);
+            return this.d != null;
+         }
       }
    }
 
    @Override
+   public boolean b() {
+      return !this.e.l();
+   }
+
+   @Override
    public void c() {
-      this.a.z(true);
-      this.e = this.a(40 + this.a.dT().a(40));
+      this.e.a(this.d, this.i);
    }
 
    @Override
    public void d() {
-      this.a.z(false);
       this.b = null;
    }
 
    @Override
    public void e() {
-      this.a.G().a(this.b.dv(), this.b.dz(), this.b.dB(), 10.0F, (float)this.a.aa());
-      this.e--;
-   }
-
-   private boolean a(cmk $$0) {
-      for (bqf $$1 : bqf.values()) {
-         cuc $$2 = $$0.b($$1);
-         if (this.a.s() && $$2.a(cuf.rz)) {
-            return true;
-         }
-
-         if (this.a.o($$2)) {
-            return true;
-         }
+      if (this.a.g((bsh)this.b) < 49.0) {
+         this.a.J().a(this.j);
+      } else {
+         this.a.J().a(this.i);
       }
-
-      return false;
    }
 }

@@ -8,20 +8,20 @@ public class ax extends ds<ax.a> {
       return ax.a.a;
    }
 
-   public void a(aqn $$0, jj<cwb> $$1) {
+   public void a(aqn $$0, jj<cwc> $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
-   public static record a(Optional<bf> b, Optional<jj<cwb>> c) implements ds.a {
+   public static record a(Optional<bf> b, Optional<jj<cwc>> c) implements ds.a {
       public static final Codec<ax.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bu.b.optionalFieldOf("player").forGetter(ax.a::a), lq.h.s().optionalFieldOf("potion").forGetter(ax.a::c)).apply($$0, ax.a::new)
+         $$0 -> $$0.group(bu.b.optionalFieldOf("player").forGetter(ax.a::a), cwc.a.optionalFieldOf("potion").forGetter(ax.a::c)).apply($$0, ax.a::new)
       );
 
       public static an<ax.a> b() {
          return am.l.a(new ax.a(Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(jj<cwb> $$0) {
+      public boolean a(jj<cwc> $$0) {
          return !this.c.isPresent() || this.c.get().equals($$0);
       }
 

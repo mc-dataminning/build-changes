@@ -5,7 +5,7 @@ import com.mojang.serialization.Dynamic;
 
 public class bdf extends bfd {
    public bdf(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityWolfColorFix", bgg.B, "minecraft:wolf");
+      super($$0, $$1, "EntityWolfColorFix", bgh.B, "minecraft:wolf");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

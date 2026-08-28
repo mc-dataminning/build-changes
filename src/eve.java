@@ -1,48 +1,21 @@
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
 
-public record eve(akk b, fi.g c) implements evb {
-   public static final MapCodec<eve> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(akk.a.fieldOf("storage").forGetter(eve::c), fi.g.a.fieldOf("path").forGetter(eve::d)).apply($$0, eve::new)
-   );
+public class eve {
+   private static final Codec<evd> h = lq.G.r().dispatch(evd::b, evc::a);
+   public static final Codec<evd> a = Codec.lazyInitialized(() -> {
+      Codec<evd> $$0 = Codec.withAlternative(h, evh.a.codec());
+      return Codec.either(eva.b, $$0).xmap(Either::unwrap, $$0x -> $$0x instanceof eva $$1 ? Either.left($$1) : Either.right($$0x));
+   });
+   public static final evc b = a("constant", eva.a);
+   public static final evc c = a("uniform", evh.a);
+   public static final evc d = a("binomial", euz.a);
+   public static final evc e = a("score", evf.a);
+   public static final evc f = a("storage", evg.a);
+   public static final evc g = a("enchantment_level", evb.a);
 
-   @Override
-   public eva b() {
-      return evc.f;
-   }
-
-   private Optional<un> c(equ $$0) {
-      tx $$1 = $$0.d().o().aM().a(this.b);
-
-      try {
-         List<uu> $$2 = this.c.a($$1);
-         if ($$2.size() == 1 && $$2.get(0) instanceof un $$3) {
-            return Optional.of($$3);
-         }
-      } catch (CommandSyntaxException var6) {
-      }
-
-      return Optional.empty();
-   }
-
-   @Override
-   public float b(equ $$0) {
-      return this.c($$0).map(un::k).orElse(0.0F);
-   }
-
-   @Override
-   public int a(equ $$0) {
-      return this.c($$0).map(un::g).orElse(0);
-   }
-
-   public akk c() {
-      return this.b;
-   }
-
-   public fi.g d() {
-      return this.c;
+   private static evc a(String $$0, MapCodec<? extends evd> $$1) {
+      return jw.a(lq.G, new akk($$0), new evc($$1));
    }
 }

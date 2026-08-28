@@ -28,7 +28,7 @@ public record xx(String d, @Nullable hf e) implements xw {
    @Override
    public Stream<tx> a(eq $$0) throws CommandSyntaxException {
       if (this.e != null) {
-         List<? extends bsg> $$1 = this.e.b($$0);
+         List<? extends bsh> $$1 = this.e.b($$0);
          return $$1.stream().map(dh::b);
       } else {
          return Stream.empty();

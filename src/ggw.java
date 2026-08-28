@@ -1,46 +1,118 @@
-import org.joml.Matrix4f;
-
-public class ggw<T extends drh> implements ggd<T> {
-   public static final akk a = new akk("textures/environment/end_sky.png");
-   public static final akk b = new akk("textures/entity/end_portal.png");
-
-   public ggw(gge.a $$0) {
+public class ggw implements ggf<drg> {
+   public ggw(ggg.a $$0) {
    }
 
-   public void a(T $$0, float $$1, fam $$2, ged $$3, int $$4, int $$5) {
-      Matrix4f $$6 = $$2.c().a();
-      this.a($$0, $$6, $$3.getBuffer(this.d()));
-   }
+   public void a(drg $$0, float $$1, fao $$2, gef $$3, int $$4, int $$5) {
+      if (ffw.Q().s.gx() || ffw.Q().s.N_()) {
+         ja $$6 = $$0.f();
+         ke $$7 = $$0.j();
+         if ($$7.u() >= 1 && $$7.v() >= 1 && $$7.w() >= 1) {
+            if ($$0.v() == dtv.a || $$0.v() == dtv.b) {
+               double $$8 = (double)$$6.u();
+               double $$9 = (double)$$6.w();
+               double $$10 = (double)$$6.v();
+               double $$11 = $$10 + (double)$$7.v();
+               double $$12;
+               double $$13;
+               switch ($$0.k()) {
+                  case b:
+                     $$12 = (double)$$7.u();
+                     $$13 = (double)(-$$7.w());
+                     break;
+                  case c:
+                     $$12 = (double)(-$$7.u());
+                     $$13 = (double)$$7.w();
+                     break;
+                  default:
+                     $$12 = (double)$$7.u();
+                     $$13 = (double)$$7.w();
+               }
 
-   private void a(T $$0, Matrix4f $$1, faq $$2) {
-      float $$3 = this.c();
-      float $$4 = this.b();
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, jf.d);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, jf.c);
-      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, jf.f);
-      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, jf.e);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, jf.a);
-      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, jf.b);
-   }
+               double $$30;
+               double $$31;
+               double $$32;
+               double $$33;
+               switch ($$0.l()) {
+                  case b:
+                     $$30 = $$13 < 0.0 ? $$8 : $$8 + 1.0;
+                     $$31 = $$12 < 0.0 ? $$9 + 1.0 : $$9;
+                     $$32 = $$30 - $$13;
+                     $$33 = $$31 + $$12;
+                     break;
+                  case c:
+                     $$30 = $$12 < 0.0 ? $$8 : $$8 + 1.0;
+                     $$31 = $$13 < 0.0 ? $$9 : $$9 + 1.0;
+                     $$32 = $$30 - $$12;
+                     $$33 = $$31 - $$13;
+                     break;
+                  case d:
+                     $$30 = $$13 < 0.0 ? $$8 + 1.0 : $$8;
+                     $$31 = $$12 < 0.0 ? $$9 : $$9 + 1.0;
+                     $$32 = $$30 + $$13;
+                     $$33 = $$31 - $$12;
+                     break;
+                  default:
+                     $$30 = $$12 < 0.0 ? $$8 + 1.0 : $$8;
+                     $$31 = $$13 < 0.0 ? $$9 + 1.0 : $$9;
+                     $$32 = $$30 + $$12;
+                     $$33 = $$31 + $$13;
+               }
 
-   private void a(T $$0, Matrix4f $$1, faq $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, jf $$11) {
-      if ($$0.a($$11)) {
-         $$2.a($$1, $$3, $$5, $$7).e();
-         $$2.a($$1, $$4, $$5, $$8).e();
-         $$2.a($$1, $$4, $$6, $$9).e();
-         $$2.a($$1, $$3, $$6, $$10).e();
+               float $$34 = 1.0F;
+               float $$35 = 0.9F;
+               float $$36 = 0.5F;
+               fas $$37 = $$3.getBuffer(gen.y());
+               if ($$0.v() == dtv.a || $$0.F()) {
+                  ged.a($$2, $$37, $$30, $$10, $$31, $$32, $$11, $$33, 0.9F, 0.9F, 0.9F, 1.0F, 0.5F, 0.5F, 0.5F);
+               }
+
+               if ($$0.v() == dtv.a && $$0.E()) {
+                  this.a($$0, $$37, $$6, $$2);
+               }
+            }
+         }
       }
    }
 
-   protected float b() {
-      return 0.75F;
+   private void a(drg $$0, fas $$1, ja $$2, fao $$3) {
+      dbm $$4 = $$0.i();
+      ja $$5 = $$0.az_();
+      ja $$6 = $$5.a((ke)$$2);
+
+      for (ja $$7 : ja.c($$6, $$6.a($$0.j()).b(-1, -1, -1))) {
+         dsl $$8 = $$4.a_($$7);
+         boolean $$9 = $$8.i();
+         boolean $$10 = $$8.a(dfk.kN);
+         boolean $$11 = $$8.a(dfk.hW);
+         boolean $$12 = $$8.a(dfk.hX);
+         boolean $$13 = $$10 || $$11 || $$12;
+         if ($$9 || $$13) {
+            float $$14 = $$9 ? 0.05F : 0.0F;
+            double $$15 = (double)((float)($$7.u() - $$5.u()) + 0.45F - $$14);
+            double $$16 = (double)((float)($$7.v() - $$5.v()) + 0.45F - $$14);
+            double $$17 = (double)((float)($$7.w() - $$5.w()) + 0.45F - $$14);
+            double $$18 = (double)((float)($$7.u() - $$5.u()) + 0.55F + $$14);
+            double $$19 = (double)((float)($$7.v() - $$5.v()) + 0.55F + $$14);
+            double $$20 = (double)((float)($$7.w() - $$5.w()) + 0.55F + $$14);
+            if ($$9) {
+               ged.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 0.5F, 0.5F, 1.0F, 1.0F, 0.5F, 0.5F, 1.0F);
+            } else if ($$10) {
+               ged.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 0.75F, 0.75F, 1.0F, 1.0F, 0.75F, 0.75F);
+            } else if ($$11) {
+               ged.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F);
+            } else if ($$12) {
+               ged.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F);
+            }
+         }
+      }
    }
 
-   protected float c() {
-      return 0.375F;
+   public boolean a(drg $$0) {
+      return true;
    }
 
-   protected gel d() {
-      return gel.u();
+   @Override
+   public int aT_() {
+      return 96;
    }
 }

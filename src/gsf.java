@@ -1,7 +1,8 @@
-import java.util.Map;
-import java.util.UUID;
-import java.util.function.Consumer;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface gsf {
-   void a(Map<UUID, asd.c> var1, Consumer<asd.b> var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface gsf {
 }

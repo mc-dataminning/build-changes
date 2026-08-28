@@ -5,7 +5,7 @@ import com.mojang.serialization.Dynamic;
 
 public class bap extends bfd {
    public bap(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityKeepPacked", bgg.s, "DUMMY");
+      super($$0, $$1, "BlockEntityKeepPacked", bgh.s, "DUMMY");
    }
 
    private static Dynamic<?> a(Dynamic<?> $$0) {

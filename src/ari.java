@@ -24,12 +24,12 @@ public class ari {
       this.g = $$0;
    }
 
-   public void a(duq $$0) {
+   public void a(dur $$0) {
       this.f.add($$0.f().a());
    }
 
-   public void a(aqn $$0, dbm $$1) {
-      if (!this.f.remove($$1.a()) && $$0.bE()) {
+   public void a(aqn $$0, dbn $$1) {
+      if (!this.f.remove($$1.a()) && $$0.bF()) {
          $$0.c.b(new act($$1));
       }
    }
@@ -40,15 +40,15 @@ public class ari {
          this.i = Math.min(this.i + this.h, $$1);
          if (!(this.i < 1.0F)) {
             if (!this.f.isEmpty()) {
-               aqm $$2 = $$0.z();
+               aqm $$2 = $$0.A();
                apt $$3 = $$2.l().a;
-               List<duq> $$4 = this.a($$3, $$0.ds());
+               List<dur> $$4 = this.a($$3, $$0.dt());
                if (!$$4.isEmpty()) {
                   arm $$5 = $$0.c;
                   this.j++;
                   $$5.b(acc.a);
 
-                  for (duq $$6 : $$4) {
+                  for (dur $$6 : $$4) {
                      a($$5, $$2, $$6);
                   }
 
@@ -60,15 +60,15 @@ public class ari {
       }
    }
 
-   private static void a(arm $$0, aqm $$1, duq $$2) {
+   private static void a(arm $$0, aqm $$1, dur $$2) {
       $$0.b(new acz($$2, $$1.y_(), null, null));
-      dbm $$3 = $$2.f();
+      dbn $$3 = $$2.f();
       afy.a($$1, $$3);
    }
 
-   private List<duq> a(apt $$0, dbm $$1) {
+   private List<dur> a(apt $$0, dbn $$1) {
       int $$2 = ayg.d(this.i);
-      List<duq> $$4;
+      List<dur> $$4;
       if (!this.g && this.f.size() > $$2) {
          $$4 = this.f
             .stream()
@@ -82,7 +82,7 @@ public class ari {
          $$4 = this.f.longStream().mapToObj($$0::e).filter(Objects::nonNull).sorted(Comparator.comparingInt($$1x -> $$1.b($$1x.f()))).toList();
       }
 
-      for (duq $$5 : $$4) {
+      for (dur $$5 : $$4) {
          this.f.remove($$5.f().a());
       }
 

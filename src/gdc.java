@@ -1,85 +1,22 @@
-import com.mojang.authlib.GameProfile;
-import javax.annotation.Nullable;
+public class gdc extends gal {
+   private static final int a = 12235202;
 
-public abstract class gdc extends cmk {
-   @Nullable
-   private fyu g;
-   protected ewf b;
-   public float c;
-   public float d;
-   public float e;
-   public final fyj f;
-
-   public gdc(fyj $$0, GameProfile $$1) {
-      super($$0, $$0.V(), $$0.W(), $$1);
-      this.b = ewf.b;
-      this.f = $$0;
+   protected gdc(fyl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gco $$8) {
+      super($$0, $$1, $$2, $$3, 0.1F, 0.1F, 0.1F, $$4, $$5, $$6, $$7, $$8, 0.3F, 8, -0.1F, true);
+      this.v = 0.7294118F;
+      this.w = 0.69411767F;
+      this.x = 0.7607843F;
    }
 
-   @Override
-   public boolean N_() {
-      fyu $$0 = this.a();
-      return $$0 != null && $$0.e() == dcc.d;
-   }
+   public static class a implements gbw<ln> {
+      private final gco a;
 
-   @Override
-   public boolean f() {
-      fyu $$0 = this.a();
-      return $$0 != null && $$0.e() == dcc.b;
-   }
-
-   @Nullable
-   protected fyu a() {
-      if (this.g == null) {
-         this.g = fft.Q().L().a(this.cA());
+      public a(gco $$0) {
+         this.a = $$0;
       }
 
-      return this.g;
-   }
-
-   @Override
-   public void l() {
-      this.b = this.dt();
-      super.l();
-   }
-
-   public ewf F(float $$0) {
-      return this.b.a(this.dt(), (double)$$0);
-   }
-
-   public gqo b() {
-      fyu $$0 = this.a();
-      return $$0 == null ? gqg.a(this.cA()) : $$0.g();
-   }
-
-   public float c() {
-      float $$0 = 1.0F;
-      if (this.ga().b) {
-         $$0 *= 1.1F;
+      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gdc($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.0F, this.a);
       }
-
-      $$0 *= ((float)this.g(buj.v) / this.ga().b() + 1.0F) / 2.0F;
-      if (this.ga().b() == 0.0F || Float.isNaN($$0) || Float.isInfinite($$0)) {
-         $$0 = 1.0F;
-      }
-
-      cuc $$1 = this.fu();
-      if (this.fs()) {
-         if ($$1.a(cuf.ov)) {
-            int $$2 = this.fw();
-            float $$3 = (float)$$2 / 20.0F;
-            if ($$3 > 1.0F) {
-               $$3 = 1.0F;
-            } else {
-               $$3 *= $$3;
-            }
-
-            $$0 *= 1.0F - $$3 * 0.15F;
-         } else if (fft.Q().m.aA().a() && this.gx()) {
-            return 0.1F;
-         }
-      }
-
-      return ayg.i(fft.Q().m.ak().c().floatValue(), 1.0F, $$0);
    }
 }

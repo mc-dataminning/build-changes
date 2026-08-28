@@ -16,7 +16,7 @@ public class bcq extends bfd {
    });
 
    public bcq(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityPaintingMotiveFix", bgg.B, "minecraft:painting");
+      super($$0, $$1, "EntityPaintingMotiveFix", bgh.B, "minecraft:painting");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

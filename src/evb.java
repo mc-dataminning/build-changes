@@ -1,9 +1,25 @@
-public interface evb extends eqv {
-   float b(equ var1);
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   default int a(equ $$0) {
-      return Math.round(this.b($$0));
+public record evb(czt b) implements evd {
+   public static final MapCodec<evb> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(czt.b.fieldOf("amount").forGetter(evb::c)).apply($$0, evb::new));
+
+   @Override
+   public float b(eqw $$0) {
+      int $$1 = $$0.b(ets.k);
+      return this.b.a($$1);
    }
 
-   eva b();
+   @Override
+   public evc b() {
+      return eve.g;
+   }
+
+   public static evb a(czt $$0) {
+      return new evb($$0);
+   }
+
+   public czt c() {
+      return this.b;
+   }
 }

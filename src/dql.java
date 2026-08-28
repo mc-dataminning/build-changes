@@ -1,69 +1,127 @@
-public class dql extends dpp implements dqt {
-   private final dpx a = new dpx();
-   private final dqc b = new dqc() {
-      @Override
-      protected void a(dcf $$0, ja $$1, dsk $$2) {
-         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, avh.hZ, avi.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
-      }
+import javax.annotation.Nullable;
 
-      @Override
-      protected void b(dcf $$0, ja $$1, dsk $$2) {
-         $$0.a(null, (double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, avh.hY, avi.e, 0.5F, $$0.z.i() * 0.1F + 0.9F);
-      }
+public class dql extends dpq implements bqm {
+   public int a;
+   public float b;
+   public float c;
+   public float d;
+   public float e;
+   public float f;
+   public float g;
+   public float h;
+   public float i;
+   public float j;
+   private static final ayo k = ayo.a();
+   @Nullable
+   private wu l;
 
-      @Override
-      protected void a(dcf $$0, ja $$1, dsk $$2, int $$3, int $$4) {
-         $$0.a(dql.this.o, dfj.fG, 1, $$4);
-      }
-
-      @Override
-      protected boolean a(cmk $$0) {
-         return $$0.gm().b(dql.this);
-      }
-   };
-
-   public dql(ja $$0, dsk $$1) {
-      super(dpr.d, $$0, $$1);
-   }
-
-   public static void a(dcf $$0, ja $$1, dsk $$2, dql $$3) {
-      $$3.a.a();
+   public dql(ja $$0, dsl $$1) {
+      super(dps.m, $$0, $$1);
    }
 
    @Override
-   public boolean a_(int $$0, int $$1) {
-      if ($$0 == 1) {
-         this.a.a($$1 > 0);
-         return true;
+   protected void b(tx $$0, jl.a $$1) {
+      super.b($$0, $$1);
+      if (this.ai()) {
+         $$0.a("CustomName", wu.a.a(this.l, $$1));
+      }
+   }
+
+   @Override
+   protected void a(tx $$0, jl.a $$1) {
+      super.a($$0, $$1);
+      if ($$0.b("CustomName", 8)) {
+         this.l = a($$0.l("CustomName"), $$1);
+      }
+   }
+
+   public static void a(dcg $$0, ja $$1, dsl $$2, dql $$3) {
+      $$3.g = $$3.f;
+      $$3.i = $$3.h;
+      cml $$4 = $$0.a((double)$$1.u() + 0.5, (double)$$1.v() + 0.5, (double)$$1.w() + 0.5, 3.0, false);
+      if ($$4 != null) {
+         double $$5 = $$4.dw() - ((double)$$1.u() + 0.5);
+         double $$6 = $$4.dC() - ((double)$$1.w() + 0.5);
+         $$3.j = (float)ayg.d($$6, $$5);
+         $$3.f += 0.1F;
+         if ($$3.f < 0.5F || k.a(40) == 0) {
+            float $$7 = $$3.d;
+
+            do {
+               $$3.d = $$3.d + (float)(k.a(4) - k.a(4));
+            } while ($$7 == $$3.d);
+         }
       } else {
-         return super.a_($$0, $$1);
+         $$3.j += 0.02F;
+         $$3.f -= 0.1F;
       }
-   }
 
-   public void a(cmk $$0) {
-      if (!this.p && !$$0.N_()) {
-         this.b.a($$0, this.i(), this.az_(), this.n());
+      while ($$3.h >= (float) Math.PI) {
+         $$3.h -= (float) (Math.PI * 2);
       }
-   }
 
-   public void b(cmk $$0) {
-      if (!this.p && !$$0.N_()) {
-         this.b.b($$0, this.i(), this.az_(), this.n());
+      while ($$3.h < (float) -Math.PI) {
+         $$3.h += (float) (Math.PI * 2);
       }
-   }
 
-   public boolean c(cmk $$0) {
-      return bpz.a(this, $$0);
-   }
-
-   public void b() {
-      if (!this.p) {
-         this.b.c(this.i(), this.az_(), this.n());
+      while ($$3.j >= (float) Math.PI) {
+         $$3.j -= (float) (Math.PI * 2);
       }
+
+      while ($$3.j < (float) -Math.PI) {
+         $$3.j += (float) (Math.PI * 2);
+      }
+
+      float $$8 = $$3.j - $$3.h;
+
+      while ($$8 >= (float) Math.PI) {
+         $$8 -= (float) (Math.PI * 2);
+      }
+
+      while ($$8 < (float) -Math.PI) {
+         $$8 += (float) (Math.PI * 2);
+      }
+
+      $$3.h += $$8 * 0.4F;
+      $$3.f = ayg.a($$3.f, 0.0F, 1.0F);
+      $$3.a++;
+      $$3.c = $$3.b;
+      float $$9 = ($$3.d - $$3.b) * 0.4F;
+      float $$10 = 0.2F;
+      $$9 = ayg.a($$9, -0.2F, 0.2F);
+      $$3.e = $$3.e + ($$9 - $$3.e) * 0.9F;
+      $$3.b = $$3.b + $$3.e;
    }
 
    @Override
-   public float a(float $$0) {
-      return this.a.a($$0);
+   public wu ah() {
+      return (wu)(this.l != null ? this.l : wu.c("container.enchant"));
+   }
+
+   public void a(@Nullable wu $$0) {
+      this.l = $$0;
+   }
+
+   @Nullable
+   @Override
+   public wu aj() {
+      return this.l;
+   }
+
+   @Override
+   protected void a(dpq.b $$0) {
+      super.a($$0);
+      this.l = $$0.a(kn.g);
+   }
+
+   @Override
+   protected void a(kj.a $$0) {
+      super.a($$0);
+      $$0.a(kn.g, this.l);
+   }
+
+   @Override
+   public void a(tx $$0) {
+      $$0.r("CustomName");
    }
 }

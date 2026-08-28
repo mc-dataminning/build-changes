@@ -1,39 +1,39 @@
-import com.mojang.blaze3d.systems.RenderSystem;
+import javax.annotation.Nullable;
 
-public class fij {
-   public static final akk a = new akk("textures/gui/title/minecraft.png");
-   public static final akk b = new akk("textures/gui/title/minceraft.png");
-   public static final akk c = new akk("textures/gui/title/edition.png");
-   public static final int d = 256;
-   public static final int e = 44;
-   private static final int g = 256;
-   private static final int h = 64;
-   private static final int i = 128;
-   private static final int j = 14;
-   private static final int k = 128;
-   private static final int l = 16;
-   public static final int f = 30;
-   private static final int m = 7;
-   private final boolean n = (double)ayo.a().i() < 1.0E-4;
-   private final boolean o;
+public class fij extends fhs {
+   private final fhf a;
 
-   public fij(boolean $$0) {
-      this.o = $$0;
+   public fij(fhf $$0, wu $$1) {
+      super(0, 0, $$0.a($$1), 9 * 3, $$1);
+      this.a = $$0;
    }
 
-   public void a(fhf $$0, int $$1, float $$2) {
-      this.a($$0, $$1, $$2, 30);
+   @Override
+   protected void b(fhh $$0, int $$1, int $$2, float $$3) {
+      int $$4 = this.D() + this.y() / 2;
+      int $$5 = this.E() + this.w() / 2;
+      wu $$6 = this.z();
+      $$0.a(this.a, $$6, $$4 - this.a.a($$6) / 2, $$5 - 9, -1, false);
+      String $$7 = fna.a(ac.c());
+      $$0.a(this.a, $$7, $$4 - this.a.b($$7) / 2, $$5 + 9, -8355712, false);
    }
 
-   public void a(fhf $$0, int $$1, float $$2, int $$3) {
-      $$0.a(1.0F, 1.0F, 1.0F, this.o ? 1.0F : $$2);
-      RenderSystem.enableBlend();
-      int $$4 = $$1 / 2 - 128;
-      $$0.a(this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64);
-      int $$5 = $$1 / 2 - 64;
-      int $$6 = $$3 + 44 - 7;
-      $$0.a(c, $$5, $$6, 0.0F, 0.0F, 128, 14, 128, 16);
-      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-      RenderSystem.disableBlend();
+   @Override
+   protected void a(flq $$0) {
+   }
+
+   @Override
+   public void a(guj $$0) {
+   }
+
+   @Override
+   public boolean C() {
+      return false;
+   }
+
+   @Nullable
+   @Override
+   public fhe a(flw $$0) {
+      return null;
    }
 }

@@ -21,7 +21,7 @@ public class bff extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<Pair<String, String>> $$0 = DSL.named(this.b.typeName(), bhs.a());
+      Type<Pair<String, String>> $$0 = DSL.named(this.b.typeName(), bht.a());
       if (!Objects.equals($$0, this.getInputSchema().getType(this.b))) {
          throw new IllegalStateException("\"" + this.b.typeName() + "\" is not what was expected.");
       } else {

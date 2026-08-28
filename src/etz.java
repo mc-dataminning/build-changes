@@ -1,34 +1,17 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Set;
+import java.util.function.Function;
 
-public record etz(boolean b) implements euf {
-   public static final MapCodec<etz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.BOOL.fieldOf("active").forGetter(etz::e)).apply($$0, etz::new));
+public interface etz<T extends etz<T>> {
+   T b(euh.a var1);
 
-   public boolean a(equ $$0) {
-      return $$0.b(etq.l) == this.b;
+   default <E> T a_(Iterable<E> $$0, Function<E, euh.a> $$1) {
+      T $$2 = this.d();
+
+      for (E $$3 : $$0) {
+         $$2 = $$2.b($$1.apply($$3));
+      }
+
+      return $$2;
    }
 
-   @Override
-   public eug b() {
-      return euh.s;
-   }
-
-   @Override
-   public Set<etn<?>> a() {
-      return Set.of(etq.l);
-   }
-
-   public static euf.a c() {
-      return () -> new etz(true);
-   }
-
-   public static euf.a d() {
-      return () -> new etz(false);
-   }
-
-   public boolean e() {
-      return this.b;
-   }
+   T d();
 }

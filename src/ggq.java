@@ -1,39 +1,23 @@
-public class ggq implements ggd<dqz> {
-   private final fwh<?> a;
+public class ggq implements ggf<dqt> {
+   private final fty a;
 
-   public ggq(gge.a $$0) {
-      this.a = new fwh($$0.a(fxn.bk));
+   public ggq(ggg.a $$0) {
+      this.a = new fty($$0.a(fxp.r));
    }
 
-   public void a(dqz $$0, float $$1, fam $$2, ged $$3, int $$4, int $$5) {
-      jf $$6 = jf.b;
-      if ($$0.m()) {
-         dsk $$7 = $$0.i().a_($$0.az_());
-         if ($$7.b() instanceof dmg) {
-            $$6 = $$7.c(dmg.b);
-         }
+   public void a(dqt $$0, float $$1, fao $$2, gef $$3, int $$4, int $$5) {
+      dsl $$6 = $$0.n();
+      if ($$6.c(djt.d)) {
+         $$2.a();
+         $$2.a(0.5F, 1.0625F, 0.5F);
+         float $$7 = $$6.c(djt.b).h().p();
+         $$2.a(a.d.rotationDegrees(-$$7));
+         $$2.a(a.f.rotationDegrees(67.5F));
+         $$2.a(0.0F, -0.125F, 0.0F);
+         this.a.a(0.0F, 0.1F, 0.9F, 1.2F);
+         fas $$8 = ggo.a.a($$3, gen::c);
+         this.a.b($$2, $$8, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+         $$2.b();
       }
-
-      csv $$8 = $$0.u();
-      grs $$9;
-      if ($$8 == null) {
-         $$9 = ges.i;
-      } else {
-         $$9 = ges.j.get($$8.a());
-      }
-
-      $$2.a();
-      $$2.a(0.5F, 0.5F, 0.5F);
-      float $$11 = 0.9995F;
-      $$2.b(0.9995F, 0.9995F, 0.9995F);
-      $$2.a($$6.b());
-      $$2.b(1.0F, -1.0F, -1.0F);
-      $$2.a(0.0F, -1.0F, 0.0F);
-      fxo $$12 = this.a.b();
-      $$12.a(0.0F, 24.0F - $$0.a($$1) * 0.5F * 16.0F, 0.0F);
-      $$12.f = 270.0F * $$0.a($$1) * (float) (Math.PI / 180.0);
-      faq $$13 = $$9.a($$3, gel::e);
-      this.a.a($$2, $$13, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
-      $$2.b();
    }
 }

@@ -4,9 +4,9 @@ import java.util.Optional;
 
 public record dc(
    Optional<dc.b> b,
-   Optional<jn<ddf>> c,
-   Optional<jn<eiw>> d,
-   Optional<akj<dcf>> e,
+   Optional<jn<ddg>> c,
+   Optional<jn<eix>> d,
+   Optional<akj<dcg>> e,
    Optional<Boolean> f,
    Optional<cz> g,
    Optional<av> h,
@@ -38,7 +38,7 @@ public record dc(
          boolean $$5 = $$0.p($$4);
          if (!this.c.isPresent() || $$5 && this.c.get().a($$0.t($$4))) {
             if (!this.d.isPresent() || $$5 && $$0.a().a($$4, this.d.get()).b()) {
-               if (!this.f.isPresent() || $$5 && this.f.get() == dfv.a($$0, $$4)) {
+               if (!this.f.isPresent() || $$5 && this.f.get() == dfw.a($$0, $$4)) {
                   if (this.g.isPresent() && !this.g.get().a($$0, $$4)) {
                      return false;
                   } else if (this.h.isPresent() && !this.h.get().a($$0, $$4)) {
@@ -62,15 +62,15 @@ public record dc(
       return this.b;
    }
 
-   public Optional<jn<ddf>> b() {
+   public Optional<jn<ddg>> b() {
       return this.c;
    }
 
-   public Optional<jn<eiw>> c() {
+   public Optional<jn<eix>> c() {
       return this.d;
    }
 
-   public Optional<akj<dcf>> d() {
+   public Optional<akj<dcg>> d() {
       return this.e;
    }
 
@@ -98,9 +98,9 @@ public record dc(
       private de.c a;
       private de.c b;
       private de.c c;
-      private Optional<jn<ddf>> d;
-      private Optional<jn<eiw>> e;
-      private Optional<akj<dcf>> f;
+      private Optional<jn<ddg>> d;
+      private Optional<jn<eix>> e;
+      private Optional<akj<dcg>> f;
       private Optional<Boolean> g;
       private Optional<cz> h;
       private Optional<av> i;
@@ -125,15 +125,15 @@ public record dc(
          return new dc.a();
       }
 
-      public static dc.a a(jj<ddf> $$0) {
+      public static dc.a a(jj<ddg> $$0) {
          return a().a(jn.a($$0));
       }
 
-      public static dc.a a(akj<dcf> $$0) {
+      public static dc.a a(akj<dcg> $$0) {
          return a().b($$0);
       }
 
-      public static dc.a b(jj<eiw> $$0) {
+      public static dc.a b(jj<eix> $$0) {
          return a().b(jn.a($$0));
       }
 
@@ -156,17 +156,17 @@ public record dc(
          return this;
       }
 
-      public dc.a a(jn<ddf> $$0) {
+      public dc.a a(jn<ddg> $$0) {
          this.d = Optional.of($$0);
          return this;
       }
 
-      public dc.a b(jn<eiw> $$0) {
+      public dc.a b(jn<eix> $$0) {
          this.e = Optional.of($$0);
          return this;
       }
 
-      public dc.a b(akj<dcf> $$0) {
+      public dc.a b(akj<dcg> $$0) {
          this.f = Optional.of($$0);
          return this;
       }

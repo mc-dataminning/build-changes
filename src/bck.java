@@ -24,7 +24,7 @@ public class bck extends bcv {
             case 4 -> "SkeletonHorse";
             default -> "Horse";
          };
-         Type<?> $$5 = (Type<?>)this.getOutputSchema().findChoiceType(bgg.B).types().get($$4);
+         Type<?> $$5 = (Type<?>)this.getOutputSchema().findChoiceType(bgh.B).types().get($$4);
          return Pair.of($$4, ac.a($$1, $$5, $$0x -> $$0x.remove("Type")));
       } else {
          return Pair.of($$0, $$1);

@@ -32,7 +32,7 @@ public class fd implements ArgumentType<hf> {
       return new fd(true, false);
    }
 
-   public static bsg a(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+   public static bsh a(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
       return ((hf)$$0.getArgument($$1, hf.class)).a((eq)$$0.getSource());
    }
 
@@ -40,8 +40,8 @@ public class fd implements ArgumentType<hf> {
       return new fd(false, false);
    }
 
-   public static Collection<? extends bsg> b(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
-      Collection<? extends bsg> $$2 = c($$0, $$1);
+   public static Collection<? extends bsh> b(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+      Collection<? extends bsh> $$2 = c($$0, $$1);
       if ($$2.isEmpty()) {
          throw d.create();
       } else {
@@ -49,7 +49,7 @@ public class fd implements ArgumentType<hf> {
       }
    }
 
-   public static Collection<? extends bsg> c(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+   public static Collection<? extends bsh> c(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
       return ((hf)$$0.getArgument($$1, hf.class)).b((eq)$$0.getSource());
    }
 

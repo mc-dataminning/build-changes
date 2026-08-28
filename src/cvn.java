@@ -1,44 +1,40 @@
-import java.util.Map;
-import javax.annotation.Nullable;
+public class cvn extends cty {
+   public static final int a = 1200;
+   public static final float b = 0.1F;
 
-public class cvn extends csb {
-   protected final dfh a;
-   private final jf b;
-
-   public cvn(dfh $$0, dfh $$1, ctx.a $$2, jf $$3) {
-      super($$0, $$2);
-      this.a = $$1;
-      this.b = $$3;
-   }
-
-   protected boolean a(dci $$0, dsk $$1, ja $$2) {
-      return $$1.a($$0, $$2);
-   }
-
-   @Nullable
-   @Override
-   protected dsk c(cxm $$0) {
-      dsk $$1 = this.a.a($$0);
-      dsk $$2 = null;
-      dci $$3 = $$0.q();
-      ja $$4 = $$0.a();
-
-      for (jf $$5 : $$0.f()) {
-         if ($$5 != this.b.g()) {
-            dsk $$6 = $$5 == this.b ? this.d().a($$0) : $$1;
-            if ($$6 != null && this.a($$3, $$6, $$4)) {
-               $$2 = $$6;
-               break;
-            }
-         }
-      }
-
-      return $$2 != null && $$3.a($$2, $$4, ewk.a()) ? $$2 : null;
+   public cvn(cty.a $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(Map<dfh, ctx> $$0, ctx $$1) {
-      super.a($$0, $$1);
-      $$0.put(this.a, $$1);
+   public int a(cud $$0, btc $$1) {
+      return 1200;
+   }
+
+   @Override
+   public cvy b(cud $$0) {
+      return cvy.h;
+   }
+
+   @Override
+   public bqi<cud> a(dcg $$0, cml $$1, bqg $$2) {
+      $$1.a(avh.yX, 1.0F, 1.0F);
+      $$1.b(avr.c.b(this));
+      return cuf.a($$0, $$1, $$2);
+   }
+
+   @Override
+   public cud a(cud $$0, dcg $$1, btc $$2) {
+      this.a($$2);
+      return $$0;
+   }
+
+   @Override
+   public void a(cud $$0, dcg $$1, btc $$2, int $$3) {
+      this.a($$2);
+   }
+
+   private void a(btc $$0) {
+      $$0.a(avh.yY, 1.0F, 1.0F);
    }
 }

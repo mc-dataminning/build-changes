@@ -92,7 +92,7 @@ public class ff implements ArgumentType<ff.a> {
             List<GameProfile> $$2 = Lists.newArrayList();
 
             for (aqn $$3 : $$1) {
-               $$2.add($$3.fY());
+               $$2.add($$3.fZ());
             }
 
             return $$2;

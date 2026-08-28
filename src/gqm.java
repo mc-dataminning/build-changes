@@ -1,9 +1,17 @@
-public class gqm extends gqr {
-   public gqm(gpp $$0) {
-      super($$0, new akk("textures/atlas/mob_effects.png"), new akk("mob_effects"));
-   }
+import java.io.IOException;
+import java.io.InputStream;
 
-   public gpo a(jj<brm> $$0) {
-      return this.a($$0.e().map(akj::a).orElseGet(gpe::b));
+public class gqm {
+   @Deprecated
+   public static int[] a(atw $$0, akk $$1) throws IOException {
+      int[] var4;
+      try (
+         InputStream $$2 = $$0.open($$1);
+         ezp $$3 = ezp.a($$2);
+      ) {
+         var4 = $$3.e();
+      }
+
+      return var4;
    }
 }

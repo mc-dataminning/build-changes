@@ -37,7 +37,7 @@ public class ate {
             }
 
             ase $$5 = $$3.a(ase.a);
-            coy $$6 = $$5 != null ? $$5.a() : coy.a();
+            coz $$6 = $$5 != null ? $$5.a() : coz.a();
             axy<Integer> $$7 = a($$0.a(), $$4);
             atf $$8 = atf.a($$7, $$2);
             asg $$9 = $$3.a(asg.a);
@@ -87,7 +87,7 @@ public class ate {
       return this.d.b();
    }
 
-   public coy e() {
+   public coz e() {
       return this.d.c();
    }
 
@@ -133,7 +133,7 @@ public class ate {
       return this.b.hashCode();
    }
 
-   public static record a(wu a, atf b, coy c, List<String> d) {
+   public static record a(wu a, atf b, coz c, List<String> d) {
    }
 
    public static enum b {

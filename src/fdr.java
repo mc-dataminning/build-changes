@@ -1,186 +1,19 @@
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.util.function.Consumer;
 
-public class fdr extends gvs {
-   static final Logger c = LogUtils.getLogger();
-   private static final wu A = wu.c("mco.selectServer.create");
-   private static final wu B = wu.c("mco.selectServer.create.subtitle");
-   private static final wu C = wu.c("mco.configure.world.switch.slot");
-   private static final wu D = wu.c("mco.configure.world.switch.slot.subtitle");
-   private static final wu E = wu.c("mco.reset.world.title");
-   private static final wu F = wu.c("mco.reset.world.warning");
-   public static final wu a = wu.c("mco.create.world.reset.title");
-   private static final wu G = wu.c("mco.reset.world.resetting.screen.title");
-   private static final wu H = wu.c("mco.reset.world.template");
-   private static final wu I = wu.c("mco.reset.world.adventure");
-   private static final wu J = wu.c("mco.reset.world.experience");
-   private static final wu K = wu.c("mco.reset.world.inspiration");
-   private final fnj L;
-   private final fbt M;
-   private final wu N;
-   private final int O;
-   private final wu P;
-   private static final akk Q = new akk("textures/gui/realms/upload.png");
-   private static final akk R = new akk("textures/gui/realms/adventure.png");
-   private static final akk S = new akk("textures/gui/realms/survival_spawn.png");
-   private static final akk T = new akk("textures/gui/realms/new_world.png");
-   private static final akk U = new akk("textures/gui/realms/experience.png");
-   private static final akk V = new akk("textures/gui/realms/inspiration.png");
-   fcl W;
-   fcl X;
-   fcl Y;
-   fcl Z;
-   public final int b;
-   @Nullable
-   private final fev aa;
-   private final Runnable ab;
-   private final flf ac = new flf(this);
+public class fdr {
+   private static final int a = 8226750;
+   private static final wu b = wu.c("mco.info").b(8226750);
+   private static final wu c = wu.c("mco.warning").b(-65536);
 
-   private fdr(fnj $$0, fbt $$1, int $$2, wu $$3, wu $$4, int $$5, wu $$6, Runnable $$7) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, null, $$7);
+   public static fiw a(fnl $$0, wu $$1, Consumer<fiw> $$2) {
+      return new fiw.a($$0, b).a($$1).a(wt.j, $$2).a(wt.e, fiw::d).a();
    }
 
-   public fdr(fnj $$0, fbt $$1, int $$2, wu $$3, wu $$4, int $$5, wu $$6, @Nullable fev $$7, Runnable $$8) {
-      super($$3);
-      this.L = $$0;
-      this.M = $$1;
-      this.b = $$2;
-      this.N = $$4;
-      this.O = $$5;
-      this.P = $$6;
-      this.aa = $$7;
-      this.ab = $$8;
+   public static fiw b(fnl $$0, wu $$1, Consumer<fiw> $$2) {
+      return new fiw.a($$0, c).a($$1).a(wt.j, $$2).a(wt.e, fiw::d).a();
    }
 
-   public static fdr a(fnj $$0, fbt $$1, fev $$2, Runnable $$3) {
-      return new fdr($$0, $$1, $$1.n, A, B, -6250336, a, $$2, $$3);
-   }
-
-   public static fdr a(fnj $$0, int $$1, fbt $$2, Runnable $$3) {
-      return new fdr($$0, $$2, $$1, C, D, -6250336, a, $$3);
-   }
-
-   public static fdr a(fnj $$0, fbt $$1, Runnable $$2) {
-      return new fdr($$0, $$1, $$1.n, E, F, -65536, G, $$2);
-   }
-
-   @Override
-   public void aP_() {
-      flj $$0 = this.ac.a(flj.d());
-      $$0.c().a(9 / 3);
-      $$0.a(new fiz(this.k, this.o), fli::b);
-      $$0.a(new fiz(this.N, this.o).b(this.O), fli::b);
-      (new Thread("Realms-reset-world-fetcher") {
-         @Override
-         public void run() {
-            fbc $$0 = fbc.a();
-
-            try {
-               fcl $$1 = $$0.a(1, 10, fbt.d.a);
-               fcl $$2 = $$0.a(1, 10, fbt.d.c);
-               fcl $$3 = $$0.a(1, 10, fbt.d.d);
-               fcl $$4 = $$0.a(1, 10, fbt.d.e);
-               fdr.this.l.execute(() -> {
-                  fdr.this.W = $$1;
-                  fdr.this.X = $$2;
-                  fdr.this.Y = $$3;
-                  fdr.this.Z = $$4;
-               });
-            } catch (fcp var6) {
-               fdr.c.error("Couldn't fetch templates in reset world", var6);
-            }
-         }
-      }).start();
-      fle $$1 = this.ac.c(new fle());
-      fle.b $$2 = $$1.d(3);
-      $$2.c().f(16);
-      $$2.a(new fdr.a(this.l.h, fdq.a, T, $$0x -> this.l.a(new fdq(this::a, this.k))));
-      $$2.a(new fdr.a(this.l.h, fds.a, Q, $$0x -> this.l.a(new fds(this.aa, this.M.a, this.b, this))));
-      $$2.a(new fdr.a(this.l.h, H, S, $$0x -> this.l.a(new fdt(H, this::a, fbt.d.a, this.W))));
-      $$2.a(flk.b(16), 3);
-      $$2.a(new fdr.a(this.l.h, I, R, $$0x -> this.l.a(new fdt(I, this::a, fbt.d.c, this.X))));
-      $$2.a(new fdr.a(this.l.h, J, U, $$0x -> this.l.a(new fdt(J, this::a, fbt.d.d, this.Y))));
-      $$2.a(new fdr.a(this.l.h, K, V, $$0x -> this.l.a(new fdt(K, this::a, fbt.d.e, this.Z))));
-      this.ac.b(fhs.a(wt.k, $$0x -> this.d()).a());
-      this.ac.a($$1x -> {
-         fhq var10000 = this.c($$1x);
-      });
-      this.c();
-   }
-
-   @Override
-   protected void c() {
-      this.ac.a();
-   }
-
-   @Override
-   public wu i() {
-      return wt.a(this.n(), this.N);
-   }
-
-   @Override
-   public void d() {
-      this.l.a(this.L);
-   }
-
-   private void a(@Nullable fck $$0) {
-      this.l.a(this);
-      if ($$0 != null) {
-         this.a(new fex($$0, this.M.a, this.P, this.ab));
-      }
-   }
-
-   private void a(@Nullable fem $$0) {
-      this.l.a(this);
-      if ($$0 != null) {
-         this.a(new few($$0, this.M.a, this.P, this.ab));
-      }
-   }
-
-   private void a(fet $$0) {
-      List<fet> $$1 = new ArrayList<>();
-      if (this.aa != null) {
-         $$1.add(this.aa);
-      }
-
-      if (this.b != this.M.n) {
-         $$1.add(new ffb(this.M.a, this.b, () -> {
-         }));
-      }
-
-      $$1.add($$0);
-      this.l.a(new fdj(this.L, $$1.toArray(new fet[0])));
-   }
-
-   class a extends fhs {
-      private static final akk b = new akk("widget/slot_frame");
-      private static final int c = 60;
-      private static final int d = 2;
-      private static final int u = 56;
-      private final akk v;
-
-      a(final fhd $$0, final wu $$1, final akk $$2, final fhs.c $$3) {
-         super(0, 0, 60, 60 + 9, $$1, $$3, q);
-         this.v = $$2;
-      }
-
-      @Override
-      public void b(fhf $$0, int $$1, int $$2, float $$3) {
-         boolean $$4 = this.B();
-         if ($$4) {
-            $$0.a(0.56F, 0.56F, 0.56F, 1.0F);
-         }
-
-         int $$5 = this.D();
-         int $$6 = this.E();
-         $$0.a(this.v, $$5 + 2, $$6 + 2, 0.0F, 0.0F, 56, 56, 56, 56);
-         $$0.a(b, $$5, $$6, 60, 60);
-         $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
-         int $$7 = $$4 ? -6250336 : -1;
-         $$0.a(fdr.this.o, this.z(), $$5 + 28, $$6 - 14, $$7);
-      }
+   public static fiw c(fnl $$0, wu $$1, Consumer<fiw> $$2) {
+      return new fiw.a($$0, c).a($$1).a(wt.h, $$2).a();
    }
 }

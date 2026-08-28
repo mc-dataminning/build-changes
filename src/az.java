@@ -11,8 +11,8 @@ public class az extends ds<az.a> {
       return az.a.a;
    }
 
-   public void a(aqn $$0, Collection<? extends bsg> $$1) {
-      List<equ> $$2 = $$1.stream().map($$1x -> bu.b($$0, $$1x)).collect(Collectors.toList());
+   public void a(aqn $$0, Collection<? extends bsh> $$1) {
+      List<eqw> $$2 = $$1.stream().map($$1x -> bu.b($$0, $$1x)).collect(Collectors.toList());
       this.a($$0, $$1x -> $$1x.a($$2));
    }
 
@@ -26,11 +26,11 @@ public class az extends ds<az.a> {
          return am.F.a(new az.a(Optional.empty(), bu.a($$0)));
       }
 
-      public boolean a(Collection<? extends equ> $$0) {
+      public boolean a(Collection<? extends eqw> $$0) {
          for (bf $$1 : this.c) {
             boolean $$2 = false;
 
-            for (equ $$3 : $$0) {
+            for (eqw $$3 : $$0) {
                if ($$1.a($$3)) {
                   $$2 = true;
                   break;

@@ -1,61 +1,45 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
 import java.util.Set;
 
-public record eun(Optional<Long> b, eqt c) implements euf {
+public record eun(czt b, jj<czm> c) implements euh {
    public static final MapCodec<eun> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.LONG.optionalFieldOf("period").forGetter(eun::c), eqt.a.fieldOf("value").forGetter(eun::d)).apply($$0, eun::new)
+      $$0 -> $$0.group(czt.b.fieldOf("chance").forGetter(eun::c), czm.c.fieldOf("enchantment").forGetter(eun::d)).apply($$0, eun::new)
    );
 
    @Override
-   public eug b() {
-      return euh.q;
+   public eui b() {
+      return euj.e;
    }
 
    @Override
-   public Set<etn<?>> a() {
-      return this.c.a();
+   public Set<etp<?>> a() {
+      return ImmutableSet.of(ets.d);
    }
 
-   public boolean a(equ $$0) {
-      aqm $$1 = $$0.d();
-      long $$2 = $$1.aa();
-      if (this.b.isPresent()) {
-         $$2 %= this.b.get();
+   public boolean a(eqw $$0) {
+      bsh $$1 = $$0.c(ets.d);
+      int $$3;
+      if ($$1 instanceof btc $$2) {
+         $$3 = czo.a(this.c, $$2);
+      } else {
+         $$3 = 0;
       }
 
-      return this.c.b($$0, (int)$$2);
+      return $$0.b().i() < this.b.a($$3);
    }
 
-   public static eun.a a(eqt $$0) {
-      return new eun.a($$0);
+   public static euh.a a(jl.a $$0, float $$1, float $$2) {
+      jl.b<czm> $$3 = $$0.b(lr.aK);
+      return () -> new eun(new czt.e($$1 + $$2, $$2), $$3.b(czr.s));
    }
 
-   public Optional<Long> c() {
+   public czt c() {
       return this.b;
    }
 
-   public eqt d() {
+   public jj<czm> d() {
       return this.c;
-   }
-
-   public static class a implements euf.a {
-      private Optional<Long> a = Optional.empty();
-      private final eqt b;
-
-      public a(eqt $$0) {
-         this.b = $$0;
-      }
-
-      public eun.a a(long $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public eun a() {
-         return new eun(this.a, this.b);
-      }
    }
 }

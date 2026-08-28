@@ -1,99 +1,53 @@
-public interface brc {
-   akj<brb> a = akj.a(lr.s, new akk("in_fire"));
-   akj<brb> b = akj.a(lr.s, new akk("campfire"));
-   akj<brb> c = akj.a(lr.s, new akk("lightning_bolt"));
-   akj<brb> d = akj.a(lr.s, new akk("on_fire"));
-   akj<brb> e = akj.a(lr.s, new akk("lava"));
-   akj<brb> f = akj.a(lr.s, new akk("hot_floor"));
-   akj<brb> g = akj.a(lr.s, new akk("in_wall"));
-   akj<brb> h = akj.a(lr.s, new akk("cramming"));
-   akj<brb> i = akj.a(lr.s, new akk("drown"));
-   akj<brb> j = akj.a(lr.s, new akk("starve"));
-   akj<brb> k = akj.a(lr.s, new akk("cactus"));
-   akj<brb> l = akj.a(lr.s, new akk("fall"));
-   akj<brb> m = akj.a(lr.s, new akk("fly_into_wall"));
-   akj<brb> n = akj.a(lr.s, new akk("out_of_world"));
-   akj<brb> o = akj.a(lr.s, new akk("generic"));
-   akj<brb> p = akj.a(lr.s, new akk("magic"));
-   akj<brb> q = akj.a(lr.s, new akk("wither"));
-   akj<brb> r = akj.a(lr.s, new akk("dragon_breath"));
-   akj<brb> s = akj.a(lr.s, new akk("dry_out"));
-   akj<brb> t = akj.a(lr.s, new akk("sweet_berry_bush"));
-   akj<brb> u = akj.a(lr.s, new akk("freeze"));
-   akj<brb> v = akj.a(lr.s, new akk("stalagmite"));
-   akj<brb> w = akj.a(lr.s, new akk("falling_block"));
-   akj<brb> x = akj.a(lr.s, new akk("falling_anvil"));
-   akj<brb> y = akj.a(lr.s, new akk("falling_stalactite"));
-   akj<brb> z = akj.a(lr.s, new akk("sting"));
-   akj<brb> A = akj.a(lr.s, new akk("mob_attack"));
-   akj<brb> B = akj.a(lr.s, new akk("mob_attack_no_aggro"));
-   akj<brb> C = akj.a(lr.s, new akk("player_attack"));
-   akj<brb> D = akj.a(lr.s, new akk("arrow"));
-   akj<brb> E = akj.a(lr.s, new akk("trident"));
-   akj<brb> F = akj.a(lr.s, new akk("mob_projectile"));
-   akj<brb> G = akj.a(lr.s, new akk("spit"));
-   akj<brb> H = akj.a(lr.s, new akk("wind_charge"));
-   akj<brb> I = akj.a(lr.s, new akk("fireworks"));
-   akj<brb> J = akj.a(lr.s, new akk("fireball"));
-   akj<brb> K = akj.a(lr.s, new akk("unattributed_fireball"));
-   akj<brb> L = akj.a(lr.s, new akk("wither_skull"));
-   akj<brb> M = akj.a(lr.s, new akk("thrown"));
-   akj<brb> N = akj.a(lr.s, new akk("indirect_magic"));
-   akj<brb> O = akj.a(lr.s, new akk("thorns"));
-   akj<brb> P = akj.a(lr.s, new akk("explosion"));
-   akj<brb> Q = akj.a(lr.s, new akk("player_explosion"));
-   akj<brb> R = akj.a(lr.s, new akk("sonic_boom"));
-   akj<brb> S = akj.a(lr.s, new akk("bad_respawn_point"));
-   akj<brb> T = akj.a(lr.s, new akk("outside_border"));
-   akj<brb> U = akj.a(lr.s, new akk("generic_kill"));
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-   static void a(qm<brb> $$0) {
-      $$0.a(a, new brb("inFire", 0.1F, bqx.d));
-      $$0.a(b, new brb("inFire", 0.1F, bqx.d));
-      $$0.a(c, new brb("lightningBolt", 0.1F));
-      $$0.a(d, new brb("onFire", 0.0F, bqx.d));
-      $$0.a(e, new brb("lava", 0.1F, bqx.d));
-      $$0.a(f, new brb("hotFloor", 0.1F, bqx.d));
-      $$0.a(g, new brb("inWall", 0.0F));
-      $$0.a(h, new brb("cramming", 0.0F));
-      $$0.a(i, new brb("drown", 0.0F, bqx.c));
-      $$0.a(j, new brb("starve", 0.0F));
-      $$0.a(k, new brb("cactus", 0.1F));
-      $$0.a(l, new brb("fall", bqy.b, 0.0F, bqx.a, brd.b));
-      $$0.a(m, new brb("flyIntoWall", 0.0F));
-      $$0.a(n, new brb("outOfWorld", 0.0F));
-      $$0.a(o, new brb("generic", 0.0F));
-      $$0.a(p, new brb("magic", 0.0F));
-      $$0.a(q, new brb("wither", 0.0F));
-      $$0.a(r, new brb("dragonBreath", 0.0F));
-      $$0.a(s, new brb("dryout", 0.1F));
-      $$0.a(t, new brb("sweetBerryBush", 0.1F, bqx.e));
-      $$0.a(u, new brb("freeze", 0.0F, bqx.f));
-      $$0.a(v, new brb("stalagmite", 0.0F));
-      $$0.a(w, new brb("fallingBlock", 0.1F));
-      $$0.a(x, new brb("anvil", 0.1F));
-      $$0.a(y, new brb("fallingStalactite", 0.1F));
-      $$0.a(z, new brb("sting", 0.1F));
-      $$0.a(A, new brb("mob", 0.1F));
-      $$0.a(B, new brb("mob", 0.1F));
-      $$0.a(C, new brb("player", 0.1F));
-      $$0.a(D, new brb("arrow", 0.1F));
-      $$0.a(E, new brb("trident", 0.1F));
-      $$0.a(F, new brb("mob", 0.1F));
-      $$0.a(G, new brb("mob", 0.1F));
-      $$0.a(I, new brb("fireworks", 0.1F));
-      $$0.a(K, new brb("onFire", 0.1F, bqx.d));
-      $$0.a(J, new brb("fireball", 0.1F, bqx.d));
-      $$0.a(L, new brb("witherSkull", 0.1F));
-      $$0.a(M, new brb("thrown", 0.1F));
-      $$0.a(N, new brb("indirectMagic", 0.0F));
-      $$0.a(O, new brb("thorns", 0.1F, bqx.b));
-      $$0.a(P, new brb("explosion", bqy.c, 0.1F));
-      $$0.a(Q, new brb("explosion.player", bqy.c, 0.1F));
-      $$0.a(R, new brb("sonic_boom", bqy.c, 0.0F));
-      $$0.a(S, new brb("badRespawnPoint", bqy.c, 0.1F, bqx.a, brd.c));
-      $$0.a(T, new brb("outsideBorder", 0.0F));
-      $$0.a(U, new brb("genericKill", 0.0F));
-      $$0.a(H, new brb("mob", 0.1F));
+public record brc(String d, bqz e, float f, bqy g, bre h) {
+   public static final Codec<brc> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.STRING.fieldOf("message_id").forGetter(brc::a),
+               bqz.d.fieldOf("scaling").forGetter(brc::b),
+               Codec.FLOAT.fieldOf("exhaustion").forGetter(brc::c),
+               bqy.g.optionalFieldOf("effects", bqy.a).forGetter(brc::d),
+               bre.d.optionalFieldOf("death_message_type", bre.a).forGetter(brc::e)
+            )
+            .apply($$0, brc::new)
+   );
+   public static final Codec<jj<brc>> b = akh.a(lr.s);
+   public static final ys<wf, jj<brc>> c = yq.b(lr.s);
+
+   public brc(String $$0, bqz $$1, float $$2) {
+      this($$0, $$1, $$2, bqy.a, bre.a);
+   }
+
+   public brc(String $$0, bqz $$1, float $$2, bqy $$3) {
+      this($$0, $$1, $$2, $$3, bre.a);
+   }
+
+   public brc(String $$0, float $$1, bqy $$2) {
+      this($$0, bqz.b, $$1, $$2);
+   }
+
+   public brc(String $$0, float $$1) {
+      this($$0, bqz.b, $$1);
+   }
+
+   public String a() {
+      return this.d;
+   }
+
+   public bqz b() {
+      return this.e;
+   }
+
+   public float c() {
+      return this.f;
+   }
+
+   public bqy d() {
+      return this.g;
+   }
+
+   public bre e() {
+      return this.h;
    }
 }

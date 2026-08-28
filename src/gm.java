@@ -42,7 +42,7 @@ public class gm implements ArgumentType<go> {
 
    public static ja c(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
       ja $$2 = b($$0, $$1);
-      if (!dcf.l($$2)) {
+      if (!dcg.l($$2)) {
          throw c.create();
       } else {
          return $$2;

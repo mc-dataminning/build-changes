@@ -15,8 +15,8 @@ public class atr extends auc<atr.a> {
       super($$2, $$3, $$0, $$1, ($$1x, $$2x, $$3x, $$4x, $$5) -> {
          AtomicLong $$6 = new AtomicLong();
          AtomicLong $$7 = new AtomicLong();
-         bmn $$8 = new bmn(ac.c, () -> 0, false);
-         bmn $$9 = new bmn(ac.c, () -> 0, false);
+         bmo $$8 = new bmo(ac.c, () -> 0, false);
+         bmo $$9 = new bmo(ac.c, () -> 0, false);
          CompletableFuture<Void> $$10 = $$3x.a($$1x, $$2x, $$8, $$9, $$2xx -> $$4x.execute(() -> {
                long $$2xxx = ac.d();
                $$2xx.run();
@@ -41,8 +41,8 @@ public class atr extends auc<atr.a> {
       c.info("Resource reload finished after {} ms", this.d.elapsed(TimeUnit.MILLISECONDS));
 
       for (atr.a $$2 : $$0) {
-         bmt $$3 = $$2.b;
-         bmt $$4 = $$2.c;
+         bmu $$3 = $$2.b;
+         bmu $$4 = $$2.c;
          long $$5 = TimeUnit.NANOSECONDS.toMillis($$2.d.get());
          long $$6 = TimeUnit.NANOSECONDS.toMillis($$2.e.get());
          long $$7 = $$5 + $$6;
@@ -57,12 +57,12 @@ public class atr extends auc<atr.a> {
 
    public static class a {
       final String a;
-      final bmt b;
-      final bmt c;
+      final bmu b;
+      final bmu c;
       final AtomicLong d;
       final AtomicLong e;
 
-      a(String $$0, bmt $$1, bmt $$2, AtomicLong $$3, AtomicLong $$4) {
+      a(String $$0, bmu $$1, bmu $$2, AtomicLong $$3, AtomicLong $$4) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;

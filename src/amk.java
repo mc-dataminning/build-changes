@@ -36,29 +36,29 @@ public class amk {
       );
    }
 
-   private static int a(eq $$0, Collection<? extends bsg> $$1, jj<czl> $$2, int $$3) throws CommandSyntaxException {
-      czl $$4 = $$2.a();
+   private static int a(eq $$0, Collection<? extends bsh> $$1, jj<czm> $$2, int $$3) throws CommandSyntaxException {
+      czm $$4 = $$2.a();
       if ($$3 > $$4.e()) {
          throw d.create($$3, $$4.e());
       } else {
          int $$5 = 0;
 
-         for (bsg $$6 : $$1) {
-            if ($$6 instanceof btb) {
-               btb $$7 = (btb)$$6;
-               cuc $$8 = $$7.eU();
+         for (bsh $$6 : $$1) {
+            if ($$6 instanceof btc) {
+               btc $$7 = (btc)$$6;
+               cud $$8 = $$7.eV();
                if (!$$8.e()) {
-                  if ($$4.c($$8) && czn.a(czn.b($$8).a(), $$2)) {
+                  if ($$4.c($$8) && czo.a(czo.b($$8).a(), $$2)) {
                      $$8.a($$2, $$3);
                      $$5++;
                   } else if ($$1.size() == 1) {
                      throw c.create($$8.g().n($$8).getString());
                   }
                } else if ($$1.size() == 1) {
-                  throw b.create($$7.ag().getString());
+                  throw b.create($$7.ah().getString());
                }
             } else if ($$1.size() == 1) {
-               throw a.create($$6.ag().getString());
+               throw a.create($$6.ah().getString());
             }
          }
 
@@ -66,9 +66,9 @@ public class amk {
             throw e.create();
          } else {
             if ($$1.size() == 1) {
-               $$0.a(() -> wu.a("commands.enchant.success.single", czl.a($$2, $$3), $$1.iterator().next().O_()), true);
+               $$0.a(() -> wu.a("commands.enchant.success.single", czm.a($$2, $$3), $$1.iterator().next().O_()), true);
             } else {
-               $$0.a(() -> wu.a("commands.enchant.success.multiple", czl.a($$2, $$3), $$1.size()), true);
+               $$0.a(() -> wu.a("commands.enchant.success.multiple", czm.a($$2, $$3), $$1.size()), true);
             }
 
             return $$5;

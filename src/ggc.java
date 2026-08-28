@@ -1,95 +1,53 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
-import java.util.function.Supplier;
-import javax.annotation.Nullable;
+public class ggc implements ggf<dpm> {
+   private final fxq a;
+   private final fxq b;
 
-public class ggc implements atx {
-   private Map<dpr<?>, ggd<?>> d = ImmutableMap.of();
-   private final fhd e;
-   private final fxk f;
-   public dcf a;
-   public ffe b;
-   public ewd c;
-   private final Supplier<gex> g;
-   private final Supplier<gkk> h;
-   private final Supplier<gjk> i;
-
-   public ggc(fhd $$0, fxk $$1, Supplier<gex> $$2, Supplier<gkk> $$3, Supplier<gjk> $$4) {
-      this.h = $$3;
-      this.i = $$4;
-      this.e = $$0;
-      this.f = $$1;
-      this.g = $$2;
+   public ggc(ggg.a $$0) {
+      this.a = $$0.a(fxp.j);
+      this.b = $$0.a(fxp.i);
    }
 
-   @Nullable
-   public <E extends dpp> ggd<E> a(E $$0) {
-      return (ggd<E>)this.d.get($$0.r());
+   public static fxw b() {
+      fxy $$0 = new fxy();
+      fxz $$1 = $$0.a();
+      $$1.a("main", fxv.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fxs.a);
+      $$1.a("left_leg", fxv.c().a(50, 6).a(0.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fxs.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI / 2)));
+      $$1.a("right_leg", fxv.c().a(50, 18).a(-16.0F, 6.0F, 0.0F, 3.0F, 3.0F, 3.0F), fxs.b((float) (Math.PI / 2), 0.0F, (float) Math.PI));
+      return fxw.a($$0, 64, 64);
    }
 
-   public void a(dcf $$0, ffe $$1, ewd $$2) {
-      if (this.a != $$0) {
-         this.a($$0);
-      }
-
-      this.b = $$1;
-      this.c = $$2;
+   public static fxw c() {
+      fxy $$0 = new fxy();
+      fxz $$1 = $$0.a();
+      $$1.a("main", fxv.c().a(0, 22).a(0.0F, 0.0F, 0.0F, 16.0F, 16.0F, 6.0F), fxs.a);
+      $$1.a("left_leg", fxv.c().a(50, 0).a(0.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fxs.b((float) (Math.PI / 2), 0.0F, 0.0F));
+      $$1.a("right_leg", fxv.c().a(50, 12).a(-16.0F, 6.0F, -16.0F, 3.0F, 3.0F, 3.0F), fxs.b((float) (Math.PI / 2), 0.0F, (float) (Math.PI * 3.0 / 2.0)));
+      return fxw.a($$0, 64, 64);
    }
 
-   public <E extends dpp> void a(E $$0, float $$1, fam $$2, ged $$3) {
-      ggd<E> $$4 = this.a($$0);
-      if ($$4 != null) {
-         if ($$0.m() && $$0.r().a($$0.n())) {
-            if ($$4.a($$0, this.b.b())) {
-               a($$0, () -> a($$4, $$0, $$1, $$2, $$3));
-            }
-         }
-      }
-   }
-
-   private static <T extends dpp> void a(ggd<T> $$0, T $$1, float $$2, fam $$3, ged $$4) {
-      dcf $$5 = $$1.i();
-      int $$6;
-      if ($$5 != null) {
-         $$6 = geb.a($$5, $$1.az_());
+   public void a(dpm $$0, float $$1, fao $$2, gef $$3, int $$4, int $$5) {
+      gru $$6 = geu.r[$$0.c().a()];
+      dcg $$7 = $$0.i();
+      if ($$7 != null) {
+         dsl $$8 = $$0.n();
+         dhp.c<? extends dpm> $$9 = dhp.a(dps.y, dfb::h, dfb::g, dgl.c, $$8, $$7, $$0.az_(), ($$0x, $$1x) -> false);
+         int $$10 = $$9.apply(new ggi<>()).get($$4);
+         this.a($$2, $$3, $$8.c(dfb.b) == dsy.a ? this.a : this.b, $$8.c(dfb.aE), $$6, $$10, $$5, false);
       } else {
-         $$6 = 15728880;
-      }
-
-      $$0.a($$1, $$2, $$3, $$4, $$6, gpf.d);
-   }
-
-   public <E extends dpp> boolean a(E $$0, fam $$1, ged $$2, int $$3, int $$4) {
-      ggd<E> $$5 = this.a($$0);
-      if ($$5 == null) {
-         return true;
-      } else {
-         a($$0, () -> $$5.a($$0, 0.0F, $$1, $$2, $$3, $$4));
-         return false;
+         this.a($$2, $$3, this.a, jf.d, $$6, $$4, $$5, false);
+         this.a($$2, $$3, this.b, jf.d, $$6, $$4, $$5, true);
       }
    }
 
-   private static void a(dpp $$0, Runnable $$1) {
-      try {
-         $$1.run();
-      } catch (Throwable var5) {
-         o $$3 = o.a(var5, "Rendering Block Entity");
-         p $$4 = $$3.a("Block Entity Details");
-         $$0.a($$4);
-         throw new y($$3);
-      }
-   }
-
-   public void a(@Nullable dcf $$0) {
-      this.a = $$0;
-      if ($$0 == null) {
-         this.b = null;
-      }
-   }
-
-   @Override
-   public void a(atw $$0) {
-      gge.a $$1 = new gge.a(this, this.g.get(), this.h.get(), this.i.get(), this.f, this.e);
-      this.d = ggf.a($$1);
+   private void a(fao $$0, gef $$1, fxq $$2, jf $$3, gru $$4, int $$5, int $$6, boolean $$7) {
+      $$0.a();
+      $$0.a(0.0F, 0.5625F, $$7 ? -1.0F : 0.0F);
+      $$0.a(a.b.rotationDegrees(90.0F));
+      $$0.a(0.5F, 0.5F, 0.5F);
+      $$0.a(a.f.rotationDegrees(180.0F + $$3.p()));
+      $$0.a(-0.5F, -0.5F, -0.5F);
+      fas $$8 = $$4.a($$1, gen::c);
+      $$2.a($$0, $$8, $$5, $$6);
+      $$0.b();
    }
 }

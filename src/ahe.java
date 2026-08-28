@@ -3,7 +3,7 @@ public class ahe implements zb<agb> {
    private static final int b = 2;
    private final boolean c;
 
-   public ahe(cmh $$0) {
+   public ahe(cmi $$0) {
       this.c = $$0.b;
    }
 

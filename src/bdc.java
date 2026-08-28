@@ -1,7 +1,7 @@
 import com.mojang.datafixers.schemas.Schema;
 import java.util.Objects;
 
-public class bdc extends bgs {
+public class bdc extends bgt {
    public bdc(Schema $$0, boolean $$1) {
       super("EntityTippedArrowFix", $$0, $$1);
    }

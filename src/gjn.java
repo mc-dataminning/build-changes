@@ -1,185 +1,92 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
-import org.slf4j.Logger;
+import org.joml.Matrix4f;
 
-public class gjn {
-   private static final Logger a = LogUtils.getLogger();
-   private static final Map<bsm<?>, gjm<?>> b = new Object2ObjectOpenHashMap();
-   private static final Map<gqo.a, gjm<gdc>> c = Map.of(gqo.a.b, $$0 -> new gor($$0, false), gqo.a.a, $$0 -> new gor($$0, true));
+public abstract class gjn<T extends bsh> {
+   protected static final float b = 0.025F;
+   protected final gjm c;
+   private final fhf a;
+   protected float d;
+   protected float e = 1.0F;
 
-   private static <T extends bsg> void a(bsm<? extends T> $$0, gjm<T> $$1) {
-      b.put($$0, $$1);
+   protected gjn(gjo.a $$0) {
+      this.c = $$0.a();
+      this.a = $$0.h();
    }
 
-   public static Map<bsm<?>, gjl<?>> a(gjm.a $$0) {
-      Builder<bsm<?>, gjl<?>> $$1 = ImmutableMap.builder();
-      b.forEach(($$2, $$3) -> {
-         try {
-            $$1.put($$2, $$3.create($$0));
-         } catch (Exception var5) {
-            throw new IllegalArgumentException("Failed to create model for " + lq.f.b((bsm<?>)$$2), var5);
+   public final int b(T $$0, float $$1) {
+      ja $$2 = ja.a($$0.l($$1));
+      return gee.a(this.a($$0, $$2), this.b($$0, $$2));
+   }
+
+   protected int b(T $$0, ja $$1) {
+      return $$0.dR().a(dcp.a, $$1);
+   }
+
+   protected int a(T $$0, ja $$1) {
+      return $$0.bS() ? 15 : $$0.dR().a(dcp.b, $$1);
+   }
+
+   public boolean a(T $$0, ghj $$1, double $$2, double $$3, double $$4) {
+      if (!$$0.k($$2, $$3, $$4)) {
+         return false;
+      } else if ($$0.au) {
+         return true;
+      } else {
+         ewc $$5 = $$0.h_().g(0.5);
+         if ($$5.e() || $$5.a() == 0.0) {
+            $$5 = new ewc($$0.dw() - 2.0, $$0.dy() - 2.0, $$0.dC() - 2.0, $$0.dw() + 2.0, $$0.dy() + 2.0, $$0.dC() + 2.0);
          }
-      });
-      return $$1.build();
+
+         return $$1.a($$5);
+      }
    }
 
-   public static Map<gqo.a, gjl<? extends cmk>> b(gjm.a $$0) {
-      Builder<gqo.a, gjl<? extends cmk>> $$1 = ImmutableMap.builder();
-      c.forEach(($$2, $$3) -> {
-         try {
-            $$1.put($$2, $$3.create($$0));
-         } catch (Exception var5) {
-            throw new IllegalArgumentException("Failed to create player model for " + $$2, var5);
-         }
-      });
-      return $$1.build();
+   public ewh a(T $$0, float $$1) {
+      return ewh.b;
    }
 
-   public static boolean a() {
-      boolean $$0 = true;
+   public void a(T $$0, float $$1, float $$2, fao $$3, gef $$4, int $$5) {
+      if (this.b($$0)) {
+         this.a($$0, $$0.O_(), $$3, $$4, $$5, $$2);
+      }
+   }
 
-      for (bsm<?> $$1 : lq.f) {
-         if ($$1 != bsm.by && !b.containsKey($$1)) {
-            a.warn("No renderer registered for {}", lq.f.b($$1));
-            $$0 = false;
+   protected boolean b(T $$0) {
+      return $$0.cH() || $$0.ai() && $$0 == this.c.c;
+   }
+
+   public abstract akk a(T var1);
+
+   public fhf b() {
+      return this.a;
+   }
+
+   protected void a(T $$0, wu $$1, fao $$2, gef $$3, int $$4, float $$5) {
+      double $$6 = this.c.b($$0);
+      if (!($$6 > 4096.0)) {
+         ewh $$7 = $$0.do().a(bsi.c, 0, $$0.i($$5));
+         if ($$7 != null) {
+            boolean $$8 = !$$0.ca();
+            int $$9 = "deadmau5".equals($$1.getString()) ? -10 : 0;
+            $$2.a();
+            $$2.a($$7.c, $$7.d + 0.5, $$7.e);
+            $$2.a(this.c.b());
+            $$2.b(-0.025F, -0.025F, 0.025F);
+            Matrix4f $$10 = $$2.c().a();
+            float $$11 = ffw.Q().m.a(0.25F);
+            int $$12 = (int)($$11 * 255.0F) << 24;
+            fhf $$13 = this.b();
+            float $$14 = (float)(-$$13.a($$1) / 2);
+            $$13.a($$1, $$14, (float)$$9, 553648127, false, $$10, $$3, $$8 ? fhf.a.b : fhf.a.a, $$12, $$4);
+            if ($$8) {
+               $$13.a($$1, $$14, (float)$$9, -1, false, $$10, $$3, fhf.a.a, 0, $$4);
+            }
+
+            $$2.b();
          }
       }
-
-      return !$$0;
    }
 
-   static {
-      a(bsm.a, gii::new);
-      a(bsm.b, gku::new);
-      a(bsm.c, gij::new);
-      a(bsm.d, gik::new);
-      a(bsm.e, gma::new);
-      a(bsm.f, gim::new);
-      a(bsm.g, gin::new);
-      a(bsm.h, gio::new);
-      a(bsm.i, gip::new);
-      a(bsm.j, gjb.a::new);
-      a(bsm.k, $$0 -> new giq($$0, false));
-      a(bsm.l, gir::new);
-      a(bsm.m, gis::new);
-      a(bsm.n, gml::new);
-      a(bsm.p, giu::new);
-      a(bsm.o, $$0 -> new git($$0, fxn.v));
-      a(bsm.q, giv::new);
-      a(bsm.r, $$0 -> new giq($$0, true));
-      a(bsm.s, $$0 -> new gkr<>($$0, fxn.y));
-      a(bsm.t, gix::new);
-      a(bsm.u, giy::new);
-      a(bsm.v, $$0 -> new gkr<>($$0, fxn.B));
-      a(bsm.w, giz::new);
-      a(bsm.x, gja::new);
-      a(bsm.y, gjc::new);
-      a(bsm.z, $$0 -> new giw<>($$0, 0.87F, fxn.N));
-      a(bsm.A, gjd::new);
-      a(bsm.B, gje::new);
-      a(bsm.C, gly::new);
-      a(bsm.D, gjf::new);
-      a(bsm.H, gji::new);
-      a(bsm.I, gjj::new);
-      a(bsm.F, gjh::new);
-      a(bsm.G, gly::new);
-      a(bsm.E, gjg::new);
-      a(bsm.J, gjp::new);
-      a(bsm.K, gjo::new);
-      a(bsm.L, gly::new);
-      a(bsm.M, gjq::new);
-      a(bsm.N, $$0 -> new gly<>($$0, 1.0F, true));
-      a(bsm.O, gjr::new);
-      a(bsm.ak, $$0 -> new gly<>($$0, 3.0F, true));
-      a(bsm.P, gjs::new);
-      a(bsm.bz, gjt::new);
-      a(bsm.Q, gju::new);
-      a(bsm.R, gjv::new);
-      a(bsm.S, $$0 -> new gkr<>($$0, fxn.af));
-      a(bsm.T, gjw::new);
-      a(bsm.U, $$0 -> new gjx($$0, 6.0F));
-      a(bsm.V, gkj::new);
-      a(bsm.W, $$0 -> new gjy($$0, new fwq<>($$0.a(fxn.ak))));
-      a(bsm.X, gjz::new);
-      a(bsm.Y, gka::new);
-      a(bsm.Z, gkb::new);
-      a(bsm.aa, $$0 -> new gkr<>($$0, fxn.ao));
-      a(bsm.ab, gkc::new);
-      a(bsm.ac, gke::new);
-      a(bsm.ad, gkg::new);
-      a(bsm.ae, gku::new);
-      a(bsm.af, gkh::new);
-      a(bsm.ag, gki::new);
-      a(bsm.ah, gjb.b::new);
-      a(bsm.ai, gkj::new);
-      a(bsm.aj, gkw::new);
-      a(bsm.al, gkl::new);
-      a(bsm.am, gkm::new);
-      a(bsm.an, $$0 -> new gko($$0, fxn.ax));
-      a(bsm.ao, gkp::new);
-      a(bsm.ap, gkq::new);
-      a(bsm.aq, gku::new);
-      a(bsm.ar, $$0 -> new gkr<>($$0, fxn.aB));
-      a(bsm.as, gkt::new);
-      a(bsm.at, $$0 -> new giw<>($$0, 0.92F, fxn.aD));
-      a(bsm.au, gkv::new);
-      a(bsm.av, gkx::new);
-      a(bsm.aw, gky::new);
-      a(bsm.ax, gkz::new);
-      a(bsm.ay, gla::new);
-      a(bsm.az, glb::new);
-      a(bsm.aA, $$0 -> new glc($$0, fxn.aJ, fxn.aO, fxn.aP, false));
-      a(bsm.aB, $$0 -> new glc($$0, fxn.aK, fxn.aL, fxn.aM, false));
-      a(bsm.aC, gld::new);
-      a(bsm.aD, gle::new);
-      a(bsm.aE, gly::new);
-      a(bsm.aF, glf::new);
-      a(bsm.aG, glg::new);
-      a(bsm.aH, glh::new);
-      a(bsm.aI, glj::new);
-      a(bsm.aJ, glk::new);
-      a(bsm.aK, glm::new);
-      a(bsm.aL, gll::new);
-      a(bsm.aM, gln::new);
-      a(bsm.aN, glo::new);
-      a(bsm.aO, $$0 -> new gmf($$0, fxn.bo));
-      a(bsm.aP, glp::new);
-      a(bsm.aQ, $$0 -> new gly<>($$0, 0.75F, true));
-      a(bsm.aR, glq::new);
-      a(bsm.aT, gly::new);
-      a(bsm.aS, glr::new);
-      a(bsm.aU, $$0 -> new gkr<>($$0, fxn.bw));
-      a(bsm.aV, gls::new);
-      a(bsm.aW, glt::new);
-      a(bsm.aX, $$0 -> new glu<>($$0, new fwq<>($$0.a(fxn.by))));
-      a(bsm.aY, glv::new);
-      a(bsm.aZ, glw::new);
-      a(bsm.ba, glx::new);
-      a(bsm.bb, gjb.c::new);
-      a(bsm.bc, gmc::new);
-      a(bsm.bd, gmb::new);
-      a(bsm.be, $$0 -> new gko($$0, fxn.bH));
-      a(bsm.bf, glz::new);
-      a(bsm.bg, gmd::new);
-      a(bsm.bh, gme::new);
-      a(bsm.bi, gmg::new);
-      a(bsm.bj, gmh::new);
-      a(bsm.bk, gmi::new);
-      a(bsm.bm, gmk::new);
-      a(bsm.bl, gmj::new);
-      a(bsm.bn, gml::new);
-      a(bsm.bo, gmm::new);
-      a(bsm.bp, gmn::new);
-      a(bsm.bq, gmo::new);
-      a(bsm.br, gmp::new);
-      a(bsm.bs, gmq::new);
-      a(bsm.bt, gmr::new);
-      a(bsm.bu, gms::new);
-      a(bsm.bv, $$0 -> new gmf($$0, fxn.ch));
-      a(bsm.bw, gmt::new);
-      a(bsm.bx, $$0 -> new glc($$0, fxn.cn, fxn.co, fxn.cp, true));
+   protected float c(T $$0) {
+      return this.d;
    }
 }

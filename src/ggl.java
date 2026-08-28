@@ -1,111 +1,112 @@
-import java.util.EnumSet;
-import java.util.Optional;
+import java.util.Calendar;
 
-public class ggl implements ggd<dqf> {
-   private static final String a = "neck";
-   private static final String b = "front";
-   private static final String c = "back";
-   private static final String d = "left";
-   private static final String e = "right";
-   private static final String f = "top";
-   private static final String g = "bottom";
-   private final fxo h;
-   private final fxo i;
-   private final fxo j;
-   private final fxo k;
-   private final fxo l;
-   private final fxo m;
-   private final fxo n;
-   private static final float o = 0.125F;
+public class ggl<T extends dpq & dqu> implements ggf<T> {
+   private static final String a = "bottom";
+   private static final String b = "lid";
+   private static final String c = "lock";
+   private final fxq d;
+   private final fxq e;
+   private final fxq f;
+   private final fxq g;
+   private final fxq h;
+   private final fxq i;
+   private final fxq j;
+   private final fxq k;
+   private final fxq l;
+   private boolean m;
 
-   public ggl(gge.a $$0) {
-      fxo $$1 = $$0.a(fxn.K);
-      this.h = $$1.b("neck");
-      this.m = $$1.b("top");
-      this.n = $$1.b("bottom");
-      fxo $$2 = $$0.a(fxn.L);
-      this.i = $$2.b("front");
-      this.j = $$2.b("back");
-      this.k = $$2.b("left");
-      this.l = $$2.b("right");
-   }
-
-   public static fxu b() {
-      fxw $$0 = new fxw();
-      fxx $$1 = $$0.a();
-      fxs $$2 = new fxs(0.2F);
-      fxs $$3 = new fxs(-0.1F);
-      $$1.a(
-         "neck",
-         fxt.c().a(0, 0).a(4.0F, 17.0F, 4.0F, 8.0F, 3.0F, 8.0F, $$3).a(0, 5).a(5.0F, 20.0F, 5.0F, 6.0F, 1.0F, 6.0F, $$2),
-         fxq.a(0.0F, 37.0F, 16.0F, (float) Math.PI, 0.0F, 0.0F)
-      );
-      fxt $$4 = fxt.c().a(-14, 13).a(0.0F, 0.0F, 0.0F, 14.0F, 0.0F, 14.0F);
-      $$1.a("top", $$4, fxq.a(1.0F, 16.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      $$1.a("bottom", $$4, fxq.a(1.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F));
-      return fxu.a($$0, 32, 32);
-   }
-
-   public static fxu c() {
-      fxw $$0 = new fxw();
-      fxx $$1 = $$0.a();
-      fxt $$2 = fxt.c().a(1, 0).a(0.0F, 0.0F, 0.0F, 14.0F, 16.0F, 0.0F, EnumSet.of(jf.c));
-      $$1.a("back", $$2, fxq.a(15.0F, 16.0F, 1.0F, 0.0F, 0.0F, (float) Math.PI));
-      $$1.a("left", $$2, fxq.a(1.0F, 16.0F, 1.0F, 0.0F, (float) (-Math.PI / 2), (float) Math.PI));
-      $$1.a("right", $$2, fxq.a(15.0F, 16.0F, 15.0F, 0.0F, (float) (Math.PI / 2), (float) Math.PI));
-      $$1.a("front", $$2, fxq.a(1.0F, 16.0F, 15.0F, (float) Math.PI, 0.0F, 0.0F));
-      return fxu.a($$0, 16, 16);
-   }
-
-   private static grs a(Optional<ctx> $$0) {
-      if ($$0.isPresent()) {
-         grs $$1 = ges.a(dqh.a($$0.get()));
-         if ($$1 != null) {
-            return $$1;
-         }
+   public ggl(ggg.a $$0) {
+      Calendar $$1 = Calendar.getInstance();
+      if ($$1.get(2) + 1 == 12 && $$1.get(5) >= 24 && $$1.get(5) <= 26) {
+         this.m = true;
       }
 
-      return ges.q;
+      fxq $$2 = $$0.a(fxp.x);
+      this.e = $$2.b("bottom");
+      this.d = $$2.b("lid");
+      this.f = $$2.b("lock");
+      fxq $$3 = $$0.a(fxp.O);
+      this.h = $$3.b("bottom");
+      this.g = $$3.b("lid");
+      this.i = $$3.b("lock");
+      fxq $$4 = $$0.a(fxp.P);
+      this.k = $$4.b("bottom");
+      this.j = $$4.b("lid");
+      this.l = $$4.b("lock");
    }
 
-   public void a(dqf $$0, float $$1, fam $$2, ged $$3, int $$4, int $$5) {
-      $$2.a();
-      jf $$6 = $$0.k();
-      $$2.a(0.5, 0.0, 0.5);
-      $$2.a(a.d.rotationDegrees(180.0F - $$6.p()));
-      $$2.a(-0.5, 0.0, -0.5);
-      dqf.a $$7 = $$0.h;
-      if ($$7 != null && $$0.i() != null) {
-         float $$8 = ((float)($$0.i().Z() - $$0.g) + $$1) / (float)$$7.c;
-         if ($$8 >= 0.0F && $$8 <= 1.0F) {
-            if ($$7 == dqf.a.a) {
-               float $$9 = 0.015625F;
-               float $$10 = $$8 * (float) (Math.PI * 2);
-               float $$11 = -1.5F * (ayg.b($$10) + 0.5F) * ayg.a($$10 / 2.0F);
-               $$2.a(a.b.rotation($$11 * 0.015625F), 0.5F, 0.0F, 0.5F);
-               float $$12 = ayg.a($$10);
-               $$2.a(a.f.rotation($$12 * 0.015625F), 0.5F, 0.0F, 0.5F);
+   public static fxw b() {
+      fxy $$0 = new fxy();
+      fxz $$1 = $$0.a();
+      $$1.a("bottom", fxv.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 14.0F, 10.0F, 14.0F), fxs.a);
+      $$1.a("lid", fxv.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 14.0F, 5.0F, 14.0F), fxs.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", fxv.c().a(0, 0).a(7.0F, -2.0F, 14.0F, 2.0F, 4.0F, 1.0F), fxs.a(0.0F, 9.0F, 1.0F));
+      return fxw.a($$0, 64, 64);
+   }
+
+   public static fxw c() {
+      fxy $$0 = new fxy();
+      fxz $$1 = $$0.a();
+      $$1.a("bottom", fxv.c().a(0, 19).a(1.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), fxs.a);
+      $$1.a("lid", fxv.c().a(0, 0).a(1.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), fxs.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", fxv.c().a(0, 0).a(15.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), fxs.a(0.0F, 9.0F, 1.0F));
+      return fxw.a($$0, 64, 64);
+   }
+
+   public static fxw d() {
+      fxy $$0 = new fxy();
+      fxz $$1 = $$0.a();
+      $$1.a("bottom", fxv.c().a(0, 19).a(0.0F, 0.0F, 1.0F, 15.0F, 10.0F, 14.0F), fxs.a);
+      $$1.a("lid", fxv.c().a(0, 0).a(0.0F, 0.0F, 0.0F, 15.0F, 5.0F, 14.0F), fxs.a(0.0F, 9.0F, 1.0F));
+      $$1.a("lock", fxv.c().a(0, 0).a(0.0F, -2.0F, 14.0F, 1.0F, 4.0F, 1.0F), fxs.a(0.0F, 9.0F, 1.0F));
+      return fxw.a($$0, 64, 64);
+   }
+
+   @Override
+   public void a(T $$0, float $$1, fao $$2, gef $$3, int $$4, int $$5) {
+      dcg $$6 = $$0.i();
+      boolean $$7 = $$6 != null;
+      dsl $$8 = $$7 ? $$0.n() : dfk.cv.o().a(dgl.c, jf.d);
+      dtd $$9 = $$8.b(dgl.d) ? $$8.c(dgl.d) : dtd.a;
+      if ($$8.b() instanceof dec<?> $$11) {
+         boolean $$12 = $$9 != dtd.a;
+         $$2.a();
+         float $$13 = $$8.c(dgl.c).p();
+         $$2.a(0.5F, 0.5F, 0.5F);
+         $$2.a(a.d.rotationDegrees(-$$13));
+         $$2.a(-0.5F, -0.5F, -0.5F);
+         dhp.c<? extends dpx> $$14;
+         if ($$7) {
+            $$14 = $$11.a($$8, $$6, $$0.az_(), true);
+         } else {
+            $$14 = dhp.b::b;
+         }
+
+         float $$16 = $$14.apply(dgl.a($$0)).get($$1);
+         $$16 = 1.0F - $$16;
+         $$16 = 1.0F - $$16 * $$16 * $$16;
+         int $$17 = $$14.apply(new ggi<>()).applyAsInt($$4);
+         gru $$18 = geu.a($$0, $$9, this.m);
+         fas $$19 = $$18.a($$3, gen::d);
+         if ($$12) {
+            if ($$9 == dtd.b) {
+               this.a($$2, $$19, this.g, this.i, this.h, $$16, $$17, $$5);
             } else {
-               float $$13 = ayg.a(-$$8 * 3.0F * (float) Math.PI) * 0.125F;
-               float $$14 = 1.0F - $$8;
-               $$2.a(a.d.rotation($$13 * $$14), 0.5F, 0.0F, 0.5F);
+               this.a($$2, $$19, this.j, this.l, this.k, $$16, $$17, $$5);
             }
+         } else {
+            this.a($$2, $$19, this.d, this.f, this.e, $$16, $$17, $$5);
          }
-      }
 
-      faq $$15 = ges.p.a($$3, gel::c);
-      this.h.a($$2, $$15, $$4, $$5);
-      this.m.a($$2, $$15, $$4, $$5);
-      this.n.a($$2, $$15, $$4, $$5);
-      dqu $$16 = $$0.l();
-      this.a(this.i, $$2, $$3, $$4, $$5, a($$16.e()));
-      this.a(this.j, $$2, $$3, $$4, $$5, a($$16.b()));
-      this.a(this.k, $$2, $$3, $$4, $$5, a($$16.c()));
-      this.a(this.l, $$2, $$3, $$4, $$5, a($$16.d()));
-      $$2.b();
+         $$2.b();
+      }
    }
 
-   private void a(fxo $$0, fam $$1, ged $$2, int $$3, int $$4, grs $$5) {
-      $$0.a($$1, $$5.a($$2, gel::c), $$3, $$4);
+   private void a(fao $$0, fas $$1, fxq $$2, fxq $$3, fxq $$4, float $$5, int $$6, int $$7) {
+      $$2.e = -($$5 * (float) (Math.PI / 2));
+      $$3.e = $$2.e;
+      $$2.a($$0, $$1, $$6, $$7);
+      $$3.a($$0, $$1, $$6, $$7);
+      $$4.a($$0, $$1, $$6, $$7);
    }
 }

@@ -1,59 +1,73 @@
 import com.mojang.serialization.Codec;
 
-public class eao extends ebk<edy> {
-   private static final dsk a = dfj.mZ.o().a(del.h, Integer.valueOf(1)).a(del.i, dsw.a).a(del.j, Integer.valueOf(0));
-   private static final dsk b = a.a(del.i, dsw.c).a(del.j, Integer.valueOf(1));
-   private static final dsk c = a.a(del.i, dsw.c);
-   private static final dsk d = a.a(del.i, dsw.b);
-
-   public eao(Codec<edy> $$0) {
+public abstract class eao extends ebl<edr> {
+   public eao(Codec<edr> $$0) {
       super($$0);
    }
 
-   @Override
-   public boolean a(ebm<edy> $$0) {
-      int $$1 = 0;
-      ja $$2 = $$0.e();
-      ddb $$3 = $$0.b();
-      ayo $$4 = $$0.d();
-      edy $$5 = $$0.f();
-      ja.a $$6 = $$2.j();
-      ja.a $$7 = $$2.j();
-      if ($$3.u($$6)) {
-         if (dfj.mZ.o().a($$3, $$6)) {
-            int $$8 = $$4.a(12) + 5;
-            if ($$4.i() < $$5.l) {
-               int $$9 = $$4.a(4) + 1;
+   protected void a(dch $$0, ayo $$1, ja $$2, edr $$3, int $$4, ja.a $$5) {
+      for (int $$6 = 0; $$6 < $$4; $$6++) {
+         $$5.g($$2).c(jf.b, $$6);
+         if (!$$0.a_($$5).i($$0, $$5)) {
+            this.a($$0, $$5, $$3.c.a($$1, $$2));
+         }
+      }
+   }
 
-               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
-                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
-                     int $$12 = $$10 - $$2.u();
-                     int $$13 = $$11 - $$2.w();
-                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
-                        $$7.d($$10, $$3.a(dyf.a.b, $$10, $$11) - 1, $$11);
-                        if (b($$3.a_($$7))) {
-                           $$3.a($$7, dfj.l.o(), 2);
-                        }
+   protected int a(ayo $$0) {
+      int $$1 = $$0.a(3) + 4;
+      if ($$0.a(12) == 0) {
+         $$1 *= 2;
+      }
+
+      return $$1;
+   }
+
+   protected boolean a(dch $$0, ja $$1, int $$2, ja.a $$3, edr $$4) {
+      int $$5 = $$1.v();
+      if ($$5 >= $$0.I_() + 1 && $$5 + $$2 + 1 < $$0.am()) {
+         dsl $$6 = $$0.a_($$1.d());
+         if (!b($$6) && !$$6.a(avw.ba)) {
+            return false;
+         } else {
+            for (int $$7 = 0; $$7 <= $$2; $$7++) {
+               int $$8 = this.a(-1, -1, $$4.d, $$7);
+
+               for (int $$9 = -$$8; $$9 <= $$8; $$9++) {
+                  for (int $$10 = -$$8; $$10 <= $$8; $$10++) {
+                     dsl $$11 = $$0.a_($$3.a($$1, $$9, $$7, $$10));
+                     if (!$$11.i() && !$$11.a(avw.O)) {
+                        return false;
                      }
                   }
                }
             }
 
-            for (int $$14 = 0; $$14 < $$8 && $$3.u($$6); $$14++) {
-               $$3.a($$6, a, 2);
-               $$6.c(jf.b, 1);
-            }
-
-            if ($$6.v() - $$2.v() >= 3) {
-               $$3.a($$6, b, 2);
-               $$3.a($$6.c(jf.a, 1), c, 2);
-               $$3.a($$6.c(jf.a, 1), d, 2);
-            }
+            return true;
          }
-
-         $$1++;
+      } else {
+         return false;
       }
-
-      return $$1 > 0;
    }
+
+   @Override
+   public boolean a(ebn<edr> $$0) {
+      ddc $$1 = $$0.b();
+      ja $$2 = $$0.e();
+      ayo $$3 = $$0.d();
+      edr $$4 = $$0.f();
+      int $$5 = this.a($$3);
+      ja.a $$6 = new ja.a();
+      if (!this.a($$1, $$2, $$5, $$6, $$4)) {
+         return false;
+      } else {
+         this.a($$1, $$3, $$2, $$5, $$6, $$4);
+         this.a($$1, $$3, $$2, $$4, $$5, $$6);
+         return true;
+      }
+   }
+
+   protected abstract int a(int var1, int var2, int var3, int var4);
+
+   protected abstract void a(dch var1, ayo var2, ja var3, int var4, ja.a var5, edr var6);
 }

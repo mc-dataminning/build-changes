@@ -3,10 +3,10 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-public record adf(epu b, byte c, boolean d, Optional<List<epq>> e, Optional<epw.b> f) implements zb<abn> {
-   public static final ys<wf, adf> a = ys.a(epu.b, adf::b, yq.c, adf::e, yq.b, adf::f, epq.a.a(yq.a()).a(yq::a), adf::g, epw.b.a, adf::h, adf::new);
+public record adf(epw b, byte c, boolean d, Optional<List<eps>> e, Optional<epy.b> f) implements zb<abn> {
+   public static final ys<wf, adf> a = ys.a(epw.b, adf::b, yq.c, adf::e, yq.b, adf::f, eps.a.a(yq.a()).a(yq::a), adf::g, epy.b.a, adf::h, adf::new);
 
-   public adf(epu $$0, byte $$1, boolean $$2, @Nullable Collection<epq> $$3, @Nullable epw.b $$4) {
+   public adf(epw $$0, byte $$1, boolean $$2, @Nullable Collection<eps> $$3, @Nullable epy.b $$4) {
       this($$0, $$1, $$2, $$3 != null ? Optional.of(List.copyOf($$3)) : Optional.empty(), Optional.ofNullable($$4));
    }
 
@@ -19,7 +19,7 @@ public record adf(epu b, byte c, boolean d, Optional<List<epq>> e, Optional<epw.
       $$0.a(this);
    }
 
-   public void a(epw $$0) {
+   public void a(epy $$0) {
       this.e.ifPresent($$0::a);
       this.f.ifPresent($$1 -> $$1.a($$0));
    }
@@ -32,11 +32,11 @@ public record adf(epu b, byte c, boolean d, Optional<List<epq>> e, Optional<epw.
       return this.d;
    }
 
-   public Optional<List<epq>> g() {
+   public Optional<List<eps>> g() {
       return this.e;
    }
 
-   public Optional<epw.b> h() {
+   public Optional<epy.b> h() {
       return this.f;
    }
 }

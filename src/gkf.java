@@ -1,11 +1,12 @@
-public abstract class gkf<T extends cix> extends gks<T, fvc<T>> {
-   protected gkf(gjm.a $$0, fvc<T> $$1, float $$2) {
-      super($$0, $$1, $$2);
-      this.a(new gnd<>(this, $$0.f(), $$0.d()));
+public abstract class gkf<T extends bte, M extends fvd<T>> extends gku<T, M> {
+   public gkf(gjo.a $$0, M $$1, float $$2) {
+      this($$0, $$1, $$2, 1.0F, 1.0F, 1.0F);
    }
 
-   protected void a(T $$0, fam $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   public gkf(gjo.a $$0, M $$1, float $$2, float $$3, float $$4, float $$5) {
+      super($$0, $$1, $$2);
+      this.a(new gnf<>(this, $$0.f(), $$3, $$4, $$5, $$0.d()));
+      this.a(new gnj<>(this, $$0.f()));
+      this.a(new gnt<>(this, $$0.d()));
    }
 }

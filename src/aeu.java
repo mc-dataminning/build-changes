@@ -5,11 +5,11 @@ public class aeu implements zb<abn> {
    private final int d;
    private final int e;
 
-   public aeu(bsg $$0) {
-      this($$0.am(), $$0.dt());
+   public aeu(bsh $$0) {
+      this($$0.an(), $$0.du());
    }
 
-   public aeu(int $$0, ewf $$1) {
+   public aeu(int $$0, ewh $$1) {
       this.b = $$0;
       double $$2 = 3.9;
       double $$3 = ayg.a($$1.c, -3.9, 3.9);

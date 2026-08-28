@@ -1,155 +1,76 @@
-import it.unimi.dsi.fastutil.ints.IntArrayFIFOQueue;
-import it.unimi.dsi.fastutil.ints.IntPriorityQueue;
-import java.util.BitSet;
-import java.util.EnumSet;
-import java.util.Set;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import javax.annotation.Nullable;
 
 public class ghe {
-   private static final int a = 4;
-   private static final int b = 16;
-   private static final int c = 15;
-   private static final int d = 4096;
-   private static final int e = 0;
-   private static final int f = 4;
-   private static final int g = 8;
-   private static final int h = (int)Math.pow(16.0, 0.0);
-   private static final int i = (int)Math.pow(16.0, 1.0);
-   private static final int j = (int)Math.pow(16.0, 2.0);
-   private static final int k = -1;
-   private static final jf[] l = jf.values();
-   private final BitSet m = new BitSet(4096);
-   private static final int[] n = ac.a(new int[1352], $$0 -> {
-      int $$1 = 0;
-      int $$2 = 15;
-      int $$3 = 0;
+   private final Long2ObjectMap<ghe.a> a = new Long2ObjectOpenHashMap();
 
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            for (int $$6 = 0; $$6 < 16; $$6++) {
-               if ($$4 == 0 || $$4 == 15 || $$5 == 0 || $$5 == 15 || $$6 == 0 || $$6 == 15) {
-                  $$0[$$3++] = a($$4, $$5, $$6);
-               }
-            }
+   @Nullable
+   public ghd a(dcg $$0, ja $$1, ja $$2, int $$3) {
+      int $$4 = kc.a($$1.u() - $$3);
+      int $$5 = kc.a($$1.w() - $$3);
+      int $$6 = kc.a($$2.u() + $$3);
+      int $$7 = kc.a($$2.w() + $$3);
+      ghe.a[][] $$8 = new ghe.a[$$6 - $$4 + 1][$$7 - $$5 + 1];
+
+      for (int $$9 = $$4; $$9 <= $$6; $$9++) {
+         for (int $$10 = $$5; $$10 <= $$7; $$10++) {
+            $$8[$$9 - $$4][$$10 - $$5] = (ghe.a)this.a.computeIfAbsent(dbn.c($$9, $$10), $$1x -> new ghe.a($$0.d(dbn.a($$1x), dbn.b($$1x))));
          }
       }
-   });
-   private int o = 4096;
 
-   public void a(ja $$0) {
-      this.m.set(b($$0), true);
-      this.o--;
-   }
-
-   private static int b(ja $$0) {
-      return a($$0.u() & 15, $$0.v() & 15, $$0.w() & 15);
-   }
-
-   private static int a(int $$0, int $$1, int $$2) {
-      return $$0 << 0 | $$1 << 8 | $$2 << 4;
-   }
-
-   public ghf a() {
-      ghf $$0 = new ghf();
-      if (4096 - this.o < 256) {
-         $$0.a(true);
-      } else if (this.o == 0) {
-         $$0.a(false);
+      if (a($$1, $$2, $$4, $$5, $$8)) {
+         return null;
       } else {
-         for (int $$1 : n) {
-            if (!this.m.get($$1)) {
-               $$0.a(this.a($$1));
+         ghc[][] $$11 = new ghc[$$6 - $$4 + 1][$$7 - $$5 + 1];
+
+         for (int $$12 = $$4; $$12 <= $$6; $$12++) {
+            for (int $$13 = $$5; $$13 <= $$7; $$13++) {
+               $$11[$$12 - $$4][$$13 - $$5] = $$8[$$12 - $$4][$$13 - $$5].b();
+            }
+         }
+
+         return new ghd($$0, $$4, $$5, $$11);
+      }
+   }
+
+   private static boolean a(ja $$0, ja $$1, int $$2, int $$3, ghe.a[][] $$4) {
+      int $$5 = kc.a($$0.u());
+      int $$6 = kc.a($$0.w());
+      int $$7 = kc.a($$1.u());
+      int $$8 = kc.a($$1.w());
+
+      for (int $$9 = $$5; $$9 <= $$7; $$9++) {
+         for (int $$10 = $$6; $$10 <= $$8; $$10++) {
+            dur $$11 = $$4[$$9 - $$2][$$10 - $$3].a();
+            if (!$$11.a($$0.v(), $$1.v())) {
+               return false;
             }
          }
       }
 
-      return $$0;
+      return true;
    }
 
-   private Set<jf> a(int $$0) {
-      Set<jf> $$1 = EnumSet.noneOf(jf.class);
-      IntPriorityQueue $$2 = new IntArrayFIFOQueue();
-      $$2.enqueue($$0);
-      this.m.set($$0, true);
+   static final class a {
+      private final dur a;
+      @Nullable
+      private ghc b;
 
-      while (!$$2.isEmpty()) {
-         int $$3 = $$2.dequeueInt();
-         this.a($$3, $$1);
+      a(dur $$0) {
+         this.a = $$0;
+      }
 
-         for (jf $$4 : l) {
-            int $$5 = this.a($$3, $$4);
-            if ($$5 >= 0 && !this.m.get($$5)) {
-               this.m.set($$5, true);
-               $$2.enqueue($$5);
-            }
+      public dur a() {
+         return this.a;
+      }
+
+      public ghc b() {
+         if (this.b == null) {
+            this.b = new ghc(this.a);
          }
-      }
 
-      return $$1;
-   }
-
-   private void a(int $$0, Set<jf> $$1) {
-      int $$2 = $$0 >> 0 & 15;
-      if ($$2 == 0) {
-         $$1.add(jf.e);
-      } else if ($$2 == 15) {
-         $$1.add(jf.f);
-      }
-
-      int $$3 = $$0 >> 8 & 15;
-      if ($$3 == 0) {
-         $$1.add(jf.a);
-      } else if ($$3 == 15) {
-         $$1.add(jf.b);
-      }
-
-      int $$4 = $$0 >> 4 & 15;
-      if ($$4 == 0) {
-         $$1.add(jf.c);
-      } else if ($$4 == 15) {
-         $$1.add(jf.d);
-      }
-   }
-
-   private int a(int $$0, jf $$1) {
-      switch ($$1) {
-         case a:
-            if (($$0 >> 8 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - j;
-         case b:
-            if (($$0 >> 8 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + j;
-         case c:
-            if (($$0 >> 4 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - i;
-         case d:
-            if (($$0 >> 4 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + i;
-         case e:
-            if (($$0 >> 0 & 15) == 0) {
-               return -1;
-            }
-
-            return $$0 - h;
-         case f:
-            if (($$0 >> 0 & 15) == 15) {
-               return -1;
-            }
-
-            return $$0 + h;
-         default:
-            return -1;
+         return this.b;
       }
    }
 }

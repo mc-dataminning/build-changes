@@ -11,7 +11,7 @@ public class bfo extends DataFix {
    public TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
          "OptionsForceVBOFix",
-         this.getInputSchema().getType(bgg.e),
+         this.getInputSchema().getType(bgh.e),
          $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.set("useVbo", $$0x.createString("true")))
       );
    }

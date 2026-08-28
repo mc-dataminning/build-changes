@@ -1,37 +1,31 @@
-import com.google.common.annotations.VisibleForTesting;
-import it.unimi.dsi.fastutil.ints.IntArraySet;
-import it.unimi.dsi.fastutil.ints.IntCollection;
-import it.unimi.dsi.fastutil.ints.IntSet;
-import java.util.BitSet;
+import com.mojang.datafixers.DataFixer;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.concurrent.CompletableFuture;
+import javax.annotation.Nullable;
+import org.apache.commons.io.FileUtils;
 
-public class dvv {
-   private final BitSet a = new BitSet();
+public class dvv extends dwc {
+   private final dvt a;
+   private final Path b;
 
-   public void a(int $$0, int $$1) {
-      this.a.set($$0, $$0 + $$1);
+   public dvv(dwa $$0, Path $$1, dwa $$2, Path $$3, DataFixer $$4, boolean $$5, azo $$6) {
+      super($$0, $$1, $$4, $$5, $$6);
+      this.b = $$3;
+      this.a = new dvt($$2, $$3, $$5);
    }
 
-   public void b(int $$0, int $$1) {
-      this.a.clear($$0, $$0 + $$1);
+   @Override
+   public CompletableFuture<Void> a(dbn $$0, @Nullable tx $$1) {
+      return this.a.a($$0, $$1);
    }
 
-   public int a(int $$0) {
-      int $$1 = 0;
-
-      while (true) {
-         int $$2 = this.a.nextClearBit($$1);
-         int $$3 = this.a.nextSetBit($$2);
-         if ($$3 == -1 || $$3 - $$2 >= $$0) {
-            this.a($$2, $$0);
-            return $$2;
-         }
-
-         $$1 = $$3;
+   @Override
+   public void close() throws IOException {
+      super.close();
+      this.a.close();
+      if (this.b.toFile().exists()) {
+         FileUtils.deleteDirectory(this.b.toFile());
       }
-   }
-
-   @VisibleForTesting
-   public IntSet a() {
-      return this.a.stream().collect(IntArraySet::new, IntCollection::add, IntCollection::addAll);
    }
 }

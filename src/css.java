@@ -1,16 +1,22 @@
-import java.util.List;
+public class css extends cvt {
+   protected css(cvs $$0, awm<dfi> $$1, cty.a $$2) {
+      super($$0, $$2.a(kn.x, $$0.a($$1)));
+   }
 
-public class css extends ctx {
-   public css(ctx.a $$0) {
-      super($$0);
+   public static cwx a(cvs $$0, float $$1, float $$2) {
+      return cwx.a()
+         .a(buk.c, new bui(e, "Tool modifier", (double)($$1 + $$0.c()), bui.a.a), bsp.b)
+         .a(buk.e, new bui(f, "Tool modifier", (double)$$2, bui.a.a), bsp.b)
+         .a();
    }
 
    @Override
-   public void a(cuc $$0, ctx.b $$1, List<wu> $$2, cvv $$3) {
-      $$2.add(this.c().a(n.h));
+   public boolean a(cud $$0, btc $$1, btc $$2) {
+      return true;
    }
 
-   public xi c() {
-      return wu.c(this.a() + ".desc");
+   @Override
+   public void b(cud $$0, btc $$1, btc $$2) {
+      $$0.a(2, $$2, bso.a);
    }
 }

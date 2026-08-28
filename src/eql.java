@@ -1,77 +1,313 @@
-import com.mojang.datafixers.DataFixer;
-import com.mojang.logging.LogUtils;
-import java.io.File;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Optional;
-import org.slf4j.Logger;
+import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public class eql {
-   private static final Logger b = LogUtils.getLogger();
-   private final File c;
-   protected final DataFixer a;
-   private static final DateTimeFormatter d = eqd.a();
+public class eql implements Comparable<eql> {
+   public static final wu a = wu.c("selectWorld.select");
+   private final dck b;
+   private final eqm c;
+   private final String d;
+   private final boolean e;
+   private final boolean f;
+   private final boolean g;
+   private final Path h;
+   @Nullable
+   private wu i;
 
-   public eql(eqi.c $$0, DataFixer $$1) {
-      this.a = $$1;
-      this.c = $$0.a(eqg.c).toFile();
-      this.c.mkdirs();
+   public eql(dck $$0, eqm $$1, String $$2, boolean $$3, boolean $$4, boolean $$5, Path $$6) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.f = $$4;
+      this.g = $$5;
+      this.h = $$6;
+      this.e = $$3;
    }
 
-   public void a(cmk $$0) {
-      try {
-         tx $$1 = $$0.f(new tx());
-         Path $$2 = this.c.toPath();
-         Path $$3 = Files.createTempFile($$2, $$0.cB() + "-", ".dat");
-         uk.a($$1, $$3);
-         Path $$4 = $$2.resolve($$0.cB() + ".dat");
-         Path $$5 = $$2.resolve($$0.cB() + ".dat_old");
-         ac.a($$4, $$3, $$5);
-      } catch (Exception var7) {
-         b.warn("Failed to save player data for {}", $$0.ag().getString());
+   public String a() {
+      return this.d;
+   }
+
+   public String b() {
+      return StringUtils.isEmpty(this.b.a()) ? this.d : this.b.a();
+   }
+
+   public Path c() {
+      return this.h;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public boolean e() {
+      return this.g;
+   }
+
+   public long f() {
+      return this.c.b();
+   }
+
+   public int a(eql $$0) {
+      if (this.f() < $$0.f()) {
+         return 1;
+      } else {
+         return this.f() > $$0.f() ? -1 : this.d.compareTo($$0.d);
       }
    }
 
-   private void a(cmk $$0, String $$1) {
-      Path $$2 = this.c.toPath();
-      Path $$3 = $$2.resolve($$0.cB() + $$1);
-      Path $$4 = $$2.resolve($$0.cB() + "_corrupted_" + LocalDateTime.now().format(d) + $$1);
-      if (Files.isRegularFile($$3)) {
-         try {
-            Files.copy($$3, $$4, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.COPY_ATTRIBUTES);
-         } catch (Exception var7) {
-            b.warn("Failed to copy the player.dat file for {}", $$0.ag().getString(), var7);
+   public dck g() {
+      return this.b;
+   }
+
+   public dcd h() {
+      return this.b.b();
+   }
+
+   public boolean i() {
+      return this.b.c();
+   }
+
+   public boolean j() {
+      return this.b.e();
+   }
+
+   public xi k() {
+      return azd.b(this.c.c()) ? wu.c("selectWorld.versionUnknown") : wu.b(this.c.c());
+   }
+
+   public eqm l() {
+      return this.c;
+   }
+
+   public boolean m() {
+      return this.o().a();
+   }
+
+   public boolean n() {
+      return this.o() == eql.a.b;
+   }
+
+   public eql.a o() {
+      ad $$0 = aa.b();
+      int $$1 = $$0.d().c();
+      int $$2 = this.c.d().c();
+      if (!$$0.g() && $$2 < $$1) {
+         return eql.a.c;
+      } else {
+         return $$2 > $$1 ? eql.a.b : eql.a.a;
+      }
+   }
+
+   public boolean p() {
+      return this.f;
+   }
+
+   public boolean q() {
+      return !this.p() && !this.d() ? !this.r() : true;
+   }
+
+   public boolean r() {
+      return aa.b().d().a(this.c.d());
+   }
+
+   public wu s() {
+      if (this.i == null) {
+         this.i = this.z();
+      }
+
+      return this.i;
+   }
+
+   private wu z() {
+      if (this.p()) {
+         return wu.c("selectWorld.locked").a(n.m);
+      } else if (this.d()) {
+         return wu.c("selectWorld.conversion").a(n.m);
+      } else if (!this.r()) {
+         return wu.a("selectWorld.incompatible.info", this.k()).a(n.m);
+      } else {
+         xi $$0 = this.i() ? wu.i().b(wu.c("gameMode.hardcore").b(-65536)) : wu.c("gameMode." + this.h().b());
+         if (this.j()) {
+            $$0.f(", ").b(wu.c("selectWorld.commands"));
          }
-      }
-   }
 
-   private Optional<tx> b(cmk $$0, String $$1) {
-      File $$2 = new File(this.c, $$0.cB() + $$1);
-      if ($$2.exists() && $$2.isFile()) {
-         try {
-            return Optional.of(uk.a($$2.toPath(), ug.a()));
-         } catch (Exception var5) {
-            b.warn("Failed to load player data for {}", $$0.ag().getString());
+         if (this.e()) {
+            $$0.f(", ").b(wu.c("selectWorld.experimental").a(n.o));
          }
-      }
 
-      return Optional.empty();
+         xi $$1 = this.k();
+         xi $$2 = wu.b(", ").b(wu.c("selectWorld.version")).b(wt.v);
+         if (this.m()) {
+            $$2.b($$1.a(this.n() ? n.m : n.u));
+         } else {
+            $$2.b($$1);
+         }
+
+         $$0.b($$2);
+         return $$0;
+      }
    }
 
-   public Optional<tx> b(cmk $$0) {
-      Optional<tx> $$1 = this.b($$0, ".dat");
-      if ($$1.isEmpty()) {
-         this.a($$0, ".dat");
+   public wu t() {
+      return a;
+   }
+
+   public boolean u() {
+      return !this.q();
+   }
+
+   public boolean v() {
+      return !this.d() && !this.p();
+   }
+
+   public boolean w() {
+      return !this.q();
+   }
+
+   public boolean x() {
+      return !this.q();
+   }
+
+   public boolean y() {
+      return true;
+   }
+
+   public static enum a {
+      a(false, false, ""),
+      b(true, true, "downgrade"),
+      c(true, false, "snapshot");
+
+      private final boolean d;
+      private final boolean e;
+      private final String f;
+
+      private a(final boolean $$0, final boolean $$1, final String $$2) {
+         this.d = $$0;
+         this.e = $$1;
+         this.f = $$2;
       }
 
-      return $$1.or(() -> this.b($$0, ".dat_old")).map($$1x -> {
-         int $$2 = um.b($$1x, -1);
-         $$1x = azo.b.a(this.a, $$1x, $$2);
-         $$0.g($$1x);
-         return $$1x;
-      });
+      public boolean a() {
+         return this.d;
+      }
+
+      public boolean b() {
+         return this.e;
+      }
+
+      public String c() {
+         return this.f;
+      }
+   }
+
+   public static class b extends eql {
+      private static final wu b = wu.c("recover_world.warning").a($$0 -> $$0.a(-65536));
+      private static final wu c = wu.c("recover_world.button");
+      private final long d;
+
+      public b(String $$0, Path $$1, long $$2) {
+         super(null, null, $$0, false, false, false, $$1);
+         this.d = $$2;
+      }
+
+      @Override
+      public String b() {
+         return this.a();
+      }
+
+      @Override
+      public wu s() {
+         return b;
+      }
+
+      @Override
+      public long f() {
+         return this.d;
+      }
+
+      @Override
+      public boolean q() {
+         return false;
+      }
+
+      @Override
+      public wu t() {
+         return c;
+      }
+
+      @Override
+      public boolean u() {
+         return true;
+      }
+
+      @Override
+      public boolean v() {
+         return false;
+      }
+
+      @Override
+      public boolean w() {
+         return false;
+      }
+
+      @Override
+      public boolean x() {
+         return false;
+      }
+   }
+
+   public static class c extends eql {
+      private static final wu b = wu.c("symlink_warning.more_info");
+      private static final wu c = wu.c("symlink_warning.title").b(-65536);
+
+      public c(String $$0, Path $$1) {
+         super(null, null, $$0, false, false, false, $$1);
+      }
+
+      @Override
+      public String b() {
+         return this.a();
+      }
+
+      @Override
+      public wu s() {
+         return c;
+      }
+
+      @Override
+      public long f() {
+         return -1L;
+      }
+
+      @Override
+      public boolean q() {
+         return false;
+      }
+
+      @Override
+      public wu t() {
+         return b;
+      }
+
+      @Override
+      public boolean u() {
+         return true;
+      }
+
+      @Override
+      public boolean v() {
+         return false;
+      }
+
+      @Override
+      public boolean w() {
+         return false;
+      }
+
+      @Override
+      public boolean x() {
+         return false;
+      }
    }
 }

@@ -1,24 +1,16 @@
-import java.util.Optional;
-import java.util.function.Function;
+public class cnu extends cnt {
+   private static final float f = 3.0F;
 
-public class cnu extends cns {
-   private static final dby f = new dcw(true, false, Optional.of(1.1F), lq.e.b(avw.cy).map(Function.identity()));
-   private static final float g = 1.2F;
-
-   public cnu(bsm<? extends cns> $$0, dcf $$1) {
+   public cnu(bsn<? extends cnt> $$0, dcg $$1) {
       super($$0, $$1);
    }
 
-   public cnu(cmk $$0, dcf $$1, double $$2, double $$3, double $$4) {
-      super(bsm.bn, $$1, $$0, $$2, $$3, $$4);
-   }
-
-   public cnu(dcf $$0, double $$1, double $$2, double $$3, ewf $$4) {
-      super(bsm.bn, $$1, $$2, $$3, $$4, $$0);
+   public cnu(ckn $$0, dcg $$1) {
+      super(bsn.n, $$1, $$0, $$0.dw(), $$0.gp(), $$0.dC());
    }
 
    @Override
    protected void y() {
-      this.dQ().a(this, null, f, this.dv(), this.dx(), this.dB(), 1.2F, false, dcf.a.e, lj.A, lj.z, avh.Cp);
+      this.dR().a(this, null, e, this.dw(), this.dy(), this.dC(), 3.0F, false, dcg.a.e, lj.A, lj.z, avh.cQ);
    }
 }

@@ -104,7 +104,7 @@ public class aow {
    }
 
    private static int a(eq $$0, float $$1) throws CommandSyntaxException {
-      dub $$2 = $$0.l().J().C_();
+      duc $$2 = $$0.l().J().C_();
       if ($$2.n() == (double)$$1) {
          throw h.create();
       } else {
@@ -115,7 +115,7 @@ public class aow {
    }
 
    private static int b(eq $$0, float $$1) throws CommandSyntaxException {
-      dub $$2 = $$0.l().J().C_();
+      duc $$2 = $$0.l().J().C_();
       if ($$2.o() == (double)$$1) {
          throw i.create();
       } else {
@@ -126,7 +126,7 @@ public class aow {
    }
 
    private static int a(eq $$0, int $$1) throws CommandSyntaxException {
-      dub $$2 = $$0.l().J().C_();
+      duc $$2 = $$0.l().J().C_();
       if ($$2.q() == $$1) {
          throw f.create();
       } else {
@@ -137,7 +137,7 @@ public class aow {
    }
 
    private static int b(eq $$0, int $$1) throws CommandSyntaxException {
-      dub $$2 = $$0.l().J().C_();
+      duc $$2 = $$0.l().J().C_();
       if ($$2.r() == $$1) {
          throw g.create();
       } else {
@@ -153,8 +153,8 @@ public class aow {
       return ayg.a($$1 + 0.5);
    }
 
-   private static int a(eq $$0, ewe $$1) throws CommandSyntaxException {
-      dub $$2 = $$0.l().J().C_();
+   private static int a(eq $$0, ewg $$1) throws CommandSyntaxException {
+      duc $$2 = $$0.l().J().C_();
       if ($$2.a() == (double)$$1.i && $$2.b() == (double)$$1.j) {
          throw a.create();
       } else if (!((double)Math.abs($$1.i) > 2.9999984E7) && !((double)Math.abs($$1.j) > 2.9999984E7)) {
@@ -167,7 +167,7 @@ public class aow {
    }
 
    private static int a(eq $$0, double $$1, long $$2) throws CommandSyntaxException {
-      dub $$3 = $$0.l().J().C_();
+      duc $$3 = $$0.l().J().C_();
       double $$4 = $$3.i();
       if ($$4 == $$1) {
          throw b.create();

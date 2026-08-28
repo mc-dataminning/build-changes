@@ -3,7 +3,7 @@ import com.mojang.datafixers.schemas.Schema;
 import java.util.Map;
 import java.util.Objects;
 
-public class bdi extends bgs {
+public class bdi extends bgt {
    public static final Map<String, String> a = ImmutableMap.builder().put("minecraft:zombie_pigman_spawn_egg", "minecraft:zombified_piglin_spawn_egg").build();
 
    public bdi(Schema $$0) {

@@ -19,8 +19,8 @@ public class bdz extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgg.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bgg.D.typeName(), bhs.a()));
+      Type<?> $$0 = this.getInputSchema().getType(bgh.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bgh.D.typeName(), bht.a()));
       OpticFinder<?> $$2 = $$0.findField("tag");
       OpticFinder<?> $$3 = $$2.type().findField("BlockEntityTag");
       return this.fixTypeEverywhereTyped("ItemRemoveBlockEntityTagFix", $$0, $$3x -> {

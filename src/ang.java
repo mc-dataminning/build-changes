@@ -17,13 +17,13 @@ public class ang {
                ((RequiredArgumentBuilder)er.a("name", fn.a($$1))
                      .executes(
                         $$0x -> a(
-                              (eq)$$0x.getSource(), fn.a($$0x, "name"), ((eq)$$0x.getSource()).d(), ewf.b, 0.0F, 0, false, ((eq)$$0x.getSource()).l().ai().t()
+                              (eq)$$0x.getSource(), fn.a($$0x, "name"), ((eq)$$0x.getSource()).d(), ewh.b, 0.0F, 0, false, ((eq)$$0x.getSource()).l().ai().t()
                            )
                      ))
                   .then(
                      ((RequiredArgumentBuilder)er.a("pos", gt.a())
                            .executes(
-                              $$0x -> a((eq)$$0x.getSource(), fn.a($$0x, "name"), gt.a($$0x, "pos"), ewf.b, 0.0F, 0, false, ((eq)$$0x.getSource()).l().ai().t())
+                              $$0x -> a((eq)$$0x.getSource(), fn.a($$0x, "name"), gt.a($$0x, "pos"), ewh.b, 0.0F, 0, false, ((eq)$$0x.getSource()).l().ai().t())
                            ))
                         .then(
                            er.a("delta", gt.a(false))
@@ -111,7 +111,7 @@ public class ang {
       );
    }
 
-   private static int a(eq $$0, lh $$1, ewf $$2, ewf $$3, float $$4, int $$5, boolean $$6, Collection<aqn> $$7) throws CommandSyntaxException {
+   private static int a(eq $$0, lh $$1, ewh $$2, ewh $$3, float $$4, int $$5, boolean $$6, Collection<aqn> $$7) throws CommandSyntaxException {
       int $$8 = 0;
 
       for (aqn $$9 : $$7) {

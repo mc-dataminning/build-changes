@@ -1,179 +1,188 @@
-import java.util.List;
-import java.util.function.Consumer;
+import com.mojang.logging.LogUtils;
+import io.netty.channel.ChannelFuture;
+import java.net.InetSocketAddress;
+import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fmk extends fnj {
-   static final akk b = new akk("container/slot");
-   private static final int c = 18;
-   private static final int q = 20;
-   private static final int r = 1;
-   private static final int s = 1;
-   private static final int u = 2;
-   private static final int v = 2;
-   protected final fsg a;
-   private final Consumer<egz> w;
-   egz x;
-   private wu y;
-   private wu z;
-   private fmk.a A;
-   private fhs B;
+public class fmk extends fnl {
+   private static final AtomicInteger c = new AtomicInteger(0);
+   static final Logger q = LogUtils.getLogger();
+   private static final long r = 2000L;
+   public static final wu a = wu.c("connect.aborted");
+   public static final wu b = wu.a("disconnect.genericReason", wu.c("disconnect.unknownHost"));
+   @Nullable
+   volatile vp s;
+   @Nullable
+   ChannelFuture u;
+   volatile boolean v;
+   final fnl w;
+   private wu x = wu.c("connect.connecting");
+   private long y = -1L;
+   final wu z;
 
-   public fmk(fsg $$0, Consumer<egz> $$1, egz $$2) {
-      super(wu.c("createWorld.customize.flat.title"));
-      this.a = $$0;
-      this.w = $$1;
-      this.x = $$2;
+   private fmk(fnl $$0, wu $$1) {
+      super(ffo.a);
+      this.w = $$0;
+      this.z = $$1;
    }
 
-   public egz l() {
-      return this.x;
+   public static void a(fnl $$0, ffw $$1, gad $$2, fyz $$3, boolean $$4, @Nullable fze $$5) {
+      if ($$1.y instanceof fmk) {
+         q.error("Attempt to connect while already connecting");
+      } else {
+         wu $$6;
+         if ($$5 != null) {
+            $$6 = wt.q;
+         } else if ($$4) {
+            $$6 = gdo.a;
+         } else {
+            $$6 = wt.r;
+         }
+
+         fmk $$9 = new fmk($$0, $$6);
+         if ($$5 != null) {
+            $$9.a(wu.c("connect.transferring"));
+         }
+
+         $$1.y();
+         $$1.aR();
+         $$1.a(fzr.a($$3.b));
+         $$1.aZ().a(gdp.c.b, $$3.b, $$3.a);
+         $$1.a($$9);
+         $$9.a($$1, $$2, $$3, $$5);
+      }
    }
 
-   public void a(egz $$0) {
+   private void a(final ffw $$0, final gad $$1, final fyz $$2, @Nullable final fze $$3) {
+      q.info("Connecting to {}, {}", $$1.a(), $$1.b());
+      Thread $$4 = new Thread("Server Connector #" + c.incrementAndGet()) {
+         @Override
+         public void run() {
+            InetSocketAddress $$0 = null;
+
+            try {
+               if (fmk.this.v) {
+                  return;
+               }
+
+               Optional<InetSocketAddress> $$1 = gaf.a.a($$1).map(gac::d);
+               if (fmk.this.v) {
+                  return;
+               }
+
+               if ($$1.isEmpty()) {
+                  $$0.execute(() -> $$0.a(new fms(fmk.this.w, fmk.this.z, fmk.b)));
+                  return;
+               }
+
+               $$0 = $$1.get();
+               vp $$2;
+               synchronized (fmk.this) {
+                  if (fmk.this.v) {
+                     return;
+                  }
+
+                  $$2 = new vp(zc.b);
+                  $$2.a($$0.aN().n());
+                  fmk.this.u = vp.a($$0, $$0.m.az(), $$2);
+               }
+
+               fmk.this.u.syncUninterruptibly();
+               synchronized (fmk.this) {
+                  if (fmk.this.v) {
+                     $$2.a(fmk.a);
+                     return;
+                  }
+
+                  fmk.this.s = $$2;
+                  $$0.ae().a($$2, a($$2.b()));
+               }
+
+               fmk.this.s
+                  .a($$0.getHostName(), $$0.getPort(), aio.a, aio.b, new fyk(fmk.this.s, $$0, $$2, fmk.this.w, false, null, fmk.this::a, $$3), $$3 != null);
+               fmk.this.s.a(new air($$0.X().c(), $$0.X().b()));
+            } catch (Exception var9) {
+               if (fmk.this.v) {
+                  return;
+               }
+
+               Exception $$6;
+               if (var9.getCause() instanceof Exception $$5) {
+                  $$6 = $$5;
+               } else {
+                  $$6 = var9;
+               }
+
+               fmk.q.error("Couldn't connect to server", var9);
+               String $$8 = $$0 == null
+                  ? $$6.getMessage()
+                  : $$6.getMessage().replaceAll($$0.getHostName() + ":" + $$0.getPort(), "").replaceAll($$0.toString(), "");
+               $$0.execute(() -> $$0.a(new fms(fmk.this.w, fmk.this.z, wu.a("disconnect.genericReason", $$8))));
+            }
+         }
+
+         private static gsk.c a(fyz.a $$0x) {
+            return switch ($$0) {
+               case a -> gsk.c.b;
+               case b -> gsk.c.c;
+               case c -> gsk.c.a;
+            };
+         }
+      };
+      $$4.setUncaughtExceptionHandler(new r(q));
+      $$4.start();
+   }
+
+   private void a(wu $$0) {
       this.x = $$0;
    }
 
    @Override
+   public void e() {
+      if (this.s != null) {
+         if (this.s.i()) {
+            this.s.b();
+         } else {
+            this.s.n();
+         }
+      }
+   }
+
+   @Override
+   public boolean aF_() {
+      return false;
+   }
+
+   @Override
    protected void aP_() {
-      this.y = wu.c("createWorld.customize.flat.tile");
-      this.z = wu.c("createWorld.customize.flat.height");
-      this.A = this.c(new fmk.a());
-      this.B = this.c(fhs.a(wu.c("createWorld.customize.flat.removeLayer"), $$0 -> {
-         if (this.E()) {
-            List<egw> $$1 = this.x.e();
-            int $$2 = this.A.aG_().indexOf(this.A.h());
-            int $$3 = $$1.size() - $$2 - 1;
-            $$1.remove($$3);
-            this.A.a($$1.isEmpty() ? null : this.A.aG_().get(Math.min($$2, $$1.size() - 1)));
-            this.x.g();
-            this.A.c();
-            this.m();
+      this.c(fhu.a(wt.e, $$0 -> {
+         synchronized (this) {
+            this.v = true;
+            if (this.u != null) {
+               this.u.cancel(true);
+               this.u = null;
+            }
+
+            if (this.s != null) {
+               this.s.a(a);
+            }
          }
-      }).a(this.m / 2 - 155, this.n - 52, 150, 20).a());
-      this.c(fhs.a(wu.c("createWorld.customize.presets"), $$0 -> {
-         this.l.a(new fnf(this));
-         this.x.g();
-         this.m();
-      }).a(this.m / 2 + 5, this.n - 52, 150, 20).a());
-      this.c(fhs.a(wt.d, $$0 -> {
-         this.w.accept(this.x);
-         this.l.a(this.a);
-         this.x.g();
-      }).a(this.m / 2 - 155, this.n - 28, 150, 20).a());
-      this.c(fhs.a(wt.e, $$0 -> {
-         this.l.a(this.a);
-         this.x.g();
-      }).a(this.m / 2 + 5, this.n - 28, 150, 20).a());
-      this.x.g();
-      this.m();
-   }
 
-   void m() {
-      this.B.j = this.E();
-   }
-
-   private boolean E() {
-      return this.A.h() != null;
+         this.l.a(this.w);
+      }).a(this.m / 2 - 100, this.n / 4 + 120 + 12, 200, 20).a());
    }
 
    @Override
-   public void d() {
-      this.l.a(this.a);
-   }
-
-   @Override
-   public void a(fhf $$0, int $$1, int $$2, float $$3) {
+   public void a(fhh $$0, int $$1, int $$2, float $$3) {
       super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.o, this.k, this.m / 2, 8, 16777215);
-      int $$4 = this.m / 2 - 92 - 16;
-      $$0.b(this.o, this.y, $$4, 32, 16777215);
-      $$0.b(this.o, this.z, $$4 + 2 + 213 - this.o.a(this.z), 32, 16777215);
-   }
-
-   class a extends fio<fmk.a.a> {
-      public a() {
-         super(fmk.this.l, fmk.this.m, fmk.this.n - 103, 43, 24);
-
-         for (int $$0 = 0; $$0 < fmk.this.x.e().size(); $$0++) {
-            this.b(new fmk.a.a());
-         }
+      long $$4 = ac.c();
+      if ($$4 - this.y > 2000L) {
+         this.y = $$4;
+         this.l.aV().c(wu.c("narrator.joining"));
       }
 
-      public void a(@Nullable fmk.a.a $$0) {
-         super.a($$0);
-         fmk.this.m();
-      }
-
-      public void c() {
-         int $$0 = this.aG_().indexOf(this.h());
-         this.k();
-
-         for (int $$1 = 0; $$1 < fmk.this.x.e().size(); $$1++) {
-            this.b(new fmk.a.a());
-         }
-
-         List<fmk.a.a> $$2 = this.aG_();
-         if ($$0 >= 0 && $$0 < $$2.size()) {
-            this.a($$2.get($$0));
-         }
-      }
-
-      class a extends fio.a<fmk.a.a> {
-         @Override
-         public void a(fhf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-            egw $$10 = fmk.this.x.e().get(fmk.this.x.e().size() - $$1 - 1);
-            dsk $$11 = $$10.b();
-            cuc $$12 = this.a($$11);
-            this.a($$0, $$3, $$2, $$12);
-            $$0.a(fmk.this.o, $$12.w(), $$3 + 18 + 5, $$2 + 3, 16777215, false);
-            wu $$13;
-            if ($$1 == 0) {
-               $$13 = wu.a("createWorld.customize.flat.layer.top", $$10.a());
-            } else if ($$1 == fmk.this.x.e().size() - 1) {
-               $$13 = wu.a("createWorld.customize.flat.layer.bottom", $$10.a());
-            } else {
-               $$13 = wu.a("createWorld.customize.flat.layer", $$10.a());
-            }
-
-            $$0.a(fmk.this.o, $$13, $$3 + 2 + 213 - fmk.this.o.a($$13), $$2 + 3, 16777215, false);
-         }
-
-         private cuc a(dsk $$0) {
-            ctx $$1 = $$0.b().r();
-            if ($$1 == cuf.a) {
-               if ($$0.a(dfj.G)) {
-                  $$1 = cuf.qz;
-               } else if ($$0.a(dfj.H)) {
-                  $$1 = cuf.qA;
-               }
-            }
-
-            return new cuc($$1);
-         }
-
-         @Override
-         public wu a() {
-            egw $$0 = fmk.this.x.e().get(fmk.this.x.e().size() - a.this.aG_().indexOf(this) - 1);
-            cuc $$1 = this.a($$0.b());
-            return (wu)(!$$1.e() ? wu.a("narrator.select", $$1.w()) : wt.a);
-         }
-
-         @Override
-         public boolean a(double $$0, double $$1, int $$2) {
-            a.this.a(this);
-            return super.a($$0, $$1, $$2);
-         }
-
-         private void a(fhf $$0, int $$1, int $$2, cuc $$3) {
-            this.a($$0, $$1 + 1, $$2 + 1);
-            if (!$$3.e()) {
-               $$0.b($$3, $$1 + 2, $$2 + 2);
-            }
-         }
-
-         private void a(fhf $$0, int $$1, int $$2) {
-            $$0.a(fmk.b, $$1, $$2, 0, 18, 18);
-         }
-      }
+      $$0.a(this.o, this.x, this.m / 2, this.n / 2 - 50, 16777215);
    }
 }

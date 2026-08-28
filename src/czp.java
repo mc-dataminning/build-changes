@@ -1,19 +1,10 @@
-import com.mojang.serialization.Codec;
+public class czp extends bot.a {
+   public final jj<czm> a;
+   public final int b;
 
-public enum czp implements azc {
-   a("attacker"),
-   b("damaging_entity"),
-   c("victim");
-
-   public static final Codec<czp> d = azc.a(czp::values);
-   private final String e;
-
-   private czp(final String $$0) {
-      this.e = $$0;
-   }
-
-   @Override
-   public String c() {
-      return this.e;
+   public czp(jj<czm> $$0, int $$1) {
+      super($$0.a().b());
+      this.a = $$0;
+      this.b = $$1;
    }
 }

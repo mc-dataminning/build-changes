@@ -1,8 +1,6 @@
-import javax.annotation.ParametersAreNonnullByDefault;
+import javax.annotation.Nullable;
 
-// $VF: synthetic class
-@ParametersAreNonnullByDefault
-@w
-@u
-interface goy {
+@Deprecated
+public interface goy {
+   float call(cud var1, @Nullable fyl var2, @Nullable btc var3, int var4);
 }

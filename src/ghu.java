@@ -1,41 +1,52 @@
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import java.util.List;
 
-public class ghu implements ghp.a {
-   private final fft a;
-   private static final int b = 10;
+public class ghu implements ghr.a {
+   private static final int a = 160;
+   private final ffw b;
+   private final Int2ObjectMap<ghu.a> c = new Int2ObjectOpenHashMap();
 
-   public ghu(fft $$0) {
-      this.a = $$0;
+   @Override
+   public void a() {
+      this.c.clear();
+   }
+
+   public void a(int $$0, ja $$1, List<aai.a> $$2) {
+      this.c.put($$0, new ghu.a($$1, $$2));
+   }
+
+   public void a(int $$0) {
+      this.c.remove($$0);
+   }
+
+   public ghu(ffw $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public void a(fam $$0, ged $$1, double $$2, double $$3, double $$4) {
-      dcf $$5 = this.a.r;
-      ja $$6 = ja.a($$2, $$3, $$4);
-      LongSet $$7 = new LongOpenHashSet();
+   public void a(fao $$0, gef $$1, double $$2, double $$3, double $$4) {
+      ffg $$5 = this.b.j.l();
+      ja $$6 = ja.a($$5.b().c, 0.0, $$5.b().e);
+      ObjectIterator var11 = this.c.values().iterator();
 
-      for (ja $$8 : ja.c($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
-         int $$9 = $$5.a(dco.a, $$8);
-         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
-         int $$11 = ayg.h($$10, 0.9F, 0.9F);
-         long $$12 = kc.e($$8.a());
-         if ($$7.add($$12)) {
-            ghp.a(
-               $$0,
-               $$1,
-               $$5.N().p().a(dco.a, kc.a($$12)),
-               (double)kc.a(kc.b($$12), 8),
-               (double)kc.a(kc.c($$12), 8),
-               (double)kc.a(kc.d($$12), 8),
-               16711680,
-               0.3F
-            );
-         }
-
-         if ($$9 != 15) {
-            ghp.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
+      while (var11.hasNext()) {
+         ghu.a $$7 = (ghu.a)var11.next();
+         ja $$8 = $$7.a;
+         if ($$6.a($$8, 160.0)) {
+            for (int $$9 = 0; $$9 < $$7.b.size(); $$9++) {
+               aai.a $$10 = $$7.b.get($$9);
+               double $$11 = (double)$$8.u() + 0.5;
+               double $$12 = (double)$$8.v() + 2.0 + (double)$$9 * 0.25;
+               double $$13 = (double)$$8.w() + 0.5;
+               int $$14 = $$10.b() ? -16711936 : -3355444;
+               ghr.a($$0, $$1, $$10.c(), $$11, $$12, $$13, $$14);
+            }
          }
       }
+   }
+
+   static record a(ja a, List<aai.a> b) {
    }
 }

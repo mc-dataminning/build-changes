@@ -1,22 +1,19 @@
-public class cvs extends ctx {
-   private final cvr a;
+import java.util.List;
 
-   public cvs(cvr $$0, ctx.a $$1) {
-      super($$1.b($$0.a()));
-      this.a = $$0;
-   }
+public interface cvs {
+   int a();
 
-   public cvr h() {
-      return this.a;
-   }
+   float b();
 
-   @Override
-   public int g() {
-      return this.a.e();
-   }
+   float c();
 
-   @Override
-   public boolean a(cuc $$0, cuc $$1) {
-      return this.a.f().a($$1) || super.a($$0, $$1);
+   awm<dfi> d();
+
+   int e();
+
+   cyg f();
+
+   default cxh a(awm<dfi> $$0) {
+      return new cxh(List.of(cxh.a.a(this.d()), cxh.a.a($$0, this.b())), 1.0F, 1);
    }
 }

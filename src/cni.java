@@ -1,51 +1,51 @@
-import javax.annotation.Nullable;
-
-public class cni extends cmq {
-   private int f = 200;
-
-   public cni(bsm<? extends cni> $$0, dcf $$1) {
+public class cni extends cnk {
+   public cni(bsn<? extends cni> $$0, dcg $$1) {
       super($$0, $$1);
    }
 
-   public cni(dcf $$0, btb $$1, cuc $$2, @Nullable cuc $$3) {
-      super(bsm.aV, $$1, $$0, $$2, $$3);
+   public cni(dcg $$0, btc $$1) {
+      super(bsn.aT, $$1, $$0);
    }
 
-   public cni(dcf $$0, double $$1, double $$2, double $$3, cuc $$4, @Nullable cuc $$5) {
-      super(bsm.aV, $$1, $$2, $$3, $$0, $$4, $$5);
+   public cni(dcg $$0, double $$1, double $$2, double $$3) {
+      super(bsn.aT, $$1, $$2, $$3, $$0);
    }
 
    @Override
-   public void l() {
-      super.l();
-      if (this.dQ().B && !this.b) {
-         this.dQ().a(lj.R, this.dv(), this.dx(), this.dB(), 0.0, 0.0, 0.0);
+   protected cty t() {
+      return cug.qC;
+   }
+
+   private lh v() {
+      cud $$0 = this.p();
+      return (lh)(!$$0.e() && !$$0.a(this.t()) ? new lf(lj.S, $$0) : lj.W);
+   }
+
+   @Override
+   public void b(byte $$0) {
+      if ($$0 == 3) {
+         lh $$1 = this.v();
+
+         for (int $$2 = 0; $$2 < 8; $$2++) {
+            this.dR().a($$1, this.dw(), this.dy(), this.dC(), 0.0, 0.0, 0.0);
+         }
       }
    }
 
    @Override
-   protected void a(btb $$0) {
+   protected void a(ewe $$0) {
       super.a($$0);
-      bro $$1 = new bro(brq.x, this.f, 0);
-      $$0.b($$1, this.I());
+      bsh $$1 = $$0.a();
+      int $$2 = $$1 instanceof cja ? 3 : 0;
+      $$1.a(this.dS().b(this, this.s()), (float)$$2);
    }
 
    @Override
-   public void a(tx $$0) {
+   protected void a(ewf $$0) {
       super.a($$0);
-      if ($$0.e("Duration")) {
-         this.f = $$0.h("Duration");
+      if (!this.dR().B) {
+         this.dR().a(this, (byte)3);
+         this.aq();
       }
-   }
-
-   @Override
-   public void b(tx $$0) {
-      super.b($$0);
-      $$0.a("Duration", this.f);
-   }
-
-   @Override
-   protected cuc y() {
-      return new cuc(cuf.vp);
    }
 }

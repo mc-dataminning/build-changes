@@ -1,41 +1,24 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.Map;
+public class glc extends gku<cjt, fvr<cjt>> {
+   private static final akk a = new akk("textures/entity/phantom.png");
 
-public class glc extends gkd<btd, fvs<btd>> {
-   private static final Map<bsm<?>, akk> a = ImmutableMap.of(
-      bsm.aA,
-      new akk("textures/entity/piglin/piglin.png"),
-      bsm.bx,
-      new akk("textures/entity/piglin/zombified_piglin.png"),
-      bsm.aB,
-      new akk("textures/entity/piglin/piglin_brute.png")
-   );
-   private static final float i = 1.0019531F;
-
-   public glc(gjm.a $$0, fxm $$1, fxm $$2, fxm $$3, boolean $$4) {
-      super($$0, a($$0.f(), $$1, $$4), 0.5F, 1.0019531F, 1.0F, 1.0019531F);
-      this.a(new gno<>(this, new fva($$0.a($$2)), new fva($$0.a($$3)), $$0.g()));
+   public glc(gjo.a $$0) {
+      super($$0, new fvr<>($$0.a(fxp.aH)), 0.75F);
+      this.a(new gny<>(this));
    }
 
-   private static fvs<btd> a(fxk $$0, fxm $$1, boolean $$2) {
-      fvs<btd> $$3 = new fvs<>($$0.a($$1));
-      if ($$2) {
-         $$3.a.k = false;
-      }
-
-      return $$3;
+   public akk a(cjt $$0) {
+      return a;
    }
 
-   public akk c(btd $$0) {
-      akk $$1 = a.get($$0.al());
-      if ($$1 == null) {
-         throw new IllegalArgumentException("I don't know what texture to use for " + $$0.al());
-      } else {
-         return $$1;
-      }
+   protected void a(cjt $$0, fao $$1, float $$2) {
+      int $$3 = $$0.s();
+      float $$4 = 1.0F + 0.15F * (float)$$3;
+      $$1.b($$4, $$4, $$4);
+      $$1.a(0.0F, 1.3125F, 0.1875F);
    }
 
-   protected boolean d(btd $$0) {
-      return super.a($$0) || $$0 instanceof ckz && ((ckz)$$0).go();
+   protected void a(cjt $$0, fao $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      $$1.a(a.b.rotationDegrees($$0.dJ()));
    }
 }

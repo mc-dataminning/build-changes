@@ -1,21 +1,13 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class edz implements edo {
-   public static final Codec<edz> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eia.b.fieldOf("feature_true").forGetter($$0x -> $$0x.b), eia.b.fieldOf("feature_false").forGetter($$0x -> $$0x.c)).apply($$0, edz::new)
+public class edz implements edp {
+   public static final Codec<edz> k = RecordCodecBuilder.create(
+      $$0 -> $$0.group(Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.l)).apply($$0, edz::new)
    );
-   public final jj<eia> b;
-   public final jj<eia> c;
+   public final float l;
 
-   public edz(jj<eia> $$0, jj<eia> $$1) {
-      this.b = $$0;
-      this.c = $$1;
-   }
-
-   @Override
-   public Stream<eax<?, ?>> e() {
-      return Stream.concat(this.b.a().a(), this.c.a().a());
+   public edz(float $$0) {
+      this.l = $$0;
    }
 }

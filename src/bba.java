@@ -5,7 +5,7 @@ import com.mojang.serialization.Dynamic;
 
 public class bba extends bfd {
    public bba(Schema $$0, boolean $$1) {
-      super($$0, $$1, "CatTypeFix", bgg.B, "minecraft:cat");
+      super($$0, $$1, "CatTypeFix", bgh.B, "minecraft:cat");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

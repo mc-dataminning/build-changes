@@ -1,29 +1,11 @@
-public class glj extends gks<cfm, fwc<cfm>> {
-   private static final akk a = new akk("textures/entity/fish/salmon.png");
+public class glj extends gku<cjw, fwd> {
+   private static final akk a = new akk("textures/entity/illager/ravager.png");
 
-   public glj(gjm.a $$0) {
-      super($$0, new fwc<>($$0.a(fxn.bg)), 0.4F);
+   public glj(gjo.a $$0) {
+      super($$0, new fwd($$0.a(fxp.bf)), 1.1F);
    }
 
-   public akk a(cfm $$0) {
+   public akk a(cjw $$0) {
       return a;
-   }
-
-   protected void a(cfm $$0, fam $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = 1.0F;
-      float $$7 = 1.0F;
-      if (!$$0.bf()) {
-         $$6 = 1.3F;
-         $$7 = 1.7F;
-      }
-
-      float $$8 = $$6 * 4.3F * ayg.a($$7 * 0.6F * $$2);
-      $$1.a(a.d.rotationDegrees($$8));
-      $$1.a(0.0F, 0.0F, -0.4F);
-      if (!$$0.bf()) {
-         $$1.a(0.2F, 0.1F, 0.0F);
-         $$1.a(a.f.rotationDegrees(90.0F));
-      }
    }
 }

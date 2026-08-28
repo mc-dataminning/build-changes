@@ -9,25 +9,25 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class aqt implements ddb {
+public class aqt implements ddc {
    private static final Logger a = LogUtils.getLogger();
    private final aza<aqf> b;
-   private final dug c;
+   private final duh c;
    private final aqm d;
    private final long e;
-   private final eqe f;
+   private final eqg f;
    private final ayo g;
-   private final dwf h;
-   private final eyb<dfh> i = new eyb<>($$0x -> this.y($$0x).o());
-   private final eyb<eog> j = new eyb<>($$0x -> this.y($$0x).p());
-   private final ddh k;
-   private final dvk l;
+   private final dwg h;
+   private final eyd<dfi> i = new eyd<>($$0x -> this.y($$0x).o());
+   private final eyd<eoi> j = new eyd<>($$0x -> this.y($$0x).p());
+   private final ddi k;
+   private final dvl l;
    @Nullable
    private Supplier<String> m;
    private final AtomicLong n = new AtomicLong();
    private static final akk o = new akk("worldgen_region_random");
 
-   public aqt(aqm $$0, aza<aqf> $$1, dvk $$2, dug $$3) {
+   public aqt(aqm $$0, aza<aqf> $$1, dvl $$2, duh $$3) {
       this.l = $$2;
       this.b = $$1;
       this.c = $$3;
@@ -36,14 +36,14 @@ public class aqt implements ddb {
       this.f = $$0.A_();
       this.g = $$0.l().i().a(o).a(this.c.f().l());
       this.h = $$0.D_();
-      this.k = new ddh(this, ddh.a(this.e));
+      this.k = new ddi(this, ddi.a(this.e));
    }
 
-   public boolean a(dbm $$0, int $$1) {
+   public boolean a(dbn $$0, int $$1) {
       return this.d.l().a.b($$0, $$1);
    }
 
-   public dbm a() {
+   public dbn a() {
       return this.c.f();
    }
 
@@ -53,20 +53,20 @@ public class aqt implements ddb {
    }
 
    @Override
-   public dug a(int $$0, int $$1) {
-      return this.a($$0, $$1, dvh.c);
+   public duh a(int $$0, int $$1) {
+      return this.a($$0, $$1, dvi.c);
    }
 
    @Nullable
    @Override
-   public dug a(int $$0, int $$1, dvh $$2, boolean $$3) {
+   public duh a(int $$0, int $$1, dvi $$2, boolean $$3) {
       int $$4 = this.c.f().e($$0, $$1);
-      dvh $$5 = $$4 >= this.l.b().b() ? null : this.l.b().a($$4);
+      dvi $$5 = $$4 >= this.l.b().b() ? null : this.l.b().a($$4);
       aqf $$6;
       if ($$5 != null) {
          $$6 = this.b.a($$0, $$1);
          if ($$2.c($$5)) {
-            dug $$7 = $$6.a($$5);
+            duh $$7 = $$6.a($$5);
             if ($$7 != null) {
                return $$7;
             }
@@ -95,18 +95,18 @@ public class aqt implements ddb {
    }
 
    @Override
-   public dsk a_(ja $$0) {
+   public dsl a_(ja $$0) {
       return this.a(kc.a($$0.u()), kc.a($$0.w())).a_($$0);
    }
 
    @Override
-   public eoh b_(ja $$0) {
+   public eoj b_(ja $$0) {
       return this.y($$0).b_($$0);
    }
 
    @Nullable
    @Override
-   public cmk a(double $$0, double $$1, double $$2, double $$3, Predicate<bsg> $$4) {
+   public cml a(double $$0, double $$1, double $$2, double $$3, Predicate<bsh> $$4) {
       return null;
    }
 
@@ -116,12 +116,12 @@ public class aqt implements ddb {
    }
 
    @Override
-   public ddh F_() {
+   public ddi F_() {
       return this.k;
    }
 
    @Override
-   public jj<ddf> a(int $$0, int $$1, int $$2) {
+   public jj<ddg> a(int $$0, int $$1, int $$2) {
       return this.d.a($$0, $$1, $$2);
    }
 
@@ -131,44 +131,44 @@ public class aqt implements ddb {
    }
 
    @Override
-   public enw y_() {
+   public eny y_() {
       return this.d.y_();
    }
 
    @Override
-   public boolean a(ja $$0, boolean $$1, @Nullable bsg $$2, int $$3) {
-      dsk $$4 = this.a_($$0);
+   public boolean a(ja $$0, boolean $$1, @Nullable bsh $$2, int $$3) {
+      dsl $$4 = this.a_($$0);
       if ($$4.i()) {
          return false;
       } else {
          if ($$1) {
-            dpp $$5 = $$4.t() ? this.c_($$0) : null;
-            dfh.a($$4, (dcf)this.d, $$0, $$5, $$2, cuc.l);
+            dpq $$5 = $$4.t() ? this.c_($$0) : null;
+            dfi.a($$4, (dcg)this.d, $$0, $$5, $$2, cud.l);
          }
 
-         return this.a($$0, dfj.a.o(), 3, $$3);
+         return this.a($$0, dfk.a.o(), 3, $$3);
       }
    }
 
    @Nullable
    @Override
-   public dpp c_(ja $$0) {
-      dug $$1 = this.y($$0);
-      dpp $$2 = $$1.c_($$0);
+   public dpq c_(ja $$0) {
+      duh $$1 = this.y($$0);
+      dpq $$2 = $$1.c_($$0);
       if ($$2 != null) {
          return $$2;
       } else {
          tx $$3 = $$1.f($$0);
-         dsk $$4 = $$1.a_($$0);
+         dsl $$4 = $$1.a_($$0);
          if ($$3 != null) {
             if ("DUMMY".equals($$3.l("id"))) {
                if (!$$4.t()) {
                   return null;
                }
 
-               $$2 = ((dhz)$$4.b()).a($$0, $$4);
+               $$2 = ((dia)$$4.b()).a($$0, $$4);
             } else {
-               $$2 = dpp.a($$0, $$4, $$3, this.d.H_());
+               $$2 = dpq.a($$0, $$4, $$3, this.d.H_());
             }
 
             if ($$2 != null) {
@@ -189,12 +189,12 @@ public class aqt implements ddb {
    public boolean f_(ja $$0) {
       int $$1 = kc.a($$0.u());
       int $$2 = kc.a($$0.w());
-      dbm $$3 = this.a();
+      dbn $$3 = this.a();
       int $$4 = Math.abs($$3.e - $$1);
       int $$5 = Math.abs($$3.f - $$2);
       if ($$4 <= this.l.d() && $$5 <= this.l.d()) {
          if (this.c.y()) {
-            dch $$6 = this.c.z();
+            dci $$6 = this.c.z();
             if ($$0.v() < $$6.I_() || $$0.v() >= $$6.am()) {
                return false;
             }
@@ -218,19 +218,19 @@ public class aqt implements ddb {
    }
 
    @Override
-   public boolean a(ja $$0, dsk $$1, int $$2, int $$3) {
+   public boolean a(ja $$0, dsl $$1, int $$2, int $$3) {
       if (!this.f_($$0)) {
          return false;
       } else {
-         dug $$4 = this.y($$0);
-         dsk $$5 = $$4.a($$0, $$1, false);
+         duh $$4 = this.y($$0);
+         dsl $$5 = $$4.a($$0, $$1, false);
          if ($$5 != null) {
             this.d.a($$0, $$5, $$1);
          }
 
          if ($$1.t()) {
-            if ($$4.j().d() == dvl.b) {
-               dpp $$6 = ((dhz)$$1.b()).a($$0, $$1);
+            if ($$4.j().d() == dvm.b) {
+               dpq $$6 = ((dia)$$1.b()).a($$0, $$1);
                if ($$6 != null) {
                   $$4.a($$6);
                } else {
@@ -261,20 +261,20 @@ public class aqt implements ddb {
    }
 
    @Override
-   public boolean b(bsg $$0) {
-      int $$1 = kc.a($$0.du());
-      int $$2 = kc.a($$0.dA());
+   public boolean b(bsh $$0) {
+      int $$1 = kc.a($$0.dv());
+      int $$2 = kc.a($$0.dB());
       this.a($$1, $$2).a($$0);
       return true;
    }
 
    @Override
    public boolean a(ja $$0, boolean $$1) {
-      return this.a($$0, dfj.a.o(), 3);
+      return this.a($$0, dfk.a.o(), 3);
    }
 
    @Override
-   public dub C_() {
+   public duc C_() {
       return this.d.C_();
    }
 
@@ -295,21 +295,21 @@ public class aqt implements ddb {
    }
 
    @Override
-   public coy J() {
+   public coz J() {
       return this.d.J();
    }
 
    @Override
-   public eqe A_() {
+   public eqg A_() {
       return this.f;
    }
 
    @Override
-   public bqe d_(ja $$0) {
+   public bqf d_(ja $$0) {
       if (!this.b(kc.a($$0.u()), kc.a($$0.w()))) {
          throw new RuntimeException("We are asking a region for a chunk out of bound");
       } else {
-         return new bqe(this.d.al(), this.d.aa(), 0L, this.d.aq());
+         return new bqf(this.d.al(), this.d.aa(), 0L, this.d.aq());
       }
    }
 
@@ -320,7 +320,7 @@ public class aqt implements ddb {
    }
 
    @Override
-   public duk N() {
+   public dul N() {
       return this.d.l();
    }
 
@@ -330,12 +330,12 @@ public class aqt implements ddb {
    }
 
    @Override
-   public exs<dfh> P() {
+   public exu<dfi> P() {
       return this.i;
    }
 
    @Override
-   public exs<eog> O() {
+   public exu<eoi> O() {
       return this.j;
    }
 
@@ -350,12 +350,12 @@ public class aqt implements ddb {
    }
 
    @Override
-   public int a(dyf.a $$0, int $$1, int $$2) {
+   public int a(dyg.a $$0, int $$1, int $$2) {
       return this.a(kc.a($$1), kc.a($$2)).a($$0, $$1 & 15, $$2 & 15) + 1;
    }
 
    @Override
-   public void a(@Nullable cmk $$0, ja $$1, avg $$2, avi $$3, float $$4, float $$5) {
+   public void a(@Nullable cml $$0, ja $$1, avg $$2, avi $$3, float $$4, float $$5) {
    }
 
    @Override
@@ -363,40 +363,40 @@ public class aqt implements ddb {
    }
 
    @Override
-   public void a(@Nullable cmk $$0, int $$1, ja $$2, int $$3) {
+   public void a(@Nullable cml $$0, int $$1, ja $$2, int $$3) {
    }
 
    @Override
-   public void a(jj<dxg> $$0, ewf $$1, dxg.a $$2) {
+   public void a(jj<dxh> $$0, ewh $$1, dxh.a $$2) {
    }
 
    @Override
-   public dwf D_() {
+   public dwg D_() {
       return this.h;
    }
 
    @Override
-   public boolean a(ja $$0, Predicate<dsk> $$1) {
+   public boolean a(ja $$0, Predicate<dsl> $$1) {
       return $$1.test(this.a_($$0));
    }
 
    @Override
-   public boolean b(ja $$0, Predicate<eoh> $$1) {
+   public boolean b(ja $$0, Predicate<eoj> $$1) {
       return $$1.test(this.b_($$0));
    }
 
    @Override
-   public <T extends bsg> List<T> a(dwu<bsg, T> $$0, ewa $$1, Predicate<? super T> $$2) {
+   public <T extends bsh> List<T> a(dwv<bsh, T> $$0, ewc $$1, Predicate<? super T> $$2) {
       return Collections.emptyList();
    }
 
    @Override
-   public List<bsg> a(@Nullable bsg $$0, ewa $$1, @Nullable Predicate<? super bsg> $$2) {
+   public List<bsh> a(@Nullable bsh $$0, ewc $$1, @Nullable Predicate<? super bsh> $$2) {
       return Collections.emptyList();
    }
 
    @Override
-   public List<cmk> x() {
+   public List<cml> x() {
       return Collections.emptyList();
    }
 

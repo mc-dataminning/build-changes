@@ -1,24 +1,8 @@
-import it.unimi.dsi.fastutil.ints.IntSet;
-import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface eyp extends AutoCloseable {
-   float a = 7.0F;
-
-   @Override
-   default void close() {
-   }
-
-   @Nullable
-   default eyo a(int $$0) {
-      return null;
-   }
-
-   IntSet a();
-
-   public static record a(eyp a, fki.a b) implements AutoCloseable {
-      @Override
-      public void close() {
-         this.a.close();
-      }
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@eyi
+@eyh
+interface eyp {
 }

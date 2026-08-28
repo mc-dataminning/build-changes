@@ -1,10 +1,12 @@
-public class gir extends glo<cja> {
-   private static final akk a = new akk("textures/entity/skeleton/bogged.png");
-   private static final akk i = new akk("textures/entity/skeleton/bogged_overlay.png");
+public class gir extends gku<cja, ftv<cja>> {
+   private static final akk a = new akk("textures/entity/blaze.png");
 
-   public gir(gjm.a $$0) {
-      super($$0, fxn.o, fxn.p, new ftv($$0.a(fxn.n)));
-      this.a(new goc<>(this, $$0.f(), fxn.q, i));
+   public gir(gjo.a $$0) {
+      super($$0, new ftv<>($$0.a(fxp.m)), 0.5F);
+   }
+
+   protected int a(cja $$0, ja $$1) {
+      return 15;
    }
 
    public akk a(cja $$0) {

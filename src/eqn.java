@@ -1,67 +1,77 @@
-import java.util.Locale;
-import java.util.UUID;
-import javax.annotation.Nullable;
-import net.minecraft.server.MinecraftServer;
+import com.mojang.datafixers.DataFixer;
+import com.mojang.logging.LogUtils;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public interface eqn extends eqp {
-   @Override
-   String e();
+public class eqn {
+   private static final Logger b = LogUtils.getLogger();
+   private final File c;
+   protected final DataFixer a;
+   private static final DateTimeFormatter d = eqf.a();
 
-   void a(boolean var1);
-
-   int j();
-
-   void c(int var1);
-
-   void b(int var1);
-
-   int h();
-
-   @Override
-   default void a(p $$0, dch $$1) {
-      eqp.super.a($$0, $$1);
-      $$0.a("Level name", this::e);
-      $$0.a(
-         "Level game mode",
-         () -> String.format(Locale.ROOT, "Game mode: %s (ID %d). Hardcore: %b. Commands: %b", this.k().b(), this.k().a(), this.l(), this.m())
-      );
-      $$0.a("Level weather", () -> String.format(Locale.ROOT, "Rain time: %d (now: %b), thunder time: %d (now: %b)", this.j(), this.i(), this.h(), this.g()));
+   public eqn(eqk.c $$0, DataFixer $$1) {
+      this.a = $$1;
+      this.c = $$0.a(eqi.c).toFile();
+      this.c.mkdirs();
    }
 
-   int f();
+   public void a(cml $$0) {
+      try {
+         tx $$1 = $$0.f(new tx());
+         Path $$2 = this.c.toPath();
+         Path $$3 = Files.createTempFile($$2, $$0.cC() + "-", ".dat");
+         uk.a($$1, $$3);
+         Path $$4 = $$2.resolve($$0.cC() + ".dat");
+         Path $$5 = $$2.resolve($$0.cC() + ".dat_old");
+         ac.a($$4, $$3, $$5);
+      } catch (Exception var7) {
+         b.warn("Failed to save player data for {}", $$0.ah().getString());
+      }
+   }
 
-   void a(int var1);
+   private void a(cml $$0, String $$1) {
+      Path $$2 = this.c.toPath();
+      Path $$3 = $$2.resolve($$0.cC() + $$1);
+      Path $$4 = $$2.resolve($$0.cC() + "_corrupted_" + LocalDateTime.now().format(d) + $$1);
+      if (Files.isRegularFile($$3)) {
+         try {
+            Files.copy($$3, $$4, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.COPY_ATTRIBUTES);
+         } catch (Exception var7) {
+            b.warn("Failed to copy the player.dat file for {}", $$0.ah().getString(), var7);
+         }
+      }
+   }
 
-   int t();
+   private Optional<tx> b(cml $$0, String $$1) {
+      File $$2 = new File(this.c, $$0.cC() + $$1);
+      if ($$2.exists() && $$2.isFile()) {
+         try {
+            return Optional.of(uk.a($$2.toPath(), ug.a()));
+         } catch (Exception var5) {
+            b.warn("Failed to load player data for {}", $$0.ah().getString());
+         }
+      }
 
-   void d(int var1);
+      return Optional.empty();
+   }
 
-   int u();
+   public Optional<tx> b(cml $$0) {
+      Optional<tx> $$1 = this.b($$0, ".dat");
+      if ($$1.isEmpty()) {
+         this.a($$0, ".dat");
+      }
 
-   void e(int var1);
-
-   @Nullable
-   UUID v();
-
-   void a(UUID var1);
-
-   dcc k();
-
-   void a(dub.c var1);
-
-   dub.c p();
-
-   boolean n();
-
-   void c(boolean var1);
-
-   boolean m();
-
-   void a(dcc var1);
-
-   evs<MinecraftServer> s();
-
-   void a(long var1);
-
-   void b(long var1);
+      return $$1.or(() -> this.b($$0, ".dat_old")).map($$1x -> {
+         int $$2 = um.b($$1x, -1);
+         $$1x = azo.b.a(this.a, $$1x, $$2);
+         $$0.g($$1x);
+         return $$1x;
+      });
+   }
 }

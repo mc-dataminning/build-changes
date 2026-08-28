@@ -57,8 +57,8 @@ public class rb {
    }
 
    private static <C, I extends azi<C>> axh<C, I> a(I $$0, I $$1, float $$2, float $$3, azi<Float> $$4) {
-      float $$5 = dym.a(0.4F);
-      float $$6 = dym.a(0.56666666F);
+      float $$5 = dyn.a(0.4F);
+      float $$6 = dyn.a(0.56666666F);
       float $$7 = ($$5 + $$6) / 2.0F;
       axh.b<C, I> $$8 = axh.a($$1, $$4);
       $$8.a($$5, 0.0F);

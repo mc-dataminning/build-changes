@@ -2,35 +2,37 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record wq(wr j, wr k) {
+public record wq(wr l, wr m) {
    public static final Codec<wq> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(wr.a.fieldOf("chat").forGetter(wq::a), wr.a.fieldOf("narration").forGetter(wq::b)).apply($$0, wq::new)
    );
-   public static final wr b = wr.a("chat.type.text");
-   public static final akj<wq> c = a("chat");
-   public static final akj<wq> d = a("say_command");
-   public static final akj<wq> e = a("msg_command_incoming");
-   public static final akj<wq> f = a("msg_command_outgoing");
-   public static final akj<wq> g = a("team_msg_command_incoming");
-   public static final akj<wq> h = a("team_msg_command_outgoing");
-   public static final akj<wq> i = a("emote_command");
+   public static final ys<wf, wq> b = ys.a(wr.b, wq::a, wr.b, wq::b, wq::new);
+   public static final ys<wf, jj<wq>> c = yq.a(lr.aF, b);
+   public static final wr d = wr.a("chat.type.text");
+   public static final akj<wq> e = a("chat");
+   public static final akj<wq> f = a("say_command");
+   public static final akj<wq> g = a("msg_command_incoming");
+   public static final akj<wq> h = a("msg_command_outgoing");
+   public static final akj<wq> i = a("team_msg_command_incoming");
+   public static final akj<wq> j = a("team_msg_command_outgoing");
+   public static final akj<wq> k = a("emote_command");
 
    private static akj<wq> a(String $$0) {
       return akj.a(lr.aF, new akk($$0));
    }
 
    public static void a(qm<wq> $$0) {
-      $$0.a(c, new wq(b, wr.a("chat.type.text.narrate")));
-      $$0.a(d, new wq(wr.a("chat.type.announcement"), wr.a("chat.type.text.narrate")));
-      $$0.a(e, new wq(wr.b("commands.message.display.incoming"), wr.a("chat.type.text.narrate")));
-      $$0.a(f, new wq(wr.c("commands.message.display.outgoing"), wr.a("chat.type.text.narrate")));
-      $$0.a(g, new wq(wr.d("chat.type.team.text"), wr.a("chat.type.text.narrate")));
-      $$0.a(h, new wq(wr.d("chat.type.team.sent"), wr.a("chat.type.text.narrate")));
-      $$0.a(i, new wq(wr.a("chat.type.emote"), wr.a("chat.type.emote")));
+      $$0.a(e, new wq(d, wr.a("chat.type.text.narrate")));
+      $$0.a(f, new wq(wr.a("chat.type.announcement"), wr.a("chat.type.text.narrate")));
+      $$0.a(g, new wq(wr.b("commands.message.display.incoming"), wr.a("chat.type.text.narrate")));
+      $$0.a(h, new wq(wr.c("commands.message.display.outgoing"), wr.a("chat.type.text.narrate")));
+      $$0.a(i, new wq(wr.d("chat.type.team.text"), wr.a("chat.type.text.narrate")));
+      $$0.a(j, new wq(wr.d("chat.type.team.sent"), wr.a("chat.type.text.narrate")));
+      $$0.a(k, new wq(wr.a("chat.type.emote"), wr.a("chat.type.emote")));
    }
 
-   public static wq.a a(akj<wq> $$0, bsg $$1) {
-      return a($$0, $$1.dQ().H_(), $$1.O_());
+   public static wq.a a(akj<wq> $$0, bsh $$1) {
+      return a($$0, $$1.dR().H_(), $$1.O_());
    }
 
    public static wq.a a(akj<wq> $$0, eq $$1) {
@@ -43,15 +45,15 @@ public record wq(wr j, wr k) {
    }
 
    public wr a() {
-      return this.j;
+      return this.l;
    }
 
    public wr b() {
-      return this.k;
+      return this.m;
    }
 
    public static record a(jj<wq> b, wu c, Optional<wu> d) {
-      public static final ys<wf, wq.a> a = ys.a(yq.b(lr.aF), wq.a::a, ww.d, wq.a::b, ww.e, wq.a::c, wq.a::new);
+      public static final ys<wf, wq.a> a = ys.a(wq.c, wq.a::a, ww.d, wq.a::b, ww.e, wq.a::c, wq.a::new);
 
       a(jj<wq> $$0, wu $$1) {
          this($$0, $$1, Optional.empty());

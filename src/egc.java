@@ -1,72 +1,75 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-public class egc extends egg {
-   public static final MapCodec<egc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.floatRange(0.0F, 1.0F).fieldOf("probability").forGetter($$0x -> $$0x.b),
-               Codec.intRange(0, 16).fieldOf("exclusion_radius_xz").forGetter($$0x -> $$0x.c),
-               Codec.intRange(0, 16).fieldOf("exclusion_radius_y").forGetter($$0x -> $$0x.d),
-               efp.a.fieldOf("block_provider").forGetter($$0x -> $$0x.e),
-               Codec.intRange(1, 16).fieldOf("required_empty_blocks").forGetter($$0x -> $$0x.f),
-               axo.a(jf.g.listOf()).fieldOf("directions").forGetter($$0x -> $$0x.g)
-            )
-            .apply($$0, egc::new)
-   );
-   protected final float b;
-   protected final int c;
-   protected final int d;
-   protected final efp e;
-   protected final int f;
-   protected final List<jf> g;
+public class egc extends egh {
+   public static final MapCodec<egc> a = efq.a.fieldOf("provider").xmap(egc::new, $$0 -> $$0.b);
+   private final efq b;
 
-   public egc(float $$0, int $$1, int $$2, efp $$3, int $$4, List<jf> $$5) {
+   public egc(efq $$0) {
       this.b = $$0;
-      this.c = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$4;
-      this.g = $$5;
    }
 
    @Override
-   public void a(egg.a $$0) {
-      Set<ja> $$1 = new HashSet<>();
-      ayo $$2 = $$0.b();
+   protected egi<?> a() {
+      return egi.e;
+   }
 
-      for (ja $$3 : ac.a($$0.d(), $$2)) {
-         jf $$4 = ac.a(this.g, $$2);
-         ja $$5 = $$3.a($$4);
-         if (!$$1.contains($$5) && $$2.i() < this.b && this.a($$0, $$3, $$4)) {
-            ja $$6 = $$5.b(-this.c, -this.d, -this.c);
-            ja $$7 = $$5.b(this.c, this.d, this.c);
+   @Override
+   public void a(egh.a $$0) {
+      List<ja> $$1 = Lists.newArrayList();
+      List<ja> $$2 = $$0.e();
+      List<ja> $$3 = $$0.c();
+      if ($$2.isEmpty()) {
+         $$1.addAll($$3);
+      } else if (!$$3.isEmpty() && $$2.get(0).v() == $$3.get(0).v()) {
+         $$1.addAll($$3);
+         $$1.addAll($$2);
+      } else {
+         $$1.addAll($$2);
+      }
 
-            for (ja $$8 : ja.c($$6, $$7)) {
-               $$1.add($$8.i());
+      if (!$$1.isEmpty()) {
+         int $$4 = $$1.get(0).v();
+         $$1.stream().filter($$1x -> $$1x.v() == $$4).forEach($$1x -> {
+            this.a($$0, $$1x.g().e());
+            this.a($$0, $$1x.g(2).e());
+            this.a($$0, $$1x.g().e(2));
+            this.a($$0, $$1x.g(2).e(2));
+
+            for (int $$2x = 0; $$2x < 5; $$2x++) {
+               int $$3x = $$0.b().a(64);
+               int $$4x = $$3x % 8;
+               int $$5 = $$3x / 8;
+               if ($$4x == 0 || $$4x == 7 || $$5 == 0 || $$5 == 7) {
+                  this.a($$0, $$1x.b(-3 + $$4x, 0, -3 + $$5));
+               }
             }
+         });
+      }
+   }
 
-            $$0.a($$5, this.e.a($$2, $$5));
+   private void a(egh.a $$0, ja $$1) {
+      for (int $$2 = -2; $$2 <= 2; $$2++) {
+         for (int $$3 = -2; $$3 <= 2; $$3++) {
+            if (Math.abs($$2) != 2 || Math.abs($$3) != 2) {
+               this.b($$0, $$1.b($$2, 0, $$3));
+            }
          }
       }
    }
 
-   private boolean a(egg.a $$0, ja $$1, jf $$2) {
-      for (int $$3 = 1; $$3 <= this.f; $$3++) {
-         ja $$4 = $$1.a($$2, $$3);
-         if (!$$0.a($$4)) {
-            return false;
+   private void b(egh.a $$0, ja $$1) {
+      for (int $$2 = 2; $$2 >= -3; $$2--) {
+         ja $$3 = $$1.b($$2);
+         if (ebl.a($$0.a(), $$3)) {
+            $$0.a($$3, this.b.a($$0.b(), $$1));
+            break;
+         }
+
+         if (!$$0.a($$3) && $$2 < 0) {
+            break;
          }
       }
-
-      return true;
-   }
-
-   @Override
-   protected egh<?> a() {
-      return egh.f;
    }
 }

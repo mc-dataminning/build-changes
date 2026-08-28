@@ -1,71 +1,30 @@
-import com.google.common.collect.ImmutableMap;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import javax.annotation.Nullable;
+public class gha implements ggf<drt> {
+   private final gkm a;
+   private final ayo b = ayo.a();
 
-class gha {
-   private final Map<ja, dpp> a;
-   @Nullable
-   private final List<duy<dsk>> b;
-   private final boolean c;
-   private final duq d;
-
-   gha(duq $$0) {
-      this.d = $$0;
-      this.c = $$0.F().ai();
-      this.a = ImmutableMap.copyOf($$0.G());
-      if ($$0 instanceof dum) {
-         this.b = null;
-      } else {
-         dur[] $$1 = $$0.d();
-         this.b = new ArrayList<>($$1.length);
-
-         for (dur $$2 : $$1) {
-            this.b.add($$2.c() ? null : $$2.h().d());
-         }
-      }
+   public gha(ggg.a $$0) {
+      this.a = $$0.d();
    }
 
-   @Nullable
-   public dpp a(ja $$0) {
-      return this.a.get($$0);
-   }
-
-   public dsk b(ja $$0) {
-      int $$1 = $$0.u();
-      int $$2 = $$0.v();
-      int $$3 = $$0.w();
-      if (this.c) {
-         dsk $$4 = null;
-         if ($$2 == 60) {
-            $$4 = dfj.hW.o();
-         }
-
-         if ($$2 == 70) {
-            $$4 = dxw.a($$1, $$3);
-         }
-
-         return $$4 == null ? dfj.a.o() : $$4;
-      } else if (this.b == null) {
-         return dfj.a.o();
-      } else {
-         try {
-            int $$5 = this.d.e($$2);
-            if ($$5 >= 0 && $$5 < this.b.size()) {
-               duy<dsk> $$6 = this.b.get($$5);
-               if ($$6 != null) {
-                  return $$6.a($$1 & 15, $$2 & 15, $$3 & 15);
-               }
+   public void a(drt $$0, float $$1, fao $$2, gef $$3, int $$4, int $$5) {
+      if (drt.a.a($$0.c())) {
+         dcg $$6 = $$0.i();
+         if ($$6 != null) {
+            cud $$7 = $$0.c().a();
+            if (!$$7.e()) {
+               this.b.b((long)gkk.a($$7));
+               dru $$8 = $$0.d();
+               a($$1, $$6, $$2, $$3, $$4, $$7, this.a, $$8.b(), $$8.a(), this.b);
             }
-
-            return dfj.a.o();
-         } catch (Throwable var8) {
-            o $$8 = o.a(var8, "Getting block state");
-            p $$9 = $$8.a("Block being got");
-            $$9.a("Location", () -> p.a(this.d, $$1, $$2, $$3));
-            throw new y($$8);
          }
       }
+   }
+
+   public static void a(float $$0, dcg $$1, fao $$2, gef $$3, int $$4, cud $$5, gkm $$6, float $$7, float $$8, ayo $$9) {
+      $$2.a();
+      $$2.a(0.5F, 0.4F, 0.5F);
+      $$2.a(a.d.rotationDegrees(ayg.j($$0, $$7, $$8)));
+      gkk.a($$6, $$2, $$3, $$4, $$5, $$9, $$1);
+      $$2.b();
    }
 }

@@ -1,36 +1,34 @@
-import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
 
-public class eub implements euf {
-   private static final eub b = new eub();
-   public static final MapCodec<eub> a = MapCodec.unit(b);
+public record eub(boolean b) implements euh {
+   public static final MapCodec<eub> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.BOOL.fieldOf("active").forGetter(eub::e)).apply($$0, eub::new));
 
-   private eub() {
+   public boolean a(eqw $$0) {
+      return $$0.b(ets.l) == this.b;
    }
 
    @Override
-   public eug b() {
-      return euh.l;
+   public eui b() {
+      return euj.s;
    }
 
    @Override
-   public Set<etn<?>> a() {
-      return ImmutableSet.of(etq.j);
+   public Set<etp<?>> a() {
+      return Set.of(ets.l);
    }
 
-   public boolean a(equ $$0) {
-      Float $$1 = $$0.c(etq.j);
-      if ($$1 != null) {
-         ayo $$2 = $$0.b();
-         float $$3 = 1.0F / $$1;
-         return $$2.i() <= $$3;
-      } else {
-         return true;
-      }
+   public static euh.a c() {
+      return () -> new eub(true);
    }
 
-   public static euf.a c() {
-      return () -> b;
+   public static euh.a d() {
+      return () -> new eub(false);
+   }
+
+   public boolean e() {
+      return this.b;
    }
 }

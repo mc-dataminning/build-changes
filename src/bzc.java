@@ -1,152 +1,108 @@
-public class bzc implements byy {
-   public static final float a = 5.0E-4F;
-   public static final float b = 2.5000003E-7F;
-   protected static final int c = 90;
-   protected final btd d;
+import java.util.Optional;
+
+public class bzc implements byz {
+   protected final bte a;
+   protected float b;
+   protected float c;
+   protected int d;
    protected double e;
    protected double f;
    protected double g;
-   protected double h;
-   protected float i;
-   protected float j;
-   protected bzc.a k = bzc.a.a;
 
-   public bzc(btd $$0) {
-      this.d = $$0;
+   public bzc(bte $$0) {
+      this.a = $$0;
    }
 
-   public boolean b() {
-      return this.k == bzc.a.b;
+   public void a(ewh $$0) {
+      this.a($$0.c, $$0.d, $$0.e);
    }
 
-   public double c() {
-      return this.h;
+   public void a(bsh $$0) {
+      this.a($$0.dw(), b($$0), $$0.dC());
    }
 
-   public void a(double $$0, double $$1, double $$2, double $$3) {
+   public void a(bsh $$0, float $$1, float $$2) {
+      this.a($$0.dw(), b($$0), $$0.dC(), $$1, $$2);
+   }
+
+   public void a(double $$0, double $$1, double $$2) {
+      this.a($$0, $$1, $$2, (float)this.a.ae(), (float)this.a.aa());
+   }
+
+   public void a(double $$0, double $$1, double $$2, float $$3, float $$4) {
       this.e = $$0;
       this.f = $$1;
       this.g = $$2;
-      this.h = $$3;
-      if (this.k != bzc.a.d) {
-         this.k = bzc.a.b;
-      }
-   }
-
-   public void a(float $$0, float $$1) {
-      this.k = bzc.a.c;
-      this.i = $$0;
-      this.j = $$1;
-      this.h = 0.25;
+      this.b = $$3;
+      this.c = $$4;
+      this.d = 2;
    }
 
    public void a() {
-      if (this.k == bzc.a.c) {
-         float $$0 = (float)this.d.g(buj.v);
-         float $$1 = (float)this.h * $$0;
-         float $$2 = this.i;
-         float $$3 = this.j;
-         float $$4 = ayg.c($$2 * $$2 + $$3 * $$3);
-         if ($$4 < 1.0F) {
-            $$4 = 1.0F;
-         }
+      if (this.c()) {
+         this.a.t(0.0F);
+      }
 
-         $$4 = $$1 / $$4;
-         $$2 *= $$4;
-         $$3 *= $$4;
-         float $$5 = ayg.a(this.d.dG() * (float) (Math.PI / 180.0));
-         float $$6 = ayg.b(this.d.dG() * (float) (Math.PI / 180.0));
-         float $$7 = $$2 * $$6 - $$3 * $$5;
-         float $$8 = $$3 * $$6 + $$2 * $$5;
-         if (!this.b($$7, $$8)) {
-            this.i = 1.0F;
-            this.j = 0.0F;
-         }
-
-         this.d.z($$1);
-         this.d.D(this.i);
-         this.d.F(this.j);
-         this.k = bzc.a.a;
-      } else if (this.k == bzc.a.b) {
-         this.k = bzc.a.a;
-         double $$9 = this.e - this.d.dv();
-         double $$10 = this.g - this.d.dB();
-         double $$11 = this.f - this.d.dx();
-         double $$12 = $$9 * $$9 + $$11 * $$11 + $$10 * $$10;
-         if ($$12 < 2.5000003E-7F) {
-            this.d.D(0.0F);
-            return;
-         }
-
-         float $$13 = (float)(ayg.d($$10, $$9) * 180.0F / (float)Math.PI) - 90.0F;
-         this.d.s(this.a(this.d.dG(), $$13, 90.0F));
-         this.d.z((float)(this.h * this.d.g(buj.v)));
-         ja $$14 = this.d.dq();
-         dsk $$15 = this.d.dQ().a_($$14);
-         ewy $$16 = $$15.k(this.d.dQ(), $$14);
-         if ($$11 > (double)this.d.dK() && $$9 * $$9 + $$10 * $$10 < (double)Math.max(1.0F, this.d.dk())
-            || !$$16.c() && this.d.dx() < $$16.c(jf.a.b) + (double)$$14.v() && !$$15.a(avw.p) && !$$15.a(avw.S)) {
-            this.d.I().a();
-            this.k = bzc.a.d;
-         }
-      } else if (this.k == bzc.a.d) {
-         this.d.z((float)(this.h * this.d.g(buj.v)));
-         if (this.d.aF()) {
-            this.k = bzc.a.a;
-         }
+      if (this.d > 0) {
+         this.d--;
+         this.i().ifPresent($$0 -> this.a.bb = this.a(this.a.bb, $$0, this.b));
+         this.h().ifPresent($$0 -> this.a.t(this.a(this.a.dJ(), $$0, this.c)));
       } else {
-         this.d.D(0.0F);
+         this.a.bb = this.a(this.a.bb, this.a.aZ, 10.0F);
+      }
+
+      this.b();
+   }
+
+   protected void b() {
+      if (!this.a.J().l()) {
+         this.a.bb = ayg.c(this.a.bb, this.a.aZ, (float)this.a.ab());
       }
    }
 
-   private boolean b(float $$0, float $$1) {
-      ccn $$2 = this.d.K();
-      if ($$2 != null) {
-         eou $$3 = $$2.o();
-         if ($$3 != null && $$3.a(this.d, ja.a(this.d.dv() + (double)$$0, (double)this.d.dw(), this.d.dB() + (double)$$1)) != eoy.c) {
-            return false;
-         }
-      }
-
+   protected boolean c() {
       return true;
    }
 
-   protected float a(float $$0, float $$1, float $$2) {
-      float $$3 = ayg.g($$1 - $$0);
-      if ($$3 > $$2) {
-         $$3 = $$2;
-      }
-
-      if ($$3 < -$$2) {
-         $$3 = -$$2;
-      }
-
-      float $$4 = $$0 + $$3;
-      if ($$4 < 0.0F) {
-         $$4 += 360.0F;
-      } else if ($$4 > 360.0F) {
-         $$4 -= 360.0F;
-      }
-
-      return $$4;
-   }
-
-   public double d() {
-      return this.e;
+   public boolean d() {
+      return this.d > 0;
    }
 
    public double e() {
-      return this.f;
+      return this.e;
    }
 
    public double f() {
+      return this.f;
+   }
+
+   public double g() {
       return this.g;
    }
 
-   protected static enum a {
-      a,
-      b,
-      c,
-      d;
+   protected Optional<Float> h() {
+      double $$0 = this.e - this.a.dw();
+      double $$1 = this.f - this.a.dA();
+      double $$2 = this.g - this.a.dC();
+      double $$3 = Math.sqrt($$0 * $$0 + $$2 * $$2);
+      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$3) > 1.0E-5F) ? Optional.empty() : Optional.of((float)(-(ayg.d($$1, $$3) * 180.0F / (float)Math.PI)));
+   }
+
+   protected Optional<Float> i() {
+      double $$0 = this.e - this.a.dw();
+      double $$1 = this.g - this.a.dC();
+      return !(Math.abs($$1) > 1.0E-5F) && !(Math.abs($$0) > 1.0E-5F)
+         ? Optional.empty()
+         : Optional.of((float)(ayg.d($$1, $$0) * 180.0F / (float)Math.PI) - 90.0F);
+   }
+
+   protected float a(float $$0, float $$1, float $$2) {
+      float $$3 = ayg.c($$0, $$1);
+      float $$4 = ayg.a($$3, -$$2, $$2);
+      return $$0 + $$4;
+   }
+
+   private static double b(bsh $$0) {
+      return $$0 instanceof btc ? $$0.dA() : ($$0.cM().b + $$0.cM().e) / 2.0;
    }
 }

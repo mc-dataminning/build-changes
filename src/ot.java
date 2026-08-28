@@ -7,6 +7,6 @@ public class ot extends ok {
 
    @Override
    protected void a(oj $$0) {
-      ol.a(oi.e, cuf.qU).a('#', cuf.uE).a('-', cuf.ps).b("-#-").b("# #").b("###").b("has_string", a(cuf.ps)).a($$0);
+      ol.a(oi.e, cug.qU).a('#', cug.uE).a('-', cug.ps).b("-#-").b("# #").b("###").b("has_string", a(cug.ps)).a($$0);
    }
 }

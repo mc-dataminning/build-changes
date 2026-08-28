@@ -149,7 +149,7 @@ public class anm {
    }
 
    private static int a(eq $$0, int $$1, boolean $$2, boolean $$3) {
-      bqn $$4 = $$0.e().L();
+      bqo $$4 = $$0.e().L();
       $$4.a($$1, $$2, $$3);
       int $$5 = $$4.a();
       $$0.a(() -> wu.a("commands.random.reset.all.success", $$5), false);

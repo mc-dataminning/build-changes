@@ -5,9 +5,9 @@ public class aet implements zb<abn> {
    private final int b;
    private final int c;
 
-   public aet(bsg $$0, @Nullable bsg $$1) {
-      this.b = $$0.am();
-      this.c = $$1 != null ? $$1.am() : 0;
+   public aet(bsh $$0, @Nullable bsh $$1) {
+      this.b = $$0.an();
+      this.c = $$1 != null ? $$1.an() : 0;
    }
 
    private aet(vr $$0) {

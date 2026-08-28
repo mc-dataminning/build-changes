@@ -1,24 +1,99 @@
-import it.unimi.dsi.fastutil.floats.FloatUnaryOperator;
+import com.google.common.collect.ImmutableList;
+import com.mojang.logging.LogUtils;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.List;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class fgf {
-   public float a;
-   public float b;
-   private long c;
-   private final float d;
-   private final FloatUnaryOperator e;
+   private static final Logger a = LogUtils.getLogger();
+   @Nullable
+   private fgf.c b;
+   private int c;
 
-   public fgf(float $$0, long $$1, FloatUnaryOperator $$2) {
-      this.d = 1000.0F / $$0;
-      this.c = $$1;
-      this.e = $$2;
+   public void a(fgf.b $$0, List<asi> $$1) {
+      this.c++;
+      if (this.b != null && !this.b.d) {
+         a.warn("Reload already ongoing, replacing");
+      }
+
+      this.b = new fgf.c($$0, $$1.stream().map(asi::b).collect(ImmutableList.toImmutableList()));
    }
 
-   public int a(long $$0) {
-      this.b = (float)($$0 - this.c) / this.e.apply(this.d);
-      this.c = $$0;
-      this.a = this.a + this.b;
-      int $$1 = (int)this.a;
-      this.a -= (float)$$1;
-      return $$1;
+   public void a(Throwable $$0) {
+      if (this.b == null) {
+         a.warn("Trying to signal reload recovery, but nothing was started");
+         this.b = new fgf.c(fgf.b.c, ImmutableList.of());
+      }
+
+      this.b.c = new fgf.a($$0);
+   }
+
+   public void a() {
+      if (this.b == null) {
+         a.warn("Trying to finish reload, but nothing was started");
+      } else {
+         this.b.d = true;
+      }
+   }
+
+   public void a(o $$0) {
+      p $$1 = $$0.a("Last reload");
+      $$1.a("Reload number", this.c);
+      if (this.b != null) {
+         this.b.a($$1);
+      }
+   }
+
+   static class a {
+      private final Throwable a;
+
+      a(Throwable $$0) {
+         this.a = $$0;
+      }
+
+      public void a(p $$0) {
+         $$0.a("Recovery", "Yes");
+         $$0.a("Recovery reason", () -> {
+            StringWriter $$0x = new StringWriter();
+            this.a.printStackTrace(new PrintWriter($$0x));
+            return $$0x.toString();
+         });
+      }
+   }
+
+   public static enum b {
+      a("initial"),
+      b("manual"),
+      c("unknown");
+
+      final String d;
+
+      private b(final String $$0) {
+         this.d = $$0;
+      }
+   }
+
+   static class c {
+      private final fgf.b a;
+      private final List<String> b;
+      @Nullable
+      fgf.a c;
+      boolean d;
+
+      c(fgf.b $$0, List<String> $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      public void a(p $$0) {
+         $$0.a("Reload reason", this.a.d);
+         $$0.a("Finished", this.d ? "Yes" : "No");
+         $$0.a("Packs", () -> String.join(", ", this.b));
+         if (this.c != null) {
+            this.c.a($$0);
+         }
+      }
    }
 }

@@ -1,8 +1,16 @@
-import javax.annotation.Nullable;
+import java.util.List;
 
-public interface cst {
-   default void a(@Nullable cmk $$0, dcf $$1, cuc $$2, ja $$3) {
+public class cst extends cty {
+   public cst(cty.a $$0) {
+      super($$0);
    }
 
-   boolean a(@Nullable cmk var1, dcf var2, ja var3, @Nullable ewb var4);
+   @Override
+   public void a(cud $$0, cty.b $$1, List<wu> $$2, cvw $$3) {
+      $$2.add(this.c().a(n.h));
+   }
+
+   public xi c() {
+      return wu.c(this.a() + ".desc");
+   }
 }

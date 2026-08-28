@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 import net.minecraft.server.MinecraftServer;
 
-public record aj(int c, List<akj<eqz>> d, List<akk> e, Optional<el> f) {
+public record aj(int c, List<akj<erb>> d, List<akk> e, Optional<el> f) {
    public static final Codec<aj> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                Codec.INT.optionalFieldOf("experience", 0).forGetter(aj::a),
@@ -21,29 +21,29 @@ public record aj(int c, List<akj<eqz>> d, List<akk> e, Optional<el> f) {
 
    public void a(aqn $$0) {
       $$0.d(this.c);
-      eqx $$1 = new eqx.a($$0.z()).a(etq.a, $$0).a(etq.f, $$0.do()).a(etp.m);
+      eqz $$1 = new eqz.a($$0.A()).a(ets.a, $$0).a(ets.f, $$0.dp()).a(etr.m);
       boolean $$2 = false;
 
-      for (akj<eqz> $$3 : this.d) {
+      for (akj<erb> $$3 : this.d) {
          ObjectListIterator var6 = $$0.d.bf().b($$3).a($$1).iterator();
 
          while (var6.hasNext()) {
-            cuc $$4 = (cuc)var6.next();
+            cud $$4 = (cud)var6.next();
             if ($$0.i($$4)) {
-               $$0.dQ().a(null, $$0.dv(), $$0.dx(), $$0.dB(), avh.nC, avi.h, 0.2F, (($$0.dT().i() - $$0.dT().i()) * 0.7F + 1.0F) * 2.0F);
+               $$0.dR().a(null, $$0.dw(), $$0.dy(), $$0.dC(), avh.nC, avi.h, 0.2F, (($$0.dU().i() - $$0.dU().i()) * 0.7F + 1.0F) * 2.0F);
                $$2 = true;
             } else {
-               ciu $$5 = $$0.a($$4, false);
+               civ $$5 = $$0.a($$4, false);
                if ($$5 != null) {
                   $$5.w();
-                  $$5.b($$0.cA());
+                  $$5.b($$0.cB());
                }
             }
          }
       }
 
       if ($$2) {
-         $$0.cd.d();
+         $$0.ce.d();
       }
 
       if (!this.e.isEmpty()) {
@@ -51,14 +51,14 @@ public record aj(int c, List<akj<eqz>> d, List<akk> e, Optional<el> f) {
       }
 
       MinecraftServer $$6 = $$0.d;
-      this.f.flatMap($$1x -> $$1x.a($$6.aG())).ifPresent($$2x -> $$6.aG().a($$2x, $$0.dh().a().a(2)));
+      this.f.flatMap($$1x -> $$1x.a($$6.aG())).ifPresent($$2x -> $$6.aG().a($$2x, $$0.di().a().a(2)));
    }
 
    public int a() {
       return this.c;
    }
 
-   public List<akj<eqz>> b() {
+   public List<akj<erb>> b() {
       return this.d;
    }
 
@@ -72,7 +72,7 @@ public record aj(int c, List<akj<eqz>> d, List<akk> e, Optional<el> f) {
 
    public static class a {
       private int a;
-      private final Builder<akj<eqz>> b = ImmutableList.builder();
+      private final Builder<akj<erb>> b = ImmutableList.builder();
       private final Builder<akk> c = ImmutableList.builder();
       private Optional<akk> d = Optional.empty();
 
@@ -85,11 +85,11 @@ public record aj(int c, List<akj<eqz>> d, List<akk> e, Optional<el> f) {
          return this;
       }
 
-      public static aj.a a(akj<eqz> $$0) {
+      public static aj.a a(akj<erb> $$0) {
          return new aj.a().b($$0);
       }
 
-      public aj.a b(akj<eqz> $$0) {
+      public aj.a b(akj<erb> $$0) {
          this.b.add($$0);
          return this;
       }

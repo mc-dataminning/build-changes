@@ -1,31 +1,27 @@
+import java.util.Optional;
+
 public class dbz {
-   private static int[] a = new int[65536];
-
-   public static void a(int[] $$0) {
-      a = $$0;
+   public Optional<Float> a(dby $$0, dbm $$1, ja $$2, dsl $$3, eoj $$4) {
+      return $$3.i() && $$4.c() ? Optional.empty() : Optional.of(Math.max($$3.b().e(), $$4.i()));
    }
 
-   public static int a(double $$0, double $$1) {
-      $$1 *= $$0;
-      int $$2 = (int)((1.0 - $$0) * 255.0);
-      int $$3 = (int)((1.0 - $$1) * 255.0);
-      int $$4 = $$3 << 8 | $$2;
-      return $$4 >= a.length ? c() : a[$$4];
+   public boolean a(dby $$0, dbm $$1, ja $$2, dsl $$3, float $$4) {
+      return true;
    }
 
-   public static int a() {
-      return -10380959;
+   public boolean a(dby $$0, bsh $$1) {
+      return true;
    }
 
-   public static int b() {
-      return -8345771;
+   public float a(bsh $$0) {
+      return 1.0F;
    }
 
-   public static int c() {
-      return -12012264;
-   }
-
-   public static int d() {
-      return -7158200;
+   public float b(dby $$0, bsh $$1) {
+      float $$2 = $$0.a() * 2.0F;
+      ewh $$3 = $$0.b();
+      double $$4 = Math.sqrt($$1.g($$3)) / (double)$$2;
+      double $$5 = (1.0 - $$4) * (double)dby.a($$3, $$1);
+      return (float)(($$5 * $$5 + $$5) / 2.0 * 7.0 * (double)$$2 + 1.0);
    }
 }

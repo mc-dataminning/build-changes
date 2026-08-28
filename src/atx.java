@@ -3,7 +3,7 @@ import java.util.concurrent.Executor;
 
 public interface atx extends atq {
    @Override
-   default CompletableFuture<Void> a(atq.a $$0, atw $$1, bmu $$2, bmu $$3, Executor $$4, Executor $$5) {
+   default CompletableFuture<Void> a(atq.a $$0, atw $$1, bmv $$2, bmv $$3, Executor $$4, Executor $$5) {
       return $$0.a(azk.a).thenRunAsync(() -> {
          $$3.a();
          $$3.a("listener");

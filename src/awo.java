@@ -22,7 +22,7 @@ public class awo implements atq {
    }
 
    @Override
-   public CompletableFuture<Void> a(atq.a $$0, atw $$1, bmu $$2, bmu $$3, Executor $$4, Executor $$5) {
+   public CompletableFuture<Void> a(atq.a $$0, atw $$1, bmv $$2, bmv $$3, Executor $$4, Executor $$5) {
       List<? extends CompletableFuture<? extends awo.a<?>>> $$6 = this.a.c().map($$2x -> this.a($$1, $$4, $$2x)).toList();
       return CompletableFuture.allOf($$6.toArray(CompletableFuture[]::new))
          .thenCompose($$0::a)

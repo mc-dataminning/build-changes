@@ -1,19 +1,16 @@
-import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dia extends dgb implements cte {
-   public static final MapCodec<dia> c = b(dia::new);
+public interface dia {
+   @Nullable
+   dpq a(ja var1, dsl var2);
 
-   @Override
-   public MapCodec<dia> a() {
-      return c;
+   @Nullable
+   default <T extends dpq> dpr<T> a(dcg $$0, dsl $$1, dps<T> $$2) {
+      return null;
    }
 
-   protected dia(dsj.d $$0) {
-      super($$0);
-   }
-
-   @Override
-   public bsn m() {
-      return bsn.f;
+   @Nullable
+   default <T extends dpq> dxj a(aqm $$0, T $$1) {
+      return $$1 instanceof dxj.b<?> $$2 ? $$2.c() : null;
    }
 }

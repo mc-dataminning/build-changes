@@ -1,43 +1,55 @@
-import com.google.common.collect.Maps;
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
+import io.netty.buffer.ByteBuf;
+import java.util.function.IntFunction;
+import java.util.function.Predicate;
 
-public record bsp(akj<eqz> c, Map<bsn, Float> d) {
-   public static final Codec<Map<bsn, Float>> a = Codec.either(Codec.FLOAT, Codec.unboundedMap(bsn.h, Codec.FLOAT))
-      .xmap($$0 -> (Map)$$0.map(bsp::a, Function.identity()), $$0 -> {
-         boolean $$1 = $$0.values().stream().distinct().count() == 1L;
-         boolean $$2 = $$0.keySet().containsAll(Arrays.asList(bsn.values()));
-         return $$1 && $$2 ? Either.left($$0.values().stream().findFirst().orElse(0.0F)) : Either.right($$0);
-      });
-   public static final Codec<bsp> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(akj.a(lr.bb).fieldOf("loot_table").forGetter(bsp::a), a.optionalFieldOf("slot_drop_chances", Map.of()).forGetter(bsp::b))
-            .apply($$0, bsp::new)
-   );
+public enum bsp implements azc {
+   a(0, "any", $$0 -> true),
+   b(1, "mainhand", bso.a),
+   c(2, "offhand", bso.b),
+   d(3, "hand", $$0 -> $$0.a() == bso.a.a),
+   e(4, "feet", bso.c),
+   f(5, "legs", bso.d),
+   g(6, "chest", bso.e),
+   h(7, "head", bso.f),
+   i(8, "armor", bso::f),
+   j(9, "body", bso.g);
 
-   private static Map<bsn, Float> a(float $$0) {
-      return a(List.of(bsn.values()), $$0);
+   public static final IntFunction<bsp> k = aww.a($$0 -> $$0.n, values(), aww.a.a);
+   public static final Codec<bsp> l = azc.a(bsp::values);
+   public static final ys<ByteBuf, bsp> m = yq.a(k, $$0 -> $$0.n);
+   private final int n;
+   private final String o;
+   private final Predicate<bso> p;
+
+   private bsp(final int $$0, final String $$1, final Predicate<bso> $$2) {
+      this.n = $$0;
+      this.o = $$1;
+      this.p = $$2;
    }
 
-   private static Map<bsn, Float> a(List<bsn> $$0, float $$1) {
-      Map<bsn, Float> $$2 = Maps.newHashMap();
-
-      for (bsn $$3 : $$0) {
-         $$2.put($$3, $$1);
-      }
-
-      return $$2;
+   private bsp(final int $$0, final String $$1, final bso $$2) {
+      this($$0, $$1, $$1x -> $$1x == $$2);
    }
 
-   public akj<eqz> a() {
-      return this.c;
+   public static bsp a(bso $$0) {
+      return switch ($$0) {
+         case a -> b;
+         case b -> c;
+         case c -> e;
+         case d -> f;
+         case e -> g;
+         case f -> h;
+         case g -> j;
+      };
    }
 
-   public Map<bsn, Float> b() {
-      return this.d;
+   @Override
+   public String c() {
+      return this.o;
+   }
+
+   public boolean b(bso $$0) {
+      return this.p.test($$0);
    }
 }

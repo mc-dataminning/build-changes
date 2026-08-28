@@ -1,3 +1,6 @@
-public interface flp {
-   void b(flo var1);
+public enum flp {
+   a,
+   b,
+   c,
+   d;
 }

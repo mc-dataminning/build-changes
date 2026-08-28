@@ -16,8 +16,8 @@ public record dn(boolean d, boolean e) implements bv {
    }
 
    @Override
-   public boolean a(bsg $$0, aqm $$1, @Nullable ewf $$2) {
-      return !($$0 instanceof cnw $$3) ? false : $$3.gE() == this.d && $$3.gD() == this.e;
+   public boolean a(bsh $$0, aqm $$1, @Nullable ewh $$2) {
+      return !($$0 instanceof cnx $$3) ? false : $$3.gD() == this.d && $$3.gC() == this.e;
    }
 
    public boolean b() {

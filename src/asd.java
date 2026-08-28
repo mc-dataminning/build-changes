@@ -24,13 +24,13 @@ public class asd implements AutoCloseable {
    private static final Logger a = LogUtils.getLogger();
    private static final int b = 20;
    private final Path c;
-   private final bln<asd.e> d;
-   private final boz<Runnable> e = boz.a(ac.i(), "download-queue");
+   private final blo<asd.e> d;
+   private final bpa<Runnable> e = bpa.a(ac.i(), "download-queue");
 
    public asd(Path $$0) throws IOException {
       this.c = $$0;
       v.c($$0);
-      this.d = bln.a(asd.e.a, $$0.resolve("log.json"));
+      this.d = blo.a(asd.e.a, $$0.resolve("log.json"));
       asc.a($$0, 20);
    }
 

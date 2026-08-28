@@ -1,32 +1,71 @@
-public class gis extends gks<ckm, ftx<ckm>> {
-   private static final akk a = new akk("textures/entity/breeze/breeze.png");
+import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.util.Pair;
+import java.util.Map;
+import java.util.stream.Stream;
+import org.joml.Quaternionf;
 
-   public gis(gjm.a $$0) {
-      super($$0, new ftx<>($$0.a(fxn.s)), 0.5F);
-      this.a(new gmx(this));
-      this.a(new gmw(this));
+public class gis extends gjn<coi> {
+   private final Map<coi.b, Pair<akk, fvi<coi>>> a;
+
+   public gis(gjo.a $$0, boolean $$1) {
+      super($$0);
+      this.d = 0.8F;
+      this.a = Stream.of(coi.b.values()).collect(ImmutableMap.toImmutableMap($$0x -> $$0x, $$2 -> Pair.of(new akk(a($$2, $$1)), this.a($$0, $$2, $$1))));
    }
 
-   public void a(ckm $$0, float $$1, float $$2, fam $$3, ged $$4, int $$5) {
-      ftx<ckm> $$6 = this.a();
-      a($$6, $$6.b(), $$6.d());
+   private fvi<coi> a(gjo.a $$0, coi.b $$1, boolean $$2) {
+      fxo $$3 = $$2 ? fxp.d($$1) : fxp.c($$1);
+      fxq $$4 = $$0.a($$3);
+      if ($$1 == coi.b.i) {
+         return (fvi<coi>)($$2 ? new fud($$4) : new fwc($$4));
+      } else {
+         return (fvi<coi>)($$2 ? new fuc($$4) : new ftw($$4));
+      }
+   }
+
+   private static String a(coi.b $$0, boolean $$1) {
+      return $$1 ? "textures/entity/chest_boat/" + $$0.a() + ".png" : "textures/entity/boat/" + $$0.a() + ".png";
+   }
+
+   public void a(coi $$0, float $$1, float $$2, fao $$3, gef $$4, int $$5) {
+      $$3.a();
+      $$3.a(0.0F, 0.375F, 0.0F);
+      $$3.a(a.d.rotationDegrees(180.0F - $$1));
+      float $$6 = (float)$$0.O() - $$2;
+      float $$7 = $$0.N() - $$2;
+      if ($$7 < 0.0F) {
+         $$7 = 0.0F;
+      }
+
+      if ($$6 > 0.0F) {
+         $$3.a(a.b.rotationDegrees(ayg.a($$6) * $$6 * $$7 / 10.0F * (float)$$0.P()));
+      }
+
+      float $$8 = $$0.a($$2);
+      if (!ayg.a($$8, 0.0F)) {
+         $$3.a(new Quaternionf().setAngleAxis($$0.a($$2) * (float) (Math.PI / 180.0), 1.0F, 0.0F, 1.0F));
+      }
+
+      Pair<akk, fvi<coi>> $$9 = this.a.get($$0.x());
+      akk $$10 = (akk)$$9.getFirst();
+      fvi<coi> $$11 = (fvi<coi>)$$9.getSecond();
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      $$3.a(a.d.rotationDegrees(90.0F));
+      $$11.a($$0, $$2, 0.0F, -0.1F, 0.0F, 0.0F);
+      fas $$12 = $$4.getBuffer($$11.a($$10));
+      $$11.a($$3, $$12, $$5, gph.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      if (!$$0.bl()) {
+         fas $$13 = $$4.getBuffer(gen.i());
+         if ($$11 instanceof fxd $$14) {
+            $$14.c().a($$3, $$13, $$5, gph.d);
+         }
+      }
+
+      $$3.b();
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public akk a(ckm $$0) {
-      return a;
-   }
-
-   public static ftx<ckm> a(ftx<ckm> $$0, fxo... $$1) {
-      $$0.b().k = false;
-      $$0.c().k = false;
-      $$0.d().k = false;
-      $$0.e().k = false;
-
-      for (fxo $$2 : $$1) {
-         $$2.k = true;
-      }
-
-      return $$0;
+   public akk a(coi $$0) {
+      return (akk)this.a.get($$0.x()).getFirst();
    }
 }

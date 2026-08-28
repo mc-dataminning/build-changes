@@ -1,27 +1,24 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import java.util.Map;
 
-public class gnp extends gny<cfd, fvd<cfd>> {
-   private static final Map<bse.a, akk> a = ImmutableMap.of(
-      bse.a.b,
-      new akk("textures/entity/iron_golem/iron_golem_crackiness_low.png"),
-      bse.a.c,
-      new akk("textures/entity/iron_golem/iron_golem_crackiness_medium.png"),
-      bse.a.d,
-      new akk("textures/entity/iron_golem/iron_golem_crackiness_high.png")
-   );
+public class gnp extends goa<cgy, fvb<cgy>> {
+   private static final Map<cha, akk> a = ac.a(Maps.newEnumMap(cha.class), $$0 -> {
+      $$0.put(cha.a, null);
+      $$0.put(cha.b, new akk("textures/entity/horse/horse_markings_white.png"));
+      $$0.put(cha.c, new akk("textures/entity/horse/horse_markings_whitefield.png"));
+      $$0.put(cha.d, new akk("textures/entity/horse/horse_markings_whitedots.png"));
+      $$0.put(cha.e, new akk("textures/entity/horse/horse_markings_blackdots.png"));
+   });
 
-   public gnp(gli<cfd, fvd<cfd>> $$0) {
+   public gnp(glk<cgy, fvb<cgy>> $$0) {
       super($$0);
    }
 
-   public void a(fam $$0, ged $$1, int $$2, cfd $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.ci()) {
-         bse.a $$10 = $$3.u();
-         if ($$10 != bse.a.a) {
-            akk $$11 = a.get($$10);
-            a(this.c(), $$11, $$0, $$1, $$2, $$3, 1.0F, 1.0F, 1.0F);
-         }
+   public void a(fao $$0, gef $$1, int $$2, cgy $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      akk $$10 = a.get($$3.t());
+      if ($$10 != null && !$$3.cj()) {
+         fas $$11 = $$1.getBuffer(gen.i($$10));
+         this.c().a($$0, $$11, $$2, gkp.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
       }
    }
 }

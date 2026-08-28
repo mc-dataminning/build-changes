@@ -36,11 +36,11 @@ public class apf extends MinecraftServer implements alb {
    @Nullable
    private final ars t;
    @Nullable
-   private bli u;
+   private blj u;
    @Nullable
-   private blf v;
+   private blg v;
 
-   public apf(Thread $$0, eqi.c $$1, ath $$2, alh $$3, aph $$4, DataFixer $$5, ale $$6, aqw $$7) {
+   public apf(Thread $$0, eqk.c $$1, ath $$2, alh $$3, aph $$4, DataFixer $$5, ale $$6, aqw $$7) {
       super($$0, $$1, $$2, $$3, Proxy.NO_PROXY, $$5, $$6, $$7);
       this.r = $$4;
       this.p = new auw(this);
@@ -127,10 +127,10 @@ public class apf extends MinecraftServer implements alb {
          return false;
       } else {
          this.a(new ape(this, this.be(), this.g));
-         this.v = new blf(this.bs());
-         this.u = new bli(bll.values().length, this.v, blh.a);
+         this.v = new blg(this.bs());
+         this.u = new blj(blm.values().length, this.v, bli.a);
          long $$4 = ac.d();
-         drc.a(this.i, this);
+         drd.a(this.i, this);
          auf.a(this.aa());
          k.info("Preparing level \"{}\"", this.s());
          this.t_();
@@ -138,7 +138,7 @@ public class apf extends MinecraftServer implements alb {
          String $$6 = String.format(Locale.ROOT, "%.3fs", (double)$$5 / 1.0E9);
          k.info("Done ({})! For help, type \"help\"", $$6);
          if ($$1.o != null) {
-            this.aN().a(dcb.A).a($$1.o, this);
+            this.aN().a(dcc.A).a($$1.o, this);
          }
 
          if ($$1.p) {
@@ -160,7 +160,7 @@ public class apf extends MinecraftServer implements alb {
          }
 
          if ($$1.O) {
-            blq.a(this);
+            blr.a(this);
             k.info("JMX monitoring enabled");
          }
 
@@ -329,12 +329,12 @@ public class apf extends MinecraftServer implements alb {
    }
 
    @Override
-   public boolean a(aqm $$0, ja $$1, cmk $$2) {
-      if ($$0.af() != dcf.h) {
+   public boolean a(aqm $$0, ja $$1, cml $$2) {
+      if ($$0.af() != dcg.h) {
          return false;
       } else if (this.bs().k().c()) {
          return false;
-      } else if (this.bs().f($$2.fY())) {
+      } else if (this.bs().f($$2.fZ())) {
          return false;
       } else if (this.an() <= 0) {
          return false;
@@ -500,7 +500,7 @@ public class apf extends MinecraftServer implements alb {
    public void v() {
       super.v();
       ac.j();
-      drc.b();
+      drd.b();
    }
 
    @Override
@@ -525,12 +525,12 @@ public class apf extends MinecraftServer implements alb {
 
    @Override
    public arr a(aqn $$0) {
-      return this.t != null ? this.t.a($$0.fY()) : arr.a;
+      return this.t != null ? this.t.a($$0.fZ()) : arr.a;
    }
 
    @Nullable
    @Override
-   public dcc bg() {
+   public dcd bg() {
       return this.r.a().i ? this.j.k() : null;
    }
 
@@ -546,17 +546,17 @@ public class apf extends MinecraftServer implements alb {
    }
 
    @Override
-   public blj f() {
+   public blk f() {
       return this.u;
    }
 
    @Override
    public boolean g() {
-      return this.v.a(blh.a);
+      return this.v.a(bli.a);
    }
 
    @Override
-   public void a(aqn $$0, blh $$1) {
+   public void a(aqn $$0, bli $$1) {
       this.v.a($$0, $$1);
    }
 

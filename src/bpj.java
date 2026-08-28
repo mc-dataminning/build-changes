@@ -1,26 +1,45 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
+import com.mojang.serialization.MapCodec;
 
-public abstract class bpj implements bpo {
-   private static final Codec<Either<Float, bpj>> a = Codec.either(Codec.FLOAT, lq.J.r().dispatch(bpj::c, bpk::codec));
-   public static final Codec<bpj> c = a.xmap(
-      $$0 -> (bpj)$$0.map(bph::a, $$0x -> $$0x), $$0 -> $$0.c() == bpk.a ? Either.left(((bph)$$0).d()) : Either.right($$0)
-   );
+public class bpj extends bpm {
+   public static final bpj a = new bpj(0);
+   public static final MapCodec<bpj> b = Codec.INT.fieldOf("value").xmap(bpj::a, bpj::d);
+   private final int f;
 
-   public static Codec<bpj> a(float $$0, float $$1) {
-      return c.validate($$2 -> {
-         if ($$2.a() < $$0) {
-            return DataResult.error(() -> "Value provider too low: " + $$0 + " [" + $$2.a() + "-" + $$2.b() + "]");
-         } else {
-            return $$2.b() > $$1 ? DataResult.error(() -> "Value provider too high: " + $$1 + " [" + $$2.a() + "-" + $$2.b() + "]") : DataResult.success($$2);
-         }
-      });
+   public static bpj a(int $$0) {
+      return $$0 == 0 ? a : new bpj($$0);
    }
 
-   public abstract float a();
+   private bpj(int $$0) {
+      this.f = $$0;
+   }
 
-   public abstract float b();
+   public int d() {
+      return this.f;
+   }
 
-   public abstract bpk<?> c();
+   @Override
+   public int a(ayo $$0) {
+      return this.f;
+   }
+
+   @Override
+   public int a() {
+      return this.f;
+   }
+
+   @Override
+   public int b() {
+      return this.f;
+   }
+
+   @Override
+   public bpn<?> c() {
+      return bpn.a;
+   }
+
+   @Override
+   public String toString() {
+      return Integer.toString(this.f);
+   }
 }

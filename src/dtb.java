@@ -1,47 +1,133 @@
-import com.google.common.collect.ImmutableSet;
-import java.util.Collection;
-import java.util.Optional;
-
-public class dtb extends dtn<Boolean> {
-   private final ImmutableSet<Boolean> a = ImmutableSet.of(true, false);
-
-   protected dtb(String $$0) {
-      super($$0, Boolean.class);
-   }
-
-   @Override
-   public Collection<Boolean> a() {
-      return this.a;
-   }
-
-   public static dtb a(String $$0) {
-      return new dtb($$0);
-   }
-
-   @Override
-   public Optional<Boolean> b(String $$0) {
-      return !"true".equals($$0) && !"false".equals($$0) ? Optional.empty() : Optional.of(Boolean.valueOf($$0));
-   }
-
-   public String a(Boolean $$0) {
-      return $$0.toString();
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         if ($$0 instanceof dtb $$1 && super.equals($$0)) {
-            return this.a.equals($$1.a);
-         }
-
-         return false;
-      }
-   }
-
-   @Override
-   public int b() {
-      return 31 * super.b() + this.a.hashCode();
-   }
+public class dtb {
+   public static final dtc a = dtc.a("attached");
+   public static final dtc b = dtc.a("bottom");
+   public static final dtc c = dtc.a("conditional");
+   public static final dtc d = dtc.a("disarmed");
+   public static final dtc e = dtc.a("drag");
+   public static final dtc f = dtc.a("enabled");
+   public static final dtc g = dtc.a("extended");
+   public static final dtc h = dtc.a("eye");
+   public static final dtc i = dtc.a("falling");
+   public static final dtc j = dtc.a("hanging");
+   public static final dtc k = dtc.a("has_bottle_0");
+   public static final dtc l = dtc.a("has_bottle_1");
+   public static final dtc m = dtc.a("has_bottle_2");
+   public static final dtc n = dtc.a("has_record");
+   public static final dtc o = dtc.a("has_book");
+   public static final dtc p = dtc.a("inverted");
+   public static final dtc q = dtc.a("in_wall");
+   public static final dtc r = dtc.a("lit");
+   public static final dtc s = dtc.a("locked");
+   public static final dtc t = dtc.a("occupied");
+   public static final dtc u = dtc.a("open");
+   public static final dtc v = dtc.a("persistent");
+   public static final dtc w = dtc.a("powered");
+   public static final dtc x = dtc.a("short");
+   public static final dtc y = dtc.a("signal_fire");
+   public static final dtc z = dtc.a("snowy");
+   public static final dtc A = dtc.a("triggered");
+   public static final dtc B = dtc.a("unstable");
+   public static final dtc C = dtc.a("waterlogged");
+   public static final dtc D = dtc.a("berries");
+   public static final dtc E = dtc.a("bloom");
+   public static final dtc F = dtc.a("shrieking");
+   public static final dtc G = dtc.a("can_summon");
+   public static final dtj<jf.a> H = dtj.a("axis", jf.a.class, jf.a.a, jf.a.c);
+   public static final dtj<jf.a> I = dtj.a("axis", jf.a.class);
+   public static final dtc J = dtc.a("up");
+   public static final dtc K = dtc.a("down");
+   public static final dtc L = dtc.a("north");
+   public static final dtc M = dtc.a("east");
+   public static final dtc N = dtc.a("south");
+   public static final dtc O = dtc.a("west");
+   public static final dtf P = dtf.a("facing", jf.c, jf.f, jf.d, jf.e, jf.b, jf.a);
+   public static final dtf Q = dtf.a("facing", $$0 -> $$0 != jf.b);
+   public static final dtf R = dtf.a("facing", jf.c.a);
+   public static final dtl S = dtl.a("flower_amount", 1, 4);
+   public static final dtj<jh> T = dtj.a("orientation", jh.class);
+   public static final dtj<dsw> U = dtj.a("face", dsw.class);
+   public static final dtj<dsz> V = dtj.a("attachment", dsz.class);
+   public static final dtj<dtx> W = dtj.a("east", dtx.class);
+   public static final dtj<dtx> X = dtj.a("north", dtx.class);
+   public static final dtj<dtx> Y = dtj.a("south", dtx.class);
+   public static final dtj<dtx> Z = dtj.a("west", dtx.class);
+   public static final dtj<dtq> aa = dtj.a("east", dtq.class);
+   public static final dtj<dtq> ab = dtj.a("north", dtq.class);
+   public static final dtj<dtq> ac = dtj.a("south", dtq.class);
+   public static final dtj<dtq> ad = dtj.a("west", dtq.class);
+   public static final dtj<dth> ae = dtj.a("half", dth.class);
+   public static final dtj<dtk> af = dtj.a("half", dtk.class);
+   public static final dtj<dtp> ag = dtj.a("shape", dtp.class);
+   public static final dtj<dtp> ah = dtj.a("shape", dtp.class, $$0 -> $$0 != dtp.j && $$0 != dtp.i && $$0 != dtp.g && $$0 != dtp.h);
+   public static final int ai = 1;
+   public static final int aj = 2;
+   public static final int ak = 3;
+   public static final int al = 4;
+   public static final int am = 5;
+   public static final int an = 7;
+   public static final int ao = 15;
+   public static final int ap = 25;
+   public static final dtl aq = dtl.a("age", 0, 1);
+   public static final dtl ar = dtl.a("age", 0, 2);
+   public static final dtl as = dtl.a("age", 0, 3);
+   public static final dtl at = dtl.a("age", 0, 4);
+   public static final dtl au = dtl.a("age", 0, 5);
+   public static final dtl av = dtl.a("age", 0, 7);
+   public static final dtl aw = dtl.a("age", 0, 15);
+   public static final dtl ax = dtl.a("age", 0, 25);
+   public static final dtl ay = dtl.a("bites", 0, 6);
+   public static final dtl az = dtl.a("candles", 1, 4);
+   public static final dtl aA = dtl.a("delay", 1, 4);
+   public static final int aB = 7;
+   public static final dtl aC = dtl.a("distance", 1, 7);
+   public static final dtl aD = dtl.a("eggs", 1, 4);
+   public static final dtl aE = dtl.a("hatch", 0, 2);
+   public static final dtl aF = dtl.a("layers", 1, 8);
+   public static final int aG = 0;
+   public static final int aH = 1;
+   public static final int aI = 3;
+   public static final int aJ = 8;
+   public static final dtl aK = dtl.a("level", 1, 3);
+   public static final dtl aL = dtl.a("level", 0, 8);
+   public static final dtl aM = dtl.a("level", 1, 8);
+   public static final dtl aN = dtl.a("honey_level", 0, 5);
+   public static final int aO = 15;
+   public static final dtl aP = dtl.a("level", 0, 15);
+   public static final dtl aQ = dtl.a("moisture", 0, 7);
+   public static final dtl aR = dtl.a("note", 0, 24);
+   public static final dtl aS = dtl.a("pickles", 1, 4);
+   public static final dtl aT = dtl.a("power", 0, 15);
+   public static final dtl aU = dtl.a("stage", 0, 1);
+   public static final int aV = 7;
+   public static final dtl aW = dtl.a("distance", 0, 7);
+   public static final int aX = 0;
+   public static final int aY = 4;
+   public static final dtl aZ = dtl.a("charges", 0, 4);
+   public static final dtl ba = dtl.a("rotation", 0, dtr.a());
+   public static final dtj<dsy> bb = dtj.a("part", dsy.class);
+   public static final dtj<dtd> bc = dtj.a("type", dtd.class);
+   public static final dtj<dte> bd = dtj.a("mode", dte.class);
+   public static final dtj<dtg> be = dtj.a("hinge", dtg.class);
+   public static final dtj<dtm> bf = dtj.a("instrument", dtm.class);
+   public static final dtj<dtn> bg = dtj.a("type", dtn.class);
+   public static final dtj<dtt> bh = dtj.a("type", dtt.class);
+   public static final dtj<dtu> bi = dtj.a("shape", dtu.class);
+   public static final dtj<dtv> bj = dtj.a("mode", dtv.class);
+   public static final dtj<dsx> bk = dtj.a("leaves", dsx.class);
+   public static final dtj<dtw> bl = dtj.a("tilt", dtw.class);
+   public static final dtf bm = dtf.a("vertical_direction", jf.b, jf.a);
+   public static final dtj<dti> bn = dtj.a("thickness", dti.class);
+   public static final dtj<dts> bo = dtj.a("sculk_sensor_phase", dts.class);
+   public static final dtc bp = dtc.a("slot_0_occupied");
+   public static final dtc bq = dtc.a("slot_1_occupied");
+   public static final dtc br = dtc.a("slot_2_occupied");
+   public static final dtc bs = dtc.a("slot_3_occupied");
+   public static final dtc bt = dtc.a("slot_4_occupied");
+   public static final dtc bu = dtc.a("slot_5_occupied");
+   public static final dtl bv = dtl.a("dusted", 0, 3);
+   public static final dtc bw = dtc.a("cracked");
+   public static final dtc bx = dtc.a("crafting");
+   public static final dtj<drr> by = dtj.a("trial_spawner_state", drr.class);
+   public static final dtj<dry> bz = dtj.a("vault_state", dry.class);
+   public static final dtc bA = dtc.a("ominous");
 }

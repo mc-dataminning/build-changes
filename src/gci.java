@@ -1,55 +1,43 @@
-public class gci extends gbz {
-   private final gcm b;
-   protected boolean a;
+public class gci extends gct {
+   private final gco a;
 
-   gci(fyj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gcm $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.b = $$7;
-      this.d(1.5F);
+   protected gci(fyl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gco $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.u = 0.225F;
+      this.B = 1.0F;
+      this.a = $$7;
+      this.j = $$4 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.k = $$5 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.l = $$6 + (Math.random() * 2.0 - 1.0) * 0.05F;
+      this.D = 0.1F * (this.r.i() * this.r.i() * 1.0F + 1.0F);
+      this.t = (int)(16.0 / ((double)this.r.i() * 0.8 + 0.2)) + 2;
       this.b($$7);
    }
 
    @Override
-   public int a(float $$0) {
-      return this.a ? 240 : super.a($$0);
-   }
-
-   @Override
-   public gbv b() {
-      return gbv.c;
+   public gbx b() {
+      return gbx.b;
    }
 
    @Override
    public void a() {
       super.a();
-      this.b(this.b);
+      this.b(this.a);
+      this.j *= 0.95F;
+      this.k *= 0.9F;
+      this.l *= 0.95F;
    }
 
-   public static class a implements gbu<ln> {
-      private final gcm a;
+   public static class a implements gbw<ln> {
+      private final gco a;
 
-      public a(gcm $$0) {
+      public a(gco $$0) {
          this.a = $$0;
       }
 
-      public gbr a(ln $$0, fyj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
          gci $$8 = new gci($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
-         $$8.a = true;
-         return $$8;
-      }
-   }
-
-   public static class b implements gbu<ln> {
-      private final gcm a;
-
-      public b(gcm $$0) {
-         this.a = $$0;
-      }
-
-      public gbr a(ln $$0, fyj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gci $$8 = new gci($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
-         $$8.e(1.0F);
+         $$8.a(0.923F, 0.964F, 0.999F);
          return $$8;
       }
    }

@@ -16,7 +16,7 @@ public class alw {
    private static final String d = "0.0.0.0";
    private static final int e = 10000;
    private static final int f = 100;
-   public static BiMap<String, akj<dcf>> a = ImmutableBiMap.of("o", dcf.h, "n", dcf.i, "e", dcf.j);
+   public static BiMap<String, akj<dcg>> a = ImmutableBiMap.of("o", dcg.h, "n", dcg.i, "e", dcg.j);
    @Nullable
    private static alo g;
    @Nullable

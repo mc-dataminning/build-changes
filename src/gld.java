@@ -1,12 +1,12 @@
-public class gld extends gkf<cjt> {
-   private static final akk a = new akk("textures/entity/illager/pillager.png");
+public class gld extends gku<cfj, fvs<cfj>> {
+   private static final akk a = new akk("textures/entity/pig/pig.png");
 
-   public gld(gjm.a $$0) {
-      super($$0, new fvc<>($$0.a(fxn.aR)), 0.5F);
-      this.a(new gnr<>(this, $$0.d()));
+   public gld(gjo.a $$0) {
+      super($$0, new fvs<>($$0.a(fxp.aI)), 0.7F);
+      this.a(new gob<>(this, new fvs<>($$0.a(fxp.aQ)), new akk("textures/entity/pig/pig_saddle.png")));
    }
 
-   public akk a(cjt $$0) {
+   public akk a(cfj $$0) {
       return a;
    }
 }

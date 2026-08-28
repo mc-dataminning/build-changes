@@ -6,7 +6,7 @@ public class axg {
    private axg() {
    }
 
-   public static ewf a(ewf $$0, axg.a $$1) {
+   public static ewh a(ewh $$0, axg.a $$1) {
       int $$2 = ayg.a($$0.a());
       int $$3 = ayg.a($$0.b());
       int $$4 = ayg.a($$0.c());
@@ -14,7 +14,7 @@ public class axg {
       double $$6 = $$0.b() - (double)$$3;
       double $$7 = $$0.c() - (double)$$4;
       double $$8 = 0.0;
-      ewf $$9 = ewf.b;
+      ewh $$9 = ewh.b;
 
       for (int $$10 = 0; $$10 < 6; $$10++) {
          double $$11 = ayg.d($$5, c[$$10 + 1], c[$$10]);
@@ -39,6 +39,6 @@ public class axg {
 
    @FunctionalInterface
    public interface a {
-      ewf fetch(int var1, int var2, int var3);
+      ewh fetch(int var1, int var2, int var3);
    }
 }

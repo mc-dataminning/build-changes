@@ -45,9 +45,9 @@ import javax.annotation.Nullable;
 import org.apache.commons.lang3.mutable.MutableBoolean;
 import org.slf4j.Logger;
 
-public class apt extends dvq implements apr.b, aqe {
-   private static final apu<List<dug>> f = apu.a("Unloaded chunks found in range");
-   private static final CompletableFuture<apu<List<dug>>> g = CompletableFuture.completedFuture(f);
+public class apt extends dvr implements apr.b, aqe {
+   private static final apu<List<duh>> f = apu.a("Unloaded chunks found in range");
+   private static final CompletableFuture<apu<List<duh>>> g = CompletableFuture.completedFuture(f);
    private static final byte h = -1;
    private static final byte i = 0;
    private static final byte j = 1;
@@ -64,18 +64,18 @@ public class apt extends dvq implements apr.b, aqe {
    private final List<apq> r = new ArrayList<>();
    final aqm s;
    private final aqp t;
-   private final bow<Runnable> u;
-   private final dyt v;
-   private final dui w;
-   private final Supplier<eqc> x;
-   private final cef y;
+   private final box<Runnable> u;
+   private final dyu v;
+   private final duj w;
+   private final Supplier<eqe> x;
+   private final ceg y;
    final LongSet z = new LongOpenHashSet();
    private boolean A;
    private final apw B;
-   private final boy<apw.a<Runnable>> C;
-   private final boy<apw.a<Runnable>> D;
+   private final boz<apw.a<Runnable>> C;
+   private final boz<apw.a<Runnable>> D;
    private final aqv E;
-   private final dwm F;
+   private final dwn F;
    private final apt.a G;
    private final AtomicInteger H = new AtomicInteger();
    private final String I;
@@ -85,75 +85,75 @@ public class apt extends dvq implements apr.b, aqe {
    private final Long2LongMap M = new Long2LongOpenHashMap();
    private final Queue<Runnable> N = Queues.newConcurrentLinkedQueue();
    private int O;
-   private final dvm P;
+   private final dvn P;
 
    public apt(
       aqm $$0,
-      eqi.c $$1,
+      eqk.c $$1,
       DataFixer $$2,
-      emx $$3,
+      emz $$3,
       Executor $$4,
-      bow<Runnable> $$5,
-      dut $$6,
-      duh $$7,
+      box<Runnable> $$5,
+      duu $$6,
+      dui $$7,
       aqv $$8,
-      dwm $$9,
-      Supplier<eqc> $$10,
+      dwn $$9,
+      Supplier<eqe> $$10,
       int $$11,
       boolean $$12
    ) {
-      super(new dvz($$1.f(), $$0.af(), "chunk"), $$1.a($$0.af()).resolve("region"), $$2, $$12);
+      super(new dwa($$1.f(), $$0.af(), "chunk"), $$1.a($$0.af()).resolve("region"), $$2, $$12);
       Path $$13 = $$1.a($$0.af());
       this.I = $$13.getFileName().toString();
       this.s = $$0;
       jx $$14 = $$0.H_();
       long $$15 = $$0.C();
-      if ($$7 instanceof dyi $$16) {
-         this.v = dyt.a($$16.h().a(), $$14.b(lr.aO), $$15);
+      if ($$7 instanceof dyj $$16) {
+         this.v = dyu.a($$16.h().a(), $$14.b(lr.aO), $$15);
       } else {
-         this.v = dyt.a(dyk.e(), $$14.b(lr.aO), $$15);
+         this.v = dyu.a(dyl.e(), $$14.b(lr.aO), $$15);
       }
 
       this.w = $$7.a($$14.b(lr.aS), this.v, $$15);
       this.u = $$5;
-      boz<Runnable> $$17 = boz.a($$4, "worldgen");
-      boy<Runnable> $$18 = boy.a("main", $$5::i);
+      bpa<Runnable> $$17 = bpa.a($$4, "worldgen");
+      boz<Runnable> $$18 = boz.a("main", $$5::i);
       this.E = $$8;
       this.F = $$9;
-      boz<Runnable> $$19 = boz.a($$4, "light");
+      bpa<Runnable> $$19 = bpa.a($$4, "light");
       this.B = new apw(ImmutableList.of($$17, $$18, $$19), $$4, Integer.MAX_VALUE);
       this.C = this.B.a($$17, false);
       this.D = this.B.a($$18, false);
       this.t = new aqp($$6, this, this.s.D_().g(), $$19, this.B.a($$19, false));
       this.G = new apt.a($$4, $$5);
       this.x = $$10;
-      this.y = new cef(new dvz($$1.f(), $$0.af(), "poi"), $$13.resolve("poi"), $$2, $$12, $$14, $$0);
+      this.y = new ceg(new dwa($$1.f(), $$0.af(), "poi"), $$13.resolve("poi"), $$2, $$12, $$14, $$0);
       this.a($$11);
-      this.P = new dvm($$0, $$7, $$3, this.t, this.D);
+      this.P = new dvn($$0, $$7, $$3, this.t, this.D);
    }
 
-   protected duh a() {
+   protected dui a() {
       return this.P.b();
    }
 
-   protected dui b() {
+   protected duj b() {
       return this.w;
    }
 
-   protected dyt c() {
+   protected dyu c() {
       return this.v;
    }
 
-   private static double a(dbm $$0, bsg $$1) {
+   private static double a(dbn $$0, bsh $$1) {
       double $$2 = (double)kc.a($$0.e, 8);
       double $$3 = (double)kc.a($$0.f, 8);
-      double $$4 = $$2 - $$1.dv();
-      double $$5 = $$3 - $$1.dB();
+      double $$4 = $$2 - $$1.dw();
+      double $$5 = $$3 - $$1.dC();
       return $$4 * $$4 + $$5 * $$5;
    }
 
    boolean a(aqn $$0, int $$1, int $$2) {
-      return $$0.W().a($$1, $$2) && !$$0.c.g.a(dbm.c($$1, $$2));
+      return $$0.X().a($$1, $$2) && !$$0.c.g.a(dbn.c($$1, $$2));
    }
 
    private boolean b(aqn $$0, int $$1, int $$2) {
@@ -193,14 +193,14 @@ public class apt extends dvq implements apr.b, aqe {
       };
    }
 
-   public String a(dbm $$0) {
+   public String a(dbn $$0) {
       apr $$1 = this.b($$0.a());
       if ($$1 == null) {
          return "null";
       } else {
          String $$2 = $$1.i() + "\n";
-         dvh $$3 = $$1.u();
-         dug $$4 = $$1.p();
+         dvi $$3 = $$1.u();
+         duh $$4 = $$1.p();
          if ($$3 != null) {
             $$2 = $$2 + "St: §" + $$3.b() + $$3 + "§r\n";
          }
@@ -215,37 +215,37 @@ public class apt extends dvq implements apr.b, aqe {
       }
    }
 
-   private CompletableFuture<apu<List<dug>>> a(apr $$0, int $$1, IntFunction<dvh> $$2) {
+   private CompletableFuture<apu<List<duh>>> a(apr $$0, int $$1, IntFunction<dvi> $$2) {
       if ($$1 == 0) {
-         dvh $$3 = $$2.apply(0);
+         dvi $$3 = $$2.apply(0);
          return $$0.a($$3, this).thenApply($$0x -> $$0x.a(List::of));
       } else {
-         List<CompletableFuture<apu<dug>>> $$4 = new ArrayList<>();
-         dbm $$5 = $$0.r();
+         List<CompletableFuture<apu<duh>>> $$4 = new ArrayList<>();
+         dbn $$5 = $$0.r();
 
          for (int $$6 = -$$1; $$6 <= $$1; $$6++) {
             for (int $$7 = -$$1; $$7 <= $$1; $$7++) {
                int $$8 = Math.max(Math.abs($$7), Math.abs($$6));
-               long $$9 = dbm.c($$5.e + $$7, $$5.f + $$6);
+               long $$9 = dbn.c($$5.e + $$7, $$5.f + $$6);
                apr $$10 = this.a($$9);
                if ($$10 == null) {
                   return g;
                }
 
-               dvh $$11 = $$2.apply($$8);
+               dvi $$11 = $$2.apply($$8);
                $$4.add($$10.a($$11, this));
             }
          }
 
          return ac.d($$4).thenApply($$0x -> {
-            List<dug> $$1x = Lists.newArrayList();
+            List<duh> $$1x = Lists.newArrayList();
 
-            for (apu<dug> $$2x : $$0x) {
+            for (apu<duh> $$2x : $$0x) {
                if ($$2x == null) {
                   throw this.a(new IllegalStateException("At least one of the chunk futures were null"), "n/a");
                }
 
-               dug $$3 = $$2x.b(null);
+               duh $$3 = $$2x.b(null);
                if ($$3 == null) {
                   return f;
                }
@@ -261,8 +261,8 @@ public class apt extends dvq implements apr.b, aqe {
    public y a(IllegalStateException $$0, String $$1) {
       StringBuilder $$2 = new StringBuilder();
       Consumer<apr> $$3 = $$1x -> $$1x.t().forEach($$2x -> {
-            dvh $$3x = (dvh)$$2x.getFirst();
-            CompletableFuture<apu<dug>> $$4x = (CompletableFuture<apu<dug>>)$$2x.getSecond();
+            dvi $$3x = (dvi)$$2x.getFirst();
+            CompletableFuture<apu<duh>> $$4x = (CompletableFuture<apu<duh>>)$$2x.getSecond();
             if ($$4x != null && $$4x.isDone() && $$4x.join() == null) {
                $$2.append($$1x.r()).append(" - status: ").append($$3x).append(" future: ").append($$4x).append(System.lineSeparator());
             }
@@ -278,8 +278,8 @@ public class apt extends dvq implements apr.b, aqe {
       return new y($$4);
    }
 
-   public CompletableFuture<apu<duq>> a(apr $$0) {
-      return this.a($$0, 2, $$0x -> dvh.n).thenApplyAsync($$0x -> $$0x.a($$0xx -> (duq)$$0xx.get($$0xx.size() / 2)), this.u);
+   public CompletableFuture<apu<dur>> a(apr $$0) {
+      return this.a($$0, 2, $$0x -> dvi.n).thenApplyAsync($$0x -> $$0x.a($$0xx -> (dur)$$0xx.get($$0xx.size() / 2)), this.u);
    }
 
    @Nullable
@@ -304,7 +304,7 @@ public class apt extends dvq implements apr.b, aqe {
             if ($$2 != null) {
                $$2.a($$1);
             } else {
-               $$2 = new apr(new dbm($$0), $$1, this.s, this.t, this.B, this);
+               $$2 = new apr(new dbn($$0), $$1, this.s, this.t, this.B, this);
             }
 
             this.o.put($$0, $$2);
@@ -335,7 +335,7 @@ public class apt extends dvq implements apr.b, aqe {
             $$1.stream().map($$0x -> {
                this.u.b($$0x::h);
                return $$0x.p();
-            }).filter($$0x -> $$0x instanceof dup || $$0x instanceof duq).filter(this::a).forEach($$1x -> $$2.setTrue());
+            }).filter($$0x -> $$0x instanceof duq || $$0x instanceof dur).filter(this::a).forEach($$1x -> $$2.setTrue());
          } while ($$2.isTrue());
 
          this.b(() -> true);
@@ -346,7 +346,7 @@ public class apt extends dvq implements apr.b, aqe {
    }
 
    protected void a(BooleanSupplier $$0) {
-      bmu $$1 = this.s.ag();
+      bmv $$1 = this.s.ag();
       $$1.a("poi");
       this.y.a($$0);
       $$1.b("chunk_unload");
@@ -406,14 +406,14 @@ public class apt extends dvq implements apr.b, aqe {
          if (!$$1.h()) {
             this.a($$0, $$1);
          } else {
-            dug $$2 = $$1.p();
+            duh $$2 = $$1.p();
             if (this.q.remove($$0, $$1) && $$2 != null) {
-               if ($$2 instanceof duq $$3) {
+               if ($$2 instanceof dur $$3) {
                   $$3.c(false);
                }
 
                this.a($$2);
-               if ($$2 instanceof duq $$4) {
+               if ($$2 instanceof dur $$4) {
                   this.s.a($$4);
                }
 
@@ -440,7 +440,7 @@ public class apt extends dvq implements apr.b, aqe {
       }
    }
 
-   private CompletableFuture<dug> f(dbm $$0) {
+   private CompletableFuture<duh> f(dbn $$0) {
       return this.j($$0).thenApply($$1 -> $$1.filter($$1x -> {
             boolean $$2 = b($$1x);
             if (!$$2) {
@@ -451,7 +451,7 @@ public class apt extends dvq implements apr.b, aqe {
          })).thenApplyAsync($$1 -> {
          this.s.ag().d("chunkLoad");
          if ($$1.isPresent()) {
-            dug $$2 = dvp.a(this.s, this.y, $$0, $$1.get());
+            duh $$2 = dvq.a(this.s, this.y, $$0, $$1.get());
             this.a($$0, $$2.j().d());
             return $$2;
          } else {
@@ -464,7 +464,7 @@ public class apt extends dvq implements apr.b, aqe {
       return $$0.b("Status", 8);
    }
 
-   private dug a(Throwable $$0, dbm $$1) {
+   private duh a(Throwable $$0, dbn $$1) {
       Throwable $$3 = $$0 instanceof CompletionException $$2 ? $$2.getCause() : $$0;
       Throwable $$5 = $$3 instanceof y $$4 ? $$4.getCause() : $$3;
       boolean $$6 = $$5 instanceof Error;
@@ -482,17 +482,17 @@ public class apt extends dvq implements apr.b, aqe {
       }
    }
 
-   private dug g(dbm $$0) {
+   private duh g(dbn $$0) {
       this.h($$0);
-      return new dva($$0, dvd.a, this.s, this.s.H_().d(lr.aE), null);
+      return new dvb($$0, dve.a, this.s, this.s.H_().d(lr.aE), null);
    }
 
-   private void h(dbm $$0) {
+   private void h(dbn $$0) {
       this.L.put($$0.a(), (byte)-1);
    }
 
-   private byte a(dbm $$0, dvl $$1) {
-      return this.L.put($$0.a(), (byte)($$1 == dvl.a ? -1 : 1));
+   private byte a(dbn $$0, dvm $$1) {
+      return this.L.put($$0.a(), (byte)($$1 == dvm.a ? -1 : 1));
    }
 
    @Override
@@ -508,18 +508,18 @@ public class apt extends dvq implements apr.b, aqe {
    }
 
    @Override
-   public CompletableFuture<dug> a(aqf $$0, dvk $$1, aza<aqf> $$2) {
-      dbm $$3 = $$0.r();
-      if ($$1.a() == dvh.c) {
+   public CompletableFuture<duh> a(aqf $$0, dvl $$1, aza<aqf> $$2) {
+      dbn $$3 = $$0.r();
+      if ($$1.a() == dvi.c) {
          return this.f($$3);
       } else {
          try {
             aqf $$4 = $$2.a($$3.e, $$3.f);
-            dug $$5 = $$4.a($$1.a().c());
+            duh $$5 = $$4.a($$1.a().c());
             if ($$5 == null) {
                throw new IllegalStateException("Parent chunk missing");
             } else {
-               CompletableFuture<dug> $$6 = $$1.a(this.P, $$2, $$5);
+               CompletableFuture<duh> $$6 = $$1.a(this.P, $$2, $$5);
                this.E.a($$3, $$1.a());
                return $$6;
             }
@@ -529,7 +529,7 @@ public class apt extends dvq implements apr.b, aqe {
             p $$9 = $$8.a("Chunk to be generated");
             $$9.a("Status being generated", () -> $$1.a().f());
             $$9.a("Location", String.format(Locale.ROOT, "%d,%d", $$3.e, $$3.f));
-            $$9.a("Position hash", dbm.c($$3.e, $$3.f));
+            $$9.a("Position hash", dbn.c($$3.e, $$3.f));
             $$9.a("Generator", this.a());
             this.u.execute(() -> {
                throw new y($$8);
@@ -540,7 +540,7 @@ public class apt extends dvq implements apr.b, aqe {
    }
 
    @Override
-   public apq a(dvh $$0, dbm $$1) {
+   public apq a(dvi $$0, dbn $$1) {
       apq $$2 = apq.a(this, $$0, $$1);
       this.r.add($$2);
       return $$2;
@@ -561,10 +561,10 @@ public class apt extends dvq implements apr.b, aqe {
       this.r.clear();
    }
 
-   public CompletableFuture<apu<duq>> b(apr $$0) {
-      CompletableFuture<apu<List<dug>>> $$1 = this.a($$0, 1, $$0x -> dvh.n);
-      CompletableFuture<apu<duq>> $$2 = $$1.<apu<duq>>thenApplyAsync(
-            $$0x -> $$0x.a($$0xx -> (duq)$$0xx.get($$0xx.size() / 2)), $$1x -> this.D.a(apw.a($$0, $$1x))
+   public CompletableFuture<apu<dur>> b(apr $$0) {
+      CompletableFuture<apu<List<duh>>> $$1 = this.a($$0, 1, $$0x -> dvi.n);
+      CompletableFuture<apu<dur>> $$2 = $$1.<apu<dur>>thenApplyAsync(
+            $$0x -> $$0x.a($$0xx -> (dur)$$0xx.get($$0xx.size() / 2)), $$1x -> this.D.a(apw.a($$0, $$1x))
          )
          .thenApplyAsync($$1x -> $$1x.a($$1xx -> {
                $$1xx.H();
@@ -583,18 +583,18 @@ public class apt extends dvq implements apr.b, aqe {
       return $$2;
    }
 
-   private void a(duq $$0) {
-      dbm $$1 = $$0.f();
+   private void a(dur $$0) {
+      dbn $$1 = $$0.f();
 
       for (aqn $$2 : this.J.a()) {
-         if ($$2.W().a($$1)) {
+         if ($$2.X().a($$1)) {
             a($$2, $$0);
          }
       }
    }
 
-   public CompletableFuture<apu<duq>> c(apr $$0) {
-      return this.a($$0, 1, aps::b).thenApplyAsync($$0x -> $$0x.a($$0xx -> (duq)$$0xx.get($$0xx.size() / 2)), $$1 -> this.D.a(apw.a($$0, $$1)));
+   public CompletableFuture<apu<dur>> c(apr $$0) {
+      return this.a($$0, 1, aps::b).thenApplyAsync($$0x -> $$0x.a($$0xx -> (dur)$$0xx.get($$0xx.size() / 2)), $$1 -> this.D.a(apw.a($$0, $$1)));
    }
 
    public int h() {
@@ -603,8 +603,8 @@ public class apt extends dvq implements apr.b, aqe {
 
    private boolean d(apr $$0) {
       if ($$0.k() && $$0.h()) {
-         dug $$1 = $$0.p();
-         if (!($$1 instanceof dup) && !($$1 instanceof duq)) {
+         duh $$1 = $$0.p();
+         if (!($$1 instanceof duq) && !($$1 instanceof dur)) {
             return false;
          } else {
             long $$2 = $$1.f().a();
@@ -627,28 +627,28 @@ public class apt extends dvq implements apr.b, aqe {
       }
    }
 
-   private boolean a(dug $$0) {
+   private boolean a(duh $$0) {
       this.y.a($$0.f());
       if (!$$0.i()) {
          return false;
       } else {
          $$0.a(false);
-         dbm $$1 = $$0.f();
+         dbn $$1 = $$0.f();
 
          try {
-            dvh $$2 = $$0.j();
-            if ($$2.d() != dvl.b) {
+            dvi $$2 = $$0.j();
+            if ($$2.d() != dvm.b) {
                if (this.i($$1)) {
                   return false;
                }
 
-               if ($$2 == dvh.c && $$0.g().values().stream().noneMatch(eje::b)) {
+               if ($$2 == dvi.c && $$0.g().values().stream().noneMatch(ejf::b)) {
                   return false;
                }
             }
 
             this.s.ag().d("chunkSave");
-            tx $$3 = dvp.a(this.s, $$0);
+            tx $$3 = dvq.a(this.s, $$0);
             this.a($$1, $$3).exceptionallyAsync($$1x -> {
                this.s.o().b($$1);
                return null;
@@ -663,7 +663,7 @@ public class apt extends dvq implements apr.b, aqe {
       }
    }
 
-   private boolean i(dbm $$0) {
+   private boolean i(dbn $$0) {
       byte $$1 = this.L.get($$0.a());
       if ($$1 != 0) {
          return $$1 == 1;
@@ -681,7 +681,7 @@ public class apt extends dvq implements apr.b, aqe {
             return false;
          }
 
-         dvl $$5 = dvp.a($$2);
+         dvm $$5 = dvq.a($$2);
          return this.a($$0, $$5) == 1;
       }
    }
@@ -699,26 +699,26 @@ public class apt extends dvq implements apr.b, aqe {
    }
 
    int b(aqn $$0) {
-      return ayg.a($$0.E(), 2, this.O);
+      return ayg.a($$0.F(), 2, this.O);
    }
 
-   private void a(aqn $$0, dbm $$1) {
-      duq $$2 = this.e($$1.a());
+   private void a(aqn $$0, dbn $$1) {
+      dur $$2 = this.e($$1.a());
       if ($$2 != null) {
          a($$0, $$2);
       }
    }
 
-   private static void a(aqn $$0, duq $$1) {
+   private static void a(aqn $$0, dur $$1) {
       $$0.c.g.a($$1);
    }
 
-   private static void b(aqn $$0, dbm $$1) {
+   private static void b(aqn $$0, dbn $$1) {
       $$0.c.g.a($$0, $$1);
    }
 
    @Nullable
-   public duq e(long $$0) {
+   public dur e(long $$0) {
       apr $$1 = this.b($$0);
       return $$1 == null ? null : $$1.e();
    }
@@ -760,17 +760,17 @@ public class apt extends dvq implements apr.b, aqe {
       while (var4.hasNext()) {
          Entry<apr> $$3 = (Entry<apr>)var4.next();
          long $$4 = $$3.getLongKey();
-         dbm $$5 = new dbm($$4);
+         dbn $$5 = new dbn($$4);
          apr $$6 = (apr)$$3.getValue();
-         Optional<dug> $$7 = Optional.ofNullable($$6.p());
-         Optional<duq> $$8 = $$7.flatMap($$0x -> $$0x instanceof duq ? Optional.of((duq)$$0x) : Optional.empty());
+         Optional<duh> $$7 = Optional.ofNullable($$6.p());
+         Optional<dur> $$8 = $$7.flatMap($$0x -> $$0x instanceof dur ? Optional.of((dur)$$0x) : Optional.empty());
          $$1.a(
             $$5.e,
             $$5.f,
             $$6.i(),
             $$7.isPresent(),
-            $$7.map(dug::j).orElse(null),
-            $$8.map(duq::D).orElse(null),
+            $$7.map(duh::j).orElse(null),
+            $$8.map(dur::D).orElse(null),
             a($$6.c()),
             a($$6.a()),
             a($$6.b()),
@@ -785,9 +785,9 @@ public class apt extends dvq implements apr.b, aqe {
       }
    }
 
-   private static String a(CompletableFuture<apu<duq>> $$0) {
+   private static String a(CompletableFuture<apu<dur>> $$0) {
       try {
-         apu<duq> $$1 = $$0.getNow(null);
+         apu<dur> $$1 = $$0.getNow(null);
          if ($$1 != null) {
             return $$1.a() ? "done" : "unloaded";
          } else {
@@ -800,7 +800,7 @@ public class apt extends dvq implements apr.b, aqe {
       }
    }
 
-   private CompletableFuture<Optional<tx>> j(dbm $$0) {
+   private CompletableFuture<Optional<tx>> j(dbn $$0) {
       return this.d($$0).thenApplyAsync($$0x -> $$0x.map(this::c), ac.g());
    }
 
@@ -808,7 +808,7 @@ public class apt extends dvq implements apr.b, aqe {
       return this.a(this.s.af(), this.x, $$0, this.a().c());
    }
 
-   boolean b(dbm $$0) {
+   boolean b(dbn $$0) {
       if (!this.G.f($$0.a())) {
          return false;
       } else {
@@ -822,7 +822,7 @@ public class apt extends dvq implements apr.b, aqe {
       }
    }
 
-   public List<aqn> c(dbm $$0) {
+   public List<aqn> c(dbn $$0) {
       long $$1 = $$0.a();
       if (!this.G.f($$1)) {
          return List.of();
@@ -839,7 +839,7 @@ public class apt extends dvq implements apr.b, aqe {
       }
    }
 
-   private boolean c(aqn $$0, dbm $$1) {
+   private boolean c(aqn $$0, dbn $$1) {
       if ($$0.N_()) {
          return false;
       } else {
@@ -849,7 +849,7 @@ public class apt extends dvq implements apr.b, aqe {
    }
 
    private boolean c(aqn $$0) {
-      return $$0.N_() && !this.s.ab().b(dcb.r);
+      return $$0.N_() && !this.s.ab().b(dcc.r);
    }
 
    void a(aqn $$0, boolean $$1) {
@@ -865,7 +865,7 @@ public class apt extends dvq implements apr.b, aqe {
          $$0.a(apy.a);
          this.e($$0);
       } else {
-         kc $$4 = $$0.V();
+         kc $$4 = $$0.W();
          this.J.a($$0);
          if (!$$3) {
             this.G.b($$4, $$0);
@@ -892,7 +892,7 @@ public class apt extends dvq implements apr.b, aqe {
          }
       }
 
-      kc $$2x = $$0.V();
+      kc $$2x = $$0.W();
       kc $$3 = kc.a($$0);
       boolean $$4 = this.J.e($$0);
       boolean $$5 = this.c($$0);
@@ -920,9 +920,9 @@ public class apt extends dvq implements apr.b, aqe {
    }
 
    private void e(aqn $$0) {
-      dbm $$1 = $$0.ds();
+      dbn $$1 = $$0.dt();
       int $$2 = this.b($$0);
-      if ($$0.W() instanceof apy.a $$3 && $$3.a().equals($$1) && $$3.b() == $$2) {
+      if ($$0.X() instanceof apy.a $$3 && $$3.a().equals($$1) && $$3.b() == $$2) {
          return;
       }
 
@@ -930,8 +930,8 @@ public class apt extends dvq implements apr.b, aqe {
    }
 
    private void a(aqn $$0, apy $$1) {
-      if ($$0.dQ() == this.s) {
-         apy $$2 = $$0.W();
+      if ($$0.dR() == this.s) {
+         apy $$2 = $$0.X();
          if ($$1 instanceof apy.a $$3 && (!($$2 instanceof apy.a $$4) || !$$4.a().equals($$3.a()))) {
             $$0.c.b(new aeo($$3.a().e, $$3.a().f));
          }
@@ -942,7 +942,7 @@ public class apt extends dvq implements apr.b, aqe {
    }
 
    @Override
-   public List<aqn> a(dbm $$0, boolean $$1) {
+   public List<aqn> a(dbn $$0, boolean $$1) {
       Set<aqn> $$2 = this.J.a();
       Builder<aqn> $$3 = ImmutableList.builder();
 
@@ -955,17 +955,17 @@ public class apt extends dvq implements apr.b, aqe {
       return $$3.build();
    }
 
-   protected void a(bsg $$0) {
-      if (!($$0 instanceof chl)) {
-         bsm<?> $$1 = $$0.al();
+   protected void a(bsh $$0) {
+      if (!($$0 instanceof chm)) {
+         bsn<?> $$1 = $$0.am();
          int $$2 = $$1.o() * 16;
          if ($$2 != 0) {
             int $$3 = $$1.p();
-            if (this.K.containsKey($$0.am())) {
+            if (this.K.containsKey($$0.an())) {
                throw (IllegalStateException)ac.b(new IllegalStateException("Entity is already tracked!"));
             } else {
                apt.b $$4 = new apt.b($$0, $$2, $$3, $$1.q());
-               this.K.put($$0.am(), $$4);
+               this.K.put($$0.an(), $$4);
                $$4.a(this.s.x());
                if ($$0 instanceof aqn $$5) {
                   this.a($$5, true);
@@ -983,7 +983,7 @@ public class apt extends dvq implements apr.b, aqe {
       }
    }
 
-   protected void b(bsg $$0) {
+   protected void b(bsh $$0) {
       if ($$0 instanceof aqn $$1) {
          this.a($$1, false);
          ObjectIterator var3 = this.K.values().iterator();
@@ -994,7 +994,7 @@ public class apt extends dvq implements apr.b, aqe {
          }
       }
 
-      apt.b $$3 = (apt.b)this.K.remove($$0.am());
+      apt.b $$3 = (apt.b)this.K.remove($$0.an());
       if ($$3 != null) {
          $$3.a();
       }
@@ -1016,7 +1016,7 @@ public class apt extends dvq implements apr.b, aqe {
          boolean $$6 = !Objects.equals($$4, $$5);
          if ($$6) {
             $$3.a($$2);
-            bsg $$7 = $$3.c;
+            bsh $$7 = $$3.c;
             if ($$7 instanceof aqn) {
                $$1.add((aqn)$$7);
             }
@@ -1039,27 +1039,27 @@ public class apt extends dvq implements apr.b, aqe {
       }
    }
 
-   public void a(bsg $$0, zb<?> $$1) {
-      apt.b $$2 = (apt.b)this.K.get($$0.am());
+   public void a(bsh $$0, zb<?> $$1) {
+      apt.b $$2 = (apt.b)this.K.get($$0.an());
       if ($$2 != null) {
          $$2.a($$1);
       }
    }
 
-   protected void b(bsg $$0, zb<?> $$1) {
-      apt.b $$2 = (apt.b)this.K.get($$0.am());
+   protected void b(bsh $$0, zb<?> $$1) {
+      apt.b $$2 = (apt.b)this.K.get($$0.an());
       if ($$2 != null) {
          $$2.b($$1);
       }
    }
 
-   public void a(List<dug> $$0) {
-      Map<aqn, List<duq>> $$1 = new HashMap<>();
+   public void a(List<duh> $$0) {
+      Map<aqn, List<dur>> $$1 = new HashMap<>();
 
-      for (dug $$2 : $$0) {
-         dbm $$3 = $$2.f();
-         duq $$5;
-         if ($$2 instanceof duq $$4) {
+      for (duh $$2 : $$0) {
+         dbn $$3 = $$2.f();
+         dur $$5;
+         if ($$2 instanceof dur $$4) {
             $$5 = $$4;
          } else {
             $$5 = this.s.d($$3.e, $$3.f);
@@ -1073,7 +1073,7 @@ public class apt extends dvq implements apr.b, aqe {
       $$1.forEach(($$0x, $$1x) -> $$0x.c.b(acd.a($$1x)));
    }
 
-   protected cef m() {
+   protected ceg m() {
       return this.y;
    }
 
@@ -1081,13 +1081,13 @@ public class apt extends dvq implements apr.b, aqe {
       return this.I;
    }
 
-   void a(dbm $$0, aqd $$1) {
+   void a(dbn $$0, aqd $$1) {
       this.F.onChunkStatusChange($$0, $$1);
    }
 
-   public void a(dbm $$0, int $$1) {
+   public void a(dbn $$0, int $$1) {
       int $$2 = $$1 + 1;
-      dbm.a($$0, $$2).forEach($$0x -> {
+      dbn.a($$0, $$2).forEach($$0x -> {
          apr $$1x = this.b($$0x.a());
          if ($$1x != null) {
             $$1x.a(this.t.a($$0x.e, $$0x.f));
@@ -1120,12 +1120,12 @@ public class apt extends dvq implements apr.b, aqe {
 
    class b {
       final aql b;
-      final bsg c;
+      final bsh c;
       private final int d;
       kc e;
       private final Set<arp> f = Sets.newIdentityHashSet();
 
-      public b(final bsg $$0, final int $$1, final int $$2, final boolean $$3) {
+      public b(final bsh $$0, final int $$1, final int $$2, final boolean $$3) {
          this.b = new aql(apt.this.s, $$0, $$2, $$3, this::a);
          this.c = $$0;
          this.d = $$1;
@@ -1134,12 +1134,12 @@ public class apt extends dvq implements apr.b, aqe {
 
       @Override
       public boolean equals(Object $$0) {
-         return $$0 instanceof apt.b ? ((apt.b)$$0).c.am() == this.c.am() : false;
+         return $$0 instanceof apt.b ? ((apt.b)$$0).c.an() == this.c.an() : false;
       }
 
       @Override
       public int hashCode() {
-         return this.c.am();
+         return this.c.an();
       }
 
       public void a(zb<?> $$0) {
@@ -1169,12 +1169,12 @@ public class apt extends dvq implements apr.b, aqe {
 
       public void b(aqn $$0) {
          if ($$0 != this.c) {
-            ewf $$1 = $$0.do().d(this.c.do());
+            ewh $$1 = $$0.dp().d(this.c.dp());
             int $$2 = apt.this.b($$0);
             double $$3 = (double)Math.min(this.b(), $$2 * 16);
             double $$4 = $$1.c * $$1.c + $$1.e * $$1.e;
             double $$5 = $$3 * $$3;
-            boolean $$6 = $$4 <= $$5 && this.c.a($$0) && apt.this.a($$0, this.c.ds().e, this.c.ds().f);
+            boolean $$6 = $$4 <= $$5 && this.c.a($$0) && apt.this.a($$0, this.c.dt().e, this.c.dt().f);
             if ($$6) {
                if (this.f.add($$0.c)) {
                   this.b.b($$0);
@@ -1192,8 +1192,8 @@ public class apt extends dvq implements apr.b, aqe {
       private int b() {
          int $$0 = this.d;
 
-         for (bsg $$1 : this.c.cX()) {
-            int $$2 = $$1.al().o() * 16;
+         for (bsh $$1 : this.c.cY()) {
+            int $$2 = $$1.am().o() * 16;
             if ($$2 > $$0) {
                $$0 = $$2;
             }

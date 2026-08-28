@@ -1,45 +1,46 @@
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import java.util.Map;
-import java.util.Optional;
 
-public class cwi {
-   public static final akj<cwh> a = a("quartz");
-   public static final akj<cwh> b = a("iron");
-   public static final akj<cwh> c = a("netherite");
-   public static final akj<cwh> d = a("redstone");
-   public static final akj<cwh> e = a("copper");
-   public static final akj<cwh> f = a("gold");
-   public static final akj<cwh> g = a("emerald");
-   public static final akj<cwh> h = a("diamond");
-   public static final akj<cwh> i = a("lapis");
-   public static final akj<cwh> j = a("amethyst");
+public record cwi(String e, jj<cty> f, float g, Map<jj<cru>, String> h, wu i) {
+   public static final Codec<cwi> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               axo.A.fieldOf("asset_name").forGetter(cwi::a),
+               akh.a(lr.K).fieldOf("ingredient").forGetter(cwi::b),
+               Codec.FLOAT.fieldOf("item_model_index").forGetter(cwi::c),
+               Codec.unboundedMap(cru.a, Codec.STRING).optionalFieldOf("override_armor_materials", Map.of()).forGetter(cwi::d),
+               ww.a.fieldOf("description").forGetter(cwi::e)
+            )
+            .apply($$0, cwi::new)
+   );
+   public static final ys<wf, cwi> b = ys.a(
+      yq.l, cwi::a, yq.b(lr.K), cwi::b, yq.i, cwi::c, yq.a(Object2ObjectOpenHashMap::new, yq.b(lr.ay), yq.l), cwi::d, ww.b, cwi::e, cwi::new
+   );
+   public static final Codec<jj<cwi>> c = akg.a(lr.aV, a);
+   public static final ys<wf, jj<cwi>> d = yq.a(lr.aV, b);
 
-   public static void a(qm<cwh> $$0) {
-      a($$0, a, cuf.oC, xr.a.a(14931140), 0.1F);
-      a($$0, b, cuf.oF, xr.a.a(15527148), 0.2F, Map.of(cru.c, "iron_darker"));
-      a($$0, c, cuf.oK, xr.a.a(6445145), 0.3F, Map.of(cru.g, "netherite_darker"));
-      a($$0, d, cuf.lH, xr.a.a(9901575), 0.4F);
-      a($$0, e, cuf.oH, xr.a.a(11823181), 0.5F);
-      a($$0, f, cuf.oJ, xr.a.a(14594349), 0.6F, Map.of(cru.d, "gold_darker"));
-      a($$0, g, cuf.oA, xr.a.a(1155126), 0.7F);
-      a($$0, h, cuf.oz, xr.a.a(7269586), 0.8F, Map.of(cru.e, "diamond_darker"));
-      a($$0, i, cuf.oB, xr.a.a(4288151), 0.9F);
-      a($$0, j, cuf.oD, xr.a.a(10116294), 1.0F);
+   public static cwi a(String $$0, cty $$1, float $$2, wu $$3, Map<jj<cru>, String> $$4) {
+      return new cwi($$0, lq.g.e($$1), $$2, $$4, $$3);
    }
 
-   public static Optional<jj.c<cwh>> a(jl.a $$0, cuc $$1) {
-      return $$0.b(lr.aV).b().filter($$1x -> $$1.a(((cwh)$$1x.a()).b())).findFirst();
+   public String a() {
+      return this.e;
    }
 
-   private static void a(qm<cwh> $$0, akj<cwh> $$1, ctx $$2, xr $$3, float $$4) {
-      a($$0, $$1, $$2, $$3, $$4, Map.of());
+   public jj<cty> b() {
+      return this.f;
    }
 
-   private static void a(qm<cwh> $$0, akj<cwh> $$1, ctx $$2, xr $$3, float $$4, Map<jj<crt>, String> $$5) {
-      cwh $$6 = cwh.a($$1.a().a(), $$2, $$4, wu.c(ac.a("trim_material", $$1.a())).c($$3), $$5);
-      $$0.a($$1, $$6);
+   public float c() {
+      return this.g;
    }
 
-   private static akj<cwh> a(String $$0) {
-      return akj.a(lr.aV, new akk($$0));
+   public Map<jj<cru>, String> d() {
+      return this.h;
+   }
+
+   public wu e() {
+      return this.i;
    }
 }

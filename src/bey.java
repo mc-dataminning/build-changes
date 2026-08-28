@@ -12,7 +12,7 @@ public class bey extends DataFix {
    protected TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
          "Map id fix",
-         this.getInputSchema().getType(bgg.j),
+         this.getInputSchema().getType(bgh.j),
          $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.createMap(ImmutableMap.of($$0x.createString("data"), $$0x)))
       );
    }

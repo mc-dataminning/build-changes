@@ -8,23 +8,23 @@ import java.util.Optional;
 import java.util.stream.Stream;
 
 public class gx {
-   public static <T, C, P> bme<List<T>> a(gx.b<T, C, P> $$0) {
-      blu<List<T>> $$1 = blu.a("top");
-      blu<Optional<T>> $$2 = blu.a("type");
-      blu<azk> $$3 = blu.a("any_type");
-      blu<T> $$4 = blu.a("element_type");
-      blu<T> $$5 = blu.a("tag_type");
-      blu<List<T>> $$6 = blu.a("conditions");
-      blu<List<T>> $$7 = blu.a("alternatives");
-      blu<T> $$8 = blu.a("term");
-      blu<T> $$9 = blu.a("negation");
-      blu<T> $$10 = blu.a("test");
-      blu<C> $$11 = blu.a("component_type");
-      blu<P> $$12 = blu.a("predicate_type");
-      blu<akk> $$13 = blu.a("id");
-      blu<uu> $$14 = blu.a("tag");
-      blw<StringReader> $$15 = new blw<>();
-      $$15.a($$1, bmd.b(bmd.a(bmd.a($$2), bmj.a('['), bmd.a(), bmd.a(bmd.a($$6)), bmj.a(']')), bmd.a($$2)), $$2x -> {
+   public static <T, C, P> bmf<List<T>> a(gx.b<T, C, P> $$0) {
+      blv<List<T>> $$1 = blv.a("top");
+      blv<Optional<T>> $$2 = blv.a("type");
+      blv<azk> $$3 = blv.a("any_type");
+      blv<T> $$4 = blv.a("element_type");
+      blv<T> $$5 = blv.a("tag_type");
+      blv<List<T>> $$6 = blv.a("conditions");
+      blv<List<T>> $$7 = blv.a("alternatives");
+      blv<T> $$8 = blv.a("term");
+      blv<T> $$9 = blv.a("negation");
+      blv<T> $$10 = blv.a("test");
+      blv<C> $$11 = blv.a("component_type");
+      blv<P> $$12 = blv.a("predicate_type");
+      blv<akk> $$13 = blv.a("id");
+      blv<uu> $$14 = blv.a("tag");
+      blx<StringReader> $$15 = new blx<>();
+      $$15.a($$1, bme.b(bme.a(bme.a($$2), bmk.a('['), bme.a(), bme.a(bme.a($$6)), bmk.a(']')), bme.a($$2)), $$2x -> {
          Builder<T> $$3x = ImmutableList.builder();
          $$2x.b($$2).ifPresent($$3x::add);
          List<T> $$4x = $$2x.a($$6);
@@ -34,23 +34,23 @@ public class gx {
 
          return $$3x.build();
       });
-      $$15.a($$2, bmd.b(bmd.a($$4), bmd.a(bmj.a('#'), bmd.a(), bmd.a($$5)), bmd.a($$3)), $$2x -> Optional.ofNullable($$2x.a($$4, $$5)));
-      $$15.a($$3, bmj.a('*'), $$0x -> azk.a);
+      $$15.a($$2, bme.b(bme.a($$4), bme.a(bmk.a('#'), bme.a(), bme.a($$5)), bme.a($$3)), $$2x -> Optional.ofNullable($$2x.a($$4, $$5)));
+      $$15.a($$3, bmk.a('*'), $$0x -> azk.a);
       $$15.a($$4, new gx.c<>($$13, $$0));
       $$15.a($$5, new gx.e<>($$13, $$0));
-      $$15.a($$6, bmd.a(bmd.a($$7), bmd.a(bmd.a(bmj.a(','), bmd.a($$6)))), $$3x -> {
+      $$15.a($$6, bme.a(bme.a($$7), bme.a(bme.a(bmk.a(','), bme.a($$6)))), $$3x -> {
          T $$4x = $$0.a($$3x.b($$7));
          return Optional.ofNullable($$3x.a($$6)).map($$1xx -> ac.a($$4x, $$1xx)).orElse(List.of($$4x));
       });
-      $$15.a($$7, bmd.a(bmd.a($$8), bmd.a(bmd.a(bmj.a('|'), bmd.a($$7)))), $$2x -> {
+      $$15.a($$7, bme.a(bme.a($$8), bme.a(bme.a(bmk.a('|'), bme.a($$7)))), $$2x -> {
          T $$3x = $$2x.b($$8);
          return Optional.ofNullable($$2x.a($$7)).map($$1xx -> ac.a($$3x, $$1xx)).orElse(List.of($$3x));
       });
-      $$15.a($$8, bmd.b(bmd.a($$10), bmd.a(bmj.a('!'), bmd.a($$9))), $$2x -> $$2x.b($$10, $$9));
-      $$15.a($$9, bmd.a($$10), $$2x -> $$0.a($$2x.b($$10)));
+      $$15.a($$8, bme.b(bme.a($$10), bme.a(bmk.a('!'), bme.a($$9))), $$2x -> $$2x.b($$10, $$9));
+      $$15.a($$9, bme.a($$10), $$2x -> $$0.a($$2x.b($$10)));
       $$15.a(
          $$10,
-         bmd.b(bmd.a(bmd.a($$11), bmj.a('='), bmd.a(), bmd.a($$14)), bmd.a(bmd.a($$12), bmj.a('~'), bmd.a(), bmd.a($$14)), bmd.a($$11)),
+         bme.b(bme.a(bme.a($$11), bmk.a('='), bme.a(), bme.a($$14)), bme.a(bme.a($$12), bmk.a('~'), bme.a(), bme.a($$14)), bme.a($$11)),
          ($$4x, $$5x) -> {
             P $$6x = $$5x.a($$12);
 
@@ -71,13 +71,13 @@ public class gx {
       );
       $$15.a($$11, new gx.a<>($$13, $$0));
       $$15.a($$12, new gx.d<>($$13, $$0));
-      $$15.a($$14, bmk.a);
-      $$15.a($$13, bmf.a);
-      return new bme<>($$15, $$1);
+      $$15.a($$14, bml.a);
+      $$15.a($$13, bmg.a);
+      return new bmf<>($$15, $$1);
    }
 
-   static class a<T, C, P> extends bmg<gx.b<T, C, P>, C> {
-      a(blu<akk> $$0, gx.b<T, C, P> $$1) {
+   static class a<T, C, P> extends bmh<gx.b<T, C, P>, C> {
+      a(blv<akk> $$0, gx.b<T, C, P> $$1) {
          super($$0, $$1);
       }
 
@@ -120,8 +120,8 @@ public class gx {
       T a(List<T> var1);
    }
 
-   static class c<T, C, P> extends bmg<gx.b<T, C, P>, T> {
-      c(blu<akk> $$0, gx.b<T, C, P> $$1) {
+   static class c<T, C, P> extends bmh<gx.b<T, C, P>, T> {
+      c(blv<akk> $$0, gx.b<T, C, P> $$1) {
          super($$0, $$1);
       }
 
@@ -136,8 +136,8 @@ public class gx {
       }
    }
 
-   static class d<T, C, P> extends bmg<gx.b<T, C, P>, P> {
-      d(blu<akk> $$0, gx.b<T, C, P> $$1) {
+   static class d<T, C, P> extends bmh<gx.b<T, C, P>, P> {
+      d(blv<akk> $$0, gx.b<T, C, P> $$1) {
          super($$0, $$1);
       }
 
@@ -152,8 +152,8 @@ public class gx {
       }
    }
 
-   static class e<T, C, P> extends bmg<gx.b<T, C, P>, T> {
-      e(blu<akk> $$0, gx.b<T, C, P> $$1) {
+   static class e<T, C, P> extends bmh<gx.b<T, C, P>, T> {
+      e(blv<akk> $$0, gx.b<T, C, P> $$1) {
          super($$0, $$1);
       }
 

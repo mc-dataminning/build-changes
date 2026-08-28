@@ -1,62 +1,77 @@
-public class cxn extends cxm {
-   private final jf b;
+import javax.annotation.Nullable;
 
-   public cxn(dcf $$0, ja $$1, jf $$2, cuc $$3, jf $$4) {
-      super($$0, null, bqf.a, $$3, new ewb(ewf.c($$1), $$4, $$1, false));
-      this.b = $$2;
+public class cxn extends cxp {
+   private final ja b;
+   protected boolean a = true;
+
+   public cxn(cml $$0, bqg $$1, cud $$2, ewd $$3) {
+      this($$0.dR(), $$0, $$1, $$2, $$3);
+   }
+
+   public cxn(cxp $$0) {
+      this($$0.q(), $$0.o(), $$0.p(), $$0.n(), $$0.j());
+   }
+
+   protected cxn(dcg $$0, @Nullable cml $$1, bqg $$2, cud $$3, ewd $$4) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.b = $$4.a().a($$4.b());
+      this.a = $$0.a_($$4.a()).a(this);
+   }
+
+   public static cxn a(cxn $$0, ja $$1, jf $$2) {
+      return new cxn(
+         $$0.q(),
+         $$0.o(),
+         $$0.p(),
+         $$0.n(),
+         new ewd(
+            new ewh((double)$$1.u() + 0.5 + (double)$$2.j() * 0.5, (double)$$1.v() + 0.5 + (double)$$2.k() * 0.5, (double)$$1.w() + 0.5 + (double)$$2.l() * 0.5),
+            $$2,
+            $$1,
+            false
+         )
+      );
    }
 
    @Override
    public ja a() {
-      return this.j().a();
+      return this.a ? super.a() : this.b;
    }
 
-   @Override
    public boolean b() {
-      return this.q().a_(this.j().a()).a(this);
+      return this.a || this.q().a_(this.a()).a(this);
    }
 
-   @Override
    public boolean c() {
-      return this.b();
+      return this.a;
    }
 
-   @Override
    public jf d() {
-      return jf.a;
+      return jf.a(this.o())[0];
    }
 
-   @Override
+   public jf e() {
+      return jf.a(this.o(), jf.a.b);
+   }
+
    public jf[] f() {
-      switch (this.b) {
-         case a:
-         default:
-            return new jf[]{jf.a, jf.c, jf.f, jf.d, jf.e, jf.b};
-         case b:
-            return new jf[]{jf.a, jf.b, jf.c, jf.f, jf.d, jf.e};
-         case c:
-            return new jf[]{jf.a, jf.c, jf.f, jf.e, jf.b, jf.d};
-         case d:
-            return new jf[]{jf.a, jf.d, jf.f, jf.e, jf.b, jf.c};
-         case e:
-            return new jf[]{jf.a, jf.e, jf.d, jf.b, jf.c, jf.f};
-         case f:
-            return new jf[]{jf.a, jf.f, jf.d, jf.b, jf.c, jf.e};
+      jf[] $$0 = jf.a(this.o());
+      if (this.a) {
+         return $$0;
+      } else {
+         jf $$1 = this.k();
+         int $$2 = 0;
+
+         while ($$2 < $$0.length && $$0[$$2] != $$1.g()) {
+            $$2++;
+         }
+
+         if ($$2 > 0) {
+            System.arraycopy($$0, 0, $$0, 1, $$2);
+            $$0[0] = $$1.g();
+         }
+
+         return $$0;
       }
-   }
-
-   @Override
-   public jf g() {
-      return this.b.o() == jf.a.b ? jf.c : this.b;
-   }
-
-   @Override
-   public boolean h() {
-      return false;
-   }
-
-   @Override
-   public float i() {
-      return (float)(this.b.e() * 90);
    }
 }

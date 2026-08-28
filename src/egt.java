@@ -1,26 +1,76 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.datafixers.Products.P3;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Instance;
+import com.mojang.serialization.codecs.RecordCodecBuilder.Mu;
+import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.Function;
 
-public class egt<P extends egs> {
-   public static final egt<egr> a = a("straight_trunk_placer", egr.a);
-   public static final egt<ego> b = a("forking_trunk_placer", ego.a);
-   public static final egt<egp> c = a("giant_trunk_placer", egp.a);
-   public static final egt<egq> d = a("mega_jungle_trunk_placer", egq.b);
-   public static final egt<egm> e = a("dark_oak_trunk_placer", egm.a);
-   public static final egt<egn> f = a("fancy_trunk_placer", egn.a);
-   public static final egt<egk> g = a("bending_trunk_placer", egk.a);
-   public static final egt<egu> h = a("upwards_branching_trunk_placer", egu.a);
-   public static final egt<egl> i = a("cherry_trunk_placer", egl.a);
-   private final MapCodec<P> j;
+public abstract class egt {
+   public static final Codec<egt> c = lq.V.r().dispatch(egt::a, egu::a);
+   private static final int a = 32;
+   private static final int b = 24;
+   public static final int d = 80;
+   protected final int e;
+   protected final int f;
+   protected final int g;
 
-   private static <P extends egs> egt<P> a(String $$0, MapCodec<P> $$1) {
-      return jw.a(lq.V, $$0, new egt<>($$1));
+   protected static <P extends egt> P3<Mu<P>, Integer, Integer, Integer> a(Instance<P> $$0) {
+      return $$0.group(
+         Codec.intRange(0, 32).fieldOf("base_height").forGetter($$0x -> $$0x.e),
+         Codec.intRange(0, 24).fieldOf("height_rand_a").forGetter($$0x -> $$0x.f),
+         Codec.intRange(0, 24).fieldOf("height_rand_b").forGetter($$0x -> $$0x.g)
+      );
    }
 
-   private egt(MapCodec<P> $$0) {
-      this.j = $$0;
+   public egt(int $$0, int $$1, int $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   public MapCodec<P> a() {
-      return this.j;
+   protected abstract egu<?> a();
+
+   public abstract List<efb.a> a(dcm var1, BiConsumer<ja, dsl> var2, ayo var3, int var4, ja var5, eel var6);
+
+   public int a(ayo $$0) {
+      return this.e + $$0.a(this.f + 1) + $$0.a(this.g + 1);
+   }
+
+   private static boolean c(dcm $$0, ja $$1) {
+      return $$0.a($$1, $$0x -> ebl.b($$0x) && !$$0x.a(dfk.i) && !$$0x.a(dfk.fl));
+   }
+
+   protected static void a(dcm $$0, BiConsumer<ja, dsl> $$1, ayo $$2, ja $$3, eel $$4) {
+      if ($$4.k || !c($$0, $$3)) {
+         $$1.accept($$3, $$4.c.a($$2, $$3));
+      }
+   }
+
+   protected boolean b(dcm $$0, BiConsumer<ja, dsl> $$1, ayo $$2, ja $$3, eel $$4) {
+      return this.a($$0, $$1, $$2, $$3, $$4, Function.identity());
+   }
+
+   protected boolean a(dcm $$0, BiConsumer<ja, dsl> $$1, ayo $$2, ja $$3, eel $$4, Function<dsl, dsl> $$5) {
+      if (this.a($$0, $$3)) {
+         $$1.accept($$3, $$5.apply($$4.b.a($$2, $$3)));
+         return true;
+      } else {
+         return false;
+      }
+   }
+
+   protected void a(dcm $$0, BiConsumer<ja, dsl> $$1, ayo $$2, ja.a $$3, eel $$4) {
+      if (this.b($$0, $$3)) {
+         this.b($$0, $$1, $$2, $$3, $$4);
+      }
+   }
+
+   protected boolean a(dcm $$0, ja $$1) {
+      return ecx.c($$0, $$1);
+   }
+
+   public boolean b(dcm $$0, ja $$1) {
+      return this.a($$0, $$1) || $$0.a($$1, $$0x -> $$0x.a(avw.t));
    }
 }

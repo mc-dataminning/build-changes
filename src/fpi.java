@@ -1,21 +1,30 @@
-public class fpi extends fny<cra> {
-   private static final akk D = new akk("textures/gui/container/shulker_box.png");
+public class fpi extends fnz {
+   private final dbh s;
 
-   public fpi(cra $$0, cmj $$1, wu $$2) {
-      super($$0, $$1, $$2);
-      this.q++;
+   public fpi(dbh $$0) {
+      this.s = $$0;
    }
 
    @Override
-   public void a(fhf $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      this.a($$0, $$1, $$2);
+   public dbh m() {
+      return this.s;
    }
 
    @Override
-   protected void a(fhf $$0, float $$1, int $$2, int $$3) {
-      int $$4 = (this.m - this.c) / 2;
-      int $$5 = (this.n - this.q) / 2;
-      $$0.a(D, $$4, $$5, 0, 0, this.c, this.q);
+   int D() {
+      return 150;
+   }
+
+   @Override
+   protected void aP_() {
+      super.aP_();
+      this.a.a(this.m().m());
+   }
+
+   @Override
+   protected void a(dbh $$0) {
+      if ($$0 instanceof cop.a $$1) {
+         this.l.L().b(new ahq($$1.h().an(), this.a.a(), $$0.p()));
+      }
    }
 }

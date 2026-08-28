@@ -1,16 +1,19 @@
-public class gjy extends glu<bst> {
-   private static final akk a = new akk("textures/entity/squid/glow_squid.png");
+public class gjy extends gku<cjl, fuu<cjl>> {
+   private static final akk a = new akk("textures/entity/ghast/ghast.png");
+   private static final akk i = new akk("textures/entity/ghast/ghast_shooting.png");
 
-   public gjy(gjm.a $$0, fwq<bst> $$1) {
-      super($$0, $$1);
+   public gjy(gjo.a $$0) {
+      super($$0, new fuu<>($$0.a(fxp.ag)), 1.5F);
    }
 
-   public akk a(bst $$0) {
-      return a;
+   public akk a(cjl $$0) {
+      return $$0.s() ? i : a;
    }
 
-   protected int a(bst $$0, ja $$1) {
-      int $$2 = (int)ayg.b(0.0F, 15.0F, 1.0F - (float)$$0.y() / 10.0F);
-      return $$2 == 15 ? 15 : Math.max($$2, super.a($$0, $$1));
+   protected void a(cjl $$0, fao $$1, float $$2) {
+      float $$3 = 1.0F;
+      float $$4 = 4.5F;
+      float $$5 = 4.5F;
+      $$1.b(4.5F, 4.5F, 4.5F);
    }
 }

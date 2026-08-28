@@ -1,37 +1,18 @@
-public class fvi<T extends bsg> extends fux<T> {
-   private static final String a = "main";
-   private final fxo b;
+import java.util.function.Function;
 
-   public fvi(fxo $$0) {
-      this.b = $$0;
+public abstract class fvi<E extends bsh> extends fuq<E> {
+   public fvi() {
+      this(gen::e);
    }
 
-   public static fxu b() {
-      fxw $$0 = new fxw();
-      fxx $$1 = $$0.a();
-      int $$2 = 2;
-      $$1.a(
-         "main",
-         fxt.c()
-            .a(0, 0)
-            .a(-4.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .a(0.0F, -4.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .a(0.0F, 0.0F, -4.0F, 2.0F, 2.0F, 2.0F)
-            .a(0.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .a(2.0F, 0.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .a(0.0F, 2.0F, 0.0F, 2.0F, 2.0F, 2.0F)
-            .a(0.0F, 0.0F, 2.0F, 2.0F, 2.0F, 2.0F),
-         fxq.a
-      );
-      return fxu.a($$0, 64, 32);
+   public fvi(Function<akk, gen> $$0) {
+      super($$0);
    }
 
    @Override
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+   public void a(fao $$0, fas $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
+      this.d().forEach($$8 -> $$8.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
    }
 
-   @Override
-   public fxo a() {
-      return this.b;
-   }
+   public abstract Iterable<fxq> d();
 }

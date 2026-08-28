@@ -108,7 +108,7 @@ public class ac {
       return Collectors.toCollection(Lists::newArrayList);
    }
 
-   public static <T extends Comparable<T>> String a(dtn<T> $$0, Object $$1) {
+   public static <T extends Comparable<T>> String a(dto<T> $$0, Object $$1) {
       return $$0.a((T)$$1);
    }
 
@@ -241,7 +241,7 @@ public class ac {
 
    @Nullable
    public static Type<?> a(TypeReference $$0, String $$1) {
-      return !aa.aV ? null : b($$0, $$1);
+      return !aa.aT ? null : b($$0, $$1);
    }
 
    @Nullable
@@ -252,7 +252,7 @@ public class ac {
          $$2 = azp.a().getSchema(DataFixUtils.makeKey(aa.b().d().c())).getChoiceType($$0, $$1);
       } catch (IllegalArgumentException var4) {
          g.error("No data fixer registered for {}", $$1);
-         if (aa.aW) {
+         if (aa.aU) {
             throw var4;
          }
       }
@@ -261,7 +261,7 @@ public class ac {
    }
 
    public static Runnable a(String $$0, Runnable $$1) {
-      return aa.aW ? () -> {
+      return aa.aU ? () -> {
          Thread $$2 = Thread.currentThread();
          String $$3 = $$2.getName();
          $$2.setName($$0);
@@ -275,7 +275,7 @@ public class ac {
    }
 
    public static <V> Supplier<V> a(String $$0, Supplier<V> $$1) {
-      return aa.aW ? () -> {
+      return aa.aU ? () -> {
          Thread $$2 = Thread.currentThread();
          String $$3 = $$2.getName();
          $$2.setName($$0);
@@ -493,20 +493,20 @@ public class ac {
 
    public static void a(String $$0) {
       g.error($$0);
-      if (aa.aW) {
+      if (aa.aU) {
          c($$0);
       }
    }
 
    public static void a(String $$0, Throwable $$1) {
       g.error($$0, $$1);
-      if (aa.aW) {
+      if (aa.aU) {
          c($$0);
       }
    }
 
    public static <T extends Throwable> T b(T $$0) {
-      if (aa.aW) {
+      if (aa.aU) {
          g.error("Trying to throw a fatal exception, pausing in IDE", $$0);
          c($$0.getMessage());
       }

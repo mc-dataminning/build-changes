@@ -280,23 +280,23 @@ public class anw {
    private static LiteralArgumentBuilder<eq> a() {
       LiteralArgumentBuilder<eq> $$0 = er.a("rendertype");
 
-      for (exm.a $$1 : exm.a.values()) {
+      for (exo.a $$1 : exo.a.values()) {
          $$0.then(er.a($$1.a()).executes($$1x -> a((eq)$$1x.getSource(), fk.a($$1x, "objective"), $$1)));
       }
 
       return $$0;
    }
 
-   private static CompletableFuture<Suggestions> a(eq $$0, Collection<exi> $$1, SuggestionsBuilder $$2) {
+   private static CompletableFuture<Suggestions> a(eq $$0, Collection<exk> $$1, SuggestionsBuilder $$2) {
       List<String> $$3 = Lists.newArrayList();
-      exj $$4 = $$0.l().aL();
+      exl $$4 = $$0.l().aL();
 
-      for (exb $$5 : $$4.c()) {
-         if ($$5.c() == exm.c) {
+      for (exd $$5 : $$4.c()) {
+         if ($$5.c() == exo.c) {
             boolean $$6 = false;
 
-            for (exi $$7 : $$1) {
-               exf $$8 = $$4.d($$7, $$5);
+            for (exk $$7 : $$1) {
+               exh $$8 = $$4.d($$7, $$5);
                if ($$8 == null || $$8.b()) {
                   $$6 = true;
                   break;
@@ -312,30 +312,30 @@ public class anw {
       return ev.b($$3, $$2);
    }
 
-   private static int a(eq $$0, exi $$1, exb $$2) throws CommandSyntaxException {
-      exj $$3 = $$0.l().aL();
-      exf $$4 = $$3.d($$1, $$2);
+   private static int a(eq $$0, exk $$1, exd $$2) throws CommandSyntaxException {
+      exl $$3 = $$0.l().aL();
+      exh $$4 = $$3.d($$1, $$2);
       if ($$4 == null) {
-         throw f.create($$2.b(), $$1.hc());
+         throw f.create($$2.b(), $$1.hb());
       } else {
-         $$0.a(() -> wu.a("commands.scoreboard.players.get.success", $$1.hc(), $$4.a(), $$2.g()), false);
+         $$0.a(() -> wu.a("commands.scoreboard.players.get.success", $$1.hb(), $$4.a(), $$2.g()), false);
          return $$4.a();
       }
    }
 
-   private static wu a(Collection<exi> $$0) {
-      return $$0.iterator().next().hc();
+   private static wu a(Collection<exk> $$0) {
+      return $$0.iterator().next().hb();
    }
 
-   private static int a(eq $$0, Collection<exi> $$1, exb $$2, fm.a $$3, Collection<exi> $$4, exb $$5) throws CommandSyntaxException {
-      exj $$6 = $$0.l().aL();
+   private static int a(eq $$0, Collection<exk> $$1, exd $$2, fm.a $$3, Collection<exk> $$4, exd $$5) throws CommandSyntaxException {
+      exl $$6 = $$0.l().aL();
       int $$7 = 0;
 
-      for (exi $$8 : $$1) {
-         exh $$9 = $$6.c($$8, $$2);
+      for (exk $$8 : $$1) {
+         exj $$9 = $$6.c($$8, $$2);
 
-         for (exi $$10 : $$4) {
-            exh $$11 = $$6.c($$10, $$5);
+         for (exk $$10 : $$4) {
+            exj $$11 = $$6.c($$10, $$5);
             $$3.apply($$9, $$11);
          }
 
@@ -352,15 +352,15 @@ public class anw {
       return $$7;
    }
 
-   private static int a(eq $$0, Collection<exi> $$1, exb $$2) throws CommandSyntaxException {
-      if ($$2.c() != exm.c) {
+   private static int a(eq $$0, Collection<exk> $$1, exd $$2) throws CommandSyntaxException {
+      if ($$2.c() != exo.c) {
          throw e.create();
       } else {
-         exj $$3 = $$0.l().aL();
+         exl $$3 = $$0.l().aL();
          int $$4 = 0;
 
-         for (exi $$5 : $$1) {
-            exh $$6 = $$3.c($$5, $$2);
+         for (exk $$5 : $$1) {
+            exj $$6 = $$3.c($$5, $$2);
             if ($$6.d()) {
                $$6.e();
                $$4++;
@@ -381,10 +381,10 @@ public class anw {
       }
    }
 
-   private static int a(eq $$0, Collection<exi> $$1) {
-      exj $$2 = $$0.l().aL();
+   private static int a(eq $$0, Collection<exk> $$1) {
+      exl $$2 = $$0.l().aL();
 
-      for (exi $$3 : $$1) {
+      for (exk $$3 : $$1) {
          $$2.b($$3);
       }
 
@@ -397,10 +397,10 @@ public class anw {
       return $$1.size();
    }
 
-   private static int b(eq $$0, Collection<exi> $$1, exb $$2) {
-      exj $$3 = $$0.l().aL();
+   private static int b(eq $$0, Collection<exk> $$1, exd $$2) {
+      exl $$3 = $$0.l().aL();
 
-      for (exi $$4 : $$1) {
+      for (exk $$4 : $$1) {
          $$3.e($$4, $$2);
       }
 
@@ -413,10 +413,10 @@ public class anw {
       return $$1.size();
    }
 
-   private static int a(eq $$0, Collection<exi> $$1, exb $$2, int $$3) {
-      exj $$4 = $$0.l().aL();
+   private static int a(eq $$0, Collection<exk> $$1, exd $$2, int $$3) {
+      exl $$4 = $$0.l().aL();
 
-      for (exi $$5 : $$1) {
+      for (exk $$5 : $$1) {
          $$4.c($$5, $$2).a($$3);
       }
 
@@ -429,10 +429,10 @@ public class anw {
       return $$3 * $$1.size();
    }
 
-   private static int a(eq $$0, Collection<exi> $$1, exb $$2, @Nullable wu $$3) {
-      exj $$4 = $$0.l().aL();
+   private static int a(eq $$0, Collection<exk> $$1, exd $$2, @Nullable wu $$3) {
+      exl $$4 = $$0.l().aL();
 
-      for (exi $$5 : $$1) {
+      for (exk $$5 : $$1) {
          $$4.c($$5, $$2).a($$3);
       }
 
@@ -451,10 +451,10 @@ public class anw {
       return $$1.size();
    }
 
-   private static int a(eq $$0, Collection<exi> $$1, exb $$2, @Nullable yk $$3) {
-      exj $$4 = $$0.l().aL();
+   private static int a(eq $$0, Collection<exk> $$1, exd $$2, @Nullable yk $$3) {
+      exl $$4 = $$0.l().aL();
 
-      for (exi $$5 : $$1) {
+      for (exk $$5 : $$1) {
          $$4.c($$5, $$2).a($$3);
       }
 
@@ -473,12 +473,12 @@ public class anw {
       return $$1.size();
    }
 
-   private static int b(eq $$0, Collection<exi> $$1, exb $$2, int $$3) {
-      exj $$4 = $$0.l().aL();
+   private static int b(eq $$0, Collection<exk> $$1, exd $$2, int $$3) {
+      exl $$4 = $$0.l().aL();
       int $$5 = 0;
 
-      for (exi $$6 : $$1) {
-         exh $$7 = $$4.c($$6, $$2);
+      for (exk $$6 : $$1) {
+         exj $$7 = $$4.c($$6, $$2);
          $$7.a($$7.a() + $$3);
          $$5 += $$7.a();
       }
@@ -493,12 +493,12 @@ public class anw {
       return $$5;
    }
 
-   private static int c(eq $$0, Collection<exi> $$1, exb $$2, int $$3) {
-      exj $$4 = $$0.l().aL();
+   private static int c(eq $$0, Collection<exk> $$1, exd $$2, int $$3) {
+      exl $$4 = $$0.l().aL();
       int $$5 = 0;
 
-      for (exi $$6 : $$1) {
-         exh $$7 = $$4.c($$6, $$2);
+      for (exk $$6 : $$1) {
+         exj $$7 = $$4.c($$6, $$2);
          $$7.a($$7.a() - $$3);
          $$5 += $$7.a();
       }
@@ -514,32 +514,32 @@ public class anw {
    }
 
    private static int a(eq $$0) {
-      Collection<exi> $$1 = $$0.l().aL().e();
+      Collection<exk> $$1 = $$0.l().aL().e();
       if ($$1.isEmpty()) {
          $$0.a(() -> wu.c("commands.scoreboard.players.list.empty"), false);
       } else {
-         $$0.a(() -> wu.a("commands.scoreboard.players.list.success", $$1.size(), wx.b($$1, exi::hc)), false);
+         $$0.a(() -> wu.a("commands.scoreboard.players.list.success", $$1.size(), wx.b($$1, exk::hb)), false);
       }
 
       return $$1.size();
    }
 
-   private static int a(eq $$0, exi $$1) {
-      Object2IntMap<exb> $$2 = $$0.l().aL().c($$1);
+   private static int a(eq $$0, exk $$1) {
+      Object2IntMap<exd> $$2 = $$0.l().aL().c($$1);
       if ($$2.isEmpty()) {
-         $$0.a(() -> wu.a("commands.scoreboard.players.list.entity.empty", $$1.hc()), false);
+         $$0.a(() -> wu.a("commands.scoreboard.players.list.entity.empty", $$1.hb()), false);
       } else {
-         $$0.a(() -> wu.a("commands.scoreboard.players.list.entity.success", $$1.hc(), $$2.size()), false);
+         $$0.a(() -> wu.a("commands.scoreboard.players.list.entity.success", $$1.hb(), $$2.size()), false);
          Object2IntMaps.fastForEach(
-            $$2, $$1x -> $$0.a(() -> wu.a("commands.scoreboard.players.list.entity.entry", ((exb)$$1x.getKey()).g(), $$1x.getIntValue()), false)
+            $$2, $$1x -> $$0.a(() -> wu.a("commands.scoreboard.players.list.entity.entry", ((exd)$$1x.getKey()).g(), $$1x.getIntValue()), false)
          );
       }
 
       return $$2.size();
    }
 
-   private static int a(eq $$0, exa $$1) throws CommandSyntaxException {
-      exj $$2 = $$0.l().aL();
+   private static int a(eq $$0, exc $$1) throws CommandSyntaxException {
+      exl $$2 = $$0.l().aL();
       if ($$2.a($$1) == null) {
          throw b.create();
       } else {
@@ -549,8 +549,8 @@ public class anw {
       }
    }
 
-   private static int a(eq $$0, exa $$1, exb $$2) throws CommandSyntaxException {
-      exj $$3 = $$0.l().aL();
+   private static int a(eq $$0, exc $$1, exd $$2) throws CommandSyntaxException {
+      exl $$3 = $$0.l().aL();
       if ($$3.a($$1) == $$2) {
          throw c.create();
       } else {
@@ -560,7 +560,7 @@ public class anw {
       }
    }
 
-   private static int a(eq $$0, exb $$1, wu $$2) {
+   private static int a(eq $$0, exd $$1, wu $$2) {
       if (!$$1.d().equals($$2)) {
          $$1.a($$2);
          $$0.a(() -> wu.a("commands.scoreboard.objectives.modify.displayname", $$1.b(), $$1.g()), true);
@@ -569,7 +569,7 @@ public class anw {
       return 0;
    }
 
-   private static int a(eq $$0, exb $$1, boolean $$2) {
+   private static int a(eq $$0, exd $$1, boolean $$2) {
       if ($$1.e() != $$2) {
          $$1.a($$2);
          if ($$2) {
@@ -582,7 +582,7 @@ public class anw {
       return 0;
    }
 
-   private static int a(eq $$0, exb $$1, @Nullable yk $$2) {
+   private static int a(eq $$0, exd $$1, @Nullable yk $$2) {
       $$1.b($$2);
       if ($$2 != null) {
          $$0.a(() -> wu.a("commands.scoreboard.objectives.modify.objectiveFormat.set", $$1.b()), true);
@@ -593,7 +593,7 @@ public class anw {
       return 0;
    }
 
-   private static int a(eq $$0, exb $$1, exm.a $$2) {
+   private static int a(eq $$0, exd $$1, exo.a $$2) {
       if ($$1.h() != $$2) {
          $$1.a($$2);
          $$0.a(() -> wu.a("commands.scoreboard.objectives.modify.rendertype", $$1.g()), true);
@@ -602,31 +602,31 @@ public class anw {
       return 0;
    }
 
-   private static int a(eq $$0, exb $$1) {
-      exj $$2 = $$0.l().aL();
+   private static int a(eq $$0, exd $$1) {
+      exl $$2 = $$0.l().aL();
       $$2.j($$1);
       $$0.a(() -> wu.a("commands.scoreboard.objectives.remove.success", $$1.g()), true);
       return $$2.c().size();
    }
 
-   private static int a(eq $$0, String $$1, exm $$2, wu $$3) throws CommandSyntaxException {
-      exj $$4 = $$0.l().aL();
+   private static int a(eq $$0, String $$1, exo $$2, wu $$3) throws CommandSyntaxException {
+      exl $$4 = $$0.l().aL();
       if ($$4.a($$1) != null) {
          throw a.create();
       } else {
          $$4.a($$1, $$2, $$3, $$2.f(), false, null);
-         exb $$5 = $$4.a($$1);
+         exd $$5 = $$4.a($$1);
          $$0.a(() -> wu.a("commands.scoreboard.objectives.add.success", $$5.g()), true);
          return $$4.c().size();
       }
    }
 
    private static int b(eq $$0) {
-      Collection<exb> $$1 = $$0.l().aL().c();
+      Collection<exd> $$1 = $$0.l().aL().c();
       if ($$1.isEmpty()) {
          $$0.a(() -> wu.c("commands.scoreboard.objectives.list.empty"), false);
       } else {
-         $$0.a(() -> wu.a("commands.scoreboard.objectives.list.success", $$1.size(), wx.b($$1, exb::g)), false);
+         $$0.a(() -> wu.a("commands.scoreboard.objectives.list.success", $$1.size(), wx.b($$1, exd::g)), false);
       }
 
       return $$1.size();

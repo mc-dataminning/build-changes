@@ -1,55 +1,110 @@
-public class cpf {
-   public static final cpe a = new cpe.a().a(4).a(0.3F).c();
-   public static final cpe b = new cpe.a().a(5).a(0.6F).c();
-   public static final cpe c = new cpe.a().a(3).a(0.3F).c();
-   public static final cpe d = new cpe.a().a(1).a(0.6F).c();
-   public static final cpe e = a(6).c();
-   public static final cpe f = new cpe.a().a(5).a(0.6F).c();
-   public static final cpe g = new cpe.a().a(3).a(0.6F).c();
-   public static final cpe h = new cpe.a().a(2).a(0.3F).a(new bro(brq.q, 600, 0), 0.3F).c();
-   public static final cpe i = new cpe.a().a(4).a(0.3F).a().c();
-   public static final cpe j = new cpe.a().a(2).a(0.1F).c();
-   public static final cpe k = new cpe.a().a(8).a(0.8F).c();
-   public static final cpe l = new cpe.a().a(6).a(0.6F).c();
-   public static final cpe m = new cpe.a().a(5).a(0.6F).c();
-   public static final cpe n = new cpe.a().a(6).a(0.8F).c();
-   public static final cpe o = new cpe.a().a(8).a(0.8F).c();
-   public static final cpe p = new cpe.a().a(5).a(0.6F).c();
-   public static final cpe q = new cpe.a().a(6).a(0.8F).c();
-   public static final cpe r = new cpe.a().a(2).a(0.1F).c();
-   public static final cpe s = new cpe.a().a(1).a(0.3F).b().c();
-   public static final cpe t = new cpe.a()
-      .a(4)
-      .a(1.2F)
-      .a(new bro(brq.j, 400, 1), 1.0F)
-      .a(new bro(brq.k, 6000, 0), 1.0F)
-      .a(new bro(brq.l, 6000, 0), 1.0F)
-      .a(new bro(brq.v, 2400, 3), 1.0F)
-      .a()
-      .c();
-   public static final cpe u = new cpe.a().a(4).a(1.2F).a(new bro(brq.j, 100, 1), 1.0F).a(new bro(brq.v, 2400, 0), 1.0F).a().c();
-   public static final cpe v = new cpe.a().a(6).a(1.2F).c();
-   public static final cpe w = new cpe.a().a(6).a(0.1F).c();
-   public static final cpe x = new cpe.a().a(2).a(0.3F).c();
-   public static final cpe y = a(6).c();
-   public static final cpe z = new cpe.a().a(2).a(0.3F).c();
-   public static final cpe A = new cpe.a().a(2).a(0.3F).a(new bro(brq.s, 100, 0), 0.6F).c();
-   public static final cpe B = new cpe.a().a(3).a(0.3F).c();
-   public static final cpe C = new cpe.a().a(1).a(0.3F).c();
-   public static final cpe D = new cpe.a().a(1).a(0.1F).a(new bro(brq.s, 1200, 1), 1.0F).a(new bro(brq.q, 300, 2), 1.0F).a(new bro(brq.i, 300, 0), 1.0F).c();
-   public static final cpe E = new cpe.a().a(8).a(0.3F).c();
-   public static final cpe F = new cpe.a().a(3).a(0.3F).c();
-   public static final cpe G = a(10).c();
-   public static final cpe H = new cpe.a().a(4).a(0.1F).a(new bro(brq.q, 600, 0), 0.8F).c();
-   public static final cpe I = new cpe.a().a(2).a(0.1F).c();
-   public static final cpe J = new cpe.a().a(2).a(0.8F).a(new bro(brq.s, 100, 0), 1.0F).c();
-   public static final cpe K = a(6).a().c();
-   public static final cpe L = new cpe.a().a(2).a(0.1F).c();
-   public static final cpe M = new cpe.a().a(2).a(0.1F).c();
-   public static final cpe N = new cpe.a().a(1).a(0.1F).c();
-   public static final cpe O = new cpe.a().a(1).a(0.1F).c();
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
 
-   private static cpe.a a(int $$0) {
-      return new cpe.a().a($$0).a(0.6F).a(cuf.ot);
+public record cpf(int c, float d, boolean e, float f, Optional<cud> g, List<cpf.b> h) {
+   private static final float i = 1.6F;
+   public static final Codec<cpf> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               axo.k.fieldOf("nutrition").forGetter(cpf::b),
+               Codec.FLOAT.fieldOf("saturation").forGetter(cpf::c),
+               Codec.BOOL.optionalFieldOf("can_always_eat", false).forGetter(cpf::d),
+               axo.m.optionalFieldOf("eat_seconds", 1.6F).forGetter(cpf::e),
+               cud.c.optionalFieldOf("using_converts_to").forGetter(cpf::f),
+               cpf.b.a.listOf().optionalFieldOf("effects", List.of()).forGetter(cpf::g)
+            )
+            .apply($$0, cpf::new)
+   );
+   public static final ys<wf, cpf> b = ys.a(yq.g, cpf::b, yq.i, cpf::c, yq.b, cpf::d, yq.i, cpf::e, cud.i.a(yq::a), cpf::f, cpf.b.b.a(yq.a()), cpf::g, cpf::new);
+
+   public int a() {
+      return (int)(this.f * 20.0F);
+   }
+
+   public int b() {
+      return this.c;
+   }
+
+   public float c() {
+      return this.d;
+   }
+
+   public boolean d() {
+      return this.e;
+   }
+
+   public float e() {
+      return this.f;
+   }
+
+   public Optional<cud> f() {
+      return this.g;
+   }
+
+   public List<cpf.b> g() {
+      return this.h;
+   }
+
+   public static class a {
+      private int a;
+      private float b;
+      private boolean c;
+      private float d = 1.6F;
+      private Optional<cud> e = Optional.empty();
+      private final Builder<cpf.b> f = ImmutableList.builder();
+
+      public cpf.a a(int $$0) {
+         this.a = $$0;
+         return this;
+      }
+
+      public cpf.a a(float $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public cpf.a a() {
+         this.c = true;
+         return this;
+      }
+
+      public cpf.a b() {
+         this.d = 0.8F;
+         return this;
+      }
+
+      public cpf.a a(brp $$0, float $$1) {
+         this.f.add(new cpf.b($$0, $$1));
+         return this;
+      }
+
+      public cpf.a a(dcf $$0) {
+         this.e = Optional.of(new cud($$0));
+         return this;
+      }
+
+      public cpf c() {
+         float $$0 = cpd.a(this.a, this.b);
+         return new cpf(this.a, $$0, this.c, this.d, this.e, this.f.build());
+      }
+   }
+
+   public static record b(brp c, float d) {
+      public static final Codec<cpf.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(brp.d.fieldOf("effect").forGetter(cpf.b::a), Codec.floatRange(0.0F, 1.0F).optionalFieldOf("probability", 1.0F).forGetter(cpf.b::b))
+               .apply($$0, cpf.b::new)
+      );
+      public static final ys<wf, cpf.b> b = ys.a(brp.e, cpf.b::a, yq.i, cpf.b::b, cpf.b::new);
+
+      public brp a() {
+         return new brp(this.c);
+      }
+
+      public float b() {
+         return this.d;
+      }
    }
 }

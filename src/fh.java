@@ -54,7 +54,7 @@ public class fh implements fx<fh.a> {
 
    private static CompletableFuture<are> a(eq $$0, xk $$1) {
       aqn $$2 = $$0.i();
-      return $$2 != null && $$1.a($$2.cA()) ? $$2.X().a($$1.c()) : CompletableFuture.completedFuture(are.a($$1.c()));
+      return $$2 != null && $$1.a($$2.cB()) ? $$2.Y().a($$1.c()) : CompletableFuture.completedFuture(are.a($$1.c()));
    }
 
    public fh.a a(StringReader $$0) throws CommandSyntaxException {

@@ -342,11 +342,11 @@ public class vr extends ByteBuf {
       $$0.writeLong($$1.a());
    }
 
-   public dbm f() {
-      return new dbm(this.readLong());
+   public dbn f() {
+      return new dbn(this.readLong());
    }
 
-   public vr a(dbm $$0) {
+   public vr a(dbn $$0) {
       this.b($$0.a());
       return this;
    }
@@ -361,7 +361,7 @@ public class vr extends ByteBuf {
    }
 
    public ji h() {
-      akj<dcf> $$0 = this.a(lr.aZ);
+      akj<dcg> $$0 = this.a(lr.aZ);
       ja $$1 = this.e();
       return ji.a($$0, $$1);
    }
@@ -408,11 +408,11 @@ public class vr extends ByteBuf {
       $$0.writeFloat($$1.w);
    }
 
-   public ewf k() {
-      return new ewf(this.readDouble(), this.readDouble(), this.readDouble());
+   public ewh k() {
+      return new ewh(this.readDouble(), this.readDouble(), this.readDouble());
    }
 
-   public void a(ewf $$0) {
+   public void a(ewh $$0) {
       this.a($$0.a());
       this.a($$0.b());
       this.a($$0.c());
@@ -589,21 +589,21 @@ public class vr extends ByteBuf {
       return this;
    }
 
-   public ewb v() {
+   public ewd v() {
       ja $$0 = this.e();
       jf $$1 = this.b(jf.class);
       float $$2 = this.readFloat();
       float $$3 = this.readFloat();
       float $$4 = this.readFloat();
       boolean $$5 = this.readBoolean();
-      return new ewb(new ewf((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5);
+      return new ewd(new ewh((double)$$0.u() + (double)$$2, (double)$$0.v() + (double)$$3, (double)$$0.w() + (double)$$4), $$1, $$0, $$5);
    }
 
-   public void a(ewb $$0) {
+   public void a(ewd $$0) {
       ja $$1 = $$0.a();
       this.a($$1);
       this.a($$0.b());
-      ewf $$2 = $$0.e();
+      ewh $$2 = $$0.e();
       this.a((float)($$2.c - (double)$$1.u()));
       this.a((float)($$2.d - (double)$$1.v()));
       this.a((float)($$2.e - (double)$$1.w()));

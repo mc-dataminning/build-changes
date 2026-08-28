@@ -10,7 +10,7 @@ public class pe implements pd.a {
    }
 
    public static tx a(String $$0, tx $$1) {
-      emw $$2 = new emw();
+      emy $$2 = new emy();
       int $$3 = um.b($$1, 500);
       int $$4 = 3937;
       if ($$3 < 3937) {

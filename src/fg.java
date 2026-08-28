@@ -3,11 +3,11 @@ import com.mojang.serialization.Codec;
 import java.util.Arrays;
 import java.util.Locale;
 
-public class fg extends ga<dyf.a> {
-   private static final Codec<dyf.a> a = azc.a(fg::b, $$0 -> $$0.toLowerCase(Locale.ROOT));
+public class fg extends ga<dyg.a> {
+   private static final Codec<dyg.a> a = azc.a(fg::b, $$0 -> $$0.toLowerCase(Locale.ROOT));
 
-   private static dyf.a[] b() {
-      return Arrays.stream(dyf.a.values()).filter(dyf.a::d).toArray(dyf.a[]::new);
+   private static dyg.a[] b() {
+      return Arrays.stream(dyg.a.values()).filter(dyg.a::d).toArray(dyg.a[]::new);
    }
 
    private fg() {
@@ -18,8 +18,8 @@ public class fg extends ga<dyf.a> {
       return new fg();
    }
 
-   public static dyf.a a(CommandContext<eq> $$0, String $$1) {
-      return (dyf.a)$$0.getArgument($$1, dyf.a.class);
+   public static dyg.a a(CommandContext<eq> $$0, String $$1) {
+      return (dyg.a)$$0.getArgument($$1, dyg.a.class);
    }
 
    @Override

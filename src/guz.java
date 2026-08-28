@@ -1,22 +1,53 @@
-import java.time.Duration;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.longs.LongArrayList;
+import it.unimi.dsi.fastutil.longs.LongList;
 
-public class guz {
-   private final boolean a;
-   @Nullable
-   private final Duration b;
+public final class guz extends gux {
+   private static final long a = a(Runtime.getRuntime().maxMemory());
+   private final LongList b = new LongArrayList();
+   private final LongList c = new LongArrayList();
+   private final LongList d = new LongArrayList();
 
-   public guz(boolean $$0, @Nullable Duration $$1) {
-      this.b = $$1;
-      this.a = $$0;
+   @Override
+   public void a(gur $$0) {
+      if (ffw.Q().C()) {
+         super.a($$0);
+      }
    }
 
-   public void a(gup $$0) {
-      if (this.b != null) {
-         $$0.send(guq.d, $$0x -> {
-            $$0x.a(gus.x, (int)this.b.toMillis());
-            $$0x.a(gus.y, this.a);
-         });
-      }
+   private void g() {
+      this.b.clear();
+      this.c.clear();
+      this.d.clear();
+   }
+
+   @Override
+   public void f() {
+      this.b.add((long)ffw.Q().o());
+      this.h();
+      this.c.add(ffw.Q().p());
+   }
+
+   private void h() {
+      long $$0 = Runtime.getRuntime().totalMemory();
+      long $$1 = Runtime.getRuntime().freeMemory();
+      long $$2 = $$0 - $$1;
+      this.d.add(a($$2));
+   }
+
+   @Override
+   public void b(gur $$0) {
+      $$0.send(gus.c, $$0x -> {
+         $$0x.a(guu.r, new LongArrayList(this.b));
+         $$0x.a(guu.s, new LongArrayList(this.c));
+         $$0x.a(guu.t, new LongArrayList(this.d));
+         $$0x.a(guu.u, this.e());
+         $$0x.a(guu.v, ffw.Q().m.aD());
+         $$0x.a(guu.w, (int)a);
+      });
+      this.g();
+   }
+
+   private static long a(long $$0) {
+      return $$0 / 1000L;
    }
 }

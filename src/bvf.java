@@ -1,44 +1,41 @@
-import java.util.Optional;
+public class bvf implements buw<btc> {
+   private final int a;
+   private final int b;
+   private buv.a c = buv.a.a;
+   private long d;
 
-public class bvf implements bwi {
-   private final bsg a;
-   private final boolean b;
-
-   public bvf(bsg $$0, boolean $$1) {
+   public bvf(int $$0, int $$1) {
       this.a = $$0;
       this.b = $$1;
    }
 
    @Override
-   public ewf a() {
-      return this.b ? this.a.do().b(0.0, (double)this.a.cM(), 0.0) : this.a.do();
+   public buv.a a() {
+      return this.c;
    }
 
    @Override
-   public ja b() {
-      return this.a.dq();
+   public final boolean e(aqm $$0, btc $$1, long $$2) {
+      this.c = buv.a.b;
+      int $$3 = this.a + $$0.E_().a(this.b + 1 - this.a);
+      this.d = $$2 + (long)$$3;
+      return true;
    }
 
    @Override
-   public boolean a(btb $$0) {
-      if (this.a instanceof btb $$1) {
-         if (!$$1.bE()) {
-            return false;
-         } else {
-            Optional<cch> $$3 = $$0.dU().c(ccf.h);
-            return $$3.isPresent() && $$3.get().a($$1);
-         }
-      } else {
-         return true;
+   public final void f(aqm $$0, btc $$1, long $$2) {
+      if ($$2 > this.d) {
+         this.g($$0, $$1, $$2);
       }
    }
 
-   public bsg c() {
-      return this.a;
+   @Override
+   public final void g(aqm $$0, btc $$1, long $$2) {
+      this.c = buv.a.a;
    }
 
    @Override
-   public String toString() {
-      return "EntityTracker for " + this.a;
+   public String b() {
+      return this.getClass().getSimpleName();
    }
 }

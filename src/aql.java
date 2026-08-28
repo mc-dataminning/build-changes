@@ -18,7 +18,7 @@ public class aql {
    public static final int a = 60;
    private static final int e = 400;
    private final aqm f;
-   private final bsg g;
+   private final bsh g;
    private final int h;
    private final boolean i;
    private final Consumer<zb<?>> j;
@@ -26,46 +26,46 @@ public class aql {
    private int l;
    private int m;
    private int n;
-   private ewf o = ewf.b;
+   private ewh o = ewh.b;
    private int p;
    private int q;
-   private List<bsg> r = Collections.emptyList();
+   private List<bsh> r = Collections.emptyList();
    private boolean s;
    private boolean t;
    @Nullable
    private List<ajt.c<?>> u;
 
-   public aql(aqm $$0, bsg $$1, int $$2, boolean $$3, Consumer<zb<?>> $$4) {
+   public aql(aqm $$0, bsh $$1, int $$2, boolean $$3, Consumer<zb<?>> $$4) {
       this.f = $$0;
       this.j = $$4;
       this.g = $$1;
       this.h = $$2;
       this.i = $$3;
-      this.k.e($$1.dp());
-      this.l = ayg.d($$1.dG() * 256.0F / 360.0F);
-      this.m = ayg.d($$1.dI() * 256.0F / 360.0F);
-      this.n = ayg.d($$1.ct() * 256.0F / 360.0F);
-      this.t = $$1.aF();
-      this.u = $$1.aq().c();
+      this.k.e($$1.dq());
+      this.l = ayg.d($$1.dH() * 256.0F / 360.0F);
+      this.m = ayg.d($$1.dJ() * 256.0F / 360.0F);
+      this.n = ayg.d($$1.cu() * 256.0F / 360.0F);
+      this.t = $$1.aG();
+      this.u = $$1.ar().c();
    }
 
    public void a() {
-      List<bsg> $$0 = this.g.cT();
+      List<bsh> $$0 = this.g.cU();
       if (!$$0.equals(this.r)) {
          this.j.accept(new aez(this.g));
          a($$0, this.r).forEach($$0x -> {
             if ($$0x instanceof aqn $$1) {
-               $$1.c.a($$1.dv(), $$1.dx(), $$1.dB(), $$1.dG(), $$1.dI());
+               $$1.c.a($$1.dw(), $$1.dy(), $$1.dC(), $$1.dH(), $$1.dJ());
             }
          });
          this.r = $$0;
       }
 
-      if (this.g instanceof cin $$1 && this.p % 10 == 0) {
-         cuc $$2 = $$1.D();
-         if ($$2.g() instanceof cuk) {
-            epu $$3 = $$2.a(kn.B);
-            epw $$4 = cuk.a($$3, this.f);
+      if (this.g instanceof cio $$1 && this.p % 10 == 0) {
+         cud $$2 = $$1.D();
+         if ($$2.g() instanceof cul) {
+            epw $$3 = $$2.a(kn.B);
+            epy $$4 = cul.a($$3, this.f);
             if ($$4 != null) {
                for (aqn $$5 : this.f.x()) {
                   $$4.a($$5, $$2);
@@ -80,66 +80,66 @@ public class aql {
          this.b();
       }
 
-      if (this.p % this.h == 0 || this.g.av || this.g.aq().a()) {
-         if (this.g.bS()) {
-            int $$7 = ayg.d(this.g.dG() * 256.0F / 360.0F);
-            int $$8 = ayg.d(this.g.dI() * 256.0F / 360.0F);
+      if (this.p % this.h == 0 || this.g.av || this.g.ar().a()) {
+         if (this.g.bT()) {
+            int $$7 = ayg.d(this.g.dH() * 256.0F / 360.0F);
+            int $$8 = ayg.d(this.g.dJ() * 256.0F / 360.0F);
             boolean $$9 = Math.abs($$7 - this.l) >= 1 || Math.abs($$8 - this.m) >= 1;
             if ($$9) {
-               this.j.accept(new adh.c(this.g.am(), (byte)$$7, (byte)$$8, this.g.aF()));
+               this.j.accept(new adh.c(this.g.an(), (byte)$$7, (byte)$$8, this.g.aG()));
                this.l = $$7;
                this.m = $$8;
             }
 
-            this.k.e(this.g.dp());
+            this.k.e(this.g.dq());
             this.b();
             this.s = true;
          } else {
             this.q++;
-            int $$10 = ayg.d(this.g.dG() * 256.0F / 360.0F);
-            int $$11 = ayg.d(this.g.dI() * 256.0F / 360.0F);
-            ewf $$12 = this.g.dp();
+            int $$10 = ayg.d(this.g.dH() * 256.0F / 360.0F);
+            int $$11 = ayg.d(this.g.dJ() * 256.0F / 360.0F);
+            ewh $$12 = this.g.dq();
             boolean $$13 = this.k.d($$12).g() >= 7.6293945E-6F;
             zb<?> $$14 = null;
             boolean $$15 = $$13 || this.p % 60 == 0;
             boolean $$16 = Math.abs($$10 - this.l) >= 1 || Math.abs($$11 - this.m) >= 1;
             boolean $$17 = false;
             boolean $$18 = false;
-            if (this.p > 0 || this.g instanceof cmq) {
+            if (this.p > 0 || this.g instanceof cmr) {
                long $$19 = this.k.a($$12);
                long $$20 = this.k.b($$12);
                long $$21 = this.k.c($$12);
                boolean $$22 = $$19 < -32768L || $$19 > 32767L || $$20 < -32768L || $$20 > 32767L || $$21 < -32768L || $$21 > 32767L;
-               if ($$22 || this.q > 400 || this.s || this.t != this.g.aF()) {
-                  this.t = this.g.aF();
+               if ($$22 || this.q > 400 || this.s || this.t != this.g.aG()) {
+                  this.t = this.g.aG();
                   this.q = 0;
                   $$14 = new afp(this.g);
                   $$17 = true;
                   $$18 = true;
-               } else if ((!$$15 || !$$16) && !(this.g instanceof cmq)) {
+               } else if ((!$$15 || !$$16) && !(this.g instanceof cmr)) {
                   if ($$15) {
-                     $$14 = new adh.a(this.g.am(), (short)((int)$$19), (short)((int)$$20), (short)((int)$$21), this.g.aF());
+                     $$14 = new adh.a(this.g.an(), (short)((int)$$19), (short)((int)$$20), (short)((int)$$21), this.g.aG());
                      $$17 = true;
                   } else if ($$16) {
-                     $$14 = new adh.c(this.g.am(), (byte)$$10, (byte)$$11, this.g.aF());
+                     $$14 = new adh.c(this.g.an(), (byte)$$10, (byte)$$11, this.g.aG());
                      $$18 = true;
                   }
                } else {
-                  $$14 = new adh.b(this.g.am(), (short)((int)$$19), (short)((int)$$20), (short)((int)$$21), (byte)$$10, (byte)$$11, this.g.aF());
+                  $$14 = new adh.b(this.g.an(), (short)((int)$$19), (short)((int)$$20), (short)((int)$$21), (byte)$$10, (byte)$$11, this.g.aG());
                   $$17 = true;
                   $$18 = true;
                }
             }
 
-            if ((this.i || this.g.av || this.g instanceof btb && ((btb)this.g).fB()) && this.p > 0) {
-               ewf $$23 = this.g.dt();
+            if ((this.i || this.g.av || this.g instanceof btc && ((btc)this.g).fC()) && this.p > 0) {
+               ewh $$23 = this.g.du();
                double $$24 = $$23.g(this.o);
                if ($$24 > 1.0E-7 || $$24 > 0.0 && $$23.g() == 0.0) {
                   this.o = $$23;
-                  if (this.g instanceof cmr $$25) {
-                     this.j.accept(new abz(List.of(new aeu(this.g.am(), this.o), new adw($$25.am(), $$25.d))));
+                  if (this.g instanceof cms $$25) {
+                     this.j.accept(new abz(List.of(new aeu(this.g.an(), this.o), new adw($$25.an(), $$25.d))));
                   } else {
-                     this.j.accept(new aeu(this.g.am(), this.o));
+                     this.j.accept(new aeu(this.g.an(), this.o));
                   }
                }
             }
@@ -161,7 +161,7 @@ public class aql {
             this.s = false;
          }
 
-         int $$26 = ayg.d(this.g.ct() * 256.0F / 360.0F);
+         int $$26 = ayg.d(this.g.cu() * 256.0F / 360.0F);
          if (Math.abs($$26 - this.n) >= 1) {
             this.j.accept(new aec(this.g, (byte)$$26));
             this.n = $$26;
@@ -177,91 +177,91 @@ public class aql {
       }
    }
 
-   private static Stream<bsg> a(List<bsg> $$0, List<bsg> $$1) {
+   private static Stream<bsh> a(List<bsh> $$0, List<bsh> $$1) {
       return $$1.stream().filter($$1x -> !$$0.contains($$1x));
    }
 
    public void a(aqn $$0) {
-      this.g.d($$0);
-      $$0.c.b(new ady(this.g.am()));
+      this.g.e($$0);
+      $$0.c.b(new ady(this.g.an()));
    }
 
    public void b(aqn $$0) {
       List<zb<? super abn>> $$1 = new ArrayList<>();
       this.a($$0, $$1::add);
       $$0.c.b(new abz($$1));
-      this.g.c($$0);
+      this.g.d($$0);
    }
 
    public void a(aqn $$0, Consumer<zb<abn>> $$1) {
-      if (this.g.dL()) {
+      if (this.g.dM()) {
          b.warn("Fetching packet for removed entity {}", this.g);
       }
 
-      zb<abn> $$2 = this.g.dm();
-      this.n = ayg.d(this.g.ct() * 256.0F / 360.0F);
+      zb<abn> $$2 = this.g.dn();
+      this.n = ayg.d(this.g.cu() * 256.0F / 360.0F);
       $$1.accept($$2);
       if (this.u != null) {
-         $$1.accept(new aes(this.g.am(), this.u));
+         $$1.accept(new aes(this.g.an(), this.u));
       }
 
       boolean $$3 = this.i;
-      if (this.g instanceof btb) {
-         Collection<buf> $$4 = ((btb)this.g).eT().c();
+      if (this.g instanceof btc) {
+         Collection<bug> $$4 = ((btc)this.g).eU().c();
          if (!$$4.isEmpty()) {
-            $$1.accept(new aft(this.g.am(), $$4));
+            $$1.accept(new aft(this.g.an(), $$4));
          }
 
-         if (((btb)this.g).fB()) {
+         if (((btc)this.g).fC()) {
             $$3 = true;
          }
       }
 
-      this.o = this.g.dt();
-      if ($$3 && !(this.g instanceof btb)) {
-         $$1.accept(new aeu(this.g.am(), this.o));
+      this.o = this.g.du();
+      if ($$3 && !(this.g instanceof btc)) {
+         $$1.accept(new aeu(this.g.an(), this.o));
       }
 
-      if (this.g instanceof btb) {
-         List<Pair<bsn, cuc>> $$5 = Lists.newArrayList();
+      if (this.g instanceof btc) {
+         List<Pair<bso, cud>> $$5 = Lists.newArrayList();
 
-         for (bsn $$6 : bsn.values()) {
-            cuc $$7 = ((btb)this.g).a($$6);
+         for (bso $$6 : bso.values()) {
+            cud $$7 = ((btc)this.g).a($$6);
             if (!$$7.e()) {
                $$5.add(Pair.of($$6, $$7.s()));
             }
          }
 
          if (!$$5.isEmpty()) {
-            $$1.accept(new aev(this.g.am(), $$5));
+            $$1.accept(new aev(this.g.an(), $$5));
          }
       }
 
-      if (!this.g.cT().isEmpty()) {
+      if (!this.g.cU().isEmpty()) {
          $$1.accept(new aez(this.g));
       }
 
-      if (this.g.bS()) {
-         $$1.accept(new aez(this.g.dd()));
+      if (this.g.bT()) {
+         $$1.accept(new aez(this.g.de()));
       }
 
-      if (this.g instanceof btd $$8 && $$8.ga()) {
-         $$1.accept(new aet($$8, $$8.gc()));
+      if (this.g instanceof bte $$8 && $$8.fZ()) {
+         $$1.accept(new aet($$8, $$8.gb()));
       }
    }
 
    private void b() {
-      ajt $$0 = this.g.aq();
+      ajt $$0 = this.g.ar();
       List<ajt.c<?>> $$1 = $$0.b();
       if ($$1 != null) {
          this.u = $$0.c();
-         this.a(new aes(this.g.am(), $$1));
+         this.a(new aes(this.g.an(), $$1));
       }
 
-      if (this.g instanceof btb) {
-         Set<buf> $$2 = ((btb)this.g).eT().a();
+      if (this.g instanceof btc) {
+         Set<bug> $$2 = ((btc)this.g).eU().a();
          if (!$$2.isEmpty()) {
-            this.a(new aft(this.g.am(), $$2));
+            this.a(new aft(this.g.an(), $$2));
          }
 
          $$2.clear();

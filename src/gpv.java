@@ -1,35 +1,75 @@
-import com.google.common.collect.BiMap;
-import com.google.common.collect.HashBiMap;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import org.slf4j.Logger;
 
 public class gpv {
-   private static final BiMap<akk, gpu> i = HashBiMap.create();
-   public static final gpu a = a("single", gqa.b);
-   public static final gpu b = a("directory", gpx.b);
-   public static final gpu c = a("filter", gqb.b);
-   public static final gpu d = a("unstitch", gqc.b);
-   public static final gpu e = a("paletted_permutations", gpz.b);
-   public static Codec<gpu> f = akk.a.flatXmap($$0 -> {
-      gpu $$1 = (gpu)i.get($$0);
-      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$0);
-   }, $$0 -> {
-      akk $$1 = (akk)i.inverse().get($$0);
-      return $$0 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$1);
-   });
-   public static Codec<gps> g = f.dispatch(gps::a, gpu::a);
-   public static Codec<List<gps>> h = g.listOf().fieldOf("sources").codec();
+   private static final Logger a = LogUtils.getLogger();
+   private static final akd b = new akd("atlases", ".json");
+   private final List<gpu> c;
 
-   private static gpu a(String $$0, MapCodec<? extends gps> $$1) {
-      gpu $$2 = new gpu($$1);
-      akk $$3 = new akk($$0);
-      gpu $$4 = (gpu)i.putIfAbsent($$3, $$2);
-      if ($$4 != null) {
-         throw new IllegalStateException("Duplicate registration " + $$3);
-      } else {
-         return $$2;
+   private gpv(List<gpu> $$0) {
+      this.c = $$0;
+   }
+
+   public List<Function<gpt, gpk>> a(atw $$0) {
+      final Map<akk, gpu.b> $$1 = new HashMap<>();
+      gpu.a $$2 = new gpu.a() {
+         @Override
+         public void a(akk $$0, gpu.b $$1x) {
+            gpu.b $$2 = $$1.put($$0, $$1);
+            if ($$2 != null) {
+               $$2.a();
+            }
+         }
+
+         @Override
+         public void a(Predicate<akk> $$0) {
+            Iterator<Entry<akk, gpu.b>> $$1 = $$1.entrySet().iterator();
+
+            while ($$1.hasNext()) {
+               Entry<akk, gpu.b> $$2 = $$1.next();
+               if ($$0.test($$2.getKey())) {
+                  $$2.getValue().a();
+                  $$1.remove();
+               }
+            }
+         }
+      };
+      this.c.forEach($$2x -> $$2x.a($$0, $$2));
+      Builder<Function<gpt, gpk>> $$3 = ImmutableList.builder();
+      $$3.add((Function<gpt, gpk>)$$0x -> gpg.a());
+      $$3.addAll($$1.values());
+      return $$3.build();
+   }
+
+   public static gpv a(atw $$0, akk $$1) {
+      akk $$2 = b.a($$1);
+      List<gpu> $$3 = new ArrayList<>();
+
+      for (atu $$4 : $$0.a($$2)) {
+         try (BufferedReader $$5 = $$4.e()) {
+            Dynamic<JsonElement> $$6 = new Dynamic(JsonOps.INSTANCE, JsonParser.parseReader($$5));
+            $$3.addAll((Collection<? extends gpu>)gpx.h.parse($$6).getOrThrow());
+         } catch (Exception var11) {
+            a.error("Failed to parse atlas definition {} in pack {}", new Object[]{$$2, $$4.b(), var11});
+         }
       }
+
+      return new gpv($$3);
    }
 }

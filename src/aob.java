@@ -21,7 +21,7 @@ public class aob {
    }
 
    private static int a(eq $$0, Collection<aqn> $$1, ja $$2, float $$3) {
-      akj<dcf> $$4 = $$0.e().af();
+      akj<dcg> $$4 = $$0.e().af();
 
       for (aqn $$5 : $$1) {
          $$5.a($$4, $$2, $$3, true, false);

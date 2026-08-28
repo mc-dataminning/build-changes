@@ -1,136 +1,197 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public class exm {
-   private static final Map<String, exm> a = Maps.newHashMap();
-   private static final Map<String, exm> o = Maps.newHashMap();
-   public static final exm b = b("dummy");
-   public static final exm c = b("trigger");
-   public static final exm d = b("deathCount");
-   public static final exm e = b("playerKillCount");
-   public static final exm f = b("totalKillCount");
-   public static final exm g = a("health", true, exm.a.b);
-   public static final exm h = a("food", true, exm.a.a);
-   public static final exm i = a("air", true, exm.a.a);
-   public static final exm j = a("armor", true, exm.a.a);
-   public static final exm k = a("xp", true, exm.a.a);
-   public static final exm l = a("level", true, exm.a.a);
-   public static final exm[] m = new exm[]{
-      b("teamkill." + n.a.g()),
-      b("teamkill." + n.b.g()),
-      b("teamkill." + n.c.g()),
-      b("teamkill." + n.d.g()),
-      b("teamkill." + n.e.g()),
-      b("teamkill." + n.f.g()),
-      b("teamkill." + n.g.g()),
-      b("teamkill." + n.h.g()),
-      b("teamkill." + n.i.g()),
-      b("teamkill." + n.j.g()),
-      b("teamkill." + n.k.g()),
-      b("teamkill." + n.l.g()),
-      b("teamkill." + n.m.g()),
-      b("teamkill." + n.n.g()),
-      b("teamkill." + n.o.g()),
-      b("teamkill." + n.p.g())
-   };
-   public static final exm[] n = new exm[]{
-      b("killedByTeam." + n.a.g()),
-      b("killedByTeam." + n.b.g()),
-      b("killedByTeam." + n.c.g()),
-      b("killedByTeam." + n.d.g()),
-      b("killedByTeam." + n.e.g()),
-      b("killedByTeam." + n.f.g()),
-      b("killedByTeam." + n.g.g()),
-      b("killedByTeam." + n.h.g()),
-      b("killedByTeam." + n.i.g()),
-      b("killedByTeam." + n.j.g()),
-      b("killedByTeam." + n.k.g()),
-      b("killedByTeam." + n.l.g()),
-      b("killedByTeam." + n.m.g()),
-      b("killedByTeam." + n.n.g()),
-      b("killedByTeam." + n.o.g()),
-      b("killedByTeam." + n.p.g())
-   };
-   private final String p;
-   private final boolean q;
-   private final exm.a r;
+public class exm extends epq {
+   private static final Logger b = LogUtils.getLogger();
+   public static final String a = "scoreboard";
+   private final exl c;
 
-   private static exm a(String $$0, boolean $$1, exm.a $$2) {
-      exm $$3 = new exm($$0, $$1, $$2);
-      a.put($$0, $$3);
-      return $$3;
+   public exm(exl $$0) {
+      this.c = $$0;
    }
 
-   private static exm b(String $$0) {
-      return a($$0, false, exm.a.a);
+   public exm b(tx $$0, jl.a $$1) {
+      this.b($$0.c("Objectives", 10), $$1);
+      this.c.a($$0.c("PlayerScores", 10), $$1);
+      if ($$0.b("DisplaySlots", 10)) {
+         this.a($$0.p("DisplaySlots"));
+      }
+
+      if ($$0.b("Teams", 9)) {
+         this.a($$0.c("Teams", 10), $$1);
+      }
+
+      return this;
    }
 
-   protected exm(String $$0) {
-      this($$0, false, exm.a.a);
-   }
+   private void a(ud $$0, jl.a $$1) {
+      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
+         tx $$3 = $$0.a($$2);
+         String $$4 = $$3.l("Name");
+         exg $$5 = this.c.c($$4);
+         wu $$6 = wu.a.a($$3.l("DisplayName"), $$1);
+         if ($$6 != null) {
+            $$5.a($$6);
+         }
 
-   protected exm(String $$0, boolean $$1, exm.a $$2) {
-      this.p = $$0;
-      this.q = $$1;
-      this.r = $$2;
-      o.put($$0, this);
-   }
+         if ($$3.b("TeamColor", 8)) {
+            $$5.a(n.b($$3.l("TeamColor")));
+         }
 
-   public static Set<String> c() {
-      return ImmutableSet.copyOf(a.keySet());
-   }
+         if ($$3.b("AllowFriendlyFire", 99)) {
+            $$5.a($$3.q("AllowFriendlyFire"));
+         }
 
-   public static Optional<exm> a(String $$0) {
-      exm $$1 = o.get($$0);
-      if ($$1 != null) {
-         return Optional.of($$1);
-      } else {
-         int $$2 = $$0.indexOf(58);
-         return $$2 < 0 ? Optional.empty() : lq.v.b(akk.a($$0.substring(0, $$2), '.')).flatMap($$2x -> a($$2x, akk.a($$0.substring($$2 + 1), '.')));
+         if ($$3.b("SeeFriendlyInvisibles", 99)) {
+            $$5.b($$3.q("SeeFriendlyInvisibles"));
+         }
+
+         if ($$3.b("MemberNamePrefix", 8)) {
+            wu $$7 = wu.a.a($$3.l("MemberNamePrefix"), $$1);
+            if ($$7 != null) {
+               $$5.b($$7);
+            }
+         }
+
+         if ($$3.b("MemberNameSuffix", 8)) {
+            wu $$8 = wu.a.a($$3.l("MemberNameSuffix"), $$1);
+            if ($$8 != null) {
+               $$5.c($$8);
+            }
+         }
+
+         if ($$3.b("NameTagVisibility", 8)) {
+            exn.b $$9 = exn.b.a($$3.l("NameTagVisibility"));
+            if ($$9 != null) {
+               $$5.a($$9);
+            }
+         }
+
+         if ($$3.b("DeathMessageVisibility", 8)) {
+            exn.b $$10 = exn.b.a($$3.l("DeathMessageVisibility"));
+            if ($$10 != null) {
+               $$5.b($$10);
+            }
+         }
+
+         if ($$3.b("CollisionRule", 8)) {
+            exn.a $$11 = exn.a.a($$3.l("CollisionRule"));
+            if ($$11 != null) {
+               $$5.a($$11);
+            }
+         }
+
+         this.a($$5, $$3.c("Players", 8));
       }
    }
 
-   private static <T> Optional<exm> a(avq<T> $$0, akk $$1) {
-      return $$0.b().b($$1).map($$0::b);
+   private void a(exg $$0, ud $$1) {
+      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
+         this.c.a($$1.j($$2), $$0);
+      }
    }
 
-   public String d() {
-      return this.p;
+   private void a(tx $$0) {
+      for (String $$1 : $$0.e()) {
+         exc $$2 = exc.t.a($$1);
+         if ($$2 != null) {
+            String $$3 = $$0.l($$1);
+            exd $$4 = this.c.a($$3);
+            this.c.a($$2, $$4);
+         }
+      }
    }
 
-   public boolean e() {
-      return this.q;
+   private void b(ud $$0, jl.a $$1) {
+      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
+         tx $$3 = $$0.a($$2);
+         String $$4 = $$3.l("CriteriaName");
+         exo $$5 = exo.a($$4).orElseGet(() -> {
+            b.warn("Unknown scoreboard criteria {}, replacing with {}", $$4, exo.b.d());
+            return exo.b;
+         });
+         String $$6 = $$3.l("Name");
+         wu $$7 = wu.a.a($$3.l("DisplayName"), $$1);
+         exo.a $$8 = exo.a.a($$3.l("RenderType"));
+         boolean $$9 = $$3.q("display_auto_update");
+         yk $$10 = (yk)ym.b.parse($$1.a(ul.a), $$3.c("format")).result().orElse(null);
+         this.c.a($$6, $$5, $$7, $$8, $$9, $$10);
+      }
    }
 
-   public exm.a f() {
-      return this.r;
+   @Override
+   public tx a(tx $$0, jl.a $$1) {
+      $$0.a("Objectives", this.b($$1));
+      $$0.a("PlayerScores", this.c.a($$1));
+      $$0.a("Teams", this.a($$1));
+      this.b($$0);
+      return $$0;
    }
 
-   public static enum a implements azc {
-      a("integer"),
-      b("hearts");
+   private ud a(jl.a $$0) {
+      ud $$1 = new ud();
 
-      private final String d;
-      public static final azc.a<exm.a> c = azc.a(exm.a::values);
+      for (exg $$3 : this.c.g()) {
+         tx $$4 = new tx();
+         $$4.a("Name", $$3.b());
+         $$4.a("DisplayName", wu.a.a($$3.c(), $$0));
+         if ($$3.n().b() >= 0) {
+            $$4.a("TeamColor", $$3.n().g());
+         }
 
-      private a(final String $$0) {
-         this.d = $$0;
+         $$4.a("AllowFriendlyFire", $$3.h());
+         $$4.a("SeeFriendlyInvisibles", $$3.i());
+         $$4.a("MemberNamePrefix", wu.a.a($$3.e(), $$0));
+         $$4.a("MemberNameSuffix", wu.a.a($$3.f(), $$0));
+         $$4.a("NameTagVisibility", $$3.j().e);
+         $$4.a("DeathMessageVisibility", $$3.k().e);
+         $$4.a("CollisionRule", $$3.l().e);
+         ud $$5 = new ud();
+
+         for (String $$6 : $$3.g()) {
+            $$5.add(us.a($$6));
+         }
+
+         $$4.a("Players", $$5);
+         $$1.add($$4);
       }
 
-      public String a() {
-         return this.d;
+      return $$1;
+   }
+
+   private void b(tx $$0) {
+      tx $$1 = new tx();
+
+      for (exc $$2 : exc.values()) {
+         exd $$3 = this.c.a($$2);
+         if ($$3 != null) {
+            $$1.a($$2.c(), $$3.b());
+         }
       }
 
-      @Override
-      public String c() {
-         return this.d;
+      if (!$$1.g()) {
+         $$0.a("DisplaySlots", $$1);
+      }
+   }
+
+   private ud b(jl.a $$0) {
+      ud $$1 = new ud();
+
+      for (exd $$3 : this.c.c()) {
+         tx $$4 = new tx();
+         $$4.a("Name", $$3.b());
+         $$4.a("CriteriaName", $$3.c().d());
+         $$4.a("DisplayName", wu.a.a($$3.d(), $$0));
+         $$4.a("RenderType", $$3.h().a());
+         $$4.a("display_auto_update", $$3.e());
+         yk $$5 = $$3.f();
+         if ($$5 != null) {
+            ym.b.encodeStart($$0.a(ul.a), $$5).ifSuccess($$1x -> $$4.a("format", $$1x));
+         }
+
+         $$1.add($$4);
       }
 
-      public static exm.a a(String $$0) {
-         return c.a($$0, a);
-      }
+      return $$1;
    }
 }

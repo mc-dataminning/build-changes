@@ -12,10 +12,10 @@ public class acy {
    private final byte[] c;
    private final List<acy.a> d;
 
-   public acy(duq $$0) {
+   public acy(dur $$0) {
       this.b = new tx();
 
-      for (Entry<dyf.a, dyf> $$1 : $$0.e()) {
+      for (Entry<dyg.a, dyg> $$1 : $$0.e()) {
          if ($$1.getKey().b()) {
             this.b.a($$1.getKey().a(), new ue($$1.getValue().a()));
          }
@@ -25,7 +25,7 @@ public class acy {
       a(new vr(this.c()), $$0);
       this.d = Lists.newArrayList();
 
-      for (Entry<ja, dpp> $$2 : $$0.G().entrySet()) {
+      for (Entry<ja, dpq> $$2 : $$0.G().entrySet()) {
          this.d.add(acy.a.a($$2.getValue()));
       }
    }
@@ -53,10 +53,10 @@ public class acy {
       acy.a.b.encode($$0, this.d);
    }
 
-   private static int a(duq $$0) {
+   private static int a(dur $$0) {
       int $$1 = 0;
 
-      for (dur $$2 : $$0.d()) {
+      for (dus $$2 : $$0.d()) {
          $$1 += $$2.j();
       }
 
@@ -69,8 +69,8 @@ public class acy {
       return $$0;
    }
 
-   public static void a(vr $$0, duq $$1) {
-      for (dur $$2 : $$1.d()) {
+   public static void a(vr $$0, dur $$1) {
+      for (dus $$2 : $$1.d()) {
          $$2.c($$0);
       }
    }
@@ -105,11 +105,11 @@ public class acy {
       public static final ys<wf, List<acy.a>> b = a.a(yq.a());
       final int c;
       final int d;
-      final dpr<?> e;
+      final dps<?> e;
       @Nullable
       final tx f;
 
-      private a(int $$0, int $$1, dpr<?> $$2, @Nullable tx $$3) {
+      private a(int $$0, int $$1, dps<?> $$2, @Nullable tx $$3) {
          this.c = $$0;
          this.d = $$1;
          this.e = $$2;
@@ -130,7 +130,7 @@ public class acy {
          $$0.a(this.f);
       }
 
-      static acy.a a(dpp $$0) {
+      static acy.a a(dpq $$0) {
          tx $$1 = $$0.a($$0.i().H_());
          ja $$2 = $$0.az_();
          int $$3 = kc.b($$2.u()) << 4 | kc.b($$2.w());
@@ -140,6 +140,6 @@ public class acy {
 
    @FunctionalInterface
    public interface b {
-      void accept(ja var1, dpr<?> var2, @Nullable tx var3);
+      void accept(ja var1, dps<?> var2, @Nullable tx var3);
    }
 }

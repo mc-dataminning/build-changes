@@ -1,26 +1,30 @@
-public enum fff {
-   a(true, false),
-   b(false, false),
-   c(false, true);
+import java.util.function.IntFunction;
 
-   private static final fff[] d = values();
-   private final boolean e;
-   private final boolean f;
+public enum fff implements ayj {
+   a(0, "options.off"),
+   b(1, "options.attack.crosshair"),
+   c(2, "options.attack.hotbar");
 
-   private fff(final boolean $$0, final boolean $$1) {
+   private static final IntFunction<fff> d = aww.a(fff::a, values(), aww.a.b);
+   private final int e;
+   private final String f;
+
+   private fff(final int $$0, final String $$1) {
       this.e = $$0;
       this.f = $$1;
    }
 
-   public boolean a() {
+   @Override
+   public int a() {
       return this.e;
    }
 
-   public boolean b() {
+   @Override
+   public String b() {
       return this.f;
    }
 
-   public fff c() {
-      return d[(this.ordinal() + 1) % d.length];
+   public static fff a(int $$0) {
+      return d.apply($$0);
    }
 }

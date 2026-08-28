@@ -26,7 +26,7 @@ public class ama {
    private static final SuggestionProvider<eq> g = ($$0, $$1) -> {
       ath $$2 = ((eq)$$0.getSource()).l().aH();
       Collection<String> $$3 = $$2.d();
-      coy $$4 = ((eq)$$0.getSource()).w();
+      coz $$4 = ((eq)$$0.getSource()).w();
       return ev.b(
          $$2.c().stream().filter($$1x -> $$1x.e().a($$4)).map(ate::g).filter($$1x -> !$$3.contains($$1x)).map(StringArgumentType::escapeIfRequired), $$1
       );
@@ -115,7 +115,7 @@ public class ama {
       $$1.a();
       Collection<ate> $$2 = $$1.f();
       Collection<ate> $$3 = $$1.c();
-      coy $$4 = $$0.w();
+      coz $$4 = $$0.w();
       List<ate> $$5 = $$3.stream().filter($$2x -> !$$2.contains($$2x) && $$2x.e().a($$4)).toList();
       if ($$5.isEmpty()) {
          $$0.a(() -> wu.c("commands.datapack.list.available.none"), false);
@@ -152,12 +152,12 @@ public class ama {
          } else if (!$$2 && !$$6) {
             throw c.create($$3);
          } else {
-            coy $$7 = ((eq)$$0.getSource()).w();
-            coy $$8 = $$5.e();
+            coz $$7 = ((eq)$$0.getSource()).w();
+            coz $$8 = $$5.e();
             if (!$$2 && !$$8.b() && $$5.l() == ati.d) {
                throw d.create($$3);
             } else if (!$$8.a($$7)) {
-               throw e.create($$3, cpa.a($$7, $$8));
+               throw e.create($$3, cpb.a($$7, $$8));
             } else {
                return $$5;
             }

@@ -1,63 +1,140 @@
-import com.google.common.collect.Queues;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
+import com.mojang.blaze3d.systems.RenderSystem;
 import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import org.joml.Matrix4f;
 
 public class gep {
-   private static final Logger a = LogUtils.getLogger();
-   private final Queue<geo> b;
-   private volatile int c;
+   private static final akk a = new akk("textures/misc/underwater.png");
 
-   private gep(List<geo> $$0) {
-      this.b = Queues.newArrayDeque($$0);
-      this.c = this.b.size();
-   }
-
-   public static gep a(int $$0) {
-      int $$1 = Math.max(1, (int)((double)Runtime.getRuntime().maxMemory() * 0.3) / geo.a);
-      int $$2 = Math.max(1, Math.min($$0, $$1));
-      List<geo> $$3 = new ArrayList<>($$2);
-
-      try {
-         for (int $$4 = 0; $$4 < $$2; $$4++) {
-            $$3.add(new geo());
-         }
-      } catch (OutOfMemoryError var7) {
-         a.warn("Allocated only {}/{} buffers", $$3.size(), $$2);
-         int $$6 = Math.min($$3.size() * 2 / 3, $$3.size() - 1);
-
-         for (int $$7 = 0; $$7 < $$6; $$7++) {
-            $$3.remove($$3.size() - 1).close();
+   public static void a(ffw $$0, fao $$1) {
+      cml $$2 = $$0.s;
+      if (!$$2.ag) {
+         dsl $$3 = a($$2);
+         if ($$3 != null) {
+            a($$0.ao().a().a($$3), $$1);
          }
       }
 
-      return new gep($$3);
+      if (!$$0.s.N_()) {
+         if ($$0.s.a(awc.a)) {
+            b($$0, $$1);
+         }
+
+         if ($$0.s.bS()) {
+            c($$0, $$1);
+         }
+      }
    }
 
    @Nullable
-   public geo a() {
-      geo $$0 = this.b.poll();
-      if ($$0 != null) {
-         this.c = this.b.size();
-         return $$0;
-      } else {
-         return null;
+   private static dsl a(cml $$0) {
+      ja.a $$1 = new ja.a();
+
+      for (int $$2 = 0; $$2 < 8; $$2++) {
+         double $$3 = $$0.dw() + (double)(((float)(($$2 >> 0) % 2) - 0.5F) * $$0.dl() * 0.8F);
+         double $$4 = $$0.dA() + (double)(((float)(($$2 >> 1) % 2) - 0.5F) * 0.1F * $$0.ed());
+         double $$5 = $$0.dC() + (double)(((float)(($$2 >> 2) % 2) - 0.5F) * $$0.dl() * 0.8F);
+         $$1.b($$3, $$4, $$5);
+         dsl $$6 = $$0.dR().a_($$1);
+         if ($$6.l() != dlo.a && $$6.p($$0.dR(), $$1)) {
+            return $$6;
+         }
       }
+
+      return null;
    }
 
-   public void a(geo $$0) {
-      this.b.add($$0);
-      this.c = this.b.size();
+   private static void a(gpq $$0, fao $$1) {
+      RenderSystem.setShaderTexture(0, $$0.i());
+      RenderSystem.setShader(gdy::q);
+      faj $$2 = faq.b().d();
+      float $$3 = 0.1F;
+      float $$4 = -1.0F;
+      float $$5 = 1.0F;
+      float $$6 = -1.0F;
+      float $$7 = 1.0F;
+      float $$8 = -0.5F;
+      float $$9 = $$0.c();
+      float $$10 = $$0.d();
+      float $$11 = $$0.g();
+      float $$12 = $$0.h();
+      Matrix4f $$13 = $$1.c().a();
+      $$2.a(fat.b.h, fam.r);
+      $$2.a($$13, -1.0F, -1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$10, $$12).e();
+      $$2.a($$13, 1.0F, -1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$9, $$12).e();
+      $$2.a($$13, 1.0F, 1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$9, $$11).e();
+      $$2.a($$13, -1.0F, 1.0F, -0.5F).a(0.1F, 0.1F, 0.1F, 1.0F).a($$10, $$11).e();
+      fak.a($$2.d());
    }
 
-   public boolean b() {
-      return this.b.isEmpty();
+   private static void b(ffw $$0, fao $$1) {
+      RenderSystem.setShader(gdy::r);
+      RenderSystem.setShaderTexture(0, a);
+      faj $$2 = faq.b().d();
+      ja $$3 = ja.a($$0.s.dw(), $$0.s.dA(), $$0.s.dC());
+      float $$4 = gee.a($$0.s.dR().D_(), $$0.s.dR().A($$3));
+      RenderSystem.enableBlend();
+      RenderSystem.setShaderColor($$4, $$4, $$4, 0.1F);
+      float $$5 = 4.0F;
+      float $$6 = -1.0F;
+      float $$7 = 1.0F;
+      float $$8 = -1.0F;
+      float $$9 = 1.0F;
+      float $$10 = -0.5F;
+      float $$11 = -$$0.s.dH() / 64.0F;
+      float $$12 = $$0.s.dJ() / 64.0F;
+      Matrix4f $$13 = $$1.c().a();
+      $$2.a(fat.b.h, fam.q);
+      $$2.a($$13, -1.0F, -1.0F, -0.5F).a(4.0F + $$11, 4.0F + $$12).e();
+      $$2.a($$13, 1.0F, -1.0F, -0.5F).a(0.0F + $$11, 4.0F + $$12).e();
+      $$2.a($$13, 1.0F, 1.0F, -0.5F).a(0.0F + $$11, 0.0F + $$12).e();
+      $$2.a($$13, -1.0F, 1.0F, -0.5F).a(4.0F + $$11, 0.0F + $$12).e();
+      fak.a($$2.d());
+      RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.disableBlend();
    }
 
-   public int c() {
-      return this.c;
+   private static void c(ffw $$0, fao $$1) {
+      faj $$2 = faq.b().d();
+      RenderSystem.setShader(gdy::q);
+      RenderSystem.depthFunc(519);
+      RenderSystem.depthMask(false);
+      RenderSystem.enableBlend();
+      gpq $$3 = grw.b.c();
+      RenderSystem.setShaderTexture(0, $$3.i());
+      float $$4 = $$3.c();
+      float $$5 = $$3.d();
+      float $$6 = ($$4 + $$5) / 2.0F;
+      float $$7 = $$3.g();
+      float $$8 = $$3.h();
+      float $$9 = ($$7 + $$8) / 2.0F;
+      float $$10 = $$3.k();
+      float $$11 = ayg.i($$10, $$4, $$6);
+      float $$12 = ayg.i($$10, $$5, $$6);
+      float $$13 = ayg.i($$10, $$7, $$9);
+      float $$14 = ayg.i($$10, $$8, $$9);
+      float $$15 = 1.0F;
+
+      for (int $$16 = 0; $$16 < 2; $$16++) {
+         $$1.a();
+         float $$17 = -0.5F;
+         float $$18 = 0.5F;
+         float $$19 = -0.5F;
+         float $$20 = 0.5F;
+         float $$21 = -0.5F;
+         $$1.a((float)(-($$16 * 2 - 1)) * 0.24F, -0.3F, 0.0F);
+         $$1.a(a.d.rotationDegrees((float)($$16 * 2 - 1) * 10.0F));
+         Matrix4f $$22 = $$1.c().a();
+         $$2.a(fat.b.h, fam.r);
+         $$2.a($$22, -0.5F, -0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$12, $$14).e();
+         $$2.a($$22, 0.5F, -0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$11, $$14).e();
+         $$2.a($$22, 0.5F, 0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$11, $$13).e();
+         $$2.a($$22, -0.5F, 0.5F, -0.5F).a(1.0F, 1.0F, 1.0F, 0.9F).a($$12, $$13).e();
+         fak.a($$2.d());
+         $$1.b();
+      }
+
+      RenderSystem.disableBlend();
+      RenderSystem.depthMask(true);
+      RenderSystem.depthFunc(515);
    }
 }

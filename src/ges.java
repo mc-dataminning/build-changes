@@ -1,175 +1,411 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Arrays;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Queues;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.longs.LongIterator;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
+import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Queue;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Future;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.function.Consumer;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
 public class ges {
-   public static final akk a = new akk("textures/atlas/shulker_boxes.png");
-   public static final akk b = new akk("textures/atlas/beds.png");
-   public static final akk c = new akk("textures/atlas/banner_patterns.png");
-   public static final akk d = new akk("textures/atlas/shield_patterns.png");
-   public static final akk e = new akk("textures/atlas/signs.png");
-   public static final akk f = new akk("textures/atlas/chest.png");
-   public static final akk g = new akk("textures/atlas/armor_trims.png");
-   public static final akk h = new akk("textures/atlas/decorated_pot.png");
-   private static final gel C = gel.e(a);
-   private static final gel D = gel.c(b);
-   private static final gel E = gel.m(c);
-   private static final gel F = gel.m(d);
-   private static final gel G = gel.e(e);
-   private static final gel H = gel.d(f);
-   private static final gel I = gel.a(g);
-   private static final gel J = gel.b(g);
-   private static final gel K = gel.c(gpn.e);
-   private static final gel L = gel.d(gpn.e);
-   private static final gel M = gel.g(gpn.e);
-   private static final gel N = gel.h(gpn.e);
-   public static final grs i = new grs(a, new akk("entity/shulker/shulker"));
-   public static final List<grs> j = Stream.of(
-         "white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"
-      )
-      .map($$0 -> new grs(a, new akk("entity/shulker/shulker_" + $$0)))
-      .collect(ImmutableList.toImmutableList());
-   public static final Map<dtx, grs> k = dtx.a().collect(Collectors.toMap(Function.identity(), ges::c));
-   public static final Map<dtx, grs> l = dtx.a().collect(Collectors.toMap(Function.identity(), ges::d));
-   public static final grs m = new grs(c, new akk("entity/banner/base"));
-   public static final grs n = new grs(d, new akk("entity/shield/base"));
-   private static final Map<akk, grs> O = new HashMap<>();
-   private static final Map<akk, grs> P = new HashMap<>();
-   public static final Map<akj<dqg>, grs> o = lq.al.i().collect(Collectors.toMap(jj.c::h, $$0 -> a($$0.a().a())));
-   public static final grs p = a(new akk("decorated_pot_base"));
-   public static final grs q = a(new akk("decorated_pot_side"));
-   public static final grs[] r = Arrays.stream(csv.values())
-      .sorted(Comparator.comparingInt(csv::a))
-      .map($$0 -> new grs(b, new akk("entity/bed/" + $$0.b())))
-      .toArray(grs[]::new);
-   public static final grs s = a("trapped");
-   public static final grs t = a("trapped_left");
-   public static final grs u = a("trapped_right");
-   public static final grs v = a("christmas");
-   public static final grs w = a("christmas_left");
-   public static final grs x = a("christmas_right");
-   public static final grs y = a("normal");
-   public static final grs z = a("normal_left");
-   public static final grs A = a("normal_right");
-   public static final grs B = a("ender");
-
-   public static gel a() {
-      return E;
-   }
-
-   public static gel b() {
-      return F;
-   }
-
-   public static gel c() {
-      return D;
-   }
-
-   public static gel d() {
-      return C;
-   }
-
-   public static gel e() {
-      return G;
-   }
-
-   public static gel f() {
-      return G;
-   }
-
-   public static gel g() {
-      return H;
-   }
-
-   public static gel a(boolean $$0) {
-      return $$0 ? J : I;
-   }
-
-   public static gel h() {
-      return K;
-   }
-
-   public static gel i() {
-      return L;
-   }
-
-   public static gel j() {
-      return M;
-   }
-
-   public static gel k() {
-      return N;
-   }
-
-   private static grs c(dtx $$0) {
-      return new grs(e, new akk("entity/signs/" + $$0.b()));
-   }
-
-   private static grs d(dtx $$0) {
-      return new grs(e, new akk("entity/signs/hanging/" + $$0.b()));
-   }
-
-   public static grs a(dtx $$0) {
-      return k.get($$0);
-   }
-
-   public static grs b(dtx $$0) {
-      return l.get($$0);
-   }
-
-   public static grs a(jj<dpf> $$0) {
-      return O.computeIfAbsent($$0.a().a(), $$0x -> {
-         akk $$1 = $$0x.d("entity/banner/");
-         return new grs(c, $$1);
-      });
-   }
-
-   public static grs b(jj<dpf> $$0) {
-      return P.computeIfAbsent($$0.a().a(), $$0x -> {
-         akk $$1 = $$0x.d("entity/shield/");
-         return new grs(d, $$1);
-      });
-   }
-
-   private static grs a(String $$0) {
-      return new grs(f, new akk("entity/chest/" + $$0));
-   }
-
-   private static grs a(akk $$0) {
-      return new grs(h, $$0.d("entity/decorated_pot/"));
-   }
-
+   private static final Logger a = LogUtils.getLogger();
+   private static final jf[] b = jf.values();
+   private static final int c = 60;
+   private static final double d = Math.ceil(Math.sqrt(3.0) * 16.0);
+   private boolean e = true;
    @Nullable
-   public static grs a(@Nullable akj<dqg> $$0) {
-      return $$0 == null ? null : o.get($$0);
-   }
+   private Future<?> f;
+   @Nullable
+   private gew g;
+   private final AtomicReference<ges.b> h = new AtomicReference<>();
+   private final AtomicReference<ges.a> i = new AtomicReference<>();
+   private final AtomicBoolean j = new AtomicBoolean(false);
 
-   public static grs a(dpp $$0, dtc $$1, boolean $$2) {
-      if ($$0 instanceof dql) {
-         return B;
-      } else if ($$2) {
-         return a($$1, v, w, x);
+   public void a(@Nullable gew $$0) {
+      if (this.f != null) {
+         try {
+            this.f.get();
+            this.f = null;
+         } catch (Exception var3) {
+            a.warn("Full update failed", var3);
+         }
+      }
+
+      this.g = $$0;
+      if ($$0 != null) {
+         this.h.set(new ges.b($$0.f.length));
+         this.a();
       } else {
-         return $$0 instanceof drj ? a($$1, s, t, u) : a($$1, y, z, A);
+         this.h.set(null);
       }
    }
 
-   private static grs a(dtc $$0, grs $$1, grs $$2, grs $$3) {
-      switch ($$0) {
-         case b:
-            return $$2;
-         case c:
-            return $$3;
-         case a:
-         default:
-            return $$1;
+   public void a() {
+      this.e = true;
+   }
+
+   public void a(ghj $$0, List<ghf.b> $$1) {
+      for (ges.d $$2 : this.h.get().a().b) {
+         if ($$0.a($$2.a.b())) {
+            $$1.add($$2.a);
+         }
+      }
+   }
+
+   public boolean b() {
+      return this.j.compareAndSet(true, false);
+   }
+
+   public void a(dbn $$0) {
+      ges.a $$1 = this.i.get();
+      if ($$1 != null) {
+         this.a($$1, $$0);
+      }
+
+      ges.a $$2 = this.h.get().b;
+      if ($$2 != $$1) {
+         this.a($$2, $$0);
+      }
+   }
+
+   public void a(ghf.b $$0) {
+      ges.a $$1 = this.i.get();
+      if ($$1 != null) {
+         $$1.b.add($$0);
+      }
+
+      ges.a $$2 = this.h.get().b;
+      if ($$2 != $$1) {
+         $$2.b.add($$0);
+      }
+   }
+
+   public void a(boolean $$0, ffg $$1, ghj $$2, List<ghf.b> $$3) {
+      ewh $$4 = $$1.b();
+      if (this.e && (this.f == null || this.f.isDone())) {
+         this.a($$0, $$1, $$4);
+      }
+
+      this.a($$0, $$2, $$3, $$4);
+   }
+
+   private void a(boolean $$0, ffg $$1, ewh $$2) {
+      this.e = false;
+      this.f = ac.g().submit(() -> {
+         ges.b $$3 = new ges.b(this.g.f.length);
+         this.i.set($$3.b);
+         Queue<ges.d> $$4 = Queues.newArrayDeque();
+         this.a($$1, $$4);
+         $$4.forEach($$1xx -> $$3.a.a.a($$1xx.a, $$1xx));
+         this.a($$3.a, $$2, $$4, $$0, $$0xx -> {
+         });
+         this.h.set($$3);
+         this.i.set(null);
+         this.j.set(true);
+      });
+   }
+
+   private void a(boolean $$0, ghj $$1, List<ghf.b> $$2, ewh $$3) {
+      ges.b $$4 = this.h.get();
+      this.a($$4);
+      if (!$$4.b.b.isEmpty()) {
+         Queue<ges.d> $$5 = Queues.newArrayDeque();
+
+         while (!$$4.b.b.isEmpty()) {
+            ghf.b $$6 = $$4.b.b.poll();
+            ges.d $$7 = $$4.a.a.a($$6);
+            if ($$7 != null && $$7.a == $$6) {
+               $$5.add($$7);
+            }
+         }
+
+         ghj $$8 = ged.a($$1);
+         Consumer<ghf.b> $$9 = $$2x -> {
+            if ($$8.a($$2x.b())) {
+               $$2.add($$2x);
+            }
+         };
+         this.a($$4.a, $$3, $$5, $$0, $$9);
+      }
+   }
+
+   private void a(ges.b $$0) {
+      LongIterator $$1 = $$0.b.a.iterator();
+
+      while ($$1.hasNext()) {
+         long $$2 = $$1.nextLong();
+         List<ghf.b> $$3 = (List<ghf.b>)$$0.a.c.get($$2);
+         if ($$3 != null && $$3.get(0).a()) {
+            $$0.b.b.addAll($$3);
+            $$0.a.c.remove($$2);
+         }
+      }
+
+      $$0.b.a.clear();
+   }
+
+   private void a(ges.a $$0, dbn $$1) {
+      $$0.a.add(dbn.c($$1.e - 1, $$1.f));
+      $$0.a.add(dbn.c($$1.e, $$1.f - 1));
+      $$0.a.add(dbn.c($$1.e + 1, $$1.f));
+      $$0.a.add(dbn.c($$1.e, $$1.f + 1));
+   }
+
+   private void a(ffg $$0, Queue<ges.d> $$1) {
+      int $$2 = 16;
+      ewh $$3 = $$0.b();
+      ja $$4 = $$0.c();
+      ghf.b $$5 = this.g.a($$4);
+      if ($$5 == null) {
+         dci $$6 = this.g.c();
+         boolean $$7 = $$4.v() > $$6.I_();
+         int $$8 = $$7 ? $$6.am() - 8 : $$6.I_() + 8;
+         int $$9 = ayg.a($$3.c / 16.0) * 16;
+         int $$10 = ayg.a($$3.e / 16.0) * 16;
+         int $$11 = this.g.b();
+         List<ges.d> $$12 = Lists.newArrayList();
+
+         for (int $$13 = -$$11; $$13 <= $$11; $$13++) {
+            for (int $$14 = -$$11; $$14 <= $$11; $$14++) {
+               ghf.b $$15 = this.g.a(new ja($$9 + kc.a($$13, 8), $$8, $$10 + kc.a($$14, 8)));
+               if ($$15 != null && this.a($$4, $$15.f())) {
+                  jf $$16 = $$7 ? jf.a : jf.b;
+                  ges.d $$17 = new ges.d($$15, $$16, 0);
+                  $$17.a($$17.d, $$16);
+                  if ($$13 > 0) {
+                     $$17.a($$17.d, jf.f);
+                  } else if ($$13 < 0) {
+                     $$17.a($$17.d, jf.e);
+                  }
+
+                  if ($$14 > 0) {
+                     $$17.a($$17.d, jf.d);
+                  } else if ($$14 < 0) {
+                     $$17.a($$17.d, jf.c);
+                  }
+
+                  $$12.add($$17);
+               }
+            }
+         }
+
+         $$12.sort(Comparator.comparingDouble($$1x -> $$4.j($$1x.a.f().b(8, 8, 8))));
+         $$1.addAll($$12);
+      } else {
+         $$1.add(new ges.d($$5, null, 0));
+      }
+   }
+
+   private void a(ges.c $$0, ewh $$1, Queue<ges.d> $$2, boolean $$3, Consumer<ghf.b> $$4) {
+      int $$5 = 16;
+      ja $$6 = new ja(ayg.a($$1.c / 16.0) * 16, ayg.a($$1.d / 16.0) * 16, ayg.a($$1.e / 16.0) * 16);
+      ja $$7 = $$6.b(8, 8, 8);
+
+      while (!$$2.isEmpty()) {
+         ges.d $$8 = $$2.poll();
+         ghf.b $$9 = $$8.a;
+         if ($$0.b.add($$8)) {
+            $$4.accept($$8.a);
+         }
+
+         boolean $$10 = Math.abs($$9.f().u() - $$6.u()) > 60 || Math.abs($$9.f().v() - $$6.v()) > 60 || Math.abs($$9.f().w() - $$6.w()) > 60;
+
+         for (jf $$11 : b) {
+            ghf.b $$12 = this.a($$6, $$9, $$11);
+            if ($$12 != null && (!$$3 || !$$8.a($$11.g()))) {
+               if ($$3 && $$8.a()) {
+                  ghf.a $$13 = $$9.d();
+                  boolean $$14 = false;
+
+                  for (int $$15 = 0; $$15 < b.length; $$15++) {
+                     if ($$8.a($$15) && $$13.a(b[$$15].g(), $$11)) {
+                        $$14 = true;
+                        break;
+                     }
+                  }
+
+                  if (!$$14) {
+                     continue;
+                  }
+               }
+
+               if ($$3 && $$10) {
+                  ja $$16 = $$12.f();
+                  ja $$17 = $$16.b(
+                     ($$11.o() == jf.a.a ? $$7.u() <= $$16.u() : $$7.u() >= $$16.u()) ? 0 : 16,
+                     ($$11.o() == jf.a.b ? $$7.v() <= $$16.v() : $$7.v() >= $$16.v()) ? 0 : 16,
+                     ($$11.o() == jf.a.c ? $$7.w() <= $$16.w() : $$7.w() >= $$16.w()) ? 0 : 16
+                  );
+                  ewh $$18 = new ewh((double)$$17.u(), (double)$$17.v(), (double)$$17.w());
+                  ewh $$19 = $$1.d($$18).d().a(d);
+                  boolean $$20 = true;
+
+                  while ($$1.d($$18).g() > 3600.0) {
+                     $$18 = $$18.e($$19);
+                     dci $$21 = this.g.c();
+                     if ($$18.d > (double)$$21.am() || $$18.d < (double)$$21.I_()) {
+                        break;
+                     }
+
+                     ghf.b $$22 = this.g.a(ja.a($$18.c, $$18.d, $$18.e));
+                     if ($$22 == null || $$0.a.a($$22) == null) {
+                        $$20 = false;
+                        break;
+                     }
+                  }
+
+                  if (!$$20) {
+                     continue;
+                  }
+               }
+
+               ges.d $$23 = $$0.a.a($$12);
+               if ($$23 != null) {
+                  $$23.b($$11);
+               } else {
+                  ges.d $$24 = new ges.d($$12, $$11, $$8.b + 1);
+                  $$24.a($$8.d, $$11);
+                  if ($$12.a()) {
+                     $$2.add($$24);
+                     $$0.a.a($$12, $$24);
+                  } else if (this.a($$6, $$12.f())) {
+                     $$0.a.a($$12, $$24);
+                     ((List)$$0.c.computeIfAbsent(dbn.a($$12.f()), $$0x -> new ArrayList())).add($$12);
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   private boolean a(ja $$0, ja $$1) {
+      int $$2 = kc.a($$0.u());
+      int $$3 = kc.a($$0.w());
+      int $$4 = kc.a($$1.u());
+      int $$5 = kc.a($$1.w());
+      return apy.a($$2, $$3, this.g.b(), $$4, $$5);
+   }
+
+   @Nullable
+   private ghf.b a(ja $$0, ghf.b $$1, jf $$2) {
+      ja $$3 = $$1.a($$2);
+      if (!this.a($$0, $$3)) {
+         return null;
+      } else {
+         return ayg.a($$0.v() - $$3.v()) > this.g.b() * 16 ? null : this.g.a($$3);
+      }
+   }
+
+   @Nullable
+   @azl
+   protected ges.d b(ghf.b $$0) {
+      return this.h.get().a.a.a($$0);
+   }
+
+   static record a(LongSet a, BlockingQueue<ghf.b> b) {
+
+      public a() {
+         this(new LongOpenHashSet(), new LinkedBlockingQueue<>());
+      }
+   }
+
+   static record b(ges.c a, ges.a b) {
+
+      public b(int $$0) {
+         this(new ges.c($$0), new ges.a());
+      }
+   }
+
+   static class c {
+      public final ges.e a;
+      public final LinkedHashSet<ges.d> b;
+      public final Long2ObjectMap<List<ghf.b>> c;
+
+      public c(int $$0) {
+         this.a = new ges.e($$0);
+         this.b = new LinkedHashSet<>($$0);
+         this.c = new Long2ObjectOpenHashMap();
+      }
+   }
+
+   @azl
+   protected static class d {
+      @azl
+      protected final ghf.b a;
+      private byte c;
+      byte d;
+      @azl
+      protected final int b;
+
+      d(ghf.b $$0, @Nullable jf $$1, int $$2) {
+         this.a = $$0;
+         if ($$1 != null) {
+            this.b($$1);
+         }
+
+         this.b = $$2;
+      }
+
+      void a(byte $$0, jf $$1) {
+         this.d = (byte)(this.d | $$0 | 1 << $$1.ordinal());
+      }
+
+      boolean a(jf $$0) {
+         return (this.d & 1 << $$0.ordinal()) > 0;
+      }
+
+      void b(jf $$0) {
+         this.c = (byte)(this.c | this.c | 1 << $$0.ordinal());
+      }
+
+      @azl
+      protected boolean a(int $$0) {
+         return (this.c & 1 << $$0) > 0;
+      }
+
+      boolean a() {
+         return this.c != 0;
+      }
+
+      @Override
+      public int hashCode() {
+         return this.a.f().hashCode();
+      }
+
+      @Override
+      public boolean equals(Object $$0) {
+         return !($$0 instanceof ges.d $$1) ? false : this.a.f().equals($$1.a.f());
+      }
+   }
+
+   static class e {
+      private final ges.d[] a;
+
+      e(int $$0) {
+         this.a = new ges.d[$$0];
+      }
+
+      public void a(ghf.b $$0, ges.d $$1) {
+         this.a[$$0.b] = $$1;
+      }
+
+      @Nullable
+      public ges.d a(ghf.b $$0) {
+         int $$1 = $$0.b;
+         return $$1 >= 0 && $$1 < this.a.length ? this.a[$$1] : null;
       }
    }
 }

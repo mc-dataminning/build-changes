@@ -1,22 +1,9 @@
+import com.google.common.collect.ImmutableList;
+
 public class fxy {
-   private final float a;
-   private final float b;
+   private final fxz a = new fxz(ImmutableList.of(), fxs.a);
 
-   public fxy(float $$0, float $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public float a() {
+   public fxz a() {
       return this.a;
-   }
-
-   public float b() {
-      return this.b;
-   }
-
-   @Override
-   public String toString() {
-      return "(" + this.a + "," + this.b + ")";
    }
 }

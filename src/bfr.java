@@ -12,7 +12,7 @@ public class bfr extends DataFix {
 
    public TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
-         "OptionsLowerCaseLanguageFix", this.getInputSchema().getType(bgg.e), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
+         "OptionsLowerCaseLanguageFix", this.getInputSchema().getType(bgh.e), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
                Optional<String> $$1 = $$0x.get("lang").asString().result();
                return $$1.isPresent() ? $$0x.set("lang", $$0x.createString($$1.get().toLowerCase(Locale.ROOT))) : $$0x;
             })

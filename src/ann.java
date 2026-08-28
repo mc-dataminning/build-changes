@@ -40,7 +40,7 @@ public class ann {
       );
    }
 
-   private static int a(eq $$0, Collection<aqn> $$1, Collection<cyk<?>> $$2) throws CommandSyntaxException {
+   private static int a(eq $$0, Collection<aqn> $$1, Collection<cyl<?>> $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
       for (aqn $$4 : $$1) {
@@ -60,7 +60,7 @@ public class ann {
       }
    }
 
-   private static int b(eq $$0, Collection<aqn> $$1, Collection<cyk<?>> $$2) throws CommandSyntaxException {
+   private static int b(eq $$0, Collection<aqn> $$1, Collection<cyl<?>> $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
       for (aqn $$4 : $$1) {

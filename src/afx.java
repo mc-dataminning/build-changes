@@ -69,12 +69,12 @@ public class afx {
       "Fist"
    };
 
-   public static String a(bsg $$0) {
-      if ($$0 instanceof cmk) {
-         return $$0.ag().getString();
+   public static String a(bsh $$0) {
+      if ($$0 instanceof cml) {
+         return $$0.ah().getString();
       } else {
-         wu $$1 = $$0.ai();
-         return $$1 != null ? $$1.getString() : a($$0.cA());
+         wu $$1 = $$0.aj();
+         return $$1 != null ? $$1.getString() : a($$0.cB());
       }
    }
 

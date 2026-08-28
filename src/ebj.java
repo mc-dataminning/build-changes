@@ -1,54 +1,27 @@
-public class ebj extends ebk<edv> {
-   public static final int a = 4;
-   public static final int b = 4;
-   public static final int c = 1;
-   public static final float d = 0.5F;
-   private static final ja an = ja.c;
-   private final boolean ao;
+import com.mojang.serialization.Codec;
 
-   public static ja a(ja $$0) {
-      return an.a((ke)$$0);
-   }
-
-   public ebj(boolean $$0) {
-      super(edv.a);
-      this.ao = $$0;
+public class ebj extends ebl<edw> {
+   public ebj(Codec<edw> $$0) {
+      super($$0);
    }
 
    @Override
-   public boolean a(ebm<edv> $$0) {
-      ja $$1 = $$0.e();
-      ddb $$2 = $$0.b();
+   public boolean a(ebn<edw> $$0) {
+      ddc $$1 = $$0.b();
+      ayo $$2 = $$0.d();
+      ja $$3 = $$0.e();
+      float $$4 = (float)$$2.a(3) + 4.0F;
 
-      for (ja $$3 : ja.c(new ja($$1.u() - 4, $$1.v() - 1, $$1.w() - 4), new ja($$1.u() + 4, $$1.v() + 32, $$1.w() + 4))) {
-         boolean $$4 = $$3.a($$1, 2.5);
-         if ($$4 || $$3.a($$1, 3.5)) {
-            if ($$3.v() < $$1.v()) {
-               if ($$4) {
-                  this.a($$2, $$3, dfj.F.o());
-               } else if ($$3.v() < $$1.v()) {
-                  this.a($$2, $$3, dfj.fz.o());
+      for (int $$5 = 0; $$4 > 0.5F; $$5--) {
+         for (int $$6 = ayg.d(-$$4); $$6 <= ayg.f($$4); $$6++) {
+            for (int $$7 = ayg.d(-$$4); $$7 <= ayg.f($$4); $$7++) {
+               if ((float)($$6 * $$6 + $$7 * $$7) <= ($$4 + 1.0F) * ($$4 + 1.0F)) {
+                  this.a($$1, $$3.b($$6, $$5, $$7), dfk.fz.o());
                }
-            } else if ($$3.v() > $$1.v()) {
-               this.a($$2, $$3, dfj.a.o());
-            } else if (!$$4) {
-               this.a($$2, $$3, dfj.F.o());
-            } else if (this.ao) {
-               this.a($$2, new ja($$3), dfj.fx.o());
-            } else {
-               this.a($$2, new ja($$3), dfj.a.o());
             }
          }
-      }
 
-      for (int $$5 = 0; $$5 < 4; $$5++) {
-         this.a($$2, $$1.b($$5), dfj.F.o());
-      }
-
-      ja $$6 = $$1.b(2);
-
-      for (jf $$7 : jf.c.a) {
-         this.a($$2, $$6.a($$7), dfj.cq.o().a(doj.g, $$7));
+         $$4 -= (float)$$2.a(2) + 0.5F;
       }
 
       return true;

@@ -1,136 +1,113 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Map;
+import java.util.Objects;
 
-public abstract class gds {
-   private static final Object2ObjectMap<akk, gds> a = ac.a(new Object2ObjectArrayMap(), $$0 -> {
-      gds.c $$1 = new gds.c();
-      $$0.defaultReturnValue($$1);
-      $$0.put(dwd.e, $$1);
-      $$0.put(dwd.f, new gds.b());
-      $$0.put(dwd.g, new gds.a());
-   });
-   private final float[] b = new float[4];
-   private final float c;
-   private final boolean d;
-   private final gds.d e;
-   private final boolean f;
-   private final boolean g;
+public class gds implements atx {
+   private static final dra[] a = Arrays.stream(csw.values())
+      .sorted(Comparator.comparingInt(csw::a))
+      .map($$0 -> new dra($$0, ja.c, dfk.kP.o()))
+      .toArray(dra[]::new);
+   private static final dra b = new dra(ja.c, dfk.kP.o());
+   private final dpx c = new dpx(ja.c, dfk.cv.o());
+   private final dpx d = new drk(ja.c, dfk.gV.o());
+   private final dqm e = new dqm(ja.c, dfk.fG.o());
+   private final dpf f = new dpf(ja.c, dfk.iJ.o());
+   private final dpm g = new dpm(ja.c, dfk.bn.o());
+   private final dqc h = new dqc(ja.c, dfk.mX.o());
+   private final dqg i = new dqg(ja.c, dfk.tp.o());
+   private fwh j;
+   private fwv k;
+   private Map<dmk.a, fwn> l;
+   private final gge m;
+   private final fxm n;
 
-   public gds(float $$0, boolean $$1, gds.d $$2, boolean $$3, boolean $$4) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-      this.f = $$3;
-      this.g = $$4;
+   public gds(gge $$0, fxm $$1) {
+      this.m = $$0;
+      this.n = $$1;
    }
 
-   public static gds a(dwf $$0) {
-      return (gds)a.get($$0.r());
+   @Override
+   public void a(atw $$0) {
+      this.j = new fwh(this.n.a(fxp.bj));
+      this.k = new fwv(this.n.a(fxp.bI));
+      this.l = ggu.a(this.n);
    }
 
-   @Nullable
-   public float[] a(float $$0, float $$1) {
-      float $$2 = 0.4F;
-      float $$3 = ayg.b($$0 * (float) (Math.PI * 2)) - 0.0F;
-      float $$4 = -0.0F;
-      if ($$3 >= -0.4F && $$3 <= 0.4F) {
-         float $$5 = ($$3 - -0.0F) / 0.4F * 0.5F + 0.5F;
-         float $$6 = 1.0F - (1.0F - ayg.a($$5 * (float) Math.PI)) * 0.99F;
-         $$6 *= $$6;
-         this.b[0] = $$5 * 0.3F + 0.7F;
-         this.b[1] = $$5 * $$5 * 0.7F + 0.2F;
-         this.b[2] = $$5 * $$5 * 0.0F + 0.2F;
-         this.b[3] = $$6;
-         return this.b;
+   public void a(cud $$0, cua $$1, fao $$2, gef $$3, int $$4, int $$5) {
+      cty $$6 = $$0.g();
+      if ($$6 instanceof csc) {
+         dfi $$7 = ((csc)$$6).d();
+         if ($$7 instanceof dee $$8) {
+            cxe $$9 = $$0.a(kn.V);
+            if ($$9 != null && !$$9.b()) {
+               $$0.c(kn.V);
+               $$9.a().thenAcceptAsync($$1x -> $$0.b(kn.V, $$1x), ffw.Q());
+               $$9 = null;
+            }
+
+            fwn $$10 = this.l.get($$8.b());
+            gen $$11 = ggu.a($$8.b(), $$9);
+            ggu.a(null, 180.0F, 0.0F, $$2, $$3, $$4, $$10, $$11);
+         } else {
+            dsl $$12 = $$7.o();
+            dpq $$13;
+            if ($$7 instanceof ddz) {
+               this.f.a($$0, ((ddz)$$7).b());
+               $$13 = this.f;
+            } else if ($$7 instanceof dfb) {
+               this.g.a(((dfb)$$7).b());
+               $$13 = this.g;
+            } else if ($$12.a(dfk.mX)) {
+               $$13 = this.h;
+            } else if ($$12.a(dfk.cv)) {
+               $$13 = this.c;
+            } else if ($$12.a(dfk.fG)) {
+               $$13 = this.e;
+            } else if ($$12.a(dfk.gV)) {
+               $$13 = this.d;
+            } else if ($$12.a(dfk.tp)) {
+               this.i.c($$0);
+               $$13 = this.i;
+            } else {
+               if (!($$7 instanceof dmh)) {
+                  return;
+               }
+
+               csw $$20 = dmh.b($$6);
+               if ($$20 == null) {
+                  $$13 = b;
+               } else {
+                  $$13 = a[$$20.a()];
+               }
+            }
+
+            this.m.a($$13, $$2, $$3, $$4, $$5);
+         }
       } else {
-         return null;
+         if ($$0.a(cug.vs)) {
+            dph $$24 = $$0.a(kn.X, dph.a);
+            csw $$25 = $$0.a(kn.Y);
+            boolean $$26 = !$$24.b().isEmpty() || $$25 != null;
+            $$2.a();
+            $$2.b(1.0F, -1.0F, -1.0F);
+            gru $$27 = $$26 ? grw.g : grw.h;
+            fas $$28 = $$27.c().a(gkm.c($$3, this.j.a($$27.a()), true, $$0.x()));
+            this.j.c().a($$2, $$28, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+            if ($$26) {
+               gga.a($$2, $$3, $$4, $$5, this.j.b(), $$27, false, Objects.requireNonNullElse($$25, csw.a), $$24, $$0.x());
+            } else {
+               this.j.b().a($$2, $$28, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+            }
+
+            $$2.b();
+         } else if ($$0.a(cug.vS)) {
+            $$2.a();
+            $$2.b(1.0F, -1.0F, -1.0F);
+            fas $$29 = gkm.c($$3, this.k.a(fwv.a), false, $$0.x());
+            this.k.a($$2, $$29, $$4, $$5, 1.0F, 1.0F, 1.0F, 1.0F);
+            $$2.b();
+         }
       }
-   }
-
-   public float a() {
-      return this.c;
-   }
-
-   public boolean b() {
-      return this.d;
-   }
-
-   public abstract ewf a(ewf var1, float var2);
-
-   public abstract boolean a(int var1, int var2);
-
-   public gds.d c() {
-      return this.e;
-   }
-
-   public boolean d() {
-      return this.f;
-   }
-
-   public boolean e() {
-      return this.g;
-   }
-
-   public static class a extends gds {
-      public a() {
-         super(Float.NaN, false, gds.d.c, true, false);
-      }
-
-      @Override
-      public ewf a(ewf $$0, float $$1) {
-         return $$0.a(0.15F);
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
-      }
-
-      @Nullable
-      @Override
-      public float[] a(float $$0, float $$1) {
-         return null;
-      }
-   }
-
-   public static class b extends gds {
-      public b() {
-         super(Float.NaN, true, gds.d.a, false, true);
-      }
-
-      @Override
-      public ewf a(ewf $$0, float $$1) {
-         return $$0;
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return true;
-      }
-   }
-
-   public static class c extends gds {
-      public static final int a = 192;
-
-      public c() {
-         super(192.0F, true, gds.d.b, false, false);
-      }
-
-      @Override
-      public ewf a(ewf $$0, float $$1) {
-         return $$0.d((double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.94F + 0.06F), (double)($$1 * 0.91F + 0.09F));
-      }
-
-      @Override
-      public boolean a(int $$0, int $$1) {
-         return false;
-      }
-   }
-
-   public static enum d {
-      a,
-      b,
-      c;
    }
 }

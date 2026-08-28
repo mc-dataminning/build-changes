@@ -1,48 +1,42 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-public class ele extends eiw {
-   public static final MapCodec<ele> d = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(a($$0), ehd.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, ele::new)
+public class ele extends eix {
+   public static final bov<dds.c> d = bov.a(
+      new dds.c(bsn.i, 10, 2, 3), new dds.c(bsn.bx, 5, 4, 4), new dds.c(bsn.bq, 8, 5, 5), new dds.c(bsn.aN, 2, 5, 5), new dds.c(bsn.ap, 3, 4, 4)
    );
-   public final ehd e;
+   public static final MapCodec<ele> e = a(ele::new);
 
-   public ele(eiw.c $$0, ehd $$1) {
+   public ele(eix.c $$0) {
       super($$0);
-      this.e = $$1;
    }
 
    @Override
-   public Optional<eiw.b> a(eiw.a $$0) {
-      dze $$1 = $$0.f();
-      int $$2 = $$0.h().d() + $$1.a(16);
-      int $$3 = $$0.h().e() + $$1.a(16);
-      int $$4 = $$0.b().f();
-      dzc $$5 = new dzc($$0.b(), $$0.i());
-      int $$6 = this.e.a($$1, $$5);
-      dcr $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
-      ja.a $$8 = new ja.a($$2, $$6, $$3);
+   public Optional<eix.b> a(eix.a $$0) {
+      dbn $$1 = $$0.h();
+      ja $$2 = new ja($$1.d(), 64, $$1.e());
+      return Optional.of(new eix.b($$2, (Consumer<ejp>)($$1x -> a($$1x, $$0))));
+   }
 
-      while ($$6 > $$4) {
-         dsk $$9 = $$7.a($$6);
-         dsk $$10 = $$7.a(--$$6);
-         if ($$9.i() && ($$10.a(dfj.dW) || $$10.d(dbu.a, $$8.q($$6), jf.b))) {
-            break;
-         }
+   private static void a(ejp $$0, eix.a $$1) {
+      eld.q $$2 = new eld.q($$1.f(), $$1.h().a(2), $$1.h().b(2));
+      $$0.a($$2);
+      $$2.a($$2, $$0, $$1.f());
+      List<ejb> $$3 = $$2.d;
+
+      while (!$$3.isEmpty()) {
+         int $$4 = $$1.f().a($$3.size());
+         ejb $$5 = $$3.remove($$4);
+         $$5.a($$2, $$0, $$1.f());
       }
 
-      if ($$6 <= $$4) {
-         return Optional.empty();
-      } else {
-         ja $$11 = new ja($$2, $$6, $$3);
-         return Optional.of(new eiw.b($$11, (Consumer<ejo>)($$3x -> eld.a($$0.e(), $$3x, $$1, $$11))));
-      }
+      $$0.a($$1.f(), 48, 70);
    }
 
    @Override
-   public ejf<?> e() {
-      return ejf.i;
+   public ejg<?> e() {
+      return ejg.d;
    }
 }

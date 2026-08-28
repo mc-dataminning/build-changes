@@ -1,18 +1,24 @@
-public class gke extends gms {
-   private static final akk a = new akk("textures/entity/zombie/husk.png");
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public gke(gjm.a $$0) {
-      super($$0, fxn.ar, fxn.as, fxn.at);
+public final class gke extends gii<cgy, fvb<cgy>> {
+   private static final Map<chf, akk> a = ac.a(Maps.newEnumMap(chf.class), $$0 -> {
+      $$0.put(chf.a, new akk("textures/entity/horse/horse_white.png"));
+      $$0.put(chf.b, new akk("textures/entity/horse/horse_creamy.png"));
+      $$0.put(chf.c, new akk("textures/entity/horse/horse_chestnut.png"));
+      $$0.put(chf.d, new akk("textures/entity/horse/horse_brown.png"));
+      $$0.put(chf.e, new akk("textures/entity/horse/horse_black.png"));
+      $$0.put(chf.f, new akk("textures/entity/horse/horse_gray.png"));
+      $$0.put(chf.g, new akk("textures/entity/horse/horse_darkbrown.png"));
+   });
+
+   public gke(gjo.a $$0) {
+      super($$0, new fvb<>($$0.a(fxp.ap)), 1.1F);
+      this.a(new gnp(this));
+      this.a(new gno(this, $$0.f()));
    }
 
-   protected void a(ckj $$0, fam $$1, float $$2) {
-      float $$3 = 1.0625F;
-      $$1.b(1.0625F, 1.0625F, 1.0625F);
-      super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public akk a(ckj $$0) {
-      return a;
+   public akk a(cgy $$0) {
+      return a.get($$0.s());
    }
 }

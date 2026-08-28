@@ -1,48 +1,34 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.BiPredicate;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
 
-public class bvw<E extends btd> extends bvx<E> {
-   private final awm<dfh> m;
-   private final float n;
-   private final List<bvx.a> o = new ArrayList<>();
-   private boolean p;
+public class bvw extends buv<bte> {
+   public static final int c = 100;
+   private final bps d;
+   private final avg e;
 
-   public bvw(bpr $$0, int $$1, int $$2, float $$3, Function<E, avg> $$4, awm<dfh> $$5, float $$6, BiPredicate<E, ja> $$7) {
-      super($$0, $$1, $$2, $$3, $$4, $$7);
-      this.m = $$5;
-      this.n = $$6;
+   public bvw(bps $$0, avg $$1) {
+      super(ImmutableMap.of(ccg.n, cch.c, ccg.T, cch.a), 100);
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Override
-   protected void a(aqm $$0, E $$1, long $$2) {
-      super.a($$0, $$1, $$2);
-      this.o.clear();
-      this.p = $$1.dT().i() < this.n;
+   protected boolean a(aqm $$0, bte $$1, long $$2) {
+      return !$$1.aG();
    }
 
-   @Override
-   protected Optional<bvx.a> a(aqm $$0) {
-      if (!this.p) {
-         return super.a($$0);
-      } else {
-         ja.a $$1 = new ja.a();
+   protected void b(aqm $$0, bte $$1, long $$2) {
+      $$1.r(true);
+      $$1.b(bto.g);
+   }
 
-         while (!this.h.isEmpty()) {
-            Optional<bvx.a> $$2 = super.a($$0);
-            if ($$2.isPresent()) {
-               bvx.a $$3 = $$2.get();
-               if ($$0.a_($$1.a($$3.b(), jf.a)).a(this.m)) {
-                  return $$2;
-               }
-
-               this.o.add($$3);
-            }
-         }
-
-         return !this.o.isEmpty() ? Optional.of(this.o.remove(0)) : Optional.empty();
+   protected void c(aqm $$0, bte $$1, long $$2) {
+      if ($$1.aG()) {
+         $$1.j($$1.du().d(0.1F, 1.0, 0.1F));
+         $$0.a(null, $$1, this.e, avi.g, 2.0F, 1.0F);
       }
+
+      $$1.r(false);
+      $$1.b(bto.a);
+      $$1.dV().b(ccg.T);
+      $$1.dV().a(ccg.S, this.d.a($$0.z));
    }
 }

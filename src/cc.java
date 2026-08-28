@@ -2,7 +2,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
 
-public record cc(Optional<jn<eog>> b, Optional<dy> c) {
+public record cc(Optional<jn<eoi>> b, Optional<dy> c) {
    public static final Codec<cc> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(jy.a(lr.D).optionalFieldOf("fluids").forGetter(cc::a), dy.a.optionalFieldOf("state").forGetter(cc::b)).apply($$0, cc::new)
    );
@@ -11,12 +11,12 @@ public record cc(Optional<jn<eog>> b, Optional<dy> c) {
       if (!$$0.p($$1)) {
          return false;
       } else {
-         eoh $$2 = $$0.b_($$1);
+         eoj $$2 = $$0.b_($$1);
          return this.b.isPresent() && !$$2.a(this.b.get()) ? false : !this.c.isPresent() || this.c.get().a($$2);
       }
    }
 
-   public Optional<jn<eog>> a() {
+   public Optional<jn<eoi>> a() {
       return this.b;
    }
 
@@ -25,7 +25,7 @@ public record cc(Optional<jn<eog>> b, Optional<dy> c) {
    }
 
    public static class a {
-      private Optional<jn<eog>> a = Optional.empty();
+      private Optional<jn<eoi>> a = Optional.empty();
       private Optional<dy> b = Optional.empty();
 
       private a() {
@@ -35,12 +35,12 @@ public record cc(Optional<jn<eog>> b, Optional<dy> c) {
          return new cc.a();
       }
 
-      public cc.a a(eog $$0) {
+      public cc.a a(eoi $$0) {
          this.a = Optional.of(jn.a($$0.k()));
          return this;
       }
 
-      public cc.a a(jn<eog> $$0) {
+      public cc.a a(jn<eoi> $$0) {
          this.a = Optional.of($$0);
          return this;
       }

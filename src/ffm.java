@@ -1,39 +1,38 @@
-import java.util.function.IntFunction;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
 
-public enum ffm implements ayj {
-   a(0, "options.graphics.fast"),
-   b(1, "options.graphics.fancy"),
-   c(2, "options.graphics.fabulous");
+public class ffm {
+   private final fym a;
+   private int b = -1;
+   @Nullable
+   private Consumer<tx> c;
 
-   private static final IntFunction<ffm> d = aww.a(ffm::a, values(), aww.a.b);
-   private final int e;
-   private final String f;
-
-   private ffm(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public ffm(fym $$0) {
+      this.a = $$0;
    }
 
-   @Override
-   public int a() {
-      return this.e;
+   public boolean a(int $$0, @Nullable tx $$1) {
+      if (this.b == $$0 && this.c != null) {
+         this.c.accept($$1);
+         this.c = null;
+         return true;
+      } else {
+         return false;
+      }
    }
 
-   @Override
-   public String b() {
-      return this.f;
+   private int a(Consumer<tx> $$0) {
+      this.c = $$0;
+      return ++this.b;
    }
 
-   @Override
-   public String toString() {
-      return switch (this) {
-         case a -> "fast";
-         case b -> "fancy";
-         case c -> "fabulous";
-      };
+   public void a(int $$0, Consumer<tx> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new agv($$2, $$0));
    }
 
-   public static ffm a(int $$0) {
-      return d.apply($$0);
+   public void a(ja $$0, Consumer<tx> $$1) {
+      int $$2 = this.a($$1);
+      this.a.b(new age($$2, $$0));
    }
 }

@@ -19,12 +19,12 @@ public class amr {
       );
    }
 
-   private static void a(eq $$0, aqn $$1, dcc $$2) {
+   private static void a(eq $$0, aqn $$1, dcd $$2) {
       wu $$3 = wu.c("gameMode." + $$2.b());
       if ($$0.f() == $$1) {
          $$0.a(() -> wu.a("commands.gamemode.success.self", $$3), true);
       } else {
-         if ($$0.e().ab().b(dcb.p)) {
+         if ($$0.e().ab().b(dcc.p)) {
             $$1.a(wu.a("gameMode.changed", $$3));
          }
 
@@ -32,7 +32,7 @@ public class amr {
       }
    }
 
-   private static int a(CommandContext<eq> $$0, Collection<aqn> $$1, dcc $$2) {
+   private static int a(CommandContext<eq> $$0, Collection<aqn> $$1, dcd $$2) {
       int $$3 = 0;
 
       for (aqn $$4 : $$1) {

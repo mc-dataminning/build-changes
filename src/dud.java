@@ -1,5 +1,8 @@
-public interface dud {
-   dsk a(int var1);
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   void a(int var1, dsk var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dud {
 }

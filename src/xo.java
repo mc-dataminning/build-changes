@@ -27,7 +27,7 @@ public class xo {
       };
    }
 
-   public xo.b a(final cmn $$0) {
+   public xo.b a(final cmo $$0) {
       final ayt $$1 = $$0.a();
       return new xo.b() {
          @Override

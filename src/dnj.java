@@ -1,25 +1,28 @@
-import java.util.List;
-import java.util.Objects;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
-
-public interface dnj {
-   cxf b();
-
-   static List<dnj> c() {
-      return lq.g.t().map(dnj::a).filter(Objects::nonNull).collect(Collectors.toList());
-   }
-
-   @Nullable
-   static dnj a(dce $$0) {
-      if ($$0.r() instanceof csb $$1) {
-         dfh var6 = $$1.d();
-         if (var6 instanceof dnj) {
-            return (dnj)var6;
-         }
+public enum dnj {
+   a {
+      @Override
+      public boolean a(dsl $$0, dbm $$1, ja $$2, jf $$3) {
+         return dfi.a($$0.l($$1, $$2), $$3);
       }
+   },
+   b {
+      private final int d = 1;
+      private final exa e = dfi.a(7.0, 0.0, 7.0, 9.0, 10.0, 9.0);
 
-      ctx $$2 = $$0.r();
-      return $$2 instanceof dnj ? (dnj)$$2 : null;
-   }
+      @Override
+      public boolean a(dsl $$0, dbm $$1, ja $$2, jf $$3) {
+         return !ewx.c($$0.l($$1, $$2).a($$3), this.e, ewl.c);
+      }
+   },
+   c {
+      private final int d = 2;
+      private final exa e = ewx.a(ewx.b(), dfi.a(2.0, 0.0, 2.0, 14.0, 16.0, 14.0), ewl.e);
+
+      @Override
+      public boolean a(dsl $$0, dbm $$1, ja $$2, jf $$3) {
+         return !ewx.c($$0.l($$1, $$2).a($$3), this.e, ewl.c);
+      }
+   };
+
+   public abstract boolean a(dsl var1, dbm var2, ja var3, jf var4);
 }

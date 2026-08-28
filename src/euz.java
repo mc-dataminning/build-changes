@@ -1,25 +1,53 @@
+import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Set;
 
-public record euz(czs b) implements evb {
-   public static final MapCodec<euz> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(czs.b.fieldOf("amount").forGetter(euz::c)).apply($$0, euz::new));
-
-   @Override
-   public float b(equ $$0) {
-      int $$1 = $$0.b(etq.k);
-      return this.b.a($$1);
-   }
+public record euz(evd b, evd c) implements evd {
+   public static final MapCodec<euz> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(eve.a.fieldOf("n").forGetter(euz::c), eve.a.fieldOf("p").forGetter(euz::d)).apply($$0, euz::new)
+   );
 
    @Override
-   public eva b() {
-      return evc.g;
+   public evc b() {
+      return eve.d;
    }
 
-   public static euz a(czs $$0) {
-      return new euz($$0);
+   @Override
+   public int a(eqw $$0) {
+      int $$1 = this.b.a($$0);
+      float $$2 = this.c.b($$0);
+      ayo $$3 = $$0.b();
+      int $$4 = 0;
+
+      for (int $$5 = 0; $$5 < $$1; $$5++) {
+         if ($$3.i() < $$2) {
+            $$4++;
+         }
+      }
+
+      return $$4;
    }
 
-   public czs c() {
+   @Override
+   public float b(eqw $$0) {
+      return (float)this.a($$0);
+   }
+
+   public static euz a(int $$0, float $$1) {
+      return new euz(eva.a((float)$$0), eva.a($$1));
+   }
+
+   @Override
+   public Set<etp<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public evd c() {
       return this.b;
+   }
+
+   public evd d() {
+      return this.c;
    }
 }

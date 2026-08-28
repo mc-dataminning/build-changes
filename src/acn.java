@@ -1,15 +1,14 @@
 import java.util.Optional;
 
-public record acn(int b, jj<brb> c, int d, int e, Optional<ewf> f) implements zb<abn> {
+public record acn(int b, jj<brc> c, int d, int e, Optional<ewh> f) implements zb<abn> {
    public static final ys<wf, acn> a = zb.a(acn::a, acn::new);
-   private static final ys<wf, jj<brb>> g = yq.b(lr.s);
 
-   public acn(bsg $$0, bqz $$1) {
-      this($$0.am(), $$1.k(), $$1.d() != null ? $$1.d().am() : -1, $$1.c() != null ? $$1.c().am() : -1, Optional.ofNullable($$1.i()));
+   public acn(bsh $$0, bra $$1) {
+      this($$0.an(), $$1.k(), $$1.d() != null ? $$1.d().an() : -1, $$1.c() != null ? $$1.c().an() : -1, Optional.ofNullable($$1.i()));
    }
 
    private acn(wf $$0) {
-      this($$0.l(), g.decode($$0), a((vr)$$0), a((vr)$$0), $$0.b($$0x -> new ewf($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble())));
+      this($$0.l(), brc.c.decode($$0), a((vr)$$0), a((vr)$$0), $$0.b($$0x -> new ewh($$0x.readDouble(), $$0x.readDouble(), $$0x.readDouble())));
    }
 
    private static void a(vr $$0, int $$1) {
@@ -22,7 +21,7 @@ public record acn(int b, jj<brb> c, int d, int e, Optional<ewf> f) implements zb
 
    private void a(wf $$0) {
       $$0.c(this.b);
-      g.encode($$0, this.c);
+      brc.c.encode($$0, this.c);
       a($$0, this.d);
       a($$0, this.e);
       $$0.a(this.f, ($$0x, $$1) -> {
@@ -41,17 +40,17 @@ public record acn(int b, jj<brb> c, int d, int e, Optional<ewf> f) implements zb
       $$0.a(this);
    }
 
-   public bqz a(dcf $$0) {
+   public bra a(dcg $$0) {
       if (this.f.isPresent()) {
-         return new bqz(this.c, this.f.get());
+         return new bra(this.c, this.f.get());
       } else {
-         bsg $$1 = $$0.a(this.d);
-         bsg $$2 = $$0.a(this.e);
-         return new bqz(this.c, $$2, $$1);
+         bsh $$1 = $$0.a(this.d);
+         bsh $$2 = $$0.a(this.e);
+         return new bra(this.c, $$2, $$1);
       }
    }
 
-   public jj<brb> e() {
+   public jj<brc> e() {
       return this.c;
    }
 
@@ -63,7 +62,7 @@ public record acn(int b, jj<brb> c, int d, int e, Optional<ewf> f) implements zb
       return this.e;
    }
 
-   public Optional<ewf> h() {
+   public Optional<ewh> h() {
       return this.f;
    }
 }

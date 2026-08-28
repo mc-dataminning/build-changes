@@ -1,88 +1,99 @@
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public class gcq extends gcr {
-   private final ja a;
-   private final float b;
-   private final float F;
-
-   public gcq(fyj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dsk $$7) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, ja.a($$1, $$2, $$3));
+public class gcq extends gct {
+   gcq(fyl $$0, gco $$1, double $$2, double $$3, double $$4) {
+      super($$0, $$2, $$3 - 0.125, $$4);
+      this.b(0.01F, 0.01F);
+      this.a($$1);
+      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      this.n = false;
+      this.B = 1.0F;
+      this.u = 0.0F;
    }
 
-   public gcq(fyj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, dsk $$7, ja $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-      this.a = $$8;
-      this.a(fft.Q().ao().a().a($$7));
-      this.u = 1.0F;
-      this.v = 0.6F;
-      this.w = 0.6F;
-      this.x = 0.6F;
-      if (!$$7.a(dfj.i)) {
-         int $$9 = fft.Q().av().a($$7, $$0, $$8, 0);
-         this.v *= (float)($$9 >> 16 & 0xFF) / 255.0F;
-         this.w *= (float)($$9 >> 8 & 0xFF) / 255.0F;
-         this.x *= (float)($$9 & 0xFF) / 255.0F;
+   gcq(fyl $$0, gco $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+      super($$0, $$2, $$3 - 0.125, $$4, $$5, $$6, $$7);
+      this.b(0.01F, 0.01F);
+      this.a($$1);
+      this.D = this.D * (this.r.i() * 0.6F + 0.6F);
+      this.t = (int)(16.0 / (Math.random() * 0.8 + 0.2));
+      this.n = false;
+      this.B = 1.0F;
+      this.u = 0.0F;
+   }
+
+   @Override
+   public gbx b() {
+      return gbx.b;
+   }
+
+   public static class a implements gbw<ln> {
+      private final gco a;
+
+      public a(gco $$0) {
+         this.a = $$0;
       }
 
-      this.D /= 2.0F;
-      this.b = this.r.i() * 3.0F;
-      this.F = this.r.i() * 3.0F;
+      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         ayo $$8 = $$1.z;
+         double $$9 = $$8.k() * 1.0E-6F;
+         double $$10 = $$8.k() * 1.0E-4F;
+         double $$11 = $$8.k() * 1.0E-6F;
+         gcq $$12 = new gcq($$1, this.a, $$2, $$3, $$4, $$9, $$10, $$11);
+         $$12.a(0.9F, 0.4F, 0.5F);
+         return $$12;
+      }
    }
 
-   @Override
-   public gbv b() {
-      return gbv.a;
-   }
+   public static class b implements gbw<ln> {
+      private final gco a;
 
-   @Override
-   protected float c() {
-      return this.E.a((this.b + 1.0F) / 4.0F);
-   }
+      public b(gco $$0) {
+         this.a = $$0;
+      }
 
-   @Override
-   protected float d() {
-      return this.E.a(this.b / 4.0F);
-   }
-
-   @Override
-   protected float e() {
-      return this.E.c(this.F / 4.0F);
-   }
-
-   @Override
-   protected float f() {
-      return this.E.c((this.F + 1.0F) / 4.0F);
-   }
-
-   @Override
-   public int a(float $$0) {
-      int $$1 = super.a($$0);
-      return $$1 == 0 && this.c.B(this.a) ? geb.a(this.c, this.a) : $$1;
-   }
-
-   @Nullable
-   static gcq a(lb $$0, fyj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-      dsk $$8 = $$0.b();
-      return !$$8.i() && !$$8.a(dfj.bQ) && $$8.z() ? new gcq($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8) : null;
-   }
-
-   public static class a implements gbu<lb> {
-      @Nullable
-      public gbr a(lb $$0, fyj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gbr $$8 = gcq.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         if ($$8 != null) {
-            $$8.b($$1.z.k() / 30.0, $$6 + $$1.z.k() / 2.0, $$1.z.k() / 30.0);
-            $$8.a($$1.z.a(20) + 20);
-         }
-
+      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gcq $$8 = new gcq($$1, this.a, $$2, $$3, $$4, 0.0, -0.8F, 0.0) {
+            @Override
+            public Optional<lg> o() {
+               return Optional.of(lg.a);
+            }
+         };
+         $$8.t = ayg.b($$1.z, 500, 1000);
+         $$8.u = 0.01F;
+         $$8.a(0.32F, 0.5F, 0.22F);
          return $$8;
       }
    }
 
-   public static class b implements gbu<lb> {
-      @Nullable
-      public gbr a(lb $$0, fyj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return gcq.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public static class c implements gbw<ln> {
+      private final gco a;
+
+      public c(gco $$0) {
+         this.a = $$0;
+      }
+
+      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         gcq $$8 = new gcq($$1, this.a, $$2, $$3, $$4);
+         $$8.a(0.4F, 0.4F, 0.7F);
+         return $$8;
+      }
+   }
+
+   public static class d implements gbw<ln> {
+      private final gco a;
+
+      public d(gco $$0) {
+         this.a = $$0;
+      }
+
+      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         double $$8 = (double)$$1.z.i() * -1.9 * (double)$$1.z.i() * 0.1;
+         gcq $$9 = new gcq($$1, this.a, $$2, $$3, $$4, 0.0, $$8, 0.0);
+         $$9.a(0.1F, 0.1F, 0.3F);
+         $$9.b(0.001F, 0.001F);
+         return $$9;
       }
    }
 }

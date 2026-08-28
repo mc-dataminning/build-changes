@@ -4,7 +4,7 @@ import com.mojang.datafixers.schemas.Schema;
 
 public class bdl extends bfd {
    public bdl(Schema $$0) {
-      super($$0, false, "Remove filtered text from signs", bgg.s, "minecraft:sign");
+      super($$0, false, "Remove filtered text from signs", bgh.s, "minecraft:sign");
    }
 
    @Override

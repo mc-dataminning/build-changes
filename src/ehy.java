@@ -1,38 +1,23 @@
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.stream.Stream;
 
-public class ehy extends eih {
-   public static final MapCodec<ehy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.INT.fieldOf("noise_to_count_ratio").forGetter($$0x -> $$0x.c),
-               Codec.DOUBLE.fieldOf("noise_factor").forGetter($$0x -> $$0x.d),
-               Codec.DOUBLE.fieldOf("noise_offset").orElse(0.0).forGetter($$0x -> $$0x.e)
-            )
-            .apply($$0, ehy::new)
-   );
-   private final int c;
-   private final double d;
-   private final double e;
+public class ehy extends eie {
+   private static final ehy c = new ehy();
+   public static final MapCodec<ehy> a = MapCodec.unit(() -> c);
 
-   private ehy(int $$0, double $$1, double $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   public static ehy a(int $$0, double $$1, double $$2) {
-      return new ehy($$0, $$1, $$2);
+   public static ehy a() {
+      return c;
    }
 
    @Override
-   protected int a(ayo $$0, ja $$1) {
-      double $$2 = ddf.e.a((double)$$1.u() / this.d, (double)$$1.w() / this.d, false);
-      return (int)Math.ceil(($$2 + this.e) * (double)this.c);
+   public Stream<ja> a_(eic $$0, ayo $$1, ja $$2) {
+      int $$3 = $$1.a(16) + $$2.u();
+      int $$4 = $$1.a(16) + $$2.w();
+      return Stream.of(new ja($$3, $$2.v(), $$4));
    }
 
    @Override
-   public eie<?> b() {
-      return eie.g;
+   public eif<?> b() {
+      return eif.m;
    }
 }

@@ -1,103 +1,138 @@
+import com.google.common.base.Strings;
+import com.google.gson.JsonParser;
+import com.mojang.authlib.exceptions.MinecraftClientException;
+import com.mojang.authlib.minecraft.UserApiService;
+import com.mojang.authlib.minecraft.InsecurePublicKeyException.MissingException;
+import com.mojang.authlib.yggdrasil.response.KeyPairResponse;
+import com.mojang.authlib.yggdrasil.response.KeyPairResponse.KeyPair;
 import com.mojang.logging.LogUtils;
-import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import java.util.Map;
+import com.mojang.serialization.JsonOps;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.security.PublicKey;
+import java.time.DateTimeException;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Optional;
-import java.util.Map.Entry;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public class fye {
-   private static final Logger a = LogUtils.getLogger();
-   private final fft b;
-   private final guu c;
-   private final ak d = new ak();
-   private final Map<af, ah> e = new Object2ObjectOpenHashMap();
-   @Nullable
-   private fye.a f;
-   @Nullable
-   private af g;
+public class fye implements fyx {
+   private static final Logger b = LogUtils.getLogger();
+   private static final Duration c = Duration.ofHours(1L);
+   private static final Path d = Path.of("profilekeys");
+   private final UserApiService e;
+   private final Path f;
+   private CompletableFuture<Optional<cmn>> g = CompletableFuture.completedFuture(Optional.empty());
+   private Instant h = Instant.EPOCH;
 
-   public fye(fft $$0, guu $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   public fye(UserApiService $$0, UUID $$1, Path $$2) {
+      this.e = $$0;
+      this.f = $$2.resolve(d).resolve($$1 + ".json");
    }
 
-   public void a(afs $$0) {
-      if ($$0.g()) {
-         this.d.a();
-         this.e.clear();
-      }
+   @Override
+   public CompletableFuture<Optional<cmn>> a() {
+      this.h = Instant.now().plus(c);
+      this.g = this.g.thenCompose(this::a);
+      return this.g;
+   }
 
-      this.d.a($$0.e());
-      this.d.a($$0.b());
+   @Override
+   public boolean b() {
+      return this.g.isDone() && Instant.now().isAfter(this.h) ? this.g.join().<Boolean>map(cmn::a).orElse(true) : false;
+   }
 
-      for (Entry<akk, ah> $$1 : $$0.f().entrySet()) {
-         ag $$2 = this.d.a($$1.getKey());
-         if ($$2 != null) {
-            ah $$3 = $$1.getValue();
-            $$3.a($$2.a().f());
-            this.e.put($$2.b(), $$3);
-            if (this.f != null) {
-               this.f.a($$2, $$3);
+   private CompletableFuture<Optional<cmn>> a(Optional<cmn> $$0) {
+      return CompletableFuture.supplyAsync(() -> {
+         if ($$0.isPresent() && !$$0.get().a()) {
+            if (!aa.aU) {
+               this.a(null);
             }
 
-            if (!$$0.g() && $$3.a()) {
-               if (this.b.r != null) {
-                  this.c.a(this.b.r, $$2.b());
-               }
-
-               Optional<ar> $$4 = $$2.a().c();
-               if ($$4.isPresent() && $$4.get().h()) {
-                  this.b.ax().a(new fjy($$2.b()));
-               }
-            }
+            return $$0;
          } else {
-            a.warn("Server informed client about progress for unknown advancement {}", $$1.getKey());
-         }
-      }
-   }
-
-   public ak a() {
-      return this.d;
-   }
-
-   public void a(@Nullable af $$0, boolean $$1) {
-      fyk $$2 = this.b.L();
-      if ($$2 != null && $$0 != null && $$1) {
-         $$2.b(ahl.a($$0));
-      }
-
-      if (this.g != $$0) {
-         this.g = $$0;
-         if (this.f != null) {
-            this.f.a($$0);
-         }
-      }
-   }
-
-   public void a(@Nullable fye.a $$0) {
-      this.f = $$0;
-      this.d.a($$0);
-      if ($$0 != null) {
-         this.e.forEach(($$1, $$2) -> {
-            ag $$3 = this.d.a($$1);
-            if ($$3 != null) {
-               $$0.a($$3, $$2);
+            try {
+               cmn $$1 = this.a(this.e);
+               this.a($$1);
+               return Optional.ofNullable($$1);
+            } catch (axe | MinecraftClientException | IOException var3) {
+               b.error("Failed to retrieve profile key pair", var3);
+               this.a(null);
+               return $$0;
             }
-         });
-         $$0.a(this.g);
+         }
+      }, ac.i());
+   }
+
+   private Optional<cmn> c() {
+      if (Files.notExists(this.f)) {
+         return Optional.empty();
+      } else {
+         try {
+            Optional var2;
+            try (BufferedReader $$0 = Files.newBufferedReader(this.f)) {
+               var2 = cmn.a.parse(JsonOps.INSTANCE, JsonParser.parseReader($$0)).result();
+            }
+
+            return var2;
+         } catch (Exception var6) {
+            b.error("Failed to read profile key pair file {}", this.f, var6);
+            return Optional.empty();
+         }
+      }
+   }
+
+   private void a(@Nullable cmn $$0) {
+      try {
+         Files.deleteIfExists(this.f);
+      } catch (IOException var3) {
+         b.error("Failed to delete profile key pair file {}", this.f, var3);
+      }
+
+      if ($$0 != null) {
+         if (aa.aU) {
+            cmn.a.encodeStart(JsonOps.INSTANCE, $$0).ifSuccess($$0x -> {
+               try {
+                  Files.createDirectories(this.f.getParent());
+                  Files.writeString(this.f, $$0x.toString());
+               } catch (Exception var3x) {
+                  b.error("Failed to write profile key pair file {}", this.f, var3x);
+               }
+            });
+         }
       }
    }
 
    @Nullable
-   public af a(akk $$0) {
-      ag $$1 = this.d.a($$0);
-      return $$1 != null ? $$1.b() : null;
+   private cmn a(UserApiService $$0) throws axe, IOException {
+      KeyPairResponse $$1 = $$0.getKeyPair();
+      if ($$1 != null) {
+         cmo.a $$2 = a($$1);
+         return new cmn(axd.a($$1.keyPair().privateKey()), new cmo($$2), Instant.parse($$1.refreshedAfter()));
+      } else {
+         return null;
+      }
    }
 
-   public interface a extends ak.a {
-      void a(ag var1, ah var2);
-
-      void a(@Nullable af var1);
+   private static cmo.a a(KeyPairResponse $$0) throws axe {
+      KeyPair $$1 = $$0.keyPair();
+      if ($$1 != null && !Strings.isNullOrEmpty($$1.publicKey()) && $$0.publicKeySignature() != null && $$0.publicKeySignature().array().length != 0) {
+         try {
+            Instant $$2 = Instant.parse($$0.expiresAt());
+            PublicKey $$3 = axd.b($$1.publicKey());
+            ByteBuffer $$4 = $$0.publicKeySignature();
+            return new cmo.a($$2, $$3, $$4.array());
+         } catch (IllegalArgumentException | DateTimeException var5) {
+            throw new axe(var5);
+         }
+      } else {
+         throw new axe(new MissingException("Missing public key"));
+      }
    }
 }

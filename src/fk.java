@@ -18,10 +18,10 @@ public class fk implements ArgumentType<String> {
       return new fk();
    }
 
-   public static exb a(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+   public static exd a(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
       String $$2 = (String)$$0.getArgument($$1, String.class);
-      exj $$3 = ((eq)$$0.getSource()).l().aL();
-      exb $$4 = $$3.a($$2);
+      exl $$3 = ((eq)$$0.getSource()).l().aL();
+      exd $$4 = $$3.a($$2);
       if ($$4 == null) {
          throw b.create($$2);
       } else {
@@ -29,8 +29,8 @@ public class fk implements ArgumentType<String> {
       }
    }
 
-   public static exb b(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
-      exb $$2 = a($$0, $$1);
+   public static exd b(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+      exd $$2 = a($$0, $$1);
       if ($$2.c().e()) {
          throw c.create($$2.b());
       } else {

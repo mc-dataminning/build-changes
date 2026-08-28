@@ -1,27 +1,15 @@
-public class gmq extends gks<cfu, fxf<cfu>> {
-   public gmq(gjm.a $$0) {
-      super($$0, new fxf<>($$0.a(fxn.cc)), 0.5F);
-      this.a(new gon(this, $$0.f()));
-      this.a(new goo(this));
+public class gmq extends glq<cki> {
+   private static final akk a = new akk("textures/entity/skeleton/wither_skeleton.png");
+
+   public gmq(gjo.a $$0) {
+      super($$0, fxp.bX, fxp.bY, fxp.bZ);
    }
 
-   protected float a(cfu $$0, float $$1) {
-      return $$0.gy();
+   public akk a(cki $$0) {
+      return a;
    }
 
-   public void a(cfu $$0, float $$1, float $$2, fam $$3, ged $$4, int $$5) {
-      if ($$0.gx()) {
-         float $$6 = $$0.H($$2);
-         this.f.a($$6, $$6, $$6);
-      }
-
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if ($$0.gx()) {
-         this.f.a(1.0F, 1.0F, 1.0F);
-      }
-   }
-
-   public akk a(cfu $$0) {
-      return $$0.gu();
+   protected void a(cki $$0, fao $$1, float $$2) {
+      $$1.b(1.2F, 1.2F, 1.2F);
    }
 }

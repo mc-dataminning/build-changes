@@ -1,30 +1,17 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-
 public enum cxx implements azc {
-   a("building", 0),
-   b("redstone", 1),
-   c("equipment", 2),
-   d("misc", 3);
+   a("food"),
+   b("blocks"),
+   c("misc");
 
-   public static final Codec<cxx> e = azc.a(cxx::values);
-   public static final IntFunction<cxx> f = aww.a(cxx::a, values(), aww.a.a);
-   public static final ys<ByteBuf, cxx> g = yq.a(f, cxx::a);
-   private final String h;
-   private final int i;
+   public static final azc.a<cxx> d = azc.a(cxx::values);
+   private final String e;
 
-   private cxx(final String $$0, final int $$1) {
-      this.h = $$0;
-      this.i = $$1;
+   private cxx(final String $$0) {
+      this.e = $$0;
    }
 
    @Override
    public String c() {
-      return this.h;
-   }
-
-   private int a() {
-      return this.i;
+      return this.e;
    }
 }

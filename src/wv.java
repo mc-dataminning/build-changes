@@ -12,7 +12,7 @@ public interface wv {
       return Optional.empty();
    }
 
-   default xi a(@Nullable eq $$0, @Nullable bsg $$1, int $$2) throws CommandSyntaxException {
+   default xi a(@Nullable eq $$0, @Nullable bsh $$1, int $$2) throws CommandSyntaxException {
       return xi.a(this);
    }
 

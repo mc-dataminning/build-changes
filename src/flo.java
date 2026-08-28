@@ -1,19 +1,17 @@
-import com.google.common.collect.ImmutableList;
+public interface flo extends fje, flr {
+   flo.a u();
 
-public interface flo {
-   default void a(fln $$0, wu $$1) {
-      this.a($$0, flq.a($$1.getString()));
+   default boolean C() {
+      return true;
    }
 
-   default void a(fln $$0, String $$1) {
-      this.a($$0, flq.a($$1));
+   public static enum a {
+      a,
+      b,
+      c;
+
+      public boolean a() {
+         return this == c;
+      }
    }
-
-   default void a(fln $$0, wu... $$1) {
-      this.a($$0, flq.a(ImmutableList.copyOf($$1)));
-   }
-
-   void a(fln var1, flq<?> var2);
-
-   flo a();
 }

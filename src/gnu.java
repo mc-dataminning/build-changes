@@ -1,25 +1,46 @@
-public class gnu extends gny<cfg, fvn<cfg>> {
-   private final gdz a;
+public class gnu extends goa<cgz, fvj<cgz>> {
+   private static final akk[] a = new akk[]{
+      new akk("textures/entity/llama/decor/white.png"),
+      new akk("textures/entity/llama/decor/orange.png"),
+      new akk("textures/entity/llama/decor/magenta.png"),
+      new akk("textures/entity/llama/decor/light_blue.png"),
+      new akk("textures/entity/llama/decor/yellow.png"),
+      new akk("textures/entity/llama/decor/lime.png"),
+      new akk("textures/entity/llama/decor/pink.png"),
+      new akk("textures/entity/llama/decor/gray.png"),
+      new akk("textures/entity/llama/decor/light_gray.png"),
+      new akk("textures/entity/llama/decor/cyan.png"),
+      new akk("textures/entity/llama/decor/purple.png"),
+      new akk("textures/entity/llama/decor/blue.png"),
+      new akk("textures/entity/llama/decor/brown.png"),
+      new akk("textures/entity/llama/decor/green.png"),
+      new akk("textures/entity/llama/decor/red.png"),
+      new akk("textures/entity/llama/decor/black.png")
+   };
+   private static final akk b = new akk("textures/entity/llama/decor/trader_llama.png");
+   private final fvj<cgz> c;
 
-   public gnu(gli<cfg, fvn<cfg>> $$0, gdz $$1) {
+   public gnu(glk<cgz, fvj<cgz>> $$0, fxm $$1) {
       super($$0);
-      this.a = $$1;
+      this.c = new fvj<>($$1.a(fxp.ay));
    }
 
-   public void a(fam $$0, ged $$1, int $$2, cfg $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cuc $$10 = $$3.a(bsn.a);
-      if ($$3.y() && !$$3.gG()) {
-         float $$11 = -0.6F;
-         float $$12 = 1.4F;
-         if ($$3.gu()) {
-            $$11 -= 0.2F * ayg.a($$7 * 0.6F) + 0.2F;
-            $$12 -= 0.09F * ayg.a($$7 * 0.6F);
+   public void a(fao $$0, gef $$1, int $$2, cgz $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      csw $$10 = $$3.gA();
+      akk $$11;
+      if ($$10 != null) {
+         $$11 = a[$$10.a()];
+      } else {
+         if (!$$3.gw()) {
+            return;
          }
 
-         $$0.a();
-         $$0.a(0.1F, $$12, $$11);
-         this.a.a($$3, $$10, ctz.h, false, $$0, $$1, $$2);
-         $$0.b();
+         $$11 = b;
       }
+
+      this.c().a(this.c);
+      this.c.a($$3, $$4, $$5, $$7, $$8, $$9);
+      fas $$14 = $$1.getBuffer(gen.e($$11));
+      this.c.a($$0, $$14, $$2, gph.d, 1.0F, 1.0F, 1.0F, 1.0F);
    }
 }

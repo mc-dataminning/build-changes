@@ -11,11 +11,11 @@ public class avm extends avk {
    public static final String c = "recipeBook";
    private static final Logger d = LogUtils.getLogger();
 
-   public int a(Collection<cyk<?>> $$0, aqn $$1) {
+   public int a(Collection<cyl<?>> $$0, aqn $$1) {
       List<akk> $$2 = Lists.newArrayList();
       int $$3 = 0;
 
-      for (cyk<?> $$4 : $$0) {
+      for (cyl<?> $$4 : $$0) {
          akk $$5 = $$4.a();
          if (!this.a.contains($$5) && !$$4.b().ao_()) {
             this.a($$5);
@@ -33,11 +33,11 @@ public class avm extends avk {
       return $$3;
    }
 
-   public int b(Collection<cyk<?>> $$0, aqn $$1) {
+   public int b(Collection<cyl<?>> $$0, aqn $$1) {
       List<akk> $$2 = Lists.newArrayList();
       int $$3 = 0;
 
-      for (cyk<?> $$4 : $$0) {
+      for (cyl<?> $$4 : $$0) {
          akk $$5 = $$4.a();
          if (this.a.contains($$5)) {
             this.c($$5);
@@ -74,7 +74,7 @@ public class avm extends avk {
       return $$0;
    }
 
-   public void a(tx $$0, cym $$1) {
+   public void a(tx $$0, cyn $$1) {
       this.a(avl.a($$0));
       ud $$2 = $$0.c("recipes", 8);
       this.a($$2, this::a, $$1);
@@ -82,13 +82,13 @@ public class avm extends avk {
       this.a($$3, this::f, $$1);
    }
 
-   private void a(ud $$0, Consumer<cyk<?>> $$1, cym $$2) {
+   private void a(ud $$0, Consumer<cyl<?>> $$1, cyn $$2) {
       for (int $$3 = 0; $$3 < $$0.size(); $$3++) {
          String $$4 = $$0.j($$3);
 
          try {
             akk $$5 = new akk($$4);
-            Optional<cyk<?>> $$6 = $$2.a($$5);
+            Optional<cyl<?>> $$6 = $$2.a($$5);
             if ($$6.isEmpty()) {
                d.error("Tried to load unrecognized recipe: {} removed now.", $$5);
             } else {

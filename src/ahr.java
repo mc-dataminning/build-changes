@@ -1,7 +1,7 @@
-public record ahr(short b, cuc c) implements zb<agb> {
-   public static final ys<wf, ahr> a = ys.a(yq.d, ahr::b, cuc.a(cuc.h), ahr::e, ahr::new);
+public record ahr(short b, cud c) implements zb<agb> {
+   public static final ys<wf, ahr> a = ys.a(yq.d, ahr::b, cud.a(cud.h), ahr::e, ahr::new);
 
-   public ahr(int $$0, cuc $$1) {
+   public ahr(int $$0, cud $$1) {
       this((short)$$0, $$1);
    }
 
@@ -14,7 +14,7 @@ public record ahr(short b, cuc c) implements zb<agb> {
       $$0.a(this);
    }
 
-   public cuc e() {
+   public cud e() {
       return this.c;
    }
 }

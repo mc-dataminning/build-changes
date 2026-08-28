@@ -1,27 +1,27 @@
-public class gju extends gks<cfb, fuq<cfb>> {
-   private static final akk a = new akk("textures/entity/fox/fox.png");
-   private static final akk i = new akk("textures/entity/fox/fox_sleep.png");
-   private static final akk j = new akk("textures/entity/fox/snow_fox.png");
-   private static final akk k = new akk("textures/entity/fox/snow_fox_sleep.png");
+public class gju extends gjn<cmy> {
+   private final gkm a;
 
-   public gju(gjm.a $$0) {
-      super($$0, new fuq<>($$0.a(fxn.ad)), 0.4F);
-      this.a(new gnl(this, $$0.d()));
+   public gju(gjo.a $$0) {
+      super($$0);
+      this.a = $$0.b();
    }
 
-   protected void a(cfb $$0, fam $$1, float $$2, float $$3, float $$4, float $$5) {
+   public void a(cmy $$0, float $$1, float $$2, fao $$3, gef $$4, int $$5) {
+      $$3.a();
+      $$3.a(this.c.b());
+      $$3.a(a.d.rotationDegrees(180.0F));
+      if ($$0.t()) {
+         $$3.a(a.f.rotationDegrees(180.0F));
+         $$3.a(a.d.rotationDegrees(180.0F));
+         $$3.a(a.b.rotationDegrees(90.0F));
+      }
+
+      this.a.a($$0.p(), cua.h, $$5, gph.d, $$3, $$4, $$0.dR(), $$0.an());
+      $$3.b();
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      if ($$0.gu() || $$0.go()) {
-         float $$6 = -ayg.i($$4, $$0.P, $$0.dI());
-         $$1.a(a.b.rotationDegrees($$6));
-      }
    }
 
-   public akk a(cfb $$0) {
-      if ($$0.u() == cfb.v.a) {
-         return $$0.fI() ? i : a;
-      } else {
-         return $$0.fI() ? k : j;
-      }
+   public akk a(cmy $$0) {
+      return gpp.e;
    }
 }

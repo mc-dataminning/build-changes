@@ -1,59 +1,41 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.Ordering;
-import com.google.common.collect.Sets;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
+import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
+import it.unimi.dsi.fastutil.longs.LongSet;
 
-public class ghw implements ghp.a {
-   private final fft a;
-   private final Map<Long, Map<ja, Integer>> b = Maps.newTreeMap(Ordering.natural().reverse());
+public class ghw implements ghr.a {
+   private final ffw a;
+   private static final int b = 10;
 
-   ghw(fft $$0) {
+   public ghw(ffw $$0) {
       this.a = $$0;
    }
 
-   public void a(long $$0, ja $$1) {
-      Map<ja, Integer> $$2 = this.b.computeIfAbsent($$0, $$0x -> Maps.newHashMap());
-      int $$3 = $$2.getOrDefault($$1, 0);
-      $$2.put($$1, $$3 + 1);
-   }
-
    @Override
-   public void a(fam $$0, ged $$1, double $$2, double $$3, double $$4) {
-      long $$5 = this.a.r.Z();
-      int $$6 = 200;
-      double $$7 = 0.0025;
-      Set<ja> $$8 = Sets.newHashSet();
-      Map<ja, Integer> $$9 = Maps.newHashMap();
-      faq $$10 = $$1.getBuffer(gel.y());
-      Iterator<Entry<Long, Map<ja, Integer>>> $$11 = this.b.entrySet().iterator();
+   public void a(fao $$0, gef $$1, double $$2, double $$3, double $$4) {
+      dcg $$5 = this.a.r;
+      ja $$6 = ja.a($$2, $$3, $$4);
+      LongSet $$7 = new LongOpenHashSet();
 
-      while ($$11.hasNext()) {
-         Entry<Long, Map<ja, Integer>> $$12 = $$11.next();
-         Long $$13 = $$12.getKey();
-         Map<ja, Integer> $$14 = $$12.getValue();
-         long $$15 = $$5 - $$13;
-         if ($$15 > 200L) {
-            $$11.remove();
-         } else {
-            for (Entry<ja, Integer> $$16 : $$14.entrySet()) {
-               ja $$17 = $$16.getKey();
-               Integer $$18 = $$16.getValue();
-               if ($$8.add($$17)) {
-                  ewa $$19 = new ewa(ja.c).g(0.002).h(0.0025 * (double)$$15).d((double)$$17.u(), (double)$$17.v(), (double)$$17.w()).d(-$$2, -$$3, -$$4);
-                  geb.a($$0, $$10, $$19.a, $$19.b, $$19.c, $$19.d, $$19.e, $$19.f, 1.0F, 1.0F, 1.0F, 1.0F);
-                  $$9.put($$17, $$18);
-               }
-            }
+      for (ja $$8 : ja.c($$6.b(-10, -10, -10), $$6.b(10, 10, 10))) {
+         int $$9 = $$5.a(dcp.a, $$8);
+         float $$10 = (float)(15 - $$9) / 15.0F * 0.5F + 0.16F;
+         int $$11 = ayg.h($$10, 0.9F, 0.9F);
+         long $$12 = kc.e($$8.a());
+         if ($$7.add($$12)) {
+            ghr.a(
+               $$0,
+               $$1,
+               $$5.N().p().a(dcp.a, kc.a($$12)),
+               (double)kc.a(kc.b($$12), 8),
+               (double)kc.a(kc.c($$12), 8),
+               (double)kc.a(kc.d($$12), 8),
+               16711680,
+               0.3F
+            );
          }
-      }
 
-      for (Entry<ja, Integer> $$20 : $$9.entrySet()) {
-         ja $$21 = $$20.getKey();
-         Integer $$22 = $$20.getValue();
-         ghp.a($$0, $$1, String.valueOf($$22), $$21.u(), $$21.v(), $$21.w(), -1);
+         if ($$9 != 15) {
+            ghr.a($$0, $$1, String.valueOf($$9), (double)$$8.u() + 0.5, (double)$$8.v() + 0.25, (double)$$8.w() + 0.5, $$11);
+         }
       }
    }
 }

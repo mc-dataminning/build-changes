@@ -1,31 +1,52 @@
-import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Consumer;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
+import java.util.Set;
 
 public class ekt extends eiw {
    public static final MapCodec<ekt> d = a(ekt::new);
 
-   public ekt(eiw.c $$0) {
-      super($$0);
+   public ekt(eix.c $$0) {
+      super(eks::new, 21, 21, $$0);
    }
 
    @Override
-   public Optional<eiw.b> a(eiw.a $$0) {
-      dlu $$1 = dlu.a($$0.f());
-      ja $$2 = this.a($$0, $$1);
-      return $$2.v() < 60 ? Optional.empty() : Optional.of(new eiw.b($$2, (Consumer<ejo>)($$3 -> this.a($$3, $$2, $$1, $$0))));
+   public void a(ddc $$0, dda $$1, dui $$2, ayo $$3, eip $$4, dbn $$5, ejm $$6) {
+      Set<ja> $$7 = ayy.a(ke::i);
+
+      for (ejb $$8 : $$6.c()) {
+         if ($$8 instanceof eks $$9) {
+            $$7.addAll($$9.b());
+            a($$4, $$0, $$9.c());
+         }
+      }
+
+      ObjectArrayList<ja> $$10 = new ObjectArrayList($$7.stream().toList());
+      ayo $$11 = ayo.a($$0.C()).e().a($$6.b().g());
+      ac.c($$10, $$11);
+      int $$12 = Math.min($$7.size(), $$11.b(5, 8));
+      ObjectListIterator var12 = $$10.iterator();
+
+      while (var12.hasNext()) {
+         ja $$13 = (ja)var12.next();
+         if ($$12 > 0) {
+            $$12--;
+            a($$4, $$0, $$13);
+         } else if ($$4.b($$13)) {
+            $$0.a($$13, dfk.I.o(), 2);
+         }
+      }
    }
 
-   private void a(ejo $$0, ja $$1, dlu $$2, eiw.a $$3) {
-      List<eja> $$4 = Lists.newArrayList();
-      eks.a($$3.e(), $$1, $$2, $$4, $$3.f());
-      $$4.forEach($$0::a);
+   private static void a(eip $$0, ddc $$1, ja $$2) {
+      if ($$0.b($$2)) {
+         $$1.a($$2, dfk.J.o(), 2);
+         $$1.a($$2, dps.N).ifPresent($$1x -> $$1x.a(eqs.be, $$2.a()));
+      }
    }
 
    @Override
-   public ejf<?> e() {
-      return ejf.c;
+   public ejg<?> e() {
+      return ejg.b;
    }
 }

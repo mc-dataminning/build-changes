@@ -16,8 +16,8 @@ public class mk implements lx {
    private static final Logger d = LogUtils.getLogger();
    private final Path e;
    private final CompletableFuture<jl.a> f;
-   private static final MapCodec<akj<ddf>> g = akj.a(lr.aE).fieldOf("biome");
-   private static final Codec<ddo.c<akj<ddf>>> h = ddo.c.a(g).fieldOf("biomes").codec();
+   private static final MapCodec<akj<ddg>> g = akj.a(lr.aE).fieldOf("biome");
+   private static final Codec<ddp.c<akj<ddg>>> h = ddp.c.a(g).fieldOf("biomes").codec();
 
    public mk(lz $$0, CompletableFuture<jl.a> $$1) {
       this.e = $$0.a(lz.b.c).resolve("biome_parameters");
@@ -29,7 +29,7 @@ public class mk implements lx {
       return this.f.thenCompose($$1 -> {
          DynamicOps<JsonElement> $$2 = $$1.a(JsonOps.INSTANCE);
          List<CompletableFuture<?>> $$3 = new ArrayList<>();
-         ddt.b().forEach(($$3x, $$4) -> $$3.add(a(this.a($$3x.b()), $$0, $$2, h, $$4)));
+         ddu.b().forEach(($$3x, $$4) -> $$3.add(a(this.a($$3x.b()), $$0, $$2, h, $$4)));
          return CompletableFuture.allOf($$3.toArray(CompletableFuture[]::new));
       });
    }

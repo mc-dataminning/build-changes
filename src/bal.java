@@ -8,12 +8,12 @@ import com.mojang.serialization.Dynamic;
 
 public class bal extends bfd {
    public bal(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityBlockStateFix", bgg.s, "minecraft:piston");
+      super($$0, $$1, "BlockEntityBlockStateFix", bgh.s, "minecraft:piston");
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      Type<?> $$1 = this.getOutputSchema().getChoiceType(bgg.s, "minecraft:piston");
+      Type<?> $$1 = this.getOutputSchema().getChoiceType(bgh.s, "minecraft:piston");
       Type<?> $$2 = $$1.findFieldType("blockState");
       OpticFinder<?> $$3 = DSL.fieldFinder("blockState", $$2);
       Dynamic<?> $$4 = (Dynamic<?>)$$0.get(DSL.remainderFinder());

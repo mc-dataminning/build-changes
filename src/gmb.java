@@ -1,33 +1,23 @@
-public class gmb extends gkr<cos> {
-   private final gex f;
+public class gmb extends gjn<cnq> {
+   public static final akk a = new akk("textures/entity/trident.png");
+   private final fwv f;
 
-   public gmb(gjm.a $$0) {
-      super($$0, fxn.bG);
-      this.f = $$0.c();
+   public gmb(gjo.a $$0) {
+      super($$0);
+      this.f = new fwv($$0.a(fxp.bI));
    }
 
-   protected void a(cos $$0, float $$1, dsk $$2, fam $$3, ged $$4, int $$5) {
-      int $$6 = $$0.C();
-      if ($$6 > -1 && (float)$$6 - $$1 + 1.0F < 10.0F) {
-         float $$7 = 1.0F - ((float)$$6 - $$1 + 1.0F) / 10.0F;
-         $$7 = ayg.a($$7, 0.0F, 1.0F);
-         $$7 *= $$7;
-         $$7 *= $$7;
-         float $$8 = 1.0F + $$7 * 0.3F;
-         $$3.b($$8, $$8, $$8);
-      }
-
-      a(this.f, $$2, $$3, $$4, $$5, $$6 > -1 && $$6 / 5 % 2 == 0);
+   public void a(cnq $$0, float $$1, float $$2, fao $$3, gef $$4, int $$5) {
+      $$3.a();
+      $$3.a(a.d.rotationDegrees(ayg.i($$2, $$0.O, $$0.dH()) - 90.0F));
+      $$3.a(a.f.rotationDegrees(ayg.i($$2, $$0.P, $$0.dJ()) + 90.0F));
+      fas $$6 = gkm.c($$4, this.f.a(this.a($$0)), false, $$0.H());
+      this.f.a($$3, $$6, $$5, gph.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
-   public static void a(gex $$0, dsk $$1, fam $$2, ged $$3, int $$4, boolean $$5) {
-      int $$6;
-      if ($$5) {
-         $$6 = gpf.a(gpf.a(1.0F), 10);
-      } else {
-         $$6 = gpf.d;
-      }
-
-      $$0.a($$1, $$2, $$3, $$4, $$6);
+   public akk a(cnq $$0) {
+      return a;
    }
 }

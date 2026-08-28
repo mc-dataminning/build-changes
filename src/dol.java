@@ -1,43 +1,35 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dol extends dnt implements dmi {
+public class dol extends dfr {
    public static final MapCodec<dol> a = b(dol::new);
-   public static final dtb c = dta.C;
+   protected static final exa b = dfi.a(1.0, 0.0, 1.0, 15.0, 1.5, 15.0);
 
    @Override
-   protected MapCodec<? extends dol> a() {
+   public MapCodec<dol> a() {
       return a;
    }
 
-   protected dol(dsj.d $$0) {
+   protected dol(dsk.d $$0) {
       super($$0);
-      this.k(this.o().a(c, Boolean.valueOf(false)));
-   }
-
-   @Nullable
-   @Override
-   public dsk a(cxm $$0) {
-      eoh $$1 = $$0.q().b_($$0.a());
-      return super.a($$0).a(c, Boolean.valueOf($$1.b(eoi.c)));
    }
 
    @Override
-   protected dsk a(dsk $$0, jf $$1, dsk $$2, dcg $$3, ja $$4, ja $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, eoi.c, eoi.c.a($$3));
+   protected void a(dsl $$0, dcg $$1, ja $$2, bsh $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      if ($$1 instanceof aqm && $$3 instanceof coi) {
+         $$1.a(new ja($$2), true, $$3);
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected eoh b_(dsk $$0) {
-      return $$0.c(c) ? eoi.c.a(true) : super.b_($$0);
+   protected exa a(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
+      return b;
    }
 
    @Override
-   protected void a(dsl.a<dfh, dsk> $$0) {
-      $$0.a(c);
+   protected boolean b(dsl $$0, dbm $$1, ja $$2) {
+      eoj $$3 = $$1.b_($$2);
+      eoj $$4 = $$1.b_($$2.c());
+      return ($$3.a() == eok.c || $$0.b() instanceof djg) && $$4.a() == eok.a;
    }
 }

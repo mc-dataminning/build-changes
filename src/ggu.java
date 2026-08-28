@@ -1,118 +1,73 @@
-public class ggu implements ggd<drf> {
-   public ggu(gge.a $$0) {
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
+import javax.annotation.Nullable;
+
+public class ggu implements ggf<drd> {
+   private final Map<dmk.a, fwn> a;
+   private static final Map<dmk.a, akk> b = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(dmk.b.c, new akk("textures/entity/skeleton/skeleton.png"));
+      $$0.put(dmk.b.d, new akk("textures/entity/skeleton/wither_skeleton.png"));
+      $$0.put(dmk.b.f, new akk("textures/entity/zombie/zombie.png"));
+      $$0.put(dmk.b.g, new akk("textures/entity/creeper/creeper.png"));
+      $$0.put(dmk.b.i, new akk("textures/entity/enderdragon/dragon.png"));
+      $$0.put(dmk.b.h, new akk("textures/entity/piglin/piglin.png"));
+      $$0.put(dmk.b.e, gqi.a());
+   });
+
+   public static Map<dmk.a, fwn> a(fxm $$0) {
+      Builder<dmk.a, fwn> $$1 = ImmutableMap.builder();
+      $$1.put(dmk.b.c, new fwm($$0.a(fxp.br)));
+      $$1.put(dmk.b.d, new fwm($$0.a(fxp.ca)));
+      $$1.put(dmk.b.e, new fwm($$0.a(fxp.aT)));
+      $$1.put(dmk.b.f, new fwm($$0.a(fxp.cg)));
+      $$1.put(dmk.b.g, new fwm($$0.a(fxp.J)));
+      $$1.put(dmk.b.i, new fxk($$0.a(fxp.Q)));
+      $$1.put(dmk.b.h, new fvt($$0.a(fxp.aN)));
+      return $$1.build();
    }
 
-   public void a(drf $$0, float $$1, fam $$2, ged $$3, int $$4, int $$5) {
-      if (fft.Q().s.gw() || fft.Q().s.N_()) {
-         ja $$6 = $$0.f();
-         ke $$7 = $$0.j();
-         if ($$7.u() >= 1 && $$7.v() >= 1 && $$7.w() >= 1) {
-            if ($$0.v() == dtu.a || $$0.v() == dtu.b) {
-               double $$8 = (double)$$6.u();
-               double $$9 = (double)$$6.w();
-               double $$10 = (double)$$6.v();
-               double $$11 = $$10 + (double)$$7.v();
-               double $$12;
-               double $$13;
-               switch ($$0.k()) {
-                  case b:
-                     $$12 = (double)$$7.u();
-                     $$13 = (double)(-$$7.w());
-                     break;
-                  case c:
-                     $$12 = (double)(-$$7.u());
-                     $$13 = (double)$$7.w();
-                     break;
-                  default:
-                     $$12 = (double)$$7.u();
-                     $$13 = (double)$$7.w();
-               }
+   public ggu(ggg.a $$0) {
+      this.a = a($$0.e());
+   }
 
-               double $$30;
-               double $$31;
-               double $$32;
-               double $$33;
-               switch ($$0.l()) {
-                  case b:
-                     $$30 = $$13 < 0.0 ? $$8 : $$8 + 1.0;
-                     $$31 = $$12 < 0.0 ? $$9 + 1.0 : $$9;
-                     $$32 = $$30 - $$13;
-                     $$33 = $$31 + $$12;
-                     break;
-                  case c:
-                     $$30 = $$12 < 0.0 ? $$8 : $$8 + 1.0;
-                     $$31 = $$13 < 0.0 ? $$9 : $$9 + 1.0;
-                     $$32 = $$30 - $$12;
-                     $$33 = $$31 - $$13;
-                     break;
-                  case d:
-                     $$30 = $$13 < 0.0 ? $$8 + 1.0 : $$8;
-                     $$31 = $$12 < 0.0 ? $$9 : $$9 + 1.0;
-                     $$32 = $$30 + $$13;
-                     $$33 = $$31 - $$12;
-                     break;
-                  default:
-                     $$30 = $$12 < 0.0 ? $$8 + 1.0 : $$8;
-                     $$31 = $$13 < 0.0 ? $$9 + 1.0 : $$9;
-                     $$32 = $$30 + $$12;
-                     $$33 = $$31 + $$13;
-               }
+   public void a(drd $$0, float $$1, fao $$2, gef $$3, int $$4, int $$5) {
+      float $$6 = $$0.a($$1);
+      dsl $$7 = $$0.n();
+      boolean $$8 = $$7.b() instanceof doj;
+      jf $$9 = $$8 ? $$7.c(doj.d) : null;
+      int $$10 = $$8 ? dtr.a($$9.g()) : $$7.c(dmk.e);
+      float $$11 = dtr.b($$10);
+      dmk.a $$12 = ((dee)$$7.b()).b();
+      fwn $$13 = this.a.get($$12);
+      gen $$14 = a($$12, $$0.c());
+      a($$9, $$11, $$6, $$2, $$3, $$4, $$13, $$14);
+   }
 
-               float $$34 = 1.0F;
-               float $$35 = 0.9F;
-               float $$36 = 0.5F;
-               faq $$37 = $$3.getBuffer(gel.y());
-               if ($$0.v() == dtu.a || $$0.F()) {
-                  geb.a($$2, $$37, $$30, $$10, $$31, $$32, $$11, $$33, 0.9F, 0.9F, 0.9F, 1.0F, 0.5F, 0.5F, 0.5F);
-               }
-
-               if ($$0.v() == dtu.a && $$0.E()) {
-                  this.a($$0, $$37, $$6, $$2);
-               }
-            }
-         }
+   public static void a(@Nullable jf $$0, float $$1, float $$2, fao $$3, gef $$4, int $$5, fwn $$6, gen $$7) {
+      $$3.a();
+      if ($$0 == null) {
+         $$3.a(0.5F, 0.0F, 0.5F);
+      } else {
+         float $$8 = 0.25F;
+         $$3.a(0.5F - (float)$$0.j() * 0.25F, 0.25F, 0.5F - (float)$$0.l() * 0.25F);
       }
+
+      $$3.b(-1.0F, -1.0F, 1.0F);
+      fas $$9 = $$4.getBuffer($$7);
+      $$6.a($$2, $$1, 0.0F);
+      $$6.a($$3, $$9, $$5, gph.d, 1.0F, 1.0F, 1.0F, 1.0F);
+      $$3.b();
    }
 
-   private void a(drf $$0, faq $$1, ja $$2, fam $$3) {
-      dbl $$4 = $$0.i();
-      ja $$5 = $$0.az_();
-      ja $$6 = $$5.a((ke)$$2);
-
-      for (ja $$7 : ja.c($$6, $$6.a($$0.j()).b(-1, -1, -1))) {
-         dsk $$8 = $$4.a_($$7);
-         boolean $$9 = $$8.i();
-         boolean $$10 = $$8.a(dfj.kN);
-         boolean $$11 = $$8.a(dfj.hW);
-         boolean $$12 = $$8.a(dfj.hX);
-         boolean $$13 = $$10 || $$11 || $$12;
-         if ($$9 || $$13) {
-            float $$14 = $$9 ? 0.05F : 0.0F;
-            double $$15 = (double)((float)($$7.u() - $$5.u()) + 0.45F - $$14);
-            double $$16 = (double)((float)($$7.v() - $$5.v()) + 0.45F - $$14);
-            double $$17 = (double)((float)($$7.w() - $$5.w()) + 0.45F - $$14);
-            double $$18 = (double)((float)($$7.u() - $$5.u()) + 0.55F + $$14);
-            double $$19 = (double)((float)($$7.v() - $$5.v()) + 0.55F + $$14);
-            double $$20 = (double)((float)($$7.w() - $$5.w()) + 0.55F + $$14);
-            if ($$9) {
-               geb.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 0.5F, 0.5F, 1.0F, 1.0F, 0.5F, 0.5F, 1.0F);
-            } else if ($$10) {
-               geb.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 0.75F, 0.75F, 1.0F, 1.0F, 0.75F, 0.75F);
-            } else if ($$11) {
-               geb.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F);
-            } else if ($$12) {
-               geb.a($$3, $$1, $$15, $$16, $$17, $$18, $$19, $$20, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F);
-            }
-         }
+   public static gen a(dmk.a $$0, @Nullable cxe $$1) {
+      akk $$2 = b.get($$0);
+      if ($$0 == dmk.b.e && $$1 != null) {
+         gqr $$3 = ffw.Q().am();
+         return gen.i($$3.b($$1.f()).a());
+      } else {
+         return gen.f($$2);
       }
-   }
-
-   public boolean a(drf $$0) {
-      return true;
-   }
-
-   @Override
-   public int aT_() {
-      return 96;
    }
 }

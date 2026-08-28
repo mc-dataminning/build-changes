@@ -1,98 +1,103 @@
-import com.google.common.annotations.VisibleForTesting;
+import javax.annotation.Nullable;
 
-public class dqw extends dpp implements dxi.b<dqw.a> {
-   private final dqw.a a;
+public abstract class dqw extends dpk implements bqp {
+   @Nullable
+   protected akj<erb> l;
+   protected long m = 0L;
 
-   public dqw(ja $$0, dsk $$1) {
-      super(dpr.K, $$0, $$1);
-      this.a = new dqw.a($$1, new dxc($$0));
+   protected dqw(dps<?> $$0, ja $$1, dsl $$2) {
+      super($$0, $$1, $$2);
    }
 
-   public static void a(dcf $$0, ja $$1, dsk $$2, dqw $$3) {
-      $$3.a.d().a($$0, $$1, $$0.E_(), true);
+   @Nullable
+   @Override
+   public akj<erb> ax_() {
+      return this.l;
    }
 
    @Override
-   protected void a(tx $$0, jl.a $$1) {
+   public void a(@Nullable akj<erb> $$0) {
+      this.l = $$0;
+   }
+
+   @Override
+   public long ay_() {
+      return this.m;
+   }
+
+   @Override
+   public void a(long $$0) {
+      this.m = $$0;
+   }
+
+   @Override
+   public boolean c() {
+      this.e_(null);
+      return super.c();
+   }
+
+   @Override
+   public cud a(int $$0) {
+      this.e_(null);
+      return super.a($$0);
+   }
+
+   @Override
+   public cud a(int $$0, int $$1) {
+      this.e_(null);
+      return super.a($$0, $$1);
+   }
+
+   @Override
+   public cud b(int $$0) {
+      this.e_(null);
+      return super.b($$0);
+   }
+
+   @Override
+   public void a(int $$0, cud $$1) {
+      this.e_(null);
       super.a($$0, $$1);
-      this.a.b.a($$0);
    }
 
    @Override
-   protected void b(tx $$0, jl.a $$1) {
-      this.a.b.b($$0);
-      super.b($$0, $$1);
+   public boolean d(cml $$0) {
+      return super.d($$0) && (this.l == null || !$$0.N_());
    }
 
-   public dqw.a b() {
-      return this.a;
+   @Nullable
+   @Override
+   public cpi createMenu(int $$0, cmk $$1, cml $$2) {
+      if (this.d($$2)) {
+         this.e_($$1.l);
+         return this.a($$0, $$1);
+      } else {
+         return null;
+      }
    }
 
-   public static class a implements dxi {
-      public static final int a = 8;
-      final dmc b;
-      private final dsk c;
-      private final dxk d;
-
-      public a(dsk $$0, dxk $$1) {
-         this.c = $$0;
-         this.d = $$1;
-         this.b = dmc.a();
+   @Override
+   protected void a(dpq.b $$0) {
+      super.a($$0);
+      cxf $$1 = $$0.a(kn.ae);
+      if ($$1 != null) {
+         this.l = $$1.a();
+         this.m = $$1.b();
       }
+   }
 
-      @Override
-      public dxk a() {
-         return this.d;
+   @Override
+   protected void a(kj.a $$0) {
+      super.a($$0);
+      if (this.l != null) {
+         $$0.a(kn.ae, new cxf(this.l, this.m));
       }
+   }
 
-      @Override
-      public int b() {
-         return 8;
-      }
-
-      @Override
-      public dxi.a c() {
-         return dxi.a.b;
-      }
-
-      @Override
-      public boolean a(aqm $$0, jj<dxg> $$1, dxg.a $$2, ewf $$3) {
-         if ($$1.a(dxg.p) && $$2.a() instanceof btb $$4) {
-            if (!$$4.eE()) {
-               bqz $$5 = $$4.ez();
-               int $$6 = $$4.a($$0, x.a($$5, bqz::d));
-               if ($$4.ef() && $$6 > 0) {
-                  this.b.a(ja.a($$3.a(jf.b, 0.5)), $$6);
-                  this.a($$0, $$4);
-               }
-
-               $$4.eD();
-               this.d.a($$0).ifPresent($$1x -> this.a($$0, ja.a($$1x), this.c, $$0.E_()));
-            }
-
-            return true;
-         } else {
-            return false;
-         }
-      }
-
-      @VisibleForTesting
-      public dmc d() {
-         return this.b;
-      }
-
-      private void a(aqm $$0, ja $$1, dsk $$2, ayo $$3) {
-         $$0.a($$1, $$2.a(dlz.b, Boolean.valueOf(true)), 3);
-         $$0.a($$1, $$2.b(), 8);
-         $$0.a(lj.I, (double)$$1.u() + 0.5, (double)$$1.v() + 1.15, (double)$$1.w() + 0.5, 2, 0.2, 0.0, 0.2, 0.0);
-         $$0.a(null, $$1, avh.wa, avi.e, 2.0F, 0.6F + $$3.i() * 0.4F);
-      }
-
-      private void a(dcf $$0, btb $$1) {
-         if ($$1.ej() instanceof aqn $$3) {
-            bqz $$4 = $$1.ez() == null ? $$0.aj().a((cmk)$$3) : $$1.ez();
-            am.Z.a($$3, $$1, $$4);
-         }
-      }
+   @Override
+   public void a(tx $$0) {
+      super.a($$0);
+      $$0.r("LootTable");
+      $$0.r("LootTableSeed");
    }
 }

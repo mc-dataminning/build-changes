@@ -1,64 +1,42 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntIterator;
-import java.util.List;
-import java.util.stream.IntStream;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public class emc extends emt {
+public class emc extends emv {
    public static final MapCodec<emc> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(emv.a.fieldOf("delegate").forGetter($$0x -> $$0x.b), bpl.e.fieldOf("limit").forGetter($$0x -> $$0x.c)).apply($$0, emc::new)
+      $$0 -> $$0.group(
+               jy.a(lr.f).optionalFieldOf("rottable_blocks").forGetter($$0x -> $$0x.b),
+               Codec.floatRange(0.0F, 1.0F).fieldOf("integrity").forGetter($$0x -> $$0x.c)
+            )
+            .apply($$0, emc::new)
    );
-   private final emt b;
-   private final bpl c;
+   private final Optional<jn<dfi>> b;
+   private final float c;
 
-   public emc(emt $$0, bpl $$1) {
-      this.b = $$0;
+   public emc(jn<dfi> $$0, float $$1) {
+      this(Optional.of($$0), $$1);
+   }
+
+   public emc(float $$0) {
+      this(Optional.empty(), $$0);
+   }
+
+   private emc(Optional<jn<dfi>> $$0, float $$1) {
       this.c = $$1;
+      this.b = $$0;
+   }
+
+   @Nullable
+   @Override
+   public emy.c a(dcj $$0, ja $$1, ja $$2, emy.c $$3, emy.c $$4, emu $$5) {
+      ayo $$6 = $$5.b($$4.a());
+      return (!this.b.isPresent() || $$3.b().a(this.b.get())) && !($$6.i() <= this.c) ? null : $$4;
    }
 
    @Override
-   protected emv<?> a() {
-      return emv.o;
-   }
-
-   @Override
-   public final List<emw.c> a(dcu $$0, ja $$1, ja $$2, List<emw.c> $$3, List<emw.c> $$4, ems $$5) {
-      if (this.c.b() != 0 && !$$4.isEmpty()) {
-         if ($$3.size() != $$4.size()) {
-            ac.a(
-               "Original block info list not in sync with processed list, skipping processing. Original size: "
-                  + $$3.size()
-                  + ", Processed size: "
-                  + $$4.size()
-            );
-            return $$4;
-         } else {
-            ayo $$6 = ayo.a($$0.E().C()).e().a($$1);
-            int $$7 = Math.min(this.c.a($$6), $$4.size());
-            if ($$7 < 1) {
-               return $$4;
-            } else {
-               IntArrayList $$8 = ac.a(IntStream.range(0, $$4.size()), $$6);
-               IntIterator $$9 = $$8.intIterator();
-               int $$10 = 0;
-
-               while ($$9.hasNext() && $$10 < $$7) {
-                  int $$11 = $$9.nextInt();
-                  emw.c $$12 = $$3.get($$11);
-                  emw.c $$13 = $$4.get($$11);
-                  emw.c $$14 = this.b.a($$0, $$1, $$2, $$12, $$13, $$5);
-                  if ($$14 != null && !$$13.equals($$14)) {
-                     $$10++;
-                     $$4.set($$11, $$14);
-                  }
-               }
-
-               return $$4;
-            }
-         }
-      } else {
-         return $$4;
-      }
+   protected emx<?> a() {
+      return emx.f;
    }
 }

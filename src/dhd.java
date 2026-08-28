@@ -1,148 +1,177 @@
-import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.serialization.MapCodec;
-import it.unimi.dsi.fastutil.objects.Object2IntMap;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
-import java.util.Map;
 
-public abstract class dhd extends dfh implements dmi {
-   public static final dtb a = dkv.b;
-   public static final dtb b = dkv.c;
-   public static final dtb c = dkv.d;
-   public static final dtb d = dkv.e;
-   public static final dtb e = dta.C;
-   protected static final Map<jf, dtb> f = dkv.h.entrySet().stream().filter($$0 -> $$0.getKey().o().d()).collect(ac.a());
-   protected final ewy[] g;
-   protected final ewy[] h;
-   private final Object2IntMap<dsk> i = new Object2IntOpenHashMap();
+public class dhd extends dfr implements dfl {
+   public static final MapCodec<dhd> d = b(dhd::new);
+   public static final int e = 7;
+   public static final dtl f = dtb.av;
+   private static final exa[] a = new exa[]{
+      dfi.a(0.0, 0.0, 0.0, 16.0, 2.0, 16.0),
+      dfi.a(0.0, 0.0, 0.0, 16.0, 4.0, 16.0),
+      dfi.a(0.0, 0.0, 0.0, 16.0, 6.0, 16.0),
+      dfi.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0),
+      dfi.a(0.0, 0.0, 0.0, 16.0, 10.0, 16.0),
+      dfi.a(0.0, 0.0, 0.0, 16.0, 12.0, 16.0),
+      dfi.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0),
+      dfi.a(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
+   };
 
-   protected dhd(float $$0, float $$1, float $$2, float $$3, float $$4, dsj.d $$5) {
-      super($$5);
-      this.g = this.a($$0, $$1, $$4, 0.0F, $$4);
-      this.h = this.a($$0, $$1, $$2, 0.0F, $$3);
-      UnmodifiableIterator var7 = this.E.a().iterator();
+   @Override
+   public MapCodec<? extends dhd> a() {
+      return d;
+   }
 
-      while (var7.hasNext()) {
-         dsk $$6 = (dsk)var7.next();
-         this.g($$6);
+   protected dhd(dsk.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(this.b(), Integer.valueOf(0)));
+   }
+
+   @Override
+   protected exa a(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
+      return a[this.g($$0)];
+   }
+
+   @Override
+   protected boolean b(dsl $$0, dbm $$1, ja $$2) {
+      return $$0.a(dfk.cC);
+   }
+
+   protected dtl b() {
+      return f;
+   }
+
+   public int c() {
+      return 7;
+   }
+
+   public int g(dsl $$0) {
+      return $$0.c(this.b());
+   }
+
+   public dsl b(int $$0) {
+      return this.o().a(this.b(), Integer.valueOf($$0));
+   }
+
+   public final boolean h(dsl $$0) {
+      return this.g($$0) >= this.c();
+   }
+
+   @Override
+   protected boolean d_(dsl $$0) {
+      return !this.h($$0);
+   }
+
+   @Override
+   protected void b(dsl $$0, aqm $$1, ja $$2, ayo $$3) {
+      if ($$1.b($$2, 0) >= 9) {
+         int $$4 = this.g($$0);
+         if ($$4 < this.c()) {
+            float $$5 = a(this, $$1, $$2);
+            if ($$3.a((int)(25.0F / $$5) + 1) == 0) {
+               $$1.a($$2, this.b($$4 + 1), 2);
+            }
+         }
       }
    }
 
-   @Override
-   protected abstract MapCodec<? extends dhd> a();
-
-   protected ewy[] a(float $$0, float $$1, float $$2, float $$3, float $$4) {
-      float $$5 = 8.0F - $$0;
-      float $$6 = 8.0F + $$0;
-      float $$7 = 8.0F - $$1;
-      float $$8 = 8.0F + $$1;
-      ewy $$9 = dfh.a((double)$$5, 0.0, (double)$$5, (double)$$6, (double)$$2, (double)$$6);
-      ewy $$10 = dfh.a((double)$$7, (double)$$3, 0.0, (double)$$8, (double)$$4, (double)$$8);
-      ewy $$11 = dfh.a((double)$$7, (double)$$3, (double)$$7, (double)$$8, (double)$$4, 16.0);
-      ewy $$12 = dfh.a(0.0, (double)$$3, (double)$$7, (double)$$8, (double)$$4, (double)$$8);
-      ewy $$13 = dfh.a((double)$$7, (double)$$3, (double)$$7, 16.0, (double)$$4, (double)$$8);
-      ewy $$14 = ewv.a($$10, $$13);
-      ewy $$15 = ewv.a($$11, $$12);
-      ewy[] $$16 = new ewy[]{
-         ewv.a(),
-         $$11,
-         $$12,
-         $$15,
-         $$10,
-         ewv.a($$11, $$10),
-         ewv.a($$12, $$10),
-         ewv.a($$15, $$10),
-         $$13,
-         ewv.a($$11, $$13),
-         ewv.a($$12, $$13),
-         ewv.a($$15, $$13),
-         $$14,
-         ewv.a($$11, $$14),
-         ewv.a($$12, $$14),
-         ewv.a($$15, $$14)
-      };
-
-      for (int $$17 = 0; $$17 < 16; $$17++) {
-         $$16[$$17] = ewv.a($$9, $$16[$$17]);
+   public void a(dcg $$0, ja $$1, dsl $$2) {
+      int $$3 = this.g($$2) + this.a($$0);
+      int $$4 = this.c();
+      if ($$3 > $$4) {
+         $$3 = $$4;
       }
 
-      return $$16;
+      $$0.a($$1, this.b($$3), 2);
    }
 
-   @Override
-   protected boolean a_(dsk $$0, dbl $$1, ja $$2) {
-      return !$$0.c(e);
+   protected int a(dcg $$0) {
+      return ayg.a($$0.z, 2, 5);
    }
 
-   @Override
-   protected ewy a(dsk $$0, dbl $$1, ja $$2, ewk $$3) {
-      return this.h[this.g($$0)];
-   }
+   protected static float a(dfi $$0, dbm $$1, ja $$2) {
+      float $$3 = 1.0F;
+      ja $$4 = $$2.d();
 
-   @Override
-   protected ewy b(dsk $$0, dbl $$1, ja $$2, ewk $$3) {
-      return this.g[this.g($$0)];
-   }
+      for (int $$5 = -1; $$5 <= 1; $$5++) {
+         for (int $$6 = -1; $$6 <= 1; $$6++) {
+            float $$7 = 0.0F;
+            dsl $$8 = $$1.a_($$4.b($$5, 0, $$6));
+            if ($$8.a(dfk.cC)) {
+               $$7 = 1.0F;
+               if ($$8.c(dif.b) > 0) {
+                  $$7 = 3.0F;
+               }
+            }
 
-   private static int a(jf $$0) {
-      return 1 << $$0.e();
-   }
+            if ($$5 != 0 || $$6 != 0) {
+               $$7 /= 4.0F;
+            }
 
-   protected int g(dsk $$0) {
-      return this.i.computeIntIfAbsent($$0, $$0x -> {
-         int $$1 = 0;
-         if ($$0x.c(a)) {
-            $$1 |= a(jf.c);
+            $$3 += $$7;
          }
-
-         if ($$0x.c(b)) {
-            $$1 |= a(jf.f);
-         }
-
-         if ($$0x.c(c)) {
-            $$1 |= a(jf.d);
-         }
-
-         if ($$0x.c(d)) {
-            $$1 |= a(jf.e);
-         }
-
-         return $$1;
-      });
-   }
-
-   @Override
-   protected eoh b_(dsk $$0) {
-      return $$0.c(e) ? eoi.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a(dsk $$0, eow $$1) {
-      return false;
-   }
-
-   @Override
-   protected dsk a(dsk $$0, dlu $$1) {
-      switch ($$1) {
-         case c:
-            return $$0.a(a, $$0.c(c)).a(b, $$0.c(d)).a(c, $$0.c(a)).a(d, $$0.c(b));
-         case d:
-            return $$0.a(a, $$0.c(b)).a(b, $$0.c(c)).a(c, $$0.c(d)).a(d, $$0.c(a));
-         case b:
-            return $$0.a(a, $$0.c(d)).a(b, $$0.c(a)).a(c, $$0.c(b)).a(d, $$0.c(c));
-         default:
-            return $$0;
       }
+
+      ja $$9 = $$2.e();
+      ja $$10 = $$2.f();
+      ja $$11 = $$2.g();
+      ja $$12 = $$2.h();
+      boolean $$13 = $$1.a_($$11).a($$0) || $$1.a_($$12).a($$0);
+      boolean $$14 = $$1.a_($$9).a($$0) || $$1.a_($$10).a($$0);
+      if ($$13 && $$14) {
+         $$3 /= 2.0F;
+      } else {
+         boolean $$15 = $$1.a_($$11.e()).a($$0) || $$1.a_($$12.e()).a($$0) || $$1.a_($$12.f()).a($$0) || $$1.a_($$11.f()).a($$0);
+         if ($$15) {
+            $$3 /= 2.0F;
+         }
+      }
+
+      return $$3;
    }
 
    @Override
-   protected dsk a(dsk $$0, dke $$1) {
-      switch ($$1) {
-         case b:
-            return $$0.a(a, $$0.c(c)).a(c, $$0.c(a));
-         case c:
-            return $$0.a(b, $$0.c(d)).a(d, $$0.c(b));
-         default:
-            return super.a($$0, $$1);
+   protected boolean a(dsl $$0, dcj $$1, ja $$2) {
+      return a($$1, $$2) && super.a($$0, $$1, $$2);
+   }
+
+   protected static boolean a(dcj $$0, ja $$1) {
+      return $$0.b($$1, 0) >= 8;
+   }
+
+   @Override
+   protected void a(dsl $$0, dcg $$1, ja $$2, bsh $$3) {
+      if ($$3 instanceof cjw && $$1.ab().b(dcc.c)) {
+         $$1.a($$2, true, $$3);
       }
+
+      super.a($$0, $$1, $$2, $$3);
+   }
+
+   protected dcf d() {
+      return cug.pv;
+   }
+
+   @Override
+   public cud a(dcj $$0, ja $$1, dsl $$2) {
+      return new cud(this.d());
+   }
+
+   @Override
+   public boolean b(dcj $$0, ja $$1, dsl $$2) {
+      return !this.h($$2);
+   }
+
+   @Override
+   public boolean a(dcg $$0, ayo $$1, ja $$2, dsl $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqm $$0, ayo $$1, ja $$2, dsl $$3) {
+      this.a((dcg)$$0, $$2, $$3);
+   }
+
+   @Override
+   protected void a(dsm.a<dfi, dsl> $$0) {
+      $$0.a(f);
    }
 }

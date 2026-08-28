@@ -1,65 +1,50 @@
-public class gvf implements gvl {
-   private static final int a = 1200;
-   private static final wu b = wu.c("tutorial.craft_planks.title");
-   private static final wu c = wu.c("tutorial.craft_planks.description");
-   private final gvk d;
-   private fkd e;
-   private int f;
+import javax.annotation.Nullable;
 
-   public gvf(gvk $$0) {
-      this.d = $$0;
+public class gvf {
+   private final gvm a;
+   private final fga b;
+   @Nullable
+   private fkf c;
+
+   public gvf(gvm $$0, fga $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   @Override
-   public void a() {
-      this.f++;
-      if (!this.d.f()) {
-         this.d.a(gvm.f);
-      } else {
-         if (this.f == 1) {
-            gdf $$0 = this.d.e().s;
-            if ($$0 != null) {
-               if ($$0.fZ().a(awf.b)) {
-                  this.d.a(gvm.f);
-                  return;
-               }
+   private void a() {
+      if (this.c != null) {
+         this.a.a(this.c);
+      }
 
-               if (a($$0, awf.b)) {
-                  this.d.a(gvm.f);
-                  return;
-               }
+      wu $$0 = wu.c("tutorial.bundleInsert.title");
+      wu $$1 = wu.c("tutorial.bundleInsert.description");
+      this.c = new fkf(fkf.a.g, $$0, $$1, true);
+      this.a.a(this.c, 160);
+   }
+
+   private void b() {
+      if (this.c != null) {
+         this.a.a(this.c);
+         this.c = null;
+      }
+
+      if (!this.b.t) {
+         this.b.t = true;
+         this.b.av();
+      }
+   }
+
+   public void a(cud $$0, cud $$1, cpr $$2) {
+      if (!this.b.t) {
+         if (!$$0.e() && $$1.a(cug.qU)) {
+            if ($$2 == cpr.a) {
+               this.a();
+            } else if ($$2 == cpr.b) {
+               this.b();
             }
-         }
-
-         if (this.f >= 1200 && this.e == null) {
-            this.e = new fkd(fkd.a.e, b, c, false);
-            this.d.e().ax().a(this.e);
+         } else if ($$0.a(cug.qU) && !$$1.e() && $$2 == cpr.b) {
+            this.b();
          }
       }
-   }
-
-   @Override
-   public void b() {
-      if (this.e != null) {
-         this.e.c();
-         this.e = null;
-      }
-   }
-
-   @Override
-   public void a(cuc $$0) {
-      if ($$0.a(awf.b)) {
-         this.d.a(gvm.f);
-      }
-   }
-
-   public static boolean a(gdf $$0, awm<ctx> $$1) {
-      for (jj<ctx> $$2 : lq.g.c($$1)) {
-         if ($$0.j().a(avr.b.b($$2.a())) > 0) {
-            return true;
-         }
-      }
-
-      return false;
    }
 }

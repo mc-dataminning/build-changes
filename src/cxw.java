@@ -1,17 +1,15 @@
-public enum cxw implements azc {
-   a("food"),
-   b("blocks"),
-   c("misc");
-
-   public static final azc.a<cxw> d = azc.a(cxw::values);
-   private final String e;
-
-   private cxw(final String $$0) {
-      this.e = $$0;
+public class cxw extends cxr {
+   public cxw(String $$0, cxx $$1, cyg $$2, cud $$3, float $$4, int $$5) {
+      super(cyp.e, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   public String c() {
-      return this.e;
+   public cud g() {
+      return new cud(dfk.og);
+   }
+
+   @Override
+   public cyo<?> ap_() {
+      return cyo.s;
    }
 }

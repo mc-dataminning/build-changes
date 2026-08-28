@@ -89,7 +89,7 @@ public class adt implements zb<abn> {
          yq.t.encode($$0, $$2.getProperties());
       }),
       b(($$0, $$1) -> $$0.g = $$1.c(xl.a::a), ($$0, $$1) -> $$0.a($$1.g, xl.a::a)),
-      c(($$0, $$1) -> $$0.e = dcc.a($$1.l()), ($$0, $$1) -> $$0.c($$1.e().a())),
+      c(($$0, $$1) -> $$0.e = dcd.a($$1.l()), ($$0, $$1) -> $$0.c($$1.e().a())),
       d(($$0, $$1) -> $$0.c = $$1.readBoolean(), ($$0, $$1) -> $$0.a($$1.c())),
       e(($$0, $$1) -> $$0.d = $$1.l(), ($$0, $$1) -> $$0.c($$1.d())),
       f(($$0, $$1) -> $$0.f = vr.a($$1, ww.d), ($$0, $$1) -> vr.a($$0, $$1.f(), ww.d));
@@ -111,10 +111,10 @@ public class adt implements zb<abn> {
       }
    }
 
-   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, dcc e, @Nullable wu f, @Nullable xl.a g) {
+   public static record b(UUID a, @Nullable GameProfile b, boolean c, int d, dcd e, @Nullable wu f, @Nullable xl.a g) {
 
       b(aqn $$0) {
-         this($$0.cA(), $$0.fY(), true, $$0.c.k(), $$0.e.b(), $$0.N(), x.a($$0.ab(), xl::a));
+         this($$0.cB(), $$0.fZ(), true, $$0.c.k(), $$0.e.b(), $$0.O(), x.a($$0.ac(), xl::a));
       }
    }
 
@@ -124,14 +124,14 @@ public class adt implements zb<abn> {
       GameProfile b;
       boolean c;
       int d;
-      dcc e;
+      dcd e;
       @Nullable
       wu f;
       @Nullable
       xl.a g;
 
       c(UUID $$0) {
-         this.e = dcc.e;
+         this.e = dcd.e;
          this.a = $$0;
       }
 

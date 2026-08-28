@@ -1,37 +1,9 @@
-import javax.annotation.Nullable;
+public class gqo extends gqt {
+   public gqo(gpr $$0) {
+      super($$0, new akk("textures/atlas/mob_effects.png"), new akk("mob_effects"));
+   }
 
-public record gqo(akk a, @Nullable String b, @Nullable akk c, @Nullable akk d, gqo.a e, boolean f) {
-   public static enum a {
-      a("slim"),
-      b("default");
-
-      private final String c;
-
-      private a(final String $$0) {
-         this.c = $$0;
-      }
-
-      public static gqo.a a(@Nullable String $$0) {
-         if ($$0 == null) {
-            return b;
-         } else {
-            byte var2 = -1;
-            switch ($$0.hashCode()) {
-               case 3533117:
-                  if ($$0.equals("slim")) {
-                     var2 = 0;
-                  }
-               default:
-                  return switch (var2) {
-                     case 0 -> a;
-                     default -> b;
-                  };
-            }
-         }
-      }
-
-      public String a() {
-         return this.c;
-      }
+   public gpq a(jj<brn> $$0) {
+      return this.a($$0.e().map(akj::a).orElseGet(gpg::b));
    }
 }

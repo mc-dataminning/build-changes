@@ -1,30 +1,40 @@
-public class cbj extends bzz {
-   private final btk a;
+import java.util.EnumSet;
 
-   public cbj(btk $$0) {
+public class cbj extends caa {
+   private final clt a;
+
+   public cbj(clt $$0) {
       this.a = $$0;
+      this.a(EnumSet.of(caa.a.c, caa.a.a));
    }
 
    @Override
    public boolean a() {
-      return this.a.aF() && !this.a.dQ().b_(this.a.dq()).a(awc.a);
+      if (!this.a.bF()) {
+         return false;
+      } else if (this.a.bg()) {
+         return false;
+      } else if (!this.a.aG()) {
+         return false;
+      } else if (this.a.U) {
+         return false;
+      } else {
+         cml $$0 = this.a.gn();
+         if ($$0 == null) {
+            return false;
+         } else {
+            return this.a.g($$0) > 16.0 ? false : $$0.ce != null;
+         }
+      }
    }
 
    @Override
    public void c() {
-      ja $$0 = null;
+      this.a.J().n();
+   }
 
-      for (ja $$2 : ja.b(
-         ayg.a(this.a.dv() - 2.0), ayg.a(this.a.dx() - 2.0), ayg.a(this.a.dB() - 2.0), ayg.a(this.a.dv() + 2.0), this.a.dw(), ayg.a(this.a.dB() + 2.0)
-      )) {
-         if (this.a.dQ().b_($$2).a(awc.a)) {
-            $$0 = $$2;
-            break;
-         }
-      }
-
-      if ($$0 != null) {
-         this.a.H().a((double)$$0.u(), (double)$$0.v(), (double)$$0.w(), 1.0);
-      }
+   @Override
+   public void d() {
+      this.a.f(null);
    }
 }

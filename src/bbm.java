@@ -19,10 +19,10 @@ public class bbm extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgg.c);
+      Type<?> $$0 = this.getInputSchema().getType(bgh.c);
       OpticFinder<?> $$1 = $$0.findField("Level");
       OpticFinder<?> $$2 = $$1.type().findField("Structures");
-      Type<?> $$3 = this.getOutputSchema().getType(bgg.c);
+      Type<?> $$3 = this.getOutputSchema().getType(bgh.c);
       Type<?> $$4 = $$3.findFieldType("structures");
       return this.fixTypeEverywhereTyped("Chunk Renames; purge Level-tag", $$0, $$3, $$3x -> {
          Typed<?> $$4x = $$3x.getTyped($$1);

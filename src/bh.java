@@ -8,9 +8,9 @@ public class bh extends ds<bh.a> {
       return bh.a.a;
    }
 
-   public void a(aqn $$0, ckj $$1, clx $$2) {
-      equ $$3 = bu.b($$0, $$1);
-      equ $$4 = bu.b($$0, $$2);
+   public void a(aqn $$0, ckk $$1, cly $$2) {
+      eqw $$3 = bu.b($$0, $$1);
+      eqw $$4 = bu.b($$0, $$2);
       this.a($$0, $$2x -> $$2x.a($$3, $$4));
    }
 
@@ -28,7 +28,7 @@ public class bh extends ds<bh.a> {
          return am.s.a(new bh.a(Optional.empty(), Optional.empty(), Optional.empty()));
       }
 
-      public boolean a(equ $$0, equ $$1) {
+      public boolean a(eqw $$0, eqw $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : !this.d.isPresent() || this.d.get().a($$1);
       }
 

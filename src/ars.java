@@ -319,7 +319,7 @@ public class ars implements AutoCloseable {
 
       d(final GameProfile $$0) {
          this.c = $$0;
-         boz<Runnable> $$1 = boz.a(ars.this.m, "chat stream for " + $$0.getName());
+         bpa<Runnable> $$1 = bpa.a(ars.this.m, "chat stream for " + $$0.getName());
          this.d = $$1::a;
       }
 

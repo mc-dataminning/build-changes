@@ -1,9 +1,9 @@
 import javax.annotation.Nullable;
 
 public interface aqv {
-   void a(dbm var1);
+   void a(dbn var1);
 
-   void a(dbm var1, @Nullable dvh var2);
+   void a(dbn var1, @Nullable dvi var2);
 
    void a();
 

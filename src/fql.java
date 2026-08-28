@@ -1,63 +1,58 @@
+import com.mojang.datafixers.util.Unit;
+import com.mojang.serialization.Codec;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public abstract class fql extends fnj {
-   protected final fnj b;
-   protected final ffx c;
+public class fql extends fqn {
+   private static final wu a = wu.c("options.online.title");
    @Nullable
-   protected fip q;
-   public final flf r = new flf(this);
+   private ffz<Unit> s;
 
-   public fql(fnj $$0, ffx $$1, wu $$2) {
-      super($$2);
-      this.b = $$0;
-      this.c = $$1;
+   public fql(fnl $$0, fga $$1) {
+      super($$0, $$1, a);
    }
 
    @Override
    protected void aP_() {
-      this.G();
-      this.aQ_();
-      this.E();
-      this.r.a($$1 -> {
-         fhq var10000 = this.c($$1);
-      });
-      this.c();
-   }
-
-   protected void G() {
-      this.r.a(this.k, this.o);
-   }
-
-   protected void aQ_() {
-      this.q = this.r.c(new fip(this.l, this.m, this));
-      this.m();
-   }
-
-   protected abstract void m();
-
-   protected void E() {
-      this.r.b(fhs.a(wt.d, $$0 -> this.d()).a(200).a());
-   }
-
-   @Override
-   protected void c() {
-      this.r.a();
-      if (this.q != null) {
-         this.q.a(this.m, this.r);
+      super.aP_();
+      if (this.s != null) {
+         fhs $$0 = this.q.b(this.s);
+         if ($$0 != null) {
+            $$0.j = false;
+         }
       }
    }
 
-   @Override
-   public void j() {
-      this.l.m.av();
+   private ffz<?>[] a(fga $$0, ffw $$1) {
+      List<ffz<?>> $$2 = new ArrayList<>();
+      $$2.add($$0.T());
+      $$2.add($$0.U());
+      ffz<Unit> $$3 = x.a(
+         $$1.r,
+         $$0x -> {
+            bqe $$1x = $$0x.al();
+            return new ffz<>(
+               "options.difficulty.online",
+               ffz.a(),
+               ($$1xx, $$2x) -> $$1x.b(),
+               new ffz.e<>(List.of(Unit.INSTANCE), Codec.EMPTY.codec()),
+               Unit.INSTANCE,
+               $$0xx -> {
+               }
+            );
+         }
+      );
+      if ($$3 != null) {
+         this.s = $$3;
+         $$2.add($$3);
+      }
+
+      return $$2.toArray(new ffz[0]);
    }
 
    @Override
-   public void d() {
-      if (this.q != null) {
-         this.q.c();
-      }
-
-      this.l.a(this.b);
+   protected void m() {
+      this.q.a(this.a(this.c, this.l));
    }
 }

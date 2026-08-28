@@ -6,7 +6,7 @@ import com.mojang.serialization.Dynamic;
 
 public class bak extends bfd {
    public bak(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityBannerColorFix", bgg.s, "minecraft:banner");
+      super($$0, $$1, "BlockEntityBannerColorFix", bgh.s, "minecraft:banner");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

@@ -1,229 +1,81 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 
-public class bqp implements bpz, cri {
-   private final int b;
-   private final js<cuc> c;
+public interface bqp extends bqa {
+   String b = "LootTable";
+   String c = "LootTableSeed";
+
    @Nullable
-   private List<bqb> d;
+   akj<erb> ax_();
 
-   public bqp(int $$0) {
-      this.b = $$0;
-      this.c = js.a($$0, cuc.l);
+   void a(@Nullable akj<erb> var1);
+
+   default void a(akj<erb> $$0, long $$1) {
+      this.a($$0);
+      this.a($$1);
    }
 
-   public bqp(cuc... $$0) {
-      this.b = $$0.length;
-      this.c = js.a(cuc.l, $$0);
-   }
+   long ay_();
 
-   public void a(bqb $$0) {
-      if (this.d == null) {
-         this.d = Lists.newArrayList();
-      }
+   void a(long var1);
 
-      this.d.add($$0);
-   }
+   ja az_();
 
-   public void b(bqb $$0) {
-      if (this.d != null) {
-         this.d.remove($$0);
+   @Nullable
+   dcg i();
+
+   static void a(dbm $$0, ayo $$1, ja $$2, akj<erb> $$3) {
+      if ($$0.c_($$2) instanceof bqp $$5) {
+         $$5.a($$3, $$1.g());
       }
    }
 
-   @Override
-   public cuc a(int $$0) {
-      return $$0 >= 0 && $$0 < this.c.size() ? this.c.get($$0) : cuc.l;
-   }
-
-   public List<cuc> f() {
-      List<cuc> $$0 = this.c.stream().filter($$0x -> !$$0x.e()).collect(Collectors.toList());
-      this.a();
-      return $$0;
-   }
-
-   @Override
-   public cuc a(int $$0, int $$1) {
-      cuc $$2 = bqa.a(this.c, $$0, $$1);
-      if (!$$2.e()) {
-         this.e();
-      }
-
-      return $$2;
-   }
-
-   public cuc a(ctx $$0, int $$1) {
-      cuc $$2 = new cuc($$0, 0);
-
-      for (int $$3 = this.b - 1; $$3 >= 0; $$3--) {
-         cuc $$4 = this.a($$3);
-         if ($$4.g().equals($$0)) {
-            int $$5 = $$1 - $$2.H();
-            cuc $$6 = $$4.a($$5);
-            $$2.g($$6.H());
-            if ($$2.H() == $$1) {
-               break;
-            }
-         }
-      }
-
-      if (!$$2.e()) {
-         this.e();
-      }
-
-      return $$2;
-   }
-
-   public cuc b(cuc $$0) {
-      if ($$0.e()) {
-         return cuc.l;
-      } else {
-         cuc $$1 = $$0.s();
-         this.e($$1);
-         if ($$1.e()) {
-            return cuc.l;
+   default boolean a_(tx $$0) {
+      if ($$0.b("LootTable", 8)) {
+         this.a(akj.a(lr.bb, new akk($$0.l("LootTable"))));
+         if ($$0.b("LootTableSeed", 4)) {
+            this.a($$0.i("LootTableSeed"));
          } else {
-            this.d($$1);
-            return $$1.e() ? cuc.l : $$1;
+            this.a(0L);
          }
-      }
-   }
 
-   public boolean c(cuc $$0) {
-      boolean $$1 = false;
-
-      for (cuc $$2 : this.c) {
-         if ($$2.e() || cuc.c($$2, $$0) && $$2.H() < $$2.j()) {
-            $$1 = true;
-            break;
-         }
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public cuc b(int $$0) {
-      cuc $$1 = this.c.get($$0);
-      if ($$1.e()) {
-         return cuc.l;
+         return true;
       } else {
-         this.c.set($$0, cuc.l);
-         return $$1;
+         return false;
       }
    }
 
-   @Override
-   public void a(int $$0, cuc $$1) {
-      this.c.set($$0, $$1);
-      $$1.f(this.e_($$1));
-      this.e();
-   }
-
-   @Override
-   public int b() {
-      return this.b;
-   }
-
-   @Override
-   public boolean c() {
-      for (cuc $$0 : this.c) {
-         if (!$$0.e()) {
-            return false;
+   default boolean b_(tx $$0) {
+      akj<erb> $$1 = this.ax_();
+      if ($$1 == null) {
+         return false;
+      } else {
+         $$0.a("LootTable", $$1.a().toString());
+         long $$2 = this.ay_();
+         if ($$2 != 0L) {
+            $$0.a("LootTableSeed", $$2);
          }
-      }
 
-      return true;
+         return true;
+      }
    }
 
-   @Override
-   public void e() {
-      if (this.d != null) {
-         for (bqb $$0 : this.d) {
-            $$0.a(this);
+   default void e_(@Nullable cml $$0) {
+      dcg $$1 = this.i();
+      ja $$2 = this.az_();
+      akj<erb> $$3 = this.ax_();
+      if ($$3 != null && $$1 != null && $$1.o() != null) {
+         erb $$4 = $$1.o().bf().b($$3);
+         if ($$0 instanceof aqn) {
+            am.Q.a((aqn)$$0, $$3);
          }
-      }
-   }
 
-   @Override
-   public boolean a(cmk $$0) {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      this.c.clear();
-      this.e();
-   }
-
-   @Override
-   public void a(cmo $$0) {
-      for (cuc $$1 : this.c) {
-         $$0.b($$1);
-      }
-   }
-
-   @Override
-   public String toString() {
-      return this.c.stream().filter($$0 -> !$$0.e()).collect(Collectors.toList()).toString();
-   }
-
-   private void d(cuc $$0) {
-      for (int $$1 = 0; $$1 < this.b; $$1++) {
-         cuc $$2 = this.a($$1);
-         if ($$2.e()) {
-            this.a($$1, $$0.f());
-            return;
+         this.a(null);
+         eqz.a $$5 = new eqz.a((aqm)$$1).a(ets.f, ewh.b($$2));
+         if ($$0 != null) {
+            $$5.a($$0.gw()).a(ets.a, $$0);
          }
+
+         $$4.a(this, $$5.a(etr.c), this.ay_());
       }
-   }
-
-   private void e(cuc $$0) {
-      for (int $$1 = 0; $$1 < this.b; $$1++) {
-         cuc $$2 = this.a($$1);
-         if (cuc.c($$2, $$0)) {
-            this.a($$0, $$2);
-            if ($$0.e()) {
-               return;
-            }
-         }
-      }
-   }
-
-   private void a(cuc $$0, cuc $$1) {
-      int $$2 = this.e_($$1);
-      int $$3 = Math.min($$0.H(), $$2 - $$1.H());
-      if ($$3 > 0) {
-         $$1.g($$3);
-         $$0.h($$3);
-         this.e();
-      }
-   }
-
-   public void a(ud $$0, jl.a $$1) {
-      this.a();
-
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         cuc.a($$1, (uu)$$0.a($$2)).ifPresent(this::b);
-      }
-   }
-
-   public ud a(jl.a $$0) {
-      ud $$1 = new ud();
-
-      for (int $$2 = 0; $$2 < this.b(); $$2++) {
-         cuc $$3 = this.a($$2);
-         if (!$$3.e()) {
-            $$1.add($$3.a($$0));
-         }
-      }
-
-      return $$1;
-   }
-
-   public js<cuc> g() {
-      return this.c;
    }
 }

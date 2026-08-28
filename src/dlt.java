@@ -1,48 +1,26 @@
 import com.mojang.serialization.MapCodec;
 
-public class dlt extends dfh {
-   public static final MapCodec<dlt> h = b(dlt::new);
-   public static final dti<jf.a> i = dta.I;
+public class dlt extends dfr {
+   public static final MapCodec<dlt> a = b(dlt::new);
+   protected static final float b = 6.0F;
+   protected static final exa c = dfi.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
    @Override
-   public MapCodec<? extends dlt> a() {
-      return h;
+   public MapCodec<dlt> a() {
+      return a;
    }
 
-   public dlt(dsj.d $$0) {
+   protected dlt(dsk.d $$0) {
       super($$0);
-      this.k(this.o().a(i, jf.a.b));
    }
 
    @Override
-   protected dsk a(dsk $$0, dlu $$1) {
-      return b($$0, $$1);
-   }
-
-   public static dsk b(dsk $$0, dlu $$1) {
-      switch ($$1) {
-         case d:
-         case b:
-            switch ((jf.a)$$0.c(i)) {
-               case a:
-                  return $$0.a(i, jf.a.c);
-               case c:
-                  return $$0.a(i, jf.a.a);
-               default:
-                  return $$0;
-            }
-         default:
-            return $$0;
-      }
+   protected exa a(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
+      return c;
    }
 
    @Override
-   protected void a(dsl.a<dfh, dsk> $$0) {
-      $$0.a(i);
-   }
-
-   @Override
-   public dsk a(cxm $$0) {
-      return this.o().a(i, $$0.k().o());
+   protected boolean b(dsl $$0, dbm $$1, ja $$2) {
+      return $$0.a(avw.aL) || $$0.a(dfk.dX) || super.b($$0, $$1, $$2);
    }
 }

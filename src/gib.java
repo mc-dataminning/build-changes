@@ -1,74 +1,84 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.DoubleSupplier;
+import org.joml.Matrix4f;
 
-public class gib implements ghp.a {
-   private final fft a;
-   private double b = Double.MIN_VALUE;
-   private List<bsg> c = Collections.emptyList();
+public class gib implements ghr.a {
+   private final ffw a;
 
-   public gib(fft $$0) {
+   public gib(ffw $$0) {
       this.a = $$0;
    }
 
    @Override
-   public void a(fam $$0, ged $$1, double $$2, double $$3, double $$4) {
-      double $$5 = (double)ac.d();
-      if ($$5 - this.b > 1.0E8) {
-         this.b = $$5;
-         bsg $$6 = this.a.j.l().g();
-         this.c = ImmutableList.copyOf($$6.dQ().a_($$6, $$6.cL().g(16.0)));
-      }
+   public void a(fao $$0, gef $$1, double $$2, double $$3, double $$4) {
+      Matrix4f $$5 = $$0.c().a();
+      dbm $$6 = this.a.s.dR();
+      ja $$7 = ja.a($$2, $$3, $$4);
 
-      cmk $$7 = this.a.s;
-      if ($$7 != null && $$7.aE.isPresent()) {
-         this.a($$0, $$1, $$2, $$3, $$4, $$7, () -> 0.0, 1.0F, 0.0F, 0.0F);
-      }
+      for (ja $$8 : ja.c($$7.b(-6, -6, -6), $$7.b(6, 6, 6))) {
+         dsl $$9 = $$6.a_($$8);
+         if (!$$9.a(dfk.a)) {
+            exa $$10 = $$9.j($$6, $$8);
 
-      for (bsg $$8 : this.c) {
-         if ($$8 != $$7) {
-            this.a($$0, $$1, $$2, $$3, $$4, $$8, () -> this.a($$8), 0.0F, 1.0F, 0.0F);
+            for (ewc $$11 : $$10.e()) {
+               ewc $$12 = $$11.a($$8).g(0.002);
+               float $$13 = (float)($$12.a - $$2);
+               float $$14 = (float)($$12.b - $$3);
+               float $$15 = (float)($$12.c - $$4);
+               float $$16 = (float)($$12.d - $$2);
+               float $$17 = (float)($$12.e - $$3);
+               float $$18 = (float)($$12.f - $$4);
+               float $$19 = 1.0F;
+               float $$20 = 0.0F;
+               float $$21 = 0.0F;
+               float $$22 = 0.5F;
+               if ($$9.d($$6, $$8, jf.e)) {
+                  fas $$23 = $$1.getBuffer(gen.A());
+                  $$23.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$23.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$23.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$23.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, jf.d)) {
+                  fas $$24 = $$1.getBuffer(gen.A());
+                  $$24.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$24.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$24.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$24.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, jf.f)) {
+                  fas $$25 = $$1.getBuffer(gen.A());
+                  $$25.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$25.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$25.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$25.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, jf.c)) {
+                  fas $$26 = $$1.getBuffer(gen.A());
+                  $$26.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$26.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$26.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$26.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, jf.a)) {
+                  fas $$27 = $$1.getBuffer(gen.A());
+                  $$27.a($$5, $$13, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$27.a($$5, $$16, $$14, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$27.a($$5, $$13, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$27.a($$5, $$16, $$14, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+
+               if ($$9.d($$6, $$8, jf.b)) {
+                  fas $$28 = $$1.getBuffer(gen.A());
+                  $$28.a($$5, $$13, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$28.a($$5, $$13, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$28.a($$5, $$16, $$17, $$15).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+                  $$28.a($$5, $$16, $$17, $$18).a(1.0F, 0.0F, 0.0F, 0.5F).e();
+               }
+            }
          }
       }
-   }
-
-   private void a(fam $$0, ged $$1, double $$2, double $$3, double $$4, bsg $$5, DoubleSupplier $$6, float $$7, float $$8, float $$9) {
-      $$5.aE.ifPresent($$10 -> {
-         double $$11 = $$6.getAsDouble();
-         ja $$12 = $$5.aM();
-         this.a($$12, $$0, $$2, $$3, $$4, $$1, 0.02 + $$11, $$7, $$8, $$9);
-         ja $$13 = $$5.aK();
-         if (!$$13.equals($$12)) {
-            this.a($$13, $$0, $$2, $$3, $$4, $$1, 0.04 + $$11, 0.0F, 1.0F, 1.0F);
-         }
-      });
-   }
-
-   private double a(bsg $$0) {
-      return 0.02 * (double)(String.valueOf((double)$$0.am() + 0.132453657).hashCode() % 1000) / 1000.0;
-   }
-
-   private void a(ja $$0, fam $$1, double $$2, double $$3, double $$4, ged $$5, double $$6, float $$7, float $$8, float $$9) {
-      double $$10 = (double)$$0.u() - $$2 - 2.0 * $$6;
-      double $$11 = (double)$$0.v() - $$3 - 2.0 * $$6;
-      double $$12 = (double)$$0.w() - $$4 - 2.0 * $$6;
-      double $$13 = $$10 + 1.0 + 4.0 * $$6;
-      double $$14 = $$11 + 1.0 + 4.0 * $$6;
-      double $$15 = $$12 + 1.0 + 4.0 * $$6;
-      geb.a($$1, $$5.getBuffer(gel.y()), $$10, $$11, $$12, $$13, $$14, $$15, $$7, $$8, $$9, 0.4F);
-      geb.a(
-         $$1,
-         $$5.getBuffer(gel.y()),
-         this.a.r.a_($$0).b(this.a.r, $$0, ewk.a()).a((double)$$0.u(), (double)$$0.v(), (double)$$0.w()),
-         -$$2,
-         -$$3,
-         -$$4,
-         $$7,
-         $$8,
-         $$9,
-         1.0F,
-         false
-      );
    }
 }

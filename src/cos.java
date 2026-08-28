@@ -1,163 +1,70 @@
-import javax.annotation.Nullable;
+public class cos extends cog {
+   private final dbi c = new dbi() {
+      @Override
+      public void a(dcg $$0, ja $$1, int $$2) {
+         $$0.a(cos.this, (byte)$$2);
+      }
+   };
+   private final Runnable d;
 
-public class cos extends cof {
-   private static final byte c = 10;
-   private int d = -1;
-
-   public cos(bsm<? extends cos> $$0, dcf $$1) {
+   public cos(bsn<? extends cos> $$0, dcg $$1) {
       super($$0, $$1);
+      this.d = this.b($$1);
    }
 
-   public cos(dcf $$0, double $$1, double $$2, double $$3) {
-      super(bsm.bd, $$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public cof.a v() {
-      return cof.a.d;
+   public cos(dcg $$0, double $$1, double $$2, double $$3) {
+      super(bsn.aU, $$0, $$1, $$2, $$3);
+      this.d = this.b($$0);
    }
 
    @Override
-   public dsk x() {
-      return dfj.ck.o();
+   protected cty ag_() {
+      return cug.nM;
+   }
+
+   private Runnable b(dcg $$0) {
+      return $$0 instanceof aqm ? () -> this.c.a((aqm)$$0, this.dr()) : () -> this.c.a($$0, this.dr());
    }
 
    @Override
-   public void l() {
-      super.l();
-      if (this.d > 0) {
-         this.d--;
-         this.dQ().a(lj.ae, this.dv(), this.dx() + 0.5, this.dB(), 0.0, 0.0, 0.0);
-      } else if (this.d == 0) {
-         this.h(this.dt().i());
-      }
-
-      if (this.Q) {
-         double $$0 = this.dt().i();
-         if ($$0 >= 0.01F) {
-            this.h($$0);
-         }
-      }
+   public cog.a v() {
+      return cog.a.e;
    }
 
    @Override
-   public boolean a(bqz $$0, float $$1) {
-      if ($$0.c() instanceof cmq $$3 && $$3.bR()) {
-         bqz $$4 = this.dR().d(this, $$0.d());
-         this.a($$4, $$3.dt().g());
-      }
-
-      return super.a($$0, $$1);
-   }
-
-   @Override
-   public void a(bqz $$0) {
-      double $$1 = this.dt().i();
-      if (!e($$0) && !($$1 >= 0.01F)) {
-         this.b(this.ag_());
-      } else {
-         if (this.d < 0) {
-            this.B();
-            this.d = this.ah.a(20) + this.ah.a(20);
-         }
-      }
-   }
-
-   @Override
-   protected ctx ag_() {
-      return cuf.nP;
-   }
-
-   protected void h(double $$0) {
-      this.a(null, $$0);
-   }
-
-   protected void a(@Nullable bqz $$0, double $$1) {
-      if (!this.dQ().B) {
-         double $$2 = Math.sqrt($$1);
-         if ($$2 > 5.0) {
-            $$2 = 5.0;
-         }
-
-         this.dQ().a(this, $$0, null, this.dv(), this.dx(), this.dB(), (float)(4.0 + this.ah.j() * 1.5 * $$2), false, dcf.a.d);
-         this.ap();
-      }
-   }
-
-   @Override
-   public boolean a(float $$0, float $$1, bqz $$2) {
-      if ($$0 >= 3.0F) {
-         float $$3 = $$0 / 10.0F;
-         this.h((double)($$3 * $$3));
-      }
-
-      return super.a($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      if ($$3 && this.d < 0) {
-         this.B();
-      }
-   }
-
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 10) {
-         this.B();
-      } else {
-         super.b($$0);
-      }
-   }
-
-   public void B() {
-      this.d = 80;
-      if (!this.dQ().B) {
-         this.dQ().a(this, (byte)10);
-         if (!this.aX()) {
-            this.dQ().a(null, this.dv(), this.dx(), this.dB(), avh.zy, avi.e, 1.0F, 1.0F);
-         }
-      }
-   }
-
-   public int C() {
-      return this.d;
-   }
-
-   public boolean D() {
-      return this.d > -1;
-   }
-
-   @Override
-   public float a(dbx $$0, dbl $$1, ja $$2, dsk $$3, eoh $$4, float $$5) {
-      return !this.D() || !$$3.a(avw.N) && !$$1.a_($$2.c()).a(avw.N) ? super.a($$0, $$1, $$2, $$3, $$4, $$5) : 0.0F;
-   }
-
-   @Override
-   public boolean a(dbx $$0, dbl $$1, ja $$2, dsk $$3, float $$4) {
-      return !this.D() || !$$3.a(avw.N) && !$$1.a_($$2.c()).a(avw.N) ? super.a($$0, $$1, $$2, $$3, $$4) : false;
+   public dsl x() {
+      return dfk.ct.o();
    }
 
    @Override
    protected void a(tx $$0) {
       super.a($$0);
-      if ($$0.b("TNTFuse", 99)) {
-         this.d = $$0.h("TNTFuse");
-      }
+      this.c.a(this.dR(), this.dr(), $$0);
    }
 
    @Override
    protected void b(tx $$0) {
       super.b($$0);
-      $$0.a("TNTFuse", this.d);
+      this.c.a($$0);
    }
 
    @Override
-   boolean d(bqz $$0) {
-      return e($$0);
+   public void b(byte $$0) {
+      this.c.a(this.dR(), $$0);
    }
 
-   private static boolean e(bqz $$0) {
-      return $$0.a(avy.j) || $$0.a(avy.m);
+   @Override
+   public void l() {
+      super.l();
+      this.d.run();
+   }
+
+   public dbi B() {
+      return this.c;
+   }
+
+   @Override
+   public boolean cR() {
+      return true;
    }
 }

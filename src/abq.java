@@ -8,8 +8,8 @@ public class abq implements zb<abn> {
    private final int g;
    private final int h;
 
-   public abq(bsg $$0, int $$1) {
-      this.g = $$0.am();
+   public abq(bsh $$0, int $$1) {
+      this.g = $$0.an();
       this.h = $$1;
    }
 

@@ -8,8 +8,8 @@ public class dk extends ds<dk.a> {
       return dk.a.a;
    }
 
-   public void a(aqn $$0, cuc $$1, bsg $$2) {
-      equ $$3 = bu.b($$0, $$2);
+   public void a(aqn $$0, cud $$1, bsh $$2) {
+      eqw $$3 = bu.b($$0, $$2);
       this.a($$0, $$2x -> $$2x.a($$1, $$3));
    }
 
@@ -31,7 +31,7 @@ public class dk extends ds<dk.a> {
          return a(Optional.empty(), $$0, $$1);
       }
 
-      public boolean a(cuc $$0, equ $$1) {
+      public boolean a(cud $$0, eqw $$1) {
          return this.c.isPresent() && !this.c.get().a($$0) ? false : this.d.isEmpty() || this.d.get().a($$1);
       }
 

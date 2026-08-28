@@ -1,59 +1,71 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public class dgv extends dfh {
+public class dgv extends deu implements dmj {
    public static final MapCodec<dgv> a = b(dgv::new);
-   public static final dtb b = dta.w;
-   public static final dtb c = dta.r;
+   public static final dtc b = dtb.C;
+   private static final int d = 3;
+   protected static final exa c = dfi.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
 
    @Override
-   protected MapCodec<? extends dgv> a() {
+   public MapCodec<dgv> a() {
       return a;
    }
 
-   public dgv(dsj.d $$0) {
+   public dgv(dsk.d $$0) {
       super($$0);
-      this.k(this.o().a(c, Boolean.valueOf(false)).a(b, Boolean.valueOf(false)));
+      this.k(this.E.b().a(b, Boolean.valueOf(true)));
    }
 
    @Override
-   protected void b(dsk $$0, dcf $$1, ja $$2, dsk $$3, boolean $$4) {
-      if ($$3.b() != $$0.b() && $$1 instanceof aqm $$5) {
-         this.a($$0, $$5, $$2);
+   protected void a(dsm.a<dfi, dsl> $$0) {
+      $$0.a(b);
+   }
+
+   @Override
+   public dpq a(ja $$0, dsl $$1) {
+      return new dqc($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dpq> dpr<T> a(dcg $$0, dsl $$1, dps<T> $$2) {
+      return a($$2, dps.z, $$0.B ? dqc::a : dqc::b);
+   }
+
+   @Override
+   protected dlo a_(dsl $$0) {
+      return dlo.b;
+   }
+
+   @Override
+   protected eoj b_(dsl $$0) {
+      return $$0.c(b) ? eok.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected dsl a(dsl $$0, jf $$1, dsl $$2, dch $$3, ja $$4, ja $$5) {
+      if ($$0.c(b)) {
+         $$3.a($$4, eok.c, eok.c.a($$3));
       }
+
+      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected void a(dsk $$0, dcf $$1, ja $$2, dfh $$3, ja $$4, boolean $$5) {
-      if ($$1 instanceof aqm $$6) {
-         this.a($$0, $$6, $$2);
-      }
+   protected exa a(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
+      return c;
    }
 
-   public void a(dsk $$0, aqm $$1, ja $$2) {
-      boolean $$3 = $$1.C($$2);
-      if ($$3 != $$0.c(b)) {
-         dsk $$4 = $$0;
-         if (!$$0.c(b)) {
-            $$4 = $$0.a(c);
-            $$1.a(null, $$2, $$4.c(c) ? avh.fG : avh.fH, avi.e);
-         }
-
-         $$1.a($$2, $$4.a(b, Boolean.valueOf($$3)), 3);
-      }
+   @Nullable
+   @Override
+   public dsl a(cxn $$0) {
+      eoj $$1 = $$0.q().b_($$0.a());
+      return this.o().a(b, Boolean.valueOf($$1.a(awc.a) && $$1.e() == 8));
    }
 
    @Override
-   protected void a(dsl.a<dfh, dsk> $$0) {
-      $$0.a(c, b);
-   }
-
-   @Override
-   protected boolean c_(dsk $$0) {
-      return true;
-   }
-
-   @Override
-   protected int a(dsk $$0, dcf $$1, ja $$2) {
-      return $$1.a_($$2).c(c) ? 15 : 0;
+   protected boolean a(dsl $$0, eoy $$1) {
+      return false;
    }
 }

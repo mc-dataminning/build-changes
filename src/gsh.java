@@ -1,18 +1,7 @@
-import java.nio.file.Path;
-import java.util.List;
+import java.util.Map;
 import java.util.UUID;
+import java.util.function.Consumer;
 
 public interface gsh {
-   void scheduleReload(gsh.a var1);
-
-   public interface a {
-      void a();
-
-      void a(boolean var1);
-
-      List<gsh.b> b();
-   }
-
-   public static record b(UUID a, Path b) {
-   }
+   void a(Map<UUID, asd.c> var1, Consumer<asd.b> var2);
 }

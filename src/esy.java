@@ -1,30 +1,52 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.ints.IntList;
 import java.util.List;
+import java.util.Optional;
 
-public class esy extends esh {
+public class esy extends esj {
    public static final MapCodec<esy> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0).and(awm.b(lr.I).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, esy::new)
+      $$0 -> a($$0)
+            .and(
+               $$0.group(
+                  cwv.a.g.optionalFieldOf("shape").forGetter($$0x -> $$0x.c),
+                  cwv.b.optionalFieldOf("colors").forGetter($$0x -> $$0x.d),
+                  cwv.b.optionalFieldOf("fade_colors").forGetter($$0x -> $$0x.e),
+                  Codec.BOOL.optionalFieldOf("trail").forGetter($$0x -> $$0x.f),
+                  Codec.BOOL.optionalFieldOf("twinkle").forGetter($$0x -> $$0x.h)
+               )
+            )
+            .apply($$0, esy::new)
    );
-   private final awm<ctu> b;
+   public static final cwv b = new cwv(cwv.a.a, IntList.of(), IntList.of(), false, false);
+   final Optional<cwv.a> c;
+   final Optional<IntList> d;
+   final Optional<IntList> e;
+   final Optional<Boolean> f;
+   final Optional<Boolean> h;
 
-   private esy(List<euf> $$0, awm<ctu> $$1) {
+   public esy(List<euh> $$0, Optional<cwv.a> $$1, Optional<IntList> $$2, Optional<IntList> $$3, Optional<Boolean> $$4, Optional<Boolean> $$5) {
       super($$0);
-      this.b = $$1;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.h = $$5;
    }
 
    @Override
-   public esj<esy> b() {
-      return esk.G;
-   }
-
-   @Override
-   public cuc a(cuc $$0, equ $$1) {
-      ctv.a($$0, this.b, $$1.b());
+   protected cud a(cud $$0, eqw $$1) {
+      $$0.a(kn.T, b, this::a);
       return $$0;
    }
 
-   public static esh.a<?> a(awm<ctu> $$0) {
-      return a($$1 -> new esy($$1, $$0));
+   private cwv a(cwv $$0) {
+      return new cwv(this.c.orElseGet($$0::a), this.d.orElseGet($$0::b), this.e.orElseGet($$0::c), this.f.orElseGet($$0::d), this.h.orElseGet($$0::e));
+   }
+
+   @Override
+   public esl<esy> b() {
+      return esm.L;
    }
 }

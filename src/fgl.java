@@ -1,49 +1,34 @@
+import com.google.common.collect.Maps;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.Map.Entry;
-import org.joml.Vector3f;
+import java.util.Map;
 
-public class fgl {
-   public static void a(fux<?> $$0, fgj $$1, long $$2, float $$3, Vector3f $$4) {
-      float $$5 = a($$1, $$2);
+public record fgl(float a, boolean b, Map<String, List<fgk>> c) {
+   public static class a {
+      private final float a;
+      private final Map<String, List<fgk>> b = Maps.newHashMap();
+      private boolean c;
 
-      for (Entry<String, List<fgi>> $$6 : $$1.c().entrySet()) {
-         Optional<fxo> $$7 = $$0.a($$6.getKey());
-         List<fgi> $$8 = $$6.getValue();
-         $$7.ifPresent($$4x -> $$8.forEach($$4xx -> {
-               fgk[] $$5x = $$4xx.b();
-               int $$6x = Math.max(0, ayg.a(0, $$5x.length, $$2xxx -> $$5 <= $$5x[$$2xxx].a()) - 1);
-               int $$7x = Math.min($$5x.length - 1, $$6x + 1);
-               fgk $$8x = $$5x[$$6x];
-               fgk $$9 = $$5x[$$7x];
-               float $$10 = $$5 - $$8x.a();
-               float $$11;
-               if ($$7x != $$6x) {
-                  $$11 = ayg.a($$10 / ($$9.a() - $$8x.a()), 0.0F, 1.0F);
-               } else {
-                  $$11 = 0.0F;
-               }
-
-               $$9.c().apply($$4, $$11, $$5x, $$6x, $$7x, $$3);
-               $$4xx.a().apply($$4x, $$4);
-            }));
+      public static fgl.a a(float $$0) {
+         return new fgl.a($$0);
       }
-   }
 
-   private static float a(fgj $$0, long $$1) {
-      float $$2 = (float)$$1 / 1000.0F;
-      return $$0.b() ? $$2 % $$0.a() : $$2;
-   }
+      private a(float $$0) {
+         this.a = $$0;
+      }
 
-   public static Vector3f a(float $$0, float $$1, float $$2) {
-      return new Vector3f($$0, -$$1, $$2);
-   }
+      public fgl.a a() {
+         this.c = true;
+         return this;
+      }
 
-   public static Vector3f b(float $$0, float $$1, float $$2) {
-      return new Vector3f($$0 * (float) (Math.PI / 180.0), $$1 * (float) (Math.PI / 180.0), $$2 * (float) (Math.PI / 180.0));
-   }
+      public fgl.a a(String $$0, fgk $$1) {
+         this.b.computeIfAbsent($$0, $$0x -> new ArrayList<>()).add($$1);
+         return this;
+      }
 
-   public static Vector3f a(double $$0, double $$1, double $$2) {
-      return new Vector3f((float)($$0 - 1.0), (float)($$1 - 1.0), (float)($$2 - 1.0));
+      public fgl b() {
+         return new fgl(this.a, this.c, this.b);
+      }
    }
 }

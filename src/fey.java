@@ -1,59 +1,13 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+public class fey extends ffa {
+   private final feo b;
 
-public abstract class fey extends fet {
-   private static final Logger b = LogUtils.getLogger();
-   private final long c;
-   private final wu d;
-   private final Runnable e;
-
-   public fey(long $$0, wu $$1, Runnable $$2) {
-      this.c = $$0;
-      this.d = $$1;
-      this.e = $$2;
-   }
-
-   protected abstract void a(fbc var1, long var2) throws fcp;
-
-   @Override
-   public void run() {
-      fbc $$0 = fbc.a();
-      int $$1 = 0;
-
-      while ($$1 < 25) {
-         try {
-            if (this.d()) {
-               return;
-            }
-
-            this.a($$0, this.c);
-            if (this.d()) {
-               return;
-            }
-
-            this.e.run();
-            return;
-         } catch (fcq var4) {
-            if (this.d()) {
-               return;
-            }
-
-            a((long)var4.c);
-            $$1++;
-         } catch (Exception var5) {
-            if (this.d()) {
-               return;
-            }
-
-            b.error("Couldn't reset world");
-            this.a(var5);
-            return;
-         }
-      }
+   public fey(feo $$0, long $$1, wu $$2, Runnable $$3) {
+      super($$1, $$2, $$3);
+      this.b = $$0;
    }
 
    @Override
-   public wu a() {
-      return this.d;
+   protected void a(fbe $$0, long $$1) throws fcr {
+      $$0.a($$1, this.b);
    }
 }

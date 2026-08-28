@@ -1,4 +1,4 @@
-public abstract class aqi extends ent {
+public abstract class aqi extends env {
    protected aqi(int $$0, int $$1, int $$2) {
       super($$0, $$1, $$2);
    }

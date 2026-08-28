@@ -5,7 +5,7 @@ import com.mojang.serialization.Dynamic;
 
 public class bcx extends bfd {
    public bcx(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityShulkerColorFix", bgg.B, "minecraft:shulker");
+      super($$0, $$1, "EntityShulkerColorFix", bgh.B, "minecraft:shulker");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

@@ -4,7 +4,7 @@ import com.mojang.datafixers.schemas.Schema;
 
 public class bar extends bfd {
    public bar(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityShulkerBoxColorFix", bgg.s, "minecraft:shulker_box");
+      super($$0, $$1, "BlockEntityShulkerBoxColorFix", bgh.s, "minecraft:shulker_box");
    }
 
    @Override

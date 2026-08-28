@@ -1,2 +1,8 @@
-public record crm(cwo a) implements crn {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface crm {
 }

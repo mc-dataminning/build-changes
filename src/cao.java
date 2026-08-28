@@ -1,38 +1,30 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
 
-public class cao extends bzz {
-   private final btk a;
-   @Nullable
-   private btb b;
+public class cao extends caa {
+   private final btl a;
+   private double b;
    private double c;
    private double d;
-   private double e;
-   private final double f;
-   private final float g;
+   private final double e;
 
-   public cao(btk $$0, double $$1, float $$2) {
+   public cao(btl $$0, double $$1) {
       this.a = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.a(EnumSet.of(bzz.a.a));
+      this.e = $$1;
+      this.a(EnumSet.of(caa.a.a));
    }
 
    @Override
    public boolean a() {
-      this.b = this.a.p();
-      if (this.b == null) {
-         return false;
-      } else if (this.b.g(this.a) > (double)(this.g * this.g)) {
+      if (this.a.fT()) {
          return false;
       } else {
-         ewf $$0 = cdw.a(this.a, 16, 7, this.b.do(), (float) (Math.PI / 2));
+         ewh $$0 = cdx.a(this.a, 16, 7, ewh.c(this.a.fU()), (float) (Math.PI / 2));
          if ($$0 == null) {
             return false;
          } else {
-            this.c = $$0.c;
-            this.d = $$0.d;
-            this.e = $$0.e;
+            this.b = $$0.c;
+            this.c = $$0.d;
+            this.d = $$0.e;
             return true;
          }
       }
@@ -40,16 +32,11 @@ public class cao extends bzz {
 
    @Override
    public boolean b() {
-      return !this.a.K().l() && this.b.bE() && this.b.g(this.a) < (double)(this.g * this.g);
-   }
-
-   @Override
-   public void d() {
-      this.b = null;
+      return !this.a.J().l();
    }
 
    @Override
    public void c() {
-      this.a.K().a(this.c, this.d, this.e, this.f);
+      this.a.J().a(this.b, this.c, this.d, this.e);
    }
 }

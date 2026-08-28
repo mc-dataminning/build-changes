@@ -47,7 +47,7 @@ public class fc implements ArgumentType<fc.a> {
 
    public static enum a {
       a("feet", ($$0, $$1) -> $$0),
-      b("eyes", ($$0, $$1) -> new ewf($$0.c, $$0.d + (double)$$1.cM(), $$0.e));
+      b("eyes", ($$0, $$1) -> new ewh($$0.c, $$0.d + (double)$$1.cN(), $$0.e));
 
       static final Map<String, fc.a> c = ac.a(Maps.newHashMap(), $$0 -> {
          for (fc.a $$1 : values()) {
@@ -55,9 +55,9 @@ public class fc implements ArgumentType<fc.a> {
          }
       });
       private final String d;
-      private final BiFunction<ewf, bsg, ewf> e;
+      private final BiFunction<ewh, bsh, ewh> e;
 
-      private a(final String $$0, final BiFunction<ewf, bsg, ewf> $$1) {
+      private a(final String $$0, final BiFunction<ewh, bsh, ewh> $$1) {
          this.d = $$0;
          this.e = $$1;
       }
@@ -67,12 +67,12 @@ public class fc implements ArgumentType<fc.a> {
          return c.get($$0);
       }
 
-      public ewf a(bsg $$0) {
-         return this.e.apply($$0.do(), $$0);
+      public ewh a(bsh $$0) {
+         return this.e.apply($$0.dp(), $$0);
       }
 
-      public ewf a(eq $$0) {
-         bsg $$1 = $$0.f();
+      public ewh a(eq $$0) {
+         bsh $$1 = $$0.f();
          return $$1 == null ? $$0.d() : this.e.apply($$0.d(), $$1);
       }
    }

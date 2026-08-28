@@ -2,62 +2,40 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.BiFunction;
 
-public class eso extends esh {
+public class eso implements esk {
    public static final MapCodec<eso> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(dpg.b.fieldOf("patterns").forGetter($$0x -> $$0x.b), Codec.BOOL.fieldOf("append").forGetter($$0x -> $$0x.c)))
-            .apply($$0, eso::new)
+      $$0 -> $$0.group(esm.b.listOf().fieldOf("functions").forGetter($$0x -> $$0x.c)).apply($$0, eso::new)
    );
-   private final dpg b;
-   private final boolean c;
+   public static final Codec<eso> b = esm.b.listOf().xmap(eso::new, $$0 -> $$0.c);
+   private final List<esk> c;
+   private final BiFunction<cud, eqw, cud> d;
 
-   eso(List<euf> $$0, dpg $$1, boolean $$2) {
-      super($$0);
-      this.b = $$1;
-      this.c = $$2;
+   private eso(List<esk> $$0) {
+      this.c = $$0;
+      this.d = esm.a($$0);
+   }
+
+   public static eso a(List<esk> $$0) {
+      return new eso(List.copyOf($$0));
+   }
+
+   public cud a(cud $$0, eqw $$1) {
+      return this.d.apply($$0, $$1);
    }
 
    @Override
-   protected cuc a(cuc $$0, equ $$1) {
-      if (this.c) {
-         $$0.a(kn.X, dpg.a, this.b, ($$0x, $$1x) -> new dpg.a().a($$0x).a($$1x).a());
-      } else {
-         $$0.b(kn.X, this.b);
-      }
+   public void a(erc $$0) {
+      esk.super.a($$0);
 
-      return $$0;
+      for (int $$1 = 0; $$1 < this.c.size(); $$1++) {
+         this.c.get($$1).a($$0.a(".function[" + $$1 + "]"));
+      }
    }
 
    @Override
-   public esj<eso> b() {
-      return esk.E;
-   }
-
-   public static eso.a a(boolean $$0) {
-      return new eso.a($$0);
-   }
-
-   public static class a extends esh.a<eso.a> {
-      private final dpg.a a = new dpg.a();
-      private final boolean b;
-
-      a(boolean $$0) {
-         this.b = $$0;
-      }
-
-      protected eso.a a() {
-         return this;
-      }
-
-      @Override
-      public esi b() {
-         return new eso(this.g(), this.a.a(), this.b);
-      }
-
-      public eso.a a(jj<dpf> $$0, csv $$1) {
-         this.a.a($$0, $$1);
-         return this;
-      }
+   public esl<eso> b() {
+      return esm.I;
    }
 }

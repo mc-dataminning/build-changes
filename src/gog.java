@@ -1,33 +1,34 @@
-public class gog<T extends btb> extends gny<T, fvt<T>> {
-   public static final akk a = new akk("textures/entity/trident_riptide.png");
-   public static final String b = "box";
-   private final fxo c;
+public class gog extends goa<cfq, fwq<cfq>> {
+   private final gez a;
+   private final gkm b;
 
-   public gog(gli<T, fvt<T>> $$0, fxk $$1) {
+   public gog(glk<cfq, fwq<cfq>> $$0, gez $$1, gkm $$2) {
       super($$0);
-      fxo $$2 = $$1.a(fxn.aZ);
-      this.c = $$2.b("box");
+      this.a = $$1;
+      this.b = $$2;
    }
 
-   public static fxu a() {
-      fxw $$0 = new fxw();
-      fxx $$1 = $$0.a();
-      $$1.a("box", fxt.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 32.0F, 16.0F), fxq.a);
-      return fxu.a($$0, 64, 64);
-   }
-
-   public void a(fam $$0, ged $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.fo()) {
-         faq $$10 = $$1.getBuffer(gel.e(a));
-
-         for (int $$11 = 0; $$11 < 3; $$11++) {
+   public void a(fao $$0, gef $$1, int $$2, cfq $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.t()) {
+         boolean $$10 = ffw.Q().b($$3) && $$3.cj();
+         if (!$$3.cj() || $$10) {
             $$0.a();
-            float $$12 = $$7 * (float)(-(45 + $$11 * 5));
-            $$0.a(a.d.rotationDegrees($$12));
-            float $$13 = 0.75F * (float)$$11;
-            $$0.b($$13, $$13, $$13);
-            $$0.a(0.0F, -0.2F + 0.6F * (float)$$11, 0.0F);
-            this.c.a($$0, $$10, $$2, gpf.d);
+            this.c().c().a($$0);
+            float $$11 = 0.625F;
+            $$0.a(0.0F, -0.34375F, 0.0F);
+            $$0.a(a.d.rotationDegrees(180.0F));
+            $$0.b(0.625F, -0.625F, -0.625F);
+            cud $$12 = new cud(dfk.ee);
+            if ($$10) {
+               dsl $$13 = dfk.ee.o();
+               grr $$14 = this.a.a($$13);
+               int $$15 = gkp.c($$3, 0.0F);
+               $$0.a(-0.5F, -0.5F, -0.5F);
+               this.a.b().a($$0.c(), $$1.getBuffer(gen.r(gpp.e)), $$13, $$14, 0.0F, 0.0F, 0.0F, $$2, $$15);
+            } else {
+               this.b.a($$3, $$12, cua.f, false, $$0, $$1, $$3.dR(), $$2, gkp.c($$3, 0.0F), $$3.an());
+            }
+
             $$0.b();
          }
       }

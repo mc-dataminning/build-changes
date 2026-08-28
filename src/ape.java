@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 public class ape extends auj {
    private static final Logger h = LogUtils.getLogger();
 
-   public ape(apf $$0, jq<akt> $$1, eql $$2) {
+   public ape(apf $$0, jq<akt> $$1, eqn $$2) {
       super($$0, $$1, $$2, $$0.a().H);
       apg $$3 = $$0.a();
       this.a($$3.F);

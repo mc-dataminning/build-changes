@@ -7,7 +7,7 @@ import com.mojang.serialization.Dynamic;
 
 public class bez extends bfd {
    public bez(Schema $$0, String $$1) {
-      super($$0, false, "Memory expiry data fix (" + $$1 + ")", bgg.B, $$1);
+      super($$0, false, "Memory expiry data fix (" + $$1 + ")", bgh.B, $$1);
    }
 
    @Override

@@ -5,7 +5,7 @@ import com.mojang.serialization.Dynamic;
 
 public class beo extends bfd {
    public beo(Schema $$0, boolean $$1) {
-      super($$0, $$1, "JigsawPropertiesFix", bgg.s, "minecraft:jigsaw");
+      super($$0, $$1, "JigsawPropertiesFix", bgh.s, "minecraft:jigsaw");
    }
 
    private static Dynamic<?> a(Dynamic<?> $$0) {

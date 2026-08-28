@@ -9,8 +9,8 @@ public class di extends ds<di.a> {
       return di.a.a;
    }
 
-   public void a(aqn $$0, cuc $$1, @Nullable bsg $$2) {
-      equ $$3 = bu.b($$0, $$2);
+   public void a(aqn $$0, cud $$1, @Nullable bsh $$2) {
+      eqw $$3 = bu.b($$0, $$2);
       this.a($$0, $$3x -> $$3x.a($$0, $$1, $$3));
    }
 
@@ -32,7 +32,7 @@ public class di extends ds<di.a> {
          return am.S.a(new di.a($$0, $$1, $$2));
       }
 
-      public boolean a(aqn $$0, cuc $$1, equ $$2) {
+      public boolean a(aqn $$0, cud $$1, eqw $$2) {
          return this.c.isPresent() && !this.c.get().a($$1) ? false : !this.d.isPresent() || this.d.get().a($$2);
       }
 

@@ -1,32 +1,28 @@
-import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
-import java.util.Set;
 
-public record eum(Optional<cp> b) implements euf {
-   public static final MapCodec<eum> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(cp.a.optionalFieldOf("predicate").forGetter(eum::c)).apply($$0, eum::new));
+public record eum(evd b) implements euh {
+   public static final MapCodec<eum> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(eve.a.fieldOf("chance").forGetter(eum::c)).apply($$0, eum::new));
 
    @Override
-   public eug b() {
-      return euh.j;
+   public eui b() {
+      return euj.d;
    }
 
-   @Override
-   public Set<etn<?>> a() {
-      return ImmutableSet.of(etq.i);
+   public boolean a(eqw $$0) {
+      float $$1 = this.b.b($$0);
+      return $$0.b().i() < $$1;
    }
 
-   public boolean a(equ $$0) {
-      cuc $$1 = $$0.c(etq.i);
-      return $$1 != null && (this.b.isEmpty() || this.b.get().a($$1));
+   public static euh.a a(float $$0) {
+      return () -> new eum(eva.a($$0));
    }
 
-   public static euf.a a(cp.a $$0) {
-      return () -> new eum(Optional.of($$0.b()));
+   public static euh.a a(evd $$0) {
+      return () -> new eum($$0);
    }
 
-   public Optional<cp> c() {
+   public evd c() {
       return this.b;
    }
 }

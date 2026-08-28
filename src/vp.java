@@ -401,7 +401,7 @@ public class vp extends SimpleChannelInboundHandler<zb<?>> {
       return this.k.a();
    }
 
-   public static vp a(InetSocketAddress $$0, boolean $$1, @Nullable blg $$2) {
+   public static vp a(InetSocketAddress $$0, boolean $$1, @Nullable blh $$2) {
       vp $$3 = new vp(zc.b);
       if ($$2 != null) {
          $$3.a($$2);
@@ -574,7 +574,7 @@ public class vp extends SimpleChannelInboundHandler<zb<?>> {
       return this.x;
    }
 
-   public void a(blg $$0) {
+   public void a(blh $$0) {
       this.B = new vi($$0);
    }
 }

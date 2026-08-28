@@ -1,14 +1,14 @@
 public class abw implements zb<abn> {
-   public static final ys<wf, abw> a = ys.a(ja.b, abw::e, yq.a(dfh.q), abw::b, abw::new);
+   public static final ys<wf, abw> a = ys.a(ja.b, abw::e, yq.a(dfi.q), abw::b, abw::new);
    private final ja b;
-   private final dsk c;
+   private final dsl c;
 
-   public abw(ja $$0, dsk $$1) {
+   public abw(ja $$0, dsl $$1) {
       this.b = $$0;
       this.c = $$1;
    }
 
-   public abw(dbl $$0, ja $$1) {
+   public abw(dbm $$0, ja $$1) {
       this($$1, $$0.a_($$1));
    }
 
@@ -21,7 +21,7 @@ public class abw implements zb<abn> {
       $$0.a(this);
    }
 
-   public dsk b() {
+   public dsl b() {
       return this.c;
    }
 

@@ -1,35 +1,36 @@
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Iterables;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Predicate;
+import com.google.common.collect.ImmutableMap;
 
-public class cdq extends cde<clo> {
-   @Override
-   public Set<ccf<?>> a() {
-      return ImmutableSet.copyOf(Iterables.concat(super.a(), List.of(ccf.B)));
-   }
-
-   protected void a(aqm $$0, clo $$1) {
-      super.a($$0, $$1);
-      a($$1, $$0x -> $$0x.al() == bsm.by)
-         .or(() -> a($$1, $$0xx -> $$0xx.al() != bsm.by))
-         .ifPresentOrElse($$1x -> $$1.dU().a(ccf.B, $$1x), () -> $$1.dU().b(ccf.B));
-   }
-
-   private static Optional<btb> a(clo $$0, Predicate<btb> $$1) {
-      return $$0.dU().c(ccf.g).stream().flatMap(Collection::stream).filter($$0::b).filter($$1).findFirst();
-   }
+public class cdq extends cdg {
+   private static final ImmutableMap<bsn<?>, Float> a = ImmutableMap.builder()
+      .put(bsn.B, 8.0F)
+      .put(bsn.J, 12.0F)
+      .put(bsn.ac, 8.0F)
+      .put(bsn.ad, 12.0F)
+      .put(bsn.aC, 15.0F)
+      .put(bsn.aH, 12.0F)
+      .put(bsn.bi, 8.0F)
+      .put(bsn.bk, 10.0F)
+      .put(bsn.bt, 10.0F)
+      .put(bsn.bu, 8.0F)
+      .put(bsn.bw, 8.0F)
+      .build();
 
    @Override
-   protected int b() {
-      return 24;
+   protected boolean a(btc $$0, btc $$1) {
+      return this.b($$1) && this.e($$0, $$1);
+   }
+
+   private boolean e(btc $$0, btc $$1) {
+      float $$2 = (Float)a.get($$1.am());
+      return $$1.g((bsh)$$0) <= (double)($$2 * $$2);
    }
 
    @Override
-   protected int c() {
-      return 24;
+   protected ccg<btc> b() {
+      return ccg.A;
+   }
+
+   private boolean b(btc $$0) {
+      return a.containsKey($$0.am());
    }
 }

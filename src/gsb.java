@@ -1,76 +1,120 @@
 import com.google.common.collect.Lists;
-import java.util.Collections;
+import com.google.common.collect.Maps;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.Nullable;
 
-public class gsb implements grp {
-   private final int a;
-   private final List<bos.b<grp>> b;
-   private final grp c;
+public class gsb implements grr {
+   protected final List<gfc> a;
+   protected final Map<jf, List<gfc>> b;
+   protected final boolean c;
+   protected final boolean d;
+   protected final boolean e;
+   protected final gpq f;
+   protected final gfo g;
+   protected final gfm h;
 
-   public gsb(List<bos.b<grp>> $$0) {
-      this.b = $$0;
-      this.a = bot.a($$0);
-      this.c = $$0.get(0).b();
+   public gsb(List<gfc> $$0, Map<jf, List<gfc>> $$1, boolean $$2, boolean $$3, boolean $$4, gpq $$5, gfo $$6, gfm $$7) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$4;
+      this.e = $$3;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
    }
 
    @Override
-   public List<gfa> a(@Nullable dsk $$0, @Nullable jf $$1, ayo $$2) {
-      return bot.a(this.b, Math.abs((int)$$2.g()) % this.a).map($$3 -> $$3.b().a($$0, $$1, $$2)).orElse(Collections.emptyList());
+   public List<gfc> a(@Nullable dsl $$0, @Nullable jf $$1, ayo $$2) {
+      return $$1 == null ? this.a : this.b.get($$1);
    }
 
    @Override
    public boolean a() {
-      return this.c.a();
+      return this.c;
    }
 
    @Override
    public boolean b() {
-      return this.c.b();
+      return this.d;
    }
 
    @Override
    public boolean c() {
-      return this.c.c();
+      return this.e;
    }
 
    @Override
    public boolean d() {
-      return this.c.d();
+      return false;
    }
 
    @Override
-   public gpo e() {
-      return this.c.e();
+   public gpq e() {
+      return this.f;
    }
 
    @Override
-   public gfm f() {
-      return this.c.f();
+   public gfo f() {
+      return this.g;
    }
 
    @Override
-   public gfk g() {
-      return this.c.g();
+   public gfm g() {
+      return this.h;
    }
 
    public static class a {
-      private final List<bos.b<grp>> a = Lists.newArrayList();
+      private final List<gfc> a = Lists.newArrayList();
+      private final Map<jf, List<gfc>> b = Maps.newEnumMap(jf.class);
+      private final gfm c;
+      private final boolean d;
+      private gpq e;
+      private final boolean f;
+      private final boolean g;
+      private final gfo h;
 
-      public gsb.a a(@Nullable grp $$0, int $$1) {
-         if ($$0 != null) {
-            this.a.add(bos.a($$0, $$1));
+      public a(gfh $$0, gfm $$1, boolean $$2) {
+         this($$0.b(), $$0.c().a(), $$2, $$0.h(), $$1);
+      }
+
+      private a(boolean $$0, boolean $$1, boolean $$2, gfo $$3, gfm $$4) {
+         for (jf $$5 : jf.values()) {
+            this.b.put($$5, Lists.newArrayList());
          }
 
+         this.c = $$4;
+         this.d = $$0;
+         this.f = $$1;
+         this.g = $$2;
+         this.h = $$3;
+      }
+
+      public gsb.a a(jf $$0, gfc $$1) {
+         this.b.get($$0).add($$1);
          return this;
       }
 
-      @Nullable
-      public grp a() {
-         if (this.a.isEmpty()) {
-            return null;
+      public gsb.a a(gfc $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public gsb.a a(gpq $$0) {
+         this.e = $$0;
+         return this;
+      }
+
+      public gsb.a a() {
+         return this;
+      }
+
+      public grr b() {
+         if (this.e == null) {
+            throw new RuntimeException("Missing particle!");
          } else {
-            return (grp)(this.a.size() == 1 ? this.a.get(0).b() : new gsb(this.a));
+            return new gsb(this.a, this.b, this.d, this.f, this.g, this.e, this.h, this.c);
          }
       }
    }

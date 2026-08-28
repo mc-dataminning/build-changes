@@ -1,96 +1,91 @@
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 import java.util.UUID;
-import java.util.function.Consumer;
+import java.util.function.IntFunction;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class bui {
-   private final Map<jj<bue>, buf> a;
+public record bui(UUID d, String e, double f, bui.a g) {
+   private static final Logger h = LogUtils.getLogger();
+   public static final MapCodec<bui> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               kd.a.fieldOf("uuid").forGetter(bui::b),
+               Codec.STRING.fieldOf("name").forGetter($$0x -> $$0x.e),
+               Codec.DOUBLE.fieldOf("amount").forGetter(bui::d),
+               bui.a.f.fieldOf("operation").forGetter(bui::e)
+            )
+            .apply($$0, bui::new)
+   );
+   public static final Codec<bui> b = a.codec();
+   public static final ys<ByteBuf, bui> c = ys.a(kd.g, bui::b, yq.l, $$0 -> $$0.e, yq.j, bui::d, bui.a.e, bui::e, bui::new);
 
-   bui(Map<jj<bue>, buf> $$0) {
-      this.a = $$0;
+   public bui(String $$0, double $$1, bui.a $$2) {
+      this(ayg.a(ayo.c()), $$0, $$1, $$2);
    }
 
-   private buf d(jj<bue> $$0) {
-      buf $$1 = this.a.get($$0);
-      if ($$1 == null) {
-         throw new IllegalArgumentException("Can't find attribute " + $$0.g());
-      } else {
-         return $$1;
-      }
-   }
-
-   public double a(jj<bue> $$0) {
-      return this.d($$0).f();
-   }
-
-   public double b(jj<bue> $$0) {
-      return this.d($$0).b();
-   }
-
-   public double a(jj<bue> $$0, UUID $$1) {
-      buh $$2 = this.d($$0).a($$1);
-      if ($$2 == null) {
-         throw new IllegalArgumentException("Can't find modifier " + $$1 + " on attribute " + $$0.g());
-      } else {
-         return $$2.d();
-      }
+   public tx a() {
+      tx $$0 = new tx();
+      $$0.a("Name", this.e);
+      $$0.a("Amount", this.f);
+      $$0.a("Operation", this.g.a());
+      $$0.a("UUID", this.d);
+      return $$0;
    }
 
    @Nullable
-   public buf a(Consumer<buf> $$0, jj<bue> $$1) {
-      buf $$2 = this.a.get($$1);
-      if ($$2 == null) {
+   public static bui a(tx $$0) {
+      try {
+         UUID $$1 = $$0.a("UUID");
+         bui.a $$2 = bui.a.d.apply($$0.h("Operation"));
+         return new bui($$1, $$0.l("Name"), $$0.k("Amount"), $$2);
+      } catch (Exception var3) {
+         h.warn("Unable to create attribute: {}", var3.getMessage());
          return null;
-      } else {
-         buf $$3 = new buf($$1, $$0);
-         $$3.a($$2);
-         return $$3;
       }
    }
 
-   public static bui.a a() {
-      return new bui.a();
+   public UUID b() {
+      return this.d;
    }
 
-   public boolean c(jj<bue> $$0) {
-      return this.a.containsKey($$0);
+   public String c() {
+      return this.e;
    }
 
-   public boolean b(jj<bue> $$0, UUID $$1) {
-      buf $$2 = this.a.get($$0);
-      return $$2 != null && $$2.a($$1) != null;
+   public double d() {
+      return this.f;
    }
 
-   public static class a {
-      private final Builder<jj<bue>, buf> a = ImmutableMap.builder();
-      private boolean b;
+   public bui.a e() {
+      return this.g;
+   }
 
-      private buf b(jj<bue> $$0) {
-         buf $$1 = new buf($$0, $$1x -> {
-            if (this.b) {
-               throw new UnsupportedOperationException("Tried to change value for default attribute instance: " + $$0.g());
-            }
-         });
-         this.a.put($$0, $$1);
-         return $$1;
+   public static enum a implements azc {
+      a("add_value", 0),
+      b("add_multiplied_base", 1),
+      c("add_multiplied_total", 2);
+
+      public static final IntFunction<bui.a> d = aww.a(bui.a::a, values(), aww.a.a);
+      public static final ys<ByteBuf, bui.a> e = yq.a(d, bui.a::a);
+      public static final Codec<bui.a> f = azc.a(bui.a::values);
+      private final String g;
+      private final int h;
+
+      private a(final String $$0, final int $$1) {
+         this.g = $$0;
+         this.h = $$1;
       }
 
-      public bui.a a(jj<bue> $$0) {
-         this.b($$0);
-         return this;
+      public int a() {
+         return this.h;
       }
 
-      public bui.a a(jj<bue> $$0, double $$1) {
-         buf $$2 = this.b($$0);
-         $$2.a($$1);
-         return this;
-      }
-
-      public bui a() {
-         this.b = true;
-         return new bui(this.a.buildKeepingLast());
+      @Override
+      public String c() {
+         return this.g;
       }
    }
 }

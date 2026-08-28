@@ -405,7 +405,7 @@ public class aui {
    }
 
    private static File g(MinecraftServer $$0) {
-      return $$0.a(eqg.d).toFile();
+      return $$0.a(eqi.d).toFile();
    }
 
    private static void b(File $$0) {

@@ -5,7 +5,7 @@ public interface ep {
       }
 
       @Override
-      public boolean l_() {
+      public boolean k_() {
          return false;
       }
 
@@ -22,13 +22,13 @@ public interface ep {
 
    void a(wu var1);
 
-   boolean l_();
+   boolean k_();
 
    boolean w_();
 
    boolean U_();
 
-   default boolean m_() {
+   default boolean l_() {
       return false;
    }
 }

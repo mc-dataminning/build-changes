@@ -1,59 +1,62 @@
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.ArrayList;
+import java.util.List;
 
-public class cyd extends cya {
-   private static final cyf a = cyf.a(cuf.uv);
+public class cyd extends cyb {
+   private static final cyg a = cyg.a(cug.qO);
+   private static final cyg b = cyg.a(cug.pu);
+   private static final cyg c = cyg.a(cug.uv);
 
-   public cyd(cxx $$0) {
+   public cyd(cxy $$0) {
       super($$0);
    }
 
-   public boolean a(cxy $$0, dcf $$1) {
+   public boolean a(cxz $$0, dcg $$1) {
       boolean $$2 = false;
-      boolean $$3 = false;
+      int $$3 = 0;
 
       for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cuc $$5 = $$0.a($$4);
+         cud $$5 = $$0.a($$4);
          if (!$$5.e()) {
-            if ($$5.g() instanceof csw) {
+            if (a.a($$5)) {
+               if ($$2) {
+                  return false;
+               }
+
                $$2 = true;
-            } else {
-               if (!a.a($$5)) {
+            } else if (b.a($$5)) {
+               if (++$$3 > 3) {
                   return false;
                }
-
-               if ($$3) {
-                  return false;
-               }
-
-               $$3 = true;
+            } else if (!c.a($$5)) {
+               return false;
             }
          }
       }
 
-      return $$3 && $$2;
+      return $$2 && $$3 >= 1;
    }
 
-   public cuc a(cxy $$0, jl.a $$1) {
-      IntList $$2 = new IntArrayList();
-      cuc $$3 = null;
+   public cud a(cxz $$0, jl.a $$1) {
+      List<cwv> $$2 = new ArrayList<>();
+      int $$3 = 0;
 
       for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cuc $$5 = $$0.a($$4);
-         ctx $$6 = $$5.g();
-         if ($$6 instanceof csw) {
-            $$2.add(((csw)$$6).c().f());
-         } else if (a.a($$5)) {
-            $$3 = $$5.c(1);
+         cud $$5 = $$0.a($$4);
+         if (!$$5.e()) {
+            if (b.a($$5)) {
+               $$3++;
+            } else if (c.a($$5)) {
+               cwv $$6 = $$5.a(kn.T);
+               if ($$6 != null) {
+                  $$2.add($$6);
+               }
+            }
          }
       }
 
-      if ($$3 != null && !$$2.isEmpty()) {
-         $$3.a(kn.T, cwu.a, $$2, cwu::a);
-         return $$3;
-      } else {
-         return cuc.l;
-      }
+      cud $$7 = new cud(cug.uu, 3);
+      $$7.b(kn.U, new cww($$3, $$2));
+      return $$7;
    }
 
    @Override
@@ -62,7 +65,12 @@ public class cyd extends cya {
    }
 
    @Override
-   public cyn<?> ap_() {
-      return cyn.i;
+   public cud a(jl.a $$0) {
+      return new cud(cug.uu);
+   }
+
+   @Override
+   public cyo<?> ap_() {
+      return cyo.g;
    }
 }

@@ -1,26 +1,17 @@
-import com.mojang.authlib.minecraft.UserApiService;
-import java.nio.file.Path;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
+public class fyv {
+   private final fym a;
+   private final blh b;
 
-public interface fyv {
-   fyv a = new fyv() {
-      @Override
-      public CompletableFuture<Optional<cmm>> a() {
-         return CompletableFuture.completedFuture(Optional.empty());
-      }
-
-      @Override
-      public boolean b() {
-         return false;
-      }
-   };
-
-   static fyv a(UserApiService $$0, fgh $$1, Path $$2) {
-      return (fyv)($$1.g() == fgh.a.c ? new fyc($$0, $$1.b(), $$2) : a);
+   public fyv(fym $$0, blh $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   CompletableFuture<Optional<cmm>> a();
+   public void a() {
+      this.a.b(new ajf(ac.c()));
+   }
 
-   boolean b();
+   public void a(ajc $$0) {
+      this.b.a(ac.c() - $$0.b());
+   }
 }

@@ -16,32 +16,32 @@ public class ajr {
    public static final ajq<String> e = ajq.a(yq.l);
    public static final ajq<wu> f = ajq.a(ww.d);
    public static final ajq<Optional<wu>> g = ajq.a(ww.e);
-   public static final ajq<cuc> h = new ajq<cuc>() {
+   public static final ajq<cud> h = new ajq<cud>() {
       @Override
-      public ys<? super wf, cuc> codec() {
-         return cuc.h;
+      public ys<? super wf, cud> codec() {
+         return cud.h;
       }
 
-      public cuc a(cuc $$0) {
+      public cud a(cud $$0) {
          return $$0.s();
       }
    };
-   public static final ajq<dsk> i = ajq.a(yq.a(dfh.q));
-   private static final ys<ByteBuf, Optional<dsk>> G = new ys<ByteBuf, Optional<dsk>>() {
-      public void a(ByteBuf $$0, Optional<dsk> $$1) {
+   public static final ajq<dsl> i = ajq.a(yq.a(dfi.q));
+   private static final ys<ByteBuf, Optional<dsl>> G = new ys<ByteBuf, Optional<dsl>>() {
+      public void a(ByteBuf $$0, Optional<dsl> $$1) {
          if ($$1.isPresent()) {
-            wl.a($$0, dfh.i($$1.get()));
+            wl.a($$0, dfi.i($$1.get()));
          } else {
             wl.a($$0, 0);
          }
       }
 
-      public Optional<dsk> a(ByteBuf $$0) {
+      public Optional<dsl> a(ByteBuf $$0) {
          int $$1 = wl.a($$0);
-         return $$1 == 0 ? Optional.empty() : Optional.of(dfh.a($$1));
+         return $$1 == 0 ? Optional.empty() : Optional.of(dfi.a($$1));
       }
    };
-   public static final ajq<Optional<dsk>> j = ajq.a(G);
+   public static final ajq<Optional<dsl>> j = ajq.a(G);
    public static final ajq<Boolean> k = ajq.a(yq.b);
    public static final ajq<lh> l = ajq.a(lj.bg);
    public static final ajq<List<lh>> m = ajq.a(lj.bg.a(yq.a()));
@@ -61,7 +61,7 @@ public class ajr {
          return $$0.i();
       }
    };
-   public static final ajq<cly> u = ajq.a(cly.d);
+   public static final ajq<clz> u = ajq.a(clz.d);
    private static final ys<ByteBuf, OptionalInt> H = new ys<ByteBuf, OptionalInt>() {
       public OptionalInt a(ByteBuf $$0) {
          int $$1 = wl.a($$0);
@@ -73,13 +73,13 @@ public class ajr {
       }
    };
    public static final ajq<OptionalInt> v = ajq.a(H);
-   public static final ajq<btn> w = ajq.a(btn.t);
-   public static final ajq<jj<cev>> x = ajq.a(yq.b(lr.l));
-   public static final ajq<jj<cfv>> y = ajq.a(yq.b(lr.m));
-   public static final ajq<jj<cfc>> z = ajq.a(yq.b(lr.F));
-   public static final ajq<jj<ciq>> A = ajq.a(yq.b(lr.W));
-   public static final ajq<cga.a> B = ajq.a(cga.a.e);
-   public static final ajq<chi.a> C = ajq.a(chi.a.i);
+   public static final ajq<bto> w = ajq.a(bto.t);
+   public static final ajq<jj<cew>> x = ajq.a(cew.a);
+   public static final ajq<jj<cfw>> y = ajq.a(cfw.d);
+   public static final ajq<jj<cfd>> z = ajq.a(cfd.a);
+   public static final ajq<jj<cir>> A = ajq.a(cir.d);
+   public static final ajq<cgb.a> B = ajq.a(cgb.a.e);
+   public static final ajq<chj.a> C = ajq.a(chj.a.i);
    public static final ajq<Vector3f> D = ajq.a(yq.r);
    public static final ajq<Quaternionf> E = ajq.a(yq.s);
 

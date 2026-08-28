@@ -99,7 +99,7 @@ public class axw {
       return $$0.has($$1) ? a($$0.get($$1), $$1) : $$2;
    }
 
-   public static jj<ctx> b(JsonElement $$0, String $$1) {
+   public static jj<cty> b(JsonElement $$0, String $$1) {
       if ($$0.isJsonPrimitive()) {
          String $$2 = $$0.getAsString();
          return lq.g.c(new akk($$2)).orElseThrow(() -> new JsonSyntaxException("Expected " + $$1 + " to be an item, was unknown string '" + $$2 + "'"));
@@ -108,7 +108,7 @@ public class axw {
       }
    }
 
-   public static jj<ctx> j(JsonObject $$0, String $$1) {
+   public static jj<cty> j(JsonObject $$0, String $$1) {
       if ($$0.has($$1)) {
          return b($$0.get($$1), $$1);
       } else {
@@ -118,7 +118,7 @@ public class axw {
 
    @Nullable
    @Contract("_,_,!null->!null;_,_,null->_")
-   public static jj<ctx> a(JsonObject $$0, String $$1, @Nullable jj<ctx> $$2) {
+   public static jj<cty> a(JsonObject $$0, String $$1, @Nullable jj<cty> $$2) {
       return $$0.has($$1) ? b($$0.get($$1), $$1) : $$2;
    }
 

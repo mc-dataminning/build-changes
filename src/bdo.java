@@ -19,21 +19,21 @@ public class bdo extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.a(this.getOutputSchema().getTypeRaw(bgg.J));
+      return this.a(this.getOutputSchema().getTypeRaw(bgh.J));
    }
 
    private <R> TypeRewriteRule a(Type<R> $$0) {
       Type<Pair<Either<Pair<List<Pair<R, Integer>>, Dynamic<?>>, Unit>, Dynamic<?>>> $$1 = DSL.and(
          DSL.optional(DSL.field("RecipesUsed", DSL.and(DSL.compoundList($$0, DSL.intType()), DSL.remainderType()))), DSL.remainderType()
       );
-      OpticFinder<?> $$2 = DSL.namedChoice("minecraft:furnace", this.getInputSchema().getChoiceType(bgg.s, "minecraft:furnace"));
-      OpticFinder<?> $$3 = DSL.namedChoice("minecraft:blast_furnace", this.getInputSchema().getChoiceType(bgg.s, "minecraft:blast_furnace"));
-      OpticFinder<?> $$4 = DSL.namedChoice("minecraft:smoker", this.getInputSchema().getChoiceType(bgg.s, "minecraft:smoker"));
-      Type<?> $$5 = this.getOutputSchema().getChoiceType(bgg.s, "minecraft:furnace");
-      Type<?> $$6 = this.getOutputSchema().getChoiceType(bgg.s, "minecraft:blast_furnace");
-      Type<?> $$7 = this.getOutputSchema().getChoiceType(bgg.s, "minecraft:smoker");
-      Type<?> $$8 = this.getInputSchema().getType(bgg.s);
-      Type<?> $$9 = this.getOutputSchema().getType(bgg.s);
+      OpticFinder<?> $$2 = DSL.namedChoice("minecraft:furnace", this.getInputSchema().getChoiceType(bgh.s, "minecraft:furnace"));
+      OpticFinder<?> $$3 = DSL.namedChoice("minecraft:blast_furnace", this.getInputSchema().getChoiceType(bgh.s, "minecraft:blast_furnace"));
+      OpticFinder<?> $$4 = DSL.namedChoice("minecraft:smoker", this.getInputSchema().getChoiceType(bgh.s, "minecraft:smoker"));
+      Type<?> $$5 = this.getOutputSchema().getChoiceType(bgh.s, "minecraft:furnace");
+      Type<?> $$6 = this.getOutputSchema().getChoiceType(bgh.s, "minecraft:blast_furnace");
+      Type<?> $$7 = this.getOutputSchema().getChoiceType(bgh.s, "minecraft:smoker");
+      Type<?> $$8 = this.getInputSchema().getType(bgh.s);
+      Type<?> $$9 = this.getOutputSchema().getType(bgh.s);
       return this.fixTypeEverywhereTyped(
          "FurnaceRecipesFix",
          $$8,

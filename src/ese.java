@@ -1,22 +1,35 @@
-import java.util.Arrays;
-import java.util.function.Function;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public interface ese<T extends ese<T>> {
-   T b(esi.a var1);
+public class ese extends esj {
+   public static final MapCodec<ese> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0)
+            .and($$0.group(cp.a.fieldOf("item_filter").forGetter($$0x -> $$0x.b), esm.c.fieldOf("modifier").forGetter($$0x -> $$0x.c)))
+            .apply($$0, ese::new)
+   );
+   private final cp b;
+   private final esk c;
 
-   default <E> T a(Iterable<E> $$0, Function<E, esi.a> $$1) {
-      T $$2 = this.c();
-
-      for (E $$3 : $$0) {
-         $$2 = $$2.b($$1.apply($$3));
-      }
-
-      return $$2;
+   private ese(List<euh> $$0, cp $$1, esk $$2) {
+      super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   default <E> T a(E[] $$0, Function<E, esi.a> $$1) {
-      return this.a(Arrays.asList($$0), $$1);
+   @Override
+   public esl<ese> b() {
+      return esm.v;
    }
 
-   T c();
+   @Override
+   public cud a(cud $$0, eqw $$1) {
+      return this.b.a($$0) ? this.c.apply($$0, $$1) : $$0;
+   }
+
+   @Override
+   public void a(erc $$0) {
+      super.a($$0);
+      this.c.a($$0.a(".modifier"));
+   }
 }

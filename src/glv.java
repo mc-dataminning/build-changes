@@ -1,13 +1,20 @@
-public class glv extends glo<ckc> {
-   private static final akk a = new akk("textures/entity/skeleton/stray.png");
-   private static final akk i = new akk("textures/entity/skeleton/stray_overlay.png");
+public class glv<T extends ckc> extends gku<T, fwr<T>> {
+   private static final akk a = new akk("textures/entity/spider/spider.png");
 
-   public glv(gjm.a $$0) {
-      super($$0, fxn.bz, fxn.bA, fxn.bB);
-      this.a(new goc<>(this, $$0.f(), fxn.bC, i));
+   public glv(gjo.a $$0) {
+      this($$0, fxp.bx);
    }
 
-   public akk a(ckc $$0) {
+   public glv(gjo.a $$0, fxo $$1) {
+      super($$0, new fwr<>($$0.a($$1)), 0.8F);
+      this.a(new goh<>(this));
+   }
+
+   protected float b(T $$0) {
+      return 180.0F;
+   }
+
+   public akk a(T $$0) {
       return a;
    }
 }

@@ -1,30 +1,20 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.Objects;
 import java.util.function.Consumer;
 
-public class ere extends erm {
-   public static final MapCodec<ere> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(akk.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, ere::new)
-   );
-   private final akk j;
+@FunctionalInterface
+interface ere {
+   ere b = ($$0, $$1) -> false;
+   ere c = ($$0, $$1) -> true;
 
-   private ere(akk $$0, int $$1, int $$2, List<euf> $$3, List<esi> $$4) {
-      super($$1, $$2, $$3, $$4);
-      this.j = $$0;
+   boolean expand(eqw var1, Consumer<erl> var2);
+
+   default ere and(ere $$0) {
+      Objects.requireNonNull($$0);
+      return ($$1, $$2) -> this.expand($$1, $$2) && $$0.expand($$1, $$2);
    }
 
-   @Override
-   public erl a() {
-      return eri.e;
-   }
-
-   @Override
-   public void a(Consumer<cuc> $$0, equ $$1) {
-      $$1.a(this.j, $$0);
-   }
-
-   public static erm.a<?> a(akk $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new ere($$0, $$1, $$2, $$3, $$4));
+   default ere or(ere $$0) {
+      Objects.requireNonNull($$0);
+      return ($$1, $$2) -> this.expand($$1, $$2) || $$0.expand($$1, $$2);
    }
 }

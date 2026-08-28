@@ -23,7 +23,7 @@ public class aou {
       );
    }
 
-   private static int a(eq $$0, int $$1, bpl $$2) {
+   private static int a(eq $$0, int $$1, bpm $$2) {
       return $$1 == -1 ? $$2.a($$0.l().J().E_()) : $$1;
    }
 

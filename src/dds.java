@@ -1,84 +1,129 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.datafixers.util.Pair;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.mojang.logging.LogUtils;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.Lifecycle;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dds extends ddj {
-   private static final MapCodec<jj<ddf>> d = ddf.c.fieldOf("biome");
-   public static final MapCodec<ddo.c<jj<ddf>>> b = ddo.c.a(d).fieldOf("biomes");
-   private static final MapCodec<jj<ddt>> e = ddt.b.fieldOf("preset").withLifecycle(Lifecycle.stable());
-   public static final MapCodec<dds> c = Codec.mapEither(b, e).xmap(dds::new, $$0 -> $$0.f);
-   private final Either<ddo.c<jj<ddf>>, jj<ddt>> f;
+public class dds {
+   private static final Logger d = LogUtils.getLogger();
+   private static final float e = 0.1F;
+   public static final bov<dds.c> a = bov.c();
+   public static final dds b = new dds.a().a();
+   public static final MapCodec<dds> c = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.floatRange(0.0F, 0.9999999F).optionalFieldOf("creature_spawn_probability", 0.1F).forGetter($$0x -> $$0x.f),
+               Codec.simpleMap(btf.i, bov.c(dds.c.a).promotePartial(ac.a("Spawn data: ", d::error)), azc.a(btf.values()))
+                  .fieldOf("spawners")
+                  .forGetter($$0x -> $$0x.g),
+               Codec.simpleMap(lq.f.r(), dds.b.a, lq.f).fieldOf("spawn_costs").forGetter($$0x -> $$0x.h)
+            )
+            .apply($$0, dds::new)
+   );
+   private final float f;
+   private final Map<btf, bov<dds.c>> g;
+   private final Map<bsn<?>, dds.b> h;
 
-   private dds(Either<ddo.c<jj<ddf>>, jj<ddt>> $$0) {
+   dds(float $$0, Map<btf, bov<dds.c>> $$1, Map<bsn<?>, dds.b> $$2) {
       this.f = $$0;
+      this.g = ImmutableMap.copyOf($$1);
+      this.h = ImmutableMap.copyOf($$2);
    }
 
-   public static dds a(ddo.c<jj<ddf>> $$0) {
-      return new dds(Either.left($$0));
+   public bov<dds.c> a(btf $$0) {
+      return this.g.getOrDefault($$0, a);
    }
 
-   public static dds a(jj<ddt> $$0) {
-      return new dds(Either.right($$0));
+   @Nullable
+   public dds.b a(bsn<?> $$0) {
+      return this.h.get($$0);
    }
 
-   private ddo.c<jj<ddf>> d() {
-      return (ddo.c<jj<ddf>>)this.f.map($$0 -> $$0, $$0 -> ((ddt)$$0.a()).a());
+   public float a() {
+      return this.f;
    }
 
-   @Override
-   protected Stream<jj<ddf>> b() {
-      return this.d().a().stream().map(Pair::getSecond);
+   public static class a {
+      private final Map<btf, List<dds.c>> a = Stream.of(btf.values()).collect(ImmutableMap.toImmutableMap($$0 -> $$0, $$0 -> Lists.newArrayList()));
+      private final Map<bsn<?>, dds.b> b = Maps.newLinkedHashMap();
+      private float c = 0.1F;
+
+      public dds.a a(btf $$0, dds.c $$1) {
+         this.a.get($$0).add($$1);
+         return this;
+      }
+
+      public dds.a a(bsn<?> $$0, double $$1, double $$2) {
+         this.b.put($$0, new dds.b($$2, $$1));
+         return this;
+      }
+
+      public dds.a a(float $$0) {
+         this.c = $$0;
+         return this;
+      }
+
+      public dds a() {
+         return new dds(
+            this.c,
+            this.a.entrySet().stream().collect(ImmutableMap.toImmutableMap(Entry::getKey, $$0 -> bov.a((List)$$0.getValue()))),
+            ImmutableMap.copyOf(this.b)
+         );
+      }
    }
 
-   @Override
-   protected MapCodec<? extends ddj> a() {
-      return c;
-   }
-
-   public boolean a(akj<ddt> $$0) {
-      Optional<jj<ddt>> $$1 = this.f.right();
-      return $$1.isPresent() && $$1.get().a($$0);
-   }
-
-   @Override
-   public jj<ddf> getNoiseBiome(int $$0, int $$1, int $$2, ddo.f $$3) {
-      return this.a($$3.a($$0, $$1, $$2));
-   }
-
-   @azl
-   public jj<ddf> a(ddo.h $$0) {
-      return this.d().a($$0);
-   }
-
-   @Override
-   public void a(List<String> $$0, ja $$1, ddo.f $$2) {
-      int $$3 = ju.a($$1.u());
-      int $$4 = ju.a($$1.v());
-      int $$5 = ju.a($$1.w());
-      ddo.h $$6 = $$2.a($$3, $$4, $$5);
-      float $$7 = ddo.a($$6.d());
-      float $$8 = ddo.a($$6.e());
-      float $$9 = ddo.a($$6.b());
-      float $$10 = ddo.a($$6.c());
-      float $$11 = ddo.a($$6.g());
-      double $$12 = (double)dym.a($$11);
-      ddv $$13 = new ddv();
-      $$0.add(
-         "Biome builder PV: "
-            + ddv.a($$12)
-            + " C: "
-            + $$13.b((double)$$7)
-            + " E: "
-            + $$13.c((double)$$8)
-            + " T: "
-            + $$13.d((double)$$9)
-            + " H: "
-            + $$13.e((double)$$10)
+   public static record b(double b, double c) {
+      public static final Codec<dds.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(Codec.DOUBLE.fieldOf("energy_budget").forGetter($$0x -> $$0x.b), Codec.DOUBLE.fieldOf("charge").forGetter($$0x -> $$0x.c))
+               .apply($$0, dds.b::new)
       );
+
+      public double a() {
+         return this.b;
+      }
+
+      public double b() {
+         return this.c;
+      }
+   }
+
+   public static class c extends bot.a {
+      public static final Codec<dds.c> a = RecordCodecBuilder.create(
+            $$0 -> $$0.group(
+                     lq.f.r().fieldOf("type").forGetter($$0x -> $$0x.b),
+                     bos.a.fieldOf("weight").forGetter(bot.a::a),
+                     axo.l.fieldOf("minCount").forGetter($$0x -> $$0x.c),
+                     axo.l.fieldOf("maxCount").forGetter($$0x -> $$0x.d)
+                  )
+                  .apply($$0, dds.c::new)
+         )
+         .validate($$0 -> $$0.c > $$0.d ? DataResult.error(() -> "minCount needs to be smaller or equal to maxCount") : DataResult.success($$0));
+      public final bsn<?> b;
+      public final int c;
+      public final int d;
+
+      public c(bsn<?> $$0, int $$1, int $$2, int $$3) {
+         this($$0, bos.a($$1), $$2, $$3);
+      }
+
+      public c(bsn<?> $$0, bos $$1, int $$2, int $$3) {
+         super($$1);
+         this.b = $$0.f() == btf.h ? bsn.az : $$0;
+         this.c = $$2;
+         this.d = $$3;
+      }
+
+      @Override
+      public String toString() {
+         return bsn.a(this.b) + "*(" + this.c + "-" + this.d + "):" + this.a();
+      }
    }
 }

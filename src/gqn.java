@@ -1,15 +1,9 @@
-public class gqn extends gqr {
-   private static final akk a = new akk("back");
-
-   public gqn(gpp $$0) {
-      super($$0, new akk("textures/atlas/paintings.png"), new akk("paintings"));
+public class gqn extends gqt {
+   public gqn(gpr $$0) {
+      super($$0, new akk("textures/atlas/map_decorations.png"), new akk("map_decorations"));
    }
 
-   public gpo a(ciq $$0) {
-      return this.a($$0.d());
-   }
-
-   public gpo a() {
-      return this.a(a);
+   public gpq a(eps $$0) {
+      return this.a($$0.a());
    }
 }

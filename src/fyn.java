@@ -1,17 +1,13 @@
-import com.mojang.authlib.GameProfile;
-import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public record fyn(
-   GameProfile a,
-   guu b,
-   jx.b c,
-   coy d,
-   @Nullable String e,
-   @Nullable fyx f,
-   @Nullable fnj g,
-   Map<akk, byte[]> h,
-   @Nullable fht.b i,
-   @Deprecated(forRemoval = true) boolean j
-) {
+public enum fyn {
+   a,
+   b;
+
+   private static final List<fyn> c = List.of(values());
+   private static final jx.b d = jx.a(lq.aA);
+
+   public static jq<fyn> a() {
+      return new jq<>(c).a(a, d);
+   }
 }

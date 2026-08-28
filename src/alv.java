@@ -54,21 +54,21 @@ public class alv {
                                              ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a(
                                                                      "color"
                                                                   )
-                                                                  .then(er.a("pink").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpw.a.a))))
-                                                               .then(er.a("blue").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpw.a.b))))
-                                                            .then(er.a("red").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpw.a.c))))
-                                                         .then(er.a("green").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpw.a.d))))
-                                                      .then(er.a("yellow").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpw.a.e))))
-                                                   .then(er.a("purple").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpw.a.f))))
-                                                .then(er.a("white").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpw.a.g)))
+                                                                  .then(er.a("pink").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpx.a.a))))
+                                                               .then(er.a("blue").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpx.a.b))))
+                                                            .then(er.a("red").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpx.a.c))))
+                                                         .then(er.a("green").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpx.a.d))))
+                                                      .then(er.a("yellow").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpx.a.e))))
+                                                   .then(er.a("purple").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpx.a.f))))
+                                                .then(er.a("white").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpx.a.g)))
                                           ))
                                        .then(
                                           ((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("style")
-                                                         .then(er.a("progress").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpw.b.a))))
-                                                      .then(er.a("notched_6").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpw.b.b))))
-                                                   .then(er.a("notched_10").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpw.b.c))))
-                                                .then(er.a("notched_12").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpw.b.d))))
-                                             .then(er.a("notched_20").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpw.b.e)))
+                                                         .then(er.a("progress").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpx.b.a))))
+                                                      .then(er.a("notched_6").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpx.b.b))))
+                                                   .then(er.a("notched_10").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpx.b.c))))
+                                                .then(er.a("notched_12").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpx.b.d))))
+                                             .then(er.a("notched_20").executes($$0x -> a((eq)$$0x.getSource(), a($$0x), bpx.b.e)))
                                        ))
                                     .then(
                                        er.a("value")
@@ -135,7 +135,7 @@ public class alv {
       if ($$1.g().isEmpty()) {
          $$0.a(() -> wu.a("commands.bossbar.get.players.none", $$1.e()), true);
       } else {
-         $$0.a(() -> wu.a("commands.bossbar.get.players.some", $$1.e(), $$1.g().size(), wx.b($$1.g(), cmk::O_)), true);
+         $$0.a(() -> wu.a("commands.bossbar.get.players.some", $$1.e(), $$1.g().size(), wx.b($$1.g(), cml::O_)), true);
       }
 
       return $$1.g().size();
@@ -180,7 +180,7 @@ public class alv {
       }
    }
 
-   private static int a(eq $$0, alk $$1, bpw.a $$2) throws CommandSyntaxException {
+   private static int a(eq $$0, alk $$1, bpx.a $$2) throws CommandSyntaxException {
       if ($$1.k().equals($$2)) {
          throw f.create();
       } else {
@@ -190,7 +190,7 @@ public class alv {
       }
    }
 
-   private static int a(eq $$0, alk $$1, bpw.b $$2) throws CommandSyntaxException {
+   private static int a(eq $$0, alk $$1, bpx.b $$2) throws CommandSyntaxException {
       if ($$1.l().equals($$2)) {
          throw g.create();
       } else {
@@ -219,7 +219,7 @@ public class alv {
          if ($$1.g().isEmpty()) {
             $$0.a(() -> wu.a("commands.bossbar.set.players.success.none", $$1.e()), true);
          } else {
-            $$0.a(() -> wu.a("commands.bossbar.set.players.success.some", $$1.e(), $$2.size(), wx.b($$2, cmk::O_)), true);
+            $$0.a(() -> wu.a("commands.bossbar.set.players.success.some", $$1.e(), $$2.size(), wx.b($$2, cml::O_)), true);
          }
 
          return $$1.g().size();

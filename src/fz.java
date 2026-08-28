@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-public class fz implements ArgumentType<cre> {
+public class fz implements ArgumentType<crf> {
    private static final Collection<String> a = List.of("container.*", "container.5", "weapon");
    private static final DynamicCommandExceptionType b = new DynamicCommandExceptionType($$0 -> wu.b("slot.unknown", $$0));
 
@@ -17,13 +17,13 @@ public class fz implements ArgumentType<cre> {
       return new fz();
    }
 
-   public static cre a(CommandContext<eq> $$0, String $$1) {
-      return (cre)$$0.getArgument($$1, cre.class);
+   public static crf a(CommandContext<eq> $$0, String $$1) {
+      return (crf)$$0.getArgument($$1, crf.class);
    }
 
-   public cre a(StringReader $$0) throws CommandSyntaxException {
+   public crf a(StringReader $$0) throws CommandSyntaxException {
       String $$1 = eu.a($$0, $$0x -> $$0x != ' ');
-      cre $$2 = crf.a($$1);
+      crf $$2 = crg.a($$1);
       if ($$2 == null) {
          throw b.createWithContext($$0, $$1);
       } else {
@@ -32,7 +32,7 @@ public class fz implements ArgumentType<cre> {
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
-      return ev.b(crf.a(), $$1);
+      return ev.b(crg.a(), $$1);
    }
 
    public Collection<String> getExamples() {

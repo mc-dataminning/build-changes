@@ -96,11 +96,11 @@ public class er {
       aos.a(this.h);
       aou.a(this.h);
       aow.a(this.h);
-      if (bna.f.d()) {
+      if (bnb.f.d()) {
          amw.a(this.h);
       }
 
-      if (aa.aW) {
+      if (aa.aU) {
          tl.a(this.h);
          anl.a(this.h, $$1);
          amf.a(this.h);
@@ -170,7 +170,7 @@ public class er {
          }
 
          $$2.b(wu.c("command.failed").a($$1x -> $$1x.a(new xa(xa.a.a, $$5))));
-         if (aa.aW) {
+         if (aa.aU) {
             $$2.b(wu.b(ac.c(var12)));
             g.error("'/{}' threw an exception", $$1, var12);
          }
@@ -213,8 +213,8 @@ public class er {
       hp<eq> $$3 = f.get();
       boolean $$4 = $$3 == null;
       if ($$4) {
-         int $$5 = Math.max(1, $$2.aN().c(dcb.x));
-         int $$6 = $$2.aN().c(dcb.y);
+         int $$5 = Math.max(1, $$2.aN().c(dcc.x));
+         int $$6 = $$2.aN().c(dcc.y);
 
          try (hp<eq> $$7 = new hp<>($$5, $$6, $$2.aU())) {
             f.set($$7);
@@ -232,7 +232,7 @@ public class er {
       Map<CommandNode<eq>, CommandNode<ev>> $$1 = Maps.newHashMap();
       RootCommandNode<ev> $$2 = new RootCommandNode();
       $$1.put(this.h.getRoot(), $$2);
-      this.a(this.h.getRoot(), $$2, $$0.dh(), $$1);
+      this.a(this.h.getRoot(), $$2, $$0.di(), $$1);
       $$0.c.b(new acg($$2));
    }
 

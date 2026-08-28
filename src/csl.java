@@ -1,63 +1,44 @@
-import java.util.Optional;
-import javax.annotation.Nullable;
-
-public class csl extends ctx {
-   public csl(ctx.a $$0) {
+public class csl extends cty {
+   public csl(cty.a $$0) {
       super($$0);
    }
 
-   @Nullable
-   public static ji a(dcf $$0) {
-      return $$0.D_().j() ? ji.a($$0.af(), $$0.V()) : null;
-   }
-
    @Override
-   public boolean d_(cuc $$0) {
-      return $$0.b(kn.S) || super.d_($$0);
-   }
-
-   @Override
-   public void a(cuc $$0, dcf $$1, bsg $$2, int $$3, boolean $$4) {
-      if ($$1 instanceof aqm $$5) {
-         cwz $$6 = $$0.a(kn.S);
-         if ($$6 != null) {
-            cwz $$7 = $$6.a($$5);
-            if ($$7 != $$6) {
-               $$0.b(kn.S, $$7);
+   public cud a(cud $$0, dcg $$1, btc $$2) {
+      cud $$3 = super.a($$0, $$1, $$2);
+      if (!$$1.B) {
+         for (int $$4 = 0; $$4 < 16; $$4++) {
+            double $$5 = $$2.dw() + ($$2.dU().j() - 0.5) * 16.0;
+            double $$6 = ayg.a($$2.dy() + (double)($$2.dU().a(16) - 8), (double)$$1.I_(), (double)($$1.I_() + ((aqm)$$1).k() - 1));
+            double $$7 = $$2.dC() + ($$2.dU().j() - 0.5) * 16.0;
+            if ($$2.bT()) {
+               $$2.ad();
             }
-         }
-      }
-   }
 
-   @Override
-   public bqg a(cxo $$0) {
-      ja $$1 = $$0.a();
-      dcf $$2 = $$0.q();
-      if (!$$2.a_($$1).a(dfj.pq)) {
-         return super.a($$0);
-      } else {
-         $$2.a(null, $$1, avh.on, avi.h, 1.0F, 1.0F);
-         cmk $$3 = $$0.o();
-         cuc $$4 = $$0.n();
-         boolean $$5 = !$$3.fM() && $$4.H() == 1;
-         cwz $$6 = new cwz(Optional.of(ji.a($$2.af(), $$1)), true);
-         if ($$5) {
-            $$4.b(kn.S, $$6);
-         } else {
-            cuc $$7 = $$4.a(cuf.qS, 1);
-            $$4.a(1, $$3);
-            $$7.b(kn.S, $$6);
-            if (!$$3.fZ().f($$7)) {
-               $$3.a($$7, false);
+            ewh $$8 = $$2.dp();
+            if ($$2.b($$5, $$6, $$7, true)) {
+               $$1.a(dxh.R, $$8, dxh.a.a($$2));
+               avi $$10;
+               avg $$9;
+               if ($$2 instanceof cfc) {
+                  $$9 = avh.jp;
+                  $$10 = avi.g;
+               } else {
+                  $$9 = avh.fh;
+                  $$10 = avi.h;
+               }
+
+               $$1.a(null, $$2.dw(), $$2.dy(), $$2.dC(), $$9, $$10);
+               $$2.n();
+               break;
             }
          }
 
-         return bqg.a($$2.B);
+         if ($$2 instanceof cml $$13) {
+            $$13.gv().a(this, 20);
+         }
       }
-   }
 
-   @Override
-   public String h(cuc $$0) {
-      return $$0.b(kn.S) ? "item.minecraft.lodestone_compass" : super.h($$0);
+      return $$3;
    }
 }

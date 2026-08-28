@@ -1,63 +1,43 @@
-import java.util.ArrayList;
+import com.google.common.collect.Maps;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.Nullable;
+import java.util.function.Function;
 
-public interface bsq {
-   void a(bsn var1, cuc var2);
+public record bsq(akj<erb> c, Map<bso, Float> d) {
+   public static final Codec<Map<bso, Float>> a = Codec.either(Codec.FLOAT, Codec.unboundedMap(bso.i, Codec.FLOAT))
+      .xmap($$0 -> (Map)$$0.map(bsq::a, Function.identity()), $$0 -> {
+         boolean $$1 = $$0.values().stream().distinct().count() == 1L;
+         boolean $$2 = $$0.keySet().containsAll(Arrays.asList(bso.values()));
+         return $$1 && $$2 ? Either.left($$0.values().stream().findFirst().orElse(0.0F)) : Either.right($$0);
+      });
+   public static final Codec<bsq> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(akj.a(lr.bb).fieldOf("loot_table").forGetter(bsq::a), a.optionalFieldOf("slot_drop_chances", Map.of()).forGetter(bsq::b))
+            .apply($$0, bsq::new)
+   );
 
-   cuc a(bsn var1);
-
-   void a(bsn var1, float var2);
-
-   default void a(bsp $$0, eqx $$1) {
-      this.a($$0.a(), $$1, $$0.b());
+   private static Map<bso, Float> a(float $$0) {
+      return a(List.of(bso.values()), $$0);
    }
 
-   default void a(akj<eqz> $$0, eqx $$1, Map<bsn, Float> $$2) {
-      this.a($$0, $$1, 0L, $$2);
-   }
+   private static Map<bso, Float> a(List<bso> $$0, float $$1) {
+      Map<bso, Float> $$2 = Maps.newHashMap();
 
-   default void a(akj<eqz> $$0, eqx $$1, long $$2, Map<bsn, Float> $$3) {
-      if (!$$0.equals(eqq.a)) {
-         eqz $$4 = $$1.a().o().bf().b($$0);
-         if ($$4 != eqz.a) {
-            List<cuc> $$5 = $$4.a($$1, $$2);
-            List<bsn> $$6 = new ArrayList<>();
-
-            for (cuc $$7 : $$5) {
-               bsn $$8 = this.a($$7, $$6);
-               if ($$8 != null) {
-                  cuc $$9 = $$8.f() ? $$7.c(1) : $$7;
-                  this.a($$8, $$9);
-                  Float $$10 = $$3.get($$8);
-                  if ($$10 != null) {
-                     this.a($$8, $$10);
-                  }
-
-                  $$6.add($$8);
-               }
-            }
-         }
+      for (bso $$3 : $$0) {
+         $$2.put($$3, $$1);
       }
+
+      return $$2;
    }
 
-   @Nullable
-   default bsn a(cuc $$0, List<bsn> $$1) {
-      if ($$0.e()) {
-         return null;
-      } else {
-         cte $$2 = cte.c_($$0);
-         if ($$2 != null) {
-            bsn $$3 = $$2.m();
-            if (!$$1.contains($$3)) {
-               return $$3;
-            }
-         } else if (!$$1.contains(bsn.a)) {
-            return bsn.a;
-         }
+   public akj<erb> a() {
+      return this.c;
+   }
 
-         return null;
-      }
+   public Map<bso, Float> b() {
+      return this.d;
    }
 }

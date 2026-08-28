@@ -55,7 +55,7 @@ public class api implements Runnable {
             p $$9 = $$8.a("Thread Dump");
             $$9.a("Threads", $$5);
             p $$10 = $$8.a("Performance stats");
-            $$10.a("Random tick rate", () -> this.d.bc().o().a(dcb.o).toString());
+            $$10.a("Random tick rate", () -> this.d.bc().o().a(dcc.o).toString());
             $$10.a("Level stats", () -> Streams.stream(this.d.L()).map($$0x -> $$0x.af() + ": " + $$0x.F()).collect(Collectors.joining(",\n")));
             akm.a("Crash report:\n" + $$8.e());
             File $$11 = new File(new File(this.d.D(), "crash-reports"), "crash-" + ac.f() + "-server.txt");

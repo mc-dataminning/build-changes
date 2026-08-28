@@ -1,4 +1,4 @@
-public record acl(ctx b, int c) implements zb<abn> {
+public record acl(cty b, int c) implements zb<abn> {
    public static final ys<wf, acl> a = ys.a(yq.a(lr.K), acl::b, yq.g, acl::e, acl::new);
 
    @Override

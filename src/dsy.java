@@ -1,17 +1,20 @@
 public enum dsy implements azc {
-   a("floor"),
-   b("ceiling"),
-   c("single_wall"),
-   d("double_wall");
+   a("head"),
+   b("foot");
 
-   private final String e;
+   private final String c;
 
    private dsy(final String $$0) {
-      this.e = $$0;
+      this.c = $$0;
+   }
+
+   @Override
+   public String toString() {
+      return this.c;
    }
 
    @Override
    public String c() {
-      return this.e;
+      return this.c;
    }
 }

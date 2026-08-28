@@ -1,58 +1,51 @@
-public class ggh implements ggd<dpt> {
-   private final gkk a;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import com.google.common.collect.ImmutableMap.Builder;
+import java.util.Map;
 
-   public ggh(gge.a $$0) {
-      this.a = $$0.d();
+public class ggh {
+   private static final Map<dps<?>, ggg<?>> a = Maps.newHashMap();
+
+   private static <T extends dpq> void a(dps<? extends T> $$0, ggg<T> $$1) {
+      a.put($$0, $$1);
    }
 
-   public void a(dpt $$0, float $$1, fam $$2, ged $$3, int $$4, int $$5) {
-      if ($$0.i() != null) {
-         int $$6 = $$0.n().c(dta.bv);
-         if ($$6 > 0) {
-            jf $$7 = $$0.d();
-            if ($$7 != null) {
-               cuc $$8 = $$0.f();
-               if (!$$8.e()) {
-                  $$2.a();
-                  $$2.a(0.0F, 0.5F, 0.0F);
-                  float[] $$9 = this.a($$7, $$6);
-                  $$2.a($$9[0], $$9[1], $$9[2]);
-                  $$2.a(a.d.rotationDegrees(75.0F));
-                  boolean $$10 = $$7 == jf.f || $$7 == jf.e;
-                  $$2.a(a.d.rotationDegrees((float)(($$10 ? 90 : 0) + 11)));
-                  $$2.b(0.5F, 0.5F, 0.5F);
-                  int $$11 = geb.a($$0.i(), $$0.n(), $$0.az_().a($$7));
-                  this.a.a($$8, ctz.i, $$11, gpf.d, $$2, $$3, $$0.i(), 0);
-                  $$2.b();
-               }
-            }
+   public static Map<dps<?>, ggf<?>> a(ggg.a $$0) {
+      Builder<dps<?>, ggf<?>> $$1 = ImmutableMap.builder();
+      a.forEach(($$2, $$3) -> {
+         try {
+            $$1.put($$2, $$3.create($$0));
+         } catch (Exception var5) {
+            throw new IllegalStateException("Failed to create model for " + lq.j.b((dps<?>)$$2), var5);
          }
-      }
+      });
+      return $$1.build();
    }
 
-   private float[] a(jf $$0, int $$1) {
-      float[] $$2 = new float[]{0.5F, 0.0F, 0.5F};
-      float $$3 = (float)$$1 / 10.0F * 0.75F;
-      switch ($$0) {
-         case f:
-            $$2[0] = 0.73F + $$3;
-            break;
-         case e:
-            $$2[0] = 0.25F - $$3;
-            break;
-         case b:
-            $$2[1] = 0.25F + $$3;
-            break;
-         case a:
-            $$2[1] = -0.23F - $$3;
-            break;
-         case c:
-            $$2[2] = 0.25F - $$3;
-            break;
-         case d:
-            $$2[2] = 0.73F + $$3;
-      }
-
-      return $$2;
+   static {
+      a(dps.h, ggt::new);
+      a(dps.i, ggp::new);
+      a(dps.j, ggv::new);
+      a(dps.k, ggr::new);
+      a(dps.b, ggl::new);
+      a(dps.d, ggl::new);
+      a(dps.c, ggl::new);
+      a(dps.m, ggo::new);
+      a(dps.D, ggq::new);
+      a(dps.n, ggy::new);
+      a(dps.v, ggx::new);
+      a(dps.o, ggb::new);
+      a(dps.p, ggu::new);
+      a(dps.t, gga::new);
+      a(dps.u, ggw::new);
+      a(dps.x, ggs::new);
+      a(dps.y, ggc::new);
+      a(dps.z, ggm::new);
+      a(dps.E, ggd::new);
+      a(dps.G, ggk::new);
+      a(dps.N, ggj::new);
+      a(dps.O, ggn::new);
+      a(dps.Q, ggz::new);
+      a(dps.R, gha::new);
    }
 }

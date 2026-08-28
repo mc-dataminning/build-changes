@@ -1,113 +1,51 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
 
-public class dmm extends dhp implements dfk, dmi {
-   public static final MapCodec<dmm> c = b(dmm::new);
-   private static final dtb g = dta.C;
-   public static final dte d = dta.R;
-   protected static final float e = 6.0F;
-   protected static final ewy f = dfh.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
+public class dmm extends diy {
+   public static final MapCodec<dmm> a = b(dmm::new);
 
    @Override
    public MapCodec<dmm> a() {
-      return c;
+      return a;
    }
 
-   public dmm(dsj.d $$0) {
+   public dmm(dsk.d $$0) {
       super($$0);
-      this.k(this.E.b().a(b, dtg.b).a(g, Boolean.valueOf(false)).a(d, jf.c));
    }
 
    @Override
-   protected ewy a(dsk $$0, dbl $$1, ja $$2, ewk $$3) {
-      return f;
-   }
-
-   @Override
-   protected boolean b(dsk $$0, dbl $$1, ja $$2) {
-      return $$0.a(avw.bx) || $$1.b_($$2.c()).a(eoi.c) && super.b($$0, $$1, $$2);
-   }
-
-   @Nullable
-   @Override
-   public dsk a(cxm $$0) {
-      dsk $$1 = super.a($$0);
-      return $$1 != null ? c($$0.q(), $$0.a(), $$1.a(d, $$0.g().g())) : null;
-   }
-
-   @Override
-   public void a(dcf $$0, ja $$1, dsk $$2, btb $$3, cuc $$4) {
-      if (!$$0.x_()) {
-         ja $$5 = $$1.c();
-         dsk $$6 = dhp.c($$0, $$5, this.o().a(b, dtg.a).a(d, $$2.c(d)));
-         $$0.a($$5, $$6, 3);
-      }
-   }
-
-   @Override
-   protected eoh b_(dsk $$0) {
-      return $$0.c(g) ? eoi.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected boolean a(dsk $$0, dci $$1, ja $$2) {
-      if ($$0.c(b) == dtg.a) {
-         return super.a($$0, $$1, $$2);
+   public void a(dcg $$0, dsl $$1, ja $$2, bsh $$3, float $$4) {
+      if ($$3.bZ()) {
+         super.a($$0, $$1, $$2, $$3, $$4);
       } else {
-         ja $$3 = $$2.d();
-         dsk $$4 = $$1.a_($$3);
-         return this.b($$4, $$1, $$3);
+         $$3.a($$4, 0.0F, $$0.aj().l());
       }
    }
 
    @Override
-   protected dsk a(dsk $$0, jf $$1, dsk $$2, dcg $$3, ja $$4, ja $$5) {
-      if ($$0.c(g)) {
-         $$3.a($$4, eoi.c, eoi.c.a($$3));
-      }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void a(dsl.a<dfh, dsk> $$0) {
-      $$0.a(b, g, d);
-   }
-
-   @Override
-   public boolean b(dci $$0, ja $$1, dsk $$2) {
-      return true;
-   }
-
-   @Override
-   public boolean a(dcf $$0, ayo $$1, ja $$2, dsk $$3) {
-      return true;
-   }
-
-   @Override
-   public void a(aqm $$0, ayo $$1, ja $$2, dsk $$3) {
-      if ($$3.c(dhp.b) == dtg.b) {
-         ja $$4 = $$2.c();
-         $$0.a($$4, $$0.b_($$4).g(), 18);
-         dfe.a($$0, $$1, $$2, $$3.c(d));
+   public void a(dbm $$0, bsh $$1) {
+      if ($$1.bZ()) {
+         super.a($$0, $$1);
       } else {
-         ja $$5 = $$2.d();
-         this.a($$0, $$1, $$5, $$0.a_($$5));
+         this.a($$1);
+      }
+   }
+
+   private void a(bsh $$0) {
+      ewh $$1 = $$0.du();
+      if ($$1.d < 0.0) {
+         double $$2 = $$0 instanceof btc ? 1.0 : 0.8;
+         $$0.o($$1.c, -$$1.d * $$2, $$1.e);
       }
    }
 
    @Override
-   protected dsk a(dsk $$0, dlu $$1) {
-      return $$0.a(d, $$1.a($$0.c(d)));
-   }
+   public void a(dcg $$0, ja $$1, dsl $$2, bsh $$3) {
+      double $$4 = Math.abs($$3.du().d);
+      if ($$4 < 0.1 && !$$3.bY()) {
+         double $$5 = 0.4 + $$4 * 0.2;
+         $$3.j($$3.du().d($$5, 1.0, $$5));
+      }
 
-   @Override
-   protected dsk a(dsk $$0, dke $$1) {
-      return $$0.a($$1.a($$0.c(d)));
-   }
-
-   @Override
-   protected float at_() {
-      return 0.1F;
+      super.a($$0, $$1, $$2, $$3);
    }
 }

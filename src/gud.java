@@ -1,56 +1,58 @@
-import com.google.common.collect.Maps;
+import java.io.BufferedInputStream;
+import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.ByteBuffer;
-import java.util.Collection;
-import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
+import javax.sound.sampled.AudioFormat;
 
-public class gud {
-   private final atz a;
-   private final Map<akk, CompletableFuture<eym>> b = Maps.newHashMap();
+public class gud implements gtx {
+   private final gud.a a;
+   private gtx b;
+   private final BufferedInputStream c;
 
-   public gud(atz $$0) {
+   public gud(gud.a $$0, InputStream $$1) throws IOException {
       this.a = $$0;
+      this.c = new BufferedInputStream($$1);
+      this.c.mark(Integer.MAX_VALUE);
+      this.b = $$0.create(new gud.b(this.c));
    }
 
-   public CompletableFuture<eym> a(akk $$0) {
-      return this.b.computeIfAbsent($$0, $$0x -> CompletableFuture.supplyAsync(() -> {
-            try {
-               eym var5;
-               try (
-                  InputStream $$1 = this.a.open($$0x);
-                  gty $$2 = new gua($$1);
-               ) {
-                  ByteBuffer $$3 = $$2.b();
-                  var5 = new eym($$3, $$2.a());
-               }
-
-               return var5;
-            } catch (IOException var10) {
-               throw new CompletionException(var10);
-            }
-         }, ac.i()));
+   @Override
+   public AudioFormat a() {
+      return this.b.a();
    }
 
-   public CompletableFuture<gtv> a(akk $$0, boolean $$1) {
-      return CompletableFuture.supplyAsync(() -> {
-         try {
-            InputStream $$2 = this.a.open($$0);
-            return (gtv)($$1 ? new gub(gua::new, $$2) : new gua($$2));
-         } catch (IOException var4) {
-            throw new CompletionException(var4);
-         }
-      }, ac.i());
+   @Override
+   public ByteBuffer a(int $$0) throws IOException {
+      ByteBuffer $$1 = this.b.a($$0);
+      if (!$$1.hasRemaining()) {
+         this.b.close();
+         this.c.reset();
+         this.b = this.a.create(new gud.b(this.c));
+         $$1 = this.b.a($$0);
+      }
+
+      return $$1;
    }
 
-   public void a() {
-      this.b.values().forEach($$0 -> $$0.thenAccept(eym::b));
-      this.b.clear();
+   @Override
+   public void close() throws IOException {
+      this.b.close();
+      this.c.close();
    }
 
-   public CompletableFuture<?> a(Collection<gsz> $$0) {
-      return CompletableFuture.allOf($$0.stream().map($$0x -> this.a($$0x.b())).toArray(CompletableFuture[]::new));
+   @FunctionalInterface
+   public interface a {
+      gtx create(InputStream var1) throws IOException;
+   }
+
+   static class b extends FilterInputStream {
+      b(InputStream $$0) {
+         super($$0);
+      }
+
+      @Override
+      public void close() {
+      }
    }
 }

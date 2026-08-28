@@ -27,9 +27,9 @@ public class gs implements ArgumentType<go> {
       return new gs($$0);
    }
 
-   public static ewe a(CommandContext<eq> $$0, String $$1) {
-      ewf $$2 = ((go)$$0.getArgument($$1, go.class)).a((eq)$$0.getSource());
-      return new ewe((float)$$2.c, (float)$$2.e);
+   public static ewg a(CommandContext<eq> $$0, String $$1) {
+      ewh $$2 = ((go)$$0.getArgument($$1, go.class)).a((eq)$$0.getSource());
+      return new ewg((float)$$2.c, (float)$$2.e);
    }
 
    public go a(StringReader $$0) throws CommandSyntaxException {

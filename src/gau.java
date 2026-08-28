@@ -1,43 +1,83 @@
-import org.joml.Vector3f;
+public class gau extends gct {
+   private static final int a = 11993298;
+   private static final int b = 14614777;
+   private static final float F = 0.7176471F;
+   private static final float G = 0.0F;
+   private static final float H = 0.8235294F;
+   private static final float I = 0.8745098F;
+   private static final float J = 0.0F;
+   private static final float K = 0.9764706F;
+   private boolean L;
+   private final gco M;
 
-public class gau extends gaw<ld> {
-   private final Vector3f a;
-   private final Vector3f b;
-
-   protected gau(fyj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, ld $$7, gcm $$8) {
-      super($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8);
-      float $$9 = this.r.i() * 0.4F + 0.6F;
-      this.a = this.a($$7.b(), $$9);
-      this.b = this.a($$7.c(), $$9);
-   }
-
-   private Vector3f a(Vector3f $$0, float $$1) {
-      return new Vector3f(this.a($$0.x(), $$1), this.a($$0.y(), $$1), this.a($$0.z(), $$1));
-   }
-
-   private void f(float $$0) {
-      float $$1 = ((float)this.s + $$0) / ((float)this.t + 1.0F);
-      Vector3f $$2 = new Vector3f(this.a).lerp(this.b, $$1);
-      this.v = $$2.x();
-      this.w = $$2.y();
-      this.x = $$2.z();
+   gau(fyl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gco $$7) {
+      super($$0, $$1, $$2, $$3);
+      this.B = 0.96F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.v = ayg.a(this.r, 0.7176471F, 0.8745098F);
+      this.w = ayg.a(this.r, 0.0F, 0.0F);
+      this.x = ayg.a(this.r, 0.8235294F, 0.9764706F);
+      this.D *= 0.75F;
+      this.t = (int)(20.0 / ((double)this.r.i() * 0.8 + 0.2));
+      this.L = false;
+      this.n = false;
+      this.M = $$7;
+      this.b($$7);
    }
 
    @Override
-   public void a(faq $$0, ffe $$1, float $$2) {
-      this.f($$2);
-      super.a($$0, $$1, $$2);
+   public void a() {
+      this.d = this.g;
+      this.e = this.h;
+      this.f = this.i;
+      if (this.s++ >= this.t) {
+         this.k();
+      } else {
+         this.b(this.M);
+         if (this.m) {
+            this.k = 0.0;
+            this.L = true;
+         }
+
+         if (this.L) {
+            this.k += 0.002;
+         }
+
+         this.a(this.j, this.k, this.l);
+         if (this.h == this.e) {
+            this.j *= 1.1;
+            this.l *= 1.1;
+         }
+
+         this.j = this.j * (double)this.B;
+         this.l = this.l * (double)this.B;
+         if (this.L) {
+            this.k = this.k * (double)this.B;
+         }
+      }
    }
 
-   public static class a implements gbu<ld> {
-      private final gcm a;
+   @Override
+   public gbx b() {
+      return gbx.b;
+   }
 
-      public a(gcm $$0) {
+   @Override
+   public float b(float $$0) {
+      return this.D * ayg.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
+   }
+
+   public static class a implements gbw<ln> {
+      private final gco a;
+
+      public a(gco $$0) {
          this.a = $$0;
       }
 
-      public gbr a(ld $$0, fyj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gau($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0, this.a);
+      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gau($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

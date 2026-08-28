@@ -1,29 +1,46 @@
+import com.google.common.collect.Lists;
 import it.unimi.dsi.fastutil.floats.FloatConsumer;
-import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.util.List;
+import org.lwjgl.BufferUtils;
 
-public interface gtz extends gty {
-   int a = 8192;
+public class gtz implements FloatConsumer {
+   private final List<ByteBuffer> a = Lists.newArrayList();
+   private final int b;
+   private int c;
+   private ByteBuffer d;
 
-   boolean a(FloatConsumer var1) throws IOException;
-
-   @Override
-   default ByteBuffer a(int $$0) throws IOException {
-      gtx $$1 = new gtx($$0 + 8192);
-
-      while (this.a($$1) && $$1.b() < $$0) {
-      }
-
-      return $$1.a();
+   public gtz(int $$0) {
+      this.b = $$0 + 1 & -2;
+      this.d = BufferUtils.createByteBuffer($$0);
    }
 
-   @Override
-   default ByteBuffer b() throws IOException {
-      gtx $$0 = new gtx(16384);
-
-      while (this.a($$0)) {
+   public void accept(float $$0) {
+      if (this.d.remaining() == 0) {
+         this.d.flip();
+         this.a.add(this.d);
+         this.d = BufferUtils.createByteBuffer(this.b);
       }
 
-      return $$0.a();
+      int $$1 = ayg.a((int)($$0 * 32767.5F - 0.5F), -32768, 32767);
+      this.d.putShort((short)$$1);
+      this.c += 2;
+   }
+
+   public ByteBuffer a() {
+      this.d.flip();
+      if (this.a.isEmpty()) {
+         return this.d;
+      } else {
+         ByteBuffer $$0 = BufferUtils.createByteBuffer(this.c);
+         this.a.forEach($$0::put);
+         $$0.put(this.d);
+         $$0.flip();
+         return $$0;
+      }
+   }
+
+   public int b() {
+      return this.c;
    }
 }

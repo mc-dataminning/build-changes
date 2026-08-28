@@ -1,25 +1,15 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.function.BiConsumer;
-import java.util.stream.Stream;
 
-record ekg(akj<ekf> c, akj<ekf> d) implements ekh {
-   static MapCodec<ekg> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(akj.a(lr.aT).fieldOf("alias").forGetter(ekg::c), akj.a(lr.aT).fieldOf("target").forGetter(ekg::d)).apply($$0, ekg::new)
-   );
+public interface ekg<P extends ekf> {
+   ekg<eke> a = a("single_pool_element", eke.b);
+   ekg<ekd> b = a("list_pool_element", ekd.a);
+   ekg<ejz> c = a("feature_pool_element", ejz.a);
+   ekg<ejy> d = a("empty_pool_element", ejy.a);
+   ekg<ekc> e = a("legacy_single_pool_element", ekc.a);
 
-   @Override
-   public void a(ayo $$0, BiConsumer<akj<ekf>, akj<ekf>> $$1) {
-      $$1.accept(this.c, this.d);
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public Stream<akj<ekf>> a() {
-      return Stream.of(this.d);
-   }
-
-   @Override
-   public MapCodec<ekg> b() {
-      return a;
+   static <P extends ekf> ekg<P> a(String $$0, MapCodec<P> $$1) {
+      return jw.a(lq.ag, $$0, () -> $$1);
    }
 }

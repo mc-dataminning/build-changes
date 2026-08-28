@@ -19,18 +19,18 @@ public class apa implements aoy {
             return $$0.then(er.a("entity").then($$1.apply(er.a($$0, fd.a()))));
          }
       };
-   private final bsg c;
+   private final bsh c;
 
-   public apa(bsg $$0) {
+   public apa(bsh $$0) {
       this.c = $$0;
    }
 
    @Override
    public void a(tx $$0) throws CommandSyntaxException {
-      if (this.c instanceof cmk) {
+      if (this.c instanceof cml) {
          throw b.create();
       } else {
-         UUID $$1 = this.c.cA();
+         UUID $$1 = this.c.cB();
          this.c.g($$0);
          this.c.a_($$1);
       }

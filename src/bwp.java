@@ -2,20 +2,16 @@ import com.mojang.datafixers.kinds.App;
 import java.util.function.Function;
 
 public class bwp {
-   public static buv<btb> a() {
-      return byh.a((Function<byh.b<btb>, ? extends App<byh.c<btb>, byk<btb>>>)($$0 -> $$0.a((byk<btb>)(($$0x, $$1, $$2) -> {
-            if ($$0x.z.a(20) != 0) {
-               return false;
-            } else {
-               bud<?> $$3 = $$1.dU();
-               cnv $$4 = $$0x.d($$1.dq());
-               if ($$4 == null || $$4.d() || $$4.f()) {
-                  $$3.b(cnz.b);
-                  $$3.a($$0x.aa(), $$0x.Z());
+   public static buw<cly> a() {
+      return byi.a((Function<byi.b<cly>, ? extends App<byi.c<cly>, byl<cly>>>)($$0 -> $$0.group($$0.c(ccg.c)).apply($$0, $$0x -> ($$0xx, $$1, $$2) -> {
+               clz $$3 = $$1.gy();
+               if ($$3.b() != cmb.b && $$3.b() != cmb.m && $$1.t() == 0 && $$3.c() <= 1) {
+                  $$1.a($$1.gy().a(cmb.b));
+                  $$1.b($$0xx);
+                  return true;
+               } else {
+                  return false;
                }
-
-               return true;
-            }
-         }))));
+            })));
    }
 }

@@ -33,8 +33,8 @@ public class apg extends apj<apg> {
    public final String h = this.a("motd", "A Minecraft Server");
    public final boolean i = this.a("force-gamemode", false);
    public final boolean j = this.a("enforce-whitelist", false);
-   public final bqd k = this.a("difficulty", a(bqd::a, bqd::a), bqd::e, bqd.b);
-   public final dcc l = this.a("gamemode", a(dcc::a, dcc::a), dcc::b, dcc.a);
+   public final bqe k = this.a("difficulty", a(bqe::a, bqe::a), bqe::e, bqe.b);
+   public final dcd l = this.a("gamemode", a(dcd::a, dcd::a), dcd::b, dcd.a);
    public final String m = this.a("level-name", "world");
    public final int n = this.a("server-port", 25565);
    @Nullable
@@ -70,24 +70,24 @@ public class apg extends apj<apg> {
    public final int R = this.a("entity-broadcast-range-percentage", $$0x -> ayg.a($$0x, 10, 1000), 100);
    public final String S = this.a("text-filtering-config", "");
    public final Optional<MinecraftServer.b> T;
-   public final dbt U;
+   public final dbu U;
    public final apj<apg>.a<Integer> V = this.b("player-idle-timeout", 0);
    public final apj<apg>.a<Boolean> W = this.b("white-list", false);
    public final boolean X = this.a("enforce-secure-profile", true);
    public final boolean Y = this.a("log-ips", true);
    private final apg.a af;
-   public final dzd Z;
+   public final dze Z;
    public boolean aa = this.a("accepts-transfers", false);
 
    public apg(Properties $$0) {
       super($$0);
       String $$1 = this.a("level-seed", "");
       boolean $$2 = this.a("generate-structures", true);
-      long $$3 = dzd.a($$1).orElse(dzd.f());
-      this.Z = new dzd($$3, $$2, false);
+      long $$3 = dze.a($$1).orElse(dze.f());
+      this.Z = new dze($$3, $$2, false);
       this.af = new apg.a(
          this.a("generator-settings", $$0x -> axw.a(!$$0x.isEmpty() ? $$0x : "{}"), new JsonObject()),
-         this.a("level-type", $$0x -> $$0x.toLowerCase(Locale.ROOT), eim.a.a().toString())
+         this.a("level-type", $$0x -> $$0x.toLowerCase(Locale.ROOT), ein.a.a().toString())
       );
       this.T = a(
          this.a("resource-pack-id", ""),
@@ -97,7 +97,7 @@ public class apg extends apj<apg> {
          this.a("require-resource-pack", false),
          this.a("resource-pack-prompt", "")
       );
-      this.U = b(this.a("initial-enabled-packs", String.join(",", dda.c.a().a())), this.a("initial-disabled-packs", String.join(",", dda.c.a().b())));
+      this.U = b(this.a("initial-enabled-packs", String.join(",", ddb.c.a().a())), this.a("initial-disabled-packs", String.join(",", ddb.c.a().b())));
    }
 
    public static apg a(Path $$0) {
@@ -162,25 +162,25 @@ public class apg extends apj<apg> {
       }
    }
 
-   private static dbt b(String $$0, String $$1) {
+   private static dbu b(String $$0, String $$1) {
       List<String> $$2 = ae.splitToList($$0);
       List<String> $$3 = ae.splitToList($$1);
-      return new dbt($$2, $$3);
+      return new dbu($$2, $$3);
    }
 
-   public dza a(jx $$0) {
+   public dzb a(jx $$0) {
       return this.af.a($$0);
    }
 
    static record a(JsonObject a, String b) {
-      private static final Map<String, akj<eil>> c = Map.of("default", eim.a, "largebiomes", eim.c);
+      private static final Map<String, akj<eim>> c = Map.of("default", ein.a, "largebiomes", ein.c);
 
-      public dza a(jx $$0) {
-         jw<eil> $$1 = $$0.d(lr.aX);
-         jj.c<eil> $$2 = $$1.b(eim.a)
+      public dzb a(jx $$0) {
+         jw<eim> $$1 = $$0.d(lr.aX);
+         jj.c<eim> $$2 = $$1.b(ein.a)
             .or(() -> $$1.i().findAny())
             .orElseThrow(() -> new IllegalStateException("Invalid datapack contents: can't find default preset"));
-         jj<eil> $$3 = Optional.ofNullable(akk.a(this.b))
+         jj<eim> $$3 = Optional.ofNullable(akk.a(this.b))
             .map($$0x -> akj.a(lr.aX, $$0x))
             .or(() -> Optional.ofNullable(c.get(this.b)))
             .flatMap($$1::b)
@@ -188,12 +188,12 @@ public class apg extends apj<apg> {
                apg.ac.warn("Failed to parse level-type {}, defaulting to {}", this.b, $$2.h().a());
                return $$2;
             });
-         dza $$4 = $$3.a().a();
-         if ($$3.a(eim.b)) {
+         dzb $$4 = $$3.a().a();
+         if ($$3.a(ein.b)) {
             aki<JsonElement> $$5 = $$0.a(JsonOps.INSTANCE);
-            Optional<egz> $$6 = egz.a.parse(new Dynamic($$5, this.a())).resultOrPartial(apg.ac::error);
+            Optional<eha> $$6 = eha.a.parse(new Dynamic($$5, this.a())).resultOrPartial(apg.ac::error);
             if ($$6.isPresent()) {
-               return $$4.a($$0, new dya($$6.get()));
+               return $$4.a($$0, new dyb($$6.get()));
             }
          }
 

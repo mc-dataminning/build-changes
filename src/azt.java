@@ -14,7 +14,7 @@ public class azt extends DataFix {
 
    protected TypeRewriteRule makeRule() {
       Schema $$0 = this.getInputSchema();
-      return this.fixTypeEverywhereTyped("AbstractArrowPickupFix", $$0.getType(bgg.B), this::a);
+      return this.fixTypeEverywhereTyped("AbstractArrowPickupFix", $$0.getType(bgh.B), this::a);
    }
 
    private Typed<?> a(Typed<?> $$0) {
@@ -33,8 +33,8 @@ public class azt extends DataFix {
    }
 
    private Typed<?> a(Typed<?> $$0, String $$1, Function<Dynamic<?>, Dynamic<?>> $$2) {
-      Type<?> $$3 = this.getInputSchema().getChoiceType(bgg.B, $$1);
-      Type<?> $$4 = this.getOutputSchema().getChoiceType(bgg.B, $$1);
+      Type<?> $$3 = this.getInputSchema().getChoiceType(bgh.B, $$1);
+      Type<?> $$4 = this.getOutputSchema().getChoiceType(bgh.B, $$1);
       return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$1x -> $$1x.update(DSL.remainderFinder(), $$2));
    }
 }

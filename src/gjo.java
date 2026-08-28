@@ -1,35 +1,60 @@
-public class gjo extends gjl<cmu> {
-   private static final akk a = new akk("textures/entity/illager/evoker_fangs.png");
-   private final fup<cmu> f;
+@FunctionalInterface
+public interface gjo<T extends bsh> {
+   gjn<T> create(gjo.a var1);
 
-   public gjo(gjm.a $$0) {
-      super($$0);
-      this.f = new fup<>($$0.a(fxn.ac));
-   }
+   public static class a {
+      private final gjm a;
+      private final gkm b;
+      private final gez c;
+      private final geb d;
+      private final atw e;
+      private final fxm f;
+      private final fhf g;
 
-   public void a(cmu $$0, float $$1, float $$2, fam $$3, ged $$4, int $$5) {
-      float $$6 = $$0.a($$2);
-      if ($$6 != 0.0F) {
-         float $$7 = 2.0F;
-         if ($$6 > 0.9F) {
-            $$7 *= (1.0F - $$6) / 0.1F;
-         }
-
-         $$3.a();
-         $$3.a(a.d.rotationDegrees(90.0F - $$0.dG()));
-         $$3.b(-$$7, -$$7, $$7);
-         float $$8 = 0.03125F;
-         $$3.a(0.0, -0.626, 0.0);
-         $$3.b(0.5F, 0.5F, 0.5F);
-         this.f.a($$0, $$6, 0.0F, 0.0F, $$0.dG(), $$0.dI());
-         faq $$9 = $$4.getBuffer(this.f.a(a));
-         this.f.a($$3, $$9, $$5, gpf.d, 1.0F, 1.0F, 1.0F, 1.0F);
-         $$3.b();
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      public a(gjm $$0, gkm $$1, gez $$2, geb $$3, atw $$4, fxm $$5, fhf $$6) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
       }
-   }
 
-   public akk a(cmu $$0) {
-      return a;
+      public gjm a() {
+         return this.a;
+      }
+
+      public gkm b() {
+         return this.b;
+      }
+
+      public gez c() {
+         return this.c;
+      }
+
+      public geb d() {
+         return this.d;
+      }
+
+      public atw e() {
+         return this.e;
+      }
+
+      public fxm f() {
+         return this.f;
+      }
+
+      public grx g() {
+         return this.c.a().a();
+      }
+
+      public fxq a(fxo $$0) {
+         return this.f.a($$0);
+      }
+
+      public fhf h() {
+         return this.g;
+      }
    }
 }

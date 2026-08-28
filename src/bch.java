@@ -4,7 +4,7 @@ import com.mojang.datafixers.schemas.Schema;
 
 public class bch extends bfd {
    public bch(Schema $$0) {
-      super($$0, false, "EntityGoatMissingStateFix", bgg.B, "minecraft:goat");
+      super($$0, false, "EntityGoatMissingStateFix", bgh.B, "minecraft:goat");
    }
 
    @Override

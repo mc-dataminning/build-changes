@@ -15,7 +15,7 @@ public class bex extends DataFix {
 
    protected TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
-         "MapBannerBlockPosFormatFix", this.getInputSchema().getType(bgg.j), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("data", bex::a))
+         "MapBannerBlockPosFormatFix", this.getInputSchema().getType(bgh.j), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.update("data", bex::a))
       );
    }
 }

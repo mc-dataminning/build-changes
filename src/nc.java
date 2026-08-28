@@ -2,57 +2,57 @@ import java.util.function.BiConsumer;
 
 public record nc(jl.a a) implements mt {
    @Override
-   public void generate(BiConsumer<akj<eqz>, eqz.a> $$0) {
-      jl.b<ddf> $$1 = this.a.b(lr.aE);
+   public void generate(BiConsumer<akj<erb>, erb.a> $$0) {
+      jl.b<ddg> $$1 = this.a.b(lr.aE);
       $$0.accept(
-         eqq.aC,
-         eqz.b()
+         eqs.aC,
+         erb.b()
             .a(
-               eqy.a()
-                  .a(euy.a(1.0F))
-                  .a(ern.a(eqq.aD).a(10).b(-2))
-                  .a(ern.a(eqq.aE).a(5).b(2).a(eui.a(equ.b.a, bu.a.a().a(ca.a(true)))))
-                  .a(ern.a(eqq.aF).a(85).b(-1))
+               era.a()
+                  .a(eva.a(1.0F))
+                  .a(erp.a(eqs.aD).a(10).b(-2))
+                  .a(erp.a(eqs.aE).a(5).b(2).a(euk.a(eqw.b.a, bu.a.a().a(ca.a(true)))))
+                  .a(erp.a(eqs.aF).a(85).b(-1))
             )
       );
-      $$0.accept(eqq.aF, a());
+      $$0.accept(eqs.aF, a());
       $$0.accept(
-         eqq.aD,
-         eqz.b()
+         eqs.aD,
+         erb.b()
             .a(
-               eqy.a()
-                  .a(erh.a(dfj.fm).a(17))
-                  .a(erh.a(cuf.pB).a(10).a(eta.a(evf.a(0.0F, 0.9F))))
-                  .a(erh.a(cuf.qD).a(10))
-                  .a(erh.a(cuf.rz).a(10))
-                  .a(erh.a(cuf.sk).a(10).a(etf.a(cwe.a)))
-                  .a(erh.a(cuf.ps).a(5))
-                  .a(erh.a(cuf.qV).a(2).a(eta.a(evf.a(0.0F, 0.9F))))
-                  .a(erh.a(cuf.ot).a(10))
-                  .a(erh.a(cuf.pq).a(5))
-                  .a(erh.a(cuf.rf).a(1).a(esz.a(euy.a(10.0F))))
-                  .a(erh.a(dfj.fH).a(10))
-                  .a(erh.a(cuf.se).a(10))
-                  .a(erh.a(dfj.mZ).a(eud.a(dc.a.a().a(jn.a($$1.b(ddm.x), $$1.b(ddm.y), $$1.b(ddm.z))))).a(10))
+               era.a()
+                  .a(erj.a(dfk.fm).a(17))
+                  .a(erj.a(cug.pB).a(10).a(etc.a(evh.a(0.0F, 0.9F))))
+                  .a(erj.a(cug.qD).a(10))
+                  .a(erj.a(cug.rz).a(10))
+                  .a(erj.a(cug.sk).a(10).a(eth.a(cwf.a)))
+                  .a(erj.a(cug.ps).a(5))
+                  .a(erj.a(cug.qV).a(2).a(etc.a(evh.a(0.0F, 0.9F))))
+                  .a(erj.a(cug.ot).a(10))
+                  .a(erj.a(cug.pq).a(5))
+                  .a(erj.a(cug.rf).a(1).a(etb.a(eva.a(10.0F))))
+                  .a(erj.a(dfk.fH).a(10))
+                  .a(erj.a(cug.se).a(10))
+                  .a(erj.a(dfk.mZ).a(euf.a(dc.a.a().a(jn.a($$1.b(ddn.x), $$1.b(ddn.y), $$1.b(ddn.z))))).a(10))
             )
       );
       $$0.accept(
-         eqq.aE,
-         eqz.b()
+         eqs.aE,
+         erb.b()
             .a(
-               eqy.a()
-                  .a(erh.a(cuf.uL))
-                  .a(erh.a(cuf.nL))
-                  .a(erh.a(cuf.ov).a(eta.a(evf.a(0.0F, 0.25F))).a(ery.a(this.a, euy.a(30.0F))))
-                  .a(erh.a(cuf.qV).a(eta.a(evf.a(0.0F, 0.25F))).a(ery.a(this.a, euy.a(30.0F))))
-                  .a(erh.a(cuf.qP).a(ery.a(this.a, euy.a(30.0F))))
-                  .a(erh.a(cuf.vU))
+               era.a()
+                  .a(erj.a(cug.uL))
+                  .a(erj.a(cug.nL))
+                  .a(erj.a(cug.ov).a(etc.a(evh.a(0.0F, 0.25F))).a(esa.a(this.a, eva.a(30.0F))))
+                  .a(erj.a(cug.qV).a(etc.a(evh.a(0.0F, 0.25F))).a(esa.a(this.a, eva.a(30.0F))))
+                  .a(erj.a(cug.qP).a(esa.a(this.a, eva.a(30.0F))))
+                  .a(erj.a(cug.vU))
             )
       );
    }
 
-   public static eqz.a a() {
-      return eqz.b().a(eqy.a().a(erh.a(cuf.qZ).a(60)).a(erh.a(cuf.ra).a(25)).a(erh.a(cuf.rb).a(2)).a(erh.a(cuf.rc).a(13)));
+   public static erb.a a() {
+      return erb.b().a(era.a().a(erj.a(cug.qZ).a(60)).a(erj.a(cug.ra).a(25)).a(erj.a(cug.rb).a(2)).a(erj.a(cug.rc).a(13)));
    }
 
    public jl.a b() {

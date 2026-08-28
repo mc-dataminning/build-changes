@@ -58,10 +58,10 @@ public class yd implements wv {
    }
 
    @Override
-   public xi a(@Nullable eq $$0, @Nullable bsg $$1, int $$2) throws CommandSyntaxException {
+   public xi a(@Nullable eq $$0, @Nullable bsh $$1, int $$2) throws CommandSyntaxException {
       if ($$0 != null && this.f != null) {
          Optional<? extends wu> $$3 = wx.a($$0, this.c, $$1, $$2);
-         return wx.a(this.f.b($$0), $$3, bsg::O_);
+         return wx.a(this.f.b($$0), $$3, bsh::O_);
       } else {
          return wu.i();
       }

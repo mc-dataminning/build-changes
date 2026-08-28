@@ -45,17 +45,17 @@ public class aqs extends apx {
       this.b($$0, this.a($$2), false);
    }
 
-   public <T> void a(aqr<T> $$0, dbm $$1, int $$2, T $$3) {
+   public <T> void a(aqr<T> $$0, dbn $$1, int $$2, T $$3) {
       this.a($$1.a(), new aqq<>($$0, $$2, $$3));
    }
 
-   public <T> void b(aqr<T> $$0, dbm $$1, int $$2, T $$3) {
+   public <T> void b(aqr<T> $$0, dbn $$1, int $$2, T $$3) {
       aqq<T> $$4 = new aqq<>($$0, $$2, $$3);
       this.b($$1.a(), $$4);
    }
 
    public void a(int $$0) {
-      List<Pair<aqq<dbm>, Long>> $$1 = new ArrayList<>();
+      List<Pair<aqq<dbn>, Long>> $$1 = new ArrayList<>();
       ObjectIterator var3 = this.d.long2ObjectEntrySet().iterator();
 
       while (var3.hasNext()) {
@@ -68,12 +68,12 @@ public class aqs extends apx {
          }
       }
 
-      for (Pair<aqq<dbm>, Long> $$4 : $$1) {
+      for (Pair<aqq<dbn>, Long> $$4 : $$1) {
          Long $$5 = (Long)$$4.getSecond();
-         aqq<dbm> $$6 = (aqq<dbm>)$$4.getFirst();
+         aqq<dbn> $$6 = (aqq<dbn>)$$4.getFirst();
          this.b($$5, $$6);
-         dbm $$7 = new dbm($$5);
-         aqr<dbm> $$8 = $$6.a();
+         dbn $$7 = new dbn($$5);
+         aqr<dbn> $$8 = $$6.a();
          this.a($$8, $$7, $$0, $$7);
       }
    }
@@ -84,7 +84,7 @@ public class aqs extends apx {
       return $$1 != null && !$$1.isEmpty() ? $$1.b().b() : Integer.MAX_VALUE;
    }
 
-   public int a(dbm $$0) {
+   public int a(dbn $$0) {
       return this.c($$0.a());
    }
 

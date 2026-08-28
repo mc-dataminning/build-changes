@@ -13,7 +13,7 @@ public class bbu extends bfd {
    };
 
    public bbu(Schema $$0, String $$1, String $$2) {
-      super($$0, false, $$1, bgg.s, $$2);
+      super($$0, false, $$1, bgh.s, $$2);
    }
 
    private static <T> Dynamic<T> a(Dynamic<T> $$0) {

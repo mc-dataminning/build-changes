@@ -1,133 +1,104 @@
-import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public record dxg(int ak) {
-   public static final jj.c<dxg> a = a("block_activate");
-   public static final jj.c<dxg> b = a("block_attach");
-   public static final jj.c<dxg> c = a("block_change");
-   public static final jj.c<dxg> d = a("block_close");
-   public static final jj.c<dxg> e = a("block_deactivate");
-   public static final jj.c<dxg> f = a("block_destroy");
-   public static final jj.c<dxg> g = a("block_detach");
-   public static final jj.c<dxg> h = a("block_open");
-   public static final jj.c<dxg> i = a("block_place");
-   public static final jj.c<dxg> j = a("container_close");
-   public static final jj.c<dxg> k = a("container_open");
-   public static final jj.c<dxg> l = a("drink");
-   public static final jj.c<dxg> m = a("eat");
-   public static final jj.c<dxg> n = a("elytra_glide");
-   public static final jj.c<dxg> o = a("entity_damage");
-   public static final jj.c<dxg> p = a("entity_die");
-   public static final jj.c<dxg> q = a("entity_dismount");
-   public static final jj.c<dxg> r = a("entity_interact");
-   public static final jj.c<dxg> s = a("entity_mount");
-   public static final jj.c<dxg> t = a("entity_place");
-   public static final jj.c<dxg> u = a("entity_action");
-   public static final jj.c<dxg> v = a("equip");
-   public static final jj.c<dxg> w = a("explode");
-   public static final jj.c<dxg> x = a("flap");
-   public static final jj.c<dxg> y = a("fluid_pickup");
-   public static final jj.c<dxg> z = a("fluid_place");
-   public static final jj.c<dxg> A = a("hit_ground");
-   public static final jj.c<dxg> B = a("instrument_play");
-   public static final jj.c<dxg> C = a("item_interact_finish");
-   public static final jj.c<dxg> D = a("item_interact_start");
-   public static final jj.c<dxg> E = a("jukebox_play", 10);
-   public static final jj.c<dxg> F = a("jukebox_stop_play", 10);
-   public static final jj.c<dxg> G = a("lightning_strike");
-   public static final jj.c<dxg> H = a("note_block_play");
-   public static final jj.c<dxg> I = a("prime_fuse");
-   public static final jj.c<dxg> J = a("projectile_land");
-   public static final jj.c<dxg> K = a("projectile_shoot");
-   public static final jj.c<dxg> L = a("sculk_sensor_tendrils_clicking");
-   public static final jj.c<dxg> M = a("shear");
-   public static final jj.c<dxg> N = a("shriek", 32);
-   public static final jj.c<dxg> O = a("splash");
-   public static final jj.c<dxg> P = a("step");
-   public static final jj.c<dxg> Q = a("swim");
-   public static final jj.c<dxg> R = a("teleport");
-   public static final jj.c<dxg> S = a("unequip");
-   public static final jj.c<dxg> T = a("resonate_1");
-   public static final jj.c<dxg> U = a("resonate_2");
-   public static final jj.c<dxg> V = a("resonate_3");
-   public static final jj.c<dxg> W = a("resonate_4");
-   public static final jj.c<dxg> X = a("resonate_5");
-   public static final jj.c<dxg> Y = a("resonate_6");
-   public static final jj.c<dxg> Z = a("resonate_7");
-   public static final jj.c<dxg> aa = a("resonate_8");
-   public static final jj.c<dxg> ab = a("resonate_9");
-   public static final jj.c<dxg> ac = a("resonate_10");
-   public static final jj.c<dxg> ad = a("resonate_11");
-   public static final jj.c<dxg> ae = a("resonate_12");
-   public static final jj.c<dxg> af = a("resonate_13");
-   public static final jj.c<dxg> ag = a("resonate_14");
-   public static final jj.c<dxg> ah = a("resonate_15");
-   public static final int ai = 16;
-   public static final Codec<jj<dxg>> aj = akh.a(lr.G);
+public class dxg implements dxk {
+   private final List<dxj> b = Lists.newArrayList();
+   private final Set<dxj> c = Sets.newHashSet();
+   private final List<dxj> d = Lists.newArrayList();
+   private boolean e;
+   private final aqm f;
+   private final int g;
+   private final dxg.a h;
 
-   public static jj<dxg> a(jw<dxg> $$0) {
-      return a;
+   public dxg(aqm $$0, int $$1, dxg.a $$2) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
    }
 
-   public int a() {
-      return this.ak;
+   @Override
+   public boolean a() {
+      return this.b.isEmpty();
    }
 
-   private static jj.c<dxg> a(String $$0) {
-      return a($$0, 16);
-   }
-
-   private static jj.c<dxg> a(String $$0, int $$1) {
-      return jw.b(lq.a, new akk($$0), new dxg($$1));
-   }
-
-   public static record a(@Nullable bsg a, @Nullable dsk b) {
-      public static dxg.a a(@Nullable bsg $$0) {
-         return new dxg.a($$0, null);
+   @Override
+   public void a(dxj $$0) {
+      if (this.e) {
+         this.d.add($$0);
+      } else {
+         this.b.add($$0);
       }
 
-      public static dxg.a a(@Nullable dsk $$0) {
-         return new dxg.a(null, $$0);
+      afy.a(this.f, $$0);
+   }
+
+   @Override
+   public void b(dxj $$0) {
+      if (this.e) {
+         this.c.add($$0);
+      } else {
+         this.b.remove($$0);
       }
 
-      public static dxg.a a(@Nullable bsg $$0, @Nullable dsk $$1) {
-         return new dxg.a($$0, $$1);
+      if (this.b.isEmpty()) {
+         this.h.apply(this.g);
       }
    }
 
-   public static final class b implements Comparable<dxg.b> {
-      private final jj<dxg> a;
-      private final ewf b;
-      private final dxg.a c;
-      private final dxi d;
-      private final double e;
+   @Override
+   public boolean a(jj<dxh> $$0, ewh $$1, dxh.a $$2, dxk.a $$3) {
+      this.e = true;
+      boolean $$4 = false;
 
-      public b(jj<dxg> $$0, ewf $$1, dxg.a $$2, dxi $$3, ewf $$4) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-         this.e = $$1.g($$4);
+      try {
+         Iterator<dxj> $$5 = this.b.iterator();
+
+         while ($$5.hasNext()) {
+            dxj $$6 = $$5.next();
+            if (this.c.remove($$6)) {
+               $$5.remove();
+            } else {
+               Optional<ewh> $$7 = a(this.f, $$1, $$6);
+               if ($$7.isPresent()) {
+                  $$3.visit($$6, $$7.get());
+                  $$4 = true;
+               }
+            }
+         }
+      } finally {
+         this.e = false;
       }
 
-      public int a(dxg.b $$0) {
-         return Double.compare(this.e, $$0.e);
+      if (!this.d.isEmpty()) {
+         this.b.addAll(this.d);
+         this.d.clear();
       }
 
-      public jj<dxg> a() {
-         return this.a;
+      if (!this.c.isEmpty()) {
+         this.b.removeAll(this.c);
+         this.c.clear();
       }
 
-      public ewf b() {
-         return this.b;
-      }
+      return $$4;
+   }
 
-      public dxg.a c() {
-         return this.c;
+   private static Optional<ewh> a(aqm $$0, ewh $$1, dxj $$2) {
+      Optional<ewh> $$3 = $$2.a().a($$0);
+      if ($$3.isEmpty()) {
+         return Optional.empty();
+      } else {
+         double $$4 = ja.a($$3.get()).j(ja.a($$1));
+         int $$5 = $$2.b() * $$2.b();
+         return $$4 > (double)$$5 ? Optional.empty() : $$3;
       }
+   }
 
-      public dxi d() {
-         return this.d;
-      }
+   @FunctionalInterface
+   public interface a {
+      void apply(int var1);
    }
 }

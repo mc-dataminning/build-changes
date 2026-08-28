@@ -1,30 +1,26 @@
-public class chy extends chq {
-   private static final int b = 40;
-   private int c;
+import javax.annotation.Nullable;
 
-   public chy(chn $$0) {
-      super($$0);
-   }
+public interface chy {
+   boolean a();
 
-   @Override
-   public void b() {
-      this.a.dQ().a(this.a.dv(), this.a.dx(), this.a.dB(), avh.ie, this.a.df(), 2.5F, 0.8F + this.a.dT().i() * 0.3F, false);
-   }
+   void b();
 
-   @Override
-   public void c() {
-      if (this.c++ >= 40) {
-         this.a.gl().a(cid.f);
-      }
-   }
+   void c();
 
-   @Override
-   public void d() {
-      this.c = 0;
-   }
+   void a(chn var1, ja var2, bra var3, @Nullable cml var4);
 
-   @Override
-   public cid<chy> i() {
-      return cid.h;
-   }
+   void d();
+
+   void e();
+
+   float f();
+
+   float h();
+
+   cie<? extends chy> i();
+
+   @Nullable
+   ewh g();
+
+   float a(bra var1, float var2);
 }

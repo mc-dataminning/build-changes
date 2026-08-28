@@ -8,12 +8,12 @@ import com.mojang.serialization.Dynamic;
 
 public class bao extends bfd {
    public bao(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntityJukeboxFix", bgg.s, "minecraft:jukebox");
+      super($$0, $$1, "BlockEntityJukeboxFix", bgh.s, "minecraft:jukebox");
    }
 
    @Override
    protected Typed<?> a(Typed<?> $$0) {
-      Type<?> $$1 = this.getInputSchema().getChoiceType(bgg.s, "minecraft:jukebox");
+      Type<?> $$1 = this.getInputSchema().getChoiceType(bgh.s, "minecraft:jukebox");
       Type<?> $$2 = $$1.findFieldType("RecordItem");
       OpticFinder<?> $$3 = DSL.fieldFinder("RecordItem", $$2);
       Dynamic<?> $$4 = (Dynamic<?>)$$0.get(DSL.remainderFinder());

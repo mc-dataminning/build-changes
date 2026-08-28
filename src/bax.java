@@ -19,18 +19,18 @@ public abstract class bax extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgg.C);
-      Type<Pair<String, String>> $$1 = DSL.named(bgg.C.typeName(), bhs.a());
+      Type<?> $$0 = this.getInputSchema().getType(bgh.C);
+      Type<Pair<String, String>> $$1 = DSL.named(bgh.C.typeName(), bht.a());
       if (!Objects.equals($$0, $$1)) {
          throw new IllegalStateException("block type is not what was expected.");
       } else {
          TypeRewriteRule $$2 = this.fixTypeEverywhere(this.a + " for block", $$1, $$0x -> $$0xx -> $$0xx.mapSecond(this::a));
          TypeRewriteRule $$3 = this.fixTypeEverywhereTyped(
-            this.a + " for block_state", this.getInputSchema().getType(bgg.u), $$0x -> $$0x.update(DSL.remainderFinder(), this::a)
+            this.a + " for block_state", this.getInputSchema().getType(bgh.u), $$0x -> $$0x.update(DSL.remainderFinder(), this::a)
          );
          TypeRewriteRule $$4 = this.fixTypeEverywhereTyped(
             this.a + " for flat_block_state",
-            this.getInputSchema().getType(bgg.v),
+            this.getInputSchema().getType(bgh.v),
             $$0x -> $$0x.update(
                   DSL.remainderFinder(), $$0xx -> (Dynamic)DataFixUtils.orElse($$0xx.asString().result().map(this::b).map($$0xx::createString), $$0xx)
                )

@@ -1,40 +1,36 @@
-public class ctk extends ctx {
-   public ctk(ctx.a $$0) {
+public class ctk extends cty {
+   public ctk(cty.a $$0) {
       super($$0);
    }
 
    @Override
-   public bqg a(cxo $$0) {
-      cmk $$1 = $$0.o();
-      dcf $$2 = $$0.q();
-      ja $$3 = $$0.a();
-      dsk $$4 = $$2.a_($$3);
-      if (!dfv.h($$4) && !dfw.g($$4) && !dfx.g($$4)) {
-         ja $$5 = $$3.a($$0.k());
-         if (deu.a($$2, $$5, $$0.g())) {
-            $$2.a($$1, $$5, avh.iZ, avi.e, 1.0F, $$2.E_().i() * 0.4F + 0.8F);
-            dsk $$6 = deu.a($$2, $$5);
-            $$2.a($$5, $$6, 11);
-            $$2.a($$1, dxg.i, $$3);
-            cuc $$7 = $$0.n();
-            if ($$1 instanceof aqn) {
-               am.z.a((aqn)$$1, $$5, $$7);
-               $$7.a(1, $$1, btb.d($$0.p()));
-            }
-
-            return bqg.a($$2.x_());
-         } else {
-            return bqg.f;
+   public bqi<cud> a(dcg $$0, cml $$1, bqg $$2) {
+      cud $$3 = $$1.b($$2);
+      if ($$1.cw != null) {
+         if (!$$0.B) {
+            int $$4 = $$1.cw.a($$3);
+            $$3.a($$4, $$1, btc.d($$2));
          }
+
+         $$0.a(null, $$1.dw(), $$1.dy(), $$1.dC(), avh.iW, avi.g, 1.0F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+         $$1.a(dxh.C);
       } else {
-         $$2.a($$1, $$3, avh.iZ, avi.e, 1.0F, $$2.E_().i() * 0.4F + 0.8F);
-         $$2.a($$3, $$4.a(dta.r, Boolean.valueOf(true)), 11);
-         $$2.a($$1, dxg.c, $$3);
-         if ($$1 != null) {
-            $$0.n().a(1, $$1, btb.d($$0.p()));
+         $$0.a(null, $$1.dw(), $$1.dy(), $$1.dC(), avh.iY, avi.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
+         if ($$0 instanceof aqm $$5) {
+            int $$6 = (int)(czo.b($$5, $$3, $$1) * 20.0F);
+            int $$7 = czo.a($$5, $$3, $$1);
+            $$0.b(new cmz($$1, $$0, $$7, $$6));
          }
 
-         return bqg.a($$2.x_());
+         $$1.b(avr.c.b(this));
+         $$1.a(dxh.D);
       }
+
+      return bqi.a($$3, $$0.x_());
+   }
+
+   @Override
+   public int g() {
+      return 1;
    }
 }

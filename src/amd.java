@@ -35,7 +35,7 @@ public class amd {
    }
 
    private static int a(eq $$0, aqn $$1) {
-      GameProfile $$2 = $$1.fY();
+      GameProfile $$2 = $$1.fZ();
       $$1.c.n();
       $$0.a(() -> wu.b("Switched player " + $$2.getName() + "(" + $$2.getId() + ") to config mode"), false);
       return 1;

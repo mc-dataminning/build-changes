@@ -19,13 +19,13 @@ public class bbw extends DataFix {
 
    protected TypeRewriteRule makeRule() {
       Schema $$0 = this.getInputSchema();
-      Type<?> $$1 = this.getInputSchema().getType(bgg.t);
-      OpticFinder<Pair<String, String>> $$2 = DSL.fieldFinder("id", DSL.named(bgg.D.typeName(), bhs.a()));
+      Type<?> $$1 = this.getInputSchema().getType(bgh.t);
+      OpticFinder<Pair<String, String>> $$2 = DSL.fieldFinder("id", DSL.named(bgh.D.typeName(), bht.a()));
       OpticFinder<?> $$3 = $$1.findField("tag");
       return TypeRewriteRule.seq(
-         this.fixTypeEverywhereTyped("EffectDurationEntity", $$0.getType(bgg.B), $$0x -> $$0x.update(DSL.remainderFinder(), this::c)),
+         this.fixTypeEverywhereTyped("EffectDurationEntity", $$0.getType(bgh.B), $$0x -> $$0x.update(DSL.remainderFinder(), this::c)),
          new TypeRewriteRule[]{
-            this.fixTypeEverywhereTyped("EffectDurationPlayer", $$0.getType(bgg.b), $$0x -> $$0x.update(DSL.remainderFinder(), this::c)),
+            this.fixTypeEverywhereTyped("EffectDurationPlayer", $$0.getType(bgh.b), $$0x -> $$0x.update(DSL.remainderFinder(), this::c)),
             this.fixTypeEverywhereTyped("EffectDurationItem", $$1, $$2x -> {
                Optional<Pair<String, String>> $$3x = $$2x.getOptional($$2);
                if ($$3x.filter(a::contains).isPresent()) {

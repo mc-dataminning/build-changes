@@ -1,23 +1,28 @@
 public enum dth implements azc {
-   a("tip_merge"),
-   b("tip"),
-   c("frustum"),
-   d("middle"),
-   e("base");
+   a(jf.a),
+   b(jf.b);
 
-   private final String f;
+   private final jf c;
 
-   private dth(final String $$0) {
-      this.f = $$0;
+   private dth(final jf $$0) {
+      this.c = $$0;
+   }
+
+   public jf a() {
+      return this.c;
    }
 
    @Override
    public String toString() {
-      return this.f;
+      return this.c();
    }
 
    @Override
    public String c() {
-      return this.f;
+      return this == a ? "upper" : "lower";
+   }
+
+   public dth b() {
+      return this == a ? b : a;
    }
 }

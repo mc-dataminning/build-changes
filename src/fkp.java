@@ -1,73 +1,73 @@
-import java.util.function.Function;
-import java.util.function.Supplier;
+import org.joml.Matrix4f;
 
-public enum fkp implements eyo {
-   a(() -> a(5, 8, ($$0, $$1) -> -1)),
-   b(() -> {
-      int $$0 = 5;
-      int $$1 = 8;
-      return a(5, 8, ($$0x, $$1x) -> {
-         boolean $$2 = $$0x == 0 || $$0x + 1 == 5 || $$1x == 0 || $$1x + 1 == 8;
-         return $$2 ? -1 : 0;
-      });
-   });
+public class fkp {
+   private final fkn a;
+   private final float b;
+   private final float c;
+   private final float d;
+   private final float e;
+   private final float f;
+   private final float g;
+   private final float h;
+   private final float i;
 
-   final ezn c;
+   public fkp(fkn $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
+      this.g = $$6;
+      this.h = $$7;
+      this.i = $$8;
+   }
 
-   private static ezn a(int $$0, int $$1, fkp.a $$2) {
-      ezn $$3 = new ezn(ezn.a.a, $$0, $$1, false);
+   public void a(boolean $$0, float $$1, float $$2, Matrix4f $$3, fas $$4, float $$5, float $$6, float $$7, float $$8, int $$9) {
+      float $$10 = $$1 + this.f;
+      float $$11 = $$1 + this.g;
+      float $$12 = $$2 + this.h;
+      float $$13 = $$2 + this.i;
+      float $$14 = $$0 ? 1.0F - 0.25F * this.h : 0.0F;
+      float $$15 = $$0 ? 1.0F - 0.25F * this.i : 0.0F;
+      $$4.a($$3, $$10 + $$14, $$12, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.d).b($$9).e();
+      $$4.a($$3, $$10 + $$15, $$13, 0.0F).a($$5, $$6, $$7, $$8).a(this.b, this.e).b($$9).e();
+      $$4.a($$3, $$11 + $$15, $$13, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.e).b($$9).e();
+      $$4.a($$3, $$11 + $$14, $$12, 0.0F).a($$5, $$6, $$7, $$8).a(this.c, this.d).b($$9).e();
+   }
 
-      for (int $$4 = 0; $$4 < $$1; $$4++) {
-         for (int $$5 = 0; $$5 < $$0; $$5++) {
-            $$3.a($$5, $$4, $$2.getColor($$5, $$4));
-         }
+   public void a(fkp.a $$0, Matrix4f $$1, fas $$2, int $$3) {
+      $$2.a($$1, $$0.a, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.d).b($$3).e();
+      $$2.a($$1, $$0.c, $$0.b, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.b, this.e).b($$3).e();
+      $$2.a($$1, $$0.c, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.e).b($$3).e();
+      $$2.a($$1, $$0.a, $$0.d, $$0.e).a($$0.f, $$0.g, $$0.h, $$0.i).a(this.c, this.d).b($$3).e();
+   }
+
+   public gen a(fhf.a $$0) {
+      return this.a.a($$0);
+   }
+
+   public static class a {
+      protected final float a;
+      protected final float b;
+      protected final float c;
+      protected final float d;
+      protected final float e;
+      protected final float f;
+      protected final float g;
+      protected final float h;
+      protected final float i;
+
+      public a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+         this.g = $$6;
+         this.h = $$7;
+         this.i = $$8;
       }
-
-      $$3.i();
-      return $$3;
-   }
-
-   private fkp(final Supplier<ezn> $$0) {
-      this.c = $$0.get();
-   }
-
-   @Override
-   public float getAdvance() {
-      return (float)(this.c.a() + 1);
-   }
-
-   @Override
-   public fkn bake(Function<eyq, fkn> $$0) {
-      return $$0.apply(new eyq() {
-         @Override
-         public int a() {
-            return fkp.this.c.a();
-         }
-
-         @Override
-         public int b() {
-            return fkp.this.c.b();
-         }
-
-         @Override
-         public float d() {
-            return 1.0F;
-         }
-
-         @Override
-         public void a(int $$0, int $$1) {
-            fkp.this.c.a(0, $$0, $$1, false);
-         }
-
-         @Override
-         public boolean c() {
-            return true;
-         }
-      });
-   }
-
-   @FunctionalInterface
-   interface a {
-      int getColor(int var1, int var2);
    }
 }

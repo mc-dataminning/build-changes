@@ -1,44 +1,41 @@
+import com.mojang.logging.LogUtils;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class chs extends chp {
+public class chs extends chq {
+   private static final Logger b = LogUtils.getLogger();
+   private static final int c = 10;
    @Nullable
-   private ewf b;
-   private int c;
+   private ewh d;
+   private int e;
 
-   public chs(chn $$0) {
+   public chs(cho $$0) {
       super($$0);
    }
 
    @Override
-   public void b() {
-      if (this.c++ % 10 == 0) {
-         float $$0 = (this.a.dT().i() - 0.5F) * 8.0F;
-         float $$1 = (this.a.dT().i() - 0.5F) * 4.0F;
-         float $$2 = (this.a.dT().i() - 0.5F) * 8.0F;
-         this.a.dQ().a(lj.v, this.a.dv() + (double)$$0, this.a.dx() + 2.0 + (double)$$1, this.a.dB() + (double)$$2, 0.0, 0.0, 0.0);
-      }
-   }
-
-   @Override
    public void c() {
-      this.c++;
-      if (this.b == null) {
-         ja $$0 = this.a.dQ().a(dyf.a.e, ebj.a(this.a.s()));
-         this.b = ewf.c($$0);
-      }
-
-      double $$1 = this.b.c(this.a.dv(), this.a.dx(), this.a.dB());
-      if (!($$1 < 100.0) && !($$1 > 22500.0) && !this.a.Q && !this.a.R) {
-         this.a.u(1.0F);
+      if (this.d == null) {
+         b.warn("Aborting charge player as no target was set.");
+         this.a.gk().a(cie.a);
+      } else if (this.e > 0 && this.e++ >= 10) {
+         this.a.gk().a(cie.a);
       } else {
-         this.a.u(0.0F);
+         double $$0 = this.d.c(this.a.dw(), this.a.dy(), this.a.dC());
+         if ($$0 < 100.0 || $$0 > 22500.0 || this.a.Q || this.a.R) {
+            this.e++;
+         }
       }
    }
 
    @Override
    public void d() {
-      this.b = null;
-      this.c = 0;
+      this.d = null;
+      this.e = 0;
+   }
+
+   public void a(ewh $$0) {
+      this.d = $$0;
    }
 
    @Override
@@ -48,12 +45,12 @@ public class chs extends chp {
 
    @Nullable
    @Override
-   public ewf g() {
-      return this.b;
+   public ewh g() {
+      return this.d;
    }
 
    @Override
-   public cid<chs> i() {
-      return cid.j;
+   public cie<chs> i() {
+      return cie.i;
    }
 }

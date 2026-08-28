@@ -1,74 +1,80 @@
-import com.google.common.hash.Hashing;
-import javax.annotation.Nullable;
+import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
 
-public class fmt implements AutoCloseable {
-   private static final akk a = new akk("textures/misc/unknown_server.png");
-   private static final int b = 64;
-   private static final int c = 64;
-   private final gpp d;
-   private final akk e;
-   @Nullable
-   private gpb f;
-   private boolean g;
+public class fmt extends fnl {
+   private static final wu a = wu.c("addServer.enterName");
+   private static final wu b = wu.c("addServer.enterIp");
+   private fhu c;
+   private final BooleanConsumer q;
+   private final fyz r;
+   private fid s;
+   private fid u;
+   private final fnl v;
 
-   private fmt(gpp $$0, akk $$1) {
-      this.d = $$0;
-      this.e = $$1;
-   }
-
-   public static fmt a(gpp $$0, String $$1) {
-      return new fmt($$0, new akk("minecraft", "worlds/" + ac.a($$1, akk::b) + "/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
-   }
-
-   public static fmt b(gpp $$0, String $$1) {
-      return new fmt($$0, new akk("minecraft", "servers/" + Hashing.sha1().hashUnencodedChars($$1) + "/icon"));
-   }
-
-   public void a(ezn $$0) {
-      if ($$0.a() == 64 && $$0.b() == 64) {
-         try {
-            this.c();
-            if (this.f == null) {
-               this.f = new gpb($$0);
-            } else {
-               this.f.a($$0);
-               this.f.d();
-            }
-
-            this.d.a(this.e, this.f);
-         } catch (Throwable var3) {
-            $$0.close();
-            this.a();
-            throw var3;
-         }
-      } else {
-         $$0.close();
-         throw new IllegalArgumentException("Icon must be 64x64, but was " + $$0.a() + "x" + $$0.b());
-      }
-   }
-
-   public void a() {
-      this.c();
-      if (this.f != null) {
-         this.d.c(this.e);
-         this.f.close();
-         this.f = null;
-      }
-   }
-
-   public akk b() {
-      return this.f != null ? this.e : a;
+   public fmt(fnl $$0, BooleanConsumer $$1, fyz $$2) {
+      super(wu.c("addServer.title"));
+      this.v = $$0;
+      this.q = $$1;
+      this.r = $$2;
    }
 
    @Override
-   public void close() {
-      this.a();
-      this.g = true;
+   protected void aP_() {
+      this.u = new fid(this.o, this.m / 2 - 100, 66, 200, 20, wu.c("addServer.enterName"));
+      this.u.a(this.r.a);
+      this.u.b($$0 -> this.D());
+      this.d(this.u);
+      this.s = new fid(this.o, this.m / 2 - 100, 106, 200, 20, wu.c("addServer.enterIp"));
+      this.s.f(128);
+      this.s.a(this.r.b);
+      this.s.b($$0 -> this.D());
+      this.d(this.s);
+      this.c(
+         fib.a(fyz.a::a)
+            .a(fyz.a.values())
+            .a(this.r.b())
+            .a(this.m / 2 - 100, this.n / 4 + 72, 200, 20, wu.c("addServer.resourcePack"), ($$0, $$1) -> this.r.a($$1))
+      );
+      this.c = this.c(fhu.a(wu.c("addServer.add"), $$0 -> this.m()).a(this.m / 2 - 100, this.n / 4 + 96 + 18, 200, 20).a());
+      this.c(fhu.a(wt.e, $$0 -> this.q.accept(false)).a(this.m / 2 - 100, this.n / 4 + 120 + 18, 200, 20).a());
+      this.D();
    }
 
-   private void c() {
-      if (this.g) {
-         throw new IllegalStateException("Icon already closed");
-      }
+   @Override
+   protected void aE_() {
+      this.b(this.u);
+   }
+
+   @Override
+   public void a(ffw $$0, int $$1, int $$2) {
+      String $$3 = this.s.a();
+      String $$4 = this.u.a();
+      this.b($$0, $$1, $$2);
+      this.s.a($$3);
+      this.u.a($$4);
+   }
+
+   private void m() {
+      this.r.a = this.u.a();
+      this.r.b = this.s.a();
+      this.q.accept(true);
+   }
+
+   @Override
+   public void d() {
+      this.l.a(this.v);
+   }
+
+   private void D() {
+      this.c.j = gad.b(this.s.a()) && !this.u.a().isEmpty();
+   }
+
+   @Override
+   public void a(fhh $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.o, this.k, this.m / 2, 17, 16777215);
+      $$0.b(this.o, a, this.m / 2 - 100 + 1, 53, 10526880);
+      $$0.b(this.o, b, this.m / 2 - 100 + 1, 94, 10526880);
+      this.u.a($$0, $$1, $$2, $$3);
+      this.s.a($$0, $$1, $$2, $$3);
    }
 }

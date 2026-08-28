@@ -1,20 +1,18 @@
-public class gmk extends gks<clo, fxa<clo>> {
-   private static final akk a = new akk("textures/entity/warden/warden.png");
-   private static final akk i = new akk("textures/entity/warden/warden_bioluminescent_layer.png");
-   private static final akk j = new akk("textures/entity/warden/warden_heart.png");
-   private static final akk k = new akk("textures/entity/warden/warden_pulsating_spots_1.png");
-   private static final akk l = new akk("textures/entity/warden/warden_pulsating_spots_2.png");
+public class gmk extends gkh<ckg> {
+   private static final akk a = new akk("textures/entity/illager/vindicator.png");
 
-   public gmk(gjm.a $$0) {
-      super($$0, new fxa<>($$0.a(fxn.bR)), 0.9F);
-      this.a(new gok<>(this, i, ($$0x, $$1, $$2) -> 1.0F, fxa::e));
-      this.a(new gok<>(this, k, ($$0x, $$1, $$2) -> Math.max(0.0F, ayg.b($$2 * 0.045F) * 0.25F), fxa::f));
-      this.a(new gok<>(this, l, ($$0x, $$1, $$2) -> Math.max(0.0F, ayg.b($$2 * 0.045F + (float) Math.PI) * 0.25F), fxa::f));
-      this.a(new gok<>(this, a, ($$0x, $$1, $$2) -> $$0x.H($$1), fxa::c));
-      this.a(new gok<>(this, j, ($$0x, $$1, $$2) -> $$0x.I($$1), fxa::d));
+   public gmk(gjo.a $$0) {
+      super($$0, new fve<>($$0.a(fxp.bQ)), 0.5F);
+      this.a(new gnt<ckg, fve<ckg>>(this, $$0.d()) {
+         public void a(fao $$0, gef $$1, int $$2, ckg $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+            if ($$3.ge()) {
+               super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9);
+            }
+         }
+      });
    }
 
-   public akk a(clo $$0) {
+   public akk a(ckg $$0) {
       return a;
    }
 }

@@ -1,119 +1,60 @@
-import com.mojang.authlib.GameProfile;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.mojang.serialization.Codec;
 import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.UUID;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
-public interface fzh extends fzg {
-   static fzh.a a(GameProfile $$0, xk $$1, fzf $$2) {
-      return new fzh.a($$0, $$1, $$2);
+public enum fzh implements azc {
+   a("secure"),
+   b("modified"),
+   c("not_secure");
+
+   public static final Codec<fzh> d = azc.a(fzh::values);
+   private final String e;
+
+   private fzh(final String $$0) {
+      this.e = $$0;
    }
 
-   static fzh.b a(wu $$0, Instant $$1) {
-      return new fzh.b($$0, $$1);
-   }
-
-   wu b();
-
-   default wu c() {
-      return this.b();
-   }
-
-   boolean a(UUID var1);
-
-   public static record a(GameProfile c, xk d, fzf e) implements fzh {
-      public static final MapCodec<fzh.a> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(
-                  axo.x.fieldOf("profile").forGetter(fzh.a::f), xk.a.forGetter(fzh.a::g), fzf.d.optionalFieldOf("trust_level", fzf.a).forGetter(fzh.a::h)
-               )
-               .apply($$0, fzh.a::new)
-      );
-      private static final DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
-
-      @Override
-      public wu b() {
-         if (!this.d.o().a()) {
-            wu $$0 = this.d.o().b(this.d.c());
-            return (wu)($$0 != null ? $$0 : wu.i());
-         } else {
-            return this.d.d();
-         }
-      }
-
-      @Override
-      public wu c() {
-         wu $$0 = this.b();
-         wu $$1 = this.i();
-         return wu.a("gui.chatSelection.message.narrate", this.c.getName(), $$0, $$1);
-      }
-
-      public wu d() {
-         wu $$0 = this.i();
-         return wu.a("gui.chatSelection.heading", this.c.getName(), $$0);
-      }
-
-      private wu i() {
-         LocalDateTime $$0 = LocalDateTime.ofInstant(this.d.e(), ZoneOffset.systemDefault());
-         return wu.b($$0.format(f)).a(n.u, n.h);
-      }
-
-      @Override
-      public boolean a(UUID $$0) {
-         return this.d.a($$0);
-      }
-
-      public UUID e() {
-         return this.c.getId();
-      }
-
-      @Override
-      public fzg.a a() {
-         return fzg.a.a;
-      }
-
-      public GameProfile f() {
-         return this.c;
-      }
-
-      public xk g() {
-         return this.d;
-      }
-
-      public fzf h() {
-         return this.e;
+   public static fzh a(xk $$0, wu $$1, Instant $$2) {
+      if (!$$0.i() || $$0.b($$2)) {
+         return c;
+      } else {
+         return a($$0, $$1) ? b : a;
       }
    }
 
-   public static record b(wu c, Instant d) implements fzh {
-      public static final MapCodec<fzh.b> b = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(ww.a.fieldOf("message").forGetter(fzh.b::d), axo.o.fieldOf("time_stamp").forGetter(fzh.b::e)).apply($$0, fzh.b::new)
-      );
-
-      @Override
-      public wu b() {
-         return this.c;
+   private static boolean a(xk $$0, wu $$1) {
+      if (!$$1.getString().contains($$0.c())) {
+         return true;
+      } else {
+         wu $$2 = $$0.n();
+         return $$2 == null ? false : a($$2);
       }
+   }
 
-      @Override
-      public boolean a(UUID $$0) {
-         return false;
-      }
+   private static boolean a(wu $$0) {
+      return $$0.<Boolean>a(($$0x, $$1) -> a($$0x) ? Optional.of(true) : Optional.empty(), xr.a).orElse(false);
+   }
 
-      @Override
-      public fzg.a a() {
-         return fzg.a.b;
-      }
+   private static boolean a(xr $$0) {
+      return !$$0.k().equals(xr.b);
+   }
 
-      public wu d() {
-         return this.c;
-      }
+   public boolean a() {
+      return this == c;
+   }
 
-      public Instant e() {
-         return this.d;
-      }
+   @Nullable
+   public ffr a(xk $$0) {
+      return switch (this) {
+         case b -> ffr.a($$0.c());
+         case c -> ffr.c();
+         default -> null;
+      };
+   }
+
+   @Override
+   public String c() {
+      return this.e;
    }
 }

@@ -1,23 +1,21 @@
 public enum dtt implements azc {
-   a("straight"),
-   b("inner_left"),
-   c("inner_right"),
-   d("outer_left"),
-   e("outer_right");
+   a("top"),
+   b("bottom"),
+   c("double");
 
-   private final String f;
+   private final String d;
 
    private dtt(final String $$0) {
-      this.f = $$0;
+      this.d = $$0;
    }
 
    @Override
    public String toString() {
-      return this.f;
+      return this.d;
    }
 
    @Override
    public String c() {
-      return this.f;
+      return this.d;
    }
 }

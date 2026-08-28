@@ -8,25 +8,25 @@ import com.mojang.serialization.DynamicOps;
 import java.util.Set;
 
 public enum azo {
-   a(bgg.a),
-   b(bgg.b),
-   c(bgg.c),
-   d(bgg.d),
-   e(bgg.e),
-   f(bgg.f),
-   g(bgg.g),
-   h(bgg.h),
-   i(bgg.i),
-   j(bgg.j),
-   k(bgg.k),
-   l(bgg.l),
-   m(bgg.m),
-   n(bgg.o),
-   o(bgg.n),
-   p(bgg.p),
-   q(bgg.q),
-   r(bgg.M),
-   s(bgg.r);
+   a(bgh.a),
+   b(bgh.b),
+   c(bgh.c),
+   d(bgh.d),
+   e(bgh.e),
+   f(bgh.f),
+   g(bgh.g),
+   h(bgh.h),
+   i(bgh.i),
+   j(bgh.j),
+   k(bgh.k),
+   l(bgh.l),
+   m(bgh.m),
+   n(bgh.o),
+   o(bgh.n),
+   p(bgh.p),
+   q(bgh.q),
+   r(bgh.M),
+   s(bgh.r);
 
    public static final Set<TypeReference> t;
    private final TypeReference u;

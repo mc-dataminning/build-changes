@@ -5,7 +5,7 @@ import com.mojang.serialization.Dynamic;
 
 public class bcb extends bfd {
    public bcb(Schema $$0) {
-      super($$0, false, "EntityBrushableBlockFieldsRenameFix", bgg.s, "minecraft:brushable_block");
+      super($$0, false, "EntityBrushableBlockFieldsRenameFix", bgh.s, "minecraft:brushable_block");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

@@ -1,69 +1,91 @@
+import com.mojang.authlib.minecraft.BanDetails;
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
+import java.time.Duration;
+import java.time.Instant;
+import org.apache.commons.lang3.StringUtils;
 
-public class fmg extends fmh {
-   private static final wu q = wu.c("chat.copy");
-   private static final wu r = wu.c("chat.link.warning");
-   private final String s;
-   private final boolean u;
+public class fmg {
+   private static final wu b = wu.c("gui.banned.title.temporary").a(n.r);
+   private static final wu c = wu.c("gui.banned.title.permanent").a(n.r);
+   public static final wu a = wu.c("gui.banned.name.title").a(n.r);
+   private static final wu d = wu.c("gui.banned.skin.title").a(n.r);
+   private static final wu e = wu.a("gui.banned.skin.description", wu.b("https://aka.ms/mcjavamoderation"));
 
-   public fmg(BooleanConsumer $$0, String $$1, boolean $$2) {
-      this($$0, c($$2), wu.b($$1), $$1, $$2 ? wt.e : wt.g, $$2);
+   public static fmi a(BooleanConsumer $$0, BanDetails $$1) {
+      return new fmi($$0, a($$1), b($$1), "https://aka.ms/mcjavamoderation", wt.m, true);
    }
 
-   public fmg(BooleanConsumer $$0, wu $$1, String $$2, boolean $$3) {
-      this($$0, $$1, a($$3, $$2), $$2, $$3 ? wt.e : wt.g, $$3);
+   public static fmi a(Runnable $$0) {
+      String $$1 = "https://aka.ms/mcjavamoderation";
+      return new fmi($$1x -> {
+         if ($$1x) {
+            ac.k().a("https://aka.ms/mcjavamoderation");
+         }
+
+         $$0.run();
+      }, d, e, "https://aka.ms/mcjavamoderation", wt.m, true);
    }
 
-   public fmg(BooleanConsumer $$0, wu $$1, wu $$2, String $$3, wu $$4, boolean $$5) {
-      super($$0, $$1, $$2);
-      this.a = (wu)($$5 ? wu.c("chat.link.open") : wt.f);
-      this.b = $$4;
-      this.u = !$$5;
-      this.s = $$3;
+   public static fmi a(String $$0, Runnable $$1) {
+      String $$2 = "https://aka.ms/mcjavamoderation";
+      return new fmi($$1x -> {
+         if ($$1x) {
+            ac.k().a("https://aka.ms/mcjavamoderation");
+         }
+
+         $$1.run();
+      }, a, wu.a("gui.banned.name.description", wu.b($$0).a(n.o), "https://aka.ms/mcjavamoderation"), "https://aka.ms/mcjavamoderation", wt.m, true);
    }
 
-   protected static xi a(boolean $$0, String $$1) {
-      return c($$0).b(wt.v).b(wu.b($$1));
+   private static wu a(BanDetails $$0) {
+      return f($$0) ? b : c;
    }
 
-   protected static xi c(boolean $$0) {
-      return wu.c($$0 ? "chat.link.confirmTrusted" : "chat.link.confirm");
+   private static wu b(BanDetails $$0) {
+      return wu.a("gui.banned.description", c($$0), d($$0), wu.b("https://aka.ms/mcjavamoderation"));
    }
 
-   @Override
-   protected void a(int $$0) {
-      this.c(fhs.a(this.a, $$0x -> this.c.accept(true)).a(this.m / 2 - 50 - 105, $$0, 100, 20).a());
-      this.c(fhs.a(q, $$0x -> {
-         this.l();
-         this.c.accept(false);
-      }).a(this.m / 2 - 50, $$0, 100, 20).a());
-      this.c(fhs.a(this.b, $$0x -> this.c.accept(false)).a(this.m / 2 - 50 + 105, $$0, 100, 20).a());
-   }
+   private static wu c(BanDetails $$0) {
+      String $$1 = $$0.reason();
+      String $$2 = $$0.reasonMessage();
+      if (StringUtils.isNumeric($$1)) {
+         int $$3 = Integer.parseInt($$1);
+         fzm $$4 = fzm.a($$3);
+         wu $$5;
+         if ($$4 != null) {
+            $$5 = wx.a($$4.a().f(), xr.a.a(true));
+         } else if ($$2 != null) {
+            $$5 = wu.a("gui.banned.description.reason_id_message", $$3, $$2).a(n.r);
+         } else {
+            $$5 = wu.a("gui.banned.description.reason_id", $$3).a(n.r);
+         }
 
-   public void l() {
-      this.l.o.a(this.s);
-   }
-
-   @Override
-   public void a(fhf $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      if (this.u) {
-         $$0.a(this.o, r, this.m / 2, 110, 16764108);
+         return wu.a("gui.banned.description.reason", $$5);
+      } else {
+         return wu.c("gui.banned.description.unknownreason");
       }
    }
 
-   public static void a(fnj $$0, String $$1) {
-      fft $$2 = fft.Q();
-      $$2.a(new fmg($$3 -> {
-         if ($$3) {
-            ac.k().a($$1);
-         }
-
-         $$2.a($$0);
-      }, $$1, true));
+   private static wu d(BanDetails $$0) {
+      if (f($$0)) {
+         wu $$1 = e($$0);
+         return wu.a("gui.banned.description.temporary", wu.a("gui.banned.description.temporary.duration", $$1).a(n.r));
+      } else {
+         return wu.c("gui.banned.description.permanent").a(n.r);
+      }
    }
 
-   public static fhs.c b(fnj $$0, String $$1) {
-      return $$2 -> a($$0, $$1);
+   private static wu e(BanDetails $$0) {
+      Duration $$1 = Duration.between(Instant.now(), $$0.expires());
+      long $$2 = $$1.toHours();
+      if ($$2 > 72L) {
+         return wt.a($$1.toDays());
+      } else {
+         return $$2 < 1L ? wt.c($$1.toMinutes()) : wt.b($$1.toHours());
+      }
+   }
+
+   private static boolean f(BanDetails $$0) {
+      return $$0.expires() != null;
    }
 }

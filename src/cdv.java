@@ -2,12 +2,24 @@ import javax.annotation.Nullable;
 
 public class cdv {
    @Nullable
-   public static ewf a(btk $$0, int $$1, int $$2, int $$3, ewf $$4, double $$5) {
-      ewf $$6 = $$4.a($$0.dv(), $$0.dx(), $$0.dB());
-      boolean $$7 = cdx.a($$0, $$1);
-      return cea.a($$0, () -> {
-         ja $$7x = cdu.a($$0, $$1, $$2, $$3, $$6.c, $$6.e, $$5, $$7);
-         return $$7x != null && !cdx.a($$0, $$7x) ? $$7x : null;
-      });
+   public static ewh a(btl $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6) {
+      boolean $$7 = cdy.a($$0, $$1);
+      return ceb.a($$0, () -> a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+   }
+
+   @Nullable
+   public static ja a(btl $$0, int $$1, int $$2, int $$3, double $$4, double $$5, double $$6, boolean $$7) {
+      ja $$8 = ceb.a($$0.dU(), $$1, $$2, $$3, $$4, $$5, $$6);
+      if ($$8 == null) {
+         return null;
+      } else {
+         ja $$9 = ceb.a($$0, $$1, $$0.dU(), $$8);
+         if (!cdy.a($$9, $$0) && !cdy.a($$7, $$0, $$9)) {
+            $$9 = ceb.a($$9, $$0.dR().am(), $$1x -> cdy.c($$0, $$1x));
+            return cdy.b($$0, $$9) ? null : $$9;
+         } else {
+            return null;
+         }
+      }
    }
 }

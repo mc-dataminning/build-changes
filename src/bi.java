@@ -14,7 +14,7 @@ public record bi(de.c b, de.c c, Optional<bu> d, Optional<Boolean> e, Optional<b
             .apply($$0, bi::new)
    );
 
-   public boolean a(aqn $$0, bqz $$1, float $$2, float $$3, boolean $$4) {
+   public boolean a(aqn $$0, bra $$1, float $$2, float $$3, boolean $$4) {
       if (!this.b.d((double)$$2)) {
          return false;
       } else if (!this.c.d((double)$$3)) {

@@ -1,5 +1,5 @@
-public record kr(aqm a, ja b, dsk c, dqi d) {
-   public ewf a() {
+public record kr(aqm a, ja b, dsl c, dqj d) {
+   public ewh a() {
       return this.b.b();
    }
 
@@ -11,11 +11,11 @@ public record kr(aqm a, ja b, dsk c, dqi d) {
       return this.b;
    }
 
-   public dsk d() {
+   public dsl d() {
       return this.c;
    }
 
-   public dqi e() {
+   public dqj e() {
       return this.d;
    }
 }

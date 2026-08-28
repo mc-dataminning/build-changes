@@ -21,7 +21,7 @@ public class eq implements es<eq>, ev {
    public static final SimpleCommandExceptionType a = new SimpleCommandExceptionType(wu.c("permissions.requires.player"));
    public static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("permissions.requires.entity"));
    private final ep c;
-   private final ewf d;
+   private final ewh d;
    private final aqm e;
    private final int f;
    private final String g;
@@ -29,27 +29,27 @@ public class eq implements es<eq>, ev {
    private final MinecraftServer i;
    private final boolean j;
    @Nullable
-   private final bsg k;
+   private final bsh k;
    private final en l;
    private final fc.a m;
-   private final ewe n;
+   private final ewg n;
    private final eo o;
    private final aze p;
 
-   public eq(ep $$0, ewf $$1, ewe $$2, aqm $$3, int $$4, String $$5, wu $$6, MinecraftServer $$7, @Nullable bsg $$8) {
+   public eq(ep $$0, ewh $$1, ewg $$2, aqm $$3, int $$4, String $$5, wu $$6, MinecraftServer $$7, @Nullable bsh $$8) {
       this($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, en.a, fc.a.a, eo.a, aze.immediate($$7));
    }
 
    protected eq(
       ep $$0,
-      ewf $$1,
-      ewe $$2,
+      ewh $$1,
+      ewg $$2,
       aqm $$3,
       int $$4,
       String $$5,
       wu $$6,
       MinecraftServer $$7,
-      @Nullable bsg $$8,
+      @Nullable bsh $$8,
       boolean $$9,
       en $$10,
       fc.a $$11,
@@ -76,17 +76,17 @@ public class eq implements es<eq>, ev {
       return this.c == $$0 ? this : new eq($$0, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
    }
 
-   public eq a(bsg $$0) {
+   public eq a(bsh $$0) {
       return this.k == $$0
          ? this
-         : new eq(this.c, this.d, this.n, this.e, this.f, $$0.ag().getString(), $$0.O_(), this.i, $$0, this.j, this.l, this.m, this.o, this.p);
+         : new eq(this.c, this.d, this.n, this.e, this.f, $$0.ah().getString(), $$0.O_(), this.i, $$0, this.j, this.l, this.m, this.o, this.p);
    }
 
-   public eq a(ewf $$0) {
+   public eq a(ewh $$0) {
       return this.d.equals($$0) ? this : new eq(this.c, $$0, this.n, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
    }
 
-   public eq a(ewe $$0) {
+   public eq a(ewg $$0) {
       return this.n.c($$0) ? this : new eq(this.c, this.d, $$0, this.e, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
    }
 
@@ -102,7 +102,7 @@ public class eq implements es<eq>, ev {
    }
 
    public eq a() {
-      return !this.j && !this.c.m_()
+      return !this.j && !this.c.l_()
          ? new eq(this.c, this.d, this.n, this.e, this.f, this.g, this.h, this.i, this.k, true, this.l, this.m, this.o, this.p)
          : this;
    }
@@ -123,25 +123,25 @@ public class eq implements es<eq>, ev {
       if ($$0 == this.e) {
          return this;
       } else {
-         double $$1 = dwf.a(this.e.D_(), $$0.D_());
-         ewf $$2 = new ewf(this.d.c * $$1, this.d.d, this.d.e * $$1);
+         double $$1 = dwg.a(this.e.D_(), $$0.D_());
+         ewh $$2 = new ewh(this.d.c * $$1, this.d.d, this.d.e * $$1);
          return new eq(this.c, $$2, this.n, $$0, this.f, this.g, this.h, this.i, this.k, this.j, this.l, this.m, this.o, this.p);
       }
    }
 
-   public eq a(bsg $$0, fc.a $$1) {
+   public eq a(bsh $$0, fc.a $$1) {
       return this.b($$1.a($$0));
    }
 
-   public eq b(ewf $$0) {
-      ewf $$1 = this.m.a(this);
+   public eq b(ewh $$0) {
+      ewh $$1 = this.m.a(this);
       double $$2 = $$0.c - $$1.c;
       double $$3 = $$0.d - $$1.d;
       double $$4 = $$0.e - $$1.e;
       double $$5 = Math.sqrt($$2 * $$2 + $$4 * $$4);
       float $$6 = ayg.g((float)(-(ayg.d($$3, $$5) * 180.0F / (float)Math.PI)));
       float $$7 = ayg.g((float)(ayg.d($$4, $$2) * 180.0F / (float)Math.PI) - 90.0F);
-      return this.a(new ewe($$6, $$7));
+      return this.a(new ewg($$6, $$7));
    }
 
    public eq a(eo $$0, aze $$1) {
@@ -163,7 +163,7 @@ public class eq implements es<eq>, ev {
       return this.f >= $$0;
    }
 
-   public ewf d() {
+   public ewh d() {
       return this.d;
    }
 
@@ -172,11 +172,11 @@ public class eq implements es<eq>, ev {
    }
 
    @Nullable
-   public bsg f() {
+   public bsh f() {
       return this.k;
    }
 
-   public bsg g() throws CommandSyntaxException {
+   public bsh g() throws CommandSyntaxException {
       if (this.k == null) {
          throw b.create();
       } else {
@@ -185,7 +185,7 @@ public class eq implements es<eq>, ev {
    }
 
    public aqn h() throws CommandSyntaxException {
-      bsg var2 = this.k;
+      bsh var2 = this.k;
       if (var2 instanceof aqn) {
          return (aqn)var2;
       } else {
@@ -202,7 +202,7 @@ public class eq implements es<eq>, ev {
       return this.k instanceof aqn;
    }
 
-   public ewe k() {
+   public ewg k() {
       return this.n;
    }
 
@@ -224,7 +224,7 @@ public class eq implements es<eq>, ev {
 
    public boolean a(aqn $$0) {
       aqn $$1 = this.i();
-      return $$0 == $$1 ? false : $$1 != null && $$1.Y() || $$0.Y();
+      return $$0 == $$1 ? false : $$1 != null && $$1.Z() || $$0.Z();
    }
 
    public void a(xj $$0, boolean $$1, wq.a $$2) {
@@ -250,7 +250,7 @@ public class eq implements es<eq>, ev {
    }
 
    public void a(Supplier<wu> $$0, boolean $$1) {
-      boolean $$2 = this.c.l_() && !this.j;
+      boolean $$2 = this.c.k_() && !this.j;
       boolean $$3 = $$1 && this.c.U_() && !this.j;
       if ($$2 || $$3) {
          wu $$4 = $$0.get();
@@ -266,15 +266,15 @@ public class eq implements es<eq>, ev {
 
    private void c(wu $$0) {
       wu $$1 = wu.a("chat.type.admin", this.b(), $$0).a(n.h, n.u);
-      if (this.i.aN().b(dcb.p)) {
+      if (this.i.aN().b(dcc.p)) {
          for (aqn $$2 : this.i.ai().t()) {
-            if ($$2 != this.c && this.i.ai().f($$2.fY())) {
+            if ($$2 != this.c && this.i.ai().f($$2.fZ())) {
                $$2.a($$1);
             }
          }
       }
 
-      if (this.c != this.i && this.i.aN().b(dcb.m)) {
+      if (this.c != this.i && this.i.aN().b(dcc.m)) {
          this.i.a($$1);
       }
    }
@@ -324,7 +324,7 @@ public class eq implements es<eq>, ev {
    }
 
    @Override
-   public Set<akj<dcf>> u() {
+   public Set<akj<dcg>> u() {
       return this.i.K();
    }
 
@@ -334,7 +334,7 @@ public class eq implements es<eq>, ev {
    }
 
    @Override
-   public coy w() {
+   public coz w() {
       return this.e.J();
    }
 

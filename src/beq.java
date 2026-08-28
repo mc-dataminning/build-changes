@@ -79,7 +79,7 @@ public class beq extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgg.c);
+      Type<?> $$0 = this.getInputSchema().getType(bgh.c);
       OpticFinder<?> $$1 = $$0.findField("Level");
       OpticFinder<?> $$2 = $$1.type().findField("Sections");
       Type<?> $$3 = $$2.type();
@@ -318,7 +318,7 @@ public class beq extends DataFix {
       protected static final String a = "BlockStates";
       protected static final String b = "Name";
       protected static final String c = "Properties";
-      private final Type<Pair<String, Dynamic<?>>> h = DSL.named(bgg.u.typeName(), DSL.remainderType());
+      private final Type<Pair<String, Dynamic<?>>> h = DSL.named(bgh.u.typeName(), DSL.remainderType());
       protected final OpticFinder<List<Pair<String, Dynamic<?>>>> d = DSL.fieldFinder("Palette", DSL.list(this.h));
       protected final List<Dynamic<?>> e;
       protected final int f;
@@ -326,7 +326,7 @@ public class beq extends DataFix {
       protected azs g;
 
       public b(Typed<?> $$0, Schema $$1) {
-         if (!Objects.equals($$1.getType(bgg.u), this.h)) {
+         if (!Objects.equals($$1.getType(bgh.u), this.h)) {
             throw new IllegalStateException("Block state type is not what was expected.");
          } else {
             Optional<List<Pair<String, Dynamic<?>>>> $$2 = $$0.getOptional(this.d);
@@ -351,7 +351,7 @@ public class beq extends DataFix {
          return this.b()
             ? $$0
             : $$0.update(DSL.remainderFinder(), $$0x -> $$0x.set("BlockStates", $$0x.createLongList(Arrays.stream(this.g.a()))))
-               .set(this.d, this.e.stream().map($$0x -> Pair.of(bgg.u.typeName(), $$0x)).collect(Collectors.toList()));
+               .set(this.d, this.e.stream().map($$0x -> Pair.of(bgh.u.typeName(), $$0x)).collect(Collectors.toList()));
       }
 
       public boolean b() {

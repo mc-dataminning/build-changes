@@ -1,54 +1,54 @@
+import com.google.common.collect.Lists;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import com.google.gson.JsonParser;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+import org.slf4j.Logger;
 
-public class fbz {
-   private static final String a = "translationKey";
-   private static final String b = "args";
-   private final String c;
-   @Nullable
-   private final String[] d;
-
-   private fbz(String $$0, @Nullable String[] $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   public wu a(wu $$0) {
-      return Objects.requireNonNullElse(this.a(), $$0);
-   }
-
-   @Nullable
-   public wu a() {
-      if (!gqu.a(this.c)) {
-         return null;
-      } else {
-         return this.d == null ? wu.c(this.c) : wu.a(this.c, this.d);
-      }
-   }
+public class fbz extends fck {
+   private static final Logger c = LogUtils.getLogger();
+   public long a;
+   public List<UUID> b;
 
    public static fbz a(JsonObject $$0) {
-      String $$1 = fef.a("translationKey", $$0);
-      JsonElement $$2 = $$0.get("args");
-      String[] $$5;
-      if ($$2 != null && !$$2.isJsonNull()) {
-         JsonArray $$4 = $$2.getAsJsonArray();
-         $$5 = new String[$$4.size()];
+      fbz $$1 = new fbz();
 
-         for (int $$6 = 0; $$6 < $$4.size(); $$6++) {
-            $$5[$$6] = $$4.get($$6).getAsString();
+      try {
+         $$1.a = feh.a("serverId", $$0, -1L);
+         String $$2 = feh.b("playerList", $$0, null);
+         if ($$2 != null) {
+            JsonElement $$3 = JsonParser.parseString($$2);
+            if ($$3.isJsonArray()) {
+               $$1.b = a($$3.getAsJsonArray());
+            } else {
+               $$1.b = Lists.newArrayList();
+            }
+         } else {
+            $$1.b = Lists.newArrayList();
          }
-      } else {
-         $$5 = null;
+      } catch (Exception var4) {
+         c.error("Could not parse RealmsServerPlayerList: {}", var4.getMessage());
       }
 
-      return new fbz($$1, $$5);
+      return $$1;
    }
 
-   @Override
-   public String toString() {
-      return this.c;
+   private static List<UUID> a(JsonArray $$0) {
+      List<UUID> $$1 = new ArrayList<>($$0.size());
+
+      for (JsonElement $$2 : $$0) {
+         if ($$2.isJsonObject()) {
+            UUID $$3 = feh.a("playerId", $$2.getAsJsonObject(), null);
+            if ($$3 != null) {
+               $$1.add($$3);
+            }
+         }
+      }
+
+      return $$1;
    }
 }

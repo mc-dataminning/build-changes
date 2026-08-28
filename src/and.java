@@ -12,7 +12,7 @@ public class and {
       $$0.register(
          (LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("op").requires($$0x -> $$0x.c(3))).then(er.a("targets", ff.a()).suggests(($$0x, $$1) -> {
             auj $$2 = ((eq)$$0x.getSource()).l().ai();
-            return ev.b($$2.t().stream().filter($$1x -> !$$2.f($$1x.fY())).map($$0xx -> $$0xx.fY().getName()), $$1);
+            return ev.b($$2.t().stream().filter($$1x -> !$$2.f($$1x.fZ())).map($$0xx -> $$0xx.fZ().getName()), $$1);
          }).executes($$0x -> a((eq)$$0x.getSource(), ff.a($$0x, "targets"))))
       );
    }

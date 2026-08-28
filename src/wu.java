@@ -198,7 +198,7 @@ public interface wu extends Message, wz {
       return b($$0.toString());
    }
 
-   static wu a(dbm $$0) {
+   static wu a(dbn $$0) {
       return b($$0.toString());
    }
 

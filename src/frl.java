@@ -1,15 +1,5 @@
-import java.util.Set;
+import java.util.List;
 
-public class frl extends fra {
-   private static final wu i = wu.c("gui.recipebook.toggleRecipes.smeltable");
-
-   @Override
-   protected wu c() {
-      return i;
-   }
-
-   @Override
-   protected Set<ctx> b() {
-      return dpd.g().keySet();
-   }
+public interface frl {
+   void a(List<cyl<?>> var1);
 }

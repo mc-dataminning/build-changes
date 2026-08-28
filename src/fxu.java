@@ -1,17 +1,24 @@
 public class fxu {
-   private final fxw a;
-   private final fxv b;
+   public static final fxu a = new fxu(0.0F);
+   final float b;
+   final float c;
+   final float d;
 
-   private fxu(fxw $$0, fxv $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public fxu(float $$0, float $$1, float $$2) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
    }
 
-   public fxo a() {
-      return this.a.a().a(this.b.a, this.b.b);
+   public fxu(float $$0) {
+      this($$0, $$0, $$0);
    }
 
-   public static fxu a(fxw $$0, int $$1, int $$2) {
-      return new fxu($$0, new fxv($$1, $$2));
+   public fxu a(float $$0) {
+      return new fxu(this.b + $$0, this.c + $$0, this.d + $$0);
+   }
+
+   public fxu a(float $$0, float $$1, float $$2) {
+      return new fxu(this.b + $$0, this.c + $$1, this.d + $$2);
    }
 }

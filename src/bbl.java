@@ -34,7 +34,7 @@ public class bbl extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgg.c);
+      Type<?> $$0 = this.getInputSchema().getType(bgh.c);
       OpticFinder<?> $$1 = $$0.findField("Level");
       OpticFinder<?> $$2 = $$1.type().findField("Sections");
       OpticFinder<?> $$3 = ((ListType)$$2.type()).getElement().finder();

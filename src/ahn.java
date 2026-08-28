@@ -1,7 +1,7 @@
 import java.util.Optional;
 
-public record ahn(Optional<jj<brm>> b, Optional<jj<brm>> c) implements zb<agb> {
-   public static final ys<wf, ahn> a = ys.a(yq.b(lr.V).a(yq::a), ahn::b, yq.b(lr.V).a(yq::a), ahn::e, ahn::new);
+public record ahn(Optional<jj<brn>> b, Optional<jj<brn>> c) implements zb<agb> {
+   public static final ys<wf, ahn> a = ys.a(brn.b.a(yq::a), ahn::b, brn.b.a(yq::a), ahn::e, ahn::new);
 
    @Override
    public zd<ahn> a() {
@@ -12,7 +12,7 @@ public record ahn(Optional<jj<brm>> b, Optional<jj<brm>> c) implements zb<agb> {
       $$0.a(this);
    }
 
-   public Optional<jj<brm>> e() {
+   public Optional<jj<brn>> e() {
       return this.c;
    }
 }

@@ -15,7 +15,7 @@ public class ber extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("LegacyDragonFightFix", this.getInputSchema().getType(bgg.a), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
+      return this.fixTypeEverywhereTyped("LegacyDragonFightFix", this.getInputSchema().getType(bgh.a), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
             OptionalDynamic<?> $$1 = $$0x.get("DragonFight");
             if ($$1.result().isPresent()) {
                return $$0x;

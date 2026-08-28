@@ -1,181 +1,167 @@
 import com.google.common.collect.ImmutableList;
-import java.util.Arrays;
-import java.util.Collections;
+import com.google.common.collect.Lists;
 import java.util.List;
-import javax.annotation.Nullable;
-import org.apache.commons.lang3.ArrayUtils;
+import java.util.Optional;
 
-public class fqr extends fhy<fqr.b> {
-   private static final int a = 20;
-   final fqs m;
-   private int n;
+public class fqr extends fqn {
+   private static final wu a = wu.c("options.videoTitle");
+   private static final wu s = wu.c("options.graphics.fabulous").a(n.u);
+   private static final wu u = wu.a("options.graphics.warning.message", s, s);
+   private static final wu v = wu.c("options.graphics.warning.title").a(n.m);
+   private static final wu w = wu.c("options.graphics.warning.accept");
+   private static final wu x = wu.c("options.graphics.warning.cancel");
+   private final gdz y;
+   private final int z;
 
-   public fqr(fqs $$0, fft $$1) {
-      super($$1, $$0.m, $$0.r.d(), $$0.r.c(), 20);
-      this.m = $$0;
-      ffr[] $$2 = (ffr[])ArrayUtils.clone($$1.m.W);
-      Arrays.sort((Object[])$$2);
-      String $$3 = null;
+   private static ffz<?>[] a(fga $$0) {
+      return new ffz[]{
+         $$0.j(),
+         $$0.e(),
+         $$0.l(),
+         $$0.f(),
+         $$0.k(),
+         $$0.h(),
+         $$0.N(),
+         $$0.ab(),
+         $$0.aq(),
+         $$0.D(),
+         $$0.ap(),
+         $$0.i(),
+         $$0.aa(),
+         $$0.ar(),
+         $$0.C(),
+         $$0.O(),
+         $$0.aj(),
+         $$0.g(),
+         $$0.ak(),
+         $$0.af(),
+         $$0.am(),
+         $$0.an(),
+         $$0.p()
+      };
+   }
 
-      for (ffr $$4 : $$2) {
-         String $$5 = $$4.f();
-         if (!$$5.equals($$3)) {
-            $$3 = $$5;
-            this.b(new fqr.a(wu.c($$5)));
-         }
-
-         wu $$6 = wu.c($$4.h());
-         int $$7 = $$1.h.a($$6);
-         if ($$7 > this.n) {
-            this.n = $$7;
-         }
-
-         this.b(new fqr.c($$4, $$6));
+   public fqr(fnl $$0, ffw $$1, fga $$2) {
+      super($$0, $$2, a);
+      this.y = $$1.ai();
+      this.y.i();
+      if ($$2.j().c() == ffp.c) {
+         this.y.e();
       }
-   }
 
-   public void c() {
-      ffr.d();
-      this.J();
-   }
-
-   public void J() {
-      this.aG_().forEach(fqr.b::c);
+      this.z = $$2.C().c();
    }
 
    @Override
-   public int b() {
-      return 340;
-   }
-
-   public class a extends fqr.b {
-      final wu b;
-      private final int c;
-
-      public a(final wu $$1) {
-         this.b = $$1;
-         this.c = fqr.this.c.h.a(this.b);
+   protected void m() {
+      int $$0 = -1;
+      ezs $$1 = this.l.aM();
+      ezn $$2 = $$1.t();
+      int $$3;
+      if ($$2 == null) {
+         $$3 = -1;
+      } else {
+         Optional<ezr> $$4 = $$1.f();
+         $$3 = $$4.<Integer>map($$2::a).orElse(-1);
       }
 
-      @Override
-      public void a(fhf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         $$0.a(fqr.this.c.h, this.b, fqr.this.g / 2 - this.c / 2, $$2 + $$5 - 9 - 1, -1, false);
-      }
-
-      @Nullable
-      @Override
-      public fhc a(flu $$0) {
-         return null;
-      }
-
-      @Override
-      public List<? extends fjo> aG_() {
-         return Collections.emptyList();
-      }
-
-      @Override
-      public List<? extends flm> b() {
-         return ImmutableList.of(new flm() {
-            @Override
-            public flm.a u() {
-               return flm.a.b;
-            }
-
-            @Override
-            public void b(flo $$0) {
-               $$0.a(fln.a, a.this.b);
-            }
-         });
-      }
-
-      @Override
-      protected void c() {
-      }
-   }
-
-   public abstract static class b extends fhy.a<fqr.b> {
-      abstract void c();
-   }
-
-   public class c extends fqr.b {
-      private static final wu b = wu.c("controls.reset");
-      private static final int c = 10;
-      private final ffr d;
-      private final wu e;
-      private final fhs f;
-      private final fhs g;
-      private boolean h = false;
-
-      c(final ffr $$1, final wu $$2) {
-         this.d = $$1;
-         this.e = $$2;
-         this.f = fhs.a($$2, $$1x -> {
-            fqr.this.m.a = $$1;
-            fqr.this.c();
-         }).a(0, 0, 75, 20).a($$2x -> $$1.j() ? wu.a("narrator.controls.unbound", $$2) : wu.a("narrator.controls.bound", $$2, $$2x.get())).a();
-         this.g = fhs.a(b, $$1x -> {
-            fqr.this.c.m.a($$1, $$1.i());
-            fqr.this.c();
-         }).a(0, 0, 50, 20).a($$1x -> wu.a("narrator.controls.reset", $$2)).a();
-         this.c();
-      }
-
-      @Override
-      public void a(fhf $$0, int $$1, int $$2, int $$3, int $$4, int $$5, int $$6, int $$7, boolean $$8, float $$9) {
-         int $$10 = fqr.this.q() - this.g.y() - 10;
-         int $$11 = $$2 - 2;
-         this.g.c($$10, $$11);
-         this.g.a($$0, $$6, $$7, $$9);
-         int $$12 = $$10 - 5 - this.f.y();
-         this.f.c($$12, $$11);
-         this.f.a($$0, $$6, $$7, $$9);
-         $$0.b(fqr.this.c.h, this.e, $$3, $$2 + $$5 / 2 - 9 / 2, -1);
-         if (this.h) {
-            int $$13 = 3;
-            int $$14 = this.f.D() - 6;
-            $$0.a($$14, $$2 - 1, $$14 + 3, $$2 + $$5, -65536);
+      ffz<Integer> $$6 = new ffz<>("options.fullscreen.resolution", ffz.a(), ($$1x, $$2x) -> {
+         if ($$2 == null) {
+            return wu.c("options.fullscreen.unavailable");
+         } else if ($$2x == -1) {
+            return fga.a($$1x, wu.c("options.fullscreen.current"));
+         } else {
+            ezr $$3x = $$2.a($$2x);
+            return fga.a($$1x, wu.a("options.fullscreen.entry", $$3x.a(), $$3x.b(), $$3x.f(), $$3x.c() + $$3x.d() + $$3x.e()));
          }
+      }, new ffz.f(-1, $$2 != null ? $$2.e() - 1 : -1), $$3, $$2x -> {
+         if ($$2 != null) {
+            $$1.a($$2x == -1 ? Optional.empty() : Optional.of($$2.a($$2x)));
+         }
+      });
+      this.q.a($$6);
+      this.q.a(this.c.E());
+      this.q.a(a(this.c));
+   }
+
+   @Override
+   public void d() {
+      this.l.aM().g();
+      super.d();
+   }
+
+   @Override
+   public void j() {
+      if (this.c.C().c() != this.z) {
+         this.l.b(this.c.C().c());
+         this.l.R();
       }
 
-      @Override
-      public List<? extends fjo> aG_() {
-         return ImmutableList.of(this.f, this.g);
+      super.j();
+   }
+
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if (super.a($$0, $$1, $$2)) {
+         if (this.y.g()) {
+            List<wu> $$3 = Lists.newArrayList(new wu[]{u, wt.s});
+            String $$4 = this.y.j();
+            if ($$4 != null) {
+               $$3.add(wt.s);
+               $$3.add(wu.a("options.graphics.warning.renderer", $$4).a(n.h));
+            }
+
+            String $$5 = this.y.l();
+            if ($$5 != null) {
+               $$3.add(wt.s);
+               $$3.add(wu.a("options.graphics.warning.vendor", $$5).a(n.h));
+            }
+
+            String $$6 = this.y.k();
+            if ($$6 != null) {
+               $$3.add(wt.s);
+               $$3.add(wu.a("options.graphics.warning.version", $$6).a(n.h));
+            }
+
+            this.l.a(new fqq(v, $$3, ImmutableList.of(new fqq.a(w, $$0x -> {
+               this.c.j().a(ffp.c);
+               ffw.Q().f.f();
+               this.y.e();
+               this.l.a(this);
+            }), new fqq.a(x, $$0x -> {
+               this.y.f();
+               this.l.a(this);
+            }))));
+         }
+
+         return true;
+      } else {
+         return false;
       }
+   }
 
-      @Override
-      public List<? extends flm> b() {
-         return ImmutableList.of(this.f, this.g);
-      }
-
-      @Override
-      protected void c() {
-         this.f.b(this.d.k());
-         this.g.j = !this.d.l();
-         this.h = false;
-         xi $$0 = wu.i();
-         if (!this.d.j()) {
-            for (ffr $$1 : fqr.this.c.m.W) {
-               if ($$1 != this.d && this.d.b($$1)) {
-                  if (this.h) {
-                     $$0.f(", ");
-                  }
-
-                  this.h = true;
-                  $$0.b(wu.c($$1.h()));
+   @Override
+   public boolean a(double $$0, double $$1, double $$2, double $$3) {
+      if (fnl.r()) {
+         ffz<Integer> $$4 = this.c.aq();
+         if ($$4.e() instanceof ffz.c $$5) {
+            int $$6 = $$4.c();
+            int $$7 = $$6 == 0 ? $$5.b() + 1 : $$6;
+            int $$8 = $$7 + (int)Math.signum($$3);
+            if ($$8 != 0 && $$8 <= $$5.b() && $$8 >= $$5.d()) {
+               fib<Integer> $$9 = (fib<Integer>)this.q.b($$4);
+               if ($$9 != null) {
+                  $$4.a($$8);
+                  $$9.a($$8);
+                  this.q.b(0.0);
+                  return true;
                }
             }
          }
 
-         if (this.h) {
-            this.f.b(wu.b("[ ").b(this.f.z().f().a(n.p)).f(" ]").a(n.m));
-            this.f.a(fjd.a(wu.a("controls.keybinds.duplicateKeybinds", $$0)));
-         } else {
-            this.f.a(null);
-         }
-
-         if (fqr.this.m.a == this.d) {
-            this.f.b(wu.b("> ").b(this.f.z().f().a(n.p, n.t)).f(" <").a(n.o));
-         }
+         return false;
+      } else {
+         return super.a($$0, $$1, $$2, $$3);
       }
    }
 }

@@ -17,10 +17,10 @@ public class gc implements ArgumentType<String> {
       return new gc();
    }
 
-   public static exe a(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+   public static exg a(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
       String $$2 = (String)$$0.getArgument($$1, String.class);
-      exj $$3 = ((eq)$$0.getSource()).l().aL();
-      exe $$4 = $$3.b($$2);
+      exl $$3 = ((eq)$$0.getSource()).l().aL();
+      exg $$4 = $$3.b($$2);
       if ($$4 == null) {
          throw b.create($$2);
       } else {

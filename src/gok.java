@@ -1,41 +1,48 @@
-import java.util.List;
+public class gok extends goa<cfs, fui<cfs>> {
+   private static final akk a = new akk("textures/entity/fish/tropical_a_pattern_1.png");
+   private static final akk b = new akk("textures/entity/fish/tropical_a_pattern_2.png");
+   private static final akk c = new akk("textures/entity/fish/tropical_a_pattern_3.png");
+   private static final akk d = new akk("textures/entity/fish/tropical_a_pattern_4.png");
+   private static final akk e = new akk("textures/entity/fish/tropical_a_pattern_5.png");
+   private static final akk f = new akk("textures/entity/fish/tropical_a_pattern_6.png");
+   private static final akk g = new akk("textures/entity/fish/tropical_b_pattern_1.png");
+   private static final akk h = new akk("textures/entity/fish/tropical_b_pattern_2.png");
+   private static final akk i = new akk("textures/entity/fish/tropical_b_pattern_3.png");
+   private static final akk j = new akk("textures/entity/fish/tropical_b_pattern_4.png");
+   private static final akk k = new akk("textures/entity/fish/tropical_b_pattern_5.png");
+   private static final akk l = new akk("textures/entity/fish/tropical_b_pattern_6.png");
+   private final fww<cfs> m;
+   private final fwx<cfs> n;
 
-public class gok<T extends clo, M extends fxa<T>> extends gny<T, M> {
-   private final akk a;
-   private final gok.a<T> b;
-   private final gok.b<T, M> c;
-
-   public gok(gli<T, M> $$0, akk $$1, gok.a<T> $$2, gok.b<T, M> $$3) {
+   public gok(glk<cfs, fui<cfs>> $$0, fxm $$1) {
       super($$0);
-      this.a = $$1;
-      this.b = $$2;
-      this.c = $$3;
+      this.m = new fww<>($$1.a(fxp.bM));
+      this.n = new fwx<>($$1.a(fxp.bK));
    }
 
-   public void a(fam $$0, ged $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if (!$$3.ci()) {
-         this.a();
-         faq $$10 = $$1.getBuffer(gel.j(this.a));
-         this.c().a($$0, $$10, $$2, gkn.c($$3, 0.0F), 1.0F, 1.0F, 1.0F, this.b.apply($$3, $$6, $$7));
-         this.b();
-      }
-   }
+   public void a(fao $$0, gef $$1, int $$2, cfs $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      cfs.b $$10 = $$3.gy();
 
-   private void a() {
-      List<fxo> $$0 = this.c.getPartsToDraw(this.c());
-      this.c().a().e().forEach($$0x -> $$0x.l = true);
-      $$0.forEach($$0x -> $$0x.l = false);
-   }
+      fuq<cfs> $$11 = (fuq<cfs>)(switch ($$10.a()) {
+         case a -> this.m;
+         case b -> this.n;
+      });
 
-   private void b() {
-      this.c().a().e().forEach($$0 -> $$0.l = false);
-   }
-
-   public interface a<T extends clo> {
-      float apply(T var1, float var2, float var3);
-   }
-
-   public interface b<T extends clo, M extends fuo<T>> {
-      List<fxo> getPartsToDraw(M var1);
+      akk $$12 = switch ($$10) {
+         case a -> a;
+         case b -> b;
+         case c -> c;
+         case d -> d;
+         case e -> e;
+         case f -> f;
+         case g -> g;
+         case h -> h;
+         case i -> i;
+         case j -> j;
+         case k -> k;
+         case l -> l;
+      };
+      float[] $$13 = $$3.gx().d();
+      a(this.c(), $$11, $$12, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$13[0], $$13[1], $$13[2]);
    }
 }

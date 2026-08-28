@@ -1,42 +1,25 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
 
-public class eif extends eid {
-   public static final MapCodec<eif> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(bpl.b(-16, 16).fieldOf("xz_spread").forGetter($$0x -> $$0x.c), bpl.b(-16, 16).fieldOf("y_spread").forGetter($$0x -> $$0x.d))
-            .apply($$0, eif::new)
-   );
-   private final bpl c;
-   private final bpl d;
+public interface eif<P extends eie> {
+   eif<ehq> a = a("block_predicate_filter", ehq.a);
+   eif<eih> b = a("rarity_filter", eih.a);
+   eif<eij> c = a("surface_relative_threshold_filter", eij.a);
+   eif<eik> d = a("surface_water_depth_filter", eik.a);
+   eif<ehp> e = a("biome", ehp.a);
+   eif<ehu> f = a("count", ehu.a);
+   eif<ehz> g = a("noise_based_count", ehz.a);
+   eif<eia> h = a("noise_threshold_count", eia.a);
+   eif<eht> i = a("count_on_every_layer", eht.a);
+   eif<ehv> j = a("environment_scan", ehv.a);
+   eif<ehx> k = a("heightmap", ehx.a);
+   eif<ehw> l = a("height_range", ehw.a);
+   eif<ehy> m = a("in_square", ehy.a);
+   eif<eig> n = a("random_offset", eig.a);
+   eif<ehr> o = a("carving_mask", ehr.a);
 
-   public static eif a(bpl $$0, bpl $$1) {
-      return new eif($$0, $$1);
-   }
+   MapCodec<P> codec();
 
-   public static eif a(bpl $$0) {
-      return new eif(bpi.a(0), $$0);
-   }
-
-   public static eif b(bpl $$0) {
-      return new eif($$0, bpi.a(0));
-   }
-
-   private eif(bpl $$0, bpl $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   @Override
-   public Stream<ja> a_(eib $$0, ayo $$1, ja $$2) {
-      int $$3 = $$2.u() + this.c.a($$1);
-      int $$4 = $$2.v() + this.d.a($$1);
-      int $$5 = $$2.w() + this.c.a($$1);
-      return Stream.of(new ja($$3, $$4, $$5));
-   }
-
-   @Override
-   public eie<?> b() {
-      return eie.n;
+   private static <P extends eie> eif<P> a(String $$0, MapCodec<P> $$1) {
+      return jw.a(lq.S, $$0, () -> $$1);
    }
 }

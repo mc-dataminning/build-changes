@@ -40,15 +40,15 @@ public abstract class aqc {
    private final aqc.c i = new aqc.c(32);
    final Set<apr> j = Sets.newHashSet();
    final apw k;
-   final boy<apw.a<Runnable>> l;
-   final boy<apw.b> m;
+   final boz<apw.a<Runnable>> l;
+   final boz<apw.b> m;
    final LongSet n = new LongOpenHashSet();
    final Executor o;
    private long p;
    private int q = 10;
 
    protected aqc(Executor $$0, Executor $$1) {
-      boy<Runnable> $$2 = boy.a("player ticket throttler", $$1::execute);
+      boz<Runnable> $$2 = boz.a("player ticket throttler", $$1::execute);
       apw $$3 = new apw(ImmutableList.of($$2), $$0, 4);
       this.k = $$3;
       this.l = $$3.a($$2, true);
@@ -122,7 +122,7 @@ public abstract class aqc {
                      throw new IllegalStateException();
                   }
 
-                  CompletableFuture<apu<duq>> $$6 = $$5.b();
+                  CompletableFuture<apu<dur>> $$6 = $$5.b();
                   $$6.thenAccept($$1x -> this.o.execute(() -> this.m.a(apw.a(() -> {
                         }, $$4, false))));
                }
@@ -157,23 +157,23 @@ public abstract class aqc {
       this.f.b($$0, a($$2), false);
    }
 
-   public <T> void a(aqr<T> $$0, dbm $$1, int $$2, T $$3) {
+   public <T> void a(aqr<T> $$0, dbn $$1, int $$2, T $$3) {
       this.a($$1.a(), new aqq<>($$0, $$2, $$3));
    }
 
-   public <T> void b(aqr<T> $$0, dbm $$1, int $$2, T $$3) {
+   public <T> void b(aqr<T> $$0, dbn $$1, int $$2, T $$3) {
       aqq<T> $$4 = new aqq<>($$0, $$2, $$3);
       this.b($$1.a(), $$4);
    }
 
-   public <T> void c(aqr<T> $$0, dbm $$1, int $$2, T $$3) {
+   public <T> void c(aqr<T> $$0, dbn $$1, int $$2, T $$3) {
       aqq<T> $$4 = new aqq<>($$0, aps.a(aqd.b) - $$2, $$3);
       long $$5 = $$1.a();
       this.a($$5, $$4);
       this.h.a($$5, $$4);
    }
 
-   public <T> void d(aqr<T> $$0, dbm $$1, int $$2, T $$3) {
+   public <T> void d(aqr<T> $$0, dbn $$1, int $$2, T $$3) {
       aqq<T> $$4 = new aqq<>($$0, aps.a(aqd.b) - $$2, $$3);
       long $$5 = $$1.a();
       this.b($$5, $$4);
@@ -184,8 +184,8 @@ public abstract class aqc {
       return (ayy<aqq<?>>)this.e.computeIfAbsent($$0, $$0x -> ayy.a(4));
    }
 
-   protected void a(dbm $$0, boolean $$1) {
-      aqq<dbm> $$2 = new aqq<>(aqr.d, apt.c, $$0);
+   protected void a(dbn $$0, boolean $$1) {
+      aqq<dbn> $$2 = new aqq<>(aqr.d, apt.c, $$0);
       long $$3 = $$0.a();
       if ($$1) {
          this.a($$3, $$2);
@@ -197,7 +197,7 @@ public abstract class aqc {
    }
 
    public void a(kc $$0, aqn $$1) {
-      dbm $$2 = $$0.r();
+      dbn $$2 = $$0.r();
       long $$3 = $$2.a();
       ((ObjectSet)this.d.computeIfAbsent($$3, $$0x -> new ObjectOpenHashSet())).add($$1);
       this.g.b($$3, 0, true);
@@ -206,7 +206,7 @@ public abstract class aqc {
    }
 
    public void b(kc $$0, aqn $$1) {
-      dbm $$2 = $$0.r();
+      dbn $$2 = $$0.r();
       long $$3 = $$2.a();
       ObjectSet<aqn> $$4 = (ObjectSet<aqn>)this.d.get($$3);
       $$4.remove($$1);
@@ -266,7 +266,7 @@ public abstract class aqc {
 
          while (var3.hasNext()) {
             Entry<ayy<aqq<?>>> $$2 = (Entry<ayy<aqq<?>>>)var3.next();
-            dbm $$3 = new dbm($$2.getLongKey());
+            dbn $$3 = new dbn($$2.getLongKey());
 
             for (aqq<?> $$4 : (ayy)$$2.getValue()) {
                $$1.write(($$3.e + "\t" + $$3.f + "\t" + $$4.a() + "\t" + $$4.b() + "\t\n").getBytes(StandardCharsets.UTF_8));
@@ -410,7 +410,7 @@ public abstract class aqc {
 
             while (var3.hasNext()) {
                it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry $$2 = (it.unimi.dsi.fastutil.longs.Long2ByteMap.Entry)var3.next();
-               dbm $$3 = new dbm($$2.getLongKey());
+               dbn $$3 = new dbn($$2.getLongKey());
                String $$4 = Byte.toString($$2.getByteValue());
                $$1.write(($$3.e + "\t" + $$3.f + "\t" + $$4 + "\n").getBytes(StandardCharsets.UTF_8));
             }
@@ -451,7 +451,7 @@ public abstract class aqc {
 
       private void a(long $$0, int $$1, boolean $$2, boolean $$3) {
          if ($$2 != $$3) {
-            aqq<?> $$4 = new aqq<>(aqr.c, aqc.b, new dbm($$0));
+            aqq<?> $$4 = new aqq<>(aqr.c, aqc.b, new dbn($$0));
             if ($$3) {
                aqc.this.l.a(apw.a(() -> aqc.this.o.execute(() -> {
                      if (this.c(this.c($$0))) {
@@ -479,7 +479,7 @@ public abstract class aqc {
                int $$2 = this.h.get($$1);
                int $$3 = this.c($$1);
                if ($$2 != $$3) {
-                  aqc.this.k.onLevelChange(new dbm($$1), () -> this.h.get($$1), $$3, $$1x -> {
+                  aqc.this.k.onLevelChange(new dbn($$1), () -> this.h.get($$1), $$3, $$1x -> {
                      if ($$1x >= this.h.defaultReturnValue()) {
                         this.h.remove($$1);
                      } else {

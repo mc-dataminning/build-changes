@@ -1,6 +1,11 @@
-class brh extends brm {
-   protected brh(brn $$0, int $$1) {
+class brh extends brn {
+   protected brh(bro $$0, int $$1) {
       super($$0, $$1);
+   }
+
+   @Override
+   public boolean a(btc $$0, int $$1) {
+      return $$0.fq() > 0.0F || $$0.dR().B;
    }
 
    @Override
@@ -9,19 +14,8 @@ class brh extends brm {
    }
 
    @Override
-   public boolean a(btb $$0, int $$1) {
-      if ($$0 instanceof aqn $$2 && !$$2.N_()) {
-         aqm $$3 = $$2.z();
-         if ($$3.al() != bqd.a && $$3.c($$2.dq())) {
-            cnv $$4 = $$3.d($$2.dq());
-            if ($$4 == null || $$4.m() < $$4.l()) {
-               $$2.b(new bro(brq.I, 600, $$1));
-               $$2.c($$2.dq());
-               return false;
-            }
-         }
-      }
-
-      return true;
+   public void b(btc $$0, int $$1) {
+      super.b($$0, $$1);
+      $$0.B(Math.max($$0.fq(), (float)(4 * (1 + $$1))));
    }
 }

@@ -1,42 +1,81 @@
-import java.util.function.Consumer;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.function.Supplier;
 
-public class crv extends ctx {
-   public crv(ctx.a $$0) {
-      super($$0);
+public class crv {
+   public static final jj<cru> a = a("leather", ac.a(new EnumMap<>(crt.a.class), $$0 -> {
+      $$0.put(crt.a.d, 1);
+      $$0.put(crt.a.c, 2);
+      $$0.put(crt.a.b, 3);
+      $$0.put(crt.a.a, 1);
+      $$0.put(crt.a.e, 3);
+   }), 15, avh.av, 0.0F, 0.0F, () -> cyg.a(cug.qD), List.of(new cru.a(new akk("leather"), "", true), new cru.a(new akk("leather"), "_overlay", false)));
+   public static final jj<cru> b = a("chainmail", ac.a(new EnumMap<>(crt.a.class), $$0 -> {
+      $$0.put(crt.a.d, 1);
+      $$0.put(crt.a.c, 4);
+      $$0.put(crt.a.b, 5);
+      $$0.put(crt.a.a, 2);
+      $$0.put(crt.a.e, 4);
+   }), 12, avh.ap, 0.0F, 0.0F, () -> cyg.a(cug.oF));
+   public static final jj<cru> c = a("iron", ac.a(new EnumMap<>(crt.a.class), $$0 -> {
+      $$0.put(crt.a.d, 2);
+      $$0.put(crt.a.c, 5);
+      $$0.put(crt.a.b, 6);
+      $$0.put(crt.a.a, 2);
+      $$0.put(crt.a.e, 5);
+   }), 9, avh.au, 0.0F, 0.0F, () -> cyg.a(cug.oF));
+   public static final jj<cru> d = a("gold", ac.a(new EnumMap<>(crt.a.class), $$0 -> {
+      $$0.put(crt.a.d, 1);
+      $$0.put(crt.a.c, 3);
+      $$0.put(crt.a.b, 5);
+      $$0.put(crt.a.a, 2);
+      $$0.put(crt.a.e, 7);
+   }), 25, avh.at, 0.0F, 0.0F, () -> cyg.a(cug.oJ));
+   public static final jj<cru> e = a("diamond", ac.a(new EnumMap<>(crt.a.class), $$0 -> {
+      $$0.put(crt.a.d, 3);
+      $$0.put(crt.a.c, 6);
+      $$0.put(crt.a.b, 8);
+      $$0.put(crt.a.a, 3);
+      $$0.put(crt.a.e, 11);
+   }), 10, avh.aq, 2.0F, 0.0F, () -> cyg.a(cug.oz));
+   public static final jj<cru> f = a("turtle", ac.a(new EnumMap<>(crt.a.class), $$0 -> {
+      $$0.put(crt.a.d, 2);
+      $$0.put(crt.a.c, 5);
+      $$0.put(crt.a.b, 6);
+      $$0.put(crt.a.a, 2);
+      $$0.put(crt.a.e, 5);
+   }), 9, avh.ax, 0.0F, 0.0F, () -> cyg.a(cug.op));
+   public static final jj<cru> g = a("netherite", ac.a(new EnumMap<>(crt.a.class), $$0 -> {
+      $$0.put(crt.a.d, 3);
+      $$0.put(crt.a.c, 6);
+      $$0.put(crt.a.b, 8);
+      $$0.put(crt.a.a, 3);
+      $$0.put(crt.a.e, 11);
+   }), 15, avh.aw, 3.0F, 0.1F, () -> cyg.a(cug.oK));
+   public static final jj<cru> h = a("armadillo", ac.a(new EnumMap<>(crt.a.class), $$0 -> {
+      $$0.put(crt.a.d, 3);
+      $$0.put(crt.a.c, 6);
+      $$0.put(crt.a.b, 8);
+      $$0.put(crt.a.a, 3);
+      $$0.put(crt.a.e, 11);
+   }), 10, avh.ay, 0.0F, 0.0F, () -> cyg.a(cug.oq));
+
+   public static jj<cru> a(jw<cru> $$0) {
+      return a;
    }
 
-   @Override
-   public bqg a(cxo $$0) {
-      jf $$1 = $$0.k();
-      if ($$1 == jf.a) {
-         return bqg.f;
-      } else {
-         dcf $$2 = $$0.q();
-         cxm $$3 = new cxm($$0);
-         ja $$4 = $$3.a();
-         cuc $$5 = $$0.n();
-         ewf $$6 = ewf.c($$4);
-         ewa $$7 = bsm.d.n().a($$6.a(), $$6.b(), $$6.c());
-         if ($$2.a(null, $$7) && $$2.a_(null, $$7).isEmpty()) {
-            if ($$2 instanceof aqm $$8) {
-               Consumer<cij> $$9 = bsm.a($$8, $$5, $$0.o());
-               cij $$10 = bsm.d.b($$8, $$9, $$4, btf.m, true, true);
-               if ($$10 == null) {
-                  return bqg.f;
-               }
+   private static jj<cru> a(String $$0, EnumMap<crt.a, Integer> $$1, int $$2, jj<avg> $$3, float $$4, float $$5, Supplier<cyg> $$6) {
+      List<cru.a> $$7 = List.of(new cru.a(new akk($$0)));
+      return a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   }
 
-               float $$11 = (float)ayg.d((ayg.g($$0.i() - 180.0F) + 22.5F) / 45.0F) * 45.0F;
-               $$10.b($$10.dv(), $$10.dx(), $$10.dB(), $$11, 0.0F);
-               $$8.a_($$10);
-               $$2.a(null, $$10.dv(), $$10.dx(), $$10.dB(), avh.aD, avi.e, 0.75F, 0.8F);
-               $$10.a(dxg.t, $$0.o());
-            }
+   private static jj<cru> a(String $$0, EnumMap<crt.a, Integer> $$1, int $$2, jj<avg> $$3, float $$4, float $$5, Supplier<cyg> $$6, List<cru.a> $$7) {
+      EnumMap<crt.a, Integer> $$8 = new EnumMap<>(crt.a.class);
 
-            $$5.h(1);
-            return bqg.a($$2.B);
-         } else {
-            return bqg.f;
-         }
+      for (crt.a $$9 : crt.a.values()) {
+         $$8.put($$9, $$1.get($$9));
       }
+
+      return jw.b(lq.ap, new akk($$0), new cru($$8, $$2, $$3, $$6, $$7, $$4, $$5));
    }
 }

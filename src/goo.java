@@ -1,15 +1,24 @@
-public class goo extends gny<cfu, fxf<cfu>> {
-   private static final akk a = new akk("textures/entity/wolf/wolf_collar.png");
+public class goo extends gnl<cii, fxg<cii>> {
+   private static final akk a = new akk("textures/entity/wither/wither_armor.png");
+   private final fxg<cii> b;
 
-   public goo(gli<cfu, fxf<cfu>> $$0) {
+   public goo(glk<cii, fxg<cii>> $$0, fxm $$1) {
       super($$0);
+      this.b = new fxg<>($$1.a(fxp.bW));
    }
 
-   public void a(fam $$0, ged $$1, int $$2, cfu $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.s() && !$$3.ci()) {
-         float[] $$10 = $$3.gz().d();
-         faq $$11 = $$1.getBuffer(gel.e(a));
-         this.c().a($$0, $$11, $$2, gpf.d, $$10[0], $$10[1], $$10[2], 1.0F);
-      }
+   @Override
+   protected float a(float $$0) {
+      return ayg.b($$0 * 0.02F) * 3.0F;
+   }
+
+   @Override
+   protected akk a() {
+      return a;
+   }
+
+   @Override
+   protected fuq<cii> b() {
+      return this.b;
    }
 }

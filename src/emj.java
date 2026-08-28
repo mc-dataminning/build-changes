@@ -1,9 +1,14 @@
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 
-public abstract class emj {
-   public static final Codec<emj> c = lq.o.r().dispatch("predicate_type", emj::a, emk::codec);
+public class emj extends emv {
+   public static final MapCodec<emj> a = MapCodec.unit(() -> emj.b);
+   public static final emj b = new emj();
 
-   public abstract boolean a(ja var1, ja var2, ja var3, ayo var4);
+   private emj() {
+   }
 
-   protected abstract emk<?> a();
+   @Override
+   protected emx<?> a() {
+      return emx.j;
+   }
 }

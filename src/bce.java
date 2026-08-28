@@ -13,9 +13,9 @@ public class bce extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      OpticFinder<String> $$0 = DSL.fieldFinder("id", bhs.a());
+      OpticFinder<String> $$0 = DSL.fieldFinder("id", bht.a());
       return this.fixTypeEverywhereTyped(
-         "EntityCustomNameToComponentFix", this.getInputSchema().getType(bgg.B), $$1 -> $$1.update(DSL.remainderFinder(), $$2 -> {
+         "EntityCustomNameToComponentFix", this.getInputSchema().getType(bgh.B), $$1 -> $$1.update(DSL.remainderFinder(), $$2 -> {
                Optional<String> $$3 = $$1.getOptional($$0);
                return $$3.isPresent() && Objects.equals($$3.get(), "minecraft:commandblock_minecart") ? $$2 : a($$2);
             })

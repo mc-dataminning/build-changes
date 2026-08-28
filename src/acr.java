@@ -5,8 +5,8 @@ public class acr implements zb<abn> {
    private final int b;
    private final byte c;
 
-   public acr(bsg $$0, byte $$1) {
-      this.b = $$0.am();
+   public acr(bsh $$0, byte $$1) {
+      this.b = $$0.an();
       this.c = $$1;
    }
 
@@ -30,7 +30,7 @@ public class acr implements zb<abn> {
    }
 
    @Nullable
-   public bsg a(dcf $$0) {
+   public bsh a(dcg $$0) {
       return $$0.a(this.b);
    }
 

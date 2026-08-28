@@ -8,14 +8,14 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 public abstract class atg<T> {
-   private final evv a;
+   private final evx a;
 
-   protected atg(evv $$0) {
+   protected atg(evx $$0) {
       this.a = $$0;
    }
 
    @Nullable
-   public T a(Path $$0, List<evw> $$1) throws IOException {
+   public T a(Path $$0, List<evy> $$1) throws IOException {
       Path $$2 = $$0;
 
       BasicFileAttributes $$3;

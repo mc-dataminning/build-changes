@@ -1,59 +1,40 @@
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
-public abstract class fcw {
-   public final int a;
-   public final int b;
-   public final int c;
-   public final int d;
+public class fcw implements Iterable<fbv> {
+   private final ffw a;
+   private final Set<fbv> b = new HashSet<>();
+   private List<fbv> c = List.of();
 
-   public fcw(int $$0, int $$1, int $$2, int $$3) {
+   public fcw(ffw $$0) {
       this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
    }
 
-   public void a(fhf $$0, int $$1, int $$2, int $$3, int $$4) {
-      int $$5 = $$1 + this.c;
-      int $$6 = $$2 + this.d;
-      boolean $$7 = $$3 >= $$5 && $$3 <= $$5 + this.a && $$4 >= $$6 && $$4 <= $$6 + this.b;
-      this.a($$0, $$5, $$6, $$7);
-   }
-
-   protected abstract void a(fhf var1, int var2, int var3, boolean var4);
-
-   public int a() {
-      return this.c + this.a;
-   }
-
-   public int b() {
-      return this.d + this.b;
-   }
-
-   public abstract void a(int var1);
-
-   public static void a(fhf $$0, List<fcw> $$1, gvr<?> $$2, int $$3, int $$4, int $$5, int $$6) {
-      for (fcw $$7 : $$1) {
-         if ($$2.b() > $$7.a()) {
-            $$7.a($$0, $$3, $$4, $$5, $$6);
-         }
+   public void a(List<fbv> $$0) {
+      List<fbv> $$1 = new ArrayList<>($$0);
+      $$1.sort(new fbv.b(this.a.X().c()));
+      boolean $$2 = $$1.removeAll(this.b);
+      if (!$$2) {
+         this.b.clear();
       }
+
+      this.c = $$1;
    }
 
-   public static void a(gvr<?> $$0, fio.a<?> $$1, List<fcw> $$2, int $$3, double $$4, double $$5) {
-      int $$6 = $$0.aG_().indexOf($$1);
-      if ($$6 > -1) {
-         $$0.b($$6);
-         int $$7 = $$0.s();
-         int $$8 = $$0.g($$6);
-         int $$9 = (int)($$4 - (double)$$7);
-         int $$10 = (int)($$5 - (double)$$8);
+   public void a(fbv $$0) {
+      this.c.remove($$0);
+      this.b.add($$0);
+   }
 
-         for (fcw $$11 : $$2) {
-            if ($$9 >= $$11.c && $$9 <= $$11.a() && $$10 >= $$11.d && $$10 <= $$11.b()) {
-               $$11.a($$6);
-            }
-         }
-      }
+   @Override
+   public Iterator<fbv> iterator() {
+      return this.c.iterator();
+   }
+
+   public boolean a() {
+      return this.c.isEmpty();
    }
 }

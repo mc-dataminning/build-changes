@@ -8,7 +8,7 @@ public class bds extends bfe {
    private final boolean b;
 
    public bds(Schema $$0, String $$1, String $$2, boolean $$3) {
-      super($$0, true, "Horse armor fix for " + $$1, bgg.B, $$1);
+      super($$0, true, "Horse armor fix for " + $$1, bgh.B, $$1);
       this.a = $$2;
       this.b = $$3;
    }

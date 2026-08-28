@@ -1,44 +1,208 @@
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.logging.LogUtils;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.Collection;
-import javax.annotation.Nullable;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Iterator;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import org.slf4j.Logger;
 
-@FunctionalInterface
-public interface gpr {
-   Logger a = LogUtils.getLogger();
+public class gpr implements atq, gps, AutoCloseable {
+   private static final Logger b = LogUtils.getLogger();
+   public static final akk a = new akk("");
+   private final Map<akk, gpb> c = Maps.newHashMap();
+   private final Set<gps> d = Sets.newHashSet();
+   private final Map<String, Integer> e = Maps.newHashMap();
+   private final atw f;
 
-   static gpr create(Collection<asv<?>> $$0) {
-      return ($$1, $$2) -> {
-         aty $$3;
-         try {
-            $$3 = $$2.f().a($$0);
-         } catch (Exception var9) {
-            a.error("Unable to parse metadata from {}", $$1, var9);
-            return null;
-         }
-
-         ezn $$7;
-         try (InputStream $$6 = $$2.d()) {
-            $$7 = ezn.a($$6);
-         } catch (IOException var11) {
-            a.error("Using missing texture, unable to load {}", $$1, var11);
-            return null;
-         }
-
-         gqz $$11 = $$3.a(gqz.a).orElse(gqz.e);
-         grb $$12 = $$11.a($$7.a(), $$7.b());
-         if (ayg.c($$7.a(), $$12.a()) && ayg.c($$7.b(), $$12.b())) {
-            return new gpi($$1, $$12, $$7, $$3);
-         } else {
-            a.error("Image {} size {},{} is not multiple of frame size {},{}", new Object[]{$$1, $$7.a(), $$7.b(), $$12.a(), $$12.b()});
-            $$7.close();
-            return null;
-         }
-      };
+   public gpr(atw $$0) {
+      this.f = $$0;
    }
 
-   @Nullable
-   gpi loadSprite(akk var1, atu var2);
+   public void a(akk $$0) {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> this.d($$0));
+      } else {
+         this.d($$0);
+      }
+   }
+
+   private void d(akk $$0) {
+      gpb $$1 = this.c.get($$0);
+      if ($$1 == null) {
+         $$1 = new gpj($$0);
+         this.a($$0, $$1);
+      }
+
+      $$1.c();
+   }
+
+   public void a(akk $$0, gpb $$1) {
+      $$1 = this.d($$0, $$1);
+      gpb $$2 = this.c.put($$0, $$1);
+      if ($$2 != $$1) {
+         if ($$2 != null && $$2 != gpg.c()) {
+            this.c($$0, $$2);
+         }
+
+         if ($$1 instanceof gps) {
+            this.d.add((gps)$$1);
+         }
+      }
+   }
+
+   private void c(akk $$0, gpb $$1) {
+      if ($$1 != gpg.c()) {
+         this.d.remove($$1);
+
+         try {
+            $$1.close();
+         } catch (Exception var4) {
+            b.warn("Failed to close texture {}", $$0, var4);
+         }
+      }
+
+      $$1.b();
+   }
+
+   private gpb d(akk $$0, gpb $$1) {
+      try {
+         $$1.a(this.f);
+         return $$1;
+      } catch (IOException var6) {
+         if ($$0 != a) {
+            b.warn("Failed to load texture: {}", $$0, var6);
+         }
+
+         return gpg.c();
+      } catch (Throwable var7) {
+         o $$4 = o.a(var7, "Registering texture");
+         p $$5 = $$4.a("Resource location being registered");
+         $$5.a("Resource location", $$0);
+         $$5.a("Texture object class", () -> $$1.getClass().getName());
+         throw new y($$4);
+      }
+   }
+
+   public gpb b(akk $$0) {
+      gpb $$1 = this.c.get($$0);
+      if ($$1 == null) {
+         $$1 = new gpj($$0);
+         this.a($$0, $$1);
+      }
+
+      return $$1;
+   }
+
+   public gpb b(akk $$0, gpb $$1) {
+      return this.c.getOrDefault($$0, $$1);
+   }
+
+   public akk a(String $$0, gpd $$1) {
+      Integer $$2 = this.e.get($$0);
+      if ($$2 == null) {
+         $$2 = 1;
+      } else {
+         $$2 = $$2 + 1;
+      }
+
+      this.e.put($$0, $$2);
+      akk $$3 = new akk(String.format(Locale.ROOT, "dynamic/%s_%d", $$0, $$2));
+      this.a($$3, $$1);
+      return $$3;
+   }
+
+   public CompletableFuture<Void> a(akk $$0, Executor $$1) {
+      if (!this.c.containsKey($$0)) {
+         gpi $$2 = new gpi(this.f, $$0, $$1);
+         this.c.put($$0, $$2);
+         return $$2.d().thenRunAsync(() -> this.a($$0, (gpb)$$2), gpr::a);
+      } else {
+         return CompletableFuture.completedFuture(null);
+      }
+   }
+
+   private static void a(Runnable $$0) {
+      ffw.Q().execute(() -> RenderSystem.recordRenderCall($$0::run));
+   }
+
+   @Override
+   public void e() {
+      for (gps $$0 : this.d) {
+         $$0.e();
+      }
+   }
+
+   public void c(akk $$0) {
+      gpb $$1 = this.c.remove($$0);
+      if ($$1 != null) {
+         this.c($$0, $$1);
+      }
+   }
+
+   @Override
+   public void close() {
+      this.c.forEach(this::c);
+      this.c.clear();
+      this.d.clear();
+      this.e.clear();
+   }
+
+   @Override
+   public CompletableFuture<Void> a(atq.a $$0, atw $$1, bmv $$2, bmv $$3, Executor $$4, Executor $$5) {
+      CompletableFuture<Void> $$6 = new CompletableFuture<>();
+      fnn.a(this, $$4).thenCompose($$0::a).thenAcceptAsync($$3x -> {
+         gpg.c();
+         fda.a(this.f);
+         Iterator<Entry<akk, gpb>> $$4x = this.c.entrySet().iterator();
+
+         while ($$4x.hasNext()) {
+            Entry<akk, gpb> $$5x = $$4x.next();
+            akk $$6x = $$5x.getKey();
+            gpb $$7 = $$5x.getValue();
+            if ($$7 == gpg.c() && !$$6x.equals(gpg.b())) {
+               $$4x.remove();
+            } else {
+               $$7.a(this, $$1, $$6x, $$5);
+            }
+         }
+
+         ffw.Q().i(() -> $$6.complete(null));
+      }, $$0x -> RenderSystem.recordRenderCall($$0x::run));
+      return $$6;
+   }
+
+   public void a(Path $$0) {
+      if (!RenderSystem.isOnRenderThread()) {
+         RenderSystem.recordRenderCall(() -> this.b($$0));
+      } else {
+         this.b($$0);
+      }
+   }
+
+   private void b(Path $$0) {
+      try {
+         Files.createDirectories($$0);
+      } catch (IOException var3) {
+         b.error("Failed to create directory {}", $$0, var3);
+         return;
+      }
+
+      this.c.forEach(($$1, $$2) -> {
+         if ($$2 instanceof gpc $$3) {
+            try {
+               $$3.a($$1, $$0);
+            } catch (IOException var5) {
+               b.error("Failed to dump texture {}", $$1, var5);
+            }
+         }
+      });
+   }
 }

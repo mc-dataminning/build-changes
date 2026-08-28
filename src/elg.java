@@ -1,60 +1,48 @@
 import com.mojang.serialization.MapCodec;
-import java.util.Objects;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Optional;
+import java.util.function.Consumer;
 
-public class elg extends eiw {
-   public static final MapCodec<elg> d = a(elg::new);
+public class elg extends eix {
+   public static final MapCodec<elg> d = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(a($$0), ehe.c.fieldOf("height").forGetter($$0x -> $$0x.e)).apply($$0, elg::new)
+   );
+   public final ehe e;
 
-   public elg(eiw.c $$0) {
+   public elg(eix.c $$0, ehe $$1) {
       super($$0);
+      this.e = $$1;
    }
 
    @Override
-   public Optional<eiw.b> a(eiw.a $$0) {
-      int $$1 = $$0.h().a(9);
-      int $$2 = $$0.h().b(9);
+   public Optional<eix.b> a(eix.a $$0) {
+      dzf $$1 = $$0.f();
+      int $$2 = $$0.h().d() + $$1.a(16);
+      int $$3 = $$0.h().e() + $$1.a(16);
+      int $$4 = $$0.b().f();
+      dzd $$5 = new dzd($$0.b(), $$0.i());
+      int $$6 = this.e.a($$1, $$5);
+      dcs $$7 = $$0.b().a($$2, $$3, $$0.i(), $$0.d());
+      ja.a $$8 = new ja.a($$2, $$6, $$3);
 
-      for (jj<ddf> $$4 : $$0.c().a($$1, $$0.b().f(), $$2, 29, $$0.d().b())) {
-         if (!$$4.a(avv.X)) {
-            return Optional.empty();
+      while ($$6 > $$4) {
+         dsl $$9 = $$7.a($$6);
+         dsl $$10 = $$7.a(--$$6);
+         if ($$9.i() && ($$10.a(dfk.dW) || $$10.d(dbv.a, $$8.q($$6), jf.b))) {
+            break;
          }
       }
 
-      return a($$0, dyf.a.c, $$1x -> a($$1x, $$0));
-   }
-
-   private static eja a(dbm $$0, dze $$1) {
-      int $$2 = $$0.d() - 29;
-      int $$3 = $$0.e() - 29;
-      jf $$4 = jf.c.a.a($$1);
-      return new elf.h($$1, $$2, $$3, $$4);
-   }
-
-   private static void a(ejo $$0, eiw.a $$1) {
-      $$0.a(a($$1.h(), $$1.f()));
-   }
-
-   public static ejl a(dbm $$0, long $$1, ejl $$2) {
-      if ($$2.a()) {
-         return $$2;
+      if ($$6 <= $$4) {
+         return Optional.empty();
       } else {
-         dze $$3 = new dze(new dyg(dyu.a()));
-         $$3.c($$1, $$0.e, $$0.f);
-         eja $$4 = $$2.c().get(0);
-         eio $$5 = $$4.f();
-         int $$6 = $$5.h();
-         int $$7 = $$5.j();
-         jf $$8 = jf.c.a.a($$3);
-         jf $$9 = Objects.requireNonNullElse($$4.i(), $$8);
-         eja $$10 = new elf.h($$3, $$6, $$7, $$9);
-         ejo $$11 = new ejo();
-         $$11.a($$10);
-         return $$11.a();
+         ja $$11 = new ja($$2, $$6, $$3);
+         return Optional.of(new eix.b($$11, (Consumer<ejp>)($$3x -> elf.a($$0.e(), $$3x, $$1, $$11))));
       }
    }
 
    @Override
-   public ejf<?> e() {
-      return ejf.j;
+   public ejg<?> e() {
+      return ejg.i;
    }
 }

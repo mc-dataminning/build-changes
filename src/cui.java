@@ -1,19 +1,50 @@
 import java.util.List;
 
-public class cui extends cvq {
-   public cui(ctx.a $$0) {
+public class cui extends cty {
+   public cui(cty.a $$0) {
       super($$0);
    }
 
    @Override
-   public void a(cuc $$0, ctx.b $$1, List<wu> $$2, cvv $$3) {
-      cwd $$4 = $$0.a(kn.G, cwd.a);
-      $$4.a($$2::add, 0.25F, $$1.b());
+   public bqh a(cxp $$0) {
+      dcg $$1 = $$0.q();
+      ja $$2 = $$0.a();
+      dsl $$3 = $$1.a_($$2);
+      if ($$3.a(avw.S)) {
+         cml $$4 = $$0.o();
+         if (!$$1.B && $$4 != null) {
+            a($$4, $$1, $$2);
+         }
+
+         return bqh.a($$1.B);
+      } else {
+         return bqh.e;
+      }
    }
 
-   @Override
-   public bqh<cuc> a(dcf $$0, cmk $$1, bqf $$2) {
-      $$0.a(null, $$1.dv(), $$1.dx(), $$1.dB(), avh.nX, avi.g, 0.5F, 0.4F / ($$0.E_().i() * 0.4F + 0.8F));
-      return super.a($$0, $$1, $$2);
+   public static bqh a(cml $$0, dcg $$1, ja $$2) {
+      cip $$3 = null;
+      double $$4 = 7.0;
+      int $$5 = $$2.u();
+      int $$6 = $$2.v();
+      int $$7 = $$2.w();
+      ewc $$8 = new ewc((double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$7 - 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0, (double)$$7 + 7.0);
+      List<bte> $$9 = $$1.a(bte.class, $$8, $$1x -> $$1x.gb() == $$0);
+
+      for (bte $$10 : $$9) {
+         if ($$3 == null) {
+            $$3 = cip.b($$1, $$2);
+            $$3.v();
+         }
+
+         $$10.b($$3, true);
+      }
+
+      if (!$$9.isEmpty()) {
+         $$1.a(dxh.b, $$2, dxh.a.a($$0));
+         return bqh.a;
+      } else {
+         return bqh.e;
+      }
    }
 }

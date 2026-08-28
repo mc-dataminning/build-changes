@@ -6,11 +6,11 @@ public class abp implements zb<abn> {
    private final double e;
    private final int f;
 
-   public abp(bsr $$0) {
-      this.b = $$0.am();
-      this.c = $$0.dv();
-      this.d = $$0.dx();
-      this.e = $$0.dB();
+   public abp(bss $$0) {
+      this.b = $$0.an();
+      this.c = $$0.dw();
+      this.d = $$0.dy();
+      this.e = $$0.dC();
       this.f = $$0.p();
    }
 

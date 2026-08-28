@@ -1,17 +1,16 @@
-public class gmg extends gks<cke, fwx> {
-   private static final akk a = new akk("textures/entity/illager/vex.png");
-   private static final akk i = new akk("textures/entity/illager/vex_charging.png");
+public class gmg extends gku<cft, fwy<cft>> {
+   private static final akk a = new akk("textures/entity/turtle/big_sea_turtle.png");
 
-   public gmg(gjm.a $$0) {
-      super($$0, new fwx($$0.a(fxn.bO)), 0.3F);
-      this.a(new gnr<>(this, $$0.d()));
+   public gmg(gjo.a $$0) {
+      super($$0, new fwy<>($$0.a(fxp.bN)), 0.7F);
    }
 
-   protected int a(cke $$0, ja $$1) {
-      return 15;
+   protected float a(cft $$0) {
+      float $$1 = super.b($$0);
+      return $$0.o_() ? $$1 * 0.83F : $$1;
    }
 
-   public akk a(cke $$0) {
-      return $$0.gp() ? i : a;
+   public akk b(cft $$0) {
+      return a;
    }
 }

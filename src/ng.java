@@ -2,7 +2,7 @@ import java.util.function.BiConsumer;
 
 public record ng(jl.a a) implements mt {
    @Override
-   public void generate(BiConsumer<akj<eqz>, eqz.a> $$0) {
-      $$0.accept(eqq.bc, eqz.b().a(eqy.a().a(euy.a(2.0F)).a(erh.a(cuf.dA).a(esz.a(euy.a(1.0F)))).a(erh.a(cuf.dB).a(esz.a(euy.a(1.0F))))));
+   public void generate(BiConsumer<akj<erb>, erb.a> $$0) {
+      $$0.accept(eqs.bc, erb.b().a(era.a().a(eva.a(2.0F)).a(erj.a(cug.dA).a(etb.a(eva.a(1.0F)))).a(erj.a(cug.dB).a(etb.a(eva.a(1.0F))))));
    }
 }

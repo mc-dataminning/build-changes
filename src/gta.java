@@ -1,28 +1,31 @@
-import java.util.List;
-import javax.annotation.Nullable;
+public class gta extends gsn {
+   private static final float n = 1.0F;
+   private static final float o = 1.0F;
+   private final chj p;
 
-public class gta {
-   private final List<gsz> a;
-   private final boolean b;
-   @Nullable
-   private final String c;
-
-   public gta(List<gsz> $$0, boolean $$1, @Nullable String $$2) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
+   public gta(chj $$0) {
+      super(avh.yu, avi.g, gte.t());
+      this.p = $$0;
+      this.k = gte.a.b;
+      this.i = false;
+      this.j = 0;
    }
 
-   public List<gsz> a() {
-      return this.a;
+   @Override
+   public boolean s() {
+      return !this.p.aY();
    }
 
-   public boolean b() {
-      return this.b;
-   }
-
-   @Nullable
-   public String c() {
-      return this.c;
+   @Override
+   public void q() {
+      if (!this.p.dM() && this.p.p() == null && this.p.gt()) {
+         this.f = (double)((float)this.p.dw());
+         this.g = (double)((float)this.p.dy());
+         this.h = (double)((float)this.p.dC());
+         this.d = 1.0F;
+         this.e = 1.0F;
+      } else {
+         this.n();
+      }
    }
 }

@@ -1,50 +1,43 @@
+import com.mojang.logging.LogUtils;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-public class cuh extends ctx {
-   public cuh(ctx.a $$0) {
+public class cuh extends cty {
+   private static final Logger a = LogUtils.getLogger();
+
+   public cuh(cty.a $$0) {
       super($$0);
    }
 
    @Override
-   public bqg a(cxo $$0) {
-      dcf $$1 = $$0.q();
-      ja $$2 = $$0.a();
-      dsk $$3 = $$1.a_($$2);
-      if ($$3.a(avw.S)) {
-         cmk $$4 = $$0.o();
-         if (!$$1.B && $$4 != null) {
-            a($$4, $$1, $$2);
+   public bqi<cud> a(dcg $$0, cml $$1, bqg $$2) {
+      cud $$3 = $$1.b($$2);
+      $$3.a(1, $$1);
+      List<akk> $$4 = $$3.a(kn.R, List.of());
+      if ($$4.isEmpty()) {
+         return bqi.d($$3);
+      } else {
+         if (!$$0.B) {
+            cyn $$5 = $$0.o().aK();
+            List<cyl<?>> $$6 = new ArrayList<>($$4.size());
+
+            for (akk $$7 : $$4) {
+               Optional<cyl<?>> $$8 = $$5.a($$7);
+               if (!$$8.isPresent()) {
+                  a.error("Invalid recipe: {}", $$7);
+                  return bqi.d($$3);
+               }
+
+               $$6.add($$8.get());
+            }
+
+            $$1.a($$6);
+            $$1.b(avr.c.b(this));
          }
 
-         return bqg.a($$1.B);
-      } else {
-         return bqg.e;
-      }
-   }
-
-   public static bqg a(cmk $$0, dcf $$1, ja $$2) {
-      cio $$3 = null;
-      double $$4 = 7.0;
-      int $$5 = $$2.u();
-      int $$6 = $$2.v();
-      int $$7 = $$2.w();
-      ewa $$8 = new ewa((double)$$5 - 7.0, (double)$$6 - 7.0, (double)$$7 - 7.0, (double)$$5 + 7.0, (double)$$6 + 7.0, (double)$$7 + 7.0);
-      List<btd> $$9 = $$1.a(btd.class, $$8, $$1x -> $$1x.gc() == $$0);
-
-      for (btd $$10 : $$9) {
-         if ($$3 == null) {
-            $$3 = cio.b($$1, $$2);
-            $$3.v();
-         }
-
-         $$10.b($$3, true);
-      }
-
-      if (!$$9.isEmpty()) {
-         $$1.a(dxg.b, $$2, dxg.a.a($$0));
-         return bqg.a;
-      } else {
-         return bqg.e;
+         return bqi.a($$3, $$0.x_());
       }
    }
 }

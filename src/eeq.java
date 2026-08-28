@@ -1,19 +1,29 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.OptionalInt;
 
-public class eeq<P extends eep> {
-   public static final eeq<ees> a = a("two_layers_feature_size", ees.d);
-   public static final eeq<eer> b = a("three_layers_feature_size", eer.d);
-   private final MapCodec<P> c;
+public abstract class eeq {
+   public static final Codec<eeq> a = lq.Y.r().dispatch(eeq::b, eer::a);
+   protected static final int b = 16;
+   protected final OptionalInt c;
 
-   private static <P extends eep> eeq<P> a(String $$0, MapCodec<P> $$1) {
-      return jw.a(lq.Y, $$0, new eeq<>($$1));
+   protected static <S extends eeq> RecordCodecBuilder<S, OptionalInt> a() {
+      return Codec.intRange(0, 80)
+         .optionalFieldOf("min_clipped_height")
+         .xmap($$0 -> $$0.map(OptionalInt::of).orElse(OptionalInt.empty()), $$0 -> $$0.isPresent() ? Optional.of($$0.getAsInt()) : Optional.empty())
+         .forGetter($$0 -> $$0.c);
    }
 
-   private eeq(MapCodec<P> $$0) {
+   public eeq(OptionalInt $$0) {
       this.c = $$0;
    }
 
-   public MapCodec<P> a() {
+   protected abstract eer<?> b();
+
+   public abstract int a(int var1, int var2);
+
+   public OptionalInt c() {
       return this.c;
    }
 }

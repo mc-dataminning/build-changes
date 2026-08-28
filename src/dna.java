@@ -1,31 +1,22 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dna extends dji implements dey {
-   public static final MapCodec<dna> j = RecordCodecBuilder.mapCodec($$0 -> $$0.group(csv.q.fieldOf("color").forGetter(dna::b), u()).apply($$0, dna::new));
-   private final csv k;
+public class dna extends dnu implements dez {
+   public static final MapCodec<dna> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(csw.q.fieldOf("color").forGetter(dna::b), u()).apply($$0, dna::new));
+   private final csw c;
 
    @Override
    public MapCodec<dna> a() {
-      return j;
+      return a;
    }
 
-   public dna(csv $$0, dsj.d $$1) {
+   public dna(csw $$0, dsk.d $$1) {
       super($$1);
-      this.k = $$0;
-      this.k(
-         this.E
-            .b()
-            .a(a, Boolean.valueOf(false))
-            .a(b, Boolean.valueOf(false))
-            .a(c, Boolean.valueOf(false))
-            .a(d, Boolean.valueOf(false))
-            .a(e, Boolean.valueOf(false))
-      );
+      this.c = $$0;
    }
 
    @Override
-   public csv b() {
-      return this.k;
+   public csw b() {
+      return this.c;
    }
 }

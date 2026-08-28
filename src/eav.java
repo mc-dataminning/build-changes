@@ -1,48 +1,58 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntListIterator;
-import java.util.stream.IntStream;
 
-public class eav extends ebk<edv> {
-   public eav(Codec<edv> $$0) {
+public class eav extends ebl<edw> {
+   public eav(Codec<edw> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebm<edv> $$0) {
-      ayo $$1 = $$0.d();
-      ddb $$2 = $$0.b();
-      dbm $$3 = new dbm($$0.e());
-      IntArrayList $$4 = ac.a(IntStream.rangeClosed($$3.d(), $$3.f()), $$1);
-      IntArrayList $$5 = ac.a(IntStream.rangeClosed($$3.e(), $$3.g()), $$1);
-      ja.a $$6 = new ja.a();
-      IntListIterator var8 = $$4.iterator();
+   public boolean a(ebn<edw> $$0) {
+      ja $$1 = $$0.e();
+      ddc $$2 = $$0.b();
+      ayo $$3 = $$0.d();
+      if ($$1.v() > $$2.z_() - 1) {
+         return false;
+      } else if (!$$2.a_($$1).a(dfk.G) && !$$2.a_($$1.d()).a(dfk.G)) {
+         return false;
+      } else {
+         boolean $$4 = false;
 
-      while (var8.hasNext()) {
-         Integer $$7 = (Integer)var8.next();
-         IntListIterator var10 = $$5.iterator();
-
-         while (var10.hasNext()) {
-            Integer $$8 = (Integer)var10.next();
-            $$6.d($$7, 0, $$8);
-            ja $$9 = $$2.a(dyf.a.f, $$6);
-            if ($$2.u($$9) || $$2.a_($$9).k($$2, $$9).c()) {
-               $$2.a($$9, dfj.cv.o(), 2);
-               bqo.a($$2, $$1, $$9, eqq.b);
-               dsk $$10 = dfj.cp.o();
-
-               for (jf $$11 : jf.c.a) {
-                  ja $$12 = $$9.a($$11);
-                  if ($$10.a($$2, $$12)) {
-                     $$2.a($$12, $$10, 2);
-                  }
-               }
-
-               return true;
+         for (jf $$5 : jf.values()) {
+            if ($$5 != jf.a && $$2.a_($$1.a($$5)).a(dfk.iC)) {
+               $$4 = true;
+               break;
             }
          }
-      }
 
-      return false;
+         if (!$$4) {
+            return false;
+         } else {
+            $$2.a($$1, dfk.mW.o(), 2);
+
+            for (int $$6 = 0; $$6 < 200; $$6++) {
+               int $$7 = $$3.a(5) - $$3.a(6);
+               int $$8 = 3;
+               if ($$7 < 2) {
+                  $$8 += $$7 / 2;
+               }
+
+               if ($$8 >= 1) {
+                  ja $$9 = $$1.b($$3.a($$8) - $$3.a($$8), $$7, $$3.a($$8) - $$3.a($$8));
+                  dsl $$10 = $$2.a_($$9);
+                  if ($$10.i() || $$10.a(dfk.G) || $$10.a(dfk.iC) || $$10.a(dfk.dO)) {
+                     for (jf $$11 : jf.values()) {
+                        dsl $$12 = $$2.a_($$9.a($$11));
+                        if ($$12.a(dfk.mW)) {
+                           $$2.a($$9, dfk.mW.o(), 2);
+                           break;
+                        }
+                     }
+                  }
+               }
+            }
+
+            return true;
+         }
+      }
    }
 }

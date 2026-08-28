@@ -10,7 +10,7 @@ public class alk extends aqj {
    private int k = 100;
 
    public alk(akk $$0, wu $$1) {
-      super($$1, bpw.a.g, bpw.b.a);
+      super($$1, bpx.a.g, bpx.b.a);
       this.h = $$0;
       this.a(0.0F);
    }
@@ -22,7 +22,7 @@ public class alk extends aqj {
    @Override
    public void a(aqn $$0) {
       super.a($$0);
-      this.i.add($$0.cA());
+      this.i.add($$0.cB());
    }
 
    public void a(UUID $$0) {
@@ -32,7 +32,7 @@ public class alk extends aqj {
    @Override
    public void b(aqn $$0) {
       super.b($$0);
-      this.i.remove($$0.cA());
+      this.i.remove($$0.cB());
    }
 
    @Override
@@ -71,7 +71,7 @@ public class alk extends aqj {
          boolean $$4 = false;
 
          for (aqn $$5 : $$0) {
-            if ($$5.cA().equals($$3)) {
+            if ($$5.cB().equals($$3)) {
                $$4 = true;
                break;
             }
@@ -86,7 +86,7 @@ public class alk extends aqj {
          boolean $$7 = false;
 
          for (UUID $$8 : this.i) {
-            if ($$6.cA().equals($$8)) {
+            if ($$6.cB().equals($$8)) {
                $$7 = true;
                break;
             }
@@ -99,7 +99,7 @@ public class alk extends aqj {
 
       for (UUID $$9 : $$1) {
          for (aqn $$10 : this.g()) {
-            if ($$10.cA().equals($$9)) {
+            if ($$10.cB().equals($$9)) {
                this.b($$10);
                break;
             }
@@ -141,8 +141,8 @@ public class alk extends aqj {
       $$3.d($$0.q("Visible"));
       $$3.a($$0.h("Value"));
       $$3.b($$0.h("Max"));
-      $$3.a(bpw.a.a($$0.l("Color")));
-      $$3.a(bpw.b.a($$0.l("Overlay")));
+      $$3.a(bpx.a.a($$0.l("Color")));
+      $$3.a(bpx.b.a($$0.l("Overlay")));
       $$3.a($$0.q("DarkenScreen"));
       $$3.b($$0.q("PlayBossMusic"));
       $$3.c($$0.q("CreateWorldFog"));
@@ -155,7 +155,7 @@ public class alk extends aqj {
    }
 
    public void c(aqn $$0) {
-      if (this.i.contains($$0.cA())) {
+      if (this.i.contains($$0.cB())) {
          this.a($$0);
       }
    }

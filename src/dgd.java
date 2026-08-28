@@ -1,29 +1,62 @@
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public interface dgd {
-   ewy q_ = dfh.a(1.0, 0.0, 1.0, 15.0, 16.0, 15.0);
-   dtb r_ = dta.D;
+public class dgd extends deb {
+   public static final MapCodec<dgd> d = b(dgd::new);
+   private static final float e = 0.05F;
+   private static final float f = 0.1F;
 
-   static bqg a(@Nullable bsg $$0, dsk $$1, dcf $$2, ja $$3) {
-      if ($$1.c(r_)) {
-         dfh.a($$2, $$3, new cuc(cuf.wv, 1));
-         float $$4 = ayg.b($$2.z, 0.8F, 1.2F);
-         $$2.a(null, $$3, avh.ee, avi.e, 1.0F, $$4);
-         dsk $$5 = $$1.a(r_, Boolean.valueOf(false));
-         $$2.a($$3, $$5, 2);
-         $$2.a(dxg.c, $$3, dxg.a.a($$0, $$5));
-         return bqg.a($$2.B);
+   @Override
+   public MapCodec<dgd> a() {
+      return d;
+   }
+
+   public dgd(dsk.d $$0) {
+      super($$0, kg.c);
+   }
+
+   @Override
+   public boolean d(dsl $$0) {
+      return false;
+   }
+
+   protected static boolean a(dcg $$0, ddg.c $$1) {
+      if ($$1 == ddg.c.b) {
+         return $$0.E_().i() < 0.05F;
       } else {
-         return bqg.e;
+         return $$1 == ddg.c.c ? $$0.E_().i() < 0.1F : false;
       }
    }
 
-   static boolean h_(dsk $$0) {
-      return $$0.b(r_) && $$0.c(r_);
+   @Override
+   public void a(dsl $$0, dcg $$1, ja $$2, ddg.c $$3) {
+      if (a($$1, $$3)) {
+         if ($$3 == ddg.c.b) {
+            $$1.b($$2, dfk.fu.o());
+            $$1.a(null, dxh.c, $$2);
+         } else if ($$3 == ddg.c.c) {
+            $$1.b($$2, dfk.fw.o());
+            $$1.a(null, dxh.c, $$2);
+         }
+      }
    }
 
-   static ToIntFunction<dsk> h_(int $$0) {
-      return $$1 -> $$1.c(dta.D) ? $$0 : 0;
+   @Override
+   protected boolean a(eoi $$0) {
+      return true;
+   }
+
+   @Override
+   protected void a(dsl $$0, dcg $$1, ja $$2, eoi $$3) {
+      if ($$3 == eok.c) {
+         dsl $$4 = dfk.fu.o();
+         $$1.b($$2, $$4);
+         $$1.a(dxh.c, $$2, dxh.a.a($$4));
+         $$1.c(1047, $$2, 0);
+      } else if ($$3 == eok.e) {
+         dsl $$5 = dfk.fv.o();
+         $$1.b($$2, $$5);
+         $$1.a(dxh.c, $$2, dxh.a.a($$5));
+         $$1.c(1046, $$2, 0);
+      }
    }
 }

@@ -1,25 +1,63 @@
-import java.util.Arrays;
+import javax.annotation.Nullable;
 
-public class fqn extends fql {
-   private static final wu a = wu.c("options.sounds.title");
+public abstract class fqn extends fnl {
+   protected final fnl b;
+   protected final fga c;
+   @Nullable
+   protected fir q;
+   public final flh r = new flh(this);
 
-   private static ffw<?>[] a(ffx $$0) {
-      return new ffw[]{$$0.W(), $$0.X()};
-   }
-
-   public fqn(fnj $$0, ffx $$1) {
-      super($$0, $$1, a);
+   public fqn(fnl $$0, fga $$1, wu $$2) {
+      super($$2);
+      this.b = $$0;
+      this.c = $$1;
    }
 
    @Override
-   protected void m() {
-      this.q.a(this.c.b(avi.a));
-      this.q.a(this.J());
-      this.q.a(this.c.at());
-      this.q.a(a(this.c));
+   protected void aP_() {
+      this.F();
+      this.aQ_();
+      this.D();
+      this.r.a($$1 -> {
+         fhs var10000 = this.c($$1);
+      });
+      this.c();
    }
 
-   private ffw<?>[] J() {
-      return Arrays.stream(avi.values()).filter($$0 -> $$0 != avi.a).map($$0 -> this.c.b($$0)).toArray(ffw[]::new);
+   protected void F() {
+      this.r.a(this.k, this.o);
+   }
+
+   protected void aQ_() {
+      this.q = this.r.c(new fir(this.l, this.m, this));
+      this.m();
+   }
+
+   protected abstract void m();
+
+   protected void D() {
+      this.r.b(fhu.a(wt.d, $$0 -> this.d()).a(200).a());
+   }
+
+   @Override
+   protected void c() {
+      this.r.a();
+      if (this.q != null) {
+         this.q.a(this.m, this.r);
+      }
+   }
+
+   @Override
+   public void j() {
+      this.l.m.av();
+   }
+
+   @Override
+   public void d() {
+      if (this.q != null) {
+         this.q.c();
+      }
+
+      this.l.a(this.b);
    }
 }

@@ -1,51 +1,30 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import java.util.List;
-import java.util.Map;
+import java.util.function.IntFunction;
 
-public enum fgb {
-   a(new cuc(cuf.qS)),
-   b(new cuc(dfj.cj)),
-   c(new cuc(cuf.lH)),
-   d(new cuc(cuf.pe), new cuc(cuf.oW)),
-   e(new cuc(cuf.qA), new cuc(cuf.ou)),
-   f(new cuc(cuf.qS)),
-   g(new cuc(cuf.pX)),
-   h(new cuc(dfj.b)),
-   i(new cuc(cuf.qA), new cuc(cuf.oA)),
-   j(new cuc(cuf.qS)),
-   k(new cuc(dfj.dI)),
-   l(new cuc(cuf.pc), new cuc(cuf.pQ)),
-   m(new cuc(cuf.qS)),
-   n(new cuc(cuf.pX)),
-   o(new cuc(cuf.fF)),
-   p(new cuc(cuf.pT)),
-   q(new cuc(cuf.pX)),
-   r(new cuc(cuf.hB));
+public enum fgb implements ayj {
+   a(0, "options.particles.all"),
+   b(1, "options.particles.decreased"),
+   c(2, "options.particles.minimal");
 
-   public static final List<fgb> s = ImmutableList.of(m, n);
-   public static final List<fgb> t = ImmutableList.of(j, k, l);
-   public static final List<fgb> u = ImmutableList.of(f, g, h, i);
-   public static final List<fgb> v = ImmutableList.of(a, d, b, e, c);
-   public static final Map<fgb, List<fgb>> w = ImmutableMap.of(
-      a, ImmutableList.of(d, b, e, c), f, ImmutableList.of(g, h, i), j, ImmutableList.of(k, l), m, ImmutableList.of(n)
-   );
-   private final List<cuc> x;
+   private static final IntFunction<fgb> d = aww.a(fgb::a, values(), aww.a.b);
+   private final int e;
+   private final String f;
 
-   private fgb(final cuc... $$0) {
-      this.x = ImmutableList.copyOf($$0);
+   private fgb(final int $$0, final String $$1) {
+      this.e = $$0;
+      this.f = $$1;
    }
 
-   public static List<fgb> a(cqw $$0) {
-      return switch ($$0) {
-         case a -> v;
-         case b -> u;
-         case c -> t;
-         case d -> s;
-      };
+   @Override
+   public String b() {
+      return this.f;
    }
 
-   public List<cuc> a() {
-      return this.x;
+   @Override
+   public int a() {
+      return this.e;
+   }
+
+   public static fgb a(int $$0) {
+      return d.apply($$0);
    }
 }

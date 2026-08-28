@@ -8,38 +8,38 @@ import javax.annotation.Nullable;
 
 public class ol implements oh {
    private final oi b;
-   private final ctx c;
+   private final cty c;
    private final int d;
    private final List<String> e = Lists.newArrayList();
-   private final Map<Character, cyf> f = Maps.newLinkedHashMap();
+   private final Map<Character, cyg> f = Maps.newLinkedHashMap();
    private final Map<String, an<?>> g = new LinkedHashMap<>();
    @Nullable
    private String h;
    private boolean i = true;
 
-   public ol(oi $$0, dce $$1, int $$2) {
+   public ol(oi $$0, dcf $$1, int $$2) {
       this.b = $$0;
       this.c = $$1.r();
       this.d = $$2;
    }
 
-   public static ol a(oi $$0, dce $$1) {
+   public static ol a(oi $$0, dcf $$1) {
       return a($$0, $$1, 1);
    }
 
-   public static ol a(oi $$0, dce $$1, int $$2) {
+   public static ol a(oi $$0, dcf $$1, int $$2) {
       return new ol($$0, $$1, $$2);
    }
 
-   public ol a(Character $$0, awm<ctx> $$1) {
-      return this.a($$0, cyf.a($$1));
+   public ol a(Character $$0, awm<cty> $$1) {
+      return this.a($$0, cyg.a($$1));
    }
 
-   public ol a(Character $$0, dce $$1) {
-      return this.a($$0, cyf.a($$1));
+   public ol a(Character $$0, dcf $$1) {
+      return this.a($$0, cyg.a($$1));
    }
 
-   public ol a(Character $$0, cyf $$1) {
+   public ol a(Character $$0, cyg $$1) {
       if (this.f.containsKey($$0)) {
          throw new IllegalArgumentException("Symbol '" + $$0 + "' is already defined!");
       } else if ($$0 == ' ') {
@@ -75,24 +75,24 @@ public class ol implements oh {
    }
 
    @Override
-   public ctx a() {
+   public cty a() {
       return this.c;
    }
 
    @Override
    public void a(oj $$0, akk $$1) {
-      cyr $$2 = this.a($$1);
+      cys $$2 = this.a($$1);
       ae.a $$3 = $$0.a().a("has_the_recipe", dq.a($$1)).a(aj.a.a($$1)).a(ai.a.b);
       this.g.forEach($$3::a);
-      cyq $$4 = new cyq(Objects.requireNonNullElse(this.h, ""), oh.a(this.b), $$2, new cuc(this.c, this.d), this.i);
+      cyr $$4 = new cyr(Objects.requireNonNullElse(this.h, ""), oh.a(this.b), $$2, new cud(this.c, this.d), this.i);
       $$0.a($$1, $$4, $$3.b($$1.d("recipes/" + this.b.a() + "/")));
    }
 
-   private cyr a(akk $$0) {
+   private cys a(akk $$0) {
       if (this.g.isEmpty()) {
          throw new IllegalStateException("No way of obtaining recipe " + $$0);
       } else {
-         return cyr.a(this.f, this.e);
+         return cys.a(this.f, this.e);
       }
    }
 }

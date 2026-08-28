@@ -1,7 +1,9 @@
-public interface cps {
-   int a(int var1);
-
-   void a(int var1, int var2);
-
-   int a();
+public enum cps {
+   a,
+   b,
+   c,
+   d,
+   e,
+   f,
+   g;
 }

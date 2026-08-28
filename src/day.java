@@ -1,24 +1,78 @@
 public interface day {
-   akj<das> a = a("mob_spawn_equipment");
-   akj<das> b = a("pillager_spawn_crossbow");
-   akj<das> c = a("raid/pillager_post_wave_3");
-   akj<das> d = a("raid/pillager_post_wave_5");
-   akj<das> e = a("raid/vindicator");
-   akj<das> f = a("raid/vindicator_post_wave_5");
-   akj<das> g = a("enderman_loot_drop");
+   akj<dat> a = daz.a("trades/desert_armorer_boots_4");
+   akj<dat> b = daz.a("trades/desert_armorer_leggings_4");
+   akj<dat> c = daz.a("trades/desert_armorer_chestplate_4");
+   akj<dat> d = daz.a("trades/desert_armorer_helmet_4");
+   akj<dat> e = daz.a("trades/desert_armorer_leggings_5");
+   akj<dat> f = daz.a("trades/desert_armorer_chestplate_5");
+   akj<dat> g = daz.a("trades/plains_armorer_boots_4");
+   akj<dat> h = daz.a("trades/plains_armorer_leggings_4");
+   akj<dat> i = daz.a("trades/plains_armorer_chestplate_4");
+   akj<dat> j = daz.a("trades/plains_armorer_helmet_4");
+   akj<dat> k = daz.a("trades/plains_armorer_boots_5");
+   akj<dat> l = daz.a("trades/plains_armorer_leggings_5");
+   akj<dat> m = daz.a("trades/savanna_armorer_boots_4");
+   akj<dat> n = daz.a("trades/savanna_armorer_leggings_4");
+   akj<dat> o = daz.a("trades/savanna_armorer_chestplate_4");
+   akj<dat> p = daz.a("trades/savanna_armorer_helmet_4");
+   akj<dat> q = daz.a("trades/savanna_armorer_chestplate_5");
+   akj<dat> r = daz.a("trades/savanna_armorer_helmet_5");
+   akj<dat> s = daz.a("trades/snow_armorer_boots_4");
+   akj<dat> t = daz.a("trades/snow_armorer_helmet_4");
+   akj<dat> u = daz.a("trades/snow_armorer_boots_5");
+   akj<dat> v = daz.a("trades/snow_armorer_helmet_5");
+   akj<dat> w = daz.a("trades/jungle_armorer_boots_4");
+   akj<dat> x = daz.a("trades/jungle_armorer_leggings_4");
+   akj<dat> y = daz.a("trades/jungle_armorer_chestplate_4");
+   akj<dat> z = daz.a("trades/jungle_armorer_helmet_4");
+   akj<dat> A = daz.a("trades/jungle_armorer_boots_5");
+   akj<dat> B = daz.a("trades/jungle_armorer_helmet_5");
+   akj<dat> C = daz.a("trades/swamp_armorer_boots_4");
+   akj<dat> D = daz.a("trades/swamp_armorer_leggings_4");
+   akj<dat> E = daz.a("trades/swamp_armorer_chestplate_4");
+   akj<dat> F = daz.a("trades/swamp_armorer_helmet_4");
+   akj<dat> G = daz.a("trades/swamp_armorer_boots_5");
+   akj<dat> H = daz.a("trades/swamp_armorer_helmet_5");
+   akj<dat> I = daz.a("trades/taiga_armorer_leggings_5");
+   akj<dat> J = daz.a("trades/taiga_armorer_chestplate_5");
 
-   static void a(qm<das> $$0) {
-      jk<czl> $$1 = $$0.a(lr.aK);
-      $$0.a(a, new dav($$1.b(avz.l), 5, 17));
-      $$0.a(b, new daw($$1.b(czq.K), bpi.a(1)));
-      $$0.a(c, new daw($$1.b(czq.J), bpi.a(1)));
-      $$0.a(d, new daw($$1.b(czq.J), bpi.a(2)));
-      $$0.a(e, new daw($$1.b(czq.n), bpi.a(1)));
-      $$0.a(f, new daw($$1.b(czq.n), bpi.a(2)));
-      $$0.a(g, new daw($$1.b(czq.v), bpi.a(1)));
-   }
-
-   static akj<das> a(String $$0) {
-      return akj.a(lr.aL, new akk($$0));
+   static void a(qm<dat> $$0) {
+      jk<czm> $$1 = $$0.a(lr.aK);
+      $$0.a(a, new dax($$1.b(czr.h), bpj.a(1)));
+      $$0.a(b, new dax($$1.b(czr.h), bpj.a(1)));
+      $$0.a(c, new dax($$1.b(czr.h), bpj.a(1)));
+      $$0.a(d, new dax($$1.b(czr.h), bpj.a(1)));
+      $$0.a(e, new dax($$1.b(czr.h), bpj.a(1)));
+      $$0.a(f, new dax($$1.b(czr.h), bpj.a(1)));
+      $$0.a(g, new dax($$1.b(czr.a), bpj.a(1)));
+      $$0.a(h, new dax($$1.b(czr.a), bpj.a(1)));
+      $$0.a(i, new dax($$1.b(czr.a), bpj.a(1)));
+      $$0.a(j, new dax($$1.b(czr.a), bpj.a(1)));
+      $$0.a(k, new dax($$1.b(czr.a), bpj.a(1)));
+      $$0.a(l, new dax($$1.b(czr.a), bpj.a(1)));
+      $$0.a(m, new dax($$1.b(czr.k), bpj.a(1)));
+      $$0.a(n, new dax($$1.b(czr.k), bpj.a(1)));
+      $$0.a(o, new dax($$1.b(czr.k), bpj.a(1)));
+      $$0.a(p, new dax($$1.b(czr.k), bpj.a(1)));
+      $$0.a(q, new dax($$1.b(czr.k), bpj.a(1)));
+      $$0.a(r, new dax($$1.b(czr.k), bpj.a(1)));
+      $$0.a(s, new dax($$1.b(czr.j), bpj.a(1)));
+      $$0.a(t, new dax($$1.b(czr.g), bpj.a(1)));
+      $$0.a(u, new dax($$1.b(czr.j), bpj.a(1)));
+      $$0.a(v, new dax($$1.b(czr.g), bpj.a(1)));
+      $$0.a(w, new dax($$1.b(czr.w), bpj.a(1)));
+      $$0.a(x, new dax($$1.b(czr.w), bpj.a(1)));
+      $$0.a(y, new dax($$1.b(czr.w), bpj.a(1)));
+      $$0.a(z, new dax($$1.b(czr.w), bpj.a(1)));
+      $$0.a(A, new dax($$1.b(czr.c), bpj.a(1)));
+      $$0.a(B, new dax($$1.b(czr.e), bpj.a(1)));
+      $$0.a(C, new dax($$1.b(czr.O), bpj.a(1)));
+      $$0.a(D, new dax($$1.b(czr.O), bpj.a(1)));
+      $$0.a(E, new dax($$1.b(czr.O), bpj.a(1)));
+      $$0.a(F, new dax($$1.b(czr.O), bpj.a(1)));
+      $$0.a(G, new dax($$1.b(czr.i), bpj.a(1)));
+      $$0.a(H, new dax($$1.b(czr.f), bpj.a(1)));
+      $$0.a(I, new dax($$1.b(czr.d), bpj.a(1)));
+      $$0.a(J, new dax($$1.b(czr.d), bpj.a(1)));
    }
 }

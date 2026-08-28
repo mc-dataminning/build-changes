@@ -1,37 +1,36 @@
-public class gvo extends gvs {
-   private final wu a;
-   private fil b = fil.a;
-   private final fnj c;
-   private int A;
+import java.util.function.Function;
 
-   public gvo(fnj $$0, wu $$1, wu $$2) {
-      super($$1);
-      this.c = $$0;
-      this.a = $$2;
+public enum gvo {
+   a("movement", gvj::new),
+   b("find_tree", gvi::new),
+   c("punch_tree", gvl::new),
+   d("open_inventory", gvk::new),
+   e("craft_planks", gvh::new),
+   f("none", gvg::new);
+
+   private final String g;
+   private final Function<gvm, ? extends gvn> h;
+
+   private <T extends gvn> gvo(final String $$0, final Function<gvm, T> $$1) {
+      this.g = $$0;
+      this.h = $$1;
    }
 
-   @Override
-   public void aP_() {
-      this.l.ae().i();
-      this.b = fil.a(this.o, this.a, this.m - 50);
-      this.A = this.b.a() * 9;
-      this.c(fhs.a(wt.k, $$0 -> this.l.a(this.c)).a(this.m / 2 - 100, this.n / 2 + this.A / 2 + 9, 200, 20).a());
+   public gvn a(gvm $$0) {
+      return this.h.apply($$0);
    }
 
-   @Override
-   public wu i() {
-      return wu.i().b(this.k).f(": ").b(this.a);
+   public String a() {
+      return this.g;
    }
 
-   @Override
-   public void d() {
-      fft.Q().a(this.c);
-   }
+   public static gvo a(String $$0) {
+      for (gvo $$1 : values()) {
+         if ($$1.g.equals($$0)) {
+            return $$1;
+         }
+      }
 
-   @Override
-   public void a(fhf $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.o, this.k, this.m / 2, this.n / 2 - this.A / 2 - 9 * 2, 11184810);
-      this.b.a($$0, this.m / 2, this.n / 2 - this.A / 2);
+      return f;
    }
 }

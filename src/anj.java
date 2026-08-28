@@ -85,18 +85,18 @@ public class anj {
       return $$0 != null ? List.of($$0) : List.of();
    }
 
-   private static int a(eq $$0, Collection<aqn> $$1, akk $$2, avi $$3, ewf $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
+   private static int a(eq $$0, Collection<aqn> $$1, akk $$2, avi $$3, ewh $$4, float $$5, float $$6, float $$7) throws CommandSyntaxException {
       jj<avg> $$8 = jj.a(avg.a($$2));
       double $$9 = (double)ayg.k($$8.a().a($$5));
       int $$10 = 0;
       long $$11 = $$0.e().E_().g();
 
       for (aqn $$12 : $$1) {
-         double $$13 = $$4.c - $$12.dv();
-         double $$14 = $$4.d - $$12.dx();
-         double $$15 = $$4.e - $$12.dB();
+         double $$13 = $$4.c - $$12.dw();
+         double $$14 = $$4.d - $$12.dy();
+         double $$15 = $$4.e - $$12.dC();
          double $$16 = $$13 * $$13 + $$14 * $$14 + $$15 * $$15;
-         ewf $$17 = $$4;
+         ewh $$17 = $$4;
          float $$18 = $$5;
          if ($$16 > $$9) {
             if ($$7 <= 0.0F) {
@@ -104,7 +104,7 @@ public class anj {
             }
 
             double $$19 = Math.sqrt($$16);
-            $$17 = new ewf($$12.dv() + $$13 / $$19 * 2.0, $$12.dx() + $$14 / $$19 * 2.0, $$12.dB() + $$15 / $$19 * 2.0);
+            $$17 = new ewh($$12.dw() + $$13 / $$19 * 2.0, $$12.dy() + $$14 / $$19 * 2.0, $$12.dC() + $$15 / $$19 * 2.0);
             $$18 = $$7;
          }
 

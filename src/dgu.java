@@ -1,71 +1,71 @@
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class dgu extends det implements dmi {
-   public static final MapCodec<dgu> a = b(dgu::new);
-   public static final dtb b = dta.C;
-   private static final int d = 3;
-   protected static final ewy c = dfh.a(5.0, 5.0, 5.0, 11.0, 11.0, 11.0);
+public class dgu extends die {
+   public static final MapCodec<dgu> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(lq.e.r().fieldOf("concrete").forGetter($$0x -> $$0x.b), u()).apply($$0, dgu::new)
+   );
+   private final dfi b;
 
    @Override
    public MapCodec<dgu> a() {
       return a;
    }
 
-   public dgu(dsj.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, Boolean.valueOf(true)));
+   public dgu(dfi $$0, dsk.d $$1) {
+      super($$1);
+      this.b = $$0;
    }
 
    @Override
-   protected void a(dsl.a<dfh, dsk> $$0) {
-      $$0.a(b);
+   public void a(dcg $$0, ja $$1, dsl $$2, dsl $$3, ciu $$4) {
+      if (a($$0, $$1, $$3)) {
+         $$0.a($$1, this.b.o(), 3);
+      }
    }
 
    @Override
-   public dpp a(ja $$0, dsk $$1) {
-      return new dqb($$0, $$1);
+   public dsl a(cxn $$0) {
+      dbm $$1 = $$0.q();
+      ja $$2 = $$0.a();
+      dsl $$3 = $$1.a_($$2);
+      return a($$1, $$2, $$3) ? this.b.o() : super.a($$0);
    }
 
-   @Nullable
-   @Override
-   public <T extends dpp> dpq<T> a(dcf $$0, dsk $$1, dpr<T> $$2) {
-      return a($$2, dpr.z, $$0.B ? dqb::a : dqb::b);
+   private static boolean a(dbm $$0, ja $$1, dsl $$2) {
+      return n($$2) || a($$0, $$1);
    }
 
-   @Override
-   protected dln a_(dsk $$0) {
-      return dln.b;
-   }
+   private static boolean a(dbm $$0, ja $$1) {
+      boolean $$2 = false;
+      ja.a $$3 = $$1.j();
 
-   @Override
-   protected eoh b_(dsk $$0) {
-      return $$0.c(b) ? eoi.c.a(false) : super.b_($$0);
-   }
-
-   @Override
-   protected dsk a(dsk $$0, jf $$1, dsk $$2, dcg $$3, ja $$4, ja $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, eoi.c, eoi.c.a($$3));
+      for (jf $$4 : jf.values()) {
+         dsl $$5 = $$0.a_($$3);
+         if ($$4 != jf.a || n($$5)) {
+            $$3.a($$1, $$4);
+            $$5 = $$0.a_($$3);
+            if (n($$5) && !$$5.d($$0, $$1, $$4.g())) {
+               $$2 = true;
+               break;
+            }
+         }
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      return $$2;
+   }
+
+   private static boolean n(dsl $$0) {
+      return $$0.u().a(awc.a);
    }
 
    @Override
-   protected ewy a(dsk $$0, dbl $$1, ja $$2, ewk $$3) {
-      return c;
-   }
-
-   @Nullable
-   @Override
-   public dsk a(cxm $$0) {
-      eoh $$1 = $$0.q().b_($$0.a());
-      return this.o().a(b, Boolean.valueOf($$1.a(awc.a) && $$1.e() == 8));
+   protected dsl a(dsl $$0, jf $$1, dsl $$2, dch $$3, ja $$4, ja $$5) {
+      return a($$3, $$4) ? this.b.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean a(dsk $$0, eow $$1) {
-      return false;
+   public int b(dsl $$0, dbm $$1, ja $$2) {
+      return $$0.d($$1, $$2).ak;
    }
 }

@@ -1,23 +1,15 @@
-public class dqn extends dra {
-   private static final int a = 60;
-   private static final int b = 9;
-
-   public dqn(ja $$0, dsk $$1) {
-      super(dpr.i, $$0, $$1);
+public class dqn extends dpe {
+   public dqn(ja $$0, dsl $$1) {
+      super(dps.a, $$0, $$1, cyp.b);
    }
 
    @Override
-   public int b() {
-      return 9;
+   protected wu k() {
+      return wu.c("container.furnace");
    }
 
    @Override
-   public int c() {
-      return 60;
-   }
-
-   @Override
-   public avg d() {
-      return avh.BZ;
+   protected cpi a(int $$0, cmk $$1) {
+      return new cqf($$0, $$1, this, this.m);
    }
 }

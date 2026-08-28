@@ -1,4 +1,3 @@
-import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
@@ -8,83 +7,43 @@ import java.lang.reflect.Type;
 import javax.annotation.Nullable;
 
 public class gfe {
-   public float[] a;
-   public final int b;
+   public static final int a = -1;
+   public final jf b;
+   public final int c;
+   public final String d;
+   public final gfg e;
 
-   public gfe(@Nullable float[] $$0, int $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public float a(int $$0) {
-      if (this.a == null) {
-         throw new NullPointerException("uvs");
-      } else {
-         int $$1 = this.d($$0);
-         return this.a[$$1 != 0 && $$1 != 1 ? 2 : 0];
-      }
-   }
-
-   public float b(int $$0) {
-      if (this.a == null) {
-         throw new NullPointerException("uvs");
-      } else {
-         int $$1 = this.d($$0);
-         return this.a[$$1 != 0 && $$1 != 3 ? 3 : 1];
-      }
-   }
-
-   private int d(int $$0) {
-      return ($$0 + this.b / 90) % 4;
-   }
-
-   public int c(int $$0) {
-      return ($$0 + 4 - this.b / 90) % 4;
-   }
-
-   public void a(float[] $$0) {
-      if (this.a == null) {
-         this.a = $$0;
-      }
+   public gfe(@Nullable jf $$0, int $$1, String $$2, gfg $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
    }
 
    protected static class a implements JsonDeserializer<gfe> {
-      private static final int a = 0;
+      private static final int a = -1;
 
       public gfe a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
          JsonObject $$3 = $$0.getAsJsonObject();
-         float[] $$4 = this.b($$3);
+         jf $$4 = this.c($$3);
          int $$5 = this.a($$3);
-         return new gfe($$4, $$5);
+         String $$6 = this.b($$3);
+         gfg $$7 = (gfg)$$2.deserialize($$3, gfg.class);
+         return new gfe($$4, $$5, $$6, $$7);
       }
 
       protected int a(JsonObject $$0) {
-         int $$1 = axw.a($$0, "rotation", 0);
-         if ($$1 >= 0 && $$1 % 90 == 0 && $$1 / 90 <= 3) {
-            return $$1;
-         } else {
-            throw new JsonParseException("Invalid rotation " + $$1 + " found, only 0/90/180/270 allowed");
-         }
+         return axw.a($$0, "tintindex", -1);
+      }
+
+      private String b(JsonObject $$0) {
+         return axw.i($$0, "texture");
       }
 
       @Nullable
-      private float[] b(JsonObject $$0) {
-         if (!$$0.has("uv")) {
-            return null;
-         } else {
-            JsonArray $$1 = axw.v($$0, "uv");
-            if ($$1.size() != 4) {
-               throw new JsonParseException("Expected 4 uv values, found: " + $$1.size());
-            } else {
-               float[] $$2 = new float[4];
-
-               for (int $$3 = 0; $$3 < $$2.length; $$3++) {
-                  $$2[$$3] = axw.e($$1.get($$3), "uv[" + $$3 + "]");
-               }
-
-               return $$2;
-            }
-         }
+      private jf c(JsonObject $$0) {
+         String $$1 = axw.a($$0, "cullface", "");
+         return jf.a($$1);
       }
    }
 }

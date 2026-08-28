@@ -1,26 +1,34 @@
 import com.mojang.serialization.MapCodec;
 
-public class dls extends dfq {
+public class dls extends dfi implements dfl {
    public static final MapCodec<dls> a = b(dls::new);
-   protected static final float b = 6.0F;
-   protected static final ewy c = dfh.a(2.0, 0.0, 2.0, 14.0, 13.0, 14.0);
 
    @Override
    public MapCodec<dls> a() {
       return a;
    }
 
-   protected dls(dsj.d $$0) {
+   public dls(dsk.d $$0) {
       super($$0);
    }
 
    @Override
-   protected ewy a(dsk $$0, dbl $$1, ja $$2, ewk $$3) {
-      return c;
+   public boolean b(dcj $$0, ja $$1, dsl $$2) {
+      return $$0.a_($$1.d()).i();
    }
 
    @Override
-   protected boolean b(dsk $$0, dbl $$1, ja $$2) {
-      return $$0.a(avw.aL) || $$0.a(dfj.dX) || super.b($$0, $$1, $$2);
+   public boolean a(dcg $$0, ayo $$1, ja $$2, dsl $$3) {
+      return true;
+   }
+
+   @Override
+   public void a(aqm $$0, ayo $$1, ja $$2, dsl $$3) {
+      $$0.b($$2.d(), dfk.sG.o());
+   }
+
+   @Override
+   public ja a(ja $$0) {
+      return $$0.d();
    }
 }

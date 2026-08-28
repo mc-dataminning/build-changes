@@ -10,7 +10,7 @@ public record acd(List<acd.a> b) implements zb<abn> {
       this($$0.a(acd.a::new));
    }
 
-   public static acd a(List<duq> $$0) {
+   public static acd a(List<dur> $$0) {
       return new acd($$0.stream().map(acd.a::new).toList());
    }
 
@@ -27,8 +27,8 @@ public record acd(List<acd.a> b) implements zb<abn> {
       $$0.a(this);
    }
 
-   public static record a(dbm a, byte[] b) {
-      public a(duq $$0) {
+   public static record a(dbn a, byte[] b) {
+      public a(dur $$0) {
          this($$0.f(), new byte[a($$0)]);
          a(new vr(this.d()), $$0);
       }
@@ -37,10 +37,10 @@ public record acd(List<acd.a> b) implements zb<abn> {
          this($$0.f(), $$0.a(2097152));
       }
 
-      private static int a(duq $$0) {
+      private static int a(dur $$0) {
          int $$1 = 0;
 
-         for (dur $$2 : $$0.d()) {
+         for (dus $$2 : $$0.d()) {
             $$1 += $$2.i().c();
          }
 
@@ -57,8 +57,8 @@ public record acd(List<acd.a> b) implements zb<abn> {
          return $$0;
       }
 
-      public static void a(vr $$0, duq $$1) {
-         for (dur $$2 : $$1.d()) {
+      public static void a(vr $$0, dur $$1) {
+         for (dus $$2 : $$1.d()) {
             $$2.i().b($$0);
          }
       }
@@ -68,7 +68,7 @@ public record acd(List<acd.a> b) implements zb<abn> {
          $$0.a(this.b);
       }
 
-      public dbm b() {
+      public dbn b() {
          return this.a;
       }
 

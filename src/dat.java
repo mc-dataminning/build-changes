@@ -1,9 +1,11 @@
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
+import java.util.function.Function;
 
 public interface dat {
-   static MapCodec<? extends das> a(jw<MapCodec<? extends das>> $$0) {
-      jw.a($$0, "by_cost", dau.b);
-      jw.a($$0, "by_cost_with_difficulty", dav.b);
-      return jw.a($$0, "single", daw.b);
-   }
+   Codec<dat> a = lq.az.r().dispatch(dat::a, Function.identity());
+
+   void a(cud var1, czs.a var2, ayo var3, bqf var4);
+
+   MapCodec<? extends dat> a();
 }

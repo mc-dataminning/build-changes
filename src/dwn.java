@@ -1,24 +1,4 @@
-import java.util.UUID;
-import java.util.stream.Stream;
-
+@FunctionalInterface
 public interface dwn {
-   int am();
-
-   UUID cA();
-
-   ja dq();
-
-   ewa cL();
-
-   void a(dwo var1);
-
-   Stream<? extends dwn> cV();
-
-   Stream<? extends dwn> cW();
-
-   void b(bsg.c var1);
-
-   boolean dO();
-
-   boolean dP();
+   void onChunkStatusChange(dbn var1, aqd var2);
 }

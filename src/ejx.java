@@ -1,61 +1,30 @@
-import com.google.common.collect.Lists;
-import com.mojang.serialization.MapCodec;
+import com.mojang.datafixers.util.Either;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
+import java.util.function.Function;
 
-public class ejx extends ekd {
-   public static final MapCodec<ejx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(eia.b.fieldOf("feature").forGetter($$0x -> $$0x.b), d()).apply($$0, ejx::new)
+public record ejx(int c, int d) {
+   private static final Codec<ejx> e = RecordCodecBuilder.create(
+      $$0 -> $$0.group(axo.k.lenientOptionalFieldOf("bottom", 0).forGetter($$0x -> $$0x.c), axo.k.lenientOptionalFieldOf("top", 0).forGetter($$0x -> $$0x.d))
+            .apply($$0, ejx::new)
    );
-   private final jj<eia> b;
-   private final tx c;
+   public static final Codec<ejx> a = Codec.either(axo.k, e)
+      .xmap($$0 -> (ejx)$$0.map(ejx::new, Function.identity()), $$0 -> $$0.a() ? Either.left($$0.c) : Either.right($$0));
+   public static final ejx b = new ejx(0);
 
-   protected ejx(jj<eia> $$0, ekf.a $$1) {
-      super($$1);
-      this.b = $$0;
-      this.c = this.b();
+   public ejx(int $$0) {
+      this($$0, $$0);
    }
 
-   private tx b() {
-      tx $$0 = new tx();
-      $$0.a("name", "minecraft:bottom");
-      $$0.a("final_state", "minecraft:air");
-      $$0.a("pool", "minecraft:empty");
-      $$0.a("target", "minecraft:empty");
-      $$0.a("joint", dqq.a.a.c());
-      return $$0;
+   public boolean a() {
+      return this.d == this.c;
    }
 
-   @Override
-   public ke a(emx $$0, dlu $$1) {
-      return ke.g;
+   public int b() {
+      return this.c;
    }
 
-   @Override
-   public List<emw.c> a(emx $$0, ja $$1, dlu $$2, ayo $$3) {
-      List<emw.c> $$4 = Lists.newArrayList();
-      $$4.add(new emw.c($$1, dfj.pb.o().a(djj.b, jh.a(jf.a, jf.d)), this.c));
-      return $$4;
-   }
-
-   @Override
-   public eio a(emx $$0, ja $$1, dlu $$2) {
-      ke $$3 = this.a($$0, $$2);
-      return new eio($$1.u(), $$1.v(), $$1.w(), $$1.u() + $$3.u(), $$1.v() + $$3.v(), $$1.w() + $$3.w());
-   }
-
-   @Override
-   public boolean a(emx $$0, ddb $$1, dcz $$2, duh $$3, ja $$4, ja $$5, dlu $$6, eio $$7, ayo $$8, boolean $$9) {
-      return this.b.a().a($$1, $$3, $$8, $$4);
-   }
-
-   @Override
-   public eke<?> a() {
-      return eke.c;
-   }
-
-   @Override
-   public String toString() {
-      return "Feature[" + this.b + "]";
+   public int c() {
+      return this.d;
    }
 }

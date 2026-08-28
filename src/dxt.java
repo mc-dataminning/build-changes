@@ -1,97 +1,150 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.BitSet;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.stream.LongStream;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectList;
+import it.unimi.dsi.fastutil.objects.ObjectListIterator;
 
-public final class dxt {
-   private static final BitSet c = new BitSet(0);
-   private static final Codec<BitSet> d = Codec.LONG_STREAM.xmap($$0 -> BitSet.valueOf($$0.toArray()), $$0 -> LongStream.of($$0.toLongArray()));
-   private static final Codec<dvh> e = lq.l
-      .r()
-      .comapFlatMap($$0 -> $$0 == dvh.c ? DataResult.error(() -> "target_status cannot be empty") : DataResult.success($$0), Function.identity());
-   public static final Codec<dxt> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               e.fieldOf("target_status").forGetter(dxt::a),
-               d.lenientOptionalFieldOf("missing_bedrock").forGetter($$0x -> $$0x.h.isEmpty() ? Optional.empty() : Optional.of($$0x.h))
-            )
-            .apply($$0, dxt::new)
-   );
-   private static final Set<akj<ddf>> f = Set.of(ddm.aa, ddm.Z, ddm.ab);
-   public static final dch b = new dch() {
-      @Override
-      public int J_() {
-         return 64;
-      }
-
-      @Override
-      public int I_() {
-         return -64;
-      }
-   };
-   private final dvh g;
-   private final BitSet h;
-
-   private dxt(dvh $$0, Optional<BitSet> $$1) {
-      this.g = $$0;
-      this.h = $$1.orElse(c);
-   }
-
-   @Nullable
-   public static dxt a(tx $$0) {
-      dvh $$1 = dvh.a($$0.l("target_status"));
-      return $$1 == dvh.c ? null : new dxt($$1, Optional.of(BitSet.valueOf($$0.o("missing_bedrock"))));
-   }
-
-   public static void a(dva $$0) {
-      int $$1 = 4;
-      ja.b(0, 0, 0, 15, 4, 15).forEach($$1x -> {
-         if ($$0.a_($$1x).a(dfj.F)) {
-            $$0.a($$1x, dfj.sJ.o(), false);
-         }
-      });
-   }
-
-   public void b(dva $$0) {
-      dch $$1 = $$0.z();
-      int $$2 = $$1.I_();
-      int $$3 = $$1.am() - 1;
-
-      for (int $$4 = 0; $$4 < 16; $$4++) {
-         for (int $$5 = 0; $$5 < 16; $$5++) {
-            if (this.a($$4, $$5)) {
-               ja.b($$4, $$2, $$5, $$4, $$3, $$5).forEach($$1x -> $$0.a($$1x, dfj.a.o(), false));
+public class dxt implements dya.c {
+   public static final int a = 12;
+   private static final int f = 24;
+   private static final float[] g = ac.a(new float[13824], $$0 -> {
+      for (int $$1 = 0; $$1 < 24; $$1++) {
+         for (int $$2 = 0; $$2 < 24; $$2++) {
+            for (int $$3 = 0; $$3 < 24; $$3++) {
+               $$0[$$1 * 24 * 24 + $$2 * 24 + $$3] = (float)a($$2 - 12, $$3 - 12, $$1 - 12);
             }
          }
       }
+   });
+   private final ObjectListIterator<dxt.a> h;
+   private final ObjectListIterator<eka> i;
+
+   public static dxt a(dda $$0, dbn $$1) {
+      int $$2 = $$1.d();
+      int $$3 = $$1.e();
+      ObjectList<dxt.a> $$4 = new ObjectArrayList(10);
+      ObjectList<eka> $$5 = new ObjectArrayList(32);
+      $$0.a($$1, $$0x -> $$0x.d() != eji.a).forEach($$5x -> {
+         eji $$6 = $$5x.h().d();
+
+         for (ejb $$7 : $$5x.i()) {
+            if ($$7.a($$1, 12)) {
+               if ($$7 instanceof eit) {
+                  eit $$8 = (eit)$$7;
+                  ekh.a $$9 = $$8.b().e();
+                  if ($$9 == ekh.a.b) {
+                     $$4.add(new dxt.a($$8.f(), $$6, $$8.d()));
+                  }
+
+                  for (eka $$10 : $$8.e()) {
+                     int $$11 = $$10.a();
+                     int $$12 = $$10.c();
+                     if ($$11 > $$2 - 12 && $$12 > $$3 - 12 && $$11 < $$2 + 15 + 12 && $$12 < $$3 + 15 + 12) {
+                        $$5.add($$10);
+                     }
+                  }
+               } else {
+                  $$4.add(new dxt.a($$7.f(), $$6, 0));
+               }
+            }
+         }
+      });
+      return new dxt($$4.iterator(), $$5.iterator());
    }
 
-   public dvh a() {
-      return this.g;
+   @VisibleForTesting
+   public dxt(ObjectListIterator<dxt.a> $$0, ObjectListIterator<eka> $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
-   public boolean b() {
-      return !this.h.isEmpty();
-   }
+   @Override
+   public double a(dxz.b $$0) {
+      int $$1 = $$0.a();
+      int $$2 = $$0.b();
+      int $$3 = $$0.c();
+      double $$4 = 0.0;
 
-   public boolean a(int $$0, int $$1) {
-      return this.h.get(($$1 & 15) * 16 + ($$0 & 15));
-   }
+      while (this.h.hasNext()) {
+         dxt.a $$5 = (dxt.a)this.h.next();
+         eip $$6 = $$5.a();
+         int $$7 = $$5.c();
+         int $$8 = Math.max(0, Math.max($$6.h() - $$1, $$1 - $$6.k()));
+         int $$9 = Math.max(0, Math.max($$6.j() - $$3, $$3 - $$6.m()));
+         int $$10 = $$6.i() + $$7;
+         int $$11 = $$2 - $$10;
 
-   public static ddi a(ddi $$0, dug $$1) {
-      if (!$$1.y()) {
-         return $$0;
-      } else {
-         Predicate<akj<ddf>> $$2 = f::contains;
-         return ($$3, $$4, $$5, $$6) -> {
-            jj<ddf> $$7 = $$0.getNoiseBiome($$3, $$4, $$5, $$6);
-            return $$7.a($$2) ? $$7 : $$1.getNoiseBiome($$3, 0, $$5);
+         int $$12 = switch ($$5.b()) {
+            case a -> 0;
+            case b, c -> $$11;
+            case d -> Math.max(0, Math.max($$10 - $$2, $$2 - $$6.l()));
+            case e -> Math.max(0, Math.max($$6.i() - $$2, $$2 - $$6.l()));
+         };
+
+         $$4 += switch ($$5.b()) {
+            case a -> 0.0;
+            case b -> a((double)$$8, (double)$$12 / 2.0, (double)$$9);
+            case c, d -> a($$8, $$12, $$9, $$11) * 0.8;
+            case e -> a((double)$$8 / 2.0, (double)$$12 / 2.0, (double)$$9 / 2.0) * 0.8;
          };
       }
+
+      this.h.back(Integer.MAX_VALUE);
+
+      while (this.i.hasNext()) {
+         eka $$13 = (eka)this.i.next();
+         int $$14 = $$1 - $$13.a();
+         int $$15 = $$2 - $$13.b();
+         int $$16 = $$3 - $$13.c();
+         $$4 += a($$14, $$15, $$16, $$15) * 0.4;
+      }
+
+      this.i.back(Integer.MAX_VALUE);
+      return $$4;
+   }
+
+   @Override
+   public double a() {
+      return Double.NEGATIVE_INFINITY;
+   }
+
+   @Override
+   public double b() {
+      return Double.POSITIVE_INFINITY;
+   }
+
+   private static double a(double $$0, double $$1, double $$2) {
+      double $$3 = ayg.g($$0, $$1, $$2);
+      return ayg.a($$3, 0.0, 6.0, 1.0, 0.0);
+   }
+
+   private static double a(int $$0, int $$1, int $$2, int $$3) {
+      int $$4 = $$0 + 12;
+      int $$5 = $$1 + 12;
+      int $$6 = $$2 + 12;
+      if (a($$4) && a($$5) && a($$6)) {
+         double $$7 = (double)$$3 + 0.5;
+         double $$8 = ayg.f((double)$$0, $$7, (double)$$2);
+         double $$9 = -$$7 * ayg.g($$8 / 2.0) / 2.0;
+         return $$9 * (double)g[$$6 * 24 * 24 + $$4 * 24 + $$5];
+      } else {
+         return 0.0;
+      }
+   }
+
+   private static boolean a(int $$0) {
+      return $$0 >= 0 && $$0 < 24;
+   }
+
+   private static double a(int $$0, int $$1, int $$2) {
+      return a($$0, (double)$$1 + 0.5, $$2);
+   }
+
+   private static double a(int $$0, double $$1, int $$2) {
+      double $$3 = ayg.f((double)$$0, $$1, (double)$$2);
+      return Math.pow(Math.E, -$$3 / 16.0);
+   }
+
+   @VisibleForTesting
+   public static record a(eip a, eji b, int c) {
    }
 }

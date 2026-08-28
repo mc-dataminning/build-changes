@@ -1,15 +1,12 @@
-public interface dcm extends dci {
-   long ak();
+import java.util.Optional;
+import java.util.function.Predicate;
 
-   default float aq() {
-      return dwf.i[this.D_().b(this.ak())];
-   }
+public interface dcm {
+   boolean a(ja var1, Predicate<dsl> var2);
 
-   default float f(float $$0) {
-      return this.D_().a(this.ak());
-   }
+   boolean b(ja var1, Predicate<eoj> var2);
 
-   default int ar() {
-      return this.D_().b(this.ak());
-   }
+   <T extends dpq> Optional<T> a(ja var1, dps<T> var2);
+
+   ja a(dyg.a var1, ja var2);
 }

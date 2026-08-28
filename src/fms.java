@@ -1,27 +1,48 @@
-public class fms extends fnj {
-   private final wu a;
+public class fms extends fnl {
+   private static final wu a = wu.c("gui.toMenu");
+   private static final wu b = wu.c("gui.toTitle");
+   private final fnl c;
+   private final wu q;
+   private final wu r;
+   private final fll s = fll.d();
 
-   public fms(wu $$0, wu $$1) {
-      super($$0);
-      this.a = $$1;
+   public fms(fnl $$0, wu $$1, wu $$2) {
+      this($$0, $$1, $$2, a);
+   }
+
+   public fms(fnl $$0, wu $$1, wu $$2, wu $$3) {
+      super($$1);
+      this.c = $$0;
+      this.q = $$2;
+      this.r = $$3;
    }
 
    @Override
    protected void aP_() {
-      super.aP_();
-      this.c(fhs.a(wt.e, $$0 -> this.l.a(null)).a(this.m / 2 - 100, 140, 200, 20).a());
+      this.s.c().b().a(10);
+      this.s.a(new fjb(this.k, this.o));
+      this.s.a(new fio(this.q, this.o).d(this.m - 50).b(true));
+      fhu $$0;
+      if (this.l.F()) {
+         $$0 = fhu.a(this.r, $$0x -> this.l.a(this.c)).a();
+      } else {
+         $$0 = fhu.a(b, $$0x -> this.l.a(new fnn())).a();
+      }
+
+      this.s.a($$0);
+      this.s.a();
+      this.s.a(this::c);
+      this.c();
    }
 
    @Override
-   public void a(fhf $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.o, this.k, this.m / 2, 90, 16777215);
-      $$0.a(this.o, this.a, this.m / 2, 110, 16777215);
+   protected void c() {
+      flf.a(this.s, this.H());
    }
 
    @Override
-   public void b(fhf $$0, int $$1, int $$2, float $$3) {
-      $$0.b(0, 0, this.m, this.n, -12574688, -11530224);
+   public wu i() {
+      return wt.a(this.k, this.q);
    }
 
    @Override

@@ -5,7 +5,7 @@ import java.util.Optional;
 public class ar {
    public static final Codec<ar> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               cuc.d.fieldOf("icon").forGetter(ar::c),
+               cud.d.fieldOf("icon").forGetter(ar::c),
                ww.a.fieldOf("title").forGetter(ar::a),
                ww.a.fieldOf("description").forGetter(ar::b),
                akk.a.optionalFieldOf("background").forGetter(ar::d),
@@ -19,7 +19,7 @@ public class ar {
    public static final ys<wf, ar> b = ys.a(ar::a, ar::b);
    private final wu c;
    private final wu d;
-   private final cuc e;
+   private final cud e;
    private final Optional<akk> f;
    private final al g;
    private final boolean h;
@@ -28,7 +28,7 @@ public class ar {
    private float k;
    private float l;
 
-   public ar(cuc $$0, wu $$1, wu $$2, Optional<akk> $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
+   public ar(cud $$0, wu $$1, wu $$2, Optional<akk> $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
       this.c = $$1;
       this.d = $$2;
       this.e = $$0;
@@ -52,7 +52,7 @@ public class ar {
       return this.d;
    }
 
-   public cuc c() {
+   public cud c() {
       return this.e;
    }
 
@@ -87,7 +87,7 @@ public class ar {
    private void a(wf $$0) {
       ww.d.encode($$0, this.c);
       ww.d.encode($$0, this.d);
-      cuc.i.encode($$0, this.e);
+      cud.i.encode($$0, this.e);
       $$0.a(this.g);
       int $$1 = 0;
       if (this.f.isPresent()) {
@@ -111,7 +111,7 @@ public class ar {
    private static ar b(wf $$0) {
       wu $$1 = ww.d.decode($$0);
       wu $$2 = ww.d.decode($$0);
-      cuc $$3 = cuc.i.decode($$0);
+      cud $$3 = cud.i.decode($$0);
       al $$4 = $$0.b(al.class);
       int $$5 = $$0.readInt();
       Optional<akk> $$6 = ($$5 & 1) != 0 ? Optional.of($$0.q()) : Optional.empty();

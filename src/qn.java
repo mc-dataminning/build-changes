@@ -1,65 +1,65 @@
 public class qn {
-   public static final akj<eaj<?>> a = a("cave");
-   public static final akj<eaj<?>> b = a("cave_extra_underground");
-   public static final akj<eaj<?>> c = a("canyon");
-   public static final akj<eaj<?>> d = a("nether_cave");
+   public static final akj<eak<?>> a = a("cave");
+   public static final akj<eak<?>> b = a("cave_extra_underground");
+   public static final akj<eak<?>> c = a("canyon");
+   public static final akj<eak<?>> d = a("nether_cave");
 
-   private static akj<eaj<?>> a(String $$0) {
+   private static akj<eak<?>> a(String $$0) {
       return akj.a(lr.aG, new akk($$0));
    }
 
-   public static void a(qm<eaj<?>> $$0) {
-      jk<dfh> $$1 = $$0.a(lr.f);
+   public static void a(qm<eak<?>> $$0) {
+      jk<dfi> $$1 = $$0.a(lr.f);
       $$0.a(
          a,
-         eal.a
+         eam.a
             .a(
-               new eah(
+               new eai(
                   0.15F,
-                  ehg.a(dyz.b(8), dyz.a(180)),
-                  bpq.b(0.1F, 0.9F),
-                  dyz.b(8),
-                  eaf.a(false, dfj.oS.o()),
+                  ehh.a(dza.b(8), dza.a(180)),
+                  bpr.b(0.1F, 0.9F),
+                  dza.b(8),
+                  eag.a(false, dfk.oS.o()),
                   $$1.b(avw.bi),
-                  bpq.b(0.7F, 1.4F),
-                  bpq.b(0.8F, 1.3F),
-                  bpq.b(-1.0F, -0.4F)
+                  bpr.b(0.7F, 1.4F),
+                  bpr.b(0.8F, 1.3F),
+                  bpr.b(-1.0F, -0.4F)
                )
             )
       );
       $$0.a(
          b,
-         eal.a
+         eam.a
             .a(
-               new eah(
+               new eai(
                   0.07F,
-                  ehg.a(dyz.b(8), dyz.a(47)),
-                  bpq.b(0.1F, 0.9F),
-                  dyz.b(8),
-                  eaf.a(false, dfj.gv.o()),
+                  ehh.a(dza.b(8), dza.a(47)),
+                  bpr.b(0.1F, 0.9F),
+                  dza.b(8),
+                  eag.a(false, dfk.gv.o()),
                   $$1.b(avw.bi),
-                  bpq.b(0.7F, 1.4F),
-                  bpq.b(0.8F, 1.3F),
-                  bpq.b(-1.0F, -0.4F)
+                  bpr.b(0.7F, 1.4F),
+                  bpr.b(0.8F, 1.3F),
+                  bpr.b(-1.0F, -0.4F)
                )
             )
       );
       $$0.a(
          c,
-         eal.c
+         eam.c
             .a(
-               new eac(
+               new ead(
                   0.01F,
-                  ehg.a(dyz.a(10), dyz.a(67)),
-                  bph.a(3.0F),
-                  dyz.b(8),
-                  eaf.a(false, dfj.oT.o()),
+                  ehh.a(dza.a(10), dza.a(67)),
+                  bpi.a(3.0F),
+                  dza.b(8),
+                  eag.a(false, dfk.oT.o()),
                   $$1.b(avw.bi),
-                  bpq.b(-0.125F, 0.125F),
-                  new eac.a(bpq.b(0.75F, 1.0F), bpp.a(0.0F, 6.0F, 2.0F), 3, bpq.b(0.75F, 1.0F), 1.0F, 0.0F)
+                  bpr.b(-0.125F, 0.125F),
+                  new ead.a(bpr.b(0.75F, 1.0F), bpq.a(0.0F, 6.0F, 2.0F), 3, bpr.b(0.75F, 1.0F), 1.0F, 0.0F)
                )
             )
       );
-      $$0.a(d, eal.b.a(new eah(0.2F, ehg.a(dyz.a(0), dyz.c(1)), bph.a(0.5F), dyz.b(10), $$1.b(avw.bj), bph.a(1.0F), bph.a(1.0F), bph.a(-0.7F))));
+      $$0.a(d, eam.b.a(new eai(0.2F, ehh.a(dza.a(0), dza.c(1)), bpi.a(0.5F), dza.b(10), $$1.b(avw.bj), bpi.a(1.0F), bpi.a(1.0F), bpi.a(-0.7F))));
    }
 }

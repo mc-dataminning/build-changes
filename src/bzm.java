@@ -1,50 +1,77 @@
 import java.util.EnumSet;
+import java.util.List;
+import javax.annotation.Nullable;
 
-public class bzm extends cam {
-   private final ceu g;
+public class bzm extends caa {
+   private static final cdt d = cdt.b().a(8.0).d();
+   protected final ces a;
+   private final Class<? extends ces> e;
+   protected final dcg b;
+   @Nullable
+   protected ces c;
+   private int f;
+   private final double g;
 
-   public bzm(ceu $$0, double $$1, int $$2) {
-      super($$0, $$1, $$2, 6);
-      this.g = $$0;
-      this.f = -2;
-      this.a(EnumSet.of(bzz.a.c, bzz.a.a));
+   public bzm(ces $$0, double $$1) {
+      this($$0, $$1, (Class<? extends ces>)$$0.getClass());
+   }
+
+   public bzm(ces $$0, double $$1, Class<? extends ces> $$2) {
+      this.a = $$0;
+      this.b = $$0.dR();
+      this.e = $$2;
+      this.g = $$1;
+      this.a(EnumSet.of(caa.a.a, caa.a.b));
    }
 
    @Override
    public boolean a() {
-      return this.g.s() && !this.g.go() && !this.g.gw() && super.a();
-   }
-
-   @Override
-   public void c() {
-      super.c();
-      this.g.x(false);
-   }
-
-   @Override
-   protected int a(btk $$0) {
-      return 40;
-   }
-
-   @Override
-   public void d() {
-      super.d();
-      this.g.z(false);
-   }
-
-   @Override
-   public void e() {
-      super.e();
-      this.g.x(false);
-      if (!this.m()) {
-         this.g.z(false);
-      } else if (!this.g.gw()) {
-         this.g.z(true);
+      if (!this.a.gr()) {
+         return false;
+      } else {
+         this.c = this.h();
+         return this.c != null;
       }
    }
 
    @Override
-   protected boolean a(dci $$0, ja $$1) {
-      return $$0.u($$1.c()) && $$0.a_($$1).a(avw.R);
+   public boolean b() {
+      return this.c.bF() && this.c.gr() && this.f < 60 && !this.c.gk();
+   }
+
+   @Override
+   public void d() {
+      this.c = null;
+      this.f = 0;
+   }
+
+   @Override
+   public void e() {
+      this.a.F().a(this.c, 10.0F, (float)this.a.aa());
+      this.a.J().a(this.c, this.g);
+      this.f++;
+      if (this.f >= this.a(60) && this.a.g(this.c) < 9.0) {
+         this.g();
+      }
+   }
+
+   @Nullable
+   private ces h() {
+      List<? extends ces> $$0 = this.b.a(this.e, d, this.a, this.a.cM().g(8.0));
+      double $$1 = Double.MAX_VALUE;
+      ces $$2 = null;
+
+      for (ces $$3 : $$0) {
+         if (this.a.a($$3) && !$$3.gk() && this.a.g($$3) < $$1) {
+            $$2 = $$3;
+            $$1 = this.a.g($$3);
+         }
+      }
+
+      return $$2;
+   }
+
+   protected void g() {
+      this.a.a((aqm)this.b, this.c);
    }
 }

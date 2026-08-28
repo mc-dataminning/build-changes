@@ -1,113 +1,231 @@
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Table;
-import com.google.common.collect.ImmutableList.Builder;
-import com.mojang.logging.LogUtils;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import org.slf4j.Logger;
+import java.util.Arrays;
+import org.joml.Quaternionf;
+import org.joml.Vector3f;
 
-public class ffg extends avk {
-   private static final Logger c = LogUtils.getLogger();
-   private Map<fgb, List<fri>> d = ImmutableMap.of();
-   private List<fri> e = ImmutableList.of();
+public class ffg {
+   private static final float b = 4.0F;
+   private boolean c;
+   private dbm d;
+   private bsh e;
+   private ewh f = ewh.b;
+   private final ja.a g = new ja.a();
+   private final Vector3f h = new Vector3f(0.0F, 0.0F, 1.0F);
+   private final Vector3f i = new Vector3f(0.0F, 1.0F, 0.0F);
+   private final Vector3f j = new Vector3f(1.0F, 0.0F, 0.0F);
+   private float k;
+   private float l;
+   private final Quaternionf m = new Quaternionf(0.0F, 0.0F, 0.0F, 1.0F);
+   private boolean n;
+   private float o;
+   private float p;
+   private float q;
+   public static final float a = 0.083333336F;
 
-   public void a(Iterable<cyk<?>> $$0, jx $$1) {
-      Map<fgb, List<List<cyk<?>>>> $$2 = a($$0);
-      Map<fgb, List<fri>> $$3 = Maps.newHashMap();
-      Builder<fri> $$4 = ImmutableList.builder();
-      $$2.forEach(($$3x, $$4x) -> $$3.put($$3x, $$4x.stream().map($$1xx -> new fri($$1, $$1xx)).peek($$4::add).collect(ImmutableList.toImmutableList())));
-      fgb.w
-         .forEach(
-            ($$1x, $$2x) -> $$3.put(
-                  $$1x, $$2x.stream().flatMap($$1xx -> $$3.getOrDefault($$1xx, ImmutableList.of()).stream()).collect(ImmutableList.toImmutableList())
-               )
+   public void a(dbm $$0, bsh $$1, boolean $$2, boolean $$3, float $$4) {
+      this.c = true;
+      this.d = $$0;
+      this.e = $$1;
+      this.n = $$2;
+      this.q = $$4;
+      this.a($$1.i($$4), $$1.h($$4));
+      this.b(ayg.d((double)$$4, $$1.L, $$1.dw()), ayg.d((double)$$4, $$1.M, $$1.dy()) + (double)ayg.i($$4, this.p, this.o), ayg.d((double)$$4, $$1.N, $$1.dC()));
+      if ($$2) {
+         if ($$3) {
+            this.a(this.l + 180.0F, -this.k);
+         }
+
+         float $$6 = $$1 instanceof btc $$5 ? $$5.ed() : 1.0F;
+         this.a(-this.a((double)(4.0F * $$6)), 0.0, 0.0);
+      } else if ($$1 instanceof btc && ((btc)$$1).fJ()) {
+         jf $$7 = ((btc)$$1).fL();
+         this.a($$7 != null ? $$7.p() - 180.0F : 0.0F, 0.0F);
+         this.a(0.0, 0.3, 0.0);
+      }
+   }
+
+   public void a() {
+      if (this.e != null) {
+         this.p = this.o;
+         this.o = this.o + (this.e.cN() - this.o) * 0.5F;
+      }
+   }
+
+   private double a(double $$0) {
+      for (int $$1 = 0; $$1 < 8; $$1++) {
+         float $$2 = (float)(($$1 & 1) * 2 - 1);
+         float $$3 = (float)(($$1 >> 1 & 1) * 2 - 1);
+         float $$4 = (float)(($$1 >> 2 & 1) * 2 - 1);
+         $$2 *= 0.1F;
+         $$3 *= 0.1F;
+         $$4 *= 0.1F;
+         ewh $$5 = this.f.b((double)$$2, (double)$$3, (double)$$4);
+         ewh $$6 = new ewh(
+            this.f.c - (double)this.h.x() * $$0 + (double)$$2,
+            this.f.d - (double)this.h.y() * $$0 + (double)$$3,
+            this.f.e - (double)this.h.z() * $$0 + (double)$$4
          );
-      this.d = ImmutableMap.copyOf($$3);
-      this.e = $$4.build();
-   }
-
-   private static Map<fgb, List<List<cyk<?>>>> a(Iterable<cyk<?>> $$0) {
-      Map<fgb, List<List<cyk<?>>>> $$1 = Maps.newHashMap();
-      Table<fgb, String, List<cyk<?>>> $$2 = HashBasedTable.create();
-
-      for (cyk<?> $$3 : $$0) {
-         cyi<?> $$4 = $$3.b();
-         if (!$$4.ao_() && !$$4.i()) {
-            fgb $$5 = g($$3);
-            String $$6 = $$4.c();
-            if ($$6.isEmpty()) {
-               $$1.computeIfAbsent($$5, $$0x -> Lists.newArrayList()).add(ImmutableList.of($$3));
-            } else {
-               List<cyk<?>> $$7 = (List<cyk<?>>)$$2.get($$5, $$6);
-               if ($$7 == null) {
-                  $$7 = Lists.newArrayList();
-                  $$2.put($$5, $$6, $$7);
-                  $$1.computeIfAbsent($$5, $$0x -> Lists.newArrayList()).add($$7);
-               }
-
-               $$7.add($$3);
+         ewf $$7 = this.d.a(new dbp($$5, $$6, dbp.a.c, dbp.b.a, this.e));
+         if ($$7.c() != ewf.a.a) {
+            double $$8 = $$7.e().f(this.f);
+            if ($$8 < $$0) {
+               $$0 = $$8;
             }
          }
       }
 
-      return $$1;
+      return $$0;
    }
 
-   private static fgb g(cyk<?> $$0) {
-      cyi<?> $$1 = $$0.b();
-      if ($$1 instanceof cxz $$2) {
-         return switch ($$2.d()) {
-            case a -> fgb.b;
-            case c -> fgb.d;
-            case b -> fgb.c;
-            case d -> fgb.e;
-         };
-      } else {
-         cyo<?> $$3 = $$1.e();
-         if ($$1 instanceof cxq $$4) {
-            cxw $$5 = $$4.f();
-            if ($$3 == cyo.b) {
-               return switch ($$5) {
-                  case b -> fgb.h;
-                  case a -> fgb.g;
-                  case c -> fgb.i;
-               };
-            }
-
-            if ($$3 == cyo.c) {
-               return $$5 == cxw.b ? fgb.k : fgb.l;
-            }
-
-            if ($$3 == cyo.d) {
-               return fgb.n;
-            }
-
-            if ($$3 == cyo.e) {
-               return fgb.q;
-            }
-         }
-
-         if ($$3 == cyo.f) {
-            return fgb.o;
-         } else if ($$3 == cyo.g) {
-            return fgb.p;
-         } else {
-            c.warn("Unknown recipe category: {}/{}", LogUtils.defer(() -> lq.q.b($$1.e())), LogUtils.defer($$0::a));
-            return fgb.r;
-         }
-      }
+   protected void a(double $$0, double $$1, double $$2) {
+      double $$3 = (double)this.h.x() * $$0 + (double)this.i.x() * $$1 + (double)this.j.x() * $$2;
+      double $$4 = (double)this.h.y() * $$0 + (double)this.i.y() * $$1 + (double)this.j.y() * $$2;
+      double $$5 = (double)this.h.z() * $$0 + (double)this.i.z() * $$1 + (double)this.j.z() * $$2;
+      this.a(new ewh(this.f.c + $$3, this.f.d + $$4, this.f.e + $$5));
    }
 
-   public List<fri> b() {
+   protected void a(float $$0, float $$1) {
+      this.k = $$1;
+      this.l = $$0;
+      this.m.rotationYXZ(-$$0 * (float) (Math.PI / 180.0), $$1 * (float) (Math.PI / 180.0), 0.0F);
+      this.h.set(0.0F, 0.0F, 1.0F).rotate(this.m);
+      this.i.set(0.0F, 1.0F, 0.0F).rotate(this.m);
+      this.j.set(1.0F, 0.0F, 0.0F).rotate(this.m);
+   }
+
+   protected void b(double $$0, double $$1, double $$2) {
+      this.a(new ewh($$0, $$1, $$2));
+   }
+
+   protected void a(ewh $$0) {
+      this.f = $$0;
+      this.g.b($$0.c, $$0.d, $$0.e);
+   }
+
+   public ewh b() {
+      return this.f;
+   }
+
+   public ja c() {
+      return this.g;
+   }
+
+   public float d() {
+      return this.k;
+   }
+
+   public float e() {
+      return this.l;
+   }
+
+   public Quaternionf f() {
+      return this.m;
+   }
+
+   public bsh g() {
       return this.e;
    }
 
-   public List<fri> a(fgb $$0) {
-      return this.d.getOrDefault($$0, Collections.emptyList());
+   public boolean h() {
+      return this.c;
+   }
+
+   public boolean i() {
+      return this.n;
+   }
+
+   public ffg.a j() {
+      ffw $$0 = ffw.Q();
+      double $$1 = (double)$$0.aM().k() / (double)$$0.aM().l();
+      double $$2 = Math.tan((double)((float)$$0.m.ah().c().intValue() * (float) (Math.PI / 180.0)) / 2.0) * 0.05F;
+      double $$3 = $$2 * $$1;
+      ewh $$4 = new ewh(this.h).a(0.05F);
+      ewh $$5 = new ewh(this.j).a($$3);
+      ewh $$6 = new ewh(this.i).a($$2);
+      return new ffg.a($$4, $$5, $$6);
+   }
+
+   public eol k() {
+      if (!this.c) {
+         return eol.d;
+      } else {
+         eoj $$0 = this.d.b_(this.g);
+         if ($$0.a(awc.a) && this.f.d < (double)((float)this.g.v() + $$0.a(this.d, this.g))) {
+            return eol.b;
+         } else {
+            ffg.a $$1 = this.j();
+
+            for (ewh $$3 : Arrays.asList($$1.a, $$1.a(), $$1.b(), $$1.c(), $$1.d())) {
+               ewh $$4 = this.f.e($$3);
+               ja $$5 = ja.a($$4);
+               eoj $$6 = this.d.b_($$5);
+               if ($$6.a(awc.b)) {
+                  if ($$4.d <= (double)($$6.a(this.d, $$5) + (float)$$5.v())) {
+                     return eol.a;
+                  }
+               } else {
+                  dsl $$7 = this.d.a_($$5);
+                  if ($$7.a(dfk.qP)) {
+                     return eol.c;
+                  }
+               }
+            }
+
+            return eol.d;
+         }
+      }
+   }
+
+   public final Vector3f l() {
+      return this.h;
+   }
+
+   public final Vector3f m() {
+      return this.i;
+   }
+
+   public final Vector3f n() {
+      return this.j;
+   }
+
+   public void o() {
+      this.d = null;
+      this.e = null;
+      this.c = false;
+   }
+
+   public float p() {
+      return this.q;
+   }
+
+   public static class a {
+      final ewh a;
+      private final ewh b;
+      private final ewh c;
+
+      a(ewh $$0, ewh $$1, ewh $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public ewh a() {
+         return this.a.e(this.c).e(this.b);
+      }
+
+      public ewh b() {
+         return this.a.e(this.c).d(this.b);
+      }
+
+      public ewh c() {
+         return this.a.d(this.c).e(this.b);
+      }
+
+      public ewh d() {
+         return this.a.d(this.c).d(this.b);
+      }
+
+      public ewh a(float $$0, float $$1) {
+         return this.a.e(this.c.a((double)$$1)).d(this.b.a((double)$$0));
+      }
    }
 }

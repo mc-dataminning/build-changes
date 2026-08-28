@@ -1,23 +1,66 @@
-import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import java.util.Comparator;
+import java.util.Set;
+import java.util.function.BiConsumer;
 
-public class egh<P extends egg> {
-   public static final egh<egi> a = a("trunk_vine", egi.a);
-   public static final egh<egf> b = a("leave_vine", egf.a);
-   public static final egh<ege> c = a("cocoa", ege.a);
-   public static final egh<egd> d = a("beehive", egd.a);
-   public static final egh<egb> e = a("alter_ground", egb.a);
-   public static final egh<egc> f = a("attached_to_leaves", egc.a);
-   private final MapCodec<P> g;
+public abstract class egh {
+   public static final Codec<egh> h = lq.X.r().dispatch(egh::a, egi::a);
 
-   private static <P extends egg> egh<P> a(String $$0, MapCodec<P> $$1) {
-      return jw.a(lq.X, $$0, new egh<>($$1));
-   }
+   protected abstract egi<?> a();
 
-   private egh(MapCodec<P> $$0) {
-      this.g = $$0;
-   }
+   public abstract void a(egh.a var1);
 
-   public MapCodec<P> a() {
-      return this.g;
+   public static final class a {
+      private final dcm a;
+      private final BiConsumer<ja, dsl> b;
+      private final ayo c;
+      private final ObjectArrayList<ja> d;
+      private final ObjectArrayList<ja> e;
+      private final ObjectArrayList<ja> f;
+
+      public a(dcm $$0, BiConsumer<ja, dsl> $$1, ayo $$2, Set<ja> $$3, Set<ja> $$4, Set<ja> $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.f = new ObjectArrayList($$5);
+         this.d = new ObjectArrayList($$3);
+         this.e = new ObjectArrayList($$4);
+         this.d.sort(Comparator.comparingInt(ke::v));
+         this.e.sort(Comparator.comparingInt(ke::v));
+         this.f.sort(Comparator.comparingInt(ke::v));
+      }
+
+      public void a(ja $$0, dtc $$1) {
+         this.a($$0, dfk.ff.o().a($$1, Boolean.valueOf(true)));
+      }
+
+      public void a(ja $$0, dsl $$1) {
+         this.b.accept($$0, $$1);
+      }
+
+      public boolean a(ja $$0) {
+         return this.a.a($$0, dsk.a::i);
+      }
+
+      public dcm a() {
+         return this.a;
+      }
+
+      public ayo b() {
+         return this.c;
+      }
+
+      public ObjectArrayList<ja> c() {
+         return this.d;
+      }
+
+      public ObjectArrayList<ja> d() {
+         return this.e;
+      }
+
+      public ObjectArrayList<ja> e() {
+         return this.f;
+      }
    }
 }

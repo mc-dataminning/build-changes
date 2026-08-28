@@ -1,42 +1,140 @@
-import java.util.Set;
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
+import com.google.common.hash.Hashing;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.SignatureState;
+import com.mojang.authlib.minecraft.MinecraftProfileTexture;
+import com.mojang.authlib.minecraft.MinecraftProfileTextures;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.authlib.minecraft.MinecraftProfileTexture.Type;
+import com.mojang.authlib.properties.Property;
+import com.mojang.logging.LogUtils;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import java.nio.file.Path;
+import java.time.Duration;
+import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
+import java.util.function.Supplier;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public abstract class gqr implements atq, AutoCloseable {
-   private final gpn a;
-   private final akk b;
-   private final Set<asv<?>> c;
+public class gqr {
+   static final Logger a = LogUtils.getLogger();
+   private final MinecraftSessionService b;
+   private final LoadingCache<gqr.a, CompletableFuture<gqq>> c;
+   private final gqr.b d;
+   private final gqr.b e;
+   private final gqr.b f;
 
-   public gqr(gpp $$0, akk $$1, akk $$2) {
-      this($$0, $$1, $$2, gpj.a);
-   }
-
-   public gqr(gpp $$0, akk $$1, akk $$2, Set<asv<?>> $$3) {
+   public gqr(gpr $$0, Path $$1, final MinecraftSessionService $$2, final Executor $$3) {
       this.b = $$2;
-      this.a = new gpn($$1);
-      $$0.a(this.a.g(), this.a);
-      this.c = $$3;
+      this.d = new gqr.b($$0, $$1, Type.SKIN);
+      this.e = new gqr.b($$0, $$1, Type.CAPE);
+      this.f = new gqr.b($$0, $$1, Type.ELYTRA);
+      this.c = CacheBuilder.newBuilder().expireAfterAccess(Duration.ofSeconds(15L)).build(new CacheLoader<gqr.a, CompletableFuture<gqq>>() {
+         public CompletableFuture<gqq> a(gqr.a $$0) {
+            return CompletableFuture.<MinecraftProfileTextures>supplyAsync(() -> {
+               Property $$2xx = $$0.b();
+               if ($$2xx == null) {
+                  return MinecraftProfileTextures.EMPTY;
+               } else {
+                  MinecraftProfileTextures $$3xx = $$2.unpackTextures($$2xx);
+                  if ($$3xx.signatureState() == SignatureState.INVALID) {
+                     gqr.a.warn("Profile contained invalid signature for textures property (profile id: {})", $$0.a());
+                  }
+
+                  return $$3xx;
+               }
+            }, ac.g()).thenComposeAsync($$1 -> gqr.this.a($$0.a(), $$1), $$3);
+         }
+      });
    }
 
-   protected gpo a(akk $$0) {
-      return this.a.a($$0);
+   public Supplier<gqq> a(GameProfile $$0) {
+      CompletableFuture<gqq> $$1 = this.c($$0);
+      gqq $$2 = gqi.a($$0);
+      return () -> $$1.getNow($$2);
    }
 
-   @Override
-   public final CompletableFuture<Void> a(atq.a $$0, atw $$1, bmu $$2, bmu $$3, Executor $$4, Executor $$5) {
-      return gpj.a(this.a).a($$1, this.b, 0, $$4, this.c).thenCompose(gpj.a::a).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$1x, $$3), $$5);
+   public gqq b(GameProfile $$0) {
+      gqq $$1 = this.c($$0).getNow(null);
+      return $$1 != null ? $$1 : gqi.a($$0);
    }
 
-   private void a(gpj.a $$0, bmu $$1) {
-      $$1.a();
-      $$1.a("upload");
-      this.a.a($$0);
-      $$1.c();
-      $$1.b();
+   public CompletableFuture<gqq> c(GameProfile $$0) {
+      Property $$1 = this.b.getPackedTextures($$0);
+      return (CompletableFuture<gqq>)this.c.getUnchecked(new gqr.a($$0.getId(), $$1));
    }
 
-   @Override
-   public void close() {
-      this.a.f();
+   CompletableFuture<gqq> a(UUID $$0, MinecraftProfileTextures $$1) {
+      MinecraftProfileTexture $$2 = $$1.skin();
+      CompletableFuture<akk> $$3;
+      gqq.a $$4;
+      if ($$2 != null) {
+         $$3 = this.d.a($$2);
+         $$4 = gqq.a.a($$2.getMetadata("model"));
+      } else {
+         gqq $$5 = gqi.a($$0);
+         $$3 = CompletableFuture.completedFuture($$5.a());
+         $$4 = $$5.e();
+      }
+
+      String $$8 = x.a($$2, MinecraftProfileTexture::getUrl);
+      MinecraftProfileTexture $$9 = $$1.cape();
+      CompletableFuture<akk> $$10 = $$9 != null ? this.e.a($$9) : CompletableFuture.completedFuture(null);
+      MinecraftProfileTexture $$11 = $$1.elytra();
+      CompletableFuture<akk> $$12 = $$11 != null ? this.f.a($$11) : CompletableFuture.completedFuture(null);
+      return CompletableFuture.allOf($$3, $$10, $$12)
+         .thenApply($$6x -> new gqq($$3.join(), $$8, $$10.join(), $$12.join(), $$4, $$1.signatureState() == SignatureState.SIGNED));
+   }
+
+   static record a(UUID a, @Nullable Property b) {
+   }
+
+   static class b {
+      private final gpr a;
+      private final Path b;
+      private final Type c;
+      private final Map<String, CompletableFuture<akk>> d = new Object2ObjectOpenHashMap();
+
+      b(gpr $$0, Path $$1, Type $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+      }
+
+      public CompletableFuture<akk> a(MinecraftProfileTexture $$0) {
+         String $$1 = $$0.getHash();
+         CompletableFuture<akk> $$2 = this.d.get($$1);
+         if ($$2 == null) {
+            $$2 = this.b($$0);
+            this.d.put($$1, $$2);
+         }
+
+         return $$2;
+      }
+
+      private CompletableFuture<akk> b(MinecraftProfileTexture $$0) {
+         String $$1 = Hashing.sha1().hashUnencodedChars($$0.getHash()).toString();
+         akk $$2 = this.a($$1);
+         Path $$3 = this.b.resolve($$1.length() > 2 ? $$1.substring(0, 2) : "xx").resolve($$1);
+         CompletableFuture<akk> $$4 = new CompletableFuture<>();
+         gpe $$5 = new gpe($$3.toFile(), $$0.getUrl(), gqi.a(), this.c == Type.SKIN, () -> $$4.complete($$2));
+         this.a.a($$2, $$5);
+         return $$4;
+      }
+
+      private akk a(String $$0) {
+         String $$1 = switch (this.c) {
+            case SKIN -> "skins";
+            case CAPE -> "capes";
+            case ELYTRA -> "elytra";
+            default -> throw new MatchException(null, null);
+         };
+         return new akk($$1 + "/" + $$0);
+      }
    }
 }

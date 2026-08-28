@@ -1,22 +1,15 @@
-public interface cza extends cyi<czb> {
-   @Override
-   default cyo<?> e() {
-      return cyo.g;
+public class cza extends cxr {
+   public cza(String $$0, cxx $$1, cyg $$2, cud $$3, float $$4, int $$5) {
+      super(cyp.b, $$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   default boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 1;
+   public cud g() {
+      return new cud(dfk.cD);
    }
 
    @Override
-   default cuc g() {
-      return new cuc(dfj.ob);
+   public cyo<?> ap_() {
+      return cyo.p;
    }
-
-   boolean a(cuc var1);
-
-   boolean b(cuc var1);
-
-   boolean c(cuc var1);
 }

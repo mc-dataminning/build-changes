@@ -1,14 +1,12 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.gson.JsonObject;
 
-public record grf(grg d) {
-   public static final grf a = new grf(grg.b);
-   public static final Codec<grf> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(grg.a.optionalFieldOf("scaling", grg.b).forGetter(grf::a)).apply($$0, grf::new)
-   );
-   public static final asw<grf> c = asw.a("gui", b);
+public class grf implements asv<gre> {
+   public gre b(JsonObject $$0) {
+      return new gre(gre.a.a(axw.a($$0, "hat", "none")));
+   }
 
-   public grg a() {
-      return this.d;
+   @Override
+   public String a() {
+      return "villager";
    }
 }

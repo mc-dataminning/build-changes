@@ -1,18 +1,30 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
 
-public record czx(czs d, czs e, jj<brb> f) implements dab {
+public record czx(jn<brn> d, czt e, czt f, czt g, czt h) implements dac {
    public static final MapCodec<czx> a = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
-               czs.b.fieldOf("min_damage").forGetter(czx::b), czs.b.fieldOf("max_damage").forGetter(czx::c), brb.b.fieldOf("damage_type").forGetter(czx::d)
+               jy.a(lr.V).fieldOf("to_apply").forGetter(czx::b),
+               czt.b.fieldOf("min_duration").forGetter(czx::c),
+               czt.b.fieldOf("max_duration").forGetter(czx::d),
+               czt.b.fieldOf("min_amplifier").forGetter(czx::e),
+               czt.b.fieldOf("max_amplifier").forGetter(czx::f)
             )
             .apply($$0, czx::new)
    );
 
    @Override
-   public void a(aqm $$0, int $$1, czk $$2, bsg $$3, ewf $$4) {
-      float $$5 = ayg.b($$3.dT(), this.d.a($$1), this.e.a($$1));
-      $$3.a(new bqz(this.f, $$2.c()), $$5);
+   public void a(aqm $$0, int $$1, czl $$2, bsh $$3, ewh $$4) {
+      if ($$3 instanceof btc $$5) {
+         ayo $$6 = $$5.dU();
+         Optional<jj<brn>> $$7 = this.d.a($$6);
+         if ($$7.isPresent()) {
+            int $$8 = Math.round(ayg.b($$6, this.e.a($$1), this.f.a($$1)) * 20.0F);
+            int $$9 = Math.max(0, Math.round(ayg.b($$6, this.g.a($$1), this.h.a($$1))));
+            $$5.b(new brp($$7.get(), $$8, $$9));
+         }
+      }
    }
 
    @Override
@@ -20,15 +32,23 @@ public record czx(czs d, czs e, jj<brb> f) implements dab {
       return a;
    }
 
-   public czs b() {
+   public jn<brn> b() {
       return this.d;
    }
 
-   public czs c() {
+   public czt c() {
       return this.e;
    }
 
-   public jj<brb> d() {
+   public czt d() {
       return this.f;
+   }
+
+   public czt e() {
+      return this.g;
+   }
+
+   public czt f() {
+      return this.h;
    }
 }

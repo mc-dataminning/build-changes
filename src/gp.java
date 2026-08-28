@@ -15,27 +15,27 @@ public class gp implements go {
    }
 
    @Override
-   public ewf a(eq $$0) {
-      ewe $$1 = $$0.k();
-      ewf $$2 = $$0.m().a($$0);
+   public ewh a(eq $$0) {
+      ewg $$1 = $$0.k();
+      ewh $$2 = $$0.m().a($$0);
       float $$3 = ayg.b(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
       float $$4 = ayg.a(($$1.j + 90.0F) * (float) (Math.PI / 180.0));
       float $$5 = ayg.b(-$$1.i * (float) (Math.PI / 180.0));
       float $$6 = ayg.a(-$$1.i * (float) (Math.PI / 180.0));
       float $$7 = ayg.b((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
       float $$8 = ayg.a((-$$1.i + 90.0F) * (float) (Math.PI / 180.0));
-      ewf $$9 = new ewf((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
-      ewf $$10 = new ewf((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
-      ewf $$11 = $$9.c($$10).a(-1.0);
+      ewh $$9 = new ewh((double)($$3 * $$5), (double)$$6, (double)($$4 * $$5));
+      ewh $$10 = new ewh((double)($$3 * $$7), (double)$$8, (double)($$4 * $$7));
+      ewh $$11 = $$9.c($$10).a(-1.0);
       double $$12 = $$9.c * this.d + $$10.c * this.c + $$11.c * this.b;
       double $$13 = $$9.d * this.d + $$10.d * this.c + $$11.d * this.b;
       double $$14 = $$9.e * this.d + $$10.e * this.c + $$11.e * this.b;
-      return new ewf($$2.c + $$12, $$2.d + $$13, $$2.e + $$14);
+      return new ewh($$2.c + $$12, $$2.d + $$13, $$2.e + $$14);
    }
 
    @Override
-   public ewe b(eq $$0) {
-      return ewe.a;
+   public ewg b(eq $$0) {
+      return ewg.a;
    }
 
    @Override

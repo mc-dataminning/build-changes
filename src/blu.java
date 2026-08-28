@@ -1,10 +1,8 @@
-public record blu<T>(String a) {
-   @Override
-   public String toString() {
-      return "<" + this.a + ">";
-   }
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public static <T> blu<T> a(String $$0) {
-      return new blu<>($$0);
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface blu {
 }

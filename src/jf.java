@@ -49,7 +49,7 @@ public enum jf implements azc {
       this.q = $$6;
    }
 
-   public static jf[] a(bsg $$0) {
+   public static jf[] a(bsh $$0) {
       float $$1 = $$0.h(1.0F) * (float) (Math.PI / 180.0);
       float $$2 = -$$0.i(1.0F) * (float) (Math.PI / 180.0);
       float $$3 = ayg.a($$1);
@@ -121,7 +121,7 @@ public enum jf implements azc {
       return this.p;
    }
 
-   public static jf a(bsg $$0, jf.a $$1) {
+   public static jf a(bsh $$0, jf.a $$1) {
       return switch ($$1) {
          case a -> f.a($$0.i(1.0F)) ? f : e;
          case b -> $$0.h(1.0F) < 0.0F ? b : a;
@@ -314,7 +314,7 @@ public enum jf implements azc {
       return $$3;
    }
 
-   public static jf a(ewf $$0) {
+   public static jf a(ewh $$0) {
       return a($$0.c, $$0.d, $$0.e);
    }
 

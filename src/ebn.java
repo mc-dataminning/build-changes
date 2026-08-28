@@ -1,29 +1,43 @@
-import com.mojang.serialization.Codec;
+import java.util.Optional;
 
-public class ebn extends ebk<eds> {
-   public ebn(Codec<eds> $$0) {
-      super($$0);
+public class ebn<FC extends edp> {
+   private final Optional<eay<?, ?>> a;
+   private final ddc b;
+   private final dui c;
+   private final ayo d;
+   private final ja e;
+   private final FC f;
+
+   public ebn(Optional<eay<?, ?>> $$0, ddc $$1, dui $$2, ayo $$3, ja $$4, FC $$5) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
+      this.f = $$5;
    }
 
-   @Override
-   public boolean a(ebm<eds> $$0) {
-      ja $$1 = $$0.e();
-      eds $$2 = $$0.f();
-      ddb $$3 = $$0.b();
-      ja.a $$4 = new ja.a();
+   public Optional<eay<?, ?>> a() {
+      return this.a;
+   }
 
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$1.u() + $$5;
-            int $$8 = $$1.w() + $$6;
-            int $$9 = $$3.I_() + $$2.b;
-            $$4.d($$7, $$9, $$8);
-            if ($$3.a_($$4).i()) {
-               $$3.a($$4, $$2.c, 2);
-            }
-         }
-      }
+   public ddc b() {
+      return this.b;
+   }
 
-      return true;
+   public dui c() {
+      return this.c;
+   }
+
+   public ayo d() {
+      return this.d;
+   }
+
+   public ja e() {
+      return this.e;
+   }
+
+   public FC f() {
+      return this.f;
    }
 }

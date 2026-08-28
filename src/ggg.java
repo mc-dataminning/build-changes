@@ -1,23 +1,50 @@
-import it.unimi.dsi.fastutil.ints.Int2IntFunction;
+@FunctionalInterface
+public interface ggg<T extends dpq> {
+   ggf<T> create(ggg.a var1);
 
-public class ggg<S extends dpp> implements dho.b<S, Int2IntFunction> {
-   public Int2IntFunction a(S $$0, S $$1) {
-      return $$2 -> {
-         int $$3 = geb.a($$0.i(), $$0.az_());
-         int $$4 = geb.a($$1.i(), $$1.az_());
-         int $$5 = gec.a($$3);
-         int $$6 = gec.a($$4);
-         int $$7 = gec.b($$3);
-         int $$8 = gec.b($$4);
-         return gec.a(Math.max($$5, $$6), Math.max($$7, $$8));
-      };
-   }
+   public static class a {
+      private final gge a;
+      private final gez b;
+      private final gkm c;
+      private final gjm d;
+      private final fxm e;
+      private final fhf f;
 
-   public Int2IntFunction a(S $$0) {
-      return $$0x -> $$0x;
-   }
+      public a(gge $$0, gez $$1, gkm $$2, gjm $$3, fxm $$4, fhf $$5) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         this.d = $$3;
+         this.e = $$4;
+         this.f = $$5;
+      }
 
-   public Int2IntFunction a() {
-      return $$0 -> $$0;
+      public gge a() {
+         return this.a;
+      }
+
+      public gez b() {
+         return this.b;
+      }
+
+      public gjm c() {
+         return this.d;
+      }
+
+      public gkm d() {
+         return this.c;
+      }
+
+      public fxm e() {
+         return this.e;
+      }
+
+      public fxq a(fxo $$0) {
+         return this.e.a($$0);
+      }
+
+      public fhf f() {
+         return this.f;
+      }
    }
 }

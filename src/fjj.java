@@ -1,43 +1,89 @@
-import java.util.Locale;
+public abstract class fjj {
+   protected static final int a = 14737632;
+   protected static final int b = 60;
+   protected static final int c = 1;
+   protected final fhf d;
+   protected final bll e;
 
-public class fjj extends fjh {
-   private static final int f = -65536;
-   private static final int g = -256;
-   private static final int h = -16711936;
-   private static final int i = 30;
-   private static final double j = 33.333333333333336;
-
-   public fjj(fhd $$0, blk $$1) {
-      super($$0, $$1);
+   protected fjj(fhf $$0, bll $$1) {
+      this.d = $$0;
+      this.e = $$1;
    }
 
-   @Override
-   protected void d(fhf $$0, int $$1, int $$2, int $$3) {
-      this.a($$0, "30 FPS", $$1 + 1, $$3 - 60 + 1);
-      this.a($$0, "60 FPS", $$1 + 1, $$3 - 30 + 1);
-      $$0.a(gel.E(), $$1, $$1 + $$2 - 1, $$3 - 30, -1);
-      int $$4 = fft.Q().m.h().c();
-      if ($$4 > 0 && $$4 <= 250) {
-         $$0.a(gel.E(), $$1, $$1 + $$2 - 1, $$3 - this.b(1.0E9 / (double)$$4) - 1, -16711681);
+   public int a(int $$0) {
+      return Math.min(this.e.c() + 2, $$0);
+   }
+
+   public void a(fhh $$0, int $$1, int $$2) {
+      int $$3 = $$0.b();
+      $$0.a(gen.E(), $$1, $$3 - 60, $$1 + $$2, $$3, -1873784752);
+      long $$4 = 0L;
+      long $$5 = 2147483647L;
+      long $$6 = -2147483648L;
+      int $$7 = Math.max(0, this.e.c() - ($$2 - 2));
+      int $$8 = this.e.d() - $$7;
+
+      for (int $$9 = 0; $$9 < $$8; $$9++) {
+         int $$10 = $$1 + $$9 + 1;
+         int $$11 = $$7 + $$9;
+         long $$12 = this.b($$11);
+         $$5 = Math.min($$5, $$12);
+         $$6 = Math.max($$6, $$12);
+         $$4 += $$12;
+         this.a($$0, $$3, $$10, $$11);
       }
+
+      $$0.a(gen.E(), $$1, $$1 + $$2 - 1, $$3 - 60, -1);
+      $$0.a(gen.E(), $$1, $$1 + $$2 - 1, $$3 - 1, -1);
+      $$0.b(gen.E(), $$1, $$3 - 60, $$3, -1);
+      $$0.b(gen.E(), $$1 + $$2 - 1, $$3 - 60, $$3, -1);
+      if ($$8 > 0) {
+         String $$13 = this.a((double)$$5) + " min";
+         String $$14 = this.a((double)$$4 / (double)$$8) + " avg";
+         String $$15 = this.a((double)$$6) + " max";
+         $$0.b(this.d, $$13, $$1 + 2, $$3 - 60 - 9, 14737632);
+         $$0.a(this.d, $$14, $$1 + $$2 / 2, $$3 - 60 - 9, 14737632);
+         $$0.b(this.d, $$15, $$1 + $$2 - this.d.b($$15) - 2, $$3 - 60 - 9, 14737632);
+      }
+
+      this.d($$0, $$1, $$2, $$3);
    }
 
-   @Override
-   protected String a(double $$0) {
-      return String.format(Locale.ROOT, "%d ms", (int)Math.round(c($$0)));
+   protected void a(fhh $$0, int $$1, int $$2, int $$3) {
+      this.b($$0, $$1, $$2, $$3);
+      this.c($$0, $$1, $$2, $$3);
    }
 
-   @Override
-   protected int b(double $$0) {
-      return (int)Math.round(c($$0) * 60.0 / 33.333333333333336);
+   protected void b(fhh $$0, int $$1, int $$2, int $$3) {
+      long $$4 = this.e.a($$3);
+      int $$5 = this.b((double)$$4);
+      int $$6 = this.a($$4);
+      $$0.a(gen.E(), $$2, $$1 - $$5, $$2 + 1, $$1, $$6);
    }
 
-   @Override
-   protected int a(long $$0) {
-      return this.a(c((double)$$0), 0.0, -16711936, 28.0, -256, 56.0, -65536);
+   protected void c(fhh $$0, int $$1, int $$2, int $$3) {
    }
 
-   private static double c(double $$0) {
-      return $$0 / 1000000.0;
+   protected long b(int $$0) {
+      return this.e.a($$0);
+   }
+
+   protected void d(fhh $$0, int $$1, int $$2, int $$3) {
+   }
+
+   protected void a(fhh $$0, String $$1, int $$2, int $$3) {
+      $$0.a(gen.E(), $$2, $$3, $$2 + this.d.b($$1) + 1, $$3 + 9, -1873784752);
+      $$0.a(this.d, $$1, $$2 + 1, $$3 + 1, 14737632, false);
+   }
+
+   protected abstract String a(double var1);
+
+   protected abstract int b(double var1);
+
+   protected abstract int a(long var1);
+
+   protected int a(double $$0, double $$1, int $$2, double $$3, int $$4, double $$5, int $$6) {
+      $$0 = ayg.a($$0, $$1, $$5);
+      return $$0 < $$3 ? axq.b.a((float)(($$0 - $$1) / ($$3 - $$1)), $$2, $$4) : axq.b.a((float)(($$0 - $$3) / ($$5 - $$3)), $$4, $$6);
    }
 }

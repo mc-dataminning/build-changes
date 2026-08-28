@@ -13,7 +13,7 @@ public class akq {
 
    public akq(Path $$0) {
       this.b = $$0;
-      this.c = aa.aW || this.b();
+      this.c = aa.aU || this.b();
    }
 
    private boolean b() {
@@ -38,7 +38,7 @@ public class akq {
    }
 
    private void c() {
-      if (!aa.aW) {
+      if (!aa.aU) {
          try (OutputStream $$0 = Files.newOutputStream(this.b)) {
             Properties $$1 = new Properties();
             $$1.setProperty("eula", "false");

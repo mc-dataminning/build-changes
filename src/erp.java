@@ -1,61 +1,58 @@
+import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
 
-public class erp extends erm {
+public class erp extends ero {
    public static final MapCodec<erp> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(awm.a(lr.K).fieldOf("name").forGetter($$0x -> $$0x.j), Codec.BOOL.fieldOf("expand").forGetter($$0x -> $$0x.k))
-            .and(b($$0))
-            .apply($$0, erp::new)
+      $$0 -> $$0.group(Codec.either(akj.a(lr.bb), erb.d).fieldOf("value").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, erp::new)
    );
-   private final awm<ctx> j;
-   private final boolean k;
+   private final Either<akj<erb>, erb> j;
 
-   private erp(awm<ctx> $$0, boolean $$1, int $$2, int $$3, List<euf> $$4, List<esi> $$5) {
-      super($$2, $$3, $$4, $$5);
+   private erp(Either<akj<erb>, erb> $$0, int $$1, int $$2, List<euh> $$3, List<esk> $$4) {
+      super($$1, $$2, $$3, $$4);
       this.j = $$0;
-      this.k = $$1;
    }
 
    @Override
-   public erl a() {
-      return eri.f;
+   public ern a() {
+      return erk.d;
    }
 
    @Override
-   public void a(Consumer<cuc> $$0, equ $$1) {
-      lq.g.c(this.j).forEach($$1x -> $$0.accept(new cuc($$1x)));
+   public void a(Consumer<cud> $$0, eqw $$1) {
+      ((erb)this.j.map($$1x -> $$1.a().a(lr.bb, $$1x).map(jj::a).orElse(erb.a), $$0x -> $$0x)).a($$1, $$0);
    }
 
-   private boolean a(equ $$0, Consumer<erj> $$1) {
-      if (!this.a($$0)) {
-         return false;
-      } else {
-         for (final jj<ctx> $$2 : lq.g.c(this.j)) {
-            $$1.accept(new erm.c() {
-               @Override
-               public void a(Consumer<cuc> $$0, equ $$1) {
-                  $$0.accept(new cuc($$2));
-               }
-            });
+   @Override
+   public void a(erc $$0) {
+      Optional<akj<erb>> $$1 = this.j.left();
+      if ($$1.isPresent()) {
+         akj<erb> $$2 = $$1.get();
+         if ($$0.a($$2)) {
+            $$0.b("Table " + $$2.a() + " is recursively called");
+            return;
          }
-
-         return true;
       }
+
+      super.a($$0);
+      this.j
+         .ifLeft(
+            $$1x -> $$0.a()
+                  .a(lr.bb, $$1x)
+                  .ifPresentOrElse($$2x -> ((erb)$$2x.a()).a($$0.a("->{" + $$1x.a() + "}", $$1x)), () -> $$0.b("Unknown loot table called " + $$1x.a()))
+         )
+         .ifRight($$1x -> $$1x.a($$0.a("->{inline}")));
    }
 
-   @Override
-   public boolean expand(equ $$0, Consumer<erj> $$1) {
-      return this.k ? this.a($$0, $$1) : super.expand($$0, $$1);
+   public static ero.a<?> a(akj<erb> $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new erp(Either.left($$0), $$1, $$2, $$3, $$4));
    }
 
-   public static erm.a<?> a(awm<ctx> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new erp($$0, false, $$1, $$2, $$3, $$4));
-   }
-
-   public static erm.a<?> b(awm<ctx> $$0) {
-      return a(($$1, $$2, $$3, $$4) -> new erp($$0, true, $$1, $$2, $$3, $$4));
+   public static ero.a<?> a(erb $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new erp(Either.right($$0), $$1, $$2, $$3, $$4));
    }
 }

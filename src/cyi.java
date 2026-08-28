@@ -1,56 +1,54 @@
-import com.mojang.serialization.Codec;
+import java.util.Map;
 
-public interface cyi<T extends cyl> {
-   Codec<cyi<?>> h = lq.r.r().dispatch(cyi::ap_, cyn::a);
-   ys<wf, cyi<?>> i = yq.a(lr.ad).b(cyi::ap_, cyn::b);
+public class cyi extends cyr {
+   public cyi(cxy $$0) {
+      super("", $$0, cys.a(Map.of('#', cyg.a(cug.qO), 'x', cyg.a(cug.rU)), "###", "#x#", "###"), new cud(cug.uj));
+   }
 
-   boolean a(T var1, dcf var2);
+   @Override
+   public boolean a(cxz $$0, dcg $$1) {
+      if (!super.a($$0, $$1)) {
+         return false;
+      } else {
+         cud $$2 = a($$0);
+         if ($$2.e()) {
+            return false;
+         } else {
+            epy $$3 = cul.b($$2, $$1);
+            if ($$3 == null) {
+               return false;
+            } else {
+               return $$3.g() ? false : $$3.f < 4;
+            }
+         }
+      }
+   }
 
-   cuc a(T var1, jl.a var2);
+   @Override
+   public cud a(cxz $$0, jl.a $$1) {
+      cud $$2 = a($$0).c(1);
+      $$2.b(kn.D, cxd.b);
+      return $$2;
+   }
 
-   boolean a(int var1, int var2);
-
-   cuc a(jl.a var1);
-
-   default js<cuc> a(T $$0) {
-      js<cuc> $$1 = js.a($$0.a(), cuc.l);
-
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         ctx $$3 = $$0.a($$2).g();
-         if ($$3.v()) {
-            $$1.set($$2, new cuc($$3.u()));
+   private static cud a(cxz $$0) {
+      for (int $$1 = 0; $$1 < $$0.a(); $$1++) {
+         cud $$2 = $$0.a($$1);
+         if ($$2.a(cug.rU)) {
+            return $$2;
          }
       }
 
-      return $$1;
+      return cud.l;
    }
 
-   default js<cyf> a() {
-      return js.a();
-   }
-
-   default boolean ao_() {
-      return false;
-   }
-
-   default boolean h() {
+   @Override
+   public boolean ao_() {
       return true;
    }
 
-   default String c() {
-      return "";
-   }
-
-   default cuc g() {
-      return new cuc(dfj.cA);
-   }
-
-   cyn<?> ap_();
-
-   cyo<?> e();
-
-   default boolean i() {
-      js<cyf> $$0 = this.a();
-      return $$0.isEmpty() || $$0.stream().anyMatch($$0x -> $$0x.a().length == 0);
+   @Override
+   public cyo<?> ap_() {
+      return cyo.f;
    }
 }

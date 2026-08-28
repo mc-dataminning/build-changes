@@ -1,16 +1,8 @@
-public class etn<T> {
-   private final akk a;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   public etn(akk $$0) {
-      this.a = $$0;
-   }
-
-   public akk a() {
-      return this.a;
-   }
-
-   @Override
-   public String toString() {
-      return "<parameter " + this.a + ">";
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface etn {
 }

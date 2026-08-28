@@ -1,23 +1,23 @@
 public class ks extends kt {
    private final kt c = new kt();
-   private final coh.b d;
+   private final coi.b d;
    private final boolean e;
 
-   public ks(coh.b $$0) {
+   public ks(coi.b $$0) {
       this($$0, false);
    }
 
-   public ks(coh.b $$0, boolean $$1) {
+   public ks(coi.b $$0, boolean $$1) {
       this.d = $$0;
       this.e = $$1;
    }
 
    @Override
-   public cuc a(kr $$0, cuc $$1) {
-      jf $$2 = $$0.d().c(dhm.b);
+   public cud a(kr $$0, cud $$1) {
+      jf $$2 = $$0.d().c(dhn.b);
       aqm $$3 = $$0.b();
-      ewf $$4 = $$0.a();
-      double $$5 = 0.5625 + (double)bsm.k.l() / 2.0;
+      ewh $$4 = $$0.a();
+      double $$5 = 0.5625 + (double)bsn.k.l() / 2.0;
       double $$6 = $$4.a() + (double)$$2.j() * $$5;
       double $$7 = $$4.b() + (double)((float)$$2.k() * 1.125F);
       double $$8 = $$4.c() + (double)$$2.l() * $$5;
@@ -33,8 +33,8 @@ public class ks extends kt {
          $$10 = 0.0;
       }
 
-      coh $$13 = (coh)(this.e ? new coi($$3, $$6, $$7 + $$10, $$8) : new coh($$3, $$6, $$7 + $$10, $$8));
-      bsm.<coh>a($$3, $$1, null).accept($$13);
+      coi $$13 = (coi)(this.e ? new coj($$3, $$6, $$7 + $$10, $$8) : new coi($$3, $$6, $$7 + $$10, $$8));
+      bsn.<coi>a($$3, $$1, null).accept($$13);
       $$13.a(this.d);
       $$13.s($$2.p());
       $$3.b($$13);

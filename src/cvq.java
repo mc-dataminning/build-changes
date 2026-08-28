@@ -1,32 +1,33 @@
-public class cvq extends cut implements cuu {
-   public cvq(ctx.a $$0) {
-      super($$0);
+import java.util.List;
+
+public class cvq extends cvt {
+   public cvq(cvs $$0, cty.a $$1) {
+      super($$0, $$1.a(kn.x, k()));
+   }
+
+   private static cxh k() {
+      return new cxh(List.of(cxh.a.a(List.of(dfk.bs), 15.0F), cxh.a.b(avw.bE, 1.5F)), 1.0F, 2);
+   }
+
+   public static cwx a(cvs $$0, int $$1, float $$2) {
+      return cwx.a()
+         .a(buk.c, new bui(e, "Weapon modifier", (double)((float)$$1 + $$0.c()), bui.a.a), bsp.b)
+         .a(buk.e, new bui(f, "Weapon modifier", (double)$$2, bui.a.a), bsp.b)
+         .a();
    }
 
    @Override
-   public bqh<cuc> a(dcf $$0, cmk $$1, bqf $$2) {
-      cuc $$3 = $$1.b($$2);
-      if (!$$0.B) {
-         cno $$4 = new cno($$0, $$1);
-         $$4.a($$3);
-         $$4.a($$1, $$1.dI(), $$1.dG(), -20.0F, 0.5F, 1.0F);
-         $$0.b($$4);
-      }
-
-      $$1.b(avr.c.b(this));
-      $$3.a(1, $$1);
-      return bqh.a($$3, $$0.x_());
+   public boolean a(dsl $$0, dcg $$1, ja $$2, cml $$3) {
+      return !$$3.f();
    }
 
    @Override
-   public cnc a(dcf $$0, jt $$1, cuc $$2, jf $$3) {
-      cno $$4 = new cno($$0, $$1.a(), $$1.b(), $$1.c());
-      $$4.a($$2);
-      return $$4;
+   public boolean a(cud $$0, btc $$1, btc $$2) {
+      return true;
    }
 
    @Override
-   public cuu.a c() {
-      return cuu.a.a().a(cuu.a.a.c() * 0.5F).b(cuu.a.a.d() * 1.25F).a();
+   public void b(cud $$0, btc $$1, btc $$2) {
+      $$0.a(1, $$2, bso.a);
    }
 }

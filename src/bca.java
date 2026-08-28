@@ -287,10 +287,10 @@ public class bca extends DataFix {
       Function<Typed<?>, Typed<?>> $$2 = $$0x -> this.a($$0x, "DisplayTile", "DisplayData", "DisplayState");
       Function<Typed<?>, Typed<?>> $$3 = $$0x -> this.a($$0x, "inTile", "inData", "inBlockState");
       Type<Pair<Either<Pair<String, Either<Integer, String>>, Unit>, Dynamic<?>>> $$4 = DSL.and(
-         DSL.optional(DSL.field("inTile", DSL.named(bgg.C.typeName(), DSL.or(DSL.intType(), bhs.a())))), DSL.remainderType()
+         DSL.optional(DSL.field("inTile", DSL.named(bgh.C.typeName(), DSL.or(DSL.intType(), bht.a())))), DSL.remainderType()
       );
       Function<Typed<?>, Typed<?>> $$5 = $$1x -> $$1x.update($$4.finder(), DSL.remainderType(), Pair::getSecond);
-      return this.fixTypeEverywhereTyped("EntityBlockStateFix", $$0.getType(bgg.B), $$1.getType(bgg.B), $$3x -> {
+      return this.fixTypeEverywhereTyped("EntityBlockStateFix", $$0.getType(bgh.B), $$1.getType(bgh.B), $$3x -> {
          $$3x = this.a($$3x, "minecraft:falling_block", this::a);
          $$3x = this.a($$3x, "minecraft:enderman", $$0xx -> this.a($$0xx, "carried", "carriedData", "carriedBlockState"));
          $$3x = this.a($$3x, "minecraft:arrow", $$3);
@@ -315,9 +315,9 @@ public class bca extends DataFix {
 
    private Typed<?> a(Typed<?> $$0) {
       Type<Either<Pair<String, Either<Integer, String>>, Unit>> $$1 = DSL.optional(
-         DSL.field("Block", DSL.named(bgg.C.typeName(), DSL.or(DSL.intType(), bhs.a())))
+         DSL.field("Block", DSL.named(bgh.C.typeName(), DSL.or(DSL.intType(), bht.a())))
       );
-      Type<Either<Pair<String, Dynamic<?>>, Unit>> $$2 = DSL.optional(DSL.field("BlockState", DSL.named(bgg.u.typeName(), DSL.remainderType())));
+      Type<Either<Pair<String, Dynamic<?>>, Unit>> $$2 = DSL.optional(DSL.field("BlockState", DSL.named(bgh.u.typeName(), DSL.remainderType())));
       Dynamic<?> $$3 = (Dynamic<?>)$$0.get(DSL.remainderFinder());
       return $$0.update($$1.finder(), $$2, $$1x -> {
          int $$2x = (Integer)$$1x.map($$0xx -> (Integer)((Either)$$0xx.getSecond()).map($$0xxx -> $$0xxx, bca::a), $$1xx -> {
@@ -325,24 +325,24 @@ public class bca extends DataFix {
             return $$2xx.map(Number::intValue).orElseGet(() -> $$3.get("Tile").asByte((byte)0) & 0xFF);
          });
          int $$3x = $$3.get("Data").asInt(0) & 15;
-         return Either.left(Pair.of(bgg.u.typeName(), bay.b($$2x << 4 | $$3x)));
+         return Either.left(Pair.of(bgh.u.typeName(), bay.b($$2x << 4 | $$3x)));
       }).set(DSL.remainderFinder(), $$3.remove("Data").remove("TileID").remove("Tile"));
    }
 
    private Typed<?> a(Typed<?> $$0, String $$1, String $$2, String $$3) {
-      Type<Pair<String, Either<Integer, String>>> $$4 = DSL.field($$1, DSL.named(bgg.C.typeName(), DSL.or(DSL.intType(), bhs.a())));
-      Type<Pair<String, Dynamic<?>>> $$5 = DSL.field($$3, DSL.named(bgg.u.typeName(), DSL.remainderType()));
+      Type<Pair<String, Either<Integer, String>>> $$4 = DSL.field($$1, DSL.named(bgh.C.typeName(), DSL.or(DSL.intType(), bht.a())));
+      Type<Pair<String, Dynamic<?>>> $$5 = DSL.field($$3, DSL.named(bgh.u.typeName(), DSL.remainderType()));
       Dynamic<?> $$6 = (Dynamic<?>)$$0.getOrCreate(DSL.remainderFinder());
       return $$0.update($$4.finder(), $$5, $$2x -> {
          int $$3x = (Integer)((Either)$$2x.getSecond()).map($$0xx -> $$0xx, bca::a);
          int $$4x = $$6.get($$2).asInt(0) & 15;
-         return Pair.of(bgg.u.typeName(), bay.b($$3x << 4 | $$4x));
+         return Pair.of(bgh.u.typeName(), bay.b($$3x << 4 | $$4x));
       }).set(DSL.remainderFinder(), $$6.remove($$2));
    }
 
    private Typed<?> a(Typed<?> $$0, String $$1, Function<Typed<?>, Typed<?>> $$2) {
-      Type<?> $$3 = this.getInputSchema().getChoiceType(bgg.B, $$1);
-      Type<?> $$4 = this.getOutputSchema().getChoiceType(bgg.B, $$1);
+      Type<?> $$3 = this.getInputSchema().getChoiceType(bgh.B, $$1);
+      Type<?> $$4 = this.getOutputSchema().getChoiceType(bgh.B, $$1);
       return $$0.updateTyped(DSL.namedChoice($$1, $$3), $$4, $$2);
    }
 }

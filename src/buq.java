@@ -1,38 +1,79 @@
-import com.mojang.datafixers.kinds.App;
+import java.util.Map;
 import java.util.Optional;
-import java.util.function.Function;
-import net.minecraft.server.MinecraftServer;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public class buq {
-   public static buv<clx> a() {
-      return byh.a(
-         (Function<byh.b<clx>, ? extends App<byh.c<clx>, byk<clx>>>)($$0 -> $$0.group($$0.b(ccf.d), $$0.a(ccf.c))
-               .apply(
-                  $$0,
-                  ($$1, $$2) -> ($$3, $$4, $$5) -> {
-                        ji $$6 = $$0.b($$1);
-                        if (!$$6.b().a($$4.do(), 2.0) && !$$4.gy()) {
-                           return false;
-                        } else {
-                           $$1.b();
-                           $$2.a($$6);
-                           $$3.a($$4, (byte)14);
-                           if ($$4.gz().b() != cma.b) {
-                              return true;
-                           } else {
-                              MinecraftServer $$7 = $$3.o();
-                              Optional.ofNullable($$7.a($$6.a()))
-                                 .flatMap($$1xx -> $$1xx.y().c($$6.b()))
-                                 .flatMap($$0xxx -> lq.x.t().filter($$1xx -> $$1xx.b().test($$0xxx)).findFirst())
-                                 .ifPresent($$2xx -> {
-                                    $$4.a($$4.gz().a($$2xx));
-                                    $$4.c($$3);
-                                 });
-                              return true;
-                           }
-                        }
-                     }
-               ))
-      );
+public class buq<E extends btl> extends buv<E> {
+   private static final int c = 100;
+   private static final int d = 120;
+   private static final int e = 5;
+   private static final int f = 4;
+   private static final Predicate<btl> g = $$0 -> $$0.ek() != null || $$0.dG() || $$0.bS();
+   private final float h;
+   private final Predicate<E> i;
+
+   public buq(float $$0) {
+      this($$0, g::test);
+   }
+
+   public buq(float $$0, Predicate<E> $$1) {
+      super(Map.of(ccg.Z, cch.c, ccg.x, cch.c), 100, 120);
+      this.h = $$0;
+      this.i = $$1;
+   }
+
+   protected boolean a(aqm $$0, E $$1) {
+      return this.i.test($$1) && ($$1.dV().a(ccg.x) || $$1.dV().a(ccg.Z));
+   }
+
+   protected boolean a(aqm $$0, E $$1, long $$2) {
+      return true;
+   }
+
+   protected void b(aqm $$0, E $$1, long $$2) {
+      $$1.dV().a(ccg.Z, true);
+      $$1.dV().b(ccg.m);
+   }
+
+   protected void c(aqm $$0, E $$1, long $$2) {
+      bue<?> $$3 = $$1.dV();
+      $$3.b(ccg.Z);
+   }
+
+   protected void d(aqm $$0, E $$1, long $$2) {
+      if ($$1.J().l()) {
+         ewh $$3 = this.a($$1, $$0);
+         if ($$3 != null) {
+            $$1.dV().a(ccg.m, new ccj($$3, this.h, 0));
+         }
+      }
+   }
+
+   @Nullable
+   private ewh a(E $$0, aqm $$1) {
+      if ($$0.bS()) {
+         Optional<ewh> $$2 = this.a((dbm)$$1, $$0).map(ewh::c);
+         if ($$2.isPresent()) {
+            return $$2.get();
+         }
+      }
+
+      return cea.a($$0, 5, 4);
+   }
+
+   private Optional<ja> a(dbm $$0, bsh $$1) {
+      ja $$2 = $$1.dr();
+      if (!$$0.a_($$2).k($$0, $$2).c()) {
+         return Optional.empty();
+      } else {
+         Predicate<ja> $$3;
+         if (ayg.f($$1.dl()) == 2) {
+            $$3 = $$1x -> ja.a($$1x).allMatch($$1xx -> $$0.b_($$1xx).a(awc.a));
+         } else {
+            $$3 = $$1x -> $$0.b_($$1x).a(awc.a);
+         }
+
+         return ja.a($$2, 5, 1, $$3);
+      }
    }
 }

@@ -1,91 +1,136 @@
+import com.google.common.collect.Multimap;
 import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import io.netty.buffer.ByteBuf;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
-import java.util.function.IntFunction;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import org.slf4j.Logger;
 
-public record buh(UUID d, String e, double f, buh.a g) {
-   private static final Logger h = LogUtils.getLogger();
-   public static final MapCodec<buh> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               kd.a.fieldOf("uuid").forGetter(buh::b),
-               Codec.STRING.fieldOf("name").forGetter($$0x -> $$0x.e),
-               Codec.DOUBLE.fieldOf("amount").forGetter(buh::d),
-               buh.a.f.fieldOf("operation").forGetter(buh::e)
-            )
-            .apply($$0, buh::new)
-   );
-   public static final Codec<buh> b = a.codec();
-   public static final ys<ByteBuf, buh> c = ys.a(kd.g, buh::b, yq.l, $$0 -> $$0.e, yq.j, buh::d, buh.a.e, buh::e, buh::new);
+public class buh {
+   private static final Logger a = LogUtils.getLogger();
+   private final Map<jj<buf>, bug> b = new Object2ObjectOpenHashMap();
+   private final Set<bug> c = new ObjectOpenHashSet();
+   private final Set<bug> d = new ObjectOpenHashSet();
+   private final buj e;
 
-   public buh(String $$0, double $$1, buh.a $$2) {
-      this(ayg.a(ayo.c()), $$0, $$1, $$2);
+   public buh(buj $$0) {
+      this.e = $$0;
    }
 
-   public tx a() {
-      tx $$0 = new tx();
-      $$0.a("Name", this.e);
-      $$0.a("Amount", this.f);
-      $$0.a("Operation", this.g.a());
-      $$0.a("UUID", this.d);
-      return $$0;
-   }
-
-   @Nullable
-   public static buh a(tx $$0) {
-      try {
-         UUID $$1 = $$0.a("UUID");
-         buh.a $$2 = buh.a.d.apply($$0.h("Operation"));
-         return new buh($$1, $$0.l("Name"), $$0.k("Amount"), $$2);
-      } catch (Exception var3) {
-         h.warn("Unable to create attribute: {}", var3.getMessage());
-         return null;
+   private void a(bug $$0) {
+      this.d.add($$0);
+      if ($$0.a().a().b()) {
+         this.c.add($$0);
       }
    }
 
-   public UUID b() {
+   public Set<bug> a() {
+      return this.c;
+   }
+
+   public Set<bug> b() {
       return this.d;
    }
 
-   public String c() {
-      return this.e;
+   public Collection<bug> c() {
+      return this.b.values().stream().filter($$0 -> $$0.a().a().b()).collect(Collectors.toList());
    }
 
-   public double d() {
-      return this.f;
+   @Nullable
+   public bug a(jj<buf> $$0) {
+      return this.b.computeIfAbsent($$0, $$0x -> this.e.a(this::a, $$0x));
    }
 
-   public buh.a e() {
-      return this.g;
+   public boolean b(jj<buf> $$0) {
+      return this.b.get($$0) != null || this.e.c($$0);
    }
 
-   public static enum a implements azc {
-      a("add_value", 0),
-      b("add_multiplied_base", 1),
-      c("add_multiplied_total", 2);
+   public boolean a(jj<buf> $$0, UUID $$1) {
+      bug $$2 = this.b.get($$0);
+      return $$2 != null ? $$2.a($$1) != null : this.e.b($$0, $$1);
+   }
 
-      public static final IntFunction<buh.a> d = aww.a(buh.a::a, values(), aww.a.a);
-      public static final ys<ByteBuf, buh.a> e = yq.a(d, buh.a::a);
-      public static final Codec<buh.a> f = azc.a(buh.a::values);
-      private final String g;
-      private final int h;
+   public double c(jj<buf> $$0) {
+      bug $$1 = this.b.get($$0);
+      return $$1 != null ? $$1.f() : this.e.a($$0);
+   }
 
-      private a(final String $$0, final int $$1) {
-         this.g = $$0;
-         this.h = $$1;
+   public double d(jj<buf> $$0) {
+      bug $$1 = this.b.get($$0);
+      return $$1 != null ? $$1.b() : this.e.b($$0);
+   }
+
+   public double b(jj<buf> $$0, UUID $$1) {
+      bug $$2 = this.b.get($$0);
+      return $$2 != null ? $$2.a($$1).d() : this.e.a($$0, $$1);
+   }
+
+   public void a(Multimap<jj<buf>, bui> $$0) {
+      $$0.forEach(($$0x, $$1) -> {
+         bug $$2 = this.a($$0x);
+         if ($$2 != null) {
+            $$2.b($$1.b());
+            $$2.c($$1);
+         }
+      });
+   }
+
+   public void b(Multimap<jj<buf>, bui> $$0) {
+      $$0.asMap().forEach(($$0x, $$1) -> {
+         bug $$2 = this.b.get($$0x);
+         if ($$2 != null) {
+            $$1.forEach($$1x -> $$2.b($$1x.b()));
+         }
+      });
+   }
+
+   public void a(buh $$0) {
+      $$0.b.values().forEach($$0x -> {
+         bug $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x);
+         }
+      });
+   }
+
+   public void b(buh $$0) {
+      $$0.b.values().forEach($$0x -> {
+         bug $$1 = this.a($$0x.a());
+         if ($$1 != null) {
+            $$1.a($$0x.b());
+         }
+      });
+   }
+
+   public ud d() {
+      ud $$0 = new ud();
+
+      for (bug $$1 : this.b.values()) {
+         $$0.add($$1.g());
       }
 
-      public int a() {
-         return this.h;
-      }
+      return $$0;
+   }
 
-      @Override
-      public String c() {
-         return this.g;
+   public void a(ud $$0) {
+      for (int $$1 = 0; $$1 < $$0.size(); $$1++) {
+         tx $$2 = $$0.a($$1);
+         String $$3 = $$2.l("Name");
+         akk $$4 = akk.a($$3);
+         if ($$4 != null) {
+            ac.a(lq.s.c($$4), $$1x -> {
+               bug $$2x = this.a($$1x);
+               if ($$2x != null) {
+                  $$2x.a($$2);
+               }
+            }, () -> a.warn("Ignoring unknown attribute '{}'", $$4));
+         } else {
+            a.warn("Ignoring malformed attribute '{}'", $$3);
+         }
       }
    }
 }

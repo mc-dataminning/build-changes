@@ -30,13 +30,13 @@ public class st {
    private final tg o;
    private final Stopwatch p = Stopwatch.createUnstarted();
    private boolean q;
-   private final dlu r;
+   private final dlv r;
    @Nullable
    private Throwable s;
    @Nullable
-   private drf t;
+   private drg t;
 
-   public st(tn $$0, dlu $$1, aqm $$2, tg $$3) {
+   public st(tn $$0, dlv $$1, aqm $$2, tg $$3) {
       this.a = $$0;
       this.d = $$2;
       this.o = $$3;
@@ -60,9 +60,9 @@ public class st {
       } else {
          this.j = 0;
          this.k = true;
-         drf $$0 = this.e();
+         drg $$0 = this.e();
          $$0.c(this.d);
-         eio $$1 = tj.b($$0);
+         eip $$1 = tj.b($$0);
          this.d.m().a($$1);
          this.d.a($$1);
          return this;
@@ -165,18 +165,18 @@ public class st {
       return this.b;
    }
 
-   public ewa d() {
-      drf $$0 = this.e();
+   public ewc d() {
+      drg $$0 = this.e();
       return tj.a($$0);
    }
 
-   public drf e() {
+   public drg e() {
       if (this.t == null) {
          if (this.b == null) {
             throw new IllegalStateException("Could not find a structureBlockEntity for this GameTestInfo");
          }
 
-         this.t = (drf)this.d.c_(this.b);
+         this.t = (drg)this.d.c_(this.b);
          if (this.t == null) {
             throw new IllegalStateException("Could not find a structureBlockEntity at the given coordinate " + this.b);
          }
@@ -221,9 +221,9 @@ public class st {
    public void l() {
       if (this.s == null) {
          this.F();
-         ewa $$0 = this.d();
-         List<bsg> $$1 = this.f().a(bsg.class, $$0.g(1.0), $$0x -> !($$0x instanceof cmk));
-         $$1.forEach($$0x -> $$0x.a(bsg.c.b));
+         ewc $$0 = this.d();
+         List<bsh> $$1 = this.f().a(bsh.class, $$0.g(1.0), $$0x -> !($$0x instanceof cml));
+         $$1.forEach($$0x -> $$0x.a(bsh.d.b));
       }
    }
 
@@ -278,7 +278,7 @@ public class st {
       return this.a.d();
    }
 
-   public dlu t() {
+   public dlv t() {
       return this.r;
    }
 
@@ -325,7 +325,7 @@ public class st {
 
    private ja G() {
       if (this.c == null) {
-         eio $$0 = tj.b(this.e());
+         eip $$0 = tj.b(this.e());
          this.c = new ja($$0.h(), $$0.i(), $$0.j());
       }
 

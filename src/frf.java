@@ -1,158 +1,103 @@
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Collections;
 import java.util.List;
-import java.util.function.Consumer;
 import javax.annotation.Nullable;
 
-public class frf {
-   public static final int a = 20;
-   private static final fjf b = new fjf(new akk("recipe_book/page_forward"), new akk("recipe_book/page_forward_highlighted"));
-   private static final fjf c = new fjf(new akk("recipe_book/page_backward"), new akk("recipe_book/page_backward_highlighted"));
-   private final List<frh> d = Lists.newArrayListWithCapacity(20);
+public class frf implements fix, fjq {
+   private static final akk b = new akk("recipe_book/overlay_recipe");
+   static final akk c = new akk("recipe_book/furnace_overlay_highlighted");
+   static final akk d = new akk("recipe_book/furnace_overlay");
+   static final akk e = new akk("recipe_book/crafting_overlay_highlighted");
+   static final akk f = new akk("recipe_book/crafting_overlay");
+   static final akk g = new akk("recipe_book/furnace_overlay_disabled_highlighted");
+   static final akk h = new akk("recipe_book/furnace_overlay_disabled");
+   static final akk i = new akk("recipe_book/crafting_overlay_disabled_highlighted");
+   static final akk j = new akk("recipe_book/crafting_overlay_disabled");
+   private static final int k = 4;
+   private static final int l = 5;
+   private static final float m = 0.375F;
+   public static final int a = 25;
+   private final List<frf.a> n = Lists.newArrayList();
+   private boolean o;
+   private int p;
+   private int q;
+   private ffw r;
+   private frk s;
    @Nullable
-   private frh e;
-   private final frd f = new frd();
-   private fft g;
-   private final List<frj> h = Lists.newArrayList();
-   private List<fri> i = ImmutableList.of();
-   private fiy j;
-   private fiy k;
-   private int l;
-   private int m;
-   private avk n;
-   @Nullable
-   private cyk<?> o;
-   @Nullable
-   private fri p;
+   private cyl<?> u;
+   float v;
+   boolean w;
 
-   public frf() {
-      for (int $$0 = 0; $$0 < 20; $$0++) {
-         this.d.add(new frh());
-      }
-   }
-
-   public void a(fft $$0, int $$1, int $$2) {
-      this.g = $$0;
-      this.n = $$0.s.m();
-
-      for (int $$3 = 0; $$3 < this.d.size(); $$3++) {
-         this.d.get($$3).c($$1 + 11 + 25 * ($$3 % 5), $$2 + 31 + 25 * ($$3 / 5));
+   public void a(ffw $$0, frk $$1, int $$2, int $$3, int $$4, int $$5, float $$6) {
+      this.r = $$0;
+      this.s = $$1;
+      if ($$0.s.ce instanceof cpj) {
+         this.w = true;
       }
 
-      this.j = new fiy($$1 + 93, $$2 + 137, 12, 17, false);
-      this.j.a(b);
-      this.k = new fiy($$1 + 38, $$2 + 137, 12, 17, true);
-      this.k.a(c);
-   }
-
-   public void a(fre $$0) {
-      this.h.remove($$0);
-      this.h.add($$0);
-   }
-
-   public void a(List<fri> $$0, boolean $$1) {
-      this.i = $$0;
-      this.l = (int)Math.ceil((double)$$0.size() / 20.0);
-      if (this.l <= this.m || $$1) {
-         this.m = 0;
+      boolean $$7 = $$0.s.m().a((cqw<?, ?>)$$0.s.ce);
+      List<cyl<?>> $$8 = $$1.b(true);
+      List<cyl<?>> $$9 = $$7 ? Collections.emptyList() : $$1.b(false);
+      int $$10 = $$8.size();
+      int $$11 = $$10 + $$9.size();
+      int $$12 = $$11 <= 16 ? 4 : 5;
+      int $$13 = (int)Math.ceil((double)((float)$$11 / (float)$$12));
+      this.p = $$2;
+      this.q = $$3;
+      float $$14 = (float)(this.p + Math.min($$11, $$12) * 25);
+      float $$15 = (float)($$4 + 50);
+      if ($$14 > $$15) {
+         this.p = (int)((float)this.p - $$6 * (float)((int)(($$14 - $$15) / $$6)));
       }
 
-      this.f();
-   }
+      float $$16 = (float)(this.q + $$13 * 25);
+      float $$17 = (float)($$5 + 50);
+      if ($$16 > $$17) {
+         this.q = (int)((float)this.q - $$6 * (float)ayg.f(($$16 - $$17) / $$6));
+      }
 
-   private void f() {
-      int $$0 = 20 * this.m;
+      float $$18 = (float)this.q;
+      float $$19 = (float)($$5 - 100);
+      if ($$18 < $$19) {
+         this.q = (int)((float)this.q - $$6 * (float)ayg.f(($$18 - $$19) / $$6));
+      }
 
-      for (int $$1 = 0; $$1 < this.d.size(); $$1++) {
-         frh $$2 = this.d.get($$1);
-         if ($$0 + $$1 < this.i.size()) {
-            fri $$3 = this.i.get($$0 + $$1);
-            $$2.a($$3, this);
-            $$2.k = true;
+      this.o = true;
+      this.n.clear();
+
+      for (int $$20 = 0; $$20 < $$11; $$20++) {
+         boolean $$21 = $$20 < $$10;
+         cyl<?> $$22 = $$21 ? $$8.get($$20) : $$9.get($$20 - $$10);
+         int $$23 = this.p + 4 + 25 * ($$20 % $$12);
+         int $$24 = this.q + 5 + 25 * ($$20 / $$12);
+         if (this.w) {
+            this.n.add(new frf.b($$23, $$24, $$22, $$21));
          } else {
-            $$2.k = false;
+            this.n.add(new frf.a($$23, $$24, $$22, $$21));
          }
       }
 
-      this.g();
+      this.u = null;
    }
 
-   private void g() {
-      this.j.k = this.l > 1 && this.m < this.l - 1;
-      this.k.k = this.l > 1 && this.m > 0;
-   }
-
-   public void a(fhf $$0, int $$1, int $$2, int $$3, int $$4, float $$5) {
-      if (this.l > 1) {
-         wu $$6 = wu.a("gui.recipebook.page", this.m + 1, this.l);
-         int $$7 = this.g.h.a($$6);
-         $$0.a(this.g.h, $$6, $$1 - $$7 / 2 + 73, $$2 + 141, -1, false);
-      }
-
-      this.e = null;
-
-      for (frh $$8 : this.d) {
-         $$8.a($$0, $$3, $$4, $$5);
-         if ($$8.k && $$8.B()) {
-            this.e = $$8;
-         }
-      }
-
-      this.k.a($$0, $$3, $$4, $$5);
-      this.j.a($$0, $$3, $$4, $$5);
-      this.f.a($$0, $$3, $$4, $$5);
-   }
-
-   public void a(fhf $$0, int $$1, int $$2) {
-      if (this.g.y != null && this.e != null && !this.f.c()) {
-         $$0.a(this.g.h, this.e.e(), $$1, $$2);
-      }
+   public frk a() {
+      return this.s;
    }
 
    @Nullable
-   public cyk<?> a() {
-      return this.o;
+   public cyl<?> b() {
+      return this.u;
    }
 
-   @Nullable
-   public fri b() {
-      return this.p;
-   }
-
-   public void c() {
-      this.f.b(false);
-   }
-
-   public boolean a(double $$0, double $$1, int $$2, int $$3, int $$4, int $$5, int $$6) {
-      this.o = null;
-      this.p = null;
-      if (this.f.c()) {
-         if (this.f.a($$0, $$1, $$2)) {
-            this.o = this.f.b();
-            this.p = this.f.a();
-         } else {
-            this.f.b(false);
-         }
-
-         return true;
-      } else if (this.j.a($$0, $$1, $$2)) {
-         this.m++;
-         this.f();
-         return true;
-      } else if (this.k.a($$0, $$1, $$2)) {
-         this.m--;
-         this.f();
-         return true;
+   @Override
+   public boolean a(double $$0, double $$1, int $$2) {
+      if ($$2 != 0) {
+         return false;
       } else {
-         for (frh $$7 : this.d) {
-            if ($$7.a($$0, $$1, $$2)) {
-               if ($$2 == 0) {
-                  this.o = $$7.c();
-                  this.p = $$7.a();
-               } else if ($$2 == 1 && !this.f.c() && !$$7.b()) {
-                  this.f.a(this.g, $$7.a(), $$7.D(), $$7.E(), $$3 + $$5 / 2, $$4 + 13 + $$6 / 2, (float)$$7.y());
-               }
-
+         for (frf.a $$3 : this.n) {
+            if ($$3.a($$0, $$1, $$2)) {
+               this.u = $$3.c;
                return true;
             }
          }
@@ -161,23 +106,137 @@ public class frf {
       }
    }
 
-   public void a(List<cyk<?>> $$0) {
-      for (frj $$1 : this.h) {
-         $$1.a($$0);
+   @Override
+   public boolean c(double $$0, double $$1) {
+      return false;
+   }
+
+   @Override
+   public void a(fhh $$0, int $$1, int $$2, float $$3) {
+      if (this.o) {
+         this.v += $$3;
+         RenderSystem.enableBlend();
+         $$0.c().a();
+         $$0.c().a(0.0F, 0.0F, 1000.0F);
+         int $$4 = this.n.size() <= 16 ? 4 : 5;
+         int $$5 = Math.min(this.n.size(), $$4);
+         int $$6 = ayg.f((float)this.n.size() / (float)$$4);
+         int $$7 = 4;
+         $$0.a(b, this.p, this.q, $$5 * 25 + 8, $$6 * 25 + 8);
+         RenderSystem.disableBlend();
+
+         for (frf.a $$8 : this.n) {
+            $$8.a($$0, $$1, $$2, $$3);
+         }
+
+         $$0.c().b();
       }
    }
 
-   public fft d() {
-      return this.g;
+   public void b(boolean $$0) {
+      this.o = $$0;
    }
 
-   public avk e() {
-      return this.n;
+   public boolean c() {
+      return this.o;
    }
 
-   protected void a(Consumer<fhq> $$0) {
-      $$0.accept(this.j);
-      $$0.accept(this.k);
-      this.d.forEach($$0);
+   @Override
+   public void a(boolean $$0) {
+   }
+
+   @Override
+   public boolean aK_() {
+      return false;
+   }
+
+   class a extends fhs implements ajx<cyg> {
+      final cyl<?> c;
+      private final boolean d;
+      protected final List<frf.a.a> a = Lists.newArrayList();
+
+      public a(final int $$0, final int $$1, final cyl<?> $$2, final boolean $$3) {
+         super($$0, $$1, 200, 20, wt.a);
+         this.g = 24;
+         this.h = 24;
+         this.c = $$2;
+         this.d = $$3;
+         this.a($$2);
+      }
+
+      protected void a(cyl<?> $$0) {
+         this.a(3, 3, -1, $$0, $$0.b().a().iterator(), 0);
+      }
+
+      @Override
+      public void a(flq $$0) {
+         this.c($$0);
+      }
+
+      public void a(cyg $$0, int $$1, int $$2, int $$3, int $$4) {
+         cud[] $$5 = $$0.a();
+         if ($$5.length != 0) {
+            this.a.add(new frf.a.a(3 + $$3 * 7, 3 + $$4 * 7, $$5));
+         }
+      }
+
+      @Override
+      public void b(fhh $$0, int $$1, int $$2, float $$3) {
+         akk $$4;
+         if (this.d) {
+            if (frf.this.w) {
+               $$4 = this.B() ? frf.c : frf.d;
+            } else {
+               $$4 = this.B() ? frf.e : frf.f;
+            }
+         } else if (frf.this.w) {
+            $$4 = this.B() ? frf.g : frf.h;
+         } else {
+            $$4 = this.B() ? frf.i : frf.j;
+         }
+
+         $$0.a($$4, this.D(), this.E(), this.g, this.h);
+         $$0.c().a();
+         $$0.c().a((double)(this.D() + 2), (double)(this.E() + 2), 150.0);
+
+         for (frf.a.a $$8 : this.a) {
+            $$0.c().a();
+            $$0.c().a((double)$$8.b, (double)$$8.c, 0.0);
+            $$0.c().b(0.375F, 0.375F, 1.0F);
+            $$0.c().a(-8.0, -8.0, 0.0);
+            if ($$8.a.length > 0) {
+               $$0.a($$8.a[ayg.d(frf.this.v / 30.0F) % $$8.a.length], 0, 0);
+            }
+
+            $$0.c().b();
+         }
+
+         $$0.c().b();
+      }
+
+      protected class a {
+         public final cud[] a;
+         public final int b;
+         public final int c;
+
+         public a(final int $$1, final int $$2, final cud[] $$3) {
+            this.b = $$1;
+            this.c = $$2;
+            this.a = $$3;
+         }
+      }
+   }
+
+   class b extends frf.a {
+      public b(final int $$0, final int $$1, final cyl<?> $$2, final boolean $$3) {
+         super($$0, $$1, $$2, $$3);
+      }
+
+      @Override
+      protected void a(cyl<?> $$0) {
+         cyg $$1 = $$0.b().a().get(0);
+         cud[] $$2 = $$1.a();
+         this.a.add(new frf.a.a(10, 10, $$2));
+      }
    }
 }

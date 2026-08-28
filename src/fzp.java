@@ -1,67 +1,65 @@
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ClientInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.RealmInfo;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest.ThirdPartyServerInfo;
-import java.util.Locale;
+import com.mojang.authlib.minecraft.report.AbuseReport;
+import com.mojang.authlib.minecraft.report.AbuseReportLimits;
+import com.mojang.authlib.minecraft.report.ReportedEntity;
+import com.mojang.datafixers.util.Either;
+import java.time.Instant;
+import java.util.UUID;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.StringUtils;
 
-public record fzp(String a, @Nullable fzp.a b) {
-   public static fzp a() {
-      return a(null);
+public class fzp extends fzq {
+   private final String f;
+
+   fzp(UUID $$0, Instant $$1, UUID $$2, String $$3) {
+      super($$0, $$1, $$2);
+      this.f = $$3;
    }
 
-   public static fzp a(String $$0) {
-      return a(new fzp.a.b($$0));
+   public String a() {
+      return this.f;
    }
 
-   public static fzp a(fbt $$0) {
-      return a(new fzp.a.a($$0));
+   public fzp c() {
+      fzp $$0 = new fzp(this.a, this.b, this.c, this.f);
+      $$0.d = this.d;
+      return $$0;
    }
 
-   public static fzp a(@Nullable fzp.a $$0) {
-      return new fzp(g(), $$0);
+   @Override
+   public fnl a(fnl $$0, fzu $$1) {
+      return new fru($$0, $$1, this);
    }
 
-   public ClientInfo b() {
-      return new ClientInfo(this.a, Locale.getDefault().toLanguageTag());
-   }
-
-   @Nullable
-   public ThirdPartyServerInfo c() {
-      return this.b instanceof fzp.a.b $$0 ? new ThirdPartyServerInfo($$0.a) : null;
-   }
-
-   @Nullable
-   public RealmInfo d() {
-      return this.b instanceof fzp.a.a $$0 ? new RealmInfo(String.valueOf($$0.a()), $$0.b()) : null;
-   }
-
-   private static String g() {
-      StringBuilder $$0 = new StringBuilder();
-      $$0.append("24w19b");
-      if (fft.e().a()) {
-         $$0.append(" (modded)");
+   public static class a extends fzq.a<fzp> {
+      public a(fzp $$0, AbuseReportLimits $$1) {
+         super($$0, $$1);
       }
 
-      return $$0.toString();
-   }
+      public a(UUID $$0, String $$1, AbuseReportLimits $$2) {
+         super(new fzp(UUID.randomUUID(), Instant.now(), $$0, $$1), $$2);
+      }
 
-   public String e() {
-      return this.a;
-   }
+      @Override
+      public boolean b() {
+         return StringUtils.isNotEmpty(this.g());
+      }
 
-   @Nullable
-   public fzp.a f() {
-      return this.b;
-   }
+      @Nullable
+      @Override
+      public fzq.b c() {
+         return this.a.d.length() > this.b.maxOpinionCommentsLength() ? fzq.b.d : null;
+      }
 
-   public interface a {
-      public static record a(long a, int b) implements fzp.a {
-         public a(fbt $$0) {
-            this($$0.a, $$0.n);
+      @Override
+      public Either<fzq.c, fzq.b> a(fzu $$0) {
+         fzq.b $$1 = this.c();
+         if ($$1 != null) {
+            return Either.right($$1);
+         } else {
+            ReportedEntity $$2 = new ReportedEntity(this.a.c);
+            AbuseReport $$3 = AbuseReport.name(this.a.d, $$2, this.a.b);
+            return Either.left(new fzq.c(this.a.a, fzt.c, $$3));
          }
-      }
-
-      public static record b(String a) implements fzp.a {
       }
    }
 }

@@ -1,18 +1,24 @@
-public class gmj extends gks<cmd, fwz<cmd>> {
-   private static final akk a = new akk("textures/entity/wandering_trader.png");
+public class gmj extends gku<cly, fxb<cly>> {
+   private static final akk a = new akk("textures/entity/villager/villager.png");
 
-   public gmj(gjm.a $$0) {
-      super($$0, new fwz<>($$0.a(fxn.bS)), 0.5F);
-      this.a(new gnd<>(this, $$0.f(), $$0.d()));
-      this.a(new gnc<>(this, $$0.d()));
+   public gmj(gjo.a $$0) {
+      super($$0, new fxb<>($$0.a(fxp.bP)), 0.5F);
+      this.a(new gnf<>(this, $$0.f(), $$0.d()));
+      this.a(new gol<>(this, $$0.e(), "villager"));
+      this.a(new gne<>(this, $$0.d()));
    }
 
-   public akk a(cmd $$0) {
+   public akk a(cly $$0) {
       return a;
    }
 
-   protected void a(cmd $$0, fam $$1, float $$2) {
-      float $$3 = 0.9375F;
-      $$1.b(0.9375F, 0.9375F, 0.9375F);
+   protected void a(cly $$0, fao $$1, float $$2) {
+      float $$3 = 0.9375F * $$0.ec();
+      $$1.b($$3, $$3, $$3);
+   }
+
+   protected float b(cly $$0) {
+      float $$1 = super.b($$0);
+      return $$0.o_() ? $$1 * 0.5F : $$1;
    }
 }

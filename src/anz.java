@@ -28,9 +28,9 @@ public class anz {
       );
    }
 
-   private static int a(eq $$0, ja $$1, gh $$2, anz.b $$3, @Nullable Predicate<dso> $$4) throws CommandSyntaxException {
+   private static int a(eq $$0, ja $$1, gh $$2, anz.b $$3, @Nullable Predicate<dsp> $$4) throws CommandSyntaxException {
       aqm $$5 = $$0.e();
-      if ($$4 != null && !$$4.test(new dso($$5, $$1, true))) {
+      if ($$4 != null && !$$4.test(new dsp($$5, $$1, true))) {
          throw a.create();
       } else {
          boolean $$6;
@@ -38,8 +38,8 @@ public class anz {
             $$5.b($$1, true);
             $$6 = !$$2.a().i() || !$$5.a_($$1).i();
          } else {
-            dpp $$7 = $$5.c_($$1);
-            bpx.a_($$7);
+            dpq $$7 = $$5.c_($$1);
+            bpy.a_($$7);
             $$6 = true;
          }
 
@@ -55,7 +55,7 @@ public class anz {
 
    public interface a {
       @Nullable
-      gh filter(eio var1, ja var2, gh var3, aqm var4);
+      gh filter(eip var1, ja var2, gh var3, aqm var4);
    }
 
    public static enum b {

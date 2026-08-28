@@ -1,31 +1,23 @@
-import com.google.common.collect.Lists;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import java.util.List;
+import com.google.gson.annotations.SerializedName;
+import java.util.Locale;
 
-public class fcf extends fci {
-   public long a;
-   public List<fce> b = Lists.newArrayList();
+public class fcf extends fck implements fce {
+   @SerializedName("regionName")
+   private final String a;
+   @SerializedName("ping")
+   private final int b;
 
-   public static fcf a(String $$0) {
-      fcf $$1 = new fcf();
-      JsonParser $$2 = new JsonParser();
+   public fcf(String $$0, int $$1) {
+      this.a = $$0;
+      this.b = $$1;
+   }
 
-      try {
-         JsonElement $$3 = $$2.parse($$0);
-         JsonObject $$4 = $$3.getAsJsonObject();
-         $$1.a = fef.a("periodInMillis", $$4, -1L);
-         JsonElement $$5 = $$4.get("playerActivityDto");
-         if ($$5 != null && $$5.isJsonArray()) {
-            for (JsonElement $$7 : $$5.getAsJsonArray()) {
-               fce $$8 = fce.a($$7.getAsJsonObject());
-               $$1.b.add($$8);
-            }
-         }
-      } catch (Exception var10) {
-      }
+   public int a() {
+      return this.b;
+   }
 
-      return $$1;
+   @Override
+   public String toString() {
+      return String.format(Locale.ROOT, "%s --> %.2f ms", this.a, (float)this.b);
    }
 }

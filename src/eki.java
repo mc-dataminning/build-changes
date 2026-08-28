@@ -1,15 +1,25 @@
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
-import java.util.List;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 
-public class eki {
-   public static MapCodec<? extends ekh> a(jw<MapCodec<? extends ekh>> $$0) {
-      jw.a($$0, "random", ekk.a);
-      jw.a($$0, "random_group", ekl.a);
-      return jw.a($$0, "direct", ekg.a);
+record eki(akj<ekh> c, akj<ekh> d) implements ekj {
+   static MapCodec<eki> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(akj.a(lr.aT).fieldOf("alias").forGetter(eki::c), akj.a(lr.aT).fieldOf("target").forGetter(eki::d)).apply($$0, eki::new)
+   );
+
+   @Override
+   public void a(ayo $$0, BiConsumer<akj<ekh>, akj<ekh>> $$1) {
+      $$1.accept(this.c, this.d);
    }
 
-   public static void a(qm<ekf> $$0, jj<ekf> $$1, List<ekh> $$2) {
-      $$2.stream().flatMap(ekh::a).map($$0x -> $$0x.a().a()).forEach($$2x -> qt.a($$0, $$2x, new ekf($$1, List.of(Pair.of(ekd.b($$2x), 1)), ekf.a.b)));
+   @Override
+   public Stream<akj<ekh>> a() {
+      return Stream.of(this.d);
+   }
+
+   @Override
+   public MapCodec<eki> b() {
+      return a;
    }
 }

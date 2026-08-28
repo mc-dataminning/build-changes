@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public class baa extends bfd {
    public baa(Schema $$0) {
-      super($$0, false, "AreaEffectCloudPotionFix", bgg.B, "minecraft:area_effect_cloud");
+      super($$0, false, "AreaEffectCloudPotionFix", bgh.B, "minecraft:area_effect_cloud");
    }
 
    @Override

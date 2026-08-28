@@ -1,26 +1,81 @@
-import com.mojang.datafixers.kinds.App;
-import java.util.function.Function;
+import com.google.common.collect.ImmutableMap;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
-public class bxf {
-   private static final float a = 0.3F;
+public class bxf extends buv<btc> {
+   public static final int c = 100;
+   private long d;
 
-   public static bwf<btb> a() {
-      return byh.a(
-         (Function<byh.b<btb>, ? extends App<byh.c<btb>, byk<btb>>>)($$0 -> $$0.group($$0.a(ccf.m), $$0.a(ccf.n), $$0.b(ccf.e), $$0.b(ccf.h), $$0.c(ccf.q))
-               .apply($$0, ($$1, $$2, $$3, $$4, $$5) -> ($$6, $$7, $$8) -> {
-                     ji $$9 = $$0.b($$3);
-                     cch $$10 = $$0.b($$4);
-                     if ($$6.E_().a(100) == 0 && $$6.af() == $$9.a() && $$9.b().a($$7.do(), 4.0) && $$10.d($$0xxx -> bsm.bj.equals($$0xxx.al()))) {
-                        $$10.a($$1xx -> bsm.bj.equals($$1xx.al()) && $$1xx.g((bsg)$$7) <= 32.0).ifPresent($$3xx -> {
-                           $$5.a($$3xx);
-                           $$2.a(new bvf($$3xx, true));
-                           $$1.a(new cci(new bvf($$3xx, false), 0.3F, 1));
-                        });
-                        return true;
-                     } else {
-                        return false;
-                     }
-                  }))
-      );
+   public bxf() {
+      super(ImmutableMap.of(ccg.b, cch.a, ccg.I, cch.c));
+   }
+
+   @Override
+   protected boolean a(aqm $$0, btc $$1) {
+      if ($$1.bT()) {
+         return false;
+      } else {
+         bue<?> $$2 = $$1.dV();
+         ji $$3 = $$2.c(ccg.b).get();
+         if ($$0.af() != $$3.a()) {
+            return false;
+         } else {
+            Optional<Long> $$4 = $$2.c(ccg.I);
+            if ($$4.isPresent()) {
+               long $$5 = $$0.Z() - $$4.get();
+               if ($$5 > 0L && $$5 < 100L) {
+                  return false;
+               }
+            }
+
+            dsl $$6 = $$0.a_($$3.b());
+            return $$3.b().a($$1.dp(), 2.0) && $$6.a(avw.R) && !$$6.c(dfb.c);
+         }
+      }
+   }
+
+   @Override
+   protected boolean a(aqm $$0, btc $$1, long $$2) {
+      Optional<ji> $$3 = $$1.dV().c(ccg.b);
+      if ($$3.isEmpty()) {
+         return false;
+      } else {
+         ja $$4 = $$3.get().b();
+         return $$1.dV().c(coa.e) && $$1.dy() > (double)$$4.v() + 0.4 && $$4.a($$1.dp(), 1.14);
+      }
+   }
+
+   @Override
+   protected void d(aqm $$0, btc $$1, long $$2) {
+      if ($$2 > this.d) {
+         bue<?> $$3 = $$1.dV();
+         if ($$3.a(ccg.v)) {
+            Set<ji> $$4 = $$3.c(ccg.v).get();
+            Optional<List<btc>> $$5;
+            if ($$3.a(ccg.g)) {
+               $$5 = $$3.c(ccg.g);
+            } else {
+               $$5 = Optional.empty();
+            }
+
+            bvt.a($$0, $$1, null, null, $$4, $$5);
+         }
+
+         $$1.b($$1.dV().c(ccg.b).get().b());
+      }
+   }
+
+   @Override
+   protected boolean a(long $$0) {
+      return false;
+   }
+
+   @Override
+   protected void b(aqm $$0, btc $$1, long $$2) {
+      if ($$1.fJ()) {
+         $$1.fK();
+         this.d = $$2 + 40L;
+      }
    }
 }

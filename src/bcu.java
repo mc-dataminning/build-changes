@@ -15,7 +15,7 @@ public class bcu extends DataFix {
 
    public TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
-         "EntityRedundantChanceTagsFix", this.getInputSchema().getType(bgg.B), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
+         "EntityRedundantChanceTagsFix", this.getInputSchema().getType(bgh.B), $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> {
                if (a($$0x.get("HandDropChances"), 2)) {
                   $$0x = $$0x.remove("HandDropChances");
                }

@@ -1,34 +1,19 @@
+import java.util.Objects;
 import javax.annotation.Nullable;
 
 public interface exh {
    int a();
 
-   void a(int var1);
-
-   default int b(int $$0) {
-      int $$1 = this.a() + $$0;
-      this.a($$1);
-      return $$1;
-   }
-
-   default int b() {
-      return this.b(1);
-   }
-
-   default void c() {
-      this.a(0);
-   }
-
-   boolean d();
-
-   void e();
-
-   void f();
+   boolean b();
 
    @Nullable
-   wu g();
+   yk c();
 
-   void a(@Nullable wu var1);
+   default xi a(yk $$0) {
+      return Objects.requireNonNullElse(this.c(), $$0).a(this.a());
+   }
 
-   void a(@Nullable yk var1);
+   static xi a(@Nullable exh $$0, yk $$1) {
+      return $$0 != null ? $$0.a($$1) : $$1.a(0);
+   }
 }

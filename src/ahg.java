@@ -4,12 +4,12 @@ public class ahg implements zb<agb> {
    private final ahg.a c;
    private final int d;
 
-   public ahg(bsg $$0, ahg.a $$1) {
+   public ahg(bsh $$0, ahg.a $$1) {
       this($$0, $$1, 0);
    }
 
-   public ahg(bsg $$0, ahg.a $$1, int $$2) {
-      this.b = $$0.am();
+   public ahg(bsh $$0, ahg.a $$1, int $$2) {
+      this.b = $$0.an();
       this.c = $$1;
       this.d = $$2;
    }

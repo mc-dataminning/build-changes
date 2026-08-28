@@ -27,14 +27,14 @@ public class aqx implements aqv {
    }
 
    @Override
-   public void a(dbm $$0) {
+   public void a(dbn $$0) {
       this.e = ac.c();
       this.d = this.e;
    }
 
    @Override
-   public void a(dbm $$0, @Nullable dvh $$1) {
-      if ($$1 == dvh.n) {
+   public void a(dbn $$0, @Nullable dvi $$1) {
+      if ($$1 == dvi.n) {
          this.c++;
       }
 

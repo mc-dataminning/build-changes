@@ -1,25 +1,52 @@
-public class gnv<T extends cmk> extends gny<T, fvt<T>> {
-   private final fvo a;
+public class gnv<T extends cff> extends goa<T, fuj<T>> {
+   private final gez a;
 
-   public gnv(gli<T, fvt<T>> $$0, fxk $$1) {
+   public gnv(glk<T, fuj<T>> $$0, gez $$1) {
       super($$0);
-      this.a = new fvo($$1.a(fxn.aG));
+      this.a = $$1;
    }
 
-   public void a(fam $$0, ged $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, true);
-      this.a($$0, $$1, $$2, $$3, $$4, $$5, $$8, $$9, false);
+   public void a(fao $$0, gef $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if (!$$3.o_()) {
+         ffw $$10 = ffw.Q();
+         boolean $$11 = $$10.b($$3) && $$3.cj();
+         if (!$$3.cj() || $$11) {
+            dsl $$12 = $$3.t().a();
+            int $$13 = gkp.c($$3, 0.0F);
+            grr $$14 = this.a.a($$12);
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
+            $$0.b();
+            $$0.a();
+            $$0.a(0.2F, -0.35F, 0.5F);
+            $$0.a(a.d.rotationDegrees(42.0F));
+            $$0.a(0.1F, 0.0F, -0.6F);
+            $$0.a(a.d.rotationDegrees(-48.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
+            $$0.b();
+            $$0.a();
+            this.c().d().a($$0);
+            $$0.a(0.0F, -0.7F, -0.2F);
+            $$0.a(a.d.rotationDegrees(-78.0F));
+            $$0.b(-1.0F, -1.0F, 1.0F);
+            $$0.a(-0.5F, -0.5F, -0.5F);
+            this.a($$0, $$1, $$2, $$11, $$12, $$13, $$14);
+            $$0.b();
+         }
+      }
    }
 
-   private void a(fam $$0, ged $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, boolean $$8) {
-      tx $$9 = $$8 ? $$3.gq() : $$3.gr();
-      bsm.a($$9.l("id")).filter($$0x -> $$0x == bsm.ax).ifPresent($$10 -> {
-         $$0.a();
-         $$0.a($$8 ? 0.4F : -0.4F, $$3.cb() ? -1.3F : -1.5F, 0.0F);
-         cfh.b $$11 = cfh.b.a($$9.h("Variant"));
-         faq $$12 = $$1.getBuffer(this.a.a(gkz.a($$11)));
-         this.a.a($$0, $$12, $$2, gpf.d, $$4, $$5, $$6, $$7, $$3.ai);
-         $$0.b();
-      });
+   private void a(fao $$0, gef $$1, int $$2, boolean $$3, dsl $$4, int $$5, grr $$6) {
+      if ($$3) {
+         this.a.b().a($$0.c(), $$1.getBuffer(gen.r(gpp.e)), $$4, $$6, 0.0F, 0.0F, 0.0F, $$2, $$5);
+      } else {
+         this.a.a($$4, $$0, $$1, $$2, $$5);
+      }
    }
 }

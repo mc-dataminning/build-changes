@@ -1,126 +1,30 @@
-import com.google.common.collect.Queues;
-import java.util.Deque;
-import org.joml.Matrix3f;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector3f;
+import com.google.common.collect.ImmutableMap;
 
 public class fam {
-   private final Deque<fam.a> a = ac.a(Queues.newArrayDeque(), $$0 -> {
-      Matrix4f $$1 = new Matrix4f();
-      Matrix3f $$2 = new Matrix3f();
-      $$0.add(new fam.a($$1, $$2));
-   });
-
-   public void a(double $$0, double $$1, double $$2) {
-      this.a((float)$$0, (float)$$1, (float)$$2);
-   }
-
-   public void a(float $$0, float $$1, float $$2) {
-      fam.a $$3 = this.a.getLast();
-      $$3.a.translate($$0, $$1, $$2);
-   }
-
-   public void b(float $$0, float $$1, float $$2) {
-      fam.a $$3 = this.a.getLast();
-      $$3.a.scale($$0, $$1, $$2);
-      if (Math.abs($$0) == Math.abs($$1) && Math.abs($$1) == Math.abs($$2)) {
-         if ($$0 < 0.0F || $$1 < 0.0F || $$2 < 0.0F) {
-            $$3.b.scale(Math.signum($$0), Math.signum($$1), Math.signum($$2));
-         }
-      } else {
-         $$3.b.scale(1.0F / $$0, 1.0F / $$1, 1.0F / $$2);
-         $$3.c = false;
-      }
-   }
-
-   public void a(Quaternionf $$0) {
-      fam.a $$1 = this.a.getLast();
-      $$1.a.rotate($$0);
-      $$1.b.rotate($$0);
-   }
-
-   public void a(Quaternionf $$0, float $$1, float $$2, float $$3) {
-      fam.a $$4 = this.a.getLast();
-      $$4.a.rotateAround($$0, $$1, $$2, $$3);
-      $$4.b.rotate($$0);
-   }
-
-   public void a() {
-      this.a.addLast(new fam.a(this.a.getLast()));
-   }
-
-   public void b() {
-      this.a.removeLast();
-   }
-
-   public fam.a c() {
-      return this.a.getLast();
-   }
-
-   public boolean d() {
-      return this.a.size() == 1;
-   }
-
-   public void e() {
-      fam.a $$0 = this.a.getLast();
-      $$0.a.identity();
-      $$0.b.identity();
-      $$0.c = true;
-   }
-
-   public void a(Matrix4f $$0) {
-      fam.a $$1 = this.a.getLast();
-      $$1.a.mul($$0);
-      if (!f.a($$0)) {
-         if (f.b($$0)) {
-            $$1.b.mul(new Matrix3f($$0));
-         } else {
-            $$1.d();
-         }
-      }
-   }
-
-   public static final class a {
-      final Matrix4f a;
-      final Matrix3f b;
-      boolean c = true;
-
-      a(Matrix4f $$0, Matrix3f $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
-
-      a(fam.a $$0) {
-         this.a = new Matrix4f($$0.a);
-         this.b = new Matrix3f($$0.b);
-         this.c = $$0.c;
-      }
-
-      void d() {
-         this.b.set(this.a).invert().transpose();
-         this.c = false;
-      }
-
-      public Matrix4f a() {
-         return this.a;
-      }
-
-      public Matrix3f b() {
-         return this.b;
-      }
-
-      public Vector3f a(Vector3f $$0, Vector3f $$1) {
-         return this.a($$0.x, $$0.y, $$0.z, $$1);
-      }
-
-      public Vector3f a(float $$0, float $$1, float $$2, Vector3f $$3) {
-         Vector3f $$4 = this.b.transform($$0, $$1, $$2, $$3);
-         return this.c ? $$4 : $$4.normalize();
-      }
-
-      public fam.a c() {
-         return new fam.a(this);
-      }
-   }
+   public static final fau a = new fau(0, fau.a.a, fau.b.a, 3);
+   public static final fau b = new fau(0, fau.a.b, fau.b.c, 4);
+   public static final fau c = new fau(0, fau.a.a, fau.b.d, 2);
+   public static final fau d = new fau(1, fau.a.e, fau.b.d, 2);
+   public static final fau e = new fau(2, fau.a.e, fau.b.d, 2);
+   public static final fau f = new fau(0, fau.a.c, fau.b.b, 3);
+   public static final fau g = new fau(0, fau.a.c, fau.b.e, 1);
+   public static final fau h = c;
+   public static final fat i = new fat(ImmutableMap.builder().put("Position", a).put("UV", h).put("Color", b).build());
+   public static final fat j = new fat(
+      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).put("Normal", f).put("Padding", g).build()
+   );
+   public static final fat k = new fat(
+      ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV1", d).put("UV2", e).put("Normal", f).put("Padding", g).build()
+   );
+   public static final fat l = new fat(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("UV2", e).build());
+   public static final fat m = new fat(ImmutableMap.builder().put("Position", a).build());
+   public static final fat n = new fat(ImmutableMap.builder().put("Position", a).put("Color", b).build());
+   public static final fat o = new fat(ImmutableMap.builder().put("Position", a).put("Color", b).put("Normal", f).put("Padding", g).build());
+   public static final fat p = new fat(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV2", e).build());
+   public static final fat q = new fat(ImmutableMap.builder().put("Position", a).put("UV0", c).build());
+   public static final fat r = new fat(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).build());
+   public static final fat s = new fat(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).build());
+   public static final fat t = new fat(ImmutableMap.builder().put("Position", a).put("Color", b).put("UV0", c).put("UV2", e).build());
+   public static final fat u = new fat(ImmutableMap.builder().put("Position", a).put("UV0", c).put("UV2", e).put("Color", b).build());
+   public static final fat v = new fat(ImmutableMap.builder().put("Position", a).put("UV0", c).put("Color", b).put("Normal", f).put("Padding", g).build());
 }

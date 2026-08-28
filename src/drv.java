@@ -1,124 +1,62 @@
-import com.google.common.annotations.VisibleForTesting;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
+import java.util.Optional;
 
-public class drv {
-   static final String a = "server_data";
-   static Codec<drv> b = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               kd.c.lenientOptionalFieldOf("rewarded_players", Set.of()).forGetter($$0x -> $$0x.e),
-               Codec.LONG.lenientOptionalFieldOf("state_updating_resumes_at", 0L).forGetter($$0x -> $$0x.f),
-               cuc.b.listOf().lenientOptionalFieldOf("items_to_eject", List.of()).forGetter($$0x -> $$0x.g),
-               Codec.INT.lenientOptionalFieldOf("total_ejections_needed", 0).forGetter($$0x -> $$0x.i)
-            )
-            .apply($$0, drv::new)
-   );
-   private static final int d = 128;
-   private final Set<UUID> e = new ObjectLinkedOpenHashSet();
-   private long f;
-   private final List<cuc> g = new ObjectArrayList();
-   private long h;
-   private int i;
-   boolean c;
+public record drv(akj<erb> d, double e, double f, cud g, Optional<akj<erb>> h, drn i, drn.a j) {
+   static final String a = "config";
+   static drv b = new drv();
+   static Codec<drv> c = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  akj.a(lr.bb).lenientOptionalFieldOf("loot_table", b.b()).forGetter(drv::b),
+                  Codec.DOUBLE.lenientOptionalFieldOf("activation_range", b.c()).forGetter(drv::c),
+                  Codec.DOUBLE.lenientOptionalFieldOf("deactivation_range", b.d()).forGetter(drv::d),
+                  cud.a("key_item").forGetter(drv::e),
+                  akj.a(lr.bb).lenientOptionalFieldOf("override_loot_table_to_display").forGetter(drv::f)
+               )
+               .apply($$0, drv::new)
+      )
+      .validate(drv::h);
 
-   drv(Set<UUID> $$0, long $$1, List<cuc> $$2, int $$3) {
-      this.e.addAll($$0);
-      this.f = $$1;
-      this.g.addAll($$2);
-      this.i = $$3;
+   private drv() {
+      this(eqs.S, 4.0, 4.5, new cud(cug.yC), Optional.empty(), drn.b, drn.a.a);
    }
 
-   drv() {
+   public drv(akj<erb> $$0, double $$1, double $$2, cud $$3, Optional<akj<erb>> $$4) {
+      this($$0, $$1, $$2, $$3, $$4, b.a(), b.g());
    }
 
-   void a(long $$0) {
-      this.h = $$0;
+   public drn a() {
+      return this.i;
    }
 
-   long a() {
-      return this.h;
+   private DataResult<drv> h() {
+      return this.e > this.f
+         ? DataResult.error(() -> "Activation range must (" + this.e + ") be less or equal to deactivation range (" + this.f + ")")
+         : DataResult.success(this);
    }
 
-   Set<UUID> b() {
+   public akj<erb> b() {
+      return this.d;
+   }
+
+   public double c() {
       return this.e;
    }
 
-   boolean a(cmk $$0) {
-      return this.e.contains($$0.cA());
-   }
-
-   @VisibleForTesting
-   public void b(cmk $$0) {
-      this.e.add($$0.cA());
-      if (this.e.size() > 128) {
-         Iterator<UUID> $$1 = this.e.iterator();
-         if ($$1.hasNext()) {
-            $$1.next();
-            $$1.remove();
-         }
-      }
-
-      this.i();
-   }
-
-   long c() {
+   public double d() {
       return this.f;
    }
 
-   void b(long $$0) {
-      this.f = $$0;
-      this.i();
-   }
-
-   List<cuc> d() {
+   public cud e() {
       return this.g;
    }
 
-   void e() {
-      this.i = 0;
-      this.i();
+   public Optional<akj<erb>> f() {
+      return this.h;
    }
 
-   void a(List<cuc> $$0) {
-      this.g.clear();
-      this.g.addAll($$0);
-      this.i = this.g.size();
-      this.i();
-   }
-
-   cuc f() {
-      return this.g.isEmpty() ? cuc.l : Objects.requireNonNullElse(this.g.get(this.g.size() - 1), cuc.l);
-   }
-
-   cuc g() {
-      if (this.g.isEmpty()) {
-         return cuc.l;
-      } else {
-         this.i();
-         return Objects.requireNonNullElse(this.g.remove(this.g.size() - 1), cuc.l);
-      }
-   }
-
-   void a(drv $$0) {
-      this.f = $$0.c();
-      this.g.clear();
-      this.g.addAll($$0.g);
-      this.e.clear();
-      this.e.addAll($$0.e);
-   }
-
-   private void i() {
-      this.c = true;
-   }
-
-   public float h() {
-      return this.i == 1 ? 1.0F : 1.0F - ayg.g((float)this.d().size(), 1.0F, (float)this.i);
+   public drn.a g() {
+      return this.j;
    }
 }

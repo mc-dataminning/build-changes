@@ -4,50 +4,50 @@ import com.mojang.datafixers.util.Pair;
 import java.util.Map;
 
 public final class avl {
-   private static final Map<cqw, Pair<String, String>> a = ImmutableMap.of(
-      cqw.a,
+   private static final Map<cqx, Pair<String, String>> a = ImmutableMap.of(
+      cqx.a,
       Pair.of("isGuiOpen", "isFilteringCraftable"),
-      cqw.b,
+      cqx.b,
       Pair.of("isFurnaceGuiOpen", "isFurnaceFilteringCraftable"),
-      cqw.c,
+      cqx.c,
       Pair.of("isBlastingFurnaceGuiOpen", "isBlastingFurnaceFilteringCraftable"),
-      cqw.d,
+      cqx.d,
       Pair.of("isSmokerGuiOpen", "isSmokerFilteringCraftable")
    );
-   private final Map<cqw, avl.a> b;
+   private final Map<cqx, avl.a> b;
 
-   private avl(Map<cqw, avl.a> $$0) {
+   private avl(Map<cqx, avl.a> $$0) {
       this.b = $$0;
    }
 
    public avl() {
-      this(ac.a(Maps.newEnumMap(cqw.class), $$0 -> {
-         for (cqw $$1 : cqw.values()) {
+      this(ac.a(Maps.newEnumMap(cqx.class), $$0 -> {
+         for (cqx $$1 : cqx.values()) {
             $$0.put($$1, new avl.a(false, false));
          }
       }));
    }
 
-   public boolean a(cqw $$0) {
+   public boolean a(cqx $$0) {
       return this.b.get($$0).a;
    }
 
-   public void a(cqw $$0, boolean $$1) {
+   public void a(cqx $$0, boolean $$1) {
       this.b.get($$0).a = $$1;
    }
 
-   public boolean b(cqw $$0) {
+   public boolean b(cqx $$0) {
       return this.b.get($$0).b;
    }
 
-   public void b(cqw $$0, boolean $$1) {
+   public void b(cqx $$0, boolean $$1) {
       this.b.get($$0).b = $$1;
    }
 
    public static avl a(vr $$0) {
-      Map<cqw, avl.a> $$1 = Maps.newEnumMap(cqw.class);
+      Map<cqx, avl.a> $$1 = Maps.newEnumMap(cqx.class);
 
-      for (cqw $$2 : cqw.values()) {
+      for (cqx $$2 : cqx.values()) {
          boolean $$3 = $$0.readBoolean();
          boolean $$4 = $$0.readBoolean();
          $$1.put($$2, new avl.a($$3, $$4));
@@ -57,7 +57,7 @@ public final class avl {
    }
 
    public void b(vr $$0) {
-      for (cqw $$1 : cqw.values()) {
+      for (cqx $$1 : cqx.values()) {
          avl.a $$2 = this.b.get($$1);
          if ($$2 == null) {
             $$0.a(false);
@@ -70,7 +70,7 @@ public final class avl {
    }
 
    public static avl a(tx $$0) {
-      Map<cqw, avl.a> $$1 = Maps.newEnumMap(cqw.class);
+      Map<cqx, avl.a> $$1 = Maps.newEnumMap(cqx.class);
       a.forEach(($$2, $$3) -> {
          boolean $$4 = $$0.q((String)$$3.getFirst());
          boolean $$5 = $$0.q((String)$$3.getSecond());
@@ -88,9 +88,9 @@ public final class avl {
    }
 
    public avl a() {
-      Map<cqw, avl.a> $$0 = Maps.newEnumMap(cqw.class);
+      Map<cqx, avl.a> $$0 = Maps.newEnumMap(cqx.class);
 
-      for (cqw $$1 : cqw.values()) {
+      for (cqx $$1 : cqx.values()) {
          avl.a $$2 = this.b.get($$1);
          $$0.put($$1, $$2.a());
       }
@@ -101,7 +101,7 @@ public final class avl {
    public void a(avl $$0) {
       this.b.clear();
 
-      for (cqw $$1 : cqw.values()) {
+      for (cqx $$1 : cqx.values()) {
          avl.a $$2 = $$0.b.get($$1);
          this.b.put($$1, $$2.a());
       }

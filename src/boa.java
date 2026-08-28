@@ -1,21 +1,8 @@
-public enum boa {
-   a("pathfinding"),
-   b("event-loops"),
-   c("mailboxes"),
-   d("ticking"),
-   e("jvm"),
-   f("chunk rendering"),
-   g("chunk rendering dispatching"),
-   h("cpu"),
-   i("gpu");
+import javax.annotation.ParametersAreNonnullByDefault;
 
-   private final String j;
-
-   private boa(final String $$0) {
-      this.j = $$0;
-   }
-
-   public String a() {
-      return this.j;
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface boa {
 }

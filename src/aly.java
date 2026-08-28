@@ -16,7 +16,7 @@ public class aly {
    private static final SimpleCommandExceptionType b = new SimpleCommandExceptionType(wu.c("commands.clone.overlap"));
    private static final Dynamic2CommandExceptionType c = new Dynamic2CommandExceptionType(($$0, $$1) -> wu.b("commands.clone.toobig", $$0, $$1));
    private static final SimpleCommandExceptionType d = new SimpleCommandExceptionType(wu.c("commands.clone.failed"));
-   public static final Predicate<dso> a = $$0 -> !$$0.a().i();
+   public static final Predicate<dsp> a = $$0 -> !$$0.a().i();
 
    public static void a(CommandDispatcher<eq> $$0, em $$1) {
       $$0.register(
@@ -82,7 +82,7 @@ public class aly {
       aly.c<CommandContext<eq>, aly.d> $$0,
       aly.c<CommandContext<eq>, aly.d> $$1,
       aly.c<CommandContext<eq>, aly.d> $$2,
-      aly.c<CommandContext<eq>, Predicate<dso>> $$3,
+      aly.c<CommandContext<eq>, Predicate<dsp>> $$3,
       ArgumentBuilder<eq, ?> $$4
    ) {
       return $$4.then(er.a("force").executes($$4x -> a((eq)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), aly.e.a)))
@@ -90,20 +90,20 @@ public class aly {
          .then(er.a("normal").executes($$4x -> a((eq)$$4x.getSource(), $$0.apply($$4x), $$1.apply($$4x), $$2.apply($$4x), $$3.apply($$4x), aly.e.c)));
    }
 
-   private static int a(eq $$0, aly.d $$1, aly.d $$2, aly.d $$3, Predicate<dso> $$4, aly.e $$5) throws CommandSyntaxException {
+   private static int a(eq $$0, aly.d $$1, aly.d $$2, aly.d $$3, Predicate<dsp> $$4, aly.e $$5) throws CommandSyntaxException {
       ja $$6 = $$1.b();
       ja $$7 = $$2.b();
-      eio $$8 = eio.a($$6, $$7);
+      eip $$8 = eip.a($$6, $$7);
       ja $$9 = $$3.b();
       ja $$10 = $$9.a($$8.c());
-      eio $$11 = eio.a($$9, $$10);
+      eip $$11 = eip.a($$9, $$10);
       aqm $$12 = $$1.a();
       aqm $$13 = $$3.a();
       if (!$$5.a() && $$12 == $$13 && $$11.a($$8)) {
          throw b.create();
       } else {
          int $$14 = $$8.d() * $$8.e() * $$8.f();
-         int $$15 = $$0.e().ab().c(dcb.z);
+         int $$15 = $$0.e().ab().c(dcc.z);
          if ($$14 > $$15) {
             throw c.create($$15, $$14);
          } else if ($$12.a($$6, $$7) && $$13.a($$9, $$10)) {
@@ -118,10 +118,10 @@ public class aly {
                   for (int $$23 = $$8.h(); $$23 <= $$8.k(); $$23++) {
                      ja $$24 = new ja($$23, $$22, $$21);
                      ja $$25 = $$24.a((ke)$$20);
-                     dso $$26 = new dso($$12, $$24, false);
-                     dsk $$27 = $$26.a();
+                     dsp $$26 = new dsp($$12, $$24, false);
+                     dsl $$27 = $$26.a();
                      if ($$4.test($$26)) {
-                        dpp $$28 = $$12.c_($$24);
+                        dpq $$28 = $$12.c_($$24);
                         if ($$28 != null) {
                            aly.a $$29 = new aly.a($$28.e($$0.v()), $$28.t());
                            $$17.add(new aly.b($$25, $$27, $$29));
@@ -140,13 +140,13 @@ public class aly {
 
             if ($$5 == aly.e.b) {
                for (ja $$30 : $$19) {
-                  dpp $$31 = $$12.c_($$30);
-                  bpx.a_($$31);
-                  $$12.a($$30, dfj.hW.o(), 2);
+                  dpq $$31 = $$12.c_($$30);
+                  bpy.a_($$31);
+                  $$12.a($$30, dfk.hW.o(), 2);
                }
 
                for (ja $$32 : $$19) {
-                  $$12.a($$32, dfj.a.o(), 3);
+                  $$12.a($$32, dfk.a.o(), 3);
                }
             }
 
@@ -157,9 +157,9 @@ public class aly {
             List<aly.b> $$34 = Lists.reverse($$33);
 
             for (aly.b $$35 : $$34) {
-               dpp $$36 = $$13.c_($$35.a);
-               bpx.a_($$36);
-               $$13.a($$35.a, dfj.hW.o(), 2);
+               dpq $$36 = $$13.c_($$35.a);
+               bpy.a_($$36);
+               $$13.a($$35.a, dfk.hW.o(), 2);
             }
 
             int $$37 = 0;
@@ -171,7 +171,7 @@ public class aly {
             }
 
             for (aly.b $$39 : $$17) {
-               dpp $$40 = $$13.c_($$39.a);
+               dpq $$40 = $$13.c_($$39.a);
                if ($$39.c != null && $$40 != null) {
                   $$40.d($$39.c.a, $$13.H_());
                   $$40.a($$39.c.b);
@@ -202,7 +202,7 @@ public class aly {
    static record a(tx a, kj b) {
    }
 
-   static record b(ja a, dsk b, @Nullable aly.a c) {
+   static record b(ja a, dsl b, @Nullable aly.a c) {
    }
 
    @FunctionalInterface

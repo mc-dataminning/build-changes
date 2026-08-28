@@ -29,7 +29,7 @@ public class mn implements lx {
                         $$3x.add(
                            "components",
                            (JsonElement)kj.b
-                              .encodeStart($$4, ((ctx)$$2x.a()).p())
+                              .encodeStart($$4, ((cty)$$2x.a()).p())
                               .getOrThrow($$0xxx -> new IllegalStateException("Failed to encode components: " + $$0xxx))
                         );
                         $$3.add($$2x.g(), $$3x);

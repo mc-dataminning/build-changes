@@ -1,13 +1,13 @@
 import java.util.function.Supplier;
 
 public class ayk {
-   public static void a(dcf $$0, ja $$1, lh $$2, bpl $$3) {
+   public static void a(dcg $$0, ja $$1, lh $$2, bpm $$3) {
       for (jf $$4 : jf.values()) {
          a($$0, $$1, $$2, $$3, $$4, () -> a($$0.z), 0.55);
       }
    }
 
-   public static void a(dcf $$0, ja $$1, lh $$2, bpl $$3, jf $$4, Supplier<ewf> $$5, double $$6) {
+   public static void a(dcg $$0, ja $$1, lh $$2, bpm $$3, jf $$4, Supplier<ewh> $$5, double $$6) {
       int $$7 = $$3.a($$0.z);
 
       for (int $$8 = 0; $$8 < $$7; $$8++) {
@@ -15,12 +15,12 @@ public class ayk {
       }
    }
 
-   private static ewf a(ayo $$0) {
-      return new ewf(ayg.a($$0, -0.5, 0.5), ayg.a($$0, -0.5, 0.5), ayg.a($$0, -0.5, 0.5));
+   private static ewh a(ayo $$0) {
+      return new ewh(ayg.a($$0, -0.5, 0.5), ayg.a($$0, -0.5, 0.5), ayg.a($$0, -0.5, 0.5));
    }
 
-   public static void a(jf.a $$0, dcf $$1, ja $$2, double $$3, lh $$4, bpr $$5) {
-      ewf $$6 = ewf.b($$2);
+   public static void a(jf.a $$0, dcg $$1, ja $$2, double $$3, lh $$4, bps $$5) {
+      ewh $$6 = ewh.b($$2);
       boolean $$7 = $$0 == jf.a.a;
       boolean $$8 = $$0 == jf.a.b;
       boolean $$9 = $$0 == jf.a.c;
@@ -37,8 +37,8 @@ public class ayk {
       }
    }
 
-   public static void a(dcf $$0, ja $$1, jf $$2, lh $$3, ewf $$4, double $$5) {
-      ewf $$6 = ewf.b($$1);
+   public static void a(dcg $$0, ja $$1, jf $$2, lh $$3, ewh $$4, double $$5) {
+      ewh $$6 = ewh.b($$1);
       int $$7 = $$2.j();
       int $$8 = $$2.k();
       int $$9 = $$2.l();
@@ -51,21 +51,21 @@ public class ayk {
       $$0.a($$3, $$10, $$11, $$12, $$13, $$14, $$15);
    }
 
-   public static void a(dcf $$0, ja $$1, ayo $$2, lh $$3) {
+   public static void a(dcg $$0, ja $$1, ayo $$2, lh $$3) {
       double $$4 = (double)$$1.u() + $$2.j();
       double $$5 = (double)$$1.v() - 0.05;
       double $$6 = (double)$$1.w() + $$2.j();
       $$0.a($$3, $$4, $$5, $$6, 0.0, 0.0, 0.0);
    }
 
-   public static void a(dcg $$0, ja $$1, int $$2, lh $$3) {
+   public static void a(dch $$0, ja $$1, int $$2, lh $$3) {
       double $$4 = 0.5;
-      dsk $$5 = $$0.a_($$1);
+      dsl $$5 = $$0.a_($$1);
       double $$6 = $$5.i() ? 1.0 : $$5.j($$0, $$1).c(jf.a.b);
       a($$0, $$1, $$2, 0.5, $$6, true, $$3);
    }
 
-   public static void a(dcg $$0, ja $$1, int $$2, double $$3, double $$4, boolean $$5, lh $$6) {
+   public static void a(dch $$0, ja $$1, int $$2, double $$3, double $$4, boolean $$5, lh $$6) {
       ayo $$7 = $$0.E_();
 
       for (int $$8 = 0; $$8 < $$2; $$8++) {
@@ -82,8 +82,8 @@ public class ayk {
       }
    }
 
-   public static void a(dcg $$0, ja $$1, int $$2) {
-      ewf $$3 = $$1.b().b(0.0, 0.5, 0.0);
+   public static void a(dch $$0, ja $$1, int $$2) {
+      ewh $$3 = $$1.b().b(0.0, 0.5, 0.0);
       lb $$4 = new lb(lj.bb, $$0.a_($$1));
 
       for (int $$5 = 0; (float)$$5 < (float)$$2 / 3.0F; $$5++) {

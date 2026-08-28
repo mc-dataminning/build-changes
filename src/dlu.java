@@ -1,105 +1,48 @@
-import com.mojang.serialization.Codec;
-import java.util.List;
+import com.mojang.serialization.MapCodec;
 
-public enum dlu implements azc {
-   a("none", h.a),
-   b("clockwise_90", h.u),
-   c("180", h.c),
-   d("counterclockwise_90", h.v);
+public class dlu extends dfi {
+   public static final MapCodec<dlu> h = b(dlu::new);
+   public static final dtj<jf.a> i = dtb.I;
 
-   public static final Codec<dlu> e = azc.a(dlu::values);
-   private final String f;
-   private final h g;
-
-   private dlu(final String $$0, final h $$1) {
-      this.f = $$0;
-      this.g = $$1;
+   @Override
+   public MapCodec<? extends dlu> a() {
+      return h;
    }
 
-   public dlu a(dlu $$0) {
-      switch ($$0) {
-         case c:
-            switch (this) {
-               case a:
-                  return c;
-               case b:
-                  return d;
-               case c:
-                  return a;
-               case d:
-                  return b;
-            }
+   public dlu(dsk.d $$0) {
+      super($$0);
+      this.k(this.o().a(i, jf.a.b));
+   }
+
+   @Override
+   protected dsl a(dsl $$0, dlv $$1) {
+      return b($$0, $$1);
+   }
+
+   public static dsl b(dsl $$0, dlv $$1) {
+      switch ($$1) {
          case d:
-            switch (this) {
-               case a:
-                  return d;
-               case b:
-                  return a;
-               case c:
-                  return b;
-               case d:
-                  return c;
-            }
          case b:
-            switch (this) {
+            switch ((jf.a)$$0.c(i)) {
                case a:
-                  return b;
-               case b:
-                  return c;
+                  return $$0.a(i, jf.a.c);
                case c:
-                  return d;
-               case d:
-                  return a;
+                  return $$0.a(i, jf.a.a);
+               default:
+                  return $$0;
             }
-         default:
-            return this;
-      }
-   }
-
-   public h a() {
-      return this.g;
-   }
-
-   public jf a(jf $$0) {
-      if ($$0.o() == jf.a.b) {
-         return $$0;
-      } else {
-         switch (this) {
-            case b:
-               return $$0.h();
-            case c:
-               return $$0.g();
-            case d:
-               return $$0.i();
-            default:
-               return $$0;
-         }
-      }
-   }
-
-   public int a(int $$0, int $$1) {
-      switch (this) {
-         case b:
-            return ($$0 + $$1 / 4) % $$1;
-         case c:
-            return ($$0 + $$1 / 2) % $$1;
-         case d:
-            return ($$0 + $$1 * 3 / 4) % $$1;
          default:
             return $$0;
       }
    }
 
-   public static dlu a(ayo $$0) {
-      return ac.a(values(), $$0);
-   }
-
-   public static List<dlu> b(ayo $$0) {
-      return ac.b(values(), $$0);
+   @Override
+   protected void a(dsm.a<dfi, dsl> $$0) {
+      $$0.a(i);
    }
 
    @Override
-   public String c() {
-      return this.f;
+   public dsl a(cxn $$0) {
+      return this.o().a(i, $$0.k().o());
    }
 }

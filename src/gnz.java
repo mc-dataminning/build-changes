@@ -1,21 +1,33 @@
-public class gnz<T extends bsg & btr, M extends fuo<T>> extends gny<T, M> {
-   private final akk a;
-   private final M b;
+public class gnz<T extends cml, M extends fuq<T> & ftp & fuy> extends gnt<T, M> {
+   private final geb a;
+   private static final float b = (float) (-Math.PI / 6);
+   private static final float c = (float) (Math.PI / 2);
 
-   public gnz(gli<T, M> $$0, M $$1, akk $$2) {
-      super($$0);
-      this.b = $$1;
-      this.a = $$2;
+   public gnz(glk<T, M> $$0, geb $$1) {
+      super($$0, $$1);
+      this.a = $$1;
    }
 
    @Override
-   public void a(fam $$0, ged $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      if ($$3.i()) {
-         this.c().a(this.b);
-         this.b.a($$3, $$4, $$5, $$6);
-         this.b.a($$3, $$4, $$5, $$7, $$8, $$9);
-         faq $$10 = $$1.getBuffer(gel.e(this.a));
-         this.b.a($$0, $$10, $$2, gpf.d, 1.0F, 1.0F, 1.0F, 1.0F);
+   protected void a(btc $$0, cud $$1, cua $$2, bsw $$3, fao $$4, gef $$5, int $$6) {
+      if ($$1.a(cug.qX) && $$0.fv() == $$1 && $$0.aM == 0) {
+         this.a($$0, $$1, $$3, $$4, $$5, $$6);
+      } else {
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
       }
+   }
+
+   private void a(btc $$0, cud $$1, bsw $$2, fao $$3, gef $$4, int $$5) {
+      $$3.a();
+      fxq $$6 = this.c().d();
+      float $$7 = $$6.e;
+      $$6.e = ayg.a($$6.e, (float) (-Math.PI / 6), (float) (Math.PI / 2));
+      $$6.a($$3);
+      $$6.e = $$7;
+      gnf.a($$3, false);
+      boolean $$8 = $$2 == bsw.a;
+      $$3.a(($$8 ? -2.5F : 2.5F) / 16.0F, -0.0625F, 0.0F);
+      this.a.a($$0, $$1, cua.f, false, $$3, $$4, $$5);
+      $$3.b();
    }
 }

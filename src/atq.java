@@ -2,7 +2,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 
 public interface atq {
-   CompletableFuture<Void> a(atq.a var1, atw var2, bmu var3, bmu var4, Executor var5, Executor var6);
+   CompletableFuture<Void> a(atq.a var1, atw var2, bmv var3, bmv var4, Executor var5, Executor var6);
 
    default String c() {
       return this.getClass().getSimpleName();

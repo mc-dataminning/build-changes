@@ -21,7 +21,7 @@ public class bdj extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped(this.a, this.getInputSchema().getType(bgg.a), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
+      return this.fixTypeEverywhereTyped(this.a, this.getInputSchema().getType(bgh.a), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
    }
 
    private <T> Dynamic<T> a(Dynamic<T> $$0) {

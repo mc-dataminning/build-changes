@@ -1,36 +1,64 @@
-public interface clv {
-   String d_ = "Inventory";
+import javax.annotation.Nullable;
 
-   bqp y();
+public class clv implements dbd {
+   private final cml a;
+   private dbf b = new dbf();
+   private int c;
 
-   static void a(btd $$0, clv $$1, ciu $$2) {
-      cuc $$3 = $$2.p();
-      if ($$0.k($$3)) {
-         bqp $$4 = $$1.y();
-         boolean $$5 = $$4.c($$3);
-         if (!$$5) {
-            return;
-         }
-
-         $$0.a($$2);
-         int $$6 = $$3.H();
-         cuc $$7 = $$4.b($$3);
-         $$0.a($$2, $$6 - $$7.H());
-         if ($$7.e()) {
-            $$2.ap();
-         } else {
-            $$3.e($$7.H());
-         }
-      }
+   public clv(cml $$0) {
+      this.a = $$0;
    }
 
-   default void a(tx $$0, jl.a $$1) {
-      if ($$0.b("Inventory", 9)) {
-         this.y().a($$0.c("Inventory", 10), $$1);
-      }
+   @Override
+   public cml gn() {
+      return this.a;
    }
 
-   default void b(tx $$0, jl.a $$1) {
-      $$0.a("Inventory", this.y().a($$1));
+   @Override
+   public void f(@Nullable cml $$0) {
+   }
+
+   @Override
+   public dbf gp() {
+      return this.b;
+   }
+
+   @Override
+   public void a(dbf $$0) {
+      this.b = $$0;
+   }
+
+   @Override
+   public void a(dbe $$0) {
+      $$0.l();
+   }
+
+   @Override
+   public void n(cud $$0) {
+   }
+
+   @Override
+   public boolean gv() {
+      return this.a.dR().B;
+   }
+
+   @Override
+   public int t() {
+      return this.c;
+   }
+
+   @Override
+   public void t(int $$0) {
+      this.c = $$0;
+   }
+
+   @Override
+   public boolean gq() {
+      return true;
+   }
+
+   @Override
+   public avg gr() {
+      return avh.AX;
    }
 }

@@ -22,8 +22,8 @@ public class amw {
    }
 
    private static int a(eq $$0) throws CommandSyntaxException {
-      bmy $$1 = bmy.a($$0.l());
-      if (!bna.f.a($$1)) {
+      bmz $$1 = bmz.a($$0.l());
+      if (!bnb.f.a($$1)) {
          throw a.create();
       } else {
          $$0.a(() -> wu.c("commands.jfr.started"), false);
@@ -33,8 +33,8 @@ public class amw {
 
    private static int b(eq $$0) throws CommandSyntaxException {
       try {
-         Path $$1 = Paths.get(".").relativize(bna.f.b().normalize());
-         Path $$2 = $$0.l().r() && !aa.aW ? $$1 : $$1.toAbsolutePath();
+         Path $$1 = Paths.get(".").relativize(bnb.f.b().normalize());
+         Path $$2 = $$0.l().r() && !aa.aU ? $$1 : $$1.toAbsolutePath();
          wu $$3 = wu.b($$1.toString()).a(n.t).a($$1x -> $$1x.a(new ws(ws.a.f, $$2.toString())).a(new xa(xa.a.a, wu.c("chat.copy.click"))));
          $$0.a(() -> wu.a("commands.jfr.stopped", $$3), false);
          return 1;

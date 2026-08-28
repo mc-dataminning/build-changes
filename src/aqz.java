@@ -3,8 +3,8 @@ import javax.annotation.Nullable;
 
 public class aqz implements aqv {
    private final aqx a;
-   private final Long2ObjectOpenHashMap<dvh> b = new Long2ObjectOpenHashMap();
-   private dbm c = new dbm(0, 0);
+   private final Long2ObjectOpenHashMap<dvi> b = new Long2ObjectOpenHashMap();
+   private dbn c = new dbn(0, 0);
    private final int d;
    private final int e;
    private final int f;
@@ -34,7 +34,7 @@ public class aqz implements aqv {
    }
 
    @Override
-   public void a(dbm $$0) {
+   public void a(dbn $$0) {
       if (this.g) {
          this.a.a($$0);
          this.c = $$0;
@@ -42,7 +42,7 @@ public class aqz implements aqv {
    }
 
    @Override
-   public void a(dbm $$0, @Nullable dvh $$1) {
+   public void a(dbn $$0, @Nullable dvi $$1) {
       if (this.g) {
          this.a.a($$0, $$1);
          if ($$1 == null) {
@@ -79,7 +79,7 @@ public class aqz implements aqv {
    }
 
    @Nullable
-   public dvh a(int $$0, int $$1) {
-      return (dvh)this.b.get(dbm.c($$0 + this.c.e - this.e, $$1 + this.c.f - this.e));
+   public dvi a(int $$0, int $$1) {
+      return (dvi)this.b.get(dbn.c($$0 + this.c.e - this.e, $$1 + this.c.f - this.e));
    }
 }

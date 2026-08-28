@@ -5,7 +5,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
 import java.util.Optional;
 
-public record bj(List<ea<brb>> b, Optional<bu> c, Optional<bu> d, Optional<Boolean> e) {
+public record bj(List<ea<brc>> b, Optional<bu> c, Optional<bu> d, Optional<Boolean> e) {
    public static final Codec<bj> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                ea.a(lr.s).listOf().optionalFieldOf("tags", List.of()).forGetter(bj::a),
@@ -16,12 +16,12 @@ public record bj(List<ea<brb>> b, Optional<bu> c, Optional<bu> d, Optional<Boole
             .apply($$0, bj::new)
    );
 
-   public boolean a(aqn $$0, bqz $$1) {
-      return this.a($$0.z(), $$0.do(), $$1);
+   public boolean a(aqn $$0, bra $$1) {
+      return this.a($$0.A(), $$0.dp(), $$1);
    }
 
-   public boolean a(aqm $$0, ewf $$1, bqz $$2) {
-      for (ea<brb> $$3 : this.b) {
+   public boolean a(aqm $$0, ewh $$1, bra $$2) {
+      for (ea<brc> $$3 : this.b) {
          if (!$$3.a($$2.k())) {
             return false;
          }
@@ -34,7 +34,7 @@ public record bj(List<ea<brb>> b, Optional<bu> c, Optional<bu> d, Optional<Boole
       }
    }
 
-   public List<ea<brb>> a() {
+   public List<ea<brc>> a() {
       return this.b;
    }
 
@@ -51,7 +51,7 @@ public record bj(List<ea<brb>> b, Optional<bu> c, Optional<bu> d, Optional<Boole
    }
 
    public static class a {
-      private final Builder<ea<brb>> a = ImmutableList.builder();
+      private final Builder<ea<brc>> a = ImmutableList.builder();
       private Optional<bu> b = Optional.empty();
       private Optional<bu> c = Optional.empty();
       private Optional<Boolean> d = Optional.empty();
@@ -60,7 +60,7 @@ public record bj(List<ea<brb>> b, Optional<bu> c, Optional<bu> d, Optional<Boole
          return new bj.a();
       }
 
-      public bj.a a(ea<brb> $$0) {
+      public bj.a a(ea<brc> $$0) {
          this.a.add($$0);
          return this;
       }

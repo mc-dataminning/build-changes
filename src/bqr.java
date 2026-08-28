@@ -1,60 +1,19 @@
-public class bqr {
-   public static final float a = 1.0F;
-   protected float b = 20.0F;
-   protected long c = azh.a / 20L;
-   protected int d = 0;
-   protected boolean e = true;
-   protected boolean f = false;
+public final class bqr implements bql {
+   private final wu a;
+   private final cqp b;
 
-   public void a(float $$0) {
-      this.b = Math.max($$0, 1.0F);
-      this.c = (long)((double)azh.a / (double)this.b);
+   public bqr(cqp $$0, wu $$1) {
+      this.b = $$0;
+      this.a = $$1;
    }
 
-   public float f() {
-      return this.b;
+   @Override
+   public wu O_() {
+      return this.a;
    }
 
-   public float g() {
-      return (float)this.c / (float)azh.b;
-   }
-
-   public long h() {
-      return this.c;
-   }
-
-   public boolean i() {
-      return this.e;
-   }
-
-   public boolean j() {
-      return this.d > 0;
-   }
-
-   public void c(int $$0) {
-      this.d = $$0;
-   }
-
-   public int k() {
-      return this.d;
-   }
-
-   public void a(boolean $$0) {
-      this.f = $$0;
-   }
-
-   public boolean l() {
-      return this.f;
-   }
-
-   public void m() {
-      this.e = !this.f || this.d > 0;
-      if (this.d > 0) {
-         this.d--;
-      }
-   }
-
-   public boolean a(bsg $$0) {
-      return !this.i() && !($$0 instanceof cmk) && $$0.cY() <= 0;
+   @Override
+   public cpi createMenu(int $$0, cmk $$1, cml $$2) {
+      return this.b.createMenu($$0, $$1, $$2);
    }
 }

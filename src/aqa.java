@@ -2,8 +2,8 @@ public record aqa(int a, int b) {
    private static final long c = 32L;
    private static final long d = 4294967295L;
 
-   public dbm a() {
-      return new dbm(kc.a(this.a), kc.a(this.b));
+   public dbn a() {
+      return new dbn(kc.a(this.a), kc.a(this.b));
    }
 
    public long b() {
@@ -29,7 +29,7 @@ public record aqa(int a, int b) {
 
    @Override
    public int hashCode() {
-      return dbm.d(this.a, this.b);
+      return dbn.d(this.a, this.b);
    }
 
    public int c() {

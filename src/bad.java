@@ -51,7 +51,7 @@ public class bad extends bfd {
    );
 
    public bad(Schema $$0) {
-      super($$0, false, "BannerPatternFormatFix", bgg.s, "minecraft:banner");
+      super($$0, false, "BannerPatternFormatFix", bgh.s, "minecraft:banner");
    }
 
    @Override

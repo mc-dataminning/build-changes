@@ -1,57 +1,20 @@
-import java.util.Collections;
 import java.util.List;
 import javax.annotation.Nullable;
 
-public class grr implements grp {
-   private final gfm a;
-   private final gfk b;
-   private final gpo c;
-   private final boolean d;
+public interface grr {
+   List<gfc> a(@Nullable dsl var1, @Nullable jf var2, ayo var3);
 
-   public grr(gfm $$0, gfk $$1, gpo $$2, boolean $$3) {
-      this.a = $$0;
-      this.b = $$1;
-      this.c = $$2;
-      this.d = $$3;
-   }
+   boolean a();
 
-   @Override
-   public List<gfa> a(@Nullable dsk $$0, @Nullable jf $$1, ayo $$2) {
-      return Collections.emptyList();
-   }
+   boolean b();
 
-   @Override
-   public boolean a() {
-      return false;
-   }
+   boolean c();
 
-   @Override
-   public boolean b() {
-      return true;
-   }
+   boolean d();
 
-   @Override
-   public boolean c() {
-      return this.d;
-   }
+   gpq e();
 
-   @Override
-   public boolean d() {
-      return true;
-   }
+   gfo f();
 
-   @Override
-   public gpo e() {
-      return this.c;
-   }
-
-   @Override
-   public gfm f() {
-      return this.a;
-   }
-
-   @Override
-   public gfk g() {
-      return this.b;
-   }
+   gfm g();
 }

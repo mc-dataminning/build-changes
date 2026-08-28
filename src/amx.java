@@ -27,7 +27,7 @@ public class amx {
          int $$3 = 0;
 
          for (aqn $$4 : $$1) {
-            if (!$$0.l().a($$4.fY())) {
+            if (!$$0.l().a($$4.fZ())) {
                $$4.c.b($$2);
                $$0.a(() -> wu.a("commands.kick.success", $$4.O_(), $$2), true);
                $$3++;

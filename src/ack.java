@@ -5,9 +5,9 @@ public class ack implements zb<abn> {
    private final int d;
    private final int e;
    private final int f;
-   private final cuc g;
+   private final cud g;
 
-   public ack(int $$0, int $$1, int $$2, cuc $$3) {
+   public ack(int $$0, int $$1, int $$2, cud $$3) {
       this.d = $$0;
       this.e = $$1;
       this.f = $$2;
@@ -18,14 +18,14 @@ public class ack implements zb<abn> {
       this.d = $$0.readByte();
       this.e = $$0.l();
       this.f = $$0.readShort();
-      this.g = cuc.h.decode($$0);
+      this.g = cud.h.decode($$0);
    }
 
    private void a(wf $$0) {
       $$0.k(this.d);
       $$0.c(this.e);
       $$0.l(this.f);
-      cuc.h.encode($$0, this.g);
+      cud.h.encode($$0, this.g);
    }
 
    @Override
@@ -45,7 +45,7 @@ public class ack implements zb<abn> {
       return this.f;
    }
 
-   public cuc f() {
+   public cud f() {
       return this.g;
    }
 

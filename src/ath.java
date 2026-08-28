@@ -97,8 +97,8 @@ public class ath {
       return this.c.stream().map(ate::g).collect(ImmutableSet.toImmutableSet());
    }
 
-   public coy e() {
-      return this.f().stream().map(ate::e).reduce(coy::c).orElse(coy.a());
+   public coz e() {
+      return this.f().stream().map(ate::e).reduce(coz::c).orElse(coz.a());
    }
 
    public Collection<ate> f() {

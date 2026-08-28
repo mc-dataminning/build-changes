@@ -12,7 +12,7 @@ public class bbg extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgg.c);
+      Type<?> $$0 = this.getInputSchema().getType(bgh.c);
       OpticFinder<?> $$1 = $$0.findField("sections");
       return this.fixTypeEverywhereTyped("ChunkDeleteIgnoredLightDataFix", $$0, $$1x -> {
          boolean $$2 = ((Dynamic)$$1x.get(DSL.remainderFinder())).get("isLightOn").asBoolean(false);

@@ -1,135 +1,55 @@
-import javax.annotation.Nullable;
+public class cqq<T extends cpi> implements cow {
+   public static final cqq<cpq> a = a("generic_9x1", cpq::a);
+   public static final cqq<cpq> b = a("generic_9x2", cpq::b);
+   public static final cqq<cpq> c = a("generic_9x3", cpq::c);
+   public static final cqq<cpq> d = a("generic_9x4", cpq::d);
+   public static final cqq<cpq> e = a("generic_9x5", cpq::e);
+   public static final cqq<cpq> f = a("generic_9x6", cpq::f);
+   public static final cqq<cqc> g = a("generic_3x3", cqc::new);
+   public static final cqq<cpx> h = a("crafter_3x3", cpx::new);
+   public static final cqq<cpk> i = a("anvil", cpk::new);
+   public static final cqq<cpm> j = a("beacon", cpm::new);
+   public static final cqq<cpn> k = a("blast_furnace", cpn::new);
+   public static final cqq<cpo> l = a("brewing_stand", cpo::new);
+   public static final cqq<cqa> m = a("crafting", cqa::new);
+   public static final cqq<cqd> n = a("enchantment", cqd::new);
+   public static final cqq<cqf> o = a("furnace", cqf::new);
+   public static final cqq<cqh> p = a("grindstone", cqh::new);
+   public static final cqq<cqi> q = a("hopper", cqi::new);
+   public static final cqq<cqn> r = a("lectern", ($$0, $$1) -> new cqn($$0));
+   public static final cqq<cqo> s = a("loom", cqo::new);
+   public static final cqq<cqs> t = a("merchant", cqs::new);
+   public static final cqq<crb> u = a("shulker_box", crb::new);
+   public static final cqq<crh> v = a("smithing", crh::new);
+   public static final cqq<cri> w = a("smoker", cri::new);
+   public static final cqq<cpp> x = a("cartography_table", cpp::new);
+   public static final cqq<crk> y = a("stonecutter", crk::new);
+   private final coz z;
+   private final cqq.a<T> A;
 
-public class cqq implements bpz {
-   private final dbc b;
-   private final js<cuc> c = js.a(3, cuc.l);
-   @Nullable
-   private dbd d;
-   private int e;
-   private int f;
+   private static <T extends cpi> cqq<T> a(String $$0, cqq.a<T> $$1) {
+      return jw.a(lq.p, $$0, new cqq<>($$1, cpb.f));
+   }
 
-   public cqq(dbc $$0) {
-      this.b = $$0;
+   private static <T extends cpi> cqq<T> a(String $$0, cqq.a<T> $$1, cox... $$2) {
+      return jw.a(lq.p, $$0, new cqq<>($$1, cpb.d.a($$2)));
+   }
+
+   private cqq(cqq.a<T> $$0, coz $$1) {
+      this.A = $$0;
+      this.z = $$1;
+   }
+
+   public T a(int $$0, cmk $$1) {
+      return this.A.create($$0, $$1);
    }
 
    @Override
-   public int b() {
-      return this.c.size();
+   public coz i() {
+      return this.z;
    }
 
-   @Override
-   public boolean c() {
-      for (cuc $$0 : this.c) {
-         if (!$$0.e()) {
-            return false;
-         }
-      }
-
-      return true;
-   }
-
-   @Override
-   public cuc a(int $$0) {
-      return this.c.get($$0);
-   }
-
-   @Override
-   public cuc a(int $$0, int $$1) {
-      cuc $$2 = this.c.get($$0);
-      if ($$0 == 2 && !$$2.e()) {
-         return bqa.a(this.c, $$0, $$2.H());
-      } else {
-         cuc $$3 = bqa.a(this.c, $$0, $$1);
-         if (!$$3.e() && this.d($$0)) {
-            this.f();
-         }
-
-         return $$3;
-      }
-   }
-
-   private boolean d(int $$0) {
-      return $$0 == 0 || $$0 == 1;
-   }
-
-   @Override
-   public cuc b(int $$0) {
-      return bqa.a(this.c, $$0);
-   }
-
-   @Override
-   public void a(int $$0, cuc $$1) {
-      this.c.set($$0, $$1);
-      $$1.f(this.e_($$1));
-      if (this.d($$0)) {
-         this.f();
-      }
-   }
-
-   @Override
-   public boolean a(cmk $$0) {
-      return this.b.go() == $$0;
-   }
-
-   @Override
-   public void e() {
-      this.f();
-   }
-
-   public void f() {
-      this.d = null;
-      cuc $$0;
-      cuc $$1;
-      if (this.c.get(0).e()) {
-         $$0 = this.c.get(1);
-         $$1 = cuc.l;
-      } else {
-         $$0 = this.c.get(0);
-         $$1 = this.c.get(1);
-      }
-
-      if ($$0.e()) {
-         this.a(2, cuc.l);
-         this.f = 0;
-      } else {
-         dbe $$4 = this.b.gq();
-         if (!$$4.isEmpty()) {
-            dbd $$5 = $$4.a($$0, $$1, this.e);
-            if ($$5 == null || $$5.r()) {
-               this.d = $$5;
-               $$5 = $$4.a($$1, $$0, this.e);
-            }
-
-            if ($$5 != null && !$$5.r()) {
-               this.d = $$5;
-               this.a(2, $$5.h());
-               this.f = $$5.q();
-            } else {
-               this.a(2, cuc.l);
-               this.f = 0;
-            }
-         }
-
-         this.b.n(this.a(2));
-      }
-   }
-
-   @Nullable
-   public dbd g() {
-      return this.d;
-   }
-
-   public void c(int $$0) {
-      this.e = $$0;
-      this.f();
-   }
-
-   @Override
-   public void a() {
-      this.c.clear();
-   }
-
-   public int h() {
-      return this.f;
+   interface a<T extends cpi> {
+      T create(int var1, cmk var2);
    }
 }

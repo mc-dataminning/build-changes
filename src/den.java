@@ -1,89 +1,61 @@
+import com.google.common.collect.Maps;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Map;
 
-public class den extends det {
-   public static final MapCodec<den> a = b(den::new);
-   public static final dte b = dta.P;
-   public static final dtb c = dta.u;
+public class den extends ddz {
+   public static final MapCodec<den> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(csw.q.fieldOf("color").forGetter(ddz::b), u()).apply($$0, den::new));
+   public static final dtl b = dtb.ba;
+   private static final Map<csw, dfi> c = Maps.newHashMap();
+   private static final exa d = dfi.a(4.0, 0.0, 4.0, 12.0, 16.0, 12.0);
 
    @Override
    public MapCodec<den> a() {
       return a;
    }
 
-   public den(dsj.d $$0) {
-      super($$0);
-      this.k(this.E.b().a(b, jf.c).a(c, Boolean.valueOf(false)));
+   public den(csw $$0, dsk.d $$1) {
+      super($$0, $$1);
+      this.k(this.E.b().a(b, Integer.valueOf(0)));
+      c.put($$0, this);
    }
 
    @Override
-   protected bqg a(dsk $$0, dcf $$1, ja $$2, cmk $$3, ewb $$4) {
-      if ($$1.B) {
-         return bqg.a;
-      } else {
-         dpp $$5 = $$1.c_($$2);
-         if ($$5 instanceof dpi) {
-            $$3.a((dpi)$$5);
-            $$3.a(avr.ar);
-            clb.a($$3, true);
-         }
-
-         return bqg.c;
-      }
+   protected boolean a(dsl $$0, dcj $$1, ja $$2) {
+      return $$1.a_($$2.d()).e();
    }
 
    @Override
-   protected void a(dsk $$0, dcf $$1, ja $$2, dsk $$3, boolean $$4) {
-      bqc.a($$0, $$3, $$1, $$2);
-      super.a($$0, $$1, $$2, $$3, $$4);
+   protected exa a(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
+      return d;
    }
 
    @Override
-   protected void a(dsk $$0, aqm $$1, ja $$2, ayo $$3) {
-      dpp $$4 = $$1.c_($$2);
-      if ($$4 instanceof dpi) {
-         ((dpi)$$4).l();
-      }
-   }
-
-   @Nullable
-   @Override
-   public dpp a(ja $$0, dsk $$1) {
-      return new dpi($$0, $$1);
+   public dsl a(cxn $$0) {
+      return this.o().a(b, Integer.valueOf(dtr.a($$0.i() + 180.0F)));
    }
 
    @Override
-   protected dln a_(dsk $$0) {
-      return dln.c;
+   protected dsl a(dsl $$0, jf $$1, dsl $$2, dch $$3, ja $$4, ja $$5) {
+      return $$1 == jf.a && !$$0.a($$3, $$4) ? dfk.a.o() : super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected boolean c_(dsk $$0) {
-      return true;
+   protected dsl a(dsl $$0, dlv $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected int a(dsk $$0, dcf $$1, ja $$2) {
-      return cph.a($$1.c_($$2));
+   protected dsl a(dsl $$0, dkf $$1) {
+      return $$0.a(b, Integer.valueOf($$1.a($$0.c(b), 16)));
    }
 
    @Override
-   protected dsk a(dsk $$0, dlu $$1) {
-      return $$0.a(b, $$1.a($$0.c(b)));
+   protected void a(dsm.a<dfi, dsl> $$0) {
+      $$0.a(b);
    }
 
-   @Override
-   protected dsk a(dsk $$0, dke $$1) {
-      return $$0.a($$1.a($$0.c(b)));
-   }
-
-   @Override
-   protected void a(dsl.a<dfh, dsk> $$0) {
-      $$0.a(b, c);
-   }
-
-   @Override
-   public dsk a(cxm $$0) {
-      return this.o().a(b, $$0.d().g());
+   public static dfi a(csw $$0) {
+      return c.getOrDefault($$0, dfk.iJ);
    }
 }

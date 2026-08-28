@@ -1,104 +1,88 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class dfm extends det implements dic {
-   public static final MapCodec<dfm> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               lq.e.r().fieldOf("turns_into").forGetter(dfm::b),
-               lq.b.r().fieldOf("brush_sound").forGetter(dfm::c),
-               lq.b.r().fieldOf("brush_comleted_sound").forGetter(dfm::d),
-               u()
-            )
-            .apply($$0, dfm::new)
-   );
-   private static final dtk c = dta.bv;
-   public static final int b = 2;
-   private final dfh d;
-   private final avg e;
-   private final avg f;
+public class dfm extends deu {
+   public static final MapCodec<dfm> a = b(dfm::new);
+   public static final dtc[] b = new dtc[]{dtb.k, dtb.l, dtb.m};
+   protected static final exa c = ewx.a(dfi.a(1.0, 0.0, 1.0, 15.0, 2.0, 15.0), dfi.a(7.0, 0.0, 7.0, 9.0, 14.0, 9.0));
 
    @Override
    public MapCodec<dfm> a() {
       return a;
    }
 
-   public dfm(dfh $$0, avg $$1, avg $$2, dsj.d $$3) {
-      super($$3);
-      this.d = $$0;
-      this.e = $$1;
-      this.f = $$2;
-      this.k(this.E.b().a(c, Integer.valueOf(0)));
+   public dfm(dsk.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b[0], Boolean.valueOf(false)).a(b[1], Boolean.valueOf(false)).a(b[2], Boolean.valueOf(false)));
    }
 
    @Override
-   protected void a(dsl.a<dfh, dsk> $$0) {
-      $$0.a(c);
+   protected dlo a_(dsl $$0) {
+      return dlo.c;
    }
 
    @Override
-   public dln a_(dsk $$0) {
-      return dln.c;
-   }
-
-   @Override
-   public void b(dsk $$0, dcf $$1, ja $$2, dsk $$3, boolean $$4) {
-      $$1.a($$2, this, 2);
-   }
-
-   @Override
-   public dsk a(dsk $$0, jf $$1, dsk $$2, dcg $$3, ja $$4, ja $$5) {
-      $$3.a($$4, this, 2);
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   public void a(dsk $$0, aqm $$1, ja $$2, ayo $$3) {
-      if ($$1.c_($$2) instanceof dpt $$4) {
-         $$4.b();
-      }
-
-      if (did.m($$1.a_($$2.d())) && $$2.v() >= $$1.I_()) {
-         cit $$5 = cit.a($$1, $$2, $$0);
-         $$5.s();
-      }
-   }
-
-   @Override
-   public void a(dcf $$0, ja $$1, cit $$2) {
-      ewf $$3 = $$2.cL().f();
-      $$0.c(2001, ja.a($$3), dfh.i($$2.u()));
-      $$0.a($$2, dxg.f, $$3);
-   }
-
-   @Override
-   public void a(dsk $$0, dcf $$1, ja $$2, ayo $$3) {
-      if ($$3.a(16) == 0) {
-         ja $$4 = $$2.d();
-         if (did.m($$1.a_($$4))) {
-            double $$5 = (double)$$2.u() + $$3.j();
-            double $$6 = (double)$$2.v() - 0.05;
-            double $$7 = (double)$$2.w() + $$3.j();
-            $$1.a(new lb(lj.C, $$0), $$5, $$6, $$7, 0.0, 0.0, 0.0);
-         }
-      }
+   public dpq a(ja $$0, dsl $$1) {
+      return new dpt($$0, $$1);
    }
 
    @Nullable
    @Override
-   public dpp a(ja $$0, dsk $$1) {
-      return new dpt($$0, $$1);
+   public <T extends dpq> dpr<T> a(dcg $$0, dsl $$1, dps<T> $$2) {
+      return $$0.B ? null : a($$2, dps.l, dpt::a);
    }
 
-   public dfh b() {
-      return this.d;
+   @Override
+   protected exa a(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
+      return c;
    }
 
-   public avg c() {
-      return this.e;
+   @Override
+   protected bqh a(dsl $$0, dcg $$1, ja $$2, cml $$3, ewd $$4) {
+      if ($$1.B) {
+         return bqh.a;
+      } else {
+         dpq $$5 = $$1.c_($$2);
+         if ($$5 instanceof dpt) {
+            $$3.a((dpt)$$5);
+            $$3.a(avr.aa);
+         }
+
+         return bqh.c;
+      }
    }
 
-   public avg d() {
-      return this.f;
+   @Override
+   public void a(dsl $$0, dcg $$1, ja $$2, ayo $$3) {
+      double $$4 = (double)$$2.u() + 0.4 + (double)$$3.i() * 0.2;
+      double $$5 = (double)$$2.v() + 0.7 + (double)$$3.i() * 0.3;
+      double $$6 = (double)$$2.w() + 0.4 + (double)$$3.i() * 0.2;
+      $$1.a(lj.ae, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+   }
+
+   @Override
+   protected void a(dsl $$0, dcg $$1, ja $$2, dsl $$3, boolean $$4) {
+      bqd.a($$0, $$3, $$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   protected boolean c_(dsl $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dsl $$0, dcg $$1, ja $$2) {
+      return cpi.a($$1.c_($$2));
+   }
+
+   @Override
+   protected void a(dsm.a<dfi, dsl> $$0) {
+      $$0.a(b[0], b[1], b[2]);
+   }
+
+   @Override
+   protected boolean a(dsl $$0, eoy $$1) {
+      return false;
    }
 }

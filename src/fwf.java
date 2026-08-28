@@ -1,37 +1,31 @@
-public class fwf extends fvk {
-   private static final String a = "plate";
-   private static final String b = "handle";
-   private static final int c = 10;
-   private static final int d = 20;
-   private final fxo e;
-   private final fxo f;
-   private final fxo g;
+public class fwf<T extends cfo> extends fwa<T> {
+   private float j;
 
-   public fwf(fxo $$0) {
-      super(gel::c);
-      this.e = $$0;
-      this.f = $$0.b("plate");
-      this.g = $$0.b("handle");
+   public fwf(fxq $$0) {
+      super($$0, false, 8.0F, 4.0F, 2.0F, 2.0F, 24);
    }
 
-   public static fxu a() {
-      fxw $$0 = new fxw();
-      fxx $$1 = $$0.a();
-      $$1.a("plate", fxt.c().a(0, 0).a(-6.0F, -11.0F, -2.0F, 12.0F, 22.0F, 1.0F), fxq.a);
-      $$1.a("handle", fxt.c().a(26, 0).a(-1.0F, -3.0F, -1.0F, 2.0F, 6.0F, 6.0F), fxq.a);
-      return fxu.a($$0, 64, 64);
+   public static fxw c() {
+      fxy $$0 = new fxy();
+      fxz $$1 = $$0.a();
+      $$1.a("head", fxv.c().a(0, 0).a(-3.0F, -4.0F, -4.0F, 6.0F, 6.0F, 6.0F, new fxu(0.6F)), fxs.a(0.0F, 6.0F, -8.0F));
+      $$1.a("body", fxv.c().a(28, 8).a(-4.0F, -10.0F, -7.0F, 8.0F, 16.0F, 6.0F, new fxu(1.75F)), fxs.a(0.0F, 5.0F, 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
+      fxv $$2 = fxv.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, 6.0F, 4.0F, new fxu(0.5F));
+      $$1.a("right_hind_leg", $$2, fxs.a(-3.0F, 12.0F, 7.0F));
+      $$1.a("left_hind_leg", $$2, fxs.a(3.0F, 12.0F, 7.0F));
+      $$1.a("right_front_leg", $$2, fxs.a(-3.0F, 12.0F, -5.0F));
+      $$1.a("left_front_leg", $$2, fxs.a(3.0F, 12.0F, -5.0F));
+      return fxw.a($$0, 64, 32);
    }
 
-   public fxo b() {
-      return this.f;
+   public void a(T $$0, float $$1, float $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a.c = 6.0F + $$0.H($$3) * 9.0F;
+      this.j = $$0.I($$3);
    }
 
-   public fxo c() {
-      return this.g;
-   }
-
-   @Override
-   public void a(fam $$0, faq $$1, int $$2, int $$3, float $$4, float $$5, float $$6, float $$7) {
-      this.e.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      this.a.e = this.j;
    }
 }

@@ -1,156 +1,160 @@
-import com.mojang.datafixers.util.Either;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import java.util.Collections;
+import java.util.Optional;
+import java.util.Set;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import javax.annotation.Nullable;
 
-public interface czs {
-   Codec<czs> a = lq.av.r().dispatch(czs::a, $$0 -> $$0);
-   Codec<czs> b = Codec.either(czs.b.c, a)
-      .xmap($$0 -> (czs)$$0.map($$0x -> $$0x, $$0x -> $$0x), $$0 -> $$0 instanceof czs.b $$1 ? Either.left($$1) : Either.right($$0));
+public class czs implements cxi {
+   public static final czs a = new czs(new Object2IntOpenHashMap(), true);
+   private static final Codec<Integer> d = Codec.intRange(0, 255);
+   private static final Codec<Object2IntOpenHashMap<jj<czm>>> e = Codec.unboundedMap(czm.c, d).xmap(Object2IntOpenHashMap::new, Function.identity());
+   private static final Codec<czs> f = RecordCodecBuilder.create(
+      $$0 -> $$0.group(e.fieldOf("levels").forGetter($$0x -> $$0x.g), Codec.BOOL.optionalFieldOf("show_in_tooltip", true).forGetter($$0x -> $$0x.h))
+            .apply($$0, czs::new)
+   );
+   public static final Codec<czs> b = Codec.withAlternative(f, e, $$0 -> new czs($$0, true));
+   public static final ys<wf, czs> c = ys.a(yq.a(Object2IntOpenHashMap::new, czm.d, yq.g), $$0 -> $$0.g, yq.b, $$0 -> $$0.h, czs::new);
+   final Object2IntOpenHashMap<jj<czm>> g;
+   final boolean h;
 
-   static MapCodec<? extends czs> a(jw<MapCodec<? extends czs>> $$0) {
-      jw.a($$0, "clamped", czs.a.c);
-      jw.a($$0, "fraction", czs.c.c);
-      jw.a($$0, "levels_squared", czs.d.c);
-      return jw.a($$0, "linear", czs.e.c);
+   czs(Object2IntOpenHashMap<jj<czm>> $$0, boolean $$1) {
+      this.g = $$0;
+      this.h = $$1;
+      ObjectIterator var3 = $$0.object2IntEntrySet().iterator();
+
+      while (var3.hasNext()) {
+         Entry<jj<czm>> $$2 = (Entry<jj<czm>>)var3.next();
+         int $$3 = $$2.getIntValue();
+         if ($$3 < 0 || $$3 > 255) {
+            throw new IllegalArgumentException("Enchantment " + $$2.getKey() + " has invalid level " + $$3);
+         }
+      }
    }
 
-   static czs.b a(float $$0) {
-      return new czs.b($$0);
+   public int a(jj<czm> $$0) {
+      return this.g.getInt($$0);
    }
 
-   static czs.e a(float $$0, float $$1) {
-      return new czs.e($$0, $$1);
+   @Override
+   public void a(cty.b $$0, Consumer<wu> $$1, cvw $$2) {
+      if (this.h) {
+         jl.a $$3 = $$0.a();
+         jn<czm> $$4 = a($$3, lr.aK, avz.a);
+
+         for (jj<czm> $$5 : $$4) {
+            int $$6 = this.g.getInt($$5);
+            if ($$6 > 0) {
+               $$1.accept(czm.a($$5, $$6));
+            }
+         }
+
+         ObjectIterator var9 = this.g.object2IntEntrySet().iterator();
+
+         while (var9.hasNext()) {
+            Entry<jj<czm>> $$7 = (Entry<jj<czm>>)var9.next();
+            jj<czm> $$8 = (jj<czm>)$$7.getKey();
+            if (!$$4.a($$8)) {
+               $$1.accept(czm.a((jj<czm>)$$7.getKey(), $$7.getIntValue()));
+            }
+         }
+      }
    }
 
-   static czs.e b(float $$0) {
-      return a($$0, $$0);
-   }
-
-   float a(int var1);
-
-   MapCodec<? extends czs> a();
-
-   public static record a(czs d, float e, float f) implements czs {
-      public static final MapCodec<czs.a> c = RecordCodecBuilder.mapCodec(
-            $$0 -> $$0.group(
-                     czs.b.fieldOf("value").forGetter(czs.a::b), Codec.FLOAT.fieldOf("min").forGetter(czs.a::c), Codec.FLOAT.fieldOf("max").forGetter(czs.a::d)
-                  )
-                  .apply($$0, czs.a::new)
-         )
-         .validate($$0 -> $$0.f <= $$0.e ? DataResult.error(() -> "Max must be larger than min, min: " + $$0.e + ", max: " + $$0.f) : DataResult.success($$0));
-
-      @Override
-      public float a(int $$0) {
-         return ayg.a(this.d.a($$0), this.e, this.f);
+   private static <T> jn<T> a(@Nullable jl.a $$0, akj<jw<T>> $$1, awm<T> $$2) {
+      if ($$0 != null) {
+         Optional<jn.c<T>> $$3 = $$0.b($$1).a($$2);
+         if ($$3.isPresent()) {
+            return $$3.get();
+         }
       }
 
-      @Override
-      public MapCodec<czs.a> a() {
-         return c;
+      return jn.a();
+   }
+
+   public czs a(boolean $$0) {
+      return new czs(this.g, $$0);
+   }
+
+   public Set<jj<czm>> a() {
+      return Collections.unmodifiableSet(this.g.keySet());
+   }
+
+   public Set<Entry<jj<czm>>> b() {
+      return Collections.unmodifiableSet(this.g.object2IntEntrySet());
+   }
+
+   public int c() {
+      return this.g.size();
+   }
+
+   public boolean d() {
+      return this.g.isEmpty();
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof czs $$1) ? false : this.h == $$1.h && this.g.equals($$1.g);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = this.g.hashCode();
+      return 31 * $$0 + (this.h ? 1 : 0);
+   }
+
+   @Override
+   public String toString() {
+      return "ItemEnchantments{enchantments=" + this.g + ", showInTooltip=" + this.h + "}";
+   }
+
+   public static class a {
+      private final Object2IntOpenHashMap<jj<czm>> a = new Object2IntOpenHashMap();
+      private final boolean b;
+
+      public a(czs $$0) {
+         this.a.putAll($$0.g);
+         this.b = $$0.h;
+      }
+
+      public void a(jj<czm> $$0, int $$1) {
+         if ($$1 <= 0) {
+            this.a.removeInt($$0);
+         } else {
+            this.a.put($$0, Math.min($$1, 255));
+         }
+      }
+
+      public void b(jj<czm> $$0, int $$1) {
+         if ($$1 > 0) {
+            this.a.merge($$0, Math.min($$1, 255), Integer::max);
+         }
+      }
+
+      public void a(Predicate<jj<czm>> $$0) {
+         this.a.keySet().removeIf($$0);
+      }
+
+      public int a(jj<czm> $$0) {
+         return this.a.getOrDefault($$0, 0);
+      }
+
+      public Set<jj<czm>> a() {
+         return this.a.keySet();
       }
 
       public czs b() {
-         return this.d;
-      }
-
-      public float c() {
-         return this.e;
-      }
-
-      public float d() {
-         return this.f;
-      }
-   }
-
-   public static record b(float e) implements czs {
-      public static final Codec<czs.b> c = Codec.FLOAT.xmap(czs.b::new, czs.b::b);
-      public static final MapCodec<czs.b> d = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.FLOAT.fieldOf("value").forGetter(czs.b::b)).apply($$0, czs.b::new)
-      );
-
-      @Override
-      public float a(int $$0) {
-         return this.e;
-      }
-
-      @Override
-      public MapCodec<czs.b> a() {
-         return d;
-      }
-
-      public float b() {
-         return this.e;
-      }
-   }
-
-   public static record c(czs d, czs e) implements czs {
-      public static final MapCodec<czs.c> c = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(czs.b.fieldOf("numerator").forGetter(czs.c::b), czs.b.fieldOf("denominator").forGetter(czs.c::c)).apply($$0, czs.c::new)
-      );
-
-      @Override
-      public float a(int $$0) {
-         return this.d.a($$0) / this.e.a($$0);
-      }
-
-      @Override
-      public MapCodec<czs.c> a() {
-         return c;
-      }
-
-      public czs b() {
-         return this.d;
-      }
-
-      public czs c() {
-         return this.e;
-      }
-   }
-
-   public static record d(float d) implements czs {
-      public static final MapCodec<czs.d> c = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.FLOAT.fieldOf("added").forGetter(czs.d::b)).apply($$0, czs.d::new)
-      );
-
-      @Override
-      public float a(int $$0) {
-         return (float)ayg.h($$0) + this.d;
-      }
-
-      @Override
-      public MapCodec<czs.d> a() {
-         return c;
-      }
-
-      public float b() {
-         return this.d;
-      }
-   }
-
-   public static record e(float d, float e) implements czs {
-      public static final MapCodec<czs.e> c = RecordCodecBuilder.mapCodec(
-         $$0 -> $$0.group(Codec.FLOAT.fieldOf("base").forGetter(czs.e::b), Codec.FLOAT.fieldOf("per_level_above_first").forGetter(czs.e::c))
-               .apply($$0, czs.e::new)
-      );
-
-      @Override
-      public float a(int $$0) {
-         return this.d + this.e * (float)($$0 - 1);
-      }
-
-      @Override
-      public MapCodec<czs.e> a() {
-         return c;
-      }
-
-      public float b() {
-         return this.d;
-      }
-
-      public float c() {
-         return this.e;
+         return new czs(this.a, this.b);
       }
    }
 }

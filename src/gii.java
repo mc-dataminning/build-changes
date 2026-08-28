@@ -1,16 +1,13 @@
-public class gii extends gks<cfx, ftk> {
-   private static final akk a = new akk("textures/entity/allay/allay.png");
+public abstract class gii<T extends cgw, M extends fvb<T>> extends gku<T, M> {
+   private final float a;
 
-   public gii(gjm.a $$0) {
-      super($$0, new ftk($$0.a(fxn.a)), 0.4F);
-      this.a(new gnr<>(this, $$0.d()));
+   public gii(gjo.a $$0, M $$1, float $$2) {
+      super($$0, $$1, 0.75F);
+      this.a = $$2;
    }
 
-   public akk a(cfx $$0) {
-      return a;
-   }
-
-   protected int a(cfx $$0, ja $$1) {
-      return 15;
+   protected void a(T $$0, fao $$1, float $$2) {
+      $$1.b(this.a, this.a, this.a);
+      super.a($$0, $$1, $$2);
    }
 }

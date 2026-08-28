@@ -1,63 +1,80 @@
-import java.lang.reflect.Constructor;
-import java.util.Arrays;
+import javax.annotation.Nullable;
 
-public class cid<T extends chx> {
-   private static cid<?>[] l = new cid[0];
-   public static final cid<cht> a = a(cht.class, "HoldingPattern");
-   public static final cid<cib> b = a(cib.class, "StrafePlayer");
-   public static final cid<chv> c = a(chv.class, "LandingApproach");
-   public static final cid<chw> d = a(chw.class, "Landing");
-   public static final cid<cic> e = a(cic.class, "Takeoff");
-   public static final cid<chz> f = a(chz.class, "SittingFlaming");
-   public static final cid<cia> g = a(cia.class, "SittingScanning");
-   public static final cid<chy> h = a(chy.class, "SittingAttacking");
-   public static final cid<chr> i = a(chr.class, "ChargingPlayer");
-   public static final cid<chs> j = a(chs.class, "Dying");
-   public static final cid<chu> k = a(chu.class, "Hover");
-   private final Class<? extends chx> m;
-   private final int n;
-   private final String o;
+public class cid extends chq {
+   private boolean b;
+   @Nullable
+   private eox c;
+   @Nullable
+   private ewh d;
 
-   private cid(int $$0, Class<? extends chx> $$1, String $$2) {
-      this.n = $$0;
-      this.m = $$1;
-      this.o = $$2;
-   }
-
-   public chx a(chn $$0) {
-      try {
-         Constructor<? extends chx> $$1 = this.a();
-         return $$1.newInstance($$0);
-      } catch (Exception var3) {
-         throw new Error(var3);
-      }
-   }
-
-   protected Constructor<? extends chx> a() throws NoSuchMethodException {
-      return this.m.getConstructor(chn.class);
-   }
-
-   public int b() {
-      return this.n;
+   public cid(cho $$0) {
+      super($$0);
    }
 
    @Override
-   public String toString() {
-      return this.o + " (#" + this.n + ")";
+   public void c() {
+      if (!this.b && this.c != null) {
+         ja $$0 = this.a.dR().a(dyg.a.f, ebk.a(this.a.s()));
+         if (!$$0.a(this.a.dp(), 10.0)) {
+            this.a.gk().a(cie.a);
+         }
+      } else {
+         this.b = false;
+         this.j();
+      }
    }
 
-   public static cid<?> a(int $$0) {
-      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
+   @Override
+   public void d() {
+      this.b = true;
+      this.c = null;
+      this.d = null;
    }
 
-   public static int c() {
-      return l.length;
+   private void j() {
+      int $$0 = this.a.x();
+      ewh $$1 = this.a.G(1.0F);
+      int $$2 = this.a.r(-$$1.c * 40.0, 105.0, -$$1.e * 40.0);
+      if (this.a.gl() != null && this.a.gl().e() > 0) {
+         $$2 %= 12;
+         if ($$2 < 0) {
+            $$2 += 12;
+         }
+      } else {
+         $$2 -= 12;
+         $$2 &= 7;
+         $$2 += 12;
+      }
+
+      this.c = this.a.a($$0, $$2, null);
+      this.k();
    }
 
-   private static <T extends chx> cid<T> a(Class<T> $$0, String $$1) {
-      cid<T> $$2 = new cid<>(l.length, $$0, $$1);
-      l = Arrays.copyOf(l, l.length + 1);
-      l[$$2.b()] = $$2;
-      return $$2;
+   private void k() {
+      if (this.c != null) {
+         this.c.a();
+         if (!this.c.c()) {
+            ke $$0 = this.c.g();
+            this.c.a();
+
+            double $$1;
+            do {
+               $$1 = (double)((float)$$0.v() + this.a.dU().i() * 20.0F);
+            } while ($$1 < (double)$$0.v());
+
+            this.d = new ewh((double)$$0.u(), $$1, (double)$$0.w());
+         }
+      }
+   }
+
+   @Nullable
+   @Override
+   public ewh g() {
+      return this.d;
+   }
+
+   @Override
+   public cie<cid> i() {
+      return cie.e;
    }
 }

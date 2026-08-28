@@ -1,21 +1,20 @@
-import it.unimi.dsi.fastutil.doubles.AbstractDoubleList;
+public interface ewl {
+   ewl a = ($$0, $$1) -> false;
+   ewl b = ($$0, $$1) -> !$$0 && !$$1;
+   ewl c = ($$0, $$1) -> $$1 && !$$0;
+   ewl d = ($$0, $$1) -> !$$0;
+   ewl e = ($$0, $$1) -> $$0 && !$$1;
+   ewl f = ($$0, $$1) -> !$$1;
+   ewl g = ($$0, $$1) -> $$0 != $$1;
+   ewl h = ($$0, $$1) -> !$$0 || !$$1;
+   ewl i = ($$0, $$1) -> $$0 && $$1;
+   ewl j = ($$0, $$1) -> $$0 == $$1;
+   ewl k = ($$0, $$1) -> $$1;
+   ewl l = ($$0, $$1) -> !$$0 || $$1;
+   ewl m = ($$0, $$1) -> $$0;
+   ewl n = ($$0, $$1) -> $$0 || !$$1;
+   ewl o = ($$0, $$1) -> $$0 || $$1;
+   ewl p = ($$0, $$1) -> true;
 
-public class ewl extends AbstractDoubleList {
-   private final int a;
-
-   ewl(int $$0) {
-      if ($$0 <= 0) {
-         throw new IllegalArgumentException("Need at least 1 part");
-      } else {
-         this.a = $$0;
-      }
-   }
-
-   public double getDouble(int $$0) {
-      return (double)$$0 / (double)this.a;
-   }
-
-   public int size() {
-      return this.a + 1;
-   }
+   boolean apply(boolean var1, boolean var2);
 }

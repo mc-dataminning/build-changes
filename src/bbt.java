@@ -11,8 +11,8 @@ public class bbt extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getChoiceType(bgg.s, "minecraft:decorated_pot");
-      Type<?> $$1 = this.getOutputSchema().getChoiceType(bgg.s, "minecraft:decorated_pot");
+      Type<?> $$0 = this.getInputSchema().getChoiceType(bgh.s, "minecraft:decorated_pot");
+      Type<?> $$1 = this.getOutputSchema().getChoiceType(bgh.s, "minecraft:decorated_pot");
       return this.convertUnchecked("DecoratedPotFieldRenameFix", $$0, $$1);
    }
 }

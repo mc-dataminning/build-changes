@@ -1,38 +1,37 @@
-public class epc extends eot {
-   private float m = Float.MAX_VALUE;
-   private eot n;
-   private boolean o;
+import javax.annotation.Nullable;
 
-   public epc(eot $$0) {
-      super($$0.a, $$0.b, $$0.c);
-   }
+public class epc {
+   private final dbq a;
+   @Nullable
+   private final epb b;
+   private final ja c;
+   private final ja.a d = new ja.a();
 
-   public epc(int $$0, int $$1, int $$2) {
-      super($$0, $$1, $$2);
-   }
-
-   public void a(float $$0, eot $$1) {
-      if ($$0 < this.m) {
-         this.m = $$0;
-         this.n = $$1;
+   public epc(dbq $$0, bte $$1) {
+      this.a = $$0;
+      if ($$1.dR() instanceof aqm $$2) {
+         this.b = $$2.H();
+      } else {
+         this.b = null;
       }
+
+      this.c = $$1.dr();
    }
 
-   public eot d() {
-      return this.n;
+   public epa a(int $$0, int $$1, int $$2) {
+      ja $$3 = this.d.d($$0, $$1, $$2);
+      return this.b == null ? epf.b(this.a, $$3) : this.b.a(this.a, $$3);
    }
 
-   public void e() {
-      this.o = true;
+   public dsl a(ja $$0) {
+      return this.a.a_($$0);
    }
 
-   public boolean f() {
-      return this.o;
+   public dbq a() {
+      return this.a;
    }
 
-   public static epc c(vr $$0) {
-      epc $$1 = new epc($$0.readInt(), $$0.readInt(), $$0.readInt());
-      a($$0, $$1);
-      return $$1;
+   public ja b() {
+      return this.c;
    }
 }

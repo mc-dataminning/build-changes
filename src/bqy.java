@@ -1,19 +1,28 @@
 import com.mojang.serialization.Codec;
 
 public enum bqy implements azc {
-   a("never"),
-   b("when_caused_by_living_non_player"),
-   c("always");
+   a("hurt", avh.ul),
+   b("thorns", avh.zx),
+   c("drowning", avh.um),
+   d("burning", avh.uo),
+   e("poking", avh.up),
+   f("freezing", avh.un);
 
-   public static final Codec<bqy> d = azc.a(bqy::values);
-   private final String e;
+   public static final Codec<bqy> g = azc.a(bqy::values);
+   private final String h;
+   private final avg i;
 
-   private bqy(final String $$0) {
-      this.e = $$0;
+   private bqy(final String $$0, final avg $$1) {
+      this.h = $$0;
+      this.i = $$1;
    }
 
    @Override
    public String c() {
-      return this.e;
+      return this.h;
+   }
+
+   public avg a() {
+      return this.i;
    }
 }

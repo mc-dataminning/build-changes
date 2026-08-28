@@ -1,15 +1,19 @@
-public class cyz extends cxq {
-   public cyz(String $$0, cxw $$1, cyf $$2, cuc $$3, float $$4, int $$5) {
-      super(cyo.b, $$0, $$1, $$2, $$3, $$4, $$5);
+public record cyz(cud a) implements cym {
+   @Override
+   public cud a(int $$0) {
+      if ($$0 != 0) {
+         throw new IllegalArgumentException("No item for index " + $$0);
+      } else {
+         return this.a;
+      }
    }
 
    @Override
-   public cuc g() {
-      return new cuc(dfj.cD);
+   public int a() {
+      return 1;
    }
 
-   @Override
-   public cyn<?> ap_() {
-      return cyn.p;
+   public cud c() {
+      return this.a;
    }
 }

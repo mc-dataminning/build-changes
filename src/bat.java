@@ -5,7 +5,7 @@ import com.mojang.serialization.Dynamic;
 
 public class bat extends bfd {
    public bat(Schema $$0, boolean $$1) {
-      super($$0, $$1, "BlockEntitySignTextStrictJsonFix", bgg.s, "Sign");
+      super($$0, $$1, "BlockEntitySignTextStrictJsonFix", bgh.s, "Sign");
    }
 
    private Dynamic<?> a(Dynamic<?> $$0, String $$1) {

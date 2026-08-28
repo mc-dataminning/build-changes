@@ -81,7 +81,7 @@ public class aof {
       );
    }
 
-   private static int a(eq $$0, ewe $$1, float $$2, float $$3, int $$4, boolean $$5, Collection<? extends bsg> $$6) throws CommandSyntaxException {
+   private static int a(eq $$0, ewg $$1, float $$2, float $$3, int $$4, boolean $$5, Collection<? extends bsh> $$6) throws CommandSyntaxException {
       aqm $$7 = $$0.e();
       int $$8 = $$7.I_();
       if ($$4 < $$8) {
@@ -103,12 +103,12 @@ public class aof {
       }
    }
 
-   private static int a(Collection<? extends bsg> $$0) {
-      Set<exl> $$1 = Sets.newHashSet();
+   private static int a(Collection<? extends bsh> $$0) {
+      Set<exn> $$1 = Sets.newHashSet();
 
-      for (bsg $$2 : $$0) {
-         if ($$2 instanceof cmk) {
-            $$1.add($$2.ck());
+      for (bsh $$2 : $$0) {
+         if ($$2 instanceof cml) {
+            $$1.add($$2.cl());
          } else {
             $$1.add(null);
          }
@@ -117,7 +117,7 @@ public class aof {
       return $$1.size();
    }
 
-   private static void a(ewe $$0, double $$1, aqm $$2, ayo $$3, double $$4, double $$5, double $$6, double $$7, int $$8, aof.a[] $$9, boolean $$10) throws CommandSyntaxException {
+   private static void a(ewg $$0, double $$1, aqm $$2, ayo $$3, double $$4, double $$5, double $$6, double $$7, int $$8, aof.a[] $$9, boolean $$10) throws CommandSyntaxException {
       boolean $$11 = true;
       double $$12 = Float.MAX_VALUE;
 
@@ -186,15 +186,15 @@ public class aof {
       }
    }
 
-   private static double a(Collection<? extends bsg> $$0, aqm $$1, aof.a[] $$2, int $$3, boolean $$4) {
+   private static double a(Collection<? extends bsh> $$0, aqm $$1, aof.a[] $$2, int $$3, boolean $$4) {
       double $$5 = 0.0;
       int $$6 = 0;
-      Map<exl, aof.a> $$7 = Maps.newHashMap();
+      Map<exn, aof.a> $$7 = Maps.newHashMap();
 
-      for (bsg $$8 : $$0) {
+      for (bsh $$8 : $$0) {
          aof.a $$10;
          if ($$4) {
-            exl $$9 = $$8 instanceof cmk ? $$8.ck() : null;
+            exn $$9 = $$8 instanceof cml ? $$8.cl() : null;
             if (!$$7.containsKey($$9)) {
                $$7.put($$9, $$2[$$6++]);
             }
@@ -204,7 +204,7 @@ public class aof {
             $$10 = $$2[$$6++];
          }
 
-         $$8.a($$1, (double)ayg.a($$10.a) + 0.5, (double)$$10.a($$1, $$3), (double)ayg.a($$10.b) + 0.5, Set.of(), $$8.dG(), $$8.dI());
+         $$8.a($$1, (double)ayg.a($$10.a) + 0.5, (double)$$10.a($$1, $$3), (double)ayg.a($$10.b) + 0.5, Set.of(), $$8.dH(), $$8.dJ());
          double $$12 = Double.MAX_VALUE;
 
          for (aof.a $$13 : $$2) {
@@ -278,7 +278,7 @@ public class aof {
          return $$4;
       }
 
-      public int a(dbl $$0, int $$1) {
+      public int a(dbm $$0, int $$1) {
          ja.a $$2 = new ja.a(this.a, (double)($$1 + 1), this.b);
          boolean $$3 = $$0.a_($$2).i();
          $$2.c(jf.a);
@@ -298,9 +298,9 @@ public class aof {
          return $$1 + 1;
       }
 
-      public boolean b(dbl $$0, int $$1) {
+      public boolean b(dbm $$0, int $$1) {
          ja $$2 = ja.a(this.a, (double)(this.a($$0, $$1) - 1), this.b);
-         dsk $$3 = $$0.a_($$2);
+         dsl $$3 = $$0.a_($$2);
          return $$2.v() < $$1 && !$$3.k() && !$$3.a(avw.aK);
       }
 

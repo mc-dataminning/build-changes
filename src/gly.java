@@ -1,40 +1,28 @@
-public class gly<T extends bsg & cmz> extends gjl<T> {
-   private static final float a = 12.25F;
-   private final gkk f;
-   private final float g;
-   private final boolean h;
+public class gly extends gku<cke, fwt<cke>> {
+   private static final akk a = new akk("textures/entity/strider/strider.png");
+   private static final akk i = new akk("textures/entity/strider/strider_cold.png");
+   private static final float j = 0.5F;
 
-   public gly(gjm.a $$0, float $$1, boolean $$2) {
-      super($$0);
-      this.f = $$0.b();
-      this.g = $$1;
-      this.h = $$2;
+   public gly(gjo.a $$0) {
+      super($$0, new fwt<>($$0.a(fxp.bD)), 0.5F);
+      this.a(new gob<>(this, new fwt<>($$0.a(fxp.bE)), new akk("textures/entity/strider/strider_saddle.png")));
    }
 
-   public gly(gjm.a $$0) {
-      this($$0, 1.0F, false);
+   public akk a(cke $$0) {
+      return $$0.s() ? i : a;
    }
 
-   @Override
-   protected int a(T $$0, ja $$1) {
-      return this.h ? 15 : super.a($$0, $$1);
+   protected float b(cke $$0) {
+      float $$1 = super.b($$0);
+      return $$0.o_() ? $$1 * 0.5F : $$1;
    }
 
-   @Override
-   public void a(T $$0, float $$1, float $$2, fam $$3, ged $$4, int $$5) {
-      if ($$0.ai >= 2 || !(this.c.b.g().g($$0) < 12.25)) {
-         $$3.a();
-         $$3.b(this.g, this.g, this.g);
-         $$3.a(this.c.b());
-         $$3.a(a.d.rotationDegrees(180.0F));
-         this.f.a($$0.p(), ctz.h, $$5, gpf.d, $$3, $$4, $$0.dQ(), $$0.am());
-         $$3.b();
-         super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      }
+   protected void a(cke $$0, fao $$1, float $$2) {
+      float $$3 = $$0.ec();
+      $$1.b($$3, $$3, $$3);
    }
 
-   @Override
-   public akk a(bsg $$0) {
-      return gpn.e;
+   protected boolean c(cke $$0) {
+      return super.a($$0) || $$0.s();
    }
 }

@@ -1,113 +1,49 @@
+import java.util.List;
+import java.util.Optional;
+import java.util.Map.Entry;
+import org.joml.Vector3f;
+
 public class fgn {
-   public static final fgj a = fgj.a.a(0.5F)
-      .a()
-      .a("head", new fgi(fgi.d.b, new fgk(0.0F, fgl.b(180.0F, 0.0F, 0.0F), fgi.b.a)))
-      .a("head", new fgi(fgi.d.a, new fgk(0.0F, fgl.a(0.0F, 0.5F, 0.0F), fgi.b.a)))
-      .a("body", new fgi(fgi.d.b, new fgk(0.0F, fgl.b(180.0F, 0.0F, 0.0F), fgi.b.a)))
-      .a("body", new fgi(fgi.d.a, new fgk(0.0F, fgl.a(0.0F, 0.5F, 0.0F), fgi.b.a)))
-      .a("feet", new fgi(fgi.d.b, new fgk(0.0F, fgl.b(0.0F, 0.0F, 0.0F), fgi.b.a)))
-      .a("right_wing", new fgi(fgi.d.b, new fgk(0.0F, fgl.b(0.0F, -10.0F, 0.0F), fgi.b.a)))
-      .a("right_wing", new fgi(fgi.d.a, new fgk(0.0F, fgl.a(0.0F, 0.0F, 1.0F), fgi.b.a)))
-      .a("right_wing_tip", new fgi(fgi.d.b, new fgk(0.0F, fgl.b(0.0F, -120.0F, 0.0F), fgi.b.a)))
-      .a("left_wing", new fgi(fgi.d.b, new fgk(0.0F, fgl.b(0.0F, 10.0F, 0.0F), fgi.b.a)))
-      .a("left_wing", new fgi(fgi.d.a, new fgk(0.0F, fgl.a(0.0F, 0.0F, 1.0F), fgi.b.a)))
-      .a("left_wing_tip", new fgi(fgi.d.b, new fgk(0.0F, fgl.b(0.0F, 120.0F, 0.0F), fgi.b.a)))
-      .b();
-   public static final fgj b = fgj.a.a(0.5F)
-      .a()
-      .a(
-         "head",
-         new fgi(
-            fgi.d.b,
-            new fgk(0.0F, fgl.b(0.0F, 0.0F, 0.0F), fgi.b.a),
-            new fgk(0.125F, fgl.b(20.0F, 0.0F, 0.0F), fgi.b.a),
-            new fgk(0.5F, fgl.b(0.0F, 0.0F, 0.0F), fgi.b.a)
-         )
-      )
-      .a(
-         "head",
-         new fgi(
-            fgi.d.a,
-            new fgk(0.0F, fgl.a(0.0F, 0.0F, 0.0F), fgi.b.a),
-            new fgk(0.125F, fgl.a(0.0F, 2.0F, 0.0F), fgi.b.a),
-            new fgk(0.25F, fgl.a(0.0F, 1.0F, 0.0F), fgi.b.a),
-            new fgk(0.375F, fgl.a(0.0F, 0.0F, 0.0F), fgi.b.a),
-            new fgk(0.4583F, fgl.a(0.0F, -1.0F, 0.0F), fgi.b.a),
-            new fgk(0.5F, fgl.a(0.0F, 0.0F, 0.0F), fgi.b.a)
-         )
-      )
-      .a(
-         "body",
-         new fgi(
-            fgi.d.b,
-            new fgk(0.0F, fgl.b(40.0F, 0.0F, 0.0F), fgi.b.a),
-            new fgk(0.25F, fgl.b(52.5F, 0.0F, 0.0F), fgi.b.a),
-            new fgk(0.5F, fgl.b(40.0F, 0.0F, 0.0F), fgi.b.a)
-         )
-      )
-      .a(
-         "body",
-         new fgi(
-            fgi.d.a,
-            new fgk(0.0F, fgl.a(0.0F, 0.0F, 0.0F), fgi.b.a),
-            new fgk(0.125F, fgl.a(0.0F, 2.0F, 0.0F), fgi.b.a),
-            new fgk(0.25F, fgl.a(0.0F, 1.0F, 0.0F), fgi.b.a),
-            new fgk(0.375F, fgl.a(0.0F, 0.0F, 0.0F), fgi.b.a),
-            new fgk(0.4583F, fgl.a(0.0F, -1.0F, 0.0F), fgi.b.a),
-            new fgk(0.5F, fgl.a(0.0F, 0.0F, 0.0F), fgi.b.a)
-         )
-      )
-      .a(
-         "feet",
-         new fgi(
-            fgi.d.b,
-            new fgk(0.0F, fgl.b(10.0F, 0.0F, 0.0F), fgi.b.a),
-            new fgk(0.125F, fgl.b(-21.25F, 0.0F, 0.0F), fgi.b.a),
-            new fgk(0.25F, fgl.b(-12.5F, 0.0F, 0.0F), fgi.b.a),
-            new fgk(0.5F, fgl.b(10.0F, 0.0F, 0.0F), fgi.b.a)
-         )
-      )
-      .a(
-         "right_wing",
-         new fgi(
-            fgi.d.b,
-            new fgk(0.0F, fgl.b(0.0F, 85.0F, 0.0F), fgi.b.a),
-            new fgk(0.125F, fgl.b(0.0F, -55.0F, 0.0F), fgi.b.a),
-            new fgk(0.25F, fgl.b(0.0F, 50.0F, 0.0F), fgi.b.a),
-            new fgk(0.375F, fgl.b(0.0F, 70.0F, 0.0F), fgi.b.a),
-            new fgk(0.5F, fgl.b(0.0F, 85.0F, 0.0F), fgi.b.a)
-         )
-      )
-      .a(
-         "right_wing_tip",
-         new fgi(
-            fgi.d.b,
-            new fgk(0.0F, fgl.b(0.0F, 10.5F, 0.0F), fgi.b.a),
-            new fgk(0.0417F, fgl.b(0.0F, 65.5F, 0.0F), fgi.b.a),
-            new fgk(0.2083F, fgl.b(0.0F, -135.0F, 0.0F), fgi.b.a),
-            new fgk(0.5F, fgl.b(0.0F, 10.5F, 0.0F), fgi.b.a)
-         )
-      )
-      .a(
-         "left_wing",
-         new fgi(
-            fgi.d.b,
-            new fgk(0.0F, fgl.b(0.0F, -85.0F, 0.0F), fgi.b.a),
-            new fgk(0.125F, fgl.b(0.0F, 55.0F, 0.0F), fgi.b.a),
-            new fgk(0.25F, fgl.b(0.0F, -50.0F, 0.0F), fgi.b.a),
-            new fgk(0.375F, fgl.b(0.0F, -70.0F, 0.0F), fgi.b.a),
-            new fgk(0.5F, fgl.b(0.0F, -85.0F, 0.0F), fgi.b.a)
-         )
-      )
-      .a(
-         "left_wing_tip",
-         new fgi(
-            fgi.d.b,
-            new fgk(0.0F, fgl.b(0.0F, -10.5F, 0.0F), fgi.b.a),
-            new fgk(0.0417F, fgl.b(0.0F, -65.5F, 0.0F), fgi.b.a),
-            new fgk(0.2083F, fgl.b(0.0F, 135.0F, 0.0F), fgi.b.a),
-            new fgk(0.5F, fgl.b(0.0F, -10.5F, 0.0F), fgi.b.a)
-         )
-      )
-      .b();
+   public static void a(fuz<?> $$0, fgl $$1, long $$2, float $$3, Vector3f $$4) {
+      float $$5 = a($$1, $$2);
+
+      for (Entry<String, List<fgk>> $$6 : $$1.c().entrySet()) {
+         Optional<fxq> $$7 = $$0.a($$6.getKey());
+         List<fgk> $$8 = $$6.getValue();
+         $$7.ifPresent($$4x -> $$8.forEach($$4xx -> {
+               fgm[] $$5x = $$4xx.b();
+               int $$6x = Math.max(0, ayg.a(0, $$5x.length, $$2xxx -> $$5 <= $$5x[$$2xxx].a()) - 1);
+               int $$7x = Math.min($$5x.length - 1, $$6x + 1);
+               fgm $$8x = $$5x[$$6x];
+               fgm $$9 = $$5x[$$7x];
+               float $$10 = $$5 - $$8x.a();
+               float $$11;
+               if ($$7x != $$6x) {
+                  $$11 = ayg.a($$10 / ($$9.a() - $$8x.a()), 0.0F, 1.0F);
+               } else {
+                  $$11 = 0.0F;
+               }
+
+               $$9.c().apply($$4, $$11, $$5x, $$6x, $$7x, $$3);
+               $$4xx.a().apply($$4x, $$4);
+            }));
+      }
+   }
+
+   private static float a(fgl $$0, long $$1) {
+      float $$2 = (float)$$1 / 1000.0F;
+      return $$0.b() ? $$2 % $$0.a() : $$2;
+   }
+
+   public static Vector3f a(float $$0, float $$1, float $$2) {
+      return new Vector3f($$0, -$$1, $$2);
+   }
+
+   public static Vector3f b(float $$0, float $$1, float $$2) {
+      return new Vector3f($$0 * (float) (Math.PI / 180.0), $$1 * (float) (Math.PI / 180.0), $$2 * (float) (Math.PI / 180.0));
+   }
+
+   public static Vector3f a(double $$0, double $$1, double $$2) {
+      return new Vector3f((float)($$0 - 1.0), (float)($$1 - 1.0), (float)($$2 - 1.0));
+   }
 }

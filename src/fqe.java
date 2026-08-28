@@ -1,58 +1,63 @@
-public class fqe extends fql {
-   public static final wu a = wu.c("options.accessibility.title");
+import javax.annotation.Nullable;
 
-   private static ffw<?>[] a(ffx $$0) {
-      return new ffw[]{
-         $$0.as(),
-         $$0.W(),
-         $$0.t(),
-         $$0.H(),
-         $$0.p(),
-         $$0.r(),
-         $$0.Y(),
-         $$0.n(),
-         $$0.o(),
-         $$0.A(),
-         $$0.B(),
-         $$0.ac(),
-         $$0.ad(),
-         $$0.aj(),
-         $$0.ak(),
-         $$0.al(),
-         $$0.ao(),
-         $$0.am(),
-         $$0.an(),
-         $$0.b(),
-         $$0.a(),
-         $$0.s(),
-         $$0.c(),
-         $$0.u()
-      };
+public abstract class fqe extends fnl {
+   private static final int b = 100;
+   private final wu c;
+   @Nullable
+   private final wu q;
+   private final wu r;
+   @Nullable
+   protected fhw a;
+   @Nullable
+   private fif s;
+   private final flf u;
+
+   protected fqe(wu $$0, wu $$1, wu $$2) {
+      this($$0, $$1, null, $$2);
    }
 
-   public fqe(fnj $$0, ffx $$1) {
-      super($$0, $$1, a);
+   protected fqe(wu $$0, wu $$1, @Nullable wu $$2, wu $$3) {
+      super($$0);
+      this.c = $$1;
+      this.q = $$2;
+      this.r = $$3;
+      this.u = new flf(0, 0, this.m, this.n);
    }
+
+   protected abstract fli m();
 
    @Override
    protected void aP_() {
-      super.aP_();
-      fhq $$0 = this.q.b(this.c.t());
-      if ($$0 != null && !this.l.ac().b().contains("high_contrast")) {
-         $$0.j = false;
-         $$0.a(fjd.a(wu.c("options.accessibility.high_contrast.error.tooltip")));
+      fll $$0 = this.u.a(fll.d().a(8));
+      $$0.c().b();
+      $$0.a(new fjb(this.n(), this.o));
+      this.s = $$0.a(new fif(this.m - 100, this.c, this.o, 12), $$0x -> $$0x.a(12));
+      this.s.b(false);
+      fll $$1 = $$0.a(fll.d().a(8));
+      $$1.c().b();
+      if (this.q != null) {
+         this.a = $$1.a(fhw.a(this.q, this.o).a());
       }
+
+      $$1.a(this.m());
+      this.u.a($$1x -> {
+         fhs var10000 = this.c($$1x);
+      });
+      this.c();
    }
 
    @Override
-   protected void m() {
-      this.q.a(a(this.c));
+   protected void c() {
+      if (this.s != null) {
+         this.s.d(this.m - 100);
+      }
+
+      this.u.a();
+      flf.a(this.u, this.H());
    }
 
    @Override
-   protected void E() {
-      flj $$0 = this.r.b(flj.e().a(8));
-      $$0.a(fhs.a(wu.c("options.accessibility.link"), fmg.b(this, "https://aka.ms/MinecraftJavaAccessibility")).a());
-      $$0.a(fhs.a(wt.d, $$0x -> this.l.a(this.b)).a());
+   public wu i() {
+      return this.r;
    }
 }

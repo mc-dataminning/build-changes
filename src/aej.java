@@ -2,7 +2,7 @@ public class aej implements zb<abn> {
    public static final ys<vr, aej> a = zb.a(aej::a, aej::new);
    private final double b;
 
-   public aej(dub $$0) {
+   public aej(duc $$0) {
       this.b = $$0.k();
    }
 

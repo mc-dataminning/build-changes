@@ -22,12 +22,12 @@ public class aku {
    public static CompletableFuture<jq<akt>> a(jq<akt> $$0, atw $$1, Executor $$2) {
       jx.b $$3 = $$0.b(akt.d);
       aki<JsonElement> $$4 = new aku.a($$3).a(JsonOps.INSTANCE);
-      List<CompletableFuture<kf<?>>> $$5 = eqw.a().map($$3x -> a($$3x, $$4, $$1, $$2)).toList();
+      List<CompletableFuture<kf<?>>> $$5 = eqy.a().map($$3x -> a($$3x, $$4, $$1, $$2)).toList();
       CompletableFuture<List<kf<?>>> $$6 = ac.d($$5);
       return $$6.thenApplyAsync($$1x -> a($$0, $$1x), $$2);
    }
 
-   private static <T> CompletableFuture<kf<?>> a(eqw<T> $$0, aki<JsonElement> $$1, atw $$2, Executor $$3) {
+   private static <T> CompletableFuture<kf<?>> a(eqy<T> $$0, aki<JsonElement> $$1, atw $$2, Executor $$3) {
       return CompletableFuture.supplyAsync(() -> {
          kf<T> $$3x = new jr<>($$0.b(), Lifecycle.experimental());
          Map<akk, JsonElement> $$4 = new HashMap<>();
@@ -41,19 +41,19 @@ public class aku {
       jq<akt> $$2 = b($$0, $$1);
       aym.a $$3 = new aym.a();
       jx.b $$4 = $$2.a();
-      era $$5 = new era($$3, etp.q, $$4.b());
-      eqw.a().forEach($$2x -> a($$5, $$2x, $$4));
+      erc $$5 = new erc($$3, etr.q, $$4.b());
+      eqy.a().forEach($$2x -> a($$5, $$2x, $$4));
       $$3.a().forEach(($$0x, $$1x) -> a.warn("Found loot table element validation problem in {}: {}", $$0x, $$1x));
       return $$2;
    }
 
    private static jq<akt> b(jq<akt> $$0, List<kf<?>> $$1) {
       jx $$2 = new jx.c($$1);
-      ((kf)$$2.<eqz>d(lr.bb)).a(eqq.a, eqz.a, c);
+      ((kf)$$2.<erb>d(lr.bb)).a(eqs.a, erb.a, c);
       return $$0.a(akt.d, $$2.d());
    }
 
-   private static <T> void a(era $$0, eqw<T> $$1, jx $$2) {
+   private static <T> void a(erc $$0, eqy<T> $$1, jx $$2) {
       jw<T> $$3 = $$2.d($$1.b());
       $$3.i().forEach($$2x -> $$1.a($$0, $$2x.h(), (T)$$2x.a()));
    }
@@ -95,8 +95,8 @@ public class aku {
          return this.a.c($$0).stream().flatMap($$0x -> $$0x.i().map($$0xx -> $$0xx.h().a())).toList();
       }
 
-      public eqz b(akj<eqz> $$0) {
-         return this.a.a(lr.bb).flatMap($$1 -> $$1.a($$0)).map(jj::a).orElse(eqz.a);
+      public erb b(akj<erb> $$0) {
+         return this.a.a(lr.bb).flatMap($$1 -> $$1.a($$0)).map(jj::a).orElse(erb.a);
       }
    }
 }

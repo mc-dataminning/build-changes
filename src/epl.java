@@ -1,44 +1,141 @@
-import java.util.Locale;
+import com.mojang.logging.LogUtils;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public interface epl {
-   jf[] a = new jf[]{jf.e, jf.f, jf.a, jf.b, jf.c, jf.d};
+public class epl implements epn {
+   private static final Logger b = LogUtils.getLogger();
+   private final dcg c;
+   private final int d;
+   private final ArrayDeque<epl.c> e = new ArrayDeque<>();
+   private final List<epl.c> f = new ArrayList<>();
+   private int g = 0;
 
-   void a(jf var1, dsk var2, ja var3, ja var4, int var5, int var6);
+   public epl(dcg $$0, int $$1) {
+      this.c = $$0;
+      this.d = $$1;
+   }
 
-   void a(ja var1, dfh var2, ja var3);
+   @Override
+   public void a(jf $$0, dsl $$1, ja $$2, ja $$3, int $$4, int $$5) {
+      this.a($$2, new epl.d($$0, $$1, $$2.i(), $$3.i(), $$4, $$5));
+   }
 
-   void a(dsk var1, ja var2, dfh var3, ja var4, boolean var5);
+   @Override
+   public void a(ja $$0, dfi $$1, ja $$2) {
+      this.a($$0, new epl.e($$0, $$1, $$2.i()));
+   }
 
-   default void a(ja $$0, dfh $$1, @Nullable jf $$2) {
-      for (jf $$3 : a) {
-         if ($$3 != $$2) {
-            this.a($$0.a($$3), $$1, $$0);
+   @Override
+   public void a(dsl $$0, ja $$1, dfi $$2, ja $$3, boolean $$4) {
+      this.a($$1, new epl.a($$0, $$1.i(), $$2, $$3.i(), $$4));
+   }
+
+   @Override
+   public void a(ja $$0, dfi $$1, @Nullable jf $$2) {
+      this.a($$0, new epl.b($$0.i(), $$1, $$2));
+   }
+
+   private void a(ja $$0, epl.c $$1) {
+      boolean $$2 = this.g > 0;
+      boolean $$3 = this.d >= 0 && this.g >= this.d;
+      this.g++;
+      if (!$$3) {
+         if ($$2) {
+            this.f.add($$1);
+         } else {
+            this.e.push($$1);
          }
+      } else if (this.g - 1 == this.d) {
+         b.error("Too many chained neighbor updates. Skipping the rest. First skipped position: " + $$0.x());
+      }
+
+      if (!$$2) {
+         this.a();
       }
    }
 
-   static void a(dcg $$0, jf $$1, dsk $$2, ja $$3, ja $$4, int $$5, int $$6) {
-      dsk $$7 = $$0.a_($$3);
-      dsk $$8 = $$7.a($$1, $$2, $$0, $$3, $$4);
-      dfh.a($$7, $$8, $$0, $$3, $$5, $$6);
+   private void a() {
+      try {
+         while (!this.e.isEmpty() || !this.f.isEmpty()) {
+            for (int $$0 = this.f.size() - 1; $$0 >= 0; $$0--) {
+               this.e.push(this.f.get($$0));
+            }
+
+            this.f.clear();
+            epl.c $$1 = this.e.peek();
+
+            while (this.f.isEmpty()) {
+               if (!$$1.a(this.c)) {
+                  this.e.pop();
+                  break;
+               }
+            }
+         }
+      } finally {
+         this.e.clear();
+         this.f.clear();
+         this.g = 0;
+      }
    }
 
-   static void a(dcf $$0, dsk $$1, ja $$2, dfh $$3, ja $$4, boolean $$5) {
-      try {
-         $$1.a($$0, $$2, $$3, $$4, $$5);
-      } catch (Throwable var9) {
-         o $$7 = o.a(var9, "Exception while updating neighbours");
-         p $$8 = $$7.a("Block being updated");
-         $$8.a("Source block type", () -> {
-            try {
-               return String.format(Locale.ROOT, "ID #%s (%s // %s)", lq.e.b($$3), $$3.g(), $$3.getClass().getCanonicalName());
-            } catch (Throwable var2x) {
-               return "ID #" + lq.e.b($$3);
-            }
-         });
-         p.a($$8, $$0, $$2, $$1);
-         throw new y($$7);
+   static record a(dsl a, ja b, dfi c, ja d, boolean e) implements epl.c {
+      @Override
+      public boolean a(dcg $$0) {
+         epn.a($$0, this.a, this.b, this.c, this.d, this.e);
+         return false;
+      }
+   }
+
+   static final class b implements epl.c {
+      private final ja a;
+      private final dfi b;
+      @Nullable
+      private final jf c;
+      private int d = 0;
+
+      b(ja $$0, dfi $$1, @Nullable jf $$2) {
+         this.a = $$0;
+         this.b = $$1;
+         this.c = $$2;
+         if (epn.a[this.d] == $$2) {
+            this.d++;
+         }
+      }
+
+      @Override
+      public boolean a(dcg $$0) {
+         ja $$1 = this.a.a(epn.a[this.d++]);
+         dsl $$2 = $$0.a_($$1);
+         epn.a($$0, $$2, $$1, this.b, this.a, false);
+         if (this.d < epn.a.length && epn.a[this.d] == this.c) {
+            this.d++;
+         }
+
+         return this.d < epn.a.length;
+      }
+   }
+
+   interface c {
+      boolean a(dcg var1);
+   }
+
+   static record d(jf a, dsl b, ja c, ja d, int e, int f) implements epl.c {
+      @Override
+      public boolean a(dcg $$0) {
+         epn.a($$0, this.a, this.b, this.c, this.d, this.e, this.f);
+         return false;
+      }
+   }
+
+   static record e(ja a, dfi b, ja c) implements epl.c {
+      @Override
+      public boolean a(dcg $$0) {
+         dsl $$1 = $$0.a_(this.a);
+         epn.a($$0, $$1, this.a, this.b, this.c, false);
+         return false;
       }
    }
 }

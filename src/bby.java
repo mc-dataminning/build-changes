@@ -10,10 +10,10 @@ public class bby extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgg.x);
+      Type<?> $$0 = this.getInputSchema().getType(bgh.x);
       return this.writeFixAndRead("EmptyItemInVillagerTradeFix", $$0, $$0, $$0x -> {
          Dynamic<?> $$1 = $$0x.get("buyB").orElseEmptyMap();
-         String $$2 = bhs.a($$1.get("id").asString("minecraft:air"));
+         String $$2 = bht.a($$1.get("id").asString("minecraft:air"));
          int $$3 = $$1.get("count").asInt(0);
          return !$$2.equals("minecraft:air") && $$3 != 0 ? $$0x : $$0x.remove("buyB");
       });

@@ -1,24 +1,8 @@
-import java.util.List;
-import java.util.stream.Stream;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public class dwl<T> {
-   private final dbm a;
-   private final List<T> b;
-
-   public dwl(dbm $$0, List<T> $$1) {
-      this.a = $$0;
-      this.b = $$1;
-   }
-
-   public dbm a() {
-      return this.a;
-   }
-
-   public Stream<T> b() {
-      return this.b.stream();
-   }
-
-   public boolean c() {
-      return this.b.isEmpty();
-   }
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dwl {
 }

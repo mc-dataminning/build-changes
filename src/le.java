@@ -3,7 +3,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import org.joml.Vector3f;
 
 public class le extends lk {
-   public static final Vector3f a = ewf.a(16711680).j();
+   public static final Vector3f a = ewh.a(16711680).j();
    public static final le b = new le(a, 1.0F);
    public static final MapCodec<le> c = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(axo.c.fieldOf("color").forGetter($$0x -> $$0x.h), g.fieldOf("scale").forGetter(lk::d)).apply($$0, le::new)

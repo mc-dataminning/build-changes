@@ -86,13 +86,13 @@ public class bec extends DataFix {
 
    public TypeRewriteRule makeRule() {
       Schema $$0 = this.getInputSchema();
-      Type<?> $$1 = $$0.getType(bgg.t);
-      OpticFinder<Pair<String, String>> $$2 = DSL.fieldFinder("id", DSL.named(bgg.D.typeName(), bhs.a()));
+      Type<?> $$1 = $$0.getType(bgh.t);
+      OpticFinder<Pair<String, String>> $$2 = DSL.fieldFinder("id", DSL.named(bgh.D.typeName(), bht.a()));
       OpticFinder<String> $$3 = DSL.fieldFinder("id", DSL.string());
       OpticFinder<?> $$4 = $$1.findField("tag");
       OpticFinder<?> $$5 = $$4.type().findField("EntityTag");
-      OpticFinder<?> $$6 = DSL.typeFinder($$0.getTypeRaw(bgg.B));
-      Type<?> $$7 = this.getOutputSchema().getTypeRaw(bgg.B);
+      OpticFinder<?> $$6 = DSL.typeFinder($$0.getTypeRaw(bgh.B));
+      Type<?> $$7 = this.getOutputSchema().getTypeRaw(bgh.B);
       return this.fixTypeEverywhereTyped("ItemSpawnEggFix", $$1, $$6x -> {
          Optional<Pair<String, String>> $$7x = $$6x.getOptional($$2);
          if ($$7x.isPresent() && Objects.equals($$7x.get().getSecond(), "minecraft:spawn_egg")) {

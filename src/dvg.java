@@ -1,63 +1,54 @@
+import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.ImmutableList;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.UnaryOperator;
+import java.util.Locale;
 
-public record dvg(ImmutableList<dvk> c) {
-   public static final dvg a = new dvg.a()
-      .a(dvh.c, $$0 -> $$0)
-      .a(dvh.d, $$0 -> $$0.a(dvj::b))
-      .a(dvh.e, $$0 -> $$0.a(dvh.d, 8).a(dvj::d))
-      .a(dvh.f, $$0 -> $$0.a(dvh.d, 8).a(dvj::e))
-      .a(dvh.g, $$0 -> $$0.a(dvh.d, 8).a(dvh.f, 1).a(0).a(dvj::f))
-      .a(dvh.h, $$0 -> $$0.a(dvh.d, 8).a(dvh.f, 1).a(0).a(dvj::g))
-      .a(dvh.i, $$0 -> $$0.a(dvh.d, 8).a(0).a(dvj::h))
-      .a(dvh.j, $$0 -> $$0.a(dvh.d, 8).a(dvh.i, 1).a(1).a(dvj::i))
-      .a(dvh.k, $$0 -> $$0.a(dvj::j))
-      .a(dvh.l, $$0 -> $$0.a(dvh.k, 1).a(dvj::k))
-      .a(dvh.m, $$0 -> $$0.a(dvh.f, 1).a(dvj::l))
-      .a(dvh.n, $$0 -> $$0.a(dvj::m))
-      .a();
-   public static final dvg b = new dvg.a()
-      .a(dvh.c, $$0 -> $$0)
-      .a(dvh.d, $$0 -> $$0.a(dvj::c))
-      .a(dvh.e, $$0 -> $$0)
-      .a(dvh.f, $$0 -> $$0)
-      .a(dvh.g, $$0 -> $$0)
-      .a(dvh.h, $$0 -> $$0)
-      .a(dvh.i, $$0 -> $$0)
-      .a(dvh.j, $$0 -> $$0)
-      .a(dvh.k, $$0 -> $$0.a(dvj::j))
-      .a(dvh.l, $$0 -> $$0.a(dvh.k, 1).a(dvj::k))
-      .a(dvh.m, $$0 -> $$0)
-      .a(dvh.n, $$0 -> $$0.a(dvj::m))
-      .a();
+public final class dvg {
+   private final ImmutableList<dvi> a;
+   private final int[] b;
 
-   public dvk a(dvh $$0) {
-      return (dvk)this.c.get($$0.b());
-   }
+   public dvg(ImmutableList<dvi> $$0) {
+      this.a = $$0;
+      int $$1 = $$0.isEmpty() ? 0 : ((dvi)$$0.getFirst()).b() + 1;
+      this.b = new int[$$1];
 
-   public ImmutableList<dvk> a() {
-      return this.c;
-   }
+      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
+         dvi $$3 = (dvi)$$0.get($$2);
+         int $$4 = $$3.b();
 
-   public static class a {
-      private final List<dvk> a = new ArrayList<>();
-
-      public dvg a() {
-         return new dvg(ImmutableList.copyOf(this.a));
-      }
-
-      public dvg.a a(dvh $$0, UnaryOperator<dvk.a> $$1) {
-         dvk.a $$2;
-         if (this.a.isEmpty()) {
-            $$2 = new dvk.a($$0);
-         } else {
-            $$2 = new dvk.a($$0, this.a.getLast());
+         for (int $$5 = 0; $$5 <= $$4; $$5++) {
+            this.b[$$5] = $$2;
          }
-
-         this.a.add($$1.apply($$2).a());
-         return this;
       }
+   }
+
+   @VisibleForTesting
+   public ImmutableList<dvi> a() {
+      return this.a;
+   }
+
+   public int b() {
+      return this.a.size();
+   }
+
+   public int a(dvi $$0) {
+      int $$1 = $$0.b();
+      if ($$1 >= this.b.length) {
+         throw new IllegalArgumentException(String.format(Locale.ROOT, "Requesting a ChunkStatus(%s) outside of dependency range(%s)", $$0, this.a));
+      } else {
+         return this.b[$$1];
+      }
+   }
+
+   public int c() {
+      return Math.max(0, this.a.size() - 1);
+   }
+
+   public dvi a(int $$0) {
+      return (dvi)this.a.get($$0);
+   }
+
+   @Override
+   public String toString() {
+      return this.a.toString();
    }
 }

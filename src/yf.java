@@ -180,7 +180,7 @@ public class yf implements wv {
    }
 
    @Override
-   public xi a(@Nullable eq $$0, @Nullable bsg $$1, int $$2) throws CommandSyntaxException {
+   public xi a(@Nullable eq $$0, @Nullable bsh $$1, int $$2) throws CommandSyntaxException {
       Object[] $$3 = new Object[this.j.length];
 
       for (int $$4 = 0; $$4 < $$3.length; $$4++) {

@@ -1,138 +1,118 @@
-public class cop extends cof {
-   private static final ajp<Boolean> e = ajt.a(cop.class, ajr.k);
-   private int i;
-   public double c;
-   public double d;
-   private static final cyf j = cyf.a(cuf.ox, cuf.oy);
+public class cop extends cog {
+   static final ajp<String> c = ajt.a(cop.class, ajr.e);
+   static final ajp<wu> d = ajt.a(cop.class, ajr.f);
+   private final dbh e = new cop.a();
+   private static final int i = 4;
+   private int j;
 
-   public cop(bsm<? extends cop> $$0, dcf $$1) {
+   public cop(bsn<? extends cop> $$0, dcg $$1) {
       super($$0, $$1);
    }
 
-   public cop(dcf $$0, double $$1, double $$2, double $$3) {
-      super(bsm.S, $$0, $$1, $$2, $$3);
+   public cop(dcg $$0, double $$1, double $$2, double $$3) {
+      super(bsn.v, $$0, $$1, $$2, $$3);
    }
 
    @Override
-   public cof.a v() {
-      return cof.a.c;
+   protected cty ag_() {
+      return cug.nM;
    }
 
    @Override
    protected void a(ajt.a $$0) {
       super.a($$0);
-      $$0.a(e, false);
-   }
-
-   @Override
-   public void l() {
-      super.l();
-      if (!this.dQ().x_()) {
-         if (this.i > 0) {
-            this.i--;
-         }
-
-         if (this.i <= 0) {
-            this.c = 0.0;
-            this.d = 0.0;
-         }
-
-         this.b(this.i > 0);
-      }
-
-      if (this.B() && this.ah.a(4) == 0) {
-         this.dQ().a(lj.X, this.dv(), this.dx() + 0.8, this.dB(), 0.0, 0.0, 0.0);
-      }
-   }
-
-   @Override
-   protected double p() {
-      return (this.bf() ? 3.0 : 4.0) / 20.0;
-   }
-
-   @Override
-   protected ctx ag_() {
-      return cuf.nO;
-   }
-
-   @Override
-   protected void c(ja $$0, dsk $$1) {
-      double $$2 = 1.0E-4;
-      double $$3 = 0.001;
-      super.c($$0, $$1);
-      ewf $$4 = this.dt();
-      double $$5 = $$4.i();
-      double $$6 = this.c * this.c + this.d * this.d;
-      if ($$6 > 1.0E-4 && $$5 > 0.001) {
-         double $$7 = Math.sqrt($$5);
-         double $$8 = Math.sqrt($$6);
-         this.c = $$4.c / $$7 * $$8;
-         this.d = $$4.e / $$7 * $$8;
-      }
-   }
-
-   @Override
-   protected void u() {
-      double $$0 = this.c * this.c + this.d * this.d;
-      if ($$0 > 1.0E-7) {
-         $$0 = Math.sqrt($$0);
-         this.c /= $$0;
-         this.d /= $$0;
-         ewf $$1 = this.dt().d(0.8, 0.0, 0.8).b(this.c, 0.0, this.d);
-         if (this.bf()) {
-            $$1 = $$1.a(0.1);
-         }
-
-         this.i($$1);
-      } else {
-         this.i(this.dt().d(0.98, 0.0, 0.98));
-      }
-
-      super.u();
-   }
-
-   @Override
-   public bqg a(cmk $$0, bqf $$1) {
-      cuc $$2 = $$0.b($$1);
-      if (j.a($$2) && this.i + 3600 <= 32000) {
-         $$2.a(1, $$0);
-         this.i += 3600;
-      }
-
-      if (this.i > 0) {
-         this.c = this.dv() - $$0.dv();
-         this.d = this.dB() - $$0.dB();
-      }
-
-      return bqg.a(this.dQ().B);
-   }
-
-   @Override
-   protected void b(tx $$0) {
-      super.b($$0);
-      $$0.a("PushX", this.c);
-      $$0.a("PushZ", this.d);
-      $$0.a("Fuel", (short)this.i);
+      $$0.a(c, "");
+      $$0.a(d, wt.a);
    }
 
    @Override
    protected void a(tx $$0) {
       super.a($$0);
-      this.c = $$0.k("PushX");
-      this.d = $$0.k("PushZ");
-      this.i = $$0.g("Fuel");
-   }
-
-   protected boolean B() {
-      return this.ao.a(e);
-   }
-
-   protected void b(boolean $$0) {
-      this.ao.a(e, $$0);
+      this.e.b($$0, this.dT());
+      this.ar().a(c, this.B().m());
+      this.ar().a(d, this.B().l());
    }
 
    @Override
-   public dsk x() {
-      return dfj.cD.o().a(dio.a, jf.c).a(dio.b, Boolean.valueOf(this.B()));
+   protected void b(tx $$0) {
+      super.b($$0);
+      this.e.a($$0, this.dT());
+   }
+
+   @Override
+   public cog.a v() {
+      return cog.a.g;
+   }
+
+   @Override
+   public dsl x() {
+      return dfk.fN.o();
+   }
+
+   public dbh B() {
+      return this.e;
+   }
+
+   @Override
+   public void a(int $$0, int $$1, int $$2, boolean $$3) {
+      if ($$3 && this.ai - this.j >= 4) {
+         this.B().a(this.dR());
+         this.j = this.ai;
+      }
+   }
+
+   @Override
+   public bqh a(cml $$0, bqg $$1) {
+      return this.e.a($$0);
+   }
+
+   @Override
+   public void a(ajp<?> $$0) {
+      super.a($$0);
+      if (d.equals($$0)) {
+         try {
+            this.e.c(this.ar().a(d));
+         } catch (Throwable var3) {
+         }
+      } else if (c.equals($$0)) {
+         this.e.a(this.ar().a(c));
+      }
+   }
+
+   @Override
+   public boolean cR() {
+      return true;
+   }
+
+   public class a extends dbh {
+      @Override
+      public aqm e() {
+         return (aqm)cop.this.dR();
+      }
+
+      @Override
+      public void f() {
+         cop.this.ar().a(cop.c, this.m());
+         cop.this.ar().a(cop.d, this.l());
+      }
+
+      @Override
+      public ewh g() {
+         return cop.this.dp();
+      }
+
+      public cop h() {
+         return cop.this;
+      }
+
+      @Override
+      public eq i() {
+         return new eq(this, cop.this.dp(), cop.this.bO(), this.e(), 2, this.n().getString(), cop.this.O_(), this.e().o(), cop.this);
+      }
+
+      @Override
+      public boolean j() {
+         return !cop.this.dM();
+      }
    }
 }

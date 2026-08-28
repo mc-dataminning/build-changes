@@ -1,183 +1,49 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Map;
+import javax.annotation.Nullable;
 
-public class dnx extends dfh {
-   public static final MapCodec<dnx> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(lq.e.r().fieldOf("hook").forGetter($$0x -> $$0x.m), u()).apply($$0, dnx::new)
-   );
-   public static final dtb b = dta.w;
-   public static final dtb c = dta.a;
-   public static final dtb d = dta.d;
-   public static final dtb e = dkv.b;
-   public static final dtb f = dkv.c;
-   public static final dtb g = dkv.d;
-   public static final dtb h = dkv.e;
-   private static final Map<jf, dtb> k = dhd.f;
-   protected static final ewy i = dfh.a(0.0, 1.0, 0.0, 16.0, 2.5, 16.0);
-   protected static final ewy j = dfh.a(0.0, 0.0, 0.0, 16.0, 8.0, 16.0);
-   private static final int l = 10;
-   private final dfh m;
+public class dnx extends deu {
+   public static final MapCodec<dnx> a = b(dnx::new);
+   public static final dtj<drr> b = dtb.by;
+   public static final dtc c = dtb.bA;
 
    @Override
    public MapCodec<dnx> a() {
       return a;
    }
 
-   public dnx(dfh $$0, dsj.d $$1) {
-      super($$1);
-      this.k(
-         this.E
-            .b()
-            .a(b, Boolean.valueOf(false))
-            .a(c, Boolean.valueOf(false))
-            .a(d, Boolean.valueOf(false))
-            .a(e, Boolean.valueOf(false))
-            .a(f, Boolean.valueOf(false))
-            .a(g, Boolean.valueOf(false))
-            .a(h, Boolean.valueOf(false))
-      );
-      this.m = $$0;
+   public dnx(dsk.d $$0) {
+      super($$0);
+      this.k(this.E.b().a(b, drr.a).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected ewy a(dsk $$0, dbl $$1, ja $$2, ewk $$3) {
-      return $$0.c(c) ? i : j;
+   protected void a(dsm.a<dfi, dsl> $$0) {
+      $$0.a(b, c);
    }
 
    @Override
-   public dsk a(cxm $$0) {
-      dbl $$1 = $$0.q();
-      ja $$2 = $$0.a();
-      return this.o()
-         .a(e, Boolean.valueOf(this.a($$1.a_($$2.e()), jf.c)))
-         .a(f, Boolean.valueOf(this.a($$1.a_($$2.h()), jf.f)))
-         .a(g, Boolean.valueOf(this.a($$1.a_($$2.f()), jf.d)))
-         .a(h, Boolean.valueOf(this.a($$1.a_($$2.g()), jf.e)));
+   protected dlo a_(dsl $$0) {
+      return dlo.c;
+   }
+
+   @Nullable
+   @Override
+   public dpq a(ja $$0, dsl $$1) {
+      return new drl($$0, $$1);
+   }
+
+   @Nullable
+   @Override
+   public <T extends dpq> dpr<T> a(dcg $$0, dsl $$1, dps<T> $$2) {
+      return $$0 instanceof aqm $$3
+         ? a($$2, dps.Q, ($$1x, $$2x, $$3x, $$4) -> $$4.c().a($$3, $$2x, $$3x.d(dtb.bA).orElse(false)))
+         : a($$2, dps.Q, ($$0x, $$1x, $$2x, $$3x) -> $$3x.c().a($$0x, $$1x, $$2x.d(dtb.bA).orElse(false)));
    }
 
    @Override
-   protected dsk a(dsk $$0, jf $$1, dsk $$2, dcg $$3, ja $$4, ja $$5) {
-      return $$1.o().d() ? $$0.a(k.get($$1), Boolean.valueOf(this.a($$2, $$1))) : super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void b(dsk $$0, dcf $$1, ja $$2, dsk $$3, boolean $$4) {
-      if (!$$3.a($$0.b())) {
-         this.a($$1, $$2, $$0);
-      }
-   }
-
-   @Override
-   protected void a(dsk $$0, dcf $$1, ja $$2, dsk $$3, boolean $$4) {
-      if (!$$4 && !$$0.a($$3.b())) {
-         this.a($$1, $$2, $$0.a(b, Boolean.valueOf(true)));
-      }
-   }
-
-   @Override
-   public dsk a(dcf $$0, ja $$1, dsk $$2, cmk $$3) {
-      if (!$$0.B && !$$3.eU().e() && $$3.eU().a(cuf.rV)) {
-         $$0.a($$1, $$2.a(d, Boolean.valueOf(true)), 4);
-         $$0.a($$3, dxg.M, $$1);
-      }
-
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   private void a(dcf $$0, ja $$1, dsk $$2) {
-      for (jf $$3 : new jf[]{jf.d, jf.e}) {
-         for (int $$4 = 1; $$4 < 42; $$4++) {
-            ja $$5 = $$1.a($$3, $$4);
-            dsk $$6 = $$0.a_($$5);
-            if ($$6.a(this.m)) {
-               if ($$6.c(dny.b) == $$3.g()) {
-                  dny.a($$0, $$5, $$6, false, true, $$4, $$2);
-               }
-               break;
-            }
-
-            if (!$$6.a(this)) {
-               break;
-            }
-         }
-      }
-   }
-
-   @Override
-   protected void a(dsk $$0, dcf $$1, ja $$2, bsg $$3) {
-      if (!$$1.B) {
-         if (!$$0.c(b)) {
-            this.a($$1, $$2);
-         }
-      }
-   }
-
-   @Override
-   protected void a(dsk $$0, aqm $$1, ja $$2, ayo $$3) {
-      if ($$1.a_($$2).c(b)) {
-         this.a($$1, $$2);
-      }
-   }
-
-   private void a(dcf $$0, ja $$1) {
-      dsk $$2 = $$0.a_($$1);
-      boolean $$3 = $$2.c(b);
-      boolean $$4 = false;
-      List<? extends bsg> $$5 = $$0.a_(null, $$2.j($$0, $$1).a().a($$1));
-      if (!$$5.isEmpty()) {
-         for (bsg $$6 : $$5) {
-            if (!$$6.r_()) {
-               $$4 = true;
-               break;
-            }
-         }
-      }
-
-      if ($$4 != $$3) {
-         $$2 = $$2.a(b, Boolean.valueOf($$4));
-         $$0.a($$1, $$2, 3);
-         this.a($$0, $$1, $$2);
-      }
-
-      if ($$4) {
-         $$0.a(new ja($$1), this, 10);
-      }
-   }
-
-   public boolean a(dsk $$0, jf $$1) {
-      return $$0.a(this.m) ? $$0.c(dny.b) == $$1.g() : $$0.a(this);
-   }
-
-   @Override
-   protected dsk a(dsk $$0, dlu $$1) {
-      switch ($$1) {
-         case c:
-            return $$0.a(e, $$0.c(g)).a(f, $$0.c(h)).a(g, $$0.c(e)).a(h, $$0.c(f));
-         case d:
-            return $$0.a(e, $$0.c(f)).a(f, $$0.c(g)).a(g, $$0.c(h)).a(h, $$0.c(e));
-         case b:
-            return $$0.a(e, $$0.c(h)).a(f, $$0.c(e)).a(g, $$0.c(f)).a(h, $$0.c(g));
-         default:
-            return $$0;
-      }
-   }
-
-   @Override
-   protected dsk a(dsk $$0, dke $$1) {
-      switch ($$1) {
-         case b:
-            return $$0.a(e, $$0.c(g)).a(g, $$0.c(e));
-         case c:
-            return $$0.a(f, $$0.c(h)).a(h, $$0.c(f));
-         default:
-            return super.a($$0, $$1);
-      }
-   }
-
-   @Override
-   protected void a(dsl.a<dfh, dsk> $$0) {
-      $$0.a(b, c, d, e, f, h, g);
+   public void a(cud $$0, cty.b $$1, List<wu> $$2, cvw $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      dcz.a($$0, $$2, "spawn_data");
    }
 }

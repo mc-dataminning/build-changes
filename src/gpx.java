@@ -1,30 +1,35 @@
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public class gpx implements gps {
-   public static final MapCodec<gpx> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(Codec.STRING.fieldOf("source").forGetter($$0x -> $$0x.c), Codec.STRING.fieldOf("prefix").forGetter($$0x -> $$0x.d)).apply($$0, gpx::new)
-   );
-   private final String c;
-   private final String d;
+public class gpx {
+   private static final BiMap<akk, gpw> i = HashBiMap.create();
+   public static final gpw a = a("single", gqc.b);
+   public static final gpw b = a("directory", gpz.b);
+   public static final gpw c = a("filter", gqd.b);
+   public static final gpw d = a("unstitch", gqe.b);
+   public static final gpw e = a("paletted_permutations", gqb.b);
+   public static Codec<gpw> f = akk.a.flatXmap($$0 -> {
+      gpw $$1 = (gpw)i.get($$0);
+      return $$1 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$0);
+   }, $$0 -> {
+      akk $$1 = (akk)i.inverse().get($$0);
+      return $$0 != null ? DataResult.success($$1) : DataResult.error(() -> "Unknown type " + $$1);
+   });
+   public static Codec<gpu> g = f.dispatch(gpu::a, gpw::a);
+   public static Codec<List<gpu>> h = g.listOf().fieldOf("sources").codec();
 
-   public gpx(String $$0, String $$1) {
-      this.c = $$0;
-      this.d = $$1;
-   }
-
-   @Override
-   public void a(atw $$0, gps.a $$1) {
-      akd $$2 = new akd("textures/" + this.c, ".png");
-      $$2.a($$0).forEach(($$2x, $$3) -> {
-         akk $$4 = $$2.b($$2x).d(this.d);
-         $$1.a($$4, $$3);
-      });
-   }
-
-   @Override
-   public gpu a() {
-      return gpv.b;
+   private static gpw a(String $$0, MapCodec<? extends gpu> $$1) {
+      gpw $$2 = new gpw($$1);
+      akk $$3 = new akk($$0);
+      gpw $$4 = (gpw)i.putIfAbsent($$3, $$2);
+      if ($$4 != null) {
+         throw new IllegalStateException("Duplicate registration " + $$3);
+      } else {
+         return $$2;
+      }
    }
 }

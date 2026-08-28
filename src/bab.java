@@ -20,13 +20,13 @@ public class bab extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgg.t);
+      Type<?> $$0 = this.getInputSchema().getType(bgh.t);
       OpticFinder<?> $$1 = $$0.findField("tag");
       return TypeRewriteRule.seq(
          this.fixTypeEverywhereTyped(this.a + " (ItemStack)", $$0, $$1x -> $$1x.updateTyped($$1, this::a)),
          new TypeRewriteRule[]{
-            this.fixTypeEverywhereTyped(this.a + " (Entity)", this.getInputSchema().getType(bgg.B), this::b),
-            this.fixTypeEverywhereTyped(this.a + " (Player)", this.getInputSchema().getType(bgg.b), this::b)
+            this.fixTypeEverywhereTyped(this.a + " (Entity)", this.getInputSchema().getType(bgh.B), this::b),
+            this.fixTypeEverywhereTyped(this.a + " (Player)", this.getInputSchema().getType(bgh.b), this::b)
          }
       );
    }

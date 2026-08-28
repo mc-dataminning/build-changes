@@ -1,123 +1,76 @@
-import com.google.common.collect.Iterables;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.StreamSupport;
-import javax.annotation.Nullable;
+import java.util.function.Predicate;
 
-public interface dbp extends dbl {
-   dub C_();
+public class dbp {
+   private final ewh a;
+   private final ewh b;
+   private final dbp.a c;
+   private final dbp.b d;
+   private final ewm e;
 
-   @Nullable
-   dbl c(int var1, int var2);
-
-   default boolean a(@Nullable bsg $$0, ewy $$1) {
-      return true;
+   public dbp(ewh $$0, ewh $$1, dbp.a $$2, dbp.b $$3, bsh $$4) {
+      this($$0, $$1, $$2, $$3, ewm.a($$4));
    }
 
-   default boolean a(dsk $$0, ja $$1, ewk $$2) {
-      ewy $$3 = $$0.b(this, $$1, $$2);
-      return $$3.c() || this.a(null, $$3.a((double)$$1.u(), (double)$$1.v(), (double)$$1.w()));
+   public dbp(ewh $$0, ewh $$1, dbp.a $$2, dbp.b $$3, ewm $$4) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+      this.d = $$3;
+      this.e = $$4;
    }
 
-   default boolean f(bsg $$0) {
-      return this.a($$0, ewv.a($$0.cL()));
+   public ewh a() {
+      return this.b;
    }
 
-   default boolean b(ewa $$0) {
-      return this.a(null, $$0);
+   public ewh b() {
+      return this.a;
    }
 
-   default boolean g(bsg $$0) {
-      return this.a($$0, $$0.cL());
+   public exa a(dsl $$0, dbm $$1, ja $$2) {
+      return this.c.get($$0, $$1, $$2, this.e);
    }
 
-   default boolean a(@Nullable bsg $$0, ewa $$1) {
-      for (ewy $$2 : this.e($$0, $$1)) {
-         if (!$$2.c()) {
-            return false;
-         }
+   public exa a(eoj $$0, dbm $$1, ja $$2) {
+      return this.d.a($$0) ? $$0.d($$1, $$2) : ewx.a();
+   }
+
+   public static enum a implements dbp.c {
+      a(dsk.a::b),
+      b(dsk.a::a),
+      c(dsk.a::c),
+      d(($$0, $$1, $$2, $$3) -> $$0.a(avw.aQ) ? ewx.b() : ewx.a());
+
+      private final dbp.c e;
+
+      private a(final dbp.c $$0) {
+         this.e = $$0;
       }
 
-      if (!this.c($$0, $$1).isEmpty()) {
-         return false;
-      } else if ($$0 == null) {
-         return true;
-      } else {
-         ewy $$3 = this.h($$0, $$1);
-         return $$3 == null || !ewv.c($$3, ewv.a($$1), ewj.i);
+      @Override
+      public exa get(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
+         return this.e.get($$0, $$1, $$2, $$3);
       }
    }
 
-   default boolean b(@Nullable bsg $$0, ewa $$1) {
-      for (ewy $$2 : this.e($$0, $$1)) {
-         if (!$$2.c()) {
-            return false;
-         }
+   public static enum b {
+      a($$0 -> false),
+      b(eoj::b),
+      c($$0 -> !$$0.c()),
+      d($$0 -> $$0.a(awc.a));
+
+      private final Predicate<eoj> e;
+
+      private b(final Predicate<eoj> $$0) {
+         this.e = $$0;
       }
 
-      return true;
-   }
-
-   List<ewy> c(@Nullable bsg var1, ewa var2);
-
-   default Iterable<ewy> d(@Nullable bsg $$0, ewa $$1) {
-      List<ewy> $$2 = this.c($$0, $$1);
-      Iterable<ewy> $$3 = this.e($$0, $$1);
-      return $$2.isEmpty() ? $$3 : Iterables.concat($$2, $$3);
-   }
-
-   default Iterable<ewy> e(@Nullable bsg $$0, ewa $$1) {
-      return () -> new dbj<ewy>(this, $$0, $$1, false, ($$0xx, $$1xx) -> $$1xx);
-   }
-
-   @Nullable
-   private ewy h(bsg $$0, ewa $$1) {
-      dub $$2 = this.C_();
-      return $$2.a($$0, $$1) ? $$2.c() : null;
-   }
-
-   default boolean f(@Nullable bsg $$0, ewa $$1) {
-      dbj<ewy> $$2 = new dbj<>(this, $$0, $$1, true, ($$0x, $$1x) -> $$1x);
-
-      while ($$2.hasNext()) {
-         if (!((ewy)$$2.next()).c()) {
-            return true;
-         }
+      public boolean a(eoj $$0) {
+         return this.e.test($$0);
       }
-
-      return false;
    }
 
-   default Optional<ja> g(bsg $$0, ewa $$1) {
-      ja $$2 = null;
-      double $$3 = Double.MAX_VALUE;
-      dbj<ja> $$4 = new dbj<>(this, $$0, $$1, false, ($$0x, $$1x) -> $$0x);
-
-      while ($$4.hasNext()) {
-         ja $$5 = (ja)$$4.next();
-         double $$6 = $$5.b($$0.do());
-         if ($$6 < $$3 || $$6 == $$3 && ($$2 == null || $$2.i($$5) < 0)) {
-            $$2 = $$5.i();
-            $$3 = $$6;
-         }
-      }
-
-      return Optional.ofNullable($$2);
-   }
-
-   default Optional<ewf> a(@Nullable bsg $$0, ewy $$1, ewf $$2, double $$3, double $$4, double $$5) {
-      if ($$1.c()) {
-         return Optional.empty();
-      } else {
-         ewa $$6 = $$1.a().c($$3, $$4, $$5);
-         ewy $$7 = StreamSupport.stream(this.e($$0, $$6).spliterator(), false)
-            .filter($$0x -> this.C_() == null || this.C_().a($$0x.a()))
-            .flatMap($$0x -> $$0x.e().stream())
-            .map($$3x -> $$3x.c($$3 / 2.0, $$4 / 2.0, $$5 / 2.0))
-            .map(ewv::a)
-            .reduce(ewv.a(), ewv::a);
-         ewy $$8 = ewv.a($$1, $$7, ewj.e);
-         return $$8.a($$2);
-      }
+   public interface c {
+      exa get(dsl var1, dbm var2, ja var3, ewm var4);
    }
 }

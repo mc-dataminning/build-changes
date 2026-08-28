@@ -1,22 +1,22 @@
 public class kw extends kt {
-   private final cuu c;
-   private final cuu.a d;
+   private final cuv c;
+   private final cuv.a d;
 
-   public kw(ctx $$0) {
-      if ($$0 instanceof cuu $$1) {
+   public kw(cty $$0) {
+      if ($$0 instanceof cuv $$1) {
          this.c = $$1;
          this.d = $$1.c();
       } else {
-         throw new IllegalArgumentException($$0 + " not instance of " + cuu.class.getSimpleName());
+         throw new IllegalArgumentException($$0 + " not instance of " + cuv.class.getSimpleName());
       }
    }
 
    @Override
-   public cuc a(kr $$0, cuc $$1) {
-      dcf $$2 = $$0.b();
-      jf $$3 = $$0.d().c(dhm.b);
+   public cud a(kr $$0, cud $$1) {
+      dcg $$2 = $$0.b();
+      jf $$3 = $$0.d().c(dhn.b);
       jt $$4 = this.d.b().getDispensePosition($$0, $$3);
-      cnc $$5 = this.c.a($$2, $$4, $$1, $$3);
+      cnd $$5 = this.c.a($$2, $$4, $$1, $$3);
       this.c.a($$5, (double)$$3.j(), (double)$$3.k(), (double)$$3.l(), this.d.d(), this.d.c());
       $$2.b($$5);
       $$1.h(1);

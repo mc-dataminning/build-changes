@@ -1,48 +1,76 @@
-public class cfw {
-   public static final akj<cfv> a = a("pale");
-   public static final akj<cfv> b = a("spotted");
-   public static final akj<cfv> c = a("snowy");
-   public static final akj<cfv> d = a("black");
-   public static final akj<cfv> e = a("ashen");
-   public static final akj<cfv> f = a("rusty");
-   public static final akj<cfv> g = a("woods");
-   public static final akj<cfv> h = a("chestnut");
-   public static final akj<cfv> i = a("striped");
-   public static final akj<cfv> j = a;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
 
-   private static akj<cfv> a(String $$0) {
-      return akj.a(lr.m, new akk($$0));
+public final class cfw {
+   public static final Codec<cfw> a = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               akk.a.fieldOf("wild_texture").forGetter($$0x -> $$0x.e),
+               akk.a.fieldOf("tame_texture").forGetter($$0x -> $$0x.f),
+               akk.a.fieldOf("angry_texture").forGetter($$0x -> $$0x.g),
+               jy.a(lr.aE).fieldOf("biomes").forGetter(cfw::d)
+            )
+            .apply($$0, cfw::new)
+   );
+   public static final ys<wf, cfw> b = ys.a(akk.b, cfw::a, akk.b, cfw::b, akk.b, cfw::c, yq.c(lr.aE), cfw::d, cfw::new);
+   public static final Codec<jj<cfw>> c = akg.a(lr.m, a);
+   public static final ys<wf, jj<cfw>> d = yq.a(lr.m, b);
+   private final akk e;
+   private final akk f;
+   private final akk g;
+   private final akk h;
+   private final akk i;
+   private final akk j;
+   private final jn<ddg> k;
+
+   public cfw(akk $$0, akk $$1, akk $$2, jn<ddg> $$3) {
+      this.e = $$0;
+      this.h = a($$0);
+      this.f = $$1;
+      this.i = a($$1);
+      this.g = $$2;
+      this.j = a($$2);
+      this.k = $$3;
    }
 
-   static void a(qm<cfv> $$0, akj<cfv> $$1, String $$2, akj<ddf> $$3) {
-      a($$0, $$1, $$2, jn.a($$0.a(lr.aE).b($$3)));
+   private static akk a(akk $$0) {
+      return $$0.a((UnaryOperator<String>)($$0x -> "textures/" + $$0x + ".png"));
    }
 
-   static void a(qm<cfv> $$0, akj<cfv> $$1, String $$2, awm<ddf> $$3) {
-      a($$0, $$1, $$2, $$0.a(lr.aE).b($$3));
+   public akk a() {
+      return this.h;
    }
 
-   static void a(qm<cfv> $$0, akj<cfv> $$1, String $$2, jn<ddf> $$3) {
-      akk $$4 = new akk("entity/wolf/" + $$2);
-      akk $$5 = new akk("entity/wolf/" + $$2 + "_tame");
-      akk $$6 = new akk("entity/wolf/" + $$2 + "_angry");
-      $$0.a($$1, new cfv($$4, $$5, $$6, $$3));
+   public akk b() {
+      return this.i;
    }
 
-   public static jj<cfv> a(jx $$0, jj<ddf> $$1) {
-      jw<cfv> $$2 = $$0.d(lr.m);
-      return $$2.i().filter($$1x -> ((cfv)$$1x.a()).d().a($$1)).findFirst().or(() -> $$2.b(j)).or($$2::a).orElseThrow();
+   public akk c() {
+      return this.j;
    }
 
-   public static void a(qm<cfv> $$0) {
-      a($$0, a, "wolf", ddm.p);
-      a($$0, b, "wolf_spotted", avv.k);
-      a($$0, c, "wolf_snowy", ddm.F);
-      a($$0, d, "wolf_black", ddm.n);
-      a($$0, e, "wolf_ashen", ddm.q);
-      a($$0, f, "wolf_rusty", avv.i);
-      a($$0, g, "wolf_woods", ddm.i);
-      a($$0, h, "wolf_chestnut", ddm.o);
-      a($$0, i, "wolf_striped", avv.f);
+   public jn<ddg> d() {
+      return this.k;
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      if ($$0 == this) {
+         return true;
+      } else {
+         return !($$0 instanceof cfw $$1)
+            ? false
+            : Objects.equals(this.e, $$1.e) && Objects.equals(this.f, $$1.f) && Objects.equals(this.g, $$1.g) && Objects.equals(this.k, $$1.k);
+      }
+   }
+
+   @Override
+   public int hashCode() {
+      int $$0 = 1;
+      $$0 = 31 * $$0 + this.e.hashCode();
+      $$0 = 31 * $$0 + this.f.hashCode();
+      $$0 = 31 * $$0 + this.g.hashCode();
+      return 31 * $$0 + this.k.hashCode();
    }
 }

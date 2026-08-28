@@ -1,195 +1,328 @@
-import com.mojang.serialization.MapCodec;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.Dynamic;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import it.unimi.dsi.fastutil.objects.ObjectIterator;
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dmd extends dkh implements dlx, dmi {
-   public static final MapCodec<dmd> c = b(dmd::new);
-   private static final dtb d = dta.C;
-   private final dki e = new dki(new dmd.a(dki.a));
-   private final dki f = new dki(new dmd.a(dki.e.a));
+public class dmd {
+   public static final int a = 24;
+   public static final int b = 1000;
+   public static final float c = 0.5F;
+   private static final int e = 32;
+   public static final int d = 11;
+   final boolean f;
+   private final awm<dfi> g;
+   private final int h;
+   private final int i;
+   private final int j;
+   private final int k;
+   private List<dmd.a> l = new ArrayList<>();
+   private static final Logger m = LogUtils.getLogger();
 
-   @Override
-   public MapCodec<dmd> a() {
-      return c;
+   public dmd(boolean $$0, awm<dfi> $$1, int $$2, int $$3, int $$4, int $$5) {
+      this.f = $$0;
+      this.g = $$1;
+      this.h = $$2;
+      this.i = $$3;
+      this.j = $$4;
+      this.k = $$5;
    }
 
-   public dmd(dsj.d $$0) {
-      super($$0);
-      this.k(this.o().a(d, Boolean.valueOf(false)));
+   public static dmd a() {
+      return new dmd(false, avw.bS, 10, 4, 10, 5);
    }
 
-   @Override
-   public dki c() {
-      return this.e;
+   public static dmd b() {
+      return new dmd(true, avw.bT, 50, 1, 5, 10);
    }
 
-   public dki m() {
+   public awm<dfi> c() {
+      return this.g;
+   }
+
+   public int d() {
+      return this.h;
+   }
+
+   public int e() {
+      return this.i;
+   }
+
+   public int f() {
+      return this.j;
+   }
+
+   public int g() {
+      return this.k;
+   }
+
+   public boolean h() {
       return this.f;
    }
 
-   public static boolean a(dcg $$0, ja $$1, dsk $$2, Collection<jf> $$3) {
-      boolean $$4 = false;
-      dsk $$5 = dfj.qT.o();
+   @VisibleForTesting
+   public List<dmd.a> i() {
+      return this.l;
+   }
 
-      for (jf $$6 : $$3) {
-         ja $$7 = $$1.a($$6);
-         if (a($$0, $$6, $$7, $$0.a_($$7))) {
-            $$5 = $$5.a(b($$6), Boolean.valueOf(true));
-            $$4 = true;
+   public void j() {
+      this.l.clear();
+   }
+
+   public void a(tx $$0) {
+      if ($$0.b("cursors", 9)) {
+         this.l.clear();
+         List<dmd.a> $$1 = (List<dmd.a>)dmd.a.b.listOf().parse(new Dynamic(ul.a, $$0.c("cursors", 10))).resultOrPartial(m::error).orElseGet(ArrayList::new);
+         int $$2 = Math.min($$1.size(), 32);
+
+         for (int $$3 = 0; $$3 < $$2; $$3++) {
+            this.a($$1.get($$3));
          }
-      }
-
-      if (!$$4) {
-         return false;
-      } else {
-         if (!$$2.u().c()) {
-            $$5 = $$5.a(d, Boolean.valueOf(true));
-         }
-
-         $$0.a($$1, $$5, 3);
-         return true;
       }
    }
 
-   @Override
-   public void a(dcg $$0, dsk $$1, ja $$2, ayo $$3) {
-      if ($$1.a(this)) {
-         for (jf $$4 : b) {
-            dtb $$5 = b($$4);
-            if ($$1.c($$5) && $$0.a_($$2.a($$4)).a(dfj.qS)) {
-               $$1 = $$1.a($$5, Boolean.valueOf(false));
-            }
-         }
+   public void b(tx $$0) {
+      dmd.a.b.listOf().encodeStart(ul.a, this.l).resultOrPartial(m::error).ifPresent($$1 -> $$0.a("cursors", $$1));
+   }
 
-         if (!n($$1)) {
-            eoh $$6 = $$0.b_($$2);
-            $$1 = ($$6.c() ? dfj.a : dfj.G).o();
-         }
-
-         $$0.a($$2, $$1, 3);
-         dlx.super.a($$0, $$1, $$2, $$3);
+   public void a(ja $$0, int $$1) {
+      while ($$1 > 0) {
+         int $$2 = Math.min($$1, 1000);
+         this.a(new dmd.a($$0, $$2));
+         $$1 -= $$2;
       }
    }
 
-   @Override
-   public int a(dmc.a $$0, dcg $$1, ja $$2, ayo $$3, dmc $$4, boolean $$5) {
-      if ($$5 && this.a($$4, $$1, $$0.a(), $$3)) {
-         return $$0.b() - 1;
-      } else {
-         return $$3.a($$4.f()) == 0 ? ayg.d((float)$$0.b() * 0.5F) : $$0.b();
+   private void a(dmd.a $$0) {
+      if (this.l.size() < 32) {
+         this.l.add($$0);
       }
    }
 
-   private boolean a(dmc $$0, dcg $$1, ja $$2, ayo $$3) {
-      dsk $$4 = $$1.a_($$2);
-      awm<dfh> $$5 = $$0.c();
+   public void a(dch $$0, ja $$1, ayo $$2, boolean $$3) {
+      if (!this.l.isEmpty()) {
+         List<dmd.a> $$4 = new ArrayList<>();
+         Map<ja, dmd.a> $$5 = new HashMap<>();
+         Object2IntMap<ja> $$6 = new Object2IntOpenHashMap();
 
-      for (jf $$6 : jf.a($$3)) {
-         if (a($$4, $$6)) {
-            ja $$7 = $$2.a($$6);
-            dsk $$8 = $$1.a_($$7);
-            if ($$8.a($$5)) {
-               dsk $$9 = dfj.qS.o();
-               $$1.a($$7, $$9, 3);
-               dfh.a($$8, $$9, $$1, $$7);
-               $$1.a(null, $$7, avh.vT, avi.e, 1.0F, 1.0F);
-               this.e.a($$9, $$1, $$7, $$0.h());
-               jf $$10 = $$6.g();
-
-               for (jf $$11 : b) {
-                  if ($$11 != $$10) {
-                     ja $$12 = $$7.a($$11);
-                     dsk $$13 = $$1.a_($$12);
-                     if ($$13.a(this)) {
-                        this.a($$1, $$13, $$12, $$3);
-                     }
+         for (dmd.a $$7 : this.l) {
+            $$7.a($$0, $$1, $$2, this, $$3);
+            if ($$7.e <= 0) {
+               $$0.c(3006, $$7.a(), 0);
+            } else {
+               ja $$8 = $$7.a();
+               $$6.computeInt($$8, ($$1x, $$2x) -> ($$2x == null ? 0 : $$2x) + $$7.e);
+               dmd.a $$9 = $$5.get($$8);
+               if ($$9 == null) {
+                  $$5.put($$8, $$7);
+                  $$4.add($$7);
+               } else if (!this.h() && $$7.e + $$9.e <= 1000) {
+                  $$9.a($$7);
+               } else {
+                  $$4.add($$7);
+                  if ($$7.e < $$9.e) {
+                     $$5.put($$8, $$7);
                   }
                }
-
-               return true;
-            }
-         }
-      }
-
-      return false;
-   }
-
-   public static boolean a(dcg $$0, dsk $$1, ja $$2) {
-      if (!$$1.a(dfj.qT)) {
-         return false;
-      } else {
-         for (jf $$3 : b) {
-            if (a($$1, $$3) && $$0.a_($$2.a($$3)).a(avw.bS)) {
-               return true;
             }
          }
 
-         return false;
+         ObjectIterator var16 = $$6.object2IntEntrySet().iterator();
+
+         while (var16.hasNext()) {
+            Entry<ja> $$10 = (Entry<ja>)var16.next();
+            ja $$11 = (ja)$$10.getKey();
+            int $$12 = $$10.getIntValue();
+            dmd.a $$13 = $$5.get($$11);
+            Collection<jf> $$14 = $$13 == null ? null : $$13.d();
+            if ($$12 > 0 && $$14 != null) {
+               int $$15 = (int)(Math.log1p((double)$$12) / 2.3F) + 1;
+               int $$16 = ($$15 << 6) + dki.a($$14);
+               $$0.c(3006, $$11, $$16);
+            }
+         }
+
+         this.l = $$4;
       }
    }
 
-   @Override
-   protected dsk a(dsk $$0, jf $$1, dsk $$2, dcg $$3, ja $$4, ja $$5) {
-      if ($$0.c(d)) {
-         $$3.a($$4, eoi.c, eoi.c.a($$3));
+   public static class a {
+      private static final ObjectArrayList<ke> c = ac.a(
+         new ObjectArrayList(18),
+         $$0 -> ja.d(new ja(-1, -1, -1), new ja(1, 1, 1))
+               .filter($$0x -> ($$0x.u() == 0 || $$0x.v() == 0 || $$0x.w() == 0) && !$$0x.equals(ja.c))
+               .map(ja::i)
+               .forEach($$0::add)
+      );
+      public static final int a = 1;
+      private ja d;
+      int e;
+      private int f;
+      private int g;
+      @Nullable
+      private Set<jf> h;
+      private static final Codec<Set<jf>> i = jf.g.listOf().xmap($$0 -> Sets.newEnumSet($$0, jf.class), Lists::newArrayList);
+      public static final Codec<dmd.a> b = RecordCodecBuilder.create(
+         $$0 -> $$0.group(
+                  ja.a.fieldOf("pos").forGetter(dmd.a::a),
+                  Codec.intRange(0, 1000).fieldOf("charge").orElse(0).forGetter(dmd.a::b),
+                  Codec.intRange(0, 1).fieldOf("decay_delay").orElse(1).forGetter(dmd.a::c),
+                  Codec.intRange(0, Integer.MAX_VALUE).fieldOf("update_delay").orElse(0).forGetter($$0x -> $$0x.f),
+                  i.lenientOptionalFieldOf("facings").forGetter($$0x -> Optional.ofNullable($$0x.d()))
+               )
+               .apply($$0, dmd.a::new)
+      );
+
+      private a(ja $$0, int $$1, int $$2, int $$3, Optional<Set<jf>> $$4) {
+         this.d = $$0;
+         this.e = $$1;
+         this.g = $$2;
+         this.f = $$3;
+         this.h = $$4.orElse(null);
       }
 
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   @Override
-   protected void a(dsl.a<dfh, dsk> $$0) {
-      super.a($$0);
-      $$0.a(d);
-   }
-
-   @Override
-   protected boolean a(dsk $$0, cxm $$1) {
-      return !$$1.n().a(cuf.gi) || super.a($$0, $$1);
-   }
-
-   @Override
-   protected eoh b_(dsk $$0) {
-      return $$0.c(d) ? eoi.c.a(false) : super.b_($$0);
-   }
-
-   class a extends dki.a {
-      private final dki.e[] b;
-
-      public a(final dki.e... $$0) {
-         super(dmd.this);
-         this.b = $$0;
+      public a(ja $$0, int $$1) {
+         this($$0, $$1, 1, 0, Optional.empty());
       }
 
-      @Override
-      public boolean a(dbl $$0, ja $$1, ja $$2, jf $$3, dsk $$4) {
-         dsk $$5 = $$0.a_($$2.a($$3));
-         if (!$$5.a(dfj.qS) && !$$5.a(dfj.qU) && !$$5.a(dfj.bQ)) {
-            if ($$1.k($$2) == 2) {
-               ja $$6 = $$1.a($$3.g());
-               if ($$0.a_($$6).d($$0, $$6, $$3)) {
-                  return false;
+      public ja a() {
+         return this.d;
+      }
+
+      public int b() {
+         return this.e;
+      }
+
+      public int c() {
+         return this.g;
+      }
+
+      @Nullable
+      public Set<jf> d() {
+         return this.h;
+      }
+
+      private boolean a(dch $$0, ja $$1, boolean $$2) {
+         if (this.e <= 0) {
+            return false;
+         } else if ($$2) {
+            return true;
+         } else {
+            return $$0 instanceof aqm $$3 ? $$3.n($$1) : false;
+         }
+      }
+
+      public void a(dch $$0, ja $$1, ayo $$2, dmd $$3, boolean $$4) {
+         if (this.a($$0, $$1, $$3.f)) {
+            if (this.f > 0) {
+               this.f--;
+            } else {
+               dsl $$5 = $$0.a_(this.d);
+               dly $$6 = a($$5);
+               if ($$4 && $$6.a($$0, this.d, $$5, this.h, $$3.h())) {
+                  if ($$6.d()) {
+                     $$5 = $$0.a_(this.d);
+                     $$6 = a($$5);
+                  }
+
+                  $$0.a(null, this.d, avh.vT, avi.e, 1.0F, 1.0F);
+               }
+
+               this.e = $$6.a(this, $$0, $$1, $$2, $$3, $$4);
+               if (this.e <= 0) {
+                  $$6.a($$0, $$5, this.d, $$2);
+               } else {
+                  ja $$7 = a($$0, this.d, $$2);
+                  if ($$7 != null) {
+                     $$6.a($$0, $$5, this.d, $$2);
+                     this.d = $$7.i();
+                     if ($$3.h() && !this.d.a(new ke($$1.u(), this.d.v(), $$1.w()), 15.0)) {
+                        this.e = 0;
+                        return;
+                     }
+
+                     $$5 = $$0.a_($$7);
+                  }
+
+                  if ($$5.b() instanceof dly) {
+                     this.h = dki.m($$5);
+                  }
+
+                  this.g = $$6.i_(this.g);
+                  this.f = $$6.b();
                }
             }
-
-            eoh $$7 = $$4.u();
-            if (!$$7.c() && !$$7.b(eoi.c)) {
-               return false;
-            } else {
-               return $$4.a(avw.aK) ? false : $$4.r() || super.a($$0, $$1, $$2, $$3, $$4);
-            }
-         } else {
-            return false;
          }
       }
 
-      @Override
-      public dki.e[] a() {
-         return this.b;
+      void a(dmd.a $$0) {
+         this.e = this.e + $$0.e;
+         $$0.e = 0;
+         this.f = Math.min(this.f, $$0.f);
       }
 
-      @Override
-      public boolean a(dsk $$0) {
-         return !$$0.a(dfj.qT);
+      private static dly a(dsl $$0) {
+         return $$0.b() instanceof dly $$1 ? $$1 : dly.s_;
+      }
+
+      private static List<ke> a(ayo $$0) {
+         return ac.a(c, $$0);
+      }
+
+      @Nullable
+      private static ja a(dch $$0, ja $$1, ayo $$2) {
+         ja.a $$3 = $$1.j();
+         ja.a $$4 = $$1.j();
+
+         for (ke $$5 : a($$2)) {
+            $$4.a($$1, $$5);
+            dsl $$6 = $$0.a_($$4);
+            if ($$6.b() instanceof dly && a($$0, $$1, $$4)) {
+               $$3.g($$4);
+               if (dme.a($$0, $$6, $$4)) {
+                  break;
+               }
+            }
+         }
+
+         return $$3.equals($$1) ? null : $$3;
+      }
+
+      private static boolean a(dch $$0, ja $$1, ja $$2) {
+         if ($$1.k($$2) == 1) {
+            return true;
+         } else {
+            ja $$3 = $$2.b($$1);
+            jf $$4 = jf.a(jf.a.a, $$3.u() < 0 ? jf.b.b : jf.b.a);
+            jf $$5 = jf.a(jf.a.b, $$3.v() < 0 ? jf.b.b : jf.b.a);
+            jf $$6 = jf.a(jf.a.c, $$3.w() < 0 ? jf.b.b : jf.b.a);
+            if ($$3.u() == 0) {
+               return a($$0, $$1, $$5) || a($$0, $$1, $$6);
+            } else {
+               return $$3.v() == 0 ? a($$0, $$1, $$4) || a($$0, $$1, $$6) : a($$0, $$1, $$4) || a($$0, $$1, $$5);
+            }
+         }
+      }
+
+      private static boolean a(dch $$0, ja $$1, jf $$2) {
+         ja $$3 = $$1.a($$2);
+         return !$$0.a_($$3).d($$0, $$3, $$2.g());
       }
    }
 }

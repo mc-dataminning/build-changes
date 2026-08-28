@@ -1,33 +1,44 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
 
-public record ejd(ejd.a b, bou<ddr.c> c) {
+public record ejd(List<ejd.a> c, eju d) {
    public static final Codec<ejd> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(ejd.a.c.fieldOf("bounding_box").forGetter(ejd::a), bou.c(ddr.c.a).fieldOf("spawns").forGetter(ejd::b)).apply($$0, ejd::new)
+      $$0 -> $$0.group(ejd.a.a.listOf().fieldOf("structures").forGetter(ejd::a), eju.b.fieldOf("placement").forGetter(ejd::b)).apply($$0, ejd::new)
    );
+   public static final Codec<jj<ejd>> b = akg.a(lr.aS, a);
 
-   public ejd.a a() {
-      return this.b;
+   public ejd(jj<eix> $$0, eju $$1) {
+      this(List.of(new ejd.a($$0, 1)), $$1);
    }
 
-   public bou<ddr.c> b() {
+   public static ejd.a a(jj<eix> $$0, int $$1) {
+      return new ejd.a($$0, $$1);
+   }
+
+   public static ejd.a a(jj<eix> $$0) {
+      return new ejd.a($$0, 1);
+   }
+
+   public List<ejd.a> a() {
       return this.c;
    }
 
-   public static enum a implements azc {
-      a("piece"),
-      b("full");
+   public eju b() {
+      return this.d;
+   }
 
-      public static final Codec<ejd.a> c = azc.a(ejd.a::values);
-      private final String d;
+   public static record a(jj<eix> b, int c) {
+      public static final Codec<ejd.a> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(eix.b.fieldOf("structure").forGetter(ejd.a::a), axo.l.fieldOf("weight").forGetter(ejd.a::b)).apply($$0, ejd.a::new)
+      );
 
-      private a(final String $$0) {
-         this.d = $$0;
+      public jj<eix> a() {
+         return this.b;
       }
 
-      @Override
-      public String c() {
-         return this.d;
+      public int b() {
+         return this.c;
       }
    }
 }

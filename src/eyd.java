@@ -1,21 +1,29 @@
-import java.util.concurrent.ConcurrentLinkedQueue;
-import org.lwjgl.glfw.GLFW;
-import org.lwjgl.system.MemoryUtil;
+import java.util.function.Function;
 
-public class eyd {
-   public static void a(eyx $$0, float $$1) {
-      ConcurrentLinkedQueue<eyw> $$2 = $$0.i();
+public class eyd<T> implements exu<T> {
+   private final Function<ja, eyb<T>> a;
+
+   public eyd(Function<ja, eyb<T>> $$0) {
+      this.a = $$0;
    }
 
-   public static void b(eyx $$0, float $$1) {
-      ConcurrentLinkedQueue<eyw> $$2 = $$0.j();
+   @Override
+   public boolean a(ja $$0, T $$1) {
+      return this.a.apply($$0).a($$0, $$1);
    }
 
-   public static void a() {
-      MemoryUtil.memSet(0L, 0, 1L);
+   @Override
+   public void a(exy<T> $$0) {
+      this.a.apply($$0.b()).a($$0);
    }
 
-   public static double b() {
-      return GLFW.glfwGetTime();
+   @Override
+   public boolean b(ja $$0, T $$1) {
+      return false;
+   }
+
+   @Override
+   public int a() {
+      return 0;
    }
 }

@@ -1,42 +1,33 @@
-import com.mojang.logging.LogUtils;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
-import org.slf4j.Logger;
 
-public class etj extends esh {
-   private static final Logger b = LogUtils.getLogger();
-   public static final MapCodec<etj> a = RecordCodecBuilder.mapCodec($$0 -> a($$0).apply($$0, etj::new));
+public class etj extends esj {
+   public static final MapCodec<etj> a = RecordCodecBuilder.mapCodec(
+      $$0 -> a($$0).and($$0.group(cxk.d.fieldOf("pages").forGetter($$0x -> $$0x.b), esi.a(100).forGetter($$0x -> $$0x.c))).apply($$0, etj::new)
+   );
+   private final List<ard<String>> b;
+   private final esi c;
 
-   private etj(List<euf> $$0) {
+   protected etj(List<euh> $$0, List<ard<String>> $$1, esi $$2) {
       super($$0);
+      this.b = $$1;
+      this.c = $$2;
    }
 
    @Override
-   public esj<etj> b() {
-      return esk.l;
+   protected cud a(cud $$0, eqw $$1) {
+      $$0.a(kn.I, cxk.a, this::a);
+      return $$0;
+   }
+
+   public cxk a(cxk $$0) {
+      List<ard<String>> $$1 = this.c.a($$0.a(), this.b, 100);
+      return $$0.b($$1);
    }
 
    @Override
-   public cuc a(cuc $$0, equ $$1) {
-      if ($$0.e()) {
-         return $$0;
-      } else {
-         Optional<cyk<cyz>> $$2 = $$1.d().r().a(cyo.b, new cyy($$0), $$1.d());
-         if ($$2.isPresent()) {
-            cuc $$3 = $$2.get().b().a($$1.d().H_());
-            if (!$$3.e()) {
-               return $$3.c($$0.H());
-            }
-         }
-
-         b.warn("Couldn't smelt {} because there is no smelting recipe", $$0);
-         return $$0;
-      }
-   }
-
-   public static esh.a<?> c() {
-      return a(etj::new);
+   public esl<etj> b() {
+      return esm.O;
    }
 }

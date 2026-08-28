@@ -1,30 +1,41 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record edl(efx b, dzm c, bpl d, int e) implements edo {
+public class edl implements edp {
    public static final Codec<edl> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               efx.a.fieldOf("state_provider").forGetter(edl::a),
-               dzm.b.fieldOf("target").forGetter(edl::b),
-               bpl.b(0, 8).fieldOf("radius").forGetter(edl::c),
-               Codec.intRange(0, 4).fieldOf("half_height").forGetter(edl::d)
+               dsl.b.fieldOf("contents").forGetter($$0x -> $$0x.b),
+               dsl.b.fieldOf("rim").forGetter($$0x -> $$0x.c),
+               bpm.b(0, 16).fieldOf("size").forGetter($$0x -> $$0x.d),
+               bpm.b(0, 16).fieldOf("rim_size").forGetter($$0x -> $$0x.e)
             )
             .apply($$0, edl::new)
    );
+   private final dsl b;
+   private final dsl c;
+   private final bpm d;
+   private final bpm e;
 
-   public efx a() {
+   public edl(dsl $$0, dsl $$1, bpm $$2, bpm $$3) {
+      this.b = $$0;
+      this.c = $$1;
+      this.d = $$2;
+      this.e = $$3;
+   }
+
+   public dsl a() {
       return this.b;
    }
 
-   public dzm b() {
+   public dsl b() {
       return this.c;
    }
 
-   public bpl c() {
+   public bpm c() {
       return this.d;
    }
 
-   public int d() {
+   public bpm d() {
       return this.e;
    }
 }

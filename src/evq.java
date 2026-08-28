@@ -1,26 +1,29 @@
-@FunctionalInterface
-public interface evq<T> {
-   void handle(T var1, evs<T> var2, long var3);
+import net.minecraft.server.MinecraftServer;
 
-   public abstract static class a<T, C extends evq<T>> {
-      private final akk a;
-      private final Class<?> b;
+public class evq implements evs<MinecraftServer> {
+   final akk a;
 
-      public a(akk $$0, Class<?> $$1) {
-         this.a = $$0;
-         this.b = $$1;
+   public evq(akk $$0) {
+      this.a = $$0;
+   }
+
+   public void a(MinecraftServer $$0, evu<MinecraftServer> $$1, long $$2) {
+      akz $$3 = $$0.aG();
+      $$3.a(this.a).ifPresent($$1x -> $$3.a($$1x, $$3.c()));
+   }
+
+   public static class a extends evs.a<MinecraftServer, evq> {
+      public a() {
+         super(new akk("function"), evq.class);
       }
 
-      public akk a() {
-         return this.a;
+      public void a(tx $$0, evq $$1) {
+         $$0.a("Name", $$1.a.toString());
       }
 
-      public Class<?> b() {
-         return this.b;
+      public evq a(tx $$0) {
+         akk $$1 = new akk($$0.l("Name"));
+         return new evq($$1);
       }
-
-      public abstract void a(tx var1, C var2);
-
-      public abstract C b(tx var1);
    }
 }

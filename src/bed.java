@@ -23,7 +23,7 @@ public abstract class bed extends DataFix {
    }
 
    public final TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgg.t);
+      Type<?> $$0 = this.getInputSchema().getType(bgh.t);
       OpticFinder<?> $$1 = $$0.findField("components");
       return this.fixTypeEverywhereTyped(
          this.a, $$0, $$1x -> $$1x.updateTyped($$1, $$0xx -> $$0xx.update(DSL.remainderFinder(), $$0xxx -> $$0xxx.renameAndFixField(this.b, this.c, this::a)))

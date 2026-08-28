@@ -1,480 +1,166 @@
-import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ListIterator;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import com.google.common.collect.Maps;
+import com.mojang.blaze3d.systems.RenderSystem;
+import java.util.Map;
+import java.util.UUID;
 
 public class fht {
-   private static final Logger a = LogUtils.getLogger();
-   private static final int b = 100;
-   private static final int c = -1;
-   private static final int d = 4;
-   private static final int e = 4;
-   private static final int f = 40;
-   private static final int g = 60;
-   private static final wu h = wu.c("chat.deleted_marker").a(n.h, n.u);
-   private final fft i;
-   private final awt<String> j = new awt<>(100);
-   private final List<ffn> k = Lists.newArrayList();
-   private final List<ffn.a> l = Lists.newArrayList();
-   private int m;
-   private boolean n;
-   private final List<fht.a> o = new ArrayList<>();
+   private static final int a = 182;
+   private static final int b = 5;
+   private static final akk[] c = new akk[]{
+      new akk("boss_bar/pink_background"),
+      new akk("boss_bar/blue_background"),
+      new akk("boss_bar/red_background"),
+      new akk("boss_bar/green_background"),
+      new akk("boss_bar/yellow_background"),
+      new akk("boss_bar/purple_background"),
+      new akk("boss_bar/white_background")
+   };
+   private static final akk[] d = new akk[]{
+      new akk("boss_bar/pink_progress"),
+      new akk("boss_bar/blue_progress"),
+      new akk("boss_bar/red_progress"),
+      new akk("boss_bar/green_progress"),
+      new akk("boss_bar/yellow_progress"),
+      new akk("boss_bar/purple_progress"),
+      new akk("boss_bar/white_progress")
+   };
+   private static final akk[] e = new akk[]{
+      new akk("boss_bar/notched_6_background"),
+      new akk("boss_bar/notched_10_background"),
+      new akk("boss_bar/notched_12_background"),
+      new akk("boss_bar/notched_20_background")
+   };
+   private static final akk[] f = new akk[]{
+      new akk("boss_bar/notched_6_progress"),
+      new akk("boss_bar/notched_10_progress"),
+      new akk("boss_bar/notched_12_progress"),
+      new akk("boss_bar/notched_20_progress")
+   };
+   private final ffw g;
+   final Map<UUID, fii> h = Maps.newLinkedHashMap();
 
-   public fht(fft $$0) {
-      this.i = $$0;
-      this.j.addAll($$0.bc().a());
+   public fht(ffw $$0) {
+      this.g = $$0;
+   }
+
+   public void a(fhh $$0) {
+      if (!this.h.isEmpty()) {
+         this.g.aH().a("bossHealth");
+         int $$1 = $$0.a();
+         int $$2 = 12;
+
+         for (fii $$3 : this.h.values()) {
+            int $$4 = $$1 / 2 - 91;
+            this.a($$0, $$4, $$2, $$3);
+            wu $$6 = $$3.i();
+            int $$7 = this.g.h.a($$6);
+            int $$8 = $$1 / 2 - $$7 / 2;
+            int $$9 = $$2 - 9;
+            $$0.b(this.g.h, $$6, $$8, $$9, 16777215);
+            $$2 += 10 + 9;
+            if ($$2 >= $$0.b() / 3) {
+               break;
+            }
+         }
+
+         this.g.aH().c();
+      }
+   }
+
+   private void a(fhh $$0, int $$1, int $$2, bpx $$3) {
+      this.a($$0, $$1, $$2, $$3, 182, c, e);
+      int $$4 = ayg.b($$3.j(), 0, 182);
+      if ($$4 > 0) {
+         this.a($$0, $$1, $$2, $$3, $$4, d, f);
+      }
+   }
+
+   private void a(fhh $$0, int $$1, int $$2, bpx $$3, int $$4, akk[] $$5, akk[] $$6) {
+      RenderSystem.enableBlend();
+      $$0.a($$5[$$3.k().ordinal()], 182, 5, 0, 0, $$1, $$2, $$4, 5);
+      if ($$3.l() != bpx.b.a) {
+         $$0.a($$6[$$3.l().ordinal() - 1], 182, 5, 0, 0, $$1, $$2, $$4, 5);
+      }
+
+      RenderSystem.disableBlend();
+   }
+
+   public void a(abx $$0) {
+      $$0.a(new abx.b() {
+         @Override
+         public void a(UUID $$0, wu $$1, float $$2, bpx.a $$3, bpx.b $$4, boolean $$5, boolean $$6, boolean $$7) {
+            fht.this.h.put($$0, new fii($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7));
+         }
+
+         @Override
+         public void a(UUID $$0) {
+            fht.this.h.remove($$0);
+         }
+
+         @Override
+         public void a(UUID $$0, float $$1) {
+            fht.this.h.get($$0).a($$1);
+         }
+
+         @Override
+         public void a(UUID $$0, wu $$1) {
+            fht.this.h.get($$0).a($$1);
+         }
+
+         @Override
+         public void a(UUID $$0, bpx.a $$1, bpx.b $$2) {
+            fii $$3 = fht.this.h.get($$0);
+            $$3.a($$1);
+            $$3.a($$2);
+         }
+
+         @Override
+         public void a(UUID $$0, boolean $$1, boolean $$2, boolean $$3) {
+            fii $$4 = fht.this.h.get($$0);
+            $$4.a($$1);
+            $$4.b($$2);
+            $$4.c($$3);
+         }
+      });
    }
 
    public void a() {
-      if (!this.o.isEmpty()) {
-         this.m();
-      }
+      this.h.clear();
    }
 
-   public void a(fhf $$0, int $$1, int $$2, int $$3, boolean $$4) {
-      if (!this.l()) {
-         int $$5 = this.j();
-         int $$6 = this.l.size();
-         if ($$6 > 0) {
-            this.i.aI().a("chat");
-            float $$7 = (float)this.h();
-            int $$8 = ayg.f((float)this.f() / $$7);
-            int $$9 = $$0.b();
-            $$0.c().a();
-            $$0.c().b($$7, $$7, 1.0F);
-            $$0.c().a(4.0F, 0.0F, 0.0F);
-            int $$10 = ayg.d((float)($$9 - 40) / $$7);
-            int $$11 = this.d(this.c((double)$$2), this.d((double)$$3));
-            double $$12 = this.i.m.n().c() * 0.9F + 0.1F;
-            double $$13 = this.i.m.r().c();
-            double $$14 = this.i.m.o().c();
-            int $$15 = this.o();
-            int $$16 = (int)Math.round(-8.0 * ($$14 + 1.0) + 4.0 * $$14);
-            int $$17 = 0;
-
-            for (int $$18 = 0; $$18 + this.m < this.l.size() && $$18 < $$5; $$18++) {
-               int $$19 = $$18 + this.m;
-               ffn.a $$20 = this.l.get($$19);
-               if ($$20 != null) {
-                  int $$21 = $$1 - $$20.a();
-                  if ($$21 < 200 || $$4) {
-                     double $$22 = $$4 ? 1.0 : b($$21);
-                     int $$23 = (int)(255.0 * $$22 * $$12);
-                     int $$24 = (int)(255.0 * $$22 * $$13);
-                     $$17++;
-                     if ($$23 > 3) {
-                        int $$25 = 0;
-                        int $$26 = $$10 - $$18 * $$15;
-                        int $$27 = $$26 + $$16;
-                        $$0.a(-4, $$26 - $$15, 0 + $$8 + 4 + 4, $$26, $$24 << 24);
-                        ffo $$28 = $$20.c();
-                        if ($$28 != null) {
-                           int $$29 = $$28.e() | $$23 << 24;
-                           $$0.a(-4, $$26 - $$15, -2, $$26, $$29);
-                           if ($$19 == $$11 && $$28.f() != null) {
-                              int $$30 = this.a($$20);
-                              int $$31 = $$27 + 9;
-                              this.a($$0, $$30, $$31, $$28.f());
-                           }
-                        }
-
-                        $$0.c().a();
-                        $$0.c().a(0.0F, 0.0F, 50.0F);
-                        $$0.b(this.i.h, $$20.b(), 0, $$27, 16777215 + ($$23 << 24));
-                        $$0.c().b();
-                     }
-                  }
-               }
-            }
-
-            long $$32 = this.i.aY().c();
-            if ($$32 > 0L) {
-               int $$33 = (int)(128.0 * $$12);
-               int $$34 = (int)(255.0 * $$13);
-               $$0.c().a();
-               $$0.c().a(0.0F, (float)$$10, 0.0F);
-               $$0.a(-2, 0, $$8 + 4, 9, $$34 << 24);
-               $$0.c().a(0.0F, 0.0F, 50.0F);
-               $$0.b(this.i.h, wu.a("chat.queue", $$32), 0, 1, 16777215 + ($$33 << 24));
-               $$0.c().b();
-            }
-
-            if ($$4) {
-               int $$35 = this.o();
-               int $$36 = $$6 * $$35;
-               int $$37 = $$17 * $$35;
-               int $$38 = this.m * $$37 / $$6 - $$10;
-               int $$39 = $$37 * $$37 / $$36;
-               if ($$36 != $$37) {
-                  int $$40 = $$38 > 0 ? 170 : 96;
-                  int $$41 = this.n ? 13382451 : 3355562;
-                  int $$42 = $$8 + 4;
-                  $$0.a($$42, -$$38, $$42 + 2, -$$38 - $$39, 100, $$41 + ($$40 << 24));
-                  $$0.a($$42 + 2, -$$38, $$42 + 1, -$$38 - $$39, 100, 13421772 + ($$40 << 24));
-               }
-            }
-
-            $$0.c().b();
-            this.i.aI().c();
-         }
-      }
-   }
-
-   private void a(fhf $$0, int $$1, int $$2, ffo.a $$3) {
-      int $$4 = $$2 - $$3.d - 1;
-      $$3.a($$0, $$1, $$4);
-   }
-
-   private int a(ffn.a $$0) {
-      return this.i.h.a($$0.b()) + 4;
-   }
-
-   private boolean l() {
-      return this.i.m.m().c() == cmi.c;
-   }
-
-   private static double b(int $$0) {
-      double $$1 = (double)$$0 / 200.0;
-      $$1 = 1.0 - $$1;
-      $$1 *= 10.0;
-      $$1 = ayg.a($$1, 0.0, 1.0);
-      return $$1 * $$1;
-   }
-
-   public void a(boolean $$0) {
-      this.i.aY().d();
-      this.o.clear();
-      this.l.clear();
-      this.k.clear();
-      if ($$0) {
-         this.j.clear();
-         this.j.addAll(this.i.bc().a());
-      }
-   }
-
-   public void a(wu $$0) {
-      this.a($$0, null, this.i.W() ? ffo.b() : ffo.a());
-   }
-
-   public void a(wu $$0, @Nullable xg $$1, @Nullable ffo $$2) {
-      ffn $$3 = new ffn(this.i.l.e(), $$0, $$1, $$2);
-      this.a($$3);
-      this.b($$3);
-      this.c($$3);
-   }
-
-   private void a(ffn $$0) {
-      String $$1 = $$0.c().getString().replaceAll("\r", "\\\\r").replaceAll("\n", "\\\\n");
-      String $$2 = x.a($$0.e(), ffo::h);
-      if ($$2 != null) {
-         a.info("[{}] [CHAT] {}", $$2, $$1);
-      } else {
-         a.info("[CHAT] {}", $$1);
-      }
-   }
-
-   private void b(ffn $$0) {
-      int $$1 = ayg.a((double)this.f() / this.h());
-      ffo.a $$2 = $$0.a();
-      if ($$2 != null) {
-         $$1 -= $$2.c + 4 + 2;
-      }
-
-      List<axs> $$3 = fhx.a($$0.c(), $$1, this.i.h);
-      boolean $$4 = this.e();
-
-      for (int $$5 = 0; $$5 < $$3.size(); $$5++) {
-         axs $$6 = $$3.get($$5);
-         if ($$4 && this.m > 0) {
-            this.n = true;
-            this.a(1);
-         }
-
-         boolean $$7 = $$5 == $$3.size() - 1;
-         this.l.add(0, new ffn.a($$0.b(), $$6, $$0.e(), $$7));
-      }
-
-      while (this.l.size() > 100) {
-         this.l.remove(this.l.size() - 1);
-      }
-   }
-
-   private void c(ffn $$0) {
-      this.k.add(0, $$0);
-
-      while (this.k.size() > 100) {
-         this.k.remove(this.k.size() - 1);
-      }
-   }
-
-   private void m() {
-      int $$0 = this.i.l.e();
-      this.o.removeIf($$1 -> $$0 >= $$1.b() ? this.b($$1.a()) == null : false);
-   }
-
-   public void a(xg $$0) {
-      fht.a $$1 = this.b($$0);
-      if ($$1 != null) {
-         this.o.add($$1);
-      }
-   }
-
-   @Nullable
-   private fht.a b(xg $$0) {
-      int $$1 = this.i.l.e();
-      ListIterator<ffn> $$2 = this.k.listIterator();
-
-      while ($$2.hasNext()) {
-         ffn $$3 = $$2.next();
-         if ($$0.equals($$3.d())) {
-            int $$4 = $$3.b() + 60;
-            if ($$1 >= $$4) {
-               $$2.set(this.d($$3));
-               this.n();
-               return null;
-            }
-
-            return new fht.a($$0, $$4);
-         }
-      }
-
-      return null;
-   }
-
-   private ffn d(ffn $$0) {
-      return new ffn($$0.b(), h, null, ffo.a());
-   }
-
-   public void b() {
-      this.d();
-      this.n();
-   }
-
-   private void n() {
-      this.l.clear();
-
-      for (ffn $$0 : Lists.reverse(this.k)) {
-         this.b($$0);
-      }
-   }
-
-   public awt<String> c() {
-      return this.j;
-   }
-
-   public void a(String $$0) {
-      if (!$$0.equals(this.j.peekLast())) {
-         if (this.j.size() >= 100) {
-            this.j.removeFirst();
-         }
-
-         this.j.addLast($$0);
-      }
-
-      if ($$0.startsWith("/")) {
-         this.i.bc().a($$0);
-      }
-   }
-
-   public void d() {
-      this.m = 0;
-      this.n = false;
-   }
-
-   public void a(int $$0) {
-      this.m += $$0;
-      int $$1 = this.l.size();
-      if (this.m > $$1 - this.j()) {
-         this.m = $$1 - this.j();
-      }
-
-      if (this.m <= 0) {
-         this.m = 0;
-         this.n = false;
-      }
-   }
-
-   public boolean a(double $$0, double $$1) {
-      if (this.e() && !this.i.m.Y && !this.l()) {
-         fzd $$2 = this.i.aY();
-         if ($$2.c() == 0L) {
-            return false;
-         } else {
-            double $$3 = $$0 - 2.0;
-            double $$4 = (double)this.i.aO().p() - $$1 - 40.0;
-            if ($$3 <= (double)ayg.a((double)this.f() / this.h()) && $$4 < 0.0 && $$4 > (double)ayg.a(-9.0 * this.h())) {
-               $$2.b();
+   public boolean b() {
+      if (!this.h.isEmpty()) {
+         for (bpx $$0 : this.h.values()) {
+            if ($$0.n()) {
                return true;
-            } else {
-               return false;
             }
          }
-      } else {
-         return false;
-      }
-   }
-
-   @Nullable
-   public xr b(double $$0, double $$1) {
-      double $$2 = this.c($$0);
-      double $$3 = this.d($$1);
-      int $$4 = this.e($$2, $$3);
-      if ($$4 >= 0 && $$4 < this.l.size()) {
-         ffn.a $$5 = this.l.get($$4);
-         return this.i.h.b().a($$5.b(), ayg.a($$2));
-      } else {
-         return null;
-      }
-   }
-
-   @Nullable
-   public ffo c(double $$0, double $$1) {
-      double $$2 = this.c($$0);
-      double $$3 = this.d($$1);
-      int $$4 = this.d($$2, $$3);
-      if ($$4 >= 0 && $$4 < this.l.size()) {
-         ffn.a $$5 = this.l.get($$4);
-         ffo $$6 = $$5.c();
-         if ($$6 != null && this.a($$2, $$5, $$6)) {
-            return $$6;
-         }
       }
 
-      return null;
+      return false;
    }
 
-   private boolean a(double $$0, ffn.a $$1, ffo $$2) {
-      if ($$0 < 0.0) {
-         return true;
-      } else {
-         ffo.a $$3 = $$2.f();
-         if ($$3 == null) {
-            return false;
-         } else {
-            int $$4 = this.a($$1);
-            int $$5 = $$4 + $$3.c;
-            return $$0 >= (double)$$4 && $$0 <= (double)$$5;
-         }
-      }
-   }
-
-   private double c(double $$0) {
-      return $$0 / this.h() - 4.0;
-   }
-
-   private double d(double $$0) {
-      double $$1 = (double)this.i.aO().p() - $$0 - 40.0;
-      return $$1 / (this.h() * (double)this.o());
-   }
-
-   private int d(double $$0, double $$1) {
-      int $$2 = this.e($$0, $$1);
-      if ($$2 == -1) {
-         return -1;
-      } else {
-         while ($$2 >= 0) {
-            if (this.l.get($$2).d()) {
-               return $$2;
+   public boolean c() {
+      if (!this.h.isEmpty()) {
+         for (bpx $$0 : this.h.values()) {
+            if ($$0.m()) {
+               return true;
             }
-
-            $$2--;
          }
-
-         return $$2;
       }
+
+      return false;
    }
 
-   private int e(double $$0, double $$1) {
-      if (this.e() && !this.l()) {
-         if (!($$0 < -4.0) && !($$0 > (double)ayg.a((double)this.f() / this.h()))) {
-            int $$2 = Math.min(this.j(), this.l.size());
-            if ($$1 >= 0.0 && $$1 < (double)$$2) {
-               int $$3 = ayg.a($$1 + (double)this.m);
-               if ($$3 >= 0 && $$3 < this.l.size()) {
-                  return $$3;
-               }
+   public boolean d() {
+      if (!this.h.isEmpty()) {
+         for (bpx $$0 : this.h.values()) {
+            if ($$0.o()) {
+               return true;
             }
-
-            return -1;
-         } else {
-            return -1;
          }
-      } else {
-         return -1;
       }
-   }
 
-   public boolean e() {
-      return this.i.y instanceof fmf;
-   }
-
-   public int f() {
-      return a(this.i.m.x().c());
-   }
-
-   public int g() {
-      return b(this.e() ? this.i.m.z().c() : this.i.m.y().c());
-   }
-
-   public double h() {
-      return this.i.m.w().c();
-   }
-
-   public static int a(double $$0) {
-      int $$1 = 320;
-      int $$2 = 40;
-      return ayg.a($$0 * 280.0 + 40.0);
-   }
-
-   public static int b(double $$0) {
-      int $$1 = 180;
-      int $$2 = 20;
-      return ayg.a($$0 * 160.0 + 20.0);
-   }
-
-   public static double i() {
-      int $$0 = 180;
-      int $$1 = 20;
-      return 70.0 / (double)(b(1.0) - 20);
-   }
-
-   public int j() {
-      return this.g() / this.o();
-   }
-
-   private int o() {
-      return (int)(9.0 * (this.i.m.o().c() + 1.0));
-   }
-
-   public fht.b k() {
-      return new fht.b(List.copyOf(this.k), List.copyOf(this.j), List.copyOf(this.o));
-   }
-
-   public void a(fht.b $$0) {
-      this.j.clear();
-      this.j.addAll($$0.b);
-      this.o.clear();
-      this.o.addAll($$0.c);
-      this.k.clear();
-      this.k.addAll($$0.a);
-      this.n();
-   }
-
-   static record a(xg a, int b) {
-   }
-
-   public static class b {
-      final List<ffn> a;
-      final List<String> b;
-      final List<fht.a> c;
-
-      public b(List<ffn> $$0, List<String> $$1, List<fht.a> $$2) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-      }
+      return false;
    }
 }

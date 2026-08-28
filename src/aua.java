@@ -19,7 +19,7 @@ public abstract class aua extends aub<Map<akk, JsonElement>> {
       this.c = $$1;
    }
 
-   protected Map<akk, JsonElement> a(atw $$0, bmu $$1) {
+   protected Map<akk, JsonElement> a(atw $$0, bmv $$1) {
       Map<akk, JsonElement> $$2 = new HashMap<>();
       a($$0, this.c, this.b, $$2);
       return $$2;

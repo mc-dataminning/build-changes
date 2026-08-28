@@ -1,30 +1,46 @@
-public class ggy implements ggd<drs> {
-   private final gkk a;
-   private final ayo b = ayo.a();
+import org.joml.Matrix4f;
 
-   public ggy(gge.a $$0) {
-      this.a = $$0.d();
+public class ggy<T extends dri> implements ggf<T> {
+   public static final akk a = new akk("textures/environment/end_sky.png");
+   public static final akk b = new akk("textures/entity/end_portal.png");
+
+   public ggy(ggg.a $$0) {
    }
 
-   public void a(drs $$0, float $$1, fam $$2, ged $$3, int $$4, int $$5) {
-      if (drs.a.a($$0.c())) {
-         dcf $$6 = $$0.i();
-         if ($$6 != null) {
-            cuc $$7 = $$0.c().a();
-            if (!$$7.e()) {
-               this.b.b((long)gki.a($$7));
-               drt $$8 = $$0.d();
-               a($$1, $$6, $$2, $$3, $$4, $$7, this.a, $$8.b(), $$8.a(), this.b);
-            }
-         }
+   public void a(T $$0, float $$1, fao $$2, gef $$3, int $$4, int $$5) {
+      Matrix4f $$6 = $$2.c().a();
+      this.a($$0, $$6, $$3.getBuffer(this.d()));
+   }
+
+   private void a(T $$0, Matrix4f $$1, fas $$2) {
+      float $$3 = this.c();
+      float $$4 = this.b();
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, jf.d);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, jf.c);
+      this.a($$0, $$1, $$2, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, jf.f);
+      this.a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F, jf.e);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$3, $$3, 0.0F, 0.0F, 1.0F, 1.0F, jf.a);
+      this.a($$0, $$1, $$2, 0.0F, 1.0F, $$4, $$4, 1.0F, 1.0F, 0.0F, 0.0F, jf.b);
+   }
+
+   private void a(T $$0, Matrix4f $$1, fas $$2, float $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9, float $$10, jf $$11) {
+      if ($$0.a($$11)) {
+         $$2.a($$1, $$3, $$5, $$7).e();
+         $$2.a($$1, $$4, $$5, $$8).e();
+         $$2.a($$1, $$4, $$6, $$9).e();
+         $$2.a($$1, $$3, $$6, $$10).e();
       }
    }
 
-   public static void a(float $$0, dcf $$1, fam $$2, ged $$3, int $$4, cuc $$5, gkk $$6, float $$7, float $$8, ayo $$9) {
-      $$2.a();
-      $$2.a(0.5F, 0.4F, 0.5F);
-      $$2.a(a.d.rotationDegrees(ayg.j($$0, $$7, $$8)));
-      gki.a($$6, $$2, $$3, $$4, $$5, $$9, $$1);
-      $$2.b();
+   protected float b() {
+      return 0.75F;
+   }
+
+   protected float c() {
+      return 0.375F;
+   }
+
+   protected gen d() {
+      return gen.u();
    }
 }

@@ -1,86 +1,60 @@
-import com.google.common.collect.Lists;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import javax.annotation.Nullable;
 
-public class frc {
+public abstract class frc extends frg {
+   private static final fjh i = new fjh(
+      new akk("recipe_book/furnace_filter_enabled"),
+      new akk("recipe_book/furnace_filter_disabled"),
+      new akk("recipe_book/furnace_filter_enabled_highlighted"),
+      new akk("recipe_book/furnace_filter_disabled_highlighted")
+   );
    @Nullable
-   private cyk<?> a;
-   private final List<frc.a> b = Lists.newArrayList();
-   float c;
+   private cyg j;
 
-   public void a() {
-      this.a = null;
-      this.b.clear();
-      this.c = 0.0F;
+   @Override
+   protected void a() {
+      this.f.a(i);
    }
 
-   public void a(cyf $$0, int $$1, int $$2) {
-      this.b.add(new frc.a($$0, $$1, $$2));
-   }
-
-   public frc.a a(int $$0) {
-      return this.b.get($$0);
-   }
-
-   public int b() {
-      return this.b.size();
-   }
-
-   @Nullable
-   public cyk<?> c() {
-      return this.a;
-   }
-
-   public void a(cyk<?> $$0) {
-      this.a = $$0;
-   }
-
-   public void a(fhf $$0, fft $$1, int $$2, int $$3, boolean $$4, float $$5) {
-      if (!fnj.s()) {
-         this.c += $$5;
+   @Override
+   public void a(@Nullable cre $$0) {
+      super.a($$0);
+      if ($$0 != null && $$0.d < this.g.p()) {
+         this.e.a();
       }
+   }
 
-      for (int $$6 = 0; $$6 < this.b.size(); $$6++) {
-         frc.a $$7 = this.b.get($$6);
-         int $$8 = $$7.a() + $$2;
-         int $$9 = $$7.b() + $$3;
-         if ($$6 == 0 && $$4) {
-            $$0.a($$8 - 4, $$9 - 4, $$8 + 20, $$9 + 20, 822018048);
-         } else {
-            $$0.a($$8, $$9, $$8 + 16, $$9 + 16, 822018048);
+   @Override
+   public void a(cyl<?> $$0, List<cre> $$1) {
+      cud $$2 = $$0.b().a(this.h.r.H_());
+      this.e.a($$0);
+      this.e.a(cyg.a($$2), $$1.get(2).e, $$1.get(2).f);
+      js<cyg> $$3 = $$0.b().a();
+      cre $$4 = $$1.get(1);
+      if ($$4.g().e()) {
+         if (this.j == null) {
+            this.j = cyg.a(this.b().stream().filter($$0x -> $$0x.a(this.h.r.J())).map(cud::new));
          }
 
-         cuc $$10 = $$7.c();
-         $$0.b($$10, $$8, $$9);
-         $$0.a(gel.G(), $$8, $$9, $$8 + 16, $$9 + 16, 822083583);
-         if ($$6 == 0) {
-            $$0.a($$1.h, $$10, $$8, $$9);
+         this.e.a(this.j, $$4.e, $$4.f);
+      }
+
+      Iterator<cyg> $$5 = $$3.iterator();
+
+      for (int $$6 = 0; $$6 < 2; $$6++) {
+         if (!$$5.hasNext()) {
+            return;
+         }
+
+         cyg $$7 = $$5.next();
+         if (!$$7.c()) {
+            cre $$8 = $$1.get($$6);
+            this.e.a($$7, $$8.e, $$8.f);
          }
       }
    }
 
-   public class a {
-      private final cyf b;
-      private final int c;
-      private final int d;
-
-      public a(final cyf $$1, final int $$2, final int $$3) {
-         this.b = $$1;
-         this.c = $$2;
-         this.d = $$3;
-      }
-
-      public int a() {
-         return this.c;
-      }
-
-      public int b() {
-         return this.d;
-      }
-
-      public cuc c() {
-         cuc[] $$0 = this.b.a();
-         return $$0.length == 0 ? cuc.l : $$0[ayg.d(frc.this.c / 30.0F) % $$0.length];
-      }
-   }
+   protected abstract Set<cty> b();
 }

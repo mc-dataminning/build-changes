@@ -1,24 +1,26 @@
-import org.joml.Matrix4f;
+import org.joml.Vector2i;
+import org.joml.Vector2ic;
 
-public class fpr implements fps {
-   private final axs a;
+public class fpr implements fpv {
+   private final fma a;
 
-   public fpr(axs $$0) {
+   public fpr(fma $$0) {
       this.a = $$0;
    }
 
    @Override
-   public int a(fhd $$0) {
-      return $$0.a(this.a);
-   }
+   public Vector2ic a(int $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      Vector2i $$6 = new Vector2i();
+      $$6.x = this.a.d() + 3;
+      $$6.y = this.a.c() + 3 + 1;
+      if ($$6.y + $$5 + 3 > $$1) {
+         $$6.y = this.a.b() - $$5 - 3 - 1;
+      }
 
-   @Override
-   public int a() {
-      return 10;
-   }
+      if ($$6.x + $$4 > $$0) {
+         $$6.x = Math.max(this.a.e() - $$4 - 3, 4);
+      }
 
-   @Override
-   public void a(fhd $$0, int $$1, int $$2, Matrix4f $$3, ged.a $$4) {
-      $$0.a(this.a, (float)$$1, (float)$$2, -1, true, $$3, $$4, fhd.a.a, 0, 15728880);
+      return $$6;
    }
 }

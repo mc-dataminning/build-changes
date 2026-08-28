@@ -16,7 +16,7 @@ public class aoc {
 
    private static int a(eq $$0, ja $$1, float $$2) {
       aqm $$3 = $$0.e();
-      if ($$3.af() != dcf.h) {
+      if ($$3.af() != dcg.h) {
          $$0.b(wu.c("commands.setworldspawn.failure.not_overworld"));
          return 0;
       } else {

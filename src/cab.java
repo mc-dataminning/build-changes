@@ -1,86 +1,132 @@
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import com.google.common.annotations.VisibleForTesting;
+import it.unimi.dsi.fastutil.objects.ObjectLinkedOpenHashSet;
+import java.util.EnumMap;
+import java.util.EnumSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
-public class cab extends caw {
-   private static final int i = 2;
-   private static final int j = 32;
-   private static final int k = 10;
-   private static final int l = 7;
+public class cab {
+   private static final cbo a = new cbo(Integer.MAX_VALUE, new caa() {
+      @Override
+      public boolean a() {
+         return false;
+      }
+   }) {
+      @Override
+      public boolean h() {
+         return false;
+      }
+   };
+   private final Map<caa.a, cbo> b = new EnumMap<>(caa.a.class);
+   private final Set<cbo> c = new ObjectLinkedOpenHashSet();
+   private final Supplier<bmv> d;
+   private final EnumSet<caa.a> e = EnumSet.noneOf(caa.a.class);
 
-   public cab(btk $$0, double $$1) {
-      super($$0, $$1, 240, false);
+   public cab(Supplier<bmv> $$0) {
+      this.d = $$0;
    }
 
-   @Nullable
-   @Override
-   protected ewf h() {
-      float $$0 = this.b.dQ().z.i();
-      if (this.b.dQ().z.i() < 0.3F) {
-         return this.k();
-      } else {
-         ewf $$1;
-         if ($$0 < 0.7F) {
-            $$1 = this.l();
-            if ($$1 == null) {
-               $$1 = this.m();
-            }
-         } else {
-            $$1 = this.m();
-            if ($$1 == null) {
-               $$1 = this.l();
-            }
+   public void a(int $$0, caa $$1) {
+      this.c.add(new cbo($$0, $$1));
+   }
+
+   @VisibleForTesting
+   public void a(Predicate<caa> $$0) {
+      this.c.removeIf($$1 -> $$0.test($$1.k()));
+   }
+
+   public void a(caa $$0) {
+      for (cbo $$1 : this.c) {
+         if ($$1.k() == $$0 && $$1.h()) {
+            $$1.d();
          }
-
-         return $$1 == null ? this.k() : $$1;
       }
+
+      this.c.removeIf($$1x -> $$1x.k() == $$0);
    }
 
-   @Nullable
-   private ewf k() {
-      return cdz.a(this.b, 10, 7);
+   private static boolean a(cbo $$0, EnumSet<caa.a> $$1) {
+      for (caa.a $$2 : $$0.j()) {
+         if ($$1.contains($$2)) {
+            return true;
+         }
+      }
+
+      return false;
    }
 
-   @Nullable
-   private ewf l() {
-      aqm $$0 = (aqm)this.b.dQ();
-      List<clx> $$1 = $$0.a(bsm.bj, this.b.cL().g(32.0), this::a);
-      if ($$1.isEmpty()) {
-         return null;
+   private static boolean a(cbo $$0, Map<caa.a, cbo> $$1) {
+      for (caa.a $$2 : $$0.j()) {
+         if (!$$1.getOrDefault($$2, a).a($$0)) {
+            return false;
+         }
+      }
+
+      return true;
+   }
+
+   public void a() {
+      bmv $$0 = this.d.get();
+      $$0.a("goalCleanup");
+
+      for (cbo $$1 : this.c) {
+         if ($$1.h() && (a($$1, this.e) || !$$1.b())) {
+            $$1.d();
+         }
+      }
+
+      this.b.entrySet().removeIf($$0x -> !((cbo)$$0x.getValue()).h());
+      $$0.c();
+      $$0.a("goalUpdate");
+
+      for (cbo $$2 : this.c) {
+         if (!$$2.h() && !a($$2, this.e) && a($$2, this.b) && $$2.a()) {
+            for (caa.a $$3 : $$2.j()) {
+               cbo $$4 = this.b.getOrDefault($$3, a);
+               $$4.d();
+               this.b.put($$3, $$2);
+            }
+
+            $$2.c();
+         }
+      }
+
+      $$0.c();
+      this.a(true);
+   }
+
+   public void a(boolean $$0) {
+      bmv $$1 = this.d.get();
+      $$1.a("goalTick");
+
+      for (cbo $$2 : this.c) {
+         if ($$2.h() && ($$0 || $$2.R_())) {
+            $$2.e();
+         }
+      }
+
+      $$1.c();
+   }
+
+   public Set<cbo> b() {
+      return this.c;
+   }
+
+   public void a(caa.a $$0) {
+      this.e.add($$0);
+   }
+
+   public void b(caa.a $$0) {
+      this.e.remove($$0);
+   }
+
+   public void a(caa.a $$0, boolean $$1) {
+      if ($$1) {
+         this.b($$0);
       } else {
-         clx $$2 = $$1.get(this.b.dQ().z.a($$1.size()));
-         ewf $$3 = $$2.do();
-         return cdz.a(this.b, 10, 7, $$3);
+         this.a($$0);
       }
-   }
-
-   @Nullable
-   private ewf m() {
-      kc $$0 = this.n();
-      if ($$0 == null) {
-         return null;
-      } else {
-         ja $$1 = this.a($$0);
-         return $$1 == null ? null : cdz.a(this.b, 10, 7, ewf.c($$1));
-      }
-   }
-
-   @Nullable
-   private kc n() {
-      aqm $$0 = (aqm)this.b.dQ();
-      List<kc> $$1 = kc.a(kc.a(this.b), 2).filter($$1x -> $$0.b($$1x) == 0).collect(Collectors.toList());
-      return $$1.isEmpty() ? null : $$1.get($$0.z.a($$1.size()));
-   }
-
-   @Nullable
-   private ja a(kc $$0) {
-      aqm $$1 = (aqm)this.b.dQ();
-      cef $$2 = $$1.y();
-      List<ja> $$3 = $$2.c($$0x -> true, $$0.q(), 8, cef.b.b).map(ceg::f).collect(Collectors.toList());
-      return $$3.isEmpty() ? null : $$3.get($$1.z.a($$3.size()));
-   }
-
-   private boolean a(clx $$0) {
-      return $$0.a(this.b.dQ().Z());
    }
 }

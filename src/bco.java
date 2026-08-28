@@ -5,7 +5,7 @@ import com.mojang.serialization.Dynamic;
 
 public class bco extends bfd {
    public bco(Schema $$0) {
-      super($$0, false, "EntityPaintingFieldsRenameFix", bgg.B, "minecraft:painting");
+      super($$0, false, "EntityPaintingFieldsRenameFix", bgh.B, "minecraft:painting");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

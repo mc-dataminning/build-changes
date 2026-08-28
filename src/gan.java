@@ -1,49 +1,72 @@
-public class gan extends gcr {
-   gan(fyj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
-      super($$0, $$1, $$2, $$3);
-      this.b(0.02F, 0.02F);
-      this.D = this.D * (this.r.i() * 0.6F + 0.2F);
-      this.j = $$4 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.k = $$5 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.l = $$6 * 0.2F + (Math.random() * 2.0 - 1.0) * 0.02F;
-      this.t = (int)(8.0 / (Math.random() * 0.8 + 0.2));
+public class gan extends gct {
+   private final float a;
+   private final float b;
+
+   gan(fyl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, cud $$7) {
+      this($$0, $$1, $$2, $$3, $$7);
+      this.j *= 0.1F;
+      this.k *= 0.1F;
+      this.l *= 0.1F;
+      this.j += $$4;
+      this.k += $$5;
+      this.l += $$6;
    }
 
    @Override
-   public void a() {
-      this.d = this.g;
-      this.e = this.h;
-      this.f = this.i;
-      if (this.t-- <= 0) {
-         this.k();
-      } else {
-         this.k += 0.002;
-         this.a(this.j, this.k, this.l);
-         this.j *= 0.85F;
-         this.k *= 0.85F;
-         this.l *= 0.85F;
-         if (!this.c.b_(ja.a(this.g, this.h, this.i)).a(awc.a)) {
-            this.k();
-         }
-      }
+   public gbx b() {
+      return gbx.a;
+   }
+
+   protected gan(fyl $$0, double $$1, double $$2, double $$3, cud $$4) {
+      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
+      this.a(ffw.Q().ar().a($$4, $$0, null, 0).e());
+      this.u = 1.0F;
+      this.D /= 2.0F;
+      this.a = this.r.i() * 3.0F;
+      this.b = this.r.i() * 3.0F;
    }
 
    @Override
-   public gbv b() {
-      return gbv.b;
+   protected float c() {
+      return this.E.a((this.a + 1.0F) / 4.0F);
    }
 
-   public static class a implements gbu<ln> {
-      private final gcm a;
+   @Override
+   protected float d() {
+      return this.E.a(this.a / 4.0F);
+   }
 
-      public a(gcm $$0) {
-         this.a = $$0;
+   @Override
+   protected float e() {
+      return this.E.c(this.b / 4.0F);
+   }
+
+   @Override
+   protected float f() {
+      return this.E.c((this.b + 1.0F) / 4.0F);
+   }
+
+   public static class a implements gbw<ln> {
+      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gan($$1, $$2, $$3, $$4, new cud(cug.cM));
       }
+   }
 
-      public gbr a(ln $$0, fyj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         gan $$8 = new gan($$1, $$2, $$3, $$4, $$5, $$6, $$7);
-         $$8.a(this.a);
-         return $$8;
+   public static class b implements gbw<lf> {
+      public gbt a(lf $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gan($$1, $$2, $$3, $$4, $$5, $$6, $$7, $$0.b());
+      }
+   }
+
+   public static class c implements gbw<ln> {
+      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gan($$1, $$2, $$3, $$4, new cud(cug.qQ));
+      }
+   }
+
+   public static class d implements gbw<ln> {
+      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gan($$1, $$2, $$3, $$4, new cud(cug.qC));
       }
    }
 }

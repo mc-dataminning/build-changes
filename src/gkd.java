@@ -1,12 +1,15 @@
-public abstract class gkd<T extends btd, M extends fvb<T>> extends gks<T, M> {
-   public gkd(gjm.a $$0, M $$1, float $$2) {
-      this($$0, $$1, $$2, 1.0F, 1.0F, 1.0F);
+public class gkd extends gku<ckv, fva<ckv>> {
+   private static final akk a = new akk("textures/entity/hoglin/hoglin.png");
+
+   public gkd(gjo.a $$0) {
+      super($$0, new fva<>($$0.a(fxp.an)), 0.7F);
    }
 
-   public gkd(gjm.a $$0, M $$1, float $$2, float $$3, float $$4, float $$5) {
-      super($$0, $$1, $$2);
-      this.a(new gnd<>(this, $$0.f(), $$3, $$4, $$5, $$0.d()));
-      this.a(new gnh<>(this, $$0.f()));
-      this.a(new gnr<>(this, $$0.d()));
+   public akk a(ckv $$0) {
+      return a;
+   }
+
+   protected boolean b(ckv $$0) {
+      return super.a($$0) || $$0.x();
    }
 }

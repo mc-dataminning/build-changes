@@ -102,7 +102,7 @@ public class bee extends DataFix {
       $$0.a("BlockStateTag").result().ifPresent($$1x -> $$0.a("minecraft:block_state", b($$1x)));
       $$0.a("EntityTag", "minecraft:entity_data");
       $$0.a("BlockEntityTag", false, $$1x -> {
-         String $$2x = bhs.a($$1x.get("id").asString(""));
+         String $$2x = bht.a($$1x.get("id").asString(""));
          $$1x = a($$0, $$1x, $$2x);
          Dynamic<?> $$3 = $$1x.remove("id");
          return $$3.equals($$1x.emptyMap()) ? $$3 : $$1x;
@@ -639,7 +639,7 @@ public class bee extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      return this.writeFixAndRead("ItemStack componentization", this.getInputSchema().getType(bgg.t), this.getOutputSchema().getType(bgg.t), $$0 -> {
+      return this.writeFixAndRead("ItemStack componentization", this.getInputSchema().getType(bgh.t), this.getOutputSchema().getType(bgh.t), $$0 -> {
          Optional<? extends Dynamic<?>> $$1 = bee.a.a($$0).map($$0x -> {
             a($$0x, $$0x.e);
             return $$0x.a();
@@ -656,7 +656,7 @@ public class bee extends DataFix {
       Dynamic<?> e;
 
       private a(String $$0, int $$1, Dynamic<?> $$2) {
-         this.a = bhs.a($$0);
+         this.a = bht.a($$0);
          this.b = $$1;
          this.c = $$2.emptyMap();
          this.e = $$2.get("tag").orElseEmptyMap();

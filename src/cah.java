@@ -1,86 +1,119 @@
 import java.util.EnumSet;
-import javax.annotation.Nullable;
+import java.util.List;
 
-public class cah extends bzz {
-   public static final float a = 0.02F;
-   protected final btd b;
-   @Nullable
-   protected bsg c;
-   protected final float d;
-   private int h;
-   protected final float e;
-   private final boolean i;
-   protected final Class<? extends btb> f;
-   protected final cds g;
+public class cah extends caa {
+   public final cgz a;
+   private double b;
+   private static final int c = 8;
+   private int d;
 
-   public cah(btd $$0, Class<? extends btb> $$1, float $$2) {
-      this($$0, $$1, $$2, 0.02F);
-   }
-
-   public cah(btd $$0, Class<? extends btb> $$1, float $$2, float $$3) {
-      this($$0, $$1, $$2, $$3, false);
-   }
-
-   public cah(btd $$0, Class<? extends btb> $$1, float $$2, float $$3, boolean $$4) {
-      this.b = $$0;
-      this.f = $$1;
-      this.d = $$2;
-      this.e = $$3;
-      this.i = $$4;
-      this.a(EnumSet.of(bzz.a.b));
-      if ($$1 == cmk.class) {
-         this.g = cds.b().a((double)$$2).a($$1x -> bsl.b($$0).test($$1x));
-      } else {
-         this.g = cds.b().a((double)$$2);
-      }
+   public cah(cgz $$0, double $$1) {
+      this.a = $$0;
+      this.b = $$1;
+      this.a(EnumSet.of(caa.a.a));
    }
 
    @Override
    public boolean a() {
-      if (this.b.dT().i() >= this.e) {
-         return false;
-      } else {
-         if (this.b.p() != null) {
-            this.c = this.b.p();
+      if (!this.a.fZ() && !this.a.gZ()) {
+         List<bsh> $$0 = this.a.dR().a(this.a, this.a.cM().c(9.0, 4.0, 9.0), $$0x -> {
+            bsn<?> $$1x = $$0x.am();
+            return $$1x == bsn.an || $$1x == bsn.be;
+         });
+         cgz $$1 = null;
+         double $$2 = Double.MAX_VALUE;
+
+         for (bsh $$3 : $$0) {
+            cgz $$4 = (cgz)$$3;
+            if ($$4.gZ() && !$$4.gY()) {
+               double $$5 = this.a.g($$4);
+               if (!($$5 > $$2)) {
+                  $$2 = $$5;
+                  $$1 = $$4;
+               }
+            }
          }
 
-         if (this.f == cmk.class) {
-            this.c = this.b.dQ().a(this.g, this.b, this.b.dv(), this.b.dz(), this.b.dB());
+         if ($$1 == null) {
+            for (bsh $$6 : $$0) {
+               cgz $$7 = (cgz)$$6;
+               if ($$7.fZ() && !$$7.gY()) {
+                  double $$8 = this.a.g($$7);
+                  if (!($$8 > $$2)) {
+                     $$2 = $$8;
+                     $$1 = $$7;
+                  }
+               }
+            }
+         }
+
+         if ($$1 == null) {
+            return false;
+         } else if ($$2 < 4.0) {
+            return false;
+         } else if (!$$1.fZ() && !this.a($$1, 1)) {
+            return false;
          } else {
-            this.c = this.b
-               .dQ()
-               .a(this.b.dQ().a(this.f, this.b.cL().c((double)this.d, 3.0, (double)this.d), $$0 -> true), this.g, this.b, this.b.dv(), this.b.dz(), this.b.dB());
+            this.a.a($$1);
+            return true;
          }
-
-         return this.c != null;
+      } else {
+         return false;
       }
    }
 
    @Override
    public boolean b() {
-      if (!this.c.bE()) {
-         return false;
+      if (this.a.gZ() && this.a.ha().bF() && this.a(this.a, 0)) {
+         double $$0 = this.a.g(this.a.ha());
+         if ($$0 > 676.0) {
+            if (this.b <= 3.0) {
+               this.b *= 1.2;
+               this.d = b(40);
+               return true;
+            }
+
+            if (this.d == 0) {
+               return false;
+            }
+         }
+
+         if (this.d > 0) {
+            this.d--;
+         }
+
+         return true;
       } else {
-         return this.b.g(this.c) > (double)(this.d * this.d) ? false : this.h > 0;
+         return false;
       }
    }
 
    @Override
-   public void c() {
-      this.h = this.a(40 + this.b.dT().a(40));
-   }
-
-   @Override
    public void d() {
-      this.c = null;
+      this.a.gX();
+      this.b = 2.1;
    }
 
    @Override
    public void e() {
-      if (this.c.bE()) {
-         double $$0 = this.i ? this.b.dz() : this.c.dz();
-         this.b.G().a(this.c.dv(), $$0, this.c.dB());
-         this.h--;
+      if (this.a.gZ()) {
+         if (!(this.a.gb() instanceof cip)) {
+            cgz $$0 = this.a.ha();
+            double $$1 = (double)this.a.f($$0);
+            float $$2 = 2.0F;
+            ewh $$3 = new ewh($$0.dw() - this.a.dw(), $$0.dy() - this.a.dy(), $$0.dC() - this.a.dC()).d().a(Math.max($$1 - 2.0, 0.0));
+            this.a.J().a(this.a.dw() + $$3.c, this.a.dy() + $$3.d, this.a.dC() + $$3.e, this.b);
+         }
+      }
+   }
+
+   private boolean a(cgz $$0, int $$1) {
+      if ($$1 > 8) {
+         return false;
+      } else if ($$0.gZ()) {
+         return $$0.ha().fZ() ? true : this.a($$0.ha(), ++$$1);
+      } else {
+         return false;
       }
    }
 }

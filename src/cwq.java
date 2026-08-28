@@ -1,150 +1,63 @@
-import com.mojang.logging.LogUtils;
+import com.google.common.collect.Lists;
 import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
-import com.mojang.serialization.MapDecoder;
-import com.mojang.serialization.MapEncoder;
-import com.mojang.serialization.MapLike;
-import io.netty.buffer.ByteBuf;
-import java.util.UUID;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import org.slf4j.Logger;
+import java.util.List;
 
 public final class cwq {
-   private static final Logger e = LogUtils.getLogger();
-   public static final cwq a = new cwq(new tx());
-   public static final Codec<cwq> b = Codec.withAlternative(tx.a, uv.i).xmap(cwq::new, $$0 -> $$0.f);
-   public static final Codec<cwq> c = b.validate(
-      $$0 -> $$0.d().b("id", 8) ? DataResult.success($$0) : DataResult.error(() -> "Missing id for entity in: " + $$0)
-   );
-   @Deprecated
-   public static final ys<ByteBuf, cwq> d = yq.o.a(cwq::new, $$0 -> $$0.f);
-   private final tx f;
+   public static final cwq a = new cwq(List.of());
+   public static final Codec<cwq> b = cud.b.listOf().xmap(cwq::new, $$0 -> $$0.d);
+   public static final ys<wf, cwq> c = cud.i.a(yq.a()).a(cwq::new, $$0 -> $$0.d);
+   private final List<cud> d;
 
-   private cwq(tx $$0) {
-      this.f = $$0;
+   private cwq(List<cud> $$0) {
+      this.d = $$0;
    }
 
-   public static cwq a(tx $$0) {
-      return new cwq($$0.i());
+   public static cwq a(cud $$0) {
+      return new cwq(List.of($$0.s()));
    }
 
-   public static Predicate<cuc> a(km<cwq> $$0, tx $$1) {
-      return $$2 -> {
-         cwq $$3 = $$2.a($$0, a);
-         return $$3.b($$1);
-      };
+   public static cwq a(List<cud> $$0) {
+      return new cwq(List.copyOf(Lists.transform($$0, cud::s)));
    }
 
-   public boolean b(tx $$0) {
-      return um.a($$0, this.f, true);
-   }
-
-   public static void a(km<cwq> $$0, cuc $$1, Consumer<tx> $$2) {
-      cwq $$3 = $$1.a($$0, a).a($$2);
-      if ($$3.f.g()) {
-         $$1.c($$0);
-      } else {
-         $$1.b($$0, $$3);
-      }
-   }
-
-   public static void a(km<cwq> $$0, cuc $$1, tx $$2) {
-      if (!$$2.g()) {
-         $$1.b($$0, a($$2));
-      } else {
-         $$1.c($$0);
-      }
-   }
-
-   public cwq a(Consumer<tx> $$0) {
-      tx $$1 = this.f.i();
-      $$0.accept($$1);
-      return new cwq($$1);
-   }
-
-   public void a(bsg $$0) {
-      tx $$1 = $$0.f(new tx());
-      UUID $$2 = $$0.cA();
-      $$1.a(this.f);
-      $$0.g($$1);
-      $$0.a_($$2);
-   }
-
-   public boolean a(dpp $$0, jl.a $$1) {
-      tx $$2 = $$0.e($$1);
-      tx $$3 = $$2.i();
-      $$2.a(this.f);
-      if (!$$2.equals($$3)) {
-         try {
-            $$0.d($$2, $$1);
-            $$0.e();
+   public boolean a(cty $$0) {
+      for (cud $$1 : this.d) {
+         if ($$1.a($$0)) {
             return true;
-         } catch (Exception var8) {
-            e.warn("Failed to apply custom data to block entity at {}", $$0.az_(), var8);
-
-            try {
-               $$0.d($$3, $$1);
-            } catch (Exception var7) {
-               e.warn("Failed to rollback block entity at {} after failure", $$0.az_(), var7);
-            }
          }
       }
 
       return false;
    }
 
-   public <T> DataResult<cwq> a(DynamicOps<uu> $$0, MapEncoder<T> $$1, T $$2) {
-      return $$1.encode($$2, $$0, $$0.mapBuilder()).build(this.f).map($$0x -> new cwq((tx)$$0x));
-   }
-
-   public <T> DataResult<T> a(MapDecoder<T> $$0) {
-      return this.a(ul.a, $$0);
-   }
-
-   public <T> DataResult<T> a(DynamicOps<uu> $$0, MapDecoder<T> $$1) {
-      MapLike<uu> $$2 = (MapLike<uu>)$$0.getMap(this.f).getOrThrow();
-      return $$1.decode($$0, $$2);
-   }
-
-   public int a() {
-      return this.f.f();
+   public List<cud> a() {
+      return Lists.transform(this.d, cud::s);
    }
 
    public boolean b() {
-      return this.f.g();
-   }
-
-   public tx c() {
-      return this.f.i();
-   }
-
-   public boolean a(String $$0) {
-      return this.f.e($$0);
+      return this.d.isEmpty();
    }
 
    @Override
    public boolean equals(Object $$0) {
-      if ($$0 == this) {
+      if (this == $$0) {
          return true;
       } else {
-         return $$0 instanceof cwq $$1 ? this.f.equals($$1.f) : false;
+         if ($$0 instanceof cwq $$1 && cud.a(this.d, $$1.d)) {
+            return true;
+         }
+
+         return false;
       }
    }
 
    @Override
    public int hashCode() {
-      return this.f.hashCode();
+      return cud.a(this.d);
    }
 
    @Override
    public String toString() {
-      return this.f.toString();
-   }
-
-   @Deprecated
-   public tx d() {
-      return this.f;
+      return "ChargedProjectiles[items=" + this.d + "]";
    }
 }

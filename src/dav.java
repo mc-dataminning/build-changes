@@ -1,23 +1,15 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dav(jn<czl> c, int d, int e) implements das {
+public record dav(jn<czm> c, bpm d) implements dat {
    public static final MapCodec<dav> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               jy.a(lr.aK).fieldOf("enchantments").forGetter(dav::b),
-               axo.l.fieldOf("min_cost").forGetter(dav::c),
-               axo.k.fieldOf("max_cost_span").forGetter(dav::d)
-            )
-            .apply($$0, dav::new)
+      $$0 -> $$0.group(jy.a(lr.aK).fieldOf("enchantments").forGetter(dav::b), bpm.c.fieldOf("cost").forGetter(dav::c)).apply($$0, dav::new)
    );
 
    @Override
-   public void a(cuc $$0, czr.a $$1, ayo $$2, dcf $$3, ja $$4) {
-      float $$5 = $$3.d_($$4).d();
-      int $$6 = ayg.b($$2, this.d, this.d + (int)($$5 * (float)this.e));
-
-      for (czo $$8 : czn.b($$2, $$0, $$6, this.c.a())) {
-         $$1.b($$8.a, $$8.b);
+   public void a(cud $$0, czs.a $$1, ayo $$2, bqf $$3) {
+      for (czp $$5 : czo.b($$2, $$0, this.d.a($$2), this.c.a())) {
+         $$1.b($$5.a, $$5.b);
       }
    }
 
@@ -26,15 +18,11 @@ public record dav(jn<czl> c, int d, int e) implements das {
       return b;
    }
 
-   public jn<czl> b() {
+   public jn<czm> b() {
       return this.c;
    }
 
-   public int c() {
+   public bpm c() {
       return this.d;
-   }
-
-   public int d() {
-      return this.e;
    }
 }

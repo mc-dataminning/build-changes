@@ -1,53 +1,20 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
 
-public record edf(List<edf.a> b, jf c, dzm d, boolean e) implements edo {
+public class edf {
    public static final Codec<edf> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               edf.a.a.listOf().fieldOf("layers").forGetter(edf::a),
-               jf.g.fieldOf("direction").forGetter(edf::b),
-               dzm.b.fieldOf("allowed_placement").forGetter(edf::c),
-               Codec.BOOL.fieldOf("prioritize_tip").forGetter(edf::d)
-            )
+      $$0 -> $$0.group(eib.b.fieldOf("feature").forGetter($$0x -> $$0x.b), Codec.floatRange(0.0F, 1.0F).fieldOf("chance").forGetter($$0x -> $$0x.c))
             .apply($$0, edf::new)
    );
+   public final jj<eib> b;
+   public final float c;
 
-   public static edf.a a(bpl $$0, efp $$1) {
-      return new edf.a($$0, $$1);
+   public edf(jj<eib> $$0, float $$1) {
+      this.b = $$0;
+      this.c = $$1;
    }
 
-   public static edf b(bpl $$0, efp $$1) {
-      return new edf(List.of(a($$0, $$1)), jf.b, dzm.c, false);
-   }
-
-   public List<edf.a> a() {
-      return this.b;
-   }
-
-   public jf b() {
-      return this.c;
-   }
-
-   public dzm c() {
-      return this.d;
-   }
-
-   public boolean d() {
-      return this.e;
-   }
-
-   public static record a(bpl b, efp c) {
-      public static final Codec<edf.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(bpl.d.fieldOf("height").forGetter(edf.a::a), efp.a.fieldOf("provider").forGetter(edf.a::b)).apply($$0, edf.a::new)
-      );
-
-      public bpl a() {
-         return this.b;
-      }
-
-      public efp b() {
-         return this.c;
-      }
+   public boolean a(ddc $$0, dui $$1, ayo $$2, ja $$3) {
+      return this.b.a().a($$0, $$1, $$2, $$3);
    }
 }

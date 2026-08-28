@@ -1,29 +1,33 @@
-import com.google.common.collect.Lists;
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.Codec;
 
-public class ffj {
-   private final List<wz> a = Lists.newArrayList();
+public enum ffj implements ayj, azc {
+   a(0, "false", "options.off"),
+   b(1, "fast", "options.clouds.fast"),
+   c(2, "true", "options.clouds.fancy");
 
-   public void a(wz $$0) {
-      this.a.add($$0);
+   public static final Codec<ffj> d = azc.a(ffj::values);
+   private final int e;
+   private final String f;
+   private final String g;
+
+   private ffj(final int $$0, final String $$1, final String $$2) {
+      this.e = $$0;
+      this.f = $$1;
+      this.g = $$2;
    }
 
-   @Nullable
-   public wz a() {
-      if (this.a.isEmpty()) {
-         return null;
-      } else {
-         return this.a.size() == 1 ? this.a.get(0) : wz.a(this.a);
-      }
+   @Override
+   public String c() {
+      return this.f;
    }
 
-   public wz b() {
-      wz $$0 = this.a();
-      return $$0 != null ? $$0 : wz.b;
+   @Override
+   public int a() {
+      return this.e;
    }
 
-   public void c() {
-      this.a.clear();
+   @Override
+   public String b() {
+      return this.g;
    }
 }

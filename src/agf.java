@@ -1,13 +1,13 @@
 public class agf implements zb<agb> {
    public static final ys<vr, agf> a = zb.a(agf::a, agf::new);
-   private final bqd b;
+   private final bqe b;
 
-   public agf(bqd $$0) {
+   public agf(bqe $$0) {
       this.b = $$0;
    }
 
    private agf(vr $$0) {
-      this.b = bqd.a($$0.readUnsignedByte());
+      this.b = bqe.a($$0.readUnsignedByte());
    }
 
    private void a(vr $$0) {
@@ -23,7 +23,7 @@ public class agf implements zb<agb> {
       $$0.a(this);
    }
 
-   public bqd b() {
+   public bqe b() {
       return this.b;
    }
 }

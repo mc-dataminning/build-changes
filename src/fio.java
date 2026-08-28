@@ -1,62 +1,69 @@
-import javax.annotation.Nullable;
+import java.util.OptionalInt;
 
-public abstract class fio<E extends fio.a<E>> extends fhn<E> {
-   private static final wu a = wu.c("narration.selection.usage");
+public class fio extends fhr {
+   private OptionalInt a = OptionalInt.empty();
+   private OptionalInt b = OptionalInt.empty();
+   private final ayw<fio.a, fin> c;
+   private boolean d = false;
 
-   public fio(fft $$0, int $$1, int $$2, int $$3, int $$4) {
-      super($$0, $$1, $$2, $$3, $$4);
+   public fio(wu $$0, fhf $$1) {
+      this(0, 0, $$0, $$1);
    }
 
-   @Nullable
+   public fio(int $$0, int $$1, wu $$2, fhf $$3) {
+      super($$0, $$1, 0, 0, $$2, $$3);
+      this.c = ac.a($$1x -> $$1x.c.isPresent() ? fin.a($$3, $$1x.a, $$1x.b, $$1x.c.getAsInt()) : fin.a($$3, $$1x.a, $$1x.b));
+      this.j = false;
+   }
+
+   public fio c(int $$0) {
+      super.a($$0);
+      return this;
+   }
+
+   public fio d(int $$0) {
+      this.a = OptionalInt.of($$0);
+      return this;
+   }
+
+   public fio e(int $$0) {
+      this.b = OptionalInt.of($$0);
+      return this;
+   }
+
+   public fio b(boolean $$0) {
+      this.d = $$0;
+      return this;
+   }
+
    @Override
-   public fhc a(flu $$0) {
-      if (this.l() == 0) {
-         return null;
-      } else if (this.aK_() && $$0 instanceof flu.a $$1) {
-         E $$2 = this.a($$1.b());
-         return $$2 != null ? fhc.a(this, fhc.a($$2)) : null;
-      } else if (!this.aK_()) {
-         E $$3 = this.h();
-         if ($$3 == null) {
-            $$3 = this.a($$0.a());
-         }
-
-         return $$3 == null ? null : fhc.a(this, fhc.a($$3));
-      } else {
-         return null;
-      }
+   public int y() {
+      return this.c.a(this.c()).b();
    }
 
    @Override
-   public void a(flo $$0) {
-      E $$1 = this.v();
-      if ($$1 != null) {
-         this.a($$0.a(), $$1);
-         $$1.b($$0);
-      } else {
-         E $$2 = this.h();
-         if ($$2 != null) {
-            this.a($$0.a(), $$2);
-            $$2.b($$0);
-         }
-      }
+   public int w() {
+      return this.c.a(this.c()).a() * 9;
+   }
 
-      if (this.aK_()) {
-         $$0.a(fln.d, a);
+   @Override
+   public void b(fhh $$0, int $$1, int $$2, float $$3) {
+      fin $$4 = this.c.a(this.c());
+      int $$5 = this.D();
+      int $$6 = this.E();
+      int $$7 = 9;
+      int $$8 = this.b();
+      if (this.d) {
+         $$4.a($$0, $$5 + this.y() / 2, $$6, $$7, $$8);
+      } else {
+         $$4.b($$0, $$5, $$6, $$7, $$8);
       }
    }
 
-   public abstract static class a<E extends fio.a<E>> extends fhn.a<E> implements flp {
-      public abstract wu a();
+   private fio.a c() {
+      return new fio.a(this.z(), this.a.orElse(Integer.MAX_VALUE), this.b);
+   }
 
-      @Override
-      public boolean a(double $$0, double $$1, int $$2) {
-         return true;
-      }
-
-      @Override
-      public void b(flo $$0) {
-         $$0.a(fln.a, this.a());
-      }
+   static record a(wu a, int b, OptionalInt c) {
    }
 }

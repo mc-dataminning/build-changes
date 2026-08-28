@@ -2,7 +2,7 @@ import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.schemas.Schema;
 import java.util.Map;
 
-public class bcd extends bgs {
+public class bcd extends bgt {
    public static final Map<String, String> a = ImmutableMap.builder()
       .put("minecraft:salmon_mob", "minecraft:salmon")
       .put("minecraft:cod_mob", "minecraft:cod")

@@ -1,5 +1,5 @@
-public enum fje {
-   a,
-   b,
-   c;
+public interface fje {
+   default int I() {
+      return 0;
+   }
 }

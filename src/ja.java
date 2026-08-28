@@ -111,8 +111,8 @@ public class ja extends ke {
       return $$0 == 0 && $$1 == 0 && $$2 == 0 ? this : new ja(this.u() + $$0, this.v() + $$1, this.w() + $$2);
    }
 
-   public ewf b() {
-      return ewf.b(this);
+   public ewh b() {
+      return ewh.b(this);
    }
 
    public ja a(ke $$0) {
@@ -198,7 +198,7 @@ public class ja extends ke {
       }
    }
 
-   public ja a(dlu $$0) {
+   public ja a(dlv $$0) {
       switch ($$0) {
          case a:
          default:
@@ -339,7 +339,7 @@ public class ja extends ke {
       return StreamSupport.stream(c($$0, $$1).spliterator(), false);
    }
 
-   public static Stream<ja> a(eio $$0) {
+   public static Stream<ja> a(eip $$0) {
       return a(
          Math.min($$0.h(), $$0.k()),
          Math.min($$0.i(), $$0.l()),
@@ -350,7 +350,7 @@ public class ja extends ke {
       );
    }
 
-   public static Stream<ja> a(ewa $$0) {
+   public static Stream<ja> a(ewc $$0) {
       return a(ayg.a($$0.a), ayg.a($$0.b), ayg.a($$0.c), ayg.a($$0.d), ayg.a($$0.e), ayg.a($$0.f));
    }
 
@@ -475,7 +475,7 @@ public class ja extends ke {
       }
 
       @Override
-      public ja a(dlu $$0) {
+      public ja a(dlv $$0) {
          return super.a($$0).i();
       }
 

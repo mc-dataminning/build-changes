@@ -1,59 +1,49 @@
-import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
-import java.util.Map;
+import java.util.List;
 
-public class cvd extends csr {
-   protected static final Map<dfh, dsk> a = Maps.newHashMap(
-      new Builder()
-         .put(dfj.i, dfj.kE.o())
-         .put(dfj.j, dfj.kE.o())
-         .put(dfj.l, dfj.kE.o())
-         .put(dfj.k, dfj.kE.o())
-         .put(dfj.fl, dfj.kE.o())
-         .put(dfj.sH, dfj.kE.o())
-         .build()
-   );
+public class cvd extends cty implements ctf {
+   public static final int a = 5;
+   public static final float b = 3.0F;
 
-   public cvd(cvr $$0, ctx.a $$1) {
-      super($$0, avw.bD, $$1);
+   public cvd(cty.a $$0) {
+      super($$0);
+      dhn.a(this, crt.a);
    }
 
    @Override
-   public bqg a(cxo $$0) {
-      dcf $$1 = $$0.q();
-      ja $$2 = $$0.a();
-      dsk $$3 = $$1.a_($$2);
-      if ($$0.k() == jf.a) {
-         return bqg.e;
-      } else {
-         cmk $$4 = $$0.o();
-         dsk $$5 = a.get($$3.b());
-         dsk $$6 = null;
-         if ($$5 != null && $$1.a_($$2.c()).i()) {
-            $$1.a($$4, $$2, avh.wK, avi.e, 1.0F, 1.0F);
-            $$6 = $$5;
-         } else if ($$3.b() instanceof dfv && $$3.c(dfv.c)) {
-            if (!$$1.x_()) {
-               $$1.a(null, 1009, $$2, 0);
-            }
+   public String h(cud $$0) {
+      csw $$1 = $$0.a(kn.Y);
+      return $$1 != null ? this.a() + "." + $$1.b() : super.h($$0);
+   }
 
-            dfv.a($$0.o(), $$1, $$2, $$3);
-            $$6 = $$3.a(dfv.c, Boolean.valueOf(false));
-         }
+   @Override
+   public void a(cud $$0, cty.b $$1, List<wu> $$2, cvw $$3) {
+      crz.a($$0, $$2);
+   }
 
-         if ($$6 != null) {
-            if (!$$1.B) {
-               $$1.a($$2, $$6, 11);
-               $$1.a(dxg.c, $$2, dxg.a.a($$4, $$6));
-               if ($$4 != null) {
-                  $$0.n().a(1, $$4, btb.d($$0.p()));
-               }
-            }
+   @Override
+   public cvy b(cud $$0) {
+      return cvy.d;
+   }
 
-            return bqg.a($$1.B);
-         } else {
-            return bqg.e;
-         }
-      }
+   @Override
+   public int a(cud $$0, btc $$1) {
+      return 72000;
+   }
+
+   @Override
+   public bqi<cud> a(dcg $$0, cml $$1, bqg $$2) {
+      cud $$3 = $$1.b($$2);
+      $$1.c($$2);
+      return bqi.b($$3);
+   }
+
+   @Override
+   public boolean a(cud $$0, cud $$1) {
+      return $$1.a(awf.b) || super.a($$0, $$1);
+   }
+
+   @Override
+   public bso m() {
+      return bso.b;
    }
 }

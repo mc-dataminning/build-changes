@@ -19,7 +19,7 @@ public class bdd extends azv {
    private static final Set<String> h = Sets.newHashSet();
 
    public bdd(Schema $$0) {
-      super($$0, bgg.B);
+      super($$0, bgh.B);
    }
 
    protected TypeRewriteRule makeRule() {

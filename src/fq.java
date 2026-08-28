@@ -41,15 +41,15 @@ public class fq<T> implements ArgumentType<akj<T>> {
       return a($$0, $$2).b($$4).orElseThrow(() -> $$3.create($$4.a()));
    }
 
-   public static jj.c<eax<?, ?>> a(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+   public static jj.c<eay<?, ?>> a(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, lr.aH, b);
    }
 
-   public static jj.c<eiw> b(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+   public static jj.c<eix> b(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, lr.aQ, c);
    }
 
-   public static jj.c<ekf> c(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+   public static jj.c<ekh> c(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
       return b($$0, $$1, lr.aT, d);
    }
 

@@ -1,65 +1,57 @@
-import java.util.Optional;
+public class cqt extends cre {
+   private final cqr a;
+   private final cml b;
+   private int g;
+   private final dbd h;
 
-public class cqt extends crd {
-   public cqt(bpz $$0, int $$1, int $$2, int $$3) {
-      super($$0, $$1, $$2, $$3);
+   public cqt(cml $$0, dbd $$1, cqr $$2, int $$3, int $$4, int $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.b = $$0;
+      this.h = $$1;
+      this.a = $$2;
    }
 
    @Override
-   public void b(cuc $$0, cuc $$1) {
-   }
-
-   @Override
-   public boolean a(cmk $$0) {
+   public boolean a(cud $$0) {
       return false;
    }
 
    @Override
-   public Optional<cuc> a(int $$0, int $$1, cmk $$2) {
-      return Optional.empty();
+   public cud a(int $$0) {
+      if (this.h()) {
+         this.g = this.g + Math.min($$0, this.g().H());
+      }
+
+      return super.a($$0);
    }
 
    @Override
-   public cuc b(int $$0, int $$1, cmk $$2) {
-      return cuc.l;
+   protected void a(cud $$0, int $$1) {
+      this.g += $$1;
+      this.b_($$0);
    }
 
    @Override
-   public cuc d(cuc $$0) {
-      return $$0;
+   protected void b_(cud $$0) {
+      $$0.a(this.b.dR(), this.b, this.g);
+      this.g = 0;
    }
 
    @Override
-   public cuc b(cuc $$0, int $$1) {
-      return this.d($$0);
-   }
+   public void a(cml $$0, cud $$1) {
+      this.b_($$1);
+      dbe $$2 = this.a.g();
+      if ($$2 != null) {
+         cud $$3 = this.a.a(0);
+         cud $$4 = this.a.a(1);
+         if ($$2.b($$3, $$4) || $$2.b($$4, $$3)) {
+            this.h.a($$2);
+            $$0.a(avr.T);
+            this.a.a(0, $$3);
+            this.a.a(1, $$4);
+         }
 
-   @Override
-   public boolean b(cmk $$0) {
-      return false;
-   }
-
-   @Override
-   public boolean a(cuc $$0) {
-      return false;
-   }
-
-   @Override
-   public cuc a(int $$0) {
-      return cuc.l;
-   }
-
-   @Override
-   public void a(cmk $$0, cuc $$1) {
-   }
-
-   @Override
-   public boolean e() {
-      return false;
-   }
-
-   @Override
-   public boolean f() {
-      return true;
+         this.h.t(this.h.t() + $$2.q());
+      }
    }
 }

@@ -1,52 +1,49 @@
-public class fmq extends fnj {
-   private static final wu a = wu.c("gui.toMenu");
-   private static final wu b = wu.c("gui.toTitle");
-   private final fnj c;
-   private final wu q;
-   private final wu r;
-   private final flj s = flj.d();
+public class fmq extends fnl {
+   private static final akk a = new akk("textures/gui/demo_background.png");
+   private fin b = fin.a;
+   private fin c = fin.a;
 
-   public fmq(fnj $$0, wu $$1, wu $$2) {
-      this($$0, $$1, $$2, a);
-   }
-
-   public fmq(fnj $$0, wu $$1, wu $$2, wu $$3) {
-      super($$1);
-      this.c = $$0;
-      this.q = $$2;
-      this.r = $$3;
+   public fmq() {
+      super(wu.c("demo.help.title"));
    }
 
    @Override
    protected void aP_() {
-      this.s.c().b().a(10);
-      this.s.a(new fiz(this.k, this.o));
-      this.s.a(new fim(this.q, this.o).d(this.m - 50).b(true));
-      fhs $$0;
-      if (this.l.F()) {
-         $$0 = fhs.a(this.r, $$0x -> this.l.a(this.c)).a();
-      } else {
-         $$0 = fhs.a(b, $$0x -> this.l.a(new fnl())).a();
-      }
-
-      this.s.a($$0);
-      this.s.a();
-      this.s.a(this::c);
-      this.c();
+      int $$0 = -16;
+      this.c(fhu.a(wu.c("demo.help.buy"), $$0x -> {
+         $$0x.j = false;
+         ac.k().a("https://aka.ms/BuyMinecraftJava");
+      }).a(this.m / 2 - 116, this.n / 2 + 62 + -16, 114, 20).a());
+      this.c(fhu.a(wu.c("demo.help.later"), $$0x -> {
+         this.l.a(null);
+         this.l.n.i();
+      }).a(this.m / 2 + 2, this.n / 2 + 62 + -16, 114, 20).a());
+      fga $$1 = this.l.m;
+      this.b = fin.a(
+         this.o,
+         wu.a("demo.help.movementShort", $$1.w.k(), $$1.x.k(), $$1.y.k(), $$1.z.k()),
+         wu.c("demo.help.movementMouse"),
+         wu.a("demo.help.jump", $$1.A.k()),
+         wu.a("demo.help.inventory", $$1.D.k())
+      );
+      this.c = fin.a(this.o, wu.c("demo.help.fullWrapped"), 218);
    }
 
    @Override
-   protected void c() {
-      fld.a(this.s, this.H());
+   public void b(fhh $$0, int $$1, int $$2, float $$3) {
+      super.b($$0, $$1, $$2, $$3);
+      int $$4 = (this.m - 248) / 2;
+      int $$5 = (this.n - 166) / 2;
+      $$0.a(a, $$4, $$5, 0, 0, 248, 166);
    }
 
    @Override
-   public wu i() {
-      return wt.a(this.k, this.q);
-   }
-
-   @Override
-   public boolean aF_() {
-      return false;
+   public void a(fhh $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      int $$4 = (this.m - 248) / 2 + 10;
+      int $$5 = (this.n - 166) / 2 + 8;
+      $$0.a(this.o, this.k, $$4, $$5, 2039583, false);
+      $$5 = this.b.c($$0, $$4, $$5 + 12, 12, 5197647);
+      this.c.c($$0, $$4, $$5 + 20, 9, 2039583);
    }
 }

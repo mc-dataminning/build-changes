@@ -1,17 +1,17 @@
 import java.io.IOException;
-import java.io.InputStream;
 
-public class gqk {
-   @Deprecated
-   public static int[] a(atw $$0, akk $$1) throws IOException {
-      int[] var4;
-      try (
-         InputStream $$2 = $$0.open($$1);
-         ezn $$3 = ezn.a($$2);
-      ) {
-         var4 = $$3.e();
+public class gqk extends aub<int[]> {
+   private static final akk a = new akk("textures/colormap/grass.png");
+
+   protected int[] a(atw $$0, bmv $$1) {
+      try {
+         return gqm.a($$0, a);
+      } catch (IOException var4) {
+         throw new IllegalStateException("Failed to load grass color texture", var4);
       }
+   }
 
-      return var4;
+   protected void a(int[] $$0, atw $$1, bmv $$2) {
+      dce.a($$0);
    }
 }

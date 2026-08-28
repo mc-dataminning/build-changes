@@ -8,7 +8,7 @@ public class eg extends ds<eg.a> {
       return eg.a.a;
    }
 
-   public void a(aqn $$0, cuc $$1) {
+   public void a(aqn $$0, cud $$1) {
       this.a($$0, $$1x -> $$1x.a($$1));
    }
 
@@ -21,7 +21,7 @@ public class eg extends ds<eg.a> {
          return am.W.a(new eg.a(Optional.of(bu.a($$0)), Optional.of($$1.b())));
       }
 
-      public boolean a(cuc $$0) {
+      public boolean a(cud $$0) {
          return !this.c.isPresent() || this.c.get().a($$0);
       }
 

@@ -1,5 +1,13 @@
-public interface bts {
-   void a(avi var1);
+import javax.annotation.Nullable;
 
-   boolean a();
+public interface bts {
+   boolean f();
+
+   void a(@Nullable avi var1);
+
+   default avg Y_() {
+      return avh.mQ;
+   }
+
+   boolean i();
 }

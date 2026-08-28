@@ -1,54 +1,24 @@
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public class eck extends ebk<eed> {
-   public eck(Codec<eed> $$0) {
+public class eck extends ebl<eeb> {
+   public eck(Codec<eeb> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebm<eed> $$0) {
-      eed $$1 = $$0.f();
-      ddb $$2 = $$0.b();
-      ayo $$3 = $$0.d();
-      dfh $$4 = $$1.b.b();
-      ja $$5 = a($$2, $$0.e().j().a(jf.a.b, $$2.I_() + 1, $$2.am() - 1), $$4);
-      if ($$5 == null) {
-         return false;
-      } else {
-         int $$6 = $$1.a().a($$3);
-         int $$7 = $$1.a().a($$3);
-         int $$8 = $$1.a().a($$3);
-         int $$9 = Math.max($$6, Math.max($$7, $$8));
-         boolean $$10 = false;
+   public boolean a(ebn<eeb> $$0) {
+      eeb $$1 = $$0.f();
+      ayo $$2 = $$0.d();
+      ddc $$3 = $$0.b();
+      dui $$4 = $$0.c();
+      ja $$5 = $$0.e();
 
-         for (ja $$11 : ja.a($$5, $$6, $$7, $$8)) {
-            if ($$11.k($$5) > $$9) {
-               break;
-            }
-
-            dsk $$12 = $$2.a_($$11);
-            if ($$12.a($$4)) {
-               this.a($$2, $$11, $$1.c);
-               $$10 = true;
-            }
+      for (edf $$6 : $$1.b) {
+         if ($$2.i() < $$6.c) {
+            return $$6.a($$3, $$4, $$2, $$5);
          }
-
-         return $$10;
-      }
-   }
-
-   @Nullable
-   private static ja a(dcg $$0, ja.a $$1, dfh $$2) {
-      while ($$1.v() > $$0.I_() + 1) {
-         dsk $$3 = $$0.a_($$1);
-         if ($$3.a($$2)) {
-            return $$1;
-         }
-
-         $$1.c(jf.a);
       }
 
-      return null;
+      return $$1.c.a().a($$3, $$4, $$2, $$5);
    }
 }

@@ -6,7 +6,7 @@ import com.mojang.serialization.Dynamic;
 
 public class bdq extends bfd {
    public bdq(Schema $$0, String $$1) {
-      super($$0, false, "Gossip for for " + $$1, bgg.B, $$1);
+      super($$0, false, "Gossip for for " + $$1, bgh.B, $$1);
    }
 
    @Override

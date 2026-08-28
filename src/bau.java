@@ -4,7 +4,7 @@ import com.mojang.serialization.Dynamic;
 
 public class bau extends azv {
    public bau(Schema $$0) {
-      super($$0, bgg.s);
+      super($$0, bgh.s);
    }
 
    protected TypeRewriteRule makeRule() {

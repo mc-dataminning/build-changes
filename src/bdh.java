@@ -7,7 +7,7 @@ public class bdh extends bfd {
    private static final int a = 6;
 
    public bdh(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityZombieVillagerTypeFix", bgg.B, "Zombie");
+      super($$0, $$1, "EntityZombieVillagerTypeFix", bgh.B, "Zombie");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

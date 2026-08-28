@@ -2,7 +2,7 @@ public class ael implements zb<abn> {
    public static final ys<vr, ael> a = zb.a(ael::a, ael::new);
    private final int b;
 
-   public ael(dub $$0) {
+   public ael(duc $$0) {
       this.b = $$0.r();
    }
 

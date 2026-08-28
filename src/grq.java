@@ -1,63 +1,70 @@
-import java.util.Arrays;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 import java.util.stream.Collectors;
-import org.joml.Quaternionf;
+import javax.annotation.Nullable;
 
-public enum grq implements grx {
-   a(0, 0),
-   b(0, 90),
-   c(0, 180),
-   d(0, 270),
-   e(90, 0),
-   f(90, 90),
-   g(90, 180),
-   h(90, 270),
-   i(180, 0),
-   j(180, 90),
-   k(180, 180),
-   l(180, 270),
-   m(270, 0),
-   n(270, 90),
-   o(270, 180),
-   p(270, 270);
+public class grq implements AutoCloseable {
+   private final Map<akk, grq.a> a;
 
-   private static final int q = 360;
-   private static final Map<Integer, grq> r = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.u, $$0 -> (grq)$$0));
-   private final j s;
-   private final h t;
-   private final int u;
-
-   private static int b(int $$0, int $$1) {
-      return $$0 * 360 + $$1;
+   public grq(Map<akk, akk> $$0, gpr $$1) {
+      this.a = $$0.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$1x -> {
+         gpp $$2 = new gpp((akk)$$1x.getKey());
+         $$1.a((akk)$$1x.getKey(), $$2);
+         return new grq.a($$2, (akk)$$1x.getValue());
+      }));
    }
 
-   private grq(final int $$0, final int $$1) {
-      this.u = b($$0, $$1);
-      Quaternionf $$2 = new Quaternionf().rotateYXZ((float)(-$$1) * (float) (Math.PI / 180.0), (float)(-$$0) * (float) (Math.PI / 180.0), 0.0F);
-      h $$3 = h.a;
-
-      for (int $$4 = 0; $$4 < $$1; $$4 += 90) {
-         $$3 = $$3.a(h.u);
-      }
-
-      for (int $$5 = 0; $$5 < $$0; $$5 += 90) {
-         $$3 = $$3.a(h.s);
-      }
-
-      this.s = new j(null, $$2, null, null);
-      this.t = $$3;
+   public gpp a(akk $$0) {
+      return this.a.get($$0).a();
    }
 
    @Override
-   public j b() {
-      return this.s;
+   public void close() {
+      this.a.values().forEach(grq.a::close);
+      this.a.clear();
    }
 
-   public static grq a(int $$0, int $$1) {
-      return r.get(b(ayg.b($$0, 360), ayg.b($$1, 360)));
+   public Map<akk, CompletableFuture<grq.b>> a(atw $$0, int $$1, Executor $$2) {
+      return this.a.entrySet().stream().collect(Collectors.toMap(Entry::getKey, $$3 -> {
+         grq.a $$4 = $$3.getValue();
+         return gpl.a($$4.a).a($$0, $$4.b, $$1, $$2).thenApply($$1xx -> new grq.b($$4.a, $$1xx));
+      }));
    }
 
-   public h a() {
-      return this.t;
+   static record a(gpp a, akk b) implements AutoCloseable {
+
+      @Override
+      public void close() {
+         this.a.f();
+      }
+   }
+
+   public static class b {
+      private final gpp a;
+      private final gpl.a b;
+
+      public b(gpp $$0, gpl.a $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
+
+      @Nullable
+      public gpq a(akk $$0) {
+         return this.b.f().get($$0);
+      }
+
+      public gpq a() {
+         return this.b.e();
+      }
+
+      public CompletableFuture<Void> b() {
+         return this.b.g();
+      }
+
+      public void c() {
+         this.a.a(this.b);
+      }
    }
 }

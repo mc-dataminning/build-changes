@@ -21,9 +21,9 @@ public class aot {
       );
    }
 
-   private static int a(eq $$0, Collection<? extends cmk> $$1, int $$2) {
-      for (cmk $$3 : $$1) {
-         $$3.aa().ifPresent($$1x -> $$1x.a($$2));
+   private static int a(eq $$0, Collection<? extends cml> $$1, int $$2) {
+      for (cml $$3 : $$1) {
+         $$3.ab().ifPresent($$1x -> $$1x.a($$2));
       }
 
       if ($$1.size() == 1) {
@@ -35,9 +35,9 @@ public class aot {
       return $$1.size();
    }
 
-   private static int a(eq $$0, Collection<? extends cmk> $$1) {
-      for (cmk $$2 : $$1) {
-         $$2.aa().ifPresent(clq::b);
+   private static int a(eq $$0, Collection<? extends cml> $$1) {
+      for (cml $$2 : $$1) {
+         $$2.ab().ifPresent(clr::b);
       }
 
       if ($$1.size() == 1) {

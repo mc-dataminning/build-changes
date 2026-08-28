@@ -8,9 +8,9 @@ public class bm extends ds<bm.a> {
       return bm.a.a;
    }
 
-   public void a(aqn $$0, ewf $$1) {
-      ewf $$2 = $$0.do();
-      this.a($$0, $$3 -> $$3.a($$0.z(), $$1, $$2));
+   public void a(aqn $$0, ewh $$1) {
+      ewh $$2 = $$0.dp();
+      this.a($$0, $$3 -> $$3.a($$0.A(), $$1, $$2));
    }
 
    public static record a(Optional<bf> b, Optional<dc> c, Optional<bl> d) implements ds.a {
@@ -35,7 +35,7 @@ public class bm extends ds<bm.a> {
          return am.D.a(new bm.a(Optional.empty(), Optional.empty(), Optional.of($$0)));
       }
 
-      public boolean a(aqm $$0, ewf $$1, ewf $$2) {
+      public boolean a(aqm $$0, ewh $$1, ewh $$2) {
          return this.c.isPresent() && !this.c.get().a($$0, $$1.c, $$1.d, $$1.e)
             ? false
             : !this.d.isPresent() || this.d.get().a($$1.c, $$1.d, $$1.e, $$2.c, $$2.d, $$2.e);

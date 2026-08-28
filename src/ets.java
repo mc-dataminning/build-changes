@@ -1,42 +1,18 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import java.util.List;
+public class ets {
+   public static final etp<bsh> a = a("this_entity");
+   public static final etp<cml> b = a("last_damage_player");
+   public static final etp<bra> c = a("damage_source");
+   public static final etp<bsh> d = a("attacking_entity");
+   public static final etp<bsh> e = a("direct_attacking_entity");
+   public static final etp<ewh> f = a("origin");
+   public static final etp<dsl> g = a("block_state");
+   public static final etp<dpq> h = a("block_entity");
+   public static final etp<cud> i = a("tool");
+   public static final etp<Float> j = a("explosion_radius");
+   public static final etp<Integer> k = a("enchantment_level");
+   public static final etp<Boolean> l = a("enchantment_active");
 
-public class ets extends etv {
-   public static final MapCodec<ets> a = a(ets::new);
-   public static final Codec<ets> b = b(ets::new);
-
-   ets(List<euf> $$0) {
-      super($$0, ac.a($$0));
-   }
-
-   public static ets a(List<euf> $$0) {
-      return new ets(List.copyOf($$0));
-   }
-
-   @Override
-   public eug b() {
-      return euh.c;
-   }
-
-   public static ets.a a(euf.a... $$0) {
-      return new ets.a($$0);
-   }
-
-   public static class a extends etv.a {
-      public a(euf.a... $$0) {
-         super($$0);
-      }
-
-      @Override
-      public ets.a and(euf.a $$0) {
-         this.a($$0);
-         return this;
-      }
-
-      @Override
-      protected euf a(List<euf> $$0) {
-         return new ets($$0);
-      }
+   private static <T> etp<T> a(String $$0) {
+      return new etp<>(new akk($$0));
    }
 }

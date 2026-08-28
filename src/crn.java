@@ -1,2 +1,2 @@
-public interface crn {
+public record crn(cwp a) implements cro {
 }

@@ -1,45 +1,63 @@
-import com.mojang.logging.LogUtils;
-import javax.annotation.Nullable;
-import org.slf4j.Logger;
+import java.lang.reflect.Constructor;
+import java.util.Arrays;
 
-public class cie {
-   private static final Logger a = LogUtils.getLogger();
-   private final chn b;
-   private final chx[] c = new chx[cid.c()];
-   @Nullable
-   private chx d;
+public class cie<T extends chy> {
+   private static cie<?>[] l = new cie[0];
+   public static final cie<chu> a = a(chu.class, "HoldingPattern");
+   public static final cie<cic> b = a(cic.class, "StrafePlayer");
+   public static final cie<chw> c = a(chw.class, "LandingApproach");
+   public static final cie<chx> d = a(chx.class, "Landing");
+   public static final cie<cid> e = a(cid.class, "Takeoff");
+   public static final cie<cia> f = a(cia.class, "SittingFlaming");
+   public static final cie<cib> g = a(cib.class, "SittingScanning");
+   public static final cie<chz> h = a(chz.class, "SittingAttacking");
+   public static final cie<chs> i = a(chs.class, "ChargingPlayer");
+   public static final cie<cht> j = a(cht.class, "Dying");
+   public static final cie<chv> k = a(chv.class, "Hover");
+   private final Class<? extends chy> m;
+   private final int n;
+   private final String o;
 
-   public cie(chn $$0) {
-      this.b = $$0;
-      this.a(cid.k);
+   private cie(int $$0, Class<? extends chy> $$1, String $$2) {
+      this.n = $$0;
+      this.m = $$1;
+      this.o = $$2;
    }
 
-   public void a(cid<?> $$0) {
-      if (this.d == null || $$0 != this.d.i()) {
-         if (this.d != null) {
-            this.d.e();
-         }
-
-         this.d = this.b((cid<chx>)$$0);
-         if (!this.b.dQ().B) {
-            this.b.aq().a(chn.b, $$0.b());
-         }
-
-         a.debug("Dragon is now in phase {} on the {}", $$0, this.b.dQ().B ? "client" : "server");
-         this.d.d();
+   public chy a(cho $$0) {
+      try {
+         Constructor<? extends chy> $$1 = this.a();
+         return $$1.newInstance($$0);
+      } catch (Exception var3) {
+         throw new Error(var3);
       }
    }
 
-   public chx a() {
-      return this.d;
+   protected Constructor<? extends chy> a() throws NoSuchMethodException {
+      return this.m.getConstructor(cho.class);
    }
 
-   public <T extends chx> T b(cid<T> $$0) {
-      int $$1 = $$0.b();
-      if (this.c[$$1] == null) {
-         this.c[$$1] = $$0.a(this.b);
-      }
+   public int b() {
+      return this.n;
+   }
 
-      return (T)this.c[$$1];
+   @Override
+   public String toString() {
+      return this.o + " (#" + this.n + ")";
+   }
+
+   public static cie<?> a(int $$0) {
+      return $$0 >= 0 && $$0 < l.length ? l[$$0] : a;
+   }
+
+   public static int c() {
+      return l.length;
+   }
+
+   private static <T extends chy> cie<T> a(Class<T> $$0, String $$1) {
+      cie<T> $$2 = new cie<>(l.length, $$0, $$1);
+      l = Arrays.copyOf(l, l.length + 1);
+      l[$$2.b()] = $$2;
+      return $$2;
    }
 }

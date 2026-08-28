@@ -10,7 +10,7 @@ public class bkv extends Schema {
 
    public Map<String, Supplier<TypeTemplate>> registerEntities(Schema $$0) {
       Map<String, Supplier<TypeTemplate>> $$1 = super.registerEntities($$0);
-      $$0.register($$1, "ElderGuardian", () -> bht.a($$0));
+      $$0.register($$1, "PolarBear", () -> bhu.a($$0));
       return $$1;
    }
 }

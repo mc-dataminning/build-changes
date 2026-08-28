@@ -1,4 +1,8 @@
-@FunctionalInterface
-public interface fzx {
-   zb<agb> predict(int var1);
+import javax.annotation.ParametersAreNonnullByDefault;
+
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface fzx {
 }

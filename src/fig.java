@@ -1,31 +1,22 @@
-import java.util.UUID;
+public class fig extends fhu {
+   protected final fjh a;
 
-public class fig extends bpw {
-   private static final long j = 100L;
-   protected float h;
-   protected long i;
+   public fig(int $$0, int $$1, int $$2, int $$3, fjh $$4, fhu.c $$5) {
+      this($$0, $$1, $$2, $$3, $$4, $$5, wt.a);
+   }
 
-   public fig(UUID $$0, wu $$1, float $$2, bpw.a $$3, bpw.b $$4, boolean $$5, boolean $$6, boolean $$7) {
-      super($$0, $$1, $$3, $$4);
-      this.h = $$2;
-      this.b = $$2;
-      this.i = ac.c();
-      this.a($$5);
-      this.b($$6);
-      this.c($$7);
+   public fig(int $$0, int $$1, int $$2, int $$3, fjh $$4, fhu.c $$5, wu $$6) {
+      super($$0, $$1, $$2, $$3, $$6, $$5, q);
+      this.a = $$4;
+   }
+
+   public fig(int $$0, int $$1, fjh $$2, fhu.c $$3, wu $$4) {
+      this(0, 0, $$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public void a(float $$0) {
-      this.b = this.j();
-      this.h = $$0;
-      this.i = ac.c();
-   }
-
-   @Override
-   public float j() {
-      long $$0 = ac.c() - this.i;
-      float $$1 = ayg.a((float)$$0 / 100.0F, 0.0F, 1.0F);
-      return ayg.i($$1, this.b, this.h);
+   public void b(fhh $$0, int $$1, int $$2, float $$3) {
+      akk $$4 = this.a.a(this.C(), this.B());
+      $$0.a($$4, this.D(), this.E(), this.g, this.h);
    }
 }

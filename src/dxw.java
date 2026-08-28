@@ -1,107 +1,181 @@
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.function.Predicate;
 
-public class dxw extends duh {
-   public static final MapCodec<dxw> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(aki.d(ddm.b)).apply($$0, $$0.stable(dxw::new)));
-   private static final int h = 2;
-   private static final List<dsk> i = StreamSupport.stream(lq.e.spliterator(), false).flatMap($$0 -> $$0.l().a().stream()).collect(Collectors.toList());
-   private static final int j = ayg.f(ayg.c((float)i.size()));
-   private static final int k = ayg.f((float)i.size() / (float)j);
-   protected static final dsk d = dfj.a.o();
-   protected static final dsk e = dfj.hW.o();
-   public static final int f = 70;
-   public static final int g = 60;
-
-   public dxw(jj.c<ddf> $$0) {
-      super(new ddq($$0));
+public abstract class dxw {
+   public static dxw.b a(int $$0, int $$1) {
+      return new dxw.b($$0 - 1, $$1 + 1);
    }
 
-   @Override
-   protected MapCodec<? extends duh> b() {
-      return c;
+   public static dxw.b b(int $$0, int $$1) {
+      return new dxw.b($$0, $$1);
    }
 
-   @Override
-   public void a(aqt $$0, dcz $$1, dyt $$2, dug $$3) {
+   public static dxw a(int $$0) {
+      return new dxw.c($$0, false);
    }
 
-   @Override
-   public void a(ddb $$0, dug $$1, dcz $$2) {
-      ja.a $$3 = new ja.a();
-      dbm $$4 = $$1.f();
-      int $$5 = $$4.e;
-      int $$6 = $$4.f;
+   public static dxw b(int $$0) {
+      return new dxw.c($$0 + 1, false);
+   }
 
-      for (int $$7 = 0; $$7 < 16; $$7++) {
-         for (int $$8 = 0; $$8 < 16; $$8++) {
-            int $$9 = kc.a($$5, $$7);
-            int $$10 = kc.a($$6, $$8);
-            $$0.a($$3.d($$9, 60, $$10), e, 2);
-            dsk $$11 = a($$9, $$10);
-            $$0.a($$3.d($$9, 70, $$10), $$11, 2);
-         }
+   public static dxw c(int $$0) {
+      return new dxw.c($$0, true);
+   }
+
+   public static dxw d(int $$0) {
+      return new dxw.c($$0 - 1, true);
+   }
+
+   public static dxw a() {
+      return dxw.a.a;
+   }
+
+   public static dxw a(OptionalInt $$0, OptionalInt $$1) {
+      if ($$0.isPresent() && $$1.isPresent()) {
+         return b($$0.getAsInt(), $$1.getAsInt());
+      } else if ($$0.isPresent()) {
+         return c($$0.getAsInt());
+      } else {
+         return $$1.isPresent() ? a($$1.getAsInt()) : a();
       }
    }
 
-   @Override
-   public CompletableFuture<dug> a(dzh $$0, dyt $$1, dcz $$2, dug $$3) {
-      return CompletableFuture.completedFuture($$3);
+   public abstract OptionalInt b();
+
+   public abstract OptionalInt c();
+
+   public abstract OptionalInt d();
+
+   public dxw a(OptionalInt $$0) {
+      return a($$0, this.b());
    }
 
-   @Override
-   public int a(int $$0, int $$1, dyf.a $$2, dch $$3, dyt $$4) {
-      return 0;
+   public dxw b(OptionalInt $$0) {
+      return a(this.c(), $$0);
    }
 
-   @Override
-   public dcr a(int $$0, int $$1, dch $$2, dyt $$3) {
-      return new dcr(0, new dsk[0]);
+   public static Optional<dxw> a(dcm $$0, ja $$1, int $$2, Predicate<dsl> $$3, Predicate<dsl> $$4) {
+      ja.a $$5 = $$1.j();
+      if (!$$0.a($$1, $$3)) {
+         return Optional.empty();
+      } else {
+         int $$6 = $$1.v();
+         OptionalInt $$7 = a($$0, $$2, $$3, $$4, $$5, $$6, jf.b);
+         OptionalInt $$8 = a($$0, $$2, $$3, $$4, $$5, $$6, jf.a);
+         return Optional.of(a($$8, $$7));
+      }
    }
 
-   @Override
-   public void a(List<String> $$0, dyt $$1, ja $$2) {
+   private static OptionalInt a(dcm $$0, int $$1, Predicate<dsl> $$2, Predicate<dsl> $$3, ja.a $$4, int $$5, jf $$6) {
+      $$4.q($$5);
+
+      for (int $$7 = 1; $$7 < $$1 && $$0.a($$4, $$2); $$7++) {
+         $$4.c($$6);
+      }
+
+      return $$0.a($$4, $$3) ? OptionalInt.of($$4.v()) : OptionalInt.empty();
    }
 
-   public static dsk a(int $$0, int $$1) {
-      dsk $$2 = d;
-      if ($$0 > 0 && $$1 > 0 && $$0 % 2 != 0 && $$1 % 2 != 0) {
-         $$0 /= 2;
-         $$1 /= 2;
-         if ($$0 <= j && $$1 <= k) {
-            int $$3 = ayg.a($$0 * j + $$1);
-            if ($$3 < i.size()) {
-               $$2 = i.get($$3);
-            }
+   public static final class a extends dxw {
+      static final dxw.a a = new dxw.a();
+
+      private a() {
+      }
+
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return "C(-)";
+      }
+   }
+
+   public static final class b extends dxw {
+      private final int a;
+      private final int b;
+
+      protected b(int $$0, int $$1) {
+         this.a = $$0;
+         this.b = $$1;
+         if (this.g() < 0) {
+            throw new IllegalArgumentException("Column of negative height: " + this);
          }
       }
 
-      return $$2;
+      @Override
+      public OptionalInt b() {
+         return OptionalInt.of(this.b);
+      }
+
+      @Override
+      public OptionalInt c() {
+         return OptionalInt.of(this.a);
+      }
+
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.of(this.g());
+      }
+
+      public int e() {
+         return this.b;
+      }
+
+      public int f() {
+         return this.a;
+      }
+
+      public int g() {
+         return this.b - this.a - 1;
+      }
+
+      @Override
+      public String toString() {
+         return "C(" + this.b + "-" + this.a + ")";
+      }
    }
 
-   @Override
-   public void a(aqt $$0, long $$1, dyt $$2, ddh $$3, dcz $$4, dug $$5, dyb.a $$6) {
-   }
+   public static final class c extends dxw {
+      private final int a;
+      private final boolean b;
 
-   @Override
-   public void a(aqt $$0) {
-   }
+      public c(int $$0, boolean $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
 
-   @Override
-   public int g() {
-      return 0;
-   }
+      @Override
+      public OptionalInt b() {
+         return this.b ? OptionalInt.empty() : OptionalInt.of(this.a);
+      }
 
-   @Override
-   public int e() {
-      return 384;
-   }
+      @Override
+      public OptionalInt c() {
+         return this.b ? OptionalInt.of(this.a) : OptionalInt.empty();
+      }
 
-   @Override
-   public int f() {
-      return 63;
+      @Override
+      public OptionalInt d() {
+         return OptionalInt.empty();
+      }
+
+      @Override
+      public String toString() {
+         return this.b ? "C(" + this.a + "-)" : "C(-" + this.a + ")";
+      }
    }
 }

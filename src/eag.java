@@ -1,31 +1,61 @@
-import java.util.Optional;
-import java.util.function.Function;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public class eag extends dzc {
-   private final jx a;
-   private final dyj b;
-   private final dyt c;
-   private final dyw.o d;
+public class eag {
+   public static final eag a = new eag(false, dfk.gz.o(), dfk.pL.o(), dfk.ej.o(), dfk.aQ.o());
+   public static final Codec<eag> b = RecordCodecBuilder.create(
+      $$0 -> $$0.group(
+               Codec.BOOL.optionalFieldOf("debug_mode", false).forGetter(eag::a),
+               dsl.b.optionalFieldOf("air_state", a.b()).forGetter(eag::b),
+               dsl.b.optionalFieldOf("water_state", a.b()).forGetter(eag::c),
+               dsl.b.optionalFieldOf("lava_state", a.b()).forGetter(eag::d),
+               dsl.b.optionalFieldOf("barrier_state", a.b()).forGetter(eag::e)
+            )
+            .apply($$0, eag::new)
+   );
+   private final boolean c;
+   private final dsl d;
+   private final dsl e;
+   private final dsl f;
+   private final dsl g;
 
-   public eag(dyi $$0, jx $$1, dch $$2, dyj $$3, dyt $$4, dyw.o $$5) {
-      super($$0, $$2);
-      this.a = $$1;
-      this.b = $$3;
-      this.c = $$4;
-      this.d = $$5;
+   public static eag a(boolean $$0, dsl $$1, dsl $$2, dsl $$3, dsl $$4) {
+      return new eag($$0, $$1, $$2, $$3, $$4);
    }
 
-   @Deprecated
-   public Optional<dsk> a(Function<ja, jj<ddf>> $$0, dug $$1, ja $$2, boolean $$3) {
-      return this.c.c().a(this.d, this, $$0, $$1, this.b, $$2, $$3);
+   public static eag a(dsl $$0, dsl $$1, dsl $$2, dsl $$3) {
+      return new eag(false, $$0, $$1, $$2, $$3);
    }
 
-   @Deprecated
-   public jx c() {
-      return this.a;
+   public static eag a(boolean $$0, dsl $$1) {
+      return new eag($$0, $$1, a.c(), a.d(), a.e());
    }
 
-   public dyt d() {
+   private eag(boolean $$0, dsl $$1, dsl $$2, dsl $$3, dsl $$4) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
+      this.f = $$3;
+      this.g = $$4;
+   }
+
+   public boolean a() {
       return this.c;
+   }
+
+   public dsl b() {
+      return this.d;
+   }
+
+   public dsl c() {
+      return this.e;
+   }
+
+   public dsl d() {
+      return this.f;
+   }
+
+   public dsl e() {
+      return this.g;
    }
 }

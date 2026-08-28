@@ -49,7 +49,7 @@ public class amc {
       if (!$$1.bj()) {
          throw b.create();
       } else {
-         bmt $$2 = $$1.bl();
+         bmu $$2 = $$1.bl();
          double $$3 = (double)$$2.g() / (double)azh.a;
          double $$4 = (double)$$2.f() / $$3;
          $$0.a(() -> wu.a("commands.debug.stopped", String.format(Locale.ROOT, "%.2f", $$3), $$2.f(), String.format(Locale.ROOT, "%.2f", $$4)), true);
@@ -189,7 +189,7 @@ public class amc {
       }
 
       @Override
-      public boolean l_() {
+      public boolean k_() {
          return true;
       }
 
@@ -204,7 +204,7 @@ public class amc {
       }
 
       @Override
-      public boolean m_() {
+      public boolean l_() {
          return true;
       }
 

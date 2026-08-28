@@ -1,31 +1,148 @@
+import com.google.common.collect.UnmodifiableIterator;
 import com.mojang.serialization.MapCodec;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
+import java.util.Map;
 
-public class dhe extends dfh {
-   public static final MapCodec<dhe> a = b(dhe::new);
+public abstract class dhe extends dfi implements dmj {
+   public static final dtc a = dkw.b;
+   public static final dtc b = dkw.c;
+   public static final dtc c = dkw.d;
+   public static final dtc d = dkw.e;
+   public static final dtc e = dtb.C;
+   protected static final Map<jf, dtc> f = dkw.h.entrySet().stream().filter($$0 -> $$0.getKey().o().d()).collect(ac.a());
+   protected final exa[] g;
+   protected final exa[] h;
+   private final Object2IntMap<dsl> i = new Object2IntOpenHashMap();
 
-   @Override
-   public MapCodec<dhe> a() {
-      return a;
+   protected dhe(float $$0, float $$1, float $$2, float $$3, float $$4, dsk.d $$5) {
+      super($$5);
+      this.g = this.a($$0, $$1, $$4, 0.0F, $$4);
+      this.h = this.a($$0, $$1, $$2, 0.0F, $$3);
+      UnmodifiableIterator var7 = this.E.a().iterator();
+
+      while (var7.hasNext()) {
+         dsl $$6 = (dsl)var7.next();
+         this.g($$6);
+      }
    }
 
-   public dhe(dsj.d $$0) {
-      super($$0);
+   @Override
+   protected abstract MapCodec<? extends dhe> a();
+
+   protected exa[] a(float $$0, float $$1, float $$2, float $$3, float $$4) {
+      float $$5 = 8.0F - $$0;
+      float $$6 = 8.0F + $$0;
+      float $$7 = 8.0F - $$1;
+      float $$8 = 8.0F + $$1;
+      exa $$9 = dfi.a((double)$$5, 0.0, (double)$$5, (double)$$6, (double)$$2, (double)$$6);
+      exa $$10 = dfi.a((double)$$7, (double)$$3, 0.0, (double)$$8, (double)$$4, (double)$$8);
+      exa $$11 = dfi.a((double)$$7, (double)$$3, (double)$$7, (double)$$8, (double)$$4, 16.0);
+      exa $$12 = dfi.a(0.0, (double)$$3, (double)$$7, (double)$$8, (double)$$4, (double)$$8);
+      exa $$13 = dfi.a((double)$$7, (double)$$3, (double)$$7, 16.0, (double)$$4, (double)$$8);
+      exa $$14 = ewx.a($$10, $$13);
+      exa $$15 = ewx.a($$11, $$12);
+      exa[] $$16 = new exa[]{
+         ewx.a(),
+         $$11,
+         $$12,
+         $$15,
+         $$10,
+         ewx.a($$11, $$10),
+         ewx.a($$12, $$10),
+         ewx.a($$15, $$10),
+         $$13,
+         ewx.a($$11, $$13),
+         ewx.a($$12, $$13),
+         ewx.a($$15, $$13),
+         $$14,
+         ewx.a($$11, $$14),
+         ewx.a($$12, $$14),
+         ewx.a($$15, $$14)
+      };
+
+      for (int $$17 = 0; $$17 < 16; $$17++) {
+         $$16[$$17] = ewx.a($$9, $$16[$$17]);
+      }
+
+      return $$16;
    }
 
    @Override
-   public void a(dsk $$0, dcf $$1, ja $$2, ayo $$3) {
-      if ($$3.a(5) == 0) {
-         jf $$4 = jf.b($$3);
-         if ($$4 != jf.b) {
-            ja $$5 = $$2.a($$4);
-            dsk $$6 = $$1.a_($$5);
-            if (!$$0.p() || !$$6.d($$1, $$5, $$4.g())) {
-               double $$7 = $$4.j() == 0 ? $$3.j() : 0.5 + (double)$$4.j() * 0.6;
-               double $$8 = $$4.k() == 0 ? $$3.j() : 0.5 + (double)$$4.k() * 0.6;
-               double $$9 = $$4.l() == 0 ? $$3.j() : 0.5 + (double)$$4.l() * 0.6;
-               $$1.a(lj.aE, (double)$$2.u() + $$7, (double)$$2.v() + $$8, (double)$$2.w() + $$9, 0.0, 0.0, 0.0);
-            }
+   protected boolean a_(dsl $$0, dbm $$1, ja $$2) {
+      return !$$0.c(e);
+   }
+
+   @Override
+   protected exa a(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
+      return this.h[this.g($$0)];
+   }
+
+   @Override
+   protected exa b(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
+      return this.g[this.g($$0)];
+   }
+
+   private static int a(jf $$0) {
+      return 1 << $$0.e();
+   }
+
+   protected int g(dsl $$0) {
+      return this.i.computeIntIfAbsent($$0, $$0x -> {
+         int $$1 = 0;
+         if ($$0x.c(a)) {
+            $$1 |= a(jf.c);
          }
+
+         if ($$0x.c(b)) {
+            $$1 |= a(jf.f);
+         }
+
+         if ($$0x.c(c)) {
+            $$1 |= a(jf.d);
+         }
+
+         if ($$0x.c(d)) {
+            $$1 |= a(jf.e);
+         }
+
+         return $$1;
+      });
+   }
+
+   @Override
+   protected eoj b_(dsl $$0) {
+      return $$0.c(e) ? eok.c.a(false) : super.b_($$0);
+   }
+
+   @Override
+   protected boolean a(dsl $$0, eoy $$1) {
+      return false;
+   }
+
+   @Override
+   protected dsl a(dsl $$0, dlv $$1) {
+      switch ($$1) {
+         case c:
+            return $$0.a(a, $$0.c(c)).a(b, $$0.c(d)).a(c, $$0.c(a)).a(d, $$0.c(b));
+         case d:
+            return $$0.a(a, $$0.c(b)).a(b, $$0.c(c)).a(c, $$0.c(d)).a(d, $$0.c(a));
+         case b:
+            return $$0.a(a, $$0.c(d)).a(b, $$0.c(a)).a(c, $$0.c(b)).a(d, $$0.c(c));
+         default:
+            return $$0;
+      }
+   }
+
+   @Override
+   protected dsl a(dsl $$0, dkf $$1) {
+      switch ($$1) {
+         case b:
+            return $$0.a(a, $$0.c(c)).a(c, $$0.c(a));
+         case c:
+            return $$0.a(b, $$0.c(d)).a(d, $$0.c(b));
+         default:
+            return super.a($$0, $$1);
       }
    }
 }

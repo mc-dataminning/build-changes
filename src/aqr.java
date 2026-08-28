@@ -6,11 +6,11 @@ public class aqr<T> {
    private final long j;
    public static final aqr<azk> a = a("start", ($$0, $$1) -> 0);
    public static final aqr<azk> b = a("dragon", ($$0, $$1) -> 0);
-   public static final aqr<dbm> c = a("player", Comparator.comparingLong(dbm::a));
-   public static final aqr<dbm> d = a("forced", Comparator.comparingLong(dbm::a));
+   public static final aqr<dbn> c = a("player", Comparator.comparingLong(dbn::a));
+   public static final aqr<dbn> d = a("forced", Comparator.comparingLong(dbn::a));
    public static final aqr<ja> e = a("portal", ke::i, 300);
    public static final aqr<Integer> f = a("post_teleport", Integer::compareTo, 5);
-   public static final aqr<dbm> g = a("unknown", Comparator.comparingLong(dbm::a), 1);
+   public static final aqr<dbn> g = a("unknown", Comparator.comparingLong(dbn::a), 1);
 
    public static <T> aqr<T> a(String $$0, Comparator<T> $$1) {
       return new aqr<>($$0, $$1, 0L);

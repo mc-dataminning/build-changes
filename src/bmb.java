@@ -1,66 +1,31 @@
-import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
-import java.util.Objects;
-import javax.annotation.Nullable;
+import java.util.Optional;
 
-public final class bmb {
-   private final Object2ObjectMap<blu<?>, Object> a = new Object2ObjectArrayMap();
+public interface bmb<S, T> {
+   Optional<T> a(bma<S> var1);
 
-   public <T> void a(blu<T> $$0, @Nullable T $$1) {
-      this.a.put($$0, $$1);
+   static <S, T> bmb<S, T> a(bme<S> $$0, bmb.a<S, T> $$1) {
+      return new bmb.c<>($$1, $$0);
    }
 
-   @Nullable
-   public <T> T a(blu<T> $$0) {
-      return (T)this.a.get($$0);
+   static <S, T> bmb<S, T> a(bme<S> $$0, bmb.b<T> $$1) {
+      return new bmb.c<>(($$1x, $$2) -> Optional.of($$1.run($$2)), $$0);
    }
 
-   public <T> T b(blu<T> $$0) {
-      return Objects.requireNonNull(this.a($$0));
+   @FunctionalInterface
+   public interface a<S, T> {
+      Optional<T> run(bma<S> var1, bmc var2);
    }
 
-   public <T> T b(blu<T> $$0, T $$1) {
-      return Objects.requireNonNullElse(this.a($$0), $$1);
+   @FunctionalInterface
+   public interface b<T> {
+      T run(bmc var1);
    }
 
-   @Nullable
-   @SafeVarargs
-   public final <T> T a(blu<T>... $$0) {
-      for (blu<T> $$1 : $$0) {
-         T $$2 = this.a($$1);
-         if ($$2 != null) {
-            return $$2;
-         }
+   public static record c<S, T>(bmb.a<S, T> a, bme<S> b) implements bmb<S, T> {
+      @Override
+      public Optional<T> a(bma<S> $$0) {
+         bmc $$1 = new bmc();
+         return this.b.a($$0, $$1, blw.a) ? this.a.run($$0, $$1) : Optional.empty();
       }
-
-      return null;
-   }
-
-   @SafeVarargs
-   public final <T> T b(blu<T>... $$0) {
-      return Objects.requireNonNull(this.a($$0));
-   }
-
-   @Override
-   public String toString() {
-      return this.a.toString();
-   }
-
-   public void a(bmb $$0) {
-      this.a.putAll($$0.a);
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else {
-         return $$0 instanceof bmb $$1 ? this.a.equals($$1.a) : false;
-      }
-   }
-
-   @Override
-   public int hashCode() {
-      return this.a.hashCode();
    }
 }

@@ -1,28 +1,52 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Stream;
+public class gth {
+   public static class a extends gsn {
+      private final gdh n;
 
-public class gth<T> extends gti<T> {
-   private final gtm<T> c;
+      protected a(gdh $$0, avg $$1) {
+         super($$1, avi.i, gte.t());
+         this.n = $$0;
+         this.i = false;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
+      }
 
-   public gth(Function<T, Stream<String>> $$0, Function<T, Stream<akk>> $$1, List<T> $$2) {
-      super($$1, $$2);
-      this.c = gtm.plainText($$2, $$0);
+      @Override
+      public void q() {
+         if (this.n.dM() || !this.n.bl()) {
+            this.n();
+         }
+      }
    }
 
-   @Override
-   protected List<T> a(String $$0) {
-      return this.c.search($$0);
-   }
+   public static class b extends gsn {
+      public static final int n = 40;
+      private final gdh o;
+      private int p;
 
-   @Override
-   protected List<T> a(String $$0, String $$1) {
-      List<T> $$2 = this.b.a($$0);
-      List<T> $$3 = this.b.b($$1);
-      List<T> $$4 = this.c.search($$1);
-      Iterator<T> $$5 = new gtk<T>($$3.iterator(), $$4.iterator(), this.a);
-      return ImmutableList.copyOf(new gtj<T>($$2.iterator(), $$5, this.a));
+      public b(gdh $$0) {
+         super(avh.z, avi.i, gte.t());
+         this.o = $$0;
+         this.i = true;
+         this.j = 0;
+         this.d = 1.0F;
+         this.l = true;
+      }
+
+      @Override
+      public void q() {
+         if (!this.o.dM() && this.p >= 0) {
+            if (this.o.bl()) {
+               this.p++;
+            } else {
+               this.p -= 2;
+            }
+
+            this.p = Math.min(this.p, 40);
+            this.d = Math.max(0.0F, Math.min((float)this.p / 40.0F, 1.0F));
+         } else {
+            this.n();
+         }
+      }
    }
 }

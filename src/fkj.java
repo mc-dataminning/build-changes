@@ -1,178 +1,322 @@
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
-import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntList;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import com.mojang.datafixers.util.Either;
+import com.mojang.datafixers.util.Pair;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.JsonOps;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import it.unimi.dsi.fastutil.ints.IntSet;
+import java.io.Reader;
 import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
+import java.util.Map.Entry;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Stream;
+import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class fkj implements AutoCloseable {
-   private static final ayo a = ayo.a();
-   private static final float b = 32.0F;
-   private final gpp c;
-   private final akk d;
-   private fkn e;
-   private fkn f;
-   private List<eyp.a> g = List.of();
-   private List<eyp> h = List.of();
-   private final fkg<fkn> i = new fkg<>(fkn[]::new, fkn[][]::new);
-   private final fkg<fkj.a> j = new fkg<>(fkj.a[]::new, fkj.a[][]::new);
-   private final Int2ObjectMap<IntList> k = new Int2ObjectOpenHashMap();
-   private final List<fkk> l = Lists.newArrayList();
+public class fkj implements atq, AutoCloseable {
+   static final Logger b = LogUtils.getLogger();
+   private static final String c = "fonts.json";
+   public static final akk a = new akk("minecraft", "missing");
+   private static final akd d = akd.a("font");
+   private static final Gson e = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+   private final fkl f;
+   private final List<eyr> g = new ArrayList<>();
+   private final Map<akk, fkl> h = new HashMap<>();
+   private final gpr i;
+   @Nullable
+   private volatile fkl j;
 
-   public fkj(gpp $$0, akk $$1) {
-      this.c = $$0;
-      this.d = $$1;
+   public fkj(gpr $$0) {
+      this.i = $$0;
+      this.f = ac.a(new fkl($$0, a), $$0x -> $$0x.a(List.of(d()), Set.of()));
    }
 
-   public void a(List<eyp.a> $$0, Set<fki> $$1) {
-      this.g = $$0;
-      this.a($$1);
+   private static eyr.a d() {
+      return new eyr.a(new fkh(), fkk.a.b);
    }
 
-   public void a(Set<fki> $$0) {
-      this.h = List.of();
-      this.c();
-      this.h = this.b(this.g, $$0);
+   @Override
+   public CompletableFuture<Void> a(atq.a $$0, atw $$1, bmv $$2, bmv $$3, Executor $$4, Executor $$5) {
+      $$2.a();
+      $$2.b();
+      return this.a($$1, $$4).thenCompose($$0::a).thenAcceptAsync($$1x -> this.a($$1x, $$3), $$5);
    }
 
-   private void c() {
-      this.d();
-      this.i.a();
-      this.j.a();
-      this.k.clear();
-      this.e = fkp.b.bake(this::a);
-      this.f = fkp.a.bake(this::a);
-   }
+   private CompletableFuture<fkj.d> a(atw $$0, Executor $$1) {
+      List<CompletableFuture<fkj.e>> $$2 = new ArrayList<>();
 
-   private List<eyp> b(List<eyp.a> $$0, Set<fki> $$1) {
-      IntSet $$2 = new IntOpenHashSet();
-      List<eyp> $$3 = new ArrayList<>();
+      for (Entry<akk, List<atu>> $$3 : d.b($$0).entrySet()) {
+         akk $$4 = d.b($$3.getKey());
+         $$2.add(CompletableFuture.supplyAsync(() -> {
+            List<Pair<fkj.a, fkw.a>> $$4x = a($$3.getValue(), $$4);
+            fkj.e $$5 = new fkj.e($$4);
 
-      for (eyp.a $$4 : $$0) {
-         if ($$4.b().a($$1)) {
-            $$3.add($$4.a());
-            $$2.addAll($$4.a().a());
-         }
+            for (Pair<fkj.a, fkw.a> $$6 : $$4x) {
+               fkj.a $$7 = (fkj.a)$$6.getFirst();
+               fkk.a $$8 = ((fkw.a)$$6.getSecond()).b();
+               ((fkw.a)$$6.getSecond()).a().b().ifLeft($$5x -> {
+                  CompletableFuture<Optional<eyr>> $$6x = this.a($$7, $$5x, $$0, $$1);
+                  $$5.a($$7, $$8, $$6x);
+               }).ifRight($$3xx -> $$5.a($$7, $$8, $$3xx));
+            }
+
+            return $$5;
+         }, $$1));
       }
 
-      Set<eyp> $$5 = Sets.newHashSet();
-      $$2.forEach($$2x -> {
-         for (eyp $$3x : $$3) {
-            eyo $$4x = $$3x.a($$2x);
-            if ($$4x != null) {
-               $$5.add($$3x);
-               if ($$4x != fkp.b) {
-                  ((IntList)this.k.computeIfAbsent(ayg.f($$4x.a(false)), $$0xx -> new IntArrayList())).add($$2x);
+      return ac.d($$2)
+         .thenCompose(
+            $$1x -> {
+               List<CompletableFuture<Optional<eyr>>> $$2x = $$1x.stream().flatMap(fkj.e::d).collect(ac.b());
+               eyr.a $$3x = d();
+               $$2x.add(CompletableFuture.completedFuture(Optional.of($$3x.a())));
+               return ac.d($$2x)
+                  .thenCompose(
+                     $$3xx -> {
+                        Map<akk, List<eyr.a>> $$4x = this.a($$1x);
+                        CompletableFuture<?>[] $$5 = $$4x.values()
+                           .stream()
+                           .map($$2xxx -> CompletableFuture.runAsync(() -> this.a($$2xxx, $$3x), $$1))
+                           .toArray(CompletableFuture[]::new);
+                        return CompletableFuture.allOf($$5).thenApply($$2xxx -> {
+                           List<eyr> $$3xxx = $$3xx.stream().flatMap(Optional::stream).toList();
+                           return new fkj.d($$4x, $$3xxx);
+                        });
+                     }
+                  );
+            }
+         );
+   }
+
+   private CompletableFuture<Optional<eyr>> a(fkj.a $$0, fkw.b $$1, atw $$2, Executor $$3) {
+      return CompletableFuture.supplyAsync(() -> {
+         try {
+            return Optional.of($$1.load($$2));
+         } catch (Exception var4x) {
+            b.warn("Failed to load builder {}, rejecting", $$0, var4x);
+            return Optional.empty();
+         }
+      }, $$3);
+   }
+
+   private Map<akk, List<eyr.a>> a(List<fkj.e> $$0) {
+      Map<akk, List<eyr.a>> $$1 = new HashMap<>();
+      axk<akk, fkj.e> $$2 = new axk<>();
+      $$0.forEach($$1x -> $$2.a($$1x.a, $$1x));
+      $$2.a(($$1x, $$2x) -> $$2x.a($$1::get).ifPresent($$2xx -> $$1.put($$1x, $$2xx)));
+      return $$1;
+   }
+
+   private void a(List<eyr.a> $$0, eyr.a $$1) {
+      $$0.add(0, $$1);
+      IntSet $$2 = new IntOpenHashSet();
+
+      for (eyr.a $$3 : $$0) {
+         $$2.addAll($$3.a().a());
+      }
+
+      $$2.forEach($$1x -> {
+         if ($$1x != 32) {
+            for (eyr.a $$2x : Lists.reverse($$0)) {
+               if ($$2x.a().a($$1x) != null) {
+                  break;
                }
-               break;
             }
          }
       });
-      return $$3.stream().filter($$5::contains).toList();
+   }
+
+   private static Set<fkk> b(fga $$0) {
+      Set<fkk> $$1 = EnumSet.noneOf(fkk.class);
+      if ($$0.P().c()) {
+         $$1.add(fkk.a);
+      }
+
+      if ($$0.Q().c()) {
+         $$1.add(fkk.b);
+      }
+
+      return $$1;
+   }
+
+   private void a(fkj.d $$0, bmv $$1) {
+      $$1.a();
+      $$1.a("closing");
+      this.j = null;
+      this.h.values().forEach(fkl::close);
+      this.h.clear();
+      this.g.forEach(eyr::close);
+      this.g.clear();
+      Set<fkk> $$2 = b(ffw.Q().m);
+      $$1.b("reloading");
+      $$0.a().forEach(($$1x, $$2x) -> {
+         fkl $$3 = new fkl(this.i, $$1x);
+         $$3.a(Lists.reverse($$2x), $$2);
+         this.h.put($$1x, $$3);
+      });
+      this.g.addAll($$0.b);
+      $$1.c();
+      $$1.b();
+      if (!this.h.containsKey(ffw.b)) {
+         throw new IllegalStateException("Default font failed to load");
+      }
+   }
+
+   public void a(fga $$0) {
+      Set<fkk> $$1 = b($$0);
+
+      for (fkl $$2 : this.h.values()) {
+         $$2.a($$1);
+      }
+   }
+
+   private static List<Pair<fkj.a, fkw.a>> a(List<atu> $$0, akk $$1) {
+      List<Pair<fkj.a, fkw.a>> $$2 = new ArrayList<>();
+
+      for (atu $$3 : $$0) {
+         try (Reader $$4 = $$3.e()) {
+            JsonElement $$5 = (JsonElement)e.fromJson($$4, JsonElement.class);
+            fkj.c $$6 = (fkj.c)fkj.c.a.parse(JsonOps.INSTANCE, $$5).getOrThrow(JsonParseException::new);
+            List<fkw.a> $$7 = $$6.b;
+
+            for (int $$8 = $$7.size() - 1; $$8 >= 0; $$8--) {
+               fkj.a $$9 = new fkj.a($$1, $$3.b(), $$8);
+               $$2.add(Pair.of($$9, $$7.get($$8)));
+            }
+         } catch (Exception var13) {
+            b.warn("Unable to load font '{}' in {} in resourcepack: '{}'", new Object[]{$$1, "fonts.json", $$3.b(), var13});
+         }
+      }
+
+      return $$2;
+   }
+
+   public fhf a() {
+      return new fhf(this::b, false);
+   }
+
+   public fhf b() {
+      return new fhf(this::b, true);
+   }
+
+   private fkl a(akk $$0) {
+      return this.h.getOrDefault($$0, this.f);
+   }
+
+   private fkl b(akk $$0) {
+      fkl $$1 = this.j;
+      if ($$1 != null && $$0.equals($$1.a())) {
+         return $$1;
+      } else {
+         fkl $$2 = this.a($$0);
+         this.j = $$2;
+         return $$2;
+      }
    }
 
    @Override
    public void close() {
-      this.d();
+      this.h.values().forEach(fkl::close);
+      this.g.forEach(eyr::close);
+      this.f.close();
    }
 
-   private void d() {
-      for (fkk $$0 : this.l) {
-         $$0.close();
-      }
-
-      this.l.clear();
-   }
-
-   private static boolean b(eyo $$0) {
-      float $$1 = $$0.a(false);
-      if (!($$1 < 0.0F) && !($$1 > 32.0F)) {
-         float $$2 = $$0.a(true);
-         return $$2 < 0.0F || $$2 > 32.0F;
-      } else {
-         return true;
+   static record a(akk a, String b, int c) {
+      @Override
+      public String toString() {
+         return "(" + this.a + ": builder #" + this.c + " from pack " + this.b + ")";
       }
    }
 
-   private fkj.a b(int $$0) {
-      eyo $$1 = null;
+   static record b(fkj.a a, fkk.a b, Either<CompletableFuture<Optional<eyr>>, akk> c) {
 
-      for (eyp $$2 : this.h) {
-         eyo $$3 = $$2.a($$0);
-         if ($$3 != null) {
-            if ($$1 == null) {
-               $$1 = $$3;
+      public Optional<List<eyr.a>> a(Function<akk, List<eyr.a>> $$0) {
+         return (Optional<List<eyr.a>>)this.c.map($$0x -> ((Optional)$$0x.join()).map($$0xx -> List.of(new eyr.a($$0xx, this.b))), $$1 -> {
+            List<eyr.a> $$2 = $$0.apply($$1);
+            if ($$2 == null) {
+               fkj.b.warn("Can't find font {} referenced by builder {}, either because it's missing, failed to load or is part of loading cycle", $$1, this.a);
+               return Optional.empty();
+            } else {
+               return Optional.of($$2.stream().map(this::a).toList());
+            }
+         });
+      }
+
+      private eyr.a a(eyr.a $$0) {
+         return new eyr.a($$0.a(), this.b.a($$0.b()));
+      }
+   }
+
+   static record c(List<fkw.a> b) {
+      public static final Codec<fkj.c> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(fkw.a.a.listOf().fieldOf("providers").forGetter(fkj.c::a)).apply($$0, fkj.c::new)
+      );
+
+      public List<fkw.a> a() {
+         return this.b;
+      }
+   }
+
+   static record d(Map<akk, List<eyr.a>> a, List<eyr> b) {
+   }
+
+   static record e(akk a, List<fkj.b> b, Set<akk> c) implements axk.a<akk> {
+
+      public e(akk $$0) {
+         this($$0, new ArrayList<>(), new HashSet<>());
+      }
+
+      public void a(fkj.a $$0, fkk.a $$1, fkw.c $$2) {
+         this.b.add(new fkj.b($$0, $$1, Either.right($$2.a())));
+         this.c.add($$2.a());
+      }
+
+      public void a(fkj.a $$0, fkk.a $$1, CompletableFuture<Optional<eyr>> $$2) {
+         this.b.add(new fkj.b($$0, $$1, Either.left($$2)));
+      }
+
+      private Stream<CompletableFuture<Optional<eyr>>> d() {
+         return this.b.stream().flatMap($$0 -> $$0.c.left().stream());
+      }
+
+      public Optional<List<eyr.a>> a(Function<akk, List<eyr.a>> $$0) {
+         List<eyr.a> $$1 = new ArrayList<>();
+
+         for (fkj.b $$2 : this.b) {
+            Optional<List<eyr.a>> $$3 = $$2.a($$0);
+            if (!$$3.isPresent()) {
+               return Optional.empty();
             }
 
-            if (!b($$3)) {
-               return new fkj.a($$1, $$3);
-            }
+            $$1.addAll($$3.get());
          }
+
+         return Optional.of($$1);
       }
 
-      return $$1 != null ? new fkj.a($$1, fkp.b) : fkj.a.c;
-   }
-
-   public eyo a(int $$0, boolean $$1) {
-      return this.j.a($$0, this::b).a($$1);
-   }
-
-   private fkn c(int $$0) {
-      for (eyp $$1 : this.h) {
-         eyo $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return $$2.bake(this::a);
-         }
+      @Override
+      public void a(Consumer<akk> $$0) {
+         this.c.forEach($$0);
       }
 
-      return this.e;
-   }
-
-   public fkn a(int $$0) {
-      return this.i.a($$0, this::c);
-   }
-
-   private fkn a(eyq $$0) {
-      for (fkk $$1 : this.l) {
-         fkn $$2 = $$1.a($$0);
-         if ($$2 != null) {
-            return $$2;
-         }
-      }
-
-      akk $$3 = this.d.e("/" + this.l.size());
-      boolean $$4 = $$0.c();
-      fkl $$5 = $$4 ? fkl.b($$3) : fkl.a($$3);
-      fkk $$6 = new fkk($$5, $$4);
-      this.l.add($$6);
-      this.c.a($$3, $$6);
-      fkn $$7 = $$6.a($$0);
-      return $$7 == null ? this.e : $$7;
-   }
-
-   public fkn a(eyo $$0) {
-      IntList $$1 = (IntList)this.k.get(ayg.f($$0.a(false)));
-      return $$1 != null && !$$1.isEmpty() ? this.a($$1.getInt(a.a($$1.size()))) : this.e;
-   }
-
-   public akk a() {
-      return this.d;
-   }
-
-   public fkn b() {
-      return this.f;
-   }
-
-   static record a(eyo a, eyo b) {
-      static final fkj.a c = new fkj.a(fkp.b, fkp.b);
-
-      eyo a(boolean $$0) {
-         return $$0 ? this.b : this.a;
+      @Override
+      public void b(Consumer<akk> $$0) {
       }
    }
 }

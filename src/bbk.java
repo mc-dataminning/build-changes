@@ -424,8 +424,8 @@ public class bbk extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgg.c);
-      Type<?> $$1 = this.getOutputSchema().getType(bgg.c);
+      Type<?> $$0 = this.getInputSchema().getType(bgh.c);
+      Type<?> $$1 = this.getOutputSchema().getType(bgh.c);
       return this.writeFixAndRead("ChunkPalettedStorageFix", $$0, $$1, this::b);
    }
 

@@ -35,8 +35,8 @@ public class beb extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgg.t);
-      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bgg.D.typeName(), bhs.a()));
+      Type<?> $$0 = this.getInputSchema().getType(bgh.t);
+      OpticFinder<Pair<String, String>> $$1 = DSL.fieldFinder("id", DSL.named(bgh.D.typeName(), bht.a()));
       OpticFinder<?> $$2 = $$0.findField("tag");
       OpticFinder<?> $$3 = $$2.type().findField("BlockEntityTag");
       return this.fixTypeEverywhereTyped("ItemShulkerBoxColorFix", $$0, $$3x -> {
@@ -51,7 +51,7 @@ public class beb extends DataFix {
                   Dynamic<?> $$9 = (Dynamic<?>)$$8.get(DSL.remainderFinder());
                   int $$10 = $$9.get("Color").asInt(0);
                   $$9.remove("Color");
-                  return $$3x.set($$2, $$6.set($$3, $$8.set(DSL.remainderFinder(), $$9))).set($$1, Pair.of(bgg.D.typeName(), a[$$10 % 16]));
+                  return $$3x.set($$2, $$6.set($$3, $$8.set(DSL.remainderFinder(), $$9))).set($$1, Pair.of(bgh.D.typeName(), a[$$10 % 16]));
                }
             }
          }

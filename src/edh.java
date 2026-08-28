@@ -1,10 +1,10 @@
 import com.mojang.serialization.Codec;
 
-public class edh implements edo {
-   public static final Codec<edh> a = dsk.b.fieldOf("state").xmap(edh::new, $$0 -> $$0.b).codec();
-   public final dsk b;
+public class edh implements edp {
+   public static final Codec<edh> a = efq.a.fieldOf("state_provider").xmap(edh::new, $$0 -> $$0.b).codec();
+   public final efq b;
 
-   public edh(dsk $$0) {
+   public edh(efq $$0) {
       this.b = $$0;
    }
 }

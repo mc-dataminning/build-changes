@@ -1,7 +1,7 @@
 import java.util.Objects;
 import javax.annotation.Nullable;
 
-public class avo<T> extends exm {
+public class avo<T> extends exo {
    public static final ys<wf, avo<?>> a = yq.a(lr.al).b(avo::a, avq::a);
    private final avp o;
    private final T p;

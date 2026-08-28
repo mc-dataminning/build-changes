@@ -1,22 +1,72 @@
-public class fie extends fhs {
-   protected final fjf a;
+public class fie extends fho {
+   private final fhf a;
+   private final fio b;
 
-   public fie(int $$0, int $$1, int $$2, int $$3, fjf $$4, fhs.c $$5) {
-      this($$0, $$1, $$2, $$3, $$4, $$5, wt.a);
+   public fie(int $$0, int $$1, int $$2, int $$3, wu $$4, fhf $$5) {
+      super($$0, $$1, $$2, $$3, $$4);
+      this.a = $$5;
+      this.b = new fio($$4, $$5).d(this.y() - this.b());
    }
 
-   public fie(int $$0, int $$1, int $$2, int $$3, fjf $$4, fhs.c $$5, wu $$6) {
-      super($$0, $$1, $$2, $$3, $$6, $$5, q);
-      this.a = $$4;
-   }
-
-   public fie(int $$0, int $$1, fjf $$2, fhs.c $$3, wu $$4) {
-      this(0, 0, $$0, $$1, $$2, $$3, $$4);
+   public fie a(int $$0) {
+      this.b.c($$0);
+      return this;
    }
 
    @Override
-   public void b(fhf $$0, int $$1, int $$2, float $$3) {
-      akk $$4 = this.a.a(this.C(), this.B());
-      $$0.a($$4, this.D(), this.E(), this.g, this.h);
+   public void k(int $$0) {
+      super.k($$0);
+      this.b.d(this.y() - this.b());
+   }
+
+   @Override
+   protected int h() {
+      return this.b.w();
+   }
+
+   @Override
+   protected double i() {
+      return 9.0;
+   }
+
+   @Override
+   protected void b(fhh $$0) {
+      if (this.e()) {
+         super.b($$0);
+      } else if (this.aK_()) {
+         this.a($$0, this.D() - this.a(), this.E() - this.a(), this.y() + this.b(), this.w() + this.b());
+      }
+   }
+
+   @Override
+   public void b(fhh $$0, int $$1, int $$2, float $$3) {
+      if (this.k) {
+         if (!this.e()) {
+            this.b($$0);
+            $$0.c().a();
+            $$0.c().a((float)this.D(), (float)this.E(), 0.0F);
+            this.b.a($$0, $$1, $$2, $$3);
+            $$0.c().b();
+         } else {
+            super.b($$0, $$1, $$2, $$3);
+         }
+      }
+   }
+
+   public boolean j() {
+      return super.e();
+   }
+
+   @Override
+   protected void c(fhh $$0, int $$1, int $$2, float $$3) {
+      $$0.c().a();
+      $$0.c().a((float)(this.D() + this.a()), (float)(this.E() + this.a()), 0.0F);
+      this.b.a($$0, $$1, $$2, $$3);
+      $$0.c().b();
+   }
+
+   @Override
+   protected void a(flq $$0) {
+      $$0.a(flp.a, this.z());
    }
 }

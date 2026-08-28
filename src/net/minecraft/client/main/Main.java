@@ -73,23 +73,23 @@ public class Main {
       String $$33 = "Pre-bootstrap";
 
       Logger $$37;
-      fte $$68;
+      ftg $$68;
       try {
          if ($$30.has($$2)) {
-            bna.f.a(bmy.a);
+            bnb.f.a(bmz.a);
          }
 
          Stopwatch $$34 = Stopwatch.createStarted(Ticker.systemTicker());
          Stopwatch $$35 = Stopwatch.createStarted(Ticker.systemTicker());
-         guw.a.a(gus.z, $$34);
-         guw.a.a(gus.A, $$35);
+         guy.a.a(guu.z, $$34);
+         guy.a.a(guu.A, $$35);
          aa.a();
          CompletableFuture<?> $$36 = azp.a(azo.t);
          o.h();
          $$37 = LogUtils.getLogger();
          $$33 = "Bootstrap";
          akm.a();
-         guw.a.a(akm.b.get());
+         guy.a.a(akm.b.get());
          akm.c();
          $$33 = "Argument parsing";
          List<String> $$38 = $$30.valuesOf($$29);
@@ -98,7 +98,7 @@ public class Main {
          }
 
          String $$39 = (String)$$27.value($$30);
-         fgh.a $$40 = fgh.a.a($$39);
+         fgj.a $$40 = fgj.a.a($$39);
          if ($$40 == null) {
             $$37.warn("Unrecognized user type: {}", $$39);
          }
@@ -108,7 +108,7 @@ public class Main {
          if ($$41 != null) {
             try {
                $$42 = new Proxy(Type.SOCKS, new InetSocketAddress($$41, a($$30, $$11)));
-            } catch (Exception var80) {
+            } catch (Exception var78) {
             }
          }
 
@@ -145,31 +145,31 @@ public class Main {
          String $$64 = a(a($$30, $$4));
          String $$65 = a(a($$30, $$5));
          String $$66 = a(a($$30, $$6));
-         fgh $$67 = new fgh((String)$$14.value($$30), $$59, (String)$$18.value($$30), b($$61), b($$62), $$40);
-         $$68 = new fte(
-            new fte.d($$67, $$54, $$55, $$42),
-            new ezd($$45, $$46, $$47, $$48, $$49),
-            new fte.a($$31, $$58, $$57, $$60),
-            new fte.b($$50, $$32, $$56, $$51, $$52),
-            new fte.c($$63, $$64, $$65, $$66)
+         fgj $$67 = new fgj((String)$$14.value($$30), $$59, (String)$$18.value($$30), b($$61), b($$62), $$40);
+         $$68 = new ftg(
+            new ftg.d($$67, $$54, $$55, $$42),
+            new ezf($$45, $$46, $$47, $$48, $$49),
+            new ftg.a($$31, $$58, $$57, $$60),
+            new ftg.b($$50, $$32, $$56, $$51, $$52),
+            new ftg.c($$63, $$64, $$65, $$66)
          );
          ac.m();
          $$36.join();
-      } catch (Throwable var81) {
-         o $$70 = o.a(var81, $$33);
+      } catch (Throwable var79) {
+         o $$70 = o.a(var79, $$33);
          p $$71 = $$70.a("Initialization");
          ayh.a($$71);
-         fft.a(null, null, $$32, null, $$70);
-         fft.a(null, $$31, $$70);
+         ffw.a(null, null, $$32, null, $$70);
+         ffw.a(null, $$31, $$70);
          return;
       }
 
       Thread $$74 = new Thread("Client Shutdown Thread") {
          @Override
          public void run() {
-            fft $$0 = fft.Q();
+            ffw $$0 = ffw.Q();
             if ($$0 != null) {
-               gtq $$1 = $$0.V();
+               gts $$1 = $$0.V();
                if ($$1 != null) {
                   $$1.a(true);
                }
@@ -178,58 +178,35 @@ public class Main {
       };
       $$74.setUncaughtExceptionHandler(new r($$37));
       Runtime.getRuntime().addShutdownHook($$74);
-      final fft $$75 = null;
+      ffw $$75 = null;
 
       try {
          Thread.currentThread().setName("Render thread");
          RenderSystem.initRenderThread();
          RenderSystem.beginInitialization();
-         $$75 = new fft($$68);
+         $$75 = new ffw($$68);
          RenderSystem.finishInitialization();
-      } catch (ftf var78) {
+      } catch (fth var76) {
          ac.j();
-         $$37.warn("Failed to create window: ", var78);
+         $$37.warn("Failed to create window: ", var76);
          return;
-      } catch (Throwable var79) {
-         o $$78 = o.a(var79, "Initializing game");
+      } catch (Throwable var77) {
+         o $$78 = o.a(var77, "Initializing game");
          p $$79 = $$78.a("Initialization");
          ayh.a($$79);
-         fft.a($$75, null, $$68.d.b, null, $$78);
-         fft.a($$75, $$68.c.a, $$78);
+         ffw.a($$75, null, $$68.d.b, null, $$78);
+         ffw.a($$75, $$68.c.a, $$78);
          return;
       }
 
-      fft $$80 = $$75;
-      Thread $$81;
-      if ($$75.aN()) {
-         $$81 = new Thread("Game thread") {
-            @Override
-            public void run() {
-               RenderSystem.initGameThread(true);
-               $$75.f();
-            }
-         };
-         $$81.start();
-
-         while ($$80.r()) {
-         }
-      } else {
-         $$81 = null;
-         RenderSystem.initGameThread(false);
-         $$75.f();
-      }
-
-      fai.a();
+      ffw $$80 = $$75;
+      $$75.f();
+      fak.a();
 
       try {
          $$80.q();
-         if ($$81 != null) {
-            $$81.join();
-         }
-      } catch (InterruptedException var76) {
-         $$37.error("Exception during client thread shutdown", var76);
       } finally {
-         $$80.n();
+         $$75.n();
       }
    }
 

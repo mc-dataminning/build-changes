@@ -1,36 +1,28 @@
-import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import java.util.List;
+import java.util.Set;
 
-public class cdp extends cdf {
-   private static final ImmutableMap<bsm<?>, Float> a = ImmutableMap.builder()
-      .put(bsm.B, 8.0F)
-      .put(bsm.J, 12.0F)
-      .put(bsm.ac, 8.0F)
-      .put(bsm.ad, 12.0F)
-      .put(bsm.aC, 15.0F)
-      .put(bsm.aH, 12.0F)
-      .put(bsm.bi, 8.0F)
-      .put(bsm.bk, 10.0F)
-      .put(bsm.bt, 10.0F)
-      .put(bsm.bu, 8.0F)
-      .put(bsm.bw, 8.0F)
-      .build();
-
+public class cdp extends cdm<btc> {
    @Override
-   protected boolean a(btb $$0, btb $$1) {
-      return this.b($$1) && this.e($$0, $$1);
-   }
-
-   private boolean e(btb $$0, btb $$1) {
-      float $$2 = (Float)a.get($$1.al());
-      return $$1.g((bsg)$$0) <= (double)($$2 * $$2);
+   public Set<ccg<?>> a() {
+      return ImmutableSet.of(ccg.i);
    }
 
    @Override
-   protected ccf<btb> b() {
-      return ccf.A;
+   protected void a(aqm $$0, btc $$1) {
+      $$1.dV().a(ccg.i, this.a($$1));
    }
 
-   private boolean b(btb $$0) {
-      return a.containsKey($$0.al());
+   private List<btc> a(btc $$0) {
+      return ImmutableList.copyOf(this.c($$0).b(this::b));
+   }
+
+   private boolean b(btc $$0) {
+      return $$0.am() == bsn.bj && $$0.o_();
+   }
+
+   private cci c(btc $$0) {
+      return $$0.dV().c(ccg.h).orElse(cci.a());
    }
 }

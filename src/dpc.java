@@ -1,31 +1,20 @@
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import javax.annotation.Nullable;
 
-public class dpc extends dfy implements cte {
-   public static final MapCodec<dpc> c = RecordCodecBuilder.mapCodec($$0 -> $$0.group(csv.q.fieldOf("color").forGetter(dpc::b), u()).apply($$0, dpc::new));
-   private final csv d;
+public class dpc extends doj {
+   public static final MapCodec<dpc> b = b(dpc::new);
 
    @Override
    public MapCodec<dpc> a() {
-      return c;
+      return b;
    }
 
-   protected dpc(csv $$0, dsj.d $$1) {
-      super($$1);
-      this.d = $$0;
-   }
-
-   public csv b() {
-      return this.d;
+   protected dpc(dsk.d $$0) {
+      super(dmk.b.d, $$0);
    }
 
    @Override
-   public bsn m() {
-      return bsn.g;
-   }
-
-   @Override
-   public jj<avg> n() {
-      return avh.og;
+   public void a(dcg $$0, ja $$1, dsl $$2, @Nullable btc $$3, cud $$4) {
+      dpb.a($$0, $$1);
    }
 }

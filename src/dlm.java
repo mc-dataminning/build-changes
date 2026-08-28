@@ -1,83 +1,133 @@
+import com.google.common.collect.Lists;
 import com.mojang.serialization.MapCodec;
-import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Map;
+import java.util.WeakHashMap;
 
-public class dlm extends dll {
-   public static final MapCodec<dlm> h = b(dlm::new);
-   public static final dte i = djd.aE;
-   public static final dtb j = dll.d;
+public class dlm extends dey {
+   public static final MapCodec<dlm> c = b(dlm::new);
+   public static final dtc d = dtb.r;
+   private static final Map<dbm, List<dlm.a>> h = new WeakHashMap<>();
+   public static final int e = 60;
+   public static final int f = 8;
+   public static final int g = 160;
+   private static final int i = 2;
 
    @Override
-   public MapCodec<dlm> a() {
-      return h;
+   public MapCodec<? extends dlm> a() {
+      return c;
    }
 
-   protected dlm(dsj.d $$0) {
+   protected dlm(dsk.d $$0) {
       super($$0);
-      this.k(this.E.b().a(i, jf.c).a(j, Boolean.valueOf(true)));
+      this.k(this.E.b().a(d, Boolean.valueOf(true)));
    }
 
    @Override
-   public String g() {
-      return this.r().a();
-   }
-
-   @Override
-   protected ewy a(dsk $$0, dbl $$1, ja $$2, ewk $$3) {
-      return doj.m($$0);
-   }
-
-   @Override
-   protected boolean a(dsk $$0, dci $$1, ja $$2) {
-      return doj.b($$1, $$2, $$0.c(i));
-   }
-
-   @Override
-   protected dsk a(dsk $$0, jf $$1, dsk $$2, dcg $$3, ja $$4, ja $$5) {
-      return $$1.g() == $$0.c(i) && !$$0.a($$3, $$4) ? dfj.a.o() : $$0;
-   }
-
-   @Nullable
-   @Override
-   public dsk a(cxm $$0) {
-      dsk $$1 = dfj.cq.a($$0);
-      return $$1 == null ? null : this.o().a(i, $$1.c(i));
-   }
-
-   @Override
-   public void a(dsk $$0, dcf $$1, ja $$2, ayo $$3) {
-      if ($$0.c(j)) {
-         jf $$4 = $$0.c(i).g();
-         double $$5 = 0.27;
-         double $$6 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.j();
-         double $$7 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2 + 0.22;
-         double $$8 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2 + 0.27 * (double)$$4.l();
-         $$1.a(le.b, $$6, $$7, $$8, 0.0, 0.0, 0.0);
+   protected void b(dsl $$0, dcg $$1, ja $$2, dsl $$3, boolean $$4) {
+      for (jf $$5 : jf.values()) {
+         $$1.a($$2.a($$5), this);
       }
    }
 
    @Override
-   protected boolean a(dcf $$0, ja $$1, dsk $$2) {
-      jf $$3 = $$2.c(i).g();
-      return $$0.b($$1.a($$3), $$3);
+   protected void a(dsl $$0, dcg $$1, ja $$2, dsl $$3, boolean $$4) {
+      if (!$$4) {
+         for (jf $$5 : jf.values()) {
+            $$1.a($$2.a($$5), this);
+         }
+      }
    }
 
    @Override
-   protected int a(dsk $$0, dbl $$1, ja $$2, jf $$3) {
-      return $$0.c(j) && $$0.c(i) != $$3 ? 15 : 0;
+   protected int a(dsl $$0, dbm $$1, ja $$2, jf $$3) {
+      return $$0.c(d) && jf.b != $$3 ? 15 : 0;
+   }
+
+   protected boolean a(dcg $$0, ja $$1, dsl $$2) {
+      return $$0.b($$1.d(), jf.a);
    }
 
    @Override
-   protected dsk a(dsk $$0, dlu $$1) {
-      return $$0.a(i, $$1.a($$0.c(i)));
+   protected void a(dsl $$0, aqm $$1, ja $$2, ayo $$3) {
+      boolean $$4 = this.a($$1, $$2, $$0);
+      List<dlm.a> $$5 = h.get($$1);
+
+      while ($$5 != null && !$$5.isEmpty() && $$1.Z() - $$5.get(0).b > 60L) {
+         $$5.remove(0);
+      }
+
+      if ($$0.c(d)) {
+         if ($$4) {
+            $$1.a($$2, $$0.a(d, Boolean.valueOf(false)), 3);
+            if (a($$1, $$2, true)) {
+               $$1.c(1502, $$2, 0);
+               $$1.a($$2, $$1.a_($$2).b(), 160);
+            }
+         }
+      } else if (!$$4 && !a($$1, $$2, false)) {
+         $$1.a($$2, $$0.a(d, Boolean.valueOf(true)), 3);
+      }
    }
 
    @Override
-   protected dsk a(dsk $$0, dke $$1) {
-      return $$0.a($$1.a($$0.c(i)));
+   protected void a(dsl $$0, dcg $$1, ja $$2, dfi $$3, ja $$4, boolean $$5) {
+      if ($$0.c(d) == this.a($$1, $$2, $$0) && !$$1.P().b($$2, this)) {
+         $$1.a($$2, this, 2);
+      }
    }
 
    @Override
-   protected void a(dsl.a<dfh, dsk> $$0) {
-      $$0.a(i, j);
+   protected int b(dsl $$0, dbm $$1, ja $$2, jf $$3) {
+      return $$3 == jf.a ? $$0.b($$1, $$2, $$3) : 0;
+   }
+
+   @Override
+   protected boolean e_(dsl $$0) {
+      return true;
+   }
+
+   @Override
+   public void a(dsl $$0, dcg $$1, ja $$2, ayo $$3) {
+      if ($$0.c(d)) {
+         double $$4 = (double)$$2.u() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         double $$5 = (double)$$2.v() + 0.7 + ($$3.j() - 0.5) * 0.2;
+         double $$6 = (double)$$2.w() + 0.5 + ($$3.j() - 0.5) * 0.2;
+         $$1.a(le.b, $$4, $$5, $$6, 0.0, 0.0, 0.0);
+      }
+   }
+
+   @Override
+   protected void a(dsm.a<dfi, dsl> $$0) {
+      $$0.a(d);
+   }
+
+   private static boolean a(dcg $$0, ja $$1, boolean $$2) {
+      List<dlm.a> $$3 = h.computeIfAbsent($$0, $$0x -> Lists.newArrayList());
+      if ($$2) {
+         $$3.add(new dlm.a($$1.i(), $$0.Z()));
+      }
+
+      int $$4 = 0;
+
+      for (dlm.a $$5 : $$3) {
+         if ($$5.a.equals($$1)) {
+            if (++$$4 >= 8) {
+               return true;
+            }
+         }
+      }
+
+      return false;
+   }
+
+   public static class a {
+      final ja a;
+      final long b;
+
+      public a(ja $$0, long $$1) {
+         this.a = $$0;
+         this.b = $$1;
+      }
    }
 }

@@ -1,51 +1,60 @@
-public class czh extends cya {
-   public czh(cxx $$0) {
+public class czh extends cyb {
+   public czh(cxy $$0) {
       super($$0);
    }
 
-   public boolean a(cxy $$0, dcf $$1) {
-      if ($$0.f() == 3 && $$0.g() == 3) {
-         for (int $$2 = 0; $$2 < $$0.g(); $$2++) {
-            for (int $$3 = 0; $$3 < $$0.f(); $$3++) {
-               cuc $$4 = $$0.a($$3, $$2);
-               if ($$4.e()) {
+   public boolean a(cxz $$0, dcg $$1) {
+      boolean $$2 = false;
+      boolean $$3 = false;
+      boolean $$4 = false;
+      boolean $$5 = false;
+
+      for (int $$6 = 0; $$6 < $$0.a(); $$6++) {
+         cud $$7 = $$0.a($$6);
+         if (!$$7.e()) {
+            if ($$7.a(dfk.cf.r()) && !$$4) {
+               $$4 = true;
+            } else if ($$7.a(dfk.cg.r()) && !$$3) {
+               $$3 = true;
+            } else if ($$7.a(awf.O) && !$$2) {
+               $$2 = true;
+            } else {
+               if (!$$7.a(cug.ot) || $$5) {
                   return false;
                }
 
-               if ($$3 == 1 && $$2 == 1) {
-                  if (!$$4.a(cuf.vr)) {
-                     return false;
-                  }
-               } else if (!$$4.a(cuf.ow)) {
-                  return false;
-               }
+               $$5 = true;
             }
          }
-
-         return true;
-      } else {
-         return false;
       }
+
+      return $$2 && $$4 && $$3 && $$5;
    }
 
-   public cuc a(cxy $$0, jl.a $$1) {
-      cuc $$2 = $$0.a(1, 1);
-      if (!$$2.a(cuf.vr)) {
-         return cuc.l;
-      } else {
-         cuc $$3 = new cuc(cuf.vq, 8);
-         $$3.b(kn.G, $$2.a(kn.G));
-         return $$3;
+   public cud a(cxz $$0, jl.a $$1) {
+      cud $$2 = new cud(cug.vX, 1);
+
+      for (int $$3 = 0; $$3 < $$0.a(); $$3++) {
+         cud $$4 = $$0.a($$3);
+         if (!$$4.e()) {
+            dnk $$5 = dnk.a($$4.g());
+            if ($$5 != null) {
+               $$2.b(kn.H, $$5.b());
+               break;
+            }
+         }
       }
+
+      return $$2;
    }
 
    @Override
    public boolean a(int $$0, int $$1) {
-      return $$0 >= 3 && $$1 >= 3;
+      return $$0 >= 2 && $$1 >= 2;
    }
 
    @Override
-   public cyn<?> ap_() {
-      return cyn.j;
+   public cyo<?> ap_() {
+      return cyo.n;
    }
 }

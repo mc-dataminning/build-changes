@@ -1,13 +1,19 @@
 import com.mojang.serialization.MapCodec;
 
-public interface emk<P extends emj> {
-   emk<emi> a = a("always_true", emi.a);
-   emk<emg> b = a("linear_pos", emg.a);
-   emk<elv> c = a("axis_aligned_linear_pos", elv.a);
+public class emk extends eml {
+   public static final MapCodec<emk> a = MapCodec.unit(() -> emk.b);
+   public static final emk b = new emk();
 
-   MapCodec<P> codec();
+   private emk() {
+   }
 
-   static <P extends emj> emk<P> a(String $$0, MapCodec<P> $$1) {
-      return jw.a(lq.o, $$0, () -> $$1);
+   @Override
+   public boolean a(ja $$0, ja $$1, ja $$2, ayo $$3) {
+      return true;
+   }
+
+   @Override
+   protected emm<?> a() {
+      return emm.a;
    }
 }

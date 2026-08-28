@@ -1,45 +1,32 @@
-import it.unimi.dsi.fastutil.ints.IntComparator;
+public interface flw {
+   fly a();
 
-public enum flw {
-   a,
-   b,
-   c,
-   d;
+   public static record a(fly a) implements flw {
+      @Override
+      public fly a() {
+         return this.a.a() == flx.b ? this.a : fly.b;
+      }
 
-   private final IntComparator e = ($$0, $$1) -> $$0 == $$1 ? 0 : (this.b($$0, $$1) ? -1 : 1);
-
-   public flv a() {
-      return switch (this) {
-         case a, b -> flv.b;
-         case c, d -> flv.a;
-      };
+      public fly b() {
+         return this.a;
+      }
    }
 
-   public flw b() {
-      return switch (this) {
-         case a -> b;
-         case b -> a;
-         case c -> d;
-         case d -> c;
-      };
+   public static class b implements flw {
+      @Override
+      public fly a() {
+         return fly.b;
+      }
    }
 
-   public boolean c() {
-      return switch (this) {
-         case a, c -> false;
-         case b, d -> true;
-      };
-   }
+   public static record c(boolean a) implements flw {
+      @Override
+      public fly a() {
+         return this.a ? fly.b : fly.a;
+      }
 
-   public boolean a(int $$0, int $$1) {
-      return this.c() ? $$0 > $$1 : $$1 > $$0;
-   }
-
-   public boolean b(int $$0, int $$1) {
-      return this.c() ? $$0 < $$1 : $$1 < $$0;
-   }
-
-   public IntComparator d() {
-      return this.e;
+      public boolean b() {
+         return this.a;
+      }
    }
 }

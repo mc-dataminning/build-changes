@@ -1,57 +1,38 @@
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
-import org.apache.commons.lang3.mutable.MutableBoolean;
 
-public record eia(jj<eax<?, ?>> e, List<eid> f) {
-   public static final Codec<eia> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(eax.b.fieldOf("feature").forGetter($$0x -> $$0x.e), eid.b.listOf().fieldOf("placement").forGetter($$0x -> $$0x.f)).apply($$0, eia::new)
+public class eia extends eii {
+   public static final MapCodec<eia> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(
+               Codec.DOUBLE.fieldOf("noise_level").forGetter($$0x -> $$0x.c),
+               Codec.INT.fieldOf("below_noise").forGetter($$0x -> $$0x.d),
+               Codec.INT.fieldOf("above_noise").forGetter($$0x -> $$0x.e)
+            )
+            .apply($$0, eia::new)
    );
-   public static final Codec<jj<eia>> b = akg.a(lr.aP, a);
-   public static final Codec<jn<eia>> c = jy.a(lr.aP, a);
-   public static final Codec<List<jn<eia>>> d = jy.a(lr.aP, a, true).listOf();
+   private final double c;
+   private final int d;
+   private final int e;
 
-   public boolean a(ddb $$0, duh $$1, ayo $$2, ja $$3) {
-      return this.a(new eib($$0, $$1, Optional.empty()), $$2, $$3);
+   private eia(double $$0, int $$1, int $$2) {
+      this.c = $$0;
+      this.d = $$1;
+      this.e = $$2;
    }
 
-   public boolean b(ddb $$0, duh $$1, ayo $$2, ja $$3) {
-      return this.a(new eib($$0, $$1, Optional.of(this)), $$2, $$3);
-   }
-
-   private boolean a(eib $$0, ayo $$1, ja $$2) {
-      Stream<ja> $$3 = Stream.of($$2);
-
-      for (eid $$4 : this.f) {
-         $$3 = $$3.flatMap($$3x -> $$4.a_($$0, $$1, $$3x));
-      }
-
-      eax<?, ?> $$5 = this.e.a();
-      MutableBoolean $$6 = new MutableBoolean();
-      $$3.forEach($$4 -> {
-         if ($$5.a($$0.d(), $$0.f(), $$1, $$4)) {
-            $$6.setTrue();
-         }
-      });
-      return $$6.isTrue();
-   }
-
-   public Stream<eax<?, ?>> a() {
-      return this.e.a().a();
+   public static eia a(double $$0, int $$1, int $$2) {
+      return new eia($$0, $$1, $$2);
    }
 
    @Override
-   public String toString() {
-      return "Placed " + this.e;
+   protected int a(ayo $$0, ja $$1) {
+      double $$2 = ddg.e.a((double)$$1.u() / 200.0, (double)$$1.w() / 200.0, false);
+      return $$2 < this.c ? this.d : this.e;
    }
 
-   public jj<eax<?, ?>> b() {
-      return this.e;
-   }
-
-   public List<eid> c() {
-      return this.f;
+   @Override
+   public eif<?> b() {
+      return eif.h;
    }
 }

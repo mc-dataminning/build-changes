@@ -7,7 +7,7 @@ public class azh {
    public static final long d = TimeUnit.HOURS.toSeconds(1L);
    public static final int e = (int)TimeUnit.MINUTES.toSeconds(1L);
 
-   public static bpr a(int $$0, int $$1) {
-      return bpr.a($$0 * 20, $$1 * 20);
+   public static bps a(int $$0, int $$1) {
+      return bps.a($$0 * 20, $$1 * 20);
    }
 }

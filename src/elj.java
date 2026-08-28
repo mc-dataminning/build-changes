@@ -1,270 +1,252 @@
 import com.google.common.collect.Lists;
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.Dynamic;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import org.slf4j.Logger;
 
-public class elj extends ejg {
-   private static final Logger h = LogUtils.getLogger();
-   private static final float i = 0.3F;
-   private static final float j = 0.07F;
-   private static final float k = 0.2F;
-   private final elj.b l;
-   private final elj.a m;
+public class elj {
+   static final emv a = a(dfk.I, dfk.J, eqs.bh);
+   static final emv b = a(dfk.L, dfk.M, eqs.bi);
+   private static final akk[] c = new akk[]{
+      new akk("underwater_ruin/warm_1"),
+      new akk("underwater_ruin/warm_2"),
+      new akk("underwater_ruin/warm_3"),
+      new akk("underwater_ruin/warm_4"),
+      new akk("underwater_ruin/warm_5"),
+      new akk("underwater_ruin/warm_6"),
+      new akk("underwater_ruin/warm_7"),
+      new akk("underwater_ruin/warm_8")
+   };
+   private static final akk[] d = new akk[]{
+      new akk("underwater_ruin/brick_1"),
+      new akk("underwater_ruin/brick_2"),
+      new akk("underwater_ruin/brick_3"),
+      new akk("underwater_ruin/brick_4"),
+      new akk("underwater_ruin/brick_5"),
+      new akk("underwater_ruin/brick_6"),
+      new akk("underwater_ruin/brick_7"),
+      new akk("underwater_ruin/brick_8")
+   };
+   private static final akk[] e = new akk[]{
+      new akk("underwater_ruin/cracked_1"),
+      new akk("underwater_ruin/cracked_2"),
+      new akk("underwater_ruin/cracked_3"),
+      new akk("underwater_ruin/cracked_4"),
+      new akk("underwater_ruin/cracked_5"),
+      new akk("underwater_ruin/cracked_6"),
+      new akk("underwater_ruin/cracked_7"),
+      new akk("underwater_ruin/cracked_8")
+   };
+   private static final akk[] f = new akk[]{
+      new akk("underwater_ruin/mossy_1"),
+      new akk("underwater_ruin/mossy_2"),
+      new akk("underwater_ruin/mossy_3"),
+      new akk("underwater_ruin/mossy_4"),
+      new akk("underwater_ruin/mossy_5"),
+      new akk("underwater_ruin/mossy_6"),
+      new akk("underwater_ruin/mossy_7"),
+      new akk("underwater_ruin/mossy_8")
+   };
+   private static final akk[] g = new akk[]{
+      new akk("underwater_ruin/big_brick_1"),
+      new akk("underwater_ruin/big_brick_2"),
+      new akk("underwater_ruin/big_brick_3"),
+      new akk("underwater_ruin/big_brick_8")
+   };
+   private static final akk[] h = new akk[]{
+      new akk("underwater_ruin/big_mossy_1"),
+      new akk("underwater_ruin/big_mossy_2"),
+      new akk("underwater_ruin/big_mossy_3"),
+      new akk("underwater_ruin/big_mossy_8")
+   };
+   private static final akk[] i = new akk[]{
+      new akk("underwater_ruin/big_cracked_1"),
+      new akk("underwater_ruin/big_cracked_2"),
+      new akk("underwater_ruin/big_cracked_3"),
+      new akk("underwater_ruin/big_cracked_8")
+   };
+   private static final akk[] j = new akk[]{
+      new akk("underwater_ruin/big_warm_4"),
+      new akk("underwater_ruin/big_warm_5"),
+      new akk("underwater_ruin/big_warm_6"),
+      new akk("underwater_ruin/big_warm_7")
+   };
 
-   public elj(emx $$0, ja $$1, elj.b $$2, elj.a $$3, akk $$4, emw $$5, dlu $$6, dke $$7, ja $$8) {
-      super(ejn.J, 0, $$0, $$4, $$4.toString(), a($$7, $$6, $$2, $$8, $$3), $$1);
-      this.l = $$2;
-      this.m = $$3;
+   private static emv a(dfi $$0, dfi $$1, akj<erb> $$2) {
+      return new eme(new emr(List.of(new emn(new emb($$0), elw.b, emk.b, $$1.o(), new enc($$2)))), bpj.a(5));
    }
 
-   public elj(emx $$0, tx $$1) {
-      super(ejn.J, $$1, $$0, $$2 -> a($$0, $$1, $$2));
-      this.l = elj.b.a($$1.l("VerticalPlacement"));
-      this.m = (elj.a)elj.a.a.parse(new Dynamic(ul.a, $$1.c("Properties"))).getPartialOrThrow();
+   private static akk a(ayo $$0) {
+      return ac.a(c, $$0);
    }
 
-   @Override
-   protected void a(ejm $$0, tx $$1) {
-      super.a($$0, $$1);
-      $$1.a("Rotation", this.c.d().name());
-      $$1.a("Mirror", this.c.c().name());
-      $$1.a("VerticalPlacement", this.l.a());
-      elj.a.a.encodeStart(ul.a, this.m).resultOrPartial(h::error).ifPresent($$1x -> $$1.a("Properties", $$1x));
+   private static akk b(ayo $$0) {
+      return ac.a(j, $$0);
    }
 
-   private static ems a(emx $$0, tx $$1, akk $$2) {
-      emw $$3 = $$0.a($$2);
-      ja $$4 = new ja($$3.a().u() / 2, 0, $$3.a().w() / 2);
-      return a(
-         dke.valueOf($$1.l("Mirror")),
-         dlu.valueOf($$1.l("Rotation")),
-         elj.b.a($$1.l("VerticalPlacement")),
-         $$4,
-         (elj.a)elj.a.a.parse(new Dynamic(ul.a, $$1.c("Properties"))).getPartialOrThrow()
-      );
-   }
-
-   private static ems a(dke $$0, dlu $$1, elj.b $$2, ja $$3, elj.a $$4) {
-      ely $$5 = $$4.d ? ely.b : ely.d;
-      List<eml> $$6 = Lists.newArrayList();
-      $$6.add(a(dfj.ch, 0.3F, dfj.a));
-      $$6.add(a($$2, $$4));
-      if (!$$4.b) {
-         $$6.add(a(dfj.dV, 0.07F, dfj.kJ));
+   public static void a(emz $$0, ja $$1, dlv $$2, ejc $$3, ayo $$4, elk $$5) {
+      boolean $$6 = $$4.i() <= $$5.f;
+      float $$7 = $$6 ? 0.9F : 0.8F;
+      a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7);
+      if ($$6 && $$4.i() <= $$5.g) {
+         a($$0, $$4, $$2, $$1, $$5, $$3);
       }
-
-      ems $$7 = new ems().a($$1).a($$0).a($$3).a($$5).a(new emp($$6)).a(new elx($$4.c)).a(new emm(avw.bO)).a(new emf());
-      if ($$4.g) {
-         $$7.a(elw.b);
-      }
-
-      return $$7;
    }
 
-   private static eml a(elj.b $$0, elj.a $$1) {
-      if ($$0 == elj.b.c) {
-         return a(dfj.H, dfj.kJ);
-      } else {
-         return $$1.b ? a(dfj.H, dfj.dV) : a(dfj.H, 0.2F, dfj.kJ);
-      }
-   }
+   private static void a(emz $$0, ayo $$1, dlv $$2, ja $$3, elk $$4, ejc $$5) {
+      ja $$6 = new ja($$3.u(), 90, $$3.w());
+      ja $$7 = emy.a(new ja(15, 0, 15), dkf.a, $$2, ja.c).a((ke)$$6);
+      eip $$8 = eip.a($$6, $$7);
+      ja $$9 = new ja(Math.min($$6.u(), $$7.u()), $$6.v(), Math.min($$6.w(), $$7.w()));
+      List<ja> $$10 = a($$1, $$9);
+      int $$11 = ayg.a($$1, 4, 8);
 
-   @Override
-   public void a(ddb $$0, dcz $$1, duh $$2, ayo $$3, eio $$4, dbm $$5, ja $$6) {
-      eio $$7 = this.b.b(this.c, this.d);
-      if ($$4.b($$7.g())) {
-         $$4.b($$7);
-         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
-         this.b($$3, $$0);
-         this.a($$3, $$0);
-         if (this.m.f || this.m.e) {
-            ja.a(this.f()).forEach($$2x -> {
-               if (this.m.f) {
-                  this.a($$3, (dcg)$$0, $$2x);
-               }
-
-               if (this.m.e) {
-                  this.b($$3, $$0, $$2x);
-               }
-            });
-         }
-      }
-   }
-
-   @Override
-   protected void a(String $$0, ja $$1, dcu $$2, ayo $$3, eio $$4) {
-   }
-
-   private void a(ayo $$0, dcg $$1, ja $$2) {
-      dsk $$3 = $$1.a_($$2);
-      if (!$$3.i() && !$$3.a(dfj.ff)) {
-         jf $$4 = a($$0);
-         ja $$5 = $$2.a($$4);
-         dsk $$6 = $$1.a_($$5);
-         if ($$6.i()) {
-            if (dfh.a($$3.k($$1, $$2), $$4)) {
-               dtb $$7 = dod.a($$4.g());
-               $$1.a($$5, dfj.ff.o().a($$7, Boolean.valueOf(true)), 3);
+      for (int $$12 = 0; $$12 < $$11; $$12++) {
+         if (!$$10.isEmpty()) {
+            int $$13 = $$1.a($$10.size());
+            ja $$14 = $$10.remove($$13);
+            dlv $$15 = dlv.a($$1);
+            ja $$16 = emy.a(new ja(5, 0, 6), dkf.a, $$15, ja.c).a((ke)$$14);
+            eip $$17 = eip.a($$14, $$16);
+            if (!$$17.a($$8)) {
+               a($$0, $$14, $$15, $$5, $$1, $$4, false, 0.8F);
             }
          }
       }
    }
 
-   private void b(ayo $$0, dcg $$1, ja $$2) {
-      if ($$0.i() < 0.5F && $$1.a_($$2).a(dfj.dV) && $$1.a_($$2.c()).i()) {
-         $$1.a($$2.c(), dfj.aH.o().a(djr.e, Boolean.valueOf(true)), 3);
+   private static List<ja> a(ayo $$0, ja $$1) {
+      List<ja> $$2 = Lists.newArrayList();
+      $$2.add($$1.b(-16 + ayg.a($$0, 1, 8), 0, 16 + ayg.a($$0, 1, 7)));
+      $$2.add($$1.b(-16 + ayg.a($$0, 1, 8), 0, ayg.a($$0, 1, 7)));
+      $$2.add($$1.b(-16 + ayg.a($$0, 1, 8), 0, -16 + ayg.a($$0, 4, 8)));
+      $$2.add($$1.b(ayg.a($$0, 1, 7), 0, 16 + ayg.a($$0, 1, 7)));
+      $$2.add($$1.b(ayg.a($$0, 1, 7), 0, -16 + ayg.a($$0, 4, 6)));
+      $$2.add($$1.b(16 + ayg.a($$0, 1, 7), 0, 16 + ayg.a($$0, 3, 8)));
+      $$2.add($$1.b(16 + ayg.a($$0, 1, 7), 0, ayg.a($$0, 1, 7)));
+      $$2.add($$1.b(16 + ayg.a($$0, 1, 7), 0, -16 + ayg.a($$0, 4, 8)));
+      return $$2;
+   }
+
+   private static void a(emz $$0, ja $$1, dlv $$2, ejc $$3, ayo $$4, elk $$5, boolean $$6, float $$7) {
+      switch ($$5.e) {
+         case a:
+         default:
+            akk $$8 = $$6 ? b($$4) : a($$4);
+            $$3.a(new elj.a($$0, $$8, $$1, $$2, $$7, $$5.e, $$6));
+            break;
+         case b:
+            akk[] $$9 = $$6 ? g : d;
+            akk[] $$10 = $$6 ? i : e;
+            akk[] $$11 = $$6 ? h : f;
+            int $$12 = $$4.a($$9.length);
+            $$3.a(new elj.a($$0, $$9[$$12], $$1, $$2, $$7, $$5.e, $$6));
+            $$3.a(new elj.a($$0, $$10[$$12], $$1, $$2, 0.7F, $$5.e, $$6));
+            $$3.a(new elj.a($$0, $$11[$$12], $$1, $$2, 0.5F, $$5.e, $$6));
       }
    }
 
-   private void a(ayo $$0, dcg $$1) {
-      for (int $$2 = this.f.h() + 1; $$2 < this.f.k(); $$2++) {
-         for (int $$3 = this.f.j() + 1; $$3 < this.f.m(); $$3++) {
-            ja $$4 = new ja($$2, this.f.i(), $$3);
-            if ($$1.a_($$4).a(dfj.dV)) {
-               this.c($$0, $$1, $$4.d());
-            }
-         }
-      }
-   }
+   public static class a extends ejh {
+      private final elk.a h;
+      private final float i;
+      private final boolean j;
 
-   private void c(ayo $$0, dcg $$1, ja $$2) {
-      ja.a $$3 = $$2.j();
-      this.d($$0, $$1, $$3);
-      int $$4 = 8;
-
-      while ($$4 > 0 && $$0.i() < 0.5F) {
-         $$3.c(jf.a);
-         $$4--;
-         this.d($$0, $$1, $$3);
-      }
-   }
-
-   private void b(ayo $$0, dcg $$1) {
-      boolean $$2 = this.l == elj.b.a || this.l == elj.b.c;
-      ja $$3 = this.f.g();
-      int $$4 = $$3.u();
-      int $$5 = $$3.w();
-      float[] $$6 = new float[]{1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.9F, 0.9F, 0.8F, 0.7F, 0.6F, 0.4F, 0.2F};
-      int $$7 = $$6.length;
-      int $$8 = (this.f.d() + this.f.f()) / 2;
-      int $$9 = $$0.a(Math.max(1, 8 - $$8 / 2));
-      int $$10 = 3;
-      ja.a $$11 = ja.c.j();
-
-      for (int $$12 = $$4 - $$7; $$12 <= $$4 + $$7; $$12++) {
-         for (int $$13 = $$5 - $$7; $$13 <= $$5 + $$7; $$13++) {
-            int $$14 = Math.abs($$12 - $$4) + Math.abs($$13 - $$5);
-            int $$15 = Math.max(0, $$14 + $$9);
-            if ($$15 < $$7) {
-               float $$16 = $$6[$$15];
-               if ($$0.j() < (double)$$16) {
-                  int $$17 = a($$1, $$12, $$13, this.l);
-                  int $$18 = $$2 ? $$17 : Math.min(this.f.i(), $$17);
-                  $$11.d($$12, $$18, $$13);
-                  if (Math.abs($$18 - this.f.i()) <= 3 && this.a($$1, $$11)) {
-                     this.d($$0, $$1, $$11);
-                     if (this.m.e) {
-                        this.b($$0, $$1, $$11);
-                     }
-
-                     this.c($$0, $$1, $$11.d());
-                  }
-               }
-            }
-         }
-      }
-   }
-
-   private boolean a(dcg $$0, ja $$1) {
-      dsk $$2 = $$0.a_($$1);
-      return !$$2.a(dfj.a) && !$$2.a(dfj.co) && !$$2.a(avw.bO) && (this.l == elj.b.f || !$$2.a(dfj.H));
-   }
-
-   private void d(ayo $$0, dcg $$1, ja $$2) {
-      if (!this.m.b && $$0.i() < 0.07F) {
-         $$1.a($$2, dfj.kJ.o(), 3);
-      } else {
-         $$1.a($$2, dfj.dV.o(), 3);
-      }
-   }
-
-   private static int a(dcg $$0, int $$1, int $$2, elj.b $$3) {
-      return $$0.a(a($$3), $$1, $$2) - 1;
-   }
-
-   public static dyf.a a(elj.b $$0) {
-      return $$0 == elj.b.c ? dyf.a.c : dyf.a.a;
-   }
-
-   private static eml a(dfh $$0, float $$1, dfh $$2) {
-      return new eml(new emn($$0, $$1), elu.b, $$2.o());
-   }
-
-   private static eml a(dfh $$0, dfh $$1) {
-      return new eml(new elz($$0), elu.b, $$1.o());
-   }
-
-   public static class a {
-      public static final Codec<elj.a> a = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.BOOL.fieldOf("cold").forGetter($$0x -> $$0x.b),
-                  Codec.FLOAT.fieldOf("mossiness").forGetter($$0x -> $$0x.c),
-                  Codec.BOOL.fieldOf("air_pocket").forGetter($$0x -> $$0x.d),
-                  Codec.BOOL.fieldOf("overgrown").forGetter($$0x -> $$0x.e),
-                  Codec.BOOL.fieldOf("vines").forGetter($$0x -> $$0x.f),
-                  Codec.BOOL.fieldOf("replace_with_blackstone").forGetter($$0x -> $$0x.g)
-               )
-               .apply($$0, elj.a::new)
-      );
-      public boolean b;
-      public float c;
-      public boolean d;
-      public boolean e;
-      public boolean f;
-      public boolean g;
-
-      public a() {
+      public a(emz $$0, akk $$1, ja $$2, dlv $$3, float $$4, elk.a $$5, boolean $$6) {
+         super(ejo.H, 0, $$0, $$1, $$1.toString(), a($$3, $$4, $$5), $$2);
+         this.i = $$4;
+         this.h = $$5;
+         this.j = $$6;
       }
 
-      public a(boolean $$0, float $$1, boolean $$2, boolean $$3, boolean $$4, boolean $$5) {
-         this.b = $$0;
-         this.c = $$1;
-         this.d = $$2;
-         this.e = $$3;
-         this.f = $$4;
-         this.g = $$5;
-      }
-   }
-
-   public static enum b implements azc {
-      a("on_land_surface"),
-      b("partly_buried"),
-      c("on_ocean_floor"),
-      d("in_mountain"),
-      e("underground"),
-      f("in_nether");
-
-      public static final azc.a<elj.b> g = azc.a(elj.b::values);
-      private final String h;
-
-      private b(final String $$0) {
-         this.h = $$0;
+      private a(emz $$0, tx $$1, dlv $$2, float $$3, elk.a $$4, boolean $$5) {
+         super(ejo.H, $$1, $$0, $$3x -> a($$2, $$3, $$4));
+         this.i = $$3;
+         this.h = $$4;
+         this.j = $$5;
       }
 
-      public String a() {
-         return this.h;
+      private static emu a(dlv $$0, float $$1, elk.a $$2) {
+         emv $$3 = $$2 == elk.a.b ? elj.b : elj.a;
+         return new emu().a($$0).a(dkf.a).a(new emc($$1)).a(ema.d).a($$3);
       }
 
-      public static elj.b a(String $$0) {
-         return g.a($$0);
+      public static elj.a a(emz $$0, tx $$1) {
+         dlv $$2 = dlv.valueOf($$1.l("Rot"));
+         float $$3 = $$1.j("Integrity");
+         elk.a $$4 = elk.a.valueOf($$1.l("BiomeType"));
+         boolean $$5 = $$1.q("IsLarge");
+         return new elj.a($$0, $$1, $$2, $$3, $$4, $$5);
       }
 
       @Override
-      public String c() {
-         return this.h;
+      protected void a(ejn $$0, tx $$1) {
+         super.a($$0, $$1);
+         $$1.a("Rot", this.c.d().name());
+         $$1.a("Integrity", this.i);
+         $$1.a("BiomeType", this.h.toString());
+         $$1.a("IsLarge", this.j);
+      }
+
+      @Override
+      protected void a(String $$0, ja $$1, dcv $$2, ayo $$3, eip $$4) {
+         if ("chest".equals($$0)) {
+            $$2.a($$1, dfk.cv.o().a(dgl.e, Boolean.valueOf($$2.b_($$1).a(awc.a))), 2);
+            dpq $$5 = $$2.c_($$1);
+            if ($$5 instanceof dpx) {
+               ((dpx)$$5).a(this.j ? eqs.F : eqs.E, $$3.g());
+            }
+         } else if ("drowned".equals($$0)) {
+            cjf $$6 = bsn.B.a((dcg)$$2.E());
+            if ($$6 != null) {
+               $$6.fQ();
+               $$6.a($$1, 0.0F, 0.0F);
+               $$6.a($$2, $$2.d_($$1), btg.d, null);
+               $$2.a_($$6);
+               if ($$1.v() > $$2.z_()) {
+                  $$2.a($$1, dfk.a.o(), 2);
+               } else {
+                  $$2.a($$1, dfk.G.o(), 2);
+               }
+            }
+         }
+      }
+
+      @Override
+      public void a(ddc $$0, dda $$1, dui $$2, ayo $$3, eip $$4, dbn $$5, ja $$6) {
+         int $$7 = $$0.a(dyg.a.c, this.d.u(), this.d.w());
+         this.d = new ja(this.d.u(), $$7, this.d.w());
+         ja $$8 = emy.a(new ja(this.b.a().u() - 1, 0, this.b.a().w() - 1), dkf.a, this.c.d(), ja.c).a((ke)this.d);
+         this.d = new ja(this.d.u(), this.a(this.d, $$0, $$8), this.d.w());
+         super.a($$0, $$1, $$2, $$3, $$4, $$5, $$6);
+      }
+
+      private int a(ja $$0, dbm $$1, ja $$2) {
+         int $$3 = $$0.v();
+         int $$4 = 512;
+         int $$5 = $$3 - 1;
+         int $$6 = 0;
+
+         for (ja $$7 : ja.c($$0, $$2)) {
+            int $$8 = $$7.u();
+            int $$9 = $$7.w();
+            int $$10 = $$0.v() - 1;
+            ja.a $$11 = new ja.a($$8, $$10, $$9);
+            dsl $$12 = $$1.a_($$11);
+
+            for (eoj $$13 = $$1.b_($$11); ($$12.i() || $$13.a(awc.a) || $$12.a(avw.am)) && $$10 > $$1.I_() + 1; $$13 = $$1.b_($$11)) {
+               $$11.d($$8, --$$10, $$9);
+               $$12 = $$1.a_($$11);
+            }
+
+            $$4 = Math.min($$4, $$10);
+            if ($$10 < $$5 - 2) {
+               $$6++;
+            }
+         }
+
+         int $$14 = Math.abs($$0.u() - $$2.u());
+         if ($$5 - $$4 > 2 && $$6 > $$14 - 2) {
+            $$3 = $$4 + 1;
+         }
+
+         return $$3;
       }
    }
 }

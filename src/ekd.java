@@ -1,81 +1,81 @@
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.function.Function;
 import java.util.stream.Collectors;
-import javax.annotation.Nullable;
+import java.util.stream.Stream;
 
-public abstract class ekd {
-   public static final Codec<ekd> e = lq.ag.r().dispatch("element_type", ekd::a, eke::codec);
-   private static final jj<emu> a = jj.a(new emu(List.of()));
-   @Nullable
-   private volatile ekf.a b;
+public class ekd extends ekf {
+   public static final MapCodec<ekd> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(ekf.e.listOf().fieldOf("elements").forGetter($$0x -> $$0x.b), d()).apply($$0, ekd::new)
+   );
+   private final List<ekf> b;
 
-   protected static <E extends ekd> RecordCodecBuilder<E, ekf.a> d() {
-      return ekf.a.c.fieldOf("projection").forGetter(ekd::e);
-   }
-
-   protected ekd(ekf.a $$0) {
-      this.b = $$0;
-   }
-
-   public abstract ke a(emx var1, dlu var2);
-
-   public abstract List<emw.c> a(emx var1, ja var2, dlu var3, ayo var4);
-
-   public abstract eio a(emx var1, ja var2, dlu var3);
-
-   public abstract boolean a(emx var1, ddb var2, dcz var3, duh var4, ja var5, ja var6, dlu var7, eio var8, ayo var9, boolean var10);
-
-   public abstract eke<?> a();
-
-   public void a(dcg $$0, emw.c $$1, ja $$2, dlu $$3, ayo $$4, eio $$5) {
-   }
-
-   public ekd a(ekf.a $$0) {
-      this.b = $$0;
-      return this;
-   }
-
-   public ekf.a e() {
-      ekf.a $$0 = this.b;
-      if ($$0 == null) {
-         throw new IllegalStateException();
+   public ekd(List<ekf> $$0, ekh.a $$1) {
+      super($$1);
+      if ($$0.isEmpty()) {
+         throw new IllegalArgumentException("Elements are empty");
       } else {
-         return $$0;
+         this.b = $$0;
+         this.b($$1);
       }
    }
 
-   public int f() {
-      return 1;
+   @Override
+   public ke a(emz $$0, dlv $$1) {
+      int $$2 = 0;
+      int $$3 = 0;
+      int $$4 = 0;
+
+      for (ekf $$5 : this.b) {
+         ke $$6 = $$5.a($$0, $$1);
+         $$2 = Math.max($$2, $$6.u());
+         $$3 = Math.max($$3, $$6.v());
+         $$4 = Math.max($$4, $$6.w());
+      }
+
+      return new ke($$2, $$3, $$4);
    }
 
-   public static Function<ekf.a, ejw> g() {
-      return $$0 -> ejw.b;
+   @Override
+   public List<emy.c> a(emz $$0, ja $$1, dlv $$2, ayo $$3) {
+      return this.b.get(0).a($$0, $$1, $$2, $$3);
    }
 
-   public static Function<ekf.a, eka> a(String $$0) {
-      return $$1 -> new eka(Either.left(new akk($$0)), a, $$1);
+   @Override
+   public eip a(emz $$0, ja $$1, dlv $$2) {
+      Stream<eip> $$3 = this.b.stream().filter($$0x -> $$0x != ejy.b).map($$3x -> $$3x.a($$0, $$1, $$2));
+      return eip.b($$3::iterator).orElseThrow(() -> new IllegalStateException("Unable to calculate boundingbox for ListPoolElement"));
    }
 
-   public static Function<ekf.a, eka> a(String $$0, jj<emu> $$1) {
-      return $$2 -> new eka(Either.left(new akk($$0)), $$1, $$2);
+   @Override
+   public boolean a(emz $$0, ddc $$1, dda $$2, dui $$3, ja $$4, ja $$5, dlv $$6, eip $$7, ayo $$8, boolean $$9) {
+      for (ekf $$10 : this.b) {
+         if (!$$10.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9)) {
+            return false;
+         }
+      }
+
+      return true;
    }
 
-   public static Function<ekf.a, ekc> b(String $$0) {
-      return $$1 -> new ekc(Either.left(new akk($$0)), a, $$1);
+   @Override
+   public ekg<?> a() {
+      return ekg.b;
    }
 
-   public static Function<ekf.a, ekc> b(String $$0, jj<emu> $$1) {
-      return $$2 -> new ekc(Either.left(new akk($$0)), $$1, $$2);
+   @Override
+   public ekf a(ekh.a $$0) {
+      super.a($$0);
+      this.b($$0);
+      return this;
    }
 
-   public static Function<ekf.a, ejx> a(jj<eia> $$0) {
-      return $$1 -> new ejx($$0, $$1);
+   @Override
+   public String toString() {
+      return "List[" + this.b.stream().map(Object::toString).collect(Collectors.joining(", ")) + "]";
    }
 
-   public static Function<ekf.a, ekb> b(List<Function<ekf.a, ? extends ekd>> $$0) {
-      return $$1 -> new ekb($$0.stream().map($$1x -> (ekd)$$1x.apply($$1)).collect(Collectors.toList()), $$1);
+   private void b(ekh.a $$0) {
+      this.b.forEach($$1 -> $$1.a($$0));
    }
 }

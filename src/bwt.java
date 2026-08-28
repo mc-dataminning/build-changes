@@ -1,32 +1,63 @@
 import com.mojang.datafixers.kinds.App;
+import com.mojang.datafixers.util.Pair;
+import it.unimi.dsi.fastutil.longs.Long2LongMap;
+import it.unimi.dsi.fastutil.longs.Long2LongOpenHashMap;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.apache.commons.lang3.mutable.MutableLong;
 
 public class bwt {
-   public static buv<btb> a(bte $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.al().f()), $$1);
-   }
+   private static final int a = 40;
+   private static final int b = 5;
+   private static final int c = 20;
+   private static final int d = 4;
 
-   public static bwf<btb> a(bsm<?> $$0, float $$1) {
-      return a($$1x -> $$0.equals($$1x.al()), $$1);
-   }
-
-   public static bwf<btb> a(float $$0) {
-      return a($$0x -> true, $$0);
-   }
-
-   public static bwf<btb> a(Predicate<btb> $$0, float $$1) {
-      float $$2 = $$1 * $$1;
-      return byh.a(
-         (Function<byh.b<btb>, ? extends App<byh.c<btb>, byk<btb>>>)($$2x -> $$2x.group($$2x.c(ccf.n), $$2x.b(ccf.h))
-               .apply($$2x, ($$3, $$4) -> ($$5, $$6, $$7) -> {
-                     Optional<btb> $$8 = $$2x.<cch>b($$4).a($$0.and($$2xxxx -> $$2xxxx.g((bsg)$$6) <= (double)$$2 && !$$6.x($$2xxxx)));
-                     if ($$8.isEmpty()) {
+   public static buw<btl> a(float $$0) {
+      Long2LongMap $$1 = new Long2LongOpenHashMap();
+      MutableLong $$2 = new MutableLong(0L);
+      return byi.a(
+         (Function<byi.b<btl>, ? extends App<byi.c<btl>, byl<btl>>>)($$3 -> $$3.group($$3.c(ccg.m), $$3.c(ccg.b))
+               .apply($$3, ($$3x, $$4) -> ($$4x, $$5, $$6) -> {
+                     if ($$4x.Z() - $$2.getValue() < 20L) {
                         return false;
                      } else {
-                        $$3.a(new bvf($$8.get(), true));
-                        return true;
+                        ceg $$7 = $$4x.y();
+                        Optional<ja> $$8 = $$7.d($$0xxxx -> $$0xxxx.a(cek.n), $$5.dr(), 48, ceg.b.c);
+                        if (!$$8.isEmpty() && !($$8.get().j($$5.dr()) <= 4.0)) {
+                           MutableInt $$9 = new MutableInt(0);
+                           $$2.setValue($$4x.Z() + (long)$$4x.E_().a(20));
+                           Predicate<ja> $$10 = $$3xxx -> {
+                              long $$4xx = $$3xxx.a();
+                              if ($$1.containsKey($$4xx)) {
+                                 return false;
+                              } else if ($$9.incrementAndGet() >= 5) {
+                                 return false;
+                              } else {
+                                 $$1.put($$4xx, $$2.getValue() + 40L);
+                                 return true;
+                              }
+                           };
+                           Set<Pair<jj<cej>, ja>> $$11 = $$7.b($$0xxxx -> $$0xxxx.a(cek.n), $$10, $$5.dr(), 48, ceg.b.c).collect(Collectors.toSet());
+                           eox $$12 = buo.a($$5, $$11);
+                           if ($$12 != null && $$12.j()) {
+                              ja $$13 = $$12.l();
+                              Optional<jj<cej>> $$14 = $$7.c($$13);
+                              if ($$14.isPresent()) {
+                                 $$3x.a(new ccj($$13, $$0, 1));
+                                 afy.c($$4x, $$13);
+                              }
+                           } else if ($$9.getValue() < 5) {
+                              $$1.long2LongEntrySet().removeIf($$1xxxx -> $$1xxxx.getLongValue() < $$2.getValue());
+                           }
+
+                           return true;
+                        } else {
+                           return false;
+                        }
                      }
                   }))
       );

@@ -1,11 +1,24 @@
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
+import com.mojang.serialization.MapCodec;
 
-public abstract class eih extends eid {
-   protected abstract int a(ayo var1, ja var2);
+public class eih extends eid {
+   public static final MapCodec<eih> a = axo.l.fieldOf("chance").xmap(eih::new, $$0 -> $$0.c);
+   private final int c;
+
+   private eih(int $$0) {
+      this.c = $$0;
+   }
+
+   public static eih a(int $$0) {
+      return new eih($$0);
+   }
 
    @Override
-   public Stream<ja> a_(eib $$0, ayo $$1, ja $$2) {
-      return IntStream.range(0, this.a($$1, $$2)).mapToObj($$1x -> $$2);
+   protected boolean a(eic $$0, ayo $$1, ja $$2) {
+      return $$1.i() < 1.0F / (float)this.c;
+   }
+
+   @Override
+   public eif<?> b() {
+      return eif.b;
    }
 }

@@ -1,91 +1,238 @@
 import com.mojang.logging.LogUtils;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.SocketAddress;
+import java.net.URL;
 import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.text.ParseException;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import javax.annotation.Nullable;
+import jdk.jfr.Configuration;
+import jdk.jfr.Event;
+import jdk.jfr.FlightRecorder;
+import jdk.jfr.FlightRecorderListener;
+import jdk.jfr.Recording;
+import jdk.jfr.RecordingState;
+import net.minecraft.util.profiling.jfr.event.ChunkGenerationEvent;
+import net.minecraft.util.profiling.jfr.event.ChunkRegionReadEvent;
+import net.minecraft.util.profiling.jfr.event.ChunkRegionWriteEvent;
+import net.minecraft.util.profiling.jfr.event.NetworkSummaryEvent;
+import net.minecraft.util.profiling.jfr.event.PacketReceivedEvent;
+import net.minecraft.util.profiling.jfr.event.PacketSentEvent;
+import net.minecraft.util.profiling.jfr.event.ServerTickTimeEvent;
+import net.minecraft.util.profiling.jfr.event.WorldLoadFinishedEvent;
 import org.slf4j.Logger;
 
-public interface bna {
-   bna f = (bna)(Runtime.class.getModule().getLayer().findModule("jdk.jfr").isPresent() ? bmz.a() : new bna.a());
+public class bna implements bnb {
+   private static final Logger g = LogUtils.getLogger();
+   public static final String a = "Minecraft";
+   public static final String b = "World Generation";
+   public static final String c = "Ticking";
+   public static final String d = "Network";
+   public static final String e = "Storage";
+   private static final List<Class<? extends Event>> h = List.of(
+      ChunkGenerationEvent.class,
+      ChunkRegionReadEvent.class,
+      ChunkRegionWriteEvent.class,
+      PacketReceivedEvent.class,
+      PacketSentEvent.class,
+      NetworkSummaryEvent.class,
+      ServerTickTimeEvent.class,
+      WorldLoadFinishedEvent.class
+   );
+   private static final String i = "/flightrecorder-config.jfc";
+   private static final DateTimeFormatter j = new DateTimeFormatterBuilder().appendPattern("yyyy-MM-dd-HHmmss").toFormatter().withZone(ZoneId.systemDefault());
+   private static final bna k = new bna();
+   @Nullable
+   Recording l;
+   private float m;
+   private final Map<String, NetworkSummaryEvent.b> n = new ConcurrentHashMap<>();
 
-   boolean a(bmy var1);
+   private bna() {
+      h.forEach(FlightRecorder::register);
+      FlightRecorder.addPeriodicEvent(ServerTickTimeEvent.class, () -> new ServerTickTimeEvent(this.m).commit());
+      FlightRecorder.addPeriodicEvent(NetworkSummaryEvent.class, () -> {
+         Iterator<NetworkSummaryEvent.b> $$0 = this.n.values().iterator();
 
-   Path b();
+         while ($$0.hasNext()) {
+            $$0.next().a();
+            $$0.remove();
+         }
+      });
+   }
 
-   boolean c();
+   public static bna a() {
+      return k;
+   }
 
-   boolean d();
+   @Override
+   public boolean a(bmz $$0) {
+      URL $$1 = bna.class.getResource("/flightrecorder-config.jfc");
+      if ($$1 == null) {
+         g.warn("Could not find default flight recorder config at {}", "/flightrecorder-config.jfc");
+         return false;
+      } else {
+         try {
+            boolean var4;
+            try (BufferedReader $$2 = new BufferedReader(new InputStreamReader($$1.openStream()))) {
+               var4 = this.a($$2, $$0);
+            }
 
-   void a(float var1);
+            return var4;
+         } catch (IOException var8) {
+            g.warn("Failed to start flight recorder using configuration at {}", $$1, var8);
+            return false;
+         }
+      }
+   }
 
-   void a(vq var1, zd<?> var2, SocketAddress var3, int var4);
+   @Override
+   public Path b() {
+      if (this.l == null) {
+         throw new IllegalStateException("Not currently profiling");
+      } else {
+         this.n.clear();
+         Path $$0 = this.l.getDestination();
+         this.l.stop();
+         return $$0;
+      }
+   }
 
-   void b(vq var1, zd<?> var2, SocketAddress var3, int var4);
+   @Override
+   public boolean c() {
+      return this.l != null;
+   }
 
-   void a(dvz var1, dbm var2, dvy var3, int var4);
+   @Override
+   public boolean d() {
+      return FlightRecorder.isAvailable();
+   }
 
-   void b(dvz var1, dbm var2, dvy var3, int var4);
+   private boolean a(Reader $$0, bmz $$1) {
+      if (this.c()) {
+         g.warn("Profiling already in progress");
+         return false;
+      } else {
+         try {
+            Configuration $$2 = Configuration.create($$0);
+            String $$3 = j.format(Instant.now());
+            this.l = ac.a(new Recording($$2), $$2x -> {
+               h.forEach($$2x::enable);
+               $$2x.setDumpOnExit(true);
+               $$2x.setToDisk(true);
+               $$2x.setName(String.format(Locale.ROOT, "%s-%s-%s", $$1.a(), aa.b().c(), $$3));
+            });
+            Path $$4 = Paths.get(String.format(Locale.ROOT, "debug/%s-%s.jfr", $$1.a(), $$3));
+            v.c($$4.getParent());
+            this.l.setDestination($$4);
+            this.l.start();
+            this.f();
+         } catch (ParseException | IOException var6) {
+            g.warn("Failed to start jfr profiling", var6);
+            return false;
+         }
+
+         g.info(
+            "Started flight recorder profiling id({}):name({}) - will dump to {} on exit or stop command",
+            new Object[]{this.l.getId(), this.l.getName(), this.l.getDestination()}
+         );
+         return true;
+      }
+   }
+
+   private void f() {
+      FlightRecorder.addListener(new FlightRecorderListener() {
+         final bnd a = new bnd(() -> bna.this.l = null);
+
+         @Override
+         public void recordingStateChanged(Recording $$0) {
+            if ($$0 == bna.this.l && $$0.getState() == RecordingState.STOPPED) {
+               this.a.a($$0.getDestination());
+               FlightRecorder.removeListener(this);
+            }
+         }
+      });
+   }
+
+   @Override
+   public void a(float $$0) {
+      if (ServerTickTimeEvent.TYPE.isEnabled()) {
+         this.m = $$0;
+      }
+   }
+
+   @Override
+   public void a(vq $$0, zd<?> $$1, SocketAddress $$2, int $$3) {
+      if (PacketReceivedEvent.TYPE.isEnabled()) {
+         new PacketReceivedEvent($$0.a(), $$1.a().b(), $$1.b().toString(), $$2, $$3).commit();
+      }
+
+      if (NetworkSummaryEvent.TYPE.isEnabled()) {
+         this.a($$2).b($$3);
+      }
+   }
+
+   @Override
+   public void b(vq $$0, zd<?> $$1, SocketAddress $$2, int $$3) {
+      if (PacketSentEvent.TYPE.isEnabled()) {
+         new PacketSentEvent($$0.a(), $$1.a().b(), $$1.b().toString(), $$2, $$3).commit();
+      }
+
+      if (NetworkSummaryEvent.TYPE.isEnabled()) {
+         this.a($$2).a($$3);
+      }
+   }
+
+   private NetworkSummaryEvent.b a(SocketAddress $$0) {
+      return this.n.computeIfAbsent($$0.toString(), NetworkSummaryEvent.b::new);
+   }
+
+   @Override
+   public void a(dwa $$0, dbn $$1, dvz $$2, int $$3) {
+      if (ChunkRegionReadEvent.TYPE.isEnabled()) {
+         new ChunkRegionReadEvent($$0, $$1, $$2, $$3).commit();
+      }
+   }
+
+   @Override
+   public void b(dwa $$0, dbn $$1, dvz $$2, int $$3) {
+      if (ChunkRegionWriteEvent.TYPE.isEnabled()) {
+         new ChunkRegionWriteEvent($$0, $$1, $$2, $$3).commit();
+      }
+   }
 
    @Nullable
-   bnd e();
-
-   @Nullable
-   bnd a(dbm var1, akj<dcf> var2, String var3);
-
-   public static class a implements bna {
-      private static final Logger b = LogUtils.getLogger();
-      static final bnd a = () -> {
-      };
-
-      @Override
-      public boolean a(bmy $$0) {
-         b.warn("Attempted to start Flight Recorder, but it's not supported on this JVM");
-         return false;
-      }
-
-      @Override
-      public Path b() {
-         throw new IllegalStateException("Attempted to stop Flight Recorder, but it's not supported on this JVM");
-      }
-
-      @Override
-      public boolean c() {
-         return false;
-      }
-
-      @Override
-      public boolean d() {
-         return false;
-      }
-
-      @Override
-      public void a(vq $$0, zd<?> $$1, SocketAddress $$2, int $$3) {
-      }
-
-      @Override
-      public void b(vq $$0, zd<?> $$1, SocketAddress $$2, int $$3) {
-      }
-
-      @Override
-      public void a(dvz $$0, dbm $$1, dvy $$2, int $$3) {
-      }
-
-      @Override
-      public void b(dvz $$0, dbm $$1, dvy $$2, int $$3) {
-      }
-
-      @Override
-      public void a(float $$0) {
-      }
-
-      @Override
-      public bnd e() {
-         return a;
-      }
-
-      @Nullable
-      @Override
-      public bnd a(dbm $$0, akj<dcf> $$1, String $$2) {
+   @Override
+   public bne e() {
+      if (!WorldLoadFinishedEvent.TYPE.isEnabled()) {
          return null;
+      } else {
+         WorldLoadFinishedEvent $$0 = new WorldLoadFinishedEvent();
+         $$0.begin();
+         return $$0::commit;
+      }
+   }
+
+   @Nullable
+   @Override
+   public bne a(dbn $$0, akj<dcg> $$1, String $$2) {
+      if (!ChunkGenerationEvent.TYPE.isEnabled()) {
+         return null;
+      } else {
+         ChunkGenerationEvent $$3 = new ChunkGenerationEvent($$0, $$1, $$2);
+         $$3.begin();
+         return $$3::commit;
       }
    }
 }

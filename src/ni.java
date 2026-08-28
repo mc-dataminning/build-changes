@@ -35,7 +35,7 @@ public class ni implements lx {
       return new ni($$0).a(asx.b, new asx($$1, t.a.a(ask.b), Optional.empty()));
    }
 
-   public static ni a(lz $$0, wu $$1, coy $$2) {
+   public static ni a(lz $$0, wu $$1, coz $$2) {
       return a($$0, $$1).a(ase.a, new ase($$2));
    }
 }

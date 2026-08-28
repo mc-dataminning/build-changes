@@ -1,87 +1,47 @@
-import java.util.EnumSet;
-import javax.annotation.Nullable;
+public class caw extends caa {
+   private final cgw a;
+   private int b;
 
-public class caw extends bzz {
-   public static final int a = 120;
-   protected final btk b;
-   protected double c;
-   protected double d;
-   protected double e;
-   protected final double f;
-   protected int g;
-   protected boolean h;
-   private final boolean i;
-
-   public caw(btk $$0, double $$1) {
-      this($$0, $$1, 120);
-   }
-
-   public caw(btk $$0, double $$1, int $$2) {
-      this($$0, $$1, $$2, true);
-   }
-
-   public caw(btk $$0, double $$1, int $$2, boolean $$3) {
-      this.b = $$0;
-      this.f = $$1;
-      this.g = $$2;
-      this.i = $$3;
-      this.a(EnumSet.of(bzz.a.a));
-   }
-
-   @Override
-   public boolean a() {
-      if (this.b.cS()) {
-         return false;
-      } else {
-         if (!this.h) {
-            if (this.i && this.b.en() >= 100) {
-               return false;
-            }
-
-            if (this.b.dT().a(b(this.g)) != 0) {
-               return false;
-            }
-         }
-
-         ewf $$0 = this.h();
-         if ($$0 == null) {
-            return false;
-         } else {
-            this.c = $$0.c;
-            this.d = $$0.d;
-            this.e = $$0.e;
-            this.h = false;
-            return true;
-         }
-      }
-   }
-
-   @Nullable
-   protected ewf h() {
-      return cdw.a(this.b, 10, 7);
-   }
-
-   @Override
-   public boolean b() {
-      return !this.b.K().l() && !this.b.cS();
+   public caw(cgw $$0) {
+      this.a = $$0;
+      this.a($$0);
    }
 
    @Override
    public void c() {
-      this.b.K().a(this.c, this.d, this.e, this.f);
+      this.a.gR();
+      this.h();
+   }
+
+   private void h() {
+      avg $$0 = this.a.gQ();
+      if ($$0 != null) {
+         this.a.a($$0);
+      }
    }
 
    @Override
-   public void d() {
-      this.b.K().n();
-      super.d();
+   public boolean b() {
+      return false;
    }
 
-   public void i() {
-      this.h = true;
+   @Override
+   public boolean a() {
+      this.b++;
+      if (this.b > 0 && this.a.dU().a(1000) < this.b) {
+         this.a(this.a);
+         return !this.a.fe() && this.a.dU().a(10) == 0;
+      } else {
+         return false;
+      }
    }
 
-   public void c(int $$0) {
-      this.g = $$0;
+   private void a(cgw $$0) {
+      this.b = -$$0.gV();
+   }
+
+   @Override
+   public boolean R_() {
+      return true;
    }
 }

@@ -5,13 +5,13 @@ public class aez implements zb<abn> {
    private final int b;
    private final int[] c;
 
-   public aez(bsg $$0) {
-      this.b = $$0.am();
-      List<bsg> $$1 = $$0.cT();
+   public aez(bsh $$0) {
+      this.b = $$0.an();
+      List<bsh> $$1 = $$0.cU();
       this.c = new int[$$1.size()];
 
       for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.c[$$2] = $$1.get($$2).am();
+         this.c[$$2] = $$1.get($$2).an();
       }
    }
 

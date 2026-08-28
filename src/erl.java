@@ -1,4 +1,7 @@
-import com.mojang.serialization.MapCodec;
+import java.util.function.Consumer;
 
-public record erl(MapCodec<? extends erk> a) {
+public interface erl {
+   int a(float var1);
+
+   void a(Consumer<cud> var1, eqw var2);
 }

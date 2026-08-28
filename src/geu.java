@@ -1,108 +1,175 @@
+import com.google.common.collect.ImmutableList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
 
 public class geu {
-   protected final geb a;
-   protected final dcf b;
-   protected int c;
-   protected int d;
-   protected int e;
-   private int g;
-   public ghd.b[] f;
+   public static final akk a = new akk("textures/atlas/shulker_boxes.png");
+   public static final akk b = new akk("textures/atlas/beds.png");
+   public static final akk c = new akk("textures/atlas/banner_patterns.png");
+   public static final akk d = new akk("textures/atlas/shield_patterns.png");
+   public static final akk e = new akk("textures/atlas/signs.png");
+   public static final akk f = new akk("textures/atlas/chest.png");
+   public static final akk g = new akk("textures/atlas/armor_trims.png");
+   public static final akk h = new akk("textures/atlas/decorated_pot.png");
+   private static final gen C = gen.e(a);
+   private static final gen D = gen.c(b);
+   private static final gen E = gen.m(c);
+   private static final gen F = gen.m(d);
+   private static final gen G = gen.e(e);
+   private static final gen H = gen.d(f);
+   private static final gen I = gen.a(g);
+   private static final gen J = gen.b(g);
+   private static final gen K = gen.c(gpp.e);
+   private static final gen L = gen.d(gpp.e);
+   private static final gen M = gen.g(gpp.e);
+   private static final gen N = gen.h(gpp.e);
+   public static final gru i = new gru(a, new akk("entity/shulker/shulker"));
+   public static final List<gru> j = Stream.of(
+         "white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"
+      )
+      .map($$0 -> new gru(a, new akk("entity/shulker/shulker_" + $$0)))
+      .collect(ImmutableList.toImmutableList());
+   public static final Map<dty, gru> k = dty.a().collect(Collectors.toMap(Function.identity(), geu::c));
+   public static final Map<dty, gru> l = dty.a().collect(Collectors.toMap(Function.identity(), geu::d));
+   public static final gru m = new gru(c, new akk("entity/banner/base"));
+   public static final gru n = new gru(d, new akk("entity/shield/base"));
+   private static final Map<akk, gru> O = new HashMap<>();
+   private static final Map<akk, gru> P = new HashMap<>();
+   public static final Map<akj<dqh>, gru> o = lq.al.i().collect(Collectors.toMap(jj.c::h, $$0 -> a($$0.a().a())));
+   public static final gru p = a(new akk("decorated_pot_base"));
+   public static final gru q = a(new akk("decorated_pot_side"));
+   public static final gru[] r = Arrays.stream(csw.values())
+      .sorted(Comparator.comparingInt(csw::a))
+      .map($$0 -> new gru(b, new akk("entity/bed/" + $$0.b())))
+      .toArray(gru[]::new);
+   public static final gru s = a("trapped");
+   public static final gru t = a("trapped_left");
+   public static final gru u = a("trapped_right");
+   public static final gru v = a("christmas");
+   public static final gru w = a("christmas_left");
+   public static final gru x = a("christmas_right");
+   public static final gru y = a("normal");
+   public static final gru z = a("normal_left");
+   public static final gru A = a("normal_right");
+   public static final gru B = a("ender");
 
-   public geu(ghd $$0, dcf $$1, int $$2, geb $$3) {
-      this.a = $$3;
-      this.b = $$1;
-      this.a($$2);
-      this.a($$0);
+   public static gen a() {
+      return E;
    }
 
-   protected void a(ghd $$0) {
-      if (!fft.Q().bx()) {
-         throw new IllegalStateException("createSections called from wrong thread: " + Thread.currentThread().getName());
-      } else {
-         int $$1 = this.d * this.c * this.e;
-         this.f = new ghd.b[$$1];
-
-         for (int $$2 = 0; $$2 < this.d; $$2++) {
-            for (int $$3 = 0; $$3 < this.c; $$3++) {
-               for (int $$4 = 0; $$4 < this.e; $$4++) {
-                  int $$5 = this.a($$2, $$3, $$4);
-                  this.f[$$5] = $$0.new b($$5, $$2 * 16, this.b.I_() + $$3 * 16, $$4 * 16);
-               }
-            }
-         }
-      }
+   public static gen b() {
+      return F;
    }
 
-   public void a() {
-      for (ghd.b $$0 : this.f) {
-         $$0.e();
-      }
+   public static gen c() {
+      return D;
    }
 
-   private int a(int $$0, int $$1, int $$2) {
-      return ($$2 * this.c + $$1) * this.d + $$0;
+   public static gen d() {
+      return C;
    }
 
-   protected void a(int $$0) {
-      int $$1 = $$0 * 2 + 1;
-      this.d = $$1;
-      this.c = this.b.an();
-      this.e = $$1;
-      this.g = $$0;
+   public static gen e() {
+      return G;
    }
 
-   public int b() {
-      return this.g;
+   public static gen f() {
+      return G;
    }
 
-   public dch c() {
-      return this.b;
+   public static gen g() {
+      return H;
    }
 
-   public void a(double $$0, double $$1) {
-      int $$2 = ayg.c($$0);
-      int $$3 = ayg.c($$1);
-
-      for (int $$4 = 0; $$4 < this.d; $$4++) {
-         int $$5 = this.d * 16;
-         int $$6 = $$2 - 8 - $$5 / 2;
-         int $$7 = $$6 + Math.floorMod($$4 * 16 - $$6, $$5);
-
-         for (int $$8 = 0; $$8 < this.e; $$8++) {
-            int $$9 = this.e * 16;
-            int $$10 = $$3 - 8 - $$9 / 2;
-            int $$11 = $$10 + Math.floorMod($$8 * 16 - $$10, $$9);
-
-            for (int $$12 = 0; $$12 < this.c; $$12++) {
-               int $$13 = this.b.I_() + $$12 * 16;
-               ghd.b $$14 = this.f[this.a($$4, $$12, $$8)];
-               ja $$15 = $$14.f();
-               if ($$7 != $$15.u() || $$13 != $$15.v() || $$11 != $$15.w()) {
-                  $$14.a($$7, $$13, $$11);
-               }
-            }
-         }
-      }
+   public static gen a(boolean $$0) {
+      return $$0 ? J : I;
    }
 
-   public void a(int $$0, int $$1, int $$2, boolean $$3) {
-      int $$4 = Math.floorMod($$0, this.d);
-      int $$5 = Math.floorMod($$1 - this.b.ao(), this.c);
-      int $$6 = Math.floorMod($$2, this.e);
-      ghd.b $$7 = this.f[this.a($$4, $$5, $$6)];
-      $$7.a($$3);
+   public static gen h() {
+      return K;
+   }
+
+   public static gen i() {
+      return L;
+   }
+
+   public static gen j() {
+      return M;
+   }
+
+   public static gen k() {
+      return N;
+   }
+
+   private static gru c(dty $$0) {
+      return new gru(e, new akk("entity/signs/" + $$0.b()));
+   }
+
+   private static gru d(dty $$0) {
+      return new gru(e, new akk("entity/signs/hanging/" + $$0.b()));
+   }
+
+   public static gru a(dty $$0) {
+      return k.get($$0);
+   }
+
+   public static gru b(dty $$0) {
+      return l.get($$0);
+   }
+
+   public static gru a(jj<dpg> $$0) {
+      return O.computeIfAbsent($$0.a().a(), $$0x -> {
+         akk $$1 = $$0x.d("entity/banner/");
+         return new gru(c, $$1);
+      });
+   }
+
+   public static gru b(jj<dpg> $$0) {
+      return P.computeIfAbsent($$0.a().a(), $$0x -> {
+         akk $$1 = $$0x.d("entity/shield/");
+         return new gru(d, $$1);
+      });
+   }
+
+   private static gru a(String $$0) {
+      return new gru(f, new akk("entity/chest/" + $$0));
+   }
+
+   private static gru a(akk $$0) {
+      return new gru(h, $$0.d("entity/decorated_pot/"));
    }
 
    @Nullable
-   protected ghd.b a(ja $$0) {
-      int $$1 = ayg.a($$0.v() - this.b.I_(), 16);
-      if ($$1 >= 0 && $$1 < this.c) {
-         int $$2 = ayg.b(ayg.a($$0.u(), 16), this.d);
-         int $$3 = ayg.b(ayg.a($$0.w(), 16), this.e);
-         return this.f[this.a($$2, $$1, $$3)];
+   public static gru a(@Nullable akj<dqh> $$0) {
+      return $$0 == null ? null : o.get($$0);
+   }
+
+   public static gru a(dpq $$0, dtd $$1, boolean $$2) {
+      if ($$0 instanceof dqm) {
+         return B;
+      } else if ($$2) {
+         return a($$1, v, w, x);
       } else {
-         return null;
+         return $$0 instanceof drk ? a($$1, s, t, u) : a($$1, y, z, A);
+      }
+   }
+
+   private static gru a(dtd $$0, gru $$1, gru $$2, gru $$3) {
+      switch ($$0) {
+         case b:
+            return $$2;
+         case c:
+            return $$3;
+         case a:
+         default:
+            return $$1;
       }
    }
 }

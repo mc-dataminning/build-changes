@@ -2,25 +2,21 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
 public class dye {
-   private static final Codec<Double> f = Codec.doubleRange(0.01, 50.0);
    public static final Codec<dye> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
-               f.fieldOf("filling").orElse(1.7).forGetter($$0x -> $$0x.b),
-               f.fieldOf("inner_layer").orElse(2.2).forGetter($$0x -> $$0x.c),
-               f.fieldOf("middle_layer").orElse(3.2).forGetter($$0x -> $$0x.d),
-               f.fieldOf("outer_layer").orElse(4.2).forGetter($$0x -> $$0x.e)
+               edq.a.fieldOf("generate_crack_chance").orElse(1.0).forGetter($$0x -> $$0x.b),
+               Codec.doubleRange(0.0, 5.0).fieldOf("base_crack_size").orElse(2.0).forGetter($$0x -> $$0x.c),
+               Codec.intRange(0, 10).fieldOf("crack_point_offset").orElse(2).forGetter($$0x -> $$0x.d)
             )
             .apply($$0, dye::new)
    );
    public final double b;
    public final double c;
-   public final double d;
-   public final double e;
+   public final int d;
 
-   public dye(double $$0, double $$1, double $$2, double $$3) {
+   public dye(double $$0, double $$1, int $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
-      this.e = $$3;
    }
 }

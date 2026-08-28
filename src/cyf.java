@@ -1,179 +1,115 @@
-import com.google.common.collect.Lists;
-import com.mojang.datafixers.util.Either;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
+import com.google.common.collect.Maps;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
-import it.unimi.dsi.fastutil.ints.IntComparators;
 import it.unimi.dsi.fastutil.ints.IntList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Stream;
-import javax.annotation.Nullable;
+import java.util.Map;
 
-public final class cyf implements Predicate<cuc> {
-   public static final cyf a = new cyf(Stream.empty());
-   public static final ys<wf, cyf> b = cuc.k.a($$0 -> b($$0.stream().map(cyf.a::new)), $$0 -> Arrays.asList($$0.a()));
-   private final cyf.c[] e;
-   @Nullable
-   private cuc[] f;
-   @Nullable
-   private IntList g;
-   public static final Codec<cyf> c = a(true);
-   public static final Codec<cyf> d = a(false);
+public class cyf extends cyb {
+   private static final cyg a = cyg.a(cug.tX, cug.pt, cug.si, cug.ul, cug.um, cug.up, cug.un, cug.uq, cug.uo, cug.ur);
+   private static final cyg b = cyg.a(cug.oz);
+   private static final cyg c = cyg.a(cug.qY);
+   private static final Map<cty, cwv.a> d = ac.a(Maps.newHashMap(), $$0 -> {
+      $$0.put(cug.tX, cwv.a.b);
+      $$0.put(cug.pt, cwv.a.e);
+      $$0.put(cug.si, cwv.a.c);
+      $$0.put(cug.ul, cwv.a.d);
+      $$0.put(cug.um, cwv.a.d);
+      $$0.put(cug.up, cwv.a.d);
+      $$0.put(cug.un, cwv.a.d);
+      $$0.put(cug.uq, cwv.a.d);
+      $$0.put(cug.uo, cwv.a.d);
+      $$0.put(cug.ur, cwv.a.d);
+   });
+   private static final cyg e = cyg.a(cug.pu);
 
-   private cyf(Stream<? extends cyf.c> $$0) {
-      this.e = $$0.toArray(cyf.c[]::new);
+   public cyf(cxy $$0) {
+      super($$0);
    }
 
-   private cyf(cyf.c[] $$0) {
-      this.e = $$0;
-   }
+   public boolean a(cxz $$0, dcg $$1) {
+      boolean $$2 = false;
+      boolean $$3 = false;
+      boolean $$4 = false;
+      boolean $$5 = false;
+      boolean $$6 = false;
 
-   public cuc[] a() {
-      if (this.f == null) {
-         this.f = Arrays.stream(this.e).flatMap($$0 -> $$0.a().stream()).distinct().toArray(cuc[]::new);
-      }
+      for (int $$7 = 0; $$7 < $$0.a(); $$7++) {
+         cud $$8 = $$0.a($$7);
+         if (!$$8.e()) {
+            if (a.a($$8)) {
+               if ($$4) {
+                  return false;
+               }
 
-      return this.f;
-   }
+               $$4 = true;
+            } else if (c.a($$8)) {
+               if ($$6) {
+                  return false;
+               }
 
-   public boolean a(@Nullable cuc $$0) {
-      if ($$0 == null) {
-         return false;
-      } else if (this.c()) {
-         return $$0.e();
-      } else {
-         for (cuc $$1 : this.a()) {
-            if ($$1.a($$0.g())) {
-               return true;
+               $$6 = true;
+            } else if (b.a($$8)) {
+               if ($$5) {
+                  return false;
+               }
+
+               $$5 = true;
+            } else if (e.a($$8)) {
+               if ($$2) {
+                  return false;
+               }
+
+               $$2 = true;
+            } else {
+               if (!($$8.g() instanceof csx)) {
+                  return false;
+               }
+
+               $$3 = true;
             }
          }
-
-         return false;
       }
+
+      return $$2 && $$3;
    }
 
-   public IntList b() {
-      if (this.g == null) {
-         cuc[] $$0 = this.a();
-         this.g = new IntArrayList($$0.length);
+   public cud a(cxz $$0, jl.a $$1) {
+      cwv.a $$2 = cwv.a.a;
+      boolean $$3 = false;
+      boolean $$4 = false;
+      IntList $$5 = new IntArrayList();
 
-         for (cuc $$1 : $$0) {
-            this.g.add(cmo.c($$1));
+      for (int $$6 = 0; $$6 < $$0.a(); $$6++) {
+         cud $$7 = $$0.a($$6);
+         if (!$$7.e()) {
+            if (a.a($$7)) {
+               $$2 = d.get($$7.g());
+            } else if (c.a($$7)) {
+               $$3 = true;
+            } else if (b.a($$7)) {
+               $$4 = true;
+            } else if ($$7.g() instanceof csx) {
+               $$5.add(((csx)$$7.g()).c().f());
+            }
          }
-
-         this.g.sort(IntComparators.NATURAL_COMPARATOR);
       }
 
-      return this.g;
-   }
-
-   public boolean c() {
-      return this.e.length == 0;
+      cud $$8 = new cud(cug.uv);
+      $$8.b(kn.T, new cwv($$2, $$5, IntList.of(), $$4, $$3));
+      return $$8;
    }
 
    @Override
-   public boolean equals(Object $$0) {
-      return $$0 instanceof cyf $$1 ? Arrays.equals((Object[])this.e, (Object[])$$1.e) : false;
+   public boolean a(int $$0, int $$1) {
+      return $$0 * $$1 >= 2;
    }
 
-   private static cyf b(Stream<? extends cyf.c> $$0) {
-      cyf $$1 = new cyf($$0);
-      return $$1.c() ? a : $$1;
+   @Override
+   public cud a(jl.a $$0) {
+      return new cud(cug.uv);
    }
 
-   public static cyf d() {
-      return a;
-   }
-
-   public static cyf a(dce... $$0) {
-      return a(Arrays.stream($$0).map(cuc::new));
-   }
-
-   public static cyf a(cuc... $$0) {
-      return a(Arrays.stream($$0));
-   }
-
-   public static cyf a(Stream<cuc> $$0) {
-      return b($$0.filter($$0x -> !$$0x.e()).map(cyf.a::new));
-   }
-
-   public static cyf a(awm<ctx> $$0) {
-      return b(Stream.of(new cyf.b($$0)));
-   }
-
-   private static Codec<cyf> a(boolean $$0) {
-      Codec<cyf.c[]> $$1 = Codec.list(cyf.c.a)
-         .comapFlatMap(
-            $$1x -> !$$0 && $$1x.size() < 1
-                  ? DataResult.error(() -> "Item array cannot be empty, at least one item must be defined")
-                  : DataResult.success($$1x.toArray(new cyf.c[0])),
-            List::of
-         );
-      return Codec.either($$1, cyf.c.a)
-         .flatComapMap(
-            $$0x -> (cyf)$$0x.map(cyf::new, $$0xx -> new cyf(new cyf.c[]{$$0xx})),
-            $$1x -> {
-               if ($$1x.e.length == 1) {
-                  return DataResult.success(Either.right($$1x.e[0]));
-               } else {
-                  return $$1x.e.length == 0 && !$$0
-                     ? DataResult.error(() -> "Item array cannot be empty, at least one item must be defined")
-                     : DataResult.success(Either.left($$1x.e));
-               }
-            }
-         );
-   }
-
-   static record a(cuc b) implements cyf.c {
-      static final Codec<cyf.a> c = RecordCodecBuilder.create($$0 -> $$0.group(cuc.g.fieldOf("item").forGetter($$0x -> $$0x.b)).apply($$0, cyf.a::new));
-
-      @Override
-      public boolean equals(Object $$0) {
-         return !($$0 instanceof cyf.a $$1) ? false : $$1.b.g().equals(this.b.g()) && $$1.b.H() == this.b.H();
-      }
-
-      @Override
-      public Collection<cuc> a() {
-         return Collections.singleton(this.b);
-      }
-   }
-
-   static record b(awm<ctx> b) implements cyf.c {
-      static final Codec<cyf.b> c = RecordCodecBuilder.create($$0 -> $$0.group(awm.a(lr.K).fieldOf("tag").forGetter($$0x -> $$0x.b)).apply($$0, cyf.b::new));
-
-      @Override
-      public boolean equals(Object $$0) {
-         return $$0 instanceof cyf.b $$1 ? $$1.b.b().equals(this.b.b()) : false;
-      }
-
-      @Override
-      public Collection<cuc> a() {
-         List<cuc> $$0 = Lists.newArrayList();
-
-         for (jj<ctx> $$1 : lq.g.c(this.b)) {
-            $$0.add(new cuc($$1));
-         }
-
-         return $$0;
-      }
-   }
-
-   interface c {
-      Codec<cyf.c> a = Codec.xor(cyf.a.c, cyf.b.c).xmap($$0 -> (cyf.c)$$0.map($$0x -> $$0x, $$0x -> $$0x), $$0 -> {
-         if ($$0 instanceof cyf.b $$1) {
-            return Either.right($$1);
-         } else if ($$0 instanceof cyf.a $$2) {
-            return Either.left($$2);
-         } else {
-            throw new UnsupportedOperationException("This is neither an item value nor a tag value.");
-         }
-      });
-
-      Collection<cuc> a();
+   @Override
+   public cyo<?> ap_() {
+      return cyo.h;
    }
 }

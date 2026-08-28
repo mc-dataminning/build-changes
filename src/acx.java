@@ -20,7 +20,7 @@ public class acx implements zb<abn> {
       this.i = $$0.l();
    }
 
-   public acx(dub $$0) {
+   public acx(duc $$0) {
       this.b = $$0.a();
       this.c = $$0.b();
       this.d = $$0.i();

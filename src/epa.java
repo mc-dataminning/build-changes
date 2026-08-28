@@ -1,37 +1,38 @@
-import javax.annotation.Nullable;
+public enum epa {
+   a(-1.0F),
+   b(0.0F),
+   c(0.0F),
+   d(0.0F),
+   e(0.0F),
+   f(-1.0F),
+   g(0.0F),
+   h(-1.0F),
+   i(-1.0F),
+   j(8.0F),
+   k(8.0F),
+   l(0.0F),
+   m(-1.0F),
+   n(8.0F),
+   o(16.0F),
+   p(8.0F),
+   q(-1.0F),
+   r(0.0F),
+   s(-1.0F),
+   t(-1.0F),
+   u(4.0F),
+   v(-1.0F),
+   w(8.0F),
+   x(0.0F),
+   y(0.0F),
+   z(0.0F);
 
-public class epa {
-   private final dbp a;
-   @Nullable
-   private final eoz b;
-   private final ja c;
-   private final ja.a d = new ja.a();
+   private final float A;
 
-   public epa(dbp $$0, btd $$1) {
-      this.a = $$0;
-      if ($$1.dQ() instanceof aqm $$2) {
-         this.b = $$2.H();
-      } else {
-         this.b = null;
-      }
-
-      this.c = $$1.dq();
+   private epa(final float $$0) {
+      this.A = $$0;
    }
 
-   public eoy a(int $$0, int $$1, int $$2) {
-      ja $$3 = this.d.d($$0, $$1, $$2);
-      return this.b == null ? epd.b(this.a, $$3) : this.b.a(this.a, $$3);
-   }
-
-   public dsk a(ja $$0) {
-      return this.a.a_($$0);
-   }
-
-   public dbp a() {
-      return this.a;
-   }
-
-   public ja b() {
-      return this.c;
+   public float a() {
+      return this.A;
    }
 }

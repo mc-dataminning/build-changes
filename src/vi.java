@@ -2,9 +2,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class vi {
    private final AtomicInteger a = new AtomicInteger();
-   private final blg b;
+   private final blh b;
 
-   public vi(blg $$0) {
+   public vi(blh $$0) {
       this.b = $$0;
    }
 

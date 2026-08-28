@@ -1,359 +1,346 @@
-import com.google.common.primitives.Doubles;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Arrays;
-import java.util.EnumSet;
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableMap.Builder;
+import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.function.Function;
-import java.util.stream.DoubleStream;
+import java.util.Map;
+import java.util.stream.Stream;
 import javax.annotation.Nullable;
+import org.apache.commons.lang3.mutable.MutableDouble;
+import org.apache.commons.lang3.mutable.MutableObject;
 
 public class dzi {
-   private static final double f = 0.1;
-   protected static final int a = 4;
-   protected static final int b = 8;
-   protected static final int c = 2;
-   private static final double g = 1.0;
-   private static final double h = -1.0;
-   private static final int i = 2;
-   private static final int j = ju.a(16);
-   private static final int k = j - 1;
-   private static final int l = j;
-   private static final int m = 2 * k + 1;
-   private static final int n = 2 * l + 1;
-   private static final int o = m + n;
-   private final dch p;
-   private static final List<dfh> q = List.of(dfj.l, dfj.L, dfj.i, dfj.b, dfj.k, dfj.I, dfj.K, dfj.fl, dfj.dP, dfj.iA, dfj.j);
-   protected static final double d = Double.MAX_VALUE;
-   private boolean r;
-   private final double[] s;
-   private final List<List<jj<ddf>>> t;
-   private final transient double[][] u;
-   private static final Codec<double[]> v = Codec.DOUBLE.listOf().xmap(Doubles::toArray, Doubles::asList);
-   public static final Codec<dzi> e = RecordCodecBuilder.create(
-         $$0 -> $$0.group(
-                  Codec.INT.fieldOf("min_section").forGetter($$0x -> $$0x.p.ao()),
-                  Codec.INT.fieldOf("max_section").forGetter($$0x -> $$0x.p.ap()),
-                  v.lenientOptionalFieldOf("heights")
-                     .forGetter($$0x -> DoubleStream.of($$0x.s).anyMatch($$0xx -> $$0xx != Double.MAX_VALUE) ? Optional.of($$0x.s) : Optional.empty())
-               )
-               .apply($$0, dzi::new)
-      )
-      .comapFlatMap(dzi::a, Function.identity());
+   private static final dzi a = new dzi(new Long2ObjectOpenHashMap(), new Long2ObjectOpenHashMap()) {
+      @Override
+      public dzi.a a(int $$0, int $$1) {
+         return new dzi.a(1.0, 0.0);
+      }
 
-   private static DataResult<dzi> a(dzi $$0) {
-      return $$0.s.length != o ? DataResult.error(() -> "heights has to be of length " + o) : DataResult.success($$0);
+      @Override
+      public double a(dxz.b $$0, double $$1) {
+         return $$1;
+      }
+
+      @Override
+      public ddj a(ddj $$0) {
+         return $$0;
+      }
+   };
+   private static final enm b = enm.b(new dzh(42L), qq.a);
+   private static final int c = ju.d(7) - 1;
+   private static final int d = ju.e(c + 3);
+   private static final int e = 2;
+   private static final int f = ju.e(5);
+   private static final double g = 8.0;
+   private final Long2ObjectOpenHashMap<dzj> h;
+   private final Long2ObjectOpenHashMap<dzj> i;
+
+   public static dzi a() {
+      return a;
    }
 
-   private dzi(int $$0, int $$1, Optional<double[]> $$2) {
-      this.s = $$2.orElse(ac.a(new double[o], $$0x -> Arrays.fill($$0x, Double.MAX_VALUE)));
-      this.u = new double[o][];
-      ObjectArrayList<List<jj<ddf>>> $$3 = new ObjectArrayList(o);
-      $$3.size(o);
-      this.t = $$3;
-      int $$4 = kc.c($$0);
-      int $$5 = kc.c($$1) - $$4;
-      this.p = dch.e($$4, $$5);
+   public static dzi a(@Nullable aqt $$0) {
+      if ($$0 == null) {
+         return a;
+      } else {
+         dbn $$1 = $$0.a();
+         if (!$$0.a($$1, d)) {
+            return a;
+         } else {
+            Long2ObjectOpenHashMap<dzj> $$2 = new Long2ObjectOpenHashMap();
+            Long2ObjectOpenHashMap<dzj> $$3 = new Long2ObjectOpenHashMap();
+            int $$4 = ayg.h(d + 1);
+
+            for (int $$5 = -d; $$5 <= d; $$5++) {
+               for (int $$6 = -d; $$6 <= d; $$6++) {
+                  if ($$5 * $$5 + $$6 * $$6 <= $$4) {
+                     int $$7 = $$1.e + $$5;
+                     int $$8 = $$1.f + $$6;
+                     dzj $$9 = dzj.a($$0, $$7, $$8);
+                     if ($$9 != null) {
+                        $$2.put(dbn.c($$7, $$8), $$9);
+                        if ($$5 >= -f && $$5 <= f && $$6 >= -f && $$6 <= f) {
+                           $$3.put(dbn.c($$7, $$8), $$9);
+                        }
+                     }
+                  }
+               }
+            }
+
+            return $$2.isEmpty() && $$3.isEmpty() ? a : new dzi($$2, $$3);
+         }
+      }
+   }
+
+   dzi(Long2ObjectOpenHashMap<dzj> $$0, Long2ObjectOpenHashMap<dzj> $$1) {
+      this.h = $$0;
+      this.i = $$1;
+   }
+
+   public dzi.a a(int $$0, int $$1) {
+      int $$2 = ju.a($$0);
+      int $$3 = ju.a($$1);
+      double $$4 = this.a($$2, 0, $$3, dzj::a);
+      if ($$4 != Double.MAX_VALUE) {
+         return new dzi.a(0.0, a($$4));
+      } else {
+         MutableDouble $$5 = new MutableDouble(0.0);
+         MutableDouble $$6 = new MutableDouble(0.0);
+         MutableDouble $$7 = new MutableDouble(Double.POSITIVE_INFINITY);
+         this.h.forEach(($$5x, $$6x) -> $$6x.a(ju.d(dbn.a($$5x)), ju.d(dbn.b($$5x)), ($$5xx, $$6xx, $$7x) -> {
+               double $$8x = ayg.f((double)($$2 - $$5xx), (double)($$3 - $$6xx));
+               if (!($$8x > (double)c)) {
+                  if ($$8x < $$7.doubleValue()) {
+                     $$7.setValue($$8x);
+                  }
+
+                  double $$9x = 1.0 / ($$8x * $$8x * $$8x * $$8x);
+                  $$6.add($$7x * $$9x);
+                  $$5.add($$9x);
+               }
+            }));
+         if ($$7.doubleValue() == Double.POSITIVE_INFINITY) {
+            return new dzi.a(1.0, 0.0);
+         } else {
+            double $$8 = $$6.doubleValue() / $$5.doubleValue();
+            double $$9 = ayg.a($$7.doubleValue() / (double)(c + 1), 0.0, 1.0);
+            $$9 = 3.0 * $$9 * $$9 - 2.0 * $$9 * $$9 * $$9;
+            return new dzi.a($$9, a($$8));
+         }
+      }
+   }
+
+   private static double a(double $$0) {
+      double $$1 = 1.0;
+      double $$2 = $$0 + 0.5;
+      double $$3 = ayg.c($$2, 8.0);
+      return 1.0 * (32.0 * ($$2 - 128.0) - 3.0 * ($$2 - 120.0) * $$3 + 3.0 * $$3 * $$3) / (128.0 * (32.0 - 3.0 * $$3));
+   }
+
+   public double a(dxz.b $$0, double $$1) {
+      int $$2 = ju.a($$0.a());
+      int $$3 = $$0.b() / 8;
+      int $$4 = ju.a($$0.c());
+      double $$5 = this.a($$2, $$3, $$4, dzj::b);
+      if ($$5 != Double.MAX_VALUE) {
+         return $$5;
+      } else {
+         MutableDouble $$6 = new MutableDouble(0.0);
+         MutableDouble $$7 = new MutableDouble(0.0);
+         MutableDouble $$8 = new MutableDouble(Double.POSITIVE_INFINITY);
+         this.i.forEach(($$6x, $$7x) -> $$7x.a(ju.d(dbn.a($$6x)), ju.d(dbn.b($$6x)), $$3 - 1, $$3 + 1, ($$6xx, $$7xx, $$8x, $$9x) -> {
+               double $$10x = ayg.g((double)($$2 - $$6xx), (double)(($$3 - $$7xx) * 2), (double)($$4 - $$8x));
+               if (!($$10x > 2.0)) {
+                  if ($$10x < $$8.doubleValue()) {
+                     $$8.setValue($$10x);
+                  }
+
+                  double $$11 = 1.0 / ($$10x * $$10x * $$10x * $$10x);
+                  $$7.add($$9x * $$11);
+                  $$6.add($$11);
+               }
+            }));
+         if ($$8.doubleValue() == Double.POSITIVE_INFINITY) {
+            return $$1;
+         } else {
+            double $$9 = $$7.doubleValue() / $$6.doubleValue();
+            double $$10 = ayg.a($$8.doubleValue() / 3.0, 0.0, 1.0);
+            return ayg.d($$10, $$9, $$1);
+         }
+      }
+   }
+
+   private double a(int $$0, int $$1, int $$2, dzi.b $$3) {
+      int $$4 = ju.e($$0);
+      int $$5 = ju.e($$2);
+      boolean $$6 = ($$0 & 3) == 0;
+      boolean $$7 = ($$2 & 3) == 0;
+      double $$8 = this.a($$3, $$4, $$5, $$0, $$1, $$2);
+      if ($$8 == Double.MAX_VALUE) {
+         if ($$6 && $$7) {
+            $$8 = this.a($$3, $$4 - 1, $$5 - 1, $$0, $$1, $$2);
+         }
+
+         if ($$8 == Double.MAX_VALUE) {
+            if ($$6) {
+               $$8 = this.a($$3, $$4 - 1, $$5, $$0, $$1, $$2);
+            }
+
+            if ($$8 == Double.MAX_VALUE && $$7) {
+               $$8 = this.a($$3, $$4, $$5 - 1, $$0, $$1, $$2);
+            }
+         }
+      }
+
+      return $$8;
+   }
+
+   private double a(dzi.b $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
+      dzj $$6 = (dzj)this.h.get(dbn.c($$1, $$2));
+      return $$6 != null ? $$0.get($$6, $$3 - ju.d($$1), $$4, $$5 - ju.d($$2)) : Double.MAX_VALUE;
+   }
+
+   public ddj a(ddj $$0) {
+      return ($$1, $$2, $$3, $$4) -> {
+         jj<ddg> $$5 = this.a($$1, $$2, $$3);
+         return $$5 == null ? $$0.getNoiseBiome($$1, $$2, $$3, $$4) : $$5;
+      };
    }
 
    @Nullable
-   public static dzi a(aqt $$0, int $$1, int $$2) {
-      dug $$3 = $$0.a($$1, $$2);
-      dzi $$4 = $$3.t();
-      if ($$4 != null && !$$3.k().d(dvh.f)) {
-         $$4.a($$3, a($$0, $$1, $$2, false));
-         return $$4;
-      } else {
+   private jj<ddg> a(int $$0, int $$1, int $$2) {
+      MutableDouble $$3 = new MutableDouble(Double.POSITIVE_INFINITY);
+      MutableObject<jj<ddg>> $$4 = new MutableObject();
+      this.h.forEach(($$5x, $$6x) -> $$6x.a(ju.d(dbn.a($$5x)), $$1, ju.d(dbn.b($$5x)), ($$4xx, $$5xx, $$6xx) -> {
+            double $$7 = ayg.f((double)($$0 - $$4xx), (double)($$2 - $$5xx));
+            if (!($$7 > (double)c)) {
+               if ($$7 < $$3.doubleValue()) {
+                  $$4.setValue($$6xx);
+                  $$3.setValue($$7);
+               }
+            }
+         }));
+      if ($$3.doubleValue() == Double.POSITIVE_INFINITY) {
          return null;
+      } else {
+         double $$5 = b.a((double)$$0, 0.0, (double)$$2) * 12.0;
+         double $$6 = ayg.a(($$3.doubleValue() + $$5) / (double)(c + 1), 0.0, 1.0);
+         return $$6 > 0.5 ? null : (jj)$$4.getValue();
       }
    }
 
-   public static Set<jg> a(ddb $$0, int $$1, int $$2, boolean $$3) {
-      Set<jg> $$4 = EnumSet.noneOf(jg.class);
-
-      for (jg $$5 : jg.values()) {
-         int $$6 = $$1 + $$5.b();
-         int $$7 = $$2 + $$5.c();
-         if ($$0.a($$6, $$7).s() == $$3) {
-            $$4.add($$5);
-         }
-      }
-
-      return $$4;
-   }
-
-   private void a(dug $$0, Set<jg> $$1) {
-      if (!this.r) {
-         if ($$1.contains(jg.a) || $$1.contains(jg.g) || $$1.contains(jg.h)) {
-            this.a(a(0, 0), $$0, 0, 0);
-         }
-
-         if ($$1.contains(jg.a)) {
-            for (int $$2 = 1; $$2 < j; $$2++) {
-               this.a(a($$2, 0), $$0, 4 * $$2, 0);
+   public static void a(aqt $$0, duh $$1) {
+      dbn $$2 = $$1.f();
+      boolean $$3 = $$1.s();
+      ja.a $$4 = new ja.a();
+      ja $$5 = new ja($$2.d(), 0, $$2.e());
+      dzj $$6 = $$1.t();
+      if ($$6 != null) {
+         int $$7 = $$6.a().I_();
+         int $$8 = $$6.a().am() - 1;
+         if ($$3) {
+            for (int $$9 = 0; $$9 < 16; $$9++) {
+               for (int $$10 = 0; $$10 < 16; $$10++) {
+                  a($$1, $$4.a($$5, $$9, $$7 - 1, $$10));
+                  a($$1, $$4.a($$5, $$9, $$7, $$10));
+                  a($$1, $$4.a($$5, $$9, $$8, $$10));
+                  a($$1, $$4.a($$5, $$9, $$8 + 1, $$10));
+               }
             }
          }
 
-         if ($$1.contains(jg.g)) {
-            for (int $$3 = 1; $$3 < j; $$3++) {
-               this.a(a(0, $$3), $$0, 0, 4 * $$3);
-            }
-         }
+         for (jf $$11 : jf.c.a) {
+            if ($$0.a($$2.e + $$11.j(), $$2.f + $$11.l()).s() != $$3) {
+               int $$12 = $$11 == jf.f ? 15 : 0;
+               int $$13 = $$11 == jf.e ? 0 : 15;
+               int $$14 = $$11 == jf.d ? 15 : 0;
+               int $$15 = $$11 == jf.c ? 0 : 15;
 
-         if ($$1.contains(jg.c)) {
-            for (int $$4 = 1; $$4 < j; $$4++) {
-               this.a(b(l, $$4), $$0, 15, 4 * $$4);
-            }
-         }
+               for (int $$16 = $$12; $$16 <= $$13; $$16++) {
+                  for (int $$17 = $$14; $$17 <= $$15; $$17++) {
+                     int $$18 = Math.min($$8, $$1.a(dyg.a.e, $$16, $$17)) + 1;
 
-         if ($$1.contains(jg.e)) {
-            for (int $$5 = 0; $$5 < j; $$5++) {
-               this.a(b($$5, l), $$0, 4 * $$5, 15);
-            }
-         }
-
-         if ($$1.contains(jg.c) && $$1.contains(jg.b)) {
-            this.a(b(l, 0), $$0, 15, 0);
-         }
-
-         if ($$1.contains(jg.c) && $$1.contains(jg.e) && $$1.contains(jg.d)) {
-            this.a(b(l, l), $$0, 15, 15);
-         }
-
-         this.r = true;
-      }
-   }
-
-   private void a(int $$0, dug $$1, int $$2, int $$3) {
-      if (this.s[$$0] == Double.MAX_VALUE) {
-         this.s[$$0] = (double)this.a($$1, $$2, $$3);
-      }
-
-      this.u[$$0] = this.a($$1, $$2, $$3, ayg.a(this.s[$$0]));
-      this.t.set($$0, this.b($$1, $$2, $$3));
-   }
-
-   private int a(dug $$0, int $$1, int $$2) {
-      int $$3;
-      if ($$0.b(dyf.a.a)) {
-         $$3 = Math.min($$0.a(dyf.a.a, $$1, $$2) + 1, this.p.am());
-      } else {
-         $$3 = this.p.am();
-      }
-
-      int $$5 = this.p.I_();
-      ja.a $$6 = new ja.a($$1, $$3, $$2);
-
-      while ($$6.v() > $$5) {
-         $$6.c(jf.a);
-         if (q.contains($$0.a_($$6).b())) {
-            return $$6.v();
-         }
-      }
-
-      return $$5;
-   }
-
-   private static double a(dug $$0, ja.a $$1) {
-      return a($$0, (ja)$$1.c(jf.a)) ? 1.0 : -1.0;
-   }
-
-   private static double b(dug $$0, ja.a $$1) {
-      double $$2 = 0.0;
-
-      for (int $$3 = 0; $$3 < 7; $$3++) {
-         $$2 += a($$0, $$1);
-      }
-
-      return $$2;
-   }
-
-   private double[] a(dug $$0, int $$1, int $$2, int $$3) {
-      double[] $$4 = new double[this.b()];
-      Arrays.fill($$4, -1.0);
-      ja.a $$5 = new ja.a($$1, this.p.am(), $$2);
-      double $$6 = b($$0, $$5);
-
-      for (int $$7 = $$4.length - 2; $$7 >= 0; $$7--) {
-         double $$8 = a($$0, $$5);
-         double $$9 = b($$0, $$5);
-         $$4[$$7] = ($$6 + $$8 + $$9) / 15.0;
-         $$6 = $$9;
-      }
-
-      int $$10 = this.a(ayg.a($$3, 8));
-      if ($$10 >= 0 && $$10 < $$4.length - 1) {
-         double $$11 = ((double)$$3 + 0.5) % 8.0 / 8.0;
-         double $$12 = (1.0 - $$11) / $$11;
-         double $$13 = Math.max($$12, 1.0) * 0.25;
-         $$4[$$10 + 1] = -$$12 / $$13;
-         $$4[$$10] = 1.0 / $$13;
-      }
-
-      return $$4;
-   }
-
-   private List<jj<ddf>> b(dug $$0, int $$1, int $$2) {
-      ObjectArrayList<jj<ddf>> $$3 = new ObjectArrayList(this.c());
-      $$3.size(this.c());
-
-      for (int $$4 = 0; $$4 < $$3.size(); $$4++) {
-         int $$5 = $$4 + ju.a(this.p.I_());
-         $$3.set($$4, $$0.getNoiseBiome(ju.a($$1), $$5, ju.a($$2)));
-      }
-
-      return $$3;
-   }
-
-   private static boolean a(dug $$0, ja $$1) {
-      dsk $$2 = $$0.a_($$1);
-      if ($$2.i()) {
-         return false;
-      } else if ($$2.a(avw.O)) {
-         return false;
-      } else if ($$2.a(avw.t)) {
-         return false;
-      } else {
-         return $$2.a(dfj.eT) || $$2.a(dfj.eU) ? false : !$$2.k($$0, $$1).c();
-      }
-   }
-
-   protected double a(int $$0, int $$1, int $$2) {
-      if ($$0 == l || $$2 == l) {
-         return this.s[b($$0, $$2)];
-      } else {
-         return $$0 != 0 && $$2 != 0 ? Double.MAX_VALUE : this.s[a($$0, $$2)];
-      }
-   }
-
-   private double a(@Nullable double[] $$0, int $$1) {
-      if ($$0 == null) {
-         return Double.MAX_VALUE;
-      } else {
-         int $$2 = this.a($$1);
-         return $$2 >= 0 && $$2 < $$0.length ? $$0[$$2] * 0.1 : Double.MAX_VALUE;
-      }
-   }
-
-   protected double b(int $$0, int $$1, int $$2) {
-      if ($$1 == this.e()) {
-         return 0.1;
-      } else if ($$0 == l || $$2 == l) {
-         return this.a(this.u[b($$0, $$2)], $$1);
-      } else {
-         return $$0 != 0 && $$2 != 0 ? Double.MAX_VALUE : this.a(this.u[a($$0, $$2)], $$1);
-      }
-   }
-
-   protected void a(int $$0, int $$1, int $$2, dzi.a $$3) {
-      if ($$1 >= ju.a(this.p.I_()) && $$1 < ju.a(this.p.am())) {
-         int $$4 = $$1 - ju.a(this.p.I_());
-
-         for (int $$5 = 0; $$5 < this.t.size(); $$5++) {
-            if (this.t.get($$5) != null) {
-               jj<ddf> $$6 = this.t.get($$5).get($$4);
-               if ($$6 != null) {
-                  $$3.consume($$0 + b($$5), $$2 + c($$5), $$6);
+                     for (int $$19 = $$7; $$19 < $$18; $$19++) {
+                        a($$1, $$4.a($$5, $$16, $$19, $$17));
+                     }
+                  }
                }
             }
          }
       }
    }
 
-   protected void a(int $$0, int $$1, dzi.c $$2) {
-      for (int $$3 = 0; $$3 < this.s.length; $$3++) {
-         double $$4 = this.s[$$3];
-         if ($$4 != Double.MAX_VALUE) {
-            $$2.consume($$0 + b($$3), $$1 + c($$3), $$4);
-         }
+   private static void a(duh $$0, ja $$1) {
+      dsl $$2 = $$0.a_($$1);
+      if ($$2.a(avw.O)) {
+         $$0.e($$1);
+      }
+
+      eoj $$3 = $$0.b_($$1);
+      if (!$$3.c()) {
+         $$0.e($$1);
       }
    }
 
-   protected void a(int $$0, int $$1, int $$2, int $$3, dzi.b $$4) {
-      int $$5 = this.d();
-      int $$6 = Math.max(0, $$2 - $$5);
-      int $$7 = Math.min(this.b(), $$3 - $$5);
+   public static void a(ddc $$0, dvb $$1) {
+      dbn $$2 = $$1.f();
+      Builder<jg, dzj> $$3 = ImmutableMap.builder();
 
-      for (int $$8 = 0; $$8 < this.u.length; $$8++) {
-         double[] $$9 = this.u[$$8];
-         if ($$9 != null) {
-            int $$10 = $$0 + b($$8);
-            int $$11 = $$1 + c($$8);
+      for (jg $$4 : jg.values()) {
+         int $$5 = $$2.e + $$4.b();
+         int $$6 = $$2.f + $$4.c();
+         dzj $$7 = $$0.a($$5, $$6).t();
+         if ($$7 != null) {
+            $$3.put($$4, $$7);
+         }
+      }
 
-            for (int $$12 = $$6; $$12 < $$7; $$12++) {
-               $$4.consume($$10, $$12 + $$5, $$11, $$9[$$12] * 0.1);
+      ImmutableMap<jg, dzj> $$8 = $$3.build();
+      if ($$1.s() || !$$8.isEmpty()) {
+         dzi.c $$9 = a($$1.t(), $$8);
+         dug.a $$10 = ($$1x, $$2x, $$3x) -> {
+            double $$4x = (double)$$1x + 0.5 + b.a((double)$$1x, (double)$$2x, (double)$$3x) * 4.0;
+            double $$5x = (double)$$2x + 0.5 + b.a((double)$$2x, (double)$$3x, (double)$$1x) * 4.0;
+            double $$6x = (double)$$3x + 0.5 + b.a((double)$$3x, (double)$$1x, (double)$$2x) * 4.0;
+            return $$9.getDistance($$4x, $$5x, $$6x) < 4.0;
+         };
+         Stream.of(dyc.a.values()).map($$1::b).forEach($$1x -> $$1x.a($$10));
+      }
+   }
+
+   public static dzi.c a(@Nullable dzj $$0, Map<jg, dzj> $$1) {
+      List<dzi.c> $$2 = Lists.newArrayList();
+      if ($$0 != null) {
+         $$2.add(a(null, $$0));
+      }
+
+      $$1.forEach(($$1x, $$2x) -> $$2.add(a($$1x, $$2x)));
+      return ($$1x, $$2x, $$3) -> {
+         double $$4 = Double.POSITIVE_INFINITY;
+
+         for (dzi.c $$5 : $$2) {
+            double $$6 = $$5.getDistance($$1x, $$2x, $$3);
+            if ($$6 < $$4) {
+               $$4 = $$6;
             }
          }
+
+         return $$4;
+      };
+   }
+
+   private static dzi.c a(@Nullable jg $$0, dzj $$1) {
+      double $$2 = 0.0;
+      double $$3 = 0.0;
+      if ($$0 != null) {
+         for (jf $$4 : $$0.a()) {
+            $$2 += (double)($$4.j() * 16);
+            $$3 += (double)($$4.l() * 16);
+         }
       }
+
+      double $$5 = $$2;
+      double $$6 = $$3;
+      double $$7 = (double)$$1.a().J_() / 2.0;
+      double $$8 = (double)$$1.a().I_() + $$7;
+      return ($$4x, $$5x, $$6x) -> a($$4x - 8.0 - $$5, $$5x - $$8, $$6x - 8.0 - $$6, 8.0, $$7, 8.0);
    }
 
-   private int b() {
-      return this.p.an() * 2;
+   private static double a(double $$0, double $$1, double $$2, double $$3, double $$4, double $$5) {
+      double $$6 = Math.abs($$0) - $$3;
+      double $$7 = Math.abs($$1) - $$4;
+      double $$8 = Math.abs($$2) - $$5;
+      return ayg.g(Math.max(0.0, $$6), Math.max(0.0, $$7), Math.max(0.0, $$8));
    }
 
-   private int c() {
-      return ju.d(this.p.an());
+   public static record a(double a, double b) {
    }
 
-   private int d() {
-      return this.e() + 1;
+   interface b {
+      double get(dzj var1, int var2, int var3, int var4);
    }
 
-   private int e() {
-      return this.p.ao() * 2;
-   }
-
-   private int a(int $$0) {
-      return $$0 - this.d();
-   }
-
-   private static int a(int $$0, int $$1) {
-      return k - $$0 + $$1;
-   }
-
-   private static int b(int $$0, int $$1) {
-      return m + $$0 + l - $$1;
-   }
-
-   private static int b(int $$0) {
-      if ($$0 < m) {
-         return d(k - $$0);
-      } else {
-         int $$1 = $$0 - m;
-         return l - d(l - $$1);
-      }
-   }
-
-   private static int c(int $$0) {
-      if ($$0 < m) {
-         return d($$0 - k);
-      } else {
-         int $$1 = $$0 - m;
-         return l - d($$1 - l);
-      }
-   }
-
-   private static int d(int $$0) {
-      return $$0 & ~($$0 >> 31);
-   }
-
-   public dch a() {
-      return this.p;
-   }
-
-   protected interface a {
-      void consume(int var1, int var2, jj<ddf> var3);
-   }
-
-   protected interface b {
-      void consume(int var1, int var2, int var3, double var4);
-   }
-
-   protected interface c {
-      void consume(int var1, int var2, double var3);
+   public interface c {
+      double getDistance(double var1, double var3, double var5);
    }
 }

@@ -1,47 +1,28 @@
+import java.util.List;
 import javax.annotation.Nullable;
 
-public interface gtc {
-   akk a();
+public class gtc {
+   private final List<gtb> a;
+   private final boolean b;
+   @Nullable
+   private final String c;
+
+   public gtc(List<gtb> $$0, boolean $$1, @Nullable String $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
+   }
+
+   public List<gtb> a() {
+      return this.a;
+   }
+
+   public boolean b() {
+      return this.b;
+   }
 
    @Nullable
-   gui a(guh var1);
-
-   gsz b();
-
-   avi c();
-
-   boolean d();
-
-   boolean l();
-
-   int e();
-
-   float f();
-
-   float g();
-
-   double h();
-
-   double i();
-
-   double j();
-
-   gtc.a k();
-
-   default boolean r() {
-      return false;
-   }
-
-   default boolean s() {
-      return true;
-   }
-
-   static ayo t() {
-      return ayo.a();
-   }
-
-   public static enum a {
-      a,
-      b;
+   public String c() {
+      return this.c;
    }
 }

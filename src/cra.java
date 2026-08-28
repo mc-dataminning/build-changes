@@ -1,69 +1,87 @@
-public class cra extends cph {
-   private static final int k = 27;
-   private final bpz l;
+public class cra extends cre {
+   private final cpz a;
+   private final cml b;
+   private int g;
 
-   public cra(int $$0, cmj $$1) {
-      this($$0, $$1, new bqp(27));
-   }
-
-   public cra(int $$0, cmj $$1, bpz $$2) {
-      super(cqp.u, $$0);
-      a($$2, 27);
-      this.l = $$2;
-      $$2.d_($$1.l);
-      int $$3 = 3;
-      int $$4 = 9;
-
-      for (int $$5 = 0; $$5 < 3; $$5++) {
-         for (int $$6 = 0; $$6 < 9; $$6++) {
-            this.a(new crb($$2, $$6 + $$5 * 9, 8 + $$6 * 18, 18 + $$5 * 18));
-         }
-      }
-
-      for (int $$7 = 0; $$7 < 3; $$7++) {
-         for (int $$8 = 0; $$8 < 9; $$8++) {
-            this.a(new crd($$1, $$8 + $$7 * 9 + 9, 8 + $$8 * 18, 84 + $$7 * 18));
-         }
-      }
-
-      for (int $$9 = 0; $$9 < 9; $$9++) {
-         this.a(new crd($$1, $$9, 8 + $$9 * 18, 142));
-      }
+   public cra(cml $$0, cpz $$1, bqa $$2, int $$3, int $$4, int $$5) {
+      super($$2, $$3, $$4, $$5);
+      this.b = $$0;
+      this.a = $$1;
    }
 
    @Override
-   public boolean b(cmk $$0) {
-      return this.l.a($$0);
+   public boolean a(cud $$0) {
+      return false;
    }
 
    @Override
-   public cuc b(cmk $$0, int $$1) {
-      cuc $$2 = cuc.l;
-      crd $$3 = this.i.get($$1);
-      if ($$3 != null && $$3.h()) {
-         cuc $$4 = $$3.g();
-         $$2 = $$4.s();
-         if ($$1 < this.l.b()) {
-            if (!this.a($$4, this.l.b(), this.i.size(), true)) {
-               return cuc.l;
+   public cud a(int $$0) {
+      if (this.h()) {
+         this.g = this.g + Math.min($$0, this.g().H());
+      }
+
+      return super.a($$0);
+   }
+
+   @Override
+   protected void a(cud $$0, int $$1) {
+      this.g += $$1;
+      this.b_($$0);
+   }
+
+   @Override
+   protected void b(int $$0) {
+      this.g += $$0;
+   }
+
+   @Override
+   protected void b_(cud $$0) {
+      if (this.g > 0) {
+         $$0.a(this.b.dR(), this.b, this.g);
+      }
+
+      if (this.c instanceof cqy $$1) {
+         $$1.a(this.b, this.a.h());
+      }
+
+      this.g = 0;
+   }
+
+   @Override
+   public void a(cml $$0, cud $$1) {
+      this.b_($$1);
+      cxz.a $$2 = this.a.aB_();
+      cxz $$3 = $$2.a();
+      int $$4 = $$2.b();
+      int $$5 = $$2.c();
+      js<cud> $$6 = $$0.dR().r().c(cyp.a, $$3, $$0.dR());
+
+      for (int $$7 = 0; $$7 < $$3.g(); $$7++) {
+         for (int $$8 = 0; $$8 < $$3.f(); $$8++) {
+            int $$9 = $$8 + $$4 + ($$7 + $$5) * this.a.f();
+            cud $$10 = this.a.a($$9);
+            cud $$11 = $$6.get($$8 + $$7 * $$3.f());
+            if (!$$10.e()) {
+               this.a.a($$9, 1);
+               $$10 = this.a.a($$9);
             }
-         } else if (!this.a($$4, 0, this.l.b(), false)) {
-            return cuc.l;
-         }
 
-         if ($$4.e()) {
-            $$3.e(cuc.l);
-         } else {
-            $$3.c();
+            if (!$$11.e()) {
+               if ($$10.e()) {
+                  this.a.a($$9, $$11);
+               } else if (cud.c($$10, $$11)) {
+                  $$11.g($$10.H());
+                  this.a.a($$9, $$11);
+               } else if (!this.b.ga().f($$11)) {
+                  this.b.a($$11, false);
+               }
+            }
          }
       }
-
-      return $$2;
    }
 
    @Override
-   public void a(cmk $$0) {
-      super.a($$0);
-      this.l.c($$0);
+   public boolean f() {
+      return true;
    }
 }

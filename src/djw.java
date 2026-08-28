@@ -1,105 +1,82 @@
 import com.mojang.serialization.MapCodec;
+import java.util.function.ToIntFunction;
 
-public class djw extends dlq implements dmi {
-   public static final MapCodec<djw> b = b(djw::new);
-   public static final dtb c = dta.C;
-   public static final dtb d = dta.w;
-   private static final int k = 8;
-   public static final int e = 128;
-   private static final int l = 200;
+public class djw extends dfi implements dmj {
+   public static final MapCodec<djw> a = b(djw::new);
+   public static final int b = 15;
+   public static final dtl c = dtb.aP;
+   public static final dtc d = dtb.C;
+   public static final ToIntFunction<dsl> e = $$0 -> $$0.c(c);
 
    @Override
    public MapCodec<djw> a() {
-      return b;
+      return a;
    }
 
-   public djw(dsj.d $$0) {
+   public djw(dsk.d $$0) {
       super($$0);
-      this.k(this.E.b().a(a, jf.b).a(c, Boolean.valueOf(false)).a(d, Boolean.valueOf(false)));
+      this.k(this.E.b().a(c, Integer.valueOf(15)).a(d, Boolean.valueOf(false)));
    }
 
    @Override
-   public dsk a(cxm $$0) {
-      eoh $$1 = $$0.q().b_($$0.a());
-      boolean $$2 = $$1.a() == eoi.c;
-      return this.o().a(a, $$0.k()).a(c, Boolean.valueOf($$2));
+   protected void a(dsm.a<dfi, dsl> $$0) {
+      $$0.a(c, d);
    }
 
    @Override
-   protected dsk a(dsk $$0, jf $$1, dsk $$2, dcg $$3, ja $$4, ja $$5) {
-      if ($$0.c(c)) {
-         $$3.a($$4, eoi.c, eoi.c.a($$3));
+   protected bqh a(dsl $$0, dcg $$1, ja $$2, cml $$3, ewd $$4) {
+      if (!$$1.B && $$3.gx()) {
+         $$1.a($$2, $$0.a(c), 2);
+         return bqh.a;
+      } else {
+         return bqh.c;
+      }
+   }
+
+   @Override
+   protected exa a(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
+      return $$3.a(cug.hC) ? ewx.b() : ewx.a();
+   }
+
+   @Override
+   protected boolean a_(dsl $$0, dbm $$1, ja $$2) {
+      return $$0.u().c();
+   }
+
+   @Override
+   protected dlo a_(dsl $$0) {
+      return dlo.a;
+   }
+
+   @Override
+   protected float d(dsl $$0, dbm $$1, ja $$2) {
+      return 1.0F;
+   }
+
+   @Override
+   protected dsl a(dsl $$0, jf $$1, dsl $$2, dch $$3, ja $$4, ja $$5) {
+      if ($$0.c(d)) {
+         $$3.a($$4, eok.c, eok.c.a($$3));
       }
 
       return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected eoh b_(dsk $$0) {
-      return $$0.c(c) ? eoi.c.a(false) : super.b_($$0);
+   protected eoj b_(dsl $$0) {
+      return $$0.c(d) ? eok.c.a(false) : super.b_($$0);
    }
 
    @Override
-   protected int a(dsk $$0, dbl $$1, ja $$2, jf $$3) {
-      return $$0.c(d) ? 15 : 0;
+   public cud a(dcj $$0, ja $$1, dsl $$2) {
+      return a(super.a($$0, $$1, $$2), $$2.c(c));
    }
 
-   @Override
-   protected int b(dsk $$0, dbl $$1, ja $$2, jf $$3) {
-      return $$0.c(d) && $$0.c(a) == $$3 ? 15 : 0;
-   }
-
-   public void d(dsk $$0, dcf $$1, ja $$2) {
-      $$1.a($$2, $$0.a(d, Boolean.valueOf(true)), 3);
-      this.e($$0, $$1, $$2);
-      $$1.a($$2, this, 8);
-      $$1.c(3002, $$2, $$0.c(a).o().ordinal());
-   }
-
-   private void e(dsk $$0, dcf $$1, ja $$2) {
-      $$1.a($$2.a($$0.c(a).g()), this);
-   }
-
-   @Override
-   protected void a(dsk $$0, aqm $$1, ja $$2, ayo $$3) {
-      $$1.a($$2, $$0.a(d, Boolean.valueOf(false)), 3);
-      this.e($$0, $$1, $$2);
-   }
-
-   @Override
-   public void a(dsk $$0, dcf $$1, ja $$2, ayo $$3) {
-      if ($$1.ac() && (long)$$1.z.a(200) <= $$1.Z() % 200L && $$2.v() == $$1.a(dyf.a.b, $$2.u(), $$2.w()) - 1) {
-         ayk.a($$0.c(a).o(), $$1, $$2, 0.125, lj.aT, bpr.a(1, 2));
+   public static cud a(cud $$0, int $$1) {
+      if ($$1 != 15) {
+         $$0.b(kn.ab, cwn.a.a(c, $$1));
       }
-   }
 
-   @Override
-   protected void a(dsk $$0, dcf $$1, ja $$2, dsk $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$0.c(d)) {
-            this.e($$0, $$1, $$2);
-         }
-
-         super.a($$0, $$1, $$2, $$3, $$4);
-      }
-   }
-
-   @Override
-   protected void b(dsk $$0, dcf $$1, ja $$2, dsk $$3, boolean $$4) {
-      if (!$$0.a($$3.b())) {
-         if ($$0.c(d) && !$$1.P().a($$2, this)) {
-            $$1.a($$2, $$0.a(d, Boolean.valueOf(false)), 18);
-         }
-      }
-   }
-
-   @Override
-   protected void a(dsl.a<dfh, dsk> $$0) {
-      $$0.a(a, d, c);
-   }
-
-   @Override
-   protected boolean e_(dsk $$0) {
-      return true;
+      return $$0;
    }
 }

@@ -1,25 +1,25 @@
 import com.mojang.serialization.MapCodec;
 import java.util.List;
 
-class dzl extends dzo {
+class dzl extends dzp {
    public static final MapCodec<dzl> a = a(dzl::new);
 
-   public dzl(List<dzm> $$0) {
+   public dzl(List<dzn> $$0) {
       super($$0);
    }
 
-   public boolean a(ddb $$0, ja $$1) {
-      for (dzm $$2 : this.e) {
-         if ($$2.test($$0, $$1)) {
-            return true;
+   public boolean a(ddc $$0, ja $$1) {
+      for (dzn $$2 : this.e) {
+         if (!$$2.test($$0, $$1)) {
+            return false;
          }
       }
 
-      return false;
+      return true;
    }
 
    @Override
-   public dzn<?> a() {
-      return dzn.i;
+   public dzo<?> a() {
+      return dzo.j;
    }
 }

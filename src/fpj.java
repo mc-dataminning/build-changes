@@ -1,47 +1,33 @@
-import javax.annotation.Nullable;
-import org.joml.Vector3f;
+public class fpj extends fhu {
+   private static final akk a = new akk("widget/page_forward_highlighted");
+   private static final akk b = new akk("widget/page_forward");
+   private static final akk c = new akk("widget/page_backward_highlighted");
+   private static final akk d = new akk("widget/page_backward");
+   private final boolean u;
+   private final boolean v;
 
-public class fpj extends foa {
-   public static final float b = 62.500004F;
-   public static final float c = 0.9765628F;
-   private static final Vector3f q = new Vector3f(0.9765628F, 0.9765628F, 0.9765628F);
-   @Nullable
-   private ggr.a r;
-
-   public fpj(dra $$0, boolean $$1, boolean $$2) {
-      super($$0, $$1, $$2);
+   public fpj(int $$0, int $$1, boolean $$2, fhu.c $$3, boolean $$4) {
+      super($$0, $$1, 23, 13, wt.a, $$3, q);
+      this.u = $$2;
+      this.v = $$4;
    }
 
    @Override
-   protected void aP_() {
-      super.aP_();
-      this.r = ggr.a(this.l.aR(), this.a);
-   }
-
-   @Override
-   protected void b(fhf $$0, dsk $$1) {
-      super.b($$0, $$1);
-      boolean $$2 = $$1.b() instanceof dnc;
-      if (!$$2) {
-         $$0.c().a(0.0F, 35.0F, 0.0F);
+   public void b(fhh $$0, int $$1, int $$2, float $$3) {
+      akk $$4;
+      if (this.u) {
+         $$4 = this.B() ? a : b;
+      } else {
+         $$4 = this.B() ? c : d;
       }
+
+      $$0.a($$4, this.D(), this.E(), 23, 13);
    }
 
    @Override
-   protected void a(fhf $$0, dsk $$1) {
-      if (this.r != null) {
-         boolean $$2 = $$1.b() instanceof dnc;
-         $$0.c().a(0.0F, 31.0F, 0.0F);
-         $$0.c().b(62.500004F, 62.500004F, -62.500004F);
-         grs $$3 = ges.a(this.a);
-         faq $$4 = $$3.a($$0.d(), this.r::a);
-         this.r.b.k = $$2;
-         this.r.a.a($$0.c(), $$4, 15728880, gpf.d);
+   public void a(guj $$0) {
+      if (this.v) {
+         $$0.a(gsz.a(avh.cy, 1.0F));
       }
-   }
-
-   @Override
-   protected Vector3f m() {
-      return q;
    }
 }

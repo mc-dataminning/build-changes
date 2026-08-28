@@ -1,39 +1,23 @@
-import com.mojang.blaze3d.systems.RenderSystem;
-import javax.annotation.Nullable;
+public class fiy {
+   public static final fiy a = new fiy("Merry X-mas!");
+   public static final fiy b = new fiy("Happy new year!");
+   public static final fiy c = new fiy("OOoooOOOoooo! Spooky!");
+   private static final int d = 123;
+   private static final int e = 69;
+   private final String f;
 
-public class fiy extends fhq {
-   @Nullable
-   protected fjf a;
-   protected boolean b;
-
-   public fiy(int $$0, int $$1, int $$2, int $$3, boolean $$4) {
-      super($$0, $$1, $$2, $$3, wt.a);
-      this.b = $$4;
+   public fiy(String $$0) {
+      this.f = $$0;
    }
 
-   public void a(fjf $$0) {
-      this.a = $$0;
-   }
-
-   public void b(boolean $$0) {
-      this.b = $$0;
-   }
-
-   public boolean a() {
-      return this.b;
-   }
-
-   @Override
-   public void a(flo $$0) {
-      this.c($$0);
-   }
-
-   @Override
-   public void b(fhf $$0, int $$1, int $$2, float $$3) {
-      if (this.a != null) {
-         RenderSystem.disableDepthTest();
-         $$0.a(this.a.a(this.b, this.B()), this.D(), this.E(), this.g, this.h);
-         RenderSystem.enableDepthTest();
-      }
+   public void a(fhh $$0, int $$1, fhf $$2, int $$3) {
+      $$0.c().a();
+      $$0.c().a((float)$$1 / 2.0F + 123.0F, 69.0F, 0.0F);
+      $$0.c().a(a.f.rotationDegrees(-20.0F));
+      float $$4 = 1.8F - ayg.e(ayg.a((float)(ac.c() % 1000L) / 1000.0F * (float) (Math.PI * 2)) * 0.1F);
+      $$4 = $$4 * 100.0F / (float)($$2.b(this.f) + 32);
+      $$0.c().b($$4, $$4, $$4);
+      $$0.a($$2, this.f, 0, -8, 16776960 | $$3);
+      $$0.c().b();
    }
 }

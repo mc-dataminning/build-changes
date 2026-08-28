@@ -45,7 +45,7 @@ public class ark extends arj implements abd, wi {
       this.b(new zi(new aaa(this.d.getServerModName())));
       jq<akt> $$0 = this.d.be();
       List<atd> $$1 = this.d.bh().b().flatMap($$0x -> $$0x.a().d().stream()).toList();
-      this.b(new aba(cpa.d.b(this.d.bc().K())));
+      this.b(new aba(cpb.d.b(this.d.bc().K())));
       this.l = new arv($$1, $$0);
       this.i.add(this.l);
       this.n();

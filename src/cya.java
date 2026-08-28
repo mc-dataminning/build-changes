@@ -1,22 +1,8 @@
-public abstract class cya implements cxz {
-   private final cxx a;
-
-   public cya(cxx $$0) {
-      this.a = $$0;
-   }
-
+public interface cya extends cyj<cxz> {
    @Override
-   public boolean ao_() {
-      return true;
+   default cyp<?> e() {
+      return cyp.a;
    }
 
-   @Override
-   public cuc a(jl.a $$0) {
-      return cuc.l;
-   }
-
-   @Override
-   public cxx d() {
-      return this.a;
-   }
+   cxy d();
 }

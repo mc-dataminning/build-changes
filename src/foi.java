@@ -1,82 +1,48 @@
-public class foi extends fnx {
-   private final dpz s;
-   private fhz<dpz.a> u;
-   private fhz<Boolean> v;
-   private fhz<Boolean> w;
-   private dpz.a x = dpz.a.c;
-   private boolean y;
-   private boolean z;
+public class foi extends foa<cpo> {
+   private static final akk D = new akk("container/brewing_stand/fuel_length");
+   private static final akk E = new akk("container/brewing_stand/brew_progress");
+   private static final akk F = new akk("container/brewing_stand/bubbles");
+   private static final akk G = new akk("textures/gui/container/brewing_stand.png");
+   private static final int[] H = new int[]{29, 24, 20, 16, 11, 6, 0};
 
-   public foi(dpz $$0) {
-      this.s = $$0;
-   }
-
-   @Override
-   dbg m() {
-      return this.s.b();
-   }
-
-   @Override
-   int E() {
-      return 135;
+   public foi(cpo $$0, cmk $$1, wu $$2) {
+      super($$0, $$1, $$2);
    }
 
    @Override
    protected void aP_() {
       super.aP_();
-      this.u = this.c(fhz.<dpz.a>a($$0 -> {
-         return switch ($$0) {
-            case a -> wu.c("advMode.mode.sequence");
-            case b -> wu.c("advMode.mode.auto");
-            case c -> wu.c("advMode.mode.redstone");
-         };
-      }).a(dpz.a.values()).a().a(this.x).a(this.m / 2 - 50 - 100 - 4, 165, 100, 20, wu.c("advMode.mode"), ($$0, $$1) -> this.x = $$1));
-      this.v = this.c(
-         fhz.a(wu.c("advMode.mode.conditional"), wu.c("advMode.mode.unconditional"))
-            .a()
-            .a(this.y)
-            .a(this.m / 2 - 50, 165, 100, 20, wu.c("advMode.type"), ($$0, $$1) -> this.y = $$1)
-      );
-      this.w = this.c(
-         fhz.a(wu.c("advMode.mode.autoexec.bat"), wu.c("advMode.mode.redstoneTriggered"))
-            .a()
-            .a(this.z)
-            .a(this.m / 2 + 50 + 4, 165, 100, 20, wu.c("advMode.triggering"), ($$0, $$1) -> this.z = $$1)
-      );
-      this.e(false);
-   }
-
-   private void e(boolean $$0) {
-      this.c.j = $$0;
-      this.r.j = $$0;
-      this.u.j = $$0;
-      this.v.j = $$0;
-      this.w.j = $$0;
-   }
-
-   public void G() {
-      dbg $$0 = this.s.b();
-      this.a.a($$0.m());
-      boolean $$1 = $$0.p();
-      this.x = this.s.l();
-      this.y = this.s.u();
-      this.z = this.s.d();
-      this.r.a($$1);
-      this.u.a(this.x);
-      this.v.a(this.y);
-      this.w.a(this.z);
-      this.c($$1);
-      this.e(true);
+      this.r = (this.c - this.o.a(this.k)) / 2;
    }
 
    @Override
-   public void a(fft $$0, int $$1, int $$2) {
-      super.a($$0, $$1, $$2);
-      this.e(true);
+   public void a(fhh $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
    }
 
    @Override
-   protected void a(dbg $$0) {
-      this.l.L().b(new ahp(ja.a($$0.g()), this.a.a(), this.x, $$0.p(), this.y, this.z));
+   protected void a(fhh $$0, float $$1, int $$2, int $$3) {
+      int $$4 = (this.m - this.c) / 2;
+      int $$5 = (this.n - this.q) / 2;
+      $$0.a(G, $$4, $$5, 0, 0, this.c, this.q);
+      int $$6 = this.w.l();
+      int $$7 = ayg.a((18 * $$6 + 20 - 1) / 20, 0, 18);
+      if ($$7 > 0) {
+         $$0.a(D, 18, 4, 0, 0, $$4 + 60, $$5 + 44, $$7, 4);
+      }
+
+      int $$8 = this.w.m();
+      if ($$8 > 0) {
+         int $$9 = (int)(28.0F * (1.0F - (float)$$8 / 400.0F));
+         if ($$9 > 0) {
+            $$0.a(E, 9, 28, 0, 0, $$4 + 97, $$5 + 16, 9, $$9);
+         }
+
+         $$9 = H[$$8 / 2 % 7];
+         if ($$9 > 0) {
+            $$0.a(F, 12, 29, 0, 29 - $$9, $$4 + 63, $$5 + 14 + 29 - $$9, 12, $$9);
+         }
+      }
    }
 }

@@ -11,12 +11,12 @@ public class aol {
    public static void a(CommandDispatcher<eq> $$0) {
       LiteralCommandNode<eq> $$1 = $$0.register((LiteralArgumentBuilder)er.a("teammsg").then(er.a("message", fh.a()).executes($$0x -> {
          eq $$1x = (eq)$$0x.getSource();
-         bsg $$2 = $$1x.g();
-         exe $$3 = $$2.ck();
+         bsh $$2 = $$1x.g();
+         exg $$3 = $$2.cl();
          if ($$3 == null) {
             throw b.create();
          } else {
-            List<aqn> $$4 = $$1x.l().ai().t().stream().filter($$2x -> $$2x == $$2 || $$2x.ck() == $$3).toList();
+            List<aqn> $$4 = $$1x.l().ai().t().stream().filter($$2x -> $$2x == $$2 || $$2x.cl() == $$3).toList();
             if (!$$4.isEmpty()) {
                fh.a($$0x, "message", $$4x -> a($$1x, $$2, $$3, $$4, $$4x));
             }
@@ -27,10 +27,10 @@ public class aol {
       $$0.register((LiteralArgumentBuilder)er.a("tm").redirect($$1));
    }
 
-   private static void a(eq $$0, bsg $$1, exe $$2, List<aqn> $$3, xk $$4) {
+   private static void a(eq $$0, bsh $$1, exg $$2, List<aqn> $$3, xk $$4) {
       wu $$5 = $$2.d().c(a);
-      wq.a $$6 = wq.a(wq.g, $$0).c($$5);
-      wq.a $$7 = wq.a(wq.h, $$0).c($$5);
+      wq.a $$6 = wq.a(wq.i, $$0).c($$5);
+      wq.a $$7 = wq.a(wq.j, $$0).c($$5);
       xj $$8 = xj.a($$4);
       boolean $$9 = false;
 

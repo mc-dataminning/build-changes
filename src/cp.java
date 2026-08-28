@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.Predicate;
 
-public record cp(Optional<jn<ctx>> b, de.d c, kl d, Map<cq.a<?>, cq> e) implements Predicate<cuc> {
+public record cp(Optional<jn<cty>> b, de.d c, kl d, Map<cq.a<?>, cq> e) implements Predicate<cud> {
    public static final Codec<cp> a = RecordCodecBuilder.create(
       $$0 -> $$0.group(
                jy.a(lr.K).optionalFieldOf("items").forGetter(cp::a),
@@ -17,7 +17,7 @@ public record cp(Optional<jn<ctx>> b, de.d c, kl d, Map<cq.a<?>, cq> e) implemen
             .apply($$0, cp::new)
    );
 
-   public boolean a(cuc $$0) {
+   public boolean a(cud $$0) {
       if (this.b.isPresent() && !$$0.a(this.b.get())) {
          return false;
       } else if (!this.c.d($$0.H())) {
@@ -35,7 +35,7 @@ public record cp(Optional<jn<ctx>> b, de.d c, kl d, Map<cq.a<?>, cq> e) implemen
       }
    }
 
-   public Optional<jn<ctx>> a() {
+   public Optional<jn<cty>> a() {
       return this.b;
    }
 
@@ -52,7 +52,7 @@ public record cp(Optional<jn<ctx>> b, de.d c, kl d, Map<cq.a<?>, cq> e) implemen
    }
 
    public static class a {
-      private Optional<jn<ctx>> a = Optional.empty();
+      private Optional<jn<cty>> a = Optional.empty();
       private de.d b = de.d.c;
       private kl c;
       private final Builder<cq.a<?>, cq> d;
@@ -66,12 +66,12 @@ public record cp(Optional<jn<ctx>> b, de.d c, kl d, Map<cq.a<?>, cq> e) implemen
          return new cp.a();
       }
 
-      public cp.a a(dce... $$0) {
+      public cp.a a(dcf... $$0) {
          this.a = Optional.of(jn.a($$0x -> $$0x.r().o(), $$0));
          return this;
       }
 
-      public cp.a a(awm<ctx> $$0) {
+      public cp.a a(awm<cty> $$0) {
          this.a = Optional.of(lq.g.a($$0));
          return this;
       }

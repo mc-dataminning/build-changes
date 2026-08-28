@@ -1,107 +1,23 @@
-public class gkj<T extends cin> extends gjl<T> {
-   private static final grw g = grw.c("item_frame", "map=false");
-   private static final grw h = grw.c("item_frame", "map=true");
-   private static final grw i = grw.c("glow_item_frame", "map=false");
-   private static final grw j = grw.c("glow_item_frame", "map=true");
-   public static final int a = 5;
-   public static final int f = 30;
-   private final gkk k;
-   private final gex l;
+public class gkj extends gku<cfe, fvf<cfe>> {
+   private static final akk a = new akk("textures/entity/iron_golem/iron_golem.png");
 
-   public gkj(gjm.a $$0) {
-      super($$0);
-      this.k = $$0.b();
-      this.l = $$0.c();
+   public gkj(gjo.a $$0) {
+      super($$0, new fvf<>($$0.a(fxp.av)), 0.7F);
+      this.a(new gnr(this));
+      this.a(new gns(this, $$0.c()));
    }
 
-   protected int a(T $$0, ja $$1) {
-      return $$0.al() == bsm.V ? Math.max(5, super.a($$0, $$1)) : super.a($$0, $$1);
+   public akk a(cfe $$0) {
+      return a;
    }
 
-   public void a(T $$0, float $$1, float $$2, fam $$3, ged $$4, int $$5) {
+   protected void a(cfe $$0, fao $$1, float $$2, float $$3, float $$4, float $$5) {
       super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      $$3.a();
-      jf $$6 = $$0.cI();
-      ewf $$7 = this.a($$0, $$2);
-      $$3.a(-$$7.a(), -$$7.b(), -$$7.c());
-      double $$8 = 0.46875;
-      $$3.a((double)$$6.j() * 0.46875, (double)$$6.k() * 0.46875, (double)$$6.l() * 0.46875);
-      $$3.a(a.b.rotationDegrees($$0.dI()));
-      $$3.a(a.d.rotationDegrees(180.0F - $$0.dG()));
-      boolean $$9 = $$0.ci();
-      cuc $$10 = $$0.D();
-      if (!$$9) {
-         grv $$11 = this.l.a().a();
-         grw $$12 = this.a($$0, $$10);
-         $$3.a();
-         $$3.a(-0.5F, -0.5F, -0.5F);
-         this.l.b().a($$3.c(), $$4.getBuffer(ges.h()), null, $$11.a($$12), 1.0F, 1.0F, 1.0F, $$5, gpf.d);
-         $$3.b();
+      if (!((double)$$0.aV.a() < 0.01)) {
+         float $$6 = 13.0F;
+         float $$7 = $$0.aV.c($$4) + 6.0F;
+         float $$8 = (Math.abs($$7 % 13.0F - 6.5F) - 3.25F) / 3.25F;
+         $$1.a(a.f.rotationDegrees(6.5F * $$8));
       }
-
-      if (!$$10.e()) {
-         epu $$13 = $$0.E();
-         if ($$9) {
-            $$3.a(0.0F, 0.0F, 0.5F);
-         } else {
-            $$3.a(0.0F, 0.0F, 0.4375F);
-         }
-
-         int $$14 = $$13 != null ? $$0.H() % 4 * 2 : $$0.H();
-         $$3.a(a.f.rotationDegrees((float)$$14 * 360.0F / 8.0F));
-         if ($$13 != null) {
-            $$3.a(a.f.rotationDegrees(180.0F));
-            float $$15 = 0.0078125F;
-            $$3.b(0.0078125F, 0.0078125F, 0.0078125F);
-            $$3.a(-64.0F, -64.0F, 0.0F);
-            epw $$16 = cuk.a($$13, $$0.dQ());
-            $$3.a(0.0F, 0.0F, -1.0F);
-            if ($$16 != null) {
-               int $$17 = this.a($$0, 15728850, $$5);
-               fft.Q().j.i().a($$3, $$4, $$13, $$16, true, $$17);
-            }
-         } else {
-            int $$18 = this.a($$0, 15728880, $$5);
-            $$3.b(0.5F, 0.5F, 0.5F);
-            this.k.a($$10, ctz.i, $$18, gpf.d, $$3, $$4, $$0.dQ(), $$0.am());
-         }
-      }
-
-      $$3.b();
-   }
-
-   private int a(T $$0, int $$1, int $$2) {
-      return $$0.al() == bsm.V ? $$1 : $$2;
-   }
-
-   private grw a(T $$0, cuc $$1) {
-      boolean $$2 = $$0.al() == bsm.V;
-      if ($$1.a(cuf.rU)) {
-         return $$2 ? j : h;
-      } else {
-         return $$2 ? i : g;
-      }
-   }
-
-   public ewf a(T $$0, float $$1) {
-      return new ewf((double)((float)$$0.cI().j() * 0.3F), -0.25, (double)((float)$$0.cI().l() * 0.3F));
-   }
-
-   public akk a(T $$0) {
-      return gpn.e;
-   }
-
-   protected boolean b(T $$0) {
-      if (fft.M() && !$$0.D().e() && $$0.D().b(kn.g) && this.c.c == $$0) {
-         double $$1 = this.c.b($$0);
-         float $$2 = $$0.bZ() ? 32.0F : 64.0F;
-         return $$1 < (double)($$2 * $$2);
-      } else {
-         return false;
-      }
-   }
-
-   protected void a(T $$0, wu $$1, fam $$2, ged $$3, int $$4, float $$5) {
-      super.a($$0, $$0.D().w(), $$2, $$3, $$4, $$5);
    }
 }

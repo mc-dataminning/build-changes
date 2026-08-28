@@ -106,9 +106,9 @@ public class aom {
       $$0.register((LiteralArgumentBuilder)((LiteralArgumentBuilder)er.a("tp").requires($$0x -> $$0x.c(2))).redirect($$1));
    }
 
-   private static int a(eq $$0, Collection<? extends bsg> $$1, bsg $$2) throws CommandSyntaxException {
-      for (bsg $$3 : $$1) {
-         a($$0, $$3, (aqm)$$2.dQ(), $$2.dv(), $$2.dx(), $$2.dB(), EnumSet.noneOf(btp.class), $$2.dG(), $$2.dI(), null);
+   private static int a(eq $$0, Collection<? extends bsh> $$1, bsh $$2) throws CommandSyntaxException {
+      for (bsh $$3 : $$1) {
+         a($$0, $$3, (aqm)$$2.dR(), $$2.dw(), $$2.dy(), $$2.dC(), EnumSet.noneOf(btq.class), $$2.dH(), $$2.dJ(), null);
       }
 
       if ($$1.size() == 1) {
@@ -120,38 +120,38 @@ public class aom {
       return $$1.size();
    }
 
-   private static int a(eq $$0, Collection<? extends bsg> $$1, aqm $$2, go $$3, @Nullable go $$4, @Nullable aom.a $$5) throws CommandSyntaxException {
-      ewf $$6 = $$3.a($$0);
-      ewe $$7 = $$4 == null ? null : $$4.b($$0);
-      Set<btp> $$8 = EnumSet.noneOf(btp.class);
+   private static int a(eq $$0, Collection<? extends bsh> $$1, aqm $$2, go $$3, @Nullable go $$4, @Nullable aom.a $$5) throws CommandSyntaxException {
+      ewh $$6 = $$3.a($$0);
+      ewg $$7 = $$4 == null ? null : $$4.b($$0);
+      Set<btq> $$8 = EnumSet.noneOf(btq.class);
       if ($$3.a()) {
-         $$8.add(btp.a);
+         $$8.add(btq.a);
       }
 
       if ($$3.b()) {
-         $$8.add(btp.b);
+         $$8.add(btq.b);
       }
 
       if ($$3.c()) {
-         $$8.add(btp.c);
+         $$8.add(btq.c);
       }
 
       if ($$4 == null) {
-         $$8.add(btp.e);
-         $$8.add(btp.d);
+         $$8.add(btq.e);
+         $$8.add(btq.d);
       } else {
          if ($$4.a()) {
-            $$8.add(btp.e);
+            $$8.add(btq.e);
          }
 
          if ($$4.b()) {
-            $$8.add(btp.d);
+            $$8.add(btq.d);
          }
       }
 
-      for (bsg $$9 : $$1) {
+      for (bsh $$9 : $$1) {
          if ($$4 == null) {
-            a($$0, $$9, $$2, $$6.c, $$6.d, $$6.e, $$8, $$9.dG(), $$9.dI(), $$5);
+            a($$0, $$9, $$2, $$6.c, $$6.d, $$6.e, $$8, $$9.dH(), $$9.dJ(), $$5);
          } else {
             a($$0, $$9, $$2, $$6.c, $$6.d, $$6.e, $$8, $$7.j, $$7.i, $$5);
          }
@@ -170,9 +170,9 @@ public class aom {
       return String.format(Locale.ROOT, "%f", $$0);
    }
 
-   private static void a(eq $$0, bsg $$1, aqm $$2, double $$3, double $$4, double $$5, Set<btp> $$6, float $$7, float $$8, @Nullable aom.a $$9) throws CommandSyntaxException {
+   private static void a(eq $$0, bsh $$1, aqm $$2, double $$3, double $$4, double $$5, Set<btq> $$6, float $$7, float $$8, @Nullable aom.a $$9) throws CommandSyntaxException {
       ja $$10 = ja.a($$3, $$4, $$5);
-      if (!dcf.l($$10)) {
+      if (!dcg.l($$10)) {
          throw a.create();
       } else {
          float $$11 = ayg.g($$7);
@@ -182,13 +182,13 @@ public class aom {
                $$9.perform($$0, $$1);
             }
 
-            if (!($$1 instanceof btb $$13) || !$$13.fB()) {
-               $$1.i($$1.dt().d(1.0, 0.0, 1.0));
-               $$1.d(true);
+            if (!($$1 instanceof btc $$13) || !$$13.fC()) {
+               $$1.j($$1.du().d(1.0, 0.0, 1.0));
+               $$1.e(true);
             }
 
-            if ($$1 instanceof btk $$14) {
-               $$14.K().n();
+            if ($$1 instanceof btl $$14) {
+               $$14.J().n();
             }
          }
       }
@@ -196,12 +196,12 @@ public class aom {
 
    @FunctionalInterface
    interface a {
-      void perform(eq var1, bsg var2);
+      void perform(eq var1, bsh var2);
    }
 
-   static record b(bsg a, fc.a b) implements aom.a {
+   static record b(bsh a, fc.a b) implements aom.a {
       @Override
-      public void perform(eq $$0, bsg $$1) {
+      public void perform(eq $$0, bsh $$1) {
          if ($$1 instanceof aqn $$2) {
             $$2.a($$0.m(), this.a, this.b);
          } else {
@@ -210,9 +210,9 @@ public class aom {
       }
    }
 
-   static record c(ewf a) implements aom.a {
+   static record c(ewh a) implements aom.a {
       @Override
-      public void perform(eq $$0, bsg $$1) {
+      public void perform(eq $$0, bsh $$1) {
          $$1.a($$0.m(), this.a);
       }
    }

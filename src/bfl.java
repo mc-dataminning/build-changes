@@ -11,7 +11,7 @@ public class bfl extends DataFix {
    protected TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
          "OptionsAccessibilityOnboardFix",
-         this.getInputSchema().getType(bgg.e),
+         this.getInputSchema().getType(bgh.e),
          $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.set("onboardAccessibility", $$0x.createBoolean(false)))
       );
    }

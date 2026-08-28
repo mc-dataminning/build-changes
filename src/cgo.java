@@ -1,207 +1,132 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.ImmutableList;
-import com.mojang.serialization.Dynamic;
-import javax.annotation.Nullable;
+import com.google.common.collect.ImmutableMap;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
-public class cgo extends ceo {
-   @VisibleForTesting
-   public static int b = Math.abs(-24000);
-   public static final float c = 0.4F;
-   public static final float d = 0.3F;
-   private int cb;
-   protected static final ImmutableList<cdm<? extends cdl<? super cgo>>> e = ImmutableList.of(cdm.c, cdm.d, cdm.f, cdm.s);
-   protected static final ImmutableList<ccf<?>> ca = ImmutableList.of(ccf.n, ccf.h, ccf.m, ccf.E, ccf.t, ccf.K, ccf.P, ccf.R, ccf.O, ccf.r, ccf.Z);
+public class cgo extends buv<cgm> {
+   public static final int c = 100;
+   public static final int d = 6;
+   public static final int e = 10;
+   private static final float h = 1.75F;
+   private static final float i = 0.75F;
+   public static final int f = 100;
+   public static final int g = 5;
+   private int j;
+   private int k;
+   private final avg l;
+   private final avg m;
+   private ewh n;
+   private cgo.a o = cgo.a.d;
 
-   public cgo(bsm<? extends ceo> $$0, dcf $$1) {
-      super($$0, $$1);
-      this.bR = new bze(this, 85, 10, 0.02F, 0.1F, true);
-      this.bQ = new bzd(this, 10);
+   public cgo(avg $$0, avg $$1) {
+      super(ImmutableMap.of(ccg.m, cch.b, ccg.n, cch.c, ccg.o, cch.a, ccg.Z, cch.b), 100);
+      this.l = $$0;
+      this.m = $$1;
    }
 
-   @Override
-   protected ccn b(dcf $$0) {
-      return new ccp(this, $$0);
-   }
-
-   @Override
-   protected bud.b<cgo> dV() {
-      return bud.a(ca, e);
-   }
-
-   @Override
-   protected bud<?> a(Dynamic<?> $$0) {
-      return cgp.a(this.dV().a($$0));
-   }
-
-   @Override
-   public bud<cgo> dU() {
-      return (bud<cgo>)super.dU();
-   }
-
-   @Override
-   protected avg gp() {
-      return avh.zu;
-   }
-
-   @Override
-   protected void Z() {
-      this.dQ().ag().a("tadpoleBrain");
-      this.dU().a((aqm)this.dQ(), this);
-      this.dQ().ag().c();
-      this.dQ().ag().a("tadpoleActivityUpdate");
-      cgp.a(this);
-      this.dQ().ag().c();
-      super.Z();
-   }
-
-   public static bui.a gq() {
-      return btd.A().a(buj.v, 1.0).a(buj.s, 6.0);
-   }
-
-   @Override
-   public void n_() {
-      super.n_();
-      if (!this.dQ().B) {
-         this.s(this.cb + 1);
+   protected boolean a(aqm $$0, cgm $$1) {
+      btc $$2 = $$1.dV().c(ccg.o).get();
+      boolean $$3 = this.a($$1, $$2);
+      if (!$$3) {
+         $$1.dV().b(ccg.o);
+         this.b($$1, $$2);
       }
+
+      return $$3 && $$1.at() != bto.i && cgm.j($$2);
    }
 
-   @Override
-   public void b(tx $$0) {
-      super.b($$0);
-      $$0.a("Age", this.cb);
+   protected boolean a(aqm $$0, cgm $$1, long $$2) {
+      return $$1.dV().a(ccg.o) && this.o != cgo.a.d && !$$1.dV().a(ccg.Z);
    }
 
-   @Override
-   public void a(tx $$0) {
-      super.a($$0);
-      this.s($$0.h("Age"));
+   protected void b(aqm $$0, cgm $$1, long $$2) {
+      btc $$3 = $$1.dV().c(ccg.o).get();
+      bux.a($$1, $$3);
+      $$1.b($$3);
+      $$1.dV().a(ccg.m, new ccj($$3.dp(), 2.0F, 0));
+      this.k = 10;
+      this.o = cgo.a.a;
    }
 
-   @Nullable
-   @Override
-   protected avg v() {
-      return null;
+   protected void c(aqm $$0, cgm $$1, long $$2) {
+      $$1.dV().b(ccg.o);
+      $$1.s();
+      $$1.b(bto.a);
    }
 
-   @Nullable
-   @Override
-   protected avg d(bqz $$0) {
-      return avh.zw;
-   }
-
-   @Nullable
-   @Override
-   protected avg o_() {
-      return avh.zt;
-   }
-
-   @Override
-   public bqg b(cmk $$0, bqf $$1) {
-      cuc $$2 = $$0.b($$1);
-      if (this.o($$2)) {
-         this.a($$0, $$2);
-         return bqg.a(this.dQ().B);
-      } else {
-         return cet.a($$0, $$1, this).orElse(super.b($$0, $$1));
-      }
-   }
-
-   @Override
-   protected void Y() {
-      super.Y();
-      afy.a(this);
-   }
-
-   @Override
-   public boolean u() {
-      return true;
-   }
-
-   @Override
-   public void w(boolean $$0) {
-   }
-
-   @Override
-   public void n(cuc $$0) {
-      cet.a(this, $$0);
-      cwq.a(kn.N, $$0, $$0x -> $$0x.a("Age", this.gr()));
-   }
-
-   @Override
-   public void c(tx $$0) {
-      cet.a(this, $$0);
-      if ($$0.e("Age")) {
-         this.s($$0.h("Age"));
-      }
-   }
-
-   @Override
-   public cuc b() {
-      return new cuc(cuf.qK);
-   }
-
-   @Override
-   public avg y() {
-      return avh.dn;
-   }
-
-   private boolean o(cuc $$0) {
-      return $$0.a(awf.al);
-   }
-
-   private void a(cmk $$0, cuc $$1) {
-      this.b($$0, $$1);
-      this.c(bsa.d_(this.gt()));
-      this.dQ().a(lj.O, this.d(1.0), this.dy() + 0.5, this.g(1.0), 0.0, 0.0, 0.0);
-   }
-
-   private void b(cmk $$0, cuc $$1) {
-      $$1.a(1, $$0);
-   }
-
-   private int gr() {
-      return this.cb;
-   }
-
-   private void c(int $$0) {
-      this.s(this.cb + $$0 * 20);
-   }
-
-   private void s(int $$0) {
-      this.cb = $$0;
-      if (this.cb >= b) {
-         this.gs();
-      }
-   }
-
-   private void gs() {
-      if (this.dQ() instanceof aqm $$0) {
-         cgl $$1 = bsm.R.a(this.dQ());
-         if ($$1 != null) {
-            $$1.b(this.dv(), this.dx(), this.dB(), this.dG(), this.dI());
-            $$1.a($$0, this.dQ().d_($$1.dq()), btf.i, null);
-            $$1.t(this.gd());
-            if (this.ah()) {
-               $$1.b(this.ai());
-               $$1.o(this.cF());
+   private void b(aqm $$0, cgm $$1) {
+      $$0.a(null, $$1, this.m, avi.g, 2.0F, 1.0F);
+      Optional<bsh> $$2 = $$1.t();
+      if ($$2.isPresent()) {
+         bsh $$3 = $$2.get();
+         if ($$3.bF()) {
+            $$1.D($$3);
+            if (!$$3.bF()) {
+               $$3.a(bsh.d.a);
             }
-
-            $$1.fR();
-            $$1.a(this.a(this.as()));
-            this.a(avh.zv, 0.15F, 1.0F);
-            $$0.a_($$1);
-            this.ap();
          }
       }
    }
 
-   private int gt() {
-      return Math.max(0, b - this.cb);
+   protected void d(aqm $$0, cgm $$1, long $$2) {
+      btc $$3 = $$1.dV().c(ccg.o).get();
+      $$1.b($$3);
+      switch (this.o) {
+         case a:
+            if ($$3.f($$1) < 1.75F) {
+               $$0.a(null, $$1, this.l, avi.g, 2.0F, 1.0F);
+               $$1.b(bto.j);
+               $$3.j($$3.dp().a($$1.dp()).d().a(0.75));
+               this.n = $$3.dp();
+               this.j = 0;
+               this.o = cgo.a.b;
+            } else if (this.k <= 0) {
+               $$1.dV().a(ccg.m, new ccj($$3.dp(), 2.0F, 0));
+               this.k = 10;
+            } else {
+               this.k--;
+            }
+            break;
+         case b:
+            if (this.j++ >= 6) {
+               this.o = cgo.a.c;
+               this.b($$0, $$1);
+            }
+            break;
+         case c:
+            if (this.j >= 10) {
+               this.o = cgo.a.d;
+            } else {
+               this.j++;
+            }
+         case d:
+      }
    }
 
-   @Override
-   public boolean ef() {
-      return false;
+   private boolean a(cgm $$0, btc $$1) {
+      eox $$2 = $$0.J().a($$1, 0);
+      return $$2 != null && $$2.m() < 1.75F;
+   }
+
+   private void b(cgm $$0, btc $$1) {
+      List<UUID> $$2 = $$0.dV().c(ccg.aa).orElseGet(ArrayList::new);
+      boolean $$3 = !$$2.contains($$1.cB());
+      if ($$2.size() == 5 && $$3) {
+         $$2.remove(0);
+      }
+
+      if ($$3) {
+         $$2.add($$1.cB());
+      }
+
+      $$0.dV().a(ccg.aa, $$2, 100L);
+   }
+
+   static enum a {
+      a,
+      b,
+      c,
+      d;
    }
 }

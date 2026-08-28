@@ -1,58 +1,49 @@
-public class gsx extends gsk {
-   public gsx(avg $$0, avi $$1, float $$2, float $$3, ayo $$4, ja $$5) {
-      this($$0, $$1, $$2, $$3, $$4, (double)$$5.u() + 0.5, (double)$$5.v() + 0.5, (double)$$5.w() + 0.5);
+public class gsx extends gsn {
+   private static final float n = 0.0F;
+   private static final float o = 0.7F;
+   private static final float p = 0.0F;
+   private static final float q = 1.0F;
+   private static final float r = 0.0025F;
+   private final cog s;
+   private float t = 0.0F;
+
+   public gsx(cog $$0) {
+      super(avh.oN, avi.g, gte.t());
+      this.s = $$0;
+      this.i = true;
+      this.j = 0;
+      this.d = 0.0F;
+      this.f = (double)((float)$$0.dw());
+      this.g = (double)((float)$$0.dy());
+      this.h = (double)((float)$$0.dC());
    }
 
-   public static gsx a(avg $$0, float $$1) {
-      return a($$0, $$1, 0.25F);
+   @Override
+   public boolean s() {
+      return !this.s.aY();
    }
 
-   public static gsx a(jj<avg> $$0, float $$1) {
-      return a($$0.a(), $$1);
+   @Override
+   public boolean r() {
+      return true;
    }
 
-   public static gsx a(avg $$0, float $$1, float $$2) {
-      return new gsx($$0.a(), avi.a, $$2, $$1, gtc.t(), false, 0, gtc.a.a, 0.0, 0.0, 0.0, true);
-   }
-
-   public static gsx a(avg $$0) {
-      return new gsx($$0.a(), avi.b, 1.0F, 1.0F, gtc.t(), false, 0, gtc.a.a, 0.0, 0.0, 0.0, true);
-   }
-
-   public static gsx a(avg $$0, ewf $$1) {
-      return new gsx($$0, avi.c, 4.0F, 1.0F, gtc.t(), false, 0, gtc.a.b, $$1.c, $$1.d, $$1.e);
-   }
-
-   public static gsx b(avg $$0, float $$1, float $$2) {
-      return new gsx($$0.a(), avi.i, $$2, $$1, gtc.t(), false, 0, gtc.a.a, 0.0, 0.0, 0.0, true);
-   }
-
-   public static gsx b(avg $$0) {
-      return b($$0, 1.0F, 1.0F);
-   }
-
-   public static gsx a(avg $$0, ayo $$1, double $$2, double $$3, double $$4) {
-      return new gsx($$0, avi.i, 1.0F, 1.0F, $$1, false, 0, gtc.a.b, $$2, $$3, $$4);
-   }
-
-   public gsx(avg $$0, avi $$1, float $$2, float $$3, ayo $$4, double $$5, double $$6, double $$7) {
-      this($$0, $$1, $$2, $$3, $$4, false, 0, gtc.a.b, $$5, $$6, $$7);
-   }
-
-   private gsx(avg $$0, avi $$1, float $$2, float $$3, ayo $$4, boolean $$5, int $$6, gtc.a $$7, double $$8, double $$9, double $$10) {
-      this($$0.a(), $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, $$9, $$10, false);
-   }
-
-   public gsx(akk $$0, avi $$1, float $$2, float $$3, ayo $$4, boolean $$5, int $$6, gtc.a $$7, double $$8, double $$9, double $$10, boolean $$11) {
-      super($$0, $$1, $$4);
-      this.d = $$2;
-      this.e = $$3;
-      this.f = $$8;
-      this.g = $$9;
-      this.h = $$10;
-      this.i = $$5;
-      this.j = $$6;
-      this.k = $$7;
-      this.l = $$11;
+   @Override
+   public void q() {
+      if (this.s.dM()) {
+         this.n();
+      } else {
+         this.f = (double)((float)this.s.dw());
+         this.g = (double)((float)this.s.dy());
+         this.h = (double)((float)this.s.dC());
+         float $$0 = (float)this.s.du().h();
+         if ($$0 >= 0.01F && this.s.dR().s().i()) {
+            this.t = ayg.a(this.t + 0.0025F, 0.0F, 1.0F);
+            this.d = ayg.i(ayg.a($$0, 0.0F, 0.5F), 0.0F, 0.7F);
+         } else {
+            this.t = 0.0F;
+            this.d = 0.0F;
+         }
+      }
    }
 }

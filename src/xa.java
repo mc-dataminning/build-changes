@@ -126,17 +126,17 @@ public class xa {
                )
                .apply($$0, xa.b::new)
       );
-      public final bsm<?> b;
+      public final bsn<?> b;
       public final UUID c;
       public final Optional<wu> d;
       @Nullable
       private List<wu> e;
 
-      public b(bsm<?> $$0, UUID $$1, @Nullable wu $$2) {
+      public b(bsn<?> $$0, UUID $$1, @Nullable wu $$2) {
          this($$0, $$1, Optional.ofNullable($$2));
       }
 
-      public b(bsm<?> $$0, UUID $$1, Optional<wu> $$2) {
+      public b(bsn<?> $$0, UUID $$1, Optional<wu> $$2) {
          this.b = $$0;
          this.c = $$1;
          this.d = $$2;
@@ -147,7 +147,7 @@ public class xa {
             tx $$2 = uv.a($$0.getString());
             DynamicOps<JsonElement> $$3 = (DynamicOps<JsonElement>)($$1 != null ? $$1.a(JsonOps.INSTANCE) : JsonOps.INSTANCE);
             DataResult<wu> $$4 = ww.a.parse($$3, JsonParser.parseString($$2.l("name")));
-            bsm<?> $$5 = lq.f.a(new akk($$2.l("type")));
+            bsn<?> $$5 = lq.f.a(new akk($$2.l("type")));
             UUID $$6 = UUID.fromString($$2.l("id"));
             return $$4.map($$2x -> new xa.b($$5, $$6, $$2x));
          } catch (Exception var7) {
@@ -187,22 +187,22 @@ public class xa {
    }
 
    public static class c {
-      public static final Codec<xa.c> a = cuc.b.xmap(xa.c::new, xa.c::a);
-      private static final Codec<xa.c> c = cuc.g.xmap(xa.c::new, xa.c::a);
+      public static final Codec<xa.c> a = cud.b.xmap(xa.c::new, xa.c::a);
+      private static final Codec<xa.c> c = cud.g.xmap(xa.c::new, xa.c::a);
       public static final Codec<xa.c> b = Codec.withAlternative(a, c);
-      private final jj<ctx> d;
+      private final jj<cty> d;
       private final int e;
       private final kk f;
       @Nullable
-      private cuc g;
+      private cud g;
 
-      c(jj<ctx> $$0, int $$1, kk $$2) {
+      c(jj<cty> $$0, int $$1, kk $$2) {
          this.d = $$0;
          this.e = $$1;
          this.f = $$2;
       }
 
-      public c(cuc $$0) {
+      public c(cud $$0) {
          this($$0.h(), $$0.H(), $$0.d());
       }
 
@@ -225,9 +225,9 @@ public class xa {
          return 31 * $$0 + this.f.hashCode();
       }
 
-      public cuc a() {
+      public cud a() {
          if (this.g == null) {
-            this.g = new cuc(this.d, this.e, this.f);
+            this.g = new cud(this.d, this.e, this.f);
          }
 
          return this.g;
@@ -237,7 +237,7 @@ public class xa {
          try {
             tx $$2 = uv.a($$0.getString());
             DynamicOps<uu> $$3 = (DynamicOps<uu>)($$1 != null ? $$1.a(ul.a) : ul.a);
-            return cuc.b.parse($$3, $$2).map(xa.c::new);
+            return cud.b.parse($$3, $$2).map(xa.c::new);
          } catch (CommandSyntaxException var4) {
             return DataResult.error(() -> "Failed to parse item tag: " + var4.getMessage());
          }

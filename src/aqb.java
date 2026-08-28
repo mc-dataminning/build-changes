@@ -64,20 +64,20 @@ public class aqb extends aqo {
    }
 
    @Override
-   public bqg a(aqn $$0, dcf $$1, cuc $$2, bqf $$3) {
+   public bqh a(aqn $$0, dcg $$1, cud $$2, bqg $$3) {
       if (this.f) {
          this.f();
-         return bqg.e;
+         return bqh.e;
       } else {
          return super.a($$0, $$1, $$2, $$3);
       }
    }
 
    @Override
-   public bqg a(aqn $$0, dcf $$1, cuc $$2, bqf $$3, ewb $$4) {
+   public bqh a(aqn $$0, dcg $$1, cud $$2, bqg $$3, ewd $$4) {
       if (this.f) {
          this.f();
-         return bqg.e;
+         return bqh.e;
       } else {
          return super.a($$0, $$1, $$2, $$3, $$4);
       }

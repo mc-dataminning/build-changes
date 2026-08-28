@@ -1,39 +1,19 @@
 import com.mojang.serialization.Codec;
 
-public class ect extends ebk<edv> {
-   public ect(Codec<edv> $$0) {
+public class ect extends ebl<eei> {
+   public ect(Codec<eei> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebm<edv> $$0) {
-      ddb $$1 = $$0.b();
-      ja $$2 = $$0.e();
-      ja.a $$3 = new ja.a();
-      ja.a $$4 = new ja.a();
-
-      for (int $$5 = 0; $$5 < 16; $$5++) {
-         for (int $$6 = 0; $$6 < 16; $$6++) {
-            int $$7 = $$2.u() + $$5;
-            int $$8 = $$2.w() + $$6;
-            int $$9 = $$1.a(dyf.a.e, $$7, $$8);
-            $$3.d($$7, $$9, $$8);
-            $$4.g($$3).c(jf.a, 1);
-            ddf $$10 = $$1.t($$3).a();
-            if ($$10.a($$1, $$4, false)) {
-               $$1.a($$4, dfj.dO.o(), 2);
-            }
-
-            if ($$10.b($$1, $$3)) {
-               $$1.a($$3, dfj.dN.o(), 2);
-               dsk $$11 = $$1.a_($$4);
-               if ($$11.b(dmr.c)) {
-                  $$1.a($$4, $$11.a(dmr.c, Boolean.valueOf(true)), 2);
-               }
-            }
-         }
-      }
-
-      return true;
+   public boolean a(ebn<eei> $$0) {
+      ayo $$1 = $$0.d();
+      eei $$2 = $$0.f();
+      ddc $$3 = $$0.b();
+      ja $$4 = $$0.e();
+      dui $$5 = $$0.c();
+      int $$6 = $$1.a($$2.b.b());
+      eib $$7 = $$2.b.a($$6).a();
+      return $$7.a($$3, $$5, $$1, $$4);
    }
 }

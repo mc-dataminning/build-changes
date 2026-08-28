@@ -58,14 +58,14 @@ public class anv {
       } else {
          long $$4 = $$0.e().Z() + (long)$$2;
          akk $$5 = (akk)$$1.getFirst();
-         evs<MinecraftServer> $$6 = $$0.l().bc().I().s();
+         evu<MinecraftServer> $$6 = $$0.l().bc().I().s();
          ((Either)$$1.getSecond()).ifLeft($$6x -> {
             String $$7 = $$5.toString();
             if ($$3) {
                $$6.a($$7);
             }
 
-            $$6.a($$7, $$4, new evo($$5));
+            $$6.a($$7, $$4, new evq($$5));
             $$0.a(() -> wu.a("commands.schedule.created.function", wu.a($$5), $$2, $$4), true);
          }).ifRight($$6x -> {
             String $$7 = "#" + $$5;
@@ -73,7 +73,7 @@ public class anv {
                $$6.a($$7);
             }
 
-            $$6.a($$7, $$4, new evp($$5));
+            $$6.a($$7, $$4, new evr($$5));
             $$0.a(() -> wu.a("commands.schedule.created.tag", wu.a($$5), $$2, $$4), true);
          });
          return Math.floorMod($$4, Integer.MAX_VALUE);

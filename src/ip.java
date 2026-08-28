@@ -15,7 +15,7 @@ public class ip {
    public static final SuggestionProvider<eq> c = a(new akk("available_sounds"), ($$0, $$1) -> ev.a(((ev)$$0.getSource()).s(), $$1));
    public static final SuggestionProvider<eq> d = a(
       new akk("summonable_entities"),
-      ($$0, $$1) -> ev.a(lq.f.t().filter($$1x -> $$1x.a(((ev)$$0.getSource()).w()) && $$1x.c()), $$1, bsm::a, $$0x -> wu.c(ac.a("entity", bsm.a($$0x))))
+      ($$0, $$1) -> ev.a(lq.f.t().filter($$1x -> $$1x.a(((ev)$$0.getSource()).w()) && $$1x.c()), $$1, bsn::a, $$0x -> wu.c(ac.a("entity", bsn.a($$0x))))
    );
 
    public static <S extends ev> SuggestionProvider<S> a(akk $$0, SuggestionProvider<ev> $$1) {

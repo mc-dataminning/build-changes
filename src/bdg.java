@@ -8,7 +8,7 @@ import com.mojang.serialization.Dynamic;
 import java.util.function.Supplier;
 
 public class bdg extends bcv {
-   private final Supplier<Type<?>> b = Suppliers.memoize(() -> this.getOutputSchema().getChoiceType(bgg.B, "ZombieVillager"));
+   private final Supplier<Type<?>> b = Suppliers.memoize(() -> this.getOutputSchema().getChoiceType(bgh.B, "ZombieVillager"));
 
    public bdg(Schema $$0) {
       super("EntityZombieSplitFix", $$0, true);

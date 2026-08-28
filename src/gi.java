@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 
 public class gi implements ArgumentType<gi.b> {
    private static final Collection<String> a = Arrays.asList("stone", "minecraft:stone", "stone[foo=bar]", "#stone", "#stone[foo=bar]{baz=nbt}");
-   private final jl<dfh> b;
+   private final jl<dfi> b;
 
    public gi(em $$0) {
       this.b = $$0.b(lr.f);
@@ -29,12 +29,12 @@ public class gi implements ArgumentType<gi.b> {
       return a(this.b, $$0);
    }
 
-   public static gi.b a(jl<dfh> $$0, StringReader $$1) throws CommandSyntaxException {
+   public static gi.b a(jl<dfi> $$0, StringReader $$1) throws CommandSyntaxException {
       return (gi.b)gk.b($$0, $$1, true).map($$0x -> new gi.a($$0x.a(), $$0x.b().keySet(), $$0x.c()), $$0x -> new gi.c($$0x.a(), $$0x.b(), $$0x.c()));
    }
 
-   public static Predicate<dso> a(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
-      return (Predicate<dso>)$$0.getArgument($$1, gi.b.class);
+   public static Predicate<dsp> a(CommandContext<eq> $$0, String $$1) throws CommandSyntaxException {
+      return (Predicate<dsp>)$$0.getArgument($$1, gi.b.class);
    }
 
    public <S> CompletableFuture<Suggestions> listSuggestions(CommandContext<S> $$0, SuggestionsBuilder $$1) {
@@ -46,23 +46,23 @@ public class gi implements ArgumentType<gi.b> {
    }
 
    static class a implements gi.b {
-      private final dsk a;
-      private final Set<dtn<?>> b;
+      private final dsl a;
+      private final Set<dto<?>> b;
       @Nullable
       private final tx c;
 
-      public a(dsk $$0, Set<dtn<?>> $$1, @Nullable tx $$2) {
+      public a(dsl $$0, Set<dto<?>> $$1, @Nullable tx $$2) {
          this.a = $$0;
          this.b = $$1;
          this.c = $$2;
       }
 
-      public boolean a(dso $$0) {
-         dsk $$1 = $$0.a();
+      public boolean a(dsp $$0) {
+         dsl $$1 = $$0.a();
          if (!$$1.a(this.a.b())) {
             return false;
          } else {
-            for (dtn<?> $$2 : this.b) {
+            for (dto<?> $$2 : this.b) {
                if ($$1.c($$2) != this.a.c($$2)) {
                   return false;
                }
@@ -71,7 +71,7 @@ public class gi implements ArgumentType<gi.b> {
             if (this.c == null) {
                return true;
             } else {
-               dpp $$3 = $$0.b();
+               dpq $$3 = $$0.b();
                return $$3 != null && um.a(this.c, $$3.b($$0.c().H_()), true);
             }
          }
@@ -83,29 +83,29 @@ public class gi implements ArgumentType<gi.b> {
       }
    }
 
-   public interface b extends Predicate<dso> {
+   public interface b extends Predicate<dsp> {
       boolean a();
    }
 
    static class c implements gi.b {
-      private final jn<dfh> a;
+      private final jn<dfi> a;
       @Nullable
       private final tx b;
       private final Map<String, String> c;
 
-      c(jn<dfh> $$0, Map<String, String> $$1, @Nullable tx $$2) {
+      c(jn<dfi> $$0, Map<String, String> $$1, @Nullable tx $$2) {
          this.a = $$0;
          this.c = $$1;
          this.b = $$2;
       }
 
-      public boolean a(dso $$0) {
-         dsk $$1 = $$0.a();
+      public boolean a(dsp $$0) {
+         dsl $$1 = $$0.a();
          if (!$$1.a(this.a)) {
             return false;
          } else {
             for (Entry<String, String> $$2 : this.c.entrySet()) {
-               dtn<?> $$3 = $$1.b().l().a($$2.getKey());
+               dto<?> $$3 = $$1.b().l().a($$2.getKey());
                if ($$3 == null) {
                   return false;
                }
@@ -123,7 +123,7 @@ public class gi implements ArgumentType<gi.b> {
             if (this.b == null) {
                return true;
             } else {
-               dpp $$5 = $$0.b();
+               dpq $$5 = $$0.b();
                return $$5 != null && um.a(this.b, $$5.b($$0.c().H_()), true);
             }
          }

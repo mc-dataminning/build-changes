@@ -1,39 +1,82 @@
+import com.google.common.base.Predicates;
 import com.mojang.serialization.MapCodec;
 
-public class dhx extends dlq {
-   public static final MapCodec<dhx> b = b(dhx::new);
+public class dhx extends dfi {
+   public static final MapCodec<dhx> a = b(dhx::new);
+   public static final dtf b = dje.aE;
+   public static final dtc c = dtb.h;
+   protected static final exa d = dfi.a(0.0, 0.0, 0.0, 16.0, 13.0, 16.0);
+   protected static final exa e = dfi.a(4.0, 13.0, 4.0, 12.0, 16.0, 12.0);
+   protected static final exa f = ewx.a(d, e);
+   private static dsq g;
 
    @Override
    public MapCodec<dhx> a() {
-      return b;
+      return a;
    }
 
-   protected dhx(dsj.d $$0) {
+   public dhx(dsk.d $$0) {
       super($$0);
-      this.k(this.E.b().a(a, jf.b));
+      this.k(this.E.b().a(b, jf.c).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   public dsk a(cxm $$0) {
-      jf $$1 = $$0.k();
-      dsk $$2 = $$0.q().a_($$0.a().a($$1.g()));
-      return $$2.a(this) && $$2.c(a) == $$1 ? this.o().a(a, $$1.g()) : this.o().a(a, $$1);
+   protected boolean f_(dsl $$0) {
+      return true;
    }
 
    @Override
-   public void a(dsk $$0, dcf $$1, ja $$2, ayo $$3) {
-      jf $$4 = $$0.c(a);
-      double $$5 = (double)$$2.u() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$6 = (double)$$2.v() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$7 = (double)$$2.w() + 0.55 - (double)($$3.i() * 0.1F);
-      double $$8 = (double)(0.4F - ($$3.i() + $$3.i()) * 0.4F);
-      if ($$3.a(5) == 0) {
-         $$1.a(lj.t, $$5 + (double)$$4.j() * $$8, $$6 + (double)$$4.k() * $$8, $$7 + (double)$$4.l() * $$8, $$3.k() * 0.005, $$3.k() * 0.005, $$3.k() * 0.005);
+   protected exa a(dsl $$0, dbm $$1, ja $$2, ewm $$3) {
+      return $$0.c(c) ? f : d;
+   }
+
+   @Override
+   public dsl a(cxn $$0) {
+      return this.o().a(b, $$0.g().g()).a(c, Boolean.valueOf(false));
+   }
+
+   @Override
+   protected boolean c_(dsl $$0) {
+      return true;
+   }
+
+   @Override
+   protected int a(dsl $$0, dcg $$1, ja $$2) {
+      return $$0.c(c) ? 15 : 0;
+   }
+
+   @Override
+   protected dsl a(dsl $$0, dlv $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dsl a(dsl $$0, dkf $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dsm.a<dfi, dsl> $$0) {
+      $$0.a(b, c);
+   }
+
+   public static dsq b() {
+      if (g == null) {
+         g = dsr.a()
+            .a("?vvv?", ">???<", ">???<", ">???<", "?^^^?")
+            .a('?', dsp.a(dsu.a))
+            .a('^', dsp.a(dsu.a(dfk.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jf.d))))
+            .a('>', dsp.a(dsu.a(dfk.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jf.e))))
+            .a('v', dsp.a(dsu.a(dfk.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jf.c))))
+            .a('<', dsp.a(dsu.a(dfk.fy).a(c, Predicates.equalTo(true)).a(b, Predicates.equalTo(jf.f))))
+            .b();
       }
+
+      return g;
    }
 
    @Override
-   protected void a(dsl.a<dfh, dsk> $$0) {
-      $$0.a(a);
+   protected boolean a(dsl $$0, eoy $$1) {
+      return false;
    }
 }

@@ -1,8 +1,8 @@
 public record acw(int b, float c) implements zb<abn> {
    public static final ys<vr, acw> a = zb.a(acw::a, acw::new);
 
-   public acw(btb $$0) {
-      this($$0.am(), $$0.eF());
+   public acw(btc $$0) {
+      this($$0.an(), $$0.eG());
    }
 
    private acw(vr $$0) {

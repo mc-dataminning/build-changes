@@ -1,52 +1,65 @@
-public class cyu extends cya {
-   public cyu(cxx $$0) {
+public class cyu extends cyb {
+   public cyu(cxy $$0) {
       super($$0);
    }
 
-   public boolean a(cxy $$0, dcf $$1) {
-      int $$2 = 0;
-      int $$3 = 0;
+   public boolean a(cxz $$0, dcg $$1) {
+      cud $$2 = cud.l;
+      cud $$3 = cud.l;
 
       for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cuc $$5 = $$0.a($$4);
+         cud $$5 = $$0.a($$4);
          if (!$$5.e()) {
-            if (dfh.a($$5.g()) instanceof dmg) {
-               $$2++;
-            } else {
-               if (!($$5.g() instanceof csw)) {
+            if ($$5.g() instanceof crz) {
+               if (!$$3.e()) {
                   return false;
                }
 
-               $$3++;
-            }
+               $$3 = $$5;
+            } else {
+               if (!$$5.a(cug.vs)) {
+                  return false;
+               }
 
-            if ($$3 > 1 || $$2 > 1) {
-               return false;
+               if (!$$2.e()) {
+                  return false;
+               }
+
+               dph $$6 = $$5.a(kn.X, dph.a);
+               if (!$$6.b().isEmpty()) {
+                  return false;
+               }
+
+               $$2 = $$5;
             }
          }
       }
 
-      return $$2 == 1 && $$3 == 1;
+      return !$$2.e() && !$$3.e();
    }
 
-   public cuc a(cxy $$0, jl.a $$1) {
-      cuc $$2 = cuc.l;
-      csw $$3 = (csw)cuf.ri;
+   public cud a(cxz $$0, jl.a $$1) {
+      cud $$2 = cud.l;
+      cud $$3 = cud.l;
 
       for (int $$4 = 0; $$4 < $$0.a(); $$4++) {
-         cuc $$5 = $$0.a($$4);
+         cud $$5 = $$0.a($$4);
          if (!$$5.e()) {
-            ctx $$6 = $$5.g();
-            if (dfh.a($$6) instanceof dmg) {
+            if ($$5.g() instanceof crz) {
                $$2 = $$5;
-            } else if ($$6 instanceof csw) {
-               $$3 = (csw)$$6;
+            } else if ($$5.a(cug.vs)) {
+               $$3 = $$5.s();
             }
          }
       }
 
-      dfh $$7 = dmg.a($$3.c());
-      return $$2.a($$7, 1);
+      if ($$3.e()) {
+         return $$3;
+      } else {
+         $$3.b(kn.X, $$2.a(kn.X));
+         $$3.b(kn.Y, ((crz)$$2.g()).b());
+         return $$3;
+      }
    }
 
    @Override
@@ -55,7 +68,7 @@ public class cyu extends cya {
    }
 
    @Override
-   public cyn<?> ap_() {
-      return cyn.m;
+   public cyo<?> ap_() {
+      return cyo.l;
    }
 }

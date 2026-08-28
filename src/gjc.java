@@ -1,12 +1,28 @@
-public class gjc extends gks<cez, fuj<cez>> {
-   private static final akk a = new akk("textures/entity/dolphin.png");
+public class gjc extends gku<cjd, fuk<cjd>> {
+   private static final akk a = new akk("textures/entity/creeper/creeper.png");
 
-   public gjc(gjm.a $$0) {
-      super($$0, new fuj<>($$0.a(fxn.M)), 0.7F);
-      this.a(new gnf(this, $$0.d()));
+   public gjc(gjo.a $$0) {
+      super($$0, new fuk<>($$0.a(fxp.H)), 0.5F);
+      this.a(new gnd(this, $$0.f()));
    }
 
-   public akk a(cez $$0) {
+   protected void a(cjd $$0, fao $$1, float $$2) {
+      float $$3 = $$0.H($$2);
+      float $$4 = 1.0F + ayg.a($$3 * 100.0F) * $$3 * 0.01F;
+      $$3 = ayg.a($$3, 0.0F, 1.0F);
+      $$3 *= $$3;
+      $$3 *= $$3;
+      float $$5 = (1.0F + $$3 * 0.4F) * $$4;
+      float $$6 = (1.0F + $$3 * 0.1F) / $$4;
+      $$1.b($$5, $$6, $$5);
+   }
+
+   protected float a(cjd $$0, float $$1) {
+      float $$2 = $$0.H($$1);
+      return (int)($$2 * 10.0F) % 2 == 0 ? 0.0F : ayg.a($$2, 0.5F, 1.0F);
+   }
+
+   public akk a(cjd $$0) {
       return a;
    }
 }

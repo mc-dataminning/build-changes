@@ -1,16 +1,78 @@
-public class cko {
-   private static final double a = 50.0;
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
+import com.mojang.datafixers.util.Pair;
+import java.util.List;
+import java.util.Set;
 
-   public static ewf a(btb $$0, ayo $$1) {
-      int $$2 = 90;
-      float $$3 = $$0.ba + 180.0F + (float)$$1.k() * 90.0F / 2.0F;
-      float $$4 = ayg.i($$1.i(), 4.0F, 8.0F);
-      ewf $$5 = ewf.a(0.0F, $$3).a((double)$$4);
-      return $$0.do().e($$5);
+public class cko {
+   public static final float a = 0.6F;
+   public static final float b = 4.0F;
+   public static final float c = 8.0F;
+   public static final float d = 20.0F;
+   static final List<cdn<? extends cdm<? super ckn>>> e = ImmutableList.of(cdn.c, cdn.f, cdn.d, cdn.z);
+   static final List<ccg<?>> f = ImmutableList.of(
+      ccg.n, ccg.h, ccg.B, ccg.E, ccg.o, ccg.m, ccg.aU, ccg.aZ, ccg.aV, ccg.aW, ccg.aX, ccg.aY, new ccg[]{ccg.ba, ccg.bb, ccg.x, ccg.y, ccg.t}
+   );
+
+   protected static bue<?> a(bue<ckn> $$0) {
+      b($$0);
+      c($$0);
+      d($$0);
+      $$0.a(Set.of(coa.a));
+      $$0.b(coa.k);
+      $$0.f();
+      return $$0;
    }
 
-   public static boolean a(ckm $$0, ewf $$1) {
-      ewf $$2 = new ewf($$0.dv(), $$0.dx(), $$0.dB());
-      return $$1.f($$2) > 50.0 ? false : $$0.dQ().a(new dbo($$2, $$1, dbo.a.a, dbo.b.a, $$0)).c() == ewd.a.a;
+   private static void b(bue<ckn> $$0) {
+      $$0.a(coa.a, 0, ImmutableList.of(new bxp(0.8F), new bwb(45, 90)));
+   }
+
+   private static void c(bue<ckn> $$0) {
+      $$0.a(
+         coa.b,
+         ImmutableList.of(
+            Pair.of(0, bxh.a($$0x -> $$0x.dV().c(ccg.B))),
+            Pair.of(1, bxh.a(ckn::go)),
+            Pair.of(2, new cko.a(20, 40)),
+            Pair.of(3, new bws(ImmutableList.of(Pair.of(new bvf(20, 100), 1), Pair.of(bwn.a(0.6F), 2))))
+         )
+      );
+   }
+
+   private static void d(bue<ckn> $$0) {
+      $$0.a(
+         coa.k,
+         ImmutableList.of(Pair.of(0, bxk.a()), Pair.of(1, new ckr()), Pair.of(2, new ckq()), Pair.of(3, new cks()), Pair.of(4, new ckt())),
+         ImmutableSet.of(Pair.of(ccg.o, cch.a), Pair.of(ccg.m, cch.b))
+      );
+   }
+
+   static void a(ckn $$0) {
+      $$0.dV().a(ImmutableList.of(coa.k, coa.b));
+   }
+
+   public static class a extends bwf {
+      @VisibleForTesting
+      public a(int $$0, int $$1) {
+         super($$0, $$1);
+      }
+
+      @Override
+      protected void c(aqm $$0, bte $$1, long $$2) {
+         super.c($$0, $$1, $$2);
+         $$1.a(avh.cM);
+         $$1.b(bto.p);
+      }
+
+      @Override
+      protected void b(aqm $$0, bte $$1, long $$2) {
+         super.b($$0, $$1, $$2);
+         $$1.b(bto.a);
+         if ($$1.dV().a(ccg.o)) {
+            $$1.dV().a(ccg.aV, azk.a, 60L);
+         }
+      }
    }
 }

@@ -13,10 +13,10 @@ public class bbn extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgg.c);
+      Type<?> $$0 = this.getInputSchema().getType(bgh.c);
       Type<?> $$1 = $$0.findFieldType("Level");
       OpticFinder<?> $$2 = DSL.fieldFinder("Level", $$1);
-      return this.fixTypeEverywhereTyped("ChunkStatusFix", $$0, this.getOutputSchema().getType(bgg.c), $$1x -> $$1x.updateTyped($$2, $$0xx -> {
+      return this.fixTypeEverywhereTyped("ChunkStatusFix", $$0, this.getOutputSchema().getType(bgh.c), $$1x -> $$1x.updateTyped($$2, $$0xx -> {
             Dynamic<?> $$1xx = (Dynamic<?>)$$0xx.get(DSL.remainderFinder());
             String $$2x = $$1xx.get("Status").asString("empty");
             if (Objects.equals($$2x, "postprocessed")) {

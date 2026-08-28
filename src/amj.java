@@ -7,7 +7,7 @@ public class amj {
          fh.a($$0x, "action", $$1 -> {
             eq $$2 = (eq)$$0x.getSource();
             auj $$3 = $$2.l().ai();
-            $$3.a($$1, $$2, wq.a(wq.i, $$2));
+            $$3.a($$1, $$2, wq.a(wq.k, $$2));
          });
          return 1;
       })));

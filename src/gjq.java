@@ -1,52 +1,35 @@
-public class gjq extends gjl<bsr> {
-   private static final akk a = new akk("textures/entity/experience_orb.png");
-   private static final gel f = gel.g(a);
+public class gjq extends gjn<cmv> {
+   private static final akk a = new akk("textures/entity/illager/evoker_fangs.png");
+   private final fur<cmv> f;
 
-   public gjq(gjm.a $$0) {
+   public gjq(gjo.a $$0) {
       super($$0);
-      this.d = 0.15F;
-      this.e = 0.75F;
+      this.f = new fur<>($$0.a(fxp.ac));
    }
 
-   protected int a(bsr $$0, ja $$1) {
-      return ayg.a(super.a($$0, $$1) + 7, 0, 15);
+   public void a(cmv $$0, float $$1, float $$2, fao $$3, gef $$4, int $$5) {
+      float $$6 = $$0.a($$2);
+      if ($$6 != 0.0F) {
+         float $$7 = 2.0F;
+         if ($$6 > 0.9F) {
+            $$7 *= (1.0F - $$6) / 0.1F;
+         }
+
+         $$3.a();
+         $$3.a(a.d.rotationDegrees(90.0F - $$0.dH()));
+         $$3.b(-$$7, -$$7, $$7);
+         float $$8 = 0.03125F;
+         $$3.a(0.0, -0.626, 0.0);
+         $$3.b(0.5F, 0.5F, 0.5F);
+         this.f.a($$0, $$6, 0.0F, 0.0F, $$0.dH(), $$0.dJ());
+         fas $$9 = $$4.getBuffer(this.f.a(a));
+         this.f.a($$3, $$9, $$5, gph.d, 1.0F, 1.0F, 1.0F, 1.0F);
+         $$3.b();
+         super.a($$0, $$1, $$2, $$3, $$4, $$5);
+      }
    }
 
-   public void a(bsr $$0, float $$1, float $$2, fam $$3, ged $$4, int $$5) {
-      $$3.a();
-      int $$6 = $$0.s();
-      float $$7 = (float)($$6 % 4 * 16 + 0) / 64.0F;
-      float $$8 = (float)($$6 % 4 * 16 + 16) / 64.0F;
-      float $$9 = (float)($$6 / 4 * 16 + 0) / 64.0F;
-      float $$10 = (float)($$6 / 4 * 16 + 16) / 64.0F;
-      float $$11 = 1.0F;
-      float $$12 = 0.5F;
-      float $$13 = 0.25F;
-      float $$14 = 255.0F;
-      float $$15 = ((float)$$0.ai + $$2) / 2.0F;
-      int $$16 = (int)((ayg.a($$15 + 0.0F) + 1.0F) * 0.5F * 255.0F);
-      int $$17 = 255;
-      int $$18 = (int)((ayg.a($$15 + (float) (Math.PI * 4.0 / 3.0)) + 1.0F) * 0.1F * 255.0F);
-      $$3.a(0.0F, 0.1F, 0.0F);
-      $$3.a(this.c.b());
-      $$3.a(a.d.rotationDegrees(180.0F));
-      float $$19 = 0.3F;
-      $$3.b(0.3F, 0.3F, 0.3F);
-      faq $$20 = $$4.getBuffer(f);
-      fam.a $$21 = $$3.c();
-      a($$20, $$21, -0.5F, -0.25F, $$16, 255, $$18, $$7, $$10, $$5);
-      a($$20, $$21, 0.5F, -0.25F, $$16, 255, $$18, $$8, $$10, $$5);
-      a($$20, $$21, 0.5F, 0.75F, $$16, 255, $$18, $$8, $$9, $$5);
-      a($$20, $$21, -0.5F, 0.75F, $$16, 255, $$18, $$7, $$9, $$5);
-      $$3.b();
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-   }
-
-   private static void a(faq $$0, fam.a $$1, float $$2, float $$3, int $$4, int $$5, int $$6, float $$7, float $$8, int $$9) {
-      $$0.a($$1, $$2, $$3, 0.0F).a($$4, $$5, $$6, 128).a($$7, $$8).c(gpf.d).b($$9).b($$1, 0.0F, 1.0F, 0.0F).e();
-   }
-
-   public akk a(bsr $$0) {
+   public akk a(cmv $$0) {
       return a;
    }
 }

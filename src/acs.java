@@ -14,10 +14,10 @@ public class acs implements zb<abn> {
    private final float i;
    private final lh j;
    private final lh k;
-   private final dbx.a l;
+   private final dby.a l;
    private final jj<avg> m;
 
-   public acs(double $$0, double $$1, double $$2, float $$3, List<ja> $$4, @Nullable ewf $$5, dbx.a $$6, lh $$7, lh $$8, jj<avg> $$9) {
+   public acs(double $$0, double $$1, double $$2, float $$3, List<ja> $$4, @Nullable ewh $$5, dby.a $$6, lh $$7, lh $$8, jj<avg> $$9) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -56,7 +56,7 @@ public class acs implements zb<abn> {
       this.g = $$0.readFloat();
       this.h = $$0.readFloat();
       this.i = $$0.readFloat();
-      this.l = $$0.b(dbx.a.class);
+      this.l = $$0.b(dby.a.class);
       this.j = lj.bg.decode($$0);
       this.k = lj.bg.decode($$0);
       this.m = avg.d.decode($$0);
@@ -128,7 +128,7 @@ public class acs implements zb<abn> {
       return this.f;
    }
 
-   public dbx.a l() {
+   public dby.a l() {
       return this.l;
    }
 

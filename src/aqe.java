@@ -5,9 +5,9 @@ public interface aqe {
 
    void a(aqf var1);
 
-   CompletableFuture<dug> a(aqf var1, dvk var2, aza<aqf> var3);
+   CompletableFuture<duh> a(aqf var1, dvl var2, aza<aqf> var3);
 
-   apq a(dvh var1, dbm var2);
+   apq a(dvi var1, dbn var2);
 
    void g();
 }

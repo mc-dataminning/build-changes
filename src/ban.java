@@ -39,10 +39,10 @@ public class ban extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgg.t);
-      Type<?> $$1 = this.getOutputSchema().getType(bgg.t);
-      TaggedChoiceType<String> $$2 = this.getInputSchema().findChoiceType(bgg.s);
-      TaggedChoiceType<String> $$3 = this.getOutputSchema().findChoiceType(bgg.s);
+      Type<?> $$0 = this.getInputSchema().getType(bgh.t);
+      Type<?> $$1 = this.getOutputSchema().getType(bgh.t);
+      TaggedChoiceType<String> $$2 = this.getInputSchema().findChoiceType(bgh.s);
+      TaggedChoiceType<String> $$3 = this.getOutputSchema().findChoiceType(bgh.s);
       return TypeRewriteRule.seq(
          this.convertUnchecked("item stack block entity name hook converter", $$0, $$1),
          this.fixTypeEverywhere("BlockEntityIdFix", $$2, $$3, $$0x -> $$0xx -> $$0xx.mapFirst($$0xxx -> a.getOrDefault($$0xxx, $$0xxx)))

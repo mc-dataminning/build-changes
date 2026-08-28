@@ -18,12 +18,12 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 import javax.annotation.Nullable;
 
-public record dl(de.d d, Optional<dcc> e, List<dl.e<?>> f, Object2BooleanMap<akk> g, Map<akk, dl.c> h, Optional<bu> i) implements bv {
+public record dl(de.d d, Optional<dcd> e, List<dl.e<?>> f, Object2BooleanMap<akk> g, Map<akk, dl.c> h, Optional<bu> i) implements bv {
    public static final int b = 100;
    public static final MapCodec<dl> c = RecordCodecBuilder.mapCodec(
       $$0 -> $$0.group(
                de.d.d.optionalFieldOf("level", de.d.c).forGetter(dl::b),
-               dcc.f.optionalFieldOf("gamemode").forGetter(dl::c),
+               dcd.f.optionalFieldOf("gamemode").forGetter(dl::c),
                dl.e.a.listOf().optionalFieldOf("stats", List.of()).forGetter(dl::d),
                axo.d(akk.a).optionalFieldOf("recipes", Object2BooleanMaps.emptyMap()).forGetter(dl::e),
                Codec.unboundedMap(akk.a, dl.c.b).optionalFieldOf("advancements", Map.of()).forGetter(dl::f),
@@ -33,15 +33,15 @@ public record dl(de.d d, Optional<dcc> e, List<dl.e<?>> f, Object2BooleanMap<akk
    );
 
    @Override
-   public boolean a(bsg $$0, aqm $$1, @Nullable ewf $$2) {
+   public boolean a(bsh $$0, aqm $$1, @Nullable ewh $$2) {
       if (!($$0 instanceof aqn $$3)) {
          return false;
-      } else if (!this.d.d($$3.cq)) {
+      } else if (!this.d.d($$3.cr)) {
          return false;
       } else if (this.e.isPresent() && this.e.get() != $$3.e.b()) {
          return false;
       } else {
-         avs $$5 = $$3.H();
+         avs $$5 = $$3.I();
 
          for (dl.e<?> $$6 : this.f) {
             if (!$$6.a($$5)) {
@@ -49,7 +49,7 @@ public record dl(de.d d, Optional<dcc> e, List<dl.e<?>> f, Object2BooleanMap<akk
             }
          }
 
-         avk $$7 = $$3.I();
+         avk $$7 = $$3.J();
          ObjectIterator var13 = this.g.object2BooleanEntrySet().iterator();
 
          while (var13.hasNext()) {
@@ -60,8 +60,8 @@ public record dl(de.d d, Optional<dcc> e, List<dl.e<?>> f, Object2BooleanMap<akk
          }
 
          if (!this.h.isEmpty()) {
-            aks $$9 = $$3.Q();
-            akx $$10 = $$3.cP().aF();
+            aks $$9 = $$3.R();
+            akx $$10 = $$3.cQ().aF();
 
             for (java.util.Map.Entry<akk, dl.c> $$11 : this.h.entrySet()) {
                af $$12 = $$10.a($$11.getKey());
@@ -72,15 +72,15 @@ public record dl(de.d d, Optional<dcc> e, List<dl.e<?>> f, Object2BooleanMap<akk
          }
 
          if (this.i.isPresent()) {
-            ewf $$13 = $$3.by();
-            ewf $$14 = $$3.g(1.0F);
-            ewf $$15 = $$13.b($$14.c * 100.0, $$14.d * 100.0, $$14.e * 100.0);
-            ewc $$16 = cne.a($$3.dQ(), $$3, $$13, $$15, new ewa($$13, $$15).g(1.0), $$0x -> !$$0x.N_(), 0.0F);
-            if ($$16 == null || $$16.c() != ewd.a.c) {
+            ewh $$13 = $$3.bz();
+            ewh $$14 = $$3.g(1.0F);
+            ewh $$15 = $$13.b($$14.c * 100.0, $$14.d * 100.0, $$14.e * 100.0);
+            ewe $$16 = cnf.a($$3.dR(), $$3, $$13, $$15, new ewc($$13, $$15).g(1.0), $$0x -> !$$0x.N_(), 0.0F);
+            if ($$16 == null || $$16.c() != ewf.a.c) {
                return false;
             }
 
-            bsg $$17 = $$16.a();
+            bsh $$17 = $$16.a();
             if (!this.i.get().a($$3, $$17) || !$$3.F($$17)) {
                return false;
             }
@@ -99,7 +99,7 @@ public record dl(de.d d, Optional<dcc> e, List<dl.e<?>> f, Object2BooleanMap<akk
       return this.d;
    }
 
-   public Optional<dcc> c() {
+   public Optional<dcd> c() {
       return this.e;
    }
 
@@ -167,7 +167,7 @@ public record dl(de.d d, Optional<dcc> e, List<dl.e<?>> f, Object2BooleanMap<akk
 
    public static class d {
       private de.d a = de.d.c;
-      private Optional<dcc> b = Optional.empty();
+      private Optional<dcd> b = Optional.empty();
       private final Builder<dl.e<?>> c = ImmutableList.builder();
       private final Object2BooleanMap<akk> d = new Object2BooleanOpenHashMap();
       private final Map<akk, dl.c> e = Maps.newHashMap();
@@ -192,7 +192,7 @@ public record dl(de.d d, Optional<dcc> e, List<dl.e<?>> f, Object2BooleanMap<akk
          return this;
       }
 
-      public dl.d a(dcc $$0) {
+      public dl.d a(dcd $$0) {
          this.b = Optional.of($$0);
          return this;
       }

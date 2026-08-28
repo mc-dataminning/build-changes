@@ -20,7 +20,7 @@ public class bcg extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      return this.a(this.getInputSchema().getTypeRaw(bgg.t));
+      return this.a(this.getInputSchema().getTypeRaw(bgh.t));
    }
 
    private <IS> TypeRewriteRule a(Type<IS> $$0) {
@@ -35,8 +35,8 @@ public class bcg extends DataFix {
       OpticFinder<List<IS>> $$4 = DSL.fieldFinder("Equipment", DSL.list($$0));
       return this.fixTypeEverywhereTyped(
          "EntityEquipmentToArmorAndHandFix",
-         this.getInputSchema().getType(bgg.B),
-         this.getOutputSchema().getType(bgg.B),
+         this.getInputSchema().getType(bgh.B),
+         this.getOutputSchema().getType(bgh.B),
          $$4x -> {
             Either<List<IS>, Unit> $$5 = Either.right(DSL.unit());
             Either<List<IS>, Unit> $$6 = Either.right(DSL.unit());

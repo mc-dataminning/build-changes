@@ -22,7 +22,7 @@ public class vz<T extends wa> extends MessageToByteEncoder<zb<T>> {
             a.debug(vp.d, "OUT: [{}:{}] {} -> {} bytes", new Object[]{this.b.a().a(), $$3, $$1.getClass().getName(), $$4});
          }
 
-         bna.f.b(this.b.a(), $$3, $$0.channel().remoteAddress(), $$4);
+         bnb.f.b(this.b.a(), $$3, $$0.channel().remoteAddress(), $$4);
       } catch (Throwable var9) {
          a.error("Error sending packet {}", $$3, var9);
          if ($$1.c()) {

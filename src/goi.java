@@ -1,48 +1,35 @@
-public class goi extends gny<cfr, fug<cfr>> {
-   private static final akk a = new akk("textures/entity/fish/tropical_a_pattern_1.png");
-   private static final akk b = new akk("textures/entity/fish/tropical_a_pattern_2.png");
-   private static final akk c = new akk("textures/entity/fish/tropical_a_pattern_3.png");
-   private static final akk d = new akk("textures/entity/fish/tropical_a_pattern_4.png");
-   private static final akk e = new akk("textures/entity/fish/tropical_a_pattern_5.png");
-   private static final akk f = new akk("textures/entity/fish/tropical_a_pattern_6.png");
-   private static final akk g = new akk("textures/entity/fish/tropical_b_pattern_1.png");
-   private static final akk h = new akk("textures/entity/fish/tropical_b_pattern_2.png");
-   private static final akk i = new akk("textures/entity/fish/tropical_b_pattern_3.png");
-   private static final akk j = new akk("textures/entity/fish/tropical_b_pattern_4.png");
-   private static final akk k = new akk("textures/entity/fish/tropical_b_pattern_5.png");
-   private static final akk l = new akk("textures/entity/fish/tropical_b_pattern_6.png");
-   private final fwu<cfr> m;
-   private final fwv<cfr> n;
+public class goi<T extends btc> extends goa<T, fvv<T>> {
+   public static final akk a = new akk("textures/entity/trident_riptide.png");
+   public static final String b = "box";
+   private final fxq c;
 
-   public goi(gli<cfr, fug<cfr>> $$0, fxk $$1) {
+   public goi(glk<T, fvv<T>> $$0, fxm $$1) {
       super($$0);
-      this.m = new fwu<>($$1.a(fxn.bM));
-      this.n = new fwv<>($$1.a(fxn.bK));
+      fxq $$2 = $$1.a(fxp.aZ);
+      this.c = $$2.b("box");
    }
 
-   public void a(fam $$0, ged $$1, int $$2, cfr $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
-      cfr.b $$10 = $$3.gz();
+   public static fxw a() {
+      fxy $$0 = new fxy();
+      fxz $$1 = $$0.a();
+      $$1.a("box", fxv.c().a(0, 0).a(-8.0F, -16.0F, -8.0F, 16.0F, 32.0F, 16.0F), fxs.a);
+      return fxw.a($$0, 64, 64);
+   }
 
-      fuo<cfr> $$11 = (fuo<cfr>)(switch ($$10.a()) {
-         case a -> this.m;
-         case b -> this.n;
-      });
+   public void a(fao $$0, gef $$1, int $$2, T $$3, float $$4, float $$5, float $$6, float $$7, float $$8, float $$9) {
+      if ($$3.fp()) {
+         fas $$10 = $$1.getBuffer(gen.e(a));
 
-      akk $$12 = switch ($$10) {
-         case a -> a;
-         case b -> b;
-         case c -> c;
-         case d -> d;
-         case e -> e;
-         case f -> f;
-         case g -> g;
-         case h -> h;
-         case i -> i;
-         case j -> j;
-         case k -> k;
-         case l -> l;
-      };
-      float[] $$13 = $$3.gy().d();
-      a(this.c(), $$11, $$12, $$0, $$1, $$2, $$3, $$4, $$5, $$7, $$8, $$9, $$6, $$13[0], $$13[1], $$13[2]);
+         for (int $$11 = 0; $$11 < 3; $$11++) {
+            $$0.a();
+            float $$12 = $$7 * (float)(-(45 + $$11 * 5));
+            $$0.a(a.d.rotationDegrees($$12));
+            float $$13 = 0.75F * (float)$$11;
+            $$0.b($$13, $$13, $$13);
+            $$0.a(0.0F, -0.2F + 0.6F * (float)$$11, 0.0F);
+            this.c.a($$0, $$10, $$2, gph.d);
+            $$0.b();
+         }
+      }
    }
 }

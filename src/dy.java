@@ -17,7 +17,7 @@ public record dy(List<dy.c> c) {
    public static final Codec<dy> a = d.xmap(dy::new, dy::a);
    public static final ys<ByteBuf, dy> b = dy.c.a.a(yq.a()).a(dy::new, dy::a);
 
-   public <S extends dsm<?, S>> boolean a(dsl<?, S> $$0, S $$1) {
+   public <S extends dsn<?, S>> boolean a(dsm<?, S> $$0, S $$1) {
       for (dy.c $$2 : this.c) {
          if (!$$2.a($$0, $$1)) {
             return false;
@@ -27,15 +27,15 @@ public record dy(List<dy.c> c) {
       return true;
    }
 
-   public boolean a(dsk $$0) {
+   public boolean a(dsl $$0) {
       return this.a($$0.b().l(), $$0);
    }
 
-   public boolean a(eoh $$0) {
+   public boolean a(eoj $$0) {
       return this.a($$0.a().f(), $$0);
    }
 
-   public Optional<String> a(dsl<?, ?> $$0) {
+   public Optional<String> a(dsm<?, ?> $$0) {
       for (dy.c $$1 : this.c) {
          Optional<String> $$2 = $$1.a($$0);
          if ($$2.isPresent()) {
@@ -60,20 +60,20 @@ public record dy(List<dy.c> c) {
          return new dy.a();
       }
 
-      public dy.a a(dtn<?> $$0, String $$1) {
+      public dy.a a(dto<?> $$0, String $$1) {
          this.a.add(new dy.c($$0.f(), new dy.b($$1)));
          return this;
       }
 
-      public dy.a a(dtn<Integer> $$0, int $$1) {
+      public dy.a a(dto<Integer> $$0, int $$1) {
          return this.a($$0, Integer.toString($$1));
       }
 
-      public dy.a a(dtn<Boolean> $$0, boolean $$1) {
+      public dy.a a(dto<Boolean> $$0, boolean $$1) {
          return this.a($$0, Boolean.toString($$1));
       }
 
-      public <T extends Comparable<T> & azc> dy.a a(dtn<T> $$0, T $$1) {
+      public <T extends Comparable<T> & azc> dy.a a(dto<T> $$0, T $$1) {
          return this.a($$0, $$1.c());
       }
 
@@ -87,7 +87,7 @@ public record dy(List<dy.c> c) {
       public static final ys<ByteBuf, dy.b> b = yq.l.a(dy.b::new, dy.b::a);
 
       @Override
-      public <T extends Comparable<T>> boolean a(dsm<?, ?> $$0, dtn<T> $$1) {
+      public <T extends Comparable<T>> boolean a(dsn<?, ?> $$0, dto<T> $$1) {
          T $$2 = $$0.c($$1);
          Optional<T> $$3 = $$1.b(this.e);
          return $$3.isPresent() && $$2.compareTo($$3.get()) == 0;
@@ -101,13 +101,13 @@ public record dy(List<dy.c> c) {
    static record c(String b, dy.e c) {
       public static final ys<ByteBuf, dy.c> a = ys.a(yq.l, dy.c::a, dy.e.d, dy.c::b, dy.c::new);
 
-      public <S extends dsm<?, S>> boolean a(dsl<?, S> $$0, S $$1) {
-         dtn<?> $$2 = $$0.a(this.b);
+      public <S extends dsn<?, S>> boolean a(dsm<?, S> $$0, S $$1) {
+         dto<?> $$2 = $$0.a(this.b);
          return $$2 != null && this.c.a($$1, $$2);
       }
 
-      public Optional<String> a(dsl<?, ?> $$0) {
-         dtn<?> $$1 = $$0.a(this.b);
+      public Optional<String> a(dsm<?, ?> $$0) {
+         dto<?> $$1 = $$0.a(this.b);
          return $$1 != null ? Optional.empty() : Optional.of(this.b);
       }
 
@@ -127,7 +127,7 @@ public record dy(List<dy.c> c) {
       public static final ys<ByteBuf, dy.d> b = ys.a(yq.a(yq.l), dy.d::a, yq.a(yq.l), dy.d::b, dy.d::new);
 
       @Override
-      public <T extends Comparable<T>> boolean a(dsm<?, ?> $$0, dtn<T> $$1) {
+      public <T extends Comparable<T>> boolean a(dsn<?, ?> $$0, dto<T> $$1) {
          T $$2 = $$0.c($$1);
          if (this.e.isPresent()) {
             Optional<T> $$3 = $$1.b(this.e.get());
@@ -175,6 +175,6 @@ public record dy(List<dy.c> c) {
          }
       });
 
-      <T extends Comparable<T>> boolean a(dsm<?, ?> var1, dtn<T> var2);
+      <T extends Comparable<T>> boolean a(dsn<?, ?> var1, dto<T> var2);
    }
 }

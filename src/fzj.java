@@ -1,85 +1,119 @@
-import com.mojang.authlib.exceptions.MinecraftClientException;
-import com.mojang.authlib.exceptions.MinecraftClientHttpException;
-import com.mojang.authlib.minecraft.UserApiService;
-import com.mojang.authlib.minecraft.report.AbuseReport;
-import com.mojang.authlib.minecraft.report.AbuseReportLimits;
-import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
-import com.mojang.datafixers.util.Unit;
+import com.mojang.authlib.GameProfile;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionException;
 
-public interface fzj {
-   static fzj a(fzp $$0, UserApiService $$1) {
+public interface fzj extends fzi {
+   static fzj.a a(GameProfile $$0, xk $$1, fzh $$2) {
+      return new fzj.a($$0, $$1, $$2);
+   }
+
+   static fzj.b a(wu $$0, Instant $$1) {
       return new fzj.b($$0, $$1);
    }
 
-   CompletableFuture<Unit> a(UUID var1, fzr var2, AbuseReport var3);
+   wu b();
 
-   boolean a();
-
-   default AbuseReportLimits b() {
-      return AbuseReportLimits.DEFAULTS;
+   default wu c() {
+      return this.b();
    }
 
-   public static class a extends xu {
-      public a(wu $$0, Throwable $$1) {
-         super($$0, $$1);
+   boolean a(UUID var1);
+
+   public static record a(GameProfile c, xk d, fzh e) implements fzj {
+      public static final MapCodec<fzj.a> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(
+                  axo.x.fieldOf("profile").forGetter(fzj.a::f), xk.a.forGetter(fzj.a::g), fzh.d.optionalFieldOf("trust_level", fzh.a).forGetter(fzj.a::h)
+               )
+               .apply($$0, fzj.a::new)
+      );
+      private static final DateTimeFormatter f = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
+
+      @Override
+      public wu b() {
+         if (!this.d.o().a()) {
+            wu $$0 = this.d.o().b(this.d.c());
+            return (wu)($$0 != null ? $$0 : wu.i());
+         } else {
+            return this.d.d();
+         }
+      }
+
+      @Override
+      public wu c() {
+         wu $$0 = this.b();
+         wu $$1 = this.i();
+         return wu.a("gui.chatSelection.message.narrate", this.c.getName(), $$0, $$1);
+      }
+
+      public wu d() {
+         wu $$0 = this.i();
+         return wu.a("gui.chatSelection.heading", this.c.getName(), $$0);
+      }
+
+      private wu i() {
+         LocalDateTime $$0 = LocalDateTime.ofInstant(this.d.e(), ZoneOffset.systemDefault());
+         return wu.b($$0.format(f)).a(n.u, n.h);
+      }
+
+      @Override
+      public boolean a(UUID $$0) {
+         return this.d.a($$0);
+      }
+
+      public UUID e() {
+         return this.c.getId();
+      }
+
+      @Override
+      public fzi.a a() {
+         return fzi.a.a;
+      }
+
+      public GameProfile f() {
+         return this.c;
+      }
+
+      public xk g() {
+         return this.d;
+      }
+
+      public fzh h() {
+         return this.e;
       }
    }
 
-   public static record b(fzp a, UserApiService b) implements fzj {
-      private static final wu c = wu.c("gui.abuseReport.send.service_unavailable");
-      private static final wu d = wu.c("gui.abuseReport.send.http_error");
-      private static final wu e = wu.c("gui.abuseReport.send.json_error");
+   public static record b(wu c, Instant d) implements fzj {
+      public static final MapCodec<fzj.b> b = RecordCodecBuilder.mapCodec(
+         $$0 -> $$0.group(ww.a.fieldOf("message").forGetter(fzj.b::d), axo.o.fieldOf("time_stamp").forGetter(fzj.b::e)).apply($$0, fzj.b::new)
+      );
 
       @Override
-      public CompletableFuture<Unit> a(UUID $$0, fzr $$1, AbuseReport $$2) {
-         return CompletableFuture.supplyAsync(() -> {
-            AbuseReportRequest $$3 = new AbuseReportRequest(1, $$0, $$2, this.a.b(), this.a.c(), this.a.d(), $$1.a());
-
-            try {
-               this.b.reportAbuse($$3);
-               return Unit.INSTANCE;
-            } catch (MinecraftClientHttpException var7) {
-               wu $$5 = this.a(var7);
-               throw new CompletionException(new fzj.a($$5, var7));
-            } catch (MinecraftClientException var8) {
-               wu $$7 = this.a(var8);
-               throw new CompletionException(new fzj.a($$7, var8));
-            }
-         }, ac.h());
+      public wu b() {
+         return this.c;
       }
 
       @Override
-      public boolean a() {
-         return this.b.canSendReports();
-      }
-
-      private wu a(MinecraftClientHttpException $$0) {
-         return wu.a("gui.abuseReport.send.error_message", $$0.getMessage());
-      }
-
-      private wu a(MinecraftClientException $$0) {
-         return switch ($$0.getType()) {
-            case SERVICE_UNAVAILABLE -> c;
-            case HTTP_ERROR -> d;
-            case JSON_ERROR -> e;
-            default -> throw new MatchException(null, null);
-         };
+      public boolean a(UUID $$0) {
+         return false;
       }
 
       @Override
-      public AbuseReportLimits b() {
-         return this.b.getAbuseReportLimits();
+      public fzi.a a() {
+         return fzi.a.b;
       }
 
-      public fzp c() {
-         return this.a;
+      public wu d() {
+         return this.c;
       }
 
-      public UserApiService d() {
-         return this.b;
+      public Instant e() {
+         return this.d;
       }
    }
 }

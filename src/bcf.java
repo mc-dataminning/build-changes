@@ -3,7 +3,7 @@ import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Dynamic;
 import java.util.Objects;
 
-public class bcf extends bgr {
+public class bcf extends bgs {
    public bcf(Schema $$0, boolean $$1) {
       super("EntityElderGuardianSplitFix", $$0, $$1);
    }

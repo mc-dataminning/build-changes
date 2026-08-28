@@ -1,45 +1,45 @@
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 
-public class bpi extends bpl {
-   public static final bpi a = new bpi(0);
-   public static final MapCodec<bpi> b = Codec.INT.fieldOf("value").xmap(bpi::a, bpi::d);
-   private final int f;
+public class bpi extends bpk {
+   public static final bpi a = new bpi(0.0F);
+   public static final MapCodec<bpi> b = Codec.FLOAT.fieldOf("value").xmap(bpi::a, bpi::d);
+   private final float d;
 
-   public static bpi a(int $$0) {
-      return $$0 == 0 ? a : new bpi($$0);
+   public static bpi a(float $$0) {
+      return $$0 == 0.0F ? a : new bpi($$0);
    }
 
-   private bpi(int $$0) {
-      this.f = $$0;
+   private bpi(float $$0) {
+      this.d = $$0;
    }
 
-   public int d() {
-      return this.f;
-   }
-
-   @Override
-   public int a(ayo $$0) {
-      return this.f;
+   public float d() {
+      return this.d;
    }
 
    @Override
-   public int a() {
-      return this.f;
+   public float a(ayo $$0) {
+      return this.d;
    }
 
    @Override
-   public int b() {
-      return this.f;
+   public float a() {
+      return this.d;
    }
 
    @Override
-   public bpm<?> c() {
-      return bpm.a;
+   public float b() {
+      return this.d + 1.0F;
+   }
+
+   @Override
+   public bpl<?> c() {
+      return bpl.a;
    }
 
    @Override
    public String toString() {
-      return Integer.toString(this.f);
+      return Float.toString(this.d);
    }
 }

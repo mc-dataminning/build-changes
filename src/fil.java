@@ -1,146 +1,39 @@
-import com.google.common.collect.ImmutableList;
-import java.util.Arrays;
-import java.util.List;
+import com.mojang.blaze3d.systems.RenderSystem;
 
-public interface fil {
-   fil a = new fil() {
-      @Override
-      public int a(fhf $$0, int $$1, int $$2) {
-         return $$2;
-      }
+public class fil {
+   public static final akk a = new akk("textures/gui/title/minecraft.png");
+   public static final akk b = new akk("textures/gui/title/minceraft.png");
+   public static final akk c = new akk("textures/gui/title/edition.png");
+   public static final int d = 256;
+   public static final int e = 44;
+   private static final int g = 256;
+   private static final int h = 64;
+   private static final int i = 128;
+   private static final int j = 14;
+   private static final int k = 128;
+   private static final int l = 16;
+   public static final int f = 30;
+   private static final int m = 7;
+   private final boolean n = (double)ayo.a().i() < 1.0E-4;
+   private final boolean o;
 
-      @Override
-      public int a(fhf $$0, int $$1, int $$2, int $$3, int $$4) {
-         return $$2;
-      }
-
-      @Override
-      public int b(fhf $$0, int $$1, int $$2, int $$3, int $$4) {
-         return $$2;
-      }
-
-      @Override
-      public int c(fhf $$0, int $$1, int $$2, int $$3, int $$4) {
-         return $$2;
-      }
-
-      @Override
-      public void a(fhf $$0, int $$1, int $$2, int $$3, int $$4, int $$5) {
-      }
-
-      @Override
-      public int a() {
-         return 0;
-      }
-
-      @Override
-      public int b() {
-         return 0;
-      }
-   };
-
-   static fil a(fhd $$0, wz $$1, int $$2) {
-      return b($$0, $$0.c($$1, $$2).stream().map($$1x -> new fil.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   public fil(boolean $$0) {
+      this.o = $$0;
    }
 
-   static fil a(fhd $$0, wz $$1, int $$2, int $$3) {
-      return b($$0, $$0.c($$1, $$2).stream().limit((long)$$3).map($$1x -> new fil.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
+   public void a(fhh $$0, int $$1, float $$2) {
+      this.a($$0, $$1, $$2, 30);
    }
 
-   static fil a(fhd $$0, wu... $$1) {
-      return b($$0, Arrays.stream($$1).map(wu::g).map($$1x -> new fil.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
-   }
-
-   static fil a(fhd $$0, List<wu> $$1) {
-      return b($$0, $$1.stream().map(wu::g).map($$1x -> new fil.a($$1x, $$0.a($$1x))).collect(ImmutableList.toImmutableList()));
-   }
-
-   static fil b(final fhd $$0, final List<fil.a> $$1) {
-      return $$1.isEmpty() ? a : new fil() {
-         private final int d = $$1.stream().mapToInt($$0x -> $$0x.b).max().orElse(0);
-
-         @Override
-         public int a(fhf $$0x, int $$1x, int $$2) {
-            return this.a($$0, $$1, $$2, 9, 16777215);
-         }
-
-         @Override
-         public int a(fhf $$0x, int $$1x, int $$2, int $$3, int $$4) {
-            int $$5 = $$2;
-
-            for (fil.a $$6 : $$1) {
-               $$0.b($$0, $$6.a, $$1 - $$6.b / 2, $$5, $$4);
-               $$5 += $$3;
-            }
-
-            return $$5;
-         }
-
-         @Override
-         public int b(fhf $$0x, int $$1x, int $$2, int $$3, int $$4) {
-            int $$5 = $$2;
-
-            for (fil.a $$6 : $$1) {
-               $$0.b($$0, $$6.a, $$1, $$5, $$4);
-               $$5 += $$3;
-            }
-
-            return $$5;
-         }
-
-         @Override
-         public int c(fhf $$0x, int $$1x, int $$2, int $$3, int $$4) {
-            int $$5 = $$2;
-
-            for (fil.a $$6 : $$1) {
-               $$0.a($$0, $$6.a, $$1, $$5, $$4, false);
-               $$5 += $$3;
-            }
-
-            return $$5;
-         }
-
-         @Override
-         public void a(fhf $$0x, int $$1x, int $$2, int $$3, int $$4, int $$5) {
-            int $$6 = $$1.stream().mapToInt($$0xx -> $$0xx.b).max().orElse(0);
-            if ($$6 > 0) {
-               $$0.a($$1 - $$6 / 2 - $$4, $$2 - $$4, $$1 + $$6 / 2 + $$4, $$2 + $$1.size() * $$3 + $$4, $$5);
-            }
-         }
-
-         @Override
-         public int a() {
-            return $$1.size();
-         }
-
-         @Override
-         public int b() {
-            return this.d;
-         }
-      };
-   }
-
-   int a(fhf var1, int var2, int var3);
-
-   int a(fhf var1, int var2, int var3, int var4, int var5);
-
-   int b(fhf var1, int var2, int var3, int var4, int var5);
-
-   int c(fhf var1, int var2, int var3, int var4, int var5);
-
-   void a(fhf var1, int var2, int var3, int var4, int var5, int var6);
-
-   int a();
-
-   int b();
-
-   public static class a {
-      final axs a;
-      final int b;
-
-      a(axs $$0, int $$1) {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public void a(fhh $$0, int $$1, float $$2, int $$3) {
+      $$0.a(1.0F, 1.0F, 1.0F, this.o ? 1.0F : $$2);
+      RenderSystem.enableBlend();
+      int $$4 = $$1 / 2 - 128;
+      $$0.a(this.n ? b : a, $$4, $$3, 0.0F, 0.0F, 256, 44, 256, 64);
+      int $$5 = $$1 / 2 - 64;
+      int $$6 = $$3 + 44 - 7;
+      $$0.a(c, $$5, $$6, 0.0F, 0.0F, 128, 14, 128, 16);
+      $$0.a(1.0F, 1.0F, 1.0F, 1.0F);
+      RenderSystem.disableBlend();
    }
 }

@@ -36,97 +36,97 @@ import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
 import org.slf4j.Logger;
 
-public class aqm extends dcf implements ddb {
+public class aqm extends dcg implements ddc {
    public static final ja a = new ja(100, 50, 0);
-   public static final bpl b = bpr.a(12000, 180000);
-   public static final bpl c = bpr.a(12000, 24000);
-   private static final bpl D = bpr.a(12000, 180000);
-   public static final bpl d = bpr.a(3600, 15600);
+   public static final bpm b = bps.a(12000, 180000);
+   public static final bpm c = bps.a(12000, 24000);
+   private static final bpm D = bps.a(12000, 180000);
+   public static final bpm d = bps.a(3600, 15600);
    private static final Logger E = LogUtils.getLogger();
    private static final int F = 300;
    private static final int G = 65536;
    final List<aqn> H = Lists.newArrayList();
    private final aqk I;
    private final MinecraftServer J;
-   private final eqn K;
+   private final eqp K;
    private int L;
-   final dwt M = new dwt();
-   private final dwy<bsg> N;
-   private final dxh O;
+   final dwu M = new dwu();
+   private final dwz<bsh> N;
+   private final dxi O;
    public boolean e;
    private final aum P;
    private int Q;
-   private final epf R;
-   private final ext<dfh> S = new ext<>(this::d, this.ah());
-   private final ext<eog> T = new ext<>(this::d, this.ah());
-   private final eoz U = new eoz();
-   final Set<btd> V = new ObjectOpenHashSet();
+   private final epi R;
+   private final exv<dfi> S = new exv<>(this::d, this.ah());
+   private final exv<eoi> T = new exv<>(this::d, this.ah());
+   private final epb U = new epb();
+   final Set<bte> V = new ObjectOpenHashSet();
    volatile boolean W;
-   protected final cnx f;
-   private final ObjectLinkedOpenHashSet<dbk> X = new ObjectLinkedOpenHashSet();
-   private final List<dbk> Y = new ArrayList<>(64);
+   protected final cny f;
+   private final ObjectLinkedOpenHashSet<dbl> X = new ObjectLinkedOpenHashSet();
+   private final List<dbl> Y = new ArrayList<>(64);
    private boolean Z;
-   private final List<dbs> aa;
+   private final List<dbt> aa;
    @Nullable
-   private dwi ab;
-   final Int2ObjectMap<chl> ac = new Int2ObjectOpenHashMap();
-   private final dcz ad;
-   private final eix ae;
+   private dwj ab;
+   final Int2ObjectMap<chm> ac = new Int2ObjectOpenHashMap();
+   private final dda ad;
+   private final eiy ae;
    private final boolean af;
-   private final bqn ag;
+   private final bqo ag;
 
    public aqm(
       MinecraftServer $$0,
       Executor $$1,
-      eqi.c $$2,
-      eqn $$3,
-      akj<dcf> $$4,
-      dwg $$5,
+      eqk.c $$2,
+      eqp $$3,
+      akj<dcg> $$4,
+      dwh $$5,
       aqv $$6,
       boolean $$7,
       long $$8,
-      List<dbs> $$9,
+      List<dbt> $$9,
       boolean $$10,
-      @Nullable bqn $$11
+      @Nullable bqo $$11
    ) {
       super($$3, $$4, $$0.bd(), $$5.a(), $$0::aU, false, $$7, $$8, $$0.bm());
       this.af = $$10;
       this.J = $$0;
       this.aa = $$9;
       this.K = $$3;
-      duh $$12 = $$5.b();
+      dui $$12 = $$5.b();
       boolean $$13 = $$0.ba();
       DataFixer $$14 = $$0.aE();
-      dwq<bsg> $$15 = new dvr(new dwb(new dvz($$2.f(), $$4, "entities"), $$2.a($$4).resolve("entities"), $$14, $$13, azo.s), this, $$0);
-      this.N = new dwy<>(bsg.class, new aqm.a(), $$15);
+      dwr<bsh> $$15 = new dvs(new dwc(new dwa($$2.f(), $$4, "entities"), $$2.a($$4).resolve("entities"), $$14, $$13, azo.s), this, $$0);
+      this.N = new dwz<>(bsh.class, new aqm.a(), $$15);
       this.I = new aqk(this, $$2, $$14, $$0.bb(), $$1, $$12, $$0.ai().p(), $$0.ai().q(), $$13, $$6, this.N::a, () -> $$0.J().u());
       this.I.h().b();
-      this.R = new epf(this);
+      this.R = new epi(this);
       this.U();
       this.X();
       this.C_().a($$0.ay());
-      this.f = this.u().a(cnx.a(this), cnx.a(this.ae()));
+      this.f = this.u().a(cny.a(this), cny.a(this.ae()));
       if (!$$0.U()) {
          $$3.a($$0.u_());
       }
 
       long $$16 = $$0.bc().y().b();
-      this.ae = new eix(this.I.m(), this.H_(), $$0.bb(), $$4, $$12, this.I.i(), this, $$12.d(), $$16, $$14);
-      this.ad = new dcz(this, $$0.bc().y(), this.ae);
-      if (this.af() == dcf.j && this.ae().a(dwd.c)) {
-         this.ab = new dwi(this, $$16, $$0.bc().C());
+      this.ae = new eiy(this.I.m(), this.H_(), $$0.bb(), $$4, $$12, this.I.i(), this, $$12.d(), $$16, $$14);
+      this.ad = new dda(this, $$0.bc().y(), this.ae);
+      if (this.af() == dcg.j && this.ae().a(dwe.c)) {
+         this.ab = new dwj(this, $$16, $$0.bc().C());
       } else {
          this.ab = null;
       }
 
       this.P = new aum();
-      this.O = new dxh(this);
-      this.ag = Objects.requireNonNullElseGet($$11, () -> this.u().a(bqn.a($$16), "random_sequences"));
+      this.O = new dxi(this);
+      this.ag = Objects.requireNonNullElseGet($$11, () -> this.u().a(bqo.a($$16), "random_sequences"));
    }
 
    @Deprecated
    @VisibleForTesting
-   public void a(@Nullable dwi $$0) {
+   public void a(@Nullable dwj $$0) {
       this.ab = $$0;
    }
 
@@ -139,18 +139,18 @@ public class aqm extends dcf implements ddb {
    }
 
    @Override
-   public jj<ddf> a(int $$0, int $$1, int $$2) {
+   public jj<ddg> a(int $$0, int $$1, int $$2) {
       return this.l().g().d().getNoiseBiome($$0, $$1, $$2, this.l().i().b());
    }
 
-   public dcz a() {
+   public dda a() {
       return this.ad;
    }
 
    public void a(BooleanSupplier $$0) {
-      bmu $$1 = this.ag();
+      bmv $$1 = this.ag();
       this.Z = true;
-      bqr $$2 = this.s();
+      bqs $$2 = this.s();
       boolean $$3 = $$2.i();
       if ($$3) {
          $$1.a("world border");
@@ -159,15 +159,15 @@ public class aqm extends dcf implements ddb {
          this.au();
       }
 
-      int $$4 = this.ab().c(dcb.P);
+      int $$4 = this.ab().c(dcc.P);
       if (this.P.a($$4) && this.P.a($$4, this.H)) {
-         if (this.ab().b(dcb.l)) {
+         if (this.ab().b(dcc.l)) {
             long $$5 = this.A.d() + 24000L;
             this.b($$5 - $$5 % 24000L);
          }
 
          this.as();
-         if (this.ab().b(dcb.v) && this.ad()) {
+         if (this.ab().b(dcc.v) && this.ad()) {
             this.g();
          }
       }
@@ -215,21 +215,21 @@ public class aqm extends dcf implements ddb {
          }
 
          this.M.a($$2x -> {
-            if (!$$2x.dL()) {
+            if (!$$2x.dM()) {
                if (this.i($$2x)) {
-                  $$2x.ap();
+                  $$2x.aq();
                } else if (!$$2.a($$2x)) {
                   $$1.a("checkDespawn");
-                  $$2x.dC();
+                  $$2x.dD();
                   $$1.c();
-                  if (this.I.a.j().c($$2x.ds().a())) {
-                     bsg $$3x = $$2x.dd();
+                  if (this.I.a.j().c($$2x.dt().a())) {
+                     bsh $$3x = $$2x.de();
                      if ($$3x != null) {
-                        if (!$$3x.dL() && $$3x.x($$2x)) {
+                        if (!$$3x.dM() && $$3x.x($$2x)) {
                            return;
                         }
 
-                        $$2x.ac();
+                        $$2x.ad();
                      }
 
                      $$1.a("tick");
@@ -258,7 +258,7 @@ public class aqm extends dcf implements ddb {
          long $$0 = this.A.c() + 1L;
          this.K.a($$0);
          this.K.s().a(this.J, $$0);
-         if (this.A.o().b(dcb.l)) {
+         if (this.A.o().b(dcc.l)) {
             this.b(this.A.d() + 1L);
          }
       }
@@ -269,34 +269,34 @@ public class aqm extends dcf implements ddb {
    }
 
    public void a(boolean $$0, boolean $$1) {
-      for (dbs $$2 : this.aa) {
+      for (dbt $$2 : this.aa) {
          $$2.a(this, $$0, $$1);
       }
    }
 
-   private boolean i(bsg $$0) {
-      return this.J.ac() || !($$0 instanceof cer) && !($$0 instanceof cft) ? !this.J.ad() && $$0 instanceof clw : true;
+   private boolean i(bsh $$0) {
+      return this.J.ac() || !($$0 instanceof ces) && !($$0 instanceof cfu) ? !this.J.ad() && $$0 instanceof clx : true;
    }
 
    private void as() {
       this.P.a();
-      this.H.stream().filter(btb::fI).collect(Collectors.toList()).forEach($$0 -> $$0.a(false, false));
+      this.H.stream().filter(btc::fJ).collect(Collectors.toList()).forEach($$0 -> $$0.a(false, false));
    }
 
-   public void a(duq $$0, int $$1) {
-      dbm $$2 = $$0.f();
+   public void a(dur $$0, int $$1) {
+      dbn $$2 = $$0.f();
       boolean $$3 = this.ad();
       int $$4 = $$2.d();
       int $$5 = $$2.e();
-      bmu $$6 = this.ag();
+      bmv $$6 = this.ag();
       $$6.a("thunder");
       if ($$3 && this.ac() && this.z.a(100000) == 0) {
          ja $$7 = this.b(this.a($$4, 0, $$5, 15));
          if (this.r($$7)) {
-            bqe $$8 = this.d_($$7);
-            boolean $$9 = this.ab().b(dcb.e) && this.z.j() < (double)$$8.b() * 0.01 && !this.a_($$7.d()).a(dfj.ss);
+            bqf $$8 = this.d_($$7);
+            boolean $$9 = this.ab().b(dcc.e) && this.z.j() < (double)$$8.b() * 0.01 && !this.a_($$7.d()).a(dfk.ss);
             if ($$9) {
-               chb $$10 = bsm.aO.a((dcf)this);
+               chc $$10 = bsn.aO.a((dcg)this);
                if ($$10 != null) {
                   $$10.w(true);
                   $$10.c_(0);
@@ -305,9 +305,9 @@ public class aqm extends dcf implements ddb {
                }
             }
 
-            bta $$11 = bsm.am.a((dcf)this);
+            btb $$11 = bsn.am.a((dcg)this);
             if ($$11 != null) {
-               $$11.e(ewf.c($$7));
+               $$11.f(ewh.c($$7));
                $$11.a($$9);
                this.b($$11);
             }
@@ -324,10 +324,10 @@ public class aqm extends dcf implements ddb {
 
       $$6.b("tickBlocks");
       if ($$1 > 0) {
-         dur[] $$13 = $$0.d();
+         dus[] $$13 = $$0.d();
 
          for (int $$14 = 0; $$14 < $$13.length; $$14++) {
-            dur $$15 = $$13[$$14];
+            dus $$15 = $$13[$$14];
             if ($$15.d()) {
                int $$16 = $$0.g($$14);
                int $$17 = kc.c($$16);
@@ -335,12 +335,12 @@ public class aqm extends dcf implements ddb {
                for (int $$18 = 0; $$18 < $$1; $$18++) {
                   ja $$19 = this.a($$4, $$17, $$5, 15);
                   $$6.a("randomTick");
-                  dsk $$20 = $$15.a($$19.u() - $$4, $$19.v() - $$17, $$19.w() - $$5);
+                  dsl $$20 = $$15.a($$19.u() - $$4, $$19.v() - $$17, $$19.w() - $$5);
                   if ($$20.v()) {
                      $$20.b(this, $$19, this.z);
                   }
 
-                  eoh $$21 = $$20.u();
+                  eoj $$21 = $$20.u();
                   if ($$21.f()) {
                      $$21.b(this, $$19, this.z);
                   }
@@ -356,52 +356,52 @@ public class aqm extends dcf implements ddb {
 
    @VisibleForTesting
    public void a(ja $$0) {
-      ja $$1 = this.a(dyf.a.e, $$0);
+      ja $$1 = this.a(dyg.a.e, $$0);
       ja $$2 = $$1.d();
-      ddf $$3 = this.t($$1).a();
+      ddg $$3 = this.t($$1).a();
       if ($$3.a(this, $$2)) {
-         this.b($$2, dfj.dO.o());
+         this.b($$2, dfk.dO.o());
       }
 
       if (this.ad()) {
-         int $$4 = this.ab().c(dcb.T);
+         int $$4 = this.ab().c(dcc.T);
          if ($$4 > 0 && $$3.b(this, $$1)) {
-            dsk $$5 = this.a_($$1);
-            if ($$5.a(dfj.dN)) {
-               int $$6 = $$5.c(dmq.c);
+            dsl $$5 = this.a_($$1);
+            if ($$5.a(dfk.dN)) {
+               int $$6 = $$5.c(dmr.c);
                if ($$6 < Math.min($$4, 8)) {
-                  dsk $$7 = $$5.a(dmq.c, Integer.valueOf($$6 + 1));
-                  dfh.a($$5, $$7, this, $$1);
+                  dsl $$7 = $$5.a(dmr.c, Integer.valueOf($$6 + 1));
+                  dfi.a($$5, $$7, this, $$1);
                   this.b($$1, $$7);
                }
             } else {
-               this.b($$1, dfj.dN.o());
+               this.b($$1, dfk.dN.o());
             }
          }
 
-         ddf.c $$8 = $$3.a($$2);
-         if ($$8 != ddf.c.a) {
-            dsk $$9 = this.a_($$2);
+         ddg.c $$8 = $$3.a($$2);
+         if ($$8 != ddg.c.a) {
+            dsl $$9 = this.a_($$2);
             $$9.b().a($$9, this, $$2, $$8);
          }
       }
    }
 
    private Optional<ja> E(ja $$0) {
-      Optional<ja> $$1 = this.y().e($$0x -> $$0x.a(cej.t), $$0x -> $$0x.v() == this.a(dyf.a.b, $$0x.u(), $$0x.w()) - 1, $$0, 128, cef.b.c);
+      Optional<ja> $$1 = this.y().e($$0x -> $$0x.a(cek.t), $$0x -> $$0x.v() == this.a(dyg.a.b, $$0x.u(), $$0x.w()) - 1, $$0, 128, ceg.b.c);
       return $$1.map($$0x -> $$0x.b(1));
    }
 
    protected ja b(ja $$0) {
-      ja $$1 = this.a(dyf.a.e, $$0);
+      ja $$1 = this.a(dyg.a.e, $$0);
       Optional<ja> $$2 = this.E($$1);
       if ($$2.isPresent()) {
          return $$2.get();
       } else {
-         ewa $$3 = ewa.a($$1, new ja($$1.h(this.am()))).g(3.0);
-         List<btb> $$4 = this.a(btb.class, $$3, $$0x -> $$0x != null && $$0x.bE() && this.h($$0x.dq()));
+         ewc $$3 = ewc.a($$1, new ja($$1.h(this.am()))).g(3.0);
+         List<btc> $$4 = this.a(btc.class, $$3, $$0x -> $$0x != null && $$0x.bF() && this.h($$0x.dr()));
          if (!$$4.isEmpty()) {
-            return $$4.get(this.z.a($$4.size())).dq();
+            return $$4.get(this.z.a($$4.size())).dr();
          } else {
             if ($$1.v() == this.I_() - 1) {
                $$1 = $$1.b(2);
@@ -417,13 +417,13 @@ public class aqm extends dcf implements ddb {
    }
 
    public boolean d() {
-      return this.ab().c(dcb.P) <= 100;
+      return this.ab().c(dcc.P) <= 100;
    }
 
    private void at() {
       if (this.d()) {
          if (!this.o().U() || this.o().r()) {
-            int $$0 = this.ab().c(dcb.P);
+            int $$0 = this.ab().c(dcc.P);
             wu $$1;
             if (this.P.a($$0)) {
                $$1 = wu.c("sleep.skipping_night");
@@ -451,7 +451,7 @@ public class aqm extends dcf implements ddb {
    private void au() {
       boolean $$0 = this.ad();
       if (this.D_().g()) {
-         if (this.ab().b(dcb.v)) {
+         if (this.ab().b(dcc.v)) {
             int $$1 = this.K.f();
             int $$2 = this.K.h();
             int $$3 = this.K.j();
@@ -542,54 +542,54 @@ public class aqm extends dcf implements ddb {
       this.Q = 0;
    }
 
-   private void a(ja $$0, eog $$1) {
-      eoh $$2 = this.b_($$0);
+   private void a(ja $$0, eoi $$1) {
+      eoj $$2 = this.b_($$0);
       if ($$2.b($$1)) {
-         $$2.a((dcf)this, $$0);
+         $$2.a((dcg)this, $$0);
       }
    }
 
-   private void d(ja $$0, dfh $$1) {
-      dsk $$2 = this.a_($$0);
+   private void d(ja $$0, dfi $$1) {
+      dsl $$2 = this.a_($$0);
       if ($$2.a($$1)) {
          $$2.a(this, $$0, this.z);
       }
    }
 
-   public void a(bsg $$0) {
-      $$0.bv();
-      bmu $$1 = this.ag();
+   public void a(bsh $$0) {
+      $$0.bw();
+      bmv $$1 = this.ag();
       $$0.ai++;
-      this.ag().a(() -> lq.f.b($$0.al()).toString());
+      this.ag().a(() -> lq.f.b($$0.am()).toString());
       $$1.d("tickNonPassenger");
       $$0.l();
       this.ag().c();
 
-      for (bsg $$2 : $$0.cT()) {
+      for (bsh $$2 : $$0.cU()) {
          this.a($$0, $$2);
       }
    }
 
-   private void a(bsg $$0, bsg $$1) {
-      if ($$1.dL() || $$1.dd() != $$0) {
-         $$1.ac();
-      } else if ($$1 instanceof cmk || this.M.c($$1)) {
-         $$1.bv();
+   private void a(bsh $$0, bsh $$1) {
+      if ($$1.dM() || $$1.de() != $$0) {
+         $$1.ad();
+      } else if ($$1 instanceof cml || this.M.c($$1)) {
+         $$1.bw();
          $$1.ai++;
-         bmu $$2 = this.ag();
-         $$2.a(() -> lq.f.b($$1.al()).toString());
+         bmv $$2 = this.ag();
+         $$2.a(() -> lq.f.b($$1.am()).toString());
          $$2.d("tickPassenger");
-         $$1.t();
+         $$1.u();
          $$2.c();
 
-         for (bsg $$3 : $$1.cT()) {
+         for (bsh $$3 : $$1.cU()) {
             this.a($$1, $$3);
          }
       }
    }
 
    @Override
-   public boolean a(cmk $$0, ja $$1) {
+   public boolean a(cml $$0, ja $$1) {
       return !this.J.a(this, $$1, $$0) && this.C_().a($$1);
    }
 
@@ -622,17 +622,17 @@ public class aqm extends dcf implements ddb {
       this.l().k().a();
    }
 
-   public <T extends bsg> List<? extends T> a(dwu<bsg, T> $$0, Predicate<? super T> $$1) {
+   public <T extends bsh> List<? extends T> a(dwv<bsh, T> $$0, Predicate<? super T> $$1) {
       List<T> $$2 = Lists.newArrayList();
       this.a($$0, $$1, $$2);
       return $$2;
    }
 
-   public <T extends bsg> void a(dwu<bsg, T> $$0, Predicate<? super T> $$1, List<? super T> $$2) {
+   public <T extends bsh> void a(dwv<bsh, T> $$0, Predicate<? super T> $$1, List<? super T> $$2) {
       this.a($$0, $$1, $$2, Integer.MAX_VALUE);
    }
 
-   public <T extends bsg> void a(dwu<bsg, T> $$0, Predicate<? super T> $$1, List<? super T> $$2, int $$3) {
+   public <T extends bsh> void a(dwv<bsh, T> $$0, Predicate<? super T> $$1, List<? super T> $$2, int $$3) {
       this.G().a($$0, $$3x -> {
          if ($$1.test((T)$$3x)) {
             $$2.add((T)$$3x);
@@ -645,8 +645,8 @@ public class aqm extends dcf implements ddb {
       });
    }
 
-   public List<? extends chn> i() {
-      return this.a(bsm.F, btb::bE);
+   public List<? extends cho> i() {
+      return this.a(bsn.F, btc::bF);
    }
 
    public List<aqn> a(Predicate<? super aqn> $$0) {
@@ -670,61 +670,57 @@ public class aqm extends dcf implements ddb {
 
    @Nullable
    public aqn j() {
-      List<aqn> $$0 = this.a(btb::bE);
+      List<aqn> $$0 = this.a(btc::bF);
       return $$0.isEmpty() ? null : $$0.get(this.z.a($$0.size()));
    }
 
    @Override
-   public boolean b(bsg $$0) {
+   public boolean b(bsh $$0) {
       return this.j($$0);
    }
 
-   public boolean c(bsg $$0) {
+   public boolean c(bsh $$0) {
       return this.j($$0);
    }
 
-   public void d(bsg $$0) {
-      this.j($$0);
+   public void d(bsh $$0) {
+      if ($$0 instanceof aqn $$1) {
+         this.c($$1);
+      } else {
+         this.j($$0);
+      }
    }
 
    public void a(aqn $$0) {
-      this.e($$0);
+      this.c($$0);
    }
 
    public void b(aqn $$0) {
-      this.e($$0);
+      this.c($$0);
    }
 
-   public void c(aqn $$0) {
-      this.e($$0);
-   }
-
-   public void d(aqn $$0) {
-      this.e($$0);
-   }
-
-   private void e(aqn $$0) {
-      bsg $$1 = this.G().a($$0.cA());
+   private void c(aqn $$0) {
+      bsh $$1 = this.G().a($$0.cB());
       if ($$1 != null) {
-         E.warn("Force-added player with duplicate UUID {}", $$0.cA());
-         $$1.aj();
-         this.a((aqn)$$1, bsg.c.b);
+         E.warn("Force-added player with duplicate UUID {}", $$0.cB());
+         $$1.ak();
+         this.a((aqn)$$1, bsh.d.b);
       }
 
       this.N.a($$0);
    }
 
-   private boolean j(bsg $$0) {
-      if ($$0.dL()) {
-         E.warn("Tried to add entity {} but it was marked as removed already", bsm.a($$0.al()));
+   private boolean j(bsh $$0) {
+      if ($$0.dM()) {
+         E.warn("Tried to add entity {} but it was marked as removed already", bsn.a($$0.am()));
          return false;
       } else {
          return this.N.a($$0);
       }
    }
 
-   public boolean e(bsg $$0) {
-      if ($$0.cV().map(bsg::cA).anyMatch(this.N::a)) {
+   public boolean e(bsh $$0) {
+      if ($$0.cW().map(bsh::cB).anyMatch(this.N::a)) {
          return false;
       } else {
          this.a_($$0);
@@ -732,22 +728,22 @@ public class aqm extends dcf implements ddb {
       }
    }
 
-   public void a(duq $$0) {
+   public void a(dur $$0) {
       $$0.I();
       $$0.b(this);
    }
 
-   public void a(aqn $$0, bsg.c $$1) {
+   public void a(aqn $$0, bsh.d $$1) {
       $$0.a($$1);
    }
 
    @Override
    public void a(int $$0, ja $$1, int $$2) {
       for (aqn $$3 : this.J.ai().t()) {
-         if ($$3 != null && $$3.dQ() == this && $$3.am() != $$0) {
-            double $$4 = (double)$$1.u() - $$3.dv();
-            double $$5 = (double)$$1.v() - $$3.dx();
-            double $$6 = (double)$$1.w() - $$3.dB();
+         if ($$3 != null && $$3.dR() == this && $$3.an() != $$0) {
+            double $$4 = (double)$$1.u() - $$3.dw();
+            double $$5 = (double)$$1.v() - $$3.dy();
+            double $$6 = (double)$$1.w() - $$3.dC();
             if ($$4 * $$4 + $$5 * $$5 + $$6 * $$6 < 1024.0) {
                $$3.c.b(new abt($$0, $$1, $$2));
             }
@@ -756,18 +752,18 @@ public class aqm extends dcf implements ddb {
    }
 
    @Override
-   public void a(@Nullable cmk $$0, double $$1, double $$2, double $$3, jj<avg> $$4, avi $$5, float $$6, float $$7, long $$8) {
+   public void a(@Nullable cml $$0, double $$1, double $$2, double $$3, jj<avg> $$4, avi $$5, float $$6, float $$7, long $$8) {
       this.J.ai().a($$0, $$1, $$2, $$3, (double)$$4.a().a($$6), this.af(), new afi($$4, $$5, $$1, $$2, $$3, $$6, $$7, $$8));
    }
 
    @Override
-   public void a(@Nullable cmk $$0, bsg $$1, jj<avg> $$2, avi $$3, float $$4, float $$5, long $$6) {
-      this.J.ai().a($$0, $$1.dv(), $$1.dx(), $$1.dB(), (double)$$2.a().a($$4), this.af(), new afh($$2, $$3, $$1, $$4, $$5, $$6));
+   public void a(@Nullable cml $$0, bsh $$1, jj<avg> $$2, avi $$3, float $$4, float $$5, long $$6) {
+      this.J.ai().a($$0, $$1.dw(), $$1.dy(), $$1.dC(), (double)$$2.a().a($$4), this.af(), new afh($$2, $$3, $$1, $$4, $$5, $$6));
    }
 
    @Override
    public void b(int $$0, ja $$1, int $$2) {
-      if (this.ab().b(dcb.W)) {
+      if (this.ab().b(dcc.W)) {
          this.J.ai().a(new ada($$0, $$1, $$2, true));
       } else {
          this.a(null, $$0, $$1, $$2);
@@ -775,7 +771,7 @@ public class aqm extends dcf implements ddb {
    }
 
    @Override
-   public void a(@Nullable cmk $$0, int $$1, ja $$2, int $$3) {
+   public void a(@Nullable cml $$0, int $$1, ja $$2, int $$3) {
       this.J.ai().a($$0, (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), 64.0, this.af(), new ada($$1, $$2, $$3, false));
    }
 
@@ -784,12 +780,12 @@ public class aqm extends dcf implements ddb {
    }
 
    @Override
-   public void a(jj<dxg> $$0, ewf $$1, dxg.a $$2) {
+   public void a(jj<dxh> $$0, ewh $$1, dxh.a $$2) {
       this.O.a($$0, $$1, $$2);
    }
 
    @Override
-   public void a(ja $$0, dsk $$1, dsk $$2, int $$3) {
+   public void a(ja $$0, dsl $$1, dsl $$2, int $$3) {
       if (this.W) {
          String $$4 = "recursive call to sendBlockUpdated";
          ac.a("recursive call to sendBlockUpdated", new IllegalStateException("recursive call to sendBlockUpdated"));
@@ -797,13 +793,13 @@ public class aqm extends dcf implements ddb {
 
       this.l().a($$0);
       this.U.a($$0);
-      ewy $$5 = $$1.k(this, $$0);
-      ewy $$6 = $$2.k(this, $$0);
-      if (ewv.c($$5, $$6, ewj.g)) {
-         List<ccn> $$7 = new ObjectArrayList();
+      exa $$5 = $$1.k(this, $$0);
+      exa $$6 = $$2.k(this, $$0);
+      if (ewx.c($$5, $$6, ewl.g)) {
+         List<cco> $$7 = new ObjectArrayList();
 
-         for (btd $$8 : this.V) {
-            ccn $$9 = $$8.K();
+         for (bte $$8 : this.V) {
+            cco $$9 = $$8.J();
             if ($$9.b($$0)) {
                $$7.add($$9);
             }
@@ -812,7 +808,7 @@ public class aqm extends dcf implements ddb {
          try {
             this.W = true;
 
-            for (ccn $$10 : $$7) {
+            for (cco $$10 : $$7) {
                $$10.i();
             }
          } finally {
@@ -822,32 +818,32 @@ public class aqm extends dcf implements ddb {
    }
 
    @Override
-   public void a(ja $$0, dfh $$1) {
+   public void a(ja $$0, dfi $$1) {
       this.s.a($$0, $$1, null);
    }
 
    @Override
-   public void a(ja $$0, dfh $$1, jf $$2) {
+   public void a(ja $$0, dfi $$1, jf $$2) {
       this.s.a($$0, $$1, $$2);
    }
 
    @Override
-   public void a(ja $$0, dfh $$1, ja $$2) {
+   public void a(ja $$0, dfi $$1, ja $$2) {
       this.s.a($$0, $$1, $$2);
    }
 
    @Override
-   public void a(dsk $$0, ja $$1, dfh $$2, ja $$3, boolean $$4) {
+   public void a(dsl $$0, ja $$1, dfi $$2, ja $$3, boolean $$4) {
       this.s.a($$0, $$1, $$2, $$3, $$4);
    }
 
    @Override
-   public void a(bsg $$0, byte $$1) {
+   public void a(bsh $$0, byte $$1) {
       this.l().a($$0, new acr($$0, $$1));
    }
 
    @Override
-   public void a(bsg $$0, bqz $$1) {
+   public void a(bsh $$0, bra $$1) {
       this.l().a($$0, new acn($$0, $$1));
    }
 
@@ -856,21 +852,21 @@ public class aqm extends dcf implements ddb {
    }
 
    @Override
-   public dbx a(
-      @Nullable bsg $$0,
-      @Nullable bqz $$1,
-      @Nullable dby $$2,
+   public dby a(
+      @Nullable bsh $$0,
+      @Nullable bra $$1,
+      @Nullable dbz $$2,
       double $$3,
       double $$4,
       double $$5,
       float $$6,
       boolean $$7,
-      dcf.a $$8,
+      dcg.a $$8,
       lh $$9,
       lh $$10,
       jj<avg> $$11
    ) {
-      dbx $$12 = this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, $$9, $$10, $$11);
+      dby $$12 = this.a($$0, $$1, $$2, $$3, $$4, $$5, $$6, $$7, $$8, false, $$9, $$10, $$11);
       if (!$$12.d()) {
          $$12.h();
       }
@@ -885,15 +881,15 @@ public class aqm extends dcf implements ddb {
    }
 
    @Override
-   public void a(ja $$0, dfh $$1, int $$2, int $$3) {
-      this.X.add(new dbk($$0, $$1, $$2, $$3));
+   public void a(ja $$0, dfi $$1, int $$2, int $$3) {
+      this.X.add(new dbl($$0, $$1, $$2, $$3));
    }
 
    private void aw() {
       this.Y.clear();
 
       while (!this.X.isEmpty()) {
-         dbk $$0 = (dbk)this.X.removeFirst();
+         dbl $$0 = (dbl)this.X.removeFirst();
          if (this.n($$0.a())) {
             if (this.a($$0)) {
                this.J.ai().a(null, (double)$$0.a().u(), (double)$$0.a().v(), (double)$$0.a().w(), 64.0, this.af(), new abv($$0.a(), $$0.b(), $$0.c(), $$0.d()));
@@ -906,16 +902,16 @@ public class aqm extends dcf implements ddb {
       this.X.addAll(this.Y);
    }
 
-   private boolean a(dbk $$0) {
-      dsk $$1 = this.a_($$0.a());
+   private boolean a(dbl $$0) {
+      dsl $$1 = this.a_($$0.a());
       return $$1.a($$0.b()) ? $$1.a(this, $$0.a(), $$0.c(), $$0.d()) : false;
    }
 
-   public ext<dfh> m() {
+   public exv<dfi> m() {
       return this.S;
    }
 
-   public ext<eog> n() {
+   public exv<eoi> n() {
       return this.T;
    }
 
@@ -925,11 +921,11 @@ public class aqm extends dcf implements ddb {
       return this.J;
    }
 
-   public epf p() {
+   public epi p() {
       return this.R;
    }
 
-   public emx q() {
+   public emz q() {
       return this.J.bb();
    }
 
@@ -953,11 +949,11 @@ public class aqm extends dcf implements ddb {
    }
 
    private boolean a(aqn $$0, boolean $$1, double $$2, double $$3, double $$4, zb<?> $$5) {
-      if ($$0.dQ() != this) {
+      if ($$0.dR() != this) {
          return false;
       } else {
-         ja $$6 = $$0.dq();
-         if ($$6.a(new ewf($$2, $$3, $$4), $$1 ? 512.0 : 32.0)) {
+         ja $$6 = $$0.dr();
+         if ($$6.a(new ewh($$2, $$3, $$4), $$1 ? 512.0 : 32.0)) {
             $$0.c.b($$5);
             return true;
          } else {
@@ -968,49 +964,49 @@ public class aqm extends dcf implements ddb {
 
    @Nullable
    @Override
-   public bsg a(int $$0) {
+   public bsh a(int $$0) {
       return this.G().a($$0);
    }
 
    @Deprecated
    @Nullable
-   public bsg b(int $$0) {
-      bsg $$1 = this.G().a($$0);
-      return $$1 != null ? $$1 : (bsg)this.ac.get($$0);
+   public bsh b(int $$0) {
+      bsh $$1 = this.G().a($$0);
+      return $$1 != null ? $$1 : (bsh)this.ac.get($$0);
    }
 
    @Nullable
-   public bsg a(UUID $$0) {
+   public bsh a(UUID $$0) {
       return this.G().a($$0);
    }
 
    @Nullable
-   public ja a(awm<eiw> $$0, ja $$1, int $$2, boolean $$3) {
+   public ja a(awm<eix> $$0, ja $$1, int $$2, boolean $$3) {
       if (!this.J.bc().y().c()) {
          return null;
       } else {
-         Optional<jn.c<eiw>> $$4 = this.H_().d(lr.aQ).b($$0);
+         Optional<jn.c<eix>> $$4 = this.H_().d(lr.aQ).b($$0);
          if ($$4.isEmpty()) {
             return null;
          } else {
-            Pair<ja, jj<eiw>> $$5 = this.l().g().a(this, $$4.get(), $$1, $$2, $$3);
+            Pair<ja, jj<eix>> $$5 = this.l().g().a(this, $$4.get(), $$1, $$2, $$3);
             return $$5 != null ? (ja)$$5.getFirst() : null;
          }
       }
    }
 
    @Nullable
-   public Pair<ja, jj<ddf>> a(Predicate<jj<ddf>> $$0, ja $$1, int $$2, int $$3, int $$4) {
+   public Pair<ja, jj<ddg>> a(Predicate<jj<ddg>> $$0, ja $$1, int $$2, int $$3, int $$4) {
       return this.l().g().d().a($$1, $$2, $$3, $$4, $$0, this.l().i().b(), this);
    }
 
    @Override
-   public cym r() {
+   public cyn r() {
       return this.J.aK();
    }
 
    @Override
-   public bqr s() {
+   public bqs s() {
       return this.J.aR();
    }
 
@@ -1019,24 +1015,24 @@ public class aqm extends dcf implements ddb {
       return this.e;
    }
 
-   public eqc u() {
+   public eqe u() {
       return this.l().k();
    }
 
    @Nullable
    @Override
-   public epw a(epu $$0) {
-      return this.o().J().u().b(epw.a(), $$0.a());
+   public epy a(epw $$0) {
+      return this.o().J().u().b(epy.a(), $$0.a());
    }
 
    @Override
-   public void a(epu $$0, epw $$1) {
+   public void a(epw $$0, epy $$1) {
       this.o().J().u().a($$0.a(), $$1);
    }
 
    @Override
-   public epu v() {
-      return this.o().J().u().a(epv.a(), "idcounts").b();
+   public epw v() {
+      return this.o().J().u().a(epx.a(), "idcounts").b();
    }
 
    public void a(ja $$0, float $$1) {
@@ -1048,25 +1044,25 @@ public class aqm extends dcf implements ddb {
       }
 
       if (this.L > 1) {
-         this.l().b(aqr.a, new dbm($$2), this.L, azk.a);
+         this.l().b(aqr.a, new dbn($$2), this.L, azk.a);
       }
 
-      int $$4 = this.ab().c(dcb.Z) + 1;
+      int $$4 = this.ab().c(dcc.Z) + 1;
       if ($$4 > 1) {
-         this.l().a(aqr.a, new dbm($$0), $$4, azk.a);
+         this.l().a(aqr.a, new dbn($$0), $$4, azk.a);
       }
 
       this.L = $$4;
    }
 
    public LongSet w() {
-      dca $$0 = this.u().b(dca.a(), "chunks");
+      dcb $$0 = this.u().b(dcb.a(), "chunks");
       return (LongSet)($$0 != null ? LongSets.unmodifiable($$0.b()) : LongSets.EMPTY_SET);
    }
 
    public boolean a(int $$0, int $$1, boolean $$2) {
-      dca $$3 = this.u().a(dca.a(), "chunks");
-      dbm $$4 = new dbm($$0, $$1);
+      dcb $$3 = this.u().a(dcb.a(), "chunks");
+      dbn $$4 = new dbn($$0, $$1);
       long $$5 = $$4.a();
       boolean $$6;
       if ($$2) {
@@ -1092,9 +1088,9 @@ public class aqm extends dcf implements ddb {
    }
 
    @Override
-   public void a(ja $$0, dsk $$1, dsk $$2) {
-      Optional<jj<cei>> $$3 = cej.a($$1);
-      Optional<jj<cei>> $$4 = cej.a($$2);
+   public void a(ja $$0, dsl $$1, dsl $$2) {
+      Optional<jj<cej>> $$3 = cek.a($$1);
+      Optional<jj<cej>> $$4 = cek.a($$2);
       if (!Objects.equals($$3, $$4)) {
          ja $$5 = $$0.i();
          $$3.ifPresent($$1x -> this.o().execute(() -> {
@@ -1108,7 +1104,7 @@ public class aqm extends dcf implements ddb {
       }
    }
 
-   public cef y() {
+   public ceg y() {
       return this.l().l();
    }
 
@@ -1128,12 +1124,12 @@ public class aqm extends dcf implements ddb {
       return this.y().a($$0);
    }
 
-   public cnx z() {
+   public cny z() {
       return this.f;
    }
 
    @Nullable
-   public cnv d(ja $$0) {
+   public cnw d(ja $$0) {
       return this.f.a($$0, 9216);
    }
 
@@ -1141,7 +1137,7 @@ public class aqm extends dcf implements ddb {
       return this.d($$0) != null;
    }
 
-   public void a(cec $$0, bsg $$1, btq $$2) {
+   public void a(ced $$0, bsh $$1, btr $$2) {
       $$2.a($$0, $$1);
    }
 
@@ -1150,13 +1146,13 @@ public class aqm extends dcf implements ddb {
 
       try (Writer $$2 = Files.newBufferedWriter($$0.resolve("stats.txt"))) {
          $$2.write(String.format(Locale.ROOT, "spawning_chunks: %d\n", $$1.j().b()));
-         dcq.d $$3 = this.l().n();
+         dcr.d $$3 = this.l().n();
          if ($$3 != null) {
             ObjectIterator $$9 = $$3.b().object2IntEntrySet().iterator();
 
             while ($$9.hasNext()) {
-               Entry<bte> $$4 = (Entry<bte>)$$9.next();
-               $$2.write(String.format(Locale.ROOT, "spawn_count.%s: %d\n", ((bte)$$4.getKey()).a(), $$4.getIntValue()));
+               Entry<btf> $$4 = (Entry<btf>)$$9.next();
+               $$2.write(String.format(Locale.ROOT, "spawn_count.%s: %d\n", ((btf)$$4.getKey()).a(), $$4.getIntValue()));
             }
          }
 
@@ -1200,32 +1196,32 @@ public class aqm extends dcf implements ddb {
       }
    }
 
-   private static void a(Writer $$0, Iterable<bsg> $$1) throws IOException {
+   private static void a(Writer $$0, Iterable<bsh> $$1) throws IOException {
       axf $$2 = axf.a().a("x").a("y").a("z").a("uuid").a("type").a("alive").a("display_name").a("custom_name").a($$0);
 
-      for (bsg $$3 : $$1) {
-         wu $$4 = $$3.ai();
+      for (bsh $$3 : $$1) {
+         wu $$4 = $$3.aj();
          wu $$5 = $$3.O_();
-         $$2.a($$3.dv(), $$3.dx(), $$3.dB(), $$3.cA(), lq.f.b($$3.al()), $$3.bE(), $$5.getString(), $$4 != null ? $$4.getString() : null);
+         $$2.a($$3.dw(), $$3.dy(), $$3.dC(), $$3.cB(), lq.f.b($$3.am()), $$3.bF(), $$5.getString(), $$4 != null ? $$4.getString() : null);
       }
    }
 
    private void a(Writer $$0) throws IOException {
       axf $$1 = axf.a().a("x").a("y").a("z").a("type").a($$0);
 
-      for (dri $$2 : this.r) {
+      for (drj $$2 : this.r) {
          ja $$3 = $$2.c();
          $$1.a($$3.u(), $$3.v(), $$3.w(), $$2.d());
       }
    }
 
    @VisibleForTesting
-   public void a(eio $$0) {
+   public void a(eip $$0) {
       this.X.removeIf($$1 -> $$0.b($$1.a()));
    }
 
    @Override
-   public void b(ja $$0, dfh $$1) {
+   public void b(ja $$0, dfi $$1) {
       if (!this.ai()) {
          this.a($$0, $$1);
       }
@@ -1236,7 +1232,7 @@ public class aqm extends dcf implements ddb {
       return 1.0F;
    }
 
-   public Iterable<bsg> A() {
+   public Iterable<bsh> A() {
       return this.G().a();
    }
 
@@ -1255,7 +1251,7 @@ public class aqm extends dcf implements ddb {
    }
 
    @Nullable
-   public dwi D() {
+   public dwj D() {
       return this.ab;
    }
 
@@ -1271,9 +1267,9 @@ public class aqm extends dcf implements ddb {
          "players: %s, entities: %s [%s], block_entities: %d [%s], block_ticks: %d, fluid_ticks: %d, chunk_source: %s",
          this.H.size(),
          this.N.e(),
-         a(this.N.d().a(), $$0 -> lq.f.b($$0.al()).toString()),
+         a(this.N.d().a(), $$0 -> lq.f.b($$0.am()).toString()),
          this.r.size(),
-         a(this.r, dri::d),
+         a(this.r, drj::d),
          this.m().a(),
          this.n().a(),
          this.I()
@@ -1305,32 +1301,32 @@ public class aqm extends dcf implements ddb {
       int $$2 = $$1.u();
       int $$3 = $$1.v() - 2;
       int $$4 = $$1.w();
-      ja.b($$2 - 2, $$3 + 1, $$4 - 2, $$2 + 2, $$3 + 3, $$4 + 2).forEach($$1x -> $$0.b($$1x, dfj.a.o()));
-      ja.b($$2 - 2, $$3, $$4 - 2, $$2 + 2, $$3, $$4 + 2).forEach($$1x -> $$0.b($$1x, dfj.co.o()));
+      ja.b($$2 - 2, $$3 + 1, $$4 - 2, $$2 + 2, $$3 + 3, $$4 + 2).forEach($$1x -> $$0.b($$1x, dfk.a.o()));
+      ja.b($$2 - 2, $$3, $$4 - 2, $$2 + 2, $$3, $$4 + 2).forEach($$1x -> $$0.b($$1x, dfk.co.o()));
    }
 
    @Override
-   protected dww<bsg> G() {
+   protected dwx<bsh> G() {
       return this.N.d();
    }
 
-   public void a(Stream<bsg> $$0) {
+   public void a(Stream<bsh> $$0) {
       this.N.a($$0);
    }
 
-   public void b(Stream<bsg> $$0) {
+   public void b(Stream<bsh> $$0) {
       this.N.b($$0);
    }
 
-   public void b(duq $$0) {
+   public void b(dur $$0) {
       $$0.c(this.A_().c());
    }
 
-   public void a(dug $$0) {
+   public void a(duh $$0) {
       this.J.execute(() -> this.ae.a($$0.f(), $$0.g()));
    }
 
-   public eoz H() {
+   public epb H() {
       return this.U;
    }
 
@@ -1354,24 +1350,24 @@ public class aqm extends dcf implements ddb {
    }
 
    public boolean f(ja $$0) {
-      return this.N.a($$0) && this.I.a.j().c(dbm.a($$0));
+      return this.N.a($$0) && this.I.a.j().c(dbn.a($$0));
    }
 
    public boolean g(ja $$0) {
       return this.N.a($$0);
    }
 
-   public boolean a(dbm $$0) {
+   public boolean a(dbn $$0) {
       return this.N.a($$0);
    }
 
    @Override
-   public coy J() {
+   public coz J() {
       return this.J.bc().K();
    }
 
    @Override
-   public cwc K() {
+   public cwd K() {
       return this.J.bq();
    }
 
@@ -1379,7 +1375,7 @@ public class aqm extends dcf implements ddb {
       return this.ag.a($$0);
    }
 
-   public bqn L() {
+   public bqo L() {
       return this.ag;
    }
 
@@ -1390,30 +1386,30 @@ public class aqm extends dcf implements ddb {
       return $$1;
    }
 
-   final class a implements dwv<bsg> {
-      public void a(bsg $$0) {
+   final class a implements dww<bsh> {
+      public void a(bsh $$0) {
       }
 
-      public void b(bsg $$0) {
+      public void b(bsh $$0) {
          aqm.this.f().a($$0);
       }
 
-      public void c(bsg $$0) {
+      public void c(bsh $$0) {
          aqm.this.M.a($$0);
       }
 
-      public void d(bsg $$0) {
+      public void d(bsh $$0) {
          aqm.this.M.b($$0);
       }
 
-      public void e(bsg $$0) {
+      public void e(bsh $$0) {
          aqm.this.l().b($$0);
          if ($$0 instanceof aqn $$1) {
             aqm.this.H.add($$1);
             aqm.this.e();
          }
 
-         if ($$0 instanceof btd $$2) {
+         if ($$0 instanceof bte $$2) {
             if (aqm.this.W) {
                String $$3 = "onTrackingStart called during navigation iteration";
                ac.a("onTrackingStart called during navigation iteration", new IllegalStateException("onTrackingStart called during navigation iteration"));
@@ -1422,23 +1418,23 @@ public class aqm extends dcf implements ddb {
             aqm.this.V.add($$2);
          }
 
-         if ($$0 instanceof chn $$4) {
-            for (chl $$5 : $$4.gk()) {
-               aqm.this.ac.put($$5.am(), $$5);
+         if ($$0 instanceof cho $$4) {
+            for (chm $$5 : $$4.gj()) {
+               aqm.this.ac.put($$5.an(), $$5);
             }
          }
 
-         $$0.a(dxd::a);
+         $$0.a(dxe::a);
       }
 
-      public void f(bsg $$0) {
+      public void f(bsh $$0) {
          aqm.this.l().a($$0);
          if ($$0 instanceof aqn $$1) {
             aqm.this.H.remove($$1);
             aqm.this.e();
          }
 
-         if ($$0 instanceof btd $$2) {
+         if ($$0 instanceof bte $$2) {
             if (aqm.this.W) {
                String $$3 = "onTrackingStart called during navigation iteration";
                ac.a("onTrackingStart called during navigation iteration", new IllegalStateException("onTrackingStart called during navigation iteration"));
@@ -1447,17 +1443,17 @@ public class aqm extends dcf implements ddb {
             aqm.this.V.remove($$2);
          }
 
-         if ($$0 instanceof chn $$4) {
-            for (chl $$5 : $$4.gk()) {
-               aqm.this.ac.remove($$5.am());
+         if ($$0 instanceof cho $$4) {
+            for (chm $$5 : $$4.gj()) {
+               aqm.this.ac.remove($$5.an());
             }
          }
 
-         $$0.a(dxd::b);
+         $$0.a(dxe::b);
       }
 
-      public void g(bsg $$0) {
-         $$0.a(dxd::c);
+      public void g(bsh $$0) {
+         $$0.a(dxe::c);
       }
    }
 }

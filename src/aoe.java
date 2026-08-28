@@ -21,10 +21,10 @@ public class aoe {
       );
    }
 
-   private static int a(eq $$0, @Nullable bsg $$1, aqn $$2) throws CommandSyntaxException {
+   private static int a(eq $$0, @Nullable bsh $$1, aqn $$2) throws CommandSyntaxException {
       if ($$2 == $$1) {
          throw a.create();
-      } else if ($$2.e.b() != dcc.d) {
+      } else if ($$2.e.b() != dcd.d) {
          throw b.create($$2.O_());
       } else {
          $$2.d($$1);

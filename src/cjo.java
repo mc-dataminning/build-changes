@@ -1,239 +1,63 @@
-import javax.annotation.Nullable;
-
-public class cjo extends cka implements cju {
-   private static final int e = 4;
-   private static final int ca = 3;
-   private static final int cb = 3;
-   private int cc;
-   private final ewf[][] cd;
-
-   public cjo(bsm<? extends cjo> $$0, dcf $$1) {
+public class cjo extends ckk {
+   public cjo(bsn<? extends cjo> $$0, dcg $$1) {
       super($$0, $$1);
-      this.bP = 5;
-      this.cd = new ewf[2][4];
+   }
 
-      for (int $$2 = 0; $$2 < 4; $$2++) {
-         this.cd[0][$$2] = ewf.b;
-         this.cd[1][$$2] = ewf.b;
-      }
+   public static boolean a(bsn<cjo> $$0, dcv $$1, btg $$2, ja $$3, ayo $$4) {
+      return b($$0, $$1, $$2, $$3, $$4) && (btg.a($$2) || $$1.h($$3));
    }
 
    @Override
-   protected void z() {
-      super.z();
-      this.bU.a(0, new bzt(this));
-      this.bU.a(1, new cka.b());
-      this.bU.a(4, new cjo.b());
-      this.bU.a(5, new cjo.a());
-      this.bU.a(6, new caz<>(this, 0.5, 20, 15.0F));
-      this.bU.a(8, new caw(this, 0.6));
-      this.bU.a(9, new cah(this, cmk.class, 3.0F, 1.0F));
-      this.bU.a(10, new cah(this, btd.class, 8.0F));
-      this.bV.a(1, new cbr(this, cnw.class).a());
-      this.bV.a(2, new cbs<>(this, cmk.class, true).c(300));
-      this.bV.a(3, new cbs<>(this, cls.class, false).c(300));
-      this.bV.a(3, new cbs<>(this, cfd.class, false).c(300));
-   }
-
-   public static bui.a u() {
-      return cjq.gu().a(buj.v, 0.5).a(buj.m, 18.0).a(buj.s, 32.0);
-   }
-
-   @Override
-   public btu a(dcu $$0, bqe $$1, btf $$2, @Nullable btu $$3) {
-      this.a(bsn.a, new cuc(cuf.ov));
-      return super.a($$0, $$1, $$2, $$3);
-   }
-
-   @Override
-   public ewa h_() {
-      return this.cL().c(3.0, 0.0, 3.0);
-   }
-
-   @Override
-   public void n_() {
-      super.n_();
-      if (this.dQ().B && this.ci()) {
-         this.cc--;
-         if (this.cc < 0) {
-            this.cc = 0;
-         }
-
-         if (this.aO == 1 || this.ai % 1200 == 0) {
-            this.cc = 3;
-            float $$0 = -6.0F;
-            int $$1 = 13;
-
-            for (int $$2 = 0; $$2 < 4; $$2++) {
-               this.cd[0][$$2] = this.cd[1][$$2];
-               this.cd[1][$$2] = new ewf(
-                  (double)(-6.0F + (float)this.ah.a(13)) * 0.5, (double)Math.max(0, this.ah.a(6) - 4), (double)(-6.0F + (float)this.ah.a(13)) * 0.5
-               );
-            }
-
-            for (int $$3 = 0; $$3 < 16; $$3++) {
-               this.dQ().a(lj.e, this.d(0.5), this.dy(), this.f(0.5), 0.0, 0.0, 0.0);
-            }
-
-            this.dQ().a(this.dv(), this.dx(), this.dB(), avh.ni, this.df(), 1.0F, 1.0F, false);
-         } else if (this.aO == this.aP - 1) {
-            this.cc = 3;
-
-            for (int $$4 = 0; $$4 < 4; $$4++) {
-               this.cd[0][$$4] = this.cd[1][$$4];
-               this.cd[1][$$4] = new ewf(0.0, 0.0, 0.0);
-            }
-         }
-      }
-   }
-
-   @Override
-   public avg ae_() {
-      return avh.ne;
-   }
-
-   public ewf[] H(float $$0) {
-      if (this.cc <= 0) {
-         return this.cd[1];
-      } else {
-         double $$1 = (double)(((float)this.cc - $$0) / 3.0F);
-         $$1 = Math.pow($$1, 0.25);
-         ewf[] $$2 = new ewf[4];
-
-         for (int $$3 = 0; $$3 < 4; $$3++) {
-            $$2[$$3] = this.cd[1][$$3].a(1.0 - $$1).e(this.cd[0][$$3].a($$1));
-         }
-
-         return $$2;
-      }
+   protected boolean ad_() {
+      return false;
    }
 
    @Override
    protected avg v() {
-      return avh.ne;
+      return avh.mZ;
    }
 
    @Override
-   protected avg o_() {
-      return avh.ng;
+   protected avg d(bra $$0) {
+      return avh.nc;
    }
 
    @Override
-   protected avg d(bqz $$0) {
-      return avh.nh;
+   protected avg n_() {
+      return avh.nb;
    }
 
    @Override
-   protected avg go() {
-      return avh.nf;
+   protected avg gn() {
+      return avh.nd;
    }
 
    @Override
-   public void a(int $$0, boolean $$1) {
+   public boolean D(bsh $$0) {
+      boolean $$1 = super.D($$0);
+      if ($$1 && this.eV().e() && $$0 instanceof btc) {
+         float $$2 = this.dR().d_(this.dr()).b();
+         ((btc)$$0).b(new brp(brr.q, 140 * (int)$$2), this);
+      }
+
+      return $$1;
    }
 
    @Override
-   public void a(btb $$0, float $$1) {
-      cuc $$2 = this.b(cne.a(this, cuf.ov));
-      cuc $$3 = this.g($$2);
-      cmq $$4 = cne.a(this, $$3, $$1, $$2);
-      double $$5 = $$0.dv() - this.dv();
-      double $$6 = $$0.e(0.3333333333333333) - $$4.dx();
-      double $$7 = $$0.dB() - this.dB();
-      double $$8 = Math.sqrt($$5 * $$5 + $$7 * $$7);
-      $$4.c($$5, $$6 + $$8 * 0.2F, $$7, 1.6F, (float)(14 - this.dQ().al().a() * 4));
-      this.a(avh.xn, 1.0F, 1.0F / (this.dT().i() * 0.4F + 0.8F));
-      this.dQ().b($$4);
+   protected boolean gp() {
+      return true;
    }
 
    @Override
-   public cix.a s() {
-      if (this.gy()) {
-         return cix.a.c;
-      } else {
-         return this.gf() ? cix.a.d : cix.a.a;
+   protected void ac_() {
+      this.b(bsn.bu);
+      if (!this.aY()) {
+         this.dR().a(null, 1041, this.dr(), 0);
       }
    }
 
-   class a extends cka.c {
-      private int e;
-
-      @Override
-      public boolean a() {
-         if (!super.a()) {
-            return false;
-         } else if (cjo.this.p() == null) {
-            return false;
-         } else {
-            return cjo.this.p().am() == this.e ? false : cjo.this.dQ().d_(cjo.this.dq()).a((float)bqd.c.ordinal());
-         }
-      }
-
-      @Override
-      public void c() {
-         super.c();
-         btb $$0 = cjo.this.p();
-         if ($$0 != null) {
-            this.e = $$0.am();
-         }
-      }
-
-      @Override
-      protected int h() {
-         return 20;
-      }
-
-      @Override
-      protected int i() {
-         return 180;
-      }
-
-      @Override
-      protected void k() {
-         cjo.this.p().b(new bro(brq.o, 400), cjo.this);
-      }
-
-      @Override
-      protected avg l() {
-         return avh.nj;
-      }
-
-      @Override
-      protected cka.a m() {
-         return cka.a.f;
-      }
-   }
-
-   class b extends cka.c {
-      @Override
-      public boolean a() {
-         return !super.a() ? false : !cjo.this.b(brq.n);
-      }
-
-      @Override
-      protected int h() {
-         return 20;
-      }
-
-      @Override
-      protected int i() {
-         return 340;
-      }
-
-      @Override
-      protected void k() {
-         cjo.this.b(new bro(brq.n, 1200));
-      }
-
-      @Nullable
-      @Override
-      protected avg l() {
-         return avh.nk;
-      }
-
-      @Override
-      protected cka.a m() {
-         return cka.a.e;
-      }
+   @Override
+   protected cud go() {
+      return cud.l;
    }
 }

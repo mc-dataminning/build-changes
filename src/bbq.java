@@ -19,7 +19,7 @@ public class bbq extends DataFix {
 
    public TypeRewriteRule makeRule() {
       return this.writeFixAndRead(
-         "ChunkToProtoChunkFix", this.getInputSchema().getType(bgg.c), this.getOutputSchema().getType(bgg.c), $$0 -> $$0.update("Level", bbq::a)
+         "ChunkToProtoChunkFix", this.getInputSchema().getType(bgh.c), this.getOutputSchema().getType(bgh.c), $$0 -> $$0.update("Level", bbq::a)
       );
    }
 

@@ -1,31 +1,42 @@
-import com.google.common.collect.ImmutableSet;
-import com.mojang.serialization.Codec;
+import com.google.common.collect.Sets;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
-import javax.annotation.Nullable;
 
-public record evh(equ.b c) implements evk {
-   public static final MapCodec<evh> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(equ.b.e.fieldOf("target").forGetter(evh::c)).apply($$0, evh::new));
-   public static final Codec<evh> b = equ.b.e.xmap(evh::new, evh::c);
+public record evh(evd b, evd c) implements evd {
+   public static final MapCodec<evh> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(eve.a.fieldOf("min").forGetter(evh::c), eve.a.fieldOf("max").forGetter(evh::d)).apply($$0, evh::new)
+   );
 
-   public static evk a(equ.b $$0) {
-      return new evh($$0);
+   @Override
+   public evc b() {
+      return eve.c;
+   }
+
+   public static evh a(float $$0, float $$1) {
+      return new evh(eva.a($$0), eva.a($$1));
    }
 
    @Override
-   public evj a() {
-      return evl.c;
-   }
-
-   @Nullable
-   @Override
-   public exi a(equ $$0) {
-      return $$0.c(this.c.a());
+   public int a(eqw $$0) {
+      return ayg.a($$0.b(), this.b.a($$0), this.c.a($$0));
    }
 
    @Override
-   public Set<etn<?>> b() {
-      return ImmutableSet.of(this.c.a());
+   public float b(eqw $$0) {
+      return ayg.a($$0.b(), this.b.b($$0), this.c.b($$0));
+   }
+
+   @Override
+   public Set<etp<?>> a() {
+      return Sets.union(this.b.a(), this.c.a());
+   }
+
+   public evd c() {
+      return this.b;
+   }
+
+   public evd d() {
+      return this.c;
    }
 }

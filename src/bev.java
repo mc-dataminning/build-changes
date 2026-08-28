@@ -9,7 +9,7 @@ public class bev extends azv {
    private static final Logger b = LogUtils.getLogger();
 
    public bev(Schema $$0) {
-      super($$0, bgg.a);
+      super($$0, bgh.a);
    }
 
    protected TypeRewriteRule makeRule() {

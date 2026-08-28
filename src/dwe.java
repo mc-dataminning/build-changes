@@ -1,14 +1,13 @@
 public class dwe {
-   public static final int a = -64;
-   public static final int b = 384;
-   public static final int c = 384;
-   public static final int d = 384;
-   public static final int e = 0;
-   public static final int f = 256;
-   public static final int g = 128;
-   public static final int h = 128;
-   public static final int i = 0;
-   public static final int j = 256;
-   public static final int k = 128;
-   public static final int l = 256;
+   public static final akj<dwg> a = a("overworld");
+   public static final akj<dwg> b = a("the_nether");
+   public static final akj<dwg> c = a("the_end");
+   public static final akj<dwg> d = a("overworld_caves");
+   public static final akk e = new akk("overworld");
+   public static final akk f = new akk("the_nether");
+   public static final akk g = new akk("the_end");
+
+   private static akj<dwg> a(String $$0) {
+      return akj.a(lr.aJ, new akk($$0));
+   }
 }

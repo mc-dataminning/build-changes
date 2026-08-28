@@ -1,99 +1,76 @@
-public class dph {
-   public static final akj<dpf> a = a("base");
-   public static final akj<dpf> b = a("square_bottom_left");
-   public static final akj<dpf> c = a("square_bottom_right");
-   public static final akj<dpf> d = a("square_top_left");
-   public static final akj<dpf> e = a("square_top_right");
-   public static final akj<dpf> f = a("stripe_bottom");
-   public static final akj<dpf> g = a("stripe_top");
-   public static final akj<dpf> h = a("stripe_left");
-   public static final akj<dpf> i = a("stripe_right");
-   public static final akj<dpf> j = a("stripe_center");
-   public static final akj<dpf> k = a("stripe_middle");
-   public static final akj<dpf> l = a("stripe_downright");
-   public static final akj<dpf> m = a("stripe_downleft");
-   public static final akj<dpf> n = a("small_stripes");
-   public static final akj<dpf> o = a("cross");
-   public static final akj<dpf> p = a("straight_cross");
-   public static final akj<dpf> q = a("triangle_bottom");
-   public static final akj<dpf> r = a("triangle_top");
-   public static final akj<dpf> s = a("triangles_bottom");
-   public static final akj<dpf> t = a("triangles_top");
-   public static final akj<dpf> u = a("diagonal_left");
-   public static final akj<dpf> v = a("diagonal_up_right");
-   public static final akj<dpf> w = a("diagonal_up_left");
-   public static final akj<dpf> x = a("diagonal_right");
-   public static final akj<dpf> y = a("circle");
-   public static final akj<dpf> z = a("rhombus");
-   public static final akj<dpf> A = a("half_vertical");
-   public static final akj<dpf> B = a("half_horizontal");
-   public static final akj<dpf> C = a("half_vertical_right");
-   public static final akj<dpf> D = a("half_horizontal_bottom");
-   public static final akj<dpf> E = a("border");
-   public static final akj<dpf> F = a("curly_border");
-   public static final akj<dpf> G = a("gradient");
-   public static final akj<dpf> H = a("gradient_up");
-   public static final akj<dpf> I = a("bricks");
-   public static final akj<dpf> J = a("globe");
-   public static final akj<dpf> K = a("creeper");
-   public static final akj<dpf> L = a("skull");
-   public static final akj<dpf> M = a("flower");
-   public static final akj<dpf> N = a("mojang");
-   public static final akj<dpf> O = a("piglin");
-   public static final akj<dpf> P = a("flow");
-   public static final akj<dpf> Q = a("guster");
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.List;
+import java.util.Optional;
+import org.slf4j.Logger;
 
-   private static akj<dpf> a(String $$0) {
-      return akj.a(lr.d, new akk($$0));
+public record dph(List<dph.b> d) {
+   static final Logger e = LogUtils.getLogger();
+   public static final dph a = new dph(List.of());
+   public static final Codec<dph> b = dph.b.a.listOf().xmap(dph::new, dph::b);
+   public static final ys<wf, dph> c = dph.b.b.a(yq.a()).a(dph::new, dph::b);
+
+   public dph a() {
+      return new dph(List.copyOf(this.d.subList(0, this.d.size() - 1)));
    }
 
-   public static void a(qm<dpf> $$0) {
-      a($$0, a);
-      a($$0, b);
-      a($$0, c);
-      a($$0, d);
-      a($$0, e);
-      a($$0, f);
-      a($$0, g);
-      a($$0, h);
-      a($$0, i);
-      a($$0, j);
-      a($$0, k);
-      a($$0, l);
-      a($$0, m);
-      a($$0, n);
-      a($$0, o);
-      a($$0, p);
-      a($$0, q);
-      a($$0, r);
-      a($$0, s);
-      a($$0, t);
-      a($$0, u);
-      a($$0, v);
-      a($$0, w);
-      a($$0, x);
-      a($$0, y);
-      a($$0, z);
-      a($$0, A);
-      a($$0, B);
-      a($$0, C);
-      a($$0, D);
-      a($$0, E);
-      a($$0, F);
-      a($$0, G);
-      a($$0, H);
-      a($$0, I);
-      a($$0, J);
-      a($$0, K);
-      a($$0, L);
-      a($$0, M);
-      a($$0, N);
-      a($$0, O);
-      a($$0, P);
-      a($$0, Q);
+   public List<dph.b> b() {
+      return this.d;
    }
 
-   public static void a(qm<dpf> $$0, akj<dpf> $$1) {
-      $$0.a($$1, new dpf($$1.a(), "block.minecraft.banner." + $$1.a().e()));
+   public static class a {
+      private final Builder<dph.b> a = ImmutableList.builder();
+
+      @Deprecated
+      public dph.a a(jk<dpg> $$0, akj<dpg> $$1, csw $$2) {
+         Optional<jj.c<dpg>> $$3 = $$0.a($$1);
+         if ($$3.isEmpty()) {
+            dph.e.warn("Unable to find banner pattern with id: '{}'", $$1.a());
+            return this;
+         } else {
+            return this.a($$3.get(), $$2);
+         }
+      }
+
+      public dph.a a(jj<dpg> $$0, csw $$1) {
+         return this.a(new dph.b($$0, $$1));
+      }
+
+      public dph.a a(dph.b $$0) {
+         this.a.add($$0);
+         return this;
+      }
+
+      public dph.a a(dph $$0) {
+         this.a.addAll($$0.d);
+         return this;
+      }
+
+      public dph a() {
+         return new dph(this.a.build());
+      }
+   }
+
+   public static record b(jj<dpg> c, csw d) {
+      public static final Codec<dph.b> a = RecordCodecBuilder.create(
+         $$0 -> $$0.group(dpg.c.fieldOf("pattern").forGetter(dph.b::b), csw.q.fieldOf("color").forGetter(dph.b::c)).apply($$0, dph.b::new)
+      );
+      public static final ys<wf, dph.b> b = ys.a(dpg.d, dph.b::b, csw.r, dph.b::c, dph.b::new);
+
+      public xi a() {
+         String $$0 = this.c.a().b();
+         return wu.c($$0 + "." + this.d.b());
+      }
+
+      public jj<dpg> b() {
+         return this.c;
+      }
+
+      public csw c() {
+         return this.d;
+      }
    }
 }

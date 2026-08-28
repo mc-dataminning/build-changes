@@ -1,57 +1,22 @@
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.util.Base64;
-import java.util.Map;
-import javax.annotation.Nullable;
-import org.lwjgl.system.MemoryUtil;
-import org.slf4j.Logger;
+public enum fei {
+   a(0, ein.a),
+   b(1, ein.b),
+   c(2, ein.c),
+   d(3, ein.d);
 
-public class fei {
-   private static final Map<String, fei.a> a = Maps.newHashMap();
-   private static final Logger b = LogUtils.getLogger();
-   private static final akk c = new akk("textures/gui/presets/isles.png");
+   private final int e;
+   private final wu f;
 
-   public static akk a(String $$0, @Nullable String $$1) {
-      return $$1 == null ? c : b($$0, $$1);
+   private fei(final int $$0, final akj<eim> $$1) {
+      this.e = $$0;
+      this.f = wu.c($$1.a().f("generator"));
    }
 
-   private static akk b(String $$0, String $$1) {
-      fei.a $$2 = a.get($$0);
-      if ($$2 != null && $$2.a().equals($$1)) {
-         return $$2.b;
-      } else {
-         ezn $$3 = a($$1);
-         if ($$3 == null) {
-            akk $$4 = gpe.b();
-            a.put($$0, new fei.a($$1, $$4));
-            return $$4;
-         } else {
-            akk $$5 = new akk("realms", "dynamic/" + $$0);
-            fft.Q().aa().a($$5, new gpb($$3));
-            a.put($$0, new fei.a($$1, $$5));
-            return $$5;
-         }
-      }
+   public wu a() {
+      return this.f;
    }
 
-   @Nullable
-   private static ezn a(String $$0) {
-      byte[] $$1 = Base64.getDecoder().decode($$0);
-      ByteBuffer $$2 = MemoryUtil.memAlloc($$1.length);
-
-      try {
-         return ezn.a($$2.put($$1).flip());
-      } catch (IOException var7) {
-         b.warn("Failed to load world image: {}", $$0, var7);
-      } finally {
-         MemoryUtil.memFree($$2);
-      }
-
-      return null;
-   }
-
-   public static record a(String a, akk b) {
+   public int b() {
+      return this.e;
    }
 }

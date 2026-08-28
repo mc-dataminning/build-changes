@@ -1,24 +1,30 @@
 public class fxs {
-   public static final fxs a = new fxs(0.0F);
-   final float b;
-   final float c;
-   final float d;
+   public static final fxs a = a(0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
+   public final float b;
+   public final float c;
+   public final float d;
+   public final float e;
+   public final float f;
+   public final float g;
 
-   public fxs(float $$0, float $$1, float $$2) {
+   private fxs(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
+      this.e = $$3;
+      this.f = $$4;
+      this.g = $$5;
    }
 
-   public fxs(float $$0) {
-      this($$0, $$0, $$0);
+   public static fxs a(float $$0, float $$1, float $$2) {
+      return a($$0, $$1, $$2, 0.0F, 0.0F, 0.0F);
    }
 
-   public fxs a(float $$0) {
-      return new fxs(this.b + $$0, this.c + $$0, this.d + $$0);
+   public static fxs b(float $$0, float $$1, float $$2) {
+      return a(0.0F, 0.0F, 0.0F, $$0, $$1, $$2);
    }
 
-   public fxs a(float $$0, float $$1, float $$2) {
-      return new fxs(this.b + $$0, this.c + $$1, this.d + $$2);
+   public static fxs a(float $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
+      return new fxs($$0, $$1, $$2, $$3, $$4, $$5);
    }
 }

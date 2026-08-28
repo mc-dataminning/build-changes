@@ -9,10 +9,10 @@ public class by extends ds<by.a> {
       return by.a.a;
    }
 
-   public void a(aqn $$0, ewf $$1, @Nullable bsg $$2) {
-      ewf $$3 = $$0.do();
-      equ $$4 = $$2 != null ? bu.b($$0, $$2) : null;
-      this.a($$0, $$4x -> $$4x.a($$0.z(), $$1, $$3, $$4));
+   public void a(aqn $$0, ewh $$1, @Nullable bsh $$2) {
+      ewh $$3 = $$0.dp();
+      eqw $$4 = $$2 != null ? bu.b($$0, $$2) : null;
+      this.a($$0, $$4x -> $$4x.a($$0.A(), $$1, $$3, $$4));
    }
 
    public static record a(Optional<bf> b, Optional<dc> c, Optional<bl> d, Optional<bf> e) implements ds.a {
@@ -36,7 +36,7 @@ public class by extends ds<by.a> {
          $$0.a(this.d(), ".cause");
       }
 
-      public boolean a(aqm $$0, ewf $$1, ewf $$2, @Nullable equ $$3) {
+      public boolean a(aqm $$0, ewh $$1, ewh $$2, @Nullable eqw $$3) {
          if (this.c.isPresent() && !this.c.get().a($$0, $$1.c, $$1.d, $$1.e)) {
             return false;
          } else {

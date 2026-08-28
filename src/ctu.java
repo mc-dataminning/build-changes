@@ -1,26 +1,15 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-
-public record ctu(jj<avg> e, int f, float g) {
-   public static final Codec<ctu> a = RecordCodecBuilder.create(
-      $$0 -> $$0.group(
-               avg.b.fieldOf("sound_event").forGetter(ctu::a), axo.l.fieldOf("use_duration").forGetter(ctu::b), axo.m.fieldOf("range").forGetter(ctu::c)
-            )
-            .apply($$0, ctu::new)
-   );
-   public static final ys<wf, ctu> b = ys.a(avg.d, ctu::a, yq.g, ctu::b, yq.i, ctu::c, ctu::new);
-   public static final Codec<jj<ctu>> c = akg.a(lr.I, a);
-   public static final ys<wf, jj<ctu>> d = yq.a(lr.I, b);
-
-   public jj<avg> a() {
-      return this.e;
+public class ctu extends cty implements cvf {
+   public ctu(cty.a $$0) {
+      super($$0);
    }
 
-   public int b() {
-      return this.f;
-   }
-
-   public float c() {
-      return this.g;
+   @Override
+   public boolean a(dcg $$0, drb $$1, boolean $$2, cml $$3) {
+      if ($$1.a($$0x -> $$0x.a(false), $$2)) {
+         $$0.a(null, $$1.az_(), avh.nl, avi.e, 1.0F, 1.0F);
+         return true;
+      } else {
+         return false;
+      }
    }
 }

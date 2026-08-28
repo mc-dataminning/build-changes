@@ -7,7 +7,7 @@ public class adc implements zb<abn> {
    private final int c;
    private final add d;
 
-   public adc(dbm $$0, enw $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
+   public adc(dbn $$0, eny $$1, @Nullable BitSet $$2, @Nullable BitSet $$3) {
       this.b = $$0.e;
       this.c = $$0.f;
       this.d = new add($$0, $$1, $$2, $$3);

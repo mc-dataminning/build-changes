@@ -1,12 +1,12 @@
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-public record dag(czs c) implements dad {
-   public static final MapCodec<dag> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(czs.b.fieldOf("factor").forGetter(dag::b)).apply($$0, dag::new));
+public record dag(czt d) implements dac {
+   public static final MapCodec<dag> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(czt.b.fieldOf("duration").forGetter($$0x -> $$0x.d)).apply($$0, dag::new));
 
    @Override
-   public float a(int $$0, ayo $$1, float $$2) {
-      return $$2 * this.c.a($$0);
+   public void a(aqm $$0, int $$1, czl $$2, bsh $$3, ewh $$4) {
+      $$3.d(this.d.a($$1));
    }
 
    @Override
@@ -14,7 +14,7 @@ public record dag(czs c) implements dad {
       return a;
    }
 
-   public czs b() {
-      return this.c;
+   public czt b() {
+      return this.d;
    }
 }

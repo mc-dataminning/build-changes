@@ -1,40 +1,34 @@
 import com.mojang.serialization.MapCodec;
 
-public class dkg extends dfh {
+public class dkg extends dfi implements dfl {
    public static final MapCodec<dkg> a = b(dkg::new);
-   protected static final ewy b = dfh.a(0.0, 0.0, 0.0, 16.0, 14.0, 16.0);
 
    @Override
    public MapCodec<dkg> a() {
       return a;
    }
 
-   public dkg(dsj.d $$0) {
+   public dkg(dsk.d $$0) {
       super($$0);
    }
 
    @Override
-   protected ewy b(dsk $$0, dbl $$1, ja $$2, ewk $$3) {
-      return b;
+   public boolean b(dcj $$0, ja $$1, dsl $$2) {
+      return $$0.a_($$1.c()).i();
    }
 
    @Override
-   protected ewy b_(dsk $$0, dbl $$1, ja $$2) {
-      return ewv.b();
+   public boolean a(dcg $$0, ayo $$1, ja $$2, dsl $$3) {
+      return true;
    }
 
    @Override
-   protected ewy c(dsk $$0, dbl $$1, ja $$2, ewk $$3) {
-      return ewv.b();
+   public void a(aqm $$0, ayo $$1, ja $$2, dsl $$3) {
+      $$0.H_().c(lr.aH).flatMap($$0x -> $$0x.b(rl.n)).ifPresent($$3x -> ((eay)$$3x.a()).a($$0, $$0.l().g(), $$1, $$2.c()));
    }
 
    @Override
-   protected boolean a(dsk $$0, eow $$1) {
-      return false;
-   }
-
-   @Override
-   protected float d(dsk $$0, dbl $$1, ja $$2) {
-      return 0.2F;
+   public dfl.a aq_() {
+      return dfl.a.a;
    }
 }

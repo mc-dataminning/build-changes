@@ -1,28 +1,47 @@
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import java.util.Optional;
+import java.util.Set;
 
-public record euk(evb b) implements euf {
-   public static final MapCodec<euk> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(evc.a.fieldOf("chance").forGetter(euk::c)).apply($$0, euk::new));
+public record euk(Optional<bu> b, eqw.b c) implements euh {
+   public static final MapCodec<euk> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(bu.a.optionalFieldOf("predicate").forGetter(euk::c), eqw.b.e.fieldOf("entity").forGetter(euk::d)).apply($$0, euk::new)
+   );
 
    @Override
-   public eug b() {
-      return euh.d;
+   public eui b() {
+      return euj.f;
    }
 
-   public boolean a(equ $$0) {
-      float $$1 = this.b.b($$0);
-      return $$0.b().i() < $$1;
+   @Override
+   public Set<etp<?>> a() {
+      return ImmutableSet.of(ets.f, this.c.a());
    }
 
-   public static euf.a a(float $$0) {
-      return () -> new euk(euy.a($$0));
+   public boolean a(eqw $$0) {
+      bsh $$1 = $$0.c(this.c.a());
+      ewh $$2 = $$0.c(ets.f);
+      return this.b.isEmpty() || this.b.get().a($$0.d(), $$2, $$1);
    }
 
-   public static euf.a a(evb $$0) {
-      return () -> new euk($$0);
+   public static euh.a a(eqw.b $$0) {
+      return a($$0, bu.a.a());
    }
 
-   public evb c() {
+   public static euh.a a(eqw.b $$0, bu.a $$1) {
+      return () -> new euk(Optional.of($$1.b()), $$0);
+   }
+
+   public static euh.a a(eqw.b $$0, bu $$1) {
+      return () -> new euk(Optional.of($$1), $$0);
+   }
+
+   public Optional<bu> c() {
       return this.b;
+   }
+
+   public eqw.b d() {
+      return this.c;
    }
 }

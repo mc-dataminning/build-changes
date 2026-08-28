@@ -1,11 +1,7 @@
-import javax.annotation.Nullable;
+import java.util.function.BiConsumer;
 
-public interface dut {
-   @Nullable
-   dus c(int var1, int var2);
+public interface dut extends dbm {
+   void a(BiConsumer<ja, dsl> var1);
 
-   default void a(dco $$0, kc $$1) {
-   }
-
-   dbl q();
+   ent B();
 }

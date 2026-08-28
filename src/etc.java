@@ -1,93 +1,56 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
+import com.mojang.logging.LogUtils;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
-import java.util.function.UnaryOperator;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class etc extends esh {
+public class etc extends esj {
+   private static final Logger b = LogUtils.getLogger();
    public static final MapCodec<etc> a = RecordCodecBuilder.mapCodec(
       $$0 -> a($$0)
-            .and(
-               $$0.group(
-                  ww.a.sizeLimitedListOf(256).fieldOf("lore").forGetter($$0x -> $$0x.b),
-                  esg.a(256).forGetter($$0x -> $$0x.c),
-                  equ.b.e.optionalFieldOf("entity").forGetter($$0x -> $$0x.d)
-               )
-            )
+            .and($$0.group(eve.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
             .apply($$0, etc::new)
    );
-   private final List<wu> b;
-   private final esg c;
-   private final Optional<equ.b> d;
+   private final evd c;
+   private final boolean d;
 
-   public etc(List<euf> $$0, List<wu> $$1, esg $$2, Optional<equ.b> $$3) {
+   private etc(List<euh> $$0, evd $$1, boolean $$2) {
       super($$0);
-      this.b = List.copyOf($$1);
-      this.c = $$2;
-      this.d = $$3;
+      this.c = $$1;
+      this.d = $$2;
    }
 
    @Override
-   public esj<etc> b() {
-      return esk.A;
+   public esl<etc> b() {
+      return esm.n;
    }
 
    @Override
-   public Set<etn<?>> a() {
-      return this.d.<Set<etn<?>>>map($$0 -> Set.of($$0.a())).orElseGet(Set::of);
+   public Set<etp<?>> a() {
+      return this.c.a();
    }
 
    @Override
-   public cuc a(cuc $$0, equ $$1) {
-      $$0.a(kn.i, cwy.a, $$1x -> new cwy(this.a($$1x, $$1)));
+   public cud a(cud $$0, eqw $$1) {
+      if ($$0.l()) {
+         int $$2 = $$0.o();
+         float $$3 = this.d ? 1.0F - (float)$$0.n() / (float)$$2 : 0.0F;
+         float $$4 = 1.0F - ayg.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
+         $$0.b(ayg.d($$4 * (float)$$2));
+      } else {
+         b.warn("Couldn't set damage of loot item {}", $$0);
+      }
+
       return $$0;
    }
 
-   private List<wu> a(@Nullable cwy $$0, equ $$1) {
-      if ($$0 == null && this.b.isEmpty()) {
-         return List.of();
-      } else {
-         UnaryOperator<wu> $$2 = etd.a($$1, this.d.orElse(null));
-         List<wu> $$3 = this.b.stream().map($$2).toList();
-         return this.c.a($$0.a(), $$3, 256);
-      }
+   public static esj.a<?> a(evd $$0) {
+      return a($$1 -> new etc($$1, $$0, false));
    }
 
-   public static etc.a c() {
-      return new etc.a();
-   }
-
-   public static class a extends esh.a<etc.a> {
-      private Optional<equ.b> a = Optional.empty();
-      private final Builder<wu> b = ImmutableList.builder();
-      private esg c = esg.a.b;
-
-      public etc.a a(esg $$0) {
-         this.c = $$0;
-         return this;
-      }
-
-      public etc.a a(equ.b $$0) {
-         this.a = Optional.of($$0);
-         return this;
-      }
-
-      public etc.a a(wu $$0) {
-         this.b.add($$0);
-         return this;
-      }
-
-      protected etc.a a() {
-         return this;
-      }
-
-      @Override
-      public esi b() {
-         return new etc(this.g(), this.b.build(), this.c, this.a);
-      }
+   public static esj.a<?> a(evd $$0, boolean $$1) {
+      return a($$2 -> new etc($$2, $$0, $$1));
    }
 }

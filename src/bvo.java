@@ -1,27 +1,28 @@
 import com.mojang.datafixers.kinds.App;
-import com.mojang.datafixers.kinds.K1;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 public class bvo {
-   public static buv<btb> a(float $$0, boolean $$1, int $$2) {
-      return a($$0x -> true, $$0, $$1, $$2);
+   private static ja a(bte $$0, ja $$1) {
+      ayo $$2 = $$0.dR().z;
+      return $$1.b(a($$2), 0, a($$2));
    }
 
-   public static <E extends btb> buv<E> a(Predicate<E> $$0, float $$1, boolean $$2, int $$3) {
-      return byh.a((Function<byh.b<E>, ? extends App<byh.c<E>, byk<E>>>)($$4 -> {
-         byh<E, ? extends byi<? extends K1, cci>> $$5 = $$2 ? $$4.a(ccf.m) : $$4.c(ccf.m);
-         return $$4.group($$4.a(ccf.n), $$5, $$4.b(ccf.L), $$4.a(ccf.aP)).apply($$4, ($$4x, $$5x, $$6, $$7) -> ($$8, $$9, $$10) -> {
-               ciu $$11 = $$4.b($$6);
-               if ($$4.a($$7).isEmpty() && $$0.test((E)$$9) && $$11.a($$9, (double)$$3) && $$9.dQ().C_().a($$11.dq())) {
-                  cci $$12 = new cci(new bvf($$11, false), $$1, 0);
-                  $$4x.a(new bvf($$11, true));
-                  $$5x.a($$12);
-                  return true;
-               } else {
-                  return false;
-               }
-            });
-      }));
+   private static int a(ayo $$0) {
+      return $$0.a(3) - 1;
+   }
+
+   public static <E extends bte> bwg<E> a(ccg<ja> $$0, int $$1, float $$2) {
+      return byi.a(
+         (Function<byi.b<E>, ? extends App<byi.c<E>, byl<E>>>)($$3 -> $$3.group($$3.b($$0), $$3.c(ccg.o), $$3.c(ccg.m), $$3.a(ccg.n))
+               .apply($$3, ($$3x, $$4, $$5, $$6) -> ($$4x, $$5x, $$6x) -> {
+                     ja $$7 = $$3.b($$3x);
+                     boolean $$8 = $$7.a($$5x.dr(), (double)$$1);
+                     if (!$$8) {
+                        bux.a($$5x, a($$5x, $$7), $$2, $$1);
+                     }
+
+                     return true;
+                  }))
+      );
    }
 }

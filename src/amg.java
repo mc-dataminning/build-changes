@@ -10,11 +10,11 @@ public class amg {
       );
    }
 
-   private static int a(eq $$0, dcc $$1) {
+   private static int a(eq $$0, dcd $$1) {
       int $$2 = 0;
       MinecraftServer $$3 = $$0.l();
       $$3.a($$1);
-      dcc $$4 = $$3.bg();
+      dcd $$4 = $$3.bg();
       if ($$4 != null) {
          for (aqn $$5 : $$3.ai().t()) {
             if ($$5.a($$4)) {

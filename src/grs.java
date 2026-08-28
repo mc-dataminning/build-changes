@@ -1,67 +1,63 @@
-import java.util.Comparator;
-import java.util.Objects;
-import java.util.function.Function;
-import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.stream.Collectors;
+import org.joml.Quaternionf;
 
-public class grs {
-   public static final Comparator<grs> a = Comparator.<grs, akk>comparing(grs::a).thenComparing(grs::b);
-   private final akk b;
-   private final akk c;
-   @Nullable
-   private gel d;
+public enum grs implements grz {
+   a(0, 0),
+   b(0, 90),
+   c(0, 180),
+   d(0, 270),
+   e(90, 0),
+   f(90, 90),
+   g(90, 180),
+   h(90, 270),
+   i(180, 0),
+   j(180, 90),
+   k(180, 180),
+   l(180, 270),
+   m(270, 0),
+   n(270, 90),
+   o(270, 180),
+   p(270, 270);
 
-   public grs(akk $$0, akk $$1) {
-      this.b = $$0;
-      this.c = $$1;
+   private static final int q = 360;
+   private static final Map<Integer, grs> r = Arrays.stream(values()).collect(Collectors.toMap($$0 -> $$0.u, $$0 -> (grs)$$0));
+   private final j s;
+   private final h t;
+   private final int u;
+
+   private static int b(int $$0, int $$1) {
+      return $$0 * 360 + $$1;
    }
 
-   public akk a() {
-      return this.b;
-   }
+   private grs(final int $$0, final int $$1) {
+      this.u = b($$0, $$1);
+      Quaternionf $$2 = new Quaternionf().rotateYXZ((float)(-$$1) * (float) (Math.PI / 180.0), (float)(-$$0) * (float) (Math.PI / 180.0), 0.0F);
+      h $$3 = h.a;
 
-   public akk b() {
-      return this.c;
-   }
-
-   public gpo c() {
-      return fft.Q().a(this.a()).apply(this.b());
-   }
-
-   public gel a(Function<akk, gel> $$0) {
-      if (this.d == null) {
-         this.d = $$0.apply(this.b);
+      for (int $$4 = 0; $$4 < $$1; $$4 += 90) {
+         $$3 = $$3.a(h.u);
       }
 
-      return this.d;
-   }
-
-   public faq a(ged $$0, Function<akk, gel> $$1) {
-      return this.c().a($$0.getBuffer(this.a($$1)));
-   }
-
-   public faq a(ged $$0, Function<akk, gel> $$1, boolean $$2) {
-      return this.c().a(gkk.c($$0, this.a($$1), true, $$2));
-   }
-
-   @Override
-   public boolean equals(Object $$0) {
-      if (this == $$0) {
-         return true;
-      } else if ($$0 != null && this.getClass() == $$0.getClass()) {
-         grs $$1 = (grs)$$0;
-         return this.b.equals($$1.b) && this.c.equals($$1.c);
-      } else {
-         return false;
+      for (int $$5 = 0; $$5 < $$0; $$5 += 90) {
+         $$3 = $$3.a(h.s);
       }
+
+      this.s = new j(null, $$2, null, null);
+      this.t = $$3;
    }
 
    @Override
-   public int hashCode() {
-      return Objects.hash(this.b, this.c);
+   public j b() {
+      return this.s;
    }
 
-   @Override
-   public String toString() {
-      return "Material{atlasLocation=" + this.b + ", texture=" + this.c + "}";
+   public static grs a(int $$0, int $$1) {
+      return r.get(b(ayg.b($$0, 360), ayg.b($$1, 360)));
+   }
+
+   public h a() {
+      return this.t;
    }
 }

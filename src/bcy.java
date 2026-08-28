@@ -6,7 +6,7 @@ import java.util.List;
 
 public class bcy extends bfd {
    public bcy(Schema $$0) {
-      super($$0, false, "EntityShulkerRotationFix", bgg.B, "minecraft:shulker");
+      super($$0, false, "EntityShulkerRotationFix", bgh.B, "minecraft:shulker");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

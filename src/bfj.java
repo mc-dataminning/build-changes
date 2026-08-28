@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public class bfj extends bfd {
    public bfj(Schema $$0, boolean $$1) {
-      super($$0, $$1, "OminousBannerBlockEntityRenameFix", bgg.s, "minecraft:banner");
+      super($$0, $$1, "OminousBannerBlockEntityRenameFix", bgh.s, "minecraft:banner");
    }
 
    @Override

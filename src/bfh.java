@@ -10,7 +10,7 @@ public class bfh extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgg.H);
+      Type<?> $$0 = this.getInputSchema().getType(bgh.H);
       return this.fixTypeEverywhereTyped(
          "ObjectiveDisplayNameFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> $$0xx.update("DisplayName", azn::a))
       );

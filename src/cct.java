@@ -1,25 +1,19 @@
-public class cct extends cdf {
-   public static final float a = 8.0F;
+import com.google.common.collect.ImmutableSet;
+import java.util.Optional;
+import java.util.Set;
 
+public class cct extends cdm<bsb> {
    @Override
-   protected boolean a(btb $$0, btb $$1) {
-      return this.f($$0, $$1) && $$1.bi() && (this.b($$1) || this.e($$0, $$1)) && cdl.c($$0, $$1);
+   public Set<ccg<?>> a() {
+      return ImmutableSet.of(ccg.K, ccg.h);
    }
 
-   private boolean e(btb $$0, btb $$1) {
-      return !$$0.dU().a(ccf.U) && $$1.al().a(awa.j);
+   protected void a(aqm $$0, bsb $$1) {
+      $$1.dV().c(ccg.h).ifPresent($$1x -> this.a($$1, $$1x));
    }
 
-   private boolean b(btb $$0) {
-      return $$0.al().a(awa.i);
-   }
-
-   private boolean f(btb $$0, btb $$1) {
-      return $$1.g((bsg)$$0) <= 64.0;
-   }
-
-   @Override
-   protected ccf<btb> b() {
-      return ccf.B;
+   private void a(bsb $$0, cci $$1) {
+      Optional<bsb> $$2 = $$1.a($$1x -> $$1x.am() == $$0.am() && !$$1x.o_()).map(bsb.class::cast);
+      $$0.dV().a(ccg.K, $$2);
    }
 }

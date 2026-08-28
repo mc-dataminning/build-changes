@@ -46,8 +46,8 @@ public class bfc extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(bgg.F);
-      return this.fixTypeEverywhereTyped("MobSpawnerEntityIdentifiersFix", this.getInputSchema().getType(bgg.F), $$0, $$1 -> {
+      Type<?> $$0 = this.getOutputSchema().getType(bgh.F);
+      return this.fixTypeEverywhereTyped("MobSpawnerEntityIdentifiersFix", this.getInputSchema().getType(bgh.F), $$0, $$1 -> {
          Dynamic<?> $$2 = (Dynamic<?>)$$1.get(DSL.remainderFinder());
          $$2 = $$2.set("id", $$2.createString("MobSpawner"));
          DataResult<? extends Pair<? extends Typed<?>, ?>> $$3 = $$0.readTyped(this.a($$2));

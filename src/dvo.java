@@ -1,5 +1,8 @@
-import java.util.concurrent.CompletableFuture;
+import javax.annotation.ParametersAreNonnullByDefault;
 
-public interface dvo {
-   CompletableFuture<Void> a(dbm var1, ur var2);
+// $VF: synthetic class
+@ParametersAreNonnullByDefault
+@w
+@u
+interface dvo {
 }

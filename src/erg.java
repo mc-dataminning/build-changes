@@ -1,70 +1,30 @@
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableList.Builder;
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
+import java.util.function.Consumer;
 
-public class erg extends erd {
-   public static final MapCodec<erg> a = a(erg::new);
+public class erg extends ero {
+   public static final MapCodec<erg> a = RecordCodecBuilder.mapCodec(
+      $$0 -> $$0.group(akk.a.fieldOf("name").forGetter($$0x -> $$0x.j)).and(b($$0)).apply($$0, erg::new)
+   );
+   private final akk j;
 
-   erg(List<erk> $$0, List<euf> $$1) {
-      super($$0, $$1);
+   private erg(akk $$0, int $$1, int $$2, List<euh> $$3, List<esk> $$4) {
+      super($$1, $$2, $$3, $$4);
+      this.j = $$0;
    }
 
    @Override
-   public erl a() {
-      return eri.i;
+   public ern a() {
+      return erk.e;
    }
 
    @Override
-   protected erc a(List<? extends erc> $$0) {
-      return switch ($$0.size()) {
-         case 0 -> c;
-         case 1 -> (erc)$$0.get(0);
-         case 2 -> {
-            erc $$1 = $$0.get(0);
-            erc $$2 = $$0.get(1);
-            yield ($$2x, $$3) -> {
-               $$1.expand($$2x, $$3);
-               $$2.expand($$2x, $$3);
-               return true;
-            };
-         }
-         default -> ($$1x, $$2x) -> {
-         for (erc $$3 : $$0) {
-            $$3.expand($$1x, $$2x);
-         }
-
-         return true;
-      };
-      };
+   public void a(Consumer<cud> $$0, eqw $$1) {
+      $$1.a(this.j, $$0);
    }
 
-   public static erg.a a(erk.a<?>... $$0) {
-      return new erg.a($$0);
-   }
-
-   public static class a extends erk.a<erg.a> {
-      private final Builder<erk> a = ImmutableList.builder();
-
-      public a(erk.a<?>... $$0) {
-         for (erk.a<?> $$1 : $$0) {
-            this.a.add($$1.b());
-         }
-      }
-
-      protected erg.a a() {
-         return this;
-      }
-
-      @Override
-      public erg.a b(erk.a<?> $$0) {
-         this.a.add($$0.b());
-         return this;
-      }
-
-      @Override
-      public erk b() {
-         return new erg(this.a.build(), this.f());
-      }
+   public static ero.a<?> a(akk $$0) {
+      return a(($$1, $$2, $$3, $$4) -> new erg($$0, $$1, $$2, $$3, $$4));
    }
 }

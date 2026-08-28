@@ -253,12 +253,12 @@ public class alq {
       a("grant") {
          @Override
          protected boolean a(aqn $$0, af $$1) {
-            ah $$2 = $$0.Q().b($$1);
+            ah $$2 = $$0.R().b($$1);
             if ($$2.a()) {
                return false;
             } else {
                for (String $$3 : $$2.e()) {
-                  $$0.Q().a($$1, $$3);
+                  $$0.R().a($$1, $$3);
                }
 
                return true;
@@ -267,18 +267,18 @@ public class alq {
 
          @Override
          protected boolean a(aqn $$0, af $$1, String $$2) {
-            return $$0.Q().a($$1, $$2);
+            return $$0.R().a($$1, $$2);
          }
       },
       b("revoke") {
          @Override
          protected boolean a(aqn $$0, af $$1) {
-            ah $$2 = $$0.Q().b($$1);
+            ah $$2 = $$0.R().b($$1);
             if (!$$2.b()) {
                return false;
             } else {
                for (String $$3 : $$2.f()) {
-                  $$0.Q().b($$1, $$3);
+                  $$0.R().b($$1, $$3);
                }
 
                return true;
@@ -287,7 +287,7 @@ public class alq {
 
          @Override
          protected boolean a(aqn $$0, af $$1, String $$2) {
-            return $$0.Q().b($$1, $$2);
+            return $$0.R().b($$1, $$2);
          }
       };
 

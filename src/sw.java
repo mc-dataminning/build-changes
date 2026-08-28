@@ -82,7 +82,7 @@ public class sw {
                   sw.this.k.d().accept(sw.this.c);
                   sw.this.g.forEach($$0xxx -> $$0xxx.b(sw.this.k));
                   LongSet $$0 = new LongArraySet(sw.this.c.w());
-                  $$0.forEach($$0xxx -> sw.this.c.a(dbm.a($$0xxx), dbm.b($$0xxx), false));
+                  $$0.forEach($$0xxx -> sw.this.c.a(dbn.a($$0xxx), dbn.b($$0xxx), false));
                   sw.this.a($$0 + 1);
                }
             }

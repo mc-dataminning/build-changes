@@ -1,197 +1,53 @@
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
+import com.mojang.authlib.GameProfile;
+import javax.annotation.Nullable;
 
-public class exk extends epo {
-   private static final Logger b = LogUtils.getLogger();
-   public static final String a = "scoreboard";
-   private final exj c;
+public interface exk {
+   String a_ = "*";
+   exk cB = new exk() {
+      @Override
+      public String cD() {
+         return "*";
+      }
+   };
 
-   public exk(exj $$0) {
-      this.c = $$0;
+   String cD();
+
+   @Nullable
+   default wu O_() {
+      return null;
    }
 
-   public exk b(tx $$0, jl.a $$1) {
-      this.b($$0.c("Objectives", 10), $$1);
-      this.c.a($$0.c("PlayerScores", 10), $$1);
-      if ($$0.b("DisplaySlots", 10)) {
-         this.a($$0.p("DisplaySlots"));
-      }
-
-      if ($$0.b("Teams", 9)) {
-         this.a($$0.c("Teams", 10), $$1);
-      }
-
-      return this;
+   default wu hb() {
+      wu $$0 = this.O_();
+      return $$0 != null ? $$0.f().a($$0x -> $$0x.a(new xa(xa.a.a, wu.b(this.cD())))) : wu.b(this.cD());
    }
 
-   private void a(ud $$0, jl.a $$1) {
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         tx $$3 = $$0.a($$2);
-         String $$4 = $$3.l("Name");
-         exe $$5 = this.c.c($$4);
-         wu $$6 = wu.a.a($$3.l("DisplayName"), $$1);
-         if ($$6 != null) {
-            $$5.a($$6);
-         }
-
-         if ($$3.b("TeamColor", 8)) {
-            $$5.a(n.b($$3.l("TeamColor")));
-         }
-
-         if ($$3.b("AllowFriendlyFire", 99)) {
-            $$5.a($$3.q("AllowFriendlyFire"));
-         }
-
-         if ($$3.b("SeeFriendlyInvisibles", 99)) {
-            $$5.b($$3.q("SeeFriendlyInvisibles"));
-         }
-
-         if ($$3.b("MemberNamePrefix", 8)) {
-            wu $$7 = wu.a.a($$3.l("MemberNamePrefix"), $$1);
-            if ($$7 != null) {
-               $$5.b($$7);
+   static exk c(final String $$0) {
+      if ($$0.equals("*")) {
+         return cB;
+      } else {
+         final wu $$1 = wu.b($$0);
+         return new exk() {
+            @Override
+            public String cD() {
+               return $$0;
             }
-         }
 
-         if ($$3.b("MemberNameSuffix", 8)) {
-            wu $$8 = wu.a.a($$3.l("MemberNameSuffix"), $$1);
-            if ($$8 != null) {
-               $$5.c($$8);
+            @Override
+            public wu hb() {
+               return $$1;
             }
-         }
-
-         if ($$3.b("NameTagVisibility", 8)) {
-            exl.b $$9 = exl.b.a($$3.l("NameTagVisibility"));
-            if ($$9 != null) {
-               $$5.a($$9);
-            }
-         }
-
-         if ($$3.b("DeathMessageVisibility", 8)) {
-            exl.b $$10 = exl.b.a($$3.l("DeathMessageVisibility"));
-            if ($$10 != null) {
-               $$5.b($$10);
-            }
-         }
-
-         if ($$3.b("CollisionRule", 8)) {
-            exl.a $$11 = exl.a.a($$3.l("CollisionRule"));
-            if ($$11 != null) {
-               $$5.a($$11);
-            }
-         }
-
-         this.a($$5, $$3.c("Players", 8));
+         };
       }
    }
 
-   private void a(exe $$0, ud $$1) {
-      for (int $$2 = 0; $$2 < $$1.size(); $$2++) {
-         this.c.a($$1.j($$2), $$0);
-      }
-   }
-
-   private void a(tx $$0) {
-      for (String $$1 : $$0.e()) {
-         exa $$2 = exa.t.a($$1);
-         if ($$2 != null) {
-            String $$3 = $$0.l($$1);
-            exb $$4 = this.c.a($$3);
-            this.c.a($$2, $$4);
+   static exk a(GameProfile $$0) {
+      final String $$1 = $$0.getName();
+      return new exk() {
+         @Override
+         public String cD() {
+            return $$1;
          }
-      }
-   }
-
-   private void b(ud $$0, jl.a $$1) {
-      for (int $$2 = 0; $$2 < $$0.size(); $$2++) {
-         tx $$3 = $$0.a($$2);
-         String $$4 = $$3.l("CriteriaName");
-         exm $$5 = exm.a($$4).orElseGet(() -> {
-            b.warn("Unknown scoreboard criteria {}, replacing with {}", $$4, exm.b.d());
-            return exm.b;
-         });
-         String $$6 = $$3.l("Name");
-         wu $$7 = wu.a.a($$3.l("DisplayName"), $$1);
-         exm.a $$8 = exm.a.a($$3.l("RenderType"));
-         boolean $$9 = $$3.q("display_auto_update");
-         yk $$10 = (yk)ym.b.parse($$1.a(ul.a), $$3.c("format")).result().orElse(null);
-         this.c.a($$6, $$5, $$7, $$8, $$9, $$10);
-      }
-   }
-
-   @Override
-   public tx a(tx $$0, jl.a $$1) {
-      $$0.a("Objectives", this.b($$1));
-      $$0.a("PlayerScores", this.c.a($$1));
-      $$0.a("Teams", this.a($$1));
-      this.b($$0);
-      return $$0;
-   }
-
-   private ud a(jl.a $$0) {
-      ud $$1 = new ud();
-
-      for (exe $$3 : this.c.g()) {
-         tx $$4 = new tx();
-         $$4.a("Name", $$3.b());
-         $$4.a("DisplayName", wu.a.a($$3.c(), $$0));
-         if ($$3.n().b() >= 0) {
-            $$4.a("TeamColor", $$3.n().g());
-         }
-
-         $$4.a("AllowFriendlyFire", $$3.h());
-         $$4.a("SeeFriendlyInvisibles", $$3.i());
-         $$4.a("MemberNamePrefix", wu.a.a($$3.e(), $$0));
-         $$4.a("MemberNameSuffix", wu.a.a($$3.f(), $$0));
-         $$4.a("NameTagVisibility", $$3.j().e);
-         $$4.a("DeathMessageVisibility", $$3.k().e);
-         $$4.a("CollisionRule", $$3.l().e);
-         ud $$5 = new ud();
-
-         for (String $$6 : $$3.g()) {
-            $$5.add(us.a($$6));
-         }
-
-         $$4.a("Players", $$5);
-         $$1.add($$4);
-      }
-
-      return $$1;
-   }
-
-   private void b(tx $$0) {
-      tx $$1 = new tx();
-
-      for (exa $$2 : exa.values()) {
-         exb $$3 = this.c.a($$2);
-         if ($$3 != null) {
-            $$1.a($$2.c(), $$3.b());
-         }
-      }
-
-      if (!$$1.g()) {
-         $$0.a("DisplaySlots", $$1);
-      }
-   }
-
-   private ud b(jl.a $$0) {
-      ud $$1 = new ud();
-
-      for (exb $$3 : this.c.c()) {
-         tx $$4 = new tx();
-         $$4.a("Name", $$3.b());
-         $$4.a("CriteriaName", $$3.c().d());
-         $$4.a("DisplayName", wu.a.a($$3.d(), $$0));
-         $$4.a("RenderType", $$3.h().a());
-         $$4.a("display_auto_update", $$3.e());
-         yk $$5 = $$3.f();
-         if ($$5 != null) {
-            ym.b.encodeStart($$0.a(ul.a), $$5).ifSuccess($$1x -> $$4.a("format", $$1x));
-         }
-
-         $$1.add($$4);
-      }
-
-      return $$1;
+      };
    }
 }

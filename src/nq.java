@@ -12,12 +12,12 @@ import java.util.TreeMap;
 import java.util.stream.Stream;
 
 public class nq implements nn {
-   private final dfh a;
+   private final dfi a;
    private final List<nt> b;
-   private final Set<dtn<?>> c = Sets.newHashSet();
+   private final Set<dto<?>> c = Sets.newHashSet();
    private final List<nr> d = Lists.newArrayList();
 
-   private nq(dfh $$0, List<nt> $$1) {
+   private nq(dfi $$0, List<nt> $$1) {
       this.a = $$0;
       this.b = $$1;
    }
@@ -60,19 +60,19 @@ public class nq implements nn {
    }
 
    @Override
-   public dfh a() {
+   public dfi a() {
       return this.a;
    }
 
-   public static nq a(dfh $$0) {
+   public static nq a(dfi $$0) {
       return new nq($$0, ImmutableList.of(nt.a()));
    }
 
-   public static nq a(dfh $$0, nt $$1) {
+   public static nq a(dfi $$0, nt $$1) {
       return new nq($$0, ImmutableList.of($$1));
    }
 
-   public static nq a(dfh $$0, nt... $$1) {
+   public static nq a(dfi $$0, nt... $$1) {
       return new nq($$0, ImmutableList.copyOf($$1));
    }
 }

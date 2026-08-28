@@ -1,25 +1,16 @@
-import java.util.Arrays;
+import com.mojang.serialization.MapCodec;
 
-public class bpn implements bpo {
-   private final bpo[] a;
+public interface bpn<P extends bpm> {
+   bpn<bpj> a = a("constant", bpj.b);
+   bpn<bps> b = a("uniform", bps.a);
+   bpn<bpe> c = a("biased_to_bottom", bpe.a);
+   bpn<bpf> d = a("clamped", bpf.a);
+   bpn<bpt> e = a("weighted_list", bpt.a);
+   bpn<bph> f = a("clamped_normal", bph.a);
 
-   public bpn(bpo... $$0) {
-      this.a = $$0;
-   }
+   MapCodec<P> codec();
 
-   @Override
-   public float a(ayo $$0) {
-      float $$1 = 1.0F;
-
-      for (bpo $$2 : this.a) {
-         $$1 *= $$2.a($$0);
-      }
-
-      return $$1;
-   }
-
-   @Override
-   public String toString() {
-      return "MultipliedFloats" + Arrays.toString((Object[])this.a);
+   static <P extends bpm> bpn<P> a(String $$0, MapCodec<P> $$1) {
+      return jw.a(lq.K, $$0, () -> $$1);
    }
 }

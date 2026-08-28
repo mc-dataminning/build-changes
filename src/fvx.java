@@ -1,29 +1,36 @@
-public class fvx<T extends bsg> extends fux<T> {
-   private final fxo a;
-   private final fxo b;
-   private final fxo f;
+public class fvx<T extends bsh> extends fuz<T> {
+   private final fxq a;
+   private final fxq b;
+   private final fxq f;
 
-   public fvx(fxo $$0) {
+   public fvx(fxq $$0) {
       this.a = $$0;
-      this.b = $$0.b("left_fin");
-      this.f = $$0.b("right_fin");
+      this.b = $$0.b("left_blue_fin");
+      this.f = $$0.b("right_blue_fin");
    }
 
-   public static fxu b() {
-      fxw $$0 = new fxw();
-      fxx $$1 = $$0.a();
-      int $$2 = 23;
-      $$1.a("body", fxt.c().a(0, 27).a(-1.5F, -2.0F, -1.5F, 3.0F, 2.0F, 3.0F), fxq.a(0.0F, 23.0F, 0.0F));
-      $$1.a("right_eye", fxt.c().a(24, 6).a(-1.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), fxq.a(0.0F, 20.0F, 0.0F));
-      $$1.a("left_eye", fxt.c().a(28, 6).a(0.5F, 0.0F, -1.5F, 1.0F, 1.0F, 1.0F), fxq.a(0.0F, 20.0F, 0.0F));
-      $$1.a("back_fin", fxt.c().a(-3, 0).a(-1.5F, 0.0F, 0.0F, 3.0F, 0.0F, 3.0F), fxq.a(0.0F, 22.0F, 1.5F));
-      $$1.a("right_fin", fxt.c().a(25, 0).a(-1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), fxq.a(-1.5F, 22.0F, -1.5F));
-      $$1.a("left_fin", fxt.c().a(25, 0).a(0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 2.0F), fxq.a(1.5F, 22.0F, -1.5F));
-      return fxu.a($$0, 32, 32);
+   public static fxw b() {
+      fxy $$0 = new fxy();
+      fxz $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", fxv.c().a(0, 0).a(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F), fxs.a(0.0F, 22.0F, 0.0F));
+      $$1.a("right_blue_fin", fxv.c().a(24, 0).a(-2.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), fxs.a(-4.0F, 15.0F, -2.0F));
+      $$1.a("left_blue_fin", fxv.c().a(24, 3).a(0.0F, 0.0F, -1.0F, 2.0F, 1.0F, 2.0F), fxs.a(4.0F, 15.0F, -2.0F));
+      $$1.a("top_front_fin", fxv.c().a(15, 17).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), fxs.a(0.0F, 14.0F, -4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("top_middle_fin", fxv.c().a(14, 16).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 1.0F), fxs.a(0.0F, 14.0F, 0.0F));
+      $$1.a("top_back_fin", fxv.c().a(23, 18).a(-4.0F, -1.0F, 0.0F, 8.0F, 1.0F, 0.0F), fxs.a(0.0F, 14.0F, 4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_front_fin", fxv.c().a(5, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fxs.a(-4.0F, 22.0F, -4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("left_front_fin", fxv.c().a(1, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fxs.a(4.0F, 22.0F, -4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("bottom_front_fin", fxv.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fxs.a(0.0F, 22.0F, -4.0F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("bottom_middle_fin", fxv.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fxs.a(0.0F, 22.0F, 0.0F));
+      $$1.a("bottom_back_fin", fxv.c().a(15, 20).a(-4.0F, 0.0F, 0.0F, 8.0F, 1.0F, 0.0F), fxs.a(0.0F, 22.0F, 4.0F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_back_fin", fxv.c().a(9, 17).a(-1.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fxs.a(-4.0F, 22.0F, 4.0F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("left_back_fin", fxv.c().a(9, 17).a(0.0F, -8.0F, 0.0F, 1.0F, 8.0F, 0.0F), fxs.a(4.0F, 22.0F, 4.0F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      return fxw.a($$0, 32, 32);
    }
 
    @Override
-   public fxo a() {
+   public fxq a() {
       return this.a;
    }
 

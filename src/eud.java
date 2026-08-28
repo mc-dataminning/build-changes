@@ -1,45 +1,36 @@
-import com.mojang.serialization.Codec;
+import com.google.common.collect.ImmutableSet;
 import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.Optional;
+import java.util.Set;
 
-public record eud(Optional<dc> b, ja c) implements euf {
-   private static final MapCodec<ja> g = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(
-               Codec.INT.optionalFieldOf("offsetX", 0).forGetter(ke::u),
-               Codec.INT.optionalFieldOf("offsetY", 0).forGetter(ke::v),
-               Codec.INT.optionalFieldOf("offsetZ", 0).forGetter(ke::w)
-            )
-            .apply($$0, ja::new)
-   );
-   public static final MapCodec<eud> a = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(dc.a.optionalFieldOf("predicate").forGetter(eud::c), g.forGetter(eud::d)).apply($$0, eud::new)
-   );
+public class eud implements euh {
+   private static final eud b = new eud();
+   public static final MapCodec<eud> a = MapCodec.unit(b);
+
+   private eud() {
+   }
 
    @Override
-   public eug b() {
-      return euh.n;
+   public eui b() {
+      return euj.l;
    }
 
-   public boolean a(equ $$0) {
-      ewf $$1 = $$0.c(etq.f);
-      return $$1 != null
-         && (this.b.isEmpty() || this.b.get().a($$0.d(), $$1.a() + (double)this.c.u(), $$1.b() + (double)this.c.v(), $$1.c() + (double)this.c.w()));
+   @Override
+   public Set<etp<?>> a() {
+      return ImmutableSet.of(ets.j);
    }
 
-   public static euf.a a(dc.a $$0) {
-      return () -> new eud(Optional.of($$0.b()), ja.c);
+   public boolean a(eqw $$0) {
+      Float $$1 = $$0.c(ets.j);
+      if ($$1 != null) {
+         ayo $$2 = $$0.b();
+         float $$3 = 1.0F / $$1;
+         return $$2.i() <= $$3;
+      } else {
+         return true;
+      }
    }
 
-   public static euf.a a(dc.a $$0, ja $$1) {
-      return () -> new eud(Optional.of($$0.b()), $$1);
-   }
-
-   public Optional<dc> c() {
-      return this.b;
-   }
-
-   public ja d() {
-      return this.c;
+   public static euh.a c() {
+      return () -> b;
    }
 }

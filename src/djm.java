@@ -1,40 +1,59 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class djm extends div implements djy {
+public class djm extends dix implements djz {
    public static final MapCodec<djm> c = b(djm::new);
+   protected static final exa g = dfi.a(0.0, 0.0, 0.0, 16.0, 9.0, 16.0);
+   private static final double h = 0.14;
 
    @Override
    public MapCodec<djm> a() {
       return c;
    }
 
-   protected djm(dsj.d $$0) {
-      super($$0, jf.b, ewv.b(), true);
+   protected djm(dsk.d $$0) {
+      super($$0, jf.b, g, true, 0.14);
    }
 
    @Override
-   protected diw c() {
-      return (diw)dfj.mc;
+   protected boolean g(dsl $$0) {
+      return $$0.a(dfk.G);
    }
 
    @Override
-   protected eoh b_(dsk $$0) {
-      return eoi.c.a(false);
+   protected dfi b() {
+      return dfk.md;
    }
 
    @Override
-   protected boolean m(dsk $$0) {
-      return this.c().m($$0);
+   protected boolean m(dsl $$0) {
+      return !$$0.a(dfk.kJ);
    }
 
    @Override
-   public boolean a(@Nullable cmk $$0, dbl $$1, ja $$2, dsk $$3, eog $$4) {
+   public boolean a(@Nullable cml $$0, dbm $$1, ja $$2, dsl $$3, eoi $$4) {
       return false;
    }
 
    @Override
-   public boolean a(dcg $$0, ja $$1, dsk $$2, eoh $$3) {
+   public boolean a(dch $$0, ja $$1, dsl $$2, eoj $$3) {
       return false;
+   }
+
+   @Override
+   protected int a(ayo $$0) {
+      return 1;
+   }
+
+   @Nullable
+   @Override
+   public dsl a(cxn $$0) {
+      eoj $$1 = $$0.q().b_($$0.a());
+      return $$1.a(awc.a) && $$1.e() == 8 ? super.a($$0) : null;
+   }
+
+   @Override
+   protected eoj b_(dsl $$0) {
+      return eok.c.a(false);
    }
 }

@@ -1,102 +1,141 @@
-import com.mojang.datafixers.DataFixer;
 import com.mojang.logging.LogUtils;
 import it.unimi.dsi.fastutil.booleans.BooleanConsumer;
-import it.unimi.dsi.fastutil.objects.Reference2IntOpenHashMap;
-import java.util.function.ToIntFunction;
-import javax.annotation.Nullable;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 
-public class fsk extends fnj {
+public class fsk extends fnl {
    private static final Logger a = LogUtils.getLogger();
-   private static final ToIntFunction<akj<dcf>> b = ac.a(new Reference2IntOpenHashMap(), $$0 -> {
-      $$0.put(dcf.h, -13408734);
-      $$0.put(dcf.i, -10075085);
-      $$0.put(dcf.j, -8943531);
-      $$0.defaultReturnValue(-2236963);
-   });
-   private final BooleanConsumer c;
-   private final bpu q;
+   private static final wu b = wu.c("selectWorld.enterName").a(n.h);
+   private static final wu c = wu.c("selectWorld.edit.resetIcon");
+   private static final wu q = wu.c("selectWorld.edit.openFolder");
+   private static final wu r = wu.c("selectWorld.edit.backup");
+   private static final wu s = wu.c("selectWorld.edit.backupFolder");
+   private static final wu u = wu.c("selectWorld.edit.optimize");
+   private static final wu v = wu.c("optimizeWorld.confirm.title");
+   private static final wu w = wu.c("optimizeWorld.confirm.description");
+   private static final wu x = wu.c("selectWorld.edit.save");
+   private static final int y = 200;
+   private static final int z = 4;
+   private static final int A = 98;
+   private final fll B = fll.d().a(5);
+   private final BooleanConsumer C;
+   private final eqk.c D;
+   private final fid E;
 
-   @Nullable
-   public static fsk a(fft $$0, BooleanConsumer $$1, DataFixer $$2, eqi.c $$3, boolean $$4) {
-      try {
-         fsq $$5 = $$0.x();
-         ath $$6 = atk.a($$3);
-
-         fsk var10;
-         try (alh $$7 = $$5.a($$3.h(), false, $$6)) {
-            eqo $$8 = $$7.d();
-            jx.b $$9 = $$7.c().a();
-            $$3.a($$9, $$8);
-            var10 = new fsk($$1, $$2, $$3, $$8.J(), $$4, $$9);
-         }
-
-         return var10;
-      } catch (Exception var13) {
-         a.warn("Failed to load datapacks, can't optimize world", var13);
-         return null;
-      }
+   public static fsk a(ffw $$0, eqk.c $$1, BooleanConsumer $$2) throws IOException {
+      eql $$3 = $$1.a($$1.h());
+      return new fsk($$0, $$1, $$3.b(), $$2);
    }
 
-   private fsk(BooleanConsumer $$0, DataFixer $$1, eqi.c $$2, dcj $$3, boolean $$4, jx $$5) {
-      super(wu.a("optimizeWorld.title", $$3.a()));
-      this.c = $$0;
-      this.q = new bpu($$2, $$1, $$5, $$4, false);
+   private fsk(ffw $$0, eqk.c $$1, String $$2, BooleanConsumer $$3) {
+      super(wu.c("selectWorld.edit.title"));
+      this.C = $$3;
+      this.D = $$1;
+      fhf $$4 = $$0.h;
+      this.B.a(new flm(200, 20));
+      this.B.a(new fjb(b, $$4));
+      this.E = this.B.a(new fid($$4, 200, 20, b));
+      this.E.a($$2);
+      fll $$5 = fll.e().a(4);
+      fhu $$6 = $$5.a(fhu.a(x, $$0x -> this.a(this.E.a())).a(98).a());
+      $$5.a(fhu.a(wt.e, $$0x -> this.d()).a(98).a());
+      this.E.b($$1x -> $$6.j = !azd.h($$1x));
+      this.B.a(fhu.a(c, $$1x -> {
+         $$1.j().ifPresent($$0xx -> FileUtils.deleteQuietly($$0xx.toFile()));
+         $$1x.j = false;
+      }).a(200).a()).j = $$1.j().filter($$0x -> Files.isRegularFile($$0x)).isPresent();
+      this.B.a(fhu.a(q, $$1x -> ac.k().a($$1.a(eqi.l).toFile())).a(200).a());
+      this.B.a(fhu.a(r, $$1x -> {
+         boolean $$2x = a($$1);
+         this.C.accept(!$$2x);
+      }).a(200).a());
+      this.B.a(fhu.a(s, $$1x -> {
+         eqk $$2x = $$0.m();
+         Path $$3x = $$2x.d();
+
+         try {
+            v.c($$3x);
+         } catch (IOException var5x) {
+            throw new RuntimeException(var5x);
+         }
+
+         ac.k().a($$3x.toFile());
+      }).a(200).a());
+      this.B.a(fhu.a(u, $$2x -> $$0.a(new fmf(() -> $$0.a(this), ($$2xx, $$3x) -> {
+            if ($$2xx) {
+               a($$1);
+            }
+
+            $$0.a(fsm.a($$0, this.C, $$0.as(), $$1, $$3x));
+         }, v, w, true))).a(200).a());
+      this.B.a(new flm(200, 20));
+      this.B.a($$5);
+      this.B.a($$1x -> {
+         fhs var10000 = this.c($$1x);
+      });
+   }
+
+   @Override
+   protected void aE_() {
+      this.b(this.E);
    }
 
    @Override
    protected void aP_() {
-      super.aP_();
-      this.c(fhs.a(wt.e, $$0 -> {
-         this.q.a();
-         this.c.accept(false);
-      }).a(this.m / 2 - 100, this.n / 4 + 150, 200, 20).a());
+      this.c();
    }
 
    @Override
-   public void e() {
-      if (this.q.b()) {
-         this.c.accept(true);
-      }
+   protected void c() {
+      this.B.a();
+      flf.a(this.B, this.H());
    }
 
    @Override
    public void d() {
-      this.c.accept(false);
+      this.C.accept(false);
    }
 
-   @Override
-   public void j() {
-      this.q.a();
-   }
-
-   @Override
-   public void a(fhf $$0, int $$1, int $$2, float $$3) {
-      super.a($$0, $$1, $$2, $$3);
-      $$0.a(this.o, this.k, this.m / 2, 20, 16777215);
-      int $$4 = this.m / 2 - 150;
-      int $$5 = this.m / 2 + 150;
-      int $$6 = this.n / 4 + 100;
-      int $$7 = $$6 + 10;
-      $$0.a(this.o, this.q.h(), this.m / 2, $$6 - 9 - 2, 10526880);
-      if (this.q.e() > 0) {
-         $$0.a($$4 - 1, $$6 - 1, $$5 + 1, $$7 + 1, -16777216);
-         $$0.b(this.o, wu.a("optimizeWorld.info.converted", this.q.f()), $$4, 40, 10526880);
-         $$0.b(this.o, wu.a("optimizeWorld.info.skipped", this.q.g()), $$4, 40 + 9 + 3, 10526880);
-         $$0.b(this.o, wu.a("optimizeWorld.info.total", this.q.e()), $$4, 40 + (9 + 3) * 2, 10526880);
-         int $$8 = 0;
-
-         for (akj<dcf> $$9 : this.q.c()) {
-            int $$10 = ayg.d(this.q.a($$9) * (float)($$5 - $$4));
-            $$0.a($$4 + $$8, $$6, $$4 + $$8 + $$10, $$7, b.applyAsInt($$9));
-            $$8 += $$10;
-         }
-
-         int $$11 = this.q.f() + this.q.g();
-         wu $$12 = wu.a("optimizeWorld.progress.counter", $$11, this.q.e());
-         wu $$13 = wu.a("optimizeWorld.progress.percentage", ayg.d(this.q.d() * 100.0F));
-         $$0.a(this.o, $$12, this.m / 2, $$6 + 2 * 9 + 2, 10526880);
-         $$0.a(this.o, $$13, this.m / 2, $$6 + ($$7 - $$6) / 2 - 9 / 2, 10526880);
+   private void a(String $$0) {
+      try {
+         this.D.a($$0);
+      } catch (ui | uo | IOException var3) {
+         a.error("Failed to access world '{}'", this.D.f(), var3);
+         fkc.a(this.l, this.D.f());
       }
+
+      this.C.accept(true);
+   }
+
+   public static boolean a(eqk.c $$0) {
+      long $$1 = 0L;
+      IOException $$2 = null;
+
+      try {
+         $$1 = $$0.l();
+      } catch (IOException var6) {
+         $$2 = var6;
+      }
+
+      if ($$2 != null) {
+         wu $$4 = wu.c("selectWorld.edit.backupFailed");
+         wu $$5 = wu.b($$2.getMessage());
+         ffw.Q().aw().a(new fkc(fkc.a.b, $$4, $$5));
+         return false;
+      } else {
+         wu $$6 = wu.a("selectWorld.edit.backupCreated", $$0.f());
+         wu $$7 = wu.a("selectWorld.edit.backupSize", ayg.c((double)$$1 / 1048576.0));
+         ffw.Q().aw().a(new fkc(fkc.a.b, $$6, $$7));
+         return true;
+      }
+   }
+
+   @Override
+   public void a(fhh $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      $$0.a(this.o, this.k, this.m / 2, 15, 16777215);
    }
 }

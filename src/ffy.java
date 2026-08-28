@@ -1,30 +1,37 @@
 import java.util.function.IntFunction;
 
-public enum ffy implements ayj {
-   a(0, "options.particles.all"),
-   b(1, "options.particles.decreased"),
-   c(2, "options.particles.minimal");
+public enum ffy {
+   a(0, "options.narrator.off"),
+   b(1, "options.narrator.all"),
+   c(2, "options.narrator.chat"),
+   d(3, "options.narrator.system");
 
-   private static final IntFunction<ffy> d = aww.a(ffy::a, values(), aww.a.b);
-   private final int e;
-   private final String f;
+   private static final IntFunction<ffy> e = aww.a(ffy::a, values(), aww.a.b);
+   private final int f;
+   private final wu g;
 
    private ffy(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+      this.f = $$0;
+      this.g = wu.c($$1);
    }
 
-   @Override
-   public String b() {
+   public int a() {
       return this.f;
    }
 
-   @Override
-   public int a() {
-      return this.e;
+   public wu b() {
+      return this.g;
    }
 
    public static ffy a(int $$0) {
-      return d.apply($$0);
+      return e.apply($$0);
+   }
+
+   public boolean c() {
+      return this == b || this == c;
+   }
+
+   public boolean d() {
+      return this == b || this == d;
    }
 }

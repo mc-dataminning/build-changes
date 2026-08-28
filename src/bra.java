@@ -1,253 +1,120 @@
 import javax.annotation.Nullable;
 
 public class bra {
-   private final jw<brb> a;
-   private final bqz b;
-   private final bqz c;
-   private final bqz d;
-   private final bqz e;
-   private final bqz f;
-   private final bqz g;
-   private final bqz h;
-   private final bqz i;
-   private final bqz j;
-   private final bqz k;
-   private final bqz l;
-   private final bqz m;
-   private final bqz n;
-   private final bqz o;
-   private final bqz p;
-   private final bqz q;
-   private final bqz r;
-   private final bqz s;
-   private final bqz t;
-   private final bqz u;
-   private final bqz v;
-   private final bqz w;
-   private final bqz x;
-   private final bqz y;
+   private final jj<brc> a;
+   @Nullable
+   private final bsh b;
+   @Nullable
+   private final bsh c;
+   @Nullable
+   private final ewh d;
 
-   public bra(jx $$0) {
-      this.a = $$0.d(lr.s);
-      this.b = this.a(brc.a);
-      this.c = this.a(brc.b);
-      this.d = this.a(brc.c);
-      this.e = this.a(brc.d);
-      this.f = this.a(brc.e);
-      this.g = this.a(brc.f);
-      this.h = this.a(brc.g);
-      this.i = this.a(brc.h);
-      this.j = this.a(brc.i);
-      this.k = this.a(brc.j);
-      this.l = this.a(brc.k);
-      this.m = this.a(brc.l);
-      this.n = this.a(brc.m);
-      this.o = this.a(brc.n);
-      this.p = this.a(brc.o);
-      this.q = this.a(brc.p);
-      this.r = this.a(brc.q);
-      this.s = this.a(brc.r);
-      this.t = this.a(brc.s);
-      this.u = this.a(brc.t);
-      this.v = this.a(brc.u);
-      this.w = this.a(brc.v);
-      this.x = this.a(brc.T);
-      this.y = this.a(brc.U);
+   @Override
+   public String toString() {
+      return "DamageSource (" + this.j().a() + ")";
    }
 
-   private bqz a(akj<brb> $$0) {
-      return new bqz(this.a.g($$0));
+   public float a() {
+      return this.j().c();
    }
 
-   private bqz a(akj<brb> $$0, @Nullable bsg $$1) {
-      return new bqz(this.a.g($$0), $$1);
+   public boolean b() {
+      return this.b == this.c;
    }
 
-   private bqz a(akj<brb> $$0, @Nullable bsg $$1, @Nullable bsg $$2) {
-      return new bqz(this.a.g($$0), $$1, $$2);
+   private bra(jj<brc> $$0, @Nullable bsh $$1, @Nullable bsh $$2, @Nullable ewh $$3) {
+      this.a = $$0;
+      this.b = $$2;
+      this.c = $$1;
+      this.d = $$3;
    }
 
-   public bqz a() {
-      return this.b;
+   public bra(jj<brc> $$0, @Nullable bsh $$1, @Nullable bsh $$2) {
+      this($$0, $$1, $$2, null);
    }
 
-   public bqz b() {
+   public bra(jj<brc> $$0, ewh $$1) {
+      this($$0, null, null, $$1);
+   }
+
+   public bra(jj<brc> $$0, @Nullable bsh $$1) {
+      this($$0, $$1, $$1);
+   }
+
+   public bra(jj<brc> $$0) {
+      this($$0, null, null, null);
+   }
+
+   @Nullable
+   public bsh c() {
       return this.c;
    }
 
-   public bqz c() {
+   @Nullable
+   public bsh d() {
+      return this.b;
+   }
+
+   public wu a(btc $$0) {
+      String $$1 = "death.attack." + this.j().a();
+      if (this.b == null && this.c == null) {
+         btc $$5 = $$0.eO();
+         String $$6 = $$1 + ".player";
+         return $$5 != null ? wu.a($$6, $$0.O_(), $$5.O_()) : wu.a($$1, $$0.O_());
+      } else {
+         wu $$2 = this.b == null ? this.c.O_() : this.b.O_();
+         cud $$4 = this.b instanceof btc $$3 ? $$3.eV() : cud.l;
+         return !$$4.e() && $$4.b(kn.g) ? wu.a($$1 + ".item", $$0.O_(), $$2, $$4.F()) : wu.a($$1, $$0.O_(), $$2);
+      }
+   }
+
+   public String e() {
+      return this.j().a();
+   }
+
+   public boolean f() {
+      return switch (this.j().b()) {
+         case a -> false;
+         case b -> this.b instanceof btc && !(this.b instanceof cml);
+         case c -> true;
+      };
+   }
+
+   public boolean g() {
+      if (this.d() instanceof cml $$0 && $$0.gb().d) {
+         return true;
+      }
+
+      return false;
+   }
+
+   @Nullable
+   public ewh h() {
+      if (this.d != null) {
+         return this.d;
+      } else {
+         return this.c != null ? this.c.dp() : null;
+      }
+   }
+
+   @Nullable
+   public ewh i() {
       return this.d;
    }
 
-   public bqz d() {
-      return this.e;
+   public boolean a(awm<brc> $$0) {
+      return this.a.a($$0);
    }
 
-   public bqz e() {
-      return this.f;
+   public boolean a(akj<brc> $$0) {
+      return this.a.a($$0);
    }
 
-   public bqz f() {
-      return this.g;
+   public brc j() {
+      return this.a.a();
    }
 
-   public bqz g() {
-      return this.h;
-   }
-
-   public bqz h() {
-      return this.i;
-   }
-
-   public bqz i() {
-      return this.j;
-   }
-
-   public bqz j() {
-      return this.k;
-   }
-
-   public bqz k() {
-      return this.l;
-   }
-
-   public bqz l() {
-      return this.m;
-   }
-
-   public bqz m() {
-      return this.n;
-   }
-
-   public bqz n() {
-      return this.o;
-   }
-
-   public bqz o() {
-      return this.p;
-   }
-
-   public bqz p() {
-      return this.q;
-   }
-
-   public bqz q() {
-      return this.r;
-   }
-
-   public bqz r() {
-      return this.s;
-   }
-
-   public bqz s() {
-      return this.t;
-   }
-
-   public bqz t() {
-      return this.u;
-   }
-
-   public bqz u() {
-      return this.v;
-   }
-
-   public bqz v() {
-      return this.w;
-   }
-
-   public bqz a(bsg $$0) {
-      return this.a(brc.w, $$0);
-   }
-
-   public bqz b(bsg $$0) {
-      return this.a(brc.x, $$0);
-   }
-
-   public bqz c(bsg $$0) {
-      return this.a(brc.y, $$0);
-   }
-
-   public bqz a(btb $$0) {
-      return this.a(brc.z, $$0);
-   }
-
-   public bqz b(btb $$0) {
-      return this.a(brc.A, $$0);
-   }
-
-   public bqz c(btb $$0) {
-      return this.a(brc.B, $$0);
-   }
-
-   public bqz a(cmk $$0) {
-      return this.a(brc.C, $$0);
-   }
-
-   public bqz a(cmq $$0, @Nullable bsg $$1) {
-      return this.a(brc.D, $$0, $$1);
-   }
-
-   public bqz a(bsg $$0, @Nullable bsg $$1) {
-      return this.a(brc.E, $$0, $$1);
-   }
-
-   public bqz a(bsg $$0, @Nullable btb $$1) {
-      return this.a(brc.F, $$0, $$1);
-   }
-
-   public bqz b(bsg $$0, @Nullable btb $$1) {
-      return this.a(brc.G, $$0, $$1);
-   }
-
-   public bqz c(bsg $$0, @Nullable btb $$1) {
-      return this.a(brc.H, $$0, $$1);
-   }
-
-   public bqz a(cmx $$0, @Nullable bsg $$1) {
-      return this.a(brc.I, $$0, $$1);
-   }
-
-   public bqz a(cmw $$0, @Nullable bsg $$1) {
-      return $$1 == null ? this.a(brc.K, $$0) : this.a(brc.J, $$0, $$1);
-   }
-
-   public bqz a(cnq $$0, bsg $$1) {
-      return this.a(brc.L, $$0, $$1);
-   }
-
-   public bqz b(bsg $$0, @Nullable bsg $$1) {
-      return this.a(brc.M, $$0, $$1);
-   }
-
-   public bqz c(bsg $$0, @Nullable bsg $$1) {
-      return this.a(brc.N, $$0, $$1);
-   }
-
-   public bqz d(bsg $$0) {
-      return this.a(brc.O, $$0);
-   }
-
-   public bqz a(@Nullable dbx $$0) {
-      return $$0 != null ? this.d($$0.g(), $$0.f()) : this.d(null, null);
-   }
-
-   public bqz d(@Nullable bsg $$0, @Nullable bsg $$1) {
-      return this.a($$1 != null && $$0 != null ? brc.Q : brc.P, $$0, $$1);
-   }
-
-   public bqz e(bsg $$0) {
-      return this.a(brc.R, $$0);
-   }
-
-   public bqz a(ewf $$0) {
-      return new bqz(this.a.g(brc.S), $$0);
-   }
-
-   public bqz w() {
-      return this.x;
-   }
-
-   public bqz x() {
-      return this.y;
+   public jj<brc> k() {
+      return this.a;
    }
 }

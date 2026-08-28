@@ -6,7 +6,7 @@ public class abo implements zb<abn> {
    private static final double c = 3.9;
    private final int d;
    private final UUID e;
-   private final bsm<?> f;
+   private final bsn<?> f;
    private final double g;
    private final double h;
    private final double i;
@@ -18,19 +18,19 @@ public class abo implements zb<abn> {
    private final byte o;
    private final int p;
 
-   public abo(bsg $$0) {
+   public abo(bsh $$0) {
       this($$0, 0);
    }
 
-   public abo(bsg $$0, int $$1) {
-      this($$0.am(), $$0.cA(), $$0.dv(), $$0.dx(), $$0.dB(), $$0.dI(), $$0.dG(), $$0.al(), $$1, $$0.dt(), (double)$$0.ct());
+   public abo(bsh $$0, int $$1) {
+      this($$0.an(), $$0.cB(), $$0.dw(), $$0.dy(), $$0.dC(), $$0.dJ(), $$0.dH(), $$0.am(), $$1, $$0.du(), (double)$$0.cu());
    }
 
-   public abo(bsg $$0, int $$1, ja $$2) {
-      this($$0.am(), $$0.cA(), (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$0.dI(), $$0.dG(), $$0.al(), $$1, $$0.dt(), (double)$$0.ct());
+   public abo(bsh $$0, int $$1, ja $$2) {
+      this($$0.an(), $$0.cB(), (double)$$2.u(), (double)$$2.v(), (double)$$2.w(), $$0.dJ(), $$0.dH(), $$0.am(), $$1, $$0.du(), (double)$$0.cu());
    }
 
-   public abo(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, bsm<?> $$7, int $$8, ewf $$9, double $$10) {
+   public abo(int $$0, UUID $$1, double $$2, double $$3, double $$4, float $$5, float $$6, bsn<?> $$7, int $$8, ewh $$9, double $$10) {
       this.d = $$0;
       this.e = $$1;
       this.g = $$2;
@@ -95,7 +95,7 @@ public class abo implements zb<abn> {
       return this.e;
    }
 
-   public bsm<?> f() {
+   public bsn<?> f() {
       return this.f;
    }
 

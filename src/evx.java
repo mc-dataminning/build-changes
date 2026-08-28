@@ -1,103 +1,79 @@
-import com.mojang.logging.LogUtils;
-import java.io.BufferedReader;
-import java.nio.file.FileSystem;
+import java.io.IOException;
+import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.nio.file.PathMatcher;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
-import org.slf4j.Logger;
 
-public class evx implements PathMatcher {
-   private static final Logger a = LogUtils.getLogger();
-   private static final String b = "#";
-   private final List<evx.a> c;
-   private final Map<String, PathMatcher> d = new ConcurrentHashMap<>();
+public class evx {
+   private final PathMatcher a;
 
-   public evx(List<evx.a> $$0) {
-      this.c = $$0;
+   public evx(PathMatcher $$0) {
+      this.a = $$0;
    }
 
-   public PathMatcher a(FileSystem $$0) {
-      return this.d.computeIfAbsent($$0.provider().getScheme(), $$1 -> {
-         List<PathMatcher> $$2;
-         try {
-            $$2 = this.c.stream().map($$1x -> $$1x.a($$0)).toList();
-         } catch (Exception var5) {
-            a.error("Failed to compile file pattern list", var5);
-            return $$0xx -> false;
-         }
-         return switch ($$2.size()) {
-            case 0 -> $$0xx -> false;
-            case 1 -> (PathMatcher)$$2.get(0);
-            default -> $$1x -> {
-            for (PathMatcher $$2 : $$2) {
-               if ($$2.matches($$1x)) {
-                  return true;
-               }
+   public void a(Path $$0, List<evy> $$1) throws IOException {
+      Path $$2 = Files.readSymbolicLink($$0);
+      if (!this.a.matches($$2)) {
+         $$1.add(new evy($$0, $$2));
+      }
+   }
+
+   public List<evy> a(Path $$0) throws IOException {
+      List<evy> $$1 = new ArrayList<>();
+      this.a($$0, $$1);
+      return $$1;
+   }
+
+   public List<evy> a(Path $$0, boolean $$1) throws IOException {
+      List<evy> $$2 = new ArrayList<>();
+
+      BasicFileAttributes $$3;
+      try {
+         $$3 = Files.readAttributes($$0, BasicFileAttributes.class, LinkOption.NOFOLLOW_LINKS);
+      } catch (NoSuchFileException var6) {
+         return $$2;
+      }
+
+      if ($$3.isRegularFile()) {
+         throw new IOException("Path " + $$0 + " is not a directory");
+      } else {
+         if ($$3.isSymbolicLink()) {
+            if (!$$1) {
+               this.a($$0, $$2);
+               return $$2;
             }
 
-            return false;
-         };
-         };
+            $$0 = Files.readSymbolicLink($$0);
+         }
+
+         this.b($$0, $$2);
+         return $$2;
+      }
+   }
+
+   public void b(Path $$0, final List<evy> $$1) throws IOException {
+      Files.walkFileTree($$0, new SimpleFileVisitor<Path>() {
+         private void c(Path $$0, BasicFileAttributes $$1x) throws IOException {
+            if ($$1.isSymbolicLink()) {
+               evx.this.a($$0, $$1);
+            }
+         }
+
+         public FileVisitResult a(Path $$0, BasicFileAttributes $$1x) throws IOException {
+            this.c($$0, $$1);
+            return super.preVisitDirectory($$0, $$1);
+         }
+
+         public FileVisitResult b(Path $$0, BasicFileAttributes $$1x) throws IOException {
+            this.c($$0, $$1);
+            return super.visitFile($$0, $$1);
+         }
       });
-   }
-
-   @Override
-   public boolean matches(Path $$0) {
-      return this.a($$0.getFileSystem()).matches($$0);
-   }
-
-   public static evx a(BufferedReader $$0) {
-      return new evx($$0.lines().flatMap($$0x -> evx.a.a($$0x).stream()).toList());
-   }
-
-   public static record a(evx.b a, String b) {
-      public PathMatcher a(FileSystem $$0) {
-         return this.a().compile($$0, this.b);
-      }
-
-      static Optional<evx.a> a(String $$0) {
-         if ($$0.isBlank() || $$0.startsWith("#")) {
-            return Optional.empty();
-         } else if (!$$0.startsWith("[")) {
-            return Optional.of(new evx.a(evx.b.b, $$0));
-         } else {
-            int $$1 = $$0.indexOf(93, 1);
-            if ($$1 == -1) {
-               throw new IllegalArgumentException("Unterminated type in line '" + $$0 + "'");
-            } else {
-               String $$2 = $$0.substring(1, $$1);
-               String $$3 = $$0.substring($$1 + 1);
-
-               return switch ($$2) {
-                  case "glob", "regex" -> Optional.of(new evx.a(evx.b.a, $$2 + ":" + $$3));
-                  case "prefix" -> Optional.of(new evx.a(evx.b.b, $$3));
-                  default -> throw new IllegalArgumentException("Unsupported definition type in line '" + $$0 + "'");
-               };
-            }
-         }
-      }
-
-      static evx.a b(String $$0) {
-         return new evx.a(evx.b.a, "glob:" + $$0);
-      }
-
-      static evx.a c(String $$0) {
-         return new evx.a(evx.b.a, "regex:" + $$0);
-      }
-
-      static evx.a d(String $$0) {
-         return new evx.a(evx.b.b, $$0);
-      }
-   }
-
-   @FunctionalInterface
-   public interface b {
-      evx.b a = FileSystem::getPathMatcher;
-      evx.b b = ($$0, $$1) -> $$1x -> $$1x.toString().startsWith($$1);
-
-      PathMatcher compile(FileSystem var1, String var2);
    }
 }

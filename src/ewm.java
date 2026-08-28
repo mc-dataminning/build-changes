@@ -1,18 +1,17 @@
-import it.unimi.dsi.fastutil.doubles.DoubleList;
-
-public final class ewm extends ewy {
-   protected ewm(ewo $$0) {
-      super($$0);
+public interface ewm {
+   static ewm a() {
+      return ewr.a;
    }
 
-   @Override
-   public DoubleList a(jf.a $$0) {
-      return new ewl(this.a.c($$0));
+   static ewm a(bsh $$0) {
+      return new ewr($$0);
    }
 
-   @Override
-   protected int a(jf.a $$0, double $$1) {
-      int $$2 = this.a.c($$0);
-      return ayg.a(ayg.a($$1 * (double)$$2, -1.0, (double)$$2));
-   }
+   boolean b();
+
+   boolean a(exa var1, ja var2, boolean var3);
+
+   boolean a(cty var1);
+
+   boolean a(eoj var1, eoj var2);
 }

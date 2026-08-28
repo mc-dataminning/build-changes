@@ -1,57 +1,147 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.DataResult;
-import com.mojang.serialization.DynamicOps;
+import com.google.common.collect.Sets;
 import java.util.Optional;
-import java.util.stream.Stream;
-import org.slf4j.Logger;
+import java.util.Set;
+import java.util.function.Consumer;
+import javax.annotation.Nullable;
+import net.minecraft.server.MinecraftServer;
 
-public record eqw<T>(akj<jw<T>> d, Codec<T> e, String f, eqw.a<T> g) {
-   private static final Logger h = LogUtils.getLogger();
-   public static final eqw<euf> a = new eqw<>(lr.bd, euf.e, "predicates", f());
-   public static final eqw<esi> b = new eqw<>(lr.bc, esk.c, "item_modifiers", f());
-   public static final eqw<eqz> c = new eqw<>(lr.bb, eqz.d, "loot_tables", g());
+public class eqw {
+   private final eqz a;
+   private final ayo b;
+   private final jk.a c;
+   private final Set<eqw.c<?>> d = Sets.newLinkedHashSet();
 
-   public void a(era $$0, akj<T> $$1, T $$2) {
-      this.g.run($$0, $$1, $$2);
+   eqw(eqz $$0, ayo $$1, jk.a $$2) {
+      this.a = $$0;
+      this.b = $$1;
+      this.c = $$2;
    }
 
-   public <V> Optional<T> a(akk $$0, DynamicOps<V> $$1, V $$2) {
-      DataResult<T> $$3 = this.e.parse($$1, $$2);
-      $$3.error().ifPresent($$1x -> h.error("Couldn't parse element {}:{} - {}", new Object[]{this.f, $$0, $$1x.message()}));
-      return $$3.result();
+   public boolean a(etp<?> $$0) {
+      return this.a.a($$0);
    }
 
-   public static Stream<eqw<?>> a() {
-      return Stream.of(a, b, c);
+   public <T> T b(etp<T> $$0) {
+      return this.a.b($$0);
    }
 
-   private static <T extends eqv> eqw.a<T> f() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
+   public void a(akk $$0, Consumer<cud> $$1) {
+      this.a.a($$0, $$1);
    }
 
-   private static eqw.a<eqz> g() {
-      return ($$0, $$1, $$2) -> $$2.a($$0.a($$2.a()).a("{" + $$1.b() + "/" + $$1.a() + "}", $$1));
+   @Nullable
+   public <T> T c(etp<T> $$0) {
+      return this.a.d($$0);
    }
 
-   public akj<jw<T>> b() {
-      return this.d;
+   public boolean a(eqw.c<?> $$0) {
+      return this.d.contains($$0);
    }
 
-   public Codec<T> c() {
-      return this.e;
+   public boolean b(eqw.c<?> $$0) {
+      return this.d.add($$0);
    }
 
-   public String d() {
-      return this.f;
+   public void c(eqw.c<?> $$0) {
+      this.d.remove($$0);
    }
 
-   public eqw.a<T> e() {
-      return this.g;
+   public jk.a a() {
+      return this.c;
    }
 
-   @FunctionalInterface
-   public interface a<T> {
-      void run(era var1, akj<T> var2, T var3);
+   public ayo b() {
+      return this.b;
+   }
+
+   public float c() {
+      return this.a.b();
+   }
+
+   public aqm d() {
+      return this.a.a();
+   }
+
+   public static eqw.c<erb> a(erb $$0) {
+      return new eqw.c<>(eqy.c, $$0);
+   }
+
+   public static eqw.c<euh> a(euh $$0) {
+      return new eqw.c<>(eqy.a, $$0);
+   }
+
+   public static eqw.c<esk> a(esk $$0) {
+      return new eqw.c<>(eqy.b, $$0);
+   }
+
+   public static class a {
+      private final eqz a;
+      @Nullable
+      private ayo b;
+
+      public a(eqz $$0) {
+         this.a = $$0;
+      }
+
+      public eqw.a a(long $$0) {
+         if ($$0 != 0L) {
+            this.b = ayo.a($$0);
+         }
+
+         return this;
+      }
+
+      public eqw.a a(ayo $$0) {
+         this.b = $$0;
+         return this;
+      }
+
+      public aqm a() {
+         return this.a.a();
+      }
+
+      public eqw a(Optional<akk> $$0) {
+         aqm $$1 = this.a();
+         MinecraftServer $$2 = $$1.o();
+         ayo $$3 = Optional.ofNullable(this.b).or(() -> $$0.map($$1::a)).orElseGet($$1::E_);
+         return new eqw(this.a, $$3, $$2.bf().b());
+      }
+   }
+
+   public static enum b implements azc {
+      a("this", ets.a),
+      b("attacker", ets.d),
+      c("direct_attacker", ets.e),
+      d("attacking_player", ets.b);
+
+      public static final azc.a<eqw.b> e = azc.a(eqw.b::values);
+      private final String f;
+      private final etp<? extends bsh> g;
+
+      private b(final String $$0, final etp<? extends bsh> $$1) {
+         this.f = $$0;
+         this.g = $$1;
+      }
+
+      public etp<? extends bsh> a() {
+         return this.g;
+      }
+
+      public static eqw.b a(String $$0) {
+         eqw.b $$1 = e.a($$0);
+         if ($$1 != null) {
+            return $$1;
+         } else {
+            throw new IllegalArgumentException("Invalid entity target " + $$0);
+         }
+      }
+
+      @Override
+      public String c() {
+         return this.f;
+      }
+   }
+
+   public static record c<T>(eqy<T> a, T b) {
    }
 }

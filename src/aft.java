@@ -9,11 +9,11 @@ public class aft implements zb<abn> {
    private final int b;
    private final List<aft.a> c;
 
-   public aft(int $$0, Collection<buf> $$1) {
+   public aft(int $$0, Collection<bug> $$1) {
       this.b = $$0;
       this.c = Lists.newArrayList();
 
-      for (buf $$2 : $$1) {
+      for (bug $$2 : $$1) {
          this.c.add(new aft.a($$2.a(), $$2.b(), $$2.c()));
       }
    }
@@ -40,13 +40,13 @@ public class aft implements zb<abn> {
       return this.c;
    }
 
-   public static record a(jj<bue> c, double d, Collection<buh> e) {
-      public static final ys<ByteBuf, buh> a = ys.a(
-         kd.g, buh::b, yq.j, buh::d, buh.a.e, buh::e, ($$0, $$1, $$2) -> new buh($$0, "Unknown synced attribute modifier", $$1, $$2)
+   public static record a(jj<buf> c, double d, Collection<bui> e) {
+      public static final ys<ByteBuf, bui> a = ys.a(
+         kd.g, bui::b, yq.j, bui::d, bui.a.e, bui::e, ($$0, $$1, $$2) -> new bui($$0, "Unknown synced attribute modifier", $$1, $$2)
       );
-      public static final ys<wf, aft.a> b = ys.a(yq.b(lr.c), aft.a::a, yq.j, aft.a::b, a.a(yq.a(ArrayList::new)), aft.a::c, aft.a::new);
+      public static final ys<wf, aft.a> b = ys.a(buf.b, aft.a::a, yq.j, aft.a::b, a.a(yq.a(ArrayList::new)), aft.a::c, aft.a::new);
 
-      public jj<bue> a() {
+      public jj<buf> a() {
          return this.c;
       }
 
@@ -54,7 +54,7 @@ public class aft implements zb<abn> {
          return this.d;
       }
 
-      public Collection<buh> c() {
+      public Collection<bui> c() {
          return this.e;
       }
    }

@@ -1,56 +1,30 @@
-import com.mojang.logging.LogUtils;
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.List;
-import java.util.Set;
-import org.slf4j.Logger;
 
-public class eta extends esh {
-   private static final Logger b = LogUtils.getLogger();
+public class eta extends esj {
    public static final MapCodec<eta> a = RecordCodecBuilder.mapCodec(
-      $$0 -> a($$0)
-            .and($$0.group(evc.a.fieldOf("damage").forGetter($$0x -> $$0x.c), Codec.BOOL.fieldOf("add").orElse(false).forGetter($$0x -> $$0x.d)))
-            .apply($$0, eta::new)
+      $$0 -> a($$0).and(awm.b(lr.I).fieldOf("options").forGetter($$0x -> $$0x.b)).apply($$0, eta::new)
    );
-   private final evb c;
-   private final boolean d;
+   private final awm<ctv> b;
 
-   private eta(List<euf> $$0, evb $$1, boolean $$2) {
+   private eta(List<euh> $$0, awm<ctv> $$1) {
       super($$0);
-      this.c = $$1;
-      this.d = $$2;
+      this.b = $$1;
    }
 
    @Override
-   public esj<eta> b() {
-      return esk.n;
+   public esl<eta> b() {
+      return esm.G;
    }
 
    @Override
-   public Set<etn<?>> a() {
-      return this.c.a();
-   }
-
-   @Override
-   public cuc a(cuc $$0, equ $$1) {
-      if ($$0.l()) {
-         int $$2 = $$0.o();
-         float $$3 = this.d ? 1.0F - (float)$$0.n() / (float)$$2 : 0.0F;
-         float $$4 = 1.0F - ayg.a(this.c.b($$1) + $$3, 0.0F, 1.0F);
-         $$0.b(ayg.d($$4 * (float)$$2));
-      } else {
-         b.warn("Couldn't set damage of loot item {}", $$0);
-      }
-
+   public cud a(cud $$0, eqw $$1) {
+      ctw.a($$0, this.b, $$1.b());
       return $$0;
    }
 
-   public static esh.a<?> a(evb $$0) {
-      return a($$1 -> new eta($$1, $$0, false));
-   }
-
-   public static esh.a<?> a(evb $$0, boolean $$1) {
-      return a($$2 -> new eta($$2, $$0, $$1));
+   public static esj.a<?> a(awm<ctv> $$0) {
+      return a($$1 -> new eta($$1, $$0));
    }
 }

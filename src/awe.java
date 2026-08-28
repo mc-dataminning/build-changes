@@ -1,9 +1,9 @@
 public interface awe {
-   awm<ctu> a = a("regular_goat_horns");
-   awm<ctu> b = a("screaming_goat_horns");
-   awm<ctu> c = a("goat_horns");
+   awm<ctv> a = a("regular_goat_horns");
+   awm<ctv> b = a("screaming_goat_horns");
+   awm<ctv> c = a("goat_horns");
 
-   private static awm<ctu> a(String $$0) {
+   private static awm<ctv> a(String $$0) {
       return awm.a(lr.I, new akk($$0));
    }
 }

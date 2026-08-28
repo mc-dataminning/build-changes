@@ -1,5 +1,5 @@
 public class re {
-   public static void a(qm<ekf> $$0) {
+   public static void a(qm<ekh> $$0) {
       qs.a($$0);
       qw.a($$0);
       qv.a($$0);

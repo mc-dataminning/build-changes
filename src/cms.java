@@ -1,121 +1,168 @@
 import javax.annotation.Nullable;
 
-public class cms extends cmq {
-   private static final int f = 600;
-   private static final int g = -1;
-   private static final ajp<Integer> h = ajt.a(cms.class, ajr.b);
-   private static final byte i = 0;
+public abstract class cms extends cnd {
+   public static final double b = 0.1;
+   public static final double c = 0.5;
+   public double d = 0.1;
 
-   public cms(bsm<? extends cms> $$0, dcf $$1) {
+   protected cms(bsn<? extends cms> $$0, dcg $$1) {
       super($$0, $$1);
    }
 
-   public cms(dcf $$0, double $$1, double $$2, double $$3, cuc $$4, @Nullable cuc $$5) {
-      super(bsm.e, $$1, $$2, $$3, $$0, $$4, $$5);
-      this.M();
+   protected cms(bsn<? extends cms> $$0, double $$1, double $$2, double $$3, dcg $$4) {
+      this($$0, $$4);
+      this.a_($$1, $$2, $$3);
    }
 
-   public cms(dcf $$0, btb $$1, cuc $$2, @Nullable cuc $$3) {
-      super(bsm.e, $$1, $$0, $$2, $$3);
-      this.M();
+   public cms(bsn<? extends cms> $$0, double $$1, double $$2, double $$3, ewh $$4, dcg $$5) {
+      this($$0, $$5);
+      this.b($$1, $$2, $$3, this.dH(), this.dJ());
+      this.av();
+      this.a($$4, this.d);
    }
 
-   private cwd K() {
-      return this.z().a(kn.G, cwd.a);
-   }
-
-   private void a(cwd $$0) {
-      this.z().b(kn.G, $$0);
-      this.M();
-   }
-
-   @Override
-   protected void a(cuc $$0) {
-      super.a($$0);
-      this.M();
-   }
-
-   private void M() {
-      cwd $$0 = this.K();
-      this.ao.a(h, $$0.equals(cwd.a) ? -1 : $$0.b());
-   }
-
-   public void a(bro $$0) {
-      this.a(this.K().a($$0));
+   public cms(bsn<? extends cms> $$0, btc $$1, ewh $$2, dcg $$3) {
+      this($$0, $$1.dw(), $$1.dy(), $$1.dC(), $$2, $$3);
+      this.c($$1);
+      this.a($$1.dH(), $$1.dJ());
    }
 
    @Override
    protected void a(ajt.a $$0) {
-      super.a($$0);
-      $$0.a(h, -1);
+   }
+
+   @Override
+   public boolean a(double $$0) {
+      double $$1 = this.cM().a() * 4.0;
+      if (Double.isNaN($$1)) {
+         $$1 = 4.0;
+      }
+
+      $$1 *= 64.0;
+      return $$0 < $$1 * $$1;
+   }
+
+   protected dbp.a af_() {
+      return dbp.a.a;
    }
 
    @Override
    public void l() {
-      super.l();
-      if (this.dQ().B) {
-         if (this.b) {
-            if (this.c % 5 == 0) {
-               this.b(1);
+      bsh $$0 = this.s();
+      if (this.dR().B || ($$0 == null || !$$0.dM()) && this.dR().B(this.dr())) {
+         super.l();
+         if (this.t()) {
+            this.d(1.0F);
+         }
+
+         ewf $$1 = cnf.a(this, this::b, this.af_());
+         if ($$1.c() != ewf.a.a) {
+            this.b($$1);
+         }
+
+         this.aU();
+         ewh $$2 = this.du();
+         double $$3 = this.dw() + $$2.c;
+         double $$4 = this.dy() + $$2.d;
+         double $$5 = this.dC() + $$2.e;
+         cnf.a(this, 0.2F);
+         float $$8;
+         if (this.bg()) {
+            for (int $$6 = 0; $$6 < 4; $$6++) {
+               float $$7 = 0.25F;
+               this.dR().a(lj.d, $$3 - $$2.c * 0.25, $$4 - $$2.d * 0.25, $$5 - $$2.e * 0.25, $$2.c, $$2.d, $$2.e);
             }
+
+            $$8 = this.x();
          } else {
-            this.b(2);
+            $$8 = this.w();
          }
-      } else if (this.b && this.c != 0 && !this.K().equals(cwd.a) && this.c >= 600) {
-         this.dQ().a(this, (byte)0);
-         this.a(new cuc(cuf.ow));
-      }
-   }
 
-   private void b(int $$0) {
-      int $$1 = this.H();
-      if ($$1 != -1 && $$0 > 0) {
-         for (int $$2 = 0; $$2 < $$0; $$2++) {
-            this.dQ().a(lc.a(lj.u, $$1), this.d(0.5), this.dy(), this.g(0.5), 0.0, 0.0, 0.0);
+         this.j($$2.e($$2.d().a(this.d)).a((double)$$8));
+         lh $$10 = this.v();
+         if ($$10 != null) {
+            this.dR().a($$10, $$3, $$4 + 0.5, $$5, 0.0, 0.0, 0.0);
          }
-      }
-   }
 
-   public int H() {
-      return this.ao.a(h);
-   }
-
-   @Override
-   protected void a(btb $$0) {
-      super.a($$0);
-      bsg $$1 = this.I();
-      cwd $$2 = this.K();
-      if ($$2.e().isPresent()) {
-         for (bro $$3 : $$2.e().get().a().a()) {
-            $$0.b(new bro($$3.c(), Math.max($$3.a($$0x -> $$0x / 8), 1), $$3.e(), $$3.f(), $$3.g()), $$1);
-         }
-      }
-
-      for (bro $$4 : $$2.d()) {
-         $$0.b($$4, $$1);
-      }
-   }
-
-   @Override
-   protected cuc y() {
-      return new cuc(cuf.ow);
-   }
-
-   @Override
-   public void b(byte $$0) {
-      if ($$0 == 0) {
-         int $$1 = this.H();
-         if ($$1 != -1) {
-            float $$2 = (float)($$1 >> 16 & 0xFF) / 255.0F;
-            float $$3 = (float)($$1 >> 8 & 0xFF) / 255.0F;
-            float $$4 = (float)($$1 >> 0 & 0xFF) / 255.0F;
-
-            for (int $$5 = 0; $$5 < 20; $$5++) {
-               this.dQ().a(lc.a(lj.u, $$2, $$3, $$4), this.d(0.5), this.dy(), this.g(0.5), 0.0, 0.0, 0.0);
-            }
-         }
+         this.a_($$3, $$4, $$5);
       } else {
-         super.b($$0);
+         this.aq();
+      }
+   }
+
+   @Override
+   public boolean a(bra $$0, float $$1) {
+      return !this.b($$0);
+   }
+
+   @Override
+   protected boolean b(bsh $$0) {
+      return super.b($$0) && !$$0.ag;
+   }
+
+   @Override
+   protected boolean t() {
+      return true;
+   }
+
+   @Nullable
+   protected lh v() {
+      return lj.ae;
+   }
+
+   protected float w() {
+      return 0.95F;
+   }
+
+   protected float x() {
+      return 0.8F;
+   }
+
+   @Override
+   public void b(tx $$0) {
+      super.b($$0);
+      $$0.a("acceleration_power", this.d);
+   }
+
+   @Override
+   public void a(tx $$0) {
+      super.a($$0);
+      if ($$0.b("acceleration_power", 6)) {
+         this.d = $$0.k("acceleration_power");
+      }
+   }
+
+   @Override
+   public float bv() {
+      return 1.0F;
+   }
+
+   @Override
+   public zb<abn> dn() {
+      bsh $$0 = this.s();
+      int $$1 = $$0 == null ? 0 : $$0.an();
+      return new abo(this.an(), this.cB(), this.dw(), this.dy(), this.dC(), this.dJ(), this.dH(), this.am(), $$1, this.du(), 0.0);
+   }
+
+   @Override
+   public void a(abo $$0) {
+      super.a($$0);
+      ewh $$1 = new ewh($$0.j(), $$0.k(), $$0.l());
+      this.j($$1);
+   }
+
+   private void a(ewh $$0, double $$1) {
+      this.j($$0.d().a($$1));
+      this.av = true;
+   }
+
+   @Override
+   protected void b(@Nullable bsh $$0, boolean $$1) {
+      super.b($$0, $$1);
+      if ($$1) {
+         this.d = 0.1;
+      } else {
+         this.d *= 0.5;
       }
    }
 }

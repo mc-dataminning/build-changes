@@ -1,121 +1,72 @@
-import it.unimi.dsi.fastutil.longs.Long2ObjectFunction;
-import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
-import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import it.unimi.dsi.fastutil.longs.LongAVLTreeSet;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
-import it.unimi.dsi.fastutil.longs.LongSet;
-import it.unimi.dsi.fastutil.longs.LongSortedSet;
-import java.util.Objects;
-import java.util.Spliterators;
-import java.util.PrimitiveIterator.OfLong;
-import java.util.stream.LongStream;
+import com.mojang.logging.LogUtils;
+import java.util.Collection;
 import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
-import javax.annotation.Nullable;
+import org.slf4j.Logger;
 
-public class dws<T extends dwn> {
-   private final Class<T> a;
-   private final Long2ObjectFunction<dxa> b;
-   private final Long2ObjectMap<dwr<T>> c = new Long2ObjectOpenHashMap();
-   private final LongSortedSet d = new LongAVLTreeSet();
+public class dws<T extends dwo> {
+   private static final Logger a = LogUtils.getLogger();
+   private final awx<T> b;
+   private dxb c;
 
-   public dws(Class<T> $$0, Long2ObjectFunction<dxa> $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public dws(Class<T> $$0, dxb $$1) {
+      this.c = $$1;
+      this.b = new awx<>($$0);
    }
 
-   public void a(ewa $$0, aws<dwr<T>> $$1) {
-      int $$2 = 2;
-      int $$3 = kc.a($$0.a - 2.0);
-      int $$4 = kc.a($$0.b - 4.0);
-      int $$5 = kc.a($$0.c - 2.0);
-      int $$6 = kc.a($$0.d + 2.0);
-      int $$7 = kc.a($$0.e + 0.0);
-      int $$8 = kc.a($$0.f + 2.0);
+   public void a(T $$0) {
+      this.b.add($$0);
+   }
 
-      for (int $$9 = $$3; $$9 <= $$6; $$9++) {
-         long $$10 = kc.b($$9, 0, 0);
-         long $$11 = kc.b($$9, -1, -1);
-         LongIterator $$12 = this.d.subSet($$10, $$11 + 1L).iterator();
+   public boolean b(T $$0) {
+      return this.b.remove($$0);
+   }
 
-         while ($$12.hasNext()) {
-            long $$13 = $$12.nextLong();
-            int $$14 = kc.c($$13);
-            int $$15 = kc.d($$13);
-            if ($$14 >= $$4 && $$14 <= $$7 && $$15 >= $$5 && $$15 <= $$8) {
-               dwr<T> $$16 = (dwr<T>)this.c.get($$13);
-               if ($$16 != null && !$$16.a() && $$16.c().b() && $$1.accept($$16).a()) {
-                  return;
-               }
-            }
+   public aws.a a(ewc $$0, aws<T> $$1) {
+      for (T $$2 : this.b) {
+         if ($$2.cM().c($$0) && $$1.accept($$2).a()) {
+            return aws.a.b;
          }
       }
+
+      return aws.a.a;
    }
 
-   public LongStream a(long $$0) {
-      int $$1 = dbm.a($$0);
-      int $$2 = dbm.b($$0);
-      LongSortedSet $$3 = this.a($$1, $$2);
+   public <U extends T> aws.a a(dwv<T, U> $$0, ewc $$1, aws<? super U> $$2) {
+      Collection<? extends T> $$3 = this.b.a($$0.a());
       if ($$3.isEmpty()) {
-         return LongStream.empty();
+         return aws.a.a;
       } else {
-         OfLong $$4 = $$3.iterator();
-         return StreamSupport.longStream(Spliterators.spliteratorUnknownSize($$4, 1301), false);
+         for (T $$4 : $$3) {
+            U $$5 = (U)$$0.a($$4);
+            if ($$5 != null && $$4.cM().c($$1) && $$2.accept($$5).a()) {
+               return aws.a.b;
+            }
+         }
+
+         return aws.a.a;
       }
    }
 
-   private LongSortedSet a(int $$0, int $$1) {
-      long $$2 = kc.b($$0, 0, $$1);
-      long $$3 = kc.b($$0, -1, $$1);
-      return this.d.subSet($$2, $$3 + 1L);
+   public boolean a() {
+      return this.b.isEmpty();
    }
 
-   public Stream<dwr<T>> b(long $$0) {
-      return this.a($$0).<dwr<T>>mapToObj(this.c::get).filter(Objects::nonNull);
+   public Stream<T> b() {
+      return this.b.stream();
    }
 
-   private static long f(long $$0) {
-      return dbm.c(kc.b($$0), kc.d($$0));
+   public dxb c() {
+      return this.c;
    }
 
-   public dwr<T> c(long $$0) {
-      return (dwr<T>)this.c.computeIfAbsent($$0, this::g);
-   }
-
-   @Nullable
-   public dwr<T> d(long $$0) {
-      return (dwr<T>)this.c.get($$0);
-   }
-
-   private dwr<T> g(long $$0) {
-      long $$1 = f($$0);
-      dxa $$2 = (dxa)this.b.get($$1);
-      this.d.add($$0);
-      return new dwr<>(this.a, $$2);
-   }
-
-   public LongSet a() {
-      LongSet $$0 = new LongOpenHashSet();
-      this.c.keySet().forEach($$1 -> $$0.add(f($$1)));
-      return $$0;
-   }
-
-   public void b(ewa $$0, aws<T> $$1) {
-      this.a($$0, $$2 -> $$2.a($$0, $$1));
-   }
-
-   public <U extends T> void a(dwu<T, U> $$0, ewa $$1, aws<U> $$2) {
-      this.a($$1, $$3 -> $$3.a($$0, $$1, $$2));
-   }
-
-   public void e(long $$0) {
-      this.c.remove($$0);
-      this.d.remove($$0);
+   public dxb a(dxb $$0) {
+      dxb $$1 = this.c;
+      this.c = $$0;
+      return $$1;
    }
 
    @azl
-   public int b() {
-      return this.d.size();
+   public int d() {
+      return this.b.size();
    }
 }

@@ -1,33 +1,22 @@
-public record czb(cuc a, cuc b, cuc c) implements cyl {
+public interface czb extends cyj<czc> {
    @Override
-   public cuc a(int $$0) {
-      return switch ($$0) {
-         case 0 -> this.a;
-         case 1 -> this.b;
-         case 2 -> this.c;
-         default -> throw new IllegalArgumentException("Recipe does not contain slot " + $$0);
-      };
+   default cyp<?> e() {
+      return cyp.g;
    }
 
    @Override
-   public int a() {
-      return 3;
+   default boolean a(int $$0, int $$1) {
+      return $$0 >= 3 && $$1 >= 1;
    }
 
    @Override
-   public boolean b() {
-      return this.a.e() && this.b.e() && this.c.e();
+   default cud g() {
+      return new cud(dfk.ob);
    }
 
-   public cuc c() {
-      return this.a;
-   }
+   boolean a(cud var1);
 
-   public cuc d() {
-      return this.b;
-   }
+   boolean b(cud var1);
 
-   public cuc e() {
-      return this.c;
-   }
+   boolean c(cud var1);
 }

@@ -36,7 +36,7 @@ public abstract class adh implements zb<abn> {
    }
 
    @Nullable
-   public bsg a(dcf $$0) {
+   public bsh a(dcg $$0) {
       return $$0.a(this.a);
    }
 

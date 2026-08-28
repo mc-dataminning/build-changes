@@ -1,12 +1,9 @@
-public abstract class fth<T extends cjq> extends fvb<T> {
-   protected fth(fxo $$0) {
+public class fth extends RuntimeException {
+   public fth(String $$0) {
       super($$0);
    }
 
-   public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      ftl.a(this.o, this.n, this.a($$0), this.c, $$3);
+   public fth(String $$0, Throwable $$1) {
+      super($$0, $$1);
    }
-
-   public abstract boolean a(T var1);
 }

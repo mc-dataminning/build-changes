@@ -22,19 +22,19 @@ public class bcw extends DataFix {
    public TypeRewriteRule makeRule() {
       Schema $$0 = this.getInputSchema();
       Schema $$1 = this.getOutputSchema();
-      Type<?> $$2 = $$0.getTypeRaw(bgg.A);
-      Type<?> $$3 = $$1.getTypeRaw(bgg.A);
-      Type<?> $$4 = $$0.getTypeRaw(bgg.B);
+      Type<?> $$2 = $$0.getTypeRaw(bgh.A);
+      Type<?> $$3 = $$1.getTypeRaw(bgh.A);
+      Type<?> $$4 = $$0.getTypeRaw(bgh.B);
       return this.a($$0, $$1, $$2, $$3, $$4);
    }
 
    private <OldEntityTree, NewEntityTree, Entity> TypeRewriteRule a(Schema $$0, Schema $$1, Type<OldEntityTree> $$2, Type<NewEntityTree> $$3, Type<Entity> $$4) {
-      Type<Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>> $$5 = DSL.named(bgg.A.typeName(), DSL.and(DSL.optional(DSL.field("Riding", $$2)), $$4));
+      Type<Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>> $$5 = DSL.named(bgh.A.typeName(), DSL.and(DSL.optional(DSL.field("Riding", $$2)), $$4));
       Type<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> $$6 = DSL.named(
-         bgg.A.typeName(), DSL.and(DSL.optional(DSL.field("Passengers", DSL.list($$3))), $$4)
+         bgh.A.typeName(), DSL.and(DSL.optional(DSL.field("Passengers", DSL.list($$3))), $$4)
       );
-      Type<?> $$7 = $$0.getType(bgg.A);
-      Type<?> $$8 = $$1.getType(bgg.A);
+      Type<?> $$7 = $$0.getType(bgh.A);
+      Type<?> $$8 = $$1.getType(bgh.A);
       if (!Objects.equals($$7, $$5)) {
          throw new IllegalStateException("Old entity type is not what was expected.");
       } else if (!$$8.equals($$6, true, true)) {
@@ -43,8 +43,8 @@ public class bcw extends DataFix {
          OpticFinder<Pair<String, Pair<Either<OldEntityTree, Unit>, Entity>>> $$9 = DSL.typeFinder($$5);
          OpticFinder<Pair<String, Pair<Either<List<NewEntityTree>, Unit>, Entity>>> $$10 = DSL.typeFinder($$6);
          OpticFinder<NewEntityTree> $$11 = DSL.typeFinder($$3);
-         Type<?> $$12 = $$0.getType(bgg.b);
-         Type<?> $$13 = $$1.getType(bgg.b);
+         Type<?> $$12 = $$0.getType(bgh.b);
+         Type<?> $$13 = $$1.getType(bgh.b);
          return TypeRewriteRule.seq(
             this.fixTypeEverywhere(
                "EntityRidingToPassengerFix",
@@ -68,7 +68,7 @@ public class bcw extends DataFix {
                            ),
                            Either.right(DSL.unit())
                         );
-                        $$7x = Optional.of(Pair.of(bgg.A.typeName(), Pair.of($$9x, ((Pair)$$8x.getSecond()).getSecond())));
+                        $$7x = Optional.of(Pair.of(bgh.A.typeName(), Pair.of($$9x, ((Pair)$$8x.getSecond()).getSecond())));
                         Optional<OldEntityTree> $$10x = ((Either)((Pair)$$8x.getSecond()).getFirst()).left();
                         if ($$10x.isEmpty()) {
                            return $$7x.orElseThrow(() -> new IllegalStateException("Should always have an entity tree here"));

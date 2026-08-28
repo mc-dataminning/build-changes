@@ -1,13 +1,13 @@
 public class adj implements zb<abn> {
    public static final ys<vr, adj> a = zb.a(adj::a, adj::new);
-   private final bqf b;
+   private final bqg b;
 
-   public adj(bqf $$0) {
+   public adj(bqg $$0) {
       this.b = $$0;
    }
 
    private adj(vr $$0) {
-      this.b = $$0.b(bqf.class);
+      this.b = $$0.b(bqg.class);
    }
 
    private void a(vr $$0) {
@@ -23,7 +23,7 @@ public class adj implements zb<abn> {
       $$0.a(this);
    }
 
-   public bqf b() {
+   public bqg b() {
       return this.b;
    }
 }

@@ -70,6 +70,6 @@ public class bci extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      return this.fixTypeEverywhereTyped("EntityHealthFix", this.getInputSchema().getType(bgg.B), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
+      return this.fixTypeEverywhereTyped("EntityHealthFix", this.getInputSchema().getType(bgh.B), $$0 -> $$0.update(DSL.remainderFinder(), this::a));
    }
 }

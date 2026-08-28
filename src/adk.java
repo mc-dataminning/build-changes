@@ -1,10 +1,10 @@
 public class adk implements zb<abn> {
    public static final ys<wf, adk> a = ys.a(yq.g, adk::b, yq.a(lr.U), adk::e, ww.d, adk::f, adk::new);
    private final int b;
-   private final cqp<?> c;
+   private final cqq<?> c;
    private final wu d;
 
-   public adk(int $$0, cqp<?> $$1, wu $$2) {
+   public adk(int $$0, cqq<?> $$1, wu $$2) {
       this.b = $$0;
       this.c = $$1;
       this.d = $$2;
@@ -23,7 +23,7 @@ public class adk implements zb<abn> {
       return this.b;
    }
 
-   public cqp<?> e() {
+   public cqq<?> e() {
       return this.c;
    }
 

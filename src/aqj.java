@@ -6,12 +6,12 @@ import java.util.Collections;
 import java.util.Set;
 import java.util.function.Function;
 
-public class aqj extends bpw {
+public class aqj extends bpx {
    private final Set<aqn> h = Sets.newHashSet();
    private final Set<aqn> i = Collections.unmodifiableSet(this.h);
    private boolean j = true;
 
-   public aqj(wu $$0, bpw.a $$1, bpw.b $$2) {
+   public aqj(wu $$0, bpx.a $$1, bpx.b $$2) {
       super(ayg.a(), $$0, $$1, $$2);
    }
 
@@ -24,7 +24,7 @@ public class aqj extends bpw {
    }
 
    @Override
-   public void a(bpw.a $$0) {
+   public void a(bpx.a $$0) {
       if ($$0 != this.c) {
          super.a($$0);
          this.a(abx::d);
@@ -32,7 +32,7 @@ public class aqj extends bpw {
    }
 
    @Override
-   public void a(bpw.b $$0) {
+   public void a(bpx.b $$0) {
       if ($$0 != this.d) {
          super.a($$0);
          this.a(abx::d);
@@ -40,7 +40,7 @@ public class aqj extends bpw {
    }
 
    @Override
-   public bpw a(boolean $$0) {
+   public bpx a(boolean $$0) {
       if ($$0 != this.e) {
          super.a($$0);
          this.a(abx::e);
@@ -50,7 +50,7 @@ public class aqj extends bpw {
    }
 
    @Override
-   public bpw b(boolean $$0) {
+   public bpx b(boolean $$0) {
       if ($$0 != this.f) {
          super.b($$0);
          this.a(abx::e);
@@ -60,7 +60,7 @@ public class aqj extends bpw {
    }
 
    @Override
-   public bpw c(boolean $$0) {
+   public bpx c(boolean $$0) {
       if ($$0 != this.g) {
          super.c($$0);
          this.a(abx::e);
@@ -77,7 +77,7 @@ public class aqj extends bpw {
       }
    }
 
-   private void a(Function<bpw, abx> $$0) {
+   private void a(Function<bpx, abx> $$0) {
       if (this.j) {
          abx $$1 = $$0.apply(this);
 

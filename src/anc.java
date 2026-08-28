@@ -20,12 +20,12 @@ public class anc {
    }
 
    private static void a(eq $$0, Collection<aqn> $$1, xk $$2) {
-      wq.a $$3 = wq.a(wq.e, $$0);
+      wq.a $$3 = wq.a(wq.g, $$0);
       xj $$4 = xj.a($$2);
       boolean $$5 = false;
 
       for (aqn $$6 : $$1) {
-         wq.a $$7 = wq.a(wq.f, $$0).c($$6.O_());
+         wq.a $$7 = wq.a(wq.h, $$0).c($$6.O_());
          $$0.a($$4, false, $$7);
          boolean $$8 = $$0.a($$6);
          $$6.a($$4, $$8, $$3);

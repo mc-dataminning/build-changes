@@ -5,12 +5,12 @@ public class afu implements zb<abn> {
    private static final int d = 4;
    private static final int e = 8;
    private final int f;
-   private final jj<brm> g;
+   private final jj<brn> g;
    private final int h;
    private final int i;
    private final byte j;
 
-   public afu(int $$0, bro $$1, boolean $$2) {
+   public afu(int $$0, brp $$1, boolean $$2) {
       this.f = $$0;
       this.g = $$1.c();
       this.h = $$1.e();
@@ -37,7 +37,7 @@ public class afu implements zb<abn> {
 
    private afu(wf $$0) {
       this.f = $$0.l();
-      this.g = yq.b(lr.V).decode($$0);
+      this.g = brn.b.decode($$0);
       this.h = $$0.l();
       this.i = $$0.l();
       this.j = $$0.readByte();
@@ -45,7 +45,7 @@ public class afu implements zb<abn> {
 
    private void a(wf $$0) {
       $$0.c(this.f);
-      yq.b(lr.V).encode($$0, this.g);
+      brn.b.encode($$0, this.g);
       $$0.c(this.h);
       $$0.c(this.i);
       $$0.k(this.j);
@@ -64,7 +64,7 @@ public class afu implements zb<abn> {
       return this.f;
    }
 
-   public jj<brm> e() {
+   public jj<brn> e() {
       return this.g;
    }
 

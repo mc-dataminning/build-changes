@@ -1,49 +1,32 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Maps;
-import com.mojang.logging.LogUtils;
-import java.util.Map;
-import javax.annotation.Nullable;
 import net.minecraft.server.MinecraftServer;
-import org.slf4j.Logger;
 
-public class evr<C> {
-   private static final Logger b = LogUtils.getLogger();
-   public static final evr<MinecraftServer> a = new evr<MinecraftServer>().a(new evo.a()).a(new evp.a());
-   private final Map<akk, evq.a<C, ?>> c = Maps.newHashMap();
-   private final Map<Class<?>, evq.a<C, ?>> d = Maps.newHashMap();
+public class evr implements evs<MinecraftServer> {
+   final akk a;
 
-   public evr<C> a(evq.a<C, ?> $$0) {
-      this.c.put($$0.a(), $$0);
-      this.d.put($$0.b(), $$0);
-      return this;
+   public evr(akk $$0) {
+      this.a = $$0;
    }
 
-   private <T extends evq<C>> evq.a<C, T> a(Class<?> $$0) {
-      return (evq.a<C, T>)this.d.get($$0);
+   public void a(MinecraftServer $$0, evu<MinecraftServer> $$1, long $$2) {
+      akz $$3 = $$0.aG();
+
+      for (ic<eq> $$5 : $$3.b(this.a)) {
+         $$3.a($$5, $$3.c());
+      }
    }
 
-   public <T extends evq<C>> tx a(T $$0) {
-      evq.a<C, T> $$1 = this.a($$0.getClass());
-      tx $$2 = new tx();
-      $$1.a($$2, $$0);
-      $$2.a("Type", $$1.a().toString());
-      return $$2;
-   }
+   public static class a extends evs.a<MinecraftServer, evr> {
+      public a() {
+         super(new akk("function_tag"), evr.class);
+      }
 
-   @Nullable
-   public evq<C> a(tx $$0) {
-      akk $$1 = akk.a($$0.l("Type"));
-      evq.a<C, ?> $$2 = this.c.get($$1);
-      if ($$2 == null) {
-         b.error("Failed to deserialize timer callback: {}", $$0);
-         return null;
-      } else {
-         try {
-            return $$2.b($$0);
-         } catch (Exception var5) {
-            b.error("Failed to deserialize timer callback: {}", $$0, var5);
-            return null;
-         }
+      public void a(tx $$0, evr $$1) {
+         $$0.a("Name", $$1.a.toString());
+      }
+
+      public evr a(tx $$0) {
+         akk $$1 = new akk($$0.l("Name"));
+         return new evr($$1);
       }
    }
 }

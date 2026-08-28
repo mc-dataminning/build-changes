@@ -1,66 +1,60 @@
 import com.mojang.serialization.Codec;
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import java.util.Comparator;
-import java.util.Set;
-import java.util.function.BiConsumer;
+import com.mojang.serialization.MapCodec;
 
-public abstract class egg {
-   public static final Codec<egg> h = lq.X.r().dispatch(egg::a, egh::a);
+public class egg extends egh {
+   public static final MapCodec<egg> a = Codec.floatRange(0.0F, 1.0F).fieldOf("probability").xmap(egg::new, $$0 -> $$0.b);
+   private final float b;
 
-   protected abstract egh<?> a();
+   @Override
+   protected egi<?> a() {
+      return egi.b;
+   }
 
-   public abstract void a(egg.a var1);
+   public egg(float $$0) {
+      this.b = $$0;
+   }
 
-   public static final class a {
-      private final dcl a;
-      private final BiConsumer<ja, dsk> b;
-      private final ayo c;
-      private final ObjectArrayList<ja> d;
-      private final ObjectArrayList<ja> e;
-      private final ObjectArrayList<ja> f;
+   @Override
+   public void a(egh.a $$0) {
+      ayo $$1 = $$0.b();
+      $$0.d().forEach($$2 -> {
+         if ($$1.i() < this.b) {
+            ja $$3 = $$2.g();
+            if ($$0.a($$3)) {
+               a($$3, doe.d, $$0);
+            }
+         }
 
-      public a(dcl $$0, BiConsumer<ja, dsk> $$1, ayo $$2, Set<ja> $$3, Set<ja> $$4, Set<ja> $$5) {
-         this.a = $$0;
-         this.b = $$1;
-         this.c = $$2;
-         this.f = new ObjectArrayList($$5);
-         this.d = new ObjectArrayList($$3);
-         this.e = new ObjectArrayList($$4);
-         this.d.sort(Comparator.comparingInt(ke::v));
-         this.e.sort(Comparator.comparingInt(ke::v));
-         this.f.sort(Comparator.comparingInt(ke::v));
-      }
+         if ($$1.i() < this.b) {
+            ja $$4 = $$2.h();
+            if ($$0.a($$4)) {
+               a($$4, doe.f, $$0);
+            }
+         }
 
-      public void a(ja $$0, dtb $$1) {
-         this.a($$0, dfj.ff.o().a($$1, Boolean.valueOf(true)));
-      }
+         if ($$1.i() < this.b) {
+            ja $$5 = $$2.e();
+            if ($$0.a($$5)) {
+               a($$5, doe.e, $$0);
+            }
+         }
 
-      public void a(ja $$0, dsk $$1) {
-         this.b.accept($$0, $$1);
-      }
+         if ($$1.i() < this.b) {
+            ja $$6 = $$2.f();
+            if ($$0.a($$6)) {
+               a($$6, doe.c, $$0);
+            }
+         }
+      });
+   }
 
-      public boolean a(ja $$0) {
-         return this.a.a($$0, dsj.a::i);
-      }
+   private static void a(ja $$0, dtc $$1, egh.a $$2) {
+      $$2.a($$0, $$1);
+      int $$3 = 4;
 
-      public dcl a() {
-         return this.a;
-      }
-
-      public ayo b() {
-         return this.c;
-      }
-
-      public ObjectArrayList<ja> c() {
-         return this.d;
-      }
-
-      public ObjectArrayList<ja> d() {
-         return this.e;
-      }
-
-      public ObjectArrayList<ja> e() {
-         return this.f;
+      for (ja var4 = $$0.d(); $$2.a(var4) && $$3 > 0; $$3--) {
+         $$2.a(var4, $$1);
+         var4 = var4.d();
       }
    }
 }

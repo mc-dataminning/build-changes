@@ -1,3 +1,7 @@
+import java.util.List;
+
 public interface fsy {
-   void a(fsv var1);
+   List<fsz> a();
+
+   wu b();
 }

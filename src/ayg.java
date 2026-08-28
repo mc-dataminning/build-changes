@@ -300,7 +300,7 @@ public class ayg {
       return ($$0 - $$1) / ($$2 - $$1);
    }
 
-   public static boolean a(ewf $$0, ewf $$1, ewa $$2) {
+   public static boolean a(ewh $$0, ewh $$1, ewc $$2) {
       double $$3 = ($$2.a + $$2.d) * 0.5;
       double $$4 = ($$2.d - $$2.a) * 0.5;
       double $$5 = $$0.c - $$3;
@@ -414,50 +414,54 @@ public class ayg {
    }
 
    public static int h(float $$0, float $$1, float $$2) {
-      int $$3 = (int)($$0 * 6.0F) % 6;
-      float $$4 = $$0 * 6.0F - (float)$$3;
-      float $$5 = $$2 * (1.0F - $$1);
-      float $$6 = $$2 * (1.0F - $$4 * $$1);
-      float $$7 = $$2 * (1.0F - (1.0F - $$4) * $$1);
-      float $$8;
+      return a($$0, $$1, $$2, 0);
+   }
+
+   public static int a(float $$0, float $$1, float $$2, int $$3) {
+      int $$4 = (int)($$0 * 6.0F) % 6;
+      float $$5 = $$0 * 6.0F - (float)$$4;
+      float $$6 = $$2 * (1.0F - $$1);
+      float $$7 = $$2 * (1.0F - $$5 * $$1);
+      float $$8 = $$2 * (1.0F - (1.0F - $$5) * $$1);
       float $$9;
       float $$10;
-      switch ($$3) {
+      float $$11;
+      switch ($$4) {
          case 0:
-            $$8 = $$2;
-            $$9 = $$7;
-            $$10 = $$5;
+            $$9 = $$2;
+            $$10 = $$8;
+            $$11 = $$6;
             break;
          case 1:
-            $$8 = $$6;
-            $$9 = $$2;
-            $$10 = $$5;
+            $$9 = $$7;
+            $$10 = $$2;
+            $$11 = $$6;
             break;
          case 2:
-            $$8 = $$5;
-            $$9 = $$2;
-            $$10 = $$7;
-            break;
-         case 3:
-            $$8 = $$5;
             $$9 = $$6;
             $$10 = $$2;
+            $$11 = $$8;
+            break;
+         case 3:
+            $$9 = $$6;
+            $$10 = $$7;
+            $$11 = $$2;
             break;
          case 4:
-            $$8 = $$7;
-            $$9 = $$5;
-            $$10 = $$2;
+            $$9 = $$8;
+            $$10 = $$6;
+            $$11 = $$2;
             break;
          case 5:
-            $$8 = $$2;
-            $$9 = $$5;
+            $$9 = $$2;
             $$10 = $$6;
+            $$11 = $$7;
             break;
          default:
             throw new RuntimeException("Something went wrong when converting from HSV to RGB. Input was " + $$0 + ", " + $$1 + ", " + $$2);
       }
 
-      return axq.b.a(0, a((int)($$8 * 255.0F), 0, 255), a((int)($$9 * 255.0F), 0, 255), a((int)($$10 * 255.0F), 0, 255));
+      return axq.b.a($$3, a((int)($$9 * 255.0F), 0, 255), a((int)($$10 * 255.0F), 0, 255), a((int)($$11 * 255.0F), 0, 255));
    }
 
    public static int g(int $$0) {

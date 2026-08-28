@@ -15,7 +15,7 @@ public class bfi extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgg.H);
+      Type<?> $$0 = this.getInputSchema().getType(bgh.H);
       return this.fixTypeEverywhereTyped("ObjectiveRenderTypeFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> {
             Optional<String> $$1 = $$0xx.get("RenderType").asString().result();
             if ($$1.isEmpty()) {

@@ -17,8 +17,8 @@ public abstract class bcv extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bgg.B);
-      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bgg.B);
+      TaggedChoiceType<String> $$0 = this.getInputSchema().findChoiceType(bgh.B);
+      TaggedChoiceType<String> $$1 = this.getOutputSchema().findChoiceType(bgh.B);
       return this.fixTypeEverywhere(
          this.a,
          $$0,

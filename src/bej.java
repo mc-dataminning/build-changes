@@ -22,12 +22,12 @@ public abstract class bej extends DataFix {
    }
 
    public final TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgg.t);
+      Type<?> $$0 = this.getInputSchema().getType(bgh.t);
       return this.fixTypeEverywhereTyped(this.a, $$0, a($$0, this.b, this::a));
    }
 
    public static UnaryOperator<Typed<?>> a(Type<?> $$0, Predicate<String> $$1, UnaryOperator<Dynamic<?>> $$2) {
-      OpticFinder<Pair<String, String>> $$3 = DSL.fieldFinder("id", DSL.named(bgg.D.typeName(), bhs.a()));
+      OpticFinder<Pair<String, String>> $$3 = DSL.fieldFinder("id", DSL.named(bgh.D.typeName(), bht.a()));
       OpticFinder<?> $$4 = $$0.findField("tag");
       return $$4x -> {
          Optional<Pair<String, String>> $$5 = $$4x.getOptional($$3);

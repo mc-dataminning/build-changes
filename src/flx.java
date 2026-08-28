@@ -1,24 +1,29 @@
-public record flx(int a, int b) {
-   public static flx a(flv $$0, int $$1, int $$2) {
-      return switch ($$0) {
-         case a -> new flx($$1, $$2);
-         case b -> new flx($$2, $$1);
+public enum flx {
+   a,
+   b;
+
+   public flx a() {
+      return switch (this) {
+         case a -> b;
+         case b -> a;
       };
    }
 
-   public flx a(flw $$0) {
-      return switch ($$0) {
-         case b -> new flx(this.a, this.b + 1);
-         case a -> new flx(this.a, this.b - 1);
-         case c -> new flx(this.a - 1, this.b);
-         case d -> new flx(this.a + 1, this.b);
+   public fly b() {
+      return switch (this) {
+         case a -> fly.d;
+         case b -> fly.b;
       };
    }
 
-   public int a(flv $$0) {
-      return switch ($$0) {
-         case a -> this.a;
-         case b -> this.b;
+   public fly c() {
+      return switch (this) {
+         case a -> fly.c;
+         case b -> fly.a;
       };
+   }
+
+   public fly a(boolean $$0) {
+      return $$0 ? this.b() : this.c();
    }
 }

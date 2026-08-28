@@ -1,18 +1,22 @@
 import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import javax.annotation.Nullable;
 
-public class end implements ene {
-   public static final end a = new end();
-   public static final MapCodec<end> b = MapCodec.unit(a);
+public class end implements eng {
+   public static final MapCodec<end> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(tx.a.fieldOf("data").forGetter($$0x -> $$0x.b)).apply($$0, end::new));
+   private final tx b;
 
-   @Nullable
-   @Override
-   public tx a(ayo $$0, @Nullable tx $$1) {
-      return $$1;
+   public end(tx $$0) {
+      this.b = $$0;
    }
 
    @Override
-   public enf<?> a() {
-      return enf.b;
+   public tx a(ayo $$0, @Nullable tx $$1) {
+      return $$1 == null ? this.b.i() : $$1.a(this.b);
+   }
+
+   @Override
+   public enh<?> a() {
+      return enh.c;
    }
 }

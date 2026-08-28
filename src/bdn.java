@@ -13,8 +13,8 @@ public class bdn extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bgg.q.typeName(), DSL.remainderType());
-      if (!Objects.equals($$0, this.getInputSchema().getType(bgg.q))) {
+      Type<Pair<String, Dynamic<?>>> $$0 = DSL.named(bgh.q.typeName(), DSL.remainderType());
+      if (!Objects.equals($$0, this.getInputSchema().getType(bgh.q))) {
          throw new IllegalStateException("Poi type is not what was expected.");
       } else {
          return this.fixTypeEverywhere("POI rebuild", $$0, $$0x -> $$0xx -> $$0xx.mapSecond(bdn::a));

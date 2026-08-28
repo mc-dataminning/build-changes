@@ -1,47 +1,42 @@
-public class cav extends bzz {
-   private final cgv a;
-   private int b;
+import java.util.EnumSet;
 
-   public cav(cgv $$0) {
+public class cav extends caa {
+   private final bte a;
+   private double b;
+   private double c;
+   private int d;
+
+   public cav(bte $$0) {
       this.a = $$0;
-      this.a($$0);
-   }
-
-   @Override
-   public void c() {
-      this.a.gS();
-      this.h();
-   }
-
-   private void h() {
-      avg $$0 = this.a.gR();
-      if ($$0 != null) {
-         this.a.a($$0);
-      }
-   }
-
-   @Override
-   public boolean b() {
-      return false;
+      this.a(EnumSet.of(caa.a.a, caa.a.b));
    }
 
    @Override
    public boolean a() {
-      this.b++;
-      if (this.b > 0 && this.a.dT().a(1000) < this.b) {
-         this.a(this.a);
-         return !this.a.fd() && this.a.dT().a(10) == 0;
-      } else {
-         return false;
-      }
+      return this.a.dU().i() < 0.02F;
    }
 
-   private void a(cgv $$0) {
-      this.b = -$$0.gW();
+   @Override
+   public boolean b() {
+      return this.d >= 0;
+   }
+
+   @Override
+   public void c() {
+      double $$0 = (Math.PI * 2) * this.a.dU().j();
+      this.b = Math.cos($$0);
+      this.c = Math.sin($$0);
+      this.d = 20 + this.a.dU().a(20);
    }
 
    @Override
    public boolean R_() {
       return true;
+   }
+
+   @Override
+   public void e() {
+      this.d--;
+      this.a.F().a(this.a.dw() + this.b, this.a.dA(), this.a.dC() + this.c);
    }
 }

@@ -1,13 +1,29 @@
-public interface boi {
-   void a();
+public class boi implements boj {
+   public static final boj a = new boi();
 
-   void b();
+   @Override
+   public void a() {
+   }
 
-   void c();
+   @Override
+   public void b() {
+   }
 
-   boolean e();
+   @Override
+   public void c() {
+   }
 
-   bmu f();
+   @Override
+   public boolean e() {
+      return false;
+   }
 
-   void d();
+   @Override
+   public bmv f() {
+      return bms.a;
+   }
+
+   @Override
+   public void d() {
+   }
 }

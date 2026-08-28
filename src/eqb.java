@@ -1,184 +1,84 @@
-import java.util.UUID;
-import net.minecraft.server.MinecraftServer;
+import com.google.common.collect.Maps;
+import java.util.Map;
+import java.util.stream.Stream;
 
-public class eqb implements eqn {
-   private final eqo a;
-   private final eqn b;
+public class eqb {
+   private static final String a = "command_storage_";
+   private final Map<String, eqb.a> b = Maps.newHashMap();
+   private final eqe c;
 
-   public eqb(eqo $$0, eqn $$1) {
-      this.a = $$0;
-      this.b = $$1;
+   public eqb(eqe $$0) {
+      this.c = $$0;
    }
 
-   @Override
-   public ja a() {
-      return this.b.a();
+   private eqb.a a(String $$0) {
+      eqb.a $$1 = new eqb.a();
+      this.b.put($$0, $$1);
+      return $$1;
    }
 
-   @Override
-   public float b() {
-      return this.b.b();
+   private epq.a<eqb.a> b(String $$0) {
+      return new epq.a<>(() -> this.a($$0), ($$1, $$2) -> this.a($$0).a($$1), azo.h);
    }
 
-   @Override
-   public long c() {
-      return this.b.c();
+   public tx a(akk $$0) {
+      String $$1 = $$0.b();
+      eqb.a $$2 = this.c.b(this.b($$1), c($$1));
+      return $$2 != null ? $$2.a($$0.a()) : new tx();
    }
 
-   @Override
-   public long d() {
-      return this.b.d();
+   public void a(akk $$0, tx $$1) {
+      String $$2 = $$0.b();
+      this.c.a(this.b($$2), c($$2)).a($$0.a(), $$1);
    }
 
-   @Override
-   public String e() {
-      return this.a.e();
+   public Stream<akk> a() {
+      return this.b.entrySet().stream().flatMap($$0 -> $$0.getValue().b($$0.getKey()));
    }
 
-   @Override
-   public int f() {
-      return this.b.f();
+   private static String c(String $$0) {
+      return "command_storage_" + $$0;
    }
 
-   @Override
-   public void a(int $$0) {
-   }
+   static class a extends epq {
+      private static final String a = "contents";
+      private final Map<String, tx> b = Maps.newHashMap();
 
-   @Override
-   public boolean g() {
-      return this.b.g();
-   }
+      eqb.a a(tx $$0) {
+         tx $$1 = $$0.p("contents");
 
-   @Override
-   public int h() {
-      return this.b.h();
-   }
+         for (String $$2 : $$1.e()) {
+            this.b.put($$2, $$1.p($$2));
+         }
 
-   @Override
-   public boolean i() {
-      return this.b.i();
-   }
+         return this;
+      }
 
-   @Override
-   public int j() {
-      return this.b.j();
-   }
+      @Override
+      public tx a(tx $$0, jl.a $$1) {
+         tx $$2 = new tx();
+         this.b.forEach(($$1x, $$2x) -> $$2.a($$1x, $$2x.i()));
+         $$0.a("contents", $$2);
+         return $$0;
+      }
 
-   @Override
-   public dcc k() {
-      return this.a.k();
-   }
+      public tx a(String $$0) {
+         tx $$1 = this.b.get($$0);
+         return $$1 != null ? $$1 : new tx();
+      }
 
-   @Override
-   public void a(long $$0) {
-   }
+      public void a(String $$0, tx $$1) {
+         if ($$1.g()) {
+            this.b.remove($$0);
+         } else {
+            this.b.put($$0, $$1);
+         }
 
-   @Override
-   public void b(long $$0) {
-   }
+         this.c();
+      }
 
-   @Override
-   public void a(ja $$0, float $$1) {
-   }
-
-   @Override
-   public void a(boolean $$0) {
-   }
-
-   @Override
-   public void b(int $$0) {
-   }
-
-   @Override
-   public void b(boolean $$0) {
-   }
-
-   @Override
-   public void c(int $$0) {
-   }
-
-   @Override
-   public void a(dcc $$0) {
-   }
-
-   @Override
-   public boolean l() {
-      return this.a.l();
-   }
-
-   @Override
-   public boolean m() {
-      return this.a.m();
-   }
-
-   @Override
-   public boolean n() {
-      return this.b.n();
-   }
-
-   @Override
-   public void c(boolean $$0) {
-   }
-
-   @Override
-   public dcb o() {
-      return this.a.o();
-   }
-
-   @Override
-   public dub.c p() {
-      return this.b.p();
-   }
-
-   @Override
-   public void a(dub.c $$0) {
-   }
-
-   @Override
-   public bqd q() {
-      return this.a.q();
-   }
-
-   @Override
-   public boolean r() {
-      return this.a.r();
-   }
-
-   @Override
-   public evs<MinecraftServer> s() {
-      return this.b.s();
-   }
-
-   @Override
-   public int t() {
-      return 0;
-   }
-
-   @Override
-   public void d(int $$0) {
-   }
-
-   @Override
-   public int u() {
-      return 0;
-   }
-
-   @Override
-   public void e(int $$0) {
-   }
-
-   @Override
-   public UUID v() {
-      return null;
-   }
-
-   @Override
-   public void a(UUID $$0) {
-   }
-
-   @Override
-   public void a(p $$0, dch $$1) {
-      $$0.a("Derived", true);
-      this.b.a($$0, $$1);
+      public Stream<akk> b(String $$0) {
+         return this.b.keySet().stream().map($$1 -> new akk($$0, $$1));
+      }
    }
 }

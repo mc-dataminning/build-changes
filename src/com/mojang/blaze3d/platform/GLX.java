@@ -19,7 +19,7 @@ import org.slf4j.Logger;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
 
-@eye
+@eyg
 public class GLX {
    private static final Logger LOGGER = LogUtils.getLogger();
    private static String cpuInfo;
@@ -31,7 +31,7 @@ public class GLX {
          : GlStateManager._getString(7937) + " GL version " + GlStateManager._getString(7938) + ", " + GlStateManager._getString(7936);
    }
 
-   public static int _getRefreshRate(ezq $$0) {
+   public static int _getRefreshRate(ezs $$0) {
       RenderSystem.assertOnRenderThread();
       long $$1 = GLFW.glfwGetWindowMonitor($$0.i());
       if ($$1 == 0L) {
@@ -43,13 +43,11 @@ public class GLX {
    }
 
    public static String _getLWJGLVersion() {
-      RenderSystem.assertInInitPhase();
       return Version.getVersion();
    }
 
    public static LongSupplier _initGlfw() {
-      RenderSystem.assertInInitPhase();
-      ezq.a(($$0x, $$1x) -> {
+      ezs.a(($$0x, $$1x) -> {
          throw new IllegalStateException(String.format(Locale.ROOT, "GLFW error before init: [0x%X]%s", $$0x, $$1x));
       });
       List<String> $$0 = Lists.newArrayList();
@@ -72,27 +70,24 @@ public class GLX {
    }
 
    public static void _setGlfwErrorCallback(GLFWErrorCallbackI $$0) {
-      RenderSystem.assertInInitPhase();
       GLFWErrorCallback $$1 = GLFW.glfwSetErrorCallback($$0);
       if ($$1 != null) {
          $$1.free();
       }
    }
 
-   public static boolean _shouldClose(ezq $$0) {
+   public static boolean _shouldClose(ezs $$0) {
       return GLFW.glfwWindowShouldClose($$0.i());
    }
 
    public static void _init(int $$0, boolean $$1) {
-      RenderSystem.assertInInitPhase();
-
       try {
          CentralProcessor $$2 = new SystemInfo().getHardware().getProcessor();
          cpuInfo = String.format(Locale.ROOT, "%dx %s", $$2.getLogicalProcessorCount(), $$2.getProcessorIdentifier().getName()).replaceAll("\\s+", " ");
       } catch (Throwable var3) {
       }
 
-      eze.a($$0, $$1);
+      ezg.a($$0, $$1);
    }
 
    public static String _getCpuInfo() {
@@ -103,11 +98,11 @@ public class GLX {
       RenderSystem.assertOnRenderThread();
       GlStateManager._depthMask(false);
       GlStateManager._disableCull();
-      RenderSystem.setShader(gdw::ao);
-      fao $$4 = RenderSystem.renderThreadTesselator();
-      fah $$5 = $$4.d();
+      RenderSystem.setShader(gdy::ao);
+      faq $$4 = RenderSystem.renderThreadTesselator();
+      faj $$5 = $$4.d();
       RenderSystem.lineWidth(4.0F);
-      $$5.a(far.b.a, fak.o);
+      $$5.a(fat.b.a, fam.o);
       if ($$1) {
          $$5.a(0.0, 0.0, 0.0).a(0, 0, 0, 255).a(1.0F, 0.0F, 0.0F).e();
          $$5.a((double)$$0, 0.0, 0.0).a(0, 0, 0, 255).a(1.0F, 0.0F, 0.0F).e();
@@ -125,7 +120,7 @@ public class GLX {
 
       $$4.c();
       RenderSystem.lineWidth(2.0F);
-      $$5.a(far.b.a, fak.o);
+      $$5.a(fat.b.a, fam.o);
       if ($$1) {
          $$5.a(0.0, 0.0, 0.0).a(255, 0, 0, 255).a(1.0F, 0.0F, 0.0F).e();
          $$5.a((double)$$0, 0.0, 0.0).a(255, 0, 0, 255).a(1.0F, 0.0F, 0.0F).e();

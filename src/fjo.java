@@ -1,58 +1,36 @@
 import javax.annotation.Nullable;
 
-public interface fjo extends fjc {
-   long t = 250L;
+public abstract class fjo implements fjp {
+   @Nullable
+   private fjq a;
+   private boolean b;
 
-   default void f(double $$0, double $$1) {
+   @Override
+   public final boolean aI_() {
+      return this.b;
    }
 
-   default boolean a(double $$0, double $$1, int $$2) {
-      return false;
-   }
-
-   default boolean b(double $$0, double $$1, int $$2) {
-      return false;
-   }
-
-   default boolean a(double $$0, double $$1, int $$2, double $$3, double $$4) {
-      return false;
-   }
-
-   default boolean a(double $$0, double $$1, double $$2, double $$3) {
-      return false;
-   }
-
-   default boolean a(int $$0, int $$1, int $$2) {
-      return false;
-   }
-
-   default boolean c(int $$0, int $$1, int $$2) {
-      return false;
-   }
-
-   default boolean a(char $$0, int $$1) {
-      return false;
+   @Override
+   public final void b_(boolean $$0) {
+      this.b = $$0;
    }
 
    @Nullable
-   default fhc a(flu $$0) {
-      return null;
+   @Override
+   public fjq aJ_() {
+      return this.a;
    }
 
-   default boolean c(double $$0, double $$1) {
-      return false;
-   }
+   @Override
+   public void a(@Nullable fjq $$0) {
+      if (this.a != null) {
+         this.a.a(false);
+      }
 
-   void a(boolean var1);
+      if ($$0 != null) {
+         $$0.a(true);
+      }
 
-   boolean aK_();
-
-   @Nullable
-   default fhc aL_() {
-      return this.aK_() ? fhc.a(this) : null;
-   }
-
-   default fly H() {
-      return fly.a();
+      this.a = $$0;
    }
 }

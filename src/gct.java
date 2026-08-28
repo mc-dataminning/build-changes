@@ -1,42 +1,45 @@
-public class gct extends gbp {
-   private final bsg a;
-   private int b;
-   private final int D;
-   private final lh E;
+public abstract class gct extends gcg {
+   protected gpq E;
 
-   public gct(fyj $$0, bsg $$1, lh $$2) {
-      this($$0, $$1, $$2, 3);
+   protected gct(fyl $$0, double $$1, double $$2, double $$3) {
+      super($$0, $$1, $$2, $$3);
    }
 
-   public gct(fyj $$0, bsg $$1, lh $$2, int $$3) {
-      this($$0, $$1, $$2, $$3, $$1.dt());
+   protected gct(fyl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6) {
+      super($$0, $$1, $$2, $$3, $$4, $$5, $$6);
    }
 
-   private gct(fyj $$0, bsg $$1, lh $$2, int $$3, ewf $$4) {
-      super($$0, $$1.dv(), $$1.e(0.5), $$1.dB(), $$4.c, $$4.d, $$4.e);
-      this.a = $$1;
-      this.D = $$3;
-      this.E = $$2;
-      this.a();
+   protected void a(gpq $$0) {
+      this.E = $$0;
    }
 
    @Override
-   public void a() {
-      for (int $$0 = 0; $$0 < 16; $$0++) {
-         double $$1 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$2 = (double)(this.r.i() * 2.0F - 1.0F);
-         double $$3 = (double)(this.r.i() * 2.0F - 1.0F);
-         if (!($$1 * $$1 + $$2 * $$2 + $$3 * $$3 > 1.0)) {
-            double $$4 = this.a.c($$1 / 4.0);
-            double $$5 = this.a.e(0.5 + $$2 / 4.0);
-            double $$6 = this.a.f($$3 / 4.0);
-            this.c.a(this.E, false, $$4, $$5, $$6, $$1, $$2 + 0.2, $$3);
-         }
-      }
+   protected float c() {
+      return this.E.c();
+   }
 
-      this.b++;
-      if (this.b >= this.D) {
-         this.k();
+   @Override
+   protected float d() {
+      return this.E.d();
+   }
+
+   @Override
+   protected float e() {
+      return this.E.g();
+   }
+
+   @Override
+   protected float f() {
+      return this.E.h();
+   }
+
+   public void a(gco $$0) {
+      this.a($$0.a(this.r));
+   }
+
+   public void b(gco $$0) {
+      if (!this.o) {
+         this.a($$0.a(this.s, this.t));
       }
    }
 }

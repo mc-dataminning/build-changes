@@ -62,8 +62,8 @@ public interface jl<T> extends jk<T> {
 
       Lifecycle g();
 
-      default jl.b<T> a(coy $$0) {
-         return cov.bA.contains(this.f()) ? this.a($$1 -> ((cov)$$1).a($$0)) : this;
+      default jl.b<T> a(coz $$0) {
+         return cow.bA.contains(this.f()) ? this.a($$1 -> ((cow)$$1).a($$0)) : this;
       }
 
       default jl.b<T> a(final Predicate<T> $$0) {

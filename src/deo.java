@@ -1,67 +1,89 @@
 import com.mojang.serialization.MapCodec;
 import javax.annotation.Nullable;
 
-public class deo extends dfh implements dmi {
+public class deo extends deu {
    public static final MapCodec<deo> a = b(deo::new);
-   public static final dtb b = dta.C;
+   public static final dtf b = dtb.P;
+   public static final dtc c = dtb.u;
 
    @Override
    public MapCodec<deo> a() {
       return a;
    }
 
-   protected deo(dsj.d $$0) {
+   public deo(dsk.d $$0) {
       super($$0);
-      this.k(this.o().a(b, Boolean.valueOf(false)));
+      this.k(this.E.b().a(b, jf.c).a(c, Boolean.valueOf(false)));
    }
 
    @Override
-   protected boolean a_(dsk $$0, dbl $$1, ja $$2) {
-      return $$0.u().c();
-   }
+   protected bqh a(dsl $$0, dcg $$1, ja $$2, cml $$3, ewd $$4) {
+      if ($$1.B) {
+         return bqh.a;
+      } else {
+         dpq $$5 = $$1.c_($$2);
+         if ($$5 instanceof dpj) {
+            $$3.a((dpj)$$5);
+            $$3.a(avr.ar);
+            clc.a($$3, true);
+         }
 
-   @Override
-   protected dln a_(dsk $$0) {
-      return dln.a;
-   }
-
-   @Override
-   protected float d(dsk $$0, dbl $$1, ja $$2) {
-      return 1.0F;
-   }
-
-   @Override
-   protected dsk a(dsk $$0, jf $$1, dsk $$2, dcg $$3, ja $$4, ja $$5) {
-      if ($$0.c(b)) {
-         $$3.a($$4, eoi.c, eoi.c.a($$3));
+         return bqh.c;
       }
-
-      return super.a($$0, $$1, $$2, $$3, $$4, $$5);
    }
 
    @Override
-   protected eoh b_(dsk $$0) {
-      return $$0.c(b) ? eoi.c.a(false) : super.b_($$0);
+   protected void a(dsl $$0, dcg $$1, ja $$2, dsl $$3, boolean $$4) {
+      bqd.a($$0, $$3, $$1, $$2);
+      super.a($$0, $$1, $$2, $$3, $$4);
+   }
+
+   @Override
+   protected void a(dsl $$0, aqm $$1, ja $$2, ayo $$3) {
+      dpq $$4 = $$1.c_($$2);
+      if ($$4 instanceof dpj) {
+         ((dpj)$$4).l();
+      }
    }
 
    @Nullable
    @Override
-   public dsk a(cxm $$0) {
-      return this.o().a(b, Boolean.valueOf($$0.q().b_($$0.a()).a() == eoi.c));
+   public dpq a(ja $$0, dsl $$1) {
+      return new dpj($$0, $$1);
    }
 
    @Override
-   protected void a(dsl.a<dfh, dsk> $$0) {
-      $$0.a(b);
+   protected dlo a_(dsl $$0) {
+      return dlo.c;
    }
 
    @Override
-   public cuc a(@Nullable cmk $$0, dcg $$1, ja $$2, dsk $$3) {
-      return $$0 != null && $$0.f() ? dmi.super.a($$0, $$1, $$2, $$3) : cuc.l;
+   protected boolean c_(dsl $$0) {
+      return true;
    }
 
    @Override
-   public boolean a(@Nullable cmk $$0, dbl $$1, ja $$2, dsk $$3, eog $$4) {
-      return $$0 != null && $$0.f() ? dmi.super.a($$0, $$1, $$2, $$3, $$4) : false;
+   protected int a(dsl $$0, dcg $$1, ja $$2) {
+      return cpi.a($$1.c_($$2));
+   }
+
+   @Override
+   protected dsl a(dsl $$0, dlv $$1) {
+      return $$0.a(b, $$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected dsl a(dsl $$0, dkf $$1) {
+      return $$0.a($$1.a($$0.c(b)));
+   }
+
+   @Override
+   protected void a(dsm.a<dfi, dsl> $$0) {
+      $$0.a(b, c);
+   }
+
+   @Override
+   public dsl a(cxn $$0) {
+      return this.o().a(b, $$0.d().g());
    }
 }

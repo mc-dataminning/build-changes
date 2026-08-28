@@ -10,7 +10,7 @@ public class baz extends DataFix {
 
    public TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
-         "BlockStateStructureTemplateFix", this.getInputSchema().getType(bgg.u), $$0 -> $$0.update(DSL.remainderFinder(), bay::a)
+         "BlockStateStructureTemplateFix", this.getInputSchema().getType(bgh.u), $$0 -> $$0.update(DSL.remainderFinder(), bay::a)
       );
    }
 }

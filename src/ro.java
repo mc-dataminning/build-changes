@@ -1,55 +1,55 @@
 import java.util.List;
 
 public class ro {
-   public static final akj<eax<?, ?>> a = rn.a("ice_spike");
-   public static final akj<eax<?, ?>> b = rn.a("ice_patch");
-   public static final akj<eax<?, ?>> c = rn.a("forest_rock");
-   public static final akj<eax<?, ?>> d = rn.a("iceberg_packed");
-   public static final akj<eax<?, ?>> e = rn.a("iceberg_blue");
-   public static final akj<eax<?, ?>> f = rn.a("blue_ice");
-   public static final akj<eax<?, ?>> g = rn.a("lake_lava");
-   public static final akj<eax<?, ?>> h = rn.a("disk_clay");
-   public static final akj<eax<?, ?>> i = rn.a("disk_gravel");
-   public static final akj<eax<?, ?>> j = rn.a("disk_sand");
-   public static final akj<eax<?, ?>> k = rn.a("freeze_top_layer");
-   public static final akj<eax<?, ?>> l = rn.a("disk_grass");
-   public static final akj<eax<?, ?>> m = rn.a("bonus_chest");
-   public static final akj<eax<?, ?>> n = rn.a("void_start_platform");
-   public static final akj<eax<?, ?>> o = rn.a("desert_well");
-   public static final akj<eax<?, ?>> p = rn.a("spring_lava_overworld");
-   public static final akj<eax<?, ?>> q = rn.a("spring_lava_frozen");
-   public static final akj<eax<?, ?>> r = rn.a("spring_water");
+   public static final akj<eay<?, ?>> a = rn.a("ice_spike");
+   public static final akj<eay<?, ?>> b = rn.a("ice_patch");
+   public static final akj<eay<?, ?>> c = rn.a("forest_rock");
+   public static final akj<eay<?, ?>> d = rn.a("iceberg_packed");
+   public static final akj<eay<?, ?>> e = rn.a("iceberg_blue");
+   public static final akj<eay<?, ?>> f = rn.a("blue_ice");
+   public static final akj<eay<?, ?>> g = rn.a("lake_lava");
+   public static final akj<eay<?, ?>> h = rn.a("disk_clay");
+   public static final akj<eay<?, ?>> i = rn.a("disk_gravel");
+   public static final akj<eay<?, ?>> j = rn.a("disk_sand");
+   public static final akj<eay<?, ?>> k = rn.a("freeze_top_layer");
+   public static final akj<eay<?, ?>> l = rn.a("disk_grass");
+   public static final akj<eay<?, ?>> m = rn.a("bonus_chest");
+   public static final akj<eay<?, ?>> n = rn.a("void_start_platform");
+   public static final akj<eay<?, ?>> o = rn.a("desert_well");
+   public static final akj<eay<?, ?>> p = rn.a("spring_lava_overworld");
+   public static final akj<eay<?, ?>> q = rn.a("spring_lava_frozen");
+   public static final akj<eay<?, ?>> r = rn.a("spring_water");
 
-   public static void a(qm<eax<?, ?>> $$0) {
-      rn.a($$0, a, ebk.s);
-      rn.a($$0, b, ebk.G, new edl(efx.a(dfj.iC), dzm.c(List.of(dfj.j, dfj.i, dfj.l, dfj.k, dfj.fl, dfj.dP, dfj.dO)), bpr.a(2, 3), 1));
-      rn.a($$0, c, ebk.F, new edh(dfj.cn.o()));
-      rn.a($$0, d, ebk.E, new edh(dfj.iC.o()));
-      rn.a($$0, e, ebk.E, new edh(dfj.mW.o()));
-      rn.a($$0, f, ebk.D);
-      rn.a($$0, g, ebk.H, new ebz.a(efp.a(dfj.H.o()), efp.a(dfj.b.o())));
-      rn.a($$0, h, ebk.G, new edl(efx.a(dfj.dR), dzm.c(List.of(dfj.j, dfj.dR)), bpr.a(2, 3), 1));
-      rn.a($$0, i, ebk.G, new edl(efx.a(dfj.L), dzm.c(List.of(dfj.j, dfj.i)), bpr.a(2, 5), 2));
+   public static void a(qm<eay<?, ?>> $$0) {
+      rn.a($$0, a, ebl.s);
+      rn.a($$0, b, ebl.G, new edm(efy.a(dfk.iC), dzn.c(List.of(dfk.j, dfk.i, dfk.l, dfk.k, dfk.fl, dfk.dP, dfk.dO)), bps.a(2, 3), 1));
+      rn.a($$0, c, ebl.F, new edi(dfk.cn.o()));
+      rn.a($$0, d, ebl.E, new edi(dfk.iC.o()));
+      rn.a($$0, e, ebl.E, new edi(dfk.mW.o()));
+      rn.a($$0, f, ebl.D);
+      rn.a($$0, g, ebl.H, new eca.a(efq.a(dfk.H.o()), efq.a(dfk.b.o())));
+      rn.a($$0, h, ebl.G, new edm(efy.a(dfk.dR), dzn.c(List.of(dfk.j, dfk.dR)), bps.a(2, 3), 1));
+      rn.a($$0, i, ebl.G, new edm(efy.a(dfk.L), dzn.c(List.of(dfk.j, dfk.i)), bps.a(2, 5), 2));
       rn.a(
-         $$0, j, ebk.G, new edl(new efx(efp.a(dfj.I), List.of(new efx.a(dzm.a(jf.a.q(), dfj.a), efp.a(dfj.aV)))), dzm.c(List.of(dfj.j, dfj.i)), bpr.a(2, 6), 2)
+         $$0, j, ebl.G, new edm(new efy(efq.a(dfk.I), List.of(new efy.a(dzn.a(jf.a.q(), dfk.a), efq.a(dfk.aV)))), dzn.c(List.of(dfk.j, dfk.i)), bps.a(2, 6), 2)
       );
-      rn.a($$0, k, ebk.u);
+      rn.a($$0, k, ebl.u);
       rn.a(
          $$0,
          l,
-         ebk.G,
-         new edl(
-            new efx(efp.a(dfj.j), List.of(new efx.a(dzm.a(dzm.b(dzm.b(jf.b.q()), dzm.a(jf.b.q(), eoi.c))), efp.a(dfj.i)))),
-            dzm.c(List.of(dfj.j, dfj.sI)),
-            bpr.a(2, 6),
+         ebl.G,
+         new edm(
+            new efy(efq.a(dfk.j), List.of(new efy.a(dzn.a(dzn.b(dzn.b(jf.b.q()), dzn.a(jf.b.q(), eok.c))), efq.a(dfk.i)))),
+            dzn.c(List.of(dfk.j, dfk.sI)),
+            bps.a(2, 6),
             2
          )
       );
-      rn.a($$0, m, ebk.ac);
-      rn.a($$0, n, ebk.n);
-      rn.a($$0, o, ebk.o);
-      rn.a($$0, p, ebk.k, new eej(eoi.e.g(), true, 4, 1, jn.a(dfh::s, dfj.b, dfj.c, dfj.e, dfj.g, dfj.sJ, dfj.qz, dfj.qN, dfj.j)));
-      rn.a($$0, q, ebk.k, new eej(eoi.e.g(), true, 4, 1, jn.a(dfh::s, dfj.dP, dfj.qP, dfj.iC)));
-      rn.a($$0, r, ebk.k, new eej(eoi.c.g(), true, 4, 1, jn.a(dfh::s, dfj.b, dfj.c, dfj.e, dfj.g, dfj.sJ, dfj.qz, dfj.qN, dfj.j, dfj.dP, dfj.qP, dfj.iC)));
+      rn.a($$0, m, ebl.ac);
+      rn.a($$0, n, ebl.n);
+      rn.a($$0, o, ebl.o);
+      rn.a($$0, p, ebl.k, new eek(eok.e.g(), true, 4, 1, jn.a(dfi::s, dfk.b, dfk.c, dfk.e, dfk.g, dfk.sJ, dfk.qz, dfk.qN, dfk.j)));
+      rn.a($$0, q, ebl.k, new eek(eok.e.g(), true, 4, 1, jn.a(dfi::s, dfk.dP, dfk.qP, dfk.iC)));
+      rn.a($$0, r, ebl.k, new eek(eok.c.g(), true, 4, 1, jn.a(dfi::s, dfk.b, dfk.c, dfk.e, dfk.g, dfk.sJ, dfk.qz, dfk.qN, dfk.j, dfk.dP, dfk.qP, dfk.iC)));
    }
 }

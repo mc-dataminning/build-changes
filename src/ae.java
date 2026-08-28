@@ -128,12 +128,12 @@ public record ae(Optional<akk> c, Optional<ar> d, aj e, Map<String, an<?>> f, ai
          return this;
       }
 
-      public ae.a a(cuc $$0, wu $$1, wu $$2, @Nullable akk $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
+      public ae.a a(cud $$0, wu $$1, wu $$2, @Nullable akk $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
          return this.a(new ar($$0, $$1, $$2, Optional.ofNullable($$3), $$4, $$5, $$6, $$7));
       }
 
-      public ae.a a(dce $$0, wu $$1, wu $$2, @Nullable akk $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
-         return this.a(new ar(new cuc($$0.r()), $$1, $$2, Optional.ofNullable($$3), $$4, $$5, $$6, $$7));
+      public ae.a a(dcf $$0, wu $$1, wu $$2, @Nullable akk $$3, al $$4, boolean $$5, boolean $$6, boolean $$7) {
+         return this.a(new ar(new cud($$0.r()), $$1, $$2, Optional.ofNullable($$3), $$4, $$5, $$6, $$7));
       }
 
       public ae.a a(ar $$0) {

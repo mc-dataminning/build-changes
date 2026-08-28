@@ -1,68 +1,30 @@
+import java.util.Collections;
+import java.util.List;
 import javax.annotation.Nullable;
 
-public class cqy implements bpz, cqx {
-   private final js<cuc> b = js.a(1, cuc.l);
+public interface cqy {
+   void a(@Nullable cyl<?> var1);
+
    @Nullable
-   private cyk<?> c;
+   cyl<?> d();
 
-   @Override
-   public int b() {
-      return 1;
-   }
-
-   @Override
-   public boolean c() {
-      for (cuc $$0 : this.b) {
-         if (!$$0.e()) {
-            return false;
+   default void a(cml $$0, List<cud> $$1) {
+      cyl<?> $$2 = this.d();
+      if ($$2 != null) {
+         $$0.a($$2, $$1);
+         if (!$$2.b().ao_()) {
+            $$0.a(Collections.singleton($$2));
+            this.a(null);
          }
       }
-
-      return true;
    }
 
-   @Override
-   public cuc a(int $$0) {
-      return this.b.get(0);
-   }
-
-   @Override
-   public cuc a(int $$0, int $$1) {
-      return bqa.a(this.b, 0);
-   }
-
-   @Override
-   public cuc b(int $$0) {
-      return bqa.a(this.b, 0);
-   }
-
-   @Override
-   public void a(int $$0, cuc $$1) {
-      this.b.set(0, $$1);
-   }
-
-   @Override
-   public void e() {
-   }
-
-   @Override
-   public boolean a(cmk $$0) {
-      return true;
-   }
-
-   @Override
-   public void a() {
-      this.b.clear();
-   }
-
-   @Override
-   public void a(@Nullable cyk<?> $$0) {
-      this.c = $$0;
-   }
-
-   @Nullable
-   @Override
-   public cyk<?> d() {
-      return this.c;
+   default boolean a(dcg $$0, aqn $$1, cyl<?> $$2) {
+      if (!$$2.b().ao_() && $$0.ab().b(dcc.w) && !$$1.J().b($$2)) {
+         return false;
+      } else {
+         this.a($$2);
+         return true;
+      }
    }
 }

@@ -1,21 +1,17 @@
-public class giy extends gks<cex, fue<cex>> {
-   private static final akk a = new akk("textures/entity/fish/cod.png");
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
+import java.util.Map;
 
-   public giy(gjm.a $$0) {
-      super($$0, new fue<>($$0.a(fxn.A)), 0.3F);
+public class giy<T extends cgv> extends gii<T, fue<T>> {
+   private static final Map<bsn<?>, akk> a = Maps.newHashMap(
+      ImmutableMap.of(bsn.z, new akk("textures/entity/horse/donkey.png"), bsn.at, new akk("textures/entity/horse/mule.png"))
+   );
+
+   public giy(gjo.a $$0, float $$1, fxo $$2) {
+      super($$0, new fue<>($$0.a($$2)), $$1);
    }
 
-   public akk a(cex $$0) {
-      return a;
-   }
-
-   protected void a(cex $$0, fam $$1, float $$2, float $$3, float $$4, float $$5) {
-      super.a($$0, $$1, $$2, $$3, $$4, $$5);
-      float $$6 = 4.3F * ayg.a(0.6F * $$2);
-      $$1.a(a.d.rotationDegrees($$6));
-      if (!$$0.bf()) {
-         $$1.a(0.1F, 0.1F, -0.1F);
-         $$1.a(a.f.rotationDegrees(90.0F));
-      }
+   public akk a(T $$0) {
+      return a.get($$0.am());
    }
 }

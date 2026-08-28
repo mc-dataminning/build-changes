@@ -12,11 +12,11 @@ public class amz {
    }
 
    private static int a(eq $$0) {
-      return a($$0, cmk::O_);
+      return a($$0, cml::O_);
    }
 
    private static int b(eq $$0) {
-      return a($$0, $$0x -> wu.a("commands.list.nameAndId", $$0x.ag(), wu.a($$0x.fY().getId())));
+      return a($$0, $$0x -> wu.a("commands.list.nameAndId", $$0x.ah(), wu.a($$0x.fZ().getId())));
    }
 
    private static int a(eq $$0, Function<aqn, wu> $$1) {

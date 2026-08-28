@@ -1,43 +1,50 @@
-public class ccp extends ccn {
-   private boolean p;
+import javax.annotation.Nullable;
 
-   public ccp(btd $$0, dcf $$1) {
+public class ccp extends ccn {
+   @Nullable
+   private ja p;
+
+   public ccp(bte $$0, dcg $$1) {
       super($$0, $$1);
    }
 
    @Override
-   protected eox a(int $$0) {
-      this.p = this.a.al() == bsm.y;
-      this.o = new epb(this.p);
-      return new eox(this.o, $$0);
+   public eox a(ja $$0, int $$1) {
+      this.p = $$0;
+      return super.a($$0, $$1);
    }
 
    @Override
-   protected boolean a() {
-      return this.p || this.a.bj();
+   public eox a(bsh $$0, int $$1) {
+      this.p = $$0.dr();
+      return super.a($$0, $$1);
    }
 
    @Override
-   protected ewf b() {
-      return new ewf(this.a.dv(), this.a.e(0.5), this.a.dB());
+   public boolean a(bsh $$0, double $$1) {
+      eox $$2 = this.a($$0, 0);
+      if ($$2 != null) {
+         return this.a($$2, $$1);
+      } else {
+         this.p = $$0.dr();
+         this.d = $$1;
+         return true;
+      }
    }
 
    @Override
-   protected double a(ewf $$0) {
-      return $$0.d;
-   }
-
-   @Override
-   protected boolean a(ewf $$0, ewf $$1) {
-      return a(this.a, $$0, $$1, false);
-   }
-
-   @Override
-   public boolean a(ja $$0) {
-      return !this.b.a_($$0).i(this.b, $$0);
-   }
-
-   @Override
-   public void a(boolean $$0) {
+   public void c() {
+      if (!this.l()) {
+         super.c();
+      } else {
+         if (this.p != null) {
+            if (!this.p.a(this.a.dp(), (double)this.a.dl())
+               && (!(this.a.dy() > (double)this.p.v()) || !ja.a((double)this.p.u(), this.a.dy(), (double)this.p.w()).a(this.a.dp(), (double)this.a.dl()))) {
+               this.a.H().a((double)this.p.u(), (double)this.p.v(), (double)this.p.w(), this.d);
+            } else {
+               this.p = null;
+            }
+         }
+      }
    }
 }

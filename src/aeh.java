@@ -3,7 +3,7 @@ public class aeh implements zb<abn> {
    private final double b;
    private final double c;
 
-   public aeh(dub $$0) {
+   public aeh(duc $$0) {
       this.b = $$0.a();
       this.c = $$0.b();
    }

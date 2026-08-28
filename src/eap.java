@@ -1,118 +1,59 @@
-import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
-import javax.annotation.Nullable;
 
-public class eap extends ebk<edi> {
-   private static final ImmutableList<dfh> a = ImmutableList.of(dfj.H, dfj.F, dfj.kJ, dfj.dW, dfj.fn, dfj.fo, dfj.fp, dfj.fq, dfj.cv, dfj.ct);
-   private static final int b = 5;
-   private static final int c = 50;
-   private static final int d = 8;
-   private static final int an = 15;
+public class eap extends ebl<edz> {
+   private static final dsl a = dfk.mZ.o().a(dem.h, Integer.valueOf(1)).a(dem.i, dsx.a).a(dem.j, Integer.valueOf(0));
+   private static final dsl b = a.a(dem.i, dsx.c).a(dem.j, Integer.valueOf(1));
+   private static final dsl c = a.a(dem.i, dsx.c);
+   private static final dsl d = a.a(dem.i, dsx.b);
 
-   public eap(Codec<edi> $$0) {
+   public eap(Codec<edz> $$0) {
       super($$0);
    }
 
    @Override
-   public boolean a(ebm<edi> $$0) {
-      int $$1 = $$0.c().f();
+   public boolean a(ebn<edz> $$0) {
+      int $$1 = 0;
       ja $$2 = $$0.e();
-      ddb $$3 = $$0.b();
+      ddc $$3 = $$0.b();
       ayo $$4 = $$0.d();
-      edi $$5 = $$0.f();
-      if (!a($$3, $$1, $$2.j())) {
-         return false;
-      } else {
-         int $$6 = $$5.b().a($$4);
-         boolean $$7 = $$4.i() < 0.9F;
-         int $$8 = Math.min($$6, $$7 ? 5 : 8);
-         int $$9 = $$7 ? 50 : 15;
-         boolean $$10 = false;
+      edz $$5 = $$0.f();
+      ja.a $$6 = $$2.j();
+      ja.a $$7 = $$2.j();
+      if ($$3.u($$6)) {
+         if (dfk.mZ.o().a($$3, $$6)) {
+            int $$8 = $$4.a(12) + 5;
+            if ($$4.i() < $$5.l) {
+               int $$9 = $$4.a(4) + 1;
 
-         for (ja $$11 : ja.a($$4, $$9, $$2.u() - $$8, $$2.v(), $$2.w() - $$8, $$2.u() + $$8, $$2.v(), $$2.w() + $$8)) {
-            int $$12 = $$6 - $$11.k($$2);
-            if ($$12 >= 0) {
-               $$10 |= this.a($$3, $$1, $$11, $$12, $$5.a().a($$4));
-            }
-         }
-
-         return $$10;
-      }
-   }
-
-   private boolean a(dcg $$0, int $$1, ja $$2, int $$3, int $$4) {
-      boolean $$5 = false;
-
-      for (ja $$6 : ja.b($$2.u() - $$4, $$2.v(), $$2.w() - $$4, $$2.u() + $$4, $$2.v(), $$2.w() + $$4)) {
-         int $$7 = $$6.k($$2);
-         ja $$8 = a($$0, $$1, $$6) ? a($$0, $$1, $$6.j(), $$7) : a($$0, $$6.j(), $$7);
-         if ($$8 != null) {
-            int $$9 = $$3 - $$7 / 2;
-
-            for (ja.a $$10 = $$8.j(); $$9 >= 0; $$9--) {
-               if (a($$0, $$1, (ja)$$10)) {
-                  this.a($$0, $$10, dfj.dY.o());
-                  $$10.c(jf.b);
-                  $$5 = true;
-               } else {
-                  if (!$$0.a_($$10).a(dfj.dY)) {
-                     break;
+               for (int $$10 = $$2.u() - $$9; $$10 <= $$2.u() + $$9; $$10++) {
+                  for (int $$11 = $$2.w() - $$9; $$11 <= $$2.w() + $$9; $$11++) {
+                     int $$12 = $$10 - $$2.u();
+                     int $$13 = $$11 - $$2.w();
+                     if ($$12 * $$12 + $$13 * $$13 <= $$9 * $$9) {
+                        $$7.d($$10, $$3.a(dyg.a.b, $$10, $$11) - 1, $$11);
+                        if (b($$3.a_($$7))) {
+                           $$3.a($$7, dfk.l.o(), 2);
+                        }
+                     }
                   }
-
-                  $$10.c(jf.b);
                }
             }
-         }
-      }
 
-      return $$5;
-   }
+            for (int $$14 = 0; $$14 < $$8 && $$3.u($$6); $$14++) {
+               $$3.a($$6, a, 2);
+               $$6.c(jf.b, 1);
+            }
 
-   @Nullable
-   private static ja a(dcg $$0, int $$1, ja.a $$2, int $$3) {
-      while ($$2.v() > $$0.I_() + 1 && $$3 > 0) {
-         $$3--;
-         if (a($$0, $$1, $$2)) {
-            return $$2;
-         }
-
-         $$2.c(jf.a);
-      }
-
-      return null;
-   }
-
-   private static boolean a(dcg $$0, int $$1, ja.a $$2) {
-      if (!a($$0, $$1, (ja)$$2)) {
-         return false;
-      } else {
-         dsk $$3 = $$0.a_($$2.c(jf.a));
-         $$2.c(jf.b);
-         return !$$3.i() && !a.contains($$3.b());
-      }
-   }
-
-   @Nullable
-   private static ja a(dcg $$0, ja.a $$1, int $$2) {
-      while ($$1.v() < $$0.am() && $$2 > 0) {
-         $$2--;
-         dsk $$3 = $$0.a_($$1);
-         if (a.contains($$3.b())) {
-            return null;
+            if ($$6.v() - $$2.v() >= 3) {
+               $$3.a($$6, b, 2);
+               $$3.a($$6.c(jf.a, 1), c, 2);
+               $$3.a($$6.c(jf.a, 1), d, 2);
+            }
          }
 
-         if ($$3.i()) {
-            return $$1;
-         }
-
-         $$1.c(jf.b);
+         $$1++;
       }
 
-      return null;
-   }
-
-   private static boolean a(dcg $$0, int $$1, ja $$2) {
-      dsk $$3 = $$0.a_($$2);
-      return $$3.i() || $$3.a(dfj.H) && $$2.v() <= $$1;
+      return $$1 > 0;
    }
 }

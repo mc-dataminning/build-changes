@@ -27,7 +27,7 @@ public class amt {
    }
 
    private static int a(eq $$0, ha $$1, Collection<aqn> $$2, int $$3) throws CommandSyntaxException {
-      cuc $$4 = $$1.a(1, false);
+      cud $$4 = $$1.a(1, false);
       int $$5 = $$4.j();
       int $$6 = $$5 * 100;
       if ($$3 > $$6) {
@@ -40,21 +40,21 @@ public class amt {
             while ($$8 > 0) {
                int $$9 = Math.min($$5, $$8);
                $$8 -= $$9;
-               cuc $$10 = $$1.a($$9, false);
-               boolean $$11 = $$7.fZ().f($$10);
+               cud $$10 = $$1.a($$9, false);
+               boolean $$11 = $$7.ga().f($$10);
                if ($$11 && $$10.e()) {
-                  ciu $$13 = $$7.a($$4, false);
+                  civ $$13 = $$7.a($$4, false);
                   if ($$13 != null) {
                      $$13.B();
                   }
 
-                  $$7.dQ().a(null, $$7.dv(), $$7.dx(), $$7.dB(), avh.nC, avi.h, 0.2F, (($$7.dT().i() - $$7.dT().i()) * 0.7F + 1.0F) * 2.0F);
-                  $$7.cd.d();
+                  $$7.dR().a(null, $$7.dw(), $$7.dy(), $$7.dC(), avh.nC, avi.h, 0.2F, (($$7.dU().i() - $$7.dU().i()) * 0.7F + 1.0F) * 2.0F);
+                  $$7.ce.d();
                } else {
-                  ciu $$12 = $$7.a($$10, false);
+                  civ $$12 = $$7.a($$10, false);
                   if ($$12 != null) {
                      $$12.w();
-                     $$12.b($$7.cA());
+                     $$12.b($$7.cB());
                   }
                }
             }

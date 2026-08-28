@@ -4,13 +4,13 @@ public class aht implements zb<agb> {
    private static final int c = 2;
    private static final int d = 4;
    private final ja e;
-   private final drf.a f;
-   private final dtu g;
+   private final drg.a f;
+   private final dtv g;
    private final String h;
    private final ja i;
    private final ke j;
-   private final dke k;
-   private final dlu l;
+   private final dkf k;
+   private final dlv l;
    private final String m;
    private final boolean n;
    private final boolean o;
@@ -19,7 +19,7 @@ public class aht implements zb<agb> {
    private final long r;
 
    public aht(
-      ja $$0, drf.a $$1, dtu $$2, String $$3, ja $$4, ke $$5, dke $$6, dlu $$7, String $$8, boolean $$9, boolean $$10, boolean $$11, float $$12, long $$13
+      ja $$0, drg.a $$1, dtv $$2, String $$3, ja $$4, ke $$5, dkf $$6, dlv $$7, String $$8, boolean $$9, boolean $$10, boolean $$11, float $$12, long $$13
    ) {
       this.e = $$0;
       this.f = $$1;
@@ -39,15 +39,15 @@ public class aht implements zb<agb> {
 
    private aht(vr $$0) {
       this.e = $$0.e();
-      this.f = $$0.b(drf.a.class);
-      this.g = $$0.b(dtu.class);
+      this.f = $$0.b(drg.a.class);
+      this.g = $$0.b(dtv.class);
       this.h = $$0.p();
       int $$1 = 48;
       this.i = new ja(ayg.a($$0.readByte(), -48, 48), ayg.a($$0.readByte(), -48, 48), ayg.a($$0.readByte(), -48, 48));
       int $$2 = 48;
       this.j = new ke(ayg.a($$0.readByte(), 0, 48), ayg.a($$0.readByte(), 0, 48), ayg.a($$0.readByte(), 0, 48));
-      this.k = $$0.b(dke.class);
-      this.l = $$0.b(dlu.class);
+      this.k = $$0.b(dkf.class);
+      this.l = $$0.b(dlv.class);
       this.m = $$0.d(128);
       this.q = ayg.a($$0.readFloat(), 0.0F, 1.0F);
       this.r = $$0.m();
@@ -102,11 +102,11 @@ public class aht implements zb<agb> {
       return this.e;
    }
 
-   public drf.a e() {
+   public drg.a e() {
       return this.f;
    }
 
-   public dtu f() {
+   public dtv f() {
       return this.g;
    }
 
@@ -122,11 +122,11 @@ public class aht implements zb<agb> {
       return this.j;
    }
 
-   public dke j() {
+   public dkf j() {
       return this.k;
    }
 
-   public dlu k() {
+   public dlv k() {
       return this.l;
    }
 

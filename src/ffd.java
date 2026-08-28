@@ -1,30 +1,52 @@
-import java.util.function.IntFunction;
+import com.mojang.logging.LogUtils;
+import org.slf4j.Logger;
 
-public enum ffd implements ayj {
-   a(0, "options.off"),
-   b(1, "options.attack.crosshair"),
-   c(2, "options.attack.hotbar");
-
-   private static final IntFunction<ffd> d = aww.a(ffd::a, values(), aww.a.b);
+public class ffd extends fev {
+   private static final Logger b = LogUtils.getLogger();
+   private static final wu c = wu.c("mco.minigame.world.slot.screen.title");
+   private final long d;
    private final int e;
-   private final String f;
+   private final Runnable f;
 
-   private ffd(final int $$0, final String $$1) {
-      this.e = $$0;
-      this.f = $$1;
+   public ffd(long $$0, int $$1, Runnable $$2) {
+      this.d = $$0;
+      this.e = $$1;
+      this.f = $$2;
    }
 
    @Override
-   public int a() {
-      return this.e;
+   public void run() {
+      fbe $$0 = fbe.a();
+
+      for (int $$1 = 0; $$1 < 25; $$1++) {
+         try {
+            if (this.d()) {
+               return;
+            }
+
+            if ($$0.a(this.d, this.e)) {
+               this.f.run();
+               break;
+            }
+         } catch (fcs var4) {
+            if (this.d()) {
+               return;
+            }
+
+            a((long)var4.c);
+         } catch (Exception var5) {
+            if (this.d()) {
+               return;
+            }
+
+            b.error("Couldn't switch world!");
+            this.a(var5);
+         }
+      }
    }
 
    @Override
-   public String b() {
-      return this.f;
-   }
-
-   public static ffd a(int $$0) {
-      return d.apply($$0);
+   public wu a() {
+      return c;
    }
 }

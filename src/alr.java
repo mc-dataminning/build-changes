@@ -95,7 +95,7 @@ public class alr {
                                                                                  gg.a($$0x, "uuid"),
                                                                                  StringArgumentType.getString($$0x, "name"),
                                                                                  DoubleArgumentType.getDouble($$0x, "value"),
-                                                                                 buh.a.a
+                                                                                 bui.a.a
                                                                               )
                                                                         )
                                                                   ))
@@ -109,7 +109,7 @@ public class alr {
                                                                               gg.a($$0x, "uuid"),
                                                                               StringArgumentType.getString($$0x, "name"),
                                                                               DoubleArgumentType.getDouble($$0x, "value"),
-                                                                              buh.a.b
+                                                                              bui.a.b
                                                                            )
                                                                      )
                                                                ))
@@ -123,7 +123,7 @@ public class alr {
                                                                            gg.a($$0x, "uuid"),
                                                                            StringArgumentType.getString($$0x, "name"),
                                                                            DoubleArgumentType.getDouble($$0x, "value"),
-                                                                           buh.a.c
+                                                                           bui.a.c
                                                                         )
                                                                   )
                                                             )
@@ -168,87 +168,87 @@ public class alr {
       );
    }
 
-   private static buf a(bsg $$0, jj<bue> $$1) throws CommandSyntaxException {
-      buf $$2 = a($$0).eT().a($$1);
+   private static bug a(bsh $$0, jj<buf> $$1) throws CommandSyntaxException {
+      bug $$2 = a($$0).eU().a($$1);
       if ($$2 == null) {
-         throw b.create($$0.ag(), a($$1));
+         throw b.create($$0.ah(), a($$1));
       } else {
          return $$2;
       }
    }
 
-   private static btb a(bsg $$0) throws CommandSyntaxException {
-      if (!($$0 instanceof btb)) {
-         throw a.create($$0.ag());
+   private static btc a(bsh $$0) throws CommandSyntaxException {
+      if (!($$0 instanceof btc)) {
+         throw a.create($$0.ah());
       } else {
-         return (btb)$$0;
+         return (btc)$$0;
       }
    }
 
-   private static btb b(bsg $$0, jj<bue> $$1) throws CommandSyntaxException {
-      btb $$2 = a($$0);
-      if (!$$2.eT().b($$1)) {
-         throw b.create($$0.ag(), a($$1));
+   private static btc b(bsh $$0, jj<buf> $$1) throws CommandSyntaxException {
+      btc $$2 = a($$0);
+      if (!$$2.eU().b($$1)) {
+         throw b.create($$0.ah(), a($$1));
       } else {
          return $$2;
       }
    }
 
-   private static int a(eq $$0, bsg $$1, jj<bue> $$2, double $$3) throws CommandSyntaxException {
-      btb $$4 = b($$1, $$2);
+   private static int a(eq $$0, bsh $$1, jj<buf> $$2, double $$3) throws CommandSyntaxException {
+      btc $$4 = b($$1, $$2);
       double $$5 = $$4.g($$2);
-      $$0.a(() -> wu.a("commands.attribute.value.get.success", a($$2), $$1.ag(), $$5), false);
+      $$0.a(() -> wu.a("commands.attribute.value.get.success", a($$2), $$1.ah(), $$5), false);
       return (int)($$5 * $$3);
    }
 
-   private static int b(eq $$0, bsg $$1, jj<bue> $$2, double $$3) throws CommandSyntaxException {
-      btb $$4 = b($$1, $$2);
+   private static int b(eq $$0, bsh $$1, jj<buf> $$2, double $$3) throws CommandSyntaxException {
+      btc $$4 = b($$1, $$2);
       double $$5 = $$4.h($$2);
-      $$0.a(() -> wu.a("commands.attribute.base_value.get.success", a($$2), $$1.ag(), $$5), false);
+      $$0.a(() -> wu.a("commands.attribute.base_value.get.success", a($$2), $$1.ah(), $$5), false);
       return (int)($$5 * $$3);
    }
 
-   private static int a(eq $$0, bsg $$1, jj<bue> $$2, UUID $$3, double $$4) throws CommandSyntaxException {
-      btb $$5 = b($$1, $$2);
-      bug $$6 = $$5.eT();
+   private static int a(eq $$0, bsh $$1, jj<buf> $$2, UUID $$3, double $$4) throws CommandSyntaxException {
+      btc $$5 = b($$1, $$2);
+      buh $$6 = $$5.eU();
       if (!$$6.a($$2, $$3)) {
-         throw c.create($$1.ag(), a($$2), $$3);
+         throw c.create($$1.ah(), a($$2), $$3);
       } else {
          double $$7 = $$6.b($$2, $$3);
-         $$0.a(() -> wu.a("commands.attribute.modifier.value.get.success", wu.a($$3), a($$2), $$1.ag(), $$7), false);
+         $$0.a(() -> wu.a("commands.attribute.modifier.value.get.success", wu.a($$3), a($$2), $$1.ah(), $$7), false);
          return (int)($$7 * $$4);
       }
    }
 
-   private static int c(eq $$0, bsg $$1, jj<bue> $$2, double $$3) throws CommandSyntaxException {
+   private static int c(eq $$0, bsh $$1, jj<buf> $$2, double $$3) throws CommandSyntaxException {
       a($$1, $$2).a($$3);
-      $$0.a(() -> wu.a("commands.attribute.base_value.set.success", a($$2), $$1.ag(), $$3), false);
+      $$0.a(() -> wu.a("commands.attribute.base_value.set.success", a($$2), $$1.ah(), $$3), false);
       return 1;
    }
 
-   private static int a(eq $$0, bsg $$1, jj<bue> $$2, UUID $$3, String $$4, double $$5, buh.a $$6) throws CommandSyntaxException {
-      buf $$7 = a($$1, $$2);
-      buh $$8 = new buh($$3, $$4, $$5, $$6);
+   private static int a(eq $$0, bsh $$1, jj<buf> $$2, UUID $$3, String $$4, double $$5, bui.a $$6) throws CommandSyntaxException {
+      bug $$7 = a($$1, $$2);
+      bui $$8 = new bui($$3, $$4, $$5, $$6);
       if ($$7.a($$8)) {
-         throw d.create($$1.ag(), a($$2), $$3);
+         throw d.create($$1.ah(), a($$2), $$3);
       } else {
          $$7.d($$8);
-         $$0.a(() -> wu.a("commands.attribute.modifier.add.success", wu.a($$3), a($$2), $$1.ag()), false);
+         $$0.a(() -> wu.a("commands.attribute.modifier.add.success", wu.a($$3), a($$2), $$1.ah()), false);
          return 1;
       }
    }
 
-   private static int a(eq $$0, bsg $$1, jj<bue> $$2, UUID $$3) throws CommandSyntaxException {
-      buf $$4 = a($$1, $$2);
+   private static int a(eq $$0, bsh $$1, jj<buf> $$2, UUID $$3) throws CommandSyntaxException {
+      bug $$4 = a($$1, $$2);
       if ($$4.c($$3)) {
-         $$0.a(() -> wu.a("commands.attribute.modifier.remove.success", wu.a($$3), a($$2), $$1.ag()), false);
+         $$0.a(() -> wu.a("commands.attribute.modifier.remove.success", wu.a($$3), a($$2), $$1.ah()), false);
          return 1;
       } else {
-         throw c.create($$1.ag(), a($$2), $$3);
+         throw c.create($$1.ah(), a($$2), $$3);
       }
    }
 
-   private static wu a(jj<bue> $$0) {
+   private static wu a(jj<buf> $$0) {
       return wu.c($$0.a().c());
    }
 }

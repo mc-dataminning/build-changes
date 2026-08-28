@@ -1,88 +1,73 @@
-public class cqm extends cph {
-   private static final int o = 1;
-   private static final int p = 1;
-   public static final int k = 1;
-   public static final int l = 2;
-   public static final int m = 3;
-   public static final int n = 100;
-   private final bpz q;
-   private final cps r;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
-   public cqm(int $$0) {
-      this($$0, new bqp(1), new crc(1));
-   }
+public class cqm {
+   private final List<cqm.b> a;
+   private final cqm.b b;
 
-   public cqm(int $$0, bpz $$1, cps $$2) {
-      super(cqp.r, $$0);
-      a($$1, 1);
-      a($$2, 1);
-      this.q = $$1;
-      this.r = $$2;
-      this.a(new crd($$1, 0, 0, 0) {
-         @Override
-         public void c() {
-            super.c();
-            cqm.this.a(this.c);
-         }
-      });
-      this.a($$2);
-   }
-
-   @Override
-   public boolean a(cmk $$0, int $$1) {
-      if ($$1 >= 100) {
-         int $$2 = $$1 - 100;
-         this.a(0, $$2);
-         return true;
+   cqm(List<cqm.b> $$0, cqm.b $$1) {
+      if (!$$0.isEmpty() && !$$1.equals(cqm.b.e)) {
+         this.a = $$0;
+         this.b = $$1;
       } else {
-         switch ($$1) {
-            case 1:
-               int $$4 = this.r.a(0);
-               this.a(0, $$4 - 1);
-               return true;
-            case 2:
-               int $$3 = this.r.a(0);
-               this.a(0, $$3 + 1);
-               return true;
-            case 3:
-               if (!$$0.gl()) {
-                  return false;
-               }
-
-               cuc $$5 = this.q.b(0);
-               this.q.e();
-               if (!$$0.fZ().f($$5)) {
-                  $$0.a($$5, false);
-               }
-
-               return true;
-            default:
-               return false;
-         }
+         throw new IllegalArgumentException("Need to define both inputSlots and resultSlot");
       }
    }
 
-   @Override
-   public cuc b(cmk $$0, int $$1) {
-      return cuc.l;
+   public static cqm.a a() {
+      return new cqm.a();
    }
 
-   @Override
-   public void a(int $$0, int $$1) {
-      super.a($$0, $$1);
-      this.d();
+   public boolean a(int $$0) {
+      return this.a.size() >= $$0;
    }
 
-   @Override
-   public boolean b(cmk $$0) {
-      return this.q.a($$0);
+   public cqm.b b(int $$0) {
+      return this.a.get($$0);
    }
 
-   public cuc l() {
-      return this.q.a(0);
+   public cqm.b b() {
+      return this.b;
    }
 
-   public int m() {
-      return this.r.a(0);
+   public List<cqm.b> c() {
+      return this.a;
+   }
+
+   public int d() {
+      return this.a.size();
+   }
+
+   public int e() {
+      return this.d();
+   }
+
+   public List<Integer> f() {
+      return this.a.stream().map(cqm.b::a).collect(Collectors.toList());
+   }
+
+   public static class a {
+      private final List<cqm.b> a = new ArrayList<>();
+      private cqm.b b = cqm.b.e;
+
+      public cqm.a a(int $$0, int $$1, int $$2, Predicate<cud> $$3) {
+         this.a.add(new cqm.b($$0, $$1, $$2, $$3));
+         return this;
+      }
+
+      public cqm.a a(int $$0, int $$1, int $$2) {
+         this.b = new cqm.b($$0, $$1, $$2, $$0x -> false);
+         return this;
+      }
+
+      public cqm a() {
+         return new cqm(this.a, this.b);
+      }
+   }
+
+   public static record b(int a, int b, int c, Predicate<cud> d) {
+      static final cqm.b e = new cqm.b(0, 0, 0, $$0 -> true);
    }
 }

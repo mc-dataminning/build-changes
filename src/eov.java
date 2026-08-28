@@ -1,201 +1,143 @@
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 import javax.annotation.Nullable;
 
 public class eov {
-   private final List<eot> a;
+   public final int a;
+   public final int b;
+   public final int c;
+   private final int m;
+   public int d = -1;
+   public float e;
+   public float f;
+   public float g;
    @Nullable
-   private eov.a b;
-   private int c;
-   private final ja d;
-   private final float e;
-   private final boolean f;
+   public eov h;
+   public boolean i;
+   public float j;
+   public float k;
+   public epa l = epa.a;
 
-   public eov(List<eot> $$0, ja $$1, boolean $$2) {
+   public eov(int $$0, int $$1, int $$2) {
       this.a = $$0;
-      this.d = $$1;
-      this.e = $$0.isEmpty() ? Float.MAX_VALUE : this.a.get(this.a.size() - 1).c(this.d);
-      this.f = $$2;
+      this.b = $$1;
+      this.c = $$2;
+      this.m = b($$0, $$1, $$2);
    }
 
-   public void a() {
-      this.c++;
+   public eov a(int $$0, int $$1, int $$2) {
+      eov $$3 = new eov($$0, $$1, $$2);
+      $$3.d = this.d;
+      $$3.e = this.e;
+      $$3.f = this.f;
+      $$3.g = this.g;
+      $$3.h = this.h;
+      $$3.i = this.i;
+      $$3.j = this.j;
+      $$3.k = this.k;
+      $$3.l = this.l;
+      return $$3;
    }
 
-   public boolean b() {
-      return this.c <= 0;
+   public static int b(int $$0, int $$1, int $$2) {
+      return $$1 & 0xFF | ($$0 & 32767) << 8 | ($$2 & 32767) << 24 | ($$0 < 0 ? Integer.MIN_VALUE : 0) | ($$2 < 0 ? 32768 : 0);
+   }
+
+   public float a(eov $$0) {
+      float $$1 = (float)($$0.a - this.a);
+      float $$2 = (float)($$0.b - this.b);
+      float $$3 = (float)($$0.c - this.c);
+      return ayg.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
+   }
+
+   public float b(eov $$0) {
+      float $$1 = (float)($$0.a - this.a);
+      float $$2 = (float)($$0.c - this.c);
+      return ayg.c($$1 * $$1 + $$2 * $$2);
+   }
+
+   public float a(ja $$0) {
+      float $$1 = (float)($$0.u() - this.a);
+      float $$2 = (float)($$0.v() - this.b);
+      float $$3 = (float)($$0.w() - this.c);
+      return ayg.c($$1 * $$1 + $$2 * $$2 + $$3 * $$3);
+   }
+
+   public float c(eov $$0) {
+      float $$1 = (float)($$0.a - this.a);
+      float $$2 = (float)($$0.b - this.b);
+      float $$3 = (float)($$0.c - this.c);
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   }
+
+   public float b(ja $$0) {
+      float $$1 = (float)($$0.u() - this.a);
+      float $$2 = (float)($$0.v() - this.b);
+      float $$3 = (float)($$0.w() - this.c);
+      return $$1 * $$1 + $$2 * $$2 + $$3 * $$3;
+   }
+
+   public float d(eov $$0) {
+      float $$1 = (float)Math.abs($$0.a - this.a);
+      float $$2 = (float)Math.abs($$0.b - this.b);
+      float $$3 = (float)Math.abs($$0.c - this.c);
+      return $$1 + $$2 + $$3;
+   }
+
+   public float c(ja $$0) {
+      float $$1 = (float)Math.abs($$0.u() - this.a);
+      float $$2 = (float)Math.abs($$0.v() - this.b);
+      float $$3 = (float)Math.abs($$0.w() - this.c);
+      return $$1 + $$2 + $$3;
+   }
+
+   public ja a() {
+      return new ja(this.a, this.b, this.c);
+   }
+
+   public ewh b() {
+      return new ewh((double)this.a, (double)this.b, (double)this.c);
+   }
+
+   @Override
+   public boolean equals(Object $$0) {
+      return !($$0 instanceof eov $$1) ? false : this.m == $$1.m && this.a == $$1.a && this.b == $$1.b && this.c == $$1.c;
+   }
+
+   @Override
+   public int hashCode() {
+      return this.m;
    }
 
    public boolean c() {
-      return this.c >= this.a.size();
-   }
-
-   @Nullable
-   public eot d() {
-      return !this.a.isEmpty() ? this.a.get(this.a.size() - 1) : null;
-   }
-
-   public eot a(int $$0) {
-      return this.a.get($$0);
-   }
-
-   public void b(int $$0) {
-      if (this.a.size() > $$0) {
-         this.a.subList($$0, this.a.size()).clear();
-      }
-   }
-
-   public void a(int $$0, eot $$1) {
-      this.a.set($$0, $$1);
-   }
-
-   public int e() {
-      return this.a.size();
-   }
-
-   public int f() {
-      return this.c;
-   }
-
-   public void c(int $$0) {
-      this.c = $$0;
-   }
-
-   public ewf a(bsg $$0, int $$1) {
-      eot $$2 = this.a.get($$1);
-      double $$3 = (double)$$2.a + (double)((int)($$0.dk() + 1.0F)) * 0.5;
-      double $$4 = (double)$$2.b;
-      double $$5 = (double)$$2.c + (double)((int)($$0.dk() + 1.0F)) * 0.5;
-      return new ewf($$3, $$4, $$5);
-   }
-
-   public ja d(int $$0) {
-      return this.a.get($$0).a();
-   }
-
-   public ewf a(bsg $$0) {
-      return this.a($$0, this.c);
-   }
-
-   public ja g() {
-      return this.a.get(this.c).a();
-   }
-
-   public eot h() {
-      return this.a.get(this.c);
-   }
-
-   @Nullable
-   public eot i() {
-      return this.c > 0 ? this.a.get(this.c - 1) : null;
-   }
-
-   public boolean a(@Nullable eov $$0) {
-      if ($$0 == null) {
-         return false;
-      } else if ($$0.a.size() != this.a.size()) {
-         return false;
-      } else {
-         for (int $$1 = 0; $$1 < this.a.size(); $$1++) {
-            eot $$2 = this.a.get($$1);
-            eot $$3 = $$0.a.get($$1);
-            if ($$2.a != $$3.a || $$2.b != $$3.b || $$2.c != $$3.c) {
-               return false;
-            }
-         }
-
-         return true;
-      }
-   }
-
-   public boolean j() {
-      return this.f;
-   }
-
-   @azl
-   void a(eot[] $$0, eot[] $$1, Set<epc> $$2) {
-      this.b = new eov.a($$0, $$1, $$2);
-   }
-
-   @Nullable
-   public eov.a k() {
-      return this.b;
-   }
-
-   public void a(vr $$0) {
-      if (this.b != null && !this.b.c.isEmpty()) {
-         $$0.a(this.f);
-         $$0.p(this.c);
-         $$0.a(this.d);
-         $$0.a(this.a, ($$0x, $$1) -> $$1.a($$0x));
-         this.b.a($$0);
-      }
-   }
-
-   public static eov b(vr $$0) {
-      boolean $$1 = $$0.readBoolean();
-      int $$2 = $$0.readInt();
-      ja $$3 = $$0.e();
-      List<eot> $$4 = $$0.a(eot::b);
-      eov.a $$5 = eov.a.b($$0);
-      eov $$6 = new eov($$4, $$3, $$1);
-      $$6.b = $$5;
-      $$6.c = $$2;
-      return $$6;
+      return this.d >= 0;
    }
 
    @Override
    public String toString() {
-      return "Path(length=" + this.a.size() + ")";
+      return "Node{x=" + this.a + ", y=" + this.b + ", z=" + this.c + "}";
    }
 
-   public ja l() {
-      return this.d;
+   public void a(vr $$0) {
+      $$0.p(this.a);
+      $$0.p(this.b);
+      $$0.p(this.c);
+      $$0.a(this.j);
+      $$0.a(this.k);
+      $$0.a(this.i);
+      $$0.a(this.l);
+      $$0.a(this.g);
    }
 
-   public float m() {
-      return this.e;
-   }
-
-   static eot[] c(vr $$0) {
-      eot[] $$1 = new eot[$$0.l()];
-
-      for (int $$2 = 0; $$2 < $$1.length; $$2++) {
-         $$1[$$2] = eot.b($$0);
-      }
-
+   public static eov b(vr $$0) {
+      eov $$1 = new eov($$0.readInt(), $$0.readInt(), $$0.readInt());
+      a($$0, $$1);
       return $$1;
    }
 
-   static void a(vr $$0, eot[] $$1) {
-      $$0.c($$1.length);
-
-      for (eot $$2 : $$1) {
-         $$2.a($$0);
-      }
-   }
-
-   public eov n() {
-      eov $$0 = new eov(this.a, this.d, this.f);
-      $$0.b = this.b;
-      $$0.c = this.c;
-      return $$0;
-   }
-
-   public static record a(eot[] a, eot[] b, Set<epc> c) {
-
-      public void a(vr $$0) {
-         $$0.a(this.c, ($$0x, $$1) -> $$1.a($$0x));
-         eov.a($$0, this.a);
-         eov.a($$0, this.b);
-      }
-
-      public static eov.a b(vr $$0) {
-         HashSet<epc> $$1 = $$0.a(HashSet::new, epc::c);
-         eot[] $$2 = eov.c($$0);
-         eot[] $$3 = eov.c($$0);
-         return new eov.a($$2, $$3, $$1);
-      }
+   protected static void a(vr $$0, eov $$1) {
+      $$1.j = $$0.readFloat();
+      $$1.k = $$0.readFloat();
+      $$1.i = $$0.readBoolean();
+      $$1.l = $$0.b(epa.class);
+      $$1.g = $$0.readFloat();
    }
 }

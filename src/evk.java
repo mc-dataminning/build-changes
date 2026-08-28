@@ -1,11 +1,32 @@
+import com.google.common.collect.ImmutableSet;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import java.util.Set;
-import javax.annotation.Nullable;
 
-public interface evk {
-   @Nullable
-   exi a(equ var1);
+public record evk(String b) implements evm {
+   public static final MapCodec<evk> a = RecordCodecBuilder.mapCodec($$0 -> $$0.group(Codec.STRING.fieldOf("name").forGetter(evk::c)).apply($$0, evk::new));
 
-   evj a();
+   public static evm a(String $$0) {
+      return new evk($$0);
+   }
 
-   Set<etn<?>> b();
+   @Override
+   public evl a() {
+      return evn.b;
+   }
+
+   @Override
+   public exk a(eqw $$0) {
+      return exk.c(this.b);
+   }
+
+   @Override
+   public Set<etp<?>> b() {
+      return ImmutableSet.of();
+   }
+
+   public String c() {
+      return this.b;
+   }
 }

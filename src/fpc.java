@@ -1,97 +1,50 @@
-import java.util.Objects;
+public abstract class fpc<T extends cql> extends foa<T> implements cpv {
+   private final akk D;
 
-public class fpc extends fof implements fpe<cqm> {
-   private final cqm x;
-   private final cpu y = new cpu() {
-      @Override
-      public void a(cph $$0, int $$1, cuc $$2) {
-         fpc.this.M();
-      }
-
-      @Override
-      public void a(cph $$0, int $$1, int $$2) {
-         if ($$1 == 0) {
-            fpc.this.N();
-         }
-      }
-   };
-
-   public fpc(cqm $$0, cmj $$1, wu $$2) {
-      this.x = $$0;
+   public fpc(T $$0, cmk $$1, wu $$2, akk $$3) {
+      super($$0, $$1, $$2);
+      this.D = $$3;
    }
 
-   public cqm L() {
-      return this.x;
+   protected void F() {
    }
 
    @Override
    protected void aP_() {
       super.aP_();
-      this.x.a(this.y);
-   }
-
-   @Override
-   public void d() {
-      this.l.s.r();
-      super.d();
+      this.F();
+      this.w.a(this);
    }
 
    @Override
    public void j() {
       super.j();
-      this.x.b(this.y);
+      this.w.b(this);
    }
 
    @Override
-   protected void m() {
-      if (this.l.s.gl()) {
-         this.c(fhs.a(wt.d, $$0 -> this.d()).a(this.m / 2 - 100, 196, 98, 20).a());
-         this.c(fhs.a(wu.c("lectern.take_book"), $$0 -> this.g(3)).a(this.m / 2 + 2, 196, 98, 20).a());
-      } else {
-         super.m();
-      }
+   public void a(fhh $$0, int $$1, int $$2, float $$3) {
+      super.a($$0, $$1, $$2, $$3);
+      this.d($$0, $$1, $$2, $$3);
+      this.a($$0, $$1, $$2);
+   }
+
+   protected void d(fhh $$0, int $$1, int $$2, float $$3) {
    }
 
    @Override
-   protected void G() {
-      this.g(1);
+   protected void a(fhh $$0, float $$1, int $$2, int $$3) {
+      $$0.a(this.D, this.z, this.A, 0, 0, this.c, this.q);
+      this.c($$0, this.z, this.A);
+   }
+
+   protected abstract void c(fhh var1, int var2, int var3);
+
+   @Override
+   public void a(cpi $$0, int $$1, int $$2) {
    }
 
    @Override
-   protected void J() {
-      this.g(2);
-   }
-
-   @Override
-   protected boolean b(int $$0) {
-      if ($$0 != this.x.m()) {
-         this.g(100 + $$0);
-         return true;
-      } else {
-         return false;
-      }
-   }
-
-   private void g(int $$0) {
-      this.l.q.a(this.x.j, $$0);
-   }
-
-   @Override
-   public boolean k() {
-      return false;
-   }
-
-   void M() {
-      cuc $$0 = this.x.l();
-      this.a(Objects.requireNonNullElse(fof.a.a($$0), fof.q));
-   }
-
-   void N() {
-      this.a(this.x.m());
-   }
-
-   @Override
-   protected void K() {
-      this.l.s.r();
+   public void a(cpi $$0, int $$1, cud $$2) {
    }
 }

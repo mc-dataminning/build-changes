@@ -20,7 +20,7 @@ public class auw implements ep {
 
    public eq g() {
       aqm $$0 = this.e.J();
-      return new eq(this, ewf.a($$0.V()), ewe.a, $$0, 4, "Rcon", c, this.e, null);
+      return new eq(this, ewh.a($$0.V()), ewg.a, $$0, 4, "Rcon", c, this.e, null);
    }
 
    @Override
@@ -29,7 +29,7 @@ public class auw implements ep {
    }
 
    @Override
-   public boolean l_() {
+   public boolean k_() {
       return true;
    }
 

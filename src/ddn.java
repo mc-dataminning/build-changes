@@ -1,35 +1,70 @@
-import com.mojang.serialization.Codec;
-import com.mojang.serialization.MapCodec;
-import com.mojang.serialization.codecs.RecordCodecBuilder;
-import java.util.stream.Stream;
+public abstract class ddn {
+   public static final akj<ddg> a = a("the_void");
+   public static final akj<ddg> b = a("plains");
+   public static final akj<ddg> c = a("sunflower_plains");
+   public static final akj<ddg> d = a("snowy_plains");
+   public static final akj<ddg> e = a("ice_spikes");
+   public static final akj<ddg> f = a("desert");
+   public static final akj<ddg> g = a("swamp");
+   public static final akj<ddg> h = a("mangrove_swamp");
+   public static final akj<ddg> i = a("forest");
+   public static final akj<ddg> j = a("flower_forest");
+   public static final akj<ddg> k = a("birch_forest");
+   public static final akj<ddg> l = a("dark_forest");
+   public static final akj<ddg> m = a("old_growth_birch_forest");
+   public static final akj<ddg> n = a("old_growth_pine_taiga");
+   public static final akj<ddg> o = a("old_growth_spruce_taiga");
+   public static final akj<ddg> p = a("taiga");
+   public static final akj<ddg> q = a("snowy_taiga");
+   public static final akj<ddg> r = a("savanna");
+   public static final akj<ddg> s = a("savanna_plateau");
+   public static final akj<ddg> t = a("windswept_hills");
+   public static final akj<ddg> u = a("windswept_gravelly_hills");
+   public static final akj<ddg> v = a("windswept_forest");
+   public static final akj<ddg> w = a("windswept_savanna");
+   public static final akj<ddg> x = a("jungle");
+   public static final akj<ddg> y = a("sparse_jungle");
+   public static final akj<ddg> z = a("bamboo_jungle");
+   public static final akj<ddg> A = a("badlands");
+   public static final akj<ddg> B = a("eroded_badlands");
+   public static final akj<ddg> C = a("wooded_badlands");
+   public static final akj<ddg> D = a("meadow");
+   public static final akj<ddg> E = a("cherry_grove");
+   public static final akj<ddg> F = a("grove");
+   public static final akj<ddg> G = a("snowy_slopes");
+   public static final akj<ddg> H = a("frozen_peaks");
+   public static final akj<ddg> I = a("jagged_peaks");
+   public static final akj<ddg> J = a("stony_peaks");
+   public static final akj<ddg> K = a("river");
+   public static final akj<ddg> L = a("frozen_river");
+   public static final akj<ddg> M = a("beach");
+   public static final akj<ddg> N = a("snowy_beach");
+   public static final akj<ddg> O = a("stony_shore");
+   public static final akj<ddg> P = a("warm_ocean");
+   public static final akj<ddg> Q = a("lukewarm_ocean");
+   public static final akj<ddg> R = a("deep_lukewarm_ocean");
+   public static final akj<ddg> S = a("ocean");
+   public static final akj<ddg> T = a("deep_ocean");
+   public static final akj<ddg> U = a("cold_ocean");
+   public static final akj<ddg> V = a("deep_cold_ocean");
+   public static final akj<ddg> W = a("frozen_ocean");
+   public static final akj<ddg> X = a("deep_frozen_ocean");
+   public static final akj<ddg> Y = a("mushroom_fields");
+   public static final akj<ddg> Z = a("dripstone_caves");
+   public static final akj<ddg> aa = a("lush_caves");
+   public static final akj<ddg> ab = a("deep_dark");
+   public static final akj<ddg> ac = a("nether_wastes");
+   public static final akj<ddg> ad = a("warped_forest");
+   public static final akj<ddg> ae = a("crimson_forest");
+   public static final akj<ddg> af = a("soul_sand_valley");
+   public static final akj<ddg> ag = a("basalt_deltas");
+   public static final akj<ddg> ah = a("the_end");
+   public static final akj<ddg> ai = a("end_highlands");
+   public static final akj<ddg> aj = a("end_midlands");
+   public static final akj<ddg> ak = a("small_end_islands");
+   public static final akj<ddg> al = a("end_barrens");
 
-public class ddn extends ddj {
-   public static final MapCodec<ddn> b = RecordCodecBuilder.mapCodec(
-      $$0 -> $$0.group(ddf.d.fieldOf("biomes").forGetter($$0x -> $$0x.c), Codec.intRange(0, 62).fieldOf("scale").orElse(2).forGetter($$0x -> $$0x.e))
-            .apply($$0, ddn::new)
-   );
-   private final jn<ddf> c;
-   private final int d;
-   private final int e;
-
-   public ddn(jn<ddf> $$0, int $$1) {
-      this.c = $$0;
-      this.d = $$1 + 2;
-      this.e = $$1;
-   }
-
-   @Override
-   protected Stream<jj<ddf>> b() {
-      return this.c.a();
-   }
-
-   @Override
-   protected MapCodec<? extends ddj> a() {
-      return b;
-   }
-
-   @Override
-   public jj<ddf> getNoiseBiome(int $$0, int $$1, int $$2, ddo.f $$3) {
-      return this.c.a(Math.floorMod(($$0 >> this.d) + ($$2 >> this.d), this.c.b()));
+   private static akj<ddg> a(String $$0) {
+      return akj.a(lr.aE, new akk($$0));
    }
 }

@@ -37,20 +37,20 @@ public class aoj {
       );
    }
 
-   private static Collection<String> a(Collection<? extends bsg> $$0) {
+   private static Collection<String> a(Collection<? extends bsh> $$0) {
       Set<String> $$1 = Sets.newHashSet();
 
-      for (bsg $$2 : $$0) {
-         $$1.addAll($$2.an());
+      for (bsh $$2 : $$0) {
+         $$1.addAll($$2.ao());
       }
 
       return $$1;
    }
 
-   private static int a(eq $$0, Collection<? extends bsg> $$1, String $$2) throws CommandSyntaxException {
+   private static int a(eq $$0, Collection<? extends bsh> $$1, String $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
-      for (bsg $$4 : $$1) {
+      for (bsh $$4 : $$1) {
          if ($$4.a($$2)) {
             $$3++;
          }
@@ -69,10 +69,10 @@ public class aoj {
       }
    }
 
-   private static int b(eq $$0, Collection<? extends bsg> $$1, String $$2) throws CommandSyntaxException {
+   private static int b(eq $$0, Collection<? extends bsh> $$1, String $$2) throws CommandSyntaxException {
       int $$3 = 0;
 
-      for (bsg $$4 : $$1) {
+      for (bsh $$4 : $$1) {
          if ($$4.b($$2)) {
             $$3++;
          }
@@ -91,15 +91,15 @@ public class aoj {
       }
    }
 
-   private static int a(eq $$0, Collection<? extends bsg> $$1) {
+   private static int a(eq $$0, Collection<? extends bsh> $$1) {
       Set<String> $$2 = Sets.newHashSet();
 
-      for (bsg $$3 : $$1) {
-         $$2.addAll($$3.an());
+      for (bsh $$3 : $$1) {
+         $$2.addAll($$3.ao());
       }
 
       if ($$1.size() == 1) {
-         bsg $$4 = $$1.iterator().next();
+         bsh $$4 = $$1.iterator().next();
          if ($$2.isEmpty()) {
             $$0.a(() -> wu.a("commands.tag.list.single.empty", $$4.O_()), false);
          } else {

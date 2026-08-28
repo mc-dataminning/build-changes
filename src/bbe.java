@@ -21,7 +21,7 @@ public class bbe extends DataFix {
    }
 
    public TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(bgg.c);
+      Type<?> $$0 = this.getOutputSchema().getType(bgh.c);
       Type<?> $$1 = $$0.findFieldType("Level");
       if (!($$1.findFieldType("TileEntities") instanceof ListType<?> $$3)) {
          throw new IllegalStateException("Tile entity type is not a list type.");
@@ -37,11 +37,11 @@ public class bbe extends DataFix {
       int $$5 = 416;
       return TypeRewriteRule.seq(
          this.fixTypeEverywhere(
-            "InjectBedBlockEntityType", this.getInputSchema().findChoiceType(bgg.s), this.getOutputSchema().findChoiceType(bgg.s), $$0x -> $$0xx -> $$0xx
+            "InjectBedBlockEntityType", this.getInputSchema().findChoiceType(bgh.s), this.getOutputSchema().findChoiceType(bgh.s), $$0x -> $$0xx -> $$0xx
          ),
          this.fixTypeEverywhereTyped(
             "BedBlockEntityInjecter",
-            this.getOutputSchema().getType(bgg.c),
+            this.getOutputSchema().getType(bgh.c),
             $$3x -> {
                Typed<?> $$4x = $$3x.getTyped($$3);
                Dynamic<?> $$5x = (Dynamic<?>)$$4x.get(DSL.remainderFinder());

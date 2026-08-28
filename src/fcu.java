@@ -1,40 +1,33 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
+import java.time.Duration;
 import java.util.List;
-import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
-public class fcu implements Iterable<fbt> {
-   private final fft a;
-   private final Set<fbt> b = new HashSet<>();
-   private List<fbt> c = List.of();
+public class fcu {
+   public final fed a = new fed(ac.h(), TimeUnit.MILLISECONDS, ac.c);
+   private final List<fed.e<?>> h;
+   public final fed.e<List<fbu>> b;
+   public final fed.e<fcu.a> c;
+   public final fed.e<Integer> d;
+   public final fed.e<Boolean> e;
+   public final fed.e<fbt> f;
+   public final fcv g = new fcv(new fej());
 
-   public fcu(fft $$0) {
-      this.a = $$0;
+   public fcu(fbe $$0) {
+      this.c = this.a.a("server list", () -> {
+         fbx $$1 = $$0.b();
+         return faz.b() ? new fcu.a($$1.a, $$0.c()) : new fcu.a($$1.a, List.of());
+      }, Duration.ofSeconds(60L), fee.a);
+      this.d = this.a.a("pending invite count", $$0::h, Duration.ofSeconds(10L), fee.a(360));
+      this.e = this.a.a("trial availablity", $$0::l, Duration.ofSeconds(60L), fee.a(60));
+      this.f = this.a.a("unread news", $$0::k, Duration.ofMinutes(5L), fee.a);
+      this.b = this.a.a("notifications", $$0::d, Duration.ofMinutes(5L), fee.a);
+      this.h = List.of(this.b, this.c, this.d, this.e, this.f);
    }
 
-   public void a(List<fbt> $$0) {
-      List<fbt> $$1 = new ArrayList<>($$0);
-      $$1.sort(new fbt.b(this.a.X().c()));
-      boolean $$2 = $$1.removeAll(this.b);
-      if (!$$2) {
-         this.b.clear();
-      }
-
-      this.c = $$1;
+   public List<fed.e<?>> a() {
+      return this.h;
    }
 
-   public void a(fbt $$0) {
-      this.c.remove($$0);
-      this.b.add($$0);
-   }
-
-   @Override
-   public Iterator<fbt> iterator() {
-      return this.c.iterator();
-   }
-
-   public boolean a() {
-      return this.c.isEmpty();
+   public static record a(List<fbv> a, List<fbv> b) {
    }
 }

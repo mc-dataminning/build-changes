@@ -1,15 +1,16 @@
-import java.util.List;
-import javax.annotation.Nullable;
+import com.mojang.serialization.MapCodec;
 
-public abstract class emt {
-   @Nullable
-   public emw.c a(dci $$0, ja $$1, ja $$2, emw.c $$3, emw.c $$4, ems $$5) {
-      return $$4;
-   }
+public interface emt<P extends ems> {
+   emt<elw> a = a("always_true", elw.a);
+   emt<emb> b = a("block_match", emb.a);
+   emt<emd> c = a("blockstate_match", emd.a);
+   emt<ena> d = a("tag_match", ena.a);
+   emt<emp> e = a("random_block_match", emp.a);
+   emt<emq> f = a("random_blockstate_match", emq.a);
 
-   protected abstract emv<?> a();
+   MapCodec<P> codec();
 
-   public List<emw.c> a(dcu $$0, ja $$1, ja $$2, List<emw.c> $$3, List<emw.c> $$4, ems $$5) {
-      return $$4;
+   static <P extends ems> emt<P> a(String $$0, MapCodec<P> $$1) {
+      return jw.a(lq.m, $$0, () -> $$1);
    }
 }

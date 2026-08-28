@@ -1,55 +1,77 @@
-import com.mojang.serialization.Codec;
-import io.netty.buffer.ByteBuf;
-import java.util.function.IntFunction;
-import java.util.function.Predicate;
-
 public enum bso implements azc {
-   a(0, "any", $$0 -> true),
-   b(1, "mainhand", bsn.a),
-   c(2, "offhand", bsn.b),
-   d(3, "hand", $$0 -> $$0.a() == bsn.a.a),
-   e(4, "feet", bsn.c),
-   f(5, "legs", bsn.d),
-   g(6, "chest", bsn.e),
-   h(7, "head", bsn.f),
-   i(8, "armor", bsn::f),
-   j(9, "body", bsn.g);
+   a(bso.a.a, 0, 0, "mainhand"),
+   b(bso.a.a, 1, 5, "offhand"),
+   c(bso.a.b, 0, 1, 1, "feet"),
+   d(bso.a.b, 1, 1, 2, "legs"),
+   e(bso.a.b, 2, 1, 3, "chest"),
+   f(bso.a.b, 3, 1, 4, "head"),
+   g(bso.a.c, 0, 1, 6, "body");
 
-   public static final IntFunction<bso> k = aww.a($$0 -> $$0.n, values(), aww.a.a);
-   public static final Codec<bso> l = azc.a(bso::values);
-   public static final ys<ByteBuf, bso> m = yq.a(k, $$0 -> $$0.n);
-   private final int n;
-   private final String o;
-   private final Predicate<bsn> p;
+   public static final int h = 0;
+   public static final azc.a<bso> i = azc.a(bso::values);
+   private final bso.a j;
+   private final int k;
+   private final int l;
+   private final int m;
+   private final String n;
 
-   private bso(final int $$0, final String $$1, final Predicate<bsn> $$2) {
-      this.n = $$0;
-      this.o = $$1;
-      this.p = $$2;
+   private bso(final bso.a $$0, final int $$1, final int $$2, final int $$3, final String $$4) {
+      this.j = $$0;
+      this.k = $$1;
+      this.l = $$2;
+      this.m = $$3;
+      this.n = $$4;
    }
 
-   private bso(final int $$0, final String $$1, final bsn $$2) {
-      this($$0, $$1, $$1x -> $$1x == $$2);
+   private bso(final bso.a $$0, final int $$1, final int $$2, final String $$3) {
+      this($$0, $$1, 0, $$2, $$3);
    }
 
-   public static bso a(bsn $$0) {
-      return switch ($$0) {
-         case a -> b;
-         case b -> c;
-         case c -> e;
-         case d -> f;
-         case e -> g;
-         case f -> h;
-         case g -> j;
-      };
+   public bso.a a() {
+      return this.j;
+   }
+
+   public int b() {
+      return this.k;
+   }
+
+   public int a(int $$0) {
+      return $$0 + this.k;
+   }
+
+   public cud a(cud $$0) {
+      return this.l > 0 ? $$0.a(this.l) : $$0;
+   }
+
+   public int d() {
+      return this.m;
+   }
+
+   public String e() {
+      return this.n;
+   }
+
+   public boolean f() {
+      return this.j == bso.a.b || this.j == bso.a.c;
    }
 
    @Override
    public String c() {
-      return this.o;
+      return this.n;
    }
 
-   public boolean b(bsn $$0) {
-      return this.p.test($$0);
+   public static bso a(String $$0) {
+      bso $$1 = i.a($$0);
+      if ($$1 != null) {
+         return $$1;
+      } else {
+         throw new IllegalArgumentException("Invalid slot '" + $$0 + "'");
+      }
+   }
+
+   public static enum a {
+      a,
+      b,
+      c;
    }
 }

@@ -1,82 +1,100 @@
-import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Streams;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
+import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
-import java.util.Map.Entry;
-import java.util.function.Predicate;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import javax.annotation.Nullable;
 
-public class gfu {
-   private final gfq a;
-   private final gfn b;
+public class gfu implements gsc {
+   private final dsm<dfi, dsl> a;
+   private final List<gfw> b;
 
-   public gfu(gfq $$0, gfn $$1) {
-      if ($$0 == null) {
-         throw new IllegalArgumentException("Missing condition for selector");
-      } else if ($$1 == null) {
-         throw new IllegalArgumentException("Missing variant for selector");
-      } else {
-         this.a = $$0;
-         this.b = $$1;
-      }
+   public gfu(dsm<dfi, dsl> $$0, List<gfw> $$1) {
+      this.a = $$0;
+      this.b = $$1;
    }
 
-   public gfn a() {
+   public List<gfw> a() {
       return this.b;
    }
 
-   public Predicate<dsk> a(dsl<dfh, dsk> $$0) {
-      return this.a.getPredicate($$0);
+   public Set<gfp> b() {
+      Set<gfp> $$0 = Sets.newHashSet();
+
+      for (gfw $$1 : this.b) {
+         $$0.add($$1.a());
+      }
+
+      return $$0;
    }
 
    @Override
    public boolean equals(Object $$0) {
-      return this == $$0;
+      if (this == $$0) {
+         return true;
+      } else {
+         return !($$0 instanceof gfu $$1) ? false : Objects.equals(this.a, $$1.a) && Objects.equals(this.b, $$1.b);
+      }
    }
 
    @Override
    public int hashCode() {
-      return System.identityHashCode(this);
+      return Objects.hash(this.a, this.b);
    }
 
-   public static class a implements JsonDeserializer<gfu> {
-      public gfu a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
-         JsonObject $$3 = $$0.getAsJsonObject();
-         return new gfu(this.b($$3), (gfn)$$2.deserialize($$3.get("apply"), gfn.class));
-      }
+   @Override
+   public Collection<akk> f() {
+      return this.a().stream().flatMap($$0 -> $$0.a().f().stream()).collect(Collectors.toSet());
+   }
 
-      private gfq b(JsonObject $$0) {
-         return $$0.has("when") ? a(axw.u($$0, "when")) : gfq.b;
-      }
+   @Override
+   public void a(Function<akk, gsc> $$0) {
+      this.a().forEach($$1 -> $$1.a().a($$0));
+   }
 
-      @VisibleForTesting
-      static gfq a(JsonObject $$0) {
-         Set<Entry<String, JsonElement>> $$1 = $$0.entrySet();
-         if ($$1.isEmpty()) {
-            throw new JsonParseException("No elements found in selector");
-         } else if ($$1.size() == 1) {
-            if ($$0.has("OR")) {
-               List<gfq> $$2 = Streams.stream(axw.v($$0, "OR")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new gft($$2);
-            } else if ($$0.has("AND")) {
-               List<gfq> $$3 = Streams.stream(axw.v($$0, "AND")).map($$0x -> a($$0x.getAsJsonObject())).collect(Collectors.toList());
-               return new gfp($$3);
-            } else {
-               return a($$1.iterator().next());
-            }
-         } else {
-            return new gfp($$1.stream().map(gfu.a::a).collect(Collectors.toList()));
+   @Nullable
+   @Override
+   public grr a(grv $$0, Function<gru, gpq> $$1, grz $$2, akk $$3) {
+      gsa.a $$4 = new gsa.a();
+
+      for (gfw $$5 : this.a()) {
+         grr $$6 = $$5.a().a($$0, $$1, $$2, $$3);
+         if ($$6 != null) {
+            $$4.a($$5.a(this.a), $$6);
          }
       }
 
-      private static gfq a(Entry<String, JsonElement> $$0) {
-         return new gfr($$0.getKey(), $$0.getValue().getAsString());
+      return $$4.a();
+   }
+
+   public static class a implements JsonDeserializer<gfu> {
+      private final gfi.a a;
+
+      public a(gfi.a $$0) {
+         this.a = $$0;
+      }
+
+      public gfu a(JsonElement $$0, Type $$1, JsonDeserializationContext $$2) throws JsonParseException {
+         return new gfu(this.a.a(), this.a($$2, $$0.getAsJsonArray()));
+      }
+
+      private List<gfw> a(JsonDeserializationContext $$0, JsonArray $$1) {
+         List<gfw> $$2 = Lists.newArrayList();
+
+         for (JsonElement $$3 : $$1) {
+            $$2.add((gfw)$$0.deserialize($$3, gfw.class));
+         }
+
+         return $$2;
       }
    }
 }

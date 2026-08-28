@@ -19,7 +19,7 @@ public class bai extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getOutputSchema().getType(bgg.c);
+      Type<?> $$0 = this.getOutputSchema().getType(bgh.c);
       return this.fixTypeEverywhereTyped(this.a, $$0, $$0x -> $$0x.update(DSL.remainderFinder(), $$0xx -> a($$0xx, $$0xx.get("__context"))));
    }
 
@@ -28,13 +28,13 @@ public class bai extends DataFix {
       boolean $$2 = "minecraft:overworld".equals($$1.get("dimension").asString().result().orElse(""));
       Optional<? extends Dynamic<?>> $$3 = $$0.get("Status").result();
       if ($$2 && $$3.isPresent()) {
-         String $$4 = bhs.a($$3.get().asString("empty"));
+         String $$4 = bht.a($$3.get().asString("empty"));
          Optional<? extends Dynamic<?>> $$5 = $$0.get("below_zero_retrogen").result();
          if (!b.contains($$4)) {
             $$0 = a($$0, 384, -64);
          } else if ($$5.isPresent()) {
             Dynamic<?> $$6 = (Dynamic<?>)$$5.get();
-            String $$7 = bhs.a($$6.get("target_status").asString("empty"));
+            String $$7 = bht.a($$6.get("target_status").asString("empty"));
             if (!b.contains($$7)) {
                $$0 = a($$0, 256, 0);
             }

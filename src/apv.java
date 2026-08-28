@@ -26,7 +26,7 @@ public class apv<T> {
       this.f = $$1;
    }
 
-   protected void a(int $$0, dbm $$1, int $$2) {
+   protected void a(int $$0, dbn $$1, int $$2) {
       if ($$0 < a) {
          Long2ObjectLinkedOpenHashMap<List<Optional<T>>> $$3 = this.b.get($$0);
          List<Optional<T>> $$4 = (List<Optional<T>>)$$3.remove($$1.a());

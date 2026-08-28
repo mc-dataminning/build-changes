@@ -17,14 +17,14 @@ public class apb implements aoy {
             return $$0.then(er.a("storage").then($$1.apply(er.a($$0, fr.a()).suggests(apb.b))));
          }
       };
-   private final epz c;
+   private final eqb c;
    private final akk d;
 
-   static epz a(CommandContext<eq> $$0) {
+   static eqb a(CommandContext<eq> $$0) {
       return ((eq)$$0.getSource()).l().aM();
    }
 
-   apb(epz $$0, akk $$1) {
+   apb(eqb $$0, akk $$1) {
       this.c = $$0;
       this.d = $$1;
    }

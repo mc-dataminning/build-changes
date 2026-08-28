@@ -1,14 +1,18 @@
 import com.mojang.serialization.MapCodec;
+import javax.annotation.Nullable;
 
-public interface enf<P extends ene> {
-   enf<enc> a = a("clear", enc.a);
-   enf<end> b = a("passthrough", end.b);
-   enf<enb> c = a("append_static", enb.a);
-   enf<ena> d = a("append_loot", ena.a);
+public class enf implements eng {
+   public static final enf a = new enf();
+   public static final MapCodec<enf> b = MapCodec.unit(a);
 
-   MapCodec<P> codec();
+   @Nullable
+   @Override
+   public tx a(ayo $$0, @Nullable tx $$1) {
+      return $$1;
+   }
 
-   private static <P extends ene> enf<P> a(String $$0, MapCodec<P> $$1) {
-      return jw.a(lq.n, $$0, () -> $$1);
+   @Override
+   public enh<?> a() {
+      return enh.b;
    }
 }

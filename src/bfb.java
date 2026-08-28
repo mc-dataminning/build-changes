@@ -103,8 +103,8 @@ public class bfb extends DataFix {
    }
 
    private TypeRewriteRule a() {
-      Type<?> $$0 = this.getInputSchema().getType(bgg.s);
-      return this.fixTypeEverywhereTyped("BlockEntityMobEffectIdFix", $$0, $$0x -> this.a($$0x, bgg.s, "minecraft:beacon", $$0xx -> {
+      Type<?> $$0 = this.getInputSchema().getType(bgh.s);
+      return this.fixTypeEverywhereTyped("BlockEntityMobEffectIdFix", $$0, $$0x -> this.a($$0x, bgh.s, "minecraft:beacon", $$0xx -> {
             $$0xx = a($$0xx, "Primary", "primary_effect");
             return a($$0xx, "Secondary", "secondary_effect");
          }));
@@ -133,17 +133,17 @@ public class bfb extends DataFix {
    }
 
    private TypeRewriteRule b() {
-      Type<?> $$0 = this.getInputSchema().getType(bgg.B);
+      Type<?> $$0 = this.getInputSchema().getType(bgh.B);
       return this.fixTypeEverywhereTyped("EntityMobEffectIdFix", $$0, $$0x -> {
-         $$0x = this.a($$0x, bgg.B, "minecraft:mooshroom", bfb::c);
-         $$0x = this.a($$0x, bgg.B, "minecraft:arrow", bfb::d);
-         $$0x = this.a($$0x, bgg.B, "minecraft:area_effect_cloud", bfb::e);
+         $$0x = this.a($$0x, bgh.B, "minecraft:mooshroom", bfb::c);
+         $$0x = this.a($$0x, bgh.B, "minecraft:arrow", bfb::d);
+         $$0x = this.a($$0x, bgh.B, "minecraft:area_effect_cloud", bfb::e);
          return $$0x.update(DSL.remainderFinder(), bfb::f);
       });
    }
 
    private TypeRewriteRule c() {
-      Type<?> $$0 = this.getInputSchema().getType(bgg.b);
+      Type<?> $$0 = this.getInputSchema().getType(bgh.b);
       return this.fixTypeEverywhereTyped("PlayerMobEffectIdFix", $$0, $$0x -> $$0x.update(DSL.remainderFinder(), bfb::f));
    }
 
@@ -153,8 +153,8 @@ public class bfb extends DataFix {
    }
 
    private TypeRewriteRule d() {
-      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(bgg.D.typeName(), bhs.a()));
-      Type<?> $$1 = this.getInputSchema().getType(bgg.t);
+      OpticFinder<Pair<String, String>> $$0 = DSL.fieldFinder("id", DSL.named(bgh.D.typeName(), bht.a()));
+      Type<?> $$1 = this.getInputSchema().getType(bgh.t);
       OpticFinder<?> $$2 = $$1.findField("tag");
       return this.fixTypeEverywhereTyped("ItemStackMobEffectIdFix", $$1, $$2x -> {
          Optional<Pair<String, String>> $$3 = $$2x.getOptional($$0);

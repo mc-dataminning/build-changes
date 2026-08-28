@@ -1,53 +1,40 @@
-import com.google.common.collect.ImmutableList;
+public class fvy<T extends bsh> extends fuz<T> {
+   private final fxq a;
+   private final fxq b;
+   private final fxq f;
 
-public class fvy<T extends bsg> extends ftj<T> {
-   protected final fxo a;
-   protected final fxo b;
-   protected final fxo f;
-   protected final fxo g;
-   protected final fxo h;
-   protected final fxo i;
-
-   protected fvy(fxo $$0, boolean $$1, float $$2, float $$3, float $$4, float $$5, int $$6) {
-      super($$1, $$2, $$3, $$4, $$5, (float)$$6);
-      this.a = $$0.b("head");
-      this.b = $$0.b("body");
-      this.f = $$0.b("right_hind_leg");
-      this.g = $$0.b("left_hind_leg");
-      this.h = $$0.b("right_front_leg");
-      this.i = $$0.b("left_front_leg");
+   public fvy(fxq $$0) {
+      this.a = $$0;
+      this.b = $$0.b("left_blue_fin");
+      this.f = $$0.b("right_blue_fin");
    }
 
-   public static fxw a(int $$0, fxs $$1) {
-      fxw $$2 = new fxw();
-      fxx $$3 = $$2.a();
-      $$3.a("head", fxt.c().a(0, 0).a(-4.0F, -4.0F, -8.0F, 8.0F, 8.0F, 8.0F, $$1), fxq.a(0.0F, (float)(18 - $$0), -6.0F));
-      $$3.a("body", fxt.c().a(28, 8).a(-5.0F, -10.0F, -7.0F, 10.0F, 16.0F, 8.0F, $$1), fxq.a(0.0F, (float)(17 - $$0), 2.0F, (float) (Math.PI / 2), 0.0F, 0.0F));
-      fxt $$4 = fxt.c().a(0, 16).a(-2.0F, 0.0F, -2.0F, 4.0F, (float)$$0, 4.0F, $$1);
-      $$3.a("right_hind_leg", $$4, fxq.a(-3.0F, (float)(24 - $$0), 7.0F));
-      $$3.a("left_hind_leg", $$4, fxq.a(3.0F, (float)(24 - $$0), 7.0F));
-      $$3.a("right_front_leg", $$4, fxq.a(-3.0F, (float)(24 - $$0), -5.0F));
-      $$3.a("left_front_leg", $$4, fxq.a(3.0F, (float)(24 - $$0), -5.0F));
-      return $$2;
+   public static fxw b() {
+      fxy $$0 = new fxy();
+      fxz $$1 = $$0.a();
+      int $$2 = 22;
+      $$1.a("body", fxv.c().a(12, 22).a(-2.5F, -5.0F, -2.5F, 5.0F, 5.0F, 5.0F), fxs.a(0.0F, 22.0F, 0.0F));
+      $$1.a("right_blue_fin", fxv.c().a(24, 0).a(-2.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fxs.a(-2.5F, 17.0F, -1.5F));
+      $$1.a("left_blue_fin", fxv.c().a(24, 3).a(0.0F, 0.0F, 0.0F, 2.0F, 0.0F, 2.0F), fxs.a(2.5F, 17.0F, -1.5F));
+      $$1.a("top_front_fin", fxv.c().a(15, 16).a(-2.5F, -1.0F, 0.0F, 5.0F, 1.0F, 1.0F), fxs.a(0.0F, 17.0F, -2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("top_back_fin", fxv.c().a(10, 16).a(-2.5F, -1.0F, -1.0F, 5.0F, 1.0F, 1.0F), fxs.a(0.0F, 17.0F, 2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("right_front_fin", fxv.c().a(8, 16).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fxs.a(-2.5F, 22.0F, -2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("right_back_fin", fxv.c().a(8, 16).a(-1.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fxs.a(-2.5F, 22.0F, 2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("left_back_fin", fxv.c().a(4, 16).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fxs.a(2.5F, 22.0F, 2.5F, 0.0F, (float) (-Math.PI / 4), 0.0F));
+      $$1.a("left_front_fin", fxv.c().a(0, 16).a(0.0F, -5.0F, 0.0F, 1.0F, 5.0F, 1.0F), fxs.a(2.5F, 22.0F, -2.5F, 0.0F, (float) (Math.PI / 4), 0.0F));
+      $$1.a("bottom_back_fin", fxv.c().a(8, 22).a(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F), fxs.a(0.5F, 22.0F, 2.5F, (float) (Math.PI / 4), 0.0F, 0.0F));
+      $$1.a("bottom_front_fin", fxv.c().a(17, 21).a(-2.5F, 0.0F, 0.0F, 5.0F, 1.0F, 1.0F), fxs.a(0.0F, 22.0F, -2.5F, (float) (-Math.PI / 4), 0.0F, 0.0F));
+      return fxw.a($$0, 32, 32);
    }
 
    @Override
-   protected Iterable<fxo> a() {
-      return ImmutableList.of(this.a);
-   }
-
-   @Override
-   protected Iterable<fxo> b() {
-      return ImmutableList.of(this.b, this.f, this.g, this.h, this.i);
+   public fxq a() {
+      return this.a;
    }
 
    @Override
    public void a(T $$0, float $$1, float $$2, float $$3, float $$4, float $$5) {
-      this.a.e = $$5 * (float) (Math.PI / 180.0);
-      this.a.f = $$4 * (float) (Math.PI / 180.0);
-      this.f.e = ayg.b($$1 * 0.6662F) * 1.4F * $$2;
-      this.g.e = ayg.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.h.e = ayg.b($$1 * 0.6662F + (float) Math.PI) * 1.4F * $$2;
-      this.i.e = ayg.b($$1 * 0.6662F) * 1.4F * $$2;
+      this.f.g = -0.2F + 0.4F * ayg.a($$3 * 0.2F);
+      this.b.g = 0.2F - 0.4F * ayg.a($$3 * 0.2F);
    }
 }

@@ -14,7 +14,7 @@ public class bfq extends DataFix {
    public TypeRewriteRule makeRule() {
       return this.fixTypeEverywhereTyped(
          "OptionsKeyTranslationFix",
-         this.getInputSchema().getType(bgg.e),
+         this.getInputSchema().getType(bgh.e),
          $$0 -> $$0.update(DSL.remainderFinder(), $$0x -> $$0x.getMapValues().map($$1 -> $$0x.createMap($$1.entrySet().stream().map($$1x -> {
                      if (((Dynamic)$$1x.getKey()).asString("").startsWith("key_")) {
                         String $$2 = ((Dynamic)$$1x.getValue()).asString("");

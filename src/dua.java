@@ -1,15 +1,58 @@
-public enum dua {
-   a(4259712),
-   b(16724016),
-   c(2138367);
+public interface dua {
+   void a(duc var1, double var2);
 
-   private final int d;
+   void a(duc var1, double var2, double var4, long var6);
 
-   private dua(final int $$0) {
-      this.d = $$0;
-   }
+   void a(duc var1, double var2, double var4);
 
-   public int a() {
-      return this.d;
+   void a(duc var1, int var2);
+
+   void b(duc var1, int var2);
+
+   void b(duc var1, double var2);
+
+   void c(duc var1, double var2);
+
+   public static class a implements dua {
+      private final duc a;
+
+      public a(duc $$0) {
+         this.a = $$0;
+      }
+
+      @Override
+      public void a(duc $$0, double $$1) {
+         this.a.a($$1);
+      }
+
+      @Override
+      public void a(duc $$0, double $$1, double $$2, long $$3) {
+         this.a.a($$1, $$2, $$3);
+      }
+
+      @Override
+      public void a(duc $$0, double $$1, double $$2) {
+         this.a.c($$1, $$2);
+      }
+
+      @Override
+      public void a(duc $$0, int $$1) {
+         this.a.b($$1);
+      }
+
+      @Override
+      public void b(duc $$0, int $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void b(duc $$0, double $$1) {
+         this.a.c($$1);
+      }
+
+      @Override
+      public void c(duc $$0, double $$1) {
+         this.a.b($$1);
+      }
    }
 }

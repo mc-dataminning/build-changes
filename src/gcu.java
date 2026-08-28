@@ -1,61 +1,29 @@
-public class gcu extends gcr {
-   private final gcm a;
-   private static final int b = 8;
-
-   protected gcu(fyj $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, float $$7, gcm $$8) {
-      super($$0, $$1, $$2, $$3, 0.0, 0.0, 0.0);
-      this.a = $$8;
-      this.B = 0.96F;
-      this.u = -0.1F;
-      this.C = true;
-      this.j *= 0.0;
-      this.k *= 0.9;
-      this.l *= 0.0;
-      this.j += $$4;
-      this.k += $$5;
-      this.l += $$6;
-      this.D *= 0.75F * $$7;
-      this.t = (int)(8.0F / ayg.b(this.r, 0.5F, 1.0F) * $$7);
-      this.t = Math.max(this.t, 1);
-      this.b($$8);
-      this.n = true;
+public class gcu extends gcf {
+   gcu(fyl $$0, double $$1, double $$2, double $$3, double $$4, double $$5, double $$6, gco $$7) {
+      super($$0, $$1, $$2, $$3, $$7, 1.25F);
+      this.B = 0.6F;
+      this.j = $$4;
+      this.k = $$5;
+      this.l = $$6;
+      this.D *= 0.75F;
+      this.t = 60 + this.r.a(12);
+      this.b($$7);
+      if (this.r.a(4) == 0) {
+         this.a(0.6F + this.r.i() * 0.2F, 0.6F + this.r.i() * 0.3F, this.r.i() * 0.2F);
+      } else {
+         this.a(0.1F + this.r.i() * 0.2F, 0.4F + this.r.i() * 0.3F, this.r.i() * 0.2F);
+      }
    }
 
-   @Override
-   public gbv b() {
-      return gbv.b;
-   }
+   public static class a implements gbw<ln> {
+      private final gco a;
 
-   @Override
-   public int a(float $$0) {
-      return 240;
-   }
-
-   @Override
-   public gce.a p() {
-      return gce.a.b;
-   }
-
-   @Override
-   public void a() {
-      super.a();
-      this.b(this.a);
-   }
-
-   @Override
-   public float b(float $$0) {
-      return this.D * ayg.a(((float)this.s + $$0) / (float)this.t * 32.0F, 0.0F, 1.0F);
-   }
-
-   public static class a implements gbu<ln> {
-      private final gcm a;
-
-      public a(gcm $$0) {
+      public a(gco $$0) {
          this.a = $$0;
       }
 
-      public gbr a(ln $$0, fyj $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
-         return new gcu($$1, $$2, $$3, $$4, $$5, $$6, $$7, 1.5F, this.a);
+      public gbt a(ln $$0, fyl $$1, double $$2, double $$3, double $$4, double $$5, double $$6, double $$7) {
+         return new gcu($$1, $$2, $$3, $$4, $$5, $$6, $$7, this.a);
       }
    }
 }

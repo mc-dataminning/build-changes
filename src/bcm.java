@@ -5,7 +5,7 @@ import com.mojang.serialization.Dynamic;
 
 public class bcm extends bfd {
    public bcm(Schema $$0, boolean $$1) {
-      super($$0, $$1, "EntityItemFrameDirectionFix", bgg.B, "minecraft:item_frame");
+      super($$0, $$1, "EntityItemFrameDirectionFix", bgh.B, "minecraft:item_frame");
    }
 
    public Dynamic<?> a(Dynamic<?> $$0) {

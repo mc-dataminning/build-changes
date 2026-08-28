@@ -24,15 +24,15 @@ public class afa implements zb<abn> {
       this.k = ImmutableList.copyOf($$3);
    }
 
-   public static afa a(exe $$0, boolean $$1) {
+   public static afa a(exg $$0, boolean $$1) {
       return new afa($$0.b(), $$1 ? 0 : 2, Optional.of(new afa.b($$0)), (Collection<String>)($$1 ? $$0.g() : ImmutableList.of()));
    }
 
-   public static afa a(exe $$0) {
+   public static afa a(exg $$0) {
       return new afa($$0.b(), 1, Optional.empty(), ImmutableList.of());
    }
 
-   public static afa a(exe $$0, String $$1, afa.a $$2) {
+   public static afa a(exg $$0, String $$1, afa.a $$2) {
       return new afa($$0.b(), $$2 == afa.a.a ? 3 : 4, Optional.empty(), ImmutableList.of($$1));
    }
 
@@ -125,7 +125,7 @@ public class afa implements zb<abn> {
       private final n f;
       private final int g;
 
-      public b(exe $$0) {
+      public b(exg $$0) {
          this.a = $$0.c();
          this.g = $$0.m();
          this.d = $$0.j().e;

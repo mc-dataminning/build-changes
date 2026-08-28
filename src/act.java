@@ -1,4 +1,4 @@
-public record act(dbm b) implements zb<abn> {
+public record act(dbn b) implements zb<abn> {
    public static final ys<vr, act> a = zb.a(act::a, act::new);
 
    private act(vr $$0) {

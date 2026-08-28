@@ -1,17 +1,16 @@
-class bry extends brm {
-   protected bry(brn $$0, int $$1) {
-      super($$0, $$1);
+class bry extends brn {
+   protected bry(bro $$0, int $$1) {
+      super($$0, $$1, lj.y);
    }
 
    @Override
-   public boolean a(btb $$0, int $$1) {
-      $$0.a($$0.dR().q(), 1.0F);
-      return true;
-   }
-
-   @Override
-   public boolean a(int $$0, int $$1) {
-      int $$2 = 40 >> $$1;
-      return $$2 > 0 ? $$0 % $$2 == 0 : true;
+   public void a(btc $$0, int $$1, bsh.d $$2) {
+      if ($$2 == bsh.d.a && $$0.dR() instanceof aqm $$3) {
+         double $$4 = $$0.dw();
+         double $$5 = $$0.dy() + (double)($$0.dm() / 2.0F);
+         double $$6 = $$0.dC();
+         float $$7 = 3.0F + $$0.dU().i() * 2.0F;
+         $$3.a($$0, null, cnt.e, $$4, $$5, $$6, $$7, false, dcg.a.e, lj.A, lj.z, avh.cQ);
+      }
    }
 }

@@ -1,7 +1,7 @@
 public interface go {
-   ewf a(eq var1);
+   ewh a(eq var1);
 
-   ewe b(eq var1);
+   ewg b(eq var1);
 
    default ja c(eq $$0) {
       return ja.a(this.a($$0));

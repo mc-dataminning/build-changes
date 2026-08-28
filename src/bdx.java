@@ -14,7 +14,7 @@ public class bdx extends DataFix {
    }
 
    protected TypeRewriteRule makeRule() {
-      Type<?> $$0 = this.getInputSchema().getType(bgg.t);
+      Type<?> $$0 = this.getInputSchema().getType(bgh.t);
       OpticFinder<?> $$1 = $$0.findField("tag");
       return this.fixTypeEverywhereTyped(
          "Item Lore componentize",

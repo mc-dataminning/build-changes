@@ -25,15 +25,15 @@ public class anq {
       );
    }
 
-   private static int a(eq $$0, bsg $$1, bsg $$2) throws CommandSyntaxException {
-      bsg $$3 = $$1.dd();
+   private static int a(eq $$0, bsh $$1, bsh $$2) throws CommandSyntaxException {
+      bsh $$3 = $$1.de();
       if ($$3 != null) {
          throw b.create($$1.O_(), $$3.O_());
-      } else if ($$2.al() == bsm.by) {
+      } else if ($$2.am() == bsn.by) {
          throw d.create();
-      } else if ($$1.cV().anyMatch($$1x -> $$1x == $$2)) {
+      } else if ($$1.cW().anyMatch($$1x -> $$1x == $$2)) {
          throw e.create();
-      } else if ($$1.dQ() != $$2.dQ()) {
+      } else if ($$1.dR() != $$2.dR()) {
          throw f.create();
       } else if (!$$1.a($$2, true)) {
          throw c.create($$1.O_(), $$2.O_());
@@ -43,12 +43,12 @@ public class anq {
       }
    }
 
-   private static int a(eq $$0, bsg $$1) throws CommandSyntaxException {
-      bsg $$2 = $$1.dd();
+   private static int a(eq $$0, bsh $$1) throws CommandSyntaxException {
+      bsh $$2 = $$1.de();
       if ($$2 == null) {
          throw a.create($$1.O_());
       } else {
-         $$1.ac();
+         $$1.ad();
          $$0.a(() -> wu.a("commands.ride.dismount.success", $$1.O_(), $$2.O_()), true);
          return 1;
       }
